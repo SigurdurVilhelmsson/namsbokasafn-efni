@@ -1,0 +1,26 @@
+{
+  "id": "liffraedi",
+  "title": "Líffræði",
+  "titleEn": "Biology",
+  "source": {
+    "title": "Biology 2e",
+    "publisher": "OpenStax",
+    "url": "https://openstax.org/details/books/biology-2e",
+    "authors": ["Mary Ann Clark", "Matthew Douglas", "Jung Choi"],
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "isbn": "978-1-947172-51-7"
+  },
+  "translation": {
+    "translator": "Sigurður E. Vilhelmsson",
+    "started": null,
+    "language": "is",
+    "license": "CC BY 4.0"
+  },
+  "chapters": 47,
+  "status": {
+    "completed": 0,
+    "inProgress": 0,
+    "notStarted": 47
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "chapter": 0,
+  "titleIs": "",
+  "titleEn": "",
+  "sections": [],
+  "status": {
+    "source": { "complete": false, "date": null },
+    "machineTranslation": { "complete": false, "date": null },
+    "tmTranslation": { "complete": false, "date": null },
+    "editorReview": { "complete": false, "date": null, "editor": null },
+    "finalDocx": { "complete": false, "date": null },
+    "publication": { "complete": false, "date": null }
+  },
+  "notes": ""
+}
