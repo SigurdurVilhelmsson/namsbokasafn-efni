@@ -1,0 +1,28 @@
+{
+  "name": "namsbokasafn-thyding",
+  "version": "0.1.0",
+  "description": "Translation workflow for Icelandic OpenStax textbooks",
+  "main": "index.js",
+  "scripts": {
+    "strip": "node tools/strip-docx-to-txt.js",
+    "convert": "node tools/docx-to-md.js",
+    "frontmatter": "node tools/add-frontmatter.js",
+    "process": "node tools/process-chapter.js"
+  },
+  "keywords": [
+    "translation",
+    "icelandic",
+    "openstax",
+    "education",
+    "textbooks"
+  ],
+  "author": "Sigurður E. Vilhelmsson",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SigurdurVilhelmsson/namsbokasafn"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
