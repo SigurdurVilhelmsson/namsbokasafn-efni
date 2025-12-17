@@ -1,0 +1,71 @@
+english,icelandic,category,notes,source,status
+atom,atóm,fundamental,Also: frumeind (older usage),Icelandic naming convention,approved
+molecule,sameind,fundamental,,Icelandic naming convention,approved
+element,frumefni,fundamental,,Icelandic naming convention,approved
+compound,efnasamband,fundamental,,Icelandic naming convention,approved
+electron,rafeind,fundamental,,Icelandic naming convention,approved
+proton,róteind,fundamental,,Icelandic naming convention,approved
+neutron,nifteind,fundamental,,Icelandic naming convention,approved
+nucleus,kjarni,fundamental,Atomic nucleus: atómkjarni,Íðorðabankinn,approved
+ion,jón,fundamental,,Íðorðabankinn,approved
+cation,katjón,fundamental,Positive ion,Íðorðabankinn,approved
+anion,anjón,fundamental,Negative ion,Íðorðabankinn,approved
+mole,mól,units,SI unit,Íðorðabankinn,approved
+molar mass,mólmassi,concepts,,Íðorðabankinn,approved
+atomic mass,atómmassi,concepts,,Íðorðabankinn,approved
+molecular mass,sameindamassi,concepts,,Íðorðabankinn,approved
+periodic table,lotukerfi,fundamental,Also: lotukerfið,Íðorðabankinn,approved
+period,lota,periodic table,Row in periodic table,Íðorðabankinn,approved
+group,flokkur,periodic table,Column in periodic table,Íðorðabankinn,approved
+bond,efnatengi,bonding,Chemical bond,Íðorðabankinn,approved
+covalent bond,samgildistengi,bonding,,Íðorðabankinn,approved
+ionic bond,jónatengi,bonding,,Íðorðabankinn,approved
+metallic bond,málmtengi,bonding,,Íðorðabankinn,approved
+hydrogen bond,vetnistengi,bonding,,Íðorðabankinn,approved
+orbital,svigrúm,structure,Atomic orbital,Íðorðabankinn,approved
+valence,gildi,structure,Valence electrons: gildisrafeindir,Íðorðabankinn,approved
+reaction,efnahvarf,reactions,Chemical reaction,Íðorðabankinn,approved
+oxidation,oxun,reactions,,Íðorðabankinn,approved
+reduction,afoxun,reactions,,Íðorðabankinn,approved
+equilibrium,jafnvægi,reactions,Chemical equilibrium,Íðorðabankinn,approved
+catalyst,hvati,reactions,,Íðorðabankinn,approved
+activation energy,virkjunarorka,reactions,,Íðorðabankinn,approved
+solution,lausn,solutions,,Íðorðabankinn,approved
+solvent,leysiefni,solutions,,Íðorðabankinn,approved
+solute,leysið efni,solutions,The dissolved substance,Íðorðabankinn,approved
+concentration,styrkur,solutions,,Íðorðabankinn,approved
+molarity,mólstyrkur,solutions,,Íðorðabankinn,approved
+dilute,þynna,solutions,Verb,Íðorðabankinn,approved
+acid,sýra,acids-bases,,Íðorðabankinn,approved
+base,basi,acids-bases,,Íðorðabankinn,approved
+pH,pH,acids-bases,Kept as abbreviation,International,approved
+buffer,stuðpúði,acids-bases,Buffer solution,Íðorðabankinn,approved
+neutralization,hlutleysing,acids-bases,,Íðorðabankinn,approved
+alkali metal,alkalímálmur,periodic table,,Íðorðabankinn,approved
+halogen,halógen,periodic table,,Íðorðabankinn,approved
+noble gas,eðallofttegund,periodic table,,Íðorðabankinn,approved
+transition metal,siðarmálmur,periodic table,,Íðorðabankinn,approved
+chemical equation,efnajafna,concepts,,Íðorðabankinn,proposed
+stoichiometry,efnajöfnuður,concepts,Under discussion,Íðorðabankinn,proposed
+Avogadro's number,tala Avogadros,constants,,Íðorðabankinn,approved
+matter,efni,fundamental,,Íðorðabankinn,approved
+mass,massi,measurements,,Íðorðabankinn,approved
+volume,rúmmál,measurements,,Íðorðabankinn,approved
+density,eðlismassi,measurements,,Íðorðabankinn,approved
+temperature,hitastig,measurements,,Íðorðabankinn,approved
+pressure,þrýstingur,measurements,,Íðorðabankinn,approved
+energy,orka,concepts,,Íðorðabankinn,approved
+heat,varmi,concepts,,Íðorðabankinn,approved
+work,vinna,concepts,,Íðorðabankinn,approved
+gas,gas,states,State of matter,Íðorðabankinn,approved
+liquid,vökvi,states,State of matter,Íðorðabankinn,approved
+solid,fast efni,states,State of matter,Íðorðabankinn,approved
+plasma,plasma,states,State of matter,Íðorðabankinn,approved
+mixture,blanda,fundamental,,Íðorðabankinn,approved
+pure substance,hreint efni,fundamental,,Íðorðabankinn,approved
+homogeneous,einsleitur,properties,,Íðorðabankinn,approved
+heterogeneous,misleitur,properties,,Íðorðabankinn,approved
+physical property,eðliseiginleiki,properties,,Íðorðabankinn,approved
+chemical property,efnafræðilegur eiginleiki,properties,,Íðorðabankinn,approved
+physical change,eðlisbreyting,changes,,Íðorðabankinn,approved
+chemical change,efnabreyting,changes,,Íðorðabankinn,approved

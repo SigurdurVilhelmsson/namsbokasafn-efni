@@ -1,153 +1,349 @@
 # Translation Workflow
 
-This document describes the complete translation workflow from source material to published content.
+This document describes the complete 8-step translation workflow from source material to published content.
 
 ## Pipeline Overview
 
 ```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                         TRANSLATION PIPELINE                             │
-├─────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  OpenStax        malstadur.is       Matecat          Editor              │
-│  ─────────       ───────────        ───────          ──────              │
-│                                                                          │
-│  ┌──────┐        ┌──────────┐      ┌─────────┐      ┌────────┐          │
-│  │ .docx │──────▶│   .txt   │─────▶│   TM    │─────▶│ Review │          │
-│  │source│  strip │  machine │ align│translate│ track│ edits  │          │
-│  └──────┘        │ translate│      │ w/format│ chgs │        │          │
-│                  └──────────┘      └─────────┘      └────────┘          │
-│                                                           │              │
-│                                                           ▼              │
-│                                    ┌──────────────────────────────┐     │
-│                                    │      Final .docx → .md       │     │
-│                                    │        for publication       │     │
-│                                    └──────────────────────────────┘     │
-│                                                                          │
-└─────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────────────────┐
+│                              TRANSLATION PIPELINE                                         │
+├──────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                           │
+│  PHASE 1: SOURCE             PHASE 2: MT              PHASE 3: TM BUILDING               │
+│  ────────────────            ──────────              ─────────────────────               │
+│                                                                                           │
+│  ┌──────────────┐           ┌────────────┐          ┌────────────────────┐              │
+│  │  OpenStax    │           │ malstadur  │          │      Matecat       │              │
+│  │  .docx       │──strip───▶│  .txt MT   │──align──▶│  Build Initial TM  │              │
+│  │  (formatted) │           │            │          │                    │              │
+│  └──────────────┘           └────────────┘          └────────────────────┘              │
+│        │                                                     │                           │
+│        │                                                     ▼                           │
+│        │                                            ┌────────────────────┐              │
+│        └────────────────────────────────────────────▶│ TM-Assisted Trans │              │
+│                                                      │ (formatted .docx) │              │
+│                                                      └────────────────────┘              │
+│                                                               │                          │
+├───────────────────────────────────────────────────────────────┼──────────────────────────┤
+│                                                               │                          │
+│  PHASE 4: EDITORIAL PASS 1                                    │                          │
+│  ─────────────────────────                                    │                          │
+│                                                               ▼                          │
+│                                                      ┌────────────────────┐              │
+│                                                      │  Linguistic Review │              │
+│                                                      │  (Word, track chg) │              │
+│                                                      └────────────────────┘              │
+│                                                               │                          │
+│                             ┌─────────────────────────────────┼─────────────────┐        │
+│                             │                                 │                 │        │
+│                             ▼                                 ▼                 │        │
+│                    ┌────────────────┐               ┌─────────────────┐        │        │
+│                    │ FAITHFUL TRANS │               │   Update TM     │        │        │
+│                    │  (03-faithful) │               │ Human-verified  │        │        │
+│                    │    ★ SAVE ★    │               │    ★ SAVE ★     │        │        │
+│                    └────────────────┘               └─────────────────┘        │        │
+│                                                               │                 │        │
+├───────────────────────────────────────────────────────────────┼─────────────────┼────────┤
+│                                                               │                 │        │
+│  PHASE 5: EDITORIAL PASS 2                                    │                 │        │
+│  ─────────────────────────                                    │                 │        │
+│                                                               ▼                 │        │
+│                                                      ┌────────────────────┐     │        │
+│                                                      │   Localization     │     │        │
+│                                                      │ • SI units         │◀────┘        │
+│                                                      │ • Icelandic context│              │
+│                                                      │ • Extended exercises│              │
+│                                                      └────────────────────┘              │
+│                                                               │                          │
+│                             ┌─────────────────────────────────┤                          │
+│                             ▼                                 ▼                          │
+│                    ┌────────────────┐               ┌─────────────────┐                 │
+│                    │ LOCALIZED VERS │               │ Localization Log│                 │
+│                    │ (04-localized) │               │  Document all   │                 │
+│                    │    ★ SAVE ★    │               │    changes      │                 │
+│                    └────────────────┘               └─────────────────┘                 │
+│                             │                                                            │
+├─────────────────────────────┼────────────────────────────────────────────────────────────┤
+│                             │                                                            │
+│  PHASE 6: PUBLICATION       │                                                            │
+│  ────────────────────       ▼                                                            │
+│                    ┌────────────────┐         ┌─────────────────┐                       │
+│                    │ Convert to .md │────────▶│  Publication    │                       │
+│                    │ Add frontmatter│         │ (05-publication)│                       │
+│                    └────────────────┘         └─────────────────┘                       │
+│                                                       │                                  │
+│                                                       ▼                                  │
+│                                               ┌─────────────────┐                       │
+│                                               │   Deploy to     │                       │
+│                                               │   efnafraedi.app│                       │
+│                                               └─────────────────┘                       │
+│                                                                                          │
+└──────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-## Detailed Steps
+## The 8 Steps in Detail
 
-### Phase 1: Source Preparation
+### Step 1: Source Preparation
 
-#### Step 1: Download OpenStax .docx Files
-- Download chapter files from [OpenStax](https://openstax.org/)
-- These files contain full formatting, equations, and images
-- Save to: `01-source/docx/`
+**Goal:** Obtain and prepare source material from OpenStax
 
-#### Step 2: Strip to Plain Text
-- Use `tools/strip-docx-to-txt.js` to remove formatting
-- Plain text is needed for malstadur.is machine translation
-- Save to: `01-source/txt/`
+**Process:**
+1. Download .docx files from [OpenStax](https://openstax.org/)
+   - These contain full formatting, equations, and images
+   - Organized by chapter/section
+2. Strip formatting to plain .txt for machine translation
+   - Use `tools/strip-docx-to-txt.js`
+   - MT services work better with plain text
+3. (Optional) Download high-res editable images (PDF) for figures with text
 
-#### Step 3: Download Editable Images (Optional)
-- High-resolution PDFs for figures that need text translation
-- Save to: `01-source/images-editable/`
+**Save to:**
+- `01-source/docx/ch##/` - Original formatted .docx files
+- `01-source/txt/` - Stripped plain text
+- `01-source/images-editable/` - Editable figure PDFs
 
-### Phase 2: Machine Translation
+**Tools:** OpenStax website, strip-docx-to-txt.js
 
-#### Step 4: Upload to malstadur.is
-- Upload .txt files to [malstadur.is](https://malstadur.is)
-- This is an Icelandic machine translation service
-- Download translated .docx files
-- Save to: `02-machine-translation/docx/`
+---
 
-### Phase 3: Translation Memory Building
+### Step 2: Machine Translation
 
-#### Step 5: Align in Matecat
-- Upload original + machine translation to [Matecat](https://matecat.com)
-- Align sentences to build Translation Memory (TM)
-- Export TM as .tmx file
-- Save TM to: `tm/`
+**Goal:** Get initial machine translation of plain text
 
-#### Step 6: Translate Formatted Document
-- Upload original formatted .docx to Matecat
-- Use the TM to pre-populate translations
-- Review and correct each segment
-- Export translated .docx (keeps original formatting/images)
-- Save to: `03-tm-translated/docx/`
+**Process:**
+1. Upload .txt files to [malstadur.is](https://malstadur.is)
+   - Miðeind's Icelandic machine translation engine
+   - Optimized for Icelandic language
+2. Download translated output as .docx
 
-### Phase 4: Editorial Review
+**Save to:**
+- `02-mt-output/docx/` - Machine translation output (reference only)
 
-#### Step 7: Editor Review
-- Editor opens .docx file from `03-tm-translated/docx/`
-- Uses Word Track Changes for all edits
-- Focus areas:
-  - Terminology consistency
-  - Grammar and style
-  - Technical accuracy
-  - Readability for target audience
-- Save reviewed file to: `04-editor-review/docx/`
+**Tools:** malstadur.is
 
-#### Step 8: Incorporate Edits
-- Review editor's track changes in Matecat
-- Accept or discuss suggested changes
-- Update TM with final translations
+**Note:** This output is for reference and TM building only. It is NOT the final translation.
 
-#### Step 9: Export Final .docx
-- Export clean final .docx without track changes
-- Save to: `05-final-docx/docx/`
+---
 
-### Phase 5: Publication
+### Step 3: Translation Memory Alignment
 
-#### Step 10: Convert to Markdown
-- Use `tools/docx-to-md.js` to convert .docx to .md
-- Preserves images and basic formatting
-- Handles equations appropriately
+**Goal:** Build initial Translation Memory by aligning source and MT output
 
-#### Step 11: Add Frontmatter
-- Use `tools/add-frontmatter.js` to add metadata
-- Includes title, chapter, section, objectives
-- Adds licensing and attribution
-- See `templates/frontmatter.yaml` for template
+**Process:**
+1. Upload original .docx + MT .docx to [Matecat](https://matecat.com)
+2. Use Matecat's alignment feature to match segments
+3. Review alignment for major errors
+4. Export initial TM as .tmx file
 
-#### Step 12: Final Publication Files
-- Place completed .md files in `06-publication/chapters/`
-- Update `toc.json` with chapter information
-- Update `glossary.json` with new terms
+**Save to:**
+- `tm/` - Initial .tmx file
+
+**Tools:** Matecat
+
+**Why this step matters:** The aligned TM will be used to translate the formatted document while preserving layout.
+
+---
+
+### Step 4: TM-Assisted Translation (1st Matecat Run)
+
+**Goal:** Translate the formatted .docx using TM, preserving formatting
+
+**Process:**
+1. Upload original formatted .docx to Matecat
+2. Load the TM from Step 3
+3. TM pre-populates translations for each segment
+4. Fix obvious terminology errors only (don't perfect the language yet)
+5. Export .docx (formatting preserved)
+
+**Save to:**
+- Working draft only - not permanently saved (will be replaced after editorial)
+
+**Tools:** Matecat
+
+**Note:** This is a working draft. The real quality work happens in editorial passes.
+
+---
+
+### Step 5: Editorial Pass 1 - Linguistic Review
+
+**Goal:** Human editor reviews for language quality → produces FAITHFUL TRANSLATION
+
+**Focus Areas:**
+- Grammar and spelling
+- Natural Icelandic phrasing
+- Sentence flow and readability
+- Terminology consistency (check glossary)
+- Technical accuracy preserved
+
+**What NOT to do:**
+- NO localization (keep imperial units, American examples, etc.)
+- NO adding content
+- Focus only on making the translation faithful and well-written
+
+**Process:**
+1. Editor receives .docx from Step 4
+2. Enable Track Changes in Microsoft Word
+3. Review each section systematically
+4. Use comments for questions or unclear passages
+5. Note terminology decisions
+
+**Save to:**
+- `03-faithful/docx/ch##/` - Faithful translation .docx ★ VALUABLE ASSET ★
+- `03-faithful/markdown/` - Converted to .md for easy reading
+
+**Tools:** Microsoft Word (with Track Changes)
+
+**Deliverable:** Human-verified faithful translation that accurately represents the source in natural Icelandic.
+
+---
+
+### Step 6: Update Translation Memory
+
+**Goal:** Incorporate Pass 1 edits back into TM → produces HUMAN-VERIFIED TM
+
+**Process:**
+1. Review editor's changes in Matecat
+2. Accept approved changes into TM
+3. Discuss and resolve any flagged terminology
+4. Export updated .tmx file
+
+**Save to:**
+- `tm/` - Updated .tmx file ★ VALUABLE ASSET ★
+- `tm/exports/` - Parallel corpus exports (.txt files)
+
+**Tools:** Matecat
+
+**Why this matters:** The TM is now human-verified, not just MT output. This is valuable for:
+- Training other MT systems
+- Training Icelandic LLMs
+- Future translation projects
+
+---
+
+### Step 7: Editorial Pass 2 - Localization
+
+**Goal:** Adapt content for Icelandic context → produces LOCALIZED VERSION
+
+**Changes to make:**
+- **Unit conversions:** Imperial → SI (miles → km, °F → °C, pounds → kg)
+- **Cultural adaptations:** American references → Icelandic equivalents
+- **Local context:** Add geothermal, fishing industry, Icelandic geography examples
+- **Extended exercises:** Add practice problems where beneficial
+- **Icelandic examples:** Replace irrelevant examples with locally relevant ones
+
+**Process:**
+1. Start from faithful translation (.docx from 03-faithful/)
+2. Create localization log from template
+3. Make localization changes
+4. Document EVERY change in the localization log
+5. Ensure scientific accuracy is maintained
+
+**Save to:**
+- `04-localized/docx/ch##/` - Localized .docx files ★ VALUABLE ASSET ★
+- `04-localized/localization-logs/` - Documentation of all changes
+
+**Tools:** Microsoft Word, localization-log template
+
+**Deliverable:** Localized version adapted for Icelandic secondary school students, with full documentation of changes.
+
+---
+
+### Step 8: Conversion & Publication
+
+**Goal:** Prepare and publish web-ready content
+
+**Process:**
+1. Convert localized .docx to Markdown
+   - Use `tools/docx-to-md.js`
+   - Handle equations, images, formatting
+2. Add frontmatter metadata
+   - Use `tools/add-frontmatter.js`
+   - See `templates/frontmatter.yaml`
+3. Copy to publication folder
+4. Update `toc.json` and `glossary.json`
+5. Deploy to web
+
+**Save to:**
+- `05-publication/chapters/` - Publication-ready .md files
+- `05-publication/toc.json` - Table of contents
+- `05-publication/glossary.json` - Terminology glossary
+
+**Tools:** docx-to-md.js, add-frontmatter.js, web deployment
+
+**Published at:** [efnafraedi.app](https://efnafraedi.app) (námsbókasafn.is væntanlegt)
+
+---
 
 ## Folder Summary
 
-| Folder | Contents | Format |
-|--------|----------|--------|
-| `01-source/docx/` | Original OpenStax files | .docx |
-| `01-source/txt/` | Stripped plain text | .txt |
-| `01-source/images-editable/` | High-res figures | .pdf |
-| `02-machine-translation/docx/` | malstadur.is output | .docx |
-| `03-tm-translated/docx/` | Matecat output (formatted) | .docx |
-| `04-editor-review/docx/` | Editor's track changes | .docx |
-| `05-final-docx/docx/` | Clean final Word files | .docx |
-| `06-publication/chapters/` | Publication-ready content | .md |
-| `tm/` | Translation memory | .tmx |
+| Folder | Contents | Format | When Created |
+|--------|----------|--------|--------------|
+| `01-source/docx/` | Original OpenStax files | .docx | Step 1 |
+| `01-source/txt/` | Stripped plain text | .txt | Step 1 |
+| `01-source/images-editable/` | High-res figures | .pdf | Step 1 |
+| `02-mt-output/docx/` | malstadur.is output | .docx | Step 2 |
+| `03-faithful/docx/` | Faithful translation | .docx | Step 5 ★ |
+| `03-faithful/markdown/` | Faithful in markdown | .md | Step 5 |
+| `04-localized/docx/` | Localized translation | .docx | Step 7 ★ |
+| `04-localized/localization-logs/` | Change documentation | .md | Step 7 |
+| `05-publication/chapters/` | Web-ready content | .md | Step 8 |
+| `tm/` | Translation memory | .tmx | Steps 3, 6 ★ |
+| `tm/exports/` | Parallel corpus | .txt | Step 6 |
+| `glossary/` | Terminology | .csv | Ongoing |
 
-## Tools Used
+★ = Valuable preserved asset
 
-| Tool | Purpose | Website |
-|------|---------|---------|
-| malstadur.is | Icelandic machine translation | https://malstadur.is |
-| Matecat | CAT tool for alignment and translation | https://matecat.com |
-| Microsoft Word | Editor review with track changes | - |
-| Typora/Markdown | Final publication format | https://typora.io |
+---
 
-## Tips for Editors
+## Tools Reference
 
-1. **Use Track Changes**: Always enable Track Changes in Word before making any edits
-2. **Add Comments**: Use comments for questions about terminology or meaning
-3. **Check Terminology**: Refer to `docs/terminology.md` for standard translations
-4. **Don't Edit Formatting**: Focus on text content, not layout/styling
-5. **Note Issues**: If you find translation errors, note them in comments
+| Tool | Purpose | Website | Used In |
+|------|---------|---------|---------|
+| malstadur.is | Icelandic MT engine | https://malstadur.is | Step 2 |
+| Matecat | CAT tool, TM management | https://matecat.com | Steps 3, 4, 6 |
+| Microsoft Word | Editorial review | - | Steps 5, 7 |
+| Typora | Markdown editing | https://typora.io | Step 8 |
+| strip-docx-to-txt.js | Extract plain text | Local tool | Step 1 |
+| docx-to-md.js | Convert to Markdown | Local tool | Step 8 |
+| add-frontmatter.js | Add metadata | Local tool | Step 8 |
 
-## Quality Checklist
+---
 
-Before marking a chapter as complete:
+## Quality Checkpoints
 
+### After Step 5 (Faithful Translation)
 - [ ] All sections translated
+- [ ] Grammar and spelling correct
 - [ ] Terminology consistent with glossary
-- [ ] Technical accuracy verified
-- [ ] Grammar and spelling checked
-- [ ] Equations render correctly
-- [ ] Image references correct
+- [ ] Technical accuracy preserved
+- [ ] Natural Icelandic phrasing
+- [ ] No localization changes (still faithful to source)
+
+### After Step 6 (TM Update)
+- [ ] All editor changes incorporated
+- [ ] TM exported and saved
+- [ ] Terminology questions resolved
+
+### After Step 7 (Localization)
+- [ ] All units converted to SI
+- [ ] Cultural references adapted
+- [ ] Localization log complete
+- [ ] Scientific accuracy maintained
+- [ ] Extended exercises added where beneficial
+
+### After Step 8 (Publication)
+- [ ] Markdown renders correctly
 - [ ] Frontmatter complete
+- [ ] Images display properly
+- [ ] Equations render correctly
 - [ ] TOC updated
-- [ ] New terms added to glossary
+- [ ] Glossary updated
+- [ ] Deployed to web
+
+---
+
+## Additional Resources
+
+- [Editorial Guide](editorial-guide.md) - Detailed guide for editors
+- [Terminology Standards](terminology.md) - Terminology conventions
+- [Contributing Guide](contributing.md) - How to participate
+- [Assets Documentation](assets.md) - What assets we produce and their value
