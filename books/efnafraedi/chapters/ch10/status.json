@@ -1,0 +1,21 @@
+{
+  "chapter": 10,
+  "titleEn": "Liquids and Solids",
+  "titleIs": null,
+  "sections": [],
+  "status": {
+    "source": { "complete": true, "date": "2024-11-01", "notes": "Only specific subchapters TBD by teacher" },
+    "mtOutput": { "complete": true, "date": "2024-11-01" },
+    "matecat": { "complete": false, "pending": true, "targetDate": "2025-02" },
+    "editorialPass1": { "complete": false },
+    "tmUpdated": { "complete": false },
+    "editorialPass2": { "complete": false },
+    "publication": { "complete": false }
+  },
+  "images": {
+    "total": null,
+    "translated": 0,
+    "status": "not-started"
+  },
+  "notes": "Only specific subchapters needed (TBD by teacher). Target: February 2026."
+}

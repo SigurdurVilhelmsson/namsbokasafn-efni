@@ -1,0 +1,35 @@
+{
+  "chapter": 3,
+  "titleEn": "Composition of Substances and Solutions",
+  "titleIs": "Samsetning efna og lausna",
+  "sections": [
+    { "id": "3.1", "titleEn": "Formula Mass and the Mole Concept", "titleIs": "TBD" },
+    { "id": "3.2", "titleEn": "Determining Empirical and Molecular Formulas", "titleIs": "TBD" },
+    { "id": "3.3", "titleEn": "Molarity", "titleIs": "TBD" },
+    { "id": "3.4", "titleEn": "Other Units for Solution Concentrations", "titleIs": "TBD" }
+  ],
+  "status": {
+    "source": { "complete": true, "date": "2024-11-01" },
+    "mtOutput": { "complete": true, "date": "2024-11-01" },
+    "matecat": { "complete": true, "date": "2024-12-01" },
+    "editorialPass1": {
+      "complete": false,
+      "pending": true,
+      "notes": "Delivered to editor, awaiting review"
+    },
+    "tmUpdated": { "complete": false },
+    "editorialPass2": { "complete": false },
+    "publication": {
+      "complete": true,
+      "date": "2024-11-01",
+      "version": "ai-preview",
+      "notes": "AI translation published for testing"
+    }
+  },
+  "images": {
+    "total": null,
+    "translated": 0,
+    "status": "not-started"
+  },
+  "notes": "Matecat complete, delivered for Pass 1 review."
+}
