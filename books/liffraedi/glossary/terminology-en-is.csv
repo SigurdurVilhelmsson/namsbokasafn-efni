@@ -1,0 +1,26 @@
+english,icelandic,category,notes,source,status
+cell,fruma,fundamental,,Íðorðabankinn,approved
+organism,lífvera,fundamental,,Íðorðabankinn,approved
+species,tegund,taxonomy,,Íðorðabankinn,approved
+gene,gen,genetics,,Íðorðabankinn,approved
+DNA,DNA,genetics,Deoxyribonucleic acid,International,approved
+RNA,RNA,genetics,Ribonucleic acid,International,approved
+protein,prótein,biochemistry,,Íðorðabankinn,approved
+enzyme,ensím,biochemistry,,Íðorðabankinn,approved
+chromosome,litningur,genetics,,Íðorðabankinn,approved
+nucleus,frumukjarni,cell biology,Cell nucleus,Íðorðabankinn,approved
+membrane,himna,cell biology,,Íðorðabankinn,approved
+cytoplasm,umfrymi,cell biology,,Íðorðabankinn,approved
+mitochondria,hvatberi,cell biology,,Íðorðabankinn,approved
+chloroplast,grænukorn,cell biology,,Íðorðabankinn,approved
+photosynthesis,ljóstillífun,processes,,Íðorðabankinn,approved
+respiration,öndun,processes,Cellular respiration,Íðorðabankinn,approved
+metabolism,efnaskipti,processes,,Íðorðabankinn,approved
+evolution,þróun,evolution,,Íðorðabankinn,approved
+natural selection,náttúruval,evolution,,Íðorðabankinn,approved
+mutation,stökkbreyting,genetics,,Íðorðabankinn,approved
+heredity,erfðir,genetics,,Íðorðabankinn,approved
+ecosystem,vistkerfi,ecology,,Íðorðabankinn,approved
+population,stofn,ecology,,Íðorðabankinn,approved
+community,lífsamfélag,ecology,,Íðorðabankinn,approved
+biodiversity,líffræðilegur fjölbreytileiki,ecology,,Íðorðabankinn,approved

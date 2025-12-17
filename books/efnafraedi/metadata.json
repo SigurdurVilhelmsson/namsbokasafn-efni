@@ -2,25 +2,55 @@
   "id": "efnafraedi",
   "title": "Efnafræði",
   "titleEn": "Chemistry",
+  "slug": "efnafraedi",
   "source": {
     "title": "Chemistry 2e",
     "publisher": "OpenStax",
     "url": "https://openstax.org/details/books/chemistry-2e",
-    "authors": ["Paul Flowers", "Klaus Theopold", "Richard Langley", "William R. Robinson"],
+    "authors": [
+      "Paul Flowers",
+      "Klaus Theopold",
+      "Richard Langley",
+      "William R. Robinson"
+    ],
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "isbn": "978-1-947172-61-6"
   },
   "translation": {
     "translator": "Sigurður E. Vilhelmsson",
-    "started": "2024",
     "language": "is",
-    "license": "CC BY 4.0"
+    "started": "2024",
+    "license": "CC BY 4.0",
+    "workflow": "two-pass-editorial",
+    "mtEngine": "Miðeind (malstadur.is)",
+    "catTool": "Matecat"
   },
-  "chapters": 21,
-  "status": {
-    "completed": 2,
-    "inProgress": 1,
-    "notStarted": 18
+  "publication": {
+    "url": "https://efnafraedi.app",
+    "futureUrl": "https://namsbokasafn.is/efnafraedi"
+  },
+  "statistics": {
+    "totalChapters": 21,
+    "chaptersComplete": {
+      "faithful": 0,
+      "localized": 0,
+      "published": 2
+    }
+  },
+  "assets": {
+    "faithfulTranslation": true,
+    "humanVerifiedTM": true,
+    "localizationLogs": true,
+    "glossary": true
+  },
+  "directories": {
+    "source": "01-source/",
+    "mtOutput": "02-mt-output/",
+    "faithful": "03-faithful/",
+    "localized": "04-localized/",
+    "publication": "05-publication/",
+    "tm": "tm/",
+    "glossary": "glossary/"
   }
 }

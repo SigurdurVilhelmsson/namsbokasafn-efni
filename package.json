@@ -1,28 +1,36 @@
 {
-  "name": "namsbokasafn-thyding",
-  "version": "0.1.0",
-  "description": "Translation workflow for Icelandic OpenStax textbooks",
+  "name": "namsbokasafn-efni",
+  "version": "1.0.0",
+  "description": "Translation workflow and content for Icelandic OpenStax textbooks. Produces faithful translations, human-verified TM, and localized educational content.",
   "main": "index.js",
   "scripts": {
-    "strip": "node tools/strip-docx-to-txt.js",
-    "convert": "node tools/docx-to-md.js",
-    "frontmatter": "node tools/add-frontmatter.js",
-    "process": "node tools/process-chapter.js"
+    "strip-text": "node tools/strip-docx-to-txt.js",
+    "convert-md": "node tools/docx-to-md.js",
+    "add-frontmatter": "node tools/add-frontmatter.js",
+    "export-parallel": "node tools/export-parallel-corpus.js",
+    "process-chapter": "node tools/process-chapter.js",
+    "validate": "node tools/validate-chapter.js"
   },
   "keywords": [
     "translation",
     "icelandic",
     "openstax",
+    "chemistry",
+    "biology",
     "education",
-    "textbooks"
+    "oer",
+    "open-educational-resources",
+    "translation-memory",
+    "localization"
   ],
   "author": "Sigurður E. Vilhelmsson",
-  "license": "MIT",
+  "license": "SEE LICENSE FILE",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SigurdurVilhelmsson/namsbokasafn"
+    "url": "https://github.com/SigurdurVilhelmsson/namsbokasafn-efni"
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "homepage": "https://efnafraedi.app"
 }

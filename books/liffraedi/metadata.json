@@ -2,25 +2,54 @@
   "id": "liffraedi",
   "title": "Líffræði",
   "titleEn": "Biology",
+  "slug": "liffraedi",
   "source": {
     "title": "Biology 2e",
     "publisher": "OpenStax",
     "url": "https://openstax.org/details/books/biology-2e",
-    "authors": ["Mary Ann Clark", "Matthew Douglas", "Jung Choi"],
+    "authors": [
+      "Mary Ann Clark",
+      "Matthew Douglas",
+      "Jung Choi"
+    ],
     "license": "CC BY 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
     "isbn": "978-1-947172-51-7"
   },
   "translation": {
     "translator": "Sigurður E. Vilhelmsson",
-    "started": null,
     "language": "is",
-    "license": "CC BY 4.0"
+    "started": null,
+    "license": "CC BY 4.0",
+    "workflow": "two-pass-editorial",
+    "mtEngine": "Miðeind (malstadur.is)",
+    "catTool": "Matecat"
   },
-  "chapters": 47,
-  "status": {
-    "completed": 0,
-    "inProgress": 0,
-    "notStarted": 47
+  "publication": {
+    "url": null,
+    "futureUrl": "https://namsbokasafn.is/liffraedi"
+  },
+  "statistics": {
+    "totalChapters": 47,
+    "chaptersComplete": {
+      "faithful": 0,
+      "localized": 0,
+      "published": 0
+    }
+  },
+  "assets": {
+    "faithfulTranslation": true,
+    "humanVerifiedTM": true,
+    "localizationLogs": true,
+    "glossary": true
+  },
+  "directories": {
+    "source": "01-source/",
+    "mtOutput": "02-mt-output/",
+    "faithful": "03-faithful/",
+    "localized": "04-localized/",
+    "publication": "05-publication/",
+    "tm": "tm/",
+    "glossary": "glossary/"
   }
 }

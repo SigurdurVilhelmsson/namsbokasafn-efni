@@ -1,15 +1,116 @@
 {
-  "chapter": 0,
-  "titleIs": "",
-  "titleEn": "",
-  "sections": [],
+  "book": "efnafraedi",
+  "chapter": 1,
+  "titleEn": "Essential Ideas",
+  "titleIs": "Grunnhugmyndir",
+  "sections": [
+    {
+      "id": "1.1",
+      "titleEn": "Chemistry in Context",
+      "titleIs": "Efnafræði í samhengi"
+    },
+    {
+      "id": "1.2",
+      "titleEn": "Phases and Classification of Matter",
+      "titleIs": "Fasar og flokkun efna"
+    },
+    {
+      "id": "1.3",
+      "titleEn": "Physical and Chemical Properties",
+      "titleIs": "Eðlis- og efnafræðilegir eiginleikar"
+    },
+    {
+      "id": "1.4",
+      "titleEn": "Measurements",
+      "titleIs": "Mælingar"
+    },
+    {
+      "id": "1.5",
+      "titleEn": "Measurement Uncertainty, Accuracy, and Precision",
+      "titleIs": "Óvissa mælinga, nákvæmni og áreiðanleiki"
+    },
+    {
+      "id": "1.6",
+      "titleEn": "Mathematical Treatment of Measurement Results",
+      "titleIs": "Stærðfræðileg meðhöndlun mæligagna"
+    }
+  ],
   "status": {
-    "source": { "complete": false, "date": null },
-    "machineTranslation": { "complete": false, "date": null },
-    "tmTranslation": { "complete": false, "date": null },
-    "editorReview": { "complete": false, "date": null, "editor": null },
-    "finalDocx": { "complete": false, "date": null },
-    "publication": { "complete": false, "date": null }
+    "source": {
+      "complete": false,
+      "date": null,
+      "notes": ""
+    },
+    "mtOutput": {
+      "complete": false,
+      "date": null,
+      "notes": ""
+    },
+    "tmAlignment": {
+      "complete": false,
+      "date": null,
+      "notes": ""
+    },
+    "tmAssistedTranslation": {
+      "complete": false,
+      "date": null,
+      "notes": ""
+    },
+    "editorialPass1": {
+      "complete": false,
+      "date": null,
+      "editor": null,
+      "notes": ""
+    },
+    "faithfulSaved": {
+      "complete": false,
+      "date": null,
+      "location": "03-faithful/docx/ch01/",
+      "notes": ""
+    },
+    "tmUpdated": {
+      "complete": false,
+      "date": null,
+      "tmxVersion": null,
+      "notes": ""
+    },
+    "editorialPass2": {
+      "complete": false,
+      "date": null,
+      "editor": null,
+      "notes": ""
+    },
+    "localizedSaved": {
+      "complete": false,
+      "date": null,
+      "location": "04-localized/docx/ch01/",
+      "notes": ""
+    },
+    "localizationLogComplete": {
+      "complete": false,
+      "date": null,
+      "location": "04-localized/localization-logs/ch01-log.md",
+      "notes": ""
+    },
+    "markdownConverted": {
+      "complete": false,
+      "date": null,
+      "notes": ""
+    },
+    "publication": {
+      "complete": false,
+      "date": null,
+      "location": "05-publication/chapters/",
+      "notes": ""
+    }
+  },
+  "localizationLog": "04-localized/localization-logs/ch01-log.md",
+  "qualityMetrics": {
+    "pass1EditsCount": null,
+    "pass2ChangesCount": null,
+    "unitConversions": null,
+    "culturalAdaptations": null,
+    "addedExercises": null
   },
   "notes": ""
 }
