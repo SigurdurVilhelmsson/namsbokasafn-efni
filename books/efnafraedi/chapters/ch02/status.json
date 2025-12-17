@@ -1,0 +1,38 @@
+{
+  "chapter": 2,
+  "titleEn": "Atoms, Molecules, and Ions",
+  "titleIs": "Atóm, sameindir og jónir",
+  "sections": [
+    { "id": "2.1", "titleEn": "Early Ideas in Atomic Theory", "titleIs": "TBD" },
+    { "id": "2.2", "titleEn": "Evolution of Atomic Theory", "titleIs": "TBD" },
+    { "id": "2.3", "titleEn": "Atomic Structure and Symbolism", "titleIs": "TBD" },
+    { "id": "2.4", "titleEn": "Chemical Formulas", "titleIs": "TBD" },
+    { "id": "2.5", "titleEn": "The Periodic Table", "titleIs": "TBD" },
+    { "id": "2.6", "titleEn": "Ionic and Molecular Compounds", "titleIs": "TBD" },
+    { "id": "2.7", "titleEn": "Chemical Nomenclature", "titleIs": "TBD" }
+  ],
+  "status": {
+    "source": { "complete": true, "date": "2024-11-01" },
+    "mtOutput": { "complete": true, "date": "2024-11-01" },
+    "matecat": { "complete": true, "date": "2024-11-20" },
+    "editorialPass1": {
+      "complete": false,
+      "inProgress": true,
+      "editor": "[FÁ Teacher]"
+    },
+    "tmUpdated": { "complete": false },
+    "editorialPass2": { "complete": false },
+    "publication": {
+      "complete": true,
+      "date": "2024-11-01",
+      "version": "ai-preview",
+      "notes": "AI translation published for testing"
+    }
+  },
+  "images": {
+    "total": null,
+    "translated": 0,
+    "status": "not-started"
+  },
+  "notes": "Pass 1 in progress with FÁ teacher."
+}
