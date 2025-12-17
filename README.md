@@ -4,12 +4,12 @@
 
 ## Um verkefnið
 
-Námsbókasafn er verkefni sem miðar að því að gera hágæða háskólakennslubækur aðgengilegar íslenskum nemendum. Við þýðum opnar kennslubækur frá [OpenStax](https://openstax.org/) og aðlögum þær að íslenskum aðstæðum.
+Námsbókasafn er verkefni sem miðar að því að gera hágæða námsbækur á íslensku aðgengilegar öllum. Við þýðum opnar kennslubækur frá [OpenStax](https://openstax.org/) og aðlögum þær að íslenskum aðstæðum.
 
-Verkefnið framleiðir þrenns konar verðmæt efni:
-1. **Trúa þýðingu** - mannyfirfarin þýðing sem endurspeglar frumtextann nákvæmlega
-2. **Þýðingaminni** - mannyfirfarið EN↔IS samhliða textasafn
-3. **Staðfærða útgáfu** - aðlöguð að íslenskum aðstæðum með SI einingum og íslenskum dæmum
+Afurðir verkefnisins eru þrenns konar:
+1. **Nákvæmar þýðingar** - prófarkalesnar þýðingar sem endurspegla frumtextann nákvæmlega
+2. **Þýðingaminni** - prófarkalesið EN↔IS parað textasafn
+3. **Staðfærð útgáfa** - aðlöguð að íslenskum aðstæðum með SI einingum, íslenskum dæmum og viðbótum eftir þörfum
 
 ## Bækur
 
@@ -20,15 +20,15 @@ Verkefnið framleiðir þrenns konar verðmæt efni:
 
 ## Verkflæði
 
-Þýðingarferlið felur í sér 8 skref með tveimur ritstjórnarumferðum:
+Þýðingarferlið felur í sér 8 skref með tveimur umferðum yfirlestrar:
 
 ```
 1. Undirbúningur frumtexta    → Sækja .docx frá OpenStax
 2. Vélþýðing                  → Þýða á malstadur.is
-3. Þýðingaminni               → Samhliðasetja í Matecat
-4. TM-studd þýðing            → Þýða sniðinn texta
-5. Ritstjórn 1 - Málfarsrýni  → Trú þýðing (VISTUÐ)
-6. Uppfæra þýðingaminni       → Mannyfirfarið TM (VISTUÐ)
+3. Þýðingaminni               → Pörun EN/IS texta í Matecat
+4. TM-studd þýðing            → Þýða paraðan texta
+5. Ritstjórn 1 - Málfarsrýni  → Prófarkalesin þýðing (VISTUÐ)
+6. Uppfæra þýðingaminni       → Prófarkalesið TM (VISTAÐ)
 7. Ritstjórn 2 - Staðfærsla   → SI einingar, íslensk dæmi
 8. Útgáfa                     → Umbreyta í .md og birta
 ```
