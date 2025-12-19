@@ -42,8 +42,8 @@ books/
 └── efnafraedi/
     ├── 01-source/           # Frumtexti frá OpenStax
     ├── 02-mt-output/        # Vélþýðing (til viðmiðunar)
-    ├── 03-faithful/         # Trú þýðing eftir ritstjórn 1
-    ├── 04-localized/        # Staðfærð útgáfa eftir ritstjórn 2
+    ├── 03-faithful/         # Nákvæm þýðing eftir 1. yfirlestur
+    ├── 04-localized/        # Staðfærð útgáfa eftir 2. yfirlestur
     ├── 05-publication/      # Útgefin .md skjöl
     ├── tm/                  # Þýðingaminni (.tmx)
     └── glossary/            # Hugtakasafn
@@ -121,7 +121,7 @@ All assets are released under **CC BY 4.0** license.
 
 When using these assets, please attribute:
 ```
-Icelandic translation by Sigurður E. Vilhelmsson
+Icelandic translation managed by Sigurður E. Vilhelmsson
 Original: [Book Title], OpenStax, Rice University
 License: CC BY 4.0
 ```
