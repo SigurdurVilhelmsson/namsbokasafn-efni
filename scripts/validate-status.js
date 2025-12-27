@@ -15,44 +15,107 @@ const booksDir = path.join(__dirname, '..', 'books');
 const schemaPath = path.join(__dirname, '..', 'schemas', 'chapter-status.schema.json');
 
 // Simple JSON Schema validator (basic checks without external dependencies)
+
+/**
+ * Get the JSON Schema type of a value
+ */
+function getSchemaType(data) {
+  if (data === null) return 'null';
+  if (Array.isArray(data)) return 'array';
+  if (typeof data === 'number') {
+    return Number.isInteger(data) ? 'integer' : 'number';
+  }
+  return typeof data;
+}
+
+/**
+ * Check if actual type matches expected schema types
+ */
+function checkType(data, schema, dataPath) {
+  if (!schema.type) return [];
+
+  const types = Array.isArray(schema.type) ? schema.type : [schema.type];
+  let actualType = getSchemaType(data);
+
+  // Allow integer where number is expected
+  if (types.includes('number') && actualType === 'integer') {
+    actualType = 'number';
+  }
+
+  if (!types.includes(actualType)) {
+    return [`${dataPath}: expected ${types.join(' or ')}, got ${actualType}`];
+  }
+  return [];
+}
+
+/**
+ * Check required properties on an object
+ */
+function checkRequired(data, schema, dataPath) {
+  if (!schema.required || typeof data !== 'object' || data === null) return [];
+
+  const errors = [];
+  for (const prop of schema.required) {
+    if (!(prop in data)) {
+      errors.push(`${dataPath}: missing required property "${prop}"`);
+    }
+  }
+  return errors;
+}
+
+/**
+ * Check number constraints (minimum)
+ */
+function checkNumberConstraints(data, schema, dataPath) {
+  if (schema.minimum === undefined || typeof data !== 'number') return [];
+
+  if (data < schema.minimum) {
+    return [`${dataPath}: value ${data} is less than minimum ${schema.minimum}`];
+  }
+  return [];
+}
+
+/**
+ * Check string constraints (minLength, pattern)
+ */
+function checkStringConstraints(data, schema, dataPath) {
+  if (typeof data !== 'string') return [];
+
+  const errors = [];
+  if (schema.minLength !== undefined && data.length < schema.minLength) {
+    errors.push(`${dataPath}: string length ${data.length} is less than minLength ${schema.minLength}`);
+  }
+  if (schema.pattern && !new RegExp(schema.pattern).test(data)) {
+    errors.push(`${dataPath}: string "${data}" does not match pattern ${schema.pattern}`);
+  }
+  return errors;
+}
+
+/**
+ * Check enum constraint
+ */
+function checkEnum(data, schema, dataPath) {
+  if (!schema.enum) return [];
+
+  if (!schema.enum.includes(data)) {
+    return [`${dataPath}: value must be one of: ${schema.enum.join(', ')}`];
+  }
+  return [];
+}
+
+/**
+ * Validate data against a JSON Schema
+ */
 function validateAgainstSchema(data, schema, dataPath = '') {
   const errors = [];
 
-  // Check type
-  if (schema.type) {
-    const types = Array.isArray(schema.type) ? schema.type : [schema.type];
-    let actualType;
-    if (data === null) {
-      actualType = 'null';
-    } else if (Array.isArray(data)) {
-      actualType = 'array';
-    } else if (typeof data === 'number') {
-      // In JSON Schema, integer is a subset of number
-      actualType = Number.isInteger(data) ? 'integer' : 'number';
-      // Allow integer where number is expected
-      if (types.includes('number') && actualType === 'integer') {
-        actualType = 'number';
-      }
-    } else {
-      actualType = typeof data;
-    }
+  // Type check (returns early if type mismatch)
+  const typeErrors = checkType(data, schema, dataPath);
+  if (typeErrors.length > 0) return typeErrors;
 
-    if (!types.includes(actualType)) {
-      errors.push(`${dataPath}: expected ${types.join(' or ')}, got ${actualType}`);
-      return errors;
-    }
-  }
+  // Object validations
+  errors.push(...checkRequired(data, schema, dataPath));
 
-  // Check required properties
-  if (schema.required && typeof data === 'object' && data !== null) {
-    for (const prop of schema.required) {
-      if (!(prop in data)) {
-        errors.push(`${dataPath}: missing required property "${prop}"`);
-      }
-    }
-  }
-
-  // Check properties
   if (schema.properties && typeof data === 'object' && data !== null) {
     for (const [key, propSchema] of Object.entries(schema.properties)) {
       if (key in data) {
@@ -61,7 +124,7 @@ function validateAgainstSchema(data, schema, dataPath = '') {
     }
   }
 
-  // Check array items
+  // Array validations
   if (schema.items && Array.isArray(data)) {
     if (schema.minItems && data.length < schema.minItems) {
       errors.push(`${dataPath}: array must have at least ${schema.minItems} items`);
@@ -71,32 +134,10 @@ function validateAgainstSchema(data, schema, dataPath = '') {
     });
   }
 
-  // Check minimum
-  if (schema.minimum !== undefined && typeof data === 'number') {
-    if (data < schema.minimum) {
-      errors.push(`${dataPath}: value ${data} is less than minimum ${schema.minimum}`);
-    }
-  }
-
-  // Check minLength
-  if (schema.minLength !== undefined && typeof data === 'string') {
-    if (data.length < schema.minLength) {
-      errors.push(`${dataPath}: string length ${data.length} is less than minLength ${schema.minLength}`);
-    }
-  }
-
-  // Check pattern
-  if (schema.pattern && typeof data === 'string') {
-    const regex = new RegExp(schema.pattern);
-    if (!regex.test(data)) {
-      errors.push(`${dataPath}: string "${data}" does not match pattern ${schema.pattern}`);
-    }
-  }
-
-  // Check enum
-  if (schema.enum && !schema.enum.includes(data)) {
-    errors.push(`${dataPath}: value must be one of: ${schema.enum.join(', ')}`);
-  }
+  // Primitive validations
+  errors.push(...checkNumberConstraints(data, schema, dataPath));
+  errors.push(...checkStringConstraints(data, schema, dataPath));
+  errors.push(...checkEnum(data, schema, dataPath));
 
   return errors;
 }

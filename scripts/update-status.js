@@ -62,6 +62,36 @@ const VALID_STAGES = [
 
 const VALID_STATUSES = ['complete', 'in-progress', 'pending', 'not-started'];
 
+// Status transition definitions
+const STATUS_TRANSITIONS = {
+  'complete': (stageData, today) => ({
+    ...stageData,
+    complete: true,
+    date: today,
+    inProgress: false,
+    pending: false
+  }),
+  'in-progress': (stageData) => ({
+    ...stageData,
+    complete: false,
+    inProgress: true,
+    pending: false
+  }),
+  'pending': (stageData) => ({
+    ...stageData,
+    complete: false,
+    inProgress: false,
+    pending: true
+  }),
+  'not-started': (stageData) => ({
+    ...stageData,
+    complete: false,
+    date: null,
+    inProgress: false,
+    pending: false
+  })
+};
+
 function printUsage() {
   console.log(`
 Usage: node scripts/update-status.js <book> <chapter> <stage> <status> [options]
@@ -137,28 +167,10 @@ const original = JSON.stringify(data.status[stage], null, 2);
 
 // Update the stage
 const today = new Date().toISOString().split('T')[0];
-const stageData = data.status[stage] || {};
+const currentStageData = data.status[stage] || {};
 
-// Set completion status
-if (status === 'complete') {
-  stageData.complete = true;
-  stageData.date = today;
-  stageData.inProgress = false;
-  stageData.pending = false;
-} else if (status === 'in-progress') {
-  stageData.complete = false;
-  stageData.inProgress = true;
-  stageData.pending = false;
-} else if (status === 'pending') {
-  stageData.complete = false;
-  stageData.inProgress = false;
-  stageData.pending = true;
-} else if (status === 'not-started') {
-  stageData.complete = false;
-  stageData.date = null;
-  stageData.inProgress = false;
-  stageData.pending = false;
-}
+// Apply status transition
+const stageData = STATUS_TRANSITIONS[status](currentStageData, today);
 
 // Apply optional flags
 if (flags.editor && (stage === 'editorialPass1' || stage === 'editorialPass2')) {
