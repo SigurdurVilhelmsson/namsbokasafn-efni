@@ -3,13 +3,13 @@
   "titleEn": "Atoms, Molecules, and Ions",
   "titleIs": "Atóm, sameindir og jónir",
   "sections": [
-    { "id": "2.1", "titleEn": "Early Ideas in Atomic Theory", "titleIs": "TBD" },
-    { "id": "2.2", "titleEn": "Evolution of Atomic Theory", "titleIs": "TBD" },
-    { "id": "2.3", "titleEn": "Atomic Structure and Symbolism", "titleIs": "TBD" },
-    { "id": "2.4", "titleEn": "Chemical Formulas", "titleIs": "TBD" },
-    { "id": "2.5", "titleEn": "The Periodic Table", "titleIs": "TBD" },
-    { "id": "2.6", "titleEn": "Ionic and Molecular Compounds", "titleIs": "TBD" },
-    { "id": "2.7", "titleEn": "Chemical Nomenclature", "titleIs": "TBD" }
+    { "id": "2.1", "titleEn": "Early Ideas in Atomic Theory", "titleIs": "Fyrstu hugmyndir um atómkenninguna" },
+    { "id": "2.2", "titleEn": "Evolution of Atomic Theory", "titleIs": "Þróun atómkenningarinnar" },
+    { "id": "2.3", "titleEn": "Atomic Structure and Symbolism", "titleIs": "Bygging atóma og tákn" },
+    { "id": "2.4", "titleEn": "Chemical Formulas", "titleIs": "Efnaformúlur" },
+    { "id": "2.5", "titleEn": "The Periodic Table", "titleIs": "Lotukerfið" },
+    { "id": "2.6", "titleEn": "Ionic and Molecular Compounds", "titleIs": "Jóna- og sameindaefnasambönd" },
+    { "id": "2.7", "titleEn": "Chemical Nomenclature", "titleIs": "Nafnakerfi efnafræðinnar" }
   ],
   "status": {
     "source": { "complete": true, "date": "2024-11-01" },
