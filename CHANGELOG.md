@@ -6,13 +6,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [0.4.0] - 2025-12-27
+
 ### Added
+- **Status automation tooling**
+  - `scripts/update-status.js` - CLI tool for updating chapter status
+  - `scripts/validate-status.js` - JSON Schema validation for status files
+  - `schemas/chapter-status.schema.json` - JSON Schema for status.json files
+- **GitHub Actions CI/CD**
+  - `.github/workflows/validate.yml` - Automated validation on push/PR
+- **Documentation**
+  - `docs/scripts-guide.md` - Detailed CLI tool usage guide
+  - `docs/schema-reference.md` - JSON Schema field definitions
+  - `docs/cli-quick-reference.md` - Command cheat sheet
+  - `books/liffraedi/STATUS.md` - Biology book status page
+- **Content**
+  - Icelandic section titles for chapters 2, 3, and 4
 - Progress tracking system with status files at multiple levels
   - `CLAUDE.md` - Instructions for Claude Code when working in this repo
   - `STATUS.md` - Overall project status dashboard
   - `books/efnafraedi/STATUS.md` - Detailed Chemistry book tracking
   - `books/efnafraedi/chapters/ch01-21/status.json` - Per-chapter JSON status
-  - `scripts/update-status.js` - Placeholder for status automation
+
+### Changed
+- `templates/chapter-status.json` - Simplified to match actual usage pattern
+- `package.json` - Reorganized scripts (working vs planned)
+- `README.md` - Added documentation links table (bilingual)
+- `.gitignore` - Added `.claude/` directory
+- Refactored `update-status.js` with declarative status transitions
+- Refactored `validate-status.js` with extracted validator functions
+
+### Fixed
+- Stale dates in STATUS.md files (2024 → 2025)
+- Empty table rows in STATUS.md files
+- Broken link to líffræði STATUS.md
 
 ## [0.3.0] - 2025-12-17
 
