@@ -1,0 +1,34 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'books/**/status.json'
+      - 'templates/**'
+      - 'schemas/**'
+      - 'scripts/validate-status.js'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'books/**/status.json'
+      - 'templates/**'
+      - 'schemas/**'
+      - 'scripts/validate-status.js'
+
+jobs:
+  validate-status:
+    name: Validate Status Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate chapter status files
+        run: node scripts/validate-status.js
