@@ -49,6 +49,16 @@ books/
     └── glossary/            # Hugtakasafn
 ```
 
+## Skjölun
+
+| Skjal | Lýsing |
+|-------|--------|
+| [Verkflæði](docs/workflow.md) | 8-skrefa þýðingarferli |
+| [Ritstjórnarleiðbeiningar](docs/editorial-guide.md) | Leiðbeiningar fyrir ritstjóra |
+| [Hugtök](docs/terminology.md) | Hugtakastaðlar og orðasafn |
+| [Skipanir](docs/cli-quick-reference.md) | Flýtileiðbeiningar fyrir skipanir |
+| [Skriftur](docs/scripts-guide.md) | Leiðbeiningar fyrir sjálfvirkni |
+
 ## Að taka þátt
 
 Verkefnið þarf ritstjóra til að yfirfara þýðingar. Sjá [docs/contributing.md](docs/contributing.md) fyrir leiðbeiningar.
@@ -116,6 +126,18 @@ The human-verified TM can be used for:
 - Linguistic research
 
 All assets are released under **CC BY 4.0** license.
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [Workflow](docs/workflow.md) | 8-step translation pipeline |
+| [Editorial Guide](docs/editorial-guide.md) | Instructions for editors |
+| [Terminology](docs/terminology.md) | Terminology standards and glossary |
+| [CLI Quick Reference](docs/cli-quick-reference.md) | Command cheat sheet |
+| [Scripts Guide](docs/scripts-guide.md) | Automation script usage |
+| [Schema Reference](docs/schema-reference.md) | JSON Schema field definitions |
+| [Contributing](docs/contributing.md) | How to participate |
 
 ### Attribution Requirements
 
