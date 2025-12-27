@@ -1,6 +1,6 @@
 # Efnafræði - Translation Status
 
-> Last updated: 2024-12-17
+> Last updated: 2025-12-26
 
 ## Overview
 
@@ -65,5 +65,5 @@
 
 | Date | Chapter | Update |
 |------|---------|--------|
+| 2025-12-26 | All | Technical debt cleanup |
 | 2024-12-17 | All | Progress tracking system created |
-| | | |

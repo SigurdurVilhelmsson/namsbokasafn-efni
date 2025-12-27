@@ -4,6 +4,11 @@
   "description": "Translation workflow and content for Icelandic OpenStax textbooks. Produces faithful translations, human-verified TM, and localized educational content.",
   "main": "index.js",
   "scripts": {
+    "update-status": "node scripts/update-status.js",
+    "validate": "node scripts/validate-status.js"
+  },
+  "_future-scripts": {
+    "_note": "These scripts are planned but not yet implemented. See docs/workflow.md for manual process.",
     "strip-text": "node tools/strip-docx-to-txt.js",
     "convert-md": "node tools/docx-to-md.js",
     "add-frontmatter": "node tools/add-frontmatter.js",

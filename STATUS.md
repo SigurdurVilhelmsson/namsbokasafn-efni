@@ -1,6 +1,6 @@
 # Námsbókasafn - Translation Status
 
-> Last updated: 2024-12-17
+> Last updated: 2025-12-26
 
 ## Active Projects
 
@@ -20,9 +20,9 @@
 
 | Date | Update |
 |------|--------|
+| 2025-12-26 | Technical debt cleanup |
 | 2024-12-17 | Progress tracking system created |
 | 2024-12-17 | Repository structure created |
-| | |
 
 ## Quick Links
 

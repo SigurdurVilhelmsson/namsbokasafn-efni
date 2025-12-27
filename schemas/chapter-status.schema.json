@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://namsbokasafn.is/schemas/chapter-status.json",
+  "title": "Chapter Status",
+  "description": "Tracks translation workflow progress for a single chapter",
+  "type": "object",
+  "required": ["chapter", "titleEn", "titleIs", "sections", "status"],
+  "properties": {
+    "chapter": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Chapter number"
+    },
+    "titleEn": {
+      "type": "string",
+      "minLength": 1,
+      "description": "English chapter title"
+    },
+    "titleIs": {
+      "type": ["string", "null"],
+      "description": "Icelandic chapter title (null if not yet translated)"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "titleEn", "titleIs"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+$",
+            "description": "Section ID (e.g., '1.1', '2.3')"
+          },
+          "titleEn": {
+            "type": "string",
+            "description": "English section title"
+          },
+          "titleIs": {
+            "type": "string",
+            "description": "Icelandic section title (use 'TBD' if not yet translated)"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "required": ["source", "mtOutput", "matecat", "editorialPass1", "tmUpdated", "editorialPass2", "publication"],
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "Source material from OpenStax"
+        },
+        "mtOutput": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "Machine translation output from malstadur.is"
+        },
+        "matecat": {
+          "$ref": "#/$defs/stageStatusWithProgress",
+          "description": "TM alignment in Matecat"
+        },
+        "editorialPass1": {
+          "$ref": "#/$defs/editorialStageStatus",
+          "description": "Linguistic review (Pass 1)"
+        },
+        "tmUpdated": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "Translation memory updated with Pass 1 edits"
+        },
+        "editorialPass2": {
+          "$ref": "#/$defs/editorialStageStatus",
+          "description": "Localization review (Pass 2)"
+        },
+        "publication": {
+          "$ref": "#/$defs/publicationStatus",
+          "description": "Published to web"
+        }
+      }
+    },
+    "images": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Total number of images requiring translation"
+        },
+        "translated": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of images translated"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["not-started", "in-progress", "complete"],
+          "description": "Image translation status"
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "General notes about this chapter"
+    }
+  },
+  "$defs": {
+    "stageStatus": {
+      "type": "object",
+      "required": ["complete"],
+      "properties": {
+        "complete": {
+          "type": "boolean"
+        },
+        "date": {
+          "type": ["string", "null"],
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Completion date (YYYY-MM-DD)"
+        }
+      }
+    },
+    "stageStatusWithProgress": {
+      "type": "object",
+      "required": ["complete"],
+      "properties": {
+        "complete": {
+          "type": "boolean"
+        },
+        "date": {
+          "type": ["string", "null"],
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "inProgress": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "editorialStageStatus": {
+      "type": "object",
+      "required": ["complete"],
+      "properties": {
+        "complete": {
+          "type": "boolean"
+        },
+        "date": {
+          "type": ["string", "null"],
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "editor": {
+          "type": ["string", "null"],
+          "description": "Name of the editor"
+        },
+        "inProgress": {
+          "type": "boolean"
+        },
+        "pending": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "publicationStatus": {
+      "type": "object",
+      "required": ["complete"],
+      "properties": {
+        "complete": {
+          "type": "boolean"
+        },
+        "date": {
+          "type": ["string", "null"],
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "version": {
+          "type": ["string", "null"],
+          "description": "Version identifier (e.g., 'ai-preview', 'v1.0')"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
