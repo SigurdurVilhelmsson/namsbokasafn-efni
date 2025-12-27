@@ -3,11 +3,11 @@
   "titleEn": "Stoichiometry of Chemical Reactions",
   "titleIs": "Magn- og efnareikningar",
   "sections": [
-    { "id": "4.1", "titleEn": "Writing and Balancing Chemical Equations", "titleIs": "TBD" },
-    { "id": "4.2", "titleEn": "Classifying Chemical Reactions", "titleIs": "TBD" },
-    { "id": "4.3", "titleEn": "Reaction Stoichiometry", "titleIs": "TBD" },
-    { "id": "4.4", "titleEn": "Reaction Yields", "titleIs": "TBD" },
-    { "id": "4.5", "titleEn": "Quantitative Chemical Analysis", "titleIs": "TBD" }
+    { "id": "4.1", "titleEn": "Writing and Balancing Chemical Equations", "titleIs": "Ritun og jöfnun efnajafna" },
+    { "id": "4.2", "titleEn": "Classifying Chemical Reactions", "titleIs": "Flokkun efnahvarfa" },
+    { "id": "4.3", "titleEn": "Reaction Stoichiometry", "titleIs": "Magn- og efnareikningar í efnahvörfum" },
+    { "id": "4.4", "titleEn": "Reaction Yields", "titleIs": "Afköst efnahvarfa" },
+    { "id": "4.5", "titleEn": "Quantitative Chemical Analysis", "titleIs": "Magngreining í efnafræði" }
   ],
   "status": {
     "source": { "complete": true, "date": "2024-11-01" },
