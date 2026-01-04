@@ -1,0 +1,21 @@
+{
+  "project": "namsbokasafn-efni",
+  "description": "Icelandic OpenStax textbook translations",
+  "permissions": {
+    "allow_read": ["**/*"],
+    "allow_write": [
+      ".claude/**",
+      "books/**/03-faithful/**",
+      "books/**/04-localized/**",
+      "books/**/05-publication/**",
+      "books/**/chapters/**/files.json",
+      "logs/**",
+      "glossary/**"
+    ],
+    "never_write": [
+      "books/**/01-source/**",
+      "books/**/02-mt-output/**",
+      "books/**/tm/**"
+    ]
+  }
+}
