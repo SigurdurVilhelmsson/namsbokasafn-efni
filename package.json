@@ -5,16 +5,21 @@
   "main": "index.js",
   "scripts": {
     "update-status": "node scripts/update-status.js",
-    "validate": "node scripts/validate-status.js"
+    "validate": "node scripts/validate-status.js",
+    "convert-md": "node tools/docx-to-md.js",
+    "add-frontmatter": "node tools/add-frontmatter.js",
+    "process-chapter": "node tools/process-chapter.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "mammoth": "^1.6.0",
+    "turndown": "^7.2.0"
   },
   "_future-scripts": {
     "_note": "These scripts are planned but not yet implemented. See docs/workflow.md for manual process.",
     "strip-text": "node tools/strip-docx-to-txt.js",
-    "convert-md": "node tools/docx-to-md.js",
-    "add-frontmatter": "node tools/add-frontmatter.js",
     "export-parallel": "node tools/export-parallel-corpus.js",
-    "process-chapter": "node tools/process-chapter.js",
-    "validate": "node tools/validate-chapter.js"
+    "validate-chapter": "node tools/validate-chapter.js"
   },
   "keywords": [
     "translation",
