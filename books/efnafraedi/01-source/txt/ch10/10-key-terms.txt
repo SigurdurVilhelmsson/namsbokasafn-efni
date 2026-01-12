@@ -1,0 +1,113 @@
+﻿Key Terms
+adhesive force
+force of attraction between molecules of different chemical identities
+amorphous solid
+(also, noncrystalline solid) solid in which the particles lack an ordered internal structure
+body-centered cubic (BCC) solid
+crystalline structure that has a cubic unit cell with lattice points at the corners and in the center of the cell
+body-centered cubic unit cell
+simplest repeating unit of a body-centered cubic crystal; it is a cube containing lattice points at each corner and in the center of the cube
+boiling point
+temperature at which the vapor pressure of a liquid equals the pressure of the gas above it
+Bragg equation
+equation that relates the angles at which X-rays are diffracted by the atoms within a crystal
+capillary action
+flow of liquid within a porous material due to the attraction of the liquid molecules to the surface of the material and to other liquid molecules
+Clausius-Clapeyron equation
+mathematical relationship between the temperature, vapor pressure, and enthalpy of vaporization for a substance
+cohesive force
+force of attraction between identical molecules
+condensation
+change from a gaseous to a liquid state
+coordination number
+number of atoms closest to any given atom in a crystal or to the central metal atom in a complex
+covalent network solid
+solid whose particles are held together by covalent bonds
+critical point
+temperature and pressure above which a gas cannot be condensed into a liquid
+crystalline solid
+solid in which the particles are arranged in a definite repeating pattern
+cubic closest packing (CCP)
+crystalline structure in which planes of closely packed atoms or ions are stacked as a series of three alternating layers of different relative orientations (ABC)
+deposition
+change from a gaseous state directly to a solid state
+diffraction
+redirection of electromagnetic radiation that occurs when it encounters a physical barrier of appropriate dimensions
+dipole-dipole attraction
+intermolecular attraction between two permanent dipoles
+dispersion force
+(also, London dispersion force) attraction between two rapidly fluctuating, temporary dipoles; significant only when particles are very close together
+dynamic equilibrium
+state of a system in which reciprocal processes are occurring at equal rates
+face-centered cubic (FCC) solid
+crystalline structure consisting of a cubic unit cell with lattice points on the corners and in the center of each face
+face-centered cubic unit cell
+simplest repeating unit of a face-centered cubic crystal; it is a cube containing lattice points at each corner and in the center of each face
+freezing
+change from a liquid state to a solid state
+freezing point
+temperature at which the solid and liquid phases of a substance are in equilibrium; see also melting point
+hexagonal closest packing (HCP)
+crystalline structure in which close packed layers of atoms or ions are stacked as a series of two alternating layers of different relative orientations (AB)
+hole
+(also, interstice) space between atoms within a crystal
+hydrogen bonding
+occurs when exceptionally strong dipoles attract; bonding that exists when hydrogen is bonded to one of the three most electronegative elements: F, O, or N
+induced dipole
+temporary dipole formed when the electrons of an atom or molecule are distorted by the instantaneous dipole of a neighboring atom or molecule
+instantaneous dipole
+temporary dipole that occurs for a brief moment in time when the electrons of an atom or molecule are distributed asymmetrically
+intermolecular force
+noncovalent attractive force between atoms, molecules, and/or ions
+interstitial sites
+spaces between the regular particle positions in any array of atoms or ions
+ionic solid
+solid composed of positive and negative ions held together by strong electrostatic attractions
+isomorphous
+possessing the same crystalline structure
+melting
+change from a solid state to a liquid state
+melting point
+temperature at which the solid and liquid phases of a substance are in equilibrium; see also freezing point
+metallic solid
+solid composed of metal atoms
+molecular solid
+solid composed of neutral molecules held together by intermolecular forces of attraction
+normal boiling point
+temperature at which a liquid’s vapor pressure equals 1 atm (760 torr)
+octahedral hole
+open space in a crystal at the center of six particles located at the corners of an octahedron
+phase diagram
+pressure-temperature graph summarizing conditions under which the phases of a substance can exist
+polarizability
+measure of the ability of a charge to distort a molecule’s charge distribution (electron cloud)
+simple cubic structure
+crystalline structure with a cubic unit cell with lattice points only at the corners
+simple cubic unit cell
+(also, primitive cubic unit cell) unit cell in the simple cubic structure
+space lattice
+all points within a crystal that have identical environments
+sublimation
+change from solid state directly to gaseous state
+supercritical fluid
+substance at a temperature and pressure higher than its critical point; exhibits properties intermediate between those of gaseous and liquid states
+surface tension
+energy required to increase the area, or length, of a liquid surface by a given amount
+tetrahedral hole
+tetrahedral space formed by four atoms or ions in a crystal
+triple point
+temperature and pressure at which three phases of a substance are in equilibrium
+unit cell
+smallest portion of a space lattice that is repeated in three dimensions to form the entire lattice
+vacancy
+defect that occurs when a position that should contain an atom or ion is vacant
+van der Waals force
+attractive or repulsive force between molecules, including dipole-dipole, dipole-induced dipole, and London dispersion forces; does not include forces due to covalent or ionic bonding, or the attraction between ions and molecules
+vapor pressure
+(also, equilibrium vapor pressure) pressure exerted by a vapor in equilibrium with a solid or a liquid at a given temperature
+vaporization
+change from liquid state to gaseous state
+viscosity
+measure of a liquid’s resistance to flow
+X-ray crystallography
+experimental technique for determining distances between atoms in a crystal by measuring the angles at which X-rays are diffracted when passing through the crystal
