@@ -31,3 +31,11 @@ npm-debug.log*
 # Build output
 dist/
 build/
+
+# Large files exceeding GitHub's 100MB limit
+books/efnafraedi/01-source/images-editable/ch10/CNX_Chem_10_05_MolSolids.eps
+books/efnafraedi/01-source/images-editable/ch10/CNX_Chem_10_02_Wicking.eps
+books/efnafraedi/01-source/images-editable/ch12/CNX_Chem_12_07_HetCats.eps
+books/efnafraedi/01-source/images-editable/ch18/CNX_Chem_18_03_CO2vsSiO2.eps
+books/efnafraedi/01-source/images-editable/ch18/CNX_Chem_18_03_CO2vsSiO2_TEMPLATE.eps
+books/efnafraedi/01-source/images-editable/ch21/CNX_Chem_21_04_ChnReact1.pdf
