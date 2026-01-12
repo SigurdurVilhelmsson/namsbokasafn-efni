@@ -1,0 +1,19 @@
+{
+  "id": "appendices",
+  "titleEn": "Appendices",
+  "titleIs": "Viðaukar",
+  "sections": [],
+  "status": {
+    "source": { "complete": false },
+    "mtOutput": { "complete": false },
+    "matecat": { "complete": false },
+    "editorialPass1": { "complete": false },
+    "tmUpdated": { "complete": false },
+    "editorialPass2": { "complete": false },
+    "publication": {
+      "mtPreview": { "complete": false },
+      "faithful": { "complete": false }
+    }
+  },
+  "notes": "Appendices for Chemistry 2e textbook"
+}
