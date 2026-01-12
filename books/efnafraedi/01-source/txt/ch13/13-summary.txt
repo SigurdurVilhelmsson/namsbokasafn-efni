@@ -1,0 +1,14 @@
+﻿Summary
+http://openstax.org/books/chemistry-2e/pages/13-1-chemical-equilibria
+13.1   Chemical Equilibria
+A reversible reaction is at equilibrium when the forward and reverse processes occur at equal rates. Chemical equilibria are dynamic processes characterized by constant amounts of reactant and product species.
+http://openstax.org/books/chemistry-2e/pages/13-2-equilibrium-constants
+13.2   Equilibrium Constants
+The composition of a reaction mixture may be represented by a mathematical function known as the reaction quotient, Q. For a reaction at equilibrium, the composition is constant, and Q is called the equilibrium constant, K.
+A homogeneous equilibrium is an equilibrium in which all components are in the same phase. A heterogeneous equilibrium is an equilibrium in which components are in two or more phases.
+http://openstax.org/books/chemistry-2e/pages/13-3-shifting-equilibria-le-chateliers-principle
+13.3   Shifting Equilibria: Le Châtelier’s Principle
+Systems at equilibrium can be disturbed by changes to temperature, concentration, and, in some cases, volume and pressure. The system’s response to these disturbances is described by Le Châtelier’s principle: An equilibrium system subjected to a disturbance will shift in a way that counters the disturbance and re-establishes equilibrium. A catalyst will increase the rate of both the forward and reverse reactions of a reversible process, increasing the rate at which equilibrium is reached but not altering the equilibrium mixture’s composition (K does not change).
+http://openstax.org/books/chemistry-2e/pages/13-4-equilibrium-calculations
+13.4   Equilibrium Calculations
+Calculating values for equilibrium constants and/or equilibrium concentrations is of practical benefit to many applications. A mathematical strategy that uses initial concentrations, changes in concentrations, and equilibrium concentrations (and goes by the acronym ICE) is useful for several types of equilibrium calculations.

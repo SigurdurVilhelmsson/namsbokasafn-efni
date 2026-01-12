@@ -1,0 +1,17 @@
+﻿Key Terms
+equilibrium
+state of a reversible reaction in which the forward and reverse processes occur at equal rates
+equilibrium constant (K)
+value of the reaction quotient for a system at equilibrium; may be expressed using concentrations (Kc) or partial pressures (Kp)
+heterogeneous equilibria
+equilibria in which reactants and products occupy two or more different phases
+homogeneous equilibria
+equilibria in which all reactants and products occupy the same phase
+law of mass action
+when a reversible reaction has attained equilibrium at a given temperature, the reaction quotient remains constant
+Le Châtelier’s principle
+an equilibrium subjected to stress will shift in a way to counter the stress and re-establish equilibrium
+reaction quotient (Q)
+mathematical function describing the relative amounts of reactants and products in a reaction mixture; may be expressed in terms of concentrations (Qc) or pressures (Qp)
+reversible reaction
+chemical reaction that can proceed in both the forward and reverse directions under given conditions
