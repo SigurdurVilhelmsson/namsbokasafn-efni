@@ -1,0 +1,132 @@
+﻿Chapter 6
+1. 
+The spectrum consists of colored lines, at least one of which (probably the brightest) is red.
+3. 
+3.15 m
+5. 
+3.233  10−19 J; 2.018 eV
+7. 
+ν = 4.568  1014 s; λ = 656.3 nm; Energy mol−1 = 1.823  105 J mol−1; red
+9. 
+(a) λ = 8.69  10−7 m; E = 2.29  10−19 J; (b) λ = 4.59  10−7 m; E = 4.33  10−19 J; The color of (a) is red; (b) is blue.
+11. 
+E = 9.502  10−15 J; ν = 1.434  1019 s−1
+13. 
+Red: 660 nm; 4.54  1014 Hz; 3.01  10−19 J. Green: 520 nm; 5.77  1014 Hz; 3.82  10−19 J. Blue: 440 nm; 6.81  1014 Hz; 4.51  10−19 J. Somewhat different numbers are also possible.
+15. 
+5.49  1014 s−1; no
+17. 
+Quantized energy means that the electrons can possess only certain discrete energy values; values between those quantized values are not permitted.
+19. 
+
+21. 
+−8.716  10−18 J
+23. 
+−3.405  10−20 J
+25. 
+33.9 Å
+27. 
+1.471  10−17 J
+29. 
+Both involve a relatively heavy nucleus with electrons moving around it, although strictly speaking, the Bohr model works only for one-electron atoms or ions. According to classical mechanics, the Rutherford model predicts a miniature “solar system” with electrons moving about the nucleus in circular or elliptical orbits that are confined to planes. If the requirements of classical electromagnetic theory that electrons in such orbits would emit electromagnetic radiation are ignored, such atoms would be stable, having constant energy and angular momentum, but would not emit any visible light (contrary to observation). If classical electromagnetic theory is applied, then the Rutherford atom would emit electromagnetic radiation of continually increasing frequency (contrary to the observed discrete spectra), thereby losing energy until the atom collapsed in an absurdly short time (contrary to the observed long-term stability of atoms). The Bohr model retains the classical mechanics view of circular orbits confined to planes having constant energy and angular momentum, but restricts these to quantized values dependent on a single quantum number, n. The orbiting electron in Bohr’s model is assumed not to emit any electromagnetic radiation while moving about the nucleus in its stationary orbits, but the atom can emit or absorb electromagnetic radiation when the electron changes from one orbit to another. Because of the quantized orbits, such “quantum jumps” will produce discrete spectra, in agreement with observations.
+31. 
+Both models have a central positively charged nucleus with electrons moving about the nucleus in accordance with the Coulomb electrostatic potential. The Bohr model assumes that the electrons move in circular orbits that have quantized energies, angular momentum, and radii that are specified by a single quantum number, n = 1, 2, 3, …, but this quantization is an ad hoc assumption made by Bohr to incorporate quantization into an essentially classical mechanics description of the atom. Bohr also assumed that electrons orbiting the nucleus normally do not emit or absorb electromagnetic radiation, but do so when the electron switches to a different orbit. In the quantum mechanical model, the electrons do not move in precise orbits (such orbits violate the Heisenberg uncertainty principle) and, instead, a probabilistic interpretation of the electron’s position at any given instant is used, with a mathematical function ψ called a wavefunction that can be used to determine the electron’s spatial probability distribution. These wavefunctions, or orbitals, are three-dimensional stationary waves that can be specified by three quantum numbers that arise naturally from their underlying mathematics (no ad hoc assumptions required): the principal quantum number, n (the same one used by Bohr), which specifies shells such that orbitals having the same n all have the same energy and approximately the same spatial extent; the angular momentum quantum number l, which is a measure of the orbital’s angular momentum and corresponds to the orbitals’ general shapes, as well as specifying subshells such that orbitals having the same l (and n) all have the same energy; and the orientation quantum number m, which is a measure of the z component of the angular momentum and corresponds to the orientations of the orbitals. The Bohr model gives the same expression for the energy as the quantum mechanical expression and, hence, both properly account for hydrogen’s discrete spectrum (an example of getting the right answers for the wrong reasons, something that many chemistry students can sympathize with), but gives the wrong expression for the angular momentum (Bohr orbits necessarily all have non-zero angular momentum, but some quantum orbitals [s orbitals] can have zero angular momentum).
+33. 
+n determines the general range for the value of energy and the probable distances that the electron can be from the nucleus. l determines the shape of the orbital. m1 determines the orientation of the orbitals of the same l value with respect to one another. ms determines the spin of an electron.
+35. 
+(a) 2p; (b) 4d; (c) 6s
+37. 
+(a) 3d; (b) 1s; (c) 4f
+39. 
+  
+41. 
+(a) x. 2, y. 2, z. 2; (b) x. 1, y. 3, z. 0; (c) x. 4 0 0  y. 2 1 0  z. 3 2 0  (d) x. 1, y. 2, z. 3; (e) x. l = 0, ml = 0, y. l = 1, ml = –1, 0, or +1, z. l = 2, ml = –2, –1, 0, +1, +2
+43. 
+12
+45. 
+n
+l
+ml
+s
+4
+0
+0
+
+4
+0
+0
+
+4
+1
+−1
+
+4
+1
+0
+
+4
+1
++1
+
+4
+1
+−1
+
+47. 
+For example, Na+: 1s22s22p6; Ca2+: 1s22s22p63s23p6; Sn2+: 1s22s22p63s23p63d104s24p64d105s2; F–: 1s22s22p6; O2–: 1s22s22p6; Cl–: 1s22s22p63s23p6.
+49. 
+(a) 1s22s22p3; (b) 1s22s22p63s23p2; (c) 1s22s22p63s23p64s23d6; (d) 1s22s22p63s23p64s23d104p65s24d105p4; (e) 1s22s22p63s23p64s23d104p65s24d105p66s24f9
+51. 
+The charge on the ion.
+53. 
+(a)
+
+  
+
+ (b)
+
+  
+
+ (c)
+
+  
+
+ (d)
+
+  
+
+ (e)
+
+  
+55. 
+Zr
+57. 
+Rb+, Se2−
+59. 
+Although both (b) and (c) are correct, (e) encompasses both and is the best answer.
+61. 
+K
+63. 
+1s22s22p63s23p64s23d104p65s24d105p66s24f145d10
+65. 
+Co has 27 protons, 27 electrons, and 33 neutrons: 1s22s22p63s23p64s23d7. I has 53 protons, 53 electrons, and 78 neutrons: 1s22s22p63s23p63d104s24p64d105s25p5.
+67. 
+Cl
+69. 
+O
+71. 
+Rb < Li < N < F
+73. 
+15 (5A)
+75. 
+Mg < Ca < Rb < Cs
+77. 
+Si4+ < Al3+ < Ca2+ < K+
+79. 
+Se, As−
+81. 
+Mg2+ < K+ < Br– < As3–
+83. 
+O, IE1
+85. 
+Ra

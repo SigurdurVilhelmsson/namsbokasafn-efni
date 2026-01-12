@@ -1,0 +1,7 @@
+﻿Key Equations
+c = λν
+ where h = 6.626  10−34 J s
+
+
+
+
