@@ -4,13 +4,34 @@
   "titleIs": null,
   "sections": [],
   "status": {
-    "source": { "complete": true, "date": "2024-11-01", "notes": "Only specific subchapters TBD by teacher" },
-    "mtOutput": { "complete": true, "date": "2024-11-01" },
-    "matecat": { "complete": false, "pending": true, "targetDate": "2025-02" },
-    "editorialPass1": { "complete": false },
-    "tmUpdated": { "complete": false },
-    "editorialPass2": { "complete": false },
-    "publication": { "complete": false }
+    "source": {
+      "complete": true,
+      "date": "2026-01-12",
+      "notes": "Only specific subchapters TBD by teacher",
+      "inProgress": false,
+      "pending": false
+    },
+    "mtOutput": {
+      "complete": true,
+      "date": "2024-11-01"
+    },
+    "matecat": {
+      "complete": false,
+      "pending": true,
+      "targetDate": "2025-02"
+    },
+    "editorialPass1": {
+      "complete": false
+    },
+    "tmUpdated": {
+      "complete": false
+    },
+    "editorialPass2": {
+      "complete": false
+    },
+    "publication": {
+      "complete": false
+    }
   },
   "images": {
     "total": null,

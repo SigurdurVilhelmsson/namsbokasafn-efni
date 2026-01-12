@@ -1,46 +1,16 @@
 # File Inventory - Efnafræði
 
-> Generated: 2026-01-12
+> Last updated: 2026-01-12
 > Purpose: Track which files have been uploaded vs what's needed
 
 ## Summary
 
 | Category | Expected | Uploaded | Missing |
 |----------|----------|----------|---------|
-| Source .docx (ch 1-21) | 21 chapters | 0 | 21 |
-| Source .txt (ch 1-21) | 21 chapters | 0 | 21 |
+| Source .docx (ch 1-21) | 21 chapters | 21 | 0 |
+| Source .txt (ch 1-21) | 21 chapters | 21 | 0 |
 | MT Output (ch 1-4) | 4 chapters | 0 | 4 |
 | Faithful (ch 1) | 1 chapter | 0 | 1 |
-
-## Folder Structure (Ready for Upload)
-
-```
-01-source/
-├── docx/
-│   ├── ch01/    # Upload: OpenStax .docx files for chapter 1
-│   ├── ch02/    # Upload: OpenStax .docx files for chapter 2
-│   ├── ...
-│   └── ch21/    # Upload: OpenStax .docx files for chapter 21
-└── txt/
-    ├── ch01/    # Upload: Stripped plain text (for MT)
-    ├── ch02/
-    ├── ...
-    └── ch21/
-
-02-mt-output/
-└── docx/
-    ├── ch01/    # Upload: malstadur.is output
-    ├── ch02/    # Upload: malstadur.is output
-    ├── ch03/    # Upload: malstadur.is output
-    └── ch04/    # Upload: malstadur.is output
-
-03-faithful/
-└── docx/
-    ├── ch01/    # Upload: Pass 1 reviewed translation
-    ├── ch02/    # (when Pass 1 complete)
-    ├── ch03/    # (when Pass 1 complete)
-    └── ch04/    # (when Pass 1 complete)
-```
 
 ## Chapter-by-Chapter Status
 
@@ -48,91 +18,64 @@
 
 | Ch | Source .docx | Source .txt | MT Output | Matecat | Pass 1 |
 |----|:------------:|:-----------:|:---------:|:-------:|:------:|
-| 1  | MISSING | MISSING | MISSING | done | done |
-| 2  | MISSING | MISSING | MISSING | done | in progress |
-| 3  | MISSING | MISSING | MISSING | done | pending |
-| 4  | MISSING | MISSING | MISSING | done | not started |
+| 1  | 12 files | 12 files | MISSING | done | done |
+| 2  | 13 files | 13 files | MISSING | done | in progress |
+| 3  | 10 files | 10 files | MISSING | done | pending |
+| 4  | 11 files | 11 files | MISSING | done | not started |
 
 ### Future Chapters (Partial)
 
 | Ch | Source .docx | Source .txt | MT Output | Notes |
 |----|:------------:|:-----------:|:---------:|-------|
-| 7  | MISSING | MISSING | - | Partial chapter, target Feb 2026 |
-| 10 | MISSING | MISSING | - | Partial chapter, target Feb 2026 |
+| 7  | 12 files | 12 files | - | Partial chapter, target Feb 2026 |
+| 10 | 12 files | 12 files | - | Partial chapter, target Feb 2026 |
 
 ### Remaining Chapters (5-6, 8-9, 11-21)
 
 | Ch | Source .docx | Source .txt | MT Output | Notes |
 |----|:------------:|:-----------:|:---------:|-------|
-| 5  | MISSING | MISSING | - | Not started |
-| 6  | MISSING | MISSING | - | Not started |
-| 8  | MISSING | MISSING | - | Not started |
-| 9  | MISSING | MISSING | - | Not started |
-| 11 | MISSING | MISSING | - | Not started |
-| 12 | MISSING | MISSING | - | Not started |
-| 13 | MISSING | MISSING | - | Not started |
-| 14 | MISSING | MISSING | - | Not started |
-| 15 | MISSING | MISSING | - | Not started |
-| 16 | MISSING | MISSING | - | Not started |
-| 17 | MISSING | MISSING | - | Not started |
-| 18 | MISSING | MISSING | - | Not started |
-| 19 | MISSING | MISSING | - | Not started |
-| 20 | MISSING | MISSING | - | Not started |
-| 21 | MISSING | MISSING | - | Not started |
+| 5  | 9 files | 9 files | - | Not started |
+| 6  | 11 files | 11 files | - | Not started |
+| 8  | 10 files | 10 files | - | Not started |
+| 9  | 12 files | 12 files | - | Not started |
+| 11 | 11 files | 11 files | - | Not started |
+| 12 | 13 files | 13 files | - | Not started |
+| 13 | 10 files | 10 files | - | Not started |
+| 14 | 13 files | 13 files | - | Not started |
+| 15 | 9 files | 9 files | - | Not started |
+| 16 | 10 files | 10 files | - | Not started |
+| 17 | 13 files | 13 files | - | Not started |
+| 18 | 17 files | 17 files | - | Not started |
+| 19 | 8 files | 8 files | - | Not started |
+| 20 | 9 files | 9 files | - | Not started |
+| 21 | 12 files | 12 files | - | Not started |
 
-## Expected File Names
+**Totals:** 237 .docx files, 237 .txt files
 
-Based on OpenStax Chemistry 2e structure:
+## Still Needed
 
-### Source Files (per chapter)
+### MT Output (02-mt-output)
 
-```
-01-source/docx/ch{NN}/
-├── {N}.0-introduction.docx    # Chapter intro
-├── {N}.1-{section-name}.docx  # Section files
-├── {N}.2-{section-name}.docx
-├── ...
-├── {N}.{X}-key-terms.docx     # End matter
-├── {N}.{X}-key-equations.docx
-├── {N}.{X}-summary.docx
-└── {N}.{X}-exercises.docx
-```
-
-### MT Output Files
+Chapters 1-4 need MT output from malstadur.is:
 
 ```
-02-mt-output/docx/ch{NN}/
-├── {N}.0-introduction-mt.docx
-├── {N}.1-{section-name}-mt.docx
-├── ...
+02-mt-output/docx/
+├── ch01/    # MISSING - upload malstadur.is output
+├── ch02/    # MISSING - upload malstadur.is output
+├── ch03/    # MISSING - upload malstadur.is output
+└── ch04/    # MISSING - upload malstadur.is output
 ```
 
-## Upload Instructions
+## Change Log
 
-### For Source Files (01-source)
-
-1. Download from OpenStax (requires educator account for .docx)
-2. Place in `01-source/docx/ch{NN}/`
-3. Run text extraction: `node tools/strip-docx-to-txt.js ch{NN}`
-4. Plain text saved to `01-source/txt/ch{NN}/`
-
-### For MT Output (02-mt-output)
-
-1. Upload source .txt to malstadur.is
-2. Download translated .docx
-3. Place in `02-mt-output/docx/ch{NN}/`
-
-### After Upload
-
-Run to update status:
-```bash
-npm run update-status efnafraedi {chapter} source complete
-npm run update-status efnafraedi {chapter} mtOutput complete
-```
+| Date | Change |
+|------|--------|
+| 2026-01-12 | Deleted duplicate `1-4-measurementsv2.docx` from ch01 (was duplicate of `1-4-measurements.docx`) |
+| 2026-01-12 | All source files uploaded (237 .docx, 237 .txt across 21 chapters) |
+| 2026-01-12 | Initial inventory created |
 
 ## Notes
 
-- You mentioned having source files for all 21 chapters locally
-- You mentioned having MT translations for chapters 1-4 locally
-- This inventory will be updated as files are uploaded
-- Use `git status` to see uncommitted uploads
+- Source files uploaded via GitHub web interface
+- MT translations for chapters 1-4 still pending upload
+- Use `git status` to see uncommitted changes

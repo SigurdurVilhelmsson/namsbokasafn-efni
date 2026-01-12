@@ -32,7 +32,9 @@
   "status": {
     "source": {
       "complete": true,
-      "date": "2024-11-01"
+      "date": "2026-01-12",
+      "inProgress": false,
+      "pending": false
     },
     "mtOutput": {
       "complete": true,

@@ -3,22 +3,53 @@
   "titleEn": "Composition of Substances and Solutions",
   "titleIs": "Samsetning efna og lausna",
   "sections": [
-    { "id": "3.1", "titleEn": "Formula Mass and the Mole Concept", "titleIs": "Formúlumassi og mólhugtakið" },
-    { "id": "3.2", "titleEn": "Determining Empirical and Molecular Formulas", "titleIs": "Ákvörðun empirískra formúla og sameindaformúla" },
-    { "id": "3.3", "titleEn": "Molarity", "titleIs": "Mólstyrkur" },
-    { "id": "3.4", "titleEn": "Other Units for Solution Concentrations", "titleIs": "Aðrar einingar fyrir styrk lausna" }
+    {
+      "id": "3.1",
+      "titleEn": "Formula Mass and the Mole Concept",
+      "titleIs": "Formúlumassi og mólhugtakið"
+    },
+    {
+      "id": "3.2",
+      "titleEn": "Determining Empirical and Molecular Formulas",
+      "titleIs": "Ákvörðun empirískra formúla og sameindaformúla"
+    },
+    {
+      "id": "3.3",
+      "titleEn": "Molarity",
+      "titleIs": "Mólstyrkur"
+    },
+    {
+      "id": "3.4",
+      "titleEn": "Other Units for Solution Concentrations",
+      "titleIs": "Aðrar einingar fyrir styrk lausna"
+    }
   ],
   "status": {
-    "source": { "complete": true, "date": "2024-11-01" },
-    "mtOutput": { "complete": true, "date": "2024-11-01" },
-    "matecat": { "complete": true, "date": "2024-12-01" },
+    "source": {
+      "complete": true,
+      "date": "2026-01-12",
+      "inProgress": false,
+      "pending": false
+    },
+    "mtOutput": {
+      "complete": true,
+      "date": "2024-11-01"
+    },
+    "matecat": {
+      "complete": true,
+      "date": "2024-12-01"
+    },
     "editorialPass1": {
       "complete": false,
       "pending": true,
       "notes": "Delivered to editor, awaiting review"
     },
-    "tmUpdated": { "complete": false },
-    "editorialPass2": { "complete": false },
+    "tmUpdated": {
+      "complete": false
+    },
+    "editorialPass2": {
+      "complete": false
+    },
     "publication": {
       "mtPreview": {
         "complete": true,

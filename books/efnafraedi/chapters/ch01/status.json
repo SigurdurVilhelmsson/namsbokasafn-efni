@@ -3,24 +3,63 @@
   "titleEn": "Essential Ideas",
   "titleIs": "Grunnhugmyndir",
   "sections": [
-    { "id": "1.1", "titleEn": "Chemistry in Context", "titleIs": "Efnafræði í samhengi" },
-    { "id": "1.2", "titleEn": "Phases and Classification of Matter", "titleIs": "Fasar og flokkun efna" },
-    { "id": "1.3", "titleEn": "Physical and Chemical Properties", "titleIs": "Eðlis- og efnafræðilegir eiginleikar" },
-    { "id": "1.4", "titleEn": "Measurements", "titleIs": "Mælingar" },
-    { "id": "1.5", "titleEn": "Measurement Uncertainty, Accuracy, and Precision", "titleIs": "Óvissa, nákvæmni og skerpa" },
-    { "id": "1.6", "titleEn": "Mathematical Treatment of Measurement Results", "titleIs": "Stærðfræðileg meðhöndlun mæligagna" }
+    {
+      "id": "1.1",
+      "titleEn": "Chemistry in Context",
+      "titleIs": "Efnafræði í samhengi"
+    },
+    {
+      "id": "1.2",
+      "titleEn": "Phases and Classification of Matter",
+      "titleIs": "Fasar og flokkun efna"
+    },
+    {
+      "id": "1.3",
+      "titleEn": "Physical and Chemical Properties",
+      "titleIs": "Eðlis- og efnafræðilegir eiginleikar"
+    },
+    {
+      "id": "1.4",
+      "titleEn": "Measurements",
+      "titleIs": "Mælingar"
+    },
+    {
+      "id": "1.5",
+      "titleEn": "Measurement Uncertainty, Accuracy, and Precision",
+      "titleIs": "Óvissa, nákvæmni og skerpa"
+    },
+    {
+      "id": "1.6",
+      "titleEn": "Mathematical Treatment of Measurement Results",
+      "titleIs": "Stærðfræðileg meðhöndlun mæligagna"
+    }
   ],
   "status": {
-    "source": { "complete": true, "date": "2024-11-01" },
-    "mtOutput": { "complete": true, "date": "2024-11-01" },
-    "matecat": { "complete": true, "date": "2024-11-15" },
+    "source": {
+      "complete": true,
+      "date": "2026-01-12",
+      "inProgress": false,
+      "pending": false
+    },
+    "mtOutput": {
+      "complete": true,
+      "date": "2024-11-01"
+    },
+    "matecat": {
+      "complete": true,
+      "date": "2024-11-15"
+    },
     "editorialPass1": {
       "complete": true,
       "date": "2024-12-10",
       "editor": "[FÁ Teacher]"
     },
-    "tmUpdated": { "complete": false },
-    "editorialPass2": { "complete": false },
+    "tmUpdated": {
+      "complete": false
+    },
+    "editorialPass2": {
+      "complete": false
+    },
     "publication": {
       "mtPreview": {
         "complete": true,
