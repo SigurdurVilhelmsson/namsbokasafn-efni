@@ -1,0 +1,25 @@
+﻿Summary
+http://openstax.org/books/chemistry-2e/pages/14-1-bronsted-lowry-acids-and-bases
+14.1   Brønsted-Lowry Acids and Bases
+A compound that can donate a proton (a hydrogen ion) to another compound is called a Brønsted-Lowry acid. The compound that accepts the proton is called a Brønsted-Lowry base. The species remaining after a Brønsted-Lowry acid has lost a proton is the conjugate base of the acid. The species formed when a Brønsted-Lowry base gains a proton is the conjugate acid of the base. Thus, an acid-base reaction occurs when a proton is transferred from an acid to a base, with formation of the conjugate base of the reactant acid and formation of the conjugate acid of the reactant base. Amphiprotic species can act as both proton donors and proton acceptors. Water is the most important amphiprotic species. It can form both the hydronium ion, H3O+, and the hydroxide ion, OH− when it undergoes autoionization:
+
+The ion product of water, Kw is the equilibrium constant for the autoionization reaction:
+
+http://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh
+14.2   pH and pOH
+Concentrations of hydronium and hydroxide ions in aqueous media are often represented as logarithmic pH and pOH values, respectively. At 25 °C, the autoprotolysis equilibrium for water requires the sum of pH and pOH to equal 14 for any aqueous solution. The relative concentrations of hydronium and hydroxide ion in a solution define its status as acidic ([H3O+] > [OH−]), basic ([H3O+] < [OH−]), or neutral ([H3O+] = [OH−]). At 25 °C, a pH < 7 indicates an acidic solution, a pH > 7 a basic solution, and a pH = 7 a neutral solution.
+http://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases
+14.3   Relative Strengths of Acids and Bases
+The relative strengths of acids and bases are reflected in the magnitudes of their ionization constants; the stronger the acid or base, the larger its ionization constant. A reciprocal relation exists between the strengths of a conjugate acid-base pair: the stronger the acid, the weaker its conjugate base. Water exerts a leveling effect on dissolved acids or bases, reacting completely to generate its characteristic hydronium and hydroxide ions (the strongest acid and base that may exist in water). The strengths of the binary acids increase from left to right across a period of the periodic table (CH4 < NH3 < H2O < HF), and they increase down a group (HF < HCl < HBr < HI). The strengths of oxyacids that contain the same central element increase as the oxidation number of the element increases (H2SO3 < H2SO4). The strengths of oxyacids also increase as the electronegativity of the central element increases [H2SeO4 < H2SO4].
+http://openstax.org/books/chemistry-2e/pages/14-4-hydrolysis-of-salts
+14.4   Hydrolysis of Salts
+The ions composing salts may possess acidic or basic character, ionizing when dissolved in water to yield acidic or basic solutions. Acidic cations are typically the conjugate partners of weak bases, and basic anions are the conjugate partners of weak acids. Many metal ions bond to water molecules when dissolved to yield complex ions that may function as acids.
+http://openstax.org/books/chemistry-2e/pages/14-5-polyprotic-acids
+14.5   Polyprotic Acids
+An acid that contains more than one ionizable proton is a polyprotic acid. These acids undergo stepwise ionization reactions involving the transfer of single protons. The ionization constants for polyprotic acids decrease with each subsequent step; these decreases typically are large enough to permit simple equilibrium calculations that treat each step separately.
+http://openstax.org/books/chemistry-2e/pages/14-6-buffers
+14.6   Buffers
+Solutions that contain appreciable amounts of a weak conjugate acid-base pair are called buffers. A buffered solution will experience only slight changes in pH when small amounts of acid or base are added. Addition of large amounts of acid or base can exceed the buffer capacity, consuming most of one conjugate partner and preventing further buffering action.
+http://openstax.org/books/chemistry-2e/pages/14-7-acid-base-titrations
+14.7   Acid-Base Titrations
+The titration curve for an acid-base titration is typically a plot of pH versus volume of added titrant. These curves are useful in selecting appropriate acid-base indicators that will permit accurate determinations of titration end points.

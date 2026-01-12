@@ -1,0 +1,14 @@
+﻿Key Equations
+Kw = [H3O+][OH−] = 1.0  10−14 (at 25 °C)
+
+pOH = −log[OH−]
+[H3O+] = 10−pH
+[OH−] = 10−pOH
+pH + pOH = pKw = 14.00 at 25 °C
+
+
+Ka  Kb = 1.0  10−14 = Kw
+
+pKa = −log Ka
+pKb = −log Kb
+

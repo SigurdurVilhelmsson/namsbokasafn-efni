@@ -1,0 +1,63 @@
+﻿Key Terms
+acid ionization
+reaction involving the transfer of a proton from an acid to water, yielding hydronium ions and the conjugate base of the acid
+acid ionization constant (Ka)
+equilibrium constant for an acid ionization reaction
+acid-base indicator
+weak acid or base whose conjugate partner imparts a different solution color; used in visual assessments of solution pH
+acidic
+a solution in which [H3O+] > [OH−]
+amphiprotic
+species that may either donate or accept a proton in a Bronsted-Lowry acid-base reaction
+amphoteric
+species that can act as either an acid or a base
+autoionization
+reaction between identical species yielding ionic products; for water, this reaction involves transfer of protons to yield hydronium and hydroxide ions
+base ionization
+reaction involving the transfer of a proton from water to a base, yielding hydroxide ions and the conjugate acid of the base
+base ionization constant (Kb)
+equilibrium constant for a base ionization reaction
+basic
+a solution in which [H3O+] < [OH−]
+Brønsted-Lowry acid
+proton donor
+Brønsted-Lowry base
+proton acceptor
+buffer
+mixture of appreciable amounts of a weak acid-base pair. The pH of a buffer resists change when small amounts of acid or base are added
+buffer capacity
+amount of an acid or base that can be added to a volume of a buffer solution before its pH changes significantly (usually by one pH unit)
+color-change interval
+range in pH over which the color change of an indicator is observed
+conjugate acid
+substance formed when a base gains a proton
+conjugate base
+substance formed when an acid loses a proton
+diprotic acid
+acid containing two ionizable hydrogen atoms per molecule
+diprotic base
+base capable of accepting two protons
+Henderson-Hasselbalch equation
+logarithmic version of the acid ionization constant expression, conveniently formatted for calculating the pH of buffer solutions
+ion-product constant for water (Kw)
+equilibrium constant for the autoionization of water
+leveling effect
+observation that acid-base strength of solutes in a given solvent is limited to that of the solvent’s characteristic acid and base species (in water, hydronium and hydroxide ions, respectively)
+monoprotic acid
+acid containing one ionizable hydrogen atom per molecule
+neutral
+describes a solution in which [H3O+] = [OH−]
+oxyacid
+ternary compound with acidic properties, molecules of which contain a central nonmetallic atom bonded to one or more O atoms, at least one of which is bonded to an ionizable H atom
+percent ionization
+ratio of the concentration of ionized acid to initial acid concentration expressed as a percentage
+pH
+logarithmic measure of the concentration of hydronium ions in a solution
+pOH
+logarithmic measure of the concentration of hydroxide ions in a solution
+stepwise ionization
+process in which a polyprotic acid is ionized by losing protons sequentially
+titration curve
+plot of some sample property (such as pH) versus volume of added titrant
+triprotic acid
+acid that contains three ionizable hydrogen atoms per molecule
