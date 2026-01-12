@@ -4,5 +4,70 @@
   "version": "mt-preview",
   "versionLabel": "Vélþýðing (forskoðun)",
   "description": "Machine translation preview - not human-reviewed",
-  "chapters": []
+  "chapters": [
+    {
+      "chapter": 2,
+      "titleEn": "Atoms, Molecules, and Ions",
+      "titleIs": "Atóm, sameindir og jónir",
+      "path": "chapters/ch02",
+      "sections": [
+        {"id": "intro", "file": "2-introduction.md", "titleIs": "Kafli 2: Inngangur", "type": "introduction"},
+        {"id": "2.1", "file": "2-1-early-ideas-in-atomic-theory.md", "titleIs": "2.1 Fyrstu hugmyndir atómkenningarinnar", "titleEn": "Early Ideas in Atomic Theory", "type": "section"},
+        {"id": "2.2", "file": "2-2-evolution-of-atomic-theory.md", "titleIs": "2.2 Þróun atómkenningarinnar", "titleEn": "Evolution of Atomic Theory", "type": "section"},
+        {"id": "2.3", "file": "2-3-atomic-structure-and-symbolism.md", "titleIs": "2.3 Bygging atóma og táknmál", "titleEn": "Atomic Structure and Symbolism", "type": "section"},
+        {"id": "2.4", "file": "2-4-chemical-formulas.md", "titleIs": "2.4 Efnaformúlur", "titleEn": "Chemical Formulas", "type": "section"},
+        {"id": "2.5", "file": "2-5-the-periodic-table.md", "titleIs": "2.5 Lotukerfið", "titleEn": "The Periodic Table", "type": "section"},
+        {"id": "2.6", "file": "2-6-ionic-and-molecular-compounds.md", "titleIs": "2.6 Jóna- og sameindaefni", "titleEn": "Ionic and Molecular Compounds", "type": "section"},
+        {"id": "2.7", "file": "2-7-chemical-nomenclature.md", "titleIs": "2.7 Nafnakerfi efnafræðinnar", "titleEn": "Chemical Nomenclature", "type": "section"},
+        {"id": "key-terms", "file": "2-key-terms.md", "titleIs": "Lykilhugtök", "type": "reference"},
+        {"id": "key-equations", "file": "2-key-equations.md", "titleIs": "Lykiljöfnur", "type": "reference"},
+        {"id": "summary", "file": "2-summary.md", "titleIs": "Samantekt", "type": "reference"},
+        {"id": "exercises", "file": "2-exercises.md", "titleIs": "Æfingar", "type": "exercises"},
+        {"id": "answers", "file": "chapter-2.md", "titleIs": "Svör við æfingum", "type": "answers"}
+      ],
+      "status": "complete",
+      "publishedDate": "2026-01-12"
+    },
+    {
+      "chapter": 3,
+      "titleEn": "Composition of Substances and Solutions",
+      "titleIs": "Samsetning efna og lausna",
+      "path": "chapters/ch03",
+      "sections": [
+        {"id": "intro", "file": "3-introduction.md", "titleIs": "Kafli 3: Inngangur", "type": "introduction"},
+        {"id": "3.1", "file": "3-1-formula-mass-and-the-mole-concept.md", "titleIs": "3.1 Formúlumassi og mólhugtakið", "titleEn": "Formula Mass and the Mole Concept", "type": "section"},
+        {"id": "3.2", "file": "3-2-determining-empirical-and-molecular-formulas.md", "titleIs": "3.2 Ákvörðun reynsluformúla og sameindaformúla", "titleEn": "Determining Empirical and Molecular Formulas", "type": "section"},
+        {"id": "3.3", "file": "3-3-molarity.md", "titleIs": "3.3 Mólstyrkur", "titleEn": "Molarity", "type": "section"},
+        {"id": "3.4", "file": "3-4-other-units-for-solution-concentrations.md", "titleIs": "3.4 Aðrar einingar fyrir styrk lausna", "titleEn": "Other Units for Solution Concentrations", "type": "section"},
+        {"id": "key-terms", "file": "3-key-terms.md", "titleIs": "Lykilhugtök", "type": "reference"},
+        {"id": "key-equations", "file": "3-key-equations.md", "titleIs": "Lykiljöfnur", "type": "reference"},
+        {"id": "summary", "file": "3-summary.md", "titleIs": "Samantekt", "type": "reference"},
+        {"id": "exercises", "file": "3-exercises.md", "titleIs": "Æfingar", "type": "exercises"},
+        {"id": "answers", "file": "chapter-3.md", "titleIs": "Svör við æfingum", "type": "answers"}
+      ],
+      "status": "complete",
+      "publishedDate": "2026-01-12"
+    },
+    {
+      "chapter": 4,
+      "titleEn": "Stoichiometry of Chemical Reactions",
+      "titleIs": "Magnskipti efnahvarfa",
+      "path": "chapters/ch04",
+      "sections": [
+        {"id": "intro", "file": "4-introduction.md", "titleIs": "Kafli 4: Inngangur", "type": "introduction"},
+        {"id": "4.1", "file": "4-1-writing-and-balancing-chemical-equations.md", "titleIs": "4.1 Ritun og jöfnun efnajafna", "titleEn": "Writing and Balancing Chemical Equations", "type": "section"},
+        {"id": "4.2", "file": "4-2-classifying-chemical-reactions.md", "titleIs": "4.2 Flokkun efnahvarfa", "titleEn": "Classifying Chemical Reactions", "type": "section"},
+        {"id": "4.3", "file": "4-3-reaction-stoichiometry.md", "titleIs": "4.3 Magnskipti efnahvarfa", "titleEn": "Reaction Stoichiometry", "type": "section"},
+        {"id": "4.4", "file": "4-4-reaction-yields.md", "titleIs": "4.4 Afköst efnahvarfa", "titleEn": "Reaction Yields", "type": "section"},
+        {"id": "4.5", "file": "4-5-quantitative-chemical-analysis.md", "titleIs": "4.5 Magngreining", "titleEn": "Quantitative Chemical Analysis", "type": "section"},
+        {"id": "key-terms", "file": "4-key-terms.md", "titleIs": "Lykilhugtök", "type": "reference"},
+        {"id": "key-equations", "file": "4-key-equations.md", "titleIs": "Lykiljöfnur", "type": "reference"},
+        {"id": "summary", "file": "4-summary.md", "titleIs": "Samantekt", "type": "reference"},
+        {"id": "exercises", "file": "4-exercises.md", "titleIs": "Æfingar", "type": "exercises"},
+        {"id": "answers", "file": "chapter-4.md", "titleIs": "Svör við æfingum", "type": "answers"}
+      ],
+      "status": "complete",
+      "publishedDate": "2026-01-12"
+    }
+  ]
 }

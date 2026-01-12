@@ -55,8 +55,8 @@
     "publication": {
       "mtPreview": {
         "complete": true,
-        "date": "2024-11-01",
-        "notes": "AI translation published for testing"
+        "date": "2026-01-12",
+        "notes": "MT converted to markdown with pandoc, 10 files, 51 images"
       },
       "faithful": {
         "complete": false

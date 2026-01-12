@@ -60,7 +60,9 @@
     },
     "publication": {
       "mtPreview": {
-        "complete": false
+        "complete": true,
+        "date": "2026-01-12",
+        "notes": "MT converted to markdown with pandoc, 11 files, 44 images"
       },
       "faithful": {
         "complete": false
