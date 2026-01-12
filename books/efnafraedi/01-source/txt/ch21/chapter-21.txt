@@ -1,0 +1,71 @@
+﻿Chapter 21
+1. 
+(a) sodium-24; (b) aluminum-29; (c) krypton-73; (d) iridium-194
+3. 
+(a)  (b)  (c)  (d) 
+5. 
+(a)  (b)  (c)  (d) 
+7. 
+Nuclear reactions usually change one type of nucleus into another; chemical changes rearrange atoms. Nuclear reactions involve much larger energies than chemical reactions and have measureable mass changes.
+9. 
+(a), (b), (c), (d), and (e)
+11. 
+(a) A nucleon is any particle contained in the nucleus of the atom, so it can refer to protons and neutrons. (b) An α particle is one product of natural radioactivity and is the nucleus of a helium atom. (c) A β particle is a product of natural radioactivity and is a high-speed electron. (d) A positron is a particle with the same mass as an electron but with a positive charge. (e) Gamma rays compose electromagnetic radiation of high energy and short wavelength. (f) Nuclide is a term used when referring to a single type of nucleus. (g) The mass number is the sum of the number of protons and the number of neutrons in an element. (h) The atomic number is the number of protons in the nucleus of an element.
+13. 
+(a)  (b)  (c)  (d) 
+15. 
+(a)  (b)  (c)  (d) 
+17. 
+(a) 148.8 MeV per atom; (b) 7.808 MeV/nucleon
+19. 
+α (helium nuclei), β (electrons), β+ (positrons), and η (neutrons) may be emitted from a radioactive element, all of which are particles; γ rays also may be emitted.
+21. 
+(a) conversion of a neutron to a proton:  (b) conversion of a proton to a neutron; the positron has the same mass as an electron and the same magnitude of positive charge as the electron has negative charge; when the n:p ratio of a nucleus is too low, a proton is converted into a neutron with the emission of a positron:  (c) In a proton-rich nucleus, an inner atomic electron can be absorbed. In simplest form, this changes a proton into a neutron: 
+23. 
+The electron pulled into the nucleus was most likely found in the 1s orbital. As an electron falls from a higher energy level to replace it, the difference in the energy of the replacement electron in its two energy levels is given off as an X-ray.
+25. 
+Manganese-51 is most likely to decay by positron emission. The n:p ratio for Cr-53 is  = 1.21; for Mn-51, it is  = 1.04; for Fe-59, it is  = 1.27. Positron decay occurs when the n:p ratio is low. Mn-51 has the lowest n:p ratio and therefore is most likely to decay by positron emission. Besides,  is a stable isotope, and  decays by beta emission.
+27. 
+(a) positron emission; (b) α decay; (c) positron emission; (d) β decay; (e) α decay
+29. 
+      
+31. 
+Half-life is the time required for half the atoms in a sample to decay. Example (answers may vary): For C-14, the half-life is 5770 years. A 10-g sample of C-14 would contain 5 g of C-14 after 5770 years; a 0.20-g sample of C-14 would contain 0.10 g after 5770 years.
+33. 
+ or 97.3%
+35. 
+2  103 y
+37. 
+0.12 h–1
+39. 
+(a) 3.8 billion years; (b) The rock would be younger than the age calculated in part (a). If Sr was originally in the rock, the amount produced by radioactive decay would equal the present amount minus the initial amount. As this amount would be smaller than the amount used to calculate the age of the rock and the age is proportional to the amount of Sr, the rock would be younger.
+41. 
+c = 0; This shows that no Pu-239 could remain since the formation of the earth. Consequently, the plutonium now present could not have been formed with the uranium.
+43. 
+17.5 MeV
+45. 
+(a)  (b)  (c)   (d) 
+47. 
+(a)  (b)  (c)  (d) 
+49. 
+Two nuclei must collide for fusion to occur. High temperatures are required to give the nuclei enough kinetic energy to overcome the very strong repulsion resulting from their positive charges.
+51. 
+A nuclear reactor consists of the following:
+1.A nuclear fuel. A fissionable isotope must be present in large enough quantities to sustain a controlled chain reaction. The radioactive isotope is contained in tubes called fuel rods.
+2.A moderator. A moderator slows neutrons produced by nuclear reactions so that they can be absorbed by the fuel and cause additional nuclear reactions.
+
+3.A coolant. The coolant carries heat from the fission reaction to an external boiler and turbine where it is transformed into electricity.
+
+4.A control system. The control system consists of control rods placed between fuel rods to absorb neutrons and is used to adjust the number of neutrons and keep the rate of the chain reaction at a safe level.
+
+5.A shield and containment system. The function of this component is to protect workers from radiation produced by the nuclear reactions and to withstand the high pressures resulting from high-temperature reactions.
+53. 
+The fission of uranium generates heat, which is carried to an external steam generator (boiler). The resulting steam turns a turbine that powers an electrical generator.
+55. 
+Introduction of either radioactive Ag+ or radioactive Cl– into the solution containing the stated reaction, with subsequent time given for equilibration, will produce a radioactive precipitate that was originally devoid of radiation.
+57. 
+(a)  (b) 37.6 days
+59. 
+Alpha particles can be stopped by very thin shielding but have much stronger ionizing potential than beta particles, X-rays, and γ-rays. When inhaled, there is no protective skin covering the cells of the lungs, making it possible to damage the DNA in those cells and cause cancer.
+61. 
+(a) 7.64  109 Bq; (b) 2.06  10−2 Ci
