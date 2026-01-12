@@ -1,0 +1,8 @@
+﻿Key Equations
+
+
+
+
+ΔTb = Kbm
+ΔTf = Kfm
+Π = MRT
