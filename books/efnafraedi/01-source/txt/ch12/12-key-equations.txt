@@ -1,0 +1,11 @@
+﻿Key Equations
+
+integrated rate law for zero-order reactions: 
+half-life for a zero-order reaction 
+integrated rate law for first-order reactions: 
+half-life for a first-order reaction 
+integrated rate law for second-order reactions: 
+half-life for a second-order reaction 
+
+
+

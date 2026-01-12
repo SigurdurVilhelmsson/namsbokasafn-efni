@@ -1,0 +1,59 @@
+﻿Key Terms
+activated complex
+(also, transition state) unstable combination of reactant species formed during a chemical reaction
+activation energy (Ea)
+minimum energy necessary in order for a reaction to take place
+Arrhenius equation
+mathematical relationship between a reaction’s rate constant, activation energy, and temperature
+average rate
+rate of a chemical reaction computed as the ratio of a measured change in amount or concentration of substance to the time interval over which the change occurred
+bimolecular reaction
+elementary reaction involving two reactant entities
+catalyst
+substance that increases the rate of a reaction without itself being consumed by the reaction
+collision theory
+model that emphasizes the energy and orientation of molecular collisions to explain and predict reaction kinetics
+elementary reaction
+reaction that takes place in a single step, precisely as depicted in its chemical equation
+frequency factor (A)
+proportionality constant in the Arrhenius equation, related to the relative number of collisions having an orientation capable of leading to product formation
+half-life of a reaction (tl/2)
+time required for half of a given amount of reactant to be consumed
+heterogeneous catalyst
+catalyst present in a different phase from the reactants, furnishing a surface at which a reaction can occur
+homogeneous catalyst
+catalyst present in the same phase as the reactants
+initial rate
+instantaneous rate of a chemical reaction at t = 0 s (immediately after the reaction has begun)
+instantaneous rate
+rate of a chemical reaction at any instant in time, determined by the slope of the line tangential to a graph of concentration as a function of time
+integrated rate law
+equation that relates the concentration of a reactant to elapsed time of reaction
+intermediate
+entities produced in one step of a reaction mechanism and consumed in a subsequent step
+method of initial rates
+common experimental approach to determining rate laws that involves measuring reaction rates at varying initial reactant concentrations
+molecularity
+number of reactant entities involved in an elementary reaction
+overall reaction order
+sum of the reaction orders for each substance represented in the rate law
+rate constant (k)
+proportionality constant in a rate law
+rate expression
+mathematical representation defining reaction rate as change in amount, concentration, or pressure of reactant or product species per unit time
+rate law
+(also, rate equation) (also, differential rate laws) mathematical equation showing the dependence of reaction rate on the rate constant and the concentration of one or more reactants
+rate of reaction
+measure of the speed at which a chemical reaction takes place
+rate-determining step
+(also, rate-limiting step) slowest elementary reaction in a reaction mechanism; determines the rate of the overall reaction
+reaction diagram
+used in chemical kinetics to illustrate various properties of a reaction
+reaction mechanism
+stepwise sequence of elementary reactions by which a chemical change takes place
+reaction order
+value of an exponent in a rate law (for example, zero order for 0, first order for 1, second order for 2, and so on)
+termolecular reaction
+elementary reaction involving three reactant entities
+unimolecular reaction
+elementary reaction involving a single reactant entity
