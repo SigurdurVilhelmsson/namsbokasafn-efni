@@ -1,0 +1,124 @@
+﻿16.3   The Second and Third Laws of Thermodynamics
+Learning Objectives
+By the end of this section, you will be able to:
+•State and explain the second and third laws of thermodynamics
+•Calculate entropy changes for phase transitions and chemical reactions under standard conditions
+The Second Law of Thermodynamics
+In the quest to identify a property that may reliably predict the spontaneity of a process, a promising candidate has been identified: entropy. Processes that involve an increase in entropy of the system (ΔS > 0) are very often spontaneous; however, examples to the contrary are plentiful. By expanding consideration of entropy changes to include the surroundings, we may reach a significant conclusion regarding the relation between this property and spontaneity. In thermodynamic models, the system and surroundings comprise everything, that is, the universe, and so the following is true:
+
+To illustrate this relation, consider again the process of heat flow between two objects, one identified as the system and the other as the surroundings. There are three possibilities for such a process:
+1.The objects are at different temperatures, and heat flows from the hotter to the cooler object. This is always observed to occur spontaneously. Designating the hotter object as the system and invoking the definition of entropy yields the following:
+ 
+ The magnitudes of −qrev and qrev are equal, their opposite arithmetic signs denoting loss of heat by the system and gain of heat by the surroundings. Since Tsys > Tsurr in this scenario, the entropy decrease of the system will be less than the entropy increase of the surroundings, and so the entropy of the universe will increase:
+ 
+2.The objects are at different temperatures, and heat flows from the cooler to the hotter object. This is never observed to occur spontaneously. Again designating the hotter object as the system and invoking the definition of entropy yields the following:
+ 
+ The arithmetic signs of qrev denote the gain of heat by the system and the loss of heat by the surroundings. The magnitude of the entropy change for the surroundings will again be greater than that for the system, but in this case, the signs of the heat changes (that is, the direction of the heat flow) will yield a negative value for ΔSuniv. This process involves a decrease in the entropy of the universe.
+3.The objects are at essentially the same temperature, Tsys ≈ Tsurr, and so the magnitudes of the entropy changes are essentially the same for both the system and the surroundings. In this case, the entropy change of the universe is zero, and the system is at equilibrium.
+ 
+These results lead to a profound statement regarding the relation between entropy and spontaneity known as the second law of thermodynamics: all spontaneous changes cause an increase in the entropy of the universe. A summary of these three relations is provided in Table 16.1.
+The Second Law of Thermodynamics
+ΔSuniv > 0
+spontaneous
+ΔSuniv < 0
+nonspontaneous (spontaneous in opposite direction)
+ΔSuniv = 0
+at equilibrium
+Table  16.1    
+For many realistic applications, the surroundings are vast in comparison to the system. In such cases, the heat gained or lost by the surroundings as a result of some process represents a very small, nearly infinitesimal, fraction of its total thermal energy. For example, combustion of a fuel in air involves transfer of heat from a system (the fuel and oxygen molecules undergoing reaction) to surroundings that are infinitely more massive (the earth’s atmosphere). As a result, qsurr is a good approximation of qrev, and the second law may be stated as the following:
+
+We may use this equation to predict the spontaneity of a process as illustrated in Example 16.4.
+Example  16.4  
+Will Ice Spontaneously Melt?
+The entropy change for the process
+
+is 22.1 J/K and requires that the surroundings transfer 6.00 kJ of heat to the system. Is the process spontaneous at −10.00 °C? Is it spontaneous at +10.00 °C?
+Solution
+We can assess the spontaneity of the process by calculating the entropy change of the universe. If ΔSuniv is positive, then the process is spontaneous. At both temperatures, ΔSsys = 22.1 J/K and qsurr = −6.00 kJ.
+At −10.00 °C (263.15 K), the following is true:
+
+Suniv < 0, so melting is nonspontaneous (not spontaneous) at −10.0 °C.
+At 10.00 °C (283.15 K), the following is true:
+
+Suniv > 0, so melting is spontaneous at 10.00 °C.
+Check Your Learning
+Using this information, determine if liquid water will spontaneously freeze at the same temperatures. What can you say about the values of Suniv?
+Answer:
+Entropy is a state function, so ΔSfreezing = −ΔSmelting = −22.1 J/K and qsurr = +6.00 kJ. At −10.00 °C spontaneous, +0.7 J/K; at +10.00 °C nonspontaneous, −0.9 J/K.
+The Third Law of Thermodynamics
+The previous section described the various contributions of matter and energy dispersal that contribute to the entropy of a system. With these contributions in mind, consider the entropy of a pure, perfectly crystalline solid possessing no kinetic energy (that is, at a temperature of absolute zero, 0 K). This system may be described by a single microstate, as its purity, perfect crystallinity and complete lack of motion means there is but one possible location for each identical atom or molecule comprising the crystal (W = 1). According to the Boltzmann equation, the entropy of this system is zero.
+
+
+This limiting condition for a system’s entropy represents the third law of thermodynamics: the entropy of a pure, perfect crystalline substance at 0 K is zero.
+Careful calorimetric measurements can be made to determine the temperature dependence of a substance’s entropy and to derive absolute entropy values under specific conditions. Standard entropies (S°) are for one mole of substance under standard conditions (a pressure of 1 bar and a temperature of 298.15 K; see details regarding standard conditions in the thermochemistry chapter of this text). The standard entropy change (ΔS°) for a reaction may be computed using standard entropies as shown below:
+
+where ν represents stoichiometric coefficients in the balanced equation representing the process. For example, ΔS° for the following reaction at room temperature
+
+is computed as:
+
+A partial listing of standard entropies is provided in Table 16.2, and additional values are provided in Appendix G. The example exercises that follow demonstrate the use of S° values in calculating standard entropy changes for physical and chemical processes.
+Substance
+ (J mol−1 K−1)
+carbon
+C(s, graphite)
+5.740
+C(s, diamond)
+2.38
+CO(g)
+197.7
+CO2(g)
+213.8
+CH4(g)
+186.3
+C2H4(g)
+219.3
+C2H6(g)
+229.2
+CH3OH(l)
+126.8
+C2H5OH(l)
+160.7
+hydrogen
+H2(g)
+130.7
+H(g)
+114.7
+H2O(g)
+188.8
+H2O(l)
+70.0
+HCI(g)
+186.8
+H2S(g)
+205.7
+oxygen
+O2(g)
+205.2
+Table  16.2     Standard entropies for selected substances measured at 1 atm and 298.15 K. (Values are approximately equal to those measured at 1 bar, the currently accepted standard state pressure.)
+Example  16.5  
+Determination of ΔS°
+Calculate the standard entropy change for the following process:
+
+Solution
+Calculate the entropy change using standard entropies as shown above:
+
+The value for ΔS° is negative, as expected for this phase transition (condensation), which the previous section discussed.
+Check Your Learning
+Calculate the standard entropy change for the following process:
+
+Answer:
+−120.6 J K–1 mol–1
+ 
+Example  16.6  
+Determination of ΔS°
+Calculate the standard entropy change for the combustion of methanol, CH3OH:
+
+Solution
+Calculate the entropy change using standard entropies as shown above:
+
+
+Check Your Learning
+Calculate the standard entropy change for the following reaction:
+
+Answer:
+24.7 J/K

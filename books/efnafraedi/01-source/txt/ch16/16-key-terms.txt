@@ -1,0 +1,25 @@
+﻿Key Terms
+entropy (S)
+state function that is a measure of the matter and/or energy dispersal within a system, determined by the number of system microstates; often described as a measure of the disorder of the system
+Gibbs free energy change (G)
+thermodynamic property defined in terms of system enthalpy and entropy; all spontaneous processes involve a decrease in G
+microstate
+possible configuration or arrangement of matter and energy within a system
+nonspontaneous process
+process that requires continual input of energy from an external source
+reversible process
+process that takes place so slowly as to be capable of reversing direction in response to an infinitesimally small change in conditions; hypothetical construct that can only be approximated by real processes
+second law of thermodynamics
+all spontaneous processes involve an increase in the entropy of the universe
+spontaneous change
+process that takes place without a continuous input of energy from an external source
+standard entropy (S°)
+entropy for one mole of a substance at 1 bar pressure; tabulated values are usually determined at 298.15 K
+standard entropy change (ΔS°)
+change in entropy for a reaction calculated using the standard entropies
+standard free energy change (ΔG°)
+change in free energy for a process occurring under standard conditions (1 bar pressure for gases, 1 M concentration for solutions)
+standard free energy of formation 
+change in free energy accompanying the formation of one mole of substance from its elements in their standard states
+third law of thermodynamics
+entropy of a perfect crystal at absolute zero (0 K) is zero
