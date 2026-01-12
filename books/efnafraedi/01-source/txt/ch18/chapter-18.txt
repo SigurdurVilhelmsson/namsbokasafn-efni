@@ -1,0 +1,226 @@
+﻿Chapter 18
+1. 
+The alkali metals all have a single s electron in their outermost shell. In contrast, the alkaline earth metals have a completed s subshell in their outermost shell. In general, the alkali metals react faster and are more reactive than the corresponding alkaline earth metals in the same period.
+3. 
+
+
+ 
+ 
+5. 
+The possible ways of distinguishing between the two include infrared spectroscopy by comparison of known compounds, a flame test that gives the characteristic yellow color for sodium (strontium has a red flame), or comparison of their solubilities in water. At 20 °C, NaCl dissolves to the extent of  compared with  for SrCl2. Heating to 100 °C provides an easy test, since the solubility of NaCl is  but that of SrCl2 is  Density determination on a solid is sometimes difficult, but there is enough difference (2.165 g/mL NaCl and 3.052 g/mL SrCl2) that this method would be viable and perhaps the easiest and least expensive test to perform.
+7. 
+(a)  (b)  (c)  (d)  (e) 
+9. 
+11 lb
+11. 
+Yes, tin reacts with hydrochloric acid to produce hydrogen gas.
+13. 
+In PbCl2, the bonding is ionic, as indicated by its melting point of 501 °C. In PbCl4, the bonding is covalent, as evidenced by it being an unstable liquid at room temperature.
+15. 
+
+17. 
+Cathode (reduction):  Anode (oxidation):  Overall reaction: 
+19. 
+0.5035 g H2
+21. 
+Despite its reactivity, magnesium can be used in construction even when the magnesium is going to come in contact with a flame because a protective oxide coating is formed, preventing gross oxidation. Only if the metal is finely subdivided or present in a thin sheet will a high-intensity flame cause its rapid burning.
+23. 
+Extract from ore: 
+ Recover: 
+ Sinter: 
+ Dissolve in Na3AlF6(l) and electrolyze: 
+25. 
+25.83%
+27. 
+39 kg
+29. 
+(a) H3BPH3:
+
+  
+
+ (b) 
+
+  
+
+ (c) BBr3:
+
+  
+
+ (d) B(CH3)3:
+
+  
+
+ (e) B(OH)3:
+
+  
+31. 
+1s22s22p63s23p23d0.
+33. 
+(a) (CH3)3SiH: sp3 bonding about Si; the structure is tetrahedral; (b)  sp3 bonding about Si; the structure is tetrahedral; (c) Si2H6: sp3 bonding about each Si; the structure is linear along the Si-Si bond; (d) Si(OH)4: sp3 bonding about Si; the structure is tetrahedral; (e)  sp3d2 bonding about Si; the structure is octahedral
+35. 
+(a) nonpolar; (b) nonpolar; (c) polar; (d) nonpolar; (e) polar
+37. 
+(a) tellurium dioxide or tellurium(IV) oxide; (b) antimony(III) sulfide; (c) germanium(IV) fluoride; (d) silane or silicon(IV) hydride; (e) germanium(IV) hydride
+39. 
+Boron has only s and p orbitals available, which can accommodate a maximum of four electron pairs. Unlike silicon, no d orbitals are available in boron.
+41. 
+(a) ΔH° = 87 kJ; ΔG° = 44 kJ; (b) ΔH° = −109.9 kJ; ΔG° = −154.7 kJ; (c) ΔH° = −510 kJ; ΔG° = −601.5 kJ
+43. 
+A mild solution of hydrofluoric acid would dissolve the silicate and would not harm the diamond.
+45. 
+In the N2 molecule, the nitrogen atoms have an σ bond and two π bonds holding the two atoms together. The presence of three strong bonds makes N2 a very stable molecule. Phosphorus is a third-period element, and as such, does not form π bonds efficiently; therefore, it must fulfill its bonding requirement by forming three σ bonds.
+47. 
+(a) H = 1+, C = 2+, and N = 3−; (b) O = 2+ and F = 1−; (c) As = 3+ and Cl = 1−
+49. 
+S < Cl < O < F
+51. 
+The electronegativity of the nonmetals is greater than that of hydrogen. Thus, the negative charge is better represented on the nonmetal, which has the greater tendency to attract electrons in the bond to itself.
+53. 
+Hydrogen has only one orbital with which to bond to other atoms. Consequently, only one two-electron bond can form.
+55. 
+0.43 g H2
+57. 
+(a)  (b) 
+(c) 
+59. 
+(a) NH2−:
+
+  
+
+ (b) N2F4:
+
+  
+
+ (c) 
+
+  
+
+ (d) NF3:
+
+  
+
+ (e) 
+
+  
+61. 
+Ammonia acts as a Brønsted base because it readily accepts protons and as a Lewis base in that it has an electron pair to donate.
+ Brønsted base: 
+ Lewis base: 
+63. 
+(a) NO2:
+
+  
+
+ Nitrogen is sp2 hybridized. The molecule has a bent geometry with an ONO bond angle of approximately 120°.
+ (b) 
+
+  
+
+ Nitrogen is sp2 hybridized. The molecule has a bent geometry with an ONO bond angle slightly less than 120°.
+ (c) 
+
+  
+
+ Nitrogen is sp hybridized. The molecule has a linear geometry with an ONO bond angle of 180°.
+65. 
+Nitrogen cannot form a NF5 molecule because it does not have d orbitals to bond with the additional two fluorine atoms.
+67. 
+(a)
+
+  
+
+ (b)
+
+  
+
+ (c)
+
+  
+
+ (d)
+
+  
+
+ (e)
+
+  
+69. 
+(a)  (b)  (c)  (d)  or  (e)  or  (f) 
+71. 
+291 mL
+73. 
+28 tons
+75. 
+(a)
+
+  
+
+ (b)
+
+  
+
+ (c)
+
+  
+
+ (d)
+
+  
+77. 
+(a) P = 3+; (b) P = 5+; (c) P = 3+; (d) P = 5+; (e) P = 3−; (f) P = 5+
+79. 
+FrO2
+81. 
+(a)  (b)  (c)  (d) 
+83. 
+ 
+85. 
+(a)  (b)  (c)  (d)  (e) 
+87. 
+HClO4 is the stronger acid because, in a series of oxyacids with similar formulas, the higher the electronegativity of the central atom, the stronger is the attraction of the central atom for the electrons of the oxygen(s). The stronger attraction of the oxygen electron results in a stronger attraction of oxygen for the electrons in the O-H bond, making the hydrogen more easily released. The weaker this bond, the stronger the acid.
+89. 
+As H2SO4 and H2SeO4 are both oxyacids and their central atoms both have the same oxidation number, the acid strength depends on the relative electronegativity of the central atom. As sulfur is more electronegative than selenium, H2SO4 is the stronger acid.
+91. 
+SO2, sp2 4+; SO3, sp2, 6+; H2SO4, sp3, 6+
+93. 
+SF6: S = 6+; SO2F2: S = 6+; KHS: S = 2−
+95. 
+Sulfur is able to form double bonds only at high temperatures (substantially endothermic conditions), which is not the case for oxygen.
+97. 
+There are many possible answers including:  and 
+99. 
+5.1  104 g
+101. 
+SnCl4 is not a salt because it is covalently bonded. A salt must have ionic bonds.
+103. 
+In oxyacids with similar formulas, the acid strength increases as the electronegativity of the central atom increases. HClO3 is stronger than HBrO3; Cl is more electronegative than Br.
+105. 
+(a)
+
+  
+
+ (b)
+
+  
+
+ (c)
+
+  
+
+ (d)
+
+  
+
+ (e)
+
+  
+107. 
+(a) bromine trifluoride; (b) sodium bromate; (c) phosphorus pentabromide; (d) sodium perchlorate; (e) potassium hypochlorite
+109. 
+(a) I: 7+; (b) I: 7+; (c) Cl: 4+; (d) I: 3+; Cl: 1−; (e) F: 0
+111. 
+(a) sp3d hybridized; (b) sp3d2 hybridized; (c) sp3 hybridized; (d) sp3 hybridized; (e) sp3d2 hybridized;
+113. 
+(a) nonpolar; (b) nonpolar; (c) polar; (d) nonpolar; (e) polar
+115. 
+The empirical formula is XeF6, and the balanced reactions are: 

@@ -1,0 +1,23 @@
+﻿18.8   Occurrence, Preparation, and Properties of Phosphorus
+Learning Objectives
+By the end of this section, you will be able to:
+•Describe the properties, preparation, and uses of phosphorus
+The industrial preparation of phosphorus is by heating calcium phosphate, obtained from phosphate rock, with sand and coke:
+
+The phosphorus distills out of the furnace and is condensed into a solid or burned to form P4O10. The preparation of many other phosphorus compounds begins with P4O10. The acids and phosphates are useful as fertilizers and in the chemical industry. Other uses are in the manufacture of special alloys such as ferrophosphorus and phosphor bronze. Phosphorus is important in making pesticides, matches, and some plastics. Phosphorus is an active nonmetal. In compounds, phosphorus usually occurs in oxidation states of 3−, 3+, and 5+. Phosphorus exhibits oxidation numbers that are unusual for a group 15 element in compounds that contain phosphorus-phosphorus bonds; examples include diphosphorus tetrahydride, H2P-PH2, and tetraphosphorus trisulfide, P4S3, illustrated in Figure 18.39.
+  
+Figure  18.39   P4S3 is a component of the heads of strike-anywhere matches.
+Phosphorus Oxygen Compounds
+Phosphorus forms two common oxides, phosphorus(III) oxide (or tetraphosphorus hexaoxide), P4O6, and phosphorus(V) oxide (or tetraphosphorus decaoxide), P4O10, both shown in Figure 18.40. Phosphorus(III) oxide is a white crystalline solid with a garlic-like odor. Its vapor is very poisonous. It oxidizes slowly in air and inflames when heated to 70 °C, forming P4O10. Phosphorus(III) oxide dissolves slowly in cold water to form phosphorous acid, H3PO3.
+  
+Figure  18.40   This image shows the molecular structures of P4O6 (left) and P4O10 (right).
+Phosphorus(V) oxide, P4O10, is a white powder that is prepared by burning phosphorus in excess oxygen. Its enthalpy of formation is very high (−2984 kJ), and it is quite stable and a very poor oxidizing agent. Dropping P4O10 into water produces a hissing sound, heat, and orthophosphoric acid:
+
+Because of its great affinity for water, phosphorus(V) oxide is an excellent drying agent for gases and solvents, and for removing water from many compounds.
+Phosphorus Halogen Compounds
+Phosphorus will react directly with the halogens, forming trihalides, PX3, and pentahalides, PX5. The trihalides are much more stable than the corresponding nitrogen trihalides; nitrogen pentahalides do not form because of nitrogen’s inability to form more than four bonds.
+The chlorides PCl3 and PCl5, both shown in Figure 18.41, are the most important halides of phosphorus. Phosphorus trichloride is a colorless liquid that is prepared by passing chlorine over molten phosphorus. Phosphorus pentachloride is an off-white solid that is prepared by oxidizing the trichloride with excess chlorine. The pentachloride sublimes when warmed and forms an equilibrium with the trichloride and chlorine when heated.
+  
+Figure  18.41   This image shows the molecular structure of PCl3 (left) and PCl5 (right) in the gas phase.
+Like most other nonmetal halides, both phosphorus chlorides react with an excess of water and yield hydrogen chloride and an oxyacid: PCl3 yields phosphorous acid H3PO3 and PCl5 yields phosphoric acid, H3PO4.
+The pentahalides of phosphorus are Lewis acids because of the empty valence d orbitals of phosphorus. These compounds readily react with halide ions (Lewis bases) to give the anion  Whereas phosphorus pentafluoride is a molecular compound in all states, X-ray studies show that solid phosphorus pentachloride is an ionic compound,  as are phosphorus pentabromide, [Br−], and phosphorus pentaiodide, [I−].
