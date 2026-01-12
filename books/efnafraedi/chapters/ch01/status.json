@@ -22,10 +22,15 @@
     "tmUpdated": { "complete": false },
     "editorialPass2": { "complete": false },
     "publication": {
-      "complete": true,
-      "date": "2024-11-01",
-      "version": "ai-preview",
-      "notes": "AI translation published for testing, Pass 1 review complete, awaiting TM update and republish"
+      "mtPreview": {
+        "complete": true,
+        "date": "2024-11-01",
+        "notes": "AI translation published for testing"
+      },
+      "faithful": {
+        "complete": false,
+        "notes": "Pass 1 review complete, awaiting TM update and republish"
+      }
     }
   },
   "images": {

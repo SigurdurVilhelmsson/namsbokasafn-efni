@@ -26,6 +26,9 @@ books/{book}/
 ├── 03-faithful/        # After Pass 1 - faithful translation ★
 ├── 04-localized/       # After Pass 2 - localized for Iceland ★
 ├── 05-publication/     # Web-ready markdown files
+│   ├── mt-preview/     # MT versions for immediate student use
+│   ├── faithful/       # Human-reviewed versions (after Pass 1)
+│   └── glossary.json   # Shared terminology
 ├── tm/                 # Translation memory exports ★ (READ ONLY)
 ├── glossary/           # Terminology files
 └── chapters/ch{NN}/    # Status tracking per chapter
@@ -68,6 +71,15 @@ logs/
 | 6 | TM update | `tm/` | Human-verified TM ★ |
 | 7 | Pass 2 (localization) | `04-localized/` | Localized version ★ |
 | 8 | Publication | `05-publication/` | Web-ready .md |
+
+### Publication Tracks
+
+| Track | Source | Quality | Folder |
+|-------|--------|---------|--------|
+| `mt-preview` | `02-mt-output/` | Unreviewed MT | `05-publication/mt-preview/` |
+| `faithful` | `03-faithful/` | Pass 1 reviewed | `05-publication/faithful/` |
+
+MT previews can be published immediately for student use while editorial review continues.
 
 ## Available Commands
 

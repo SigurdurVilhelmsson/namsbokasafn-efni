@@ -251,25 +251,48 @@ This document describes the complete 8-step translation workflow from source mat
 
 **Goal:** Prepare and publish web-ready content
 
-**Process:**
-1. Convert localized .docx to Markdown
-   - Use `tools/docx-to-md.js`
-   - Handle equations, images, formatting
-2. Add frontmatter metadata
-   - Use `tools/add-frontmatter.js`
-   - See `templates/frontmatter.yaml`
-3. Copy to publication folder
-4. Update `toc.json` and `glossary.json`
-5. Deploy to web
+Publication supports multiple version tracks, allowing early MT previews while editorial review continues:
 
-**Save to:**
-- `05-publication/chapters/` - Publication-ready .md files
-- `05-publication/toc.json` - Table of contents
-- `05-publication/glossary.json` - Terminology glossary
+#### Publication Versions
+
+| Version | Source | Quality | Use Case |
+|---------|--------|---------|----------|
+| `mt-preview` | `02-mt-output/` | Unreviewed MT | Early student access |
+| `faithful` | `03-faithful/` | Pass 1 reviewed | Production content |
+| `localized` | `04-localized/` | Pass 2 complete | Full localization (future) |
+
+#### Process
+
+**For MT Preview (immediate publication):**
+1. Convert MT output from `02-mt-output/` to Markdown
+2. Add frontmatter with `version: mt-preview`
+3. Save to `05-publication/mt-preview/chapters/ch##/`
+4. Update `05-publication/mt-preview/toc.json`
+
+**For Faithful Translation (after Pass 1):**
+1. Convert reviewed content from `03-faithful/` to Markdown
+2. Add frontmatter with `version: faithful`
+3. Save to `05-publication/faithful/chapters/ch##/`
+4. Update `05-publication/faithful/toc.json`
 
 **Tools:** docx-to-md.js, add-frontmatter.js, web deployment
 
+**Save to:**
+```
+05-publication/
+├── mt-preview/          # MT versions for immediate use
+│   ├── chapters/ch##/
+│   └── toc.json
+├── faithful/            # Human-reviewed versions
+│   ├── chapters/ch##/
+│   └── toc.json
+├── toc.json             # Index of available versions
+└── glossary.json        # Shared terminology
+```
+
 **Published at:** [efnafraedi.app](https://efnafraedi.app) (námsbókasafn.is væntanlegt)
+
+**Reader behavior:** The reader website defaults to highest quality version available, with option to switch versions.
 
 ---
 
@@ -285,7 +308,8 @@ This document describes the complete 8-step translation workflow from source mat
 | `03-faithful/markdown/` | Faithful in markdown | .md | Step 5 |
 | `04-localized/docx/` | Localized translation | .docx | Step 7 ★ |
 | `04-localized/localization-logs/` | Change documentation | .md | Step 7 |
-| `05-publication/chapters/` | Web-ready content | .md | Step 8 |
+| `05-publication/mt-preview/` | MT preview content | .md | Step 8 |
+| `05-publication/faithful/` | Reviewed content | .md | Step 8 |
 | `tm/` | Translation memory | .tmx | Steps 3, 6 ★ |
 | `tm/exports/` | Parallel corpus | .txt | Step 6 |
 | `glossary/` | Terminology | .csv | Ongoing |
@@ -331,11 +355,21 @@ This document describes the complete 8-step translation workflow from source mat
 - [ ] Extended exercises added where beneficial
 
 ### After Step 8 (Publication)
+
+**For MT Preview:**
 - [ ] Markdown renders correctly
-- [ ] Frontmatter complete
+- [ ] Frontmatter includes `version: mt-preview`
 - [ ] Images display properly
 - [ ] Equations render correctly
-- [ ] TOC updated
+- [ ] `mt-preview/toc.json` updated
+- [ ] Deployed to web with version indicator
+
+**For Faithful Version:**
+- [ ] Markdown renders correctly
+- [ ] Frontmatter includes `version: faithful`
+- [ ] Images display properly
+- [ ] Equations render correctly
+- [ ] `faithful/toc.json` updated
 - [ ] Glossary updated
 - [ ] Deployed to web
 

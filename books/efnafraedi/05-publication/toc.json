@@ -1,5 +1,21 @@
 {
   "bookId": "efnafraedi",
   "title": "Efnafræði",
-  "chapters": []
+  "versions": [
+    {
+      "id": "faithful",
+      "label": "Yfirfarin þýðing",
+      "description": "Human-reviewed faithful translation",
+      "path": "faithful/",
+      "priority": 1
+    },
+    {
+      "id": "mt-preview",
+      "label": "Vélþýðing (forskoðun)",
+      "description": "Machine translation preview - not human-reviewed",
+      "path": "mt-preview/",
+      "priority": 2
+    }
+  ],
+  "glossary": "glossary.json"
 }

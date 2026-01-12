@@ -20,10 +20,14 @@
     "tmUpdated": { "complete": false },
     "editorialPass2": { "complete": false },
     "publication": {
-      "complete": true,
-      "date": "2024-11-01",
-      "version": "ai-preview",
-      "notes": "AI translation published for testing"
+      "mtPreview": {
+        "complete": true,
+        "date": "2024-11-01",
+        "notes": "AI translation published for testing"
+      },
+      "faithful": {
+        "complete": false
+      }
     }
   },
   "images": {

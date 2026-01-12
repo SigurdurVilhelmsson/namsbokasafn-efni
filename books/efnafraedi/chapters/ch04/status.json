@@ -3,29 +3,70 @@
   "titleEn": "Stoichiometry of Chemical Reactions",
   "titleIs": "Magn- og efnareikningar",
   "sections": [
-    { "id": "4.1", "titleEn": "Writing and Balancing Chemical Equations", "titleIs": "Ritun og jöfnun efnajafna" },
-    { "id": "4.2", "titleEn": "Classifying Chemical Reactions", "titleIs": "Flokkun efnahvarfa" },
-    { "id": "4.3", "titleEn": "Reaction Stoichiometry", "titleIs": "Magn- og efnareikningar í efnahvörfum" },
-    { "id": "4.4", "titleEn": "Reaction Yields", "titleIs": "Afköst efnahvarfa" },
-    { "id": "4.5", "titleEn": "Quantitative Chemical Analysis", "titleIs": "Magngreining í efnafræði" }
+    {
+      "id": "4.1",
+      "titleEn": "Writing and Balancing Chemical Equations",
+      "titleIs": "Ritun og jöfnun efnajafna"
+    },
+    {
+      "id": "4.2",
+      "titleEn": "Classifying Chemical Reactions",
+      "titleIs": "Flokkun efnahvarfa"
+    },
+    {
+      "id": "4.3",
+      "titleEn": "Reaction Stoichiometry",
+      "titleIs": "Magn- og efnareikningar í efnahvörfum"
+    },
+    {
+      "id": "4.4",
+      "titleEn": "Reaction Yields",
+      "titleIs": "Afköst efnahvarfa"
+    },
+    {
+      "id": "4.5",
+      "titleEn": "Quantitative Chemical Analysis",
+      "titleIs": "Magngreining í efnafræði"
+    }
   ],
   "status": {
-    "source": { "complete": true, "date": "2024-11-01" },
-    "mtOutput": { "complete": true, "date": "2024-11-01" },
-    "matecat": {
-      "complete": false,
-      "inProgress": true,
-      "notes": "Currently being aligned in Matecat"
+    "source": {
+      "complete": true,
+      "date": "2024-11-01"
     },
-    "editorialPass1": { "complete": false },
-    "tmUpdated": { "complete": false },
-    "editorialPass2": { "complete": false },
-    "publication": { "complete": false }
+    "mtOutput": {
+      "complete": true,
+      "date": "2024-11-01"
+    },
+    "matecat": {
+      "complete": true,
+      "inProgress": false,
+      "notes": "Currently being aligned in Matecat",
+      "date": "2026-01-12",
+      "pending": false
+    },
+    "editorialPass1": {
+      "complete": false
+    },
+    "tmUpdated": {
+      "complete": false
+    },
+    "editorialPass2": {
+      "complete": false
+    },
+    "publication": {
+      "mtPreview": {
+        "complete": false
+      },
+      "faithful": {
+        "complete": false
+      }
+    }
   },
   "images": {
     "total": null,
     "translated": 0,
     "status": "not-started"
   },
-  "notes": "Matecat alignment in progress."
+  "notes": "Matecat complete. Ready for Pass 1 or MT preview publication."
 }
