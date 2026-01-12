@@ -1,0 +1,49 @@
+﻿Chapter 17
+1. 
+(a) reduction; (b) oxidation; (c) oxidation; (d) reduction
+3. 
+(a)  (b)  (c)  (d) 
+5. 
+Oxidized: (a) Sn2+; (b) Hg; (c) Al; reduced: (a) H2O2; (b) PbO2; (c)  oxidizing agent: (a) H2O2; (b) PbO2; (c)  reducing agent: (a) Sn2+; (b) Hg; (c) Al
+7. 
+Oxidized = reducing agent: (a)  (b) Mn(OH)2; (c) H2; (d) Al; reduced = oxidizing agent: (a) Cu(OH)2; (b) O2; (c)  (d) 
+9. 
+In basic solution, [OH−] > 1  10−7 M > [H+]. Hydrogen ion cannot appear as a reactant because its concentration is essentially zero. If it were produced, it would instantly react with the excess hydroxide ion to produce water. Thus, hydrogen ion should not appear as a reactant or product in basic solution.
+11. 
+(a)  (b)  (c)  (d) 
+13. 
+(a)  (b) 
+15. 
+Species oxidized = reducing agent: (a) Al(s); (b) NO(g); (c) Mg(s); and (d) MnO2(s); Species reduced = oxidizing agent: (a) Zr4+(aq); (b) Ag+(aq); (c) ; and (d) 
+17. 
+Without the salt bridge, the circuit would be open (or broken) and no current could flow. With a salt bridge, each half-cell remains electrically neutral and current can flow through the circuit.
+19. 
+Active electrodes participate in the oxidation-reduction reaction. Since metals form cations, the electrode would lose mass if metal atoms in the electrode were to oxidize and go into solution. Oxidation occurs at the anode.
+21. 
+(a) +2.115 V (spontaneous); (b) +0.4626 V (spontaneous); (c) +1.048 V (spontaneous); (d) +0.727 V (spontaneous)
+23. 
+ +1.16 V; spontaneous
+25. 
+ −1.259 V; nonspontaneous
+27. 
+(a) 0 kJ/mol; (b) −83.7 kJ/mol; (c) +235.3 kJ/mol
+29. 
+(a) standard cell potential: 1.50 V, spontaneous; cell potential under stated conditions: 1.43 V, spontaneous; (b) standard cell potential: 1.405 V, spontaneous; cell potential under stated conditions: 1.423 V, spontaneous; (c) standard cell potential: −2.749 V, nonspontaneous; cell potential under stated conditions: −2.733 V, nonspontaneous
+31. 
+(a) 1.7  10−10; (b) 2.6  10−21; (c) 4.693  1021; (d) 1.0  10−14
+33. 
+(a)  (b) 3.5  1015; (c) 5.6  10−9 M
+34. 
+Batteries are self-contained and have a limited supply of reagents to expend before going dead. Alternatively, battery reaction byproducts accumulate and interfere with the reaction. Because a fuel cell is constantly resupplied with reactants and products are expelled, it can continue to function as long as reagents are supplied.
+36. 
+According to kinetic theory, chemical reactions occur more slowly at lower temperatures due to the decreased rate of collisions between reactant molecules. The rates of the redox reactions taking place within batteries decrease with temperature, resulting in a decreased production of electrical current.
+38. 
+Mg and Zn
+40. 
+Both examples involve cathodic protection. The (sacrificial) anode is the metal that corrodes (oxidizes or reacts). In the case of iron (−0.447 V) and zinc (−0.7618 V), zinc has a more negative standard reduction potential and so serves as the anode. In the case of iron and copper (0.34 V), iron has the smaller standard reduction potential and so corrodes (serves as the anode).
+42. 
+While the reduction potential of lithium would make it capable of protecting the other metals, this high potential is also indicative of how reactive lithium is; it would have a spontaneous reaction with most substances. This means that the lithium would react quickly with other substances, even those that would not oxidize the metal it is attempting to protect. Reactivity like this means the sacrificial anode would be depleted rapidly and need to be replaced frequently. (Optional additional reason: fire hazard in the presence of water.)
+46. 
+(a)  (b)  (c)  (d) 
+48. 
+0.79 L

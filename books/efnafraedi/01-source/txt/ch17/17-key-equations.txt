@@ -1,0 +1,10 @@
+﻿Key Equations
+
+
+
+
+
+ΔG = −nFEcell
+
+
+Q = I  t = n  F
