@@ -12,6 +12,7 @@ lastUpdated: "2026-01-12"
 
 ## 2.3 Bygging atóma og táknmál
 
+:::note
 ### Námsmarkmið
 
 Í lok þessa kafla munt þú geta:
@@ -19,6 +20,7 @@ lastUpdated: "2026-01-12"
 -   Skrifað og túlkað tákn sem sýna sætistölu, massatölu og hleðslu atóms eða jónar
 -   Skilgreint atómmassaeiningu og meðalatómmassa
 -   Reiknað út meðalatómmassa og hlutfallslegt magn samsæta
+:::
 
 Þróun nútíma atómkenningar leiddi margt í ljós um innri byggingu atóma. Í ljós kom að atóm inniheldur mjög lítinn kjarna sem samanstendur af jákvætt hlöðnum róteindum og óhlöðnum nifteindum, umkringdan mun stærra rúmmáli sem inniheldur neikvætt hlaðnar rafeindir. Kjarninn inniheldur meirihluta massa atómsins vegna þess að róteindir og nifteindir eru mun þyngri en rafeindir, en rafeindir taka nánast allt rúmmál atómsins. Þvermál atóms er í stærðargráðunni 10^−10^ m, en þvermál kjarnans er um það bil 10^−15^ m --- um 100.000 sinnum minna. Til að fá hugmynd um hlutfallslega stærð þeirra má íhuga þetta: Ef kjarninn væri á stærð við bláber, væri atómið á stærð við fótboltaleikvang ([mynd 2.11](#CNX_Chem_02_03_AtomSize)).
 
@@ -57,32 +59,31 @@ Hleðsla atóms = fjöldi róteinda − fjöldi rafeinda
 
 Eins og fjallað verður nánar um síðar í þessum kafla fá atóm (og sameindir) venjulega hleðslu með því að fá eða missa rafeindir. Atóm sem fær eina eða fleiri rafeindir mun sýna neikvæða hleðslu og kallast anjón. Jákvætt hlaðin atóm sem kallast katjónir myndast þegar atóm missir eina eða fleiri rafeindir. Til dæmis hefur hlutlaust natríumatóm (Z = 11) 11 rafeindir. Ef þetta atóm missir eina rafeind verður það að katjón með 1+ hleðslu (11 − 10 = 1+). Hlutlaust súrefnisatóm (Z = 8) hefur átta rafeindir og ef það fær tvær rafeindir verður það að anjón með 2− hleðslu (8 − 10 = 2−).
 
-### Dæmi 2.3  {#dæmi-2.3 .Heading3Grey}
-
-#### Samsetning atóms {#samsetning-atóms .Heading4Grey}
+:::example
+### Dæmi 2.3: Samsetning atóms
 
 Joð er nauðsynlegt snefilefni í fæðunni okkar; það er nauðsynlegt til að framleiða skjaldkirtilshormón. Of lítið joð í fæðunni getur leitt til skjaldkirtilsauka, þ.e. skjaldkirtillinn stækkar ([mynd 2.12](#CNX_Chem_02_03_Iodine)).
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![Figure A shows a photo of a person who has a very swollen thyroid in his or her neck. Figure B shows a photo of a canister of iodized salt.](./images/media/rId38.jpg){width="4.875in" height="2.16in"}
-
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Figure A shows a photo of a person who has a very swollen thyroid in his or her neck. Figure B shows a photo of a canister of iodized salt.](./images/media/rId38.jpg){width="4.875in" height="2.16in"}
 
 Mynd 2.12 (a) Of lítið joð í fæðunni getur valdið stækkun skjaldkirtilsins sem kallast skjaldkirtilsauki. (b) Örlítil viðbót af joði í salt, sem kemur í veg fyrir myndun skjaldkirtilsauka, hefur hjálpað til við að útrýma þessu vandamáli í Bandaríkjunum þar sem saltneysla er mikil. (heimild a: breyting á verki eftir „Almazi"/Wikimedia Commons; heimild b: breyting á verki eftir Mike Mozart)
 
 Með því að bæta við örlitlu joði í matarsalt (joðbætt salt) hefur þessu heilbrigðisvandamáli í Bandaríkjunum í raun verið útrýmt, en allt að 40% jarðarbúa eru enn í hættu á joðskorti. Joðatómum er bætt við sem anjónum og hver þeirra hefur 1− hleðslu og massatöluna 127. Ákvarðaðu fjölda róteinda, nifteinda og rafeinda í einni af þessum joðanjónum.
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 Sætistala joðs (53) segir okkur að hlutlaust joðatóm inniheldur 53 róteindir í kjarna sínum og 53 rafeindir utan kjarnans. Þar sem summa fjölda róteinda og nifteinda er jöfn massatölunni, 127, er fjöldi nifteinda 74 (127 − 53 = 74). Þar sem joðinu er bætt við sem 1− anjón er fjöldi rafeinda 54 \[53 -- (1--) = 54\].
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Jón platínu hefur massatöluna 195 og inniheldur 74 rafeindir. Hversu margar róteindir og nifteindir inniheldur hún og hver er hleðsla hennar?
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 78 róteindir; 117 nifteindir; hleðslan er 4+
+:::
+:::
 
 ### Efnatákn
 
@@ -133,9 +134,11 @@ Tafla 2.3
 
 Hefð er fyrir því að þau sem uppgötva nýtt frumefni gefi því nafn. Hins vegar er nafn nýja frumefnisins til bráðabirgða byggt á latneska orðinu/orðunum fyrir sætistölu þess, þar til formlegt nafn hefur verið viðurkennt af Alþjóðasambandi um hreina og hagnýta efnafræði (IUPAC). Til dæmis var frumefni 106 kallað unnilhexíum (Unh), frumefni 107 var kallað unnilseptíum (Uns) og frumefni 108 var kallað unniloktíum (Uno) í nokkur ár. Þessi frumefni eru nú nefnd eftir vísindamönnum (eða stundum stöðum); til dæmis er frumefni 106 nú þekkt sem *seaborgíum* (Sg) til heiðurs Glenn Seaborg, Nóbelsverðlaunahafa sem kom að uppgötvun nokkurra þungra frumefna. Frumefni 109 var nefnt til heiðurs Lise Meitner, sem uppgötvaði kjarnaklofnun, fyrirbæri sem átti eftir að breyta heiminum; Meitner lagði einnig sitt af mörkum til uppgötvunar nokkurra mikilvægra samsæta, sem fjallað er um hér á eftir.
 
-### Tengill á námsefni {#tengill-á-námsefni .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Farðu á þessa [síðu](http://openstax.org/l/16IUPAC) til að læra meira um IUPAC, Alþjóðasamband um hreina og hagnýta efnafræði, og skoðaðu lotukerfi þess.
+:::
 
 ### Samsætur
 
@@ -205,9 +208,11 @@ Samsetning kjarna atóma mjög léttra frumefna
 
 Tafla 2.4
 
-### Tengill á námsefni {#tengill-á-námsefni-1 .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Notaðu þennan [hermi](http://openstax.org/l/16PhetAtomBld) til að smíða atóm fyrstu 10 frumefnanna, sjáðu hvaða samsætur eru til, athugaðu stöðugleika kjarna og öðlastu reynslu af samsætutáknum.
+:::
 
 ### Atómmassi
 
@@ -223,35 +228,36 @@ Til dæmis er frumefnið bór samsett úr tveimur samsætum: Um 19,9% allra bór
 
 Það er mikilvægt að skilja að ekkert eitt bóratóm vegur nákvæmlega 10,8 amu; 10,8 amu er meðalmassi allra bóratóma og einstök bóratóm vega annaðhvort um það bil 10 amu eða 11 amu.
 
-### Dæmi 2.4  {#dæmi-2.4 .Heading3Grey}
-
-#### Útreikningur á meðalatómmassa {#útreikningur-á-meðalatómmassa .Heading4Grey}
+:::example
+### Dæmi 2.4: Útreikningur á meðalatómmassa
 
 Loftsteinn sem fannst í miðri Indiana inniheldur snefil af eðalgasinu neon sem hann tók upp úr sólvindinum á ferð sinni um sólkerfið. Greining á sýni af gasinu sýndi að það samanstóð af 91,84% ^20^Ne (massi 19,9924 amu), 0,47% ^21^Ne (massi 20,9940 amu) og 7,69% ^22^Ne (massi 21,9914 amu). Hver er meðalmassi neonsins í sólvindinum?
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 ![None](./images/media/rId71.jpg){width="6.5in" height="0.6145833333333334in"}
 
 Meðalmassi neonatóms í sólvindinum er 20,15 amu. (Meðalmassi neonatóms á jörðu niðri er 20.1796 amu. Þessi niðurstaða sýnir að við gætum fundið smávægilegan mun á náttúrulegri gnægð samsæta, allt eftir uppruna þeirra.)
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Sýni af magnesíum inniheldur 78,70% af ^24^Mg atómum (massi 23,98 amu), 10,13% af ^25^Mg atómum (massi 24,99 amu) og 11,17% af ^26^Mg atómum (massi 25,98 amu). Reiknaðu meðalmassa Mg atóms.
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 24,31 amu
+:::
+:::
 
 Við getum líka gert afbrigði af þessari tegund útreikninga, eins og sýnt er í næsta dæmi.
 
-### Dæmi 2.5  {#dæmi-2.5 .Heading3Grey}
-
-#### Útreikningur á hlutfallslegri gnægð {#útreikningur-á-hlutfallslegri-gnægð .Heading4Grey}
+:::example
+### Dæmi 2.5: Útreikningur á hlutfallslegri gnægð
 
 Klór sem finnst í náttúrunni samanstendur af ^35^Cl (massi 34,96885 amu) og ^37^Cl (massi 36,96590 amu), með meðalmassa 35,453 amu. Hver er prósentusamsetning Cl með tilliti til þessara tveggja samsæta?
 
-#### Lausn {#lausn-2 .Heading4Grey}
+**Lausn**
 
 Meðalmassi klórs er sá hluti sem er ^35^Cl sinnum massi ^35^Cl ásamt þeim hluta sem er ^37^Cl sinnum massi ^37^Cl.
 
@@ -267,19 +273,25 @@ Ef við setjum þetta inn í jöfnuna fyrir meðalmassa fáum við:
 
 Lausnin gefur: *x* = 0,7576, sem þýðir að 1,00 − 0,7576 = 0,2424. Klór samanstendur því af 75,76% ^35^Cl og 24,24% ^37^Cl.
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-2 .Heading4Grey}
+:::
+
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Kopar sem finnst í náttúrunni samanstendur af ^63^Cu (massi 62,9296 amu) og ^65^Cu (massi 64,9278 amu), með meðalmassa 63,546 amu. Hver er prósentusamsetning Cu með tilliti til þessara tveggja samsæta?
 
-### Svar: {#svar-2 .Heading3Grey}
-
+:::answer
 69,15% Cu-63 og 30,85% Cu-65
+:::
+:::
 
  
 
-### Tengill á námsefni {#tengill-á-námsefni-2 .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Farðu á þessa [síðu](http://openstax.org/l/16PhetAtomMass) til að búa til efnablöndur af helstu samsætum fyrstu 18 frumefnanna, öðlast reynslu af meðalatómmassa og kanna náttúruleg samsætuhlutföll með því að nota herminn Isotopes and Atomic Mass.
+:::
 
 Eins og þú munt læra eru samsætur mikilvægar í náttúrunni og sérstaklega í skilningi mannsins á vísindum og læknisfræði. Lítum aðeins á eina náttúrulega, stöðuga samsætu: Súrefni-18, sem er nefnd í töflunni hér að ofan og er kölluð ein af umhverfissamsætunum. Hún er mikilvæg í forloftslagsfræði, til dæmis, vegna þess að vísindamenn geta notað hlutfallið milli súrefnis-18 og súrefnis-16 í ískjarna til að ákvarða hitastig úrkomu yfir tíma. Súrefni-18 var einnig mikilvægt við uppgötvun efnaskiptaferla og hvarfganga ensíma. Mildred Cohn var frumkvöðull í notkun þessara samsæta sem snefilefna, svo að rannsakendur gætu fylgst með ferli þeirra í gegnum efnahvörf og öðlast betri skilning á því sem er að gerast. Ein af fyrstu uppgötvunum hennar veitti innsýn í fosfórun glúkósa sem á sér stað í hvatberum. Og aðferðirnar við að nota samsætur fyrir þessar rannsóknir lögðu grunn að heilum fræðasviðum.
 
@@ -292,6 +304,8 @@ Hægt er að ákvarða tilvist og náttúrulega gnægð samsæta með tilraunum 
 
 Mynd 2.15 Greining á sirkoni í massagreini býr til massaróf með toppum sem sýna mismunandi samsætur Zr.
 
-### Tengill á námsefni {#tengill-á-námsefni-3 .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Sjáðu [hreyfimynd](http://openstax.org/l/16MassSpec) sem útskýrir massagreiningu. Horfðu á þetta [myndband](http://openstax.org/l/16RSChemistry) frá Royal Society for Chemistry til að fá stutta lýsingu á grundvallaratriðum massagreiningar.
+:::

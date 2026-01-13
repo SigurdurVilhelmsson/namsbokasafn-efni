@@ -12,6 +12,7 @@ lastUpdated: "2026-01-12"
 
 ## 2.6 Jóna- og sameindaefni
 
+:::note
 ### Námsmarkmið
 
 Í lok þessa kafla munt þú geta:
@@ -19,6 +20,7 @@ lastUpdated: "2026-01-12"
 -   Skilgreint jónaefni og sameindaefni
 -   Spáð fyrir um gerð efnasambands sem myndast úr frumefnum út frá staðsetningu þeirra í lotukerfinu
 -   Ákvarðað formúlur fyrir einföld jónaefni
+:::
 
 Í venjulegum efnahvörfum helst kjarni hvers atóms (og þar með auðkenni frumefnisins) óbreyttur. Hins vegar er hægt að bæta rafeindum við atóm með flutningi frá öðrum atómum, missa þær með flutningi til annarra atóma eða deila þeim með öðrum atómum. Flutningur og deiling rafeinda milli atóma stjórnar efnafræði frumefnanna. Við myndun sumra efnasambanda fá atóm rafeindir eða missa þær og mynda rafhlaðnar agnir sem kallast jónir ([mynd 2.28](#CNX_Chem_02_06_NaCation)).
 
@@ -42,45 +44,49 @@ Taktu eftir notagildi lotukerfisins við að spá fyrir um líklega jónamyndun 
 
 Mynd 2.29 Sum frumefni sýna reglulegt mynstur jónahleðslu þegar þau mynda jónir.
 
-### Dæmi 2.8  {#dæmi-2.8 .Heading3Grey}
-
-#### Samsetning jóna {#samsetning-jóna .Heading4Grey}
+:::example
+### Dæmi 2.8: Samsetning jóna
 
 Jón sem finnst í sumum efnasamböndum sem notuð eru í svitalyktareyða inniheldur 13 róteindir og 10 rafeindir. Hvert er tákn hennar?
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 Þar sem fjöldi róteinda helst óbreyttur þegar atóm myndar jón verður sætistala frumefnisins að vera 13. Með því að vita þetta getum við notað lotukerfið til að bera kennsl á frumefnið sem Al (ál). Al-atómið hefur misst þrjár rafeindir og hefur því þremur fleiri jákvæðum hleðslum (13) en það hefur rafeindir (10). Þetta er álkatjónin, Al^3+^.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Gefðu upp tákn og heiti jónarinnar með 34 róteindir og 36 rafeindir.
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 Se^2−^, seleníðjónin
+:::
+:::
 
  
 
-### Dæmi 2.9  {#dæmi-2.9 .Heading3Grey}
-
-#### Myndun jóna {#myndun-jóna .Heading4Grey}
+:::example
+### Dæmi 2.9: Myndun jóna
 
 Magnesíum og köfnunarefni hvarfast og mynda jónaefnasamband. Spáðu fyrir um hvort myndar anjón, hvort myndar katjón og hver hleðsla hverrar jónar er. Skrifaðu tákn fyrir hverja jón og nefndu þær.
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 Staða magnesíums í lotukerfinu (hópur 2) segir okkur að það er málmur. Málmar mynda jákvæðar jónir (katjónir). Magnesíumatóm verður að missa tvær rafeindir til að hafa sama fjölda rafeinda og atóm næsta eðalgass á undan, neons. Þannig mun magnesíumatóm mynda katjón með tveimur færri rafeindum en róteindum og hleðslu upp á 2+. Táknið fyrir jónina er Mg^2+^ og hún er kölluð magnesíumjón.
 
 Staða köfnunarefnis í lotukerfinu (hópur 15) sýnir að það er málmleysingi. Málmleysingjar mynda neikvæðar jónir (anjónir). Köfnunarefnisatóm verður að fá þrjár rafeindir til að hafa sama fjölda rafeinda og atóm næsta eðalgass á eftir, neons. Þannig mun köfnunarefnisatóm mynda anjón með þremur fleiri rafeindum en róteindum og hleðslu upp á 3−. Táknið fyrir jónina er N^3−^ og hún er kölluð nítríðjón.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Ál og kolefni hvarfast og mynda jónaefni. Spáðu fyrir um hvort myndar anjón, hvort myndar katjón og hver hleðsla hverrar jónar er. Skrifaðu tákn fyrir hverja jón og nefndu þær.
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 Al mun mynda katjón með hleðsluna 3+: Al^3+^, áljón. Kolefni mun mynda anjón með hleðsluna 4−: C^4−^, karbíðjón.
+:::
+:::
 
 Jónirnar sem við höfum rætt hingað til eru kallaðar einatóma jónir, það er að segja, þær eru jónir sem myndast úr aðeins einu atómi. Við finnum líka margar fjölatóma jónir. Þessar jónir, sem virka sem aðskildar einingar, eru rafmagnaðar sameindir (hópur tengdra atóma með heildarhleðslu). Sumar af mikilvægustu fjölatóma jónunum eru taldar upp í [töflu 2.5](#fs-idp278664880). Oxýanjónir eru fjölatóma jónir sem innihalda eitt eða fleiri súrefnisatóm. Á þessum tímapunkti í efnafræðináminu þínu ættir þú að leggja á minnið nöfn, formúlur og hleðslur algengustu fjölfrumeinda jónanna. Þar sem þú munt nota þær ítrekað munu þær fljótlega verða þér kunnugar.
 
@@ -161,56 +167,59 @@ Oft er hægt að þekkja jónaefni af eiginleikum þeirra. Jónaefni eru föst e
 
 Mynd 2.30 Natríumklóríð bráðnar við 801 °C og leiðir rafmagn þegar það er bráðið. (heimild: breyting á verki eftir Mark Blaser og Matt Evans)
 
-### Tengill á námsefni {#tengill-á-námsefni .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Horfðu á þetta [myndband](http://openstax.org/l/16moltensalt) til að sjá efnablöndu af söltum bráðna og leiða rafmagn.
+:::
 
 Í hverju jónaefni er heildarfjöldi jákvæðra hleðslna katjónanna jafn heildarfjölda neikvæðra hleðslna anjónanna. Þannig eru jónaefni í heildina rafhlutlaus, jafnvel þótt þau innihaldi jákvæðar og neikvæðar jónir. Við getum notað þessa athugun til að hjálpa okkur að skrifa formúlu jónaefnis. Formúla jónaefnis verður að hafa hlutfall jóna þannig að fjöldi jákvæðra og neikvæðra hleðslna sé jafn.
 
-### Dæmi 2.10  {#dæmi-2.10 .Heading3Grey}
-
-#### Að spá fyrir um formúlu jónaefnis {#að-spá-fyrir-um-formúlu-jónaefnis .Heading4Grey}
+:::example
+### Dæmi 2.10: Að spá fyrir um formúlu jónaefnis
 
 Gimsteinninn safír ([mynd 2.31](#CNX_Chem_02_06_Sapphire)) er að mestu leyti efnasamband áls og súrefnis sem inniheldur álkatjónir, Al^3+^, og súrefnisanjónir, O^2−^. Hver er formúla þessa efnasambands?
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![This is a photograph of a ring with a sapphire set in it.](./images/media/rId48.jpg){width="1.625in" height="1.24in"}
-
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![This is a photograph of a ring with a sapphire set in it.](./images/media/rId48.jpg){width="1.625in" height="1.24in"}
 
 Mynd 2.31 Þótt hreint áloxíð sé litlaust gefa snefilmagni af járni og títani bláum safír sinn einkennandi lit. (heimild: breyting á verki eftir Stanislav Doronenko)
 
-#### Lausn {#lausn-2 .Heading4Grey}
+**Lausn**
 
 Vegna þess að jónaefnið verður að vera rafhlutlaust verður það að hafa sama fjölda jákvæðra og neikvæðra hleðslna. Tvær áljónir, hvor með hleðsluna 3+, myndu gefa okkur sex jákvæðar hleðslur og þrjár oxíðjónir, hvor með hleðsluna 2−, myndu gefa okkur sex neikvæðar hleðslur. Formúlan væri Al~2~O~3~.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-2 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Spáðu fyrir um formúlu jónaefnisins sem myndast milli natríumkatjónarinnar, Na^+^, og súlfíðanjónarinnar, S^2−^.
 
-### Svar: {#svar-2 .Heading3Grey}
-
+:::answer
 Na~2~S
+:::
+:::
 
 Mörg jónaefni innihalda fjölatóma jónir ([tafla 2.5](#fs-idp278664880)) sem katjón, anjón eða hvort tveggja. Eins og með einföld jónaefni verða þessi efnasambönd einnig að vera rafhlutlaus, svo hægt er að spá fyrir um formúlur þeirra með því að meðhöndla fjölfrumeinda jónirnar sem aðskildar einingar. Við notum sviga í formúlu til að gefa til kynna hóp atóma sem hegða sér sem eining. Til dæmis er formúlan fyrir kalsíumfosfat, eitt af steinefnunum í beinum okkar, Ca~3~(PO~4~)~2~. Þessi formúla gefur til kynna að það séu þrjár kalsíumjónir (Ca^2+^) fyrir hverja tvo fosfat $\left( \text{PO}_{4}^{3 -} \right)$ hópa. Hóparnir $\text{PO}_{4}^{3 -}$ eru aðskildar einingar sem hver samanstendur af einu fosfóratómi og fjórum súrefnisatómum og hafa heildarhleðsluna 3−. Efnasambandið er rafhlutlaust og formúla þess sýnir heildarfjölda þriggja Ca, tveggja P og átta O atóma.
 
-### Dæmi 2.11  {#dæmi-2.11 .Heading3Grey}
-
-#### Að spá fyrir um formúlu efnasambands með fjölfrumeinda anjón {#að-spá-fyrir-um-formúlu-efnasambands-með-fjölfrumeinda-anjón .Heading4Grey}
+:::example
+### Dæmi 2.11: Að spá fyrir um formúlu efnasambands með fjölfrumeinda anjón
 
 Lyftiduft inniheldur kalsíumdívetnisfosfat, jónaefni sem samanstendur af jónunum Ca^2+^ og $\text{H}_{2}\text{PO}_{4}^{-}.$ Hver er formúla þessa efnasambands?
 
-#### Lausn {#lausn-3 .Heading4Grey}
+**Lausn**
 
 Jákvæðu og neikvæðu hleðslurnar verða að jafnast út og þetta jónaefni verður að vera rafhlutlaust. Þess vegna verðum við að hafa tvær neikvæðar hleðslur til að jafna út 2+ hleðslu kalsíumjónarinnar. Þetta krefst hlutfallsins ein Ca^2+^ jón á móti tveimur $\text{H}_{2}\text{PO}_{4}^{-}$ jónum. Við táknum þetta með því að setja formúluna fyrir tvívetnisfosfatjónina innan sviga og bæta við neðanskriftinni 2. Formúlan er Ca(H~2~PO~4~)~2~.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-3 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Spáðu fyrir um formúlu jónaefnisins sem myndast milli litíumjónarinnar og peroxíðjónarinnar, $\text{O}_{2}^{2 -}$ (Vísbending: Notaðu lotukerfið til að spá fyrir um formerki og hleðslu á litíumjónarinnar.)
 
-### Svar: {#svar-3 .Heading3Grey}
-
+:::answer
 Li~2~O~2~
+:::
+:::
 
 Þar sem jónaefni er ekki samsett úr stökum, aðskildum sameindum er ekki hægt að tákna það rétt með *sameinda*formúlu. Þess í stað verður að tákna jónaefni með formúlu sem gefur til kynna *hlutfallslegan fjölda* jóna sem það inniheldur. Fyrir efnasambönd sem innihalda aðeins einfrumeinda jónir (eins og NaCl) og fyrir mörg efnasambönd sem innihalda fjölfrumeinda jónir (eins og CaSO~4~) eru þessar formúlur einfaldlega reynsluformúlurnar sem kynntar voru fyrr í þessum kafla. Hins vegar eru formúlur fyrir sum jónaefni sem innihalda fjölfrumeinda jónir ekki reynsluformúlur. Til dæmis er jónaefnið natríumoxalat samsett úr Na^+^ og $\text{C}_{2}\text{O}_{4}^{2 -}$ jónum í hlutfallinu 2:1 og formúla þess er skrifuð sem Na~2~C~2~O~4~. Neðanskriftirnar í þessari formúlu eru ekki lægstu mögulegu heiltölurnar, þar sem hægt er að deila í þær báðar með 2 til að fá reynsluformúluna NaCO~2~. Þetta er hins vegar ekki viðurkennd formúla fyrir natríumoxalat, þar sem hún táknar ekki nákvæmlega fjölatómajón efnasambandsins $\text{C}_{2}\text{O}_{4}^{2 -}.$
 
@@ -220,9 +229,8 @@ Mörg efnasambönd innihalda ekki jónir heldur samanstanda eingöngu af stökum
 
 Á meðan jónaefni myndast venjulega þegar málmur og málmleysingi sameinast, myndast samgild efnasambönd venjulega við samsetningu málmleysingja. Þannig getur lotukerfið hjálpað okkur að þekkja mörg þeirra efnasambanda sem eru samgild. Þó að við getum notað staðsetningu frumefna efnasambands í lotukerfinu til að spá fyrir um hvort það sé jónískt eða samgilt á þessu stigi í efnafræðinámi okkar, ættir þú að vera meðvitaður um að þetta er mjög einfölduð nálgun sem tekur ekki tillit til fjölda áhugaverðra undantekninga. Það eru grá svæði milli jónaefna og sameindaefnasambanda og þú munt læra meira um þau síðar.
 
-### Dæmi 2.12  {#dæmi-2.12 .Heading3Grey}
-
-#### Að spá fyrir um gerð tengja í efnasamböndum {#að-spá-fyrir-um-gerð-tengja-í-efnasamböndum .Heading4Grey}
+:::example
+### Dæmi 2.12: Að spá fyrir um gerð tengja í efnasamböndum
 
 Spáðu fyrir um hvort eftirfarandi efnasambönd séu jónísk eða sameinda:
 
@@ -234,7 +242,7 @@ Spáðu fyrir um hvort eftirfarandi efnasambönd séu jónísk eða sameinda:
 
 \(d\) Li~2~CO~3~, litíumgjafi í þunglyndislyfjum
 
-#### Lausn {#lausn-4 .Heading4Grey}
+**Lausn**
 
 \(a\) Kalíum (flokkur 1) er málmur og joð (flokkur 17) er málmleysingi; spáð er að KI sé jónaefni.
 
@@ -243,8 +251,10 @@ Spáðu fyrir um hvort eftirfarandi efnasambönd séu jónísk eða sameinda:
 \(c\) Kolefni (flokkur 14) er málmleysingi, vetni (flokkur 1) er málmleysingi og klór (flokkur 17) er málmleysingi; spáð er að CHCl~3~ sé sameindaefni.
 
 \(d\) Litíum (flokkur 1) er málmur og karbónat er fjölatómajón; spáð er að Li~2~CO~3~ sé jónaefni.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-4 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Notaðu lotukerfið til að spá fyrir um hvort eftirfarandi efnasambönd séu jónísk eða samgild:
 
@@ -256,6 +266,7 @@ Notaðu lotukerfið til að spá fyrir um hvort eftirfarandi efnasambönd séu j
 
 \(d\) Al~2~(SO~4~)~3~
 
-### Svar: {#svar-4 .Heading3Grey}
-
+:::answer
 \(a\) sameinda; (b) jónískt; (c) sameinda; (d) jónískt
+:::
+:::

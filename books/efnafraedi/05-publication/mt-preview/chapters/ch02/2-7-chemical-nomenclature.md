@@ -12,11 +12,13 @@ lastUpdated: "2026-01-12"
 
 ## 2.7 Nafnakerfi efnafræðinnar
 
+:::note
 ### Námsmarkmið
 
 Í lok þessa kafla munt þú geta:
 
 -   Gefið algengum tegundum ólífrænna efnasambanda heiti með kerfisbundnum hætti
+:::
 
 Nafnakerfi, safn reglna um að nefna hluti, er mikilvægt í vísindum og í mörgum öðrum aðstæðum. Í þessum hluta er lýst aðferð sem er notuð til að nefna einföld jóna- og sameindaefni, svo sem NaCl, CaCO~3~ og N~2~O~4~. Einföldust þeirra eru tvíefni, þau sem innihalda aðeins tvö frumefni, en við munum einnig skoða hvernig á að nefna jónaefni sem innihalda fjölatóma jónir og einn sérstakan, mjög mikilvægan flokk efnasambanda sem kallast sýrur (í síðari köflum þessa texta verður fjallað ítarlega um þessi efnasambönd). Við munum takmarka athygli okkar hér við ólífræn efnasambönd, efnasambönd sem eru aðallega samsett úr öðrum frumefnum en kolefni, og munum fylgja nafnakerfisleiðbeiningum sem IUPAC hefur lagt til. Reglurnar fyrir lífræn efnasambönd, þar sem kolefni er aðalfrumefnið, verða meðhöndlaðar í síðari kafla um lífræna efnafræði.
 
@@ -60,9 +62,8 @@ Heiti nokkurra jónaefna með fjölfrumeinda jónum
 
 Tafla 2.7
 
-### Efnafræði í daglegu lífi {#efnafræði-í-daglegu-lífi .Heading3Grey}
-
-#### Jónaefni í skápunum þínum {#jónaefni-í-skápunum-þínum .Heading4Grey}
+:::note
+### Efnafræði í daglegu lífi: Jónaefni í skápunum þínum
 
 Á hverjum degi rekst þú á og notar fjölda jónaefna. Sum þessara efnasambanda, hvar þau finnast og til hvers þau eru notuð, eru talin upp í [töflu 2.8](#fs-idp268265360). Skoðaðu merkimiðann eða innihaldslistann á hinum ýmsu vörum sem þú notar næstu daga og athugaðu hvort þú rekst á einhver þeirra í þessari töflu, eða finnur önnur jónaefni sem þú gætir nú nefnt eða skrifað sem formúlu.
 
@@ -101,6 +102,7 @@ Jónaefni í daglegu lífi
   -----------------------------------------------------------------------------------------------
 
 Tafla 2.8
+:::
 
 ### Efnasambönd sem innihalda málmjón með breytilega hleðslu
 
@@ -156,9 +158,8 @@ Forskeyti í nafnakerfum
 
 Tafla 2.10
 
-### Dæmi 2.13  {#dæmi-2.13 .Heading3Grey}
-
-#### Nafngift jónaefna {#nafngift-jónaefna .Heading4Grey}
+:::example
+### Dæmi 2.13: Nafngift jónaefna
 
 Nefndu eftirfarandi jónaefni
 
@@ -172,7 +173,7 @@ Nefndu eftirfarandi jónaefni
 
 e\) Ti~2~(SO~4~)~3~
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 Anjónirnar í þessum efnasamböndum hafa fasta neikvæða hleðslu (S^2−^, Se^2−^, N^3−^ og $\text{SO}_{4}^{2 -}),$ og efnasamböndin verða að vera hlutlaus. Þar sem heildarfjöldi jákvæðra hleðslna í hverju efnasambandi verður að vera jafn heildarfjölda neikvæðra hleðslna verða jákvæðu jónirnar að vera Fe^3+^, Cu^2+^, Ga^3+^, Mg^2+^ og Ti^3+^. Þessar hleðslur eru notaðar í nöfnum málmjónanna:
 
@@ -185,8 +186,10 @@ Anjónirnar í þessum efnasamböndum hafa fasta neikvæða hleðslu (S^2−^, S
 \(d\) magnesíumsúlfat heptahýdrat
 
 \(e\) títan(III)súlfat
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Skrifaðu formúlur eftirfarandi jónaefna:
 
@@ -200,15 +203,15 @@ Skrifaðu formúlur eftirfarandi jónaefna:
 
 \(e\) járn(III)klóríð díhýdrat
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 \(a\) CrP; (b) HgS; (c) Mn~3~(PO~4~)~2~; (d) Cu~2~O; (e) FeCl~3~·2H~2~O
+:::
+:::
 
  
 
-### Efnafræði í daglegu lífi {#efnafræði-í-daglegu-lífi-1 .Heading3Grey}
-
-#### Erin Brockovich og krómmengun {#erin-brockovich-og-krómmengun .Heading4Grey}
+:::note
+### Efnafræði í daglegu lífi: Erin Brockovich og krómmengun
 
 Í upphafi tíunda áratugarins uppgötvaði lögfræðiritarinn Erin Brockovich ([mynd 2.32](#CNX_Chem_02_07_ErinBrocko)) háa tíðni alvarlegra veikinda í smábænum Hinckley í Kaliforníu. Rannsókn hennar tengdi að lokum veikindin við grunnvatn sem var mengað af Cr(VI) sem Pacific Gas & Electric (PG&E) notaði til að berjast gegn tæringu í nálægri jarðgasleiðslu. Eins og fram kom í kvikmyndinni *Erin Brockovich* (sem Julia Roberts vann Óskarsverðlaun fyrir), stefndu Erin og lögfræðingurinn Edward Masry PG&E fyrir að menga vatnið nálægt Hinckley árið 1993. Sáttin sem þau unnu árið 1996 -- 333 milljónir dala -- var hæsta upphæð sem nokkru sinni hafði verið veitt í beinni málsókn í Bandaríkjunum á þeim tíma.
 
@@ -222,6 +225,7 @@ Mynd 2.32 (a) Erin Brockovich komst að því að Cr(VI), sem PG&E notaði, haf�
 Krómsambönd eru mikið notuð í iðnaði, svo sem við krómhúðun, í litagerð, sem rotvarnarefni og til að koma í veg fyrir tæringu í kæliturnavatni, eins og gerðist nálægt Hinckley. Í umhverfinu er króm aðallega til staðar á Cr(III) eða Cr(VI) formi. Cr(III), sem er innihaldsefni í mörgum vítamínum og fæðubótarefnum, myndar efnasambönd sem eru ekki mjög auðleyst í vatni og hefur litla eiturvirkni. En Cr(VI) er mun eitraðra og myndar efnasambönd sem eru nokkuð auðleyst í vatni. Útsetning fyrir litlu magni af Cr(VI) getur leitt til skemmda á öndunarfærum, meltingarvegi og ónæmiskerfi, auk nýrna, lifrar, blóðs og húðar.
 
 Þrátt fyrir hreinsunaraðgerðir er Cr(VI) mengun í grunnvatni enn vandamál í Hinckley og víðar um heiminn. Rannsókn frá 2010 sem Environmental Working Group gerði leiddi í ljós að af 35 bandarískum borgum sem prófaðar voru, höfðu 31 hærra magn af Cr(VI) í kranavatni sínu en lýðheilsumarkmiðið 0,02 hlutar á milljarð sem Umhverfisverndarstofnun Kaliforníu setti.
+:::
 
 ### Sameindasambönd (samgild efnasambönd)
 
@@ -253,9 +257,8 @@ Tafla 2.11
 
 Það eru nokkur almenn nöfn sem þú munt rekast á þegar þú heldur áfram námi þínu í efnafræði. Til dæmis, þótt NO sé oft kallað nituroxíð, er rétt nafn þess köfnunarefnismónoxíð. Á sama hátt er N~2~O þekkt sem hláturgas þótt reglur okkar myndu kveða á um nafnið díniturmónoxíð. (Og H~2~O er venjulega kallað vatn, ekki dívetnismónoxíð.) Þú ættir að leggja á minnið almenn nöfn efnasambanda þegar þú rekst á þau.
 
-### Dæmi 2.14  {#dæmi-2.14 .Heading3Grey}
-
-#### Nafngiftir samgildra efnasambanda {#nafngiftir-samgildra-efnasambanda .Heading4Grey}
+:::example
+### Dæmi 2.14: Nafngiftir samgildra efnasambanda
 
 Nefndu eftirfarandi samgildu efnasambönd:
 
@@ -267,7 +270,7 @@ Nefndu eftirfarandi samgildu efnasambönd:
 
 \(d\) P~4~O~6~
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 Þar sem þessi efnasambönd samanstanda eingöngu af málmleysingjum notum við forskeyti til að tákna fjölda atóma hvers frumefnis:
 
@@ -278,8 +281,10 @@ Nefndu eftirfarandi samgildu efnasambönd:
 \(c\) tvíklórheptoxíð
 
 \(d\) tetrafosfórhexoxíð
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Skrifaðu efnaformúlur fyrir eftirfarandi efnasambönd:
 
@@ -291,15 +296,18 @@ Skrifaðu efnaformúlur fyrir eftirfarandi efnasambönd:
 
 \(d\) kolefnistetraklóríð
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 \(a\) PCl~5~; (b) N~2~O; (c) IF~7~; (d) CCl~4~
+:::
+:::
 
  
 
-### Tengill á námsefni {#tengill-á-námsefni .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Eftirfarandi [vefsíða](http://openstax.org/l/16chemcompname) býður upp á æfingar í nafngiftum efnasambanda og ritun efnaformúla. Þú getur valið tvíundar, fjölfrumeinda og jónaefni með breytilega hleðslu, auk sameindaefnasambanda.
+:::
 
 ### Tvíundarsýrur
 
