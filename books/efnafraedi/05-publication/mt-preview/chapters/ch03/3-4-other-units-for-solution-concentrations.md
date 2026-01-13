@@ -12,12 +12,14 @@ lastUpdated: "2026-01-12"
 
 ## 3.4 Aðrar einingar fyrir styrk lausna
 
-### NÁMSMARKMIÐ
+:::note
+### Námsmarkmið
 
 Í lok þessa kafla muntu geta:
 
 -   Skilgreint styrkeiningarnar massaprósentu, rúmmálsprósentu, massa-rúmmálsprósentu, milljónustuhluta (ppm) og milljarðshluta (ppb)
 -   Framkvæmt útreikninga sem tengja styrk lausnar við rúmmál og/eða massa innihaldsefna hennar með því að nota þessar einingar
+:::
 
 Í fyrri kafla var mólstyrkur kynntur til sögunnar, en það er mjög gagnleg mælieining til að meta styrk lausna. Mólstyrkur er þó aðeins einn mælikvarði á styrk lausnar. Í þessum kafla verður fjallað um nokkrar aðrar styrkeiningar sem eru almennt notaðar í ýmsum tilgangi, annaðhvort vegna þæginda eða hefðar.
 
@@ -38,13 +40,12 @@ Massaprósentur eru vinsælar styrkeiningar fyrir neysluvörur. Á miða á dæm
 
 Mynd 3.17 Fljótandi klór er vatnslausn af natríumhýpóklóríti (NaOCl). Þessi tegund hefur styrkinn 7,4% NaOCl miðað við massa.
 
-### Dæmi 3.22  {#dæmi-3.22 .Heading3Grey}
-
-#### Útreikningur á massaprósentu {#útreikningur-á-massaprósentu .Heading4Grey}
+:::example
+### Dæmi 3.22: Útreikningur á massaprósentu
 
 5,0 g sýni af mænuvökva inniheldur 3,75 mg (0,00375 g) af glúkósa. Hver er massaprósenta glúkósa í mænuvökva?
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 Mænuvökvasýnið inniheldur um það bil 4 mg af glúkósa í 5000 mg af vökva, þannig að massahlutfall glúkósa ætti að vera aðeins minna en einn hluti af 1000, eða um 0,1%. Með því að setja uppgefinn massa inn í jöfnuna sem skilgreinir massaprósentu fæst:
 
@@ -53,24 +54,26 @@ $\%\ \text{glucose} = \ \frac{3.75\ \text{mg glucose}\  \times \ \frac{1\ \text{
 Útreiknuð massaprósenta er í samræmi við gróft mat okkar (hún er aðeins minni en 0,1%).
 
 Athugið að þótt hægt sé að nota hvaða massaeiningu sem er til að reikna út massaprósentu (mg, g, kg, oz og svo framvegis), verður að nota sömu einingu fyrir bæði uppleysta efnið og lausnina svo að massaeiningarnar styttist út og eftir standi víddarlaust hlutfall. Í þessu tilfelli var massaeiningu uppleysta efnisins í teljaranum breytt úr mg í g til að passa við einingarnar í nefnaranum. Einnig hefði verið hægt að breyta massaeiningu mænuvökvans í nefnaranum úr g í mg. Svo lengi sem notaðar eru eins massaeiningar fyrir bæði uppleysta efnið og lausnina verður útreiknuð massaprósenta rétt.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Flaska af flísahreinsi inniheldur 135 g af HCl og 775 g af vatni. Hver er massaprósenta HCl í þessum hreinsi?
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 14,8%
+:::
+:::
 
  
 
-### Dæmi 3.23  {#dæmi-3.23 .Heading3Grey}
-
-#### Útreikningar með massaprósentu {#útreikningar-með-massaprósentu .Heading4Grey}
+:::example
+### Dæmi 3.23: Útreikningar með massaprósentu
 
 „Óblandaðri" saltsýra er vatnslausn af 37,2% HCl sem er almennt notuð sem hvarfefni á rannsóknarstofu. Eðlismassi þessarar lausnar er 1,19 g/ml. Hver er massi HCl í 0,500 L af þessari lausn?
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 Styrkur HCl er nálægt 40%, þannig að 100 g skammtur af þessari lausn myndi innihalda um 40 g af HCl. Þar sem eðlismassi lausnarinnar er ekki mikið frábrugðinn eðlismassa vatns (1 g/ml) er sanngjarnt að áætla að massi HCl í 500 g (0,5 L) af lausninni sé um það bil fimm sinnum meiri en í 100 g skammti, eða 5 $\times$ 40 = 200 g. Til að leiða út massa uppleysta efnisins í lausn út frá massaprósentu hennar þarf að þekkja massa lausnarinnar. Notaðu uppgefinn eðlismassa lausnarinnar til að breyta rúmmáli lausnarinnar í massa og notaðu síðan uppgefna massaprósentu til að reikna út massa uppleysta efnisins. Þessi stærðfræðilega nálgun er útskýrð í þessu flæðiriti: ![A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, "Volume of solution ( m L )," the middle box reads, "Mass of solution ( g )," while the one on the right contains the phrase, "Mass of H C l ( g )." There is a phrase under the left arrow that says, "Multiply by density ( g / m L )" and under the right arrow it states, "Multiply by mass percent as ratio ( g H C l / g solution )."](./images/media/rId30.jpg){width="6.0in" height="0.855in"}
 
@@ -79,14 +82,17 @@ Til að einingar styttist rétt út er 0,500 L rúmmálinu breytt í 500 ml og m
 $\text{500 mL solution}\ \left( \frac{1.19\ \text{g solution}}{\text{mL solution}} \right)\ \left( \frac{37.2\ \text{g HCl}}{100\ \text{g solution}} \right)\  = \ 221\ \text{g HCl}$
 
 Þessi massi HCl er í samræmi við gróft mat okkar upp á um það bil 200 g.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hvaða rúmmál af þéttri HCl-lausn inniheldur 125 g af HCl?
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 282 ml
+:::
+:::
 
 ### Rúmmálsprósenta
 
@@ -94,25 +100,27 @@ Rúmmál vökva af mjög mismunandi stærðargráðum eru auðveldlega mæld me�
 
 $\text{volume percentage} = \ \frac{\text{volume solute}}{\text{volume solution}}\  \times \ 100\%$
 
-### Dæmi 3.24  {#dæmi-3.24 .Heading3Grey}
-
-#### Útreikningar með rúmmálsprósentu {#útreikningar-með-rúmmálsprósentu .Heading4Grey}
+:::example
+### Dæmi 3.24: Útreikningar með rúmmálsprósentu
 
 Nuddspritt (ísóprópanól) er venjulega selt sem 70%vol vatnslausn. Ef eðlismassi ísóprópýlalkóhóls er 0,785 g/ml, hversu mörg grömm af ísóprópýlalkóhóli eru í 355 ml flösku af nuddspritti?
 
-#### Lausn {#lausn-2 .Heading4Grey}
+**Lausn**
 
 Samkvæmt skilgreiningu á rúmmálsprósentu er rúmmál ísóprópanóls 70% af heildarrúmmáli lausnarinnar. Með því að margfalda rúmmál ísóprópanóls með eðlismassa þess fæst umbeðinn massi:
 
 $\left( 355\ \text{mL solution} \right)\ \left( \frac{70\ \text{mL isopropyl alcohol}}{100\ \text{mL solution}} \right)\ \left( \frac{0.785\ \text{g isopropyl alcohol}}{1\ \text{mL isopropyl alcohol}} \right)\  = \ 195\ \text{g isopropyl alchol}$
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-2 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Vín er um það bil 12% etanól (CH~3~CH~2~OH) miðað við rúmmál. Etanól hefur mólmassa upp á 46,06 g/mól og eðlismassa upp á 0,789 g/ml. Hversu mörg mól af etanóli eru í 750 ml vínflösku?
 
-### Svar: {#svar-2 .Heading3Grey}
-
+:::answer
 1,5 mól etanól
+:::
+:::
 
 ### Massa-rúmmálsprósenta
 
@@ -142,13 +150,12 @@ Bæði ppm og ppb eru hentugar einingar til að gefa upp styrk mengunarefna og a
 
 Mynd 3.19 (a) Á sumum svæðum getur snefilstyrkur mengunarefna gert ósíað kranavatn óhæft til drykkjar og matargerðar. (b) Vatnssíur í leiðslum draga úr styrk leystra efna í kranavatni. (Heimild a: breytt útgáfa af verki eftir Jenn Durfey; heimild b: breytt útgáfa af verki eftir „vastateparkstaff"/Wikimedia commons)
 
-### Dæmi 3.25  {#dæmi-3.25 .Heading3Grey}
-
-#### Útreikningur á styrk í milljónustu hlutum og milljarðshlutum {#útreikningur-á-styrk-í-milljónustu-hlutum-og-milljarðshlutum .Heading4Grey}
+:::example
+### Dæmi 3.25: Útreikningur á styrk í milljónustu hlutum og milljarðshlutum
 
 Samkvæmt EPA þarf að grípa til ákveðinna úrbóta þegar styrkur blýs í kranavatni nær 15 ppb. Hver er þessi styrkur í ppm? Hver væri massi blýs (μg) í venjulegu vatnsglasi (300 ml) við þennan styrk?
 
-#### Lausn {#lausn-3 .Heading4Grey}
+**Lausn**
 
 Hægt er að nota skilgreiningar á einingunum ppm og ppb til að breyta gefnum styrk úr ppb í ppm. Samanburður á þessum tveimur einingaskilgreiningum sýnir að ppm er 1000 sinnum stærri eining en ppb (1 ppm = 10^3^ ppb). Þannig er:
 
@@ -161,11 +168,14 @@ Hægt er að nota skilgreininguna á ppb-einingunni til að reikna út umbeðinn
 Að lokum er þessum massa breytt í umbeðna einingu, míkrógrömm:
 
 $4.5\  \times \ 10^{- 6}\ \text{g}\  \times \ \frac{1\ \text{μg}}{10^{- 6}\ \text{g}}\  = 4.5\ \text{μg}$
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-3 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 50,0 g sýni af iðnaðarfrárennslisvatni reyndist innihalda 0,48 mg af kvikasilfri. Gefðu upp styrk kvikasilfurs í frárennslisvatninu í ppm- og ppb-einingum.
 
-### Svar: {#svar-3 .Heading3Grey}
-
+:::answer
 9,6 ppm, 9600 ppb
+:::
+:::

@@ -7,87 +7,87 @@ status: "mt-preview"
 translation: "machine"
 sourceBook: "OpenStax Chemistry 2e"
 language: "is"
-lastUpdated: "2026-01-12"
+lastUpdated: "2026-01-13"
 ---
 
 ## Lykilhugtök
 
-Vatnslausn
+:::definition{term="Vatnslausn"}
+Lausn þar sem vatn er leysirinn
+:::
 
-:   Lausn þar sem vatn er leysirinn
+:::definition{term="Tala Avogadrosar"}
+Fjöldi eininga sem mynda 1 mól af efni, ákvarðað með tilraunum, jafnt og 6,022 $\times$ 10^23^ mól^−1^
+:::
 
-Tala Avogadrosar
+:::definition{term="Þétt"}
+Eigindlegt hugtak fyrir lausn sem inniheldur uppleyst efni í tiltölulega háum styrk
+:::
 
-:   Fjöldi eininga sem mynda 1 mól af efni, ákvarðað með tilraunum, jafnt og 6,022 $\times$ 10^23^ mól^−1^
+:::definition{term="Styrkur"}
+Magnbundinn mælikvarði á hlutfallslegt magn uppleysts efnis og leysis í lausn
+:::
 
-Þétt
+:::definition{term="Þynnt"}
+Eigindlegt hugtak fyrir lausn sem inniheldur uppleyst efni í tiltölulega lágum styrk
+:::
 
-:   Eigindlegt hugtak fyrir lausn sem inniheldur uppleyst efni í tiltölulega háum styrk
+:::definition{term="Þynning"}
+Ferli þar sem leysi er bætt við lausn til að lækka styrk uppleystra efna
+:::
 
-Styrkur
+:::definition{term="Uppleyst"}
+Lýsir ferlinu þar sem uppleystir efnisþættir dreifast í leysi
+:::
 
-:   Magnbundinn mælikvarði á hlutfallslegt magn uppleysts efnis og leysis í lausn
+:::definition{term="Reynsluformúlumassi"}
+Summa meðalatómmassa allra atóma sem koma fram í reynsluformúlu
+:::
 
-Þynnt
+:::definition{term="Formúlumassi"}
+Summa meðalmassa allra atóma sem koma fram í efnaformúlu; fyrir samgild efnasambönd er þetta einnig sameindamassinn
+:::
 
-:   Eigindlegt hugtak fyrir lausn sem inniheldur uppleyst efni í tiltölulega lágum styrk
+:::definition{term="Massaprósenta"}
+Hlutfall massa uppleysts efnis á móti massa lausnar, gefið upp sem prósentutala
+:::
 
-Þynning
+:::definition{term="Massa-rúmmálsprósenta"}
+Hlutfall massa uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósentutala
+:::
 
-:   Ferli þar sem leysi er bætt við lausn til að lækka styrk uppleystra efna
+:::definition{term="Mólmassi"}
+Massi í grömmum af 1 móli af efni
+:::
 
-Uppleyst
+:::definition{term="Mólstyrkur (M)"}
+Styrkleikaeining, skilgreind sem fjöldi móla af uppleystu efni í 1 lítra af lausn
+:::
 
-:   Lýsir ferlinu þar sem uppleystir efnisþættir dreifast í leysi
+:::definition{term="Mól"}
+Efnisagnir sem innihalda sama fjölda atóma, sameinda, jóna eða annarra eininga og fjöldi atóma í nákvæmlega 12 grömmum af ^12^C
+:::
 
-Reynsluformúlumassi
+:::definition{term="Hlutar á milljarð (ppb)"}
+Hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 10^9^
+:::
 
-:   Summa meðalatómmassa allra atóma sem koma fram í reynsluformúlu
+:::definition{term="Hlutar á milljón (ppm)"}
+Hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 10^6^
+:::
 
-Formúlumassi
+:::definition{term="Prósentusamsetning"}
+Massaprósenta hinna ýmsu frumefna í efnasambandi
+:::
 
-:   Summa meðalmassa allra atóma sem koma fram í efnaformúlu; fyrir samgild efnasambönd er þetta einnig sameindamassinn
+:::definition{term="Uppleyst efni"}
+Efnisþáttur lausnar sem er til staðar í lægri styrk en leysirinn
+:::
 
-Massaprósenta
+:::definition{term="Leysir"}
+Efnisþáttur lausnar sem er til staðar í hærri styrk miðað við aðra efnisþætti
+:::
 
-:   Hlutfall massa uppleysts efnis á móti massa lausnar, gefið upp sem prósentutala
-
-Massa-rúmmálsprósenta
-
-:   Hlutfall massa uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósentutala
-
-Mólmassi
-
-:   Massi í grömmum af 1 móli af efni
-
-mólstyrkur (*M*)
-
-:   Styrkleikaeining, skilgreind sem fjöldi móla af uppleystu efni í 1 lítra af lausn
-
-Mól
-
-:   Efnisagnir sem innihalda sama fjölda atóma, sameinda, jóna eða annarra eininga og fjöldi atóma í nákvæmlega 12 grömmum af ^12^C
-
-Hlutar á milljarð (ppb)
-
-:   Hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 10^9^
-
-Hlutar á milljón (ppm)
-
-:   Hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 10^6^
-
-Prósentusamsetning
-
-:   Massaprósenta hinna ýmsu frumefna í efnasambandi
-
-Uppleyst efni
-
-:   Efnisþáttur lausnar sem er til staðar í lægri styrk en leysirinn
-
-Leysir
-
-:   Efnisþáttur lausnar sem er til staðar í hærri styrk miðað við aðra efnisþætti
-
-Rúmmálsprósenta
-
-:   Hlutfall rúmmáls uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósentutala
+:::definition{term="Rúmmálsprósenta"}
+Hlutfall rúmmáls uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósentutala
+:::

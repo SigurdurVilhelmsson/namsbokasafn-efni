@@ -12,13 +12,15 @@ lastUpdated: "2026-01-12"
 
 ## 3.3 Mólstyrkur
 
-### NÁMSMARKMIÐ
+:::note
+### Námsmarkmið
 
 Í lok þessa kafla muntu geta:
 
 -   Lýst grundvallareiginleikum lausna
 -   Reiknað út styrk lausna með mólstyrk
 -   Framkvæmt þynningarútreikninga með þynningarjöfnunni
+:::
 
 Fyrri kaflar þessarar bókar fjölluðu um samsetningu efna: sýni af efni sem innihalda aðeins eina tegund frumefnis eða efnasambands. Hins vegar eru efnablöndur -- sýni af efni sem innihalda tvö eða fleiri efni sem eru blönduð saman á eðlisfræðilegan hátt -- algengari í náttúrunni en hrein efni. Líkt og með hreint efni gegnir hlutfallsleg samsetning efnablöndu mikilvægu hlutverki við að ákvarða eiginleika hennar. Hlutfallslegt magn súrefnis í lofthjúpi plánetu ákvarðar getu hennar til að viðhalda loftháðu lífi. Hlutfallslegt magn járns, kolefnis, nikkels og annarra frumefna í stáli (efnablanda sem kallast „málmblanda") ákvarðar eðlisfræðilegan styrk þess og viðnám gegn tæringu. Hlutfallslegt magn virka efnisins í lyfi ákvarðar virkni þess við að ná fram tilætluðum lyfjafræðilegum áhrifum. Hlutfallslegt magn sykurs í drykk ákvarðar sætleika hans (sjá [mynd 3.14](#CNX_Chem_03_03_espresso)). Í þessum kafla verður lýst einni af algengustu aðferðunum til að magngreina hlutfallslega samsetningu efnablandna.
 
@@ -41,53 +43,56 @@ Hægt er að meta styrk magngreint með ýmsum mælieiningum, sem hver um sig he
 
 $M = \ \frac{\text{mol solute}}{\text{L solution}}\ $
 
-### Dæmi 3.14  {#dæmi-3.14 .Heading3Grey}
-
-#### Útreikningur á mólstyrk {#útreikningur-á-mólstyrk .Heading4Grey}
+:::example
+### Dæmi 3.14: Útreikningur á mólstyrk
 
 355 ml sýni af gosdrykk inniheldur 0,133 mól af súkrósa (borðsykri). Hver er mólstyrkur súkrósa í drykknum?
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 Þar sem bæði mólmagn uppleysta efnisins og rúmmál lausnarinnar eru gefin er hægt að reikna mólstyrkinn með skilgreiningu á mólstyrk. Samkvæmt þessari skilgreiningu verður að breyta rúmmáli lausnarinnar úr ml í L:
 
 $M = \ \frac{\text{mol solute}}{\text{L solution}}\  = \ \frac{0.133\ \text{mol}}{355\ \text{mL}\  \times \ \frac{1\ \text{L}}{1000\ \text{mL}}\ }\  = 0.375\ M$
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Ein teskeið af borðsykri inniheldur um 0,01 mól af súkrósa. Hver er mólstyrkur súkrósa ef teskeið af sykri hefur verið leyst upp í tebolla með rúmmáli 200 ml?
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 0,05 *M*
+:::
+:::
 
  
 
-### Dæmi 3.15  {#dæmi-3.15 .Heading3Grey}
-
-#### Útleiðsla á mólum og rúmmáli úr mólstyrk {#útleiðsla-á-mólum-og-rúmmáli-úr-mólstyrk .Heading4Grey}
+:::example
+### Dæmi 3.15: Útleiðsla á mólum og rúmmáli úr mólstyrk
 
 Hversu mikið af sykri (mól) er í litlum sopa (\~10 ml) af gosdrykknum úr [dæmi 3.14](#fs-idm98982768)?
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 Endurraðaðu skilgreiningunni á mólstyrk til að einangra stærðina sem leitað er að, mól af sykri, og settu síðan inn gildið fyrir mólstyrk sem leitt var út í [dæmi 3.14](#fs-idm98982768), 0,375 *M*:
 
 ![None](./images/media/rId37.jpg){width="4.895833333333333in" height="1.1770833333333333in"}
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hvert er rúmmálið (ml) af sykraða teinu sem lýst er í [dæmi 3.14](#fs-idm98982768) inniheldur sama magn af sykri (mól) og 10 ml af gosdrykknum í þessu dæmi?
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 80 ml
+:::
+:::
 
  
 
-### Dæmi 3.16  {#dæmi-3.16 .Heading3Grey}
-
-#### Útreikningur á mólstyrk út frá massa uppleysts efnis {#útreikningur-á-mólstyrk-út-frá-massa-uppleysts-efnis .Heading4Grey}
+:::example
+### Dæmi 3.16: Útreikningur á mólstyrk út frá massa uppleysts efnis
 
 Eimað borðedik ([mynd 3.15](#CNX_Chem_03_04_vinegar)) er lausn af ediksýru, CH~3~CO~2~H, í vatni. 0,500 L ediklausn inniheldur 25,2 g af ediksýru. Hver er styrkur ediksýrulausnarinnar í mólstyrk?
 
@@ -98,31 +103,33 @@ Eimað borðedik ([mynd 3.15](#CNX_Chem_03_04_vinegar)) er lausn af ediksýru, C
 
 Mynd 3.15 Eimað borðedik er lausn af ediksýru í vatni.
 
-#### Lausn {#lausn-2 .Heading4Grey}
+**Lausn**
 
 Eins og í fyrri dæmum er skilgreiningin á mólstyrk aðaljafnan sem notuð er til að reikna út stærðina sem leitað er að. Þar sem massi uppleysta efnisins er gefinn í stað mólmagns þess skal nota mólmassa uppleysta efnisins til að fá magn uppleysta efnisins í mólum:
 
 $M = \ \frac{\text{mol solute}}{\text{L solution}}\  = \ \frac{25.2\ g\ \text{CH}_{3}\text{CO}_{2}\text{H}\  \times \ \frac{1\ \text{mol CH}_{3}\text{CO}_{2}\text{H}}{\text{60.052 g CH}_{3}\text{CO}_{2}\text{H}}\ }{\text{0.500 L solution}}\  = 0.839\ M$
 
 ![None](./images/media/rId48.jpg){width="1.8020833333333333in" height="0.6979166666666666in"}
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-2 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Reiknaðu mólstyrk 6,52 g af CoCl~2~ (128,9 g/mól) sem er leyst upp í vatnslausn með heildarrúmmáli 75,0 ml.
 
-### Svar: {#svar-2 .Heading3Grey}
-
+:::answer
 0,674 *M*
+:::
+:::
 
  
 
-### Dæmi 3.17  {#dæmi-3.17 .Heading3Grey}
-
-#### Ákvörðun á massa uppleysts efnis í tilteknu rúmmáli lausnar {#ákvörðun-á-massa-uppleysts-efnis-í-tilteknu-rúmmáli-lausnar .Heading4Grey}
+:::example
+### Dæmi 3.17: Ákvörðun á massa uppleysts efnis í tilteknu rúmmáli lausnar
 
 Hversu mörg grömm af NaCl eru í 0,250 L af 5,30*M* lausn?
 
-#### Lausn {#lausn-3 .Heading4Grey}
+**Lausn**
 
 Rúmmál og mólstyrkur lausnarinnar eru tilgreind, þannig að magn (mól) uppleysta efnisins er auðveldlega reiknað út eins og sýnt er í [dæmi 3.15](#fs-idm64107376):
 
@@ -131,26 +138,28 @@ Rúmmál og mólstyrkur lausnarinnar eru tilgreind, þannig að magn (mól) uppl
 Að lokum er þetta mólmagn notað til að leiða út massa NaCl:
 
 $\text{1.325 mol NaCl}\  \times \ \frac{58.44\ \text{g NaCl}}{\text{mol NaCl}}\  = 77.4\ \text{g NaCl}$
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-3 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hversu mörg grömm af CaCl~2~ (110,98 g/mól) eru í 250,0 ml af 0,200*M* lausn af kalsíumklóríði?
 
-### Svar: {#svar-3 .Heading3Grey}
-
+:::answer
 5,55 g CaCl~2~
+:::
+:::
 
 Þegar útreikningar eru framkvæmdir í skrefum, eins og í [dæmi 3.17](#fs-idm104693104), er mikilvægt að forðast að námunda niðurstöður millireikninga, þar sem það getur leitt til námundunarvillna í lokaniðurstöðunni. Í [dæmi 3.17](#fs-idm104693104) væri mólmagn NaCl sem reiknað var út í fyrsta skrefi, 1,325 mól, réttilega námundað í 1,32 mól ef það ætti að vera gefið upp; þó, þrátt fyrir að síðasti tölustafurinn (5) sé ekki marktækur, verður að halda honum sem varðtölu í millireikningnum. Ef varðtölunni hefði ekki verið haldið, hefði lokareikningurinn fyrir massa NaCl verið 77,1 g, sem er 0,3 g munur.
 
 Auk þess að halda varðtölu fyrir millireikninga er einnig hægt að forðast námundunarvillur með því að framkvæma útreikninga í einu skrefi (sjá [dæmi 3.18](#fs-idm88061984)). Þetta útilokar milliskref þannig að aðeins lokaniðurstaðan er námunduð.
 
-### Dæmi 3.18  {#dæmi-3.18 .Heading3Grey}
-
-#### Ákvörðun á rúmmáli lausnar sem inniheldur tiltekinn massa uppleysts efnis {#ákvörðun-á-rúmmáli-lausnar-sem-inniheldur-tiltekinn-massa-uppleysts-efnis .Heading4Grey}
+:::example
+### Dæmi 3.18: Ákvörðun á rúmmáli lausnar sem inniheldur tiltekinn massa uppleysts efnis
 
 Í [dæmi 3.16](#fs-idm81897840) var styrkur ediksýru í borðediki ákvarðaður sem 0,839 *M*. Hvaða rúmmál af ediki inniheldur 75,6 g af ediksýru?
 
-#### Lausn {#lausn-4 .Heading4Grey}
+**Lausn**
 
 Fyrst skaltu nota mólmassann til að reikna út mól af ediksýru út frá gefnum massa:
 
@@ -165,14 +174,17 @@ Ef þessi tvö skref eru sameinuð í eitt fæst:
 $\text{g solute}\  \times \ \frac{\text{mol solute}}{\text{g solute}}\  \times \ \frac{\text{L solution}}{\text{mol solute}}\  = \text{L solution}$
 
 $75.6\ \text{g}\ \text{CH}_{3}\text{CO}_{2}\text{H}\ \left( \frac{\text{mol}\ \text{CH}_{3}\text{CO}_{2}\text{H}\ }{60.05\ \text{g}} \right)\ \left( \frac{\text{L solution}}{0.839\ \text{mol}\ \text{CH}_{3}\text{CO}_{2}\text{H}} \right)\  = \ 1.50\ \text{L solution}$
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-4 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hvert er rúmmál 1,50 *M* KBr-lausnar sem inniheldur 66,0 g af KBr?
 
-### Svar: {#svar-4 .Heading3Grey}
-
+:::answer
 0,370 L
+:::
+:::
 
 ### Þynning lausna
 
@@ -207,19 +219,20 @@ $C_{1}V_{1} = C_{2}V_{2}$
 
 þar sem *C* og *V* eru styrkur og rúmmál, í sömu röð.
 
-### Tengill á námsefni {#tengill-á-námsefni .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Notaðu [hermunina](http://openstax.org/l/16Phetsolvents) til að kanna sambandið milli magns uppleysts efnis, rúmmáls lausnar og styrks og til að staðfesta þynningarjöfnuna.
+:::
 
  
 
-### Dæmi 3.19  {#dæmi-3.19 .Heading3Grey}
-
-#### Að ákvarða styrk þynntrar lausnar {#að-ákvarða-styrk-þynntrar-lausnar .Heading4Grey}
+:::example
+### Dæmi 3.19: Að ákvarða styrk þynntrar lausnar
 
 Ef 0,850 L af 5,00 *M* lausn af koparnítrati, Cu(NO~3~)~2~, er þynnt í 1,80 L rúmmál með álagningu vatns, hver er þá mólstyrkur þynntu lausnarinnar?
 
-#### Lausn {#lausn-5 .Heading4Grey}
+**Lausn**
 
 Stofnstyrkurinn, *C*~1~, og rúmmálið, *V*~1~, eru gefin ásamt rúmmáli þynntu lausnarinnar, *V*~2~. Endurraðaðu þynningarjöfnunni til að einangra óþekkta eiginleikann, styrk þynntu lausnarinnar, *C*~2~:
 
@@ -230,24 +243,26 @@ Stofnstyrkurinn, *C*~1~, og rúmmálið, *V*~1~, eru gefin ásamt rúmmáli þyn
 $C_{2} = \ \frac{0.850\ \text{L}\  \times \ 5.00\ \frac{\text{mol}}{\text{L}}\ }{1.80\ L}\  = 2.36\ M$
 
 Þessi niðurstaða stenst vel miðað við grófa matið okkar (hún er aðeins minni en helmingur af styrk stofnlausnarinnar, 5 *M*).
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-5 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hver er styrkur lausnarinnar sem fæst með því að þynna 25,0 ml af 2,04 *M* lausn af CH~3~OH í 500,0 ml?
 
-### Svar: {#svar-5 .Heading3Grey}
-
+:::answer
 0,102 *M* CH~3~OH
+:::
+:::
 
  
 
-### Dæmi 3.20  {#dæmi-3.20 .Heading3Grey}
-
-#### Rúmmál þynntrar lausnar {#rúmmál-þynntrar-lausnar .Heading4Grey}
+:::example
+### Dæmi 3.20: Rúmmál þynntrar lausnar
 
 Hvaða rúmmál af 0,12 *M* HBr er hægt að útbúa úr 11 ml (0,011 L) af 0,45 *M* HBr?
 
-#### Lausn {#lausn-6 .Heading4Grey}
+**Lausn**
 
 Gefið er rúmmál og styrkur stofnlausnar, *V*~1~ og *C*~1~, og styrkur þynntu lausnarinnar sem fæst, *C*~2~. Finndu rúmmál þynntu lausnarinnar, *V*~2~, með því að endurraða þynningarjöfnunni til að einangra *V*~2~:
 
@@ -258,24 +273,26 @@ Gefið er rúmmál og styrkur stofnlausnar, *V*~1~ og *C*~1~, og styrkur þynntu
 ![None](./images/media/rId92.jpg){width="1.3854166666666667in" height="0.7083333333333334in"}
 
 Rúmmál 0,12 *M* lausnarinnar er 0,041 L (41 ml). Niðurstaðan er sanngjörn og stenst vel við grófa matið.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-6 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Í tilraun á rannsóknarstofu þarf 0,125 *M* HNO~3~. Hvaða rúmmál af 0,125 *M* HNO~3~ er hægt að útbúa úr 0,250 L af 1,88 *M*HNO~3~?
 
-### Svar: {#svar-6 .Heading3Grey}
-
+:::answer
 3,76 L
+:::
+:::
 
  
 
-### Dæmi 3.21  {#dæmi-3.21 .Heading3Grey}
-
-#### Rúmmál óþynntrar lausnar sem þarf til þynningar {#rúmmál-óþynntrar-lausnar-sem-þarf-til-þynningar .Heading4Grey}
+:::example
+### Dæmi 3.21: Rúmmál óþynntrar lausnar sem þarf til þynningar
 
 Hvaða rúmmál af 1,59 *M* KOH þarf til að útbúa 5,00 L af 0,100 *M* KOH?
 
-#### Lausn {#lausn-7 .Heading4Grey}
+**Lausn**
 
 Gefinn er styrkur stofnlausnar, *C*~1~, og rúmmál og styrkur þynntu lausnarinnar sem fæst, *V*~2~ og *C*~2~. Finndu rúmmál stofnlausnarinnar, *V*~1~, með því að endurraða þynningarjöfnunni til að einangra *V*~1~:
 
@@ -286,11 +303,14 @@ Gefinn er styrkur stofnlausnar, *C*~1~, og rúmmál og styrkur þynntu lausnarin
 ![None](./images/media/rId102.jpg){width="1.3854166666666667in" height="0.6875in"}
 
 Þannig þarf 0,314 L af 1,59 *M* lausninni til að útbúa lausnina sem óskað er eftir. Þessi niðurstaða er í samræmi við grófa matið.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-7 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hvaða rúmmál af 0,575 *M* lausn af glúkósa, C~6~H~12~O~6~, er hægt að útbúa úr 50,00 ml af 3,00 *M* glúkósalausn?
 
-### Svar: {#svar-7 .Heading3Grey}
-
+:::answer
 0,261 L
+:::
+:::

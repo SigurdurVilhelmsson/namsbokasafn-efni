@@ -12,13 +12,15 @@ lastUpdated: "2026-01-12"
 
 ## 3.2 Ákvörðun reynsluformúla og sameindaformúla
 
-### NÁMSMARKMIÐ
+:::note
+### Námsmarkmið
 
 Í lok þessa kafla muntu geta:
 
 -   Reiknað massaprósentu efnasambands
 -   Ákvarðað reynsluformúlu efnasambands
 -   Ákvarðað sameindaformúlu efnasambands
+:::
 
 Í fyrri kafla var fjallað um sambandið milli heildarmassa efnis og fjölda atóma eða sameinda sem það inniheldur (mól). Ef efnaformúla efnisins er þekkt er hægt að ákvarða magn efnisins (mól) út frá massa þess og öfugt. En hvað ef efnaformúla efnis er óþekkt? Í þessum kafla verður sömu meginreglum beitt til að leiða út efnaformúlur óþekktra efna út frá tilraunamælingum á massa.
 
@@ -36,27 +38,29 @@ $\%\ \text{H} = \ \frac{2.5\ \text{g H}}{10.0\ \text{g compound}}\  \times \ 100
 
 $\%\ \text{C} = \ \frac{7.5\ \text{g C}}{10.0\ \text{g compound}}\  \times \ 100\% = 75\%$
 
-### Dæmi 3.9  {#dæmi-3.9 .Heading3Grey}
-
-#### Útreikningur á massaprósentu {#útreikningur-á-massaprósentu .Heading4Grey}
+:::example
+### Dæmi 3.9: Útreikningur á massaprósentu
 
 Greining á 12,04 g sýni af efnasambandi í vökvaformi sem samanstendur af kolefni, vetni og köfnunarefni sýndi að það innihéldi 7,34 g C, 1,85 g H og 2,85 g N. Hver er massaprósenta þessa efnasambands?
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 Til að reikna út massaprósentu skal deila massa hvers frumefnis, sem fenginn er með tilraunum, með heildarmassa efnasambandsins og breyta síðan í prósentutölu:
 
 ![None](./images/media/rId26.jpg){width="2.7604166666666665in" height="1.0729166666666667in"}
 
 Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 15,4% H og 23,7% N miðað við massa.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 24,81 g sýni af efnasambandi í gasformi sem inniheldur aðeins kolefni, súrefni og klór er ákvarðað að innihalda 3,01 g C, 4,00 g O og 17,81 g Cl. Hver er massaprósenta þessa efnasambands?
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 12,1% C, 16,1% O, 71,79% Cl
+:::
+:::
 
 #### Ákvörðun massaprósentu út frá sameinda- eða reynsluformúlum
 
@@ -66,13 +70,12 @@ Massaprósenta er einnig gagnleg til að meta hlutfallslegt magn tiltekins frume
 
 Sömu aðferð má beita þegar litið er á par af sameindum, tylft sameinda eða mól af sameindum o.s.frv. Síðastnefnda magnið er hentugast og myndi einfaldlega fela í sér notkun mólmassa í stað atóm- og formúlumassa, eins og sýnt er í [dæmi 3.10](#fs-idm162294688). Svo lengi sem sameinda- eða reynsluformúla viðkomandi efnasambands er þekkt er hægt að leiða massaprósentuna út frá atóm- eða mólmössum frumefna efnasambandsins.
 
-### Dæmi 3.10  {#dæmi-3.10 .Heading3Grey}
-
-#### Ákvörðun massaprósentu út frá sameindaformúlu {#ákvörðun-massaprósentu-út-frá-sameindaformúlu .Heading4Grey}
+:::example
+### Dæmi 3.10: Ákvörðun massaprósentu út frá sameindaformúlu
 
 Aspirín er efnasamband með sameindaformúluna C~9~H~8~O~4~. Hver er massaprósenta þess?
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 Til að reikna út massaprósentuna þarf að vita massa C, H og O í þekktum massa af C~9~H~8~O~4~. Það er hentugt að miða við 1 mól af C~9~H~8~O~4~ og nota mólmassa þess (180,159 g/mól, ákvarðað út frá efnaformúlunni) til að reikna út prósentuhlutföll hvers frumefnis:
 
@@ -83,14 +86,17 @@ Til að reikna út massaprósentuna þarf að vita massa C, H og O í þekktum m
 ![None](./images/media/rId44.jpg){width="5.395833333333333in" height="0.7083333333333334in"}
 
 Athugið að þegar þessar prósentur eru lagðar saman og námundaðar á viðeigandi hátt er summan 100,00%.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hver er massaprósenta járns í efnasambandinu Fe~2~O~3~, gefin upp með þremur markverðum stöfum?
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 69,9% Fe
+:::
+:::
 
 ### Ákvörðun reynsluformúla
 
@@ -127,9 +133,8 @@ $\text{Cl}_{0.150}\text{O}_{0.525} = \text{Cl}_{\ \frac{0.150}{0.150}\ }\ \text{
 
 Mynd 3.11 Hægt er að leiða reynsluformúlu efnasambands út frá massa allra frumefna í sýninu.
 
-### Dæmi 3.11  {#dæmi-3.11 .Heading3Grey}
-
-#### Ákvörðun reynsluformúlu efnasambands út frá massa frumefna þess {#ákvörðun-reynsluformúlu-efnasambands-út-frá-massa-frumefna-þess .Heading4Grey}
+:::example
+### Dæmi 3.11: Ákvörðun reynsluformúlu efnasambands út frá massa frumefna þess
 
 Sýni af svarta steinefninu hematíti ([mynd 3.12](#CNX_Chem_03_03_hematite)), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97 g af járni og 15,03 g af súrefni. Hver er reynsluformúla hematíts?
 
@@ -140,7 +145,7 @@ Sýni af svarta steinefninu hematíti ([mynd 3.12](#CNX_Chem_03_03_hematite)), j
 
 Mynd 3.12 Hematít er járnoxíð sem er notað í skartgripi. (heimild: Mauro Cateb)
 
-#### Lausn {#lausn-2 .Heading4Grey}
+**Lausn**
 
 Í þessu verkefni er gefinn massi hvers frumefnis í grömmum. Byrjaðu á því að finna mól hvers frumefnis:
 
@@ -155,28 +160,32 @@ Hlutfallið er 1,000 mól af járni á móti 1,500 mólum af súrefni (Fe~1~O~1,
 $2\left( \text{Fe}_{1}\text{O}_{1.5} \right)\  = \ \text{Fe}_{2}\text{O}_{3}$
 
 Reynsluformúlan er Fe~2~O~3~.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-2 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hver er reynsluformúla efnasambands ef sýni inniheldur 0,130 g af köfnunarefni og 0.370 g af súrefni?
 
-### Svar: {#svar-2 .Heading3Grey}
-
+:::answer
 N~2~O~5~
+:::
+:::
 
  
 
-### Tengill á námsefni {#tengill-á-námsefni .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Horfðu á stutta [myndbandið](http://openstax.org/l/16empforms) til að sjá fleiri dæmi um útreikninga á reynsluformúlum.
+:::
 
 #### Útreikningur á reynsluformúlum út frá prósentusamsetningu
 
 Að lokum, varðandi útreikning á reynsluformúlum, skulum við skoða tilvik þar sem prósentusamsetning efnasambands er þekkt frekar en nákvæmur massi frumefnanna sem mynda efnasambandið. Í slíkum tilvikum er hægt að nota prósentusamsetninguna til að reikna út massa frumefna í hvaða hentugum massa efnasambands sem er; þessa massa er síðan hægt að nota til að finna reynsluformúluna á venjulegan hátt.
 
-### Dæmi 3.12  {#dæmi-3.12 .Heading3Grey}
-
-#### Ákvörðun reynsluformúlu út frá prósentusamsetningu {#ákvörðun-reynsluformúlu-út-frá-prósentusamsetningu .Heading4Grey}
+:::example
+### Dæmi 3.12: Ákvörðun reynsluformúlu út frá prósentusamsetningu
 
 Við gerjun á korni til framleiðslu á etanóli myndast gas með prósentusamsetninguna 27,29% C og 72,71% O ([mynd 3.13](#CNX_Chem_03_03_BrewTank)). Hver er reynsluformúla þessa gass?
 
@@ -187,7 +196,7 @@ Við gerjun á korni til framleiðslu á etanóli myndast gas með prósentusams
 
 Mynd 3.13 Kolefnisoxíð er fjarlægt úr þessum gerjunartönkum í gegnum stóru koparrörin efst. (heimild: „Dual Freq"/Wikimedia Commons)
 
-#### Lausn {#lausn-3 .Heading4Grey}
+**Lausn**
 
 Þar sem prósentur miðast við 100 er hentugast að reikna út massa frumefna í sýni sem vegur 100 g. Útreikningurinn er „hentugastur" vegna þess að samkvæmt skilgreiningu á prósentusamsetningu er massi tiltekins frumefnis í grömmum tölulega jafngildur massaprósentu frumefnisins. Þetta tölulega jafngildi stafar af skilgreiningu á einingunni „prósenta", en nafn hennar er dregið af latneska orðasambandinu *per centum* sem þýðir „af hundraði". Með þessa skilgreiningu í huga má á þægilegri hátt setja uppgefnar massaprósentur fram sem brot:
 
@@ -202,14 +211,17 @@ Stuðlar fyrir bráðabirgðareynsluformúluna eru fengnir með því að deila 
 ![None](./images/media/rId93.jpg){width="1.0104166666666667in" height="0.6145833333333334in"}
 
 Þar sem hlutfallið sem fæst er eitt kolefnisatóm á móti tveimur súrefnisatómum er reynsluformúlan CO~2~.
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-3 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hver er reynsluformúla efnasambands sem inniheldur 40,0% C, 6,71% H og 53,28% O?
 
-### Svar: {#svar-3 .Heading3Grey}
-
+:::answer
 CH~2~O
+:::
+:::
 
 ### Útreikningur á sameindaformúlum
 
@@ -233,13 +245,12 @@ $\text{(CH}_{\text{2}}\text{O)}_{\text{6}} = \text{C}_{\text{6}}\text{H}_{\text{
 
 Athugið að hægt er að nota sömu aðferð þegar mólmassi (g/mól) er notaður í stað sameindamassa (u). Í þessu tilfelli er litið á *eitt mól* af reynsluformúlueiningum og sameindum, öfugt við stakar einingar og sameindir.
 
-### Dæmi 3.13  {#dæmi-3.13 .Heading3Grey}
-
-#### Ákvörðun sameindaformúlu fyrir nikótín {#ákvörðun-sameindaformúlu-fyrir-nikótín .Heading4Grey}
+:::example
+### Dæmi 3.13: Ákvörðun sameindaformúlu fyrir nikótín
 
 Nikótín, alkalóíði í náttskuggaættinni sem er aðallega ábyrgur fyrir ávanabindandi eðli sígarettna, inniheldur 74,02% C, 8,710% H og 17,27% N. Ef 40,57 g af nikótíni innihalda 0,2500 mól af nikótíni, hver er þá sameindaformúlan?
 
-#### Lausn {#lausn-4 .Heading4Grey}
+**Lausn**
 
 Til að ákvarða sameindaformúluna út frá gefnum gögnum þarf að bera saman massa reynsluformúlu efnasambandsins við mólmassa þess. Í fyrsta skrefi skal nota massaprósentuna til að leiða út reynsluformúlu efnasambandsins. Ef við gerum ráð fyrir hentugu 100 g sýni af nikótíni fáum við eftirfarandi mólmagn frumefna þess:
 
@@ -268,11 +279,14 @@ $\ \frac{162.3\ \text{g/mol}}{81.13\ \frac{\text{g}}{\text{formula unit}}\ }\  =
 Að lokum skal leiða út sameindaformúlu nikótíns út frá reynsluformúlunni með því að margfalda hvern neðanáskrifaðan vísi með tveimur:
 
 $\text{(C}_{\text{5}}\text{H}_{\text{7}}\text{N)}_{\text{2}} = \text{C}_{\text{10}}\text{H}_{\text{14}}\text{N}_{\text{2}}$
+:::
 
-#### Kannaðu þekkingu þína {#kannaðu-þekkingu-þína-4 .Heading4Grey}
+:::practice-problem
+**Kannaðu þekkingu þína**
 
 Hver er sameindaformúla efnasambands með massaprósentuna 49,47% C, 5,201% H, 28,84% N og 16,48% O og sameindamassa upp á 194,2 amu?
 
-### Svar: {#svar-4 .Heading3Grey}
-
+:::answer
 C~8~H~10~N~4~O~2~
+:::
+:::
