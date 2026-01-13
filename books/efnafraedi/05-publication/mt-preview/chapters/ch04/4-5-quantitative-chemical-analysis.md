@@ -12,12 +12,14 @@ lastUpdated: "2026-01-12"
 
 ## 4.5 Magnbundin efnagreining
 
+:::note
 ### Námsmarkmið
 
 Í lok þessa kafla muntu geta:
 
 -   Lýst grundvallarþáttum títrunar og þyngdarmælingagreiningar.
 -   Framkvæmt útreikninga í hlutfallaefnafræði með dæmigerðum gögnum úr títrun og þyngdarmælingagreiningu.
+:::
 
 Á 18. öld var styrkur (í raun mólstyrkur) edikssýna ákvarðaður með því að skrá magn kalíumkarbónats, K~2~CO~3~, sem þurfti að bæta við, smátt og smátt, þar til það hætti að freyða. Því meiri þyngd kalíumkarbónats sem bætt var við til að ná þeim punkti þar sem freyðingunni lauk, því sterkara var edikið.
 
@@ -40,9 +42,8 @@ Sú aðferð til að mæla styrk ediks, sem lýst var hér á undan, var frumút
 
 Mynd 4.16 (a) Nemandi fyllir búrettu í undirbúningi fyrir títrunargreiningu. (b) Dæmigerð búretta gerir kleift að mæla rúmmál með 0,01 ml nákvæmni. (heimild a: breyting á verki eftir Mark Blaser og Matt Evans; heimild b: breyting á verki eftir Mark Blaser og Matt Evans)
 
-### Dæmi 4.14  {#dæmi-4.14 .Heading3Grey}
-
-#### Títrunargreining {#títrunargreining .Heading4Grey}
+:::example
+### Dæmi 4.14: Títrunargreining
 
 Endapunkti í títrun á 50,00 ml sýni af HCl í vatnslausn var náð með því að bæta við 35,23 ml af 0,250 M NaOH títranti. Títrunarhvarfið er:
 
@@ -50,7 +51,7 @@ $\text{HCl}(aq) + \text{NaOH}(aq)\  \rightarrow \ \text{NaCl}(aq) + \text{H}_{2}
 
 Hver er mólstyrkur HCl?
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 Eins og í öllum útreikningum á hlutfallaefnafræði efnahvarfa er lykilatriðið sambandið milli mólmagns þeirra efna sem um ræðir eins og sýnt er í stilltri efnajöfnu. Farið er eftir aðferðinni sem lýst er í fyrri greinum þessa kafla, með viðbótarathugunum sem krafist er, þar sem magn hvarfefna sem gefið er upp og beðið er um er sett fram sem styrkur lausna.
 
@@ -74,7 +75,10 @@ Með því að nota þessa útgáfu af mólstyrkseiningunni styttist útreikning
 
 $\frac{35.23\ \text{mL NaOH}\  \times \ \frac{0.250\ \text{mmol NaOH}}{\text{mL NaOH}}\  \times \ \frac{1\ \text{mmol HCl}}{1\ \text{mmol NaOH}}}{50.00\ \text{mL solution}}\  = 0.176\ M\ \text{HCl}$
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína .Heading4Grey}
+:::
+
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 20,00 ml sýni af oxalsýru í vatnslausn, H~2~C~2~O~4~, var títrað með 0,09113 *M* lausn af kalíumpermanganati, KMnO~4~ (sjá nettójónajöfnu hér að neðan).
 
@@ -82,9 +86,10 @@ $\text{2MnO}_{4}^{\text{−}}(aq) + 5\text{H}_{2}\text{C}_{2}\text{O}_{4}(aq) + 
 
 Það þurfti 23,24 ml rúmmál til að ná jafngildispunkti. Hver er mólstyrkur oxalsýrunnar?
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 0,2648 *M*
+:::
+:::
 
 ### Þyngdarmælingagreining
 
@@ -99,9 +104,8 @@ Nauðsynlegum fasaskiptum í þyngdarmælingagreiningu má ná fram með ýmsum 
 
 Mynd 4.17 Hægt er að fjarlægja botnfall úr hvarfblöndu með síun.
 
-### Dæmi 4.15  {#dæmi-4.15 .Heading3Grey}
-
-#### Þyngdarmælingagreining {#þyngdarmælingagreining-1 .Heading4Grey}
+:::example
+### Dæmi 4.15: Þyngdarmælingagreining
 
 0,4550 g föst efnablanda sem inniheldur MgSO~4~ er leyst upp í vatni og meðhöndluð með umframmagni af Ba(NO~3~)~2~, sem leiðir til útfellingar á 0,6168 g af BaSO~4~.
 
@@ -109,7 +113,7 @@ $\text{MgSO}_{4}(aq) + \text{Ba}\left( \text{NO}_{3} \right)_{2}(aq)\  \rightarr
 
 Hver er styrkur (massaprósenta) MgSO~4~ í efnablöndunni?
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 Áætlunin fyrir þennan útreikning er svipuð öðrum sem notaðir eru í hlutfallaefnafræðilegum útreikningum, þar sem aðalatriðið er tengingin milli móla BaSO~4~ og MgSO~4~ í gegnum hlutfallsstuðul þeirra. Þegar massi MgSO~4~ hefur verið reiknaður út má nota hann ásamt massa sýnisblöndunnar til að reikna út umbeðinn styrk í prósentum. ![This figure shows five rectangles. The first is shaded yellow and is labeled "Mass of B a S O subscript 4." This rectangle is followed by an arrow pointing right to a second rectangle. The arrow is labeled, "Molar mass." The second rectangle is shaded pink and is labeled, "Moles of B a S O subscript 4." This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, "Stoichiometric factor." This third rectangle is shaded pink and is labeled, "Moles of M g S O subscript 4." This rectangle is followed by an arrow labeled, "Molar mass," which points downward to a fourth rectangle. This fourth rectangle is shaded yellow and is labeled, "Mass of M g S O subscript 4." This rectangle is followed by an arrow labeled, "Sample mass," which points left to a fifth rectangle. This fifth rectangle is shaded lavender and is labeled, "Percent M g S O subscript 4.](./images/media/rId57.jpg){width="5.0in" height="2.36in"}
 
@@ -120,16 +124,19 @@ $0.6168\ \text{g BaSO}_{4}\  \times \ \frac{1\ \text{mol BaSO}_{4}}{233.43\ \tex
 Styrkur MgSO~4~ í sýnisblöndunni er þá reiknaður sem
 
 ![None](./images/media/rId62.jpg){width="2.65625in" height="0.7708333333333334in"}
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Hver er prósenta klóríðjónar í sýni ef 1,1324 g af sýninu myndar 1,0881 g af AgCl þegar það er meðhöndlað með umfram-Ag^+^?
 
 $\text{Ag}^{\text{+}}(aq) + \text{Cl}^{\text{−}}(aq)\  \rightarrow \ \text{AgCl}(s)$
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 23,76%
+:::
+:::
 
 Frumefnasamsetningu kolvetna og skyldra efnasambanda má ákvarða með þyngdarmælingaraðferð sem kallast brunagreining. Í brunagreiningu er vegið sýni af efnasambandinu hitað að háu hitastigi undir straumi af súrefnisgasi, sem leiðir til fullkomins bruna þess og myndar gasmyndefni með þekkt auðkenni. Fullkominn bruni kolvetna, til dæmis, mun skila koldíoxíði og vatni sem einu myndefnunum. Gasmyndefnin úr brunanum eru leidd í gegnum aðskilin, fyrirfram vegin söfnunartæki sem innihalda efnasambönd sem aðsoga sértækt hvert myndefni ([mynd 4.18](#CNX_Chem_04_05_combustion)). Massaaukning hvers tækis samsvarar massa aðsogaða myndefnisins og má nota í viðeigandi hlutfallaefnafræðilegum útreikningi til að leiða út massa viðkomandi frumefnis.
 
@@ -140,13 +147,12 @@ Frumefnasamsetningu kolvetna og skyldra efnasambanda má ákvarða með þyngdar
 
 Mynd 4.18 Þessi skýringarmynd sýnir grunnhluta brunagreiningartækis til að ákvarða kolefnis- og vetnisinnihald sýnis.
 
-### Dæmi 4.16  {#dæmi-4.16 .Heading3Grey}
-
-#### Brunagreining {#brunagreining .Heading4Grey}
+:::example
+### Dæmi 4.16: Brunagreining
 
 Pólýetýlen er kolvetnisfjölliða sem notuð er til að framleiða matargeymslupoka og marga aðra sveigjanlega plasthluti. Brunagreining á 0,00126 g sýni af pólýetýleni skilar 0,00394 g af CO~2~ og 0,00161 g af H~2~O. Hver er reynsluformúla pólýetýlens?
 
-#### Lausn {#lausn-2 .Heading4Grey}
+**Lausn**
 
 Meginforsendan í þessu verkefni er sú að allt kolefni í sýninu sem brennt er breytist í koldíoxíð og allt vetni í sýninu breytist í vatn:
 
@@ -165,11 +171,14 @@ Reynsluformúla efnasambandsins er síðan leidd út með því að finna minnst
 $\frac{\text{mol H}}{\text{mol C}}\  = \ \frac{1.79\  \times \ 10^{- 4}\ \text{mol H}}{8.95\  \times \ 10^{- 5}\ \text{mol C}}\  = \ \frac{2\ \text{mol H}}{1\ \text{mol C}}$
 
 og reynsluformúla pólýetýlens er CH~2~.
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína-2 .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 0,00215 g sýni af pólýstýreni, fjölliðu sem samanstendur af kolefni og vetni, myndaði 0,00726 g af CO~2~ og 0,00148 g af H~2~O í brunagreiningu. Hver er reynsluformúla pólýstýrens?
 
-### Svar: {#svar-2 .Heading3Grey}
-
+:::answer
 CH
+:::
+:::

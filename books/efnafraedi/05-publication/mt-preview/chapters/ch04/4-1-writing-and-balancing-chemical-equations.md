@@ -12,12 +12,14 @@ lastUpdated: "2026-01-12"
 
 ## 4.1 Að skrifa og stilla efnajöfnur
 
+:::note
 ### Námsmarkmið
 
 Í lok þessa kafla muntu geta:
 
 -   Búið til efnajöfnur út frá lýsingum á efnahvörfum.
 -   Skrifað og stillt sameindajöfnur, heildarjónajöfnur og nettójónajöfnur.
+:::
 
 Í fyrri kafla þessarar bókar var kynnt notkun tákna fyrir frumefni til að tákna einstök atóm. Þegar atóm fá eða missa rafeindir til að mynda jónir, eða sameinast öðrum atómum til að mynda sameindir, er táknum þeirra breytt eða þau sameinuð til að búa til efnaformúlur sem tákna þessar eindir á viðeigandi hátt. Að útvíkka þessa táknfræði til að tákna bæði auðkenni og hlutfallslegt magn efna sem gangast undir efna- (eða eðlis-) breytingu felur í sér að skrifa og stilla efnajöfnu. Tökum sem dæmi hvarfið milli einnar metansameindar (CH~4~) og tveggja tvíatóma súrefnissameinda (O~2~) til að mynda eina koldíoxíðsameind (CO~2~) og tvær vatnssameindir (H~2~O). Efnajafnan sem táknar þetta ferli er sýnd á efri helmingi [myndar 4.2](#CNX_Chem_04_01_rxn2), með rúmfyllandi sameindalíkönum á neðri helmingi myndarinnar.
 
@@ -110,13 +112,12 @@ $2\text{H}_{2}\text{O}\  \rightarrow \ 2\text{H}_{2} + \text{O}_{2}\quad\quad\te
 
 $2\text{H}_{2}\text{O}\  \rightarrow \ 2\text{H}_{2} + \text{O}_{2}$
 
-### Dæmi 4.1  {#dæmi-4.1 .Heading3Grey}
-
-#### Að stilla efnajöfnur {#að-stilla-efnajöfnur-1 .Heading4Grey}
+:::example
+### Dæmi 4.1: Að stilla efnajöfnur
 
 Skrifaðu stillta jöfnu fyrir hvarf nitursameinda (N~2~) og súrefnis (O~2~) til að mynda díniturpentoxíð.
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 Skrifaðu fyrst óstilltu jöfnuna.
 
@@ -157,14 +158,17 @@ $2\text{N}_{2} + 5\text{O}_{2}\  \rightarrow \ 2\text{N}_{2}\text{O}_{5}$
   ------------------------------------------------------------------------------
 
 Fjöldi N- og O-atóma báðum megin í jöfnunni er nú jafn og því er jafnan stillt.
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Skrifaðu stillta efnajöfnu fyrir niðurbrot ammóníumnítrats til að mynda nitursameindir, súrefnissameindir og vatn. (Vísbending: Stilltu súrefni síðast, þar sem það er til staðar í fleiri en einni sameind hægra megin í jöfnunni.)
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 $2\text{NH}_{4}\text{NO}_{3}\  \rightarrow \ 2\text{N}_{2} + \text{O}_{2} + 4\text{H}_{2}\text{O}$
+:::
+:::
 
 Stundum er hentugt að nota brot í stað heiltalna sem millistuðla þegar við stillum efnajöfnur. Þegar jafnvægi er náð má síðan margfalda alla stuðla jöfnunnar með heilli tölu til að breyta brotunum í heiltölur án þess að raska jafnvægi atómanna. Skoðum til dæmis efnahvarf etans (C~2~H~6~) við súrefni sem myndar H~2~O og CO~2~, táknað með óstilltu efnajöfnunni:
 
@@ -190,9 +194,11 @@ eru stuðlarnir ekki lægstu mögulegu heiltölurnar sem tákna hlutfallslegan f
 
 $\text{N}_{2} + 3\text{H}_{2}\  \rightarrow \ 2\text{NH}_{3}$
 
-### Tengill á námsefni {#tengill-á-námsefni .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Notaðu þetta gagnvirka [kennsluefni](http://openstax.org/l/16BalanceEq) til að æfa þig meira í að stilla efnajöfnur.
+:::
 
 ### Viðbótarupplýsingar í efnajöfnum
 
@@ -234,13 +240,12 @@ $\text{Cl}^{\text{−}}(aq) + \text{Ag}^{\text{+}}(aq)\  \rightarrow \ \text{AgC
 
 Þessi nettójónajafna sýnir að fast silfurklóríð getur myndast úr uppleystum klóríð- og silfur(I)-jónum, óháð uppruna þessara jóna. Sameindajafnan og heildarjónajafnan veita viðbótarupplýsingar, þ.e. jónaefnin sem mynduðu Cl^−^ og Ag^+^.
 
-### Dæmi 4.2  {#dæmi-4.2 .Heading3Grey}
-
-#### Jóna- og sameindajöfnur {#jóna--og-sameindajöfnur .Heading4Grey}
+:::example
+### Dæmi 4.2: Jóna- og sameindajöfnur
 
 Þegar koldíoxíð er leyst upp í vatnslausn af natríumhýdroxíði hvarfast efnablandan og myndar vatnslausn af natríumkarbónati og fljótandi vatn. Skrifaðu stilltar sameinda-, heildarjóna- og nettójónajöfnur fyrir þetta ferli.
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 Byrjaðu á því að finna formúlur fyrir hvarfefnin og myndefnin og raða þeim rétt upp í formi efnajöfnu:
 
@@ -257,8 +262,10 @@ $\text{CO}_{2}(aq) + 2\text{Na}^{\text{+}}(aq) + 2\text{OH}^{\text{−}}(aq)\  \
 Að lokum skaltu finna meðjónina/jónirnar, í þessu tilfelli Na^+^(*aq*), og fjarlægja hana úr báðum hliðum jöfnunnar til að fá nettójónajöfnuna:
 
 ![None](./images/media/rId84.jpg){width="5.208333333333333in" height="0.4895833333333333in"}
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Tvíatóma klór og natríumhýdroxíð (lútur) eru hráefnaiðnaðarvörur sem framleiddar eru í miklu magni, ásamt tvíatóma vetni, með rafgreiningu á pækli, samkvæmt eftirfarandi óstilltri jöfnu:
 
@@ -266,8 +273,9 @@ Tvíatóma klór og natríumhýdroxíð (lútur) eru hráefnaiðnaðarvörur sem
 
 Skrifaðu stilltar sameinda-, heildarjóna- og nettójónajöfnur fyrir þetta ferli.
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 $2\text{NaCl}(aq) + 2\text{H}_{2}\text{O}(l)\  \rightarrow \ 2\text{NaOH}(aq) + \text{H}_{2}(g) + \text{Cl}_{2}(g)\quad\quad\left( \text{molecular} \right)$\
 $2\text{Na}^{\text{+}}(aq) + 2\text{Cl}^{\text{−}}(aq) + 2\text{H}_{2}\text{O}(l)\  \rightarrow \ 2\text{Na}^{\text{+}}(aq) + 2\text{OH}^{\text{−}}(aq) + \text{H}_{2}(g) + \text{Cl}_{2}(g)\quad\quad\left( \text{complete ionic} \right)$\
 $2\text{Cl}^{\text{−}}(aq) + 2\text{H}_{2}\text{O}(l)\  \rightarrow \ 2\text{OH}^{\text{−}}(aq) + \text{H}_{2}(g) + \text{Cl}_{2}(g)\quad\quad\text{(net ionic)}$
+:::
+:::

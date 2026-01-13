@@ -12,6 +12,7 @@ lastUpdated: "2026-01-12"
 
 ## 4.2 Flokkun efnahvarfa
 
+:::note
 ### Námsmarkmið
 
 Í lok þessa kafla muntu geta:
@@ -21,6 +22,7 @@ lastUpdated: "2026-01-12"
 -   Þekkt algengar sýrur og basa
 -   Spáð fyrir um leysni algengra ólífrænna efnasambanda með því að nota leysnireglur
 -   Reiknað oxunartölur frumefna í efnasamböndum
+:::
 
 Fólk hefur samskipti sín á milli á margvíslegan og flókinn hátt og við flokkum þessi samskipti eftir algengum hegðunarmynstrum. Þegar tveir einstaklingar skiptast á upplýsingum segjum við að þeir séu í samskiptum. Þegar þeir skiptast á höggum með hnefum eða fótum segjum við að þeir séu að slást. Vísindamönnum hefur sömuleiðis þótt hentugt (eða jafnvel nauðsynlegt), þegar þeir standa frammi fyrir fjölbreyttri víxlverkun milli hreinna efna, að flokka efnahvörf með því að greina algeng mynstur hvarfgirni. Í þessum hluta verður kynning á þremur af algengustu gerðum efnahvarfa: útfellingu, sýru-basa og oxun-afoxun.
 
@@ -103,9 +105,8 @@ Hægt er að nota leiðbeiningarnar um leysni í [töflu 4.1](#fs-idp14013261769
 
 ![None](./images/media/rId33.jpg){width="4.833333333333333in" height="0.4166666666666667in"}
 
-### Dæmi 4.3  {#dæmi-4.3 .Heading3Grey}
-
-#### Að spá fyrir um útfellingarhvörf {#að-spá-fyrir-um-útfellingarhvörf .Heading4Grey}
+:::example
+### Dæmi 4.3: Að spá fyrir um útfellingarhvörf
 
 Spáðu fyrir um niðurstöðuna þegar tiltölulega þéttum lausnum af eftirfarandi jónaefnum er blandað saman. Ef búist er við útfellingu, skrifaðu þá stillta nettójónajöfnu fyrir hvarfið.
 
@@ -115,7 +116,7 @@ Spáðu fyrir um niðurstöðuna þegar tiltölulega þéttum lausnum af eftirfa
 
 \(c\) blýnítrat og ammóníumkarbónat
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 \(a\) Mögulegu myndefnin tvö fyrir þessa samsetningu eru KNO~3~ og BaSO~4~. Leiðbeiningarnar um leysni gefa til kynna að BaSO~4~ sé torleyst og því er búist við útfellingarhvarfi. Nettójónajafnan fyrir þetta hvarf, sem er leidd út á þann hátt sem lýst er í fyrri einingu, er
 
@@ -128,14 +129,17 @@ $\text{Ag}^{\text{+}}(aq) + \text{Cl}^{\text{−}}(aq)\  \rightarrow \ \text{AgC
 \(c\) Mögulegu myndefnin tvö fyrir þessa samsetningu eru PbCO~3~ og NH~4~NO~3~. Leiðbeiningarnar um leysni gefa til kynna að PbCO~3~ sé torleyst og því er búist við útfellingarhvarfi. Nettójónajafnan fyrir þetta hvarf, sem er leidd út á þann hátt sem lýst er í fyrri einingu, er
 
 $\text{Pb}^{2 +}(aq) + \text{CO}_{3}^{2 -}(aq)\  \rightarrow \ \text{PbCO}_{3}(s)$
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Hvaða lausn væri hægt að nota til að fella út baríumjónina, Ba^2+^, í vatnssýni: natríumklóríð, natríumhýdroxíð eða natríumsúlfat? Hver er formúlan fyrir botnfallinu sem búast má við?
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 natríumsúlfat, BaSO~4~
+:::
+:::
 
 ### Sýru-basa hvörf
 
@@ -218,9 +222,8 @@ $\text{Mg}\text{(OH)}_{2}(s) + 2\text{HCl}(aq)\  \rightarrow \ \text{MgCl}_{2}(a
 
 Athugið að auk vatns myndar þetta efnahvarf salt, magnesíumklóríð.
 
-### Dæmi 44  {#dæmi-44 .Heading3Grey}
-
-#### Að skrifa jöfnur fyrir sýru-basa efnahvörf {#að-skrifa-jöfnur-fyrir-sýru-basa-efnahvörf .Heading4Grey}
+:::example
+### Dæmi 4.4: Að skrifa jöfnur fyrir sýru-basa efnahvörf
 
 Skrifaðu stilltar efnajöfnur fyrir sýru-basa efnahvörfin sem lýst er hér:
 
@@ -228,7 +231,7 @@ Skrifaðu stilltar efnajöfnur fyrir sýru-basa efnahvörfin sem lýst er hér:
 
 \(b\) Lausn af baríumhýdroxíði er hlutleyst með lausn af saltpéturssýru
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 \(a\) Hvarfefnin tvö eru gefin, HOCl og H~2~O. Þar sem efnið er sagt vera sýra mun efnahvarf þess við vatn fela í sér flutning á H^+^ frá HOCl yfir á H~2~O til að mynda hýdróníumjónir, H~3~O^+^, og hýpóklórítjónir, OCl^−^.
 
@@ -239,20 +242,22 @@ Tvöföld ör á vel við í þessari jöfnu því hún gefur til kynna að HOCl
 \(b\) Hvarfefnin tvö eru gefin, Ba(OH)~2~ og HNO~3~. Þar sem þetta er hlutleysingarhvarf verða myndefnin tvö vatn og salt, sem samanstendur af katjón jóníska hýdroxíðsins (Ba^2+^) og anjóninni sem myndast þegar sýran flytur vetnisjón sína $\left( \text{NO}_{3}^{\text{−}} \right).$
 
 $\text{Ba}\text{(OH)}_{2}(aq) + 2\text{HNO}_{3}(aq)\  \rightarrow \ \text{Ba}\left( \text{NO}_{3} \right)_{2}(aq) + 2\text{H}_{2}\text{O}(l)$
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Skrifaðu nettó jónajöfnuna sem táknar hlutleysingu á hvaða sterkri sýru sem er með jónísku hýdroxíði. (Vísbending: Íhugaðu jónirnar sem myndast þegar sterk sýra er leyst upp í vatni.)
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 $\text{H}_{3}\text{O}^{\text{+}}(aq) + \text{OH}^{\text{−}}(aq)\  \rightarrow \ 2\text{H}_{2}\text{O}(l)$
+:::
+:::
 
  
 
-### Efnafræði í daglegu lífi {#efnafræði-í-daglegu-lífi .Heading3Grey}
-
-#### Sýrubindandi lyf {#sýrubindandi-lyf .Heading4Grey}
+:::note
+### Efnafræði í daglegu lífi: Sýrubindandi lyf
 
 Maginn okkar inniheldur lausn af um það bil 0,03 *M* HCl, sem hjálpar okkur að melta matinn sem við borðum. Sviðatilfinningin sem fylgir brjóstsviða stafar af því að magasýra lekur í gegnum vöðvalokuna efst í maganum og niður í neðri hluta vélindans. Slímhúð vélindans er ekki varin fyrir ætandi áhrifum magasýru eins og slímhúð magans er og afleiðingarnar geta verið mjög sársaukafullar. Þegar við fáum brjóstsviða líður okkur betur ef við minnkum umfram sýruna í vélindanu með því að taka sýrubindandi lyf. Eins og þú gætir hafa giskað á eru sýrubindandi lyf basar. Eitt algengasta sýrubindandi lyfið er kalsíumkarbónat, CaCO~3~. Efnahvarfið,
 
@@ -269,12 +274,12 @@ Hýdroxíðjónirnar sem myndast í þessu jafnvægi hvarfast síðan við hýdr
 $\text{H}_{3}\text{O}^{\text{+}} + \text{OH}^{\text{−}}\  \rightleftharpoons \ 2\text{H}_{2}\text{O}(l)$
 
 Þetta efnahvarf framleiðir ekki koldíoxíð, en sýrubindandi lyf sem innihalda magnesíum geta haft hægðalosandi áhrif. Nokkur sýrubindandi lyf hafa álhýdroxíð, Al(OH)~3~, sem virkt efni. Álhýdroxíðið hefur tilhneigingu til að valda hægðatregðu og sum sýrubindandi lyf nota álhýdroxíð ásamt magnesíumhýdroxíði til að vega upp á móti aukaverkunum efnanna tveggja.
+:::
 
  
 
-### Efnafræði í daglegu lífi {#efnafræði-í-daglegu-lífi-1 .Heading3Grey}
-
-#### Matreiðsluþættir efnafræðinnar {#matreiðsluþættir-efnafræðinnar .Heading4Grey}
+:::note
+### Efnafræði í daglegu lífi: Matreiðsluþættir efnafræðinnar
 
 Dæmi um sýru-basa efnafræði eru mörg í heimi matargerðarlistar. Eitt dæmi er notkun matarsóda, eða natríumbíkarbónats, við bakstur. NaHCO~3~ er basi. Þegar hann hvarfast við sýru eins og sítrónusafa, súrmjólk eða sýrðan rjóma í deigi myndast loftbólur af koldíoxíðgasi við niðurbrot kolsýrunnar sem myndast og deigið „lyftir sér." Lyftiduft er blanda af natríumbíkarbónati og einu eða fleiri sýrusöltum sem hvarfast þegar efnin tvö komast í snertingu við vatn í deiginu
 
@@ -288,12 +293,15 @@ Margir setja gjarnan sítrónusafa eða edik, sem hvort tveggja eru sýrur, á e
 Mynd 4.8 Hlutleysing á sér stað milli sítrónusýru í sítrónum eða ediksýru í ediki og basanna í fiskholdinu.
 
 Súrsun er aðferð sem notuð er til að varðveita grænmeti með því að nýta náttúrulega framleitt súrt umhverfi. Grænmetið, til dæmis gúrka, er sett í lokaða krukku og látið liggja í saltlegi. Saltlögurinn ýtir undir vöxt gagnlegra baktería en hamlar vexti skaðlegra baktería. Gagnlegu bakteríurnar nærast á sterkju í gúrkunni og framleiða mjólkursýru sem úrgangsefni í ferli sem kallast gerjun. Mjólkursýran eykur að lokum sýrustig saltlagarins svo mikið að allar skaðlegar bakteríur, sem þurfa basískt umhverfi, drepast. Án skaðlegra baktería sem éta gúrkurnar geymast þær mun lengur en ella. Aukaafurð súrsunarferlisins breytir bragði grænmetisins og sýran gerir það súrt á bragðið.
+:::
 
  
 
-### Tengill á námsefni {#tengill-á-námsefni .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Skoðaðu smásæja [sýn](http://openstax.org/l/16AcidsBases) á sterkar og veikar sýrur og basa.
+:::
 
 ### Oxunar-afoxunarhvörf
 
@@ -331,9 +339,8 @@ Myndefnið í þessu efnahvarfi er samgilt efnasamband, þannig að flutningur r
 
 Athugið: Rétt venja til að skrá hleðslu er að skrifa töluna fyrst, fylgt eftir af formerkinu (t.d. 2+), á meðan oxunartala er skrifuð í öfugri röð, formerki fylgt eftir af tölu (t.d. +2). Þessi venja miðar að því að leggja áherslu á muninn á þessum tveimur skyldu eiginleikum.
 
-### Dæmi 4.5  {#dæmi-4.5 .Heading3Grey}
-
-#### Úthlutun oxunartalna {#úthlutun-oxunartalna .Heading4Grey}
+:::example
+### Dæmi 4.5: Úthlutun oxunartalna
 
 Fylgdu leiðbeiningunum í þessum kafla textans til að úthluta oxunartölum til allra frumefna í eftirfarandi efnum:
 
@@ -343,7 +350,7 @@ Fylgdu leiðbeiningunum í þessum kafla textans til að úthluta oxunartölum t
 
 \(c\) Na~2~SO~4~
 
-#### Lausn {#lausn-2 .Heading4Grey}
+**Lausn**
 
 \(a\) Samkvæmt leiðbeiningu 3 er oxunartala H +1.
 
@@ -364,8 +371,10 @@ Samkvæmt leiðbeiningu 2 er oxunartala natríums +1
 Ef gert er ráð fyrir venjulegri oxunartölu fyrir súrefni (−2 samkvæmt leiðbeiningu 3) er oxunartala brennisteins reiknuð eins og leiðbeining 4 segir til um:
 
 ![None](./images/media/rId118.jpg){width="3.1979166666666665in" height="0.46875in"}
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína-2 .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Úthlutaðu oxunartölum til frumefnanna sem eru undirstrikuð í eftirfarandi efnasamböndum eða jónum:
 
@@ -377,9 +386,10 @@ Ef gert er ráð fyrir venjulegri oxunartölu fyrir súrefni (−2 samkvæmt lei
 
 \(d\) $\text{H}_{2}\underline{\text{P}}\text{O}_{4}^{-}$
 
-### Svar: {#svar-2 .Heading3Grey}
-
+:::answer
 \(a\) N, +5; (b) Al, +3; (c) N, −3; (d) P, +5
+:::
+:::
 
 Með því að nota hugtakið oxunartala hefur verið sett fram altæk skilgreining á oxunar-afoxunarhvarfi. Oxunar-afoxunarhvörf (redox) eru hvörf þar sem eitt eða fleiri frumefni sem taka þátt verða fyrir breytingu á oxunartölu. (Þótt langflest oxunar-afoxunarhvörf feli í sér breytingar á oxunartölu fyrir tvö eða fleiri frumefni, þá eru nokkrar áhugaverðar undantekningar frá þessari reglu, [sjá dæmi 4.6](#fs-idp180799104).) Skilgreiningar á viðbótarferlum þessa hvarfaflokks eru endurskoðaðar á sama hátt og sýnt er hér:
 
@@ -391,10 +401,12 @@ Nokkrir undirflokkar oxunar-afoxunarhvarfa eru þekktir, þar á meðal brunahv�
 
 $10\text{Al}(s) + 6\text{NH}_{4}\text{ClO}_{4}(s)\  \rightarrow \ 4\text{Al}_{2}\text{O}_{3}(s) + 2\text{AlCl}_{3}(s) + 12\text{H}_{2}\text{O}(g) + 3\text{N}_{2}(g)$
 
-### Tengill á námsefni {#tengill-á-námsefni-1 .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Horfðu á stutt [myndband](http://openstax.org/l/16hybridrocket) sem sýnir prufukeyrslu á smækkaðri frumgerð blendings eldflaugahreyfils sem áætlað er að nota í nýja Space Launch System sem NASA er að þróa. Fyrstu hreyflarnir sem fara í gang á\
 3 s (grænn logi) nota blöndu af fljótandi eldsneyti/oxara og seinni, öflugri vélarnar sem kveikt er á við 4 s (gulur logi) nota fasta efnablöndu.
+:::
 
 Einföld útskiptahvörf eru oxunar-afoxunarhvörf þar sem jón í lausn er hrakin burt (eða henni skipt út) með oxun málmfrumefnis. Eitt algengt dæmi um þessa tegund hvarfs er oxun tiltekinna málma með sýru:
 
@@ -413,9 +425,8 @@ $\text{Cu}(s) + 2\text{AgNO}_{3}(aq)\  \rightarrow \ \text{Cu}\ \left( \text{NO}
 
 Mynd 4.9 (a) Koparvír er sýndur við hliðina á lausn sem inniheldur silfur(I)jónir. (b) Útskipting uppleystra silfurjóna með koparjónum leiðir til (c) uppsöfnunar á gráleitum silfurmálmi á vírnum og myndunar á bláum lit í lausninni vegna uppleystra koparjóna. (Heimild: breytt útgáfa af verki eftir Mark Ott)
 
-### Dæmi 4.6  {#dæmi-4.6 .Heading3Grey}
-
-#### Lýsing á oxunar-afoxunarhvörfum {#lýsing-á-oxunar-afoxunarhvörfum .Heading4Grey}
+:::example
+### Dæmi 4.6: Lýsing á oxunar-afoxunarhvörfum
 
 Tilgreindu hvaða jöfnur tákna oxunar-afoxunarhvörf og gefðu upp nafn á hvarfinu ef við á. Fyrir þau hvörf sem eru skilgreind sem oxunar-afoxunarhvörf, nefndu oxarann og afoxarann.
 
@@ -429,7 +440,7 @@ Tilgreindu hvaða jöfnur tákna oxunar-afoxunarhvörf og gefðu upp nafn á hva
 
 \(e\) $\text{C}_{2}\text{H}_{4}(g) + 3\text{O}_{2}(g)\  \rightarrow \ 2\text{CO}_{2}(g) + 2\text{H}_{2}\text{O}(l)$
 
-#### Lausn {#lausn-3 .Heading4Grey}
+**Lausn**
 
 Oxunar-afoxunarhvörf eru skilgreind sem slík ef eitt eða fleiri frumefni gangast undir breytingu á oxunartölu.
 
@@ -442,8 +453,10 @@ Oxunar-afoxunarhvörf eru skilgreind sem slík ef eitt eða fleiri frumefni gang
 \(d\) Þetta er ekki oxunar-afoxunarhvarf þar sem oxunartölur allra frumefna eru óbreyttar.
 
 \(e\) Þetta er oxunar-afoxunarhvarf (bruni). Kolefni oxast og oxunartala þess hækkar úr −2 í C~2~H~4~(*g*) í +4 í CO~2~(*g*). Afoxarinn (eldsneytið) er C~2~H~4~(*g*). Súrefni er afoxað og oxunartala þess lækkar úr 0 í O~2~(*g*) í −2 í H~2~O(*l*). Oxarinn er O~2~(*g*).
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína-3 .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Þessi jafna lýsir framleiðslu á tin(II)klóríði:
 
@@ -451,9 +464,10 @@ $\text{Sn}(s) + 2\text{HCl}(g)\  \rightarrow \ \text{SnCl}_{2}(s) + \text{H}_{2}
 
 Er þetta oxunar-afoxunarhvarf? Ef svo er, gefðu þá nákvæmara heiti á hvarfinu ef við á og tilgreindu oxara og afoxara.
 
-### Svar: {#svar-3 .Heading3Grey}
-
+:::answer
 Já, einnar skiptingar hvarf. Sn(*s*) er afoxarinn, HCl(*g*) er oxarinn.
+:::
+:::
 
 #### Að stilla oxunar-afoxunarhvörf með hálfhvarfsaðferðinni
 
@@ -485,15 +499,14 @@ c.  Einfaldaðu jöfnuna með því að fjarlægja allar óþarfa vatnssameindir
 
 Krafan um „hleðslujafnvægi" er bara sérstök tegund af „massajafnvægi" þar sem umræddar agnir eru rafeindir. Jafna verður að sýna jafnan fjölda rafeinda beggja vegna við hvarfefni og myndefni og því verður að jafna bæði atóm og hleðslur.
 
-### Dæmi 4.7  {#dæmi-4.7 .Heading3Grey}
-
-#### Jöfnun oxunar-afoxunarhvarfa í súrri lausn {#jöfnun-oxunar-afoxunarhvarfa-í-súrri-lausn .Heading4Grey}
+:::example
+### Dæmi 4.7: Jöfnun oxunar-afoxunarhvarfa í súrri lausn
 
 Skrifaðu jafnaða jöfnu fyrir hvarf díkrómatjónar og járns(II) sem gefur járn(III) og króm(III) í súrri lausn.
 
 $\text{Cr}_{2}\text{O}_{7}^{\text{2−}} + \text{Fe}^{\text{2+}}\  \rightarrow \ \text{Cr}^{\text{3+}} + \text{Fe}^{\text{3+}}$
 
-#### Lausn {#lausn-4 .Heading4Grey}
+**Lausn**
 
 1.  Skref 1.
 
@@ -570,11 +583,14 @@ Lokaathugun á jafnvægi atóma og hleðslu staðfestir að jafnan er stillt.
 
   hleðsla                 24+                     24+
   ----------------------- ----------------------- -----------------------
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína-4 .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Í basískri lausn hvarfast klórsameindir, Cl~2~, við hýdroxíðjónir, OH^−^, til að mynda klóríðjónir, Cl^−^. og klóratjónir, ClO~3~^−^. VÍSBENDING: Þetta er *sundurstigunarhvarf* þar sem frumefnið klór er bæði oxað og afoxað. Skrifaðu stillta efnajöfnu fyrir þetta hvarf.
 
-### Svar: {#svar-4 .Heading3Grey}
-
+:::answer
 $3\text{Cl}_{2}(aq) + 6\text{OH}^{\text{−}}(aq)\  \rightarrow \ 5\text{Cl}^{\text{−}}(aq) + \text{ClO}_{3}^{\text{−}}(aq) + 3\text{H}_{2}\text{O}(l)$
+:::
+:::

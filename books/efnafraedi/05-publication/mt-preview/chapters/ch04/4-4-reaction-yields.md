@@ -12,6 +12,7 @@ lastUpdated: "2026-01-12"
 
 ## 4.4 Heimtur hvarfa
 
+:::note
 ### Námsmarkmið
 
 Í lok þessa kafla muntu geta:
@@ -19,6 +20,7 @@ lastUpdated: "2026-01-12"
 -   Útskýrt hugtökin fræðilegar heimtur og takmarkandi hvarfefni.
 -   Leitt út fræðilegar heimtur fyrir efnahvarf við tilgreindar aðstæður.
 -   Reiknað prósentuheimtur fyrir efnahvarf.
+:::
 
 Hlutfallslegt magn hvarfefna og myndefna sem sýnt er í stilltri efnajöfnu er oft kallað *hlutfallaefnafræðilegt magn*. Öll dæmin í fyrri kafla snerust um hlutfallaefnafræðilegt magn hvarfefna. Til dæmis, þegar reiknað var út magn myndefnis sem myndaðist úr tilteknu magni hvarfefnis, var gert ráð fyrir að öll önnur nauðsynleg hvarfefni væru til staðar í hlutfallaefnafræðilegu magni (eða meira). Í þessari einingu er fjallað um raunhæfari aðstæður þar sem hvarfefni eru ekki til staðar í hlutfallaefnafræðilegu magni.
 
@@ -60,15 +62,16 @@ Klórinn mun klárast alveg þegar 4 mól af HCl hafa myndast. Þar sem nægileg
 
 Mynd 4.14 Þegar H~2~ og Cl~2~ er blandað saman í magni sem ekki er í réttum hlutföllum, mun annað þessara hvarfefna takmarka magn HCl sem hægt er að framleiða. Þessi mynd sýnir hvarf þar sem vetni er til staðar í umframmagni og klór er takmarkandi hvarfefni.
 
-### Tengill á námsefni {#tengill-á-námsefni .Heading3Grey}
+:::note
+### Tengill á námsefni
 
 Skoðaðu þessa gagnvirku [hermun](http://openstax.org/l/16reactantprod) sem sýnir hugtökin takmarkandi og umfram hvarfefni.
+:::
 
  
 
-### Dæmi 4.12  {#dæmi-4.12 .Heading3Grey}
-
-#### Að bera kennsl á takmarkandi hvarfefni {#að-bera-kennsl-á-takmarkandi-hvarfefni .Heading4Grey}
+:::example
+### Dæmi 4.12: Að bera kennsl á takmarkandi hvarfefni
 
 Kísilnítríð er mjög hart, háhitaþolið keramik sem er notað sem hluti af hverfilblöðum í þotuhreyflum. Það er útbúið samkvæmt eftirfarandi jöfnu:
 
@@ -76,7 +79,7 @@ $\text{3Si}(s) + 2\text{N}_{2}(g)\  \rightarrow \ \text{Si}_{3}\text{N}_{4}(s)$
 
 Hvert er takmarkandi hvarfefnið þegar 2,00 g af Si og 1,50 g af N~2~ hvarfast?
 
-#### Lausn {#lausn .Heading4Grey}
+**Lausn**
 
 Reiknaðu uppgefið mólmagn hvarfefna og berðu það síðan saman við stilltu efnajöfnuna til að finna takmarkandi hvarfefnið.
 
@@ -103,14 +106,17 @@ $\text{mol}\ \text{Si}_{3}\,\text{N}_{4}\ \text{produced} = \text{0.0712 mol Si}
 $\text{mol}\ \text{Si}_{3}\,\text{N}_{4}\ \text{produced} = \text{0.0535 mol}\ \text{N}_{2}\  \times \ \frac{\text{1 mol}\ \text{Si}_{3}\,\text{N}_{4}}{\text{2 mol}\ \text{N}_{2}}\  = \text{0.0268 mol}\ \text{Si}_{3}\,\text{N}_{4}$
 
 Þar sem kísill gefur minna magn af myndefni er hann takmarkandi hvarfefnið.
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Hvert er takmarkandi hvarfefnið þegar 5,00 g af H~2~ og 10,0 g af O~2~ hvarfast og mynda vatn?
 
-### Svar: {#svar .Heading3Grey}
-
+:::answer
 O~2~
+:::
+:::
 
 ### Prósentuheimtur
 
@@ -120,9 +126,8 @@ $\text{percent yield} = \ \frac{\text{actual yield}}{\text{theoretical yield}}\ 
 
 Raunheimtur og fræðilegar heimtur má gefa upp sem massa eða mólmagn (eða annan viðeigandi eiginleika, t.d. rúmmál ef myndefnið er gas). Svo lengi sem báðar heimtur eru gefnar upp með sömu einingum falla þær út þegar prósentuheimtur eru reiknaðar.
 
-### Dæmi 4.13  {#dæmi-4.13 .Heading3Grey}
-
-#### Útreikningur á prósentuheimtum {#útreikningur-á-prósentuheimtum .Heading4Grey}
+:::example
+### Dæmi 4.13: Útreikningur á prósentuheimtum
 
 Við hvarf 1,274 g af koparsúlfati við umfram-sinkmálm fengust 0,392 g af koparmálmi samkvæmt jöfnunni:
 
@@ -130,7 +135,7 @@ $\text{CuSO}_{4}(aq) + \text{Zn}(s)\  \rightarrow \ \text{Cu}(s) + \text{ZnSO}_{
 
 Hverjar eru prósentuheimturnar?
 
-#### Lausn {#lausn-1 .Heading4Grey}
+**Lausn**
 
 Uppgefnar upplýsingar sýna að koparsúlfat er takmarkandi hvarfefnið og því eru fræðilegar heimtur fundnar með aðferðinni sem sýnd var í fyrri einingu, eins og sýnt er hér:
 
@@ -141,22 +146,24 @@ Með því að nota þessar fræðilegu heimtur og uppgefið gildi fyrir raunhei
 $\text{percent yield} = \left( \frac{\text{actual yield}}{\text{theoretical yield}} \right)\  \times \ 100$
 
 ![None](./images/media/rId55.jpg){width="2.4479166666666665in" height="0.75in"}
+:::
 
-#### Prófaðu þekkingu þína {#prófaðu-þekkingu-þína-1 .Heading4Grey}
+:::practice-problem
+**Prófaðu þekkingu þína**
 
 Hverjar eru prósentuheimtur hvarfs sem framleiðir 12,5 g af gasinu freon CF~2~Cl~2~ úr 32,9 g af CCl~4~ og umfram magni HF?
 
 $\text{CCl}_{4} + 2\text{HF}\  \rightarrow \ \text{CF}_{2}\text{Cl}_{2} + 2\text{HCl}$
 
-### Svar: {#svar-1 .Heading3Grey}
-
+:::answer
 48,3%
+:::
+:::
 
  
 
-### Hvernig vísindi tengjast {#hvernig-vísindi-tengjast .Heading3Grey}
-
-#### Græn efnafræði og atómhagkvæmni {#græn-efnafræði-og-atómhagkvæmni .Heading4Grey}
+:::note
+### Hvernig vísindi tengjast: Græn efnafræði og atómhagkvæmni
 
 Markviss hönnun efnaafurða og ferla sem lágmarkar notkun efna sem hættuleg eru umhverfinu og myndun úrgangs er þekkt sem *græn efnafræði*. Græn efnafræði er hugmyndafræðileg nálgun sem er beitt á mörgum sviðum vísinda og tækni og framkvæmd hennar er tekin saman í leiðbeiningum sem kallast „Tólf meginreglur grænnar efnafræði" (sjá nánar á þessari [vefsíðu](http://openstax.org/l/16greenchem)). Ein af 12 meginreglunum miðar sérstaklega að því að hámarka skilvirkni ferla við framleiðslu efnaafurða. *Atómhagkvæmni* ferlis er mælikvarði á þessa skilvirkni, skilgreind sem massaprósenta lokaafurðar framleiðsluferlis miðað við massa *allra* hvarfefna sem notuð eru:
 
@@ -172,3 +179,4 @@ Framleiðsla á hinu algenga lausasölulyfi íbúprófeni sýnir vel árangur gr
   ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Mynd 4.15 (a) Íbúprófen er vinsælt lausasöluverkjalyf sem er almennt selt í 200 mg töflum. (b) BHC-ferlið til að framleiða íbúprófen krefst aðeins þriggja þrepa og sýnir glæsilega atómhagkvæmni. (heimild a: breyting á verki eftir Derrick Coetzee)
+:::
