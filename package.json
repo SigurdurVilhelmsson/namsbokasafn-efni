@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
-    "mammoth": "^1.6.0",
-    "turndown": "^7.2.0"
+    "mammoth": "^1.11.0",
+    "turndown": "^7.2.2"
   },
   "_future-scripts": {
     "_note": "These scripts are planned but not yet implemented. See docs/workflow.md for manual process.",

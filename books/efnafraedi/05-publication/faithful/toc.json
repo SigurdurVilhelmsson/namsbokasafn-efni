@@ -1,8 +1,15 @@
 {
-  "bookId": "efnafraedi",
-  "title": "Efnafræði",
-  "version": "faithful",
-  "versionLabel": "Yfirfarin þýðing",
-  "description": "Human-reviewed faithful translation (Pass 1 complete)",
+  "title": "Efnafræði 2e",
+  "attribution": {
+    "originalTitle": "Chemistry 2e",
+    "originalAuthors": "Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson",
+    "publisher": "OpenStax",
+    "originalUrl": "https://openstax.org/details/books/chemistry-2e",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "translator": "Sigurður E. Vilhelmsson",
+    "translationYear": 2025,
+    "modifications": "Translated to Icelandic, adapted for Icelandic high school students"
+  },
   "chapters": []
 }

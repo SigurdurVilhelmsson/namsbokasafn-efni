@@ -232,6 +232,59 @@ npm run sync-content efnafraedi   # Sync specific book
 npm run sync-content --dry-run    # Preview changes
 ```
 
+## Version Switcher (Root toc.json)
+
+Books with multiple publication tracks use a root-level `toc.json` for version selection.
+
+### Location
+
+`{bookSlug}/toc.json` (at publication root, not inside track folders)
+
+### Schema
+
+```json
+{
+  "bookId": "efnafraedi",
+  "title": "Efnafræði",
+  "versions": [
+    {
+      "id": "faithful",
+      "label": "Yfirfarin þýðing",
+      "description": "Human-reviewed faithful translation",
+      "path": "faithful/",
+      "priority": 1
+    },
+    {
+      "id": "mt-preview",
+      "label": "Vélþýðing (forskoðun)",
+      "description": "Machine translation preview",
+      "path": "mt-preview/",
+      "priority": 2
+    }
+  ]
+}
+```
+
+### Root toc.json Fields
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `bookId` | string | Yes | URL-safe book identifier |
+| `title` | string | Yes | Book title in Icelandic |
+| `versions` | array | Yes | Available publication tracks |
+
+### Version Object
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | Yes | Track identifier |
+| `label` | string | Yes | Display label in Icelandic |
+| `description` | string | No | Extended description |
+| `path` | string | Yes | Path to track folder (trailing slash) |
+| `priority` | integer | Yes | Selection priority (1 = highest) |
+
+The sync script uses priority to select which track to display when both exist for the same chapter.
+
 ## Validation
 
 Minimal requirements for valid publication:
