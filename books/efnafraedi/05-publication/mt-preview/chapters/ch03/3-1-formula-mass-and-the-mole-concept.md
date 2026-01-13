@@ -22,7 +22,7 @@ lastUpdated: "2026-01-12"
 -   Útskýrt sambandið milli massa, móla og fjölda atóma eða sameinda og framkvæmt útreikninga til að leiða þessar stærðir hverja af annarri
 :::
 
-Margir halda því fram að nútímaefnafræði hafi hafist þegar vísindamenn fóru að kanna magnbundna þætti efnafræðinnar jafnt sem þá þáttbundnu. Til dæmis var atómkenning Daltons tilraun til að útskýra niðurstöður mælinga sem gerðu honum kleift að reikna út hlutfallslegan massa frumefna sem sameinuðust í ýmsum efnasamböndum. Skilningur á sambandi milli massa atóma og efnaformúla efnasambanda gerir okkur kleift að lýsa samsetningu efna á magnbundinn hátt.
+Margir halda því fram að nútímaefnafræði hafi hafist þegar vísindamenn fóru að kanna magnbundna þætti efnafræðinnar jafnt og þá þáttbundnu. Til dæmis var atómkenning Daltons tilraun til að útskýra niðurstöður mælinga sem gerðu honum kleift að reikna út hlutfallslegan massa frumefna sem sameinuðust í ýmsum efnasamböndum. Skilningur á sambandi milli massa atóma og efnaformúla efnasambanda gerir okkur kleift að lýsa samsetningu efna á magnbundinn hátt.
 
 ### Formúlumassi
 
@@ -49,22 +49,24 @@ Sömuleiðis er sameindamassi aspirínsameindar, C~9~H~8~O~4~, summa atómmassa 
 Mynd 3.3 Meðalmassi aspirínsameindar er 180,15 amu. Líkanið sýnir sameindabyggingu aspiríns, C~9~H~8~O~4~.
 
 :::example
-### Dæmi 3.1: Útreikningur á sameindamassa fyrir samgilt efnasamband
+### Dæmi 3.1
+
+#### Útreikningur á sameindamassa fyrir samgilt efnasamband
 
 Íbúprófen, C~13~H~18~O~2~, er samgilt efnasamband og virka efnið í nokkrum vinsælum lausasöluverkjalyfjum, svo sem Advil og Motrin. Hver er sameindamassi (amu) þessa efnasambands?
 
 **Lausn**
 
 Sameindir þessa efnasambands eru samsettar úr 13 kolefnisatómum, 18 vetnisatómum og 2 súrefnisatómum. Samkvæmt aðferðinni sem lýst er hér að ofan er meðalsameindamassi þessa efnasambands því: ![A table is shown that is made up of six columns and five rows. The header row reads: "Element," "Quantity," a blank space, "Average atomic mass (a m u)," a blank space, and "Subtotal (a m u)." The first column contains the symbols "C," "H," "O," and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers "13," "8," and "2" as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers "12.01," "1.008," and "16.00" as well as the merged cell. The fifth column contains the symbol "=" in each cell except for the last, merged cell. The sixth column contains the values "156.13," "18.114," "32.00," and "206.27." There is a thick black line below the number 32.00. The merged cell under the first five columns reads "Molecular mass." To the right is a ball-and-stick model of the structure. At the center, it shows six black spheres arranged in a six-sided ring with alternating double bonds. The two black spheres at the top and bottom of the six-sided ring are each bonded to one, smaller, white sphere. The black sphere on the left side of the six-sided ring is connect to another black sphere. This sphere is connected to two smaller, white spheres and another black sphere. This black sphere is connected to one, smaller white sphere, and two other black spheres. Each of these last two black spheres is connected to two smaller, white spheres. The black sphere on the right side of the six-sided ring is connected to another black sphere. This black sphere is connected to one smaller, white sphere and two other black spheres. The black sphere that is connected to it and is situated to the top right is connected to two smaller, white spheres. The black sphere connected towards the bottom right is connected to two red spheres. It forms a double bond with one of these red spheres and the other red sphere is connected to a smaller, white sphere.](./images/media/rId30.jpg){width="5.98in" height="1.59in"}
-:::
 
 :::practice-problem
-**Kannaðu þekkingu þína**
+#### Kannaðu þekkingu þína
 
 Parasetamól, C~8~H~9~NO~2~, er samgilt efnasamband og virka efnið í nokkrum vinsælum lausasöluverkjalyfjum, svo sem Tylenol. Hver er sameindamassi (amu) þessa efnasambands?
 
 :::answer
 151,16 amu
+:::
 :::
 :::
 
@@ -84,22 +86,24 @@ Mynd 3.4 Matarsalt, NaCl, inniheldur fylki af natríum- og klóríðjónum sem s
 Athugaðu að meðalmassar hlutlausra natríum- og klóratóma voru notaðir í þessum útreikningi, frekar en massar natríumkatjóna og klóríðanjóna. Þessi aðferð er fullkomlega ásættanleg við útreikning á formúlumassa jónaefnis. Jafnvel þótt natríumkatjón hafi örlítið minni massa en natríumatóm (þar sem það vantar rafeind), mun þessi munur vega upp á móti því að klóríðanjón er örlítið massameiri en klóratóm (vegna auka rafeindarinnar). Þar að auki er massi rafeindar hverfandi lítill miðað við massa dæmigerðs atóms.. Jafnvel þegar massi stakrar jónar er reiknaður út má yfirleitt hunsa rafeindirnar sem vantar eða eru umfram, þar sem framlag þeirra til heildarmassans er hverfandi og endurspeglast aðeins í aukastöfum sem falla brott þegar reiknaður massi er námundaður rétt. Fáu undantekningarnar frá þessari viðmiðunarreglu eru mjög léttar jónir sem eru myndaðar úr frumefnum með nákvæmlega þekktan atómmassa.
 
 :::example
-### Dæmi 3.2: Útreikningur á formúlumassa fyrir jónaefni
+### Dæmi 3.2
+
+#### Útreikningur á formúlumassa fyrir jónaefni
 
 Álsúlfat, Al~2~(SO~4~)~3~, er jónaefni sem er notað við pappírsframleiðslu og í ýmsum vatnshreinsunarferlum. Hver er formúlumassi (amu) þessa efnasambands?
 
 **Lausn**
 
 Formúla þessa efnasambands gefur til kynna að það innihaldi Al^3+^ og SO~4~^2−^ jónir í hlutfallinu 2:3. Til að reikna út formúlumassa er gagnlegt að endurrita formúluna á einfaldara formi, Al~2~S~3~O~12~. Samkvæmt aðferðinni sem lýst er hér að ofan er formúlumassi þessa efnasambands reiknaður út á eftirfarandi hátt: ![A table is shown that is made up of six columns and five rows. The header row reads: "Element," "Quantity," a blank space, "Average atomic mass (a m u)," a blank space, and "Subtotal (a m u)." The first column contains the symbols "A l," "S," "O," and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers "2," "3," and "12" as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers "26.98," "32.06," and "16.00" as well as the merged cell. The fifth column contains the symbol "=" in each cell except for the last, merged cell. The sixth column contains the values "53.96," "96.18," "192.00," and "342.14." There is a thick black line under the number 192.00. The merged cell under the first five columns reads "Formula mass." To the right of this table is a ball-and-stick structure. It shows yellow and grey sphere connected to red spheres in a complex pattern. The yellow and grey spheres are similar in size, but the red spheres appear to be smaller by comparison.](./images/media/rId42.jpg){width="6.0in" height="1.6in"}
-:::
 
 :::practice-problem
-**Kannaðu þekkingu þína**
+#### Kannaðu þekkingu þína
 
 Kalsíumfosfat, Ca~3~(PO~4~)~2~, er jónaefni og algengt kekkjavarnarefni sem bætt er í matvæli. Hver er formúlumassi (amu) kalsíumfosfats?
 
 :::answer
 310,18 amu
+:::
 :::
 :::
 
@@ -159,7 +163,9 @@ Mólið er notað í efnafræði til að tákna 6,022 $\times$ 10^23^ af einhver
 Sambandið milli formúlumassa, mólsins og tölu Avogadros er hægt að nota til að reikna út ýmis magn sem lýsa samsetningu efna og efnasambanda, eins og sýnt er í næstu dæmum.
 
 :::example
-### Dæmi 3.3: Reikna mól út frá grömmum fyrir frumefni
+### Dæmi 3.3
+
+#### Reikna mól út frá grömmum fyrir frumefni
 
 Samkvæmt næringarleiðbeiningum frá landbúnaðarráðuneyti Bandaríkjanna er áætluð meðalþörf fyrir kalíum í fæðu 4,7 g. Hver er áætluð meðalþörf fyrir kalíum í mólum?
 
@@ -176,10 +182,9 @@ Mólmagn efnis má reikna með því að deila massa þess (g) með mólmassa þ
 $4.7\ \text{g}\ \text{K}\ \left( \frac{\text{mol K}}{39.10\ \text{g K}} \right)\  = \ 0.12\ \text{mol K}$
 
 Reiknuð stærð (0,12 mól K) er í samræmi við grófa matið okkar, þar sem hún er aðeins meiri en 0,1 mól.
-:::
 
 :::practice-problem
-**Kannaðu þekkingu þína**
+#### Kannaðu þekkingu þína
 
 Beryllíum er léttur málmur sem notaður er til að búa til gagnsæja röntgengeislaglugga fyrir læknisfræðileg myndgreiningartæki. Hversu mörg mól af Be eru í þunnri filmu sem vegur 3,24 g?
 
@@ -187,11 +192,14 @@ Beryllíum er léttur málmur sem notaður er til að búa til gagnsæja röntge
 0,360 mól
 :::
 :::
+:::
 
- 
+
 
 :::example
-### Dæmi 3.4: Reikna grömm út frá mólum fyrir frumefni
+### Dæmi 3.4
+
+#### Reikna grömm út frá mólum fyrir frumefni
 
 Einn lítri af lofti inniheldur 9,2 $\times$ 10^−4^ mól af argoni. Hver er massi Ar í einum lítra af lofti?
 
@@ -204,10 +212,9 @@ Mólmagn Ar er gefið og það á að nota til að finna samsvarandi massa í gr
 $9.2\  \times \ 10^{- 4}\ \text{mol}\ \text{Ar}\ \left( \frac{39.95\ \text{g Ar}}{\text{mol}\ \text{Ar}} \right)\  = \ 0.037\ \text{g Ar}$
 
 Niðurstaðan er í samræmi við væntingar okkar, um 0,04 g Ar.
-:::
 
 :::practice-problem
-**Kannaðu þekkingu þína**
+#### Kannaðu þekkingu þína
 
 Hver er massi 2,561 móls af gulli?
 
@@ -215,11 +222,14 @@ Hver er massi 2,561 móls af gulli?
 504,4 g
 :::
 :::
+:::
 
- 
+
 
 :::example
-### Dæmi 3.5: Reikna fjölda atóma út frá massa fyrir frumefni
+### Dæmi 3.5
+
+#### Reikna fjölda atóma út frá massa fyrir frumefni
 
 Kopar er almennt notaður til að framleiða rafmagnsvír ([mynd 3.8](#CNX_Chem_03_02_copper)). Hversu mörg koparatóm eru í 5,00 g af koparvír?
 
@@ -239,10 +249,9 @@ Fjölda Cu-atóma í vírnum má á þægilegan hátt leiða út frá massa hans
 $5.00\ \text{g}\ \text{Cu}\ \left( \frac{\text{mol}\ \text{Cu}}{63.55\ \text{g Cu}} \right)\left( \frac{6.022\  \times \ 10^{23}\ \text{Cu atoms}}{\text{mol Cu}} \right)\  = \ 4.74\  \times \ 10^{22}\text{Cu atoms}$
 
 Einingagreining gefur tilætlaða styttingu eininga og útreiknuð niðurstaða er í stærðargráðunni 10^22^ eins og búist var við.
-:::
 
 :::practice-problem
-**Kannaðu þekkingu þína**
+#### Kannaðu þekkingu þína
 
 Gullgrafari sem skolar gull í á safnar 15,00 g af hreinu gulli. Hversu mörg Au-atóm eru í þessu magni af gulli?
 
@@ -250,11 +259,14 @@ Gullgrafari sem skolar gull í á safnar 15,00 g af hreinu gulli. Hversu mörg A
 4,586 $\times$ 10^22^ Au-atóm
 :::
 :::
+:::
 
- 
+
 
 :::example
-### Dæmi 3.6: Útleiðsla móla úr grömmum fyrir efnasamband
+### Dæmi 3.6
+
+#### Útleiðsla móla úr grömmum fyrir efnasamband
 
 Líkamar okkar mynda prótein úr amínósýrum. Ein þessara amínósýra er glýsín, sem hefur sameindaformúluna C~2~H~5~O~2~N. Hversu mörg mól af glýsínsameindum eru í 28,35 g af glýsíni?
 
@@ -271,10 +283,9 @@ Uppgefinn massi glýsíns (\~28 g) er aðeins meira en þriðjungur af mólmassa
 $28.35\ \text{g}\ \text{glycine}\ \left( \frac{\text{mol glycine}}{75.07\ \text{g glycine}} \right)\  = \ 0.378\ \text{mol glycine}$
 
 Þessi niðurstaða er í samræmi við grófa matið.
-:::
 
 :::practice-problem
-**Kannaðu þekkingu þína**
+#### Kannaðu þekkingu þína
 
 Hversu mörg mól af súkrósa, C~12~H~22~O~11~, eru í 25 g sýni af súkrósa?
 
@@ -282,11 +293,14 @@ Hversu mörg mól af súkrósa, C~12~H~22~O~11~, eru í 25 g sýni af súkrósa?
 0,073 mól
 :::
 :::
+:::
 
- 
+
 
 :::example
-### Dæmi 3.7: Útleiðsla gramma úr mólum fyrir efnasamband
+### Dæmi 3.7
+
+#### Útleiðsla gramma úr mólum fyrir efnasamband
 
 C-vítamín er samgilt efnasamband með sameindaformúluna C~6~H~8~O~6~. Ráðlagður dagskammtur af C-vítamíni fyrir börn á aldrinum 4--8 ára er 1,42 $\times$ 10^−4^ mól. Hver er massi þessa skammts í grömmum?
 
@@ -299,10 +313,9 @@ Mólmassi þessa efnasambands er reiknaður 176,124 g/mól. Uppgefinn fjöldi m�
 $1.42\  \times \ 10^{- 4}\ \text{mol}\ \text{vitamin C}\ \left( \frac{176.124\ \text{g vitamin C}}{\text{mol}\ \text{vitamin C}} \right)\  = \ 0.0250\ \text{g vitamin C}$
 
 Þetta er í samræmi við vænta niðurstöðu.
-:::
 
 :::practice-problem
-**Kannaðu þekkingu þína**
+#### Kannaðu þekkingu þína
 
 Hver er massi 0,443 móla af hýdrasíni, N~2~H~4~?
 
@@ -310,11 +323,14 @@ Hver er massi 0,443 móla af hýdrasíni, N~2~H~4~?
 14,2 g
 :::
 :::
+:::
 
- 
+
 
 :::example
-### Dæmi 3.8: Útreikningur á fjölda atóma og sameinda út frá massa efnasambands
+### Dæmi 3.8
+
+#### Útreikningur á fjölda atóma og sameinda út frá massa efnasambands
 
 Pakki af gervisætuefni inniheldur 40,0 mg af sakkaríni (C~7~H~5~NO~3~S), sem hefur byggingarformúluna: ![A diagram of a molecule is shown that is made up of two ring structures attached together. The left ring is hexagonal in shape with C atoms at each point of the ring and alternating single and double bonds. A double bond occurs between the C atom at the top vertex of the hexagon and the C atom down and to the left of it. The C atoms on the left, top, and bottom of the structure form a single bond to an H atom each. The two right C atoms make up one side of a pentagon and the other points of the pentagon are made up of a C atom, an N atom, and an S atom if read clockwise. The C atom forms a double bond with an O atom. The N atom forms a single bond with an H atom. The S atom forms two double bonds to two O atoms.](./images/media/rId113.jpg){width="1.625in" height="1.28in"}
 
@@ -331,10 +347,9 @@ Með því að nota uppgefinn massa og mólmassa fyrir sakkarín fæst:
 Formúla efnasambandsins sýnir að hver sameind inniheldur sjö kolefnisatóm og því er fjöldi C-atóma í sýninu:
 
 $1.31\  \times \ 10^{20}\ \text{C}_{7}\text{H}_{5}\text{NO}_{3}\text{S molecules}\ \left( \frac{7\ \text{C atoms}}{1\ \text{C}_{7}\text{H}_{5}\text{NO}_{3}\text{S molecule}} \right)\  = \ 9.17\  \times \ 10^{20}\ \text{C atoms}$
-:::
 
 :::practice-problem
-**Kannaðu þekkingu þína**
+#### Kannaðu þekkingu þína
 
 Hversu margar C~4~H~10~ sameindir eru í 9,213 g af þessu efnasambandi? Hversu mörg vetnisatóm?
 
@@ -342,8 +357,9 @@ Hversu margar C~4~H~10~ sameindir eru í 9,213 g af þessu efnasambandi? Hversu 
 9,545 $\times$ 10^22^ sameindir C~4~H~10~; 9,545 $\times$ 10^23^ atóm H
 :::
 :::
+:::
 
- 
+
 
 :::note
 ### Hvernig vísindin tengjast

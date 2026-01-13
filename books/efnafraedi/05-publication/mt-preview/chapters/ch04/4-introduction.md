@@ -17,6 +17,7 @@ lastUpdated: "2026-01-12"
 
 Mynd 4.1 Mörg nútíma eldflaugaeldsneyti eru efnablöndur í föstu formi sem eru samsettar úr nákvæmlega mældu magni efna og kveikt er í þeim til að koma af stað efnahvarfi sem myndar þrýstikraft. (heimild: breytt útgáfa af verki NASA)
 
+:::note
 ### Yfirlit kafla
 
 [4.1 Að skrifa og stilla efnajöfnur](http://openstax.org/books/chemistry-2e/pages/4-1-writing-and-balancing-chemical-equations)
@@ -28,6 +29,7 @@ Mynd 4.1 Mörg nútíma eldflaugaeldsneyti eru efnablöndur í föstu formi sem 
 [4.4 Heimtur hvarfa](http://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields)
 
 [4.5 Magnbundin efnagreining](http://openstax.org/books/chemistry-2e/pages/4-5-quantitative-chemical-analysis)
+:::
 
 ## Inngangur
 

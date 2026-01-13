@@ -13,7 +13,7 @@ lastUpdated: "2026-01-13"
 ## Lykilhugtök
 
 :::definition{term="Sýra"}
-Efni sem myndar H~3~O^+^ þegar það er leyst upp í vatni
+Efni sem myndar $\ce{H3O+}$ þegar það er leyst upp í vatni
 :::
 
 :::definition{term="Sýru-basa hvarf"}
@@ -33,7 +33,7 @@ Efnajafna með jafnmörgum atómum fyrir hvert frumefni í hvarfefnum og myndefn
 :::
 
 :::definition{term="Basi"}
-Efni sem myndar OH^−^ þegar það er leyst upp í vatni
+Efni sem myndar $\ce{OH-}$ þegar það er leyst upp í vatni
 :::
 
 :::definition{term="Búretta"}

@@ -44,7 +44,7 @@ Meðalmassi atóma frumefnis, gefinn upp í amu
 Fjöldi róteinda í kjarna atóms
 :::
 
-:::definition{term="Tvenndarsýra"}
+:::definition{term="Tvenndar atóm sameind"}
 Efnasamband sem inniheldur vetni, súrefni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H^+^ jónir þegar það er leyst upp í vatni)
 :::
 
