@@ -97,3 +97,70 @@ This log tracks all Claude Code actions on the repository.
 **Tools used:** pandoc 3.6.2, add-frontmatter.sh
 
 ---
+
+## 2026-01-12 - MT Preview Publication (Chapters 2-4)
+
+**Operator:** Claude Code
+
+**Summary:**
+Converted MT output for chapters 2-4 to publication-ready markdown using pandoc.
+
+### Chapter 2
+- **Files:** 13 markdown files
+- **Images:** 39 extracted to `ch02/images/media/`
+- **Sections:** 2.1-2.7 + intro, key-terms, key-equations, summary, exercises, answers
+
+### Chapter 3
+- **Files:** 10 markdown files
+- **Images:** 51 extracted to `ch03/images/media/`
+- **Sections:** 3.1-3.4 + intro, key-terms, key-equations, summary, exercises, answers
+
+### Chapter 4
+- **Files:** 11 markdown files
+- **Images:** 44 extracted to `ch04/images/media/`
+- **Sections:** 4.1-4.5 + intro, key-terms, key-equations, summary, exercises, answers
+
+### Process Used
+1. Converted docx to markdown using `pandoc --extract-media`
+2. Renamed extracted images from `.so` to `.jpg`
+3. Fixed image paths to relative (`./images/media/*.jpg`)
+4. Added YAML frontmatter with chapter metadata
+5. Updated `toc.json` with all three chapters
+6. Updated `status.json` for each chapter
+
+### Files Created
+```
+05-publication/mt-preview/chapters/
+├── ch02/
+│   ├── *.md (13 files)
+│   └── images/media/*.jpg (39 images)
+├── ch03/
+│   ├── *.md (10 files)
+│   └── images/media/*.jpg (51 images)
+└── ch04/
+    ├── *.md (11 files)
+    └── images/media/*.jpg (44 images)
+```
+
+### Files Modified
+- `05-publication/mt-preview/toc.json` - Added chapters 2, 3, 4
+- `chapters/ch02/status.json` - Updated mtPreview date
+- `chapters/ch03/status.json` - Updated mtPreview date
+- `chapters/ch04/status.json` - Marked mtPreview complete
+
+### Tools Created
+- `tools/add-frontmatter.sh` - Chapter 2 frontmatter
+- `tools/add-frontmatter-ch03.sh` - Chapter 3 frontmatter
+- `tools/add-frontmatter-ch04.sh` - Chapter 4 frontmatter
+
+### Git
+- Commit: `8ab4994`
+- Message: "Add MT preview markdown for chapters 2-4"
+- Files changed: 176
+
+### Notes
+- Images use generic rId names from docx (e.g., rId20.jpg)
+- Math equations may need manual review (oMath elements)
+- All files marked with `status: "mt-preview"` and `translation: "machine"`
+
+---
