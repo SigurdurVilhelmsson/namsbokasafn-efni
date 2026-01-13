@@ -55,8 +55,8 @@
     "publication": {
       "mtPreview": {
         "complete": true,
-        "date": "2026-01-12",
-        "notes": "MT converted to markdown with pandoc, 10 files, 51 images"
+        "date": "2026-01-13",
+        "notes": "MT with Chemistry Reader tags (10 files, 53 tags)"
       },
       "faithful": {
         "complete": false

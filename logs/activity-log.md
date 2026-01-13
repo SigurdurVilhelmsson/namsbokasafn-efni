@@ -212,3 +212,46 @@ Converted Chapter 1 MT output to markdown and applied Chemistry Reader pedagogic
 - Key terms file completely restructured with definition tags
 
 ---
+
+## 2026-01-13 - Chemistry Reader Tags for Chapters 2-4
+
+**Operator:** Claude Code
+
+**Summary:**
+Applied Chemistry Reader pedagogical tags to chapters 2-4 MT preview files using parallel content-tagger agents.
+
+### Tags Applied by Chapter
+
+| Chapter | Files | Tags | Key Terms |
+|---------|-------|------|-----------|
+| Ch 2 | 13 | 97 | 48 definitions |
+| Ch 3 | 10 | 53 | 20 definitions |
+| Ch 4 | 11 | 79 | 47 definitions |
+
+### Tag Types Used
+- `:::note` - Námsmarkmið, Tengill á námsefni, Efnafræði í daglegu lífi
+- `:::example` - Worked examples (Dæmi)
+- `:::practice-problem` - Kannaðu þekkingu þína sections
+- `:::answer` - Solutions to practice problems
+- `:::definition{term="X"}` - Key terms glossary entries
+
+### Files Modified
+- `ch02/2-introduction.md`, `ch02/2-key-terms.md`
+- `ch03/3-1-formula-mass-and-the-mole-concept.md`
+- `ch04/4-introduction.md`, `ch04/4-key-terms.md`
+
+### Status Files Updated
+- `chapters/ch02/status.json` - mtPreview date → 2026-01-13
+- `chapters/ch03/status.json` - mtPreview date → 2026-01-13
+- `chapters/ch04/status.json` - mtPreview date → 2026-01-13
+
+### Git
+- Commit: `fd871d7`
+- Message: "Apply Chemistry Reader tags to chapters 2-4"
+
+### Notes
+- Section files in ch02-04 already had most tags from previous conversion session
+- Key-terms files were tagged with definition tags
+- Introduction files wrapped with note tags
+
+---

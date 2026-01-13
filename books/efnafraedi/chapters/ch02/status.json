@@ -70,8 +70,8 @@
     "publication": {
       "mtPreview": {
         "complete": true,
-        "date": "2026-01-12",
-        "notes": "MT converted to markdown with frontmatter, 13 files"
+        "date": "2026-01-13",
+        "notes": "MT with Chemistry Reader tags (13 files, 97 tags)"
       },
       "faithful": {
         "complete": false
