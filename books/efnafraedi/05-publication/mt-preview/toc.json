@@ -6,6 +6,23 @@
   "description": "Machine translation preview - not human-reviewed",
   "chapters": [
     {
+      "chapter": 1,
+      "titleEn": "Essential Ideas",
+      "titleIs": "Grunnhugmyndir",
+      "path": "chapters/ch01",
+      "sections": [
+        {"id": "1.1", "file": "1-1-chemistry-in-context.md", "titleIs": "1.1 Efnafræði í samhengi", "titleEn": "Chemistry in Context", "type": "section"},
+        {"id": "1.2", "file": "1-2-phases-and-classification-of-matter.md", "titleIs": "1.2 Fasar og flokkun efnis", "titleEn": "Phases and Classification of Matter", "type": "section"},
+        {"id": "1.3", "file": "1-3-physical-and-chemical-properties.md", "titleIs": "1.3 Eðlis- og efnafræðilegir eiginleikar", "titleEn": "Physical and Chemical Properties", "type": "section"},
+        {"id": "1.4", "file": "1-4-measurements.md", "titleIs": "1.4 Mælingar", "titleEn": "Measurements", "type": "section"},
+        {"id": "1.5", "file": "1-5-measurement-uncertainty-accuracy-and-precision.md", "titleIs": "1.5 Óvissa mælinga, nákvæmni og skerpa", "titleEn": "Measurement Uncertainty, Accuracy, and Precision", "type": "section"},
+        {"id": "1.6", "file": "1-6-mathematical-treatment-of-measurement-results.md", "titleIs": "1.6 Stærðfræðileg meðhöndlun mæligagna", "titleEn": "Mathematical Treatment of Measurement Results", "type": "section"},
+        {"id": "key-terms", "file": "1-key-terms.md", "titleIs": "Lykilhugtök", "type": "reference"}
+      ],
+      "status": "complete",
+      "publishedDate": "2026-01-13"
+    },
+    {
       "chapter": 2,
       "titleEn": "Atoms, Molecules, and Ions",
       "titleIs": "Atóm, sameindir og jónir",
