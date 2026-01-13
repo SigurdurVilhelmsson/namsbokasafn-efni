@@ -65,8 +65,8 @@
     "publication": {
       "mtPreview": {
         "complete": true,
-        "date": "2024-11-01",
-        "notes": "AI translation published for testing"
+        "date": "2026-01-13",
+        "notes": "MT converted to markdown with Chemistry Reader tags (7 files, 91 tags)"
       },
       "faithful": {
         "complete": false,
