@@ -1,79 +1,138 @@
-# mhchem Chemical Notation Reference
+# mhchem Quick Reference
 
-Use `\ce{}` command for all chemical notation. Much simpler than manual subscripts!
+Use `$\ce{...}$` for ALL chemical notation. Never use plain text or `$\text{...}$`.
 
 ## Basic Formulas
 
 ```markdown
-$\ce{H2O}$           -> H2O
-$\ce{H2SO4}$         -> H2SO4
-$\ce{Fe2O3}$         -> Fe2O3
-$\ce{Ca(OH)2}$       -> Ca(OH)2
+$\ce{H2O}$          → H₂O
+$\ce{H2SO4}$        → H₂SO₄
+$\ce{Ca(OH)2}$      → Ca(OH)₂
+$\ce{[Cu(NH3)4]^2+}$ → [Cu(NH₃)₄]²⁺
 ```
 
 ## Ions
 
 ```markdown
-$\ce{Fe^3+}$         -> Fe3+
-$\ce{SO4^2-}$        -> SO4 2-
-$\ce{Na+}$           -> Na+
-$\ce{Cl-}$           -> Cl-
+$\ce{Fe^3+}$        → Fe³⁺
+$\ce{Fe^{3+}}$      → Fe³⁺ (alternative)
+$\ce{SO4^2-}$       → SO₄²⁻
+$\ce{OH-}$          → OH⁻
+$\ce{e-}$           → e⁻ (electron)
 ```
 
-## States of Matter
+## State Symbols
 
 ```markdown
-$\ce{H2O(l)}$        -> H2O(l)   liquid
-$\ce{NaCl(s)}$       -> NaCl(s)  solid
-$\ce{CO2(g)}$        -> CO2(g)   gas
-$\ce{NaCl(aq)}$      -> NaCl(aq) aqueous
+$\ce{H2O(l)}$       → H₂O(l) — liquid
+$\ce{NaCl(s)}$      → NaCl(s) — solid
+$\ce{CO2(g)}$       → CO₂(g) — gas
+$\ce{NaCl(aq)}$     → NaCl(aq) — aqueous
 ```
 
 ## Reaction Arrows
 
 ```markdown
-$\ce{A -> B}$        -> forward reaction
-$\ce{A <- B}$        -> reverse reaction
-$\ce{A <=> B}$       -> equilibrium
-$\ce{A <-> B}$       -> resonance
+$\ce{A -> B}$       → A → B (forward)
+$\ce{A <- B}$       → A ← B (reverse)
+$\ce{A <-> B}$      → A ↔ B (resonance)
+$\ce{A <=> B}$      → A ⇌ B (equilibrium)
+$\ce{A <=>> B}$     → A ⇌ B (equilibrium favors products)
+$\ce{A <<=> B}$     → A ⇌ B (equilibrium favors reactants)
 ```
 
-## Reactions with Conditions
+## Reaction Conditions
 
 ```markdown
-$\ce{A ->[heat] B}$           -> with heat
-$\ce{A ->[H2SO4] B}$          -> with catalyst
-$\ce{A ->[\Delta] B}$         -> with heat (delta)
-$\ce{A ->[catalyst][heat] B}$ -> above and below arrow
+$\ce{A ->[heat] B}$              → A --heat→ B
+$\ce{A ->[{Pt}] B}$              → A --Pt→ B (catalyst)
+$\ce{A ->[{350 °C}] B}$          → A --350 °C→ B
+$\ce{A ->[{350 °C}][{2 atm}] B}$ → conditions above and below arrow
+$\ce{A ->[\Delta] B}$            → A --Δ→ B (heat symbol)
 ```
 
-## Complete Equation Examples
+## Precipitate and Gas Evolution
 
 ```markdown
-**Combustion:**
-$$\ce{CH4(g) + 2O2(g) -> CO2(g) + 2H2O(l)}$$
+$\ce{v}$            → ↓ (precipitate)
+$\ce{^}$            → ↑ (gas evolution)
 
-**Equilibrium:**
-$$\ce{N2(g) + 3H2(g) <=> 2NH3(g)}$$
-
-**Acid-base:**
-$$\ce{HCl(aq) + NaOH(aq) -> NaCl(aq) + H2O(l)}$$
+$\ce{AgNO3 + NaCl -> AgCl v + NaNO3}$
+$\ce{CaCOite{3} + 2HCl -> CaCl2 + H2O + CO2 ^}$
 ```
 
-## Special Notation
+## Stoichiometric Coefficients
 
 ```markdown
-$\ce{AgCl v}$        -> precipitate (down arrow)
-$\ce{CO2 ^}$         -> gas evolution (up arrow)
-$\ce{Fe^2+ -> Fe^3+ + e-}$  -> electron transfer
+$\ce{2H2 + O2 -> 2H2O}$
+$\ce{4Fe + 3O2 -> 2Fe2O3}$
+$\ce{1/2 O2}$       → ½O₂ (fractions)
 ```
 
-## Why mhchem?
+## Isotopes
 
-Compare:
 ```markdown
-Old: $\text{H}_2\text{SO}_4$
-New: $\ce{H2SO4}$
+$\ce{^{14}C}$       → ¹⁴C
+$\ce{^{238}_{92}U}$ → ²³⁸₉₂U
+$\ce{^{2}H}$        → ²H (deuterium)
 ```
 
-Always use mhchem. It's cleaner, easier to read, and less error-prone.
+## Organic Chemistry
+
+```markdown
+$\ce{CH3-CH2-OH}$   → CH₃-CH₂-OH
+$\ce{CH3CH2OH}$     → CH₃CH₂OH
+$\ce{C6H5-}$        → C₆H₅- (phenyl)
+```
+
+## Oxidation States
+
+```markdown
+$\ce{Fe^{II}Fe^{III}2O4}$    → Fe(II)Fe(III)₂O₄
+$\overset{+2}{\ce{Fe}}$       → Fe with +2 above
+```
+
+## Common Patterns
+
+### Full Reaction Example
+
+```markdown
+$$\ce{2Na(s) + 2H2O(l) -> 2NaOH(aq) + H2(g) ^}$$ {#eq:sodium-water}
+```
+
+### Equilibrium with Constant
+
+```markdown
+Jafnvægisfastinn er: $K = \frac{[\ce{NO2}]^2}{[\ce{N2O4}]}$
+```
+
+### Half-Reactions
+
+```markdown
+**Oxun**: $\ce{Zn(s) -> Zn^2+(aq) + 2e-}$
+
+**Afoxun**: $\ce{Cu^2+(aq) + 2e- -> Cu(s)}$
+```
+
+## Common Mistakes
+
+| Wrong | Right |
+|-------|-------|
+| `H₂O` | `$\ce{H2O}$` |
+| `$\text{H}_2\text{O}$` | `$\ce{H2O}$` |
+| `H<sub>2</sub>O` | `$\ce{H2O}$` |
+| `$H_2O$` | `$\ce{H2O}$` |
+| `CO2` | `$\ce{CO2}$` |
+| `Na+` | `$\ce{Na+}$` |
+
+## Display vs Inline
+
+```markdown
+<!-- Inline (within text) -->
+Vatn ($\ce{H2O}$) er lífsnauðsynlegt.
+
+<!-- Display (centered, separate line) -->
+$$\ce{2H2 + O2 -> 2H2O}$$
+```
+
+**Rule**: Use inline for formulas mentioned in text. Use display for important equations that should stand alone.

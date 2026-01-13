@@ -1,157 +1,254 @@
-# Implemented Chemistry Reader Tags
+# Implemented Tags Reference
+
+Complete syntax reference for all custom markdown directives in the Chemistry Reader.
 
 ## Callout Blocks
 
-### Note Block (Blue)
+### Note (:::note)
+
+**Purpose**: Important supplementary information
+**Color**: Blue
+**Title**: "Athugið"
+
 ```markdown
 :::note
-Important information students should pay attention to.
+Þetta er mikilvæg viðbótarupplýsing sem nemandinn ætti að hafa í huga.
+:::
+
+:::note{title="Sérstök athugasemd"}
+Hægt er að breyta titlinum með title eigindinni.
 :::
 ```
-Renders with: Info icon, "Athugid" title, blue theme
 
-### Warning Block (Amber)
+### Warning (:::warning)
+
+**Purpose**: Cautions, safety information, common mistakes to avoid
+**Color**: Amber/Yellow
+**Title**: "Viðvörun"
+
 ```markdown
 :::warning
-Caution about safety, common mistakes, or important considerations.
+Aldrei blandið saman klóríni og ammoníaki — það myndar eitrað gas!
+:::
+
+:::warning{title="Öryggisatriði"}
+Notið alltaf öryggisgleraugu þegar þið vinnið með sýrum.
 :::
 ```
-Renders with: Warning icon, "Vidvorun" title, amber theme
 
-### Example Block (Gray)
+### Example (:::example)
+
+**Purpose**: Worked examples showing step-by-step solutions
+**Color**: Gray
+**Title**: "Dæmi"
+
 ```markdown
 :::example
-**Example 1.3.1: Title**
+**Reiknið mólmassa $\ce{H2SO4}$**
 
-Worked example content...
+$M = 2(1.008) + 32.07 + 4(16.00) = 98.09 \text{ g/mol}$
+:::
+
+:::example{title="Dæmi 3.2 — Mólmassi"}
+Ef þú vilt sérsniðinn titil.
 :::
 ```
-Renders with: Lightbulb icon, "Daemi" title, gray theme
-
----
 
 ## Interactive Blocks
 
-### Practice Problem (with Answer)
+### Practice Problem (:::practice-problem)
+
+**Purpose**: Problems for students to solve with progressive hints
+**Color**: Indigo
+**Title**: "Æfingadæmi"
+
+**Structure**: Contains nested `:::answer`, `:::hint`, and `:::explanation` blocks.
+
 ```markdown
 :::practice-problem
-Problem statement here.
-
-:::answer
-**Solution:**
-Step-by-step solution...
-
-**Answer:** Final answer
-:::
-:::
-```
-Features:
-- Amber header with "Aefingadaemi" title
-- "Syna svar" button reveals answer
-- Green answer area with animation
-
-### With Hints
-```markdown
-:::practice-problem
-Problem statement.
+Hver er mólmassi glúkósa ($\ce{C6H12O6}$)?
 
 :::hint
-First hint (revealed progressively)
+Mólmassi kolefnis er 12.01 g/mol, vetnis er 1.008 g/mol og súrefnis er 16.00 g/mol.
 :::
 
 :::hint
-Second hint
+Margfaldið atómmassa hvers frumefnis með fjölda atóma í sameind.
 :::
 
 :::answer
-Solution...
-:::
-:::
-```
-
-### With Explanation
-```markdown
-:::practice-problem
-Problem statement.
-
-:::answer
-Brief answer
+180.16 g/mol
 :::
 
 :::explanation
-Detailed explanation of why/how...
+$M = 6(12.01) + 12(1.008) + 6(16.00) = 72.06 + 12.10 + 96.00 = 180.16 \text{ g/mol}$
 :::
 :::
 ```
 
----
+**Note**: Multiple `:::hint` blocks appear as progressive hints (Hint 1, Hint 2, etc.).
 
-## Educational Directive Blocks
+## Educational Directives
 
-### Definition Block (Purple)
+### Definition (:::definition)
+
+**Purpose**: Formal definition of a technical term
+**Color**: Purple
+**Title**: "Skilgreining"
+**Required attribute**: `term="..."`
+
 ```markdown
-:::definition{term="Molmassi"}
-Definition text explaining the term.
+:::definition{term="Mól"}
+Mól er SI-eining fyrir efnismagn. Eitt mól inniheldur nákvæmlega
+$6.022 \times 10^{23}$ eindir (Avogadro-talan).
 :::
 ```
-Renders with: Book icon, "Skilgreining: Molmassi" title, purple theme
 
-Without term attribute:
-```markdown
-:::definition
-Definition text.
-:::
-```
-Renders with: "Skilgreining" title only
+**Important**: The `term` attribute is required and used for indexing.
 
-### Key Concept Block (Cyan)
+### Key Concept (:::key-concept)
+
+**Purpose**: Fundamental ideas that students must understand
+**Color**: Cyan
+**Title**: "Lykilhugtak"
+
 ```markdown
 :::key-concept
-Essential concept students must understand.
+Massavarðveislulögmálið segir að massi hvarfefna sé alltaf jafn
+massa myndefna í lokuðu kerfi.
+:::
+
+:::key-concept{title="Hlutþrýstingslögmál Daltons"}
+Heildarþrýstingur gasblandna er summa hlutþrýstings hvers gass.
 :::
 ```
-Renders with: Key icon, "Lykilhugtak" title, cyan theme
 
-### Checkpoint Block (Green)
+### Checkpoint (:::checkpoint)
+
+**Purpose**: Quick comprehension checks during reading
+**Color**: Green
+**Title**: "Sjálfsmat"
+
 ```markdown
 :::checkpoint
-Getur thu:
-- First self-check item
-- Second self-check item
-- Third self-check item
-
-Ef ekki, endurskodadu kafla X.Y!
+Getið þið útskýrt muninn á atómnúmeri og massatölu?
 :::
 ```
-Renders with: Checkmark icon, "Sjalfsmat" title, green theme
 
-### Common Misconception Block (Rose)
+### Common Misconception (:::common-misconception)
+
+**Purpose**: Address and correct common wrong beliefs
+**Color**: Rose/Pink
+**Title**: "Algengur misskilningur"
+
 ```markdown
 :::common-misconception
-**Rangt:** Statement of the misconception
+**Rangt**: Rafeindir snúast um kjarnann eins og plánetur um sólina.
 
-**Rett:** Correct understanding
+**Rétt**: Rafeindir eru í raflausum skýjum þar sem líkur eru á
+að finna þær, ekki í ákveðnum brautum.
 :::
 ```
-Renders with: X-circle icon, "Algengur misskilningur" title, rose theme
-
----
 
 ## Cross-References
 
-### Creating Anchors
-```markdown
-$$
-E = mc^2
-$$ {#eq:einstein}
+### Reference Syntax
 
-![Alt text](./image.png) {#fig:diagram}
+**Format**: `[ref:type:id]`
+
+**Types**:
+- `sec` — Section reference
+- `eq` — Equation reference
+- `fig` — Figure reference
+- `tbl` — Table reference
+- `def` — Definition reference
+
+```markdown
+Sjá jöfnu [ref:eq:ideal-gas] og mynd [ref:fig:phase-diagram].
+
+Eins og fjallað var um í kafla [ref:sec:atomic-structure].
+
+Rifjið upp skilgreininguna á mólmassa [ref:def:mol-mass].
 ```
 
-### Using References
+### Anchor Syntax
+
+**Format**: `{#type:id}` placed after the element
+
 ```markdown
-Sja [ref:eq:einstein] fyrir jofnuna.
-Eins og synt er i [ref:fig:diagram]...
+$$PV = nRT$$ {#eq:ideal-gas}
+
+![Fasarit vatns](phase-diagram.png) {#fig:phase-diagram}
+
+:::definition{term="Mólmassi"}
+... skilgreining ...
+::: {#def:mol-mass}
 ```
 
-Reference types: `sec`, `eq`, `fig`, `tbl`, `def`
+## Complete Example
+
+```markdown
+---
+title: Mólhugtakið
+section: "3.2"
+chapter: 3
+objectives:
+  - Útskýra hvað mól þýðir
+  - Reikna mólmassa efnasambanda
+keywords:
+  - mól
+  - mólmassi
+  - Avogadro-tala
+---
+
+# Mólhugtakið
+
+Í þessum kafla kynnumst við mólinu, grundvallareiningunni í efnafræði.
+
+:::definition{term="Mól"}
+Mól er SI-eining fyrir efnismagn. Eitt mól inniheldur nákvæmlega
+$6.022 \times 10^{23}$ eindir (Avogadro-talan).
+::: {#def:mol}
+
+:::note
+Avogadro-talan er nefnd eftir ítalska vísindamanninum Amedeo Avogadro.
+:::
+
+:::key-concept
+Mólmassi efnis (M) er massi eins móls af því efni, mældur í g/mol.
+:::
+
+## Útreikningur mólmassa
+
+Mólmassi efnasambands er reiknaður með því að leggja saman
+atómmassa allra atóma í sameindinni.
+
+:::example
+**Mólmassi $\ce{H2O}$**
+
+$$M_{\ce{H2O}} = 2(1.008) + 16.00 = 18.02 \text{ g/mol}$$ {#eq:water-molar-mass}
+:::
+
+:::practice-problem
+Reiknið mólmassa brennisteinssýru ($\ce{H2SO4}$).
+
+:::hint
+Finnið atómmassa H, S og O í lotukerfinu.
+:::
+
+:::answer
+98.09 g/mol
+:::
+
+:::explanation
+$M = 2(1.008) + 32.07 + 4(16.00) = 2.016 + 32.07 + 64.00 = 98.09 \text{ g/mol}$
+
+Sjá jöfnu [ref:eq:water-molar-mass] fyrir sambærilegan útreikning.
+:::
+:::
+
+:::checkpoint
+Af hverju er mikilvægt að nota mól frekar en massa þegar við
+vinnum með efnahvörf?
+:::
+```
