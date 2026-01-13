@@ -164,3 +164,51 @@ Converted MT output for chapters 2-4 to publication-ready markdown using pandoc.
 - All files marked with `status: "mt-preview"` and `translation: "machine"`
 
 ---
+
+## 2026-01-13 - Chapter 1 MT Preview with Chemistry Reader Tags
+
+**Operator:** Claude Code
+
+**Summary:**
+Converted Chapter 1 MT output to markdown and applied Chemistry Reader pedagogical tags for the web reader.
+
+### Process
+1. Converted 7 docx files from `02-mt-output/docx/ch01/` to markdown using pandoc
+2. Extracted images to `ch01/images/media/`
+3. Added YAML frontmatter to all files
+4. Applied Chemistry Reader tags throughout
+
+### Tags Applied
+
+| Tag Type | Count | Usage |
+|----------|-------|-------|
+| `:::note` | 11 | Námsmarkmið, Tengill á námsefni, Efnafræði í daglegu lífi |
+| `:::example` | 12 | Dæmi 1.1–1.12 |
+| `:::practice-problem` | 12 | "Kannaðu þekkingu þína" sections |
+| `:::answer` | 12 | Solutions to practice problems |
+| `:::definition{term="X"}` | 44 | Key terms glossary |
+
+### Files Created
+```
+05-publication/mt-preview/chapters/ch01/
+├── 1-1-chemistry-in-context.md
+├── 1-2-phases-and-classification-of-matter.md
+├── 1-3-physical-and-chemical-properties.md
+├── 1-4-measurements.md
+├── 1-5-measurement-uncertainty-accuracy-and-precision.md
+├── 1-6-mathematical-treatment-of-measurement-results.md
+├── 1-key-terms.md
+└── images/media/*.jpg
+```
+
+### Git
+- Commit: `1ed2624`
+- Message: "Convert chapter 1 from docx to markdown and apply Chemistry Reader tags"
+- Pushed to remote: `main`
+
+### Notes
+- Encountered UTF-8 non-breaking space characters in source files requiring targeted edits
+- All 12 examples follow consistent structure: example → practice-problem → answer
+- Key terms file completely restructured with definition tags
+
+---
