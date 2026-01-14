@@ -35,7 +35,7 @@ eðlisástandi, formi eða eiginleikum efnisins en engin breyting verður á
 efnasamsetningu þess.
 
   -----------------------------------------------------------------------
-     ![Figure A is a photograph of butter melting in a pot on a stove. Figure B is a photograph of something being heated on a stove in a pot. Water droplets are forming on the underside of a glass cover that has been placed over the pot.](./images/media/rId23.so){width="4.875in"
+     ![Figure A is a photograph of butter melting in a pot on a stove. Figure B is a photograph of something being heated on a stove in a pot. Water droplets are forming on the underside of a glass cover that has been placed over the pot.](./images/media/rId23.jpg){width="4.875in"
                              height="2.03in"}
 
   -----------------------------------------------------------------------
@@ -55,7 +55,7 @@ hættulegt vegna þess að það springur auðveldlega; neon veldur nánast
 engri hættu vegna þess að það er ekki hvarfgjarnt.
 
   -----------------------------------------------------------------------
-    ![Figure A is a photo of metal machinery that is now mostly covered with reddish orange rust. Figure B shows the silver colored chrome parts of a motorcycle. One of the parts is so shiny that you can see a reflection of the surrounding street and buildings.](./images/media/rId28.so){width="4.875in" height="2.075in"}
+    ![Figure A is a photo of metal machinery that is now mostly covered with reddish orange rust. Figure B shows the silver colored chrome parts of a motorcycle. One of the parts is so shiny that you can see a reflection of the surrounding street and buildings.](./images/media/rId28.jpg){width="4.875in" height="2.075in"}
 
   -----------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ hvarfast við saltpéturssýru), allar tegundir bruna og þegar matur er
 eldaður, meltur eða rotnar ([mynd 1.20](#CNX_Chem_01_03_ChemChange)).
 
   -----------------------------------------------------------------------
-   ![Figure A is a photo of the flask containing a blue liquid. Several strands of brownish copper are immersed into the blue liquid. There is a brownish gas rising from the liquid and filling the upper part of the flask. Figure B shows a burning match. Figure C shows red meat being cooked in a pan. Figure D shows a small bunch of yellow bananas that have many black spots.](./images/media/rId33.so){width="4.875in"
+   ![Figure A is a photo of the flask containing a blue liquid. Several strands of brownish copper are immersed into the blue liquid. There is a brownish gas rising from the liquid and filling the upper part of the flask. Figure B shows a burning match. Figure C shows red meat being cooked in a pan. Figure D shows a small bunch of yellow bananas that have many black spots.](./images/media/rId33.png){width="4.875in"
                              height="4.285in"}
 
   -----------------------------------------------------------------------
@@ -120,7 +120,7 @@ draga stuttlega saman hinar ýmsu hættur sem ber að varast þegar unnið er
 með tiltekið efni.
 
   -----------------------------------------------------------------------
-     ![The diamond is subdivided into four smaller diamonds. The upper diamond is colored red and is associated with fire hazards. The numbers in the fire hazard diamond range from 0 to 4. As the numbers increase, the chemical's flash point decreases. 0 indicates a substance that will not burn, 1 indicates a substance with a flashpoint above 200 degrees Fahrenheit, 2 indicates a substance with a flashpoint above 100 degrees Fahrenheit and not exceeding 200 degrees Fahrenheit, 3 indicates a substance with a flashpoint below 100 degrees Fahrenheit, and 4 indicates a substance with a flashpoint below 73 degrees Fahrenheit. The right-hand diamond is yellow and is associated with reactivity. The reactivity numbers range from 0 to 4. 0 indicates a stable chemical, 1 indicates a chemical that is unstable if heated, 2 indicates the possibility of a violent chemical change, 3 indicates that shock and heat may detonate the chemical and 4 indicates that the chemical may detonate. The lower diamond is white and is associated with specific hazards. These contain abbreviations that describe specific hazardous characteristic of the chemical. O X indicates an oxidizer, A C I D indicates an acid, A L K indicates an alkali, C O R indicates corrosive, a W with a line through it indicates use no water, and a symbol of a dot surrounded by three triangles indicates radioactive. The leftmost diamond is blue and is associated with health hazards. The numbers in the health hazard diamond range from 0 to 4. 0 indicates a normal material, 1 indicates slightly hazardous, 2 indicates hazardous, 3 indicates extreme danger, and 4 indicates deadly.](./images/media/rId39.so){width="6.0in"
+     ![The diamond is subdivided into four smaller diamonds. The upper diamond is colored red and is associated with fire hazards. The numbers in the fire hazard diamond range from 0 to 4. As the numbers increase, the chemical's flash point decreases. 0 indicates a substance that will not burn, 1 indicates a substance with a flashpoint above 200 degrees Fahrenheit, 2 indicates a substance with a flashpoint above 100 degrees Fahrenheit and not exceeding 200 degrees Fahrenheit, 3 indicates a substance with a flashpoint below 100 degrees Fahrenheit, and 4 indicates a substance with a flashpoint below 73 degrees Fahrenheit. The right-hand diamond is yellow and is associated with reactivity. The reactivity numbers range from 0 to 4. 0 indicates a stable chemical, 1 indicates a chemical that is unstable if heated, 2 indicates the possibility of a violent chemical change, 3 indicates that shock and heat may detonate the chemical and 4 indicates that the chemical may detonate. The lower diamond is white and is associated with specific hazards. These contain abbreviations that describe specific hazardous characteristic of the chemical. O X indicates an oxidizer, A C I D indicates an acid, A L K indicates an alkali, C O R indicates corrosive, a W with a line through it indicates use no water, and a symbol of a dot surrounded by three triangles indicates radioactive. The leftmost diamond is blue and is associated with health hazards. The numbers in the health hazard diamond range from 0 to 4. 0 indicates a normal material, 1 indicates slightly hazardous, 2 indicates hazardous, 3 indicates extreme danger, and 4 indicates deadly.](./images/media/rId39.jpg){width="6.0in"
                        height="4.179998906386702in"}
 
   -----------------------------------------------------------------------
@@ -155,7 +155,7 @@ eiginleika ([mynd 1.22](#CNX_Chem_01_03_PeriodicPU)). Þú munt læra meira
 um lotukerfið eftir því sem þú heldur áfram í efnafræðináminu.
 
   -----------------------------------------------------------------------
-    ![On this depiction of the periodic table, the metals are indicated with a yellow color and dominate the left two thirds of the periodic table. The nonmetals are colored peach and are largely confined to the upper right area of the table, with the exception of hydrogen, H, which is located in the extreme upper left of the table. The metalloids are colored purple and form a diagonal border between the metal and nonmetal areas of the table. Group 13 contains both metals and metalloids. Group 17 contains both nonmetals and metalloids. Groups 14 through 16 contain at least one representative of a metal, a metalloid, and a nonmetal. A key shows that, at room temperature, metals are solids, metalloids are liquids, and nonmetals are gases.](./images/media/rId44.so){width="6.5in" height="5.08in"}
+    ![On this depiction of the periodic table, the metals are indicated with a yellow color and dominate the left two thirds of the periodic table. The nonmetals are colored peach and are largely confined to the upper right area of the table, with the exception of hydrogen, H, which is located in the extreme upper left of the table. The metalloids are colored purple and form a diagonal border between the metal and nonmetal areas of the table. Group 13 contains both metals and metalloids. Group 17 contains both nonmetals and metalloids. Groups 14 through 16 contain at least one representative of a metal, a metalloid, and a nonmetal. A key shows that, at room temperature, metals are solids, metalloids are liquids, and nonmetals are gases.](./images/media/rId44.jpg){width="6.5in" height="5.08in"}
 
   -----------------------------------------------------------------------
 

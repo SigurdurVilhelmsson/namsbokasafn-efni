@@ -49,7 +49,7 @@ eins og blýi í „eðalmálma" eins og gull og búa til lífselixíra til að
 lækna sjúkdóma og lengja líf ([mynd 1.2](#CNX_Chem_01_01_Alchemist)).
 
   -----------------------------------------------------------------------
-     ![A sketch depicts 4 people stirring and handling chemicals. The chemicals are held in a variety of barrels and large cylinders. Several of the containers are being heated over burning embers. A large stove in the laboratory is filled with burning embers. There is also a large chest in the corner that is producing steam.](./images/media/rId21.so){width="6.5in"
+     ![A sketch depicts 4 people stirring and handling chemicals. The chemicals are held in a variety of barrels and large cylinders. Several of the containers are being heated over burning embers. A large stove in the laboratory is filled with burning embers. There is also a large chest in the corner that is producing steam.](./images/media/rId21.jpg){width="6.5in"
                        height="2.516767279090114in"}
 
   -----------------------------------------------------------------------
@@ -113,7 +113,7 @@ hugmyndir eru notaðar til að skilja alheiminn í stjörnufræði og
 heimsfræði.
 
   -----------------------------------------------------------------------
-  ![A flowchart shows a box containing chemistry at its center. Chemistry is connected to geochemistry, nuclear chemistry, chemical physics, nanoscience and nanotechnology, materials science, chemical engineering, biochemistry and molecular biology, environmental science, agriculture, and mathematics. Each of these disciplines is further connected to other related fields including medicine, biology, food science, geology earth sciences, toxicology, physics, and computer science.](./images/media/rId25.so){width="6.5in" height="2.82in"}
+  ![A flowchart shows a box containing chemistry at its center. Chemistry is connected to geochemistry, nuclear chemistry, chemical physics, nanoscience and nanotechnology, materials science, chemical engineering, biochemistry and molecular biology, environmental science, agriculture, and mathematics. Each of these disciplines is further connected to other related fields including medicine, biology, food science, geology earth sciences, toxicology, physics, and computer science.](./images/media/rId25.jpg){width="6.5in" height="2.82in"}
 
   -----------------------------------------------------------------------
 
@@ -163,7 +163,7 @@ tilgátunnar og nauðsynlegri breytingu á kenningunni, er kölluð
 vísindalega aðferðin ([mynd 1.4](#CNX_Chem_01_01_SciMethod)).
 
   -----------------------------------------------------------------------
-    ![In this flowchart, the observation and curiosity box has an arrow pointing to a box labeled form hypothesis; make prediction. A curved arrow labeled next connects this box to a box labeled perform experiment; make more observations. Another arrow points back to the box that says form hypothesis; make prediction. This arrow is labeled results not consistent with prediction. Another arrow, labeled results are consistent with prediction points from the perform experiment box to a box labeled contributes to body of knowledge. However, an arrow also points from contributes to body of knowledge back to the form hypothesis; make prediction box. This arrow is labeled further testing does not support hypothesis. There are also two other arrows leading out from contributes to body of knowledge. One arrow is labeled much additional testing yields constant observations. This leads to the observation becomes law box. The other arrow is labeled much additional testing supports hypothesis. This arrow leads to the hypothesis becomes theory box.](./images/media/rId36.so){width="6.5in" height="3.83in"}
+    ![In this flowchart, the observation and curiosity box has an arrow pointing to a box labeled form hypothesis; make prediction. A curved arrow labeled next connects this box to a box labeled perform experiment; make more observations. Another arrow points back to the box that says form hypothesis; make prediction. This arrow is labeled results not consistent with prediction. Another arrow, labeled results are consistent with prediction points from the perform experiment box to a box labeled contributes to body of knowledge. However, an arrow also points from contributes to body of knowledge back to the form hypothesis; make prediction box. This arrow is labeled further testing does not support hypothesis. There are also two other arrows leading out from contributes to body of knowledge. One arrow is labeled much additional testing yields constant observations. This leads to the observation becomes law box. The other arrow is labeled much additional testing supports hypothesis. This arrow leads to the hypothesis becomes theory box.](./images/media/rId36.jpg){width="6.5in" height="3.83in"}
 
   -----------------------------------------------------------------------
 
@@ -225,7 +225,7 @@ stórsæju eða smásæju stigi, er dæmi um táknræna sviðið. Skammstafanirn
 táknrænar.
 
   -----------------------------------------------------------------------
-    ![Figure A shows a photo of an iceberg floating in a sea has three arrows. Each arrow points to figure B, which contains three diagrams showing how the water molecules are organized in the air, ice, and sea. In the air, which contains the gaseous form of water, H subscript 2 O gas, the water molecules are disconnected and widely spaced. In the ice, which is the solid form of water, H subscript 2 O solid, the water molecules are bonded together into rings, with each ring containing six water molecules. Three of these rings are connected to each other. In the sea, which is the liquid form of water, H subscript 2 O liquid, the water molecules are very densely packed. The molecules are not bonded together.](./images/media/rId45.so){width="6.5in" height="3.6in"}
+    ![Figure A shows a photo of an iceberg floating in a sea has three arrows. Each arrow points to figure B, which contains three diagrams showing how the water molecules are organized in the air, ice, and sea. In the air, which contains the gaseous form of water, H subscript 2 O gas, the water molecules are disconnected and widely spaced. In the ice, which is the solid form of water, H subscript 2 O solid, the water molecules are bonded together into rings, with each ring containing six water molecules. Three of these rings are connected to each other. In the sea, which is the liquid form of water, H subscript 2 O liquid, the water molecules are very densely packed. The molecules are not bonded together.](./images/media/rId45.jpg){width="6.5in" height="3.6in"}
 
   -----------------------------------------------------------------------
 

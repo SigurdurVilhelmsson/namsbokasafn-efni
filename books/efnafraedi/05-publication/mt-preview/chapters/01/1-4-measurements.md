@@ -131,7 +131,7 @@ m = 10^3^ m), en styttri vegalengdir má gefa upp í sentimetrum (1 cm =
 0,01 m = 10^−2^ m) eða millimetrum (1 mm = 0,001 m = 10^−3^ m).
 
   -----------------------------------------------------------------------
-   ![One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.](./images/media/rId31.so){width="6.5in" height="3.195in"}
+   ![One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.](./images/media/rId31.jpg){width="6.5in" height="3.195in"}
 
   -----------------------------------------------------------------------
 
@@ -158,7 +158,7 @@ Nánari upplýsingar má finna á
 https://www.nist.gov/pml/weights-and-measures/si-units-mass
 
   -----------------------------------------------------------------------
-   ![The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.](./images/media/rId39.so){width="6.5in"
+   ![The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.](./images/media/rId39.jpg){width="6.5in"
                               height="9.2in"}
 
   -----------------------------------------------------------------------
@@ -217,7 +217,7 @@ langar brúnir. Skammstöfunin **cc** fyrir rúmsentimetra (e. **c**ubic
 rúmsentimetri jafngildir einum millilítra (mL) og er 1/1000 úr lítra.
 
   -----------------------------------------------------------------------
-    ![Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.](./images/media/rId59.so){width="6.0in" height="3.375in"}
+    ![Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.](./images/media/rId59.jpg){width="6.0in" height="3.375in"}
 
   -----------------------------------------------------------------------
 

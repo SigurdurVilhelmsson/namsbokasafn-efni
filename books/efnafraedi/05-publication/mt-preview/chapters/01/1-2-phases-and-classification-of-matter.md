@@ -35,7 +35,7 @@ og föstu efni hafa rúmmál sem eru nánast óháð þrýstingi. Gas tekur bæ�
 lögun og rúmmál íláts síns.
 
   -----------------------------------------------------------------------
-    ![A beaker labeled solid contains a cube of red matter and says has fixed shape and volume. A beaker labeled liquid contains a brownish-red colored liquid. This beaker says takes shape of container, forms horizontal surfaces, has fixed volume. The beaker labeled gas is filled with a light brown gas. This beaker says expands to fill container.](./images/media/rId25.so){width="6.5in" height="3.1in"}
+    ![A beaker labeled solid contains a cube of red matter and says has fixed shape and volume. A beaker labeled liquid contains a brownish-red colored liquid. This beaker says takes shape of container, forms horizontal surfaces, has fixed volume. The beaker labeled gas is filled with a light brown gas. This beaker says expands to fill container.](./images/media/rId25.jpg){width="6.5in" height="3.1in"}
 
   -----------------------------------------------------------------------
 
@@ -52,7 +52,7 @@ háhitaumhverfi (bæði náttúrulegu og manngerðu), svo sem eldingum,
 að greina snefilmagn málma.
 
   -----------------------------------------------------------------------
-  ![A cutting torch is being used to cut a piece of metal. Bright, white colored plasma can be seen near the tip of the torch, where it is contacting the metal.](./images/media/rId30.so){width="3.25in"
+  ![A cutting torch is being used to cut a piece of metal. Bright, white colored plasma can be seen near the tip of the torch, where it is contacting the metal.](./images/media/rId30.jpg){width="3.25in"
                              height="2.555in"}
 
   -----------------------------------------------------------------------
@@ -112,7 +112,7 @@ brennisteinssýra), sem geta framleitt rafmagn, breytast í önnur efni
 magn efnis breytist.
 
   -----------------------------------------------------------------------
-  ![Diagram A shows a beer bottle containing pre-beer and sugar. An arrow points from this bottle to a second bottle. This second bottle contains the same volume of liquid, however, the sugar has been converted into ethanol and carbonation as beer was made. Diagram B shows a car battery that contains sheets of P B and P B O subscript 2 along with H subscript 2 S O subscript 4. After the battery is used, it contains an equal mass of P B S O subscript 4 and H subscript 2 O.](./images/media/rId39.so){width="6.5in" height="3.07in"}
+  ![Diagram A shows a beer bottle containing pre-beer and sugar. An arrow points from this bottle to a second bottle. This second bottle contains the same volume of liquid, however, the sugar has been converted into ethanol and carbonation as beer was made. Diagram B shows a car battery that contains sheets of P B and P B O subscript 2 along with H subscript 2 S O subscript 4. After the battery is used, it contains an equal mass of P B S O subscript 4 and H subscript 2 O.](./images/media/rId39.jpg){width="6.5in" height="3.07in"}
 
   -----------------------------------------------------------------------
 
@@ -162,7 +162,7 @@ grundvöllur notkunar þessa efnasambands í ljósmyndafilmur og ljóslit
 gleraugu (þau með linsum sem dökkna þegar þau verða fyrir ljósi).
 
   -----------------------------------------------------------------------
-  ![This figure shows a series of three photos labeled a, b, and c. Photo a shows the bottom of a test tube that is filled with an orange-red substance. A slight amount of a silver substance is also visible. Photo b shows the substance in the test tube being heated over a flame. Photo c shows a test tube that is not longer being heated. The orange-red substance is almost completely gone, and small, silver droplets of a substance are left.](./images/media/rId46.so){width="4.875in"
+  ![This figure shows a series of three photos labeled a, b, and c. Photo a shows the bottom of a test tube that is filled with an orange-red substance. A slight amount of a silver substance is also visible. Photo b shows the substance in the test tube being heated over a flame. Photo c shows a test tube that is not longer being heated. The orange-red substance is almost completely gone, and small, silver droplets of a substance are left.](./images/media/rId46.jpg){width="4.875in"
                              height="1.47in"}
 
   -----------------------------------------------------------------------
@@ -218,7 +218,7 @@ minna af sykri, bragðefnum eða öðrum efnisþáttum en samt verið
 hlynsíróp, bensín og lausn af salti í vatni.
 
   -----------------------------------------------------------------------
-     ![Diagram A shows a glass containing a red liquid with a layer of yellow oil floating on the surface of the red liquid. A zoom in box is magnifying a portion of the red liquid that contains some of the yellow oil. The zoomed in image shows that oil is forming round droplets within the red liquid. Diagram B shows a photo of Gatorade G 2. A zoom in box is magnifying a portion of the Gatorade, which is uniformly red.](./images/media/rId57.so){width="4.875in" height="1.45in"}
+     ![Diagram A shows a glass containing a red liquid with a layer of yellow oil floating on the surface of the red liquid. A zoom in box is magnifying a portion of the red liquid that contains some of the yellow oil. The zoomed in image shows that oil is forming round droplets within the red liquid. Diagram B shows a photo of Gatorade G 2. A zoom in box is magnifying a portion of the Gatorade, which is uniformly red.](./images/media/rId57.jpg){width="4.875in" height="1.45in"}
 
   -----------------------------------------------------------------------
 
@@ -239,7 +239,7 @@ Samantekt á því hvernig hægt er að greina á milli helstu flokka efnis er
 sýnd á ([mynd 1.11](#CNX_Chem_01_02_MattType)).
 
   -----------------------------------------------------------------------
-  ![This flow chart begins with matter at the top and the question: does the matter have constant properties and composition? If no, then it is a mixture. This leads to the next question: is it uniform throughout? If no, it is heterogeneous. If yes, it is homogenous. If the matter does have constant properties and composition, it is a pure substance. This leads to the next question: can it be simplified chemically? If no, it is an element. If yes, then it is a compound.](./images/media/rId61.so){width="6.5in" height="2.2in"}
+  ![This flow chart begins with matter at the top and the question: does the matter have constant properties and composition? If no, then it is a mixture. This leads to the next question: is it uniform throughout? If no, it is heterogeneous. If yes, it is homogenous. If the matter does have constant properties and composition, it is a pure substance. This leads to the next question: can it be simplified chemically? If no, it is an element. If yes, then it is a compound.](./images/media/rId61.jpg){width="6.5in" height="2.2in"}
 
   -----------------------------------------------------------------------
 
@@ -283,7 +283,7 @@ að ekki er hægt að skera það í tvennt (sama hversu pínulítinn hnífurinn
 ef henni væri skipt frekar.
 
   -----------------------------------------------------------------------
-  ![Figure A shows a gold nugget as it would appear to the naked eye. The gold nugget is very irregular, with many sharp edges. It appears gold in color. The microscope image of a gold crystal shows many similarly sized gold stripes that are separated by dark areas. Looking closely, one can see that the gold stripes are made of many, tiny, circular atoms.](./images/media/rId69.so){width="6.5in" height="2.72in"}
+  ![Figure A shows a gold nugget as it would appear to the naked eye. The gold nugget is very irregular, with many sharp edges. It appears gold in color. The microscope image of a gold crystal shows many similarly sized gold stripes that are separated by dark areas. Looking closely, one can see that the gold stripes are made of many, tiny, circular atoms.](./images/media/rId69.jpg){width="6.5in" height="2.72in"}
 
   -----------------------------------------------------------------------
 
@@ -319,7 +319,7 @@ milljónir kolefnisatóma-„tíkalla" til að hylja. ([Mynd
 stækkun.
 
   -----------------------------------------------------------------------
-    ![Figure A shows a puffy white cotton boll growing on a brown twig. Figure B shows a magnified cotton strand. The strand appears transparent but contains dark areas within its interior. Figure C shows the surface of several crisscrossing and overlapping cotton fibers. Its surface is rough along the edges but smooth near the center of each strand. Figure D shows three strands of molecules connected into three vertical chains. Each strand contains about five molecules. Figure E shows that the cotton molecule contains about a dozen atoms. The black carbon atoms form rings that are connected by red oxygen atoms. Many of the carbon atoms are also bonded to hydrogen atoms, shown as white balls, or other oxygen atoms.](./images/media/rId74.so){width="6.5in"
+    ![Figure A shows a puffy white cotton boll growing on a brown twig. Figure B shows a magnified cotton strand. The strand appears transparent but contains dark areas within its interior. Figure C shows the surface of several crisscrossing and overlapping cotton fibers. Its surface is rough along the edges but smooth near the center of each strand. Figure D shows three strands of molecules connected into three vertical chains. Each strand contains about five molecules. Figure E shows that the cotton molecule contains about a dozen atoms. The black carbon atoms form rings that are connected by red oxygen atoms. Many of the carbon atoms are also bonded to hydrogen atoms, shown as white balls, or other oxygen atoms.](./images/media/rId74.jpg){width="6.5in"
                       height="1.6087620297462817in"}
 
   -----------------------------------------------------------------------
@@ -361,7 +361,7 @@ sameindir ótrúlega litlar og léttar. Ef venjulegt vatnsglas væri stækkað
 í stærð jarðarinnar væru vatnssameindirnar í því á stærð við golfkúlur.
 
   -----------------------------------------------------------------------
-   ![The hydrogen molecule, H subscript 2, is shown as two small, white balls bonded together. The oxygen molecule O subscript 2, is shown as two red balls bonded together. The phosphorous molecule, P subscript 4, is shown as four orange balls bonded tightly together. The sulfur molecule, S subscript 8, is shown as 8 yellow balls linked together. Water molecules, H subscript 2 O, consist of one red oxygen atom bonded to two smaller white hydrogen atoms. The hydrogen atoms are at an angle on the oxygen molecule. Carbon dioxide, C O subscript 2, consists of one carbon atom and two oxygen atoms. One oxygen atom is bonded to the carbon's right side and the other oxygen is bonded to the carbon's left side. Glucose, C subscript 6 H subscript 12 O subscript 6, contains a chain of carbon atoms that have attached oxygen or hydrogen atoms.](./images/media/rId79.so){width="6.5in"
+   ![The hydrogen molecule, H subscript 2, is shown as two small, white balls bonded together. The oxygen molecule O subscript 2, is shown as two red balls bonded together. The phosphorous molecule, P subscript 4, is shown as four orange balls bonded tightly together. The sulfur molecule, S subscript 8, is shown as 8 yellow balls linked together. Water molecules, H subscript 2 O, consist of one red oxygen atom bonded to two smaller white hydrogen atoms. The hydrogen atoms are at an angle on the oxygen molecule. Carbon dioxide, C O subscript 2, consists of one carbon atom and two oxygen atoms. One oxygen atom is bonded to the carbon's right side and the other oxygen is bonded to the carbon's left side. Glucose, C subscript 6 H subscript 12 O subscript 6, contains a chain of carbon atoms that have attached oxygen or hydrogen atoms.](./images/media/rId79.jpg){width="6.5in"
                       height="1.8599989063867017in"}
 
   -----------------------------------------------------------------------
@@ -383,7 +383,7 @@ rafhlöðu eða aflgjafa, eins og sýnt er á ([mynd
 1.15](#CNX_Chem_01_01_Electrolys)).
 
   -----------------------------------------------------------------------
-    ![A rectangular battery is immersed in a beaker filled with liquid. Each of the battery terminals are covered by an overturned test tube. The test tubes each contain a bubbling liquid. Zoom in areas indicate that the liquid in the beaker is water, 2 H subscript 2 O liquid. The bubbles in the test tube over the negative terminal are hydrogen gas, 2 H subscript 2 gas. The bubbles in the test tube over the positive terminal are oxygen gas, O subscript 2 gas.](./images/media/rId83.so){width="6.0in" height="3.89in"}
+    ![A rectangular battery is immersed in a beaker filled with liquid. Each of the battery terminals are covered by an overturned test tube. The test tubes each contain a bubbling liquid. Zoom in areas indicate that the liquid in the beaker is water, 2 H subscript 2 O liquid. The bubbles in the test tube over the negative terminal are hydrogen gas, 2 H subscript 2 gas. The bubbles in the test tube over the positive terminal are oxygen gas, O subscript 2 gas.](./images/media/rId83.jpg){width="6.0in" height="3.89in"}
 
   -----------------------------------------------------------------------
 
@@ -414,7 +414,7 @@ hagkvæman hátt, eða framleitt vetni á annan umhverfisvænan hátt, gætu
 efnarafalsbílar verið framtíðin.
 
   -----------------------------------------------------------------------
-     ![The fuel cell consists of a proton exchange membrane sandwiched between an anode and a cathode. Hydrogen gas enters the battery near the anode. Oxygen gas enters the battery near the cathode. The entering hydrogen gas is broken up into single white spheres that each have a positive charge. These are protons. The protons repel negatively-charged electrons within the anode. These electrons travel through a circuit, providing electricity to anything attached to the battery. The protons continue through the proton exchange membrane and through the cathode to reach the oxygen gas molecules at the opposite end of the battery. There, the oxygen atoms split up into single red spheres. Each oxygen atom takes on two of the incoming protons to form a water molecule.](./images/media/rId87.so){width="4.875in"
+     ![The fuel cell consists of a proton exchange membrane sandwiched between an anode and a cathode. Hydrogen gas enters the battery near the anode. Oxygen gas enters the battery near the cathode. The entering hydrogen gas is broken up into single white spheres that each have a positive charge. These are protons. The protons repel negatively-charged electrons within the anode. These electrons travel through a circuit, providing electricity to anything attached to the battery. The protons continue through the proton exchange membrane and through the cathode to reach the oxygen gas molecules at the opposite end of the battery. There, the oxygen atoms split up into single red spheres. Each oxygen atom takes on two of the incoming protons to form a water molecule.](./images/media/rId87.jpg){width="4.875in"
                              height="3.73in"}
 
   -----------------------------------------------------------------------
@@ -449,7 +449,7 @@ yttríum, praseódým og gadólín. Rafhlaðan byggir á litíumjónum og ýmsum
 pólýakrýlónítríli.
 
   -----------------------------------------------------------------------
-  ![A cell phone is labeled to show what its components are made of. The case components are made of polymers such as A B S and or metals such as aluminum, iron, and magnesium. The processor components are made of silicon, common metals such as copper, tin and gold, and uncommon elements such as yttrium and gadolinium. The screen components are made of silicon oxide, also known as glass. The glass is strengthened by the addition of aluminum, sodium, and potassium. The battery components contain lithium combined with other metals such as cobalt, iron, and copper.](./images/media/rId92.so){width="5.89in" height="3.14in"}
+  ![A cell phone is labeled to show what its components are made of. The case components are made of polymers such as A B S and or metals such as aluminum, iron, and magnesium. The processor components are made of silicon, common metals such as copper, tin and gold, and uncommon elements such as yttrium and gadolinium. The screen components are made of silicon oxide, also known as glass. The glass is strengthened by the addition of aluminum, sodium, and potassium. The battery components contain lithium combined with other metals such as cobalt, iron, and copper.](./images/media/rId92.jpg){width="5.89in" height="3.14in"}
 
   -----------------------------------------------------------------------
 
