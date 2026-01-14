@@ -81,34 +81,14 @@ Nokkrir aðrir algengir umreikningsstuðlar eru gefnir í [töflu
 
 Algengir umreikningsstuðlar
 
-  -------------------------------------------------------------------------
-  Lengd                   Rúmmál                  Massi
-  ----------------------- ----------------------- -------------------------
-  1 m = 1,0936 yd         1 L = 1,0567 qt         1 kg = 2,2046 lb
-
-  1 \". = 2,54 cm         1 qt = 0,94635 L        1 lb =
-  (nákvæmlega)                                    453,59g[2](#foot-00001)
-                                                  
-                                                  2
-                                                  
-                                                  Strangt til tekið eru
-                                                  únsa og pund einingar
-                                                  fyrir þyngd, *W* (kraftur
-                                                  sem jafngildir margfeldi
-                                                  massa og þyngdarhröðunar,
-                                                  *W* = *mg*).
-                                                  Umreikningstengslin í
-                                                  þessari töflu eru almennt
-                                                  notuð til að jafna massa
-                                                  og þyngd miðað við
-                                                  nafngildi fyrir *g* við
-                                                  yfirborð jarðar.
-
-  1 km = 0.62137 mi       1 ft^3^ = 28,317 L      1 (avoirdupois) oz =
-                                                  28,349 g
-
-  1 mi = 1609,3 m         1 msk = 14,787 ml       1 (troy) oz = 31,103 g
-  -------------------------------------------------------------------------
+| Lengd | Rúmmál | Massi |
+|---|---|---|
+| 1 m = 1,0936 yd | 1 L = 1,0567 qt | 1 kg = 2,2046 lb |
+| 1 \". = 2,54 cm (nákvæmlega) | 1 qt = 0,94635 L | 1 lb = 453,59g[2](#foot-00001) |
+|  |  | 2 |
+|  |  | Strangt til tekið eru únsa og pund einingar fyrir þyngd, *W* (kraftur sem jafngildir margfeldi massa og þyngdarhröðunar, *W* = *mg*). Umreikningstengslin í þessari töflu eru almennt notuð til að jafna massa og þyngd miðað við nafngildi fyrir *g* við yfirborð jarðar. |
+| 1 km = 0.62137 mi | 1 ft^3^ = 28,317 L | 1 (avoirdupois) oz = 28,349 g |
+| 1 mi = 1609,3 m | 1 msk = 14,787 ml | 1 (troy) oz = 31,103 g |
 
 Tafla 1.6
 

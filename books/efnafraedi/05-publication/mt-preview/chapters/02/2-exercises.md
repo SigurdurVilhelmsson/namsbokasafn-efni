@@ -26,15 +26,11 @@ Tilgreindu hvaða fullyrðingu í kenningu Daltons er brotin með eftirfarandi a
 
 Sýni af efnasamböndunum X, Y og Z eru greind og niðurstöðurnar eru sýndar hér.
 
-  --------------------------------------------------------------------------------------------
-  Efnasamband       Lýsing                                 Massi kolefnis    Massi vetnis
-  ----------------- -------------------------------------- ----------------- -----------------
-  X                 glær, litlaus vökvi með sterkri lykt   1,776 g           0,148 g
-
-  Y                 glær, litlaus vökvi með sterkri lykt   1,974 g           0,329 g
-
-  Z                 glær, litlaus vökvi með sterkri lykt   7,812 g           0,651 g
-  --------------------------------------------------------------------------------------------
+| Efnasamband | Lýsing | Massi kolefnis | Massi vetnis |
+|---|---|---|---|
+| X | glær, litlaus vökvi með sterkri lykt | 1,776 g | 0,148 g |
+| Y | glær, litlaus vökvi með sterkri lykt | 1,974 g | 0,329 g |
+| Z | glær, litlaus vökvi með sterkri lykt | 7,812 g | 0,651 g |
 
 Eru þessi gögn dæmi um lögmálið um föst hlutföll, lögmálið um margföld hlutföll, hvorugt eða bæði? Hvað segja þessi gögn þér um efnasamböndin X, Y og Z?
 

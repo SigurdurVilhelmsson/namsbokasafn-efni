@@ -54,15 +54,11 @@ Jafnan fyrir hvarfið milli metans og súrefnis til að mynda koldíoxíð og va
 
 $\text{CH}_{4} + 2\text{O}_{2}\  \rightarrow \ \text{CO}_{2} + 2\text{H}_{2}\text{O}$
 
-  --------------------------------------------------------------------------------------------
-  Frumefni          Hvarfefni          Myndefni                              Stillt?
-  ----------------- ------------------ ------------------------------------- -----------------
-  C (frá carbon)    1 $\times$ 1 = 1   1 $\times$ 1 = 1                      1 = 1, já
-
-  H                 4 $\times$ 1 = 4   2 $\times$ 2 = 4                      4 = 4, já
-
-  O                 2 $\times$ 2 = 4   (1 $\times$ 2) + (2 $\times$ 1) = 4   4 = 4, já
-  --------------------------------------------------------------------------------------------
+| Frumefni | Hvarfefni | Myndefni | Stillt? |
+|---|---|---|---|
+| C (frá carbon) | 1 $\times$ 1 = 1 | 1 $\times$ 1 = 1 | 1 = 1, já |
+| H | 4 $\times$ 1 = 4 | 2 $\times$ 2 = 4 | 4 = 4, já |
+| O | 2 $\times$ 2 = 4 | (1 $\times$ 2) + (2 $\times$ 1) = 4 | 4 = 4, já |
 
 Oft má leiða stillta efnajöfnu út frá þáttbundinni lýsingu á einhverju efnahvarfi með frekar einfaldri aðferð sem kallast stilling með skoðun. Tökum sem dæmi sundrun vatns til að mynda vetni og súrefni á sameindaformi Þessu ferli er lýst þáttbundið með *óstilltri* efnajöfnu:
 
@@ -70,37 +66,28 @@ $\text{H}_{2}\text{O}\  \rightarrow \ \text{H}_{2} + \text{O}_{2}\quad\quad\text
 
 Með því að bera saman fjölda H- og O-atóma báðum megin í jöfnunni er staðfest að hún er ekki stillt:
 
-  -------------------------------------------------------------------------
-  Frumefni          Hvarfefni          Myndefni           Stillt?
-  ----------------- ------------------ ------------------ -----------------
-  H                 1 $\times$ 2 = 2   1 $\times$ 2 = 2   2 = 2, já
-
-  O                 1 $\times$ 1 = 1   1 $\times$ 2 = 2   1 ≠ 2, nei
-  -------------------------------------------------------------------------
+| Frumefni | Hvarfefni | Myndefni | Stillt? |
+|---|---|---|---|
+| H | 1 $\times$ 2 = 2 | 1 $\times$ 2 = 2 | 2 = 2, já |
+| O | 1 $\times$ 1 = 1 | 1 $\times$ 2 = 2 | 1 ≠ 2, nei |
 
 Fjöldi H-atóma í hvarfefnum og myndefnum jöfnunnar er jafn, en fjöldi O-atóma er það ekki. Til að ná jafnvægi má breyta *stuðlum* jöfnunnar eftir þörfum. Hafðu auðvitað í huga að *lágvísar formúlunnar* eru hluti skilgreiningar á því hvaða efni um er að ræða og því er ekki hægt að breyta þeim án þess að breyta þáttbundinni merkingu jöfnunnar. Til dæmis, ef formúlu hvarfefnisins er breytt úr H~2~O í H~2~O~2~ myndi það leiða til jafnvægis í fjölda atóma, en það breytir líka gerð hvarfefnisins (það er nú vetnisperoxíð en ekki vatn). Hægt er að ná jafnvægi O-atóma með því að breyta stuðlinum fyrir H~2~O í 2.
 
 $2\text{H}_{2}\text{O}\  \rightarrow \ \text{H}_{2} + \text{O}_{2}\quad\quad\text{(unbalanced)}$
 
-  -----------------------------------------------------------------------------
-  Frumefni          Hvarfefni              Myndefni           Stillt?
-  ----------------- ---------------------- ------------------ -----------------
-  H                 **2** $\times$ 2 = 4   1 $\times$ 2 = 2   4 ≠ 2, nei
-
-  O                 2 $\times$ 1 = 2       1 $\times$ 2 = 2   2 = 2, já
-  -----------------------------------------------------------------------------
+| Frumefni | Hvarfefni | Myndefni | Stillt? |
+|---|---|---|---|
+| H | **2** $\times$ 2 = 4 | 1 $\times$ 2 = 2 | 4 ≠ 2, nei |
+| O | 2 $\times$ 1 = 2 | 1 $\times$ 2 = 2 | 2 = 2, já |
 
 Jafnvægi H-atóma raskaðist við þessa breytingu, en það er auðveldlega endurheimt með því að breyta stuðlinum fyrir myndefnið H~2~ í 2.
 
 $2\text{H}_{2}\text{O}\  \rightarrow \ 2\text{H}_{2} + \text{O}_{2}\quad\quad\text{(balanced)}$
 
-  -----------------------------------------------------------------------------
-  Frumefni          Hvarfefni          Myndefni               Stillt?
-  ----------------- ------------------ ---------------------- -----------------
-  H                 2 $\times$ 2 = 4   **2** $\times$ 2 = 4   4 = 4, já
-
-  O                 2 $\times$ 1 = 2   1 $\times$ 2 = 2       2 = 2, já
-  -----------------------------------------------------------------------------
+| Frumefni | Hvarfefni | Myndefni | Stillt? |
+|---|---|---|---|
+| H | 2 $\times$ 2 = 4 | **2** $\times$ 2 = 4 | 4 = 4, já |
+| O | 2 $\times$ 1 = 2 | 1 $\times$ 2 = 2 | 2 = 2, já |
 
 Þessir stuðlar gefa jafnan fjölda bæði H- og O-atóma í hvarfefnum og myndefnum og stillta jafnan er því:
 
@@ -119,37 +106,28 @@ $\text{N}_{2} + \ \text{O}_{2}\  \rightarrow \ \text{N}_{2}\text{O}_{5}\quad\qua
 
 Næst skaltu telja fjölda hverrar tegundar atóma sem eru til staðar í óstilltu jöfnunni.
 
-  -------------------------------------------------------------------------
-  Frumefni          Hvarfefni          Myndefni           Stillt?
-  ----------------- ------------------ ------------------ -----------------
-  N                 1 $\times$ 2 = 2   1 $\times$ 2 = 2   2 = 2, já
-
-  O                 1 $\times$ 2 = 2   1 $\times$ 5 = 5   2 ≠ 5, nei
-  -------------------------------------------------------------------------
+| Frumefni | Hvarfefni | Myndefni | Stillt? |
+|---|---|---|---|
+| N | 1 $\times$ 2 = 2 | 1 $\times$ 2 = 2 | 2 = 2, já |
+| O | 1 $\times$ 2 = 2 | 1 $\times$ 5 = 5 | 2 ≠ 5, nei |
 
 Þó að nitur sé stillt þarf að breyta stuðlum til að stilla fjölda súrefnisatóma. Til að stilla fjölda súrefnisatóma væri skynsamleg fyrsta tilraun að breyta stuðlum fyrir O~2~ og N~2~O~5~ í heiltölur sem gefa 10 O-atóm (lægsta margfeldi fyrir lágvísi O-atóma í þessum tveimur formúlum).
 
 $\text{N}_{2} + 5\text{O}_{2}\  \rightarrow \ 2\text{N}_{2}\text{O}_{5}\quad\quad\text{(unbalanced)}$
 
-  -----------------------------------------------------------------------------------
-  Frumefni          Hvarfefni               Myndefni                Stillt?
-  ----------------- ----------------------- ----------------------- -----------------
-  N                 1 $\times$ 2 = 2        **2** $\times$ 2 = 4    2 ≠ 4, nei
-
-  O                 **5** $\times$ 2 = 10   **2** $\times$ 5 = 10   10 = 10, já
-  -----------------------------------------------------------------------------------
+| Frumefni | Hvarfefni | Myndefni | Stillt? |
+|---|---|---|---|
+| N | 1 $\times$ 2 = 2 | **2** $\times$ 2 = 4 | 2 ≠ 4, nei |
+| O | **5** $\times$ 2 = 10 | **2** $\times$ 5 = 10 | 10 = 10, já |
 
 Jafnvægi N-atóma hefur raskast við þessa breytingu; það er endurheimt með því að breyta stuðlinum fyrir hvarfefnið N~2~ í 2.
 
 $2\text{N}_{2} + 5\text{O}_{2}\  \rightarrow \ 2\text{N}_{2}\text{O}_{5}$
 
-  ------------------------------------------------------------------------------
-  Frumefni          Hvarfefni              Myndefni            Stillt?
-  ----------------- ---------------------- ------------------- -----------------
-  N                 **2** $\times$ 2 = 4   2 $\times$ 2 = 4    4 = 4, já
-
-  O                 5 $\times$ 2 = 10      2 $\times$ 5 = 10   10 = 10, já
-  ------------------------------------------------------------------------------
+| Frumefni | Hvarfefni | Myndefni | Stillt? |
+|---|---|---|---|
+| N | **2** $\times$ 2 = 4 | 2 $\times$ 2 = 4 | 4 = 4, já |
+| O | 5 $\times$ 2 = 10 | 2 $\times$ 5 = 10 | 10 = 10, já |
 
 Fjöldi N- og O-atóma báðum megin í jöfnunni er nú jafn og því er jafnan stillt.
 :::

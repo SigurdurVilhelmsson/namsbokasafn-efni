@@ -31,15 +31,11 @@ Róteind hefur massa upp á 1,0073 amu og hleðslu 1+. Nifteind er örlítið þ
 
 Eiginleikar öreinda
 
-  -----------------------------------------------------------------------------------------------------------------------------
-  Heiti       Staðsetning   Hleðsla (C)                               Einingahleðsla   Massi (amu)   Massi (g)
-  ----------- ------------- ----------------------------------------- ---------------- ------------- --------------------------
-  Rafeind     utan kjarna   −1.602 $\times$ 10^−19^                   1−               0,00055       0,00091 $\times$ 10^−24^
-
-  róteind     kjarni        −1.602 $\times$`<!-- -->`{=html}10^−19^   1+               1,00727       1.67262 $\times$ 10^−24^
-
-  nifteind    kjarni        0                                         0                1,00866       1,67493 $\times$ 10^−24^
-  -----------------------------------------------------------------------------------------------------------------------------
+| Heiti | Staðsetning | Hleðsla (C) | Einingahleðsla | Massi (amu) | Massi (g) |
+|---|---|---|---|---|---|
+| Rafeind | utan kjarna | −1.602 $\times$ 10^−19^ | 1− | 0,00055 | 0,00091 $\times$ 10^−24^ |
+| róteind | kjarni | −1.602 $\times$`<!-- -->`{=html}10^−19^ | 1+ | 1,00727 | 1.67262 $\times$ 10^−24^ |
+| nifteind | kjarni | 0 | 0 | 1,00866 | 1,67493 $\times$ 10^−24^ |
 
 Tafla 2.2
 
@@ -94,35 +90,21 @@ Táknin fyrir nokkur algeng frumefni og atóm þeirra eru sýnd í [töflu 2.3](
 
 Nokkur algeng frumefni og tákn þeirra
 
-  --------------------------------------------------------------------------------
-  Frumefni          Tákn                Frumefni          Tákn
-  ----------------- ------------------- ----------------- ------------------------
-  ál                Al                  járn              Fe (frá *ferrum*)
-
-  bróm              Br                  blý               Pb (frá *plumbum*)
-
-  kalsíum           Ca                  magnesíum         Mg
-
-  kolefni           C (frá carbon)      kvikasilfur       Hg (frá *hydrargyrum*)
-
-  klór              Cl                  nitur             N
-
-  króm              Cr                  súrefni           O (frá oxygen)
-
-  kóbalt            Co                  kalíum            K
-
-  kopar             Cu (frá *cuprum*)   kísill            Si (frá silicon)
-
-  flúor             F                   silfur            Ag (frá *argentum*)
-
-  gull              Au (frá *aurum*)    natríum           Na
-
-  helíum            He                  brennisteinn      S (frá sulfur)
-
-  vetni             H (frá hydrogen)    tin               Sn (frá *stannum*)
-
-  joð               I (frá iodine)      sink              Zn
-  --------------------------------------------------------------------------------
+| Frumefni | Tákn | Frumefni | Tákn |
+|---|---|---|---|
+| ál | Al | járn | Fe (frá *ferrum*) |
+| bróm | Br | blý | Pb (frá *plumbum*) |
+| kalsíum | Ca | magnesíum | Mg |
+| kolefni | C (frá carbon) | kvikasilfur | Hg (frá *hydrargyrum*) |
+| klór | Cl | nitur | N |
+| króm | Cr | súrefni | O (frá oxygen) |
+| kóbalt | Co | kalíum | K |
+| kopar | Cu (frá *cuprum*) | kísill | Si (frá silicon) |
+| flúor | F | silfur | Ag (frá *argentum*) |
+| gull | Au (frá *aurum*) | natríum | Na |
+| helíum | He | brennisteinn | S (frá sulfur) |
+| vetni | H (frá hydrogen) | tin | Sn (frá *stannum*) |
+| joð | I (frá iodine) | sink | Zn |
 
 Tafla 2.3
 
@@ -149,56 +131,30 @@ Upplýsingar um náttúrulegar samsætur frumefna með sætistölur 1 til 10 eru
 
 Samsetning kjarna atóma mjög léttra frumefna
 
-  --------------------------------------------------------------------------------------------------------------------------------
-  Frumefni    Tákn                               Sætistala   Fjöldi róteinda   Fjöldi nifteinda   Massi (amu)   \% í náttúrunni
-  ----------- ---------------------------------- ----------- ----------------- ------------------ ------------- ------------------
-  vetni       $_{1}^{1}\text{H}$\                1           1                 0                  1,0078        99,989
-              (einvetni/prótíum)                                                                                
-
-              $_{1}^{2}\text{H}$\                1           1                 1                  2,0141        0,0115
-              (tvívetni)                                                                                        
-
-              $_{1}^{3}\text{H}$\                1           1                 2                  3,01605       --- (snefilmagn)
-              (þrívetni)                                                                                        
-
-  helíum      $_{2}^{3}\text{He}$                2           2                 1                  3,01603       0,00013
-
-              $_{2}^{4}\text{He}$                2           2                 2                  4,0026        100
-
-  litíum      $_{3}^{6}\text{Li}$                3           3                 3                  6,0151        7,59
-
-              $_{3}^{7}\text{Li}$                3           3                 4                  7,0160        92,41
-
-  beryllíum   $_{4}^{9}\text{Be}$                4           4                 5                  9,0122        100
-
-  bór         $_{\mspace{6mu} 5}^{10}\text{B}$   5           5                 5                  10,0129       19,9
-
-              $_{\mspace{6mu} 5}^{11}\text{B}$   5           5                 6                  11,0093       80,1
-
-  kolefni     $_{\mspace{6mu} 6}^{12}\text{C}$   6           6                 6                  12,0000       98,89
-
-              $_{\mspace{6mu} 6}^{13}\text{C}$   6           6                 7                  13,0034       1,11
-
-              $_{\mspace{6mu} 6}^{14}\text{C}$   6           6                 8                  14,0032       --- (snefilmagn)
-
-  nitur       $_{\mspace{6mu} 7}^{14}\text{N}$   7           7                 7                  14,0031       99,63
-
-              $_{\mspace{6mu} 7}^{15}\text{N}$   7           7                 8                  15,0001       0,37
-
-  súrefni     $_{\mspace{6mu} 8}^{16}\text{O}$   8           8                 8                  15,9949       99,757
-
-              $_{\mspace{6mu} 8}^{17}\text{O}$   8           8                 9                  16,9991       0,038
-
-              $_{\mspace{6mu} 8}^{18}\text{O}$   8           8                 10                 17,9992       0,205
-
-  flúor       $_{\mspace{6mu} 9}^{19}\text{F}$   9           9                 10                 18,9984       100
-
-  neon        $_{10}^{20}\text{Ne}$              10          10                10                 19,9924       90,48
-
-              $_{10}^{21}\text{Ne}$              10          10                11                 20,9938       0,27
-
-              $_{10}^{22}\text{Ne}$              10          10                12                 21,9914       9,25
-  --------------------------------------------------------------------------------------------------------------------------------
+| Frumefni | Tákn | Sætistala | Fjöldi róteinda | Fjöldi nifteinda | Massi (amu) | \% í náttúrunni |
+|---|---|---|---|---|---|---|
+| vetni | $_{1}^{1}\text{H}$\ (einvetni/prótíum) | 1 | 1 | 0 | 1,0078 | 99,989 |
+|  | $_{1}^{2}\text{H}$\ (tvívetni) | 1 | 1 | 1 | 2,0141 | 0,0115 |
+|  | $_{1}^{3}\text{H}$\ (þrívetni) | 1 | 1 | 2 | 3,01605 | --- (snefilmagn) |
+| helíum | $_{2}^{3}\text{He}$ | 2 | 2 | 1 | 3,01603 | 0,00013 |
+|  | $_{2}^{4}\text{He}$ | 2 | 2 | 2 | 4,0026 | 100 |
+| litíum | $_{3}^{6}\text{Li}$ | 3 | 3 | 3 | 6,0151 | 7,59 |
+|  | $_{3}^{7}\text{Li}$ | 3 | 3 | 4 | 7,0160 | 92,41 |
+| beryllíum | $_{4}^{9}\text{Be}$ | 4 | 4 | 5 | 9,0122 | 100 |
+| bór | $_{\mspace{6mu} 5}^{10}\text{B}$ | 5 | 5 | 5 | 10,0129 | 19,9 |
+|  | $_{\mspace{6mu} 5}^{11}\text{B}$ | 5 | 5 | 6 | 11,0093 | 80,1 |
+| kolefni | $_{\mspace{6mu} 6}^{12}\text{C}$ | 6 | 6 | 6 | 12,0000 | 98,89 |
+|  | $_{\mspace{6mu} 6}^{13}\text{C}$ | 6 | 6 | 7 | 13,0034 | 1,11 |
+|  | $_{\mspace{6mu} 6}^{14}\text{C}$ | 6 | 6 | 8 | 14,0032 | --- (snefilmagn) |
+| nitur | $_{\mspace{6mu} 7}^{14}\text{N}$ | 7 | 7 | 7 | 14,0031 | 99,63 |
+|  | $_{\mspace{6mu} 7}^{15}\text{N}$ | 7 | 7 | 8 | 15,0001 | 0,37 |
+| súrefni | $_{\mspace{6mu} 8}^{16}\text{O}$ | 8 | 8 | 8 | 15,9949 | 99,757 |
+|  | $_{\mspace{6mu} 8}^{17}\text{O}$ | 8 | 8 | 9 | 16,9991 | 0,038 |
+|  | $_{\mspace{6mu} 8}^{18}\text{O}$ | 8 | 8 | 10 | 17,9992 | 0,205 |
+| flúor | $_{\mspace{6mu} 9}^{19}\text{F}$ | 9 | 9 | 10 | 18,9984 | 100 |
+| neon | $_{10}^{20}\text{Ne}$ | 10 | 10 | 10 | 19,9924 | 90,48 |
+|  | $_{10}^{21}\text{Ne}$ | 10 | 10 | 11 | 20,9938 | 0,27 |
+|  | $_{10}^{22}\text{Ne}$ | 10 | 10 | 12 | 21,9914 | 9,25 |
 
 Tafla 2.4
 

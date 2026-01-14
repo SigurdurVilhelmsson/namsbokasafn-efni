@@ -125,19 +125,13 @@ Mólmassi hvers efnis er tölulega jafngildur atóm- eða formúluþyngd þess �
 
 Mynd 3.6 Hvert sýni inniheldur 6,02 $\times$ 10^23^ sameindir eða formúlueiningar --- 1,00 mól af efnasambandinu eða frumefninu. Réttsælis frá efra vinstra horni: 130,2 g af C~8~H~17~OH (1-oktanól, formúlumassi 130,2 amu), 454,4 g af HgI~2~ (kvikasilfurs(II)joðíð, formúlumassi 454,4 amu), 32,0 g af CH~3~OH (metanól, formúlumassi 32,0 amu) og 256,5 g af S~8~ (brennisteinn, formúlumassi 256,5 amu). (heimild: Sahar Atwa)
 
-  -------------------------------------------------------------------------------------
-  Frumefni           Atómmassaeining (amu)   Mólmassi (g/mól)   Atóm/Mól
-  ------------------ ----------------------- ------------------ -----------------------
-  C (frá carbon)     12,01                   12,01              6,022 $\times$ 10^23^
-
-  H (frá hydrogen)   1,008                   1,008              6,022 $\times$ 10^23^
-
-  O (frá oxygen)     16\.                    16\.               6,022 $\times$ 10^23^
-
-  Na                 22,99                   22,99              6,022 $\times$ 10^23^
-
-  Cl                 35,45                   35,45              6,022 $\times$ 10^23^
-  -------------------------------------------------------------------------------------
+| Frumefni | Atómmassaeining (amu) | Mólmassi (g/mól) | Atóm/Mól |
+|---|---|---|---|
+| C (frá carbon) | 12,01 | 12,01 | 6,022 $\times$ 10^23^ |
+| H (frá hydrogen) | 1,008 | 1,008 | 6,022 $\times$ 10^23^ |
+| O (frá oxygen) | 16\. | 16\. | 6,022 $\times$ 10^23^ |
+| Na | 22,99 | 22,99 | 6,022 $\times$ 10^23^ |
+| Cl | 35,45 | 35,45 | 6,022 $\times$ 10^23^ |
 
 Þótt atómmassi og mólmassi séu tölulega jafngildir, hafðu í huga að þeir eru mjög ólíkir hvað varðar stærðargráðu, eins og sést á miklum mun á stærð viðkomandi eininga (amu á móti g). Til að átta sig á stærðargráðu mólsins má íhuga lítinn vatnsdropa sem vegur um 0,03 g (sjá [mynd 3.7](#CNX_Chem_03_02_water)). Þótt þetta sé aðeins örlítið brot af einu móli af vatni (\~18 g) inniheldur það fleiri vatnssameindir en hægt er að ímynda sér. Ef sameindunum væri dreift jafnt á um það bil sjö milljarða manna á jörðinni myndi hver einstaklingur fá meira en 100 milljarða sameinda.
 

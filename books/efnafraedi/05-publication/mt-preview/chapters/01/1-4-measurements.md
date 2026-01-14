@@ -60,23 +60,15 @@ Einingar fyrir aðra eiginleika má leiða af þessum sjö grunneiningum.
 
 Grunneiningar SI-kerfisins
 
-  -----------------------------------------------------------------------
-  Mældur eiginleiki       Heiti einingar          Tákn einingar
-  ----------------------- ----------------------- -----------------------
-  lengd                   metri                   m
-
-  massi                   kílógramm               kg
-
-  tími                    sekúnda                 s
-
-  hitastig                kelvin                  K
-
-  rafstraumur             amper                   A
-
-  magn efnis              mól                     mól
-
-  ljósstyrkur             candela                 cd
-  -----------------------------------------------------------------------
+| Mældur eiginleiki | Heiti einingar | Tákn einingar |
+|---|---|---|
+| lengd | metri | m |
+| massi | kílógramm | kg |
+| tími | sekúnda | s |
+| hitastig | kelvin | K |
+| rafstraumur | amper | A |
+| magn efnis | mól | mól |
+| ljósstyrkur | candela | cd |
 
 Tafla 1.2
 
@@ -93,55 +85,19 @@ m). Forskeytin sem notuð eru og veldin sem 10 er hafið í eru talin upp í
 
 Algeng forskeyti eininga
 
-  --------------------------------------------------------------------------
-  Forskeyti         Tákn              Stuðull           Dæmi
-  ----------------- ----------------- ----------------- --------------------
-  femtó             f                 10^−15^           1 femtósekúnda (fs)
-                                                        = 1 $\times$ 10^-15^
-                                                        s (0,000000000000001
-                                                        s)
-
-  píkó              p                 10^−12^           1 píkómetri (pm) = 1
-                                                        $\times$ 10^-12^ m
-                                                        (0,000000000001 m)
-
-  nanó              n                 10^−9^            4 nanógrömm (ng) = 4
-                                                        $\times$ 10^−9^ g
-                                                        (0,000000004 g)
-
-  míkró             µ                 10^−6^            1 míkrólítri (μl) =
-                                                        1 $\times$ 10^-6^ L
-                                                        (0,000001 L)
-
-  milli             m                 10^−3^            2 millimól (mmól) =
-                                                        2 $\times$ 10^-3^
-                                                        mól (0,002 mól)
-
-  senti             c                 10^−2^            7 sentimetrar (cm) =
-                                                        7 $\times$ 10^−2^ m
-                                                        (0,07 m)
-
-  desi              d                 10^−1^            1 desilítri (dL) = 1
-                                                        $\times$ 10^-1^ L
-                                                        (0,1 L )
-
-  kíló              k                 10^3^             1 kílómetri (km) = 1
-                                                        $\times$ 10^3^ m
-                                                        (1000 m)
-
-  mega              M                 10^6^             3 megahertz (MHz) =
-                                                        3 $\times$ 10^6^ Hz
-                                                        (3.000.000 Hz)
-
-  gíga              G                 10^9^             8 gígaár (Gyr) = 8
-                                                        $\times$ 10^9^ ár
-                                                        (8.000.000.000 ár)
-
-  tera              T                 10^12^            5 teravött (TW) = 5
-                                                        $\times$ 10^12^ W
-                                                        (5.000.000.000.000
-                                                        W)
-  --------------------------------------------------------------------------
+| Forskeyti | Tákn | Stuðull | Dæmi |
+|---|---|---|---|
+| femtó | f | 10^−15^ | 1 femtósekúnda (fs) = 1 $\times$ 10^-15^ s (0,000000000000001 s) |
+| píkó | p | 10^−12^ | 1 píkómetri (pm) = 1 $\times$ 10^-12^ m (0,000000000001 m) |
+| nanó | n | 10^−9^ | 4 nanógrömm (ng) = 4 $\times$ 10^−9^ g (0,000000004 g) |
+| míkró | µ | 10^−6^ | 1 míkrólítri (μl) = 1 $\times$ 10^-6^ L (0,000001 L) |
+| milli | m | 10^−3^ | 2 millimól (mmól) = 2 $\times$ 10^-3^ mól (0,002 mól) |
+| senti | c | 10^−2^ | 7 sentimetrar (cm) = 7 $\times$ 10^−2^ m (0,07 m) |
+| desi | d | 10^−1^ | 1 desilítri (dL) = 1 $\times$ 10^-1^ L (0,1 L ) |
+| kíló | k | 10^3^ | 1 kílómetri (km) = 1 $\times$ 10^3^ m (1000 m) |
+| mega | M | 10^6^ | 3 megahertz (MHz) = 3 $\times$ 10^6^ Hz (3.000.000 Hz) |
+| gíga | G | 10^9^ | 8 gígaár (Gyr) = 8 $\times$ 10^9^ ár (8.000.000.000 ár) |
+| tera | T | 10^12^ | 5 teravött (TW) = 5 $\times$ 10^12^ W (5.000.000.000.000 W) |
 
 Tafla 1.3
 

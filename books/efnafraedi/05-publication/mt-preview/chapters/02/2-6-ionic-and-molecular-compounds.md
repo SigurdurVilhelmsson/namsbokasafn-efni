@@ -86,59 +86,33 @@ Jónirnar sem við höfum rætt hingað til eru kallaðar einatóma jónir, þa�
 
 Algengar fjölfrumeinda jónir
 
-  -----------------------------------------------------------------------------------------------
-  Heiti             Formúla                             Tengd sýra              Formúla
-  ----------------- ----------------------------------- ----------------------- -----------------
-  ammóníum          $\text{NH}_{4}^{+}$                                         
-
-  hýdróníum         $\text{H}_{3}\text{O}^{+}$                                  
-
-  peroxíð           $\text{O}_{2}^{2 -}$                                        
-
-  hýdroxíð          $\text{OH}^{-}$                                             
-
-  asetat            $\text{CH}_{3}\text{COO}^{-}$       ediksýra                CH~3~COOH
-
-  blásýra           CN^−^                               blásýra                 HCN
-
-  azíð              $\text{N}_{3}^{-}$                  hýdrasósýra             HN~3~
-
-  karbónat          $\text{CO}_{3}^{2 -}$               kolsýra                 H~2~CO~3~
-
-  bíkarbónat        $\text{HCO}_{3}^{-}$                                        
-
-  nítrat            $\text{NO}_{3}^{-}$                 saltpéturssýra          HNO~3~
-
-  nítrít            $\text{NO}_{2}^{-}$                 saltpéturssýrlingur     HNO~2~
-
-  súlfat            $\text{SO}_{4}^{2 -}$               brennisteinssýra        H~2~SO~4~
-
-  vetnissúlfat      $\text{HSO}_{4}^{-}$                                        
-
-  súlfít            $\text{SO}_{3}^{2 -}$               brennisteinssýrlingur   H~2~SO~3~
-
-  vetnissúlfít      $\text{HSO}_{3}^{-}$                                        
-
-  fosfat            $\text{PO}_{4}^{3 -}$               fosfórsýra              H~3~PO~4~
-
-  vetnisfosfat      $\text{HPO}_{4}^{2 -}$                                      
-
-  dívetnisfosfat    $\text{H}_{2}\text{PO}_{4}^{-}$                             
-
-  perklórat         $\text{ClO}_{4}^{-}$                perklórsýra             HClO~4~
-
-  klórat            $\text{ClO}_{3}^{-}$                klórsýra                HClO~3~
-
-  klórít            $\text{ClO}_{2}^{-}$                klórsýrlingur           HClO~2~
-
-  hýpóklórít        ClO^−^                              hýpóklórsýra            HClO
-
-  krómat            $\text{CrO}_{4}^{2 -}$              krómsýra                H~2~CrO~4~
-
-  díkrómat          $\text{Cr}_{2}\text{O}_{7}^{2 -}$   díkrómsýra              H~2~Cr~2~O~7~
-
-  permanganat       $\text{MnO}_{4}^{-}$                permangansýra           HMnO~4~
-  -----------------------------------------------------------------------------------------------
+| Heiti | Formúla | Tengd sýra | Formúla |
+|---|---|---|---|
+| ammóníum | $\text{NH}_{4}^{+}$ |  |  |
+| hýdróníum | $\text{H}_{3}\text{O}^{+}$ |  |  |
+| peroxíð | $\text{O}_{2}^{2 -}$ |  |  |
+| hýdroxíð | $\text{OH}^{-}$ |  |  |
+| asetat | $\text{CH}_{3}\text{COO}^{-}$ | ediksýra | CH~3~COOH |
+| blásýra | CN^−^ | blásýra | HCN |
+| azíð | $\text{N}_{3}^{-}$ | hýdrasósýra | HN~3~ |
+| karbónat | $\text{CO}_{3}^{2 -}$ | kolsýra | H~2~CO~3~ |
+| bíkarbónat | $\text{HCO}_{3}^{-}$ |  |  |
+| nítrat | $\text{NO}_{3}^{-}$ | saltpéturssýra | HNO~3~ |
+| nítrít | $\text{NO}_{2}^{-}$ | saltpéturssýrlingur | HNO~2~ |
+| súlfat | $\text{SO}_{4}^{2 -}$ | brennisteinssýra | H~2~SO~4~ |
+| vetnissúlfat | $\text{HSO}_{4}^{-}$ |  |  |
+| súlfít | $\text{SO}_{3}^{2 -}$ | brennisteinssýrlingur | H~2~SO~3~ |
+| vetnissúlfít | $\text{HSO}_{3}^{-}$ |  |  |
+| fosfat | $\text{PO}_{4}^{3 -}$ | fosfórsýra | H~3~PO~4~ |
+| vetnisfosfat | $\text{HPO}_{4}^{2 -}$ |  |  |
+| dívetnisfosfat | $\text{H}_{2}\text{PO}_{4}^{-}$ |  |  |
+| perklórat | $\text{ClO}_{4}^{-}$ | perklórsýra | HClO~4~ |
+| klórat | $\text{ClO}_{3}^{-}$ | klórsýra | HClO~3~ |
+| klórít | $\text{ClO}_{2}^{-}$ | klórsýrlingur | HClO~2~ |
+| hýpóklórít | ClO^−^ | hýpóklórsýra | HClO |
+| krómat | $\text{CrO}_{4}^{2 -}$ | krómsýra | H~2~CrO~4~ |
+| díkrómat | $\text{Cr}_{2}\text{O}_{7}^{2 -}$ | díkrómsýra | H~2~Cr~2~O~7~ |
+| permanganat | $\text{MnO}_{4}^{-}$ | permangansýra | HMnO~4~ |
 
 Tafla 2.5
 

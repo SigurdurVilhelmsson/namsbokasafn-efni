@@ -167,21 +167,14 @@ Mynd 4.6 (a) Ávextir eins og appelsínur, sítrónur og greipaldin innihalda ve
 
 Algengar sterkar sýrur
 
-  -----------------------------------------------------------------------
-  Formúla efnasambands                Heiti í vatnslausn
-  ----------------------------------- -----------------------------------
-  HBr                                 brómsýra
-
-  HCl                                 saltsýra
-
-  HI                                  joðsýra
-
-  HNO~3~                              saltpéturssýra
-
-  HClO~4~                             perklórsýra
-
-  H~2~SO~4~                           brennisteinssýra
-  -----------------------------------------------------------------------
+| Formúla efnasambands | Heiti í vatnslausn |
+|---|---|
+| HBr | brómsýra |
+| HCl | saltsýra |
+| HI | joðsýra |
+| HNO~3~ | saltpéturssýra |
+| HClO~4~ | perklórsýra |
+| H~2~SO~4~ | brennisteinssýra |
 
 Tafla 4.2
 
