@@ -14,7 +14,6 @@ chapter: 3
 -   Reiknað formúlumassa fyrir samgild og jónísk efnasambönd
 -   Skilgreint magnseininguna mól og skylda stærð, tölu Avogadrosar
 -   Útskýrt sambandið milli massa, móla og fjölda atóma eða sameinda og framkvæmt útreikninga til að leiða þessar stærðir hverja af annarri
-:::
 
 Margir halda því fram að nútímaefnafræði hafi hafist þegar vísindamenn fóru að kanna magnbundna þætti efnafræðinnar jafnt og þá þáttbundnu. Til dæmis var atómkenning Daltons tilraun til að útskýra niðurstöður mælinga sem gerðu honum kleift að reikna út hlutfallslegan massa frumefna sem sameinuðust í ýmsum efnasamböndum. Skilningur á sambandi milli massa atóma og efnaformúla efnasambanda gerir okkur kleift að lýsa samsetningu efna á magnbundinn hátt.
 
@@ -58,9 +57,6 @@ Parasetamól, C~8~H~9~NO~2~, er samgilt efnasamband og virka efnið í nokkrum v
 
 :::answer
 151,16 amu
-:::
-:::
-:::
 
 #### Formúlumassi fyrir jónaefni
 
@@ -94,9 +90,6 @@ Kalsíumfosfat, Ca~3~(PO~4~)~2~, er jónaefni og algengt kekkjavarnarefni sem b�
 
 :::answer
 310,18 amu
-:::
-:::
-:::
 
 ### Mólið
 
@@ -128,7 +121,7 @@ Mynd 3.6 Hvert sýni inniheldur 6,02 $\times$ 10^23^ sameindir eða formúlueini
 | Na | 22,99 | 22,99 | 6,022 $\times$ 10^23^ |
 | Cl | 35,45 | 35,45 | 6,022 $\times$ 10^23^ |
 
-Þótt atómmassi og mólmassi séu tölulega jafngildir, hafðu í huga að þeir eru mjög ólíkir hvað varðar stærðargráðu, eins og sést á miklum mun á stærð viðkomandi eininga (amu á móti g). Til að átta sig á stærðargráðu mólsins má íhuga lítinn vatnsdropa sem vegur um 0,03 g (sjá [mynd 3.7](#CNX_Chem_03_02_water)). Þótt þetta sé aðeins örlítið brot af einu móli af vatni (\~18 g) inniheldur það fleiri vatnssameindir en hægt er að ímynda sér. Ef sameindunum væri dreift jafnt á um það bil sjö milljarða manna á jörðinni myndi hver einstaklingur fá meira en 100 milljarða sameinda.
+Þótt atómmassi og mólmassi séu tölulega jafngildir, hafðu í huga að þeir eru mjög ólíkir hvað varðar stærðargráðu, eins og sést á miklum mun á stærð viðkomandi eininga (amu á móti g). Til að átta sig á stærðargráðu mólsins má íhuga lítinn vatnsdropa sem vegur um 0,03 g (sjá [mynd 3.7](#CNX_Chem_03_02_water)). Þótt þetta sé aðeins örlítið brot af einu móli af vatni (~18 g) inniheldur það fleiri vatnssameindir en hægt er að ímynda sér. Ef sameindunum væri dreift jafnt á um það bil sjö milljarða manna á jörðinni myndi hver einstaklingur fá meira en 100 milljarða sameinda.
 
 
 ![A close-up photo of a water droplet on a leaf is shown. The water droplet is not perfectly spherical.](./images/media/rId64.jpg)
@@ -140,7 +133,6 @@ Mynd 3.7 Fjöldi sameinda í einum vatnsdropa er um það bil 100 milljörðum s
 ### Tengill á námsefni
 
 Mólið er notað í efnafræði til að tákna 6,022 $\times$ 10^23^ af einhverju, en það getur verið erfitt að skilja svo stóra tölu. Horfðu á þetta [myndband](http://openstax.org/l/16molevideo) og svaraðu síðan „Hugsaðu"-spurningunum sem fylgja. Kynntu þér mólið nánar með því að skoða upplýsingarnar undir „Kafaðu dýpra".
-:::
 
 Sambandið milli formúlumassa, mólsins og tölu Avogadros er hægt að nota til að reikna út ýmis magn sem lýsa samsetningu efna og efnasambanda, eins og sýnt er í næstu dæmum.
 
@@ -172,9 +164,6 @@ Beryllíum er léttur málmur sem notaður er til að búa til gagnsæja röntge
 
 :::answer
 0,360 mól
-:::
-:::
-:::
 
 
 
@@ -187,7 +176,7 @@ Einn lítri af lofti inniheldur 9,2 $\times$ 10^−4^ mól af argoni. Hver er ma
 
 **Lausn**
 
-Mólmagn Ar er gefið og það á að nota til að finna samsvarandi massa í grömmum. Þar sem magn Ar er minna en 1 mól verður massinn minni en massi 1 móls af Ar, sem er um 40 g. Mólmagnið sem um ræðir er um það bil einn þúsundasti (\~10^−3^) úr móli og því ætti samsvarandi massi að vera um það bil einn þúsundasti af mólmassanum (\~0,04 g): ![A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, "Moles of A r atoms ( mol )" while the one on the right contains the phrase, "Mass of A r atoms ( g )." There is a phrase under the arrow that says "Multiply by molar mass ( g / mol )."](./images/media/rId77.jpg)
+Mólmagn Ar er gefið og það á að nota til að finna samsvarandi massa í grömmum. Þar sem magn Ar er minna en 1 mól verður massinn minni en massi 1 móls af Ar, sem er um 40 g. Mólmagnið sem um ræðir er um það bil einn þúsundasti (~10^−3^) úr móli og því ætti samsvarandi massi að vera um það bil einn þúsundasti af mólmassanum (~0,04 g): ![A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, "Moles of A r atoms ( mol )" while the one on the right contains the phrase, "Mass of A r atoms ( g )." There is a phrase under the arrow that says "Multiply by molar mass ( g / mol )."](./images/media/rId77.jpg)
 
 Í þessu tilfelli segir rökfræðin (og þáttamerkingaraðferðin styður) að margfalda gefið magn (mól) með mólmassanum (g/mól):
 
@@ -202,9 +191,6 @@ Hver er massi 2,561 móls af gulli?
 
 :::answer
 504,4 g
-:::
-:::
-:::
 
 
 
@@ -225,7 +211,7 @@ Mynd 3.8 Koparvír er samsettur úr mörgum, mörgum atómum af Cu. (Heimild: Em
 
 Fjölda Cu-atóma í vírnum má á þægilegan hátt leiða út frá massa hans með tveggja þrepa útreikningi: fyrst er mólmagn Cu reiknað og síðan er tala Avogadrosar (*N~A~*) notuð til að breyta þessu mólmagni í fjölda Cu-atóma: ![A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, "Mass of C u atoms ( g )," the middle box reads, "Moles of C u atoms ( mol )," while the one on the right contains the phrase, "Number of C u atoms." There is a phrase under the left arrow that says "Divide by molar mass (g / mol)," and under the right arrow it states, "Multiply by Avogadro's number ( mol superscript negative one )."](./images/media/rId88.jpg)
 
-Þar sem uppgefinn massi sýnisins (5,00 g) er aðeins minni en einn tíundi af massa 1 móls af Cu (\~64 g), væri sanngjarnt mat á fjölda atóma í sýninu í kringum einn tíunda af *N~A~*, eða um það bil 10^22^ Cu-atóm. Tveggja þrepa útreikningurinn gefur:
+Þar sem uppgefinn massi sýnisins (5,00 g) er aðeins minni en einn tíundi af massa 1 móls af Cu (~64 g), væri sanngjarnt mat á fjölda atóma í sýninu í kringum einn tíunda af *N~A~*, eða um það bil 10^22^ Cu-atóm. Tveggja þrepa útreikningurinn gefur:
 
 $5.00\ \text{g}\ \text{Cu}\ \left( \frac{\text{mol}\ \text{Cu}}{63.55\ \text{g Cu}} \right)\left( \frac{6.022\  \times \ 10^{23}\ \text{Cu atoms}}{\text{mol Cu}} \right)\  = \ 4.74\  \times \ 10^{22}\text{Cu atoms}$
 
@@ -238,9 +224,6 @@ Gullgrafari sem skolar gull í á safnar 15,00 g af hreinu gulli. Hversu mörg A
 
 :::answer
 4,586 $\times$ 10^22^ Au-atóm
-:::
-:::
-:::
 
 
 
@@ -259,7 +242,7 @@ Mólmassi glýsíns er nauðsynlegur fyrir þennan útreikning og hann er reikna
 
 ![A table is shown that is made up of six columns and six rows. The header row reads: "Element," "Quantity (mol element / mol compound," a blank space, "Molar mass (g / mol element)," a blank space, and "Subtotal (a m u)." The first column contains the symbols "C," "H," "O," "N," and a merged cell. The merged cell runs the width of the first five columns. The second column contains the numbers "2," "5," "2," and "1" as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers "12.01," "1.008," "16.00," and "14.007" as well as the merged cell. The fifth column contains the symbol "=" in each cell except for the last, merged cell. The sixth column contains the values "24.02," "5.040," "32.00," "14.007," and "75.07." There is a thick black line under the number 14.007. The merged cell under the first five columns reads "Molar mass (g / mol compound). There is a ball-and-stick drawing to the right of this table. It shows a black sphere that forms a double bond with a slightly smaller red sphere, a single bond with another red sphere, and a single bond with another black sphere. The red sphere that forms a single bond with the black sphere also forms a single bond with a smaller, white sphere. The second black sphere forms a single bond with a smaller, white sphere and a smaller blue sphere. The blue sphere forms a single bond with two smaller, white spheres each.](./images/media/rId99.jpg)
 
-Uppgefinn massi glýsíns (\~28 g) er aðeins meira en þriðjungur af mólmassanum (\~75 g/mól), þannig að búist er við að útreiknuð niðurstaða verði aðeins meiri en þriðjungur úr móli (\~0,33 mól). Með því að deila massa efnasambandsins með mólmassa þess fæst:
+Uppgefinn massi glýsíns (~28 g) er aðeins meira en þriðjungur af mólmassanum (~75 g/mól), þannig að búist er við að útreiknuð niðurstaða verði aðeins meiri en þriðjungur úr móli (~0,33 mól). Með því að deila massa efnasambandsins með mólmassa þess fæst:
 
 $28.35\ \text{g}\ \text{glycine}\ \left( \frac{\text{mol glycine}}{75.07\ \text{g glycine}} \right)\  = \ 0.378\ \text{mol glycine}$
 
@@ -272,9 +255,6 @@ Hversu mörg mól af súkrósa, C~12~H~22~O~11~, eru í 25 g sýni af súkrósa?
 
 :::answer
 0,073 mól
-:::
-:::
-:::
 
 
 
@@ -289,7 +269,7 @@ C-vítamín er samgilt efnasamband með sameindaformúluna C~6~H~8~O~6~. Ráðla
 
 Eins og fyrir frumefni er hægt að leiða massa efnasambands út frá mólmagni þess eins og sýnt er: ![A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, "Moles of vitamin C ( mol )" while the one the right contains the phrase, "Mass of vitamin C ( g )". There is a phrase under the arrow that says "Multiply by molar mass (g / mol)."](./images/media/rId106.jpg)
 
-Mólmassi þessa efnasambands er reiknaður 176,124 g/mól. Uppgefinn fjöldi móla er mjög lítið brot af móli (\~10^−4^ eða einn tíuþúsundasti); því er búist við að samsvarandi massi sé um einn tíuþúsundasti af mólmassanum (\~0,02 g). Útreikningurinn gefur:
+Mólmassi þessa efnasambands er reiknaður 176,124 g/mól. Uppgefinn fjöldi móla er mjög lítið brot af móli (~10^−4^ eða einn tíuþúsundasti); því er búist við að samsvarandi massi sé um einn tíuþúsundasti af mólmassanum (~0,02 g). Útreikningurinn gefur:
 
 $1.42\  \times \ 10^{- 4}\ \text{mol}\ \text{vitamin C}\ \left( \frac{176.124\ \text{g vitamin C}}{\text{mol}\ \text{vitamin C}} \right)\  = \ 0.0250\ \text{g vitamin C}$
 
@@ -302,9 +282,6 @@ Hver er massi 0,443 móla af hýdrasíni, N~2~H~4~?
 
 :::answer
 14,2 g
-:::
-:::
-:::
 
 
 
@@ -336,9 +313,6 @@ Hversu margar C~4~H~10~ sameindir eru í 9,213 g af þessu efnasambandi? Hversu 
 
 :::answer
 9,545 $\times$ 10^22^ sameindir C~4~H~10~; 9,545 $\times$ 10^23^ atóm H
-:::
-:::
-:::
 
 
 
@@ -370,4 +344,3 @@ Nýlega hafa orðið verulegar framfarir í beinum mælingum á fjölda dópamí
 1\.
 
 Omiatek, Donna M., Amanda J. Bressler, Ann-Sofie Cans, Anne M. Andrews, Michael L. Heien og Andrew G. Ewing. „The Real Catecholamine Content of Secretory Vesicles in the CNS Revealed by Electrochemical Cytometry." *Scientific Report* 3 (2013): 1447, sótt 14. janúar 2015, doi:10.1038/srep01447.
-:::

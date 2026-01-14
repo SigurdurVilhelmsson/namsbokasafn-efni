@@ -12,7 +12,6 @@ chapter: 2
 Í lok þessa kafla munt þú geta:
 
 -   Gefið algengum tegundum ólífrænna efnasambanda heiti með kerfisbundnum hætti
-:::
 
 Nafnakerfi, safn reglna um að nefna hluti, er mikilvægt í vísindum og í mörgum öðrum aðstæðum. Í þessum hluta er lýst aðferð sem er notuð til að nefna einföld jóna- og sameindaefni, svo sem NaCl, CaCO~3~ og N~2~O~4~. Einföldust þeirra eru tvíefni, þau sem innihalda aðeins tvö frumefni, en við munum einnig skoða hvernig á að nefna jónaefni sem innihalda fjölatóma jónir og einn sérstakan, mjög mikilvægan flokk efnasambanda sem kallast sýrur (í síðari köflum þessa texta verður fjallað ítarlega um þessi efnasambönd). Við munum takmarka athygli okkar hér við ólífræn efnasambönd, efnasambönd sem eru aðallega samsett úr öðrum frumefnum en kolefni, og munum fylgja nafnakerfisleiðbeiningum sem IUPAC hefur lagt til. Reglurnar fyrir lífræn efnasambönd, þar sem kolefni er aðalfrumefnið, verða meðhöndlaðar í síðari kafla um lífræna efnafræði.
 
@@ -71,7 +70,6 @@ Jónaefni í daglegu lífi
 | Na~2~SO~3~, natríumsúlfít | rotvarnarefni |
 
 Tafla 2.8
-:::
 
 ### Efnasambönd sem innihalda málmjón með breytilega hleðslu
 
@@ -142,7 +140,6 @@ Anjónirnar í þessum efnasamböndum hafa fasta neikvæða hleðslu (S^2−^, S
 \(d\) magnesíumsúlfat heptahýdrat
 
 \(e\) títan(III)súlfat
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -161,8 +158,6 @@ Skrifaðu formúlur eftirfarandi jónaefna:
 
 :::answer
 \(a\) CrP; (b) HgS; (c) Mn~3~(PO~4~)~2~; (d) Cu~2~O; (e) FeCl~3~·2H~2~O
-:::
-:::
 
  
 
@@ -180,7 +175,6 @@ Mynd 2.32 (a) Erin Brockovich komst að því að Cr(VI), sem PG&E notaði, haf�
 Krómsambönd eru mikið notuð í iðnaði, svo sem við krómhúðun, í litagerð, sem rotvarnarefni og til að koma í veg fyrir tæringu í kæliturnavatni, eins og gerðist nálægt Hinckley. Í umhverfinu er króm aðallega til staðar á Cr(III) eða Cr(VI) formi. Cr(III), sem er innihaldsefni í mörgum vítamínum og fæðubótarefnum, myndar efnasambönd sem eru ekki mjög auðleyst í vatni og hefur litla eiturvirkni. En Cr(VI) er mun eitraðra og myndar efnasambönd sem eru nokkuð auðleyst í vatni. Útsetning fyrir litlu magni af Cr(VI) getur leitt til skemmda á öndunarfærum, meltingarvegi og ónæmiskerfi, auk nýrna, lifrar, blóðs og húðar.
 
 Þrátt fyrir hreinsunaraðgerðir er Cr(VI) mengun í grunnvatni enn vandamál í Hinckley og víðar um heiminn. Rannsókn frá 2010 sem Environmental Working Group gerði leiddi í ljós að af 35 bandarískum borgum sem prófaðar voru, höfðu 31 hærra magn af Cr(VI) í kranavatni sínu en lýðheilsumarkmiðið 0,02 hlutar á milljarð sem Umhverfisverndarstofnun Kaliforníu setti.
-:::
 
 ### Sameindasambönd (samgild efnasambönd)
 
@@ -230,7 +224,6 @@ Nefndu eftirfarandi samgildu efnasambönd:
 \(c\) tvíklórheptoxíð
 
 \(d\) tetrafosfórhexoxíð
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -247,8 +240,6 @@ Skrifaðu efnaformúlur fyrir eftirfarandi efnasambönd:
 
 :::answer
 \(a\) PCl~5~; (b) N~2~O; (c) IF~7~; (d) CCl~4~
-:::
-:::
 
  
 
@@ -256,7 +247,6 @@ Skrifaðu efnaformúlur fyrir eftirfarandi efnasambönd:
 ### Tengill á námsefni
 
 Eftirfarandi [vefsíða](http://openstax.org/l/16chemcompname) býður upp á æfingar í nafngiftum efnasambanda og ritun efnaformúla. Þú getur valið tvíundar, fjölfrumeinda og jónaefni með breytilega hleðslu, auk sameindaefnasambanda.
-:::
 
 ### Tvíundarsýrur
 

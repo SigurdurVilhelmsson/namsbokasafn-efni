@@ -13,7 +13,6 @@ chapter: 3
 
 -   Skilgreint styrkeiningarnar massaprósentu, rúmmálsprósentu, massa-rúmmálsprósentu, milljónustuhluta (ppm) og milljarðshluta (ppb)
 -   Framkvæmt útreikninga sem tengja styrk lausnar við rúmmál og/eða massa innihaldsefna hennar með því að nota þessar einingar
-:::
 
 Í fyrri kafla var mólstyrkur kynntur til sögunnar, en það er mjög gagnleg mælieining til að meta styrk lausna. Mólstyrkur er þó aðeins einn mælikvarði á styrk lausnar. Í þessum kafla verður fjallað um nokkrar aðrar styrkeiningar sem eru almennt notaðar í ýmsum tilgangi, annaðhvort vegna þæginda eða hefðar.
 
@@ -47,7 +46,6 @@ $\%\ \text{glucose} = \ \frac{3.75\ \text{mg glucose}\  \times \ \frac{1\ \text{
 Útreiknuð massaprósenta er í samræmi við gróft mat okkar (hún er aðeins minni en 0,1%).
 
 Athugið að þótt hægt sé að nota hvaða massaeiningu sem er til að reikna út massaprósentu (mg, g, kg, oz og svo framvegis), verður að nota sömu einingu fyrir bæði uppleysta efnið og lausnina svo að massaeiningarnar styttist út og eftir standi víddarlaust hlutfall. Í þessu tilfelli var massaeiningu uppleysta efnisins í teljaranum breytt úr mg í g til að passa við einingarnar í nefnaranum. Einnig hefði verið hægt að breyta massaeiningu mænuvökvans í nefnaranum úr g í mg. Svo lengi sem notaðar eru eins massaeiningar fyrir bæði uppleysta efnið og lausnina verður útreiknuð massaprósenta rétt.
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -56,8 +54,6 @@ Flaska af flísahreinsi inniheldur 135 g af HCl og 775 g af vatni. Hver er massa
 
 :::answer
 14,8%
-:::
-:::
 
  
 
@@ -75,7 +71,6 @@ Til að einingar styttist rétt út er 0,500 L rúmmálinu breytt í 500 ml og m
 $\text{500 mL solution}\ \left( \frac{1.19\ \text{g solution}}{\text{mL solution}} \right)\ \left( \frac{37.2\ \text{g HCl}}{100\ \text{g solution}} \right)\  = \ 221\ \text{g HCl}$
 
 Þessi massi HCl er í samræmi við gróft mat okkar upp á um það bil 200 g.
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -84,8 +79,6 @@ Hvaða rúmmál af þéttri HCl-lausn inniheldur 125 g af HCl?
 
 :::answer
 282 ml
-:::
-:::
 
 ### Rúmmálsprósenta
 
@@ -103,7 +96,6 @@ Nuddspritt (ísóprópanól) er venjulega selt sem 70%vol vatnslausn. Ef eðlism
 Samkvæmt skilgreiningu á rúmmálsprósentu er rúmmál ísóprópanóls 70% af heildarrúmmáli lausnarinnar. Með því að margfalda rúmmál ísóprópanóls með eðlismassa þess fæst umbeðinn massi:
 
 $\left( 355\ \text{mL solution} \right)\ \left( \frac{70\ \text{mL isopropyl alcohol}}{100\ \text{mL solution}} \right)\ \left( \frac{0.785\ \text{g isopropyl alcohol}}{1\ \text{mL isopropyl alcohol}} \right)\  = \ 195\ \text{g isopropyl alchol}$
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -112,8 +104,6 @@ Vín er um það bil 12% etanól (CH~3~CH~2~OH) miðað við rúmmál. Etanól h
 
 :::answer
 1,5 mól etanól
-:::
-:::
 
 ### Massa-rúmmálsprósenta
 
@@ -152,14 +142,13 @@ Hægt er að nota skilgreiningar á einingunum ppm og ppb til að breyta gefnum 
 
 $15\ \text{ppb}\  \times \ \frac{1\ \text{ppm}}{10^{3}\ \text{ppb}}\  = 0.015\ \text{ppm}$
 
-Hægt er að nota skilgreininguna á ppb-einingunni til að reikna út umbeðinn massa ef massi lausnarinnar er gefinn. Þar sem rúmmál lausnarinnar (300 ml) er gefið þarf að nota eðlismassa hennar til að finna samsvarandi massa. Gerum ráð fyrir að eðlismassi kranavatns sé nokkurn veginn sá sami og eðlismassi hreins vatns (\~1,00 g/ml), þar sem styrkur uppleystra efna ætti ekki að vera mjög hár. Með því að umraða jöfnunni sem skilgreinir ppb-eininguna og setja inn gefnar stærðir fæst:
+Hægt er að nota skilgreininguna á ppb-einingunni til að reikna út umbeðinn massa ef massi lausnarinnar er gefinn. Þar sem rúmmál lausnarinnar (300 ml) er gefið þarf að nota eðlismassa hennar til að finna samsvarandi massa. Gerum ráð fyrir að eðlismassi kranavatns sé nokkurn veginn sá sami og eðlismassi hreins vatns (~1,00 g/ml), þar sem styrkur uppleystra efna ætti ekki að vera mjög hár. Með því að umraða jöfnunni sem skilgreinir ppb-eininguna og setja inn gefnar stærðir fæst:
 
 ![None](./images/media/rId64.jpg)
 
 Að lokum er þessum massa breytt í umbeðna einingu, míkrógrömm:
 
 $4.5\  \times \ 10^{- 6}\ \text{g}\  \times \ \frac{1\ \text{μg}}{10^{- 6}\ \text{g}}\  = 4.5\ \text{μg}$
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -168,5 +157,3 @@ $4.5\  \times \ 10^{- 6}\ \text{g}\  \times \ \frac{1\ \text{μg}}{10^{- 6}\ \te
 
 :::answer
 9,6 ppm, 9600 ppb
-:::
-:::

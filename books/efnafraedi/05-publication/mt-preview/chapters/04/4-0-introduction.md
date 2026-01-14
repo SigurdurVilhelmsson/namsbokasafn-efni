@@ -22,7 +22,6 @@ Mynd 4.1 Mörg nútíma eldflaugaeldsneyti eru efnablöndur í föstu formi sem 
 [4.4 Heimtur hvarfa](http://openstax.org/books/chemistry-2e/pages/4-4-reaction-yields)
 
 [4.5 Magnbundin efnagreining](http://openstax.org/books/chemistry-2e/pages/4-5-quantitative-chemical-analysis)
-:::
 
 ## Inngangur
 

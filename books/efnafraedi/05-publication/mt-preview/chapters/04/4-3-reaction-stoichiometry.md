@@ -14,7 +14,6 @@ chapter: 4
 -   Útskýrt hugtakið hlutfallaefnafræði eins og það á við um efnahvörf
 -   Notað stilltar efnajöfnur til að leiða út hlutfallaþætti sem tengja magn hvarfefna og myndefna
 -   Framkvæmt útreikninga í hlutfallaefnafræði sem fela í sér massa, mól og mólstyrk lausnar
-:::
 
 Stillt efnajafna veitir mikið af upplýsingum á mjög hnitmiðaðan hátt. Efnaformúlur gefa upp auðkenni hvarfefna og myndefna sem taka þátt í efnaskiptunum og gera kleift að flokka efnahvarfið. Stuðlar gefa upp hlutfallslegan fjölda þessara efnafræðilegu eininga og gera kleift að framkvæma magnbundið mat á sambandi milli magns efna sem notuð eru og myndast við efnahvarfið. Þessi magnbundnu sambönd eru þekkt sem hlutfallaefnafræði (stoichiometry) efnahvarfsins, hugtak sem er dregið af grísku orðunum *stoicheion* (sem þýðir „frumefni") og *metron* (sem þýðir „mæling"). Í þessum kafla er notkun stilltra efnajafna fyrir ýmis hlutfallaefnafræðileg notkunarsvið könnuð.
 
@@ -32,7 +31,7 @@ $\text{N}_{2}(g) + 3\text{H}_{2}(g)\  \rightarrow \ 2\text{NH}_{3}(g)$
 
 Þessi jafna sýnir að ammoníaksameindir eru framleiddar úr vetnissameindum í hlutfallinu 2:3 og hægt er að leiða út hlutfallaþætti með því að nota hvaða magneiningu (fjölda) sem er:
 
-$\frac{2\ \text{NH}_{3}\ \text{molecules}}{3\ \text{H}_{2}\ \text{molecules}}\mspace{6mu}\text{or}\mspace{6mu}\frac{\text{2 doz}\ \text{NH}_{3}\ \text{molecules}}{\text{3 doz}\ \text{H}_{2}\ \text{molecules}}\mspace{6mu}\text{or}\mspace{6mu}\frac{\text{2 mol}\ \text{NH}_{3}\ \text{molecules}}{\text{3 mol}\ \text{H}_{2}\ \text{molecules}}$
+$\frac{2\ \text{NH}_{3}\ \text{molecules}}{3\ \text{H}_{2}\ \text{molecules}}\;\,\text{or}\;\,\frac{\text{2 doz}\ \text{NH}_{3}\ \text{molecules}}{\text{3 doz}\ \text{H}_{2}\ \text{molecules}}\;\,\text{or}\;\,\frac{\text{2 mol}\ \text{NH}_{3}\ \text{molecules}}{\text{3 mol}\ \text{H}_{2}\ \text{molecules}}$
 
 Þessa hlutfallaþætti er hægt að nota til að reikna út fjölda ammoníaksameinda sem framleiddar eru úr gefnum fjölda vetnissameinda, eða fjölda vetnissameinda sem þarf til að framleiða gefinn fjölda ammoníaksameinda. Svipaða þætti má leiða út fyrir hvaða par af efnum sem er í hvaða efnajöfnu sem er.
 
@@ -55,7 +54,6 @@ Með vísan til stilltu efnajöfnunnar er hlutfallaþátturinn sem tengir efnin 
 
 ![None](./images/media/rId36.jpg)
 
-:::
 
 :::practice-problem
 **Prófaðu þekkingu þína**
@@ -64,8 +62,6 @@ Hversu mörg mól af Ca(OH)~2~ þarf til að hvarfast við 1,36 mól af H~3~PO~4
 
 :::answer
 2,04 mól
-:::
-:::
 
  
 
@@ -90,7 +86,6 @@ Með því að nota þennan hlutfallaefnafræðistuðul, uppgefið mólmagn af p
 
 $0.75\ \text{mol}\ \text{C}_{3}\text{H}_{8}\  \times \ \frac{3\ \text{mol}\ \text{CO}_{2}}{1\ \text{mol}\ \text{C}_{3}\text{H}_{8}}\  \times \ \frac{6.022\  \times \ 10^{23}\ \text{CO}_{2}\ \text{molecules}}{\text{mol}\ \text{CO}_{2}}\  = 1.4\  \times \ 10^{24}\ \text{CO}_{2}\ \text{molecules}$
 
-:::
 
 :::practice-problem
 **Prófaðu þekkingu þína**
@@ -101,8 +96,6 @@ $\left( \text{NH}_{4} \right)_{2}\text{SO}_{4} + \text{Ca}\left( \text{OH} \righ
 
 :::answer
 4.8 $\times$ 10^24^ NH~3~ sameindir
-:::
-:::
 
 Þessi dæmi sýna hversu auðvelt er að tengja saman magn efna sem taka þátt í efnahvarfi með þekktri hlutfallaefnafræði. Hins vegar er ekki auðvelt verkefni að mæla beint fjölda atóma og sameinda og hagnýt notkun hlutfallaefnafræði krefst þess að við notum þann eiginleika sem auðveldara er að mæla, massa.
 
@@ -119,7 +112,6 @@ Aðferðin sem notuð var áður í [dæmi 4.8](#fs-idp48900096) og [dæmi 4.9](
 
 $16\ \text{g Mg}\left( \text{OH} \right)_{2}\  \times \ \frac{1\ \text{mol Mg}\left( \text{OH} \right)_{2}}{58.3\ \text{g Mg}\left( \text{OH} \right)_{2}}\  \times \ \frac{2\ \text{mol NaOH}}{1\ \text{mol Mg}\left( \text{OH} \right)_{2}}\  \times \ \frac{\text{40.0 g NaOH}}{\text{mol NaOH}}\  = \text{22 g NaOH}$
 
-:::
 
 :::practice-problem
 **Prófaðu þekkingu þína**
@@ -128,8 +120,6 @@ Hvaða massa af gallíumoxíði, Ga~2~O~3~, er hægt að útbúa úr 29,0 g af g
 
 :::answer
 39,0 g
-:::
-:::
 
  
 
@@ -146,7 +136,6 @@ Aðferðin sem krafist er hér er sú sama og í [dæmi 4.10](#fs-idp113495744),
 
 $702\ \text{g}\ \text{C}_{8}\text{H}_{18}\  \times \ \frac{1\ \text{mol}\ \text{C}_{8}\text{H}_{18}}{114.23\ \text{g}\ \text{C}_{8}\text{H}_{18}}\  \times \ \frac{25\ \text{mol}\ \text{O}_{2}}{2\ \text{mol}\ \text{C}_{8}\text{H}_{18}}\  \times \ \frac{\text{32.00 g}\ \text{O}_{2}}{\text{mol}\ \text{O}_{2}}\  = 2.46\  \times \ 10^{3}\ \text{g}\ \text{O}_{2}$
 
-:::
 
 :::practice-problem
 **Prófaðu þekkingu þína**
@@ -155,8 +144,6 @@ Hvaða massa af CO þarf til að hvarfast við 25,13 g af Fe~2~O~3~ samkvæmt j�
 
 :::answer
 13,22 g
-:::
-:::
 
 Þessi dæmi sýna aðeins nokkur tilvik útreikninga í hlutfallaefnafræði efnahvarfa. Fjölmörg afbrigði af upphafs- og lokaútreikningaskrefum eru möguleg eftir því hvaða tilteknu stærðir eru gefnar og hverra er leitað (rúmmál, styrkur lausna og svo framvegis). Burtséð frá smáatriðum eiga allir þessir útreikningar sameiginlegan grundvallarþátt: notkun hlutfallsstuðla sem eru fengnir úr stilltum efnajöfnum. [Mynd 4.11](#CNX_Chem_04_03_flowchart) sýnir almennt yfirlit yfir hin ýmsu skref sem tengjast mörgum útreikningum í hlutfallaefnafræði efnahvarfa.
 
@@ -173,11 +160,10 @@ Loftpúðar ([mynd 4.12](#CNX_Chem_04_03_airbag)) eru öryggisbúnaður sem hefu
 
 $2\text{NaN}_{3}(s)\  \rightarrow \ 3\text{N}_{2}(g) + 2\text{Na}(s)$
 
-Þetta efnahvarf er mjög hratt og myndar köfnunarefnisgas sem getur blásið upp dæmigerðan loftpúða á sekúndubroti (\~0,03--0,1 s). Meðal margra verkfræðilegra atriða verður magn natríumazíðs sem notað er að vera hæfilegt til að mynda nægilegt köfnunarefnisgas til að blása loftpúðann að fullu upp og tryggja rétta virkni hans. Til dæmis mun lítill massi (\~100 g) af NaN~3~ mynda um það bil 50 L af N~2~.
+Þetta efnahvarf er mjög hratt og myndar köfnunarefnisgas sem getur blásið upp dæmigerðan loftpúða á sekúndubroti (~0,03--0,1 s). Meðal margra verkfræðilegra atriða verður magn natríumazíðs sem notað er að vera hæfilegt til að mynda nægilegt köfnunarefnisgas til að blása loftpúðann að fullu upp og tryggja rétta virkni hans. Til dæmis mun lítill massi (~100 g) af NaN~3~ mynda um það bil 50 L af N~2~.
 
 
 ![This photograph shows the inside of an automobile from the driver's side area. The image shows inflated airbags positioned just in front of the driver's and passenger's seats and along the length of the passenger side over the windows. A large, round airbag covers the steering wheel.](./images/media/rId73.jpg)
 
 
 Mynd 4.12 Loftpúðar blásast upp við árekstur til að lágmarka alvarlega áverka á farþega. (heimild: Jon Seidman)
-:::

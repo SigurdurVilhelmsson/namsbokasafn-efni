@@ -157,13 +157,13 @@ Eftirfarandi eru eiginleikar samsæta tveggja frumefna sem eru nauðsynleg í ma
 
 Gefðu upp fjölda róteinda, rafeinda og nifteinda í hlutlausum atómum hverrar eftirfarandi samsætu:
 
-\(a\) $_{\mspace{6mu} 5}^{10}\text{B}$
+\(a\) $_{\;\, 5}^{10}\text{B}$
 
-\(b\) $_{\mspace{6mu} 80}^{199}\text{Hg}$
+\(b\) $_{\;\, 80}^{199}\text{Hg}$
 
 \(c\) $_{29}^{63}\text{Cu}$
 
-\(d\) $_{\mspace{6mu} 6}^{13}\text{C}$
+\(d\) $_{\;\, 6}^{13}\text{C}$
 
 \(e\) $_{34}^{77}\text{Se}$
 
@@ -173,11 +173,11 @@ Gefðu upp fjölda róteinda, rafeinda og nifteinda í hlutlausum atómum hverra
 
 \(a\) $_{3}^{7}\text{Li}$
 
-\(b\) $_{\mspace{6mu} 52}^{125}\text{Te}$
+\(b\) $_{\;\, 52}^{125}\text{Te}$
 
-\(c\) $_{\mspace{6mu} 47}^{109}\text{Ag}$
+\(c\) $_{\;\, 47}^{109}\text{Ag}$
 
-\(d\) $_{\mspace{6mu} 7}^{15}\text{N}$
+\(d\) $_{\;\, 7}^{15}\text{N}$
 
 \(e\) $_{15}^{31}\text{P}$
 

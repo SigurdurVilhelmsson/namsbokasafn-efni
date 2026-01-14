@@ -100,7 +100,7 @@ Táknið fyrir frumefnið súrefni, O, táknar bæði frumefnið og eitt súrefn
 
 [43](http://openstax.org/books/chemistry-2e/pages/2-exercises#fs-idm430165648).
 
-\(a\) $_{11}^{23}\text{Na}$; (b) $_{\mspace{6mu} 54}^{129}\text{Xe}$; (c) $_{33}^{73}\text{As}$; (d) $_{\mspace{6mu} 88}^{226}\text{Ra}$
+\(a\) $_{11}^{23}\text{Na}$; (b) $_{\;\, 54}^{129}\text{Xe}$; (c) $_{33}^{73}\text{As}$; (d) $_{\;\, 88}^{226}\text{Ra}$
 
 [45](http://openstax.org/books/chemistry-2e/pages/2-exercises#fs-idp298677568).
 

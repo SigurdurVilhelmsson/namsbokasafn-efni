@@ -18,7 +18,6 @@ chapter: 1
 -   Flokkað efni sem frumefni, efnasamband, einsleita efnablöndu eða
     misleita efnablöndu með tilliti til efnishams og samsetningar
 -   Skilgreint og gefið dæmi um atóm og sameindir
-:::
 
 Efni er skilgreint sem allt sem tekur pláss og hefur massa, og það er
 allt í kringum okkur. Föst efni og vökvar eru augljóslega efni: Við
@@ -65,7 +64,6 @@ ljós, sem aftur veldur því að á þeim stað birtist tiltekinn litur.
 Samsetning þessara örsmáu litapunkta myndar myndina sem þú sérð. Horfðu
 á þetta [myndband](http://openstax.org/l/16plasma) til að læra meira um
 rafgas og hvar þú finnur það.
-:::
 
 Sum sýni af efni virðast hafa eiginleika fastra efna, vökva og/eða gasa
 á sama tíma. Þetta getur gerst þegar sýnið er samsett úr mörgum litlum
@@ -173,7 +171,6 @@ Mörg efnasambönd brotna niður þegar þau eru hituð. Þessi
 kvikasilfursoxíðs, HgO. Þú getur einnig skoðað dæmi um [ljóshvatað
 niðurbrot silfurklóríðs](http://openstax.org/l/16silvchloride) (AgCl),
 sem er grundvöllur eldri ljósmyndunar.
-:::
 
 Eiginleikar samsettra frumefna eru frábrugðnir eiginleikum þeirra í
 frjálsu eða ósamsettu ástandi. Til dæmis er hvítur kristallaður sykur
@@ -405,7 +402,6 @@ efnarafalsbílar verið framtíðin.
 
 Mynd 1.16 Efnarafall framleiðir raforku úr vetni og súrefni með
 rafefnafræðilegu ferli og myndar aðeins vatn sem úrgangsefni.
-:::
 
  
 
@@ -438,4 +434,3 @@ pólýakrýlónítríli.
 
 Mynd 1.17 Næstum þriðjungur náttúrulegra frumefna er notaður til að
 framleiða farsíma. (heimild: breytt útgáfa af verki eftir John Taylor)
-:::

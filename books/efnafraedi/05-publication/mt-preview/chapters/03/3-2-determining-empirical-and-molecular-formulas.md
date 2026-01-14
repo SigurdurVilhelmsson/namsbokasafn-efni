@@ -14,7 +14,6 @@ chapter: 3
 -   Reiknað massaprósentu efnasambands
 -   Ákvarðað reynsluformúlu efnasambands
 -   Ákvarðað sameindaformúlu efnasambands
-:::
 
 Í fyrri kafla var fjallað um sambandið milli heildarmassa efnis og fjölda atóma eða sameinda sem það inniheldur (mól). Ef efnaformúla efnisins er þekkt er hægt að ákvarða magn efnisins (mól) út frá massa þess og öfugt. En hvað ef efnaformúla efnis er óþekkt? Í þessum kafla verður sömu meginreglum beitt til að leiða út efnaformúlur óþekktra efna út frá tilraunamælingum á massa.
 
@@ -44,7 +43,6 @@ Til að reikna út massaprósentu skal deila massa hvers frumefnis, sem fenginn 
 ![None](./images/media/rId26.jpg)
 
 Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 15,4% H og 23,7% N miðað við massa.
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -53,8 +51,6 @@ Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 1
 
 :::answer
 12,1% C, 16,1% O, 71,79% Cl
-:::
-:::
 
 #### Ákvörðun massaprósentu út frá sameinda- eða reynsluformúlum
 
@@ -80,7 +76,6 @@ Til að reikna út massaprósentuna þarf að vita massa C, H og O í þekktum m
 ![None](./images/media/rId44.jpg)
 
 Athugið að þegar þessar prósentur eru lagðar saman og námundaðar á viðeigandi hátt er summan 100,00%.
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -89,8 +84,6 @@ Hver er massaprósenta járns í efnasambandinu Fe~2~O~3~, gefin upp með þremu
 
 :::answer
 69,9% Fe
-:::
-:::
 
 ### Ákvörðun reynsluformúla
 
@@ -152,7 +145,6 @@ Hlutfallið er 1,000 mól af járni á móti 1,500 mólum af súrefni (Fe~1~O~1,
 $2\left( \text{Fe}_{1}\text{O}_{1.5} \right)\  = \ \text{Fe}_{2}\text{O}_{3}$
 
 Reynsluformúlan er Fe~2~O~3~.
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -161,8 +153,6 @@ Hver er reynsluformúla efnasambands ef sýni inniheldur 0,130 g af köfnunarefn
 
 :::answer
 N~2~O~5~
-:::
-:::
 
  
 
@@ -170,7 +160,6 @@ N~2~O~5~
 ### Tengill á námsefni
 
 Horfðu á stutta [myndbandið](http://openstax.org/l/16empforms) til að sjá fleiri dæmi um útreikninga á reynsluformúlum.
-:::
 
 #### Útreikningur á reynsluformúlum út frá prósentusamsetningu
 
@@ -202,7 +191,6 @@ Stuðlar fyrir bráðabirgðareynsluformúluna eru fengnir með því að deila 
 ![None](./images/media/rId93.jpg)
 
 Þar sem hlutfallið sem fæst er eitt kolefnisatóm á móti tveimur súrefnisatómum er reynsluformúlan CO~2~.
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -211,8 +199,6 @@ Hver er reynsluformúla efnasambands sem inniheldur 40,0% C, 6,71% H og 53,28% O
 
 :::answer
 CH~2~O
-:::
-:::
 
 ### Útreikningur á sameindaformúlum
 
@@ -270,7 +256,6 @@ $\ \frac{162.3\ \text{g/mol}}{81.13\ \frac{\text{g}}{\text{formula unit}}\ }\  =
 Að lokum skal leiða út sameindaformúlu nikótíns út frá reynsluformúlunni með því að margfalda hvern neðanáskrifaðan vísi með tveimur:
 
 $\text{(C}_{\text{5}}\text{H}_{\text{7}}\text{N)}_{\text{2}} = \text{C}_{\text{10}}\text{H}_{\text{14}}\text{N}_{\text{2}}$
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -279,5 +264,3 @@ Hver er sameindaformúla efnasambands með massaprósentuna 49,47% C, 5,201% H, 
 
 :::answer
 C~8~H~10~N~4~O~2~
-:::
-:::

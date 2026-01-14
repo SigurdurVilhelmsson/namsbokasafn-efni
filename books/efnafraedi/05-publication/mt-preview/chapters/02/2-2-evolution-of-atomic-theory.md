@@ -15,7 +15,6 @@ chapter: 2
 -   Dregið saman og túlkað niðurstöður tilrauna Thomsons, Millikans og Rutherfords
 -   Lýst þeim þremur öreindum sem atóm eru gerð úr
 -   Skilgreint samsætur og gefið dæmi um nokkur frumefni
-:::
 
 Ef efni er gert úr atómum, úr hverju eru atóm þá gerð? Eru þau smæstu eindirnar eða er eitthvað enn smærra til? Í lok 19. aldar rannsakaði fjöldi vísindamanna sem höfðu áhuga á spurningum eins og þessum rafmagnslosun sem hægt var að framleiða í lágþrýstum lofttegundum og var mikilvægasta uppgötvunin gerð af enska eðlisfræðingnum J. J. Thomson með því að nota katóðugeislalampa. Þetta tæki samanstóð af lokuðu glerhylki sem nánast allt loft hafði verið fjarlægt úr; rörið innihélt tvö málmrafskaut. Þegar há spenna var lögð á rafskautin birtist sýnilegur geisli, kallaður katóðugeisli, á milli þeirra. Þessi geisli sveigðist í átt að jákvæðu hleðslunni og frá neikvæðu hleðslunni og myndaðist á sama hátt með sömu eiginleika þegar mismunandi málmar voru notaðir fyrir rafskautin. Í svipuðum tilraunum var geislinn samtímis sveigður með segulsviði og mælingar á umfangi sveigjunnar og styrk segulsviðsins gerðu Thomson kleift að reikna út hlutfall hleðslu og massa einda katóðugeislans. Niðurstöður þessara mælinga bentu til þess að þessar eindir væru mun léttari en atóm (mynd 2.6).
 
@@ -29,7 +28,6 @@ Byggt á athugunum sínum lagði Thomson eftirfarandi til og útskýrði hvers v
 ### Tengill á námsefni
 
 Smelltu [hér](http://openstax.org/l/16JJThomson) til að heyra Thomson lýsa uppgötvun sinni með eigin röddu.
-:::
 
 Árið 1909 komu fram frekari upplýsingar um rafeindina frá bandaríska eðlisfræðingnum Robert A. Millikan með „olíudropatilraunum" hans. Millikan bjó til smásæja olíudropa sem hægt var að rafhleðsla með núningi þegar þeir mynduðust eða með því að nota röntgengeisla. Þessir dropar féllu upphaflega vegna þyngdaraflsins en hægt var að hægja á falli þeirra eða jafnvel snúa því við með rafsviði neðar í tækinu. Með því að stilla styrk rafsviðsins og gera nákvæmar mælingar og viðeigandi útreikninga gat Millikan ákvarðað hleðslu einstakra dropa (mynd 2.7).
 
@@ -66,7 +64,6 @@ Hvað uppgötvuðu þeir? Flestar eindirnar fóru beint í gegnum þynnuna án �
 ### Tengill á námsefni
 
 Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilraun Rutherfords. Stilltu breidd raufarinnar til að búa til mjórri eða breiðari geisla af α-eindum til að sjá hvernig það hefur áhrif á dreifingarmynstrið.
-:::
 
 Þessi greining leiddi til þess að Rutherford lagði til líkan þar sem atóm samanstendur af mjög litlum, jákvætt hlaðnum kjarna, þar sem mestur massi atómsins er samþjappaður, umkringdur neikvætt hlaðnum rafeindum, þannig að atómið er rafhlutlaust (mynd 2.10). Eftir margar fleiri tilraunir uppgötvaði Rutherford einnig að kjarnar annarra frumefna innihalda vetniskjarnann sem „byggingareiningu" og hann nefndi þessa grundvallareind róteind, jákvætt hlaðna öreind sem finnst í kjarnanum. Með einni viðbót, sem þú munt læra um næst, er þetta kjarnalíkan atómsins, sem lagt var til fyrir meira en öld síðan, enn notað í dag.
 
@@ -78,7 +75,6 @@ Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilr
 ### Tengill á námsefni
 
 [Rutherford-dreifingarhermunin](http://openstax.org/l/16PhetScatter) gerir þér kleift að rannsaka muninn á „plómubúðings"-atómi og Rutherford-atómi með því að skjóta α-eindum á hvora tegund atóms.
-:::
 
 Önnur mikilvæg uppgötvun var uppgötvun samsætna. Snemma á 20. öld fundu vísindamenn nokkur efni sem virtust vera ný frumefni og einangruðu þau úr geislavirkum málmgrýti. Til dæmis var „nýtt frumefni" sem myndaðist við geislavirka hrörnun þóríums upphaflega gefið nafnið mesóþóríum. Hins vegar sýndi nánari greining að mesóþóríum var efnafræðilega eins og radíum (önnur hrörnunarafurð), þrátt fyrir að hafa annan atómmassa. Þessi niðurstaða, ásamt svipuðum niðurstöðum fyrir önnur frumefni, leiddi enska efnafræðinginn Frederick Soddy til þeirrar niðurstöðu að frumefni gæti haft gerðir atóma með mismunandi massa sem væru efnafræðilega óaðgreinanlegar. Þessar mismunandi gerðir eru kallaðar samsætur -- atóm sama frumefnis sem hafa mismunandi massa. Soddy hlaut Nóbelsverðlaunin í efnafræði árið 1921 fyrir þessa uppgötvun.
 

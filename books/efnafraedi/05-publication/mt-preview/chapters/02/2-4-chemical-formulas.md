@@ -13,7 +13,6 @@ chapter: 2
 
 -   Sýnt samsetningu sameinda með sameindaformúlum og reynsluformúlum
 -   Sýnt tengiskipan atóma innan sameinda með byggingarformúlum
-:::
 
 Sameindaformúla er framsetning á sameind sem notar efnatákn til að gefa til kynna tegundir atóma og síðan lágstafi til að sýna fjölda atóma af hverri tegund í sameindinni. (Lágstafur er aðeins notaður þegar fleiri en eitt atóm af tiltekinni tegund er til staðar.) Sameindaformúlur eru einnig notaðar sem skammstafanir fyrir nöfn efnasambanda.
 
@@ -73,7 +72,6 @@ Sameindir glúkósa (blóðsykurs) innihalda 6 kolefnisatóm, 12 vetnisatóm og 
 **Lausn**
 
 Sameindaformúlan er C~6~H~12~O~6~ vegna þess að ein sameind inniheldur í raun 6 C, 12 H og 6 O atóm. Einfaldasta heiltöluhlutfall C, H og O atóma í glúkósa er 1:2:1, þannig að reynsluformúlan er CH~2~O.
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -82,8 +80,6 @@ Sameind metaldehýðs (skordýraeitur notað gegn sniglum) inniheldur 8 kolefnis
 
 :::answer
 Sameindaformúla, C~8~H~16~O~4~; reynsluformúla, C~2~H~4~O
-:::
-:::
 
  
 
@@ -91,7 +87,6 @@ Sameindaformúla, C~8~H~16~O~4~; reynsluformúla, C~2~H~4~O
 ### Tengill á námsefni
 
 Þú getur kannað [sameindabyggingu](http://openstax.org/l/16molbuilding) með því að nota hermilíkan á netinu.
-:::
 
  
 
@@ -111,7 +106,6 @@ Mynd 2.22 Paula Hammond var frumkvöðull í nýrri tækni til að móta efnafr�
 Paula Hammond gerir einmitt það til að leysa krefjandi vandamál, allt frá krabbameini til orkunotkunar. Hún er deildarforseti efnaverkfræðideildar við Massachusetts Institute of Technology og leiðir rannsóknarteymi sem einbeitir sér að því að setja saman einstakar sameindabyggingar. Þau hafa búið til burðarefni fyrir krabbameinslyf -- húðun á stærð við nanóagnir sem gerir lyfjum kleift að ferðast inn í æxli án þess að varnir þess hafi áhrif á þau -- sem geta skilað lyfjum beint inn í krabbameinsæxli. Þau byggja þessar „laumu"sameindir lag fyrir lag; með því að nota ákveðna eiginleika rafmagns og efnafræðilegrar hegðunar geta þau „stillt" húðunina til að takast á við tiltekin krabbamein og aðrar breytur. Þessi nákvæmnisaðferð er nauðsynleg til að meðhöndla krabbamein á skilvirkari hátt og með minni skaða fyrir sjúklinginn. Fyrirtækið sem Hammond stofnaði notar svipaða tækni til að losa lyf í augu sjúklinga með ský á auga, auk þess að bæta sáragræðslu.
 
 Þótt rannsóknarteymi Hammond sé skipað viðurkenndum og leiðandi sérfræðingum eins og henni sjálfri, gegna nemendur vissulega hlutverki. Rannsóknarstofur háskóla eru yfirleitt fullar af doktorsnemum, framhaldsnemum og jafnvel grunnnemum sem taka þátt í vinnunni. Og þannig styðja efnafræðingar og efnaverkfræðingar sem nota þekkingu sína til að leysa vandamál einnig við næstu kynslóð skapara og lausnamiðaðra einstaklinga.
-:::
 
 Það er mikilvægt að vera meðvitaður um að það getur verið mögulegt fyrir sömu atóm að raðast á mismunandi vegu: Efnasambönd með sömu sameindaformúlu geta haft mismunandi tengsl milli atóma og þar af leiðandi mismunandi byggingu. Gæti til dæmis verið annað efnasamband með sömu formúlu og ediksýra, C~2~H~4~O~2~? Og ef svo er, hver væri þá bygging sameinda þess?
 
@@ -135,4 +129,3 @@ Mynd 2.24 Sameindir karvóns eru rúmhverfur; þær eru aðeins ólíkar að þv
 ### Tengill á námsefni
 
 Smelltu á þennan [tengil](http://openstax.org/l/16isomers) til að sjá útskýringu á hverfum, rúmhverfum og hvers vegna þær hafa ólíka lykt (veldu myndbandið sem heitir „Mirror Molecule: Carvone").
-:::

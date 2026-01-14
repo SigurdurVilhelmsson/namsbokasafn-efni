@@ -14,7 +14,6 @@ chapter: 1
 -   Tilgreint hvort eiginleikar efnis og breytingar á því eru
     eðlisfræðilegir eða efnafræðilegir
 -   Tilgreint hvort eiginleikar efnis eru magnbundnir eða eðlisbundnir
-:::
 
 Þau einkenni sem greina eitt efni frá öðru eru kallaðir eiginleikar (e.
 properties). Eðliseiginleiki (e. physical property) er einkenni efnis
@@ -134,7 +133,6 @@ kleift að brenna án lofts/súrefnis), hvarfist á óvenjulegan eða
 hættulegan hátt við vatn, sé tærandi, súrt, basískt, líffræðileg hætta,
 geislavirkt og svo framvegis. Hver hætta er metin á kvarða frá 0 til 4,
 þar sem 0 er engin hætta og 4 er gríðarlega hættulegt.
-:::
 
 Þótt mörg frumefni séu verulega ólík hvað varðar efna- og
 eðliseiginleika, hafa sum frumefni svipaða eiginleika. Til dæmis leiða

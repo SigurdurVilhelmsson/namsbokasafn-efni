@@ -14,7 +14,6 @@ chapter: 2
 -   Skrifað og túlkað tákn sem sýna sætistölu, massatölu og hleðslu atóms eða jónar
 -   Skilgreint atómmassaeiningu og meðalatómmassa
 -   Reiknað út meðalatómmassa og hlutfallslegt magn samsæta
-:::
 
 Þróun nútíma atómkenningar leiddi margt í ljós um innri byggingu atóma. Í ljós kom að atóm inniheldur mjög lítinn kjarna sem samanstendur af jákvætt hlöðnum róteindum og óhlöðnum nifteindum, umkringdan mun stærra rúmmáli sem inniheldur neikvætt hlaðnar rafeindir. Kjarninn inniheldur meirihluta massa atómsins vegna þess að róteindir og nifteindir eru mun þyngri en rafeindir, en rafeindir taka nánast allt rúmmál atómsins. Þvermál atóms er í stærðargráðunni 10^−10^ m, en þvermál kjarnans er um það bil 10^−15^ m --- um 100.000 sinnum minna. Til að fá hugmynd um hlutfallslega stærð þeirra má íhuga þetta: Ef kjarninn væri á stærð við bláber, væri atómið á stærð við fótboltaleikvang ([mynd 2.11](#CNX_Chem_02_03_AtomSize)).
 
@@ -62,7 +61,6 @@ Með því að bæta við örlitlu joði í matarsalt (joðbætt salt) hefur þe
 **Lausn**
 
 Sætistala joðs (53) segir okkur að hlutlaust joðatóm inniheldur 53 róteindir í kjarna sínum og 53 rafeindir utan kjarnans. Þar sem summa fjölda róteinda og nifteinda er jöfn massatölunni, 127, er fjöldi nifteinda 74 (127 − 53 = 74). Þar sem joðinu er bætt við sem 1− anjón er fjöldi rafeinda 54 \[53 -- (1--) = 54\].
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -71,8 +69,6 @@ Jón platínu hefur massatöluna 195 og inniheldur 74 rafeindir. Hversu margar r
 
 :::answer
 78 róteindir; 117 nifteindir; hleðslan er 4+
-:::
-:::
 
 ### Efnatákn
 
@@ -112,7 +108,6 @@ Hefð er fyrir því að þau sem uppgötva nýtt frumefni gefi því nafn. Hins
 ### Tengill á námsefni
 
 Farðu á þessa [síðu](http://openstax.org/l/16IUPAC) til að læra meira um IUPAC, Alþjóðasamband um hreina og hagnýta efnafræði, og skoðaðu lotukerfi þess.
-:::
 
 ### Samsætur
 
@@ -138,17 +133,17 @@ Samsetning kjarna atóma mjög léttra frumefna
 | litíum | $_{3}^{6}\text{Li}$ | 3 | 3 | 3 | 6,0151 | 7,59 |
 |  | $_{3}^{7}\text{Li}$ | 3 | 3 | 4 | 7,0160 | 92,41 |
 | beryllíum | $_{4}^{9}\text{Be}$ | 4 | 4 | 5 | 9,0122 | 100 |
-| bór | $_{\mspace{6mu} 5}^{10}\text{B}$ | 5 | 5 | 5 | 10,0129 | 19,9 |
-|  | $_{\mspace{6mu} 5}^{11}\text{B}$ | 5 | 5 | 6 | 11,0093 | 80,1 |
-| kolefni | $_{\mspace{6mu} 6}^{12}\text{C}$ | 6 | 6 | 6 | 12,0000 | 98,89 |
-|  | $_{\mspace{6mu} 6}^{13}\text{C}$ | 6 | 6 | 7 | 13,0034 | 1,11 |
-|  | $_{\mspace{6mu} 6}^{14}\text{C}$ | 6 | 6 | 8 | 14,0032 | --- (snefilmagn) |
-| nitur | $_{\mspace{6mu} 7}^{14}\text{N}$ | 7 | 7 | 7 | 14,0031 | 99,63 |
-|  | $_{\mspace{6mu} 7}^{15}\text{N}$ | 7 | 7 | 8 | 15,0001 | 0,37 |
-| súrefni | $_{\mspace{6mu} 8}^{16}\text{O}$ | 8 | 8 | 8 | 15,9949 | 99,757 |
-|  | $_{\mspace{6mu} 8}^{17}\text{O}$ | 8 | 8 | 9 | 16,9991 | 0,038 |
-|  | $_{\mspace{6mu} 8}^{18}\text{O}$ | 8 | 8 | 10 | 17,9992 | 0,205 |
-| flúor | $_{\mspace{6mu} 9}^{19}\text{F}$ | 9 | 9 | 10 | 18,9984 | 100 |
+| bór | $_{\;\, 5}^{10}\text{B}$ | 5 | 5 | 5 | 10,0129 | 19,9 |
+|  | $_{\;\, 5}^{11}\text{B}$ | 5 | 5 | 6 | 11,0093 | 80,1 |
+| kolefni | $_{\;\, 6}^{12}\text{C}$ | 6 | 6 | 6 | 12,0000 | 98,89 |
+|  | $_{\;\, 6}^{13}\text{C}$ | 6 | 6 | 7 | 13,0034 | 1,11 |
+|  | $_{\;\, 6}^{14}\text{C}$ | 6 | 6 | 8 | 14,0032 | --- (snefilmagn) |
+| nitur | $_{\;\, 7}^{14}\text{N}$ | 7 | 7 | 7 | 14,0031 | 99,63 |
+|  | $_{\;\, 7}^{15}\text{N}$ | 7 | 7 | 8 | 15,0001 | 0,37 |
+| súrefni | $_{\;\, 8}^{16}\text{O}$ | 8 | 8 | 8 | 15,9949 | 99,757 |
+|  | $_{\;\, 8}^{17}\text{O}$ | 8 | 8 | 9 | 16,9991 | 0,038 |
+|  | $_{\;\, 8}^{18}\text{O}$ | 8 | 8 | 10 | 17,9992 | 0,205 |
+| flúor | $_{\;\, 9}^{19}\text{F}$ | 9 | 9 | 10 | 18,9984 | 100 |
 | neon | $_{10}^{20}\text{Ne}$ | 10 | 10 | 10 | 19,9924 | 90,48 |
 |  | $_{10}^{21}\text{Ne}$ | 10 | 10 | 11 | 20,9938 | 0,27 |
 |  | $_{10}^{22}\text{Ne}$ | 10 | 10 | 12 | 21,9914 | 9,25 |
@@ -159,7 +154,6 @@ Tafla 2.4
 ### Tengill á námsefni
 
 Notaðu þennan [hermi](http://openstax.org/l/16PhetAtomBld) til að smíða atóm fyrstu 10 frumefnanna, sjáðu hvaða samsætur eru til, athugaðu stöðugleika kjarna og öðlastu reynslu af samsætutáknum.
-:::
 
 ### Atómmassi
 
@@ -185,7 +179,6 @@ Loftsteinn sem fannst í miðri Indiana inniheldur snefil af eðalgasinu neon se
 ![None](./images/media/rId71.jpg)
 
 Meðalmassi neonatóms í sólvindinum er 20,15 amu. (Meðalmassi neonatóms á jörðu niðri er 20.1796 amu. Þessi niðurstaða sýnir að við gætum fundið smávægilegan mun á náttúrulegri gnægð samsæta, allt eftir uppruna þeirra.)
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -194,8 +187,6 @@ Sýni af magnesíum inniheldur 78,70% af ^24^Mg atómum (massi 23,98 amu), 10,13
 
 :::answer
 24,31 amu
-:::
-:::
 
 Við getum líka gert afbrigði af þessari tegund útreikninga, eins og sýnt er í næsta dæmi.
 
@@ -220,7 +211,6 @@ Ef við setjum þetta inn í jöfnuna fyrir meðalmassa fáum við:
 
 Lausnin gefur: *x* = 0,7576, sem þýðir að 1,00 − 0,7576 = 0,2424. Klór samanstendur því af 75,76% ^35^Cl og 24,24% ^37^Cl.
 
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -229,8 +219,6 @@ Kopar sem finnst í náttúrunni samanstendur af ^63^Cu (massi 62,9296 amu) og ^
 
 :::answer
 69,15% Cu-63 og 30,85% Cu-65
-:::
-:::
 
  
 
@@ -238,7 +226,6 @@ Kopar sem finnst í náttúrunni samanstendur af ^63^Cu (massi 62,9296 amu) og ^
 ### Tengill á námsefni
 
 Farðu á þessa [síðu](http://openstax.org/l/16PhetAtomMass) til að búa til efnablöndur af helstu samsætum fyrstu 18 frumefnanna, öðlast reynslu af meðalatómmassa og kanna náttúruleg samsætuhlutföll með því að nota herminn Isotopes and Atomic Mass.
-:::
 
 Eins og þú munt læra eru samsætur mikilvægar í náttúrunni og sérstaklega í skilningi mannsins á vísindum og læknisfræði. Lítum aðeins á eina náttúrulega, stöðuga samsætu: Súrefni-18, sem er nefnd í töflunni hér að ofan og er kölluð ein af umhverfissamsætunum. Hún er mikilvæg í forloftslagsfræði, til dæmis, vegna þess að vísindamenn geta notað hlutfallið milli súrefnis-18 og súrefnis-16 í ískjarna til að ákvarða hitastig úrkomu yfir tíma. Súrefni-18 var einnig mikilvægt við uppgötvun efnaskiptaferla og hvarfganga ensíma. Mildred Cohn var frumkvöðull í notkun þessara samsæta sem snefilefna, svo að rannsakendur gætu fylgst með ferli þeirra í gegnum efnahvörf og öðlast betri skilning á því sem er að gerast. Ein af fyrstu uppgötvunum hennar veitti innsýn í fosfórun glúkósa sem á sér stað í hvatberum. Og aðferðirnar við að nota samsætur fyrir þessar rannsóknir lögðu grunn að heilum fræðasviðum.
 
@@ -254,4 +241,3 @@ Mynd 2.15 Greining á sirkoni í massagreini býr til massaróf með toppum sem 
 ### Tengill á námsefni
 
 Sjáðu [hreyfimynd](http://openstax.org/l/16MassSpec) sem útskýrir massagreiningu. Horfðu á þetta [myndband](http://openstax.org/l/16RSChemistry) frá Royal Society for Chemistry til að fá stutta lýsingu á grundvallaratriðum massagreiningar.
-:::

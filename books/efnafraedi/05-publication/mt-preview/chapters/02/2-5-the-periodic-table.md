@@ -14,7 +14,6 @@ chapter: 2
 -   Skilgreint lotulögmálið og útskýrt skipulag frumefna í lotukerfinu
 -   Spáð fyrir um almenna eiginleika frumefna út frá staðsetningu þeirra í lotukerfinu
 -   Þekkt málma, málmleysingja og hálfmálma út frá eiginleikum þeirra og/eða staðsetningu í lotukerfinu
-:::
 
 Þegar efnafræðingar unnu í árdaga að því að hreinsa málmgrýti og uppgötvuðu fleiri frumefni, gerðu þeir sér grein fyrir því að hægt væri að flokka ýmis frumefni saman eftir svipaðri efnafræðilegri hegðun. Einn slíkur flokkur inniheldur litíum (Li), natríum (Na) og kalíum (K): Öll þessi frumefni eru glansandi, leiða vel varma og rafmagn og hafa svipaða efnaeiginleika. Annar flokkur inniheldur kalsíum (Ca), strontíum (Sr) og baríum (Ba), sem eru einnig glansandi, góðir varma- og rafmagnsleiðarar og eiga sameiginlega efnaeiginleika. Hins vegar eru sértækir eiginleikar þessara tveggja flokka verulega frábrugðnir hvor öðrum. Til dæmis: Li, Na og K eru mun hvarfgjarnari en Ca, Sr og Ba; Li, Na og K mynda efnasambönd með súrefni í hlutfallinu tvö atóm þeirra á móti einu súrefnisatómi, en Ca, Sr og Ba mynda efnasambönd með einu atómi þeirra á móti einu súrefnisatómi. Flúor (F), klór (Cl), bróm (Br) og joð (I) sýna einnig svipaða eiginleika sín á milli, en þessir eiginleikar eru gjörólíkir eiginleikum allra fyrrnefndra frumefna.
 
@@ -57,7 +56,6 @@ Smelltu á þennan [tengil](https://openstax.org/l/16Periodic) til að sjá gagn
 
  
 
-:::
 
 :::example
 ### Dæmi 2.7: Nafngiftir frumefnahópa
@@ -83,7 +81,6 @@ Fjölskyldunöfnin eru sem hér segir:
 \(c\) alkalímálmur
 
 \(d\) kalkógen
-:::
 
 :::practice-problem
 **Kannaðu þekkingu þína**
@@ -100,8 +97,6 @@ Gefðu upp hópnafn fyrir hvert af eftirfarandi frumefnum:
 
 :::answer
 \(a\) eðalgas; (b) kalkógen; (c) jarðalkalímálmur; (d) alkalímálmur
-:::
-:::
 
 Eins og þú munt læra í frekara námi í efnafræði, hegða frumefni í hópum sér oft á nokkuð svipaðan hátt. Þetta er að hluta til vegna fjölda rafeinda á ysta hvolfi þeirra og svipaðrar tilhneigingar þeirra til að mynda tengi. Þessir sameiginlegu eiginleikar geta haft víðtækar afleiðingar í náttúru, vísindum og læknisfræði. Til dæmis, þegar Gertrude Elion og George Hitchens voru að rannsaka leiðir til að trufla frumu- og veiruafritun til að berjast gegn sjúkdómum, nýttu þau sér líkindin milli brennisteins og súrefnis (bæði í hóp 16) og getu þeirra til að tengjast á svipaðan hátt. Elion einbeitti sér að púrínríkjum, sem eru lykilþættir DNA og innihalda súrefni. Hún komst að því að með því að nota efnasambönd sem byggjast á brennisteini (kölluð púrín-hliðstæður) sem líkja eftir byggingu púrínríkja, myndu sameindir innan DNA tengjast hliðstæðunum frekar en „venjulegu" DNA-púrínríkjunum. Með því að breyta venjulegri DNA-tengingu og byggingu tókst Elion að trufla frumuafritun. Í grunninn virkaði aðferðin vegna líkindanna milli brennisteins og súrefnis. Uppgötvun hennar leiddi beint til mikilvægra meðferða við hvítblæði. Á heildina litið leiddi vinna Elion með George Hitchens ekki aðeins til fleiri meðferða, heldur breytti hún einnig allri aðferðafræði lyfjaþróunar. Með því að nota sérstök frumefni og efnasambönd til að miða á sérstaka þætti æxlisfrumna, veira og baktería, lögðu þau grunninn að mörgum af algengustu og mikilvægustu lyfjum nútímans, sem eru notuð til að hjálpa milljónum manna á hverju ári. Þau hlutu Nóbelsverðlaunin árið 1988.
 

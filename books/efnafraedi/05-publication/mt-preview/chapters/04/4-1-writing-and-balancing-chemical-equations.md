@@ -13,7 +13,6 @@ chapter: 4
 
 -   Búið til efnajöfnur út frá lýsingum á efnahvörfum.
 -   Skrifað og stillt sameindajöfnur, heildarjónajöfnur og nettójónajöfnur.
-:::
 
 Í fyrri kafla þessarar bókar var kynnt notkun tákna fyrir frumefni til að tákna einstök atóm. Þegar atóm fá eða missa rafeindir til að mynda jónir, eða sameinast öðrum atómum til að mynda sameindir, er táknum þeirra breytt eða þau sameinuð til að búa til efnaformúlur sem tákna þessar eindir á viðeigandi hátt. Að útvíkka þessa táknfræði til að tákna bæði auðkenni og hlutfallslegt magn efna sem gangast undir efna- (eða eðlis-) breytingu felur í sér að skrifa og stilla efnajöfnu. Tökum sem dæmi hvarfið milli einnar metansameindar (CH~4~) og tveggja tvíatóma súrefnissameinda (O~2~) til að mynda eina koldíoxíðsameind (CO~2~) og tvær vatnssameindir (H~2~O). Efnajafnan sem táknar þetta ferli er sýnd á efri helmingi [myndar 4.2](#CNX_Chem_04_01_rxn2), með rúmfyllandi sameindalíkönum á neðri helmingi myndarinnar.
 
@@ -128,7 +127,6 @@ $2\text{N}_{2} + 5\text{O}_{2}\  \rightarrow \ 2\text{N}_{2}\text{O}_{5}$
 | O | 5 $\times$ 2 = 10 | 2 $\times$ 5 = 10 | 10 = 10, já |
 
 Fjöldi N- og O-atóma báðum megin í jöfnunni er nú jafn og því er jafnan stillt.
-:::
 
 :::practice-problem
 **Prófaðu þekkingu þína**
@@ -137,8 +135,6 @@ Skrifaðu stillta efnajöfnu fyrir niðurbrot ammóníumnítrats til að mynda n
 
 :::answer
 $2\text{NH}_{4}\text{NO}_{3}\  \rightarrow \ 2\text{N}_{2} + \text{O}_{2} + 4\text{H}_{2}\text{O}$
-:::
-:::
 
 Stundum er hentugt að nota brot í stað heiltalna sem millistuðla þegar við stillum efnajöfnur. Þegar jafnvægi er náð má síðan margfalda alla stuðla jöfnunnar með heilli tölu til að breyta brotunum í heiltölur án þess að raska jafnvægi atómanna. Skoðum til dæmis efnahvarf etans (C~2~H~6~) við súrefni sem myndar H~2~O og CO~2~, táknað með óstilltu efnajöfnunni:
 
@@ -168,7 +164,6 @@ $\text{N}_{2} + 3\text{H}_{2}\  \rightarrow \ 2\text{NH}_{3}$
 ### Tengill á námsefni
 
 Notaðu þetta gagnvirka [kennsluefni](http://openstax.org/l/16BalanceEq) til að æfa þig meira í að stilla efnajöfnur.
-:::
 
 ### Viðbótarupplýsingar í efnajöfnum
 
@@ -232,7 +227,6 @@ $\text{CO}_{2}(aq) + 2\text{Na}^{\text{+}}(aq) + 2\text{OH}^{\text{−}}(aq)\  \
 Að lokum skaltu finna meðjónina/jónirnar, í þessu tilfelli Na^+^(*aq*), og fjarlægja hana úr báðum hliðum jöfnunnar til að fá nettójónajöfnuna:
 
 ![None](./images/media/rId84.jpg)
-:::
 
 :::practice-problem
 **Prófaðu þekkingu þína**
@@ -247,5 +241,3 @@ Skrifaðu stilltar sameinda-, heildarjóna- og nettójónajöfnur fyrir þetta f
 $2\text{NaCl}(aq) + 2\text{H}_{2}\text{O}(l)\  \rightarrow \ 2\text{NaOH}(aq) + \text{H}_{2}(g) + \text{Cl}_{2}(g)\quad\quad\left( \text{molecular} \right)$\
 $2\text{Na}^{\text{+}}(aq) + 2\text{Cl}^{\text{−}}(aq) + 2\text{H}_{2}\text{O}(l)\  \rightarrow \ 2\text{Na}^{\text{+}}(aq) + 2\text{OH}^{\text{−}}(aq) + \text{H}_{2}(g) + \text{Cl}_{2}(g)\quad\quad\left( \text{complete ionic} \right)$\
 $2\text{Cl}^{\text{−}}(aq) + 2\text{H}_{2}\text{O}(l)\  \rightarrow \ 2\text{OH}^{\text{−}}(aq) + \text{H}_{2}(g) + \text{Cl}_{2}(g)\quad\quad\text{(net ionic)}$
-:::
-:::

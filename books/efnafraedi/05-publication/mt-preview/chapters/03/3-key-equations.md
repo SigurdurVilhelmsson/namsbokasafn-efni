@@ -7,7 +7,7 @@ chapter: 3
 ## Lykiljafna
 
 $\%\ \text{X} = \ \frac{\text{mass X}}{\text{mass compound}}\  \times \ 100\%$
-$\ \frac{\text{molecular or molar mass}\ \left( \text{amu or}\mspace{6mu}\frac{\text{g}}{\text{mol}} \right)}{\text{empirical formula mass}\ \left( \text{amu or}\mspace{6mu}\frac{\text{g}}{\text{mol}} \right)}\  = n\ \text{formula units/molecule}$
+$\ \frac{\text{molecular or molar mass}\ \left( \text{amu or}\;\,\frac{\text{g}}{\text{mol}} \right)}{\text{empirical formula mass}\ \left( \text{amu or}\;\,\frac{\text{g}}{\text{mol}} \right)}\  = n\ \text{formula units/molecule}$
 (A~x~B~y~)~n~ = A~nx~B~ny~
 
 $M = \ \frac{\text{mol solute}}{\text{L solution}}\ $

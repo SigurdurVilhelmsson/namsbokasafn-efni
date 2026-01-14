@@ -312,7 +312,7 @@ Ljúktu við og stilltu jöfnurnar fyrir eftirfarandi sýru-basa hlutleysingarhv
 
 \(a\) $\text{Mg}\text{(OH)}_{2}(s) + \text{HClO}_{4}(aq)\  \rightarrow \ $
 
-\(b\) $\text{SO}_{3}(g) + \text{H}_{2}\text{O}(l)\  \rightarrow \ \mspace{6mu}\text{(assume an excess of water and that the product dissolves)}$
+\(b\) $\text{SO}_{3}(g) + \text{H}_{2}\text{O}(l)\  \rightarrow \ \;\,\text{(assume an excess of water and that the product dissolves)}$
 
 \(c\) $\text{SrO}(s) + \text{H}_{2}\text{SO}_{4}(l)\  \rightarrow \ $
 
@@ -732,7 +732,7 @@ Aðalefnið í mölkúlum er naftalen, efnasamband með sameindamassa um 130 amu
 
 [85](http://openstax.org/books/chemistry-2e/pages/chapter-4#fs-idp87527952-solution).
 
-0,025 g sýni af efnasambandi sem samanstendur af bór og vetni, með sameindamassa \~28 amu, brennur sjálfkrafa þegar það kemst í snertingu við loft og myndar 0,063 g af B~2~O~3~. Hverjar eru reynsluformúla og sameindaformúla efnasambandsins?
+0,025 g sýni af efnasambandi sem samanstendur af bór og vetni, með sameindamassa ~28 amu, brennur sjálfkrafa þegar það kemst í snertingu við loft og myndar 0,063 g af B~2~O~3~. Hverjar eru reynsluformúla og sameindaformúla efnasambandsins?
 
 86\.
 
@@ -783,4 +783,4 @@ $\text{KHC}_{8}\text{H}_{4}\text{O}_{4}(aq) + \text{NaOH}(aq)\  \rightarrow \ \t
 
 [95](http://openstax.org/books/chemistry-2e/pages/chapter-4#fs-idp13191008-solution).
 
-Hvarf WCl~6~ við Al við \~400 °C gefur svarta kristalla af efnasambandi sem inniheldur aðeins wolfram og klór. Sýni af þessu efnasambandi, þegar það er afoxað með vetni, gefur 0,2232 g af wolframmálmi og vetnisklóríð, sem er leyst upp í vatni. Títrun saltsýrunnar sem þannig myndast krefst 46,2 ml af 0,1051 *M* NaOH til að ná jafngildispunkti. Hver er reynsluformúla svarta wolframklóríðsins?
+Hvarf WCl~6~ við Al við ~400 °C gefur svarta kristalla af efnasambandi sem inniheldur aðeins wolfram og klór. Sýni af þessu efnasambandi, þegar það er afoxað með vetni, gefur 0,2232 g af wolframmálmi og vetnisklóríð, sem er leyst upp í vatni. Títrun saltsýrunnar sem þannig myndast krefst 46,2 ml af 0,1051 *M* NaOH til að ná jafngildispunkti. Hver er reynsluformúla svarta wolframklóríðsins?
