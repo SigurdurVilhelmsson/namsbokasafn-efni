@@ -130,9 +130,7 @@ stikur. Lengri vegalengdir eru oft gefnar upp í kílómetrum (1 km = 1000
 m = 10^3^ m), en styttri vegalengdir má gefa upp í sentimetrum (1 cm =
 0,01 m = 10^−2^ m) eða millimetrum (1 mm = 0,001 m = 10^−3^ m).
 
-
 ![One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.](./images/media/rId31.jpg)
-
 
 Mynd 1.23 Hlutfallslegar lengdir 1 m, 1 stiku, 1 cm og 1 tommu eru
 sýndar (ekki í raunstærð), ásamt samanburði á 2,54 cm og 1 tommu, og 1 m
@@ -156,9 +154,7 @@ kílógrammsins (10^−3^ kg).
 Nánari upplýsingar má finna á
 https://www.nist.gov/pml/weights-and-measures/si-units-mass
 
-
 ![The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.](./images/media/rId39.jpg)
-
 
 Mynd 1.24 Þessi eftirmynd af frumgerð kílógrammsins eins og það var áður
 skilgreint er geymd hjá National Institute of Standards and Technology
@@ -213,9 +209,7 @@ langar brúnir. Skammstöfunin **cc** fyrir rúmsentimetra (e. **c**ubic
 **c**entimeter) er oft notuð af heilbrigðisstarfsfólki. Einn
 rúmsentimetri jafngildir einum millilítra (mL) og er 1/1000 úr lítra.
 
-
 ![Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.](./images/media/rId59.jpg)
-
 
 Mynd 1.25 (a) Hlutfallslegt rúmmál er sýnt fyrir teninga sem eru 1 m^3^,
 1 dm^3^ (1 L) og 1 cm^3^ (1 mL) (ekki í réttum hlutföllum). (b) Þvermál
@@ -239,28 +233,15 @@ eðlismassa nokkurra algengra efna.
 
 Eðlismassi algengra efna
 
-  -----------------------------------------------------------------------
-  Föst efni               Vökvi                   Lofttegundir (við 25 °C
-                                                  og 1 atm)
-  ----------------------- ----------------------- -----------------------
-  ís (við 0 °C) 0,92      vatn 1,0 g/cm^3^        þurrt loft 1,20 g/L
-  g/cm^3^                                         
-
-  eik (viður) 0,60-0,90   etanól 0,79 g/cm^3^     súrefni 1,31 g/L
-  g/cm^3^                                         
-
-  járn 7,9 g/cm^3^        aseton 0,79 g/cm^3^     nitur 1,14 g/L
-
-  kopar 9,0 g/cm^3^       glýserín 1,26 g/cm^3^   koldíoxíð 1,80 g/L
-
-  blý 11,3 g/cm^3^        ólífuolía 0,92 g/cm^3^  helíum 0,16 g/L
-
-  silfur 10,5 g/cm^3^     bensín 0,70-0,77        neon 0,83 g/L
-                          g/cm^3^                 
-
-  gull 19,3 g/cm^3^       kvikasilfur 13,6        radon 9,1 g/L
-                          g/cm^3^                 
-  -----------------------------------------------------------------------
+| Föst efni | Vökvi | Lofttegundir (við 25 °C og 1 atm) |
+|---|---|---|
+| ís (við 0 °C) 0,92 g/cm^3^ | vatn 1,0 g/cm^3^ | þurrt loft 1,20 g/L |
+| eik (viður) 0,60-0,90 g/cm^3^ | etanól 0,79 g/cm^3^ | súrefni 1,31 g/L |
+| járn 7,9 g/cm^3^ | aseton 0,79 g/cm^3^ | nitur 1,14 g/L |
+| kopar 9,0 g/cm^3^ | glýserín 1,26 g/cm^3^ | koldíoxíð 1,80 g/L |
+| blý 11,3 g/cm^3^ | ólífuolía 0,92 g/cm^3^ | helíum 0,16 g/L |
+| silfur 10,5 g/cm^3^ | bensín 0,70-0,77 g/cm^3^ | neon 0,83 g/L |
+| gull 19,3 g/cm^3^ | kvikasilfur 13,6 g/cm^3^ | radon 9,1 g/L |
 
 Tafla 1.4
 
@@ -314,8 +295,6 @@ hver er eðlismassi kopars með tveimur aukastöfum?
 :::
 :::
 
- 
-
 :::note
 ### Tengill á námsefni
 
@@ -323,8 +302,6 @@ Til að læra meira um sambandið milli massa, rúmmáls og eðlismassa skaltu
 nota þennan [gagnvirka hermi](http://openstax.org/l/16phetmasvolden) til
 að kanna eðlismassa mismunandi efna.
 :::
-
- 
 
 :::example
 ### Dæmi 1.2
