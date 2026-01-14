@@ -18,10 +18,9 @@ chapter: 2
 
 Þróun nútíma atómkenningar leiddi margt í ljós um innri byggingu atóma. Í ljós kom að atóm inniheldur mjög lítinn kjarna sem samanstendur af jákvætt hlöðnum róteindum og óhlöðnum nifteindum, umkringdan mun stærra rúmmáli sem inniheldur neikvætt hlaðnar rafeindir. Kjarninn inniheldur meirihluta massa atómsins vegna þess að róteindir og nifteindir eru mun þyngri en rafeindir, en rafeindir taka nánast allt rúmmál atómsins. Þvermál atóms er í stærðargráðunni 10^−10^ m, en þvermál kjarnans er um það bil 10^−15^ m --- um 100.000 sinnum minna. Til að fá hugmynd um hlutfallslega stærð þeirra má íhuga þetta: Ef kjarninn væri á stærð við bláber, væri atómið á stærð við fótboltaleikvang ([mynd 2.11](#CNX_Chem_02_03_AtomSize)).
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![The diagram on the left shows a picture of an atom that is 10 to the negative tenth power meters in diameter. The nucleus is labeled at the center of the atom and is 10 to the negative fifteenth power meters. The central figure shows a photograph of an American football stadium. The figure on the right shows a photograph of a person with a handful of blueberries.](./images/media/rId21.jpg){width="6.5in" height="2.0in"}
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![The diagram on the left shows a picture of an atom that is 10 to the negative tenth power meters in diameter. The nucleus is labeled at the center of the atom and is 10 to the negative fifteenth power meters. The central figure shows a photograph of an American football stadium. The figure on the right shows a photograph of a person with a handful of blueberries.](./images/media/rId21.jpg)
+
 
 Mynd 2.11 Ef hægt væri að stækka atóm upp í stærð fótboltaleikvangs væri kjarninn á stærð við eitt bláber. (heimild miðja: breyting á verki eftir „babyknight"/Wikimedia Commons; heimild hægri: breyting á verki eftir Paxson Woelber)
 
@@ -41,7 +40,7 @@ Tafla 2.2
 
 Fjöldi róteinda í kjarna atóms er sætistala þess (Z). Þessi eiginleiki skilgreinir frumefnið: Gildi þess segir okkur hvaða frumefni þetta er. Til dæmis er hvert atóm sem inniheldur sex róteindir frumefnið kolefni og hefur sætistöluna 6, óháð því hversu margar nifteindir eða rafeindir það kann að hafa. Óhlaðið atóm verður að innihalda jafnmargar jákvæðar og neikvæðar hleðslur, þannig að fjöldi róteinda jafngildir fjölda rafeinda. Þess vegna gefur sætistalan einnig til kynna fjölda rafeinda í atómi. Heildarfjöldi róteinda og nifteinda í atómi er kallaður massatala þess (A). Fjöldi nifteinda er því mismunurinn á massatölu og sætistölu: A -- Z = fjöldi nifteinda.
 
-![None](./images/media/rId31.jpg){width="4.510416666666667in" height="0.6145833333333334in"}
+![None](./images/media/rId31.jpg)
 
 Atóm eru rafhlutlaus (óhlaðin) ef þau innihalda jafnmargar jákvætt hlaðnar róteindir og neikvætt hlaðnar rafeindir. Þegar fjöldi þessara öreinda er *ekki* jafn hefur atómið rafhleðslu (er hlaðið) og kallast jón. Hleðsla atóms er skilgreind sem hér segir:
 
@@ -54,7 +53,7 @@ Eins og fjallað verður nánar um síðar í þessum kafla fá atóm (og samein
 
 Joð er nauðsynlegt snefilefni í fæðunni okkar; það er nauðsynlegt til að framleiða skjaldkirtilshormón. Of lítið joð í fæðunni getur leitt til skjaldkirtilsauka, þ.e. skjaldkirtillinn stækkar ([mynd 2.12](#CNX_Chem_02_03_Iodine)).
 
-![Figure A shows a photo of a person who has a very swollen thyroid in his or her neck. Figure B shows a photo of a canister of iodized salt.](./images/media/rId38.jpg){width="4.875in" height="2.16in"}
+![Figure A shows a photo of a person who has a very swollen thyroid in his or her neck. Figure B shows a photo of a canister of iodized salt.](./images/media/rId38.jpg)
 
 Mynd 2.12 (a) Of lítið joð í fæðunni getur valdið stækkun skjaldkirtilsins sem kallast skjaldkirtilsauki. (b) Örlítil viðbót af joði í salt, sem kemur í veg fyrir myndun skjaldkirtilsauka, hefur hjálpað til við að útrýma þessu vandamáli í Bandaríkjunum þar sem saltneysla er mikil. (heimild a: breyting á verki eftir „Almazi"/Wikimedia Commons; heimild b: breyting á verki eftir Mike Mozart)
 
@@ -79,10 +78,9 @@ Jón platínu hefur massatöluna 195 og inniheldur 74 rafeindir. Hversu margar r
 
 Efnatákn er skammstöfun sem við notum til að tákna frumefni eða atóm frumefnis. Til dæmis er táknið fyrir kvikasilfur Hg ([mynd 2.13](#CNX_Chem_02_03_SiSymbol)). Við notum sama tákn til að tákna eitt kvikasilfursatóm (smásætt svið) eða til að merkja ílát með mörgum atómum frumefnisins kvikasilfurs (stórsætt svið).
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![A jar labeled "H g" is shown with a small amount of liquid mercury in it.](./images/media/rId45.jpg){width="3.25in" height="2.6in"}
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![A jar labeled "H g" is shown with a small amount of liquid mercury in it.](./images/media/rId45.jpg)
+
 
 Mynd 2.13 Táknið Hg táknar frumefnið kvikasilfur óháð magni; það gæti táknað eitt kvikasilfursatóm eða mikið magn af kvikasilfri.
 
@@ -120,10 +118,9 @@ Farðu á þessa [síðu](http://openstax.org/l/16IUPAC) til að læra meira um 
 
 Táknið fyrir tiltekna samsætu hvers frumefnis er skrifað með því að setja massatöluna sem háskrift vinstra megin við frumefnistáknið ([mynd 2.14](#CNX_Chem_02_03_AtomSym)). Sætistalan er stundum skrifuð sem lágskrift á undan tákninu, en þar sem þessi tala skilgreinir auðkenni frumefnisins, eins og tákn þess gerir, er henni oft sleppt. Til dæmis er magnesíum til sem efnablanda þriggja samsæta, hver með sætistöluna 12 og með massatölurnar 24, 25 og 26, í sömu röð. Þessar samsætur má auðkenna sem ^24^Mg, ^25^Mg og ^26^Mg. Þessi samsætutákn eru lesin sem „frumefni, massatala" og hægt er að tákna þau í samræmi við þennan lestur. Til dæmis er ^24^Mg lesið sem „magnesíum 24" og hægt er að skrifa það sem „magnesíum-24" eða „Mg-24". ^25^Mg er lesið sem „magnesíum 25" og hægt er að skrifa það sem „magnesíum-25" eða „Mg-25". Öll magnesíum atóm hafa 12 róteindir í kjarna sínum. Eini munurinn á þeim er að ^24^Mg atóm hefur 12 nifteindir í kjarna sínum, ^25^Mg atóm hefur 13 nifteindir og ^26^Mg hefur 14 nifteindir.
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![This diagram shows the symbol for helium, "H e." The number to the upper left of the symbol is the mass number, which is 4. The number to the upper right of the symbol is the charge which is positive 2. The number to the lower left of the symbol is the atomic number, which is 2. This number is often omitted. Also shown is "M g" which stands for magnesium It has a mass number of 24, a charge of positive 2, and an atomic number of 12.](./images/media/rId56.jpg){width="3.25in" height="0.72in"}
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![This diagram shows the symbol for helium, "H e." The number to the upper left of the symbol is the mass number, which is 4. The number to the upper right of the symbol is the charge which is positive 2. The number to the lower left of the symbol is the atomic number, which is 2. This number is often omitted. Also shown is "M g" which stands for magnesium It has a mass number of 24, a charge of positive 2, and an atomic number of 12.](./images/media/rId56.jpg)
+
 
 Mynd 2.14 Táknið fyrir atóm gefur til kynna frumefnið með venjulegu tveggja stafa tákni þess, massatöluna sem vinstri háskrift, sætistöluna sem vinstri lágskrift (stundum sleppt) og hleðsluna sem hægri háskrift.
 
@@ -174,7 +171,7 @@ $\text{average mass} = \sum_{i}^{}\left( \text{fractional abundance}\  \times \ 
 
 Til dæmis er frumefnið bór samsett úr tveimur samsætum: Um 19,9% allra bóratóma eru ^10^B með massann 10,0129 amu og hin 80,1% eru ^11^B með massann 11,0093 amu. Meðalatómmassi bórs er reiknaður út sem:
 
-![None](./images/media/rId67.jpg){width="4.947916666666667in" height="0.6145833333333334in"}
+![None](./images/media/rId67.jpg)
 
 Það er mikilvægt að skilja að ekkert eitt bóratóm vegur nákvæmlega 10,8 amu; 10,8 amu er meðalmassi allra bóratóma og einstök bóratóm vega annaðhvort um það bil 10 amu eða 11 amu.
 
@@ -185,7 +182,7 @@ Loftsteinn sem fannst í miðri Indiana inniheldur snefil af eðalgasinu neon se
 
 **Lausn**
 
-![None](./images/media/rId71.jpg){width="6.5in" height="0.6145833333333334in"}
+![None](./images/media/rId71.jpg)
 
 Meðalmassi neonatóms í sólvindinum er 20,15 amu. (Meðalmassi neonatóms á jörðu niðri er 20.1796 amu. Þessi niðurstaða sýnir að við gætum fundið smávægilegan mun á náttúrulegri gnægð samsæta, allt eftir uppruna þeirra.)
 :::
@@ -219,7 +216,7 @@ Ef við látum *x* tákna hlutann sem er ^35^Cl, þá er hlutinn sem er ^37^Cl t
 
 Ef við setjum þetta inn í jöfnuna fyrir meðalmassa fáum við:
 
-![None](./images/media/rId78.jpg){width="4.65625in" height="0.8854166666666666in"}
+![None](./images/media/rId78.jpg)
 
 Lausnin gefur: *x* = 0,7576, sem þýðir að 1,00 − 0,7576 = 0,2424. Klór samanstendur því af 75,76% ^35^Cl og 24,24% ^37^Cl.
 
@@ -247,10 +244,9 @@ Eins og þú munt læra eru samsætur mikilvægar í náttúrunni og sérstakleg
 
 Hægt er að ákvarða tilvist og náttúrulega gnægð samsæta með tilraunum með því að nota tæki sem kallast massagreinir. Massagreining (MS) er mikið notuð í efnafræði, réttarvísindum, læknisfræði, umhverfisvísindum og mörgum öðrum sviðum til að greina og hjálpa til við að bera kennsl á efnin í sýni. Í dæmigerðum massagreini ([mynd 2.15](#CNX_Chem_02_03_MassSpec)) er sýnið látið gufa upp og verða fyrir háorku rafeindageisla sem veldur því að atóm (eða sameindir) sýnisins verða rafhlaðin, venjulega með því að missa eina eða fleiri rafeindir. Þessar katjónir fara síðan í gegnum (breytilegt) raf- eða segulsvið sem beygir braut hverrar katjónar að því marki sem er háð bæði massa hennar og hleðslu (svipað og braut stórrar stálkúlu sem veltur framhjá segli beygist í minna mæli en braut lítillar stálkúlu). Jónirnar eru greindar og gert er línurit yfir hlutfallslegan fjölda jóna sem myndast á móti massa-hleðsluhlutfalli þeirra (*massaróf*). Hæð hvers lóðrétts þáttar eða topps í massarófi er í réttu hlutfalli við brot katjóna með tilgreint massa-hleðsluhlutfall. Frá fyrstu notkun þess við þróun nútíma atómkenningar hefur massagreining þróast í að verða öflugt tæki til efnagreiningar í fjölmörgum notkunartilvikum.
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![The left diagram shows how a mass spectrometer works, which is primarily a large tube that bends downward at its midpoint. The sample enters on the left side of the tube. A heater heats the sample, causing it to vaporize. The sample is also hit with a beam of electrons as it is being vaporized. Charged particles from the sample, called ions, are then accelerated and pass between two magnets. The magnetic field deflects the lightest ions most. The deflection of the ions is measured by a detector located on the right side of the tube. The graph to the right of the spectrometer shows a mass spectrum of zirconium. The relative abundance, as a percentage from 0 to 100, is graphed on the y axis, and the mass to charge ratio is graphed on the x axis. The sample contains five different isomers of zirconium. Z R 90, which has a mass to charge ratio of 90, is the most abundant isotope at about 51 percent relative abundance. Z R 91 has a mass to charge ratio of 91 and a relative abundance of about 11 percent. Z R 92 has a mass to charge ratio of 92 and a relative abundance of about 18 percent. Z R 94 has a mass to charge ratio of 94 and a relative abundance of about 18 percent. Z R 96, which has a mass to charge ratio of 96, is the least abundant zirconium isotope with a relative abundance of about 2 percent.](./images/media/rId86.jpg){width="6.5in" height="3.03in"}
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![The left diagram shows how a mass spectrometer works, which is primarily a large tube that bends downward at its midpoint. The sample enters on the left side of the tube. A heater heats the sample, causing it to vaporize. The sample is also hit with a beam of electrons as it is being vaporized. Charged particles from the sample, called ions, are then accelerated and pass between two magnets. The magnetic field deflects the lightest ions most. The deflection of the ions is measured by a detector located on the right side of the tube. The graph to the right of the spectrometer shows a mass spectrum of zirconium. The relative abundance, as a percentage from 0 to 100, is graphed on the y axis, and the mass to charge ratio is graphed on the x axis. The sample contains five different isomers of zirconium. Z R 90, which has a mass to charge ratio of 90, is the most abundant isotope at about 51 percent relative abundance. Z R 91 has a mass to charge ratio of 91 and a relative abundance of about 11 percent. Z R 92 has a mass to charge ratio of 92 and a relative abundance of about 18 percent. Z R 94 has a mass to charge ratio of 94 and a relative abundance of about 18 percent. Z R 96, which has a mass to charge ratio of 96, is the least abundant zirconium isotope with a relative abundance of about 2 percent.](./images/media/rId86.jpg)
+
 
 Mynd 2.15 Greining á sirkoni í massagreini býr til massaróf með toppum sem sýna mismunandi samsætur Zr.
 

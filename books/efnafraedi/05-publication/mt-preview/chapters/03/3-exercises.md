@@ -52,19 +52,19 @@ e\) C~12~H~22~O~11~ (súkrósi, reyrsykur)
 
 \(a\)
 
-![A structure is shown. A C atom is bonded to two C l atoms and forms a double bond with one O atom.](./images/media/rId29.jpg){width="1.625in" height="0.625in"}
+![A structure is shown. A C atom is bonded to two C l atoms and forms a double bond with one O atom.](./images/media/rId29.jpg)
 
 \(b\)
 
-![A structure is shown. Two C atoms form a triple bond with each other. Each C atom also forms a single bond with on H atom.](./images/media/rId33.jpg){width="1.625in" height="0.155in"}
+![A structure is shown. Two C atoms form a triple bond with each other. Each C atom also forms a single bond with on H atom.](./images/media/rId33.jpg)
 
 \(c\)
 
-![A structure is shown. Two C atoms form double bonds with each other. Each C atom also forms a single bond with an H atom and a B r atom.](./images/media/rId37.jpg){width="1.625in" height="0.585in"}
+![A structure is shown. Two C atoms form double bonds with each other. Each C atom also forms a single bond with an H atom and a B r atom.](./images/media/rId37.jpg)
 
 \(d\)
 
-![A structure is shown. An S atom forms double bonds with two O atoms. The S atom also forms a single bond with an O atom which forms a single bond with an H atom. The S atom also forms a single bond with another O atom which forms a single bond with another H atom.](./images/media/rId41.jpg){width="1.625in" height="0.68in"}
+![A structure is shown. An S atom forms double bonds with two O atoms. The S atom also forms a single bond with an O atom which forms a single bond with an H atom. The S atom also forms a single bond with another O atom which forms a single bond with another H atom.](./images/media/rId41.jpg)
 
 [5](http://openstax.org/books/chemistry-2e/pages/chapter-3#fs-idp20009152-solution).
 
@@ -72,19 +72,19 @@ e\) C~12~H~22~O~11~ (súkrósi, reyrsykur)
 
 \(a\)
 
-![A structure is shown. Two C atoms form double bonds with each other. The C atom on the left forms a single bond with two H atoms each. The C atom on the right forms a single bond with an H atom and with a C H subscript 2 C H subscript 3 group.](./images/media/rId48.jpg){width="1.625in" height="0.61in"}
+![A structure is shown. Two C atoms form double bonds with each other. The C atom on the left forms a single bond with two H atoms each. The C atom on the right forms a single bond with an H atom and with a C H subscript 2 C H subscript 3 group.](./images/media/rId48.jpg)
 
 \(b\)
 
-![A structure is shown. There is a C atom which forms single bonds with three H atoms each. This C atom is bonded to another C atom. This second C atom forms a triple bond with another C atom which forms a single bond with a fourth C atom. The fourth C atom forms single bonds with three H atoms each.](./images/media/rId52.jpg){width="1.625in" height="0.67in"}
+![A structure is shown. There is a C atom which forms single bonds with three H atoms each. This C atom is bonded to another C atom. This second C atom forms a triple bond with another C atom which forms a single bond with a fourth C atom. The fourth C atom forms single bonds with three H atoms each.](./images/media/rId52.jpg)
 
 \(c\)
 
-![A structure is shown. An S i atom forms a single bond with a C l atom, a single bond with a C l atom, a single bond with an H atom, and a single bond with another S i atom. The second S i atom froms a single bond with a C l atom, a single bond with a C l atom, and a single bond with an H atom.](./images/media/rId56.jpg){width="1.625in" height="0.67in"}
+![A structure is shown. An S i atom forms a single bond with a C l atom, a single bond with a C l atom, a single bond with an H atom, and a single bond with another S i atom. The second S i atom froms a single bond with a C l atom, a single bond with a C l atom, and a single bond with an H atom.](./images/media/rId56.jpg)
 
 \(d\)
 
-![A structure is shown. A P atom forms a double bond with an O atom. It also forms a single bond with an O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom.](./images/media/rId60.jpg){width="1.625in" height="0.675in"}
+![A structure is shown. A P atom forms a double bond with an O atom. It also forms a single bond with an O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom.](./images/media/rId60.jpg)
 
 6\.
 
@@ -92,15 +92,15 @@ Hvaða sameind hefur sameindamassa upp á 28,05 amu?
 
 \(a\)
 
-![A structure is shown. A C atom forms a triple bond with another C atom. Each C atom also forms a single bond with an H atom.](./images/media/rId66.jpg){width="1.625in" height="0.18in"}
+![A structure is shown. A C atom forms a triple bond with another C atom. Each C atom also forms a single bond with an H atom.](./images/media/rId66.jpg)
 
 \(b\)
 
-![A structure is shown. Two C atoms form a double bond with each other. Each C atom also forms a single bond with two H atoms.](./images/media/rId70.jpg){width="1.625in" height="0.59in"}
+![A structure is shown. Two C atoms form a double bond with each other. Each C atom also forms a single bond with two H atoms.](./images/media/rId70.jpg)
 
 \(c\)
 
-![A structure is shown. A C atom forms a single bond with three H atoms each and with another C atom. The second C atom also forms a single bond with three H atoms each.](./images/media/rId74.jpg){width="1.625in" height="0.665in"}
+![A structure is shown. A C atom forms a single bond with three H atoms each and with another C atom. The second C atom also forms a single bond with three H atoms each.](./images/media/rId74.jpg)
 
 [7](http://openstax.org/books/chemistry-2e/pages/chapter-3#fs-idp17737968-solution).
 

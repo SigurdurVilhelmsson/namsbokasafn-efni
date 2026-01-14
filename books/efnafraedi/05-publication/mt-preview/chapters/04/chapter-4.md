@@ -28,7 +28,7 @@ Jafna er stillt þegar sami fjöldi hvers frumefnis er sýndur beggja vegna við
 
 [11](http://openstax.org/books/chemistry-2e/pages/4-exercises#fs-idp41635696).
 
-![None](./images/media/rId31.jpg){width="6.5in" height="0.4351454505686789in"}
+![None](./images/media/rId31.jpg)
 
 [13](http://openstax.org/books/chemistry-2e/pages/4-exercises#fs-idp89395536).
 

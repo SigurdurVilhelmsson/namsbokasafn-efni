@@ -4,10 +4,9 @@ section: "4.0"
 chapter: 4
 ---
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![An image is shown of a rocket that appears to have just passed through a layer of clouds as it travels skyward. A bright white light is seen in the upper right corner of the image. To the lower left appears the layer of clouds and the bottom of the rocket with fire projecting from the fuel cones at its base.](./images/media/rId20.jpg){width="6.5in" height="3.21in"}
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![An image is shown of a rocket that appears to have just passed through a layer of clouds as it travels skyward. A bright white light is seen in the upper right corner of the image. To the lower left appears the layer of clouds and the bottom of the rocket with fire projecting from the fuel cones at its base.](./images/media/rId20.jpg)
+
 
 Mynd 4.1 Mörg nútíma eldflaugaeldsneyti eru efnablöndur í föstu formi sem eru samsettar úr nákvæmlega mældu magni efna og kveikt er í þeim til að koma af stað efnahvarfi sem myndar þrýstikraft. (heimild: breytt útgáfa af verki NASA)
 

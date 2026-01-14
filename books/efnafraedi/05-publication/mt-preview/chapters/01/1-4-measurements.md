@@ -130,10 +130,9 @@ stikur. Lengri vegalengdir eru oft gefnar upp í kílómetrum (1 km = 1000
 m = 10^3^ m), en styttri vegalengdir má gefa upp í sentimetrum (1 cm =
 0,01 m = 10^−2^ m) eða millimetrum (1 mm = 0,001 m = 10^−3^ m).
 
-  -----------------------------------------------------------------------
-   ![One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.](./images/media/rId31.jpg){width="6.5in" height="3.195in"}
 
-  -----------------------------------------------------------------------
+![One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.](./images/media/rId31.jpg)
+
 
 Mynd 1.23 Hlutfallslegar lengdir 1 m, 1 stiku, 1 cm og 1 tommu eru
 sýndar (ekki í raunstærð), ásamt samanburði á 2,54 cm og 1 tommu, og 1 m
@@ -157,11 +156,9 @@ kílógrammsins (10^−3^ kg).
 Nánari upplýsingar má finna á
 https://www.nist.gov/pml/weights-and-measures/si-units-mass
 
-  -----------------------------------------------------------------------
-   ![The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.](./images/media/rId39.jpg){width="6.5in"
-                              height="9.2in"}
 
-  -----------------------------------------------------------------------
+![The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.](./images/media/rId39.jpg)
+
 
 Mynd 1.24 Þessi eftirmynd af frumgerð kílógrammsins eins og það var áður
 skilgreint er geymd hjá National Institute of Standards and Technology
@@ -216,10 +213,9 @@ langar brúnir. Skammstöfunin **cc** fyrir rúmsentimetra (e. **c**ubic
 **c**entimeter) er oft notuð af heilbrigðisstarfsfólki. Einn
 rúmsentimetri jafngildir einum millilítra (mL) og er 1/1000 úr lítra.
 
-  -----------------------------------------------------------------------
-    ![Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.](./images/media/rId59.jpg){width="6.0in" height="3.375in"}
 
-  -----------------------------------------------------------------------
+![Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.](./images/media/rId59.jpg)
+
 
 Mynd 1.25 (a) Hlutfallslegt rúmmál er sýnt fyrir teninga sem eru 1 m^3^,
 1 dm^3^ (1 L) og 1 cm^3^ (1 mL) (ekki í réttum hlutföllum). (b) Þvermál

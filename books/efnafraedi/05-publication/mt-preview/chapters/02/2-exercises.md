@@ -12,7 +12,7 @@ chapter: 2
 
 Á eftirfarandi teikningu tákna grænu kúlurnar atóm ákveðins frumefnis. Fjólubláu kúlurnar tákna atóm af öðru frumefni. Ef kúlur af mismunandi frumefnum snertast eru þær hluti af einni einingu efnasambands. Efnahvarfið sem sýnt er með þessum kúlum gæti brotið í bága við eina af hugmyndum atómkenningar Daltons. Hverja?
 
-![This equation contains the starting materials of a single, green sphere plus two smaller, purple spheres bonded together. When the starting materials are added together the products of the change are one purple sphere bonded with one green sphere plus one purple sphere bonded with one green sphere.](./images/media/rId22.jpg){width="3.25in" height="0.54in"}
+![This equation contains the starting materials of a single, green sphere plus two smaller, purple spheres bonded together. When the starting materials are added together the products of the change are one purple sphere bonded with one green sphere plus one purple sphere bonded with one green sphere.](./images/media/rId22.jpg)
 
 2\.
 
@@ -235,19 +235,19 @@ Skrifaðu sameindaformúlur og reynsluformúlur eftirfarandi efnasambanda:
 
 \(a\)
 
-![Figure A shows a carbon atom that forms two, separate double bonds with two oxygen atoms.](./images/media/rId109.jpg){width="1.625in" height="0.12in"}
+![Figure A shows a carbon atom that forms two, separate double bonds with two oxygen atoms.](./images/media/rId109.jpg)
 
 \(b\)
 
-![Figure B shows a hydrogen atom which forms a single bond with a carbon atom. The carbon atom forms a triple bond with another carbon atom. The second carbon atom forms a single bond with a hydrogen atom.](./images/media/rId113.jpg){width="1.625in" height="0.155in"}
+![Figure B shows a hydrogen atom which forms a single bond with a carbon atom. The carbon atom forms a triple bond with another carbon atom. The second carbon atom forms a single bond with a hydrogen atom.](./images/media/rId113.jpg)
 
 \(c\)
 
-![Figure C shows a carbon atom forming a double bond with another carbon atom. Each carbon atom forms a single bond with two hydrogen atoms.](./images/media/rId117.jpg){width="1.625in" height="0.615in"}
+![Figure C shows a carbon atom forming a double bond with another carbon atom. Each carbon atom forms a single bond with two hydrogen atoms.](./images/media/rId117.jpg)
 
 \(d\)
 
-![Figure D shows a sulfur atom forming single bonds with four oxygen atoms. Two of the oxygen atoms form a single bond with a hydrogen atom.](./images/media/rId121.jpg){width="1.625in" height="0.715in"}
+![Figure D shows a sulfur atom forming single bonds with four oxygen atoms. Two of the oxygen atoms form a single bond with a hydrogen atom.](./images/media/rId121.jpg)
 
 30\.
 
@@ -255,19 +255,19 @@ Skrifaðu sameindaformúlur og reynsluformúlur eftirfarandi efnasambanda:
 
 \(a\)
 
-![Figure A shows a structural diagram of four carbon atoms bonded together into a chain. The two carbon atoms on the left form a double bond with each other. All of the remaining carbon atoms form single bonds with each other. The leftmost carbon also forms single bonds with two hydrogen. The second carbon in the chain forms a single bond with a hydrogen atom. The third carbon in the chain forms a single bond with two hydrogen atoms each. The rightmost carbon forms a single bond with three hydrogen atoms each.](./images/media/rId127.jpg){width="1.625in" height="0.71in"}
+![Figure A shows a structural diagram of four carbon atoms bonded together into a chain. The two carbon atoms on the left form a double bond with each other. All of the remaining carbon atoms form single bonds with each other. The leftmost carbon also forms single bonds with two hydrogen. The second carbon in the chain forms a single bond with a hydrogen atom. The third carbon in the chain forms a single bond with two hydrogen atoms each. The rightmost carbon forms a single bond with three hydrogen atoms each.](./images/media/rId127.jpg)
 
 \(b\)
 
-![Figure B shows a structural diagram of a molecule that has a chain of four carbon atoms. The leftmost carbon atom forms a single bond with three hydrogen atoms each and single bond with the second carbon atom. The second carbon atom forms a triple bond with the third carbon atom. The third carbon atom forms a single bond to the fourth carbon atom. The fourth carbon atom forms a single bond to three hydrogen atoms each.](./images/media/rId131.jpg){width="1.625in" height="0.71in"}
+![Figure B shows a structural diagram of a molecule that has a chain of four carbon atoms. The leftmost carbon atom forms a single bond with three hydrogen atoms each and single bond with the second carbon atom. The second carbon atom forms a triple bond with the third carbon atom. The third carbon atom forms a single bond to the fourth carbon atom. The fourth carbon atom forms a single bond to three hydrogen atoms each.](./images/media/rId131.jpg)
 
 \(c\)
 
-![Figure C shows a structural diagram of two silicon atoms are bonded together with a single bond. Each of the silicon atoms form single bonds to two chlorine atoms each and one hydrogen atom.](./images/media/rId135.jpg){width="1.625in" height="0.71in"}
+![Figure C shows a structural diagram of two silicon atoms are bonded together with a single bond. Each of the silicon atoms form single bonds to two chlorine atoms each and one hydrogen atom.](./images/media/rId135.jpg)
 
 \(d\)
 
-![Figure D shows a structural diagram of a phosphorus atom that forms a single bond to four oxygen atoms each. Three of the oxygen atoms each have a single bond to a hydrogen atom.](./images/media/rId139.jpg){width="1.625in" height="0.71in"}
+![Figure D shows a structural diagram of a phosphorus atom that forms a single bond to four oxygen atoms each. Three of the oxygen atoms each have a single bond to a hydrogen atom.](./images/media/rId139.jpg)
 
 [31](http://openstax.org/books/chemistry-2e/pages/chapter-2#fs-idm64843712-solution).
 
@@ -303,11 +303,11 @@ Skrifaðu reynsluformúlur eftirfarandi efnasambanda:
 
 \(a\)
 
-![Figure A shows a structural diagram of two carbon atoms that form a single bond with each other. The left carbon atom forms single bonds with hydrogen atoms each. The right carbon forms a double bond to an oxygen atom. The right carbon also forms a single bonded to another oxygen atom. This oxygen atom also forms a single bond to a hydrogen atom.](./images/media/rId151.jpg){width="1.625in" height="0.7in"}
+![Figure A shows a structural diagram of two carbon atoms that form a single bond with each other. The left carbon atom forms single bonds with hydrogen atoms each. The right carbon forms a double bond to an oxygen atom. The right carbon also forms a single bonded to another oxygen atom. This oxygen atom also forms a single bond to a hydrogen atom.](./images/media/rId151.jpg)
 
 \(b\)
 
-![Figure B shows a structural diagram containing a leftmost carbon that forms single bonds to three hydrogen atoms each. This leftmost carbon also forms a single bond to a second carbon atom. The second carbon atom forms a double bond with an oxygen atom. The second carbon also forms a single bond to a second oxygen atom. This oxygen atom forms a single bond to a third carbon atom. This third carbon atom forms single bonds with two hydrogen atoms each as well as a single bond with another carbon atom. The rightmost carbon atom forms a single bond with three hydrogen atoms each.](./images/media/rId155.jpg){width="3.25in" height="0.7in"}
+![Figure B shows a structural diagram containing a leftmost carbon that forms single bonds to three hydrogen atoms each. This leftmost carbon also forms a single bond to a second carbon atom. The second carbon atom forms a double bond with an oxygen atom. The second carbon also forms a single bond to a second oxygen atom. This oxygen atom forms a single bond to a third carbon atom. This third carbon atom forms single bonds with two hydrogen atoms each as well as a single bond with another carbon atom. The rightmost carbon atom forms a single bond with three hydrogen atoms each.](./images/media/rId155.jpg)
 
 34\.
 

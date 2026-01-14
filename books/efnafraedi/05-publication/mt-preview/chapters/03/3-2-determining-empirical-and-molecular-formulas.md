@@ -41,7 +41,7 @@ Greining á 12,04 g sýni af efnasambandi í vökvaformi sem samanstendur af kol
 
 Til að reikna út massaprósentu skal deila massa hvers frumefnis, sem fenginn er með tilraunum, með heildarmassa efnasambandsins og breyta síðan í prósentutölu:
 
-![None](./images/media/rId26.jpg){width="2.7604166666666665in" height="1.0729166666666667in"}
+![None](./images/media/rId26.jpg)
 
 Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 15,4% H og 23,7% N miðað við massa.
 :::
@@ -60,7 +60,7 @@ Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 1
 
 Massaprósenta er einnig gagnleg til að meta hlutfallslegt magn tiltekins frumefnis í mismunandi efnasamböndum með þekktum formúlum. Sem dæmi má nefna algengan áburð sem inniheldur köfnunarefni, ammóníak (NH~3~), ammóníumnítrat (NH~4~NO~3~) og þvagefni (CH~4~N~2~O). Frumefnið köfnunarefni er virka innihaldsefnið í landbúnaði, þannig að massaprósenta köfnunarefnis í efnasambandinu er hagnýtt og efnahagslegt atriði fyrir neytendur sem velja á milli þessara áburðartegunda. Fyrir slík not er auðvelt að leiða massaprósentu efnasambands út frá formúlumassa þess og atómmössum frumefnanna sem það er samsett úr. Ein sameind af NH~3~ inniheldur eitt N-atóm sem vegur 14,01 amu og þrjú H-atóm sem vega samtals (3 $\times$ 1,008 amu) = 3,024 amu. Formúlumassi ammóníaks er því (14,01 amu + 3,024 amu) = 17,03 amu og massaprósenta þess er:
 
-![None](./images/media/rId32.jpg){width="2.6979166666666665in" height="0.7291666666666666in"}
+![None](./images/media/rId32.jpg)
 
 Sömu aðferð má beita þegar litið er á par af sameindum, tylft sameinda eða mól af sameindum o.s.frv. Síðastnefnda magnið er hentugast og myndi einfaldlega fela í sér notkun mólmassa í stað atóm- og formúlumassa, eins og sýnt er í [dæmi 3.10](#fs-idm162294688). Svo lengi sem sameinda- eða reynsluformúla viðkomandi efnasambands er þekkt er hægt að leiða massaprósentuna út frá atóm- eða mólmössum frumefna efnasambandsins.
 
@@ -73,11 +73,11 @@ Aspirín er efnasamband með sameindaformúluna C~9~H~8~O~4~. Hver er massaprós
 
 Til að reikna út massaprósentuna þarf að vita massa C, H og O í þekktum massa af C~9~H~8~O~4~. Það er hentugt að miða við 1 mól af C~9~H~8~O~4~ og nota mólmassa þess (180,159 g/mól, ákvarðað út frá efnaformúlunni) til að reikna út prósentuhlutföll hvers frumefnis:
 
-![None](./images/media/rId36.jpg){width="5.375in" height="0.7083333333333334in"}
+![None](./images/media/rId36.jpg)
 
-![None](./images/media/rId40.jpg){width="5.385416666666667in" height="0.7083333333333334in"}
+![None](./images/media/rId40.jpg)
 
-![None](./images/media/rId44.jpg){width="5.395833333333333in" height="0.7083333333333334in"}
+![None](./images/media/rId44.jpg)
 
 Athugið að þegar þessar prósentur eru lagðar saman og námundaðar á viðeigandi hátt er summan 100,00%.
 :::
@@ -96,7 +96,7 @@ Hver er massaprósenta járns í efnasambandinu Fe~2~O~3~, gefin upp með þremu
 
 Eins og áður hefur komið fram er algengasta aðferðin til að ákvarða efnaformúlu efnasambands að mæla fyrst massa frumefnanna sem það er gert úr. Hins vegar er mikilvægt að hafa í huga að efnaformúlur tákna hlutfallslegan *fjölda* atóma í efninu, ekki massa þeirra. Þess vegna verður að nota allar tilraunagögn sem fela í sér massa til að finna út samsvarandi fjölda atóma í efnasambandinu. Þetta er gert með því að nota mólmassa til að breyta massa hvers frumefnis í fjölda móla. Þessi mólmagn eru notuð til að reikna út heiltöluhlutföll sem hægt er að nota til að leiða út reynsluformúlu efnisins. Ímyndum okkur sýni af efnasambandi sem inniheldur 1,71 g af C og 0,287 g af H. Samsvarandi fjöldi atóma (í mólum) er:
 
-![None](./images/media/rId54.jpg){width="2.4895833333333335in" height="0.75in"}
+![None](./images/media/rId54.jpg)
 
 Þannig má tákna þetta efnasamband með formúlunni C~0,142~H~0,284~. Samkvæmt venju innihalda formúlur heiltölulágstafi, sem hægt er að ná með því að deila hverjum lágstaf með minni lágstafnum:
 
@@ -120,10 +120,9 @@ $\text{Cl}_{0.150}\text{O}_{0.525} = \text{Cl}_{\ \frac{0.150}{0.150}\ }\ \text{
 
 [Mynd 3.11](#CNX_Chem_03_03_empform) sýnir þetta ferli á flæðiriti fyrir efni sem inniheldur frumefnin A og X.
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, "Mass of A atoms" and "Moles of A atoms" respectively, while the arrow that connects them has the phrase, "Divide by molar mass," written below it. The second two bottom boxes have the phrases, "Mass of X atoms" and "Moles of X atoms" respectively, while the arrow that connects them has the phrase, "Divide by molar mass" written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase "Divide by lowest number of moles" written below it. The last two boxes have the phrases, "A to X mole ratio" and "Empirical formula" respectively, while the arrow that connects them has the phrase, "Convert ratio to lowest whole numbers" written below it.](./images/media/rId60.jpg){width="6.5in" height="1.495in"}
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, "Mass of A atoms" and "Moles of A atoms" respectively, while the arrow that connects them has the phrase, "Divide by molar mass," written below it. The second two bottom boxes have the phrases, "Mass of X atoms" and "Moles of X atoms" respectively, while the arrow that connects them has the phrase, "Divide by molar mass" written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase "Divide by lowest number of moles" written below it. The last two boxes have the phrases, "A to X mole ratio" and "Empirical formula" respectively, while the arrow that connects them has the phrase, "Convert ratio to lowest whole numbers" written below it.](./images/media/rId60.jpg)
+
 
 Mynd 3.11 Hægt er að leiða reynsluformúlu efnasambands út frá massa allra frumefna í sýninu.
 
@@ -132,10 +131,9 @@ Mynd 3.11 Hægt er að leiða reynsluformúlu efnasambands út frá massa allra 
 
 Sýni af svarta steinefninu hematíti ([mynd 3.12](#CNX_Chem_03_03_hematite)), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97 g af járni og 15,03 g af súrefni. Hver er reynsluformúla hematíts?
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![Two rounded, smooth black stones are shown.](./images/media/rId64.jpg){width="3.25in" height="2.0in"}
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Two rounded, smooth black stones are shown.](./images/media/rId64.jpg)
+
 
 Mynd 3.12 Hematít er járnoxíð sem er notað í skartgripi. (heimild: Mauro Cateb)
 
@@ -143,11 +141,11 @@ Mynd 3.12 Hematít er járnoxíð sem er notað í skartgripi. (heimild: Mauro C
 
 Í þessu verkefni er gefinn massi hvers frumefnis í grömmum. Byrjaðu á því að finna mól hvers frumefnis:
 
-![None](./images/media/rId68.jpg){width="2.6666666666666665in" height="0.875in"}
+![None](./images/media/rId68.jpg)
 
 Næst skal leiða út mólhlutfall járns og súrefnis með því að deila með minni mólfjöldanum:
 
-![None](./images/media/rId72.jpg){width="1.5416666666666667in" height="0.6041666666666666in"}
+![None](./images/media/rId72.jpg)
 
 Hlutfallið er 1,000 mól af járni á móti 1,500 mólum af súrefni (Fe~1~O~1,5~). Að lokum skal margfalda hlutfallið með tveimur til að fá minnstu mögulegu heiltölulágstafina en halda samt réttu hlutfalli járns og súrefnis:
 
@@ -183,10 +181,9 @@ Að lokum, varðandi útreikning á reynsluformúlum, skulum við skoða tilvik 
 
 Við gerjun á korni til framleiðslu á etanóli myndast gas með prósentusamsetninguna 27,29% C og 72,71% O ([mynd 3.13](#CNX_Chem_03_03_BrewTank)). Hver er reynsluformúla þessa gass?
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.](./images/media/rId81.jpg){width="3.25in" height="3.11in"}
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.](./images/media/rId81.jpg)
+
 
 Mynd 3.13 Kolefnisoxíð er fjarlægt úr þessum gerjunartönkum í gegnum stóru koparrörin efst. (heimild: „Dual Freq"/Wikimedia Commons)
 
@@ -194,15 +191,15 @@ Mynd 3.13 Kolefnisoxíð er fjarlægt úr þessum gerjunartönkum í gegnum stó
 
 Þar sem prósentur miðast við 100 er hentugast að reikna út massa frumefna í sýni sem vegur 100 g. Útreikningurinn er „hentugastur" vegna þess að samkvæmt skilgreiningu á prósentusamsetningu er massi tiltekins frumefnis í grömmum tölulega jafngildur massaprósentu frumefnisins. Þetta tölulega jafngildi stafar af skilgreiningu á einingunni „prósenta", en nafn hennar er dregið af latneska orðasambandinu *per centum* sem þýðir „af hundraði". Með þessa skilgreiningu í huga má á þægilegri hátt setja uppgefnar massaprósentur fram sem brot:
 
-![None](./images/media/rId85.jpg){width="1.96875in" height="0.7708333333333334in"}
+![None](./images/media/rId85.jpg)
 
 Mólmagn kolefnis og súrefnis í 100 g sýni er reiknað með því að deila massa hvers frumefnis með mólmassa þess:
 
-![None](./images/media/rId89.jpg){width="2.4791666666666665in" height="0.875in"}
+![None](./images/media/rId89.jpg)
 
 Stuðlar fyrir bráðabirgðareynsluformúluna eru fengnir með því að deila hvoru mólmagni fyrir sig með því minna af þeim tveimur:
 
-![None](./images/media/rId93.jpg){width="1.0104166666666667in" height="0.6145833333333334in"}
+![None](./images/media/rId93.jpg)
 
 Þar sem hlutfallið sem fæst er eitt kolefnisatóm á móti tveimur súrefnisatómum er reynsluformúlan CO~2~.
 :::
@@ -248,7 +245,7 @@ Nikótín, alkalóíði í náttskuggaættinni sem er aðallega ábyrgur fyrir �
 
 Til að ákvarða sameindaformúluna út frá gefnum gögnum þarf að bera saman massa reynsluformúlu efnasambandsins við mólmassa þess. Í fyrsta skrefi skal nota massaprósentuna til að leiða út reynsluformúlu efnasambandsins. Ef við gerum ráð fyrir hentugu 100 g sýni af nikótíni fáum við eftirfarandi mólmagn frumefna þess:
 
-![None](./images/media/rId108.jpg){width="2.7395833333333335in" height="1.2291666666666667in"}
+![None](./images/media/rId108.jpg)
 
 Næst skaltu reikna mólhlutfall þessara frumefna miðað við það frumefni sem minnst er af, N.
 
@@ -258,7 +255,7 @@ $8.641\ \text{mol}\ H/\ 1.233\ \text{mol}\ N = 7$
 
 $1.233\ \text{mol}\ N/\ 1.233\ \text{mol}\ N = 1$
 
-![None](./images/media/rId115.jpg){width="1.53125in" height="0.7291666666666666in"}
+![None](./images/media/rId115.jpg)
 
 Mólhlutfall C á móti N og H á móti N eru nægilega nálægt heilum tölum og því er reynsluformúlan C~5~H~7~N. Massi reynsluformúlu fyrir þetta efnasamband er því 81,13 amu/formúlueiningu, eða 81,13 g/mól formúlueiningu.
 

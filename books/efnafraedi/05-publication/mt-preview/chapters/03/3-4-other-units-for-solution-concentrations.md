@@ -27,10 +27,9 @@ Massaprósenta er einnig nefnd með svipuðum heitum eins og *prósentumassi, pr
 
 Massaprósentur eru vinsælar styrkeiningar fyrir neysluvörur. Á miða á dæmigerðri klórflösku ([mynd 3.17](#CNX_Chem_03_05_bleach)) er styrkur virka efnisins, natríumhýpóklóríts (NaOCl), sagður vera 7,4%. 100,0 g sýni af klór myndi því innihalda 7,4 g af NaOCl.
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![The sides of two cylindrical containers are shown. Each container's label is partially visible. The left container's label reads "Bleach." The right label contains more information about the product including the phrase, "Contains: Sodium hypochlorite 7.4 %."](./images/media/rId23.jpg){width="4.875in" height="3.515in"}
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![The sides of two cylindrical containers are shown. Each container's label is partially visible. The left container's label reads "Bleach." The right label contains more information about the product including the phrase, "Contains: Sodium hypochlorite 7.4 %."](./images/media/rId23.jpg)
+
 
 Mynd 3.17 Fljótandi klór er vatnslausn af natríumhýpóklóríti (NaOCl). Þessi tegund hefur styrkinn 7,4% NaOCl miðað við massa.
 
@@ -69,7 +68,7 @@ Flaska af flísahreinsi inniheldur 135 g af HCl og 775 g af vatni. Hver er massa
 
 **Lausn**
 
-Styrkur HCl er nálægt 40%, þannig að 100 g skammtur af þessari lausn myndi innihalda um 40 g af HCl. Þar sem eðlismassi lausnarinnar er ekki mikið frábrugðinn eðlismassa vatns (1 g/ml) er sanngjarnt að áætla að massi HCl í 500 g (0,5 L) af lausninni sé um það bil fimm sinnum meiri en í 100 g skammti, eða 5 $\times$ 40 = 200 g. Til að leiða út massa uppleysta efnisins í lausn út frá massaprósentu hennar þarf að þekkja massa lausnarinnar. Notaðu uppgefinn eðlismassa lausnarinnar til að breyta rúmmáli lausnarinnar í massa og notaðu síðan uppgefna massaprósentu til að reikna út massa uppleysta efnisins. Þessi stærðfræðilega nálgun er útskýrð í þessu flæðiriti: ![A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, "Volume of solution ( m L )," the middle box reads, "Mass of solution ( g )," while the one on the right contains the phrase, "Mass of H C l ( g )." There is a phrase under the left arrow that says, "Multiply by density ( g / m L )" and under the right arrow it states, "Multiply by mass percent as ratio ( g H C l / g solution )."](./images/media/rId30.jpg){width="6.0in" height="0.855in"}
+Styrkur HCl er nálægt 40%, þannig að 100 g skammtur af þessari lausn myndi innihalda um 40 g af HCl. Þar sem eðlismassi lausnarinnar er ekki mikið frábrugðinn eðlismassa vatns (1 g/ml) er sanngjarnt að áætla að massi HCl í 500 g (0,5 L) af lausninni sé um það bil fimm sinnum meiri en í 100 g skammti, eða 5 $\times$ 40 = 200 g. Til að leiða út massa uppleysta efnisins í lausn út frá massaprósentu hennar þarf að þekkja massa lausnarinnar. Notaðu uppgefinn eðlismassa lausnarinnar til að breyta rúmmáli lausnarinnar í massa og notaðu síðan uppgefna massaprósentu til að reikna út massa uppleysta efnisins. Þessi stærðfræðilega nálgun er útskýrð í þessu flæðiriti: ![A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, "Volume of solution ( m L )," the middle box reads, "Mass of solution ( g )," while the one on the right contains the phrase, "Mass of H C l ( g )." There is a phrase under the left arrow that says, "Multiply by density ( g / m L )" and under the right arrow it states, "Multiply by mass percent as ratio ( g H C l / g solution )."](./images/media/rId30.jpg)
 
 Til að einingar styttist rétt út er 0,500 L rúmmálinu breytt í 500 ml og massaprósentan er gefin upp sem hlutfall, 37,2 g HCl/g lausn:
 
@@ -120,10 +119,9 @@ Vín er um það bil 12% etanól (CH~3~CH~2~OH) miðað við rúmmál. Etanól h
 
 „Blandaðar" prósentueiningar, fengnar út frá massa leysts efnis og rúmmáli lausnar, eru vinsælar í ákveðnum lífefnafræðilegum og læknisfræðilegum tilgangi. Massa-rúmmálsprósenta er hlutfall massa leysts efnis og rúmmáls lausnar, gefið upp sem prósenta. Sértækar einingar sem notaðar eru fyrir massa leysts efnis og rúmmál lausnar geta verið breytilegar eftir lausninni. Til dæmis hefur saltvatnslausn, sem notuð er til að undirbúa vökva í æð, styrkinn 0,9% massa/rúmmál (m/v), sem gefur til kynna að samsetningin sé 0,9 g af leystu efni á hverja 100 ml af lausn. Styrkur glúkósa í blóði (almennt kallaður „blóðsykur") er einnig venjulega gefinn upp sem massa-rúmmálshlutfall. Þótt styrkurinn sé ekki beinlínis gefinn upp sem prósenta er hann venjulega gefinn upp í milligrömmum af glúkósa á desilítra (100 ml) af blóði ([mynd 3.18](#CNX_Chem_03_05_saline)).
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![Two pictures are shown labeled a and b. Picture a depicts a clear, colorless solution in a plastic bag being held in a person's hand. Picture b shows a person's hand holding a detection meter with a digital readout screen while another hand holds someone's finger up to the end of the meter. The meter is pressed to the drop of blood that is at the end of the person's finger.](./images/media/rId47.jpg){width="6.5in" height="3.2in"}
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Two pictures are shown labeled a and b. Picture a depicts a clear, colorless solution in a plastic bag being held in a person's hand. Picture b shows a person's hand holding a detection meter with a digital readout screen while another hand holds someone's finger up to the end of the meter. The meter is pressed to the drop of blood that is at the end of the person's finger.](./images/media/rId47.jpg)
+
 
 Mynd 3.18 „Blandaðar" massa-rúmmálseiningar eru algengar í læknisfræðilegu samhengi. (a) NaCl-styrkur saltvatnslausnar er 0,9% (m/v). (b) Þetta tæki mælir glúkósagildi í blóðsýni. Eðlilegt bil fyrir glúkósastyrk í blóði (á fastandi maga) er um 70--100 mg/dL. (heimild a: breyting á verki eftir „The National Guard"/Flickr; heimild b: breyting á verki eftir Biswarup Ganguly)
 
@@ -133,14 +131,13 @@ Mjög lágur styrkur leystra efna er oft gefinn upp með viðeigandi litlum eini
 
 Skilgreiningar á ppm og ppb sem byggjast á massa eru gefnar hér:
 
-![None](./images/media/rId55.jpg){width="2.1354166666666665in" height="0.6979166666666666in"}
+![None](./images/media/rId55.jpg)
 
 Bæði ppm og ppb eru hentugar einingar til að gefa upp styrk mengunarefna og annarra snefilmengunarefna í vatni. Styrkur þessara mengunarefna er venjulega mjög lágur í hreinsuðu og náttúrulegu vatni og magn þeirra má ekki fara yfir tiltölulega lág styrkleikamörk án þess að valda skaðlegum áhrifum á heilsu og dýralíf. Til dæmis hefur EPA (Umhverfisverndarstofnun Bandaríkjanna) skilgreint hámarksöryggismagn flúoríðjóna í kranavatni sem 4 ppm. Vatnssíur í leiðslum eru hannaðar til að draga úr styrk flúoríðs og nokkurra annarra snefilmengunarefna í kranavatni ([mynd 3.19](#CNX_Chem_03_05_faucet)).
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![Two pictures are shown labeled a and b. Picture a is a close-up shot of water coming out of a faucet. Picture b shows a machine with the words, "Filtered Water Dispenser." This machine appears to be inside a refrigerator.](./images/media/rId59.jpg){width="6.5in" height="3.3in"}
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![Two pictures are shown labeled a and b. Picture a is a close-up shot of water coming out of a faucet. Picture b shows a machine with the words, "Filtered Water Dispenser." This machine appears to be inside a refrigerator.](./images/media/rId59.jpg)
+
 
 Mynd 3.19 (a) Á sumum svæðum getur snefilstyrkur mengunarefna gert ósíað kranavatn óhæft til drykkjar og matargerðar. (b) Vatnssíur í leiðslum draga úr styrk leystra efna í kranavatni. (Heimild a: breytt útgáfa af verki eftir Jenn Durfey; heimild b: breytt útgáfa af verki eftir „vastateparkstaff"/Wikimedia commons)
 
@@ -157,7 +154,7 @@ $15\ \text{ppb}\  \times \ \frac{1\ \text{ppm}}{10^{3}\ \text{ppb}}\  = 0.015\ \
 
 Hægt er að nota skilgreininguna á ppb-einingunni til að reikna út umbeðinn massa ef massi lausnarinnar er gefinn. Þar sem rúmmál lausnarinnar (300 ml) er gefið þarf að nota eðlismassa hennar til að finna samsvarandi massa. Gerum ráð fyrir að eðlismassi kranavatns sé nokkurn veginn sá sami og eðlismassi hreins vatns (\~1,00 g/ml), þar sem styrkur uppleystra efna ætti ekki að vera mjög hár. Með því að umraða jöfnunni sem skilgreinir ppb-eininguna og setja inn gefnar stærðir fæst:
 
-![None](./images/media/rId64.jpg){width="3.4791666666666665in" height="1.5729166666666667in"}
+![None](./images/media/rId64.jpg)
 
 Að lokum er þessum massa breytt í umbeðna einingu, míkrógrömm:
 

@@ -33,10 +33,9 @@ Tölur mældra stærða, ólíkt skilgreindum eða töldum stærðum, eru ekki
 nákvæmar. Til að mæla rúmmál vökva í mæliglasi ættir þú að lesa af neðst
 á bjúgfletinum, lægsta punkti á bogadregnu yfirborði vökvans.
 
-  -----------------------------------------------------------------------
-    ![This diagram shows a 25 milliliter graduated cylinder filled with about 20.8 milliliters of fluid. The diagram zooms in on the meniscus, which is the curved surface of the water that is visible when the graduated cylinder is viewed from the side. You make the reading at the lowest point of the curve of the meniscus.](./images/media/rId22.jpg){width="6.5in" height="3.715in"}
 
-  -----------------------------------------------------------------------
+![This diagram shows a 25 milliliter graduated cylinder filled with about 20.8 milliliters of fluid. The diagram zooms in on the meniscus, which is the curved surface of the water that is visible when the graduated cylinder is viewed from the side. You make the reading at the lowest point of the curve of the meniscus.](./images/media/rId22.jpg)
+
 
 Mynd 1.26 Til að mæla rúmmál vökva í þessu mæliglasi verður þú að skipta
 fjarlægðinni milli 21 og 22 ml merkja í huganum í tíundu úr millilítra
@@ -80,20 +79,20 @@ og það eru aðeins núll sem krefjast umhugsunar. Við munum nota hugtökin
 „núll á undan", „núll á eftir" og „núll á milli" fyrir núllin og skoða
 hvernig eigi að meðhöndla þau.
 
-![The left diagram uses the example of 3090. The zero in the hundreds place is labeled "captive" and the zero in the ones place is labeled trailing. The right diagram uses the example 0.008020. The three zeros in the ones, tenths, and hundredths places are labeled "leading." The zero in the ten-thousandths place is labeled "captive" and the zero in the millionths place is labeled "trailing."](./images/media/rId29.jpg){width="3.25in" height="1.11in"}
+![The left diagram uses the example of 3090. The zero in the hundreds place is labeled "captive" and the zero in the ones place is labeled trailing. The right diagram uses the example 0.008020. The three zeros in the ones, tenths, and hundredths places are labeled "leading." The zero in the ten-thousandths place is labeled "captive" and the zero in the millionths place is labeled "trailing."](./images/media/rId29.jpg)
 
 Byrjaðu á fyrsta tölustafnum sem ekki er núll vinstra megin, teldu
 þennan tölustaf og alla tölustafi sem eftir eru til hægri. Þetta er
 fjöldi markverðra stafa í mælingunni nema síðasti tölustafurinn sé núll
 á eftir sem liggur vinstra megin við kommu.
 
-![The left diagram uses the example of 1267 meters. The number 1 is the first nonzero figure on the left. 1267 has 4 significant figures in total. The right diagram uses the example of 55.0 grams. The number 5 in the tens place is the first nonzero figure on the left. 55.0 has 3 significant figures. Note that the 0 is to the right of the decimal point and therefore is a significant figure.](./images/media/rId33.png){width="6.5in" height="1.22in"}
+![The left diagram uses the example of 1267 meters. The number 1 is the first nonzero figure on the left. 1267 has 4 significant figures in total. The right diagram uses the example of 55.0 grams. The number 5 in the tens place is the first nonzero figure on the left. 55.0 has 3 significant figures. Note that the 0 is to the right of the decimal point and therefore is a significant figure.](./images/media/rId33.png)
 
 Núll á milli eru afleiðing mælinga og eru því alltaf markverð. Núll á
 undan eru hins vegar aldrei markverð --- þau segja okkur aðeins hvar
 komman er staðsett.
 
-![The left diagram uses the example of 70.607 milliliters. The number 7 is the first nonzero figure on the left. 70.607 has 5 significant figures in total, as all figures are measured including the 2 zeros. The right diagram uses the example of 0.00832407 M L. The number 8 is the first nonzero figure on the left. 0.00832407 has 6 significant figures.](./images/media/rId37.jpg){width="6.5in" height="0.99in"}
+![The left diagram uses the example of 70.607 milliliters. The number 7 is the first nonzero figure on the left. 70.607 has 5 significant figures in total, as all figures are measured including the 2 zeros. The right diagram uses the example of 0.00832407 M L. The number 8 is the first nonzero figure on the left. 0.00832407 has 6 significant figures.](./images/media/rId37.jpg)
 
 Núllin á undan í þessu dæmi eru ekki markverð. Við gætum notað
 staðalform (eins og lýst er í [viðauka
@@ -111,7 +110,7 @@ markverðir stafir ef tugasætið var mælt) eða 1,300 $\times$ 10^3^
 þar sem aðeins talan á aukastafsformi er tiltæk er skynsamlegt að gera
 ráð fyrir að öll núll á eftir séu ekki markverð.
 
-![This figure uses the example of 1300 grams. The one and the 3 are significant figures as they are clearly the result of measurement. The 2 zeros could be significant if they were measured or they could be placeholders.](./images/media/rId42.jpg){width="4.875in" height="0.86in"}
+![This figure uses the example of 1300 grams. The one and the 3 are significant figures as they are clearly the result of measurement. The 2 zeros could be significant if they were measured or they could be placeholders.](./images/media/rId42.jpg)
 
 Þegar markverðir stafir eru ákvarðaðir er mikilvægt að gefa gaum að
 uppgefnum gildum og hugsa um mælinguna og markverða stafi með tilliti
@@ -234,18 +233,15 @@ námunduð að sama fjölda aukastafa og talan með fæsta aukastafi (þ.e.a.s.
 
 **Lausn**
 
-![None](./images/media/rId51.png){width="0.6354166666666666in"
-height="0.8645833333333334in"}
+![None](./images/media/rId51.png)
 
 Svarið er 5,385 g (námundað að þúsundasta sæti; þrír aukastafir)
 
-![None](./images/media/rId54.png){width="0.5729166666666666in"
-height="0.8645833333333334in"}
+![None](./images/media/rId54.png)
 
 Svarið er 65 g (námundað að einingarsæti; engir aukastafir)
 
-![Figure A shows 1.0023 being added to 4.383 to yield the answer 5.385. 1.0023 goes to the ten thousandths place, but 4.383 goes to the thousandths place, making it the less precise of the two numbers. Therefore the answer, 5.3853, should be rounded to the thousandths, to yield 5.385. Figure B shows 486 grams minus 421.23 grams, which yields the answer 64.77 grams. This answer should be round to the ones place, making the answer 65 grams.](./images/media/rId57.jpg){width="5.33in"
-height="1.14in"}
+![Figure A shows 1.0023 being added to 4.383 to yield the answer 5.385. 1.0023 goes to the ten thousandths place, but 4.383 goes to the thousandths place, making it the less precise of the two numbers. Therefore the answer, 5.3853, should be rounded to the thousandths, to yield 5.385. Figure B shows 486 grams minus 421.23 grams, which yields the answer 64.77 grams. This answer should be round to the ones place, making the answer 65 grams.](./images/media/rId57.jpg)
 
 :::practice-problem
 #### Kannaðu þekkingu þína
@@ -277,11 +273,9 @@ námunduð að sama fjölda tölustafa og talan með fæsta markverða stafi
 
 **Lausn**
 
-![None](./images/media/rId63.png){width="6.260416666666667in"
-height="0.40625in"}
+![None](./images/media/rId63.png)
 
-![None](./images/media/rId66.png){width="6.135416666666667in"
-height="0.5208333333333334in"}
+![None](./images/media/rId66.png)
 
 :::practice-problem
 #### Kannaðu þekkingu þína
@@ -313,8 +307,7 @@ lítrum.
 
 **Lausn**
 
-![None](./images/media/rId71.png){width="4.854166666666667in"
-height="0.8958333333333334in"}
+![None](./images/media/rId71.png)
 
 :::practice-problem
 #### Kannaðu þekkingu þína
@@ -335,7 +328,7 @@ Hver er eðlismassi vökva með massann 31,1415 g og rúmmálið 30,13 cm^3^?
 #### Ákvörðun eðlismassa með tilraun sem byggir á tilfærslu vatns
 
 Steypustyrktarjárn er vegið og síðan sökkt í mæliglas sem er að hluta
-fyllt með vatni, með niðurstöðum eins og sýnt er. ![This diagram shows the initial volume of water in a graduated cylinder as 13.5 milliliters. A 69.658 gram piece of metal rebar is added to the graduated cylinder, causing the water to reach a final volume of 22.4 milliliters](./images/media/rId77.jpg){width="3.5in" height="2.665in"}
+fyllt með vatni, með niðurstöðum eins og sýnt er. ![This diagram shows the initial volume of water in a graduated cylinder as 13.5 milliliters. A 69.658 gram piece of metal rebar is added to the graduated cylinder, causing the water to reach a final volume of 22.4 milliliters](./images/media/rId77.jpg)
 
 \(a\) Notaðu þessi gildi til að ákvarða eðlismassa þessa
 steypustyrktarjárns.
@@ -369,7 +362,7 @@ mestu leyti járn.
 #### Kannaðu þekkingu þína
 
 Óreglulega lagaður bútur af glansandi, gulleitu efni er vigtaður og
-síðan sökkt í mæliglas, með þeim niðurstöðum sem sýndar eru. ![This diagram shows the initial volume of water in a graduated cylinder as 17.1 milliliters. A 51.842 gram gold colored rock is added to the graduated cylinder, causing the water to reach a final volume of 19.8 milliliters](./images/media/rId84.jpg){width="3.5in" height="2.67in"}
+síðan sökkt í mæliglas, með þeim niðurstöðum sem sýndar eru. ![This diagram shows the initial volume of water in a graduated cylinder as 17.1 milliliters. A 51.842 gram gold colored rock is added to the graduated cylinder, causing the water to reach a final volume of 19.8 milliliters](./images/media/rId84.jpg)
 
 \(a\) Notaðu þessi gildi til að ákvarða eðlismassa þessa efnis.
 
@@ -396,11 +389,9 @@ viðurkenndu gildi. Nákvæm gildi stemma saman; hittin gildi stemma við
 raunverulegt gildi. Þessar skilgreiningar má yfirfæra á annað samhengi,
 svo sem niðurstöður í bogfimisamkeppni ([mynd 1.27](#fs-idm1827280)).
 
-  -----------------------------------------------------------------------
-    ![Figures A through C each show targets with holes where the arrows hit. The archer in figure A was both accurate and precise as all 3 arrows are clustered in the center of the target. In figure B, the archer is precise but not accurate, as all 3 arrows are clustered together but to the upper right of the center of the target. In Figure C, the archer is neither accurate nor precise as the 3 holes are not close together and are located both to the upper right and right of the target.](./images/media/rId94.jpg){width="6.5in"
-                      height="2.2588648293963254in"}
 
-  -----------------------------------------------------------------------
+![Figures A through C each show targets with holes where the arrows hit. The archer in figure A was both accurate and precise as all 3 arrows are clustered in the center of the target. In figure B, the archer is precise but not accurate, as all 3 arrows are clustered together but to the upper right of the center of the target. In Figure C, the archer is neither accurate nor precise as the 3 holes are not close together and are located both to the upper right and right of the target.](./images/media/rId94.jpg)
+
 
 Mynd 1.27 (a) Þessar örvar eru bæði nálægt miðjunni og hver annarri,
 þannig að þær eru bæði hittnar og nákvæmar. (b) Þessar örvar eru nálægt

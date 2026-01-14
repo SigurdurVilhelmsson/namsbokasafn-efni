@@ -22,20 +22,20 @@ Sýn Aristótelesar á samsetningu efnis var ríkjandi í yfir tvö þúsund ár
 1.  Efni er samsett úr afar litlum eindum sem kallast frumeindir. Frumeind er minnsta eining frumefnis sem getur tekið þátt í efnabreytingu.
 2.  Frumefni samanstendur af aðeins einni tegund frumeindar, sem hefur massa sem er einkennandi fyrir frumefnið og er sá sami fyrir allar frumeindir þess frumefnis (mynd 2.2). Stórsætt sýni af frumefni inniheldur ótrúlega mikinn fjölda frumeinda, sem allar hafa sömu efnaeiginleika.
 
-![The left image shows a photograph of a stack of pennies. The right image calls out an area of one of the pennies, which is made up of many sphere-shaped copper atoms. The atoms are densely organized.](./images/media/rId24.jpg){width="3.25in" height="1.325in"}
+![The left image shows a photograph of a stack of pennies. The right image calls out an area of one of the pennies, which is made up of many sphere-shaped copper atoms. The atoms are densely organized.](./images/media/rId24.jpg)
 
 **Mynd 2.2** Koparpeningur frá því fyrir 1982 (til vinstri) inniheldur um það bil 3 × 10²² koparfrumeindir (nokkrir tugir eru sýndir sem brúnar kúlur til hægri), sem hver um sig hefur sömu efnaeiginleika.
 
 3.  Frumeindir eins frumefnis eru frábrugðnar í eiginleikum frá frumeindum allra annarra frumefna.
 4.  Efnasamband samanstendur af frumeindum tveggja eða fleiri frumefna sem eru sameinuð í litlu heiltöluhlutfalli. Í tilteknu efnasambandi er fjöldi frumeinda hvers frumefnis þess alltaf í sama hlutfalli (mynd 2.3).
 
-![The left image shows a container with a black, powdery compound. The right image calls out the molecular structure of the powder which contains copper atoms that are clustered together with an equal number of oxygen atoms.](./images/media/rId28.jpg){width="3.25in" height="1.645in"}
+![The left image shows a container with a black, powdery compound. The right image calls out the molecular structure of the powder which contains copper atoms that are clustered together with an equal number of oxygen atoms.](./images/media/rId28.jpg)
 
 **Mynd 2.3** Kopar(II) oxíð, duftkennt, svart efnasamband, verður til við samruna tveggja tegunda atóma - kopars (brúnar kúlur) og súrefnis (rauðar kúlur)- í hlutföllunum 1:1. (heimild: breyting á verki eftir „Chemicalinterest"/Wikimedia Commons)
 
 5.  Atóm verða hvorki til né eyðast við efnabreytingu, heldur endurraðast þau til að mynda efni sem eru frábrugðin þeim sem voru til staðar fyrir breytinguna (mynd 2.4).
 
-![The left stoppered bottle contains copper and oxygen. There is a callout which shows that copper is made up of many sphere-shaped atoms. The atoms are densely organized. The open space of the bottle contains oxygen gas, which is made up of bonded pairs of oxygen atoms that are evenly spaced. The right stoppered bottle shows the compound copper two oxide, which is a black, powdery substance. A callout from the powder shows a molecule of copper two oxide, which contains copper atoms that are clustered together with an equal number of oxygen atoms.](./images/media/rId32.jpg){width="6.0in" height="3.28in"}
+![The left stoppered bottle contains copper and oxygen. There is a callout which shows that copper is made up of many sphere-shaped atoms. The atoms are densely organized. The open space of the bottle contains oxygen gas, which is made up of bonded pairs of oxygen atoms that are evenly spaced. The right stoppered bottle shows the compound copper two oxide, which is a black, powdery substance. A callout from the powder shows a molecule of copper two oxide, which contains copper atoms that are clustered together with an equal number of oxygen atoms.](./images/media/rId32.jpg)
 
 **Mynd 2.4** Þegar frumefnin kopar (glansandi, rauðbrúnt fast efni, sýnt hér sem brúnar kúlur) og súrefni (tært og litlaust gas, sýnt hér sem rauðar kúlur) hvarfast, raðast atóm þeirra aftur og mynda efnasamband sem inniheldur kopar og súrefni (duftkennt, svart fast efni). (kredit kopar: breyting á verki af http://images-of-elements.com/copper.php)
 
@@ -46,7 +46,7 @@ Atómkenning Daltons gefur smásæja skýringu á mörgum stórsæjum eiginleiku
 
 Á eftirfarandi teikningu tákna grænu kúlurnar atóm ákveðins frumefnis. Fjólubláu kúlurnar tákna atóm af öðru frumefni. Ef kúlurnar snertast eru þær hluti af einni einingu efnasambands. Brýtur eftirfarandi efnabreyting, sem táknuð er með þessum táknum, í bága við einhverjar af hugmyndum atómkenningar Daltons? Ef svo er, hverja?
 
-![This equation shows that the starting materials of the reaction are two bonded, green spheres, which are being combined with two smaller, bonded purple spheres. The product of the change is one purple sphere that is bonded to one green sphere.](./images/media/rId36.jpg){width="3.25in" height="0.53in"}
+![This equation shows that the starting materials of the reaction are two bonded, green spheres, which are being combined with two smaller, bonded purple spheres. The product of the change is one purple sphere that is bonded to one green sphere.](./images/media/rId36.jpg)
 
 **Lausn**
 
@@ -58,7 +58,7 @@ Upphafsefnin samanstanda af tveimur grænum kúlum og tveimur fjólubláum kúlu
 
 Á eftirfarandi teikningu tákna grænu kúlurnar atóm ákveðins frumefnis. Fjólubláu kúlurnar tákna atóm af öðru frumefni. Ef kúlurnar snertast eru þær hluti af einni einingu efnasambands. Brýtur eftirfarandi efnabreyting, sem táknuð er með þessum táknum, í bága við einhverjar af hugmyndum atómkenningar Daltons? Ef svo er, hverja?
 
-![This equation shows that the starting materials of the reaction are two sets of bonded, green spheres which are each being combined with two smaller, bonded purple spheres. The products of the change are two molecules that each contain one purple sphere bonded between two green spheres.](./images/media/rId40.jpg){width="5.0in" height="0.535in"}
+![This equation shows that the starting materials of the reaction are two sets of bonded, green spheres which are each being combined with two smaller, bonded purple spheres. The products of the change are two molecules that each contain one purple sphere bonded between two green spheres.](./images/media/rId40.jpg)
 
 :::answer
 Upphafsefnin samanstanda af fjórum grænum kúlum og tveimur fjólubláum kúlum. Myndefnin samanstanda af fjórum grænum kúlum og tveimur fjólubláum kúlum. Þetta brýtur ekki í bága við neinar af kennisetningum Daltons: Atóm verða hvorki til né eyðast, heldur er þeim endurraðað í litlum heiltöluhlutföllum.
@@ -85,7 +85,7 @@ $$\frac{\frac{1,116 \text{ g Cl}}{1 \text{ g Cu}}}{\frac{0,558 \text{ g Cl}}{1 \
 
 Þetta má útskýra með atómkenningunni ef hlutfall kopars og klórs í brúna efnasambandinu er 1 koparatóm á móti 2 klóratómum, og hlutfallið í græna efnasambandinu er 1 koparatóm á móti 1 klóratómi. Hlutfall klóratóma (og þar með hlutfall massa þeirra) er því 2 á móti 1 (mynd 2.5).
 
-![Figure A shows a pile of green powder. A callout shows that the green powder is made up of a lattice of copper atoms interspersed with chlorine atoms. The atoms are color coded brown for copper and green for chlorine. The number of copper atoms is equal to the number of chlorine atoms in the molecule. Figure B shows a pile of brown powder. A callout shows that the brown powder is also made up of copper and chlorine atoms similar to the molecule shown in figure A. However there appears to be two chlorine atoms for every copper atom in this molecule. The copper atoms in figure B bond with both the chlorine atoms and the other copper atoms. The copper atoms in figure A only bond with the chlorine atoms.](./images/media/rId51.jpg){width="6.5in" height="2.43in"}
+![Figure A shows a pile of green powder. A callout shows that the green powder is made up of a lattice of copper atoms interspersed with chlorine atoms. The atoms are color coded brown for copper and green for chlorine. The number of copper atoms is equal to the number of chlorine atoms in the molecule. Figure B shows a pile of brown powder. A callout shows that the brown powder is also made up of copper and chlorine atoms similar to the molecule shown in figure A. However there appears to be two chlorine atoms for every copper atom in this molecule. The copper atoms in figure B bond with both the chlorine atoms and the other copper atoms. The copper atoms in figure A only bond with the chlorine atoms.](./images/media/rId51.jpg)
 
 **Mynd 2.5** Í samanburði við koparklórefnasambandið í (a), þar sem kopar er táknaður með brúnum kúlum og klór með grænum kúlum, hefur koparklórefnasambandið í (b) tvöfalt fleiri klóratóm á hvert koparatóm. (heimild a: breyting á verki eftir „Benjah-bmm27"/Wikimedia Commons; heimild b: breyting á verki eftir „Walkerma"/Wikimedia Commons)
 

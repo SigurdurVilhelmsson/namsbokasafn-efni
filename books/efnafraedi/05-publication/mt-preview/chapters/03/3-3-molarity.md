@@ -18,10 +18,9 @@ chapter: 3
 
 Fyrri kaflar þessarar bókar fjölluðu um samsetningu efna: sýni af efni sem innihalda aðeins eina tegund frumefnis eða efnasambands. Hins vegar eru efnablöndur -- sýni af efni sem innihalda tvö eða fleiri efni sem eru blönduð saman á eðlisfræðilegan hátt -- algengari í náttúrunni en hrein efni. Líkt og með hreint efni gegnir hlutfallsleg samsetning efnablöndu mikilvægu hlutverki við að ákvarða eiginleika hennar. Hlutfallslegt magn súrefnis í lofthjúpi plánetu ákvarðar getu hennar til að viðhalda loftháðu lífi. Hlutfallslegt magn járns, kolefnis, nikkels og annarra frumefna í stáli (efnablanda sem kallast „málmblanda") ákvarðar eðlisfræðilegan styrk þess og viðnám gegn tæringu. Hlutfallslegt magn virka efnisins í lyfi ákvarðar virkni þess við að ná fram tilætluðum lyfjafræðilegum áhrifum. Hlutfallslegt magn sykurs í drykk ákvarðar sætleika hans (sjá [mynd 3.14](#CNX_Chem_03_03_espresso)). Í þessum kafla verður lýst einni af algengustu aðferðunum til að magngreina hlutfallslega samsetningu efnablandna.
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![A picture is shown of sugar being poured from a spoon into a cup.](./images/media/rId21.jpg){width="3.25in" height="2.85in"}
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![A picture is shown of sugar being poured from a spoon into a cup.](./images/media/rId21.jpg)
+
 
 Mynd 3.14 Sykur er eitt af mörgum innihaldsefnum í þeirri flóknu efnablöndu sem kaffi er. Magn sykurs í tilteknu magni af kaffi er mikilvægur áhrifaþáttur í sætleika drykkjarins. (Heimild: Jane Whitney)
 
@@ -70,7 +69,7 @@ Hversu mikið af sykri (mól) er í litlum sopa (\~10 ml) af gosdrykknum úr [d�
 
 Endurraðaðu skilgreiningunni á mólstyrk til að einangra stærðina sem leitað er að, mól af sykri, og settu síðan inn gildið fyrir mólstyrk sem leitt var út í [dæmi 3.14](#fs-idm98982768), 0,375 *M*:
 
-![None](./images/media/rId37.jpg){width="4.895833333333333in" height="1.1770833333333333in"}
+![None](./images/media/rId37.jpg)
 :::
 
 :::practice-problem
@@ -90,10 +89,9 @@ Hvert er rúmmálið (ml) af sykraða teinu sem lýst er í [dæmi 3.14](#fs-idm
 
 Eimað borðedik ([mynd 3.15](#CNX_Chem_03_04_vinegar)) er lausn af ediksýru, CH~3~CO~2~H, í vatni. 0,500 L ediklausn inniheldur 25,2 g af ediksýru. Hver er styrkur ediksýrulausnarinnar í mólstyrk?
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![A label on a container is shown. The label has a picture of a salad with the words "Distilled White Vinegar," and, "Reduced with water to 5% acidity," written above it.](./images/media/rId43.jpg){width="3.25in" height="3.095in"}
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![A label on a container is shown. The label has a picture of a salad with the words "Distilled White Vinegar," and, "Reduced with water to 5% acidity," written above it.](./images/media/rId43.jpg)
+
 
 Mynd 3.15 Eimað borðedik er lausn af ediksýru í vatni.
 
@@ -103,7 +101,7 @@ Eins og í fyrri dæmum er skilgreiningin á mólstyrk aðaljafnan sem notuð er
 
 $M = \ \frac{\text{mol solute}}{\text{L solution}}\  = \ \frac{25.2\ g\ \text{CH}_{3}\text{CO}_{2}\text{H}\  \times \ \frac{1\ \text{mol CH}_{3}\text{CO}_{2}\text{H}}{\text{60.052 g CH}_{3}\text{CO}_{2}\text{H}}\ }{\text{0.500 L solution}}\  = 0.839\ M$
 
-![None](./images/media/rId48.jpg){width="1.8020833333333333in" height="0.6979166666666666in"}
+![None](./images/media/rId48.jpg)
 :::
 
 :::practice-problem
@@ -127,7 +125,7 @@ Hversu mörg grömm af NaCl eru í 0,250 L af 5,30*M* lausn?
 
 Rúmmál og mólstyrkur lausnarinnar eru tilgreind, þannig að magn (mól) uppleysta efnisins er auðveldlega reiknað út eins og sýnt er í [dæmi 3.15](#fs-idm64107376):
 
-![None](./images/media/rId54.jpg){width="3.8125in" height="0.9895833333333334in"}
+![None](./images/media/rId54.jpg)
 
 Að lokum er þetta mólmagn notað til að leiða út massa NaCl:
 
@@ -184,10 +182,9 @@ Hvert er rúmmál 1,50 *M* KBr-lausnar sem inniheldur 66,0 g af KBr?
 
 Þynning er ferli þar sem styrkur lausnar er minnkaður með því að bæta við leysi. Til dæmis þynnist íste smám saman þegar ísinn bráðnar. Vatnið úr bráðnandi ísnum eykur rúmmál leysisins (vatnsins) og heildarrúmmál lausnarinnar (ísteiðsins) og minnkar þar með hlutfallslegan styrk uppleystu efnanna sem gefa drykknum bragð ([mynd 3.16](#CNX_Chem_03_04_dilution)).
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![This figure shows two graduated cylinders side-by-side. The first has about half as much blue liquid as the second. The blue liquid is darker in the first cylinder than in the second.](./images/media/rId70.jpg){width="6.5in" height="3.85in"}
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![This figure shows two graduated cylinders side-by-side. The first has about half as much blue liquid as the second. The blue liquid is darker in the first cylinder than in the second.](./images/media/rId70.jpg)
+
 
 Mynd 3.16 Báðar lausnirnar innihalda sama massa af koparnítrati. Lausnin til hægri er þynntari vegna þess að koparnítratið er leyst upp í meiri leysi. (heimild: Mark Ott)
 
@@ -230,7 +227,7 @@ Ef 0,850 L af 5,00 *M* lausn af koparnítrati, Cu(NO~3~)~2~, er þynnt í 1,80 L
 
 Stofnstyrkurinn, *C*~1~, og rúmmálið, *V*~1~, eru gefin ásamt rúmmáli þynntu lausnarinnar, *V*~2~. Endurraðaðu þynningarjöfnunni til að einangra óþekkta eiginleikann, styrk þynntu lausnarinnar, *C*~2~:
 
-![None](./images/media/rId81.jpg){width="0.9166666666666666in" height="0.6875in"}
+![None](./images/media/rId81.jpg)
 
 Þar sem stofnlausnin er þynnt meira en tvöfalt (rúmmál er aukið úr 0,85 L í 1,80 L) er búist við að styrkur þynntu lausnarinnar sé minni en helmingur af 5 *M*. Þetta grófa mat verður borið saman við útreiknaða niðurstöðu til að athuga hvort um grófar villur í útreikningum sé að ræða (til dæmis, eins og rangt skiptihvarf á gefnum stærðum). Með því að setja inn gefin gildi fyrir liðina hægra megin í þessari jöfnu fæst:
 
@@ -260,11 +257,11 @@ Hvaða rúmmál af 0,12 *M* HBr er hægt að útbúa úr 11 ml (0,011 L) af 0,45
 
 Gefið er rúmmál og styrkur stofnlausnar, *V*~1~ og *C*~1~, og styrkur þynntu lausnarinnar sem fæst, *C*~2~. Finndu rúmmál þynntu lausnarinnar, *V*~2~, með því að endurraða þynningarjöfnunni til að einangra *V*~2~:
 
-![None](./images/media/rId88.jpg){width="0.9166666666666666in" height="0.6875in"}
+![None](./images/media/rId88.jpg)
 
 Þar sem þynnti styrkurinn (0,12 *M*) er aðeins meira en fjórðungur af upprunalega styrknum (0,45 *M*), er búist við að rúmmál þynntu lausnarinnar sé um það bil fjórum sinnum meira en upprunalega rúmmálið, eða um 44 ml. Með því að setja inn gefin gildi og leysa fyrir óþekkta rúmmálið fæst:
 
-![None](./images/media/rId92.jpg){width="1.3854166666666667in" height="0.7083333333333334in"}
+![None](./images/media/rId92.jpg)
 
 Rúmmál 0,12 *M* lausnarinnar er 0,041 L (41 ml). Niðurstaðan er sanngjörn og stenst vel við grófa matið.
 :::
@@ -290,11 +287,11 @@ Hvaða rúmmál af 1,59 *M* KOH þarf til að útbúa 5,00 L af 0,100 *M* KOH?
 
 Gefinn er styrkur stofnlausnar, *C*~1~, og rúmmál og styrkur þynntu lausnarinnar sem fæst, *V*~2~ og *C*~2~. Finndu rúmmál stofnlausnarinnar, *V*~1~, með því að endurraða þynningarjöfnunni til að einangra *V*~1~:
 
-![None](./images/media/rId98.jpg){width="0.9166666666666666in" height="0.6875in"}
+![None](./images/media/rId98.jpg)
 
 Þar sem styrkur þynntu lausnarinnar 0,100 *M* er um það bil einn sextándi af styrk stofnlausnarinnar (1,59 *M*), er búist við að rúmmál stofnlausnarinnar sé um það bil einn sextándi af rúmmáli þynntu lausnarinnar, eða um 0,3 lítrar. Með því að setja inn gefin gildi og leysa fyrir óþekkta rúmmálið fæst:
 
-![None](./images/media/rId102.jpg){width="1.3854166666666667in" height="0.6875in"}
+![None](./images/media/rId102.jpg)
 
 Þannig þarf 0,314 L af 1,59 *M* lausninni til að útbúa lausnina sem óskað er eftir. Þessi niðurstaða er í samræmi við grófa matið.
 :::

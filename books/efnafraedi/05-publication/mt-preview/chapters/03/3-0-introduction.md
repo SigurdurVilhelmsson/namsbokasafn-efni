@@ -4,10 +4,9 @@ section: "3.0"
 chapter: 3
 ---
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-   ![This figure shows a swimming pool that is full of water and surrounded by a concrete patio.](./images/media/rId20.jpg){width="6.5in" height="3.0in"}
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![This figure shows a swimming pool that is full of water and surrounded by a concrete patio.](./images/media/rId20.jpg)
+
 
 Mynd 3.1 Vatnið í sundlaug er flókin efnablanda efna sem þarf að viðhalda hlutfallslegu magni þeirra af nákvæmni til að tryggja heilsu og þægindi fólks sem notar laugina. (heimild: breyting á verki eftir Vic Brincat)
 

@@ -78,11 +78,11 @@ Táknið fyrir frumefnið súrefni, O, táknar bæði frumefnið og eitt súrefn
 
 \(a\) etanól
 
-![A Lewis Structure is shown. An oxygen atom is bonded to a hydrogen atom and a carbon atom. The carbon atom is bonded to two hydrogen atoms and another carbon atom. That carbon atom is bonded to three more hydrogen atoms. There are a total of two carbon atoms, six hydrogen atoms, and one oxygen atoms.](./images/media/rId55.jpg){width="1.625in" height="0.69in"}
+![A Lewis Structure is shown. An oxygen atom is bonded to a hydrogen atom and a carbon atom. The carbon atom is bonded to two hydrogen atoms and another carbon atom. That carbon atom is bonded to three more hydrogen atoms. There are a total of two carbon atoms, six hydrogen atoms, and one oxygen atoms.](./images/media/rId55.jpg)
 
 \(b\) metoxýmetan, betur þekkt sem dímetýleter
 
-![A Lewis Structure is shown. An oxygen atom is bonded to two carbon atoms. Each carbon atom is bonded to three different hydrogen atoms. There are a total of two carbon atoms, six hydrogen atoms, and one oxygen atom.](./images/media/rId59.jpg){width="1.625in" height="0.69in"}
+![A Lewis Structure is shown. An oxygen atom is bonded to two carbon atoms. Each carbon atom is bonded to three different hydrogen atoms. There are a total of two carbon atoms, six hydrogen atoms, and one oxygen atom.](./images/media/rId59.jpg)
 
 \(c\) Þessar sameindir hafa sömu efnasamsetningu (gerð og fjölda atóma) en ólíka efnafræðilega byggingu. Þær eru byggingarhverfur.
 
