@@ -26,55 +26,17 @@ Fólk hefur samskipti sín á milli á margvíslegan og flókinn hátt og við f
 
 Að hve miklu leyti efni getur leyst upp í vatni, eða öðrum leysi, er magnbundið gefið upp sem leysni þess, sem er skilgreindur sem hámarksstyrkur efnis sem hægt er að ná við tilteknar aðstæður. Efni með tiltölulega mikla leysni eru sögð vera auðleyst. Efni myndar botnfall þegar aðstæður í lausninni eru þannig að styrkur þess fer yfir leysni þess. Efni með tiltölulega litla leysni eru sögð vera torleyst og þetta eru efnin sem falla auðveldlega út úr lausn. Nánari upplýsingar um þessi mikilvægu hugtök er að finna í síðari kafla um lausnir. Til að spá fyrir um hvaða föstu efni myndast við útfellingarhvörf má einfaldlega vísa til leysnimynstra sem hafa sést fyrir mörg jónaefni ([tafla 4.1](#fs-idp140132617697568)).
 
-+:----------------------+:-----------------------+:-------------------------------------------------------------------+
-| Auðleyst jónaefni     | innihalda þessar jónir | undantekningar                                                     |
-+-----------------------+------------------------+--------------------------------------------------------------------+
-|                       | NH~4~^+^               | ekkert                                                             |
-|                       |                        |                                                                    |
-|                       | katjónir úr flokki 1:  |                                                                    |
-|                       |                        |                                                                    |
-|                       | Li^+^                  |                                                                    |
-|                       |                        |                                                                    |
-|                       | Na^+^                  |                                                                    |
-|                       |                        |                                                                    |
-|                       | K^+^                   |                                                                    |
-|                       |                        |                                                                    |
-|                       | Rb^+^                  |                                                                    |
-|                       |                        |                                                                    |
-|                       | Cs^+^                  |                                                                    |
-+-----------------------+------------------------+--------------------------------------------------------------------+
-|                       | Cl^-^                  | efnasambönd með Ag^+^, Hg~2~^2+^ og Pb^2+^                         |
-|                       |                        |                                                                    |
-|                       | Br^-^                  |                                                                    |
-|                       |                        |                                                                    |
-|                       | I^-^                   |                                                                    |
-+-----------------------+------------------------+--------------------------------------------------------------------+
-|                       | F^-^                   | efnasambönd með málmkatjónir í flokki2, Pb^2+^ og Fe^3+^           |
-+-----------------------+------------------------+--------------------------------------------------------------------+
-|                       | C~2~H~3~O~2~^-^        | ekkert                                                             |
-|                       |                        |                                                                    |
-|                       | HCO~3~^-^              |                                                                    |
-|                       |                        |                                                                    |
-|                       | NO~3~^-^               |                                                                    |
-|                       |                        |                                                                    |
-|                       | ClO~3~^-^              |                                                                    |
-+-----------------------+------------------------+--------------------------------------------------------------------+
-|                       | SO~4~2^-^              | efnasambönd með Ag^+^, Ba^2+^, Ca^2+^, Hg~2~^2+^, Pb^2+^ og Sr^2+^ |
-+-----------------------+------------------------+--------------------------------------------------------------------+
-| Torleyst jónaefni     | innihalda þessar jónir | undantekningar                                                     |
-+-----------------------+------------------------+--------------------------------------------------------------------+
-|                       | CO~3~^2-^              | efnasambönd með katjónir í flokki 1 og NH~4~^+^                    |
-|                       |                        |                                                                    |
-|                       | CrO~4~^2-^             |                                                                    |
-|                       |                        |                                                                    |
-|                       | PO~4~^3-^              |                                                                    |
-|                       |                        |                                                                    |
-|                       | S^2-^                  |                                                                    |
-+-----------------------+------------------------+--------------------------------------------------------------------+
-|                       | OH^-^                  | efnasambönd með katjónir í flokki 1 og Ba^2+^                      |
-+-----------------------+------------------------+--------------------------------------------------------------------+
+**Tafla 4.1: Leysnireglur fyrir algeng jónaefni**
 
-Tafla 4.1
+| Leysni | Jónir | Undantekningar |
+|---|---|---|
+| **Auðleyst** | NH~4~^+^, katjónir úr flokki 1: Li^+^, Na^+^, K^+^, Rb^+^, Cs^+^ | ekkert |
+| **Auðleyst** | Cl^-^, Br^-^, I^-^ | efnasambönd með Ag^+^, Hg~2~^2+^ og Pb^2+^ |
+| **Auðleyst** | F^-^ | efnasambönd með málmkatjónir í flokki 2, Pb^2+^ og Fe^3+^ |
+| **Auðleyst** | C~2~H~3~O~2~^-^, HCO~3~^-^, NO~3~^-^, ClO~3~^-^ | ekkert |
+| **Auðleyst** | SO~4~^2-^ | efnasambönd með Ag^+^, Ba^2+^, Ca^2+^, Hg~2~^2+^, Pb^2+^ og Sr^2+^ |
+| **Torleyst** | CO~3~^2-^, CrO~4~^2-^, PO~4~^3-^, S^2-^ | efnasambönd með katjónir í flokki 1 og NH~4~^+^ |
+| **Torleyst** | OH^-^ | efnasambönd með katjónir í flokki 1 og Ba^2+^ |
 
 Skýrt dæmi um botnfall sést þegar lausnum af kalíumjoðíði og blýnítrati er blandað saman, sem leiðir til myndunar á föstu blýjoðíði:
 
@@ -551,19 +513,13 @@ $\text{Cr}_{2}\text{O}_{7}^{\text{2−}} + \text{Fe}^{\text{2+}}\  \rightarrow \
 
 Lokaathugun á jafnvægi atóma og hleðslu staðfestir að jafnan er stillt.
 
-  ----------------------- ----------------------- -----------------------
-                          Hvarfefni               Myndefni
-
-  Fe                      6\.                     6\.
-
-  Cr                      2\.                     2\.
-
-  O                       7\.                     7\.
-
-  H                       14\.                    14\.
-
-  hleðsla                 24+                     24+
-  ----------------------- ----------------------- -----------------------
+| Frumefni | Hvarfefni | Myndefni |
+|---|---|---|
+| Fe | 6 | 6 |
+| Cr | 2 | 2 |
+| O | 7 | 7 |
+| H | 14 | 14 |
+| hleðsla | 24+ | 24+ |
 :::
 
 :::practice-problem

@@ -24,37 +24,27 @@ Til að nefna ólífrænt efnasamband þurfum við að íhuga svörin við nokkr
 
 Heiti tvíefnis sem inniheldur einatóma jónir samanstendur af heiti katjónarinnar (heiti málmsins) og svo heiti anjónarinnar (heiti málmleysingjans með endingunni -*íð*). Nokkur dæmi eru gefin í [töflu 2.6](#fs-idp282234816).
 
-Heiti nokkurra jónaefna
+**Tafla 2.6: Heiti nokkurra jónaefna**
 
-  ----------------------------------- -----------------------------------
-  NaCl, natríumklóríð                 Na~2~O, natríumoxíð
-
-  KBr, kalíumbrómíð                   CdS, kadmíumsúlfíð
-
-  CaI~2~, kalsíumjoðíð                Mg~3~N~2~, magnesíumnítríð
-
-  CsF, sesíumflúoríð                  Ca~3~P~2~, kalsíumfosfíð
-
-  LiCl, litíumklóríð                  Al~4~C~3~, álkarbíð
-  ----------------------------------- -----------------------------------
-
-Tafla 2.6
+| Efni | Efni |
+|---|---|
+| NaCl, natríumklóríð | Na~2~O, natríumoxíð |
+| KBr, kalíumbrómíð | CdS, kadmíumsúlfíð |
+| CaI~2~, kalsíumjoðíð | Mg~3~N~2~, magnesíumnítríð |
+| CsF, sesíumflúoríð | Ca~3~P~2~, kalsíumfosfíð |
+| LiCl, litíumklóríð | Al~4~C~3~, álkarbíð |
 
 ### Efnasambönd sem innihalda fjölfrumeinda jónir
 
 Efnasambönd sem innihalda fjölfrumeinda jónir eru nefnd á svipaðan hátt og þau sem innihalda aðeins einfrumeinda jónir, þ.e. með því að nefna fyrst katjónina og síðan anjónina. Dæmi eru sýnd í [töflu 2.7](#fs-idp279316112).
 
-Heiti nokkurra jónaefna með fjölfrumeinda jónum
+**Tafla 2.7: Heiti nokkurra jónaefna með fjölfrumeinda jónum**
 
-  ----------------------------------- -----------------------------------
-  KC~2~H~3~O~2~, kalíumasetat         NH~4~Cl, ammóníumklóríð
-
-  NaHCO~3~, natríumbíkarbónat         CaSO~4~, kalsíumsúlfat
-
-  Al~2~(CO~3~)~3~, álkarbónat         Mg~3~(PO~4~)~2~, magnesíumfosfat
-  ----------------------------------- -----------------------------------
-
-Tafla 2.7
+| Efni | Efni |
+|---|---|
+| KC~2~H~3~O~2~, kalíumasetat | NH~4~Cl, ammóníumklóríð |
+| NaHCO~3~, natríumbíkarbónat | CaSO~4~, kalsíumsúlfat |
+| Al~2~(CO~3~)~3~, álkarbónat | Mg~3~(PO~4~)~2~, magnesíumfosfat |
 
 :::note
 ### Efnafræði í daglegu lífi: Jónaefni í skápunum þínum
