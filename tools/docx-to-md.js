@@ -434,6 +434,24 @@ async function convertDocxToMarkdown(inputPath, outputPath, imagesDir, options) 
 function postProcessMarkdown(markdown) {
   let result = markdown;
 
+  // Fix Pandoc-style figure tables: remove horizontal rule wrappers around images
+  // Pattern: ---...--- followed by image followed by ---...---
+  result = result.replace(
+    /-{50,}\s*\n\s*(!\[[^\]]*?\]\([^)]+\))\s*\n\s*-{50,}/gs,
+    '\n$1\n'
+  );
+
+  // Normalize multiline image alt text to single line
+  // Match ![...](path) where alt text may contain newlines
+  result = result.replace(
+    /!\[([^\]]*?)\]\((\.[^)]+)\)/gs,
+    (match, altText, path) => {
+      // Join multiline alt text into single line, normalize whitespace
+      const cleanAlt = altText.replace(/\s+/g, ' ').trim();
+      return `![${cleanAlt}](${path})`;
+    }
+  );
+
   // Remove excessive blank lines (more than 2 consecutive)
   result = result.replace(/\n{4,}/g, '\n\n\n');
 
