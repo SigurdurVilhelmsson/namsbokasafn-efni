@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+- **`tools/clean-markdown.js`** - Post-processing script to fix Pandoc artifacts
+  - Replaces `\mspace{Xmu}` with KaTeX equivalents
+  - Removes orphan `:::` directive markers
+  - Fixes escaped tildes for subscript syntax
+  - Cleans table border artifacts
+- **`docs/markdown-formatting-issues.md`** - Documentation of known rendering issues and fixes
+
+### Fixed
+- 27 `\mspace` commands in mt-preview markdown files
+- 442 orphan `:::` directive markers across chapters 1-4
+- 16 escaped tildes that should be subscript markers
+
+### Changed
+- Updated `docs/scripts-guide.md` with Pipeline Tools section
+
 ## [0.4.0] - 2025-12-27
 
 ### Added

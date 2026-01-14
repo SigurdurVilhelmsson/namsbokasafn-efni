@@ -103,6 +103,25 @@ git push
 
 ---
 
+## Pipeline Tools
+
+```bash
+# Clean Pandoc artifacts from markdown
+node tools/clean-markdown.js --all                    # All mt-preview files
+node tools/clean-markdown.js --batch <directory>     # Directory
+node tools/clean-markdown.js <file.md>               # Single file
+node tools/clean-markdown.js --all --dry-run         # Preview only
+
+# Convert DOCX to Markdown
+node tools/docx-to-md.js <input.docx>
+node tools/docx-to-md.js --batch <directory>
+
+# Add frontmatter to markdown
+node tools/add-frontmatter.js <file.md>
+```
+
+---
+
 ## See Also
 
 - [Scripts Guide](scripts-guide.md) - Detailed script documentation

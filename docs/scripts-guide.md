@@ -234,8 +234,116 @@ npm run validate && git add . && git commit -m "status: Update ch5 progress"
 
 ---
 
+## Pipeline Tools
+
+The `tools/` directory contains scripts for processing content through the publication pipeline.
+
+### clean-markdown.js
+
+Cleans Pandoc artifacts from markdown files to ensure compatibility with the Chemistry Reader webapp.
+
+#### Syntax
+
+```bash
+node tools/clean-markdown.js <file.md>
+node tools/clean-markdown.js --batch <directory>
+node tools/clean-markdown.js --all
+```
+
+#### Options
+
+| Option | Description |
+|--------|-------------|
+| `--batch <dir>` | Process all .md files in directory recursively |
+| `--all` | Process all files in `books/*/05-publication/mt-preview/` |
+| `--dry-run` | Preview changes without writing files |
+| `--verbose`, `-v` | Show detailed processing information |
+
+#### Fixes Applied
+
+| Issue | Solution |
+|-------|----------|
+| `\mspace{Xmu}` | Replace with KaTeX equivalents (`\,` `\:` `\;` `\quad`) |
+| Orphan `:::` markers | Remove directive markers on their own line |
+| Escaped tildes `\~` | Fix for subscript syntax |
+| Table border artifacts | Remove decorative Pandoc borders |
+
+#### Examples
+
+```bash
+# Preview changes without writing
+node tools/clean-markdown.js --all --dry-run --verbose
+
+# Process all mt-preview files
+node tools/clean-markdown.js --all
+
+# Process a single file
+node tools/clean-markdown.js books/efnafraedi/05-publication/mt-preview/chapters/02/2-3.md
+
+# Process a directory
+node tools/clean-markdown.js --batch books/efnafraedi/05-publication/mt-preview/chapters/03/
+```
+
+See [markdown-formatting-issues.md](markdown-formatting-issues.md) for details on the issues this tool fixes.
+
+---
+
+### docx-to-md.js
+
+Converts .docx files to Markdown format for the publication system.
+
+#### Syntax
+
+```bash
+node tools/docx-to-md.js <input.docx> [output.md]
+node tools/docx-to-md.js --batch <directory>
+```
+
+#### Options
+
+| Option | Description |
+|--------|-------------|
+| `--batch <dir>` | Process all .docx files in directory |
+| `--images-dir <dir>` | Directory to extract images to |
+| `--verbose` | Show detailed progress |
+| `--dry-run` | Show what would be done without writing |
+
+#### Features
+
+- Preserves heading hierarchy, bold, italic, lists, tables
+- Extracts images to separate folder with updated paths
+- Marks equations as `[EQUATION]` placeholders for manual tagging
+- Auto-detects output paths based on project structure
+
+---
+
+### add-frontmatter.js
+
+Adds YAML frontmatter to markdown files for the Chemistry Reader.
+
+#### Syntax
+
+```bash
+node tools/add-frontmatter.js <file.md>
+```
+
+See the script for available frontmatter fields and options.
+
+---
+
+### process-chapter.js
+
+Full chapter processing pipeline combining multiple conversion steps.
+
+```bash
+node tools/process-chapter.js <chapter-directory>
+```
+
+---
+
 ## See Also
 
 - [Workflow Documentation](workflow.md) - Full 8-step translation pipeline
 - [Schema Reference](schema-reference.md) - JSON Schema field definitions
 - [CLI Quick Reference](cli-quick-reference.md) - Command cheat sheet
+- [Markdown Formatting Issues](markdown-formatting-issues.md) - Known Pandoc artifacts and fixes
