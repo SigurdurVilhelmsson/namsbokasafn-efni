@@ -279,7 +279,16 @@ class ImageHandler {
         return image.read().then(function (imageBuffer) {
           self.imageCount++;
 
-          const ext = self.getExtensionForContentType(image.contentType);
+          // Try contentType first, fall back to magic byte detection
+          // (needed for Matecat .so files which have application/octet-stream)
+          let ext = self.getExtensionForContentType(image.contentType);
+          if (image.contentType === 'application/octet-stream' || !image.contentType) {
+            const detectedExt = self.getExtensionFromMagicBytes(imageBuffer);
+            if (detectedExt) {
+              ext = detectedExt;
+            }
+          }
+
           const filename = `image-${self.imageCount.toString().padStart(3, '0')}${ext}`;
           const imagePath = path.join(self.imagesDir, filename);
 
@@ -287,7 +296,7 @@ class ImageHandler {
           self.images.set(imagePath, imageBuffer);
 
           if (self.verbose) {
-            console.log(`  Found image: ${filename} (${image.contentType})`);
+            console.log(`  Found image: ${filename} (${image.contentType} -> ${ext})`);
           }
 
           // Return relative path for markdown
@@ -309,6 +318,38 @@ class ImageHandler {
       'image/bmp': '.bmp'
     };
     return extensions[contentType] || '.png';
+  }
+
+  /**
+   * Detect image format from file magic bytes
+   * Used when contentType is unreliable (e.g., Matecat .so files)
+   */
+  getExtensionFromMagicBytes(buffer) {
+    if (buffer.length < 8) return null;
+
+    // JPEG: starts with FF D8 FF
+    if (buffer[0] === 0xFF && buffer[1] === 0xD8 && buffer[2] === 0xFF) {
+      return '.jpg';
+    }
+    // PNG: starts with 89 50 4E 47 0D 0A 1A 0A
+    if (buffer[0] === 0x89 && buffer[1] === 0x50 && buffer[2] === 0x4E && buffer[3] === 0x47) {
+      return '.png';
+    }
+    // GIF: starts with GIF87a or GIF89a
+    if (buffer[0] === 0x47 && buffer[1] === 0x49 && buffer[2] === 0x46 && buffer[3] === 0x38) {
+      return '.gif';
+    }
+    // WebP: starts with RIFF....WEBP
+    if (buffer[0] === 0x52 && buffer[1] === 0x49 && buffer[2] === 0x46 && buffer[3] === 0x46 &&
+        buffer[8] === 0x57 && buffer[9] === 0x45 && buffer[10] === 0x42 && buffer[11] === 0x50) {
+      return '.webp';
+    }
+    // BMP: starts with BM
+    if (buffer[0] === 0x42 && buffer[1] === 0x4D) {
+      return '.bmp';
+    }
+
+    return null;
   }
 
   /**
