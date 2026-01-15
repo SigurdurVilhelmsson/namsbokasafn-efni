@@ -222,23 +222,31 @@ function createTurndownService() {
  * Convert HTML table to Markdown table
  */
 function convertTableToMarkdown(tableNode) {
-  const rows = tableNode.querySelectorAll('tr');
+  // Handle case where tableNode might not have querySelectorAll (turndown compatibility)
+  if (!tableNode || typeof tableNode.querySelectorAll !== 'function') {
+    // Fallback: just return the text content in a simple format
+    const text = tableNode?.textContent?.trim() || '';
+    if (!text) return '';
+    return '\n\n' + text + '\n\n';
+  }
+
+  const rows = Array.from(tableNode.querySelectorAll('tr'));
   if (rows.length === 0) return '';
 
   const markdownRows = [];
   let headerProcessed = false;
 
-  rows.forEach((row, rowIndex) => {
-    const cells = row.querySelectorAll('td, th');
+  for (const row of rows) {
+    const cells = Array.from(row.querySelectorAll('td, th'));
     const cellContents = [];
 
-    cells.forEach(cell => {
+    for (const cell of cells) {
       // Get text content, normalize whitespace
-      let text = cell.textContent.trim().replace(/\s+/g, ' ');
+      let text = (cell.textContent || '').trim().replace(/\s+/g, ' ');
       // Escape pipe characters
       text = text.replace(/\|/g, '\\|');
       cellContents.push(text);
-    });
+    }
 
     if (cellContents.length > 0) {
       markdownRows.push('| ' + cellContents.join(' | ') + ' |');
@@ -250,7 +258,7 @@ function convertTableToMarkdown(tableNode) {
         headerProcessed = true;
       }
     }
-  });
+  }
 
   return '\n\n' + markdownRows.join('\n') + '\n\n';
 }
@@ -270,41 +278,40 @@ class ImageHandler {
 
   /**
    * Create mammoth image handler that extracts images
+   * Returns the converter function directly for use in mammoth options
    */
   createMammothImageConverter() {
     const self = this;
 
-    return {
-      convertImage: mammoth.images.imgElement(function (image) {
-        return image.read().then(function (imageBuffer) {
-          self.imageCount++;
+    return mammoth.images.imgElement(function (image) {
+      return image.read().then(function (imageBuffer) {
+        self.imageCount++;
 
-          // Try contentType first, fall back to magic byte detection
-          // (needed for Matecat .so files which have application/octet-stream)
-          let ext = self.getExtensionForContentType(image.contentType);
-          if (image.contentType === 'application/octet-stream' || !image.contentType) {
-            const detectedExt = self.getExtensionFromMagicBytes(imageBuffer);
-            if (detectedExt) {
-              ext = detectedExt;
-            }
+        // Try contentType first, fall back to magic byte detection
+        // (needed for Matecat .so files which have application/octet-stream)
+        let ext = self.getExtensionForContentType(image.contentType);
+        if (image.contentType === 'application/octet-stream' || !image.contentType) {
+          const detectedExt = self.getExtensionFromMagicBytes(imageBuffer);
+          if (detectedExt) {
+            ext = detectedExt;
           }
+        }
 
-          const filename = `image-${self.imageCount.toString().padStart(3, '0')}${ext}`;
-          const imagePath = path.join(self.imagesDir, filename);
+        const filename = `image-${self.imageCount.toString().padStart(3, '0')}${ext}`;
+        const imagePath = path.join(self.imagesDir, filename);
 
-          // Store image for later writing
-          self.images.set(imagePath, imageBuffer);
+        // Store image for later writing
+        self.images.set(imagePath, imageBuffer);
 
-          if (self.verbose) {
-            console.log(`  Found image: ${filename} (${image.contentType} -> ${ext})`);
-          }
+        if (self.verbose) {
+          console.log(`  Found image: ${filename} (${image.contentType} -> ${ext})`);
+        }
 
-          // Return relative path for markdown
-          const relativePath = `./${path.basename(self.imagesDir)}/${filename}`;
-          return { src: relativePath };
-        });
-      })
-    };
+        // Return relative path for markdown
+        const relativePath = `./${path.basename(self.imagesDir)}/${filename}`;
+        return { src: relativePath };
+      });
+    });
   }
 
   getExtensionForContentType(contentType) {
