@@ -493,12 +493,15 @@ function postProcessMarkdown(markdown) {
   // Match ![...](path) where alt text may contain newlines
   result = result.replace(
     /!\[([^\]]*?)\]\((\.[^)]+)\)/gs,
-    (match, altText, path) => {
+    (match, altText, imgPath) => {
       // Join multiline alt text into single line, normalize whitespace
       const cleanAlt = altText.replace(/\s+/g, ' ').trim();
-      return `![${cleanAlt}](${path})`;
+      return `![${cleanAlt}](${imgPath})`;
     }
   );
+
+  // Wrap images with their Icelandic captions into HTML figure elements
+  result = wrapFiguresWithCaptions(result);
 
   // Remove excessive blank lines (more than 2 consecutive)
   result = result.replace(/\n{4,}/g, '\n\n\n');
@@ -519,6 +522,37 @@ function postProcessMarkdown(markdown) {
   result = result.trim() + '\n';
 
   return result;
+}
+
+/**
+ * Wrap images with their Icelandic captions into HTML figure elements
+ * Converts:
+ *   ![alt text](./images/image.jpg)
+ *
+ *   Mynd 1.28 Caption text here.
+ *
+ * Into:
+ *   <figure>
+ *   <img src="./images/image.jpg" alt="alt text">
+ *   <figcaption>Mynd 1.28 Caption text here.</figcaption>
+ *   </figure>
+ */
+function wrapFiguresWithCaptions(markdown) {
+  // Pattern to match: image on its own line, followed by blank line(s),
+  // followed by a paragraph starting with "Mynd X.Y" (Icelandic figure caption)
+  // Caption continues until we hit a blank line, heading, another image, etc.
+  const figurePattern = /!\[([^\]]*)\]\(([^)]+)\)\s*\n\s*\n(Mynd\s+\d+\.\d+[^\n]+(?:\n(?!(?:\n|#|!\[|<|:::|-{3,}|\||>|\d+\.|-))[^\n]+)*)/g;
+
+  return markdown.replace(figurePattern, (match, altText, src, caption) => {
+    // Clean up alt text and caption
+    const cleanAlt = altText.trim().replace(/"/g, '&quot;');
+    const cleanCaption = caption.trim();
+
+    return `<figure>
+<img src="${src}" alt="${cleanAlt}">
+<figcaption>${cleanCaption}</figcaption>
+</figure>`;
+  });
 }
 
 // ============================================================================
