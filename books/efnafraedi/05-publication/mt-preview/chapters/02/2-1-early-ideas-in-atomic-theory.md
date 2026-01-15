@@ -35,7 +35,7 @@ Sýn Aristótelesar á samsetningu efnis var ríkjandi í yfir tvö þúsund ár
 
 5.  Atóm verða hvorki til né eyðast við efnabreytingu, heldur endurraðast þau til að mynda efni sem eru frábrugðin þeim sem voru til staðar fyrir breytinguna (mynd 2.4).
 
-![The left stoppered bottle contains copper and oxygen. There is a callout which shows that copper is made up of many sphere-shaped atoms. The atoms are densely organized. The open space of the bottle contains oxygen gas, which is made up of bonded pairs of oxygen atoms that are evenly spaced. The right stoppered bottle shows the compound copper two oxide, which is a black, powdery substance. A callout from the powder shows a molecule of copper two oxide, which contains copper atoms that are clustered together with an equal number of oxygen atoms.](./images/media/rId32.jpg)
+![The left stoppered bottle contains copper and oxygen. There is a callout which shows that copper is made up of many sphere-shaped atoms. The atoms are densely organized. The open space of the bottle contains oxygen gas, which is made up of bonded pairs of oxygen atoms that are evenly spaced. The right stoppered bottle shows the compound copper two oxide, which is a black, powdery substance. A callout from the powder shows a molecule of copper two oxide, which contains copper atoms that are clustered together with an equal number of oxygen atoms.](./images/media/2-1-early-ideas-in-atomic-theory-rId32.jpg)
 
 **Mynd 2.4** Þegar frumefnin kopar (glansandi, rauðbrúnt fast efni, sýnt hér sem brúnar kúlur) og súrefni (tært og litlaust gas, sýnt hér sem rauðar kúlur) hvarfast, raðast atóm þeirra aftur og mynda efnasamband sem inniheldur kopar og súrefni (duftkennt, svart fast efni). (kredit kopar: breyting á verki af http://images-of-elements.com/copper.php)
 
@@ -46,7 +46,7 @@ Atómkenning Daltons gefur smásæja skýringu á mörgum stórsæjum eiginleiku
 
 Á eftirfarandi teikningu tákna grænu kúlurnar atóm ákveðins frumefnis. Fjólubláu kúlurnar tákna atóm af öðru frumefni. Ef kúlurnar snertast eru þær hluti af einni einingu efnasambands. Brýtur eftirfarandi efnabreyting, sem táknuð er með þessum táknum, í bága við einhverjar af hugmyndum atómkenningar Daltons? Ef svo er, hverja?
 
-![This equation shows that the starting materials of the reaction are two bonded, green spheres, which are being combined with two smaller, bonded purple spheres. The product of the change is one purple sphere that is bonded to one green sphere.](./images/media/rId36.jpg)
+![This equation shows that the starting materials of the reaction are two bonded, green spheres, which are being combined with two smaller, bonded purple spheres. The product of the change is one purple sphere that is bonded to one green sphere.](./images/media/2-1-early-ideas-in-atomic-theory-rId36.jpg)
 
 **Lausn**
 
@@ -59,7 +59,7 @@ Upphafsefnin samanstanda af tveimur grænum kúlum og tveimur fjólubláum kúlu
 
 Á eftirfarandi teikningu tákna grænu kúlurnar atóm ákveðins frumefnis. Fjólubláu kúlurnar tákna atóm af öðru frumefni. Ef kúlurnar snertast eru þær hluti af einni einingu efnasambands. Brýtur eftirfarandi efnabreyting, sem táknuð er með þessum táknum, í bága við einhverjar af hugmyndum atómkenningar Daltons? Ef svo er, hverja?
 
-![This equation shows that the starting materials of the reaction are two sets of bonded, green spheres which are each being combined with two smaller, bonded purple spheres. The products of the change are two molecules that each contain one purple sphere bonded between two green spheres.](./images/media/rId40.jpg)
+![This equation shows that the starting materials of the reaction are two sets of bonded, green spheres which are each being combined with two smaller, bonded purple spheres. The products of the change are two molecules that each contain one purple sphere bonded between two green spheres.](./images/media/2-1-early-ideas-in-atomic-theory-rId40.jpg)
 
 :::answer
 Upphafsefnin samanstanda af fjórum grænum kúlum og tveimur fjólubláum kúlum. Myndefnin samanstanda af fjórum grænum kúlum og tveimur fjólubláum kúlum. Þetta brýtur ekki í bága við neinar af kennisetningum Daltons: Atóm verða hvorki til né eyðast, heldur er þeim endurraðað í litlum heiltöluhlutföllum.

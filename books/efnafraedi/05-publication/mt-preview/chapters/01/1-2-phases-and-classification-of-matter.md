@@ -107,7 +107,7 @@ brennisteinssýra), sem geta framleitt rafmagn, breytast í önnur efni
 magn efnis breytist.
 
 
-![Diagram A shows a beer bottle containing pre-beer and sugar. An arrow points from this bottle to a second bottle. This second bottle contains the same volume of liquid, however, the sugar has been converted into ethanol and carbonation as beer was made. Diagram B shows a car battery that contains sheets of P B and P B O subscript 2 along with H subscript 2 S O subscript 4. After the battery is used, it contains an equal mass of P B S O subscript 4 and H subscript 2 O.](./images/media/rId39.jpg)
+![Diagram A shows a beer bottle containing pre-beer and sugar. An arrow points from this bottle to a second bottle. This second bottle contains the same volume of liquid, however, the sugar has been converted into ethanol and carbonation as beer was made. Diagram B shows a car battery that contains sheets of P B and P B O subscript 2 along with H subscript 2 S O subscript 4. After the battery is used, it contains an equal mass of P B S O subscript 4 and H subscript 2 O.](./images/media/1-2-rId39.jpg)
 
 
 Mynd 1.8 (a) Massi hráefna í bjór er sá sami og massi bjórsins sem
@@ -210,7 +210,7 @@ minna af sykri, bragðefnum eða öðrum efnisþáttum en samt verið
 hlynsíróp, bensín og lausn af salti í vatni.
 
 
-![Diagram A shows a glass containing a red liquid with a layer of yellow oil floating on the surface of the red liquid. A zoom in box is magnifying a portion of the red liquid that contains some of the yellow oil. The zoomed in image shows that oil is forming round droplets within the red liquid. Diagram B shows a photo of Gatorade G 2. A zoom in box is magnifying a portion of the Gatorade, which is uniformly red.](./images/media/rId57.jpg)
+![Diagram A shows a glass containing a red liquid with a layer of yellow oil floating on the surface of the red liquid. A zoom in box is magnifying a portion of the red liquid that contains some of the yellow oil. The zoomed in image shows that oil is forming round droplets within the red liquid. Diagram B shows a photo of Gatorade G 2. A zoom in box is magnifying a portion of the Gatorade, which is uniformly red.](./images/media/1-2-rId57.jpg)
 
 
 Mynd 1.10 (a) Salatsósa úr olíu og ediki er misleit efnablanda vegna

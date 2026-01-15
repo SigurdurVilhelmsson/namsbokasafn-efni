@@ -100,7 +100,7 @@ Hver er massaprósenta járns í efnasambandinu Fe~2~O~3~, gefin upp með þremu
 
 Eins og áður hefur komið fram er algengasta aðferðin til að ákvarða efnaformúlu efnasambands að mæla fyrst massa frumefnanna sem það er gert úr. Hins vegar er mikilvægt að hafa í huga að efnaformúlur tákna hlutfallslegan *fjölda* atóma í efninu, ekki massa þeirra. Þess vegna verður að nota allar tilraunagögn sem fela í sér massa til að finna út samsvarandi fjölda atóma í efnasambandinu. Þetta er gert með því að nota mólmassa til að breyta massa hvers frumefnis í fjölda móla. Þessi mólmagn eru notuð til að reikna út heiltöluhlutföll sem hægt er að nota til að leiða út reynsluformúlu efnisins. Ímyndum okkur sýni af efnasambandi sem inniheldur 1,71 g af C og 0,287 g af H. Samsvarandi fjöldi atóma (í mólum) er:
 
-![None](./images/media/rId54.jpg)
+![None](./images/media/3-2-determining-empirical-and-molecular-formulas-rId54.png)
 
 Þannig má tákna þetta efnasamband með formúlunni C~0,142~H~0,284~. Samkvæmt venju innihalda formúlur heiltölulágstafi, sem hægt er að ná með því að deila hverjum lágstaf með minni lágstafnum:
 
@@ -125,7 +125,7 @@ $\text{Cl}_{0.150}\text{O}_{0.525} = \text{Cl}_{\ \frac{0.150}{0.150}\ }\ \text{
 [Mynd 3.11](#CNX_Chem_03_03_empform) sýnir þetta ferli á flæðiriti fyrir efni sem inniheldur frumefnin A og X.
 
 
-![A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, "Mass of A atoms" and "Moles of A atoms" respectively, while the arrow that connects them has the phrase, "Divide by molar mass," written below it. The second two bottom boxes have the phrases, "Mass of X atoms" and "Moles of X atoms" respectively, while the arrow that connects them has the phrase, "Divide by molar mass" written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase "Divide by lowest number of moles" written below it. The last two boxes have the phrases, "A to X mole ratio" and "Empirical formula" respectively, while the arrow that connects them has the phrase, "Convert ratio to lowest whole numbers" written below it.](./images/media/rId60.jpg)
+![A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, "Mass of A atoms" and "Moles of A atoms" respectively, while the arrow that connects them has the phrase, "Divide by molar mass," written below it. The second two bottom boxes have the phrases, "Mass of X atoms" and "Moles of X atoms" respectively, while the arrow that connects them has the phrase, "Divide by molar mass" written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase "Divide by lowest number of moles" written below it. The last two boxes have the phrases, "A to X mole ratio" and "Empirical formula" respectively, while the arrow that connects them has the phrase, "Convert ratio to lowest whole numbers" written below it.](./images/media/3-2-determining-empirical-and-molecular-formulas-rId60.jpg)
 
 
 Mynd 3.11 Hægt er að leiða reynsluformúlu efnasambands út frá massa allra frumefna í sýninu.
@@ -138,7 +138,7 @@ Mynd 3.11 Hægt er að leiða reynsluformúlu efnasambands út frá massa allra 
 Sýni af svarta steinefninu hematíti ([mynd 3.12](#CNX_Chem_03_03_hematite)), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97 g af járni og 15,03 g af súrefni. Hver er reynsluformúla hematíts?
 
 
-![Two rounded, smooth black stones are shown.](./images/media/rId64.jpg)
+![Two rounded, smooth black stones are shown.](./images/media/3-2-determining-empirical-and-molecular-formulas-rId64.jpg)
 
 
 Mynd 3.12 Hematít er járnoxíð sem er notað í skartgripi. (heimild: Mauro Cateb)
@@ -191,7 +191,7 @@ Að lokum, varðandi útreikning á reynsluformúlum, skulum við skoða tilvik 
 Við gerjun á korni til framleiðslu á etanóli myndast gas með prósentusamsetninguna 27,29% C og 72,71% O ([mynd 3.13](#CNX_Chem_03_03_BrewTank)). Hver er reynsluformúla þessa gass?
 
 
-![A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.](./images/media/rId81.jpg)
+![A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.](./images/media/3-2-determining-empirical-and-molecular-formulas-rId81.jpg)
 
 
 Mynd 3.13 Kolefnisoxíð er fjarlægt úr þessum gerjunartönkum í gegnum stóru koparrörin efst. (heimild: „Dual Freq"/Wikimedia Commons)

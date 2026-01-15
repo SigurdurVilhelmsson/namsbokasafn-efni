@@ -86,7 +86,7 @@ Byrjaðu á fyrsta tölustafnum sem ekki er núll vinstra megin, teldu
 fjöldi markverðra stafa í mælingunni nema síðasti tölustafurinn sé núll
 á eftir sem liggur vinstra megin við kommu.
 
-![The left diagram uses the example of 1267 meters. The number 1 is the first nonzero figure on the left. 1267 has 4 significant figures in total. The right diagram uses the example of 55.0 grams. The number 5 in the tens place is the first nonzero figure on the left. 55.0 has 3 significant figures. Note that the 0 is to the right of the decimal point and therefore is a significant figure.](./images/media/rId33.png)
+![The left diagram uses the example of 1267 meters. The number 1 is the first nonzero figure on the left. 1267 has 4 significant figures in total. The right diagram uses the example of 55.0 grams. The number 5 in the tens place is the first nonzero figure on the left. 55.0 has 3 significant figures. Note that the 0 is to the right of the decimal point and therefore is a significant figure.](./images/media/1-5-rId33.png)
 
 Núll á milli eru afleiðing mælinga og eru því alltaf markverð. Núll á
 undan eru hins vegar aldrei markverð --- þau segja okkur aðeins hvar

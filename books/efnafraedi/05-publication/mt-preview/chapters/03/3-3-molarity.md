@@ -72,7 +72,7 @@ Hversu mikið af sykri (mól) er í litlum sopa (~10 ml) af gosdrykknum úr [dæ
 
 Endurraðaðu skilgreiningunni á mólstyrk til að einangra stærðina sem leitað er að, mól af sykri, og settu síðan inn gildið fyrir mólstyrk sem leitt var út í [dæmi 3.14](#fs-idm98982768), 0,375 *M*:
 
-![None](./images/media/rId37.jpg)
+![None](./images/media/3-3-molarity-rId37.png)
 
 :::
 
@@ -107,7 +107,7 @@ Eins og í fyrri dæmum er skilgreiningin á mólstyrk aðaljafnan sem notuð er
 
 $M = \ \frac{\text{mol solute}}{\text{L solution}}\  = \ \frac{25.2\ g\ \text{CH}_{3}\text{CO}_{2}\text{H}\  \times \ \frac{1\ \text{mol CH}_{3}\text{CO}_{2}\text{H}}{\text{60.052 g CH}_{3}\text{CO}_{2}\text{H}}\ }{\text{0.500 L solution}}\  = 0.839\ M$
 
-![None](./images/media/rId48.jpg)
+![None](./images/media/3-3-molarity-rId48.png)
 
 :::
 
@@ -196,7 +196,7 @@ Hvert er rúmmál 1,50 *M* KBr-lausnar sem inniheldur 66,0 g af KBr?
 Þynning er ferli þar sem styrkur lausnar er minnkaður með því að bæta við leysi. Til dæmis þynnist íste smám saman þegar ísinn bráðnar. Vatnið úr bráðnandi ísnum eykur rúmmál leysisins (vatnsins) og heildarrúmmál lausnarinnar (ísteiðsins) og minnkar þar með hlutfallslegan styrk uppleystu efnanna sem gefa drykknum bragð ([mynd 3.16](#CNX_Chem_03_04_dilution)).
 
 
-![This figure shows two graduated cylinders side-by-side. The first has about half as much blue liquid as the second. The blue liquid is darker in the first cylinder than in the second.](./images/media/rId70.jpg)
+![This figure shows two graduated cylinders side-by-side. The first has about half as much blue liquid as the second. The blue liquid is darker in the first cylinder than in the second.](./images/media/3-3-molarity-rId70.jpg)
 
 
 Mynd 3.16 Báðar lausnirnar innihalda sama massa af koparnítrati. Lausnin til hægri er þynntari vegna þess að koparnítratið er leyst upp í meiri leysi. (heimild: Mark Ott)

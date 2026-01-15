@@ -111,7 +111,7 @@ hugmyndir eru notaðar til að skilja alheiminn í stjörnufræði og
 heimsfræði.
 
 
-![A flowchart shows a box containing chemistry at its center. Chemistry is connected to geochemistry, nuclear chemistry, chemical physics, nanoscience and nanotechnology, materials science, chemical engineering, biochemistry and molecular biology, environmental science, agriculture, and mathematics. Each of these disciplines is further connected to other related fields including medicine, biology, food science, geology earth sciences, toxicology, physics, and computer science.](./images/media/rId25.jpg)
+![A flowchart shows a box containing chemistry at its center. Chemistry is connected to geochemistry, nuclear chemistry, chemical physics, nanoscience and nanotechnology, materials science, chemical engineering, biochemistry and molecular biology, environmental science, agriculture, and mathematics. Each of these disciplines is further connected to other related fields including medicine, biology, food science, geology earth sciences, toxicology, physics, and computer science.](./images/media/1-1-rId25.jpg)
 
 
 Mynd 1.3 Þekking á efnafræði er lykilatriði til að skilja fjölbreytt

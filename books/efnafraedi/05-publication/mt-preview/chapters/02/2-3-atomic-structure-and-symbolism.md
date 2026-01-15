@@ -19,7 +19,7 @@ chapter: 2
 Þróun nútíma atómkenningar leiddi margt í ljós um innri byggingu atóma. Í ljós kom að atóm inniheldur mjög lítinn kjarna sem samanstendur af jákvætt hlöðnum róteindum og óhlöðnum nifteindum, umkringdan mun stærra rúmmáli sem inniheldur neikvætt hlaðnar rafeindir. Kjarninn inniheldur meirihluta massa atómsins vegna þess að róteindir og nifteindir eru mun þyngri en rafeindir, en rafeindir taka nánast allt rúmmál atómsins. Þvermál atóms er í stærðargráðunni 10^−10^ m, en þvermál kjarnans er um það bil 10^−15^ m --- um 100.000 sinnum minna. Til að fá hugmynd um hlutfallslega stærð þeirra má íhuga þetta: Ef kjarninn væri á stærð við bláber, væri atómið á stærð við fótboltaleikvang ([mynd 2.11](#CNX_Chem_02_03_AtomSize)).
 
 
-![The diagram on the left shows a picture of an atom that is 10 to the negative tenth power meters in diameter. The nucleus is labeled at the center of the atom and is 10 to the negative fifteenth power meters. The central figure shows a photograph of an American football stadium. The figure on the right shows a photograph of a person with a handful of blueberries.](./images/media/rId21.jpg)
+![The diagram on the left shows a picture of an atom that is 10 to the negative tenth power meters in diameter. The nucleus is labeled at the center of the atom and is 10 to the negative fifteenth power meters. The central figure shows a photograph of an American football stadium. The figure on the right shows a photograph of a person with a handful of blueberries.](./images/media/2-3-atomic-structure-and-symbolism-rId21.jpg)
 
 
 Mynd 2.11 Ef hægt væri að stækka atóm upp í stærð fótboltaleikvangs væri kjarninn á stærð við eitt bláber. (heimild miðja: breyting á verki eftir „babyknight"/Wikimedia Commons; heimild hægri: breyting á verki eftir Paxson Woelber)
@@ -40,7 +40,7 @@ Tafla 2.2
 
 Fjöldi róteinda í kjarna atóms er sætistala þess (Z). Þessi eiginleiki skilgreinir frumefnið: Gildi þess segir okkur hvaða frumefni þetta er. Til dæmis er hvert atóm sem inniheldur sex róteindir frumefnið kolefni og hefur sætistöluna 6, óháð því hversu margar nifteindir eða rafeindir það kann að hafa. Óhlaðið atóm verður að innihalda jafnmargar jákvæðar og neikvæðar hleðslur, þannig að fjöldi róteinda jafngildir fjölda rafeinda. Þess vegna gefur sætistalan einnig til kynna fjölda rafeinda í atómi. Heildarfjöldi róteinda og nifteinda í atómi er kallaður massatala þess (A). Fjöldi nifteinda er því mismunurinn á massatölu og sætistölu: A -- Z = fjöldi nifteinda.
 
-![None](./images/media/rId31.jpg)
+![None](./images/media/2-3-atomic-structure-and-symbolism-rId31.png)
 
 Atóm eru rafhlutlaus (óhlaðin) ef þau innihalda jafnmargar jákvætt hlaðnar róteindir og neikvætt hlaðnar rafeindir. Þegar fjöldi þessara öreinda er *ekki* jafn hefur atómið rafhleðslu (er hlaðið) og kallast jón. Hleðsla atóms er skilgreind sem hér segir:
 
@@ -80,7 +80,7 @@ Jón platínu hefur massatöluna 195 og inniheldur 74 rafeindir. Hversu margar r
 Efnatákn er skammstöfun sem við notum til að tákna frumefni eða atóm frumefnis. Til dæmis er táknið fyrir kvikasilfur Hg ([mynd 2.13](#CNX_Chem_02_03_SiSymbol)). Við notum sama tákn til að tákna eitt kvikasilfursatóm (smásætt svið) eða til að merkja ílát með mörgum atómum frumefnisins kvikasilfurs (stórsætt svið).
 
 
-![A jar labeled "H g" is shown with a small amount of liquid mercury in it.](./images/media/rId45.jpg)
+![A jar labeled "H g" is shown with a small amount of liquid mercury in it.](./images/media/2-3-atomic-structure-and-symbolism-rId45.jpg)
 
 
 Mynd 2.13 Táknið Hg táknar frumefnið kvikasilfur óháð magni; það gæti táknað eitt kvikasilfursatóm eða mikið magn af kvikasilfri.

@@ -153,7 +153,7 @@ $\text{NH}_{3}(aq) + \text{H}_{2}\text{O}(l) \rightleftharpoons \text{NH}_{4}^{\
 Þetta er, samkvæmt skilgreiningu, sýru-basa hvarf, í þessu tilviki felur það í sér flutning H^+^ jóna frá vatnssameindum yfir á ammóníaksameindir. Við venjulegar aðstæður er aðeins um 1% af uppleystu ammóníaki til staðar sem $\text{NH}_{4}^{+}$ jónir.
 
 
-![This photograph shows a large agricultural tractor in a field pulling a field sprayer and a large, white cylindrical tank which is labeled "Caution Ammonia."](./images/media/rId64.jpg)
+![This photograph shows a large agricultural tractor in a field pulling a field sprayer and a large, white cylindrical tank which is labeled "Caution Ammonia."](./images/media/4-2-classifying-chemical-reactions-rId64.jpg)
 
 
 Mynd 4.7 Ammóníak er veikur basi sem notaður er í margvíslegum tilgangi. (a) Hreint ammóníak er almennt notað sem landbúnaðaráburður. (b) Þynntar lausnir af ammóníaki eru áhrifarík heimilishreinsiefni. (Heimild a: breytt útgáfa af verki eftir National Resources Conservation Service; heimild b: breytt útgáfa af verki eftir pat00139)
