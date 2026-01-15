@@ -18,6 +18,8 @@ chapter: 1
     misleita efnablöndu með tilliti til efnishams og samsetningar
 -   Skilgreint og gefið dæmi um atóm og sameindir
 
+:::
+
 Efni er skilgreint sem allt sem tekur pláss og hefur massa, og það er
 allt í kringum okkur. Föst efni og vökvar eru augljóslega efni: Við
 sjáum að þau taka pláss og þyngd þeirra segir okkur að þau hafi massa.
@@ -120,6 +122,8 @@ er við tiltekna umbreytingu. Til dæmis, þegar þú borðar, meltir og
 tileinkar þér mat, varðveitist allt efnið í upprunalega matnum. En þar
 sem hluti efnisins verður hluti af líkama þínum og mikið er skilið út
 sem ýmiss konar úrgangur, er erfitt að sannreyna það með mælingum.
+
+:::
 
 ### Flokkun efnis
 
@@ -255,6 +259,8 @@ Efnasamsetning jarðar
 | títan | Ti | 0,58 | allt annað | \- | 0,47 |
 
 Tafla 1.1
+
+:::
 
 ### Atóm og sameindir
 
@@ -401,6 +407,8 @@ rafefnafræðilegu ferli og myndar aðeins vatn sem úrgangsefni.
 
  
 
+:::
+
 :::chemistry-everyday
 
 #### Efnafræði farsíma
@@ -429,3 +437,5 @@ pólýakrýlónítríli.
 
 Mynd 1.17 Næstum þriðjungur náttúrulegra frumefna er notaður til að
 framleiða farsíma. (heimild: breytt útgáfa af verki eftir John Taylor)
+
+:::

@@ -13,6 +13,8 @@ chapter: 3
 -   Skilgreint styrkeiningarnar massaprósentu, rúmmálsprósentu, massa-rúmmálsprósentu, milljónustuhluta (ppm) og milljarðshluta (ppb)
 -   Framkvæmt útreikninga sem tengja styrk lausnar við rúmmál og/eða massa innihaldsefna hennar með því að nota þessar einingar
 
+:::
+
 Í fyrri kafla var mólstyrkur kynntur til sögunnar, en það er mjög gagnleg mælieining til að meta styrk lausna. Mólstyrkur er þó aðeins einn mælikvarði á styrk lausnar. Í þessum kafla verður fjallað um nokkrar aðrar styrkeiningar sem eru almennt notaðar í ýmsum tilgangi, annaðhvort vegna þæginda eða hefðar.
 
 ### Massaprósenta
@@ -46,6 +48,8 @@ $\%\ \text{glucose} = \ \frac{3.75\ \text{mg glucose}\  \times \ \frac{1\ \text{
 
 Athugið að þótt hægt sé að nota hvaða massaeiningu sem er til að reikna út massaprósentu (mg, g, kg, oz og svo framvegis), verður að nota sömu einingu fyrir bæði uppleysta efnið og lausnina svo að massaeiningarnar styttist út og eftir standi víddarlaust hlutfall. Í þessu tilfelli var massaeiningu uppleysta efnisins í teljaranum breytt úr mg í g til að passa við einingarnar í nefnaranum. Einnig hefði verið hægt að breyta massaeiningu mænuvökvans í nefnaranum úr g í mg. Svo lengi sem notaðar eru eins massaeiningar fyrir bæði uppleysta efnið og lausnina verður útreiknuð massaprósenta rétt.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -54,7 +58,11 @@ Flaska af flísahreinsi inniheldur 135 g af HCl og 775 g af vatni. Hver er massa
 :::answer
 14,8%
 
+:::
+
  
+
+:::
 
 :::example
 ### Dæmi 3.23: Útreikningar með massaprósentu
@@ -71,6 +79,8 @@ $\text{500 mL solution}\ \left( \frac{1.19\ \text{g solution}}{\text{mL solution
 
 Þessi massi HCl er í samræmi við gróft mat okkar upp á um það bil 200 g.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -79,11 +89,15 @@ Hvaða rúmmál af þéttri HCl-lausn inniheldur 125 g af HCl?
 :::answer
 282 ml
 
+:::
+
 ### Rúmmálsprósenta
 
 Rúmmál vökva af mjög mismunandi stærðargráðum eru auðveldlega mæld með algengum og tiltölulega ódýrum rannsóknarstofubúnaði. Styrkur lausnar sem myndast við að leysa upp leyst efni í fljótandi formi í fljótandi leysi er því oft gefinn upp sem rúmmálsprósenta, %vol eða (v/v)%:
 
 $\text{volume percentage} = \ \frac{\text{volume solute}}{\text{volume solution}}\  \times \ 100\%$
+
+:::
 
 :::example
 ### Dæmi 3.24: Útreikningar með rúmmálsprósentu
@@ -96,6 +110,8 @@ Samkvæmt skilgreiningu á rúmmálsprósentu er rúmmál ísóprópanóls 70% a
 
 $\left( 355\ \text{mL solution} \right)\ \left( \frac{70\ \text{mL isopropyl alcohol}}{100\ \text{mL solution}} \right)\ \left( \frac{0.785\ \text{g isopropyl alcohol}}{1\ \text{mL isopropyl alcohol}} \right)\  = \ 195\ \text{g isopropyl alchol}$
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -103,6 +119,8 @@ Vín er um það bil 12% etanól (CH~3~CH~2~OH) miðað við rúmmál. Etanól h
 
 :::answer
 1,5 mól etanól
+
+:::
 
 ### Massa-rúmmálsprósenta
 
@@ -130,6 +148,8 @@ Bæði ppm og ppb eru hentugar einingar til að gefa upp styrk mengunarefna og a
 
 Mynd 3.19 (a) Á sumum svæðum getur snefilstyrkur mengunarefna gert ósíað kranavatn óhæft til drykkjar og matargerðar. (b) Vatnssíur í leiðslum draga úr styrk leystra efna í kranavatni. (Heimild a: breytt útgáfa af verki eftir Jenn Durfey; heimild b: breytt útgáfa af verki eftir „vastateparkstaff"/Wikimedia commons)
 
+:::
+
 :::example
 ### Dæmi 3.25: Útreikningur á styrk í milljónustu hlutum og milljarðshlutum
 
@@ -149,6 +169,8 @@ Að lokum er þessum massa breytt í umbeðna einingu, míkrógrömm:
 
 $4.5\  \times \ 10^{- 6}\ \text{g}\  \times \ \frac{1\ \text{μg}}{10^{- 6}\ \text{g}}\  = 4.5\ \text{μg}$
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -156,3 +178,7 @@ $4.5\  \times \ 10^{- 6}\ \text{g}\  \times \ \frac{1\ \text{μg}}{10^{- 6}\ \te
 
 :::answer
 9,6 ppm, 9600 ppb
+
+:::
+
+:::

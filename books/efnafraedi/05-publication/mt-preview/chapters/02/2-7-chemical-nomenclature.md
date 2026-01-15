@@ -12,6 +12,8 @@ chapter: 2
 
 -   Gefið algengum tegundum ólífrænna efnasambanda heiti með kerfisbundnum hætti
 
+:::
+
 Nafnakerfi, safn reglna um að nefna hluti, er mikilvægt í vísindum og í mörgum öðrum aðstæðum. Í þessum hluta er lýst aðferð sem er notuð til að nefna einföld jóna- og sameindaefni, svo sem NaCl, CaCO~3~ og N~2~O~4~. Einföldust þeirra eru tvíefni, þau sem innihalda aðeins tvö frumefni, en við munum einnig skoða hvernig á að nefna jónaefni sem innihalda fjölatóma jónir og einn sérstakan, mjög mikilvægan flokk efnasambanda sem kallast sýrur (í síðari köflum þessa texta verður fjallað ítarlega um þessi efnasambönd). Við munum takmarka athygli okkar hér við ólífræn efnasambönd, efnasambönd sem eru aðallega samsett úr öðrum frumefnum en kolefni, og munum fylgja nafnakerfisleiðbeiningum sem IUPAC hefur lagt til. Reglurnar fyrir lífræn efnasambönd, þar sem kolefni er aðalfrumefnið, verða meðhöndlaðar í síðari kafla um lífræna efnafræði.
 
 ### Jónaefni
@@ -110,6 +112,8 @@ Forskeyti í nafnakerfum
 
 Tafla 2.10
 
+:::
+
 :::example
 ### Dæmi 2.13: Nafngift jónaefna
 
@@ -139,6 +143,8 @@ Anjónirnar í þessum efnasamböndum hafa fasta neikvæða hleðslu (S^2−^, S
 
 \(e\) títan(III)súlfat
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -157,7 +163,11 @@ Skrifaðu formúlur eftirfarandi jónaefna:
 :::answer
 \(a\) CrP; (b) HgS; (c) Mn~3~(PO~4~)~2~; (d) Cu~2~O; (e) FeCl~3~·2H~2~O
 
+:::
+
  
+
+:::
 
 :::chemistry-everyday: Erin Brockovich og krómmengun
 
@@ -197,6 +207,8 @@ Tafla 2.11
 
 Það eru nokkur almenn nöfn sem þú munt rekast á þegar þú heldur áfram námi þínu í efnafræði. Til dæmis, þótt NO sé oft kallað nituroxíð, er rétt nafn þess köfnunarefnismónoxíð. Á sama hátt er N~2~O þekkt sem hláturgas þótt reglur okkar myndu kveða á um nafnið díniturmónoxíð. (Og H~2~O er venjulega kallað vatn, ekki dívetnismónoxíð.) Þú ættir að leggja á minnið almenn nöfn efnasambanda þegar þú rekst á þau.
 
+:::
+
 :::example
 ### Dæmi 2.14: Nafngiftir samgildra efnasambanda
 
@@ -222,6 +234,8 @@ Nefndu eftirfarandi samgildu efnasambönd:
 
 \(d\) tetrafosfórhexoxíð
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -238,11 +252,17 @@ Skrifaðu efnaformúlur fyrir eftirfarandi efnasambönd:
 :::answer
 \(a\) PCl~5~; (b) N~2~O; (c) IF~7~; (d) CCl~4~
 
+:::
+
  
+
+:::
 
 :::link-to-material
 
 Eftirfarandi [vefsíða](http://openstax.org/l/16chemcompname) býður upp á æfingar í nafngiftum efnasambanda og ritun efnaformúla. Þú getur valið tvíundar, fjölfrumeinda og jónaefni með breytilega hleðslu, auk sameindaefnasambanda.
+
+:::
 
 ### Tvíundarsýrur
 

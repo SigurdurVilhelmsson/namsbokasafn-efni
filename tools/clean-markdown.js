@@ -92,24 +92,40 @@ function fixMspaceCommands(content) {
 /**
  * Remove orphan ::: directive markers
  *
- * A ::: on its own line that doesn't open a new directive should be removed.
+ * A truly orphan ::: is one that appears without a matching opening directive.
  * Valid directives look like: :::name or :::name{attrs}
- * Orphan markers are just ::: with possible whitespace.
+ * Closing markers (:::) that follow an opening directive should be preserved.
+ *
+ * NOTE: This function now tracks directive state to avoid removing valid
+ * closing markers. Only removes ::: that appear outside any directive block.
  */
 function removeOrphanDirectiveMarkers(content) {
   const lines = content.split('\n');
   const result = [];
   let count = 0;
+  let directiveDepth = 0; // Track nested directive depth
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     const trimmed = line.trim();
 
-    // Check if this line is ONLY ::: (with possible whitespace)
-    // A valid directive would be :::name or :::name{...}
+    // Check if this line opens a directive (:::name or :::name{attrs})
+    if (/^:::[a-zA-Z]/.test(trimmed)) {
+      directiveDepth++;
+      result.push(line);
+      continue;
+    }
+
+    // Check if this line is ONLY ::: (closing marker or orphan)
     if (trimmed === ':::') {
-      // This is an orphan marker - skip it
-      count++;
+      if (directiveDepth > 0) {
+        // This is a valid closing marker - keep it
+        directiveDepth--;
+        result.push(line);
+      } else {
+        // This is truly orphan (no opening directive) - skip it
+        count++;
+      }
       continue;
     }
 

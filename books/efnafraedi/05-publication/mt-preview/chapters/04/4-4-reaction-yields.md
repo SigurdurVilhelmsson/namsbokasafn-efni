@@ -14,6 +14,8 @@ chapter: 4
 -   Leitt út fræðilegar heimtur fyrir efnahvarf við tilgreindar aðstæður.
 -   Reiknað prósentuheimtur fyrir efnahvarf.
 
+:::
+
 Hlutfallslegt magn hvarfefna og myndefna sem sýnt er í stilltri efnajöfnu er oft kallað *hlutfallaefnafræðilegt magn*. Öll dæmin í fyrri kafla snerust um hlutfallaefnafræðilegt magn hvarfefna. Til dæmis, þegar reiknað var út magn myndefnis sem myndaðist úr tilteknu magni hvarfefnis, var gert ráð fyrir að öll önnur nauðsynleg hvarfefni væru til staðar í hlutfallaefnafræðilegu magni (eða meira). Í þessari einingu er fjallað um raunhæfari aðstæður þar sem hvarfefni eru ekki til staðar í hlutfallaefnafræðilegu magni.
 
 ### Takmarkandi hvarfefni
@@ -56,6 +58,8 @@ Mynd 4.14 Þegar H~2~ og Cl~2~ er blandað saman í magni sem ekki er í réttum
 
 Skoðaðu þessa gagnvirku [hermun](http://openstax.org/l/16reactantprod) sem sýnir hugtökin takmarkandi og umfram hvarfefni.
 
+:::
+
  
 
 :::example
@@ -95,6 +99,8 @@ $\text{mol}\ \text{Si}_{3}\,\text{N}_{4}\ \text{produced} = \text{0.0535 mol}\ \
 
 Þar sem kísill gefur minna magn af myndefni er hann takmarkandi hvarfefnið.
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -103,6 +109,8 @@ Hvert er takmarkandi hvarfefnið þegar 5,00 g af H~2~ og 10,0 g af O~2~ hvarfas
 :::answer
 O~2~
 
+:::
+
 ### Prósentuheimtur
 
 Það magn myndefnis sem *getur* myndast við efnahvarf við tilteknar aðstæður, eins og reiknað er út samkvæmt hlutfallaefnafræði viðeigandi stilltrar efnajöfnu, er kallað fræðilegar heimtur efnahvarfsins. Í reynd er magn myndefnis sem fæst kallað raunheimtur og þær eru oft minni en fræðilegar heimtur af ýmsum ástæðum. Sum efnahvörf eru í eðli sínu óskilvirk og þeim fylgja *hliðarhvörf* sem mynda önnur myndefni. Önnur eru í eðli sínu ófullkomin (hugleiddu ófullkomin hvörf veikra sýra og basa sem fjallað var um fyrr í þessum kafla). Erfitt er að safna sumum myndefnum án þess að eitthvað tapist og því mun ófullkomin endurheimt draga úr raunheimtum. Hversu vel fræðilegum heimtum efnahvarfs er náð er almennt gefið upp sem prósentuheimtur þess:
@@ -110,6 +118,8 @@ O~2~
 $\text{percent yield} = \ \frac{\text{actual yield}}{\text{theoretical yield}}\  \times \ 100\%$
 
 Raunheimtur og fræðilegar heimtur má gefa upp sem massa eða mólmagn (eða annan viðeigandi eiginleika, t.d. rúmmál ef myndefnið er gas). Svo lengi sem báðar heimtur eru gefnar upp með sömu einingum falla þær út þegar prósentuheimtur eru reiknaðar.
+
+:::
 
 :::example
 ### Dæmi 4.13: Útreikningur á prósentuheimtum
@@ -132,6 +142,8 @@ $\text{percent yield} = \left( \frac{\text{actual yield}}{\text{theoretical yiel
 
 ![None](./images/media/rId55.jpg)
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -142,7 +154,11 @@ $\text{CCl}_{4} + 2\text{HF}\  \rightarrow \ \text{CF}_{2}\text{Cl}_{2} + 2\text
 :::answer
 48,3%
 
+:::
+
  
+
+:::
 
 :::note
 ### Hvernig vísindi tengjast: Græn efnafræði og atómhagkvæmni
@@ -160,3 +176,5 @@ Framleiðsla á hinu algenga lausasölulyfi íbúprófeni sýnir vel árangur gr
 
 
 Mynd 4.15 (a) Íbúprófen er vinsælt lausasöluverkjalyf sem er almennt selt í 200 mg töflum. (b) BHC-ferlið til að framleiða íbúprófen krefst aðeins þriggja þrepa og sýnir glæsilega atómhagkvæmni. (heimild a: breyting á verki eftir Derrick Coetzee)
+
+:::

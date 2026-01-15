@@ -14,6 +14,8 @@ chapter: 2
 -   Spáð fyrir um almenna eiginleika frumefna út frá staðsetningu þeirra í lotukerfinu
 -   Þekkt málma, málmleysingja og hálfmálma út frá eiginleikum þeirra og/eða staðsetningu í lotukerfinu
 
+:::
+
 Þegar efnafræðingar unnu í árdaga að því að hreinsa málmgrýti og uppgötvuðu fleiri frumefni, gerðu þeir sér grein fyrir því að hægt væri að flokka ýmis frumefni saman eftir svipaðri efnafræðilegri hegðun. Einn slíkur flokkur inniheldur litíum (Li), natríum (Na) og kalíum (K): Öll þessi frumefni eru glansandi, leiða vel varma og rafmagn og hafa svipaða efnaeiginleika. Annar flokkur inniheldur kalsíum (Ca), strontíum (Sr) og baríum (Ba), sem eru einnig glansandi, góðir varma- og rafmagnsleiðarar og eiga sameiginlega efnaeiginleika. Hins vegar eru sértækir eiginleikar þessara tveggja flokka verulega frábrugðnir hvor öðrum. Til dæmis: Li, Na og K eru mun hvarfgjarnari en Ca, Sr og Ba; Li, Na og K mynda efnasambönd með súrefni í hlutfallinu tvö atóm þeirra á móti einu súrefnisatómi, en Ca, Sr og Ba mynda efnasambönd með einu atómi þeirra á móti einu súrefnisatómi. Flúor (F), klór (Cl), bróm (Br) og joð (I) sýna einnig svipaða eiginleika sín á milli, en þessir eiginleikar eru gjörólíkir eiginleikum allra fyrrnefndra frumefna.
 
 Dimitri Mendeleev í Rússlandi (1869) og Lothar Meyer í Þýskalandi (1870) gerðu sér hvor í sínu lagi grein fyrir því að reglubundið samband væri á milli eiginleika þeirra frumefna sem þekkt voru á þeim tíma. Báðir gáfu út töflur þar sem frumefnunum var raðað eftir vaxandi atómmassa. En Mendeleev gekk einu skrefi lengra en Meyer: Hann notaði töfluna sína til að spá fyrir um tilvist frumefna sem hefðu svipaða eiginleika og ál og kísill, en voru enn óþekkt. Uppgötvanir gallíums (1875) og germaníums (1886) veittu mikinn stuðning við vinnu Mendeleevs. Þrátt fyrir að Mendeleev og Meyer hafi lengi deilt um hvor þeirra ætti heiðurinn, eru framlög Mendeleevs til þróunar lotukerfisins nú almennt viðurkennd ([mynd 2.25](#CNX_Chem_02_05_Mendeleev)).
@@ -52,6 +54,8 @@ Mynd 2.27 Lotukerfið flokkar frumefni með svipaða eiginleika í hópa.
 
 Smelltu á þennan [tengil](https://openstax.org/l/16Periodic) til að sjá gagnvirkt lotukerfi sem þú getur notað til að kanna eiginleika frumefnanna (inniheldur hlaðvörp og myndbönd um hvert frumefni). Þú gætir líka viljað prófa [þetta](https://openstax.org/l/16Periodic2) sem sýnir myndir af öllum frumefnunum.
 
+:::
+
  
 
 
@@ -80,6 +84,8 @@ Fjölskyldunöfnin eru sem hér segir:
 
 \(d\) kalkógen
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -99,3 +105,7 @@ Gefðu upp hópnafn fyrir hvert af eftirfarandi frumefnum:
 Eins og þú munt læra í frekara námi í efnafræði, hegða frumefni í hópum sér oft á nokkuð svipaðan hátt. Þetta er að hluta til vegna fjölda rafeinda á ysta hvolfi þeirra og svipaðrar tilhneigingar þeirra til að mynda tengi. Þessir sameiginlegu eiginleikar geta haft víðtækar afleiðingar í náttúru, vísindum og læknisfræði. Til dæmis, þegar Gertrude Elion og George Hitchens voru að rannsaka leiðir til að trufla frumu- og veiruafritun til að berjast gegn sjúkdómum, nýttu þau sér líkindin milli brennisteins og súrefnis (bæði í hóp 16) og getu þeirra til að tengjast á svipaðan hátt. Elion einbeitti sér að púrínríkjum, sem eru lykilþættir DNA og innihalda súrefni. Hún komst að því að með því að nota efnasambönd sem byggjast á brennisteini (kölluð púrín-hliðstæður) sem líkja eftir byggingu púrínríkja, myndu sameindir innan DNA tengjast hliðstæðunum frekar en „venjulegu" DNA-púrínríkjunum. Með því að breyta venjulegri DNA-tengingu og byggingu tókst Elion að trufla frumuafritun. Í grunninn virkaði aðferðin vegna líkindanna milli brennisteins og súrefnis. Uppgötvun hennar leiddi beint til mikilvægra meðferða við hvítblæði. Á heildina litið leiddi vinna Elion með George Hitchens ekki aðeins til fleiri meðferða, heldur breytti hún einnig allri aðferðafræði lyfjaþróunar. Með því að nota sérstök frumefni og efnasambönd til að miða á sérstaka þætti æxlisfrumna, veira og baktería, lögðu þau grunninn að mörgum af algengustu og mikilvægustu lyfjum nútímans, sem eru notuð til að hjálpa milljónum manna á hverju ári. Þau hlutu Nóbelsverðlaunin árið 1988.
 
 Við rannsókn á lotukerfinu gætir þú hafa tekið eftir einhverju varðandi atómmassa sumra frumefnanna. Frumefni 43 (teknetín), frumefni 61 (prómetín) og flest frumefni með sætistölu 84 (pólóníum) og hærri hafa atómmassa sinn gefinn upp í hornklofum. Þetta er gert fyrir frumefni sem samanstanda eingöngu af óstöðugum, geislavirkum samsætum (þú munt læra meira um geislavirkni í kaflanum um kjarnaefnafræði). Ekki er hægt að ákvarða meðalatómmassa fyrir þessi frumefni vegna þess að hlutfallslegt magn geislasamsæta þeirra getur verið mjög breytilegt, allt eftir uppruna, eða þær kunna jafnvel ekki að vera til í náttúrunni. Talan í hornklofum er atómmassatala (nálgaður atómmassi) stöðugustu samsætu þess frumefnis.
+
+:::
+
+:::

@@ -15,6 +15,8 @@ chapter: 1
 -   Sýnt óvissu í stærðum á réttan hátt með markverðum stöfum
 -   Beitt réttum námundunarreglum á útreiknaðar stærðir
 
+:::
+
 Talning er eina mælingin sem er laus við óvissu, að því gefnu að fjöldi
 hluta sem verið er að telja breytist ekki á meðan talningin fer fram.
 Niðurstaða slíkrar talningar er dæmi um nákvæma tölu. Með því að telja
@@ -195,6 +197,8 @@ felldur brott er 5 og tölustafurinn sem haldið er er slétt tala)
 \(d\) 0,90275 er námundað „upp" í 0,9028 (tölustafurinn sem er felldur
 brott er 5 og tölustafurinn sem haldið er er slétt tala)
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -211,7 +215,11 @@ Námundaðu eftirfarandi að tilgreindum fjölda markverðra stafa:
 :::answer
 \(a\) 0,42; (b) 0,00387; (c) 421,2; (d) 28.684
 
+:::
+
  
+
+:::
 
 :::example
 ### Dæmi 1.4
@@ -238,6 +246,8 @@ Svarið er 65 g (námundað að einingarsæti; engir aukastafir)
 
 ![Figure A shows 1.0023 being added to 4.383 to yield the answer 5.385. 1.0023 goes to the ten thousandths place, but 4.383 goes to the thousandths place, making it the less precise of the two numbers. Therefore the answer, 5.3853, should be rounded to the thousandths, to yield 5.385. Figure B shows 486 grams minus 421.23 grams, which yields the answer 64.77 grams. This answer should be round to the ones place, making the answer 65 grams.](./images/media/rId57.jpg)
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -248,7 +258,11 @@ Svarið er 65 g (námundað að einingarsæti; engir aukastafir)
 :::answer
 \(a\) 2,64 ml; (b) 0,658 m
 
+:::
+
  
+
+:::
 
 :::example
 ### Dæmi 1.5
@@ -269,6 +283,8 @@ námunduð að sama fjölda tölustafa og talan með fæsta markverða stafi
 
 ![None](./images/media/rId66.png)
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -285,6 +301,10 @@ gildanna sem gefin eru upp rétt og tryggja að útreiknuð niðurstaða sé
 ekki sett fram sem nákvæmari en ónákvæmasta gildið sem notað var í
 útreikningnum.
 
+:::
+
+:::
+
 :::example
 ### Dæmi 1.6
 
@@ -298,6 +318,8 @@ lítrum.
 
 ![None](./images/media/rId71.png)
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -306,7 +328,11 @@ Hver er eðlismassi vökva með massann 31,1415 g og rúmmálið 30,13 cm^3^?
 :::answer
 1,034 g/ml
 
+:::
+
  
+
+:::
 
 :::example
 ### Dæmi 1.7
@@ -344,6 +370,8 @@ er eðlismassi járns 7,9 g/cm^3^, sem er mjög nálægt eðlismassa
 steypustyrktarjárns, sem styður þá staðreynd að steypustyrktarjárn er að
 mestu leyti járn.
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -360,6 +388,8 @@ síðan sökkt í mæliglas, með þeim niðurstöðum sem sýndar eru. ![This d
 eðlismassinn er mjög nálægt þeim eðlismassa sem gefinn er fyrir gull í
 [töflu
 1.4](http://openstax.org/books/chemistry-2e/pages/1-4-measurements#fs-idm45639696).
+
+:::
 
 ### Hittni og nákvæmni
 
@@ -410,3 +440,5 @@ nákvæmni (rúmmál sveiflast um meira en 4 ml). Að lokum getur hún skráð
 að skammtari nr. 3 virki vel og skammti hóstasaft með bæði hittni (öll
 rúmmál innan 0,1 ml frá markrúmmáli) og nákvæmni (rúmmál víkja ekki
 meira en 0,2 ml frá hvert öðru).
+
+:::

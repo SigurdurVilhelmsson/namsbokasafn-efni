@@ -16,6 +16,8 @@ chapter: 1
 -   Greint á milli tilgátna, kenninga og lögmála
 -   Nefnt dæmi sem lýsa stórsæjum, smásæjum og táknrænum sviðum
 
+:::
+
 Í gegnum mannkynssöguna hefur fólk reynt að breyta efni í nytsamlegri
 mynd. Forfeður okkar á steinöld tálguðu tinnu í nytsamleg verkfæri og
 skáru út styttur og leikföng úr viði. Þessar athafnir fólu í sér að

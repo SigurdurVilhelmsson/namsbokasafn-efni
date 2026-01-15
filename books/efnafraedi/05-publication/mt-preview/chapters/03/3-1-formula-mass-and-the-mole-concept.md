@@ -14,6 +14,8 @@ chapter: 3
 -   Skilgreint magnseininguna mól og skylda stærð, tölu Avogadrosar
 -   Útskýrt sambandið milli massa, móla og fjölda atóma eða sameinda og framkvæmt útreikninga til að leiða þessar stærðir hverja af annarri
 
+:::
+
 Margir halda því fram að nútímaefnafræði hafi hafist þegar vísindamenn fóru að kanna magnbundna þætti efnafræðinnar jafnt og þá þáttbundnu. Til dæmis var atómkenning Daltons tilraun til að útskýra niðurstöður mælinga sem gerðu honum kleift að reikna út hlutfallslegan massa frumefna sem sameinuðust í ýmsum efnasamböndum. Skilningur á sambandi milli massa atóma og efnaformúla efnasambanda gerir okkur kleift að lýsa samsetningu efna á magnbundinn hátt.
 
 ### Formúlumassi
@@ -49,6 +51,8 @@ Mynd 3.3 Meðalmassi aspirínsameindar er 180,15 amu. Líkanið sýnir sameindab
 
 Sameindir þessa efnasambands eru samsettar úr 13 kolefnisatómum, 18 vetnisatómum og 2 súrefnisatómum. Samkvæmt aðferðinni sem lýst er hér að ofan er meðalsameindamassi þessa efnasambands því: ![A table is shown that is made up of six columns and five rows. The header row reads: "Element," "Quantity," a blank space, "Average atomic mass (a m u)," a blank space, and "Subtotal (a m u)." The first column contains the symbols "C," "H," "O," and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers "13," "8," and "2" as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers "12.01," "1.008," and "16.00" as well as the merged cell. The fifth column contains the symbol "=" in each cell except for the last, merged cell. The sixth column contains the values "156.13," "18.114," "32.00," and "206.27." There is a thick black line below the number 32.00. The merged cell under the first five columns reads "Molecular mass." To the right is a ball-and-stick model of the structure. At the center, it shows six black spheres arranged in a six-sided ring with alternating double bonds. The two black spheres at the top and bottom of the six-sided ring are each bonded to one, smaller, white sphere. The black sphere on the left side of the six-sided ring is connect to another black sphere. This sphere is connected to two smaller, white spheres and another black sphere. This black sphere is connected to one, smaller white sphere, and two other black spheres. Each of these last two black spheres is connected to two smaller, white spheres. The black sphere on the right side of the six-sided ring is connected to another black sphere. This black sphere is connected to one smaller, white sphere and two other black spheres. The black sphere that is connected to it and is situated to the top right is connected to two smaller, white spheres. The black sphere connected towards the bottom right is connected to two red spheres. It forms a double bond with one of these red spheres and the other red sphere is connected to a smaller, white sphere.](./images/media/rId30.jpg)
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -56,6 +60,8 @@ Parasetamól, C~8~H~9~NO~2~, er samgilt efnasamband og virka efnið í nokkrum v
 
 :::answer
 151,16 amu
+
+:::
 
 #### Formúlumassi fyrir jónaefni
 
@@ -71,6 +77,8 @@ Mynd 3.4 Matarsalt, NaCl, inniheldur fylki af natríum- og klóríðjónum sem s
 
 Athugaðu að meðalmassar hlutlausra natríum- og klóratóma voru notaðir í þessum útreikningi, frekar en massar natríumkatjóna og klóríðanjóna. Þessi aðferð er fullkomlega ásættanleg við útreikning á formúlumassa jónaefnis. Jafnvel þótt natríumkatjón hafi örlítið minni massa en natríumatóm (þar sem það vantar rafeind), mun þessi munur vega upp á móti því að klóríðanjón er örlítið massameiri en klóratóm (vegna auka rafeindarinnar). Þar að auki er massi rafeindar hverfandi lítill miðað við massa dæmigerðs atóms.. Jafnvel þegar massi stakrar jónar er reiknaður út má yfirleitt hunsa rafeindirnar sem vantar eða eru umfram, þar sem framlag þeirra til heildarmassans er hverfandi og endurspeglast aðeins í aukastöfum sem falla brott þegar reiknaður massi er námundaður rétt. Fáu undantekningarnar frá þessari viðmiðunarreglu eru mjög léttar jónir sem eru myndaðar úr frumefnum með nákvæmlega þekktan atómmassa.
 
+:::
+
 :::example
 ### Dæmi 3.2
 
@@ -82,6 +90,8 @@ Athugaðu að meðalmassar hlutlausra natríum- og klóratóma voru notaðir í 
 
 Formúla þessa efnasambands gefur til kynna að það innihaldi Al^3+^ og SO~4~^2−^ jónir í hlutfallinu 2:3. Til að reikna út formúlumassa er gagnlegt að endurrita formúluna á einfaldara formi, Al~2~S~3~O~12~. Samkvæmt aðferðinni sem lýst er hér að ofan er formúlumassi þessa efnasambands reiknaður út á eftirfarandi hátt: ![A table is shown that is made up of six columns and five rows. The header row reads: "Element," "Quantity," a blank space, "Average atomic mass (a m u)," a blank space, and "Subtotal (a m u)." The first column contains the symbols "A l," "S," "O," and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers "2," "3," and "12" as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers "26.98," "32.06," and "16.00" as well as the merged cell. The fifth column contains the symbol "=" in each cell except for the last, merged cell. The sixth column contains the values "53.96," "96.18," "192.00," and "342.14." There is a thick black line under the number 192.00. The merged cell under the first five columns reads "Formula mass." To the right of this table is a ball-and-stick structure. It shows yellow and grey sphere connected to red spheres in a complex pattern. The yellow and grey spheres are similar in size, but the red spheres appear to be smaller by comparison.](./images/media/rId42.jpg)
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -89,6 +99,8 @@ Kalsíumfosfat, Ca~3~(PO~4~)~2~, er jónaefni og algengt kekkjavarnarefni sem b�
 
 :::answer
 310,18 amu
+
+:::
 
 ### Mólið
 
@@ -128,11 +140,15 @@ Mynd 3.6 Hvert sýni inniheldur 6,02 $\times$ 10^23^ sameindir eða formúlueini
 
 Mynd 3.7 Fjöldi sameinda í einum vatnsdropa er um það bil 100 milljörðum sinnum meiri en fjöldi fólks á jörðinni. (Heimild: „tanakawho"/Wikimedia commons)
 
+:::
+
 :::link-to-material
 
 Mólið er notað í efnafræði til að tákna 6,022 $\times$ 10^23^ af einhverju, en það getur verið erfitt að skilja svo stóra tölu. Horfðu á þetta [myndband](http://openstax.org/l/16molevideo) og svaraðu síðan „Hugsaðu"-spurningunum sem fylgja. Kynntu þér mólið nánar með því að skoða upplýsingarnar undir „Kafaðu dýpra".
 
 Sambandið milli formúlumassa, mólsins og tölu Avogadros er hægt að nota til að reikna út ýmis magn sem lýsa samsetningu efna og efnasambanda, eins og sýnt er í næstu dæmum.
+
+:::
 
 :::example
 ### Dæmi 3.3
@@ -155,6 +171,8 @@ $4.7\ \text{g}\ \text{K}\ \left( \frac{\text{mol K}}{39.10\ \text{g K}} \right)\
 
 Reiknuð stærð (0,12 mól K) er í samræmi við grófa matið okkar, þar sem hún er aðeins meiri en 0,1 mól.
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -163,7 +181,11 @@ Beryllíum er léttur málmur sem notaður er til að búa til gagnsæja röntge
 :::answer
 0,360 mól
 
+:::
 
+
+
+:::
 
 :::example
 ### Dæmi 3.4
@@ -182,6 +204,8 @@ $9.2\  \times \ 10^{- 4}\ \text{mol}\ \text{Ar}\ \left( \frac{39.95\ \text{g Ar}
 
 Niðurstaðan er í samræmi við væntingar okkar, um 0,04 g Ar.
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -190,7 +214,11 @@ Hver er massi 2,561 móls af gulli?
 :::answer
 504,4 g
 
+:::
 
+
+
+:::
 
 :::example
 ### Dæmi 3.5
@@ -215,6 +243,8 @@ $5.00\ \text{g}\ \text{Cu}\ \left( \frac{\text{mol}\ \text{Cu}}{63.55\ \text{g C
 
 Einingagreining gefur tilætlaða styttingu eininga og útreiknuð niðurstaða er í stærðargráðunni 10^22^ eins og búist var við.
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -223,7 +253,11 @@ Gullgrafari sem skolar gull í á safnar 15,00 g af hreinu gulli. Hversu mörg A
 :::answer
 4,586 $\times$ 10^22^ Au-atóm
 
+:::
 
+
+
+:::
 
 :::example
 ### Dæmi 3.6
@@ -246,6 +280,8 @@ $28.35\ \text{g}\ \text{glycine}\ \left( \frac{\text{mol glycine}}{75.07\ \text{
 
 Þessi niðurstaða er í samræmi við grófa matið.
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -254,7 +290,11 @@ Hversu mörg mól af súkrósa, C~12~H~22~O~11~, eru í 25 g sýni af súkrósa?
 :::answer
 0,073 mól
 
+:::
 
+
+
+:::
 
 :::example
 ### Dæmi 3.7
@@ -273,6 +313,8 @@ $1.42\  \times \ 10^{- 4}\ \text{mol}\ \text{vitamin C}\ \left( \frac{176.124\ \
 
 Þetta er í samræmi við vænta niðurstöðu.
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -281,7 +323,11 @@ Hver er massi 0,443 móla af hýdrasíni, N~2~H~4~?
 :::answer
 14,2 g
 
+:::
 
+
+
+:::
 
 :::example
 ### Dæmi 3.8
@@ -304,6 +350,8 @@ Formúla efnasambandsins sýnir að hver sameind inniheldur sjö kolefnisatóm o
 
 $1.31\  \times \ 10^{20}\ \text{C}_{7}\text{H}_{5}\text{NO}_{3}\text{S molecules}\ \left( \frac{7\ \text{C atoms}}{1\ \text{C}_{7}\text{H}_{5}\text{NO}_{3}\text{S molecule}} \right)\  = \ 9.17\  \times \ 10^{20}\ \text{C atoms}$
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -312,7 +360,11 @@ Hversu margar C~4~H~10~ sameindir eru í 9,213 g af þessu efnasambandi? Hversu 
 :::answer
 9,545 $\times$ 10^22^ sameindir C~4~H~10~; 9,545 $\times$ 10^23^ atóm H
 
+:::
 
+
+
+:::
 
 :::how-science-connects
 
@@ -341,3 +393,5 @@ Nýlega hafa orðið verulegar framfarir í beinum mælingum á fjölda dópamí
 1\.
 
 Omiatek, Donna M., Amanda J. Bressler, Ann-Sofie Cans, Anne M. Andrews, Michael L. Heien og Andrew G. Ewing. „The Real Catecholamine Content of Secretory Vesicles in the CNS Revealed by Electrochemical Cytometry." *Scientific Report* 3 (2013): 1447, sótt 14. janúar 2015, doi:10.1038/srep01447.
+
+:::

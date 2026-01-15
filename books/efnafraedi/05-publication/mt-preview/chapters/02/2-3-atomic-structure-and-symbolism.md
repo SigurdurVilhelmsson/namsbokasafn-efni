@@ -14,6 +14,8 @@ chapter: 2
 -   Skilgreint atómmassaeiningu og meðalatómmassa
 -   Reiknað út meðalatómmassa og hlutfallslegt magn samsæta
 
+:::
+
 Þróun nútíma atómkenningar leiddi margt í ljós um innri byggingu atóma. Í ljós kom að atóm inniheldur mjög lítinn kjarna sem samanstendur af jákvætt hlöðnum róteindum og óhlöðnum nifteindum, umkringdan mun stærra rúmmáli sem inniheldur neikvætt hlaðnar rafeindir. Kjarninn inniheldur meirihluta massa atómsins vegna þess að róteindir og nifteindir eru mun þyngri en rafeindir, en rafeindir taka nánast allt rúmmál atómsins. Þvermál atóms er í stærðargráðunni 10^−10^ m, en þvermál kjarnans er um það bil 10^−15^ m --- um 100.000 sinnum minna. Til að fá hugmynd um hlutfallslega stærð þeirra má íhuga þetta: Ef kjarninn væri á stærð við bláber, væri atómið á stærð við fótboltaleikvang ([mynd 2.11](#CNX_Chem_02_03_AtomSize)).
 
 
@@ -61,6 +63,8 @@ Með því að bæta við örlitlu joði í matarsalt (joðbætt salt) hefur þe
 
 Sætistala joðs (53) segir okkur að hlutlaust joðatóm inniheldur 53 róteindir í kjarna sínum og 53 rafeindir utan kjarnans. Þar sem summa fjölda róteinda og nifteinda er jöfn massatölunni, 127, er fjöldi nifteinda 74 (127 − 53 = 74). Þar sem joðinu er bætt við sem 1− anjón er fjöldi rafeinda 54 \[53 -- (1--) = 54\].
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -68,6 +72,8 @@ Jón platínu hefur massatöluna 195 og inniheldur 74 rafeindir. Hversu margar r
 
 :::answer
 78 róteindir; 117 nifteindir; hleðslan er 4+
+
+:::
 
 ### Efnatákn
 
@@ -103,9 +109,13 @@ Tafla 2.3
 
 Hefð er fyrir því að þau sem uppgötva nýtt frumefni gefi því nafn. Hins vegar er nafn nýja frumefnisins til bráðabirgða byggt á latneska orðinu/orðunum fyrir sætistölu þess, þar til formlegt nafn hefur verið viðurkennt af Alþjóðasambandi um hreina og hagnýta efnafræði (IUPAC). Til dæmis var frumefni 106 kallað unnilhexíum (Unh), frumefni 107 var kallað unnilseptíum (Uns) og frumefni 108 var kallað unniloktíum (Uno) í nokkur ár. Þessi frumefni eru nú nefnd eftir vísindamönnum (eða stundum stöðum); til dæmis er frumefni 106 nú þekkt sem *seaborgíum* (Sg) til heiðurs Glenn Seaborg, Nóbelsverðlaunahafa sem kom að uppgötvun nokkurra þungra frumefna. Frumefni 109 var nefnt til heiðurs Lise Meitner, sem uppgötvaði kjarnaklofnun, fyrirbæri sem átti eftir að breyta heiminum; Meitner lagði einnig sitt af mörkum til uppgötvunar nokkurra mikilvægra samsæta, sem fjallað er um hér á eftir.
 
+:::
+
 :::link-to-material
 
 Farðu á þessa [síðu](http://openstax.org/l/16IUPAC) til að læra meira um IUPAC, Alþjóðasamband um hreina og hagnýta efnafræði, og skoðaðu lotukerfi þess.
+
+:::
 
 ### Samsætur
 
@@ -152,6 +162,8 @@ Tafla 2.4
 
 Notaðu þennan [hermi](http://openstax.org/l/16PhetAtomBld) til að smíða atóm fyrstu 10 frumefnanna, sjáðu hvaða samsætur eru til, athugaðu stöðugleika kjarna og öðlastu reynslu af samsætutáknum.
 
+:::
+
 ### Atómmassi
 
 Vegna þess að hver róteind og hver nifteind leggja um það bil eitt amu til massa atóms, og hver rafeind leggur mun minna til, er atómmassi eins atóms um það bil jafn massatölu þess (heil tala). Hins vegar eru meðalmassar atóma flestra frumefna ekki heilar tölur vegna þess að flest frumefni eru náttúrulega til sem efnablöndur tveggja eða fleiri samsæta.
@@ -177,6 +189,8 @@ Loftsteinn sem fannst í miðri Indiana inniheldur snefil af eðalgasinu neon se
 
 Meðalmassi neonatóms í sólvindinum er 20,15 amu. (Meðalmassi neonatóms á jörðu niðri er 20.1796 amu. Þessi niðurstaða sýnir að við gætum fundið smávægilegan mun á náttúrulegri gnægð samsæta, allt eftir uppruna þeirra.)
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -186,6 +200,10 @@ Sýni af magnesíum inniheldur 78,70% af ^24^Mg atómum (massi 23,98 amu), 10,13
 24,31 amu
 
 Við getum líka gert afbrigði af þessari tegund útreikninga, eins og sýnt er í næsta dæmi.
+
+:::
+
+:::
 
 :::example
 ### Dæmi 2.5: Útreikningur á hlutfallslegri gnægð
@@ -209,6 +227,8 @@ Ef við setjum þetta inn í jöfnuna fyrir meðalmassa fáum við:
 Lausnin gefur: *x* = 0,7576, sem þýðir að 1,00 − 0,7576 = 0,2424. Klór samanstendur því af 75,76% ^35^Cl og 24,24% ^37^Cl.
 
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -217,7 +237,11 @@ Kopar sem finnst í náttúrunni samanstendur af ^63^Cu (massi 62,9296 amu) og ^
 :::answer
 69,15% Cu-63 og 30,85% Cu-65
 
+:::
+
  
+
+:::
 
 :::link-to-material
 
@@ -233,6 +257,10 @@ Hægt er að ákvarða tilvist og náttúrulega gnægð samsæta með tilraunum 
 
 Mynd 2.15 Greining á sirkoni í massagreini býr til massaróf með toppum sem sýna mismunandi samsætur Zr.
 
+:::
+
 :::link-to-material
 
 Sjáðu [hreyfimynd](http://openstax.org/l/16MassSpec) sem útskýrir massagreiningu. Horfðu á þetta [myndband](http://openstax.org/l/16RSChemistry) frá Royal Society for Chemistry til að fá stutta lýsingu á grundvallaratriðum massagreiningar.
+
+:::

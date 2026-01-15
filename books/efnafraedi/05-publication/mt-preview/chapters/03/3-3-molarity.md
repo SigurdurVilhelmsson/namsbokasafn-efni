@@ -14,6 +14,8 @@ chapter: 3
 -   Reiknað út styrk lausna með mólstyrk
 -   Framkvæmt þynningarútreikninga með þynningarjöfnunni
 
+:::
+
 Fyrri kaflar þessarar bókar fjölluðu um samsetningu efna: sýni af efni sem innihalda aðeins eina tegund frumefnis eða efnasambands. Hins vegar eru efnablöndur -- sýni af efni sem innihalda tvö eða fleiri efni sem eru blönduð saman á eðlisfræðilegan hátt -- algengari í náttúrunni en hrein efni. Líkt og með hreint efni gegnir hlutfallsleg samsetning efnablöndu mikilvægu hlutverki við að ákvarða eiginleika hennar. Hlutfallslegt magn súrefnis í lofthjúpi plánetu ákvarðar getu hennar til að viðhalda loftháðu lífi. Hlutfallslegt magn járns, kolefnis, nikkels og annarra frumefna í stáli (efnablanda sem kallast „málmblanda") ákvarðar eðlisfræðilegan styrk þess og viðnám gegn tæringu. Hlutfallslegt magn virka efnisins í lyfi ákvarðar virkni þess við að ná fram tilætluðum lyfjafræðilegum áhrifum. Hlutfallslegt magn sykurs í drykk ákvarðar sætleika hans (sjá [mynd 3.14](#CNX_Chem_03_03_espresso)). Í þessum kafla verður lýst einni af algengustu aðferðunum til að magngreina hlutfallslega samsetningu efnablandna.
 
 
@@ -45,6 +47,8 @@ $M = \ \frac{\text{mol solute}}{\text{L solution}}\ $
 
 $M = \ \frac{\text{mol solute}}{\text{L solution}}\  = \ \frac{0.133\ \text{mol}}{355\ \text{mL}\  \times \ \frac{1\ \text{L}}{1000\ \text{mL}}\ }\  = 0.375\ M$
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -53,7 +57,11 @@ Ein teskeið af borðsykri inniheldur um 0,01 mól af súkrósa. Hver er mólsty
 :::answer
 0,05 *M*
 
+:::
+
  
+
+:::
 
 :::example
 ### Dæmi 3.15: Útleiðsla á mólum og rúmmáli úr mólstyrk
@@ -66,6 +74,8 @@ Endurraðaðu skilgreiningunni á mólstyrk til að einangra stærðina sem leit
 
 ![None](./images/media/rId37.jpg)
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -74,7 +84,11 @@ Hvert er rúmmálið (ml) af sykraða teinu sem lýst er í [dæmi 3.14](#fs-idm
 :::answer
 80 ml
 
+:::
+
  
+
+:::
 
 :::example
 ### Dæmi 3.16: Útreikningur á mólstyrk út frá massa uppleysts efnis
@@ -95,6 +109,8 @@ $M = \ \frac{\text{mol solute}}{\text{L solution}}\  = \ \frac{25.2\ g\ \text{CH
 
 ![None](./images/media/rId48.jpg)
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -103,7 +119,11 @@ Reiknaðu mólstyrk 6,52 g af CoCl~2~ (128,9 g/mól) sem er leyst upp í vatnsla
 :::answer
 0,674 *M*
 
+:::
+
  
+
+:::
 
 :::example
 ### Dæmi 3.17: Ákvörðun á massa uppleysts efnis í tilteknu rúmmáli lausnar
@@ -120,6 +140,8 @@ Að lokum er þetta mólmagn notað til að leiða út massa NaCl:
 
 $\text{1.325 mol NaCl}\  \times \ \frac{58.44\ \text{g NaCl}}{\text{mol NaCl}}\  = 77.4\ \text{g NaCl}$
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -131,6 +153,10 @@ Hversu mörg grömm af CaCl~2~ (110,98 g/mól) eru í 250,0 ml af 0,200*M* lausn
 Þegar útreikningar eru framkvæmdir í skrefum, eins og í [dæmi 3.17](#fs-idm104693104), er mikilvægt að forðast að námunda niðurstöður millireikninga, þar sem það getur leitt til námundunarvillna í lokaniðurstöðunni. Í [dæmi 3.17](#fs-idm104693104) væri mólmagn NaCl sem reiknað var út í fyrsta skrefi, 1,325 mól, réttilega námundað í 1,32 mól ef það ætti að vera gefið upp; þó, þrátt fyrir að síðasti tölustafurinn (5) sé ekki marktækur, verður að halda honum sem varðtölu í millireikningnum. Ef varðtölunni hefði ekki verið haldið, hefði lokareikningurinn fyrir massa NaCl verið 77,1 g, sem er 0,3 g munur.
 
 Auk þess að halda varðtölu fyrir millireikninga er einnig hægt að forðast námundunarvillur með því að framkvæma útreikninga í einu skrefi (sjá [dæmi 3.18](#fs-idm88061984)). Þetta útilokar milliskref þannig að aðeins lokaniðurstaðan er námunduð.
+
+:::
+
+:::
 
 :::example
 ### Dæmi 3.18: Ákvörðun á rúmmáli lausnar sem inniheldur tiltekinn massa uppleysts efnis
@@ -153,6 +179,8 @@ $\text{g solute}\  \times \ \frac{\text{mol solute}}{\text{g solute}}\  \times \
 
 $75.6\ \text{g}\ \text{CH}_{3}\text{CO}_{2}\text{H}\ \left( \frac{\text{mol}\ \text{CH}_{3}\text{CO}_{2}\text{H}\ }{60.05\ \text{g}} \right)\ \left( \frac{\text{L solution}}{0.839\ \text{mol}\ \text{CH}_{3}\text{CO}_{2}\text{H}} \right)\  = \ 1.50\ \text{L solution}$
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -160,6 +188,8 @@ Hvert er rúmmál 1,50 *M* KBr-lausnar sem inniheldur 66,0 g af KBr?
 
 :::answer
 0,370 L
+
+:::
 
 ### Þynning lausna
 
@@ -193,9 +223,13 @@ $C_{1}V_{1} = C_{2}V_{2}$
 
 þar sem *C* og *V* eru styrkur og rúmmál, í sömu röð.
 
+:::
+
 :::link-to-material
 
 Notaðu [hermunina](http://openstax.org/l/16Phetsolvents) til að kanna sambandið milli magns uppleysts efnis, rúmmáls lausnar og styrks og til að staðfesta þynningarjöfnuna.
+
+:::
 
  
 
@@ -216,6 +250,8 @@ $C_{2} = \ \frac{0.850\ \text{L}\  \times \ 5.00\ \frac{\text{mol}}{\text{L}}\ }
 
 Þessi niðurstaða stenst vel miðað við grófa matið okkar (hún er aðeins minni en helmingur af styrk stofnlausnarinnar, 5 *M*).
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -224,7 +260,11 @@ Hver er styrkur lausnarinnar sem fæst með því að þynna 25,0 ml af 2,04 *M*
 :::answer
 0,102 *M* CH~3~OH
 
+:::
+
  
+
+:::
 
 :::example
 ### Dæmi 3.20: Rúmmál þynntrar lausnar
@@ -243,6 +283,8 @@ Gefið er rúmmál og styrkur stofnlausnar, *V*~1~ og *C*~1~, og styrkur þynntu
 
 Rúmmál 0,12 *M* lausnarinnar er 0,041 L (41 ml). Niðurstaðan er sanngjörn og stenst vel við grófa matið.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -251,7 +293,11 @@ Rúmmál 0,12 *M* lausnarinnar er 0,041 L (41 ml). Niðurstaðan er sanngjörn o
 :::answer
 3,76 L
 
+:::
+
  
+
+:::
 
 :::example
 ### Dæmi 3.21: Rúmmál óþynntrar lausnar sem þarf til þynningar
@@ -270,6 +316,8 @@ Gefinn er styrkur stofnlausnar, *C*~1~, og rúmmál og styrkur þynntu lausnarin
 
 Þannig þarf 0,314 L af 1,59 *M* lausninni til að útbúa lausnina sem óskað er eftir. Þessi niðurstaða er í samræmi við grófa matið.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -277,3 +325,7 @@ Hvaða rúmmál af 0,575 *M* lausn af glúkósa, C~6~H~12~O~6~, er hægt að út
 
 :::answer
 0,261 L
+
+:::
+
+:::

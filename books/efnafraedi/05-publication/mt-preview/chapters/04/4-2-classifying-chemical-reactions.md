@@ -16,6 +16,8 @@ chapter: 4
 -   Spáð fyrir um leysni algengra ólífrænna efnasambanda með því að nota leysnireglur
 -   Reiknað oxunartölur frumefna í efnasamböndum
 
+:::
+
 Fólk hefur samskipti sín á milli á margvíslegan og flókinn hátt og við flokkum þessi samskipti eftir algengum hegðunarmynstrum. Þegar tveir einstaklingar skiptast á upplýsingum segjum við að þeir séu í samskiptum. Þegar þeir skiptast á höggum með hnefum eða fótum segjum við að þeir séu að slást. Vísindamönnum hefur sömuleiðis þótt hentugt (eða jafnvel nauðsynlegt), þegar þeir standa frammi fyrir fjölbreyttri víxlverkun milli hreinna efna, að flokka efnahvörf með því að greina algeng mynstur hvarfgirni. Í þessum hluta verður kynning á þremur af algengustu gerðum efnahvarfa: útfellingu, sýru-basa og oxun-afoxun.
 
 ### Útfellingarhvörf og leysnireglur
@@ -83,6 +85,8 @@ $\text{Ag}^{\text{+}}(aq) + \text{Cl}^{\text{−}}(aq)\  \rightarrow \ \text{AgC
 
 $\text{Pb}^{2 +}(aq) + \text{CO}_{3}^{2 -}(aq)\  \rightarrow \ \text{PbCO}_{3}(s)$
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -90,6 +94,8 @@ Hvaða lausn væri hægt að nota til að fella út baríumjónina, Ba^2+^, í v
 
 :::answer
 natríumsúlfat, BaSO~4~
+
+:::
 
 ### Sýru-basa hvörf
 
@@ -162,6 +168,8 @@ $\text{Mg}\text{(OH)}_{2}(s) + 2\text{HCl}(aq)\  \rightarrow \ \text{MgCl}_{2}(a
 
 Athugið að auk vatns myndar þetta efnahvarf salt, magnesíumklóríð.
 
+:::
+
 :::example
 ### Dæmi 4.4: Að skrifa jöfnur fyrir sýru-basa efnahvörf
 
@@ -183,6 +191,8 @@ Tvöföld ör á vel við í þessari jöfnu því hún gefur til kynna að HOCl
 
 $\text{Ba}\text{(OH)}_{2}(aq) + 2\text{HNO}_{3}(aq)\  \rightarrow \ \text{Ba}\left( \text{NO}_{3} \right)_{2}(aq) + 2\text{H}_{2}\text{O}(l)$
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -191,7 +201,11 @@ Skrifaðu nettó jónajöfnuna sem táknar hlutleysingu á hvaða sterkri sýru 
 :::answer
 $\text{H}_{3}\text{O}^{\text{+}}(aq) + \text{OH}^{\text{−}}(aq)\  \rightarrow \ 2\text{H}_{2}\text{O}(l)$
 
+:::
+
  
+
+:::
 
 :::chemistry-everyday: Sýrubindandi lyf
 
@@ -213,6 +227,8 @@ $\text{H}_{3}\text{O}^{\text{+}} + \text{OH}^{\text{−}}\  \rightleftharpoons \
 
  
 
+:::
+
 :::chemistry-everyday: Matreiðsluþættir efnafræðinnar
 
 Dæmi um sýru-basa efnafræði eru mörg í heimi matargerðarlistar. Eitt dæmi er notkun matarsóda, eða natríumbíkarbónats, við bakstur. NaHCO~3~ er basi. Þegar hann hvarfast við sýru eins og sítrónusafa, súrmjólk eða sýrðan rjóma í deigi myndast loftbólur af koldíoxíðgasi við niðurbrot kolsýrunnar sem myndast og deigið „lyftir sér." Lyftiduft er blanda af natríumbíkarbónati og einu eða fleiri sýrusöltum sem hvarfast þegar efnin tvö komast í snertingu við vatn í deiginu
@@ -229,9 +245,13 @@ Súrsun er aðferð sem notuð er til að varðveita grænmeti með því að n�
 
  
 
+:::
+
 :::link-to-material
 
 Skoðaðu smásæja [sýn](http://openstax.org/l/16AcidsBases) á sterkar og veikar sýrur og basa.
+
+:::
 
 ### Oxunar-afoxunarhvörf
 
@@ -302,6 +322,8 @@ Ef gert er ráð fyrir venjulegri oxunartölu fyrir súrefni (−2 samkvæmt lei
 
 ![None](./images/media/rId118.jpg)
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -328,6 +350,10 @@ Nokkrir undirflokkar oxunar-afoxunarhvarfa eru þekktir, þar á meðal brunahv�
 
 $10\text{Al}(s) + 6\text{NH}_{4}\text{ClO}_{4}(s)\  \rightarrow \ 4\text{Al}_{2}\text{O}_{3}(s) + 2\text{AlCl}_{3}(s) + 12\text{H}_{2}\text{O}(g) + 3\text{N}_{2}(g)$
 
+:::
+
+:::
+
 :::link-to-material
 
 Horfðu á stutt [myndband](http://openstax.org/l/16hybridrocket) sem sýnir prufukeyrslu á smækkaðri frumgerð blendings eldflaugahreyfils sem áætlað er að nota í nýja Space Launch System sem NASA er að þróa. Fyrstu hreyflarnir sem fara í gang á\
@@ -348,6 +374,8 @@ $\text{Cu}(s) + 2\text{AgNO}_{3}(aq)\  \rightarrow \ \text{Cu}\ \left( \text{NO}
 
 
 Mynd 4.9 (a) Koparvír er sýndur við hliðina á lausn sem inniheldur silfur(I)jónir. (b) Útskipting uppleystra silfurjóna með koparjónum leiðir til (c) uppsöfnunar á gráleitum silfurmálmi á vírnum og myndunar á bláum lit í lausninni vegna uppleystra koparjóna. (Heimild: breytt útgáfa af verki eftir Mark Ott)
+
+:::
 
 :::example
 ### Dæmi 4.6: Lýsing á oxunar-afoxunarhvörfum
@@ -378,6 +406,8 @@ Oxunar-afoxunarhvörf eru skilgreind sem slík ef eitt eða fleiri frumefni gang
 
 \(e\) Þetta er oxunar-afoxunarhvarf (bruni). Kolefni oxast og oxunartala þess hækkar úr −2 í C~2~H~4~(*g*) í +4 í CO~2~(*g*). Afoxarinn (eldsneytið) er C~2~H~4~(*g*). Súrefni er afoxað og oxunartala þess lækkar úr 0 í O~2~(*g*) í −2 í H~2~O(*l*). Oxarinn er O~2~(*g*).
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -389,6 +419,8 @@ Er þetta oxunar-afoxunarhvarf? Ef svo er, gefðu þá nákvæmara heiti á hvar
 
 :::answer
 Já, einnar skiptingar hvarf. Sn(*s*) er afoxarinn, HCl(*g*) er oxarinn.
+
+:::
 
 #### Að stilla oxunar-afoxunarhvörf með hálfhvarfsaðferðinni
 
@@ -419,6 +451,8 @@ c.  Einfaldaðu jöfnuna með því að fjarlægja allar óþarfa vatnssameindir
 1\.
 
 Krafan um „hleðslujafnvægi" er bara sérstök tegund af „massajafnvægi" þar sem umræddar agnir eru rafeindir. Jafna verður að sýna jafnan fjölda rafeinda beggja vegna við hvarfefni og myndefni og því verður að jafna bæði atóm og hleðslur.
+
+:::
 
 :::example
 ### Dæmi 4.7: Jöfnun oxunar-afoxunarhvarfa í súrri lausn
@@ -499,6 +533,8 @@ Lokaathugun á jafnvægi atóma og hleðslu staðfestir að jafnan er stillt.
 | H | 14 | 14 |
 | hleðsla | 24+ | 24+ |
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -506,3 +542,7 @@ Lokaathugun á jafnvægi atóma og hleðslu staðfestir að jafnan er stillt.
 
 :::answer
 $3\text{Cl}_{2}(aq) + 6\text{OH}^{\text{−}}(aq)\  \rightarrow \ 5\text{Cl}^{\text{−}}(aq) + \text{ClO}_{3}^{\text{−}}(aq) + 3\text{H}_{2}\text{O}(l)$
+
+:::
+
+:::

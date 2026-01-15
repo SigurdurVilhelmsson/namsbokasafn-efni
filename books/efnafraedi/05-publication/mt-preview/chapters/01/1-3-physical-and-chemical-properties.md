@@ -14,6 +14,8 @@ chapter: 1
     eðlisfræðilegir eða efnafræðilegir
 -   Tilgreint hvort eiginleikar efnis eru magnbundnir eða eðlisbundnir
 
+:::
+
 Þau einkenni sem greina eitt efni frá öðru eru kallaðir eiginleikar (e.
 properties). Eðliseiginleiki (e. physical property) er einkenni efnis
 sem tengist ekki breytingu á efnasamsetningu þess. Þekkt dæmi um
@@ -152,3 +154,5 @@ Mynd 1.22 Lotukerfið sýnir hvernig hægt er að flokka frumefni eftir
 til kynna hvort frumefni er málmur, hálfmálmur eða málmleysingi, en
 liturinn á tákni frumefnisins gefur til kynna hvort það er fast efni,
 vökvi eða gas.
+
+:::

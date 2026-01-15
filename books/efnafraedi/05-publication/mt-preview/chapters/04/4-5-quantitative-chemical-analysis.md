@@ -13,6 +13,8 @@ chapter: 4
 -   Lýst grundvallarþáttum títrunar og þyngdarmælingagreiningar.
 -   Framkvæmt útreikninga í hlutfallaefnafræði með dæmigerðum gögnum úr títrun og þyngdarmælingagreiningu.
 
+:::
+
 Á 18. öld var styrkur (í raun mólstyrkur) edikssýna ákvarðaður með því að skrá magn kalíumkarbónats, K~2~CO~3~, sem þurfti að bæta við, smátt og smátt, þar til það hætti að freyða. Því meiri þyngd kalíumkarbónats sem bætt var við til að ná þeim punkti þar sem freyðingunni lauk, því sterkara var edikið.
 
 Við vitum nú að freyðingin sem átti sér stað í þessu ferli stafaði af efnahvarfi við ediksýru, CH~3~CO~2~H, efnasambandið sem er aðallega ábyrgt fyrir lykt og bragði ediks. Ediksýra hvarfast við kalíumkarbónat samkvæmt eftirfarandi jöfnu:
@@ -67,6 +69,8 @@ Með því að nota þessa útgáfu af mólstyrkseiningunni styttist útreikning
 $\frac{35.23\ \text{mL NaOH}\  \times \ \frac{0.250\ \text{mmol NaOH}}{\text{mL NaOH}}\  \times \ \frac{1\ \text{mmol HCl}}{1\ \text{mmol NaOH}}}{50.00\ \text{mL solution}}\  = 0.176\ M\ \text{HCl}$
 
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -79,6 +83,8 @@ $\text{2MnO}_{4}^{\text{−}}(aq) + 5\text{H}_{2}\text{C}_{2}\text{O}_{4}(aq) + 
 :::answer
 0,2648 *M*
 
+:::
+
 ### Þyngdarmælingagreining
 
 Þyngdarmælingagreining er greining þar sem sýni er meðhöndlað á þann hátt að eðlisástand greiniefnisins breytist sem gerir kleift að aðskilja það frá öðrum efnisþáttum sýnisins. Massamælingar á sýninu, einangraða greiniefninu eða einhverjum öðrum þætti greiningarkerfisins, ásamt þekktri hlutfallaefnafræði viðkomandi efnasambanda, gera kleift að reikna út styrk greiniefnisins. Þyngdarmælingaaðferðir voru fyrstu aðferðirnar sem notaðar voru við magnbundna efnagreiningu og þær eru enn mikilvæg verkfæri á nútíma efnafræðistofum.
@@ -90,6 +96,8 @@ Nauðsynlegum fasaskiptum í þyngdarmælingagreiningu má ná fram með ýmsum 
 
 
 Mynd 4.17 Hægt er að fjarlægja botnfall úr hvarfblöndu með síun.
+
+:::
 
 :::example
 ### Dæmi 4.15: Þyngdarmælingagreining
@@ -112,6 +120,8 @@ Styrkur MgSO~4~ í sýnisblöndunni er þá reiknaður sem
 
 ![None](./images/media/rId62.jpg)
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -129,6 +139,10 @@ Frumefnasamsetningu kolvetna og skyldra efnasambanda má ákvarða með þyngdar
 
 
 Mynd 4.18 Þessi skýringarmynd sýnir grunnhluta brunagreiningartækis til að ákvarða kolefnis- og vetnisinnihald sýnis.
+
+:::
+
+:::
 
 :::example
 ### Dæmi 4.16: Brunagreining
@@ -155,6 +169,8 @@ $\frac{\text{mol H}}{\text{mol C}}\  = \ \frac{1.79\  \times \ 10^{- 4}\ \text{m
 
 og reynsluformúla pólýetýlens er CH~2~.
 
+:::
+
 :::practice-problem
 **Prófaðu þekkingu þína**
 
@@ -162,3 +178,7 @@ og reynsluformúla pólýetýlens er CH~2~.
 
 :::answer
 CH
+
+:::
+
+:::

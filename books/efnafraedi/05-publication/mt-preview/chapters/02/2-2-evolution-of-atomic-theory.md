@@ -15,6 +15,8 @@ chapter: 2
 -   Lýst þeim þremur öreindum sem atóm eru gerð úr
 -   Skilgreint samsætur og gefið dæmi um nokkur frumefni
 
+:::
+
 Ef efni er gert úr atómum, úr hverju eru atóm þá gerð? Eru þau smæstu eindirnar eða er eitthvað enn smærra til? Í lok 19. aldar rannsakaði fjöldi vísindamanna sem höfðu áhuga á spurningum eins og þessum rafmagnslosun sem hægt var að framleiða í lágþrýstum lofttegundum og var mikilvægasta uppgötvunin gerð af enska eðlisfræðingnum J. J. Thomson með því að nota katóðugeislalampa. Þetta tæki samanstóð af lokuðu glerhylki sem nánast allt loft hafði verið fjarlægt úr; rörið innihélt tvö málmrafskaut. Þegar há spenna var lögð á rafskautin birtist sýnilegur geisli, kallaður katóðugeisli, á milli þeirra. Þessi geisli sveigðist í átt að jákvæðu hleðslunni og frá neikvæðu hleðslunni og myndaðist á sama hátt með sömu eiginleika þegar mismunandi málmar voru notaðir fyrir rafskautin. Í svipuðum tilraunum var geislinn samtímis sveigður með segulsviði og mælingar á umfangi sveigjunnar og styrk segulsviðsins gerðu Thomson kleift að reikna út hlutfall hleðslu og massa einda katóðugeislans. Niðurstöður þessara mælinga bentu til þess að þessar eindir væru mun léttari en atóm (mynd 2.6).
 
 ![Figure A shows a photo of J. J. Thomson working at a desk. Figure B shows a photograph of a cathode ray tube. It is a long, glass tube that is narrow at the left end but expands into a large bulb on the right end. The entire cathode tube is sitting on a wooden stand. Figure C shows the parts of the cathode ray tube. The cathode ray tube consists of a cathode and an anode. The cathode, which has a negative charge, is located in a small bulb of glass on the left side of the cathode ray tube. To the left of the cathode it says "High voltage" and indicates a positive and negative charge. The anode, which has a positive charge, is located to the right of the cathode. Two charged plates are located to the right of the anode, and are connected to a battery and two magnets. The magnets are labeled "S" and "N." A cathode ray is generated from the cathode, travels through the anode and into a wider part of the cathode ray tube, where it travels between a positively charged electrode plate and a negatively charged electrode plate. The ray bends upward and continues to travel until it hits the wide part of the tube on the right. The rightmost end of the tube contains a printed scale that allows one to measure how much the ray was deflected.](./images/media/rId23.jpg)
@@ -58,6 +60,8 @@ Hvað uppgötvuðu þeir? Flestar eindirnar fóru beint í gegnum þynnuna án �
 1.  Rúmmálið sem atóm tekur hlýtur að samanstanda af miklu magni af tómu rými.
 2.  Lítill, tiltölulega þungur, jákvætt hlaðinn hlutur, kjarninn, hlýtur að vera í miðju hvers atóms.
 
+:::
+
 :::link-to-material
 
 Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilraun Rutherfords. Stilltu breidd raufarinnar til að búa til mjórri eða breiðari geisla af α-eindum til að sjá hvernig það hefur áhrif á dreifingarmynstrið.
@@ -68,6 +72,8 @@ Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilr
 
 **Mynd 2.10** α-eindirnar sveigja aðeins af leið þegar þær rekast á eða fara nálægt mun þyngri, jákvætt hlöðnum gullkjarnanum. Þar sem kjarninn er mjög lítill miðað við stærð atóms, sveigja mjög fáar α-eindir af leið. Flestar fara í gegnum tiltölulega stórt svæði sem rafeindir taka, en þær eru of léttar til að sveigja hratt á liti eindirnar.
 
+:::
+
 :::link-to-material
 
 [Rutherford-dreifingarhermunin](http://openstax.org/l/16PhetScatter) gerir þér kleift að rannsaka muninn á „plómubúðings"-atómi og Rutherford-atómi með því að skjóta α-eindum á hvora tegund atóms.
@@ -75,3 +81,5 @@ Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilr
 Önnur mikilvæg uppgötvun var uppgötvun samsætna. Snemma á 20. öld fundu vísindamenn nokkur efni sem virtust vera ný frumefni og einangruðu þau úr geislavirkum málmgrýti. Til dæmis var „nýtt frumefni" sem myndaðist við geislavirka hrörnun þóríums upphaflega gefið nafnið mesóþóríum. Hins vegar sýndi nánari greining að mesóþóríum var efnafræðilega eins og radíum (önnur hrörnunarafurð), þrátt fyrir að hafa annan atómmassa. Þessi niðurstaða, ásamt svipuðum niðurstöðum fyrir önnur frumefni, leiddi enska efnafræðinginn Frederick Soddy til þeirrar niðurstöðu að frumefni gæti haft gerðir atóma með mismunandi massa sem væru efnafræðilega óaðgreinanlegar. Þessar mismunandi gerðir eru kallaðar samsætur -- atóm sama frumefnis sem hafa mismunandi massa. Soddy hlaut Nóbelsverðlaunin í efnafræði árið 1921 fyrir þessa uppgötvun.
 
 Ein gáta var enn óleyst: Vitað var að kjarninn innihélt næstum allan massa atóms, en fjöldi róteinda stóð aðeins fyrir helmingi, eða minna, af þeim massa. Tilvist nifteindarinnar útskýrði einnig samsætur: Þær eru mismunandi að massa vegna þess að þær hafa mismunandi fjölda nifteinda, en þær eru efnafræðilega eins vegna þess að þær hafa sama fjölda róteinda. Eins og þú gætir búist við er mjög erfitt að greina óhlaðnar eindir og það var ekki fyrr en árið 1932 að James Chadwick fann sannanir fyrir nifteindum, óhlöðnum öreindum með massa sem er um það bil sá sami og massi róteinda. Ýmsar tillögur voru settar fram til að útskýra hvað myndaði afgangsmassann, þar á meðal tilvist hlutlausra einda í kjarnanum. Þetta verður útskýrt nánar síðar í þessum kafla.
+
+:::

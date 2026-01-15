@@ -13,6 +13,8 @@ chapter: 2
 -   Sett fram kennisetningar atómkenningar Daltons
 -   Notað kennisetningar atómkenningar Daltons til að útskýra lögmálið um föst massahlutföll og lögmálið um margföld hlutföll
 
+:::
+
 Elstu heimildir um umræður um grunnbyggingu efnis koma frá forngrískum heimspekingum, vísindamönnum þeirra tíma. Á fimmtu öld f.Kr. héldu Levkippos og Demókrítos því fram að allt efni væri samsett úr litlum, endanlegum eindum sem þeir kölluðu *atomos*, hugtak sem er dregið af gríska orðinu yfir „ódeilanlegt". Þeir hugsuðu sér atóm sem hreyfanlegar agnir sem voru mismunandi að lögun og stærð og sem gætu tengst saman. Seinna komust Aristóteles og aðrir að þeirri niðurstöðu að efni samanstæði af ýmsum samsetningum fjögurra „frumefna" -- elds, jarðar, lofts og vatns -- og væri hægt að skipta því óendanlega. Athyglisvert er að þessir heimspekingar hugsuðu um atóm og „frumefni" sem heimspekileg hugtök, en íhuguðu greinilega aldrei að gera tilraunir til að prófa hugmyndir sínar.
 
 Sýn Aristótelesar á samsetningu efnis var ríkjandi í yfir tvö þúsund ár, þar til enski kennarinn John Dalton stuðlaði að byltingu í efnafræði með tilgátu sinni um að hægt væri að útskýra hegðun efnis með atómkenningu. Margar af tilgátum Daltons um smásæja eiginleika efnis, sem fyrst voru birtar árið 1807, gilda enn í nútíma frumeindakenningu. Hér eru kennisetningar frumeindakenningar Daltons.
@@ -50,6 +52,8 @@ Atómkenning Daltons gefur smásæja skýringu á mörgum stórsæjum eiginleiku
 
 Upphafsefnin samanstanda af tveimur grænum kúlum og tveimur fjólubláum kúlum. Myndefnin samanstanda af aðeins einni grænni kúlu og einni fjólublárri kúlu. Þetta brýtur í bága við kennisetningu Daltons um að atóm verði hvorki til né eyðist við efnabreytingu, heldur sé þeim aðeins endurraðað. (Í þessu tilviki virðist atómum hafa verið eytt.)
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -84,6 +88,10 @@ $$\frac{\frac{1,116 \text{ g Cl}}{1 \text{ g Cu}}}{\frac{0,558 \text{ g Cl}}{1 \
 
 **Mynd 2.5** Í samanburði við koparklórefnasambandið í (a), þar sem kopar er táknaður með brúnum kúlum og klór með grænum kúlum, hefur koparklórefnasambandið í (b) tvöfalt fleiri klóratóm á hvert koparatóm. (heimild a: breyting á verki eftir „Benjah-bmm27"/Wikimedia Commons; heimild b: breyting á verki eftir „Walkerma"/Wikimedia Commons)
 
+:::
+
+:::
+
 :::example
 ### Dæmi 2.2: Lögmálin um föst og margföld hlutföll
 
@@ -105,6 +113,8 @@ $$\frac{\frac{1,33 \text{ g O}}{1 \text{ g C}}}{\frac{2,67 \text{ g O}}{1 \text{
 
 Þetta styður lögmálið um margfeldi hlutfalla. Þetta þýðir að A og B eru mismunandi efnasambönd, þar sem A hefur helmingi minna súrefni á hvert magn af kolefni (eða tvöfalt meira kolefni á hvert magn af súrefni) en B. Hugsanlegt par efnasambanda sem myndi passa við þetta samband væri A = CO og B = CO₂.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -112,3 +122,7 @@ Sýni af efnasambandi X (glær, litlaus, eldfimur vökvi með áberandi lykt) er
 
 :::answer
 Í efnasambandi X er massahlutfall kolefnis á móti vetni 14,13 g C / 2,96 g H. Í efnasambandi Y er massahlutfall kolefnis á móti vetni 19,91 g C / 3,34 g H. Hlutfall þessara hlutfalla er (4,77 g C/g H) / (5,96 g C/g H) = 0,800 = 4/5. Þetta litla heiltöluhlutfall styður lögmálið um margfeldi hlutfalla. Þetta þýðir að X og Y eru mismunandi efnasambönd.
+
+:::
+
+:::

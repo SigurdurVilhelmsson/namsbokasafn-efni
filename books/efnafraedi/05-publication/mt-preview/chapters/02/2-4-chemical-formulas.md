@@ -13,6 +13,8 @@ chapter: 2
 -   Sýnt samsetningu sameinda með sameindaformúlum og reynsluformúlum
 -   Sýnt tengiskipan atóma innan sameinda með byggingarformúlum
 
+:::
+
 Sameindaformúla er framsetning á sameind sem notar efnatákn til að gefa til kynna tegundir atóma og síðan lágstafi til að sýna fjölda atóma af hverri tegund í sameindinni. (Lágstafur er aðeins notaður þegar fleiri en eitt atóm af tiltekinni tegund er til staðar.) Sameindaformúlur eru einnig notaðar sem skammstafanir fyrir nöfn efnasambanda.
 
 Byggingarformúla efnasambands gefur sömu upplýsingar og sameindaformúla þess (tegundir og fjölda atóma í sameindinni) en sýnir einnig hvernig atómin eru tengd saman í sameindinni. Byggingarformúla metans inniheldur tákn fyrir eitt C-atóm og fjögur H-atóm, sem gefur til kynna fjölda atóma í sameindinni ([mynd 2.16](#CNX_Chem_02_04_MethaneRep)). Línurnar tákna tengi sem halda atómunum saman. (Efnatengi er aðdráttarkraftur milli atóma eða jóna sem heldur þeim saman í sameind eða kristal.) Við munum ræða efnatengi og sjá hvernig hægt er að spá fyrir um röðun atóma í sameind síðar. Í bili er nóg að vita að línurnar gefa til kynna hvernig atómin eru tengd saman í sameind. Kúlu-og-pinnalíkan sýnir rúmfræðilega röðun atómanna þar sem stærð atómanna er ekki í réttum skala og rúmfyllulíkan sýnir hlutfallslegar stærðir atómanna.
@@ -72,6 +74,8 @@ Sameindir glúkósa (blóðsykurs) innihalda 6 kolefnisatóm, 12 vetnisatóm og 
 
 Sameindaformúlan er C~6~H~12~O~6~ vegna þess að ein sameind inniheldur í raun 6 C, 12 H og 6 O atóm. Einfaldasta heiltöluhlutfall C, H og O atóma í glúkósa er 1:2:1, þannig að reynsluformúlan er CH~2~O.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -80,11 +84,17 @@ Sameind metaldehýðs (skordýraeitur notað gegn sniglum) inniheldur 8 kolefnis
 :::answer
 Sameindaformúla, C~8~H~16~O~4~; reynsluformúla, C~2~H~4~O
 
+:::
+
  
+
+:::
 
 :::link-to-material
 
 Þú getur kannað [sameindabyggingu](http://openstax.org/l/16molbuilding) með því að nota hermilíkan á netinu.
+
+:::
 
  
 
@@ -122,6 +132,10 @@ Til eru margar gerðir hverfa ([mynd 2.24](#CNX_Chem_02_04_Isomers2)). Ediksýra
 
 Mynd 2.24 Sameindir karvóns eru rúmhverfur; þær eru aðeins ólíkar að því leyti hvernig atómin raðast í rúmi. (heimild neðst til vinstri: breytt útgáfa af verki eftir „Miansari66"/Wikimedia Commons; heimild neðst til hægri: breytt útgáfa af verki eftir Forest & Kim Starr)
 
+:::
+
 :::link-to-material
 
 Smelltu á þennan [tengil](http://openstax.org/l/16isomers) til að sjá útskýringu á hverfum, rúmhverfum og hvers vegna þær hafa ólíka lykt (veldu myndbandið sem heitir „Mirror Molecule: Carvone").
+
+:::

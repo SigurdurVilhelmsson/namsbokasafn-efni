@@ -17,6 +17,8 @@ chapter: 1
 -   Framkvæmt einfalda útreikninga og umbreytingar á einingum í
     metrakerfinu og öðrum einingakerfum
 
+:::
+
 Mælingar veita stóran hluta þeirra upplýsinga sem liggja til grundvallar
 tilgátum, kenningum og lögmálum sem lýsa hegðun efnis og orku bæði á
 stórsæju og smásæju sviði efnafræðinnar. Hver mæling veitir þrenns konar
@@ -104,6 +106,8 @@ Tafla 1.3
 Þarftu upprifjun eða meiri æfingu með staðalform? Farðu á [þessa
 síðu](http://openstax.org/l/16notation) til að fara yfir grunnatriði
 staðalforms.
+
+:::
 
 ### SI-grunneiningar
 
@@ -276,6 +280,8 @@ $\text{density} = \ \frac{\text{mass}}{\text{volume}}\  = \ \frac{\text{90.7 g}}
 (Við munum ræða ástæðuna fyrir því að námunda að fyrsta aukastaf í næsta
 kafla.)
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -288,11 +294,17 @@ hver er eðlismassi kopars með tveimur aukastöfum?
 :::answer
 \(a\) 0,599 cm^3^; (b) 8,91 g/cm^3^
 
+:::
+
+:::
+
 :::link-to-material
 
 Til að læra meira um sambandið milli massa, rúmmáls og eðlismassa skaltu
 nota þennan [gagnvirka hermi](http://openstax.org/l/16phetmasvolden) til
 að kanna eðlismassa mismunandi efna.
+
+:::
 
 :::example
 ### Dæmi 1.2
@@ -336,6 +348,8 @@ og
 [1.43](http://openstax.org/books/chemistry-2e/pages/1-exercises#fs-idm160286704)
 í lok kaflans).
 
+:::
+
 :::practice-problem
 #### Kannaðu þekkingu þína
 
@@ -344,3 +358,7 @@ aðferðinni með tilfærslu vatns.
 
 :::answer
 0,230 g/mL
+
+:::
+
+:::

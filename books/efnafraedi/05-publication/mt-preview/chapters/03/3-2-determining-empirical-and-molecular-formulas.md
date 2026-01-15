@@ -14,6 +14,8 @@ chapter: 3
 -   Ákvarðað reynsluformúlu efnasambands
 -   Ákvarðað sameindaformúlu efnasambands
 
+:::
+
 Í fyrri kafla var fjallað um sambandið milli heildarmassa efnis og fjölda atóma eða sameinda sem það inniheldur (mól). Ef efnaformúla efnisins er þekkt er hægt að ákvarða magn efnisins (mól) út frá massa þess og öfugt. En hvað ef efnaformúla efnis er óþekkt? Í þessum kafla verður sömu meginreglum beitt til að leiða út efnaformúlur óþekktra efna út frá tilraunamælingum á massa.
 
 ### MASSAPRÓSENTA
@@ -43,6 +45,8 @@ Til að reikna út massaprósentu skal deila massa hvers frumefnis, sem fenginn 
 
 Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 15,4% H og 23,7% N miðað við massa.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -51,6 +55,8 @@ Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 1
 :::answer
 12,1% C, 16,1% O, 71,79% Cl
 
+:::
+
 #### Ákvörðun massaprósentu út frá sameinda- eða reynsluformúlum
 
 Massaprósenta er einnig gagnleg til að meta hlutfallslegt magn tiltekins frumefnis í mismunandi efnasamböndum með þekktum formúlum. Sem dæmi má nefna algengan áburð sem inniheldur köfnunarefni, ammóníak (NH~3~), ammóníumnítrat (NH~4~NO~3~) og þvagefni (CH~4~N~2~O). Frumefnið köfnunarefni er virka innihaldsefnið í landbúnaði, þannig að massaprósenta köfnunarefnis í efnasambandinu er hagnýtt og efnahagslegt atriði fyrir neytendur sem velja á milli þessara áburðartegunda. Fyrir slík not er auðvelt að leiða massaprósentu efnasambands út frá formúlumassa þess og atómmössum frumefnanna sem það er samsett úr. Ein sameind af NH~3~ inniheldur eitt N-atóm sem vegur 14,01 amu og þrjú H-atóm sem vega samtals (3 $\times$ 1,008 amu) = 3,024 amu. Formúlumassi ammóníaks er því (14,01 amu + 3,024 amu) = 17,03 amu og massaprósenta þess er:
@@ -58,6 +64,8 @@ Massaprósenta er einnig gagnleg til að meta hlutfallslegt magn tiltekins frume
 ![None](./images/media/rId32.jpg)
 
 Sömu aðferð má beita þegar litið er á par af sameindum, tylft sameinda eða mól af sameindum o.s.frv. Síðastnefnda magnið er hentugast og myndi einfaldlega fela í sér notkun mólmassa í stað atóm- og formúlumassa, eins og sýnt er í [dæmi 3.10](#fs-idm162294688). Svo lengi sem sameinda- eða reynsluformúla viðkomandi efnasambands er þekkt er hægt að leiða massaprósentuna út frá atóm- eða mólmössum frumefna efnasambandsins.
+
+:::
 
 :::example
 ### Dæmi 3.10: Ákvörðun massaprósentu út frá sameindaformúlu
@@ -76,6 +84,8 @@ Til að reikna út massaprósentuna þarf að vita massa C, H og O í þekktum m
 
 Athugið að þegar þessar prósentur eru lagðar saman og námundaðar á viðeigandi hátt er summan 100,00%.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -83,6 +93,8 @@ Hver er massaprósenta járns í efnasambandinu Fe~2~O~3~, gefin upp með þremu
 
 :::answer
 69,9% Fe
+
+:::
 
 ### Ákvörðun reynsluformúla
 
@@ -118,6 +130,8 @@ $\text{Cl}_{0.150}\text{O}_{0.525} = \text{Cl}_{\ \frac{0.150}{0.150}\ }\ \text{
 
 Mynd 3.11 Hægt er að leiða reynsluformúlu efnasambands út frá massa allra frumefna í sýninu.
 
+:::
+
 :::example
 ### Dæmi 3.11: Ákvörðun reynsluformúlu efnasambands út frá massa frumefna þess
 
@@ -145,6 +159,8 @@ $2\left( \text{Fe}_{1}\text{O}_{1.5} \right)\  = \ \text{Fe}_{2}\text{O}_{3}$
 
 Reynsluformúlan er Fe~2~O~3~.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -153,11 +169,17 @@ Hver er reynsluformúla efnasambands ef sýni inniheldur 0,130 g af köfnunarefn
 :::answer
 N~2~O~5~
 
+:::
+
  
+
+:::
 
 :::link-to-material
 
 Horfðu á stutta [myndbandið](http://openstax.org/l/16empforms) til að sjá fleiri dæmi um útreikninga á reynsluformúlum.
+
+:::
 
 #### Útreikningur á reynsluformúlum út frá prósentusamsetningu
 
@@ -190,6 +212,8 @@ Stuðlar fyrir bráðabirgðareynsluformúluna eru fengnir með því að deila 
 
 Þar sem hlutfallið sem fæst er eitt kolefnisatóm á móti tveimur súrefnisatómum er reynsluformúlan CO~2~.
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -197,6 +221,8 @@ Hver er reynsluformúla efnasambands sem inniheldur 40,0% C, 6,71% H og 53,28% O
 
 :::answer
 CH~2~O
+
+:::
 
 ### Útreikningur á sameindaformúlum
 
@@ -219,6 +245,8 @@ Sameindir þessa efnasambands eru þá táknaðar með sameindaformúlum þar se
 $\text{(CH}_{\text{2}}\text{O)}_{\text{6}} = \text{C}_{\text{6}}\text{H}_{\text{12}}\text{O}_{\text{6}}$
 
 Athugið að hægt er að nota sömu aðferð þegar mólmassi (g/mól) er notaður í stað sameindamassa (u). Í þessu tilfelli er litið á *eitt mól* af reynsluformúlueiningum og sameindum, öfugt við stakar einingar og sameindir.
+
+:::
 
 :::example
 ### Dæmi 3.13: Ákvörðun sameindaformúlu fyrir nikótín
@@ -255,6 +283,8 @@ Að lokum skal leiða út sameindaformúlu nikótíns út frá reynsluformúlunn
 
 $\text{(C}_{\text{5}}\text{H}_{\text{7}}\text{N)}_{\text{2}} = \text{C}_{\text{10}}\text{H}_{\text{14}}\text{N}_{\text{2}}$
 
+:::
+
 :::practice-problem
 **Kannaðu þekkingu þína**
 
@@ -262,3 +292,7 @@ Hver er sameindaformúla efnasambands með massaprósentuna 49,47% C, 5,201% H, 
 
 :::answer
 C~8~H~10~N~4~O~2~
+
+:::
+
+:::
