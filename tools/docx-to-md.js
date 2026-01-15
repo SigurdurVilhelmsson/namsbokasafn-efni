@@ -268,12 +268,13 @@ function convertTableToMarkdown(tableNode) {
 // ============================================================================
 
 class ImageHandler {
-  constructor(imagesDir, dryRun, verbose) {
+  constructor(imagesDir, dryRun, verbose, prefix = '') {
     this.imagesDir = imagesDir;
     this.dryRun = dryRun;
     this.verbose = verbose;
     this.imageCount = 0;
     this.images = new Map(); // contentType -> buffer mapping
+    this.prefix = prefix; // Section prefix to prevent collisions in batch mode
   }
 
   /**
@@ -297,7 +298,10 @@ class ImageHandler {
           }
         }
 
-        const filename = `image-${self.imageCount.toString().padStart(3, '0')}${ext}`;
+        const imageNum = self.imageCount.toString().padStart(3, '0');
+        const filename = self.prefix
+          ? `${self.prefix}-image-${imageNum}${ext}`
+          : `image-${imageNum}${ext}`;
         const imagePath = path.join(self.imagesDir, filename);
 
         // Store image for later writing
@@ -403,8 +407,16 @@ async function convertDocxToMarkdown(inputPath, outputPath, imagesDir, options) 
     throw new Error(`Input file not found: ${inputPath}`);
   }
 
-  // Set up image handler
-  const imageHandler = new ImageHandler(imagesDir, dryRun, verbose);
+  // Extract section prefix from filename for unique image naming
+  // E.g., "1.1-localized.docx" -> "1-1", "chapter-1.docx" -> "chapter-1"
+  const basename = path.basename(inputPath, '.docx');
+  const sectionMatch = basename.match(/^(\d+)\.(\d+)/);
+  const imagePrefix = sectionMatch
+    ? `${sectionMatch[1]}-${sectionMatch[2]}`
+    : basename.replace(/[^a-zA-Z0-9-]/g, '-');
+
+  // Set up image handler with prefix to avoid collisions in batch mode
+  const imageHandler = new ImageHandler(imagesDir, dryRun, verbose, imagePrefix);
 
   // Configure mammoth options
   const mammothOptions = {
