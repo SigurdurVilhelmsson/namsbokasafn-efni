@@ -6,8 +6,7 @@ chapter: 4
 
 ## 4.4 Heimtur hvarfa
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -53,8 +52,7 @@ Klórinn mun klárast alveg þegar 4 mól af HCl hafa myndast. Þar sem nægileg
 
 Mynd 4.14 Þegar H~2~ og Cl~2~ er blandað saman í magni sem ekki er í réttum hlutföllum, mun annað þessara hvarfefna takmarka magn HCl sem hægt er að framleiða. Þessi mynd sýnir hvarf þar sem vetni er til staðar í umframmagni og klór er takmarkandi hvarfefni.
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Skoðaðu þessa gagnvirku [hermun](http://openstax.org/l/16reactantprod) sem sýnir hugtökin takmarkandi og umfram hvarfefni.
 

@@ -6,8 +6,7 @@ chapter: 4
 
 ## 4.3 Hlutfallaefnafræði hvarfa
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -153,8 +152,7 @@ Hvaða massa af CO þarf til að hvarfast við 25,13 g af Fe~2~O~3~ samkvæmt j�
 
 Mynd 4.11 Flæðiritið sýnir hin ýmsu skref sem koma við sögu í flestum útreikningum í hlutfallaefnafræði efnahvarfa.
 
-:::note
-### Efnafræði í daglegu lífi: Loftpúðar
+:::chemistry-everyday: Loftpúðar
 
 Loftpúðar ([mynd 4.12](#CNX_Chem_04_03_airbag)) eru öryggisbúnaður sem hefur verið í flestum bifreiðum frá tíunda áratug síðustu aldar. Til að loftpúði virki á skilvirkan hátt þarf hann að blásast hratt upp með viðeigandi magni (rúmmáli) af gasi þegar ökutækið lendir í árekstri. Þessari kröfu er fullnægt í mörgum loftpúðakerfum bifreiða með notkun sprengifimra efnahvarfa, en algengt val er niðurbrot natríumazíðs, NaN~3~. Þegar skynjarar í ökutækinu nema árekstur er straumi hleypt í gegnum vandlega mælt magn af NaN~3~ til að koma niðurbroti þess af stað:
 

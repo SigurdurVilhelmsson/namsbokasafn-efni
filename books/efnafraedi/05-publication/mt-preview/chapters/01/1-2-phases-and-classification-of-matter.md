@@ -6,8 +6,7 @@ chapter: 1
 
 ## 1.2 Fasar og flokkun efnis
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -56,8 +55,7 @@ að greina snefilmagn málma.
 Mynd 1.7 Hægt er að nota rafgasbrennara til að skera málm. (heimild:
 „Hypertherm"/Wikimedia Commons)
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Í örsmáu hólfi í rafgassjónvarpi gefur rafgasið frá sér útfjólublátt
 ljós, sem aftur veldur því að á þeim stað birtist tiltekinn litur.
@@ -163,8 +161,7 @@ Mynd 1.9 (a) Efnasambandið kvikasilfurs(II)oxíð, (b) þegar það er hitað,
 (c) brotnar niður í silfurgljáandi dropa af fljótandi kvikasilfri og
 ósýnilegt súrefnisgas. (heimild: breyting á verki eftir Paul Flowers)
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Mörg efnasambönd brotna niður þegar þau eru hituð. Þessi
 [síða](http://openstax.org/l/16mercury) sýnir niðurbrot
@@ -355,8 +352,7 @@ sameindir sem samanstanda af tveimur eða fleiri atómum sama frumefnis.
 Efnasamböndin vatn, koltvísýringur og glúkósi samanstanda af
 samsetningum atóma mismunandi frumefna.
 
-:::note
-### Efnafræði í daglegu lífi
+:::chemistry-everyday
 
 #### Niðurbrot vatns / framleiðsla vetnis
 
@@ -405,8 +401,7 @@ rafefnafræðilegu ferli og myndar aðeins vatn sem úrgangsefni.
 
  
 
-:::note
-### Efnafræði í daglegu lífi
+:::chemistry-everyday
 
 #### Efnafræði farsíma
 

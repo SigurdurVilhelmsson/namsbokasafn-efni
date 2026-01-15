@@ -6,8 +6,7 @@ chapter: 1
 
 ## 1.1 Efnafræði í samhengi
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 

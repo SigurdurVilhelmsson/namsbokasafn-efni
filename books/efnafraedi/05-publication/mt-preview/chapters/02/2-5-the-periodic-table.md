@@ -6,8 +6,7 @@ chapter: 2
 
 ## 2.5 Lotukerfið
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla munt þú geta:
 
@@ -49,8 +48,7 @@ Samkvæmt skilgreiningu IUPAC eru frumefni í hóp 12 ekki hliðarmálmar, þót
 
 Mynd 2.27 Lotukerfið flokkar frumefni með svipaða eiginleika í hópa.
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Smelltu á þennan [tengil](https://openstax.org/l/16Periodic) til að sjá gagnvirkt lotukerfi sem þú getur notað til að kanna eiginleika frumefnanna (inniheldur hlaðvörp og myndbönd um hvert frumefni). Þú gætir líka viljað prófa [þetta](https://openstax.org/l/16Periodic2) sem sýnir myndir af öllum frumefnunum.
 

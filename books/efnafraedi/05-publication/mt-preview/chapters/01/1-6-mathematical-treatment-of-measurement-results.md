@@ -6,8 +6,7 @@ chapter: 1
 
 ## 1.6 Stærðfræðileg meðferð á niðurstöðum mælinga
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 

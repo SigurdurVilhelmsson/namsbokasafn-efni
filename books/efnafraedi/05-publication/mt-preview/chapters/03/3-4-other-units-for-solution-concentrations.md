@@ -6,8 +6,7 @@ chapter: 3
 
 ## 3.4 Aðrar einingar fyrir styrk lausna
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 

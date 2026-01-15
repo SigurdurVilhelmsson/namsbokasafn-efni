@@ -6,8 +6,7 @@ chapter: 4
 
 ## 4.2 Flokkun efnahvarfa
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -194,8 +193,7 @@ $\text{H}_{3}\text{O}^{\text{+}}(aq) + \text{OH}^{\text{−}}(aq)\  \rightarrow 
 
  
 
-:::note
-### Efnafræði í daglegu lífi: Sýrubindandi lyf
+:::chemistry-everyday: Sýrubindandi lyf
 
 Maginn okkar inniheldur lausn af um það bil 0,03 *M* HCl, sem hjálpar okkur að melta matinn sem við borðum. Sviðatilfinningin sem fylgir brjóstsviða stafar af því að magasýra lekur í gegnum vöðvalokuna efst í maganum og niður í neðri hluta vélindans. Slímhúð vélindans er ekki varin fyrir ætandi áhrifum magasýru eins og slímhúð magans er og afleiðingarnar geta verið mjög sársaukafullar. Þegar við fáum brjóstsviða líður okkur betur ef við minnkum umfram sýruna í vélindanu með því að taka sýrubindandi lyf. Eins og þú gætir hafa giskað á eru sýrubindandi lyf basar. Eitt algengasta sýrubindandi lyfið er kalsíumkarbónat, CaCO~3~. Efnahvarfið,
 
@@ -215,8 +213,7 @@ $\text{H}_{3}\text{O}^{\text{+}} + \text{OH}^{\text{−}}\  \rightleftharpoons \
 
  
 
-:::note
-### Efnafræði í daglegu lífi: Matreiðsluþættir efnafræðinnar
+:::chemistry-everyday: Matreiðsluþættir efnafræðinnar
 
 Dæmi um sýru-basa efnafræði eru mörg í heimi matargerðarlistar. Eitt dæmi er notkun matarsóda, eða natríumbíkarbónats, við bakstur. NaHCO~3~ er basi. Þegar hann hvarfast við sýru eins og sítrónusafa, súrmjólk eða sýrðan rjóma í deigi myndast loftbólur af koldíoxíðgasi við niðurbrot kolsýrunnar sem myndast og deigið „lyftir sér." Lyftiduft er blanda af natríumbíkarbónati og einu eða fleiri sýrusöltum sem hvarfast þegar efnin tvö komast í snertingu við vatn í deiginu
 
@@ -232,8 +229,7 @@ Súrsun er aðferð sem notuð er til að varðveita grænmeti með því að n�
 
  
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Skoðaðu smásæja [sýn](http://openstax.org/l/16AcidsBases) á sterkar og veikar sýrur og basa.
 
@@ -332,8 +328,7 @@ Nokkrir undirflokkar oxunar-afoxunarhvarfa eru þekktir, þar á meðal brunahv�
 
 $10\text{Al}(s) + 6\text{NH}_{4}\text{ClO}_{4}(s)\  \rightarrow \ 4\text{Al}_{2}\text{O}_{3}(s) + 2\text{AlCl}_{3}(s) + 12\text{H}_{2}\text{O}(g) + 3\text{N}_{2}(g)$
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Horfðu á stutt [myndband](http://openstax.org/l/16hybridrocket) sem sýnir prufukeyrslu á smækkaðri frumgerð blendings eldflaugahreyfils sem áætlað er að nota í nýja Space Launch System sem NASA er að þróa. Fyrstu hreyflarnir sem fara í gang á\
 3 s (grænn logi) nota blöndu af fljótandi eldsneyti/oxara og seinni, öflugri vélarnar sem kveikt er á við 4 s (gulur logi) nota fasta efnablöndu.

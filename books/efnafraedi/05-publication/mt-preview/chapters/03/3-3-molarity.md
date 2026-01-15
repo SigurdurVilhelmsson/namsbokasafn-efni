@@ -6,8 +6,7 @@ chapter: 3
 
 ## 3.3 Mólstyrkur
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -194,8 +193,7 @@ $C_{1}V_{1} = C_{2}V_{2}$
 
 þar sem *C* og *V* eru styrkur og rúmmál, í sömu röð.
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Notaðu [hermunina](http://openstax.org/l/16Phetsolvents) til að kanna sambandið milli magns uppleysts efnis, rúmmáls lausnar og styrks og til að staðfesta þynningarjöfnuna.
 

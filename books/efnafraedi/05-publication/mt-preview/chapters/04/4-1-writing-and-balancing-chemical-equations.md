@@ -6,8 +6,7 @@ chapter: 4
 
 ## 4.1 Að skrifa og stilla efnajöfnur
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -160,8 +159,7 @@ eru stuðlarnir ekki lægstu mögulegu heiltölurnar sem tákna hlutfallslegan f
 
 $\text{N}_{2} + 3\text{H}_{2}\  \rightarrow \ 2\text{NH}_{3}$
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Notaðu þetta gagnvirka [kennsluefni](http://openstax.org/l/16BalanceEq) til að æfa þig meira í að stilla efnajöfnur.
 

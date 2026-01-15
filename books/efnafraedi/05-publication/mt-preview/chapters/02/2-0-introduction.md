@@ -28,8 +28,7 @@ Mynd 2.1 Greining á sameindum í útöndunarlofti getur veitt verðmætar uppl�
 
 ## Inngangur
 
-:::note
-### Efnafræði í daglegu lífi
+:::chemistry-everyday
 
 Lungnasjúkdómar og lungnakrabbamein eru meðal skæðustu sjúkdóma heims, meðal annars vegna þess hve seint þeir greinast. Flestar skimunaraðferðir án inngrips eru ekki áreiðanlegar og sjúklingar veigra sér oft við nákvæmari aðferðum vegna óþæginda sem fylgja þeim eða hugsanlegrar hættu sem þær geta valdið. En hvað ef hægt væri að fá nákvæma greiningu með einföldu öndunarprófi?
 

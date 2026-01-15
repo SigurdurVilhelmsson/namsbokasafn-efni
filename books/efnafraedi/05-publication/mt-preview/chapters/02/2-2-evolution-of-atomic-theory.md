@@ -6,8 +6,7 @@ chapter: 2
 
 ## 2.2 Þróun atómkenningarinnar
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla munt þú geta:
 
@@ -24,8 +23,7 @@ Ef efni er gert úr atómum, úr hverju eru atóm þá gerð? Eru þau smæstu e
 
 Byggt á athugunum sínum lagði Thomson eftirfarandi til og útskýrði hvers vegna: Eindirnar laðast að jákvæðum (+) hleðslum og hrindast frá neikvæðum (−) hleðslum, þannig að þær hljóta að vera neikvætt hlaðnar (eins hleðslur hrinda hvor annarri frá sér og ólíkar hleðslur laðast hvor að annarri); þær eru minni að massa en atóm og óaðgreinanlegar, óháð upprunaefninu, þannig að þær hljóta að vera grunnöreindir allra atóma. Þótt hugmynd Thomsons hafi verið umdeild á sínum tíma var hún smám saman viðurkennd og katóðugeislaeind hans er það sem við köllum nú rafeind, neikvætt hlaðin öreind með massa sem er meira en þúsund sinnum minni en massi atóms. Hugtakið „electron (rafeind)" var búið til árið 1891 af írska eðlisfræðingnum George Stoney úr „*electr*ic i*on*".
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Smelltu [hér](http://openstax.org/l/16JJThomson) til að heyra Thomson lýsa uppgötvun sinni með eigin röddu.
 
@@ -60,8 +58,7 @@ Hvað uppgötvuðu þeir? Flestar eindirnar fóru beint í gegnum þynnuna án �
 1.  Rúmmálið sem atóm tekur hlýtur að samanstanda af miklu magni af tómu rými.
 2.  Lítill, tiltölulega þungur, jákvætt hlaðinn hlutur, kjarninn, hlýtur að vera í miðju hvers atóms.
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilraun Rutherfords. Stilltu breidd raufarinnar til að búa til mjórri eða breiðari geisla af α-eindum til að sjá hvernig það hefur áhrif á dreifingarmynstrið.
 
@@ -71,8 +68,7 @@ Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilr
 
 **Mynd 2.10** α-eindirnar sveigja aðeins af leið þegar þær rekast á eða fara nálægt mun þyngri, jákvætt hlöðnum gullkjarnanum. Þar sem kjarninn er mjög lítill miðað við stærð atóms, sveigja mjög fáar α-eindir af leið. Flestar fara í gegnum tiltölulega stórt svæði sem rafeindir taka, en þær eru of léttar til að sveigja hratt á liti eindirnar.
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 [Rutherford-dreifingarhermunin](http://openstax.org/l/16PhetScatter) gerir þér kleift að rannsaka muninn á „plómubúðings"-atómi og Rutherford-atómi með því að skjóta α-eindum á hvora tegund atóms.
 

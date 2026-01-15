@@ -6,8 +6,7 @@ chapter: 3
 
 ## 3.1 Formúlumassi og mólhugtakið
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -129,8 +128,7 @@ Mynd 3.6 Hvert sýni inniheldur 6,02 $\times$ 10^23^ sameindir eða formúlueini
 
 Mynd 3.7 Fjöldi sameinda í einum vatnsdropa er um það bil 100 milljörðum sinnum meiri en fjöldi fólks á jörðinni. (Heimild: „tanakawho"/Wikimedia commons)
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Mólið er notað í efnafræði til að tákna 6,022 $\times$ 10^23^ af einhverju, en það getur verið erfitt að skilja svo stóra tölu. Horfðu á þetta [myndband](http://openstax.org/l/16molevideo) og svaraðu síðan „Hugsaðu"-spurningunum sem fylgja. Kynntu þér mólið nánar með því að skoða upplýsingarnar undir „Kafaðu dýpra".
 
@@ -316,8 +314,7 @@ Hversu margar C~4~H~10~ sameindir eru í 9,213 g af þessu efnasambandi? Hversu 
 
 
 
-:::note
-### Hvernig vísindin tengjast
+:::how-science-connects
 
 #### Að telja taugaboðefnissameindir í heilanum
 

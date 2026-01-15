@@ -6,8 +6,7 @@ chapter: 1
 
 ## 1.5 Óvissa, hittni og nákvæmni í mælingum
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 

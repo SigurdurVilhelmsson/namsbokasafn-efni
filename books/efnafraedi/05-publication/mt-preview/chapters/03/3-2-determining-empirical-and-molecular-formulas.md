@@ -6,8 +6,7 @@ chapter: 3
 
 ## 3.2 Ákvörðun reynsluformúla og sameindaformúla
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -156,8 +155,7 @@ N~2~O~5~
 
  
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Horfðu á stutta [myndbandið](http://openstax.org/l/16empforms) til að sjá fleiri dæmi um útreikninga á reynsluformúlum.
 

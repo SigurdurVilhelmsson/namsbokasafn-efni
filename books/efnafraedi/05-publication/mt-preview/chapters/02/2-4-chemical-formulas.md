@@ -6,8 +6,7 @@ chapter: 2
 
 ## 2.4 Efnaformúlur
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla munt þú geta:
 
@@ -83,15 +82,13 @@ Sameindaformúla, C~8~H~16~O~4~; reynsluformúla, C~2~H~4~O
 
  
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Þú getur kannað [sameindabyggingu](http://openstax.org/l/16molbuilding) með því að nota hermilíkan á netinu.
 
  
 
-:::note
-### Nærmynd af efnafræðingi: Paula Hammond
+:::scientist-spotlight: Paula Hammond
 
 Þú hefur lært um þróun atómkenningarinnar og ert byrjuð/byrjaður að kanna mismunandi efnafræðilegar byggingar. Þessar byggingar valda því að sameindir laðast að eða hrinda frá sér hvor annarri, eða hjálpa þeim að raðast í frumuhimnur okkar eða leiða þær til að dreifast í þunnar filmur eða klessast saman í föst efni.
 
@@ -125,7 +122,6 @@ Til eru margar gerðir hverfa ([mynd 2.24](#CNX_Chem_02_04_Isomers2)). Ediksýra
 
 Mynd 2.24 Sameindir karvóns eru rúmhverfur; þær eru aðeins ólíkar að því leyti hvernig atómin raðast í rúmi. (heimild neðst til vinstri: breytt útgáfa af verki eftir „Miansari66"/Wikimedia Commons; heimild neðst til hægri: breytt útgáfa af verki eftir Forest & Kim Starr)
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Smelltu á þennan [tengil](http://openstax.org/l/16isomers) til að sjá útskýringu á hverfum, rúmhverfum og hvers vegna þær hafa ólíka lykt (veldu myndbandið sem heitir „Mirror Molecule: Carvone").

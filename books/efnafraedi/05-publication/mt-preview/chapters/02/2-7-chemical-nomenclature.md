@@ -6,8 +6,7 @@ chapter: 2
 
 ## 2.7 Nafnakerfi efnafræðinnar
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla munt þú geta:
 
@@ -45,8 +44,7 @@ Efnasambönd sem innihalda fjölfrumeinda jónir eru nefnd á svipaðan hátt og
 | NaHCO~3~, natríumbíkarbónat | CaSO~4~, kalsíumsúlfat |
 | Al~2~(CO~3~)~3~, álkarbónat | Mg~3~(PO~4~)~2~, magnesíumfosfat |
 
-:::note
-### Efnafræði í daglegu lífi: Jónaefni í skápunum þínum
+:::chemistry-everyday: Jónaefni í skápunum þínum
 
 Á hverjum degi rekst þú á og notar fjölda jónaefna. Sum þessara efnasambanda, hvar þau finnast og til hvers þau eru notuð, eru talin upp í [töflu 2.8](#fs-idp268265360). Skoðaðu merkimiðann eða innihaldslistann á hinum ýmsu vörum sem þú notar næstu daga og athugaðu hvort þú rekst á einhver þeirra í þessari töflu, eða finnur önnur jónaefni sem þú gætir nú nefnt eða skrifað sem formúlu.
 
@@ -161,8 +159,7 @@ Skrifaðu formúlur eftirfarandi jónaefna:
 
  
 
-:::note
-### Efnafræði í daglegu lífi: Erin Brockovich og krómmengun
+:::chemistry-everyday: Erin Brockovich og krómmengun
 
 Í upphafi tíunda áratugarins uppgötvaði lögfræðiritarinn Erin Brockovich ([mynd 2.32](#CNX_Chem_02_07_ErinBrocko)) háa tíðni alvarlegra veikinda í smábænum Hinckley í Kaliforníu. Rannsókn hennar tengdi að lokum veikindin við grunnvatn sem var mengað af Cr(VI) sem Pacific Gas & Electric (PG&E) notaði til að berjast gegn tæringu í nálægri jarðgasleiðslu. Eins og fram kom í kvikmyndinni *Erin Brockovich* (sem Julia Roberts vann Óskarsverðlaun fyrir), stefndu Erin og lögfræðingurinn Edward Masry PG&E fyrir að menga vatnið nálægt Hinckley árið 1993. Sáttin sem þau unnu árið 1996 -- 333 milljónir dala -- var hæsta upphæð sem nokkru sinni hafði verið veitt í beinni málsókn í Bandaríkjunum á þeim tíma.
 
@@ -243,8 +240,7 @@ Skrifaðu efnaformúlur fyrir eftirfarandi efnasambönd:
 
  
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Eftirfarandi [vefsíða](http://openstax.org/l/16chemcompname) býður upp á æfingar í nafngiftum efnasambanda og ritun efnaformúla. Þú getur valið tvíundar, fjölfrumeinda og jónaefni með breytilega hleðslu, auk sameindaefnasambanda.
 

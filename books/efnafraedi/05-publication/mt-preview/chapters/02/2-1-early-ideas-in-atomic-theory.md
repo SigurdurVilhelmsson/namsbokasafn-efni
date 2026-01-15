@@ -6,8 +6,7 @@ chapter: 2
 
 ## 2.1 Fyrstu hugmyndir atómkenningarinnar
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla munt þú geta:
 

@@ -6,8 +6,7 @@ chapter: 4
 
 ## 4.5 Magnbundin efnagreining
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 

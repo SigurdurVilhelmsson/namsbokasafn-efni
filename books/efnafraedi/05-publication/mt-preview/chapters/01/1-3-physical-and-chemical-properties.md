@@ -6,8 +6,7 @@ chapter: 1
 
 ## 1.3 Eðlis- og efnafræðilegir eiginleikar
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -101,8 +100,7 @@ alvarlegum bruna. Bæði dropinn og potturinn af olíu eru við sama
 hitastig (eðlisbundinn eiginleiki), en potturinn inniheldur augljóslega
 mun meiri varma (magnbundinn eiginleiki).
 
-:::note
-### Efnafræði í daglegu lífi
+:::chemistry-everyday
 
 #### Hættudemantur
 

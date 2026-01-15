@@ -6,8 +6,7 @@ chapter: 2
 
 ## 2.6 Jóna- og sameindaefni
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla munt þú geta:
 
@@ -125,8 +124,7 @@ Oft er hægt að þekkja jónaefni af eiginleikum þeirra. Jónaefni eru föst e
 
 Mynd 2.30 Natríumklóríð bráðnar við 801 °C og leiðir rafmagn þegar það er bráðið. (heimild: breyting á verki eftir Mark Blaser og Matt Evans)
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Horfðu á þetta [myndband](http://openstax.org/l/16moltensalt) til að sjá efnablöndu af söltum bráðna og leiða rafmagn.
 

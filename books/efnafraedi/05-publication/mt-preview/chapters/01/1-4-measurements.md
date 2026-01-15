@@ -6,8 +6,7 @@ chapter: 1
 
 ## 1.4 Mælingar
 
-:::note
-### Námsmarkmið
+:::learning-objectives
 
 Í lok þessa kafla muntu geta:
 
@@ -100,8 +99,7 @@ Algeng forskeyti eininga
 
 Tafla 1.3
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Þarftu upprifjun eða meiri æfingu með staðalform? Farðu á [þessa
 síðu](http://openstax.org/l/16notation) til að fara yfir grunnatriði
@@ -290,8 +288,7 @@ hver er eðlismassi kopars með tveimur aukastöfum?
 :::answer
 \(a\) 0,599 cm^3^; (b) 8,91 g/cm^3^
 
-:::note
-### Tengill á námsefni
+:::link-to-material
 
 Til að læra meira um sambandið milli massa, rúmmáls og eðlismassa skaltu
 nota þennan [gagnvirka hermi](http://openstax.org/l/16phetmasvolden) til
