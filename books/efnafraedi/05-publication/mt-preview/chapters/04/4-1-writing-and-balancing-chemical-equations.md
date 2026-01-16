@@ -195,7 +195,17 @@ $\text{CaCl}_{2}(aq) + 2\text{AgNO}_{3}(aq)\  \rightarrow \ \text{Ca}\left( \tex
 
 Þessi stillta jafna, sem er fengin á venjulegan hátt, er kölluð sameindajafna vegna þess að hún sýnir ekki berum orðum þær jónir sem eru til staðar í lausninni. Þegar jónaefni leysast upp í vatni geta þau *sundrast* í jónirnar sem þau eru mynduð úr, sem dreifast síðan einsleitt um lausnina (ítarleg umfjöllun um þetta mikilvæga ferli er í kaflanum um lausnir). Jónaefni sem eru leyst upp í vatni eru því frekar táknuð sem aðskildar jónir, í þessu tilfelli:
 
-![None](./images/media/4-1-writing-and-balancing-chemical-equations-rId68.png)
+$$
+\ce{CaCl2(aq) -> Ca^{2+}(aq) + 2Cl^{-}(aq)}
+$$
+
+$$
+\ce{AgNO3(aq) -> Ag^{+}(aq) + NO3^{-}(aq)}
+$$
+
+$$
+\ce{Ca(NO3)2(aq) -> Ca^{2+}(aq) + 2NO3^{-}(aq)}
+$$
 
 Ólíkt þessum þremur jónaefnum leysist AgCl ekki upp í vatni að neinu marki, eins og hamtákn þess, *s*, gefur til kynna.
 
@@ -205,7 +215,13 @@ $\text{Ca}^{2 +}(aq) + 2\text{Cl}^{\text{−}}(aq) + 2\text{Ag}^{\text{+}}(aq) +
 
 Ef þessi jafna er skoðuð kemur í ljós að tvö efni eru til staðar á sama formi báðum megin við örina, Ca^2+^(*aq*) og $\text{NO}_{3}^{\text{−}}(aq).$ Þessar meðjónir---jónir sem þurfa að vera til staðar til að jafna út hleðslu---breytast hvorki efna- né eðlisfræðilega í ferlinu og því má fjarlægja þær úr jöfnunni til að fá hnitmiðaðri framsetningu sem kallast nettójónajafna:
 
-![None](./images/media/rId76.jpg)
+$$
+\ce{\cancel{Ca^{2+}(aq)} + 2Cl^{-}(aq) + 2Ag^{+}(aq) + \cancel{2NO3^{-}(aq)} -> \cancel{Ca^{2+}(aq)} + \cancel{2NO3^{-}(aq)} + 2AgCl(s)}
+$$
+
+$$
+\ce{2Cl^{-}(aq) + 2Ag^{+}(aq) -> 2AgCl(s)}
+$$
 
 Samkvæmt venju er notuð lægsta mögulega heiltala sem stuðull og því er jafnan skrifuð svona:
 
@@ -234,7 +250,9 @@ $\text{CO}_{2}(aq) + 2\text{Na}^{\text{+}}(aq) + 2\text{OH}^{\text{−}}(aq)\  \
 
 Að lokum skaltu finna meðjónina/jónirnar, í þessu tilfelli Na^+^(*aq*), og fjarlægja hana úr báðum hliðum jöfnunnar til að fá nettójónajöfnuna:
 
-![None](./images/media/rId84.jpg)
+$$
+\ce{CO2(aq) + 2OH^{-}(aq) -> CO3^{2-}(aq) + H2O(l)}
+$$
 
 :::
 
@@ -243,7 +261,9 @@ Að lokum skaltu finna meðjónina/jónirnar, í þessu tilfelli Na^+^(*aq*), og
 
 Tvíatóma klór og natríumhýdroxíð (lútur) eru hráefnaiðnaðarvörur sem framleiddar eru í miklu magni, ásamt tvíatóma vetni, með rafgreiningu á pækli, samkvæmt eftirfarandi óstilltri jöfnu:
 
-![None](./images/media/rId88.jpg)
+$$
+\ce{NaCl(aq) + H2O(l) -> NaOH(aq) + H2(g) + Cl2(g)} \quad \text{(óstillt)}
+$$
 
 Skrifaðu stilltar sameinda-, heildarjóna- og nettójónajöfnur fyrir þetta ferli.
 

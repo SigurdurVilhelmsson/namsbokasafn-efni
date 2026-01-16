@@ -28,7 +28,13 @@ Jafna er stillt þegar sami fjöldi hvers frumefnis er sýndur beggja vegna við
 
 [11](http://openstax.org/books/chemistry-2e/pages/4-exercises#fs-idp41635696).
 
-![None](./images/media/rId31.jpg)
+$$
+\ce{K2CO3(aq) + Ba(NO3)2(aq) -> BaCO3(s) + 2KNO3(aq)} \quad \text{(sameindajafna)}
+$$
+
+$$
+\ce{CO3^{2-}(aq) + Ba^{2+}(aq) -> BaCO3(s)} \quad \text{(nettójónajafna)}
+$$
 
 [13](http://openstax.org/books/chemistry-2e/pages/4-exercises#fs-idp89395536).
 

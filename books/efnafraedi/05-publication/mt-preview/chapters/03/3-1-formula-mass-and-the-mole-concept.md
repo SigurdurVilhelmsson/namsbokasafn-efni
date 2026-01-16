@@ -344,7 +344,9 @@ Fjöldi sameinda í tilteknum massa efnasambands er reiknaður út með því a�
 
 Með því að nota uppgefinn massa og mólmassa fyrir sakkarín fæst:
 
-![None](./images/media/rId121.jpg)
+$$
+0{,}0400\text{ g } \ce{C7H5NO3S} \times \frac{1\text{ mól } \ce{C7H5NO3S}}{183{,}18\text{ g } \ce{C7H5NO3S}} \times \frac{6{,}022 \times 10^{23}\text{ sameindir}}{1\text{ mól}} = 1{,}31 \times 10^{20}\text{ sameindir}
+$$
 
 Formúla efnasambandsins sýnir að hver sameind inniheldur sjö kolefnisatóm og því er fjöldi C-atóma í sýninu:
 

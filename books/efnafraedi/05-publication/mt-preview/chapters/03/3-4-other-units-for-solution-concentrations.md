@@ -138,7 +138,13 @@ Mjög lágur styrkur leystra efna er oft gefinn upp með viðeigandi litlum eini
 
 Skilgreiningar á ppm og ppb sem byggjast á massa eru gefnar hér:
 
-![None](./images/media/rId55.jpg)
+$$
+\text{ppm} = \frac{\text{massi uppleysts efnis}}{\text{massi lausnar}} \times 10^6\text{ ppm}
+$$
+
+$$
+\text{ppb} = \frac{\text{massi uppleysts efnis}}{\text{massi lausnar}} \times 10^9\text{ ppb}
+$$
 
 Bæði ppm og ppb eru hentugar einingar til að gefa upp styrk mengunarefna og annarra snefilmengunarefna í vatni. Styrkur þessara mengunarefna er venjulega mjög lágur í hreinsuðu og náttúrulegu vatni og magn þeirra má ekki fara yfir tiltölulega lág styrkleikamörk án þess að valda skaðlegum áhrifum á heilsu og dýralíf. Til dæmis hefur EPA (Umhverfisverndarstofnun Bandaríkjanna) skilgreint hámarksöryggismagn flúoríðjóna í kranavatni sem 4 ppm. Vatnssíur í leiðslum eru hannaðar til að draga úr styrk flúoríðs og nokkurra annarra snefilmengunarefna í kranavatni ([mynd 3.19](#CNX_Chem_03_05_faucet)).
 
@@ -163,7 +169,13 @@ $15\ \text{ppb}\  \times \ \frac{1\ \text{ppm}}{10^{3}\ \text{ppb}}\  = 0.015\ \
 
 Hægt er að nota skilgreininguna á ppb-einingunni til að reikna út umbeðinn massa ef massi lausnarinnar er gefinn. Þar sem rúmmál lausnarinnar (300 ml) er gefið þarf að nota eðlismassa hennar til að finna samsvarandi massa. Gerum ráð fyrir að eðlismassi kranavatns sé nokkurn veginn sá sami og eðlismassi hreins vatns (~1,00 g/ml), þar sem styrkur uppleystra efna ætti ekki að vera mjög hár. Með því að umraða jöfnunni sem skilgreinir ppb-eininguna og setja inn gefnar stærðir fæst:
 
-![None](./images/media/rId64.jpg)
+$$
+\text{ppb} = \frac{\text{massi uppleysts efnis}}{\text{massi lausnar}} \times 10^9\text{ ppb}
+$$
+
+$$
+\text{massi uppleysts efnis} = \frac{\text{ppb} \times \text{massi lausnar}}{10^9} = \frac{15\text{ ppb} \times 300\text{ g}}{10^9} = 4{,}5 \times 10^{-6}\text{ g}
+$$
 
 Að lokum er þessum massa breytt í umbeðna einingu, míkrógrömm:
 

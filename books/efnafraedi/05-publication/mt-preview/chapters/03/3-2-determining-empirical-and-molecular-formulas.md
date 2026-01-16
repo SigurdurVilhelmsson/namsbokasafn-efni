@@ -41,7 +41,13 @@ Greining á 12,04 g sýni af efnasambandi í vökvaformi sem samanstendur af kol
 
 Til að reikna út massaprósentu skal deila massa hvers frumefnis, sem fenginn er með tilraunum, með heildarmassa efnasambandsins og breyta síðan í prósentutölu:
 
-![None](./images/media/rId26.jpg)
+$$
+\begin{aligned}
+\%\text{C} &= \frac{7{,}34\text{ g C}}{12{,}04\text{ g efnasamband}} \times 100\% = 61{,}0\% \\
+\%\text{H} &= \frac{1{,}85\text{ g H}}{12{,}04\text{ g efnasamband}} \times 100\% = 15{,}4\% \\
+\%\text{N} &= \frac{2{,}85\text{ g N}}{12{,}04\text{ g efnasamband}} \times 100\% = 23{,}7\%
+\end{aligned}
+$$
 
 Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 15,4% H og 23,7% N miðað við massa.
 
@@ -61,7 +67,9 @@ Niðurstöður greiningarinnar benda til þess að efnasambandið sé 61,0% C, 1
 
 Massaprósenta er einnig gagnleg til að meta hlutfallslegt magn tiltekins frumefnis í mismunandi efnasamböndum með þekktum formúlum. Sem dæmi má nefna algengan áburð sem inniheldur köfnunarefni, ammóníak (NH~3~), ammóníumnítrat (NH~4~NO~3~) og þvagefni (CH~4~N~2~O). Frumefnið köfnunarefni er virka innihaldsefnið í landbúnaði, þannig að massaprósenta köfnunarefnis í efnasambandinu er hagnýtt og efnahagslegt atriði fyrir neytendur sem velja á milli þessara áburðartegunda. Fyrir slík not er auðvelt að leiða massaprósentu efnasambands út frá formúlumassa þess og atómmössum frumefnanna sem það er samsett úr. Ein sameind af NH~3~ inniheldur eitt N-atóm sem vegur 14,01 amu og þrjú H-atóm sem vega samtals (3 $\times$ 1,008 amu) = 3,024 amu. Formúlumassi ammóníaks er því (14,01 amu + 3,024 amu) = 17,03 amu og massaprósenta þess er:
 
-![None](./images/media/rId32.jpg)
+$$
+\%\text{N} = \frac{14{,}01\text{ amu N}}{17{,}03\text{ amu }\ce{NH3}} \times 100\% = 82{,}27\%
+$$
 
 Sömu aðferð má beita þegar litið er á par af sameindum, tylft sameinda eða mól af sameindum o.s.frv. Síðastnefnda magnið er hentugast og myndi einfaldlega fela í sér notkun mólmassa í stað atóm- og formúlumassa, eins og sýnt er í [dæmi 3.10](#fs-idm162294688). Svo lengi sem sameinda- eða reynsluformúla viðkomandi efnasambands er þekkt er hægt að leiða massaprósentuna út frá atóm- eða mólmössum frumefna efnasambandsins.
 
@@ -76,11 +84,17 @@ Aspirín er efnasamband með sameindaformúluna C~9~H~8~O~4~. Hver er massaprós
 
 Til að reikna út massaprósentuna þarf að vita massa C, H og O í þekktum massa af C~9~H~8~O~4~. Það er hentugt að miða við 1 mól af C~9~H~8~O~4~ og nota mólmassa þess (180,159 g/mól, ákvarðað út frá efnaformúlunni) til að reikna út prósentuhlutföll hvers frumefnis:
 
-![None](./images/media/rId36.jpg)
+$$
+\%\text{C} = \frac{9 \times 12{,}01\text{ g/mól}}{180{,}159\text{ g/mól}} \times 100\% = \frac{108{,}09\text{ g/mól}}{180{,}159\text{ g/mól}} \times 100\% = 60{,}00\%
+$$
 
-![None](./images/media/rId40.jpg)
+$$
+\%\text{H} = \frac{8 \times 1{,}008\text{ g/mól}}{180{,}159\text{ g/mól}} \times 100\% = \frac{8{,}064\text{ g/mól}}{180{,}159\text{ g/mól}} \times 100\% = 4{,}476\%
+$$
 
-![None](./images/media/rId44.jpg)
+$$
+\%\text{O} = \frac{4 \times 16{,}00\text{ g/mól}}{180{,}159\text{ g/mól}} \times 100\% = \frac{64{,}00\text{ g/mól}}{180{,}159\text{ g/mól}} \times 100\% = 35{,}52\%
+$$
 
 Athugið að þegar þessar prósentur eru lagðar saman og námundaðar á viðeigandi hátt er summan 100,00%.
 
@@ -100,7 +114,12 @@ Hver er massaprósenta járns í efnasambandinu Fe~2~O~3~, gefin upp með þremu
 
 Eins og áður hefur komið fram er algengasta aðferðin til að ákvarða efnaformúlu efnasambands að mæla fyrst massa frumefnanna sem það er gert úr. Hins vegar er mikilvægt að hafa í huga að efnaformúlur tákna hlutfallslegan *fjölda* atóma í efninu, ekki massa þeirra. Þess vegna verður að nota allar tilraunagögn sem fela í sér massa til að finna út samsvarandi fjölda atóma í efnasambandinu. Þetta er gert með því að nota mólmassa til að breyta massa hvers frumefnis í fjölda móla. Þessi mólmagn eru notuð til að reikna út heiltöluhlutföll sem hægt er að nota til að leiða út reynsluformúlu efnisins. Ímyndum okkur sýni af efnasambandi sem inniheldur 1,71 g af C og 0,287 g af H. Samsvarandi fjöldi atóma (í mólum) er:
 
-![None](./images/media/3-2-determining-empirical-and-molecular-formulas-rId54.png)
+$$
+\begin{aligned}
+1{,}71\text{ g C} \times \frac{1\text{ mól C}}{12{,}01\text{ g C}} &= 0{,}142\text{ mól C} \\
+0{,}287\text{ g H} \times \frac{1\text{ mól H}}{1{,}008\text{ g H}} &= 0{,}284\text{ mól H}
+\end{aligned}
+$$
 
 Þannig má tákna þetta efnasamband með formúlunni C~0,142~H~0,284~. Samkvæmt venju innihalda formúlur heiltölulágstafi, sem hægt er að ná með því að deila hverjum lágstaf með minni lágstafnum:
 
@@ -147,11 +166,21 @@ Mynd 3.12 Hematít er járnoxíð sem er notað í skartgripi. (heimild: Mauro C
 
 Í þessu verkefni er gefinn massi hvers frumefnis í grömmum. Byrjaðu á því að finna mól hvers frumefnis:
 
-![None](./images/media/rId68.jpg)
+$$
+\begin{aligned}
+34{,}97\text{ g Fe} \times \frac{1\text{ mól Fe}}{55{,}85\text{ g Fe}} &= 0{,}6261\text{ mól Fe} \\
+15{,}03\text{ g O} \times \frac{1\text{ mól O}}{16{,}00\text{ g O}} &= 0{,}9394\text{ mól O}
+\end{aligned}
+$$
 
 Næst skal leiða út mólhlutfall járns og súrefnis með því að deila með minni mólfjöldanum:
 
-![None](./images/media/rId72.jpg)
+$$
+\begin{aligned}
+\frac{0{,}6261\text{ mól Fe}}{0{,}6261} &= 1{,}000\text{ mól Fe} \\
+\frac{0{,}9394\text{ mól O}}{0{,}6261} &= 1{,}500\text{ mól O}
+\end{aligned}
+$$
 
 Hlutfallið er 1,000 mól af járni á móti 1,500 mólum af súrefni (Fe~1~O~1,5~). Að lokum skal margfalda hlutfallið með tveimur til að fá minnstu mögulegu heiltölulágstafina en halda samt réttu hlutfalli járns og súrefnis:
 
@@ -200,15 +229,30 @@ Mynd 3.13 Kolefnisoxíð er fjarlægt úr þessum gerjunartönkum í gegnum stó
 
 Þar sem prósentur miðast við 100 er hentugast að reikna út massa frumefna í sýni sem vegur 100 g. Útreikningurinn er „hentugastur" vegna þess að samkvæmt skilgreiningu á prósentusamsetningu er massi tiltekins frumefnis í grömmum tölulega jafngildur massaprósentu frumefnisins. Þetta tölulega jafngildi stafar af skilgreiningu á einingunni „prósenta", en nafn hennar er dregið af latneska orðasambandinu *per centum* sem þýðir „af hundraði". Með þessa skilgreiningu í huga má á þægilegri hátt setja uppgefnar massaprósentur fram sem brot:
 
-![None](./images/media/rId85.jpg)
+$$
+\begin{aligned}
+27{,}29\%\text{ C} &= 27{,}29\text{ g C í 100 g sýni} \\
+72{,}71\%\text{ O} &= 72{,}71\text{ g O í 100 g sýni}
+\end{aligned}
+$$
 
 Mólmagn kolefnis og súrefnis í 100 g sýni er reiknað með því að deila massa hvers frumefnis með mólmassa þess:
 
-![None](./images/media/rId89.jpg)
+$$
+\begin{aligned}
+27{,}29\text{ g C} \times \frac{1\text{ mól C}}{12{,}01\text{ g C}} &= 2{,}272\text{ mól C} \\
+72{,}71\text{ g O} \times \frac{1\text{ mól O}}{16{,}00\text{ g O}} &= 4{,}544\text{ mól O}
+\end{aligned}
+$$
 
 Stuðlar fyrir bráðabirgðareynsluformúluna eru fengnir með því að deila hvoru mólmagni fyrir sig með því minna af þeim tveimur:
 
-![None](./images/media/rId93.jpg)
+$$
+\begin{aligned}
+\frac{2{,}272\text{ mól C}}{2{,}272} &= 1{,}000\text{ mól C} \\
+\frac{4{,}544\text{ mól O}}{2{,}272} &= 2{,}000\text{ mól O}
+\end{aligned}
+$$
 
 Þar sem hlutfallið sem fæst er eitt kolefnisatóm á móti tveimur súrefnisatómum er reynsluformúlan CO~2~.
 
@@ -257,7 +301,13 @@ Nikótín, alkalóíði í náttskuggaættinni sem er aðallega ábyrgur fyrir �
 
 Til að ákvarða sameindaformúluna út frá gefnum gögnum þarf að bera saman massa reynsluformúlu efnasambandsins við mólmassa þess. Í fyrsta skrefi skal nota massaprósentuna til að leiða út reynsluformúlu efnasambandsins. Ef við gerum ráð fyrir hentugu 100 g sýni af nikótíni fáum við eftirfarandi mólmagn frumefna þess:
 
-![None](./images/media/rId108.jpg)
+$$
+\begin{aligned}
+74{,}02\text{ g C} \times \frac{1\text{ mól C}}{12{,}01\text{ g C}} &= 6{,}163\text{ mól C} \\
+8{,}710\text{ g H} \times \frac{1\text{ mól H}}{1{,}008\text{ g H}} &= 8{,}641\text{ mól H} \\
+17{,}27\text{ g N} \times \frac{1\text{ mól N}}{14{,}01\text{ g N}} &= 1{,}233\text{ mól N}
+\end{aligned}
+$$
 
 Næst skaltu reikna mólhlutfall þessara frumefna miðað við það frumefni sem minnst er af, N.
 
@@ -267,7 +317,9 @@ $8.641\ \text{mol}\ H/\ 1.233\ \text{mol}\ N = 7$
 
 $1.233\ \text{mol}\ N/\ 1.233\ \text{mol}\ N = 1$
 
-![None](./images/media/rId115.jpg)
+$$
+\frac{6{,}163}{1{,}233} : \frac{8{,}641}{1{,}233} : \frac{1{,}233}{1{,}233} = 5 : 7 : 1
+$$
 
 Mólhlutfall C á móti N og H á móti N eru nægilega nálægt heilum tölum og því er reynsluformúlan C~5~H~7~N. Massi reynsluformúlu fyrir þetta efnasamband er því 81,13 amu/formúlueiningu, eða 81,13 g/mól formúlueiningu.
 

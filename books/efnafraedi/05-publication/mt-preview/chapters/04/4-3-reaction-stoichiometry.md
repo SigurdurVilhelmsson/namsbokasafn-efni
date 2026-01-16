@@ -53,7 +53,9 @@ Mynd 4.10 Ál og joð hvarfast og mynda áljoðíð. Varmi efnahvarfsins gufar u
 
 Með vísan til stilltu efnajöfnunnar er hlutfallaþátturinn sem tengir efnin tvö sem um ræðir $\frac{\text{3 mol}\ \text{I}_{2}}{\text{2 mol Al}}.$ Mólmagn joðs er leitt út með því að margfalda uppgefið mólmagn áls með þessum þætti: ![This figure shows two pink rectangles. The first is labeled, "Moles of A l." This rectangle is followed by an arrow pointing right to a second rectangle labeled, "Moles of I subscript 2."](./images/media/rId32.jpg)
 
-![None](./images/media/rId36.jpg)
+$$
+1{,}50\text{ mól Al} \times \frac{3\text{ mól } \ce{I2}}{2\text{ mól Al}} = 2{,}25\text{ mól } \ce{I2}
+$$
 
 
 :::

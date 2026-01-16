@@ -58,7 +58,9 @@ $35.23\ \text{mL NaOH}\  \times \ \frac{1\ \text{L}}{1000\ \text{mL}}\  \times \
 
 Með því að nota uppgefið rúmmál HCl-lausnarinnar og skilgreininguna á mólstyrk er styrkur HCl:
 
-![None](./images/media/rId40.jpg)
+$$
+M = \frac{8{,}81 \times 10^{-3}\text{ mól HCl}}{0{,}05000\text{ L lausn}} = 0{,}176\text{ M}
+$$
 
 Athugið: Fyrir þessa tegund títrunarútreikninga er hentugt að hafa í huga að mólstyrkur lausnar er einnig jafn fjölda *milli*móla af uppleystu efni á hvern *milli*lítra af lausn:
 
@@ -118,7 +120,9 @@ $0.6168\ \text{g BaSO}_{4}\  \times \ \frac{1\ \text{mol BaSO}_{4}}{233.43\ \tex
 
 Styrkur MgSO~4~ í sýnisblöndunni er þá reiknaður sem
 
-![None](./images/media/rId62.jpg)
+$$
+\text{massaprósenta } \ce{MgSO4} = \frac{0{,}3181\text{ g } \ce{MgSO4}}{0{,}4550\text{ g sýni}} \times 100\% = 69{,}91\%
+$$
 
 :::
 
@@ -161,7 +165,12 @@ Fyrst skal reikna mólmagn kolefnis og vetnis í sýninu með því að nota upp
 
 ![This figure shows two flowcharts. The first row is a single flow chart. In this row, a rectangle at the left is shaded yellow and is labeled, "Mass of C O subscript 2." This rectangle is followed by an arrow pointing right to a second rectangle. The arrow is labeled, "Molar mass." The second rectangle is shaded pink and is labeled, "Moles of C O subscript 2." This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, "Stoichiometric factor." The third rectangle is shaded pink and is labeled, "Moles of C." This rectangle is followed by an arrow labeled "Molar mass" which points right to a fourth rectangle. The fourth rectangle is shaded yellow and is labeled "Mass of C." Below, is a second flowchart. It begins with a yellow shaded rectangle on the left which is labeled, "Mass of H subscript 2 O." This rectangle is followed by an arrow labeled, "Molar mass," which points right to a second rectangle. The second rectangle is shaded pink and is labeled, "Moles of H subscript 2 O." This rectangle is followed by an arrow pointing right to a third rectangle. The arrow is labeled, "Stoichiometric factor." The third rectangle is shaded pink and is labeled "Moles of H." This rectangle is followed to the right by an arrow labeled, "Molar mass," which points to a fourth rectangle. The fourth rectangle is shaded yellow and is labeled "Mass of H." An arrow labeled, "Sample mass" points down beneath this rectangle to a green shaded rectangle. This rectangle is labeled, "Percent composition." An arrow extends beneath the pink rectangle labeled, "Moles of H," to a green shaded rectangle labeled, "C to H mole ratio." Beneath this rectangle, an arrow extends to a second green shaded rectangle which is labeled, "Empirical formula."](./images/media/rId75.jpg)
 
-![None](./images/media/rId79.jpg)
+$$
+\begin{aligned}
+\text{mól C} &= 3{,}94 \times 10^{-3}\text{ g } \ce{CO2} \times \frac{1\text{ mól } \ce{CO2}}{44{,}01\text{ g } \ce{CO2}} \times \frac{1\text{ mól C}}{1\text{ mól } \ce{CO2}} = 8{,}95 \times 10^{-5}\text{ mól C} \\
+\text{mól H} &= 1{,}61 \times 10^{-3}\text{ g } \ce{H2O} \times \frac{1\text{ mól } \ce{H2O}}{18{,}02\text{ g } \ce{H2O}} \times \frac{2\text{ mól H}}{1\text{ mól } \ce{H2O}} = 1{,}79 \times 10^{-4}\text{ mól H}
+\end{aligned}
+$$
 
 Reynsluformúla efnasambandsins er síðan leidd út með því að finna minnstu heiltölumargfeldi fyrir þetta mólmagn. Mólhlutfall H á móti C er
 

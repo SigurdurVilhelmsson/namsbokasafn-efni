@@ -58,7 +58,13 @@ Mynd 4.4 Botnfall af PbI~2~ myndast þegar lausnum sem innihalda Pb^2+^ og I^−
 
 Hægt er að nota leiðbeiningarnar um leysni í [töflu 4.1](#fs-idp140132617697568) til að spá fyrir um hvort útfellingarhvarf verði þegar lausnum með auðleystum jónaefnum er blandað saman. Það eina sem þarf að gera er að bera kennsl á allar jónirnar sem eru til staðar í lausninni og íhuga síðan hvort möguleg pörun katjóna og anjóna gæti leitt til torleysts efnasambands. Til dæmis, ef lausnum af silfurnítrati og natríumklóríði er blandað saman, myndast lausn sem inniheldur Ag^+^, $\text{NO}_{3}^{-},$ Na^+^ og Cl^−^ jónir. Fyrir utan þau tvö jónaefni sem upphaflega voru í lausnunum, AgNO~3~ og NaCl, er hægt að mynda tvö önnur jónaefni úr þessu safni jóna: NaNO~3~ og AgCl. Leiðbeiningarnar um leysni gefa til kynna að öll nítratsölt séu auðleyst en að AgCl sé eitt af þeim torleystu. Því er spáð að útfellingarhvarf muni eiga sér stað, eins og lýst er með eftirfarandi jöfnum:
 
-![None](./images/media/rId33.jpg)
+$$
+\ce{NaCl(aq) + AgNO3(aq) -> AgCl(s) + NaNO3(aq)} \quad \text{(sameindajafna)}
+$$
+
+$$
+\ce{Ag^{+}(aq) + Cl^{-}(aq) -> AgCl(s)} \quad \text{(nettójónajafna)}
+$$
 
 :::example
 ### Dæmi 4.3: Að spá fyrir um útfellingarhvörf
@@ -263,15 +269,33 @@ $\text{2Na}(s) + \text{Cl}_{2}(g)\  \rightarrow \ 2\text{NaCl}(s)$
 
 Það er gagnlegt að skoða ferlið með tilliti til hvers einstaks hvarfefnis, það er að segja, að tákna örlög hvers hvarfefnis í formi jöfnu sem kallast hálfhvarf:
 
-![None](./images/media/rId92.jpg)
+$$
+\ce{2Na -> 2Na^{+} + 2e^{-}}
+$$
+
+$$
+\ce{Cl2 + 2e^{-} -> 2Cl^{-}}
+$$
 
 Þessar jöfnur sýna að Na-atóm *tapa rafeindum* á meðan Cl-atóm (í Cl~2~-sameindinni) *fá rafeindir*, og lágvísirinn „*s*" fyrir jónirnar sem myndast gefur til kynna að þær séu til staðar í formi fasts jónaefnis. Fyrir oxunar-afoxunarhvörf af þessu tagi skilgreina tap og ávinningur rafeinda þau viðbótarferli sem eiga sér stað:
 
-![None](./images/media/rId96.jpg)
+$$
+\text{oxun} = \text{tap rafeinda}
+$$
+
+$$
+\text{afoxun} = \text{ávinningur rafeinda}
+$$
 
 Í þessu efnahvarfi *oxast* því natríum og klór afoxast. Frá virkara sjónarhorni séð virkar natríum sem afoxari, þar sem það gefur klór rafeindir (eða afoxar það). Á sama hátt virkar klór sem oxari, þar sem það fjarlægir í raun rafeindir frá natríum (oxar það).
 
-![None](./images/media/rId103.jpg)
+$$
+\text{afoxari} = \text{efni sem oxast / gefur rafeindir}
+$$
+
+$$
+\text{oxari} = \text{efni sem afoxast / tekur við rafeindum}
+$$
 
 Sum oxunar-afoxunarferli fela þó ekki í sér flutning rafeinda. Tökum sem dæmi efnahvarf sem líkist því sem myndar NaCl:
 
@@ -306,13 +330,17 @@ Fylgdu leiðbeiningunum í þessum kafla textans til að úthluta oxunartölum t
 
 Með því að nota þessa oxunartölu og formúlu efnasambandsins má síðan nota leiðbeiningu 4 til að reikna út oxunartölu brennisteins:
 
-![None](./images/media/rId110.jpg)
+$$
+\ce{H2S}: \quad 2(+1) + x = 0 \quad \Rightarrow \quad x = -2 \quad \text{(oxunartala S)}
+$$
 
 \(b\) Leiðbeining 3 gefur til kynna að oxunartala súrefnis sé −2.
 
 Með því að nota þessa oxunartölu og formúlu jónarinnar má síðan nota leiðbeiningu 4 til að reikna út oxunartölu brennisteins:
 
-![None](./images/media/rId114.jpg)
+$$
+\ce{SO3^{2-}}: \quad x + 3(-2) = -2 \quad \Rightarrow \quad x = +4 \quad \text{(oxunartala S)}
+$$
 
 \(c\) Fyrir jónaefni er hentugt að úthluta oxunartölum fyrir katjónina og anjónina sérstaklega.
 
@@ -320,7 +348,9 @@ Samkvæmt leiðbeiningu 2 er oxunartala natríums +1
 
 Ef gert er ráð fyrir venjulegri oxunartölu fyrir súrefni (−2 samkvæmt leiðbeiningu 3) er oxunartala brennisteins reiknuð eins og leiðbeining 4 segir til um:
 
-![None](./images/media/rId118.jpg)
+$$
+\ce{SO4^{2-}}: \quad x + 4(-2) = -2 \quad \Rightarrow \quad x = +6 \quad \text{(oxunartala S)}
+$$
 
 :::
 
@@ -342,7 +372,13 @@ Ef gert er ráð fyrir venjulegri oxunartölu fyrir súrefni (−2 samkvæmt lei
 
 Með því að nota hugtakið oxunartala hefur verið sett fram altæk skilgreining á oxunar-afoxunarhvarfi. Oxunar-afoxunarhvörf (redox) eru hvörf þar sem eitt eða fleiri frumefni sem taka þátt verða fyrir breytingu á oxunartölu. (Þótt langflest oxunar-afoxunarhvörf feli í sér breytingar á oxunartölu fyrir tvö eða fleiri frumefni, þá eru nokkrar áhugaverðar undantekningar frá þessari reglu, [sjá dæmi 4.6](#fs-idp180799104).) Skilgreiningar á viðbótarferlum þessa hvarfaflokks eru endurskoðaðar á sama hátt og sýnt er hér:
 
-![None](./images/media/rId125.jpg)
+$$
+\text{oxun} = \text{hækkun á oxunartölu}
+$$
+
+$$
+\text{afoxun} = \text{lækkun á oxunartölu}
+$$
 
 Ef við snúum aftur að efnahvörfunum sem notuð voru til að kynna þetta efni, má nú skilgreina þau bæði sem oxunar-afoxunarferli. Í hvarfinu milli natríums og klórs til að mynda natríumklóríð oxast natríum (oxunartala þess hækkar úr 0 í Na í +1 í NaCl) og klór afoxast (oxunartala þess lækkar úr 0 í Cl~2~ í −1 í NaCl). Í hvarfinu milli vetnissameinda og klórs oxast vetni (oxunartala þess hækkar úr 0 í H~2~ í +1 í HCl) og klór afoxast (oxunartala þess lækkar úr 0 í Cl~2~ í −1 í HCl).
 
@@ -485,7 +521,13 @@ $\text{Cr}_{2}\text{O}_{7}^{\text{2−}} + \text{Fe}^{\text{2+}}\  \rightarrow \
 
 -   *Stilltu súrefnisatóm með því að bæta við* H~2~O *sameindum*. Járnhálfhvarfið inniheldur ekki O-atóm. Krómhálfhvarfið sýnir sjö O-atóm vinstra megin og engin hægra megin, þannig að sjö vatnssameindum er bætt við hægra megin.
 
-    ![None](./images/media/rId149.jpg)
+    $$
+\ce{Fe^{2+} -> Fe^{3+}}
+$$
+
+$$
+\ce{Cr2O7^{2-} -> 2Cr^{3+} + 7H2O}
+$$
 
 4.  Skref 4.
 

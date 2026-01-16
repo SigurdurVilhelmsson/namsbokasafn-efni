@@ -236,11 +236,15 @@ námunduð að sama fjölda aukastafa og talan með fæsta aukastafi (þ.e.a.s.
 
 **Lausn**
 
-![None](./images/media/rId51.png)
+$
+\begin{array}{r} 1{,}0023\text{ g} \\ \underline{+\;4{,}383\text{ g}} \\ 5{,}3853\text{ g} \end{array}
+$
 
 Svarið er 5,385 g (námundað að þúsundasta sæti; þrír aukastafir)
 
-![None](./images/media/rId54.png)
+$
+\begin{array}{r} 486\text{ g} \\ \underline{-\;421{,}23\text{ g}} \\ 64{,}77\text{ g} \end{array}
+$
 
 Svarið er 65 g (námundað að einingarsæti; engir aukastafir)
 
@@ -279,9 +283,13 @@ námunduð að sama fjölda tölustafa og talan með fæsta markverða stafi
 
 **Lausn**
 
-![None](./images/media/rId63.png)
+$
+\begin{aligned} 0{,}6238\text{ cm} \times 6{,}6\text{ cm} &= 4{,}11708\text{ cm}^2 \\ &\rightarrow \text{niðurstaða er } 4{,}1\text{ cm}^2 \\ &\text{(námundað að tveimur markverðum stöfum)} \end{aligned}
+$
 
-![None](./images/media/rId66.png)
+$
+\begin{aligned} \frac{421{,}23\text{ g}}{486\text{ mL}} &= 0{,}866728...\text{ g/mL} \\ &\rightarrow \text{niðurstaða er } 0{,}867\text{ g/mL} \\ &\text{(námundað að þremur markverðum stöfum)} \end{aligned}
+$
 
 :::
 
@@ -316,7 +324,9 @@ lítrum.
 
 **Lausn**
 
-![None](./images/media/rId71.png)
+$
+\begin{aligned} V &= l \times w \times d \\ &= 13{,}44\text{ dm} \times 5{,}920\text{ dm} \times 2{,}54\text{ dm} \\ &= 202{,}09459...\text{ dm}^3 \\ &= 202\text{ dm}^3 \text{, eða } 202\text{ L} \end{aligned}
+$
 
 :::
 

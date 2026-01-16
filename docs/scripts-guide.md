@@ -341,6 +341,193 @@ node tools/process-chapter.js <chapter-directory>
 
 ---
 
+### cnxml-math-extract.js
+
+Extracts MathML equations from OpenStax CNXML source files and converts them to LaTeX. Use this when DOCX files contain equations as images but you need editable math.
+
+#### Background
+
+OpenStax provides textbook content in multiple formats:
+- **DOCX files**: Often contain equations as embedded images (not editable)
+- **CNXML source**: Contains equations in MathML format (editable/convertible)
+
+This tool fetches CNXML from the [openstax/osbooks-chemistry-bundle](https://github.com/openstax/osbooks-chemistry-bundle) repository and extracts the MathML equations, converting them to LaTeX.
+
+#### Syntax
+
+```bash
+npm run extract-math <module-id>              # Fetch from GitHub
+npm run extract-math <path/to/file.cnxml>     # Read local file
+npm run extract-math -- --list-modules        # List known modules
+```
+
+#### Arguments
+
+| Argument | Description | Examples |
+|----------|-------------|----------|
+| `module-id` | OpenStax module ID | `m68690` (section 1.5) |
+| `file.cnxml` | Path to local CNXML file | `./m68690.cnxml` |
+
+#### Options
+
+| Option | Description |
+|--------|-------------|
+| `--output <file>` | Write output to file (default: stdout) |
+| `--format <fmt>` | Output format: `markdown`, `json`, `latex` |
+| `--context` | Include surrounding text to help identify equations |
+| `--verbose` | Show detailed progress |
+| `--list-modules` | List known Chemistry 2e module IDs |
+
+#### Module IDs for Chemistry 2e Chapter 1
+
+| Module | Section | Title |
+|--------|---------|-------|
+| m68662 | intro | Introduction |
+| m68663 | 1.1 | Chemistry in Context |
+| m68664 | 1.2 | Phases and Classification of Matter |
+| m68667 | 1.3 | Physical and Chemical Properties |
+| m68674 | 1.4 | Measurements |
+| m68690 | 1.5 | Measurement Uncertainty, Accuracy, and Precision |
+| m68683 | 1.6 | Mathematical Treatment of Measurement Results |
+
+To find other module IDs, browse the [modules directory on GitHub](https://github.com/openstax/osbooks-chemistry-bundle/tree/main/modules) and cross-reference with the [collection file](https://github.com/openstax/osbooks-chemistry-bundle/blob/main/collections/chemistry-2e.collection.xml).
+
+#### Examples
+
+```bash
+# Extract equations from section 1.5 (Measurement Uncertainty)
+npm run extract-math m68690
+
+# Save as JSON for programmatic processing
+npm run extract-math m68690 -- --format json --output math-1.5.json
+
+# Include context to help match equations to images
+npm run extract-math m68690 -- --context
+
+# Get just the LaTeX equations
+npm run extract-math m68690 -- --format latex
+```
+
+#### Sample Output
+
+```markdown
+# Math Equations from Measurement Uncertainty, Accuracy, and Precision
+**Module:** m68690
+**Total equations found:** 39
+
+## Summary by Type
+| Type | Count |
+|------|-------|
+| inline-symbol | 29 |
+| calculation | 3 |
+| display | 3 |
+
+## Equations
+
+### Equation 6 (calculation)
+> ...(a)... **[EQUATION]** ...1.0023 g + 4.383 g...
+
+**LaTeX:**
+\`\`\`latex
+\begin{array}{l} 1.0023 g \\ + 4.383 g \\ \hline 5.3853 g \end{array}
+\`\`\`
+```
+
+#### Use Case: Replacing Image Equations
+
+1. Run the tool to extract equations from a module
+2. Use `--context` to identify which equation corresponds to which image
+3. Replace image references in markdown with LaTeX: `$equation$` or `$$equation$$`
+4. Test rendering in the Chemistry Reader webapp
+
+---
+
+### replace-math-images.js
+
+Automates replacing equation images in markdown files with LaTeX. Works together with `cnxml-math-extract.js`.
+
+#### Syntax
+
+```bash
+npm run replace-math -- --scan <file.md>                    # Find equation images
+npm run replace-math -- --generate <file.md> <module-id>    # Generate mapping file
+npm run replace-math -- --apply <file.md> <mapping.json>    # Apply replacements
+```
+
+#### Workflow
+
+**Step 1: Scan** - Identify which images are likely equations:
+
+```bash
+npm run replace-math -- --scan chapters/01/1-5.md
+```
+
+Output shows images with "None" alt text, Word rId filenames, or context suggesting equations.
+
+**Step 2: Generate** - Create a mapping template:
+
+```bash
+npm run replace-math -- --generate chapters/01/1-5.md m68690 -o mapping.json
+```
+
+This creates a JSON file with:
+- All potential equation images from the markdown
+- All equations extracted from the CNXML module
+- Empty `equationIndex` fields for you to fill in
+
+**Step 3: Edit Mapping** - Match images to equations:
+
+Open `mapping.json` and for each image, set `equationIndex` to match the corresponding equation:
+
+```json
+{
+  "images": [
+    {
+      "path": "./images/media/rId51.png",
+      "context": "...**Lausn**...[IMAGE]...Svarið er 5,385 g...",
+      "equationIndex": 6,      // <-- Match to equation 6
+      "displayMode": true
+    }
+  ],
+  "equations": [
+    {
+      "index": 6,
+      "type": "calculation",
+      "latex": "\\begin{array}...",
+      "context": "...(a)...[EQUATION]...1.0023 g + 4.383 g..."
+    }
+  ]
+}
+```
+
+**Step 4: Apply** - Replace images with LaTeX:
+
+```bash
+# Preview changes first
+npm run replace-math -- --apply chapters/01/1-5.md mapping.json --dry-run
+
+# Apply for real (creates .bak backup)
+npm run replace-math -- --apply chapters/01/1-5.md mapping.json
+```
+
+#### Options
+
+| Option | Description |
+|--------|-------------|
+| `--output, -o <file>` | Output file path for generate mode |
+| `--dry-run` | Preview changes without modifying files |
+| `--verbose, -v` | Show detailed progress |
+
+#### Tips
+
+- Images with alt text "None" are most likely equation images
+- Use the `context` fields to match images to equations
+- Set `displayMode: false` for inline equations (uses `$...$` instead of `$$...$$`)
+- You can set `latex` directly instead of `equationIndex` for custom LaTeX
+- Review changes in the Chemistry Reader webapp after applying
+
+---
+
 ## See Also
 
 - [Workflow Documentation](workflow.md) - Full 8-step translation pipeline

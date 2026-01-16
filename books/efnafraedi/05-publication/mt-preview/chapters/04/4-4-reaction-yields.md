@@ -140,7 +140,9 @@ Með því að nota þessar fræðilegu heimtur og uppgefið gildi fyrir raunhei
 
 $\text{percent yield} = \left( \frac{\text{actual yield}}{\text{theoretical yield}} \right)\  \times \ 100$
 
-![None](./images/media/rId55.jpg)
+$$
+\text{prósentuheimtur} = \frac{0{,}4997\text{ g Cu}}{0{,}5072\text{ g Cu}} \times 100\% = 98{,}52\%
+$$
 
 :::
 

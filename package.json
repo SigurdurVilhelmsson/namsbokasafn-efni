@@ -8,7 +8,9 @@
     "validate": "node scripts/validate-status.js",
     "convert-md": "node tools/docx-to-md.js",
     "add-frontmatter": "node tools/add-frontmatter.js",
-    "process-chapter": "node tools/process-chapter.js"
+    "process-chapter": "node tools/process-chapter.js",
+    "extract-math": "node tools/cnxml-math-extract.js",
+    "replace-math": "node tools/replace-math-images.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",

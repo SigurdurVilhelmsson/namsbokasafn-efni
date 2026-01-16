@@ -134,7 +134,9 @@ $\frac{\text{1 oz}}{\text{28.349 g}}\ \text{and}\ \frac{\text{28.349 g}}{\text{1
 Rétti umreikningsstuðullinn er hlutfallið sem styttir út eininguna grömm
 og skilur eftir únsur.
 
-![None](./images/media/rId33.png)
+$$
+x\text{ oz} = 125\text{ g} \times \frac{1\text{ oz}}{28{,}349\text{ g}} = 4{,}41\text{ oz}
+$$
 
 :::
 

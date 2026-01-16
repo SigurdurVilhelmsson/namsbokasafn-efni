@@ -40,7 +40,9 @@ Tafla 2.2
 
 Fjöldi róteinda í kjarna atóms er sætistala þess (Z). Þessi eiginleiki skilgreinir frumefnið: Gildi þess segir okkur hvaða frumefni þetta er. Til dæmis er hvert atóm sem inniheldur sex róteindir frumefnið kolefni og hefur sætistöluna 6, óháð því hversu margar nifteindir eða rafeindir það kann að hafa. Óhlaðið atóm verður að innihalda jafnmargar jákvæðar og neikvæðar hleðslur, þannig að fjöldi róteinda jafngildir fjölda rafeinda. Þess vegna gefur sætistalan einnig til kynna fjölda rafeinda í atómi. Heildarfjöldi róteinda og nifteinda í atómi er kallaður massatala þess (A). Fjöldi nifteinda er því mismunurinn á massatölu og sætistölu: A -- Z = fjöldi nifteinda.
 
-![None](./images/media/2-3-atomic-structure-and-symbolism-rId31.png)
+$$
+\text{sætistala (Z)} = \text{fjöldi róteinda} \quad\quad \text{massatala (A)} = \text{fjöldi róteinda} + \text{fjöldi nifteinda}
+$$
 
 Atóm eru rafhlutlaus (óhlaðin) ef þau innihalda jafnmargar jákvætt hlaðnar róteindir og neikvætt hlaðnar rafeindir. Þegar fjöldi þessara öreinda er *ekki* jafn hefur atómið rafhleðslu (er hlaðið) og kallast jón. Hleðsla atóms er skilgreind sem hér segir:
 
@@ -174,7 +176,9 @@ $\text{average mass} = \sum_{i}^{}\left( \text{fractional abundance}\  \times \ 
 
 Til dæmis er frumefnið bór samsett úr tveimur samsætum: Um 19,9% allra bóratóma eru ^10^B með massann 10,0129 amu og hin 80,1% eru ^11^B með massann 11,0093 amu. Meðalatómmassi bórs er reiknaður út sem:
 
-![None](./images/media/rId67.jpg)
+$$
+\text{meðalmassi bórs} = (0{,}199 \times 10{,}0129\text{ amu}) + (0{,}801 \times 11{,}0093\text{ amu}) = 10{,}81\text{ amu}
+$$
 
 Það er mikilvægt að skilja að ekkert eitt bóratóm vegur nákvæmlega 10,8 amu; 10,8 amu er meðalmassi allra bóratóma og einstök bóratóm vega annaðhvort um það bil 10 amu eða 11 amu.
 
@@ -185,7 +189,13 @@ Loftsteinn sem fannst í miðri Indiana inniheldur snefil af eðalgasinu neon se
 
 **Lausn**
 
-![None](./images/media/rId71.jpg)
+$$
+\begin{aligned}
+\text{meðalmassi} &= (0{,}9184 \times 19{,}9924\text{ amu}) + (0{,}0047 \times 20{,}9940\text{ amu}) + (0{,}0769 \times 21{,}9914\text{ amu}) \\
+&= 18{,}36\text{ amu} + 0{,}099\text{ amu} + 1{,}69\text{ amu} \\
+&= 20{,}15\text{ amu}
+\end{aligned}
+$$
 
 Meðalmassi neonatóms í sólvindinum er 20,15 amu. (Meðalmassi neonatóms á jörðu niðri er 20.1796 amu. Þessi niðurstaða sýnir að við gætum fundið smávægilegan mun á náttúrulegri gnægð samsæta, allt eftir uppruna þeirra.)
 
@@ -222,7 +232,9 @@ Ef við látum *x* tákna hlutann sem er ^35^Cl, þá er hlutinn sem er ^37^Cl t
 
 Ef við setjum þetta inn í jöfnuna fyrir meðalmassa fáum við:
 
-![None](./images/media/rId78.jpg)
+$$
+35{,}45\text{ amu} = (x \times 34{,}97\text{ amu}) + ((1 - x) \times 36{,}97\text{ amu})
+$$
 
 Lausnin gefur: *x* = 0,7576, sem þýðir að 1,00 − 0,7576 = 0,2424. Klór samanstendur því af 75,76% ^35^Cl og 24,24% ^37^Cl.
 

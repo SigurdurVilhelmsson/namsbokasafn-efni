@@ -72,7 +72,9 @@ Hversu mikið af sykri (mól) er í litlum sopa (~10 ml) af gosdrykknum úr [dæ
 
 Endurraðaðu skilgreiningunni á mólstyrk til að einangra stærðina sem leitað er að, mól af sykri, og settu síðan inn gildið fyrir mólstyrk sem leitt var út í [dæmi 3.14](#fs-idm98982768), 0,375 *M*:
 
-![None](./images/media/3-3-molarity-rId37.png)
+$$
+M = \frac{\text{mól uppleysts efnis}}{\text{L lausnar}} \quad \Rightarrow \quad \text{mól} = M \times L = 0{,}375\text{ M} \times 0{,}010\text{ L} = 3{,}75 \times 10^{-3}\text{ mól}
+$$
 
 :::
 
@@ -107,7 +109,9 @@ Eins og í fyrri dæmum er skilgreiningin á mólstyrk aðaljafnan sem notuð er
 
 $M = \ \frac{\text{mol solute}}{\text{L solution}}\  = \ \frac{25.2\ g\ \text{CH}_{3}\text{CO}_{2}\text{H}\  \times \ \frac{1\ \text{mol CH}_{3}\text{CO}_{2}\text{H}}{\text{60.052 g CH}_{3}\text{CO}_{2}\text{H}}\ }{\text{0.500 L solution}}\  = 0.839\ M$
 
-![None](./images/media/3-3-molarity-rId48.png)
+$$
+M = \frac{25{,}2\text{ g } \ce{CH3CO2H} \times \frac{1\text{ mól } \ce{CH3CO2H}}{60{,}05\text{ g } \ce{CH3CO2H}}}{0{,}500\text{ L lausn}} = \frac{0{,}420\text{ mól } \ce{CH3CO2H}}{0{,}500\text{ L lausn}} = 0{,}839\text{ M}
+$$
 
 :::
 
@@ -134,7 +138,9 @@ Hversu mörg grömm af NaCl eru í 0,250 L af 5,30*M* lausn?
 
 Rúmmál og mólstyrkur lausnarinnar eru tilgreind, þannig að magn (mól) uppleysta efnisins er auðveldlega reiknað út eins og sýnt er í [dæmi 3.15](#fs-idm64107376):
 
-![None](./images/media/rId54.jpg)
+$$
+\text{mól uppleysts efnis} = M \times L = 5{,}30\text{ M} \times 0{,}250\text{ L} = 1{,}325\text{ mól NaCl}
+$$
 
 Að lokum er þetta mólmagn notað til að leiða út massa NaCl:
 
@@ -242,7 +248,9 @@ Ef 0,850 L af 5,00 *M* lausn af koparnítrati, Cu(NO~3~)~2~, er þynnt í 1,80 L
 
 Stofnstyrkurinn, *C*~1~, og rúmmálið, *V*~1~, eru gefin ásamt rúmmáli þynntu lausnarinnar, *V*~2~. Endurraðaðu þynningarjöfnunni til að einangra óþekkta eiginleikann, styrk þynntu lausnarinnar, *C*~2~:
 
-![None](./images/media/rId81.jpg)
+$$
+C_1 V_1 = C_2 V_2 \quad \Rightarrow \quad C_2 = \frac{C_1 V_1}{V_2}
+$$
 
 Þar sem stofnlausnin er þynnt meira en tvöfalt (rúmmál er aukið úr 0,85 L í 1,80 L) er búist við að styrkur þynntu lausnarinnar sé minni en helmingur af 5 *M*. Þetta grófa mat verður borið saman við útreiknaða niðurstöðu til að athuga hvort um grófar villur í útreikningum sé að ræða (til dæmis, eins og rangt skiptihvarf á gefnum stærðum). Með því að setja inn gefin gildi fyrir liðina hægra megin í þessari jöfnu fæst:
 
@@ -275,11 +283,15 @@ Hvaða rúmmál af 0,12 *M* HBr er hægt að útbúa úr 11 ml (0,011 L) af 0,45
 
 Gefið er rúmmál og styrkur stofnlausnar, *V*~1~ og *C*~1~, og styrkur þynntu lausnarinnar sem fæst, *C*~2~. Finndu rúmmál þynntu lausnarinnar, *V*~2~, með því að endurraða þynningarjöfnunni til að einangra *V*~2~:
 
-![None](./images/media/rId88.jpg)
+$$
+C_1 V_1 = C_2 V_2 \quad \Rightarrow \quad V_2 = \frac{C_1 V_1}{C_2}
+$$
 
 Þar sem þynnti styrkurinn (0,12 *M*) er aðeins meira en fjórðungur af upprunalega styrknum (0,45 *M*), er búist við að rúmmál þynntu lausnarinnar sé um það bil fjórum sinnum meira en upprunalega rúmmálið, eða um 44 ml. Með því að setja inn gefin gildi og leysa fyrir óþekkta rúmmálið fæst:
 
-![None](./images/media/rId92.jpg)
+$$
+V_2 = \frac{(0{,}45\text{ M})(0{,}011\text{ L})}{0{,}12\text{ M}} = 0{,}041\text{ L}
+$$
 
 Rúmmál 0,12 *M* lausnarinnar er 0,041 L (41 ml). Niðurstaðan er sanngjörn og stenst vel við grófa matið.
 
@@ -308,11 +320,15 @@ Hvaða rúmmál af 1,59 *M* KOH þarf til að útbúa 5,00 L af 0,100 *M* KOH?
 
 Gefinn er styrkur stofnlausnar, *C*~1~, og rúmmál og styrkur þynntu lausnarinnar sem fæst, *V*~2~ og *C*~2~. Finndu rúmmál stofnlausnarinnar, *V*~1~, með því að endurraða þynningarjöfnunni til að einangra *V*~1~:
 
-![None](./images/media/rId98.jpg)
+$$
+C_1 V_1 = C_2 V_2 \quad \Rightarrow \quad V_1 = \frac{C_2 V_2}{C_1}
+$$
 
 Þar sem styrkur þynntu lausnarinnar 0,100 *M* er um það bil einn sextándi af styrk stofnlausnarinnar (1,59 *M*), er búist við að rúmmál stofnlausnarinnar sé um það bil einn sextándi af rúmmáli þynntu lausnarinnar, eða um 0,3 lítrar. Með því að setja inn gefin gildi og leysa fyrir óþekkta rúmmálið fæst:
 
-![None](./images/media/rId102.jpg)
+$$
+V_1 = \frac{(0{,}100\text{ M})(5{,}00\text{ L})}{1{,}59\text{ M}} = 0{,}314\text{ L}
+$$
 
 Þannig þarf 0,314 L af 1,59 *M* lausninni til að útbúa lausnina sem óskað er eftir. Þessi niðurstaða er í samræmi við grófa matið.
 
