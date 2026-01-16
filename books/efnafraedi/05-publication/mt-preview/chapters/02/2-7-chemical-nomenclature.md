@@ -209,8 +209,6 @@ Tafla 2.11
 
 Það eru nokkur almenn nöfn sem þú munt rekast á þegar þú heldur áfram námi þínu í efnafræði. Til dæmis, þótt NO sé oft kallað nituroxíð, er rétt nafn þess köfnunarefnismónoxíð. Á sama hátt er N~2~O þekkt sem hláturgas þótt reglur okkar myndu kveða á um nafnið díniturmónoxíð. (Og H~2~O er venjulega kallað vatn, ekki dívetnismónoxíð.) Þú ættir að leggja á minnið almenn nöfn efnasambanda þegar þú rekst á þau.
 
-:::
-
 :::example
 ### Dæmi 2.14: Nafngiftir samgildra efnasambanda
 

@@ -259,8 +259,6 @@ Hægt er að ákvarða tilvist og náttúrulega gnægð samsæta með tilraunum 
 
 Mynd 2.15 Greining á sirkoni í massagreini býr til massaróf með toppum sem sýna mismunandi samsætur Zr.
 
-:::
-
 :::link-to-material
 
 Sjáðu [hreyfimynd](http://openstax.org/l/16MassSpec) sem útskýrir massagreiningu. Horfðu á þetta [myndband](http://openstax.org/l/16RSChemistry) frá Royal Society for Chemistry til að fá stutta lýsingu á grundvallaratriðum massagreiningar.

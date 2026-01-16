@@ -146,8 +146,6 @@ Horfðu á þetta [myndband](http://openstax.org/l/16moltensalt) til að sjá ef
 
 Í hverju jónaefni er heildarfjöldi jákvæðra hleðslna katjónanna jafn heildarfjölda neikvæðra hleðslna anjónanna. Þannig eru jónaefni í heildina rafhlutlaus, jafnvel þótt þau innihaldi jákvæðar og neikvæðar jónir. Við getum notað þessa athugun til að hjálpa okkur að skrifa formúlu jónaefnis. Formúla jónaefnis verður að hafa hlutfall jóna þannig að fjöldi jákvæðra og neikvæðra hleðslna sé jafn.
 
-:::
-
 :::example
 ### Dæmi 2.10: Að spá fyrir um formúlu jónaefnis
 

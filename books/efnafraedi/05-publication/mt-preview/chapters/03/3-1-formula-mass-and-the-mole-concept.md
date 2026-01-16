@@ -150,8 +150,6 @@ Mólið er notað í efnafræði til að tákna 6,022 $\times$ 10^23^ af einhver
 
 Sambandið milli formúlumassa, mólsins og tölu Avogadros er hægt að nota til að reikna út ýmis magn sem lýsa samsetningu efna og efnasambanda, eins og sýnt er í næstu dæmum.
 
-:::
-
 :::example
 ### Dæmi 3.3
 

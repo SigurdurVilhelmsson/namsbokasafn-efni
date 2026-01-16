@@ -377,8 +377,6 @@ $\text{Cu}(s) + 2\text{AgNO}_{3}(aq)\  \rightarrow \ \text{Cu}\ \left( \text{NO}
 
 Mynd 4.9 (a) Koparvír er sýndur við hliðina á lausn sem inniheldur silfur(I)jónir. (b) Útskipting uppleystra silfurjóna með koparjónum leiðir til (c) uppsöfnunar á gráleitum silfurmálmi á vírnum og myndunar á bláum lit í lausninni vegna uppleystra koparjóna. (Heimild: breytt útgáfa af verki eftir Mark Ott)
 
-:::
-
 :::example
 ### Dæmi 4.6: Lýsing á oxunar-afoxunarhvörfum
 

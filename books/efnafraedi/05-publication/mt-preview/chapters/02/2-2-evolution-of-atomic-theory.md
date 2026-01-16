@@ -62,8 +62,6 @@ Hvað uppgötvuðu þeir? Flestar eindirnar fóru beint í gegnum þynnuna án �
 1.  Rúmmálið sem atóm tekur hlýtur að samanstanda af miklu magni af tómu rými.
 2.  Lítill, tiltölulega þungur, jákvætt hlaðinn hlutur, kjarninn, hlýtur að vera í miðju hvers atóms.
 
-:::
-
 :::link-to-material
 
 Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilraun Rutherfords. Stilltu breidd raufarinnar til að búa til mjórri eða breiðari geisla af α-eindum til að sjá hvernig það hefur áhrif á dreifingarmynstrið.
@@ -76,8 +74,6 @@ Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilr
 
 **Mynd 2.10** α-eindirnar sveigja aðeins af leið þegar þær rekast á eða fara nálægt mun þyngri, jákvætt hlöðnum gullkjarnanum. Þar sem kjarninn er mjög lítill miðað við stærð atóms, sveigja mjög fáar α-eindir af leið. Flestar fara í gegnum tiltölulega stórt svæði sem rafeindir taka, en þær eru of léttar til að sveigja hratt á liti eindirnar.
 
-:::
-
 :::link-to-material
 
 [Rutherford-dreifingarhermunin](http://openstax.org/l/16PhetScatter) gerir þér kleift að rannsaka muninn á „plómubúðings"-atómi og Rutherford-atómi með því að skjóta α-eindum á hvora tegund atóms.
@@ -86,6 +82,4 @@ Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilr
 
 Önnur mikilvæg uppgötvun var uppgötvun samsætna. Snemma á 20. öld fundu vísindamenn nokkur efni sem virtust vera ný frumefni og einangruðu þau úr geislavirkum málmgrýti. Til dæmis var „nýtt frumefni" sem myndaðist við geislavirka hrörnun þóríums upphaflega gefið nafnið mesóþóríum. Hins vegar sýndi nánari greining að mesóþóríum var efnafræðilega eins og radíum (önnur hrörnunarafurð), þrátt fyrir að hafa annan atómmassa. Þessi niðurstaða, ásamt svipuðum niðurstöðum fyrir önnur frumefni, leiddi enska efnafræðinginn Frederick Soddy til þeirrar niðurstöðu að frumefni gæti haft gerðir atóma með mismunandi massa sem væru efnafræðilega óaðgreinanlegar. Þessar mismunandi gerðir eru kallaðar samsætur -- atóm sama frumefnis sem hafa mismunandi massa. Soddy hlaut Nóbelsverðlaunin í efnafræði árið 1921 fyrir þessa uppgötvun.
 
-Ein gáta var enn óleyst: Vitað var að kjarninn innihélt næstum allan massa atóms, en fjöldi róteinda stóð aðeins fyrir helmingi, eða minna, af þeim massa. Tilvist nifteindarinnar útskýrði einnig samsætur: Þær eru mismunandi að massa vegna þess að þær hafa mismunandi fjölda nifteinda, en þær eru efnafræðilega eins vegna þess að þær hafa sama fjölda róteinda. Eins og þú gætir búist við er mjög erfitt að greina óhlaðnar eindir og það var ekki fyrr en árið 1932 að James Chadwick fann sannanir fyrir nifteindum, óhlöðnum öreindum með massa sem er um það bil sá sami og massi róteinda. Ýmsar tillögur voru settar fram til að útskýra hvað myndaði afgangsmassann, þar á meðal tilvist hlutlausra einda í kjarnanum. Þetta verður útskýrt nánar síðar í þessum kafla.
-
-:::
+Ein gáta var enn óleyst: Vitað var að kjarninn innihélt næstum allan massa atóms, en fjöldi róteinda stóð aðeins fyrir helmingi, eða minna, af þeim massa. Tilvist nifteindarinnar útskýrði einnig samsætur: Þær eru mismunandi að massa vegna þess að þær hafa mismunandi fjölda nifteinda, en þær eru efnafræðilega eins vegna þess að þær hafa sama fjölda róteinda. Eins og þú gætir búist við er mjög erfitt að greina óhlaðnar eindir og það var ekki fyrr en árið 1932 sem James Chadwick fann sannanir fyrir nifteindum, óhlöðnum öreindum með massa sem er um það bil sá sami og massi róteinda. Ýmsar tillögur voru settar fram til að útskýra hvað myndaði afgangsmassann, þar á meðal tilvist hlutlausra einda í kjarnanum. Þetta verður útskýrt nánar síðar í þessum kafla.
