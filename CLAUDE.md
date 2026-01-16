@@ -199,6 +199,25 @@ Focus: Chapters 1-4 faithful translations (Pass 1 complete)
 | `docs/markdown-formatting-issues.md` | Known rendering issues and fixes |
 | `claude-code-user-guide.md` | How to use these tools |
 
+## Two-Repository Workflow
+
+This repository works together with `namsbokasafn-vefur` (website). When fixing bugs:
+
+### Content Problems → Fix HERE (namsbokasafn-efni)
+1. **Fix prepared content**: Correct issues in `books/*/05-publication/mt-preview/`
+2. **Fix processing pipeline**: Update `tools/` scripts so problems don't recur in future content
+3. **Sync to website**: After fixing, sync content to namsbokasafn-vefur
+
+### Website/Rendering Bugs → Fix in namsbokasafn-vefur
+- Markdown processing, component rendering, styling issues
+
+**Key principle**: Always fix content problems at the source (here), not with workarounds in the website repo. Check how changes render in namsbokasafn-vefur after syncing.
+
+### Content Sync Command (run in namsbokasafn-vefur)
+```bash
+node scripts/sync-content.js --source ../namsbokasafn-efni
+```
+
 ## Getting Help
 
 ```
