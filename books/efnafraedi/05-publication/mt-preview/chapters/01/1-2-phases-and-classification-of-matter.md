@@ -65,6 +65,8 @@ Samsetning þessara örsmáu litapunkta myndar myndina sem þú sérð. Horfðu
 á þetta [myndband](http://openstax.org/l/16plasma) til að læra meira um
 rafgas og hvar þú finnur það.
 
+:::
+
 Sum sýni af efni virðast hafa eiginleika fastra efna, vökva og/eða gasa
 á sama tíma. Þetta getur gerst þegar sýnið er samsett úr mörgum litlum
 bútum. Til dæmis getum við hellt sandi eins og hann væri vökvi vegna
@@ -123,8 +125,6 @@ tileinkar þér mat, varðveitist allt efnið í upprunalega matnum. En þar
 sem hluti efnisins verður hluti af líkama þínum og mikið er skilið út
 sem ýmiss konar úrgangur, er erfitt að sannreyna það með mælingum.
 
-:::
-
 ### Flokkun efnis
 
 Hægt er að flokka efni í nokkra flokka. Tveir meginflokkar eru
@@ -172,6 +172,8 @@ Mörg efnasambönd brotna niður þegar þau eru hituð. Þessi
 kvikasilfursoxíðs, HgO. Þú getur einnig skoðað dæmi um [ljóshvatað
 niðurbrot silfurklóríðs](http://openstax.org/l/16silvchloride) (AgCl),
 sem er grundvöllur eldri ljósmyndunar.
+
+:::
 
 Eiginleikar samsettra frumefna eru frábrugðnir eiginleikum þeirra í
 frjálsu eða ósamsettu ástandi. Til dæmis er hvítur kristallaður sykur
@@ -259,8 +261,6 @@ Efnasamsetning jarðar
 | títan | Ti | 0,58 | allt annað | \- | 0,47 |
 
 Tafla 1.1
-
-:::
 
 ### Atóm og sameindir
 

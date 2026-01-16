@@ -142,6 +142,8 @@ Mynd 2.30 Natríumklóríð bráðnar við 801 °C og leiðir rafmagn þegar þa
 
 Horfðu á þetta [myndband](http://openstax.org/l/16moltensalt) til að sjá efnablöndu af söltum bráðna og leiða rafmagn.
 
+:::
+
 Í hverju jónaefni er heildarfjöldi jákvæðra hleðslna katjónanna jafn heildarfjölda neikvæðra hleðslna anjónanna. Þannig eru jónaefni í heildina rafhlutlaus, jafnvel þótt þau innihaldi jákvæðar og neikvæðar jónir. Við getum notað þessa athugun til að hjálpa okkur að skrifa formúlu jónaefnis. Formúla jónaefnis verður að hafa hlutfall jóna þannig að fjöldi jákvæðra og neikvæðra hleðslna sé jafn.
 
 :::

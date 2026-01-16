@@ -359,6 +359,8 @@ $10\text{Al}(s) + 6\text{NH}_{4}\text{ClO}_{4}(s)\  \rightarrow \ 4\text{Al}_{2}
 Horfðu á stutt [myndband](http://openstax.org/l/16hybridrocket) sem sýnir prufukeyrslu á smækkaðri frumgerð blendings eldflaugahreyfils sem áætlað er að nota í nýja Space Launch System sem NASA er að þróa. Fyrstu hreyflarnir sem fara í gang á\
 3 s (grænn logi) nota blöndu af fljótandi eldsneyti/oxara og seinni, öflugri vélarnar sem kveikt er á við 4 s (gulur logi) nota fasta efnablöndu.
 
+:::
+
 Einföld útskiptahvörf eru oxunar-afoxunarhvörf þar sem jón í lausn er hrakin burt (eða henni skipt út) með oxun málmfrumefnis. Eitt algengt dæmi um þessa tegund hvarfs er oxun tiltekinna málma með sýru:
 
 $\text{Zn}(s) + 2\text{HCl}(aq)\  \rightarrow \ \text{ZnCl}_{2}(aq) + \text{H}_{2}(g)$

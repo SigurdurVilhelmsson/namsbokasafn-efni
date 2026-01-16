@@ -88,6 +88,27 @@ function isEmptyLine(line) {
 }
 
 /**
+ * Check if a line contains a hyperlink
+ */
+function containsLink(line) {
+  return /\[([^\]]+)\]\(https?:\/\/[^)]+\)/.test(line);
+}
+
+/**
+ * Check if a line looks like a figure caption (Mynd X.Y)
+ */
+function isFigureCaption(line) {
+  return /^Mynd\s+\d+\.\d+/.test(line.trim());
+}
+
+/**
+ * Check if a line is a section heading (### level, indicating main content)
+ */
+function isSectionHeading(line) {
+  return /^###\s+(?!Dæmi|Lausn)/.test(line.trim());
+}
+
+/**
  * Detect natural end of directive content
  */
 function shouldCloseDirective(directiveName, currentLine, nextLines, state) {
@@ -112,6 +133,11 @@ function shouldCloseDirective(directiveName, currentLine, nextLines, state) {
       // Check if next non-empty line is NOT a bullet
       for (const nextLine of nextLines) {
         if (!isEmptyLine(nextLine)) {
+          // If already has a closing marker, don't add another
+          const nextDirective = parseDirective(nextLine);
+          if (nextDirective === 'close') {
+            return false;
+          }
           return !isBulletPoint(nextLine);
         }
       }
@@ -119,8 +145,60 @@ function shouldCloseDirective(directiveName, currentLine, nextLines, state) {
     }
   }
 
-  // For short content directives: close after content paragraph ends
-  if (SHORT_CONTENT_DIRECTIVES.includes(directiveName)) {
+  // For link-to-material: close after paragraph with a link ends
+  // These boxes are meant to contain a link encouraging readers to learn more
+  if (directiveName === 'link-to-material') {
+    if (state.hadLinkContent && isEmptyLine(currentLine)) {
+      // Check if next non-empty line is regular body content (no link)
+      for (const nextLine of nextLines) {
+        if (!isEmptyLine(nextLine)) {
+          const nextDirective = parseDirective(nextLine);
+          // If already has a closing marker, don't add another
+          if (nextDirective === 'close') {
+            break;
+          }
+          if (nextDirective) {
+            return true;
+          }
+          if (isHeading(nextLine)) {
+            return true;
+          }
+          // If next paragraph doesn't contain a link, we've left the box
+          if (!containsLink(nextLine)) {
+            return true;
+          }
+          break;
+        }
+      }
+    }
+  }
+
+  // For chemistry-everyday and similar boxes: close before main section headings or other directives
+  // Note: Figure captions (Mynd X.Y) can be INSIDE these boxes, so don't close before them
+  if (directiveName === 'chemistry-everyday' || directiveName === 'how-science-connects') {
+    if (state.hadContent && isEmptyLine(currentLine)) {
+      for (const nextLine of nextLines) {
+        if (!isEmptyLine(nextLine)) {
+          const nextDirective = parseDirective(nextLine);
+          // If already has a closing marker, don't add another
+          if (nextDirective === 'close') {
+            break;
+          }
+          if (nextDirective) {
+            return true;
+          }
+          // Close before main section headings (### but not #### subsection headings)
+          if (isSectionHeading(nextLine)) {
+            return true;
+          }
+          break;
+        }
+      }
+    }
+  }
+
+  // For other short content directives (answer): close after content paragraph ends
+  if (directiveName === 'answer') {
     if (state.hadContent && isEmptyLine(currentLine)) {
       // Check if next non-empty line is regular paragraph (not indented, not bullet)
       for (const nextLine of nextLines) {
@@ -193,6 +271,9 @@ function repairDirectives(content, verbose = false) {
       }
       if (!isEmptyLine(line) && !parseDirective(line)) {
         current.state.hadContent = true;
+        if (containsLink(line)) {
+          current.state.hadLinkContent = true;
+        }
       }
     }
 
@@ -216,7 +297,7 @@ function repairDirectives(content, verbose = false) {
 
       stack.push({
         name: directive,
-        state: { hadBulletPoints: false, hadContent: false }
+        state: { hadBulletPoints: false, hadContent: false, hadLinkContent: false }
       });
       result.push(line);
     } else if (directive === 'close') {

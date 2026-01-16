@@ -29,6 +29,8 @@ Byggt á athugunum sínum lagði Thomson eftirfarandi til og útskýrði hvers v
 
 Smelltu [hér](http://openstax.org/l/16JJThomson) til að heyra Thomson lýsa uppgötvun sinni með eigin röddu.
 
+:::
+
 Árið 1909 komu fram frekari upplýsingar um rafeindina frá bandaríska eðlisfræðingnum Robert A. Millikan með „olíudropatilraunum" hans. Millikan bjó til smásæja olíudropa sem hægt var að rafhleðsla með núningi þegar þeir mynduðust eða með því að nota röntgengeisla. Þessir dropar féllu upphaflega vegna þyngdaraflsins en hægt var að hægja á falli þeirra eða jafnvel snúa því við með rafsviði neðar í tækinu. Með því að stilla styrk rafsviðsins og gera nákvæmar mælingar og viðeigandi útreikninga gat Millikan ákvarðað hleðslu einstakra dropa (mynd 2.7).
 
 ![The experimental apparatus consists of an oil atomizer which sprays fine oil droplets into a large, sealed container. The sprayed oil lands on a positively charged brass plate with a pinhole at the center. As the drops fall through the pinhole, they travel through X-rays that are emitted within the container. This gives the oil droplets an electrical charge. The oil droplets land on a brass plate that is negatively charged. A telescopic eyepiece penetrates the inside of the container so that the user can observe how the charged oil droplets respond to the negatively charged brass plate. The table that accompanies this figure gives the charge, in coulombs or C, for 5 oil drops. Oil drop A has a charge of 4.8 times 10 to the negative 19 power. Oil drop B has a charge of 3.2 times 10 to the negative 19 power. Oil drop C has a charge of 6.4 times 10 to the negative 19 power. Oil drop D has a charge of 1.6 times 10 to the negative 19 power. Oil drop E has a charge of 4.8 times 10 to the negative 19 power.](./images/media/2-2-evolution-of-atomic-theory-rId31.jpg)
@@ -66,6 +68,8 @@ Hvað uppgötvuðu þeir? Flestar eindirnar fóru beint í gegnum þynnuna án �
 
 Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilraun Rutherfords. Stilltu breidd raufarinnar til að búa til mjórri eða breiðari geisla af α-eindum til að sjá hvernig það hefur áhrif á dreifingarmynstrið.
 
+:::
+
 Þessi greining leiddi til þess að Rutherford lagði til líkan þar sem atóm samanstendur af mjög litlum, jákvætt hlaðnum kjarna, þar sem mestur massi atómsins er samþjappaður, umkringdur neikvætt hlaðnum rafeindum, þannig að atómið er rafhlutlaust (mynd 2.10). Eftir margar fleiri tilraunir uppgötvaði Rutherford einnig að kjarnar annarra frumefna innihalda vetniskjarnann sem „byggingareiningu" og hann nefndi þessa grundvallareind róteind, jákvætt hlaðna öreind sem finnst í kjarnanum. Með einni viðbót, sem þú munt læra um næst, er þetta kjarnalíkan atómsins, sem lagt var til fyrir meira en öld síðan, enn notað í dag.
 
 ![The left diagram shows a green beam of alpha particles hitting a rectangular piece of gold foil. Some of the alpha particles bounce backwards after hitting the foil. However, most of the particles travel through the foil, with some being deflected as they pass through the foil. A callout box shows a magnified cross section of the gold foil. Most of the alpha particles are not deflected, but pass straight through the foil because they travel between the gold atoms. A very small number of alpha particles are significantly deflected when they hit the nucleus of the gold atoms straight on. A few alpha particles are slightly deflected because they glanced off of the nucleus of a gold atom.](./images/media/2-2-evolution-of-atomic-theory-rId53.jpg)
@@ -77,6 +81,8 @@ Skoðaðu þessa [hermun](http://openstax.org/l/16Rutherford) á gullþynnu-tilr
 :::link-to-material
 
 [Rutherford-dreifingarhermunin](http://openstax.org/l/16PhetScatter) gerir þér kleift að rannsaka muninn á „plómubúðings"-atómi og Rutherford-atómi með því að skjóta α-eindum á hvora tegund atóms.
+
+:::
 
 Önnur mikilvæg uppgötvun var uppgötvun samsætna. Snemma á 20. öld fundu vísindamenn nokkur efni sem virtust vera ný frumefni og einangruðu þau úr geislavirkum málmgrýti. Til dæmis var „nýtt frumefni" sem myndaðist við geislavirka hrörnun þóríums upphaflega gefið nafnið mesóþóríum. Hins vegar sýndi nánari greining að mesóþóríum var efnafræðilega eins og radíum (önnur hrörnunarafurð), þrátt fyrir að hafa annan atómmassa. Þessi niðurstaða, ásamt svipuðum niðurstöðum fyrir önnur frumefni, leiddi enska efnafræðinginn Frederick Soddy til þeirrar niðurstöðu að frumefni gæti haft gerðir atóma með mismunandi massa sem væru efnafræðilega óaðgreinanlegar. Þessar mismunandi gerðir eru kallaðar samsætur -- atóm sama frumefnis sem hafa mismunandi massa. Soddy hlaut Nóbelsverðlaunin í efnafræði árið 1921 fyrir þessa uppgötvun.
 

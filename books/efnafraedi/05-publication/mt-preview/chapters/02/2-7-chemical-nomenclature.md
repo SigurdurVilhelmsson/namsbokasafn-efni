@@ -71,6 +71,8 @@ Jónaefni í daglegu lífi
 
 Tafla 2.8
 
+:::
+
 ### Efnasambönd sem innihalda málmjón með breytilega hleðslu
 
 Flestir hliðarmálmar og sumir málmar í aðalflokkum geta myndað tvær eða fleiri katjónir með mismunandi hleðslu. Efnasambönd þessara málma með málmleysingjum eru nefnd með sömu aðferð og efnasambönd í fyrsta flokknum, nema að hleðsla málmjónarinnar er tilgreind með rómverskri tölu í sviga á eftir heiti málmsins. Hleðsla málmjónarinnar er ákvörðuð út frá formúlu efnasambandsins og hleðslu anjónarinnar. Sem dæmi má nefna tvíundar jónaefni járns og klórs. Járn hefur venjulega hleðslu annaðhvort 2+ eða 3+ (sjá [mynd 2.29](http://openstax.org/books/chemistry-2e/pages/2-6-ionic-and-molecular-compounds#CNX_Chem_02_06_IonCharges)) og samsvarandi formúlur efnasambandanna eru FeCl~2~ og FeCl~3~. Einfaldasta heitið, „járnklóríð", væri í þessu tilfelli tvírætt, þar sem það gerir ekki greinarmun á þessum tveimur efnasamböndum. Í tilfellum sem þessum er hleðsla málmjónarinnar innifalin sem rómversk tala í sviga strax á eftir heiti málmsins. Þessi tvö efnasambönd eru þá ótvírætt nefnd járn(II)klóríð og járn(III)klóríð. Önnur dæmi eru gefin í [töflu 2.9](#fs-idp282283328)
@@ -111,8 +113,6 @@ Forskeyti í nafnakerfum
 | 5 | penta- | 10 | deca- |
 
 Tafla 2.10
-
-:::
 
 :::example
 ### Dæmi 2.13: Nafngift jónaefna
@@ -182,6 +182,8 @@ Mynd 2.32 (a) Erin Brockovich komst að því að Cr(VI), sem PG&E notaði, haf�
 Krómsambönd eru mikið notuð í iðnaði, svo sem við krómhúðun, í litagerð, sem rotvarnarefni og til að koma í veg fyrir tæringu í kæliturnavatni, eins og gerðist nálægt Hinckley. Í umhverfinu er króm aðallega til staðar á Cr(III) eða Cr(VI) formi. Cr(III), sem er innihaldsefni í mörgum vítamínum og fæðubótarefnum, myndar efnasambönd sem eru ekki mjög auðleyst í vatni og hefur litla eiturvirkni. En Cr(VI) er mun eitraðra og myndar efnasambönd sem eru nokkuð auðleyst í vatni. Útsetning fyrir litlu magni af Cr(VI) getur leitt til skemmda á öndunarfærum, meltingarvegi og ónæmiskerfi, auk nýrna, lifrar, blóðs og húðar.
 
 Þrátt fyrir hreinsunaraðgerðir er Cr(VI) mengun í grunnvatni enn vandamál í Hinckley og víðar um heiminn. Rannsókn frá 2010 sem Environmental Working Group gerði leiddi í ljós að af 35 bandarískum borgum sem prófaðar voru, höfðu 31 hærra magn af Cr(VI) í kranavatni sínu en lýðheilsumarkmiðið 0,02 hlutar á milljarð sem Umhverfisverndarstofnun Kaliforníu setti.
+
+:::
 
 ### Sameindasambönd (samgild efnasambönd)
 

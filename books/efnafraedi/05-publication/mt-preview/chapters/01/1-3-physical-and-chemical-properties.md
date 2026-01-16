@@ -134,6 +134,8 @@ hættulegan hátt við vatn, sé tærandi, súrt, basískt, líffræðileg hætt
 geislavirkt og svo framvegis. Hver hætta er metin á kvarða frá 0 til 4,
 þar sem 0 er engin hætta og 4 er gríðarlega hættulegt.
 
+:::
+
 Þótt mörg frumefni séu verulega ólík hvað varðar efna- og
 eðliseiginleika, hafa sum frumefni svipaða eiginleika. Til dæmis leiða
 mörg frumefni varma og rafmagn vel, á meðan önnur eru lélegir leiðarar.
@@ -154,5 +156,3 @@ Mynd 1.22 Lotukerfið sýnir hvernig hægt er að flokka frumefni eftir
 til kynna hvort frumefni er málmur, hálfmálmur eða málmleysingi, en
 liturinn á tákni frumefnisins gefur til kynna hvort það er fast efni,
 vökvi eða gas.
-
-:::
