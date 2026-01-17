@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+.venv/
 
 # OS files
 .DS_Store
@@ -31,6 +32,9 @@ npm-debug.log*
 # Build output
 dist/
 build/
+
+# Pipeline runtime output (sessions database, processed files)
+pipeline-output/
 
 # Large files exceeding GitHub's 100MB limit
 books/efnafraedi/01-source/images-editable/ch10/CNX_Chem_10_05_MolSolids.eps
