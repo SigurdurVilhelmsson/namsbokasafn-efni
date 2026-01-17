@@ -7,6 +7,46 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Added
+
+#### Translation Pipeline Server - Phase 2
+- **Web Interface** (Icelandic UI)
+  - `/workflow` - Multi-step workflow wizard
+  - `/issues` - Issue review dashboard
+  - `/images` - Image translation tracker
+  - `/status` - Pipeline status overview
+  - `/login` - GitHub authentication page
+
+- **Authentication & Authorization**
+  - `server/services/auth.js` - GitHub OAuth + JWT session management
+  - `server/middleware/requireAuth.js` - JWT validation middleware
+  - `server/middleware/requireRole.js` - Role-based access control
+  - Role mapping: Admin, Head Editor, Editor, Contributor, Viewer
+
+- **Workflow Management**
+  - `server/services/session.js` - Workflow session persistence (4-hour expiry)
+  - `server/routes/workflow.js` - 6-step guided workflow API
+  - Steps: Source → MT Upload → Matecat Create → Matecat Review → Issue Review → Finalize
+
+- **Issue Classification**
+  - `server/services/issueClassifier.js` - Automatic issue categorization
+  - Categories: AUTO_FIX, EDITOR_CONFIRM, BOARD_REVIEW, BLOCKED
+  - Pattern detection for whitespace, terminology, units, cultural references
+  - `server/routes/issues.js` - Issue management API
+
+- **Content Sync**
+  - `server/services/github.js` - GitHub API client for PR creation
+  - `server/routes/sync.js` - PR-based content sync to repository
+
+- **Image Tracking**
+  - `server/services/imageTracker.js` - Track image translation status
+  - `server/routes/images.js` - Image management API
+  - OneDrive/SharePoint source linking support
+
+- **Documentation**
+  - `server/README.md` - Comprehensive server documentation
+  - `server/.env.example` - Configuration template
+
+#### Other Additions
 - **`tools/clean-markdown.js`** - Post-processing script to fix Pandoc artifacts
   - Replaces `\mspace{Xmu}` with KaTeX equivalents
   - Removes orphan `:::` directive markers

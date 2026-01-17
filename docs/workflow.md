@@ -375,9 +375,43 @@ Publication supports multiple version tracks, allowing early MT previews while e
 
 ---
 
+## Web Automation (Pipeline Server)
+
+The translation pipeline can be automated using the web-based Pipeline Server. This provides:
+
+- **Guided Workflows**: Step-by-step wizard through the 8-step process
+- **Issue Tracking**: Automatic classification and routing of translation issues
+- **Image Management**: Track which figures need translation
+- **Content Sync**: Create pull requests to merge approved content
+
+### Starting the Server
+
+```bash
+cd server
+npm install
+cp .env.example .env  # Configure GitHub OAuth
+npm start
+```
+
+Access the web interface at http://localhost:3000/workflow
+
+### Web Interface Pages
+
+| URL | Description |
+|-----|-------------|
+| `/workflow` | Multi-step workflow wizard |
+| `/issues` | Issue review dashboard |
+| `/images` | Image translation tracker |
+| `/status` | Pipeline status overview |
+
+See [server/README.md](../server/README.md) for full API documentation.
+
+---
+
 ## Additional Resources
 
 - [Editorial Guide](editorial-guide.md) - Detailed guide for editors
 - [Terminology Standards](terminology.md) - Terminology conventions
 - [Contributing Guide](contributing.md) - How to participate
 - [Assets Documentation](assets.md) - What assets we produce and their value
+- [Pipeline Server](../server/README.md) - Web automation server documentation

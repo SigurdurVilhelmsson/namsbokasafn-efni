@@ -49,6 +49,27 @@ books/
     └── glossary/            # Hugtakasafn
 ```
 
+## Vefviðmót
+
+Verkflæðið er hægt að keyra í gegnum vefþjón með leiðsögn:
+
+```bash
+cd server
+npm install
+npm start
+```
+
+Opnaðu http://localhost:3000/workflow
+
+| Slóð | Lýsing |
+|------|--------|
+| `/workflow` | Leiðsögn í gegnum verkflæði |
+| `/issues` | Atriðastjórnun |
+| `/images` | Myndaþýðingaeftirlit |
+| `/status` | Stöðuyfirlit |
+
+Sjá [server/README.md](server/README.md) fyrir nánari upplýsingar.
+
 ## Skjölun
 
 | Skjal | Lýsing |
@@ -58,6 +79,7 @@ books/
 | [Hugtök](docs/terminology.md) | Hugtakastaðlar og orðasafn |
 | [Skipanir](docs/cli-quick-reference.md) | Flýtileiðbeiningar fyrir skipanir |
 | [Skriftur](docs/scripts-guide.md) | Leiðbeiningar fyrir sjálfvirkni |
+| [Vefþjónn](server/README.md) | Sjálfvirknivefþjónn |
 
 ## Að taka þátt
 
@@ -127,6 +149,33 @@ The human-verified TM can be used for:
 
 All assets are released under **CC BY 4.0** license.
 
+## Pipeline Server
+
+The translation workflow can be run through a web-based guided interface:
+
+```bash
+cd server
+npm install
+npm start
+```
+
+Access at http://localhost:3000/workflow
+
+| URL | Description |
+|-----|-------------|
+| `/workflow` | Step-by-step workflow wizard |
+| `/issues` | Issue review dashboard |
+| `/images` | Image translation tracker |
+| `/status` | Pipeline status overview |
+
+Features:
+- GitHub OAuth authentication with role-based access
+- Automatic issue classification and routing
+- Image translation tracking with OneDrive linking
+- PR-based content sync to repository
+
+See [server/README.md](server/README.md) for full documentation.
+
 ## Documentation
 
 | Document | Description |
@@ -137,6 +186,7 @@ All assets are released under **CC BY 4.0** license.
 | [CLI Quick Reference](docs/cli-quick-reference.md) | Command cheat sheet |
 | [Scripts Guide](docs/scripts-guide.md) | Automation script usage |
 | [Schema Reference](docs/schema-reference.md) | JSON Schema field definitions |
+| [Pipeline Server](server/README.md) | Web automation server |
 | [Contributing](docs/contributing.md) | How to participate |
 
 ### Attribution Requirements

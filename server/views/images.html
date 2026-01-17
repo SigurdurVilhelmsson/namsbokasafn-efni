@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myndir - Námsbókasafn</title>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/issues">Atriði</a>
+      <a href="/images" class="active">Myndir</a>
+      <a href="/status">Staða</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2 class="card-title">Myndaþýðingaeftirlit</h2>
+      <div class="form-group">
+        <label class="form-label">Veldu bók</label>
+        <select class="form-select" id="book-select" onchange="loadBookImages()">
+          <option value="">Veldu bók...</option>
+          <option value="efnafraedi">Efnafræði (Chemistry 2e)</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="book-stats" style="display: none;">
+      <div class="card">
+        <h2 class="card-title">Yfirlit bókar</h2>
+        <div class="grid grid-5" id="stats-grid"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Kaflar</h2>
+        <table class="table">
+          <thead>
+            <tr><th>Kafli</th><th>Samtals</th><th>Í bið</th><th>Þýtt</th><th>Samþykkt</th><th>Framvinda</th></tr>
+          </thead>
+          <tbody id="chapters-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="chapter-images" style="display: none;">
+      <div class="card">
+        <h2 class="card-title">Myndir í kafla <span id="chapter-num"></span></h2>
+        <button class="btn btn-secondary" onclick="backToOverview()">Til baka í yfirlit</button>
+        <div id="images-grid" class="grid grid-3" style="margin-top: 1rem;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let currentBook = '';
+
+    const STATUS_LABELS = {
+      'pending': 'Í bið',
+      'in-progress': 'Í vinnslu',
+      'translated': 'Þýtt',
+      'approved': 'Samþykkt'
+    };
+
+    async function loadBookImages() {
+      currentBook = document.getElementById('book-select').value;
+      if (!currentBook) {
+        document.getElementById('book-stats').style.display = 'none';
+        return;
+      }
+
+      const res = await fetch('/api/images/' + currentBook);
+      const data = await res.json();
+
+      document.getElementById('book-stats').style.display = 'block';
+      document.getElementById('chapter-images').style.display = 'none';
+
+      const t = data.totals;
+      document.getElementById('stats-grid').innerHTML =
+        '<div class="stat-card"><div class="stat-value">' + t.total + '</div><div class="stat-label">Samtals</div></div>' +
+        '<div class="stat-card"><div class="stat-value">' + t.pending + '</div><div class="stat-label">Í bið</div></div>' +
+        '<div class="stat-card"><div class="stat-value">' + t.inProgress + '</div><div class="stat-label">Í vinnslu</div></div>' +
+        '<div class="stat-card"><div class="stat-value">' + t.translated + '</div><div class="stat-label">Þýtt</div></div>' +
+        '<div class="stat-card"><div class="stat-value">' + t.percentComplete + '%</div><div class="stat-label">Lokið</div></div>';
+
+      document.getElementById('chapters-body').innerHTML = data.chapters.map(ch =>
+        '<tr onclick="loadChapterImages(' + ch.chapter + ')" style="cursor: pointer;">' +
+          '<td>Kafli ' + ch.chapter + '</td>' +
+          '<td>' + ch.total + '</td>' +
+          '<td>' + ch.pending + '</td>' +
+          '<td>' + ch.translated + '</td>' +
+          '<td>' + ch.approved + '</td>' +
+          '<td><div class="progress-bar"><div class="progress-bar-fill" style="width: ' +
+            (ch.total > 0 ? Math.round((ch.translated + ch.approved) / ch.total * 100) : 0) + '%"></div></div></td>' +
+        '</tr>'
+      ).join('');
+    }
+
+    async function loadChapterImages(chapter) {
+      document.getElementById('book-stats').style.display = 'none';
+      document.getElementById('chapter-images').style.display = 'block';
+      document.getElementById('chapter-num').textContent = chapter;
+
+      const res = await fetch('/api/images/' + currentBook + '/' + chapter);
+      const data = await res.json();
+
+      document.getElementById('images-grid').innerHTML = data.images.map(img =>
+        '<div class="image-card">' +
+          '<div class="image-status status-' + img.status + '">' + (STATUS_LABELS[img.status] || img.status) + '</div>' +
+          '<div class="image-id">' + img.id + '</div>' +
+          (img.containsText ? '<div class="image-tag">Inniheldur texta</div>' : '') +
+          '<div class="image-actions">' +
+            (img.editLink ? '<a href="' + img.editLink + '" target="_blank" class="btn btn-secondary">Breyta upprunaskrá</a>' : '') +
+            '<button class="btn btn-primary" onclick="uploadImage(\'' + img.id + '\', ' + chapter + ')">Hlaða upp</button>' +
+          '</div>' +
+        '</div>'
+      ).join('');
+    }
+
+    function backToOverview() {
+      document.getElementById('book-stats').style.display = 'block';
+      document.getElementById('chapter-images').style.display = 'none';
+    }
+
+    function uploadImage(imageId, chapter) {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/png,image/jpeg';
+      input.onchange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('image', file);
+
+        const res = await fetch('/api/images/' + currentBook + '/' + chapter + '/' + imageId + '/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        if (res.ok) {
+          loadChapterImages(chapter);
+        } else {
+          alert('Villa við að hlaða upp');
+        }
+      };
+      input.click();
+    }
+  </script>
+
+  <style>
+    :root { --primary: #2563eb; --gray-50: #f9fafb; --gray-200: #e5e7eb; --gray-300: #d1d5db; --gray-500: #6b7280; --gray-700: #374151; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); }
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
+    .header nav a.active { color: var(--primary); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-select { width: 100%; max-width: 300px; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; }
+    .grid { display: grid; gap: 1rem; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-5 { grid-template-columns: repeat(5, 1fr); }
+    .stat-card { text-align: center; padding: 1rem; background: var(--gray-50); border-radius: 0.5rem; }
+    .stat-value { font-size: 1.5rem; font-weight: 600; color: var(--primary); }
+    .stat-label { font-size: 0.75rem; color: var(--gray-500); }
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
+    .table tbody tr:hover { background: var(--gray-50); }
+    .progress-bar { width: 100%; height: 0.5rem; background: var(--gray-200); border-radius: 9999px; }
+    .progress-bar-fill { height: 100%; background: var(--primary); border-radius: 9999px; }
+    .btn { padding: 0.375rem 0.75rem; border-radius: 0.25rem; border: none; cursor: pointer; font-size: 0.75rem; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-secondary { background: white; border: 1px solid var(--gray-300); }
+    .image-card { background: var(--gray-50); border-radius: 0.5rem; padding: 1rem; }
+    .image-status { display: inline-block; padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.625rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .status-pending { background: #fef3c7; color: #92400e; }
+    .status-in-progress { background: #dbeafe; color: #1e40af; }
+    .status-translated { background: #d1fae5; color: #065f46; }
+    .status-approved { background: #dcfce7; color: #166534; }
+    .image-id { font-weight: 500; margin-bottom: 0.5rem; }
+    .image-tag { font-size: 0.625rem; color: var(--gray-500); margin-bottom: 0.5rem; }
+    .image-actions { display: flex; gap: 0.5rem; }
+    @media (max-width: 768px) { .grid-3, .grid-5 { grid-template-columns: 1fr; } }
+  </style>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atriði - Námsbókasafn</title>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/issues" class="active">Atriði</a>
+      <a href="/images">Myndir</a>
+      <a href="/status">Staða</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2 class="card-title">Atriðayfirlit</h2>
+      <div class="grid grid-4" id="stats">
+        <div class="stat-card"><div class="stat-value" id="total-issues">-</div><div class="stat-label">Samtals</div></div>
+        <div class="stat-card"><div class="stat-value" id="pending-issues">-</div><div class="stat-label">Í bið</div></div>
+        <div class="stat-card"><div class="stat-value" id="auto-fix-issues">-</div><div class="stat-label">Sjálfvirk lagfæring</div></div>
+        <div class="stat-card"><div class="stat-value" id="review-issues">-</div><div class="stat-label">Þarf yfirlestur</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Óleyst atriði</h2>
+      <div class="filters">
+        <select class="form-select" id="filter-book" onchange="loadIssues()">
+          <option value="">Allar bækur</option>
+          <option value="efnafraedi">Efnafræði</option>
+        </select>
+        <select class="form-select" id="filter-category" onchange="loadIssues()">
+          <option value="">Allir flokkar</option>
+          <option value="AUTO_FIX">Sjálfvirk lagfæring</option>
+          <option value="EDITOR_CONFIRM">Ritstjóri staðfestir</option>
+          <option value="BOARD_REVIEW">Yfirlestur ráðs</option>
+          <option value="BLOCKED">Lokað á</option>
+        </select>
+      </div>
+      <table class="table" id="issues-table">
+        <thead>
+          <tr><th>Flokkur</th><th>Lýsing</th><th>Staðsetning</th><th>Aðgerðir</th></tr>
+        </thead>
+        <tbody id="issues-body"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    async function loadIssues() {
+      const book = document.getElementById('filter-book').value;
+      const category = document.getElementById('filter-category').value;
+      let url = '/api/issues?';
+      if (book) url += 'book=' + book + '&';
+      if (category) url += 'category=' + category;
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      document.getElementById('total-issues').textContent = data.total;
+
+      const tbody = document.getElementById('issues-body');
+      const allIssues = [
+        ...data.byCategory.AUTO_FIX,
+        ...data.byCategory.EDITOR_CONFIRM,
+        ...data.byCategory.BOARD_REVIEW,
+        ...data.byCategory.BLOCKED
+      ];
+
+      if (allIssues.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4">Engin óleyst atriði</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = allIssues.map(i =>
+        '<tr>' +
+          '<td><span class="status-badge status-' + i.category.toLowerCase().replace('_','-') + '">' + getCategoryLabel(i.category) + '</span></td>' +
+          '<td>' + escapeHtml(i.description) + '</td>' +
+          '<td>' + (i.location || '-') + '</td>' +
+          '<td><button class="btn btn-secondary" onclick="resolveIssue(\'' + i.id + '\')">Leysa</button></td>' +
+        '</tr>'
+      ).join('');
+    }
+
+    function getCategoryLabel(category) {
+      const labels = {
+        'AUTO_FIX': 'Sjálfvirkt',
+        'EDITOR_CONFIRM': 'Ritstjóri',
+        'BOARD_REVIEW': 'Ráð',
+        'BLOCKED': 'Lokað'
+      };
+      return labels[category] || category;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    async function resolveIssue(id) {
+      const action = prompt('Aðgerð (samþykkja/hafna/breyta):');
+      if (!action) return;
+
+      const res = await fetch('/api/issues/' + id + '/resolve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action, resolution: 'Handvirk úrlausn' })
+      });
+
+      if (res.ok) loadIssues();
+      else alert('Villa við að leysa atriði');
+    }
+
+    loadIssues();
+  </script>
+
+  <style>
+    :root { --primary: #2563eb; --gray-50: #f9fafb; --gray-200: #e5e7eb; --gray-300: #d1d5db; --gray-500: #6b7280; --gray-700: #374151; --gray-900: #111827; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); }
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
+    .header nav a.active { color: var(--primary); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .stat-card { text-align: center; padding: 1rem; background: var(--gray-50); border-radius: 0.5rem; }
+    .stat-value { font-size: 2rem; font-weight: 600; color: var(--primary); }
+    .stat-label { font-size: 0.75rem; color: var(--gray-500); }
+    .filters { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .form-select { padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; }
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
+    .btn { padding: 0.375rem 0.75rem; border-radius: 0.25rem; border: 1px solid var(--gray-300); background: white; cursor: pointer; font-size: 0.75rem; }
+    .status-badge { padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.625rem; font-weight: 600; }
+    .status-auto-fix { background: #dcfce7; color: #166534; }
+    .status-editor-confirm { background: #dbeafe; color: #1e40af; }
+    .status-board-review { background: #fef3c7; color: #92400e; }
+    .status-blocked { background: #fee2e2; color: #991b1b; }
+  </style>
+</body>
+</html>

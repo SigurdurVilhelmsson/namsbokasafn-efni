@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staða - Námsbókasafn</title>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/issues">Atriði</a>
+      <a href="/images">Myndir</a>
+      <a href="/status" class="active">Staða</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <div class="card">
+      <h2 class="card-title">Yfirlit yfir stöðu</h2>
+      <div class="form-group">
+        <label class="form-label">Veldu bók</label>
+        <select class="form-select" id="book-select" onchange="loadStatus()">
+          <option value="">Veldu bók...</option>
+          <option value="efnafraedi">Efnafræði (Chemistry 2e)</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="status-content" style="display: none;">
+      <div class="card">
+        <h2 class="card-title">Samantekt</h2>
+        <div class="grid grid-4" id="summary-stats"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">Framvinda kafla</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Kafli</th>
+              <th>Uppspretta</th>
+              <th>VÞ</th>
+              <th>Matecat</th>
+              <th>Yfirl. 1</th>
+              <th>TM</th>
+              <th>Yfirl. 2</th>
+              <th>Útg.</th>
+              <th>Framvinda</th>
+            </tr>
+          </thead>
+          <tbody id="chapters-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const STATUS_SYMBOLS = {
+      'complete': '✅',
+      'in-progress': '🔄',
+      'pending': '⏳',
+      'not-started': '○',
+      'blocked': '❌'
+    };
+
+    async function loadStatus() {
+      const book = document.getElementById('book-select').value;
+      if (!book) {
+        document.getElementById('status-content').style.display = 'none';
+        return;
+      }
+
+      const res = await fetch('/api/status/' + book);
+      const data = await res.json();
+
+      document.getElementById('status-content').style.display = 'block';
+
+      const s = data.summary;
+      document.getElementById('summary-stats').innerHTML =
+        '<div class="stat-card"><div class="stat-value">' + data.totalChapters + '</div><div class="stat-label">Kaflar</div></div>' +
+        '<div class="stat-card"><div class="stat-value">' + s.complete + '</div><div class="stat-label">Lokið</div></div>' +
+        '<div class="stat-card"><div class="stat-value">' + s.inProgress + '</div><div class="stat-label">Í vinnslu</div></div>' +
+        '<div class="stat-card"><div class="stat-value">' + s.avgProgress + '%</div><div class="stat-label">Meðalframvinda</div></div>';
+
+      document.getElementById('chapters-body').innerHTML = data.chapters.map(ch => {
+        const stages = ch.stages || [];
+        return '<tr>' +
+          '<td>Kafli ' + ch.chapter + '</td>' +
+          stages.map(st => '<td title="' + st.stage + '">' + (STATUS_SYMBOLS[st.status] || '○') + '</td>').join('') +
+          '<td><div class="progress-bar"><div class="progress-bar-fill" style="width: ' + ch.progress + '%"></div></div></td>' +
+        '</tr>';
+      }).join('');
+    }
+  </script>
+
+  <style>
+    :root { --primary: #2563eb; --gray-50: #f9fafb; --gray-200: #e5e7eb; --gray-300: #d1d5db; --gray-500: #6b7280; --gray-700: #374151; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); }
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
+    .header nav a.active { color: var(--primary); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-select { width: 100%; max-width: 300px; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; }
+    .grid { display: grid; gap: 1rem; }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .stat-card { text-align: center; padding: 1rem; background: var(--gray-50); border-radius: 0.5rem; }
+    .stat-value { font-size: 1.5rem; font-weight: 600; color: var(--primary); }
+    .stat-label { font-size: 0.75rem; color: var(--gray-500); }
+    .table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .table th, .table td { padding: 0.5rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+    .table th { font-size: 0.75rem; color: var(--gray-500); }
+    .progress-bar { width: 100%; height: 0.5rem; background: var(--gray-200); border-radius: 9999px; }
+    .progress-bar-fill { height: 100%; background: var(--primary); border-radius: 9999px; }
+    @media (max-width: 768px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</body>
+</html>

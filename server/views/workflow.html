@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verkflæði - Námsbókasafn</title>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/workflow" class="active">Verkflæði</a>
+      <a href="/issues">Atriði</a>
+      <a href="/images">Myndir</a>
+      <a href="/status">Staða</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <div class="card" id="start-workflow">
+      <h2 class="card-title">Hefja nýtt verkflæði</h2>
+      <form id="workflow-form">
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">Bók</label>
+            <select class="form-select" name="book" required>
+              <option value="">Veldu bók...</option>
+              <option value="efnafraedi">Efnafræði (Chemistry 2e)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kafli</label>
+            <select class="form-select" name="chapter" required>
+              <option value="">Veldu kafla...</option>
+              <option value="1">Kafli 1</option>
+              <option value="2">Kafli 2</option>
+              <option value="3">Kafli 3</option>
+              <option value="4">Kafli 4</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Auðkenni einingar</label>
+          <input type="text" class="form-input" name="moduleId" placeholder="t.d. m68690">
+        </div>
+        <button type="submit" class="btn btn-primary">Hefja verkflæði</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Virk verkflæði</h2>
+      <div id="active-workflows"><p class="text-muted">Hleður...</p></div>
+    </div>
+
+    <div class="card" id="workflow-detail" style="display: none;">
+      <h2 class="card-title"><span id="detail-title"></span></h2>
+      <div class="steps" id="workflow-steps"></div>
+      <div id="step-content"></div>
+      <div id="step-actions" class="actions"></div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('workflow-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        book: form.book.value,
+        chapter: form.chapter.value,
+        sourceType: 'moduleId',
+        moduleId: form.moduleId.value
+      };
+
+      const res = await fetch('/api/workflow/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        showWorkflow(result);
+        loadWorkflows();
+      } else {
+        alert('Villa: ' + result.message);
+      }
+    });
+
+    function showWorkflow(data) {
+      document.getElementById('workflow-detail').style.display = 'block';
+      document.getElementById('detail-title').textContent = data.book + ' - Kafli ' + data.chapter;
+
+      const stepsEl = document.getElementById('workflow-steps');
+      stepsEl.innerHTML = data.steps.map((step, i) => {
+        const cls = step.status === 'completed' ? 'complete' : step.status === 'in-progress' ? 'active' : 'pending';
+        return '<div class="step ' + cls + '"><div class="step-number">' + (i + 1) + '</div><div class="step-label">' + step.name + '</div></div>';
+      }).join('');
+
+      const current = data.currentStep || data.steps[0];
+      const contentEl = document.getElementById('step-content');
+
+      if (current.manual) {
+        contentEl.innerHTML = '<div class="alert alert-info"><strong>Handvirkt skref</strong><p>' + (current.instructions || 'Ljúktu þessu skrefi handvirkt') + '</p></div>';
+      } else {
+        contentEl.innerHTML = '<div class="alert alert-success"><strong>' + current.name + '</strong><p>Staða: ' + current.status + '</p></div>';
+      }
+    }
+
+    async function loadWorkflows() {
+      try {
+        const res = await fetch('/api/workflow/sessions');
+        const data = await res.json();
+        const el = document.getElementById('active-workflows');
+
+        if (!data.sessions || data.sessions.length === 0) {
+          el.innerHTML = '<p class="text-muted">Engin virk verkflæði</p>';
+          return;
+        }
+
+        el.innerHTML = '<table class="table"><thead><tr><th>Bók</th><th>Kafli</th><th>Framvinda</th><th></th></tr></thead><tbody>' +
+          data.sessions.map(s => '<tr><td>' + s.book + '</td><td>K. ' + s.chapter + '</td><td><div class="progress-bar"><div class="progress-bar-fill" style="width:' + s.progress + '%"></div></div></td><td><button class="btn btn-secondary" onclick="loadWorkflow(\'' + s.id + '\')">Skoða</button></td></tr>').join('') +
+          '</tbody></table>';
+      } catch (e) {
+        document.getElementById('active-workflows').innerHTML = '<p class="text-error">Villa við að hlaða verkflæðum</p>';
+      }
+    }
+
+    async function loadWorkflow(id) {
+      const res = await fetch('/api/workflow/' + id);
+      const data = await res.json();
+      showWorkflow({ ...data.session, sessionId: id, downloads: data.downloads });
+    }
+
+    // Auðkenningarathugun
+    fetch('/api/auth/me').then(r => r.json()).then(data => {
+      const el = document.getElementById('user-info');
+      if (data.authenticated) {
+        el.innerHTML = '<img src="' + data.user.avatar + '" alt=""><span>' + data.user.name + '</span>';
+        loadWorkflows();
+      } else {
+        el.innerHTML = '<a href="/api/auth/login" class="btn btn-primary">Innskráning</a>';
+      }
+    });
+  </script>
+
+  <style>
+    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --success: #16a34a; --gray-50: #f9fafb; --gray-200: #e5e7eb; --gray-300: #d1d5db; --gray-500: #6b7280; --gray-700: #374151; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; font-weight: 600; }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
+    .header nav a.active { color: var(--primary); }
+    .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-input, .form-select { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .grid { display: grid; gap: 1rem; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .steps { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+    .step { flex: 1; text-align: center; }
+    .step-number { width: 2rem; height: 2rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem; background: var(--gray-200); }
+    .step.complete .step-number { background: var(--success); color: white; }
+    .step.active .step-number { background: var(--primary); color: white; }
+    .step-label { font-size: 0.75rem; color: var(--gray-500); }
+    .alert { padding: 1rem; border-radius: 0.375rem; margin-bottom: 1rem; }
+    .alert-info { background: #dbeafe; color: #1e40af; }
+    .alert-success { background: #dcfce7; color: #166534; }
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
+    .progress-bar { width: 100%; height: 0.5rem; background: var(--gray-200); border-radius: 9999px; }
+    .progress-bar-fill { height: 100%; background: var(--primary); }
+    .text-muted { color: var(--gray-500); }
+    .text-error { color: #dc2626; }
+    .user-info { display: flex; align-items: center; gap: 0.5rem; }
+    .user-info img { width: 28px; height: 28px; border-radius: 50%; }
+    .user-info span { font-size: 0.875rem; }
+    .actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</body>
+</html>
