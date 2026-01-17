@@ -187,6 +187,39 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
 });
 
 /**
+ * GET /api/workflow/sessions
+ * List user's active sessions
+ * NOTE: Must be defined before /:sessionId to avoid "sessions" being matched as sessionId
+ */
+router.get('/sessions', requireAuth, (req, res) => {
+  const sessions = session.listUserSessions(req.user.id);
+
+  res.json({
+    sessions,
+    total: sessions.length
+  });
+});
+
+/**
+ * GET /api/workflow/sessions/all
+ * List all active sessions (admin only)
+ */
+router.get('/sessions/all', requireAuth, (req, res) => {
+  if (req.user.role !== 'admin') {
+    return res.status(403).json({
+      error: 'Admin access required'
+    });
+  }
+
+  const sessions = session.listAllSessions();
+
+  res.json({
+    sessions,
+    total: sessions.length
+  });
+});
+
+/**
  * GET /api/workflow/:sessionId
  * Get session status
  */
@@ -528,38 +561,6 @@ router.post('/:sessionId/cancel', requireAuth, (req, res) => {
       status: cancelled.status,
       cancelReason: cancelled.cancelReason
     }
-  });
-});
-
-/**
- * GET /api/workflow/sessions
- * List user's active sessions
- */
-router.get('/sessions', requireAuth, (req, res) => {
-  const sessions = session.listUserSessions(req.user.id);
-
-  res.json({
-    sessions,
-    total: sessions.length
-  });
-});
-
-/**
- * GET /api/workflow/sessions/all
- * List all active sessions (admin only)
- */
-router.get('/sessions/all', requireAuth, (req, res) => {
-  if (req.user.role !== 'admin') {
-    return res.status(403).json({
-      error: 'Admin access required'
-    });
-  }
-
-  const sessions = session.listAllSessions();
-
-  res.json({
-    sessions,
-    total: sessions.length
   });
 });
 
