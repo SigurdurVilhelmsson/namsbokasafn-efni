@@ -8,6 +8,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+#### Translation Pipeline Server - Phase 2.1 (Workflow Enhancements)
+- **Erlendur MT File Splitting**
+  - Automatic splitting of files >18,000 characters at paragraph boundaries
+  - Split files named with part indicators: `2-6(a).en.md`, `2-6(b).en.md`
+  - Erlendur-style headers with `hluti: „a"` for part tracking
+  - Automatic recombination of translated parts after upload
+
+- **Workflow Session Management**
+  - SQLite persistence for sessions (survives server restarts)
+  - Workflow uniqueness constraint: one active workflow per book/chapter
+  - Content-based file identification (parses metadata from uploaded files)
+  - Section-based file naming (`2-1.en.md`) instead of module IDs
+  - Upload progress tracking with matched/unmatched file detection
+
+- **UI Improvements**
+  - File checklist shows friendly names (`2.6: Ionic and Molecular Compounds`)
+  - Download/upload filename hints for each expected file
+  - Warning banner when files have been split
+  - Existing workflow dialog when attempting duplicate workflows
+
+### Fixed
+- Chapter 2 module mappings in `cnxml-to-md.js` and `pipeline-runner.js`
+  - Corrected m68684-m68698 section assignments to match OpenStax collection
+- YAML frontmatter handling in split files (was creating duplicate headers)
+- Upload tracking now only counts files that match expected sections
+
 #### Translation Pipeline Server - Phase 2
 - **Web Interface** (Icelandic UI)
   - `/workflow` - Multi-step workflow wizard
