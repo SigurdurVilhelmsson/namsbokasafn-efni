@@ -39,8 +39,10 @@ const { spawn } = require('child_process');
 
 const DEFAULT_OUTPUT_DIR = './pipeline-output';
 
-// Known Chemistry 2e modules (from cnxml-to-md.js)
+// Module mappings from OpenStax Chemistry 2e collection
+// These match the actual modules from the books API
 const CHEMISTRY_2E_MODULES = {
+  // Chapter 1: Essential Ideas
   'm68662': { chapter: 1, section: 'intro', title: 'Introduction' },
   'm68663': { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
   'm68664': { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
@@ -48,19 +50,22 @@ const CHEMISTRY_2E_MODULES = {
   'm68674': { chapter: 1, section: '1.4', title: 'Measurements' },
   'm68690': { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
   'm68683': { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
-  'm68695': { chapter: 2, section: 'intro', title: 'Introduction' },
-  'm68696': { chapter: 2, section: '2.1', title: 'Early Ideas in Atomic Theory' },
-  'm68698': { chapter: 2, section: '2.2', title: 'Evolution of Atomic Theory' },
-  'm68700': { chapter: 2, section: '2.3', title: 'Atomic Structure and Symbolism' },
-  'm68701': { chapter: 2, section: '2.4', title: 'Chemical Formulas' },
-  'm68704': { chapter: 2, section: '2.5', title: 'The Periodic Table' },
-  'm68710': { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
-  'm68712': { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
+  // Chapter 2: Atoms, Molecules, and Ions
+  'm68684': { chapter: 2, section: 'intro', title: 'Introduction' },
+  'm68685': { chapter: 2, section: '2.1', title: 'Early Ideas in Atomic Theory' },
+  'm68687': { chapter: 2, section: '2.2', title: 'Evolution of Atomic Theory' },
+  'm68692': { chapter: 2, section: '2.3', title: 'Atomic Structure and Symbolism' },
+  'm68693': { chapter: 2, section: '2.4', title: 'Chemical Formulas' },
+  'm68695': { chapter: 2, section: '2.5', title: 'The Periodic Table' },
+  'm68696': { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
+  'm68698': { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
+  // Chapter 3: Composition of Substances and Solutions
   'm68718': { chapter: 3, section: 'intro', title: 'Introduction' },
   'm68720': { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
   'm68723': { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
   'm68730': { chapter: 3, section: '3.3', title: 'Molarity' },
   'm68738': { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
+  // Chapter 4: Stoichiometry of Chemical Reactions
   'm68743': { chapter: 4, section: 'intro', title: 'Introduction' },
   'm68748': { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
   'm68754': { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },

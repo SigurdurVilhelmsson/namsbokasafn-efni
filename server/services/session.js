@@ -631,25 +631,46 @@ function splitFileForErlendur(filePath, outputDir, section) {
   const content = fs.readFileSync(filePath, 'utf-8');
   const metadata = parseMarkdownFrontmatter(content);
 
-  // Remove the header from content if present (we'll add new headers)
+  // Remove the header from content if present (we'll add new Erlendur headers)
   let bodyContent = content;
-  if (content.startsWith('##')) {
+
+  // Remove YAML frontmatter (---\n...\n---)
+  const yamlMatch = content.match(/^---\s*\n[\s\S]*?\n---\s*\n/);
+  if (yamlMatch) {
+    bodyContent = content.substring(yamlMatch[0].length);
+  }
+  // Also remove Erlendur-style header (## titill: ...)
+  else if (content.startsWith('##')) {
     const headerEnd = content.indexOf('\n\n');
     if (headerEnd > 0) {
       bodyContent = content.substring(headerEnd + 2);
     }
   }
 
-  const parts = splitContentForErlendur(bodyContent, metadata || { section, title: '', module: '' });
+  // Use section from metadata if available, fall back to passed section
+  const effectiveSection = metadata?.section || section;
+  const effectiveModule = metadata?.module || '';
+  const effectiveTitle = metadata?.title || '';
+
+  const metadataForSplit = {
+    section: effectiveSection,
+    title: effectiveTitle,
+    module: effectiveModule
+  };
+
+  const parts = splitContentForErlendur(bodyContent, metadataForSplit);
+
+  // Generate filename base from section
+  const sectionBase = effectiveSection ? effectiveSection.replace('.', '-') : 'unknown';
 
   if (parts.length === 1 && parts[0].part === null) {
     // No splitting needed
-    return [{ filename: `${section.replace('.', '-')}.en.md`, path: filePath, part: null }];
+    return [{ filename: `${sectionBase}.en.md`, path: filePath, part: null }];
   }
 
   const result = [];
   for (const { content: partContent, part } of parts) {
-    const filename = `${section.replace('.', '-')}(${part}).en.md`;
+    const filename = `${sectionBase}(${part}).en.md`;
     const partPath = path.join(outputDir, filename);
     fs.writeFileSync(partPath, partContent, 'utf-8');
     result.push({ filename, path: partPath, part });
