@@ -249,20 +249,37 @@ function createSession(options) {
     issues: []
   }));
 
+  // Normalize modules - can be array of strings (IDs) or objects with id/section/title
+  const normalizedModules = modules.map(m => {
+    if (typeof m === 'string') {
+      return { id: m, section: null, title: null };
+    }
+    return { id: m.id, section: m.section, title: m.title };
+  });
+
+  // Expected files with meaningful display info
   const expectedFiles = {
-    'mt-upload': modules.map(m => `${m}.is.md`)
+    'mt-upload': normalizedModules.map(m => ({
+      moduleId: m.id,
+      section: m.section,
+      title: m.title,
+      // Display name for UI (section + title or just module ID)
+      displayName: m.section
+        ? `${m.section}: ${m.title || m.id}`
+        : m.id
+    }))
   };
 
   const uploadedFiles = {
     'mt-upload': []
   };
 
-  // Insert into database
+  // Insert into database - store normalized modules with section/title info
   statements.insert.run(
     sessionId,
     book,
     chapter,
-    JSON.stringify(modules),
+    JSON.stringify(normalizedModules),
     sourceType,
     userId,
     username,
@@ -426,6 +443,64 @@ function extractModuleId(filename) {
 }
 
 /**
+ * Extract section number from filename
+ * e.g., "1-2.en.md" -> "1.2", "1-2-chemistry-in-context.md" -> "1.2"
+ */
+function extractSectionFromFilename(filename) {
+  // Match patterns like "1-2" or "1.2" at start of filename
+  const match = filename.match(/^(\d+)[-.](\d+)/);
+  if (match) {
+    return `${match[1]}.${match[2]}`;
+  }
+  return null;
+}
+
+/**
+ * Parse YAML frontmatter from markdown content
+ * Returns object with title, section, module, lang if present
+ */
+function parseMarkdownFrontmatter(content) {
+  const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
+  if (!frontmatterMatch) return null;
+
+  const frontmatter = frontmatterMatch[1];
+  const result = {};
+
+  // Parse simple YAML key: "value" pairs
+  const lines = frontmatter.split('\n');
+  for (const line of lines) {
+    const match = line.match(/^(\w+):\s*"?([^"]*)"?\s*$/);
+    if (match) {
+      result[match[1]] = match[2];
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Identify uploaded file by parsing its content
+ * Returns { section, module, title } or null
+ */
+function identifyUploadedFile(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const metadata = parseMarkdownFrontmatter(content);
+    if (metadata) {
+      return {
+        section: metadata.section,
+        module: metadata.module,
+        title: metadata.title,
+        lang: metadata.lang
+      };
+    }
+  } catch (err) {
+    console.error(`Failed to parse file ${filePath}:`, err.message);
+  }
+  return null;
+}
+
+/**
  * Get upload progress for a workflow step
  */
 function getUploadProgress(sessionId, stepId) {
@@ -435,10 +510,20 @@ function getUploadProgress(sessionId, stepId) {
   const expected = session.expectedFiles[stepId] || [];
   const uploaded = session.uploadedFiles[stepId] || [];
 
-  // Find which expected files have been uploaded
+  // Find which expected files have been uploaded (match by section or moduleId)
+  const uploadedSections = uploaded.map(u => u.section).filter(Boolean);
   const uploadedModules = uploaded.map(u => u.moduleId).filter(Boolean);
-  const missing = expected.filter(f => {
-    const moduleId = extractModuleId(f);
+
+  const missing = expected.filter(exp => {
+    // Expected can be object with section/moduleId or legacy string
+    if (typeof exp === 'object') {
+      // Match by section first, then by moduleId
+      if (exp.section && uploadedSections.includes(exp.section)) return false;
+      if (exp.moduleId && uploadedModules.includes(exp.moduleId)) return false;
+      return true;
+    }
+    // Legacy: string filename - match by moduleId
+    const moduleId = extractModuleId(exp);
     return !uploadedModules.includes(moduleId);
   });
 
@@ -447,14 +532,16 @@ function getUploadProgress(sessionId, stepId) {
     uploaded: uploaded.length,
     complete: uploaded.length >= expected.length,
     missing,
-    uploadedFiles: uploaded
+    uploadedFiles: uploaded,
+    expectedFiles: expected
   };
 }
 
 /**
  * Record a file upload for a workflow step
+ * Parses the uploaded file to identify it by metadata
  */
-function recordUpload(sessionId, stepId, filename, moduleId) {
+function recordUpload(sessionId, stepId, filename, filePath) {
   const session = getSession(sessionId);
   if (!session) return null;
 
@@ -462,11 +549,25 @@ function recordUpload(sessionId, stepId, filename, moduleId) {
     session.uploadedFiles[stepId] = [];
   }
 
-  session.uploadedFiles[stepId].push({
+  // Try to identify the file by parsing its content
+  let metadata = null;
+  if (filePath) {
+    metadata = identifyUploadedFile(filePath);
+  }
+
+  // Extract info from filename as fallback
+  const moduleIdFromName = extractModuleId(filename);
+  const sectionFromName = extractSectionFromFilename(filename);
+
+  const uploadRecord = {
     filename,
-    moduleId: moduleId || extractModuleId(filename),
+    section: metadata?.section || sectionFromName,
+    moduleId: metadata?.module || moduleIdFromName,
+    title: metadata?.title,
     uploadedAt: new Date().toISOString()
-  });
+  };
+
+  session.uploadedFiles[stepId].push(uploadRecord);
 
   session.updatedAt = new Date().toISOString();
   saveSession(session);

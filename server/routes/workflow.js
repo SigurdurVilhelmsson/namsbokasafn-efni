@@ -328,19 +328,15 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
   }
 
   try {
-    // Extract module ID from filename (e.g., "m68663.is.md" → "m68663")
-    const moduleId = session.extractModuleId(req.file.originalname);
+    // Record the upload - the session service will parse the file to identify it
+    const progress = session.recordUpload(sessionId, step, req.file.originalname, req.file.path);
 
-    // Store file with module reference
-    const fileKey = moduleId ? `${step}-${moduleId}` : `${step}-${Date.now()}`;
+    // Store file with a unique key
+    const fileKey = `${step}-${Date.now()}`;
     session.storeFile(sessionId, fileKey, req.file.path, {
       originalName: req.file.originalname,
-      size: req.file.size,
-      moduleId
+      size: req.file.size
     });
-
-    // Record the upload for progress tracking
-    const progress = session.recordUpload(sessionId, step, req.file.originalname, moduleId);
 
     // Process based on step
     let processingResult = {};
@@ -366,13 +362,18 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
 
     const updatedSession = session.getSession(sessionId);
 
+    // Get the last uploaded file info
+    const lastUploaded = progress.uploadedFiles[progress.uploadedFiles.length - 1];
+
     res.json({
       success: true,
       step,
       file: {
         name: req.file.originalname,
         size: req.file.size,
-        moduleId
+        identifiedAs: lastUploaded?.section
+          ? `${lastUploaded.section}: ${lastUploaded.title || 'Unknown'}`
+          : lastUploaded?.moduleId || 'Unknown'
       },
       progress: {
         uploaded: progress.uploaded,

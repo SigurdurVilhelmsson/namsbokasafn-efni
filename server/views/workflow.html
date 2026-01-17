@@ -149,7 +149,11 @@
       const data = {
         book: form.book.value,
         chapter: parseInt(form.chapter.value, 10),
-        modules: selectedChapter ? selectedChapter.modules.map(m => m.id) : []
+        modules: selectedChapter ? selectedChapter.modules.map(m => ({
+          id: m.id,
+          section: m.section,
+          title: m.title
+        })) : []
       };
 
       // Show loading state
@@ -357,17 +361,24 @@
       const expectedFiles = data.session?.expectedFiles?.['mt-upload'] || [];
       const uploadedFiles = data.session?.uploadedFiles?.['mt-upload'] || [];
 
-      // Create file checklist
+      // Create file checklist - match by section
+      const uploadedSections = uploadedFiles.map(f => f.section).filter(Boolean);
       const uploadedModules = uploadedFiles.map(f => f.moduleId).filter(Boolean);
       let checklistHtml = '';
       if (expectedFiles.length > 0) {
         checklistHtml = '<div class="file-checklist"><h4>Skrár sem þarf að hlaða upp:</h4><ul class="checklist">';
-        for (const file of expectedFiles) {
-          const moduleId = file.match(/(m\d+)/)?.[1];
-          const isUploaded = moduleId && uploadedModules.includes(moduleId);
+        for (const exp of expectedFiles) {
+          // Expected can be object or legacy string
+          const section = typeof exp === 'object' ? exp.section : null;
+          const moduleId = typeof exp === 'object' ? exp.moduleId : (exp.match(/(m\d+)/)?.[1]);
+          const displayName = typeof exp === 'object' ? exp.displayName : exp;
+
+          // Check if uploaded (by section first, then moduleId)
+          const isUploaded = (section && uploadedSections.includes(section)) ||
+                            (moduleId && uploadedModules.includes(moduleId));
           const icon = isUploaded ? '✓' : '○';
           const cls = isUploaded ? 'uploaded' : 'pending';
-          checklistHtml += '<li class="checklist-item ' + cls + '"><span class="check-icon">' + icon + '</span> <code>' + escapeHtml(file) + '</code></li>';
+          checklistHtml += '<li class="checklist-item ' + cls + '"><span class="check-icon">' + icon + '</span> ' + escapeHtml(displayName) + '</li>';
         }
         checklistHtml += '</ul></div>';
       }
