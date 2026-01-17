@@ -24,7 +24,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireContributor } = require('../middleware/requireRole');
 const session = require('../services/session');
 const pipelineRunner = require('../../tools/pipeline-runner');
-const { classifyIssues } = require('../services/issueClassifier');
+const { classifyIssues, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
 
 // Re-export splitting functions for use in this module
 const {
@@ -405,6 +405,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
 
     // Process based on step
     let processingResult = {};
+    let issuesSummary = null;
 
     if (step === 'mt-upload' || step === 'mt-output') {
       // MT output uploaded - track progress
@@ -415,6 +416,47 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         missing: progress.missing,
         message: `${progress.uploaded}/${progress.expected} þýdd(ar) skrá(r) mótteknar`
       };
+
+      // Run issue detection on the uploaded file
+      try {
+        const fileContent = fs.readFileSync(req.file.path, 'utf-8');
+        const issues = await classifyIssues(fileContent, {
+          type: 'mt-output',
+          book: sessionData.book,
+          chapter: sessionData.chapter
+        });
+
+        // Apply auto-fixes and store fixed content
+        const autoFixResult = applyAutoFixes(fileContent, issues);
+        if (autoFixResult.fixesApplied > 0) {
+          fs.writeFileSync(req.file.path, autoFixResult.content, 'utf-8');
+        }
+
+        // Store non-auto-fixed issues in session
+        const remainingIssues = issues.filter(i => i.category !== 'AUTO_FIX');
+        for (const issue of remainingIssues) {
+          session.addIssue(sessionId, {
+            ...issue,
+            sourceFile: req.file.originalname,
+            step
+          });
+        }
+
+        // Get issue statistics
+        const stats = getIssueStats(issues);
+        issuesSummary = {
+          total: stats.total,
+          autoFixed: autoFixResult.fixesApplied,
+          requiresReview: stats.requiresReview,
+          blocked: stats.blocked,
+          byCategory: stats.byCategory
+        };
+
+      } catch (issueErr) {
+        console.error('Issue detection error:', issueErr);
+        // Don't fail the upload if issue detection fails
+        issuesSummary = { error: issueErr.message };
+      }
     }
 
     if (step === 'reviewed-xliff' || step === 'matecat-review') {
@@ -447,12 +489,15 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         remaining: progress.missing
       },
       processing: processingResult,
+      issues: issuesSummary,
       session: {
         currentStep: updatedSession.currentStep,
         steps: updatedSession.steps.map(s => ({
           id: s.id,
           status: s.status
-        }))
+        })),
+        totalIssues: updatedSession.issues.length,
+        pendingIssues: updatedSession.issues.filter(i => i.status === 'pending').length
       },
       nextAction: getNextAction(updatedSession)
     });
@@ -597,6 +642,25 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
           }
         });
       }
+    }
+
+    // Check for BLOCKED issues that prevent advancement
+    const blockedIssues = sessionData.issues.filter(
+      i => i.category === 'BLOCKED' && i.status === 'pending'
+    );
+    if (blockedIssues.length > 0) {
+      return res.status(400).json({
+        error: 'Blocked issues',
+        message: `Ekki hægt að halda áfram: ${blockedIssues.length} vandamál krefjast úrlausnar`,
+        messageEn: `Cannot advance: ${blockedIssues.length} blocked issue(s) require resolution`,
+        blockedCount: blockedIssues.length,
+        issues: blockedIssues.map(i => ({
+          id: i.id,
+          description: i.description,
+          sourceFile: i.sourceFile,
+          line: i.line
+        }))
+      });
     }
 
     // If markComplete is true, mark current step as complete first

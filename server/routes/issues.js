@@ -19,8 +19,41 @@ const { requireEditor, requireHeadEditor } = require('../middleware/requireRole'
 const session = require('../services/session');
 const { ISSUE_CATEGORIES, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
 
-// In-memory issue store (would use database in production)
+// Legacy in-memory issue store (for manually reported issues)
 const issueStore = new Map();
+
+/**
+ * Collect issues from all sessions
+ */
+function collectSessionIssues(filters = {}) {
+  const { book, chapter, sessionId } = filters;
+  const sessions = session.listAllSessions();
+  const allIssues = [];
+
+  for (const sess of sessions) {
+    // Filter by sessionId if specified
+    if (sessionId && sess.id !== sessionId) continue;
+
+    const sessionData = session.getSession(sess.id);
+    if (!sessionData) continue;
+
+    // Filter by book
+    if (book && sessionData.book !== book) continue;
+    // Filter by chapter
+    if (chapter && sessionData.chapter !== parseInt(chapter)) continue;
+
+    for (const issue of sessionData.issues) {
+      allIssues.push({
+        ...issue,
+        sessionId: sess.id,
+        book: sessionData.book,
+        chapter: sessionData.chapter
+      });
+    }
+  }
+
+  return allIssues;
+}
 
 /**
  * GET /api/issues
@@ -29,31 +62,40 @@ const issueStore = new Map();
  * Query params:
  *   - book: Filter by book
  *   - chapter: Filter by chapter
+ *   - sessionId: Filter by session
  *   - category: Filter by category (AUTO_FIX, EDITOR_CONFIRM, BOARD_REVIEW, BLOCKED)
  *   - status: Filter by status (pending, resolved, escalated)
  */
 router.get('/', requireAuth, (req, res) => {
-  const { book, chapter, category, status = 'pending' } = req.query;
+  const { book, chapter, sessionId, category, status = 'pending' } = req.query;
 
-  let issues = Array.from(issueStore.values());
+  // Collect issues from sessions
+  let issues = collectSessionIssues({ book, chapter, sessionId });
 
-  // Apply filters
+  // Also include manually reported issues from issueStore
+  const manualIssues = Array.from(issueStore.values());
   if (book) {
-    issues = issues.filter(i => i.book === book);
+    issues = issues.concat(manualIssues.filter(i => i.book === book));
+  } else {
+    issues = issues.concat(manualIssues);
   }
-  if (chapter) {
-    issues = issues.filter(i => i.chapter === parseInt(chapter));
-  }
+
+  // Apply category filter
   if (category) {
     issues = issues.filter(i => i.category === category);
   }
+  // Apply status filter
   if (status) {
     issues = issues.filter(i => i.status === status);
   }
 
-  // Check permissions - editors can see all, contributors only see their own
+  // Check permissions - editors can see all, contributors only see their own sessions
   if (req.user.role === 'contributor') {
-    issues = issues.filter(i => i.reportedBy === req.user.id);
+    const userSessions = session.listUserSessions(req.user.id).map(s => s.id);
+    issues = issues.filter(i =>
+      i.reportedBy === req.user.id ||
+      (i.sessionId && userSessions.includes(i.sessionId))
+    );
   }
 
   // Group by category
@@ -73,7 +115,7 @@ router.get('/', requireAuth, (req, res) => {
   res.json({
     total: issues.length,
     byCategory: grouped,
-    filters: { book, chapter, category, status },
+    filters: { book, chapter, sessionId, category, status },
     categoryInfo: ISSUE_CATEGORIES
   });
 });
@@ -83,11 +125,17 @@ router.get('/', requireAuth, (req, res) => {
  * Get dashboard statistics
  */
 router.get('/stats', requireAuth, (req, res) => {
-  const { book } = req.query;
-  let issues = Array.from(issueStore.values());
+  const { book, sessionId } = req.query;
 
+  // Collect issues from sessions
+  let issues = collectSessionIssues({ book, sessionId });
+
+  // Also include manually reported issues
+  const manualIssues = Array.from(issueStore.values());
   if (book) {
-    issues = issues.filter(i => i.book === book);
+    issues = issues.concat(manualIssues.filter(i => i.book === book));
+  } else {
+    issues = issues.concat(manualIssues);
   }
 
   const stats = {
@@ -101,6 +149,12 @@ router.get('/stats', requireAuth, (req, res) => {
       BOARD_REVIEW: issues.filter(i => i.category === 'BOARD_REVIEW').length,
       BLOCKED: issues.filter(i => i.category === 'BLOCKED').length
     },
+    pendingByCategory: {
+      AUTO_FIX: issues.filter(i => i.category === 'AUTO_FIX' && i.status === 'pending').length,
+      EDITOR_CONFIRM: issues.filter(i => i.category === 'EDITOR_CONFIRM' && i.status === 'pending').length,
+      BOARD_REVIEW: issues.filter(i => i.category === 'BOARD_REVIEW' && i.status === 'pending').length,
+      BLOCKED: issues.filter(i => i.category === 'BLOCKED' && i.status === 'pending').length
+    },
     recentlyResolved: issues
       .filter(i => i.status === 'resolved' && i.resolvedAt)
       .sort((a, b) => new Date(b.resolvedAt) - new Date(a.resolvedAt))
@@ -110,7 +164,10 @@ router.get('/stats', requireAuth, (req, res) => {
         description: i.description,
         category: i.category,
         resolvedAt: i.resolvedAt,
-        resolvedBy: i.resolvedBy
+        resolvedBy: i.resolvedBy,
+        sessionId: i.sessionId,
+        book: i.book,
+        chapter: i.chapter
       }))
   };
 
@@ -118,12 +175,165 @@ router.get('/stats', requireAuth, (req, res) => {
 });
 
 /**
+ * GET /api/issues/session/:sessionId
+ * Get all issues for a specific session
+ */
+router.get('/session/:sessionId', requireAuth, (req, res) => {
+  const { sessionId } = req.params;
+  const { category, status } = req.query;
+
+  const sessionData = session.getSession(sessionId);
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  // Check access
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin' && req.user.role !== 'editor') {
+    return res.status(403).json({
+      error: 'Access denied'
+    });
+  }
+
+  let issues = [...sessionData.issues];
+
+  // Apply filters
+  if (category) {
+    issues = issues.filter(i => i.category === category);
+  }
+  if (status) {
+    issues = issues.filter(i => i.status === status);
+  }
+
+  // Group by category
+  const grouped = {
+    AUTO_FIX: issues.filter(i => i.category === 'AUTO_FIX'),
+    EDITOR_CONFIRM: issues.filter(i => i.category === 'EDITOR_CONFIRM'),
+    BOARD_REVIEW: issues.filter(i => i.category === 'BOARD_REVIEW'),
+    BLOCKED: issues.filter(i => i.category === 'BLOCKED')
+  };
+
+  res.json({
+    sessionId,
+    book: sessionData.book,
+    chapter: sessionData.chapter,
+    issues,
+    total: issues.length,
+    pending: issues.filter(i => i.status === 'pending').length,
+    byCategory: grouped,
+    categoryInfo: ISSUE_CATEGORIES
+  });
+});
+
+/**
+ * POST /api/issues/session/:sessionId/:issueId/resolve
+ * Resolve a session-based issue
+ */
+router.post('/session/:sessionId/:issueId/resolve', requireAuth, (req, res) => {
+  const { sessionId, issueId } = req.params;
+  const { action, resolution, modifiedValue } = req.body;
+
+  const sessionData = session.getSession(sessionId);
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  // Check access
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin' && req.user.role !== 'editor') {
+    return res.status(403).json({
+      error: 'Access denied'
+    });
+  }
+
+  const issue = sessionData.issues.find(i => i.id === issueId);
+  if (!issue) {
+    return res.status(404).json({
+      error: 'Issue not found'
+    });
+  }
+
+  if (issue.status !== 'pending') {
+    return res.status(400).json({
+      error: 'Issue already resolved',
+      status: issue.status
+    });
+  }
+
+  // Check permissions for BOARD_REVIEW
+  if (issue.category === 'BOARD_REVIEW' && req.user.role !== 'admin' && req.user.role !== 'head-editor' && req.user.role !== 'editor') {
+    return res.status(403).json({
+      error: 'Editor access required for board review issues'
+    });
+  }
+
+  if (!['accept', 'reject', 'modify', 'escalate', 'ignore'].includes(action)) {
+    return res.status(400).json({
+      error: 'Invalid action',
+      validActions: ['accept', 'reject', 'modify', 'escalate', 'ignore']
+    });
+  }
+
+  // Resolve the issue via session service
+  const resolutionData = {
+    resolution: action === 'escalate' ? 'escalated' : action,
+    comment: resolution,
+    modifiedValue,
+    resolvedBy: req.user.username
+  };
+
+  const resolved = session.resolveIssue(sessionId, issueId, resolutionData);
+
+  if (!resolved) {
+    return res.status(500).json({
+      error: 'Failed to resolve issue'
+    });
+  }
+
+  // Get updated stats
+  const updatedSession = session.getSession(sessionId);
+  const pendingCount = updatedSession.issues.filter(i => i.status === 'pending').length;
+  const blockedCount = updatedSession.issues.filter(i => i.category === 'BLOCKED' && i.status === 'pending').length;
+
+  res.json({
+    success: true,
+    issue: resolved,
+    remainingPending: pendingCount,
+    blockedCount
+  });
+});
+
+/**
  * GET /api/issues/:id
- * Get specific issue details
+ * Get specific issue details (legacy - checks both stores)
  */
 router.get('/:id', requireAuth, (req, res) => {
   const { id } = req.params;
-  const issue = issueStore.get(id);
+
+  // First check legacy store
+  let issue = issueStore.get(id);
+
+  // If not found, search in sessions
+  if (!issue) {
+    const sessions = session.listAllSessions();
+    for (const sess of sessions) {
+      const sessionData = session.getSession(sess.id);
+      if (!sessionData) continue;
+
+      const found = sessionData.issues.find(i => i.id === id);
+      if (found) {
+        issue = {
+          ...found,
+          sessionId: sess.id,
+          book: sessionData.book,
+          chapter: sessionData.chapter
+        };
+        break;
+      }
+    }
+  }
 
   if (!issue) {
     return res.status(404).json({

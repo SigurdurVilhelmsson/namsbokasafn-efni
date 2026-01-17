@@ -45,7 +45,7 @@
       </div>
       <table class="table" id="issues-table">
         <thead>
-          <tr><th>Flokkur</th><th>Lýsing</th><th>Staðsetning</th><th>Aðgerðir</th></tr>
+          <tr><th>Flokkur</th><th>Lysing</th><th>Skra</th><th>Kafli</th><th>Adgerdir</th></tr>
         </thead>
         <tbody id="issues-body"></tbody>
       </table>
@@ -53,71 +53,233 @@
   </main>
 
   <script>
+    // Load stats first
+    async function loadStats() {
+      const book = document.getElementById('filter-book').value;
+      let url = '/api/issues/stats';
+      if (book) url += '?book=' + book;
+
+      try {
+        const res = await fetch(url);
+        const stats = await res.json();
+
+        document.getElementById('total-issues').textContent = stats.total;
+        document.getElementById('pending-issues').textContent = stats.pending;
+        document.getElementById('auto-fix-issues').textContent = stats.pendingByCategory?.AUTO_FIX || 0;
+        document.getElementById('review-issues').textContent =
+          (stats.pendingByCategory?.EDITOR_CONFIRM || 0) +
+          (stats.pendingByCategory?.BOARD_REVIEW || 0);
+      } catch (err) {
+        console.error('Error loading stats:', err);
+      }
+    }
+
     async function loadIssues() {
       const book = document.getElementById('filter-book').value;
       const category = document.getElementById('filter-category').value;
-      let url = '/api/issues?';
-      if (book) url += 'book=' + book + '&';
-      if (category) url += 'category=' + category;
+      let url = '/api/issues?status=pending';
+      if (book) url += '&book=' + book;
+      if (category) url += '&category=' + category;
 
-      const res = await fetch(url);
-      const data = await res.json();
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
 
-      document.getElementById('total-issues').textContent = data.total;
+        // Update stats
+        loadStats();
 
-      const tbody = document.getElementById('issues-body');
-      const allIssues = [
-        ...data.byCategory.AUTO_FIX,
-        ...data.byCategory.EDITOR_CONFIRM,
-        ...data.byCategory.BOARD_REVIEW,
-        ...data.byCategory.BLOCKED
-      ];
+        const tbody = document.getElementById('issues-body');
+        const allIssues = [
+          ...(data.byCategory.BLOCKED || []),
+          ...(data.byCategory.BOARD_REVIEW || []),
+          ...(data.byCategory.EDITOR_CONFIRM || []),
+          ...(data.byCategory.AUTO_FIX || [])
+        ];
 
-      if (allIssues.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="4">Engin óleyst atriði</td></tr>';
-        return;
+        if (allIssues.length === 0) {
+          tbody.textContent = '';
+          const row = document.createElement('tr');
+          const cell = document.createElement('td');
+          cell.colSpan = 5;
+          cell.style.textAlign = 'center';
+          cell.style.color = 'var(--gray-500)';
+          cell.textContent = 'Engin oleyst atrioi';
+          row.appendChild(cell);
+          tbody.appendChild(row);
+          return;
+        }
+
+        // Clear and rebuild table using DOM methods for security
+        tbody.textContent = '';
+        allIssues.forEach(issue => {
+          const row = createIssueRow(issue);
+          tbody.appendChild(row);
+        });
+
+      } catch (err) {
+        console.error('Error loading issues:', err);
+        const tbody = document.getElementById('issues-body');
+        tbody.textContent = '';
+        const row = document.createElement('tr');
+        const cell = document.createElement('td');
+        cell.colSpan = 5;
+        cell.style.textAlign = 'center';
+        cell.style.color = '#991b1b';
+        cell.textContent = 'Villa vio ao saekja atridi';
+        row.appendChild(cell);
+        tbody.appendChild(row);
       }
+    }
 
-      tbody.innerHTML = allIssues.map(i =>
-        '<tr>' +
-          '<td><span class="status-badge status-' + i.category.toLowerCase().replace('_','-') + '">' + getCategoryLabel(i.category) + '</span></td>' +
-          '<td>' + escapeHtml(i.description) + '</td>' +
-          '<td>' + (i.location || '-') + '</td>' +
-          '<td><button class="btn btn-secondary" onclick="resolveIssue(\'' + i.id + '\')">Leysa</button></td>' +
-        '</tr>'
-      ).join('');
+    function createIssueRow(issue) {
+      const row = document.createElement('tr');
+
+      // Category badge
+      const catCell = document.createElement('td');
+      const badge = document.createElement('span');
+      badge.className = 'status-badge status-' + issue.category.toLowerCase().replace('_','-');
+      badge.textContent = getCategoryLabel(issue.category);
+      catCell.appendChild(badge);
+      row.appendChild(catCell);
+
+      // Description with context
+      const descCell = document.createElement('td');
+      const descDiv = document.createElement('div');
+      descDiv.className = 'issue-desc';
+      descDiv.textContent = issue.description || '';
+      descCell.appendChild(descDiv);
+
+      if (issue.context) {
+        const ctxDiv = document.createElement('div');
+        ctxDiv.className = 'issue-context';
+        ctxDiv.textContent = issue.context;
+        descCell.appendChild(ctxDiv);
+      }
+      if (issue.suggestion) {
+        const sugDiv = document.createElement('div');
+        sugDiv.className = 'issue-suggestion';
+        sugDiv.textContent = 'Tillaga: ';
+        const code = document.createElement('code');
+        code.textContent = issue.suggestion;
+        sugDiv.appendChild(code);
+        descCell.appendChild(sugDiv);
+      }
+      row.appendChild(descCell);
+
+      // Location
+      const locCell = document.createElement('td');
+      locCell.className = 'location-cell';
+      if (issue.sourceFile) {
+        locCell.textContent = issue.sourceFile + (issue.line ? ':' + issue.line : '');
+      } else if (issue.sessionId) {
+        locCell.textContent = 'Lota ' + issue.sessionId.slice(0,8);
+      } else {
+        locCell.textContent = '-';
+      }
+      row.appendChild(locCell);
+
+      // Chapter
+      const chapCell = document.createElement('td');
+      chapCell.className = 'chapter-cell';
+      chapCell.textContent = issue.chapter ? 'Kafli ' + issue.chapter : '-';
+      row.appendChild(chapCell);
+
+      // Actions
+      const actCell = document.createElement('td');
+      actCell.className = 'actions-cell';
+      createActionButtons(actCell, issue);
+      row.appendChild(actCell);
+
+      return row;
+    }
+
+    function createActionButtons(container, issue) {
+      const sessionId = issue.sessionId || '';
+      const issueId = issue.id;
+
+      if (issue.category === 'AUTO_FIX') {
+        const acceptBtn = document.createElement('button');
+        acceptBtn.className = 'btn btn-success';
+        acceptBtn.textContent = 'Samthykkja';
+        acceptBtn.onclick = () => resolveIssue(sessionId, issueId, 'accept');
+        container.appendChild(acceptBtn);
+
+        const skipBtn = document.createElement('button');
+        skipBtn.className = 'btn btn-secondary';
+        skipBtn.textContent = 'Sleppa';
+        skipBtn.onclick = () => resolveIssue(sessionId, issueId, 'reject');
+        container.appendChild(skipBtn);
+      } else if (issue.category === 'BLOCKED') {
+        const resolveBtn = document.createElement('button');
+        resolveBtn.className = 'btn btn-primary';
+        resolveBtn.textContent = 'Leysa';
+        resolveBtn.onclick = () => showResolveModal(sessionId, issueId);
+        container.appendChild(resolveBtn);
+      } else {
+        const acceptBtn = document.createElement('button');
+        acceptBtn.className = 'btn btn-success';
+        acceptBtn.textContent = 'Samthykkja';
+        acceptBtn.onclick = () => resolveIssue(sessionId, issueId, 'accept');
+        container.appendChild(acceptBtn);
+
+        const rejectBtn = document.createElement('button');
+        rejectBtn.className = 'btn btn-secondary';
+        rejectBtn.textContent = 'Hafna';
+        rejectBtn.onclick = () => resolveIssue(sessionId, issueId, 'reject');
+        container.appendChild(rejectBtn);
+      }
     }
 
     function getCategoryLabel(category) {
       const labels = {
-        'AUTO_FIX': 'Sjálfvirkt',
-        'EDITOR_CONFIRM': 'Ritstjóri',
-        'BOARD_REVIEW': 'Ráð',
-        'BLOCKED': 'Lokað'
+        'AUTO_FIX': 'Sjalfvirkt',
+        'EDITOR_CONFIRM': 'Ritstjori',
+        'BOARD_REVIEW': 'Rad',
+        'BLOCKED': 'Lokad'
       };
       return labels[category] || category;
     }
 
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
+    async function resolveIssue(sessionId, issueId, action) {
+      let url;
 
-    async function resolveIssue(id) {
-      const action = prompt('Aðgerð (samþykkja/hafna/breyta):');
-      if (!action) return;
+      if (sessionId) {
+        url = '/api/issues/session/' + sessionId + '/' + issueId + '/resolve';
+      } else {
+        url = '/api/issues/' + issueId + '/resolve';
+      }
 
-      const res = await fetch('/api/issues/' + id + '/resolve', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action, resolution: 'Handvirk úrlausn' })
+      const body = JSON.stringify({
+        action,
+        resolution: action === 'accept' ? 'Samthykkt' : 'Hafnad'
       });
 
-      if (res.ok) loadIssues();
-      else alert('Villa við að leysa atriði');
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body
+        });
+
+        if (res.ok) {
+          loadIssues();
+        } else {
+          const err = await res.json();
+          alert('Villa: ' + (err.error || 'Othekkt villa'));
+        }
+      } catch (err) {
+        alert('Villa vid ad leysa atridi: ' + err.message);
+      }
     }
 
+    function showResolveModal(sessionId, issueId) {
+      const resolution = prompt('Lysing a urlausn:');
+      if (!resolution) return;
+      resolveIssue(sessionId, issueId, 'accept');
+    }
+
+    // Initial load
+    loadStats();
     loadIssues();
   </script>
 
@@ -147,6 +309,17 @@
     .status-editor-confirm { background: #dbeafe; color: #1e40af; }
     .status-board-review { background: #fef3c7; color: #92400e; }
     .status-blocked { background: #fee2e2; color: #991b1b; }
+    .issue-desc { font-weight: 500; margin-bottom: 0.25rem; }
+    .issue-context { font-size: 0.75rem; color: var(--gray-500); font-family: monospace; background: var(--gray-50); padding: 0.25rem 0.5rem; border-radius: 0.25rem; margin-top: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; }
+    .issue-suggestion { font-size: 0.75rem; color: #166534; margin-top: 0.25rem; }
+    .issue-suggestion code { background: #dcfce7; padding: 0.125rem 0.25rem; border-radius: 0.25rem; }
+    .btn-success { background: #16a34a; color: white; border-color: #16a34a; }
+    .btn-success:hover { background: #15803d; }
+    .btn-primary { background: var(--primary); color: white; border-color: var(--primary); }
+    .btn-primary:hover { background: #1d4ed8; }
+    .actions-cell { display: flex; gap: 0.25rem; }
+    .location-cell { font-size: 0.75rem; font-family: monospace; color: var(--gray-500); }
+    .chapter-cell { font-size: 0.75rem; }
   </style>
 </body>
 </html>
