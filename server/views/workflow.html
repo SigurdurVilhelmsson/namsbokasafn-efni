@@ -24,27 +24,22 @@
         <div class="grid grid-2">
           <div class="form-group">
             <label class="form-label">Bók</label>
-            <select class="form-select" name="book" required>
-              <option value="">Veldu bók...</option>
-              <option value="efnafraedi">Efnafræði (Chemistry 2e)</option>
+            <select class="form-select" name="book" id="book-select" required>
+              <option value="">Hleður...</option>
             </select>
           </div>
           <div class="form-group">
             <label class="form-label">Kafli</label>
-            <select class="form-select" name="chapter" required>
-              <option value="">Veldu kafla...</option>
-              <option value="1">Kafli 1</option>
-              <option value="2">Kafli 2</option>
-              <option value="3">Kafli 3</option>
-              <option value="4">Kafli 4</option>
+            <select class="form-select" name="chapter" id="chapter-select" required disabled>
+              <option value="">Veldu bók fyrst...</option>
             </select>
           </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Auðkenni einingar</label>
-          <input type="text" class="form-input" name="moduleId" placeholder="t.d. m68690">
+        <div id="chapter-info" class="chapter-info" style="display: none;">
+          <p><strong>Kafli inniheldur:</strong> <span id="module-count">0</span> einingar</p>
+          <ul id="module-list" class="module-list"></ul>
         </div>
-        <button type="submit" class="btn btn-primary">Hefja verkflæði</button>
+        <button type="submit" class="btn btn-primary" id="submit-btn" disabled>Hefja verkflæði</button>
       </form>
     </div>
 
@@ -62,28 +57,127 @@
   </main>
 
   <script>
+    let booksData = {};
+    let selectedChapter = null;
+
+    // Load books on page load
+    async function loadBooks() {
+      try {
+        const res = await fetch('/api/books');
+        const data = await res.json();
+        const select = document.getElementById('book-select');
+        select.innerHTML = '<option value="">Veldu bók...</option>' +
+          data.books.map(b => '<option value="' + b.id + '">' + b.titleIs + ' (' + b.title + ')</option>').join('');
+      } catch (e) {
+        document.getElementById('book-select').innerHTML = '<option value="">Villa við að hlaða bókum</option>';
+      }
+    }
+
+    // Load chapters when book is selected
+    async function loadChapters(bookId) {
+      const chapterSelect = document.getElementById('chapter-select');
+      const submitBtn = document.getElementById('submit-btn');
+      const chapterInfo = document.getElementById('chapter-info');
+
+      if (!bookId) {
+        chapterSelect.innerHTML = '<option value="">Veldu bók fyrst...</option>';
+        chapterSelect.disabled = true;
+        submitBtn.disabled = true;
+        chapterInfo.style.display = 'none';
+        return;
+      }
+
+      chapterSelect.innerHTML = '<option value="">Hleður...</option>';
+      chapterSelect.disabled = true;
+
+      try {
+        const res = await fetch('/api/books/' + bookId);
+        const data = await res.json();
+        booksData[bookId] = data;
+
+        chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>' +
+          data.chapters.map(c => '<option value="' + c.chapter + '">Kafli ' + c.chapter + ': ' + (c.titleIs || c.title) + '</option>').join('');
+        chapterSelect.disabled = false;
+        chapterInfo.style.display = 'none';
+      } catch (e) {
+        chapterSelect.innerHTML = '<option value="">Villa við að hlaða köflum</option>';
+      }
+    }
+
+    // Show chapter details when chapter is selected
+    function showChapterInfo(bookId, chapterNum) {
+      const chapterInfo = document.getElementById('chapter-info');
+      const submitBtn = document.getElementById('submit-btn');
+
+      if (!chapterNum || !booksData[bookId]) {
+        chapterInfo.style.display = 'none';
+        submitBtn.disabled = true;
+        selectedChapter = null;
+        return;
+      }
+
+      const chapter = booksData[bookId].chapters.find(c => c.chapter === parseInt(chapterNum, 10));
+      if (!chapter) {
+        chapterInfo.style.display = 'none';
+        submitBtn.disabled = true;
+        return;
+      }
+
+      selectedChapter = chapter;
+      document.getElementById('module-count').textContent = chapter.modules.length;
+      document.getElementById('module-list').innerHTML = chapter.modules.map(m =>
+        '<li><code>' + m.id + '</code> - ' + m.section + ': ' + m.title + '</li>'
+      ).join('');
+      chapterInfo.style.display = 'block';
+      submitBtn.disabled = false;
+    }
+
+    // Event listeners
+    document.getElementById('book-select').addEventListener('change', (e) => {
+      loadChapters(e.target.value);
+    });
+
+    document.getElementById('chapter-select').addEventListener('change', (e) => {
+      const bookId = document.getElementById('book-select').value;
+      showChapterInfo(bookId, e.target.value);
+    });
+
     document.getElementById('workflow-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.target;
+      const submitBtn = document.getElementById('submit-btn');
       const data = {
         book: form.book.value,
-        chapter: form.chapter.value,
-        sourceType: 'moduleId',
-        moduleId: form.moduleId.value
+        chapter: parseInt(form.chapter.value, 10),
+        modules: selectedChapter ? selectedChapter.modules.map(m => m.id) : []
       };
 
-      const res = await fetch('/api/workflow/start', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Vinnur í ' + data.modules.length + ' einingum...';
 
-      const result = await res.json();
-      if (result.success) {
-        showWorkflow(result);
-        loadWorkflows();
-      } else {
-        alert('Villa: ' + result.message);
+      try {
+        const res = await fetch('/api/workflow/start', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+        if (result.success) {
+          showWorkflow(result);
+          loadWorkflows();
+          // Reset form
+          form.reset();
+          document.getElementById('chapter-info').style.display = 'none';
+        } else {
+          alert('Villa: ' + (result.message || result.error));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Hefja verkflæði';
       }
     });
 
@@ -97,13 +191,188 @@
         return '<div class="step ' + cls + '"><div class="step-number">' + (i + 1) + '</div><div class="step-label">' + step.name + '</div></div>';
       }).join('');
 
-      const current = data.currentStep || data.steps[0];
+      // Handle currentStep being either an index (number) or step object
+      let current;
+      if (typeof data.currentStep === 'number') {
+        current = data.steps[data.currentStep];
+      } else if (data.currentStep && data.currentStep.id) {
+        current = data.currentStep;
+      } else {
+        current = data.steps[0];
+      }
+
+      const contentEl = document.getElementById('step-content');
+      const actionsEl = document.getElementById('step-actions');
+
+      // Show module processing results if available
+      let moduleInfo = '';
+      if (data.modulesProcessed !== undefined) {
+        moduleInfo = '<p class="module-status"><strong>Einingar:</strong> ' + data.modulesProcessed + ' af ' + data.modulesTotal + ' unnar</p>';
+        if (data.errors && data.errors.length > 0) {
+          moduleInfo += '<p class="text-error">Villur: ' + data.errors.map(e => e.moduleId).join(', ') + '</p>';
+        }
+      }
+
+      const stepIndex = data.steps.findIndex(s => s.id === current.id);
+      const hasDownloads = data.downloads && Object.keys(data.downloads).length > 0;
+
+      // Count file types
+      let mdCount = 0, xliffCount = 0;
+      if (data.downloads) {
+        for (const type of Object.keys(data.downloads)) {
+          if (type.includes('markdown')) mdCount++;
+          if (type.includes('xliff')) xliffCount++;
+        }
+      }
+
+      // Step-specific content
+      if (current.id === 'source' || (stepIndex === 0 && current.status === 'completed')) {
+        // Source step completed - show download button to proceed
+        contentEl.innerHTML =
+          '<div class="alert alert-success">' + moduleInfo +
+          '<strong>Skref 1: Undirbúningur - Lokið</strong>' +
+          '<p>' + mdCount + ' .md skrár og ' + xliffCount + ' .xliff skrár tilbúnar.</p>' +
+          '</div>' +
+          '<div class="next-action">' +
+          '<p>Sæktu .md skrárnar og þýddu þær á <a href="https://malstadur.is" target="_blank">malstadur.is</a> (Erlendur MT)</p>' +
+          '<button id="download-proceed" class="btn btn-primary btn-large">Sækja .md skrár og halda áfram →</button>' +
+          '</div>';
+
+        document.getElementById('download-proceed')?.addEventListener('click', async () => {
+          // Download only MD files as ZIP
+          if (data.sessionId) {
+            window.open('/api/workflow/' + data.sessionId + '/download-all?filter=md', '_blank');
+          }
+
+          // Advance workflow to next step
+          try {
+            const advRes = await fetch('/api/workflow/' + data.sessionId + '/advance', { method: 'POST' });
+            const advResult = await advRes.json();
+            if (advResult.success || advResult.error) {
+              // Reload to show MT upload step
+              setTimeout(() => loadWorkflow(data.sessionId), 500);
+            }
+          } catch (e) {
+            // Even if advance fails, show MT upload step
+            setTimeout(() => showMTUploadStep(data), 500);
+          }
+        });
+
+      } else if (current.id === 'mt-upload') {
+        showMTUploadStep(data);
+
+      } else if (current.id === 'matecat-create' || current.id === 'matecat-review') {
+        const instructions = (current.instructions || '').replace(/\n/g, '<br>');
+        contentEl.innerHTML =
+          '<div class="alert alert-info">' +
+          '<strong>Skref ' + (stepIndex + 1) + ': ' + current.name + '</strong>' +
+          '<p class="instructions">' + instructions + '</p>' +
+          '<div class="upload-section"><h4>Hlaða upp .xliff skrám:</h4>' +
+          '<form id="upload-form" class="upload-form">' +
+          '<input type="file" name="file" id="upload-file" multiple accept=".xliff,.xlf">' +
+          '<button type="submit" class="btn btn-primary">Hlaða upp</button>' +
+          '</form></div></div>';
+        setupUploadHandler(data, current.id);
+
+      } else {
+        const statusText = current.status === 'completed' ? 'Lokið' : current.status === 'in-progress' ? 'Í vinnslu' : 'Bíður';
+        contentEl.innerHTML = '<div class="alert ' + (current.status === 'completed' ? 'alert-success' : 'alert-info') + '">' + moduleInfo + '<strong>Skref ' + (stepIndex + 1) + ': ' + current.name + '</strong><p>Staða: ' + statusText + '</p></div>';
+      }
+
+      actionsEl.innerHTML = '';
+    }
+
+    function showMTUploadStep(data) {
       const contentEl = document.getElementById('step-content');
 
-      if (current.manual) {
-        contentEl.innerHTML = '<div class="alert alert-info"><strong>Handvirkt skref</strong><p>' + (current.instructions || 'Ljúktu þessu skrefi handvirkt') + '</p></div>';
-      } else {
-        contentEl.innerHTML = '<div class="alert alert-success"><strong>' + current.name + '</strong><p>Staða: ' + current.status + '</p></div>';
+      // Count already uploaded MT files
+      const uploadedMTFiles = data.files ? data.files.filter(f => f.includes('mt-upload')).length : 0;
+      const uploadedInfo = uploadedMTFiles > 0
+        ? '<p class="uploaded-count">✓ ' + uploadedMTFiles + ' skrá(r) þegar hlaðið upp</p>'
+        : '';
+
+      contentEl.innerHTML =
+        '<div class="alert alert-info">' +
+        '<strong>Skref 2: Vélþýðing</strong>' +
+        '<ol class="instructions-list">' +
+        '<li>Farðu á <a href="https://malstadur.is" target="_blank">malstadur.is</a></li>' +
+        '<li>Hladdu upp .md skránum (ein í einu)</li>' +
+        '<li>Veldu enska → íslenska</li>' +
+        '<li>Sæktu þýddu skrárnar</li>' +
+        '<li>Hladdu þeim upp hér fyrir neðan</li>' +
+        '</ol>' +
+        uploadedInfo +
+        '<div class="upload-section"><h4>Hlaða upp þýddum .md skrám:</h4>' +
+        '<form id="upload-form" class="upload-form">' +
+        '<input type="file" name="file" id="upload-file" multiple accept=".md">' +
+        '<button type="submit" class="btn btn-secondary">Hlaða upp</button>' +
+        '</form>' +
+        '<button id="proceed-btn" class="btn btn-primary btn-large" style="margin-top: 1rem;">Halda áfram í næsta skref →</button>' +
+        '</div></div>';
+
+      setupUploadHandler(data, 'mt-upload');
+
+      // Setup proceed button
+      document.getElementById('proceed-btn')?.addEventListener('click', async () => {
+        try {
+          // Mark step complete and advance
+          const res = await fetch('/api/workflow/' + data.sessionId + '/advance', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ markComplete: true })
+          });
+          const result = await res.json();
+          if (result.success || result.complete) {
+            loadWorkflow(data.sessionId);
+          } else {
+            alert('Villa: ' + (result.message || result.error || 'Gat ekki haldið áfram'));
+          }
+        } catch (e) {
+          alert('Villa: ' + e.message);
+        }
+      });
+    }
+
+    function setupUploadHandler(data, stepId) {
+      const uploadFormEl = document.getElementById('upload-form');
+      if (uploadFormEl && data.sessionId) {
+        uploadFormEl.onsubmit = async (e) => {
+          e.preventDefault();
+          const files = document.getElementById('upload-file').files;
+          if (!files.length) { alert('Veldu skrár til að hlaða upp'); return; }
+
+          const btn = uploadFormEl.querySelector('button');
+          btn.disabled = true;
+          btn.textContent = 'Hleður upp...';
+
+          let success = true;
+          for (const file of files) {
+            const formData = new FormData();
+            formData.append('file', file);
+            try {
+              const res = await fetch('/api/workflow/' + data.sessionId + '/upload/' + stepId, {
+                method: 'POST',
+                body: formData
+              });
+              const result = await res.json();
+              if (!result.success) {
+                alert('Villa: ' + (result.message || result.error));
+                success = false;
+              }
+            } catch (err) {
+              alert('Villa: ' + err.message);
+              success = false;
+            }
+          }
+
+          if (success) {
+            alert(files.length + ' skrár hlaðið upp!');
+            loadWorkflow(data.sessionId);
+          } else {
+            btn.disabled = false;
+            btn.textContent = 'Hlaða upp og halda áfram';
+          }
+        };
       }
     }
 
@@ -132,11 +401,12 @@
       showWorkflow({ ...data.session, sessionId: id, downloads: data.downloads });
     }
 
-    // Auðkenningarathugun
+    // Auth check and init
     fetch('/api/auth/me').then(r => r.json()).then(data => {
       const el = document.getElementById('user-info');
       if (data.authenticated) {
         el.innerHTML = '<img src="' + data.user.avatar + '" alt=""><span>' + data.user.name + '</span>';
+        loadBooks();
         loadWorkflows();
       } else {
         el.innerHTML = '<a href="/api/auth/login" class="btn btn-primary">Innskráning</a>';
@@ -159,12 +429,19 @@
     .form-group { margin-bottom: 1rem; }
     .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
     .form-input, .form-select { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-select:disabled { background: var(--gray-50); cursor: not-allowed; }
     .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
     .btn-primary { background: var(--primary); color: white; }
-    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
     .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
     .grid { display: grid; gap: 1rem; }
     .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .chapter-info { background: var(--gray-50); border-radius: 0.375rem; padding: 1rem; margin-bottom: 1rem; }
+    .chapter-info p { font-size: 0.875rem; margin-bottom: 0.5rem; }
+    .module-list { font-size: 0.75rem; color: var(--gray-500); list-style: none; max-height: 150px; overflow-y: auto; }
+    .module-list li { padding: 0.25rem 0; }
+    .module-list code { background: var(--gray-200); padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.7rem; }
     .steps { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
     .step { flex: 1; text-align: center; }
     .step-number { width: 2rem; height: 2rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem; background: var(--gray-200); }
@@ -184,6 +461,22 @@
     .user-info img { width: 28px; height: 28px; border-radius: 50%; }
     .user-info span { font-size: 0.875rem; }
     .actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    .downloads { margin-top: 1rem; }
+    .downloads ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+    .module-status { margin-bottom: 0.5rem; }
+    .upload-section { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.1); }
+    .upload-section h4 { font-size: 0.875rem; margin-bottom: 0.5rem; }
+    .upload-form { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .upload-form input[type="file"] { flex: 1; min-width: 200px; }
+    .step-desc { font-size: 0.875rem; margin: 0.5rem 0; opacity: 0.8; }
+    .instructions { margin: 0.75rem 0; line-height: 1.8; }
+    .instructions-list { margin: 1rem 0; padding-left: 1.5rem; }
+    .instructions-list li { margin: 0.5rem 0; }
+    .uploaded-count { color: var(--success); font-weight: 500; margin: 0.5rem 0; }
+    .downloads { margin-bottom: 1rem; padding: 1rem; background: white; border-radius: 0.375rem; border: 1px solid var(--gray-200); }
+    .next-action { margin-top: 1rem; padding: 1.5rem; background: white; border-radius: 0.5rem; border: 2px solid var(--primary); text-align: center; }
+    .next-action p { margin-bottom: 1rem; }
+    .btn-large { padding: 0.75rem 2rem; font-size: 1rem; }
     @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
   </style>
 </body>

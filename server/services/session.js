@@ -26,49 +26,53 @@ const SESSION_EXPIRY = 4 * 60 * 60 * 1000;
 const WORKFLOW_STEPS = [
   {
     id: 'source',
-    name: 'Source Preparation',
-    description: 'Load CNXML source and generate markdown',
+    name: 'Undirbúningur',
+    description: 'Sækja CNXML og búa til Markdown',
     manual: false,
-    outputs: ['markdown', 'equations']
+    outputs: ['markdown', 'equations'],
+    instructionsIs: 'Kerfið sækir efni frá OpenStax og býr til .md og .xliff skrár.'
   },
   {
     id: 'mt-upload',
-    name: 'Machine Translation',
-    description: 'Upload to Erlendur MT and get translation',
+    name: 'Vélþýðing',
+    description: 'Senda í Erlendur MT og fá þýðingu',
     manual: true,
-    instructions: 'Download the markdown file and upload to malstadur.is for translation',
+    instructions: '1. Farðu á malstadur.is\n2. Hladdu upp .md skránum (ein í einu)\n3. Veldu enska→íslenska\n4. Sæktu þýddu skrárnar\n5. Hladdu þeim upp hér',
     inputs: ['mt-output'],
     outputs: ['translated-markdown']
   },
   {
     id: 'matecat-create',
-    name: 'Matecat Project',
-    description: 'Create Matecat project for alignment',
+    name: 'Matecat verkefni',
+    description: 'Búa til Matecat verkefni fyrir samræmingu',
     manual: false,
-    outputs: ['xliff', 'matecat-project']
+    outputs: ['xliff', 'matecat-project'],
+    instructionsIs: 'Kerfið býr til Matecat verkefni með .xliff skránum.'
   },
   {
     id: 'matecat-review',
-    name: 'Matecat Review',
-    description: 'Review and confirm translations in Matecat',
+    name: 'Matecat yfirferð',
+    description: 'Fara yfir og staðfesta þýðingar í Matecat',
     manual: true,
-    instructions: 'Review translations in Matecat and export when done',
+    instructions: '1. Opnaðu Matecat verkefnið\n2. Farðu yfir þýðingar og samþykktu/lagaðu\n3. Fluttu út XLIFF þegar lokið\n4. Hladdu XLIFF skránni upp hér',
     inputs: ['reviewed-xliff'],
     outputs: ['reviewed-xliff']
   },
   {
     id: 'issue-review',
-    name: 'Issue Review',
-    description: 'Review flagged issues and confirm changes',
+    name: 'Yfirferð atriða',
+    description: 'Fara yfir merkt atriði og staðfesta breytingar',
     manual: true,
+    instructions: 'Farðu yfir öll merkt atriði og samþykktu eða hafnaðu tillögum.',
     outputs: ['issues-resolved']
   },
   {
     id: 'finalize',
-    name: 'Finalize',
-    description: 'Generate final outputs and update status',
+    name: 'Frágangur',
+    description: 'Búa til lokaútgáfu og uppfæra stöðu',
     manual: false,
-    outputs: ['faithful-md', 'tmx', 'status-updated']
+    outputs: ['faithful-md', 'tmx', 'status-updated'],
+    instructionsIs: 'Kerfið býr til lokaútgáfu með jöfnum og uppfærir þýðingaminni.'
   }
 ];
 
@@ -79,6 +83,7 @@ function createSession(options) {
   const {
     book,
     chapter,
+    modules = [],
     sourceType = 'cnxml',
     userId,
     username
@@ -96,6 +101,7 @@ function createSession(options) {
     id: sessionId,
     book,
     chapter,
+    modules,
     sourceType,
     userId,
     username,
@@ -331,6 +337,7 @@ function listUserSessions(userId) {
         id: session.id,
         book: session.book,
         chapter: session.chapter,
+        modulesCount: session.modules?.length || 0,
         currentStep: session.steps[session.currentStep]?.name,
         progress: Math.round((session.currentStep / session.steps.length) * 100),
         createdAt: session.createdAt,

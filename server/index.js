@@ -40,6 +40,7 @@ const issuesRoutes = require('./routes/issues');
 const syncRoutes = require('./routes/sync');
 const imagesRoutes = require('./routes/images');
 const viewRoutes = require('./routes/views');
+const booksRoutes = require('./routes/books');
 
 // Configuration
 const PORT = process.env.PORT || 3000;
@@ -72,6 +73,7 @@ app.use('/api/matecat', matecatRoutes);
 
 // Phase 2 API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/books', booksRoutes);
 app.use('/api/workflow', workflowRoutes);
 app.use('/api/issues', issuesRoutes);
 app.use('/api/sync', syncRoutes);

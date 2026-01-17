@@ -29,7 +29,9 @@ const CONFIG = {
   githubOrg: process.env.GITHUB_ORG || 'namsbokasafn',
   jwtSecret: process.env.JWT_SECRET || 'development-secret-change-in-production',
   jwtExpiry: process.env.JWT_EXPIRY || '24h',
-  callbackUrl: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3000/api/auth/callback'
+  callbackUrl: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3000/api/auth/callback',
+  // Comma-separated list of GitHub usernames with admin access (useful for org owners)
+  adminUsers: (process.env.ADMIN_USERS || '').split(',').map(u => u.trim()).filter(Boolean)
 };
 
 // Role hierarchy
@@ -167,6 +169,11 @@ async function isOrgOwner(accessToken, username) {
  * Determine user role based on org membership and teams
  */
 async function determineUserRole(accessToken, username) {
+  // Check explicit admin list first (for org owners, useful when API check fails)
+  if (CONFIG.adminUsers.includes(username)) {
+    return { role: ROLES.ADMIN, books: [] };
+  }
+
   // Check if org member first
   const isMember = await checkOrgMembership(accessToken, username);
   if (!isMember) {

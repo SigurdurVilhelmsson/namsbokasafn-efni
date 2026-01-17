@@ -68,14 +68,12 @@ const upload = multer({
  * Create a new workflow session
  *
  * Body:
- *   - book: Book identifier (e.g., 'efnafraedi')
+ *   - book: Book identifier (e.g., 'chemistry-2e')
  *   - chapter: Chapter number
- *   - sourceType: 'cnxml' or 'moduleId'
- *   - moduleId: (optional) OpenStax module ID if sourceType is 'moduleId'
- *   - cnxmlFile: (optional) Uploaded CNXML file if sourceType is 'cnxml'
+ *   - modules: Array of module IDs to process (auto-populated from chapter selection)
  */
 router.post('/start', requireAuth, requireContributor(), async (req, res) => {
-  const { book, chapter, sourceType, moduleId } = req.body;
+  const { book, chapter, modules } = req.body;
 
   if (!book || !chapter) {
     return res.status(400).json({
@@ -84,10 +82,10 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
     });
   }
 
-  if (sourceType === 'moduleId' && !moduleId) {
+  if (!modules || !Array.isArray(modules) || modules.length === 0) {
     return res.status(400).json({
-      error: 'Missing moduleId',
-      message: 'moduleId is required when sourceType is moduleId'
+      error: 'Missing modules',
+      message: 'At least one module is required'
     });
   }
 
@@ -96,43 +94,66 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
     const newSession = session.createSession({
       book,
       chapter,
-      sourceType: sourceType || 'moduleId',
+      modules,
+      sourceType: 'modules',
       userId: req.user.id,
       username: req.user.username
     });
 
-    // If moduleId provided, start processing immediately
-    if (moduleId) {
-      const sessionData = session.getSession(newSession.sessionId);
+    const sessionData = session.getSession(newSession.sessionId);
 
-      // Update step status
-      session.updateStepStatus(newSession.sessionId, 'source', 'in-progress');
+    // Update step status
+    session.updateStepStatus(newSession.sessionId, 'source', 'in-progress');
 
-      // Run pipeline
-      const results = await pipelineRunner.run({
-        input: moduleId,
-        outputDir: sessionData.outputDir,
-        book,
-        verbose: false
+    // Process all modules
+    const allOutputs = [];
+    const errors = [];
+
+    for (const moduleId of modules) {
+      try {
+        console.log(`Processing module ${moduleId}...`);
+        const results = await pipelineRunner.run({
+          input: moduleId,
+          outputDir: sessionData.outputDir,
+          book,
+          verbose: false
+        });
+
+        if (results.success) {
+          for (const output of results.outputs) {
+            allOutputs.push({
+              moduleId,
+              ...output
+            });
+            // Store file reference with module prefix
+            session.storeFile(newSession.sessionId, `${moduleId}-${output.type}`, output.path, {
+              originalName: path.basename(output.path),
+              size: fs.statSync(output.path).size,
+              moduleId
+            });
+          }
+        } else {
+          errors.push({ moduleId, error: results.error });
+        }
+      } catch (moduleErr) {
+        errors.push({ moduleId, error: moduleErr.message });
+      }
+    }
+
+    // Update session status based on results
+    if (allOutputs.length > 0) {
+      session.updateStepStatus(newSession.sessionId, 'source', 'completed', {
+        outputs: allOutputs.map(o => `${o.moduleId}: ${o.type}`),
+        modulesProcessed: modules.length - errors.length,
+        errors: errors.length > 0 ? errors : undefined
       });
 
-      if (results.success) {
-        // Store file references
-        for (const output of results.outputs) {
-          session.storeFile(newSession.sessionId, output.type, output.path, {
-            originalName: path.basename(output.path),
-            size: fs.statSync(output.path).size
-          });
-        }
-
-        session.updateStepStatus(newSession.sessionId, 'source', 'completed', {
-          outputs: results.outputs.map(o => o.type)
-        });
-      } else {
-        session.updateStepStatus(newSession.sessionId, 'source', 'failed', {
-          error: results.error
-        });
-      }
+      // Don't auto-advance - let the UI control progression via download button
+    } else {
+      session.updateStepStatus(newSession.sessionId, 'source', 'failed', {
+        error: 'No modules processed successfully',
+        errors
+      });
     }
 
     // Get updated session
@@ -143,6 +164,9 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
       sessionId: newSession.sessionId,
       book,
       chapter,
+      modulesProcessed: modules.length - errors.length,
+      modulesTotal: modules.length,
+      errors: errors.length > 0 ? errors : undefined,
       steps: updatedSession.steps.map(s => ({
         id: s.id,
         name: s.name,
@@ -250,35 +274,25 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
     // Process based on step
     let processingResult = {};
 
-    if (step === 'mt-output') {
-      // MT output uploaded - analyze for issues
-      const content = fs.readFileSync(req.file.path, 'utf-8');
-      const issues = await classifyIssues(content, {
-        type: 'mt-output',
-        book: sessionData.book,
-        chapter: sessionData.chapter
-      });
+    // Count uploaded files for this step type
+    const uploadedFiles = Object.keys(sessionData.files).filter(k => k.startsWith('mt-') || k.includes('-mt-'));
+    const newUploadCount = uploadedFiles.length + 1;
 
-      // Add issues to session
-      for (const issue of issues) {
-        session.addIssue(sessionId, issue);
-      }
-
+    if (step === 'mt-upload' || step === 'mt-output') {
+      // MT output uploaded - store and count
       processingResult = {
-        issuesFound: issues.length,
-        autoFixed: issues.filter(i => i.category === 'AUTO_FIX').length,
-        needsReview: issues.filter(i => i.category !== 'AUTO_FIX').length
+        filesUploaded: newUploadCount,
+        message: `${newUploadCount} þýdd(ar) skrá(r) mótteknar`
       };
-
-      // Mark step complete
-      session.updateStepStatus(sessionId, 'mt-upload', 'completed', processingResult);
+      // Don't auto-complete - let user click "Proceed" when done
     }
 
-    if (step === 'reviewed-xliff') {
-      // Reviewed XLIFF uploaded - process for final output
-      session.updateStepStatus(sessionId, 'matecat-review', 'completed', {
-        xliffPath: req.file.path
-      });
+    if (step === 'reviewed-xliff' || step === 'matecat-review') {
+      // Reviewed XLIFF uploaded
+      processingResult = {
+        filesUploaded: 1,
+        message: 'XLIFF skrá móttekin'
+      };
     }
 
     const updatedSession = session.getSession(sessionId);
@@ -344,10 +358,13 @@ router.get('/:sessionId/download/:artifact', requireAuth, (req, res) => {
 
 /**
  * GET /api/workflow/:sessionId/download-all
- * Download all artifacts as ZIP
+ * Download artifacts as ZIP (optionally filtered by type)
+ * Query params:
+ *   - filter: 'md' | 'xliff' | 'json' (optional)
  */
 router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
   const { sessionId } = req.params;
+  const { filter } = req.query;
   const sessionData = session.getSession(sessionId);
 
   if (!sessionData) {
@@ -363,16 +380,25 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
   }
 
   try {
+    const filterSuffix = filter ? `-${filter}` : '';
     res.setHeader('Content-Type', 'application/zip');
-    res.setHeader('Content-Disposition', `attachment; filename=workflow-${sessionId}.zip`);
+    res.setHeader('Content-Disposition', `attachment; filename=workflow-${sessionId}${filterSuffix}.zip`);
 
     const archive = archiver('zip', { zlib: { level: 9 } });
     archive.pipe(res);
 
     for (const [type, file] of Object.entries(sessionData.files)) {
-      if (fs.existsSync(file.path)) {
-        archive.file(file.path, { name: file.originalName || path.basename(file.path) });
+      if (!fs.existsSync(file.path)) continue;
+
+      // Apply filter if specified
+      if (filter) {
+        const ext = path.extname(file.path).toLowerCase();
+        if (filter === 'md' && ext !== '.md') continue;
+        if (filter === 'xliff' && ext !== '.xliff' && ext !== '.xlf') continue;
+        if (filter === 'json' && ext !== '.json') continue;
       }
+
+      archive.file(file.path, { name: file.originalName || path.basename(file.path) });
     }
 
     await archive.finalize();
@@ -389,9 +415,13 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
 /**
  * POST /api/workflow/:sessionId/advance
  * Advance to the next step
+ *
+ * Body:
+ *   - markComplete: boolean - if true, mark current step as complete before advancing
  */
 router.post('/:sessionId/advance', requireAuth, async (req, res) => {
   const { sessionId } = req.params;
+  const { markComplete } = req.body || {};
   const sessionData = session.getSession(sessionId);
 
   if (!sessionData) {
@@ -407,6 +437,17 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
   }
 
   try {
+    // If markComplete is true, mark current step as complete first
+    if (markComplete) {
+      const currentStep = sessionData.steps[sessionData.currentStep];
+      if (currentStep && currentStep.status !== 'completed') {
+        session.updateStepStatus(sessionId, currentStep.id, 'completed', {
+          completedBy: req.user.username,
+          completedAt: new Date().toISOString()
+        });
+      }
+    }
+
     const result = session.advanceSession(sessionId);
 
     if (result.error) {

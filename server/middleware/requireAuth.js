@@ -7,6 +7,16 @@
 
 const { verifyToken } = require('../services/auth');
 
+// Test mode user for automated testing (only when TEST_MODE=true)
+const TEST_USER = {
+  id: 'test-user-id',
+  username: 'test-user',
+  name: 'Test User',
+  avatar: '',
+  role: 'admin',
+  books: []
+};
+
 /**
  * Require authentication middleware
  *
@@ -16,6 +26,12 @@ const { verifyToken } = require('../services/auth');
  *   });
  */
 function requireAuth(req, res, next) {
+  // Test mode - bypass auth for local automated testing
+  if (process.env.TEST_MODE === 'true') {
+    req.user = TEST_USER;
+    return next();
+  }
+
   // Check for token in cookie first, then Authorization header
   let token = req.cookies?.auth_token;
 
@@ -63,6 +79,12 @@ function requireAuth(req, res, next) {
  * Useful for endpoints that have different behavior for logged-in users.
  */
 function optionalAuth(req, res, next) {
+  // Test mode - bypass auth for local automated testing
+  if (process.env.TEST_MODE === 'true') {
+    req.user = TEST_USER;
+    return next();
+  }
+
   let token = req.cookies?.auth_token;
 
   if (!token) {

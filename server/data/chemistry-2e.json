@@ -1,0 +1,67 @@
+{
+  "book": "chemistry-2e",
+  "title": "Chemistry 2e",
+  "titleIs": "Efnafræði",
+  "repo": "openstax/osbooks-chemistry-bundle",
+  "preface": "m68662",
+  "chapters": [
+    {
+      "chapter": 1,
+      "title": "Essential Ideas",
+      "titleIs": "Grunnhugmyndir",
+      "modules": [
+        { "id": "m68663", "section": "intro", "title": "Introduction" },
+        { "id": "m68664", "section": "1.1", "title": "Chemistry in Context" },
+        { "id": "m68667", "section": "1.2", "title": "Phases and Classification of Matter" },
+        { "id": "m68670", "section": "1.3", "title": "Physical and Chemical Properties" },
+        { "id": "m68674", "section": "1.4", "title": "Measurements" },
+        { "id": "m68690", "section": "1.5", "title": "Measurement Uncertainty, Accuracy, and Precision" },
+        { "id": "m68683", "section": "1.6", "title": "Mathematical Treatment of Measurement Results" }
+      ]
+    },
+    {
+      "chapter": 2,
+      "title": "Atoms, Molecules, and Ions",
+      "titleIs": "Atóm, sameindir og jónir",
+      "modules": [
+        { "id": "m68684", "section": "intro", "title": "Introduction" },
+        { "id": "m68685", "section": "2.1", "title": "Early Ideas in Atomic Theory" },
+        { "id": "m68687", "section": "2.2", "title": "Evolution of Atomic Theory" },
+        { "id": "m68692", "section": "2.3", "title": "Atomic Structure and Symbolism" },
+        { "id": "m68693", "section": "2.4", "title": "Chemical Formulas" },
+        { "id": "m68695", "section": "2.5", "title": "The Periodic Table" },
+        { "id": "m68696", "section": "2.6", "title": "Ionic and Molecular Compounds" },
+        { "id": "m68698", "section": "2.7", "title": "Chemical Nomenclature" }
+      ]
+    },
+    {
+      "chapter": 3,
+      "title": "Composition of Substances and Solutions",
+      "titleIs": "Samsetning efna og lausna",
+      "modules": [
+        { "id": "m68699", "section": "intro", "title": "Introduction" },
+        { "id": "m68700", "section": "3.1", "title": "Formula Mass and the Mole Concept" },
+        { "id": "m68702", "section": "3.2", "title": "Determining Empirical and Molecular Formulas" },
+        { "id": "m68703", "section": "3.3", "title": "Molarity" },
+        { "id": "m68704", "section": "3.4", "title": "Other Units for Solution Concentrations" }
+      ]
+    },
+    {
+      "chapter": 4,
+      "title": "Stoichiometry of Chemical Reactions",
+      "titleIs": "Stökkfræði efnahvarfa",
+      "modules": [
+        { "id": "m68730", "section": "intro", "title": "Introduction" },
+        { "id": "m68709", "section": "4.1", "title": "Writing and Balancing Chemical Equations" },
+        { "id": "m68710", "section": "4.2", "title": "Classifying Chemical Reactions" },
+        { "id": "m68713", "section": "4.3", "title": "Reaction Stoichiometry" },
+        { "id": "m68714", "section": "4.4", "title": "Reaction Yields" },
+        { "id": "m68716", "section": "4.5", "title": "Quantitative Chemical Analysis" }
+      ]
+    }
+  ],
+  "notes": {
+    "supplementaryContent": "Key Terms, Key Equations, Summary, and Exercises are embedded within each section module. They are extracted from the CNXML content during processing, not stored as separate modules.",
+    "answerKey": "Answer keys are found at the end of the book, not in chapter modules."
+  }
+}
