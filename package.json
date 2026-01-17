@@ -10,7 +10,16 @@
     "add-frontmatter": "node tools/add-frontmatter.js",
     "process-chapter": "node tools/process-chapter.js",
     "extract-math": "node tools/cnxml-math-extract.js",
-    "replace-math": "node tools/replace-math-images.js"
+    "replace-math": "node tools/replace-math-images.js",
+    "cnxml-to-md": "node tools/cnxml-to-md.js",
+    "md-to-xliff": "node tools/md-to-xliff.js",
+    "xliff-to-tmx": "node tools/xliff-to-tmx.js",
+    "apply-equations": "node tools/apply-equations.js",
+    "pipeline": "node tools/pipeline-runner.js",
+    "openstax-fetch": "node tools/openstax-fetch.js",
+    "server": "cd server && npm start",
+    "server:dev": "cd server && npm run dev",
+    "server:install": "cd server && npm install"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
