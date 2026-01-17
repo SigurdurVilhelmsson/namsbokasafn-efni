@@ -26,6 +26,14 @@ const session = require('../services/session');
 const pipelineRunner = require('../../tools/pipeline-runner');
 const { classifyIssues } = require('../services/issueClassifier');
 
+// Re-export splitting functions for use in this module
+const {
+  checkFileSplitNeeded,
+  splitFileForErlendur,
+  recombineSplitFiles,
+  ERLENDUR_SOFT_LIMIT
+} = session;
+
 // Configure multer for workflow file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -127,8 +135,14 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
     // Process all modules
     const allOutputs = [];
     const errors = [];
+    const splitInfo = []; // Track which files need splitting
 
-    for (const moduleId of modules) {
+    for (const mod of modules) {
+      // Handle both { id, section, title } objects and plain strings
+      const moduleId = typeof mod === 'object' ? mod.id : mod;
+      const moduleSection = typeof mod === 'object' ? mod.section : null;
+      const moduleTitle = typeof mod === 'object' ? mod.title : null;
+
       try {
         console.log(`Processing module ${moduleId}...`);
         const results = await pipelineRunner.run({
@@ -140,16 +154,61 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
 
         if (results.success) {
           for (const output of results.outputs) {
+            // Check if markdown file needs splitting for Erlendur
+            let needsSplit = false;
+            let splitParts = [];
+
+            if (output.type === 'markdown' && output.path) {
+              const splitCheck = checkFileSplitNeeded(output.path);
+              needsSplit = splitCheck.needsSplit;
+
+              if (needsSplit && moduleSection) {
+                console.log(`File ${output.path} exceeds ${ERLENDUR_SOFT_LIMIT} chars (${splitCheck.charCount}), splitting...`);
+                splitParts = splitFileForErlendur(output.path, sessionData.outputDir, moduleSection);
+                splitInfo.push({
+                  moduleId,
+                  section: moduleSection,
+                  parts: splitParts.length,
+                  charCount: splitCheck.charCount
+                });
+              }
+            }
+
             allOutputs.push({
               moduleId,
+              section: moduleSection,
+              title: moduleTitle,
+              needsSplit,
+              splitParts: splitParts.length > 0 ? splitParts : undefined,
               ...output
             });
-            // Store file reference with module prefix
-            session.storeFile(newSession.sessionId, `${moduleId}-${output.type}`, output.path, {
+
+            // Store file reference with section-based name if available
+            const fileKey = moduleSection
+              ? `${moduleSection.replace('.', '-')}-${output.type}`
+              : `${moduleId}-${output.type}`;
+
+            session.storeFile(newSession.sessionId, fileKey, output.path, {
               originalName: path.basename(output.path),
               size: fs.statSync(output.path).size,
-              moduleId
+              moduleId,
+              section: moduleSection,
+              title: moduleTitle
             });
+
+            // Also store split parts if created
+            if (splitParts.length > 0) {
+              for (const part of splitParts) {
+                const partKey = `${moduleSection.replace('.', '-')}(${part.part})-${output.type}`;
+                session.storeFile(newSession.sessionId, partKey, part.path, {
+                  originalName: part.filename,
+                  size: fs.statSync(part.path).size,
+                  moduleId,
+                  section: moduleSection,
+                  part: part.part
+                });
+              }
+            }
           }
         } else {
           errors.push({ moduleId, error: results.error });
@@ -162,10 +221,15 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
     // Update session status based on results
     if (allOutputs.length > 0) {
       session.updateStepStatus(newSession.sessionId, 'source', 'completed', {
-        outputs: allOutputs.map(o => `${o.moduleId}: ${o.type}`),
+        outputs: allOutputs.map(o => `${o.section || o.moduleId}: ${o.type}`),
         modulesProcessed: modules.length - errors.length,
+        splitFiles: splitInfo.length > 0 ? splitInfo : undefined,
         errors: errors.length > 0 ? errors : undefined
       });
+
+      // Update expected files with split info (section-based naming)
+      const updatedExpected = buildExpectedFiles(allOutputs, splitInfo);
+      session.updateExpectedFiles(newSession.sessionId, 'mt-upload', updatedExpected);
 
       // Don't auto-advance - let the UI control progression via download button
     } else {
@@ -185,6 +249,7 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
       chapter,
       modulesProcessed: modules.length - errors.length,
       modulesTotal: modules.length,
+      splitFiles: splitInfo.length > 0 ? splitInfo : undefined,
       errors: errors.length > 0 ? errors : undefined,
       steps: updatedSession.steps.map(s => ({
         id: s.id,
@@ -727,6 +792,58 @@ async function runAutomaticStep(sessionId, stepId, sessionData) {
     });
     throw err;
   }
+}
+
+/**
+ * Build expected files list from processed outputs
+ * Handles split files by creating separate entries for each part
+ */
+function buildExpectedFiles(outputs, splitInfo) {
+  const expected = [];
+  const splitSections = new Map(splitInfo.map(s => [s.section, s.parts]));
+
+  for (const output of outputs) {
+    if (output.type !== 'markdown') continue;
+
+    const section = output.section;
+    const moduleId = output.moduleId;
+    const title = output.title;
+
+    // Check if this section has split files
+    const splitParts = splitSections.get(section);
+
+    if (splitParts && splitParts > 1) {
+      // Add an entry for each split part
+      for (let i = 0; i < splitParts; i++) {
+        const partLetter = String.fromCharCode(97 + i); // a, b, c...
+        expected.push({
+          moduleId,
+          section,
+          part: partLetter,
+          title: title ? `${title} (hluti ${partLetter})` : `Kafli ${section} (hluti ${partLetter})`,
+          displayName: section
+            ? `${section}(${partLetter}): ${title || moduleId}`
+            : `${moduleId}(${partLetter})`,
+          downloadName: `${section.replace('.', '-')}(${partLetter}).en.md`,
+          expectedUpload: `${section.replace('.', '-')}(${partLetter}).is.md`
+        });
+      }
+    } else {
+      // Single file, no splitting
+      expected.push({
+        moduleId,
+        section,
+        title,
+        displayName: section
+          ? `${section}: ${title || moduleId}`
+          : moduleId,
+        downloadName: section ? `${section.replace('.', '-')}.en.md` : `${moduleId}.en.md`,
+        expectedUpload: section ? `${section.replace('.', '-')}.is.md` : `${moduleId}.is.md`
+      });
+    }
+  }
+
+  return expected;
 }
 
 module.exports = router;

@@ -357,30 +357,73 @@
       const contentEl = document.getElementById('step-content');
 
       // Get upload progress from data
-      const progress = data.uploadProgress || { uploaded: 0, expected: 0, complete: false, missing: [] };
+      const progress = data.uploadProgress || { uploaded: 0, expected: 0, complete: false, missing: [], matchedFiles: [] };
       const expectedFiles = data.session?.expectedFiles?.['mt-upload'] || [];
       const uploadedFiles = data.session?.uploadedFiles?.['mt-upload'] || [];
+      const matchedFiles = progress.matchedFiles || [];
 
-      // Create file checklist - match by section
-      const uploadedSections = uploadedFiles.map(f => f.section).filter(Boolean);
-      const uploadedModules = uploadedFiles.map(f => f.moduleId).filter(Boolean);
+      // Create a lookup for matched uploads (by section+part or section)
+      const matchedKeys = new Set();
+      for (const m of matchedFiles) {
+        if (m.section && m.part) {
+          matchedKeys.add(m.section + ':' + m.part);
+        } else if (m.section) {
+          matchedKeys.add(m.section);
+        } else if (m.moduleId) {
+          matchedKeys.add(m.moduleId);
+        }
+      }
+
+      // Create file checklist with friendly names
       let checklistHtml = '';
       if (expectedFiles.length > 0) {
         checklistHtml = '<div class="file-checklist"><h4>Skrár sem þarf að hlaða upp:</h4><ul class="checklist">';
         for (const exp of expectedFiles) {
-          // Expected can be object or legacy string
+          // Expected is object with section, part, displayName, downloadName, expectedUpload
           const section = typeof exp === 'object' ? exp.section : null;
-          const moduleId = typeof exp === 'object' ? exp.moduleId : (exp.match(/(m\d+)/)?.[1]);
+          const part = typeof exp === 'object' ? exp.part : null;
+          const moduleId = typeof exp === 'object' ? exp.moduleId : (exp.match && exp.match(/(m\d+)/)?.[1]);
           const displayName = typeof exp === 'object' ? exp.displayName : exp;
+          const downloadName = typeof exp === 'object' ? exp.downloadName : null;
+          const expectedUpload = typeof exp === 'object' ? exp.expectedUpload : null;
 
-          // Check if uploaded (by section first, then moduleId)
-          const isUploaded = (section && uploadedSections.includes(section)) ||
-                            (moduleId && uploadedModules.includes(moduleId));
+          // Check if uploaded (by section+part, section, or moduleId)
+          let key = null;
+          if (section && part) {
+            key = section + ':' + part;
+          } else if (section) {
+            key = section;
+          } else if (moduleId) {
+            key = moduleId;
+          }
+          const isUploaded = key && matchedKeys.has(key);
           const icon = isUploaded ? '✓' : '○';
           const cls = isUploaded ? 'uploaded' : 'pending';
-          checklistHtml += '<li class="checklist-item ' + cls + '"><span class="check-icon">' + icon + '</span> ' + escapeHtml(displayName) + '</li>';
+
+          // Show download name and expected upload name for clarity
+          let fileInfo = escapeHtml(displayName);
+          if (downloadName) {
+            fileInfo += '<br><small class="file-names">Niðurhal: <code>' + escapeHtml(downloadName) + '</code>';
+            if (expectedUpload) {
+              fileInfo += ' → Upphal: <code>' + escapeHtml(expectedUpload) + '</code>';
+            }
+            fileInfo += '</small>';
+          }
+
+          checklistHtml += '<li class="checklist-item ' + cls + '"><span class="check-icon">' + icon + '</span><span class="file-info">' + fileInfo + '</span></li>';
         }
         checklistHtml += '</ul></div>';
+      }
+
+      // Show warning if split files
+      const hasSplitFiles = expectedFiles.some(exp => exp.part);
+      let splitWarning = '';
+      if (hasSplitFiles) {
+        splitWarning = '<div class="alert alert-warning" style="margin-bottom: 1rem;">' +
+          '<strong>⚠️ Stórar skrár skipt upp</strong><br>' +
+          'Sumar skrár voru of stórar fyrir Erlendur (>18.000 stafir) og hafa verið skiptar í hluta. ' +
+          'Þýddu hvern hluta fyrir sig og hladdu þeim öllum upp.' +
+          '</div>';
       }
 
       // Progress summary
@@ -395,6 +438,7 @@
       contentEl.innerHTML =
         '<div class="alert alert-info">' +
         '<strong>Skref 2: Vélþýðing</strong>' +
+        splitWarning +
         '<ol class="instructions-list">' +
         '<li>Farðu á <a href="https://malstadur.is" target="_blank">malstadur.is</a></li>' +
         '<li>Hladdu upp .md skránum (ein í einu)</li>' +
@@ -610,6 +654,9 @@
     .checklist-item.uploaded .check-icon { color: var(--success); }
     .progress-summary { margin: 0.75rem 0; padding: 0.75rem; background: white; border-radius: 0.375rem; border: 1px solid var(--gray-200); }
     .text-success { color: var(--success); }
+    .file-names { display: block; margin-top: 0.25rem; color: var(--gray-500); }
+    .file-names code { background: var(--gray-200); padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.7rem; }
+    .file-info { flex: 1; }
     /* Warning alert and dialog */
     .alert-warning { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
     .alert-warning h3 { font-size: 1rem; margin-bottom: 0.5rem; }

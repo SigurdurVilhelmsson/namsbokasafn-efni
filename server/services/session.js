@@ -69,6 +69,12 @@ db.exec(`
 // Session expiry time (4 hours)
 const SESSION_EXPIRY = 4 * 60 * 60 * 1000;
 
+// Erlendur MT character limit (20,000 characters)
+const ERLENDUR_CHAR_LIMIT = 20000;
+
+// Soft limit to allow some buffer
+const ERLENDUR_SOFT_LIMIT = 18000;
+
 // Workflow steps in order
 const WORKFLOW_STEPS = [
   {
@@ -456,31 +462,67 @@ function extractSectionFromFilename(filename) {
 }
 
 /**
- * Parse YAML frontmatter from markdown content
- * Returns object with title, section, module, lang if present
+ * Parse metadata from markdown content
+ * Supports two formats:
+ * 1. YAML frontmatter: ---\ntitle: "..."\nsection: "..."\n---
+ * 2. Erlendur MT format: ## titill: „..." kafli: „..." eining: „..." tungumál: „..."
  */
 function parseMarkdownFrontmatter(content) {
-  const frontmatterMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
-  if (!frontmatterMatch) return null;
-
-  const frontmatter = frontmatterMatch[1];
-  const result = {};
-
-  // Parse simple YAML key: "value" pairs
-  const lines = frontmatter.split('\n');
-  for (const line of lines) {
-    const match = line.match(/^(\w+):\s*"?([^"]*)"?\s*$/);
-    if (match) {
-      result[match[1]] = match[2];
+  // Try standard YAML frontmatter first
+  const yamlMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
+  if (yamlMatch) {
+    const frontmatter = yamlMatch[1];
+    const result = {};
+    const lines = frontmatter.split('\n');
+    for (const line of lines) {
+      const match = line.match(/^(\w+):\s*"?([^"]*)"?\s*$/);
+      if (match) {
+        result[match[1]] = match[2];
+      }
+    }
+    if (Object.keys(result).length > 0) {
+      return result;
     }
   }
 
-  return result;
+  // Try Erlendur MT format: ## titill: „..." kafli: „..." eining: „..." tungumál: „..." [hluti: „..."]
+  // The format uses Icelandic quotation marks „..."
+  const erlendurMatch = content.match(/^##\s*titill:\s*[„"]([^""„]+)[""„]\s*kafli:\s*[„"]([^""„]+)[""„]\s*eining:\s*[„"]([^""„]+)[""„]\s*tungumál:\s*[„"]([^""„]+)[""„](?:\s*hluti:\s*[„"]([^""„]+)[""„])?/m);
+  if (erlendurMatch) {
+    const result = {
+      title: erlendurMatch[1],
+      section: erlendurMatch[2],
+      module: erlendurMatch[3],
+      lang: erlendurMatch[4]
+    };
+    if (erlendurMatch[5]) {
+      result.part = erlendurMatch[5];
+    }
+    return result;
+  }
+
+  // Try a more lenient Erlendur format (in case of variations)
+  const lenientMatch = content.match(/kafli:\s*[„""']?(\d+\.\d+)[„""']?/i);
+  if (lenientMatch) {
+    const result = { section: lenientMatch[1] };
+
+    // Try to extract module
+    const moduleMatch = content.match(/eining:\s*[„""']?(m\d+)[„""']?/i);
+    if (moduleMatch) result.module = moduleMatch[1];
+
+    // Try to extract title
+    const titleMatch = content.match(/titill:\s*[„""']?([^„""'\n]+)[„""']?/i);
+    if (titleMatch) result.title = titleMatch[1].trim();
+
+    return result;
+  }
+
+  return null;
 }
 
 /**
  * Identify uploaded file by parsing its content
- * Returns { section, module, title } or null
+ * Returns { section, module, title, part } or null
  */
 function identifyUploadedFile(filePath) {
   try {
@@ -491,7 +533,8 @@ function identifyUploadedFile(filePath) {
         section: metadata.section,
         module: metadata.module,
         title: metadata.title,
-        lang: metadata.lang
+        lang: metadata.lang,
+        part: metadata.part // For split files
       };
     }
   } catch (err) {
@@ -501,40 +544,266 @@ function identifyUploadedFile(filePath) {
 }
 
 /**
+ * Split content at paragraph boundaries to stay under character limit
+ * Returns array of { content, part } objects
+ */
+function splitContentForErlendur(content, metadata) {
+  if (content.length <= ERLENDUR_SOFT_LIMIT) {
+    return [{ content, part: null }];
+  }
+
+  const parts = [];
+  const paragraphs = content.split(/\n\n+/);
+  let currentPart = [];
+  let currentLength = 0;
+  let partIndex = 0;
+
+  // Generate header for split files
+  const makeHeader = (partLetter) => {
+    if (metadata) {
+      // Erlendur format with part indicator
+      return `## titill: „${metadata.title || 'Unknown'}" kafli: „${metadata.section}" eining: „${metadata.module}" tungumál: „en" hluti: „${partLetter}"\n\n`;
+    }
+    return `<!-- Part ${partLetter} -->\n\n`;
+  };
+
+  for (const para of paragraphs) {
+    const paraLength = para.length + 2; // +2 for \n\n
+
+    if (currentLength + paraLength > ERLENDUR_SOFT_LIMIT && currentPart.length > 0) {
+      // Save current part and start new one
+      const partLetter = String.fromCharCode(97 + partIndex); // a, b, c...
+      parts.push({
+        content: makeHeader(partLetter) + currentPart.join('\n\n'),
+        part: partLetter
+      });
+      currentPart = [para];
+      currentLength = paraLength;
+      partIndex++;
+    } else {
+      currentPart.push(para);
+      currentLength += paraLength;
+    }
+  }
+
+  // Add final part
+  if (currentPart.length > 0) {
+    const partLetter = String.fromCharCode(97 + partIndex);
+    if (parts.length > 0) {
+      parts.push({
+        content: makeHeader(partLetter) + currentPart.join('\n\n'),
+        part: partLetter
+      });
+    } else {
+      // No splitting needed after all
+      parts.push({ content: currentPart.join('\n\n'), part: null });
+    }
+  }
+
+  return parts;
+}
+
+/**
+ * Check if a file needs splitting for Erlendur MT
+ * Returns { needsSplit, charCount, estimatedParts }
+ */
+function checkFileSplitNeeded(filePath) {
+  try {
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const charCount = content.length;
+    const needsSplit = charCount > ERLENDUR_SOFT_LIMIT;
+    const estimatedParts = needsSplit
+      ? Math.ceil(charCount / ERLENDUR_SOFT_LIMIT)
+      : 1;
+
+    return { needsSplit, charCount, estimatedParts };
+  } catch (err) {
+    console.error(`Failed to check file ${filePath}:`, err.message);
+    return { needsSplit: false, charCount: 0, estimatedParts: 1 };
+  }
+}
+
+/**
+ * Split a markdown file into multiple parts for Erlendur MT
+ * Returns array of { filename, path, part } objects
+ */
+function splitFileForErlendur(filePath, outputDir, section) {
+  const content = fs.readFileSync(filePath, 'utf-8');
+  const metadata = parseMarkdownFrontmatter(content);
+
+  // Remove the header from content if present (we'll add new headers)
+  let bodyContent = content;
+  if (content.startsWith('##')) {
+    const headerEnd = content.indexOf('\n\n');
+    if (headerEnd > 0) {
+      bodyContent = content.substring(headerEnd + 2);
+    }
+  }
+
+  const parts = splitContentForErlendur(bodyContent, metadata || { section, title: '', module: '' });
+
+  if (parts.length === 1 && parts[0].part === null) {
+    // No splitting needed
+    return [{ filename: `${section.replace('.', '-')}.en.md`, path: filePath, part: null }];
+  }
+
+  const result = [];
+  for (const { content: partContent, part } of parts) {
+    const filename = `${section.replace('.', '-')}(${part}).en.md`;
+    const partPath = path.join(outputDir, filename);
+    fs.writeFileSync(partPath, partContent, 'utf-8');
+    result.push({ filename, path: partPath, part });
+  }
+
+  return result;
+}
+
+/**
+ * Recombine split translated files into a single file
+ * Expects uploads with matching section and sequential part letters (a, b, c...)
+ */
+function recombineSplitFiles(uploads, outputDir, section) {
+  // Sort uploads by part letter
+  const sortedUploads = uploads
+    .filter(u => u.section === section && u.part)
+    .sort((a, b) => (a.part || '').localeCompare(b.part || ''));
+
+  if (sortedUploads.length === 0) {
+    return null;
+  }
+
+  const combinedParts = [];
+  for (const upload of sortedUploads) {
+    try {
+      let content = fs.readFileSync(upload.filePath, 'utf-8');
+
+      // Remove part header from Erlendur output
+      const headerMatch = content.match(/^##\s*titill:.*?hluti:.*?\n\n/);
+      if (headerMatch) {
+        content = content.substring(headerMatch[0].length);
+      }
+
+      combinedParts.push(content);
+    } catch (err) {
+      console.error(`Failed to read split file ${upload.filePath}:`, err.message);
+    }
+  }
+
+  if (combinedParts.length === 0) {
+    return null;
+  }
+
+  // Create combined file with proper header
+  const firstUpload = sortedUploads[0];
+  const header = `## titill: „${firstUpload.title || ''}" kafli: „${section}" eining: „${firstUpload.moduleId || ''}" tungumál: „is"\n\n`;
+  const combinedContent = header + combinedParts.join('\n\n');
+
+  const outputPath = path.join(outputDir, `${section.replace('.', '-')}.is.md`);
+  fs.writeFileSync(outputPath, combinedContent, 'utf-8');
+
+  return { path: outputPath, section };
+}
+
+/**
  * Get upload progress for a workflow step
+ * Only counts uploads that match expected files (by section+part or moduleId)
  */
 function getUploadProgress(sessionId, stepId) {
-  const session = getSession(sessionId);
-  if (!session) return null;
+  const sess = getSession(sessionId);
+  if (!sess) return null;
 
-  const expected = session.expectedFiles[stepId] || [];
-  const uploaded = session.uploadedFiles[stepId] || [];
+  const expected = sess.expectedFiles[stepId] || [];
+  const uploaded = sess.uploadedFiles[stepId] || [];
 
-  // Find which expected files have been uploaded (match by section or moduleId)
-  const uploadedSections = uploaded.map(u => u.section).filter(Boolean);
-  const uploadedModules = uploaded.map(u => u.moduleId).filter(Boolean);
+  // Create a key for matching: section+part or just section or moduleId
+  const makeKey = (obj) => {
+    if (obj.section && obj.part) return `${obj.section}:${obj.part}`;
+    if (obj.section) return obj.section;
+    if (obj.moduleId) return obj.moduleId;
+    return null;
+  };
 
-  const missing = expected.filter(exp => {
-    // Expected can be object with section/moduleId or legacy string
-    if (typeof exp === 'object') {
-      // Match by section first, then by moduleId
-      if (exp.section && uploadedSections.includes(exp.section)) return false;
-      if (exp.moduleId && uploadedModules.includes(exp.moduleId)) return false;
-      return true;
+  // Find which uploads actually match expected files
+  const matchedUploads = [];
+  const unmatchedUploads = [];
+  const matchedKeys = new Set();
+
+  for (const up of uploaded) {
+    let matched = false;
+    let matchedExp = null;
+
+    for (const exp of expected) {
+      if (typeof exp === 'object') {
+        // For split files, must match both section AND part
+        if (exp.part && up.part) {
+          if (exp.section === up.section && exp.part === up.part) {
+            matched = true;
+            matchedExp = exp;
+            break;
+          }
+        }
+        // For non-split files, match by section or moduleId
+        else if (!exp.part && !up.part) {
+          if (exp.section && up.section === exp.section) {
+            matched = true;
+            matchedExp = exp;
+            break;
+          }
+          if (exp.moduleId && up.moduleId === exp.moduleId) {
+            matched = true;
+            matchedExp = exp;
+            break;
+          }
+        }
+      } else {
+        // Legacy: string filename
+        const moduleId = extractModuleId(exp);
+        if (moduleId && up.moduleId === moduleId) {
+          matched = true;
+          matchedExp = { moduleId };
+          break;
+        }
+      }
     }
-    // Legacy: string filename - match by moduleId
-    const moduleId = extractModuleId(exp);
-    return !uploadedModules.includes(moduleId);
+
+    if (matched) {
+      matchedUploads.push({ ...up, matchedExpected: matchedExp });
+      matchedKeys.add(makeKey(matchedExp));
+    } else {
+      unmatchedUploads.push(up);
+    }
+  }
+
+  // Find missing expected files
+  const missing = expected.filter(exp => {
+    const key = typeof exp === 'object' ? makeKey(exp) : extractModuleId(exp);
+    return !matchedKeys.has(key);
   });
 
   return {
     expected: expected.length,
-    uploaded: uploaded.length,
-    complete: uploaded.length >= expected.length,
+    uploaded: matchedKeys.size,
+    complete: missing.length === 0,
     missing,
+    matchedFiles: matchedUploads,
+    unmatchedFiles: unmatchedUploads,
     uploadedFiles: uploaded,
     expectedFiles: expected
   };
+}
+
+/**
+ * Update expected files for a workflow step
+ */
+function updateExpectedFiles(sessionId, stepId, expectedFiles) {
+  const sess = getSession(sessionId);
+  if (!sess) return null;
+
+  sess.expectedFiles[stepId] = expectedFiles;
+  sess.updatedAt = new Date().toISOString();
+  saveSession(sess);
+
+  return sess.expectedFiles[stepId];
 }
 
 /**
@@ -542,11 +811,11 @@ function getUploadProgress(sessionId, stepId) {
  * Parses the uploaded file to identify it by metadata
  */
 function recordUpload(sessionId, stepId, filename, filePath) {
-  const session = getSession(sessionId);
-  if (!session) return null;
+  const sess = getSession(sessionId);
+  if (!sess) return null;
 
-  if (!session.uploadedFiles[stepId]) {
-    session.uploadedFiles[stepId] = [];
+  if (!sess.uploadedFiles[stepId]) {
+    sess.uploadedFiles[stepId] = [];
   }
 
   // Try to identify the file by parsing its content
@@ -559,18 +828,27 @@ function recordUpload(sessionId, stepId, filename, filePath) {
   const moduleIdFromName = extractModuleId(filename);
   const sectionFromName = extractSectionFromFilename(filename);
 
+  // Check for part indicator in filename (e.g., "1-1(a).is.md")
+  let partFromName = null;
+  const partMatch = filename.match(/\(([a-z])\)\./i);
+  if (partMatch) {
+    partFromName = partMatch[1].toLowerCase();
+  }
+
   const uploadRecord = {
     filename,
+    filePath, // Store path for recombination
     section: metadata?.section || sectionFromName,
     moduleId: metadata?.module || moduleIdFromName,
     title: metadata?.title,
+    part: metadata?.part || partFromName, // For split files
     uploadedAt: new Date().toISOString()
   };
 
-  session.uploadedFiles[stepId].push(uploadRecord);
+  sess.uploadedFiles[stepId].push(uploadRecord);
 
-  session.updatedAt = new Date().toISOString();
-  saveSession(session);
+  sess.updatedAt = new Date().toISOString();
+  saveSession(sess);
 
   return getUploadProgress(sessionId, stepId);
 }
@@ -748,6 +1026,8 @@ function getDbStats() {
 
 module.exports = {
   WORKFLOW_STEPS,
+  ERLENDUR_CHAR_LIMIT,
+  ERLENDUR_SOFT_LIMIT,
   createSession,
   getSession,
   updateStepStatus,
@@ -756,8 +1036,15 @@ module.exports = {
   getFile,
   findActiveWorkflow,
   getUploadProgress,
+  updateExpectedFiles,
   recordUpload,
   extractModuleId,
+  extractSectionFromFilename,
+  parseMarkdownFrontmatter,
+  identifyUploadedFile,
+  checkFileSplitNeeded,
+  splitFileForErlendur,
+  recombineSplitFiles,
   addIssue,
   resolveIssue,
   getPendingIssues,
