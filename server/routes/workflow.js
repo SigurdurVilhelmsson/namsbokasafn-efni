@@ -89,6 +89,25 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
     });
   }
 
+  // Check for existing active workflow for this book/chapter
+  const existing = session.findActiveWorkflow(book, chapter);
+  if (existing) {
+    const progress = session.getUploadProgress(existing.id, 'mt-upload');
+    return res.status(409).json({
+      error: 'Workflow already exists',
+      message: `Verkflæði fyrir ${book} kafla ${chapter} er þegar í gangi`,
+      existingSession: {
+        id: existing.id,
+        startedBy: existing.username,
+        startedAt: existing.createdAt,
+        currentStep: existing.steps[existing.currentStep]?.name,
+        progress: progress
+      },
+      action: 'join',
+      joinUrl: `/workflow?session=${existing.id}`
+    });
+  }
+
   try {
     // Create session
     const newSession = session.createSession({
@@ -242,11 +261,19 @@ router.get('/:sessionId', requireAuth, (req, res) => {
     });
   }
 
+  // Get upload progress for current step if applicable
+  const currentStepData = sessionData.steps[sessionData.currentStep];
+  let uploadProgress = null;
+  if (currentStepData && currentStepData.id === 'mt-upload') {
+    uploadProgress = session.getUploadProgress(sessionId, 'mt-upload');
+  }
+
   res.json({
     session: {
       id: sessionData.id,
       book: sessionData.book,
       chapter: sessionData.chapter,
+      modules: sessionData.modules,
       status: sessionData.status,
       currentStep: sessionData.currentStep,
       steps: sessionData.steps.map(s => ({
@@ -262,10 +289,13 @@ router.get('/:sessionId', requireAuth, (req, res) => {
       })),
       issues: sessionData.issues,
       files: Object.keys(sessionData.files),
+      expectedFiles: sessionData.expectedFiles,
+      uploadedFiles: sessionData.uploadedFiles,
       createdAt: sessionData.createdAt,
       updatedAt: sessionData.updatedAt,
       expiresAt: sessionData.expiresAt
     },
+    uploadProgress,
     downloads: getDownloadLinks(sessionId, sessionData),
     actions: getAvailableActions(sessionData)
   });
@@ -298,26 +328,32 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
   }
 
   try {
-    // Store file
-    session.storeFile(sessionId, step, req.file.path, {
+    // Extract module ID from filename (e.g., "m68663.is.md" → "m68663")
+    const moduleId = session.extractModuleId(req.file.originalname);
+
+    // Store file with module reference
+    const fileKey = moduleId ? `${step}-${moduleId}` : `${step}-${Date.now()}`;
+    session.storeFile(sessionId, fileKey, req.file.path, {
       originalName: req.file.originalname,
-      size: req.file.size
+      size: req.file.size,
+      moduleId
     });
+
+    // Record the upload for progress tracking
+    const progress = session.recordUpload(sessionId, step, req.file.originalname, moduleId);
 
     // Process based on step
     let processingResult = {};
 
-    // Count uploaded files for this step type
-    const uploadedFiles = Object.keys(sessionData.files).filter(k => k.startsWith('mt-') || k.includes('-mt-'));
-    const newUploadCount = uploadedFiles.length + 1;
-
     if (step === 'mt-upload' || step === 'mt-output') {
-      // MT output uploaded - store and count
+      // MT output uploaded - track progress
       processingResult = {
-        filesUploaded: newUploadCount,
-        message: `${newUploadCount} þýdd(ar) skrá(r) mótteknar`
+        filesUploaded: progress.uploaded,
+        filesExpected: progress.expected,
+        complete: progress.complete,
+        missing: progress.missing,
+        message: `${progress.uploaded}/${progress.expected} þýdd(ar) skrá(r) mótteknar`
       };
-      // Don't auto-complete - let user click "Proceed" when done
     }
 
     if (step === 'reviewed-xliff' || step === 'matecat-review') {
@@ -335,7 +371,14 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       step,
       file: {
         name: req.file.originalname,
-        size: req.file.size
+        size: req.file.size,
+        moduleId
+      },
+      progress: {
+        uploaded: progress.uploaded,
+        expected: progress.expected,
+        complete: progress.complete,
+        remaining: progress.missing
       },
       processing: processingResult,
       session: {
@@ -470,9 +513,28 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
   }
 
   try {
+    const currentStep = sessionData.steps[sessionData.currentStep];
+
+    // For MT upload step, check all files are uploaded before allowing advance
+    if (currentStep && currentStep.id === 'mt-upload') {
+      const progress = session.getUploadProgress(sessionId, 'mt-upload');
+      if (progress && !progress.complete) {
+        return res.status(400).json({
+          error: 'Cannot advance',
+          message: `Ekki hægt að halda áfram: ${progress.uploaded}/${progress.expected} skrár hlaðið upp`,
+          messageEn: `Upload incomplete: ${progress.uploaded}/${progress.expected} files`,
+          missing: progress.missing,
+          progress: {
+            uploaded: progress.uploaded,
+            expected: progress.expected,
+            complete: progress.complete
+          }
+        });
+      }
+    }
+
     // If markComplete is true, mark current step as complete first
     if (markComplete) {
-      const currentStep = sessionData.steps[sessionData.currentStep];
       if (currentStep && currentStep.status !== 'completed') {
         session.updateStepStatus(sessionId, currentStep.id, 'completed', {
           completedBy: req.user.username,
@@ -505,10 +567,10 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
 
     // If next step is automatic, run it
     const updatedSession = session.getSession(sessionId);
-    const currentStep = updatedSession.steps[updatedSession.currentStep];
+    const nextStep = updatedSession.steps[updatedSession.currentStep];
 
-    if (!currentStep.manual) {
-      await runAutomaticStep(sessionId, currentStep.id, updatedSession);
+    if (!nextStep.manual) {
+      await runAutomaticStep(sessionId, nextStep.id, updatedSession);
     }
 
     const finalSession = session.getSession(sessionId);

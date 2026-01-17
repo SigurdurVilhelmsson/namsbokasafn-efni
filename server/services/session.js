@@ -10,14 +10,61 @@
  * 2. Upload/process files for each step
  * 3. Advance through steps
  * 4. Complete or abandon session
+ *
+ * Storage: SQLite database for persistence across server restarts
  */
 
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
+const Database = require('better-sqlite3');
 
-// Session storage (in-memory for development, would use Redis in production)
-const sessions = new Map();
+// Database path - stored in pipeline-output directory
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+
+// Ensure directory exists
+const dbDir = path.dirname(DB_PATH);
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
+}
+
+// Initialize database
+const db = new Database(DB_PATH);
+
+// Enable WAL mode for better concurrent access
+db.pragma('journal_mode = WAL');
+
+// Create tables if they don't exist
+db.exec(`
+  CREATE TABLE IF NOT EXISTS sessions (
+    id TEXT PRIMARY KEY,
+    book TEXT NOT NULL,
+    chapter INTEGER NOT NULL,
+    modules TEXT NOT NULL,
+    source_type TEXT NOT NULL,
+    user_id TEXT,
+    username TEXT,
+    status TEXT NOT NULL DEFAULT 'active',
+    current_step INTEGER NOT NULL DEFAULT 0,
+    steps TEXT NOT NULL,
+    files TEXT NOT NULL DEFAULT '{}',
+    expected_files TEXT NOT NULL DEFAULT '{}',
+    uploaded_files TEXT NOT NULL DEFAULT '{}',
+    issues TEXT NOT NULL DEFAULT '[]',
+    output_dir TEXT NOT NULL,
+    cancel_reason TEXT,
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    completed_at TEXT,
+    cancelled_at TEXT,
+    expires_at TEXT NOT NULL
+  );
+
+  CREATE INDEX IF NOT EXISTS idx_sessions_book_chapter ON sessions(book, chapter);
+  CREATE INDEX IF NOT EXISTS idx_sessions_user_id ON sessions(user_id);
+  CREATE INDEX IF NOT EXISTS idx_sessions_status ON sessions(status);
+  CREATE INDEX IF NOT EXISTS idx_sessions_expires_at ON sessions(expires_at);
+`);
 
 // Session expiry time (4 hours)
 const SESSION_EXPIRY = 4 * 60 * 60 * 1000;
@@ -76,6 +123,99 @@ const WORKFLOW_STEPS = [
   }
 ];
 
+// Prepared statements for better performance
+const statements = {
+  insert: db.prepare(`
+    INSERT INTO sessions (id, book, chapter, modules, source_type, user_id, username, status, current_step, steps, files, expected_files, uploaded_files, issues, output_dir, created_at, updated_at, expires_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `),
+  getById: db.prepare('SELECT * FROM sessions WHERE id = ?'),
+  getByBookChapter: db.prepare('SELECT * FROM sessions WHERE book = ? AND chapter = ? AND status = ?'),
+  update: db.prepare(`
+    UPDATE sessions SET
+      status = ?, current_step = ?, steps = ?, files = ?, expected_files = ?, uploaded_files = ?, issues = ?,
+      cancel_reason = ?, updated_at = ?, completed_at = ?, cancelled_at = ?, expires_at = ?
+    WHERE id = ?
+  `),
+  listByUser: db.prepare('SELECT * FROM sessions WHERE user_id = ? AND status = ? ORDER BY updated_at DESC'),
+  listAll: db.prepare('SELECT * FROM sessions WHERE status = ? ORDER BY updated_at DESC'),
+  deleteExpired: db.prepare('DELETE FROM sessions WHERE expires_at < ?'),
+  getExpired: db.prepare('SELECT * FROM sessions WHERE expires_at < ?')
+};
+
+/**
+ * Convert database row to session object
+ */
+function rowToSession(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    book: row.book,
+    chapter: row.chapter,
+    modules: JSON.parse(row.modules),
+    sourceType: row.source_type,
+    userId: row.user_id,
+    username: row.username,
+    status: row.status,
+    currentStep: row.current_step,
+    steps: JSON.parse(row.steps),
+    files: JSON.parse(row.files),
+    expectedFiles: JSON.parse(row.expected_files),
+    uploadedFiles: JSON.parse(row.uploaded_files),
+    issues: JSON.parse(row.issues),
+    outputDir: row.output_dir,
+    cancelReason: row.cancel_reason,
+    createdAt: row.created_at,
+    updatedAt: row.updated_at,
+    completedAt: row.completed_at,
+    cancelledAt: row.cancelled_at,
+    expiresAt: row.expires_at
+  };
+}
+
+/**
+ * Save session to database
+ */
+function saveSession(session) {
+  statements.update.run(
+    session.status,
+    session.currentStep,
+    JSON.stringify(session.steps),
+    JSON.stringify(session.files),
+    JSON.stringify(session.expectedFiles),
+    JSON.stringify(session.uploadedFiles),
+    JSON.stringify(session.issues),
+    session.cancelReason || null,
+    session.updatedAt,
+    session.completedAt || null,
+    session.cancelledAt || null,
+    session.expiresAt,
+    session.id
+  );
+}
+
+/**
+ * Find active workflow for a book/chapter combination
+ * Returns the session if an active workflow exists, null otherwise
+ */
+function findActiveWorkflow(book, chapter) {
+  const row = statements.getByBookChapter.get(book, chapter, 'active');
+  if (!row) return null;
+
+  const session = rowToSession(row);
+
+  // Check if expired
+  if (new Date(session.expiresAt) < new Date()) {
+    // Mark as expired
+    session.status = 'expired';
+    session.updatedAt = new Date().toISOString();
+    saveSession(session);
+    return null;
+  }
+
+  return session;
+}
+
 /**
  * Create a new workflow session
  */
@@ -97,44 +237,58 @@ function createSession(options) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const session = {
-    id: sessionId,
+  const now = new Date().toISOString();
+  const expiresAt = new Date(Date.now() + SESSION_EXPIRY).toISOString();
+
+  const steps = WORKFLOW_STEPS.map(step => ({
+    ...step,
+    status: 'pending',
+    startedAt: null,
+    completedAt: null,
+    data: {},
+    issues: []
+  }));
+
+  const expectedFiles = {
+    'mt-upload': modules.map(m => `${m}.is.md`)
+  };
+
+  const uploadedFiles = {
+    'mt-upload': []
+  };
+
+  // Insert into database
+  statements.insert.run(
+    sessionId,
     book,
     chapter,
-    modules,
+    JSON.stringify(modules),
     sourceType,
     userId,
     username,
-    status: 'active',
-    currentStep: 0,
-    steps: WORKFLOW_STEPS.map(step => ({
-      ...step,
-      status: 'pending',
-      startedAt: null,
-      completedAt: null,
-      data: {},
-      issues: []
-    })),
-    files: {},
-    issues: [],
+    'active',
+    0,
+    JSON.stringify(steps),
+    JSON.stringify({}),
+    JSON.stringify(expectedFiles),
+    JSON.stringify(uploadedFiles),
+    JSON.stringify([]),
     outputDir,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    expiresAt: new Date(Date.now() + SESSION_EXPIRY).toISOString()
-  };
-
-  sessions.set(sessionId, session);
+    now,
+    now,
+    expiresAt
+  );
 
   return {
     sessionId,
     book,
     chapter,
-    steps: session.steps.map(s => ({
+    steps: steps.map(s => ({
       id: s.id,
       name: s.name,
       status: s.status
     })),
-    currentStep: session.steps[0]
+    currentStep: steps[0]
   };
 }
 
@@ -142,15 +296,16 @@ function createSession(options) {
  * Get session by ID
  */
 function getSession(sessionId) {
-  const session = sessions.get(sessionId);
+  const row = statements.getById.get(sessionId);
+  if (!row) return null;
 
-  if (!session) {
-    return null;
-  }
+  const session = rowToSession(row);
 
   // Check if expired
   if (new Date(session.expiresAt) < new Date()) {
     session.status = 'expired';
+    session.updatedAt = new Date().toISOString();
+    saveSession(session);
   }
 
   return session;
@@ -180,6 +335,7 @@ function updateStepStatus(sessionId, stepId, status, data = {}) {
   }
 
   session.updatedAt = new Date().toISOString();
+  saveSession(session);
 
   return session;
 }
@@ -205,6 +361,8 @@ function advanceSession(sessionId) {
   if (session.currentStep >= session.steps.length - 1) {
     session.status = 'completed';
     session.completedAt = new Date().toISOString();
+    session.updatedAt = new Date().toISOString();
+    saveSession(session);
     return {
       complete: true,
       session
@@ -218,6 +376,7 @@ function advanceSession(sessionId) {
   nextStep.startedAt = new Date().toISOString();
 
   session.updatedAt = new Date().toISOString();
+  saveSession(session);
 
   return {
     success: true,
@@ -237,10 +396,12 @@ function storeFile(sessionId, fileType, filePath, metadata = {}) {
     path: filePath,
     originalName: metadata.originalName,
     size: metadata.size,
+    moduleId: metadata.moduleId,
     uploadedAt: new Date().toISOString()
   };
 
   session.updatedAt = new Date().toISOString();
+  saveSession(session);
 
   return session.files[fileType];
 }
@@ -253,6 +414,64 @@ function getFile(sessionId, fileType) {
   if (!session) return null;
 
   return session.files[fileType] || null;
+}
+
+/**
+ * Extract module ID from filename
+ * e.g., "m68663.is.md" -> "m68663"
+ */
+function extractModuleId(filename) {
+  const match = filename.match(/(m\d+)/);
+  return match ? match[1] : null;
+}
+
+/**
+ * Get upload progress for a workflow step
+ */
+function getUploadProgress(sessionId, stepId) {
+  const session = getSession(sessionId);
+  if (!session) return null;
+
+  const expected = session.expectedFiles[stepId] || [];
+  const uploaded = session.uploadedFiles[stepId] || [];
+
+  // Find which expected files have been uploaded
+  const uploadedModules = uploaded.map(u => u.moduleId).filter(Boolean);
+  const missing = expected.filter(f => {
+    const moduleId = extractModuleId(f);
+    return !uploadedModules.includes(moduleId);
+  });
+
+  return {
+    expected: expected.length,
+    uploaded: uploaded.length,
+    complete: uploaded.length >= expected.length,
+    missing,
+    uploadedFiles: uploaded
+  };
+}
+
+/**
+ * Record a file upload for a workflow step
+ */
+function recordUpload(sessionId, stepId, filename, moduleId) {
+  const session = getSession(sessionId);
+  if (!session) return null;
+
+  if (!session.uploadedFiles[stepId]) {
+    session.uploadedFiles[stepId] = [];
+  }
+
+  session.uploadedFiles[stepId].push({
+    filename,
+    moduleId: moduleId || extractModuleId(filename),
+    uploadedAt: new Date().toISOString()
+  });
+
+  session.updatedAt = new Date().toISOString();
+  saveSession(session);
+
+  return getUploadProgress(sessionId, stepId);
 }
 
 /**
@@ -278,6 +497,8 @@ function addIssue(sessionId, issue) {
     currentStep.issues.push(issueWithId.id);
   }
 
+  saveSession(session);
+
   return issueWithId;
 }
 
@@ -296,6 +517,7 @@ function resolveIssue(sessionId, issueId, resolution) {
   issue.resolvedAt = new Date().toISOString();
 
   session.updatedAt = new Date().toISOString();
+  saveSession(session);
 
   return issue;
 }
@@ -322,6 +544,8 @@ function cancelSession(sessionId, reason) {
   session.cancelledAt = new Date().toISOString();
   session.updatedAt = new Date().toISOString();
 
+  saveSession(session);
+
   return session;
 }
 
@@ -329,73 +553,97 @@ function cancelSession(sessionId, reason) {
  * List active sessions for a user
  */
 function listUserSessions(userId) {
-  const userSessions = [];
+  const rows = statements.listByUser.all(userId, 'active');
 
-  for (const session of sessions.values()) {
-    if (session.userId === userId && session.status === 'active') {
-      userSessions.push({
-        id: session.id,
-        book: session.book,
-        chapter: session.chapter,
-        modulesCount: session.modules?.length || 0,
-        currentStep: session.steps[session.currentStep]?.name,
-        progress: Math.round((session.currentStep / session.steps.length) * 100),
-        createdAt: session.createdAt,
-        updatedAt: session.updatedAt
-      });
-    }
-  }
-
-  return userSessions.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+  return rows.map(row => {
+    const session = rowToSession(row);
+    return {
+      id: session.id,
+      book: session.book,
+      chapter: session.chapter,
+      modulesCount: session.modules?.length || 0,
+      currentStep: session.steps[session.currentStep]?.name,
+      progress: Math.round((session.currentStep / session.steps.length) * 100),
+      createdAt: session.createdAt,
+      updatedAt: session.updatedAt
+    };
+  });
 }
 
 /**
  * List all active sessions (admin)
  */
 function listAllSessions() {
-  const allSessions = [];
+  const rows = statements.listAll.all('active');
 
-  for (const session of sessions.values()) {
-    if (session.status === 'active') {
-      allSessions.push({
-        id: session.id,
-        book: session.book,
-        chapter: session.chapter,
-        username: session.username,
-        currentStep: session.steps[session.currentStep]?.name,
-        progress: Math.round((session.currentStep / session.steps.length) * 100),
-        createdAt: session.createdAt,
-        updatedAt: session.updatedAt
-      });
-    }
-  }
-
-  return allSessions.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+  return rows.map(row => {
+    const session = rowToSession(row);
+    return {
+      id: session.id,
+      book: session.book,
+      chapter: session.chapter,
+      username: session.username,
+      currentStep: session.steps[session.currentStep]?.name,
+      progress: Math.round((session.currentStep / session.steps.length) * 100),
+      createdAt: session.createdAt,
+      updatedAt: session.updatedAt
+    };
+  });
 }
 
 /**
  * Clean up expired sessions
  */
 function cleanupExpiredSessions() {
-  const now = new Date();
+  const now = new Date().toISOString();
   let cleaned = 0;
 
-  for (const [id, session] of sessions) {
-    if (new Date(session.expiresAt) < now) {
-      // Clean up files
-      if (fs.existsSync(session.outputDir)) {
+  // Get expired sessions to clean up their files
+  const expiredRows = statements.getExpired.all(now);
+  for (const row of expiredRows) {
+    const session = rowToSession(row);
+    // Clean up files
+    if (session.outputDir && fs.existsSync(session.outputDir)) {
+      try {
         fs.rmSync(session.outputDir, { recursive: true, force: true });
+      } catch (err) {
+        console.error(`Failed to clean up session directory ${session.outputDir}:`, err);
       }
-      sessions.delete(id);
-      cleaned++;
     }
+    cleaned++;
   }
+
+  // Delete expired sessions from database
+  statements.deleteExpired.run(now);
 
   return cleaned;
 }
 
 // Run cleanup every hour
 setInterval(cleanupExpiredSessions, 60 * 60 * 1000);
+
+// Clean up on startup
+cleanupExpiredSessions();
+
+/**
+ * Get database stats (for debugging/monitoring)
+ */
+function getDbStats() {
+  const total = db.prepare('SELECT COUNT(*) as count FROM sessions').get();
+  const active = db.prepare('SELECT COUNT(*) as count FROM sessions WHERE status = ?').get('active');
+  const completed = db.prepare('SELECT COUNT(*) as count FROM sessions WHERE status = ?').get('completed');
+  const cancelled = db.prepare('SELECT COUNT(*) as count FROM sessions WHERE status = ?').get('cancelled');
+  const expired = db.prepare('SELECT COUNT(*) as count FROM sessions WHERE status = ?').get('expired');
+
+  return {
+    total: total.count,
+    active: active.count,
+    completed: completed.count,
+    cancelled: cancelled.count,
+    expired: expired.count,
+    dbPath: DB_PATH
+  };
+}
 
 module.exports = {
   WORKFLOW_STEPS,
@@ -405,11 +653,16 @@ module.exports = {
   advanceSession,
   storeFile,
   getFile,
+  findActiveWorkflow,
+  getUploadProgress,
+  recordUpload,
+  extractModuleId,
   addIssue,
   resolveIssue,
   getPendingIssues,
   cancelSession,
   listUserSessions,
   listAllSessions,
-  cleanupExpiredSessions
+  cleanupExpiredSessions,
+  getDbStats
 };

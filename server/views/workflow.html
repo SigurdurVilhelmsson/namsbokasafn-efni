@@ -170,6 +170,9 @@
           // Reset form
           form.reset();
           document.getElementById('chapter-info').style.display = 'none';
+        } else if (res.status === 409 && result.existingSession) {
+          // Workflow already exists - offer to join
+          showExistingWorkflowDialog(result);
         } else {
           alert('Villa: ' + (result.message || result.error));
         }
@@ -180,6 +183,70 @@
         submitBtn.textContent = 'Hefja verkflæði';
       }
     });
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function showExistingWorkflowDialog(result) {
+      const existing = result.existingSession;
+      const progressText = existing.progress
+        ? `${existing.progress.uploaded}/${existing.progress.expected} skrár hlaðið upp`
+        : '';
+
+      const contentEl = document.getElementById('step-content');
+      contentEl.innerHTML = '';
+
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-warning';
+
+      const h3 = document.createElement('h3');
+      h3.textContent = 'Verkflæði þegar til staðar';
+      alertDiv.appendChild(h3);
+
+      const msgP = document.createElement('p');
+      msgP.textContent = result.message;
+      alertDiv.appendChild(msgP);
+
+      const infoDiv = document.createElement('div');
+      infoDiv.className = 'existing-session-info';
+      infoDiv.innerHTML = `
+        <p><strong>Byrjað af:</strong> ${escapeHtml(existing.startedBy || 'Óþekktur')}</p>
+        <p><strong>Núverandi skref:</strong> ${escapeHtml(existing.currentStep || '')}</p>
+        ${progressText ? `<p><strong>Framvinda:</strong> ${escapeHtml(progressText)}</p>` : ''}
+        <p><strong>Byrjað:</strong> ${escapeHtml(new Date(existing.startedAt).toLocaleString('is-IS'))}</p>
+      `;
+      alertDiv.appendChild(infoDiv);
+
+      const actionsDiv = document.createElement('div');
+      actionsDiv.className = 'dialog-actions';
+
+      const joinBtn = document.createElement('button');
+      joinBtn.className = 'btn btn-primary';
+      joinBtn.textContent = 'Skoða verkflæði';
+      joinBtn.addEventListener('click', () => loadWorkflow(existing.id));
+      actionsDiv.appendChild(joinBtn);
+
+      const cancelBtn = document.createElement('button');
+      cancelBtn.className = 'btn btn-secondary';
+      cancelBtn.textContent = 'Hætta við';
+      cancelBtn.addEventListener('click', closeExistingDialog);
+      actionsDiv.appendChild(cancelBtn);
+
+      alertDiv.appendChild(actionsDiv);
+      contentEl.appendChild(alertDiv);
+
+      document.getElementById('workflow-detail').style.display = 'block';
+      document.getElementById('detail-title').textContent = 'Verkflæði þegar til';
+      document.getElementById('workflow-steps').innerHTML = '';
+      document.getElementById('step-actions').innerHTML = '';
+    }
+
+    function closeExistingDialog() {
+      document.getElementById('workflow-detail').style.display = 'none';
+    }
 
     function showWorkflow(data) {
       document.getElementById('workflow-detail').style.display = 'block';
@@ -285,11 +352,34 @@
     function showMTUploadStep(data) {
       const contentEl = document.getElementById('step-content');
 
-      // Count already uploaded MT files
-      const uploadedMTFiles = data.files ? data.files.filter(f => f.includes('mt-upload')).length : 0;
-      const uploadedInfo = uploadedMTFiles > 0
-        ? '<p class="uploaded-count">✓ ' + uploadedMTFiles + ' skrá(r) þegar hlaðið upp</p>'
+      // Get upload progress from data
+      const progress = data.uploadProgress || { uploaded: 0, expected: 0, complete: false, missing: [] };
+      const expectedFiles = data.session?.expectedFiles?.['mt-upload'] || [];
+      const uploadedFiles = data.session?.uploadedFiles?.['mt-upload'] || [];
+
+      // Create file checklist
+      const uploadedModules = uploadedFiles.map(f => f.moduleId).filter(Boolean);
+      let checklistHtml = '';
+      if (expectedFiles.length > 0) {
+        checklistHtml = '<div class="file-checklist"><h4>Skrár sem þarf að hlaða upp:</h4><ul class="checklist">';
+        for (const file of expectedFiles) {
+          const moduleId = file.match(/(m\d+)/)?.[1];
+          const isUploaded = moduleId && uploadedModules.includes(moduleId);
+          const icon = isUploaded ? '✓' : '○';
+          const cls = isUploaded ? 'uploaded' : 'pending';
+          checklistHtml += '<li class="checklist-item ' + cls + '"><span class="check-icon">' + icon + '</span> <code>' + escapeHtml(file) + '</code></li>';
+        }
+        checklistHtml += '</ul></div>';
+      }
+
+      // Progress summary
+      const progressSummary = progress.expected > 0
+        ? '<div class="progress-summary"><strong>' + progress.uploaded + ' af ' + progress.expected + '</strong> skrám hlaðið upp' +
+          (progress.complete ? ' <span class="text-success">✓ Tilbúið</span>' : '') + '</div>'
         : '';
+
+      // Determine if proceed button should be enabled
+      const canProceed = progress.complete || progress.expected === 0;
 
       contentEl.innerHTML =
         '<div class="alert alert-info">' +
@@ -301,20 +391,30 @@
         '<li>Sæktu þýddu skrárnar</li>' +
         '<li>Hladdu þeim upp hér fyrir neðan</li>' +
         '</ol>' +
-        uploadedInfo +
+        progressSummary +
+        checklistHtml +
         '<div class="upload-section"><h4>Hlaða upp þýddum .md skrám:</h4>' +
         '<form id="upload-form" class="upload-form">' +
         '<input type="file" name="file" id="upload-file" multiple accept=".md">' +
         '<button type="submit" class="btn btn-secondary">Hlaða upp</button>' +
         '</form>' +
-        '<button id="proceed-btn" class="btn btn-primary btn-large" style="margin-top: 1rem;">Halda áfram í næsta skref →</button>' +
+        '<button id="proceed-btn" class="btn btn-primary btn-large" style="margin-top: 1rem;"' +
+        (canProceed ? '' : ' disabled title="Hladdu upp öllum skrám fyrst"') +
+        '>Halda áfram í næsta skref →</button>' +
         '</div></div>';
 
       setupUploadHandler(data, 'mt-upload');
 
       // Setup proceed button
       document.getElementById('proceed-btn')?.addEventListener('click', async () => {
+        const btn = document.getElementById('proceed-btn');
+        if (btn.disabled) {
+          alert('Hladdu upp öllum þýddum skrám fyrst (' + progress.uploaded + '/' + progress.expected + ')');
+          return;
+        }
         try {
+          btn.disabled = true;
+          btn.textContent = 'Vinnur...';
           // Mark step complete and advance
           const res = await fetch('/api/workflow/' + data.sessionId + '/advance', {
             method: 'POST',
@@ -326,9 +426,13 @@
             loadWorkflow(data.sessionId);
           } else {
             alert('Villa: ' + (result.message || result.error || 'Gat ekki haldið áfram'));
+            btn.disabled = false;
+            btn.textContent = 'Halda áfram í næsta skref →';
           }
         } catch (e) {
           alert('Villa: ' + e.message);
+          btn.disabled = false;
+          btn.textContent = 'Halda áfram í næsta skref →';
         }
       });
     }
@@ -398,7 +502,13 @@
     async function loadWorkflow(id) {
       const res = await fetch('/api/workflow/' + id);
       const data = await res.json();
-      showWorkflow({ ...data.session, sessionId: id, downloads: data.downloads });
+      showWorkflow({
+        ...data.session,
+        sessionId: id,
+        downloads: data.downloads,
+        uploadProgress: data.uploadProgress,
+        session: data.session  // Keep full session for file tracking
+      });
     }
 
     // Auth check and init
@@ -477,6 +587,24 @@
     .next-action { margin-top: 1rem; padding: 1.5rem; background: white; border-radius: 0.5rem; border: 2px solid var(--primary); text-align: center; }
     .next-action p { margin-bottom: 1rem; }
     .btn-large { padding: 0.75rem 2rem; font-size: 1rem; }
+    /* File checklist styles */
+    .file-checklist { margin: 1rem 0; padding: 1rem; background: white; border-radius: 0.375rem; border: 1px solid var(--gray-200); }
+    .file-checklist h4 { font-size: 0.875rem; margin-bottom: 0.5rem; }
+    .checklist { list-style: none; margin: 0; padding: 0; }
+    .checklist-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0; font-size: 0.875rem; border-bottom: 1px solid var(--gray-50); }
+    .checklist-item:last-child { border-bottom: none; }
+    .checklist-item.uploaded { color: var(--success); }
+    .checklist-item.pending { color: var(--gray-500); }
+    .check-icon { width: 1.25rem; text-align: center; font-weight: bold; }
+    .checklist-item.uploaded .check-icon { color: var(--success); }
+    .progress-summary { margin: 0.75rem 0; padding: 0.75rem; background: white; border-radius: 0.375rem; border: 1px solid var(--gray-200); }
+    .text-success { color: var(--success); }
+    /* Warning alert and dialog */
+    .alert-warning { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .alert-warning h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .existing-session-info { margin: 1rem 0; padding: 0.75rem; background: rgba(255,255,255,0.5); border-radius: 0.25rem; }
+    .existing-session-info p { margin: 0.25rem 0; font-size: 0.875rem; }
+    .dialog-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
     @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
   </style>
 </body>
