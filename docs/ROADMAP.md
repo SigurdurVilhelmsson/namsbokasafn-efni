@@ -79,10 +79,35 @@ GET  /api/modules           List known modules
 |-----------|--------|-------|
 | **2A: GitHub OAuth + JWT** | ✅ | `server/services/auth.js`, `server/middleware/requireAuth.js` |
 | **2B: Workflow routes + sessions** | ✅ | SQLite persistence, uniqueness constraint |
-| **2C: Issue classification** | ⏳ | `server/services/issueClassifier.js` - pending |
+| **2C: Issue classification** | ✅ | Integrated into upload, auto-fix, session storage |
 | **2D: GitHub PR sync** | ⏳ | `server/services/github.js` - pending |
 | **2E: Image tracking** | ⏳ | `server/services/imageTracker.js` - pending |
 | **2F: HTML wizard UI** | ✅ | `server/views/workflow.html` |
+
+### Phase 2.2 Features (Complete)
+
+- **Issue Detection Integration**
+  - Automatic issue detection on MT file upload
+  - Auto-applies AUTO_FIX issues (whitespace, typos, line endings)
+  - Stores remaining issues in session for review
+  - Blocks workflow advancement if BLOCKED issues exist
+
+- **Issue Categories**
+  - AUTO_FIX: Applied automatically without review
+  - EDITOR_CONFIRM: Single editor reviews (terminology, quotes)
+  - BOARD_REVIEW: Discussion required (unit conversions, cultural refs)
+  - BLOCKED: Prevents progress (structural issues)
+
+- **Issues Dashboard** (`/issues`)
+  - Stats overview with category breakdown
+  - Filter by book and category
+  - Context and suggestions for each issue
+  - Category-specific resolve actions
+
+- **Workflow UI Enhancement**
+  - Issue summary after uploads
+  - Link to issues page for review
+  - Proceed blocked when BLOCKED issues exist
 
 ### Phase 2.1 Features (Complete)
 

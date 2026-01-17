@@ -8,6 +8,37 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+#### Translation Pipeline Server - Phase 2.2 (Issue Classification Integration)
+- **Automatic Issue Detection on Upload**
+  - Runs `classifyIssues()` on every MT file upload
+  - Auto-applies AUTO_FIX issues (whitespace, double spaces, line endings, typos)
+  - Stores remaining issues in session for review
+  - Blocks workflow advancement if BLOCKED issues exist
+
+- **Issue Categories**
+  - AUTO_FIX: Whitespace, typos, line endings (applied automatically)
+  - EDITOR_CONFIRM: Terminology, Icelandic quotes, formatting (needs review)
+  - BOARD_REVIEW: Unit conversions (F→C, lbs→kg), US references (needs discussion)
+  - BLOCKED: Unclosed brackets, missing content (prevents progress)
+
+- **Issues API Enhancement**
+  - `GET /api/issues/session/:sessionId` - Get issues for specific session
+  - `POST /api/issues/session/:sessionId/:issueId/resolve` - Resolve session issue
+  - `GET /api/issues/stats` - Dashboard statistics with pendingByCategory
+  - Session-based issue storage integrated with workflow
+
+- **Issues Dashboard** (`/issues`)
+  - Stats overview: total, pending, auto-fixed, requires review
+  - Filter by book and category
+  - Shows issue context and suggestions
+  - Category-specific action buttons (accept/reject/resolve)
+  - Safe DOM manipulation (XSS-resistant)
+
+- **Workflow UI Issue Summary**
+  - Shows auto-fixed count, needs review count, blocked count after uploads
+  - Links to issues page for full review
+  - Disables "proceed" button when blocked issues exist
+
 #### Translation Pipeline Server - Phase 2.1 (Workflow Enhancements)
 - **Erlendur MT File Splitting**
   - Automatic splitting of files >18,000 characters at paragraph boundaries
