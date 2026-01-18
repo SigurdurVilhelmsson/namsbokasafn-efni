@@ -337,9 +337,10 @@ function convertInlineToXliff(text) {
   });
 
   // Convert [text](url) links to inline elements
+  // Store URL in equiv-text for Matecat compatibility (xlink:href not universally supported)
   result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
     inlineId++;
-    return `<g id="${inlineId}" ctype="x-link" xlink:href="${escapeXml(url)}">${escapeXml(text)}</g>`;
+    return `<g id="${inlineId}" ctype="link" equiv-text="${escapeXml(match)}">${escapeXml(text)}</g>`;
   });
 
   // Convert ~subscript~ to inline elements
@@ -392,8 +393,8 @@ function generateXliff(sourceSegs, targetSegs, metadata, sourceLang, targetLang,
   const original = metadata.module || metadata.section || 'document';
 
   let xliff = `<?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <file original="${escapeXml(original)}" source-language="${sourceLang}" target-language="${targetLang}" datatype="x-markdown">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="${escapeXml(original)}" source-language="${sourceLang}" target-language="${targetLang}" datatype="plaintext">
     <header>
       <note>Bilingual XLIFF for Matecat review</note>
       <note>Section: ${escapeXml(metadata.section || '')}</note>
@@ -413,15 +414,18 @@ function generateXliff(sourceSegs, targetSegs, metadata, sourceLang, targetLang,
     const targetText = tgt ? convertInlineToXliff(tgt.text) : '';
     const segType = src?.type || tgt?.type || 'paragraph';
     const state = targetText ? 'translated' : 'new';
-    const noteEl = src?.note ? `\n        <note from="developer">${escapeXml(src.note)}</note>` : '';
+    // Store segment type in note for reference (removed custom restype for Matecat compatibility)
+    const typeNote = `<note from="tool">type:${segType}</note>`;
+    const devNote = src?.note ? `\n        <note from="developer">${escapeXml(src.note)}</note>` : '';
 
     if (src && tgt) alignedCount++;
     else mismatchCount++;
 
     xliff += `
-      <trans-unit id="seg-${i + 1}" restype="${mapRestype(segType)}">
+      <trans-unit id="seg-${i + 1}">
         <source>${sourceText}</source>
-        <target state="${state}">${targetText}</target>${noteEl}
+        <target state="${state}">${targetText}</target>
+        ${typeNote}${devNote}
       </trans-unit>`;
   }
 

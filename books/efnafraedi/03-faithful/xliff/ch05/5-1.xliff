@@ -1,1138 +1,1401 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <file original="m68724" source-language="en" target-language="is" datatype="x-markdown">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68724" source-language="en" target-language="is" datatype="plaintext">
     <header>
       <note>Bilingual XLIFF for Matecat review</note>
       <note>Section: 5.1</note>
       <note>Title: Grundvallaratriði orku</note>
     </header>
     <body>
-      <trans-unit id="seg-1" restype="x-title">
+      <trans-unit id="seg-1">
         <source>Energy Basics</source>
         <target state="translated">Grundvallaratriði orku</target>
+        <note from="tool">type:title</note>
         <note from="developer">Heading level 1</note>
       </trans-unit>
-      <trans-unit id="seg-2" restype="x-section-title">
+      <trans-unit id="seg-2">
         <source>Energy</source>
         <target state="translated">Orka</target>
+        <note from="tool">type:section-title</note>
         <note from="developer">Heading level 2</note>
       </trans-unit>
-      <trans-unit id="seg-3" restype="x-paragraph">
+      <trans-unit id="seg-3">
         <source><g id="1" ctype="x-bold">Energy</g> can be defined as the capacity to supply heat or do work.</source>
         <target state="translated">Hægt er að skilgreina <g id="1" ctype="x-bold">orku</g> sem getuna til að veita varma eða vinna vinnu.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-4" restype="x-paragraph">
+      <trans-unit id="seg-4">
         <source>One type of <g id="1" ctype="x-bold">work (</g>w<g id="2" ctype="x-bold">)</g> is the process of causing matter to move against an opposing force.</source>
         <target state="translated">Ein tegund <g id="1" ctype="x-bold">vinnu (w)</g> er ferlið að fá efni til að hreyfast gegn andstæðum krafti.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-5" restype="x-paragraph">
+      <trans-unit id="seg-5">
         <source>For example, we do work when we inflate a bicycle tire—we move matter (the air in the pump) against the opposing force of the air already in the tire.</source>
         <target state="translated">Til dæmis vinnum við vinnu þegar við blásum lofti í hjólbarða – við hreyfum efni (loftið í pumpunni) gegn andstæðum krafti loftsins sem þegar er í hjólbarðanum.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-6" restype="x-paragraph">
+      <trans-unit id="seg-6">
         <source>Like matter, energy comes in different types.</source>
         <target state="translated">Líkt og efni er orka til í mismunandi gerðum.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-7" restype="x-paragraph">
+      <trans-unit id="seg-7">
         <source>One scheme classifies energy into two types: <g id="1" ctype="x-bold">potential energy</g>, the energy an object has because of its relative position, composition, or condition, and <g id="2" ctype="x-bold">kinetic energy</g>, the energy that an object possesses because of its motion.</source>
         <target state="translated">Ein flokkun skiptir orku í tvær tegundir: <g id="1" ctype="x-bold">stöðuorku</g>, orkan sem hlutur hefur vegna hlutfallslegrar stöðu sinnar, samsetningar eða ástands, og <g id="2" ctype="x-bold">hreyfiorku</g>, orkan sem hlutur býr yfir vegna hreyfingar sinnar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-8" restype="x-paragraph">
+      <trans-unit id="seg-8">
         <source>Water at the top of a waterfall or dam has potential energy because of its position; when it flows downward through generators, it has kinetic energy that can be used to do work and produce electricity in a hydroelectric plant ().</source>
         <target state="translated">Vatn efst í fossi eða stíflu hefur stöðuorku vegna staðsetningar sinnar; þegar það rennur niður í gegnum rafala hefur það hreyfiorku sem hægt er að nota til að vinna vinnu og framleiða rafmagn í vatnsaflsvirkjun ().</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-9" restype="x-paragraph">
+      <trans-unit id="seg-9">
         <source>A battery has potential energy because the chemicals within it can produce electricity that can do work.</source>
         <target state="translated">Rafhlaða hefur stöðuorku vegna þess að efnin í henni geta framleitt rafmagn sem getur unnið vinnu.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-10" restype="x-paragraph">
+      <trans-unit id="seg-10">
         <source>Energy can be converted from one form into another, but all of the energy present before a change occurs always exists in some form after the change is completed.</source>
         <target state="translated">Orku er hægt að breyta úr einu formi í annað, en öll orkan sem er til staðar áður en breyting á sér stað er alltaf til í einhverju formi eftir að breytingunni er lokið.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-11" restype="x-paragraph">
+      <trans-unit id="seg-11">
         <source>This observation is expressed in the law of conservation of energy: during a chemical or physical change, energy can be neither created nor destroyed, although it can be changed in form. (This is also one version of the first law of thermodynamics, as you will learn later.)</source>
         <target state="translated">Þessi athugun er sett fram í lögmálinu um varðveislu orku: við efna- eða eðlisfræðilega breytingu getur orka hvorki orðið til né eyðst, þótt henni sé hægt að breyta í annað form. (Þetta er líka ein útgáfa af fyrsta lögmáli varmafræðinnar, eins og þú munt læra síðar.)</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-12" restype="x-paragraph">
+      <trans-unit id="seg-12">
         <source>When one substance is converted into another, there is always an associated conversion of one form of energy into another.</source>
         <target state="translated">Þegar einu efni er breytt í annað fylgir því alltaf umbreyting á einu orkuformi í annað.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-13" restype="x-paragraph">
+      <trans-unit id="seg-13">
         <source>Heat is usually released or absorbed, but sometimes the conversion involves light, electrical energy, or some other form of energy.</source>
         <target state="translated">Varmi losnar yfirleitt eða er tekinn upp, en stundum felur umbreytingin í sér ljós, raforku eða eitthvert annað orkuform.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-14" restype="x-paragraph">
+      <trans-unit id="seg-14">
         <source>For example, chemical energy (a type of potential energy) is stored in the molecules that compose gasoline.</source>
         <target state="translated">Til dæmis er efnaorka (tegund stöðuorku) geymd í sameindunum sem mynda bensín.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-15" restype="x-paragraph">
+      <trans-unit id="seg-15">
         <source>When gasoline is combusted within the cylinders of a car’s engine, the rapidly expanding gaseous products of this chemical reaction generate mechanical energy (a type of kinetic energy) when they move the cylinders’ pistons.</source>
         <target state="translated">Þegar bensín brennur í strokkum bílvélar mynda hinar ört stækkandi loftkenndu afurðir þessa efnahvarfs vélræna orku (tegund hreyfiorku) þegar þær hreyfa stimpla strokkanna.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-16" restype="x-paragraph">
+      <trans-unit id="seg-16">
         <source>According to the law of conservation of matter (seen in an earlier chapter), there is no detectable change in the total amount of matter during a chemical change.</source>
         <target state="translated">Samkvæmt lögmálinu um varðveislu efnis (sem fjallað var um í fyrri kafla) verður engin greinanleg breyting á heildarmagni efnis við efnabreytingu.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-17" restype="x-paragraph">
+      <trans-unit id="seg-17">
         <source>When chemical reactions occur, the energy changes are relatively modest and the mass changes are too small to measure, so the laws of conservation of matter and energy hold well.</source>
         <target state="translated">Þegar efnahvörf eiga sér stað eru orkubreytingarnar tiltölulega litlar og massabreytingarnar of litlar til að mæla, þannig að lögmálin um varðveislu efnis og orku eiga vel við.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-18" restype="x-paragraph">
+      <trans-unit id="seg-18">
         <source>However, in nuclear reactions, the energy changes are much larger (by factors of a million or so), the mass changes are measurable, and matter-energy conversions are significant.</source>
         <target state="translated">Í kjarnahvörfum eru orkubreytingarnar hins vegar mun stærri (um milljónfalt), massabreytingarnar eru mælanlegar og umbreyting efnis og orku er umtalsverð.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-19" restype="x-paragraph">
+      <trans-unit id="seg-19">
         <source>This will be examined in more detail in a later chapter on nuclear chemistry.</source>
         <target state="translated">Þetta verður skoðað nánar í síðari kafla um kjarnaefnafræði.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-20" restype="x-figure-caption">
+      <trans-unit id="seg-20">
         <source>(a) Water at a higher elevation, for example, at the top of Victoria Falls, has a higher potential energy than water at a lower elevation.</source>
         <target state="translated">*Mynd: (a) Vatn í meiri hæð, til dæmis efst í Viktoríufossum, hefur meiri stöðuorku en vatn í minni hæð.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-21" restype="x-figure-caption">
+      <trans-unit id="seg-21">
         <source>As the water falls, some of its potential energy is converted into kinetic energy.</source>
         <target state="translated">Þegar vatnið fellur breytist hluti stöðuorku þess í hreyfiorku.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-22" restype="x-figure-caption">
+      <trans-unit id="seg-22">
         <source>(b) If the water flows through generators at the bottom of a dam, such as the Hoover Dam shown here, its kinetic energy is converted into electrical energy. (credit a: modification of work by Steve Jurvetson; credit b: modification of work by “curimedia”/Wikimedia commons)</source>
         <target state="translated">(b) Ef vatnið rennur í gegnum rafala neðst í stíflu, eins og Hoover-stíflunni sem sýnd er hér, breytist hreyfiorka þess í raforku. (Heimild a: breyting á verki eftir Steve Jurvetson; heimild b: breyting á verki eftir „curimedia“/Wikimedia commons)*</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-23" restype="x-section-title">
+      <trans-unit id="seg-23">
         <source>Thermal Energy, Temperature, and Heat</source>
         <target state="translated">Varmaorka, hitastig og varmi</target>
+        <note from="tool">type:section-title</note>
         <note from="developer">Heading level 2</note>
       </trans-unit>
-      <trans-unit id="seg-24" restype="x-paragraph">
+      <trans-unit id="seg-24">
         <source><g id="1" ctype="x-bold">Thermal energy</g> is kinetic energy associated with the random motion of atoms and molecules. <g id="2" ctype="x-bold">Temperature</g> is a quantitative measure of “hot” or “cold.” When the atoms and molecules in an object are moving or vibrating quickly, they have a higher average kinetic energy (KE), and we say that the object is “hot.” When the atoms and molecules are moving slowly, they have lower average KE, and we say that the object is “cold” ().</source>
         <target state="translated"><g id="1" ctype="x-bold">Varmaorka</g> er hreyfiorka sem tengist tilviljanakenndri hreyfingu atóma og sameinda. <g id="2" ctype="x-bold">Hitastig</g> er magnbundinn mælikvarði á „hita“ eða „kulda“.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-25" restype="x-paragraph">
+      <trans-unit id="seg-25">
         <source>Assuming that no chemical reaction or phase change (such as melting or vaporizing) occurs, increasing the amount of thermal energy in a sample of matter will cause its temperature to increase.</source>
         <target state="translated">Þegar atóm og sameindir í hlut hreyfast eða titra hratt hafa þau hærri meðalhreyfiorku (KE) og við segjum að hluturinn sé „heitur“.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-26" restype="x-paragraph">
+      <trans-unit id="seg-26">
         <source>And, assuming that no chemical reaction or phase change (such as condensation or freezing) occurs, decreasing the amount of thermal energy in a sample of matter will cause its temperature to decrease.</source>
         <target state="translated">Þegar atóm og sameindir hreyfast hægt hafa þau lægri meðalhreyfiorku og við segjum að hluturinn sé „kaldur“ ().</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-27" restype="x-paragraph">
-        <source>Click on this <g id="1" ctype="x-link" xlink:href="http://openstax.org/l/16PHETtempFX">interactive simulation</g> to view the effects of temperature on molecular motion.</source>
+      <trans-unit id="seg-27">
+        <source>Click on this <g id="1" ctype="link" equiv-text="[interactive simulation](http://openstax.org/l/16PHETtempFX)">interactive simulation</g> to view the effects of temperature on molecular motion.</source>
         <target state="translated">Að því gefnu að ekkert efnahvarf eða fasabreyting (svo sem bráðnun eða uppgufun) eigi sér stað mun aukning á magni varmaorku í sýni af efni valda því að hitastig þess hækkar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-28" restype="x-paragraph">
+      <trans-unit id="seg-28">
         <source>Most substances expand as their temperature increases and contract as their temperature decreases.</source>
         <target state="translated">Og að því gefnu að ekkert efnahvarf eða fasabreyting (svo sem þétting eða frost) eigi sér stað mun minnkun á magni varmaorku í sýni af efni valda því að hitastig þess lækkar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-29" restype="x-paragraph">
+      <trans-unit id="seg-29">
         <source>This property can be used to measure temperature changes, as shown in .</source>
         <target state="translated">Smelltu á þessa gagnvirku hermun til að sjá áhrif hitastigs á hreyfingu sameinda.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-30" restype="x-paragraph">
+      <trans-unit id="seg-30">
         <source>The operation of many thermometers depends on the expansion and contraction of substances in response to temperature changes.</source>
         <target state="translated">Flest efni þenjast út þegar hitastig þeirra hækkar og dragast saman þegar hitastig þeirra lækkar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-31" restype="x-paragraph">
-        <source>The following <g id="1" ctype="x-link" xlink:href="http://openstax.org/l/16Bimetallic">demonstration</g> allows one to view the effects of heating and cooling a coiled bimetallic strip.</source>
+      <trans-unit id="seg-31">
+        <source>The following <g id="1" ctype="link" equiv-text="[demonstration](http://openstax.org/l/16Bimetallic)">demonstration</g> allows one to view the effects of heating and cooling a coiled bimetallic strip.</source>
         <target state="translated">Hægt er að nota þennan eiginleika til að mæla hitastigsbreytingar, eins og sýnt er í .</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-32" restype="x-paragraph">
+      <trans-unit id="seg-32">
         <source><g id="1" ctype="x-bold">Heat (</g>q<g id="2" ctype="x-bold">)</g> is the transfer of thermal energy between two bodies at different temperatures.</source>
         <target state="translated">Virkni margra hitamæla byggist á útþenslu og samdrætti efna til að bregðast við hitastigsbreytingum.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-33" restype="x-paragraph">
+      <trans-unit id="seg-33">
         <source>Heat flow (a redundant term, but one commonly used) increases the thermal energy of one body and decreases the thermal energy of the other.</source>
         <target state="translated">Eftirfarandi sýnikennsla gerir manni kleift að sjá áhrif þess að hita og kæla uppvafða tvímálmsræmu.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-34" restype="x-paragraph">
+      <trans-unit id="seg-34">
         <source>Suppose we initially have a high temperature (and high thermal energy) substance (H) and a low temperature (and low thermal energy) substance (L).</source>
         <target state="translated"><g id="1" ctype="x-bold">Varmi (q)</g> er flutningur varmaorku milli tveggja hluta með mismunandi hitastig.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-35" restype="x-paragraph">
+      <trans-unit id="seg-35">
         <source>The atoms and molecules in H have a higher average KE than those in L.</source>
         <target state="translated">Varmaflæði (óþarft hugtak, en algengt) eykur varmaorku eins hlutar og minnkar varmaorku hins.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-36" restype="x-paragraph">
+      <trans-unit id="seg-36">
         <source>If we place substance H in contact with substance L, the thermal energy will flow spontaneously from substance H to substance L.</source>
         <target state="translated">Gerum ráð fyrir að við höfum í upphafi efni með hátt hitastig (og mikla varmaorku) (H) og efni með lágt hitastig (og litla varmaorku) (L).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-37" restype="x-paragraph">
+      <trans-unit id="seg-37">
         <source>The temperature of substance H will decrease, as will the average KE of its molecules; the temperature of substance L will increase, along with the average KE of its molecules.</source>
         <target state="translated">Atómin og sameindirnar í H hafa hærri meðalhreyfiorku en þau í L.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-38" restype="x-paragraph">
+      <trans-unit id="seg-38">
         <source>Heat flow will continue until the two substances are at the same temperature ().</source>
         <target state="translated">Ef við setjum efni H í snertingu við efni L mun varmaorkan flæða sjálfkrafa frá efni H til efnis L.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-39" restype="x-paragraph">
-        <source>Click on the <g id="1" ctype="x-link" xlink:href="http://openstax.org/l/16PHETenergy">PhET simulation</g> to explore energy forms and changes.</source>
+      <trans-unit id="seg-39">
+        <source>Click on the <g id="1" ctype="link" equiv-text="[PhET simulation](http://openstax.org/l/16PHETenergy)">PhET simulation</g> to explore energy forms and changes.</source>
         <target state="translated">Hitastig efnis H mun lækka, sem og meðalhreyfiorka sameinda þess; hitastig efnis L mun hækka, ásamt meðalhreyfiorku sameinda þess.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-40" restype="x-paragraph">
+      <trans-unit id="seg-40">
         <source>Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs.</source>
         <target state="translated">Varmaflæði heldur áfram þar til efnin tvö eru við sama hitastig ().</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-41" restype="x-paragraph">
+      <trans-unit id="seg-41">
         <source>Click on Energy Symbols to visualize the transfer of energy.</source>
         <target state="translated">Smelltu á PhET-hermunina til að kanna orkuform og breytingar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-42" restype="x-paragraph">
+      <trans-unit id="seg-42">
         <source>Matter undergoing chemical reactions and physical changes can release or absorb heat.</source>
         <target state="translated">Farðu í flipann Orkukerfi til að búa til samsetningar af orkugjöfum, umbreytingaraðferðum og afköstum.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-43" restype="x-paragraph">
+      <trans-unit id="seg-43">
         <source>A change that releases heat is called an <g id="1" ctype="x-bold">exothermic process</g>.</source>
         <target state="translated">Smelltu á Orkutákn til að sjá orkuflutninginn fyrir þér.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-44" restype="x-paragraph">
+      <trans-unit id="seg-44">
         <source>For example, the combustion reaction that occurs when using an oxyacetylene torch is an exothermic process—this process also releases energy in the form of light as evidenced by the torch’s flame ().</source>
         <target state="translated">Efni sem gangast undir efnahvörf og eðlisfræðilegar breytingar getur losað eða tekið upp varma.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-45" restype="x-paragraph">
+      <trans-unit id="seg-45">
         <source>A reaction or change that absorbs heat is an <g id="1" ctype="x-bold">endothermic process</g>.</source>
         <target state="translated">Breyting sem losar varma er kölluð <g id="1" ctype="x-bold">útvermið ferli</g>.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-46" restype="x-paragraph">
+      <trans-unit id="seg-46">
         <source>A cold pack used to treat muscle strains provides an example of an endothermic process.</source>
         <target state="translated">Til dæmis er brunaferlið sem á sér stað við notkun á súrefnis-asetýlen logsuðutæki útvermið ferli – þetta ferli losar einnig orku í formi ljóss eins og sést á loga tækisins ().</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-47" restype="x-paragraph">
+      <trans-unit id="seg-47">
         <source>When the substances in the cold pack (water and a salt like ammonium nitrate) are brought together, the resulting process absorbs heat, leading to the sensation of cold.</source>
         <target state="translated">Hvarf eða breyting sem tekur upp varma er <g id="1" ctype="x-bold">innvermið ferli</g>.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-48" restype="x-paragraph">
+      <trans-unit id="seg-48">
         <source>Historically, energy was measured in units of <g id="1" ctype="x-bold">calories (cal)</g>.</source>
         <target state="translated">Kaldur bakstur sem notaður er til að meðhöndla tognun í vöðvum er dæmi um innvermið ferli.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-49" restype="x-paragraph">
+      <trans-unit id="seg-49">
         <source>A calorie is the amount of energy required to raise one gram of water by 1 degree C (1 kelvin).</source>
         <target state="translated">Þegar efnin í kalda bakstrinum (vatn og salt eins og ammóníumnítrat) eru sett saman tekur ferlið sem myndast upp varma, sem leiðir til kuldatilfinningar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-50" restype="x-paragraph">
+      <trans-unit id="seg-50">
         <source>However, this quantity depends on the atmospheric pressure and the starting temperature of the water.</source>
         <target state="translated">.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-51" restype="x-paragraph">
+      <trans-unit id="seg-51">
         <source>The ease of measurement of energy changes in calories has meant that the calorie is still frequently used.</source>
         <target state="translated">Sögulega var orka mæld í einingunni <g id="1" ctype="x-bold">kaloría (kal)</g>.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-52" restype="x-paragraph">
+      <trans-unit id="seg-52">
         <source>The Calorie (with a capital C), or large calorie, commonly used in quantifying food energy content, is a kilocalorie.</source>
         <target state="translated">Ein kaloría er orkumagnið sem þarf til að hækka hitastig eins gramms af vatni um 1 °C (1 kelvin).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-53" restype="x-paragraph">
+      <trans-unit id="seg-53">
         <source>The SI unit of heat, work, and energy is the joule.</source>
         <target state="translated">Þetta magn er þó háð loftþrýstingi og upphafshitastigi vatnsins.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-54" restype="x-paragraph">
+      <trans-unit id="seg-54">
         <source>A <g id="1" ctype="x-bold">joule (J)</g> is defined as the amount of energy used when a force of 1 newton moves an object 1 meter.</source>
         <target state="translated">Þar sem auðvelt er að mæla orkubreytingar í kaloríum er einingin enn mikið notuð.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-55" restype="x-paragraph">
+      <trans-unit id="seg-55">
         <source>It is named in honor of the English physicist James Prescott Joule.</source>
         <target state="translated">Kalorían (með stóru K), eða stóra kalorían, sem er almennt notuð til að magngreina orkuinnihald matvæla, er kílókaloría.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-56" restype="x-paragraph">
+      <trans-unit id="seg-56">
         <source>One joule is equivalent to 1 kg m<g id="1" ctype="x-sup">2</g>/s<g id="2" ctype="x-sup">2</g>, which is also called 1 newton–meter.</source>
         <target state="translated">SI-eining varma, vinnu og orku er júl.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-57" restype="x-paragraph">
+      <trans-unit id="seg-57">
         <source>A kilojoule (kJ) is 1000 joules.</source>
         <target state="translated">Eitt <g id="1" ctype="x-bold">júl (J)</g> er skilgreint sem orkumagnið sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-58" restype="x-paragraph">
+      <trans-unit id="seg-58">
         <source>To standardize its definition, 1 calorie has been set to equal 4.184 joules.</source>
         <target state="translated">Einingin er nefnd til heiðurs enska eðlisfræðingnum James Prescott Joule.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-59" restype="x-paragraph">
+      <trans-unit id="seg-59">
         <source>We now introduce two concepts useful in describing heat flow and temperature change.</source>
         <target state="translated">Eitt júl jafngildir 1 kg m<g id="1" ctype="x-sup">2</g>/s<g id="2" ctype="x-sup">2</g>, sem er einnig kallað 1 njútonmetri.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-60" restype="x-paragraph">
+      <trans-unit id="seg-60">
         <source>The <g id="1" ctype="x-bold">heat capacity (</g>C<g id="2" ctype="x-bold">)</g> of a body of matter is the quantity of heat (<g id="3" ctype="x-bold">q</g>) it absorbs or releases when it experiences a temperature change (Δ<g id="4" ctype="x-bold">T</g>) of 1 degree Celsius (or equivalently, 1 kelvin):</source>
         <target state="translated">Eitt kílójúl (kJ) er 1000 júl.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-61" restype="x-paragraph">
+      <trans-unit id="seg-61">
         <source>Heat capacity is determined by both the type and amount of substance that absorbs or releases heat.</source>
         <target state="translated">Til að staðla skilgreininguna hefur 1 kaloría verið sett jöfn 4,184 júlum.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-62" restype="x-paragraph">
+      <trans-unit id="seg-62">
         <source>It is therefore an extensive property—its value is proportional to the amount of the substance.</source>
         <target state="translated">Nú kynnum við tvö hugtök sem eru gagnleg til að lýsa varmaflæði og hitastigsbreytingum. <g id="1" ctype="x-bold">Varmarýmd (C)</g> efnis er það magn varma (<g id="2" ctype="x-bold">q</g>) sem það gleypir eða losar þegar það verður fyrir hitastigsbreytingu (Δ<g id="3" ctype="x-bold">T</g>) um 1 gráðu á Celsíus (eða samsvarandi, 1 kelvin):</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-63" restype="x-paragraph">
+      <trans-unit id="seg-63">
         <source>For example, consider the heat capacities of two cast iron frying pans.</source>
         <target state="translated">Varmarýmd ræðst bæði af gerð og magni efnisins sem gleypir eða losar varma.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-64" restype="x-paragraph">
+      <trans-unit id="seg-64">
         <source>The heat capacity of the large pan is five times greater than that of the small pan because, although both are made of the same material, the mass of the large pan is five times greater than the mass of the small pan.</source>
         <target state="translated">Hún er því útþaninn eiginleiki – gildi hennar er í réttu hlutfalli við magn efnisins.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-65" restype="x-paragraph">
+      <trans-unit id="seg-65">
         <source>More mass means more atoms are present in the larger pan, so it takes more energy to make all of those atoms vibrate faster.</source>
         <target state="translated">Tökum sem dæmi varmarýmd tveggja steypujárnspanna.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-66" restype="x-paragraph">
+      <trans-unit id="seg-66">
         <source>The heat capacity of the small cast iron frying pan is found by observing that it takes 18,140 J of energy to raise the temperature of the pan by 50.0 °C:</source>
         <target state="translated">Varmarýmd stóru pönnunnar er fimm sinnum meiri en litlu pönnunnar því þótt báðar séu úr sama efni er massi stóru pönnunnar fimm sinnum meiri en massi litlu pönnunnar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-67" restype="x-paragraph">
+      <trans-unit id="seg-67">
         <source>The larger cast iron frying pan, while made of the same substance, requires 90,700 J of energy to raise its temperature by 50.0 °C.</source>
         <target state="translated">Meiri massi þýðir að fleiri atóm eru í stærri pönnunni, svo það þarf meiri orku til að láta öll þessi atóm titra hraðar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-68" restype="x-paragraph">
+      <trans-unit id="seg-68">
         <source>The larger pan has a (proportionally) larger heat capacity because the larger amount of material requires a (proportionally) larger amount of energy to yield the same temperature change:</source>
         <target state="translated">Varmarýmd litlu steypujárnspönnunnar er fundin með því að sjá að það þarf 18.140 J af orku til að hækka hitastig pönnunnar um 50,0 °C:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-69" restype="x-paragraph">
+      <trans-unit id="seg-69">
         <source>The <g id="1" ctype="x-bold">specific heat capacity (</g>c<g id="2" ctype="x-bold">)</g> of a substance, commonly called its “specific heat,” is the quantity of heat required to raise the temperature of 1 gram of a substance by 1 degree Celsius (or 1 kelvin):</source>
         <target state="translated">Stærri steypujárnspannan, þótt hún sé úr sama efni, þarf 90.700 J af orku til að hækka hitastig sitt um 50,0 °C.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-70" restype="x-paragraph">
+      <trans-unit id="seg-70">
         <source>Specific heat capacity depends only on the kind of substance absorbing or releasing heat.</source>
         <target state="translated">Stærri pannan hefur (hlutfallslega) meiri varmarýmd vegna þess að meira magn efnis krefst (hlutfallslega) meira magns orku til að ná sömu hitastigsbreytingu:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-71" restype="x-paragraph">
+      <trans-unit id="seg-71">
         <source>It is an intensive property—the type, but not the amount, of the substance is all that matters.</source>
         <target state="translated"><g id="1" ctype="x-bold">Eðlisvarmi (c)</g> efnis er það magn varma sem þarf til að hækka hitastig 1 gramms af efni um 1 gráðu á Celsíus (eða 1 kelvin):</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-72" restype="x-paragraph">
+      <trans-unit id="seg-72">
         <source>For example, the small cast iron frying pan has a mass of 808 g.</source>
         <target state="translated">Eðlisvarmi fer aðeins eftir gerð efnisins sem gleypir eða losar varma.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-73" restype="x-paragraph">
+      <trans-unit id="seg-73">
         <source>The specific heat of iron (the material used to make the pan) is therefore:</source>
         <target state="translated">Hann er eðliseiginleiki – gerð efnisins, en ekki magn þess, er það eina sem skiptir máli.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-74" restype="x-paragraph">
+      <trans-unit id="seg-74">
         <source>The large frying pan has a mass of 4040 g.</source>
         <target state="translated">Til dæmis er massi litlu steypujárnspönnunnar 808 g.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-75" restype="x-paragraph">
+      <trans-unit id="seg-75">
         <source>Using the data for this pan, we can also calculate the specific heat of iron:</source>
         <target state="translated">Eðlisvarmi járns (efnisins sem pannan er gerð úr) er því:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-76" restype="x-paragraph">
+      <trans-unit id="seg-76">
         <source>Although the large pan is more massive than the small pan, since both are made of the same material, they both yield the same value for specific heat (for the material of construction, iron).</source>
         <target state="translated">Stóra pannan hefur massa upp á 4040 g.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-77" restype="x-paragraph">
+      <trans-unit id="seg-77">
         <source>Note that specific heat is measured in units of energy per temperature per mass and is an intensive property, being derived from a ratio of two extensive properties (heat and mass).</source>
         <target state="translated">Með því að nota gögnin fyrir þessa pönnu getum við einnig reiknað út eðlisvarma járns:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-78" restype="x-paragraph">
+      <trans-unit id="seg-78">
         <source>The molar heat capacity, also an intensive property, is the heat capacity per mole of a particular substance and has units of J/mol °C ().</source>
         <target state="translated">Þrátt fyrir að stóra pannan sé massameiri en sú litla, gefa þær báðar sama gildi fyrir eðlisvarma (fyrir byggingarefnið, járn) þar sem þær eru báðar úr sama efni.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-79" restype="x-paragraph">
+      <trans-unit id="seg-79">
         <source>Water has a relatively high specific heat (about 4.2 J/g °C for the liquid and 2.09 J/g °C for the solid); most metals have much lower specific heats (usually less than 1 J/g °C).</source>
         <target state="translated">Athugið að eðlisvarmi er mældur í einingum orku á hitastig á massa og er eðliseiginleiki, þar sem hann er fenginn úr hlutfalli tveggja útþaninna eiginleika (varma og massa).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-80" restype="x-paragraph">
+      <trans-unit id="seg-80">
         <source>The specific heat of a substance varies somewhat with temperature.</source>
         <target state="translated">Mólvarmarýmd, sem einnig er eðliseiginleiki, er varmarýmd á mól tiltekins efnis og hefur einingarnar J/mól °C.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-81" restype="x-paragraph">
+      <trans-unit id="seg-81">
         <source>However, this variation is usually small enough that we will treat specific heat as constant over the range of temperatures that will be considered in this chapter.</source>
         <target state="translated">Vatn hefur tiltölulega háan eðlisvarma (um 4,2 J/g °C fyrir vökva og 2,09 J/g °C fyrir fast efni); flestir málmar hafa mun lægri eðlisvarma (venjulega minna en 1 J/g °C).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-82" restype="x-paragraph">
+      <trans-unit id="seg-82">
         <source>Specific heats of some common substances are listed in .</source>
         <target state="translated">Eðlisvarmi efnis er nokkuð breytilegur með hitastigi.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-83" restype="x-paragraph">
+      <trans-unit id="seg-83">
         <source>If we know the mass of a substance and its specific heat, we can determine the amount of heat, <g id="1" ctype="x-bold">q</g>, entering or leaving the substance by measuring the temperature change before and after the heat is gained or lost:</source>
         <target state="translated">Þessi breyting er þó yfirleitt nógu lítil til að við munum meðhöndla eðlisvarma sem fasta á því hitastigsbili sem fjallað verður um í þessum kafla.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-84" restype="x-paragraph">
+      <trans-unit id="seg-84">
         <source>In this equation, <g id="1" ctype="x-bold">c</g> is the specific heat of the substance, <g id="2" ctype="x-bold">m</g> is its mass, and Δ<g id="3" ctype="x-bold">T</g> (which is read “delta T”) is the temperature change, <g id="4" ctype="x-bold">T</g><g id="6" ctype="x-sub">final</g> − <g id="5" ctype="x-bold">T</g><g id="7" ctype="x-sub">initial</g>.</source>
         <target state="translated">Eðlisvarmar nokkurra algengra efna eru taldir upp í .</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-85" restype="x-paragraph">
+      <trans-unit id="seg-85">
         <source>If a substance gains thermal energy, its temperature increases, its final temperature is higher than its initial temperature, <g id="1" ctype="x-bold">T</g><g id="4" ctype="x-sub">final</g> − <g id="2" ctype="x-bold">T</g><g id="5" ctype="x-sub">initial</g> has a positive value, and the value of <g id="3" ctype="x-bold">q</g> is positive.</source>
         <target state="translated">Ef við þekkjum massa efnis og eðlisvarma þess getum við ákvarðað varmamagnið, <g id="1" ctype="x-bold">q</g>, sem fer inn í eða út úr efninu með því að mæla hitastigsbreytinguna fyrir og eftir að varminn er fenginn eða tapaður:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-86" restype="x-paragraph">
+      <trans-unit id="seg-86">
         <source>If a substance loses thermal energy, its temperature decreases, the final temperature is lower than the initial temperature, <g id="1" ctype="x-bold">T</g><g id="4" ctype="x-sub">final</g> − <g id="2" ctype="x-bold">T</g><g id="5" ctype="x-sub">initial</g> has a negative value, and the value of <g id="3" ctype="x-bold">q</g> is negative.</source>
         <target state="translated">Í þessari jöfnu er <g id="1" ctype="x-bold">c</g> eðlisvarmi efnisins, <g id="2" ctype="x-bold">m</g> er massi þess og Δ<g id="3" ctype="x-bold">T</g> (sem er lesið „delta T“) er hitastigsbreytingin, <g id="4" ctype="x-bold">T</g><g id="6" ctype="x-sub">lok</g> − <g id="5" ctype="x-bold">T</g><g id="7" ctype="x-sub">upphafs</g>.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-87" restype="x-paragraph">
+      <trans-unit id="seg-87">
         <source>Measuring Heat A flask containing 8.0 <x id="1" equiv-text="[[EQ:8]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">2</g> g of water is heated, and the temperature of the water increases from 21 °C to 85 °C.</source>
         <target state="translated">Ef efni fær varmaorku hækkar hitastig þess, lokahitastig þess er hærra en upphafshitastig þess, <g id="1" ctype="x-bold">T</g><g id="4" ctype="x-sub">lok</g> − <g id="2" ctype="x-bold">T</g><g id="5" ctype="x-sub">upphafs</g> hefur jákvætt gildi og gildi <g id="3" ctype="x-bold">q</g> er jákvætt.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-88" restype="x-paragraph">
+      <trans-unit id="seg-88">
         <source>How much heat did the water absorb?</source>
         <target state="translated">Ef efni tapar varmaorku lækkar hitastig þess, lokahitastigið er lægra en upphafshitastigið, <g id="1" ctype="x-bold">T</g><g id="4" ctype="x-sub">lok</g> − <g id="2" ctype="x-bold">T</g><g id="5" ctype="x-sub">upphafs</g> hefur neikvætt gildi og gildi <g id="3" ctype="x-bold">q</g> er neikvætt.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-89" restype="x-paragraph">
+      <trans-unit id="seg-89">
         <source>Solution To answer this question, consider these factors:</source>
         <target state="translated">Að mæla varma Flaska sem inniheldur 8,0 <x id="1" equiv-text="${\times }$" ctype="x-math"/> 10<g id="2" ctype="x-sup">2</g> g af vatni er hituð og hitastig vatnsins hækkar úr 21 °C í 85 °C.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-90" restype="x-paragraph">
+      <trans-unit id="seg-90">
         <source>The specific heat of water is 4.184 J/g °C, so to heat 1 g of water by 1 °C requires 4.184 J.</source>
         <target state="translated">Hversu mikinn varma gleypti vatnið?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-91" restype="x-paragraph">
+      <trans-unit id="seg-91">
         <source>We note that since 4.184 J is required to heat 1 g of water by 1 °C, we will need <g id="1" ctype="x-bold">800 times as much</g> to heat 8.0 × 10<g id="2" ctype="x-sup">2</g> g of water by 1 °C.</source>
         <target state="translated">Lausn Til að svara þessari spurningu skaltu íhuga þessa þætti:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-92" restype="x-paragraph">
+      <trans-unit id="seg-92">
         <source>Finally, we observe that since 4.184 J are required to heat 1 g of water by 1 °C, we will need <g id="1" ctype="x-bold">64 times as much</g> to heat it by 64 °C (that is, from 21 °C to 85 °C).</source>
         <target state="translated">Eðlisvarmi vatns er 4,184 J/g °C, þannig að til að hita 1 g af vatni um 1 °C þarf 4,184 J.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-93" restype="x-paragraph">
+      <trans-unit id="seg-93">
         <source>This can be summarized using the equation:</source>
         <target state="translated">Við tökum eftir því að þar sem 4,184 J þarf til að hita 1 g af vatni um 1 °C, munum við þurfa <g id="1" ctype="x-bold">800 sinnum meira</g> til að hita 8,0 × 10<g id="2" ctype="x-sup">2</g> g af vatni um 1 °C.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-94" restype="x-paragraph">
+      <trans-unit id="seg-94">
         <source>Because the temperature increased, the water absorbed heat and <g id="1" ctype="x-bold">q</g> is positive.</source>
         <target state="translated">Að lokum sjáum við að þar sem 4.184 J þarf til að hita 1 g af vatni um 1 °C, þá þurfum við <g id="1" ctype="x-bold">64 sinnum meira</g> til að hita það um 64 °C (þ.e. úr 21 °C í 85 °C).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-95" restype="x-paragraph">
+      <trans-unit id="seg-95">
         <source>Check Your LearningHow much heat, in joules, must be added to a 502 g iron skillet to increase its temperature from 25 °C to 250 °C?</source>
         <target state="translated">Þetta má draga saman með jöfnunni:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-96" restype="x-paragraph">
+      <trans-unit id="seg-96">
         <source>The specific heat of iron is 0.449 J/g °C.</source>
         <target state="translated">Vegna þess að hitastigið jókst, drakk vatnið í sig varma og <g id="1" ctype="x-bold">q</g> er jákvætt.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-97" restype="x-paragraph">
+      <trans-unit id="seg-97">
         <source>5.07 <x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">4</g> J</source>
         <target state="translated">Prófaðu þekkingu þínaHversu miklum varma, í joulum, þarf að bæta við 502 g járnpönnu til að auka hitastig hennar úr 25 °C í 250 °C?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-98" restype="x-paragraph">
+      <trans-unit id="seg-98">
         <source>Note that the relationship between heat, specific heat, mass, and temperature change can be used to determine any of these quantities (not just heat) if the other three are known or can be deduced.</source>
         <target state="translated">Eðlisvarmi járns er 0,449 J/g °C.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-99" restype="x-paragraph">
+      <trans-unit id="seg-99">
         <source>Determining Other Quantities A piece of unknown metal weighs 348 g.</source>
         <target state="translated">5,07 <x id="1" equiv-text="${\times }$" ctype="x-math"/> 10<g id="2" ctype="x-sup">4</g> J</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-100" restype="x-paragraph">
+      <trans-unit id="seg-100">
         <source>When the metal piece absorbs 6.64 kJ of heat, its temperature increases from 22.4 °C to 43.6 °C.</source>
         <target state="translated">Athugið að sambandið milli varma, eðlisvarma, massa og hitastigsbreytingar má nota til að ákvarða hvaða stærð sem er af þessum (ekki bara varma) ef hinar þrjár eru þekktar eða hægt er að leiða þær út.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-101" restype="x-paragraph">
+      <trans-unit id="seg-101">
         <source>Determine the specific heat of this metal (which might provide a clue to its identity).</source>
         <target state="translated">Ákvörðun annarra stærðaÓþekktur málmhlutur vegur 348 g.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-102" restype="x-paragraph">
+      <trans-unit id="seg-102">
         <source>Solution Since mass, heat, and temperature change are known for this metal, we can determine its specific heat using the relationship:</source>
         <target state="translated">Þegar málmhluturinn gleypir 6,64 kJ af varma hækkar hitastig hans úr 22,4 °C í 43,6 °C.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-103" restype="x-paragraph">
+      <trans-unit id="seg-103">
         <source>Substituting the known values:</source>
         <target state="translated">Ákvarðið eðlisvarma þessa málms (sem gæti gefið vísbendingu um hvaða málmur þetta er).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-104" restype="x-paragraph">
+      <trans-unit id="seg-104">
         <source>Solving:</source>
         <target state="translated">LausnÞar sem massi, varmi og hitastigsbreyting eru þekkt fyrir þennan málm getum við ákvarðað eðlisvarma hans með því að nota sambandið:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-105" restype="x-paragraph">
+      <trans-unit id="seg-105">
         <source>Comparing this value with the values in , this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.</source>
         <target state="translated">Setjum inn þekktu gildin:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-106" restype="x-paragraph">
+      <trans-unit id="seg-106">
         <source>Check Your Learning A piece of unknown metal weighs 217 g.</source>
         <target state="translated">Leysum:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-107" restype="x-paragraph">
+      <trans-unit id="seg-107">
         <source>When the metal piece absorbs 1.43 kJ of heat, its temperature increases from 24.5 °C to 39.1 °C.</source>
         <target state="translated">Þegar þetta gildi er borið saman við gildin í , samsvarar það eðlisvarma áls, sem bendir til þess að óþekkti málmurinn gæti verið ál.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-108" restype="x-paragraph">
+      <trans-unit id="seg-108">
         <source>Determine the specific heat of this metal, and predict its identity.</source>
         <target state="translated">Prófaðu þekkingu þínaÓþekktur málmhlutur vegur 217 g.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-109" restype="x-paragraph">
+      <trans-unit id="seg-109">
         <source><g id="1" ctype="x-bold">c</g> = 0.451 J/g °C; the metal is likely to be iron</source>
         <target state="translated">Þegar málmhluturinn gleypir 1,43 kJ af varma hækkar hitastig hans úr 24,5 °C í 39,1 °C.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-110" restype="x-paragraph">
+      <trans-unit id="seg-110">
         <source>The sunlight that reaches the earth contains thousands of times more energy than we presently capture.</source>
         <target state="translated">Ákvarðið eðlisvarma þessa málms og spáið fyrir um hvaða málmur þetta er.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-111" restype="x-paragraph">
+      <trans-unit id="seg-111">
         <source>Solar thermal systems provide one possible solution to the problem of converting energy from the sun into energy we can use.</source>
         <target state="translated"><g id="1" ctype="x-bold">c</g> = 0,451 J/g °C; málmurinn er líklega járn</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-112" restype="x-paragraph">
+      <trans-unit id="seg-112">
         <source>Large-scale solar thermal plants have different design specifics, but all concentrate sunlight to heat some substance; the heat “stored” in that substance is then converted into electricity.</source>
         <target state="translated">Sólarljósið sem nær til jarðar inniheldur þúsund sinnum meiri orku en við náum að nýta nú um stundir.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-113" restype="x-paragraph">
+      <trans-unit id="seg-113">
         <source>The Solana Generating Station in Arizona’s Sonora Desert produces 280 megawatts of electrical power.</source>
         <target state="translated">Varmanýtingarkerfi sólarorku bjóða upp á eina mögulega lausn á því vandamáli að breyta orku frá sólinni í orku sem við getum notað.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-114" restype="x-paragraph">
+      <trans-unit id="seg-114">
         <source>It uses parabolic mirrors that focus sunlight on pipes filled with a heat transfer fluid (HTF) ().</source>
         <target state="translated">Stórfelldar sólarvarmaorkuver hafa mismunandi hönnunareinkenni, en öll þjappa þau saman sólarljósi til að hita eitthvert efni; varmanum sem er „geymdur“ í því efni er síðan breytt í rafmagn.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-115" restype="x-paragraph">
+      <trans-unit id="seg-115">
         <source>The HTF then does two things: It turns water into steam, which spins turbines, which in turn produces electricity, and it melts and heats a mixture of salts, which functions as a thermal energy storage system.</source>
         <target state="translated">Solana-raforkuverið í Sonora-eyðimörkinni í Arizona framleiðir 280 megavött af rafafli.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-116" restype="x-paragraph">
+      <trans-unit id="seg-116">
         <source>After the sun goes down, the molten salt mixture can then release enough of its stored heat to produce steam to run the turbines for 6 hours.</source>
         <target state="translated">Það notar fleygbogaspegla sem beina sólarljósi að rörum sem eru fyllt með varmaflutningsvökva (HTF) ().</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-117" restype="x-paragraph">
+      <trans-unit id="seg-117">
         <source>Molten salts are used because they possess a number of beneficial properties, including high heat capacities and thermal conductivities.</source>
         <target state="translated">Varraflutningsvökvinn gerir síðan tvennt: Hann breytir vatni í gufu, sem snýr hverflum, sem aftur framleiða rafmagn, og hann bræðir og hitar efnablöndu af söltum, sem virkar sem varmaorkugeymslukerfi.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-118" restype="x-paragraph">
+      <trans-unit id="seg-118">
         <source>The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world ().</source>
         <target state="translated">Eftir að sólin er sest getur bráðna saltblandan losað nægan varma úr geymslunni til að framleiða gufu til að keyra hverflana í 6 klukkustundir.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-119" restype="x-paragraph">
+      <trans-unit id="seg-119">
         <source>Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines.</source>
         <target state="translated">Bráðin sölt eru notuð vegna þess að þau hafa ýmsa hagstæða eiginleika, þar á meðal mikla varmarýmd og varmaleiðni.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-120" restype="x-paragraph">
+      <trans-unit id="seg-120">
         <source>It produces enough energy to power 140,000 homes.</source>
         <target state="translated">Ivanpah-sólarorkuverið, sem er 377 megavött og staðsett í Mojave-eyðimörkinni í Kaliforníu, er stærsta sólarvarmaorkuver í heimi (). 170.000 speglar þess beina gríðarlegu magni af sólarljósi að þremur vatnsfylltum turnum og framleiða gufu við yfir 538 °C sem knýr rafmagnsframleiðandi hverfla.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-121" restype="x-paragraph">
+      <trans-unit id="seg-121">
         <source>Water is used as the working fluid because of its large heat capacity and heat of vaporization.</source>
         <target state="translated">Það framleiðir næga orku til að sjá 140.000 heimilum fyrir rafmagni.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-122" restype="x-list-item">
+      <trans-unit id="seg-122">
         <source>the specific heat of the substance being heated (in this case, water)</source>
         <target state="translated">Vatn er notað sem vinnsluvökvi vegna mikillar varmarýmdar og gufunarvarma.</target>
+        <note from="tool">type:list-item</note>
         <note from="developer">List item</note>
       </trans-unit>
-      <trans-unit id="seg-123" restype="x-list-item">
+      <trans-unit id="seg-123">
         <source>the amount of substance being heated (in this case, 8.0 × 10<g id="1" ctype="x-sup">2</g> g)</source>
         <target state="translated">eðlisvarmi efnisins sem er hitað (í þessu tilfelli, vatn)</target>
+        <note from="tool">type:list-item</note>
         <note from="developer">List item</note>
       </trans-unit>
-      <trans-unit id="seg-124" restype="x-list-item">
+      <trans-unit id="seg-124">
         <source>the magnitude of the temperature change (in this case, from 21 °C to 85 °C).</source>
         <target state="translated">magn efnisins sem er hitað (í þessu tilfelli, 8,0 × 10<g id="1" ctype="x-sup">2</g> g)</target>
+        <note from="tool">type:list-item</note>
         <note from="developer">List item</note>
       </trans-unit>
-      <trans-unit id="seg-125" restype="x-note-paragraph">
-        <source>Click on this <g id="1" ctype="x-link" xlink:href="http://openstax.org/l/16PHETtempFX">interactive simulation</g> to view the effects of temperature on molecular motion.</source>
+      <trans-unit id="seg-125">
+        <source>Click on this <g id="1" ctype="link" equiv-text="[interactive simulation](http://openstax.org/l/16PHETtempFX)">interactive simulation</g> to view the effects of temperature on molecular motion.</source>
         <target state="translated">stærð hitastigsbreytingarinnar (í þessu tilfelli, úr 21 °C í 85 °C).</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-126" restype="x-note-paragraph">
-        <source>The following <g id="1" ctype="x-link" xlink:href="http://openstax.org/l/16Bimetallic">demonstration</g> allows one to view the effects of heating and cooling a coiled bimetallic strip.</source>
+      <trans-unit id="seg-126">
+        <source>The following <g id="1" ctype="link" equiv-text="[demonstration](http://openstax.org/l/16Bimetallic)">demonstration</g> allows one to view the effects of heating and cooling a coiled bimetallic strip.</source>
         <target state="translated">sameindahreyfingu.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-127" restype="x-note-paragraph">
-        <source>Click on the <g id="1" ctype="x-link" xlink:href="http://openstax.org/l/16PHETenergy">PhET simulation</g> to explore energy forms and changes.</source>
+      <trans-unit id="seg-127">
+        <source>Click on the <g id="1" ctype="link" equiv-text="[PhET simulation](http://openstax.org/l/16PHETenergy)">PhET simulation</g> to explore energy forms and changes.</source>
         <target state="translated">að hita og kæla uppvafða tvímálmsræmu.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-128" restype="x-note-paragraph">
+      <trans-unit id="seg-128">
         <source>Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs.</source>
         <target state="translated">Farðu í flipann Orkukerfi til að búa til samsetningar af orkugjöfum, umbreytingaraðferðum og afköstum.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-129" restype="x-note-paragraph">
+      <trans-unit id="seg-129">
         <source>Click on Energy Symbols to visualize the transfer of energy.</source>
         <target state="translated">Smelltu á Orkutákn til að sjá orkuflutninginn fyrir þér.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-130" restype="x-note-subsection-title">
+      <trans-unit id="seg-130">
         <source>Answer:</source>
         <target state="translated">Svar:</target>
+        <note from="tool">type:note-subsection-title</note>
         <note from="developer">Heading level 3</note>
       </trans-unit>
-      <trans-unit id="seg-131" restype="x-note-paragraph">
+      <trans-unit id="seg-131">
         <source>5.07 <x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">4</g> J</source>
         <target state="translated">5,07 <x id="1" equiv-text="${\times }$" ctype="x-math"/> 10<g id="2" ctype="x-sup">4</g> J</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-132" restype="x-note-subsection-title">
+      <trans-unit id="seg-132">
         <source>Answer:</source>
         <target state="translated">Svar:</target>
+        <note from="tool">type:note-subsection-title</note>
         <note from="developer">Heading level 3</note>
       </trans-unit>
-      <trans-unit id="seg-133" restype="x-note-paragraph">
+      <trans-unit id="seg-133">
         <source><g id="1" ctype="x-bold">c</g> = 0.451 J/g °C; the metal is likely to be iron</source>
         <target state="translated"><g id="1" ctype="x-bold">c</g> = 0,451 J/g °C; málmurinn er líklega járn</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-134" restype="x-note-subsection-title">
+      <trans-unit id="seg-134">
         <source>Solar Thermal Energy Power Plants</source>
         <target state="translated">Sólarvarmaorkuver</target>
+        <note from="tool">type:note-subsection-title</note>
         <note from="developer">Heading level 3</note>
       </trans-unit>
-      <trans-unit id="seg-135" restype="x-note-paragraph">
+      <trans-unit id="seg-135">
         <source>The sunlight that reaches the earth contains thousands of times more energy than we presently capture.</source>
         <target state="translated">Sólarljósið sem nær til jarðar inniheldur þúsund sinnum meiri orku en við náum að nýta nú um stundir.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-136" restype="x-note-paragraph">
+      <trans-unit id="seg-136">
         <source>Solar thermal systems provide one possible solution to the problem of converting energy from the sun into energy we can use.</source>
         <target state="translated">Varmanýtingarkerfi sólarorku bjóða upp á eina mögulega lausn á því vandamáli að breyta orku frá sólinni í orku sem við getum notað.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-137" restype="x-note-paragraph">
+      <trans-unit id="seg-137">
         <source>Large-scale solar thermal plants have different design specifics, but all concentrate sunlight to heat some substance; the heat “stored” in that substance is then converted into electricity.</source>
         <target state="translated">Stórfelldar sólarvarmaorkuver hafa mismunandi hönnunareinkenni, en öll þjappa þau saman sólarljósi til að hita eitthvert efni; varmanum sem er „geymdur“ í því efni er síðan breytt í rafmagn.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-138" restype="x-note-paragraph">
+      <trans-unit id="seg-138">
         <source>The Solana Generating Station in Arizona’s Sonora Desert produces 280 megawatts of electrical power.</source>
         <target state="translated">Solana-raforkuverið í Sonora-eyðimörkinni í Arizona framleiðir 280 megavött af rafafli.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-139" restype="x-note-paragraph">
+      <trans-unit id="seg-139">
         <source>It uses parabolic mirrors that focus sunlight on pipes filled with a heat transfer fluid (HTF) ().</source>
         <target state="translated">Það notar fleygbogaspegla sem beina sólarljósi að rörum sem eru fyllt með varmaflutningsvökva (HTF) ().</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-140" restype="x-note-paragraph">
+      <trans-unit id="seg-140">
         <source>The HTF then does two things: It turns water into steam, which spins turbines, which in turn produces electricity, and it melts and heats a mixture of salts, which functions as a thermal energy storage system.</source>
         <target state="translated">Varmamiðlunarvökvinn gerir svo tvennt: Hann breytir vatni í gufu sem snýr hverflum sem aftur framleiða rafmagn, og hann bræðir og hitar efnablöndu af söltum sem virkar sem varmaorkugeymslukerfi.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-141" restype="x-note-paragraph">
+      <trans-unit id="seg-141">
         <source>After the sun goes down, the molten salt mixture can then release enough of its stored heat to produce steam to run the turbines for 6 hours.</source>
         <target state="translated">Eftir að sólin sest getur bráðna saltblandan losað nægan varma til að framleiða gufu til að keyra hverflana í 6 klukkustundir.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-142" restype="x-note-paragraph">
+      <trans-unit id="seg-142">
         <source>Molten salts are used because they possess a number of beneficial properties, including high heat capacities and thermal conductivities.</source>
         <target state="translated">Bráðin sölt eru notuð vegna þess að þau hafa ýmsa hagstæða eiginleika, þar á meðal mikla varmarýmd og varmaleiðni.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-143" restype="x-note-paragraph">
+      <trans-unit id="seg-143">
         <source>The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world ().</source>
         <target state="translated">Ivanpah sólarorkuverið, sem er 377 megavött og staðsett í Mojave-eyðimörkinni í Kaliforníu, er stærsta sólarvarmaorkuver í heimi (). 170.000 speglar þess beina gríðarlegu magni af sólarljósi að þremur vatnsfylltum turnum og framleiða gufu við yfir 538 °C sem knýr rafmagnsframleiðandi hverfla.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-144" restype="x-note-paragraph">
+      <trans-unit id="seg-144">
         <source>Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines.</source>
         <target state="translated">Það framleiðir næga orku til að sjá 140.000 heimilum fyrir rafmagni.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-145" restype="x-note-paragraph">
+      <trans-unit id="seg-145">
         <source>It produces enough energy to power 140,000 homes.</source>
         <target state="translated">Vatn er notað sem vinnuvökvi vegna mikillar varmarýmdar og gufunarvarma.</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-146" restype="x-note-paragraph">
+      <trans-unit id="seg-146">
         <source>Water is used as the working fluid because of its large heat capacity and heat of vaporization.</source>
         <target state="translated">Að mæla varma</target>
+        <note from="tool">type:note-paragraph</note>
         <note from="developer">Note content</note>
       </trans-unit>
-      <trans-unit id="seg-147" restype="x-example-subsection-title">
+      <trans-unit id="seg-147">
         <source>Measuring Heat</source>
         <target state="translated">Að mæla varma.</target>
+        <note from="tool">type:example-subsection-title</note>
         <note from="developer">Heading level 3</note>
       </trans-unit>
-      <trans-unit id="seg-148" restype="x-example-paragraph">
+      <trans-unit id="seg-148">
         <source>Measuring Heat A flask containing 8.0 <x id="1" equiv-text="[[EQ:8]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">2</g> g of water is heated, and the temperature of the water increases from 21 °C to 85 °C.</source>
         <target state="translated">Flaska sem inniheldur 8,0 <x id="1" equiv-text="${\times }$" ctype="x-math"/> 10<g id="2" ctype="x-sup">2</g> g af vatni er hituð og hitastig vatnsins hækkar úr 21 °C í 85 °C.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-149" restype="x-example-paragraph">
+      <trans-unit id="seg-149">
         <source>How much heat did the water absorb?</source>
         <target state="translated">Hversu mikinn varma gleypti vatnið?</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-150" restype="x-example-paragraph">
+      <trans-unit id="seg-150">
         <source>Solution To answer this question, consider these factors:</source>
         <target state="translated">Lausn Til að svara þessari spurningu skaltu íhuga eftirfarandi þætti:</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-151" restype="x-example-paragraph">
+      <trans-unit id="seg-151">
         <source>The specific heat of water is 4.184 J/g °C, so to heat 1 g of water by 1 °C requires 4.184 J.</source>
         <target state="translated">Eðlisvarmi vatns er 4,184 J/g °C, þannig að til að hita 1 g af vatni um 1 °C þarf 4,184 J.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-152" restype="x-example-paragraph">
+      <trans-unit id="seg-152">
         <source>We note that since 4.184 J is required to heat 1 g of water by 1 °C, we will need <g id="1" ctype="x-bold">800 times as much</g> to heat 8.0 × 10<g id="2" ctype="x-sup">2</g> g of water by 1 °C.</source>
         <target state="translated">Við tökum eftir því að þar sem 4,184 J þarf til að hita 1 g af vatni um 1 °C, þurfum við <g id="1" ctype="x-bold">800 sinnum meira</g> til að hita 8,0 × 10<g id="2" ctype="x-sup">2</g> g af vatni um 1 °C.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-153" restype="x-example-paragraph">
+      <trans-unit id="seg-153">
         <source>Finally, we observe that since 4.184 J are required to heat 1 g of water by 1 °C, we will need <g id="1" ctype="x-bold">64 times as much</g> to heat it by 64 °C (that is, from 21 °C to 85 °C).</source>
         <target state="translated">Að lokum sjáum við að þar sem 4,184 J þarf til að hita 1 g af vatni um 1 °C, þurfum við <g id="1" ctype="x-bold">64 sinnum meira</g> til að hita það um 64 °C (það er, úr 21 °C í 85 °C).</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-154" restype="x-example-paragraph">
+      <trans-unit id="seg-154">
         <source>This can be summarized using the equation:</source>
         <target state="translated">Þetta má draga saman með jöfnunni:</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-155" restype="x-example-paragraph">
+      <trans-unit id="seg-155">
         <source>Because the temperature increased, the water absorbed heat and <g id="1" ctype="x-bold">q</g> is positive.</source>
         <target state="translated">Þar sem hitastigið jókst, drakk vatnið í sig varma og <g id="1" ctype="x-bold">q</g> er jákvætt.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-156" restype="x-example-paragraph">
+      <trans-unit id="seg-156">
         <source>Check Your LearningHow much heat, in joules, must be added to a 502 g iron skillet to increase its temperature from 25 °C to 250 °C?</source>
         <target state="translated">Prófaðu þig áframHversu miklum varma, í júlum, þarf að bæta við 502 g járnsteikarpönnu til að auka hitastig hennar úr 25 °C í 250 °C?</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-157" restype="x-example-paragraph">
+      <trans-unit id="seg-157">
         <source>The specific heat of iron is 0.449 J/g °C.</source>
         <target state="translated">Eðlisvarmi járns er 0,449 J/g °C.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-158" restype="x-example-paragraph">
+      <trans-unit id="seg-158">
         <source>5.07 <x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">4</g> J</source>
         <target state="translated">5,07 <x id="1" equiv-text="${\times }$" ctype="x-math"/> 10<g id="2" ctype="x-sup">4</g> J</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-159" restype="x-example-subsection-title">
+      <trans-unit id="seg-159">
         <source>Determining Other Quantities</source>
         <target state="translated">Að ákvarða önnur magn</target>
+        <note from="tool">type:example-subsection-title</note>
         <note from="developer">Heading level 3</note>
       </trans-unit>
-      <trans-unit id="seg-160" restype="x-example-paragraph">
+      <trans-unit id="seg-160">
         <source>Determining Other Quantities A piece of unknown metal weighs 348 g.</source>
         <target state="translated">Að ákvarða önnur magn Óþekktur málmhlutur vegur 348 g.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-161" restype="x-example-paragraph">
+      <trans-unit id="seg-161">
         <source>When the metal piece absorbs 6.64 kJ of heat, its temperature increases from 22.4 °C to 43.6 °C.</source>
         <target state="translated">Þegar málmhluturinn drekkur í sig 6,64 kJ af varma hækkar hitastig hans úr 22,4 °C í 43,6 °C.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-162" restype="x-example-paragraph">
+      <trans-unit id="seg-162">
         <source>Determine the specific heat of this metal (which might provide a clue to its identity).</source>
         <target state="translated">Ákvarðaðu eðlisvarma þessa málms (sem gæti gefið vísbendingu um hvaða málmur þetta er).</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-163" restype="x-example-paragraph">
+      <trans-unit id="seg-163">
         <source>Solution Since mass, heat, and temperature change are known for this metal, we can determine its specific heat using the relationship:</source>
         <target state="translated">Lausn Þar sem massi, varmi og hitastigsbreyting eru þekkt fyrir þennan málm getum við ákvarðað eðlisvarma hans með því að nota sambandið:</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-164" restype="x-example-paragraph">
+      <trans-unit id="seg-164">
         <source>Substituting the known values:</source>
         <target state="translated">Settu inn þekkt gildi:</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-165" restype="x-example-paragraph">
+      <trans-unit id="seg-165">
         <source>Solving:</source>
         <target state="translated">Lausn:</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-166" restype="x-example-paragraph">
+      <trans-unit id="seg-166">
         <source>Comparing this value with the values in , this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.</source>
         <target state="translated">Þegar þetta gildi er borið saman við gildin í , samsvarar það eðlisvarma áls, sem bendir til þess að óþekkti málmurinn gæti verið ál.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-167" restype="x-example-paragraph">
+      <trans-unit id="seg-167">
         <source>Check Your Learning A piece of unknown metal weighs 217 g.</source>
         <target state="translated">Prófaðu þig áfram Óþekktur málmhlutur vegur 217 g.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-168" restype="x-example-paragraph">
+      <trans-unit id="seg-168">
         <source>When the metal piece absorbs 1.43 kJ of heat, its temperature increases from 24.5 °C to 39.1 °C.</source>
         <target state="translated">Þegar málmhluturinn drekkur í sig 1,43 kJ af varma hækkar hitastig hans úr 24,5 °C í 39,1 °C.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-169" restype="x-example-paragraph">
+      <trans-unit id="seg-169">
         <source>Determine the specific heat of this metal, and predict its identity.</source>
         <target state="translated">Ákvarðaðu eðlisvarma þessa málms og spáðu fyrir um hvaða málmur þetta er.</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-170" restype="x-example-paragraph">
+      <trans-unit id="seg-170">
         <source><g id="1" ctype="x-bold">c</g> = 0.451 J/g °C; the metal is likely to be iron</source>
         <target state="translated"><g id="1" ctype="x-bold">c</g> = 0,451 J/g °C; málmurinn er líklega járn</target>
+        <note from="tool">type:example-paragraph</note>
         <note from="developer">Example content</note>
       </trans-unit>
-      <trans-unit id="seg-171" restype="x-figure-caption">
+      <trans-unit id="seg-171">
         <source>(a) The molecules in a sample of hot water move more rapidly than (b) those in a sample of cold water.</source>
         <target state="translated"><g id="1" ctype="x-italic">Mynd: (a) Sameindirnar í sýni af heitu vatni hreyfast hraðar en (b) þær í sýni af köldu vatni.</g></target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-172" restype="x-figure-caption">
+      <trans-unit id="seg-172">
         <source>(a) In an alcohol or mercury thermometer, the liquid (dyed red for visibility) expands when heated and contracts when cooled, much more so than the glass tube that contains the liquid.</source>
         <target state="translated">*Mynd: (a) Í alkóhól- eða kvikasilfurshitamæli þenst vökvinn (rauðlitaður til að sjást betur) út þegar hann er hitaður og dregst saman þegar hann er kældur, mun meira en glerrörið sem inniheldur vökvann.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-173" restype="x-figure-caption">
+      <trans-unit id="seg-173">
         <source>(b) In a bimetallic thermometer, two different metals (such as brass and steel) form a two-layered strip.</source>
         <target state="translated">(b) Í tvímálmahitamæli mynda tveir mismunandi málmar (eins og látún og stál) tveggja laga ræmu.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-174" restype="x-figure-caption">
+      <trans-unit id="seg-174">
         <source>When heated or cooled, one of the metals (brass) expands or contracts more than the other metal (steel), causing the strip to coil or uncoil.</source>
         <target state="translated">Þegar hún er hituð eða kæld þenst annar málmurinn (látún) meira út eða dregst meira saman en hinn málmurinn (stál), sem veldur því að ræman vefst upp eða ofan af sér.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-175" restype="x-figure-caption">
+      <trans-unit id="seg-175">
         <source>Both types of thermometers have a calibrated scale that indicates the temperature. (credit a: modification of work by “dwstucke”/Flickr)</source>
         <target state="translated">Báðar gerðir hitamæla hafa kvarðaðan skala sem sýnir hitastigið. (heimild a: breyting á verki eftir „dwstucke“/Flickr)*</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-176" restype="x-figure-caption">
+      <trans-unit id="seg-176">
         <source>(a) Substances H and L are initially at different temperatures, and their atoms have different average kinetic energies.</source>
         <target state="translated">*Mynd: (a) Efnin H og L eru upphaflega á mismunandi hitastigi og atóm þeirra hafa mismunandi meðalhreyfiorku.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-177" restype="x-figure-caption">
+      <trans-unit id="seg-177">
         <source>(b) When they contact each other, collisions between the molecules result in the transfer of kinetic (thermal) energy from the hotter to the cooler matter.</source>
         <target state="translated">(b) Þegar þau komast í snertingu við hvort annað leiða árekstrar milli sameindanna til flutnings á hreyfiorku (varmaorku) frá heitara efninu yfir í það kaldara.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-178" restype="x-figure-caption">
+      <trans-unit id="seg-178">
         <source>(c) The two objects reach “thermal equilibrium” when both substances are at the same temperature and their molecules have the same average kinetic energy.</source>
         <target state="translated">(c) Hlutirnir tveir ná „varmajafnvægi“ þegar bæði efnin eru á sama hitastigi og sameindir þeirra hafa sömu meðalhreyfiorku.*</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-179" restype="x-figure-caption">
+      <trans-unit id="seg-179">
         <source>(a) An oxyacetylene torch produces heat by the combustion of acetylene in oxygen.</source>
         <target state="translated">*Mynd: (a) Acetýlen-súrefnislogsuðutæki framleiðir varma með bruna asetýlens í súrefni.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-180" restype="x-figure-caption">
+      <trans-unit id="seg-180">
         <source>The energy released by this exothermic reaction heats and then melts the metal being cut.</source>
         <target state="translated">Orkan sem losnar við þetta útverma hvarf hitar og bræðir síðan málminn sem verið er að skera.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-181" restype="x-figure-caption">
+      <trans-unit id="seg-181">
         <source>The sparks are tiny bits of the molten metal flying away.</source>
         <target state="translated">Neistarnir eru örsmáir bitar af bráðnum málmi sem fljúga í burtu.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-182" restype="x-figure-caption">
+      <trans-unit id="seg-182">
         <source>(b) A cold pack uses an endothermic process to create the sensation of cold. (credit a: modification of work by “Skatebiker”/Wikimedia commons)</source>
         <target state="translated">(b) Kaldur bakstur notar innvermið ferli til að skapa kuldatilfinningu. (heimild a: breyting á verki eftir „Skatebiker“/Wikimedia commons)*</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-183" restype="x-figure-caption">
+      <trans-unit id="seg-183">
         <source>Because of its larger mass, a large frying pan has a larger heat capacity than a small frying pan.</source>
         <target state="translated">*Mynd: Vegna meiri massa hefur stór steikarpanna meiri varmarýmd en lítil steikarpanna.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-184" restype="x-figure-caption">
+      <trans-unit id="seg-184">
         <source>Because they are made of the same material, both frying pans have the same specific heat. (credit: Mark Blaser)</source>
         <target state="translated">Þar sem þær eru gerðar úr sama efni hafa báðar steikarpönnurnar sama eðlisvarma. (heimild: Mark Blaser)*</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-185" restype="x-figure-caption">
+      <trans-unit id="seg-185">
         <source>This solar thermal plant uses parabolic trough mirrors to concentrate sunlight. (credit a: modification of work by Bureau of Land Management)</source>
         <target state="translated"><g id="1" ctype="x-italic">Mynd: Þessi sólarvarmaverksmiðja notar fleygbogaspegla til að safna saman sólarljósi. (heimild a: breyting á verki eftir Bureau of Land Management)</g></target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-186" restype="x-figure-caption">
+      <trans-unit id="seg-186">
         <source>(a) The Ivanpah solar thermal plant uses 170,000 mirrors to concentrate sunlight on water-filled towers.</source>
         <target state="translated">*Mynd: (a) Ivanpah sólarvarmaverksmiðjan notar 170.000 spegla til að safna saman sólarljósi á vatnsfyllta turna.</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-187" restype="x-figure-caption">
+      <trans-unit id="seg-187">
         <source>(b) It covers 4000 acres of public land near the Mojave Desert and the California-Nevada border. (credit a: modification of work by Craig Dietrich; credit b: modification of work by “USFWS Pacific Southwest Region”/Flickr)</source>
         <target state="translated">(b) Hún þekur 4000 ekrur af almenningslandi nálægt Mojave-eyðimörkinni og landamærum Kaliforníu og Nevada. (heimild a: breyting á verki eftir Craig Dietrich; heimild b: breyting á verki eftir „USFWS Pacific Southwest Region“/Flickr)*</target>
+        <note from="tool">type:figure-caption</note>
         <note from="developer">Figure caption</note>
       </trans-unit>
-      <trans-unit id="seg-188" restype="x-section-title">
+      <trans-unit id="seg-188">
         <source>Key Concepts and Summary</source>
         <target state="translated">Lykilhugtök og samantekt</target>
+        <note from="tool">type:section-title</note>
         <note from="developer">Heading level 2</note>
       </trans-unit>
-      <trans-unit id="seg-189" restype="x-paragraph">
+      <trans-unit id="seg-189">
         <source>Energy is the capacity to supply heat or do work (applying a force to move matter).</source>
         <target state="translated">Orka er geta til að veita varma eða vinna vinnu (beita krafti til að hreyfa efni).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-190" restype="x-paragraph">
+      <trans-unit id="seg-190">
         <source>Kinetic energy (KE) is the energy of motion; potential energy is energy due to relative position, composition, or condition.</source>
         <target state="translated">Hreyfiorka (KE) er orka hreyfingar; stöðuorka er orka vegna hlutfallslegrar stöðu, samsetningar eða ástands.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-191" restype="x-paragraph">
+      <trans-unit id="seg-191">
         <source>When energy is converted from one form into another, energy is neither created nor destroyed (law of conservation of energy or first law of thermodynamics).</source>
         <target state="translated">Þegar orku er breytt úr einu formi í annað er orka hvorki búin til né eytt (lögmálið um varðveislu orku eða fyrsta lögmál varmafræðinnar).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-192" restype="x-paragraph">
+      <trans-unit id="seg-192">
         <source>The thermal energy of matter is due to the kinetic energies of its constituent atoms or molecules.</source>
         <target state="translated">Varmaorka efnis stafar af hreyfiorku atóma eða sameinda sem það er gert úr.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-193" restype="x-paragraph">
+      <trans-unit id="seg-193">
         <source>Temperature is an intensive property of matter reflecting hotness or coldness that increases as the average kinetic energy increases.</source>
         <target state="translated">Hitastig er eiginleiki efnis sem endurspeglar hita eða kulda og eykst eftir því sem meðalhreyfiorka eykst.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-194" restype="x-paragraph">
+      <trans-unit id="seg-194">
         <source>Heat is the transfer of thermal energy between objects at different temperatures.</source>
         <target state="translated">Varmi er flutningur varmaorku milli hluta á mismunandi hitastigi.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-195" restype="x-paragraph">
+      <trans-unit id="seg-195">
         <source>Chemical and physical processes can absorb heat (endothermic) or release heat (exothermic).</source>
         <target state="translated">Efna- og eðlisfræðileg ferli geta tekið upp varma (innvermið) eða losað varma (útvermið).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-196" restype="x-paragraph">
+      <trans-unit id="seg-196">
         <source>The SI unit of energy, heat, and work is the joule (J).</source>
         <target state="translated">SI-eining orku, varma og vinnu er júl (J).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-197" restype="x-paragraph">
+      <trans-unit id="seg-197">
         <source>Specific heat and heat capacity are measures of the energy needed to change the temperature of a substance or object.</source>
         <target state="translated">Eðlisvarmi og varmarýmd eru mælikvarðar á þá orku sem þarf til að breyta hitastigi efnis eða hlutar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-198" restype="x-paragraph">
+      <trans-unit id="seg-198">
         <source>The amount of heat absorbed or released by a substance depends directly on the type of substance, its mass, and the temperature change it undergoes.</source>
         <target state="translated">Magn varma sem efni tekur upp eða losar fer beint eftir tegund efnis, massa þess og hitastigsbreytingunni sem það verður fyrir.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-199" restype="x-section-title">
+      <trans-unit id="seg-199">
         <source>Key Equations</source>
         <target state="translated">Lykiljafna</target>
+        <note from="tool">type:section-title</note>
         <note from="developer">Heading level 2</note>
       </trans-unit>
-      <trans-unit id="seg-200" restype="x-section-title">
+      <trans-unit id="seg-200">
         <source>Chemistry End of Chapter Exercises</source>
         <target state="translated">Efnafræði – verkefni í lok kafla</target>
+        <note from="tool">type:section-title</note>
         <note from="developer">Heading level 2</note>
       </trans-unit>
-      <trans-unit id="seg-201" restype="x-paragraph">
+      <trans-unit id="seg-201">
         <source>A burning match and a bonfire may have the same temperature, yet you would not sit around a burning match on a fall evening to stay warm.</source>
         <target state="translated">Brennandi eldspýta og varðeldur geta haft sama hitastig, en samt myndir þú ekki sitja við brennandi eldspýtu á haustkvöldi til að halda á þér hita.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-202" restype="x-paragraph">
+      <trans-unit id="seg-202">
         <source>Why not?</source>
         <target state="translated">Hvers vegna ekki?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-203" restype="x-paragraph">
+      <trans-unit id="seg-203">
         <source>The temperature of 1 gram of burning wood is approximately the same for both a match and a bonfire.</source>
         <target state="translated">Hitastig 1 gramms af brennandi viði er um það bil það sama fyrir bæði eldspýtu og varðeld</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-204" restype="x-paragraph">
+      <trans-unit id="seg-204">
         <source>This is an intensive property and depends on the material (wood).</source>
         <target state="translated">.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-205" restype="x-paragraph">
+      <trans-unit id="seg-205">
         <source>However, the overall amount of produced heat depends on the amount of material; this is an extensive property.</source>
         <target state="translated">Þetta er eðliseiginleiki og fer eftir efninu (viði).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-206" restype="x-paragraph">
+      <trans-unit id="seg-206">
         <source>The amount of wood in a bonfire is much greater than that in a match; the total amount of produced heat is also much greater, which is why we can sit around a bonfire to stay warm, but a match would not provide enough heat to keep us from getting cold.</source>
         <target state="translated">Heildarmagn varmans sem myndast fer hins vegar eftir magni efnisins; þetta er magnbundinn eiginleiki.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-207" restype="x-paragraph">
+      <trans-unit id="seg-207">
         <source>Prepare a table identifying several energy transitions that take place during the typical operation of an automobile.</source>
         <target state="translated">Viðarmagnið í varðeldi er mun meira en í eldspýtu; heildarmagn varmans sem myndast er því einnig mun meira og þess vegna getum við setið í kringum varðeld til að halda á okkur hita, en eldspýta myndi ekki veita nægan varma til að koma í veg fyrir að okkur yrði kalt.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-208" restype="x-paragraph">
+      <trans-unit id="seg-208">
         <source>Explain the difference between heat capacity and specific heat of a substance.</source>
         <target state="translated">Búðu til töflu sem sýnir nokkrar orkubreytingar sem eiga sér stað við venjulega notkun bifreiðar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-209" restype="x-paragraph">
+      <trans-unit id="seg-209">
         <source>Heat capacity refers to the heat required to raise the temperature of the mass of the substance 1 degree; specific heat refers to the heat required to raise the temperature of 1 gram of the substance 1 degree.</source>
         <target state="translated">Útskýrðu muninn á varmarýmd og eðlisvarma efnis.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-210" restype="x-paragraph">
+      <trans-unit id="seg-210">
         <source>Thus, heat capacity is an extensive property, and specific heat is an intensive one.</source>
         <target state="translated">Varmarýmd vísar til þess varma sem þarf til að hækka hitastig massa efnisins um 1 gráðu; eðlisvarmi vísar til þess varma sem þarf til að hækka hitastig 1 gramms af efninu um 1 gráðu.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-211" restype="x-paragraph">
+      <trans-unit id="seg-211">
         <source>Calculate the heat capacity, in joules and in calories per degree, of the following:</source>
         <target state="translated">Þannig er varmarýmd magnbundinn eiginleiki og eðlisvarmi er eðliseiginleiki.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-212" restype="x-paragraph">
+      <trans-unit id="seg-212">
         <source>(a) 28.4 g of water</source>
         <target state="translated">Reiknaðu varmarýmdina, í júlum og í kalóríum á gráðu, fyrir eftirfarandi:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-213" restype="x-paragraph">
+      <trans-unit id="seg-213">
         <source>(b) 1.00 oz of lead</source>
         <target state="translated">\(a\) 28,4 g af vatni</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-214" restype="x-paragraph">
+      <trans-unit id="seg-214">
         <source>Calculate the heat capacity, in joules and in calories per degree, of the following:</source>
         <target state="translated">\(b\) 1,00 oz af blýi</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-215" restype="x-paragraph">
+      <trans-unit id="seg-215">
         <source>(a) 45.8 g of nitrogen gas</source>
         <target state="translated">Reiknaðu varmarýmdina, í júlum og í kalóríum á gráðu, fyrir eftirfarandi:</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-216" restype="x-paragraph">
+      <trans-unit id="seg-216">
         <source>(b) 1.00 pound of aluminum metal</source>
         <target state="translated">\(a\) 45,8 g af köfnunarefnisgasi</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-217" restype="x-paragraph">
+      <trans-unit id="seg-217">
         <source>(a) 47.6 J/°C; 11.38 cal °C<g id="1" ctype="x-sup">−1</g>; (b) 407 J/°C; 97.3 cal °C<g id="2" ctype="x-sup">−1</g></source>
         <target state="translated">\(b\) 1,00 pund af áli</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-218" restype="x-paragraph">
+      <trans-unit id="seg-218">
         <source>How much heat, in joules and in calories, must be added to a 75.0–g iron block with a specific heat of 0.449 J/g °C to increase its temperature from 25 °C to its melting temperature of 1535 °C?</source>
         <target state="translated">\(a\) 47,6 J/°C; 11,38 cal °C⁻¹; (b) 407 J/°C; 97,3 cal °C⁻¹</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-219" restype="x-paragraph">
+      <trans-unit id="seg-219">
         <source>How much heat, in joules and in calories, is required to heat a 28.4-g (1-oz) ice cube from −23.0 °C to −1.0 °C?</source>
         <target state="translated">Hversu miklum varma, í júlum og í kalóríum, þarf að bæta við 75,0 g járnblokk með eðlisvarma 0,449 J/g °C til að hækka hitastig hennar úr 25 °C í bráðnunarhitastig sitt, 1535 °C?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-220" restype="x-paragraph">
+      <trans-unit id="seg-220">
         <source>1310 J; 313 cal</source>
         <target state="translated">Hversu mikinn varma, í júlum og í kalóríum, þarf til að hita 28,4 g (1 oz) ísmola úr −23,0 °C í −1,0 °C?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-221" restype="x-paragraph">
+      <trans-unit id="seg-221">
         <source>How much would the temperature of 275 g of water increase if 36.5 kJ of heat were added?</source>
         <target state="translated">1310 J; 313 cal</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-222" restype="x-paragraph">
+      <trans-unit id="seg-222">
         <source>If 14.5 kJ of heat were added to 485 g of liquid water, how much would its temperature increase?</source>
         <target state="translated">Hversu mikið myndi hitastig 275 g af vatni hækka ef 36,5 kJ af varma væri bætt við?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-223" restype="x-paragraph">
+      <trans-unit id="seg-223">
         <source>7.15 °C</source>
         <target state="translated">Ef 14,5 kJ af varma væri bætt við 485 g af fljótandi vatni, hversu mikið myndi hitastig þess hækka?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-224" restype="x-paragraph">
+      <trans-unit id="seg-224">
         <source>A piece of unknown substance weighs 44.7 g and requires 2110 J to increase its temperature from 23.2 °C to 89.6 °C.</source>
         <target state="translated">7,15 °C</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-225" restype="x-paragraph">
+      <trans-unit id="seg-225">
         <source>(a) What is the specific heat of the substance?</source>
         <target state="translated">Hlutur úr óþekktu efni vegur 44,7 g og þarf 2110 J til að hækka hitastig sitt úr 23,2 °C í 89,6 °C.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-226" restype="x-paragraph">
+      <trans-unit id="seg-226">
         <source>(b) If it is one of the substances found in , what is its likely identity?</source>
         <target state="translated">\(a\) Hver er eðlisvarmi efnisins?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-227" restype="x-paragraph">
+      <trans-unit id="seg-227">
         <source>A piece of unknown solid substance weighs 437.2 g, and requires 8460 J to increase its temperature from 19.3 °C to 68.9 °C.</source>
         <target state="translated">\(b\) Ef það er eitt af efnunum sem finnast í , hvert er það líklega?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-228" restype="x-paragraph">
+      <trans-unit id="seg-228">
         <source>(a) What is the specific heat of the substance?</source>
         <target state="translated">Hlutur úr óþekktu föstu efni vegur 437,2 g og þarf 8460 J til að hækka hitastig sitt úr 19,3 °C í 68,9 °C.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-229" restype="x-paragraph">
+      <trans-unit id="seg-229">
         <source>(b) If it is one of the substances found in , what is its likely identity?</source>
         <target state="translated">\(a\) Hver er eðlisvarmi efnisins?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-230" restype="x-paragraph">
+      <trans-unit id="seg-230">
         <source>(a) 0.390 J/g °C; (b) Copper is a likely candidate.</source>
         <target state="translated">\(b\) Ef það er eitt af efnunum sem finnast í , hvert er það líklega?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-231" restype="x-paragraph">
+      <trans-unit id="seg-231">
         <source>An aluminum kettle weighs 1.05 kg.</source>
         <target state="translated">\(a\) 0,390 J/g °C; (b) Kopar er líklegur kandídat.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-232" restype="x-paragraph">
+      <trans-unit id="seg-232">
         <source>(a) What is the heat capacity of the kettle?</source>
         <target state="translated">Álketill vegur 1,05 kg.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-233" restype="x-paragraph">
+      <trans-unit id="seg-233">
         <source>(b) How much heat is required to increase the temperature of this kettle from 23.0 °C to 99.0 °C?</source>
         <target state="translated">\(a\) Hver er varmarýmd ketilsins?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-234" restype="x-paragraph">
+      <trans-unit id="seg-234">
         <source>(c) How much heat is required to heat this kettle from 23.0 °C to 99.0 °C if it contains 1.25 L of water (density of 0.997 g/mL and a specific heat of 4.184 J/g °C)?</source>
         <target state="translated">\(b\) Hversu mikinn varma þarf til að hækka hitastig þessa ketils úr 23,0 °C í 99,0 °C?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-235" restype="x-paragraph">
+      <trans-unit id="seg-235">
         <source>Most people find waterbeds uncomfortable unless the water temperature is maintained at about 85 °F.</source>
         <target state="translated">\(c\) Hversu mikinn varma þarf til að hita þennan ketil úr 23,0 °C í 99,0 °C ef hann inniheldur 1,25 L af vatni (eðlismassi 0,997 g/ml og eðlisvarmi 4,184 J/g °C)?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-236" restype="x-paragraph">
+      <trans-unit id="seg-236">
         <source>Unless it is heated, a waterbed that contains 892 L of water cools from 85 °F to 72 °F in 24 hours.</source>
         <target state="translated">Flestum finnst vatnsrúm óþægileg nema hitastig vatnsins sé haldið við um 85 °F.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-237" restype="x-paragraph">
+      <trans-unit id="seg-237">
         <source>Estimate the amount of electrical energy required over 24 hours, in kWh, to keep the bed from cooling.</source>
         <target state="translated">Nema það sé hitað kólnar vatnsrúm sem inniheldur 892 L af vatni úr 85 °F í 72 °F á 24 klukkustundum.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-238" restype="x-paragraph">
+      <trans-unit id="seg-238">
         <source>Note that 1 kilowatt-hour (kWh) = 3.6 <x id="1" equiv-text="[[EQ:16]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">6</g> J, and assume that the density of water is 1.0 g/mL (independent of temperature).</source>
         <target state="translated">Áætlaðu magn raforku sem þarf á 24 klukkustundum, í kWst, til að koma í veg fyrir að rúmið kólni.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-239" restype="x-paragraph">
+      <trans-unit id="seg-239">
         <source>What other assumptions did you make?</source>
         <target state="translated">Athugið að 1 kílóvattstund (kWst) = 3,6 <x id="1" equiv-text="${\times }$" ctype="x-math"/> 10<g id="2" ctype="x-sup">6</g> J, og gerið ráð fyrir að eðlismassi vatns sé 1,0 g/ml (óháð hitastigi).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-240" restype="x-paragraph">
+      <trans-unit id="seg-240">
         <source>How did they affect your calculated result (i.e., were they likely to yield “positive” or “negative” errors)?</source>
         <target state="translated">Hvaða aðrar forsendur gerðir þú?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-241" restype="x-paragraph">
+      <trans-unit id="seg-241">
         <source>We assume that the density of water is 1.0 g/cm<g id="1" ctype="x-sup">3</g>(1 g/mL) and that it takes as much energy to keep the water at 85 °F as to heat it from 72 °F to 85 °F.</source>
         <target state="translated">Hvernig höfðu þær áhrif á útreiknaða niðurstöðu þína (þ.e. voru þær líklegar til að valda „jákvæðum“ eða „neikvæðum“ skekkjum)?</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-242" restype="x-paragraph">
+      <trans-unit id="seg-242">
         <source>We also assume that only the water is going to be heated.</source>
         <target state="translated">Við gerum ráð fyrir að eðlismassi vatns sé 1,0 g/cm³ (1 g/ml) og að það þurfi jafn mikla orku til að halda vatninu við 85 °F og til að hita það úr 72 °F í 85 °F.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-243" restype="x-paragraph">
+      <trans-unit id="seg-243">
         <source>Energy required = 7.47 kWh</source>
         <target state="translated">Við gerum einnig ráð fyrir að aðeins vatnið verði hitað.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-244" restype="x-paragraph">
+      <trans-unit id="seg-244">
         <source>Chemical changes and their accompanying changes in energy are important parts of our everyday world ().</source>
         <target state="translated">Orka sem þarf = 7,47 kWst</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-245" restype="x-paragraph">
+      <trans-unit id="seg-245">
         <source>The macronutrients in food (proteins, fats, and carbohydrates) undergo metabolic reactions that provide the energy to keep our bodies functioning.</source>
         <target state="translated">Efnahvörf og orkubreytingar sem þeim fylgja eru mikilvægir þættir í okkar daglega lífi ().</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-246" restype="x-paragraph">
+      <trans-unit id="seg-246">
         <source>We burn a variety of fuels (gasoline, natural gas, coal) to produce energy for transportation, heating, and the generation of electricity.</source>
         <target state="translated">Aðalnæringarefnin í mat (prótein, fita og kolvetni) gangast undir efnaskiptahvörf sem veita orkuna til að halda líkama okkar starfandi.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-247" restype="x-paragraph">
+      <trans-unit id="seg-247">
         <source>Industrial chemical reactions use enormous amounts of energy to produce raw materials (such as iron and aluminum).</source>
         <target state="translated">Við brennum ýmsum eldsneytistegundum (bensíni, jarðgasi, kolum) til að framleiða orku fyrir samgöngur, upphitun og raforkuframleiðslu.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-248" restype="x-paragraph">
+      <trans-unit id="seg-248">
         <source>Energy is then used to manufacture those raw materials into useful products, such as cars, skyscrapers, and bridges.</source>
         <target state="translated">Iðnaðarleg efnahvörf nota gríðarlegt magn af orku til að framleiða hráefni (svo sem járn og ál).</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-249" restype="x-paragraph">
+      <trans-unit id="seg-249">
         <source>Over 90% of the energy we use comes originally from the sun.</source>
         <target state="translated">Orka er síðan notuð til að framleiða þessi hráefni í nytsamlegar vörur, svo sem bíla, skýjakljúfa og brýr.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-250" restype="x-paragraph">
+      <trans-unit id="seg-250">
         <source>Every day, the sun provides the earth with almost 10,000 times the amount of energy necessary to meet all of the world’s energy needs for that day.</source>
         <target state="translated">Yfir 90% af orkunni sem við notum kemur upphaflega frá sólinni.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-251" restype="x-paragraph">
+      <trans-unit id="seg-251">
         <source>Our challenge is to find ways to convert and store incoming solar energy so that it can be used in reactions or chemical processes that are both convenient and nonpolluting.</source>
         <target state="translated">Á hverjum degi veitir sólin jörðinni næstum 10.000 sinnum meiri orku en nauðsynlegt er til að mæta allri orkuþörf heimsins þann daginn.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-252" restype="x-paragraph">
+      <trans-unit id="seg-252">
         <source>Plants and many bacteria capture solar energy through photosynthesis.</source>
         <target state="translated">Viðfangsefnið okkar er að finna leiðir til að umbreyta og geyma sólarorku þannig að hægt sé að nota hana í efnahvörfum eða efnaferlum sem eru bæði hentugir og mengunarlausir.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-253" restype="x-paragraph">
+      <trans-unit id="seg-253">
         <source>We release the energy stored in plants when we burn wood or plant products such as ethanol.</source>
         <target state="translated">Plöntur og margar bakteríur fanga sólarorku með ljóstillífun.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-254" restype="x-paragraph">
+      <trans-unit id="seg-254">
         <source>We also use this energy to fuel our bodies by eating food that comes directly from plants or from animals that got their energy by eating plants.</source>
         <target state="translated">Við losum orkuna sem geymd er í plöntum þegar við brennum viði eða plöntuafurðum eins og etanóli.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-255" restype="x-paragraph">
+      <trans-unit id="seg-255">
         <source>Burning coal and petroleum also releases stored solar energy: These fuels are fossilized plant and animal matter.</source>
         <target state="translated">Við notum þessa orku líka til að knýja líkama okkar með því að borða mat sem kemur beint frá plöntum eða dýrum sem fengu orku sína með því að éta plöntur.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-256" restype="x-paragraph">
+      <trans-unit id="seg-256">
         <source>This chapter will introduce the basic ideas of an important area of science concerned with the amount of heat absorbed or released during chemical and physical changes—an area called <g id="1" ctype="x-bold">thermochemistry</g>.</source>
         <target state="translated">Með því að brenna kolum og jarðolíu losnar einnig geymd sólarorka: Þetta eldsneyti er steingerðar plöntu- og dýraleifar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-257" restype="x-paragraph">
+      <trans-unit id="seg-257">
         <source>The concepts introduced in this chapter are widely used in almost all scientific and technical fields.</source>
         <target state="translated">Í þessum kafla verða kynntar grundvallarhugmyndir mikilvægs sviðs vísinda sem fjallar um magn varma sem frásogast eða losnar við efna- og eðlisfræðilegar breytingar – svið sem kallast <g id="1" ctype="x-bold">varmaefnafræði</g>.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-258" restype="x-paragraph">
+      <trans-unit id="seg-258">
         <source>Food scientists use them to determine the energy content of foods.</source>
         <target state="translated">Hugtökin sem kynnt eru í þessum kafla eru mikið notuð á næstum öllum vísinda- og tæknisviðum.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-259" restype="x-paragraph">
+      <trans-unit id="seg-259">
         <source>Biologists study the energetics of living organisms, such as the metabolic combustion of sugar into carbon dioxide and water.</source>
         <target state="translated">Matvælafræðingar nota þau til að ákvarða orkuinnihald matvæla.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-260" restype="x-paragraph">
+      <trans-unit id="seg-260">
         <source>The oil, gas, and transportation industries, renewable energy providers, and many others endeavor to find better methods to produce energy for our commercial and personal needs.</source>
         <target state="translated">Líffræðingar rannsaka orkubúskap lífvera, svo sem efnaskiptabruna sykurs í koldíoxíð og vatn.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-261" restype="x-paragraph">
+      <trans-unit id="seg-261">
         <source>Engineers strive to improve energy efficiency, find better ways to heat and cool our homes, refrigerate our food and drinks, and meet the energy and cooling needs of computers and electronics, among other applications.</source>
         <target state="translated">Olíu-, gas- og samgönguiðnaðurinn, veitendur endurnýjanlegrar orku og margir aðrir leitast við að finna betri aðferðir til að framleiða orku fyrir viðskipta- og persónulegar þarfir okkar.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-262" restype="x-paragraph">
+      <trans-unit id="seg-262">
         <source>Understanding thermochemical principles is essential for chemists, physicists, biologists, geologists, every type of engineer, and just about anyone who studies or does any kind of science.</source>
         <target state="translated">Verkfræðingar leitast við að bæta orkunýtingu, finna betri leiðir til að hita og kæla heimili okkar, kæla mat og drykki og mæta orku- og kæliþörfum tölva og rafeindatækja, meðal annarra nota.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
-      <trans-unit id="seg-263" restype="x-paragraph">
+      <trans-unit id="seg-263">
         <source></source>
         <target state="translated">Skilningur á varmaefnafræðilegum lögmálum er nauðsynlegur fyrir efnafræðinga, eðlisfræðinga, líffræðinga, jarðfræðinga, allar tegundir verkfræðinga og nánast alla sem stunda eða vinna að hvers kyns vísindum.</target>
+        <note from="tool">type:paragraph</note>
       </trans-unit>
     </body>
   </file>
