@@ -42,6 +42,10 @@ const imagesRoutes = require('./routes/images');
 const viewRoutes = require('./routes/views');
 const booksRoutes = require('./routes/books');
 
+// Import Phase 3 routes (Editor)
+const editorRoutes = require('./routes/editor');
+const reviewsRoutes = require('./routes/reviews');
+
 // Configuration
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -78,6 +82,10 @@ app.use('/api/workflow', workflowRoutes);
 app.use('/api/issues', issuesRoutes);
 app.use('/api/sync', syncRoutes);
 app.use('/api/images', imagesRoutes);
+
+// Phase 3 API Routes (Editor)
+app.use('/api/editor', editorRoutes);
+app.use('/api/reviews', reviewsRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -127,7 +135,18 @@ app.get('/api', (req, res) => {
       // Phase 2 - Images
       'GET /api/images/:book': 'Book image overview',
       'GET /api/images/:book/:chapter': 'Chapter image details',
-      'POST /api/images/:book/:chapter/:id/upload': 'Upload translated image'
+      'POST /api/images/:book/:chapter/:id/upload': 'Upload translated image',
+      // Phase 3 - Editor
+      'GET /api/editor/:book/:chapter': 'List sections in chapter',
+      'GET /api/editor/:book/:chapter/:section': 'Load section content',
+      'POST /api/editor/:book/:chapter/:section/save': 'Save draft',
+      'POST /api/editor/:book/:chapter/:section/submit': 'Submit for review',
+      'GET /api/editor/:book/:chapter/:section/history': 'Get version history',
+      // Phase 3 - Reviews
+      'GET /api/reviews': 'List pending reviews',
+      'GET /api/reviews/:id': 'Get review details',
+      'POST /api/reviews/:id/approve': 'Approve review',
+      'POST /api/reviews/:id/changes': 'Request changes'
     },
     documentation: 'https://github.com/SigurdurVilhelmsson/namsbokasafn-efni'
   });
@@ -199,6 +218,8 @@ app.listen(PORT, HOST, () => {
   console.log('');
   console.log('Web Interface:');
   console.log('  /workflow   Multi-step workflow wizard');
+  console.log('  /editor     Markdown editor');
+  console.log('  /reviews    Review dashboard');
   console.log('  /issues     Issue review dashboard');
   console.log('  /images     Image translation tracker');
   console.log('');

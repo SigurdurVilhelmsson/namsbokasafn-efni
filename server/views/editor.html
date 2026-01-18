@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritstjóri - Námsbókasafn</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/editor" class="active">Ritstjóri</a>
+      <a href="/reviews">Yfirferðir</a>
+      <a href="/issues">Atriði</a>
+      <a href="/images">Myndir</a>
+      <a href="/status">Staða</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <!-- Section Selector (shown when no section selected) -->
+    <div class="card" id="section-selector">
+      <h2 class="card-title">Velja kafla til að breyta</h2>
+      <div class="grid grid-2">
+        <div class="form-group">
+          <label class="form-label">Bók</label>
+          <select class="form-select" id="book-select">
+            <option value="">Veldu bók...</option>
+            <option value="efnafraedi">Efnafræði</option>
+            <option value="liffraedi">Líffræði</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kafli</label>
+          <select class="form-select" id="chapter-select" disabled>
+            <option value="">Veldu kafla...</option>
+          </select>
+        </div>
+      </div>
+      <div id="sections-list" class="sections-list" style="display: none;">
+        <h3>Hlutar í kafla:</h3>
+        <div id="sections-container"></div>
+      </div>
+    </div>
+
+    <!-- Editor (shown when section selected) -->
+    <div id="editor-container" style="display: none;">
+      <div class="editor-header">
+        <div class="editor-title">
+          <button class="btn btn-secondary btn-small" id="back-btn">
+            <i class="fas fa-arrow-left"></i> Til baka
+          </button>
+          <h2 id="section-title">Kafli</h2>
+        </div>
+        <div class="editor-actions">
+          <span class="save-status" id="save-status"></span>
+          <button class="btn btn-secondary" id="toggle-source-btn" title="Sýna/fela enska texta">
+            <i class="fas fa-columns"></i> EN/IS
+          </button>
+          <button class="btn btn-secondary" id="history-btn" title="Útgáfusaga">
+            <i class="fas fa-history"></i>
+          </button>
+          <button class="btn btn-secondary" id="save-btn">
+            <i class="fas fa-save"></i> Vista
+          </button>
+          <button class="btn btn-primary" id="submit-btn">
+            <i class="fas fa-paper-plane"></i> Senda til yfirferðar
+          </button>
+        </div>
+      </div>
+
+      <!-- Pending review warning -->
+      <div class="alert alert-warning" id="pending-review-alert" style="display: none;">
+        <i class="fas fa-clock"></i>
+        <span id="pending-review-text"></span>
+      </div>
+
+      <!-- Side-by-side view -->
+      <div class="editor-content" id="editor-content">
+        <div class="source-panel" id="source-panel" style="display: none;">
+          <div class="panel-header">
+            <h3>Enska (upprunalegur texti)</h3>
+          </div>
+          <div class="source-content" id="source-content"></div>
+        </div>
+        <div class="editor-panel">
+          <div class="panel-header">
+            <h3>Íslenska (þýðing)</h3>
+          </div>
+          <textarea id="markdown-editor"></textarea>
+        </div>
+      </div>
+
+      <!-- History sidebar -->
+      <div class="history-sidebar" id="history-sidebar" style="display: none;">
+        <div class="sidebar-header">
+          <h3>Útgáfusaga</h3>
+          <button class="btn-close" id="close-history">&times;</button>
+        </div>
+        <div class="history-list" id="history-list"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+  <script>
+    let currentBook = null;
+    let currentChapter = null;
+    let currentSection = null;
+    let editor = null;
+    let autosaveTimer = null;
+    let lastSavedContent = '';
+    let isSourceVisible = false;
+
+    // Initialize page
+    async function init() {
+      // Check auth
+      const authRes = await fetch('/api/auth/me');
+      const authData = await authRes.json();
+      const userEl = document.getElementById('user-info');
+
+      if (!authData.authenticated) {
+        userEl.innerHTML = '<a href="/api/auth/login?redirect=/editor" class="btn btn-primary">Innskráning</a>';
+        return;
+      }
+
+      userEl.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
+
+      // Check URL params for direct link
+      const params = new URLSearchParams(window.location.search);
+      const book = params.get('book');
+      const chapter = params.get('chapter');
+      const section = params.get('section');
+
+      if (book && chapter && section) {
+        document.getElementById('book-select').value = book;
+        await loadChapters(book);
+        document.getElementById('chapter-select').value = chapter;
+        await loadSections(book, chapter);
+        await loadEditor(book, chapter, section);
+      }
+
+      // Setup event listeners
+      setupEventListeners();
+    }
+
+    function setupEventListeners() {
+      document.getElementById('book-select').addEventListener('change', async (e) => {
+        const book = e.target.value;
+        if (book) {
+          await loadChapters(book);
+        } else {
+          document.getElementById('chapter-select').disabled = true;
+          document.getElementById('chapter-select').innerHTML = '<option value="">Veldu kafla...</option>';
+          document.getElementById('sections-list').style.display = 'none';
+        }
+      });
+
+      document.getElementById('chapter-select').addEventListener('change', async (e) => {
+        const chapter = e.target.value;
+        const book = document.getElementById('book-select').value;
+        if (book && chapter) {
+          await loadSections(book, chapter);
+        }
+      });
+
+      document.getElementById('back-btn').addEventListener('click', () => {
+        showSectionSelector();
+      });
+
+      document.getElementById('save-btn').addEventListener('click', saveContent);
+      document.getElementById('submit-btn').addEventListener('click', submitForReview);
+      document.getElementById('toggle-source-btn').addEventListener('click', toggleSourcePanel);
+      document.getElementById('history-btn').addEventListener('click', toggleHistory);
+      document.getElementById('close-history').addEventListener('click', () => {
+        document.getElementById('history-sidebar').style.display = 'none';
+      });
+    }
+
+    async function loadChapters(book) {
+      const chapterSelect = document.getElementById('chapter-select');
+      chapterSelect.innerHTML = '<option value="">Hleður...</option>';
+      chapterSelect.disabled = true;
+
+      try {
+        const res = await fetch('/api/books/' + book);
+        const data = await res.json();
+
+        chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>' +
+          data.chapters.map(c => '<option value="' + c.chapter + '">Kafli ' + c.chapter + ': ' + (c.titleIs || c.title) + '</option>').join('');
+        chapterSelect.disabled = false;
+      } catch (err) {
+        chapterSelect.innerHTML = '<option value="">Villa við að hlaða köflum</option>';
+      }
+    }
+
+    async function loadSections(book, chapter) {
+      const container = document.getElementById('sections-container');
+      const sectionsList = document.getElementById('sections-list');
+      container.innerHTML = '<p>Hleður...</p>';
+      sectionsList.style.display = 'block';
+
+      try {
+        const res = await fetch('/api/editor/' + book + '/' + chapter);
+        const data = await res.json();
+
+        if (data.sections.length === 0) {
+          container.innerHTML = '<p class="text-muted">Engir hlutar fundust í þessum kafla.</p>';
+          return;
+        }
+
+        container.innerHTML = data.sections.map(s => {
+          const statusClass = s.source === 'faithful' ? 'status-edited' : 'status-mt';
+          const statusLabel = s.source === 'faithful' ? 'Breytt' : 'MT úttak';
+          return '<div class="section-item" data-section="' + s.section + '">' +
+            '<span class="section-name">' + s.section + '</span>' +
+            '<span class="section-status ' + statusClass + '">' + statusLabel + '</span>' +
+            '<button class="btn btn-primary btn-small" onclick="loadEditor(\'' + book + '\', \'' + chapter + '\', \'' + s.section + '\')">Opna</button>' +
+            '</div>';
+        }).join('');
+
+        currentBook = book;
+        currentChapter = chapter;
+      } catch (err) {
+        container.innerHTML = '<p class="text-error">Villa: ' + err.message + '</p>';
+      }
+    }
+
+    async function loadEditor(book, chapter, section) {
+      currentBook = book;
+      currentChapter = chapter;
+      currentSection = section;
+
+      // Update URL
+      const url = new URL(window.location);
+      url.searchParams.set('book', book);
+      url.searchParams.set('chapter', chapter);
+      url.searchParams.set('section', section);
+      window.history.pushState({}, '', url);
+
+      // Show editor, hide selector
+      document.getElementById('section-selector').style.display = 'none';
+      document.getElementById('editor-container').style.display = 'block';
+      document.getElementById('section-title').textContent = 'Kafli ' + section;
+
+      try {
+        const res = await fetch('/api/editor/' + book + '/' + chapter + '/' + section);
+        const data = await res.json();
+
+        // Set source content
+        document.getElementById('source-content').innerHTML = data.content.en
+          ? '<pre>' + escapeHtml(data.content.en) + '</pre>'
+          : '<p class="text-muted">Enski textinn er ekki tiltækur.</p>';
+
+        // Show pending review warning if exists
+        const alertEl = document.getElementById('pending-review-alert');
+        if (data.pendingReview) {
+          document.getElementById('pending-review-text').textContent =
+            'Þessi hluti er í bið eftir yfirferð (sent af ' + data.pendingReview.submittedBy + ')';
+          alertEl.style.display = 'flex';
+        } else {
+          alertEl.style.display = 'none';
+        }
+
+        // Initialize EasyMDE
+        initEditor(data.content.is || '');
+
+        // Load history
+        loadHistory(book, chapter, section);
+
+      } catch (err) {
+        alert('Villa við að hlaða kafla: ' + err.message);
+      }
+    }
+
+    function initEditor(content) {
+      // Destroy existing editor if any
+      if (editor) {
+        editor.toTextArea();
+        editor = null;
+      }
+
+      editor = new EasyMDE({
+        element: document.getElementById('markdown-editor'),
+        initialValue: content,
+        spellChecker: false,
+        autosave: {
+          enabled: false // We'll handle autosave ourselves
+        },
+        toolbar: [
+          'bold', 'italic', 'heading', '|',
+          'quote', 'unordered-list', 'ordered-list', '|',
+          'link', 'image', '|',
+          'preview', 'side-by-side', 'fullscreen', '|',
+          'guide'
+        ],
+        placeholder: 'Skrifaðu þýðingu hér...',
+        status: ['lines', 'words', 'cursor'],
+        previewImagesInEditor: true,
+        sideBySideFullscreen: false
+      });
+
+      lastSavedContent = content;
+
+      // Setup autosave
+      editor.codemirror.on('change', () => {
+        updateSaveStatus('unsaved');
+        clearTimeout(autosaveTimer);
+        autosaveTimer = setTimeout(autoSave, 30000); // Autosave after 30s of no typing
+      });
+    }
+
+    async function autoSave() {
+      const content = editor.value();
+      if (content === lastSavedContent) return;
+
+      updateSaveStatus('saving');
+      try {
+        const res = await fetch('/api/editor/' + currentBook + '/' + currentChapter + '/' + currentSection + '/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content })
+        });
+        const data = await res.json();
+        if (data.success) {
+          lastSavedContent = content;
+          updateSaveStatus('saved');
+        } else {
+          updateSaveStatus('error');
+        }
+      } catch (err) {
+        updateSaveStatus('error');
+      }
+    }
+
+    async function saveContent() {
+      const content = editor.value();
+      const btn = document.getElementById('save-btn');
+      btn.disabled = true;
+      updateSaveStatus('saving');
+
+      try {
+        const res = await fetch('/api/editor/' + currentBook + '/' + currentChapter + '/' + currentSection + '/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content })
+        });
+        const data = await res.json();
+        if (data.success) {
+          lastSavedContent = content;
+          updateSaveStatus('saved');
+          loadHistory(currentBook, currentChapter, currentSection);
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki vistað'));
+          updateSaveStatus('error');
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+        updateSaveStatus('error');
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    async function submitForReview() {
+      const content = editor.value();
+
+      if (!confirm('Ertu viss um að þú viljir senda þessa þýðingu til yfirferðar?')) {
+        return;
+      }
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/editor/' + currentBook + '/' + currentChapter + '/' + currentSection + '/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          alert('Þýðing send til yfirferðar!');
+          lastSavedContent = content;
+          updateSaveStatus('saved');
+
+          // Show pending review alert
+          document.getElementById('pending-review-text').textContent =
+            'Þessi hluti er í bið eftir yfirferð';
+          document.getElementById('pending-review-alert').style.display = 'flex';
+
+          loadHistory(currentBook, currentChapter, currentSection);
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki sent'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function updateSaveStatus(status) {
+      const el = document.getElementById('save-status');
+      const messages = {
+        unsaved: '<i class="fas fa-circle text-warning"></i> Óvistað',
+        saving: '<i class="fas fa-spinner fa-spin"></i> Vistar...',
+        saved: '<i class="fas fa-check text-success"></i> Vistað',
+        error: '<i class="fas fa-exclamation-triangle text-error"></i> Villa'
+      };
+      el.innerHTML = messages[status] || '';
+    }
+
+    function toggleSourcePanel() {
+      isSourceVisible = !isSourceVisible;
+      const panel = document.getElementById('source-panel');
+      const content = document.getElementById('editor-content');
+
+      if (isSourceVisible) {
+        panel.style.display = 'block';
+        content.classList.add('side-by-side');
+      } else {
+        panel.style.display = 'none';
+        content.classList.remove('side-by-side');
+      }
+    }
+
+    function toggleHistory() {
+      const sidebar = document.getElementById('history-sidebar');
+      sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+    }
+
+    async function loadHistory(book, chapter, section) {
+      const listEl = document.getElementById('history-list');
+      listEl.innerHTML = '<p>Hleður...</p>';
+
+      try {
+        const res = await fetch('/api/editor/' + book + '/' + chapter + '/' + section + '/history');
+        const data = await res.json();
+
+        if (data.history.length === 0) {
+          listEl.innerHTML = '<p class="text-muted">Engin saga enn.</p>';
+          return;
+        }
+
+        listEl.innerHTML = data.history.map(h => {
+          const date = new Date(h.createdAt).toLocaleString('is-IS');
+          const typeLabel = h.isSubmission ? '<span class="badge badge-primary">Sent</span>' : '';
+          return '<div class="history-item" data-id="' + h.id + '">' +
+            '<div class="history-meta">' +
+            '<span class="history-user">' + escapeHtml(h.username) + '</span>' +
+            '<span class="history-date">' + date + '</span>' +
+            typeLabel +
+            '</div>' +
+            '<button class="btn btn-secondary btn-small" onclick="restoreVersion(' + h.id + ')">Endurheimta</button>' +
+            '</div>';
+        }).join('');
+      } catch (err) {
+        listEl.innerHTML = '<p class="text-error">Villa: ' + err.message + '</p>';
+      }
+    }
+
+    async function restoreVersion(historyId) {
+      if (!confirm('Ertu viss um að þú viljir endurheimta þessa útgáfu? Núverandi breytingar munu tapast.')) {
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/editor/' + currentBook + '/' + currentChapter + '/' + currentSection + '/restore/' + historyId, {
+          method: 'POST'
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          // Reload the editor
+          await loadEditor(currentBook, currentChapter, currentSection);
+          alert('Útgáfa endurheimtu!');
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki endurheimtu'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function showSectionSelector() {
+      document.getElementById('section-selector').style.display = 'block';
+      document.getElementById('editor-container').style.display = 'none';
+
+      // Clear URL params
+      const url = new URL(window.location);
+      url.searchParams.delete('section');
+      window.history.pushState({}, '', url);
+
+      // Destroy editor
+      if (editor) {
+        editor.toTextArea();
+        editor = null;
+      }
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Initialize on page load
+    init();
+  </script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
+
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; font-weight: 600; }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
+    .header nav a.active { color: var(--primary); font-weight: 500; }
+    .user-info { display: flex; align-items: center; gap: 0.5rem; }
+    .user-info img { width: 28px; height: 28px; border-radius: 50%; }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-select { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-select:disabled { background: var(--gray-50); }
+    .grid { display: grid; gap: 1rem; }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-secondary:hover:not(:disabled) { background: var(--gray-50); }
+    .btn-small { padding: 0.25rem 0.75rem; font-size: 0.75rem; }
+    .btn-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); }
+
+    .sections-list { margin-top: 1.5rem; }
+    .sections-list h3 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.75rem; }
+    .section-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--gray-50); border-radius: 0.375rem; margin-bottom: 0.5rem; }
+    .section-name { font-family: monospace; font-weight: 500; min-width: 80px; }
+    .section-status { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 9999px; }
+    .status-edited { background: #dcfce7; color: #166534; }
+    .status-mt { background: #dbeafe; color: #1e40af; }
+    .section-item .btn { margin-left: auto; }
+
+    .editor-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 0.75rem 1rem; background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .editor-title { display: flex; align-items: center; gap: 1rem; }
+    .editor-title h2 { font-size: 1.125rem; font-weight: 600; }
+    .editor-actions { display: flex; align-items: center; gap: 0.75rem; }
+    .save-status { font-size: 0.75rem; color: var(--gray-500); }
+    .text-warning { color: var(--warning); }
+    .text-success { color: var(--success); }
+    .text-error { color: var(--error); }
+
+    .alert { padding: 0.75rem 1rem; border-radius: 0.375rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .alert-warning { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+
+    .editor-content { display: flex; gap: 1rem; }
+    .editor-content.side-by-side .source-panel { flex: 1; }
+    .editor-content.side-by-side .editor-panel { flex: 1; }
+    .editor-panel { flex: 1; }
+    .source-panel { flex: 0 0 40%; background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; }
+    .panel-header { padding: 0.75rem 1rem; background: var(--gray-100); border-bottom: 1px solid var(--gray-200); }
+    .panel-header h3 { font-size: 0.875rem; font-weight: 600; color: var(--gray-700); }
+    .source-content { padding: 1rem; max-height: calc(100vh - 300px); overflow-y: auto; }
+    .source-content pre { white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 0.875rem; line-height: 1.6; }
+
+    .history-sidebar { position: fixed; top: 60px; right: 0; width: 320px; height: calc(100vh - 60px); background: white; box-shadow: -2px 0 10px rgba(0,0,0,0.1); z-index: 100; overflow-y: auto; }
+    .sidebar-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; background: white; }
+    .sidebar-header h3 { font-size: 1rem; font-weight: 600; }
+    .history-list { padding: 1rem; }
+    .history-item { padding: 0.75rem; background: var(--gray-50); border-radius: 0.375rem; margin-bottom: 0.5rem; }
+    .history-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.75rem; }
+    .history-user { font-weight: 500; }
+    .history-date { color: var(--gray-500); }
+    .badge { padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.625rem; font-weight: 600; }
+    .badge-primary { background: var(--primary); color: white; }
+
+    .text-muted { color: var(--gray-500); }
+
+    /* EasyMDE customizations */
+    .EasyMDEContainer { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .EasyMDEContainer .CodeMirror { border: none; border-radius: 0 0 0.5rem 0.5rem; min-height: 400px; }
+    .EasyMDEContainer .editor-toolbar { border: none; border-radius: 0.5rem 0.5rem 0 0; background: var(--gray-100); }
+
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .editor-content { flex-direction: column; }
+      .editor-content.side-by-side .source-panel { flex: none; }
+      .history-sidebar { width: 100%; }
+      .editor-header { flex-direction: column; gap: 1rem; }
+      .editor-actions { flex-wrap: wrap; }
+    }
+  </style>
+</body>
+</html>

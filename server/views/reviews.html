@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yfirferðir - Námsbókasafn</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/reviews" class="active">Yfirferðir <span class="badge" id="review-badge" style="display: none;">0</span></a>
+      <a href="/issues">Atriði</a>
+      <a href="/images">Myndir</a>
+      <a href="/status">Staða</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <!-- Reviews List -->
+    <div class="card" id="reviews-list-card">
+      <div class="card-header">
+        <h2 class="card-title">Yfirferðir í bið</h2>
+        <div class="filter-controls">
+          <select id="book-filter" class="form-select form-select-small">
+            <option value="">Allar bækur</option>
+            <option value="efnafraedi">Efnafræði</option>
+            <option value="liffraedi">Líffræði</option>
+          </select>
+        </div>
+      </div>
+      <div id="reviews-list">
+        <p class="loading"><i class="fas fa-spinner fa-spin"></i> Hleður...</p>
+      </div>
+    </div>
+
+    <!-- Review Detail Modal -->
+    <div class="modal" id="review-modal" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-title">Yfirferð</h2>
+          <button class="btn-close" id="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="review-info">
+            <div class="info-row">
+              <span class="info-label">Sent af:</span>
+              <span id="review-author"></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Tími:</span>
+              <span id="review-date"></span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Skrá:</span>
+              <code id="review-file"></code>
+            </div>
+          </div>
+
+          <!-- Tab navigation -->
+          <div class="tabs">
+            <button class="tab active" data-tab="content">Þýðing</button>
+            <button class="tab" data-tab="source">Enska</button>
+            <button class="tab" data-tab="diff">Breytingar</button>
+          </div>
+
+          <!-- Tab content -->
+          <div class="tab-content" id="tab-content">
+            <pre id="content-view"></pre>
+          </div>
+          <div class="tab-content" id="tab-source" style="display: none;">
+            <pre id="source-view"></pre>
+          </div>
+          <div class="tab-content" id="tab-diff" style="display: none;">
+            <div id="diff-view"></div>
+          </div>
+
+          <!-- Notes for changes requested -->
+          <div class="notes-section" id="notes-section" style="display: none;">
+            <label class="form-label">Athugasemdir:</label>
+            <textarea id="review-notes" class="form-textarea" placeholder="Skrifaðu hvaða breytingar þarf að gera..."></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" id="request-changes-btn">
+            <i class="fas fa-edit"></i> Biðja um breytingar
+          </button>
+          <button class="btn btn-success" id="approve-btn">
+            <i class="fas fa-check"></i> Samþykkja
+          </button>
+          <button class="btn btn-primary" id="approve-commit-btn">
+            <i class="fas fa-code-commit"></i> Samþykkja og skrifa (commit)
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html-ui.min.js"></script>
+  <script>
+    let currentReviewId = null;
+    let currentReview = null;
+
+    async function init() {
+      // Check auth
+      const authRes = await fetch('/api/auth/me');
+      const authData = await authRes.json();
+      const userEl = document.getElementById('user-info');
+
+      if (!authData.authenticated) {
+        userEl.innerHTML = '<a href="/api/auth/login?redirect=/reviews" class="btn btn-primary">Innskráning</a>';
+        return;
+      }
+
+      // Check role
+      if (!['admin', 'head-editor'].includes(authData.user.role)) {
+        document.getElementById('reviews-list').innerHTML =
+          '<div class="alert alert-warning">Þú hefur ekki réttindi til að skoða yfirferðir.</div>';
+        return;
+      }
+
+      userEl.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
+
+      // Load reviews
+      loadReviews();
+      updateBadge();
+
+      // Setup event listeners
+      setupEventListeners();
+    }
+
+    function setupEventListeners() {
+      document.getElementById('book-filter').addEventListener('change', loadReviews);
+      document.getElementById('close-modal').addEventListener('click', closeModal);
+      document.getElementById('approve-btn').addEventListener('click', () => approveReview(false));
+      document.getElementById('approve-commit-btn').addEventListener('click', () => approveReview(true));
+      document.getElementById('request-changes-btn').addEventListener('click', toggleNotesSection);
+
+      // Tab switching
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+      });
+
+      // Close modal on escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // Close modal on backdrop click
+      document.getElementById('review-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'review-modal') closeModal();
+      });
+    }
+
+    async function loadReviews() {
+      const listEl = document.getElementById('reviews-list');
+      const book = document.getElementById('book-filter').value;
+
+      listEl.innerHTML = '<p class="loading"><i class="fas fa-spinner fa-spin"></i> Hleður...</p>';
+
+      try {
+        const url = book ? '/api/reviews?book=' + book : '/api/reviews';
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (data.reviews.length === 0) {
+          listEl.innerHTML = '<div class="empty-state"><i class="fas fa-check-circle"></i><p>Engar yfirferðir í bið</p></div>';
+          return;
+        }
+
+        listEl.innerHTML = '<table class="table">' +
+          '<thead><tr><th>Kafli</th><th>Sent af</th><th>Tími</th><th></th></tr></thead>' +
+          '<tbody>' +
+          data.reviews.map(r => {
+            const date = new Date(r.submittedAt).toLocaleString('is-IS');
+            return '<tr>' +
+              '<td><strong>' + r.book + '</strong> / ' + r.chapter + ' / ' + r.section + '</td>' +
+              '<td>' + escapeHtml(r.submittedByUsername) + '</td>' +
+              '<td>' + date + '</td>' +
+              '<td><button class="btn btn-primary btn-small" onclick="openReview(' + r.id + ')">Skoða</button></td>' +
+              '</tr>';
+          }).join('') +
+          '</tbody></table>';
+      } catch (err) {
+        listEl.innerHTML = '<div class="alert alert-error">Villa: ' + err.message + '</div>';
+      }
+    }
+
+    async function updateBadge() {
+      try {
+        const res = await fetch('/api/reviews/count');
+        const data = await res.json();
+        const badge = document.getElementById('review-badge');
+        if (data.count > 0) {
+          badge.textContent = data.count;
+          badge.style.display = 'inline';
+        } else {
+          badge.style.display = 'none';
+        }
+      } catch (err) {
+        // Ignore badge errors
+      }
+    }
+
+    async function openReview(id) {
+      currentReviewId = id;
+
+      try {
+        const res = await fetch('/api/reviews/' + id);
+        const review = await res.json();
+        currentReview = review;
+
+        // Set modal content
+        document.getElementById('modal-title').textContent =
+          review.book + ' / Kafli ' + review.chapter + ' / ' + review.section;
+        document.getElementById('review-author').textContent = review.submittedByUsername;
+        document.getElementById('review-date').textContent = new Date(review.submittedAt).toLocaleString('is-IS');
+        document.getElementById('review-file').textContent = review.filePath;
+
+        // Set content
+        document.getElementById('content-view').textContent = review.content || '(Enginn texti)';
+        document.getElementById('source-view').textContent = review.enContent || '(Enski textinn er ekki tiltækur)';
+
+        // Generate diff
+        generateDiff(review.currentContent || '', review.content || '');
+
+        // Reset state
+        document.getElementById('notes-section').style.display = 'none';
+        document.getElementById('review-notes').value = '';
+        switchTab('content');
+
+        // Show modal
+        document.getElementById('review-modal').style.display = 'flex';
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('review-modal').style.display = 'none';
+      currentReviewId = null;
+      currentReview = null;
+    }
+
+    function switchTab(tabName) {
+      // Update tab buttons
+      document.querySelectorAll('.tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.tab === tabName);
+      });
+
+      // Update content
+      document.getElementById('tab-content').style.display = tabName === 'content' ? 'block' : 'none';
+      document.getElementById('tab-source').style.display = tabName === 'source' ? 'block' : 'none';
+      document.getElementById('tab-diff').style.display = tabName === 'diff' ? 'block' : 'none';
+    }
+
+    function generateDiff(oldContent, newContent) {
+      const diffEl = document.getElementById('diff-view');
+
+      if (!oldContent) {
+        diffEl.innerHTML = '<p class="text-muted">Engin fyrri útgáfa til samanburðar (nýr texti)</p>';
+        return;
+      }
+
+      // Generate unified diff
+      const diff = createUnifiedDiff(oldContent, newContent);
+
+      if (typeof Diff2HtmlUI !== 'undefined') {
+        const diff2htmlUi = new Diff2HtmlUI(diffEl, diff, {
+          drawFileList: false,
+          matching: 'lines',
+          outputFormat: 'side-by-side'
+        });
+        diff2htmlUi.draw();
+      } else {
+        // Fallback if diff2html not loaded
+        diffEl.innerHTML = '<pre>' + escapeHtml(diff) + '</pre>';
+      }
+    }
+
+    function createUnifiedDiff(oldStr, newStr) {
+      // Simple line-by-line diff (for proper diff, you'd use a library)
+      const oldLines = oldStr.split('\n');
+      const newLines = newStr.split('\n');
+
+      let diff = '--- a/file.md\n+++ b/file.md\n';
+
+      // Simple approach: show all old lines as removed, all new as added
+      // A real implementation would use LCS algorithm
+      const maxLines = Math.max(oldLines.length, newLines.length);
+
+      for (let i = 0; i < maxLines; i++) {
+        const oldLine = oldLines[i];
+        const newLine = newLines[i];
+
+        if (oldLine === newLine) {
+          diff += ' ' + (oldLine || '') + '\n';
+        } else {
+          if (oldLine !== undefined) {
+            diff += '-' + oldLine + '\n';
+          }
+          if (newLine !== undefined) {
+            diff += '+' + newLine + '\n';
+          }
+        }
+      }
+
+      return diff;
+    }
+
+    function toggleNotesSection() {
+      const section = document.getElementById('notes-section');
+      const isVisible = section.style.display !== 'none';
+
+      if (isVisible) {
+        section.style.display = 'none';
+      } else {
+        section.style.display = 'block';
+        document.getElementById('review-notes').focus();
+      }
+    }
+
+    async function approveReview(commit) {
+      if (!currentReviewId) return;
+
+      const action = commit ? 'samþykkja og skrifa (commit)' : 'samþykkja';
+      if (!confirm('Ertu viss um að þú viljir ' + action + ' þessa þýðingu?')) {
+        return;
+      }
+
+      const btn = commit ? document.getElementById('approve-commit-btn') : document.getElementById('approve-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Vinnur...';
+
+      try {
+        const res = await fetch('/api/reviews/' + currentReviewId + '/approve', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ commit })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          let msg = 'Þýðing samþykkt!';
+          if (data.committed) {
+            msg += '\n\nCommit SHA: ' + data.commitSha;
+          }
+          alert(msg);
+          closeModal();
+          loadReviews();
+          updateBadge();
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki samþykkt'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = commit
+          ? '<i class="fas fa-code-commit"></i> Samþykkja og skrifa (commit)'
+          : '<i class="fas fa-check"></i> Samþykkja';
+      }
+    }
+
+    async function requestChanges() {
+      if (!currentReviewId) return;
+
+      const notes = document.getElementById('review-notes').value.trim();
+      if (!notes) {
+        alert('Vinsamlegast skrifaðu athugasemdir');
+        document.getElementById('review-notes').focus();
+        return;
+      }
+
+      const btn = document.getElementById('request-changes-btn');
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/reviews/' + currentReviewId + '/changes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ notes })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          alert('Athugasemdir sendar til ritstjóra.');
+          closeModal();
+          loadReviews();
+          updateBadge();
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki sent athugasemdir'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Initialize
+    init();
+  </script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
+
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; font-weight: 600; }
+    .header nav { display: flex; gap: 1.5rem; align-items: center; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; display: flex; align-items: center; gap: 0.25rem; }
+    .header nav a.active { color: var(--primary); font-weight: 500; }
+    .user-info { display: flex; align-items: center; gap: 0.5rem; }
+    .user-info img { width: 28px; height: 28px; border-radius: 50%; }
+
+    .badge { background: var(--error); color: white; font-size: 0.625rem; padding: 0.125rem 0.375rem; border-radius: 9999px; font-weight: 600; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; }
+
+    .form-select { padding: 0.5rem 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-select-small { padding: 0.375rem 0.5rem; font-size: 0.75rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-textarea { width: 100%; min-height: 100px; padding: 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; resize: vertical; }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-success { background: var(--success); color: white; }
+    .btn-success:hover:not(:disabled) { background: #15803d; }
+    .btn-small { padding: 0.25rem 0.75rem; font-size: 0.75rem; }
+    .btn-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); line-height: 1; }
+
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
+    .table th { font-weight: 500; color: var(--gray-500); font-size: 0.75rem; text-transform: uppercase; }
+
+    .loading { color: var(--gray-500); text-align: center; padding: 2rem; }
+    .empty-state { text-align: center; padding: 3rem; color: var(--gray-500); }
+    .empty-state i { font-size: 3rem; margin-bottom: 1rem; color: var(--success); }
+
+    .alert { padding: 1rem; border-radius: 0.375rem; }
+    .alert-error { background: #fee2e2; color: #991b1b; }
+    .alert-warning { background: #fef3c7; color: #92400e; }
+
+    /* Modal */
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+    .modal-content { background: white; border-radius: 0.5rem; width: 90%; max-width: 900px; max-height: 90vh; display: flex; flex-direction: column; }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); }
+    .modal-header h2 { font-size: 1.125rem; font-weight: 600; }
+    .modal-body { flex: 1; padding: 1.5rem; overflow-y: auto; }
+    .modal-footer { display: flex; justify-content: flex-end; gap: 0.75rem; padding: 1rem 1.5rem; border-top: 1px solid var(--gray-200); }
+
+    .review-info { margin-bottom: 1rem; padding: 1rem; background: var(--gray-50); border-radius: 0.375rem; }
+    .info-row { display: flex; gap: 0.5rem; margin-bottom: 0.25rem; font-size: 0.875rem; }
+    .info-label { font-weight: 500; color: var(--gray-500); min-width: 80px; }
+
+    .tabs { display: flex; gap: 0.25rem; margin-bottom: 1rem; border-bottom: 1px solid var(--gray-200); }
+    .tab { padding: 0.5rem 1rem; background: none; border: none; font-size: 0.875rem; cursor: pointer; color: var(--gray-500); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+    .tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .tab:hover:not(.active) { color: var(--gray-700); }
+
+    .tab-content { background: var(--gray-50); border-radius: 0.375rem; padding: 1rem; max-height: 400px; overflow: auto; }
+    .tab-content pre { white-space: pre-wrap; word-wrap: break-word; font-family: monospace; font-size: 0.875rem; line-height: 1.6; margin: 0; }
+
+    .notes-section { margin-top: 1rem; }
+
+    .text-muted { color: var(--gray-500); }
+
+    /* Diff2html overrides */
+    .d2h-wrapper { font-size: 0.8rem; }
+    .d2h-file-header { display: none; }
+
+    @media (max-width: 768px) {
+      .modal-content { width: 100%; height: 100%; max-height: 100%; border-radius: 0; }
+      .modal-footer { flex-wrap: wrap; }
+      .modal-footer .btn { flex: 1; min-width: 120px; }
+    }
+  </style>
+</body>
+</html>
