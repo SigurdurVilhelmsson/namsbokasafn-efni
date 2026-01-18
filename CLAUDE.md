@@ -59,6 +59,20 @@ docs/                   # Documentation (see below)
 | `/localize-chapter <book> <ch>` | Pass 2 localization |
 | `/check-terminology <book> <ch>` | Verify terminology |
 
+## Skills (Auto-loaded)
+
+| Skill | Triggers When |
+|-------|---------------|
+| `editorial-pass1` | Working on `03-faithful/`, grammar review |
+| `localization` | Working on `04-localized/`, unit conversions |
+| `chemistry-reader-tags` | Working on `05-publication/`, tagging content |
+| `workflow-status` | Discussing chapter progress |
+| `repo-structure` | Creating or moving files |
+| `review-protocol` | Discussing reviews or approvals |
+| `activity-logging` | File operations requiring logging |
+
+Skills are in `.claude/skills/` and provide domain-specific guidance.
+
 ## Status Updates
 
 ```bash
