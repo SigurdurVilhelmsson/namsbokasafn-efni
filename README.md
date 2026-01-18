@@ -209,7 +209,6 @@ See [server/README.md](server/README.md) for full documentation.
 | `export-parallel-corpus` | No description |
 | `fix-figure-captions` | ============================================================ |
 | `md-to-xliff` | Extract YAML frontmatter if present |
-| `openstax-fetch` | ============================================================ |
 | `pipeline-runner` | Markdown for Erlendur MT |
 | `prepare-for-align` | Single EN file |
 | `process-chapter` | ============================================================ |
@@ -221,7 +220,7 @@ See [server/README.md](server/README.md) for full documentation.
 | `xliff-to-md` | No description |
 | `xliff-to-tmx` | Extract file attributes |
 
-*22 tools total*
+*21 tools total*
 
 <!-- tools-end -->
 
