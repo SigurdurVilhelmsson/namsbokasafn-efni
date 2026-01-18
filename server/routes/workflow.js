@@ -31,7 +31,8 @@ const {
   checkFileSplitNeeded,
   splitFileForErlendur,
   recombineSplitFiles,
-  ERLENDUR_SOFT_LIMIT
+  ERLENDUR_SOFT_LIMIT,
+  MAX_RETRY_ATTEMPTS
 } = session;
 
 // Configure multer for workflow file uploads
@@ -231,11 +232,20 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
       const updatedExpected = buildExpectedFiles(allOutputs, splitInfo);
       session.updateExpectedFiles(newSession.sessionId, 'mt-upload', updatedExpected);
 
+      // Save checkpoint after successful source step
+      session.saveCheckpoint(newSession.sessionId);
+
       // Don't auto-advance - let the UI control progression via download button
     } else {
       session.updateStepStatus(newSession.sessionId, 'source', 'failed', {
         error: 'No modules processed successfully',
         errors
+      });
+
+      // Log the error
+      session.logError(newSession.sessionId, 'source', 'No modules processed successfully', {
+        errors,
+        modulesAttempted: modules.length
       });
     }
 
@@ -395,6 +405,9 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
   try {
     // Record the upload - the session service will parse the file to identify it
     const progress = session.recordUpload(sessionId, step, req.file.originalname, req.file.path);
+
+    // Track file in manifest for potential cleanup on rollback
+    session.addToFilesManifest(sessionId, req.file.path);
 
     // Store file with a unique key
     const fileKey = `${step}-${Date.now()}`;
@@ -684,6 +697,9 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
     }
 
     if (result.complete) {
+      // Save final checkpoint
+      session.saveCheckpoint(sessionId);
+
       return res.json({
         success: true,
         complete: true,
@@ -694,6 +710,9 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
         }
       });
     }
+
+    // Save checkpoint after successful step completion
+    session.saveCheckpoint(sessionId);
 
     // If next step is automatic, run it
     const updatedSession = session.getSession(sessionId);
@@ -756,6 +775,236 @@ router.post('/:sessionId/cancel', requireAuth, (req, res) => {
   });
 });
 
+// ============================================================================
+// ERROR RECOVERY ROUTES
+// ============================================================================
+
+/**
+ * GET /api/workflow/:sessionId/errors
+ * Get error history for a session
+ */
+router.get('/:sessionId/errors', requireAuth, (req, res) => {
+  const { sessionId } = req.params;
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
+    return res.status(403).json({
+      error: 'Access denied'
+    });
+  }
+
+  const errorLog = session.getErrorLog(sessionId);
+  const recoveryActions = session.getRecoveryActions(sessionId);
+
+  res.json({
+    sessionId,
+    status: sessionData.status,
+    currentStep: sessionData.steps[sessionData.currentStep]?.id,
+    stepStatus: sessionData.steps[sessionData.currentStep]?.status,
+    errorCount: errorLog.length,
+    errors: errorLog,
+    retryCount: sessionData.retryCount,
+    maxRetries: MAX_RETRY_ATTEMPTS,
+    recoveryActions
+  });
+});
+
+/**
+ * POST /api/workflow/:sessionId/retry
+ * Retry the current failed step
+ */
+router.post('/:sessionId/retry', requireAuth, (req, res) => {
+  const { sessionId } = req.params;
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
+    return res.status(403).json({
+      error: 'Access denied'
+    });
+  }
+
+  const result = session.retryCurrentStep(sessionId);
+
+  if (!result.success) {
+    return res.status(400).json({
+      error: result.error,
+      retryCount: result.retryCount,
+      suggestion: result.suggestion
+    });
+  }
+
+  const updatedSession = session.getSession(sessionId);
+
+  res.json({
+    success: true,
+    message: result.message,
+    currentStep: result.currentStep,
+    retriesRemaining: result.retriesRemaining,
+    session: {
+      id: updatedSession.id,
+      status: updatedSession.status,
+      currentStep: updatedSession.currentStep,
+      steps: updatedSession.steps.map(s => ({
+        id: s.id,
+        status: s.status
+      }))
+    },
+    nextAction: getNextAction(updatedSession)
+  });
+});
+
+/**
+ * POST /api/workflow/:sessionId/rollback
+ * Rollback to the last successful checkpoint
+ */
+router.post('/:sessionId/rollback', requireAuth, (req, res) => {
+  const { sessionId } = req.params;
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
+    return res.status(403).json({
+      error: 'Access denied'
+    });
+  }
+
+  const result = session.rollbackToPreviousStep(sessionId);
+
+  if (!result.success) {
+    return res.status(400).json({
+      error: result.error,
+      suggestion: sessionData.currentStep === 0 ? 'Use /reset instead' : 'No checkpoint available'
+    });
+  }
+
+  const updatedSession = session.getSession(sessionId);
+
+  res.json({
+    success: true,
+    message: result.message,
+    restoredAt: result.restoredAt,
+    currentStep: result.currentStep,
+    session: {
+      id: updatedSession.id,
+      status: updatedSession.status,
+      currentStep: updatedSession.currentStep,
+      steps: updatedSession.steps.map(s => ({
+        id: s.id,
+        status: s.status
+      }))
+    },
+    downloads: getDownloadLinks(sessionId, updatedSession),
+    nextAction: getNextAction(updatedSession)
+  });
+});
+
+/**
+ * POST /api/workflow/:sessionId/reset
+ * Reset session to the beginning
+ */
+router.post('/:sessionId/reset', requireAuth, (req, res) => {
+  const { sessionId } = req.params;
+  const { confirm } = req.body;
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
+    return res.status(403).json({
+      error: 'Access denied'
+    });
+  }
+
+  if (!confirm) {
+    return res.status(400).json({
+      error: 'Confirmation required',
+      message: 'Reset will clear all progress. Send {confirm: true} to proceed.',
+      warning: 'This action cannot be undone'
+    });
+  }
+
+  const result = session.resetSession(sessionId, true);
+
+  if (!result.success) {
+    return res.status(400).json({
+      error: result.error
+    });
+  }
+
+  const updatedSession = session.getSession(sessionId);
+
+  res.json({
+    success: true,
+    message: result.message,
+    currentStep: result.currentStep,
+    session: {
+      id: updatedSession.id,
+      status: updatedSession.status,
+      currentStep: updatedSession.currentStep,
+      steps: updatedSession.steps.map(s => ({
+        id: s.id,
+        status: s.status
+      }))
+    },
+    nextAction: getNextAction(updatedSession)
+  });
+});
+
+/**
+ * GET /api/workflow/:sessionId/recovery
+ * Get available recovery actions for a session
+ */
+router.get('/:sessionId/recovery', requireAuth, (req, res) => {
+  const { sessionId } = req.params;
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
+    return res.status(403).json({
+      error: 'Access denied'
+    });
+  }
+
+  const recoveryActions = session.getRecoveryActions(sessionId);
+
+  res.json({
+    sessionId,
+    ...recoveryActions,
+    endpoints: {
+      retry: `/api/workflow/${sessionId}/retry`,
+      rollback: `/api/workflow/${sessionId}/rollback`,
+      reset: `/api/workflow/${sessionId}/reset`,
+      errors: `/api/workflow/${sessionId}/errors`
+    }
+  });
+});
+
 // Helper functions
 
 function getDownloadLinks(sessionId, sessionData) {
@@ -792,6 +1041,43 @@ function getAvailableActions(sessionData) {
     });
   }
 
+  // Add recovery actions if step is failed
+  if (currentStep.status === 'failed') {
+    // Retry available if under limit
+    if ((sessionData.retryCount || 0) < MAX_RETRY_ATTEMPTS) {
+      actions.push({
+        action: 'retry',
+        url: `/api/workflow/${sessionData.id}/retry`,
+        description: `Retry current step (${MAX_RETRY_ATTEMPTS - (sessionData.retryCount || 0)} attempts remaining)`
+      });
+    }
+
+    // Rollback available if not at first step and has checkpoint
+    if (sessionData.currentStep > 0 && sessionData.lastGoodState) {
+      actions.push({
+        action: 'rollback',
+        url: `/api/workflow/${sessionData.id}/rollback`,
+        description: 'Rollback to previous checkpoint'
+      });
+    }
+
+    // Reset always available
+    actions.push({
+      action: 'reset',
+      url: `/api/workflow/${sessionData.id}/reset`,
+      description: 'Reset session to beginning (requires confirmation)'
+    });
+  }
+
+  // Add recovery info link if session has errors
+  if (sessionData.errorLog && sessionData.errorLog.length > 0) {
+    actions.push({
+      action: 'errors',
+      url: `/api/workflow/${sessionData.id}/errors`,
+      description: `View error history (${sessionData.errorLog.length} errors)`
+    });
+  }
+
   actions.push({
     action: 'cancel',
     url: `/api/workflow/${sessionData.id}/cancel`,
@@ -803,6 +1089,29 @@ function getAvailableActions(sessionData) {
 
 function getNextAction(sessionData) {
   const currentStep = sessionData.steps[sessionData.currentStep];
+
+  // Handle failed step
+  if (currentStep.status === 'failed') {
+    const retryCount = sessionData.retryCount || 0;
+    const canRetry = retryCount < MAX_RETRY_ATTEMPTS;
+    const canRollback = sessionData.currentStep > 0 && sessionData.lastGoodState;
+
+    return {
+      type: 'recovery',
+      message: `Step failed: ${currentStep.data?.error || 'Unknown error'}`,
+      options: {
+        retry: canRetry ? {
+          available: true,
+          retriesRemaining: MAX_RETRY_ATTEMPTS - retryCount
+        } : { available: false, reason: 'Maximum retries reached' },
+        rollback: canRollback ? {
+          available: true,
+          checkpointStep: sessionData.lastGoodState.currentStep
+        } : { available: false, reason: 'No checkpoint or at first step' },
+        reset: { available: true, requiresConfirmation: true }
+      }
+    };
+  }
 
   if (currentStep.manual && currentStep.status !== 'completed') {
     return {
@@ -839,6 +1148,8 @@ async function runAutomaticStep(sessionId, stepId, sessionData) {
           session.updateStepStatus(sessionId, stepId, 'completed', {
             xliffPath: xliffFile.path
           });
+          // Save checkpoint after automatic step completion
+          session.saveCheckpoint(sessionId);
         }
       }
     }
@@ -848,12 +1159,21 @@ async function runAutomaticStep(sessionId, stepId, sessionData) {
       session.updateStepStatus(sessionId, stepId, 'completed', {
         message: 'Final outputs generated'
       });
+      // Save checkpoint after automatic step completion
+      session.saveCheckpoint(sessionId);
     }
 
   } catch (err) {
     session.updateStepStatus(sessionId, stepId, 'failed', {
       error: err.message
     });
+
+    // Log the error
+    session.logError(sessionId, stepId, err.message, {
+      stack: err.stack,
+      retryCount: sessionData.retryCount || 0
+    });
+
     throw err;
   }
 }
