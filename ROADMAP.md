@@ -2,333 +2,220 @@
 
 ## Overview
 
-Automated web interface for the OpenStax translation pipeline, from single-file processing to full book management with guided workflows.
+Automated web interface for OpenStax translation pipeline (English → Icelandic).
 
-## Key Constraints
-
-- **Deployment:** Local first, designed for eventual server deployment
-- **Erlendur MT:** Manual only (API costs ISK 100k/month - prohibitive)
-- **Matecat:** Free REST API available, can self-host
-- **Server Access:** Read-only to content repo; all writes via PRs
-- **Scale Target:** 4-5 books in 2 years, designed for eventual 10+ books
+| Aspect | Value |
+|--------|-------|
+| **Scale** | 4-5 books in 2 years, designed for 10+ |
+| **Team** | Small editorial team + occasional contributors |
+| **Deployment** | Local-first, server for shared access |
 
 ---
 
-## Architecture: Three-Tier Progressive Enhancement
+## Architecture
+
+### Current State
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  TIER 3: Full Dashboard (Phase 3)                               │
-│  - React dashboard with real-time status                        │
-│  - OpenStax book browser (fetch from GitHub)                    │
-│  - Job queue for background processing                          │
-│  - Claude agent integration                                     │
+│  Web Interface (server/)                                        │
+│  - Express server with SQLite session management                │
+│  - Workflow wizard with step-by-step guidance                   │
+│  - Issue dashboard with auto-fix + classification               │
+│  - Image tracking with OneDrive integration                     │
+│  - GitHub OAuth authentication                                  │
 ├─────────────────────────────────────────────────────────────────┤
-│  TIER 2: Guided Workflow (Phase 2)                              │
-│  - Session-based multi-step wizard                              │
-│  - File upload/download handling                                │
-│  - Status tracking integration                                  │
-│  - Simple HTML UI                                               │
+│  CLI Tools (tools/)                                             │
+│  - 19 tools, all verified working                               │
+│  - Pipeline orchestration via pipeline-runner.js                │
+│  - CNXML/DOCX → MD → XLIFF → TMX conversions                    │
 ├─────────────────────────────────────────────────────────────────┤
-│  TIER 1: Simple Automation (Phase 1)                            │
-│  - pipeline-runner.js orchestrator                              │
-│  - REST API for single-file processing                          │
-│  - Module fetching from OpenStax GitHub                         │
-├─────────────────────────────────────────────────────────────────┤
-│  FOUNDATION (Exists)                                            │
-│  - 17 CLI tools (cnxml-to-md, md-to-xliff, xliff-to-tmx, etc.) │
-│  - Status tracking (status.json + schema validation)            │
-│  - process-chapter.js orchestration pattern                     │
+│  Data Layer                                                     │
+│  - SQLite for workflow sessions (server/services/session.js)    │
+│  - JSON status files per chapter (books/*/chapters/ch##/)       │
+│  - File-based content in books/                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
----
+### Key Constraints
 
-## Phase 1: Foundation Enhancement - COMPLETE
-
-**Goal:** Chain existing tools into a single orchestrator + minimal API
-
-### Deliverables
-
-| Component | Status | File |
-|-----------|--------|------|
-| Pipeline orchestrator | ✅ | `tools/pipeline-runner.js` |
-| OpenStax module fetcher | ✅ | `tools/openstax-fetch.js` |
-| Express server | ✅ | `server/index.js` |
-| Processing API | ✅ | `server/routes/process.js` |
-| Matecat integration | ✅ | `server/services/matecat.js` |
-
-### API Endpoints
-
-```
-POST /api/process/cnxml     Process CNXML file
-POST /api/process/module/:id Process by module ID
-GET  /api/status/:book      Get pipeline status
-GET  /api/modules           List known modules
-```
+| Constraint | Implication |
+|------------|-------------|
+| Erlendur MT is manual | Files split at 18k chars, download/upload cycle |
+| Matecat has free API | Can automate XLIFF operations |
+| Content repo is read-only | All writes via GitHub PRs |
+| Small team | Simple over complex |
 
 ---
 
-## Phase 2: Guided Workflow + Session Management - IN PROGRESS
+## Completed Work
 
-**Goal:** Step-by-step web wizard with session persistence and file tracking
+### Phase 1: Foundation ✅
 
-### Component Status
+| Component | File | Lines |
+|-----------|------|-------|
+| Pipeline orchestrator | `tools/pipeline-runner.js` | ✅ |
+| OpenStax fetcher | `tools/openstax-fetch.js` | ✅ |
+| 17 additional CLI tools | `tools/*.js` | ✅ |
+| Express server | `server/index.js` | ✅ |
+| Processing API | `server/routes/process.js` | ✅ |
+| Matecat integration | `server/services/matecat.js` | 537 |
 
-| Component | Status | Notes |
-|-----------|--------|-------|
-| **2A: GitHub OAuth + JWT** | ✅ | `server/services/auth.js`, `server/middleware/requireAuth.js` |
-| **2B: Workflow routes + sessions** | ✅ | SQLite persistence, uniqueness constraint |
-| **2C: Issue classification** | ✅ | Integrated into upload, auto-fix, session storage |
-| **2D: GitHub PR sync** | ⏳ | `server/services/github.js` - pending |
-| **2E: Image tracking** | ⏳ | `server/services/imageTracker.js` - pending |
-| **2F: HTML wizard UI** | ✅ | `server/views/workflow.html` |
+**CLI Tools (19 total):**
+`add-frontmatter`, `apply-equations`, `clean-markdown`, `cnxml-math-extract`, `cnxml-to-md`, `cnxml-to-xliff`, `docx-to-md`, `export-parallel-corpus`, `fix-figure-captions`, `md-to-xliff`, `openstax-fetch`, `pipeline-runner`, `process-chapter`, `repair-directives`, `replace-math-images`, `strip-docx-to-txt`, `validate-chapter`, `xliff-to-md`, `xliff-to-tmx`
 
-### Phase 2.2 Features (Complete)
+### Phase 2: Guided Workflow ✅
 
-- **Issue Detection Integration**
-  - Automatic issue detection on MT file upload
-  - Auto-applies AUTO_FIX issues (whitespace, typos, line endings)
-  - Stores remaining issues in session for review
-  - Blocks workflow advancement if BLOCKED issues exist
+| Component | Status | File | Lines |
+|-----------|--------|------|-------|
+| GitHub OAuth + JWT | ✅ | `server/services/auth.js` | 362 |
+| Workflow routes + sessions | ✅ | `server/services/session.js` | 1077 |
+| Issue classification | ✅ | `server/services/issueClassifier.js` | 424 |
+| GitHub PR sync | ✅ | `server/services/github.js` | 371 |
+| Image tracking | ✅ | `server/services/imageTracker.js` | 319 |
+| HTML wizard UI | ✅ | `server/views/workflow.html` | ✅ |
 
-- **Issue Categories**
-  - AUTO_FIX: Applied automatically without review
-  - EDITOR_CONFIRM: Single editor reviews (terminology, quotes)
-  - BOARD_REVIEW: Discussion required (unit conversions, cultural refs)
-  - BLOCKED: Prevents progress (structural issues)
+**Server Routes (11 total):**
+`auth`, `books`, `images`, `issues`, `matecat`, `modules`, `process`, `status`, `sync`, `views`, `workflow`
 
-- **Issues Dashboard** (`/issues`)
-  - Stats overview with category breakdown
-  - Filter by book and category
-  - Context and suggestions for each issue
-  - Category-specific resolve actions
+**Phase 2.1 Features:**
+- Erlendur MT file splitting (>18k chars at paragraph boundaries)
+- SQLite session persistence
+- Workflow uniqueness constraint (one per book/chapter)
+- Content-based file identification
+- Upload progress tracking
 
-- **Workflow UI Enhancement**
-  - Issue summary after uploads
-  - Link to issues page for review
-  - Proceed blocked when BLOCKED issues exist
-
-### Phase 2.1 Features (Complete)
-
-- **Erlendur MT File Splitting**
-  - Automatic splitting of files >18,000 characters at paragraph boundaries
-  - Split files named with part indicators: `2-6(a).en.md`, `2-6(b).en.md`
-  - Erlendur-style headers with `hluti: „a"` for part tracking
-  - Automatic recombination after upload
-
-- **Workflow Session Management**
-  - SQLite persistence (survives server restarts)
-  - Workflow uniqueness constraint: one active workflow per book/chapter
-  - Content-based file identification (parses metadata from uploaded files)
-  - Section-based file naming (`2-1.en.md`) instead of module IDs
-  - Upload progress tracking with matched/unmatched file detection
-
-- **UI Improvements**
-  - File checklist shows friendly names (`2.6: Ionic and Molecular Compounds`)
-  - Download/upload filename hints for each expected file
-  - Warning banner when files have been split
-  - Existing workflow dialog when attempting duplicate workflows
-
-### Workflow API
-
-```
-POST /api/workflow/start              Start new workflow session
-GET  /api/workflow/sessions           List active sessions
-GET  /api/workflow/:sessionId         Get session details
-POST /api/workflow/:sessionId/upload  Upload translated files
-POST /api/workflow/:sessionId/advance Move to next step
-GET  /api/workflow/:sessionId/download-all Download all files as ZIP
-```
-
-### Issue Classification (Pending)
-
-```javascript
-// services/issueClassifier.js
-const ISSUE_CATEGORIES = {
-  AUTO_FIX: {
-    patterns: ['whitespace', 'trailing-space', 'line-ending', 'known-typo'],
-    action: 'apply',
-    approver: null
-  },
-  EDITOR_CONFIRM: {
-    patterns: ['terminology-suggestion', 'minor-edit', 'formatting-choice'],
-    action: 'queue',
-    approver: 'head-editor'
-  },
-  BOARD_REVIEW: {
-    patterns: ['new-terminology', 'localization-policy', 'cultural-adaptation'],
-    action: 'escalate',
-    approver: 'editorial-board'
-  },
-  BLOCKED: {
-    patterns: ['copyright', 'major-error', 'unclear-source'],
-    action: 'halt',
-    approver: 'manual'
-  }
-};
-```
-
-### User Flow
-
-1. User selects book and chapter
-2. System generates MD files for Erlendur (splits large files automatically)
-3. User downloads, translates via Erlendur MT, uploads results
-4. System recombines split files, generates XLIFF for Matecat
-5. User downloads XLIFF, reviews in Matecat, uploads reviewed XLIFF
-6. System classifies issues, applies auto-fixes
-7. User reviews flagged issues
-8. System generates final outputs (TMX, faithful MD)
-9. User initiates sync → Creates PR to repository
+**Phase 2.2 Features:**
+- Issue detection on MT upload
+- Auto-fix for whitespace, typos, line endings
+- Issue categories: AUTO_FIX, EDITOR_CONFIRM, BOARD_REVIEW, BLOCKED
+- Issues dashboard with filtering
+- Workflow blocking on BLOCKED issues
 
 ---
 
-## Phase 3: Full Dashboard + Multi-Book Management - FUTURE
+## Active Development
 
-**Goal:** Complete project management interface with role-based access
+### Phase 2.5: Operational Improvements
 
-### Planned Components
+Before considering Phase 3, add operational necessities:
 
-```
-dashboard/                    # React frontend
-├── src/
-│   ├── components/
-│   │   ├── StatusTable.jsx   # Chapter progress grid
-│   │   ├── ActionQueue.jsx   # Pending actions list
-│   │   ├── BookBrowser.jsx   # OpenStax book selector
-│   │   ├── IssueQueue.jsx    # Issue review interface
-│   │   └── SyncStatus.jsx    # PR and sync status
-│   └── hooks/
-│       ├── useStatus.js
-│       └── useWebSocket.js
-```
+#### Error Recovery (Priority: High)
+- [ ] Workflow rollback capability
+- [ ] Session recovery after failures
+- [ ] Clear error states (FAILED, ROLLBACK_PENDING)
+- **Why:** Data loss erodes trust
 
-### Features
+#### Notifications (Priority: Medium)
+- [ ] Email editors when action needed
+- [ ] Simple webhook for integrations
+- **Why:** Editors need to know when work awaits
 
-- **Book Browser:** Fetch collection.xml from OpenStax, list all modules
-- **Status Grid:** Visual chapter progress per book
-- **Action Queue:** Pending tasks with download/upload buttons
-- **Issue Queue:** Categorized issues awaiting review
-- **Real-time Updates:** WebSocket for live progress
-- **Job Queue:** Background processing for large operations
-- **Editor Panel:** Approve/reject, assign reviewers
+#### Testing & Validation (Priority: Medium)
+- [ ] End-to-end workflow tests
+- [ ] Service integration tests
+- [ ] CI validation of status files
 
-### Role-Based Access
+---
 
-| Role | Permissions |
-|------|-------------|
-| **Viewer** | Read status, download published content |
-| **Contributor** | Upload translations, report issues |
-| **Editor** | Approve content, resolve issues, create PRs |
-| **Head Editor** | Manage book, assign editors, approve PRs |
-| **Admin** | Manage all books, system configuration |
+## Phase 3: Enhanced Dashboard (If Needed)
+
+**Build Phase 3 only when:**
+- Team grows beyond 3-4 active editors
+- Managing 5+ concurrent books
+- Current HTML interface becomes limiting
+
+### Possible Features
+- Multi-book status overview
+- Role-based access (if team grows)
+- Batch operations
+
+### Explicitly NOT Needed
+- Real-time WebSocket updates (polling is fine)
+- Job queue (processes run in seconds)
+- Complex role hierarchy (use GitHub CODEOWNERS)
+- React dashboard (HTML + htmx sufficient)
 
 ---
 
 ## Content Sync Architecture
 
-### Sync Model: Read-Only Server + PR-Based Writes
-
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│  Pipeline Server                                                │
-│  - Processes CNXML → MD → XLIFF                                 │
-│  - READ-ONLY access to namsbokasafn-efni                        │
-│  - Outputs to local pipeline-output/ directory                  │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼ (PR-based write)
-┌─────────────────────────────────────────────────────────────────┐
-│  namsbokasafn-efni (Source of Truth)                            │
-│  - Branch protection on main                                    │
-│  - CODEOWNERS per book directory                                │
-│  - Required reviews before merge                                │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼ (sync after merge)
-┌─────────────────────────────────────────────────────────────────┐
-│  namsbokasafn-vefur (Website)                                   │
-│  - Pulls from 05-publication/ only                              │
-│  - Only syncs files with approved: true                         │
-└─────────────────────────────────────────────────────────────────┘
+Pipeline Server (processes locally)
+        │
+        ▼ (creates PR via server/services/github.js)
+namsbokasafn-efni (source of truth)
+        │
+        ▼ (sync on merge)
+namsbokasafn-vefur (website)
 ```
 
-### Per-Book Access Control
+### Access Control via CODEOWNERS
 
 ```
 # .github/CODEOWNERS
-/books/efnafraedi/    @chemistry-head-editor
-/books/liffraedi/     @biology-head-editor
-/books/edlisfraedi/   @physics-head-editor
+/books/efnafraedi/    @chemistry-editor
+/books/liffraedi/     @biology-editor
 /tools/               @pipeline-maintainer
 /server/              @pipeline-maintainer
 ```
 
 ---
 
-## Image Pipeline (Future)
+## Image Pipeline
 
-### Storage Architecture
+### Storage Model
+
+| Location | Content | Format |
+|----------|---------|--------|
+| OneDrive | Editable sources | PDF, EPS, AI |
+| GitHub | Web-ready images | PNG (<500KB) |
+
+### Image Tracking (Implemented)
+
+The `server/services/imageTracker.js` provides:
+- Extract image refs from CNXML
+- Track status: pending → in-progress → translated → approved
+- Generate OneDrive links for editable sources
+- Chapter and book-level statistics
+
+### Routes (`server/routes/images.js`)
 
 ```
-Menntaský OneDrive:
-/Námsbókasafn/
-├── efnafraedi/images-editable/
-│   └── ch01/
-│       ├── fig-1.1.pdf    (Acrobat editable)
-│       └── fig-1.2.eps    (Inkscape editable)
-
-GitHub (web-ready only):
-books/efnafraedi/05-publication/images/
-└── ch01/
-    ├── fig-1.1.png    (<500KB, translated)
-    └── fig-1.2.png
+GET  /api/images/:book              Book image overview
+GET  /api/images/:book/:chapter     Chapter image details
+POST /api/images/:book/:chapter/:id/status   Update status
+POST /api/images/:book/:chapter/:id/upload   Upload translated
+POST /api/images/:book/:chapter/init         Initialize from CNXML
 ```
-
-### Workflow
-
-1. Pipeline extracts image references from CNXML
-2. Dashboard shows: "Chapter 1: 12 images, 8 done, 4 pending"
-3. Editor clicks pending → Links to OneDrive editable source
-4. Editor edits in Acrobat/Inkscape
-5. Editor exports PNG, uploads via dashboard
-6. Head editor approves PR
-7. Website pulls updated images
 
 ---
 
-## Directory Structure
+## Decision Log
 
-```
-namsbokasafn-efni/
-├── tools/                    # CLI tools
-│   ├── pipeline-runner.js    # Orchestrator
-│   ├── cnxml-to-md.js        # CNXML → Markdown
-│   ├── md-to-xliff.js        # Markdown → XLIFF
-│   └── ...
-├── server/                   # Web server
-│   ├── index.js
-│   ├── routes/
-│   ├── services/
-│   └── views/
-├── dashboard/                # React frontend (Phase 3)
-├── scripts/                  # Status management scripts
-└── books/                    # Content and status files
-```
+| Date | Decision | Rationale |
+|------|----------|-----------|
+| 2024-12 | Manual Erlendur over API | API costs ISK 100k/month |
+| 2024-12 | SQLite over Postgres | Single-server sufficient |
+| 2025-01 | HTML wizard over React SPA | Simpler, sufficient for team size |
+| 2025-01 | PR-based writes | Audit trail, review gates |
+| 2025-01 | File splitting at 18k | Erlendur character limit |
 
 ---
 
 ## Next Steps
 
-### Immediate (Phase 2 completion)
+### Immediate
+1. [ ] Add error recovery states to workflow sessions
+2. [ ] Test full workflow end-to-end with real chapter
+3. [ ] Document server setup for production deployment
 
-1. Implement issue classification service
-2. Add GitHub PR creation for sync
-3. Add image tracking routes
-4. Complete Matecat upload step in workflow
+### Short-term
+1. [ ] Add email notification service
+2. [ ] Create image manifest from existing CNXML
+3. [ ] Session cleanup job for stale workflows
 
-### Near-term (Phase 3 start)
-
-1. React dashboard skeleton
-2. WebSocket for real-time updates
-3. Multi-book status view
+### Before Phase 3 Consideration
+1. [ ] Run pilot with FÁ teachers (Jan 2026)
+2. [ ] Gather feedback on current HTML interface
+3. [ ] Evaluate if team growth warrants dashboard
