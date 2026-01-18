@@ -14,7 +14,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import module data from tools
-const { CHEMISTRY_MODULES, BOOKS, getModulesForBook } = require('../../tools/openstax-fetch');
+const { CHEMISTRY_MODULES, BOOKS, getModulesForBook } = require('../../tools/openstax-fetch.cjs');
 
 /**
  * GET /api/modules

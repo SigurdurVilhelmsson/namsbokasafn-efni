@@ -291,7 +291,7 @@ router.post('/:book/:chapter/init', requireAuth, requireEditor(), async (req, re
 
     // Fetch CNXML if moduleId provided
     if (moduleId) {
-      const { fetchModule } = require('../../tools/openstax-fetch');
+      const { fetchModule } = require('../../tools/openstax-fetch.cjs');
       content = await fetchModule(moduleId);
     }
 
