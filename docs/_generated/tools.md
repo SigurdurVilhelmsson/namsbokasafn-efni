@@ -25,5 +25,3 @@
 | `xliff-to-tmx` | Extract file attributes |
 
 *19 tools total*
-
-Generated: 2026-01-18T12:53:21.529Z

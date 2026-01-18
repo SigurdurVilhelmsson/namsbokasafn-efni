@@ -46,9 +46,7 @@ for (const file of routeFiles) {
   output += '\n';
 }
 
-output += `
-Generated: ${new Date().toISOString()}
-`;
+output += ``;
 
 fs.writeFileSync(outputFile, output);
 console.log(`Generated ${outputFile}`);

@@ -37,8 +37,6 @@ for (const tool of tools) {
 
 output += `
 *${tools.length} tools total*
-
-Generated: ${new Date().toISOString()}
 `;
 
 fs.writeFileSync(outputFile, output);
