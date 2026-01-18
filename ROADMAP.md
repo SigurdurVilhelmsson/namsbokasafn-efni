@@ -195,11 +195,11 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
-| 2024-12 | Manual Erlendur over API | API costs ISK 100k/month |
-| 2024-12 | SQLite over Postgres | Single-server sufficient |
-| 2025-01 | HTML wizard over React SPA | Simpler, sufficient for team size |
-| 2025-01 | PR-based writes | Audit trail, review gates |
-| 2025-01 | File splitting at 18k | Erlendur character limit |
+| 2025-10 | Manual Erlendur over API | API costs ISK 100k/month |
+| 2025-10 | SQLite over Postgres | Single-server sufficient |
+| 2025-12 | HTML wizard over React SPA | Simpler, sufficient for team size |
+| 2025-12 | PR-based writes | Audit trail, review gates |
+| 2025-12 | File splitting at 18k | Erlendur character limit |
 
 ---
 
