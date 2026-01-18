@@ -134,7 +134,8 @@ function segmentText(text) {
 
   // Split on sentence boundaries: . ! ? followed by space and capital letter
   // Includes Icelandic capitals: ÁÉÍÓÚÝÞÆÖ
-  const parts = processed.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÝÞÆÖ])/);
+  // Also handles parenthetical labels like "(b) If..." or "(a) Water..."
+  const parts = processed.split(/(?<=[.!?])\s+(?=(?:\([a-z]\)\s+)?[A-ZÁÉÍÓÚÝÞÆÖ])/);
 
   const segments = [];
   for (const part of parts) {
@@ -252,11 +253,15 @@ function extractSegments(body, verbose) {
         captionText = captionText.slice(5).trim();
       }
 
-      segments.push({
-        type: 'figure-caption',
-        text: captionText,
-        note: 'Figure caption'
-      });
+      // Apply sentence segmentation to figure captions
+      const sentences = segmentText(captionText);
+      for (const sentence of sentences) {
+        segments.push({
+          type: 'figure-caption',
+          text: sentence,
+          note: 'Figure caption'
+        });
+      }
       continue;
     }
 
