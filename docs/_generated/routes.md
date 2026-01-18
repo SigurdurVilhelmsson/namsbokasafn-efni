@@ -21,6 +21,18 @@
 | GET | `/:bookId` |
 | GET | `/:bookId/chapters/:chapter` |
 
+## /editor
+
+| Method | Path |
+|--------|------|
+| GET | `/:book/:chapter` |
+| GET | `/:book/:chapter/:section` |
+| POST | `/:book/:chapter/:section/save` |
+| POST | `/:book/:chapter/:section/submit` |
+| GET | `/:book/:chapter/:section/history` |
+| GET | `/history/:historyId` |
+| POST | `/:book/:chapter/:section/restore/:historyId` |
+
 ## /images
 
 | Method | Path |
@@ -81,6 +93,16 @@
 | GET | `/jobs/:jobId` |
 | GET | `/jobs` |
 
+## /reviews
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/count` |
+| GET | `/:id` |
+| POST | `/:id/approve` |
+| POST | `/:id/changes` |
+
 ## /status
 
 | Method | Path |
@@ -108,6 +130,8 @@
 | GET | `/workflow` |
 | GET | `/issues` |
 | GET | `/images` |
+| GET | `/editor` |
+| GET | `/reviews` |
 | GET | `/status` |
 
 ## /workflow

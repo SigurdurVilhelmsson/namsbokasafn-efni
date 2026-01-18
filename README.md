@@ -251,6 +251,18 @@ See [server/README.md](server/README.md) for full documentation.
 | GET | `/:bookId` |
 | GET | `/:bookId/chapters/:chapter` |
 
+## /editor
+
+| Method | Path |
+|--------|------|
+| GET | `/:book/:chapter` |
+| GET | `/:book/:chapter/:section` |
+| POST | `/:book/:chapter/:section/save` |
+| POST | `/:book/:chapter/:section/submit` |
+| GET | `/:book/:chapter/:section/history` |
+| GET | `/history/:historyId` |
+| POST | `/:book/:chapter/:section/restore/:historyId` |
+
 ## /images
 
 | Method | Path |
@@ -311,6 +323,16 @@ See [server/README.md](server/README.md) for full documentation.
 | GET | `/jobs/:jobId` |
 | GET | `/jobs` |
 
+## /reviews
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/count` |
+| GET | `/:id` |
+| POST | `/:id/approve` |
+| POST | `/:id/changes` |
+
 ## /status
 
 | Method | Path |
@@ -338,6 +360,8 @@ See [server/README.md](server/README.md) for full documentation.
 | GET | `/workflow` |
 | GET | `/issues` |
 | GET | `/images` |
+| GET | `/editor` |
+| GET | `/reviews` |
 | GET | `/status` |
 
 ## /workflow
