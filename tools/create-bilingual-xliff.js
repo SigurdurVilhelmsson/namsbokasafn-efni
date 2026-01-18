@@ -392,7 +392,7 @@ function generateXliff(sourceSegs, targetSegs, metadata, sourceLang, targetLang,
   const original = metadata.module || metadata.section || 'document';
 
   let xliff = `<?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xlink="http://www.w3.org/1999/xlink">
   <file original="${escapeXml(original)}" source-language="${sourceLang}" target-language="${targetLang}" datatype="x-markdown">
     <header>
       <note>Bilingual XLIFF for Matecat review</note>
