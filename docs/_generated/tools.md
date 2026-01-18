@@ -17,6 +17,7 @@
 | `md-to-xliff` | Extract YAML frontmatter if present |
 | `openstax-fetch` | ============================================================ |
 | `pipeline-runner` | Markdown for Erlendur MT |
+| `prepare-for-align` | Single EN file |
 | `process-chapter` | ============================================================ |
 | `repair-directives` | Directives that can contain nested directives |
 | `replace-math-images` | ============================================================ |
@@ -26,4 +27,4 @@
 | `xliff-to-md` | No description |
 | `xliff-to-tmx` | Extract file attributes |
 
-*21 tools total*
+*22 tools total*
