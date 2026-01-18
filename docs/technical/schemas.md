@@ -268,6 +268,5 @@ The full JSON Schema is at: `schemas/chapter-status.schema.json`
 
 ## See Also
 
-- [Scripts Guide](scripts-guide.md) - How to update status via CLI
-- [Workflow Documentation](workflow.md) - Full translation pipeline
-- [CLI Quick Reference](cli-quick-reference.md) - Command cheat sheet
+- [CLI Reference](cli-reference.md) - How to update status via CLI
+- [Workflow Overview](../workflow/overview.md) - Full translation pipeline

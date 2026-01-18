@@ -192,12 +192,12 @@ Focus: Chapters 1-4 faithful translations (Pass 1 complete)
 
 | Document | Purpose |
 |----------|---------|
-| `docs/workflow.md` | Full 8-step pipeline |
-| `docs/editorial-guide.md` | Pass 1 and Pass 2 instructions |
-| `docs/terminology.md` | Terminology standards |
-| `docs/scripts-guide.md` | CLI tools and pipeline scripts |
-| `docs/markdown-formatting-issues.md` | Known rendering issues and fixes |
-| `claude-code-user-guide.md` | How to use these tools |
+| `docs/workflow/overview.md` | Full 8-step pipeline |
+| `docs/editorial/pass1-linguistic.md` | Pass 1 instructions |
+| `docs/editorial/pass2-localization.md` | Pass 2 instructions |
+| `docs/editorial/terminology.md` | Terminology standards |
+| `docs/technical/cli-reference.md` | CLI tools and pipeline scripts |
+| `docs/technical/markdown-fixes.md` | Known rendering issues and fixes |
 
 ## Two-Repository Workflow
 

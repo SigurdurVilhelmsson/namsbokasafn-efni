@@ -81,9 +81,10 @@ You'll receive:
 
 ### Step 3: Review the Guides
 Read before starting:
-- [Editorial Guide](editorial-guide.md) - Detailed instructions
-- [Terminology Standards](terminology.md) - Term conventions
-- [Workflow](workflow.md) - Overall process
+- [Pass 1: Linguistic Review](../editorial/pass1-linguistic.md) - For linguistic review
+- [Pass 2: Localization](../editorial/pass2-localization.md) - For localization
+- [Terminology Standards](../editorial/terminology.md) - Term conventions
+- [Workflow Overview](../workflow/overview.md) - Overall process
 
 ---
 
@@ -91,7 +92,7 @@ Read before starting:
 
 ### For Pass 1 (Linguistic Review)
 
-1. **Get files** from `03-tm-translated/` (or as provided)
+1. **Get files** from the translator (Matecat output or as provided)
 2. **Enable Track Changes** in Microsoft Word
 3. **Review systematically:**
    - Grammar and spelling
@@ -150,7 +151,7 @@ Log:    ch01-log.md
 
 When you encounter an unfamiliar term:
 
-1. **Check** `docs/terminology.md`
+1. **Check** `docs/editorial/terminology.md`
 2. **Check** `glossary/terminology-en-is.csv`
 3. **Search** [Íðorðabankinn](https://idord.arnastofnun.is/)
 4. **If unsure**, add a comment in the document

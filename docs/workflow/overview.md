@@ -404,14 +404,14 @@ Access the web interface at http://localhost:3000/workflow
 | `/images` | Image translation tracker |
 | `/status` | Pipeline status overview |
 
-See [server/README.md](../server/README.md) for full API documentation.
+See [server/README.md](../../server/README.md) for full API documentation.
 
 ---
 
 ## Additional Resources
 
-- [Editorial Guide](editorial-guide.md) - Detailed guide for editors
-- [Terminology Standards](terminology.md) - Terminology conventions
-- [Contributing Guide](contributing.md) - How to participate
-- [Assets Documentation](assets.md) - What assets we produce and their value
-- [Pipeline Server](../server/README.md) - Web automation server documentation
+- [Pass 1: Linguistic Review](../editorial/pass1-linguistic.md) - First editorial pass
+- [Pass 2: Localization](../editorial/pass2-localization.md) - Second editorial pass
+- [Terminology Standards](../editorial/terminology.md) - Terminology conventions
+- [Contributing Guide](../contributing/getting-started.md) - How to participate
+- [Pipeline Server](../../server/README.md) - Web automation server documentation

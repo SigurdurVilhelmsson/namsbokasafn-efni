@@ -1,27 +1,113 @@
-# Scripts Guide
+# CLI Reference
 
-This guide documents the automation scripts available for managing translation workflow status.
-
-## Available Commands
-
-| Command | Purpose |
-|---------|---------|
-| `npm run update-status` | Update chapter workflow status |
-| `npm run validate` | Validate all status files against schema |
+This document covers all command-line tools for managing the translation workflow.
 
 ---
 
-## update-status
+## Quick Reference
+
+### Status Updates
+
+```bash
+# Basic syntax
+npm run update-status <book> <chapter> <stage> <status>
+
+# Stages: source, mtOutput, matecat, editorialPass1, tmUpdated, editorialPass2, publication
+# Statuses: complete, in-progress, pending, not-started
+```
+
+### Common Operations
+
+```bash
+# Mark source complete
+npm run update-status efnafraedi 5 source complete
+
+# Start Matecat work
+npm run update-status efnafraedi 5 matecat in-progress
+
+# Complete Matecat
+npm run update-status efnafraedi 5 matecat complete
+
+# Assign to editor
+npm run update-status efnafraedi 5 editorialPass1 in-progress --editor "Name"
+
+# Complete Pass 1
+npm run update-status efnafraedi 5 editorialPass1 complete
+
+# Publish with version
+npm run update-status efnafraedi 5 publication complete --version "v1.0"
+
+# Add notes
+npm run update-status efnafraedi 5 matecat pending --notes "Waiting for source files"
+
+# Preview changes (dry run)
+npm run update-status efnafraedi 5 tmUpdated complete --dry-run
+```
+
+### Validation
+
+```bash
+# Validate all books
+npm run validate
+
+# Validate single book
+npm run validate efnafraedi
+```
+
+### Workflow Cheat Sheet
+
+| Step | Stage | Command |
+|------|-------|---------|
+| 1 | Source ready | `npm run update-status efnafraedi X source complete` |
+| 2 | MT done | `npm run update-status efnafraedi X mtOutput complete` |
+| 3-4 | Matecat | `npm run update-status efnafraedi X matecat complete` |
+| 5 | Pass 1 | `npm run update-status efnafraedi X editorialPass1 complete` |
+| 6 | TM update | `npm run update-status efnafraedi X tmUpdated complete` |
+| 7 | Pass 2 | `npm run update-status efnafraedi X editorialPass2 complete` |
+| 8 | Publish | `npm run update-status efnafraedi X publication complete --version "v1.0"` |
+
+### Books
+
+| ID | Name |
+|----|------|
+| `efnafraedi` | Efnafræði (Chemistry) |
+| `liffraedi` | Líffræði (Biology) |
+
+### Options
+
+| Option | Usage | Example |
+|--------|-------|---------|
+| `--editor` | Set editor name | `--editor "Jón Jónsson"` |
+| `--version` | Set version | `--version "ai-preview"` |
+| `--notes` | Add notes | `--notes "Waiting for review"` |
+| `--dry-run` | Preview only | `--dry-run` |
+
+### Git Workflow
+
+```bash
+# Update status and commit
+npm run update-status efnafraedi 3 editorialPass1 complete
+npm run validate
+git add books/efnafraedi/chapters/ch03/status.json
+git commit -m "status: Complete ch3 Pass 1"
+git push
+```
+
+---
+
+## Detailed Command Reference
+
+### update-status
 
 Updates the workflow status for a specific chapter.
 
-### Syntax
+#### Syntax
 
 ```bash
 npm run update-status <book> <chapter> <stage> <status> [options]
 ```
 
-### Arguments
+#### Arguments
 
 | Argument | Description | Examples |
 |----------|-------------|----------|
@@ -30,7 +116,7 @@ npm run update-status <book> <chapter> <stage> <status> [options]
 | `stage` | Workflow stage | See [Stages](#stages) below |
 | `status` | New status value | See [Statuses](#statuses) below |
 
-### Stages
+#### Stages
 
 | Stage | Description | Workflow Step |
 |-------|-------------|---------------|
@@ -42,7 +128,7 @@ npm run update-status <book> <chapter> <stage> <status> [options]
 | `editorialPass2` | Localization review (Pass 2) | Step 7 |
 | `publication` | Published to web | Step 8 |
 
-### Statuses
+#### Statuses
 
 | Status | Meaning |
 |--------|---------|
@@ -51,7 +137,7 @@ npm run update-status <book> <chapter> <stage> <status> [options]
 | `pending` | Waiting to start |
 | `not-started` | Not yet begun |
 
-### Options
+#### Options
 
 | Option | Description | Applicable Stages |
 |--------|-------------|-------------------|
@@ -60,34 +146,7 @@ npm run update-status <book> <chapter> <stage> <status> [options]
 | `--notes <text>` | Add notes | All stages |
 | `--dry-run` | Preview changes without saving | All stages |
 
-### Examples
-
-**Mark Matecat alignment complete:**
-```bash
-npm run update-status efnafraedi 4 matecat complete
-```
-
-**Start editorial Pass 1 with editor name:**
-```bash
-npm run update-status efnafraedi 2 editorialPass1 in-progress --editor "Jón Jónsson"
-```
-
-**Publish a chapter with version:**
-```bash
-npm run update-status efnafraedi 1 publication complete --version "v1.0"
-```
-
-**Preview changes without saving:**
-```bash
-npm run update-status efnafraedi 1 tmUpdated complete --dry-run
-```
-
-**Add notes to a stage:**
-```bash
-npm run update-status efnafraedi 3 editorialPass1 pending --notes "Delivered to editor, awaiting review"
-```
-
-### Output
+#### Output
 
 The script shows before/after comparison:
 
@@ -107,7 +166,7 @@ After:  {
 ✓ Updated books/efnafraedi/chapters/ch01/status.json
 ```
 
-### Error Handling
+#### Error Handling
 
 | Error | Cause | Solution |
 |-------|-------|----------|
@@ -118,35 +177,23 @@ After:  {
 
 ---
 
-## validate
+### validate
 
 Validates all chapter `status.json` files against the JSON Schema.
 
-### Syntax
+#### Syntax
 
 ```bash
 npm run validate [book]
 ```
 
-### Arguments
+#### Arguments
 
 | Argument | Description | Required |
 |----------|-------------|----------|
 | `book` | Validate only this book | No (validates all if omitted) |
 
-### Examples
-
-**Validate all books:**
-```bash
-npm run validate
-```
-
-**Validate only efnafræði:**
-```bash
-npm run validate efnafraedi
-```
-
-### Output
+#### Output
 
 **Success:**
 ```
@@ -180,57 +227,16 @@ Errors:
     - .status.source: missing required property "complete"
 ```
 
-### Exit Codes
+#### Exit Codes
 
 | Code | Meaning |
 |------|---------|
 | `0` | All files valid |
 | `1` | Validation errors found |
 
-### CI/CD Integration
+#### CI/CD Integration
 
 The validation runs automatically via GitHub Actions when status files change. See `.github/workflows/validate.yml`.
-
----
-
-## Workflow Integration
-
-### Typical Workflow Sequence
-
-```bash
-# 1. Source material downloaded
-npm run update-status efnafraedi 5 source complete
-
-# 2. Machine translation done
-npm run update-status efnafraedi 5 mtOutput complete
-
-# 3. Matecat alignment in progress
-npm run update-status efnafraedi 5 matecat in-progress
-
-# 4. Matecat complete, deliver to editor
-npm run update-status efnafraedi 5 matecat complete
-npm run update-status efnafraedi 5 editorialPass1 pending --notes "Delivered to editor"
-
-# 5. Editor starts review
-npm run update-status efnafraedi 5 editorialPass1 in-progress --editor "Anna Sigurðardóttir"
-
-# 6. Pass 1 complete
-npm run update-status efnafraedi 5 editorialPass1 complete
-
-# 7. Update TM with editor corrections
-npm run update-status efnafraedi 5 tmUpdated complete
-
-# 8. Continue to Pass 2 or publish
-npm run update-status efnafraedi 5 publication complete --version "v1.0"
-```
-
-### Validate Before Committing
-
-Always validate after making manual edits to status files:
-
-```bash
-npm run validate && git add . && git commit -m "status: Update ch5 progress"
-```
 
 ---
 
@@ -284,7 +290,7 @@ node tools/clean-markdown.js books/efnafraedi/05-publication/mt-preview/chapters
 node tools/clean-markdown.js --batch books/efnafraedi/05-publication/mt-preview/chapters/03/
 ```
 
-See [markdown-formatting-issues.md](markdown-formatting-issues.md) for details on the issues this tool fixes.
+See [markdown-fixes.md](markdown-fixes.md) for details on the issues this tool fixes.
 
 ---
 
@@ -408,38 +414,6 @@ npm run extract-math m68690 -- --context
 npm run extract-math m68690 -- --format latex
 ```
 
-#### Sample Output
-
-```markdown
-# Math Equations from Measurement Uncertainty, Accuracy, and Precision
-**Module:** m68690
-**Total equations found:** 39
-
-## Summary by Type
-| Type | Count |
-|------|-------|
-| inline-symbol | 29 |
-| calculation | 3 |
-| display | 3 |
-
-## Equations
-
-### Equation 6 (calculation)
-> ...(a)... **[EQUATION]** ...1.0023 g + 4.383 g...
-
-**LaTeX:**
-\`\`\`latex
-\begin{array}{l} 1.0023 g \\ + 4.383 g \\ \hline 5.3853 g \end{array}
-\`\`\`
-```
-
-#### Use Case: Replacing Image Equations
-
-1. Run the tool to extract equations from a module
-2. Use `--context` to identify which equation corresponds to which image
-3. Replace image references in markdown with LaTeX: `$equation$` or `$$equation$$`
-4. Test rendering in the Chemistry Reader webapp
-
 ---
 
 ### replace-math-images.js
@@ -462,51 +436,17 @@ npm run replace-math -- --apply <file.md> <mapping.json>    # Apply replacements
 npm run replace-math -- --scan chapters/01/1-5.md
 ```
 
-Output shows images with "None" alt text, Word rId filenames, or context suggesting equations.
-
 **Step 2: Generate** - Create a mapping template:
 
 ```bash
 npm run replace-math -- --generate chapters/01/1-5.md m68690 -o mapping.json
 ```
 
-This creates a JSON file with:
-- All potential equation images from the markdown
-- All equations extracted from the CNXML module
-- Empty `equationIndex` fields for you to fill in
-
-**Step 3: Edit Mapping** - Match images to equations:
-
-Open `mapping.json` and for each image, set `equationIndex` to match the corresponding equation:
-
-```json
-{
-  "images": [
-    {
-      "path": "./images/media/rId51.png",
-      "context": "...**Lausn**...[IMAGE]...Svarið er 5,385 g...",
-      "equationIndex": 6,      // <-- Match to equation 6
-      "displayMode": true
-    }
-  ],
-  "equations": [
-    {
-      "index": 6,
-      "type": "calculation",
-      "latex": "\\begin{array}...",
-      "context": "...(a)...[EQUATION]...1.0023 g + 4.383 g..."
-    }
-  ]
-}
-```
+**Step 3: Edit Mapping** - Match images to equations in `mapping.json`
 
 **Step 4: Apply** - Replace images with LaTeX:
 
 ```bash
-# Preview changes first
-npm run replace-math -- --apply chapters/01/1-5.md mapping.json --dry-run
-
-# Apply for real (creates .bak backup)
 npm run replace-math -- --apply chapters/01/1-5.md mapping.json
 ```
 
@@ -518,19 +458,10 @@ npm run replace-math -- --apply chapters/01/1-5.md mapping.json
 | `--dry-run` | Preview changes without modifying files |
 | `--verbose, -v` | Show detailed progress |
 
-#### Tips
-
-- Images with alt text "None" are most likely equation images
-- Use the `context` fields to match images to equations
-- Set `displayMode: false` for inline equations (uses `$...$` instead of `$$...$$`)
-- You can set `latex` directly instead of `equationIndex` for custom LaTeX
-- Review changes in the Chemistry Reader webapp after applying
-
 ---
 
 ## See Also
 
-- [Workflow Documentation](workflow.md) - Full 8-step translation pipeline
-- [Schema Reference](schema-reference.md) - JSON Schema field definitions
-- [CLI Quick Reference](cli-quick-reference.md) - Command cheat sheet
-- [Markdown Formatting Issues](markdown-formatting-issues.md) - Known Pandoc artifacts and fixes
+- [Workflow Overview](../workflow/overview.md) - Full 8-step translation pipeline
+- [Schema Reference](schemas.md) - JSON Schema field definitions
+- [Markdown Fixes](markdown-fixes.md) - Known Pandoc artifacts and fixes
