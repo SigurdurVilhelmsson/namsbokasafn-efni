@@ -15,9 +15,9 @@
  *   - Inline formatting converted to XLIFF inline elements
  */
 
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
 
 function parseArgs(args) {
   const result = {

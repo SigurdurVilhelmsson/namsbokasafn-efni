@@ -17,21 +17,21 @@
  *   - JSON file with equation mappings (same basename + -equations.json)
  */
 
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
+import fs from 'fs';
+import path from 'path';
+import https from 'https';
 
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/main';
 const MODULES_PATH = '/modules';
 
 // Module mappings from OpenStax Chemistry 2e collection
-// These match the actual modules from the books API
+// Verified against chemistry-2e.collection.xml from GitHub
 const CHEMISTRY_2E_MODULES = {
   // Chapter 1: Essential Ideas
-  'm68662': { chapter: 1, section: 'intro', title: 'Introduction' },
-  'm68663': { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
-  'm68664': { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
-  'm68667': { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
+  'm68663': { chapter: 1, section: 'intro', title: 'Introduction' },
+  'm68664': { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
+  'm68667': { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
+  'm68670': { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
   'm68674': { chapter: 1, section: '1.4', title: 'Measurements' },
   'm68690': { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
   'm68683': { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
@@ -45,18 +45,23 @@ const CHEMISTRY_2E_MODULES = {
   'm68696': { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
   'm68698': { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
   // Chapter 3: Composition of Substances and Solutions
-  'm68718': { chapter: 3, section: 'intro', title: 'Introduction' },
-  'm68720': { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
-  'm68723': { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
-  'm68730': { chapter: 3, section: '3.3', title: 'Molarity' },
-  'm68738': { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
+  'm68699': { chapter: 3, section: 'intro', title: 'Introduction' },
+  'm68700': { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
+  'm68702': { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
+  'm68703': { chapter: 3, section: '3.3', title: 'Molarity' },
+  'm68704': { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
   // Chapter 4: Stoichiometry of Chemical Reactions
-  'm68743': { chapter: 4, section: 'intro', title: 'Introduction' },
-  'm68748': { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
-  'm68754': { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },
-  'm68759': { chapter: 4, section: '4.3', title: 'Reaction Stoichiometry' },
-  'm68766': { chapter: 4, section: '4.4', title: 'Reaction Yields' },
-  'm68768': { chapter: 4, section: '4.5', title: 'Quantitative Chemical Analysis' },
+  'm68730': { chapter: 4, section: 'intro', title: 'Introduction' },
+  'm68709': { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
+  'm68710': { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },
+  'm68713': { chapter: 4, section: '4.3', title: 'Reaction Stoichiometry' },
+  'm68714': { chapter: 4, section: '4.4', title: 'Reaction Yields' },
+  'm68716': { chapter: 4, section: '4.5', title: 'Quantitative Chemical Analysis' },
+  // Chapter 5: Thermochemistry
+  'm68723': { chapter: 5, section: 'intro', title: 'Introduction' },
+  'm68724': { chapter: 5, section: '5.1', title: 'Energy Basics' },
+  'm68726': { chapter: 5, section: '5.2', title: 'Calorimetry' },
+  'm68727': { chapter: 5, section: '5.3', title: 'Enthalpy' },
 };
 
 function parseArgs(args) {

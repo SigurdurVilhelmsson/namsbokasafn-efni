@@ -408,6 +408,116 @@ See [server/README.md](../../server/README.md) for full API documentation.
 
 ---
 
+## CNXML-Based Pipeline (Recommended)
+
+For new chapters, we recommend the CNXML-based pipeline which provides better structure preservation.
+
+### Why CNXML?
+
+| Aspect | DOCX Source | CNXML Source |
+|--------|-------------|--------------|
+| Structure | Formatting may vary | Semantic XML with explicit sections |
+| Equations | Often lost or corrupted | Preserved as MathML → LaTeX |
+| Paragraphs | Line-based, ambiguous | Explicit `<para>` tags |
+| Notes/Examples | Plain text | Tagged with `<note>`, `<example>` |
+| Figures | Embedded images | Metadata + captions preserved |
+
+### CNXML Pipeline Steps
+
+```
+┌─────────────────┐
+│ OpenStax GitHub │
+│   (CNXML)       │
+└────────┬────────┘
+         │ cnxml-to-md.js
+         ▼
+┌─────────────────┐     ┌──────────────────┐
+│ Markdown +      │     │ equations.json   │
+│ [[EQ:n]] refs   │     │ (LaTeX mappings) │
+└────────┬────────┘     └──────────────────┘
+         │ md-to-xliff.js
+         ▼
+┌─────────────────┐
+│ XLIFF           │──▶ Upload to Matecat
+│ (bilingual)     │
+└────────┬────────┘
+         │ (after MT + review)
+         ▼
+┌─────────────────┐
+│ Reviewed XLIFF  │──▶ Export from Matecat
+│ + TMX           │
+└────────┬────────┘
+         │ xliff-to-md.js
+         ▼
+┌─────────────────┐
+│ Final Icelandic │
+│ Markdown        │
+└─────────────────┘
+```
+
+### Directory Structure for CNXML Workflow
+
+```
+books/{book}/
+├── 02-for-mt/              # CNXML-based English markdown
+│   └── ch{NN}/
+│       ├── {N}-{N}.en.md           # English markdown for MT
+│       ├── {N}-{N}-equations.json  # LaTeX equations
+│       └── {N}-{N}.en.xliff        # Bilingual XLIFF
+├── 02-mt-output/
+│   ├── docx/               # Legacy: DOCX-based MT output
+│   └── xliff/              # XLIFF with IS translations
+└── 03-faithful/
+    └── xliff/              # Matecat-reviewed XLIFF
+```
+
+### CLI Tools
+
+| Tool | Purpose | Command |
+|------|---------|---------|
+| `pipeline-runner.js` | Complete pipeline | `node tools/pipeline-runner.js m68724 --output-dir books/efnafraedi/02-for-mt/ch05` |
+| `cnxml-to-md.js` | CNXML → Markdown | `node tools/cnxml-to-md.js m68724 --output file.md` |
+| `md-to-xliff.js` | Markdown → XLIFF | `node tools/md-to-xliff.js file.md --output file.xliff` |
+| `xliff-to-md.js` | XLIFF → Markdown | `node tools/xliff-to-md.js file.xliff --output file.is.md` |
+
+### Module IDs (Chemistry 2e)
+
+Chapters 1-5 module IDs are mapped in the tools. List all known modules:
+
+```bash
+node tools/pipeline-runner.js --list-modules
+```
+
+### Workflow Example
+
+Process Chapter 5 Section 5.1:
+
+```bash
+# Step 1: Generate English markdown + XLIFF from CNXML
+node tools/pipeline-runner.js m68724 --output-dir books/efnafraedi/02-for-mt/ch05
+
+# Output:
+#   5-1.en.md           → Send to malstadur.is for MT
+#   5-1-equations.json  → Keep for equation restoration
+#   5-1.en.xliff        → Upload to Matecat
+
+# Step 2: After MT, create bilingual XLIFF
+node tools/md-to-xliff.js \
+  --source books/efnafraedi/02-for-mt/ch05/5-1.en.md \
+  --target books/efnafraedi/02-mt-output/ch05/5-1.is.md \
+  --output books/efnafraedi/02-mt-output/xliff/ch05/5-1.xliff
+
+# Step 3: Upload to Matecat for review
+# Step 4: Export reviewed XLIFF + TMX from Matecat
+
+# Step 5: Generate final Icelandic markdown
+node tools/xliff-to-md.js \
+  --input books/efnafraedi/03-faithful/xliff/ch05/5-1.xliff \
+  --output books/efnafraedi/05-publication/faithful/chapters/05/5-1.is.md
+```
+
+---
+
 ## Additional Resources
 
 - [Pass 1: Linguistic Review](../editorial/pass1-linguistic.md) - First editorial pass
