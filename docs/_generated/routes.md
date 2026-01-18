@@ -123,4 +123,9 @@
 | GET | `/:sessionId/download-all` |
 | POST | `/:sessionId/advance` |
 | POST | `/:sessionId/cancel` |
+| GET | `/:sessionId/errors` |
+| POST | `/:sessionId/retry` |
+| POST | `/:sessionId/rollback` |
+| POST | `/:sessionId/reset` |
+| GET | `/:sessionId/recovery` |
 
