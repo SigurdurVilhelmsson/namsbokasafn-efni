@@ -10,7 +10,7 @@
 | `cnxml-math-extract` | ============================================================ |
 | `cnxml-to-md` | raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/ |
 | `cnxml-to-xliff` | raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/ |
-| `create-bilingual-xliff` | Directive start |
+| `create-bilingual-xliff` | Try YAML frontmatter first |
 | `docx-to-md` | ============================================================ |
 | `export-parallel-corpus` | No description |
 | `fix-figure-captions` | ============================================================ |
