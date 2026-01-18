@@ -9,7 +9,7 @@ This skill provides guidance for applying custom markdown directives to Icelandi
 
 ## When to Invoke This Skill
 
-- Editing or creating markdown files in `public/content/`
+- Editing or creating markdown files in `books/{book}/05-publication/`
 - Translating chemistry textbook content
 - Asked to "tag", "format", or "structure" educational chemistry content
 - Reviewing content for proper markup
