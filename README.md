@@ -213,12 +213,13 @@ See [server/README.md](server/README.md) for full documentation.
 | `process-chapter` | ============================================================ |
 | `repair-directives` | Directives that can contain nested directives |
 | `replace-math-images` | ============================================================ |
+| `split-for-erlendur` | Erlendur MT character limits |
 | `strip-docx-to-txt` | Parse command line arguments |
 | `validate-chapter` | No description |
 | `xliff-to-md` | No description |
 | `xliff-to-tmx` | Extract file attributes |
 
-*19 tools total*
+*20 tools total*
 
 <!-- tools-end -->
 
