@@ -204,6 +204,7 @@ See [server/README.md](server/README.md) for full documentation.
 | `cnxml-math-extract` | ============================================================ |
 | `cnxml-to-md` | raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/ |
 | `cnxml-to-xliff` | raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/ |
+| `create-bilingual-xliff` | Directive start |
 | `docx-to-md` | ============================================================ |
 | `export-parallel-corpus` | No description |
 | `fix-figure-captions` | ============================================================ |
@@ -219,7 +220,7 @@ See [server/README.md](server/README.md) for full documentation.
 | `xliff-to-md` | No description |
 | `xliff-to-tmx` | Extract file attributes |
 
-*20 tools total*
+*21 tools total*
 
 <!-- tools-end -->
 
