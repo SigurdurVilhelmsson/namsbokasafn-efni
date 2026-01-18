@@ -11,18 +11,21 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 
 ```
 books/{book}/
-├── 01-source/          # 🔒 READ ONLY - OpenStax originals
-├── 02-mt-output/       # 🔒 READ ONLY - Machine translation
-├── 03-faithful/        # ✏️ Pass 1 output (faithful translation)
+├── 01-source/          # 🔒 READ ONLY - OpenStax CNXML originals
+├── 02-for-mt/          # EN markdown for machine translation
+│   └── ch{NN}/         #   {N}-{N}.en.md, {N}-{N}-equations.json
+├── 02-mt-output/       # 🔒 READ ONLY - IS markdown from MT
+├── 03-faithful/        # ✏️ Reviewed IS markdown (faithful translation)
 ├── 04-localized/       # ✏️ Pass 2 output (localized version)
 ├── 05-publication/     # ✏️ Web-ready markdown
 │   ├── mt-preview/     #    MT versions for immediate use
 │   └── faithful/       #    Human-reviewed versions
-├── tm/                 # 🔒 READ ONLY - Translation memory
+├── for-align/          # Staging for Matecat Align
+├── tm/                 # 🔒 READ ONLY - TMX from Matecat Align
 ├── glossary/           # Terminology files
 └── chapters/ch{NN}/    # Status tracking (status.json)
 
-tools/                  # 19 CLI tools for pipeline processing
+tools/                  # CLI tools for pipeline processing
 server/                 # Web workflow interface
 docs/                   # Documentation (see below)
 ```
@@ -36,18 +39,25 @@ docs/                   # Documentation (see below)
 
 **Before modifying files:** Create backup `{filename}.{YYYY-MM-DD-HHMM}.bak`
 
-## 8-Step Workflow
+## 5-Step Simplified Workflow
 
-| Steps | Stage | Output |
-|-------|-------|--------|
-| 1-2 | Source + MT | `01-source/`, `02-mt-output/` |
-| 3-4 | Matecat alignment | `tm/` (initial TM) |
-| 5 | Pass 1 (linguistic) | `03-faithful/` ★ |
-| 6 | TM update | `tm/` ★ |
-| 7 | Pass 2 (localization) | `04-localized/` ★ |
-| 8 | Publication | `05-publication/` |
+```
+CNXML → EN Markdown → MT → Linguistic Review → Matecat Align → Publication
+```
 
-★ = Preserved valuable asset
+| Step | What | Tool/Service | Output |
+|------|------|--------------|--------|
+| 1 | CNXML → EN markdown | `pipeline-runner.js` | `02-for-mt/` |
+| 2 | Machine translation | malstadur.is | `02-mt-output/` |
+| 3 | Linguistic review | Manual editing | `03-faithful/` ★ |
+| 4 | TM creation | `prepare-for-align.js` + Matecat Align | `tm/` ★ |
+| 5 | Publication | `add-frontmatter.js` | `05-publication/` |
+
+★ = Human-verified asset
+
+**Key insight:** Review BEFORE TM creation, so TM is human-verified quality.
+
+See [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md) for full instructions.
 
 ## Commands
 
@@ -80,7 +90,12 @@ npm run update-status <book> <chapter> <stage> <status>
 npm run validate
 ```
 
-**Stages:** `source`, `mtOutput`, `matecat`, `editorialPass1`, `tmUpdated`, `editorialPass2`, `publication`
+**Stages (simplified workflow):**
+- `enMarkdown` - Step 1: EN markdown generated
+- `mtOutput` - Step 2: MT output received
+- `linguisticReview` - Step 3: Faithful translation complete
+- `tmCreated` - Step 4: TM created via Matecat Align
+- `publication` - Step 5: Published
 
 **Statuses:** `complete`, `in-progress`, `pending`, `not-started`
 
@@ -107,7 +122,8 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 | Document | Purpose |
 |----------|---------|
-| [docs/workflow/overview.md](docs/workflow/overview.md) | Full 8-step pipeline |
+| [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md) | **5-step workflow (recommended)** |
+| [docs/workflow/overview.md](docs/workflow/overview.md) | Legacy 8-step pipeline reference |
 | [docs/editorial/pass1-linguistic.md](docs/editorial/pass1-linguistic.md) | Pass 1 instructions |
 | [docs/editorial/pass2-localization.md](docs/editorial/pass2-localization.md) | Pass 2 instructions |
 | [docs/editorial/terminology.md](docs/editorial/terminology.md) | Terminology standards |

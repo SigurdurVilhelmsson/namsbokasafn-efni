@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 /**
+ * @deprecated This tool is deprecated. Matecat Align exports TMX directly.
+ * See docs/workflow/simplified-workflow.md for the new 5-step workflow.
+ *
  * xliff-to-tmx.js
  *
  * Extracts translation memory from reviewed XLIFF files.

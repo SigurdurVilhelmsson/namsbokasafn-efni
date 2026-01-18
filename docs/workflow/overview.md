@@ -408,113 +408,45 @@ See [server/README.md](../../server/README.md) for full API documentation.
 
 ---
 
-## CNXML-Based Pipeline (Recommended)
+## Simplified Workflow (Recommended)
 
-For new chapters, we recommend the CNXML-based pipeline which provides better structure preservation.
+**For new chapters, use the [Simplified 5-Step Workflow](simplified-workflow.md)** which eliminates XLIFF generation and lets Matecat Align handle segmentation.
 
-### Why CNXML?
+### Why Simplified?
 
-| Aspect | DOCX Source | CNXML Source |
-|--------|-------------|--------------|
-| Structure | Formatting may vary | Semantic XML with explicit sections |
-| Equations | Often lost or corrupted | Preserved as MathML → LaTeX |
-| Paragraphs | Line-based, ambiguous | Explicit `<para>` tags |
-| Notes/Examples | Plain text | Tagged with `<note>`, `<example>` |
-| Figures | Embedded images | Metadata + captions preserved |
+The older workflow had 12+ steps with multiple format conversions. The new workflow:
 
-### CNXML Pipeline Steps
+- Does linguistic review BEFORE TM creation (TM is human-verified from the start)
+- Uses Matecat Align for TM creation (no XLIFF needed)
+- Reduces complexity from 12+ steps to 5
+
+### Quick Overview
 
 ```
-┌─────────────────┐
-│ OpenStax GitHub │
-│   (CNXML)       │
-└────────┬────────┘
-         │ cnxml-to-md.js
-         ▼
-┌─────────────────┐     ┌──────────────────┐
-│ Markdown +      │     │ equations.json   │
-│ [[EQ:n]] refs   │     │ (LaTeX mappings) │
-└────────┬────────┘     └──────────────────┘
-         │ md-to-xliff.js
-         ▼
-┌─────────────────┐
-│ XLIFF           │──▶ Upload to Matecat
-│ (bilingual)     │
-└────────┬────────┘
-         │ (after MT + review)
-         ▼
-┌─────────────────┐
-│ Reviewed XLIFF  │──▶ Export from Matecat
-│ + TMX           │
-└────────┬────────┘
-         │ xliff-to-md.js
-         ▼
-┌─────────────────┐
-│ Final Icelandic │
-│ Markdown        │
-└─────────────────┘
+CNXML → EN Markdown → MT → Linguistic Review → Matecat Align → Publication
 ```
 
-### Directory Structure for CNXML Workflow
+| Step | Tool/Service | Output |
+|------|--------------|--------|
+| 1 | `pipeline-runner.js` | EN markdown + equations |
+| 2 | malstadur.is | MT output |
+| 3 | Manual editing | Faithful translation |
+| 4 | `prepare-for-align.js` + Matecat Align | Human-verified TMX |
+| 5 | `add-frontmatter.js` | Published content |
 
-```
-books/{book}/
-├── 02-for-mt/              # CNXML-based English markdown
-│   └── ch{NN}/
-│       ├── {N}-{N}.en.md           # English markdown for MT
-│       ├── {N}-{N}-equations.json  # LaTeX equations
-│       └── {N}-{N}.en.xliff        # Bilingual XLIFF
-├── 02-mt-output/
-│   ├── docx/               # Legacy: DOCX-based MT output
-│   └── xliff/              # XLIFF with IS translations
-└── 03-faithful/
-    └── xliff/              # Matecat-reviewed XLIFF
-```
+**See [simplified-workflow.md](simplified-workflow.md) for full instructions.**
 
-### CLI Tools
+### Deprecated Tools
 
-| Tool | Purpose | Command |
-|------|---------|---------|
-| `pipeline-runner.js` | Complete pipeline | `node tools/pipeline-runner.js m68724 --output-dir books/efnafraedi/02-for-mt/ch05` |
-| `cnxml-to-md.js` | CNXML → Markdown | `node tools/cnxml-to-md.js m68724 --output file.md` |
-| `md-to-xliff.js` | Markdown → XLIFF | `node tools/md-to-xliff.js file.md --output file.xliff` |
-| `xliff-to-md.js` | XLIFF → Markdown | `node tools/xliff-to-md.js file.xliff --output file.is.md` |
+The following tools are deprecated in favor of Matecat Align:
 
-### Module IDs (Chemistry 2e)
-
-Chapters 1-5 module IDs are mapped in the tools. List all known modules:
-
-```bash
-node tools/pipeline-runner.js --list-modules
-```
-
-### Workflow Example
-
-Process Chapter 5 Section 5.1:
-
-```bash
-# Step 1: Generate English markdown + XLIFF from CNXML
-node tools/pipeline-runner.js m68724 --output-dir books/efnafraedi/02-for-mt/ch05
-
-# Output:
-#   5-1.en.md           → Send to malstadur.is for MT
-#   5-1-equations.json  → Keep for equation restoration
-#   5-1.en.xliff        → Upload to Matecat
-
-# Step 2: After MT, create bilingual XLIFF
-node tools/md-to-xliff.js \
-  --source books/efnafraedi/02-for-mt/ch05/5-1.en.md \
-  --target books/efnafraedi/02-mt-output/ch05/5-1.is.md \
-  --output books/efnafraedi/02-mt-output/xliff/ch05/5-1.xliff
-
-# Step 3: Upload to Matecat for review
-# Step 4: Export reviewed XLIFF + TMX from Matecat
-
-# Step 5: Generate final Icelandic markdown
-node tools/xliff-to-md.js \
-  --input books/efnafraedi/03-faithful/xliff/ch05/5-1.xliff \
-  --output books/efnafraedi/05-publication/faithful/chapters/05/5-1.is.md
-```
+| Tool | Status | Reason |
+|------|--------|--------|
+| `create-bilingual-xliff.js` | Deprecated | Matecat Align handles segmentation |
+| `md-to-xliff.js` | Deprecated | No longer generating XLIFF |
+| `xliff-to-md.js` | Deprecated | No longer processing XLIFF |
+| `cnxml-to-xliff.js` | Deprecated | No longer generating XLIFF |
+| `xliff-to-tmx.js` | Deprecated | Matecat exports TMX directly |
 
 ---
 

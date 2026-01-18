@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 /**
+ * @deprecated This tool is deprecated. Use Matecat Align instead.
+ * See docs/workflow/simplified-workflow.md for the new 5-step workflow.
+ *
  * xliff-to-md.js
  *
  * Converts translated XLIFF files to Chemistry Reader markdown format.

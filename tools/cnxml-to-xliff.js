@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 /**
+ * @deprecated This tool is deprecated. Use cnxml-to-md.js + Matecat Align instead.
+ * See docs/workflow/simplified-workflow.md for the new 5-step workflow.
+ *
  * cnxml-to-xliff.js
  *
  * Converts OpenStax CNXML files to XLIFF 1.2 format for translation in Matecat.
