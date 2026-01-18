@@ -1,235 +1,107 @@
 # Claude Code Instructions for namsbokasafn-efni
 
-## Repository Purpose
+## Purpose
 
-This repo manages the translation workflow for Icelandic OpenStax textbook translations. Content flows through 8 stages from source to publication, producing three valuable assets: faithful translations, human-verified translation memory, and localized educational content.
-
-## Quick Start
-
-```bash
-# Check project status
-/pipeline-status efnafraedi
-
-# Check specific chapter
-/chapter-status efnafraedi 3
-
-# See available commands
-/help
-```
+Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
+1. **Faithful translations** (03-faithful/) - human-verified, academically citable
+2. **Translation memory** (tm/) - human-verified EN↔IS parallel corpus
+3. **Localized content** (04-localized/, 05-publication/) - adapted for Icelandic students
 
 ## Directory Structure
 
 ```
 books/{book}/
-├── 01-source/          # Original OpenStax files (READ ONLY)
-├── 02-mt-output/       # Machine translation output (READ ONLY)
-├── 03-faithful/        # After Pass 1 - faithful translation ★
-├── 04-localized/       # After Pass 2 - localized for Iceland ★
-├── 05-publication/     # Web-ready markdown files
-│   ├── mt-preview/     # MT versions for immediate student use
-│   ├── faithful/       # Human-reviewed versions (after Pass 1)
-│   └── glossary.json   # Shared terminology
-├── tm/                 # Translation memory exports ★ (READ ONLY)
+├── 01-source/          # 🔒 READ ONLY - OpenStax originals
+├── 02-mt-output/       # 🔒 READ ONLY - Machine translation
+├── 03-faithful/        # ✏️ Pass 1 output (faithful translation)
+├── 04-localized/       # ✏️ Pass 2 output (localized version)
+├── 05-publication/     # ✏️ Web-ready markdown
+│   ├── mt-preview/     #    MT versions for immediate use
+│   └── faithful/       #    Human-reviewed versions
+├── tm/                 # 🔒 READ ONLY - Translation memory
 ├── glossary/           # Terminology files
-└── chapters/ch{NN}/    # Status tracking per chapter
-    ├── status.json     # Chapter-level workflow status
-    └── files.json      # Per-file tracking
+└── chapters/ch{NN}/    # Status tracking (status.json)
 
-logs/
-└── activity-log.md     # All Claude Code actions (append-only)
-
-.claude/
-├── skills/             # Auto-loaded knowledge
-├── agents/             # Specialized subagents
-└── commands/           # Slash commands
+tools/                  # 19 CLI tools for pipeline processing
+server/                 # Web workflow interface
+docs/                   # Documentation (see below)
 ```
-
-★ = Preserved valuable assets
 
 ## File Permissions
 
-| Folder | Permission | Notes |
-|--------|------------|-------|
-| `01-source/` | 🔒 READ ONLY | Never modify originals |
-| `02-mt-output/` | 🔒 READ ONLY | Reference only |
-| `03-faithful/` | ✏️ READ + WRITE | Backup before editing |
-| `04-localized/` | ✏️ READ + WRITE | Backup before editing |
-| `05-publication/` | ✏️ READ + WRITE | Backup before editing |
-| `tm/` | 🔒 READ ONLY | Managed by Matecat |
-| `logs/` | ✏️ APPEND ONLY | Always log actions |
+| Permission | Folders | Rule |
+|------------|---------|------|
+| 🔒 READ ONLY | `01-source/`, `02-mt-output/`, `tm/` | Never modify |
+| ✏️ WRITE | `03-faithful/`, `04-localized/`, `05-publication/` | Backup before editing |
 
-**Before modifying any file:** Create backup `{filename}.{YYYY-MM-DD-HHMM}.bak`
+**Before modifying files:** Create backup `{filename}.{YYYY-MM-DD-HHMM}.bak`
 
 ## 8-Step Workflow
 
-| Step | Stage | Output Folder | Key Output |
-|------|-------|---------------|------------|
-| 1 | Source preparation | `01-source/` | Original .docx |
-| 2 | Machine translation | `02-mt-output/` | MT output |
-| 3-4 | Matecat alignment | `tm/` | Initial TM |
-| 5 | Pass 1 (linguistic) | `03-faithful/` | Faithful translation ★ |
-| 6 | TM update | `tm/` | Human-verified TM ★ |
-| 7 | Pass 2 (localization) | `04-localized/` | Localized version ★ |
-| 8 | Publication | `05-publication/` | Web-ready .md |
+| Steps | Stage | Output |
+|-------|-------|--------|
+| 1-2 | Source + MT | `01-source/`, `02-mt-output/` |
+| 3-4 | Matecat alignment | `tm/` (initial TM) |
+| 5 | Pass 1 (linguistic) | `03-faithful/` ★ |
+| 6 | TM update | `tm/` ★ |
+| 7 | Pass 2 (localization) | `04-localized/` ★ |
+| 8 | Publication | `05-publication/` |
 
-### Publication Tracks
+★ = Preserved valuable asset
 
-| Track | Source | Quality | Folder |
-|-------|--------|---------|--------|
-| `mt-preview` | `02-mt-output/` | Unreviewed MT | `05-publication/mt-preview/` |
-| `faithful` | `03-faithful/` | Pass 1 reviewed | `05-publication/faithful/` |
-
-MT previews can be published immediately for student use while editorial review continues.
-
-## Available Commands
+## Commands
 
 | Command | Purpose |
 |---------|---------|
-| `/chapter-status <ch>` | Show chapter progress |
-| `/pipeline-status` | Show all chapters overview |
-| `/review-chapter <ch>` | Pass 1 linguistic review |
-| `/localize-chapter <ch>` | Find localization opportunities |
-| `/tag-for-publication <file>` | Apply Chemistry Reader tags |
-| `/check-terminology <ch>` | Verify terminology |
-| `/intake-source <file>` | Register new source file |
-
-## Available Skills (Auto-loaded)
-
-| Skill | Activates When |
-|-------|----------------|
-| `editorial-pass1` | Working on `03-faithful/` or grammar review |
-| `localization` | Working on `04-localized/` or unit conversions |
-| `chemistry-reader-tags` | Working on `05-publication/` or tagging |
-| `workflow-status` | Discussing progress or status |
-| `repo-structure` | Creating, moving, or saving files |
-| `activity-logging` | Any file operations |
-| `review-protocol` | Discussing reviews or approvals |
-
-## Key Files to Update
-
-| File | Purpose | When to Update |
-|------|---------|----------------|
-| `STATUS.md` | Overall project dashboard | Major milestones |
-| `books/{book}/STATUS.md` | Book-specific progress | Chapter completions |
-| `chapters/ch{NN}/status.json` | Chapter workflow tracking | Stage completions |
-| `chapters/ch{NN}/files.json` | Per-file tracking | File processing |
-| `logs/activity-log.md` | Action audit trail | Every session |
+| `/pipeline-status` | Overview of all chapters |
+| `/chapter-status <book> <ch>` | Specific chapter progress |
+| `/review-chapter <book> <ch>` | Pass 1 linguistic review |
+| `/localize-chapter <book> <ch>` | Pass 2 localization |
+| `/check-terminology <book> <ch>` | Verify terminology |
 
 ## Status Updates
 
-### Via CLI (Preferred)
-
 ```bash
-npm run update-status efnafraedi 3 editorialPass1 complete
-npm run update-status efnafraedi 3 editorialPass1 in-progress --editor "Name"
+npm run update-status <book> <chapter> <stage> <status>
 npm run validate
 ```
 
-### Stage Names
+**Stages:** `source`, `mtOutput`, `matecat`, `editorialPass1`, `tmUpdated`, `editorialPass2`, `publication`
 
-`source`, `mtOutput`, `matecat`, `editorialPass1`, `tmUpdated`, `editorialPass2`, `publication`
+**Statuses:** `complete`, `in-progress`, `pending`, `not-started`
 
-### Status Values
+## Human Review Required
 
-`complete`, `in-progress`, `pending`, `not-started`
+All AI suggestions require human approval before:
+- Advancing workflow stages
+- Committing terminology changes
+- Publishing content
 
-## Human Review Protocol
+## Two-Repository Workflow
 
-All substantive AI outputs require human review:
+| Problem Type | Fix In |
+|--------------|--------|
+| Content issues | **HERE** (namsbokasafn-efni) |
+| Rendering bugs | namsbokasafn-vefur |
 
-| After This | Human Must |
-|------------|------------|
-| `/review-chapter` | Review suggestions, accept/reject |
-| `/localize-chapter` | Decide which adaptations to make |
-| `/tag-for-publication` | Approve proposed tags |
-
-**Do not advance workflow stages until human has approved.**
-
-## Activity Logging
-
-**Every session must log actions to `logs/activity-log.md`:**
-
-```markdown
----
-## {DATE} - {Action}
-
-**Files processed:**
-- {filepath}: {action}
-
-**Requires human review:**
-- [ ] {filepath}: {what needs review}
-
-**Next steps:**
-- {remaining work}
----
+**Sync command** (run in namsbokasafn-vefur):
+```bash
+node scripts/sync-content.js --source ../namsbokasafn-efni
 ```
-
-## Naming Conventions
-
-| Type | Format | Example |
-|------|--------|---------|
-| Chapter folders | `ch{NN}` (zero-padded) | `ch01`, `ch03`, `ch21` |
-| Pass 1 output | `{section}-pass1-{initials}.docx` | `3.1-pass1-SEV.docx` |
-| Pass 2 output | `{section}-localized.docx` | `3.1-localized.docx` |
-| Localization logs | `ch{NN}-log.md` | `ch03-log.md` |
-| Status files | `status.json` | Always lowercase |
-
-## Status Symbols (for STATUS.md)
-
-- ✅ Complete
-- 🔄 In progress
-- ⏳ Pending/Waiting
-- ❌ Blocked
-- ○ Not started
-
-## Current Priority
-
-**Pilot at Fjölbrautaskólinn við Ármúla, January 2026**
-
-Focus: Chapters 1-4 faithful translations (Pass 1 complete)
 
 ## Documentation
 
 | Document | Purpose |
 |----------|---------|
-| `docs/workflow/overview.md` | Full 8-step pipeline |
-| `docs/editorial/pass1-linguistic.md` | Pass 1 instructions |
-| `docs/editorial/pass2-localization.md` | Pass 2 instructions |
-| `docs/editorial/terminology.md` | Terminology standards |
-| `docs/technical/cli-reference.md` | CLI tools and pipeline scripts |
-| `docs/technical/markdown-fixes.md` | Known rendering issues and fixes |
+| [docs/workflow/overview.md](docs/workflow/overview.md) | Full 8-step pipeline |
+| [docs/editorial/pass1-linguistic.md](docs/editorial/pass1-linguistic.md) | Pass 1 instructions |
+| [docs/editorial/pass2-localization.md](docs/editorial/pass2-localization.md) | Pass 2 instructions |
+| [docs/editorial/terminology.md](docs/editorial/terminology.md) | Terminology standards |
+| [docs/technical/cli-reference.md](docs/technical/cli-reference.md) | CLI tools reference |
+| [ROADMAP.md](ROADMAP.md) | Development status |
 
-## Two-Repository Workflow
+## Current Priority
 
-This repository works together with `namsbokasafn-vefur` (website). When fixing bugs:
+**Pilot at Fjölbrautaskólinn við Ármúla, January 2026**
 
-### Content Problems → Fix HERE (namsbokasafn-efni)
-1. **Fix prepared content**: Correct issues in `books/*/05-publication/mt-preview/`
-2. **Fix processing pipeline**: Update `tools/` scripts so problems don't recur in future content
-3. **Sync to website**: After fixing, sync content to namsbokasafn-vefur
-
-### Website/Rendering Bugs → Fix in namsbokasafn-vefur
-- Markdown processing, component rendering, styling issues
-
-**Key principle**: Always fix content problems at the source (here), not with workarounds in the website repo. Check how changes render in namsbokasafn-vefur after syncing.
-
-### Content Sync Command (run in namsbokasafn-vefur)
-```bash
-node scripts/sync-content.js --source ../namsbokasafn-efni
-```
-
-## Getting Help
-
-```
-# Command help
-/help
-
-# Workflow questions
-What's the next step for chapter 3?
-
-# Terminology
-What's the Icelandic term for "electron configuration"?
-
-# Skill content
-Show me the unit conversion reference from the localization skill.
-```
+Focus: Chapters 1-4 with MT preview published, Pass 1 review in progress.
