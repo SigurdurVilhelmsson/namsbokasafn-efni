@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Translation workflow and content for Icelandic OpenStax textbooks. Produces faithful translations, human-verified TM, and localized educational content.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "update-status": "node scripts/update-status.js",
     "validate": "node scripts/validate-status.js",
@@ -19,7 +20,9 @@
     "openstax-fetch": "node tools/openstax-fetch.js",
     "server": "cd server && npm start",
     "server:dev": "cd server && npm run dev",
-    "server:install": "cd server && npm install"
+    "server:install": "cd server && npm install",
+    "docs:generate": "node scripts/generate-tool-inventory.js && node scripts/generate-route-inventory.js && node scripts/update-readme-sections.js",
+    "docs:check": "npm run docs:generate && git diff --exit-code docs/_generated/"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",

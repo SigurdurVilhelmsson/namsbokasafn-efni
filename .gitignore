@@ -43,3 +43,14 @@ books/efnafraedi/01-source/images-editable/ch12/CNX_Chem_12_07_HetCats.eps
 books/efnafraedi/01-source/images-editable/ch18/CNX_Chem_18_03_CO2vsSiO2.eps
 books/efnafraedi/01-source/images-editable/ch18/CNX_Chem_18_03_CO2vsSiO2_TEMPLATE.eps
 books/efnafraedi/01-source/images-editable/ch21/CNX_Chem_21_04_ChnReact1.pdf
+
+# Auto-generated docs (regenerated on push)
+# Uncomment if you don't want to track these:
+# docs/_generated/
+
+# Development journal (personal breadcrumbs)
+# Uncomment if you want to keep this private:
+# logs/dev-journal.md
+
+# Auto-changelog is useful to track
+# CHANGELOG-AUTO.md
