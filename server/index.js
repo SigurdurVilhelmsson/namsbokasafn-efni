@@ -71,9 +71,32 @@ const HOST = process.env.HOST || 'localhost';
 // Initialize Express app
 const app = express();
 
-// Middleware
+// CORS configuration - allow requests from web reader (vefur)
+const allowedOrigins = [
+  'https://namsbokasafn.is',
+  'https://www.namsbokasafn.is',
+  'http://localhost:5173',  // Vite dev server
+  'http://localhost:4173',  // Vite preview
+  'http://localhost:3000',  // Local dev
+];
+
+// Add custom origins from environment
+if (process.env.CORS_ORIGIN) {
+  allowedOrigins.push(...process.env.CORS_ORIGIN.split(',').map(o => o.trim()));
+}
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || true,
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin) || origin.endsWith('.namsbokasafn.is')) {
+      callback(null, true);
+    } else {
+      console.log(`[CORS] Blocked origin: ${origin}`);
+      callback(null, false);
+    }
+  },
   credentials: true
 }));
 app.use(cookieParser());
