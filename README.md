@@ -224,7 +224,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 <!-- routes-start -->
 # API Routes
 
-*21 route modules from server/routes/*
+*Auto-generated from server/routes/*
 
 ## /activity
 

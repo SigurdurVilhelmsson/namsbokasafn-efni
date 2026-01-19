@@ -147,6 +147,17 @@
 | GET | `/jobs/:jobId` |
 | GET | `/jobs` |
 
+## /publication
+
+| Method | Path |
+|--------|------|
+| GET | `/:bookSlug/:chapterNum/status` |
+| GET | `/:bookSlug/:chapterNum/readiness` |
+| POST | `/:bookSlug/:chapterNum/mt-preview` |
+| POST | `/:bookSlug/:chapterNum/faithful` |
+| POST | `/:bookSlug/:chapterNum/localized` |
+| GET | `/:bookSlug/overview` |
+
 ## /reviews
 
 | Method | Path |
@@ -180,6 +191,21 @@
 | GET | `/:book/summary` |
 | GET | `/:book/:chapter` |
 
+## /suggestions
+
+| Method | Path |
+|--------|------|
+| POST | `/scan/:sectionId` |
+| POST | `/scan-book/:bookSlug` |
+| GET | `/:sectionId` |
+| GET | `/:sectionId/stats` |
+| GET | `/patterns` |
+| POST | `/:id/accept` |
+| POST | `/:id/reject` |
+| POST | `/:id/modify` |
+| POST | `/:sectionId/bulk` |
+| POST | `/:sectionId/sync-log` |
+
 ## /sync
 
 | Method | Path |
@@ -189,6 +215,27 @@
 | POST | `/create-pr` |
 | GET | `/status/:prNumber` |
 | GET | `/prs` |
+
+## /terminology
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/lookup` |
+| GET | `/stats` |
+| GET | `/review-queue` |
+| GET | `/categories` |
+| GET | `/:id` |
+| POST | `/` |
+| PUT | `/:id` |
+| DELETE | `/:id` |
+| POST | `/:id/approve` |
+| POST | `/:id/dispute` |
+| POST | `/:id/discuss` |
+| POST | `/import/csv` |
+| POST | `/import/excel` |
+| POST | `/import/key-terms` |
+| POST | `/import/existing-glossary` |
 
 ## /views
 
@@ -203,6 +250,8 @@
 | GET | `/reviews` |
 | GET | `/status` |
 | GET | `/books` |
+| GET | `/terminology` |
+| GET | `/localization-review` |
 
 ## /workflow
 

@@ -1,47 +1,29 @@
 # CLI Tools
 
-*Manually maintained - last updated 2026-01-19*
-
-## Core Tools (Simplified Workflow)
-
-| Tool | Description | Used In |
-|------|-------------|---------|
-| `pipeline-runner` | Full CNXML → markdown pipeline with equation extraction | Step 1 |
-| `cnxml-to-md` | Convert CNXML to Markdown with equation placeholders | Step 1 |
-| `split-for-erlendur` | Split files at 18k chars for MT upload | Step 1 |
-| `prepare-for-align` | Prepare files for Matecat Align | Step 4 |
-| `add-frontmatter` | Add YAML frontmatter for publication (supports --track) | Step 5 |
-
-## Utility Tools
+*Auto-generated from tools/ directory*
 
 | Tool | Description |
 |------|-------------|
-| `apply-equations` | Restore LaTeX equations from JSON file |
-| `clean-markdown` | Fix Pandoc artifacts (mspace, orphan directives) |
-| `docx-to-md` | Convert DOCX to Markdown |
-| `export-parallel-corpus` | Export TM to parallel text files |
-| `fix-figure-captions` | Fix figure caption formatting |
-| `repair-directives` | Fix directive syntax issues |
-| `replace-math-images` | Replace equation images with LaTeX |
-| `cnxml-math-extract` | Extract MathML from CNXML source |
-| `strip-docx-to-txt` | Extract plain text from DOCX |
-| `validate-chapter` | Validate chapter structure |
-| `process-chapter` | Full chapter processing pipeline |
+| `add-frontmatter` | ============================================================ |
+| `apply-equations` | Support both { equations: {...} } and direct { EQ:1: ..., EQ |
+| `clean-markdown` | ============================================================ |
+| `cnxml-math-extract` | ============================================================ |
+| `cnxml-to-md` | raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/ |
+| `cnxml-to-xliff` | raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/ |
+| `create-bilingual-xliff` | Try YAML frontmatter first |
+| `docx-to-md` | ============================================================ |
+| `export-parallel-corpus` | No description |
+| `fix-figure-captions` | ============================================================ |
+| `md-to-xliff` | Extract YAML frontmatter if present |
+| `pipeline-runner` | Markdown for Erlendur MT |
+| `prepare-for-align` | Single EN file |
+| `process-chapter` | ============================================================ |
+| `repair-directives` | Directives that can contain nested directives |
+| `replace-math-images` | ============================================================ |
+| `split-for-erlendur` | Erlendur MT character limits |
+| `strip-docx-to-txt` | Parse command line arguments |
+| `validate-chapter` | No description |
+| `xliff-to-md` | No description |
+| `xliff-to-tmx` | Extract file attributes |
 
-## Deprecated Tools
-
-| Tool | Status | Replacement |
-|------|--------|-------------|
-| `cnxml-to-xliff` | DEPRECATED | Matecat Align |
-| `create-bilingual-xliff` | DEPRECATED | Matecat Align |
-| `md-to-xliff` | DEPRECATED | Matecat Align |
-| `xliff-to-md` | DEPRECATED | Matecat Align |
-| `xliff-to-tmx` | DEPRECATED | Matecat exports TMX directly |
-
-**Why deprecated?** The simplified 5-step workflow uses Matecat Align for TM creation, which handles segmentation and alignment automatically. XLIFF generation is no longer needed.
-
----
-
-*21 tools total (16 active, 5 deprecated)*
-
-See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
+*21 tools total*
