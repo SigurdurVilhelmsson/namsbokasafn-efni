@@ -100,6 +100,30 @@ router.get('/localization-review', (req, res) => {
 });
 
 /**
+ * GET /feedback
+ * Public feedback form
+ */
+router.get('/feedback', (req, res) => {
+  sendView(res, 'feedback.html');
+});
+
+/**
+ * GET /admin/feedback
+ * Admin feedback dashboard
+ */
+router.get('/admin/feedback', (req, res) => {
+  sendView(res, 'feedback-admin.html');
+});
+
+/**
+ * GET /for-teachers
+ * Teacher guide page
+ */
+router.get('/for-teachers', (req, res) => {
+  sendView(res, 'teacher-guide.html');
+});
+
+/**
  * Helper to send a view file
  */
 function sendView(res, filename) {

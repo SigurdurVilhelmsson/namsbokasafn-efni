@@ -22,7 +22,7 @@ const router = express.Router();
 const publicationService = require('../services/publicationService');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
-const activityService = require('../services/activityService');
+const activityLog = require('../services/activityLog');
 
 // Validation middleware for chapter params
 function validateChapterParams(req, res, next) {
@@ -145,17 +145,14 @@ router.post(
 
       // Log activity
       try {
-        activityService.logActivity({
+        activityLog.log({
+          type: 'publish_mt_preview',
           userId: req.user.id,
           username: req.user.name || req.user.login,
-          action: 'publish_mt_preview',
-          targetType: 'chapter',
-          targetId: `${bookSlug}:ch${String(chapter).padStart(2, '0')}`,
-          details: {
-            book: bookSlug,
-            chapter,
-            filesPublished: result.filesPublished
-          }
+          book: bookSlug,
+          chapter: String(chapter),
+          description: `Published MT preview for ${bookSlug} chapter ${chapter}`,
+          metadata: { filesPublished: result.filesPublished }
         });
       } catch (logErr) {
         console.error('Failed to log activity:', logErr);
@@ -215,18 +212,14 @@ router.post(
 
       // Log activity
       try {
-        activityService.logActivity({
+        activityLog.log({
+          type: 'publish_faithful',
           userId: req.user.id,
           username: req.user.name || req.user.login,
-          action: 'publish_faithful',
-          targetType: 'chapter',
-          targetId: `${bookSlug}:ch${String(chapter).padStart(2, '0')}`,
-          details: {
-            book: bookSlug,
-            chapter,
-            filesPublished: result.filesPublished,
-            replacesMtPreview: result.replacesMtPreview
-          }
+          book: bookSlug,
+          chapter: String(chapter),
+          description: `Published faithful translation for ${bookSlug} chapter ${chapter}`,
+          metadata: { filesPublished: result.filesPublished, replacesMtPreview: result.replacesMtPreview }
         });
       } catch (logErr) {
         console.error('Failed to log activity:', logErr);
@@ -286,18 +279,14 @@ router.post(
 
       // Log activity
       try {
-        activityService.logActivity({
+        activityLog.log({
+          type: 'publish_localized',
           userId: req.user.id,
           username: req.user.name || req.user.login,
-          action: 'publish_localized',
-          targetType: 'chapter',
-          targetId: `${bookSlug}:ch${String(chapter).padStart(2, '0')}`,
-          details: {
-            book: bookSlug,
-            chapter,
-            filesPublished: result.filesPublished,
-            replacesFaithful: result.replacesFaithful
-          }
+          book: bookSlug,
+          chapter: String(chapter),
+          description: `Published localized content for ${bookSlug} chapter ${chapter}`,
+          metadata: { filesPublished: result.filesPublished, replacesFaithful: result.replacesFaithful }
         });
       } catch (logErr) {
         console.error('Failed to log activity:', logErr);

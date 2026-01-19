@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leiðbeiningar fyrir kennara - Námsbókasafn</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--gray-50);
+      line-height: 1.7;
+      color: var(--gray-700);
+    }
+
+    .header {
+      background: var(--primary);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+    .header p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .toc {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .toc h2 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .toc ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+    }
+    .toc a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .toc a:hover { text-decoration: underline; }
+
+    .section {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--gray-900);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section h2 i { color: var(--primary); font-size: 1rem; }
+    .section h3 {
+      font-size: 1rem;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--gray-900);
+    }
+    .section p { margin-bottom: 1rem; }
+    .section ul, .section ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .section li { margin-bottom: 0.5rem; }
+
+    .highlight-box {
+      background: #dbeafe;
+      border-left: 4px solid var(--primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 0.375rem 0.375rem 0;
+      margin: 1.5rem 0;
+    }
+    .highlight-box.warning {
+      background: #fef3c7;
+      border-left-color: var(--warning);
+    }
+    .highlight-box p { margin-bottom: 0; }
+    .highlight-box p:not(:last-child) { margin-bottom: 0.5rem; }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--gray-50);
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 0.75rem;
+      transition: background-color 0.15s;
+    }
+    .link-card:hover { background: var(--gray-100); }
+    .link-card i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      width: 40px;
+      text-align: center;
+    }
+    .link-card-content h4 {
+      font-size: 1rem;
+      margin-bottom: 0.125rem;
+    }
+    .link-card-content p {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin: 0;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .status-indicator.mt { background: #fef3c7; color: #92400e; }
+    .status-indicator.reviewed { background: #dcfce7; color: #166534; }
+
+    .chapter-status {
+      margin-top: 1rem;
+    }
+    .chapter-status table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .chapter-status th, .chapter-status td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .chapter-status th {
+      font-weight: 500;
+      color: var(--gray-500);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .contact-card {
+      background: var(--gray-50);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+    }
+    .contact-card i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .contact-card h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+    .contact-card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray-500);
+      font-size: 0.85rem;
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+
+    @media print {
+      body { background: white; }
+      .header { background: none; color: var(--gray-900); padding: 1rem; }
+      .section { box-shadow: none; border: 1px solid var(--gray-200); }
+      .toc { display: none; }
+      a { color: inherit; }
+    }
+
+    @media (max-width: 600px) {
+      .header { padding: 2rem 1rem; }
+      .header h1 { font-size: 1.5rem; }
+      .section { padding: 1.25rem; }
+      .contact-info { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Leiðbeiningar fyrir kennara</h1>
+    <p>Handbók um notkun íslenskra kennslubóka frá Námsbókasafni</p>
+  </header>
+
+  <main class="container">
+    <!-- Table of Contents -->
+    <nav class="toc">
+      <h2>Efnisyfirlit</h2>
+      <ul>
+        <li><a href="#access">Aðgangur að efni</a></li>
+        <li><a href="#content-status">Staða efnis</a></li>
+        <li><a href="#quality">Gæði þýðinga</a></li>
+        <li><a href="#feedback">Tilkynna villur</a></li>
+        <li><a href="#support">Stuðningur</a></li>
+      </ul>
+    </nav>
+
+    <!-- Section: Accessing Content -->
+    <section class="section" id="access">
+      <h2><i class="fas fa-book-open"></i> Aðgangur að efni</h2>
+
+      <p>Námsbókasafn býður upp á opnar kennslubækur á íslensku. Efnið er aðgengilegt öllum án innskráningar.</p>
+
+      <a href="https://namsbokasafn.is/efnafraedi" class="link-card" target="_blank">
+        <i class="fas fa-flask"></i>
+        <div class="link-card-content">
+          <h4>Efnafræði</h4>
+          <p>namsbokasafn.is/efnafraedi - Kaflar 1-4 tiltækir</p>
+        </div>
+      </a>
+
+      <div class="highlight-box">
+        <p><strong>Fyrir nemendur:</strong> Þeir geta opnað efnið beint í vafra sínum. Engin innskráning eða niðurhal nauðsynleg.</p>
+        <p><strong>Offline aðgangur:</strong> Síðan virkar sem PWA (Progressive Web App) og hægt er að bæta henni við heimaskjá síma.</p>
+      </div>
+
+      <h3>Beintenglar á kafla</h3>
+      <p>Þú getur deilt beintengla á sérstaka kafla með nemendum:</p>
+      <ul>
+        <li><code>namsbokasafn.is/efnafraedi/kafli/1</code> - Kafli 1: Grunnhugtök</li>
+        <li><code>namsbokasafn.is/efnafraedi/kafli/2</code> - Kafli 2: Atóm, sameindir og jónir</li>
+        <li><code>namsbokasafn.is/efnafraedi/kafli/3</code> - Kafli 3: Efnatengi og sameindagerð</li>
+        <li><code>namsbokasafn.is/efnafraedi/kafli/4</code> - Kafli 4: Efnaformúlur</li>
+      </ul>
+    </section>
+
+    <!-- Section: Content Status -->
+    <section class="section" id="content-status">
+      <h2><i class="fas fa-tasks"></i> Staða efnis</h2>
+
+      <p>Efnið er á mismunandi stigum yfirferðar. Hér er yfirlit yfir núverandi stöðu:</p>
+
+      <div class="chapter-status">
+        <table>
+          <thead>
+            <tr>
+              <th>Kafli</th>
+              <th>Titill</th>
+              <th>Staða</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Grunnhugtök efnafræðinnar</td>
+              <td><span class="status-indicator reviewed"><i class="fas fa-check"></i> Yfirfarið</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Atóm, sameindir og jónir</td>
+              <td><span class="status-indicator mt"><i class="fas fa-robot"></i> Vélþýtt</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Efnatengi og sameindagerð</td>
+              <td><span class="status-indicator mt"><i class="fas fa-robot"></i> Vélþýtt</span></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Efnaformúlur og mólmassi</td>
+              <td><span class="status-indicator mt"><i class="fas fa-robot"></i> Vélþýtt</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="highlight-box warning">
+        <p><strong>Athugið:</strong> Kaflar merktir sem "Vélþýtt" hafa ekki verið yfirfarnir af mönnum. Þeir geta innihaldið þýðingarvillur. Vinsamlegast tilkynna villur gegnum endurgjafar eyðublaðið.</p>
+      </div>
+    </section>
+
+    <!-- Section: Translation Quality -->
+    <section class="section" id="quality">
+      <h2><i class="fas fa-star"></i> Gæði þýðinga</h2>
+
+      <h3>Yfirfarið efni</h3>
+      <p>Kaflar merktir sem "Yfirfarið" hafa verið:</p>
+      <ul>
+        <li>Þýddir af vélþýðingakerfi</li>
+        <li>Yfirfarnir af íslenskum fagaðila</li>
+        <li>Staðfestir fyrir íslenskan fræðaheimild</li>
+      </ul>
+
+      <h3>Vélþýtt efni</h3>
+      <p>Kaflar merktir sem "Vélþýtt" nota háþróaða vélþýðingu en hafa ekki verið yfirfarnir af mönnum. Þetta þýðir:</p>
+      <ul>
+        <li>Efnið er lesanlegt og nothæft til náms</li>
+        <li>Hugsanlegar villur í fagheitum eða orðalagi</li>
+        <li>Sumar setningar geta verið óljósar</li>
+        <li>Mælt er með því að nota enska útgáfu sem viðmið ef vafi leikur á</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>Enska upprunaútgáfan</strong> er alltaf tiltæk á <a href="https://openstax.org/details/books/chemistry-2e" target="_blank">OpenStax.org</a> ef þörf er á að staðfesta efni.</p>
+      </div>
+    </section>
+
+    <!-- Section: Reporting Issues -->
+    <section class="section" id="feedback">
+      <h2><i class="fas fa-comment-dots"></i> Tilkynna villur</h2>
+
+      <p>Ef þú finnur villu í þýðingu eða tæknilegt vandamál, vinsamlegast láttu okkur vita:</p>
+
+      <a href="/feedback" class="link-card">
+        <i class="fas fa-edit"></i>
+        <div class="link-card-content">
+          <h4>Senda endurgjöf</h4>
+          <p>Opna endurgjafar eyðublað</p>
+        </div>
+      </a>
+
+      <h3>Hvað á að tilkynna</h3>
+      <ul>
+        <li><strong>Þýðingarvillur:</strong> Rangur textii, óljós orðalag, röng fagheiti</li>
+        <li><strong>Tæknilegar villur:</strong> Síða hleðst ekki, myndir birtast ekki, tenglar virka ekki</li>
+        <li><strong>Tillögur:</strong> Hugmyndir að bætingum á efni eða framsetningu</li>
+      </ul>
+
+      <p>Þegar þú tilkynnir villu, vinsamlegast tilgreindu:</p>
+      <ol>
+        <li>Hvaða kafla/hluta vandamálið er í</li>
+        <li>Hvað er rangt (t.d. "orðið X ætti að vera Y")</li>
+        <li>Netfang ef þú vilt fá svar (valfrjálst)</li>
+      </ol>
+    </section>
+
+    <!-- Section: Support -->
+    <section class="section" id="support">
+      <h2><i class="fas fa-life-ring"></i> Stuðningur</h2>
+
+      <p>Við erum til staðar til að hjálpa meðan á tilraunaverkefninu stendur.</p>
+
+      <div class="contact-info">
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h4>Tölvupóstur</h4>
+          <a href="mailto:namsbokasafn@gmail.com">namsbokasafn@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-edit"></i>
+          <h4>Endurgjöf</h4>
+          <a href="/feedback">Opna eyðublað</a>
+        </div>
+      </div>
+
+      <h3>Svartími</h3>
+      <ul>
+        <li><strong>Alvarlegar villur</strong> (síða virkar ekki): Innan 4 klukkustunda á virkum dögum</li>
+        <li><strong>Þýðingarvillur:</strong> Staðfesting innan 24 klukkustunda, lagfæring innan viku</li>
+        <li><strong>Tillögur:</strong> Skoðað og bætt við verkefnalista</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>Um verkefnið:</strong> Námsbókasafn er samstarfsverkefni til að þýða opnar kennslubækur á íslensku. Upprunalegt efni kemur frá OpenStax, sem býður upp á ókeypis ritrýndar háskólabækur undir Creative Commons leyfi.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Námsbókasafn - Opnar kennslubækur á íslensku</p>
+    <p>Upprunalegt efni frá <a href="https://openstax.org" target="_blank">OpenStax</a> - CC BY 4.0</p>
+    <p style="margin-top: 1rem;"><a href="/">Til baka á forsíðu</a></p>
+  </footer>
+</body>
+</html>

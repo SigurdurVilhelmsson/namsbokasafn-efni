@@ -60,6 +60,10 @@ const suggestionsRoutes = require('./routes/suggestions');
 // Import Phase 6 routes (Publication)
 const publicationRoutes = require('./routes/publication');
 
+// Import Phase 7 routes (Pilot Support)
+const feedbackRoutes = require('./routes/feedback');
+const analyticsRoutes = require('./routes/analytics');
+
 // Configuration
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -114,6 +118,10 @@ app.use('/api/suggestions', suggestionsRoutes);
 
 // Phase 6 API Routes (Publication)
 app.use('/api/publication', publicationRoutes);
+
+// Phase 7 API Routes (Pilot Support)
+app.use('/api/feedback', feedbackRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -188,7 +196,17 @@ app.get('/api', (req, res) => {
       'POST /api/publication/:bookSlug/:chapter/mt-preview': 'Publish MT preview (HEAD_EDITOR)',
       'POST /api/publication/:bookSlug/:chapter/faithful': 'Publish faithful translation (HEAD_EDITOR)',
       'POST /api/publication/:bookSlug/:chapter/localized': 'Publish localized content (HEAD_EDITOR)',
-      'GET /api/publication/:bookSlug/overview': 'Get publication overview for book'
+      'GET /api/publication/:bookSlug/overview': 'Get publication overview for book',
+      // Phase 7 - Feedback & Analytics
+      'GET /api/feedback/types': 'Get feedback types (public)',
+      'POST /api/feedback': 'Submit feedback (public)',
+      'GET /api/feedback': 'List all feedback (HEAD_EDITOR)',
+      'GET /api/feedback/stats': 'Get feedback statistics',
+      'GET /api/feedback/:id': 'Get feedback details',
+      'POST /api/feedback/:id/resolve': 'Resolve feedback',
+      'GET /api/analytics/stats': 'Get analytics statistics',
+      'GET /api/analytics/recent': 'Get recent events',
+      'POST /api/analytics/event': 'Log client-side event (public)'
     },
     documentation: 'https://github.com/SigurdurVilhelmsson/namsbokasafn-efni'
   });
