@@ -231,6 +231,18 @@ See [server/README.md](server/README.md) for full documentation.
 
 *Auto-generated from server/routes/*
 
+## /activity
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/recent` |
+| GET | `/user/:userId` |
+| GET | `/book/:book` |
+| GET | `/section/:book/:chapter/:section` |
+| GET | `/my` |
+| GET | `/types` |
+
 ## /auth
 
 | Method | Path |
@@ -312,6 +324,15 @@ See [server/README.md](server/README.md) for full documentation.
 | GET | `/book/:bookId` |
 | GET | `/chapter/:chapter` |
 | GET | `/:moduleId` |
+
+## /notifications
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/count` |
+| POST | `/:id/read` |
+| POST | `/read-all` |
 
 ## /process
 
