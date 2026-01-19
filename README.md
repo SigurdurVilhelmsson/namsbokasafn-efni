@@ -252,6 +252,15 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/books/:slug/chapters/:chapter` |
 | POST | `/migrate` |
 
+## /analytics
+
+| Method | Path |
+|--------|------|
+| GET | `/stats` |
+| GET | `/recent` |
+| POST | `/event` |
+| GET | `/dashboard-data` |
+
 ## /auth
 
 | Method | Path |
@@ -287,6 +296,22 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | POST | `/section/:sectionId/save` |
 | POST | `/section/:sectionId/submit-review` |
 | POST | `/section/:sectionId/submit-localization` |
+
+## /feedback
+
+| Method | Path |
+|--------|------|
+| GET | `/types` |
+| POST | `/` |
+| GET | `/` |
+| GET | `/stats` |
+| GET | `/open` |
+| GET | `/:id` |
+| POST | `/:id/status` |
+| POST | `/:id/resolve` |
+| POST | `/:id/priority` |
+| POST | `/:id/assign` |
+| POST | `/:id/respond` |
 
 ## /images
 
@@ -476,6 +501,9 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/books` |
 | GET | `/terminology` |
 | GET | `/localization-review` |
+| GET | `/feedback` |
+| GET | `/admin/feedback` |
+| GET | `/for-teachers` |
 
 ## /workflow
 
