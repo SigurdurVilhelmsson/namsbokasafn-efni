@@ -236,6 +236,58 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 
 ---
 
+### Phase 7: FÁ Pilot Support ✅
+
+| Component | Status | File |
+|-----------|--------|------|
+| Feedback form | ✅ | `server/views/feedback.html` |
+| Feedback API | ✅ | `server/routes/feedback.js` |
+| Feedback service | ✅ | `server/services/feedbackService.js` |
+| Admin dashboard | ✅ | `server/views/feedback-admin.html` |
+| Email notifications | ✅ | `server/services/notifications.js` |
+| Teacher guide | ✅ | `server/views/teacher-guide.html` |
+| Chapter compiler | ✅ | `tools/compile-chapter.js` |
+
+**Features:**
+- Public feedback form at `/feedback` (no auth required)
+- Admin dashboard at `/admin/feedback` (HEAD_EDITOR role)
+- SQLite-backed feedback storage with status tracking
+- Email notifications to ADMIN_EMAIL on new feedback
+- Teacher onboarding guide at `/for-teachers`
+- Chapter compilation tool for publication workflow
+
+**Feedback Types:**
+- `translation_error`: Villa í þýðingu (auto high priority)
+- `technical_issue`: Tæknilegt vandamál
+- `improvement`: Tillaga að bætingu
+- `other`: Annað
+
+---
+
+## Architectural Decisions
+
+### AD-1: End-of-Chapter Content Extraction (2026-01-19)
+
+**Context:** OpenStax CNXML modules contain embedded tagged content that needs to be compiled into separate end-of-chapter pages for the web reader.
+
+**Decision:** Extract and compile end-of-chapter pages in **namsbokasafn-efni** at the publication step (Step 5), NOT in namsbokasafn-vefur.
+
+**Implementation:**
+- `tools/compile-chapter.js` extracts tagged content from section files
+- Creates clean section files (main content only)
+- Compiles end-of-chapter pages (summary, exercises, key-terms, key-equations)
+
+**Usage:**
+```bash
+# Compile for MT preview track
+node tools/compile-chapter.js efnafraedi 2 --track mt-preview
+
+# Compile for faithful track (after Pass 1 review)
+node tools/compile-chapter.js efnafraedi 1 --track faithful
+```
+
+---
+
 ## Next Steps
 
 ### Immediate
@@ -243,14 +295,29 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 2. [x] Implement terminology database
 3. [x] Implement localization suggestions
 4. [x] Implement publication workflow
-5. [ ] Test full workflow end-to-end with real chapter
+5. [x] Implement feedback collection system
+6. [x] Create teacher guide page
+7. [ ] Test full workflow end-to-end with real chapter
 
 ### Short-term
-1. [ ] Add email notification service (optional)
+1. [x] Email notification service (integrated with feedback)
 2. [ ] Session cleanup job for stale workflows
 3. [ ] End-to-end workflow tests
+4. [ ] Usage analytics (server-side logging)
 
 ### Current Priority: Pilot at FÁ (January 2026)
 1. [x] MT preview publishing for chapters 1-4
-2. [ ] Complete Pass 1 reviews for chapters 1-4
-3. [ ] Teacher feedback collection
+2. [ ] Publish Ch 1 as `faithful` (reviewed version)
+3. [x] Feedback collection system deployed
+4. [x] Teacher guide available at `/for-teachers`
+5. [ ] Complete Pass 1 reviews for chapters 2-4 (post-pilot)
+
+### Pilot Checklist
+- [x] Feedback form at `/feedback`
+- [x] Admin feedback dashboard at `/admin/feedback`
+- [x] Teacher guide at `/for-teachers`
+- [x] Email notifications for feedback
+- [ ] Sync content to vefur: `npm run sync-content`
+- [ ] Verify all chapter links work
+- [ ] Test on mobile devices
+- [ ] Deploy to Linode production
