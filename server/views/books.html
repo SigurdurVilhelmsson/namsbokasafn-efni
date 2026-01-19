@@ -267,6 +267,13 @@
         const res = await fetch(`/api/admin/books/${slug}/chapters/${chapterNum}`);
         const data = await res.json();
 
+        // Validate response before accessing nested properties
+        if (!res.ok || !data.chapter) {
+          sectionsEl.innerHTML = '<p class="text-error">Villa við að hlaða kafla: ' +
+            escapeHtml(data.error || data.message || 'Óþekkt villa') + '</p>';
+          return;
+        }
+
         titleEl.textContent = `Kafli ${chapterNum}: ${data.chapter.titleIs || data.chapter.titleEn}`;
 
         const statusLabels = {

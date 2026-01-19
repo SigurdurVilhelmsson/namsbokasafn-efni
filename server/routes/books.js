@@ -17,6 +17,117 @@ const { requireAuth } = require('../middleware/requireAuth');
 const dataDir = path.join(__dirname, '..', 'data');
 const booksDir = path.join(__dirname, '..', '..', 'books');
 
+// Erlendur MT character limits
+const ERLENDUR_SOFT_LIMIT = 18000;
+
+/**
+ * Parse YAML frontmatter from markdown content
+ */
+function parseMarkdownFrontmatter(content) {
+  const yamlMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
+  if (!yamlMatch) return null;
+
+  const frontmatter = yamlMatch[1];
+  const result = {};
+  const lines = frontmatter.split('\n');
+
+  for (const line of lines) {
+    const match = line.match(/^(\w+):\s*"?([^"]*)"?\s*$/);
+    if (match) {
+      result[match[1]] = match[2];
+    }
+  }
+
+  return Object.keys(result).length > 0 ? result : null;
+}
+
+/**
+ * Generate Erlendur-format header for a split part
+ */
+function makeErlendurHeader(metadata, partLetter) {
+  const title = metadata.title || 'Unknown';
+  const section = metadata.section || 'unknown';
+  const module = metadata.module || 'unknown';
+  const lang = metadata.lang || 'en';
+
+  if (partLetter) {
+    return `## titill: „${title}" kafli: „${section}" eining: „${module}" tungumál: „${lang}" hluti: „${partLetter}"\n\n`;
+  }
+  return `## titill: „${title}" kafli: „${section}" eining: „${module}" tungumál: „${lang}"\n\n`;
+}
+
+/**
+ * Split content at paragraph boundaries to stay under character limit
+ * Returns array of { content, part } objects
+ */
+function splitContentForErlendur(fullContent) {
+  // Parse metadata
+  const metadata = parseMarkdownFrontmatter(fullContent) || {};
+
+  // Remove frontmatter from content
+  let bodyContent = fullContent;
+  const yamlMatch = fullContent.match(/^---\s*\n[\s\S]*?\n---\s*\n/);
+  if (yamlMatch) {
+    bodyContent = fullContent.substring(yamlMatch[0].length);
+  }
+
+  // Also remove Erlendur-style headers if present
+  const erlendurMatch = bodyContent.match(/^##\s*titill:.*?\n\n/);
+  if (erlendurMatch) {
+    bodyContent = bodyContent.substring(erlendurMatch[0].length);
+  }
+
+  bodyContent = bodyContent.trim();
+
+  // Check if splitting is needed
+  if (bodyContent.length <= ERLENDUR_SOFT_LIMIT) {
+    const header = makeErlendurHeader(metadata, null);
+    return [{ content: header + bodyContent, part: null }];
+  }
+
+  // Split at paragraph boundaries
+  const parts = [];
+  const paragraphs = bodyContent.split(/\n\n+/);
+  let currentPart = [];
+  let currentLength = 0;
+  let partIndex = 0;
+
+  for (const para of paragraphs) {
+    const paraLength = para.length + 2; // +2 for \n\n
+
+    // Check if adding this paragraph would exceed the soft limit
+    if (currentLength + paraLength > ERLENDUR_SOFT_LIMIT && currentPart.length > 0) {
+      // Save current part
+      const partLetter = String.fromCharCode(97 + partIndex); // a, b, c, ...
+      const header = makeErlendurHeader(metadata, partLetter);
+      parts.push({
+        content: header + currentPart.join('\n\n'),
+        part: partLetter
+      });
+
+      // Start new part
+      currentPart = [para];
+      currentLength = paraLength;
+      partIndex++;
+    } else {
+      currentPart.push(para);
+      currentLength += paraLength;
+    }
+  }
+
+  // Add final part
+  if (currentPart.length > 0) {
+    const partLetter = String.fromCharCode(97 + partIndex);
+    const header = makeErlendurHeader(metadata, partLetter);
+    parts.push({
+      content: header + currentPart.join('\n\n'),
+      part: partLetter
+    });
+  }
+
+  return parts;
+}
+
 function loadBookData(bookId) {
   const filePath = path.join(dataDir, `${bookId}.json`);
   if (fs.existsSync(filePath)) {
@@ -153,11 +264,40 @@ router.get('/:slug/download', requireAuth, async (req, res) => {
     const archive = archiver('zip', { zlib: { level: 9 } });
     archive.pipe(res);
 
+    // Helper function to add only .md files from a directory, splitting large files
+    function addMdFilesFromDir(dirPath, archivePath) {
+      if (!fs.existsSync(dirPath)) return;
+      const files = fs.readdirSync(dirPath);
+      for (const file of files) {
+        const filePath = path.join(dirPath, file);
+        const stat = fs.statSync(filePath);
+        if (stat.isFile() && file.endsWith('.md')) {
+          const content = fs.readFileSync(filePath, 'utf8');
+
+          // Check if file needs splitting
+          if (content.length > ERLENDUR_SOFT_LIMIT) {
+            // Split the file and add each part
+            const baseName = file.replace('.en.md', '').replace('.is.md', '');
+            const extension = file.endsWith('.en.md') ? '.en.md' : '.is.md';
+            const parts = splitContentForErlendur(content);
+
+            for (const { content: partContent, part } of parts) {
+              const partName = part ? `${baseName}(${part})${extension}` : file;
+              archive.append(partContent, { name: path.join(archivePath, partName) });
+            }
+          } else {
+            // Add file as-is
+            archive.file(filePath, { name: path.join(archivePath, file) });
+          }
+        }
+      }
+    }
+
     if (chapter) {
       // Download single chapter
       const chapterDir = 'ch' + String(chapter).padStart(2, '0');
       const chapterPath = path.join(sourceDir, chapterDir);
-      archive.directory(chapterPath, chapterDir);
+      addMdFilesFromDir(chapterPath, chapterDir);
     } else {
       // Download all chapters
       const entries = fs.readdirSync(sourceDir);
@@ -165,7 +305,7 @@ router.get('/:slug/download', requireAuth, async (req, res) => {
         const entryPath = path.join(sourceDir, entry);
         const stat = fs.statSync(entryPath);
         if (stat.isDirectory() && entry.startsWith('ch')) {
-          archive.directory(entryPath, entry);
+          addMdFilesFromDir(entryPath, entry);
         }
       }
     }
