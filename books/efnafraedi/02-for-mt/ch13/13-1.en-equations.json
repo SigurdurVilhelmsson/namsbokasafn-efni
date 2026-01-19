@@ -1,0 +1,11 @@
+{
+  "module": "m68797",
+  "section": "",
+  "title": "Chemical Equilibria",
+  "equations": {
+    "EQ:1": "{{\\text{N}}_{2}{\\text{O}}_{4}(g)⇌2{{\\text{NO}}}_{2}(g)}",
+    "EQ:2": "{{\\text{rate}}_{f}={k}_{f}[{\\text{N}}_{2}{\\text{O}}_{4}]}",
+    "EQ:3": "{{\\text{rate}}_{r}={k}_{r}[{\\text{NO}}_{2}{]}^{2}}",
+    "EQ:4": "{{{\\text{Br}}}_{2}(l)⇌{{\\text{Br}}}_{2}(g)}"
+  }
+}

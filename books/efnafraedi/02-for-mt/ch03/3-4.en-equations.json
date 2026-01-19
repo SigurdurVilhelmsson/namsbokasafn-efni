@@ -1,0 +1,23 @@
+{
+  "module": "m68704",
+  "section": "3.4",
+  "title": "Other Units for Solution Concentrations",
+  "equations": {
+    "EQ:1": "{\\text{mass percentage}=\\,\\frac{{\\text{mass of component}}}{{\\text{mass of solution}}}\\,\\times \\,100%}",
+    "EQ:2": "{%\\,\\text{glucose}=\\,{3.75\\,\\text{mg glucose}\\,\\times \\,{1\\,\\text{g}}{1000\\,\\text{mg}}\\,}{5.0\\,\\text{g spinal fluid}}\\,=0.075%}",
+    "EQ:3": "\\times",
+    "EQ:4": "{\\text{500 mL solution}\\,{({\\frac{{1.19\\,\\text{g solution}}}{{\\text{mL solution}}}})}\\,{({\\frac{{37.2\\,\\text{g HCl}}}{{100\\,\\text{g solution}}}})\\,}=\\,221\\,\\text{g HCl}}",
+    "EQ:5": "{\\text{volume percentage}=\\,\\frac{{\\text{volume solute}}}{{\\text{volume solution}}}\\,\\times \\,100%}",
+    "EQ:6": "{{({355\\,\\text{mL solution}})}\\,{({\\frac{{70\\,\\text{mL isopropyl alcohol}}}{{100\\,\\text{mL solution}}}})}\\,{({\\frac{{0.785\\,\\text{g isopropyl alcohol}}}{{1\\,\\text{mL isopropyl alcohol}}}})\\,}=\\,195\\,\\text{g isopropyl alchol}}",
+    "EQ:7": "\\text{ppm}=\\,\\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\,\\times \\,{10}^{6}\\,\\text{ppm}\\text{ppb}=\\,\\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\,\\times \\,{10}^{9}\\,\\text{ppb}",
+    "EQ:8": "{15\\,\\text{ppb}\\,\\times \\,\\frac{{1\\,\\text{ppm}}}{{{{10}}^{3}\\,\\text{ppb}}}\\,=0.015\\,\\text{ppm}}",
+    "EQ:9": "\\text{ppb}=\\,\\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\,\\times \\,{10}^{9}\\,\\text{ppb}\\text{mass solute}=\\,\\frac{{\\text{ppb}\\,\\times \\,\\text{mass solution}}}{{{{10}}^{9}\\,\\text{ppb}}}\\,\\text{mass solute}=\\,{15\\,\\text{ppb}\\,\\times \\,300\\,\\text{mL}\\,\\times \\,{1.00\\,\\text{g}}{\\text{mL}}\\,}{{{10}}^{9}\\,\\text{ppb}}\\,=4.5\\,\\times \\,{10}^{{−6}}\\,\\text{g}",
+    "EQ:10": "{4.5\\,\\times \\,{{10}}^{{−6}}\\,\\text{g}\\,\\times \\,\\frac{{1\\,\\text{μg}}}{{{{10}}^{{−6}}\\,\\text{g}}}\\,=4.5\\,\\text{μg}}",
+    "EQ:11": "{%{{\\text{mass}}}_{1}\\,\\times \\,{{\\text{mass}}}_{1}=%{{\\text{mass}}}_{2}\\,\\times \\,{{\\text{mass}}}_{2}}",
+    "EQ:12": "\\times",
+    "EQ:13": "\\times",
+    "EQ:14": "{\\text{Percent by mass}=\\,\\frac{{\\text{mass of solute}}}{{\\text{mass of solution}}}\\,\\times \\,100}",
+    "EQ:15": "{\\text{ppm}=\\,\\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\,\\times \\,{{10}}^{6}\\,\\text{ppm}}",
+    "EQ:16": "{\\text{ppb}=\\,\\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\,\\times \\,{{10}}^{9}\\,\\text{ppb}}"
+  }
+}

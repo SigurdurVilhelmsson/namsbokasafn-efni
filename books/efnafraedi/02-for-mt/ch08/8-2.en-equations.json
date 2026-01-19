@@ -1,0 +1,23 @@
+{
+  "module": "m68745",
+  "section": "",
+  "title": "Hybrid Atomic Orbitals",
+  "equations": {
+    "EQ:1": "{{\\text{ClF}}_{4}^{\\text{+}}.}",
+    "EQ:2": "{{\\text{ClF}}_{4}^{\\text{+}}}",
+    "EQ:3": "{{\\text{PCl}}_{6}^{\\text{−}},}",
+    "EQ:4": "{{\\text{IF}}_{6}^{\\text{+}},}",
+    "EQ:5": "{{\\text{ICl}}_{4}^{\\text{−}},}",
+    "EQ:6": "{{\\text{IF}}_{4}^{\\text{−}}}",
+    "EQ:7": "{{\\text{SO}}_{4}^{\\text{2−}}?}",
+    "EQ:8": "{{\\text{PO}}_{4}^{\\text{3−}}}",
+    "EQ:9": "{{\\text{S}}_{8}(s)+8{\\text{O}}_{2}(g)\\,\\longrightarrow \\,8{{\\text{SO}}}_{2}(g)}",
+    "EQ:10": "{2\\text{S}{\\text{O}}_{2}(g)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{SO}}}_{3}(g)}",
+    "EQ:11": "{{{\\text{SO}}}_{3}(g)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{\\text{H}}_{2}{{\\text{SO}}}_{4}(l)}",
+    "EQ:12": "{2{\\text{C}}_{3}{\\text{H}}_{8}(g)\\,\\longrightarrow \\,{\\text{C}}_{2}{\\text{H}}_{4}(g)+{\\text{C}}_{3}{\\text{H}}_{6}(g)+{{\\text{CH}}}_{4}(g)+{\\text{H}}_{2}(g)}",
+    "EQ:13": "{{\\text{ClO}}_{3}^{\\text{−}}}",
+    "EQ:14": "{{{\\text{ClO}}}_{3}^{–}}",
+    "EQ:15": "{{{\\text{ClO}}}_{3}^{–}}",
+    "EQ:16": "{-1\\frac{1}{3},}"
+  }
+}

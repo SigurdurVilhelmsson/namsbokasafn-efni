@@ -1,0 +1,20 @@
+{
+  "module": "m68782",
+  "section": "",
+  "title": "Solubility",
+  "equations": {
+    "EQ:1": "{{C}_{\\text{g}}=k{P}_{\\text{g}}}",
+    "EQ:2": "{\\times }",
+    "EQ:3": "{\\times }",
+    "EQ:4": "{C}_{\\text{g}}=k{P}_{\\text{g}}k=\\,\\frac{{{C}_{\\text{g}}}}{{{P}_{\\text{g}}}}=\\,\\frac{{1.38\\,\\times \\,{{10}}^{{−3}}\\,\\text{mol}\\,{\\text{L}}^{{−1}}}}{{101.3\\,\\text{kPa}}}=1.36\\,\\times \\,{10}^{{−5}}\\,\\text{mol}\\,{\\text{L}}^{{−1}}\\,{\\text{kPa}}^{{−1}}",
+    "EQ:5": "{C}_{\\text{g}}=k{P}_{\\text{g}}1.36\\,\\times \\,{10}^{{−5}}\\,\\text{mol}\\,{\\text{L}}^{{−1}}\\,{\\text{kPa}}^{{−1}}\\,\\times \\,20.7\\,\\text{kPa}=2.82\\,\\times \\,{10}^{{−4}}\\,\\text{mol}\\,{\\text{L}}^{{−1}}",
+    "EQ:6": "{\\times }",
+    "EQ:7": "{\\times }",
+    "EQ:8": "{k\\,=\\,\\frac{{{C}_{\\text{g}}}}{{{P}_{\\text{g}}}}\\,=\\,1.2\\,\\times \\,{10}^{{−3}}\\,\\text{mol/L/1.00 atm}\\,=\\,1.2\\,\\times \\,{10}^{{−3}}\\,\\text{mol/L atm }}",
+    "EQ:9": "{{C}_{g}\\,=\\,{{kP}}_{{g}}\\,=\\,(1.2\\,\\times \\,{10}^{{−3}}\\,\\text{mol/L atm})\\,(0.17\\,\\text{atm})\\,=\\, 2.0\\,\\times \\,{10}^{{−4}}\\,\\text{mol/L}}",
+    "EQ:10": "{(2.0\\,\\times \\,{10}^{{−4}}\\,\\text{mol/L})\\,(32.0\\,\\text{g/1 mol})\\,(1000\\,\\text{mg/g})\\,=\\, 6.4\\,\\text{mg/L}.}",
+    "EQ:11": "{{C}_{\\text{g}}=k{P}_{\\text{g}}}",
+    "EQ:12": "{\\times }",
+    "EQ:13": "{\\times }"
+  }
+}

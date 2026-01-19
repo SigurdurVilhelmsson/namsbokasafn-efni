@@ -1,0 +1,11 @@
+{
+  "module": "m68787",
+  "section": "",
+  "title": "Factors Affecting Reaction Rates",
+  "equations": {
+    "EQ:1": "\\longrightarrow",
+    "EQ:2": "{{{\\text{SO}}}_{\\text{2}}(g)+{\\text{H}}_{2}\\text{O(}g)\\,\\longrightarrow \\,{\\text{H}}_{2}{{\\text{SO}}}_{\\text{3}}(aq)}",
+    "EQ:3": "{{{\\text{CaCO}}}_{\\text{3}}(s)+{\\text{H}}_{2}{{\\text{SO}}}_{\\text{3}}(aq)\\,\\longrightarrow \\,{{\\text{CaSO}}}_{\\text{3}}(aq)+{{\\text{CO}}}_{\\text{2}}(g)+{\\text{H}}_{2}\\text{O(}l)}",
+    "EQ:4": "{2{\\text{H}}_{2}{\\text{O}}_{2}(aq)\\,\\longrightarrow \\,2{\\text{H}}_{2}\\text{O}(l)+{\\text{O}}_{2}(\\text{g})}"
+  }
+}

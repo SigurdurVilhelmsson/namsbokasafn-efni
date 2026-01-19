@@ -1,0 +1,11 @@
+{
+  "module": "m68838",
+  "section": "",
+  "title": "Occurrence, Preparation, and Properties of Sulfur",
+  "equations": {
+    "EQ:1": "{\\text{S}(s)+6{{\\text{HNO}}}_{3}(aq)\\,\\longrightarrow \\,2{\\text{H}}_{3}{\\text{O}}^{\\text{+}}(aq)+{{\\text{SO}}}_{4}{\\,}^{{2−}}(aq)+6{{\\text{NO}}}_{2}(g)}",
+    "EQ:2": "{\\text{Cu}(s)+2{\\text{H}}_{2}{{\\text{SO}}}_{4}(l)\\,\\longrightarrow \\,{{\\text{CuSO}}}_{4}(aq)+{{\\text{SO}}}_{2}(g)+2{\\text{H}}_{2}\\text{O}(l)}",
+    "EQ:3": "{\\text{C}(s)+2{\\text{H}}_{2}{{\\text{SO}}}_{4}(l)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)+2{{\\text{SO}}}_{2}(g)+2{\\text{H}}_{2}\\text{O}(l)}",
+    "EQ:4": "\\times"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "module": "m68744",
+  "section": "",
+  "title": "Valence Bond Theory",
+  "equations": {
+    "EQ:1": "\\times",
+    "EQ:2": "\\times",
+    "EQ:3": "\\times",
+    "EQ:4": "{\\text{C}=\\text{O}}",
+    "EQ:5": "{\\text{C}≡\\text{O}}",
+    "EQ:6": "{\\text{C}=\\text{C}}",
+    "EQ:7": "{\\text{C}≡\\text{C}}",
+    "EQ:8": "{\\text{O}=\\text{O}}",
+    "EQ:9": "{\\text{C}=\\text{N}}",
+    "EQ:10": "{\\text{C}≡\\text{N}}",
+    "EQ:11": "{{\\text{H}}_{2}(g)+{{\\text{Cl}}}_{2}(g)⇌2\\text{HCl}(g)\\,\\text{Δ}{H}_{{\\text{rxn}}}^{^{\\circ}}=\\text{−184.7 kJ/mol}}"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "module": "m68831",
+  "section": "",
+  "title": "Structure and General Properties of the Metalloids",
+  "equations": {
+    "EQ:1": "{{\\text{B}}_{2}{\\text{O}}_{3}(s)+\\text{3Mg}(s)\\,\\longrightarrow \\,\\text{2B}(s)+\\text{3MgO}(s)}",
+    "EQ:2": "{{{\\text{2BCl}}}_{3}(g)+{{\\text{3H}}}_{2}(g)\\,\\rightarrow {\\,1500\\,\\text{°C}\\,}\\,\\text{2B}(s)+\\text{6HCl}(g)\\,\\text{Δ}H\\text{°}=\\text{253.7 kJ}}",
+    "EQ:3": "{\\text{SiO}}_{2}(s)+\\text{2C}(s)\\,\\rightarrow {\\,\\text{Δ}\\,}\\,\\text{Si}(s)+\\text{2CO}(g){\\text{SiO}}_{2}(s)+\\text{2Mg}(s)\\,\\rightarrow {\\,\\text{Δ}\\,}\\,\\text{Si}(s)+\\text{2MgO}(s)",
+    "EQ:4": "{\\text{Si}(s)+{{\\text{4OH}}}^{\\text{−}}(aq)\\,\\longrightarrow \\,{{\\text{SiO}}}_{4}^{{4−}}(aq)+{{\\text{2H}}}_{2}(g)}",
+    "EQ:5": "{{{{[ {{{\\text{SiF}}}_{6}} ]}}}^{{2−}}}",
+    "EQ:6": "{\\text{2NaF}(s)+{{\\text{SiF}}}_{4}(g)\\,\\longrightarrow \\,{{\\text{Na}}}_{2}{{\\text{SiF}}}_{6}(s)}",
+    "EQ:7": "{{{\\text{BCl}}}_{3}(g)+{{\\text{3H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{B}{{\\text{(OH)}}}_{{3}}(aq)+\\text{3HCl}(aq)}",
+    "EQ:8": "{{{\\text{BF}}}_{3}(aq)+\\text{HF}(aq)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{\\text{H}}_{3}{\\text{O}}^{\\text{+}}(aq)+{{\\text{BF}}}_{4}^{\\text{−}}(aq)}",
+    "EQ:9": "{{{\\text{SiO}}}_{2}(s)+\\text{2C}(s)+{{\\text{2Cl}}}_{2}(g)\\,\\rightarrow {\\,\\text{Δ}\\,}\\,{{\\text{SiCl}}}_{4}(g)+\\text{2CO}(g)}",
+    "EQ:10": "{{{\\text{SiO}}}_{2}(s)+\\text{4HF}(g)\\,\\longrightarrow \\,{{\\text{SiF}}}_{4}(g)+{{\\text{2H}}}_{2}\\text{O}(l)\\,\\text{Δ}H\\text{°}=\\text{−191.2 kJ}}",
+    "EQ:11": "{{\\text{B}}_{2}{\\text{O}}_{3}(s)+{{\\text{3H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{2B}{{\\text{(OH)}}}_{{3}}(aq)}",
+    "EQ:12": "{\\text{B}{{(\\text{OH})}}_{3}(aq)+{{\\text{2H}}}_{2}\\text{O}(l)\\,⇌\\,\\text{B}{{(\\text{OH})}}_{4}^{\\text{−}}(aq)+{\\text{H}}_{3}{\\text{O}}^{\\text{+}}(aq)\\,{K}_{\\text{a}}=5.8\\,\\times \\,{{10}}^{{−10}}}",
+    "EQ:13": "{{{\\text{BO}}}_{3}^{{3−}}}",
+    "EQ:14": "{{{\\text{SiF}}}_{6}^{{2−}}}",
+    "EQ:15": "{{{\\text{BF}}}_{4}^{-}}",
+    "EQ:16": "{{{\\text{BF}}}_{4}^{\\text{−}}:}",
+    "EQ:17": "{{{\\text{BF}}}_{4}^{-}}",
+    "EQ:18": "{{{\\text{SiO}}}_{4}^{{4−}}}",
+    "EQ:19": "{{{\\text{SiF}}}_{6}^{{2−}}}",
+    "EQ:20": "{{{\\text{SiO}}}_{4}^{{4−}}}",
+    "EQ:21": "{{{\\text{SiF}}}_{6}^{{2−}}}",
+    "EQ:22": "{{{\\text{SiO}}}_{4}^{\\text{4−}}:}",
+    "EQ:23": "{{{\\text{SiF}}}_{6}^{\\text{2−}}:}",
+    "EQ:24": "{{{\\text{BF}}}_{3}(g)+{{\\text{3H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{B}{{{({\\text{OH}})}}}_{3}(s)+\\text{3HF}(g)}",
+    "EQ:25": "{{{\\text{BCl}}}_{3}(g)+{{\\text{3H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{B}{{{({\\text{OH}})}}}_{3}(s)+\\text{3HCl}(g)}",
+    "EQ:26": "{{\\text{B}}_{2}{\\text{H}}_{6}(g)+{{\\text{6H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{2B}{{{({\\text{OH}})}}}_{3}(s)+{{\\text{6H}}}_{2}(g)}"
+  }
+}

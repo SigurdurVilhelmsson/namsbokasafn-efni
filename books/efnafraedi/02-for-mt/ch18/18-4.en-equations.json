@@ -1,0 +1,16 @@
+{
+  "module": "m68832",
+  "section": "",
+  "title": "Structure and General Properties of the Nonmetals",
+  "equations": {
+    "EQ:1": "{{\\text{4Fe}(s)+}{{{\\text{3O}}}_{2}(g)}\\longrightarrow {{{\\text{2Fe}}}_{2}{\\text{O}}_{3}(s)}\\,0\\,0{+3\\,−2}}",
+    "EQ:2": "{{\\text{S}(s)+}{{{\\text{O}}}_{2}(g)}\\longrightarrow {{{\\text{2SO}}}_{2}(s)}0\\,0{+4\\,−2}}",
+    "EQ:3": "{{{{\\text{Cl}}}_{2}(g)+}{{{\\text{2I}}}^{−}(aq)}\\longrightarrow {{{\\text{I}}}_{2}(s)+{{\\text{2Cl}}}^{−}(aq)}\\,00}",
+    "EQ:4": "{{\\text{2As}(s)+}{{{\\text{3Br}}}_{2}(l)}\\longrightarrow {{{\\text{2AsBr}}}_{3}(s)}00{+3\\,−1}}",
+    "EQ:5": "{{{{\\text{2F}}}_{2}(g)+}{{{\\text{2OH}}}^{−}(aq)}\\longrightarrow {{{\\text{OF}}}_{2}(g)+{{\\text{2F}}}^{−}(aq)+{{\\text{H}}}_{2}{\\text{O}}(l)}0{+2\\,−1}}",
+    "EQ:6": "{{{\\text{SO}}}_{2}(g)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{\\text{H}}_{2}{{\\text{SO}}}_{3}(aq)}",
+    "EQ:7": "{{\\text{N}}_{2}{\\text{O}}_{5}(s)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{{\\text{2HNO}}}_{3}(aq)}",
+    "EQ:8": "{{{{\\text{3NO}}}_{2}(g)+}{{{\\text{H}}}_{2}{\\text{O}}(l)}\\longrightarrow {{{\\text{2HNO}}}_{3}(aq)+}{\\text{NO}}(g)+4{+5}{+2}}",
+    "EQ:9": "{{{\\text{SO}}}_{3}^{{2−}}}"
+  }
+}

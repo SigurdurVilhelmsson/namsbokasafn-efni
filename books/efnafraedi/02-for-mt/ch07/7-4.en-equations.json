@@ -1,0 +1,26 @@
+{
+  "module": "m68740",
+  "section": "",
+  "title": "Formal Charges and Resonance",
+  "equations": {
+    "EQ:1": "{\\text{formal charge}=\\text{# valence shell electrons (free atom)}-\\text{# lone pair electrons}\\,-\\,\\frac{1}{2}\\,\\text{# bonding electrons}}",
+    "EQ:2": "{{\\text{ICl}}_{4}^{\\text{−}}.}",
+    "EQ:3": "{({\\text{NO}}_{2}^{\\text{−}})}",
+    "EQ:4": "{{{\\text{NO}}}_{2}^{\\text{−}}}",
+    "EQ:5": "{{{\\text{NO}}}_{2}^{\\text{−}}}",
+    "EQ:6": "{{{\\text{NO}}}_{2}^{\\text{−}}}",
+    "EQ:7": "{{\\text{CO}}_{3}^{\\text{2−}},}",
+    "EQ:8": "{\\text{formal charge}\\,=\\text{# valence shell electrons (free atom)}\\,-\\,\\text{# lone pair electrons}\\,-\\,\\frac{1}{2}\\,\\text{# bonding electrons}}",
+    "EQ:9": "{{{\\text{NO}}}_{3}^{\\text{−}}}",
+    "EQ:10": "{{{\\text{CO}}}_{3}^{\\text{2−}}}",
+    "EQ:11": "{{\\text{HCO}}_{3}^{\\text{−}}}",
+    "EQ:12": "{{{\\text{NO}}}_{\\text{2}}^{\\text{–}}\\text{.}}",
+    "EQ:13": "{{\\text{SO}}_{4}^{\\text{2−}}}",
+    "EQ:14": "{{\\text{O}}_{2}^{\\text{2−}}}",
+    "EQ:15": "{{\\text{BF}}_{4}^{\\text{−}}}",
+    "EQ:16": "{{\\text{SnCl}}_{3}^{\\text{−}}}",
+    "EQ:17": "{{\\text{PO}}_{4}^{\\text{3−}}}",
+    "EQ:18": "{{\\text{NO}}_{2}^{\\text{−}}}",
+    "EQ:19": "{{\\text{NO}}_{3}^{\\text{−}}}"
+  }
+}

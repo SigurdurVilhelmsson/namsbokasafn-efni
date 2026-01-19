@@ -1,0 +1,13 @@
+{
+  "module": "m68840",
+  "section": "",
+  "title": "Occurrence, Preparation, and Properties of the Noble Gases",
+  "equations": {
+    "EQ:1": "{\\frac{1}{{50,000}}}",
+    "EQ:2": "{{{\\text{XeF}}}_{6}(s)+{{\\text{3H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{{\\text{XeO}}}_{3}(aq)+\\text{6HF}(aq)}",
+    "EQ:3": "{{{\\text{XeO}}}_{6}^{{4−}},}",
+    "EQ:4": "{{{\\text{XeF}}}_{3}^{+}}",
+    "EQ:5": "{{{\\text{XeO}}}_{6}^{{4−}}}",
+    "EQ:6": "\\text{Xe}(g)+{\\text{3F}}_{2}(g)\\,\\rightarrow {\\,\\text{Δ}\\,}\\,{\\text{XeF}}_{6}(s){\\text{XeF}}_{6}(s)+{\\text{3H}}_{2}(g)\\,\\longrightarrow \\,\\text{6HF}(g)+\\text{Xe}(g)"
+  }
+}
