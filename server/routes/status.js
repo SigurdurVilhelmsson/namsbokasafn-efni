@@ -13,6 +13,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
+const activityLog = require('../services/activityLog');
 
 // Project root
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
@@ -39,6 +40,68 @@ const STATUS_SYMBOLS = {
   'not-started': '\u25cb',  // ○
   'blocked': '\u274c'       // ❌
 };
+
+// ============================================================================
+// ACTIVITY TIMELINE (must be before /:book to avoid route conflicts)
+// ============================================================================
+
+/**
+ * GET /api/status/activity/timeline
+ * Get activity timeline with optional filters
+ */
+router.get('/activity/timeline', (req, res) => {
+  const { book, type, user, limit = 50, offset = 0 } = req.query;
+
+  try {
+    const result = activityLog.search({
+      book: book || null,
+      type: type || null,
+      userId: user || null,
+      limit: Math.min(parseInt(limit, 10) || 50, 200),
+      offset: parseInt(offset, 10) || 0
+    });
+
+    // Format activities for display
+    const formattedActivities = result.activities.map(activity => ({
+      ...activity,
+      timeAgo: formatTimeAgo(activity.createdAt),
+      icon: getActivityIcon(activity.type),
+      color: getActivityColor(activity.type)
+    }));
+
+    res.json({
+      activities: formattedActivities,
+      total: result.total,
+      limit: result.limit,
+      offset: result.offset,
+      hasMore: result.offset + result.activities.length < result.total
+    });
+  } catch (err) {
+    console.error('Activity timeline error:', err);
+    res.status(500).json({
+      error: 'Failed to get activity timeline',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/status/activity/types
+ * Get available activity types for filtering
+ */
+router.get('/activity/types', (req, res) => {
+  res.json({
+    types: Object.entries(activityLog.ACTIVITY_TYPES).map(([key, value]) => ({
+      key,
+      value,
+      label: formatActivityType(value)
+    }))
+  });
+});
+
+// ============================================================================
+// BOOK STATUS
+// ============================================================================
 
 /**
  * GET /api/status/:book
@@ -399,6 +462,93 @@ function suggestNextActions(statusData) {
   }
 
   return actions;
+}
+
+// ============================================================================
+// HELPER FUNCTIONS
+// ============================================================================
+
+/**
+ * Format time ago for display
+ */
+function formatTimeAgo(dateString) {
+  const date = new Date(dateString);
+  const now = new Date();
+  const seconds = Math.floor((now - date) / 1000);
+
+  if (seconds < 60) return 'rétt í þessu';
+  if (seconds < 3600) return `fyrir ${Math.floor(seconds / 60)} mín`;
+  if (seconds < 86400) return `fyrir ${Math.floor(seconds / 3600)} klst`;
+  if (seconds < 604800) return `fyrir ${Math.floor(seconds / 86400)} dögum`;
+  return date.toLocaleDateString('is-IS');
+}
+
+/**
+ * Get icon for activity type
+ */
+function getActivityIcon(type) {
+  const icons = {
+    'draft_saved': '💾',
+    'review_submitted': '📤',
+    'version_restored': '🔄',
+    'review_approved': '✅',
+    'changes_requested': '📝',
+    'commit_created': '📦',
+    'push_completed': '🚀',
+    'workflow_started': '▶️',
+    'workflow_completed': '🏁',
+    'file_uploaded': '📁',
+    'upload': '📤',
+    'assign_reviewer': '👤',
+    'assign_localizer': '🌍',
+    'status_change': '🔀',
+    'submit_review': '📋',
+    'approve_review': '✅',
+    'request_changes': '✏️',
+    'submit_localization': '🌐',
+    'approve_localization': '✅',
+    'request_localization_changes': '✏️'
+  };
+  return icons[type] || '📌';
+}
+
+/**
+ * Get color class for activity type
+ */
+function getActivityColor(type) {
+  if (type.includes('approved') || type.includes('completed')) return 'success';
+  if (type.includes('request') || type.includes('changes')) return 'warning';
+  if (type.includes('submit') || type.includes('assign')) return 'info';
+  return 'default';
+}
+
+/**
+ * Format activity type for display
+ */
+function formatActivityType(type) {
+  const labels = {
+    'draft_saved': 'Drög vistuð',
+    'review_submitted': 'Yfirferð send inn',
+    'version_restored': 'Útgáfa endurheimt',
+    'review_approved': 'Yfirferð samþykkt',
+    'changes_requested': 'Breytingar óskast',
+    'commit_created': 'Commit búin til',
+    'push_completed': 'Push lokið',
+    'workflow_started': 'Verkflæði hafið',
+    'workflow_completed': 'Verkflæði lokið',
+    'file_uploaded': 'Skrá hlaðið upp',
+    'upload': 'Upphleðsla',
+    'assign_reviewer': 'Ritstjóri úthlutaður',
+    'assign_localizer': 'Staðfærandi úthlutaður',
+    'status_change': 'Staða breytt',
+    'submit_review': 'Yfirferð send',
+    'approve_review': 'Yfirferð samþykkt',
+    'request_changes': 'Breytingar óskast',
+    'submit_localization': 'Staðfæring send',
+    'approve_localization': 'Staðfæring samþykkt',
+    'request_localization_changes': 'Breytingar á staðfæringu óskast'
+  };
+  return labels[type] || type;
 }
 
 module.exports = router;

@@ -21,41 +21,78 @@
   </header>
 
   <main class="container">
-    <div class="card">
-      <h2 class="card-title">Yfirlit yfir stöðu</h2>
-      <div class="form-group">
-        <label class="form-label">Veldu bók</label>
-        <select class="form-select" id="book-select" onchange="loadStatus()">
-          <option value="">Veldu bók...</option>
-          <option value="efnafraedi">Efnafræði (Chemistry 2e)</option>
-        </select>
+    <!-- Tab navigation -->
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('overview')">Yfirlit</button>
+      <button class="tab" onclick="showTab('timeline')">Tímalína</button>
+    </div>
+
+    <!-- Overview Tab -->
+    <div id="tab-overview" class="tab-content">
+      <div class="card">
+        <h2 class="card-title">Yfirlit yfir stöðu</h2>
+        <div class="form-group">
+          <label class="form-label">Veldu bók</label>
+          <select class="form-select" id="book-select" onchange="loadStatus()">
+            <option value="">Veldu bók...</option>
+            <option value="efnafraedi">Efnafræði (Chemistry 2e)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="status-content" style="display: none;">
+        <div class="card">
+          <h2 class="card-title">Samantekt</h2>
+          <div class="grid grid-4" id="summary-stats"></div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Framvinda kafla</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Kafli</th>
+                <th>Uppspretta</th>
+                <th>VÞ</th>
+                <th>Matecat</th>
+                <th>Yfirl. 1</th>
+                <th>TM</th>
+                <th>Yfirl. 2</th>
+                <th>Útg.</th>
+                <th>Framvinda</th>
+              </tr>
+            </thead>
+            <tbody id="chapters-body"></tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <div id="status-content" style="display: none;">
+    <!-- Timeline Tab -->
+    <div id="tab-timeline" class="tab-content" style="display: none;">
       <div class="card">
-        <h2 class="card-title">Samantekt</h2>
-        <div class="grid grid-4" id="summary-stats"></div>
-      </div>
+        <div class="card-header-flex">
+          <h2 class="card-title">Nýleg virkni</h2>
+          <div class="filters">
+            <select class="form-select form-select-sm" id="timeline-book-filter" onchange="loadTimeline()">
+              <option value="">Allar bækur</option>
+              <option value="efnafraedi">Efnafræði</option>
+            </select>
+            <select class="form-select form-select-sm" id="timeline-type-filter" onchange="loadTimeline()">
+              <option value="">Allar aðgerðir</option>
+            </select>
+          </div>
+        </div>
 
-      <div class="card">
-        <h2 class="card-title">Framvinda kafla</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Kafli</th>
-              <th>Uppspretta</th>
-              <th>VÞ</th>
-              <th>Matecat</th>
-              <th>Yfirl. 1</th>
-              <th>TM</th>
-              <th>Yfirl. 2</th>
-              <th>Útg.</th>
-              <th>Framvinda</th>
-            </tr>
-          </thead>
-          <tbody id="chapters-body"></tbody>
-        </table>
+        <div id="timeline-content">
+          <p class="text-muted">Hleður...</p>
+        </div>
+
+        <div id="timeline-pagination" class="pagination" style="display: none;">
+          <button class="btn btn-secondary btn-sm" id="load-more-btn" onclick="loadMoreTimeline()">
+            Hlaða fleiri...
+          </button>
+        </div>
       </div>
     </div>
   </main>
@@ -68,6 +105,36 @@
       'not-started': '○',
       'blocked': '❌'
     };
+
+    let currentTab = 'overview';
+    let timelineOffset = 0;
+    let timelineTotal = 0;
+
+    // ============================================================================
+    // TAB NAVIGATION
+    // ============================================================================
+
+    function showTab(tabId) {
+      currentTab = tabId;
+
+      // Update tab buttons
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+
+      // Show/hide tab content
+      document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+      document.getElementById('tab-' + tabId).style.display = 'block';
+
+      // Load data if needed
+      if (tabId === 'timeline') {
+        loadActivityTypes();
+        loadTimeline();
+      }
+    }
+
+    // ============================================================================
+    // STATUS OVERVIEW
+    // ============================================================================
 
     async function loadStatus() {
       const book = document.getElementById('book-select').value;
@@ -97,34 +164,235 @@
         '</tr>';
       }).join('');
     }
+
+    // ============================================================================
+    // ACTIVITY TIMELINE
+    // ============================================================================
+
+    async function loadActivityTypes() {
+      try {
+        const res = await fetch('/api/status/activity/types');
+        const data = await res.json();
+
+        const select = document.getElementById('timeline-type-filter');
+        // Keep the first option (all types)
+        const firstOption = select.options[0];
+        select.innerHTML = '';
+        select.appendChild(firstOption);
+
+        data.types.forEach(type => {
+          const option = document.createElement('option');
+          option.value = type.value;
+          option.textContent = type.label;
+          select.appendChild(option);
+        });
+      } catch (err) {
+        console.error('Failed to load activity types:', err);
+      }
+    }
+
+    async function loadTimeline(append = false) {
+      const contentEl = document.getElementById('timeline-content');
+      const paginationEl = document.getElementById('timeline-pagination');
+
+      if (!append) {
+        timelineOffset = 0;
+        contentEl.innerHTML = '<p class="text-muted">Hleður...</p>';
+      }
+
+      const book = document.getElementById('timeline-book-filter').value;
+      const type = document.getElementById('timeline-type-filter').value;
+
+      try {
+        const params = new URLSearchParams({
+          limit: 20,
+          offset: timelineOffset
+        });
+        if (book) params.set('book', book);
+        if (type) params.set('type', type);
+
+        const res = await fetch('/api/status/activity/timeline?' + params);
+        const data = await res.json();
+
+        timelineTotal = data.total;
+
+        if (data.activities.length === 0 && !append) {
+          contentEl.innerHTML = '<div class="empty-state"><p>Engin virkni skráð</p></div>';
+          paginationEl.style.display = 'none';
+          return;
+        }
+
+        const html = data.activities.map(activity => renderActivityItem(activity)).join('');
+
+        if (append) {
+          contentEl.innerHTML += html;
+        } else {
+          contentEl.innerHTML = '<div class="timeline">' + html + '</div>';
+        }
+
+        // Show/hide load more button
+        paginationEl.style.display = data.hasMore ? 'block' : 'none';
+
+      } catch (err) {
+        console.error('Failed to load timeline:', err);
+        if (!append) {
+          contentEl.innerHTML = '<p class="text-error">Villa við að hlaða tímalínu</p>';
+        }
+      }
+    }
+
+    function loadMoreTimeline() {
+      timelineOffset += 20;
+      loadTimeline(true);
+    }
+
+    function renderActivityItem(activity) {
+      const colorClass = 'timeline-color-' + activity.color;
+
+      // Build location string
+      let location = '';
+      if (activity.book) {
+        location = activity.book;
+        if (activity.chapter) location += ' / K.' + activity.chapter;
+        if (activity.section) location += ' / ' + activity.section;
+      }
+
+      // Extract details for display
+      let details = '';
+      if (activity.metadata) {
+        if (activity.metadata.sectionNum) {
+          details = 'Kafli ' + activity.metadata.chapterNum + '.' + activity.metadata.sectionNum;
+        }
+        if (activity.metadata.notes) {
+          details = activity.metadata.notes.substring(0, 100) + (activity.metadata.notes.length > 100 ? '...' : '');
+        }
+      }
+
+      return `
+        <div class="timeline-item ${colorClass}">
+          <div class="timeline-icon">${activity.icon}</div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-user">${escapeHtml(activity.username)}</span>
+              <span class="timeline-time">${activity.timeAgo}</span>
+            </div>
+            <div class="timeline-description">${escapeHtml(activity.description)}</div>
+            ${location ? '<div class="timeline-location">' + escapeHtml(location) + '</div>' : ''}
+            ${details ? '<div class="timeline-details">' + escapeHtml(details) + '</div>' : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check URL hash for initial tab
+      if (window.location.hash === '#timeline') {
+        showTab('timeline');
+      }
+    });
   </script>
 
   <style>
-    :root { --primary: #2563eb; --gray-50: #f9fafb; --gray-200: #e5e7eb; --gray-300: #d1d5db; --gray-500: #6b7280; --gray-700: #374151; }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --info: #0891b2;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
     .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
     .header h1 { font-size: 1.25rem; }
     .header nav { display: flex; gap: 1.5rem; }
     .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
     .header nav a.active { color: var(--primary); }
     .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .tab { padding: 0.5rem 1rem; border: none; background: white; border-radius: 0.375rem; cursor: pointer; font-size: 0.875rem; color: var(--gray-700); }
+    .tab:hover { background: var(--gray-100); }
+    .tab.active { background: var(--primary); color: white; }
+
+    /* Cards */
     .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
     .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
+    .card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
+    .card-header-flex .card-title { margin-bottom: 0; }
+
+    /* Forms */
     .form-group { margin-bottom: 1rem; }
     .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
-    .form-select { width: 100%; max-width: 300px; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; }
+    .form-select { padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-select-sm { padding: 0.375rem 0.5rem; font-size: 0.75rem; }
+    .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    /* Grid and Stats */
     .grid { display: grid; gap: 1rem; }
     .grid-4 { grid-template-columns: repeat(4, 1fr); }
     .stat-card { text-align: center; padding: 1rem; background: var(--gray-50); border-radius: 0.5rem; }
     .stat-value { font-size: 1.5rem; font-weight: 600; color: var(--primary); }
     .stat-label { font-size: 0.75rem; color: var(--gray-500); }
+
+    /* Table */
     .table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
     .table th, .table td { padding: 0.5rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
     .table th { font-size: 0.75rem; color: var(--gray-500); }
     .progress-bar { width: 100%; height: 0.5rem; background: var(--gray-200); border-radius: 9999px; }
     .progress-bar-fill { height: 100%; background: var(--primary); border-radius: 9999px; }
-    @media (max-width: 768px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--gray-100); }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-icon { font-size: 1.25rem; width: 2rem; text-align: center; flex-shrink: 0; }
+    .timeline-content { flex: 1; min-width: 0; }
+    .timeline-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.25rem; }
+    .timeline-user { font-weight: 500; color: var(--gray-700); }
+    .timeline-time { font-size: 0.75rem; color: var(--gray-500); }
+    .timeline-description { color: var(--gray-700); font-size: 0.875rem; }
+    .timeline-location { font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem; }
+    .timeline-details { font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem; font-style: italic; }
+
+    /* Timeline colors */
+    .timeline-color-success .timeline-icon { color: var(--success); }
+    .timeline-color-warning .timeline-icon { color: var(--warning); }
+    .timeline-color-info .timeline-icon { color: var(--info); }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-secondary:hover { background: var(--gray-50); }
+    .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.75rem; }
+
+    /* Pagination */
+    .pagination { margin-top: 1rem; text-align: center; }
+
+    /* States */
+    .text-muted { color: var(--gray-500); }
+    .text-error { color: #dc2626; }
+    .empty-state { text-align: center; padding: 2rem; color: var(--gray-500); }
+
+    @media (max-width: 768px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .card-header-flex { flex-direction: column; align-items: flex-start; }
+      .timeline-header { flex-direction: column; gap: 0.25rem; }
+    }
   </style>
 </body>
 </html>
