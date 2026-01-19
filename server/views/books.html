@@ -196,48 +196,50 @@
       chaptersEl.innerHTML = '';
 
       try {
-        const res = await fetch(`/api/admin/books/${slug}`);
+        const res = await fetch('/api/admin/books/' + slug);
         const book = await res.json();
 
         titleEl.textContent = book.titleIs;
-        metaEl.innerHTML = `
-          <span class="meta-item">${escapeHtml(book.titleEn)}</span>
-          <span class="meta-separator">|</span>
-          <span class="meta-item">${book.chapters.length} kaflar</span>
-        `;
+        metaEl.innerHTML = '<span class="meta-item">' + escapeHtml(book.titleEn) + '</span>' +
+          '<span class="meta-separator">|</span>' +
+          '<span class="meta-item">' + book.chapters.length + ' kaflar</span>';
 
-        chaptersEl.innerHTML = `
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Kafli</th>
-                <th>Heiti</th>
-                <th>Kaflar</th>
-                <th>Staða</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              ${book.chapters.map(ch => `
-                <tr>
-                  <td><strong>K. ${ch.chapterNum}</strong></td>
-                  <td>${escapeHtml(ch.titleIs || ch.titleEn)}</td>
-                  <td>${ch.progress.total} einingar</td>
-                  <td>
-                    <div class="status-badges">
-                      ${ch.progress.published > 0 ? `<span class="badge badge-success">${ch.progress.published} birt</span>` : ''}
-                      ${ch.progress.inReview > 0 ? `<span class="badge badge-warning">${ch.progress.inReview} í yfirferð</span>` : ''}
-                      ${ch.progress.notStarted === ch.progress.total ? '<span class="badge badge-muted">Ekki byrjað</span>' : ''}
-                    </div>
-                  </td>
-                  <td>
-                    <button class="btn btn-secondary btn-sm" onclick="loadChapterDetail('${slug}', ${ch.chapterNum})">Opna</button>
-                  </td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        `;
+        let chaptersHtml = '<div class="chapter-actions-bar">' +
+          '<button class="btn btn-secondary" onclick="downloadBookMarkdown(\'' + slug + '\')">' +
+          '<span class="icon">⬇</span> Sækja allt EN markdown</button></div>' +
+          '<table class="table"><thead><tr>' +
+          '<th>Kafli</th><th>Heiti</th><th style="width: 220px;">Framvinda</th><th>Aðgerðir</th>' +
+          '</tr></thead><tbody>';
+
+        book.chapters.forEach(function(ch) {
+          const total = ch.progress.total;
+          const completed = (ch.progress.published || 0) + (ch.progress.reviewApproved || 0);
+          const inProgress = (ch.progress.inReview || 0) + (ch.progress.inMT || 0) + (ch.progress.inLocalization || 0);
+          const notStarted = ch.progress.notStarted || 0;
+          const pctComplete = total > 0 ? Math.round((completed / total) * 100) : 0;
+          const pctInProgress = total > 0 ? Math.round((inProgress / total) * 100) : 0;
+
+          let legendHtml = '';
+          if (completed > 0) legendHtml += '<span class="legend-item"><span class="dot bg-success"></span>' + completed + ' lokið</span>';
+          if (inProgress > 0) legendHtml += '<span class="legend-item"><span class="dot bg-warning"></span>' + inProgress + ' í vinnslu</span>';
+          if (notStarted > 0) legendHtml += '<span class="legend-item"><span class="dot bg-muted"></span>' + notStarted + ' bíður</span>';
+
+          chaptersHtml += '<tr>' +
+            '<td><strong>K. ' + ch.chapterNum + '</strong></td>' +
+            '<td>' + escapeHtml(ch.titleIs || ch.titleEn) + '<small class="text-muted block">' + total + ' einingar</small></td>' +
+            '<td><div class="chapter-progress">' +
+            '<div class="progress-bar stacked">' +
+            '<div class="progress-bar-fill bg-success" style="width: ' + pctComplete + '%"></div>' +
+            '<div class="progress-bar-fill bg-warning" style="width: ' + pctInProgress + '%"></div>' +
+            '</div><div class="progress-legend">' + legendHtml + '</div></div></td>' +
+            '<td><div class="btn-group">' +
+            '<button class="btn btn-secondary btn-sm" onclick="loadChapterDetail(\'' + slug + '\', ' + ch.chapterNum + ')">Skoða</button>' +
+            '<button class="btn btn-secondary btn-sm" onclick="downloadChapterMarkdown(\'' + slug + '\', ' + ch.chapterNum + ')" title="Sækja EN markdown">⬇ EN</button>' +
+            '</div></td></tr>';
+        });
+
+        chaptersHtml += '</tbody></table>';
+        chaptersEl.innerHTML = chaptersHtml;
 
         // Scroll to detail
         detailEl.scrollIntoView({ behavior: 'smooth' });
@@ -440,6 +442,19 @@
     }
 
     // ============================================================================
+    // DOWNLOAD FUNCTIONS
+    // ============================================================================
+
+    function downloadChapterMarkdown(slug, chapterNum) {
+      const chapterDir = 'ch' + String(chapterNum).padStart(2, '0');
+      window.location.href = '/api/books/' + slug + '/download?chapter=' + chapterNum + '&type=en-md';
+    }
+
+    function downloadBookMarkdown(slug) {
+      window.location.href = '/api/books/' + slug + '/download?type=en-md';
+    }
+
+    // ============================================================================
     // UTILITIES
     // ============================================================================
 
@@ -511,6 +526,21 @@
     .form-help { display: block; font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem; }
     .form-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.5rem; }
     code { background: var(--gray-100); padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.8rem; }
+    /* Chapter progress */
+    .chapter-actions-bar { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--gray-200); }
+    .chapter-progress { display: flex; flex-direction: column; gap: 0.25rem; }
+    .progress-bar.stacked { display: flex; overflow: hidden; }
+    .progress-bar.stacked .progress-bar-fill { border-radius: 0; }
+    .progress-bar.stacked .progress-bar-fill:first-child { border-radius: 9999px 0 0 9999px; }
+    .progress-bar.stacked .progress-bar-fill:last-child { border-radius: 0 9999px 9999px 0; }
+    .bg-success { background: var(--success); }
+    .bg-warning { background: var(--warning); }
+    .bg-muted { background: var(--gray-300); }
+    .progress-legend { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.7rem; color: var(--gray-500); }
+    .legend-item { display: flex; align-items: center; gap: 0.25rem; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .btn-group { display: flex; gap: 0.25rem; }
+    .icon { font-size: 0.875rem; }
     @media (max-width: 768px) { .container { padding: 1rem; } .modal { width: 95%; } }
   </style>
 </body>
