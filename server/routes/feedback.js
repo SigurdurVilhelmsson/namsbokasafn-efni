@@ -83,22 +83,15 @@ router.post('/', optionalAuth, async (req, res) => {
       priority
     });
 
-    // Send notification to admins
+    // Send email notification to admins
     try {
-      // For now, just log - we'd need admin email list
-      console.log('[Feedback] New feedback submitted:', feedback.id, '-', feedbackService.FEEDBACK_TYPE_LABELS[type]);
+      const typeLabel = feedbackService.FEEDBACK_TYPE_LABELS[type];
+      console.log('[Feedback] New feedback submitted:', feedback.id, '-', typeLabel);
 
-      // If we have admin notification configured
-      if (process.env.ADMIN_EMAIL) {
-        await notifications.createNotification({
-          userId: 'admin',
-          userEmail: process.env.ADMIN_EMAIL,
-          type: 'feedback_received',
-          title: 'Ný endurgjöf móttekin',
-          message: `${feedbackService.FEEDBACK_TYPE_LABELS[type]}: ${message.substring(0, 100)}...`,
-          link: '/admin/feedback',
-          metadata: { feedbackId: feedback.id }
-        });
+      // Send email + in-app notification
+      const notifyResult = await notifications.notifyFeedbackReceived(feedback, typeLabel);
+      if (notifyResult.emailSent) {
+        console.log('[Feedback] Email notification sent to admin');
       }
     } catch (notifyErr) {
       console.error('[Feedback] Notification error:', notifyErr);

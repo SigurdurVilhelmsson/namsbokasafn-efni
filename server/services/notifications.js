@@ -307,6 +307,116 @@ async function notifyChangesRequested(review, editor, notes) {
 }
 
 /**
+ * Notify admins when feedback is received
+ * Sends email to ADMIN_EMAIL if configured
+ */
+async function notifyFeedbackReceived(feedback, typeLabel) {
+  const adminEmail = process.env.ADMIN_EMAIL;
+
+  if (!adminEmail) {
+    console.log('[Notification] ADMIN_EMAIL not configured, skipping feedback notification');
+    return { emailSent: false };
+  }
+
+  // Build location string
+  const location = [feedback.book, feedback.chapter, feedback.section]
+    .filter(Boolean)
+    .join(' / ') || 'Ekki tilgreint';
+
+  const title = `Ný endurgjöf: ${typeLabel}`;
+  const message = `
+Tegund: ${typeLabel}
+Staðsetning: ${location}
+${feedback.userName ? `Nafn: ${feedback.userName}` : ''}
+${feedback.userEmail ? `Netfang: ${feedback.userEmail}` : ''}
+
+Skilaboð:
+${feedback.message}
+  `.trim();
+
+  // Generate HTML email
+  const htmlBody = generateFeedbackEmailHtml(feedback, typeLabel, location);
+  const textBody = message;
+
+  // Send email directly (not through createNotification since this is for admin)
+  const emailSent = await sendEmail(adminEmail, title, htmlBody, textBody);
+
+  // Also store as in-app notification
+  const notificationResult = await createNotification({
+    userId: 'admin',
+    type: 'feedback_received',
+    title,
+    message: `${typeLabel}: ${feedback.message.substring(0, 100)}${feedback.message.length > 100 ? '...' : ''}`,
+    link: '/admin/feedback',
+    metadata: {
+      feedbackId: feedback.id,
+      type: feedback.type,
+      book: feedback.book,
+      chapter: feedback.chapter
+    }
+  });
+
+  return { emailSent, notificationId: notificationResult.id };
+}
+
+/**
+ * Generate HTML email for feedback notification
+ */
+function generateFeedbackEmailHtml(feedback, typeLabel, location) {
+  const baseUrl = process.env.BASE_URL || 'https://ritstjorn.namsbokasafn.is';
+
+  // Priority color based on type
+  const priorityColors = {
+    technical_issue: '#dc2626', // red
+    translation_error: '#f59e0b', // amber
+    improvement: '#2563eb', // blue
+    other: '#6b7280' // gray
+  };
+  const priorityColor = priorityColors[feedback.type] || '#6b7280';
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: ${priorityColor}; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+    .content { background: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; }
+    .message-box { background: white; border: 1px solid #e5e7eb; border-radius: 6px; padding: 16px; margin: 16px 0; }
+    .meta { font-size: 14px; color: #6b7280; }
+    .button { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin-top: 16px; }
+    .footer { padding: 16px 20px; font-size: 12px; color: #6b7280; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 style="margin: 0; font-size: 20px;">Ný endurgjöf móttekin</h1>
+      <p style="margin: 8px 0 0 0; opacity: 0.9;">${escapeHtml(typeLabel)}</p>
+    </div>
+    <div class="content">
+      <div class="meta">
+        <p><strong>Staðsetning:</strong> ${escapeHtml(location)}</p>
+        ${feedback.userName ? `<p><strong>Nafn:</strong> ${escapeHtml(feedback.userName)}</p>` : ''}
+        ${feedback.userEmail ? `<p><strong>Netfang:</strong> ${escapeHtml(feedback.userEmail)}</p>` : ''}
+      </div>
+      <div class="message-box">
+        <p style="margin: 0; white-space: pre-wrap;">${escapeHtml(feedback.message)}</p>
+      </div>
+      <a href="${baseUrl}/admin/feedback" class="button">Skoða í stjórnborði</a>
+    </div>
+    <div class="footer">
+      <p style="margin: 0;">Þetta er sjálfvirk tilkynning frá Námsbókasafni.</p>
+    </div>
+  </div>
+</body>
+</html>
+  `.trim();
+}
+
+/**
  * Get unread notifications for a user
  */
 function getUnreadNotifications(userId, limit = 20) {
@@ -369,6 +479,7 @@ module.exports = {
   notifyReviewSubmitted,
   notifyReviewApproved,
   notifyChangesRequested,
+  notifyFeedbackReceived,
   getUnreadNotifications,
   getAllNotifications,
   getUnreadCount,
