@@ -14,6 +14,20 @@
 | GET | `/my` |
 | GET | `/types` |
 
+## /admin
+
+| Method | Path |
+|--------|------|
+| GET | `/catalogue` |
+| GET | `/catalogue/predefined` |
+| POST | `/catalogue/sync` |
+| POST | `/catalogue/add` |
+| POST | `/books/register` |
+| GET | `/books` |
+| GET | `/books/:slug` |
+| GET | `/books/:slug/chapters/:chapter` |
+| POST | `/migrate` |
+
 ## /auth
 
 | Method | Path |
@@ -44,6 +58,10 @@
 | GET | `/:book/:chapter/:section/history` |
 | GET | `/history/:historyId` |
 | POST | `/:book/:chapter/:section/restore/:historyId` |
+| GET | `/section/:sectionId` |
+| POST | `/section/:sectionId/save` |
+| POST | `/section/:sectionId/submit-review` |
+| POST | `/section/:sectionId/submit-localization` |
 
 ## /images
 
@@ -71,6 +89,20 @@
 | POST | `/batch-resolve` |
 | POST | `/auto-fix` |
 | POST | `/report` |
+
+## /localization
+
+| Method | Path |
+|--------|------|
+| GET | `/:sectionId` |
+| POST | `/:sectionId/log/add` |
+| PUT | `/:sectionId/log/:entryId` |
+| DELETE | `/:sectionId/log/:entryId` |
+| POST | `/:sectionId/log/save` |
+| POST | `/:sectionId/submit` |
+| POST | `/:sectionId/approve` |
+| POST | `/:sectionId/request-changes` |
+| GET | `/stats` |
 
 ## /matecat
 
@@ -124,6 +156,19 @@
 | POST | `/:id/approve` |
 | POST | `/:id/changes` |
 
+## /sections
+
+| Method | Path |
+|--------|------|
+| GET | `/:sectionId` |
+| POST | `/:sectionId/upload/:uploadType` |
+| POST | `/:sectionId/assign-reviewer` |
+| POST | `/:sectionId/assign-localizer` |
+| POST | `/:sectionId/status` |
+| POST | `/:sectionId/submit-review` |
+| POST | `/:sectionId/approve-review` |
+| POST | `/:sectionId/request-changes` |
+
 ## /status
 
 | Method | Path |
@@ -154,6 +199,7 @@
 | GET | `/editor` |
 | GET | `/reviews` |
 | GET | `/status` |
+| GET | `/books` |
 
 ## /workflow
 
