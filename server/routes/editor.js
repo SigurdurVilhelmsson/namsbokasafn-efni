@@ -19,6 +19,7 @@ const path = require('path');
 const editorHistory = require('../services/editorHistory');
 const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
+const bookRegistration = require('../services/bookRegistration');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 
@@ -340,5 +341,396 @@ router.post('/:book/:chapter/:section/restore/:historyId', requireAuth, requireR
     });
   }
 });
+
+// ============================================================================
+// SECTION-BASED WORKFLOW (uses book_sections database)
+// ============================================================================
+
+/**
+ * GET /api/editor/section/:sectionId
+ * Load content for a section using database ID
+ * Returns both source (EN) and target (IS) content with workflow status
+ */
+router.get('/section/:sectionId', requireAuth, async (req, res) => {
+  const { sectionId } = req.params;
+
+  try {
+    const section = bookRegistration.getSection(parseInt(sectionId, 10));
+
+    if (!section) {
+      return res.status(404).json({
+        error: 'Section not found',
+        message: `No section with ID ${sectionId}`
+      });
+    }
+
+    // Load file content
+    const content = editorHistory.loadSectionContent(
+      section.bookSlug,
+      section.chapterNum,
+      section.sectionNum.replace('.', '-')
+    );
+
+    // Get version history
+    const history = editorHistory.getVersionHistory(
+      section.bookSlug,
+      String(section.chapterNum),
+      section.sectionNum.replace('.', '-'),
+      10
+    );
+
+    // Determine if user can edit
+    const canEdit = canUserEditSection(req.user, section);
+    const isReviewer = section.linguisticReviewer === req.user.id;
+    const isLocalizer = section.localizer === req.user.id;
+
+    res.json({
+      section: {
+        id: section.id,
+        bookSlug: section.bookSlug,
+        bookTitleIs: section.bookTitleIs,
+        chapterNum: section.chapterNum,
+        chapterTitleIs: section.chapterTitleIs,
+        chapterTitleEn: section.chapterTitleEn,
+        sectionNum: section.sectionNum,
+        titleEn: section.titleEn,
+        titleIs: section.titleIs,
+        status: section.status,
+        linguisticReviewer: section.linguisticReviewer,
+        linguisticReviewerName: section.linguisticReviewerName,
+        localizer: section.localizer,
+        localizerName: section.localizerName
+      },
+      content: {
+        is: content.is,
+        en: content.en
+      },
+      metadata: content.metadata,
+      history,
+      permissions: {
+        canEdit,
+        isReviewer,
+        isLocalizer,
+        canSubmitReview: isReviewer && section.status === 'review_in_progress',
+        canApprove: (req.user.role === ROLES.HEAD_EDITOR || req.user.role === ROLES.ADMIN) &&
+                    section.status === 'review_submitted',
+        canSubmitLocalization: isLocalizer && section.status === 'localization_in_progress'
+      }
+    });
+  } catch (err) {
+    console.error('Error loading section:', err);
+    res.status(500).json({
+      error: 'Failed to load section',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/editor/section/:sectionId/save
+ * Save draft for a section (with workflow status validation)
+ */
+router.post('/section/:sectionId/save', requireAuth, requireRole(ROLES.CONTRIBUTOR), async (req, res) => {
+  const { sectionId } = req.params;
+  const { content, mode } = req.body; // mode: 'review' | 'localization'
+
+  if (!content || typeof content !== 'string') {
+    return res.status(400).json({
+      error: 'Invalid content',
+      message: 'Content must be a non-empty string'
+    });
+  }
+
+  try {
+    const section = bookRegistration.getSection(parseInt(sectionId, 10));
+
+    if (!section) {
+      return res.status(404).json({
+        error: 'Section not found',
+        message: `No section with ID ${sectionId}`
+      });
+    }
+
+    // Validate user can edit
+    if (!canUserEditSection(req.user, section)) {
+      return res.status(403).json({
+        error: 'Cannot edit',
+        message: 'You are not assigned to this section or it is not in an editable state',
+        status: section.status,
+        linguisticReviewer: section.linguisticReviewer,
+        localizer: section.localizer
+      });
+    }
+
+    // Update section status if this is first edit
+    if (section.status === 'review_assigned') {
+      bookRegistration.updateSectionStatus(section.id, 'review_in_progress');
+    } else if (section.status === 'localization_assigned') {
+      bookRegistration.updateSectionStatus(section.id, 'localization_in_progress');
+    }
+
+    // Save to edit history
+    const result = editorHistory.saveDraft(
+      section.bookSlug,
+      String(section.chapterNum),
+      section.sectionNum.replace('.', '-'),
+      content,
+      req.user.id,
+      req.user.username
+    );
+
+    // Log activity
+    activityLog.log({
+      userId: req.user.id,
+      username: req.user.username,
+      action: 'save_draft',
+      entityType: 'section',
+      entityId: section.id,
+      details: {
+        mode: mode || 'review',
+        sectionNum: section.sectionNum,
+        chapterNum: section.chapterNum,
+        book: section.bookSlug
+      }
+    });
+
+    res.json({
+      success: true,
+      ...result,
+      section: {
+        id: section.id,
+        status: section.status === 'review_assigned' ? 'review_in_progress' :
+                section.status === 'localization_assigned' ? 'localization_in_progress' :
+                section.status
+      },
+      savedAt: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error('Error saving section draft:', err);
+    res.status(500).json({
+      error: 'Failed to save draft',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/editor/section/:sectionId/submit-review
+ * Submit linguistic review for approval
+ */
+router.post('/section/:sectionId/submit-review', requireAuth, requireRole(ROLES.CONTRIBUTOR), async (req, res) => {
+  const { sectionId } = req.params;
+  const { content } = req.body;
+
+  if (!content || typeof content !== 'string') {
+    return res.status(400).json({
+      error: 'Invalid content',
+      message: 'Content must be a non-empty string'
+    });
+  }
+
+  try {
+    const section = bookRegistration.getSection(parseInt(sectionId, 10));
+
+    if (!section) {
+      return res.status(404).json({
+        error: 'Section not found',
+        message: `No section with ID ${sectionId}`
+      });
+    }
+
+    // Validate user is reviewer and section is in progress
+    if (section.linguisticReviewer !== req.user.id && req.user.role !== ROLES.ADMIN) {
+      return res.status(403).json({
+        error: 'Not assigned',
+        message: 'Only the assigned reviewer can submit this section'
+      });
+    }
+
+    if (section.status !== 'review_in_progress') {
+      return res.status(400).json({
+        error: 'Invalid status',
+        message: `Cannot submit from status '${section.status}'`
+      });
+    }
+
+    // Save final content
+    const saveResult = editorHistory.submitForReview(
+      section.bookSlug,
+      String(section.chapterNum),
+      section.sectionNum.replace('.', '-'),
+      content,
+      req.user.id,
+      req.user.username
+    );
+
+    // Update section status
+    bookRegistration.updateSectionStatus(section.id, 'review_submitted');
+
+    // Notify head editors
+    const adminUserIds = (process.env.ADMIN_USER_IDS || '').split(',').filter(Boolean);
+    if (adminUserIds.length > 0) {
+      for (const adminId of adminUserIds) {
+        await notifications.create({
+          userId: adminId.trim(),
+          type: 'review_submitted',
+          title: 'Ný yfirferð til samþykktar',
+          message: `${req.user.username} hefur sent inn yfirferð á ${section.sectionNum} í ${section.bookTitleIs}`,
+          link: `/editor?sectionId=${section.id}`
+        });
+      }
+    }
+
+    // Log activity
+    activityLog.log({
+      userId: req.user.id,
+      username: req.user.username,
+      action: 'submit_review',
+      entityType: 'section',
+      entityId: section.id,
+      details: {
+        sectionNum: section.sectionNum,
+        chapterNum: section.chapterNum,
+        book: section.bookSlug
+      }
+    });
+
+    res.json({
+      success: true,
+      message: 'Review submitted for approval',
+      section: {
+        id: section.id,
+        status: 'review_submitted'
+      },
+      submittedAt: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error('Error submitting review:', err);
+    res.status(500).json({
+      error: 'Failed to submit review',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/editor/section/:sectionId/submit-localization
+ * Submit localization for approval
+ */
+router.post('/section/:sectionId/submit-localization', requireAuth, requireRole(ROLES.CONTRIBUTOR), async (req, res) => {
+  const { sectionId } = req.params;
+  const { content, localizationLog } = req.body;
+
+  if (!content || typeof content !== 'string') {
+    return res.status(400).json({
+      error: 'Invalid content',
+      message: 'Content must be a non-empty string'
+    });
+  }
+
+  // Localization log is mandatory
+  if (!localizationLog || !Array.isArray(localizationLog) || localizationLog.length === 0) {
+    return res.status(400).json({
+      error: 'Missing localization log',
+      message: 'Localization changes must be documented in the log'
+    });
+  }
+
+  try {
+    const section = bookRegistration.getSection(parseInt(sectionId, 10));
+
+    if (!section) {
+      return res.status(404).json({
+        error: 'Section not found',
+        message: `No section with ID ${sectionId}`
+      });
+    }
+
+    // Validate user is localizer and section is in progress
+    if (section.localizer !== req.user.id && req.user.role !== ROLES.ADMIN) {
+      return res.status(403).json({
+        error: 'Not assigned',
+        message: 'Only the assigned localizer can submit this section'
+      });
+    }
+
+    if (section.status !== 'localization_in_progress') {
+      return res.status(400).json({
+        error: 'Invalid status',
+        message: `Cannot submit from status '${section.status}'`
+      });
+    }
+
+    // Save localization content
+    const saveResult = editorHistory.saveDraft(
+      section.bookSlug,
+      String(section.chapterNum),
+      section.sectionNum.replace('.', '-'),
+      content,
+      req.user.id,
+      req.user.username
+    );
+
+    // Update section status
+    bookRegistration.updateSectionStatus(section.id, 'localization_submitted');
+
+    // Store localization log (would need a separate service in production)
+    // For now, log it in activity
+    activityLog.log({
+      userId: req.user.id,
+      username: req.user.username,
+      action: 'submit_localization',
+      entityType: 'section',
+      entityId: section.id,
+      details: {
+        sectionNum: section.sectionNum,
+        chapterNum: section.chapterNum,
+        book: section.bookSlug,
+        logEntries: localizationLog.length
+      }
+    });
+
+    res.json({
+      success: true,
+      message: 'Localization submitted for approval',
+      section: {
+        id: section.id,
+        status: 'localization_submitted'
+      },
+      submittedAt: new Date().toISOString()
+    });
+  } catch (err) {
+    console.error('Error submitting localization:', err);
+    res.status(500).json({
+      error: 'Failed to submit localization',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * Helper: Check if user can edit a section
+ */
+function canUserEditSection(user, section) {
+  // Admins can always edit
+  if (user.role === ROLES.ADMIN) return true;
+
+  // Head editors can edit any section
+  if (user.role === ROLES.HEAD_EDITOR) return true;
+
+  // Check if user is assigned reviewer during review phase
+  const reviewStatuses = ['review_assigned', 'review_in_progress'];
+  if (reviewStatuses.includes(section.status)) {
+    return section.linguisticReviewer === user.id;
+  }
+
+  // Check if user is assigned localizer during localization phase
+  const localizationStatuses = ['localization_assigned', 'localization_in_progress'];
+  if (localizationStatuses.includes(section.status)) {
+    return section.localizer === user.id;
+  }
+
+  return false;
+}
 
 module.exports = router;

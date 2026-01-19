@@ -76,6 +76,14 @@ router.get('/status', (req, res) => {
 });
 
 /**
+ * GET /books
+ * Book management page
+ */
+router.get('/books', (req, res) => {
+  sendView(res, 'books.html');
+});
+
+/**
  * Helper to send a view file
  */
 function sendView(res, filename) {

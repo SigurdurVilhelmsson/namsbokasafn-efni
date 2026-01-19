@@ -48,6 +48,11 @@ const reviewsRoutes = require('./routes/reviews');
 const notificationsRoutes = require('./routes/notifications');
 const activityRoutes = require('./routes/activity');
 
+// Import Phase 4 routes (Translation Management)
+const adminRoutes = require('./routes/admin');
+const sectionsRoutes = require('./routes/sections');
+const localizationRoutes = require('./routes/localization');
+
 // Configuration
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -90,6 +95,11 @@ app.use('/api/editor', editorRoutes);
 app.use('/api/reviews', reviewsRoutes);
 app.use('/api/notifications', notificationsRoutes);
 app.use('/api/activity', activityRoutes);
+
+// Phase 4 API Routes (Translation Management)
+app.use('/api/admin', adminRoutes);
+app.use('/api/sections', sectionsRoutes);
+app.use('/api/localization', localizationRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -150,7 +160,14 @@ app.get('/api', (req, res) => {
       'GET /api/reviews': 'List pending reviews',
       'GET /api/reviews/:id': 'Get review details',
       'POST /api/reviews/:id/approve': 'Approve review',
-      'POST /api/reviews/:id/changes': 'Request changes'
+      'POST /api/reviews/:id/changes': 'Request changes',
+      // Phase 4 - Admin (Translation Management)
+      'GET /api/admin/catalogue': 'List OpenStax catalogue',
+      'POST /api/admin/catalogue/sync': 'Sync catalogue with predefined books',
+      'POST /api/admin/books/register': 'Register book for translation',
+      'GET /api/admin/books': 'List registered books',
+      'GET /api/admin/books/:slug': 'Get book details with chapters',
+      'POST /api/admin/migrate': 'Run database migrations'
     },
     documentation: 'https://github.com/SigurdurVilhelmsson/namsbokasafn-efni'
   });

@@ -632,6 +632,11 @@
         initNotifications(data.user);
       } else {
         el.innerHTML = '<a href="/api/auth/login" class="btn btn-primary">Innskráning</a>';
+        // Update form to show login required
+        document.getElementById('book-select').innerHTML = '<option value="">Innskráning krafist</option>';
+        document.getElementById('book-select').disabled = true;
+        document.getElementById('chapter-select').disabled = true;
+        document.getElementById('submit-btn').disabled = true;
       }
     });
 

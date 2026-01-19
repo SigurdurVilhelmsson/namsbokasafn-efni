@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bækur - Námsbókasafn</title>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/books" class="active">Bækur</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/reviews">Yfirferðir</a>
+      <a href="/status">Staða</a>
+    </nav>
+    <div class="header-right">
+      <div class="user-info" id="user-info"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Registered Books Section -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Skráðar bækur</h2>
+        <button class="btn btn-secondary" onclick="showCatalogueModal()" id="register-btn" style="display: none;">
+          + Skrá nýja bók
+        </button>
+      </div>
+      <div id="books-list">
+        <p class="text-muted">Hleður...</p>
+      </div>
+    </div>
+
+    <!-- Book Detail Section (shown when a book is selected) -->
+    <div class="card" id="book-detail" style="display: none;">
+      <div class="card-header">
+        <h2 class="card-title" id="book-title"></h2>
+        <div class="book-meta" id="book-meta"></div>
+      </div>
+      <div id="chapters-list"></div>
+    </div>
+
+    <!-- Chapter Detail Section (shown when a chapter is selected) -->
+    <div class="card" id="chapter-detail" style="display: none;">
+      <div class="card-header">
+        <h2 class="card-title" id="chapter-title"></h2>
+        <button class="btn btn-secondary" onclick="hideChapterDetail()">Til baka</button>
+      </div>
+      <div id="sections-list"></div>
+    </div>
+  </main>
+
+  <!-- Catalogue Modal -->
+  <div class="modal-overlay" id="catalogue-modal" style="display: none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Skrá nýja bók</h3>
+        <button class="modal-close" onclick="hideCatalogueModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="catalogue-list">
+          <p class="text-muted">Hleður...</p>
+        </div>
+        <div id="register-form" style="display: none;">
+          <h4>Skrá bók: <span id="selected-book-title"></span></h4>
+          <form onsubmit="return submitRegistration(event)">
+            <input type="hidden" id="catalogue-slug" name="catalogueSlug">
+            <div class="form-group">
+              <label class="form-label">Íslenskt stuttnefni (slug)</label>
+              <input type="text" class="form-input" id="book-slug" name="slug" required
+                     placeholder="t.d. efnafraedi" pattern="[a-z0-9-]+">
+              <small class="form-help">Notað í slóðum og skráarheitum</small>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Íslenskt heiti</label>
+              <input type="text" class="form-input" id="book-title-is" name="titleIs" required
+                     placeholder="t.d. Efnafræði">
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn btn-secondary" onclick="cancelRegistration()">Hætta við</button>
+              <button type="submit" class="btn btn-primary">Skrá bók</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentUser = null;
+    let selectedBook = null;
+
+    // ============================================================================
+    // INITIALIZATION
+    // ============================================================================
+
+    async function init() {
+      // Check auth
+      const authRes = await fetch('/api/auth/me');
+      const authData = await authRes.json();
+
+      const userInfo = document.getElementById('user-info');
+      if (authData.authenticated) {
+        currentUser = authData.user;
+        userInfo.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
+
+        // Show register button for admins
+        if (authData.user.role === 'admin') {
+          document.getElementById('register-btn').style.display = 'block';
+        }
+
+        loadBooks();
+      } else {
+        userInfo.innerHTML = '<a href="/api/auth/login" class="btn btn-primary">Innskráning</a>';
+        document.getElementById('books-list').innerHTML = '<p class="text-muted">Innskráning krafist til að sjá bækur</p>';
+      }
+    }
+
+    // ============================================================================
+    // BOOKS LIST
+    // ============================================================================
+
+    async function loadBooks() {
+      const booksEl = document.getElementById('books-list');
+
+      try {
+        const res = await fetch('/api/admin/books');
+        const data = await res.json();
+
+        if (!data.books || data.books.length === 0) {
+          booksEl.innerHTML = `
+            <div class="empty-state">
+              <p>Engar bækur skráðar</p>
+              ${currentUser?.role === 'admin' ? '<button class="btn btn-primary" onclick="showCatalogueModal()">Skrá fyrstu bókina</button>' : ''}
+            </div>
+          `;
+          return;
+        }
+
+        booksEl.innerHTML = `
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Bók</th>
+                <th>Kaflar</th>
+                <th>Framvinda</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.books.map(book => `
+                <tr>
+                  <td>
+                    <strong>${escapeHtml(book.titleIs)}</strong>
+                    <small class="text-muted">(${escapeHtml(book.titleEn)})</small>
+                  </td>
+                  <td>${book.chapters} kaflar</td>
+                  <td>
+                    <div class="progress-container">
+                      <div class="progress-bar">
+                        <div class="progress-bar-fill" style="width: ${book.progress}%"></div>
+                      </div>
+                      <span class="progress-text">${book.progress}%</span>
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary" onclick="loadBookDetail('${book.slug}')">Skoða</button>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      } catch (err) {
+        console.error('Failed to load books:', err);
+        booksEl.innerHTML = '<p class="text-error">Villa við að hlaða bókum</p>';
+      }
+    }
+
+    // ============================================================================
+    // BOOK DETAIL
+    // ============================================================================
+
+    async function loadBookDetail(slug) {
+      selectedBook = slug;
+      const detailEl = document.getElementById('book-detail');
+      const titleEl = document.getElementById('book-title');
+      const metaEl = document.getElementById('book-meta');
+      const chaptersEl = document.getElementById('chapters-list');
+
+      detailEl.style.display = 'block';
+      titleEl.textContent = 'Hleður...';
+      chaptersEl.innerHTML = '';
+
+      try {
+        const res = await fetch(`/api/admin/books/${slug}`);
+        const book = await res.json();
+
+        titleEl.textContent = book.titleIs;
+        metaEl.innerHTML = `
+          <span class="meta-item">${escapeHtml(book.titleEn)}</span>
+          <span class="meta-separator">|</span>
+          <span class="meta-item">${book.chapters.length} kaflar</span>
+        `;
+
+        chaptersEl.innerHTML = `
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Kafli</th>
+                <th>Heiti</th>
+                <th>Kaflar</th>
+                <th>Staða</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${book.chapters.map(ch => `
+                <tr>
+                  <td><strong>K. ${ch.chapterNum}</strong></td>
+                  <td>${escapeHtml(ch.titleIs || ch.titleEn)}</td>
+                  <td>${ch.progress.total} einingar</td>
+                  <td>
+                    <div class="status-badges">
+                      ${ch.progress.published > 0 ? `<span class="badge badge-success">${ch.progress.published} birt</span>` : ''}
+                      ${ch.progress.inReview > 0 ? `<span class="badge badge-warning">${ch.progress.inReview} í yfirferð</span>` : ''}
+                      ${ch.progress.notStarted === ch.progress.total ? '<span class="badge badge-muted">Ekki byrjað</span>' : ''}
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-secondary btn-sm" onclick="loadChapterDetail('${slug}', ${ch.chapterNum})">Opna</button>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+
+        // Scroll to detail
+        detailEl.scrollIntoView({ behavior: 'smooth' });
+      } catch (err) {
+        console.error('Failed to load book:', err);
+        titleEl.textContent = 'Villa';
+        chaptersEl.innerHTML = '<p class="text-error">Villa við að hlaða bók</p>';
+      }
+    }
+
+    // ============================================================================
+    // CHAPTER DETAIL
+    // ============================================================================
+
+    async function loadChapterDetail(slug, chapterNum) {
+      const detailEl = document.getElementById('chapter-detail');
+      const titleEl = document.getElementById('chapter-title');
+      const sectionsEl = document.getElementById('sections-list');
+
+      detailEl.style.display = 'block';
+      titleEl.textContent = `Kafli ${chapterNum}`;
+      sectionsEl.innerHTML = '<p class="text-muted">Hleður...</p>';
+
+      try {
+        const res = await fetch(`/api/admin/books/${slug}/chapters/${chapterNum}`);
+        const data = await res.json();
+
+        titleEl.textContent = `Kafli ${chapterNum}: ${data.chapter.titleIs || data.chapter.titleEn}`;
+
+        const statusLabels = {
+          'not_started': { text: 'Ekki byrjað', class: 'muted' },
+          'mt_pending': { text: 'Bíður þýðingar', class: 'info' },
+          'mt_uploaded': { text: 'Þýðing móttekið', class: 'info' },
+          'review_assigned': { text: 'Ritstjóri úthlutaður', class: 'warning' },
+          'review_in_progress': { text: 'Í yfirferð', class: 'warning' },
+          'review_submitted': { text: 'Bíður samþykkis', class: 'warning' },
+          'review_approved': { text: 'Samþykkt', class: 'success' },
+          'faithful_published': { text: 'Birt (trú þýðing)', class: 'success' },
+          'localization_assigned': { text: 'Staðfæring úthlutað', class: 'info' },
+          'localization_in_progress': { text: 'Staðfæring í vinnslu', class: 'info' },
+          'localization_submitted': { text: 'Staðfæring bíður samþykkis', class: 'warning' },
+          'localization_approved': { text: 'Staðfæring samþykkt', class: 'success' },
+          'localized_published': { text: 'Birt (staðfært)', class: 'success' }
+        };
+
+        sectionsEl.innerHTML = `
+          <table class="table sections-table">
+            <thead>
+              <tr>
+                <th>Nr.</th>
+                <th>Heiti</th>
+                <th>Staða</th>
+                <th>Ritstjóri</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.chapter.sections.map(sec => {
+                const status = statusLabels[sec.status] || { text: sec.status, class: 'muted' };
+                return `
+                  <tr>
+                    <td><code>${sec.sectionNum}</code></td>
+                    <td>${escapeHtml(sec.titleEn)}</td>
+                    <td><span class="badge badge-${status.class}">${status.text}</span></td>
+                    <td>${sec.linguisticReviewerName ? escapeHtml(sec.linguisticReviewerName) : '<span class="text-muted">-</span>'}</td>
+                    <td>
+                      <a href="/editor?book=${slug}&chapter=${chapterNum}&section=${sec.sectionNum}" class="btn btn-secondary btn-sm">Opna</a>
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        `;
+
+        detailEl.scrollIntoView({ behavior: 'smooth' });
+      } catch (err) {
+        console.error('Failed to load chapter:', err);
+        sectionsEl.innerHTML = '<p class="text-error">Villa við að hlaða kafla</p>';
+      }
+    }
+
+    function hideChapterDetail() {
+      document.getElementById('chapter-detail').style.display = 'none';
+    }
+
+    // ============================================================================
+    // CATALOGUE & REGISTRATION
+    // ============================================================================
+
+    async function showCatalogueModal() {
+      const modal = document.getElementById('catalogue-modal');
+      const listEl = document.getElementById('catalogue-list');
+      const formEl = document.getElementById('register-form');
+
+      modal.style.display = 'flex';
+      formEl.style.display = 'none';
+      listEl.innerHTML = '<p class="text-muted">Hleður...</p>';
+
+      try {
+        // First try to sync catalogue
+        await fetch('/api/admin/catalogue/sync', { method: 'POST' });
+
+        // Then load it
+        const res = await fetch('/api/admin/catalogue');
+        const data = await res.json();
+
+        if (!data.books || data.books.length === 0) {
+          listEl.innerHTML = '<p class="text-muted">Enginn bækur í skráning</p>';
+          return;
+        }
+
+        listEl.innerHTML = `
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Bók</th>
+                <th>Kaflar</th>
+                <th>Staða</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.books.map(book => `
+                <tr>
+                  <td>
+                    <strong>${escapeHtml(book.title)}</strong>
+                    <small class="text-muted block">${escapeHtml(book.description || '').substring(0, 60)}...</small>
+                  </td>
+                  <td>${book.chapterCount} kaflar</td>
+                  <td>
+                    ${book.registered
+                      ? `<span class="badge badge-success">Skráð sem ${escapeHtml(book.registeredSlug)}</span>`
+                      : '<span class="badge badge-muted">Ekki skráð</span>'
+                    }
+                  </td>
+                  <td>
+                    ${!book.registered
+                      ? `<button class="btn btn-primary btn-sm" onclick="selectForRegistration('${book.slug}', '${escapeHtml(book.title)}')">Skrá</button>`
+                      : ''
+                    }
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      } catch (err) {
+        console.error('Failed to load catalogue:', err);
+        listEl.innerHTML = '<p class="text-error">Villa við að hlaða skrá</p>';
+      }
+    }
+
+    function hideCatalogueModal() {
+      document.getElementById('catalogue-modal').style.display = 'none';
+    }
+
+    function selectForRegistration(slug, title) {
+      document.getElementById('catalogue-list').style.display = 'none';
+      document.getElementById('register-form').style.display = 'block';
+      document.getElementById('selected-book-title').textContent = title;
+      document.getElementById('catalogue-slug').value = slug;
+      document.getElementById('book-slug').value = '';
+      document.getElementById('book-title-is').value = '';
+    }
+
+    function cancelRegistration() {
+      document.getElementById('register-form').style.display = 'none';
+      document.getElementById('catalogue-list').style.display = 'block';
+    }
+
+    async function submitRegistration(e) {
+      e.preventDefault();
+
+      const catalogueSlug = document.getElementById('catalogue-slug').value;
+      const slug = document.getElementById('book-slug').value;
+      const titleIs = document.getElementById('book-title-is').value;
+
+      try {
+        const res = await fetch('/api/admin/books/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ catalogueSlug, slug, titleIs })
+        });
+
+        const result = await res.json();
+
+        if (result.success) {
+          alert(`Bók skráð!\n\n${result.chapters} kaflar og ${result.sections} einingar búnar til.`);
+          hideCatalogueModal();
+          loadBooks();
+        } else {
+          alert('Villa: ' + (result.message || result.error));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+
+      return false;
+    }
+
+    // ============================================================================
+    // UTILITIES
+    // ============================================================================
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Initialize on load
+    init();
+  </script>
+
+  <style>
+    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --success: #16a34a; --warning: #d97706; --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb; --gray-300: #d1d5db; --gray-500: #6b7280; --gray-700: #374151; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; font-weight: 600; }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
+    .header nav a.active { color: var(--primary); }
+    .header-right { display: flex; align-items: center; gap: 1rem; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin: 0; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-sm { padding: 0.25rem 0.75rem; font-size: 0.75rem; }
+    .table { width: 100%; border-collapse: collapse; }
+    .table th, .table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
+    .table th { font-weight: 500; color: var(--gray-500); font-size: 0.75rem; text-transform: uppercase; }
+    .progress-container { display: flex; align-items: center; gap: 0.5rem; }
+    .progress-bar { flex: 1; height: 0.5rem; background: var(--gray-200); border-radius: 9999px; min-width: 100px; }
+    .progress-bar-fill { height: 100%; background: var(--primary); border-radius: 9999px; }
+    .progress-text { font-size: 0.75rem; color: var(--gray-500); min-width: 35px; }
+    .text-muted { color: var(--gray-500); }
+    .text-error { color: #dc2626; }
+    .user-info { display: flex; align-items: center; gap: 0.5rem; }
+    .user-info img { width: 28px; height: 28px; border-radius: 50%; }
+    .user-info span { font-size: 0.875rem; }
+    .badge { display: inline-block; padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 500; }
+    .badge-success { background: #dcfce7; color: #166534; }
+    .badge-warning { background: #fef3c7; color: #92400e; }
+    .badge-info { background: #dbeafe; color: #1e40af; }
+    .badge-muted { background: var(--gray-100); color: var(--gray-500); }
+    .status-badges { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+    .meta-item { font-size: 0.875rem; color: var(--gray-500); }
+    .meta-separator { color: var(--gray-300); margin: 0 0.5rem; }
+    .book-meta { display: flex; align-items: center; }
+    .empty-state { text-align: center; padding: 3rem; color: var(--gray-500); }
+    .empty-state p { margin-bottom: 1rem; }
+    .block { display: block; }
+    /* Modal */
+    .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+    .modal { background: white; border-radius: 0.5rem; max-width: 700px; width: 90%; max-height: 80vh; overflow: hidden; display: flex; flex-direction: column; }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); }
+    .modal-header h3 { margin: 0; font-size: 1.125rem; }
+    .modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); }
+    .modal-body { padding: 1.5rem; overflow-y: auto; }
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-input { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-help { display: block; font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem; }
+    .form-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.5rem; }
+    code { background: var(--gray-100); padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.8rem; }
+    @media (max-width: 768px) { .container { padding: 1rem; } .modal { width: 95%; } }
+  </style>
+</body>
+</html>

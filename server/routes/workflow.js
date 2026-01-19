@@ -561,6 +561,9 @@ router.get('/:sessionId/download/:artifact', requireAuth, (req, res) => {
  * Download artifacts as ZIP (optionally filtered by type)
  * Query params:
  *   - filter: 'md' | 'xliff' | 'json' (optional)
+ *
+ * ZIP naming: {slug}-K{chapter}-{sections}{-filter}.zip
+ * Example: efnafraedi-K4-4.1-4.5-md.zip
  */
 router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
   const { sessionId } = req.params;
@@ -580,12 +583,22 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
   }
 
   try {
-    const filterSuffix = filter ? `-${filter}` : '';
+    // Build descriptive ZIP filename
+    const zipFilename = buildZipFilename(sessionData, filter);
+
     res.setHeader('Content-Type', 'application/zip');
-    res.setHeader('Content-Disposition', `attachment; filename=workflow-${sessionId}${filterSuffix}.zip`);
+    res.setHeader('Content-Disposition', `attachment; filename=${zipFilename}`);
 
     const archive = archiver('zip', { zlib: { level: 9 } });
     archive.pipe(res);
+
+    // Identify sections that have split files
+    const sectionsWithSplits = new Set();
+    for (const [type, file] of Object.entries(sessionData.files)) {
+      if (file.part && file.section) {
+        sectionsWithSplits.add(file.section);
+      }
+    }
 
     for (const [type, file] of Object.entries(sessionData.files)) {
       if (!fs.existsSync(file.path)) continue;
@@ -596,6 +609,13 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
         if (filter === 'md' && ext !== '.md') continue;
         if (filter === 'xliff' && ext !== '.xliff' && ext !== '.xlf') continue;
         if (filter === 'json' && ext !== '.json') continue;
+      }
+
+      // Exclude full files when split parts exist for that section
+      // Full files have section but no part; split files have both section and part
+      if (file.section && !file.part && sectionsWithSplits.has(file.section)) {
+        // Skip the full file - include only the split parts
+        continue;
       }
 
       archive.file(file.path, { name: file.originalName || path.basename(file.path) });
@@ -611,6 +631,54 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
     });
   }
 });
+
+/**
+ * Build descriptive ZIP filename from session data
+ * Format: {slug}-K{chapter}-{sections}{-filter}.zip
+ * Example: efnafraedi-K4-4.1-4.5-md.zip
+ */
+function buildZipFilename(sessionData, filter) {
+  const { book, chapter, modules } = sessionData;
+
+  // Get book slug from data file
+  let slug = book; // Default to book ID
+  try {
+    const bookDataPath = path.join(__dirname, '..', 'data', `${book}.json`);
+    if (fs.existsSync(bookDataPath)) {
+      const bookData = JSON.parse(fs.readFileSync(bookDataPath, 'utf8'));
+      slug = bookData.slug || book;
+    }
+  } catch (err) {
+    console.warn('Could not load book data for slug:', err.message);
+  }
+
+  // Extract section numbers and determine range
+  const sectionNumbers = [];
+  for (const mod of modules || []) {
+    const section = typeof mod === 'object' ? mod.section : null;
+    if (section && section !== 'intro') {
+      sectionNumbers.push(section);
+    }
+  }
+
+  // Sort sections numerically and get first/last
+  sectionNumbers.sort((a, b) => {
+    const numA = parseFloat(a);
+    const numB = parseFloat(b);
+    return numA - numB;
+  });
+
+  let sectionRange = '';
+  if (sectionNumbers.length > 0) {
+    const first = sectionNumbers[0];
+    const last = sectionNumbers[sectionNumbers.length - 1];
+    sectionRange = first === last ? `-${first}` : `-${first}-${last}`;
+  }
+
+  const filterSuffix = filter ? `-${filter}` : '';
+
+  return `${slug}-K${chapter}${sectionRange}${filterSuffix}.zip`;
+}
 
 /**
  * POST /api/workflow/:sessionId/advance
