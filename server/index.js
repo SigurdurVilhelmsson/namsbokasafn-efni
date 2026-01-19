@@ -53,6 +53,13 @@ const adminRoutes = require('./routes/admin');
 const sectionsRoutes = require('./routes/sections');
 const localizationRoutes = require('./routes/localization');
 
+// Import Phase 5 routes (Terminology & Suggestions)
+const terminologyRoutes = require('./routes/terminology');
+const suggestionsRoutes = require('./routes/suggestions');
+
+// Import Phase 6 routes (Publication)
+const publicationRoutes = require('./routes/publication');
+
 // Configuration
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -100,6 +107,13 @@ app.use('/api/activity', activityRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/sections', sectionsRoutes);
 app.use('/api/localization', localizationRoutes);
+
+// Phase 5 API Routes (Terminology & Suggestions)
+app.use('/api/terminology', terminologyRoutes);
+app.use('/api/suggestions', suggestionsRoutes);
+
+// Phase 6 API Routes (Publication)
+app.use('/api/publication', publicationRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -167,7 +181,14 @@ app.get('/api', (req, res) => {
       'POST /api/admin/books/register': 'Register book for translation',
       'GET /api/admin/books': 'List registered books',
       'GET /api/admin/books/:slug': 'Get book details with chapters',
-      'POST /api/admin/migrate': 'Run database migrations'
+      'POST /api/admin/migrate': 'Run database migrations',
+      // Phase 6 - Publication
+      'GET /api/publication/:bookSlug/:chapter/status': 'Get publication status',
+      'GET /api/publication/:bookSlug/:chapter/readiness': 'Check readiness for each track',
+      'POST /api/publication/:bookSlug/:chapter/mt-preview': 'Publish MT preview (HEAD_EDITOR)',
+      'POST /api/publication/:bookSlug/:chapter/faithful': 'Publish faithful translation (HEAD_EDITOR)',
+      'POST /api/publication/:bookSlug/:chapter/localized': 'Publish localized content (HEAD_EDITOR)',
+      'GET /api/publication/:bookSlug/overview': 'Get publication overview for book'
     },
     documentation: 'https://github.com/SigurdurVilhelmsson/namsbokasafn-efni'
   });

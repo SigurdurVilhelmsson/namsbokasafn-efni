@@ -167,22 +167,78 @@ node tools/prepare-for-align.js \
 
 ### Step 5: Publication
 
-**Goal:** Prepare web-ready content.
+**Goal:** Prepare web-ready content with appropriate labeling.
 
-**Process:**
-1. Apply equations from `5-1-equations.json` if needed
-2. Add frontmatter
-3. Copy to publication folder
+The publication system has **three tracks** that replace each other as the translation matures:
+
+| Track | When | Label | Purpose |
+|-------|------|-------|---------|
+| `mt-preview` | After MT upload | Vélþýðing - ekki yfirfarin | Let readers access content immediately |
+| `faithful` | After Pass 1 approved | Ritstýrð þýðing | Human-verified faithful translation |
+| `localized` | After Pass 2 approved | Staðfærð útgáfa | Culturally adapted for Iceland |
+
+**Important:** All publications require **HEAD_EDITOR** approval.
+
+#### Option A: Via Web UI (Recommended)
+
+1. Go to the workflow UI at `http://localhost:3000/workflow`
+2. Select the book and chapter
+3. Review publication readiness
+4. Click "Publish MT Preview" / "Publish Faithful" / "Publish Localized"
+
+#### Option B: Via API
 
 ```bash
-# Add frontmatter to faithful translation
-node tools/add-frontmatter.js \
-  --input books/efnafraedi/03-faithful/ch05/5-1.is.md \
-  --output books/efnafraedi/05-publication/faithful/chapters/05/5-1.md \
-  --title "Grundvallaratriði orku" \
-  --section "5.1" \
-  --version faithful
+# Check publication status
+curl http://localhost:3000/api/publication/efnafraedi/5/status
+
+# Check readiness for each track
+curl http://localhost:3000/api/publication/efnafraedi/5/readiness
+
+# Publish MT preview (requires HEAD_EDITOR auth)
+curl -X POST http://localhost:3000/api/publication/efnafraedi/5/mt-preview
+
+# Publish faithful translation (requires HEAD_EDITOR auth)
+curl -X POST http://localhost:3000/api/publication/efnafraedi/5/faithful
+
+# Publish localized content (requires HEAD_EDITOR auth)
+curl -X POST http://localhost:3000/api/publication/efnafraedi/5/localized
 ```
+
+#### Option C: Via CLI Tool
+
+```bash
+# Add frontmatter with MT preview label
+node tools/add-frontmatter.js \
+  books/efnafraedi/02-mt-output/ch05/5-1.is.md \
+  --mt-preview \
+  --title "Grundvallaratriði orku"
+
+# Add frontmatter with faithful label
+node tools/add-frontmatter.js \
+  books/efnafraedi/03-faithful/ch05/5-1.is.md \
+  --track faithful \
+  --title "Grundvallaratriði orku"
+
+# Add frontmatter with localized label
+node tools/add-frontmatter.js \
+  books/efnafraedi/04-localized/ch05/5-1.is.md \
+  --track localized \
+  --title "Grundvallaratriði orku"
+```
+
+#### MT Preview Warning Banner
+
+When MT preview is published, the content automatically includes a warning banner:
+
+```markdown
+:::warning{title="Vélþýðing"}
+Þessi texti er vélþýddur og hefur ekki verið yfirfarinn af ritstjóra.
+Villur kunna að vera til staðar. Ritstýrð útgáfa er í vinnslu.
+:::
+```
+
+This banner is removed when faithful translation is published.
 
 **Published at:** [efnafraedi.app](https://efnafraedi.app)
 
@@ -213,10 +269,16 @@ books/efnafraedi/
 ├── tm/                     # 🔒 READ ONLY - TMX from Matecat Align
 │   └── ch05/
 │       └── 5-1.tmx             # Step 4 output (human-verified TM)
-├── 04-localized/           # ✏️ Pass 2 output (future)
+├── 04-localized/           # ✏️ Pass 2 output
+│   └── ch05/
+│       └── 5-1.is.md           # Localized translation
 └── 05-publication/         # ✏️ Web-ready content
-    └── faithful/
-        └── chapters/05/        # Step 5 output
+    ├── mt-preview/             # Unreviewed MT (with warning banner)
+    │   └── chapters/05/
+    ├── faithful/               # Human-reviewed translations
+    │   └── chapters/05/
+    └── localized/              # Culturally adapted content
+        └── chapters/05/        # Step 5 final output
 ```
 
 ---
@@ -297,9 +359,18 @@ This is documented separately in [pass2-localization.md](../editorial/pass2-loca
 # Step 1: Generate EN markdown from CNXML
 node tools/pipeline-runner.js m68724 --output-dir books/efnafraedi/02-for-mt/ch05
 
-# Step 2: Upload to malstadur.is (manual)
+# Step 2: Upload to malstadur.is (manual), save to 02-mt-output/
+
+# Step 2b (Optional): Publish MT preview immediately
+curl -X POST http://localhost:3000/api/publication/efnafraedi/5/mt-preview
+# or via CLI:
+node tools/add-frontmatter.js \
+  books/efnafraedi/02-mt-output/ch05/5-1.is.md --mt-preview
 
 # Step 3: Review MT output, save to 03-faithful/ (manual)
+
+# Step 3b: Publish faithful translation (replaces MT preview)
+curl -X POST http://localhost:3000/api/publication/efnafraedi/5/faithful
 
 # Step 4: Prepare for Matecat Align
 node tools/prepare-for-align.js \
@@ -308,9 +379,18 @@ node tools/prepare-for-align.js \
   --output-dir books/efnafraedi/for-align/ch05
 # Then upload to Matecat Align (manual)
 
-# Step 5: Publish
-node tools/add-frontmatter.js \
-  --input books/efnafraedi/03-faithful/ch05/5-1.is.md \
-  --output books/efnafraedi/05-publication/faithful/chapters/05/5-1.md \
-  --title "Grundvallaratriði orku" --section "5.1" --version faithful
+# Step 5 (Optional): Localize and publish (replaces faithful)
+# After Pass 2 review is complete:
+curl -X POST http://localhost:3000/api/publication/efnafraedi/5/localized
 ```
+
+## API Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/api/publication/:book/:chapter/status` | GET | Publication status for all tracks |
+| `/api/publication/:book/:chapter/readiness` | GET | Check what's ready to publish |
+| `/api/publication/:book/:chapter/mt-preview` | POST | Publish MT preview (HEAD_EDITOR) |
+| `/api/publication/:book/:chapter/faithful` | POST | Publish faithful (HEAD_EDITOR) |
+| `/api/publication/:book/:chapter/localized` | POST | Publish localized (HEAD_EDITOR) |
+| `/api/publication/:book/overview` | GET | Overview of all chapters |

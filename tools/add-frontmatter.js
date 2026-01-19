@@ -23,19 +23,31 @@
  *   --section N       Section number (auto-detected if not specified)
  *   --book ID         Book ID (auto-detected if not specified)
  *   --title "Title"   Override title (default: extracted from first heading)
+ *   --track TRACK     Publication track: mt-preview, faithful, localized
+ *   --mt-preview      Shortcut for --track mt-preview
  *   --update          Update existing frontmatter instead of replacing
  *   --dry-run         Show what would be done without writing
  *   --verbose         Show detailed progress
  *   -h, --help        Show help
  */
 
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
+import fs from 'fs';
+import path from 'path';
+import yaml from 'js-yaml';
 
 // ============================================================================
 // Argument Parsing
 // ============================================================================
+
+// Publication track labels (Icelandic)
+const TRACK_LABELS = {
+  'mt-preview': 'Vélþýðing - ekki yfirfarin',
+  'faithful': 'Ritstýrð þýðing',
+  'localized': 'Staðfærð útgáfa'
+};
+
+// Valid publication tracks
+const VALID_TRACKS = ['mt-preview', 'faithful', 'localized'];
 
 function parseArgs(args) {
   const result = {
@@ -46,6 +58,7 @@ function parseArgs(args) {
     section: null,
     book: null,
     title: null,
+    track: null,
     update: false,
     dryRun: false,
     verbose: false,
@@ -84,6 +97,17 @@ function parseArgs(args) {
       if (args[i + 1] && !args[i + 1].startsWith('-')) {
         result.title = args[++i];
       }
+    } else if (arg === '--track') {
+      if (args[i + 1] && !args[i + 1].startsWith('-')) {
+        const track = args[++i];
+        if (VALID_TRACKS.includes(track)) {
+          result.track = track;
+        } else {
+          console.warn(`Warning: Invalid track '${track}'. Valid: ${VALID_TRACKS.join(', ')}`);
+        }
+      }
+    } else if (arg === '--mt-preview') {
+      result.track = 'mt-preview';
     } else if (!arg.startsWith('-')) {
       if (!result.input) {
         result.input = arg;
@@ -110,11 +134,18 @@ Options:
   --section N       Section number (auto-detected from path/filename)
   --book ID         Book ID: efnafraedi, liffraedi (auto-detected from path)
   --title "Title"   Override title (default: extracted from first heading)
+  --track TRACK     Publication track: mt-preview, faithful, localized
+  --mt-preview      Shortcut for --track mt-preview (labels as machine translation)
   --update          Merge with existing frontmatter instead of replacing
   --batch <dir>     Process all .md files in directory
   --dry-run         Show what would be done without writing
   --verbose         Show detailed progress
   -h, --help        Show this help message
+
+Publication Tracks:
+  mt-preview   Vélþýðing - ekki yfirfarin  (unreviewed machine translation)
+  faithful     Ritstýrð þýðing              (human-reviewed linguistic translation)
+  localized    Staðfærð útgáfa              (culturally adapted for Iceland)
 
 Auto-Detection:
   The script automatically detects book, chapter, and section from file paths:
@@ -128,11 +159,17 @@ Examples:
   # Override chapter and section
   node tools/add-frontmatter.js file.md --chapter 3 --section 2
 
+  # Label as MT preview (unreviewed machine translation)
+  node tools/add-frontmatter.js file.md --mt-preview
+
+  # Specify publication track
+  node tools/add-frontmatter.js file.md --track faithful
+
   # Update existing frontmatter (preserve custom fields)
   node tools/add-frontmatter.js file.md --update
 
-  # Batch process all files in a directory
-  node tools/add-frontmatter.js --batch books/efnafraedi/05-publication/chapters/
+  # Batch process all files in a directory with MT preview label
+  node tools/add-frontmatter.js --batch books/efnafraedi/05-publication/mt-preview/ --mt-preview
 
   # Dry run to preview changes
   node tools/add-frontmatter.js file.md --dry-run --verbose
@@ -335,7 +372,8 @@ function generateFrontmatter(options) {
     objectives,
     bookMetadata,
     existingFrontmatter,
-    updateMode
+    updateMode,
+    track
   } = options;
 
   // Start with existing frontmatter if in update mode
@@ -345,6 +383,13 @@ function generateFrontmatter(options) {
   frontmatter.title = title || frontmatter.title || '';
   frontmatter.section = section ? `${chapter}.${section}` : frontmatter.section || '';
   frontmatter.chapter = chapter || frontmatter.chapter || 0;
+
+  // Publication track and translation status
+  if (track) {
+    frontmatter['translation-status'] = TRACK_LABELS[track] || track;
+    frontmatter['publication-track'] = track;
+    frontmatter['published-at'] = new Date().toISOString();
+  }
 
   // Optional fields - only add if we have data
   if (objectives && objectives.length > 0) {
@@ -389,7 +434,7 @@ function frontmatterToYaml(frontmatter) {
 // ============================================================================
 
 async function processFile(filePath, options) {
-  const { verbose, dryRun, update } = options;
+  const { verbose, dryRun, update, track } = options;
 
   const absPath = path.resolve(filePath);
 
@@ -453,6 +498,11 @@ async function processFile(filePath, options) {
     console.log(`  Objectives found: ${objectives.length}`);
   }
 
+  // Log track if verbose
+  if (verbose && track) {
+    console.log(`  Track: ${track} (${TRACK_LABELS[track]})`);
+  }
+
   // Generate frontmatter
   const frontmatter = generateFrontmatter({
     title,
@@ -461,7 +511,8 @@ async function processFile(filePath, options) {
     objectives,
     bookMetadata,
     existingFrontmatter: parsed.frontmatter,
-    updateMode: update
+    updateMode: update,
+    track
   });
 
   // Generate output

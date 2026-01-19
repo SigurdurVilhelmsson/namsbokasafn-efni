@@ -84,6 +84,22 @@ router.get('/books', (req, res) => {
 });
 
 /**
+ * GET /terminology
+ * Terminology database page
+ */
+router.get('/terminology', (req, res) => {
+  sendView(res, 'terminology.html');
+});
+
+/**
+ * GET /localization-review
+ * Split-panel localization review page
+ */
+router.get('/localization-review', (req, res) => {
+  sendView(res, 'localization-review.html');
+});
+
+/**
  * Helper to send a view file
  */
 function sendView(res, filename) {

@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orðasafn - Námsbókasafn</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/books">Bækur</a>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/terminology" class="active">Orðasafn</a>
+      <a href="/reviews">Yfirferðir</a>
+      <a href="/status">Staða</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <!-- Search and Filters -->
+    <div class="card">
+      <div class="search-bar">
+        <div class="search-input-wrapper">
+          <i class="fas fa-search"></i>
+          <input type="text" id="search-input" placeholder="Leita að orði (enska eða íslenska)..." autocomplete="off">
+        </div>
+        <button class="btn btn-primary" onclick="searchTerms()">
+          <i class="fas fa-search"></i> Leita
+        </button>
+        <button class="btn btn-secondary" onclick="showAddModal()">
+          <i class="fas fa-plus"></i> Bæta við orði
+        </button>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <label>Flokkur:</label>
+          <select id="filter-category" onchange="searchTerms()">
+            <option value="">Allir flokkar</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Staða:</label>
+          <select id="filter-status" onchange="searchTerms()">
+            <option value="">Allar stöður</option>
+            <option value="approved">Samþykkt</option>
+            <option value="proposed">Í bið</option>
+            <option value="disputed">Til umræðu</option>
+            <option value="needs_review">Þarf yfirferð</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Uppruni:</label>
+          <select id="filter-source" onchange="searchTerms()">
+            <option value="">Allir upprunar</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card">
+        <div class="stat-value" id="stat-total">-</div>
+        <div class="stat-label">Samtals</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value stat-success" id="stat-approved">-</div>
+        <div class="stat-label">Samþykkt</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value stat-warning" id="stat-proposed">-</div>
+        <div class="stat-label">Í bið</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value stat-error" id="stat-disputed">-</div>
+        <div class="stat-label">Til umræðu</div>
+      </div>
+    </div>
+
+    <!-- Review Queue Alert -->
+    <div class="alert alert-warning" id="review-queue-alert" style="display: none;">
+      <i class="fas fa-exclamation-triangle"></i>
+      <span id="review-queue-count"></span> orð bíða yfirferðar.
+      <a href="#" onclick="showReviewQueue()">Skoða</a>
+    </div>
+
+    <!-- Terms List -->
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title" id="results-title">Orðasafn</h2>
+        <div class="card-actions">
+          <button class="btn btn-secondary btn-small" onclick="showImportModal()">
+            <i class="fas fa-file-import"></i> Flytja inn
+          </button>
+        </div>
+      </div>
+      <div class="terms-table-wrapper">
+        <table class="terms-table">
+          <thead>
+            <tr>
+              <th>Enska</th>
+              <th>Íslenska</th>
+              <th>Flokkur</th>
+              <th>Staða</th>
+              <th>Uppruni</th>
+              <th>Aðgerðir</th>
+            </tr>
+          </thead>
+          <tbody id="terms-body">
+            <tr><td colspan="6" class="loading">Hleður...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </main>
+
+  <!-- Add/Edit Term Modal -->
+  <div class="modal" id="term-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Bæta við orði</h3>
+        <button class="btn-close" onclick="closeModal('term-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Enska *</label>
+          <input type="text" id="term-english" class="form-input" placeholder="English term">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Íslenska *</label>
+          <input type="text" id="term-icelandic" class="form-input" placeholder="Íslenskt orð">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Aðrar þýðingar</label>
+          <input type="text" id="term-alternatives" class="form-input" placeholder="Aðskilið með kommu">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Flokkur</label>
+            <select id="term-category" class="form-select"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Uppruni</label>
+            <select id="term-source" class="form-select"></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Athugasemdir</label>
+          <textarea id="term-notes" class="form-textarea" rows="3" placeholder="Viðbótarupplýsingar..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('term-modal')">Hætta við</button>
+        <button class="btn btn-primary" id="save-term-btn" onclick="saveTerm()">Vista</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Term Detail Modal -->
+  <div class="modal" id="detail-modal">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h3 id="detail-title">Orð</h3>
+        <button class="btn-close" onclick="closeModal('detail-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-grid">
+          <div class="detail-item">
+            <label>Enska:</label>
+            <span id="detail-english"></span>
+          </div>
+          <div class="detail-item">
+            <label>Íslenska:</label>
+            <span id="detail-icelandic"></span>
+          </div>
+          <div class="detail-item">
+            <label>Aðrar þýðingar:</label>
+            <span id="detail-alternatives"></span>
+          </div>
+          <div class="detail-item">
+            <label>Flokkur:</label>
+            <span id="detail-category"></span>
+          </div>
+          <div class="detail-item">
+            <label>Uppruni:</label>
+            <span id="detail-source"></span>
+          </div>
+          <div class="detail-item">
+            <label>Staða:</label>
+            <span id="detail-status"></span>
+          </div>
+          <div class="detail-item detail-full">
+            <label>Athugasemdir:</label>
+            <span id="detail-notes"></span>
+          </div>
+        </div>
+
+        <!-- Discussion Section -->
+        <div class="discussion-section">
+          <h4>Umræður</h4>
+          <div id="discussions-list" class="discussions-list"></div>
+          <div class="add-discussion">
+            <textarea id="new-discussion" class="form-textarea" rows="2" placeholder="Bæta við athugasemd..."></textarea>
+            <input type="text" id="proposed-translation" class="form-input" placeholder="Leggja til aðra þýðingu (valfrjálst)">
+            <button class="btn btn-secondary" onclick="addDiscussion()">
+              <i class="fas fa-comment"></i> Bæta við athugasemd
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('detail-modal')">Loka</button>
+        <button class="btn btn-warning" id="dispute-btn" onclick="disputeTerm()">
+          <i class="fas fa-flag"></i> Senda til umræðu
+        </button>
+        <button class="btn btn-success" id="approve-btn" onclick="approveTerm()">
+          <i class="fas fa-check"></i> Samþykkja
+        </button>
+        <button class="btn btn-primary" onclick="editTerm()">
+          <i class="fas fa-edit"></i> Breyta
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Modal -->
+  <div class="modal" id="import-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Flytja inn orð</h3>
+        <button class="btn-close" onclick="closeModal('import-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="import-options">
+          <div class="import-option" onclick="importExistingGlossary()">
+            <i class="fas fa-book"></i>
+            <h4>Núverandi orðalisti</h4>
+            <p>Flytja inn terminology-en-is.csv úr books/efnafraedi/glossary/</p>
+          </div>
+          <div class="import-option" onclick="showCsvUpload()">
+            <i class="fas fa-file-csv"></i>
+            <h4>CSV skrá</h4>
+            <p>Hlaða upp CSV skrá með english, icelandic dálkum</p>
+          </div>
+          <div class="import-option" onclick="showExcelUpload()">
+            <i class="fas fa-file-excel"></i>
+            <h4>Excel skrá</h4>
+            <p>Flytja inn frá Efnafélaginu (Excel snið)</p>
+          </div>
+          <div class="import-option" onclick="importKeyTerms()">
+            <i class="fas fa-key"></i>
+            <h4>Lykilorð úr köflum</h4>
+            <p>Draga út orð úr key-terms skrám</p>
+          </div>
+        </div>
+
+        <div id="file-upload-section" style="display: none;">
+          <input type="file" id="import-file" accept=".csv,.xlsx,.xls" style="display: none;">
+          <div class="file-drop-zone" id="file-drop-zone">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Dragðu skrá hingað eða <a href="#" onclick="document.getElementById('import-file').click()">veldu skrá</a></p>
+            <span id="selected-file-name"></span>
+          </div>
+          <button class="btn btn-primary" onclick="uploadFile()" id="upload-btn" disabled>
+            <i class="fas fa-upload"></i> Hlaða upp
+          </button>
+        </div>
+
+        <div id="import-result" style="display: none;"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('import-modal')">Loka</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentUser = null;
+    let currentTermId = null;
+    let categories = [];
+    let sources = [];
+    let currentPage = 0;
+    const pageSize = 50;
+
+    // Initialize
+    async function init() {
+      const authRes = await fetch('/api/auth/me');
+      const authData = await authRes.json();
+      const userEl = document.getElementById('user-info');
+
+      if (!authData.authenticated) {
+        userEl.innerHTML = '<a href="/api/auth/login?redirect=/terminology" class="btn btn-primary">Innskráning</a>';
+        return;
+      }
+
+      currentUser = authData.user;
+      userEl.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
+
+      // Load categories and sources
+      await loadMetadata();
+
+      // Load stats
+      await loadStats();
+
+      // Check review queue
+      await checkReviewQueue();
+
+      // Initial search
+      await searchTerms();
+
+      // Setup event listeners
+      document.getElementById('search-input').addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') searchTerms();
+      });
+    }
+
+    async function loadMetadata() {
+      const res = await fetch('/api/terminology/categories');
+      const data = await res.json();
+
+      categories = data.categories;
+      sources = data.sources;
+
+      // Populate filter dropdowns
+      const categorySelect = document.getElementById('filter-category');
+      const sourceSelect = document.getElementById('filter-source');
+      const termCategorySelect = document.getElementById('term-category');
+      const termSourceSelect = document.getElementById('term-source');
+
+      categories.forEach(cat => {
+        categorySelect.innerHTML += '<option value="' + cat + '">' + formatCategory(cat) + '</option>';
+        termCategorySelect.innerHTML += '<option value="' + cat + '">' + formatCategory(cat) + '</option>';
+      });
+
+      sources.forEach(src => {
+        sourceSelect.innerHTML += '<option value="' + src + '">' + formatSource(src) + '</option>';
+        termSourceSelect.innerHTML += '<option value="' + src + '">' + formatSource(src) + '</option>';
+      });
+    }
+
+    async function loadStats() {
+      const res = await fetch('/api/terminology/stats');
+      const stats = await res.json();
+
+      document.getElementById('stat-total').textContent = stats.total;
+      document.getElementById('stat-approved').textContent = stats.byStatus.approved;
+      document.getElementById('stat-proposed').textContent = stats.byStatus.proposed;
+      document.getElementById('stat-disputed').textContent = stats.byStatus.disputed + stats.byStatus.needsReview;
+    }
+
+    async function checkReviewQueue() {
+      if (!currentUser || !['admin', 'head_editor', 'editor'].includes(currentUser.role)) return;
+
+      const res = await fetch('/api/terminology/review-queue?limit=1');
+      const data = await res.json();
+
+      if (data.terms && data.terms.length > 0) {
+        document.getElementById('review-queue-count').textContent = data.terms.length + '+';
+        document.getElementById('review-queue-alert').style.display = 'flex';
+      }
+    }
+
+    async function searchTerms() {
+      const query = document.getElementById('search-input').value;
+      const category = document.getElementById('filter-category').value;
+      const status = document.getElementById('filter-status').value;
+
+      const params = new URLSearchParams({
+        limit: pageSize,
+        offset: currentPage * pageSize
+      });
+
+      if (query) params.set('q', query);
+      if (category) params.set('category', category);
+      if (status) params.set('status', status);
+
+      const tbody = document.getElementById('terms-body');
+      tbody.innerHTML = '<tr><td colspan="6" class="loading">Hleður...</td></tr>';
+
+      try {
+        const res = await fetch('/api/terminology?' + params);
+        const data = await res.json();
+
+        if (data.terms.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="6" class="empty">Engin orð fundust.</td></tr>';
+          document.getElementById('results-title').textContent = 'Engin niðurstöður';
+          return;
+        }
+
+        document.getElementById('results-title').textContent =
+          'Niðurstöður (' + data.pagination.total + ' orð)';
+
+        tbody.innerHTML = data.terms.map(term => `
+          <tr onclick="showTermDetail(${term.id})">
+            <td class="term-english">${escapeHtml(term.english)}</td>
+            <td class="term-icelandic">${escapeHtml(term.icelandic)}</td>
+            <td>${formatCategory(term.category)}</td>
+            <td><span class="status-badge status-${term.status}">${formatStatus(term.status)}</span></td>
+            <td>${formatSource(term.source)}</td>
+            <td class="actions">
+              <button class="btn btn-icon" onclick="event.stopPropagation(); showTermDetail(${term.id})" title="Skoða">
+                <i class="fas fa-eye"></i>
+              </button>
+            </td>
+          </tr>
+        `).join('');
+
+        // Update pagination
+        renderPagination(data.pagination);
+
+      } catch (err) {
+        tbody.innerHTML = '<tr><td colspan="6" class="error">Villa: ' + err.message + '</td></tr>';
+      }
+    }
+
+    function renderPagination(pagination) {
+      const totalPages = Math.ceil(pagination.total / pagination.limit);
+      const currentPageNum = Math.floor(pagination.offset / pagination.limit);
+
+      if (totalPages <= 1) {
+        document.getElementById('pagination').innerHTML = '';
+        return;
+      }
+
+      let html = '<button class="btn btn-secondary btn-small" onclick="goToPage(' + (currentPageNum - 1) + ')" ' +
+                 (currentPageNum === 0 ? 'disabled' : '') + '><i class="fas fa-chevron-left"></i></button>';
+
+      html += '<span class="page-info">Síða ' + (currentPageNum + 1) + ' af ' + totalPages + '</span>';
+
+      html += '<button class="btn btn-secondary btn-small" onclick="goToPage(' + (currentPageNum + 1) + ')" ' +
+              (currentPageNum >= totalPages - 1 ? 'disabled' : '') + '><i class="fas fa-chevron-right"></i></button>';
+
+      document.getElementById('pagination').innerHTML = html;
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      searchTerms();
+    }
+
+    async function showTermDetail(id) {
+      currentTermId = id;
+
+      const res = await fetch('/api/terminology/' + id);
+      const data = await res.json();
+      const term = data.term;
+
+      document.getElementById('detail-title').textContent = term.english;
+      document.getElementById('detail-english').textContent = term.english;
+      document.getElementById('detail-icelandic').textContent = term.icelandic;
+      document.getElementById('detail-alternatives').textContent = term.alternatives?.join(', ') || '-';
+      document.getElementById('detail-category').textContent = formatCategory(term.category);
+      document.getElementById('detail-source').textContent = formatSource(term.source);
+      document.getElementById('detail-notes').textContent = term.notes || '-';
+
+      const statusEl = document.getElementById('detail-status');
+      statusEl.innerHTML = '<span class="status-badge status-' + term.status + '">' + formatStatus(term.status) + '</span>';
+
+      // Render discussions
+      const discussionsList = document.getElementById('discussions-list');
+      if (term.discussions && term.discussions.length > 0) {
+        discussionsList.innerHTML = term.discussions.map(d => `
+          <div class="discussion-item">
+            <div class="discussion-meta">
+              <span class="discussion-user">${escapeHtml(d.username)}</span>
+              <span class="discussion-date">${formatDate(d.created_at)}</span>
+            </div>
+            <div class="discussion-content">${escapeHtml(d.comment)}</div>
+            ${d.proposed_translation ? '<div class="discussion-proposal">Tillaga: <strong>' + escapeHtml(d.proposed_translation) + '</strong></div>' : ''}
+          </div>
+        `).join('');
+      } else {
+        discussionsList.innerHTML = '<p class="empty">Engar athugasemdir enn.</p>';
+      }
+
+      // Show/hide action buttons based on user role and term status
+      const approveBtn = document.getElementById('approve-btn');
+      const disputeBtn = document.getElementById('dispute-btn');
+
+      approveBtn.style.display = 'none';
+      disputeBtn.style.display = 'none';
+
+      if (currentUser) {
+        if (['admin', 'head_editor'].includes(currentUser.role) && term.status !== 'approved') {
+          approveBtn.style.display = 'inline-flex';
+        }
+        if (term.status !== 'disputed') {
+          disputeBtn.style.display = 'inline-flex';
+        }
+      }
+
+      document.getElementById('detail-modal').style.display = 'flex';
+    }
+
+    function showAddModal() {
+      currentTermId = null;
+      document.getElementById('modal-title').textContent = 'Bæta við orði';
+      document.getElementById('term-english').value = '';
+      document.getElementById('term-icelandic').value = '';
+      document.getElementById('term-alternatives').value = '';
+      document.getElementById('term-category').value = 'other';
+      document.getElementById('term-source').value = 'manual';
+      document.getElementById('term-notes').value = '';
+      document.getElementById('term-modal').style.display = 'flex';
+    }
+
+    function editTerm() {
+      closeModal('detail-modal');
+      // Load term data for editing
+      fetch('/api/terminology/' + currentTermId)
+        .then(res => res.json())
+        .then(data => {
+          const term = data.term;
+          document.getElementById('modal-title').textContent = 'Breyta orði';
+          document.getElementById('term-english').value = term.english;
+          document.getElementById('term-english').disabled = true; // Can't change English term
+          document.getElementById('term-icelandic').value = term.icelandic;
+          document.getElementById('term-alternatives').value = term.alternatives?.join(', ') || '';
+          document.getElementById('term-category').value = term.category;
+          document.getElementById('term-source').value = term.source;
+          document.getElementById('term-notes').value = term.notes || '';
+          document.getElementById('term-modal').style.display = 'flex';
+        });
+    }
+
+    async function saveTerm() {
+      const english = document.getElementById('term-english').value.trim();
+      const icelandic = document.getElementById('term-icelandic').value.trim();
+      const alternatives = document.getElementById('term-alternatives').value
+        .split(',').map(s => s.trim()).filter(s => s);
+      const category = document.getElementById('term-category').value;
+      const source = document.getElementById('term-source').value;
+      const notes = document.getElementById('term-notes').value.trim();
+
+      if (!english || !icelandic) {
+        alert('Enska og íslenska eru nauðsynleg');
+        return;
+      }
+
+      const body = { english, icelandic, category, source, notes };
+      if (alternatives.length > 0) body.alternatives = alternatives;
+
+      try {
+        const url = currentTermId ? '/api/terminology/' + currentTermId : '/api/terminology';
+        const method = currentTermId ? 'PUT' : 'POST';
+
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
+        const data = await res.json();
+
+        if (data.success || data.term) {
+          closeModal('term-modal');
+          document.getElementById('term-english').disabled = false;
+          searchTerms();
+          loadStats();
+        } else {
+          alert('Villa: ' + (data.message || 'Gat ekki vistað'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function approveTerm() {
+      if (!confirm('Ertu viss um að þú viljir samþykkja þetta orð?')) return;
+
+      try {
+        const res = await fetch('/api/terminology/' + currentTermId + '/approve', { method: 'POST' });
+        const data = await res.json();
+
+        if (data.success) {
+          closeModal('detail-modal');
+          searchTerms();
+          loadStats();
+        } else {
+          alert('Villa: ' + data.message);
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function disputeTerm() {
+      const comment = prompt('Hvers vegna vilt þú senda þetta orð til umræðu?');
+      if (!comment) return;
+
+      try {
+        const res = await fetch('/api/terminology/' + currentTermId + '/dispute', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ comment })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          showTermDetail(currentTermId); // Refresh
+          searchTerms();
+          loadStats();
+        } else {
+          alert('Villa: ' + data.message);
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function addDiscussion() {
+      const comment = document.getElementById('new-discussion').value.trim();
+      const proposedTranslation = document.getElementById('proposed-translation').value.trim();
+
+      if (!comment) {
+        alert('Athugasemd er nauðsynleg');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/terminology/' + currentTermId + '/discuss', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ comment, proposedTranslation: proposedTranslation || undefined })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          document.getElementById('new-discussion').value = '';
+          document.getElementById('proposed-translation').value = '';
+          showTermDetail(currentTermId); // Refresh
+        } else {
+          alert('Villa: ' + data.message);
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function showReviewQueue() {
+      document.getElementById('filter-status').value = 'disputed';
+      searchTerms();
+    }
+
+    function showImportModal() {
+      document.getElementById('file-upload-section').style.display = 'none';
+      document.getElementById('import-result').style.display = 'none';
+      document.getElementById('import-modal').style.display = 'flex';
+    }
+
+    async function importExistingGlossary() {
+      if (!confirm('Flytja inn núverandi orðalista frá books/efnafraedi/glossary/terminology-en-is.csv?')) return;
+
+      try {
+        const res = await fetch('/api/terminology/import/existing-glossary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bookSlug: 'efnafraedi' })
+        });
+
+        const data = await res.json();
+        showImportResult(data);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function importKeyTerms() {
+      if (!confirm('Draga út orð úr key-terms skrám í efnafræði?')) return;
+
+      try {
+        const res = await fetch('/api/terminology/import/key-terms', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bookSlug: 'efnafraedi' })
+        });
+
+        const data = await res.json();
+        showImportResult(data);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    let uploadType = 'csv';
+
+    function showCsvUpload() {
+      uploadType = 'csv';
+      document.getElementById('import-file').accept = '.csv';
+      document.getElementById('file-upload-section').style.display = 'block';
+    }
+
+    function showExcelUpload() {
+      uploadType = 'excel';
+      document.getElementById('import-file').accept = '.xlsx,.xls';
+      document.getElementById('file-upload-section').style.display = 'block';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const fileInput = document.getElementById('import-file');
+      const dropZone = document.getElementById('file-drop-zone');
+
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+          document.getElementById('selected-file-name').textContent = e.target.files[0].name;
+          document.getElementById('upload-btn').disabled = false;
+        }
+      });
+
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('dragover');
+      });
+
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('dragover');
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('dragover');
+        if (e.dataTransfer.files.length > 0) {
+          fileInput.files = e.dataTransfer.files;
+          document.getElementById('selected-file-name').textContent = e.dataTransfer.files[0].name;
+          document.getElementById('upload-btn').disabled = false;
+        }
+      });
+    });
+
+    async function uploadFile() {
+      const fileInput = document.getElementById('import-file');
+      if (!fileInput.files.length) return;
+
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+
+      try {
+        const endpoint = uploadType === 'csv' ? '/api/terminology/import/csv' : '/api/terminology/import/excel';
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await res.json();
+        showImportResult(data);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function showImportResult(data) {
+      const resultEl = document.getElementById('import-result');
+      if (data.success) {
+        resultEl.innerHTML = `
+          <div class="import-success">
+            <i class="fas fa-check-circle"></i>
+            <h4>Innflutningur lokið!</h4>
+            <p>Bætt við: ${data.added}</p>
+            <p>Uppfært: ${data.updated || 0}</p>
+            <p>Sleppt: ${data.skipped}</p>
+          </div>
+        `;
+        searchTerms();
+        loadStats();
+      } else {
+        resultEl.innerHTML = `
+          <div class="import-error">
+            <i class="fas fa-exclamation-circle"></i>
+            <h4>Villa við innflutning</h4>
+            <p>${data.message || 'Óþekkt villa'}</p>
+          </div>
+        `;
+      }
+      resultEl.style.display = 'block';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    // Utility functions
+    function formatCategory(cat) {
+      const names = {
+        'fundamental': 'Grunnhugtök',
+        'bonding': 'Efnatengi',
+        'reactions': 'Efnahvörf',
+        'solutions': 'Lausnir',
+        'acids-bases': 'Sýrur og basar',
+        'periodic-table': 'Lotukerfi',
+        'structure': 'Bygging',
+        'states': 'Efnisástand',
+        'properties': 'Eiginleikar',
+        'changes': 'Breytingar',
+        'measurements': 'Mælingar',
+        'concepts': 'Hugtök',
+        'constants': 'Fastar',
+        'units': 'Einingar',
+        'other': 'Annað'
+      };
+      return names[cat] || cat;
+    }
+
+    function formatSource(src) {
+      const names = {
+        'idordabankinn': 'Íðorðabankinn',
+        'chemistry-association': 'Efnafélagið',
+        'chapter-glossary': 'Kaflaorðasafn',
+        'manual': 'Handvirkt',
+        'imported-csv': 'CSV innflutningur',
+        'imported-excel': 'Excel innflutningur'
+      };
+      return names[src] || src;
+    }
+
+    function formatStatus(status) {
+      const names = {
+        'approved': 'Samþykkt',
+        'proposed': 'Í bið',
+        'disputed': 'Til umræðu',
+        'needs_review': 'Þarf yfirferð'
+      };
+      return names[status] || status;
+    }
+
+    function formatDate(dateStr) {
+      return new Date(dateStr).toLocaleDateString('is-IS', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    init();
+  </script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
+
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; font-weight: 600; }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
+    .header nav a.active { color: var(--primary); font-weight: 500; }
+    .user-info { display: flex; align-items: center; gap: 0.5rem; }
+    .user-info img { width: 28px; height: 28px; border-radius: 50%; }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; }
+
+    .search-bar { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .search-input-wrapper { flex: 1; position: relative; }
+    .search-input-wrapper i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--gray-500); }
+    .search-input-wrapper input { width: 100%; padding: 0.75rem 1rem 0.75rem 2.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 1rem; }
+    .search-input-wrapper input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+
+    .filters { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .filter-group { display: flex; align-items: center; gap: 0.5rem; }
+    .filter-group label { font-size: 0.875rem; color: var(--gray-700); }
+    .filter-group select { padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .stat-card { background: white; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-align: center; }
+    .stat-value { font-size: 2rem; font-weight: 700; color: var(--gray-900); }
+    .stat-value.stat-success { color: var(--success); }
+    .stat-value.stat-warning { color: var(--warning); }
+    .stat-value.stat-error { color: var(--error); }
+    .stat-label { font-size: 0.875rem; color: var(--gray-500); }
+
+    .alert { padding: 0.75rem 1rem; border-radius: 0.375rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
+    .alert-warning { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .alert a { color: inherit; font-weight: 500; }
+
+    .terms-table-wrapper { overflow-x: auto; }
+    .terms-table { width: 100%; border-collapse: collapse; }
+    .terms-table th, .terms-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
+    .terms-table th { background: var(--gray-50); font-weight: 600; font-size: 0.875rem; color: var(--gray-700); }
+    .terms-table tr { cursor: pointer; }
+    .terms-table tr:hover { background: var(--gray-50); }
+    .term-english { font-weight: 500; }
+    .term-icelandic { color: var(--primary); }
+
+    .status-badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 500; }
+    .status-approved { background: #dcfce7; color: #166534; }
+    .status-proposed { background: #dbeafe; color: #1e40af; }
+    .status-disputed { background: #fee2e2; color: #991b1b; }
+    .status-needs_review { background: #fef3c7; color: #92400e; }
+
+    .loading, .empty, .error { text-align: center; padding: 2rem; color: var(--gray-500); }
+    .error { color: var(--error); }
+
+    .pagination { display: flex; justify-content: center; align-items: center; gap: 1rem; padding-top: 1rem; }
+    .page-info { font-size: 0.875rem; color: var(--gray-500); }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; text-decoration: none; border: none; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-secondary:hover:not(:disabled) { background: var(--gray-50); }
+    .btn-success { background: var(--success); color: white; }
+    .btn-warning { background: var(--warning); color: white; }
+    .btn-small { padding: 0.25rem 0.75rem; font-size: 0.75rem; }
+    .btn-icon { width: 32px; height: 32px; padding: 0; justify-content: center; background: transparent; border: none; color: var(--gray-500); }
+    .btn-icon:hover { color: var(--primary); background: var(--gray-100); }
+    .btn-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); }
+
+    .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: white; border-radius: 0.5rem; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; }
+    .modal-large { max-width: 700px; }
+    .modal-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; }
+    .modal-header h3 { font-size: 1.125rem; font-weight: 600; }
+    .modal-body { padding: 1.5rem; }
+    .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--gray-200); display: flex; justify-content: flex-end; gap: 0.75rem; }
+
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-input, .form-select, .form-textarea { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+    .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .detail-item label { font-size: 0.75rem; color: var(--gray-500); display: block; margin-bottom: 0.25rem; }
+    .detail-item span { font-size: 0.875rem; }
+    .detail-full { grid-column: span 2; }
+
+    .discussion-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-200); }
+    .discussion-section h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 1rem; }
+    .discussions-list { max-height: 200px; overflow-y: auto; margin-bottom: 1rem; }
+    .discussion-item { padding: 0.75rem; background: var(--gray-50); border-radius: 0.375rem; margin-bottom: 0.5rem; }
+    .discussion-meta { display: flex; gap: 0.5rem; font-size: 0.75rem; margin-bottom: 0.25rem; }
+    .discussion-user { font-weight: 500; }
+    .discussion-date { color: var(--gray-500); }
+    .discussion-content { font-size: 0.875rem; }
+    .discussion-proposal { font-size: 0.75rem; color: var(--primary); margin-top: 0.25rem; }
+    .add-discussion { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .import-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem; }
+    .import-option { padding: 1rem; border: 2px solid var(--gray-200); border-radius: 0.5rem; cursor: pointer; text-align: center; transition: all 0.2s; }
+    .import-option:hover { border-color: var(--primary); background: var(--gray-50); }
+    .import-option i { font-size: 2rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .import-option h4 { font-size: 0.875rem; margin-bottom: 0.25rem; }
+    .import-option p { font-size: 0.75rem; color: var(--gray-500); }
+
+    .file-drop-zone { border: 2px dashed var(--gray-300); border-radius: 0.5rem; padding: 2rem; text-align: center; margin-bottom: 1rem; }
+    .file-drop-zone.dragover { border-color: var(--primary); background: rgba(37, 99, 235, 0.05); }
+    .file-drop-zone i { font-size: 2rem; color: var(--gray-400); margin-bottom: 0.5rem; }
+    .file-drop-zone a { color: var(--primary); cursor: pointer; }
+
+    .import-success, .import-error { text-align: center; padding: 1rem; }
+    .import-success i { color: var(--success); font-size: 2rem; }
+    .import-error i { color: var(--error); font-size: 2rem; }
+
+    @media (max-width: 768px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .search-bar { flex-direction: column; }
+      .filters { flex-direction: column; }
+      .form-row { grid-template-columns: 1fr; }
+      .detail-grid { grid-template-columns: 1fr; }
+      .import-options { grid-template-columns: 1fr; }
+    }
+  </style>
+</body>
+</html>

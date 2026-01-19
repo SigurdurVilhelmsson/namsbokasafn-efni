@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staðfæring - Námsbókasafn</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/books">Bækur</a>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/terminology">Orðasafn</a>
+      <a href="/localization-review" class="active">Staðfæring</a>
+      <a href="/status">Staða</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <!-- Section Selector -->
+    <div class="card" id="section-selector">
+      <h2 class="card-title">Velja kafla til staðfæringar</h2>
+      <div class="selector-row">
+        <div class="form-group">
+          <label class="form-label">Bók</label>
+          <select id="book-select" class="form-select">
+            <option value="">Veldu bók...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kafli</label>
+          <select id="chapter-select" class="form-select" disabled>
+            <option value="">Veldu kafla...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Hluti</label>
+          <select id="section-select" class="form-select" disabled>
+            <option value="">Veldu hluta...</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" id="load-btn" disabled onclick="loadSection()">
+          <i class="fas fa-file-import"></i> Hlaða
+        </button>
+      </div>
+    </div>
+
+    <!-- Review Interface (hidden until section loaded) -->
+    <div id="review-interface" style="display: none;">
+      <!-- Section Header -->
+      <div class="section-header">
+        <div class="section-info">
+          <button class="btn btn-secondary btn-small" onclick="showSelector()">
+            <i class="fas fa-arrow-left"></i> Til baka
+          </button>
+          <h2 id="section-title">Hluti</h2>
+          <span class="section-status" id="section-status"></span>
+        </div>
+        <div class="section-actions">
+          <button class="btn btn-secondary" onclick="scanForSuggestions()">
+            <i class="fas fa-search"></i> Skanna
+          </button>
+          <button class="btn btn-primary" onclick="syncToLog()">
+            <i class="fas fa-sync"></i> Samstilla við skrá
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="stats-bar" id="stats-bar">
+        <div class="stat">
+          <span class="stat-value" id="stat-total">0</span>
+          <span class="stat-label">Tillögur</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value stat-pending" id="stat-pending">0</span>
+          <span class="stat-label">Í bið</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value stat-accepted" id="stat-accepted">0</span>
+          <span class="stat-label">Samþykkt</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value stat-rejected" id="stat-rejected">0</span>
+          <span class="stat-label">Hafnað</span>
+        </div>
+      </div>
+
+      <!-- Split Panel View -->
+      <div class="split-view">
+        <!-- Left Panel: Faithful Translation (Read-only) -->
+        <div class="panel panel-left">
+          <div class="panel-header">
+            <h3><i class="fas fa-file-alt"></i> Trú þýðing</h3>
+            <span class="panel-hint">Lesaðgang</span>
+          </div>
+          <div class="panel-content" id="faithful-content">
+            <p class="placeholder">Engin þýðing hlaðin.</p>
+          </div>
+        </div>
+
+        <!-- Right Panel: Localized Version (Editable) -->
+        <div class="panel panel-right">
+          <div class="panel-header">
+            <h3><i class="fas fa-edit"></i> Staðfærð útgáfa</h3>
+            <span class="panel-hint">Breytanlegt</span>
+          </div>
+          <div class="panel-content" id="localized-content">
+            <p class="placeholder">Engin þýðing hlaðin.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suggestions Panel -->
+      <div class="suggestions-panel">
+        <div class="suggestions-header">
+          <h3><i class="fas fa-lightbulb"></i> Tillögur að staðfæringu</h3>
+          <div class="suggestions-actions">
+            <button class="btn btn-success btn-small" onclick="acceptAllPending()">
+              <i class="fas fa-check-double"></i> Samþykkja allt
+            </button>
+            <button class="btn btn-secondary btn-small" onclick="rejectAllPending()">
+              <i class="fas fa-times"></i> Hafna öllu
+            </button>
+          </div>
+        </div>
+
+        <div class="suggestions-filters">
+          <button class="filter-btn active" data-filter="all" onclick="filterSuggestions('all')">Allt</button>
+          <button class="filter-btn" data-filter="pending" onclick="filterSuggestions('pending')">Í bið</button>
+          <button class="filter-btn" data-filter="accepted" onclick="filterSuggestions('accepted')">Samþykkt</button>
+          <button class="filter-btn" data-filter="rejected" onclick="filterSuggestions('rejected')">Hafnað</button>
+        </div>
+
+        <div class="suggestions-list" id="suggestions-list">
+          <p class="placeholder">Engar tillögur fundust. Smelltu á "Skanna" til að finna staðfæringartækifæri.</p>
+        </div>
+      </div>
+
+      <!-- Localization Log Panel -->
+      <div class="log-panel">
+        <div class="log-header">
+          <h3><i class="fas fa-list"></i> Staðfæringarskrá</h3>
+          <button class="btn btn-secondary btn-small" onclick="addManualLogEntry()">
+            <i class="fas fa-plus"></i> Bæta við
+          </button>
+        </div>
+        <div class="log-list" id="log-list">
+          <p class="placeholder">Engar færslur í skrá.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Edit Suggestion Modal -->
+  <div class="modal" id="edit-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Breyta tillögu</h3>
+        <button class="btn-close" onclick="closeModal('edit-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Upprunalegt</label>
+          <input type="text" id="edit-original" class="form-input" readonly>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tillaga</label>
+          <input type="text" id="edit-suggested" class="form-input" readonly>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Þín breyting</label>
+          <input type="text" id="edit-modified" class="form-input" placeholder="Sláðu inn breytingu...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('edit-modal')">Hætta við</button>
+        <button class="btn btn-primary" onclick="saveModifiedSuggestion()">Vista</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Log Entry Modal -->
+  <div class="modal" id="log-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Bæta við færslu</h3>
+        <button class="btn-close" onclick="closeModal('log-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Tegund</label>
+          <select id="log-type" class="form-select">
+            <option value="unit_conversion">Einingaumreikningur</option>
+            <option value="cultural_adaptation">Menningarleg aðlögun</option>
+            <option value="added_context">Viðbættar skýringar</option>
+            <option value="removed_content">Efni fjarlægt</option>
+            <option value="terminology">Orðanotkun</option>
+            <option value="other">Annað</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Upprunalegt</label>
+          <input type="text" id="log-original" class="form-input" placeholder="Upprunalegur texti...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Breytt í</label>
+          <input type="text" id="log-changed" class="form-input" placeholder="Nýr texti...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ástæða</label>
+          <textarea id="log-reason" class="form-textarea" rows="2" placeholder="Hvers vegna var breytt..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Staðsetning (valfrjálst)</label>
+          <input type="text" id="log-location" class="form-input" placeholder="t.d. Málsgrein 3">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal('log-modal')">Hætta við</button>
+        <button class="btn btn-primary" onclick="saveLogEntry()">Vista</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentUser = null;
+    let currentSectionId = null;
+    let currentSuggestions = [];
+    let currentFilter = 'all';
+    let editingSuggestionId = null;
+
+    // Initialize
+    async function init() {
+      const authRes = await fetch('/api/auth/me');
+      const authData = await authRes.json();
+      const userEl = document.getElementById('user-info');
+
+      if (!authData.authenticated) {
+        userEl.innerHTML = '<a href="/api/auth/login?redirect=/localization-review" class="btn btn-primary">Innskráning</a>';
+        return;
+      }
+
+      currentUser = authData.user;
+      userEl.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
+
+      // Load books
+      await loadBooks();
+
+      // Check URL params
+      const params = new URLSearchParams(window.location.search);
+      const sectionId = params.get('sectionId');
+      if (sectionId) {
+        await loadSectionById(parseInt(sectionId, 10));
+      }
+
+      setupEventListeners();
+    }
+
+    function setupEventListeners() {
+      document.getElementById('book-select').addEventListener('change', async (e) => {
+        const bookSlug = e.target.value;
+        if (bookSlug) {
+          await loadChapters(bookSlug);
+        } else {
+          resetSelectors(['chapter-select', 'section-select']);
+        }
+      });
+
+      document.getElementById('chapter-select').addEventListener('change', async (e) => {
+        const chapterNum = e.target.value;
+        const bookSlug = document.getElementById('book-select').value;
+        if (bookSlug && chapterNum) {
+          await loadSections(bookSlug, chapterNum);
+        } else {
+          resetSelectors(['section-select']);
+        }
+      });
+
+      document.getElementById('section-select').addEventListener('change', () => {
+        const sectionId = document.getElementById('section-select').value;
+        document.getElementById('load-btn').disabled = !sectionId;
+      });
+    }
+
+    async function loadBooks() {
+      try {
+        const res = await fetch('/api/admin/books');
+        const data = await res.json();
+        const select = document.getElementById('book-select');
+
+        data.books.forEach(book => {
+          select.innerHTML += `<option value="${book.slug}">${book.titleIs}</option>`;
+        });
+      } catch (err) {
+        console.error('Failed to load books:', err);
+      }
+    }
+
+    async function loadChapters(bookSlug) {
+      const select = document.getElementById('chapter-select');
+      select.innerHTML = '<option value="">Hleður...</option>';
+      select.disabled = true;
+      resetSelectors(['section-select']);
+
+      try {
+        const res = await fetch('/api/books/' + bookSlug);
+        const data = await res.json();
+
+        select.innerHTML = '<option value="">Veldu kafla...</option>';
+        data.chapters.forEach(ch => {
+          select.innerHTML += `<option value="${ch.chapter}">Kafli ${ch.chapter}: ${ch.titleIs || ch.title}</option>`;
+        });
+        select.disabled = false;
+      } catch (err) {
+        select.innerHTML = '<option value="">Villa</option>';
+      }
+    }
+
+    async function loadSections(bookSlug, chapterNum) {
+      const select = document.getElementById('section-select');
+      select.innerHTML = '<option value="">Hleður...</option>';
+      select.disabled = true;
+
+      try {
+        const res = await fetch(`/api/sections/${bookSlug}/${chapterNum}`);
+        const data = await res.json();
+
+        select.innerHTML = '<option value="">Veldu hluta...</option>';
+        data.sections.forEach(sec => {
+          const status = sec.status === 'localization_in_progress' ? ' (í vinnslu)' :
+                        sec.status === 'faithful_approved' ? ' (tilbúinn)' : '';
+          select.innerHTML += `<option value="${sec.id}">${sec.sectionNum}${status}</option>`;
+        });
+        select.disabled = false;
+      } catch (err) {
+        select.innerHTML = '<option value="">Villa</option>';
+      }
+    }
+
+    function resetSelectors(ids) {
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        el.innerHTML = '<option value="">Veldu...</option>';
+        el.disabled = true;
+      });
+      document.getElementById('load-btn').disabled = true;
+    }
+
+    async function loadSection() {
+      const sectionId = document.getElementById('section-select').value;
+      if (!sectionId) return;
+      await loadSectionById(parseInt(sectionId, 10));
+    }
+
+    async function loadSectionById(sectionId) {
+      currentSectionId = sectionId;
+
+      // Update URL
+      const url = new URL(window.location);
+      url.searchParams.set('sectionId', sectionId);
+      window.history.pushState({}, '', url);
+
+      // Hide selector, show interface
+      document.getElementById('section-selector').style.display = 'none';
+      document.getElementById('review-interface').style.display = 'block';
+
+      try {
+        // Load section info and content
+        const sectionRes = await fetch('/api/localization/' + sectionId);
+        const sectionData = await sectionRes.json();
+
+        document.getElementById('section-title').textContent =
+          `${sectionData.section.sectionNum} - ${sectionData.section.titleEn || 'Hluti'}`;
+        document.getElementById('section-status').textContent = formatStatus(sectionData.section.status);
+
+        // Load content for panels
+        await loadPanelContent(sectionData.section);
+
+        // Load suggestions
+        await loadSuggestions();
+
+        // Load log entries
+        if (sectionData.log && sectionData.log.entries) {
+          renderLogEntries(sectionData.log.entries);
+        }
+
+      } catch (err) {
+        console.error('Failed to load section:', err);
+        alert('Villa við að hlaða hluta: ' + err.message);
+      }
+    }
+
+    async function loadPanelContent(section) {
+      // Load faithful translation (left panel)
+      const faithfulEl = document.getElementById('faithful-content');
+
+      try {
+        const res = await fetch(`/api/editor/${section.bookSlug}/${section.chapterNum}/${section.sectionNum}`);
+        const data = await res.json();
+
+        if (data.content && data.content.is) {
+          faithfulEl.innerHTML = formatMarkdownPreview(data.content.is);
+        } else {
+          faithfulEl.innerHTML = '<p class="placeholder">Trú þýðing ekki tiltæk.</p>';
+        }
+      } catch {
+        faithfulEl.innerHTML = '<p class="placeholder">Villa við að hlaða þýðingu.</p>';
+      }
+
+      // For now, copy to localized panel (in real implementation, load from 04-localized)
+      const localizedEl = document.getElementById('localized-content');
+      localizedEl.innerHTML = faithfulEl.innerHTML;
+    }
+
+    async function loadSuggestions() {
+      try {
+        const res = await fetch('/api/suggestions/' + currentSectionId);
+        const data = await res.json();
+
+        currentSuggestions = data.suggestions || [];
+        updateStats(data.stats);
+        renderSuggestions();
+
+      } catch (err) {
+        console.error('Failed to load suggestions:', err);
+        document.getElementById('suggestions-list').innerHTML =
+          '<p class="error">Villa við að hlaða tillögum.</p>';
+      }
+    }
+
+    function updateStats(stats) {
+      document.getElementById('stat-total').textContent = stats?.total || 0;
+      document.getElementById('stat-pending').textContent = stats?.byStatus?.pending || 0;
+      document.getElementById('stat-accepted').textContent =
+        (stats?.byStatus?.accepted || 0) + (stats?.byStatus?.modified || 0);
+      document.getElementById('stat-rejected').textContent = stats?.byStatus?.rejected || 0;
+    }
+
+    function renderSuggestions() {
+      const list = document.getElementById('suggestions-list');
+
+      const filtered = currentFilter === 'all'
+        ? currentSuggestions
+        : currentSuggestions.filter(s => {
+            if (currentFilter === 'accepted') {
+              return s.status === 'accepted' || s.status === 'modified';
+            }
+            return s.status === currentFilter;
+          });
+
+      if (filtered.length === 0) {
+        list.innerHTML = '<p class="placeholder">Engar tillögur í þessum flokki.</p>';
+        return;
+      }
+
+      list.innerHTML = filtered.map(s => `
+        <div class="suggestion-item suggestion-${s.status}" data-id="${s.id}">
+          <div class="suggestion-type">
+            <span class="type-badge type-${s.type}">${formatType(s.type)}</span>
+            <span class="line-number">Lína ${s.lineNumber}</span>
+          </div>
+          <div class="suggestion-content">
+            <div class="original">
+              <label>Upprunalegt:</label>
+              <span>${escapeHtml(s.originalText)}</span>
+            </div>
+            <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="suggested">
+              <label>Tillaga:</label>
+              <span>${escapeHtml(s.reviewerModifiedText || s.suggestedText)}</span>
+              ${s.status === 'modified' ? '<em>(breytt)</em>' : ''}
+            </div>
+          </div>
+          <div class="suggestion-context">${escapeHtml(s.context || '')}</div>
+          <div class="suggestion-actions">
+            ${s.status === 'pending' ? `
+              <button class="btn btn-success btn-small" onclick="acceptSuggestion(${s.id})">
+                <i class="fas fa-check"></i> Samþykkja
+              </button>
+              <button class="btn btn-secondary btn-small" onclick="editSuggestion(${s.id})">
+                <i class="fas fa-edit"></i> Breyta
+              </button>
+              <button class="btn btn-secondary btn-small" onclick="rejectSuggestion(${s.id})">
+                <i class="fas fa-times"></i> Hafna
+              </button>
+            ` : `
+              <span class="status-label status-${s.status}">${formatSuggestionStatus(s.status)}</span>
+            `}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterSuggestions(filter) {
+      currentFilter = filter;
+
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === filter);
+      });
+
+      renderSuggestions();
+    }
+
+    async function scanForSuggestions() {
+      const btn = event.target.closest('button');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Skannar...';
+
+      try {
+        const res = await fetch('/api/suggestions/scan/' + currentSectionId, { method: 'POST' });
+        const data = await res.json();
+
+        if (data.success) {
+          await loadSuggestions();
+          alert(`Skannað! ${data.suggestionsCount} tillögur fundust.`);
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-search"></i> Skanna';
+      }
+    }
+
+    async function acceptSuggestion(id) {
+      try {
+        const res = await fetch(`/api/suggestions/${id}/accept`, { method: 'POST' });
+        const data = await res.json();
+
+        if (data.success) {
+          await loadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function rejectSuggestion(id) {
+      try {
+        const res = await fetch(`/api/suggestions/${id}/reject`, { method: 'POST' });
+        const data = await res.json();
+
+        if (data.success) {
+          await loadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function editSuggestion(id) {
+      editingSuggestionId = id;
+      const suggestion = currentSuggestions.find(s => s.id === id);
+
+      document.getElementById('edit-original').value = suggestion.originalText;
+      document.getElementById('edit-suggested').value = suggestion.suggestedText;
+      document.getElementById('edit-modified').value = suggestion.reviewerModifiedText || suggestion.suggestedText;
+
+      document.getElementById('edit-modal').style.display = 'flex';
+    }
+
+    async function saveModifiedSuggestion() {
+      const modifiedText = document.getElementById('edit-modified').value.trim();
+
+      if (!modifiedText) {
+        alert('Breyting er nauðsynleg');
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/suggestions/${editingSuggestionId}/modify`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ modifiedText })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          closeModal('edit-modal');
+          await loadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function acceptAllPending() {
+      const pendingIds = currentSuggestions
+        .filter(s => s.status === 'pending')
+        .map(s => s.id);
+
+      if (pendingIds.length === 0) {
+        alert('Engar tillögur í bið');
+        return;
+      }
+
+      if (!confirm(`Samþykkja ${pendingIds.length} tillögur?`)) return;
+
+      try {
+        const res = await fetch(`/api/suggestions/${currentSectionId}/bulk`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: pendingIds, action: 'accept' })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          await loadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function rejectAllPending() {
+      const pendingIds = currentSuggestions
+        .filter(s => s.status === 'pending')
+        .map(s => s.id);
+
+      if (pendingIds.length === 0) {
+        alert('Engar tillögur í bið');
+        return;
+      }
+
+      if (!confirm(`Hafna ${pendingIds.length} tillögum?`)) return;
+
+      try {
+        const res = await fetch(`/api/suggestions/${currentSectionId}/bulk`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids: pendingIds, action: 'reject' })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          await loadSuggestions();
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function syncToLog() {
+      const accepted = currentSuggestions.filter(s =>
+        s.status === 'accepted' || s.status === 'modified'
+      );
+
+      if (accepted.length === 0) {
+        alert('Engar samþykktar tillögur til að samstilla');
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/suggestions/${currentSectionId}/sync-log`, { method: 'POST' });
+        const data = await res.json();
+
+        if (data.success) {
+          alert(`${data.entriesCreated} færslur bættar við skrá`);
+          // Reload log entries
+          const sectionRes = await fetch('/api/localization/' + currentSectionId);
+          const sectionData = await sectionRes.json();
+          if (sectionData.log && sectionData.log.entries) {
+            renderLogEntries(sectionData.log.entries);
+          }
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function renderLogEntries(entries) {
+      const list = document.getElementById('log-list');
+
+      if (!entries || entries.length === 0) {
+        list.innerHTML = '<p class="placeholder">Engar færslur í skrá.</p>';
+        return;
+      }
+
+      list.innerHTML = entries.map(e => `
+        <div class="log-entry">
+          <div class="log-type type-badge type-${e.type}">${formatLogType(e.type)}</div>
+          <div class="log-content">
+            <span class="log-original">${escapeHtml(e.original)}</span>
+            <i class="fas fa-arrow-right"></i>
+            <span class="log-changed">${escapeHtml(e.changedTo)}</span>
+          </div>
+          <div class="log-reason">${escapeHtml(e.reason)}</div>
+          ${e.location ? `<div class="log-location">${escapeHtml(e.location)}</div>` : ''}
+        </div>
+      `).join('');
+    }
+
+    function addManualLogEntry() {
+      document.getElementById('log-type').value = 'other';
+      document.getElementById('log-original').value = '';
+      document.getElementById('log-changed').value = '';
+      document.getElementById('log-reason').value = '';
+      document.getElementById('log-location').value = '';
+      document.getElementById('log-modal').style.display = 'flex';
+    }
+
+    async function saveLogEntry() {
+      const entry = {
+        type: document.getElementById('log-type').value,
+        original: document.getElementById('log-original').value.trim(),
+        changedTo: document.getElementById('log-changed').value.trim(),
+        reason: document.getElementById('log-reason').value.trim(),
+        location: document.getElementById('log-location').value.trim() || undefined
+      };
+
+      if (!entry.original || !entry.changedTo || !entry.reason) {
+        alert('Upprunalegt, breytt í, og ástæða eru nauðsynleg');
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/localization/${currentSectionId}/log/add`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(entry)
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          closeModal('log-modal');
+          // Reload
+          const sectionRes = await fetch('/api/localization/' + currentSectionId);
+          const sectionData = await sectionRes.json();
+          if (sectionData.log && sectionData.log.entries) {
+            renderLogEntries(sectionData.log.entries);
+          }
+        } else {
+          alert('Villa: ' + data.message);
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function showSelector() {
+      document.getElementById('review-interface').style.display = 'none';
+      document.getElementById('section-selector').style.display = 'block';
+
+      const url = new URL(window.location);
+      url.searchParams.delete('sectionId');
+      window.history.pushState({}, '', url);
+
+      currentSectionId = null;
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    // Utility functions
+    function formatStatus(status) {
+      const names = {
+        'faithful_approved': 'Tilbúið fyrir staðfæringu',
+        'localization_in_progress': 'Í vinnslu',
+        'localization_submitted': 'Sent til samþykktar',
+        'localization_approved': 'Samþykkt'
+      };
+      return names[status] || status;
+    }
+
+    function formatType(type) {
+      const names = {
+        'unit_conversion': 'Einingar',
+        'cultural_reference': 'Menning',
+        'currency': 'Gjaldmiðill',
+        'agency_reference': 'Stofnanir',
+        'regional_example': 'Dæmi',
+        'other': 'Annað'
+      };
+      return names[type] || type;
+    }
+
+    function formatSuggestionStatus(status) {
+      const names = {
+        'accepted': 'Samþykkt',
+        'rejected': 'Hafnað',
+        'modified': 'Breytt og samþykkt'
+      };
+      return names[status] || status;
+    }
+
+    function formatLogType(type) {
+      const names = {
+        'unit_conversion': 'Einingarumreikn.',
+        'cultural_adaptation': 'Menningarlegt',
+        'added_context': 'Skýringar',
+        'removed_content': 'Fjarlægt',
+        'terminology': 'Orð',
+        'other': 'Annað'
+      };
+      return names[type] || type;
+    }
+
+    function formatMarkdownPreview(md) {
+      // Simple markdown to HTML
+      return md
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/\n/g, '<br>');
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    init();
+  </script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
+
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; font-weight: 600; }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
+    .header nav a.active { color: var(--primary); font-weight: 500; }
+    .user-info { display: flex; align-items: center; gap: 0.5rem; }
+    .user-info img { width: 28px; height: 28px; border-radius: 50%; }
+
+    .container { max-width: 1600px; margin: 0 auto; padding: 1.5rem; }
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
+
+    .selector-row { display: flex; gap: 1rem; align-items: flex-end; flex-wrap: wrap; }
+    .form-group { flex: 1; min-width: 150px; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-select, .form-input, .form-textarea { width: 100%; padding: 0.5rem 0.75rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-select:disabled { background: var(--gray-50); }
+
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-dark); }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-success { background: var(--success); color: white; }
+    .btn-small { padding: 0.25rem 0.75rem; font-size: 0.75rem; }
+    .btn-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); }
+
+    .section-header { display: flex; justify-content: space-between; align-items: center; background: white; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+    .section-info { display: flex; align-items: center; gap: 1rem; }
+    .section-info h2 { font-size: 1.125rem; }
+    .section-status { font-size: 0.75rem; padding: 0.25rem 0.75rem; background: var(--gray-100); border-radius: 9999px; }
+    .section-actions { display: flex; gap: 0.5rem; }
+
+    .stats-bar { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .stat { background: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-align: center; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; }
+    .stat-pending { color: var(--warning); }
+    .stat-accepted { color: var(--success); }
+    .stat-rejected { color: var(--error); }
+    .stat-label { font-size: 0.75rem; color: var(--gray-500); }
+
+    .split-view { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .panel { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; }
+    .panel-header { padding: 0.75rem 1rem; background: var(--gray-100); border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; }
+    .panel-header h3 { font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+    .panel-hint { font-size: 0.75rem; color: var(--gray-500); }
+    .panel-content { padding: 1rem; max-height: 400px; overflow-y: auto; font-size: 0.875rem; line-height: 1.8; }
+    .panel-content h1, .panel-content h2, .panel-content h3 { margin: 1rem 0 0.5rem; }
+
+    .suggestions-panel, .log-panel { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1rem; }
+    .suggestions-header, .log-header { padding: 1rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; }
+    .suggestions-header h3, .log-header h3 { font-size: 0.875rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+
+    .suggestions-filters { padding: 0.75rem 1rem; border-bottom: 1px solid var(--gray-200); display: flex; gap: 0.5rem; }
+    .filter-btn { padding: 0.25rem 0.75rem; border-radius: 9999px; border: 1px solid var(--gray-300); background: white; font-size: 0.75rem; cursor: pointer; }
+    .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .suggestions-list, .log-list { max-height: 400px; overflow-y: auto; }
+
+    .suggestion-item { padding: 1rem; border-bottom: 1px solid var(--gray-200); }
+    .suggestion-item:last-child { border-bottom: none; }
+    .suggestion-accepted { background: rgba(22, 163, 74, 0.05); }
+    .suggestion-rejected { background: rgba(220, 38, 38, 0.05); }
+    .suggestion-modified { background: rgba(37, 99, 235, 0.05); }
+
+    .suggestion-type { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .type-badge { font-size: 0.625rem; padding: 0.125rem 0.5rem; border-radius: 9999px; font-weight: 500; }
+    .type-unit_conversion { background: #dbeafe; color: #1e40af; }
+    .type-cultural_reference, .type-cultural_adaptation { background: #fef3c7; color: #92400e; }
+    .type-currency { background: #dcfce7; color: #166534; }
+    .type-agency_reference { background: #f3e8ff; color: #6b21a8; }
+    .type-other { background: var(--gray-100); color: var(--gray-700); }
+    .line-number { font-size: 0.75rem; color: var(--gray-500); }
+
+    .suggestion-content { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+    .suggestion-content label { font-size: 0.625rem; color: var(--gray-500); display: block; }
+    .original span { color: var(--error); }
+    .suggested span { color: var(--success); }
+    .arrow { color: var(--gray-400); }
+
+    .suggestion-context { font-size: 0.75rem; color: var(--gray-500); margin-bottom: 0.75rem; }
+    .suggestion-actions { display: flex; gap: 0.5rem; }
+    .status-label { font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 9999px; }
+    .status-accepted, .status-modified { background: #dcfce7; color: #166534; }
+    .status-rejected { background: #fee2e2; color: #991b1b; }
+
+    .log-entry { padding: 0.75rem 1rem; border-bottom: 1px solid var(--gray-200); }
+    .log-entry:last-child { border-bottom: none; }
+    .log-type { margin-bottom: 0.25rem; }
+    .log-content { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; margin-bottom: 0.25rem; }
+    .log-original { color: var(--error); }
+    .log-changed { color: var(--success); }
+    .log-reason { font-size: 0.75rem; color: var(--gray-500); }
+    .log-location { font-size: 0.625rem; color: var(--gray-400); }
+
+    .placeholder { color: var(--gray-500); text-align: center; padding: 2rem; }
+    .error { color: var(--error); }
+
+    .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: white; border-radius: 0.5rem; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; }
+    .modal-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; }
+    .modal-header h3 { font-size: 1rem; font-weight: 600; }
+    .modal-body { padding: 1.5rem; }
+    .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--gray-200); display: flex; justify-content: flex-end; gap: 0.75rem; }
+
+    @media (max-width: 1024px) {
+      .split-view { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .selector-row { flex-direction: column; }
+      .section-header { flex-direction: column; gap: 1rem; }
+      .stats-bar { flex-wrap: wrap; }
+    }
+  </style>
+</body>
+</html>
