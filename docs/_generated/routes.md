@@ -174,6 +174,8 @@
 
 | Method | Path |
 |--------|------|
+| GET | `/activity/timeline` |
+| GET | `/activity/types` |
 | GET | `/:book` |
 | GET | `/:book/summary` |
 | GET | `/:book/:chapter` |

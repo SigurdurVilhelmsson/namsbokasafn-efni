@@ -403,6 +403,8 @@ See [server/README.md](server/README.md) for full documentation.
 
 | Method | Path |
 |--------|------|
+| GET | `/activity/timeline` |
+| GET | `/activity/types` |
 | GET | `/:book` |
 | GET | `/:book/summary` |
 | GET | `/:book/:chapter` |
