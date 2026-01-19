@@ -20,20 +20,19 @@ Afurðir verkefnisins eru þrenns konar:
 
 ## Verkflæði
 
-Þýðingarferlið felur í sér 8 skref með tveimur umferðum yfirlestrar:
+Þýðingarferlið felur í sér 5 skref:
 
 ```
-1. Undirbúningur frumtexta    → Sækja .docx frá OpenStax
-2. Vélþýðing                  → Þýða á malstadur.is
-3. Þýðingaminni               → Pörun EN/IS texta í Matecat
-4. TM-studd þýðing            → Þýða paraðan texta
-5. Ritstjórn 1 - Málfarsrýni  → Prófarkalesin þýðing (VISTUÐ)
-6. Uppfæra þýðingaminni       → Prófarkalesið TM (VISTAÐ)
-7. Ritstjórn 2 - Staðfærsla   → SI einingar, íslensk dæmi
-8. Útgáfa                     → Umbreyta í .md og birta
+1. CNXML → EN Markdown        → Umbreyta frumtexta
+2. Vélþýðing                  → malstadur.is
+3. Málfarsrýni                → Prófarkalesin þýðing (VISTUÐ)
+4. Þýðingaminni               → Matecat Align → TMX (VISTAÐ)
+5. Útgáfa                     → Birta á vef
 ```
 
-Sjá nánar í [docs/workflow.md](docs/workflow.md).
+Útgáfukerfið styður þrjár brautir: `mt-preview` (vélþýðing), `faithful` (ritstýrð), og `localized` (staðfærð).
+
+Sjá nánar í [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md).
 
 ## Uppbygging geymslu
 
@@ -74,11 +73,11 @@ Sjá [server/README.md](server/README.md) fyrir nánari upplýsingar.
 
 | Skjal | Lýsing |
 |-------|--------|
-| [Verkflæði](docs/workflow.md) | 8-skrefa þýðingarferli |
-| [Ritstjórnarleiðbeiningar](docs/editorial-guide.md) | Leiðbeiningar fyrir ritstjóra |
-| [Hugtök](docs/terminology.md) | Hugtakastaðlar og orðasafn |
-| [Skipanir](docs/cli-quick-reference.md) | Flýtileiðbeiningar fyrir skipanir |
-| [Skriftur](docs/scripts-guide.md) | Leiðbeiningar fyrir sjálfvirkni |
+| [Verkflæði](docs/workflow/simplified-workflow.md) | 5-skrefa þýðingarferli |
+| [Málfarsrýni](docs/editorial/pass1-linguistic.md) | Ritstjórn umferð 1 |
+| [Staðfærsla](docs/editorial/pass2-localization.md) | Ritstjórn umferð 2 |
+| [Hugtök](docs/editorial/terminology.md) | Hugtakastaðlar og orðasafn |
+| [CLI tól](docs/technical/cli-reference.md) | Skipanalínutól |
 | [Vefþjónn](server/README.md) | Sjálfvirknivefþjónn |
 
 ## Að taka þátt
@@ -180,56 +179,52 @@ See [server/README.md](server/README.md) for full documentation.
 
 | Document | Description |
 |----------|-------------|
-| [Workflow](docs/workflow.md) | 8-step translation pipeline |
-| [Editorial Guide](docs/editorial-guide.md) | Instructions for editors |
-| [Terminology](docs/terminology.md) | Terminology standards and glossary |
-| [CLI Quick Reference](docs/cli-quick-reference.md) | Command cheat sheet |
-| [Scripts Guide](docs/scripts-guide.md) | Automation script usage |
-| [Schema Reference](docs/schema-reference.md) | JSON Schema field definitions |
+| [Simplified Workflow](docs/workflow/simplified-workflow.md) | 5-step translation pipeline (current) |
+| [Pass 1: Linguistic Review](docs/editorial/pass1-linguistic.md) | First editorial pass |
+| [Pass 2: Localization](docs/editorial/pass2-localization.md) | Second editorial pass |
+| [Terminology](docs/editorial/terminology.md) | Terminology standards and glossary |
+| [CLI Reference](docs/technical/cli-reference.md) | Command-line tools |
+| [Schemas](docs/technical/schemas.md) | JSON Schema field definitions |
+| [Publication Format](docs/technical/publication-format.md) | 3-track publication structure |
 | [Pipeline Server](server/README.md) | Web automation server |
-| [Contributing](docs/contributing.md) | How to participate |
+| [Contributing](docs/contributing/getting-started.md) | How to participate |
 
 ## CLI Tools
 
-<!-- tools-start -->
-# CLI Tools
+| Tool | Description | Status |
+|------|-------------|--------|
+| `pipeline-runner` | Full CNXML → markdown pipeline | Active |
+| `cnxml-to-md` | CNXML → Markdown with equations | Active |
+| `prepare-for-align` | Prepare files for Matecat Align | Active |
+| `add-frontmatter` | Add YAML frontmatter for publication | Active |
+| `split-for-erlendur` | Split files at 18k chars for MT | Active |
+| `apply-equations` | Restore LaTeX equations from JSON | Active |
+| `clean-markdown` | Fix Pandoc artifacts | Active |
+| `docx-to-md` | DOCX → Markdown conversion | Active |
+| `fix-figure-captions` | Fix figure caption formatting | Active |
+| `repair-directives` | Fix directive syntax | Active |
+| `replace-math-images` | Replace equation images with LaTeX | Active |
+| `export-parallel-corpus` | Export TM to parallel text | Active |
+| `validate-chapter` | Validate chapter structure | Active |
+| `process-chapter` | Full chapter processing pipeline | Active |
+| `cnxml-math-extract` | Extract MathML from CNXML | Active |
+| `strip-docx-to-txt` | Extract plain text from DOCX | Active |
+| `cnxml-to-xliff` | CNXML → XLIFF (Matecat Align) | Deprecated |
+| `create-bilingual-xliff` | Create bilingual XLIFF | Deprecated |
+| `md-to-xliff` | Markdown → XLIFF | Deprecated |
+| `xliff-to-md` | XLIFF → Markdown | Deprecated |
+| `xliff-to-tmx` | XLIFF → TMX | Deprecated |
 
-*Auto-generated from tools/ directory*
+*21 tools total (16 active, 5 deprecated)*
 
-| Tool | Description |
-|------|-------------|
-| `add-frontmatter` | ============================================================ |
-| `apply-equations` | Support both { equations: {...} } and direct { EQ:1: ..., EQ |
-| `clean-markdown` | ============================================================ |
-| `cnxml-math-extract` | ============================================================ |
-| `cnxml-to-md` | raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/ |
-| `cnxml-to-xliff` | raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/ |
-| `create-bilingual-xliff` | Try YAML frontmatter first |
-| `docx-to-md` | ============================================================ |
-| `export-parallel-corpus` | No description |
-| `fix-figure-captions` | ============================================================ |
-| `md-to-xliff` | Extract YAML frontmatter if present |
-| `pipeline-runner` | Markdown for Erlendur MT |
-| `prepare-for-align` | Single EN file |
-| `process-chapter` | ============================================================ |
-| `repair-directives` | Directives that can contain nested directives |
-| `replace-math-images` | ============================================================ |
-| `split-for-erlendur` | Erlendur MT character limits |
-| `strip-docx-to-txt` | Parse command line arguments |
-| `validate-chapter` | No description |
-| `xliff-to-md` | No description |
-| `xliff-to-tmx` | Extract file attributes |
-
-*21 tools total*
-
-<!-- tools-end -->
+See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detailed usage.
 
 ## API Routes
 
 <!-- routes-start -->
 # API Routes
 
-*Auto-generated from server/routes/*
+*21 route modules from server/routes/*
 
 ## /activity
 
@@ -376,6 +371,17 @@ See [server/README.md](server/README.md) for full documentation.
 | GET | `/jobs/:jobId` |
 | GET | `/jobs` |
 
+## /publication
+
+| Method | Path |
+|--------|------|
+| GET | `/:bookSlug/:chapterNum/status` |
+| GET | `/:bookSlug/:chapterNum/readiness` |
+| POST | `/:bookSlug/:chapterNum/mt-preview` |
+| POST | `/:bookSlug/:chapterNum/faithful` |
+| POST | `/:bookSlug/:chapterNum/localized` |
+| GET | `/:bookSlug/overview` |
+
 ## /reviews
 
 | Method | Path |
@@ -409,6 +415,21 @@ See [server/README.md](server/README.md) for full documentation.
 | GET | `/:book/summary` |
 | GET | `/:book/:chapter` |
 
+## /suggestions
+
+| Method | Path |
+|--------|------|
+| POST | `/scan/:sectionId` |
+| POST | `/scan-book/:bookSlug` |
+| GET | `/:sectionId` |
+| GET | `/:sectionId/stats` |
+| GET | `/patterns` |
+| POST | `/:id/accept` |
+| POST | `/:id/reject` |
+| POST | `/:id/modify` |
+| POST | `/:sectionId/bulk` |
+| POST | `/:sectionId/sync-log` |
+
 ## /sync
 
 | Method | Path |
@@ -418,6 +439,27 @@ See [server/README.md](server/README.md) for full documentation.
 | POST | `/create-pr` |
 | GET | `/status/:prNumber` |
 | GET | `/prs` |
+
+## /terminology
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/lookup` |
+| GET | `/stats` |
+| GET | `/review-queue` |
+| GET | `/categories` |
+| GET | `/:id` |
+| POST | `/` |
+| PUT | `/:id` |
+| DELETE | `/:id` |
+| POST | `/:id/approve` |
+| POST | `/:id/dispute` |
+| POST | `/:id/discuss` |
+| POST | `/import/csv` |
+| POST | `/import/excel` |
+| POST | `/import/key-terms` |
+| POST | `/import/existing-glossary` |
 
 ## /views
 
@@ -432,6 +474,8 @@ See [server/README.md](server/README.md) for full documentation.
 | GET | `/reviews` |
 | GET | `/status` |
 | GET | `/books` |
+| GET | `/terminology` |
+| GET | `/localization-review` |
 
 ## /workflow
 

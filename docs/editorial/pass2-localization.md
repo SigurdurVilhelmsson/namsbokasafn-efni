@@ -76,7 +76,38 @@ This documentation is important because:
 
 ---
 
-## Process
+## Process (Markdown Workflow)
+
+This is the primary workflow using the simplified 5-step pipeline.
+
+### Using Auto-Detection (Recommended)
+
+The system can automatically detect localization opportunities:
+
+1. **Open the localization review UI** at `http://localhost:3000/localization-review`
+2. **Select your section** - the system will scan for opportunities
+3. **Review suggestions:**
+   - Unit conversions (miles → km, °F → °C, etc.)
+   - Cultural references that need adaptation
+   - American-specific context
+4. **Accept or modify** each suggestion
+5. **Add custom changes** not detected automatically
+6. **Submit** - the localization log is generated automatically
+
+### Manual Process
+
+1. **Start from** the faithful translation (`03-faithful/ch##/`)
+2. **Open** in any markdown editor (VS Code, Typora, etc.)
+3. **Review** for localization opportunities
+4. **Create** a localization log entry for each change
+5. **Verify** scientific accuracy after changes
+6. **Save** to `04-localized/ch##/`
+
+---
+
+## Process (DOCX Workflow - Legacy)
+
+For chapters started before the markdown workflow:
 
 1. **Start from** the faithful translation (from `03-faithful/docx/ch##/`)
 2. **Create** a localization log from the template
@@ -91,6 +122,14 @@ This documentation is important because:
 
 ## Deliverables
 
+### Markdown Workflow (Primary)
+- Localized `.is.md` file
+  - Save to: `04-localized/ch##/`
+  - Naming: Same as input file (e.g., `5-1.is.md`)
+- Localization log (auto-generated when using web UI)
+  - Stored in database, accessible via `/localization` API
+
+### DOCX Workflow (Legacy)
 - Localized .docx file
   - Save to: `04-localized/docx/ch##/`
   - Naming: `[section]-localized.docx`
@@ -128,6 +167,28 @@ Before submitting your review:
 
 ## Quick Reference
 
+### Markdown with Auto-Detection (Recommended)
+```
+□ Open /localization-review
+□ Select section to review
+□ Review auto-detected suggestions
+□ Accept/modify/reject each suggestion
+□ Add any custom changes
+□ Submit for approval
+```
+
+### Manual Markdown Process
+```
+□ Start from 03-faithful/ch##/
+□ Convert units (imperial → SI)
+□ Adapt cultural references
+□ Add Icelandic context where valuable
+□ Document ALL changes in log
+□ Verify scientific accuracy
+□ Save to 04-localized/ch##/
+```
+
+### DOCX Workflow (Legacy)
 ```
 □ Start from faithful translation
 □ Create localization log
@@ -182,7 +243,7 @@ Before submitting your review:
 
 - [Pass 1: Linguistic Review](pass1-linguistic.md) - The previous editorial step
 - [Terminology Standards](terminology.md) - Term conventions and glossary
-- [Workflow Overview](../workflow/overview.md) - Full 8-step pipeline
+- [Simplified Workflow](../workflow/simplified-workflow.md) - Current 5-step pipeline
 
 ---
 

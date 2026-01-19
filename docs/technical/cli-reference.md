@@ -2,6 +2,9 @@
 
 This document covers all command-line tools for managing the translation workflow.
 
+> **Note:** This reference has been updated for the simplified 5-step workflow.
+> See [simplified-workflow.md](../workflow/simplified-workflow.md) for the current pipeline.
+
 ---
 
 ## Quick Reference
@@ -12,7 +15,8 @@ This document covers all command-line tools for managing the translation workflo
 # Basic syntax
 npm run update-status <book> <chapter> <stage> <status>
 
-# Stages: source, mtOutput, matecat, editorialPass1, tmUpdated, editorialPass2, publication
+# Stages (simplified workflow): enMarkdown, mtOutput, linguisticReview, tmCreated, publication
+# Legacy stages: source, matecat, editorialPass1, tmUpdated, editorialPass2
 # Statuses: complete, in-progress, pending, not-started
 ```
 
@@ -54,7 +58,17 @@ npm run validate
 npm run validate efnafraedi
 ```
 
-### Workflow Cheat Sheet
+### Workflow Cheat Sheet (Simplified 5-Step)
+
+| Step | Stage | Command |
+|------|-------|---------|
+| 1 | EN markdown | `npm run update-status efnafraedi X enMarkdown complete` |
+| 2 | MT done | `npm run update-status efnafraedi X mtOutput complete` |
+| 3 | Linguistic review | `npm run update-status efnafraedi X linguisticReview complete` |
+| 4 | TM created | `npm run update-status efnafraedi X tmCreated complete` |
+| 5 | Publish | `npm run update-status efnafraedi X publication complete --version "v1.0"` |
+
+### Workflow Cheat Sheet (Legacy 8-Step)
 
 | Step | Stage | Command |
 |------|-------|---------|
@@ -116,7 +130,17 @@ npm run update-status <book> <chapter> <stage> <status> [options]
 | `stage` | Workflow stage | See [Stages](#stages) below |
 | `status` | New status value | See [Statuses](#statuses) below |
 
-#### Stages
+#### Stages (Simplified 5-Step Workflow)
+
+| Stage | Description | Workflow Step |
+|-------|-------------|---------------|
+| `enMarkdown` | EN markdown generated from CNXML | Step 1 |
+| `mtOutput` | Machine translation from malstadur.is | Step 2 |
+| `linguisticReview` | Faithful translation complete | Step 3 |
+| `tmCreated` | TM created via Matecat Align | Step 4 |
+| `publication` | Published to web | Step 5 |
+
+#### Stages (Legacy 8-Step Workflow)
 
 | Stage | Description | Workflow Step |
 |-------|-------------|---------------|
@@ -244,6 +268,90 @@ The validation runs automatically via GitHub Actions when status files change. S
 
 The `tools/` directory contains scripts for processing content through the publication pipeline.
 
+### Core Tools (Simplified Workflow)
+
+#### pipeline-runner.js
+
+The main pipeline orchestrator for converting CNXML to markdown. This is the primary tool for Step 1.
+
+```bash
+node tools/pipeline-runner.js <module-id> --output-dir <output-directory>
+```
+
+**Options:**
+
+| Option | Description |
+|--------|-------------|
+| `--output-dir <dir>` | Output directory for generated files |
+| `--verbose` | Show detailed progress |
+
+**Example:**
+```bash
+node tools/pipeline-runner.js m68724 --output-dir books/efnafraedi/02-for-mt/ch05
+```
+
+**Output:**
+- `5-1.en.md` - English markdown with equation placeholders
+- `5-1-equations.json` - LaTeX equations for restoration
+
+---
+
+#### cnxml-to-md.js
+
+Converts individual CNXML files to markdown. Use `pipeline-runner.js` for full pipeline.
+
+```bash
+node tools/cnxml-to-md.js <cnxml-file> --output <output.md>
+```
+
+---
+
+#### prepare-for-align.js
+
+Prepares markdown files for Matecat Align by cleaning and normalizing content. This is the key tool for Step 4.
+
+```bash
+# From single file pair
+node tools/prepare-for-align.js \
+  --en <english-file.md> \
+  --is <icelandic-file.md> \
+  --output-dir <output-directory>
+
+# From directories with split parts
+node tools/prepare-for-align.js \
+  --en-dir <english-directory> \
+  --is-dir <icelandic-directory> \
+  --section <section-number> \
+  --output-dir <output-directory>
+```
+
+**Options:**
+
+| Option | Description |
+|--------|-------------|
+| `--en <file>` | English markdown file |
+| `--is <file>` | Icelandic markdown file |
+| `--en-dir <dir>` | Directory with English files (for split files) |
+| `--is-dir <dir>` | Directory with Icelandic files (for split files) |
+| `--section <num>` | Section number (e.g., "5-1") |
+| `--output-dir <dir>` | Output directory for cleaned files |
+
+**Example:**
+```bash
+node tools/prepare-for-align.js \
+  --en books/efnafraedi/02-for-mt/ch05/5-1.en.md \
+  --is books/efnafraedi/03-faithful/ch05/5-1.is.md \
+  --output-dir books/efnafraedi/for-align/ch05
+```
+
+**Output:**
+- `5-1.en.clean.md` - Cleaned English for Matecat Align
+- `5-1.is.clean.md` - Cleaned Icelandic for Matecat Align
+
+---
+
+### Utility Tools
+
 ### clean-markdown.js
 
 Cleans Pandoc artifacts from markdown files to ensure compatibility with the Chemistry Reader webapp.
@@ -325,15 +433,53 @@ node tools/docx-to-md.js --batch <directory>
 
 ### add-frontmatter.js
 
-Adds YAML frontmatter to markdown files for the Chemistry Reader.
+Adds YAML frontmatter to markdown files for the Chemistry Reader. This is the key tool for Step 5 (publication).
 
 #### Syntax
 
 ```bash
-node tools/add-frontmatter.js <file.md>
+node tools/add-frontmatter.js <file.md> [options]
 ```
 
-See the script for available frontmatter fields and options.
+#### Options
+
+| Option | Description |
+|--------|-------------|
+| `--track <track>` | Publication track: `mt-preview`, `faithful`, `localized` |
+| `--mt-preview` | Shortcut for `--track mt-preview` |
+| `--title <title>` | Section title in Icelandic |
+| `--chapter <num>` | Chapter number |
+| `--section <num>` | Section number |
+
+#### Publication Tracks
+
+| Track | When to Use | Label |
+|-------|-------------|-------|
+| `mt-preview` | Unreviewed MT output | "Vélþýðing - ekki yfirfarin" |
+| `faithful` | After Pass 1 review | "Ritstýrð þýðing" |
+| `localized` | After Pass 2 localization | "Staðfærð útgáfa" |
+
+#### Examples
+
+```bash
+# Publish MT preview (immediate publication)
+node tools/add-frontmatter.js \
+  books/efnafraedi/02-mt-output/ch05/5-1.is.md \
+  --mt-preview \
+  --title "Grundvallaratriði orku"
+
+# Publish faithful translation
+node tools/add-frontmatter.js \
+  books/efnafraedi/03-faithful/ch05/5-1.is.md \
+  --track faithful \
+  --title "Grundvallaratriði orku"
+
+# Publish localized content
+node tools/add-frontmatter.js \
+  books/efnafraedi/04-localized/ch05/5-1.is.md \
+  --track localized \
+  --title "Grundvallaratriði orku"
+```
 
 ---
 
@@ -460,8 +606,27 @@ npm run replace-math -- --apply chapters/01/1-5.md mapping.json
 
 ---
 
+---
+
+## Deprecated Tools
+
+The following tools are deprecated and should not be used for new work. They are retained for legacy chapters.
+
+| Tool | Status | Replacement |
+|------|--------|-------------|
+| `cnxml-to-xliff.js` | DEPRECATED | Matecat Align |
+| `create-bilingual-xliff.js` | DEPRECATED | Matecat Align |
+| `md-to-xliff.js` | DEPRECATED | Matecat Align |
+| `xliff-to-md.js` | DEPRECATED | Matecat Align |
+| `xliff-to-tmx.js` | DEPRECATED | Matecat Align exports TMX directly |
+
+**Why deprecated?** The simplified 5-step workflow uses Matecat Align for TM creation, which handles segmentation and alignment automatically. XLIFF generation is no longer needed.
+
+---
+
 ## See Also
 
-- [Workflow Overview](../workflow/overview.md) - Full 8-step translation pipeline
+- [Simplified Workflow](../workflow/simplified-workflow.md) - Current 5-step translation pipeline
+- [Legacy Workflow](../workflow/overview.md) - Original 8-step pipeline (deprecated)
 - [Schema Reference](schemas.md) - JSON Schema field definitions
 - [Markdown Fixes](markdown-fixes.md) - Known Pandoc artifacts and fixes

@@ -26,9 +26,9 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 │  - GitHub OAuth authentication                                  │
 ├─────────────────────────────────────────────────────────────────┤
 │  CLI Tools (tools/)                                             │
-│  - 19 tools, all verified working                               │
+│  - 21 tools (16 active, 5 deprecated)                           │
 │  - Pipeline orchestration via pipeline-runner.js                │
-│  - CNXML/DOCX → MD → XLIFF → TMX conversions                    │
+│  - CNXML → MD, Matecat Align for TM creation                    │
 ├─────────────────────────────────────────────────────────────────┤
 │  Data Layer                                                     │
 │  - SQLite for workflow sessions (server/services/session.js)    │
@@ -61,8 +61,9 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Processing API | `server/routes/process.js` | ✅ |
 | Matecat integration | `server/services/matecat.js` | 537 |
 
-**CLI Tools (19 total):**
-`add-frontmatter`, `apply-equations`, `clean-markdown`, `cnxml-math-extract`, `cnxml-to-md`, `cnxml-to-xliff`, `docx-to-md`, `export-parallel-corpus`, `fix-figure-captions`, `md-to-xliff`, `openstax-fetch`, `pipeline-runner`, `process-chapter`, `repair-directives`, `replace-math-images`, `strip-docx-to-txt`, `validate-chapter`, `xliff-to-md`, `xliff-to-tmx`
+**CLI Tools (21 total, 16 active):**
+Active: `add-frontmatter`, `apply-equations`, `clean-markdown`, `cnxml-math-extract`, `cnxml-to-md`, `docx-to-md`, `export-parallel-corpus`, `fix-figure-captions`, `openstax-fetch`, `pipeline-runner`, `prepare-for-align`, `process-chapter`, `repair-directives`, `replace-math-images`, `split-for-erlendur`, `strip-docx-to-txt`, `validate-chapter`
+Deprecated: `cnxml-to-xliff`, `create-bilingual-xliff`, `md-to-xliff`, `xliff-to-md`, `xliff-to-tmx`
 
 ### Phase 2: Guided Workflow ✅
 
@@ -75,8 +76,8 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Image tracking | ✅ | `server/services/imageTracker.js` | 319 |
 | HTML wizard UI | ✅ | `server/views/workflow.html` | ✅ |
 
-**Server Routes (11 total):**
-`auth`, `books`, `images`, `issues`, `matecat`, `modules`, `process`, `status`, `sync`, `views`, `workflow`
+**Server Routes (21 total):**
+`activity`, `admin`, `auth`, `books`, `editor`, `images`, `issues`, `localization`, `matecat`, `modules`, `notifications`, `process`, `publication`, `reviews`, `sections`, `status`, `suggestions`, `sync`, `terminology`, `views`, `workflow`
 
 **Phase 2.1 Features:**
 - Erlendur MT file splitting (>18k chars at paragraph boundaries)
@@ -94,29 +95,57 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 
 ---
 
-## Active Development
+## Completed Phases
 
-### Phase 2.5: Operational Improvements
+### Phase 2.5: Operational Improvements ✅
 
-Before considering Phase 3, add operational necessities:
+#### Error Recovery ✅
+- [x] Workflow rollback capability
+- [x] Session recovery after failures
+- [x] Clear error states (FAILED, ROLLBACK_PENDING)
 
-#### Error Recovery (Priority: High)
-- [ ] Workflow rollback capability
-- [ ] Session recovery after failures
-- [ ] Clear error states (FAILED, ROLLBACK_PENDING)
-- **Why:** Data loss erodes trust
+#### Notifications ✅
+- [x] In-app notification system
+- [x] Activity timeline tracking
 
-#### Notifications (Priority: Medium)
-- [ ] Email editors when action needed
-- [ ] Simple webhook for integrations
-- **Why:** Editors need to know when work awaits
-
-#### Testing & Validation (Priority: Medium)
+#### Testing & Validation (Partial)
 - [ ] End-to-end workflow tests
 - [ ] Service integration tests
-- [ ] CI validation of status files
+- [x] CI validation of status files
+
+### Phase 5: Terminology & Suggestions ✅
+
+| Component | Status | File |
+|-----------|--------|------|
+| Terminology database | ✅ | `server/routes/terminology.js` |
+| Terminology UI | ✅ | `server/views/terminology.html` |
+| Localization suggestions | ✅ | `server/routes/suggestions.js` |
+| Pattern detection | ✅ | `server/services/suggestionPatterns.js` |
+| Localization review UI | ✅ | `server/views/localization-review.html` |
+
+**Features:**
+- SQLite-backed terminology database with approval workflow
+- Auto-detection of localization opportunities (units, cultural refs)
+- Split-panel review interface for Pass 2
+- Bulk suggestion accept/reject
+
+### Phase 6: Publication Workflow ✅
+
+| Component | Status | File |
+|-----------|--------|------|
+| Publication API | ✅ | `server/routes/publication.js` |
+| 3-track system | ✅ | mt-preview, faithful, localized |
+| Readiness checks | ✅ | Validates prerequisites per track |
+| HEAD_EDITOR approval | ✅ | Required for all publications |
+
+**Publication Tracks:**
+- `mt-preview`: Publish MT output immediately for early access
+- `faithful`: Publish after Pass 1 review complete
+- `localized`: Publish after Pass 2 localization complete
 
 ---
+
+## Active Development
 
 ## Phase 3: Enhanced Dashboard (If Needed)
 
@@ -200,22 +229,28 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 | 2026-01 | HTML wizard over React SPA | Simpler, sufficient for team size |
 | 2026-01 | PR-based writes | Audit trail, review gates |
 | 2026-01 | File splitting at 18k | Erlendur character limit |
+| 2026-01 | 5-step workflow | Simplified from 8-step, Matecat Align handles segmentation |
+| 2026-01 | SQLite terminology DB | Consistent with session storage, simple approval workflow |
+| 2026-01 | 3-track publication | MT-preview enables early access while reviews continue |
+| 2026-01 | Review before TM | TM is human-verified from the start |
 
 ---
 
 ## Next Steps
 
 ### Immediate
-1. [ ] Add error recovery states to workflow sessions
-2. [ ] Test full workflow end-to-end with real chapter
-3. [ ] Document server setup for production deployment
+1. [x] Add error recovery states to workflow sessions
+2. [x] Implement terminology database
+3. [x] Implement localization suggestions
+4. [x] Implement publication workflow
+5. [ ] Test full workflow end-to-end with real chapter
 
 ### Short-term
-1. [ ] Add email notification service
-2. [ ] Create image manifest from existing CNXML
-3. [ ] Session cleanup job for stale workflows
+1. [ ] Add email notification service (optional)
+2. [ ] Session cleanup job for stale workflows
+3. [ ] End-to-end workflow tests
 
-### Before Phase 3 Consideration
-1. [ ] Run pilot with FÁ teachers (Jan 2026)
-2. [ ] Gather feedback on current HTML interface
-3. [ ] Evaluate if team growth warrants dashboard
+### Current Priority: Pilot at FÁ (January 2026)
+1. [x] MT preview publishing for chapters 1-4
+2. [ ] Complete Pass 1 reviews for chapters 1-4
+3. [ ] Teacher feedback collection

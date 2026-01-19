@@ -42,7 +42,33 @@ The faithful translation has value because:
 
 ---
 
-## Process
+## Process (Markdown Workflow)
+
+This is the primary workflow for the simplified 5-step pipeline.
+
+1. **Get MT output** from `02-mt-output/ch##/`
+2. **Open in any editor** (VS Code, Typora, or the web editor at `/editor`)
+3. **Read through** the entire section once before editing
+4. **Review systematically:**
+   - Go section by section
+   - Make direct edits to the markdown
+   - Use HTML comments `<!-- QUESTION: ... -->` for questions
+5. **Check terminology** against the glossary and `/terminology` page
+6. **Save** to `03-faithful/ch##/` with the same filename
+
+### Web Editor Option
+
+The server provides a web-based editor at `http://localhost:3000/editor`:
+- Side-by-side English/Icelandic view
+- Built-in terminology lookup
+- Save with review submission workflow
+- History tracking
+
+---
+
+## Process (DOCX Workflow - Legacy)
+
+For chapters started before the markdown workflow was implemented:
 
 1. **Receive** the .docx file from the translator
 2. **Enable Track Changes** in Microsoft Word before making any edits
@@ -56,9 +82,7 @@ The faithful translation has value because:
 5. **Check terminology** against the glossary
 6. **Save** your reviewed file
 
----
-
-## Using Word Track Changes
+### Using Word Track Changes
 
 All edits must be visible:
 - Deletions should show strikethrough
@@ -83,6 +107,12 @@ When you encounter a term that seems wrong or unclear:
 
 ## Deliverables
 
+### Markdown Workflow (Primary)
+- Reviewed `.is.md` file
+- Save to: `03-faithful/ch##/`
+- Naming: Same as input file (e.g., `5-1.is.md`)
+
+### DOCX Workflow (Legacy)
 - Reviewed .docx file with Track Changes
 - Save to: `03-faithful/docx/ch##/`
 - Naming: `[section]-pass1-[your initials].docx`
@@ -116,6 +146,17 @@ Before submitting your review:
 
 ## Quick Reference
 
+### Markdown (Primary)
+```
+□ Get MT output from 02-mt-output/
+□ Review for grammar/spelling
+□ Check terminology (glossary + /terminology)
+□ Use HTML comments for questions
+□ NO localization
+□ Save to 03-faithful/ch##/
+```
+
+### DOCX (Legacy)
 ```
 □ Enable Track Changes
 □ Review for grammar/spelling
@@ -167,7 +208,7 @@ Before submitting your review:
 
 - [Pass 2: Localization](pass2-localization.md) - The next editorial step
 - [Terminology Standards](terminology.md) - Term conventions and glossary
-- [Workflow Overview](../workflow/overview.md) - Full 8-step pipeline
+- [Simplified Workflow](../workflow/simplified-workflow.md) - Current 5-step pipeline
 
 ---
 

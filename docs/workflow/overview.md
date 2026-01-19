@@ -1,6 +1,18 @@
-# Translation Workflow
+# Translation Workflow (Legacy 8-Step)
 
-This document describes the complete 8-step translation workflow from source material to published content.
+> ⚠️ **LEGACY DOCUMENTATION**
+>
+> This document describes the original 8-step workflow which has been **superseded
+> by the simplified 5-step workflow**. The 8-step workflow included XLIFF generation
+> and multiple Matecat uploads which have been eliminated.
+>
+> **For current instructions, see [simplified-workflow.md](simplified-workflow.md).**
+>
+> This document is retained for historical reference only.
+
+---
+
+This document describes the legacy 8-step translation workflow from source material to published content.
 
 ## Pipeline Overview
 
@@ -408,50 +420,33 @@ See [server/README.md](../../server/README.md) for full API documentation.
 
 ---
 
-## Simplified Workflow (Recommended)
+## Current Workflow
 
-**For new chapters, use the [Simplified 5-Step Workflow](simplified-workflow.md)** which eliminates XLIFF generation and lets Matecat Align handle segmentation.
+> **Note:** For all new work, use the [Simplified 5-Step Workflow](simplified-workflow.md) instead of this legacy 8-step process.
 
-### Why Simplified?
-
-The older workflow had 12+ steps with multiple format conversions. The new workflow:
-
+The simplified workflow:
+- Eliminates XLIFF generation entirely
 - Does linguistic review BEFORE TM creation (TM is human-verified from the start)
-- Uses Matecat Align for TM creation (no XLIFF needed)
-- Reduces complexity from 12+ steps to 5
-
-### Quick Overview
-
-```
-CNXML → EN Markdown → MT → Linguistic Review → Matecat Align → Publication
-```
-
-| Step | Tool/Service | Output |
-|------|--------------|--------|
-| 1 | `pipeline-runner.js` | EN markdown + equations |
-| 2 | malstadur.is | MT output |
-| 3 | Manual editing | Faithful translation |
-| 4 | `prepare-for-align.js` + Matecat Align | Human-verified TMX |
-| 5 | `add-frontmatter.js` | Published content |
-
-**See [simplified-workflow.md](simplified-workflow.md) for full instructions.**
+- Uses Matecat Align for TM creation (simple upload of markdown pairs)
+- Supports 3-track publication: mt-preview, faithful, localized
 
 ### Deprecated Tools
 
-The following tools are deprecated in favor of Matecat Align:
+The following tools from the 8-step workflow are deprecated:
 
-| Tool | Status | Reason |
-|------|--------|--------|
-| `create-bilingual-xliff.js` | Deprecated | Matecat Align handles segmentation |
-| `md-to-xliff.js` | Deprecated | No longer generating XLIFF |
-| `xliff-to-md.js` | Deprecated | No longer processing XLIFF |
-| `cnxml-to-xliff.js` | Deprecated | No longer generating XLIFF |
-| `xliff-to-tmx.js` | Deprecated | Matecat exports TMX directly |
+| Tool | Status | Replacement |
+|------|--------|-------------|
+| `create-bilingual-xliff.js` | Deprecated | Matecat Align |
+| `md-to-xliff.js` | Deprecated | Matecat Align |
+| `xliff-to-md.js` | Deprecated | Matecat Align |
+| `cnxml-to-xliff.js` | Deprecated | Matecat Align |
+| `xliff-to-tmx.js` | Deprecated | Matecat Align exports TMX |
 
 ---
 
 ## Additional Resources
 
+- **[Simplified Workflow](simplified-workflow.md)** - Current 5-step workflow (use this)
 - [Pass 1: Linguistic Review](../editorial/pass1-linguistic.md) - First editorial pass
 - [Pass 2: Localization](../editorial/pass2-localization.md) - Second editorial pass
 - [Terminology Standards](../editorial/terminology.md) - Terminology conventions

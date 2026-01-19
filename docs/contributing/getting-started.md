@@ -24,22 +24,29 @@ Help with tools and automation.
 
 ## Understanding the Workflow
 
-We use a **two-pass editorial system** that produces multiple valuable outputs:
+We use a **simplified 5-step workflow** with two editorial passes:
 
 ```
-MT Output → Pass 1 (Linguistic) → Faithful Translation ★
-                     ↓
-              Updated TM ★
-                     ↓
-         Pass 2 (Localization) → Localized Version ★
+CNXML → EN Markdown → MT → Linguistic Review → Matecat Align → Publication
+         Step 1       Step 2      Step 3           Step 4         Step 5
 ```
+
+**Key insight:** Linguistic review happens BEFORE TM creation, so the TM is human-verified from the start.
+
+### Assets Produced
+
+| Asset | Step | Location |
+|-------|------|----------|
+| Faithful Translation ★ | Step 3 | `03-faithful/` |
+| Human-Verified TM ★ | Step 4 | `tm/` |
+| Localized Version ★ | Pass 2 | `04-localized/` |
 
 ★ = Preserved asset
 
-**Why two passes?**
+**Why this order?**
 - Pass 1 produces a faithful translation (valuable for academic use)
-- The TM becomes human-verified (valuable for NLP/MT training)
-- Pass 2 produces a localized version (valuable for education)
+- The TM is created from human-verified content (valuable for NLP/MT)
+- Pass 2 (optional) produces a localized version (valuable for education)
 
 ---
 
@@ -81,10 +88,10 @@ You'll receive:
 
 ### Step 3: Review the Guides
 Read before starting:
+- [Simplified Workflow](../workflow/simplified-workflow.md) - Current 5-step process
 - [Pass 1: Linguistic Review](../editorial/pass1-linguistic.md) - For linguistic review
 - [Pass 2: Localization](../editorial/pass2-localization.md) - For localization
 - [Terminology Standards](../editorial/terminology.md) - Term conventions
-- [Workflow Overview](../workflow/overview.md) - Overall process
 
 ---
 
@@ -92,53 +99,87 @@ Read before starting:
 
 ### For Pass 1 (Linguistic Review)
 
-1. **Get files** from the translator (Matecat output or as provided)
-2. **Enable Track Changes** in Microsoft Word
+#### Markdown Workflow (Primary)
+
+1. **Get MT output** from `02-mt-output/ch##/`
+2. **Open** in any text editor (VS Code, Typora, or web editor at `/editor`)
 3. **Review systematically:**
    - Grammar and spelling
-   - Terminology (check glossary)
+   - Terminology (check glossary and `/terminology` page)
    - Natural phrasing
    - Technical accuracy
-4. **Add comments** for questions
-5. **Save** to `03-faithful/docx/ch##/`
+4. **Add comments** using `<!-- QUESTION: ... -->` for questions
+5. **Save** to `03-faithful/ch##/`
 6. **Notify** translator that review is complete
 
 **Remember:** NO localization in Pass 1
 
+#### DOCX Workflow (Legacy)
+
+For chapters started before the markdown workflow:
+
+1. **Get files** from the translator
+2. **Enable Track Changes** in Microsoft Word
+3. **Review** for grammar, terminology, phrasing
+4. **Add comments** for questions
+5. **Save** to `03-faithful/docx/ch##/`
+
 ### For Pass 2 (Localization)
+
+#### Using Auto-Detection (Recommended)
+
+1. **Open** the localization review UI at `/localization-review`
+2. **Select** your section - system scans for opportunities
+3. **Review suggestions** for unit conversions, cultural references
+4. **Accept or modify** each suggestion
+5. **Add custom changes** not auto-detected
+6. **Submit** for approval
+
+#### Manual Markdown Workflow
+
+1. **Get files** from `03-faithful/ch##/`
+2. **Make localization changes** directly in markdown
+3. **Document** every change in the localization log
+4. **Save** to `04-localized/ch##/`
+
+#### DOCX Workflow (Legacy)
 
 1. **Get files** from `03-faithful/docx/ch##/`
 2. **Create localization log** from template
-3. **Make localization changes:**
-   - Unit conversions
-   - Cultural adaptations
-   - Icelandic context
+3. **Make localization changes**
 4. **Document** every change in the log
 5. **Save** .docx to `04-localized/docx/ch##/`
 6. **Save** log to `04-localized/localization-logs/`
-7. **Notify** translator that review is complete
 
 ---
 
 ## File Locations
 
-### Where to Get Files
+### Markdown Workflow (Primary)
 
-| Pass | Get files from |
-|------|----------------|
-| Pass 1 | Provided by translator (working drafts) |
-| Pass 2 | `03-faithful/docx/ch##/` |
+| Pass | Get files from | Save to |
+|------|----------------|---------|
+| Pass 1 | `02-mt-output/ch##/` | `03-faithful/ch##/` |
+| Pass 2 | `03-faithful/ch##/` | `04-localized/ch##/` |
 
-### Where to Save Files
+### DOCX Workflow (Legacy)
 
-| Pass | Save to |
-|------|---------|
-| Pass 1 | `03-faithful/docx/ch##/` |
-| Pass 2 (docx) | `04-localized/docx/ch##/` |
-| Pass 2 (log) | `04-localized/localization-logs/` |
+| Pass | Get files from | Save to |
+|------|----------------|---------|
+| Pass 1 | Translator | `03-faithful/docx/ch##/` |
+| Pass 2 (docx) | `03-faithful/docx/ch##/` | `04-localized/docx/ch##/` |
+| Pass 2 (log) | Template | `04-localized/localization-logs/` |
 
 ### Naming Convention
 
+**Markdown (Primary):**
+```
+MT Output:    5-1.is.md (in 02-mt-output/)
+Pass 1:       5-1.is.md (in 03-faithful/)
+Pass 2:       5-1.is.md (in 04-localized/)
+```
+
+**DOCX (Legacy):**
 ```
 Pass 1: chapter-01-section-02-pass1-AB.docx
 Pass 2: chapter-01-section-02-localized.docx
