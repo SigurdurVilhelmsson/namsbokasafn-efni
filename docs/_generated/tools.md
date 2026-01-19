@@ -19,6 +19,7 @@
 | `apply-equations` | Restore LaTeX equations from JSON mapping file |
 | `clean-markdown` | Fix Pandoc artifacts (mspace, orphan directives, escaped tildes) |
 | `cnxml-math-extract` | Extract MathML equations from CNXML and convert to LaTeX |
+| `compile-chapter` | Compiles chapter content for web publication by: |
 | `docx-to-md` | Convert DOCX files to Markdown format |
 | `export-parallel-corpus` | Export Translation Memory to parallel text files |
 | `fix-figure-captions` | Fix figure caption formatting issues |
@@ -42,6 +43,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*21 tools total (16 active, 5 deprecated)*
+*22 tools total (17 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
