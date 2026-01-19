@@ -17,6 +17,8 @@ const router = express.Router();
 const path = require('path');
 
 const editorHistory = require('../services/editorHistory');
+const notifications = require('../services/notifications');
+const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 
@@ -161,6 +163,9 @@ router.post('/:book/:chapter/:section/save', requireAuth, requireRole(ROLES.EDIT
       req.user.username
     );
 
+    // Log the activity
+    activityLog.logDraftSaved(req.user, book, String(chapter), section, result.historyId);
+
     res.json({
       success: true,
       ...result,
@@ -179,7 +184,7 @@ router.post('/:book/:chapter/:section/save', requireAuth, requireRole(ROLES.EDIT
  * POST /api/editor/:book/:chapter/:section/submit
  * Submit content for review
  */
-router.post('/:book/:chapter/:section/submit', requireAuth, requireRole(ROLES.EDITOR), validateParams, validateSection, (req, res) => {
+router.post('/:book/:chapter/:section/submit', requireAuth, requireRole(ROLES.EDITOR), validateParams, validateSection, async (req, res) => {
   const { book, section } = req.params;
   const chapter = req.chapterNum;
   const { content } = req.body;
@@ -203,6 +208,28 @@ router.post('/:book/:chapter/:section/submit', requireAuth, requireRole(ROLES.ED
 
     if (!result.success) {
       return res.status(409).json(result);
+    }
+
+    // Log the activity
+    activityLog.logReviewSubmitted(req.user, book, String(chapter), section, result.reviewId);
+
+    // Notify admins about the new review submission
+    // Admin user IDs come from environment variable ADMIN_USER_IDS (comma-separated)
+    const adminUserIds = (process.env.ADMIN_USER_IDS || '').split(',').filter(Boolean);
+    if (adminUserIds.length > 0) {
+      try {
+        const review = {
+          id: result.reviewId,
+          book,
+          chapter: String(chapter),
+          section,
+          submittedByUsername: req.user.username
+        };
+        const adminUsers = adminUserIds.map(id => ({ id: id.trim(), email: null }));
+        await notifications.notifyReviewSubmitted(review, adminUsers);
+      } catch (notifyErr) {
+        console.error('Failed to send review submission notification:', notifyErr);
+      }
     }
 
     res.json({
@@ -290,6 +317,15 @@ router.post('/:book/:chapter/:section/restore/:historyId', requireAuth, requireR
     if (!result.success) {
       return res.status(404).json(result);
     }
+
+    // Log the activity
+    activityLog.logVersionRestored(
+      req.user,
+      result.book,
+      result.chapter,
+      result.section,
+      parseInt(historyId)
+    );
 
     res.json({
       success: true,

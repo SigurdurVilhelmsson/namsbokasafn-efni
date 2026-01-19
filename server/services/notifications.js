@@ -1,0 +1,377 @@
+/**
+ * Notification Service
+ *
+ * Handles both email and in-app notifications for the editorial workflow.
+ *
+ * Email notifications require SMTP configuration via environment variables:
+ *   SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM
+ *
+ * If SMTP is not configured, notifications are logged to console and stored
+ * in the database for in-app display.
+ */
+
+const Database = require('better-sqlite3');
+const path = require('path');
+const fs = require('fs');
+
+// Database path
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+
+// Notification types
+const NOTIFICATION_TYPES = {
+  REVIEW_SUBMITTED: 'review_submitted',
+  REVIEW_APPROVED: 'review_approved',
+  CHANGES_REQUESTED: 'changes_requested'
+};
+
+// Initialize database tables
+function initDb() {
+  const dbDir = path.dirname(DB_PATH);
+  if (!fs.existsSync(dbDir)) {
+    fs.mkdirSync(dbDir, { recursive: true });
+  }
+
+  const db = new Database(DB_PATH);
+  db.pragma('journal_mode = WAL');
+
+  // Create notifications table if not exists
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS notifications (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id TEXT NOT NULL,
+      type TEXT NOT NULL,
+      title TEXT NOT NULL,
+      message TEXT NOT NULL,
+      link TEXT,
+      metadata TEXT,
+      read INTEGER DEFAULT 0,
+      email_sent INTEGER DEFAULT 0,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_notifications_user_id ON notifications(user_id);
+    CREATE INDEX IF NOT EXISTS idx_notifications_read ON notifications(read);
+    CREATE INDEX IF NOT EXISTS idx_notifications_created_at ON notifications(created_at);
+  `);
+
+  return db;
+}
+
+const db = initDb();
+
+// Prepared statements
+const statements = {
+  insertNotification: db.prepare(`
+    INSERT INTO notifications (user_id, type, title, message, link, metadata, email_sent)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+  `),
+  getUnreadForUser: db.prepare(`
+    SELECT * FROM notifications
+    WHERE user_id = ? AND read = 0
+    ORDER BY created_at DESC
+    LIMIT ?
+  `),
+  getAllForUser: db.prepare(`
+    SELECT * FROM notifications
+    WHERE user_id = ?
+    ORDER BY created_at DESC
+    LIMIT ?
+  `),
+  markAsRead: db.prepare(`
+    UPDATE notifications SET read = 1 WHERE id = ?
+  `),
+  markAllAsRead: db.prepare(`
+    UPDATE notifications SET read = 1 WHERE user_id = ?
+  `),
+  getUnreadCount: db.prepare(`
+    SELECT COUNT(*) as count FROM notifications WHERE user_id = ? AND read = 0
+  `),
+  getAdminUserIds: db.prepare(`
+    SELECT DISTINCT user_id FROM notifications WHERE user_id IN (
+      SELECT user_id FROM notifications GROUP BY user_id
+    )
+  `)
+};
+
+/**
+ * Check if email is configured
+ */
+function isEmailConfigured() {
+  return !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+}
+
+/**
+ * Send email notification
+ * Returns true if sent, false if not configured
+ */
+async function sendEmail(to, subject, htmlBody, textBody) {
+  if (!isEmailConfigured()) {
+    console.log('[Notification] Email not configured, skipping email to:', to);
+    console.log('[Notification] Subject:', subject);
+    return false;
+  }
+
+  try {
+    // Dynamically import nodemailer only when needed
+    const nodemailer = require('nodemailer');
+
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: parseInt(process.env.SMTP_PORT) || 587,
+      secure: process.env.SMTP_SECURE === 'true',
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      }
+    });
+
+    await transporter.sendMail({
+      from: process.env.SMTP_FROM || process.env.SMTP_USER,
+      to,
+      subject,
+      text: textBody,
+      html: htmlBody
+    });
+
+    console.log('[Notification] Email sent to:', to);
+    return true;
+  } catch (err) {
+    console.error('[Notification] Email failed:', err.message);
+    return false;
+  }
+}
+
+/**
+ * Create a notification (in-app + optional email)
+ */
+async function createNotification(options) {
+  const {
+    userId,
+    userEmail,
+    type,
+    title,
+    message,
+    link,
+    metadata = {}
+  } = options;
+
+  // Store in database
+  const result = statements.insertNotification.run(
+    userId,
+    type,
+    title,
+    message,
+    link || null,
+    JSON.stringify(metadata),
+    0 // email_sent = false initially
+  );
+
+  const notificationId = result.lastInsertRowid;
+
+  // Try to send email if we have an email address
+  let emailSent = false;
+  if (userEmail) {
+    const htmlBody = generateEmailHtml(title, message, link);
+    const textBody = `${title}\n\n${message}\n\n${link ? `View: ${link}` : ''}`;
+
+    emailSent = await sendEmail(userEmail, title, htmlBody, textBody);
+
+    if (emailSent) {
+      statements.markAsRead.run(notificationId); // Mark as email_sent
+    }
+  }
+
+  return {
+    id: notificationId,
+    emailSent
+  };
+}
+
+/**
+ * Generate HTML email body
+ */
+function generateEmailHtml(title, message, link) {
+  const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+  const fullLink = link ? (link.startsWith('http') ? link : `${baseUrl}${link}`) : null;
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #2563eb; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+    .content { background: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; }
+    .button { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin-top: 16px; }
+    .footer { margin-top: 20px; font-size: 12px; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 style="margin: 0; font-size: 20px;">Námsbókasafn</h1>
+    </div>
+    <div class="content">
+      <h2 style="margin-top: 0;">${escapeHtml(title)}</h2>
+      <p>${escapeHtml(message)}</p>
+      ${fullLink ? `<a href="${fullLink}" class="button">Skoða</a>` : ''}
+    </div>
+    <div class="footer">
+      <p>Þetta er sjálfvirk tilkynning frá Námsbókasafni.</p>
+    </div>
+  </div>
+</body>
+</html>
+  `.trim();
+}
+
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/**
+ * Notify admins when a review is submitted
+ */
+async function notifyReviewSubmitted(review, adminUsers) {
+  const results = [];
+
+  for (const admin of adminUsers) {
+    const result = await createNotification({
+      userId: admin.id,
+      userEmail: admin.email,
+      type: NOTIFICATION_TYPES.REVIEW_SUBMITTED,
+      title: 'Ný yfirferð í bið',
+      message: `${review.submittedByUsername} sendi ${review.book} / ${review.chapter} / ${review.section} til yfirferðar.`,
+      link: `/reviews`,
+      metadata: {
+        reviewId: review.id,
+        book: review.book,
+        chapter: review.chapter,
+        section: review.section,
+        submittedBy: review.submittedByUsername
+      }
+    });
+    results.push(result);
+  }
+
+  return results;
+}
+
+/**
+ * Notify editor when their review is approved
+ */
+async function notifyReviewApproved(review, editor) {
+  return createNotification({
+    userId: editor.id,
+    userEmail: editor.email,
+    type: NOTIFICATION_TYPES.REVIEW_APPROVED,
+    title: 'Þýðing samþykkt',
+    message: `Þýðingin þín á ${review.book} / ${review.chapter} / ${review.section} hefur verið samþykkt af ${review.reviewedByUsername}.`,
+    link: `/editor?book=${review.book}&chapter=${review.chapter}&section=${review.section}`,
+    metadata: {
+      reviewId: review.id,
+      book: review.book,
+      chapter: review.chapter,
+      section: review.section,
+      approvedBy: review.reviewedByUsername
+    }
+  });
+}
+
+/**
+ * Notify editor when changes are requested
+ */
+async function notifyChangesRequested(review, editor, notes) {
+  return createNotification({
+    userId: editor.id,
+    userEmail: editor.email,
+    type: NOTIFICATION_TYPES.CHANGES_REQUESTED,
+    title: 'Breytingar óskast',
+    message: `${review.reviewedByUsername} óskar eftir breytingum á ${review.book} / ${review.chapter} / ${review.section}.\n\nAthugasemdir: ${notes}`,
+    link: `/editor?book=${review.book}&chapter=${review.chapter}&section=${review.section}`,
+    metadata: {
+      reviewId: review.id,
+      book: review.book,
+      chapter: review.chapter,
+      section: review.section,
+      reviewedBy: review.reviewedByUsername,
+      notes
+    }
+  });
+}
+
+/**
+ * Get unread notifications for a user
+ */
+function getUnreadNotifications(userId, limit = 20) {
+  const rows = statements.getUnreadForUser.all(userId, limit);
+  return rows.map(parseNotificationRow);
+}
+
+/**
+ * Get all notifications for a user
+ */
+function getAllNotifications(userId, limit = 50) {
+  const rows = statements.getAllForUser.all(userId, limit);
+  return rows.map(parseNotificationRow);
+}
+
+/**
+ * Get unread count for a user
+ */
+function getUnreadCount(userId) {
+  const result = statements.getUnreadCount.get(userId);
+  return result.count;
+}
+
+/**
+ * Mark notification as read
+ */
+function markAsRead(notificationId) {
+  statements.markAsRead.run(notificationId);
+}
+
+/**
+ * Mark all notifications as read for a user
+ */
+function markAllAsRead(userId) {
+  statements.markAllAsRead.run(userId);
+}
+
+/**
+ * Parse notification row from database
+ */
+function parseNotificationRow(row) {
+  return {
+    id: row.id,
+    userId: row.user_id,
+    type: row.type,
+    title: row.title,
+    message: row.message,
+    link: row.link,
+    metadata: row.metadata ? JSON.parse(row.metadata) : {},
+    read: row.read === 1,
+    emailSent: row.email_sent === 1,
+    createdAt: row.created_at
+  };
+}
+
+module.exports = {
+  NOTIFICATION_TYPES,
+  isEmailConfigured,
+  createNotification,
+  notifyReviewSubmitted,
+  notifyReviewApproved,
+  notifyChangesRequested,
+  getUnreadNotifications,
+  getAllNotifications,
+  getUnreadCount,
+  markAsRead,
+  markAllAsRead
+};

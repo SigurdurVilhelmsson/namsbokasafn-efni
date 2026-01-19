@@ -17,6 +17,8 @@ const { execSync } = require('child_process');
 const path = require('path');
 
 const editorHistory = require('../services/editorHistory');
+const notifications = require('../services/notifications');
+const activityLog = require('../services/activityLog');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 
@@ -157,6 +159,28 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
       return res.status(400).json(result);
     }
 
+    // Log the activity
+    activityLog.logReviewApproved(
+      req.user,
+      review.submittedByUsername,
+      review.book,
+      review.chapter,
+      review.section,
+      parseInt(id),
+      commitSha
+    );
+
+    // Notify the editor that their review was approved
+    try {
+      await notifications.notifyReviewApproved(
+        { ...review, reviewedByUsername: req.user.username },
+        { id: review.submittedBy, email: null } // Email would come from user lookup
+      );
+    } catch (notifyErr) {
+      console.error('Failed to send approval notification:', notifyErr);
+      // Don't fail the request if notification fails
+    }
+
     res.json({
       success: true,
       review: result.review,
@@ -176,7 +200,7 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
  * POST /api/reviews/:id/changes
  * Request changes on a review
  */
-router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req, res) => {
   const { id } = req.params;
   const { notes } = req.body;
 
@@ -188,6 +212,15 @@ router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
   }
 
   try {
+    const review = editorHistory.getReview(parseInt(id));
+
+    if (!review) {
+      return res.status(404).json({
+        error: 'Review not found',
+        message: `No review found with ID ${id}`
+      });
+    }
+
     const result = editorHistory.requestChanges(
       parseInt(id),
       req.user.id,
@@ -197,6 +230,28 @@ router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
 
     if (!result.success) {
       return res.status(400).json(result);
+    }
+
+    // Log the activity
+    activityLog.logChangesRequested(
+      req.user,
+      review.submittedByUsername,
+      review.book,
+      review.chapter,
+      review.section,
+      parseInt(id),
+      notes
+    );
+
+    // Notify the editor that changes were requested
+    try {
+      await notifications.notifyChangesRequested(
+        { ...review, reviewedByUsername: req.user.username },
+        { id: review.submittedBy, email: null },
+        notes
+      );
+    } catch (notifyErr) {
+      console.error('Failed to send changes requested notification:', notifyErr);
     }
 
     res.json({
@@ -214,6 +269,9 @@ router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, r
 
 /**
  * Commit approved review to git
+ * @param {Object} review - The review object
+ * @param {Object} admin - The admin user approving the review
+ * @returns {string} The commit SHA
  */
 async function commitApprovedReview(review, admin) {
   const projectRoot = editorHistory.PROJECT_ROOT;
@@ -248,6 +306,9 @@ Co-Authored-By: ${review.submittedByUsername} <${review.submittedBy}@users.norep
 
     // Get the commit SHA
     const sha = execSync('git rev-parse HEAD', { cwd: projectRoot }).toString().trim();
+
+    // Log the commit creation
+    activityLog.logCommitCreated(admin, review.book, review.chapter, review.section, sha);
 
     // Push to origin (optional, may fail if no push access)
     try {

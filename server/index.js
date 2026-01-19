@@ -45,6 +45,8 @@ const booksRoutes = require('./routes/books');
 // Import Phase 3 routes (Editor)
 const editorRoutes = require('./routes/editor');
 const reviewsRoutes = require('./routes/reviews');
+const notificationsRoutes = require('./routes/notifications');
+const activityRoutes = require('./routes/activity');
 
 // Configuration
 const PORT = process.env.PORT || 3000;
@@ -86,6 +88,8 @@ app.use('/api/images', imagesRoutes);
 // Phase 3 API Routes (Editor)
 app.use('/api/editor', editorRoutes);
 app.use('/api/reviews', reviewsRoutes);
+app.use('/api/notifications', notificationsRoutes);
+app.use('/api/activity', activityRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
