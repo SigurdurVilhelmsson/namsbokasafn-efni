@@ -46,6 +46,7 @@
 | GET | `/` |
 | GET | `/:bookId` |
 | GET | `/:bookId/chapters/:chapter` |
+| GET | `/:slug/download` |
 
 ## /editor
 

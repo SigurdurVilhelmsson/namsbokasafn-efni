@@ -275,6 +275,7 @@ See [server/README.md](server/README.md) for full documentation.
 | GET | `/` |
 | GET | `/:bookId` |
 | GET | `/:bookId/chapters/:chapter` |
+| GET | `/:slug/download` |
 
 ## /editor
 
