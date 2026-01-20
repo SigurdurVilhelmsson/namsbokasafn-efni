@@ -431,12 +431,14 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       };
 
       // Run issue detection on the uploaded file
+      // Note: skipLocalization=true because this is Faithful stage, not Localization
       try {
         const fileContent = fs.readFileSync(req.file.path, 'utf-8');
         const issues = await classifyIssues(fileContent, {
           type: 'mt-output',
           book: sessionData.book,
-          chapter: sessionData.chapter
+          chapter: sessionData.chapter,
+          skipLocalization: true  // BOARD_REVIEW issues are for Pass 2 (Localization), not Faithful
         });
 
         // Apply auto-fixes and store fixed content

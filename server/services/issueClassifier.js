@@ -195,11 +195,12 @@ const ISSUE_PATTERNS = {
   },
 
   // Structural issues (BLOCKED)
-  'unclosed-bracket': {
-    regex: /\[[^\]]*$/gm,
-    category: 'BLOCKED',
-    description: 'Unclosed bracket at end of line'
-  },
+  // Note: 'unclosed-bracket' disabled - MT often wraps links across lines which is valid
+  // 'unclosed-bracket': {
+  //   regex: /\[[^\]]*$/gm,
+  //   category: 'BLOCKED',
+  //   description: 'Unclosed bracket at end of line'
+  // },
   'missing-equation': {
     regex: /\[EQUATION_\d+\]/g,
     category: 'EDITOR_CONFIRM',
@@ -232,14 +233,23 @@ const GLOSSARY_TERMS = {
  *
  * @param {string} content - Content to analyze
  * @param {object} options - Analysis options
+ * @param {string} options.type - Content type (mt-output, faithful, localized)
+ * @param {string} options.book - Book identifier
+ * @param {number} options.chapter - Chapter number
+ * @param {boolean} options.skipLocalization - Skip BOARD_REVIEW issues (for Faithful stage)
  * @returns {Promise<object[]>} Array of classified issues
  */
 async function classifyIssues(content, options = {}) {
-  const { type, book, chapter } = options;
+  const { type, book, chapter, skipLocalization = false } = options;
   const issues = [];
 
   // Check each pattern
   for (const [patternId, pattern] of Object.entries(ISSUE_PATTERNS)) {
+    // Skip BOARD_REVIEW (localization) patterns during Faithful stage
+    if (skipLocalization && pattern.category === 'BOARD_REVIEW') {
+      continue;
+    }
+
     const regex = new RegExp(pattern.regex.source, pattern.regex.flags);
     let match;
 
