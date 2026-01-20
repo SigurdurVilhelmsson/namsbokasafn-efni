@@ -353,18 +353,14 @@
       } else if (current.id === 'mt-upload') {
         showMTUploadStep(data);
 
-      } else if (current.id === 'matecat-create' || current.id === 'matecat-review') {
-        const instructions = (current.instructions || '').replace(/\n/g, '<br>');
-        contentEl.innerHTML =
-          '<div class="alert alert-info">' +
-          '<strong>Skref ' + (stepIndex + 1) + ': ' + current.name + '</strong>' +
-          '<p class="instructions">' + instructions + '</p>' +
-          '<div class="upload-section"><h4>Hlaða upp .xliff skrám:</h4>' +
-          '<form id="upload-form" class="upload-form">' +
-          '<input type="file" name="file" id="upload-file" multiple accept=".xliff,.xlf">' +
-          '<button type="submit" class="btn btn-primary">Hlaða upp</button>' +
-          '</form></div></div>';
-        setupUploadHandler(data, current.id);
+      } else if (current.id === 'faithful-edit') {
+        showFaithfulEditStep(data, stepIndex);
+
+      } else if (current.id === 'tm-creation') {
+        showTMCreationStep(data, stepIndex);
+
+      } else if (current.id === 'localization') {
+        showLocalizationStep(data, stepIndex);
 
       } else {
         const statusText = current.status === 'completed' ? 'Lokið' : current.status === 'in-progress' ? 'Í vinnslu' : 'Bíður';
@@ -528,6 +524,127 @@
           btn.disabled = true;
           btn.textContent = 'Vinnur...';
           // Mark step complete and advance
+          const res = await fetch('/api/workflow/' + data.sessionId + '/advance', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ markComplete: true })
+          });
+          const result = await res.json();
+          if (result.success || result.complete) {
+            loadWorkflow(data.sessionId);
+          } else {
+            alert('Villa: ' + (result.message || result.error || 'Gat ekki haldið áfram'));
+            btn.disabled = false;
+            btn.textContent = 'Halda áfram í næsta skref →';
+          }
+        } catch (e) {
+          alert('Villa: ' + e.message);
+          btn.disabled = false;
+          btn.textContent = 'Halda áfram í næsta skref →';
+        }
+      });
+    }
+
+    function showFaithfulEditStep(data, stepIndex) {
+      const contentEl = document.getElementById('step-content');
+      const sessionIssues = data.session?.issues || [];
+      const pendingIssues = sessionIssues.filter(i => i.status === 'pending');
+
+      let issuesList = '';
+      if (pendingIssues.length > 0) {
+        issuesList = '<div class="issue-summary"><h4>Atriði til yfirferðar:</h4>' +
+          '<p>' + pendingIssues.length + ' atriði þarf að yfirfara</p>' +
+          '<a href="/issues?sessionId=' + data.sessionId + '" class="btn btn-secondary btn-small">Opna atriðalista →</a>' +
+          '</div>';
+      }
+
+      contentEl.innerHTML =
+        '<div class="alert alert-info">' +
+        '<strong>Skref ' + (stepIndex + 1) + ': 1. yfirferð (Trú þýðing)</strong>' +
+        '<p class="step-desc">Málfarsyfirferð á vélþýðingu til að búa til trúa þýðingu.</p>' +
+        '<ol class="instructions-list">' +
+        '<li>Farðu yfir þýddu skrárnar í <a href="/editor?sessionId=' + data.sessionId + '" target="_blank">ritstjóranum</a></li>' +
+        '<li>Leiðréttu málfarsvillur og samræmdu hugtök við <a href="/terminology" target="_blank">orðalista</a></li>' +
+        '<li>Notaðu <strong>Ctrl+S</strong> til að vista breytingar</li>' +
+        '<li>Þegar búið er, smelltu á "Halda áfram"</li>' +
+        '</ol>' +
+        issuesList +
+        '<div class="action-buttons">' +
+        '<a href="/editor?sessionId=' + data.sessionId + '" class="btn btn-secondary" target="_blank">Opna ritstjóra</a>' +
+        '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram í næsta skref →</button>' +
+        '</div>' +
+        '</div>';
+
+      setupProceedButton(data);
+    }
+
+    function showTMCreationStep(data, stepIndex) {
+      const contentEl = document.getElementById('step-content');
+
+      contentEl.innerHTML =
+        '<div class="alert alert-info">' +
+        '<strong>Skref ' + (stepIndex + 1) + ': Þýðingaminni (TM)</strong>' +
+        '<p class="step-desc">Búa til þýðingaminni úr trúrri þýðingu með Matecat Align.</p>' +
+        '<ol class="instructions-list">' +
+        '<li>Opnaðu <a href="https://matecat.com/align" target="_blank">Matecat Align</a></li>' +
+        '<li>Hladdu upp ensku og íslensku skránum</li>' +
+        '<li>Samræmdu setningar sem þarf</li>' +
+        '<li>Fluttu út TMX skrá</li>' +
+        '<li>Hladdu TMX skránni upp hér</li>' +
+        '</ol>' +
+        '<div class="upload-section">' +
+        '<h4>Hlaða upp TMX skrá:</h4>' +
+        '<form id="upload-form" class="upload-form">' +
+        '<input type="file" name="file" id="upload-file" accept=".tmx">' +
+        '<button type="submit" class="btn btn-secondary">Hlaða upp</button>' +
+        '</form>' +
+        '<button id="proceed-btn" class="btn btn-primary btn-large" style="margin-top: 1rem;">Halda áfram (sleppa TM)</button>' +
+        '</div>' +
+        '</div>';
+
+      setupUploadHandler(data, 'tm-creation');
+      setupProceedButton(data);
+    }
+
+    function showLocalizationStep(data, stepIndex) {
+      const contentEl = document.getElementById('step-content');
+      const sessionIssues = data.session?.issues || [];
+      const localizationIssues = sessionIssues.filter(i => i.category === 'BOARD_REVIEW' && i.status === 'pending');
+
+      let issuesList = '';
+      if (localizationIssues.length > 0) {
+        issuesList = '<div class="issue-summary"><h4>Staðfærsluatriði:</h4>' +
+          '<p>' + localizationIssues.length + ' atriði til að staðfæra</p>' +
+          '<a href="/localization-review?sessionId=' + data.sessionId + '" class="btn btn-secondary btn-small">Opna staðfærsluyfirlit →</a>' +
+          '</div>';
+      }
+
+      contentEl.innerHTML =
+        '<div class="alert alert-info">' +
+        '<strong>Skref ' + (stepIndex + 1) + ': Staðfærsla</strong>' +
+        '<p class="step-desc">Aðlaga efni fyrir íslenskt samhengi og nemendur.</p>' +
+        '<ol class="instructions-list">' +
+        '<li>Farðu yfir staðfærsluatriði</li>' +
+        '<li>Umbreyttu einingum (mílu→km, Fahrenheit→Celsius)</li>' +
+        '<li>Settu inn íslensk dæmi þar sem við á</li>' +
+        '<li>Vistaðu breytingar</li>' +
+        '</ol>' +
+        issuesList +
+        '<div class="action-buttons">' +
+        '<a href="/localization-review?sessionId=' + data.sessionId + '" class="btn btn-secondary" target="_blank">Opna staðfærsluyfirlit</a>' +
+        '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram í næsta skref →</button>' +
+        '</div>' +
+        '</div>';
+
+      setupProceedButton(data);
+    }
+
+    function setupProceedButton(data) {
+      document.getElementById('proceed-btn')?.addEventListener('click', async () => {
+        const btn = document.getElementById('proceed-btn');
+        try {
+          btn.disabled = true;
+          btn.textContent = 'Vinnur...';
           const res = await fetch('/api/workflow/' + data.sessionId + '/advance', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -839,6 +956,8 @@
     .notification-date { font-size: 0.625rem; color: var(--gray-500); }
     .notification-link { font-size: 0.75rem; color: var(--primary); }
     .notification-empty { padding: 2rem; text-align: center; color: var(--gray-500); font-size: 0.875rem; }
+    /* Action buttons */
+    .action-buttons { display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; }
     @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .notification-dropdown { width: 280px; right: -1rem; } }
   </style>
 </body>

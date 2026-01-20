@@ -88,6 +88,7 @@ const ERLENDUR_CHAR_LIMIT = 20000;
 const ERLENDUR_SOFT_LIMIT = 18000;
 
 // Workflow steps in order
+// New workflow: MT → 1st Edit → Matecat TM → Localization → Finalize
 const WORKFLOW_STEPS = [
   {
     id: 'source',
@@ -95,7 +96,7 @@ const WORKFLOW_STEPS = [
     description: 'Sækja CNXML og búa til Markdown',
     manual: false,
     outputs: ['markdown', 'equations'],
-    instructionsIs: 'Kerfið sækir efni frá OpenStax og býr til .md og .xliff skrár.'
+    instructionsIs: 'Kerfið sækir efni frá OpenStax og býr til .md skrár.'
   },
   {
     id: 'mt-upload',
@@ -107,37 +108,42 @@ const WORKFLOW_STEPS = [
     outputs: ['translated-markdown']
   },
   {
-    id: 'matecat-create',
-    name: 'Matecat verkefni',
-    description: 'Búa til Matecat verkefni fyrir samræmingu',
-    manual: false,
-    outputs: ['xliff', 'matecat-project'],
-    instructionsIs: 'Kerfið býr til Matecat verkefni með .xliff skránum.'
+    id: 'faithful-edit',
+    name: '1. yfirferð',
+    description: 'Málfarsyfirferð á vélþýðingu (trú þýðing)',
+    manual: true,
+    instructions: '1. Farðu yfir vélþýðinguna\n2. Leiðréttu málfarsvillur\n3. Samræmdu hugtök við orðalista\n4. Vistaðu breytingar',
+    instructionsIs: 'Málfarsyfirferð á vélþýðingu til að búa til trúa þýðingu (faithful translation).',
+    inputs: ['mt-output'],
+    outputs: ['faithful-markdown']
   },
   {
-    id: 'matecat-review',
-    name: 'Matecat yfirferð',
-    description: 'Fara yfir og staðfesta þýðingar í Matecat',
+    id: 'tm-creation',
+    name: 'Þýðingaminni',
+    description: 'Búa til þýðingaminni í Matecat Align',
     manual: true,
-    instructions: '1. Opnaðu Matecat verkefnið\n2. Farðu yfir þýðingar og samþykktu/lagaðu\n3. Fluttu út XLIFF þegar lokið\n4. Hladdu XLIFF skránni upp hér',
-    inputs: ['reviewed-xliff'],
-    outputs: ['reviewed-xliff']
+    instructions: '1. Útbúðu skrár fyrir Matecat Align\n2. Hladdu upp EN og IS skrám\n3. Samræmdu þýðingar\n4. Fluttu út TMX',
+    instructionsIs: 'Nota Matecat Align til að búa til þýðingaminni (TMX) úr trúrri þýðingu.',
+    inputs: ['faithful-markdown', 'source-markdown'],
+    outputs: ['tmx']
   },
   {
-    id: 'issue-review',
-    name: 'Yfirferð atriða',
-    description: 'Fara yfir merkt atriði og staðfesta breytingar',
+    id: 'localization',
+    name: 'Staðfærsla',
+    description: 'Aðlaga efni fyrir íslenskt samhengi',
     manual: true,
-    instructions: 'Farðu yfir öll merkt atriði og samþykktu eða hafnaðu tillögum.',
-    outputs: ['issues-resolved']
+    instructions: '1. Farðu yfir staðfærsluatriði\n2. Umbreyttu einingum (mílu→km, Fahrenheit→Celsius)\n3. Settu inn íslensk dæmi þar sem við á\n4. Vistaðu breytingar',
+    instructionsIs: 'Aðlaga efni fyrir íslenska nemendur: umbreyta einingum, bæta við íslenskum dæmum.',
+    inputs: ['faithful-markdown'],
+    outputs: ['localized-markdown']
   },
   {
     id: 'finalize',
     name: 'Frágangur',
     description: 'Búa til lokaútgáfu og uppfæra stöðu',
     manual: false,
-    outputs: ['faithful-md', 'tmx', 'status-updated'],
-    instructionsIs: 'Kerfið býr til lokaútgáfu með jöfnum og uppfærir þýðingaminni.'
+    outputs: ['publication-md', 'status-updated'],
+    instructionsIs: 'Kerfið býr til lokaútgáfu og uppfærir stöðu.'
   }
 ];
 

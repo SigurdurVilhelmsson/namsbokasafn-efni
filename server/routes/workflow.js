@@ -62,7 +62,7 @@ const upload = multer({
   storage,
   limits: { fileSize: 50 * 1024 * 1024 }, // 50MB limit
   fileFilter: (req, file, cb) => {
-    const allowedExts = ['.md', '.xliff', '.xlf', '.json', '.txt', '.docx'];
+    const allowedExts = ['.md', '.xliff', '.xlf', '.json', '.txt', '.docx', '.tmx'];
     const ext = path.extname(file.originalname).toLowerCase();
     if (allowedExts.includes(ext)) {
       cb(null, true);
@@ -474,11 +474,71 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       }
     }
 
-    if (step === 'reviewed-xliff' || step === 'matecat-review') {
-      // Reviewed XLIFF uploaded
+    if (step === 'faithful-edit') {
+      // Faithful translation edited - save updated file
+      processingResult = {
+        filesUploaded: progress.uploaded,
+        filesExpected: progress.expected,
+        complete: progress.complete,
+        message: `${progress.uploaded}/${progress.expected} skrá(r) yfirfarnar`
+      };
+    }
+
+    if (step === 'tm-creation') {
+      // TMX uploaded from Matecat Align
       processingResult = {
         filesUploaded: 1,
-        message: 'XLIFF skrá móttekin'
+        message: 'TMX skrá móttekin frá Matecat Align'
+      };
+    }
+
+    if (step === 'localization') {
+      // Localized content uploaded
+      // Run issue detection for localization-specific issues
+      try {
+        const fileContent = fs.readFileSync(req.file.path, 'utf-8');
+        const issues = await classifyIssues(fileContent, {
+          type: 'localization',
+          book: sessionData.book,
+          chapter: sessionData.chapter,
+          skipLocalization: false  // Include BOARD_REVIEW issues for localization
+        });
+
+        // Apply auto-fixes
+        const autoFixResult = applyAutoFixes(fileContent, issues);
+        if (autoFixResult.fixesApplied > 0) {
+          fs.writeFileSync(req.file.path, autoFixResult.content, 'utf-8');
+        }
+
+        // Store remaining issues
+        const remainingIssues = issues.filter(i => i.category !== 'AUTO_FIX');
+        for (const issue of remainingIssues) {
+          session.addIssue(sessionId, {
+            ...issue,
+            sourceFile: req.file.originalname,
+            step
+          });
+        }
+
+        const stats = getIssueStats(issues);
+        issuesSummary = {
+          total: stats.total,
+          autoFixed: autoFixResult.fixesApplied,
+          requiresReview: stats.requiresReview,
+          blocked: stats.blocked,
+          byCategory: stats.byCategory
+        };
+
+      } catch (issueErr) {
+        console.error('Issue detection error:', issueErr);
+        issuesSummary = { error: issueErr.message };
+      }
+
+      processingResult = {
+        filesUploaded: progress.uploaded,
+        filesExpected: progress.expected,
+        complete: progress.complete,
+        message: `${progress.uploaded}/${progress.expected} staðfærð(ar) skrá(r) mótteknar`
       };
     }
 
@@ -1208,24 +1268,9 @@ async function runAutomaticStep(sessionId, stepId, sessionData) {
   session.updateStepStatus(sessionId, stepId, 'in-progress');
 
   try {
-    if (stepId === 'matecat-create') {
-      // Generate XLIFF if not already done
-      const mdFile = session.getFile(sessionId, 'markdown');
-      if (mdFile) {
-        // XLIFF should already be generated in source step
-        const xliffFile = session.getFile(sessionId, 'xliff');
-        if (xliffFile) {
-          session.updateStepStatus(sessionId, stepId, 'completed', {
-            xliffPath: xliffFile.path
-          });
-          // Save checkpoint after automatic step completion
-          session.saveCheckpoint(sessionId);
-        }
-      }
-    }
-
     if (stepId === 'finalize') {
       // Generate final outputs
+      // Copy faithful/localized files to publication folder
       session.updateStepStatus(sessionId, stepId, 'completed', {
         message: 'Final outputs generated'
       });
