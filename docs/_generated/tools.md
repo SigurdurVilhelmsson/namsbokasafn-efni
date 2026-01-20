@@ -26,6 +26,7 @@
 | `process-chapter` | Full chapter processing pipeline |
 | `repair-directives` | Fix directive syntax issues in markdown |
 | `replace-math-images` | Replace equation images with LaTeX code |
+| `restore-links` | Post-MT processing script that restores markdown links from MT-safe syntax. |
 | `strip-docx-to-txt` | Extract plain text from DOCX files |
 | `validate-chapter` | Validate chapter structure and status |
 
@@ -43,6 +44,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*22 tools total (17 active, 5 deprecated)*
+*23 tools total (18 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
