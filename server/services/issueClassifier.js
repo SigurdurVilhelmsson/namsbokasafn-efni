@@ -117,12 +117,13 @@ const ISSUE_PATTERNS = {
   },
 
   // Icelandic-specific issues (EDITOR_CONFIRM)
-  'icelandic-quotes': {
-    regex: /"([^"]+)"/g,
-    category: 'EDITOR_CONFIRM',
-    description: 'Should use Icelandic quotation marks',
-    suggestion: (match, content) => `„${content}"`
-  },
+  // Note: Disabled - too many false positives from markdown attributes like {doc="..."}
+  // 'icelandic-quotes': {
+  //   regex: /"([^"]+)"/g,
+  //   category: 'EDITOR_CONFIRM',
+  //   description: 'Should use Icelandic quotation marks',
+  //   suggestion: (match, content) => `„${content}"`
+  // },
 
   // Chemistry terminology (EDITOR_CONFIRM / BOARD_REVIEW)
   'element-symbol-case': {
@@ -189,7 +190,7 @@ const ISSUE_PATTERNS = {
     description: 'Empty link URL'
   },
   'duplicate-word': {
-    regex: /\b(\w+)\s+\1\b/gi,
+    regex: /\b(\w{3,})\s+\1\b/gi,  // Require 3+ chars to avoid false positives like "r r"
     category: 'EDITOR_CONFIRM',
     description: 'Duplicate word'
   },
