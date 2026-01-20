@@ -30,18 +30,17 @@
       "title": "Atóm, sameindir og jónir",
       "sections": [
         {"number": "2.0", "title": "Inngangur", "file": "2-0-introduction.md"},
-        {"number": "2.1", "title": "Fyrstu hugmyndir atómkenningarinnar", "file": "2-1-early-ideas-in-atomic-theory.md"},
-        {"number": "2.2", "title": "Þróun atómkenningarinnar", "file": "2-2-evolution-of-atomic-theory.md"},
-        {"number": "2.3", "title": "Bygging atóma og táknmál", "file": "2-3-atomic-structure-and-symbolism.md"},
-        {"number": "2.4", "title": "Efnaformúlur", "file": "2-4-chemical-formulas.md"},
-        {"number": "2.5", "title": "Lotukerfið", "file": "2-5-the-periodic-table.md"},
-        {"number": "2.6", "title": "Jóna- og sameindaefni", "file": "2-6-ionic-and-molecular-compounds.md"},
-        {"number": "2.7", "title": "Nafnakerfi efnafræðinnar", "file": "2-7-chemical-nomenclature.md"},
+        {"number": "2.1", "title": "Fyrstu hugmyndir atómkenningarinnar", "file": "2-1.md"},
+        {"number": "2.2", "title": "Þróun atómkenningarinnar", "file": "2-2.md"},
+        {"number": "2.3", "title": "Bygging atóma og táknmál", "file": "2-3.md"},
+        {"number": "2.4", "title": "Efnaformúlur", "file": "2-4.md"},
+        {"number": "2.5", "title": "Lotukerfið", "file": "2-5.md"},
+        {"number": "2.6", "title": "Jóna- og sameindaefni", "file": "2-6.md"},
+        {"number": "2.7", "title": "Nafnakerfi efnafræðinnar", "file": "2-7.md"},
         {"number": "2.8", "title": "Lykilhugtök", "file": "2-key-terms.md", "type": "glossary"},
         {"number": "2.9", "title": "Lykiljöfnur", "file": "2-key-equations.md", "type": "equations"},
         {"number": "2.10", "title": "Samantekt", "file": "2-summary.md", "type": "summary"},
-        {"number": "2.11", "title": "Æfingar", "file": "2-exercises.md", "type": "exercises"},
-        {"number": "2.12", "title": "Svör við æfingum", "file": "chapter-2.md", "type": "answer-key"}
+        {"number": "2.11", "title": "Æfingar", "file": "2-exercises.md", "type": "exercises"}
       ]
     },
     {
@@ -49,15 +48,14 @@
       "title": "Samsetning efna og lausna",
       "sections": [
         {"number": "3.0", "title": "Inngangur", "file": "3-0-introduction.md"},
-        {"number": "3.1", "title": "Formúlumassi og mólhugtakið", "file": "3-1-formula-mass-and-the-mole-concept.md"},
-        {"number": "3.2", "title": "Ákvörðun reynsluformúla og sameindaformúla", "file": "3-2-determining-empirical-and-molecular-formulas.md"},
-        {"number": "3.3", "title": "Mólstyrkur", "file": "3-3-molarity.md"},
-        {"number": "3.4", "title": "Aðrar einingar fyrir styrk lausna", "file": "3-4-other-units-for-solution-concentrations.md"},
+        {"number": "3.1", "title": "Formúlumassi og mólhugtakið", "file": "3-1.md"},
+        {"number": "3.2", "title": "Ákvörðun reynsluformúla og sameindaformúla", "file": "3-2.md"},
+        {"number": "3.3", "title": "Mólstyrkur", "file": "3-3.md"},
+        {"number": "3.4", "title": "Aðrar einingar fyrir styrk lausna", "file": "3-4.md"},
         {"number": "3.5", "title": "Lykilhugtök", "file": "3-key-terms.md", "type": "glossary"},
         {"number": "3.6", "title": "Lykiljöfnur", "file": "3-key-equations.md", "type": "equations"},
         {"number": "3.7", "title": "Samantekt", "file": "3-summary.md", "type": "summary"},
-        {"number": "3.8", "title": "Æfingar", "file": "3-exercises.md", "type": "exercises"},
-        {"number": "3.9", "title": "Svör við æfingum", "file": "chapter-3.md", "type": "answer-key"}
+        {"number": "3.8", "title": "Æfingar", "file": "3-exercises.md", "type": "exercises"}
       ]
     },
     {
@@ -65,16 +63,15 @@
       "title": "Magnskipti efnahvarfa",
       "sections": [
         {"number": "4.0", "title": "Inngangur", "file": "4-0-introduction.md"},
-        {"number": "4.1", "title": "Ritun og jöfnun efnajafna", "file": "4-1-writing-and-balancing-chemical-equations.md"},
-        {"number": "4.2", "title": "Flokkun efnahvarfa", "file": "4-2-classifying-chemical-reactions.md"},
-        {"number": "4.3", "title": "Magnskipti efnahvarfa", "file": "4-3-reaction-stoichiometry.md"},
-        {"number": "4.4", "title": "Afköst efnahvarfa", "file": "4-4-reaction-yields.md"},
-        {"number": "4.5", "title": "Magngreining", "file": "4-5-quantitative-chemical-analysis.md"},
+        {"number": "4.1", "title": "Ritun og jöfnun efnajafna", "file": "4-1.md"},
+        {"number": "4.2", "title": "Flokkun efnahvarfa", "file": "4-2.md"},
+        {"number": "4.3", "title": "Magnskipti efnahvarfa", "file": "4-3.md"},
+        {"number": "4.4", "title": "Afköst efnahvarfa", "file": "4-4.md"},
+        {"number": "4.5", "title": "Magngreining", "file": "4-5.md"},
         {"number": "4.6", "title": "Lykilhugtök", "file": "4-key-terms.md", "type": "glossary"},
         {"number": "4.7", "title": "Lykiljöfnur", "file": "4-key-equations.md", "type": "equations"},
         {"number": "4.8", "title": "Samantekt", "file": "4-summary.md", "type": "summary"},
-        {"number": "4.9", "title": "Æfingar", "file": "4-exercises.md", "type": "exercises"},
-        {"number": "4.10", "title": "Svör við æfingum", "file": "chapter-4.md", "type": "answer-key"}
+        {"number": "4.9", "title": "Æfingar", "file": "4-exercises.md", "type": "exercises"}
       ]
     }
   ]
