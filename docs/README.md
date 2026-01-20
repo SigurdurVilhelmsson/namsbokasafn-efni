@@ -19,6 +19,7 @@ This directory contains all documentation for the Námsbókasafn translation pro
 | [Schema Reference](technical/schemas.md) | JSON schema documentation |
 | [Publication Format](technical/publication-format.md) | Format specification for web content |
 | [Markdown Fixes](technical/markdown-fixes.md) | Pandoc artifact fixes |
+| [OpenStax Tools Analysis](technical/openstax-tools-analysis.md) | Evaluation of OpenStax repositories |
 
 ## Contributing
 

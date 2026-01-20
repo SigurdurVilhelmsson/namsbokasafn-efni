@@ -233,6 +233,7 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 | 2026-01 | SQLite terminology DB | Consistent with session storage, simple approval workflow |
 | 2026-01 | 3-track publication | MT-preview enables early access while reviews continue |
 | 2026-01 | Review before TM | TM is human-verified from the start |
+| 2026-01 | OpenStax Option B | Keep custom pipeline + add POET; our MT workflow is novel and working |
 
 ---
 
@@ -321,3 +322,19 @@ node tools/compile-chapter.js efnafraedi 1 --track faithful
 - [ ] Verify all chapter links work
 - [ ] Test on mobile devices
 - [ ] Deploy to Linode production
+
+### Post-Pilot: OpenStax Integration Evaluation
+
+See [docs/technical/openstax-tools-analysis.md](docs/technical/openstax-tools-analysis.md) for full analysis.
+
+**Recommended: Option B (Incremental Adoption)**
+- [ ] Install POET VSCode extension for CNXML validation
+- [ ] Reference cnx-transforms XSLT for conversion improvements
+- [ ] Study osbooks-fizyka-bundle structure for best practices
+
+**Future evaluation (when pilot is stable):**
+- [ ] Test Enki locally with osbooks-chemistry-2e
+- [ ] Experiment with `--sideload` using our CNXML source
+- [ ] Evaluate PDF quality vs manual exports
+- [ ] Assess effort to adapt vefur to Enki's JSON output
+- [ ] Consider creating osbooks-efnafraedi-bundle for long-term compatibility
