@@ -514,29 +514,78 @@ function extractContent(cnxml, options = {}) {
     lines.push('');
   }
 
-  // Process top-level content BEFORE sections (introductory paragraphs and equations)
+  // Process top-level content BEFORE sections (or ALL content if no sections exist)
+  // This handles introduction modules that have no <section> tags
   const firstSectionIndex = content.search(/<section[^>]*>/);
-  const preSectionContent = firstSectionIndex > 0 ? content.substring(0, firstSectionIndex) : '';
+  const hasSections = firstSectionIndex >= 0;
+  const preSectionContent = hasSections ? content.substring(0, firstSectionIndex) : content;
 
-  if (preSectionContent) {
-    // Find all paragraphs and equations in document order
-    const topLevelPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
-    let topMatch;
-    while ((topMatch = topLevelPattern.exec(preSectionContent)) !== null) {
-      const elementType = topMatch[1];
-      const elementContent = topMatch[3];
+  if (preSectionContent.trim()) {
+    // Find all top-level elements in document order
+    const topLevelElements = [];
 
-      if (elementType === 'para') {
-        const paraText = processInlineContent(elementContent);
+    // Find paragraphs
+    const paraPattern = /<para([^>]*)>([\s\S]*?)<\/para>/g;
+    let paraMatch;
+    while ((paraMatch = paraPattern.exec(preSectionContent)) !== null) {
+      topLevelElements.push({ type: 'para', pos: paraMatch.index, content: paraMatch[2], attrs: paraMatch[1] });
+    }
+
+    // Find equations
+    const eqPattern = /<equation([^>]*)>([\s\S]*?)<\/equation>/g;
+    let eqMatch;
+    while ((eqMatch = eqPattern.exec(preSectionContent)) !== null) {
+      topLevelElements.push({ type: 'equation', pos: eqMatch.index, content: eqMatch[2], attrs: eqMatch[1] });
+    }
+
+    // Find figures (important for introduction modules with splash images)
+    const figurePattern = /<figure([^>]*)>([\s\S]*?)<\/figure>/g;
+    let figureMatch;
+    while ((figureMatch = figurePattern.exec(preSectionContent)) !== null) {
+      topLevelElements.push({ type: 'figure', pos: figureMatch.index, content: figureMatch[2], attrs: figureMatch[1] });
+    }
+
+    // Sort by position in document
+    topLevelElements.sort((a, b) => a.pos - b.pos);
+
+    // Process elements in document order
+    for (const elem of topLevelElements) {
+      if (elem.type === 'para') {
+        const paraText = processInlineContent(elem.content);
         if (paraText.trim()) {
           lines.push(paraText);
           lines.push('');
         }
-      } else if (elementType === 'equation') {
+      } else if (elem.type === 'equation') {
         // Equations already have MathML replaced with [[EQ:n]] placeholders
-        const eqText = processInlineContent(elementContent);
+        const eqText = processInlineContent(elem.content);
         if (eqText.trim()) {
           lines.push(eqText);
+          lines.push('');
+        }
+      } else if (elem.type === 'figure') {
+        // Process figure - extract image and caption
+        const idMatch = elem.attrs.match(/id="([^"]*)"/);
+        const figureId = idMatch ? idMatch[1] : null;
+        const mediaMatch = elem.content.match(/<media[^>]*>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
+        const captionMatch = elem.content.match(/<caption>([\s\S]*?)<\/caption>/);
+
+        // For pre-section figures (like splash images), use a simple format
+        if (mediaMatch) {
+          const imageSrc = mediaMatch[1];
+          // Convert relative path to just filename for now
+          const imageFile = imageSrc.split('/').pop();
+          lines.push(`![${figureId || 'figure'}](${imageFile})`);
+          lines.push('');
+        }
+
+        if (captionMatch) {
+          const captionText = processInlineContent(captionMatch[1]);
+          if (figureId) {
+            lines.push('*Figure: ' + captionText + '*{#' + figureId + '}');
+          } else {
+            lines.push('*Figure: ' + captionText + '*');
+          }
           lines.push('');
         }
       }
