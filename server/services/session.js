@@ -526,20 +526,33 @@ function parseMarkdownFrontmatter(content) {
     }
   }
 
-  // Try Erlendur MT format: ## titill: „..." kafli: „..." eining: „..." tungumál: „..." [hluti: „..."]
-  // The format uses Icelandic quotation marks „..."
-  const erlendurMatch = content.match(/^##\s*titill:\s*[„"]([^""„]+)[""„]\s*kafli:\s*[„"]([^""„]+)[""„]\s*eining:\s*[„"]([^""„]+)[""„]\s*tungumál:\s*[„"]([^""„]+)[""„](?:\s*hluti:\s*[„"]([^""„]+)[""„])?/m);
-  if (erlendurMatch) {
-    const result = {
-      title: erlendurMatch[1],
-      section: erlendurMatch[2],
-      module: erlendurMatch[3],
-      lang: erlendurMatch[4]
-    };
-    if (erlendurMatch[5]) {
-      result.part = erlendurMatch[5];
+  // Try Erlendur MT format: ## titill: „..." kafli: „..." eining: „..." tungumál: „..."
+  // The format uses Icelandic quotation marks: „ (U+201E) opening, " (U+201C) closing
+  // Extract each field separately to handle quote variations
+  if (content.startsWith('## titill:') || content.startsWith('##titill:')) {
+    const titleMatch = content.match(/titill:\s*\u201E([^\u201C\u201D\u201E]+)[\u201C\u201D]/);
+    const sectionMatch = content.match(/kafli:\s*\u201E([^\u201C\u201D\u201E]+)[\u201C\u201D]/);
+    const moduleMatch = content.match(/eining:\s*\u201E([^\u201C\u201D\u201E]+)[\u201C\u201D]/);
+    const langMatch = content.match(/tungum\u00E1l:\s*\u201E([^\u201C\u201D\u201E]+)[\u201C\u201D]/);
+    const partMatch = content.match(/hluti:\s*\u201E([^\u201C\u201D\u201E]+)[\u201C\u201D]/);
+
+    if (titleMatch && sectionMatch && moduleMatch) {
+      let section = sectionMatch[1];
+      // Normalize translated section names back to canonical form
+      if (section.toLowerCase() === 'inngangur') {
+        section = 'intro';
+      }
+      const result = {
+        title: titleMatch[1],
+        section: section,
+        module: moduleMatch[1],
+        lang: langMatch ? langMatch[1] : null
+      };
+      if (partMatch) {
+        result.part = partMatch[1];
+      }
+      return result;
     }
-    return result;
   }
 
   // Try a more lenient Erlendur format (in case of variations)
