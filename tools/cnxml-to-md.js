@@ -24,6 +24,12 @@ import https from 'https';
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/main';
 const MODULES_PATH = '/modules';
 
+// OpenStax default license (CC BY 4.0) - used when license not in CNXML
+const OPENSTAX_DEFAULT_LICENSE = {
+  name: 'Creative Commons Attribution License',
+  url: 'https://creativecommons.org/licenses/by/4.0/'
+};
+
 // Module mappings from OpenStax Chemistry 2e collection
 // Verified against chemistry-2e.collection.xml from GitHub
 const CHEMISTRY_2E_MODULES = {
@@ -153,6 +159,75 @@ function fetchUrl(url) {
       res.on('error', reject);
     }).on('error', reject);
   });
+}
+
+/**
+ * Extract document metadata from CNXML metadata element.
+ * Handles both prefixed (md:) and unprefixed element names.
+ *
+ * @param {string} cnxml - Raw CNXML content
+ * @returns {Object} Metadata object with optional created, revised, license, keywords, subjects
+ */
+function extractMetadata(cnxml) {
+  const metadata = {};
+
+  // Extract metadata section
+  const metadataMatch = cnxml.match(/<metadata[^>]*>([\s\S]*?)<\/metadata>/);
+  if (!metadataMatch) return metadata;
+  const metadataContent = metadataMatch[1];
+
+  // Helper to extract element content (handles md: prefix or unprefixed)
+  const extractElement = (name) => {
+    const prefixedMatch = metadataContent.match(new RegExp('<md:' + name + '[^>]*>([^<]*)<\\/md:' + name + '>'));
+    const unprefixedMatch = metadataContent.match(new RegExp('<' + name + '[^>]*>([^<]*)<\\/' + name + '>'));
+    return prefixedMatch ? prefixedMatch[1].trim() : (unprefixedMatch ? unprefixedMatch[1].trim() : null);
+  };
+
+  // Helper to extract attribute from element
+  const extractAttribute = (name, attr) => {
+    const prefixedMatch = metadataContent.match(new RegExp('<md:' + name + '[^>]*' + attr + '="([^"]*)"'));
+    const unprefixedMatch = metadataContent.match(new RegExp('<' + name + '[^>]*' + attr + '="([^"]*)"'));
+    return prefixedMatch ? prefixedMatch[1] : (unprefixedMatch ? unprefixedMatch[1] : null);
+  };
+
+  // Extract created date (md:created)
+  const created = extractElement('created');
+  if (created) metadata.created = created;
+
+  // Extract revised date (md:revised)
+  const revised = extractElement('revised');
+  if (revised) metadata.revised = revised;
+
+  // Extract license - try url attribute first, then element content
+  const licenseUrl = extractAttribute('license', 'url');
+  const licenseText = extractElement('license');
+  if (licenseUrl) {
+    metadata.license_url = licenseUrl;
+  } else if (licenseText) {
+    metadata.license = licenseText;
+  }
+
+  // Extract keywords (md:keyword) - multiple elements
+  const keywordPattern = /<md:keyword>([^<]*)<\/md:keyword>|<keyword>([^<]*)<\/keyword>/g;
+  const keywords = [];
+  let keywordMatch;
+  while ((keywordMatch = keywordPattern.exec(metadataContent)) !== null) {
+    const keyword = (keywordMatch[1] || keywordMatch[2]).trim();
+    if (keyword) keywords.push(keyword);
+  }
+  if (keywords.length > 0) metadata.keywords = keywords;
+
+  // Extract subjects (md:subject) - multiple elements
+  const subjectPattern = /<md:subject>([^<]*)<\/md:subject>|<subject>([^<]*)<\/subject>/g;
+  const subjects = [];
+  let subjectMatch;
+  while ((subjectMatch = subjectPattern.exec(metadataContent)) !== null) {
+    const subject = (subjectMatch[1] || subjectMatch[2]).trim();
+    if (subject) subjects.push(subject);
+  }
+  if (subjects.length > 0) metadata.subjects = subjects;
+
+  return metadata;
 }
 
 function convertMathMLToLatex(mathml) {
@@ -298,6 +373,9 @@ function extractContent(cnxml, verbose) {
   const moduleInfo = CHEMISTRY_2E_MODULES[moduleId] || {};
   const section = moduleInfo.section || '';
 
+  // Extract optional metadata (dates, license, keywords)
+  const docMetadata = extractMetadata(cnxml);
+
   const contentMatch = cnxml.match(/<content>([\s\S]*)<\/content>/);
   if (!contentMatch) throw new Error('No <content> element found in CNXML');
   let content = contentMatch[1];
@@ -314,18 +392,82 @@ function extractContent(cnxml, verbose) {
   // Build markdown
   const lines = [];
 
-  // Frontmatter
+  // Frontmatter with enhanced metadata
   lines.push('---');
   lines.push('title: "' + documentTitle + '"');
   if (section) lines.push('section: "' + section + '"');
   lines.push('module: "' + moduleId + '"');
   lines.push('lang: "en"');
+
+  // Add dates if available
+  if (docMetadata.created) {
+    lines.push('created: "' + docMetadata.created + '"');
+  }
+  if (docMetadata.revised) {
+    lines.push('revised: "' + docMetadata.revised + '"');
+  }
+
+  // Add license (from metadata or OpenStax default)
+  if (docMetadata.license_url) {
+    lines.push('license_url: "' + docMetadata.license_url + '"');
+  } else if (docMetadata.license) {
+    lines.push('license: "' + docMetadata.license + '"');
+  } else {
+    // Apply OpenStax default license for Chemistry 2e content
+    lines.push('license_url: "' + OPENSTAX_DEFAULT_LICENSE.url + '"');
+  }
+
+  // Add keywords as YAML array if available
+  if (docMetadata.keywords && docMetadata.keywords.length > 0) {
+    lines.push('keywords:');
+    for (const keyword of docMetadata.keywords) {
+      lines.push('  - "' + keyword + '"');
+    }
+  }
+
+  // Add subjects as YAML array if available
+  if (docMetadata.subjects && docMetadata.subjects.length > 0) {
+    lines.push('subjects:');
+    for (const subject of docMetadata.subjects) {
+      lines.push('  - "' + subject + '"');
+    }
+  }
+
   lines.push('---');
   lines.push('');
 
   // Document title as H1
   lines.push('# ' + documentTitle);
   lines.push('');
+
+  // Process top-level content BEFORE sections (introductory paragraphs and equations)
+  const firstSectionIndex = content.search(/<section[^>]*>/);
+  const preSectionContent = firstSectionIndex > 0 ? content.substring(0, firstSectionIndex) : '';
+
+  if (preSectionContent) {
+    // Find all paragraphs and equations in document order
+    const topLevelPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+    let topMatch;
+    while ((topMatch = topLevelPattern.exec(preSectionContent)) !== null) {
+      const elementType = topMatch[1];
+      const elementContent = topMatch[3];
+
+      if (elementType === 'para') {
+        const paraText = processInlineContent(elementContent);
+        if (paraText.trim()) {
+          lines.push(paraText);
+          lines.push('');
+        }
+      } else if (elementType === 'equation') {
+        // Equations already have MathML replaced with [[EQ:n]] placeholders
+        const eqText = processInlineContent(elementContent);
+        if (eqText.trim()) {
+          lines.push(eqText);
+          lines.push('');
+        }
+      }
+    }
+  }
 
   // Process sections
   const sectionPattern = /<section[^>]*>([\s\S]*?)<\/section>/g;
@@ -340,8 +482,8 @@ function extractContent(cnxml, verbose) {
       lines.push('');
     }
 
-    // Remove nested elements from section content before processing paragraphs
-    // This prevents double-processing of paragraphs inside notes, examples, exercises, etc.
+    // Remove nested elements from section content before processing paragraphs/equations
+    // This prevents double-processing of content inside notes, examples, exercises, etc.
     const plainSectionContent = sectionContent
       .replace(/<note[^>]*>[\s\S]*?<\/note>/g, '')
       .replace(/<example[^>]*>[\s\S]*?<\/example>/g, '')
@@ -350,14 +492,26 @@ function extractContent(cnxml, verbose) {
       .replace(/<table[^>]*>[\s\S]*?<\/table>/g, '')
       .replace(/<list[^>]*>[\s\S]*?<\/list>/g, '');
 
-    // Process paragraphs within section (excluding nested elements)
-    const paraPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
-    let paraMatch;
-    while ((paraMatch = paraPattern.exec(plainSectionContent)) !== null) {
-      const paraText = processInlineContent(paraMatch[1]);
-      if (paraText.trim()) {
-        lines.push(paraText);
-        lines.push('');
+    // Process paragraphs AND equations within section in document order
+    const sectionContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+    let contentMatch;
+    while ((contentMatch = sectionContentPattern.exec(plainSectionContent)) !== null) {
+      const elementType = contentMatch[1];
+      const elementContent = contentMatch[3];
+
+      if (elementType === 'para') {
+        const paraText = processInlineContent(elementContent);
+        if (paraText.trim()) {
+          lines.push(paraText);
+          lines.push('');
+        }
+      } else if (elementType === 'equation') {
+        // Equations already have MathML replaced with [[EQ:n]] placeholders
+        const eqText = processInlineContent(elementContent);
+        if (eqText.trim()) {
+          lines.push(eqText);
+          lines.push('');
+        }
       }
     }
 
@@ -634,28 +788,20 @@ function extractContent(cnxml, verbose) {
     }
   }
 
-  // Process any remaining paragraphs not in sections
-  const topLevelParaPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
-  let topParaMatch;
-  const processedContent = content.replace(/<section[^>]*>[\s\S]*?<\/section>/g, '');
-  while ((topParaMatch = topLevelParaPattern.exec(processedContent)) !== null) {
-    const paraText = processInlineContent(topParaMatch[1]);
-    if (paraText.trim() && !lines.includes(paraText)) {
-      lines.push(paraText);
-      lines.push('');
-    }
-  }
-
   if (verbose) {
     console.error('Extracted from ' + moduleId + ': ' + documentTitle);
     console.error('Equations found: ' + equationCounter);
     console.error('Output lines: ' + lines.length);
+    if (docMetadata.created) console.error('Created: ' + docMetadata.created);
+    if (docMetadata.revised) console.error('Revised: ' + docMetadata.revised);
+    if (docMetadata.keywords) console.error('Keywords: ' + docMetadata.keywords.join(', '));
   }
 
   return {
     moduleId,
     section,
     documentTitle,
+    metadata: docMetadata,
     markdown: lines.join('\n'),
     equations
   };
