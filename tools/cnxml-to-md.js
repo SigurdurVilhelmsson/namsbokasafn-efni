@@ -523,200 +523,145 @@ function extractContent(cnxml, verbose) {
       lines.push('');
     }
 
-    // Remove nested elements from section content before processing paragraphs/equations
-    // This prevents double-processing of content inside notes, examples, exercises, etc.
-    const plainSectionContent = sectionContent
-      .replace(/<note[^>]*>[\s\S]*?<\/note>/g, '')
-      .replace(/<example[^>]*>[\s\S]*?<\/example>/g, '')
-      .replace(/<exercise[^>]*>[\s\S]*?<\/exercise>/g, '')
-      .replace(/<figure[^>]*>[\s\S]*?<\/figure>/g, '')
-      .replace(/<table[^>]*>[\s\S]*?<\/table>/g, '')
-      .replace(/<list[^>]*>[\s\S]*?<\/list>/g, '');
+    // Find all top-level elements with their positions for document-order processing
+    const elements = [];
 
-    // Process paragraphs AND equations within section in document order
-    const sectionContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
-    let contentMatch;
-    while ((contentMatch = sectionContentPattern.exec(plainSectionContent)) !== null) {
-      const elementType = contentMatch[1];
-      const elementContent = contentMatch[3];
+    // Find paragraphs and equations (excluding those inside nested elements)
+    // We need to track which para/equation are inside nested elements
+    const nestedRanges = [];
+    const nestedPatterns = [
+      /<note[^>]*>[\s\S]*?<\/note>/g,
+      /<example[^>]*>[\s\S]*?<\/example>/g,
+      /<exercise[^>]*>[\s\S]*?<\/exercise>/g,
+      /<figure[^>]*>[\s\S]*?<\/figure>/g,
+      /<table[^>]*>[\s\S]*?<\/table>/g,
+      /<list[^>]*>[\s\S]*?<\/list>/g
+    ];
+    for (const pattern of nestedPatterns) {
+      let m;
+      while ((m = pattern.exec(sectionContent)) !== null) {
+        nestedRanges.push({ start: m.index, end: m.index + m[0].length });
+      }
+    }
 
-      if (elementType === 'para') {
-        const paraText = processInlineContent(elementContent);
+    const isInsideNested = (pos) => nestedRanges.some(r => pos >= r.start && pos < r.end);
+
+    // Find top-level paragraphs
+    const paraPattern = /<para([^>]*)>([\s\S]*?)<\/para>/g;
+    let paraMatch;
+    while ((paraMatch = paraPattern.exec(sectionContent)) !== null) {
+      if (!isInsideNested(paraMatch.index)) {
+        elements.push({ type: 'para', pos: paraMatch.index, content: paraMatch[2], attrs: paraMatch[1] });
+      }
+    }
+
+    // Find top-level equations
+    const eqPattern = /<equation([^>]*)>([\s\S]*?)<\/equation>/g;
+    let eqMatch;
+    while ((eqMatch = eqPattern.exec(sectionContent)) !== null) {
+      if (!isInsideNested(eqMatch.index)) {
+        elements.push({ type: 'equation', pos: eqMatch.index, content: eqMatch[2], attrs: eqMatch[1] });
+      }
+    }
+
+    // Find lists
+    const listPattern = /<list([^>]*)>([\s\S]*?)<\/list>/g;
+    let listMatch;
+    while ((listMatch = listPattern.exec(sectionContent)) !== null) {
+      if (!isInsideNested(listMatch.index)) {
+        elements.push({ type: 'list', pos: listMatch.index, content: listMatch[2], attrs: listMatch[1] });
+      }
+    }
+
+    // Find notes
+    const notePattern = /<note([^>]*)>([\s\S]*?)<\/note>/g;
+    let noteMatch;
+    while ((noteMatch = notePattern.exec(sectionContent)) !== null) {
+      elements.push({ type: 'note', pos: noteMatch.index, content: noteMatch[2], attrs: noteMatch[1] });
+    }
+
+    // Find examples
+    const examplePattern = /<example([^>]*)>([\s\S]*?)<\/example>/g;
+    let exampleMatch;
+    while ((exampleMatch = examplePattern.exec(sectionContent)) !== null) {
+      elements.push({ type: 'example', pos: exampleMatch.index, content: exampleMatch[2], attrs: exampleMatch[1] });
+    }
+
+    // Find figures
+    const figurePattern = /<figure([^>]*)>([\s\S]*?)<\/figure>/g;
+    let figureMatch;
+    while ((figureMatch = figurePattern.exec(sectionContent)) !== null) {
+      elements.push({ type: 'figure', pos: figureMatch.index, content: figureMatch[2], attrs: figureMatch[1] });
+    }
+
+    // Find exercises
+    const exercisePattern = /<exercise([^>]*)>([\s\S]*?)<\/exercise>/g;
+    let exerciseMatch;
+    while ((exerciseMatch = exercisePattern.exec(sectionContent)) !== null) {
+      elements.push({ type: 'exercise', pos: exerciseMatch.index, content: exerciseMatch[2], attrs: exerciseMatch[1] });
+    }
+
+    // Find tables
+    const tablePattern = /<table([^>]*)>([\s\S]*?)<\/table>/g;
+    let tableMatch;
+    while ((tableMatch = tablePattern.exec(sectionContent)) !== null) {
+      elements.push({ type: 'table', pos: tableMatch.index, content: tableMatch[2], attrs: tableMatch[1] });
+    }
+
+    // Sort elements by position in document
+    elements.sort((a, b) => a.pos - b.pos);
+
+    // Process elements in document order
+    for (const elem of elements) {
+      if (elem.type === 'para') {
+        const paraText = processInlineContent(elem.content);
         if (paraText.trim()) {
           lines.push(paraText);
           lines.push('');
         }
-      } else if (elementType === 'equation') {
-        // Equations already have MathML replaced with [[EQ:n]] placeholders
-        const eqText = processInlineContent(elementContent);
+      } else if (elem.type === 'equation') {
+        const eqText = processInlineContent(elem.content);
         if (eqText.trim()) {
           lines.push(eqText);
           lines.push('');
         }
-      }
-    }
-
-    // Process lists
-    const listPattern = /<list[^>]*>([\s\S]*?)<\/list>/g;
-    let listMatch;
-    while ((listMatch = listPattern.exec(sectionContent)) !== null) {
-      const itemPattern = /<item[^>]*>([\s\S]*?)<\/item>/g;
-      let itemMatch;
-      while ((itemMatch = itemPattern.exec(listMatch[1])) !== null) {
-        const itemText = processInlineContent(itemMatch[1]);
-        if (itemText.trim()) {
-          lines.push('- ' + itemText);
-        }
-      }
-      lines.push('');
-    }
-
-    // Process notes with class preservation
-    const notePattern = /<note([^>]*)>([\s\S]*?)<\/note>/g;
-    let noteMatch;
-    while ((noteMatch = notePattern.exec(sectionContent)) !== null) {
-      const noteAttrs = noteMatch[1];
-      const noteContent = noteMatch[2];
-      const noteTitleMatch = noteContent.match(/<title>([^<]+)<\/title>/);
-
-      // Extract note class if present
-      const classMatch = noteAttrs.match(/class="([^"]*)"/);
-      const noteClass = classMatch ? classMatch[1] : '';
-
-      // Map CNXML classes to directive classes
-      let directive = ':::note';
-      if (noteClass.includes('link-to-learning')) {
-        directive = ':::note{.link-to-learning}';
-      } else if (noteClass.includes('everyday-life')) {
-        directive = ':::note{.everyday-life}';
-      } else if (noteClass.includes('chemist-portrait')) {
-        directive = ':::note{.chemist-portrait}';
-      } else if (noteClass.includes('sciences-interconnect')) {
-        directive = ':::note{.sciences-interconnect}';
-      }
-
-      lines.push(directive);
-      if (noteTitleMatch) {
-        lines.push('### ' + processInlineContent(noteTitleMatch[1]));
-        lines.push('');
-      }
-
-      // Process paragraphs AND equations within note in document order
-      const noteContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
-      let noteContentMatch;
-      while ((noteContentMatch = noteContentPattern.exec(noteContent)) !== null) {
-        const elementType = noteContentMatch[1];
-        const elementContent = noteContentMatch[3];
-
-        if (elementType === 'para') {
-          const paraText = processInlineContent(elementContent);
-          if (paraText.trim()) {
-            lines.push(paraText);
-            lines.push('');
+      } else if (elem.type === 'list') {
+        const itemPattern = /<item[^>]*>([\s\S]*?)<\/item>/g;
+        let itemMatch;
+        while ((itemMatch = itemPattern.exec(elem.content)) !== null) {
+          const itemText = processInlineContent(itemMatch[1]);
+          if (itemText.trim()) {
+            lines.push('- ' + itemText);
           }
-        } else if (elementType === 'equation') {
-          const eqText = processInlineContent(elementContent);
-          if (eqText.trim()) {
-            lines.push(eqText);
-            lines.push('');
-          }
-        }
-      }
-      lines.push(':::');
-      lines.push('');
-    }
-
-    // Process examples
-    const examplePattern = /<example[^>]*>([\s\S]*?)<\/example>/g;
-    let exampleMatch;
-    while ((exampleMatch = examplePattern.exec(sectionContent)) !== null) {
-      const exampleContent = exampleMatch[1];
-      const exampleTitleMatch = exampleContent.match(/<title>([^<]+)<\/title>/);
-
-      lines.push('::: example');
-      if (exampleTitleMatch) {
-        lines.push('### ' + processInlineContent(exampleTitleMatch[1]));
-        lines.push('');
-      }
-
-      // Process paragraphs AND equations within example in document order
-      const exContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
-      let exContentMatch;
-      while ((exContentMatch = exContentPattern.exec(exampleContent)) !== null) {
-        const elementType = exContentMatch[1];
-        const elementContent = exContentMatch[3];
-
-        if (elementType === 'para') {
-          const paraText = processInlineContent(elementContent);
-          if (paraText.trim()) {
-            lines.push(paraText);
-            lines.push('');
-          }
-        } else if (elementType === 'equation') {
-          const eqText = processInlineContent(elementContent);
-          if (eqText.trim()) {
-            lines.push(eqText);
-            lines.push('');
-          }
-        }
-      }
-      lines.push(':::');
-      lines.push('');
-    }
-
-    // Process figures with ID preservation
-    const figurePattern = /<figure([^>]*)>([\s\S]*?)<\/figure>/g;
-    let figureMatch;
-    while ((figureMatch = figurePattern.exec(sectionContent)) !== null) {
-      const figureAttrs = figureMatch[1];
-      const figureContent = figureMatch[2];
-      const captionMatch = figureContent.match(/<caption>([\s\S]*?)<\/caption>/);
-
-      // Extract figure ID
-      const idMatch = figureAttrs.match(/id="([^"]*)"/);
-      const figureId = idMatch ? idMatch[1] : null;
-
-      if (captionMatch) {
-        const captionText = processInlineContent(captionMatch[1]);
-        if (figureId) {
-          lines.push('*Figure: ' + captionText + '*{#' + figureId + '}');
-        } else {
-          lines.push('*Figure: ' + captionText + '*');
         }
         lines.push('');
-      }
-    }
+      } else if (elem.type === 'note') {
+        const noteTitleMatch = elem.content.match(/<title>([^<]+)<\/title>/);
+        const classMatch = elem.attrs.match(/class="([^"]*)"/);
+        const noteClass = classMatch ? classMatch[1] : '';
 
-    // Process exercises with problem/solution
-    const exercisePattern = /<exercise([^>]*)>([\s\S]*?)<\/exercise>/g;
-    let exerciseMatch;
-    while ((exerciseMatch = exercisePattern.exec(sectionContent)) !== null) {
-      const exerciseAttrs = exerciseMatch[1];
-      const exerciseContent = exerciseMatch[2];
-
-      // Extract exercise ID
-      const idMatch = exerciseAttrs.match(/id="([^"]*)"/);
-      const exerciseId = idMatch ? idMatch[1] : null;
-
-      // Extract problem
-      const problemMatch = exerciseContent.match(/<problem[^>]*>([\s\S]*?)<\/problem>/);
-      // Extract solution
-      const solutionMatch = exerciseContent.match(/<solution[^>]*>([\s\S]*?)<\/solution>/);
-
-      if (problemMatch) {
-        if (exerciseId) {
-          lines.push(':::practice-problem{#' + exerciseId + '}');
-        } else {
-          lines.push(':::practice-problem');
+        let directive = ':::note';
+        if (noteClass.includes('link-to-learning')) {
+          directive = ':::note{.link-to-learning}';
+        } else if (noteClass.includes('everyday-life')) {
+          directive = ':::note{.everyday-life}';
+        } else if (noteClass.includes('chemist-portrait')) {
+          directive = ':::note{.chemist-portrait}';
+        } else if (noteClass.includes('sciences-interconnect')) {
+          directive = ':::note{.sciences-interconnect}';
         }
 
-        // Process problem paragraphs AND equations in document order
-        const problemContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
-        let problemContentMatch;
-        while ((problemContentMatch = problemContentPattern.exec(problemMatch[1])) !== null) {
-          const elementType = problemContentMatch[1];
-          const elementContent = problemContentMatch[3];
+        lines.push(directive);
+        if (noteTitleMatch) {
+          lines.push('### ' + processInlineContent(noteTitleMatch[1]));
+          lines.push('');
+        }
 
+        const noteContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+        let noteContentMatch;
+        while ((noteContentMatch = noteContentPattern.exec(elem.content)) !== null) {
+          const elementType = noteContentMatch[1];
+          const elementContent = noteContentMatch[3];
           if (elementType === 'para') {
             const paraText = processInlineContent(elementContent);
             if (paraText.trim()) {
@@ -731,17 +676,70 @@ function extractContent(cnxml, verbose) {
             }
           }
         }
+        lines.push(':::');
+        lines.push('');
+      } else if (elem.type === 'example') {
+        const exampleTitleMatch = elem.content.match(/<title>([^<]+)<\/title>/);
 
-        // Add solution if present
-        if (solutionMatch) {
-          lines.push(':::answer');
-          // Process solution paragraphs AND equations in document order
-          const solutionContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
-          let solutionContentMatch;
-          while ((solutionContentMatch = solutionContentPattern.exec(solutionMatch[1])) !== null) {
-            const elementType = solutionContentMatch[1];
-            const elementContent = solutionContentMatch[3];
+        lines.push('::: example');
+        if (exampleTitleMatch) {
+          lines.push('### ' + processInlineContent(exampleTitleMatch[1]));
+          lines.push('');
+        }
 
+        const exContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+        let exContentMatch;
+        while ((exContentMatch = exContentPattern.exec(elem.content)) !== null) {
+          const elementType = exContentMatch[1];
+          const elementContent = exContentMatch[3];
+          if (elementType === 'para') {
+            const paraText = processInlineContent(elementContent);
+            if (paraText.trim()) {
+              lines.push(paraText);
+              lines.push('');
+            }
+          } else if (elementType === 'equation') {
+            const eqText = processInlineContent(elementContent);
+            if (eqText.trim()) {
+              lines.push(eqText);
+              lines.push('');
+            }
+          }
+        }
+        lines.push(':::');
+        lines.push('');
+      } else if (elem.type === 'figure') {
+        const captionMatch = elem.content.match(/<caption>([\s\S]*?)<\/caption>/);
+        const idMatch = elem.attrs.match(/id="([^"]*)"/);
+        const figureId = idMatch ? idMatch[1] : null;
+
+        if (captionMatch) {
+          const captionText = processInlineContent(captionMatch[1]);
+          if (figureId) {
+            lines.push('*Figure: ' + captionText + '*{#' + figureId + '}');
+          } else {
+            lines.push('*Figure: ' + captionText + '*');
+          }
+          lines.push('');
+        }
+      } else if (elem.type === 'exercise') {
+        const idMatch = elem.attrs.match(/id="([^"]*)"/);
+        const exerciseId = idMatch ? idMatch[1] : null;
+        const problemMatch = elem.content.match(/<problem[^>]*>([\s\S]*?)<\/problem>/);
+        const solutionMatch = elem.content.match(/<solution[^>]*>([\s\S]*?)<\/solution>/);
+
+        if (problemMatch) {
+          if (exerciseId) {
+            lines.push(':::practice-problem{#' + exerciseId + '}');
+          } else {
+            lines.push(':::practice-problem');
+          }
+
+          const problemContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+          let problemContentMatch;
+          while ((problemContentMatch = problemContentPattern.exec(problemMatch[1])) !== null) {
+            const elementType = problemContentMatch[1];
+            const elementContent = problemContentMatch[3];
             if (elementType === 'para') {
               const paraText = processInlineContent(elementContent);
               if (paraText.trim()) {
@@ -756,122 +754,37 @@ function extractContent(cnxml, verbose) {
               }
             }
           }
-          lines.push(':::');
-        }
 
-        lines.push(':::');
-        lines.push('');
-      }
-    }
-
-    // Process tables
-    const tablePattern = /<table([^>]*)>([\s\S]*?)<\/table>/g;
-    let tableMatch;
-    while ((tableMatch = tablePattern.exec(sectionContent)) !== null) {
-      const tableAttrs = tableMatch[1];
-      const tableContent = tableMatch[2];
-
-      // Extract table ID and class
-      const idMatch = tableAttrs.match(/id="([^"]*)"/);
-      const tableId = idMatch ? idMatch[1] : null;
-      const classMatch = tableAttrs.match(/class="([^"]*)"/);
-      const tableClass = classMatch ? classMatch[1] : '';
-
-      // Check if it's a key-equations table (special handling)
-      const isKeyEquations = tableId === 'key-equations-table' || tableClass.includes('key-equations');
-
-      // Extract header rows from thead
-      const headerRows = [];
-      const theadMatch = tableContent.match(/<thead>([\s\S]*?)<\/thead>/);
-      if (theadMatch) {
-        const rowPattern = /<row[^>]*>([\s\S]*?)<\/row>/g;
-        let rowMatch;
-        while ((rowMatch = rowPattern.exec(theadMatch[1])) !== null) {
-          const rowContent = rowMatch[1];
-          const cells = [];
-          const entryPattern = /<entry[^>]*>([\s\S]*?)<\/entry>/g;
-          let entryMatch;
-          while ((entryMatch = entryPattern.exec(rowContent)) !== null) {
-            const cellText = processInlineContent(entryMatch[1]);
-            cells.push(cellText);
-          }
-          if (cells.length > 0) {
-            headerRows.push(cells);
-          }
-        }
-      }
-
-      // Extract body rows from tbody (or entire table if no tbody)
-      const bodyRows = [];
-      const tbodyMatch = tableContent.match(/<tbody>([\s\S]*?)<\/tbody>/);
-      const bodyContent = tbodyMatch ? tbodyMatch[1] : tableContent;
-      const bodyRowPattern = /<row[^>]*>([\s\S]*?)<\/row>/g;
-      let bodyRowMatch;
-      while ((bodyRowMatch = bodyRowPattern.exec(bodyContent)) !== null) {
-        // Skip rows already processed in thead
-        if (theadMatch && theadMatch[1].includes(bodyRowMatch[0])) continue;
-
-        const rowContent = bodyRowMatch[1];
-        const cells = [];
-        const entryPattern = /<entry[^>]*>([\s\S]*?)<\/entry>/g;
-        let entryMatch;
-        while ((entryMatch = entryPattern.exec(rowContent)) !== null) {
-          const cellText = processInlineContent(entryMatch[1]);
-          cells.push(cellText);
-        }
-        if (cells.length > 0) {
-          bodyRows.push(cells);
-        }
-      }
-
-      const allRows = [...headerRows, ...bodyRows];
-
-      if (allRows.length > 0) {
-        if (isKeyEquations) {
-          // Key equations table - render as list
-          lines.push('**Key Equations**');
-          lines.push('');
-          for (const row of allRows) {
-            lines.push('- ' + row.join(' | '));
-          }
-          lines.push('');
-        } else {
-          // Regular table - render as markdown table
-          const colCount = Math.max(...allRows.map(r => r.length));
-
-          // Use header row(s) or first row as header
-          const headerRowCount = headerRows.length > 0 ? headerRows.length : 1;
-          const dataStartIdx = headerRows.length > 0 ? headerRows.length : 1;
-
-          // If we have multiple header rows, combine them (skip title rows that span all columns)
-          let headerRow = allRows[0] || [];
-          if (headerRows.length > 1) {
-            // Use the last header row as the actual column headers
-            headerRow = headerRows[headerRows.length - 1];
-          }
-
-          // Skip empty header rows or title-only rows
-          if (headerRow.length === 1 && allRows.length > 1) {
-            // This is likely a title row - use next row as header
-            lines.push('**' + headerRow[0] + '**');
-            lines.push('');
-            headerRow = allRows[1] || [];
-          }
-
-          if (headerRow.length > 0) {
-            const paddedHeader = headerRow.concat(Array(Math.max(0, colCount - headerRow.length)).fill(''));
-            lines.push('| ' + paddedHeader.join(' | ') + ' |');
-            lines.push('| ' + Array(Math.max(colCount, 1)).fill('---').join(' | ') + ' |');
-
-            // Remaining rows as data
-            const startIdx = allRows.indexOf(headerRow) + 1;
-            for (let i = startIdx; i < allRows.length; i++) {
-              const paddedRow = allRows[i].concat(Array(Math.max(0, colCount - allRows[i].length)).fill(''));
-              lines.push('| ' + paddedRow.join(' | ') + ' |');
+          if (solutionMatch) {
+            lines.push(':::answer');
+            const solutionContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+            let solutionContentMatch;
+            while ((solutionContentMatch = solutionContentPattern.exec(solutionMatch[1])) !== null) {
+              const elementType = solutionContentMatch[1];
+              const elementContent = solutionContentMatch[3];
+              if (elementType === 'para') {
+                const paraText = processInlineContent(elementContent);
+                if (paraText.trim()) {
+                  lines.push(paraText);
+                  lines.push('');
+                }
+              } else if (elementType === 'equation') {
+                const eqText = processInlineContent(elementContent);
+                if (eqText.trim()) {
+                  lines.push(eqText);
+                  lines.push('');
+                }
+              }
             }
-            lines.push('');
+            lines.push(':::');
           }
+
+          lines.push(':::');
+          lines.push('');
         }
+      } else if (elem.type === 'table') {
+        // Process table (inline, will be handled below)
+        processTable(elem.attrs, elem.content, lines, processInlineContent);
       }
     }
   }
@@ -893,6 +806,81 @@ function extractContent(cnxml, verbose) {
     markdown: lines.join('\n'),
     equations
   };
+}
+
+/**
+ * Process a CNXML table element into markdown
+ */
+function processTable(tableAttrs, tableContent, lines, processInlineContent) {
+  // Extract table ID and class
+  const idMatch = tableAttrs.match(/id="([^"]*)"/);
+  const tableId = idMatch ? idMatch[1] : null;
+  const classMatch = tableAttrs.match(/class="([^"]*)"/);
+  const tableClass = classMatch ? classMatch[1] : '';
+
+  // Check if it's a key-equations table (special handling)
+  const isKeyEquations = tableId === 'key-equations-table' || tableClass.includes('key-equations');
+
+  // Extract header rows from thead
+  const headerRows = [];
+  const theadMatch = tableContent.match(/<thead>([\s\S]*?)<\/thead>/);
+  if (theadMatch) {
+    const rowPattern = /<row[^>]*>([\s\S]*?)<\/row>/g;
+    let rowMatch;
+    while ((rowMatch = rowPattern.exec(theadMatch[1])) !== null) {
+      const rowContent = rowMatch[1];
+      const cells = [];
+      const entryPattern = /<entry[^>]*>([\s\S]*?)<\/entry>/g;
+      let entryMatch;
+      while ((entryMatch = entryPattern.exec(rowContent)) !== null) {
+        const cellText = processInlineContent(entryMatch[1]);
+        cells.push(cellText);
+      }
+      if (cells.length > 0) {
+        headerRows.push(cells);
+      }
+    }
+  }
+
+  // Extract body rows from tbody (or entire table if no tbody)
+  const bodyRows = [];
+  const tbodyMatch = tableContent.match(/<tbody>([\s\S]*?)<\/tbody>/);
+  const bodyContent = tbodyMatch ? tbodyMatch[1] : tableContent;
+  const bodyRowPattern = /<row[^>]*>([\s\S]*?)<\/row>/g;
+  let bodyRowMatch;
+  while ((bodyRowMatch = bodyRowPattern.exec(bodyContent)) !== null) {
+    // Skip rows already processed in thead
+    if (theadMatch && theadMatch[1].includes(bodyRowMatch[0])) continue;
+
+    const rowContent = bodyRowMatch[1];
+    const cells = [];
+    const entryPattern = /<entry[^>]*>([\s\S]*?)<\/entry>/g;
+    let entryMatch;
+    while ((entryMatch = entryPattern.exec(rowContent)) !== null) {
+      const cellText = processInlineContent(entryMatch[1]);
+      cells.push(cellText);
+    }
+    if (cells.length > 0) {
+      bodyRows.push(cells);
+    }
+  }
+
+  // Output markdown table
+  if (headerRows.length > 0 || bodyRows.length > 0) {
+    // Use header row if available, otherwise use first body row as header
+    const header = headerRows.length > 0 ? headerRows[0] : (bodyRows.length > 0 ? bodyRows.shift() : []);
+    if (header.length > 0) {
+      lines.push('| ' + header.join(' | ') + ' |');
+      lines.push('| ' + header.map(() => '---').join(' | ') + ' |');
+
+      for (const row of bodyRows) {
+        // Pad row to match header length
+        while (row.length < header.length) row.push('');
+        lines.push('| ' + row.join(' | ') + ' |');
+      }
+      lines.push('');
+    }
+  }
 }
 
 function processInlineContent(content) {
