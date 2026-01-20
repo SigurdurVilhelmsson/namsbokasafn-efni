@@ -227,6 +227,31 @@ function extractMetadata(cnxml) {
   }
   if (subjects.length > 0) metadata.subjects = subjects;
 
+  // Extract abstract (learning objectives) - contains para and list elements
+  const abstractMatch = metadataContent.match(/<md:abstract[^>]*>([\s\S]*?)<\/md:abstract>|<abstract[^>]*>([\s\S]*?)<\/abstract>/);
+  if (abstractMatch) {
+    const abstractContent = abstractMatch[1] || abstractMatch[2];
+    const abstract = { intro: null, items: [] };
+
+    // Extract intro paragraph
+    const paraMatch = abstractContent.match(/<para[^>]*>([\s\S]*?)<\/para>/);
+    if (paraMatch) {
+      abstract.intro = paraMatch[1].replace(/<[^>]+>/g, '').trim();
+    }
+
+    // Extract list items
+    const itemPattern = /<item[^>]*>([\s\S]*?)<\/item>/g;
+    let itemMatch;
+    while ((itemMatch = itemPattern.exec(abstractContent)) !== null) {
+      const itemText = itemMatch[1].replace(/<[^>]+>/g, '').trim();
+      if (itemText) abstract.items.push(itemText);
+    }
+
+    if (abstract.intro || abstract.items.length > 0) {
+      metadata.abstract = abstract;
+    }
+  }
+
   return metadata;
 }
 
@@ -439,6 +464,22 @@ function extractContent(cnxml, verbose) {
   // Document title as H1
   lines.push('# ' + documentTitle);
   lines.push('');
+
+  // Add learning objectives from abstract if available
+  if (docMetadata.abstract) {
+    lines.push(':::learning-objectives');
+    lines.push('## Learning Objectives');
+    lines.push('');
+    if (docMetadata.abstract.intro) {
+      lines.push(docMetadata.abstract.intro);
+      lines.push('');
+    }
+    for (const item of docMetadata.abstract.items) {
+      lines.push('- ' + item);
+    }
+    lines.push(':::');
+    lines.push('');
+  }
 
   // Process top-level content BEFORE sections (introductory paragraphs and equations)
   const firstSectionIndex = content.search(/<section[^>]*>/);
