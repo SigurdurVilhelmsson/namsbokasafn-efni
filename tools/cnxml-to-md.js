@@ -667,14 +667,17 @@ function processInlineContent(content) {
     // Term with ID preservation: <term id="term-00001">chemistry</term> → **chemistry**{#term-00001}
     .replace(/<term\s+id="([^"]*)"[^>]*>([^<]*)<\/term>/g, '**$2**{#$1}')
     .replace(/<term[^>]*>([^<]*)<\/term>/g, '**$1**')
-    // External URL links
-    .replace(/<link[^>]*url="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]($1)')
-    // Internal cross-references: <link target-id="CNX_Chem_01_01_SciMethod"/> → [Figure](#CNX_Chem_01_01_SciMethod)
-    .replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, '[↗](#$1)')
-    .replace(/<link\s+target-id="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2](#$1)')
-    // Document cross-references: <link document="m68778"/> → [Section](m68778)
-    .replace(/<link\s+document="([^"]*)"[^>]*\/>/g, '[Section $1]')
-    .replace(/<link\s+document="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]')
+    // External URL links: <link url="http://...">text</link> → [text]{url="http://..."}
+    // Uses {url=""} syntax to survive MT (parentheses get stripped)
+    .replace(/<link[^>]*url="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{url="$1"}')
+    // Internal cross-references: <link target-id="CNX_Chem_01_01_SciMethod"/> → [↗]{ref="CNX_Chem_01_01_SciMethod"}
+    // Uses {ref=""} syntax to survive MT
+    .replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, '[↗]{ref="$1"}')
+    .replace(/<link\s+target-id="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{ref="$1"}')
+    // Document cross-references: <link document="m68778"/> → [Section]{doc="m68778"}
+    // Uses {doc=""} syntax to survive MT
+    .replace(/<link\s+document="([^"]*)"[^>]*\/>/g, '[Section]{doc="$1"}')
+    .replace(/<link\s+document="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{doc="$1"}')
     // Fallback for other links
     .replace(/<link[^>]*>([^<]*)<\/link>/g, '$1')
     .replace(/<sub>([^<]*)<\/sub>/g, '~$1~')
