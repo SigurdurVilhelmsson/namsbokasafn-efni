@@ -458,6 +458,9 @@ function storeFile(sessionId, fileType, filePath, metadata = {}) {
     originalName: metadata.originalName,
     size: metadata.size,
     moduleId: metadata.moduleId,
+    section: metadata.section,
+    part: metadata.part,
+    title: metadata.title,
     uploadedAt: new Date().toISOString()
   };
 
