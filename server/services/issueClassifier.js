@@ -126,12 +126,13 @@ const ISSUE_PATTERNS = {
   // },
 
   // Chemistry terminology (EDITOR_CONFIRM / BOARD_REVIEW)
-  'element-symbol-case': {
-    regex: /\b([A-Z][a-z]?)\b(?=\s*\d|\s*\+|\s*-)/g,
-    category: 'EDITOR_CONFIRM',
-    description: 'Verify chemical element symbol',
-    requiresContext: true
-  },
+  // Note: Disabled - too many false positives from Icelandic words like "Um", "Ef", "Er"
+  // 'element-symbol-case': {
+  //   regex: /\b([A-Z][a-z]?)\b(?=\s*\d|\s*\+|\s*-)/g,
+  //   category: 'EDITOR_CONFIRM',
+  //   description: 'Verify chemical element symbol',
+  //   requiresContext: true
+  // },
 
   // Unit conversions (BOARD_REVIEW)
   'fahrenheit-to-celsius': {
@@ -190,7 +191,7 @@ const ISSUE_PATTERNS = {
     description: 'Empty link URL'
   },
   'duplicate-word': {
-    regex: /\b(\w{3,})\s+\1\b/gi,  // Require 3+ chars to avoid false positives like "r r"
+    regex: /\b(\w{4,}) \1\b/gi,  // Require 4+ chars and single space (not newlines) to reduce false positives
     category: 'EDITOR_CONFIRM',
     description: 'Duplicate word'
   },
