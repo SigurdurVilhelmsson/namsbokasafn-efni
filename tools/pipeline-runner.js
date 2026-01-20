@@ -33,6 +33,7 @@ import fs from 'fs';
 import path from 'path';
 import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
+import { assembleChapter } from './chapter-assembler.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -96,7 +97,10 @@ function parseArgs(args) {
     verbose: false,
     help: false,
     listModules: false,
-    chapter: null  // Process entire chapter with correct numbering
+    chapter: null,  // Process entire chapter with correct numbering
+    assemble: false,  // Run chapter assembly after conversion
+    assembleTrack: 'faithful',  // Publication track for assembly: mt-preview, faithful, localized
+    assembleOnly: false  // Only run assembly (skip conversion)
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -116,6 +120,13 @@ function parseArgs(args) {
       result.book = args[++i];
     } else if (arg === '--chapter' && args[i + 1]) {
       result.chapter = parseInt(args[++i], 10);
+    } else if (arg === '--assemble') {
+      result.assemble = true;
+    } else if (arg === '--assemble-only') {
+      result.assembleOnly = true;
+      result.assemble = true;
+    } else if (arg === '--assemble-track' && args[i + 1]) {
+      result.assembleTrack = args[++i];
     } else if (!arg.startsWith('-') && !result.input) {
       result.input = arg;
     }
@@ -131,10 +142,12 @@ pipeline-runner.js - Orchestrate translation preparation pipeline
 Chains existing tools to prepare OpenStax content for translation:
 1. CNXML → Markdown with equation placeholders
 2. Markdown → XLIFF for CAT tools (optional)
+3. Assembly → 12-file publication structure (optional)
 
 Usage:
   node tools/pipeline-runner.js <module-id> [options]
   node tools/pipeline-runner.js <path/to/file.cnxml> [options]
+  node tools/pipeline-runner.js --chapter <num> [options]
   node tools/pipeline-runner.js --list-modules
 
 Arguments:
@@ -146,13 +159,17 @@ Options:
   --book <name>        Book identifier (e.g., efnafraedi)
   --chapter <num>      Process all modules in a chapter with correct numbering
   --skip-xliff         Don't generate XLIFF (only markdown + equations)
+  --assemble           Run chapter assembly after conversion (requires --chapter)
+  --assemble-only      Only run assembly, skip conversion (requires --chapter)
+  --assemble-track T   Publication track for assembly: mt-preview, faithful, localized
   --list-modules       List known Chemistry 2e modules
   --verbose            Show detailed progress
   -h, --help           Show this help message
 
 Pipeline Steps:
-  1. cnxml-to-md.js:   CNXML → {section}.en.md + {section}-equations.json
-  2. md-to-xliff.js:   {section}.en.md → {section}.en.xliff (unless --skip-xliff)
+  1. cnxml-to-md.js:        CNXML → {section}.en.md + {section}-equations.json
+  2. md-to-xliff.js:        {section}.en.md → {section}.en.xliff (unless --skip-xliff)
+  3. chapter-assembler.js:  7 modules → 12 publication files (with --assemble)
 
 Output Files:
   {output-dir}/
@@ -160,12 +177,27 @@ Output Files:
   ├── {section}-equations.json  # Equation mappings for restoration
   └── {section}.en.xliff        # XLIFF for Matecat (optional)
 
+  With --assemble:
+  05-publication/{track}/chapters/{NN}/
+  ├── {ch}-0-introduction.is.md     # Stripped module files
+  ├── {ch}-1-*.is.md                # ...
+  ├── {ch}-key-terms.is.md          # Aggregated, alphabetized
+  ├── {ch}-key-equations.is.md      # Aggregated
+  ├── {ch}-summary.is.md            # Aggregated by section
+  └── {ch}-exercises.is.md          # Aggregated, running numbers
+
 Examples:
   # Process a module by ID
   node tools/pipeline-runner.js m68690 --output-dir ./test-output/
 
   # Process a local CNXML file
   node tools/pipeline-runner.js ./source.cnxml --output-dir ./output/
+
+  # Process entire chapter with assembly
+  node tools/pipeline-runner.js --chapter 1 --book efnafraedi --assemble
+
+  # Assembly only (after manual translation work)
+  node tools/pipeline-runner.js --chapter 1 --book efnafraedi --assemble-only --assemble-track faithful
 
   # Skip XLIFF generation (only need markdown for MT)
   node tools/pipeline-runner.js m68690 --skip-xliff
@@ -681,7 +713,7 @@ async function run(options) {
 }
 
 // Export for programmatic use
-export { run, CHEMISTRY_2E_MODULES };
+export { run, CHEMISTRY_2E_MODULES, assembleChapter };
 
 // ============================================================================
 // CLI Execution
@@ -703,8 +735,35 @@ async function main() {
   // Handle chapter mode
   if (args.chapter !== null) {
     try {
-      const results = await runChapterPipeline(args);
-      process.exit(results.success ? 0 : 1);
+      let conversionSuccess = true;
+
+      // Run conversion pipeline unless --assemble-only
+      if (!args.assembleOnly) {
+        const results = await runChapterPipeline(args);
+        conversionSuccess = results.success;
+      }
+
+      // Run assembly if requested and conversion succeeded (or skipped)
+      if (args.assemble && conversionSuccess) {
+        const assemblyOptions = {
+          chapter: args.chapter,
+          book: args.book || 'efnafraedi',
+          track: args.assembleTrack,
+          verbose: args.verbose,
+          dryRun: false,
+          lang: 'is'
+        };
+
+        console.log('\n');
+        const assemblyResult = await assembleChapter(assemblyOptions);
+
+        if (!assemblyResult.success) {
+          console.error('Assembly failed');
+          process.exit(1);
+        }
+      }
+
+      process.exit(conversionSuccess ? 0 : 1);
     } catch (err) {
       console.error(`\nFatal error: ${err.message}`);
       if (args.verbose) {

@@ -169,6 +169,29 @@ node tools/prepare-for-align.js \
 
 **Goal:** Prepare web-ready content with appropriate labeling.
 
+#### 5a: Chapter Assembly (12-File Structure)
+
+Before publishing, module files are assembled into the website's 12-file structure per chapter:
+
+```bash
+# Assemble chapter from faithful translations
+node tools/chapter-assembler.js --chapter 1 --book efnafraedi --track faithful
+
+# Or via pipeline-runner with assembly
+node tools/pipeline-runner.js --chapter 1 --book efnafraedi --assemble-only --assemble-track faithful
+```
+
+**Input:** 7 module files from `03-faithful/ch01/`
+
+**Output:** 12 publication files in `05-publication/faithful/chapters/01/`:
+- 7 stripped module files (intro, 1.1-1.6) - exercises/summary/glossary removed
+- `1-key-terms.is.md` - aggregated, alphabetized definitions
+- `1-key-equations.is.md` - aggregated equation references
+- `1-summary.is.md` - section-by-section summaries
+- `1-exercises.is.md` - aggregated with running numbers and section headers
+
+#### 5b: Publication Tracks
+
 The publication system has **three tracks** that replace each other as the translation matures:
 
 | Track | When | Label | Purpose |
@@ -292,6 +315,7 @@ books/efnafraedi/
 | `cnxml-to-md.js` | CNXML → Markdown with equations | 1 |
 | `split-for-erlendur.js` | Split large files for MT | 1 |
 | `prepare-for-align.js` | Clean markdown for Matecat Align | 4 |
+| `chapter-assembler.js` | Assemble 7 modules → 12 publication files | 5 |
 | `add-frontmatter.js` | Add metadata for publication | 5 |
 
 ### External Services
@@ -362,14 +386,15 @@ node tools/pipeline-runner.js m68724 --output-dir books/efnafraedi/02-for-mt/ch0
 # Step 2: Upload to malstadur.is (manual), save to 02-mt-output/
 
 # Step 2b (Optional): Publish MT preview immediately
+node tools/chapter-assembler.js --chapter 5 --book efnafraedi --track mt-preview
+# or via API:
 curl -X POST http://localhost:3000/api/publication/efnafraedi/5/mt-preview
-# or via CLI:
-node tools/add-frontmatter.js \
-  books/efnafraedi/02-mt-output/ch05/5-1.is.md --mt-preview
 
 # Step 3: Review MT output, save to 03-faithful/ (manual)
 
-# Step 3b: Publish faithful translation (replaces MT preview)
+# Step 3b: Assemble and publish faithful translation (replaces MT preview)
+node tools/chapter-assembler.js --chapter 5 --book efnafraedi --track faithful
+# or via API:
 curl -X POST http://localhost:3000/api/publication/efnafraedi/5/faithful
 
 # Step 4: Prepare for Matecat Align
@@ -381,6 +406,8 @@ node tools/prepare-for-align.js \
 
 # Step 5 (Optional): Localize and publish (replaces faithful)
 # After Pass 2 review is complete:
+node tools/chapter-assembler.js --chapter 5 --book efnafraedi --track localized
+# or via API:
 curl -X POST http://localhost:3000/api/publication/efnafraedi/5/localized
 ```
 
