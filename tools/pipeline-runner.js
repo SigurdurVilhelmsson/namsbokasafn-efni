@@ -95,7 +95,8 @@ function parseArgs(args) {
     skipXliff: false,
     verbose: false,
     help: false,
-    listModules: false
+    listModules: false,
+    chapter: null  // Process entire chapter with correct numbering
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -113,6 +114,8 @@ function parseArgs(args) {
       result.outputDir = args[++i];
     } else if (arg === '--book' && args[i + 1]) {
       result.book = args[++i];
+    } else if (arg === '--chapter' && args[i + 1]) {
+      result.chapter = parseInt(args[++i], 10);
     } else if (!arg.startsWith('-') && !result.input) {
       result.input = arg;
     }
@@ -141,6 +144,7 @@ Arguments:
 Options:
   --output-dir <dir>   Output directory (default: ./pipeline-output)
   --book <name>        Book identifier (e.g., efnafraedi)
+  --chapter <num>      Process all modules in a chapter with correct numbering
   --skip-xliff         Don't generate XLIFF (only markdown + equations)
   --list-modules       List known Chemistry 2e modules
   --verbose            Show detailed progress
@@ -204,24 +208,37 @@ function getProjectRoot() {
  * @returns {Promise<{success: boolean, stdout: string, stderr: string}>}
  */
 function runTool(scriptPath, args, options = {}) {
-  const { verbose } = options;
+  const { verbose, captureStderr } = options;
 
   return new Promise((resolve, reject) => {
     if (verbose) {
       console.log(`  Running: node ${path.basename(scriptPath)} ${args.join(' ')}`);
     }
 
+    // If captureStderr is true, always capture stderr even in verbose mode
+    const stdioConfig = verbose && !captureStderr
+      ? 'inherit'
+      : captureStderr
+        ? ['pipe', verbose ? 'inherit' : 'pipe', 'pipe']
+        : 'pipe';
+
     const child = spawn('node', [scriptPath, ...args], {
-      stdio: verbose ? 'inherit' : 'pipe',
+      stdio: stdioConfig,
       cwd: getProjectRoot()
     });
 
     let stdout = '';
     let stderr = '';
 
-    if (!verbose) {
+    if (stdioConfig !== 'inherit') {
       child.stdout?.on('data', data => { stdout += data; });
-      child.stderr?.on('data', data => { stderr += data; });
+      child.stderr?.on('data', data => {
+        stderr += data;
+        // In captureStderr + verbose mode, also print stderr to console
+        if (captureStderr && verbose) {
+          process.stderr.write(data);
+        }
+      });
     }
 
     child.on('close', code => {
@@ -247,9 +264,11 @@ function runTool(scriptPath, args, options = {}) {
  * @param {string} input - Module ID or file path
  * @param {string} outputDir - Output directory
  * @param {boolean} verbose - Verbose output
- * @returns {Promise<{mdPath: string, equationsPath: string, section: string}>}
+ * @param {object} counters - Optional starting counters {examples, figures, tables}
+ * @param {number} chapter - Optional chapter number override
+ * @returns {Promise<{mdPath: string, equationsPath: string, section: string, counters: object}>}
  */
-async function stepCnxmlToMd(input, outputDir, verbose) {
+async function stepCnxmlToMd(input, outputDir, verbose, counters = null, chapter = null) {
   const projectRoot = getProjectRoot();
   const scriptPath = path.join(projectRoot, 'tools', 'cnxml-to-md.js');
 
@@ -272,13 +291,40 @@ async function stepCnxmlToMd(input, outputDir, verbose) {
   const args = [
     input,
     '--output', mdPath,
-    '--equations', equationsPath
+    '--equations', equationsPath,
+    '--output-counters'  // Request counter output for pipeline coordination
   ];
+
+  // Add counter starting values if provided
+  if (counters) {
+    if (counters.examples > 0) args.push('--example-start', String(counters.examples));
+    if (counters.figures > 0) args.push('--figure-start', String(counters.figures));
+    if (counters.tables > 0) args.push('--table-start', String(counters.tables));
+  }
+
+  // Add chapter override if provided
+  if (chapter !== null) {
+    args.push('--chapter', String(chapter));
+  }
+
   if (verbose) args.push('--verbose');
 
-  await runTool(scriptPath, args, { verbose });
+  const output = await runTool(scriptPath, args, { verbose, captureStderr: true });
 
-  return { mdPath, equationsPath, section };
+  // Parse counter output from stderr
+  let finalCounters = { examples: 0, figures: 0, tables: 0 };
+  if (output && output.stderr) {
+    const counterMatch = output.stderr.match(/COUNTERS:(\{.*\})/);
+    if (counterMatch) {
+      try {
+        finalCounters = JSON.parse(counterMatch[1]);
+      } catch (e) {
+        // Ignore parse errors, use default counters
+      }
+    }
+  }
+
+  return { mdPath, equationsPath, section, counters: finalCounters };
 }
 
 /**
@@ -430,6 +476,186 @@ async function runPipeline(options) {
 }
 
 // ============================================================================
+// Chapter Pipeline
+// ============================================================================
+
+/**
+ * Get all modules for a specific chapter in order
+ * @param {number} chapter - Chapter number
+ * @returns {Array<{moduleId: string, section: string, title: string}>}
+ */
+function getChapterModules(chapter) {
+  const modules = [];
+  for (const [moduleId, info] of Object.entries(CHEMISTRY_2E_MODULES)) {
+    if (info.chapter === chapter) {
+      modules.push({ moduleId, ...info });
+    }
+  }
+  // Sort by section: intro first, then numerically
+  modules.sort((a, b) => {
+    if (a.section === 'intro') return -1;
+    if (b.section === 'intro') return 1;
+    const aNum = parseFloat(a.section.split('.')[1]) || 0;
+    const bNum = parseFloat(b.section.split('.')[1]) || 0;
+    return aNum - bNum;
+  });
+  return modules;
+}
+
+/**
+ * Run pipeline for an entire chapter with correct running numbering
+ * @param {object} options - Pipeline options including chapter number
+ * @returns {Promise<{outputs: object[], steps: object[]}>}
+ */
+async function runChapterPipeline(options) {
+  const { chapter, outputDir, skipXliff, verbose } = options;
+
+  const modules = getChapterModules(chapter);
+  if (modules.length === 0) {
+    throw new Error(`No modules found for chapter ${chapter}`);
+  }
+
+  const results = {
+    chapter,
+    outputDir,
+    modules: [],
+    steps: [],
+    outputs: [],
+    success: false
+  };
+
+  console.log('');
+  console.log('═'.repeat(60));
+  console.log(`Chapter ${chapter} Pipeline Runner`);
+  console.log('═'.repeat(60));
+  console.log('');
+
+  console.log(`Processing ${modules.length} modules:`);
+  for (const mod of modules) {
+    console.log(`  • ${mod.moduleId} (${mod.section}): ${mod.title}`);
+  }
+  console.log('');
+
+  // Ensure output directory exists
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+    if (verbose) {
+      console.log(`Created output directory: ${outputDir}`);
+    }
+  }
+
+  // Track running counters across modules
+  let counters = { examples: 0, figures: 0, tables: 0 };
+
+  try {
+    for (let i = 0; i < modules.length; i++) {
+      const mod = modules[i];
+      const stepNum = i + 1;
+      const totalSteps = modules.length;
+
+      console.log(`─`.repeat(60));
+      console.log(`Module ${stepNum}/${totalSteps}: ${mod.section} - ${mod.title}`);
+      console.log(`  Counters: examples=${counters.examples}, figures=${counters.figures}, tables=${counters.tables}`);
+      console.log('');
+
+      // Step 1: CNXML → Markdown + Equations
+      console.log('  Converting CNXML to Markdown...');
+      const step1Start = Date.now();
+      const { mdPath, equationsPath, section, counters: newCounters } = await stepCnxmlToMd(
+        mod.moduleId,
+        outputDir,
+        verbose,
+        counters,
+        chapter
+      );
+      const step1Time = Date.now() - step1Start;
+
+      // Update counters for next module
+      counters = newCounters;
+
+      results.steps.push({
+        name: `cnxml-to-md:${mod.moduleId}`,
+        success: true,
+        timeMs: step1Time,
+        outputs: [mdPath, equationsPath]
+      });
+      results.outputs.push(
+        { type: 'markdown', path: mdPath, section, description: `${mod.section} Markdown` },
+        { type: 'equations', path: equationsPath, section, description: `${mod.section} Equations` }
+      );
+      results.modules.push({
+        moduleId: mod.moduleId,
+        section: mod.section,
+        title: mod.title,
+        mdPath,
+        equationsPath,
+        counters: { ...newCounters }
+      });
+
+      console.log(`    ✓ ${path.basename(mdPath)}`);
+      console.log(`    ✓ ${path.basename(equationsPath)}`);
+
+      // Step 2: Markdown → XLIFF (optional)
+      if (!skipXliff) {
+        console.log('  Generating XLIFF...');
+        const step2Start = Date.now();
+        const { xliffPath } = await stepMdToXliff(mdPath, outputDir, section, verbose);
+        const step2Time = Date.now() - step2Start;
+
+        results.steps.push({
+          name: `md-to-xliff:${mod.moduleId}`,
+          success: true,
+          timeMs: step2Time,
+          outputs: [xliffPath]
+        });
+        results.outputs.push(
+          { type: 'xliff', path: xliffPath, section, description: `${mod.section} XLIFF` }
+        );
+
+        console.log(`    ✓ ${path.basename(xliffPath)}`);
+      }
+
+      console.log('');
+    }
+
+    results.success = true;
+
+  } catch (err) {
+    results.error = err.message;
+    console.error(`\n✗ Error: ${err.message}`);
+    if (verbose) {
+      console.error(err.stack);
+    }
+  }
+
+  // Summary
+  console.log('═'.repeat(60));
+  console.log(results.success ? 'Chapter Pipeline Complete' : 'Chapter Pipeline Failed');
+  console.log('═'.repeat(60));
+  console.log('');
+
+  if (results.success) {
+    console.log(`Final counters for Chapter ${chapter}:`);
+    console.log(`  Examples: ${counters.examples}`);
+    console.log(`  Figures: ${counters.figures}`);
+    console.log(`  Tables: ${counters.tables}`);
+    console.log('');
+
+    console.log(`Generated ${results.outputs.length} files in ${outputDir}`);
+    console.log('');
+
+    console.log('Next steps:');
+    console.log('  1. Send .md files to Erlendur MT (malstadur.is)');
+    if (!skipXliff) {
+      console.log('  2. Upload .xliff files to Matecat for TM alignment');
+    }
+    console.log('');
+  }
+
+  return results;
+}
+
+// ============================================================================
 // Programmatic API
 // ============================================================================
 
@@ -474,8 +700,24 @@ async function main() {
     process.exit(0);
   }
 
+  // Handle chapter mode
+  if (args.chapter !== null) {
+    try {
+      const results = await runChapterPipeline(args);
+      process.exit(results.success ? 0 : 1);
+    } catch (err) {
+      console.error(`\nFatal error: ${err.message}`);
+      if (args.verbose) {
+        console.error(err.stack);
+      }
+      process.exit(1);
+    }
+    return;
+  }
+
+  // Handle single module mode
   if (!args.input) {
-    console.error('Error: Please provide a module ID or CNXML file path');
+    console.error('Error: Please provide a module ID, CNXML file path, or --chapter <num>');
     console.error('Use --help for usage information');
     process.exit(1);
   }

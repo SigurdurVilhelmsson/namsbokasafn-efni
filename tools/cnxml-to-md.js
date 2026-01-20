@@ -77,7 +77,13 @@ function parseArgs(args) {
     equationsOutput: null,
     verbose: false,
     listModules: false,
-    help: false
+    help: false,
+    // Chapter-based numbering options
+    chapter: null,           // Override chapter number (e.g., 1)
+    exampleStart: 0,         // Starting counter for examples
+    figureStart: 0,          // Starting counter for figures
+    tableStart: 0,           // Starting counter for tables
+    outputCounters: false    // Output final counter values to stderr
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -87,6 +93,11 @@ function parseArgs(args) {
     else if (arg === '--list-modules') result.listModules = true;
     else if (arg === '--output' && args[i + 1]) result.output = args[++i];
     else if (arg === '--equations' && args[i + 1]) result.equationsOutput = args[++i];
+    else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
+    else if (arg === '--example-start' && args[i + 1]) result.exampleStart = parseInt(args[++i], 10);
+    else if (arg === '--figure-start' && args[i + 1]) result.figureStart = parseInt(args[++i], 10);
+    else if (arg === '--table-start' && args[i + 1]) result.tableStart = parseInt(args[++i], 10);
+    else if (arg === '--output-counters') result.outputCounters = true;
     else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
   return result;
@@ -108,9 +119,19 @@ Usage:
 Options:
   --output <file>      Output markdown file (default: stdout)
   --equations <file>   Output equations JSON file (default: <output>-equations.json)
+  --chapter <num>      Override chapter number for numbering (default: from module lookup)
+  --example-start <n>  Starting counter for examples (default: 0)
+  --figure-start <n>   Starting counter for figures (default: 0)
+  --table-start <n>    Starting counter for tables (default: 0)
+  --output-counters    Output final counter values to stderr (for pipeline coordination)
   --verbose            Show detailed progress
   --list-modules       List known Chemistry 2e module IDs
   -h, --help           Show this help message
+
+Numbering:
+  Elements are numbered as [chapter].[running_number] where the running number
+  is continuous across all sections within a chapter. Use --example-start etc.
+  when processing multiple modules in sequence to maintain correct numbering.
 
 Examples:
   node tools/cnxml-to-md.js m68690 --output 02-for-mt/chapters/01/1-5.en.md
@@ -386,7 +407,8 @@ function splitMathParts(content) {
   return parts;
 }
 
-function extractContent(cnxml, verbose) {
+function extractContent(cnxml, options = {}) {
+  const verbose = options.verbose || false;
   const equations = {};
   let equationCounter = 0;
 
@@ -397,6 +419,17 @@ function extractContent(cnxml, verbose) {
 
   const moduleInfo = CHEMISTRY_2E_MODULES[moduleId] || {};
   const section = moduleInfo.section || '';
+
+  // Determine chapter number: from options, module lookup, or section string
+  let chapter = options.chapter;
+  if (chapter === null || chapter === undefined) {
+    chapter = moduleInfo.chapter;
+  }
+  if (chapter === null || chapter === undefined) {
+    // Try to extract from section (e.g., "1.6" → 1)
+    const sectionChapterMatch = section.match(/^(\d+)\./);
+    chapter = sectionChapterMatch ? parseInt(sectionChapterMatch[1], 10) : null;
+  }
 
   // Extract optional metadata (dates, license, keywords)
   const docMetadata = extractMetadata(cnxml);
@@ -509,6 +542,12 @@ function extractContent(cnxml, verbose) {
       }
     }
   }
+
+  // Counters for examples, figures, and tables (chapter-based numbering)
+  // Initialize from options to support running counters across modules
+  let exampleCounter = options.exampleStart || 0;
+  let figureCounter = options.figureStart || 0;
+  let tableCounter = options.tableStart || 0;
 
   // Process sections
   const sectionPattern = /<section[^>]*>([\s\S]*?)<\/section>/g;
@@ -679,11 +718,18 @@ function extractContent(cnxml, verbose) {
         lines.push(':::');
         lines.push('');
       } else if (elem.type === 'example') {
+        exampleCounter++;
         const exampleTitleMatch = elem.content.match(/<title>([^<]+)<\/title>/);
+        const exampleTitle = exampleTitleMatch ? exampleTitleMatch[1] : null;
+        // Use chapter-based numbering: [chapter].[running_number]
+        const exampleNumber = chapter ? `${chapter}.${exampleCounter}` : String(exampleCounter);
 
         lines.push('::: example');
-        if (exampleTitleMatch) {
-          lines.push('### ' + processInlineContent(exampleTitleMatch[1]));
+        if (exampleTitle) {
+          lines.push('### Example ' + exampleNumber + ': ' + processInlineContent(exampleTitle));
+          lines.push('');
+        } else {
+          lines.push('### Example ' + exampleNumber);
           lines.push('');
         }
 
@@ -691,7 +737,22 @@ function extractContent(cnxml, verbose) {
         let exContentMatch;
         while ((exContentMatch = exContentPattern.exec(elem.content)) !== null) {
           const elementType = exContentMatch[1];
-          const elementContent = exContentMatch[3];
+          let elementContent = exContentMatch[3];
+
+          // Check for title inside this element
+          const innerTitleMatch = elementContent.match(/<title>([^<]+)<\/title>/);
+          if (innerTitleMatch) {
+            const innerTitle = innerTitleMatch[1];
+            // Strip the title tag
+            elementContent = elementContent.replace(/<title>[^<]*<\/title>/g, '');
+            // If this is the main example title, skip outputting it again
+            // Otherwise output it as a bold label (e.g., "Solution")
+            if (innerTitle !== exampleTitle) {
+              lines.push('**' + processInlineContent(innerTitle) + '**');
+              lines.push('');
+            }
+          }
+
           if (elementType === 'para') {
             const paraText = processInlineContent(elementContent);
             if (paraText.trim()) {
@@ -709,16 +770,19 @@ function extractContent(cnxml, verbose) {
         lines.push(':::');
         lines.push('');
       } else if (elem.type === 'figure') {
+        figureCounter++;
         const captionMatch = elem.content.match(/<caption>([\s\S]*?)<\/caption>/);
         const idMatch = elem.attrs.match(/id="([^"]*)"/);
         const figureId = idMatch ? idMatch[1] : null;
+        // Use chapter-based numbering: [chapter].[running_number]
+        const figureNumber = chapter ? `${chapter}.${figureCounter}` : String(figureCounter);
 
         if (captionMatch) {
           const captionText = processInlineContent(captionMatch[1]);
           if (figureId) {
-            lines.push('*Figure: ' + captionText + '*{#' + figureId + '}');
+            lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{#' + figureId + '}');
           } else {
-            lines.push('*Figure: ' + captionText + '*');
+            lines.push('*Figure ' + figureNumber + ': ' + captionText + '*');
           }
           lines.push('');
         }
@@ -791,7 +855,9 @@ function extractContent(cnxml, verbose) {
 
   if (verbose) {
     console.error('Extracted from ' + moduleId + ': ' + documentTitle);
+    console.error('Chapter: ' + (chapter || 'unknown'));
     console.error('Equations found: ' + equationCounter);
+    console.error('Examples: ' + exampleCounter + ', Figures: ' + figureCounter + ', Tables: ' + tableCounter);
     console.error('Output lines: ' + lines.length);
     if (docMetadata.created) console.error('Created: ' + docMetadata.created);
     if (docMetadata.revised) console.error('Revised: ' + docMetadata.revised);
@@ -801,10 +867,17 @@ function extractContent(cnxml, verbose) {
   return {
     moduleId,
     section,
+    chapter,
     documentTitle,
     metadata: docMetadata,
     markdown: lines.join('\n'),
-    equations
+    equations,
+    // Final counter values for pipeline coordination
+    counters: {
+      examples: exampleCounter,
+      figures: figureCounter,
+      tables: tableCounter
+    }
   };
 }
 
@@ -821,48 +894,75 @@ function processTable(tableAttrs, tableContent, lines, processInlineContent) {
   // Check if it's a key-equations table (special handling)
   const isKeyEquations = tableId === 'key-equations-table' || tableClass.includes('key-equations');
 
+  // Extract and remove footnotes from content, collect them for later
+  const footnotes = [];
+  const footnotePattern = /<footnote[^>]*>([\s\S]*?)<\/footnote>/g;
+  let footnoteMatch;
+  let cleanedContent = tableContent;
+  while ((footnoteMatch = footnotePattern.exec(tableContent)) !== null) {
+    const footnoteText = processInlineContent(footnoteMatch[1]);
+    footnotes.push(footnoteText);
+    cleanedContent = cleanedContent.replace(footnoteMatch[0], '');
+  }
+
+  // Helper to extract cells from a row, detecting spanning entries
+  const extractRowCells = (rowContent) => {
+    const cells = [];
+    let isSpanning = false;
+    const entryPattern = /<entry([^>]*)>([\s\S]*?)<\/entry>/g;
+    let entryMatch;
+    while ((entryMatch = entryPattern.exec(rowContent)) !== null) {
+      const entryAttrs = entryMatch[1];
+      const cellText = processInlineContent(entryMatch[2]);
+      // Check if entry spans multiple columns (namest/nameend attributes)
+      if (entryAttrs.includes('namest=') && entryAttrs.includes('nameend=')) {
+        isSpanning = true;
+      }
+      cells.push(cellText);
+    }
+    return { cells, isSpanning };
+  };
+
   // Extract header rows from thead
   const headerRows = [];
-  const theadMatch = tableContent.match(/<thead>([\s\S]*?)<\/thead>/);
+  let tableTitle = null;
+  const theadMatch = cleanedContent.match(/<thead>([\s\S]*?)<\/thead>/);
   if (theadMatch) {
     const rowPattern = /<row[^>]*>([\s\S]*?)<\/row>/g;
     let rowMatch;
     while ((rowMatch = rowPattern.exec(theadMatch[1])) !== null) {
-      const rowContent = rowMatch[1];
-      const cells = [];
-      const entryPattern = /<entry[^>]*>([\s\S]*?)<\/entry>/g;
-      let entryMatch;
-      while ((entryMatch = entryPattern.exec(rowContent)) !== null) {
-        const cellText = processInlineContent(entryMatch[1]);
-        cells.push(cellText);
-      }
+      const { cells, isSpanning } = extractRowCells(rowMatch[1]);
       if (cells.length > 0) {
-        headerRows.push(cells);
+        // If first row has single spanning cell, treat as table title
+        if (headerRows.length === 0 && cells.length === 1 && isSpanning) {
+          tableTitle = cells[0];
+        } else {
+          headerRows.push(cells);
+        }
       }
     }
   }
 
   // Extract body rows from tbody (or entire table if no tbody)
   const bodyRows = [];
-  const tbodyMatch = tableContent.match(/<tbody>([\s\S]*?)<\/tbody>/);
-  const bodyContent = tbodyMatch ? tbodyMatch[1] : tableContent;
+  const tbodyMatch = cleanedContent.match(/<tbody>([\s\S]*?)<\/tbody>/);
+  const bodyContent = tbodyMatch ? tbodyMatch[1] : cleanedContent;
   const bodyRowPattern = /<row[^>]*>([\s\S]*?)<\/row>/g;
   let bodyRowMatch;
   while ((bodyRowMatch = bodyRowPattern.exec(bodyContent)) !== null) {
     // Skip rows already processed in thead
     if (theadMatch && theadMatch[1].includes(bodyRowMatch[0])) continue;
 
-    const rowContent = bodyRowMatch[1];
-    const cells = [];
-    const entryPattern = /<entry[^>]*>([\s\S]*?)<\/entry>/g;
-    let entryMatch;
-    while ((entryMatch = entryPattern.exec(rowContent)) !== null) {
-      const cellText = processInlineContent(entryMatch[1]);
-      cells.push(cellText);
-    }
+    const { cells } = extractRowCells(bodyRowMatch[1]);
     if (cells.length > 0) {
       bodyRows.push(cells);
     }
+  }
+
+  // Output table title if present
+  if (tableTitle) {
+    lines.push('**' + tableTitle + '**');
+    lines.push('');
   }
 
   // Output markdown table
@@ -873,13 +973,23 @@ function processTable(tableAttrs, tableContent, lines, processInlineContent) {
       lines.push('| ' + header.join(' | ') + ' |');
       lines.push('| ' + header.map(() => '---').join(' | ') + ' |');
 
-      for (const row of bodyRows) {
+      // Add remaining header rows (if multi-row header) and body rows
+      const dataRows = [...headerRows.slice(1), ...bodyRows];
+      for (const row of dataRows) {
         // Pad row to match header length
         while (row.length < header.length) row.push('');
         lines.push('| ' + row.join(' | ') + ' |');
       }
       lines.push('');
     }
+  }
+
+  // Output footnotes if present
+  if (footnotes.length > 0) {
+    for (const footnote of footnotes) {
+      lines.push('*' + footnote + '*');
+    }
+    lines.push('');
   }
 }
 
@@ -932,7 +1042,15 @@ async function main() {
     const cnxml = await fetchCnxml(args.input, args.verbose);
     if (args.verbose) console.error('Fetched ' + cnxml.length + ' bytes of CNXML');
 
-    const data = extractContent(cnxml, args.verbose);
+    // Pass all relevant options to extractContent
+    const extractOptions = {
+      verbose: args.verbose,
+      chapter: args.chapter,
+      exampleStart: args.exampleStart,
+      figureStart: args.figureStart,
+      tableStart: args.tableStart
+    };
+    const data = extractContent(cnxml, extractOptions);
 
     // Write markdown
     if (args.output) {
@@ -949,6 +1067,7 @@ async function main() {
       const equationsData = {
         module: data.moduleId,
         section: data.section,
+        chapter: data.chapter,
         title: data.documentTitle,
         equations: data.equations
       };
@@ -959,6 +1078,11 @@ async function main() {
       console.log(data.markdown);
       console.error('\n--- Equations (not saved - use --output to save) ---');
       console.error(JSON.stringify(data.equations, null, 2));
+    }
+
+    // Output final counter values for pipeline coordination
+    if (args.outputCounters) {
+      console.error('COUNTERS:' + JSON.stringify(data.counters));
     }
 
   } catch (err) {
