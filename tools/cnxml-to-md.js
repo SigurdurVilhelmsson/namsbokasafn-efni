@@ -601,13 +601,25 @@ function extractContent(cnxml, verbose) {
         lines.push('');
       }
 
-      const noteParaPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
-      let noteParaMatch;
-      while ((noteParaMatch = noteParaPattern.exec(noteContent)) !== null) {
-        const paraText = processInlineContent(noteParaMatch[1]);
-        if (paraText.trim()) {
-          lines.push(paraText);
-          lines.push('');
+      // Process paragraphs AND equations within note in document order
+      const noteContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+      let noteContentMatch;
+      while ((noteContentMatch = noteContentPattern.exec(noteContent)) !== null) {
+        const elementType = noteContentMatch[1];
+        const elementContent = noteContentMatch[3];
+
+        if (elementType === 'para') {
+          const paraText = processInlineContent(elementContent);
+          if (paraText.trim()) {
+            lines.push(paraText);
+            lines.push('');
+          }
+        } else if (elementType === 'equation') {
+          const eqText = processInlineContent(elementContent);
+          if (eqText.trim()) {
+            lines.push(eqText);
+            lines.push('');
+          }
         }
       }
       lines.push(':::');
@@ -627,13 +639,25 @@ function extractContent(cnxml, verbose) {
         lines.push('');
       }
 
-      const exParaPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
-      let exParaMatch;
-      while ((exParaMatch = exParaPattern.exec(exampleContent)) !== null) {
-        const paraText = processInlineContent(exParaMatch[1]);
-        if (paraText.trim()) {
-          lines.push(paraText);
-          lines.push('');
+      // Process paragraphs AND equations within example in document order
+      const exContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+      let exContentMatch;
+      while ((exContentMatch = exContentPattern.exec(exampleContent)) !== null) {
+        const elementType = exContentMatch[1];
+        const elementContent = exContentMatch[3];
+
+        if (elementType === 'para') {
+          const paraText = processInlineContent(elementContent);
+          if (paraText.trim()) {
+            lines.push(paraText);
+            lines.push('');
+          }
+        } else if (elementType === 'equation') {
+          const eqText = processInlineContent(elementContent);
+          if (eqText.trim()) {
+            lines.push(eqText);
+            lines.push('');
+          }
         }
       }
       lines.push(':::');
@@ -686,27 +710,50 @@ function extractContent(cnxml, verbose) {
           lines.push(':::practice-problem');
         }
 
-        // Process problem paragraphs
-        const problemParaPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
-        let problemParaMatch;
-        while ((problemParaMatch = problemParaPattern.exec(problemMatch[1])) !== null) {
-          const paraText = processInlineContent(problemParaMatch[1]);
-          if (paraText.trim()) {
-            lines.push(paraText);
-            lines.push('');
+        // Process problem paragraphs AND equations in document order
+        const problemContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+        let problemContentMatch;
+        while ((problemContentMatch = problemContentPattern.exec(problemMatch[1])) !== null) {
+          const elementType = problemContentMatch[1];
+          const elementContent = problemContentMatch[3];
+
+          if (elementType === 'para') {
+            const paraText = processInlineContent(elementContent);
+            if (paraText.trim()) {
+              lines.push(paraText);
+              lines.push('');
+            }
+          } else if (elementType === 'equation') {
+            const eqText = processInlineContent(elementContent);
+            if (eqText.trim()) {
+              lines.push(eqText);
+              lines.push('');
+            }
           }
         }
 
         // Add solution if present
         if (solutionMatch) {
           lines.push(':::answer');
-          const solutionParaPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
-          let solutionParaMatch;
-          while ((solutionParaMatch = solutionParaPattern.exec(solutionMatch[1])) !== null) {
-            const paraText = processInlineContent(solutionParaMatch[1]);
-            if (paraText.trim()) {
-              lines.push(paraText);
-              lines.push('');
+          // Process solution paragraphs AND equations in document order
+          const solutionContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+          let solutionContentMatch;
+          while ((solutionContentMatch = solutionContentPattern.exec(solutionMatch[1])) !== null) {
+            const elementType = solutionContentMatch[1];
+            const elementContent = solutionContentMatch[3];
+
+            if (elementType === 'para') {
+              const paraText = processInlineContent(elementContent);
+              if (paraText.trim()) {
+                lines.push(paraText);
+                lines.push('');
+              }
+            } else if (elementType === 'equation') {
+              const eqText = processInlineContent(elementContent);
+              if (eqText.trim()) {
+                lines.push(eqText);
+                lines.push('');
+              }
             }
           }
           lines.push(':::');
