@@ -1,8 +1,13 @@
 ---
-title: "Æfingar"
-section: "1.10"
+title: Æfingar
 chapter: 1
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-19T19:07:01.546Z"
+type: exercises
 ---
+
+## Æfingar
 
 ## Verkefni
 

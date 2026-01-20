@@ -1,9 +1,15 @@
 ---
-title: "Lykiljöfnur"
-section: "4.7"
+title: Lykiljöfnur
 chapter: 4
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-20T07:49:40.544Z"
+type: keyEquations
 ---
 
 ## Lykiljöfnur
 
-$\text{percent yield} = \left( \frac{\text{actual yield}}{\text{theoretical yield}} \right)\;\, \times \ 100$
+## Lykiljöfnur
+
+|  |
+| --- |

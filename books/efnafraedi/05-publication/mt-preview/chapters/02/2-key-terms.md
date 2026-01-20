@@ -1,307 +1,256 @@
 ---
-title: "Lykilhugtök"
-section: "2.8"
+title: Lykilhugtök
 chapter: 2
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-19T19:09:20.444Z"
+type: keyTerms
 ---
 
 ## Lykilhugtök
 
-:::definition{term="Aktiníð"}
+## Lykilhugtök
+
+Aktiníð
+
 Innri hliðarmálmur í neðri af tveimur neðstu röðum lotukerfisins
 
-:::
+Alkalímálmur
 
-:::definition{term="Alkalímálmur"}
 Frumefni í hóp 1
 
-:::
+Jarðalkalímálmur
 
-:::definition{term="Jarðalkalímálmur"}
 Frumefni í hóp 2
 
-:::
+Alfa-eind (α-eind)
 
-:::definition{term="Alfa-eind (α-eind)"}
 Jákvætt hlaðin eind sem samanstendur af tveimur róteindum og tveimur nifteindum
 
-:::
+Anjón
 
-:::definition{term="Anjón"}
 Neikvætt hlaðið atóm eða sameind (inniheldur fleiri rafeindir en róteindir)
 
-:::
+Atómmassi
 
-:::definition{term="Atómmassi"}
 Meðalmassi atóma frumefnis, gefinn upp í amu
 
-:::
+Atómmassaeining (amu)
 
-:::definition{term="Atómmassaeining (amu)"}
-(einnig sameinuð atómmassaeining, u, eða Dalton, Da) massaeining sem jafngildir $\frac{1}{12}$ af massa ^12^C atóms
+(einnig sameinuð atómmassaeining, u, eða Dalton, Da) massaeining sem jafngildir af massa <sup>12</sup>C atóms
 
-:::
+Sætistala (Z)
 
-:::definition{term="Sætistala (Z)"}
 Fjöldi róteinda í kjarna atóms
 
-:::
+Tvenndarsýra
 
-:::definition{term="Tvenndar atóm sameind"}
-Efnasamband sem inniheldur vetni, súrefni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H^+^ jónir þegar það er leyst upp í vatni)
+efnasamband sem inniheldur vetni, súrefni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H<sup>+</sup> jónir þegar það er leyst upp í vatni)
 
-:::
+Tvenndarefnasamband
 
-:::definition{term="Tvenndarefnasamband"}
 Efnasamband sem inniheldur tvö mismunandi frumefni.
 
-:::
+Katjón
 
-:::definition{term="Katjón"}
 Jákvætt hlaðið atóm eða sameind (inniheldur færri rafeindir en róteindir)
 
-:::
+Kalkógen
 
-:::definition{term="Kalkógen"}
 Frumefni í hóp 16
 
-:::
+Efnatákn
 
-:::definition{term="Efnatákn"}
 Eins, tveggja eða þriggja stafa skammstöfun sem notuð er til að tákna frumefni eða atóm þess
 
-:::
+Samgilt tengi
 
-:::definition{term="Samgilt tengi"}
 Aðdráttarkraftur milli kjarna atóma sameindar og rafeindapara milli atómanna
 
-:::
+Samgilt efnasamband
 
-:::definition{term="Samgilt efnasamband"}
 (einnig sameindaefnasamband) samsett úr sameindum sem myndast af atómum tveggja eða fleiri mismunandi frumefna
 
-:::
+Dalton (Da)
 
-:::definition{term="Dalton (Da)"}
 Önnur eining sem jafngildir atómmassaeiningunni
 
-:::
+Atómkenning Daltons
 
-:::definition{term="Atómkenning Daltons"}
 Safn fullyrðinga sem staðfestu grundvallareiginleika atóma
 
-:::
+Rafeind
 
-:::definition{term="Rafeind"}
 Neikvætt hlaðin öreind með tiltölulega lítinn massa staðsett fyrir utan kjarnann
 
-:::
+Reynsluformúla
 
-:::definition{term="Reynsluformúla"}
 Formúla sem sýnir samsetningu efnasambands gefið upp sem einfaldasta heiltöluhlutfall atóma
 
-:::
+Grunneining hleðslu
 
-:::definition{term="Grunneining hleðslu"}
-(einnig kölluð frumhleðsla) jafngildir stærð hleðslu rafeindar (e) þar sem e = 1,602 × 10^−19^ C
+(einnig kölluð frumhleðsla) jafngildir stærð hleðslu rafeindar (e) þar sem e = 1,602 10<sup>−19</sup> C
 
-:::
+hópur
 
-:::definition{term="Hópur"}
-Lóðréttur dálkur í lotukerfinu
+lóðréttur dálkur í lotukerfinu
 
-:::
+halógen
 
-:::definition{term="Halógen"}
-Frumefni í hópi 17
+frumefni í hópi 17
 
-:::
+hýdrat
 
-:::definition{term="Hýdrat"}
-Efnasamband sem inniheldur eina eða fleiri vatnssameindir bundnar innan kristalla sinna
+efnasamband sem inniheldur eina eða fleiri vatnssameindir bundnar innan kristalla sinna
 
-:::
+hverfgas
 
-:::definition{term="Hverfgas"}
 (einnig eðalgas) frumefni í hópi 18
 
-:::
+innri hliðarmálmur
 
-:::definition{term="Innri hliðarmálmur"}
 (einnig lanþaníð eða aktiníð) frumefni í neðstu tveimur röðunum; ef í fyrri röðinni, einnig kallað lanþaníð, eða ef í seinni röðinni, einnig kallað aktiníð
 
-:::
+jón
 
-:::definition{term="Jón"}
-Rafhlaðið atóm eða sameind (inniheldur ójafnan fjölda róteinda og rafeinda)
+rafhlaðið atóm eða sameind (inniheldur ójafnan fjölda róteinda og rafeinda)
 
-:::
+jónatengi
 
-:::definition{term="Jónatengi"}
-Rafstöðukraftar aðdráttar milli gagnstætt hlaðinna jóna í jónaefnasambandi
+rafstöðukraftar aðdráttar milli gagnstætt hlaðinna jóna í jónaefnasambandi
 
-:::
+jónaefnasamband
 
-:::definition{term="Jónaefnasamband"}
-Efnasamband sem samanstendur af katjónum og anjónum í hlutföllum sem gefa rafhlutlaust efni
+efnasamband sem samanstendur af katjónum og anjónum í hlutföllum sem gefa rafhlutlaust efni
 
-:::
+ísómerur
 
-:::definition{term="Ísómerur"}
-Efnasambönd með sömu efnaformúlu en mismunandi byggingu
+efnasambönd með sömu efnaformúlu en mismunandi byggingu
 
-:::
+ísótópar
 
-:::definition{term="Ísótópar"}
-Atóm sem innihalda sama fjölda róteinda en mismunandi fjölda nifteinda
+atóm sem innihalda sama fjölda róteinda en mismunandi fjölda nifteinda
 
-:::
+lanþaníð
 
-:::definition{term="Lanþaníð"}
-Innri hliðarmálmur í efri röð neðstu tveggja raða lotukerfisins
+innri hliðarmálmur í efri röð neðstu tveggja raða lotukerfisins
 
-:::
+lögmálið um föst efnahlutföll
 
-:::definition{term="Lögmálið um föst efnahlutföll"}
 (einnig lögmálið um ákveðin efnahlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefni í sömu hlutföllum miðað við massa
 
-:::
+lögmálið um ákveðin efnahlutföll
 
-:::definition{term="Lögmálið um ákveðin efnahlutföll"}
 (einnig lögmálið um föst efnahlutföll) öll sýni af hreinu efnasambandi innihalda sömu frumefni í sömu hlutföllum miðað við massa
 
-:::
+lögmálið um margfeldni efnahlutfalla
 
-:::definition{term="Lögmálið um margfeldni efnahlutfalla"}
-Þegar tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi af einu frumefni hvarfast við massa hins frumefnisins í hlutfalli lítilla heilla talna
+þegar tvö frumefni hvarfast og mynda fleiri en eitt efnasamband, mun fastur massi af einu frumefni hvarfast við massa hins frumefnisins í hlutfalli lítilla heilla talna
 
-:::
+aðalflokkafrumefni
 
-:::definition{term="Aðalflokkafrumefni"}
 (einnig fulltrúafrumefni) frumefni í hópum 1, 2 og 13–18
 
-:::
+massatala (A)
 
-:::definition{term="Massatala (A)"}
-Samtala fjölda nifteinda og róteinda í kjarna atóms
+samtala fjölda nifteinda og róteinda í kjarna atóms
 
-:::
+málmur
 
-:::definition{term="Málmur"}
-Frumefni sem er glansandi, mótanlegt og góður leiðari varma og rafmagns
+frumefni sem er glansandi, mótanlegt og góður leiðari varma og rafmagns
 
-:::
+hálfmálmur
 
-:::definition{term="Hálfmálmur"}
-Frumefni sem leiðir varma og rafmagn í meðallagi vel og hefur suma eiginleika málma og suma eiginleika málmleysingja
+frumefni sem leiðir varma og rafmagn í meðallagi vel og hefur suma eiginleika málma og suma eiginleika málmleysingja
 
-:::
+sameindaefnasamband
 
-:::definition{term="Sameindaefnasamband"}
 (einnig samgilt efnasamband) samsett úr sameindum sem myndaðar eru af atómum tveggja eða fleiri mismunandi frumefna
 
-:::
+sameindaformúla
 
-:::definition{term="Sameindaformúla"}
-Formúla sem sýnir samsetningu sameindar efnasambands og gefur upp raunverulegan fjölda atóma hvers frumefnis í sameind efnasambandsins
+formúla sem sýnir samsetningu sameindar efnasambands og gefur upp raunverulegan fjölda atóma hvers frumefnis í sameind efnasambandsins
 
-:::
+einatóma jón
 
-:::definition{term="Einatóma jón"}
-Jón sem samanstendur af einu atómi
+jón sem samanstendur af einu atómi
 
-:::
+nifteind
 
-:::definition{term="Nifteind"}
-Óhlaðin öreind í kjarna
+óhlaðin öreind í kjarna
 
-:::
+eðalgas
 
-:::definition{term="Eðalgas"}
-(einnig óvirkt gas) frumefni í hóp 18
+(einnig, óvirkt gas) frumefni í hóp 18
 
-:::
+nafnakerfi
 
-:::definition{term="Nafnakerfi"}
-Reglukerfi til að nefna áhugaverða hluti
+reglukerfi til að nefna áhugaverða hluti
 
-:::
+málmleysingi
 
-:::definition{term="Málmleysingi"}
-Frumefni sem er daufleitt og lélegur leiðari varma og rafmagns
+frumefni sem er daufleitt og lélegur leiðari varma og rafmagns
 
-:::
+kjarni
 
-:::definition{term="Kjarni"}
-Massamikil, jákvætt hlaðin miðja atóms sem samanstendur af róteindum og nifteindum
+massamikil, jákvætt hlaðin miðja atóms sem samanstendur af róteindum og nifteindum
 
-:::
+oxósýra
 
-:::definition{term="Oxósýra"}
-Efnasamband sem inniheldur vetni, súrefni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H^+^ jónir þegar það er leyst upp í vatni)
+efnasamband sem inniheldur vetni, súrefni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H<sup>+</sup> jónir þegar það er leyst upp í vatni)
 
-:::
+oxóanjón
 
-:::definition{term="Oxóanjón"}
-Fjölatóma anjón sem samanstendur af miðlægu atómi sem er tengt súrefnisatómum
+fjölatóma anjón sem samanstendur af miðlægu atómi sem er tengt súrefnisatómum
 
-:::
+lota
 
-:::definition{term="Lota"}
-(einnig röð) lárétt röð í lotukerfinu
+(einnig, röð) lárétt röð í lotukerfinu
 
-:::
+lotulögmálið
 
-:::definition{term="Lotulögmálið"}
-Eiginleikar frumefnanna eru lotubundin virkni sætistölu þeirra.
+eiginleikar frumefnanna eru lotubundin virkni sætistölu þeirra.
 
-:::
+lotukerfið
 
-:::definition{term="Lotukerfið"}
-Tafla yfir frumefnin sem setur frumefni með svipaða efnaeiginleika saman
+tafla yfir frumefnin sem setur frumefni með svipaða efnaeiginleika saman
 
-:::
+pnictogen
 
-:::definition{term="Pnictogen"}
-Frumefni í hópi 15
+frumefni í hópi 15
 
-:::
+fjölatóma jón
 
-:::definition{term="Fjölatóma jón"}
-Jón sem samanstendur af fleiri en einu atómi
+jón sem samanstendur af fleiri en einu atómi
 
-:::
+róteind
 
-:::definition{term="Róteind"}
-Jákvætt hlaðin öreind í kjarna
+jákvætt hlaðin öreind í kjarna
 
-:::
+aðalflokkafrumefni
 
-:::definition{term="Röð"}
-(einnig lota) lárétt röð í lotukerfinu
+(einnig, aðalhópafrumefni) frumefni í dálkum 1, 2 og 12–18
 
-:::
+röð
 
-:::definition{term="Rúmísómerur"}
-Efnasambönd þar sem afstæð afstaða atómanna í rúmi er mismunandi
+(einnig, lota) lárétt röð í lotukerfinu
 
-:::
+rúmísómerur
 
-:::definition{term="Byggingarformúla"}
-Sýnir atómin í sameind og hvernig þau eru tengd
+efnasambönd þar sem afstæð afstaða atómanna í rúmi er mismunandi
 
-:::
+byggingarformúla
 
-:::definition{term="Byggingarísómera"}
-Annað tveggja efna sem hafa sömu sameindaformúlu en mismunandi eðlis- og efnaeiginleika vegna þess að atóm þeirra eru tengd á mismunandi hátt
+sýnir atómin í sameind og hvernig þau eru tengd
 
-:::
+byggingarisómera
 
-:::definition{term="Hliðarmálmur"}
-Frumefni í hópum 3–12 (nánar tiltekið, 3–11; sjá kafla um hliðarmálma og hnitunarefnafræði)
+annað tveggja efna sem hafa sömu sameindaformúlu en mismunandi eðlis- og efnaeiginleika vegna þess að atóm þeirra eru tengd á mismunandi hátt
 
-:::
+hliðarmálmur
 
-:::definition{term="Sameinuð atómmassaeining (u)"}
+frumefni í hópum 3–12 (nánar tiltekið, 3–11; sjá kafla um hliðarmálma og hnitunarefnafræði)
+
+sameinuð atómmassaeining (u)
+
 Önnur eining sem jafngildir atómmassaeiningunni
-
-:::

@@ -1,8 +1,13 @@
 ---
-title: "Samantekt"
-section: "2.10"
+title: Samantekt
 chapter: 2
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-19T19:09:20.441Z"
+type: summary
 ---
+
+## Samantekt
 
 ## Samantekt
 
@@ -12,11 +17,11 @@ Grikkir til forna lögðu til að efni samanstæði af afar smáum ögnum sem ka
 
 ### 2.2 Þróun atómkenningarinnar
 
-Þrátt fyrir að enginn hafi í raun séð innviði atóms hafa tilraunir sýnt mikið um byggingu atóma. Katóðugeislarör Thomsons sýndi að atóm innihalda litlar, neikvætt hlaðnar agnir sem kallast rafeindir. Millikan uppgötvaði að til er grundvallar rafhleðsla -- hleðsla rafeindar. Gullþynnutilraun Rutherfords sýndi að atóm hafa lítinn, þéttan, jákvætt hlaðinn kjarna; jákvætt hlaðnu agnirnar innan kjarnans kallast róteindir. Chadwick uppgötvaði að kjarninn inniheldur einnig hlutlausar agnir sem kallast nifteindir. Soddy sýndi fram á að atóm sama frumefnis geta verið mismunandi að massa; þau kallast samsætur.
+Þrátt fyrir að enginn hafi í raun séð innviði atóms hafa tilraunir sýnt mikið um byggingu atóma. Katóðugeislarör Thomsons sýndi að atóm innihalda litlar, neikvætt hlaðnar agnir sem kallast rafeindir. Millikan uppgötvaði að til er grundvallar rafhleðsla – hleðsla rafeindar. Gullþynnutilraun Rutherfords sýndi að atóm hafa lítinn, þéttan, jákvætt hlaðinn kjarna; jákvætt hlaðnu agnirnar innan kjarnans kallast róteindir. Chadwick uppgötvaði að kjarninn inniheldur einnig hlutlausar agnir sem kallast nifteindir. Soddy sýndi fram á að atóm sama frumefnis geta verið mismunandi að massa; þau kallast samsætur.
 
 ### 2.3 Bygging atóma og táknmál
 
-Atóm samanstendur af litlum, jákvætt hlaðnum kjarna sem er umkringdur rafeindum. Kjarninn inniheldur róteindir og nifteindir; þvermál hans er um 100.000 sinnum minna en þvermál atómsins. Massi eins atóms er venjulega gefinn upp í atómmassaeiningum (amu), sem er vísað til sem atómmassi. Eitt amu er skilgreint sem nákvæmlega $\frac{1}{12}$ af massa kolefnis-12 atóms og jafngildir 1,6605 $\times$ 10^−24^ g.
+Atóm samanstendur af litlum, jákvætt hlaðnum kjarna sem er umkringdur rafeindum. Kjarninn inniheldur róteindir og nifteindir; þvermál hans er um 100.000 sinnum minna en þvermál atómsins. Massi eins atóms er venjulega gefinn upp í atómmassaeiningum (amu), sem er vísað til sem atómmassi. Eitt amu er skilgreint sem nákvæmlega af massa kolefnis-12 atóms og jafngildir 1,6605 10<sup>−24</sup> g.
 
 Róteindir eru tiltölulega þungar agnir með hleðsluna 1+ og massa upp á 1,0073 amu. Nifteindir eru tiltölulega þungar agnir án hleðslu og með massa upp á 1,0087 amu. Rafeindir eru léttar agnir með hleðsluna 1− og massa upp á 0,00055 amu. Fjöldi róteinda í kjarnanum er kallaður sætistala (Z) og er sá eiginleiki sem skilgreinir frumefnisauðkenni atóms. Samanlagður fjöldi róteinda og nifteinda í kjarnanum er kallaður massatala og, gefinn upp í amu, er hann um það bil jafn massa atómsins. Atóm er hlutlaust þegar það inniheldur jafnmargar rafeindir og róteindir.
 
@@ -28,7 +33,7 @@ Sameindaformúla notar efnatákn og lágstafi til að gefa til kynna nákvæman 
 
 ### 2.5 Lotukerfið
 
-Uppgötvun á reglubundinni endurkomu svipaðra eiginleika meðal frumefnanna leiddi til mótunar lotukerfisins, þar sem frumefnunum er raðað eftir hækkandi sætistölu í raðir sem kallast lotur og dálka sem kallast flokkar. Frumefni í sama flokki lotukerfisins hafa svipaða efnafræðilega eiginleika. Frumefni má flokka sem málma, málmunga og málmleysingja, eða sem aðalflokka frumefni, hliðarmálma og innri hliðarmálma. Flokkar eru númeraðir 1--18 frá vinstri til hægri. Frumefnin í flokki 1 eru þekkt sem alkalímálmar; þau í flokki 2 eru jarðalkalímálmar; þau í 15 eru pniktógen; þau í 16 eru kalkógen; þau í 17 eru halógen; og þau í 18 eru eðalgös.
+Uppgötvun á reglubundinni endurkomu svipaðra eiginleika meðal frumefnanna leiddi til mótunar lotukerfisins, þar sem frumefnunum er raðað eftir hækkandi sætistölu í raðir sem kallast lotur og dálka sem kallast flokkar. Frumefni í sama flokki lotukerfisins hafa svipaða efnafræðilega eiginleika. Frumefni má flokka sem málma, málmunga og málmleysingja, eða sem aðalflokka frumefni, hliðarmálma og innri hliðarmálma. Flokkar eru númeraðir 1–18 frá vinstri til hægri. Frumefnin í flokki 1 eru þekkt sem alkalímálmar; þau í flokki 2 eru jarðalkalímálmar; þau í 15 eru pniktógen; þau í 16 eru kalkógen; þau í 17 eru halógen; og þau í 18 eru eðalgös.
 
 ### 2.6 Jóna- og sameindaefni
 
@@ -38,4 +43,4 @@ Efnasambönd sem innihalda jónir kallast jónasambönd. Jónasambönd myndast y
 
 ### 2.7 Nafnakerfi efnafræðinnar
 
-Efnafræðingar nota nafnakerfisreglur til að gefa efnasamböndum skýr nöfn. Jóna- og sameindasambönd eru nefnd með nokkuð mismunandi aðferðum. Tvíundajónasambönd samanstanda yfirleitt af málmi og málmleysingja. Nafn málmsins er skrifað fyrst, á eftir kemur nafn málmleysingjans með endingunni breytt í --*íð*. Til dæmis er K~2~O kallað kalíumoxíð. Ef málmurinn getur myndað jónir með mismunandi hleðslur fylgir rómversk tala í sviga á eftir nafni málmsins til að tilgreina hleðslu hans. Þannig er FeCl~2~ járn(II) klóríð og FeCl~3~ er járn(III) klóríð. Sum efnasambönd innihalda fjölatóma jónir; það ætti að leggja nöfn algengra fjölatóma jóna á minnið. Sameindasambönd geta myndað efnasambönd með mismunandi hlutföllum frumefna sinna, þannig að forskeyti eru notuð til að tilgreina fjölda atóma hvers frumefnis í sameind efnasambandsins. Sem dæmi má nefna SF~6~, brennisteinshexaflúoríð ogN~2~O~4~, díniturtetroxíð. Sýrur eru mikilvægur flokkur efnasambanda sem innihalda vetni og hafa sérstakar nafnareglur. Tvíundarsýrur eru nefndar með forskeytinu *hýdró-*, viðskeytinu --*íð* er breytt í --*sýra*; HCl er saltsýra. Oxýsýrur eru nefndar með því að taka *heiti efnisins milli vetnis og súrefnis* og *bæta við* endingunni *„sýra"*; H~2~CO~3~ er kolsýra.
+Efnafræðingar nota nafnakerfisreglur til að gefa efnasamböndum skýr nöfn. Jóna- og sameindasambönd eru nefnd með nokkuð mismunandi aðferðum. Tvíundajónasambönd samanstanda yfirleitt af málmi og málmleysingja. Nafn málmsins er skrifað fyrst, á eftir kemur nafn málmleysingjans með endingunni breytt í –*íð*. Til dæmis er K<sub>2</sub>O kallað kalíumoxíð. Ef málmurinn getur myndað jónir með mismunandi hleðslur fylgir rómversk tala í sviga á eftir nafni málmsins til að tilgreina hleðslu hans. Þannig er FeCl<sub>2</sub> járn(II) klóríð og FeCl<sub>3</sub> er járn(III) klóríð. Sum efnasambönd innihalda fjölatóma jónir; það ætti að leggja nöfn algengra fjölatóma jóna á minnið. Sameindasambönd geta myndað efnasambönd með mismunandi hlutföllum frumefna sinna, þannig að forskeyti eru notuð til að tilgreina fjölda atóma hvers frumefnis í sameind efnasambandsins. Sem dæmi má nefna SF<sub>6</sub>, brennisteinshexaflúoríð ogN<sub>2</sub>O<sub>4</sub>, díniturtetroxíð. Sýrur eru mikilvægur flokkur efnasambanda sem innihalda vetni og hafa sérstakar nafnareglur. Tvíundarsýrur eru nefndar með forskeytinu *hýdró-*, viðskeytinu –*íð* er breytt í –*sýra*; HCl er saltsýra. Oxýsýrur eru nefndar með því að taka *heiti efnisins milli vetnis og súrefnis* og *bæta við* endingunni *„sýra“*; H<sub>2</sub>CO<sub>3</sub> er kolsýra.

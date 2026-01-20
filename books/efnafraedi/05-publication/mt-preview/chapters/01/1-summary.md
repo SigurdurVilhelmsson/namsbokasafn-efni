@@ -1,8 +1,13 @@
 ---
-title: "Samantekt"
-section: "1.9"
+title: Samantekt
 chapter: 1
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-19T19:07:01.542Z"
+type: summary
 ---
+
+## Samantekt
 
 ## Samantekt
 
@@ -22,7 +27,7 @@ Mælanlegir eiginleikar falla í annan af tveimur flokkum. Magnbundnir eiginleik
 
 ### 1.4 Mælingar
 
-Mælingar veita magnbundnar upplýsingar sem eru mikilvægar við rannsóknir og iðkun efnafræði. Hver mæling hefur stærð, einingu til samanburðar og óvissu. Mælingar má tákna með tugabrotum eða á staðalformi. Vísindamenn nota aðallega SI-einingar (alþjóðlega einingakerfið) eins og metra, sekúndur og kílógrömm, auk afleiddra eininga eins og lítra (fyrir rúmmál) og g/cm³ (fyrir eðlismassa). Í mörgum tilfellum er hentugt að nota forskeyti sem gefa brota- og margfeldisseiningar, svo sem míkrósekúndur (10⁻⁶ sekúndur) og megahertz (10⁶ hertz).
+Mælingar veita magnbundnar upplýsingar sem eru mikilvægar við rannsóknir og iðkun efnafræði. Hver mæling hefur stærð, einingu til samanburðar og óvissu. Mælingar má tákna með tugabrotum eða á staðalformi. Vísindamenn nota aðallega SI-einingar (alþjóðlega einingakerfið) eins og metra, sekúndur og kílógrömm, auk afleiddra eininga eins og lítra (fyrir rúmmál) og g/cm3 (fyrir eðlismassa). Í mörgum tilfellum er hentugt að nota forskeyti sem gefa brota- og margfeldisseiningar, svo sem míkrósekúndur (10−6 sekúndur) og megahertz (106 hertz).
 
 ### 1.5 Óvissa, hittni og nákvæmni í mælingum
 

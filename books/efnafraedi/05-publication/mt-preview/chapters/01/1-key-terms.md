@@ -1,277 +1,228 @@
 ---
-title: "Lykilhugtök"
-section: "1.7"
+title: Lykilhugtök
 chapter: 1
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-19T19:07:01.550Z"
+type: keyTerms
 ---
 
 ## Lykilhugtök
 
-:::definition{term="Nákvæmni"}
-Hversu vel mæling samræmist réttu gildi
+## Lykilhugtök
 
-:::
+Nákvæmni
 
-:::definition{term="Frumeind"}
-Minnsta ögn frumefnis sem getur gengið í efnasamband
+hversu vel mæling samræmist réttu gildi
 
-:::
+frumeind
 
-:::definition{term="Celsíus (°C)"}
-Hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum kvarða
+minnsta ögn frumefnis sem getur gengið í efnasamband
 
-:::
+Celsíus (°C)
 
-:::definition{term="Efnabreytingar"}
-Breyting sem myndar nýtt efni úr upprunalega efninu
+hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum kvarða
 
-:::
+efnabreytingar
 
-:::definition{term="Efnaeiginleikar"}
-Hegðun sem tengist breytingu á einu efni í annað
+breyting sem myndar nýtt efni úr upprunalega efninu
 
-:::
+efnaeiginleikar
 
-:::definition{term="Efnafræði"}
-Rannsóknir á samsetningu, eiginleikum og samspili efnis
+hegðun sem tengist breytingu á einu efni í annað
 
-:::
+efnafræði
 
-:::definition{term="Efnasamband"}
-Hreint efni sem hægt er að brjóta niður í tvö eða fleiri frumefni
+rannsóknir á samsetningu, eiginleikum og samspili efnis
 
-:::
+efnasamband
 
-:::definition{term="Rúmsentimetri (cm³ eða cc)"}
-Rúmmál tenings með brúnarlengdina nákvæmlega 1 cm
+hreint efni sem hægt er að brjóta niður í tvö eða fleiri frumefni
 
-:::
+rúmsentimetri (cm3 eða cc)
 
-:::definition{term="Rúmmetri (m³)"}
+rúmmál tenings með brúnarlengdina nákvæmlega 1 cm
+
+rúmmetri (m3)
+
 SI-eining rúmmáls
 
-:::
+Eðlismassi
 
-:::definition{term="Eðlismassi"}
-Hlutfall massa og rúmmáls fyrir efni eða hlut
+hlutfall massa og rúmmáls fyrir efni eða hlut
 
-:::
+Einingagreining
 
-:::definition{term="Einingagreining"}
-Fjölhæf stærðfræðileg aðferð sem hægt er að beita á útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir
+fjölhæf stærðfræðileg aðferð sem hægt er að beita á útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir
 
-:::
+Frumefni
 
-:::definition{term="Frumefni"}
-Efni sem samanstendur af einni tegund atóma; efni sem ekki er hægt að sundra með efnahvarfi
+efni sem samanstendur af einni tegund atóma; efni sem ekki er hægt að sundra með efnahvarfi
 
-:::
+Nákvæm tala
 
-:::definition{term="Nákvæm tala"}
-Tala fengin með talningu eða samkvæmt skilgreiningu
+tala fengin með talningu eða samkvæmt skilgreiningu
 
-:::
+Magnbundinn eiginleiki
 
-:::definition{term="Magnbundinn eiginleiki"}
-Eiginleiki efnis sem er háður magni efnisins
+eiginleiki efnis sem er háður magni efnisins
 
-:::
+Fahrenheit
 
-:::definition{term="Fahrenheit"}
-Hitastigseining; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða
+hitastigseining; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða
 
-:::
+Gas
 
-:::definition{term="Gas"}
-Ástand þar sem efni hefur hvorki ákveðið rúmmál né lögun
+ástand þar sem efni hefur hvorki ákveðið rúmmál né lögun
 
-:::
+Misleit efnablanda
 
-:::definition{term="Misleit efnablanda"}
-Sambland efna með samsetningu sem er breytileg frá einum punkti til annars
+sambland efna með samsetningu sem er breytileg frá einum punkti til annars
 
-:::
+Einsleit efnablanda
 
-:::definition{term="Einsleit efnablanda"}
-(einnig lausn) Sambland efna með samsetningu sem er einsleit í gegn
+(einnig lausn) sambland efna með samsetningu sem er einsleit í gegn
 
-:::
+Tilgáta
 
-:::definition{term="Tilgáta"}
-Bráðabirgðaskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga
+bráðabirgðaskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga
 
-:::
+eðlisbundinn eiginleiki
 
-:::definition{term="Eðlisbundinn eiginleiki"}
-Eiginleiki efnis sem er óháður magni efnisins
+eiginleiki efnis sem er óháður magni efnisins
 
-:::
+Kelvin (K)
 
-:::definition{term="Kelvin (K)"}
 SI eining fyrir hitastig; 273,15 K = 0 ºC
 
-:::
+kílógramm (kg)
 
-:::definition{term="Kílógramm (kg)"}
-Staðaleining SI-kerfisins fyrir massa
+staðaleining SI-kerfisins fyrir massa
 
-:::
+lögmál
 
-:::definition{term="Lögmál"}
-Staðhæfing sem dregur saman mikinn fjölda athugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar
+staðhæfing sem dregur saman mikinn fjölda athugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar.
 
-:::
+lögmál um varðveislu efnis
 
-:::definition{term="Lögmál um varðveislu efnis"}
-Þegar efni breytist úr einni gerð í aðra, eða breytir um form, verður engin greinanleg breyting á heildarmagni þess efnis sem er til staðar
+þegar efni breytist úr einni gerð í aðra, eða breytir um form, verður engin greinanleg breyting á heildarmagni þess efnis sem er til staðar
 
-:::
+lengd
 
-:::definition{term="Lengd"}
-Mælikvarði á eina vídd hlutar
+mælikvarði á eina vídd hlutar
 
-:::
+vökvi
 
-:::definition{term="Vökvi"}
-Ástand efnis sem hefur ákveðið rúmmál en óákveðna lögun
+ástand efnis sem hefur ákveðið rúmmál en óákveðna lögun
 
-:::
+lítri (L)
 
-:::definition{term="Lítri (L)"}
-(einnig rúmdesimetri) Rúmmálseining; 1 L = 1.000 cm³
+(einnig rúmdesimetri) rúmmálseining; 1 L = 1.000 cm3
 
-:::
+stórsætt svið
 
-:::definition{term="Stórsætt svið"}
-Svið hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með sjón og snertingu
+svið hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með sjón og snertingu
 
-:::
+massi
 
-:::definition{term="Massi"}
-Grunneiginleiki sem gefur til kynna magn efnis
+grunneiginleiki sem gefur til kynna magn efnis
 
-:::
+efni
 
-:::definition{term="Efni"}
-Allt sem tekur pláss og hefur massa
+allt sem tekur pláss og hefur massa
 
-:::
+metri (m)
 
-:::definition{term="Metri (m)"}
-Stöðluð lengdareining metrakerfisins og SI-kerfisins; 1 m = u.þ.b. 1,094 yardar
+stöðluð lengdareining metrakerfisins og SI-kerfisins; 1 m = u.þ.b. 1,094 yardar
 
-:::
+smásætt svið
 
-:::definition{term="Smásætt svið"}
-Svið hluta sem eru of smáir til að vera skynjaðir beint
+svið hluta sem eru of smáir til að vera skynjaðir beint
 
-:::
+millilítri (mL)
 
-:::definition{term="Millilítri (mL)"}
-1/1.000 úr lítra; jafngildir 1 cm³
+1/1.000 úr lítra; jafngildir 1 cm3
 
-:::
+efnablanda
 
-:::definition{term="Efnablanda"}
-Efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum
+efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum
 
-:::
+sameind
 
-:::definition{term="Sameind"}
-Tengt safn tveggja eða fleiri atóma af sama eða mismunandi frumefnum
+tengt safn tveggja eða fleiri atóma af sama eða mismunandi frumefnum
 
-:::
+eðlisbreyting
 
-:::definition{term="Eðlisbreyting"}
-Breyting á efnisham eða eiginleikum efnis sem felur ekki í sér breytingu á efnasamsetningu þess
+breyting á efnisham eða eiginleikum efnis sem felur ekki í sér breytingu á efnasamsetningu þess
 
-:::
+eðliseiginleiki
 
-:::definition{term="Eðliseiginleiki"}
-Einkenni efnis sem er ekki tengt neinni breytingu á efnasamsetningu þess
+einkenni efnis sem er ekki tengt neinni breytingu á efnasamsetningu þess
 
-:::
+rafgas
 
-:::definition{term="Rafgas"}
-Gaskenndur efnishamur sem inniheldur mikinn fjölda rafhlaðinna atóma og/eða sameinda
+gaskenndur efnishamur sem inniheldur mikinn fjölda rafhlaðinna atóma og/eða sameinda
 
-:::
+nákvæmni
 
-:::definition{term="Nákvæmni"}
-Hversu nálægt mæling er sömu mælingu þegar hún er endurtekin
+hversu nálægt mæling er sömu mælingu þegar hún er endurtekin
 
-:::
+hreint efni
 
-:::definition{term="Hreint efni"}
-Einsleitt efni sem hefur fasta samsetningu
+einsleitt efni sem hefur fasta samsetningu
 
-:::
+námundun
 
-:::definition{term="Námundun"}
-Aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í þeim mælingum sem notaðar eru í útreikningnum
+aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í þeim mælingum sem notaðar eru í útreikningnum
 
-:::
+vísindaleg aðferð
 
-:::definition{term="Vísindaleg aðferð"}
-Uppgötvunarferli sem leiðir frá spurningu og athugun til lögmáls eða tilgátu til kenningar, ásamt tilraunakenndri sannprófun á tilgátunni og hvers kyns nauðsynlegri breytingu á kenningunni
+uppgötvunarferli sem leiðir frá spurningu og athugun til lögmáls eða tilgátu til kenningar, ásamt tilraunakenndri sannprófun á tilgátunni og hvers kyns nauðsynlegri breytingu á kenningunni
 
-:::
+sekúnda (s)
 
-:::definition{term="Sekúnda (s)"}
 SI-eining tíma
 
-:::
+SI-einingar (Alþjóðlega einingakerfið)
 
-:::definition{term="SI-einingar (Alþjóðlega einingakerfið)"}
-Staðlar sem eru fastsettir með alþjóðlegum samningi í Alþjóðlega einingakerfinu (*Le Système International d'Unités*)
+staðlar sem eru fastsettir með alþjóðlegum samningi í Alþjóðlega einingakerfinu (_Le Système International d’Unités_)
 
-:::
+markverðir stafir
 
-:::definition{term="Markverðir stafir"}
-(einnig, markverðir tölustafir) Allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn
+(einnig, markverðir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn
 
-:::
+fast efni
 
-:::definition{term="Fast efni"}
-Efnishamur sem er stífur, hefur ákveðið form og nokkuð fast rúmmál
+efnishamur sem er stífur, hefur ákveðið form og nokkuð fast rúmmál
 
-:::
+táknrænt svið
 
-:::definition{term="Táknrænt svið"}
-Sérhæft tungumál sem notað er til að tákna þætti á stórsæja og smásæja sviðinu, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga
+sérhæft tungumál sem notað er til að tákna þætti á stórsæja og smásæja sviðinu, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga
 
-:::
+hitastig
 
-:::definition{term="Hitastig"}
-Eðlisbundinn eiginleiki sem táknar hita eða kulda efnis
+eðlisbundinn eiginleiki sem táknar hita eða kulda efnis
 
-:::
+kenning
 
-:::definition{term="Kenning"}
-Vel rökstudd, yfirgripsmikil, prófanleg útskýring á tilteknum þætti náttúrunnar
+vel rökstudd, yfirgripsmikil, prófanleg útskýring á tilteknum þætti náttúrunnar
 
-:::
+óvissa
 
-:::definition{term="Óvissa"}
-Mat á því hversu mikið mæling víkur frá sönnu gildi
+mat á því hversu mikið mæling víkur frá sönnu gildi
 
-:::
+eining
 
-:::definition{term="Eining"}
-Samanburðarstaðall fyrir mælingar
+samanburðarstaðall fyrir mælingar
 
-:::
+umbreytistuðull eininga
 
-:::definition{term="Umbreytistuðull eininga"}
-Hlutfall jafngildra magntalna gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra
+hlutfall jafngildra magntalna gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra
 
-:::
+rúmmál
 
-:::definition{term="Rúmmál"}
-Rými sem hlutur tekur
+rými sem hlutur tekur
 
-:::
+þyngd
 
-:::definition{term="Þyngd"}
-Kraftur sem þyngdarafl beitir á hlut
-
-:::
+kraftur sem þyngdarafl beitir á hlut

@@ -1,18 +1,26 @@
 ---
-title: "Lykiljöfnur"
-section: "3.6"
+title: Lykiljöfnur
 chapter: 3
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-20T07:49:40.441Z"
+type: keyEquations
 ---
+
+## Lykiljöfnur
 
 ## Lykiljafna
 
-$\%\ \text{X} = \ \frac{\text{mass X}}{\text{mass compound}}\  \times \ 100\%$
-$\ \frac{\text{molecular or molar mass}\ \left( \text{amu or}\;\,\frac{\text{g}}{\text{mol}} \right)}{\text{empirical formula mass}\ \left( \text{amu or}\;\,\frac{\text{g}}{\text{mol}} \right)}\  = n\ \text{formula units/molecule}$
-(A~x~B~y~)~n~ = A~nx~B~ny~
+|  |
+| --- |
+|  |
+| (AxBy)n = AnxBny |
 
-$M = \ \frac{\text{mol solute}}{\text{L solution}}\ $
-*C*~1~*V*~1~ = *C*~2~*V*~2~
+|  |
+| --- |
+| C1V1 = C2V2 |
 
-$\text{Percent by mass} = \ \frac{\text{mass of solute}}{\text{mass of solution}}\  \times \ 100$
-$\text{ppm} = \ \frac{\text{mass solute}}{\text{mass solution}}\  \times \ 10^{6}\ \text{ppm}$
-$\text{ppb} = \ \frac{\text{mass solute}}{\text{mass solution}}\  \times \ 10^{9}\ \text{ppb}$
+|  |
+| --- |
+|  |
+|  |

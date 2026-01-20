@@ -1,14 +1,19 @@
 ---
-title: "Samantekt"
-section: "3.7"
+title: Samantekt
 chapter: 3
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-20T07:49:40.439Z"
+type: summary
 ---
+
+## Samantekt
 
 ## Samantekt
 
 ### 3.1 Formúlumassi og mólhugtakið
 
-Formúlumassi efnis er summa meðalatómmassa hvers atóms sem táknað er í efnaformúlunni og er gefinn upp í atómmassaeiningum. Formúlumassi samgilds efnasambands er einnig kallaður sameindamassi. Mól er hentug magnseining til að tákna mjög stóran fjölda atóma eða sameinda. Tilraunamælingar hafa leitt í ljós að fjöldi eininga sem mynda 1 mól af efni er 6,022 $\times$ 10^23^, magn sem kallast tala Avogadrosar. Massi í grömmum af 1 móli af efni er mólmassi þess. Vegna notkunar á sama viðmiðunarefni við skilgreiningu á atómmassaeiningunni og mólinu eru formúlumassi (amu) og mólmassi (g/mól) hvers efnis tölulega jafngildir (til dæmis vegur ein H~2~O-sameind um það bil 18 amu og 1 mól af H~2~O-sameindum vegur um það bil 18 g).
+Formúlumassi efnis er summa meðalatómmassa hvers atóms sem táknað er í efnaformúlunni og er gefinn upp í atómmassaeiningum. Formúlumassi samgilds efnasambands er einnig kallaður sameindamassi. Mól er hentug magnseining til að tákna mjög stóran fjölda atóma eða sameinda. Tilraunamælingar hafa leitt í ljós að fjöldi eininga sem mynda 1 mól af efni er 6,022 10<sup>23</sup>, magn sem kallast tala Avogadrosar. Massi í grömmum af 1 móli af efni er mólmassi þess. Vegna notkunar á sama viðmiðunarefni við skilgreiningu á atómmassaeiningunni og mólinu eru formúlumassi (amu) og mólmassi (g/mól) hvers efnis tölulega jafngildir (til dæmis vegur ein H<sub>2</sub>O-sameind um það bil 18 amu og 1 mól af H<sub>2</sub>O-sameindum vegur um það bil 18 g).
 
 ### 3.2 Ákvörðun reynsluformúla og sameindaformúla
 

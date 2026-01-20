@@ -1,252 +1,208 @@
 ---
-title: "Lykilhugtök"
-section: "4.6"
+title: Lykilhugtök
 chapter: 4
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-20T07:49:40.543Z"
+type: keyTerms
 ---
 
 ## Lykilhugtök
 
-:::definition{term="Sýra"}
-Efni sem myndar $\ce{H3O+}$ þegar það er leyst upp í vatni
+## Lykilhugtök
 
-:::
+sýra
 
-:::definition{term="Sýru-basa hvarf"}
+Efni sem myndar H<sub>3</sub>O<sup>+</sup> þegar það er leyst upp í vatni
+
+Sýru-basa hvarf
+
 Efnahvarf sem felur í sér flutning á vetnisjón milli hvarfefna
 
-:::
+Raunheimtur
 
-:::definition{term="Raunheimtur"}
 Magn myndefnis sem myndast í efnahvarfi
 
-:::
+Greiningarefni
 
-:::definition{term="Greiningarefni"}
 Efnategundin sem verið er að rannsaka
 
-:::
+Stillt efnajafna
 
-:::definition{term="Stillt efnajafna"}
 Efnajafna með jafnmörgum atómum fyrir hvert frumefni í hvarfefnum og myndefnum
 
-:::
+basi
 
-:::definition{term="Basi"}
-Efni sem myndar $\ce{OH-}$ þegar það er leyst upp í vatni
+Efni sem myndar OH<sup>−</sup> þegar það er leyst upp í vatni
 
-:::
+Búretta
 
-:::definition{term="Búretta"}
 Tæki sem notað er til að skammta nákvæmlega breytilegt rúmmál vökva, til dæmis við títrunargreiningu
 
-:::
+Efnajafna
 
-:::definition{term="Efnajafna"}
 Táknræn framsetning á efnahvarfi
 
-:::
+Stuðull
 
-:::definition{term="Stuðull"}
 Tala sem sett er fyrir framan tákn eða formúlur í efnajöfnu til að gefa til kynna hlutfallslegt magn þeirra
 
-:::
+Brunagreining
 
-:::definition{term="Brunagreining"}
 Þyngdarmælingaraðferð sem notuð er til að ákvarða frumefnasamsetningu efnasambands með því að safna og vega loftkennd brunaefni þess
 
-:::
+Brunahvarf
 
-:::definition{term="Brunahvarf"}
 Öflugt oxunar-afoxunarhvarf sem framleiðir umtalsvert magn af orku í formi varma og stundum ljóss
 
-:::
+Fullkomin jónajafna
 
-:::definition{term="Fullkomin jónajafna"}
 Efnajafna þar sem öll uppleyst jónísk hvarfefni og myndefni, þar með taldar áhorfendajónir, eru sýnd með formúlum fyrir sundraðar jónir sínar
 
-:::
+Endamark
 
-:::definition{term="Endamark"}
-Mælt rúmmál títrantslausnar sem veldur þeirri breytingu á útliti sýnislausnar eða öðrum eiginleikum sem búist er við þegar hlutfallslegu jafngildi er náð (sjá *jafngildispunktur*)
+mælt rúmmál títrantslausnar sem veldur þeirri breytingu á útliti sýnislausnar eða öðrum eiginleikum sem búist er við þegar hlutfallslegu jafngildi er náð (sjá *jafngildispunktur*)
 
-:::
+jafngildispunktur
 
-:::definition{term="Jafngildispunktur"}
-Rúmmál títrantslausnar sem þarf til að hvarfast að fullu við greiningarefnið í títrunargreiningu; gefur hlutfallslegt magn títrants fyrir greiningarefni sýnisins samkvæmt títrunarhvarfinu
+rúmmál títrantslausnar sem þarf til að hvarfast að fullu við greiningarefnið í títrunargreiningu; gefur hlutfallslegt magn títrants fyrir greiningarefni sýnisins samkvæmt títrunarhvarfinu
 
-:::
+hvarfefni í umframmagni
 
-:::definition{term="Hvarfefni í umframmagni"}
-Hvarfefni sem er til staðar í meira magni en krafist er samkvæmt hlutfallaefnafræði hvarfsins
+hvarfefni sem er til staðar í meira magni en krafist er samkvæmt hlutfallaefnafræði hvarfsins
 
-:::
+þyngdarmælingagreining
 
-:::definition{term="Þyngdarmælingagreining"}
-Megindleg efnagreiningaraðferð sem felur í sér aðskilnað greiningarefnis frá sýni með eðlis- eða efnafræðilegu ferli og síðan massamælingar á greiningarefninu, myndefninu og/eða sýninu
+megindleg efnagreiningaraðferð sem felur í sér aðskilnað greiningarefnis frá sýni með eðlis- eða efnafræðilegu ferli og síðan massamælingar á greiningarefninu, myndefninu og/eða sýninu
 
-:::
+hálfhvarf
 
-:::definition{term="Hálfhvarf"}
-Jafna sem sýnir hvort hvert hvarfefni tapar eða fær rafeindir í efnahvarfi
+jafna sem sýnir hvort hvert hvarfefni tapar eða fær rafeindir í efnahvarfi
 
-:::
+litvísir
 
-:::definition{term="Litvísir"}
-Efni sem er bætt við sýni í títrunargreiningu til að gera kleift að sjá endapunktinn
+efni sem er bætt við sýni í títrunargreiningu til að gera kleift að sjá endapunktinn
 
-:::
+torleyst
 
-:::definition{term="Torleyst"}
-Með tiltölulega litla leysni; leysist aðeins upp að litlu leyti
+með tiltölulega litla leysni; leysist aðeins upp að litlu leyti
 
-:::
+takmarkandi hvarfefni
 
-:::definition{term="Takmarkandi hvarfefni"}
-Hvarfefni sem er til staðar í minna magni en hlutfallaefnafræði efnahvarfsins krefst og takmarkar þannig magn myndefnis sem myndast
+hvarfefni sem er til staðar í minna magni en hlutfallaefnafræði efnahvarfsins krefst og takmarkar þannig magn myndefnis sem myndast
 
-:::
+sameindajafna
 
-:::definition{term="Sameindajafna"}
-Efnajafna þar sem öll hvarfefni og myndefni eru sýnd sem hlutlaus efni
+efnajafna þar sem öll hvarfefni og myndefni eru sýnd sem hlutlaus efni
 
-:::
+nettójónajafna
 
-:::definition{term="Nettójónajafna"}
-Efnajafna þar sem aðeins þau uppleystu jónahvarfefni og myndefni sem gangast undir efna- eða eðlisfræðilega breytingu eru sýnd (meðjónir eru undanskildar)
+efnajafna þar sem aðeins þau uppleystu jónahvarfefni og myndefni sem gangast undir efna- eða eðlisfræðilega breytingu eru sýnd (meðjónir eru undanskildar)
 
-:::
+hlutleysingarhvarf
 
-:::definition{term="Hlutleysingarhvarf"}
-Efnahvarf milli sýru og basa sem myndar salt og vatn
+efnahvarf milli sýru og basa sem myndar salt og vatn
 
-:::
+oxun
 
-:::definition{term="Oxun"}
-Ferli þar sem oxunartala frumefnis hækkar vegna rafeindataps
+ferli þar sem oxunartala frumefnis hækkar vegna rafeindataps
 
-:::
+oxunartala
 
-:::definition{term="Oxunartala"}
-(einnig, oxunarástand) Hleðslan sem hvert atóm frumefnis hefði í efnasambandi ef efnasambandið væri jónaefni
+(einnig, oxunarástand) hleðslan sem hvert atóm frumefnis hefði í efnasambandi ef efnasambandið væri jónaefni
 
-:::
+oxunar-afoxunarhvarf
 
-:::definition{term="Oxunar-afoxunarhvarf"}
-(einnig, redoxhvarf) Efnahvarf sem felur í sér breytingu á oxunartölu fyrir eitt eða fleiri hvarfefni
+(einnig, redoxhvarf) efnahvarf sem felur í sér breytingu á oxunartölu fyrir eitt eða fleiri hvarfefni
 
-:::
+oxari
 
-:::definition{term="Oxari"}
-(einnig, oxunarefni) Efni sem veldur oxun annars efnis og afoxast sjálft í ferlinu
+(einnig, oxunarefni) efni sem veldur oxun annars efnis og afoxast sjálft í ferlinu
 
-:::
+prósentuheimtur
 
-:::definition{term="Prósentuheimtur"}
-Mælikvarði á skilvirkni efnahvarfs, gefinn upp sem hundraðshluti af fræðilegum heimtum
+mælikvarði á skilvirkni efnahvarfs, gefinn upp sem hundraðshluti af fræðilegum heimtum
 
-:::
+botnfall
 
-:::definition{term="Botnfall"}
-Torleyst myndefni sem myndast við hvarf auðleystra hvarfefna
+torleyst myndefni sem myndast við hvarf auðleystra hvarfefna
 
-:::
+botnfallshvarf
 
-:::definition{term="Botnfallshvarf"}
-Efnahvarf sem myndar eitt eða fleiri torleyst myndefni; þegar hvarfefni eru jónaefni er það stundum kallað tvöföld skipti eða metatesa
+efnahvarf sem myndar eitt eða fleiri torleyst myndefni; þegar hvarfefni eru jónaefni er það stundum kallað tvöföld skipti eða metatesa
 
-:::
+myndefni
 
-:::definition{term="Myndefni"}
-Efni sem myndast við efna- eða eðlisfræðilega breytingu; sýnt hægra megin við örina í efnajöfnu
+efni sem myndast við efna- eða eðlisfræðilega breytingu; sýnt hægra megin við örina í efnajöfnu
 
-:::
+magnbundin greining
 
-:::definition{term="Magnbundin greining"}
-Ákvörðun á magni eða styrk efnis í sýni
+ákvörðun á magni eða styrk efnis í sýni
 
-:::
+hvarfefni
 
-:::definition{term="Hvarfefni"}
-Efni sem gengst undir efna- eða eðlisfræðilega breytingu; sýnt vinstra megin við örina í efnajöfnu
+efni sem gengst undir efna- eða eðlisfræðilega breytingu; sýnt vinstra megin við örina í efnajöfnu
 
-:::
+afoxari
 
-:::definition{term="Afoxari"}
-(einnig, afoxunarefni) Efni sem veldur afoxun annars efnis og oxast sjálft í ferlinu
+(einnig, afoxunarefni) efni sem veldur afoxun annars efnis og oxast sjálft í ferlinu
 
-:::
+afoxun
 
-:::definition{term="Afoxun"}
-Ferli þar sem oxunartala frumefnis lækkar vegna rafeindaaukningar
+ferli þar sem oxunartala frumefnis lækkar vegna rafeindaaukningar
 
-:::
+salt
 
-:::definition{term="Salt"}
-Jónaefni sem getur myndast við hvarf sýru og basa sem inniheldur katjón og anjón aðra en hýdroxíð eða oxíð
+jónaefni sem getur myndast við hvarf sýru og basa sem inniheldur katjón og anjón aðra en hýdroxíð eða oxíð
 
-:::
+einföld skipti
 
-:::definition{term="Einföld skipti"}
-(einnig, útskipting) Oxunar-afoxunarhvarf sem felur í sér oxun frumefnis af jónaefni
+(einnig, útskipting) oxunar-afoxunarhvarf sem felur í sér oxun frumefnis af jónaefni
 
-:::
+leysni
 
-:::definition{term="Leysni"}
-Að hve miklu leyti efni getur leyst upp í vatni eða öðrum leysi
+að hve miklu leyti efni getur leyst upp í vatni eða öðrum leysi
 
-:::
+auðleystur
 
-:::definition{term="Auðleystur"}
-Með tiltölulega mikinn leysni; leysist upp að tiltölulega miklu leyti
+með tiltölulega mikinn leysni; leysist upp að tiltölulega miklu leyti
 
-:::
+áhorfendajón
 
-:::definition{term="Áhorfendajón"}
-Jón sem gengst ekki undir efna- eða eðlisfræðilega breytingu í efnahvarfi, en nærvera hennar er nauðsynleg til að viðhalda hleðsluhlutleysi
+jón sem gengst ekki undir efna- eða eðlisfræðilega breytingu í efnahvarfi, en nærvera hennar er nauðsynleg til að viðhalda hleðsluhlutleysi
 
-:::
+hlutfallsstuðull
 
-:::definition{term="Hlutfallsstuðull"}
-Hlutfall stuðla í stilltri efnajöfnu, notað í útreikningum sem tengjast magni hvarfefna og myndefna
+hlutfall stuðla í stilltri efnajöfnu, notað í útreikningum sem tengjast magni hvarfefna og myndefna
 
-:::
+hlutfallaefnafræði
 
-:::definition{term="Hlutfallaefnafræði"}
-Tengsl milli magns hvarfefna og myndefna í efnahvarfi
+tengsl milli magns hvarfefna og myndefna í efnahvarfi
 
-:::
+sterk sýra
 
-:::definition{term="Sterk sýra"}
-Sýra sem hvarfast að fullu þegar hún er leyst upp í vatni og myndar hýdróníumjónir
+sýra sem hvarfast að fullu þegar hún er leyst upp í vatni og myndar hýdróníumjónir
 
-:::
+sterkur basi
 
-:::definition{term="Sterkur basi"}
-Basi sem hvarfast að fullu þegar hann er leystur upp í vatni og myndar hýdroxíð jónir
+basi sem hvarfast að fullu þegar hann er leystur upp í vatni og myndar hýdroxíð jónir
 
-:::
+Fræðilegar heimtur
 
-:::definition{term="Fræðilegar heimtur"}
 Magn myndefnis sem hægt er að framleiða úr tilteknu magni hvarfefna samkvæmt hlutfallaefnafræði hvarfsins
 
-:::
+Títrunarlausn
 
-:::definition{term="Títrunarlausn"}
 Lausn sem inniheldur þekktan styrk efnis sem hvarfast við greiniefnið í títrunargreiningu
 
-:::
+Títrunargreining
 
-:::definition{term="Títrunargreining"}
 Magnbundin efnagreiningaraðferð sem felur í sér að mæla rúmmál hvarfefnalausnar sem þarf til að hvarfast að fullu við greiniefnið í sýni
 
-:::
+Veik sýra
 
-:::definition{term="Veik sýra"}
 Sýra sem hvarfast aðeins í litlum mæli þegar hún er leyst upp í vatni og myndar hýdróníumjónir
 
-:::
+Veikur basi
 
-:::definition{term="Veikur basi"}
 Basi sem hvarfast aðeins í litlum mæli þegar hann er leystur upp í vatni og myndar hýdroxíðjónir
-
-:::
