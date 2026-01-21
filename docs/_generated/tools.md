@@ -22,6 +22,7 @@
 | `compile-chapter` | Compiles chapter content for web publication by: |
 | `docx-to-md` | Convert DOCX files to Markdown format |
 | `export-parallel-corpus` | Export Translation Memory to parallel text files |
+| `generate-glossary` | 1. Extracting English terms + definitions from CNXML <glossary> elements |
 | `post-mt-pipeline` | Chains post-MT cleanup tools to process translated markdown files. |
 | `process-chapter` | Full chapter processing pipeline |
 | `repair-directives` | Fix directive syntax issues in markdown |
@@ -44,6 +45,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*23 tools total (18 active, 5 deprecated)*
+*24 tools total (19 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
