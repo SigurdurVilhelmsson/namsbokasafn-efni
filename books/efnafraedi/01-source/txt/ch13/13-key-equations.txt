@@ -1,7 +1,0 @@
-﻿Key Equations
-
-
-P = MRT
-Kc = Qc at equilibrium
-Kp = Qp at equilibrium
-KP = Kc (RT)Δn

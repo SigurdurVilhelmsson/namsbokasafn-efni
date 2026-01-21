@@ -1,6 +1,0 @@
-﻿Key Equations
-E = mc2
-decay rate = λN
-
-rem = RBE  rad
-Sv = RBE  Gy

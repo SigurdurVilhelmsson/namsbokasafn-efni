@@ -1,4 +1,0 @@
-﻿Key Equations
-"formal charge" ="# valence shell electrons (free atom)" - "# lone pair electrons" - 1/2 "# bonding electrons" Bond energy for a diatomic molecule: "XY" (g) → "X" (g)+"Y" (g)  "D" _"X-Y" ="Δ" H"°" Enthalpy change: ΔH = ƩDbonds broken – ƩDbonds formedLattice energy for a solid MX: "MX" (s) → "M" ^n"+"  (g)+"X" ^n"-"  (g)  "Δ" H_"lattice" Lattice energy for an ionic crystal: "Δ" H_"lattice" = "C" ("Z" ^"+"  )("Z" ^"-"  )/"R" _"o"  
-Access for free at https://openstax.org
-

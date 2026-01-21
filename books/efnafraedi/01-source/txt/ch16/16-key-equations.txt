@@ -1,9 +1,0 @@
-﻿Key Equations
-
-S = k ln W
-
-
-
-ΔSuniv = ΔSsys + ΔSsurr
-
-ΔG = ΔH − TΔS
