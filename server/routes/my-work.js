@@ -11,14 +11,31 @@
 
 const express = require('express');
 const router = express.Router();
+const path = require('path');
+const fs = require('fs');
+const Database = require('better-sqlite3');
 
 const { requireAuth } = require('../middleware/requireAuth');
 const assignmentStore = require('../services/assignmentStore');
-const editorHistory = require('../services/editorHistory');
 const activityLog = require('../services/activityLog');
 
-// Database for terminology
-const db = require('../db');
+// Database path (same as other services)
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+
+// Lazy database initialization
+let db = null;
+
+function getDb() {
+  if (!db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    db = new Database(DB_PATH);
+    db.pragma('journal_mode = WAL');
+  }
+  return db;
+}
 
 // Stage labels for display
 const STAGE_LABELS = {
@@ -60,7 +77,18 @@ function getDueDateInfo(dueDate) {
  */
 function getUserProposedTerms(username) {
   try {
-    const stmt = db.prepare(`
+    const database = getDb();
+
+    // Check if terminology table exists
+    const tableExists = database.prepare(`
+      SELECT name FROM sqlite_master WHERE type='table' AND name='terminology'
+    `).get();
+
+    if (!tableExists) {
+      return [];
+    }
+
+    const stmt = database.prepare(`
       SELECT t.*,
              (SELECT COUNT(*) FROM terminology_discussions td WHERE td.term_id = t.id) as discussion_count
       FROM terminology t
@@ -80,7 +108,18 @@ function getUserProposedTerms(username) {
  */
 function getUserPendingSubmissions(username) {
   try {
-    const stmt = db.prepare(`
+    const database = getDb();
+
+    // Check if pending_reviews table exists
+    const tableExists = database.prepare(`
+      SELECT name FROM sqlite_master WHERE type='table' AND name='pending_reviews'
+    `).get();
+
+    if (!tableExists) {
+      return [];
+    }
+
+    const stmt = database.prepare(`
       SELECT pr.*, eh.content
       FROM pending_reviews pr
       JOIN edit_history eh ON pr.edit_history_id = eh.id
@@ -99,7 +138,18 @@ function getUserPendingSubmissions(username) {
  */
 function getUserRecentReviews(username, limit = 10) {
   try {
-    const stmt = db.prepare(`
+    const database = getDb();
+
+    // Check if pending_reviews table exists
+    const tableExists = database.prepare(`
+      SELECT name FROM sqlite_master WHERE type='table' AND name='pending_reviews'
+    `).get();
+
+    if (!tableExists) {
+      return [];
+    }
+
+    const stmt = database.prepare(`
       SELECT pr.*, eh.content
       FROM pending_reviews pr
       JOIN edit_history eh ON pr.edit_history_id = eh.id
