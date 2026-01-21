@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ákvarðanir - Námsbókasafn</title>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/status">Stjórnborð</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/reviews">Yfirferðir</a>
+      <a href="/terminology">Orðasafn</a>
+      <a href="/decisions" class="active">Ákvarðanir</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h1>Ákvarðanaskrá</h1>
+      <p class="subtitle">Sameinuð skrá yfir allar þýðingar- og ritstjórnarákvarðanir</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📖</div>
+        <div class="stat-value" id="stat-terminology">-</div>
+        <div class="stat-label">Hugtök</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌍</div>
+        <div class="stat-value" id="stat-localization">-</div>
+        <div class="stat-label">Staðfæringar</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✓</div>
+        <div class="stat-value" id="stat-issue">-</div>
+        <div class="stat-label">Vandamál</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📈</div>
+        <div class="stat-value" id="stat-week">-</div>
+        <div class="stat-label">Síðustu 7 daga</div>
+      </div>
+    </div>
+
+    <!-- Search and Filters -->
+    <div class="card">
+      <div class="search-bar">
+        <input type="text" id="search-input" class="search-input" placeholder="Leita að ákvörðun (enska, íslenska, rökstuðningur)..." onkeyup="handleSearchKeyup(event)">
+        <button class="btn btn-primary" onclick="searchDecisions()">
+          <span class="icon">🔍</span> Leita
+        </button>
+      </div>
+      <div class="filters">
+        <select class="form-select" id="filter-type" onchange="searchDecisions()">
+          <option value="">Allir flokkar</option>
+        </select>
+        <select class="form-select" id="filter-book" onchange="searchDecisions()">
+          <option value="">Allar bækur</option>
+          <option value="efnafraedi">Efnafræði</option>
+        </select>
+        <button class="btn btn-secondary btn-sm" onclick="clearFilters()">Hreinsa</button>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="card">
+      <div class="card-header-flex">
+        <h2 class="card-title">Ákvarðanir</h2>
+        <button class="btn btn-primary btn-sm" onclick="openNewDecisionModal()">
+          + Skrá ákvörðun
+        </button>
+      </div>
+      <div id="results-list" class="results-list">
+        <p class="text-muted">Hleður...</p>
+      </div>
+      <div id="pagination" class="pagination" style="display: none;">
+        <button class="btn btn-secondary btn-sm" id="load-more-btn" onclick="loadMore()">
+          Hlaða fleiri...
+        </button>
+        <span class="pagination-info" id="pagination-info"></span>
+      </div>
+    </div>
+  </main>
+
+  <!-- New Decision Modal -->
+  <div class="modal" id="new-decision-modal" style="display: none;">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h3>Skrá nýja ákvörðun</h3>
+        <button class="btn-close" onclick="closeNewDecisionModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Flokkur *</label>
+            <select class="form-select" id="new-type" required>
+              <option value="">Veldu flokk...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bók</label>
+            <select class="form-select" id="new-book">
+              <option value="">Ekki sértækt</option>
+              <option value="efnafraedi">Efnafræði</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Enska (frumtexti)</label>
+            <input type="text" id="new-english" class="form-input" placeholder="Upprunalegur texti eða hugtak">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Íslenska (þýðing/val)</label>
+            <input type="text" id="new-icelandic" class="form-input" placeholder="Valin þýðing eða aðlögun">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Rökstuðningur *</label>
+          <textarea id="new-rationale" class="form-textarea" rows="4" placeholder="Útskýrðu hvers vegna þessi ákvörðun var tekin..." required></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Kafli</label>
+            <input type="number" id="new-chapter" class="form-input" placeholder="t.d. 1" min="0" max="99">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Hluti</label>
+            <input type="text" id="new-section" class="form-input" placeholder="t.d. 1-2">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeNewDecisionModal()">Hætta við</button>
+        <button class="btn btn-primary" onclick="submitNewDecision()">Skrá ákvörðun</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentOffset = 0;
+    let hasMore = false;
+    let decisionTypes = [];
+
+    // ============================================================================
+    // INITIALIZATION
+    // ============================================================================
+
+    async function init() {
+      await loadTypes();
+      await loadStats();
+      await searchDecisions();
+    }
+
+    async function loadTypes() {
+      try {
+        const res = await fetch('/api/decisions/types');
+        const data = await res.json();
+        decisionTypes = data.types;
+
+        // Populate filter dropdown
+        const filterSelect = document.getElementById('filter-type');
+        const newTypeSelect = document.getElementById('new-type');
+
+        for (const type of data.types) {
+          const option1 = document.createElement('option');
+          option1.value = type.value;
+          option1.textContent = type.icon + ' ' + type.name;
+          filterSelect.appendChild(option1);
+
+          const option2 = document.createElement('option');
+          option2.value = type.value;
+          option2.textContent = type.icon + ' ' + type.name;
+          newTypeSelect.appendChild(option2);
+        }
+      } catch (err) {
+        console.error('Failed to load types:', err);
+      }
+    }
+
+    async function loadStats() {
+      try {
+        const res = await fetch('/api/decisions/stats');
+        const stats = await res.json();
+
+        document.getElementById('stat-terminology').textContent = stats.byType?.terminology || 0;
+        document.getElementById('stat-localization').textContent = stats.byType?.localization || 0;
+        document.getElementById('stat-issue').textContent = stats.byType?.issue || 0;
+        document.getElementById('stat-week').textContent = stats.last7Days || 0;
+      } catch (err) {
+        console.error('Failed to load stats:', err);
+      }
+    }
+
+    // ============================================================================
+    // SEARCH
+    // ============================================================================
+
+    function handleSearchKeyup(event) {
+      if (event.key === 'Enter') {
+        searchDecisions();
+      }
+    }
+
+    async function searchDecisions(append = false) {
+      const container = document.getElementById('results-list');
+      const paginationEl = document.getElementById('pagination');
+
+      if (!append) {
+        currentOffset = 0;
+        container.innerHTML = '<p class="text-muted">Hleður...</p>';
+      }
+
+      const query = document.getElementById('search-input').value.trim();
+      const type = document.getElementById('filter-type').value;
+      const book = document.getElementById('filter-book').value;
+
+      try {
+        const params = new URLSearchParams({
+          limit: 30,
+          offset: currentOffset
+        });
+        if (query) params.set('q', query);
+        if (type) params.set('type', type);
+        if (book) params.set('book', book);
+
+        const res = await fetch('/api/decisions?' + params);
+        const data = await res.json();
+
+        hasMore = data.hasMore;
+
+        if (data.decisions.length === 0 && !append) {
+          container.innerHTML = '<div class="empty-state"><p>Engar ákvarðanir fundust</p><p class="text-muted">Prófaðu að breyta leitarskilyrðum eða <a href="#" onclick="openNewDecisionModal()">skráðu nýja ákvörðun</a></p></div>';
+          paginationEl.style.display = 'none';
+          return;
+        }
+
+        const html = data.decisions.map(d => renderDecision(d)).join('');
+
+        if (append) {
+          container.innerHTML += html;
+        } else {
+          container.innerHTML = html;
+        }
+
+        document.getElementById('pagination-info').textContent =
+          `Sýni ${currentOffset + data.decisions.length} af ${data.total}`;
+        paginationEl.style.display = hasMore ? 'flex' : 'none';
+
+      } catch (err) {
+        console.error('Search error:', err);
+        if (!append) {
+          container.innerHTML = '<p class="text-error">Villa við að sækja ákvarðanir</p>';
+        }
+      }
+    }
+
+    function loadMore() {
+      currentOffset += 30;
+      searchDecisions(true);
+    }
+
+    function clearFilters() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('filter-type').value = '';
+      document.getElementById('filter-book').value = '';
+      searchDecisions();
+    }
+
+    // ============================================================================
+    // RENDERING
+    // ============================================================================
+
+    function renderDecision(decision) {
+      const typeInfo = decisionTypes.find(t => t.value === decision.type) || { icon: '📌', name: decision.type };
+      const date = new Date(decision.decidedAt).toLocaleDateString('is-IS');
+
+      let location = '';
+      if (decision.book) {
+        location = decision.book;
+        if (decision.chapter) location += ' / K.' + decision.chapter;
+        if (decision.section) location += ' / ' + decision.section;
+      }
+
+      return `
+        <div class="decision-item">
+          <div class="decision-header">
+            <span class="decision-type">${typeInfo.icon}</span>
+            <div class="decision-terms">
+              ${decision.englishTerm ? `<span class="term-english">${escapeHtml(decision.englishTerm)}</span>` : ''}
+              ${decision.englishTerm && decision.icelandicTerm ? '<span class="term-arrow">→</span>' : ''}
+              ${decision.icelandicTerm ? `<span class="term-icelandic">${escapeHtml(decision.icelandicTerm)}</span>` : ''}
+              ${!decision.englishTerm && !decision.icelandicTerm ? `<span class="term-none">${typeInfo.name}</span>` : ''}
+            </div>
+            <span class="decision-badge badge-${decision.type}">${typeInfo.name}</span>
+          </div>
+          <div class="decision-rationale">
+            ${escapeHtml(decision.rationale)}
+          </div>
+          <div class="decision-meta">
+            <span class="decision-user">${escapeHtml(decision.decidedBy)}</span>
+            <span class="decision-date">${date}</span>
+            ${location ? `<span class="decision-location">${escapeHtml(location)}</span>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    // ============================================================================
+    // NEW DECISION
+    // ============================================================================
+
+    function openNewDecisionModal() {
+      document.getElementById('new-type').value = '';
+      document.getElementById('new-book').value = '';
+      document.getElementById('new-english').value = '';
+      document.getElementById('new-icelandic').value = '';
+      document.getElementById('new-rationale').value = '';
+      document.getElementById('new-chapter').value = '';
+      document.getElementById('new-section').value = '';
+      document.getElementById('new-decision-modal').style.display = 'flex';
+    }
+
+    function closeNewDecisionModal() {
+      document.getElementById('new-decision-modal').style.display = 'none';
+    }
+
+    async function submitNewDecision() {
+      const type = document.getElementById('new-type').value;
+      const rationale = document.getElementById('new-rationale').value.trim();
+
+      if (!type) {
+        alert('Vinsamlegast veldu flokk');
+        return;
+      }
+      if (!rationale) {
+        alert('Vinsamlegast skrifaðu rökstuðning');
+        return;
+      }
+
+      const data = {
+        type,
+        englishTerm: document.getElementById('new-english').value.trim() || undefined,
+        icelandicTerm: document.getElementById('new-icelandic').value.trim() || undefined,
+        rationale,
+        book: document.getElementById('new-book').value || undefined,
+        chapter: document.getElementById('new-chapter').value || undefined,
+        section: document.getElementById('new-section').value.trim() || undefined
+      };
+
+      try {
+        const res = await fetch('/api/decisions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        if (result.success) {
+          alert('Ákvörðun skráð!');
+          closeNewDecisionModal();
+          loadStats();
+          searchDecisions();
+        } else {
+          alert('Villa: ' + (result.error || 'Gat ekki skráð ákvörðun'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // ============================================================================
+    // UTILITIES
+    // ============================================================================
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Initialize on page load
+    init();
+  </script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
+
+    .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 1.25rem; }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
+    .header nav a.active { color: var(--primary); font-weight: 500; }
+    .container { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+
+    /* Page Header */
+    .page-header { margin-bottom: 1.5rem; }
+    .page-header h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .page-header .subtitle { color: var(--gray-500); font-size: 0.9375rem; }
+
+    /* Stats Grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .stat-card { background: white; border-radius: 0.5rem; padding: 1rem; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .stat-icon { font-size: 1.5rem; margin-bottom: 0.25rem; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+    .stat-label { font-size: 0.75rem; color: var(--gray-500); }
+
+    /* Cards */
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
+    .card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .card-header-flex .card-title { margin-bottom: 0; }
+
+    /* Search */
+    .search-bar { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .search-input { flex: 1; padding: 0.625rem 1rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.9375rem; }
+    .search-input:focus { outline: none; border-color: var(--primary); }
+    .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .form-select { padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+
+    /* Results */
+    .results-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .decision-item { padding: 1rem; background: var(--gray-50); border-radius: 0.5rem; border: 1px solid var(--gray-200); }
+    .decision-item:hover { border-color: var(--gray-300); }
+    .decision-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .decision-type { font-size: 1.25rem; }
+    .decision-terms { flex: 1; font-size: 0.9375rem; }
+    .term-english { color: var(--gray-500); }
+    .term-arrow { margin: 0 0.375rem; color: var(--gray-400); }
+    .term-icelandic { color: var(--primary); font-weight: 500; }
+    .term-none { color: var(--gray-500); font-style: italic; }
+    .decision-badge { padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.625rem; font-weight: 600; }
+    .badge-terminology { background: #dcfce7; color: #166534; }
+    .badge-localization { background: #dbeafe; color: #1e40af; }
+    .badge-issue { background: #fef3c7; color: #92400e; }
+    .badge-style { background: #f3e8ff; color: #7c3aed; }
+    .decision-rationale { font-size: 0.875rem; color: var(--gray-700); line-height: 1.6; margin-bottom: 0.5rem; }
+    .decision-meta { display: flex; gap: 1rem; font-size: 0.75rem; color: var(--gray-500); flex-wrap: wrap; }
+    .decision-user { font-weight: 500; }
+    .decision-location { font-family: monospace; }
+
+    /* Pagination */
+    .pagination { display: flex; align-items: center; gap: 1rem; justify-content: center; margin-top: 1rem; }
+    .pagination-info { font-size: 0.75rem; color: var(--gray-500); }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; text-decoration: none; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-secondary:hover { background: var(--gray-50); }
+    .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
+    .btn-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); }
+    .icon { font-size: 1rem; }
+
+    /* Modal */
+    .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; padding: 1rem; }
+    .modal-content { background: white; border-radius: 0.5rem; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; }
+    .modal-large { max-width: 600px; }
+    .modal-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; }
+    .modal-header h3 { font-size: 1rem; font-weight: 600; }
+    .modal-body { padding: 1.5rem; }
+    .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--gray-200); display: flex; justify-content: flex-end; gap: 0.75rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-input, .form-textarea { width: 100%; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-textarea { resize: vertical; }
+
+    /* States */
+    .text-muted { color: var(--gray-500); }
+    .text-error { color: var(--error); }
+    .empty-state { text-align: center; padding: 3rem; color: var(--gray-500); }
+    .empty-state a { color: var(--primary); }
+
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .search-bar { flex-direction: column; }
+      .decision-header { flex-wrap: wrap; }
+    }
+  </style>
+</body>
+</html>

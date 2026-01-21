@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Staða - Námsbókasafn</title>
+  <title>Stjórnborð - Námsbókasafn</title>
 </head>
 <body>
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
-      <a href="/books">Bækur</a>
-      <a href="/workflow">Verkflæði</a>
+      <a href="/status" class="active">Stjórnborð</a>
       <a href="/editor">Ritstjóri</a>
       <a href="/reviews">Yfirferðir</a>
-      <a href="/images">Myndir</a>
-      <a href="/issues">Atriði</a>
-      <a href="/status" class="active">Staða</a>
+      <a href="/terminology">Orðasafn</a>
+      <a href="/decisions">Ákvarðanir</a>
     </nav>
     <div class="user-info" id="user-info"></div>
   </header>
@@ -23,47 +21,105 @@
   <main class="container">
     <!-- Tab navigation -->
     <div class="tabs">
-      <button class="tab active" onclick="showTab('overview')">Yfirlit</button>
+      <button class="tab active" onclick="showTab('dashboard')">Stjórnborð</button>
+      <button class="tab" onclick="showTab('matrix')">Framvinduyfirlit</button>
       <button class="tab" onclick="showTab('timeline')">Tímalína</button>
     </div>
 
-    <!-- Overview Tab -->
-    <div id="tab-overview" class="tab-content">
-      <div class="card">
-        <h2 class="card-title">Yfirlit yfir stöðu</h2>
-        <div class="form-group">
-          <label class="form-label">Veldu bók</label>
-          <select class="form-select" id="book-select" onchange="loadStatus()">
-            <option value="">Veldu bók...</option>
-            <option value="efnafraedi">Efnafræði (Chemistry 2e)</option>
-          </select>
+    <!-- Dashboard Tab (Mission Control) -->
+    <div id="tab-dashboard" class="tab-content">
+      <div class="dashboard-grid">
+        <!-- Needs Attention Panel -->
+        <div class="card attention-card">
+          <h2 class="card-title">
+            <span class="attention-icon">!</span>
+            Þarfnast athygli
+          </h2>
+          <div class="attention-stats" id="attention-stats">
+            <div class="attention-stat">
+              <span class="attention-count" id="pending-reviews-count">-</span>
+              <span class="attention-label">Yfirferðir í bið</span>
+            </div>
+            <div class="attention-stat">
+              <span class="attention-count blocked" id="blocked-issues-count">-</span>
+              <span class="attention-label">Lokaðar vandamál</span>
+            </div>
+            <div class="attention-stat">
+              <span class="attention-count warning" id="unassigned-count">-</span>
+              <span class="attention-label">Án úthlutunar</span>
+            </div>
+          </div>
+          <div class="attention-list" id="attention-list">
+            <p class="text-muted">Hleður...</p>
+          </div>
+        </div>
+
+        <!-- Metrics Panel -->
+        <div class="card metrics-card">
+          <h2 class="card-title">Framvinda</h2>
+          <div id="metrics-content">
+            <div class="milestone" id="pilot-milestone">
+              <div class="milestone-header">
+                <span class="milestone-name">Kaflar 1-4 fyrir tilraunakennslu</span>
+                <span class="milestone-progress" id="pilot-progress">-</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-bar-fill" id="pilot-progress-bar" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="velocity-stat" id="velocity-stat">
+              <span class="velocity-icon">📈</span>
+              <span class="velocity-text">Hleður...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team Activity Panel -->
+        <div class="card activity-card">
+          <h2 class="card-title">Nýleg virkni</h2>
+          <div class="activity-feed" id="activity-feed">
+            <p class="text-muted">Hleður...</p>
+          </div>
+          <div class="activity-footer">
+            <a href="#" onclick="showTab('timeline'); return false;" class="btn btn-secondary btn-sm">
+              Sjá alla virkni
+            </a>
+          </div>
         </div>
       </div>
 
-      <div id="status-content" style="display: none;">
-        <div class="card">
-          <h2 class="card-title">Samantekt</h2>
-          <div class="grid grid-4" id="summary-stats"></div>
+      <!-- Mini Chapter Matrix -->
+      <div class="card">
+        <div class="card-header-flex">
+          <h2 class="card-title">Kaflayfirlit - Efnafræði</h2>
+          <a href="#" onclick="showTab('matrix'); return false;" class="btn btn-secondary btn-sm">
+            Sjá allt
+          </a>
         </div>
+        <div class="mini-matrix" id="mini-matrix">
+          <p class="text-muted">Hleður...</p>
+        </div>
+      </div>
+    </div>
 
-        <div class="card">
-          <h2 class="card-title">Framvinda kafla</h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Kafli</th>
-                <th>Uppspretta</th>
-                <th>VÞ</th>
-                <th>Matecat</th>
-                <th>Yfirl. 1</th>
-                <th>TM</th>
-                <th>Yfirl. 2</th>
-                <th>Útg.</th>
-                <th>Framvinda</th>
-              </tr>
-            </thead>
-            <tbody id="chapters-body"></tbody>
-          </table>
+    <!-- Full Matrix Tab -->
+    <div id="tab-matrix" class="tab-content" style="display: none;">
+      <div class="card">
+        <h2 class="card-title">Framvinda kafla</h2>
+        <div class="form-group">
+          <label class="form-label">Veldu bók</label>
+          <select class="form-select" id="book-select" onchange="loadFullMatrix()">
+            <option value="efnafraedi" selected>Efnafræði (Chemistry 2e)</option>
+          </select>
+        </div>
+        <div class="matrix-legend">
+          <span class="legend-item"><span class="legend-dot complete"></span> Lokið</span>
+          <span class="legend-item"><span class="legend-dot in-progress"></span> Í vinnslu</span>
+          <span class="legend-item"><span class="legend-dot pending"></span> Í bið</span>
+          <span class="legend-item"><span class="legend-dot not-started"></span> Ekki byrjað</span>
+        </div>
+        <div class="matrix-container" id="full-matrix">
+          <p class="text-muted">Hleður...</p>
         </div>
       </div>
     </div>
@@ -72,7 +128,7 @@
     <div id="tab-timeline" class="tab-content" style="display: none;">
       <div class="card">
         <div class="card-header-flex">
-          <h2 class="card-title">Nýleg virkni</h2>
+          <h2 class="card-title">Tímalína virkni</h2>
           <div class="filters">
             <select class="form-select form-select-sm" id="timeline-book-filter" onchange="loadTimeline()">
               <option value="">Allar bækur</option>
@@ -97,18 +153,77 @@
     </div>
   </main>
 
+  <!-- Assignment Modal -->
+  <div class="modal" id="assignment-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="assignment-modal-title">Úthluta verkefni</h3>
+        <button class="btn-close" onclick="closeAssignmentModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Kafli</label>
+          <input type="text" id="assign-chapter-display" class="form-input" disabled>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Stig</label>
+          <select class="form-select" id="assign-stage">
+            <option value="linguisticReview">Yfirferð 1 (tungumál)</option>
+            <option value="tmCreated">TM uppfærsla</option>
+            <option value="editorialPass2">Yfirferð 2 (staðfæring)</option>
+            <option value="publication">Útgáfa</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Úthluta til</label>
+          <input type="text" id="assign-to" class="form-input" placeholder="Notandanafn">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Skiladagur (valfrjálst)</label>
+          <input type="date" id="assign-due-date" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Athugasemdir (valfrjálst)</label>
+          <textarea id="assign-notes" class="form-textarea" rows="2"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeAssignmentModal()">Hætta við</button>
+        <button class="btn btn-primary" onclick="submitAssignment()">Úthluta</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const STATUS_SYMBOLS = {
-      'complete': '✅',
-      'in-progress': '🔄',
-      'pending': '⏳',
-      'not-started': '○',
-      'blocked': '❌'
+    const STATUS_COLORS = {
+      'complete': '#16a34a',
+      'in-progress': '#2563eb',
+      'pending': '#d97706',
+      'not-started': '#e5e7eb',
+      'blocked': '#dc2626'
     };
 
-    let currentTab = 'overview';
+    const STAGE_LABELS = {
+      'source': 'Uppspretta',
+      'enMarkdown': 'EN MD',
+      'mtOutput': 'VÞ',
+      'matecat': 'Matecat',
+      'linguisticReview': 'Yfirl. 1',
+      'editorialPass1': 'Yfirl. 1',
+      'tmUpdated': 'TM',
+      'tmCreated': 'TM',
+      'editorialPass2': 'Yfirl. 2',
+      'publication': 'Útg.'
+    };
+
+    // Simplified 5-step stages
+    const DISPLAY_STAGES = ['enMarkdown', 'mtOutput', 'linguisticReview', 'tmCreated', 'publication'];
+
+    let currentTab = 'dashboard';
     let timelineOffset = 0;
     let timelineTotal = 0;
+    let dashboardData = null;
+    let selectedAssignment = null;
 
     // ============================================================================
     // TAB NAVIGATION
@@ -117,52 +232,200 @@
     function showTab(tabId) {
       currentTab = tabId;
 
-      // Update tab buttons
       document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
       document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('active');
 
-      // Show/hide tab content
       document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
       document.getElementById('tab-' + tabId).style.display = 'block';
 
-      // Load data if needed
-      if (tabId === 'timeline') {
+      if (tabId === 'timeline' && !document.getElementById('timeline-type-filter').options.length > 1) {
         loadActivityTypes();
         loadTimeline();
+      }
+      if (tabId === 'matrix') {
+        loadFullMatrix();
       }
     }
 
     // ============================================================================
-    // STATUS OVERVIEW
+    // DASHBOARD (Mission Control)
     // ============================================================================
 
-    async function loadStatus() {
-      const book = document.getElementById('book-select').value;
-      if (!book) {
-        document.getElementById('status-content').style.display = 'none';
+    async function loadDashboard() {
+      try {
+        const res = await fetch('/api/status/dashboard');
+        dashboardData = await res.json();
+
+        // Update attention stats
+        document.getElementById('pending-reviews-count').textContent = dashboardData.needsAttention.pendingReviews;
+        document.getElementById('blocked-issues-count').textContent = dashboardData.needsAttention.blockedIssues;
+        document.getElementById('unassigned-count').textContent = dashboardData.needsAttention.unassignedWork;
+
+        // Render attention items
+        renderAttentionItems(dashboardData.needsAttention.items);
+
+        // Update metrics
+        if (dashboardData.metrics.milestones.length > 0) {
+          const pilot = dashboardData.metrics.milestones[0];
+          document.getElementById('pilot-progress').textContent = `${pilot.complete}/${pilot.total}`;
+          document.getElementById('pilot-progress-bar').style.width = pilot.percentage + '%';
+        }
+
+        if (dashboardData.metrics.velocity) {
+          document.getElementById('velocity-stat').innerHTML =
+            '<span class="velocity-icon">📈</span>' +
+            '<span class="velocity-text">' + escapeHtml(dashboardData.metrics.velocity.description) + '</span>';
+        }
+
+        // Render activity feed
+        renderActivityFeed(dashboardData.teamActivity.slice(0, 8));
+
+        // Render mini matrix
+        renderMiniMatrix(dashboardData.chapterMatrix);
+
+      } catch (err) {
+        console.error('Failed to load dashboard:', err);
+      }
+    }
+
+    function renderAttentionItems(items) {
+      const container = document.getElementById('attention-list');
+
+      if (items.length === 0) {
+        container.innerHTML = '<p class="text-success center">Ekkert þarfnast athygli!</p>';
         return;
       }
 
-      const res = await fetch('/api/status/' + book);
-      const data = await res.json();
+      container.innerHTML = items.slice(0, 5).map(item => {
+        let icon = '📌';
+        let actionUrl = '#';
 
-      document.getElementById('status-content').style.display = 'block';
+        if (item.type === 'review') {
+          icon = '📝';
+          actionUrl = `/reviews`;
+        } else if (item.type === 'blocked') {
+          icon = '🚫';
+          actionUrl = `/issues`;
+        } else if (item.type === 'unassigned') {
+          icon = '👤';
+        }
 
-      const s = data.summary;
-      document.getElementById('summary-stats').innerHTML =
-        '<div class="stat-card"><div class="stat-value">' + data.totalChapters + '</div><div class="stat-label">Kaflar</div></div>' +
-        '<div class="stat-card"><div class="stat-value">' + s.complete + '</div><div class="stat-label">Lokið</div></div>' +
-        '<div class="stat-card"><div class="stat-value">' + s.inProgress + '</div><div class="stat-label">Í vinnslu</div></div>' +
-        '<div class="stat-card"><div class="stat-value">' + s.avgProgress + '%</div><div class="stat-label">Meðalframvinda</div></div>';
-
-      document.getElementById('chapters-body').innerHTML = data.chapters.map(ch => {
-        const stages = ch.stages || [];
-        return '<tr>' +
-          '<td>Kafli ' + ch.chapter + '</td>' +
-          stages.map(st => '<td title="' + st.stage + '">' + (STATUS_SYMBOLS[st.status] || '○') + '</td>').join('') +
-          '<td><div class="progress-bar"><div class="progress-bar-fill" style="width: ' + ch.progress + '%"></div></div></td>' +
-        '</tr>';
+        return `
+          <div class="attention-item">
+            <span class="attention-item-icon">${icon}</span>
+            <span class="attention-item-text">${escapeHtml(item.message)}</span>
+            ${item.type === 'unassigned' ?
+              `<button class="btn btn-sm btn-primary" onclick="openAssignmentModal('${item.book}', ${item.chapter}, '${item.stage}')">Úthluta</button>` :
+              `<a href="${actionUrl}" class="btn btn-sm btn-secondary">Skoða</a>`}
+          </div>
+        `;
       }).join('');
+    }
+
+    function renderActivityFeed(activities) {
+      const container = document.getElementById('activity-feed');
+
+      if (activities.length === 0) {
+        container.innerHTML = '<p class="text-muted center">Engin virkni skráð</p>';
+        return;
+      }
+
+      container.innerHTML = activities.map(activity => `
+        <div class="activity-item">
+          <span class="activity-icon">${activity.icon || '📌'}</span>
+          <div class="activity-content">
+            <span class="activity-user">${escapeHtml(activity.username)}</span>
+            <span class="activity-desc">${escapeHtml(activity.description)}</span>
+            <span class="activity-time">${activity.timeAgo}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderMiniMatrix(chapterMatrix) {
+      const container = document.getElementById('mini-matrix');
+
+      if (!chapterMatrix.efnafraedi) {
+        container.innerHTML = '<p class="text-muted">Engin gögn</p>';
+        return;
+      }
+
+      const chapters = chapterMatrix.efnafraedi.chapters.slice(0, 8);
+
+      let html = '<div class="matrix-mini-grid">';
+
+      // Header row
+      html += '<div class="matrix-mini-header"></div>';
+      for (const stage of DISPLAY_STAGES) {
+        html += `<div class="matrix-mini-header">${STAGE_LABELS[stage] || stage}</div>`;
+      }
+
+      // Chapter rows
+      for (const ch of chapters) {
+        html += `<div class="matrix-mini-chapter" onclick="openAssignmentModal('efnafraedi', ${ch.chapter})">K${ch.chapter}</div>`;
+        for (const stage of DISPLAY_STAGES) {
+          const status = ch.stages[stage] || 'not-started';
+          html += `<div class="matrix-mini-cell status-${status}" title="${STAGE_LABELS[stage]}: ${status}"></div>`;
+        }
+      }
+
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    // ============================================================================
+    // FULL MATRIX
+    // ============================================================================
+
+    async function loadFullMatrix() {
+      const book = document.getElementById('book-select').value;
+      const container = document.getElementById('full-matrix');
+      container.innerHTML = '<p class="text-muted">Hleður...</p>';
+
+      try {
+        const res = await fetch('/api/status/' + book);
+        const data = await res.json();
+
+        let html = '<table class="matrix-table"><thead><tr>';
+        html += '<th>Kafli</th>';
+        for (const stage of DISPLAY_STAGES) {
+          html += `<th>${STAGE_LABELS[stage] || stage}</th>`;
+        }
+        html += '<th>Framvinda</th><th>Úthlutun</th></tr></thead><tbody>';
+
+        for (const ch of data.chapters) {
+          html += '<tr>';
+          html += `<td><strong>K${ch.chapter}</strong>${ch.title ? '<br><small>' + escapeHtml(ch.title) + '</small>' : ''}</td>`;
+
+          for (const stage of DISPLAY_STAGES) {
+            const stageData = ch.stages.find(s => s.stage === stage);
+            const status = stageData ? stageData.status : 'not-started';
+            const symbol = getStatusSymbol(status);
+            html += `<td class="matrix-cell status-${status}" title="${STAGE_LABELS[stage]}: ${status}">${symbol}</td>`;
+          }
+
+          html += `<td><div class="progress-bar"><div class="progress-bar-fill" style="width: ${ch.progress}%"></div></div><small>${ch.progress}%</small></td>`;
+          html += `<td><button class="btn btn-sm btn-secondary" onclick="openAssignmentModal('${book}', ${ch.chapter})">Úthluta</button></td>`;
+          html += '</tr>';
+        }
+
+        html += '</tbody></table>';
+        container.innerHTML = html;
+
+      } catch (err) {
+        container.innerHTML = '<p class="text-error">Villa við að hlaða gögnum</p>';
+      }
+    }
+
+    function getStatusSymbol(status) {
+      const symbols = {
+        'complete': '✓',
+        'in-progress': '◐',
+        'pending': '○',
+        'not-started': '·',
+        'blocked': '✕'
+      };
+      return symbols[status] || '·';
     }
 
     // ============================================================================
@@ -175,7 +438,6 @@
         const data = await res.json();
 
         const select = document.getElementById('timeline-type-filter');
-        // Keep the first option (all types)
         const firstOption = select.options[0];
         select.innerHTML = '';
         select.appendChild(firstOption);
@@ -222,7 +484,7 @@
           return;
         }
 
-        const html = data.activities.map(activity => renderActivityItem(activity)).join('');
+        const html = data.activities.map(activity => renderTimelineItem(activity)).join('');
 
         if (append) {
           contentEl.innerHTML += html;
@@ -230,7 +492,6 @@
           contentEl.innerHTML = '<div class="timeline">' + html + '</div>';
         }
 
-        // Show/hide load more button
         paginationEl.style.display = data.hasMore ? 'block' : 'none';
 
       } catch (err) {
@@ -246,26 +507,14 @@
       loadTimeline(true);
     }
 
-    function renderActivityItem(activity) {
+    function renderTimelineItem(activity) {
       const colorClass = 'timeline-color-' + activity.color;
 
-      // Build location string
       let location = '';
       if (activity.book) {
         location = activity.book;
         if (activity.chapter) location += ' / K.' + activity.chapter;
         if (activity.section) location += ' / ' + activity.section;
-      }
-
-      // Extract details for display
-      let details = '';
-      if (activity.metadata) {
-        if (activity.metadata.sectionNum) {
-          details = 'Kafli ' + activity.metadata.chapterNum + '.' + activity.metadata.sectionNum;
-        }
-        if (activity.metadata.notes) {
-          details = activity.metadata.notes.substring(0, 100) + (activity.metadata.notes.length > 100 ? '...' : '');
-        }
       }
 
       return `
@@ -278,11 +527,73 @@
             </div>
             <div class="timeline-description">${escapeHtml(activity.description)}</div>
             ${location ? '<div class="timeline-location">' + escapeHtml(location) + '</div>' : ''}
-            ${details ? '<div class="timeline-details">' + escapeHtml(details) + '</div>' : ''}
           </div>
         </div>
       `;
     }
+
+    // ============================================================================
+    // ASSIGNMENTS
+    // ============================================================================
+
+    function openAssignmentModal(book, chapter, stage = null) {
+      selectedAssignment = { book, chapter };
+      document.getElementById('assign-chapter-display').value = `${book} - Kafli ${chapter}`;
+      if (stage) {
+        document.getElementById('assign-stage').value = stage;
+      }
+      document.getElementById('assignment-modal').style.display = 'flex';
+    }
+
+    function closeAssignmentModal() {
+      document.getElementById('assignment-modal').style.display = 'none';
+      selectedAssignment = null;
+    }
+
+    async function submitAssignment() {
+      if (!selectedAssignment) return;
+
+      const stage = document.getElementById('assign-stage').value;
+      const assignedTo = document.getElementById('assign-to').value.trim();
+      const dueDate = document.getElementById('assign-due-date').value;
+      const notes = document.getElementById('assign-notes').value.trim();
+
+      if (!assignedTo) {
+        alert('Vinsamlegast veldu notanda');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/workflow/assignments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            book: selectedAssignment.book,
+            chapter: selectedAssignment.chapter,
+            stage,
+            assignedTo,
+            dueDate: dueDate || undefined,
+            notes: notes || undefined
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          alert('Verkefni úthlutað!');
+          closeAssignmentModal();
+          loadDashboard(); // Refresh
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki úthlutað'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // ============================================================================
+    // UTILITIES
+    // ============================================================================
 
     function escapeHtml(text) {
       if (!text) return '';
@@ -293,9 +604,12 @@
 
     // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
-      // Check URL hash for initial tab
+      loadDashboard();
+
       if (window.location.hash === '#timeline') {
         showTab('timeline');
+      } else if (window.location.hash === '#matrix') {
+        showTab('matrix');
       }
     });
   </script>
@@ -306,6 +620,7 @@
       --primary-dark: #1d4ed8;
       --success: #16a34a;
       --warning: #d97706;
+      --error: #dc2626;
       --info: #0891b2;
       --gray-50: #f9fafb;
       --gray-100: #f3f4f6;
@@ -316,12 +631,13 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); line-height: 1.5; }
+
     .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
     .header h1 { font-size: 1.25rem; }
     .header nav { display: flex; gap: 1.5rem; }
     .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
-    .header nav a.active { color: var(--primary); }
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .header nav a.active { color: var(--primary); font-weight: 500; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
 
     /* Tabs */
     .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
@@ -331,30 +647,82 @@
 
     /* Cards */
     .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
-    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
-    .card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .card-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
     .card-header-flex .card-title { margin-bottom: 0; }
 
-    /* Forms */
-    .form-group { margin-bottom: 1rem; }
-    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
-    .form-select { padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
-    .form-select-sm { padding: 0.375rem 0.5rem; font-size: 0.75rem; }
-    .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    /* Dashboard Grid */
+    .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
 
-    /* Grid and Stats */
-    .grid { display: grid; gap: 1rem; }
-    .grid-4 { grid-template-columns: repeat(4, 1fr); }
-    .stat-card { text-align: center; padding: 1rem; background: var(--gray-50); border-radius: 0.5rem; }
-    .stat-value { font-size: 1.5rem; font-weight: 600; color: var(--primary); }
-    .stat-label { font-size: 0.75rem; color: var(--gray-500); }
+    /* Attention Card */
+    .attention-card { border-left: 4px solid var(--warning); }
+    .attention-icon { display: inline-flex; width: 1.5rem; height: 1.5rem; background: var(--warning); color: white; border-radius: 50%; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem; }
+    .attention-stats { display: flex; gap: 1rem; margin-bottom: 1rem; }
+    .attention-stat { text-align: center; flex: 1; padding: 0.75rem; background: var(--gray-50); border-radius: 0.375rem; }
+    .attention-count { display: block; font-size: 1.5rem; font-weight: 600; color: var(--primary); }
+    .attention-count.blocked { color: var(--error); }
+    .attention-count.warning { color: var(--warning); }
+    .attention-label { font-size: 0.75rem; color: var(--gray-500); }
+    .attention-list { max-height: 200px; overflow-y: auto; }
+    .attention-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem; border-radius: 0.375rem; margin-bottom: 0.25rem; }
+    .attention-item:hover { background: var(--gray-50); }
+    .attention-item-icon { font-size: 1rem; }
+    .attention-item-text { flex: 1; font-size: 0.875rem; }
 
-    /* Table */
-    .table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-    .table th, .table td { padding: 0.5rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
-    .table th { font-size: 0.75rem; color: var(--gray-500); }
-    .progress-bar { width: 100%; height: 0.5rem; background: var(--gray-200); border-radius: 9999px; }
-    .progress-bar-fill { height: 100%; background: var(--primary); border-radius: 9999px; }
+    /* Metrics Card */
+    .milestone { margin-bottom: 1rem; }
+    .milestone-header { display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
+    .milestone-name { font-size: 0.875rem; font-weight: 500; }
+    .milestone-progress { font-size: 0.875rem; color: var(--primary); font-weight: 600; }
+    .velocity-stat { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem; background: var(--gray-50); border-radius: 0.375rem; }
+    .velocity-icon { font-size: 1.25rem; }
+    .velocity-text { font-size: 0.875rem; color: var(--gray-700); }
+
+    /* Activity Card */
+    .activity-feed { max-height: 300px; overflow-y: auto; }
+    .activity-item { display: flex; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100); }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-icon { font-size: 1rem; }
+    .activity-content { flex: 1; min-width: 0; }
+    .activity-user { font-weight: 500; font-size: 0.875rem; }
+    .activity-desc { font-size: 0.75rem; color: var(--gray-500); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .activity-time { font-size: 0.625rem; color: var(--gray-500); }
+    .activity-footer { margin-top: 1rem; text-align: center; }
+
+    /* Mini Matrix */
+    .matrix-mini-grid { display: grid; grid-template-columns: 2.5rem repeat(5, 1fr); gap: 2px; }
+    .matrix-mini-header { font-size: 0.625rem; color: var(--gray-500); text-align: center; padding: 0.25rem; font-weight: 500; }
+    .matrix-mini-chapter { font-size: 0.75rem; font-weight: 600; padding: 0.25rem; cursor: pointer; }
+    .matrix-mini-chapter:hover { background: var(--gray-100); border-radius: 0.25rem; }
+    .matrix-mini-cell { width: 100%; height: 1.5rem; border-radius: 0.25rem; }
+    .matrix-mini-cell.status-complete { background: var(--success); }
+    .matrix-mini-cell.status-in-progress { background: var(--primary); }
+    .matrix-mini-cell.status-pending { background: var(--warning); }
+    .matrix-mini-cell.status-not-started { background: var(--gray-200); }
+    .matrix-mini-cell.status-blocked { background: var(--error); }
+
+    /* Full Matrix */
+    .matrix-legend { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 0.25rem; font-size: 0.75rem; }
+    .legend-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; }
+    .legend-dot.complete { background: var(--success); }
+    .legend-dot.in-progress { background: var(--primary); }
+    .legend-dot.pending { background: var(--warning); }
+    .legend-dot.not-started { background: var(--gray-200); }
+    .matrix-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .matrix-table th, .matrix-table td { padding: 0.5rem; text-align: center; border-bottom: 1px solid var(--gray-200); }
+    .matrix-table th { font-size: 0.75rem; color: var(--gray-500); font-weight: 500; }
+    .matrix-table td:first-child { text-align: left; }
+    .matrix-cell { font-size: 1rem; }
+    .matrix-cell.status-complete { color: var(--success); }
+    .matrix-cell.status-in-progress { color: var(--primary); }
+    .matrix-cell.status-pending { color: var(--warning); }
+    .matrix-cell.status-not-started { color: var(--gray-300); }
+    .matrix-cell.status-blocked { color: var(--error); }
+
+    /* Progress bar */
+    .progress-bar { width: 100%; height: 0.5rem; background: var(--gray-200); border-radius: 9999px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background: var(--primary); transition: width 0.3s; }
 
     /* Timeline */
     .timeline { display: flex; flex-direction: column; gap: 0; }
@@ -367,31 +735,49 @@
     .timeline-time { font-size: 0.75rem; color: var(--gray-500); }
     .timeline-description { color: var(--gray-700); font-size: 0.875rem; }
     .timeline-location { font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem; }
-    .timeline-details { font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem; font-style: italic; }
-
-    /* Timeline colors */
     .timeline-color-success .timeline-icon { color: var(--success); }
     .timeline-color-warning .timeline-icon { color: var(--warning); }
     .timeline-color-info .timeline-icon { color: var(--info); }
 
+    /* Forms */
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-select, .form-input, .form-textarea { width: 100%; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+    .form-select-sm { padding: 0.375rem 0.5rem; font-size: 0.75rem; width: auto; }
+    .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
     /* Buttons */
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; text-decoration: none; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
     .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
     .btn-secondary:hover { background: var(--gray-50); }
-    .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.75rem; }
+    .btn-sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+    .btn-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); }
 
-    /* Pagination */
-    .pagination { margin-top: 1rem; text-align: center; }
+    /* Modal */
+    .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: white; border-radius: 0.5rem; width: 90%; max-width: 400px; }
+    .modal-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; }
+    .modal-header h3 { font-size: 1rem; font-weight: 600; }
+    .modal-body { padding: 1.5rem; }
+    .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--gray-200); display: flex; justify-content: flex-end; gap: 0.75rem; }
 
     /* States */
     .text-muted { color: var(--gray-500); }
-    .text-error { color: #dc2626; }
+    .text-success { color: var(--success); }
+    .text-error { color: var(--error); }
+    .center { text-align: center; }
     .empty-state { text-align: center; padding: 2rem; color: var(--gray-500); }
+    .pagination { margin-top: 1rem; text-align: center; }
 
+    @media (max-width: 1024px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
-      .grid-4 { grid-template-columns: repeat(2, 1fr); }
-      .card-header-flex { flex-direction: column; align-items: flex-start; }
-      .timeline-header { flex-direction: column; gap: 0.25rem; }
+      .header nav { gap: 1rem; font-size: 0.75rem; }
+      .attention-stats { flex-direction: column; }
+      .matrix-mini-grid { font-size: 0.625rem; }
     }
   </style>
 </body>

@@ -4,6 +4,7 @@
  * Provides pipeline status information for books and chapters.
  *
  * Endpoints:
+ *   GET /api/status/dashboard          Get unified dashboard data (Mission Control)
  *   GET /api/status/:book              Get aggregated status for a book
  *   GET /api/status/:book/:chapter     Get status for a specific chapter
  *   GET /api/status/:book/summary      Get summary statistics
@@ -15,22 +16,50 @@ const fs = require('fs');
 const path = require('path');
 const activityLog = require('../services/activityLog');
 
+// Import assignment store (will create if not exists)
+let assignmentStore;
+try {
+  assignmentStore = require('../services/assignmentStore');
+} catch (e) {
+  assignmentStore = null;
+}
+
 // Project root
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 
 // Valid books
 const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
 
-// Pipeline stages in order
+// Simplified 5-step pipeline stages (aligned with workflow docs)
 const PIPELINE_STAGES = [
-  'source',
+  'enMarkdown',
   'mtOutput',
-  'matecat',
-  'editorialPass1',
-  'tmUpdated',
-  'editorialPass2',
+  'linguisticReview',
+  'tmCreated',
   'publication'
 ];
+
+// Map old stage names to new ones (backward compatibility)
+const STAGE_MAPPING = {
+  'source': 'enMarkdown',
+  'matecat': 'tmCreated',
+  'editorialPass1': 'linguisticReview',
+  'tmUpdated': 'tmCreated',
+  'editorialPass2': 'publication'
+};
+
+// Helper to normalize stage names from old status files
+function normalizeStageStatus(status) {
+  const normalized = {};
+  for (const [key, value] of Object.entries(status)) {
+    const newKey = STAGE_MAPPING[key] || key;
+    // Prefer newer stage name if both exist
+    if (!normalized[newKey] || (value && value.complete)) {
+      normalized[newKey] = value;
+    }
+  }
+  return normalized;
+}
 
 // Status symbols for display
 const STATUS_SYMBOLS = {
@@ -40,6 +69,224 @@ const STATUS_SYMBOLS = {
   'not-started': '\u25cb',  // ○
   'blocked': '\u274c'       // ❌
 };
+
+// ============================================================================
+// DASHBOARD (Mission Control)
+// ============================================================================
+
+/**
+ * GET /api/status/dashboard
+ * Get unified dashboard data for admin overview
+ * Returns: needsAttention, teamActivity (24h), chapterMatrix, metrics
+ */
+router.get('/dashboard', async (req, res) => {
+  try {
+    const dashboard = {
+      needsAttention: {
+        pendingReviews: 0,
+        blockedIssues: 0,
+        unassignedWork: 0,
+        items: []
+      },
+      teamActivity: [],
+      chapterMatrix: {},
+      metrics: {
+        velocity: null,
+        projection: null,
+        milestones: []
+      }
+    };
+
+    // Get all books
+    for (const book of VALID_BOOKS) {
+      const bookPath = path.join(PROJECT_ROOT, 'books', book);
+      const chaptersPath = path.join(bookPath, 'chapters');
+
+      if (!fs.existsSync(chaptersPath)) continue;
+
+      const chapterDirs = fs.readdirSync(chaptersPath)
+        .filter(d => d.startsWith('ch'))
+        .sort((a, b) => {
+          const aNum = parseInt(a.replace('ch', ''));
+          const bNum = parseInt(b.replace('ch', ''));
+          return aNum - bNum;
+        });
+
+      dashboard.chapterMatrix[book] = {
+        totalChapters: chapterDirs.length,
+        chapters: []
+      };
+
+      for (const chapterDir of chapterDirs) {
+        const chapterNum = parseInt(chapterDir.replace('ch', ''));
+        const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
+
+        let chapterData = {
+          chapter: chapterNum,
+          stages: {},
+          progress: 0,
+          assignment: null
+        };
+
+        if (fs.existsSync(statusPath)) {
+          try {
+            const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+            const formatted = formatChapterStatus(statusData);
+            chapterData.title = statusData.title;
+            chapterData.progress = formatted.progress;
+            chapterData.currentStage = formatted.currentStage;
+            chapterData.nextStage = formatted.nextStage;
+
+            // Build stage map for matrix
+            for (const stage of formatted.stages) {
+              chapterData.stages[stage.stage] = stage.status;
+            }
+
+            // Check for unassigned in-progress work
+            if (formatted.currentStage && !chapterData.assignment) {
+              dashboard.needsAttention.unassignedWork++;
+              dashboard.needsAttention.items.push({
+                type: 'unassigned',
+                book,
+                chapter: chapterNum,
+                stage: formatted.currentStage,
+                message: `Kafli ${chapterNum} í vinnslu án úthlutunar`
+              });
+            }
+          } catch (err) {
+            chapterData.error = err.message;
+          }
+        }
+
+        // Get assignment if available
+        if (assignmentStore) {
+          try {
+            const assignment = assignmentStore.getAssignment(book, chapterNum);
+            if (assignment) {
+              chapterData.assignment = assignment;
+            }
+          } catch (e) {
+            // Assignment store not available
+          }
+        }
+
+        dashboard.chapterMatrix[book].chapters.push(chapterData);
+      }
+    }
+
+    // Get recent team activity (last 24 hours)
+    try {
+      const result = activityLog.search({
+        limit: 20,
+        offset: 0
+      });
+
+      dashboard.teamActivity = result.activities.map(activity => ({
+        ...activity,
+        timeAgo: formatTimeAgo(activity.createdAt),
+        icon: getActivityIcon(activity.type),
+        color: getActivityColor(activity.type)
+      }));
+    } catch (err) {
+      console.error('Failed to get team activity:', err);
+    }
+
+    // Calculate velocity metrics
+    try {
+      const weekAgo = new Date();
+      weekAgo.setDate(weekAgo.getDate() - 7);
+
+      // Count completed sections in last 7 days
+      const recentCompletions = activityLog.search({
+        type: 'review_approved',
+        limit: 100
+      });
+
+      const completedThisWeek = recentCompletions.activities.filter(a => {
+        const activityDate = new Date(a.createdAt);
+        return activityDate >= weekAgo;
+      }).length;
+
+      dashboard.metrics.velocity = {
+        sectionsPerWeek: completedThisWeek,
+        description: `${completedThisWeek} hlutar kláraðir síðustu 7 daga`
+      };
+
+      // Milestone tracking for pilot (Chapters 1-4)
+      let pilotComplete = 0;
+      let pilotTotal = 4;
+
+      if (dashboard.chapterMatrix.efnafraedi) {
+        const pilotChapters = dashboard.chapterMatrix.efnafraedi.chapters.slice(0, 4);
+        pilotComplete = pilotChapters.filter(ch => ch.progress === 100).length;
+      }
+
+      dashboard.metrics.milestones = [{
+        name: 'Kaflar 1-4 fyrir tilraunakennslu',
+        complete: pilotComplete,
+        total: pilotTotal,
+        percentage: Math.round((pilotComplete / pilotTotal) * 100)
+      }];
+
+    } catch (err) {
+      console.error('Failed to calculate metrics:', err);
+    }
+
+    // Get pending reviews count
+    try {
+      const reviewsPath = path.join(__dirname, '..', 'data', 'reviews.json');
+      if (fs.existsSync(reviewsPath)) {
+        const reviews = JSON.parse(fs.readFileSync(reviewsPath, 'utf-8'));
+        const pending = reviews.filter(r => r.status === 'pending');
+        dashboard.needsAttention.pendingReviews = pending.length;
+
+        for (const review of pending.slice(0, 5)) {
+          dashboard.needsAttention.items.push({
+            type: 'review',
+            book: review.book,
+            chapter: review.chapter,
+            section: review.section,
+            submittedBy: review.submittedBy,
+            message: `Yfirferð í bið: ${review.section}`
+          });
+        }
+      }
+    } catch (err) {
+      // Reviews file may not exist
+    }
+
+    // Get blocked issues count
+    try {
+      const issuesPath = path.join(__dirname, '..', 'data', 'issues.json');
+      if (fs.existsSync(issuesPath)) {
+        const issues = JSON.parse(fs.readFileSync(issuesPath, 'utf-8'));
+        const blocked = issues.filter(i => i.category === 'BLOCKED' && i.status === 'pending');
+        dashboard.needsAttention.blockedIssues = blocked.length;
+
+        for (const issue of blocked.slice(0, 5)) {
+          dashboard.needsAttention.items.push({
+            type: 'blocked',
+            description: issue.description,
+            book: issue.book,
+            chapter: issue.chapter,
+            message: `Lokað á: ${issue.description}`
+          });
+        }
+      }
+    } catch (err) {
+      // Issues file may not exist
+    }
+
+    res.json(dashboard);
+
+  } catch (err) {
+    console.error('Dashboard error:', err);
+    res.status(500).json({
+      error: 'Failed to get dashboard',
+      message: err.message
+    });
+  }
+});
 
 // ============================================================================
 // ACTIVITY TIMELINE (must be before /:book to avoid route conflicts)
@@ -329,7 +576,9 @@ router.get('/:book/:chapter', (req, res) => {
  * Format chapter status for API response
  */
 function formatChapterStatus(statusData) {
-  const status = statusData.status || {};
+  // Normalize old stage names to new 5-step schema
+  const rawStatus = statusData.status || {};
+  const status = normalizeStageStatus(rawStatus);
 
   const stages = PIPELINE_STAGES.map(stage => {
     const stageData = status[stage] || {};

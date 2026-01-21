@@ -57,6 +57,9 @@ const localizationRoutes = require('./routes/localization');
 const terminologyRoutes = require('./routes/terminology');
 const suggestionsRoutes = require('./routes/suggestions');
 
+// Import Decision Log routes
+const decisionsRoutes = require('./routes/decisions');
+
 // Import Phase 6 routes (Publication)
 const publicationRoutes = require('./routes/publication');
 
@@ -138,6 +141,9 @@ app.use('/api/localization', localizationRoutes);
 // Phase 5 API Routes (Terminology & Suggestions)
 app.use('/api/terminology', terminologyRoutes);
 app.use('/api/suggestions', suggestionsRoutes);
+
+// Decision Log API Routes
+app.use('/api/decisions', decisionsRoutes);
 
 // Phase 6 API Routes (Publication)
 app.use('/api/publication', publicationRoutes);

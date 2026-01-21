@@ -11,13 +11,11 @@
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
-      <a href="/books">Bækur</a>
-      <a href="/workflow">Verkflæði</a>
+      <a href="/status">Stjórnborð</a>
       <a href="/editor" class="active">Ritstjóri</a>
       <a href="/reviews">Yfirferðir</a>
-      <a href="/images">Myndir</a>
-      <a href="/issues">Atriði</a>
-      <a href="/status">Staða</a>
+      <a href="/terminology">Orðasafn</a>
+      <a href="/decisions">Ákvarðanir</a>
     </nav>
     <div class="user-info" id="user-info"></div>
   </header>
@@ -78,6 +76,89 @@
       <div class="alert alert-warning" id="pending-review-alert" style="display: none;">
         <i class="fas fa-clock"></i>
         <span id="pending-review-text"></span>
+      </div>
+
+      <!-- Assignment banner (if assigned to current user) -->
+      <div class="alert alert-info" id="assignment-banner" style="display: none;">
+        <i class="fas fa-user-check"></i>
+        <span id="assignment-text"></span>
+      </div>
+
+      <!-- Contextual Editor Guidance -->
+      <div class="guidance-panel" id="guidance-panel">
+        <div class="guidance-header" onclick="toggleGuidance()">
+          <span class="guidance-title">
+            <i class="fas fa-lightbulb"></i>
+            <span id="guidance-stage-title">Leiðbeiningar</span>
+          </span>
+          <span class="guidance-toggle" id="guidance-toggle">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </div>
+        <div class="guidance-content" id="guidance-content">
+          <!-- Pass 1 Guidance (Linguistic Review) -->
+          <div id="guidance-pass1" class="guidance-stage" style="display: none;">
+            <div class="guidance-section guidance-do">
+              <h4><i class="fas fa-check-circle"></i> Gerðu</h4>
+              <ul>
+                <li>Leiðréttu málfræðivillur og stafsetningarvillur</li>
+                <li>Bættu orðalag og setningaskipan</li>
+                <li>Athugaðu hugtakanotkun samkvæmt orðasafni</li>
+                <li>Merktu óljós atriði með <code>&lt;!-- SPURNING: ... --&gt;</code></li>
+              </ul>
+            </div>
+            <div class="guidance-section guidance-dont">
+              <h4><i class="fas fa-times-circle"></i> Ekki gera</h4>
+              <ul>
+                <li>Umbreyta einingum (mílu → km) - það er Pass 2</li>
+                <li>Bæta við íslenskum dæmum - það er Pass 2</li>
+                <li>Breyta efnislegri merkingu frumtextans</li>
+              </ul>
+            </div>
+            <div class="guidance-section guidance-tip">
+              <h4><i class="fas fa-info-circle"></i> Ábending</h4>
+              <p>Þetta er <strong>trúverðug þýðing</strong> - hún þarf að vera nákvæm gagnvart frumtexta. Staðfæring kemur í Pass 2.</p>
+            </div>
+          </div>
+
+          <!-- Pass 2 Guidance (Localization) -->
+          <div id="guidance-pass2" class="guidance-stage" style="display: none;">
+            <div class="guidance-section guidance-do">
+              <h4><i class="fas fa-check-circle"></i> Nú máttu</h4>
+              <ul>
+                <li>Umbreyta einingum (°F → °C, mílu → km)</li>
+                <li>Bæta við íslenskum/evrópskum samhengi</li>
+                <li>Skipta út bandarískum tilvísunum fyrir viðeigandi</li>
+                <li>Nota staðfæringarskrá til að skrá breytingar</li>
+              </ul>
+            </div>
+            <div class="guidance-section guidance-dont">
+              <h4><i class="fas fa-times-circle"></i> Ekki gera</h4>
+              <ul>
+                <li>Eyða vísindalegum upplýsingum</li>
+                <li>Breyta efnafræðilegum formúlum</li>
+                <li>Gera staðfæringar án skráningar</li>
+              </ul>
+            </div>
+            <div class="guidance-section guidance-tip">
+              <h4><i class="fas fa-info-circle"></i> Ábending</h4>
+              <p>Notaðu <code>/localize-chapter</code> til að fá tillögur að staðfæringum.</p>
+            </div>
+          </div>
+
+          <!-- Default Guidance -->
+          <div id="guidance-default" class="guidance-stage">
+            <div class="guidance-section guidance-tip">
+              <h4><i class="fas fa-info-circle"></i> Almennar leiðbeiningar</h4>
+              <ul>
+                <li>Vistaðu reglulega með <kbd>Ctrl+S</kbd></li>
+                <li>Tvísmelltu á orð til að fletta upp í orðasafni</li>
+                <li>Notaðu EN/IS hnappinn til að sjá enska textann</li>
+                <li>Skoðaðu útgáfusögu til að endurheimta eldri útgáfur</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Side-by-side view -->
@@ -316,6 +397,13 @@
 
         // Initialize EasyMDE
         initEditor(data.content.is || '');
+
+        // Detect and set guidance stage
+        const stage = detectStage(data);
+        setGuidanceStage(stage);
+
+        // Check for assignment
+        checkAssignment(book, chapter, section);
 
         // Load history
         loadHistory(book, chapter, section);
@@ -714,6 +802,114 @@
       }
     }
 
+    // ========================================
+    // GUIDANCE PANEL
+    // ========================================
+
+    let guidanceCollapsed = false;
+    let currentStage = 'default';
+
+    function toggleGuidance() {
+      guidanceCollapsed = !guidanceCollapsed;
+      const content = document.getElementById('guidance-content');
+      const toggle = document.getElementById('guidance-toggle');
+
+      if (guidanceCollapsed) {
+        content.classList.add('collapsed');
+        toggle.classList.add('collapsed');
+      } else {
+        content.classList.remove('collapsed');
+        toggle.classList.remove('collapsed');
+      }
+    }
+
+    function setGuidanceStage(stage) {
+      currentStage = stage;
+
+      // Hide all stages
+      document.querySelectorAll('.guidance-stage').forEach(el => {
+        el.style.display = 'none';
+        el.classList.remove('active');
+      });
+
+      // Show appropriate stage
+      const stageEl = document.getElementById('guidance-' + stage);
+      if (stageEl) {
+        stageEl.style.display = 'block';
+        stageEl.classList.add('active');
+      }
+
+      // Update title
+      const titles = {
+        'pass1': 'Yfirferð 1 - Tungumálaleiðrétting',
+        'pass2': 'Yfirferð 2 - Staðfæring',
+        'default': 'Leiðbeiningar'
+      };
+      document.getElementById('guidance-stage-title').textContent = titles[stage] || titles.default;
+    }
+
+    function detectStage(data) {
+      // Check URL params for explicit stage
+      const params = new URLSearchParams(window.location.search);
+      const stageParam = params.get('stage');
+
+      if (stageParam === 'pass1' || stageParam === 'linguistic') {
+        return 'pass1';
+      }
+      if (stageParam === 'pass2' || stageParam === 'localization') {
+        return 'pass2';
+      }
+
+      // Detect from data source
+      if (data && data.source) {
+        if (data.source === 'mt-output' || data.source === '02-mt-output') {
+          return 'pass1'; // Working on MT output = Pass 1
+        }
+        if (data.source === 'faithful' || data.source === '03-faithful') {
+          return 'pass2'; // Working on faithful = Pass 2
+        }
+      }
+
+      return 'default';
+    }
+
+    async function checkAssignment(book, chapter, section) {
+      try {
+        const res = await fetch('/api/workflow/assignments/mine');
+        const data = await res.json();
+
+        const assignment = data.assignments.find(a =>
+          a.book === book &&
+          a.chapter === parseInt(chapter)
+        );
+
+        if (assignment) {
+          const banner = document.getElementById('assignment-banner');
+          const stageLabels = {
+            'linguisticReview': 'Yfirferð 1',
+            'editorialPass2': 'Yfirferð 2',
+            'publication': 'Útgáfa'
+          };
+          const stageLabel = stageLabels[assignment.stage] || assignment.stage;
+
+          document.getElementById('assignment-text').textContent =
+            `Þér hefur verið úthlutað þessum kafla fyrir ${stageLabel}` +
+            (assignment.dueDate ? ` (skiladagur: ${new Date(assignment.dueDate).toLocaleDateString('is-IS')})` : '');
+          banner.style.display = 'flex';
+
+          // Set guidance based on assignment
+          if (assignment.stage === 'linguisticReview' || assignment.stage === 'editorialPass1') {
+            setGuidanceStage('pass1');
+          } else if (assignment.stage === 'editorialPass2') {
+            setGuidanceStage('pass2');
+          }
+        }
+      } catch (err) {
+        // Assignment check failed, continue without
+        console.log('Could not check assignments:', err);
+      }
+    }
+
     // Initialize on page load
     init();
   </script>
@@ -955,6 +1151,106 @@
       border: 1px solid var(--gray-300);
       border-radius: 0.375rem;
       font-size: 0.875rem;
+    }
+
+    /* Guidance Panel */
+    .guidance-panel {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .guidance-header {
+      padding: 0.75rem 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .guidance-header:hover { opacity: 0.95; }
+    .guidance-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+    .guidance-toggle { transition: transform 0.2s; }
+    .guidance-toggle.collapsed { transform: rotate(-90deg); }
+    .guidance-content {
+      padding: 1rem;
+      transition: max-height 0.3s ease-out;
+    }
+    .guidance-content.collapsed {
+      max-height: 0;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+    .guidance-stage { display: none; }
+    .guidance-stage.active { display: block; }
+    .guidance-section {
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      margin-bottom: 0.75rem;
+    }
+    .guidance-section:last-child { margin-bottom: 0; }
+    .guidance-section h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .guidance-section ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      font-size: 0.8125rem;
+    }
+    .guidance-section li { margin-bottom: 0.25rem; }
+    .guidance-section p {
+      font-size: 0.8125rem;
+      margin: 0;
+    }
+    .guidance-section code {
+      background: rgba(0,0,0,0.1);
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+    }
+    .guidance-do {
+      background: #dcfce7;
+      border: 1px solid #86efac;
+    }
+    .guidance-do h4 { color: #166534; }
+    .guidance-dont {
+      background: #fee2e2;
+      border: 1px solid #fecaca;
+    }
+    .guidance-dont h4 { color: #991b1b; }
+    .guidance-tip {
+      background: #dbeafe;
+      border: 1px solid #93c5fd;
+    }
+    .guidance-tip h4 { color: #1e40af; }
+
+    /* Assignment Banner */
+    .alert-info {
+      background: #dbeafe;
+      border: 1px solid #93c5fd;
+      color: #1e40af;
+    }
+
+    /* Keyboard shortcut styling */
+    kbd {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 0.25rem;
+      padding: 0.125rem 0.375rem;
+      font-family: inherit;
+      font-size: 0.75rem;
     }
   </style>
 </body>

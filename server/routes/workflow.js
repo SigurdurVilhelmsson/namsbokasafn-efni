@@ -25,6 +25,8 @@ const { requireContributor } = require('../middleware/requireRole');
 const session = require('../services/session');
 const pipelineRunner = require('../../tools/pipeline-runner');
 const { classifyIssues, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
+const assignmentStore = require('../services/assignmentStore');
+const activityLog = require('../services/activityLog');
 
 // Re-export splitting functions for use in this module
 const {
@@ -1344,5 +1346,178 @@ function buildExpectedFiles(outputs, splitInfo) {
 
   return expected;
 }
+
+// ============================================================================
+// ASSIGNMENT ROUTES
+// ============================================================================
+
+/**
+ * POST /api/workflow/assignments
+ * Create or update an assignment
+ */
+router.post('/assignments', requireAuth, (req, res) => {
+  const { book, chapter, stage, assignedTo, dueDate, notes } = req.body;
+
+  if (!book || !chapter || !stage || !assignedTo) {
+    return res.status(400).json({
+      error: 'Missing required fields',
+      message: 'book, chapter, stage, and assignedTo are required'
+    });
+  }
+
+  try {
+    const assignment = assignmentStore.createAssignment({
+      book,
+      chapter: parseInt(chapter),
+      stage,
+      assignedTo,
+      assignedBy: req.user.username,
+      dueDate,
+      notes
+    });
+
+    // Log the assignment activity
+    activityLog.log({
+      type: 'assign_reviewer',
+      userId: req.user.id,
+      username: req.user.username,
+      book,
+      chapter: parseInt(chapter),
+      description: `Úthlutaði ${stage} til ${assignedTo}`,
+      metadata: {
+        stage,
+        assignedTo,
+        dueDate
+      }
+    });
+
+    res.json({
+      success: true,
+      assignment
+    });
+
+  } catch (err) {
+    console.error('Assignment creation error:', err);
+    res.status(500).json({
+      error: 'Failed to create assignment',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/workflow/assignments
+ * Get all pending assignments (optionally filtered)
+ */
+router.get('/assignments', requireAuth, (req, res) => {
+  const { book, user } = req.query;
+
+  try {
+    let assignments;
+
+    if (user) {
+      assignments = assignmentStore.getUserAssignments(user);
+    } else if (book) {
+      assignments = assignmentStore.getBookAssignments(book);
+    } else {
+      assignments = assignmentStore.getAllPendingAssignments();
+    }
+
+    res.json({
+      assignments,
+      total: assignments.length
+    });
+
+  } catch (err) {
+    console.error('Get assignments error:', err);
+    res.status(500).json({
+      error: 'Failed to get assignments',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/workflow/assignments/mine
+ * Get current user's assignments
+ */
+router.get('/assignments/mine', requireAuth, (req, res) => {
+  try {
+    const assignments = assignmentStore.getUserAssignments(req.user.username);
+
+    res.json({
+      assignments,
+      total: assignments.length
+    });
+
+  } catch (err) {
+    console.error('Get my assignments error:', err);
+    res.status(500).json({
+      error: 'Failed to get assignments',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/workflow/assignments/:id/complete
+ * Mark an assignment as completed
+ */
+router.post('/assignments/:id/complete', requireAuth, (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const assignment = assignmentStore.completeAssignment(id, req.user.username);
+
+    if (!assignment) {
+      return res.status(404).json({
+        error: 'Assignment not found'
+      });
+    }
+
+    res.json({
+      success: true,
+      assignment
+    });
+
+  } catch (err) {
+    console.error('Complete assignment error:', err);
+    res.status(500).json({
+      error: 'Failed to complete assignment',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/workflow/assignments/:id/cancel
+ * Cancel an assignment
+ */
+router.post('/assignments/:id/cancel', requireAuth, (req, res) => {
+  const { id } = req.params;
+  const { reason } = req.body;
+
+  try {
+    const assignment = assignmentStore.cancelAssignment(id, req.user.username, reason);
+
+    if (!assignment) {
+      return res.status(404).json({
+        error: 'Assignment not found'
+      });
+    }
+
+    res.json({
+      success: true,
+      assignment
+    });
+
+  } catch (err) {
+    console.error('Cancel assignment error:', err);
+    res.status(500).json({
+      error: 'Failed to cancel assignment',
+      message: err.message
+    });
+  }
+});
 
 module.exports = router;

@@ -10,42 +10,33 @@
     }
   ],
   "status": {
-    "source": {
+    "enMarkdown": {
       "complete": false,
-      "date": null
+      "date": null,
+      "notes": ""
     },
     "mtOutput": {
       "complete": false,
-      "date": null
-    },
-    "matecat": {
-      "complete": false,
       "date": null,
-      "inProgress": false,
       "notes": ""
     },
-    "editorialPass1": {
+    "linguisticReview": {
       "complete": false,
       "date": null,
       "editor": null,
       "inProgress": false,
-      "pending": false,
       "notes": ""
     },
-    "tmUpdated": {
-      "complete": false,
-      "date": null
-    },
-    "editorialPass2": {
+    "tmCreated": {
       "complete": false,
       "date": null,
-      "editor": null,
       "notes": ""
     },
     "publication": {
       "complete": false,
       "date": null,
       "version": null,
+      "track": null,
       "notes": ""
     }
   },

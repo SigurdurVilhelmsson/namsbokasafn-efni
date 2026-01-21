@@ -14,13 +14,14 @@
 const fs = require('fs');
 const path = require('path');
 
-// Issue categories with their routing
+// Issue categories with their routing (detailed 4-tier for processing)
 const ISSUE_CATEGORIES = {
   AUTO_FIX: {
     name: 'Auto-Fix',
     description: 'Applied automatically without review',
     action: 'apply',
     approver: null,
+    simpleTier: 'QUICK_FIX',
     patterns: [
       'whitespace',
       'trailing-space',
@@ -35,6 +36,7 @@ const ISSUE_CATEGORIES = {
     description: 'Single editor reviews and confirms',
     action: 'queue',
     approver: 'head-editor',
+    simpleTier: 'QUICK_FIX',
     patterns: [
       'terminology-suggestion',
       'minor-edit',
@@ -48,6 +50,7 @@ const ISSUE_CATEGORIES = {
     description: 'Requires discussion and consensus',
     action: 'escalate',
     approver: 'editorial-board',
+    simpleTier: 'TEAM_DISCUSSION',
     patterns: [
       'new-terminology',
       'localization-policy',
@@ -61,6 +64,7 @@ const ISSUE_CATEGORIES = {
     description: 'Cannot proceed without manual resolution',
     action: 'halt',
     approver: 'manual',
+    simpleTier: 'TEAM_DISCUSSION',
     patterns: [
       'copyright',
       'major-error',
@@ -70,6 +74,32 @@ const ISSUE_CATEGORIES = {
     ]
   }
 };
+
+// Simplified 2-tier categories for small teams
+const SIMPLE_TIERS = {
+  QUICK_FIX: {
+    name: 'Fljótleg lagfæring',
+    nameEn: 'Quick Fix',
+    description: 'Ritstjóri leysir án umræðu',
+    action: 'resolve',
+    categories: ['AUTO_FIX', 'EDITOR_CONFIRM']
+  },
+  TEAM_DISCUSSION: {
+    name: 'Umræða í hóp',
+    nameEn: 'Team Discussion',
+    description: 'Ræða á vikulegum fundi',
+    action: 'discuss',
+    categories: ['BOARD_REVIEW', 'BLOCKED']
+  }
+};
+
+/**
+ * Get simplified tier for an issue category
+ */
+function getSimpleTier(category) {
+  const categoryInfo = ISSUE_CATEGORIES[category];
+  return categoryInfo ? categoryInfo.simpleTier : 'QUICK_FIX';
+}
 
 // Pattern matchers for issue detection
 const ISSUE_PATTERNS = {
@@ -429,8 +459,10 @@ function escapeRegex(string) {
 module.exports = {
   ISSUE_CATEGORIES,
   ISSUE_PATTERNS,
+  SIMPLE_TIERS,
   classifyIssues,
   applyAutoFixes,
   getIssueStats,
-  checkGlossaryTerms
+  checkGlossaryTerms,
+  getSimpleTier
 };

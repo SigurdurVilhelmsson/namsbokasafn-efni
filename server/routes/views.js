@@ -92,6 +92,14 @@ router.get('/terminology', (req, res) => {
 });
 
 /**
+ * GET /decisions
+ * Consolidated decision log page
+ */
+router.get('/decisions', (req, res) => {
+  sendView(res, 'decisions.html');
+});
+
+/**
  * GET /localization-review
  * Split-panel localization review page
  */

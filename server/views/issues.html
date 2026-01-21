@@ -9,320 +9,602 @@
   <header class="header">
     <h1>Námsbókasafn</h1>
     <nav>
-      <a href="/books">Bækur</a>
-      <a href="/workflow">Verkflæði</a>
+      <a href="/status">Stjórnborð</a>
       <a href="/editor">Ritstjóri</a>
       <a href="/reviews">Yfirferðir</a>
-      <a href="/images">Myndir</a>
-      <a href="/issues" class="active">Atriði</a>
-      <a href="/status">Staða</a>
+      <a href="/terminology">Orðasafn</a>
+      <a href="/decisions">Ákvarðanir</a>
     </nav>
     <div class="user-info" id="user-info"></div>
   </header>
 
   <main class="container">
+    <!-- Summary Stats -->
     <div class="card">
       <h2 class="card-title">Atriðayfirlit</h2>
-      <div class="grid grid-4" id="stats">
-        <div class="stat-card"><div class="stat-value" id="total-issues">-</div><div class="stat-label">Samtals</div></div>
-        <div class="stat-card"><div class="stat-value" id="pending-issues">-</div><div class="stat-label">Í bið</div></div>
-        <div class="stat-card"><div class="stat-value" id="auto-fix-issues">-</div><div class="stat-label">Sjálfvirk lagfæring</div></div>
-        <div class="stat-card"><div class="stat-value" id="review-issues">-</div><div class="stat-label">Þarf yfirlestur</div></div>
+      <div class="grid grid-3" id="stats">
+        <div class="stat-card">
+          <div class="stat-value" id="quick-fix-count">-</div>
+          <div class="stat-label">Fljótleg lagfæring</div>
+          <div class="stat-desc">Ritstjóri leysir</div>
+        </div>
+        <div class="stat-card stat-warning">
+          <div class="stat-value" id="discussion-count">-</div>
+          <div class="stat-label">Umræða í hóp</div>
+          <div class="stat-desc">Vikulegur fundur</div>
+        </div>
+        <div class="stat-card stat-success">
+          <div class="stat-value" id="resolved-count">-</div>
+          <div class="stat-label">Leyst</div>
+          <div class="stat-desc">Síðustu 7 daga</div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <h2 class="card-title">Óleyst atriði</h2>
-      <div class="filters">
-        <select class="form-select" id="filter-book" onchange="loadIssues()">
-          <option value="">Allar bækur</option>
-          <option value="efnafraedi">Efnafræði</option>
-        </select>
-        <select class="form-select" id="filter-category" onchange="loadIssues()">
-          <option value="">Allir flokkar</option>
-          <option value="AUTO_FIX">Sjálfvirk lagfæring</option>
-          <option value="EDITOR_CONFIRM">Ritstjóri staðfestir</option>
-          <option value="BOARD_REVIEW">Yfirlestur ráðs</option>
-          <option value="BLOCKED">Lokað á</option>
-        </select>
+    <!-- Tab Navigation -->
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('quick-fix')">
+        Fljótleg lagfæring
+        <span class="tab-badge" id="quick-fix-badge">0</span>
+      </button>
+      <button class="tab" onclick="showTab('discussion')">
+        Umræða í hóp
+        <span class="tab-badge tab-badge-warning" id="discussion-badge">0</span>
+      </button>
+      <button class="tab" onclick="showTab('resolved')">Leyst</button>
+    </div>
+
+    <!-- Quick Fix Tab -->
+    <div id="tab-quick-fix" class="tab-content">
+      <div class="card">
+        <div class="card-header-flex">
+          <h2 class="card-title">Fljótleg lagfæring</h2>
+          <p class="card-subtitle">Atriði sem þú getur leyst sjálf(ur) án umræðu</p>
+        </div>
+        <div class="filters">
+          <select class="form-select" id="quick-fix-book-filter" onchange="loadQuickFix()">
+            <option value="">Allar bækur</option>
+            <option value="efnafraedi">Efnafræði</option>
+          </select>
+        </div>
+        <div id="quick-fix-list" class="issues-list">
+          <p class="text-muted">Hleður...</p>
+        </div>
       </div>
-      <table class="table" id="issues-table">
-        <thead>
-          <tr><th>Flokkur</th><th>Lysing</th><th>Skra</th><th>Kafli</th><th>Adgerdir</th></tr>
-        </thead>
-        <tbody id="issues-body"></tbody>
-      </table>
+    </div>
+
+    <!-- Team Discussion Tab -->
+    <div id="tab-discussion" class="tab-content" style="display: none;">
+      <div class="card">
+        <div class="card-header-flex">
+          <h2 class="card-title">Umræða í hóp</h2>
+          <p class="card-subtitle">Atriði sem þarf að ræða á vikulegum fundi</p>
+        </div>
+        <div class="filters">
+          <select class="form-select" id="discussion-book-filter" onchange="loadDiscussion()">
+            <option value="">Allar bækur</option>
+            <option value="efnafraedi">Efnafræði</option>
+          </select>
+        </div>
+        <div id="discussion-list" class="issues-list">
+          <p class="text-muted">Hleður...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resolved Tab -->
+    <div id="tab-resolved" class="tab-content" style="display: none;">
+      <div class="card">
+        <div class="card-header-flex">
+          <h2 class="card-title">Leyst atriði</h2>
+          <p class="card-subtitle">Síðustu 7 daga</p>
+        </div>
+        <div id="resolved-list" class="issues-list">
+          <p class="text-muted">Hleður...</p>
+        </div>
+      </div>
     </div>
   </main>
 
-  <script>
-    // Load stats first
-    async function loadStats() {
-      const book = document.getElementById('filter-book').value;
-      let url = '/api/issues/stats';
-      if (book) url += '?book=' + book;
+  <!-- Resolve Modal -->
+  <div class="modal" id="resolve-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Leysa atriði</h3>
+        <button class="btn-close" onclick="closeResolveModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="issue-preview" id="resolve-issue-preview"></div>
+        <div class="form-group">
+          <label class="form-label">Úrlausn</label>
+          <textarea id="resolve-notes" class="form-textarea" rows="3" placeholder="Lýstu hvernig þú leystir atriðið..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeResolveModal()">Hætta við</button>
+        <button class="btn btn-success" onclick="submitResolve()">Leysa</button>
+      </div>
+    </div>
+  </div>
 
+  <!-- Flag for Discussion Modal -->
+  <div class="modal" id="flag-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Flytja í umræðu</h3>
+        <button class="btn-close" onclick="closeFlagModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="issue-preview" id="flag-issue-preview"></div>
+        <div class="form-group">
+          <label class="form-label">Af hverju þarf umræðu?</label>
+          <textarea id="flag-reason" class="form-textarea" rows="3" placeholder="Útskýrðu hvers vegna þetta þarf umræðu í hóp..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeFlagModal()">Hætta við</button>
+        <button class="btn btn-warning" onclick="submitFlag()">Flytja í umræðu</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentTab = 'quick-fix';
+    let selectedIssue = null;
+
+    // Map old categories to simple tiers
+    const SIMPLE_TIER_MAP = {
+      'AUTO_FIX': 'QUICK_FIX',
+      'EDITOR_CONFIRM': 'QUICK_FIX',
+      'BOARD_REVIEW': 'TEAM_DISCUSSION',
+      'BLOCKED': 'TEAM_DISCUSSION'
+    };
+
+    // ============================================================================
+    // TAB NAVIGATION
+    // ============================================================================
+
+    function showTab(tabId) {
+      currentTab = tabId;
+
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelector(`.tab[onclick="showTab('${tabId}')"]`).classList.add('active');
+
+      document.querySelectorAll('.tab-content').forEach(content => content.style.display = 'none');
+      document.getElementById('tab-' + tabId).style.display = 'block';
+
+      if (tabId === 'quick-fix') loadQuickFix();
+      else if (tabId === 'discussion') loadDiscussion();
+      else if (tabId === 'resolved') loadResolved();
+    }
+
+    // ============================================================================
+    // DATA LOADING
+    // ============================================================================
+
+    async function loadStats() {
       try {
-        const res = await fetch(url);
+        const res = await fetch('/api/issues/stats');
         const stats = await res.json();
 
-        document.getElementById('total-issues').textContent = stats.total;
-        document.getElementById('pending-issues').textContent = stats.pending;
-        document.getElementById('auto-fix-issues').textContent = stats.pendingByCategory?.AUTO_FIX || 0;
-        document.getElementById('review-issues').textContent =
-          (stats.pendingByCategory?.EDITOR_CONFIRM || 0) +
-          (stats.pendingByCategory?.BOARD_REVIEW || 0);
+        // Calculate simple tier counts
+        let quickFixCount = (stats.pendingByCategory?.AUTO_FIX || 0) +
+                           (stats.pendingByCategory?.EDITOR_CONFIRM || 0);
+        let discussionCount = (stats.pendingByCategory?.BOARD_REVIEW || 0) +
+                              (stats.pendingByCategory?.BLOCKED || 0);
+
+        document.getElementById('quick-fix-count').textContent = quickFixCount;
+        document.getElementById('discussion-count').textContent = discussionCount;
+        document.getElementById('resolved-count').textContent = stats.resolvedLast7Days || 0;
+
+        document.getElementById('quick-fix-badge').textContent = quickFixCount;
+        document.getElementById('discussion-badge').textContent = discussionCount;
+
       } catch (err) {
         console.error('Error loading stats:', err);
       }
     }
 
-    async function loadIssues() {
-      const book = document.getElementById('filter-book').value;
-      const category = document.getElementById('filter-category').value;
-      let url = '/api/issues?status=pending';
-      if (book) url += '&book=' + book;
-      if (category) url += '&category=' + category;
+    async function loadQuickFix() {
+      const container = document.getElementById('quick-fix-list');
+      const book = document.getElementById('quick-fix-book-filter').value;
+      container.innerHTML = '<p class="text-muted">Hleður...</p>';
 
       try {
+        let url = '/api/issues?status=pending';
+        if (book) url += '&book=' + book;
+
         const res = await fetch(url);
         const data = await res.json();
 
-        // Update stats
-        loadStats();
-
-        const tbody = document.getElementById('issues-body');
-        const allIssues = [
-          ...(data.byCategory.BLOCKED || []),
-          ...(data.byCategory.BOARD_REVIEW || []),
-          ...(data.byCategory.EDITOR_CONFIRM || []),
-          ...(data.byCategory.AUTO_FIX || [])
+        // Filter to QUICK_FIX tier (AUTO_FIX + EDITOR_CONFIRM)
+        const issues = [
+          ...(data.byCategory?.AUTO_FIX || []),
+          ...(data.byCategory?.EDITOR_CONFIRM || [])
         ];
 
-        if (allIssues.length === 0) {
-          tbody.textContent = '';
-          const row = document.createElement('tr');
-          const cell = document.createElement('td');
-          cell.colSpan = 5;
-          cell.style.textAlign = 'center';
-          cell.style.color = 'var(--gray-500)';
-          cell.textContent = 'Engin oleyst atrioi';
-          row.appendChild(cell);
-          tbody.appendChild(row);
+        if (issues.length === 0) {
+          container.innerHTML = '<div class="empty-state"><p>Engin atriði í fljótlegri lagfæringu!</p></div>';
           return;
         }
 
-        // Clear and rebuild table using DOM methods for security
-        tbody.textContent = '';
-        allIssues.forEach(issue => {
-          const row = createIssueRow(issue);
-          tbody.appendChild(row);
-        });
+        container.innerHTML = issues.map(issue => renderQuickFixItem(issue)).join('');
 
       } catch (err) {
-        console.error('Error loading issues:', err);
-        const tbody = document.getElementById('issues-body');
-        tbody.textContent = '';
-        const row = document.createElement('tr');
-        const cell = document.createElement('td');
-        cell.colSpan = 5;
-        cell.style.textAlign = 'center';
-        cell.style.color = '#991b1b';
-        cell.textContent = 'Villa vio ao saekja atridi';
-        row.appendChild(cell);
-        tbody.appendChild(row);
+        console.error('Error loading quick fix:', err);
+        container.innerHTML = '<p class="text-error">Villa við að sækja atriði</p>';
       }
     }
 
-    function createIssueRow(issue) {
-      const row = document.createElement('tr');
-
-      // Category badge
-      const catCell = document.createElement('td');
-      const badge = document.createElement('span');
-      badge.className = 'status-badge status-' + issue.category.toLowerCase().replace('_','-');
-      badge.textContent = getCategoryLabel(issue.category);
-      catCell.appendChild(badge);
-      row.appendChild(catCell);
-
-      // Description with context
-      const descCell = document.createElement('td');
-      const descDiv = document.createElement('div');
-      descDiv.className = 'issue-desc';
-      descDiv.textContent = issue.description || '';
-      descCell.appendChild(descDiv);
-
-      if (issue.context) {
-        const ctxDiv = document.createElement('div');
-        ctxDiv.className = 'issue-context';
-        ctxDiv.textContent = issue.context;
-        descCell.appendChild(ctxDiv);
-      }
-      if (issue.suggestion) {
-        const sugDiv = document.createElement('div');
-        sugDiv.className = 'issue-suggestion';
-        sugDiv.textContent = 'Tillaga: ';
-        const code = document.createElement('code');
-        code.textContent = issue.suggestion;
-        sugDiv.appendChild(code);
-        descCell.appendChild(sugDiv);
-      }
-      row.appendChild(descCell);
-
-      // Location
-      const locCell = document.createElement('td');
-      locCell.className = 'location-cell';
-      if (issue.sourceFile) {
-        locCell.textContent = issue.sourceFile + (issue.line ? ':' + issue.line : '');
-      } else if (issue.sessionId) {
-        locCell.textContent = 'Lota ' + issue.sessionId.slice(0,8);
-      } else {
-        locCell.textContent = '-';
-      }
-      row.appendChild(locCell);
-
-      // Chapter
-      const chapCell = document.createElement('td');
-      chapCell.className = 'chapter-cell';
-      chapCell.textContent = issue.chapter ? 'Kafli ' + issue.chapter : '-';
-      row.appendChild(chapCell);
-
-      // Actions
-      const actCell = document.createElement('td');
-      actCell.className = 'actions-cell';
-      createActionButtons(actCell, issue);
-      row.appendChild(actCell);
-
-      return row;
-    }
-
-    function createActionButtons(container, issue) {
-      const sessionId = issue.sessionId || '';
-      const issueId = issue.id;
-
-      if (issue.category === 'AUTO_FIX') {
-        const acceptBtn = document.createElement('button');
-        acceptBtn.className = 'btn btn-success';
-        acceptBtn.textContent = 'Samthykkja';
-        acceptBtn.onclick = () => resolveIssue(sessionId, issueId, 'accept');
-        container.appendChild(acceptBtn);
-
-        const skipBtn = document.createElement('button');
-        skipBtn.className = 'btn btn-secondary';
-        skipBtn.textContent = 'Sleppa';
-        skipBtn.onclick = () => resolveIssue(sessionId, issueId, 'reject');
-        container.appendChild(skipBtn);
-      } else if (issue.category === 'BLOCKED') {
-        const resolveBtn = document.createElement('button');
-        resolveBtn.className = 'btn btn-primary';
-        resolveBtn.textContent = 'Leysa';
-        resolveBtn.onclick = () => showResolveModal(sessionId, issueId);
-        container.appendChild(resolveBtn);
-      } else {
-        const acceptBtn = document.createElement('button');
-        acceptBtn.className = 'btn btn-success';
-        acceptBtn.textContent = 'Samthykkja';
-        acceptBtn.onclick = () => resolveIssue(sessionId, issueId, 'accept');
-        container.appendChild(acceptBtn);
-
-        const rejectBtn = document.createElement('button');
-        rejectBtn.className = 'btn btn-secondary';
-        rejectBtn.textContent = 'Hafna';
-        rejectBtn.onclick = () => resolveIssue(sessionId, issueId, 'reject');
-        container.appendChild(rejectBtn);
-      }
-    }
-
-    function getCategoryLabel(category) {
-      const labels = {
-        'AUTO_FIX': 'Sjalfvirkt',
-        'EDITOR_CONFIRM': 'Ritstjori',
-        'BOARD_REVIEW': 'Rad',
-        'BLOCKED': 'Lokad'
-      };
-      return labels[category] || category;
-    }
-
-    async function resolveIssue(sessionId, issueId, action) {
-      let url;
-
-      if (sessionId) {
-        url = '/api/issues/session/' + sessionId + '/' + issueId + '/resolve';
-      } else {
-        url = '/api/issues/' + issueId + '/resolve';
-      }
-
-      const body = JSON.stringify({
-        action,
-        resolution: action === 'accept' ? 'Samthykkt' : 'Hafnad'
-      });
+    async function loadDiscussion() {
+      const container = document.getElementById('discussion-list');
+      const book = document.getElementById('discussion-book-filter').value;
+      container.innerHTML = '<p class="text-muted">Hleður...</p>';
 
       try {
+        let url = '/api/issues?status=pending';
+        if (book) url += '&book=' + book;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        // Filter to TEAM_DISCUSSION tier (BOARD_REVIEW + BLOCKED)
+        const issues = [
+          ...(data.byCategory?.BLOCKED || []),
+          ...(data.byCategory?.BOARD_REVIEW || [])
+        ];
+
+        if (issues.length === 0) {
+          container.innerHTML = '<div class="empty-state"><p>Engin atriði bíða umræðu!</p></div>';
+          return;
+        }
+
+        container.innerHTML = issues.map(issue => renderDiscussionItem(issue)).join('');
+
+      } catch (err) {
+        console.error('Error loading discussion:', err);
+        container.innerHTML = '<p class="text-error">Villa við að sækja atriði</p>';
+      }
+    }
+
+    async function loadResolved() {
+      const container = document.getElementById('resolved-list');
+      container.innerHTML = '<p class="text-muted">Hleður...</p>';
+
+      try {
+        const res = await fetch('/api/issues?status=resolved&limit=50');
+        const data = await res.json();
+
+        const issues = data.issues || [];
+
+        if (issues.length === 0) {
+          container.innerHTML = '<div class="empty-state"><p>Engin leyst atriði fundust</p></div>';
+          return;
+        }
+
+        container.innerHTML = issues.map(issue => renderResolvedItem(issue)).join('');
+
+      } catch (err) {
+        console.error('Error loading resolved:', err);
+        container.innerHTML = '<p class="text-error">Villa við að sækja atriði</p>';
+      }
+    }
+
+    // ============================================================================
+    // RENDERING
+    // ============================================================================
+
+    function renderQuickFixItem(issue) {
+      const categoryLabel = issue.category === 'AUTO_FIX' ? 'Sjálfvirkt' : 'Staðfesta';
+      const categoryClass = issue.category === 'AUTO_FIX' ? 'auto-fix' : 'editor-confirm';
+
+      return `
+        <div class="issue-item">
+          <div class="issue-main">
+            <span class="issue-badge badge-${categoryClass}">${categoryLabel}</span>
+            <div class="issue-content">
+              <div class="issue-desc">${escapeHtml(issue.description)}</div>
+              ${issue.context ? `<div class="issue-context">${escapeHtml(issue.context)}</div>` : ''}
+              ${issue.suggestion ? `<div class="issue-suggestion">Tillaga: <code>${escapeHtml(issue.suggestion)}</code></div>` : ''}
+            </div>
+          </div>
+          <div class="issue-meta">
+            ${issue.sourceFile ? `<span class="issue-location">${escapeHtml(issue.sourceFile)}${issue.line ? ':' + issue.line : ''}</span>` : ''}
+            ${issue.chapter ? `<span class="issue-chapter">Kafli ${issue.chapter}</span>` : ''}
+          </div>
+          <div class="issue-actions">
+            <button class="btn btn-success btn-sm" onclick="resolveIssue('${issue.id}', '${issue.sessionId || ''}')">
+              Leysa
+            </button>
+            <button class="btn btn-secondary btn-sm" onclick="flagForDiscussion('${issue.id}', '${issue.sessionId || ''}')">
+              Flytja í umræðu
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDiscussionItem(issue) {
+      const isBlocked = issue.category === 'BLOCKED';
+      const categoryLabel = isBlocked ? 'Lokað á' : 'Umræða';
+      const categoryClass = isBlocked ? 'blocked' : 'board-review';
+
+      return `
+        <div class="issue-item ${isBlocked ? 'issue-blocked' : ''}">
+          <div class="issue-main">
+            <span class="issue-badge badge-${categoryClass}">${categoryLabel}</span>
+            <div class="issue-content">
+              <div class="issue-desc">${escapeHtml(issue.description)}</div>
+              ${issue.context ? `<div class="issue-context">${escapeHtml(issue.context)}</div>` : ''}
+              ${issue.suggestion ? `<div class="issue-suggestion">Tillaga: <code>${escapeHtml(issue.suggestion)}</code></div>` : ''}
+            </div>
+          </div>
+          <div class="issue-meta">
+            ${issue.sourceFile ? `<span class="issue-location">${escapeHtml(issue.sourceFile)}${issue.line ? ':' + issue.line : ''}</span>` : ''}
+            ${issue.chapter ? `<span class="issue-chapter">Kafli ${issue.chapter}</span>` : ''}
+            ${issue.flagReason ? `<div class="issue-flag-reason">Ástæða: ${escapeHtml(issue.flagReason)}</div>` : ''}
+          </div>
+          <div class="issue-actions">
+            <button class="btn btn-success btn-sm" onclick="resolveIssue('${issue.id}', '${issue.sessionId || ''}')">
+              Leysa eftir umræðu
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderResolvedItem(issue) {
+      const resolvedDate = issue.resolvedAt ? new Date(issue.resolvedAt).toLocaleDateString('is-IS') : '-';
+
+      return `
+        <div class="issue-item issue-resolved">
+          <div class="issue-main">
+            <span class="issue-badge badge-resolved">Leyst</span>
+            <div class="issue-content">
+              <div class="issue-desc">${escapeHtml(issue.description)}</div>
+              ${issue.resolution ? `<div class="issue-resolution">Úrlausn: ${escapeHtml(issue.resolution)}</div>` : ''}
+            </div>
+          </div>
+          <div class="issue-meta">
+            <span class="issue-resolved-by">Leyst af ${escapeHtml(issue.resolvedBy || 'óþekktur')}</span>
+            <span class="issue-resolved-date">${resolvedDate}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // ============================================================================
+    // ACTIONS
+    // ============================================================================
+
+    function resolveIssue(issueId, sessionId) {
+      selectedIssue = { id: issueId, sessionId };
+      document.getElementById('resolve-notes').value = '';
+      document.getElementById('resolve-modal').style.display = 'flex';
+    }
+
+    function closeResolveModal() {
+      document.getElementById('resolve-modal').style.display = 'none';
+      selectedIssue = null;
+    }
+
+    async function submitResolve() {
+      if (!selectedIssue) return;
+
+      const notes = document.getElementById('resolve-notes').value.trim();
+
+      try {
+        let url;
+        if (selectedIssue.sessionId) {
+          url = `/api/issues/session/${selectedIssue.sessionId}/${selectedIssue.id}/resolve`;
+        } else {
+          url = `/api/issues/${selectedIssue.id}/resolve`;
+        }
+
         const res = await fetch(url, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body
+          body: JSON.stringify({
+            action: 'accept',
+            resolution: notes || 'Leyst'
+          })
         });
 
         if (res.ok) {
-          loadIssues();
+          closeResolveModal();
+          loadStats();
+          if (currentTab === 'quick-fix') loadQuickFix();
+          else if (currentTab === 'discussion') loadDiscussion();
         } else {
           const err = await res.json();
-          alert('Villa: ' + (err.error || 'Othekkt villa'));
+          alert('Villa: ' + (err.error || 'Óþekkt villa'));
         }
       } catch (err) {
-        alert('Villa vid ad leysa atridi: ' + err.message);
+        alert('Villa við að leysa atriði: ' + err.message);
       }
     }
 
-    function showResolveModal(sessionId, issueId) {
-      const resolution = prompt('Lysing a urlausn:');
-      if (!resolution) return;
-      resolveIssue(sessionId, issueId, 'accept');
+    function flagForDiscussion(issueId, sessionId) {
+      selectedIssue = { id: issueId, sessionId };
+      document.getElementById('flag-reason').value = '';
+      document.getElementById('flag-modal').style.display = 'flex';
+    }
+
+    function closeFlagModal() {
+      document.getElementById('flag-modal').style.display = 'none';
+      selectedIssue = null;
+    }
+
+    async function submitFlag() {
+      if (!selectedIssue) return;
+
+      const reason = document.getElementById('flag-reason').value.trim();
+      if (!reason) {
+        alert('Vinsamlegast útskýrðu hvers vegna þetta þarf umræðu');
+        return;
+      }
+
+      try {
+        let url;
+        if (selectedIssue.sessionId) {
+          url = `/api/issues/session/${selectedIssue.sessionId}/${selectedIssue.id}/escalate`;
+        } else {
+          url = `/api/issues/${selectedIssue.id}/escalate`;
+        }
+
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            reason,
+            newCategory: 'BOARD_REVIEW'
+          })
+        });
+
+        if (res.ok) {
+          closeFlagModal();
+          loadStats();
+          loadQuickFix();
+        } else {
+          const err = await res.json();
+          alert('Villa: ' + (err.error || 'Óþekkt villa'));
+        }
+      } catch (err) {
+        alert('Villa við að flytja atriði: ' + err.message);
+      }
+    }
+
+    // ============================================================================
+    // UTILITIES
+    // ============================================================================
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
     }
 
     // Initial load
     loadStats();
-    loadIssues();
+    loadQuickFix();
   </script>
 
   <style>
-    :root { --primary: #2563eb; --gray-50: #f9fafb; --gray-200: #e5e7eb; --gray-300: #d1d5db; --gray-500: #6b7280; --gray-700: #374151; --gray-900: #111827; }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-50); }
+
     .header { background: white; border-bottom: 1px solid var(--gray-200); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
     .header h1 { font-size: 1.25rem; }
     .header nav { display: flex; gap: 1.5rem; }
     .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
-    .header nav a.active { color: var(--primary); }
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .header nav a.active { color: var(--primary); font-weight: 500; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 1.5rem; }
+
+    /* Cards */
     .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
-    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; }
-    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .stat-card { text-align: center; padding: 1rem; background: var(--gray-50); border-radius: 0.5rem; }
-    .stat-value { font-size: 2rem; font-weight: 600; color: var(--primary); }
-    .stat-label { font-size: 0.75rem; color: var(--gray-500); }
-    .filters { display: flex; gap: 1rem; margin-bottom: 1rem; }
-    .form-select { padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; }
-    .table { width: 100%; border-collapse: collapse; }
-    .table th, .table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
-    .btn { padding: 0.375rem 0.75rem; border-radius: 0.25rem; border: 1px solid var(--gray-300); background: white; cursor: pointer; font-size: 0.75rem; }
-    .status-badge { padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.625rem; font-weight: 600; }
-    .status-auto-fix { background: #dcfce7; color: #166534; }
-    .status-editor-confirm { background: #dbeafe; color: #1e40af; }
-    .status-board-review { background: #fef3c7; color: #92400e; }
-    .status-blocked { background: #fee2e2; color: #991b1b; }
-    .issue-desc { font-weight: 500; margin-bottom: 0.25rem; }
-    .issue-context { font-size: 0.75rem; color: var(--gray-500); font-family: monospace; background: var(--gray-50); padding: 0.25rem 0.5rem; border-radius: 0.25rem; margin-top: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px; }
-    .issue-suggestion { font-size: 0.75rem; color: #166534; margin-top: 0.25rem; }
+    .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .card-subtitle { font-size: 0.875rem; color: var(--gray-500); margin-bottom: 1rem; }
+    .card-header-flex { margin-bottom: 1rem; }
+
+    /* Stats Grid */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .stat-card { text-align: center; padding: 1.5rem 1rem; background: var(--gray-50); border-radius: 0.5rem; border: 2px solid transparent; }
+    .stat-card:first-child { border-color: var(--primary); background: #eff6ff; }
+    .stat-card.stat-warning { border-color: var(--warning); background: #fffbeb; }
+    .stat-card.stat-success { border-color: var(--success); background: #f0fdf4; }
+    .stat-value { font-size: 2.5rem; font-weight: 700; color: var(--primary); }
+    .stat-warning .stat-value { color: var(--warning); }
+    .stat-success .stat-value { color: var(--success); }
+    .stat-label { font-size: 0.875rem; font-weight: 600; margin-top: 0.25rem; }
+    .stat-desc { font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .tab { display: flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1rem; border: none; background: white; border-radius: 0.375rem; cursor: pointer; font-size: 0.875rem; color: var(--gray-700); }
+    .tab:hover { background: var(--gray-100); }
+    .tab.active { background: var(--primary); color: white; }
+    .tab-badge { background: var(--gray-200); color: var(--gray-700); padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+    .tab.active .tab-badge { background: white; color: var(--primary); }
+    .tab-badge-warning { background: #fef3c7; color: #92400e; }
+
+    /* Filters */
+    .filters { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .form-select { padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; }
+
+    /* Issues List */
+    .issues-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .issue-item { padding: 1rem; background: var(--gray-50); border-radius: 0.5rem; border: 1px solid var(--gray-200); }
+    .issue-item:hover { border-color: var(--gray-300); }
+    .issue-blocked { border-left: 4px solid var(--error); }
+    .issue-resolved { opacity: 0.7; }
+    .issue-main { display: flex; gap: 0.75rem; margin-bottom: 0.5rem; }
+    .issue-badge { padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.625rem; font-weight: 600; flex-shrink: 0; height: fit-content; }
+    .badge-auto-fix { background: #dcfce7; color: #166534; }
+    .badge-editor-confirm { background: #dbeafe; color: #1e40af; }
+    .badge-board-review { background: #fef3c7; color: #92400e; }
+    .badge-blocked { background: #fee2e2; color: #991b1b; }
+    .badge-resolved { background: #e5e7eb; color: #374151; }
+    .issue-content { flex: 1; min-width: 0; }
+    .issue-desc { font-weight: 500; font-size: 0.9375rem; margin-bottom: 0.25rem; }
+    .issue-context { font-size: 0.75rem; color: var(--gray-500); font-family: monospace; background: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; margin-top: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+    .issue-suggestion { font-size: 0.8125rem; color: #166534; margin-top: 0.25rem; }
     .issue-suggestion code { background: #dcfce7; padding: 0.125rem 0.25rem; border-radius: 0.25rem; }
-    .btn-success { background: #16a34a; color: white; border-color: #16a34a; }
+    .issue-resolution { font-size: 0.8125rem; color: var(--gray-700); margin-top: 0.25rem; font-style: italic; }
+    .issue-meta { display: flex; gap: 1rem; font-size: 0.75rem; color: var(--gray-500); margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .issue-location { font-family: monospace; }
+    .issue-flag-reason { font-style: italic; margin-top: 0.25rem; }
+    .issue-actions { display: flex; gap: 0.5rem; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 0.375rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: none; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary { background: white; color: var(--gray-700); border: 1px solid var(--gray-300); }
+    .btn-secondary:hover { background: var(--gray-50); }
+    .btn-success { background: var(--success); color: white; }
     .btn-success:hover { background: #15803d; }
-    .btn-primary { background: var(--primary); color: white; border-color: var(--primary); }
-    .btn-primary:hover { background: #1d4ed8; }
-    .actions-cell { display: flex; gap: 0.25rem; }
-    .location-cell { font-size: 0.75rem; font-family: monospace; color: var(--gray-500); }
-    .chapter-cell { font-size: 0.75rem; }
+    .btn-warning { background: var(--warning); color: white; }
+    .btn-warning:hover { background: #b45309; }
+    .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
+    .btn-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray-500); }
+
+    /* Modal */
+    .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+    .modal-content { background: white; border-radius: 0.5rem; width: 90%; max-width: 500px; }
+    .modal-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; }
+    .modal-header h3 { font-size: 1rem; font-weight: 600; }
+    .modal-body { padding: 1.5rem; }
+    .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--gray-200); display: flex; justify-content: flex-end; gap: 0.75rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: 0.875rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .form-textarea { width: 100%; padding: 0.5rem; border: 1px solid var(--gray-300); border-radius: 0.375rem; font-size: 0.875rem; resize: vertical; }
+    .issue-preview { background: var(--gray-50); padding: 0.75rem; border-radius: 0.375rem; margin-bottom: 1rem; font-size: 0.875rem; }
+
+    /* States */
+    .text-muted { color: var(--gray-500); }
+    .text-error { color: var(--error); }
+    .empty-state { text-align: center; padding: 3rem; color: var(--gray-500); }
+
+    @media (max-width: 768px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .tabs { flex-wrap: wrap; }
+      .issue-main { flex-direction: column; gap: 0.5rem; }
+      .issue-actions { flex-wrap: wrap; }
+    }
   </style>
 </body>
 </html>
