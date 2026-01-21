@@ -33,6 +33,18 @@
           </select>
         </div>
       </div>
+
+      <!-- Bulk Actions Bar -->
+      <div class="bulk-actions-bar" id="bulk-actions-bar" style="display: none;">
+        <span class="bulk-count"><span id="selected-count">0</span> valin</span>
+        <button class="btn btn-sm btn-success" onclick="bulkApprove()">
+          <i class="fas fa-check-double"></i> Samþykkja valin
+        </button>
+        <button class="btn btn-sm btn-secondary" onclick="clearSelection()">
+          <i class="fas fa-times"></i> Hreinsa val
+        </button>
+      </div>
+
       <div id="reviews-list">
         <p class="loading"><i class="fas fa-spinner fa-spin"></i> Hleður...</p>
       </div>
@@ -104,6 +116,8 @@
   <script>
     let currentReviewId = null;
     let currentReview = null;
+    let selectedReviews = new Set();
+    let allReviews = [];
 
     async function init() {
       // Check auth
@@ -169,15 +183,24 @@
 
         if (data.reviews.length === 0) {
           listEl.innerHTML = '<div class="empty-state"><i class="fas fa-check-circle"></i><p>Engar yfirferðir í bið</p></div>';
+          allReviews = [];
+          updateBulkActionsBar();
           return;
         }
 
+        allReviews = data.reviews;
+        selectedReviews.clear();
+        updateBulkActionsBar();
+
         listEl.innerHTML = '<table class="table">' +
-          '<thead><tr><th>Kafli</th><th>Sent af</th><th>Tími</th><th></th></tr></thead>' +
+          '<thead><tr>' +
+          '<th class="th-checkbox"><input type="checkbox" id="select-all" onchange="toggleSelectAll()"></th>' +
+          '<th>Kafli</th><th>Sent af</th><th>Tími</th><th></th></tr></thead>' +
           '<tbody>' +
           data.reviews.map(r => {
             const date = new Date(r.submittedAt).toLocaleString('is-IS');
-            return '<tr>' +
+            return '<tr data-id="' + r.id + '">' +
+              '<td class="td-checkbox"><input type="checkbox" class="review-checkbox" value="' + r.id + '" onchange="toggleReviewSelect(' + r.id + ')"></td>' +
               '<td><strong>' + r.book + '</strong> / ' + r.chapter + ' / ' + r.section + '</td>' +
               '<td>' + escapeHtml(r.submittedByUsername) + '</td>' +
               '<td>' + date + '</td>' +
@@ -409,6 +432,111 @@
       return div.innerHTML;
     }
 
+    // ========================================
+    // BULK OPERATIONS
+    // ========================================
+
+    function toggleSelectAll() {
+      const selectAllCheckbox = document.getElementById('select-all');
+      const checkboxes = document.querySelectorAll('.review-checkbox');
+
+      checkboxes.forEach(cb => {
+        cb.checked = selectAllCheckbox.checked;
+        const reviewId = parseInt(cb.value);
+        if (selectAllCheckbox.checked) {
+          selectedReviews.add(reviewId);
+        } else {
+          selectedReviews.delete(reviewId);
+        }
+      });
+
+      updateBulkActionsBar();
+    }
+
+    function toggleReviewSelect(reviewId) {
+      if (selectedReviews.has(reviewId)) {
+        selectedReviews.delete(reviewId);
+      } else {
+        selectedReviews.add(reviewId);
+      }
+
+      // Update select-all checkbox state
+      const selectAllCheckbox = document.getElementById('select-all');
+      const checkboxes = document.querySelectorAll('.review-checkbox');
+      const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+      const someChecked = Array.from(checkboxes).some(cb => cb.checked);
+
+      selectAllCheckbox.checked = allChecked;
+      selectAllCheckbox.indeterminate = someChecked && !allChecked;
+
+      updateBulkActionsBar();
+    }
+
+    function updateBulkActionsBar() {
+      const bar = document.getElementById('bulk-actions-bar');
+      const countEl = document.getElementById('selected-count');
+
+      if (selectedReviews.size > 0) {
+        bar.style.display = 'flex';
+        countEl.textContent = selectedReviews.size;
+      } else {
+        bar.style.display = 'none';
+      }
+    }
+
+    function clearSelection() {
+      selectedReviews.clear();
+      const checkboxes = document.querySelectorAll('.review-checkbox');
+      checkboxes.forEach(cb => cb.checked = false);
+      document.getElementById('select-all').checked = false;
+      document.getElementById('select-all').indeterminate = false;
+      updateBulkActionsBar();
+    }
+
+    async function bulkApprove() {
+      if (selectedReviews.size === 0) return;
+
+      const count = selectedReviews.size;
+      if (!confirm(`Ertu viss um að þú viljir samþykkja ${count} ${count === 1 ? 'yfirferð' : 'yfirferðir'}?`)) {
+        return;
+      }
+
+      const results = { success: 0, failed: 0, errors: [] };
+
+      for (const reviewId of selectedReviews) {
+        try {
+          const res = await fetch('/api/reviews/' + reviewId + '/approve', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ commit: false })
+          });
+          const data = await res.json();
+
+          if (data.success) {
+            results.success++;
+          } else {
+            results.failed++;
+            results.errors.push({ id: reviewId, error: data.error || 'Unknown error' });
+          }
+        } catch (err) {
+          results.failed++;
+          results.errors.push({ id: reviewId, error: err.message });
+        }
+      }
+
+      // Show results
+      let message = `Samþykkt: ${results.success}`;
+      if (results.failed > 0) {
+        message += `\nMistókst: ${results.failed}`;
+      }
+      alert(message);
+
+      // Refresh list
+      clearSelection();
+      loadReviews();
+      updateBadge();
+    }
+
     // Initialize
     init();
   </script>
@@ -501,10 +629,41 @@
     .d2h-wrapper { font-size: 0.8rem; }
     .d2h-file-header { display: none; }
 
+    /* Bulk Actions */
+    .bulk-actions-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+      border: 1px solid #93c5fd;
+    }
+    .bulk-count {
+      font-weight: 500;
+      color: var(--primary-dark);
+    }
+    .th-checkbox, .td-checkbox {
+      width: 40px;
+      text-align: center;
+    }
+    .review-checkbox {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+    #select-all {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+
     @media (max-width: 768px) {
       .modal-content { width: 100%; height: 100%; max-height: 100%; border-radius: 0; }
       .modal-footer { flex-wrap: wrap; }
       .modal-footer .btn { flex: 1; min-width: 120px; }
+      .bulk-actions-bar { flex-wrap: wrap; }
     }
   </style>
 </body>
