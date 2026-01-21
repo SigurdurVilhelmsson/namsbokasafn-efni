@@ -551,4 +551,169 @@ function formatActivityType(type) {
   return labels[type] || type;
 }
 
+// ============================================================================
+// STATUS SYNC (Filesystem scanning)
+// ============================================================================
+
+// Import bookRegistration for scan functions
+let bookRegistration;
+try {
+  bookRegistration = require('../services/bookRegistration');
+} catch (e) {
+  // Service may not be available in all contexts
+  bookRegistration = null;
+}
+
+/**
+ * GET /api/status/:book/scan
+ * Dry-run: show what would change if status were synced
+ */
+router.get('/:book/scan', (req, res) => {
+  const { book } = req.params;
+
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({
+      error: 'Invalid book',
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+    });
+  }
+
+  if (!bookRegistration || !bookRegistration.scanStatusDryRun) {
+    return res.status(501).json({
+      error: 'Not implemented',
+      message: 'Status scanning requires bookRegistration service'
+    });
+  }
+
+  try {
+    const result = bookRegistration.scanStatusDryRun(book);
+
+    // Calculate summary
+    const summary = {
+      totalChapters: result.chapters.length,
+      wouldUpdate: 0,
+      unchanged: 0,
+      stagesAffected: {}
+    };
+
+    for (const chapter of result.chapters) {
+      let chapterWouldUpdate = false;
+      for (const [stage, info] of Object.entries(chapter.stages)) {
+        if (info.wouldUpdate) {
+          chapterWouldUpdate = true;
+          summary.stagesAffected[stage] = (summary.stagesAffected[stage] || 0) + 1;
+        }
+      }
+      if (chapterWouldUpdate) {
+        summary.wouldUpdate++;
+      } else {
+        summary.unchanged++;
+      }
+    }
+
+    res.json({
+      book,
+      dryRun: true,
+      summary,
+      chapters: result.chapters,
+      errors: result.errors
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: 'Scan failed',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/status/:book/sync
+ * Actually update status.json files based on filesystem
+ */
+router.post('/:book/sync', (req, res) => {
+  const { book } = req.params;
+
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({
+      error: 'Invalid book',
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+    });
+  }
+
+  if (!bookRegistration || !bookRegistration.scanAndUpdateStatus) {
+    return res.status(501).json({
+      error: 'Not implemented',
+      message: 'Status sync requires bookRegistration service'
+    });
+  }
+
+  try {
+    const result = bookRegistration.scanAndUpdateStatus(book);
+
+    res.json({
+      book,
+      success: result.errors.length === 0,
+      updated: result.updated,
+      unchanged: result.unchanged,
+      changes: result.changes || [],
+      errors: result.errors
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: 'Sync failed',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/status/:book/:chapter/sync
+ * Update status for a single chapter
+ */
+router.post('/:book/:chapter/sync', (req, res) => {
+  const { book, chapter } = req.params;
+  const chapterNum = parseInt(chapter);
+
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({
+      error: 'Invalid book',
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+    });
+  }
+
+  if (isNaN(chapterNum) || chapterNum < 1) {
+    return res.status(400).json({
+      error: 'Invalid chapter',
+      message: 'Chapter must be a positive number'
+    });
+  }
+
+  if (!bookRegistration || !bookRegistration.scanAndUpdateStatus) {
+    return res.status(501).json({
+      error: 'Not implemented',
+      message: 'Status sync requires bookRegistration service'
+    });
+  }
+
+  try {
+    const chapterStr = String(chapterNum).padStart(2, '0');
+    const result = bookRegistration.scanAndUpdateStatus(book, chapterStr);
+
+    res.json({
+      book,
+      chapter: chapterNum,
+      success: result.errors.length === 0,
+      updated: result.updated,
+      unchanged: result.unchanged,
+      changes: result.changes || [],
+      errors: result.errors
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: 'Sync failed',
+      message: err.message
+    });
+  }
+});
+
 module.exports = router;

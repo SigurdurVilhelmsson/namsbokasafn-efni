@@ -647,6 +647,319 @@ function assignLocalizer(sectionId, localizerId, localizerName) {
   });
 }
 
+/**
+ * Scan filesystem and update chapter/section status based on file presence
+ *
+ * This function detects what files exist on the filesystem and updates
+ * status.json files to match the actual state. It's useful for syncing
+ * status after manual file operations.
+ *
+ * @param {string} bookSlug - e.g., 'efnafraedi'
+ * @param {string|null} chapterNum - e.g., '01' or null for all chapters
+ * @returns {object} { updated: number, unchanged: number, errors: [] }
+ */
+function scanAndUpdateStatus(bookSlug, chapterNum = null) {
+  const bookPath = path.join(BOOKS_DIR, bookSlug);
+  const chaptersPath = path.join(bookPath, 'chapters');
+
+  if (!fs.existsSync(bookPath)) {
+    return { updated: 0, unchanged: 0, errors: [`Book directory not found: ${bookSlug}`] };
+  }
+
+  if (!fs.existsSync(chaptersPath)) {
+    return { updated: 0, unchanged: 0, errors: [`Chapters directory not found for: ${bookSlug}`] };
+  }
+
+  // Status detection rules based on file presence
+  const STATUS_RULES = {
+    enMarkdown: (book, ch, section) => {
+      const filename = section === 'intro' ? 'intro.en.md' : `${section}.en.md`;
+      return fs.existsSync(path.join(BOOKS_DIR, book, '02-for-mt', `ch${ch}`, filename));
+    },
+    mtOutput: (book, ch, section) => {
+      const filename = section === 'intro' ? 'intro.is.md' : `${section}.is.md`;
+      return fs.existsSync(path.join(BOOKS_DIR, book, '02-mt-output', `ch${ch}`, filename));
+    },
+    faithful: (book, ch, section) => {
+      const filename = section === 'intro' ? 'intro.is.md' : `${section}.is.md`;
+      return fs.existsSync(path.join(BOOKS_DIR, book, '03-faithful', `ch${ch}`, filename));
+    },
+    localized: (book, ch, section) => {
+      const filename = section === 'intro' ? 'intro.is.md' : `${section}.is.md`;
+      return fs.existsSync(path.join(BOOKS_DIR, book, '04-localized', `ch${ch}`, filename));
+    },
+    tmCreated: (book, ch, section) => {
+      const filename = section === 'intro' ? 'intro.tmx' : `${section}.tmx`;
+      return fs.existsSync(path.join(BOOKS_DIR, book, 'tm', `ch${ch}`, filename));
+    },
+    published: (book, ch, section) => {
+      // Check for faithful publication
+      const filename = section === 'intro' ? 'intro.md' : `${section}.md`;
+      return fs.existsSync(path.join(BOOKS_DIR, book, '05-publication', 'faithful', 'chapters', ch, filename));
+    }
+  };
+
+  const results = {
+    updated: 0,
+    unchanged: 0,
+    errors: [],
+    changes: []
+  };
+
+  // Get list of chapter directories to scan
+  let chapterDirs;
+  if (chapterNum) {
+    const chDir = `ch${String(chapterNum).padStart(2, '0')}`;
+    if (fs.existsSync(path.join(chaptersPath, chDir))) {
+      chapterDirs = [chDir];
+    } else {
+      results.errors.push(`Chapter directory not found: ${chDir}`);
+      return results;
+    }
+  } else {
+    chapterDirs = fs.readdirSync(chaptersPath)
+      .filter(d => d.startsWith('ch') && fs.statSync(path.join(chaptersPath, d)).isDirectory())
+      .sort();
+  }
+
+  for (const chDir of chapterDirs) {
+    const statusPath = path.join(chaptersPath, chDir, 'status.json');
+
+    if (!fs.existsSync(statusPath)) {
+      results.errors.push(`No status.json found for ${chDir}`);
+      continue;
+    }
+
+    let statusData;
+    try {
+      statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+    } catch (err) {
+      results.errors.push(`Failed to parse ${chDir}/status.json: ${err.message}`);
+      continue;
+    }
+
+    const ch = chDir.replace('ch', '');
+    const sections = statusData.sections || [];
+    let chapterChanged = false;
+    const originalStatus = JSON.stringify(statusData.status);
+
+    // Initialize status object if missing
+    if (!statusData.status) {
+      statusData.status = {};
+    }
+
+    // Scan for EN markdown (source stage)
+    let enMarkdownComplete = true;
+    for (const section of sections) {
+      const sectionId = section.id.replace('.', '-');
+      if (!STATUS_RULES.enMarkdown(bookSlug, ch, sectionId)) {
+        enMarkdownComplete = false;
+        break;
+      }
+    }
+    if (enMarkdownComplete && sections.length > 0) {
+      if (!statusData.status.source?.complete) {
+        statusData.status.source = {
+          complete: true,
+          status: 'complete',
+          date: new Date().toISOString().split('T')[0]
+        };
+        chapterChanged = true;
+        results.changes.push({ chapter: ch, stage: 'source', action: 'set complete' });
+      }
+    }
+
+    // Scan for MT output
+    let mtOutputComplete = true;
+    for (const section of sections) {
+      const sectionId = section.id.replace('.', '-');
+      if (!STATUS_RULES.mtOutput(bookSlug, ch, sectionId)) {
+        mtOutputComplete = false;
+        break;
+      }
+    }
+    if (mtOutputComplete && sections.length > 0) {
+      if (!statusData.status.mtOutput?.complete) {
+        statusData.status.mtOutput = {
+          complete: true,
+          status: 'complete',
+          date: new Date().toISOString().split('T')[0]
+        };
+        chapterChanged = true;
+        results.changes.push({ chapter: ch, stage: 'mtOutput', action: 'set complete' });
+      }
+    }
+
+    // Scan for faithful translation
+    let faithfulComplete = true;
+    for (const section of sections) {
+      const sectionId = section.id.replace('.', '-');
+      if (!STATUS_RULES.faithful(bookSlug, ch, sectionId)) {
+        faithfulComplete = false;
+        break;
+      }
+    }
+    if (faithfulComplete && sections.length > 0) {
+      if (!statusData.status.editorialPass1?.complete) {
+        statusData.status.editorialPass1 = {
+          complete: true,
+          status: 'complete',
+          date: new Date().toISOString().split('T')[0]
+        };
+        chapterChanged = true;
+        results.changes.push({ chapter: ch, stage: 'editorialPass1', action: 'set complete' });
+      }
+    }
+
+    // Scan for TM files
+    let tmComplete = true;
+    for (const section of sections) {
+      const sectionId = section.id.replace('.', '-');
+      if (!STATUS_RULES.tmCreated(bookSlug, ch, sectionId)) {
+        tmComplete = false;
+        break;
+      }
+    }
+    if (tmComplete && sections.length > 0) {
+      if (!statusData.status.tmUpdated?.complete) {
+        statusData.status.tmUpdated = {
+          complete: true,
+          status: 'complete',
+          date: new Date().toISOString().split('T')[0]
+        };
+        chapterChanged = true;
+        results.changes.push({ chapter: ch, stage: 'tmUpdated', action: 'set complete' });
+      }
+    }
+
+    // Scan for localized content
+    let localizedComplete = true;
+    for (const section of sections) {
+      const sectionId = section.id.replace('.', '-');
+      if (!STATUS_RULES.localized(bookSlug, ch, sectionId)) {
+        localizedComplete = false;
+        break;
+      }
+    }
+    if (localizedComplete && sections.length > 0) {
+      if (!statusData.status.editorialPass2?.complete) {
+        statusData.status.editorialPass2 = {
+          complete: true,
+          status: 'complete',
+          date: new Date().toISOString().split('T')[0]
+        };
+        chapterChanged = true;
+        results.changes.push({ chapter: ch, stage: 'editorialPass2', action: 'set complete' });
+      }
+    }
+
+    // Write updated status if changed
+    if (chapterChanged) {
+      try {
+        fs.writeFileSync(statusPath, JSON.stringify(statusData, null, 2));
+        results.updated++;
+      } catch (err) {
+        results.errors.push(`Failed to write ${chDir}/status.json: ${err.message}`);
+      }
+    } else {
+      results.unchanged++;
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Dry-run scan to show what would change without actually updating
+ *
+ * @param {string} bookSlug - e.g., 'efnafraedi'
+ * @param {string|null} chapterNum - e.g., '01' or null for all chapters
+ * @returns {object} Scan results showing potential changes
+ */
+function scanStatusDryRun(bookSlug, chapterNum = null) {
+  const bookPath = path.join(BOOKS_DIR, bookSlug);
+  const chaptersPath = path.join(bookPath, 'chapters');
+
+  if (!fs.existsSync(bookPath)) {
+    return { chapters: [], errors: [`Book directory not found: ${bookSlug}`] };
+  }
+
+  if (!fs.existsSync(chaptersPath)) {
+    return { chapters: [], errors: [`Chapters directory not found for: ${bookSlug}`] };
+  }
+
+  // Get chapter directories
+  let chapterDirs;
+  if (chapterNum) {
+    const chDir = `ch${String(chapterNum).padStart(2, '0')}`;
+    if (fs.existsSync(path.join(chaptersPath, chDir))) {
+      chapterDirs = [chDir];
+    } else {
+      return { chapters: [], errors: [`Chapter directory not found: ${chDir}`] };
+    }
+  } else {
+    chapterDirs = fs.readdirSync(chaptersPath)
+      .filter(d => d.startsWith('ch') && fs.statSync(path.join(chaptersPath, d)).isDirectory())
+      .sort();
+  }
+
+  const chapters = [];
+
+  for (const chDir of chapterDirs) {
+    const ch = chDir.replace('ch', '');
+    const statusPath = path.join(chaptersPath, chDir, 'status.json');
+
+    const chapterInfo = {
+      chapter: parseInt(ch, 10),
+      chapterDir: chDir,
+      stages: {}
+    };
+
+    // Check each stage directory
+    const stageChecks = [
+      { stage: 'enMarkdown', dir: '02-for-mt', pattern: '.en.md' },
+      { stage: 'mtOutput', dir: '02-mt-output', pattern: '.is.md' },
+      { stage: 'faithful', dir: '03-faithful', pattern: '.is.md' },
+      { stage: 'localized', dir: '04-localized', pattern: '.is.md' },
+      { stage: 'tmCreated', dir: 'tm', pattern: '.tmx' }
+    ];
+
+    for (const check of stageChecks) {
+      const stageDir = path.join(BOOKS_DIR, bookSlug, check.dir, chDir);
+      const filesExist = fs.existsSync(stageDir) &&
+        fs.readdirSync(stageDir).filter(f => f.endsWith(check.pattern)).length > 0;
+
+      // Load current status
+      let currentStatus = 'not-started';
+      if (fs.existsSync(statusPath)) {
+        try {
+          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+          const statusMapping = {
+            'enMarkdown': statusData.status?.source?.complete,
+            'mtOutput': statusData.status?.mtOutput?.complete,
+            'faithful': statusData.status?.editorialPass1?.complete,
+            'localized': statusData.status?.editorialPass2?.complete,
+            'tmCreated': statusData.status?.tmUpdated?.complete
+          };
+          currentStatus = statusMapping[check.stage] ? 'complete' : 'not-started';
+        } catch (e) {
+          // Ignore parse errors
+        }
+      }
+
+      chapterInfo.stages[check.stage] = {
+        filesExist,
+        currentStatus,
+        wouldUpdate: filesExist && currentStatus !== 'complete'
+      };
+    }
+
+    chapters.push(chapterInfo);
+  }
+
+  return { chapters, errors: [] };
+}
+
 module.exports = {
   registerBook,
   getRegisteredBook,
@@ -656,5 +969,7 @@ module.exports = {
   updateSectionStatus,
   assignLinguisticReviewer,
   assignLocalizer,
-  createBookDirectories
+  createBookDirectories,
+  scanAndUpdateStatus,
+  scanStatusDryRun
 };

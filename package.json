@@ -17,6 +17,7 @@
     "xliff-to-tmx": "node tools/xliff-to-tmx.js",
     "apply-equations": "node tools/apply-equations.js",
     "pipeline": "node tools/pipeline-runner.js",
+    "post-mt": "node tools/post-mt-pipeline.js",
     "openstax-fetch": "node tools/openstax-fetch.cjs",
     "server": "cd server && npm start",
     "server:dev": "cd server && npm run dev",
@@ -29,11 +30,11 @@
     "mammoth": "^1.11.0",
     "turndown": "^7.2.2"
   },
+  "validate-chapter": "node tools/validate-chapter.js",
   "_future-scripts": {
     "_note": "These scripts are planned but not yet implemented. See docs/workflow.md for manual process.",
     "strip-text": "node tools/strip-docx-to-txt.js",
-    "export-parallel": "node tools/export-parallel-corpus.js",
-    "validate-chapter": "node tools/validate-chapter.js"
+    "export-parallel": "node tools/export-parallel-corpus.js"
   },
   "keywords": [
     "translation",
