@@ -83,6 +83,7 @@ function saveDecisions(decisions) {
  * @param {string} [data.book] Book slug
  * @param {number} [data.chapter] Chapter number
  * @param {string} [data.section] Section identifier
+ * @param {string} [data.linkedIssueId] Linked issue ID (for issue resolutions)
  * @param {object} [data.metadata] Additional metadata
  */
 function logDecision(data) {
@@ -99,6 +100,7 @@ function logDecision(data) {
     book: data.book || null,
     chapter: data.chapter || null,
     section: data.section || null,
+    linkedIssueId: data.linkedIssueId || null,
     metadata: data.metadata || {}
   };
 
@@ -285,6 +287,15 @@ function importFromLocalization(locData) {
 }
 
 /**
+ * Get decisions linked to an issue
+ * @param {string} issueId The issue ID to find linked decisions for
+ */
+function getDecisionsByIssue(issueId) {
+  const decisions = loadDecisions();
+  return decisions.filter(d => d.linkedIssueId === issueId);
+}
+
+/**
  * Archive old decisions to a separate file
  */
 function archiveOldDecisions(decisions) {
@@ -304,6 +315,7 @@ module.exports = {
   logDecision,
   searchDecisions,
   getDecision,
+  getDecisionsByIssue,
   getRecentDecisions,
   getStats,
   importFromTerminology,

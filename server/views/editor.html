@@ -172,6 +172,19 @@
               <h4><i class="fas fa-info-circle"></i> Ábending</h4>
               <p>Notaðu <code>/localize-chapter</code> til að fá tillögur að staðfæringum.</p>
             </div>
+
+            <!-- Localization Tools (Pass 2 only) -->
+            <div class="localization-tools">
+              <h4><i class="fas fa-tools"></i> Staðfæringarverkfæri</h4>
+              <div class="loc-tools-grid">
+                <button class="btn btn-secondary btn-small" onclick="showUnitConverter()" title="Umbreyta einingum">
+                  <i class="fas fa-calculator"></i> Einingar
+                </button>
+                <button class="btn btn-secondary btn-small" onclick="showLocalizationLog()" title="Staðfæringarskrá">
+                  <i class="fas fa-list-check"></i> Skrá (<span id="loc-log-count">0</span>)
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Default Guidance -->
@@ -266,6 +279,104 @@
       <div class="modal-footer">
         <button class="btn btn-secondary" onclick="closeProposalModal()">Hætta við</button>
         <button class="btn btn-primary" onclick="submitTermProposal()">Leggja til</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unit Converter Modal -->
+  <div class="modal" id="unit-converter-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-calculator"></i> Umbreyta einingum</h3>
+        <button class="btn-close" onclick="closeUnitConverter()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Tegund</label>
+          <select class="form-select" id="unit-type" onchange="updateUnitOptions()">
+            <option value="temperature">Hitastig</option>
+            <option value="length">Lengd</option>
+            <option value="mass">Massi</option>
+            <option value="volume">Rúmmál</option>
+            <option value="pressure">Þrýstingur</option>
+          </select>
+        </div>
+        <div class="unit-conversion-row">
+          <div class="form-group">
+            <label class="form-label">Frá</label>
+            <div class="input-with-unit">
+              <input type="number" id="unit-from-value" class="form-input" step="any" oninput="calculateConversion()">
+              <select class="form-select" id="unit-from" onchange="calculateConversion()"></select>
+            </div>
+          </div>
+          <span class="conversion-arrow"><i class="fas fa-arrow-right"></i></span>
+          <div class="form-group">
+            <label class="form-label">Til</label>
+            <div class="input-with-unit">
+              <input type="text" id="unit-to-value" class="form-input" readonly>
+              <select class="form-select" id="unit-to" onchange="calculateConversion()"></select>
+            </div>
+          </div>
+        </div>
+        <div class="conversion-preview" id="conversion-preview" style="display: none;">
+          <p>Setja inn: <code id="conversion-insert-text"></code></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeUnitConverter()">Loka</button>
+        <button class="btn btn-primary" onclick="insertConversion()" id="insert-conversion-btn" disabled>
+          <i class="fas fa-plus"></i> Setja inn
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Localization Log Modal -->
+  <div class="modal" id="localization-log-modal" style="display: none;">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h3><i class="fas fa-list-check"></i> Staðfæringarskrá</h3>
+        <button class="btn-close" onclick="closeLocalizationLog()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted">Skráðu allar staðfæringar sem þú gerir. Þetta hjálpar ritstjórum að skilja hvaða breytingar voru gerðar og hvers vegna.</p>
+
+        <!-- Add new entry form -->
+        <div class="loc-log-add">
+          <div class="form-group">
+            <label class="form-label">Tegund breytingar</label>
+            <select class="form-select" id="loc-log-type">
+              <option value="unit">Einingaumbreyting</option>
+              <option value="cultural">Menningarleg aðlögun</option>
+              <option value="example">Íslenkt dæmi</option>
+              <option value="reference">Tilvísun breytt</option>
+              <option value="other">Annað</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Upprunalegt (EN/US)</label>
+            <input type="text" id="loc-log-original" class="form-input" placeholder="t.d. 32°F, New York, John Smith...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Staðfært (IS)</label>
+            <input type="text" id="loc-log-localized" class="form-input" placeholder="t.d. 0°C, Reykjavík, Jón Jónsson...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Skýring (valfrjálst)</label>
+            <input type="text" id="loc-log-reason" class="form-input" placeholder="Hvers vegna var þessi breyting gerð?">
+          </div>
+          <button class="btn btn-primary" onclick="addLocLogEntry()">
+            <i class="fas fa-plus"></i> Bæta við
+          </button>
+        </div>
+
+        <!-- Log entries list -->
+        <div class="loc-log-list" id="loc-log-list">
+          <p class="text-muted center">Engar skráningar enn</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeLocalizationLog()">Loka</button>
       </div>
     </div>
   </div>
@@ -1037,6 +1148,240 @@
     }
 
     // ========================================
+    // UNIT CONVERTER (Pass 2)
+    // ========================================
+
+    const UNIT_CONVERSIONS = {
+      temperature: {
+        units: [
+          { id: 'F', name: '°F (Fahrenheit)' },
+          { id: 'C', name: '°C (Celsius)' },
+          { id: 'K', name: 'K (Kelvin)' }
+        ],
+        convert: (val, from, to) => {
+          if (from === to) return val;
+          // Convert to Celsius first
+          let celsius = from === 'F' ? (val - 32) * 5/9 :
+                        from === 'K' ? val - 273.15 : val;
+          // Convert from Celsius to target
+          return to === 'F' ? celsius * 9/5 + 32 :
+                 to === 'K' ? celsius + 273.15 : celsius;
+        }
+      },
+      length: {
+        units: [
+          { id: 'mi', name: 'míla (US)' },
+          { id: 'km', name: 'km' },
+          { id: 'ft', name: 'fet' },
+          { id: 'm', name: 'm' },
+          { id: 'in', name: 'tommur' },
+          { id: 'cm', name: 'cm' }
+        ],
+        convert: (val, from, to) => {
+          const toMeters = { mi: 1609.34, km: 1000, ft: 0.3048, m: 1, in: 0.0254, cm: 0.01 };
+          const meters = val * toMeters[from];
+          return meters / toMeters[to];
+        }
+      },
+      mass: {
+        units: [
+          { id: 'lb', name: 'pund' },
+          { id: 'kg', name: 'kg' },
+          { id: 'oz', name: 'únsur' },
+          { id: 'g', name: 'g' }
+        ],
+        convert: (val, from, to) => {
+          const toGrams = { lb: 453.592, kg: 1000, oz: 28.3495, g: 1 };
+          const grams = val * toGrams[from];
+          return grams / toGrams[to];
+        }
+      },
+      volume: {
+        units: [
+          { id: 'gal', name: 'gallon (US)' },
+          { id: 'L', name: 'L' },
+          { id: 'qt', name: 'kvart' },
+          { id: 'mL', name: 'mL' },
+          { id: 'fl_oz', name: 'fl oz' }
+        ],
+        convert: (val, from, to) => {
+          const toML = { gal: 3785.41, L: 1000, qt: 946.353, mL: 1, fl_oz: 29.5735 };
+          const mL = val * toML[from];
+          return mL / toML[to];
+        }
+      },
+      pressure: {
+        units: [
+          { id: 'atm', name: 'atm' },
+          { id: 'psi', name: 'psi' },
+          { id: 'bar', name: 'bar' },
+          { id: 'Pa', name: 'Pa' },
+          { id: 'mmHg', name: 'mmHg' }
+        ],
+        convert: (val, from, to) => {
+          const toPa = { atm: 101325, psi: 6894.76, bar: 100000, Pa: 1, mmHg: 133.322 };
+          const pa = val * toPa[from];
+          return pa / toPa[to];
+        }
+      }
+    };
+
+    function showUnitConverter() {
+      updateUnitOptions();
+      document.getElementById('unit-converter-modal').style.display = 'flex';
+    }
+
+    function closeUnitConverter() {
+      document.getElementById('unit-converter-modal').style.display = 'none';
+    }
+
+    function updateUnitOptions() {
+      const type = document.getElementById('unit-type').value;
+      const units = UNIT_CONVERSIONS[type].units;
+      const fromSelect = document.getElementById('unit-from');
+      const toSelect = document.getElementById('unit-to');
+
+      fromSelect.innerHTML = units.map((u, i) =>
+        `<option value="${u.id}" ${i === 0 ? 'selected' : ''}>${u.name}</option>`
+      ).join('');
+
+      toSelect.innerHTML = units.map((u, i) =>
+        `<option value="${u.id}" ${i === 1 ? 'selected' : ''}>${u.name}</option>`
+      ).join('');
+
+      document.getElementById('unit-from-value').value = '';
+      document.getElementById('unit-to-value').value = '';
+      document.getElementById('conversion-preview').style.display = 'none';
+      document.getElementById('insert-conversion-btn').disabled = true;
+    }
+
+    function calculateConversion() {
+      const type = document.getElementById('unit-type').value;
+      const fromVal = parseFloat(document.getElementById('unit-from-value').value);
+      const fromUnit = document.getElementById('unit-from').value;
+      const toUnit = document.getElementById('unit-to').value;
+
+      if (isNaN(fromVal)) {
+        document.getElementById('unit-to-value').value = '';
+        document.getElementById('conversion-preview').style.display = 'none';
+        document.getElementById('insert-conversion-btn').disabled = true;
+        return;
+      }
+
+      const result = UNIT_CONVERSIONS[type].convert(fromVal, fromUnit, toUnit);
+      const rounded = Math.round(result * 100) / 100;
+      document.getElementById('unit-to-value').value = rounded;
+
+      // Format for insertion
+      const unitSymbols = { F: '°F', C: '°C', K: 'K', mi: ' míla', km: ' km', ft: ' fet', m: ' m', in: ' tommur', cm: ' cm', lb: ' pund', kg: ' kg', oz: ' únsur', g: ' g', gal: ' gallon', L: ' L', qt: ' kvart', mL: ' mL', fl_oz: ' fl oz', atm: ' atm', psi: ' psi', bar: ' bar', Pa: ' Pa', mmHg: ' mmHg' };
+
+      const insertText = rounded + (unitSymbols[toUnit] || ' ' + toUnit);
+      document.getElementById('conversion-insert-text').textContent = insertText;
+      document.getElementById('conversion-preview').style.display = 'block';
+      document.getElementById('insert-conversion-btn').disabled = false;
+
+      // Store for insertion
+      window.conversionToInsert = insertText;
+    }
+
+    function insertConversion() {
+      if (!editor || !window.conversionToInsert) return;
+
+      editor.codemirror.replaceSelection(window.conversionToInsert);
+      editor.codemirror.focus();
+      closeUnitConverter();
+    }
+
+    // ========================================
+    // LOCALIZATION LOG (Pass 2)
+    // ========================================
+
+    let localizationLog = [];
+
+    function showLocalizationLog() {
+      renderLocLogList();
+      document.getElementById('localization-log-modal').style.display = 'flex';
+    }
+
+    function closeLocalizationLog() {
+      document.getElementById('localization-log-modal').style.display = 'none';
+    }
+
+    function addLocLogEntry() {
+      const type = document.getElementById('loc-log-type').value;
+      const original = document.getElementById('loc-log-original').value.trim();
+      const localized = document.getElementById('loc-log-localized').value.trim();
+      const reason = document.getElementById('loc-log-reason').value.trim();
+
+      if (!original || !localized) {
+        alert('Upprunalegt og staðfært gildi eru nauðsynleg');
+        return;
+      }
+
+      localizationLog.push({
+        id: Date.now(),
+        type,
+        original,
+        localized,
+        reason,
+        timestamp: new Date().toISOString()
+      });
+
+      // Clear form
+      document.getElementById('loc-log-original').value = '';
+      document.getElementById('loc-log-localized').value = '';
+      document.getElementById('loc-log-reason').value = '';
+
+      updateLocLogCount();
+      renderLocLogList();
+    }
+
+    function removeLocLogEntry(id) {
+      localizationLog = localizationLog.filter(e => e.id !== id);
+      updateLocLogCount();
+      renderLocLogList();
+    }
+
+    function updateLocLogCount() {
+      const countEl = document.getElementById('loc-log-count');
+      if (countEl) {
+        countEl.textContent = localizationLog.length;
+      }
+    }
+
+    function renderLocLogList() {
+      const container = document.getElementById('loc-log-list');
+
+      if (localizationLog.length === 0) {
+        container.innerHTML = '<p class="text-muted center">Engar skráningar enn</p>';
+        return;
+      }
+
+      const typeLabels = {
+        unit: '📐 Eining',
+        cultural: '🌍 Menning',
+        example: '📝 Dæmi',
+        reference: '🔗 Tilvísun',
+        other: '📌 Annað'
+      };
+
+      container.innerHTML = localizationLog.map(entry => `
+        <div class="loc-log-entry">
+          <div class="loc-log-entry-header">
+            <span class="loc-log-type">${typeLabels[entry.type] || entry.type}</span>
+            <button class="btn-close btn-small" onclick="removeLocLogEntry(${entry.id})">&times;</button>
+          </div>
+          <div class="loc-log-change">
+            <span class="loc-log-original">${escapeHtml(entry.original)}</span>
+            <span class="loc-log-arrow">→</span>
+            <span class="loc-log-localized">${escapeHtml(entry.localized)}</span>
+          </div>
+          ${entry.reason ? '<div class="loc-log-reason">' + escapeHtml(entry.reason) + '</div>' : ''}
+        </div>
+      `).join('');
+    }
+
+    // ========================================
     // SECTION PROGRESS
     // ========================================
 
@@ -1538,6 +1883,128 @@
       color: var(--gray-500);
     }
     .keyboard-hints .hint { white-space: nowrap; }
+
+    /* Localization Tools (Pass 2) */
+    .localization-tools {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .localization-tools h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .loc-tools-grid {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Unit Converter Modal */
+    .unit-conversion-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .unit-conversion-row .form-group {
+      flex: 1;
+      margin-bottom: 0;
+    }
+    .input-with-unit {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .input-with-unit .form-input {
+      flex: 1;
+    }
+    .input-with-unit .form-select {
+      flex: 1;
+    }
+    .conversion-arrow {
+      color: var(--primary);
+      padding-bottom: 0.5rem;
+    }
+    .conversion-preview {
+      background: var(--gray-50);
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      margin-top: 0.5rem;
+    }
+    .conversion-preview code {
+      background: var(--primary);
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* Localization Log Modal */
+    .modal-large {
+      max-width: 600px;
+    }
+    .loc-log-add {
+      background: var(--gray-50);
+      padding: 1rem;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+    }
+    .loc-log-add .form-group {
+      margin-bottom: 0.75rem;
+    }
+    .loc-log-list {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .loc-log-entry {
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .loc-log-entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .loc-log-type {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--primary);
+    }
+    .loc-log-change {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      flex-wrap: wrap;
+    }
+    .loc-log-original {
+      color: var(--gray-500);
+      text-decoration: line-through;
+    }
+    .loc-log-arrow {
+      color: var(--success);
+    }
+    .loc-log-localized {
+      color: var(--success);
+      font-weight: 500;
+    }
+    .loc-log-reason {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
 
     /* Section Progress Indicator */
     .section-progress {

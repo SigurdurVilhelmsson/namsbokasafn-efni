@@ -18,6 +18,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireEditor, requireHeadEditor } = require('../middleware/requireRole');
 const session = require('../services/session');
 const { ISSUE_CATEGORIES, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
+const decisionStore = require('../services/decisionStore');
 
 // Legacy in-memory issue store (for manually reported issues)
 const issueStore = new Map();
@@ -229,10 +230,17 @@ router.get('/session/:sessionId', requireAuth, (req, res) => {
 /**
  * POST /api/issues/session/:sessionId/:issueId/resolve
  * Resolve a session-based issue
+ *
+ * Body:
+ *   - action: 'accept' | 'reject' | 'modify' | 'escalate' | 'ignore'
+ *   - resolution: Description of resolution
+ *   - modifiedValue: (optional) Modified value if action is 'modify'
+ *   - createDecision: (optional) Whether to create a linked decision
+ *   - decisionRationale: (optional) Additional rationale for decision
  */
 router.post('/session/:sessionId/:issueId/resolve', requireAuth, (req, res) => {
   const { sessionId, issueId } = req.params;
-  const { action, resolution, modifiedValue } = req.body;
+  const { action, resolution, modifiedValue, createDecision, decisionRationale } = req.body;
 
   const sessionData = session.getSession(sessionId);
   if (!sessionData) {
@@ -297,11 +305,33 @@ router.post('/session/:sessionId/:issueId/resolve', requireAuth, (req, res) => {
   const pendingCount = updatedSession.issues.filter(i => i.status === 'pending').length;
   const blockedCount = updatedSession.issues.filter(i => i.category === 'BLOCKED' && i.status === 'pending').length;
 
+  // Create linked decision if requested
+  let linkedDecision = null;
+  if (createDecision && resolved) {
+    linkedDecision = decisionStore.logDecision({
+      type: 'issue',
+      englishTerm: resolved.context || resolved.description,
+      icelandicTerm: modifiedValue || resolved.suggestion,
+      rationale: decisionRationale || resolution || `Vandamál leyst: ${action}`,
+      decidedBy: req.user.username,
+      book: sessionData.book,
+      chapter: sessionData.chapter,
+      linkedIssueId: issueId,
+      metadata: {
+        source: 'issue_resolution',
+        sessionId,
+        issueCategory: resolved.category,
+        action
+      }
+    });
+  }
+
   res.json({
     success: true,
     issue: resolved,
     remainingPending: pendingCount,
-    blockedCount
+    blockedCount,
+    decision: linkedDecision
   });
 });
 
@@ -356,10 +386,12 @@ router.get('/:id', requireAuth, (req, res) => {
  *   - action: 'accept' | 'reject' | 'modify'
  *   - resolution: Description of resolution
  *   - modifiedValue: (optional) Modified value if action is 'modify'
+ *   - createDecision: (optional) Whether to create a linked decision
+ *   - decisionRationale: (optional) Additional rationale for decision
  */
 router.post('/:id/resolve', requireAuth, requireEditor(), (req, res) => {
   const { id } = req.params;
-  const { action, resolution, modifiedValue } = req.body;
+  const { action, resolution, modifiedValue, createDecision, decisionRationale } = req.body;
 
   const issue = issueStore.get(id);
 
@@ -401,6 +433,27 @@ router.post('/:id/resolve', requireAuth, requireEditor(), (req, res) => {
     issue.modifiedValue = modifiedValue;
   }
 
+  // Create linked decision if requested
+  let linkedDecision = null;
+  if (createDecision) {
+    linkedDecision = decisionStore.logDecision({
+      type: 'issue',
+      englishTerm: issue.context || issue.description,
+      icelandicTerm: modifiedValue || issue.suggestion,
+      rationale: decisionRationale || resolution || `Vandamál leyst: ${action}`,
+      decidedBy: req.user.username,
+      book: issue.book,
+      chapter: issue.chapter,
+      linkedIssueId: issue.id,
+      metadata: {
+        source: 'issue_resolution',
+        issueCategory: issue.category,
+        action
+      }
+    });
+    issue.linkedDecisionId = linkedDecision.id;
+  }
+
   res.json({
     success: true,
     issue: {
@@ -409,8 +462,10 @@ router.post('/:id/resolve', requireAuth, requireEditor(), (req, res) => {
       action: issue.action,
       resolution: issue.resolution,
       resolvedBy: issue.resolvedBy,
-      resolvedAt: issue.resolvedAt
-    }
+      resolvedAt: issue.resolvedAt,
+      linkedDecisionId: issue.linkedDecisionId
+    },
+    decision: linkedDecision
   });
 });
 

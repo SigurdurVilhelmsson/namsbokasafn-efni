@@ -965,4 +965,224 @@ router.post('/:book/:chapter/sync', (req, res) => {
   }
 });
 
+// ============================================================================
+// MEETING AGENDA GENERATOR
+// ============================================================================
+
+/**
+ * GET /api/status/meeting-agenda
+ * Generate a meeting agenda for weekly team sync
+ *
+ * Returns:
+ *   - date: Meeting date
+ *   - disputedTerms: Terminology needing discussion
+ *   - blockedIssues: Blocked items needing team resolution
+ *   - pendingReviews: Reviews awaiting decision
+ *   - weekProgress: Summary of progress this week
+ *   - nextSteps: Suggested action items
+ */
+router.get('/meeting-agenda', async (req, res) => {
+  try {
+    // Load required services
+    let terminology, editorHistory, decisionStore;
+    try {
+      terminology = require('../services/terminology');
+      editorHistory = require('../services/editorHistory');
+      decisionStore = require('../services/decisionStore');
+    } catch (e) {
+      // Services may not be available
+    }
+
+    const agenda = {
+      generatedAt: new Date().toISOString(),
+      meetingDate: new Date().toLocaleDateString('is-IS', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }),
+      sections: []
+    };
+
+    // 1. Disputed/Needs Review Terminology
+    if (terminology) {
+      try {
+        const terms = terminology.getReviewQueue({ limit: 10 });
+        if (terms.length > 0) {
+          agenda.sections.push({
+            title: 'Hugtök til umræðu',
+            titleEn: 'Terminology Discussion',
+            icon: '📖',
+            priority: 'high',
+            count: terms.length,
+            items: terms.map(t => ({
+              id: t.id,
+              english: t.english,
+              icelandic: t.icelandic,
+              status: t.status,
+              proposedBy: t.proposed_by_name,
+              discussionCount: t.discussion_count || 0
+            }))
+          });
+        }
+      } catch (e) {
+        console.log('Could not load terminology for agenda:', e.message);
+      }
+    }
+
+    // 2. Blocked Issues
+    const session = require('../services/session');
+    try {
+      const sessions = session.listAllSessions();
+      const blockedIssues = [];
+
+      for (const sess of sessions) {
+        const sessionData = session.getSession(sess.id);
+        if (!sessionData) continue;
+
+        const blocked = sessionData.issues.filter(i =>
+          i.category === 'BLOCKED' && i.status === 'pending'
+        );
+
+        for (const issue of blocked) {
+          blockedIssues.push({
+            id: issue.id,
+            sessionId: sess.id,
+            book: sessionData.book,
+            chapter: sessionData.chapter,
+            description: issue.description,
+            context: issue.context
+          });
+        }
+      }
+
+      if (blockedIssues.length > 0) {
+        agenda.sections.push({
+          title: 'Lokaðar vandamál',
+          titleEn: 'Blocked Issues',
+          icon: '🚫',
+          priority: 'high',
+          count: blockedIssues.length,
+          items: blockedIssues.slice(0, 10)
+        });
+      }
+    } catch (e) {
+      console.log('Could not load blocked issues for agenda:', e.message);
+    }
+
+    // 3. Pending Reviews
+    if (editorHistory) {
+      try {
+        const pendingReviews = editorHistory.getPendingReviews();
+        if (pendingReviews.length > 0) {
+          agenda.sections.push({
+            title: 'Yfirferðir í bið',
+            titleEn: 'Pending Reviews',
+            icon: '📝',
+            priority: 'medium',
+            count: pendingReviews.length,
+            items: pendingReviews.slice(0, 10).map(r => ({
+              id: r.id,
+              book: r.book,
+              chapter: r.chapter,
+              section: r.section,
+              submittedBy: r.submittedByUsername,
+              submittedAt: r.submittedAt,
+              daysPending: Math.floor((Date.now() - new Date(r.submittedAt).getTime()) / (1000 * 60 * 60 * 24))
+            }))
+          });
+        }
+      } catch (e) {
+        console.log('Could not load pending reviews for agenda:', e.message);
+      }
+    }
+
+    // 4. Recent Activity Summary
+    try {
+      const weekAgo = new Date();
+      weekAgo.setDate(weekAgo.getDate() - 7);
+
+      const recentActivity = activityLog.getRecent(100);
+      const weekActivity = recentActivity.filter(a =>
+        new Date(a.timestamp) >= weekAgo
+      );
+
+      // Group by user
+      const userActivity = {};
+      for (const activity of weekActivity) {
+        if (!userActivity[activity.username]) {
+          userActivity[activity.username] = { count: 0, types: {} };
+        }
+        userActivity[activity.username].count++;
+        const type = activity.action || 'other';
+        userActivity[activity.username].types[type] = (userActivity[activity.username].types[type] || 0) + 1;
+      }
+
+      const activitySummary = Object.entries(userActivity)
+        .map(([user, data]) => ({
+          username: user,
+          totalActions: data.count,
+          breakdown: data.types
+        }))
+        .sort((a, b) => b.totalActions - a.totalActions);
+
+      if (activitySummary.length > 0) {
+        agenda.sections.push({
+          title: 'Virkni síðustu 7 daga',
+          titleEn: 'Week Activity Summary',
+          icon: '📊',
+          priority: 'info',
+          count: weekActivity.length,
+          items: activitySummary.slice(0, 5)
+        });
+      }
+    } catch (e) {
+      console.log('Could not load activity summary for agenda:', e.message);
+    }
+
+    // 5. Recent Decisions (for reference)
+    if (decisionStore) {
+      try {
+        const recentDecisions = decisionStore.getRecentDecisions(5);
+        if (recentDecisions.length > 0) {
+          agenda.sections.push({
+            title: 'Nýlegar ákvarðanir',
+            titleEn: 'Recent Decisions',
+            icon: '✅',
+            priority: 'info',
+            count: recentDecisions.length,
+            items: recentDecisions.map(d => ({
+              id: d.id,
+              type: d.type,
+              english: d.englishTerm,
+              icelandic: d.icelandicTerm,
+              rationale: d.rationale,
+              decidedBy: d.decidedBy,
+              decidedAt: d.decidedAt
+            }))
+          });
+        }
+      } catch (e) {
+        console.log('Could not load recent decisions for agenda:', e.message);
+      }
+    }
+
+    // Generate summary statistics
+    agenda.summary = {
+      highPriorityCount: agenda.sections.filter(s => s.priority === 'high').reduce((sum, s) => sum + s.count, 0),
+      mediumPriorityCount: agenda.sections.filter(s => s.priority === 'medium').reduce((sum, s) => sum + s.count, 0),
+      totalSections: agenda.sections.length
+    };
+
+    res.json(agenda);
+
+  } catch (err) {
+    console.error('Meeting agenda error:', err);
+    res.status(500).json({
+      error: 'Failed to generate meeting agenda',
+      message: err.message
+    });
+  }
+});
+
 module.exports = router;

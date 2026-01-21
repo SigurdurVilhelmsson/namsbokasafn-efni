@@ -107,9 +107,14 @@
         <span class="last-refreshed">
           <span class="text-muted" id="last-refreshed-text">Síðast uppfært: -</span>
         </span>
-        <button class="btn btn-sm btn-secondary" onclick="refreshDashboard()" id="refresh-btn">
-          Endurnýja
-        </button>
+        <div class="refresh-actions">
+          <button class="btn btn-sm btn-primary" onclick="showMeetingAgenda()" title="Búa til dagskrá fyrir vikulegan fund">
+            <span class="btn-icon">📋</span> Fundaráætlun
+          </button>
+          <button class="btn btn-sm btn-secondary" onclick="refreshDashboard()" id="refresh-btn">
+            Endurnýja
+          </button>
+        </div>
       </div>
 
       <!-- Mini Chapter Matrix -->
@@ -176,6 +181,25 @@
       </div>
     </div>
   </main>
+
+  <!-- Meeting Agenda Modal -->
+  <div class="modal" id="meeting-agenda-modal" style="display: none;">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h3><span class="modal-icon">📋</span> Fundaráætlun</h3>
+        <button class="btn-close" onclick="closeMeetingAgenda()">&times;</button>
+      </div>
+      <div class="modal-body" id="meeting-agenda-content">
+        <p class="text-muted">Hleður...</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="copyAgendaToClipboard()">
+          <span class="btn-icon">📋</span> Afrita
+        </button>
+        <button class="btn btn-secondary" onclick="closeMeetingAgenda()">Loka</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Assignment Modal -->
   <div class="modal" id="assignment-modal" style="display: none;">
@@ -719,6 +743,120 @@
       }
     }
 
+    // ============================================================================
+    // MEETING AGENDA
+    // ============================================================================
+
+    let currentAgenda = null;
+
+    async function showMeetingAgenda() {
+      const modal = document.getElementById('meeting-agenda-modal');
+      const content = document.getElementById('meeting-agenda-content');
+
+      content.innerHTML = '<p class="text-muted center">Hleður dagskrá...</p>';
+      modal.style.display = 'flex';
+
+      try {
+        const res = await fetch('/api/status/meeting-agenda');
+        currentAgenda = await res.json();
+
+        let html = '<div class="agenda">';
+
+        // Header
+        html += '<div class="agenda-header">';
+        html += '<h2>Vikulegur fundur - ' + escapeHtml(currentAgenda.meetingDate) + '</h2>';
+        html += '<p class="agenda-summary">';
+        if (currentAgenda.summary.highPriorityCount > 0) {
+          html += '<span class="priority-high">' + currentAgenda.summary.highPriorityCount + ' mikilvæg atriði</span> ';
+        }
+        if (currentAgenda.summary.mediumPriorityCount > 0) {
+          html += '<span class="priority-medium">' + currentAgenda.summary.mediumPriorityCount + ' í bið</span>';
+        }
+        html += '</p>';
+        html += '</div>';
+
+        // Sections
+        if (currentAgenda.sections.length === 0) {
+          html += '<p class="text-success center">Engin atriði á dagskrá - allt í lagi!</p>';
+        } else {
+          for (const section of currentAgenda.sections) {
+            html += '<div class="agenda-section priority-' + section.priority + '">';
+            html += '<h3>' + section.icon + ' ' + escapeHtml(section.title) + ' <span class="section-count">(' + section.count + ')</span></h3>';
+
+            html += '<ul class="agenda-items">';
+            for (const item of section.items) {
+              html += '<li class="agenda-item">';
+              if (item.english && item.icelandic) {
+                html += '<span class="item-term">' + escapeHtml(item.english) + ' → ' + escapeHtml(item.icelandic) + '</span>';
+              } else if (item.description) {
+                html += '<span class="item-desc">' + escapeHtml(item.description) + '</span>';
+              } else if (item.username) {
+                html += '<span class="item-user">' + escapeHtml(item.username) + '</span>: ' + item.totalActions + ' aðgerðir';
+              } else if (item.section) {
+                html += '<span class="item-section">' + item.book + ' K' + item.chapter + '/' + item.section + '</span>';
+                if (item.daysPending !== undefined) {
+                  html += ' <span class="item-pending">(' + item.daysPending + ' dagar)</span>';
+                }
+              } else if (item.rationale) {
+                html += '<span class="item-decision">' + escapeHtml(item.rationale.substring(0, 100)) + '</span>';
+              }
+              if (item.proposedBy) {
+                html += ' <span class="item-by">(' + escapeHtml(item.proposedBy) + ')</span>';
+              }
+              if (item.context) {
+                html += '<div class="item-context">' + escapeHtml(item.context.substring(0, 150)) + '</div>';
+              }
+              html += '</li>';
+            }
+            html += '</ul>';
+            html += '</div>';
+          }
+        }
+
+        html += '</div>';
+        content.innerHTML = html;
+
+      } catch (err) {
+        content.innerHTML = '<p class="text-error center">Villa við að hlaða dagskrá: ' + err.message + '</p>';
+      }
+    }
+
+    function closeMeetingAgenda() {
+      document.getElementById('meeting-agenda-modal').style.display = 'none';
+    }
+
+    function copyAgendaToClipboard() {
+      if (!currentAgenda) return;
+
+      let text = 'FUNDARÁÆTLUN - ' + currentAgenda.meetingDate + '\n';
+      text += '='.repeat(50) + '\n\n';
+
+      for (const section of currentAgenda.sections) {
+        text += section.icon + ' ' + section.title.toUpperCase() + ' (' + section.count + ')\n';
+        text += '-'.repeat(40) + '\n';
+
+        for (const item of section.items) {
+          if (item.english && item.icelandic) {
+            text += '  • ' + item.english + ' → ' + item.icelandic + '\n';
+          } else if (item.description) {
+            text += '  • ' + item.description + '\n';
+          } else if (item.section) {
+            text += '  • ' + item.book + ' K' + item.chapter + '/' + item.section + '\n';
+          } else if (item.username) {
+            text += '  • ' + item.username + ': ' + item.totalActions + ' aðgerðir\n';
+          }
+        }
+        text += '\n';
+      }
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Dagskrá afrituð!');
+      }).catch(err => {
+        console.error('Could not copy:', err);
+        alert('Gat ekki afritað');
+      });
+    }
+
     // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
       loadDashboard();
@@ -913,6 +1051,38 @@
     .term-discussions { display: flex; align-items: center; gap: 0.25rem; }
     .term-discussions::before { content: '💬'; font-size: 0.625rem; }
     .disputed-terms-footer { text-align: center; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--gray-200); }
+
+    /* Dashboard refresh bar updates */
+    .refresh-actions { display: flex; gap: 0.5rem; align-items: center; }
+    .btn-icon { margin-right: 0.25rem; }
+
+    /* Meeting Agenda Modal */
+    .modal-large { max-width: 700px; max-height: 90vh; }
+    .modal-large .modal-body { max-height: 60vh; overflow-y: auto; }
+    .modal-icon { margin-right: 0.5rem; }
+    .agenda { }
+    .agenda-header { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--gray-200); }
+    .agenda-header h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .agenda-summary { font-size: 0.875rem; }
+    .priority-high { color: var(--error); font-weight: 500; }
+    .priority-medium { color: var(--warning); font-weight: 500; }
+    .agenda-section { margin-bottom: 1.5rem; padding: 1rem; border-radius: 0.5rem; background: var(--gray-50); }
+    .agenda-section.priority-high { border-left: 4px solid var(--error); }
+    .agenda-section.priority-medium { border-left: 4px solid var(--warning); }
+    .agenda-section.priority-info { border-left: 4px solid var(--info); }
+    .agenda-section h3 { font-size: 1rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .section-count { font-weight: normal; color: var(--gray-500); font-size: 0.875rem; }
+    .agenda-items { list-style: none; padding: 0; margin: 0; }
+    .agenda-item { padding: 0.5rem 0; border-bottom: 1px solid var(--gray-200); font-size: 0.875rem; }
+    .agenda-item:last-child { border-bottom: none; }
+    .item-term { font-weight: 500; }
+    .item-desc { }
+    .item-section { font-family: monospace; background: var(--gray-200); padding: 0.125rem 0.375rem; border-radius: 0.25rem; }
+    .item-pending { color: var(--warning); font-size: 0.75rem; }
+    .item-by { color: var(--gray-500); font-size: 0.75rem; }
+    .item-context { font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .item-user { font-weight: 500; }
+    .item-decision { font-style: italic; color: var(--gray-700); }
 
     @media (max-width: 1024px) {
       .dashboard-grid { grid-template-columns: 1fr; }

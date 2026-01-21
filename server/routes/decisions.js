@@ -116,11 +116,25 @@ router.get('/:id', (req, res) => {
 });
 
 /**
+ * GET /api/decisions/by-issue/:issueId
+ * Get decisions linked to a specific issue
+ */
+router.get('/by-issue/:issueId', (req, res) => {
+  try {
+    const decisions = decisionStore.getDecisionsByIssue(req.params.issueId);
+    res.json({ decisions });
+  } catch (err) {
+    console.error('Get decisions by issue error:', err);
+    res.status(500).json({ error: 'Failed to get decisions', message: err.message });
+  }
+});
+
+/**
  * POST /api/decisions
  * Log a new decision
  */
 router.post('/', requireAuth, (req, res) => {
-  const { type, englishTerm, icelandicTerm, rationale, book, chapter, section, metadata } = req.body;
+  const { type, englishTerm, icelandicTerm, rationale, book, chapter, section, linkedIssueId, metadata } = req.body;
 
   // Validation
   if (!type) {
@@ -148,6 +162,7 @@ router.post('/', requireAuth, (req, res) => {
       book,
       chapter: chapter ? parseInt(chapter) : null,
       section,
+      linkedIssueId: linkedIssueId || null,
       metadata
     });
 
