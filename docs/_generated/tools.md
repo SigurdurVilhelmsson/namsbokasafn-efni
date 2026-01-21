@@ -18,12 +18,11 @@
 |------|-------------|
 | `apply-equations` | Restore LaTeX equations from JSON mapping file |
 | `chapter-assembler` | Assembles 7 module files into 12 publication files for the Chemistry Reader webs |
-| `clean-markdown` | Fix Pandoc artifacts (mspace, orphan directives, escaped tildes) |
 | `cnxml-math-extract` | Extract MathML equations from CNXML and convert to LaTeX |
 | `compile-chapter` | Compiles chapter content for web publication by: |
 | `docx-to-md` | Convert DOCX files to Markdown format |
 | `export-parallel-corpus` | Export Translation Memory to parallel text files |
-| `fix-figure-captions` | Fix figure caption formatting issues |
+| `post-mt-pipeline` | Chains post-MT cleanup tools to process translated markdown files. |
 | `process-chapter` | Full chapter processing pipeline |
 | `repair-directives` | Fix directive syntax issues in markdown |
 | `replace-math-images` | Replace equation images with LaTeX code |
@@ -45,6 +44,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*24 tools total (19 active, 5 deprecated)*
+*23 tools total (18 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.

@@ -439,6 +439,9 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/:book` |
 | GET | `/:book/summary` |
 | GET | `/:book/:chapter` |
+| GET | `/:book/scan` |
+| POST | `/:book/sync` |
+| POST | `/:book/:chapter/sync` |
 
 ## /suggestions
 
