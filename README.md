@@ -389,6 +389,13 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/chapter/:chapter` |
 | GET | `/:moduleId` |
 
+## /my-work
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/summary` |
+
 ## /notifications
 
 | Method | Path |
@@ -516,6 +523,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/books` |
 | GET | `/terminology` |
 | GET | `/decisions` |
+| GET | `/my-work` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
 | GET | `/admin/feedback` |

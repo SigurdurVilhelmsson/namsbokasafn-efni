@@ -165,6 +165,13 @@
 | GET | `/chapter/:chapter` |
 | GET | `/:moduleId` |
 
+## /my-work
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/summary` |
+
 ## /notifications
 
 | Method | Path |
@@ -292,6 +299,7 @@
 | GET | `/books` |
 | GET | `/terminology` |
 | GET | `/decisions` |
+| GET | `/my-work` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
 | GET | `/admin/feedback` |
