@@ -60,6 +60,9 @@ const suggestionsRoutes = require('./routes/suggestions');
 // Import Decision Log routes
 const decisionsRoutes = require('./routes/decisions');
 
+// Import My Work routes (translator dashboard)
+const myWorkRoutes = require('./routes/my-work');
+
 // Import Phase 6 routes (Publication)
 const publicationRoutes = require('./routes/publication');
 
@@ -144,6 +147,9 @@ app.use('/api/suggestions', suggestionsRoutes);
 
 // Decision Log API Routes
 app.use('/api/decisions', decisionsRoutes);
+
+// My Work API Routes (translator dashboard)
+app.use('/api/my-work', myWorkRoutes);
 
 // Phase 6 API Routes (Publication)
 app.use('/api/publication', publicationRoutes);

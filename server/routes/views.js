@@ -100,6 +100,14 @@ router.get('/decisions', (req, res) => {
 });
 
 /**
+ * GET /my-work
+ * Translator's personal work dashboard
+ */
+router.get('/my-work', (req, res) => {
+  sendView(res, 'my-work.html');
+});
+
+/**
  * GET /localization-review
  * Split-panel localization review page
  */

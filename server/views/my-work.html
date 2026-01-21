@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mín verkefni - Námsbókasafn</title>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/my-work" class="active">Mín verkefni</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/terminology">Orðasafn</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <!-- Welcome Banner -->
+    <div class="welcome-banner" id="welcome-banner">
+      <h1 id="welcome-message">Hleður...</h1>
+      <p class="welcome-subtitle">Hér er yfirlit yfir verkefnin þín</p>
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="summary-grid" id="summary-grid">
+      <div class="summary-card" id="card-assignments">
+        <div class="summary-icon">📋</div>
+        <div class="summary-value" id="summary-assignments">-</div>
+        <div class="summary-label">Úthlutanir</div>
+      </div>
+      <div class="summary-card" id="card-pending">
+        <div class="summary-icon">⏳</div>
+        <div class="summary-value" id="summary-pending">-</div>
+        <div class="summary-label">Bíður yfirferðar</div>
+      </div>
+      <div class="summary-card warning" id="card-changes">
+        <div class="summary-icon">📝</div>
+        <div class="summary-value" id="summary-changes">-</div>
+        <div class="summary-label">Breytingar óskast</div>
+      </div>
+      <div class="summary-card" id="card-terms">
+        <div class="summary-icon">📖</div>
+        <div class="summary-value" id="summary-terms">-</div>
+        <div class="summary-label">Orðatillögur</div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="content-grid">
+      <!-- Assignments Section -->
+      <div class="card assignments-card">
+        <div class="card-header">
+          <h2 class="card-title">Úthlutanir</h2>
+          <span class="badge" id="assignments-badge">0</span>
+        </div>
+        <div class="card-body" id="assignments-list">
+          <p class="text-muted">Hleður...</p>
+        </div>
+      </div>
+
+      <!-- Pending Submissions Section -->
+      <div class="card submissions-card">
+        <div class="card-header">
+          <h2 class="card-title">Bíður yfirferðar</h2>
+          <span class="badge" id="submissions-badge">0</span>
+        </div>
+        <div class="card-body" id="submissions-list">
+          <p class="text-muted">Hleður...</p>
+        </div>
+      </div>
+
+      <!-- Changes Requested Section -->
+      <div class="card changes-card">
+        <div class="card-header">
+          <h2 class="card-title">Breytingar óskast</h2>
+          <span class="badge badge-warning" id="changes-badge">0</span>
+        </div>
+        <div class="card-body" id="changes-list">
+          <p class="text-muted">Hleður...</p>
+        </div>
+      </div>
+
+      <!-- Terminology Proposals Section -->
+      <div class="card terms-card">
+        <div class="card-header">
+          <h2 class="card-title">Orðatillögur þínar</h2>
+          <span class="badge" id="terms-badge">0</span>
+        </div>
+        <div class="card-body" id="terms-list">
+          <p class="text-muted">Hleður...</p>
+        </div>
+        <div class="card-footer">
+          <a href="/terminology" class="btn btn-secondary btn-sm">Sjá orðasafn</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="card activity-card">
+      <div class="card-header">
+        <h2 class="card-title">Nýleg virkni þín</h2>
+      </div>
+      <div class="card-body" id="activity-list">
+        <p class="text-muted">Hleður...</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let workData = null;
+
+    async function init() {
+      // Check auth
+      const authRes = await fetch('/api/auth/me');
+      const authData = await authRes.json();
+      const userEl = document.getElementById('user-info');
+
+      if (!authData.authenticated) {
+        userEl.innerHTML = '<a href="/api/auth/login?redirect=/my-work" class="btn btn-primary">Innskráning</a>';
+        document.getElementById('welcome-message').textContent = 'Vinsamlegast skráðu þig inn';
+        document.getElementById('welcome-banner').querySelector('.welcome-subtitle').textContent = '';
+        return;
+      }
+
+      userEl.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
+
+      // Load work data
+      await loadMyWork();
+    }
+
+    async function loadMyWork() {
+      try {
+        const res = await fetch('/api/my-work');
+        workData = await res.json();
+
+        // Update welcome message
+        document.getElementById('welcome-message').textContent = `Góðan daginn, ${workData.user.name}`;
+
+        // Update summary cards
+        document.getElementById('summary-assignments').textContent = workData.summary.assignmentsCount;
+        document.getElementById('summary-pending').textContent = workData.summary.pendingSubmissionsCount;
+        document.getElementById('summary-changes').textContent = workData.summary.changesRequestedCount;
+        document.getElementById('summary-terms').textContent = workData.summary.proposedTermsCount;
+
+        // Update badges
+        document.getElementById('assignments-badge').textContent = workData.summary.assignmentsCount;
+        document.getElementById('submissions-badge').textContent = workData.summary.pendingSubmissionsCount;
+        document.getElementById('changes-badge').textContent = workData.summary.changesRequestedCount;
+        document.getElementById('terms-badge').textContent = workData.summary.proposedTermsCount;
+
+        // Highlight cards with items
+        if (workData.summary.changesRequestedCount > 0) {
+          document.getElementById('card-changes').classList.add('highlight');
+        }
+        if (workData.summary.overdueCount > 0) {
+          document.getElementById('card-assignments').classList.add('highlight-error');
+        }
+
+        // Render lists
+        renderAssignments(workData.assignments);
+        renderSubmissions(workData.pendingSubmissions);
+        renderChangesRequested(workData.recentReviews.filter(r => r.status === 'changes_requested'));
+        renderTerms(workData.proposedTerms);
+        renderActivity(workData.recentActivity);
+
+      } catch (err) {
+        console.error('Failed to load work data:', err);
+        document.getElementById('welcome-message').textContent = 'Villa við að hlaða gögnum';
+      }
+    }
+
+    function renderAssignments(assignments) {
+      const container = document.getElementById('assignments-list');
+
+      if (assignments.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p class="text-success">Engar úthlutanir í augnablikinu</p>
+            <p class="text-muted">Þú færð tilkynningu þegar nýjum verkefnum er úthlutað til þín.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = assignments.map(a => `
+        <div class="work-item ${a.dueDate?.status === 'overdue' ? 'item-overdue' : a.dueDate?.status === 'today' ? 'item-today' : ''}">
+          <div class="work-item-main">
+            <div class="work-item-title">
+              <span class="book-label">${escapeHtml(a.bookLabel)}</span>
+              <span class="chapter-label">Kafli ${a.chapter}</span>
+              <span class="stage-badge">${escapeHtml(a.stageLabel)}</span>
+            </div>
+            ${a.notes ? `<div class="work-item-notes">${escapeHtml(a.notes)}</div>` : ''}
+            <div class="work-item-meta">
+              <span class="assigned-by">Úthlutað af ${escapeHtml(a.assignedBy)}</span>
+              ${a.dueDate ? `
+                <span class="due-date due-${a.dueDate.status}">
+                  ${getDueDateText(a.dueDate)}
+                </span>
+              ` : ''}
+            </div>
+          </div>
+          <div class="work-item-action">
+            <a href="${a.editorUrl}" class="btn btn-primary btn-sm">Opna</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderSubmissions(submissions) {
+      const container = document.getElementById('submissions-list');
+
+      if (submissions.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>Engin verkefni bíða yfirferðar</p>
+            <p class="text-muted">Þegar þú sendir hluta til yfirferðar munu þeir birtast hér.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = submissions.map(s => `
+        <div class="work-item">
+          <div class="work-item-main">
+            <div class="work-item-title">
+              <span class="book-label">${escapeHtml(s.bookLabel)}</span>
+              <span class="section-label">Kafli ${s.chapter}, hluti ${s.section}</span>
+            </div>
+            <div class="work-item-meta">
+              <span class="submitted-at">Sent ${formatDate(s.submittedAt)}</span>
+              <span class="days-pending ${s.daysPending > 3 ? 'text-warning' : ''}">
+                (${s.daysPending} ${s.daysPending === 1 ? 'dagur' : 'dagar'} síðan)
+              </span>
+            </div>
+          </div>
+          <div class="work-item-action">
+            <a href="${s.editorUrl}" class="btn btn-secondary btn-sm">Skoða</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderChangesRequested(reviews) {
+      const container = document.getElementById('changes-list');
+
+      if (reviews.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p class="text-success">Engar breytingar óskast</p>
+            <p class="text-muted">Öll innsend verkefni hafa verið samþykkt.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = reviews.map(r => `
+        <div class="work-item item-attention">
+          <div class="work-item-main">
+            <div class="work-item-title">
+              <span class="book-label">${escapeHtml(r.bookLabel)}</span>
+              <span class="section-label">Kafli ${r.chapter}, hluti ${r.section}</span>
+            </div>
+            ${r.notes ? `
+              <div class="review-notes">
+                <strong>Athugasemd:</strong> ${escapeHtml(r.notes)}
+              </div>
+            ` : ''}
+            <div class="work-item-meta">
+              <span class="reviewed-by">Frá ${escapeHtml(r.reviewedBy)}</span>
+              <span class="reviewed-at">${formatDate(r.reviewedAt)}</span>
+            </div>
+          </div>
+          <div class="work-item-action">
+            <a href="${r.editorUrl}" class="btn btn-primary btn-sm">Laga</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderTerms(terms) {
+      const container = document.getElementById('terms-list');
+
+      if (terms.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p>Engar orðatillögur í bið</p>
+            <p class="text-muted">Þegar þú leggur til ný orð í ritstjóranum munu þau birtast hér.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = terms.map(t => `
+        <div class="term-item">
+          <div class="term-pair">
+            <span class="term-en">${escapeHtml(t.english)}</span>
+            <span class="term-arrow">→</span>
+            <span class="term-is">${escapeHtml(t.icelandic)}</span>
+          </div>
+          <div class="term-meta">
+            <span class="term-status status-${t.status}">${getStatusLabel(t.status)}</span>
+            ${t.discussionCount > 0 ? `<span class="term-discussions">${t.discussionCount} athugasemdir</span>` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderActivity(activities) {
+      const container = document.getElementById('activity-list');
+
+      if (!activities || activities.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <p class="text-muted">Engin virkni skráð enn.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = activities.map(a => `
+        <div class="activity-item">
+          <span class="activity-icon">${getActivityIcon(a.type)}</span>
+          <div class="activity-content">
+            <span class="activity-desc">${escapeHtml(a.description)}</span>
+            <span class="activity-time">${formatTimeAgo(a.created_at)}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Helper functions
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('is-IS');
+    }
+
+    function formatTimeAgo(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      const now = new Date();
+      const diffMs = now - date;
+      const diffMins = Math.floor(diffMs / 60000);
+      const diffHours = Math.floor(diffMs / 3600000);
+      const diffDays = Math.floor(diffMs / 86400000);
+
+      if (diffMins < 1) return 'Rétt í þessu';
+      if (diffMins < 60) return `${diffMins} mín síðan`;
+      if (diffHours < 24) return `${diffHours} klst síðan`;
+      if (diffDays === 1) return 'Í gær';
+      if (diffDays < 7) return `${diffDays} dögum síðan`;
+      return formatDate(dateStr);
+    }
+
+    function getDueDateText(dueInfo) {
+      if (!dueInfo) return '';
+      if (dueInfo.status === 'overdue') {
+        const days = Math.abs(dueInfo.daysUntil);
+        return `${days} ${days === 1 ? 'dagur' : 'dagar'} yfir tíma!`;
+      }
+      if (dueInfo.status === 'today') return 'Skiladagur í dag!';
+      if (dueInfo.status === 'soon') {
+        return `${dueInfo.daysUntil} ${dueInfo.daysUntil === 1 ? 'dagur' : 'dagar'} eftir`;
+      }
+      return `Skiladagur: ${dueInfo.formatted}`;
+    }
+
+    function getStatusLabel(status) {
+      const labels = {
+        'proposed': 'Í bið',
+        'needs_review': 'Þarf yfirferð',
+        'approved': 'Samþykkt',
+        'disputed': 'Deilt um'
+      };
+      return labels[status] || status;
+    }
+
+    function getActivityIcon(type) {
+      const icons = {
+        'edit': '✏️',
+        'submit': '📤',
+        'approve': '✅',
+        'reject': '❌',
+        'term_propose': '📖',
+        'term_approve': '✓',
+        'assign': '👤'
+      };
+      return icons[type] || '📌';
+    }
+
+    // Initialize
+    init();
+  </script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--gray-100);
+      color: var(--gray-900);
+      line-height: 1.5;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      border-bottom: 1px solid var(--gray-200);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .header h1 { font-size: 1.25rem; color: var(--primary); }
+    .header nav { display: flex; gap: 1rem; flex: 1; }
+    .header nav a {
+      color: var(--gray-500);
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all 0.15s;
+    }
+    .header nav a:hover { color: var(--gray-700); background: var(--gray-100); }
+    .header nav a.active { color: var(--primary); background: #dbeafe; font-weight: 500; }
+    .user-info { display: flex; align-items: center; gap: 0.5rem; }
+    .user-info img { width: 32px; height: 32px; border-radius: 50%; }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+    /* Welcome Banner */
+    .welcome-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .welcome-banner h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
+    .welcome-subtitle { opacity: 0.9; }
+
+    /* Summary Grid */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .summary-card {
+      background: white;
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .summary-card:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .summary-card.highlight { border-left: 4px solid var(--warning); }
+    .summary-card.highlight-error { border-left: 4px solid var(--error); }
+    .summary-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .summary-value { font-size: 2rem; font-weight: 700; color: var(--primary); }
+    .summary-card.warning .summary-value { color: var(--warning); }
+    .summary-label { font-size: 0.875rem; color: var(--gray-500); }
+
+    /* Content Grid */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--gray-200);
+      background: var(--gray-50);
+    }
+    .card-title { font-size: 1rem; font-weight: 600; }
+    .card-body { padding: 1rem 1.25rem; max-height: 400px; overflow-y: auto; }
+    .card-footer { padding: 0.75rem 1.25rem; border-top: 1px solid var(--gray-200); background: var(--gray-50); }
+
+    /* Badges */
+    .badge {
+      background: var(--gray-200);
+      color: var(--gray-700);
+      padding: 0.25rem 0.625rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-warning { background: #fef3c7; color: #92400e; }
+
+    /* Work Items */
+    .work-item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .work-item:last-child { border-bottom: none; }
+    .work-item.item-overdue { background: #fef2f2; margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
+    .work-item.item-today { background: #fffbeb; margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
+    .work-item.item-attention { background: #fef3c7; margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
+
+    .work-item-main { flex: 1; }
+    .work-item-title { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
+    .work-item-notes { font-size: 0.875rem; color: var(--gray-600); margin: 0.25rem 0; font-style: italic; }
+    .work-item-meta { font-size: 0.75rem; color: var(--gray-500); display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .work-item-action { margin-left: 1rem; }
+
+    .book-label { font-weight: 600; color: var(--gray-700); }
+    .chapter-label, .section-label { color: var(--gray-600); }
+    .stage-badge {
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 0.125rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .due-date { font-weight: 500; }
+    .due-overdue { color: var(--error); }
+    .due-today { color: var(--warning); }
+    .due-soon { color: var(--warning); }
+
+    .review-notes {
+      background: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      margin: 0.5rem 0;
+      font-size: 0.875rem;
+      border-left: 3px solid var(--warning);
+    }
+
+    /* Term Items */
+    .term-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .term-item:last-child { border-bottom: none; }
+    .term-pair { margin-bottom: 0.25rem; }
+    .term-en { color: var(--gray-500); }
+    .term-arrow { color: var(--gray-400); margin: 0 0.5rem; }
+    .term-is { font-weight: 500; color: var(--gray-700); }
+    .term-meta { font-size: 0.75rem; display: flex; gap: 0.75rem; }
+    .term-status {
+      padding: 0.125rem 0.5rem;
+      border-radius: 0.25rem;
+      font-weight: 500;
+    }
+    .status-proposed { background: #dbeafe; color: #1e40af; }
+    .status-needs_review { background: #fef3c7; color: #92400e; }
+    .term-discussions { color: var(--gray-500); }
+
+    /* Activity Items */
+    .activity-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-icon { font-size: 1rem; }
+    .activity-content { flex: 1; }
+    .activity-desc { display: block; font-size: 0.875rem; }
+    .activity-time { font-size: 0.75rem; color: var(--gray-500); }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--gray-500);
+    }
+    .empty-state p:first-child { font-weight: 500; margin-bottom: 0.25rem; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
+    .btn-secondary:hover { background: var(--gray-300); }
+    .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
+
+    /* Text utilities */
+    .text-muted { color: var(--gray-500); }
+    .text-success { color: var(--success); }
+    .text-warning { color: var(--warning); }
+    .text-error { color: var(--error); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .content-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .header { flex-direction: column; gap: 1rem; padding: 1rem; }
+      .header nav { width: 100%; justify-content: center; }
+      .container { padding: 1rem; }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .work-item { flex-direction: column; gap: 0.75rem; }
+      .work-item-action { margin-left: 0; }
+    }
+  </style>
+</body>
+</html>

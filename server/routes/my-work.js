@@ -1,0 +1,251 @@
+/**
+ * My Work Routes
+ *
+ * API endpoints for the translator's "My Work" dashboard.
+ * Aggregates assignments, pending reviews, and terminology proposals.
+ *
+ * Endpoints:
+ *   GET /api/my-work          Get all work items for current user
+ *   GET /api/my-work/summary  Get summary counts
+ */
+
+const express = require('express');
+const router = express.Router();
+
+const { requireAuth } = require('../middleware/requireAuth');
+const assignmentStore = require('../services/assignmentStore');
+const editorHistory = require('../services/editorHistory');
+const activityLog = require('../services/activityLog');
+
+// Database for terminology
+const db = require('../db');
+
+// Stage labels for display
+const STAGE_LABELS = {
+  'enMarkdown': 'EN Markdown',
+  'mtOutput': 'Vélþýðing',
+  'linguisticReview': 'Yfirferð 1',
+  'editorialPass1': 'Yfirferð 1',
+  'tmCreated': 'Þýðingaminni',
+  'editorialPass2': 'Yfirferð 2',
+  'publication': 'Útgáfa'
+};
+
+// Book labels
+const BOOK_LABELS = {
+  'efnafraedi': 'Efnafræði',
+  'liffraedi': 'Líffræði'
+};
+
+/**
+ * Calculate days until due date
+ */
+function getDueDateInfo(dueDate) {
+  if (!dueDate) return null;
+
+  const due = new Date(dueDate);
+  const now = new Date();
+  const daysUntil = Math.ceil((due - now) / (1000 * 60 * 60 * 24));
+
+  return {
+    date: dueDate,
+    formatted: due.toLocaleDateString('is-IS'),
+    daysUntil,
+    status: daysUntil < 0 ? 'overdue' : daysUntil === 0 ? 'today' : daysUntil <= 3 ? 'soon' : 'normal'
+  };
+}
+
+/**
+ * Get user's proposed terminology
+ */
+function getUserProposedTerms(username) {
+  try {
+    const stmt = db.prepare(`
+      SELECT t.*,
+             (SELECT COUNT(*) FROM terminology_discussions td WHERE td.term_id = t.id) as discussion_count
+      FROM terminology t
+      WHERE t.proposed_by_name = ? AND t.status IN ('proposed', 'needs_review')
+      ORDER BY t.created_at DESC
+      LIMIT 20
+    `);
+    return stmt.all(username);
+  } catch (err) {
+    console.error('Error getting user terms:', err);
+    return [];
+  }
+}
+
+/**
+ * Get user's submissions awaiting review
+ */
+function getUserPendingSubmissions(username) {
+  try {
+    const stmt = db.prepare(`
+      SELECT pr.*, eh.content
+      FROM pending_reviews pr
+      JOIN edit_history eh ON pr.edit_history_id = eh.id
+      WHERE pr.submitted_by_username = ? AND pr.status = 'pending'
+      ORDER BY pr.submitted_at DESC
+    `);
+    return stmt.all(username);
+  } catch (err) {
+    console.error('Error getting user submissions:', err);
+    return [];
+  }
+}
+
+/**
+ * Get user's recently reviewed submissions (approved or changes requested)
+ */
+function getUserRecentReviews(username, limit = 10) {
+  try {
+    const stmt = db.prepare(`
+      SELECT pr.*, eh.content
+      FROM pending_reviews pr
+      JOIN edit_history eh ON pr.edit_history_id = eh.id
+      WHERE pr.submitted_by_username = ? AND pr.status IN ('approved', 'changes_requested')
+      ORDER BY pr.reviewed_at DESC
+      LIMIT ?
+    `);
+    return stmt.all(username, limit);
+  } catch (err) {
+    console.error('Error getting user recent reviews:', err);
+    return [];
+  }
+}
+
+/**
+ * GET /api/my-work
+ * Get all work items for the current user
+ */
+router.get('/', requireAuth, async (req, res) => {
+  try {
+    const username = req.user.username;
+
+    // Get assignments
+    const assignments = assignmentStore.getUserAssignments(username);
+    const formattedAssignments = assignments.map(a => ({
+      id: a.id,
+      book: a.book,
+      bookLabel: BOOK_LABELS[a.book] || a.book,
+      chapter: a.chapter,
+      stage: a.stage,
+      stageLabel: STAGE_LABELS[a.stage] || a.stage,
+      assignedBy: a.assignedBy,
+      assignedAt: a.assignedAt,
+      dueDate: getDueDateInfo(a.dueDate),
+      notes: a.notes,
+      editorUrl: `/editor?book=${a.book}&chapter=${a.chapter}`
+    }));
+
+    // Get pending submissions (awaiting review)
+    const pendingSubmissions = getUserPendingSubmissions(username);
+    const formattedSubmissions = pendingSubmissions.map(s => ({
+      id: s.id,
+      book: s.book,
+      bookLabel: BOOK_LABELS[s.book] || s.book,
+      chapter: s.chapter,
+      section: s.section,
+      submittedAt: s.submitted_at,
+      daysPending: Math.floor((Date.now() - new Date(s.submitted_at).getTime()) / (1000 * 60 * 60 * 24)),
+      editorUrl: `/editor?book=${s.book}&chapter=${s.chapter}&section=${s.section}`
+    }));
+
+    // Get recent review decisions (feedback)
+    const recentReviews = getUserRecentReviews(username);
+    const formattedReviews = recentReviews.map(r => ({
+      id: r.id,
+      book: r.book,
+      bookLabel: BOOK_LABELS[r.book] || r.book,
+      chapter: r.chapter,
+      section: r.section,
+      status: r.status,
+      reviewedBy: r.reviewed_by_username,
+      reviewedAt: r.reviewed_at,
+      notes: r.review_notes,
+      hasNotes: !!r.review_notes,
+      editorUrl: `/editor?book=${r.book}&chapter=${r.chapter}&section=${r.section}`
+    }));
+
+    // Get proposed terminology
+    const proposedTerms = getUserProposedTerms(username);
+    const formattedTerms = proposedTerms.map(t => ({
+      id: t.id,
+      english: t.english,
+      icelandic: t.icelandic,
+      status: t.status,
+      category: t.category,
+      createdAt: t.created_at,
+      discussionCount: t.discussion_count || 0
+    }));
+
+    // Get recent activity
+    const recentActivity = activityLog.getByUser(req.user.id, 10);
+
+    res.json({
+      user: {
+        id: req.user.id,
+        username: req.user.username,
+        name: req.user.name || req.user.username
+      },
+      assignments: formattedAssignments,
+      pendingSubmissions: formattedSubmissions,
+      recentReviews: formattedReviews,
+      proposedTerms: formattedTerms,
+      recentActivity,
+      summary: {
+        assignmentsCount: formattedAssignments.length,
+        pendingSubmissionsCount: formattedSubmissions.length,
+        changesRequestedCount: formattedReviews.filter(r => r.status === 'changes_requested').length,
+        proposedTermsCount: formattedTerms.length,
+        overdueCount: formattedAssignments.filter(a => a.dueDate?.status === 'overdue').length
+      }
+    });
+
+  } catch (err) {
+    console.error('My work error:', err);
+    res.status(500).json({
+      error: 'Failed to load my work',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/my-work/summary
+ * Get summary counts only (for nav badges)
+ */
+router.get('/summary', requireAuth, (req, res) => {
+  try {
+    const username = req.user.username;
+
+    const assignments = assignmentStore.getUserAssignments(username);
+    const pendingSubmissions = getUserPendingSubmissions(username);
+    const recentReviews = getUserRecentReviews(username, 5);
+    const proposedTerms = getUserProposedTerms(username);
+
+    const overdueCount = assignments.filter(a => {
+      if (!a.dueDate) return false;
+      const daysUntil = Math.ceil((new Date(a.dueDate) - new Date()) / (1000 * 60 * 60 * 24));
+      return daysUntil < 0;
+    }).length;
+
+    res.json({
+      assignments: assignments.length,
+      pendingSubmissions: pendingSubmissions.length,
+      changesRequested: recentReviews.filter(r => r.status === 'changes_requested').length,
+      proposedTerms: proposedTerms.length,
+      overdue: overdueCount,
+      total: assignments.length + pendingSubmissions.length + proposedTerms.length
+    });
+
+  } catch (err) {
+    console.error('My work summary error:', err);
+    res.status(500).json({
+      error: 'Failed to load summary',
+      message: err.message
+    });
+  }
+});
+
+module.exports = router;
