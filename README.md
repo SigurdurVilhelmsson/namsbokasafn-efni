@@ -281,6 +281,17 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/:bookId/chapters/:chapter` |
 | GET | `/:slug/download` |
 
+## /decisions
+
+| Method | Path |
+|--------|------|
+| GET | `/types` |
+| GET | `/stats` |
+| GET | `/recent` |
+| GET | `/` |
+| GET | `/:id` |
+| POST | `/` |
+
 ## /editor
 
 | Method | Path |
@@ -434,6 +445,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 
 | Method | Path |
 |--------|------|
+| GET | `/dashboard` |
 | GET | `/activity/timeline` |
 | GET | `/activity/types` |
 | GET | `/:book` |
@@ -503,6 +515,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/status` |
 | GET | `/books` |
 | GET | `/terminology` |
+| GET | `/decisions` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
 | GET | `/admin/feedback` |
@@ -526,6 +539,11 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | POST | `/:sessionId/rollback` |
 | POST | `/:sessionId/reset` |
 | GET | `/:sessionId/recovery` |
+| POST | `/assignments` |
+| GET | `/assignments` |
+| GET | `/assignments/mine` |
+| POST | `/assignments/:id/complete` |
+| POST | `/assignments/:id/cancel` |
 
 
 <!-- routes-end -->

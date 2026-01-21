@@ -57,6 +57,17 @@
 | GET | `/:bookId/chapters/:chapter` |
 | GET | `/:slug/download` |
 
+## /decisions
+
+| Method | Path |
+|--------|------|
+| GET | `/types` |
+| GET | `/stats` |
+| GET | `/recent` |
+| GET | `/` |
+| GET | `/:id` |
+| POST | `/` |
+
 ## /editor
 
 | Method | Path |
@@ -210,6 +221,7 @@
 
 | Method | Path |
 |--------|------|
+| GET | `/dashboard` |
 | GET | `/activity/timeline` |
 | GET | `/activity/types` |
 | GET | `/:book` |
@@ -279,6 +291,7 @@
 | GET | `/status` |
 | GET | `/books` |
 | GET | `/terminology` |
+| GET | `/decisions` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
 | GET | `/admin/feedback` |
@@ -302,4 +315,9 @@
 | POST | `/:sessionId/rollback` |
 | POST | `/:sessionId/reset` |
 | GET | `/:sessionId/recovery` |
+| POST | `/assignments` |
+| GET | `/assignments` |
+| GET | `/assignments/mine` |
+| POST | `/assignments/:id/complete` |
+| POST | `/assignments/:id/cancel` |
 
