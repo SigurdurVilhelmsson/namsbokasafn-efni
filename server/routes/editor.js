@@ -111,6 +111,9 @@ router.get('/:book/:chapter/:section', requireAuth, validateParams, validateSect
       r => r.chapter === String(chapter) && r.section === section
     );
 
+    // Check for recent feedback (changes requested)
+    const recentFeedback = editorHistory.getRecentFeedback(book, chapter, section);
+
     res.json({
       book,
       chapter,
@@ -127,7 +130,8 @@ router.get('/:book/:chapter/:section', requireAuth, validateParams, validateSect
         id: pendingReview.id,
         submittedBy: pendingReview.submittedByUsername,
         submittedAt: pendingReview.submittedAt
-      } : null
+      } : null,
+      recentFeedback: recentFeedback
     });
   } catch (err) {
     console.error('Error loading section:', err);

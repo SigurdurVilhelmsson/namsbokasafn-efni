@@ -88,6 +88,20 @@
         </div>
       </div>
 
+      <!-- Disputed Terms Queue -->
+      <div class="card disputed-terms-card">
+        <div class="card-header-flex">
+          <h2 class="card-title">
+            <span class="term-icon">📚</span>
+            Hugtök í umræðu
+          </h2>
+          <a href="/terminology" class="btn btn-secondary btn-sm">Orðasafn</a>
+        </div>
+        <div id="disputed-terms-content">
+          <p class="text-muted">Hleður...</p>
+        </div>
+      </div>
+
       <!-- Last Refreshed & Refresh Button -->
       <div class="dashboard-refresh-bar">
         <span class="last-refreshed">
@@ -654,9 +668,61 @@
       return div.innerHTML;
     }
 
+    // ============================================================================
+    // DISPUTED TERMS QUEUE
+    // ============================================================================
+
+    async function loadDisputedTerms() {
+      const container = document.getElementById('disputed-terms-content');
+
+      try {
+        const res = await fetch('/api/terminology/review-queue?limit=5');
+        const data = await res.json();
+
+        if (!data.terms || data.terms.length === 0) {
+          container.innerHTML = '<p class="text-success center">Engin hugtök í umræðu!</p>';
+          return;
+        }
+
+        container.innerHTML = data.terms.map(term => {
+          const statusClass = term.status === 'disputed' ? 'status-disputed' :
+                              term.status === 'needs_review' ? 'status-needs-review' : 'status-proposed';
+          const statusLabel = term.status === 'disputed' ? 'Til umræðu' :
+                              term.status === 'needs_review' ? 'Þarfnast yfirferðar' : 'Í bið';
+
+          return `
+            <div class="disputed-term-item">
+              <div class="term-content">
+                <div class="term-pair">
+                  <span class="term-english">${escapeHtml(term.english)}</span>
+                  <span class="term-arrow">→</span>
+                  <span class="term-icelandic">${escapeHtml(term.icelandic)}</span>
+                </div>
+                <div class="term-meta">
+                  <span class="term-status ${statusClass}">${statusLabel}</span>
+                  ${term.proposed_by_name ? '<span class="term-proposer">lagt til af ' + escapeHtml(term.proposed_by_name) + '</span>' : ''}
+                  ${term.discussion_count > 0 ? '<span class="term-discussions">' + term.discussion_count + ' athugasemdir</span>' : ''}
+                </div>
+              </div>
+              <a href="/terminology?id=${term.id}" class="btn btn-sm btn-secondary">Skoða</a>
+            </div>
+          `;
+        }).join('');
+
+        if (data.terms.length >= 5) {
+          container.innerHTML += '<div class="disputed-terms-footer"><a href="/terminology?filter=review" class="btn btn-secondary btn-sm">Sjá öll hugtök í umræðu</a></div>';
+        }
+
+      } catch (err) {
+        console.log('Could not load disputed terms:', err);
+        container.innerHTML = '<p class="text-muted">Gat ekki hlaðið hugtökum</p>';
+      }
+    }
+
     // Initialize on load
     document.addEventListener('DOMContentLoaded', () => {
       loadDashboard();
+      loadDisputedTerms();
 
       if (window.location.hash === '#timeline') {
         showTab('timeline');
@@ -827,6 +893,26 @@
     .center { text-align: center; }
     .empty-state { text-align: center; padding: 2rem; color: var(--gray-500); }
     .pagination { margin-top: 1rem; text-align: center; }
+
+    /* Disputed Terms Queue */
+    .disputed-terms-card { border-left: 4px solid var(--info); }
+    .term-icon { font-size: 1rem; }
+    .disputed-term-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; border-radius: 0.375rem; margin-bottom: 0.5rem; background: var(--gray-50); }
+    .disputed-term-item:hover { background: var(--gray-100); }
+    .term-content { flex: 1; min-width: 0; }
+    .term-pair { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; flex-wrap: wrap; }
+    .term-english { color: var(--gray-700); }
+    .term-arrow { color: var(--gray-400); }
+    .term-icelandic { color: var(--primary); font-weight: 500; }
+    .term-meta { display: flex; gap: 0.75rem; margin-top: 0.25rem; font-size: 0.75rem; color: var(--gray-500); flex-wrap: wrap; }
+    .term-status { padding: 0.125rem 0.375rem; border-radius: 9999px; font-weight: 500; }
+    .term-status.status-disputed { background: #fee2e2; color: #991b1b; }
+    .term-status.status-needs-review { background: #fef3c7; color: #92400e; }
+    .term-status.status-proposed { background: #dbeafe; color: #1e40af; }
+    .term-proposer { font-style: italic; }
+    .term-discussions { display: flex; align-items: center; gap: 0.25rem; }
+    .term-discussions::before { content: '💬'; font-size: 0.625rem; }
+    .disputed-terms-footer { text-align: center; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--gray-200); }
 
     @media (max-width: 1024px) {
       .dashboard-grid { grid-template-columns: 1fr; }

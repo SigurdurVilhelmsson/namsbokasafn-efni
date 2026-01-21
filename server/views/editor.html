@@ -76,10 +76,40 @@
         <span id="pending-review-text"></span>
       </div>
 
+      <!-- Changes requested feedback banner -->
+      <div class="alert alert-feedback" id="feedback-alert" style="display: none;">
+        <div class="feedback-header">
+          <i class="fas fa-comment-dots"></i>
+          <strong>Breytingar óskast</strong>
+          <span class="feedback-meta" id="feedback-meta"></span>
+          <button class="btn-dismiss" onclick="dismissFeedback()">&times;</button>
+        </div>
+        <div class="feedback-notes" id="feedback-notes"></div>
+      </div>
+
       <!-- Assignment banner (if assigned to current user) -->
       <div class="alert alert-info" id="assignment-banner" style="display: none;">
         <i class="fas fa-user-check"></i>
         <span id="assignment-text"></span>
+      </div>
+
+      <!-- Section progress indicator -->
+      <div class="section-progress" id="section-progress" style="display: none;">
+        <div class="progress-nav">
+          <button class="btn btn-secondary btn-small" id="prev-section-btn" disabled title="Fyrri hluti">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="progress-info">
+            <span class="progress-label">Hluti <span id="current-section-num">1</span> af <span id="total-sections">1</span></span>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="progress-bar-fill"></div>
+            </div>
+            <span class="progress-status" id="progress-status"></span>
+          </div>
+          <button class="btn btn-secondary btn-small" id="next-section-btn" disabled title="Næsti hluti">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
 
       <!-- Contextual Editor Guidance -->
@@ -428,6 +458,9 @@
           alertEl.style.display = 'none';
         }
 
+        // Show recent feedback (changes requested) if exists
+        showRecentFeedback(data.recentFeedback);
+
         // Initialize EasyMDE
         initEditor(data.content.is || '');
 
@@ -440,6 +473,9 @@
 
         // Load history
         loadHistory(book, chapter, section);
+
+        // Load section progress
+        loadSectionProgress(book, chapter, section);
 
       } catch (err) {
         alert('Villa við að hlaða kafla: ' + err.message);
@@ -836,6 +872,45 @@
     }
 
     // ========================================
+    // FEEDBACK BANNER
+    // ========================================
+
+    let feedbackDismissed = false;
+
+    function showRecentFeedback(feedback) {
+      const feedbackAlert = document.getElementById('feedback-alert');
+
+      if (!feedback || feedbackDismissed) {
+        feedbackAlert.style.display = 'none';
+        return;
+      }
+
+      // Format the date
+      const reviewedAt = new Date(feedback.reviewedAt);
+      const dateStr = reviewedAt.toLocaleDateString('is-IS');
+      const timeStr = reviewedAt.toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' });
+
+      // Set metadata
+      document.getElementById('feedback-meta').textContent =
+        '— ' + feedback.reviewedBy + ' • ' + dateStr + ' ' + timeStr;
+
+      // Set notes
+      const notesEl = document.getElementById('feedback-notes');
+      if (feedback.notes) {
+        notesEl.innerHTML = '<p>' + escapeHtml(feedback.notes).replace(/\n/g, '<br>') + '</p>';
+      } else {
+        notesEl.innerHTML = '<p class="text-muted"><em>Engar athugasemdir skráðar</em></p>';
+      }
+
+      feedbackAlert.style.display = 'block';
+    }
+
+    function dismissFeedback() {
+      feedbackDismissed = true;
+      document.getElementById('feedback-alert').style.display = 'none';
+    }
+
+    // ========================================
     // GUIDANCE PANEL
     // ========================================
 
@@ -961,6 +1036,100 @@
       }
     }
 
+    // ========================================
+    // SECTION PROGRESS
+    // ========================================
+
+    let allSections = [];
+    let currentSectionIndex = -1;
+
+    async function loadSectionProgress(book, chapter, currentSectionName) {
+      const progressEl = document.getElementById('section-progress');
+
+      try {
+        const res = await fetch('/api/editor/' + book + '/' + chapter);
+        const data = await res.json();
+
+        allSections = data.sections || [];
+
+        if (allSections.length <= 1) {
+          progressEl.style.display = 'none';
+          return;
+        }
+
+        // Find current section index
+        currentSectionIndex = allSections.findIndex(s => s.section === currentSectionName);
+        if (currentSectionIndex === -1) currentSectionIndex = 0;
+
+        // Count edited vs MT output
+        const editedCount = allSections.filter(s => s.source === 'faithful').length;
+        const totalCount = allSections.length;
+
+        // Update display
+        document.getElementById('current-section-num').textContent = currentSectionIndex + 1;
+        document.getElementById('total-sections').textContent = totalCount;
+
+        // Update progress bar
+        const progressPercent = Math.round((editedCount / totalCount) * 100);
+        document.getElementById('progress-bar-fill').style.width = progressPercent + '%';
+
+        // Update status text
+        const statusEl = document.getElementById('progress-status');
+        if (editedCount === totalCount) {
+          statusEl.innerHTML = '<span class="text-success"><i class="fas fa-check-circle"></i> Allir hlutar klár</span>';
+        } else {
+          statusEl.textContent = editedCount + ' af ' + totalCount + ' klár (' + progressPercent + '%)';
+        }
+
+        // Setup navigation buttons
+        updateSectionNavButtons();
+
+        document.getElementById('prev-section-btn').onclick = () => navigateSection(-1);
+        document.getElementById('next-section-btn').onclick = () => navigateSection(1);
+
+        progressEl.style.display = 'block';
+
+      } catch (err) {
+        console.log('Could not load section progress:', err);
+        progressEl.style.display = 'none';
+      }
+    }
+
+    function updateSectionNavButtons() {
+      const prevBtn = document.getElementById('prev-section-btn');
+      const nextBtn = document.getElementById('next-section-btn');
+
+      prevBtn.disabled = currentSectionIndex <= 0;
+      nextBtn.disabled = currentSectionIndex >= allSections.length - 1;
+
+      // Add tooltips with section names
+      if (currentSectionIndex > 0) {
+        prevBtn.title = 'Fyrri hluti: ' + allSections[currentSectionIndex - 1].section;
+      } else {
+        prevBtn.title = 'Fyrri hluti';
+      }
+
+      if (currentSectionIndex < allSections.length - 1) {
+        nextBtn.title = 'Næsti hluti: ' + allSections[currentSectionIndex + 1].section;
+      } else {
+        nextBtn.title = 'Næsti hluti';
+      }
+    }
+
+    function navigateSection(direction) {
+      if (hasUnsavedChanges()) {
+        if (!confirm('Þú ert með óvistaðar breytingar. Viltu halda áfram í næsta hluta?')) {
+          return;
+        }
+      }
+
+      const newIndex = currentSectionIndex + direction;
+      if (newIndex < 0 || newIndex >= allSections.length) return;
+
+      const nextSection = allSections[newIndex];
+      loadEditor(currentBook, currentChapter, nextSection.section);
+    }
+
     // Initialize on page load
     init();
   </script>
@@ -1031,6 +1200,54 @@
 
     .alert { padding: 0.75rem 1rem; border-radius: 0.375rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
     .alert-warning { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+
+    /* Feedback Alert (Changes Requested) */
+    .alert-feedback {
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+      border: 1px solid #f9a8d4;
+      color: #831843;
+      display: block;
+      padding: 1rem;
+    }
+    .alert-feedback .feedback-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .alert-feedback .feedback-header i {
+      color: #db2777;
+    }
+    .alert-feedback .feedback-header strong {
+      color: #be185d;
+    }
+    .alert-feedback .feedback-meta {
+      font-size: 0.75rem;
+      color: #9d174d;
+      margin-left: auto;
+    }
+    .alert-feedback .btn-dismiss {
+      background: none;
+      border: none;
+      color: #9d174d;
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 0 0.25rem;
+      line-height: 1;
+    }
+    .alert-feedback .btn-dismiss:hover {
+      color: #831843;
+    }
+    .alert-feedback .feedback-notes {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .alert-feedback .feedback-notes p {
+      margin: 0;
+    }
 
     .editor-content { display: flex; gap: 1rem; }
     .editor-content.side-by-side .source-panel { flex: 1; }
@@ -1321,6 +1538,52 @@
       color: var(--gray-500);
     }
     .keyboard-hints .hint { white-space: nowrap; }
+
+    /* Section Progress Indicator */
+    .section-progress {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .progress-nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .progress-info {
+      flex: 1;
+      text-align: center;
+    }
+    .progress-label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+    .progress-bar-container {
+      height: 6px;
+      background: var(--gray-200);
+      border-radius: 3px;
+      margin: 0.5rem 0;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--success) 100%);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+    .progress-status {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .progress-nav .btn {
+      padding: 0.5rem 0.75rem;
+    }
+    .progress-nav .btn:disabled {
+      opacity: 0.3;
+    }
   </style>
 </body>
 </html>

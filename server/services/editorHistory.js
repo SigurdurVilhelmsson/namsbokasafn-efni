@@ -95,6 +95,16 @@ const statements = {
   `),
   countPendingReviewsForBook: db.prepare(`
     SELECT COUNT(*) as count FROM pending_reviews WHERE status = 'pending' AND book = ?
+  `),
+  getRecentFeedbackForSection: db.prepare(`
+    SELECT pr.*, eh.content, eh.created_at as edit_created_at
+    FROM pending_reviews pr
+    JOIN edit_history eh ON pr.edit_history_id = eh.id
+    WHERE pr.book = ? AND pr.chapter = ? AND pr.section = ?
+      AND pr.status = 'changes_requested'
+      AND pr.reviewed_at > datetime('now', '-7 days')
+    ORDER BY pr.reviewed_at DESC
+    LIMIT 1
   `)
 };
 
@@ -488,6 +498,25 @@ function listSections(book, chapter) {
   });
 }
 
+/**
+ * Get recent feedback for a section (changes requested within last 7 days)
+ * This helps translators see what changes were requested by reviewers.
+ */
+function getRecentFeedback(book, chapter, section) {
+  const row = statements.getRecentFeedbackForSection.get(book, String(chapter), section);
+  if (!row) return null;
+
+  return {
+    id: row.id,
+    status: row.status,
+    reviewedBy: row.reviewed_by_username,
+    reviewedAt: row.reviewed_at,
+    notes: row.review_notes,
+    submittedBy: row.submitted_by_username,
+    submittedAt: row.submitted_at
+  };
+}
+
 module.exports = {
   loadSectionContent,
   saveDraft,
@@ -500,6 +529,7 @@ module.exports = {
   getReview,
   approveReview,
   requestChanges,
+  getRecentFeedback,
   getCurrentContent,
   listSections,
   getFilePath,
