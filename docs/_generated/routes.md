@@ -66,6 +66,7 @@
 | GET | `/recent` |
 | GET | `/` |
 | GET | `/:id` |
+| GET | `/by-issue/:issueId` |
 | POST | `/` |
 
 ## /editor
@@ -237,6 +238,7 @@
 | GET | `/:book/scan` |
 | POST | `/:book/sync` |
 | POST | `/:book/:chapter/sync` |
+| GET | `/meeting-agenda` |
 
 ## /suggestions
 

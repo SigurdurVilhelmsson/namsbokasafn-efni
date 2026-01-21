@@ -290,6 +290,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/recent` |
 | GET | `/` |
 | GET | `/:id` |
+| GET | `/by-issue/:issueId` |
 | POST | `/` |
 
 ## /editor
@@ -461,6 +462,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/:book/scan` |
 | POST | `/:book/sync` |
 | POST | `/:book/:chapter/sync` |
+| GET | `/meeting-agenda` |
 
 ## /suggestions
 
