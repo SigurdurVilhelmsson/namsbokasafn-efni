@@ -88,6 +88,16 @@
         </div>
       </div>
 
+      <!-- Last Refreshed & Refresh Button -->
+      <div class="dashboard-refresh-bar">
+        <span class="last-refreshed">
+          <span class="text-muted" id="last-refreshed-text">Síðast uppfært: -</span>
+        </span>
+        <button class="btn btn-sm btn-secondary" onclick="refreshDashboard()" id="refresh-btn">
+          Endurnýja
+        </button>
+      </div>
+
       <!-- Mini Chapter Matrix -->
       <div class="card">
         <div class="card-header-flex">
@@ -216,6 +226,22 @@
       'publication': 'Útg.'
     };
 
+    const STAGE_FULL_LABELS = {
+      'enMarkdown': 'Enska Markdown',
+      'mtOutput': 'Vélþýðing',
+      'linguisticReview': 'Málfræðileg yfirferð',
+      'tmCreated': 'Þýðingaminni búið til',
+      'publication': 'Útgáfa'
+    };
+
+    const STATUS_LABELS = {
+      'complete': 'Lokið',
+      'in-progress': 'Í vinnslu',
+      'pending': 'Í bið',
+      'not-started': 'Ekki byrjað',
+      'blocked': 'Lokað'
+    };
+
     // Simplified 5-step stages
     const DISPLAY_STAGES = ['enMarkdown', 'mtOutput', 'linguisticReview', 'tmCreated', 'publication'];
 
@@ -283,8 +309,30 @@
         // Render mini matrix
         renderMiniMatrix(dashboardData.chapterMatrix);
 
+        // Update last refreshed timestamp
+        updateLastRefreshed();
+
       } catch (err) {
         console.error('Failed to load dashboard:', err);
+      }
+    }
+
+    function updateLastRefreshed() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('is-IS', { hour: '2-digit', minute: '2-digit' });
+      document.getElementById('last-refreshed-text').textContent = `Síðast uppfært: ${timeStr}`;
+    }
+
+    async function refreshDashboard() {
+      const btn = document.getElementById('refresh-btn');
+      btn.classList.add('loading');
+      btn.textContent = 'Hleður...';
+
+      try {
+        await loadDashboard();
+      } finally {
+        btn.classList.remove('loading');
+        btn.textContent = 'Endurnýja';
       }
     }
 
@@ -326,7 +374,7 @@
       const container = document.getElementById('activity-feed');
 
       if (activities.length === 0) {
-        container.innerHTML = '<p class="text-muted center">Engin virkni skráð</p>';
+        container.innerHTML = '<p class="text-muted center">Engin virkni skráð enn. Virkni birtist hér þegar ritstjórar hefja vinnu.</p>';
         return;
       }
 
@@ -365,7 +413,9 @@
         html += `<div class="matrix-mini-chapter" onclick="openAssignmentModal('efnafraedi', ${ch.chapter})">K${ch.chapter}</div>`;
         for (const stage of DISPLAY_STAGES) {
           const status = ch.stages[stage] || 'not-started';
-          html += `<div class="matrix-mini-cell status-${status}" title="${STAGE_LABELS[stage]}: ${status}"></div>`;
+          const stageLabel = STAGE_FULL_LABELS[stage] || STAGE_LABELS[stage] || stage;
+          const statusLabel = STATUS_LABELS[status] || status;
+          html += `<div class="matrix-mini-cell status-${status}" title="${stageLabel}: ${statusLabel}"></div>`;
         }
       }
 
@@ -401,7 +451,9 @@
             const stageData = ch.stages.find(s => s.stage === stage);
             const status = stageData ? stageData.status : 'not-started';
             const symbol = getStatusSymbol(status);
-            html += `<td class="matrix-cell status-${status}" title="${STAGE_LABELS[stage]}: ${status}">${symbol}</td>`;
+            const stageLabel = STAGE_FULL_LABELS[stage] || STAGE_LABELS[stage] || stage;
+            const statusLabel = STATUS_LABELS[status] || status;
+            html += `<td class="matrix-cell status-${status}" title="${stageLabel}: ${statusLabel}">${symbol}</td>`;
           }
 
           html += `<td><div class="progress-bar"><div class="progress-bar-fill" style="width: ${ch.progress}%"></div></div><small>${ch.progress}%</small></td>`;
@@ -479,7 +531,7 @@
         timelineTotal = data.total;
 
         if (data.activities.length === 0 && !append) {
-          contentEl.innerHTML = '<div class="empty-state"><p>Engin virkni skráð</p></div>';
+          contentEl.innerHTML = '<div class="empty-state"><p>Engin virkni skráð</p><p class="text-muted">Þegar þýðendur vinna að köflum mun virkni þeirra birtast hér.</p></div>';
           paginationEl.style.display = 'none';
           return;
         }
@@ -653,6 +705,11 @@
 
     /* Dashboard Grid */
     .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+    /* Dashboard Refresh Bar */
+    .dashboard-refresh-bar { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; margin-bottom: 1rem; border-top: 1px solid var(--gray-200); padding-top: 1rem; }
+    .last-refreshed { font-size: 0.75rem; }
+    #refresh-btn.loading { opacity: 0.6; pointer-events: none; }
 
     /* Attention Card */
     .attention-card { border-left: 4px solid var(--warning); }

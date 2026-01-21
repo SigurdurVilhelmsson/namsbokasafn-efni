@@ -155,7 +155,40 @@
     async function init() {
       await loadTypes();
       await loadStats();
+
+      // Restore filters from URL params
+      restoreFiltersFromURL();
+
       await searchDecisions();
+    }
+
+    function restoreFiltersFromURL() {
+      const params = new URLSearchParams(window.location.search);
+
+      const query = params.get('q');
+      const type = params.get('type');
+      const book = params.get('book');
+
+      if (query) document.getElementById('search-input').value = query;
+      if (type) document.getElementById('filter-type').value = type;
+      if (book) document.getElementById('filter-book').value = book;
+    }
+
+    function updateURL() {
+      const query = document.getElementById('search-input').value.trim();
+      const type = document.getElementById('filter-type').value;
+      const book = document.getElementById('filter-book').value;
+
+      const params = new URLSearchParams();
+      if (query) params.set('q', query);
+      if (type) params.set('type', type);
+      if (book) params.set('book', book);
+
+      const newURL = params.toString()
+        ? `${window.location.pathname}?${params}`
+        : window.location.pathname;
+
+      window.history.replaceState({}, '', newURL);
     }
 
     async function loadTypes() {
@@ -215,6 +248,7 @@
       if (!append) {
         currentOffset = 0;
         container.innerHTML = '<p class="text-muted">Hleður...</p>';
+        updateURL();
       }
 
       const query = document.getElementById('search-input').value.trim();

@@ -174,6 +174,13 @@
             <h3>Íslenska (þýðing)</h3>
           </div>
           <textarea id="markdown-editor"></textarea>
+          <div class="keyboard-hints">
+            <span class="hint"><kbd>Ctrl</kbd>+<kbd>S</kbd> Vista</span>
+            <span class="hint"><kbd>Ctrl</kbd>+<kbd>B</kbd> Feitletra</span>
+            <span class="hint"><kbd>Ctrl</kbd>+<kbd>I</kbd> Skáletra</span>
+            <span class="hint"><kbd>Ctrl</kbd>+<kbd>K</kbd> Tengill</span>
+            <span class="hint"><kbd>F11</kbd> Heilskjár</span>
+          </div>
         </div>
       </div>
 
@@ -245,6 +252,19 @@
     let lastSavedContent = '';
     let isSourceVisible = false;
 
+    // Unsaved changes warning
+    function hasUnsavedChanges() {
+      return editor && editor.value() !== lastSavedContent;
+    }
+
+    window.addEventListener('beforeunload', (e) => {
+      if (hasUnsavedChanges()) {
+        e.preventDefault();
+        e.returnValue = 'Óvistaðar breytingar - viltu yfirgefa síðuna?';
+        return e.returnValue;
+      }
+    });
+
     // Initialize page
     async function init() {
       // Check auth
@@ -298,6 +318,11 @@
       });
 
       document.getElementById('back-btn').addEventListener('click', () => {
+        if (hasUnsavedChanges()) {
+          if (!confirm('Þú ert með óvistaðar breytingar. Viltu yfirgefa ritstjórann?')) {
+            return;
+          }
+        }
         showSectionSelector();
       });
 
@@ -307,6 +332,16 @@
       document.getElementById('history-btn').addEventListener('click', toggleHistory);
       document.getElementById('close-history').addEventListener('click', () => {
         document.getElementById('history-sidebar').style.display = 'none';
+      });
+
+      // Ctrl+S to save
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+          e.preventDefault();
+          if (editor && hasUnsavedChanges()) {
+            saveContent();
+          }
+        }
       });
     }
 
@@ -892,9 +927,27 @@
           };
           const stageLabel = stageLabels[assignment.stage] || assignment.stage;
 
-          document.getElementById('assignment-text').textContent =
-            `Þér hefur verið úthlutað þessum kafla fyrir ${stageLabel}` +
-            (assignment.dueDate ? ` (skiladagur: ${new Date(assignment.dueDate).toLocaleDateString('is-IS')})` : '');
+          let dueDateText = '';
+          if (assignment.dueDate) {
+            const dueDate = new Date(assignment.dueDate);
+            const now = new Date();
+            const daysUntil = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
+            const dateStr = dueDate.toLocaleDateString('is-IS');
+
+            if (daysUntil < 0) {
+              const daysOverdue = Math.abs(daysUntil);
+              dueDateText = ` <span class="due-overdue">(${daysOverdue} ${daysOverdue === 1 ? 'dagur' : 'dagar'} yfir tíma!)</span>`;
+            } else if (daysUntil === 0) {
+              dueDateText = ` <span class="due-today">(í dag!)</span>`;
+            } else if (daysUntil <= 3) {
+              dueDateText = ` <span class="due-soon">(${daysUntil} ${daysUntil === 1 ? 'dagur' : 'dagar'} eftir)</span>`;
+            } else {
+              dueDateText = ` (skiladagur: ${dateStr})`;
+            }
+          }
+
+          document.getElementById('assignment-text').innerHTML =
+            `Þér hefur verið úthlutað þessum kafla fyrir ${stageLabel}${dueDateText}`;
           banner.style.display = 'flex';
 
           // Set guidance based on assignment
@@ -1243,6 +1296,11 @@
       color: #1e40af;
     }
 
+    /* Due date indicators */
+    .due-overdue { color: var(--error); font-weight: 600; }
+    .due-today { color: var(--warning); font-weight: 600; }
+    .due-soon { color: var(--warning); font-weight: 500; }
+
     /* Keyboard shortcut styling */
     kbd {
       background: var(--gray-100);
@@ -1252,6 +1310,19 @@
       font-family: inherit;
       font-size: 0.75rem;
     }
+
+    /* Keyboard hints bar */
+    .keyboard-hints {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .keyboard-hints .hint { white-space: nowrap; }
   </style>
 </body>
 </html>

@@ -224,7 +224,7 @@
         ];
 
         if (issues.length === 0) {
-          container.innerHTML = '<div class="empty-state"><p>Engin atriði í fljótlegri lagfæringu!</p></div>';
+          container.innerHTML = '<div class="empty-state"><p class="text-success">✓ Engin atriði í fljótlegri lagfæringu</p><p class="text-muted">Öll einföld atriði hafa verið leyst. Frábært!</p></div>';
           return;
         }
 
@@ -255,7 +255,7 @@
         ];
 
         if (issues.length === 0) {
-          container.innerHTML = '<div class="empty-state"><p>Engin atriði bíða umræðu!</p></div>';
+          container.innerHTML = '<div class="empty-state"><p class="text-success">✓ Engin atriði bíða umræðu</p><p class="text-muted">Engir flóknir kostir eru í bið. Hópurinn hefur tekist á við allt!</p></div>';
           return;
         }
 
@@ -278,7 +278,7 @@
         const issues = data.issues || [];
 
         if (issues.length === 0) {
-          container.innerHTML = '<div class="empty-state"><p>Engin leyst atriði fundust</p></div>';
+          container.innerHTML = '<div class="empty-state"><p>Engin leyst atriði fundust</p><p class="text-muted">Leyst atriði munu birtast hér þegar ritstjórar leysa úr þeim.</p></div>';
           return;
         }
 
