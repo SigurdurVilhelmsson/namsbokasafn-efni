@@ -508,6 +508,9 @@ function getModuleOutputFilename(chapter, section, title, lang) {
 
 /**
  * Write aggregated key terms file
+ * Uses markdown definition list syntax for better styling:
+ *   **Term**
+ *   : definition text
  */
 function writeKeyTermsFile(outputDir, chapter, terms, options) {
   const titles = SECTION_TITLES[options.lang] || SECTION_TITLES.en;
@@ -517,13 +520,19 @@ function writeKeyTermsFile(outputDir, chapter, terms, options) {
     a.term.toLowerCase().localeCompare(b.term.toLowerCase(), options.lang)
   );
 
-  // Generate content
+  // Generate content with definition list syntax
   let content = `## ${titles.keyTerms}\n\n`;
 
   for (const term of sortedTerms) {
-    content += `**${term.term}**\n`;
+    // Format term with ID if available
+    const termText = term.id
+      ? `**${term.term}**{#${term.id}}`
+      : `**${term.term}**`;
+
+    content += `${termText}\n`;
     if (term.definition) {
-      content += `${term.definition}\n`;
+      // Use definition list syntax (colon prefix)
+      content += `: ${term.definition}\n`;
     }
     content += '\n';
   }

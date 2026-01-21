@@ -396,6 +396,16 @@ function generateFrontmatter(options) {
     frontmatter.objectives = objectives;
   }
 
+  // Preserve keywords from existing frontmatter (these come from CNXML metadata)
+  if (existingFrontmatter && existingFrontmatter.keywords && existingFrontmatter.keywords.length > 0) {
+    frontmatter.keywords = existingFrontmatter.keywords;
+  }
+
+  // Preserve subjects from existing frontmatter
+  if (existingFrontmatter && existingFrontmatter.subjects && existingFrontmatter.subjects.length > 0) {
+    frontmatter.subjects = existingFrontmatter.subjects;
+  }
+
   // Source information from book metadata
   if (bookMetadata && bookMetadata.source) {
     frontmatter.source = {

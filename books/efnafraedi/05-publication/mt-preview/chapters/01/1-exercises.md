@@ -3,7 +3,7 @@ title: Æfingar
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-19T19:07:01.546Z"
+published-at: "2026-01-21T20:46:52.313Z"
 type: exercises
 ---
 

@@ -1,0 +1,269 @@
+{
+  "terms": [
+    {
+      "term": "Celsíus (°C)",
+      "definition": "hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum kvarða",
+      "chapter": 1
+    },
+    {
+      "term": "eðlisbreyting",
+      "definition": "breyting á efnisham eða eiginleikum efnis sem felur ekki í sér breytingu á efnasamsetningu þess",
+      "chapter": 1
+    },
+    {
+      "term": "eðlisbundinn eiginleiki",
+      "definition": "eiginleiki efnis sem er óháður magni efnisins",
+      "chapter": 1
+    },
+    {
+      "term": "eðliseiginleiki",
+      "definition": "einkenni efnis sem er ekki tengt neinni breytingu á efnasamsetningu þess",
+      "chapter": 1
+    },
+    {
+      "term": "Eðlismassi",
+      "definition": "hlutfall massa og rúmmáls fyrir efni eða hlut",
+      "chapter": 1
+    },
+    {
+      "term": "efnablanda",
+      "definition": "efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum",
+      "chapter": 1
+    },
+    {
+      "term": "efnabreytingar",
+      "definition": "breyting sem myndar nýtt efni úr upprunalega efninu",
+      "chapter": 1
+    },
+    {
+      "term": "efnaeiginleikar",
+      "definition": "hegðun sem tengist breytingu á einu efni í annað",
+      "chapter": 1
+    },
+    {
+      "term": "efnafræði",
+      "definition": "rannsóknir á samsetningu, eiginleikum og samspili efnis",
+      "chapter": 1
+    },
+    {
+      "term": "efnasamband",
+      "definition": "hreint efni sem hægt er að brjóta niður í tvö eða fleiri frumefni",
+      "chapter": 1
+    },
+    {
+      "term": "efni",
+      "definition": "allt sem tekur pláss og hefur massa",
+      "chapter": 1
+    },
+    {
+      "term": "eining",
+      "definition": "samanburðarstaðall fyrir mælingar",
+      "chapter": 1
+    },
+    {
+      "term": "Einingagreining",
+      "definition": "fjölhæf stærðfræðileg aðferð sem hægt er að beita á útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir",
+      "chapter": 1
+    },
+    {
+      "term": "Einsleit efnablanda",
+      "definition": "(einnig lausn) sambland efna með samsetningu sem er einsleit í gegn",
+      "chapter": 1
+    },
+    {
+      "term": "Fahrenheit",
+      "definition": "hitastigseining; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða",
+      "chapter": 1
+    },
+    {
+      "term": "fast efni",
+      "definition": "efnishamur sem er stífur, hefur ákveðið form og nokkuð fast rúmmál",
+      "chapter": 1
+    },
+    {
+      "term": "Frumefni",
+      "definition": "efni sem samanstendur af einni tegund atóma; efni sem ekki er hægt að sundra með efnahvarfi",
+      "chapter": 1
+    },
+    {
+      "term": "frumeind",
+      "definition": "minnsta ögn frumefnis sem getur gengið í efnasamband",
+      "chapter": 1
+    },
+    {
+      "term": "Gas",
+      "definition": "ástand þar sem efni hefur hvorki ákveðið rúmmál né lögun",
+      "chapter": 1
+    },
+    {
+      "term": "hitastig",
+      "definition": "eðlisbundinn eiginleiki sem táknar hita eða kulda efnis",
+      "chapter": 1
+    },
+    {
+      "term": "hreint efni",
+      "definition": "einsleitt efni sem hefur fasta samsetningu",
+      "chapter": 1
+    },
+    {
+      "term": "Kelvin (K)",
+      "definition": "SI eining fyrir hitastig; 273,15 K = 0 ºC",
+      "chapter": 1
+    },
+    {
+      "term": "kenning",
+      "definition": "vel rökstudd, yfirgripsmikil, prófanleg útskýring á tilteknum þætti náttúrunnar",
+      "chapter": 1
+    },
+    {
+      "term": "kílógramm (kg)",
+      "definition": "staðaleining SI-kerfisins fyrir massa",
+      "chapter": 1
+    },
+    {
+      "term": "lengd",
+      "definition": "mælikvarði á eina vídd hlutar",
+      "chapter": 1
+    },
+    {
+      "term": "lítri (L)",
+      "definition": "(einnig rúmdesimetri) rúmmálseining; 1 L = 1.000 cm3",
+      "chapter": 1
+    },
+    {
+      "term": "lögmál",
+      "definition": "staðhæfing sem dregur saman mikinn fjölda athugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar.",
+      "chapter": 1
+    },
+    {
+      "term": "lögmál um varðveislu efnis",
+      "definition": "þegar efni breytist úr einni gerð í aðra, eða breytir um form, verður engin greinanleg breyting á heildarmagni þess efnis sem er til staðar",
+      "chapter": 1
+    },
+    {
+      "term": "Magnbundinn eiginleiki",
+      "definition": "eiginleiki efnis sem er háður magni efnisins",
+      "chapter": 1
+    },
+    {
+      "term": "markverðir stafir",
+      "definition": "(einnig, markverðir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn",
+      "chapter": 1
+    },
+    {
+      "term": "massi",
+      "definition": "grunneiginleiki sem gefur til kynna magn efnis",
+      "chapter": 1
+    },
+    {
+      "term": "metri (m)",
+      "definition": "stöðluð lengdareining metrakerfisins og SI-kerfisins; 1 m = u.þ.b. 1,094 yardar",
+      "chapter": 1
+    },
+    {
+      "term": "millilítri (mL)",
+      "definition": "1/1.000 úr lítra; jafngildir 1 cm3",
+      "chapter": 1
+    },
+    {
+      "term": "Misleit efnablanda",
+      "definition": "sambland efna með samsetningu sem er breytileg frá einum punkti til annars",
+      "chapter": 1
+    },
+    {
+      "term": "Nákvæm tala",
+      "definition": "tala fengin með talningu eða samkvæmt skilgreiningu",
+      "chapter": 1
+    },
+    {
+      "term": "nákvæmni",
+      "definition": "hversu nálægt mæling er sömu mælingu þegar hún er endurtekin",
+      "chapter": 1
+    },
+    {
+      "term": "námundun",
+      "definition": "aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í þeim mælingum sem notaðar eru í útreikningnum",
+      "chapter": 1
+    },
+    {
+      "term": "óvissa",
+      "definition": "mat á því hversu mikið mæling víkur frá sönnu gildi",
+      "chapter": 1
+    },
+    {
+      "term": "rafgas",
+      "definition": "gaskenndur efnishamur sem inniheldur mikinn fjölda rafhlaðinna atóma og/eða sameinda",
+      "chapter": 1
+    },
+    {
+      "term": "rúmmál",
+      "definition": "rými sem hlutur tekur",
+      "chapter": 1
+    },
+    {
+      "term": "rúmmetri (m3)",
+      "definition": "SI-eining rúmmáls",
+      "chapter": 1
+    },
+    {
+      "term": "rúmsentimetri (cm3 eða cc)",
+      "definition": "rúmmál tenings með brúnarlengdina nákvæmlega 1 cm",
+      "chapter": 1
+    },
+    {
+      "term": "sameind",
+      "definition": "tengt safn tveggja eða fleiri atóma af sama eða mismunandi frumefnum",
+      "chapter": 1
+    },
+    {
+      "term": "sekúnda (s)",
+      "definition": "SI-eining tíma",
+      "chapter": 1
+    },
+    {
+      "term": "SI-einingar (Alþjóðlega einingakerfið)",
+      "definition": "staðlar sem eru fastsettir með alþjóðlegum samningi í Alþjóðlega einingakerfinu (_Le Système International d’Unités_)",
+      "chapter": 1
+    },
+    {
+      "term": "smásætt svið",
+      "definition": "svið hluta sem eru of smáir til að vera skynjaðir beint",
+      "chapter": 1
+    },
+    {
+      "term": "stórsætt svið",
+      "definition": "svið hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með sjón og snertingu",
+      "chapter": 1
+    },
+    {
+      "term": "táknrænt svið",
+      "definition": "sérhæft tungumál sem notað er til að tákna þætti á stórsæja og smásæja sviðinu, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga",
+      "chapter": 1
+    },
+    {
+      "term": "Tilgáta",
+      "definition": "bráðabirgðaskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga",
+      "chapter": 1
+    },
+    {
+      "term": "umbreytistuðull eininga",
+      "definition": "hlutfall jafngildra magntalna gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra",
+      "chapter": 1
+    },
+    {
+      "term": "vísindaleg aðferð",
+      "definition": "uppgötvunarferli sem leiðir frá spurningu og athugun til lögmáls eða tilgátu til kenningar, ásamt tilraunakenndri sannprófun á tilgátunni og hvers kyns nauðsynlegri breytingu á kenningunni",
+      "chapter": 1
+    },
+    {
+      "term": "vökvi",
+      "definition": "ástand efnis sem hefur ákveðið rúmmál en óákveðna lögun",
+      "chapter": 1
+    },
+    {
+      "term": "þyngd",
+      "definition": "kraftur sem þyngdarafl beitir á hlut",
+      "chapter": 1
+    }
+  ]
+}

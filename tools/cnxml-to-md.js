@@ -728,15 +728,17 @@ function extractContent(cnxml, options = {}) {
         const classMatch = elem.attrs.match(/class="([^"]*)"/);
         const noteClass = classMatch ? classMatch[1] : '';
 
+        // Map CNXML note classes to website directive types
+        // See: namsbokasafn-vefur/src/lib/utils/markdown.ts DIRECTIVE_CONFIG
         let directive = ':::note';
         if (noteClass.includes('link-to-learning')) {
-          directive = ':::note{.link-to-learning}';
+          directive = ':::link-to-material';
         } else if (noteClass.includes('everyday-life')) {
-          directive = ':::note{.everyday-life}';
+          directive = ':::chemistry-everyday';
         } else if (noteClass.includes('chemist-portrait')) {
-          directive = ':::note{.chemist-portrait}';
+          directive = ':::scientist-spotlight';
         } else if (noteClass.includes('sciences-interconnect')) {
-          directive = ':::note{.sciences-interconnect}';
+          directive = ':::how-science-connects';
         }
 
         lines.push(directive);

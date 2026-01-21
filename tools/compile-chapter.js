@@ -469,6 +469,50 @@ function extractEOCContent(body) {
 // ============================================================================
 
 /**
+ * Format key-terms content to use markdown definition list syntax.
+ * Input format (current):
+ *   Term
+ *
+ *   definition
+ *
+ * Output format (improved):
+ *   **Term**
+ *   : definition
+ *
+ * This uses proper definition list syntax which can be styled by the reader.
+ */
+function formatKeyTermsContent(content) {
+  // Split into paragraphs (blocks separated by blank lines)
+  const paragraphs = content
+    .split(/\n\s*\n/)
+    .map(p => p.trim())
+    .filter(p => p.length > 0 && !p.startsWith('##'));
+
+  const formatted = [];
+
+  // Process pairs of paragraphs (term, definition)
+  for (let i = 0; i < paragraphs.length; i += 2) {
+    const term = paragraphs[i];
+    const definition = paragraphs[i + 1];
+
+    if (!term) continue;
+
+    // Term: wrap in bold if not already
+    const formattedTerm = term.startsWith('**') ? term : `**${term}**`;
+
+    if (definition) {
+      // Add definition list syntax (colon prefix on new line)
+      formatted.push(`${formattedTerm}\n: ${definition}`);
+    } else {
+      // No definition - just output the term
+      formatted.push(formattedTerm);
+    }
+  }
+
+  return formatted.join('\n\n');
+}
+
+/**
  * Generate frontmatter for output file
  */
 function generateFrontmatter(options) {
@@ -672,7 +716,14 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
 
     // Combine all content blocks
     let combinedContent = `## ${title}\n\n`;
-    combinedContent += content.join('\n\n');
+    let rawContent = content.join('\n\n');
+
+    // Special formatting for key-terms: convert to definition list syntax
+    if (type === 'keyTerms') {
+      rawContent = formatKeyTermsContent(rawContent);
+    }
+
+    combinedContent += rawContent;
 
     const outputContent = frontmatter + combinedContent;
     writeOutput(path.join(outputDir, outputFilename), outputContent, options);
