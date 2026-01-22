@@ -44,35 +44,47 @@
     },
     "status": {
       "type": "object",
-      "required": ["source", "mtOutput", "matecat", "editorialPass1", "tmUpdated", "editorialPass2", "publication"],
+      "description": "5-step simplified workflow stages",
       "properties": {
-        "source": {
+        "enMarkdown": {
           "$ref": "#/$defs/stageStatus",
-          "description": "Source material from OpenStax"
+          "description": "Step 1: EN markdown generated from CNXML"
         },
         "mtOutput": {
           "$ref": "#/$defs/stageStatus",
-          "description": "Machine translation output from malstadur.is"
+          "description": "Step 2: Machine translation output from malstadur.is"
         },
-        "matecat": {
-          "$ref": "#/$defs/stageStatusWithProgress",
-          "description": "TM alignment in Matecat"
-        },
-        "editorialPass1": {
+        "linguisticReview": {
           "$ref": "#/$defs/editorialStageStatus",
-          "description": "Linguistic review (Pass 1)"
+          "description": "Step 3: Linguistic review (Pass 1) - faithful translation complete"
         },
-        "tmUpdated": {
+        "tmCreated": {
           "$ref": "#/$defs/stageStatus",
-          "description": "Translation memory updated with Pass 1 edits"
-        },
-        "editorialPass2": {
-          "$ref": "#/$defs/editorialStageStatus",
-          "description": "Localization review (Pass 2)"
+          "description": "Step 4: TM created via Matecat Align"
         },
         "publication": {
           "$ref": "#/$defs/publicationStatus",
-          "description": "Published to web"
+          "description": "Step 5: Published to web"
+        },
+        "source": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "[Legacy] Source material from OpenStax"
+        },
+        "matecat": {
+          "$ref": "#/$defs/stageStatusWithProgress",
+          "description": "[Legacy] TM alignment in Matecat"
+        },
+        "editorialPass1": {
+          "$ref": "#/$defs/editorialStageStatus",
+          "description": "[Legacy] Maps to linguisticReview"
+        },
+        "tmUpdated": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "[Legacy] Maps to tmCreated"
+        },
+        "editorialPass2": {
+          "$ref": "#/$defs/editorialStageStatus",
+          "description": "[Legacy] Localization review (Pass 2)"
         }
       }
     },
