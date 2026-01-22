@@ -85,11 +85,11 @@
       "id": "fs-idm6121760"
     },
     "EQ:21": {
-      "latex": "{m=\\,\\frac{{\\text{��}y}}{{\\text{Δ}x}}\\,=\\frac{{\\text{212 °F}-\\text{32 °F}\\,}}{{\\text{100 °C}-\\text{0 °C}}}\\,=\\,\\frac{{\\text{180 °F}}}{{\\text{100 °C}}}\\,=\\,\\frac{{\\text{9 °F}}}{{\\text{5 °C}}}}",
+      "latex": "{m=\\,\\frac{{\\text{Δ}y}}{{\\text{Δ}x}}\\,=\\frac{{\\text{212 °F}-\\text{32 °F}\\,}}{{\\text{100 °C}-\\text{0 °C}}}\\,=\\,\\frac{{\\text{180 °F}}}{{\\text{100 °C}}}\\,=\\,\\frac{{\\text{9 °F}}}{{\\text{5 °C}}}}",
       "id": "fs-idm229969840"
     },
     "EQ:22": {
-      "latex": "{b=y-mx=\\text{32 °F}-\\,\\frac{{\\text{9 °F}}}{{\\text{5 °C}}}\\,\\times \\,\\text{0 ��C}=\\text{32 °F}}",
+      "latex": "{b=y-mx=\\text{32 °F}-\\,\\frac{{\\text{9 °F}}}{{\\text{5 °C}}}\\,\\times \\,\\text{0 °C}=\\text{32 °F}}",
       "id": "fs-idm234430272"
     },
     "EQ:23": {

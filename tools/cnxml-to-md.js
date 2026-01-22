@@ -174,9 +174,13 @@ function fetchUrl(url) {
         reject(new Error('HTTP ' + res.statusCode + ': Failed to fetch ' + url));
         return;
       }
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(data));
+      // Collect chunks as Buffers to avoid UTF-8 corruption at chunk boundaries
+      const chunks = [];
+      res.on('data', chunk => chunks.push(chunk));
+      res.on('end', () => {
+        const data = Buffer.concat(chunks).toString('utf8');
+        resolve(data);
+      });
       res.on('error', reject);
     }).on('error', reject);
   });

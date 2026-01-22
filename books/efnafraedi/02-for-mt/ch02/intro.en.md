@@ -1,4 +1,10 @@
-## titill: „Introduction" kafli: „intro" eining: „m68684" tungumál: „en"
+---
+title: "Introduction"
+section: "intro"
+module: "m68684"
+lang: "en"
+license_url: "https://creativecommons.org/licenses/by/4.0/"
+---
 
 # Introduction
 
