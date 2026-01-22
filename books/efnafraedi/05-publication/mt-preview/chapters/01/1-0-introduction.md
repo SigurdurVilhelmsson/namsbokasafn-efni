@@ -26,9 +26,10 @@ publication-track: mt-preview
 - Stærðfræðileg meðferð niðurstaðna mælinga
 
 - Eining til að prófa virkni ýmissa atriða til að sjá hvernig þau
-  birtast í PDF-skjali :::
+  birtast í PDF-skjali
+:::
 
-![](CNX_Chem_01_00_DailyChem.jpg){#CNX_Chem_01_00_DailyChem}
+![](images/media/CNX_Chem_01_00_DailyChem.jpg){#CNX_Chem_01_00_DailyChem}
 
 *Mynd: Hrein efni og efnaferli eru nauðsynleg fyrir tilveru okkar, þau
 sjá okkur fyrir næringu, halda okkur hreinum og heilbrigðum, eru notuð

@@ -20,7 +20,8 @@ publication-track: mt-preview
 
 - Notað einingagreiningu til að framkvæma einingabreytingar fyrir
   tiltekinn eiginleika og útreikninga sem fela í sér tvo eða fleiri
-  eiginleika :::
+  eiginleika
+:::
 
 Oft er það svo að stærð sem vekur áhuga er ekki auðvelt (eða jafnvel
 mögulegt) að mæla beint, heldur verður að reikna hana út frá öðrum beint
@@ -134,7 +135,7 @@ eftirfarandi dæmi.
 
 Massi keppnisfrisbídisks er 125 g. Umreiknaðu massa hans í únsur með því
 að nota umreikningsstuðulinn fyrir einingar sem er fenginn úr sambandinu
-1 oz = 28,349 g (\[↑\](#fs-idm222237232)).
+1 oz = 28,349 g ([↗](#fs-idm222237232)).
 
 **Lausn**
 
@@ -190,7 +191,7 @@ frostlöginum vegur 9,26 lb.
 Þar sem ${\text{density}\,=\,\frac{{\text{mass}}}{{\text{volume}}}}$ þurfum við að deila massanum í grömmum með
 rúmmálinu í millilítrum. Almennt gildir: fjöldi eininga B = fjöldi
 eininga A $\times$ umreikningsstuðull fyrir einingar. Nauðsynlegir
-umreikningsstuðlar eru gefnir í \[↑\](#fs-idm222237232): 1 lb =
+umreikningsstuðlar eru gefnir í [↗](#fs-idm222237232): 1 lb =
 453,59 g; 1 L = 1,0567 qt; 1 L = 1.000 ml. Hægt er að umreikna massa úr
 pundum í grömm á eftirfarandi hátt:
 
@@ -235,15 +236,15 @@ og 1 qt = 32 oz (nákvæmlega)?
 Á leiðinni frá Fíladelfíu til Atlanta, um 1250 km vegalengd, eyðir 2014
 árgerð af Lamborghini Aventador Roadster 213 L af bensíni.
 
-\(a\) Hver var (meðal)eyðsla sportbílsins í þessari ferð, mæld í mílum á
+(a) Hver var (meðal)eyðsla sportbílsins í þessari ferð, mæld í mílum á
 galloni?
 
-\(b\) Ef bensín kostar 3,80 $ á gallonið, hver var
+(b) Ef bensín kostar 3,80 $ á gallonið, hver var
 eldsneytiskostnaðurinn fyrir þessa ferð?
 
 **Lausn**
 
-\(a\) Fyrst er vegalengdinni breytt úr kílómetrum í mílur:
+(a) Fyrst er vegalengdinni breytt úr kílómetrum í mílur:
 
 $${1250\,\text{km}\,\times \,\frac{{\text{0.62137 mi}}}{{1\,\text{km}}}\,=\text{777 mi}}$${#fs-idm60362224}
 
@@ -260,7 +261,7 @@ umreikningsstuðlar séu notaðir í röð, eins og hér segir:
 
 $${\frac{{1250\,{\text{km}}}}{{213\,\text{L}}}\,\times \,\frac{{\text{0.62137 mi}}}{{1\,{\text{km}}}}\,\times \,\frac{{1\,\text{L}}}{{\text{1.0567}\,{\text{qt}}}}\,\times \,\frac{{4\,{\text{qt}}}}{{\text{1 gal}}}=\text{13.8 mpg}}$${#fs-idm171836160}
 
-\(b\) Með því að nota áður útreiknað rúmmál í gallonum finnum við:
+(b) Með því að nota áður útreiknað rúmmál í gallonum finnum við:
 
 $${56.3\,\text{gal}\,\times \,\frac{{\text{$3.80}}}{{1\,\text{gal}}}=\text{$214}}$${#fs-idm328491840}
 
@@ -269,13 +270,13 @@ $${56.3\,\text{gal}\,\times \,\frac{{\text{$3.80}}}{{1\,\text{gal}}}=\text{$214}
 Toyota Prius Hybrid eyðir 59,7 L af bensíni til að aka frá San Francisco
 til Seattle, 1300 km vegalengd (tvær markverðar tölur).
 
-\(a\) Hver var (meðal)eyðsla Prius-bílsins í þessari ferð, mæld í mílum
+(a) Hver var (meðal)eyðsla Prius-bílsins í þessari ferð, mæld í mílum
 á galloni?
 
-\(b\) Ef bensín kostar 3,90 $ á gallonið, hver var
+(b) Ef bensín kostar 3,90 $ á gallonið, hver var
 eldsneytiskostnaðurinn fyrir þessa ferð?
 
-\(a\) 51 mpg; (b) 62 $
+(a) 51 mpg; (b) 62 $
 
 :::
 
@@ -283,7 +284,7 @@ eldsneytiskostnaðurinn fyrir þessa ferð?
 
 ### Svar:
 
-\(a\) 51 mpg; (b) 62 $
+(a) 51 mpg; (b) 62 $
 
 :::
 
@@ -375,7 +376,7 @@ Talan 273,15 í þessum jöfnum hefur verið ákvörðuð með tilraunum, svo h�
 er ekki nákvæm. \[↗\](#CNX_Chem_01_06_TempScales) sýnir sambandið
 milli þriggja hitastigskvarðanna.
 
-![](CNX_Chem_01_06_TempScales.jpg){#CNX_Chem_01_06_TempScales}
+![](images/media/CNX_Chem_01_06_TempScales.jpg){#CNX_Chem_01_06_TempScales}
 
 *Mynd 1.18: Fahrenheit-, Celsíus- og kelvin-hitastigskvarðarnir eru
 bornir saman.*{#CNX_Chem_01_06_TempScales}
@@ -465,42 +466,50 @@ ${{T}_{{\text{°C}}}=\text{K}-273.15}$ | {id="key-equations-table" summary="key 
 
 ## Efnafræði – Æfingar í lok kafla
 
-:::practice-problem{#fs-idm287695728} Skrifaðu umbreytingarþætti (sem
+:::practice-problem{#fs-idm287695728}
+Skrifaðu umbreytingarþætti (sem
 hlutföll) fyrir fjölda:
 
-\(a\) yarda í 1 metra
+(a) yarda í 1 metra
 
-\(b\) lítra í 1 liquid quart
+(b) lítra í 1 liquid quart
 
-\(c\) punda í 1 kílógrammi
+(c) punda í 1 kílógrammi
 
-:::answer (a) ${\frac{{\text{1.0936 yd}}}{{\text{1 m}}}}$; (b) ${\frac{{\text{0.94635 L}}}{{\text{1 qt}}}}$; (c) $${\frac{{\text{2.2046 lb}}}{{\text{1 kg}}}}$$
+:::answer
+(a) ${\frac{{\text{1.0936 yd}}}{{\text{1 m}}}}$; (b) ${\frac{{\text{0.94635 L}}}{{\text{1 qt}}}}$; (c) $${\frac{{\text{2.2046 lb}}}{{\text{1 kg}}}}$$
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm321326256} Skrifaðu umbreytingarþætti (sem
+:::practice-problem{#fs-idm321326256}
+Skrifaðu umbreytingarþætti (sem
 hlutföll) fyrir fjölda:
 
-\(a\) kílómetra í 1 mílu
+(a) kílómetra í 1 mílu
 
-\(b\) lítra í 1 rúmfeti
+(b) lítra í 1 rúmfeti
 
-\(c\) gramma í 1 únsu
+(c) gramma í 1 únsu
 
 :::
 
-:::practice-problem{#fs-idp43396912} Á miðanum á gosflösku er rúmmálið
+:::practice-problem{#fs-idp43396912}
+Á miðanum á gosflösku er rúmmálið
 gefið upp í tveimur einingum: 2,0 L og 67,6 fl oz. Notaðu þessar
 upplýsingar til að leiða út umbreytingarþátt milli enskra og
 metrakerfiseininga. Hversu marga markverða stafi geturðu réttlætt í
 umbreytingarþættinum þínum?
 
-:::answer $\frac{{\text{2.0 L}}}{{\text{67.6 fl oz}}}\,=\,\frac{{\text{0.030 L}}}{{\text{1 fl oz}}}$ Aðeins tveir markverðir stafir eru
+:::answer
+$\frac{{\text{2.0 L}}}{{\text{67.6 fl oz}}}\,=\,\frac{{\text{0.030 L}}}{{\text{1 fl oz}}}$ Aðeins tveir markverðir stafir eru
 réttlætanlegir.
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm124621456} Á miðanum á morgunkornspakka er
+:::practice-problem{#fs-idm124621456}
+Á miðanum á morgunkornspakka er
 massi kornsins gefinn upp í tveimur einingum: 978 grömm og 34,5 oz.
 Notaðu þessar upplýsingar til að finna umbreytingarþátt milli enskra og
 metrakerfiseininga. Hversu marga markverða stafi geturðu réttlætt í
@@ -508,133 +517,160 @@ umbreytingarþættinum þínum?
 
 :::
 
-:::practice-problem{#fs-idm125803088} Fótbolti er spilaður með hringlaga
+:::practice-problem{#fs-idm125803088}
+Fótbolti er spilaður með hringlaga
 bolta sem hefur ummál á milli 27 og 28 tommur og þyngd á milli 14 og 16
 únsur. Hverjar eru þessar forskriftir í einingum sentímetra og gramma?
 
-:::answer 68–71 cm; 400–450 g
+:::answer
+68–71 cm; 400–450 g
 
-::: :::
+:::
+:::
 
 
-:::practice-problem{#fs-idm128259568} Ummál körfubolta fyrir konur er á
+:::practice-problem{#fs-idm128259568}
+Ummál körfubolta fyrir konur er á
 milli 28,5 og 29,0 tommur og hámarksþyngd hans er 20 únsur (tveir
 markverðir stafir). Hverjar eru þessar forskriftir í sentímetrum og
 grömmum?
 
 :::
 
-:::practice-problem{#fs-idm203954352} Hversu margir millilítrar af
+:::practice-problem{#fs-idm203954352}
+Hversu margir millilítrar af
 gosdrykk eru í 12,0 únsu dós?
 
-:::answer 355 ml
+:::answer
+355 ml
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm290820272} Ein olíutunna er nákvæmlega 42
+:::practice-problem{#fs-idm290820272}
+Ein olíutunna er nákvæmlega 42
 gallon. Hversu margir lítrar af olíu eru í einni tunnu?
 
 :::
 
-:::practice-problem{#fs-idp32978240} Þvermál rauðrar blóðfrumu er um 3
+:::practice-problem{#fs-idp32978240}
+Þvermál rauðrar blóðfrumu er um 3
 $\times$ 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
 
-:::answer 8 $\times$ 10^−4^ cm
+:::answer
+8 $\times$ 10^−4^ cm
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idp3893440} Fjarlægðin milli miðju tveggja
+:::practice-problem{#fs-idp3893440}
+Fjarlægðin milli miðju tveggja
 súrefnisatóma í súrefnissameind er 1,21 $\times$ 10^−8^ cm. Hver er
 þessi fjarlægð í tommum?
 
 :::
 
-:::practice-problem{#fs-idm280166528} Er 197 punda lyftingamaður nógu
+:::practice-problem{#fs-idm280166528}
+Er 197 punda lyftingamaður nógu
 léttur til að keppa í flokki sem er takmarkaður við þá sem vega 90 kg
 eða minna?
 
-:::answer já; þyngd = 89,4 kg
+:::answer
+já; þyngd = 89,4 kg
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm311405440} Mjög góður 197 punda lyftingamaður
+:::practice-problem{#fs-idm311405440}
+Mjög góður 197 punda lyftingamaður
 lyfti 192 kg í hreyfingu sem kallast jafnhending. Hver var massi
 þyngdarinnar sem lyft var í pundum?
 
 :::
 
-:::practice-problem{#fs-idm159954784} Mörg læknisfræðileg
+:::practice-problem{#fs-idm159954784}
+Mörg læknisfræðileg
 rannsóknarstofupróf eru framkvæmd með 5,0 μL af blóðsermi. Hvert er
 þetta rúmmál í millilítrum?
 
-:::answer 5,0 $\times$ 10^−3^ ml
+:::answer
+5,0 $\times$ 10^−3^ ml
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm293326720} Ef aspiríntöflu inniheldur 325 mg
+:::practice-problem{#fs-idm293326720}
+Ef aspiríntöflu inniheldur 325 mg
 af aspiríni, hversu mörg grömm af aspiríni inniheldur hún?
 
 :::
 
-:::practice-problem{#fs-idm101514016} Notaðu staðalform
+:::practice-problem{#fs-idm101514016}
+Notaðu staðalform
 (veldisvísanotkun) til að tákna eftirfarandi stærðir með
 SI-grunneiningum í \[↗\](#fs-idm81346144):
 
-\(a\) 0,13 g
+(a) 0,13 g
 
-\(b\) 232 Gg
+(b) 232 Gg
 
-\(c\) 5,23 pm
+(c) 5,23 pm
 
-\(d\) 86,3 mg
+(d) 86,3 mg
 
-\(e\) 37,6 cm
+(e) 37,6 cm
 
-\(f\) 54 μm
+(f) 54 μm
 
-\(g\) 1 Ts
+(g) 1 Ts
 
-\(h\) 27 ps
+(h) 27 ps
 
-\(i\) 0,15 mK
+(i) 0,15 mK
 
-:::answer (a) 1,3 $\times$ 10^−4^ kg; (b) 2,32 $\times$ 10^8^
+:::answer
+(a) 1,3 $\times$ 10^−4^ kg; (b) 2,32 $\times$ 10^8^
 kg; (c) 5,23 $\times$ 10^−12^ m; (d) 8,63 $\times$ 10^−5^ kg;
 (e) 3,76 $\times$ 10^−1^ m; (f) 5,4 $\times$ 10^−5^ m; (g) 1
 $\times$ 10^12^ s; (h) 2,7 $\times$ 10^−11^ s; (i) 1,5
 $\times$ 10^−4^ K
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm247037968} Ljúktu við eftirfarandi
+:::practice-problem{#fs-idm247037968}
+Ljúktu við eftirfarandi
 umreikninga milli SI-eininga.
 
-\(a\) 612 g = \_\_\_\_\_\_\_\_ mg
+(a) 612 g = \_\_\_\_\_\_\_\_ mg
 
-\(b\) 8,160 m = \_\_\_\_\_\_\_\_ cm
+(b) 8,160 m = \_\_\_\_\_\_\_\_ cm
 
-\(c\) 3779 μg = \_\_\_\_\_\_\_\_ g
+(c) 3779 μg = \_\_\_\_\_\_\_\_ g
 
-\(d\) 781 ml = \_\_\_\_\_\_\_\_ L
+(d) 781 ml = \_\_\_\_\_\_\_\_ L
 
-\(e\) 4,18 kg = \_\_\_\_\_\_\_\_ g
+(e) 4,18 kg = \_\_\_\_\_\_\_\_ g
 
-\(f\) 27,8 m = \_\_\_\_\_\_\_\_ km
+(f) 27,8 m = \_\_\_\_\_\_\_\_ km
 
-\(g\) 0,13 ml = \_\_\_\_\_\_\_\_ L
+(g) 0,13 ml = \_\_\_\_\_\_\_\_ L
 
-\(h\) 1738 km = \_\_\_\_\_\_\_\_ m
+(h) 1738 km = \_\_\_\_\_\_\_\_ m
 
-\(i\) 1,9 Gg = \_\_\_\_\_\_\_\_ g
+(i) 1,9 Gg = \_\_\_\_\_\_\_\_ g
 
 :::
 
-:::practice-problem{#fs-idp54026624} Bensín er selt í lítrum í mörgum
+:::practice-problem{#fs-idp54026624}
+Bensín er selt í lítrum í mörgum
 löndum. Hversu marga lítra þarf til að fylla 12.0-gal bensíntank?
 
-:::svar 45,4 L
+:::svar
+45,4 L
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idm242942368} Mjólk er seld í lítrum í mörgum löndum.
 Hvert er rúmmál nákvæmlega 1/2 g af mjólk í lítrum?
@@ -644,51 +680,55 @@ Hvert er rúmmál nákvæmlega 1/2 g af mjólk í lítrum?
 :::æfingadæmi{#fs-idm186995360} Langt tonn er skilgreint sem nákvæmlega
 2240 lb. Hver er þessi massi í kílógrömmum?
 
-:::svar 1,0160 $\times$ 10^3^ kg
+:::svar
+1,0160 $\times$ 10^3^ kg
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idm311016240} Framkvæmdu umreikninginn sem tilgreindur
 er í hverjum af eftirfarandi liðum:
 
-\(a\) heimsmet karla í langstökki, 29 ft 4¼ in., í metra
+(a) heimsmet karla í langstökki, 29 ft 4¼ in., í metra
 
-\(b\) mesta dýpi hafsins, um 6,5 mílur, í kílómetra
+(b) mesta dýpi hafsins, um 6,5 mílur, í kílómetra
 
-\(c\) flatarmál Oregon-fylkis, 96.981 mílur^2^, í ferkílómetra
+(c) flatarmál Oregon-fylkis, 96.981 mílur^2^, í ferkílómetra
 
-\(d\) rúmmál 1 gills (nákvæmlega 4 oz) í millilítra
+(d) rúmmál 1 gills (nákvæmlega 4 oz) í millilítra
 
-\(e\) áætlað rúmmál heimshafanna, 330.000.000 mílur^3^, í rúmkílómetra.
+(e) áætlað rúmmál heimshafanna, 330.000.000 mílur^3^, í rúmkílómetra.
 
-\(f\) massa 3525 lb bíls í kílógrömm
+(f) massa 3525 lb bíls í kílógrömm
 
-\(g\) massa 2,3 oz eggs í grömm
+(g) massa 2,3 oz eggs í grömm
 
 :::
 
 :::æfingadæmi{#fs-idm250694352} Framkvæmdu umreikninginn sem tilgreindur
 er í hverjum af eftirfarandi liðum:
 
-\(a\) lengd fótboltavallar, 120 m (þrír markverðir stafir), í fet
+(a) lengd fótboltavallar, 120 m (þrír markverðir stafir), í fet
 
-\(b\) hæð Kilimanjaro-fjalls, 19.565 fet, hæsta fjalls Afríku, í
+(b) hæð Kilimanjaro-fjalls, 19.565 fet, hæsta fjalls Afríku, í
 kílómetra
 
-\(c\) flatarmál 8,5 × 11 tommu blaðs í cm^2^
+(c) flatarmál 8,5 × 11 tommu blaðs í cm^2^
 
-\(d\) slagrými bílvélar, 161 in.^3^, í lítra
+(d) slagrými bílvélar, 161 in.^3^, í lítra
 
-\(e\) áætlaðan massa lofthjúpsins, 5,6 × 10^15^ tonn, í kílógrömm
+(e) áætlaðan massa lofthjúpsins, 5,6 × 10^15^ tonn, í kílógrömm
 
-\(f\) massa rússínukers, 32,0 lb, í kílógrömm
+(f) massa rússínukers, 32,0 lb, í kílógrömm
 
-\(g\) massa 5,00 greina aspiríntöflu í milligrömm (1 grein = 0,00229 oz)
+(g) massa 5,00 greina aspiríntöflu í milligrömm (1 grein = 0,00229 oz)
 
-:::svar (a) 394 ft; (b) 5,9634 km; (c) 6,0 $\times$ 10^2^; (d) 2,64
+:::svar
+(a) 394 ft; (b) 5,9634 km; (c) 6,0 $\times$ 10^2^; (d) 2,64
 L; (e) 5,1 $\times$ 10^18^ kg; (f) 14,5 kg; (g) 324 mg
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idm219388000} Á mörgum efnafræðiráðstefnum hefur verið
 haldið 50 trilljón angstroma hlaup (tveir markverðir stafir). Hversu
@@ -702,9 +742,11 @@ langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 $\times$
 fornleifafræðings. Hversu löng er ein alin í metrum og fetum? (1 Å = 1
 $\times$ 10^−8^ cm)
 
-:::svar 0,46 m; 1,5 ft/áln
+:::svar
+0,46 m; 1,5 ft/áln
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idm306975136} Bensíntankur ákveðins lúxusbíls tekur
 22,3 gallon samkvæmt handbók eiganda. Ef eðlismassi bensíns er 0,8206
@@ -718,9 +760,11 @@ pundum.
 keiluflaska. Er hún nógu stór til að rúma sýruna, en eðlismassi hennar
 er 1,83 g/mL?
 
-:::svar Já, rúmmál sýrunnar er 123 ml.
+:::svar
+Já, rúmmál sýrunnar er 123 ml.
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idm110873792} Til að undirbúa sig fyrir
 rannsóknarstofutíma þarf aðstoðarmaður nemanda 125 g af efnasambandi.
@@ -732,9 +776,11 @@ efnasambandinu?
 :::æfingadæmi{#fs-idp15401744} Efnafræðinemi er 159 cm á hæð og vegur
 45,8 kg. Hver er hæð hennar í tommum og þyngd í pundum?
 
-:::svar 62,6 tommur (um 5 fet 3 tommur) og 101 lb
+:::svar
+62,6 tommur (um 5 fet 3 tommur) og 101 lb
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idm207241008} Í nýlegum Grand Prix-kappakstri lauk
 sigurvegarinn keppni með meðalhraðann 229.8 km/klst. Hver var hraði hans
@@ -742,23 +788,27 @@ sigurvegarinn keppni með meðalhraðann 229.8 km/klst. Hver var hraði hans
 
 :::
 
-:::practice-problem{#fs-idm289866560} Leysið þessi dæmi um timburmál.
+:::practice-problem{#fs-idm289866560}
+Leysið þessi dæmi um timburmál.
 
-\(a\) Til að lýsa fyrir Evrópubúa hvernig hús eru byggð í Bandaríkjunum
+(a) Til að lýsa fyrir Evrópubúa hvernig hús eru byggð í Bandaríkjunum
 þarf að breyta málinu á „tveir sinnum fjórir“ timbri í metrakerfi.
 Þykktin $\times$ breiddin $\times$ lengdin eru 1,50 tommur
 $\times$ 3,50 tommur $\times$ 8,00 fet í Bandaríkjunum. Hver
 eru málin í cm $\times$ cm $\times$ m?
 
-\(b\) Þetta timbur er hægt að nota sem lóðrétta stoð, sem venjulega er
+(b) Þetta timbur er hægt að nota sem lóðrétta stoð, sem venjulega er
 komið fyrir með 16,0 tommu millibili. Hver er sú fjarlægð í sentímetrum?
 
-:::answer (a) 3,81 cm $\times$ 8,89 cm $\times$ 2,44 m; (b)
+:::answer
+(a) 3,81 cm $\times$ 8,89 cm $\times$ 2,44 m; (b)
 40,6 cm
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm95632784} Talið var að kvikasilfursinnihald í
+:::practice-problem{#fs-idm95632784}
+Talið var að kvikasilfursinnihald í
 læk væri yfir því lágmarki sem talið er öruggt – 1 hluti á milljarð
 (ppb) miðað við þyngd. Greining leiddi í ljós að styrkurinn var 0,68
 hlutar á milljarð. Hvaða magn af kvikasilfri í grömmum var til staðar í
@@ -766,97 +816,124 @@ hlutar á milljarð. Hvaða magn af kvikasilfri í grömmum var til staðar í
 
 :::
 
-:::practice-problem{#fs-idm215857872} Reiknið út eðlismassa áls ef 27,6
+:::practice-problem{#fs-idm215857872}
+Reiknið út eðlismassa áls ef 27,6
 cm^3^ hefur massann 74,6 g.
 
-:::answer 2,70 g/cm^3^
+:::answer
+2,70 g/cm^3^
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm215482272} Osmín er eitt af eðlisþyngstu
+:::practice-problem{#fs-idm215482272}
+Osmín er eitt af eðlisþyngstu
 frumefnum sem þekkt eru. Hver er eðlismassi þess ef 2,72 g hefur
 rúmmálið 0,121 cm^3^?
 
 :::
 
-:::practice-problem{#fs-idm361862336} Reiknið út þessa massa.
+:::practice-problem{#fs-idm361862336}
+Reiknið út þessa massa.
 
-\(a\) Hver er massi 6,00 cm^3^ af kvikasilfri, eðlismassi = 13,5939
+(a) Hver er massi 6,00 cm^3^ af kvikasilfri, eðlismassi = 13,5939
 g/cm^3^?
 
-\(b\) Hver er massi 25,0 ml af oktani, eðlismassi = 0,702 g/cm^3^?
+(b) Hver er massi 25,0 ml af oktani, eðlismassi = 0,702 g/cm^3^?
 
-:::answer (a) 81,6 g; (b) 17,6 g
+:::answer
+(a) 81,6 g; (b) 17,6 g
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm305607360} Reiknið út þessa massa.
+:::practice-problem{#fs-idm305607360}
+Reiknið út þessa massa.
 
-\(a\) Hver er massi 4,00 cm^3^ af natríum, eðlismassi = 0,97 g/cm^3^?
+(a) Hver er massi 4,00 cm^3^ af natríum, eðlismassi = 0,97 g/cm^3^?
 
-\(b\) Hver er massi 125 ml af klórgasi, eðlismassi = 3,16 g/L?
+(b) Hver er massi 125 ml af klórgasi, eðlismassi = 3,16 g/L?
 
 :::
 
-:::practice-problem{#fs-idm216432832} Reiknið út þessi rúmmál.
+:::practice-problem{#fs-idm216432832}
+Reiknið út þessi rúmmál.
 
-\(a\) Hvert er rúmmál 25 g af joði, eðlismassi = 4,93 g/cm^3^?
+(a) Hvert er rúmmál 25 g af joði, eðlismassi = 4,93 g/cm^3^?
 
-\(b\) Hvert er rúmmál 3,28 g af vetnisgasi, eðlismassi = 0,089 g/L?
+(b) Hvert er rúmmál 3,28 g af vetnisgasi, eðlismassi = 0,089 g/L?
 
-:::answer (a) 5,1 ml; (b) 37 L
+:::answer
+(a) 5,1 ml; (b) 37 L
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm182387776} Reiknið út þessi rúmmál.
+:::practice-problem{#fs-idm182387776}
+Reiknið út þessi rúmmál.
 
-\(a\) Hvert er rúmmál 11,3 g af grafíti, eðlismassi = 2,25 g/cm^3^?
+(a) Hvert er rúmmál 11,3 g af grafíti, eðlismassi = 2,25 g/cm^3^?
 
-\(b\) Hvert er rúmmál 39,657 g af brómi, eðlismassi = 2,928 g/cm^3^?
+(b) Hvert er rúmmál 39,657 g af brómi, eðlismassi = 2,928 g/cm^3^?
 
 :::
 
-:::practice-problem{#fs-idm208263472} Breytið suðuhitastigi gulls, 2966
+:::practice-problem{#fs-idm208263472}
+Breytið suðuhitastigi gulls, 2966
 °C, í Fahrenheit-gráður og kelvin.
 
-:::answer 5371 °F, 3239 K
+:::answer
+5371 °F, 3239 K
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm291580080} Breytið hitastigi sjóðandi heits
+:::practice-problem{#fs-idm291580080}
+Breytið hitastigi sjóðandi heits
 vatns, 54 °C, í Fahrenheit-gráður og kelvin.
 
 :::
 
-:::practice-problem{#fs-idm126910176} Breytið hitastigi kaldasta
+:::practice-problem{#fs-idm126910176}
+Breytið hitastigi kaldasta
 svæðisins í frysti, −10 °F, í Selsíusgráður og kelvin.
 
-:::answer −23 °C, 250 K
+:::answer
+−23 °C, 250 K
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm294247168} Breytið hitastigi þurríss, −77 °C,
+:::practice-problem{#fs-idm294247168}
+Breytið hitastigi þurríss, −77 °C,
 í Fahrenheit-gráður og kelvin.
 
 :::
 
-:::practice-problem{#fs-idm312310640} Breytið suðuhitastigi fljótandi
+:::practice-problem{#fs-idm312310640}
+Breytið suðuhitastigi fljótandi
 ammóníaks, −28,1 °F, í Selsíusgráður og kelvin.
 
-:::answer −33,4 °C, 239.8 K
+:::answer
+−33,4 °C, 239.8 K
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm307064960} Á merkimiða á úðabrúsa með
+:::practice-problem{#fs-idm307064960}
+Á merkimiða á úðabrúsa með
 sótthreinsiefni er varað við því að hita brúsann yfir 130 °F. Hvert er
 samsvarandi hitastig á Celsíus- og kelvinkvarða?
 
 :::
 
-:::practice-problem{#fs-idm161487744} Veðrið í Evrópu var óvenjulega
+:::practice-problem{#fs-idm161487744}
+Veðrið í Evrópu var óvenjulega
 hlýtt sumarið 1995. Í sjónvarpsfréttum var sagt frá hitastigi allt að 45
 °C. Hvert var hitastigið á Fahrenheit-kvarða?
 
-:::answer 113 °F
+:::answer
+113 °F
 
-::: :::
+:::
+:::

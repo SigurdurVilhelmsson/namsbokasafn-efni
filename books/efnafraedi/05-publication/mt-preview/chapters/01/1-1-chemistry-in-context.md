@@ -23,7 +23,8 @@ publication-track: mt-preview
 
 - Greint á milli tilgátna, kenninga og lögmála
 
-- Nefnt dæmi sem lýsa stórsæjum, smásæjum og táknrænum sviðum :::
+- Nefnt dæmi sem lýsa stórsæjum, smásæjum og táknrænum sviðum
+:::
 
 Í gegnum mannkynssöguna hefur fólk reynt að breyta efni í nytsamlegri
 mynd. Forfeður okkar á steinöld tálguðu tinnu í nytsamleg verkfæri og
@@ -53,9 +54,9 @@ og vatni. Í kjölfarið dreifðist samruni efnafræðilegrar tækni og
 heimspekilegra vangaveltna frá Egyptalandi, Kína og austurhluta
 Miðjarðarhafs með gullgerðarmönnum, sem reyndu að breyta „grunnmálmum“
 eins og blýi í „góðmálma“ eins og gull og búa til lífselixíra til að
-lækna sjúkdóma og lengja líf (\[↑\](#CNX_Chem_01_01_Alchemist)).
+lækna sjúkdóma og lengja líf ([↗](#CNX_Chem_01_01_Alchemist)).
 
-![](CNX_Chem_01_01_Alchemist.jpg){#CNX_Chem_01_01_Alchemist}
+![](images/media/CNX_Chem_01_01_Alchemist.jpg){#CNX_Chem_01_01_Alchemist}
 
 *Mynd: (a) Þessi mynd sýnir verkstæði gullgerðarmanns um 1580. Þrátt
 fyrir að gullgerðarlist hafi lagt sitt af mörkum til þess hvernig hægt
@@ -94,7 +95,7 @@ við fjölbreytt úrval annarra STEM-greina (STEM stendur fyrir vísindi,
 tækni, verkfræði og stærðfræði). Efnafræði og tungumál efnafræðinga
 gegna mikilvægu hlutverki í líffræði, læknisfræði, efnisfræði,
 réttarvísindum, umhverfisvísindum og mörgum öðrum sviðum
-(\[↑\](#CNX_Chem_01_01_ChemWeb)). Grundvallarreglur eðlisfræðinnar
+([↗](#CNX_Chem_01_01_ChemWeb)). Grundvallarreglur eðlisfræðinnar
 eru nauðsynlegar til að skilja marga þætti efnafræðinnar og það er mikið
 skörunarsvið milli margra undirgreina innan þessara tveggja sviða, svo
 sem efnaeðlisfræði og kjarnaefnafræði. Stærðfræði, tölvunarfræði og
@@ -116,7 +117,7 @@ stjörnufræði og heimsfræði.
 
 .
 
-![](CNX_Chem_01_01_ChemWeb.jpg){#CNX_Chem_01_01_ChemWeb}
+![](images/media/CNX_Chem_01_01_ChemWeb.jpg){#CNX_Chem_01_01_ChemWeb}
 
 *Mynd 1.1: Þekking á efnafræði er lykilatriði til að skilja fjölmargar
 vísindagreinar. Þetta skýringarmynd sýnir aðeins nokkur af samspilum
@@ -163,9 +164,9 @@ geta breyst ef ný gögn verða tiltæk. Sú uppgötvunarleið sem liggur frá
 spurningu og athugun til lögmáls eða tilgátu til kenningar, ásamt
 tilraunakenndri staðfestingu á tilgátunni og nauðsynlegri breytingu á
 kenningunni, er kölluð **vísindalega aðferðin**{#term-00005}
-(\[↑\](#CNX_Chem_01_01_SciMethod)).
+([↗](#CNX_Chem_01_01_SciMethod)).
 
-![](CNX_Chem_01_01_SciMethod.jpg){#CNX_Chem_01_01_SciMethod}
+![](images/media/CNX_Chem_01_01_SciMethod.jpg){#CNX_Chem_01_01_SciMethod}
 
 *Mynd 1.2: Vísindalega aðferðin fylgir ferli sem svipar til þess sem
 sýnt er á þessari mynd. Allir lykilþættir eru sýndir, í nokkurn veginn
@@ -192,7 +193,7 @@ svið**{#term-00007} efnafræðinnar er oft heimsótt í huganum. Sumir
 þættir smásæja sviðsins eru sýnilegir í venjulegum ljóssmásjám, til
 dæmis margar líffræðilegar frumur. Fullkomnari tæki geta myndað enn
 smærri einingar eins og sameindir og atóm (sjá
-\[↑\](#CNX_Chem_01_01_WaterDom) (**b**)).
+[↗](#CNX_Chem_01_01_WaterDom) (**b**)).
 
 Hins vegar eru flest viðfangsefni á smásæja sviði efnafræðinnar of lítil
 til að sjást jafnvel með fullkomnustu smásjám og er aðeins hægt að
@@ -216,7 +217,7 @@ að fylgjast með.
 Gagnleg leið til að skilja sviðin þrjú er með hinu nauðsynlega og alls
 staðar nálæga efni, vatni. Að vatn sé vökvi við meðalhita, storkni og
 myndi fast efni við lægra hitastig og sjóði og myndi gas við hærra
-hitastig (\[↑\](#CNX_Chem_01_01_WaterDom)) eru stórsæjar athuganir.
+hitastig ([↗](#CNX_Chem_01_01_WaterDom)) eru stórsæjar athuganir.
 En sumir eiginleikar vatns falla undir smásæja sviðið – það sem ekki er
 hægt að sjá með berum augum. Lýsingin á vatni sem samanstendur af
 tveimur vetnisatómum og einu súrefnisatómi, og útskýringin á storknun og
@@ -226,7 +227,7 @@ stórsæju eða smásæju stigi, er dæmi um táknræna sviðið. Skammstafanirn
 (*g*) fyrir gas, (*s*) fyrir fast efni og (*l*) fyrir vökva eru einnig
 táknrænar.
 
-![](CNX_Chem_01_01_WaterDom.jpg){#CNX_Chem_01_01_WaterDom}
+![](images/media/CNX_Chem_01_01_WaterDom.jpg){#CNX_Chem_01_01_WaterDom}
 
 *Mynd 1.3: (a) Raki í lofti, ísjakar og hafið tákna vatn á stórsæja
 sviðinu. (b) Á sameindastigi (smásæja sviðinu) eru gassameindir langt í
@@ -252,82 +253,93 @@ líf okkar.
 
 ## Efnafræði – verkefni í lok kafla
 
-:::practice-problem{#fs-idm34987968} Útskýrðu hvernig þú gætir með
+:::practice-problem{#fs-idm34987968}
+Útskýrðu hvernig þú gætir með
 tilraun ákvarðað hvort útihitastigið sé hærra eða lægra en 0 °C (32 °F)
 án þess að nota hitamæli.
 
-:::answer Settu vatnsglas út. Það frýs ef hitastigið er undir 0 °C.
+:::answer
+Settu vatnsglas út. Það frýs ef hitastigið er undir 0 °C.
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idp45595424} Tilgreindu hvort hver eftirfarandi
+:::practice-problem{#fs-idp45595424}
+Tilgreindu hvort hver eftirfarandi
 staðhæfinga líkist mest tilgátu, lögmáli eða kenningu. Útskýrðu
 rökstuðning þinn.
 
-\(a\) Lækkandi loftvogarþrýstingur er fyrirboði vonskuveðurs.
+(a) Lækkandi loftvogarþrýstingur er fyrirboði vonskuveðurs.
 
-\(b\) Allt líf á jörðinni hefur þróast frá sameiginlegri, frumstæðri
+(b) Allt líf á jörðinni hefur þróast frá sameiginlegri, frumstæðri
 lífveru með náttúruvali.
 
-\(c\) Bensíneyðsla pallbílsins míns hefur minnkað verulega, líklega
+(c) Bensíneyðsla pallbílsins míns hefur minnkað verulega, líklega
 vegna þess að það er kominn tími á smurningu.
 
 :::
 
-:::practice-problem{#fs-idp38309200} Tilgreindu hvort hver eftirfarandi
+:::practice-problem{#fs-idp38309200}
+Tilgreindu hvort hver eftirfarandi
 staðhæfinga líkist mest tilgátu, lögmáli eða kenningu. Útskýrðu
 rökstuðning þinn.
 
-\(a\) Þrýstingur gassýnis er í beinu hlutfalli við hitastig gassins.
+(a) Þrýstingur gassýnis er í beinu hlutfalli við hitastig gassins.
 
-\(b\) Efni samanstendur af örsmáum eindum sem geta sameinast í ákveðnum
+(b) Efni samanstendur af örsmáum eindum sem geta sameinast í ákveðnum
 hlutföllum og myndað efni með sérstaka eiginleika.
 
-\(c\) Við hærra hitastig leysast föst efni (eins og salt eða sykur)
+(c) Við hærra hitastig leysast föst efni (eins og salt eða sykur)
 betur upp í vatni.
 
-:::answer (a) lögmál (lýsir fyrirbæri sem sést reglulega, hægt að nota
+:::answer
+(a) lögmál (lýsir fyrirbæri sem sést reglulega, hægt að nota
 til forspár); (b) kenning (víðtæk viðurkennd útskýring á hegðun efnis);
 (c) tilgáta (bráðabirgðaútskýring, hægt að rannsaka með tilraunum)
 
-::: :::
+:::
+:::
 
-## Titill: „Efnafræði í samhengi“ Kafli: „1.1“ Eining: „m68664“ Tungumál: „is“ Hluti: „b“
 
-:::practice-problem{#fs-idm58468592} Flokkaðu hvern undirstrikaðan lið
+:::practice-problem{#fs-idm58468592}
+Flokkaðu hvern undirstrikaðan lið
 sem hluta af annaðhvort stórsæja sviðinu, smásæja sviðinu eða táknræna
 sviðinu í efnafræði. Fyrir alla liði á táknræna sviðinu, tilgreindu
 hvort þeir séu tákn fyrir stórsæjan eða smásæjan eiginleika.
 
-\(a\) Massi *blýpípu* er 14 lb.
+(a) Massi *blýpípu* er 14 lb.
 
-\(b\) Massi ákveðins *klóratóms* er 35 amu.
+(b) Massi ákveðins *klóratóms* er 35 amu.
 
-\(c\) Flaska með miða sem á stendur *Al* inniheldur álmálm.
+(c) Flaska með miða sem á stendur *Al* inniheldur álmálm.
 
-\(d\) *Al* er táknið fyrir ál atóm.
+(d) *Al* er táknið fyrir ál atóm.
 
 :::
 
-:::practice-problem{#fs-idm67489232} Flokkaðu hvern undirstrikaðan lið
+:::practice-problem{#fs-idm67489232}
+Flokkaðu hvern undirstrikaðan lið
 sem hluta af annaðhvort stórsæja sviðinu, smásæja sviðinu eða táknræna
 sviðinu í efnafræði. Fyrir þá sem eru á táknræna sviðinu, tilgreindu
 hvort þeir séu tákn fyrir stórsæjan eða smásæjan eiginleika.
 
-\(a\) Ákveðin sameind inniheldur eitt *H* atóm og eitt Cl atóm.
+(a) Ákveðin sameind inniheldur eitt *H* atóm og eitt Cl atóm.
 
-\(b\) *Koparvír* hefur eðlismassa sem er um 8 g/cm^3^.
+(b) *Koparvír* hefur eðlismassa sem er um 8 g/cm^3^.
 
-\(c\) Flaskan inniheldur 15 grömm af *Ni-dufti*.
+(c) Flaskan inniheldur 15 grömm af *Ni-dufti*.
 
-\(d\) *Brennisteinssameind* er samsett úr átta brennisteinsatómum.
+(d) *Brennisteinssameind* er samsett úr átta brennisteinsatómum.
 
-:::svar (a) táknrænt, smásætt; (b) stórsætt; (c) táknrænt, stórsætt; (d)
+:::svar
+(a) táknrænt, smásætt; (b) stórsætt; (c) táknrænt, stórsætt; (d)
 smásætt
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idp6505632} Samkvæmt einni kenningu eykst
+:::practice-problem{#fs-idp6505632}
+Samkvæmt einni kenningu eykst
 þrýstingur gass þegar rúmmál þess minnkar vegna þess að sameindirnar í
 gasinu þurfa að fara styttri vegalengd til að rekast á veggi ílátsins.
 Fylgir þessi kenning stórsærri eða smásærri lýsingu á efnafræðilegri
@@ -335,12 +347,15 @@ hegðun? Útskýrðu svarið.
 
 :::
 
-:::practice-problem{#fs-idp40361152} Varmamagnið sem þarf til að bræða 2
+:::practice-problem{#fs-idp40361152}
+Varmamagnið sem þarf til að bræða 2
 pund af ís er tvöfalt meira en varmamagnið sem þarf til að bræða 1 pund
 af ís. Er þessi athugun stórsæ eða smásæ lýsing á efnafræðilegri hegðun?
 Útskýrðu svarið.
 
-:::svar Stórsæ. Nauðsynlegur varmi er ákvarðaður út frá stórsæjum
+:::svar
+Stórsæ. Nauðsynlegur varmi er ákvarðaður út frá stórsæjum
 eiginleikum.
 
-::: :::
+:::
+:::

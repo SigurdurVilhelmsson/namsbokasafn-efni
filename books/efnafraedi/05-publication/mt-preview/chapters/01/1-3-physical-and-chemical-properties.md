@@ -17,7 +17,8 @@ publication-track: mt-preview
 
 - Greint eiginleika og breytingar á efni sem eðlis- eða efnafræðilegar
 
-- Greint eiginleika efnis sem magnbundna eða ómagnbundna :::
+- Greint eiginleika efnis sem magnbundna eða ómagnbundna
+:::
 
 Einkennin sem greina eitt efni frá öðru eru kölluð eiginleikar.
 **Eðliseiginleiki**{#term-00001} er einkenni efnis sem er ekki tengt
@@ -37,7 +38,7 @@ stundum leitt til áberandi litabreytinga). Í öllum þessum dæmum verður
 breyting á eðlisástandi, formi eða eiginleikum efnisins, en engin
 breyting á efnasamsetningu þess.
 
-![](CNX_Chem_01_03_PhysChange.jpg){#CNX_Chem_01_03_PhysChange}
+![](images/media/CNX_Chem_01_03_PhysChange.jpg){#CNX_Chem_01_03_PhysChange}
 
 *Mynd: (a) Vax gengst undir eðlisbreytingu þegar fast vax er hitað og
 myndar fljótandi vax. (b) Gufa sem þéttist innan í potti er
@@ -53,7 +54,7 @@ og myndar ryð; króm oxast ekki (\[↗\](#CNX_Chem_01_03_Rust)).
 Nítróglýserín er mjög hættulegt vegna þess að það springur auðveldlega;
 neon er nánast hættulaust vegna þess að það er mjög óhvarfgjarnt.
 
-![](CNX_Chem_01_03_Rust.jpg){#CNX_Chem_01_03_Rust}
+![](images/media/CNX_Chem_01_03_Rust.jpg){#CNX_Chem_01_03_Rust}
 
 *Mynd: (a) Einn af efnaeiginleikum járns er að það ryðgar; (b) einn af
 efnaeiginleikum króms er að það gerir það ekki. (Heimild a: breyting á
@@ -71,7 +72,7 @@ og þegar kopar hvarfast við saltpéturssýru), allar tegundir bruna og
 þegar matur er eldaður, meltur eða rotnar
 (\[↗\](#CNX_Chem_01_03_ChemChange)).
 
-![](CNX_Chem_01_03_ChemChange.jpg){#CNX_Chem_01_03_ChemChange}
+![](images/media/CNX_Chem_01_03_ChemChange.jpg){#CNX_Chem_01_03_ChemChange}
 
 *Mynd: (a) Kopar og saltpéturssýra gangast undir efnabreytingu og mynda
 koparnítrat og brúnt köfnunarefnisdíoxíðgas. (b) Við bruna eldspýtu
@@ -103,13 +104,13 @@ við sama hitastig (aðlægur eiginleiki), en potturinn inniheldur
 augljóslega mun meiri varma (aðgreinanlegur eiginleiki).
 
 Þú gætir hafa séð táknið sem sýnt er í
-\[↑\](#CNX_Chem_01_03_HazDiamond) á ílátum með efnum á
+[↗](#CNX_Chem_01_03_HazDiamond) á ílátum með efnum á
 rannsóknarstofu eða vinnustað. Þessi hættutígull fyrir efni, stundum
 kallaður „eldtígull“ eða „hættutígull“, veitir verðmætar upplýsingar sem
 draga stuttlega saman hinar ýmsu hættur sem ber að varast þegar unnið er
 með tiltekið efni.
 
-![](CNX_Chem_01_03_HazDiamond.jpg){#CNX_Chem_01_03_HazDiamond}
+![](images/media/CNX_Chem_01_03_HazDiamond.jpg){#CNX_Chem_01_03_HazDiamond}
 
 *Mynd: Hættutígull Landssambands brunavarna í Bandaríkjunum (NFPA)
 dregur saman helstu hættur af völdum
@@ -137,11 +138,11 @@ vel), málmleysingja (frumefni sem leiða illa) og hálfmálma (frumefni sem
 hafa miðlungsleiðni).
 
 Lotukerfið er tafla yfir frumefni sem setur frumefni með svipaða
-eiginleika nálægt hvort öðru (\[↑\](#CNX_Chem_01_03_PeriodicPU)).
+eiginleika nálægt hvort öðru ([↗](#CNX_Chem_01_03_PeriodicPU)).
 Þú munt læra meira um lotukerfið eftir því sem þú heldur áfram í
 efnafræðináminu.
 
-![](CNX_Chem_01_03_PeriodicPU.jpg){#CNX_Chem_01_03_PeriodicPU}
+![](images/media/CNX_Chem_01_03_PeriodicPU.jpg){#CNX_Chem_01_03_PeriodicPU}
 
 *Mynd: Lotukerfið sýnir hvernig hægt er að flokka frumefni eftir
 ákveðnum svipuðum eiginleikum. Athugið að bakgrunnsliturinn gefur til
@@ -166,7 +167,8 @@ og hitastig er dæmi um aðlægan eiginleika..
 
 ## Efnafræði – verkefni í lok kafla
 
-:::practice-problem{#fs-idp14236032} Flokkaðu sex undirstrikuðu
+:::practice-problem{#fs-idp14236032}
+Flokkaðu sex undirstrikuðu
 eiginleikana í eftirfarandi málsgrein sem efnafræðilega eða
 eðlisfræðilega:
 
@@ -177,77 +179,90 @@ við 1,0 gramm af vetni*.
 
 :::
 
-:::practice-problem{#fs-idp131775248} Flokkaðu hverja af eftirfarandi
+:::practice-problem{#fs-idp131775248}
+Flokkaðu hverja af eftirfarandi
 breytingum sem eðlisfræðilega eða efnafræðilega:
 
-\(a\) þétting gufu
+(a) þétting gufu
 
-\(b\) bruni bensíns
+(b) bruni bensíns
 
-\(c\) súrnun mjólkur
+(c) súrnun mjólkur
 
-\(d\) upplausn sykurs í vatni
+(d) upplausn sykurs í vatni
 
-\(e\) bráðnun gulls
+(e) bráðnun gulls
 
-:::answer (a) eðlisfræðileg; (b) efnafræðileg; (c) efnafræðileg; (d)
+:::answer
+(a) eðlisfræðileg; (b) efnafræðileg; (c) efnafræðileg; (d)
 eðlisfræðileg; (e) eðlisfræðileg
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idp293285456} Flokkaðu hverja af eftirfarandi
+:::practice-problem{#fs-idp293285456}
+Flokkaðu hverja af eftirfarandi
 breytingum sem eðlisfræðilega eða efnafræðilega:
 
-\(a\) bruni kola
+(a) bruni kola
 
-\(b\) bráðnun íss
+(b) bráðnun íss
 
-\(c\) blöndun súkkulaðísíróps við mjólk
+(c) blöndun súkkulaðísíróps við mjólk
 
-\(d\) sprenging flugelds
+(d) sprenging flugelds
 
-\(e\) segulmögnun skrúfjárns
+(e) segulmögnun skrúfjárns
 
 :::
 
-:::practice-problem{#fs-idm547056} Rúmmál súrefnisgassýnis breyttist úr
+:::practice-problem{#fs-idm547056}
+Rúmmál súrefnisgassýnis breyttist úr
 10 ml í 11 ml þegar hitastigið breyttist. Er þetta efnafræðileg eða
 eðlisfræðileg breyting?
 
-:::answer eðlisfræðileg
+:::answer
+eðlisfræðileg
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idp144519488} 2,0 lítra rúmmál af vetnisgasi
+:::practice-problem{#fs-idp144519488}
+2,0 lítra rúmmál af vetnisgasi
 sameinaðist 1,0 lítra af súrefnisgasi og myndaði 2,0 lítra af vatnsgufu.
 Verður efnafræðileg eða eðlisfræðileg breyting á súrefninu?
 
 :::
 
-:::practice-problem{#fs-idp42952176} Útskýrðu muninn á magnbundnum
+:::practice-problem{#fs-idp42952176}
+Útskýrðu muninn á magnbundnum
 eiginleikum og áslægum eiginleikum.
 
-:::answer Gildi magnbundins eiginleika fer eftir magni efnisins sem um
+:::answer
+Gildi magnbundins eiginleika fer eftir magni efnisins sem um
 ræðir, en gildi áslægs eiginleika er það sama óháð magni efnisins.
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idp85586464} Tilgreindu hvort eftirfarandi
+:::practice-problem{#fs-idp85586464}
+Tilgreindu hvort eftirfarandi
 eiginleikar séu magnbundnir eða áslægir.
 
-\(a\) rúmmál
+(a) rúmmál
 
-\(b\) hitastig
+(b) hitastig
 
-\(c\) raki
+(c) raki
 
-\(d\) varmi
+(d) varmi
 
-\(e\) suðumark
+(e) suðumark
 
 :::
 
-:::practice-problem{#fs-idp121106016} Eðlismassi (d) efnis er áslægur
+:::practice-problem{#fs-idp121106016}
+Eðlismassi (d) efnis er áslægur
 eiginleiki sem er skilgreindur sem hlutfall massa þess (m) og rúmmáls
 (V).
 
@@ -256,10 +271,12 @@ $${\text{density}=\,\frac{{\text{mass}}}{{\text{volume}}}\,\text{d}=\,\frac{\tex
 Í ljósi þess að massi og rúmmál eru bæði magnbundnir eiginleikar,
 útskýrðu hvers vegna hlutfall þeirra, eðlismassi, er áslægur.
 
-:::answer Þar sem massi og rúmmál eru magnbundnir eiginleikar eru þeir
+:::answer
+Þar sem massi og rúmmál eru magnbundnir eiginleikar eru þeir
 báðir í beinu hlutfalli við magn efnisins sem er til skoðunar. Með því
 að deila einum magnbundnum eiginleika með öðrum er í raun „eytt út“
 þessari magnbundnu háðni, sem gefur hlutfall sem er óháð magni (áslægur
 eiginleiki).
 
-::: :::
+:::
+:::

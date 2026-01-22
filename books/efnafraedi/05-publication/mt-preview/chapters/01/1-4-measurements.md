@@ -23,7 +23,8 @@ publication-track: mt-preview
   hitastigs og tíma
 
 - Framkvæmt einfalda einingaútreikninga og umbreytingar í metrakerfinu
-  og öðrum einingakerfum :::
+  og öðrum einingakerfum
+:::
 
 Mælingar veita mikið af þeim upplýsingum sem liggja til grundvallar
 tilgátum, kenningum og lögmálum sem lýsa hegðun efnis og orku bæði á
@@ -99,7 +100,7 @@ kílómetrum (1 km = 1000 m = 10^3^ m), en styttri vegalengdir má gefa upp
 í sentimetrum (1 cm = 0,01 m = 10^−2^ m) eða millimetrum (1 mm = 0,001 m
 = 10^−3^ m).
 
-![](CNX_Chem_01_04_MYdCmIn.jpg){#CNX_Chem_01_04_MYdCmIn}
+![](images/media/CNX_Chem_01_04_MYdCmIn.jpg){#CNX_Chem_01_04_MYdCmIn}
 
 *Mynd 1*
 
@@ -121,7 +122,7 @@ finna á https://www.nist.gov/pml/weights-and-measures/si-units-mass.
 Eitt kílógramm er um 2,2 pund. Grammið (g) er nákvæmlega 1/1000 af massa
 kílógrammsins (10^−3^ kg).
 
-![](CNX_Chem_01_04_Kilogram.jpg){#CNX_Chem_01_04_Kilogram}
+![](images/media/CNX_Chem_01_04_Kilogram.jpg){#CNX_Chem_01_04_Kilogram}
 
 *Mynd 1.14: Þessi eftirmynd af frumgerð kílógrammsins, eins og það var
 áður skilgreint, er geymd hjá National Institute of Standards and
@@ -175,7 +176,7 @@ sentimetra. Skammstöfunin **cc** (úr ensku **c**ubic **c**entimeter) er
 oft notuð af heilbrigðisstarfsfólki. Einn rúmsentimetri jafngildir einum
 **millilítra (mL)**{#term-00015} og er 1/1000 úr lítra.
 
-![](CNX_Chem_01_04_Volume.jpg){#CNX_Chem_01_04_Volume}
+![](images/media/CNX_Chem_01_04_Volume.jpg){#CNX_Chem_01_04_Volume}
 
 *Mynd 1.15: (a) Hlutfallslegt rúmmál er sýnt fyrir teninga sem eru 1
 m^3^, 1 dm^3^ (1 L) og 1 cm^3^ (1 mL) (ekki í raunstærð). (b) Þvermál
@@ -242,153 +243,169 @@ equations table"}
 
 ## Efnafræði – Æfingar í lok kafla
 
-:::practice-problem{#fs-idm230641408} Er einn lítri um það bil ein unsa,
+:::practice-problem{#fs-idm230641408}
+Er einn lítri um það bil ein unsa,
 einn pinti, einn kvarti eða eitt gallon?
 
 :::
 
-:::practice-problem{#fs-idm323373040} Er einn metri um það bil ein
+:::practice-problem{#fs-idm323373040}
+Er einn metri um það bil ein
 tommur, eitt fet, ein stika eða ein míla?
 
-:::answer um það bil ein stika
+:::answer
+um það bil ein stika
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm147829600} Tilgreindu þær SI-grunneiningar
+:::practice-problem{#fs-idm147829600}
+Tilgreindu þær SI-grunneiningar
 eða afleiddu einingar sem eiga við um eftirfarandi mælingar:
 
-\(a\) lengd maraþonhlaups (26 mílur 385 stikur)
+(a) lengd maraþonhlaups (26 mílur 385 stikur)
 
-\(b\) massi bifreiðar
+(b) massi bifreiðar
 
-\(c\) rúmmál sundlaugar
+(c) rúmmál sundlaugar
 
-\(d\) hraði flugvélar
+(d) hraði flugvélar
 
-\(e\) eðlismassi gulls
+(e) eðlismassi gulls
 
-\(f\) flatarmál fótboltavallar
+(f) flatarmál fótboltavallar
 
-\(g\) hámarkshitastig á Suðurpólnum 1. apríl 1913
+(g) hámarkshitastig á Suðurpólnum 1. apríl 1913
 
 :::
 
-:::practice-problem{#fs-idm314038064} Tilgreindu þær SI-grunneiningar
+:::practice-problem{#fs-idm314038064}
+Tilgreindu þær SI-grunneiningar
 eða afleiddu einingar sem eiga við um eftirfarandi mælingar:
 
-\(a\) massi tunglsins
+(a) massi tunglsins
 
-\(b\) fjarlægðin frá Dallas til Oklahoma City
+(b) fjarlægðin frá Dallas til Oklahoma City
 
-\(c\) hljóðhraði
+(c) hljóðhraði
 
-\(d\) eðlismassi lofts
+(d) eðlismassi lofts
 
-\(e\) hitastig þar sem alkóhól sýður
+(e) hitastig þar sem alkóhól sýður
 
-\(f\) flatarmál Delaware-fylkis
+(f) flatarmál Delaware-fylkis
 
-\(g\) rúmmál inflúensusprautu eða mislingabólusetningar
+(g) rúmmál inflúensusprautu eða mislingabólusetningar
 
-:::answer (a) kílógrömm; (b) metrar; (c) metrar/sekúndu; (d)
+:::answer
+(a) kílógrömm; (b) metrar; (c) metrar/sekúndu; (d)
 kílógrömm/rúmmetra; (e) kelvin; (f) fermetrar; (g) rúmmetrar
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm323234992} Gefðu upp heiti og tákn þeirra
+:::practice-problem{#fs-idm323234992}
+Gefðu upp heiti og tákn þeirra
 forskeita sem notuð eru með SI-einingum til að gefa til kynna margföldun
 með eftirfarandi nákvæmum stærðum.
 
-\(a\) 10^3^
+(a) 10^3^
 
-\(b\) 10^−2^
+(b) 10^−2^
 
-\(c\) 0,1
+(c) 0,1
 
-\(d\) 10^−3^
+(d) 10^−3^
 
-\(e\) 1.000.000
+(e) 1.000.000
 
-\(f\) 0,000001
+(f) 0,000001
 
 :::
 
-:::practice-problem{#fs-idm344858160} Gefðu upp heiti forskeitisins og
+:::practice-problem{#fs-idm344858160}
+Gefðu upp heiti forskeitisins og
 stærðina sem táknuð er með eftirfarandi táknum sem eru notuð með
 SI-grunneiningum.
 
-\(a\) c
+(a) c
 
-\(b\) d
+(b) d
 
-\(c\) G
+(c) G
 
-\(d\) k
+(d) k
 
-\(e\) m
+(e) m
 
-\(f\) n
+(f) n
 
-\(g\) p
+(g) p
 
-\(h\) T
+(h) T
 
-:::answer (a) senti-, $\times$ 10^−2^; (b) desi-, $\times$
+:::answer
+(a) senti-, $\times$ 10^−2^; (b) desi-, $\times$
 10^−1^; (c) gíga-, $\times$ 10^9^; (d) kíló-, $\times$ 10^3^;
 (e) milli-, $\times$ 10^−3^; (f) nanó-, $\times$ 10^−9^; (g)
 píkó-, $\times$ 10^−12^; (h) tera-, $\times$ 10^12^
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm239239696} Stór skartgripur hefur massa upp á
+:::practice-problem{#fs-idm239239696}
+Stór skartgripur hefur massa upp á
 132,6 g. Mæliglas inniheldur upphaflega 48,6 ml af vatni. Þegar
 skartgripnum er sökkt í mæliglasið eykst heildarrúmmálið í 61,2 ml.
 
-\(a\) Ákvarðaðu eðlismassa þessa skartgrips.
+(a) Ákvarðaðu eðlismassa þessa skartgrips.
 
-\(b\) Miðað við að skartgripurinn sé aðeins gerður úr einu hreinu efni,
+(b) Miðað við að skartgripurinn sé aðeins gerður úr einu hreinu efni,
 hvaða efni er það líklega? Útskýrðu.
 
 :::
 
-:::practice-problem{#fs-idm165750544} Farðu í þessa \[hermun á
+:::practice-problem{#fs-idm165750544}
+Farðu í þessa \[hermun á
 eðlismassa\](http://openstax.org/l/16phetmasvolden) og smelltu á
 hnappinn „turn fluid into water“ til að stilla eðlismassa vökvans í
 bikarglasinu á 1,00 g/ml.
 
-\(a\) Notaðu aðferðina með vatnsyfirborðsbreytingu til að mæla massa og
+(a) Notaðu aðferðina með vatnsyfirborðsbreytingu til að mæla massa og
 rúmmál óþekkta efnisins (veldu grænu blokkina með spurningamerkjum)
 
 .
 
-\(b\) Notaðu mældan massa og rúmmál úr lið (a) til að reikna út
+(b) Notaðu mældan massa og rúmmál úr lið (a) til að reikna út
 eðlismassa óþekkta efnisins.
 
-\(c\) Ef gert er ráð fyrir að þetta efni sé algengur gimsteinn sem
+(c) Ef gert er ráð fyrir að þetta efni sé algengur gimsteinn sem
 inniheldur kopar, hvaða efni er það líklega? Berðu saman mældan
 eðlismassa við gildin í töflunni í \[þessari handbók um eðlismassa
 gimsteina\](https://www.gemsociety.org/article/select-gems-ordered-density/).
 
-\(d\) Hvernig tengjast massi og eðlismassi fyrir blokkir með sama
+(d) Hvernig tengjast massi og eðlismassi fyrir blokkir með sama
 rúmmál?
 
-:::svar (a) m = 18,58 g, V = 5,7 ml; (b) d = 3,3 g/ml; (c) malakít
+:::svar
+(a) m = 18,58 g, V = 5,7 ml; (b) d = 3,3 g/ml; (c) malakít
 (basískt koparkarbónat, d = 3,25–4,10 g/ml).
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idm307823136} Farðu í þessa \[hermun á
 eðlismassa\](http://openstax.org/l/16phetmasvolden) og smelltu á
 „endurstilla“ hnappinn til að tryggja að allar stillingar hermisins séu
 á sjálfgefnum gildum.
 
-\(a\) Notaðu aðferðina með vatnsyfirfærslu til að mæla massa og rúmmál
+(a) Notaðu aðferðina með vatnsyfirfærslu til að mæla massa og rúmmál
 rauðu blokkarinnar.
 
-\(b\) Notaðu mældan massa og rúmmál úr lið (a) til að reikna út
+(b) Notaðu mældan massa og rúmmál úr lið (a) til að reikna út
 eðlismassa rauðu blokkarinnar.
 
-\(c\) Notaðu lóðrétta græna sleðann til að stilla eðlismassa vökvans á
+(c) Notaðu lóðrétta græna sleðann til að stilla eðlismassa vökvans á
 gildi sem eru vel yfir, síðan vel undir og að lokum næstum jöfn
 eðlismassa rauðu blokkarinnar og skráðu niður athuganir þínar.
 
@@ -401,16 +418,18 @@ bikarglasinu á 1,00 g/ml. Breyttu efninu í blokkinni í frauð og bíddu
 síðan þolinmóð/ur þar til frauðblokkin hættir að veltast upp og niður í
 vatninu.
 
-\(a\) Frauðblokkin ætti að fljóta á yfirborði vatnsins (það er, aðeins
+(a) Frauðblokkin ætti að fljóta á yfirborði vatnsins (það er, aðeins
 að hluta til á kafi). Hvert er rúmmál vatnsins sem færist úr stað? (b)
 Notaðu rúmmál vatnsins úr lið (a) og eðlismassa vatns (1,00 g/ml) til að
 reikna út massa vatnsins sem færist úr stað. (c) Fjarlægðu og vigtaðu
 frauðblokkina. Hvernig er massi blokkarinnar í samanburði við massa
 vatnsins sem færðist úr stað í lið (b)?
 
-:::svar (a) rúmmál vatns sem færist úr stað = 2,8 ml; (b) massi vatns
+:::svar
+(a) rúmmál vatns sem færist úr stað = 2,8 ml; (b) massi vatns
 sem færist úr stað = 2,8 g; (c) Massi blokkarinnar er 2,76 g, í raun
 jafn massa vatnsins sem færðist úr stað (2,8 g) og í samræmi við lögmál
 Arkímedesar um uppdrif.
 
-::: :::
+:::
+:::

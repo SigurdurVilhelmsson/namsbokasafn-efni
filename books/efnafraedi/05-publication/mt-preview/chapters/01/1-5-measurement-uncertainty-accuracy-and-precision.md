@@ -21,7 +21,8 @@ publication-track: mt-preview
 
 - Sýnt óvissu í stærðum rétt með markverðum stöfum
 
-- Beitt réttum námundunarreglum á útreiknaðar stærðir :::
+- Beitt réttum námundunarreglum á útreiknaðar stærðir
+:::
 
 Talning er eina tegund mælinga sem er laus við óvissu, að því gefnu að
 fjöldi hluta sem verið er að telja breytist ekki á meðan talningin fer
@@ -47,7 +48,7 @@ skipta fjarlægðinni milli 21 og 22 ml merkja í huganum í tíundu úr
 millilítra og lesa síðan af (áætla) neðst á
 bjúgfletinum.*{#fs-idm337865984}
 
-Sjá myndina í \[↑\](#fs-idm337865984). Neðsti hluti bjúgflatarins í
+Sjá myndina í [↗](#fs-idm337865984). Neðsti hluti bjúgflatarins í
 þessu tilfelli liggur greinilega á milli 21 og 22 merkinganna, sem þýðir
 að rúmmál vökvans er *örugglega* meira en 21 ml en minna en 22 ml.
 Bjúgflöturinn virðist vera aðeins nær 22 ml merkinu en 21 ml merkinu og
@@ -96,7 +97,7 @@ Núll á milli stafa eru afleiðing mælinga og eru því alltaf marktæk. Núll
 komman er staðsett.
 
 Núllin á undan í þessu dæmi eru ekki marktæk. Við gætum notað
-veldisvísanotkun (eins og lýst er í \viðauka B\) og tjáð
+veldisvísanotkun (eins og lýst er í \viðauka B) og tjáð
 töluna sem 8.32407 $\times$ 10^−3^; þá inniheldur talan 8,32407 alla
 markverðu stafina og 10^−3^ staðsetur kommu.
 
@@ -144,41 +145,41 @@ Við skulum fara í gegnum þessar reglur með nokkrum dæmum.
 
 Námundaðu eftirfarandi að tilgreindum fjölda markverðra stafa:
 
-\(a\) 31,57 (að tveimur markverðum stöfum)
+(a) 31,57 (að tveimur markverðum stöfum)
 
-\(b\) 8,1649 (að þremur markverðum stöfum)
+(b) 8,1649 (að þremur markverðum stöfum)
 
-\(c\) 0,051065 (að fjórum markverðum stöfum)
+(c) 0,051065 (að fjórum markverðum stöfum)
 
-\(d\) 0,90275 (að fjórum markverðum stöfum)
+(d) 0,90275 (að fjórum markverðum stöfum)
 
 **Lausn**
 
-\(a\) 31,57 er námundað „upp“ í 32 (talan sem fellur brott er 5 og talan
+(a) 31,57 er námundað „upp“ í 32 (talan sem fellur brott er 5 og talan
 sem er haldið er slétt tala)
 
-\(b\) 8,1649 er námundað „niður“ í 8,16 (talan sem fellur brott, 4, er
+(b) 8,1649 er námundað „niður“ í 8,16 (talan sem fellur brott, 4, er
 minni en 5)
 
-\(c\) 0,051065 er námundað „niður“ í 0,05106 (talan sem fellur brott er
+(c) 0,051065 er námundað „niður“ í 0,05106 (talan sem fellur brott er
 5 og talan sem er haldið er slétt tala)
 
-\(d\) 0,90275 er námundað „upp“ í 0,9028 (talan sem fellur brott er 5 og
+(d) 0,90275 er námundað „upp“ í 0,9028 (talan sem fellur brott er 5 og
 talan sem er haldið er slétt tala)
 
 **Spyrðu sjálfan þig**
 
 Námundaðu eftirfarandi að tilgreindum fjölda markverðra stafa:
 
-\(a\) 0,424 (að tveimur markverðum stöfum)
+(a) 0,424 (að tveimur markverðum stöfum)
 
-\(b\) 0,0038661 (að þremur markverðum stöfum)
+(b) 0,0038661 (að þremur markverðum stöfum)
 
-\(c\) 421,25 (að fjórum markverðum stöfum)
+(c) 421,25 (að fjórum markverðum stöfum)
 
-\(d\) 28.683,5 (að fimm markverðum stöfum)
+(d) 28.683,5 (að fimm markverðum stöfum)
 
-\(a\) 0,42; (b) 0,00387; (c) 421,2; (d) 28.684
+(a) 0,42; (b) 0,00387; (c) 421,2; (d) 28.684
 
 :::
 
@@ -186,7 +187,7 @@ Námundaðu eftirfarandi að tilgreindum fjölda markverðra stafa:
 
 ### Svar:
 
-\(a\) 0,42; (b) 0,00387; (c) 421,2; (d) 28.684
+(a) 0,42; (b) 0,00387; (c) 421,2; (d) 28.684
 
 :::
 
@@ -198,27 +199,27 @@ Regla: Þegar tölur eru lagðar saman eða dregnar frá skal námunda
 niðurstöðuna að sama fjölda aukastafa og talan með fæsta aukastafi (þ.e.
 óvissasta gildið hvað varðar samlagningu og frádrátt).
 
-\(a\) Leggðu saman 1,0023 g og 4,383 g.
+(a) Leggðu saman 1,0023 g og 4,383 g.
 
-\(b\) Dragðu 421,23 g frá 486 g.
+(b) Dragðu 421,23 g frá 486 g.
 
 **Lausn**
 
-\(a\) ${\frac{{{\,1.0023 g}{\text{+ 4.383 g}}}}{{\,5.3853 g}}}$
+(a) ${\frac{{{\,1.0023 g}{\text{+ 4.383 g}}}}{{\,5.3853 g}}}$
 
 Svarið er 5.385 g (námundað að þúsundasta hluta; þrír aukastafir)
 
-\(b\) $$\frac{{{\text\,486 g}{-421.23 g}}}{{\,64.77 g}}$$
+(b) $$\frac{{{\text\,486 g}{-421.23 g}}}{{\,64.77 g}}$$
 
 Svarið er 65 g (námundað að einingum; engir aukastafir)
 
 **Prófaðu þig áfram**
 
-\(a\) Leggðu saman 2,334 ml og 0,31 ml.
+(a) Leggðu saman 2,334 ml og 0,31 ml.
 
-\(b\) Dragðu 55,8752 m frá 56,533 m.
+(b) Dragðu 55,8752 m frá 56,533 m.
 
-\(a\) 2,64 ml; (b) 0,658 m
+(a) 2,64 ml; (b) 0,658 m
 
 :::
 
@@ -226,7 +227,7 @@ Svarið er 65 g (námundað að einingum; engir aukastafir)
 
 ### Svar:
 
-\(a\) 2,64 ml; (b) 0,658 m
+(a) 2,64 ml; (b) 0,658 m
 
 :::
 
@@ -238,23 +239,23 @@ Regla: Þegar tölur eru margfaldaðar eða þeim deilt skal námunda
 niðurstöðuna að sama fjölda tölustafa og talan með fæsta markverða stafi
 (minnst nákvæma gildið hvað varðar margföldun og deilingu).
 
-\(a\) Margfaldaðu 0,6238 cm með 6,6 cm.
+(a) Margfaldaðu 0,6238 cm með 6,6 cm.
 
-\(b\) Deildu 421,23 g með 486 ml.
+(b) Deildu 421,23 g með 486 ml.
 
 **Lausn**
 
-\(a\) ${{{\text{0.6238 cm}\,\times \,6.6\,\text{cm}=4.11708\,{{\text{cm}}}^{2}\,\longrightarrow \,\text{result is}\,4.1\,{{\text{cm}}}^{2}\,(\text{round to two significant figures})}{\text{four significant figures}\,\times \,\text{two significant figures}\,\longrightarrow \,\text{two significant figures answer}}}}$
+(a) ${{{\text{0.6238 cm}\,\times \,6.6\,\text{cm}=4.11708\,{{\text{cm}}}^{2}\,\longrightarrow \,\text{result is}\,4.1\,{{\text{cm}}}^{2}\,(\text{round to two significant figures})}{\text{four significant figures}\,\times \,\text{two significant figures}\,\longrightarrow \,\text{two significant figures answer}}}}$
 
-\(b\) $$\frac{{\text{421.23 g}}}{{\text{486 mL}}}\,=\text{0.866728... g/mL}\,\longrightarrow \,\text{result is 0.867 g/mL}\,{({\text{round to three significant figures}})}\frac{{\text{five significant figures}}}{{\text{three significant figures}}}\,\longrightarrow \,\text{three significant figures answer}$$
+(b) $$\frac{{\text{421.23 g}}}{{\text{486 mL}}}\,=\text{0.866728... g/mL}\,\longrightarrow \,\text{result is 0.867 g/mL}\,{({\text{round to three significant figures}})}\frac{{\text{five significant figures}}}{{\text{three significant figures}}}\,\longrightarrow \,\text{three significant figures answer}$$
 
 **Prófaðu þig áfram**
 
-\(a\) Margfaldaðu 2,334 cm og 0,320 cm.
+(a) Margfaldaðu 2,334 cm og 0,320 cm.
 
-\(b\) Deildu 55,8752 m með 56,53 s.
+(b) Deildu 55,8752 m með 56,53 s.
 
-\(a\) 0,747 cm^2^ (b) 0,9884 m/s
+(a) 0,747 cm^2^ (b) 0,9884 m/s
 
 :::
 
@@ -262,7 +263,7 @@ niðurstöðuna að sama fjölda tölustafa og talan með fæsta markverða staf
 
 ### Svar:
 
-\(a\) 0,747 cm^2^ (b) 0,9884 m/s
+(a) 0,747 cm^2^ (b) 0,9884 m/s
 
 :::
 
@@ -307,9 +308,9 @@ Hver er eðlismassi vökva með massa 31,1415 g og rúmmál 30,13 cm^3^?
 Kambstál er vegið og síðan sökkt í mæliglas sem er að hluta fyllt með
 vatni, með niðurstöðum eins og sýnt er.
 
-\(a\) Notaðu þessi gildi til að ákvarða eðlismassa þessa kambstáls.
+(a) Notaðu þessi gildi til að ákvarða eðlismassa þessa kambstáls.
 
-\(b\) Kambstál er að mestu leyti járn. Styður niðurstaða þín í (a) þessa
+(b) Kambstál er að mestu leyti járn. Styður niðurstaða þín í (a) þessa
 staðhæfingu? Hvernig?
 
 **Lausn**
@@ -336,11 +337,11 @@ að mestu leyti járn.
 Óreglulega lagaður hlutur úr glansandi gulleitu efni er veginn og síðan
 sökkt í mæliglas, með niðurstöðum eins og sýnt er.
 
-\(a\) Notaðu þessi gildi til að ákvarða eðlismassa þessa efnis.
+(a) Notaðu þessi gildi til að ákvarða eðlismassa þessa efnis.
 
-\(b\) Geturðu giskað á hvaða efni þetta er? Útskýrðu rökstuðning þinn.
+(b) Geturðu giskað á hvaða efni þetta er? Útskýrðu rökstuðning þinn.
 
-\(a\) 19 g/cm^3^; (b) Það er líklega gull; útlitið passar við gull og
+(a) 19 g/cm^3^; (b) Það er líklega gull; útlitið passar við gull og
 eðlismassinn er mjög nálægt þeim eðlismassa sem gefinn er fyrir gull í
 \[↗\](#fs-idm45639696).
 
@@ -350,7 +351,7 @@ eðlismassinn er mjög nálægt þeim eðlismassa sem gefinn er fyrir gull í
 
 ### Svar:
 
-\(a\) 19 g/cm^3^; (b) Það er líklega gull; útlitið passar við gull og
+(a) 19 g/cm^3^; (b) Það er líklega gull; útlitið passar við gull og
 eðlismassinn er mjög nálægt þeim eðlismassa sem gefinn er fyrir gull í
 \[↗\](#fs-idm45639696).
 
@@ -413,65 +414,68 @@ milli endurtekinna mælinganiðurstaðna).
 
 ## Efnafræði – Æfingar í lok kafla
 
-:::practice-problem{#fs-idm29064528} Ritið hverja af eftirfarandi tölum
+:::practice-problem{#fs-idm29064528}
+Ritið hverja af eftirfarandi tölum
 á staðalformi með réttum fjölda markverðra stafa:
 
-\(a\) 711,0
+(a) 711,0
 
-\(b\) 0,239
+(b) 0,239
 
-\(c\) 90743
+(c) 90743
 
-\(d\) 134,2
+(d) 134,2
 
-\(e\) 0,05499
+(e) 0,05499
 
-\(f\) 10000,0
+(f) 10000,0
 
-\(g\) 0.000000738592
+(g) 0.000000738592
 
 :::
 
 :::æfingadæmi{#fs-idp24074624} Skráið hverja eftirfarandi talna á
 veldisvísisformi með réttum fjölda markverðra stafa:
 
-\(a\) 704
+(a) 704
 
-\(b\) 0,03344
+(b) 0,03344
 
-\(c\) 547,9
+(c) 547,9
 
-\(d\) 22086
+(d) 22086
 
-\(e\) 1000,00
+(e) 1000,00
 
-\(f\) 0,0000000651
+(f) 0,0000000651
 
-\(g\) 0,007157
+(g) 0,007157
 
-:::svar (a) 7,04 $\times$ 10^2^; (b) 3,344 $\times$ 10^−2^;
+:::svar
+(a) 7,04 $\times$ 10^2^; (b) 3,344 $\times$ 10^−2^;
 (c) 5,479 $\times$ 10^2^; (d) 2,2086 $\times$ 10^4^; (e)
 1,00000 $\times$ 10^3^; (f) 6,51 $\times$ 10^−8^; (g) 7,157
 $\times$ 10^−3^
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idp26053648} Tilgreinið hvort hægt sé að ákvarða
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 óvissu:
 
-\(a\) fjölda eggja í körfu
+(a) fjölda eggja í körfu
 
-\(b\) massa tylftar eggja
+(b) massa tylftar eggja
 
-\(c\) fjölda gallona af bensíni sem þarf til að fylla á bensíntank
+(c) fjölda gallona af bensíni sem þarf til að fylla á bensíntank
 bifreiðar
 
-\(d\) fjölda cm í 2 m
+(d) fjölda cm í 2 m
 
-\(e\) massa kennslubókar
+(e) massa kennslubókar
 
-\(f\) tímann sem það tekur að aka frá San Francisco til Kansas City á 53
+(f) tímann sem það tekur að aka frá San Francisco til Kansas City á 53
 mílna meðalhraða á klukkustund
 
 :::
@@ -480,188 +484,200 @@ mílna meðalhraða á klukkustund
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 óvissu:
 
-\(a\) fjölda sekúndna í klukkustund
+(a) fjölda sekúndna í klukkustund
 
-\(b\) blaðsíðufjölda í þessari bók
+(b) blaðsíðufjölda í þessari bók
 
-\(c\) fjölda gramma í þyngd þinni
+(c) fjölda gramma í þyngd þinni
 
-\(d\) fjölda gramma í 3 kílógrömmum
+(d) fjölda gramma í 3 kílógrömmum
 
-\(e\) rúmmál vatns sem þú drekkur á einum degi
+(e) rúmmál vatns sem þú drekkur á einum degi
 
-\(f\) vegalengdina frá San Francisco til Kansas City
+(f) vegalengdina frá San Francisco til Kansas City
 
-:::svar (a) nákvæmt; (b) nákvæmt; (c) óvisst; (d) nákvæmt; (e) óvisst;
+:::svar
+(a) nákvæmt; (b) nákvæmt; (c) óvisst; (d) nákvæmt; (e) óvisst;
 (f) óvisst
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idp191983136} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
 
-\(a\) 38,7 g
+(a) 38,7 g
 
-\(b\) 2 $\times$ 10^18^ m
+(b) 2 $\times$ 10^18^ m
 
-\(c\) 3.486.002 kg
+(c) 3.486.002 kg
 
-\(d\) 9,74150 $\times$ 10^−4^ J
+(d) 9,74150 $\times$ 10^−4^ J
 
-\(e\) 0,0613 cm^3^
+(e) 0,0613 cm^3^
 
-\(f\) 17,0 kg
+(f) 17,0 kg
 
-\(g\) 0,01400 g/mL
+(g) 0,01400 g/mL
 
 :::
 
 :::æfingadæmi{#fs-idp16088144} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
 
-\(a\) 53 cm
+(a) 53 cm
 
 
-\(b\) 2,05 $\times$ 10^8^ m
+(b) 2,05 $\times$ 10^8^ m
 
-\(c\) 86,002 J
+(c) 86,002 J
 
-\(d\) 9,740 $\times$ 10^4^ m/s
+(d) 9,740 $\times$ 10^4^ m/s
 
-\(e\) 10,0613 m^3^
+(e) 10,0613 m^3^
 
-\(f\) 0,17 g/mL
+(f) 0,17 g/mL
 
-\(g\) 0,88400 s
+(g) 0,88400 s
 
-:::svar (a) tveir; (b) þrír; (c) fimm; (d) fjórir; (e) sex; (f) tveir;
+:::svar
+(a) tveir; (b) þrír; (c) fimm; (d) fjórir; (e) sex; (f) tveir;
 (g) fimm
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idp334498416} Eftirfarandi magn var gefið upp á
 merkimiðum á söluvörum. Ákvarðaðu fjölda markverðra stafa í hverju
 tilfelli.
 
-\(a\) 0,0055 g af virkum efnum
+(a) 0,0055 g af virkum efnum
 
-\(b\) 12 töflur
+(b) 12 töflur
 
-\(c\) 3% vetnisperoxíð
+(c) 3% vetnisperoxíð
 
-\(d\) 5,5 únsur
+(d) 5,5 únsur
 
-\(e\) 473 ml
+(e) 473 ml
 
-\(f\) 1,75% bismút
+(f) 1,75% bismút
 
-\(g\) 0,001% fosfórsýra
+(g) 0,001% fosfórsýra
 
-\(h\) 99,80% óvirk efni
+(h) 99,80% óvirk efni
 
 :::
 
 :::æfingadæmi{#fs-idp15391168} Sléttaðu eftirfarandi tölur að tveimur
 markverðum stöfum:
 
-\(a\) 0,436
+(a) 0,436
 
-\(b\) 9,000
+(b) 9,000
 
-\(c\) 27,2
+(c) 27,2
 
-\(d\) 135
+(d) 135
 
-\(e\) 1,497 $\times$ 10^−3^
+(e) 1,497 $\times$ 10^−3^
 
-\(f\) 0,445
+(f) 0,445
 
-:::svar (a) 0,44; (b) 9,0; (c) 27; (d) 140; (e) 1,5 $\times$
+:::svar
+(a) 0,44; (b) 9,0; (c) 27; (d) 140; (e) 1,5 $\times$
 10^−3^; (f) 0,44
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idp108082000} Sléttaðu eftirfarandi tölur að tveimur
 markverðum stöfum:
 
-\(a\) 517
+(a) 517
 
-\(b\) 86,3
+(b) 86,3
 
-\(c\) 6,382 $\times$ 10^3^
+(c) 6,382 $\times$ 10^3^
 
-\(d\) 5,0008
+(d) 5,0008
 
-\(e\) 22,497
+(e) 22,497
 
-\(f\) 0,885
+(f) 0,885
 
 :::
 
 :::æfingadæmi{#fs-idp358584288} Framkvæmdu eftirfarandi útreikninga og
 gefðu upp hvert svar með réttum fjölda markverðra stafa.
 
-\(a\) 628 $\times$ 342
+(a) 628 $\times$ 342
 
-\(b\) (5,63 $\times$ 10^2^) $\times$ (7,4 $\times$ 10^3^)
+(b) (5,63 $\times$ 10^2^) $\times$ (7,4 $\times$ 10^3^)
 
-\(c\) $${\frac{{28.0}}{{13.483}}}$$
+(c) $${\frac{{28.0}}{{13.483}}}$$
 
-\(d\) 8119 $\times$ 0,000023
+(d) 8119 $\times$ 0,000023
 
-\(e\) 14,98 + 27.340 + 84,7593
+(e) 14,98 + 27.340 + 84,7593
 
-\(f\) 42,7 + 0,259
+(f) 42,7 + 0,259
 
-:::svar (a) 2,15 $\times$ 10^5^; (b) 4,2 $\times$ 10^6^; (c)
+:::svar
+(a) 2,15 $\times$ 10^5^; (b) 4,2 $\times$ 10^6^; (c)
 2,08; (d) 0,19; (e) 27.440; (f) 43,0
 
-::: :::
+:::
+:::
 
 :::æfingadæmi{#fs-idp356573616} Framkvæmdu eftirfarandi útreikninga og
 gefðu upp hvert svar með réttum fjölda markverðra stafa.
 
-\(a\) 62,8 $\times$ 34
+(a) 62,8 $\times$ 34
 
-\(b\) 0,147 + 0,0066 + 0,012
+(b) 0,147 + 0,0066 + 0,012
 
-\(c\) 38 $\times$ 95 $\times$ 1,792
+(c) 38 $\times$ 95 $\times$ 1,792
 
-\(d\) 15 – 0,15 – 0,6155
+(d) 15 – 0,15 – 0,6155
 
-\(e\) $${8.78\,\times \,{({\frac{{0.0500}}{{0.478}}})}}$$
+(e) $${8.78\,\times \,{({\frac{{0.0500}}{{0.478}}})}}$$
 
-\(f\) 140 + 7,68 + 0,014
+(f) 140 + 7,68 + 0,014
 
-\(g\) 28,7 – 0.0483
+(g) 28,7 – 0.0483
 
-\(h\) $${\frac{{(88.5-87.57)}}{{45.13}}}$$
+(h) $${\frac{{(88.5-87.57)}}{{45.13}}}$$
 
 :::
 
-:::practice-problem{#fs-idp30946992} Skoðaðu niðurstöður
+:::practice-problem{#fs-idp30946992}
+Skoðaðu niðurstöður
 bogfimikeppninnar sem sýndar eru á þessari mynd.
 
-\(a\) Hvaða bogmaður er nákvæmastur?
+(a) Hvaða bogmaður er nákvæmastur?
 
-\(b\) Hvaða bogmaður er réttastur?
+(b) Hvaða bogmaður er réttastur?
 
-\(c\) Hver er bæði ónákvæmastur og óréttastur?
+(c) Hver er bæði ónákvæmastur og óréttastur?
 
-:::answer (a) Bogmaður X; (b) Bogmaður W; (c) Bogmaður Y
+:::answer
+(a) Bogmaður X; (b) Bogmaður W; (c) Bogmaður Y
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idp33718320} Flokkaðu eftirfarandi mælingasett
+:::practice-problem{#fs-idp33718320}
+Flokkaðu eftirfarandi mælingasett
 sem rétt, nákvæmt, hvort tveggja eða hvorugt.
 
-\(a\) Athugun á samræmi í þyngd súkkulaðibitakaka: 17,27 g, 13,05 g,
+(a) Athugun á samræmi í þyngd súkkulaðibitakaka: 17,27 g, 13,05 g,
 19,46 g, 16,92 g
 
-\(b\) Prófun á rúmmáli lotu af 25 ml pípettum: 27,02 ml, 26,99 ml, 26,97
+(b) Prófun á rúmmáli lotu af 25 ml pípettum: 27,02 ml, 26,99 ml, 26,97
 ml, 27,01 ml
 
-\(c\) Ákvörðun á hreinleika gulls: 99,9999%, 99,9998%, 99,9998%,
+(c) Ákvörðun á hreinleika gulls: 99,9999%, 99,9998%, 99,9998%,
 99,9999%
 
 :::

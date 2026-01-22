@@ -24,7 +24,8 @@ publication-track: mt-preview
 - Flokkað efni sem frumefni, efnasamband, einsleita efnablöndu eða
   misleita efnablöndu með tilliti til efnishams og samsetningar
 
-- Skilgreint og gefið dæmi um atóm og sameindir :::
+- Skilgreint og gefið dæmi um atóm og sameindir
+:::
 
 **Efni**{#term-00001} er skilgreint sem allt sem tekur rúm og hefur
 massa og það er allt í kringum okkur. Föst efni og vökvar eru
@@ -33,7 +34,7 @@ að þau hafi massa. Gös eru líka efni; ef gös tækju ekki rúm myndi blaðra
 ekki blásast upp (auka rúmmál sitt) þegar hún er fyllt með gasi.
 
 Föst efni, vökvar og gös eru þrír efnishamir sem almennt finnast á
-jörðinni (\[↑\](#CNX_Chem_01_02_StatesMatt)). **Fast
+jörðinni ([↗](#CNX_Chem_01_02_StatesMatt)). **Fast
 efni**{#term-00002} er stíft og hefur ákveðið form.
 **Vökvi**{#term-00003} flæðir og tekur lögun íláts síns, nema hvað
 hann myndar flatt eða örlítið bogið yfirborð þegar þyngdarafl verkar á
@@ -41,7 +42,7 @@ hann. (Í þyngdarleysi taka vökvar á sig kúlulaga form.) Bæði sýni af
 vökva og föstu efni hafa rúmmál sem eru nánast óháð þrýstingi.
 **Gas**{#term-00004} tekur bæði lögun og rúmmál íláts síns.
 
-![](CNX_Chem_01_02_StatesMatt.jpg){#CNX_Chem_01_02_StatesMatt}
+![](images/media/CNX_Chem_01_02_StatesMatt.jpg){#CNX_Chem_01_02_StatesMatt}
 
 *Mynd: Algengustu þrír efnishamirnir eru fast efni, vökvi og
 gas.*{#CNX_Chem_01_02_StatesMatt}
@@ -49,14 +50,14 @@ gas.*{#CNX_Chem_01_02_StatesMatt}
 Fjórði efnishamurinn, plasma, kemur fyrir náttúrulega í iðrum stjarna.
 **Plasma**{#term-00005} er gasástand efnis sem inniheldur
 umtalsverðan fjölda rafhladdra einda
-(\[↑\](#CNX_Chem_01_02_Plasma)). Tilvist þessara hlöddu einda gefur
+([↗](#CNX_Chem_01_02_Plasma)). Tilvist þessara hlöddu einda gefur
 plasma einstaka eiginleika sem réttlæta flokkun þess sem efnisham
 aðskilinn frá gasi. Auk stjarna er plasma að finna í öðru háhitaumhverfi
 (bæði náttúrulegu og manngerðu), svo sem í eldingum, ákveðnum
 sjónvarpsskjám og sérhæfðum mælitækjum sem notuð eru til að greina
 snefilmagn málma.
 
-![](CNX_Chem_01_02_Plasma.jpg){#CNX_Chem_01_02_Plasma}
+![](images/media/CNX_Chem_01_02_Plasma.jpg){#CNX_Chem_01_02_Plasma}
 
 *Mynd: Hægt er að nota plasmakyndil til að skera málm. (Heimild:
 „Hypertherm“/Wikimedia Commons)*{#CNX_Chem_01_02_Plasma}
@@ -99,7 +100,7 @@ vísindalegar athuganir á efni: Það segir að *engin greinanleg breyting
 verði á heildarmagni efnis þegar efni breytist úr einni gerð í aðra
 (efnabreyting) eða breytist milli fasts efnis, vökva eða gass
 (eðlisbreyting)*. Bjórgerð og virkni rafhlaðna eru dæmi um varðveislu
-efnis (\[↑\](#CNX_Chem_01_02_ConsMatter)). Við bjórgerð breytast
+efnis ([↗](#CNX_Chem_01_02_ConsMatter)). Við bjórgerð breytast
 innihaldsefnin (vatn, ger, korn, malt, humlar og sykur) í bjór (vatn,
 alkóhól, kolsýra og bragðefni) án þess að neitt efni tapist í raun.
 Þetta sést best í átöppunarferlinu þegar glúkósi breytist í etanól og
@@ -109,7 +110,7 @@ brennisteinssýra), sem geta framleitt rafmagn, breytast í önnur efni
 (blýsúlfat og vatn) sem framleiða ekki rafmagn, án þess að raunverulegt
 magn efnis breytist.
 
-![](CNX_Chem_01_02_ConsMatter.jpg){#CNX_Chem_01_02_ConsMatter}
+![](images/media/CNX_Chem_01_02_ConsMatter.jpg){#CNX_Chem_01_02_ConsMatter}
 
 *Mynd: (a) Massi hráefna í bjór er sá sami og massi bjórsins sem
 framleiddur er: Sykur hefur orðið að alkóhóli og koldíoxíði. (b) Massi
@@ -147,7 +148,7 @@ Hrein efni sem samanstanda af tveimur eða fleiri frumefnum eru kölluð
 með efnabreytingum til að fá annaðhvort frumefni eða önnur efnasambönd,
 eða hvort tveggja. Kvikasilfurs(II)oxíð, appelsínugult, kristalkennt
 fastefni, er hægt að brjóta niður með varma í frumefnin kvikasilfur og
-súrefni (\[↑\](#CNX_Chem_01_02_decomp)). Þegar efnasambandið
+súrefni ([↗](#CNX_Chem_01_02_decomp)). Þegar efnasambandið
 súkrósi er hitað án lofts brotnar það niður í frumefnið kolefni og
 efnasambandið vatn. (Upphafsstig þessa ferlis, þegar sykurinn verður
 brúnn, er þekkt sem karamellumyndun – það er þetta sem gefur
@@ -158,14 +159,15 @@ eiginleiki er grundvöllur notkunar þessa efnasambands í ljósmyndafilmur
 og ljóslit gleraugu (þau með linsum sem dökkna þegar þau verða fyrir
 ljósi).
 
-![](CNX_Chem_01_02_decomp.jpg){#CNX_Chem_01_02_decomp}
+![](images/media/CNX_Chem_01_02_decomp.jpg){#CNX_Chem_01_02_decomp}
 
 *Mynd 1.4: (a) Efnasambandið kvikasilfurs(II)oxíð, (b) þegar það er
 hitað, (c) brotnar niður í silfraða dropa af fljótandi kvikasilfri og
 ósýnilegt súrefnisgas. (heimild: breyting á verki eftir Paul
 Flowers)*{#CNX_Chem_01_02_decomp}
 
-:::link-to-material Mörg efnasambönd brotna niður við hitun. Þessi
+:::link-to-material
+Mörg efnasambönd brotna niður við hitun. Þessi
 \[síða\](http://openstax.org/l/16mercury) sýnir niðurbrot
 kvikasilfursoxíðs, HgO. Þú getur einnig skoðað dæmi um
 \[ljósefnafræðilegt niðurbrot
@@ -191,7 +193,7 @@ að aðskilja með eðlisfræðilegum breytingum, svo sem uppgufun (þú munt
 læra meira um þetta síðar). Efnablanda með samsetningu sem er breytileg
 frá einum stað til annars er kölluð **misleit
 efnablanda**{#term-00013}. Ítölsk salatsósa er dæmi um misleita
-efnablöndu (\[↑\](#CNX_Chem_01_02_Mixtures)). Samsetning hennar
+efnablöndu ([↗](#CNX_Chem_01_02_Mixtures)). Samsetning hennar
 getur verið breytileg því hún getur verið útbúin úr mismunandi magni af
 olíu, ediki og kryddjurtum. Hún er ekki eins alls staðar í blöndunni –
 einn dropi getur að mestu verið edik, á meðan annar dropi getur að mestu
@@ -205,7 +207,7 @@ fleira).
 **lausn**{#term-00015}, hefur samræmda samsetningu og virðist
 sjónrænt eins út í gegn. Dæmi um lausn er íþróttadrykkur sem
 samanstendur af vatni, sykri, litarefni, bragðefni og rafkleyfum sem er
-blandað jafnt saman (\[↑\](#CNX_Chem_01_02_Mixtures)). Hver dropi
+blandað jafnt saman ([↗](#CNX_Chem_01_02_Mixtures)). Hver dropi
 af íþróttadrykk bragðast eins því hver dropi inniheldur sama magn af
 vatni, sykri og öðrum íhlutum. Athugið að samsetning íþróttadrykkjar
 getur verið breytileg – hann gæti verið búinn til með aðeins meiri eða
@@ -213,7 +215,7 @@ minni sykri, bragðefni eða öðrum íhlutum og samt verið íþróttadrykkur.
 Önnur dæmi um einsleitar efnablöndur eru loft, hlynsíróp, bensín og
 lausn af salti í vatni.
 
-![](CNX_Chem_01_02_Mixtures.jpg){#CNX_Chem_01_02_Mixtures}
+![](images/media/CNX_Chem_01_02_Mixtures.jpg){#CNX_Chem_01_02_Mixtures}
 
 *Mynd 1.5: (a) Salatsósa úr olíu og ediki er misleit efnablanda því
 samsetning hennar er ekki einsleit út í gegn. (b) Íþróttadrykkur úr búð
@@ -229,16 +231,16 @@ eðliseiginleikum sem aðgreina það frá öllum öðrum efnasamböndum. Og
 auðvitað eru óteljandi leiðir til að sameina frumefni og efnasambönd til
 að mynda mismunandi efnablöndur. Yfirlit yfir hvernig á að greina á
 milli hinna ýmsu helstu flokkunartegunda efnis er sýnt í
-(\[↑\](#CNX_Chem_01_02_MattType)).
+([↗](#CNX_Chem_01_02_MattType)).
 
-![](CNX_Chem_01_02_MattType.jpg){#CNX_Chem_01_02_MattType}
+![](images/media/CNX_Chem_01_02_MattType.jpg){#CNX_Chem_01_02_MattType}
 
 *Mynd 1.6: Eftir eiginleikum sínum er hægt að flokka tiltekið efni sem
 einsleita efnablöndu, misleita efnablöndu, efnasamband eða
 frumefni.*{#CNX_Chem_01_02_MattType}
 
 Ellef frumefni mynda um 99% af jarðskorpunni og andrúmsloftinu
-(\[↑\](#fs-idp31507504)). Súrefni er næstum helmingur og kísill um
+([↗](#fs-idp31507504)). Súrefni er næstum helmingur og kísill um
 fjórðungur af heildarmagni þessara frumefna. Meirihluti frumefna á
 jörðinni finnst í efnasamböndum með öðrum frumefnum; um fjórðungur
 frumefnanna finnst einnig í óbundnu ástandi.
@@ -280,11 +282,11 @@ svo annan helminginn í tvennt og endurtaka þetta ferli þar til eftir
 stendur gullstykki sem er svo lítið að ekki er hægt að skera það í
 tvennt (sama hversu agnarsmár hnífurinn þinn kynni að vera). Þetta
 minnsta mögulega gullstykki er atóm (úr grísku *atomos*, sem þýðir
-„ódeilanlegt“) (\[↑\](#CNX_Chem_01_02_GoldAtoms)). Þetta atóm væri
+„ódeilanlegt“) ([↗](#CNX_Chem_01_02_GoldAtoms)). Þetta atóm væri
 ekki lengur gull ef því væri skipt frekar.
 
 
-![](CNX_Chem_01_02_GoldAtoms.jpg){#CNX_Chem_01_02_GoldAtoms}
+![](images/media/CNX_Chem_01_02_GoldAtoms.jpg){#CNX_Chem_01_02_GoldAtoms}
 
 *Mynd 1.7: (a) Þessi ljósmynd sýnir gullmola. (b) Skannandi gangasmásjá
 (STM) getur búið til myndir af yfirborði fastra efna, eins og þessa mynd
@@ -312,10 +314,10 @@ risastórt á atómskvarða. Eitt kolefnisatóm í vefnum hefur þvermál um
 þvermál þráðarins. Til að setja þetta í samhengi, ef kolefnisatóm væri á
 stærð við tíkall, væri þversnið eins þráðar stærra en fótboltavöllur,
 sem þyrfti um 150 milljónir kolefnisatóma-„tíkalla“ til að hylja.
-(\[↑\](#CNX_Chem_01_02_Cellulose)) sýnir sífellt nánari smásjár- og
+([↗](#CNX_Chem_01_02_Cellulose)) sýnir sífellt nánari smásjár- og
 atómsmyndir af venjulegri bómull.
 
-![](CNX_Chem_01_02_Cellulose.jpg){#CNX_Chem_01_02_Cellulose}
+![](images/media/CNX_Chem_01_02_Cellulose.jpg){#CNX_Chem_01_02_Cellulose}
 
 *Mynd 1.8: Þessar myndir sýna sífellt nánari sýn: (a) bómullarhnoðri,
 (b) einn bómullarþráður séður í ljóssmásjá (stækkað 40 sinnum), (c) mynd
@@ -335,7 +337,7 @@ aðeins vega 0,0000001 gramm.
 eins og gösin helíum, neon og argon, samanstanda af safni stakra atóma
 sem hreyfast óháð hvert öðru. Önnur frumefni, eins og gösin vetni,
 köfnunarefni, súrefni og klór, eru samsett úr einingum sem samanstanda
-af atómapörum (\[↑\](#CNX_Chem_01_02_Molecules)). Eitt form
+af atómapörum ([↗](#CNX_Chem_01_02_Molecules)). Eitt form
 frumefnisins fosfórs samanstendur af einingum sem eru samsettar úr
 fjórum fosfóratómum. Frumefnið brennisteinn er til í ýmsum myndum, þar
 af ein sem samanstendur af einingum sem eru samsettar úr átta
@@ -354,7 +356,7 @@ Eins og atóm eru sameindir ótrúlega litlar og léttar. Ef venjulegt
 vatnsglas væri stækkað í stærð jarðarinnar, væru vatnssameindirnar í því
 á stærð við golfkúlur.
 
-![](CNX_Chem_01_02_Molecules.jpg){#CNX_Chem_01_02_Molecules}
+![](images/media/CNX_Chem_01_02_Molecules.jpg){#CNX_Chem_01_02_Molecules}
 
 . Koldíoxíð, C O subscript 2, samanstendur af einu kolefnisatómi og
 tveimur súrefnisatómum. Eitt súrefnisatóm er tengt við hægri hlið
@@ -375,7 +377,7 @@ atóma úr mismunandi frumefnum.*{#CNX_Chem_01_02_Molecules}
 Vatn samanstendur af frumefnunum vetni og súrefni í hlutfallinu 2 á
 móti 1. Hægt er að brjóta vatn niður í vetnis- og súrefnisgas með
 álagningu orku. Ein leið til að gera þetta er með rafhlöðu eða aflgjafa,
-eins og sýnt er á (\[↑\](#CNX_Chem_01_01_Electrolys)).
+eins og sýnt er á ([↗](#CNX_Chem_01_01_Electrolys)).
 
 Niðurbrot vatns felur í sér umröðun atómanna í vatnssameindum yfir í
 aðrar sameindir, þar sem hver samanstendur af tveimur vetnisatómum og
@@ -388,7 +390,7 @@ ekki eldfimt en er nauðsynlegt fyrir bruna eldsneytis og vetni er mjög
 eldfimt og öflugur orkugjafi. Hvernig mætti nýta þessa þekkingu í okkar
 heimi? Eitt notkunarsvið felur í sér rannsóknir á sparneytnari
 samgöngum. Efnarafalsbílar (FCV) ganga fyrir vetni í stað bensíns
-(\[↑\](#CNX_Chem_01_01_FuelCell)). Þeir eru skilvirkari en bílar
+([↗](#CNX_Chem_01_01_FuelCell)). Þeir eru skilvirkari en bílar
 með brunahreyflum, eru ekki mengandi og draga úr losun
 gróðurhúsalofttegunda, sem gerir okkur minna háð jarðefnaeldsneyti.
 Efnarafalsbílar eru þó ekki enn hagkvæmir og núverandi vetnisframleiðsla
@@ -398,7 +400,7 @@ efnarafalsbílar verið framtíðin.
 
 :::
 
-![](CNX_Chem_01_01_Electrolys.jpg){#CNX_Chem_01_01_Electrolys}
+![](images/media/CNX_Chem_01_01_Electrolys.jpg){#CNX_Chem_01_01_Electrolys}
 
 *Mynd 1.10: Niðurbrot vatns er sýnt á stórsæju, smásæju og táknrænu
 stigi. Rafhlaðan gefur straum (smásætt) sem brýtur niður vatn. Á
@@ -407,7 +409,7 @@ stórsæju stigi skiptist vökvinn í gasið vetni (vinstra megin) og súrefni
 vökvinn H~2~O skiptist í H~2~ og O~2~
 gas.*{#CNX_Chem_01_01_Electrolys}
 
-![](CNX_Chem_01_01_FuelCell.jpg){#CNX_Chem_01_01_FuelCell}
+![](images/media/CNX_Chem_01_01_FuelCell.jpg){#CNX_Chem_01_01_FuelCell}
 
 *Mynd 1.11: Efnarafall framleiðir raforku úr vetni og súrefni með
 rafefnafræðilegu ferli og framleiðir aðeins vatn sem
@@ -418,7 +420,7 @@ rafefnafræðilegu ferli og framleiðir aðeins vatn sem
 ### Efnafræði farsíma
 
 Ímyndaðu þér hversu ólíkt líf þitt væri án farsíma
-(\[↑\](#CNX_Chem_01_02_CellPhone)) og annarra snjalltækja. Farsímar
+([↗](#CNX_Chem_01_02_CellPhone)) og annarra snjalltækja. Farsímar
 eru gerðir úr fjölmörgum hreinum efnum sem eru unnin, hreinsuð og sett
 saman með víðtækum og ítarlegum skilningi á efnafræðilegum lögmálum. Um
 30% þeirra frumefna sem finnast í náttúrunni eru í dæmigerðum
@@ -469,143 +471,172 @@ eða efnasamband, sem samanstendur af tveimur eða fleiri tegundum atóma.
 
 ## Efnafræði – Æfingar í lok kafla
 
-:::practice-problem{#fs-idm68837632} Hvers vegna er massi hlutar, frekar
+:::practice-problem{#fs-idm68837632}
+Hvers vegna er massi hlutar, frekar
 en þyngd hans, notaður til að gefa til kynna magn efnis sem hann
 inniheldur?
 
 :::
 
-:::practice-problem{#fs-idp51841840} Hvaða eiginleikar greina föst efni
+:::practice-problem{#fs-idp51841840}
+Hvaða eiginleikar greina föst efni
 frá vökvum? Vökva frá gösum? Föst efni frá gösum?
 
-:::answer Vökvar geta breytt lögun sinni (flotið); föst efni geta það
+:::answer
+Vökvar geta breytt lögun sinni (flotið); föst efni geta það
 ekki. Gösun geta tekið miklum rúmmálsbreytingum þegar þrýstingur
 breytist; vökvar gera það ekki. Gösun fljóta og breyta um rúmmál; föst
 efni gera það ekki.
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm29164608} Hvernig er misleit efnablanda
+:::practice-problem{#fs-idm29164608}
+Hvernig er misleit efnablanda
 frábrugðin einsleitri efnablöndu? Hvernig eru þær svipaðar?
 
 :::
 
-:::practice-problem{#fs-idp135248192} Hvernig er einsleit efnablanda
+:::practice-problem{#fs-idp135248192}
+Hvernig er einsleit efnablanda
 frábrugðin hreinu efni? Hvernig eru þau svipuð?
 
-:::answer Efnablandan getur haft ýmsa samsetningu; hreint efni hefur
+:::answer
+Efnablandan getur haft ýmsa samsetningu; hreint efni hefur
 ákveðna samsetningu. Bæði hafa sömu samsetningu frá einum punkti til
 annars.
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm23683040} Hvernig er frumefni frábrugðið
+:::practice-problem{#fs-idm23683040}
+Hvernig er frumefni frábrugðið
 efnasambandi? Hvernig eru þau svipuð?
 
 :::
 
-:::practice-problem{#fs-idm34556656} Hvernig eru sameindir frumefna og
+:::practice-problem{#fs-idm34556656}
+Hvernig eru sameindir frumefna og
 sameindir efnasambanda ólíkar? Að hvaða leyti eru þær svipaðar?
 
-:::answer Sameindir frumefna innihalda aðeins eina tegund atóma;
+:::answer
+Sameindir frumefna innihalda aðeins eina tegund atóma;
 sameindir efnasambanda innihalda tvær eða fleiri tegundir atóma. Þær eru
 svipaðar að því leyti að báðar samanstanda af tveimur eða fleiri atómum
 sem eru efnatengd saman.
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm12578096} Hvernig er atóm frábrugðið sameind?
+:::practice-problem{#fs-idm12578096}
+Hvernig er atóm frábrugðið sameind?
 Að hvaða leyti eru þau svipuð?
 
 :::
 
-:::practice-problem{#fs-idm11351120} Margar af þeim vörum sem þú kaupir
+:::practice-problem{#fs-idm11351120}
+Margar af þeim vörum sem þú kaupir
 eru efnablöndur af hreinum efnasamböndum. Veldu þrjár af þessum
 verslunarvörum og búðu til lista yfir innihaldsefnin sem eru hrein
 efnasambönd.
 
-:::answer Svör eru breytileg. Dæmi um svar: Gatorade inniheldur vatn,
+:::answer
+Svör eru breytileg. Dæmi um svar: Gatorade inniheldur vatn,
 sykur, dextrósa, sítrónusýru, salt, natríumklóríð, mónókalíumfosfat og
 súkrósaasetatísóbútýrat.
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm27722240} Flokkaðu hvert eftirfarandi sem
+:::practice-problem{#fs-idm27722240}
+Flokkaðu hvert eftirfarandi sem
 frumefni, efnasamband eða efnablöndu:
 
-\(a\) kopar
+(a) kopar
 
-\(b\) vatn
+(b) vatn
 
-\(c\) köfnunarefni
+(c) köfnunarefni
 
-\(d\) brennisteinn
+(d) brennisteinn
 
-\(e\) loft
+(e) loft
 
-\(f\) súkrósi
+(f) súkrósi
 
-\(g\) efni sem samanstendur af sameindum sem hver inniheldur tvö joðatóm
+(g) efni sem samanstendur af sameindum sem hver inniheldur tvö joðatóm
 
-\(h\) bensín
+(h) bensín
 
 :::
 
-:::practice-problem{#fs-idp134896512} Flokkaðu hvert eftirfarandi sem
+:::practice-problem{#fs-idp134896512}
+Flokkaðu hvert eftirfarandi sem
 frumefni, efnasamband eða efnablöndu:
 
-\(a\) járn
+(a) járn
 
-\(b\) súrefni
+(b) súrefni
 
-\(c\) kvikasilfursoxíð
+(c) kvikasilfursoxíð
 
-\(d\) pönnukökusíróp
+(d) pönnukökusíróp
 
-\(e\) koltvísýringur
+(e) koltvísýringur
 
-\(f\) efni sem samanstendur af sameindum sem hver inniheldur eitt
+(f) efni sem samanstendur af sameindum sem hver inniheldur eitt
 vetnisatóm og eitt klóratóm
 
-\(g\) matarsódi
+(g) matarsódi
 
-\(h\) lyftiduft
+(h) lyftiduft
 
-:::answer (a) frumefni; (b) frumefni; (c) efnasamband; (d) efnablanda;
+:::answer
+(a) frumefni; (b) frumefni; (c) efnasamband; (d) efnablanda;
 (e) efnasamband; (f) efnasamband; (g) efnasamband; (h) efnablanda
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm25131712} Brennisteinsatóm og
+:::practice-problem{#fs-idm25131712}
+Brennisteinsatóm og
 brennisteinssameind eru ekki eins. Hver er munurinn?
 
 :::
 
-:::practice-problem{#fs-idm38551280} Hvað er líkt með sameindum í
+:::practice-problem{#fs-idm38551280}
+Hvað er líkt með sameindum í
 súrefnisgasi, sameindum í vetnisgasi og vatnssameindum? Hvernig eru þær
 ólíkar?
 
-:::answer Í hverju tilviki samanstendur sameind af tveimur eða fleiri
+:::answer
+Í hverju tilviki samanstendur sameind af tveimur eða fleiri
 samtengdum atómum. Þær eru ólíkar að því leyti að gerðir atóma breytast
 úr einu efni í annað.
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm29444768} Af hverju er sagt að geimfarar í
+:::practice-problem{#fs-idm29444768}
+Af hverju er sagt að geimfarar í
 geimnum séu „þyngdarlausir“ en ekki „massalausir“?
 
 :::
 
-:::practice-problem{#fs-idm50582272} Gerðu lista yfir helstu efni sem
+:::practice-problem{#fs-idm50582272}
+Gerðu lista yfir helstu efni sem
 eyðast og myndast við notkun bifreiðar.
 
-:::answer Bensín (efnablanda efnasambanda), súrefni og í minna mæli
+:::answer
+Bensín (efnablanda efnasambanda), súrefni og í minna mæli
 köfnunarefni eyðast. Koldíoxíð og vatn eru helstu myndefnin. Kolmónoxíð
 og köfnunarefnisoxíð myndast í minna magni.
 
-::: :::
+:::
+:::
 
-:::practice-problem{#fs-idm10469360} Efni er allt í kringum okkur. Gerðu
+:::practice-problem{#fs-idm10469360}
+Efni er allt í kringum okkur. Gerðu
 lista yfir fimmtán mismunandi tegundir efna sem þú rekst á daglega.
 Listinn þinn ætti að innihalda (og merkja að minnsta kosti eitt dæmi af
 hverju) eftirfarandi: fast efni, vökva, gas, frumefni, efnasamband,
@@ -613,7 +644,8 @@ einsleita efnablöndu, misleita efnablöndu og hreint efni.
 
 :::
 
-:::practice-problem{#fs-idp17429552} Þegar frumefnið járn tærist
+:::practice-problem{#fs-idp17429552}
+Þegar frumefnið járn tærist
 sameinast það súrefni í loftinu og myndar að lokum rauðbrúnt
 járn(III)oxíð sem kallast ryð. (a) Ef glansandi járnnagli með
 upphaflegan massa 23,2 g er vigtaður eftir að hafa verið húðaður með
@@ -621,28 +653,31 @@ ryðlagi, myndir þú búast við að massinn hafi aukist, minnkað eða haldist
 óbreyttur? Útskýrðu. (b) Ef massi járnnaglans eykst í 24,1 g, hvaða
 massi súrefnis sameinaðist járninu?
 
-:::answer (a) Aukist þar sem hann hefði sameinast súrefni í loftinu og
+:::answer
+(a) Aukist þar sem hann hefði sameinast súrefni í loftinu og
 þannig aukið magn efnis og þar með massann. (b) 0,9 g
 
-::: :::
+:::
+:::
 
 
-:::practice-problem{#fs-idm1546416} Eins og fram kemur í textanum eru
+:::practice-problem{#fs-idm1546416}
+Eins og fram kemur í textanum eru
 sannfærandi dæmi sem sýna fram á massavarðveislulögmálið utan
 rannsóknarstofunnar fátíð. Tilgreindu hvort massinn myndi aukast, minnka
 eða haldast óbreyttur í eftirfarandi tilvikum þar sem efnahvörf eiga sér
 stað:
 
-\(a\) Nákvæmlega eitt pund af brauðdeigi er sett í bökunarform. Deigið
+(a) Nákvæmlega eitt pund af brauðdeigi er sett í bökunarform. Deigið
 er bakað í ofni við 350 °F og gefur frá sér dásamlegan ilm af nýbökuðu
 brauði á meðan á bökuninni stendur. Er massi bakaða brauðhleifsins minni
 en, meiri en eða sá sami og eitt pund af upprunalega deiginu? Útskýrðu.
 
-\(b\) Þegar magnesíum brennur í lofti myndast hvít, flögnandi aska af
+(b) Þegar magnesíum brennur í lofti myndast hvít, flögnandi aska af
 magnesíumoxíði. Er massi magnesíumoxíðs minni en, meiri en eða sá sami
 og upprunalega magnesíumstykkið? Útskýrðu.
 
-\(c\) Antoine Lavoisier, franski vísindamaðurinn sem er talinn hafa
+(c) Antoine Lavoisier, franski vísindamaðurinn sem er talinn hafa
 fyrst sett fram massavarðveislulögmálið, hitaði efnablöndu af tini og
 lofti í lokaðri flösku til að framleiða tinoxíð. Minnkaði, jókst eða
 hélst massi lokuðu flöskunnar og innihalds hennar óbreyttur eftir
@@ -650,21 +685,24 @@ hitunina?
 
 :::
 
-:::practice-problem{#fs-idp17769472} Ger breytir glúkósa í etanól og
+:::practice-problem{#fs-idp17769472}
+Ger breytir glúkósa í etanól og
 koldíoxíð við loftfirrta gerjun eins og sýnt er í einföldu efnajöfnunni
 hér: ${\text{glucose}\,\longrightarrow \,\text{ethanol}+\text{carbon dioxide}}${#fs-idp17770496}
 
-\(a\) Ef 200,0 g af glúkósa breytast að fullu, hver verður heildarmassi
+(a) Ef 200,0 g af glúkósa breytast að fullu, hver verður heildarmassi
 etanóls og koldíoxíðs sem myndast?
 
-\(b\) Ef gerjunin fer fram í opnu íláti, myndir þú búast við að massi
+(b) Ef gerjunin fer fram í opnu íláti, myndir þú búast við að massi
 ílátsins og innihalds eftir gerjun sé minni en, meiri en eða sá sami og
 massi ílátsins og innihalds fyrir gerjun? Útskýrðu.
 
-\(c\) Ef 97,7 g af koldíoxíði myndast, hvaða massi af etanóli myndast?
+(c) Ef 97,7 g af koldíoxíði myndast, hvaða massi af etanóli myndast?
 
-:::answer (a) 200,0 g; (b) Massi ílátsins og innihalds myndi minnka þar
+:::answer
+(a) 200,0 g; (b) Massi ílátsins og innihalds myndi minnka þar
 sem koldíoxíð er myndefni á gasformi og myndi sleppa úr ílátinu. (c)
 102,3 g
 
-::: :::
+:::
+:::
