@@ -1,11 +1,22 @@
----
-title: "Introduction"
-section: "intro"
-module: "m68663"
-lang: "en"
----
+## titill: „Introduction" kafli: „intro" eining: „m68663" tungumál: „en"
 
 # Introduction
+
+:::learning-objectives
+## Learning Objectives
+
+- Chemistry in Context
+- Phases and Classification of Matter
+- Physical and Chemical Properties
+- Measurements
+- Measurement Uncertainty, Accuracy, and Precision
+- Mathematical Treatment of Measurement Results
+- Module for Testing Functions of Various Items to See How They Generate in the PDF
+:::
+
+![](CNX_Chem_01_00_DailyChem.jpg){id="CNX_Chem_01_00_DailyChem" class="splash" alt="A photo collage shows a cup of black coffee, a hand covered in foamy soap, a remote control, and a gasoline pump nozzle inserted into a vehicle’s gas tank."}
+
+*Figure: Chemical substances and processes are essential for our existence, providing sustenance, keeping us clean and healthy, fabricating electronic devices, enabling transportation, and much more. (credit “left”: modification of work by “vxla”/Flickr; credit “left middle”: modification of work by “the Italian voice”/Flickr; credit “right middle”: modification of work by Jason Trim; credit “right”: modification of work by “gosheshe”/Flickr)*{id="CNX_Chem_01_00_DailyChem"}
 
 Your alarm goes off and, after hitting “snooze” once or twice, you pry yourself out of bed. You make a cup of coffee to help you get going, and then you shower, get dressed, eat breakfast, and check your phone for messages. On your way to school, you stop to fill your car’s gas tank, almost making you late for the first day of chemistry class. As you find a seat in the classroom, you read the question projected on the screen: “Welcome to class! Why should we study chemistry?”
 
