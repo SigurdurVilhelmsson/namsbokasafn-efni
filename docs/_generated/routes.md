@@ -238,6 +238,7 @@
 | GET | `/:book/scan` |
 | POST | `/:book/sync` |
 | POST | `/:book/:chapter/sync` |
+| GET | `/analytics` |
 | GET | `/meeting-agenda` |
 
 ## /suggestions
