@@ -99,7 +99,7 @@ kílómetrum (1 km = 1000 m = 10^3^ m), en styttri vegalengdir má gefa upp
 í sentimetrum (1 cm = 0,01 m = 10^−2^ m) eða millimetrum (1 mm = 0,001 m
 = 10^−3^ m).
 
-{#CNX_Chem_01_04_MYdCmIn}
+![](CNX_Chem_01_04_MYdCmIn.jpg){#CNX_Chem_01_04_MYdCmIn}
 
 *Mynd 1*
 
@@ -121,7 +121,7 @@ finna á https://www.nist.gov/pml/weights-and-measures/si-units-mass.
 Eitt kílógramm er um 2,2 pund. Grammið (g) er nákvæmlega 1/1000 af massa
 kílógrammsins (10^−3^ kg).
 
-{#CNX_Chem_01_04_Kilogram}
+![](CNX_Chem_01_04_Kilogram.jpg){#CNX_Chem_01_04_Kilogram}
 
 *Mynd 1.14: Þessi eftirmynd af frumgerð kílógrammsins, eins og það var
 áður skilgreint, er geymd hjá National Institute of Standards and
@@ -175,7 +175,7 @@ sentimetra. Skammstöfunin **cc** (úr ensku **c**ubic **c**entimeter) er
 oft notuð af heilbrigðisstarfsfólki. Einn rúmsentimetri jafngildir einum
 **millilítra (mL)**{#term-00015} og er 1/1000 úr lítra.
 
-{#CNX_Chem_01_04_Volume}
+![](CNX_Chem_01_04_Volume.jpg){#CNX_Chem_01_04_Volume}
 
 *Mynd 1.15: (a) Hlutfallslegt rúmmál er sýnt fyrir teninga sem eru 1
 m^3^, 1 dm^3^ (1 L) og 1 cm^3^ (1 mL) (ekki í raunstærð). (b) Þvermál

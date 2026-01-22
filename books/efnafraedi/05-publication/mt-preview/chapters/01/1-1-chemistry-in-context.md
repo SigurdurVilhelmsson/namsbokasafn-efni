@@ -55,7 +55,7 @@ Miðjarðarhafs með gullgerðarmönnum, sem reyndu að breyta „grunnmálmum�
 eins og blýi í „góðmálma“ eins og gull og búa til lífselixíra til að
 lækna sjúkdóma og lengja líf (\[↑\](#CNX_Chem_01_01_Alchemist)).
 
-{#CNX_Chem_01_01_Alchemist}
+![](CNX_Chem_01_01_Alchemist.jpg){#CNX_Chem_01_01_Alchemist}
 
 *Mynd: (a) Þessi mynd sýnir verkstæði gullgerðarmanns um 1580. Þrátt
 fyrir að gullgerðarlist hafi lagt sitt af mörkum til þess hvernig hægt
@@ -116,7 +116,7 @@ stjörnufræði og heimsfræði.
 
 .
 
-{#CNX_Chem_01_01_ChemWeb}
+![](CNX_Chem_01_01_ChemWeb.jpg){#CNX_Chem_01_01_ChemWeb}
 
 *Mynd 1.1: Þekking á efnafræði er lykilatriði til að skilja fjölmargar
 vísindagreinar. Þetta skýringarmynd sýnir aðeins nokkur af samspilum
@@ -165,7 +165,7 @@ tilraunakenndri staðfestingu á tilgátunni og nauðsynlegri breytingu á
 kenningunni, er kölluð **vísindalega aðferðin**{#term-00005}
 (\[↑\](#CNX_Chem_01_01_SciMethod)).
 
-{#CNX_Chem_01_01_SciMethod}
+![](CNX_Chem_01_01_SciMethod.jpg){#CNX_Chem_01_01_SciMethod}
 
 *Mynd 1.2: Vísindalega aðferðin fylgir ferli sem svipar til þess sem
 sýnt er á þessari mynd. Allir lykilþættir eru sýndir, í nokkurn veginn
@@ -226,7 +226,7 @@ stórsæju eða smásæju stigi, er dæmi um táknræna sviðið. Skammstafanirn
 (*g*) fyrir gas, (*s*) fyrir fast efni og (*l*) fyrir vökva eru einnig
 táknrænar.
 
-{#CNX_Chem_01_01_WaterDom}
+![](CNX_Chem_01_01_WaterDom.jpg){#CNX_Chem_01_01_WaterDom}
 
 *Mynd 1.3: (a) Raki í lofti, ísjakar og hafið tákna vatn á stórsæja
 sviðinu. (b) Á sameindastigi (smásæja sviðinu) eru gassameindir langt í

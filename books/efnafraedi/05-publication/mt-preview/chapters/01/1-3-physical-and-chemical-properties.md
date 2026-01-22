@@ -37,7 +37,7 @@ stundum leitt til áberandi litabreytinga). Í öllum þessum dæmum verður
 breyting á eðlisástandi, formi eða eiginleikum efnisins, en engin
 breyting á efnasamsetningu þess.
 
-{#CNX_Chem_01_03_PhysChange}
+![](CNX_Chem_01_03_PhysChange.jpg){#CNX_Chem_01_03_PhysChange}
 
 *Mynd: (a) Vax gengst undir eðlisbreytingu þegar fast vax er hitað og
 myndar fljótandi vax. (b) Gufa sem þéttist innan í potti er
@@ -53,7 +53,7 @@ og myndar ryð; króm oxast ekki (\[↗\](#CNX_Chem_01_03_Rust)).
 Nítróglýserín er mjög hættulegt vegna þess að það springur auðveldlega;
 neon er nánast hættulaust vegna þess að það er mjög óhvarfgjarnt.
 
-{#CNX_Chem_01_03_Rust}
+![](CNX_Chem_01_03_Rust.jpg){#CNX_Chem_01_03_Rust}
 
 *Mynd: (a) Einn af efnaeiginleikum járns er að það ryðgar; (b) einn af
 efnaeiginleikum króms er að það gerir það ekki. (Heimild a: breyting á
@@ -71,7 +71,7 @@ og þegar kopar hvarfast við saltpéturssýru), allar tegundir bruna og
 þegar matur er eldaður, meltur eða rotnar
 (\[↗\](#CNX_Chem_01_03_ChemChange)).
 
-{#CNX_Chem_01_03_ChemChange}
+![](CNX_Chem_01_03_ChemChange.jpg){#CNX_Chem_01_03_ChemChange}
 
 *Mynd: (a) Kopar og saltpéturssýra gangast undir efnabreytingu og mynda
 koparnítrat og brúnt köfnunarefnisdíoxíðgas. (b) Við bruna eldspýtu
@@ -109,7 +109,7 @@ kallaður „eldtígull“ eða „hættutígull“, veitir verðmætar upplýsi
 draga stuttlega saman hinar ýmsu hættur sem ber að varast þegar unnið er
 með tiltekið efni.
 
-{#CNX_Chem_01_03_HazDiamond}
+![](CNX_Chem_01_03_HazDiamond.jpg){#CNX_Chem_01_03_HazDiamond}
 
 *Mynd: Hættutígull Landssambands brunavarna í Bandaríkjunum (NFPA)
 dregur saman helstu hættur af völdum
@@ -141,7 +141,7 @@ eiginleika nálægt hvort öðru (\[↑\](#CNX_Chem_01_03_PeriodicPU)).
 Þú munt læra meira um lotukerfið eftir því sem þú heldur áfram í
 efnafræðináminu.
 
-{#CNX_Chem_01_03_PeriodicPU}
+![](CNX_Chem_01_03_PeriodicPU.jpg){#CNX_Chem_01_03_PeriodicPU}
 
 *Mynd: Lotukerfið sýnir hvernig hægt er að flokka frumefni eftir
 ákveðnum svipuðum eiginleikum. Athugið að bakgrunnsliturinn gefur til

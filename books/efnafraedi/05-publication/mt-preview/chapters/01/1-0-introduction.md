@@ -28,7 +28,7 @@ publication-track: mt-preview
 - Eining til að prófa virkni ýmissa atriða til að sjá hvernig þau
   birtast í PDF-skjali :::
 
-{#CNX_Chem_01_00_DailyChem}
+![](CNX_Chem_01_00_DailyChem.jpg){#CNX_Chem_01_00_DailyChem}
 
 *Mynd: Hrein efni og efnaferli eru nauðsynleg fyrir tilveru okkar, þau
 sjá okkur fyrir næringu, halda okkur hreinum og heilbrigðum, eru notuð

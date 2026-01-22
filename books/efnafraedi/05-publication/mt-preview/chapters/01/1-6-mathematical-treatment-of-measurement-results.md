@@ -375,7 +375,7 @@ Talan 273,15 í þessum jöfnum hefur verið ákvörðuð með tilraunum, svo h�
 er ekki nákvæm. \[↗\](#CNX_Chem_01_06_TempScales) sýnir sambandið
 milli þriggja hitastigskvarðanna.
 
-{#CNX_Chem_01_06_TempScales}
+![](CNX_Chem_01_06_TempScales.jpg){#CNX_Chem_01_06_TempScales}
 
 *Mynd 1.18: Fahrenheit-, Celsíus- og kelvin-hitastigskvarðarnir eru
 bornir saman.*{#CNX_Chem_01_06_TempScales}

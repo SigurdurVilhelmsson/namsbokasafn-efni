@@ -41,7 +41,7 @@ hann. (Í þyngdarleysi taka vökvar á sig kúlulaga form.) Bæði sýni af
 vökva og föstu efni hafa rúmmál sem eru nánast óháð þrýstingi.
 **Gas**{#term-00004} tekur bæði lögun og rúmmál íláts síns.
 
-{#CNX_Chem_01_02_StatesMatt}
+![](CNX_Chem_01_02_StatesMatt.jpg){#CNX_Chem_01_02_StatesMatt}
 
 *Mynd: Algengustu þrír efnishamirnir eru fast efni, vökvi og
 gas.*{#CNX_Chem_01_02_StatesMatt}
@@ -56,7 +56,7 @@ aðskilinn frá gasi. Auk stjarna er plasma að finna í öðru háhitaumhverfi
 sjónvarpsskjám og sérhæfðum mælitækjum sem notuð eru til að greina
 snefilmagn málma.
 
-{#CNX_Chem_01_02_Plasma}
+![](CNX_Chem_01_02_Plasma.jpg){#CNX_Chem_01_02_Plasma}
 
 *Mynd: Hægt er að nota plasmakyndil til að skera málm. (Heimild:
 „Hypertherm“/Wikimedia Commons)*{#CNX_Chem_01_02_Plasma}
@@ -109,7 +109,7 @@ brennisteinssýra), sem geta framleitt rafmagn, breytast í önnur efni
 (blýsúlfat og vatn) sem framleiða ekki rafmagn, án þess að raunverulegt
 magn efnis breytist.
 
-{#CNX_Chem_01_02_ConsMatter}
+![](CNX_Chem_01_02_ConsMatter.jpg){#CNX_Chem_01_02_ConsMatter}
 
 *Mynd: (a) Massi hráefna í bjór er sá sami og massi bjórsins sem
 framleiddur er: Sykur hefur orðið að alkóhóli og koldíoxíði. (b) Massi
@@ -158,7 +158,7 @@ eiginleiki er grundvöllur notkunar þessa efnasambands í ljósmyndafilmur
 og ljóslit gleraugu (þau með linsum sem dökkna þegar þau verða fyrir
 ljósi).
 
-{#CNX_Chem_01_02_decomp}
+![](CNX_Chem_01_02_decomp.jpg){#CNX_Chem_01_02_decomp}
 
 *Mynd 1.4: (a) Efnasambandið kvikasilfurs(II)oxíð, (b) þegar það er
 hitað, (c) brotnar niður í silfraða dropa af fljótandi kvikasilfri og
@@ -213,7 +213,7 @@ minni sykri, bragðefni eða öðrum íhlutum og samt verið íþróttadrykkur.
 Önnur dæmi um einsleitar efnablöndur eru loft, hlynsíróp, bensín og
 lausn af salti í vatni.
 
-{#CNX_Chem_01_02_Mixtures}
+![](CNX_Chem_01_02_Mixtures.jpg){#CNX_Chem_01_02_Mixtures}
 
 *Mynd 1.5: (a) Salatsósa úr olíu og ediki er misleit efnablanda því
 samsetning hennar er ekki einsleit út í gegn. (b) Íþróttadrykkur úr búð
@@ -231,7 +231,7 @@ að mynda mismunandi efnablöndur. Yfirlit yfir hvernig á að greina á
 milli hinna ýmsu helstu flokkunartegunda efnis er sýnt í
 (\[↑\](#CNX_Chem_01_02_MattType)).
 
-{#CNX_Chem_01_02_MattType}
+![](CNX_Chem_01_02_MattType.jpg){#CNX_Chem_01_02_MattType}
 
 *Mynd 1.6: Eftir eiginleikum sínum er hægt að flokka tiltekið efni sem
 einsleita efnablöndu, misleita efnablöndu, efnasamband eða
@@ -284,7 +284,7 @@ minnsta mögulega gullstykki er atóm (úr grísku *atomos*, sem þýðir
 ekki lengur gull ef því væri skipt frekar.
 
 
-{#CNX_Chem_01_02_GoldAtoms}
+![](CNX_Chem_01_02_GoldAtoms.jpg){#CNX_Chem_01_02_GoldAtoms}
 
 *Mynd 1.7: (a) Þessi ljósmynd sýnir gullmola. (b) Skannandi gangasmásjá
 (STM) getur búið til myndir af yfirborði fastra efna, eins og þessa mynd
@@ -315,7 +315,7 @@ sem þyrfti um 150 milljónir kolefnisatóma-„tíkalla“ til að hylja.
 (\[↑\](#CNX_Chem_01_02_Cellulose)) sýnir sífellt nánari smásjár- og
 atómsmyndir af venjulegri bómull.
 
-{#CNX_Chem_01_02_Cellulose}
+![](CNX_Chem_01_02_Cellulose.jpg){#CNX_Chem_01_02_Cellulose}
 
 *Mynd 1.8: Þessar myndir sýna sífellt nánari sýn: (a) bómullarhnoðri,
 (b) einn bómullarþráður séður í ljóssmásjá (stækkað 40 sinnum), (c) mynd
@@ -354,7 +354,7 @@ Eins og atóm eru sameindir ótrúlega litlar og léttar. Ef venjulegt
 vatnsglas væri stækkað í stærð jarðarinnar, væru vatnssameindirnar í því
 á stærð við golfkúlur.
 
-{#CNX_Chem_01_02_Molecules}
+![](CNX_Chem_01_02_Molecules.jpg){#CNX_Chem_01_02_Molecules}
 
 . Koldíoxíð, C O subscript 2, samanstendur af einu kolefnisatómi og
 tveimur súrefnisatómum. Eitt súrefnisatóm er tengt við hægri hlið
@@ -398,7 +398,7 @@ efnarafalsbílar verið framtíðin.
 
 :::
 
-{#CNX_Chem_01_01_Electrolys}
+![](CNX_Chem_01_01_Electrolys.jpg){#CNX_Chem_01_01_Electrolys}
 
 *Mynd 1.10: Niðurbrot vatns er sýnt á stórsæju, smásæju og táknrænu
 stigi. Rafhlaðan gefur straum (smásætt) sem brýtur niður vatn. Á
@@ -407,7 +407,7 @@ stórsæju stigi skiptist vökvinn í gasið vetni (vinstra megin) og súrefni
 vökvinn H~2~O skiptist í H~2~ og O~2~
 gas.*{#CNX_Chem_01_01_Electrolys}
 
-{#CNX_Chem_01_01_FuelCell}
+![](CNX_Chem_01_01_FuelCell.jpg){#CNX_Chem_01_01_FuelCell}
 
 *Mynd 1.11: Efnarafall framleiðir raforku úr vetni og súrefni með
 rafefnafræðilegu ferli og framleiðir aðeins vatn sem
