@@ -17,99 +17,160 @@
   </header>
 
   <main class="container">
-    <!-- Welcome Banner -->
-    <div class="welcome-banner" id="welcome-banner">
-      <h1 id="welcome-message">Hleður...</h1>
-      <p class="welcome-subtitle">Hér er yfirlit yfir verkefnin þín</p>
-    </div>
-
-    <!-- Summary Cards -->
-    <div class="summary-grid" id="summary-grid">
-      <div class="summary-card" id="card-assignments">
-        <div class="summary-icon">📋</div>
-        <div class="summary-value" id="summary-assignments">-</div>
-        <div class="summary-label">Úthlutanir</div>
-      </div>
-      <div class="summary-card" id="card-pending">
-        <div class="summary-icon">⏳</div>
-        <div class="summary-value" id="summary-pending">-</div>
-        <div class="summary-label">Bíður yfirferðar</div>
-      </div>
-      <div class="summary-card warning" id="card-changes">
-        <div class="summary-icon">📝</div>
-        <div class="summary-value" id="summary-changes">-</div>
-        <div class="summary-label">Breytingar óskast</div>
-      </div>
-      <div class="summary-card" id="card-terms">
-        <div class="summary-icon">📖</div>
-        <div class="summary-value" id="summary-terms">-</div>
-        <div class="summary-label">Orðatillögur</div>
-      </div>
-    </div>
-
-    <!-- Main Content Grid -->
-    <div class="content-grid">
-      <!-- Assignments Section -->
-      <div class="card assignments-card">
-        <div class="card-header">
-          <h2 class="card-title">Úthlutanir</h2>
-          <span class="badge" id="assignments-badge">0</span>
+    <!-- Focus Mode (default) -->
+    <div id="focus-view">
+      <!-- Welcome Section -->
+      <div class="welcome-section">
+        <div class="welcome-text">
+          <h1 id="greeting">Hleður...</h1>
+          <p class="greeting-subtitle" id="greeting-subtitle"></p>
         </div>
-        <div class="card-body" id="assignments-list">
-          <p class="text-muted">Hleður...</p>
+        <div class="view-toggle">
+          <button class="btn btn-secondary btn-sm" onclick="toggleView('detailed')">
+            <span class="toggle-icon">📋</span> Nákvæmt yfirlit
+          </button>
         </div>
       </div>
 
-      <!-- Pending Submissions Section -->
-      <div class="card submissions-card">
-        <div class="card-header">
-          <h2 class="card-title">Bíður yfirferðar</h2>
-          <span class="badge" id="submissions-badge">0</span>
-        </div>
-        <div class="card-body" id="submissions-list">
-          <p class="text-muted">Hleður...</p>
+      <!-- Alert Banner (if needed) -->
+      <div class="alert-banner" id="alert-banner" style="display: none;">
+        <span class="alert-icon">⚠️</span>
+        <span class="alert-text" id="alert-text"></span>
+      </div>
+
+      <!-- Current Task Card -->
+      <div class="current-task-section" id="current-task-section">
+        <h2 class="section-label">Núverandi verkefni</h2>
+        <div class="current-task-card" id="current-task-card">
+          <div class="loading-state">
+            <p>Hleður verkefnum...</p>
+          </div>
         </div>
       </div>
 
-      <!-- Changes Requested Section -->
-      <div class="card changes-card">
-        <div class="card-header">
-          <h2 class="card-title">Breytingar óskast</h2>
-          <span class="badge badge-warning" id="changes-badge">0</span>
-        </div>
-        <div class="card-body" id="changes-list">
-          <p class="text-muted">Hleður...</p>
-        </div>
+      <!-- Up Next Section -->
+      <div class="up-next-section" id="up-next-section" style="display: none;">
+        <h2 class="section-label">Næst á dagskrá <span class="count-badge" id="up-next-count">0</span></h2>
+        <div class="up-next-list" id="up-next-list"></div>
       </div>
 
-      <!-- Terminology Proposals Section -->
-      <div class="card terms-card">
-        <div class="card-header">
-          <h2 class="card-title">Orðatillögur þínar</h2>
-          <span class="badge" id="terms-badge">0</span>
+      <!-- Quick Stats -->
+      <div class="quick-stats" id="quick-stats">
+        <div class="stat-item">
+          <span class="stat-value" id="stat-completed">-</span>
+          <span class="stat-label">Kláruð í vikunni</span>
         </div>
-        <div class="card-body" id="terms-list">
-          <p class="text-muted">Hleður...</p>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-pending">-</span>
+          <span class="stat-label">Bíður yfirferðar</span>
         </div>
-        <div class="card-footer">
-          <a href="/terminology" class="btn btn-secondary btn-sm">Sjá orðasafn</a>
+        <div class="stat-item">
+          <span class="stat-value" id="stat-terms">-</span>
+          <span class="stat-label">Orðatillögur</span>
         </div>
       </div>
     </div>
 
-    <!-- Recent Activity -->
-    <div class="card activity-card">
-      <div class="card-header">
-        <h2 class="card-title">Nýleg virkni þín</h2>
+    <!-- Detailed View (hidden by default) -->
+    <div id="detailed-view" style="display: none;">
+      <!-- View Toggle -->
+      <div class="view-header">
+        <h2>Nákvæmt yfirlit</h2>
+        <button class="btn btn-primary btn-sm" onclick="toggleView('focus')">
+          <span class="toggle-icon">🎯</span> Einbeitt sýn
+        </button>
       </div>
-      <div class="card-body" id="activity-list">
-        <p class="text-muted">Hleður...</p>
+
+      <!-- Summary Cards -->
+      <div class="summary-grid" id="summary-grid">
+        <div class="summary-card" id="card-assignments">
+          <div class="summary-icon">📋</div>
+          <div class="summary-value" id="summary-assignments">-</div>
+          <div class="summary-label">Úthlutanir</div>
+        </div>
+        <div class="summary-card" id="card-pending">
+          <div class="summary-icon">⏳</div>
+          <div class="summary-value" id="summary-pending">-</div>
+          <div class="summary-label">Bíður yfirferðar</div>
+        </div>
+        <div class="summary-card warning" id="card-changes">
+          <div class="summary-icon">📝</div>
+          <div class="summary-value" id="summary-changes">-</div>
+          <div class="summary-label">Breytingar óskast</div>
+        </div>
+        <div class="summary-card" id="card-terms">
+          <div class="summary-icon">📖</div>
+          <div class="summary-value" id="summary-terms">-</div>
+          <div class="summary-label">Orðatillögur</div>
+        </div>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="content-grid">
+        <!-- Assignments Section -->
+        <div class="card assignments-card">
+          <div class="card-header">
+            <h2 class="card-title">Úthlutanir</h2>
+            <span class="badge" id="assignments-badge">0</span>
+          </div>
+          <div class="card-body" id="assignments-list">
+            <p class="text-muted">Hleður...</p>
+          </div>
+        </div>
+
+        <!-- Pending Submissions Section -->
+        <div class="card submissions-card">
+          <div class="card-header">
+            <h2 class="card-title">Bíður yfirferðar</h2>
+            <span class="badge" id="submissions-badge">0</span>
+          </div>
+          <div class="card-body" id="submissions-list">
+            <p class="text-muted">Hleður...</p>
+          </div>
+        </div>
+
+        <!-- Changes Requested Section -->
+        <div class="card changes-card">
+          <div class="card-header">
+            <h2 class="card-title">Breytingar óskast</h2>
+            <span class="badge badge-warning" id="changes-badge">0</span>
+          </div>
+          <div class="card-body" id="changes-list">
+            <p class="text-muted">Hleður...</p>
+          </div>
+        </div>
+
+        <!-- Terminology Proposals Section -->
+        <div class="card terms-card">
+          <div class="card-header">
+            <h2 class="card-title">Orðatillögur þínar</h2>
+            <span class="badge" id="terms-badge">0</span>
+          </div>
+          <div class="card-body" id="terms-list">
+            <p class="text-muted">Hleður...</p>
+          </div>
+          <div class="card-footer">
+            <a href="/terminology" class="btn btn-secondary btn-sm">Sjá orðasafn</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="card activity-card">
+        <div class="card-header">
+          <h2 class="card-title">Nýleg virkni þín</h2>
+        </div>
+        <div class="card-body" id="activity-list">
+          <p class="text-muted">Hleður...</p>
+        </div>
       </div>
     </div>
   </main>
 
   <script>
-    let workData = null;
+    let todayData = null;
+    let detailedData = null;
+    let currentView = 'focus';
 
     async function init() {
       // Check auth
@@ -119,56 +180,220 @@
 
       if (!authData.authenticated) {
         userEl.innerHTML = '<a href="/api/auth/login?redirect=/my-work" class="btn btn-primary">Innskráning</a>';
-        document.getElementById('welcome-message').textContent = 'Vinsamlegast skráðu þig inn';
-        document.getElementById('welcome-banner').querySelector('.welcome-subtitle').textContent = '';
+        document.getElementById('greeting').textContent = 'Vinsamlegast skráðu þig inn';
+        document.getElementById('current-task-card').innerHTML = `
+          <div class="empty-state">
+            <p>Skráðu þig inn til að sjá verkefnin þín</p>
+          </div>
+        `;
         return;
       }
 
       userEl.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
 
-      // Load work data
-      await loadMyWork();
+      // Load focus view data
+      await loadTodayView();
     }
 
-    async function loadMyWork() {
+    async function loadTodayView() {
       try {
-        const res = await fetch('/api/my-work');
-        workData = await res.json();
+        const res = await fetch('/api/my-work/today');
+        todayData = await res.json();
 
-        // Update welcome message
-        document.getElementById('welcome-message').textContent = `Góðan daginn, ${workData.user.name}`;
+        // Update greeting
+        const hour = new Date().getHours();
+        let greeting = 'Góðan daginn';
+        if (hour < 6) greeting = 'Góða nótt';
+        else if (hour < 12) greeting = 'Góðan morgun';
+        else if (hour < 18) greeting = 'Góðan daginn';
+        else greeting = 'Gott kvöld';
 
-        // Update summary cards
-        document.getElementById('summary-assignments').textContent = workData.summary.assignmentsCount;
-        document.getElementById('summary-pending').textContent = workData.summary.pendingSubmissionsCount;
-        document.getElementById('summary-changes').textContent = workData.summary.changesRequestedCount;
-        document.getElementById('summary-terms').textContent = workData.summary.proposedTermsCount;
+        document.getElementById('greeting').textContent = `${greeting}, ${todayData.user.name}`;
 
-        // Update badges
-        document.getElementById('assignments-badge').textContent = workData.summary.assignmentsCount;
-        document.getElementById('submissions-badge').textContent = workData.summary.pendingSubmissionsCount;
-        document.getElementById('changes-badge').textContent = workData.summary.changesRequestedCount;
-        document.getElementById('terms-badge').textContent = workData.summary.proposedTermsCount;
+        // Update subtitle based on task count
+        const subtitle = todayData.quickStats.totalTasks === 0
+          ? 'Engin verkefni í dag - vel gert!'
+          : todayData.quickStats.totalTasks === 1
+            ? 'Þú ert með 1 verkefni'
+            : `Þú ert með ${todayData.quickStats.totalTasks} verkefni`;
+        document.getElementById('greeting-subtitle').textContent = subtitle;
 
-        // Highlight cards with items
-        if (workData.summary.changesRequestedCount > 0) {
-          document.getElementById('card-changes').classList.add('highlight');
+        // Show alert if needed
+        if (todayData.needsAttention.length > 0) {
+          const alertBanner = document.getElementById('alert-banner');
+          const alertText = document.getElementById('alert-text');
+
+          const overdue = todayData.quickStats.overdue;
+          const changes = todayData.quickStats.changesRequested;
+
+          let alertMsg = '';
+          if (overdue > 0 && changes > 0) {
+            alertMsg = `${overdue} verkefni yfir tíma og ${changes} með óskum um breytingar`;
+          } else if (overdue > 0) {
+            alertMsg = `${overdue} ${overdue === 1 ? 'verkefni er' : 'verkefni eru'} yfir tíma`;
+          } else if (changes > 0) {
+            alertMsg = `${changes} ${changes === 1 ? 'verkefni þarfnast' : 'verkefni þarfnast'} lagfæringa`;
+          }
+
+          if (alertMsg) {
+            alertText.textContent = alertMsg;
+            alertBanner.style.display = 'flex';
+          }
         }
-        if (workData.summary.overdueCount > 0) {
-          document.getElementById('card-assignments').classList.add('highlight-error');
-        }
 
-        // Render lists
-        renderAssignments(workData.assignments);
-        renderSubmissions(workData.pendingSubmissions);
-        renderChangesRequested(workData.recentReviews.filter(r => r.status === 'changes_requested'));
-        renderTerms(workData.proposedTerms);
-        renderActivity(workData.recentActivity);
+        // Render current task
+        renderCurrentTask(todayData.currentTask);
+
+        // Render up next
+        renderUpNext(todayData.upNext);
+
+        // Update quick stats
+        document.getElementById('stat-completed').textContent = todayData.quickStats.completedThisWeek;
+        document.getElementById('stat-pending').textContent = todayData.quickStats.pendingReview;
+        document.getElementById('stat-terms').textContent = todayData.quickStats.proposedTerms;
 
       } catch (err) {
-        console.error('Failed to load work data:', err);
-        document.getElementById('welcome-message').textContent = 'Villa við að hlaða gögnum';
+        console.error('Failed to load today view:', err);
+        document.getElementById('greeting').textContent = 'Villa við að hlaða gögnum';
       }
+    }
+
+    function renderCurrentTask(task) {
+      const container = document.getElementById('current-task-card');
+
+      if (!task) {
+        container.innerHTML = `
+          <div class="empty-task">
+            <div class="empty-icon">🎉</div>
+            <h3>Ekkert verkefni í dag!</h3>
+            <p>Þú hefur lokið öllum verkefnum. Slakaðu á eða biddu eftir nýjum úthlutanum.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const isChangesRequested = task.type === 'changes_requested';
+      const priorityClass = task.priority === 1 ? 'priority-urgent' : task.priority === 2 ? 'priority-soon' : '';
+
+      let taskTitle = '';
+      let taskMeta = '';
+
+      if (isChangesRequested) {
+        taskTitle = `${task.bookLabel} - Kafli ${task.chapter}, ${task.section}`;
+        taskMeta = `<span class="meta-reviewer">Athugasemdir frá ${escapeHtml(task.reviewedBy)}</span>`;
+      } else {
+        taskTitle = `${task.bookLabel} - Kafli ${task.chapter}`;
+        taskMeta = `<span class="meta-stage">${escapeHtml(task.stageLabel)}</span>`;
+        if (task.dueDate) {
+          const dueDateClass = task.dueDate.status === 'overdue' ? 'due-overdue' :
+                               task.dueDate.status === 'today' ? 'due-today' : '';
+          taskMeta += ` <span class="meta-due ${dueDateClass}">${task.priorityLabel}</span>`;
+        }
+      }
+
+      container.innerHTML = `
+        <div class="task-card-content ${priorityClass}">
+          <div class="task-priority-badge ${isChangesRequested ? 'badge-changes' : ''}">
+            ${isChangesRequested ? '📝 Breytingar óskast' : '📋 ' + task.priorityLabel}
+          </div>
+          <h3 class="task-title">${escapeHtml(taskTitle)}</h3>
+          <div class="task-meta">${taskMeta}</div>
+          ${task.notes ? `<div class="task-notes">${escapeHtml(task.notes)}</div>` : ''}
+          <div class="task-actions">
+            <a href="${task.editorUrl}" class="btn btn-primary btn-large">
+              <span class="btn-icon">✏️</span>
+              ${isChangesRequested ? 'Laga nú' : 'Byrja að vinna'}
+            </a>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderUpNext(tasks) {
+      const section = document.getElementById('up-next-section');
+      const container = document.getElementById('up-next-list');
+      const countBadge = document.getElementById('up-next-count');
+
+      if (!tasks || tasks.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      section.style.display = 'block';
+      countBadge.textContent = tasks.length;
+
+      container.innerHTML = tasks.map(task => {
+        const isChangesRequested = task.type === 'changes_requested';
+        const priorityClass = task.priority === 1 ? 'item-urgent' : task.priority === 2 ? 'item-soon' : '';
+
+        let title = isChangesRequested
+          ? `${task.bookLabel} K${task.chapter}/${task.section}`
+          : `${task.bookLabel} - Kafli ${task.chapter}`;
+
+        let badge = isChangesRequested
+          ? '<span class="item-badge badge-changes">Laga</span>'
+          : task.dueDate
+            ? `<span class="item-badge ${task.dueDate.status === 'overdue' ? 'badge-overdue' : ''}">${task.priorityLabel}</span>`
+            : `<span class="item-badge">${task.stageLabel}</span>`;
+
+        return `
+          <a href="${task.editorUrl}" class="up-next-item ${priorityClass}">
+            <div class="item-content">
+              <span class="item-title">${escapeHtml(title)}</span>
+              ${badge}
+            </div>
+            <span class="item-arrow">→</span>
+          </a>
+        `;
+      }).join('');
+    }
+
+    // ========================================
+    // DETAILED VIEW (Legacy)
+    // ========================================
+
+    async function loadDetailedView() {
+      if (detailedData) {
+        renderDetailedView();
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/my-work');
+        detailedData = await res.json();
+        renderDetailedView();
+      } catch (err) {
+        console.error('Failed to load detailed view:', err);
+      }
+    }
+
+    function renderDetailedView() {
+      // Update summary cards
+      document.getElementById('summary-assignments').textContent = detailedData.summary.assignmentsCount;
+      document.getElementById('summary-pending').textContent = detailedData.summary.pendingSubmissionsCount;
+      document.getElementById('summary-changes').textContent = detailedData.summary.changesRequestedCount;
+      document.getElementById('summary-terms').textContent = detailedData.summary.proposedTermsCount;
+
+      // Update badges
+      document.getElementById('assignments-badge').textContent = detailedData.summary.assignmentsCount;
+      document.getElementById('submissions-badge').textContent = detailedData.summary.pendingSubmissionsCount;
+      document.getElementById('changes-badge').textContent = detailedData.summary.changesRequestedCount;
+      document.getElementById('terms-badge').textContent = detailedData.summary.proposedTermsCount;
+
+      // Highlight cards with items
+      if (detailedData.summary.changesRequestedCount > 0) {
+        document.getElementById('card-changes').classList.add('highlight');
+      }
+      if (detailedData.summary.overdueCount > 0) {
+        document.getElementById('card-assignments').classList.add('highlight-error');
+      }
+
+      // Render lists
+      renderAssignments(detailedData.assignments);
+      renderSubmissions(detailedData.pendingSubmissions);
+      renderChangesRequested(detailedData.recentReviews.filter(r => r.status === 'changes_requested'));
+      renderTerms(detailedData.proposedTerms);
+      renderActivity(detailedData.recentActivity);
     }
 
     function renderAssignments(assignments) {
@@ -178,7 +403,6 @@
         container.innerHTML = `
           <div class="empty-state">
             <p class="text-success">Engar úthlutanir í augnablikinu</p>
-            <p class="text-muted">Þú færð tilkynningu þegar nýjum verkefnum er úthlutað til þín.</p>
           </div>
         `;
         return;
@@ -195,11 +419,7 @@
             ${a.notes ? `<div class="work-item-notes">${escapeHtml(a.notes)}</div>` : ''}
             <div class="work-item-meta">
               <span class="assigned-by">Úthlutað af ${escapeHtml(a.assignedBy)}</span>
-              ${a.dueDate ? `
-                <span class="due-date due-${a.dueDate.status}">
-                  ${getDueDateText(a.dueDate)}
-                </span>
-              ` : ''}
+              ${a.dueDate ? `<span class="due-date due-${a.dueDate.status}">${getDueDateText(a.dueDate)}</span>` : ''}
             </div>
           </div>
           <div class="work-item-action">
@@ -216,7 +436,6 @@
         container.innerHTML = `
           <div class="empty-state">
             <p>Engin verkefni bíða yfirferðar</p>
-            <p class="text-muted">Þegar þú sendir hluta til yfirferðar munu þeir birtast hér.</p>
           </div>
         `;
         return;
@@ -250,7 +469,6 @@
         container.innerHTML = `
           <div class="empty-state">
             <p class="text-success">Engar breytingar óskast</p>
-            <p class="text-muted">Öll innsend verkefni hafa verið samþykkt.</p>
           </div>
         `;
         return;
@@ -263,11 +481,7 @@
               <span class="book-label">${escapeHtml(r.bookLabel)}</span>
               <span class="section-label">Kafli ${r.chapter}, hluti ${r.section}</span>
             </div>
-            ${r.notes ? `
-              <div class="review-notes">
-                <strong>Athugasemd:</strong> ${escapeHtml(r.notes)}
-              </div>
-            ` : ''}
+            ${r.notes ? `<div class="review-notes"><strong>Athugasemd:</strong> ${escapeHtml(r.notes)}</div>` : ''}
             <div class="work-item-meta">
               <span class="reviewed-by">Frá ${escapeHtml(r.reviewedBy)}</span>
               <span class="reviewed-at">${formatDate(r.reviewedAt)}</span>
@@ -287,7 +501,6 @@
         container.innerHTML = `
           <div class="empty-state">
             <p>Engar orðatillögur í bið</p>
-            <p class="text-muted">Þegar þú leggur til ný orð í ritstjóranum munu þau birtast hér.</p>
           </div>
         `;
         return;
@@ -312,11 +525,7 @@
       const container = document.getElementById('activity-list');
 
       if (!activities || activities.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <p class="text-muted">Engin virkni skráð enn.</p>
-          </div>
-        `;
+        container.innerHTML = `<div class="empty-state"><p class="text-muted">Engin virkni skráð enn.</p></div>`;
         return;
       }
 
@@ -331,7 +540,32 @@
       `).join('');
     }
 
-    // Helper functions
+    // ========================================
+    // VIEW TOGGLE
+    // ========================================
+
+    function toggleView(view) {
+      currentView = view;
+      const focusView = document.getElementById('focus-view');
+      const detailedView = document.getElementById('detailed-view');
+
+      if (view === 'focus') {
+        focusView.style.display = 'block';
+        detailedView.style.display = 'none';
+      } else {
+        focusView.style.display = 'none';
+        detailedView.style.display = 'block';
+        loadDetailedView();
+      }
+
+      // Store preference
+      localStorage.setItem('myWorkView', view);
+    }
+
+    // ========================================
+    // HELPER FUNCTIONS
+    // ========================================
+
     function escapeHtml(text) {
       if (!text) return '';
       const div = document.createElement('div');
@@ -341,8 +575,7 @@
 
     function formatDate(dateStr) {
       if (!dateStr) return '';
-      const date = new Date(dateStr);
-      return date.toLocaleDateString('is-IS');
+      return new Date(dateStr).toLocaleDateString('is-IS');
     }
 
     function formatTimeAgo(dateStr) {
@@ -387,13 +620,8 @@
 
     function getActivityIcon(type) {
       const icons = {
-        'edit': '✏️',
-        'submit': '📤',
-        'approve': '✅',
-        'reject': '❌',
-        'term_propose': '📖',
-        'term_approve': '✓',
-        'assign': '👤'
+        'edit': '✏️', 'submit': '📤', 'approve': '✅', 'reject': '❌',
+        'term_propose': '📖', 'term_approve': '✓', 'assign': '👤'
       };
       return icons[type] || '📌';
     }
@@ -406,9 +634,13 @@
     :root {
       --primary: #2563eb;
       --primary-dark: #1d4ed8;
+      --primary-light: #dbeafe;
       --success: #16a34a;
+      --success-light: #dcfce7;
       --warning: #d97706;
+      --warning-light: #fef3c7;
       --error: #dc2626;
+      --error-light: #fee2e2;
       --gray-50: #f9fafb;
       --gray-100: #f3f4f6;
       --gray-200: #e5e7eb;
@@ -447,23 +679,268 @@
       transition: all 0.15s;
     }
     .header nav a:hover { color: var(--gray-700); background: var(--gray-100); }
-    .header nav a.active { color: var(--primary); background: #dbeafe; font-weight: 500; }
+    .header nav a.active { color: var(--primary); background: var(--primary-light); font-weight: 500; }
     .user-info { display: flex; align-items: center; gap: 0.5rem; }
     .user-info img { width: 32px; height: 32px; border-radius: 50%; }
 
     /* Container */
-    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
 
-    /* Welcome Banner */
-    .welcome-banner {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
-      padding: 2rem;
-      border-radius: 0.75rem;
+    /* ========================================
+       FOCUS VIEW STYLES
+       ======================================== */
+
+    .welcome-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       margin-bottom: 1.5rem;
     }
-    .welcome-banner h1 { font-size: 1.75rem; margin-bottom: 0.25rem; }
-    .welcome-subtitle { opacity: 0.9; }
+    .welcome-text h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 0.25rem;
+    }
+    .greeting-subtitle {
+      color: var(--gray-500);
+      font-size: 1rem;
+    }
+    .view-toggle .btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .toggle-icon { font-size: 1rem; }
+
+    /* Alert Banner */
+    .alert-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      background: var(--warning-light);
+      border: 1px solid var(--warning);
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .alert-icon { font-size: 1.25rem; }
+    .alert-text { font-weight: 500; color: #92400e; }
+
+    /* Section Label */
+    .section-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .count-badge {
+      background: var(--gray-200);
+      color: var(--gray-700);
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+    }
+
+    /* Current Task Card */
+    .current-task-section { margin-bottom: 2rem; }
+
+    .current-task-card {
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .task-card-content {
+      padding: 1.5rem;
+    }
+    .task-card-content.priority-urgent {
+      border-left: 4px solid var(--error);
+    }
+    .task-card-content.priority-soon {
+      border-left: 4px solid var(--warning);
+    }
+
+    .task-priority-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.75rem;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .task-priority-badge.badge-changes {
+      background: var(--warning-light);
+      color: #92400e;
+    }
+
+    .task-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 0.5rem;
+    }
+
+    .task-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--gray-500);
+    }
+    .meta-stage {
+      background: var(--gray-100);
+      padding: 0.125rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+    .meta-due { font-weight: 500; }
+    .meta-due.due-overdue { color: var(--error); }
+    .meta-due.due-today { color: var(--warning); }
+    .meta-reviewer { font-style: italic; }
+
+    .task-notes {
+      background: var(--gray-50);
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      color: var(--gray-700);
+      border-left: 3px solid var(--primary);
+    }
+
+    .task-actions {
+      padding-top: 0.5rem;
+    }
+
+    .btn-large {
+      padding: 0.875rem 1.5rem;
+      font-size: 1rem;
+    }
+    .btn-icon { margin-right: 0.5rem; }
+
+    /* Empty Task State */
+    .empty-task {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .empty-task h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--gray-900);
+    }
+    .empty-task p {
+      color: var(--gray-500);
+    }
+
+    /* Up Next Section */
+    .up-next-section { margin-bottom: 2rem; }
+
+    .up-next-list {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .up-next-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.875rem 1rem;
+      border-bottom: 1px solid var(--gray-100);
+      text-decoration: none;
+      color: var(--gray-900);
+      transition: background 0.15s;
+    }
+    .up-next-item:last-child { border-bottom: none; }
+    .up-next-item:hover { background: var(--gray-50); }
+    .up-next-item.item-urgent { background: var(--error-light); }
+    .up-next-item.item-soon { background: var(--warning-light); }
+
+    .item-content {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .item-title { font-weight: 500; }
+    .item-badge {
+      font-size: 0.75rem;
+      padding: 0.125rem 0.5rem;
+      border-radius: 0.25rem;
+      background: var(--gray-100);
+      color: var(--gray-700);
+    }
+    .item-badge.badge-changes {
+      background: var(--warning-light);
+      color: #92400e;
+    }
+    .item-badge.badge-overdue {
+      background: var(--error-light);
+      color: #991b1b;
+    }
+    .item-arrow {
+      color: var(--gray-400);
+      font-size: 1.25rem;
+    }
+
+    /* Quick Stats */
+    .quick-stats {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      padding: 0.5rem;
+    }
+    .stat-value {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    /* Loading State */
+    .loading-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--gray-500);
+    }
+
+    /* ========================================
+       DETAILED VIEW STYLES (Legacy)
+       ======================================== */
+
+    .view-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    .view-header h2 { font-size: 1.5rem; }
 
     /* Summary Grid */
     .summary-grid {
@@ -478,9 +955,7 @@
       border-radius: 0.5rem;
       text-align: center;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .summary-card:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
     .summary-card.highlight { border-left: 4px solid var(--warning); }
     .summary-card.highlight-error { border-left: 4px solid var(--error); }
     .summary-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
@@ -524,7 +999,7 @@
       font-size: 0.75rem;
       font-weight: 600;
     }
-    .badge-warning { background: #fef3c7; color: #92400e; }
+    .badge-warning { background: var(--warning-light); color: #92400e; }
 
     /* Work Items */
     .work-item {
@@ -535,9 +1010,9 @@
       border-bottom: 1px solid var(--gray-100);
     }
     .work-item:last-child { border-bottom: none; }
-    .work-item.item-overdue { background: #fef2f2; margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
-    .work-item.item-today { background: #fffbeb; margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
-    .work-item.item-attention { background: #fef3c7; margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
+    .work-item.item-overdue { background: var(--error-light); margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
+    .work-item.item-today { background: var(--warning-light); margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
+    .work-item.item-attention { background: var(--warning-light); margin: 0 -1.25rem; padding: 0.875rem 1.25rem; }
 
     .work-item-main { flex: 1; }
     .work-item-title { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
@@ -548,7 +1023,7 @@
     .book-label { font-weight: 600; color: var(--gray-700); }
     .chapter-label, .section-label { color: var(--gray-600); }
     .stage-badge {
-      background: #dbeafe;
+      background: var(--primary-light);
       color: #1e40af;
       padding: 0.125rem 0.5rem;
       border-radius: 0.25rem;
@@ -559,7 +1034,6 @@
     .due-date { font-weight: 500; }
     .due-overdue { color: var(--error); }
     .due-today { color: var(--warning); }
-    .due-soon { color: var(--warning); }
 
     .review-notes {
       background: white;
@@ -586,9 +1060,8 @@
       border-radius: 0.25rem;
       font-weight: 500;
     }
-    .status-proposed { background: #dbeafe; color: #1e40af; }
-    .status-needs_review { background: #fef3c7; color: #92400e; }
-    .term-discussions { color: var(--gray-500); }
+    .status-proposed { background: var(--primary-light); color: #1e40af; }
+    .status-needs_review { background: var(--warning-light); color: #92400e; }
 
     /* Activity Items */
     .activity-item {
@@ -610,7 +1083,6 @@
       padding: 2rem 1rem;
       color: var(--gray-500);
     }
-    .empty-state p:first-child { font-weight: 500; margin-bottom: 0.25rem; }
 
     /* Buttons */
     .btn {
@@ -636,7 +1108,6 @@
     .text-muted { color: var(--gray-500); }
     .text-success { color: var(--success); }
     .text-warning { color: var(--warning); }
-    .text-error { color: var(--error); }
 
     /* Responsive */
     @media (max-width: 1024px) {
@@ -647,9 +1118,9 @@
       .header { flex-direction: column; gap: 1rem; padding: 1rem; }
       .header nav { width: 100%; justify-content: center; }
       .container { padding: 1rem; }
+      .welcome-section { flex-direction: column; gap: 1rem; }
+      .quick-stats { flex-direction: column; }
       .summary-grid { grid-template-columns: repeat(2, 1fr); }
-      .work-item { flex-direction: column; gap: 0.75rem; }
-      .work-item-action { margin-left: 0; }
     }
   </style>
 </body>

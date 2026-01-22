@@ -262,6 +262,138 @@ router.get('/', requireAuth, async (req, res) => {
 });
 
 /**
+ * GET /api/my-work/today
+ * Get prioritized "what to work on now" view
+ * Returns: currentTask, upNext, needsAttention, quickStats
+ */
+router.get('/today', requireAuth, (req, res) => {
+  try {
+    const username = req.user.username;
+
+    // Get all assignments
+    const assignments = assignmentStore.getUserAssignments(username);
+
+    // Get changes requested (highest priority)
+    const recentReviews = getUserRecentReviews(username, 20);
+    const changesRequested = recentReviews
+      .filter(r => r.status === 'changes_requested')
+      .map(r => ({
+        id: r.id,
+        type: 'changes_requested',
+        book: r.book,
+        bookLabel: BOOK_LABELS[r.book] || r.book,
+        chapter: r.chapter,
+        section: r.section,
+        reviewedBy: r.reviewed_by_username,
+        reviewedAt: r.reviewed_at,
+        notes: r.review_notes,
+        editorUrl: `/editor?book=${r.book}&chapter=${r.chapter}&section=${r.section}`,
+        priority: 1, // Highest priority
+        priorityLabel: 'Breytingar óskast'
+      }));
+
+    // Format assignments with priority
+    const formattedAssignments = assignments.map(a => {
+      const dueInfo = getDueDateInfo(a.dueDate);
+      let priority = 3; // Default priority
+      let priorityLabel = 'Úthlutað';
+
+      if (dueInfo?.status === 'overdue') {
+        priority = 1;
+        priorityLabel = 'Yfir tíma!';
+      } else if (dueInfo?.status === 'today') {
+        priority = 2;
+        priorityLabel = 'Skiladagur í dag';
+      } else if (dueInfo?.status === 'soon') {
+        priority = 2;
+        priorityLabel = `${dueInfo.daysUntil} dagar eftir`;
+      }
+
+      return {
+        id: a.id,
+        type: 'assignment',
+        book: a.book,
+        bookLabel: BOOK_LABELS[a.book] || a.book,
+        chapter: a.chapter,
+        stage: a.stage,
+        stageLabel: STAGE_LABELS[a.stage] || a.stage,
+        assignedBy: a.assignedBy,
+        assignedAt: a.assignedAt,
+        dueDate: dueInfo,
+        notes: a.notes,
+        editorUrl: `/editor?book=${a.book}&chapter=${a.chapter}`,
+        priority,
+        priorityLabel
+      };
+    });
+
+    // Combine and sort by priority
+    const allTasks = [...changesRequested, ...formattedAssignments]
+      .sort((a, b) => {
+        // First by priority (lower = more urgent)
+        if (a.priority !== b.priority) return a.priority - b.priority;
+        // Then by due date
+        if (a.dueDate?.daysUntil !== undefined && b.dueDate?.daysUntil !== undefined) {
+          return a.dueDate.daysUntil - b.dueDate.daysUntil;
+        }
+        return 0;
+      });
+
+    // Current task is the most urgent
+    const currentTask = allTasks.length > 0 ? allTasks[0] : null;
+
+    // Up next is the rest (limit to 5)
+    const upNext = allTasks.slice(1, 6);
+
+    // Needs attention: overdue items and changes requested (for alert banner)
+    const needsAttention = allTasks.filter(t =>
+      t.type === 'changes_requested' ||
+      t.dueDate?.status === 'overdue'
+    );
+
+    // Quick stats
+    const pendingSubmissions = getUserPendingSubmissions(username);
+    const proposedTerms = getUserProposedTerms(username);
+
+    // Calculate completed this week
+    const weekAgo = new Date();
+    weekAgo.setDate(weekAgo.getDate() - 7);
+    const completedThisWeek = recentReviews.filter(r =>
+      r.status === 'approved' &&
+      new Date(r.reviewed_at) >= weekAgo
+    ).length;
+
+    res.json({
+      user: {
+        id: req.user.id,
+        username: req.user.username,
+        name: req.user.name || req.user.username
+      },
+      currentTask,
+      upNext,
+      needsAttention,
+      quickStats: {
+        totalTasks: allTasks.length,
+        changesRequested: changesRequested.length,
+        overdue: formattedAssignments.filter(a => a.dueDate?.status === 'overdue').length,
+        pendingReview: pendingSubmissions.length,
+        completedThisWeek,
+        proposedTerms: proposedTerms.length
+      },
+      // For users who want to see more
+      allTasks
+    });
+
+  } catch (err) {
+    console.error('My work today error:', err);
+    res.status(500).json({
+      error: 'Failed to load today view',
+      message: err.message
+    });
+  }
+});
+
+/**
  * GET /api/my-work/summary
  * Get summary counts only (for nav badges)
  */
