@@ -1,172 +1,128 @@
 ---
-title: Lykilhugtök
+title: "Lykilhugtök"
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-21T20:46:52.316Z"
-type: keyTerms
 ---
+
 
 ## Lykilhugtök
 
-**Nákvæmni**
-: hversu vel mæling samræmist réttu gildi
+**aðlægur eiginleiki**{#term-00006}
 
-**frumeind**
-: minnsta ögn frumefnis sem getur gengið í efnasamband
+**Alþjóðlega einingakerfið**{#term-00002}
 
-**Celsíus (°C)**
-: hitastigseining; vatn frýs við 0 °C og sýður við 100 °C á þessum kvarða
+**Atóm**{#term-00016}
 
-**efnabreytingar**
-: breyting sem myndar nýtt efni úr upprunalega efninu
+**Eðlisbreyting**{#term-00002}
 
-**efnaeiginleikar**
-: hegðun sem tengist breytingu á einu efni í annað
+**Eðliseiginleiki**{#term-00001}
 
-**efnafræði**
-: rannsóknir á samsetningu, eiginleikum og samspili efnis
+**Eðlismassi**{#term-00016}
 
-**efnasamband**
-: hreint efni sem hægt er að brjóta niður í tvö eða fleiri frumefni
+**Efnablanda**{#term-00012}
 
-**rúmsentimetri (cm3 eða cc)**
-: rúmmál tenings með brúnarlengdina nákvæmlega 1 cm
+**Efnabreyting**{#term-00004}
 
-**rúmmetri (m3)**
-: SI-eining rúmmáls
+**efnaeiginleiki**{#term-00003}
 
-**Eðlismassi**
-: hlutfall massa og rúmmáls fyrir efni eða hlut
+**efnafræði**{#term-00001}
 
-**Einingagreining**
-: fjölhæf stærðfræðileg aðferð sem hægt er að beita á útreikninga, allt frá einföldum einingabreytingum til flóknari, margra þrepa útreikninga sem fela í sér nokkrar mismunandi stærðir
+**efnasambönd**{#term-00011}
 
-**Frumefni**
-: efni sem samanstendur af einni tegund atóma; efni sem ekki er hægt að sundra með efnahvarfi
+**Efni**{#term-00001}
 
-**Nákvæm tala**
-: tala fengin með talningu eða samkvæmt skilgreiningu
+**einingagreining**{#term-00001}
 
-**Magnbundinn eiginleiki**
-: eiginleiki efnis sem er háður magni efnisins
+**Einingar**{#term-00001}
 
-**Fahrenheit**
-: hitastigseining; vatn frýs við 32 °F og sýður við 212 °F á þessum kvarða
+**Einsleit efnablanda**{#term-00014}
 
-**Gas**
-: ástand þar sem efni hefur hvorki ákveðið rúmmál né lögun
+**Fahrenheit**{#term-00005}
 
-**Misleit efnablanda**
-: sambland efna með samsetningu sem er breytileg frá einum punkti til annars
+**Fast
+efni**{#term-00002}
 
-**Einsleit efnablanda**
-: (einnig lausn) sambland efna með samsetningu sem er einsleit í gegn
+**frumefni**{#term-00010}
 
-**Tilgáta**
-: bráðabirgðaskýring á athugunum sem er leiðarvísir við söfnun og yfirferð upplýsinga
+**Gas**{#term-00004}
 
-**eðlisbundinn eiginleiki**
-: eiginleiki efnis sem er óháður magni efnisins
+**hitastig**{#term-00004}
 
-**Kelvin (K)**
-: SI eining fyrir hitastig; 273,15 K = 0 ºC
+**hittni**{#term-00007}
 
-**kílógramm (kg)**
-: staðaleining SI-kerfisins fyrir massa
+**Hreint efni**{#term-00009}
 
-**lögmál**
-: staðhæfing sem dregur saman mikinn fjölda athugana og lýsir eða spáir fyrir um einhvern þátt náttúrunnar.
+**kelvin
+(K)**{#term-00008}
 
-**lögmál um varðveislu efnis**
-: þegar efni breytist úr einni gerð í aðra, eða breytir um form, verður engin greinanleg breyting á heildarmagni þess efnis sem er til staðar
+**kenningar**{#term-00004}
 
-**lengd**
-: mælikvarði á eina vídd hlutar
+**kílógramm (kg)**{#term-00006}
 
-**vökvi**
-: ástand efnis sem hefur ákveðið rúmmál en óákveðna lögun
+**lausn**{#term-00015}
 
-**lítri (L)**
-: (einnig rúmdesimetri) rúmmálseining; 1 L = 1.000 cm3
+**lengdar**{#term-00004}
 
-**stórsætt svið**
-: svið hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með sjón og snertingu
+**Lögmál**{#term-00003}
 
-**massi**
-: grunneiginleiki sem gefur til kynna magn efnis
+**Lögmálið um varðveislu efnis**{#term-00008}
 
-**efni**
-: allt sem tekur pláss og hefur massa
+**magnbundinn
+eiginleiki**{#term-00005}
 
-**metri (m)**
-: stöðluð lengdareining metrakerfisins og SI-kerfisins; 1 m = u.þ.b. 1,094 yardar
+**marktækir tölustafir**{#term-00004}
 
-**smásætt svið**
-: svið hluta sem eru of smáir til að vera skynjaðir beint
+**markverðir
+stafir**{#term-00003}
 
-**millilítri (mL)**
-: 1/1.000 úr lítra; jafngildir 1 cm3
+**Massi**{#term-00006}
 
-**efnablanda**
-: efni sem hægt er að aðskilja í efnisþætti sína með eðlisfræðilegum aðferðum
+**metri (m)**{#term-00005}
 
-**sameind**
-: tengt safn tveggja eða fleiri atóma af sama eða mismunandi frumefnum
+**millilítra (mL)**{#term-00015}
 
-**eðlisbreyting**
-: breyting á efnisham eða eiginleikum efnis sem felur ekki í sér breytingu á efnasamsetningu þess
+**misleit
+efnablanda**{#term-00013}
 
-**eðliseiginleiki**
-: einkenni efnis sem er ekki tengt neinni breytingu á efnasamsetningu þess
+**nákvæma
+tölu**{#term-00001}
 
-**rafgas**
-: gaskenndur efnishamur sem inniheldur mikinn fjölda rafhlaðinna atóma og/eða sameinda
+**nákvæmni**{#term-00006}
 
-**nákvæmni**
-: hversu nálægt mæling er sömu mælingu þegar hún er endurtekin
+**námundun**{#term-00005}
 
-**hreint efni**
-: einsleitt efni sem hefur fasta samsetningu
+**óvissu**{#term-00002}
 
-**námundun**
-: aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í þeim mælingum sem notaðar eru í útreikningnum
+**Plasma**{#term-00005}
 
-**vísindaleg aðferð**
-: uppgötvunarferli sem leiðir frá spurningu og athugun til lögmáls eða tilgátu til kenningar, ásamt tilraunakenndri sannprófun á tilgátunni og hvers kyns nauðsynlegri breytingu á kenningunni
+**Rúmmál**{#term-00011}
 
-**sekúnda (s)**
-: SI-eining tíma
+**Sameind**{#term-00018}
 
-**SI-einingar (Alþjóðlega einingakerfið)**
-: staðlar sem eru fastsettir með alþjóðlegum samningi í Alþjóðlega einingakerfinu (_Le Système International d’Unités_)
+**sekúnda (s)**{#term-00010}
 
-**markverðir stafir**
-: (einnig, markverðir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn
+**Selsíusgráða (°C)**{#term-00009}
 
-**fast efni**
-: efnishamur sem er stífur, hefur ákveðið form og nokkuð fast rúmmál
+**SI-einingar**{#term-00003}
 
-**táknrænt svið**
-: sérhæft tungumál sem notað er til að tákna þætti á stórsæja og smásæja sviðinu, svo sem efnatákn, efnaformúlur, efnajöfnur, gröf, teikningar og útreikninga
+**Smásæja
+svið**{#term-00007}
 
-**hitastig**
-: eðlisbundinn eiginleiki sem táknar hita eða kulda efnis
+**Stórsæja
+sviðið**{#term-00006}
 
-**kenning**
-: vel rökstudd, yfirgripsmikil, prófanleg útskýring á tilteknum þætti náttúrunnar
+**Táknræna sviðið**{#term-00008}
 
-**óvissa**
-: mat á því hversu mikið mæling víkur frá sönnu gildi
+**tilgátu**{#term-00002}
 
-**eining**
-: samanburðarstaðall fyrir mælingar
+**umreikningsstuðul fyrir
+einingar**{#term-00003}
 
-**umbreytistuðull eininga**
-: hlutfall jafngildra magntalna gefið upp með mismunandi einingum; notað til að breyta úr einni einingu í aðra
+**vísindalega aðferðin**{#term-00005}
 
-**rúmmál**
-: rými sem hlutur tekur
+**Vökvi**{#term-00003}
 
-**þyngd**
-: kraftur sem þyngdarafl beitir á hlut
+**þáttamerkingaraðferðin**{#term-00002}
+
+**Þyngd**{#term-00007}
