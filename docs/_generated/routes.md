@@ -171,6 +171,7 @@
 | Method | Path |
 |--------|------|
 | GET | `/` |
+| GET | `/today` |
 | GET | `/summary` |
 
 ## /notifications

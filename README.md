@@ -395,6 +395,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | Method | Path |
 |--------|------|
 | GET | `/` |
+| GET | `/today` |
 | GET | `/summary` |
 
 ## /notifications
