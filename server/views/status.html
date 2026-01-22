@@ -22,6 +22,7 @@
     <!-- Tab navigation -->
     <div class="tabs">
       <button class="tab active" onclick="showTab('dashboard')">Stjórnborð</button>
+      <button class="tab" onclick="showTab('analytics')">Greining</button>
       <button class="tab" onclick="showTab('matrix')">Framvinduyfirlit</button>
       <button class="tab" onclick="showTab('timeline')">Tímalína</button>
     </div>
@@ -127,6 +128,97 @@
         </div>
         <div class="mini-matrix" id="mini-matrix">
           <p class="text-muted">Hleður...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Analytics Tab -->
+    <div id="tab-analytics" class="tab-content" style="display: none;">
+      <div class="analytics-grid">
+        <!-- Velocity Card -->
+        <div class="card analytics-card">
+          <h2 class="card-title"><span class="analytics-icon">📈</span> Hraði</h2>
+          <div class="velocity-metrics" id="velocity-metrics">
+            <div class="velocity-item">
+              <span class="velocity-value" id="velocity-7d">-</span>
+              <span class="velocity-label">síðustu 7 daga</span>
+            </div>
+            <div class="velocity-item">
+              <span class="velocity-value" id="velocity-14d">-</span>
+              <span class="velocity-label">síðustu 14 daga</span>
+            </div>
+            <div class="velocity-item">
+              <span class="velocity-value" id="velocity-30d">-</span>
+              <span class="velocity-label">síðustu 30 daga</span>
+            </div>
+          </div>
+          <div class="velocity-chart" id="velocity-chart">
+            <p class="text-muted center">Hleður grafi...</p>
+          </div>
+        </div>
+
+        <!-- Projections Card -->
+        <div class="card analytics-card">
+          <h2 class="card-title"><span class="analytics-icon">🎯</span> Spá</h2>
+          <div class="projection-content" id="projection-content">
+            <p class="text-muted center">Hleður...</p>
+          </div>
+        </div>
+
+        <!-- Burndown Card -->
+        <div class="card analytics-card full-width">
+          <h2 class="card-title"><span class="analytics-icon">📉</span> Verkefnastaða</h2>
+          <div class="burndown-content">
+            <div class="burndown-stats" id="burndown-stats">
+              <div class="burndown-stat">
+                <span class="burndown-value" id="burndown-total">-</span>
+                <span class="burndown-label">Heildar hlutar</span>
+              </div>
+              <div class="burndown-stat complete">
+                <span class="burndown-value" id="burndown-complete">-</span>
+                <span class="burndown-label">Klárir</span>
+              </div>
+              <div class="burndown-stat in-progress">
+                <span class="burndown-value" id="burndown-progress">-</span>
+                <span class="burndown-label">Í vinnslu</span>
+              </div>
+              <div class="burndown-stat remaining">
+                <span class="burndown-value" id="burndown-remaining">-</span>
+                <span class="burndown-label">Eftir</span>
+              </div>
+            </div>
+            <div class="burndown-bar-container">
+              <div class="burndown-bar">
+                <div class="burndown-bar-complete" id="burndown-bar-complete"></div>
+                <div class="burndown-bar-progress" id="burndown-bar-progress"></div>
+              </div>
+              <div class="burndown-percent" id="burndown-percent">0%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stage Progress Card -->
+        <div class="card analytics-card full-width">
+          <h2 class="card-title"><span class="analytics-icon">📊</span> Framvinda eftir stigum</h2>
+          <div class="stage-metrics" id="stage-metrics">
+            <p class="text-muted center">Hleður...</p>
+          </div>
+        </div>
+
+        <!-- Pilot Milestone Card -->
+        <div class="card analytics-card pilot-card">
+          <h2 class="card-title"><span class="analytics-icon">🚀</span> Tilraunakennsla (janúar 2026)</h2>
+          <div class="pilot-content" id="pilot-content">
+            <p class="text-muted center">Hleður...</p>
+          </div>
+        </div>
+
+        <!-- Team Metrics Card -->
+        <div class="card analytics-card">
+          <h2 class="card-title"><span class="analytics-icon">👥</span> Virkni teymis</h2>
+          <div class="team-metrics" id="team-metrics">
+            <p class="text-muted center">Hleður...</p>
+          </div>
         </div>
       </div>
     </div>
@@ -308,6 +400,9 @@
       }
       if (tabId === 'matrix') {
         loadFullMatrix();
+      }
+      if (tabId === 'analytics') {
+        loadAnalytics();
       }
     }
 
@@ -620,6 +715,254 @@
           </div>
         </div>
       `;
+    }
+
+    // ============================================================================
+    // ANALYTICS
+    // ============================================================================
+
+    let analyticsData = null;
+
+    async function loadAnalytics() {
+      try {
+        const res = await fetch('/api/status/analytics');
+        analyticsData = await res.json();
+
+        renderVelocityMetrics();
+        renderProjections();
+        renderBurndown();
+        renderStageMetrics();
+        renderPilotMilestone();
+        renderTeamMetrics();
+        renderVelocityChart();
+
+      } catch (err) {
+        console.error('Failed to load analytics:', err);
+      }
+    }
+
+    function renderVelocityMetrics() {
+      if (!analyticsData?.velocity) return;
+
+      const v7 = analyticsData.velocity.last7days;
+      const v14 = analyticsData.velocity.last14days;
+      const v30 = analyticsData.velocity.last30days;
+
+      document.getElementById('velocity-7d').textContent = v7 ? `${v7.total} hlutar` : '-';
+      document.getElementById('velocity-14d').textContent = v14 ? `${v14.total} hlutar` : '-';
+      document.getElementById('velocity-30d').textContent = v30 ? `${v30.total} hlutar` : '-';
+    }
+
+    function renderVelocityChart() {
+      if (!analyticsData?.weeklyProgress) return;
+
+      const container = document.getElementById('velocity-chart');
+      const weeks = analyticsData.weeklyProgress;
+      const maxValue = Math.max(...weeks.map(w => w.completedSections), 1);
+
+      let html = '<div class="velocity-bars">';
+      for (const week of weeks) {
+        const height = (week.completedSections / maxValue) * 100;
+        html += `
+          <div class="velocity-bar-wrapper">
+            <div class="velocity-bar" style="height: ${Math.max(height, 5)}%">
+              <span class="velocity-bar-value">${week.completedSections}</span>
+            </div>
+            <span class="velocity-bar-label">${week.weekLabel.replace('Vika ', 'V')}</span>
+          </div>
+        `;
+      }
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    function renderProjections() {
+      if (!analyticsData?.projections) return;
+
+      const container = document.getElementById('projection-content');
+      const proj = analyticsData.projections;
+
+      if (!proj.estimatedDaysToComplete) {
+        container.innerHTML = '<p class="text-muted center">' + escapeHtml(proj.message || 'Ófullnægjandi gögn') + '</p>';
+        return;
+      }
+
+      const confidenceColors = {
+        high: 'var(--success)',
+        medium: 'var(--warning)',
+        low: 'var(--error)'
+      };
+
+      const confidenceLabels = {
+        high: 'Góð',
+        medium: 'Miðlungs',
+        low: 'Óviss'
+      };
+
+      container.innerHTML = `
+        <div class="projection-item">
+          <span class="projection-icon">📅</span>
+          <div class="projection-details">
+            <span class="projection-value">${escapeHtml(proj.projectedCompletionDateFormatted)}</span>
+            <span class="projection-label">Áætlaður lokadagur</span>
+          </div>
+        </div>
+        <div class="projection-item">
+          <span class="projection-icon">⏱️</span>
+          <div class="projection-details">
+            <span class="projection-value">${proj.estimatedWeeksToComplete} vikur</span>
+            <span class="projection-label">Áætlaður tími</span>
+          </div>
+        </div>
+        <div class="projection-item">
+          <span class="projection-icon">📊</span>
+          <div class="projection-details">
+            <span class="projection-value">${proj.currentVelocity} á dag</span>
+            <span class="projection-label">Núverandi hraði</span>
+          </div>
+        </div>
+        <div class="projection-confidence" style="background: ${confidenceColors[proj.confidence]}20; border-color: ${confidenceColors[proj.confidence]}">
+          <span style="color: ${confidenceColors[proj.confidence]}">Áreiðanleiki spár: ${confidenceLabels[proj.confidence]}</span>
+        </div>
+      `;
+    }
+
+    function renderBurndown() {
+      if (!analyticsData?.burndown) return;
+
+      const b = analyticsData.burndown;
+
+      document.getElementById('burndown-total').textContent = b.totalSections;
+      document.getElementById('burndown-complete').textContent = b.completedSections;
+      document.getElementById('burndown-progress').textContent = b.inProgressSections;
+      document.getElementById('burndown-remaining').textContent = b.remainingSections;
+      document.getElementById('burndown-percent').textContent = b.percentComplete + '% klár';
+
+      const completePercent = (b.completedSections / b.totalSections) * 100;
+      const progressPercent = (b.inProgressSections / b.totalSections) * 100;
+
+      document.getElementById('burndown-bar-complete').style.width = completePercent + '%';
+      document.getElementById('burndown-bar-progress').style.width = progressPercent + '%';
+    }
+
+    function renderStageMetrics() {
+      if (!analyticsData?.stageMetrics) return;
+
+      const container = document.getElementById('stage-metrics');
+      const stageLabels = {
+        'enMarkdown': 'EN Markdown',
+        'mtOutput': 'Vélþýðing',
+        'linguisticReview': 'Yfirferð 1',
+        'tmCreated': 'Þýðingaminni',
+        'publication': 'Útgáfa'
+      };
+
+      let html = '<div class="stage-progress-list">';
+      for (const stage of analyticsData.stageMetrics) {
+        const label = stageLabels[stage.stage] || stage.stage;
+        html += `
+          <div class="stage-progress-item">
+            <div class="stage-progress-header">
+              <span class="stage-progress-name">${label}</span>
+              <span class="stage-progress-count">${stage.complete}/${stage.total}</span>
+            </div>
+            <div class="stage-progress-bar">
+              <div class="stage-progress-fill" style="width: ${stage.percentComplete}%"></div>
+            </div>
+            <div class="stage-progress-details">
+              <span class="stage-detail complete">${stage.complete} klár</span>
+              <span class="stage-detail in-progress">${stage.inProgress} í vinnslu</span>
+              <span class="stage-detail pending">${stage.pending} í bið</span>
+            </div>
+          </div>
+        `;
+      }
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    function renderPilotMilestone() {
+      if (!analyticsData?.pilotMilestone) return;
+
+      const container = document.getElementById('pilot-content');
+      const pilot = analyticsData.pilotMilestone;
+
+      const statusColor = pilot.onTrack ? 'var(--success)' : 'var(--warning)';
+      const statusText = pilot.onTrack ? 'Á réttri leið' : 'Þarf að flýta';
+
+      container.innerHTML = `
+        <div class="pilot-header">
+          <span class="pilot-chapters">Kaflar ${pilot.chapters.join(', ')}</span>
+          <span class="pilot-status" style="background: ${statusColor}20; color: ${statusColor}">${statusText}</span>
+        </div>
+        <div class="pilot-progress">
+          <div class="pilot-progress-bar">
+            <div class="pilot-progress-fill" style="width: ${pilot.percentComplete}%"></div>
+          </div>
+          <span class="pilot-progress-text">${pilot.completedSections}/${pilot.totalSections} hlutar (${pilot.percentComplete}%)</span>
+        </div>
+        <div class="pilot-details">
+          <div class="pilot-detail">
+            <span class="pilot-detail-value">${pilot.completedSections}</span>
+            <span class="pilot-detail-label">Klárir hlutar</span>
+          </div>
+          <div class="pilot-detail">
+            <span class="pilot-detail-value">${pilot.totalSections - pilot.completedSections}</span>
+            <span class="pilot-detail-label">Eftir</span>
+          </div>
+          <div class="pilot-detail">
+            <span class="pilot-detail-value">${pilot.chapters.length}</span>
+            <span class="pilot-detail-label">Kaflar</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTeamMetrics() {
+      if (!analyticsData?.teamMetrics) return;
+
+      const container = document.getElementById('team-metrics');
+      const team = analyticsData.teamMetrics;
+
+      if (team.length === 0) {
+        container.innerHTML = '<p class="text-muted center">Engin virknigögn síðustu 30 daga</p>';
+        return;
+      }
+
+      let html = '<div class="team-list">';
+      for (const member of team.slice(0, 10)) {
+        const lastActiveDate = member.lastActive ? new Date(member.lastActive) : null;
+        const lastActiveText = lastActiveDate ? formatTimeAgo(member.lastActive) : '';
+
+        html += `
+          <div class="team-member">
+            <div class="team-member-info">
+              <span class="team-member-name">${escapeHtml(member.username)}</span>
+              <span class="team-member-activity">${member.totalActions} aðgerðir</span>
+            </div>
+            <div class="team-member-stats">
+              ${member.approvals > 0 ? `<span class="team-stat approval">✅ ${member.approvals}</span>` : ''}
+              ${member.submissions > 0 ? `<span class="team-stat submission">📤 ${member.submissions}</span>` : ''}
+              ${member.drafts > 0 ? `<span class="team-stat draft">💾 ${member.drafts}</span>` : ''}
+            </div>
+            <span class="team-member-last-active">${lastActiveText}</span>
+          </div>
+        `;
+      }
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    function formatTimeAgo(dateStr) {
+      const date = new Date(dateStr);
+      const now = new Date();
+      const seconds = Math.floor((now - date) / 1000);
+
+      if (seconds < 60) return 'rétt í þessu';
+      if (seconds < 3600) return `${Math.floor(seconds / 60)} mín síðan`;
+      if (seconds < 86400) return `${Math.floor(seconds / 3600)} klst síðan`;
+      if (seconds < 604800) return `${Math.floor(seconds / 86400)} dögum síðan`;
+      return date.toLocaleDateString('is-IS');
     }
 
     // ============================================================================
@@ -1084,13 +1427,346 @@
     .item-user { font-weight: 500; }
     .item-decision { font-style: italic; color: var(--gray-700); }
 
+    /* Analytics Tab */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .analytics-card {
+      min-height: 200px;
+    }
+    .analytics-card.full-width {
+      grid-column: 1 / -1;
+    }
+    .analytics-icon {
+      margin-right: 0.5rem;
+    }
+
+    /* Velocity Metrics */
+    .velocity-metrics {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .velocity-item {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem;
+      background: var(--gray-50);
+      border-radius: 0.375rem;
+    }
+    .velocity-value {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .velocity-label {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    /* Velocity Chart */
+    .velocity-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 0.5rem;
+      height: 120px;
+      padding: 0.5rem;
+      background: var(--gray-50);
+      border-radius: 0.375rem;
+    }
+    .velocity-bar-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+    }
+    .velocity-bar {
+      width: 100%;
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 0.25rem 0.25rem 0 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 5%;
+      transition: height 0.3s ease;
+    }
+    .velocity-bar-value {
+      font-size: 0.625rem;
+      color: white;
+      font-weight: 600;
+      padding: 0.25rem;
+    }
+    .velocity-bar-label {
+      font-size: 0.625rem;
+      color: var(--gray-500);
+      margin-top: 0.25rem;
+    }
+
+    /* Projections */
+    .projection-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .projection-item:last-of-type {
+      border-bottom: none;
+    }
+    .projection-icon {
+      font-size: 1.25rem;
+    }
+    .projection-details {
+      flex: 1;
+    }
+    .projection-value {
+      display: block;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+    .projection-label {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .projection-confidence {
+      margin-top: 0.75rem;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border: 1px solid;
+    }
+
+    /* Burndown */
+    .burndown-stats {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .burndown-stat {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem;
+      background: var(--gray-50);
+      border-radius: 0.375rem;
+    }
+    .burndown-stat.complete { border-left: 3px solid var(--success); }
+    .burndown-stat.in-progress { border-left: 3px solid var(--primary); }
+    .burndown-stat.remaining { border-left: 3px solid var(--gray-400); }
+    .burndown-value {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .burndown-stat.complete .burndown-value { color: var(--success); }
+    .burndown-stat.in-progress .burndown-value { color: var(--primary); }
+    .burndown-label {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .burndown-bar-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .burndown-bar {
+      flex: 1;
+      height: 1.5rem;
+      background: var(--gray-200);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      display: flex;
+    }
+    .burndown-bar-complete {
+      background: var(--success);
+      transition: width 0.5s ease;
+    }
+    .burndown-bar-progress {
+      background: var(--primary);
+      transition: width 0.5s ease;
+    }
+    .burndown-percent {
+      font-weight: 600;
+      color: var(--success);
+      min-width: 80px;
+    }
+
+    /* Stage Metrics */
+    .stage-progress-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .stage-progress-item {
+      padding: 0.75rem;
+      background: var(--gray-50);
+      border-radius: 0.375rem;
+    }
+    .stage-progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .stage-progress-name {
+      font-weight: 500;
+    }
+    .stage-progress-count {
+      color: var(--gray-500);
+      font-size: 0.875rem;
+    }
+    .stage-progress-bar {
+      height: 0.5rem;
+      background: var(--gray-200);
+      border-radius: 0.25rem;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+    .stage-progress-fill {
+      height: 100%;
+      background: var(--success);
+      transition: width 0.5s ease;
+    }
+    .stage-progress-details {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+    }
+    .stage-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .stage-detail.complete { color: var(--success); }
+    .stage-detail.in-progress { color: var(--primary); }
+    .stage-detail.pending { color: var(--warning); }
+
+    /* Pilot Milestone */
+    .pilot-card {
+      border-left: 4px solid var(--primary);
+    }
+    .pilot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .pilot-chapters {
+      font-weight: 500;
+    }
+    .pilot-status {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-weight: 500;
+    }
+    .pilot-progress {
+      margin-bottom: 1rem;
+    }
+    .pilot-progress-bar {
+      height: 1rem;
+      background: var(--gray-200);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+    .pilot-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--success) 100%);
+      transition: width 0.5s ease;
+    }
+    .pilot-progress-text {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+    }
+    .pilot-details {
+      display: flex;
+      gap: 1rem;
+    }
+    .pilot-detail {
+      flex: 1;
+      text-align: center;
+      padding: 0.5rem;
+      background: var(--gray-50);
+      border-radius: 0.375rem;
+    }
+    .pilot-detail-value {
+      display: block;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .pilot-detail-label {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    /* Team Metrics */
+    .team-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .team-member {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+    }
+    .team-member:hover {
+      background: var(--gray-50);
+    }
+    .team-member-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .team-member-name {
+      display: block;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .team-member-activity {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .team-member-stats {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .team-stat {
+      font-size: 0.75rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 9999px;
+      background: var(--gray-100);
+    }
+    .team-stat.approval { background: #dcfce7; color: #166534; }
+    .team-stat.submission { background: #dbeafe; color: #1e40af; }
+    .team-stat.draft { background: #f3f4f6; color: #374151; }
+    .team-member-last-active {
+      font-size: 0.625rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
     @media (max-width: 1024px) {
       .dashboard-grid { grid-template-columns: 1fr; }
+      .analytics-grid { grid-template-columns: 1fr; }
+      .analytics-card.full-width { grid-column: 1; }
     }
     @media (max-width: 768px) {
       .header nav { gap: 1rem; font-size: 0.75rem; }
       .attention-stats { flex-direction: column; }
       .matrix-mini-grid { font-size: 0.625rem; }
+      .velocity-metrics { flex-direction: column; }
+      .burndown-stats { flex-direction: column; }
+      .pilot-details { flex-direction: column; }
     }
   </style>
 </body>

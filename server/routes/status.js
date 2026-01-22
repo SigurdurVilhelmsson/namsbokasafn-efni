@@ -966,6 +966,315 @@ router.post('/:book/:chapter/sync', (req, res) => {
 });
 
 // ============================================================================
+// ANALYTICS
+// ============================================================================
+
+/**
+ * GET /api/status/analytics
+ * Get detailed analytics for the project
+ *
+ * Returns:
+ *   - velocity: Sections completed per period
+ *   - burndown: Work remaining over time
+ *   - projections: Estimated completion dates
+ *   - teamMetrics: Per-user productivity
+ *   - stageMetrics: Completion rates per stage
+ */
+router.get('/analytics', async (req, res) => {
+  try {
+    const analytics = {
+      generatedAt: new Date().toISOString(),
+      velocity: {},
+      burndown: {},
+      projections: {},
+      teamMetrics: [],
+      stageMetrics: [],
+      weeklyProgress: []
+    };
+
+    // Calculate velocity over different periods
+    const periods = [
+      { name: 'last7days', days: 7, label: 'Síðustu 7 dagar' },
+      { name: 'last14days', days: 14, label: 'Síðustu 14 dagar' },
+      { name: 'last30days', days: 30, label: 'Síðustu 30 dagar' }
+    ];
+
+    for (const period of periods) {
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - period.days);
+
+      const result = activityLog.search({
+        type: 'review_approved',
+        limit: 500
+      });
+
+      const completedInPeriod = result.activities.filter(a => {
+        const activityDate = new Date(a.createdAt);
+        return activityDate >= startDate;
+      }).length;
+
+      const avgPerDay = (completedInPeriod / period.days).toFixed(2);
+
+      analytics.velocity[period.name] = {
+        label: period.label,
+        total: completedInPeriod,
+        averagePerDay: parseFloat(avgPerDay),
+        averagePerWeek: parseFloat((avgPerDay * 7).toFixed(2))
+      };
+    }
+
+    // Calculate burndown data (work remaining)
+    let totalSections = 0;
+    let completedSections = 0;
+    let inProgressSections = 0;
+
+    for (const book of VALID_BOOKS) {
+      const bookPath = path.join(PROJECT_ROOT, 'books', book);
+      const chaptersPath = path.join(bookPath, 'chapters');
+
+      if (!fs.existsSync(chaptersPath)) continue;
+
+      const chapterDirs = fs.readdirSync(chaptersPath)
+        .filter(d => d.startsWith('ch'));
+
+      for (const chapterDir of chapterDirs) {
+        // Count sections in this chapter
+        const faithfulPath = path.join(bookPath, '03-faithful', chapterDir.replace('ch', 'ch'));
+        const mtOutputPath = path.join(bookPath, '02-mt-output', chapterDir.replace('ch', 'ch'));
+
+        // Estimate sections based on files
+        if (fs.existsSync(faithfulPath)) {
+          try {
+            const faithfulFiles = fs.readdirSync(faithfulPath)
+              .filter(f => f.endsWith('.is.md'));
+            completedSections += faithfulFiles.length;
+            totalSections += faithfulFiles.length;
+          } catch (e) { }
+        }
+
+        if (fs.existsSync(mtOutputPath)) {
+          try {
+            const mtFiles = fs.readdirSync(mtOutputPath)
+              .filter(f => f.endsWith('.is.md'));
+            // Add sections that are in MT output but not in faithful
+            const faithfulCount = fs.existsSync(faithfulPath)
+              ? fs.readdirSync(faithfulPath).filter(f => f.endsWith('.is.md')).length
+              : 0;
+            const mtOnlyCount = Math.max(0, mtFiles.length - faithfulCount);
+            inProgressSections += mtOnlyCount;
+            totalSections += mtOnlyCount;
+          } catch (e) { }
+        }
+      }
+    }
+
+    analytics.burndown = {
+      totalSections,
+      completedSections,
+      inProgressSections,
+      remainingSections: totalSections - completedSections,
+      percentComplete: totalSections > 0 ? Math.round((completedSections / totalSections) * 100) : 0
+    };
+
+    // Calculate projections based on velocity
+    const currentVelocity = analytics.velocity.last7days.averagePerDay;
+
+    if (currentVelocity > 0) {
+      const remaining = totalSections - completedSections;
+      const daysToComplete = Math.ceil(remaining / currentVelocity);
+      const projectedDate = new Date();
+      projectedDate.setDate(projectedDate.getDate() + daysToComplete);
+
+      analytics.projections = {
+        sectionsRemaining: remaining,
+        currentVelocity: currentVelocity,
+        estimatedDaysToComplete: daysToComplete,
+        estimatedWeeksToComplete: Math.ceil(daysToComplete / 7),
+        projectedCompletionDate: projectedDate.toISOString(),
+        projectedCompletionDateFormatted: projectedDate.toLocaleDateString('is-IS', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        }),
+        confidence: daysToComplete <= 30 ? 'high' : daysToComplete <= 90 ? 'medium' : 'low'
+      };
+    } else {
+      analytics.projections = {
+        sectionsRemaining: totalSections - completedSections,
+        currentVelocity: 0,
+        estimatedDaysToComplete: null,
+        message: 'Ófullnægjandi gögn til að spá fyrir um lokadagsetningu'
+      };
+    }
+
+    // Per-user team metrics
+    try {
+      const last30Days = new Date();
+      last30Days.setDate(last30Days.getDate() - 30);
+
+      const result = activityLog.search({
+        limit: 1000
+      });
+
+      const userStats = {};
+
+      for (const activity of result.activities) {
+        const activityDate = new Date(activity.createdAt);
+        if (activityDate < last30Days) continue;
+
+        const user = activity.username || 'unknown';
+        if (!userStats[user]) {
+          userStats[user] = {
+            username: user,
+            totalActions: 0,
+            reviews: 0,
+            approvals: 0,
+            drafts: 0,
+            submissions: 0,
+            lastActive: null
+          };
+        }
+
+        userStats[user].totalActions++;
+
+        if (activity.type === 'review_approved' || activity.type === 'approve_review') {
+          userStats[user].approvals++;
+        } else if (activity.type === 'review_submitted' || activity.type === 'submit_review') {
+          userStats[user].submissions++;
+        } else if (activity.type === 'draft_saved') {
+          userStats[user].drafts++;
+        }
+
+        if (!userStats[user].lastActive || new Date(activity.createdAt) > new Date(userStats[user].lastActive)) {
+          userStats[user].lastActive = activity.createdAt;
+        }
+      }
+
+      analytics.teamMetrics = Object.values(userStats)
+        .sort((a, b) => b.totalActions - a.totalActions);
+
+    } catch (e) {
+      console.log('Could not calculate team metrics:', e.message);
+    }
+
+    // Per-stage metrics
+    const stageStats = {};
+    for (const stage of PIPELINE_STAGES) {
+      stageStats[stage] = { complete: 0, inProgress: 0, pending: 0, notStarted: 0 };
+    }
+
+    for (const book of VALID_BOOKS) {
+      const chaptersPath = path.join(PROJECT_ROOT, 'books', book, 'chapters');
+      if (!fs.existsSync(chaptersPath)) continue;
+
+      const chapterDirs = fs.readdirSync(chaptersPath)
+        .filter(d => d.startsWith('ch'));
+
+      for (const chapterDir of chapterDirs) {
+        const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
+        if (!fs.existsSync(statusPath)) continue;
+
+        try {
+          const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+          const status = normalizeStageStatus(statusData.status || {});
+
+          for (const stage of PIPELINE_STAGES) {
+            const stageStatus = status[stage]?.status || 'not-started';
+            if (stageStatus === 'complete') stageStats[stage].complete++;
+            else if (stageStatus === 'in-progress') stageStats[stage].inProgress++;
+            else if (stageStatus === 'pending') stageStats[stage].pending++;
+            else stageStats[stage].notStarted++;
+          }
+        } catch (e) { }
+      }
+    }
+
+    const totalChapters = Object.values(stageStats)[0]
+      ? Object.values(stageStats[PIPELINE_STAGES[0]]).reduce((a, b) => a + b, 0)
+      : 0;
+
+    analytics.stageMetrics = PIPELINE_STAGES.map(stage => ({
+      stage,
+      ...stageStats[stage],
+      total: totalChapters,
+      percentComplete: totalChapters > 0 ? Math.round((stageStats[stage].complete / totalChapters) * 100) : 0
+    }));
+
+    // Weekly progress over last 8 weeks
+    const weeks = [];
+    for (let i = 7; i >= 0; i--) {
+      const weekStart = new Date();
+      weekStart.setDate(weekStart.getDate() - (i * 7) - weekStart.getDay());
+      weekStart.setHours(0, 0, 0, 0);
+
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekEnd.getDate() + 7);
+
+      const result = activityLog.search({
+        type: 'review_approved',
+        limit: 500
+      });
+
+      const completedInWeek = result.activities.filter(a => {
+        const d = new Date(a.createdAt);
+        return d >= weekStart && d < weekEnd;
+      }).length;
+
+      weeks.push({
+        weekStart: weekStart.toISOString(),
+        weekLabel: `Vika ${8 - i}`,
+        completedSections: completedInWeek
+      });
+    }
+
+    analytics.weeklyProgress = weeks;
+
+    // Pilot milestone tracking
+    const pilotChapters = [1, 2, 3, 4];
+    let pilotSectionsTotal = 0;
+    let pilotSectionsComplete = 0;
+
+    for (const chNum of pilotChapters) {
+      const chDir = `ch${String(chNum).padStart(2, '0')}`;
+      const faithfulPath = path.join(PROJECT_ROOT, 'books', 'efnafraedi', '03-faithful', chDir);
+      const mtOutputPath = path.join(PROJECT_ROOT, 'books', 'efnafraedi', '02-mt-output', chDir);
+
+      if (fs.existsSync(mtOutputPath)) {
+        try {
+          const mtFiles = fs.readdirSync(mtOutputPath).filter(f => f.endsWith('.is.md'));
+          pilotSectionsTotal += mtFiles.length;
+        } catch (e) { }
+      }
+
+      if (fs.existsSync(faithfulPath)) {
+        try {
+          const faithfulFiles = fs.readdirSync(faithfulPath).filter(f => f.endsWith('.is.md'));
+          pilotSectionsComplete += faithfulFiles.length;
+        } catch (e) { }
+      }
+    }
+
+    analytics.pilotMilestone = {
+      name: 'Kaflar 1-4 fyrir janúar 2026',
+      chapters: pilotChapters,
+      totalSections: pilotSectionsTotal,
+      completedSections: pilotSectionsComplete,
+      percentComplete: pilotSectionsTotal > 0 ? Math.round((pilotSectionsComplete / pilotSectionsTotal) * 100) : 0,
+      onTrack: pilotSectionsComplete >= pilotSectionsTotal * 0.5 // Simple heuristic
+    };
+
+    res.json(analytics);
+
+  } catch (err) {
+    console.error('Analytics error:', err);
+    res.status(500).json({
+      error: 'Failed to generate analytics',
+      message: err.message
+    });
+  }
+});
+
+// ============================================================================
 // MEETING AGENDA GENERATOR
 // ============================================================================
 
