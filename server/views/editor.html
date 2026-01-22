@@ -58,6 +58,9 @@
           <button class="btn btn-secondary" id="toggle-source-btn" title="Sýna/fela enska texta">
             <i class="fas fa-columns"></i> EN/IS
           </button>
+          <button class="btn btn-secondary" id="comments-btn" title="Athugasemdir">
+            <i class="fas fa-comments"></i> <span class="comment-count" id="comment-count-badge" style="display: none;">0</span>
+          </button>
           <button class="btn btn-secondary" id="history-btn" title="Útgáfusaga">
             <i class="fas fa-history"></i>
           </button>
@@ -220,6 +223,7 @@
             <span class="hint"><kbd>Ctrl</kbd>+<kbd>B</kbd> Feitletra</span>
             <span class="hint"><kbd>Ctrl</kbd>+<kbd>I</kbd> Skáletra</span>
             <span class="hint"><kbd>Ctrl</kbd>+<kbd>K</kbd> Tengill</span>
+            <span class="hint"><kbd>Ctrl</kbd>+<kbd>M</kbd> Athugasemd</span>
             <span class="hint"><kbd>F11</kbd> Heilskjár</span>
           </div>
         </div>
@@ -232,6 +236,33 @@
           <button class="btn-close" id="close-history">&times;</button>
         </div>
         <div class="history-list" id="history-list"></div>
+      </div>
+
+      <!-- Comments sidebar -->
+      <div class="comments-sidebar" id="comments-sidebar" style="display: none;">
+        <div class="sidebar-header">
+          <h3><i class="fas fa-comments"></i> Athugasemdir</h3>
+          <button class="btn-close" id="close-comments">&times;</button>
+        </div>
+        <div class="comments-actions">
+          <button class="btn btn-primary btn-small" id="add-comment-btn" onclick="showAddCommentModal()">
+            <i class="fas fa-plus"></i> Bæta við athugasemd
+          </button>
+          <button class="btn btn-secondary btn-small" onclick="addQuestionComment()">
+            <i class="fas fa-question-circle"></i> Spurning
+          </button>
+        </div>
+        <div class="comments-filter">
+          <label>
+            <input type="checkbox" id="filter-questions" checked onchange="renderComments()"> Spurningar
+          </label>
+          <label>
+            <input type="checkbox" id="filter-comments" checked onchange="renderComments()"> Athugasemdir
+          </label>
+        </div>
+        <div class="comments-list" id="comments-list">
+          <p class="text-muted center">Engar athugasemdir</p>
+        </div>
       </div>
 
       <!-- Terminology lookup panel -->
@@ -381,6 +412,41 @@
     </div>
   </div>
 
+  <!-- Add Comment Modal -->
+  <div class="modal" id="add-comment-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-comment-dots"></i> Bæta við athugasemd</h3>
+        <button class="btn-close" onclick="closeAddCommentModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Tegund</label>
+          <select class="form-select" id="comment-type">
+            <option value="ATHUGASEMD">Athugasemd</option>
+            <option value="SPURNING">Spurning</option>
+            <option value="TODO">Verkefni</option>
+            <option value="ATHUGA">Þarf að athuga</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Athugasemd</label>
+          <textarea id="comment-text" class="form-textarea" rows="3" placeholder="Skrifaðu athugasemd hér..."></textarea>
+        </div>
+        <div class="comment-preview" id="comment-preview">
+          <label class="form-label">Forskoðun:</label>
+          <code id="comment-preview-text"></code>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeAddCommentModal()">Hætta við</button>
+        <button class="btn btn-primary" onclick="insertComment()">
+          <i class="fas fa-plus"></i> Setja inn
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
   <script>
     let currentBook = null;
@@ -473,12 +539,25 @@
         document.getElementById('history-sidebar').style.display = 'none';
       });
 
+      // Comments button
+      document.getElementById('comments-btn').addEventListener('click', toggleComments);
+      document.getElementById('close-comments').addEventListener('click', () => {
+        document.getElementById('comments-sidebar').style.display = 'none';
+      });
+
       // Ctrl+S to save
       document.addEventListener('keydown', (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key === 's') {
           e.preventDefault();
           if (editor && hasUnsavedChanges()) {
             saveContent();
+          }
+        }
+        // Ctrl+M to add comment
+        if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
+          e.preventDefault();
+          if (editor) {
+            showAddCommentModal();
           }
         }
       });
@@ -587,6 +666,9 @@
 
         // Load section progress
         loadSectionProgress(book, chapter, section);
+
+        // Parse comments after a short delay
+        setTimeout(parseAndDisplayComments, 500);
 
       } catch (err) {
         alert('Villa við að hlaða kafla: ' + err.message);
@@ -1475,6 +1557,263 @@
       loadEditor(currentBook, currentChapter, nextSection.section);
     }
 
+    // ========================================
+    // IN-EDITOR COMMENTS
+    // ========================================
+
+    let parsedComments = [];
+
+    function toggleComments() {
+      const sidebar = document.getElementById('comments-sidebar');
+      const isVisible = sidebar.style.display !== 'none';
+
+      // Close history if open
+      document.getElementById('history-sidebar').style.display = 'none';
+
+      sidebar.style.display = isVisible ? 'none' : 'block';
+
+      if (!isVisible) {
+        parseAndDisplayComments();
+      }
+    }
+
+    function parseAndDisplayComments() {
+      if (!editor) return;
+
+      const content = editor.value();
+      parsedComments = [];
+
+      // Match HTML comment patterns: <!-- TYPE: text -->
+      const commentRegex = /<!--\s*(ATHUGASEMD|SPURNING|TODO|ATHUGA|COMMENT|QUESTION):\s*([\s\S]*?)\s*-->/gi;
+
+      let match;
+      let lineNumber = 0;
+      const lines = content.split('\n');
+      let charIndex = 0;
+
+      // Build a map of character positions to line numbers
+      const lineStarts = [0];
+      for (let i = 0; i < lines.length; i++) {
+        lineStarts.push(lineStarts[i] + lines[i].length + 1);
+      }
+
+      while ((match = commentRegex.exec(content)) !== null) {
+        // Find line number for this match
+        const matchStart = match.index;
+        let line = 0;
+        for (let i = 0; i < lineStarts.length - 1; i++) {
+          if (matchStart >= lineStarts[i] && matchStart < lineStarts[i + 1]) {
+            line = i;
+            break;
+          }
+        }
+
+        const type = match[1].toUpperCase();
+        const text = match[2].trim();
+
+        // Normalize type
+        const normalizedType = (type === 'COMMENT') ? 'ATHUGASEMD' :
+                              (type === 'QUESTION') ? 'SPURNING' : type;
+
+        parsedComments.push({
+          type: normalizedType,
+          text: text,
+          line: line,
+          start: match.index,
+          end: match.index + match[0].length,
+          fullMatch: match[0]
+        });
+      }
+
+      updateCommentBadge();
+      renderComments();
+    }
+
+    function updateCommentBadge() {
+      const badge = document.getElementById('comment-count-badge');
+      const count = parsedComments.length;
+
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = 'inline';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    function renderComments() {
+      const container = document.getElementById('comments-list');
+      const showQuestions = document.getElementById('filter-questions').checked;
+      const showComments = document.getElementById('filter-comments').checked;
+
+      const filtered = parsedComments.filter(c => {
+        if (c.type === 'SPURNING' && !showQuestions) return false;
+        if (c.type !== 'SPURNING' && !showComments) return false;
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<p class="text-muted center">Engar athugasemdir</p>';
+        return;
+      }
+
+      const typeIcons = {
+        'ATHUGASEMD': '<i class="fas fa-comment text-primary"></i>',
+        'SPURNING': '<i class="fas fa-question-circle text-warning"></i>',
+        'TODO': '<i class="fas fa-tasks text-info"></i>',
+        'ATHUGA': '<i class="fas fa-exclamation-triangle text-error"></i>'
+      };
+
+      const typeLabels = {
+        'ATHUGASEMD': 'Athugasemd',
+        'SPURNING': 'Spurning',
+        'TODO': 'Verkefni',
+        'ATHUGA': 'Athuga'
+      };
+
+      container.innerHTML = filtered.map((comment, idx) => `
+        <div class="comment-item" data-index="${parsedComments.indexOf(comment)}">
+          <div class="comment-header">
+            <span class="comment-type ${comment.type.toLowerCase()}">
+              ${typeIcons[comment.type] || ''} ${typeLabels[comment.type] || comment.type}
+            </span>
+            <span class="comment-line">Lína ${comment.line + 1}</span>
+          </div>
+          <div class="comment-text">${escapeHtml(comment.text)}</div>
+          <div class="comment-actions">
+            <button class="btn btn-secondary btn-small" onclick="goToComment(${parsedComments.indexOf(comment)})" title="Fara í athugasemd">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-secondary btn-small" onclick="removeComment(${parsedComments.indexOf(comment)})" title="Eyða athugasemd">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function goToComment(index) {
+      if (!editor || !editor.codemirror) return;
+
+      const comment = parsedComments[index];
+      if (!comment) return;
+
+      const cm = editor.codemirror;
+      const content = editor.value();
+
+      // Find the position in the document
+      let lineStart = 0;
+      const lines = content.split('\n');
+      for (let i = 0; i < comment.line; i++) {
+        lineStart += lines[i].length + 1;
+      }
+
+      // Calculate column
+      const col = comment.start - lineStart;
+
+      // Move cursor and select the comment
+      cm.setSelection(
+        { line: comment.line, ch: col },
+        { line: comment.line, ch: col + comment.fullMatch.length }
+      );
+
+      // Scroll into view
+      cm.scrollIntoView({ line: comment.line, ch: col }, 100);
+      cm.focus();
+    }
+
+    function removeComment(index) {
+      if (!editor || !editor.codemirror) return;
+
+      const comment = parsedComments[index];
+      if (!comment) return;
+
+      if (!confirm('Ertu viss um að þú viljir eyða þessari athugasemd?')) {
+        return;
+      }
+
+      const cm = editor.codemirror;
+      const content = editor.value();
+
+      // Remove the comment from the content
+      const newContent = content.substring(0, comment.start) + content.substring(comment.end);
+
+      // Update editor
+      editor.value(newContent);
+
+      // Re-parse comments
+      parseAndDisplayComments();
+
+      // Mark as unsaved
+      updateSaveStatus('unsaved');
+    }
+
+    function showAddCommentModal() {
+      document.getElementById('comment-type').value = 'ATHUGASEMD';
+      document.getElementById('comment-text').value = '';
+      updateCommentPreview();
+      document.getElementById('add-comment-modal').style.display = 'flex';
+      document.getElementById('comment-text').focus();
+    }
+
+    function closeAddCommentModal() {
+      document.getElementById('add-comment-modal').style.display = 'none';
+    }
+
+    function updateCommentPreview() {
+      const type = document.getElementById('comment-type').value;
+      const text = document.getElementById('comment-text').value.trim() || '...';
+      document.getElementById('comment-preview-text').textContent = `<!-- ${type}: ${text} -->`;
+    }
+
+    function insertComment() {
+      if (!editor || !editor.codemirror) return;
+
+      const type = document.getElementById('comment-type').value;
+      const text = document.getElementById('comment-text').value.trim();
+
+      if (!text) {
+        alert('Vinsamlegast skrifaðu athugasemd');
+        return;
+      }
+
+      const cm = editor.codemirror;
+      const commentText = `<!-- ${type}: ${text} -->`;
+
+      // Insert at cursor position
+      cm.replaceSelection(commentText);
+      cm.focus();
+
+      closeAddCommentModal();
+
+      // Re-parse comments
+      setTimeout(parseAndDisplayComments, 100);
+
+      // Mark as unsaved
+      updateSaveStatus('unsaved');
+    }
+
+    function addQuestionComment() {
+      document.getElementById('comment-type').value = 'SPURNING';
+      document.getElementById('comment-text').value = '';
+      updateCommentPreview();
+      document.getElementById('add-comment-modal').style.display = 'flex';
+      document.getElementById('comment-text').focus();
+    }
+
+    // Update preview when inputs change
+    document.addEventListener('DOMContentLoaded', () => {
+      const typeSelect = document.getElementById('comment-type');
+      const textArea = document.getElementById('comment-text');
+
+      if (typeSelect) {
+        typeSelect.addEventListener('change', updateCommentPreview);
+      }
+      if (textArea) {
+        textArea.addEventListener('input', updateCommentPreview);
+      }
+    });
+
     // Initialize on page load
     init();
   </script>
@@ -1606,7 +1945,7 @@
 
     .history-sidebar { position: fixed; top: 60px; right: 0; width: 320px; height: calc(100vh - 60px); background: white; box-shadow: -2px 0 10px rgba(0,0,0,0.1); z-index: 100; overflow-y: auto; }
     .sidebar-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; background: white; }
-    .sidebar-header h3 { font-size: 1rem; font-weight: 600; }
+    .sidebar-header h3 { font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
     .history-list { padding: 1rem; }
     .history-item { padding: 0.75rem; background: var(--gray-50); border-radius: 0.375rem; margin-bottom: 0.5rem; }
     .history-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.75rem; }
@@ -1614,6 +1953,131 @@
     .history-date { color: var(--gray-500); }
     .badge { padding: 0.125rem 0.5rem; border-radius: 9999px; font-size: 0.625rem; font-weight: 600; }
     .badge-primary { background: var(--primary); color: white; }
+
+    /* Comments Sidebar */
+    .comments-sidebar {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 360px;
+      height: calc(100vh - 60px);
+      background: white;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .comments-sidebar .sidebar-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-bottom: none;
+    }
+    .comments-sidebar .sidebar-header h3 { color: white; }
+    .comments-sidebar .btn-close { color: white; opacity: 0.8; }
+    .comments-sidebar .btn-close:hover { opacity: 1; }
+    .comments-actions {
+      padding: 0.75rem;
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      gap: 0.5rem;
+    }
+    .comments-filter {
+      padding: 0.5rem 0.75rem;
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+    }
+    .comments-filter label {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+    }
+    .comments-list {
+      flex: 1;
+      padding: 0.75rem;
+      overflow-y: auto;
+    }
+    .comment-item {
+      background: var(--gray-50);
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border-left: 3px solid var(--primary);
+    }
+    .comment-item:hover {
+      background: var(--gray-100);
+    }
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .comment-type {
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .comment-type.spurning { color: var(--warning); }
+    .comment-type.athugasemd { color: var(--primary); }
+    .comment-type.todo { color: #0891b2; }
+    .comment-type.athuga { color: var(--error); }
+    .comment-line {
+      font-size: 0.625rem;
+      color: var(--gray-500);
+      background: var(--gray-200);
+      padding: 0.125rem 0.375rem;
+      border-radius: 9999px;
+    }
+    .comment-text {
+      font-size: 0.8125rem;
+      color: var(--gray-700);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    .comment-actions {
+      display: flex;
+      gap: 0.25rem;
+      justify-content: flex-end;
+    }
+    .comment-actions .btn {
+      padding: 0.25rem 0.5rem;
+    }
+
+    /* Comment count badge */
+    .comment-count {
+      background: var(--error);
+      color: white;
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 9999px;
+      margin-left: 0.25rem;
+    }
+
+    /* Comment preview in modal */
+    .comment-preview {
+      background: var(--gray-50);
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      margin-top: 0.5rem;
+    }
+    .comment-preview code {
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--gray-700);
+      word-break: break-all;
+    }
+
+    /* Text colors for comment types */
+    .text-primary { color: var(--primary); }
+    .text-info { color: #0891b2; }
 
     .text-muted { color: var(--gray-500); }
 
