@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Úthlutanir - Námsbókasafn</title>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/my-work">Mín verkefni</a>
+      <a href="/status">Stjórnborð</a>
+      <a href="/assignments" class="active">Úthlutanir</a>
+      <a href="/reviews">Yfirferðir</a>
+      <a href="/terminology">Orðasafn</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <div class="page-title">
+        <h1>Úthlutanir kafla</h1>
+        <p class="page-subtitle">Úthlutaðu verkefnum til teymismeðlima</p>
+      </div>
+      <div class="page-actions">
+        <select class="form-select" id="book-select" onchange="loadMatrix()">
+          <option value="efnafraedi" selected>Efnafræði</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="summary-bar" id="summary-bar">
+      <div class="summary-stat">
+        <span class="stat-value" id="stat-chapters">-</span>
+        <span class="stat-label">Kaflar</span>
+      </div>
+      <div class="summary-stat">
+        <span class="stat-value" id="stat-assigned">-</span>
+        <span class="stat-label">Úthlutað</span>
+      </div>
+      <div class="summary-stat warning" id="stat-unassigned-container" style="display: none;">
+        <span class="stat-value" id="stat-unassigned">-</span>
+        <span class="stat-label">Án úthlutunar</span>
+      </div>
+      <div class="summary-stat error" id="stat-overdue-container" style="display: none;">
+        <span class="stat-value" id="stat-overdue">-</span>
+        <span class="stat-label">Yfir tíma</span>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot status-complete"></span> Lokið</span>
+      <span class="legend-item"><span class="legend-dot status-in-progress"></span> Í vinnslu</span>
+      <span class="legend-item"><span class="legend-dot status-pending"></span> Í bið</span>
+      <span class="legend-item"><span class="legend-dot status-not-started"></span> Ekki byrjað</span>
+      <span class="legend-item"><span class="legend-avatar">👤</span> Úthlutað</span>
+    </div>
+
+    <!-- Assignment Matrix -->
+    <div class="matrix-container">
+      <table class="assignment-matrix" id="assignment-matrix">
+        <thead>
+          <tr>
+            <th class="col-chapter">Kafli</th>
+            <th class="col-stage" id="th-stage-0">-</th>
+            <th class="col-stage" id="th-stage-1">-</th>
+            <th class="col-stage" id="th-stage-2">-</th>
+            <th class="col-stage" id="th-stage-3">-</th>
+            <th class="col-stage" id="th-stage-4">-</th>
+          </tr>
+        </thead>
+        <tbody id="matrix-body">
+          <tr>
+            <td colspan="6" class="loading-cell">Hleður...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Quick Actions Bar -->
+    <div class="quick-actions" id="quick-actions" style="display: none;">
+      <span class="quick-actions-label">Hraðaðgerðir:</span>
+      <button class="btn btn-secondary btn-sm" onclick="bulkAssignChapter()">
+        Úthluta völdum kafla
+      </button>
+      <button class="btn btn-secondary btn-sm" onclick="clearFilters()">
+        Hreinsa síu
+      </button>
+    </div>
+  </main>
+
+  <!-- Assignment Modal -->
+  <div class="modal" id="assignment-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Úthluta verkefni</h3>
+        <button class="btn-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-context" id="modal-context">
+          <span class="context-book" id="context-book">Efnafræði</span>
+          <span class="context-chapter" id="context-chapter">Kafli 1</span>
+          <span class="context-stage" id="context-stage">Yfirferð 1</span>
+        </div>
+
+        <!-- Current Assignment (if any) -->
+        <div class="current-assignment" id="current-assignment" style="display: none;">
+          <h4>Núverandi úthlutun</h4>
+          <div class="assignment-info">
+            <div class="assignment-user" id="current-user"></div>
+            <div class="assignment-meta" id="current-meta"></div>
+          </div>
+          <div class="current-actions">
+            <button class="btn btn-secondary btn-sm" onclick="reassign()">Endurúthluta</button>
+            <button class="btn btn-error btn-sm" onclick="cancelAssignment()">Hætta við</button>
+          </div>
+        </div>
+
+        <!-- New Assignment Form -->
+        <div class="new-assignment" id="new-assignment">
+          <div class="form-group">
+            <label class="form-label">Úthluta til</label>
+            <input type="text" id="assign-to" class="form-input" placeholder="Notandanafn" list="team-members">
+            <datalist id="team-members"></datalist>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Skiladagur (valfrjálst)</label>
+            <input type="date" id="assign-due" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Athugasemdir (valfrjálst)</label>
+            <textarea id="assign-notes" class="form-textarea" rows="2" placeholder="Leiðbeiningar eða athugasemdir..."></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Hætta við</button>
+        <button class="btn btn-primary" id="assign-btn" onclick="submitAssignment()">
+          Úthluta
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cancel Modal -->
+  <div class="modal" id="cancel-modal" style="display: none;">
+    <div class="modal-content modal-small">
+      <div class="modal-header">
+        <h3>Hætta við úthlutun?</h3>
+        <button class="btn-close" onclick="closeCancelModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Ertu viss um að þú viljir hætta við þessa úthlutun?</p>
+        <div class="form-group">
+          <label class="form-label">Ástæða (valfrjálst)</label>
+          <input type="text" id="cancel-reason" class="form-input" placeholder="Ástæða fyrir afpöntun...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeCancelModal()">Til baka</button>
+        <button class="btn btn-error" onclick="confirmCancel()">Hætta við úthlutun</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let matrixData = null;
+    let selectedCell = null;
+    let currentAssignment = null;
+
+    const STAGE_LABELS = {
+      'enMarkdown': 'EN Markdown',
+      'mtOutput': 'Vélþýðing',
+      'linguisticReview': 'Yfirferð 1',
+      'tmCreated': 'Þýðingaminni',
+      'publication': 'Útgáfa'
+    };
+
+    const STATUS_CLASSES = {
+      'complete': 'status-complete',
+      'in-progress': 'status-in-progress',
+      'pending': 'status-pending',
+      'not-started': 'status-not-started'
+    };
+
+    async function init() {
+      // Check auth
+      const authRes = await fetch('/api/auth/me');
+      const authData = await authRes.json();
+      const userEl = document.getElementById('user-info');
+
+      if (!authData.authenticated) {
+        userEl.innerHTML = '<a href="/api/auth/login?redirect=/assignments" class="btn btn-primary">Innskráning</a>';
+        return;
+      }
+
+      userEl.innerHTML = `<img src="${authData.user.avatar}" alt=""><span>${authData.user.name}</span>`;
+
+      // Check if user has permission (HEAD_EDITOR or ADMIN)
+      if (!['HEAD_EDITOR', 'ADMIN'].includes(authData.user.role)) {
+        document.querySelector('.container').innerHTML = `
+          <div class="access-denied">
+            <h2>Aðgangur bannaður</h2>
+            <p>Þú þarft að vera HEAD_EDITOR eða ADMIN til að sjá þessa síðu.</p>
+            <a href="/my-work" class="btn btn-primary">Til baka</a>
+          </div>
+        `;
+        return;
+      }
+
+      await loadMatrix();
+    }
+
+    async function loadMatrix() {
+      const book = document.getElementById('book-select').value;
+
+      try {
+        const res = await fetch(`/api/workflow/assignments/matrix?book=${book}`);
+        matrixData = await res.json();
+
+        // Update header
+        matrixData.stages.forEach((stage, i) => {
+          document.getElementById(`th-stage-${i}`).textContent = stage.shortLabel;
+          document.getElementById(`th-stage-${i}`).title = stage.label;
+        });
+
+        // Update summary
+        document.getElementById('stat-chapters').textContent = matrixData.summary.totalChapters;
+        document.getElementById('stat-assigned').textContent = matrixData.summary.assignedCells;
+
+        if (matrixData.summary.unassignedInProgress > 0) {
+          document.getElementById('stat-unassigned').textContent = matrixData.summary.unassignedInProgress;
+          document.getElementById('stat-unassigned-container').style.display = 'block';
+        }
+
+        if (matrixData.summary.overdueAssignments > 0) {
+          document.getElementById('stat-overdue').textContent = matrixData.summary.overdueAssignments;
+          document.getElementById('stat-overdue-container').style.display = 'block';
+        }
+
+        // Populate team members datalist
+        const datalist = document.getElementById('team-members');
+        datalist.innerHTML = matrixData.team.map(t => `<option value="${escapeHtml(t)}">`).join('');
+
+        // Render matrix
+        renderMatrix();
+
+      } catch (err) {
+        console.error('Failed to load matrix:', err);
+        document.getElementById('matrix-body').innerHTML = `
+          <tr><td colspan="6" class="error-cell">Villa við að hlaða gögnum</td></tr>
+        `;
+      }
+    }
+
+    function renderMatrix() {
+      const tbody = document.getElementById('matrix-body');
+
+      if (!matrixData || matrixData.chapters.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="empty-cell">Engir kaflar fundnir</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = matrixData.chapters.map(chapter => {
+        const cells = matrixData.stages.map(stage => {
+          const stageData = chapter.stages[stage.id] || { status: 'not-started', assignment: null };
+          const statusClass = STATUS_CLASSES[stageData.status] || 'status-not-started';
+          const assignment = stageData.assignment;
+
+          let cellContent = '';
+          let cellClass = `matrix-cell ${statusClass}`;
+          let cellTitle = `${STAGE_LABELS[stage.id]}: ${getStatusLabel(stageData.status)}`;
+
+          if (assignment) {
+            cellClass += ' has-assignment';
+            const initials = getInitials(assignment.assignedTo);
+            const isOverdue = assignment.dueDate && new Date(assignment.dueDate) < new Date();
+
+            cellContent = `
+              <span class="cell-avatar ${isOverdue ? 'overdue' : ''}" title="${escapeHtml(assignment.assignedTo)}">
+                ${initials}
+              </span>
+            `;
+
+            if (isOverdue) {
+              cellClass += ' cell-overdue';
+              cellTitle += ` - Úthlutað til ${assignment.assignedTo} (YFIR TÍMA!)`;
+            } else {
+              cellTitle += ` - Úthlutað til ${assignment.assignedTo}`;
+            }
+
+            if (assignment.dueDate) {
+              cellTitle += ` (skiladagur: ${new Date(assignment.dueDate).toLocaleDateString('is-IS')})`;
+            }
+          }
+
+          return `
+            <td class="${cellClass}"
+                data-chapter="${chapter.chapter}"
+                data-stage="${stage.id}"
+                title="${cellTitle}"
+                onclick="openAssignModal(${chapter.chapter}, '${stage.id}')">
+              ${cellContent}
+            </td>
+          `;
+        }).join('');
+
+        return `
+          <tr>
+            <td class="chapter-cell">
+              <span class="chapter-num">K${chapter.chapter}</span>
+              ${chapter.title ? `<span class="chapter-title">${escapeHtml(chapter.title.substring(0, 30))}</span>` : ''}
+            </td>
+            ${cells}
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openAssignModal(chapter, stage) {
+      selectedCell = { chapter, stage };
+      const stageData = matrixData.chapters.find(c => c.chapter === chapter)?.stages[stage];
+      currentAssignment = stageData?.assignment || null;
+
+      // Update modal context
+      document.getElementById('context-book').textContent = matrixData.book === 'efnafraedi' ? 'Efnafræði' : matrixData.book;
+      document.getElementById('context-chapter').textContent = `Kafli ${chapter}`;
+      document.getElementById('context-stage').textContent = STAGE_LABELS[stage] || stage;
+
+      // Show/hide current assignment
+      const currentEl = document.getElementById('current-assignment');
+      const newEl = document.getElementById('new-assignment');
+
+      if (currentAssignment) {
+        document.getElementById('modal-title').textContent = 'Breyta úthlutun';
+        document.getElementById('current-user').textContent = currentAssignment.assignedTo;
+
+        let meta = `Úthlutað af ${currentAssignment.assignedBy}`;
+        if (currentAssignment.dueDate) {
+          const dueDate = new Date(currentAssignment.dueDate);
+          const isOverdue = dueDate < new Date();
+          meta += ` | Skiladagur: <span class="${isOverdue ? 'text-error' : ''}">${dueDate.toLocaleDateString('is-IS')}</span>`;
+        }
+        if (currentAssignment.notes) {
+          meta += ` | "${currentAssignment.notes}"`;
+        }
+        document.getElementById('current-meta').innerHTML = meta;
+
+        currentEl.style.display = 'block';
+        newEl.style.display = 'none';
+        document.getElementById('assign-btn').textContent = 'Uppfæra';
+      } else {
+        document.getElementById('modal-title').textContent = 'Úthluta verkefni';
+        currentEl.style.display = 'none';
+        newEl.style.display = 'block';
+        document.getElementById('assign-btn').textContent = 'Úthluta';
+      }
+
+      // Clear form
+      document.getElementById('assign-to').value = currentAssignment?.assignedTo || '';
+      document.getElementById('assign-due').value = currentAssignment?.dueDate ? currentAssignment.dueDate.split('T')[0] : '';
+      document.getElementById('assign-notes').value = currentAssignment?.notes || '';
+
+      document.getElementById('assignment-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('assignment-modal').style.display = 'none';
+      selectedCell = null;
+      currentAssignment = null;
+    }
+
+    function reassign() {
+      document.getElementById('current-assignment').style.display = 'none';
+      document.getElementById('new-assignment').style.display = 'block';
+      document.getElementById('assign-btn').textContent = 'Endurúthluta';
+    }
+
+    async function submitAssignment() {
+      if (!selectedCell) return;
+
+      const assignTo = document.getElementById('assign-to').value.trim();
+      const dueDate = document.getElementById('assign-due').value;
+      const notes = document.getElementById('assign-notes').value.trim();
+
+      if (!assignTo) {
+        alert('Vinsamlegast sláðu inn notandanafn');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/workflow/assignments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            book: matrixData.book,
+            chapter: selectedCell.chapter,
+            stage: selectedCell.stage,
+            assignedTo: assignTo,
+            dueDate: dueDate || undefined,
+            notes: notes || undefined
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          closeModal();
+          await loadMatrix();
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki úthlutað'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function cancelAssignment() {
+      if (!currentAssignment) return;
+      document.getElementById('cancel-modal').style.display = 'flex';
+    }
+
+    function closeCancelModal() {
+      document.getElementById('cancel-modal').style.display = 'none';
+      document.getElementById('cancel-reason').value = '';
+    }
+
+    async function confirmCancel() {
+      if (!currentAssignment) return;
+
+      const reason = document.getElementById('cancel-reason').value.trim();
+
+      try {
+        const res = await fetch(`/api/workflow/assignments/${currentAssignment.id}/cancel`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reason })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          closeCancelModal();
+          closeModal();
+          await loadMatrix();
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki hætt við'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // Helper functions
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function getInitials(name) {
+      if (!name) return '?';
+      const parts = name.split(/[\s._-]+/);
+      if (parts.length >= 2) {
+        return (parts[0][0] + parts[1][0]).toUpperCase();
+      }
+      return name.substring(0, 2).toUpperCase();
+    }
+
+    function getStatusLabel(status) {
+      const labels = {
+        'complete': 'Lokið',
+        'in-progress': 'Í vinnslu',
+        'pending': 'Í bið',
+        'not-started': 'Ekki byrjað'
+      };
+      return labels[status] || status;
+    }
+
+    // Initialize
+    init();
+  </script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #dbeafe;
+      --success: #16a34a;
+      --success-light: #dcfce7;
+      --warning: #d97706;
+      --warning-light: #fef3c7;
+      --error: #dc2626;
+      --error-light: #fee2e2;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--gray-100);
+      color: var(--gray-900);
+      line-height: 1.5;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      border-bottom: 1px solid var(--gray-200);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .header h1 { font-size: 1.25rem; color: var(--primary); }
+    .header nav { display: flex; gap: 1rem; flex: 1; }
+    .header nav a {
+      color: var(--gray-500);
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: all 0.15s;
+    }
+    .header nav a:hover { color: var(--gray-700); background: var(--gray-100); }
+    .header nav a.active { color: var(--primary); background: var(--primary-light); font-weight: 500; }
+    .user-info { display: flex; align-items: center; gap: 0.5rem; }
+    .user-info img { width: 32px; height: 32px; border-radius: 50%; }
+
+    /* Container */
+    .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+
+    /* Page Header */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .page-title h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .page-subtitle {
+      color: var(--gray-500);
+      font-size: 0.875rem;
+    }
+
+    /* Summary Bar */
+    .summary-bar {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 1.5rem;
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+    }
+    .summary-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .summary-stat .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .summary-stat .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .summary-stat.warning .stat-value { color: var(--warning); }
+    .summary-stat.error .stat-value { color: var(--error); }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0.75rem 0;
+      margin-bottom: 1rem;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+    .legend-dot.status-complete { background: var(--success); }
+    .legend-dot.status-in-progress { background: var(--primary); }
+    .legend-dot.status-pending { background: var(--warning); }
+    .legend-dot.status-not-started { background: var(--gray-200); }
+    .legend-avatar {
+      font-size: 0.875rem;
+    }
+
+    /* Matrix Container */
+    .matrix-container {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      overflow-x: auto;
+    }
+
+    /* Assignment Matrix */
+    .assignment-matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    .assignment-matrix th,
+    .assignment-matrix td {
+      padding: 0.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .assignment-matrix th {
+      background: var(--gray-50);
+      font-weight: 600;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .col-chapter {
+      width: 180px;
+      text-align: left !important;
+    }
+    .col-stage {
+      width: 80px;
+    }
+
+    .chapter-cell {
+      text-align: left !important;
+      padding-left: 1rem !important;
+    }
+    .chapter-num {
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+    .chapter-title {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 150px;
+    }
+
+    /* Matrix Cells */
+    .matrix-cell {
+      cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+      height: 48px;
+      vertical-align: middle;
+    }
+    .matrix-cell:hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+
+    .matrix-cell.status-complete { background: var(--success-light); }
+    .matrix-cell.status-in-progress { background: var(--primary-light); }
+    .matrix-cell.status-pending { background: var(--warning-light); }
+    .matrix-cell.status-not-started { background: var(--gray-100); }
+
+    .matrix-cell.has-assignment {
+      border: 2px solid currentColor;
+    }
+    .matrix-cell.status-complete.has-assignment { border-color: var(--success); }
+    .matrix-cell.status-in-progress.has-assignment { border-color: var(--primary); }
+    .matrix-cell.status-pending.has-assignment { border-color: var(--warning); }
+    .matrix-cell.status-not-started.has-assignment { border-color: var(--gray-400); }
+
+    .matrix-cell.cell-overdue {
+      animation: pulse-error 2s infinite;
+    }
+
+    @keyframes pulse-error {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+      50% { box-shadow: 0 0 0 4px rgba(220, 38, 38, 0); }
+    }
+
+    .cell-avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: white;
+      font-size: 0.625rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    }
+    .cell-avatar.overdue {
+      background: var(--error);
+      color: white;
+    }
+
+    .loading-cell, .empty-cell, .error-cell {
+      text-align: center;
+      padding: 2rem !important;
+      color: var(--gray-500);
+    }
+    .error-cell { color: var(--error); }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      margin-top: 1rem;
+      background: var(--gray-50);
+      border-radius: 0.5rem;
+    }
+    .quick-actions-label {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+    }
+
+    /* Forms */
+    .form-select, .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+    }
+    .form-select:focus, .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
+    .btn-secondary:hover { background: var(--gray-300); }
+    .btn-error { background: var(--error); color: white; }
+    .btn-error:hover { background: #b91c1c; }
+    .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
+    .btn-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      line-height: 1;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 0.5rem;
+      width: 90%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-content.modal-small { max-width: 360px; }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .modal-header h3 { font-size: 1.125rem; font-weight: 600; }
+    .modal-body { padding: 1.5rem; }
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--gray-200);
+      background: var(--gray-50);
+    }
+
+    /* Modal Context */
+    .modal-context {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+    .context-book {
+      color: var(--primary);
+      font-weight: 500;
+    }
+    .context-chapter, .context-stage {
+      color: var(--gray-500);
+    }
+    .context-chapter::before, .context-stage::before {
+      content: '/';
+      margin-right: 0.5rem;
+      color: var(--gray-300);
+    }
+
+    /* Current Assignment */
+    .current-assignment {
+      background: var(--gray-50);
+      padding: 1rem;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+    }
+    .current-assignment h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 0.5rem;
+    }
+    .assignment-info {
+      margin-bottom: 0.75rem;
+    }
+    .assignment-user {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .assignment-meta {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .current-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* Access Denied */
+    .access-denied {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .access-denied h2 {
+      margin-bottom: 0.5rem;
+    }
+    .access-denied p {
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Text utilities */
+    .text-error { color: var(--error); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header { flex-direction: column; gap: 1rem; padding: 1rem; }
+      .header nav { width: 100%; justify-content: center; flex-wrap: wrap; }
+      .container { padding: 1rem; }
+      .page-header { flex-direction: column; gap: 1rem; }
+      .summary-bar { flex-wrap: wrap; }
+      .legend { flex-wrap: wrap; }
+    }
+  </style>
+</body>
+</html>

@@ -1490,6 +1490,146 @@ router.post('/assignments/:id/complete', requireAuth, (req, res) => {
 });
 
 /**
+ * GET /api/workflow/assignments/matrix
+ * Get assignment matrix for a book (chapters × stages with assignments)
+ */
+router.get('/assignments/matrix', requireAuth, (req, res) => {
+  const { book = 'efnafraedi' } = req.query;
+
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const PROJECT_ROOT = path.join(__dirname, '..', '..');
+
+    // Get all assignments for this book
+    const bookAssignments = assignmentStore.getBookAssignments(book);
+
+    // Build assignment lookup map
+    const assignmentMap = {};
+    for (const a of bookAssignments) {
+      const key = `${a.chapter}-${a.stage}`;
+      assignmentMap[key] = a;
+    }
+
+    // Get chapter statuses
+    const chaptersPath = path.join(PROJECT_ROOT, 'books', book, 'chapters');
+    const chapters = [];
+
+    if (fs.existsSync(chaptersPath)) {
+      const chapterDirs = fs.readdirSync(chaptersPath)
+        .filter(d => d.startsWith('ch'))
+        .sort((a, b) => {
+          const aNum = parseInt(a.replace('ch', ''));
+          const bNum = parseInt(b.replace('ch', ''));
+          return aNum - bNum;
+        });
+
+      const stages = ['enMarkdown', 'mtOutput', 'linguisticReview', 'tmCreated', 'publication'];
+
+      for (const chapterDir of chapterDirs) {
+        const chapterNum = parseInt(chapterDir.replace('ch', ''));
+        const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
+
+        let chapterData = {
+          chapter: chapterNum,
+          title: null,
+          stages: {}
+        };
+
+        // Load status data
+        if (fs.existsSync(statusPath)) {
+          try {
+            const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
+            chapterData.title = statusData.title || `Kafli ${chapterNum}`;
+
+            // Get status for each stage
+            const stageStatus = statusData.status || {};
+            for (const stage of stages) {
+              const key = `${chapterNum}-${stage}`;
+              const stageData = stageStatus[stage] || {};
+
+              chapterData.stages[stage] = {
+                status: stageData.status || 'not-started',
+                assignment: assignmentMap[key] || null
+              };
+            }
+          } catch (err) {
+            // Use defaults
+            for (const stage of stages) {
+              chapterData.stages[stage] = {
+                status: 'not-started',
+                assignment: null
+              };
+            }
+          }
+        } else {
+          for (const stage of stages) {
+            chapterData.stages[stage] = {
+              status: 'not-started',
+              assignment: null
+            };
+          }
+        }
+
+        chapters.push(chapterData);
+      }
+    }
+
+    // Get team members (users who have been assignees or assigners)
+    const allAssignments = assignmentStore.getAllPendingAssignments();
+    const teamSet = new Set();
+    for (const a of allAssignments) {
+      if (a.assignedTo) teamSet.add(a.assignedTo);
+      if (a.assignedBy) teamSet.add(a.assignedBy);
+    }
+
+    // Summary stats
+    const summary = {
+      totalChapters: chapters.length,
+      assignedCells: Object.keys(assignmentMap).length,
+      unassignedInProgress: 0,
+      overdueAssignments: 0
+    };
+
+    const now = new Date();
+    for (const a of bookAssignments) {
+      if (a.dueDate && new Date(a.dueDate) < now) {
+        summary.overdueAssignments++;
+      }
+    }
+
+    for (const ch of chapters) {
+      for (const [stage, data] of Object.entries(ch.stages)) {
+        if (data.status === 'in-progress' && !data.assignment) {
+          summary.unassignedInProgress++;
+        }
+      }
+    }
+
+    res.json({
+      book,
+      chapters,
+      stages: [
+        { id: 'enMarkdown', label: 'EN Markdown', shortLabel: 'EN' },
+        { id: 'mtOutput', label: 'Vélþýðing', shortLabel: 'VÞ' },
+        { id: 'linguisticReview', label: 'Yfirferð 1', shortLabel: 'Y1' },
+        { id: 'tmCreated', label: 'Þýðingaminni', shortLabel: 'TM' },
+        { id: 'publication', label: 'Útgáfa', shortLabel: 'Útg' }
+      ],
+      team: Array.from(teamSet).sort(),
+      summary
+    });
+
+  } catch (err) {
+    console.error('Assignment matrix error:', err);
+    res.status(500).json({
+      error: 'Failed to get assignment matrix',
+      message: err.message
+    });
+  }
+});
+
+/**
  * POST /api/workflow/assignments/:id/cancel
  * Cancel an assignment
  */

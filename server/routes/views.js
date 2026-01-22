@@ -108,6 +108,14 @@ router.get('/my-work', (req, res) => {
 });
 
 /**
+ * GET /assignments
+ * Chapter assignment board for admin/head editor
+ */
+router.get('/assignments', (req, res) => {
+  sendView(res, 'assignments.html');
+});
+
+/**
  * GET /localization-review
  * Split-panel localization review page
  */
