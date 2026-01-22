@@ -135,6 +135,14 @@ function getAllPendingAssignments() {
 /**
  * Complete an assignment
  */
+/**
+ * Get an assignment by its ID
+ */
+function getAssignmentById(id) {
+  const assignments = loadAssignments();
+  return assignments.find(a => a.id === id) || null;
+}
+
 function completeAssignment(id, completedBy) {
   const assignments = loadAssignments();
   const idx = assignments.findIndex(a => a.id === id);
@@ -189,6 +197,7 @@ function generateId() {
 module.exports = {
   createAssignment,
   getAssignment,
+  getAssignmentById,
   getUserAssignments,
   getAllPendingAssignments,
   completeAssignment,

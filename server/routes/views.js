@@ -116,6 +116,22 @@ router.get('/assignments', (req, res) => {
 });
 
 /**
+ * GET /meetings
+ * Meeting agenda generator
+ */
+router.get('/meetings', (req, res) => {
+  sendView(res, 'meetings.html');
+});
+
+/**
+ * GET /deadlines
+ * Deadline tracking dashboard
+ */
+router.get('/deadlines', (req, res) => {
+  sendView(res, 'deadlines.html');
+});
+
+/**
  * GET /localization-review
  * Split-panel localization review page
  */

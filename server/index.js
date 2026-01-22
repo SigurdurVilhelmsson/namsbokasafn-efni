@@ -70,6 +70,12 @@ const publicationRoutes = require('./routes/publication');
 const feedbackRoutes = require('./routes/feedback');
 const analyticsRoutes = require('./routes/analytics');
 
+// Import Meeting routes
+const meetingsRoutes = require('./routes/meetings');
+
+// Import Deadline routes
+const deadlinesRoutes = require('./routes/deadlines');
+
 // Configuration
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -157,6 +163,12 @@ app.use('/api/publication', publicationRoutes);
 // Phase 7 API Routes (Pilot Support)
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/analytics', analyticsRoutes);
+
+// Meeting Agenda API Routes
+app.use('/api/meetings', meetingsRoutes);
+
+// Deadline Dashboard API Routes
+app.use('/api/deadlines', deadlinesRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

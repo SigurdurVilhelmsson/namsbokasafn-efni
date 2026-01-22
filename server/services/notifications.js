@@ -21,7 +21,21 @@ const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db
 const NOTIFICATION_TYPES = {
   REVIEW_SUBMITTED: 'review_submitted',
   REVIEW_APPROVED: 'review_approved',
-  CHANGES_REQUESTED: 'changes_requested'
+  CHANGES_REQUESTED: 'changes_requested',
+  // Hand-off notifications
+  ASSIGNMENT_CREATED: 'assignment_created',
+  ASSIGNMENT_HANDOFF: 'assignment_handoff',
+  STAGE_COMPLETED: 'stage_completed',
+  CHAPTER_KICKOFF: 'chapter_kickoff'
+};
+
+// Stage labels in Icelandic
+const STAGE_LABELS = {
+  enMarkdown: 'EN Markdown',
+  mtOutput: 'Vélþýðing',
+  linguisticReview: 'Málfarsskoðun',
+  tmCreated: 'Þýðingaminni',
+  publication: 'Útgáfa'
 };
 
 // Initialize database tables
@@ -306,6 +320,141 @@ async function notifyChangesRequested(review, editor, notes) {
   });
 }
 
+// ============================================================================
+// HAND-OFF NOTIFICATIONS
+// ============================================================================
+
+/**
+ * Notify user when they are assigned a task
+ *
+ * @param {object} assignment - Assignment details
+ * @param {object} assignee - User being assigned { id, email, username }
+ * @param {string} assignedByUsername - Who made the assignment
+ */
+async function notifyAssignmentCreated(assignment, assignee, assignedByUsername) {
+  const stageLabel = STAGE_LABELS[assignment.stage] || assignment.stage;
+  const dueDate = assignment.dueDate ? new Date(assignment.dueDate).toLocaleDateString('is-IS') : null;
+
+  return createNotification({
+    userId: assignee.id,
+    userEmail: assignee.email,
+    type: NOTIFICATION_TYPES.ASSIGNMENT_CREATED,
+    title: 'Nýtt verkefni úthlutað',
+    message: `${assignedByUsername} úthlutaði þér verkefninu "${stageLabel}" fyrir ${assignment.book} kafla ${assignment.chapter}.${dueDate ? ` Skiladagur: ${dueDate}` : ''}`,
+    link: `/editor?book=${assignment.book}&chapter=${assignment.chapter}`,
+    metadata: {
+      assignmentId: assignment.id,
+      book: assignment.book,
+      chapter: assignment.chapter,
+      stage: assignment.stage,
+      stageLabel,
+      assignedBy: assignedByUsername,
+      dueDate: assignment.dueDate
+    }
+  });
+}
+
+/**
+ * Notify next assignee when work is handed off to them
+ *
+ * @param {object} completedAssignment - The assignment that was completed
+ * @param {object} nextAssignment - The next stage assignment
+ * @param {object} nextAssignee - User receiving the hand-off { id, email, username }
+ * @param {string} completedByUsername - Who completed the previous stage
+ */
+async function notifyHandoff(completedAssignment, nextAssignment, nextAssignee, completedByUsername) {
+  const completedStageLabel = STAGE_LABELS[completedAssignment.stage] || completedAssignment.stage;
+  const nextStageLabel = STAGE_LABELS[nextAssignment.stage] || nextAssignment.stage;
+  const dueDate = nextAssignment.dueDate ? new Date(nextAssignment.dueDate).toLocaleDateString('is-IS') : null;
+
+  return createNotification({
+    userId: nextAssignee.id,
+    userEmail: nextAssignee.email,
+    type: NOTIFICATION_TYPES.ASSIGNMENT_HANDOFF,
+    title: 'Verkefni tilbúið fyrir þig',
+    message: `${completedByUsername} kláraði "${completedStageLabel}" fyrir ${completedAssignment.book} kafla ${completedAssignment.chapter}. Þú getur nú hafist handa við "${nextStageLabel}".${dueDate ? ` Skiladagur: ${dueDate}` : ''}`,
+    link: `/editor?book=${nextAssignment.book}&chapter=${nextAssignment.chapter}`,
+    metadata: {
+      completedAssignmentId: completedAssignment.id,
+      nextAssignmentId: nextAssignment.id,
+      book: completedAssignment.book,
+      chapter: completedAssignment.chapter,
+      completedStage: completedAssignment.stage,
+      nextStage: nextAssignment.stage,
+      completedBy: completedByUsername,
+      dueDate: nextAssignment.dueDate
+    }
+  });
+}
+
+/**
+ * Notify admin/lead when a stage is completed
+ *
+ * @param {object} assignment - The completed assignment
+ * @param {object} admin - Admin/lead to notify { id, email, username }
+ * @param {string} completedByUsername - Who completed the stage
+ */
+async function notifyStageCompleted(assignment, admin, completedByUsername) {
+  const stageLabel = STAGE_LABELS[assignment.stage] || assignment.stage;
+
+  return createNotification({
+    userId: admin.id,
+    userEmail: admin.email,
+    type: NOTIFICATION_TYPES.STAGE_COMPLETED,
+    title: 'Stig lokið',
+    message: `${completedByUsername} kláraði "${stageLabel}" fyrir ${assignment.book} kafla ${assignment.chapter}.`,
+    link: `/assignments?book=${assignment.book}`,
+    metadata: {
+      assignmentId: assignment.id,
+      book: assignment.book,
+      chapter: assignment.chapter,
+      stage: assignment.stage,
+      stageLabel,
+      completedBy: completedByUsername
+    }
+  });
+}
+
+/**
+ * Notify all assignees when a chapter is kicked off
+ *
+ * @param {string} book - Book slug
+ * @param {number} chapter - Chapter number
+ * @param {object[]} assignments - Array of assignments with assignees
+ * @param {string} kickedOffByUsername - Who initiated the kickoff
+ */
+async function notifyChapterKickoff(book, chapter, assignments, kickedOffByUsername) {
+  const results = [];
+
+  for (const assignment of assignments) {
+    if (!assignment.assignee) continue;
+
+    const stageLabel = STAGE_LABELS[assignment.stage] || assignment.stage;
+    const dueDate = assignment.dueDate ? new Date(assignment.dueDate).toLocaleDateString('is-IS') : null;
+
+    const result = await createNotification({
+      userId: assignment.assignee.id,
+      userEmail: assignment.assignee.email,
+      type: NOTIFICATION_TYPES.CHAPTER_KICKOFF,
+      title: 'Kafli hafinn',
+      message: `${kickedOffByUsername} hóf vinnu á ${book} kafla ${chapter}. Þér var úthlutað "${stageLabel}".${dueDate ? ` Skiladagur: ${dueDate}` : ''}`,
+      link: `/editor?book=${book}&chapter=${chapter}`,
+      metadata: {
+        book,
+        chapter,
+        stage: assignment.stage,
+        stageLabel,
+        kickedOffBy: kickedOffByUsername,
+        dueDate: assignment.dueDate
+      }
+    });
+
+    results.push(result);
+  }
+
+  return results;
+}
+
 /**
  * Notify admins when feedback is received
  * Sends email to ADMIN_EMAIL if configured
@@ -474,12 +623,20 @@ function parseNotificationRow(row) {
 
 module.exports = {
   NOTIFICATION_TYPES,
+  STAGE_LABELS,
   isEmailConfigured,
   createNotification,
+  // Review notifications
   notifyReviewSubmitted,
   notifyReviewApproved,
   notifyChangesRequested,
   notifyFeedbackReceived,
+  // Hand-off notifications
+  notifyAssignmentCreated,
+  notifyHandoff,
+  notifyStageCompleted,
+  notifyChapterKickoff,
+  // Notification retrieval
   getUnreadNotifications,
   getAllNotifications,
   getUnreadCount,

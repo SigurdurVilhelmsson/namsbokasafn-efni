@@ -25,6 +25,9 @@
         <p class="page-subtitle">Úthlutaðu verkefnum til teymismeðlima</p>
       </div>
       <div class="page-actions">
+        <button class="btn btn-primary" onclick="openKickoffModal()">
+          <span class="btn-icon">🚀</span> Hefja kafla
+        </button>
         <select class="form-select" id="book-select" onchange="loadMatrix()">
           <option value="efnafraedi" selected>Efnafræði</option>
         </select>
@@ -48,6 +51,23 @@
       <div class="summary-stat error" id="stat-overdue-container" style="display: none;">
         <span class="stat-value" id="stat-overdue">-</span>
         <span class="stat-label">Yfir tíma</span>
+      </div>
+    </div>
+
+    <!-- Team Workload Panel -->
+    <div class="workload-panel" id="workload-panel">
+      <div class="workload-header">
+        <h3 class="workload-title">👥 Álag teymis</h3>
+        <button class="btn btn-secondary btn-sm" onclick="toggleWorkloadPanel()">
+          <span id="workload-toggle-icon">▼</span>
+        </button>
+      </div>
+      <div class="workload-content" id="workload-content">
+        <div class="workload-loading" id="workload-loading">Hleður...</div>
+        <div class="workload-bars" id="workload-bars" style="display: none;"></div>
+        <div class="workload-empty" id="workload-empty" style="display: none;">
+          Engar úthlutanir enn. Notaðu "Hefja kafla" til að úthluta verkefnum.
+        </div>
       </div>
     </div>
 
@@ -167,6 +187,119 @@
     </div>
   </div>
 
+  <!-- Kickoff Modal -->
+  <div class="modal" id="kickoff-modal" style="display: none;">
+    <div class="modal-content modal-large">
+      <div class="modal-header">
+        <h3>🚀 Hefja kafla</h3>
+        <button class="btn-close" onclick="closeKickoffModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro">Úthlutaðu öllum þrepum kafla í einu. Þú getur skilið reit auðan til að sleppa því þrepi.</p>
+
+        <!-- Chapter Selection -->
+        <div class="form-group">
+          <label class="form-label">Kafli *</label>
+          <select class="form-select" id="kickoff-chapter" onchange="updateKickoffPreview()">
+            <option value="">Veldu kafla...</option>
+          </select>
+        </div>
+
+        <!-- Preview of existing assignments -->
+        <div class="kickoff-preview" id="kickoff-preview" style="display: none;">
+          <div class="preview-warning">
+            <span class="warning-icon">⚠️</span>
+            <span class="warning-text" id="preview-warning-text">Þessi kafli hefur þegar úthlutanir</span>
+          </div>
+        </div>
+
+        <!-- Stage Assignments -->
+        <div class="kickoff-stages" id="kickoff-stages">
+          <div class="stage-row">
+            <div class="stage-header">
+              <span class="stage-num">1</span>
+              <span class="stage-name">EN Markdown</span>
+              <span class="stage-desc">Undirbúningur heimildar</span>
+            </div>
+            <div class="stage-inputs">
+              <input type="text" class="form-input stage-user" id="kickoff-enMarkdown-user"
+                     placeholder="Notandanafn" list="kickoff-team">
+              <input type="date" class="form-input stage-date" id="kickoff-enMarkdown-date">
+            </div>
+          </div>
+
+          <div class="stage-row">
+            <div class="stage-header">
+              <span class="stage-num">2</span>
+              <span class="stage-name">Vélþýðing</span>
+              <span class="stage-desc">Sækja vélþýðingu frá malstadur.is</span>
+            </div>
+            <div class="stage-inputs">
+              <input type="text" class="form-input stage-user" id="kickoff-mtOutput-user"
+                     placeholder="Notandanafn" list="kickoff-team">
+              <input type="date" class="form-input stage-date" id="kickoff-mtOutput-date">
+            </div>
+          </div>
+
+          <div class="stage-row highlight-row">
+            <div class="stage-header">
+              <span class="stage-num">3</span>
+              <span class="stage-name">Yfirferð 1</span>
+              <span class="stage-desc">Málfarslega yfirferð (Pass 1)</span>
+            </div>
+            <div class="stage-inputs">
+              <input type="text" class="form-input stage-user" id="kickoff-linguisticReview-user"
+                     placeholder="Notandanafn" list="kickoff-team">
+              <input type="date" class="form-input stage-date" id="kickoff-linguisticReview-date">
+            </div>
+          </div>
+
+          <div class="stage-row">
+            <div class="stage-header">
+              <span class="stage-num">4</span>
+              <span class="stage-name">Þýðingaminni</span>
+              <span class="stage-desc">Búa til TM í Matecat Align</span>
+            </div>
+            <div class="stage-inputs">
+              <input type="text" class="form-input stage-user" id="kickoff-tmCreated-user"
+                     placeholder="Notandanafn" list="kickoff-team">
+              <input type="date" class="form-input stage-date" id="kickoff-tmCreated-date">
+            </div>
+          </div>
+
+          <div class="stage-row">
+            <div class="stage-header">
+              <span class="stage-num">5</span>
+              <span class="stage-name">Útgáfa</span>
+              <span class="stage-desc">Birta á vef</span>
+            </div>
+            <div class="stage-inputs">
+              <input type="text" class="form-input stage-user" id="kickoff-publication-user"
+                     placeholder="Notandanafn" list="kickoff-team">
+              <input type="date" class="form-input stage-date" id="kickoff-publication-date">
+            </div>
+          </div>
+        </div>
+
+        <datalist id="kickoff-team"></datalist>
+
+        <!-- Quick Fill -->
+        <div class="quick-fill">
+          <span class="quick-fill-label">Fljótleg útfylling:</span>
+          <button class="btn btn-secondary btn-sm" onclick="fillAllStages()">Sama á öll</button>
+          <button class="btn btn-secondary btn-sm" onclick="clearKickoffForm()">Hreinsa</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="footer-info" id="kickoff-summary">0 þrep valin</div>
+        <button class="btn btn-secondary" onclick="closeKickoffModal()">Hætta við</button>
+        <button class="btn btn-primary" id="kickoff-submit-btn" onclick="submitKickoff()" disabled>
+          Hefja kafla
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     let matrixData = null;
     let selectedCell = null;
@@ -179,6 +312,8 @@
       'tmCreated': 'Þýðingaminni',
       'publication': 'Útgáfa'
     };
+
+    const KICKOFF_STAGES = ['enMarkdown', 'mtOutput', 'linguisticReview', 'tmCreated', 'publication'];
 
     const STATUS_CLASSES = {
       'complete': 'status-complete',
@@ -213,6 +348,7 @@
       }
 
       await loadMatrix();
+      await loadWorkload();
     }
 
     async function loadMatrix() {
@@ -411,6 +547,7 @@
         if (data.success) {
           closeModal();
           await loadMatrix();
+          await loadWorkload();
         } else {
           alert('Villa: ' + (data.error || 'Gat ekki úthlutað'));
         }
@@ -447,11 +584,314 @@
           closeCancelModal();
           closeModal();
           await loadMatrix();
+          await loadWorkload();
         } else {
           alert('Villa: ' + (data.error || 'Gat ekki hætt við'));
         }
       } catch (err) {
         alert('Villa: ' + err.message);
+      }
+    }
+
+    // ========================================
+    // KICKOFF MODAL FUNCTIONS
+    // ========================================
+
+    function openKickoffModal() {
+      if (!matrixData) {
+        alert('Gögn ekki hlaðin enn');
+        return;
+      }
+
+      // Populate chapter dropdown
+      const chapterSelect = document.getElementById('kickoff-chapter');
+      chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+
+      for (const chapter of matrixData.chapters) {
+        const option = document.createElement('option');
+        option.value = chapter.chapter;
+        option.textContent = `Kafli ${chapter.chapter}${chapter.title ? ' - ' + chapter.title : ''}`;
+        chapterSelect.appendChild(option);
+      }
+
+      // Populate team datalist
+      const teamDatalist = document.getElementById('kickoff-team');
+      teamDatalist.innerHTML = matrixData.team.map(t => `<option value="${escapeHtml(t)}">`).join('');
+
+      // Clear form
+      clearKickoffForm();
+
+      // Update submit button state
+      updateKickoffSubmitState();
+
+      document.getElementById('kickoff-modal').style.display = 'flex';
+    }
+
+    function closeKickoffModal() {
+      document.getElementById('kickoff-modal').style.display = 'none';
+    }
+
+    function clearKickoffForm() {
+      for (const stage of KICKOFF_STAGES) {
+        document.getElementById(`kickoff-${stage}-user`).value = '';
+        document.getElementById(`kickoff-${stage}-date`).value = '';
+      }
+      updateKickoffSubmitState();
+    }
+
+    function updateKickoffPreview() {
+      const chapter = document.getElementById('kickoff-chapter').value;
+      const previewEl = document.getElementById('kickoff-preview');
+
+      if (!chapter || !matrixData) {
+        previewEl.style.display = 'none';
+        updateKickoffSubmitState();
+        return;
+      }
+
+      // Check for existing assignments
+      const chapterData = matrixData.chapters.find(c => c.chapter === parseInt(chapter));
+      if (!chapterData) {
+        previewEl.style.display = 'none';
+        updateKickoffSubmitState();
+        return;
+      }
+
+      const existingAssignments = [];
+      for (const [stage, data] of Object.entries(chapterData.stages)) {
+        if (data.assignment) {
+          existingAssignments.push({
+            stage: STAGE_LABELS[stage] || stage,
+            assignedTo: data.assignment.assignedTo
+          });
+        }
+      }
+
+      if (existingAssignments.length > 0) {
+        const warningText = document.getElementById('preview-warning-text');
+        warningText.textContent = `Kafli ${chapter} hefur þegar ${existingAssignments.length} úthlutun(ir): ` +
+          existingAssignments.map(a => `${a.stage} → ${a.assignedTo}`).join(', ');
+        previewEl.style.display = 'block';
+      } else {
+        previewEl.style.display = 'none';
+      }
+
+      updateKickoffSubmitState();
+    }
+
+    function fillAllStages() {
+      const firstUser = document.getElementById('kickoff-linguisticReview-user').value.trim() ||
+                        document.getElementById('kickoff-enMarkdown-user').value.trim();
+      const firstDate = document.getElementById('kickoff-linguisticReview-date').value ||
+                        document.getElementById('kickoff-enMarkdown-date').value;
+
+      if (!firstUser) {
+        alert('Sláðu fyrst inn notandanafn í einn reit');
+        return;
+      }
+
+      for (const stage of KICKOFF_STAGES) {
+        const userInput = document.getElementById(`kickoff-${stage}-user`);
+        if (!userInput.value.trim()) {
+          userInput.value = firstUser;
+        }
+        if (firstDate) {
+          const dateInput = document.getElementById(`kickoff-${stage}-date`);
+          if (!dateInput.value) {
+            dateInput.value = firstDate;
+          }
+        }
+      }
+
+      updateKickoffSubmitState();
+    }
+
+    function updateKickoffSubmitState() {
+      const chapter = document.getElementById('kickoff-chapter').value;
+      let assignedCount = 0;
+
+      for (const stage of KICKOFF_STAGES) {
+        const user = document.getElementById(`kickoff-${stage}-user`).value.trim();
+        if (user) assignedCount++;
+      }
+
+      const summaryEl = document.getElementById('kickoff-summary');
+      summaryEl.textContent = `${assignedCount} þrep valin`;
+
+      const submitBtn = document.getElementById('kickoff-submit-btn');
+      submitBtn.disabled = !chapter || assignedCount === 0;
+    }
+
+    async function submitKickoff() {
+      const chapter = document.getElementById('kickoff-chapter').value;
+      if (!chapter) {
+        alert('Vinsamlegast veldu kafla');
+        return;
+      }
+
+      // Collect assignments
+      const assignments = [];
+      for (const stage of KICKOFF_STAGES) {
+        const user = document.getElementById(`kickoff-${stage}-user`).value.trim();
+        const date = document.getElementById(`kickoff-${stage}-date`).value;
+
+        if (user) {
+          assignments.push({
+            stage,
+            assignedTo: user,
+            dueDate: date || undefined
+          });
+        }
+      }
+
+      if (assignments.length === 0) {
+        alert('Vinsamlegast úthlutaðu a.m.k. einu þrepi');
+        return;
+      }
+
+      // Confirm
+      const confirmMsg = `Hefja kafla ${chapter} með ${assignments.length} úthlutanir?\n\n` +
+        assignments.map(a => `• ${STAGE_LABELS[a.stage]} → ${a.assignedTo}`).join('\n');
+
+      if (!confirm(confirmMsg)) {
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/workflow/assignments/kickoff', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            book: matrixData.book,
+            chapter: parseInt(chapter),
+            assignments
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          alert(`✓ ${data.message}`);
+          closeKickoffModal();
+          await loadMatrix();
+          await loadWorkload();
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki hafið kafla'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // Add event listeners for real-time updates
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add input listeners to kickoff form fields
+      for (const stage of KICKOFF_STAGES) {
+        const userInput = document.getElementById(`kickoff-${stage}-user`);
+        if (userInput) {
+          userInput.addEventListener('input', updateKickoffSubmitState);
+        }
+      }
+    });
+
+    // ========================================
+    // WORKLOAD PANEL FUNCTIONS
+    // ========================================
+
+    let workloadData = null;
+    let workloadExpanded = true;
+
+    async function loadWorkload() {
+      const book = document.getElementById('book-select').value;
+      const loadingEl = document.getElementById('workload-loading');
+      const barsEl = document.getElementById('workload-bars');
+      const emptyEl = document.getElementById('workload-empty');
+
+      loadingEl.style.display = 'block';
+      barsEl.style.display = 'none';
+      emptyEl.style.display = 'none';
+
+      try {
+        const res = await fetch(`/api/workflow/assignments/workload?book=${book}`);
+        workloadData = await res.json();
+
+        loadingEl.style.display = 'none';
+
+        if (workloadData.workload.length === 0) {
+          emptyEl.style.display = 'block';
+          return;
+        }
+
+        renderWorkload();
+        barsEl.style.display = 'block';
+
+      } catch (err) {
+        console.error('Failed to load workload:', err);
+        loadingEl.textContent = 'Villa við að hlaða gögnum';
+      }
+    }
+
+    function renderWorkload() {
+      const container = document.getElementById('workload-bars');
+      const maxTotal = workloadData.summary.maxAssignments || 1;
+
+      container.innerHTML = workloadData.workload.map(user => {
+        const barWidth = Math.round((user.total / maxTotal) * 100);
+        const overdueWidth = Math.round((user.overdue / maxTotal) * 100);
+        const dueSoonWidth = Math.round((user.dueSoon / maxTotal) * 100);
+        const normalWidth = barWidth - overdueWidth - dueSoonWidth;
+
+        // Build stage breakdown tooltip
+        const stageBreakdown = Object.entries(user.byStage)
+          .map(([stage, count]) => `${workloadData.stageLabels[stage] || stage}: ${count}`)
+          .join('\n');
+
+        const statusClass = user.overdue > 0 ? 'has-overdue' : user.dueSoon > 0 ? 'has-due-soon' : '';
+
+        return `
+          <div class="workload-row ${statusClass}" title="${stageBreakdown}">
+            <div class="workload-user">
+              <span class="user-avatar">${getInitials(user.username)}</span>
+              <span class="user-name">${escapeHtml(user.username)}</span>
+            </div>
+            <div class="workload-bar-container">
+              <div class="workload-bar">
+                ${user.overdue > 0 ? `<div class="bar-segment bar-overdue" style="width: ${overdueWidth}%"></div>` : ''}
+                ${user.dueSoon > 0 ? `<div class="bar-segment bar-due-soon" style="width: ${dueSoonWidth}%"></div>` : ''}
+                <div class="bar-segment bar-normal" style="width: ${normalWidth}%"></div>
+              </div>
+            </div>
+            <div class="workload-count">
+              <span class="count-total">${user.total}</span>
+              ${user.overdue > 0 ? `<span class="count-overdue" title="Yfir tíma">⚠️ ${user.overdue}</span>` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Add summary row
+      const avg = workloadData.summary.avgPerPerson;
+      container.innerHTML += `
+        <div class="workload-summary">
+          <span class="summary-item">Samtals: <strong>${workloadData.summary.totalAssignments}</strong> verkefni</span>
+          <span class="summary-item">Meðaltal: <strong>${avg}</strong> á mann</span>
+          ${workloadData.summary.totalOverdue > 0 ? `<span class="summary-item summary-warning">Yfir tíma: <strong>${workloadData.summary.totalOverdue}</strong></span>` : ''}
+        </div>
+      `;
+    }
+
+    function toggleWorkloadPanel() {
+      const content = document.getElementById('workload-content');
+      const icon = document.getElementById('workload-toggle-icon');
+
+      workloadExpanded = !workloadExpanded;
+
+      if (workloadExpanded) {
+        content.style.display = 'block';
+        icon.textContent = '▼';
+      } else {
+        content.style.display = 'none';
+        icon.textContent = '▶';
       }
     }
 
@@ -584,6 +1024,140 @@
     }
     .summary-stat.warning .stat-value { color: var(--warning); }
     .summary-stat.error .stat-value { color: var(--error); }
+
+    /* Workload Panel */
+    .workload-panel {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .workload-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .workload-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .workload-content {
+      padding: 1rem;
+    }
+    .workload-loading, .workload-empty {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 0.875rem;
+      padding: 1rem 0;
+    }
+    .workload-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .workload-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      transition: background 0.15s;
+    }
+    .workload-row:hover {
+      background: var(--gray-50);
+    }
+    .workload-row.has-overdue {
+      background: var(--error-light);
+    }
+    .workload-row.has-due-soon {
+      background: var(--warning-light);
+    }
+    .workload-user {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 140px;
+    }
+    .user-avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 0.625rem;
+      font-weight: 600;
+    }
+    .user-name {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+    .workload-bar-container {
+      flex: 1;
+      min-width: 100px;
+    }
+    .workload-bar {
+      display: flex;
+      height: 20px;
+      background: var(--gray-100);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .bar-segment {
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+    .bar-overdue {
+      background: var(--error);
+    }
+    .bar-due-soon {
+      background: var(--warning);
+    }
+    .bar-normal {
+      background: var(--primary);
+    }
+    .workload-count {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 70px;
+      justify-content: flex-end;
+    }
+    .count-total {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .count-overdue {
+      font-size: 0.75rem;
+      color: var(--error);
+    }
+    .workload-summary {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0.75rem 0.5rem 0;
+      margin-top: 0.5rem;
+      border-top: 1px solid var(--gray-200);
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .summary-item strong {
+      color: var(--gray-700);
+    }
+    .summary-warning {
+      color: var(--error);
+    }
+    .summary-warning strong {
+      color: var(--error);
+    }
 
     /* Legend */
     .legend {
@@ -895,6 +1469,116 @@
       margin-bottom: 1.5rem;
     }
 
+    /* Kickoff Modal */
+    .modal-content.modal-large {
+      max-width: 600px;
+    }
+    .modal-intro {
+      color: var(--gray-500);
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    .kickoff-preview {
+      margin-bottom: 1rem;
+    }
+    .preview-warning {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--warning-light);
+      border: 1px solid var(--warning);
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+    }
+    .warning-icon {
+      flex-shrink: 0;
+    }
+    .warning-text {
+      color: #92400e;
+    }
+    .kickoff-stages {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .stage-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      border-radius: 0.5rem;
+      border: 1px solid var(--gray-200);
+    }
+    .stage-row.highlight-row {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+    .stage-header {
+      flex: 1;
+      min-width: 160px;
+    }
+    .stage-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--gray-200);
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .highlight-row .stage-num {
+      background: var(--primary);
+      color: white;
+    }
+    .stage-name {
+      font-weight: 600;
+      font-size: 0.9375rem;
+    }
+    .stage-desc {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-left: 32px;
+    }
+    .stage-inputs {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .stage-inputs .stage-user {
+      width: 140px;
+    }
+    .stage-inputs .stage-date {
+      width: 130px;
+    }
+    .quick-fill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: var(--gray-100);
+      border-radius: 0.375rem;
+    }
+    .quick-fill-label {
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+      margin-right: 0.5rem;
+    }
+    .footer-info {
+      flex: 1;
+      font-size: 0.875rem;
+      color: var(--gray-500);
+    }
+    .btn-icon {
+      margin-right: 0.25rem;
+    }
+
     /* Text utilities */
     .text-error { color: var(--error); }
 
@@ -906,6 +1590,15 @@
       .page-header { flex-direction: column; gap: 1rem; }
       .summary-bar { flex-wrap: wrap; }
       .legend { flex-wrap: wrap; }
+      .stage-row { flex-direction: column; align-items: stretch; }
+      .stage-inputs { flex-direction: column; }
+      .stage-inputs .stage-user,
+      .stage-inputs .stage-date { width: 100%; }
+      .quick-fill { flex-wrap: wrap; }
+      .workload-row { flex-wrap: wrap; }
+      .workload-user { min-width: 100%; margin-bottom: 0.25rem; }
+      .workload-bar-container { flex: 1; min-width: 60%; }
+      .workload-summary { flex-wrap: wrap; gap: 0.75rem; }
     }
   </style>
 </body>

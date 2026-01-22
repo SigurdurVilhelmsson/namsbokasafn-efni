@@ -45,6 +45,116 @@ router.get('/stats', (req, res) => {
 });
 
 /**
+ * GET /api/decisions/related
+ * Find decisions related to given terms or source text
+ *
+ * Query params:
+ *   terms - Comma-separated list of terms to search for
+ *   text - Source text to extract terms from (alternative to terms)
+ *   book - Filter by book
+ *   limit - Max results (default 20)
+ */
+router.get('/related', (req, res) => {
+  const { terms, text, book } = req.query;
+  const limit = parseInt(req.query.limit) || 20;
+
+  try {
+    let searchTerms = [];
+
+    if (terms) {
+      // Use provided terms
+      searchTerms = terms.split(',').map(t => t.trim().toLowerCase()).filter(t => t.length > 2);
+    } else if (text) {
+      // Extract terms from text - look for likely terminology
+      // Focus on: capitalized words, multi-word phrases, scientific terms
+      const words = text.toLowerCase()
+        .replace(/[^\w\sáéíóúýþæöð]/g, ' ')
+        .split(/\s+/)
+        .filter(w => w.length > 3);
+
+      // Get unique words that might be terminology
+      const wordSet = new Set(words);
+      searchTerms = Array.from(wordSet).slice(0, 50); // Limit to 50 terms
+    }
+
+    if (searchTerms.length === 0) {
+      return res.json({
+        decisions: [],
+        matchedTerms: [],
+        total: 0
+      });
+    }
+
+    // Search for decisions matching any of these terms
+    const allDecisions = decisionStore.searchDecisions({
+      book: book || undefined,
+      limit: 500 // Get more to filter from
+    });
+
+    // Score decisions by how many terms they match
+    const scoredDecisions = [];
+    const matchedTermsSet = new Set();
+
+    for (const decision of allDecisions.decisions) {
+      const decisionText = [
+        decision.englishTerm,
+        decision.icelandicTerm,
+        decision.rationale
+      ].filter(Boolean).join(' ').toLowerCase();
+
+      let score = 0;
+      const matched = [];
+
+      for (const term of searchTerms) {
+        if (decisionText.includes(term)) {
+          score++;
+          matched.push(term);
+          matchedTermsSet.add(term);
+        }
+
+        // Bonus for exact term match
+        if (decision.englishTerm && decision.englishTerm.toLowerCase() === term) {
+          score += 5;
+        }
+        if (decision.icelandicTerm && decision.icelandicTerm.toLowerCase() === term) {
+          score += 5;
+        }
+      }
+
+      if (score > 0) {
+        scoredDecisions.push({
+          ...decision,
+          _relevanceScore: score,
+          _matchedTerms: matched
+        });
+      }
+    }
+
+    // Sort by relevance score, then by date
+    scoredDecisions.sort((a, b) => {
+      if (b._relevanceScore !== a._relevanceScore) {
+        return b._relevanceScore - a._relevanceScore;
+      }
+      return new Date(b.decidedAt) - new Date(a.decidedAt);
+    });
+
+    // Return top results
+    const results = scoredDecisions.slice(0, limit);
+
+    res.json({
+      decisions: results,
+      matchedTerms: Array.from(matchedTermsSet),
+      total: scoredDecisions.length,
+      searchedTerms: searchTerms.length
+    });
+
+  } catch (err) {
+    console.error('Related decisions error:', err);
+    res.status(500).json({ error: 'Failed to find related decisions', message: err.message });
+  }
+});
+
+/**
  * GET /api/decisions/recent
  * Get recent decisions
  */

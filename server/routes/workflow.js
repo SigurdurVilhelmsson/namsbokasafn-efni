@@ -27,6 +27,7 @@ const pipelineRunner = require('../../tools/pipeline-runner');
 const { classifyIssues, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
 const assignmentStore = require('../services/assignmentStore');
 const activityLog = require('../services/activityLog');
+const notifications = require('../services/notifications');
 
 // Re-export splitting functions for use in this module
 const {
@@ -1355,7 +1356,7 @@ function buildExpectedFiles(outputs, splitInfo) {
  * POST /api/workflow/assignments
  * Create or update an assignment
  */
-router.post('/assignments', requireAuth, (req, res) => {
+router.post('/assignments', requireAuth, async (req, res) => {
   const { book, chapter, stage, assignedTo, dueDate, notes } = req.body;
 
   if (!book || !chapter || !stage || !assignedTo) {
@@ -1391,6 +1392,18 @@ router.post('/assignments', requireAuth, (req, res) => {
       }
     });
 
+    // Send notification to the assignee
+    try {
+      await notifications.notifyAssignmentCreated(
+        assignment,
+        { id: assignedTo, username: assignedTo }, // User object (email would come from user lookup)
+        req.user.username
+      );
+    } catch (notifyErr) {
+      console.error('Failed to send assignment notification:', notifyErr);
+      // Don't fail the request if notification fails
+    }
+
     res.json({
       success: true,
       assignment
@@ -1400,6 +1413,237 @@ router.post('/assignments', requireAuth, (req, res) => {
     console.error('Assignment creation error:', err);
     res.status(500).json({
       error: 'Failed to create assignment',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/workflow/assignments/kickoff
+ * Start a chapter by assigning multiple stages at once
+ *
+ * Body:
+ *   - book: Book identifier (e.g., 'efnafraedi')
+ *   - chapter: Chapter number
+ *   - assignments: Array of { stage, assignedTo, dueDate?, notes? }
+ */
+router.post('/assignments/kickoff', requireAuth, async (req, res) => {
+  const { book, chapter, assignments } = req.body;
+
+  if (!book || !chapter) {
+    return res.status(400).json({
+      error: 'Missing required fields',
+      message: 'book and chapter are required'
+    });
+  }
+
+  if (!assignments || !Array.isArray(assignments) || assignments.length === 0) {
+    return res.status(400).json({
+      error: 'No assignments provided',
+      message: 'At least one stage assignment is required'
+    });
+  }
+
+  // Validate all assignments have required fields
+  for (const a of assignments) {
+    if (!a.stage || !a.assignedTo) {
+      return res.status(400).json({
+        error: 'Invalid assignment',
+        message: 'Each assignment must have stage and assignedTo'
+      });
+    }
+  }
+
+  try {
+    const createdAssignments = [];
+    const chapterNum = parseInt(chapter);
+
+    for (const a of assignments) {
+      const assignment = assignmentStore.createAssignment({
+        book,
+        chapter: chapterNum,
+        stage: a.stage,
+        assignedTo: a.assignedTo,
+        assignedBy: req.user.username,
+        dueDate: a.dueDate || null,
+        notes: a.notes || null
+      });
+      createdAssignments.push(assignment);
+
+      // Log each assignment
+      activityLog.log({
+        type: 'assign_reviewer',
+        userId: req.user.id,
+        username: req.user.username,
+        book,
+        chapter: chapterNum,
+        description: `Úthlutaði ${a.stage} til ${a.assignedTo} (kafla upphaf)`,
+        metadata: {
+          stage: a.stage,
+          assignedTo: a.assignedTo,
+          dueDate: a.dueDate,
+          kickoff: true
+        }
+      });
+    }
+
+    // Log the overall kickoff event
+    activityLog.log({
+      type: 'chapter_kickoff',
+      userId: req.user.id,
+      username: req.user.username,
+      book,
+      chapter: chapterNum,
+      description: `Hóf kafla ${chapterNum} með ${createdAssignments.length} úthlutanir`,
+      metadata: {
+        assignmentsCount: createdAssignments.length,
+        stages: assignments.map(a => a.stage)
+      }
+    });
+
+    // Send notifications to all assignees
+    try {
+      const assignmentsWithAssignees = createdAssignments.map((a, i) => ({
+        ...a,
+        assignee: { id: assignments[i].assignedTo, username: assignments[i].assignedTo }
+      }));
+
+      await notifications.notifyChapterKickoff(
+        book,
+        chapterNum,
+        assignmentsWithAssignees,
+        req.user.username
+      );
+    } catch (notifyErr) {
+      console.error('Failed to send kickoff notifications:', notifyErr);
+      // Don't fail the request if notification fails
+    }
+
+    res.json({
+      success: true,
+      message: `Kafli ${chapterNum} hafinn með ${createdAssignments.length} úthlutanir`,
+      assignments: createdAssignments
+    });
+
+  } catch (err) {
+    console.error('Chapter kickoff error:', err);
+    res.status(500).json({
+      error: 'Failed to kickoff chapter',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/workflow/assignments/workload
+ * Get workload distribution across team members
+ *
+ * Returns assignment counts per user with breakdown by stage and overdue status
+ */
+router.get('/assignments/workload', requireAuth, (req, res) => {
+  const { book } = req.query;
+
+  try {
+    // Get all pending assignments
+    let assignments;
+    if (book) {
+      assignments = assignmentStore.getBookAssignments(book);
+    } else {
+      assignments = assignmentStore.getAllPendingAssignments();
+    }
+
+    const now = new Date();
+    const workloadMap = {};
+
+    // Aggregate by user
+    for (const a of assignments) {
+      if (!a.assignedTo) continue;
+
+      if (!workloadMap[a.assignedTo]) {
+        workloadMap[a.assignedTo] = {
+          username: a.assignedTo,
+          total: 0,
+          overdue: 0,
+          dueSoon: 0,  // Due within 3 days
+          byStage: {},
+          byBook: {},
+          assignments: []
+        };
+      }
+
+      const user = workloadMap[a.assignedTo];
+      user.total++;
+
+      // Check due date status
+      if (a.dueDate) {
+        const dueDate = new Date(a.dueDate);
+        const daysUntil = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
+
+        if (daysUntil < 0) {
+          user.overdue++;
+        } else if (daysUntil <= 3) {
+          user.dueSoon++;
+        }
+      }
+
+      // Count by stage
+      if (!user.byStage[a.stage]) {
+        user.byStage[a.stage] = 0;
+      }
+      user.byStage[a.stage]++;
+
+      // Count by book
+      if (!user.byBook[a.book]) {
+        user.byBook[a.book] = 0;
+      }
+      user.byBook[a.book]++;
+
+      // Add assignment summary
+      user.assignments.push({
+        id: a.id,
+        book: a.book,
+        chapter: a.chapter,
+        stage: a.stage,
+        dueDate: a.dueDate,
+        isOverdue: a.dueDate && new Date(a.dueDate) < now
+      });
+    }
+
+    // Convert to sorted array
+    const workload = Object.values(workloadMap).sort((a, b) => {
+      // Sort by overdue first, then by total
+      if (a.overdue !== b.overdue) return b.overdue - a.overdue;
+      return b.total - a.total;
+    });
+
+    // Calculate team stats
+    const totalAssignments = assignments.length;
+    const totalOverdue = workload.reduce((sum, u) => sum + u.overdue, 0);
+    const avgPerPerson = workload.length > 0 ? Math.round(totalAssignments / workload.length * 10) / 10 : 0;
+    const maxAssignments = workload.length > 0 ? Math.max(...workload.map(u => u.total)) : 0;
+
+    res.json({
+      workload,
+      summary: {
+        teamSize: workload.length,
+        totalAssignments,
+        totalOverdue,
+        avgPerPerson,
+        maxAssignments
+      },
+      stageLabels: {
+        enMarkdown: 'EN Markdown',
+        mtOutput: 'Vélþýðing',
+        linguisticReview: 'Yfirferð 1',
+        tmCreated: 'Þýðingaminni',
+        publication: 'Útgáfa'
+      }
+    });
+
+  } catch (err) {
+    console.error('Get workload error:', err);
+    res.status(500).json({
+      error: 'Failed to get workload',
       message: err.message
     });
   }
@@ -1463,10 +1707,13 @@ router.get('/assignments/mine', requireAuth, (req, res) => {
  * POST /api/workflow/assignments/:id/complete
  * Mark an assignment as completed
  */
-router.post('/assignments/:id/complete', requireAuth, (req, res) => {
+router.post('/assignments/:id/complete', requireAuth, async (req, res) => {
   const { id } = req.params;
 
   try {
+    // Get the assignment before completing it (to know the stage order)
+    const beforeAssignment = assignmentStore.getAssignment(id);
+
     const assignment = assignmentStore.completeAssignment(id, req.user.username);
 
     if (!assignment) {
@@ -1475,9 +1722,84 @@ router.post('/assignments/:id/complete', requireAuth, (req, res) => {
       });
     }
 
+    // Define stage order for hand-off
+    const stageOrder = ['enMarkdown', 'mtOutput', 'linguisticReview', 'tmCreated', 'publication'];
+    const currentStageIndex = stageOrder.indexOf(assignment.stage);
+
+    // Check if there's a next stage with an assignee
+    let nextAssignment = null;
+    let nextAssignee = null;
+
+    if (currentStageIndex >= 0 && currentStageIndex < stageOrder.length - 1) {
+      const nextStage = stageOrder[currentStageIndex + 1];
+
+      // Look for an assignment for the next stage
+      const bookAssignments = assignmentStore.getBookAssignments(assignment.book);
+      nextAssignment = bookAssignments.find(a =>
+        a.chapter === assignment.chapter &&
+        a.stage === nextStage &&
+        a.status === 'pending'
+      );
+
+      if (nextAssignment && nextAssignment.assignedTo) {
+        nextAssignee = {
+          id: nextAssignment.assignedTo,
+          username: nextAssignment.assignedTo
+        };
+      }
+    }
+
+    // Send hand-off notification if there's a next assignee
+    if (nextAssignment && nextAssignee) {
+      try {
+        await notifications.notifyHandoff(
+          assignment,
+          nextAssignment,
+          nextAssignee,
+          req.user.username
+        );
+      } catch (notifyErr) {
+        console.error('Failed to send hand-off notification:', notifyErr);
+      }
+    }
+
+    // Also notify admins that a stage was completed
+    try {
+      // For now, notify the person who assigned this task (if different from completer)
+      if (assignment.assignedBy && assignment.assignedBy !== req.user.username) {
+        await notifications.notifyStageCompleted(
+          assignment,
+          { id: assignment.assignedBy, username: assignment.assignedBy },
+          req.user.username
+        );
+      }
+    } catch (notifyErr) {
+      console.error('Failed to send stage completed notification:', notifyErr);
+    }
+
+    // Log activity
+    activityLog.log({
+      type: 'assignment_completed',
+      userId: req.user.id,
+      username: req.user.username,
+      book: assignment.book,
+      chapter: assignment.chapter,
+      description: `Kláraði ${assignment.stage} fyrir kafla ${assignment.chapter}`,
+      metadata: {
+        assignmentId: id,
+        stage: assignment.stage,
+        handoffTo: nextAssignee ? nextAssignee.username : null
+      }
+    });
+
     res.json({
       success: true,
-      assignment
+      assignment,
+      handoff: nextAssignment ? {
+        nextStage: nextAssignment.stage,
+        assignee: nextAssignee?.username,
+        notified: !!nextAssignee
+      } : null
     });
 
   } catch (err) {

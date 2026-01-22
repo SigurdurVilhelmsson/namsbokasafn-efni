@@ -17,7 +17,27 @@
       <a href="/terminology">Orðasafn</a>
       <a href="/decisions">Ákvarðanir</a>
     </nav>
-    <div class="user-info" id="user-info"></div>
+    <div class="header-actions">
+      <div class="notification-bell" id="notification-bell">
+        <button class="bell-btn" id="bell-btn" title="Tilkynningar">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge" id="notification-badge" style="display: none;">0</span>
+        </button>
+        <div class="notification-dropdown" id="notification-dropdown" style="display: none;">
+          <div class="dropdown-header">
+            <span>Tilkynningar</span>
+            <button class="btn-link" id="mark-all-read-btn">Merkja allt lesið</button>
+          </div>
+          <div class="notification-list" id="notification-list">
+            <p class="text-muted center">Hleður...</p>
+          </div>
+          <div class="dropdown-footer">
+            <a href="#" id="view-all-notifications">Sjá allar tilkynningar</a>
+          </div>
+        </div>
+      </div>
+      <div class="user-info" id="user-info"></div>
+    </div>
   </header>
 
   <main class="container">
@@ -65,6 +85,15 @@
           </button>
           <button class="btn btn-secondary" id="history-btn" title="Útgáfusaga">
             <i class="fas fa-history"></i>
+          </button>
+          <button class="btn btn-secondary" id="decisions-btn" title="Tengdar ákvarðanir">
+            <i class="fas fa-gavel"></i> <span class="decision-count" id="decision-count-badge" style="display: none;">0</span>
+          </button>
+          <button class="btn btn-secondary" id="issues-btn" title="Atriði í þessum kafla">
+            <i class="fas fa-exclamation-triangle"></i> <span class="issue-count" id="issue-count-badge" style="display: none;">0</span>
+          </button>
+          <button class="btn btn-secondary" id="terminology-btn" title="Orðauppfletting">
+            <i class="fas fa-book"></i>
           </button>
           <button class="btn btn-secondary" id="save-btn">
             <i class="fas fa-save"></i> Vista
@@ -285,6 +314,102 @@
           </a>
         </div>
       </div>
+
+      <!-- Related Decisions sidebar -->
+      <div class="decisions-sidebar" id="decisions-sidebar" style="display: none;">
+        <div class="sidebar-header">
+          <h3><i class="fas fa-gavel"></i> Tengdar ákvarðanir</h3>
+          <button class="btn-close" id="close-decisions">&times;</button>
+        </div>
+        <div class="decisions-info">
+          <p class="text-muted text-small">Ákvarðanir sem tengjast orðum í þessum hluta</p>
+        </div>
+        <div class="decisions-actions">
+          <button class="btn btn-primary btn-small" onclick="showNewDecisionModal()">
+            <i class="fas fa-plus"></i> Skrá ákvörðun
+          </button>
+          <button class="btn btn-secondary btn-small" onclick="refreshRelatedDecisions()">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+        <div class="decisions-list" id="decisions-list">
+          <p class="text-muted center">Hleður...</p>
+        </div>
+        <div class="decisions-footer">
+          <a href="/decisions" target="_blank" class="btn btn-secondary btn-small btn-block">
+            <i class="fas fa-external-link-alt"></i> Sjá allar ákvarðanir
+          </a>
+        </div>
+      </div>
+
+      <!-- Issues sidebar -->
+      <div class="issues-sidebar" id="issues-sidebar" style="display: none;">
+        <div class="sidebar-header">
+          <h3><i class="fas fa-exclamation-triangle"></i> Atriði</h3>
+          <button class="btn-close" id="close-issues">&times;</button>
+        </div>
+        <div class="issues-info">
+          <p class="text-muted text-small">Atriði sem þarf að leysa í þessum kafla</p>
+        </div>
+        <div class="issues-tabs">
+          <button class="issue-tab active" data-tab="quick" onclick="switchIssueTab('quick')">
+            Fljótleg <span class="tab-count" id="quick-count">0</span>
+          </button>
+          <button class="issue-tab" data-tab="discussion" onclick="switchIssueTab('discussion')">
+            Umræða <span class="tab-count" id="discussion-count">0</span>
+          </button>
+        </div>
+        <div class="issues-list" id="issues-list">
+          <p class="text-muted center">Hleður...</p>
+        </div>
+        <div class="issues-footer">
+          <button class="btn btn-secondary btn-small" onclick="reportNewIssue()">
+            <i class="fas fa-flag"></i> Tilkynna atriði
+          </button>
+          <a href="/issues" target="_blank" class="btn btn-secondary btn-small">
+            <i class="fas fa-external-link-alt"></i> Öll atriði
+          </a>
+        </div>
+      </div>
+
+      <!-- Terminology sidebar -->
+      <div class="terminology-sidebar" id="terminology-sidebar" style="display: none;">
+        <div class="sidebar-header">
+          <h3><i class="fas fa-book"></i> Orðauppfletting</h3>
+          <button class="btn-close" id="close-terminology">&times;</button>
+        </div>
+        <div class="terminology-search">
+          <div class="search-input-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="terminology-search" class="form-input" placeholder="Leita að orði...">
+          </div>
+          <p class="text-muted text-small">Sláðu inn orð til að leita í orðasafni</p>
+        </div>
+        <div class="terminology-results" id="terminology-results">
+          <div class="terminology-placeholder">
+            <i class="fas fa-lightbulb"></i>
+            <p>Leitaðu að ensku eða íslensku orði</p>
+          </div>
+        </div>
+        <div class="terminology-stats" id="terminology-stats" style="display: none;">
+          <div class="stat-row">
+            <span class="stat-label">Samþykkt:</span>
+            <span class="stat-value" id="term-stat-approved">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Í bið:</span>
+            <span class="stat-value" id="term-stat-proposed">0</span>
+          </div>
+        </div>
+        <div class="terminology-footer">
+          <button class="btn btn-primary btn-small" onclick="openTermProposalFromSidebar()">
+            <i class="fas fa-plus"></i> Leggja til orð
+          </button>
+          <a href="/terminology" target="_blank" class="btn btn-secondary btn-small">
+            <i class="fas fa-external-link-alt"></i> Orðasafn
+          </a>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -444,6 +569,54 @@
         <button class="btn btn-secondary" onclick="closeAddCommentModal()">Hætta við</button>
         <button class="btn btn-primary" onclick="insertComment()">
           <i class="fas fa-plus"></i> Setja inn
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Decision Modal (from editor) -->
+  <div class="modal" id="new-decision-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-gavel"></i> Skrá ákvörðun</h3>
+        <button class="btn-close" onclick="closeNewDecisionModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="decision-context" id="decision-context">
+          <span class="context-book" id="decision-context-book"></span>
+          <span class="context-sep">/</span>
+          <span class="context-chapter" id="decision-context-chapter"></span>
+          <span class="context-sep">/</span>
+          <span class="context-section" id="decision-context-section"></span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Flokkur *</label>
+          <select class="form-select" id="decision-type">
+            <option value="">Veldu flokk...</option>
+            <option value="terminology">📖 Hugtak</option>
+            <option value="localization">🌍 Staðfæring</option>
+            <option value="style">✍️ Stíll</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Enska</label>
+            <input type="text" id="decision-english" class="form-input" placeholder="Upprunalegt orð/setning">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Íslenska</label>
+            <input type="text" id="decision-icelandic" class="form-input" placeholder="Þýðing/val">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Rökstuðningur *</label>
+          <textarea id="decision-rationale" class="form-textarea" rows="3" placeholder="Hvers vegna var þessi ákvörðun tekin?"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeNewDecisionModal()">Hætta við</button>
+        <button class="btn btn-primary" onclick="submitNewDecision()">
+          <i class="fas fa-check"></i> Skrá
         </button>
       </div>
     </div>
@@ -672,6 +845,12 @@
         // Parse comments after a short delay
         setTimeout(parseAndDisplayComments, 500);
 
+        // Load related decisions (after content is loaded)
+        setTimeout(loadRelatedDecisions, 1000);
+
+        // Load chapter issues
+        setTimeout(loadChapterIssues, 1200);
+
       } catch (err) {
         alert('Villa við að hlaða kafla: ' + err.message);
       }
@@ -835,7 +1014,15 @@
 
     function toggleHistory() {
       const sidebar = document.getElementById('history-sidebar');
-      sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+      const isVisible = sidebar.style.display !== 'none';
+
+      // Close other sidebars
+      document.getElementById('comments-sidebar').style.display = 'none';
+      document.getElementById('decisions-sidebar').style.display = 'none';
+      document.getElementById('issues-sidebar').style.display = 'none';
+      document.getElementById('terminology-sidebar').style.display = 'none';
+
+      sidebar.style.display = isVisible ? 'none' : 'block';
     }
 
     async function loadHistory(book, chapter, section) {
@@ -1569,8 +1756,11 @@
       const sidebar = document.getElementById('comments-sidebar');
       const isVisible = sidebar.style.display !== 'none';
 
-      // Close history if open
+      // Close other sidebars
       document.getElementById('history-sidebar').style.display = 'none';
+      document.getElementById('decisions-sidebar').style.display = 'none';
+      document.getElementById('issues-sidebar').style.display = 'none';
+      document.getElementById('terminology-sidebar').style.display = 'none';
 
       sidebar.style.display = isVisible ? 'none' : 'block';
 
@@ -1816,6 +2006,931 @@
       }
     });
 
+    // ========================================
+    // RELATED DECISIONS SIDEBAR
+    // ========================================
+
+    let relatedDecisions = [];
+    let decisionTypes = {
+      terminology: { icon: '📖', name: 'Hugtak' },
+      localization: { icon: '🌍', name: 'Staðfæring' },
+      issue: { icon: '✓', name: 'Vandamál' },
+      style: { icon: '✍️', name: 'Stíll' }
+    };
+
+    function toggleDecisions() {
+      const sidebar = document.getElementById('decisions-sidebar');
+      const isVisible = sidebar.style.display !== 'none';
+
+      // Close other sidebars
+      document.getElementById('history-sidebar').style.display = 'none';
+      document.getElementById('comments-sidebar').style.display = 'none';
+      document.getElementById('issues-sidebar').style.display = 'none';
+      document.getElementById('terminology-sidebar').style.display = 'none';
+
+      sidebar.style.display = isVisible ? 'none' : 'block';
+
+      if (!isVisible) {
+        loadRelatedDecisions();
+      }
+    }
+
+    async function loadRelatedDecisions() {
+      if (!currentBook || !currentSection) {
+        document.getElementById('decisions-list').innerHTML =
+          '<p class="text-muted center">Veldu hluta til að sjá tengdar ákvarðanir</p>';
+        return;
+      }
+
+      const listEl = document.getElementById('decisions-list');
+      listEl.innerHTML = '<p class="text-muted center">Hleður...</p>';
+
+      try {
+        // Get the source content to extract terms
+        const sourceContent = document.getElementById('source-content').textContent || '';
+        const editorContent = editor ? editor.value() : '';
+        const combinedText = sourceContent + ' ' + editorContent;
+
+        // Call the API with the text
+        const params = new URLSearchParams({
+          text: combinedText.substring(0, 5000), // Limit text length
+          book: currentBook,
+          limit: 15
+        });
+
+        const res = await fetch('/api/decisions/related?' + params);
+        const data = await res.json();
+
+        relatedDecisions = data.decisions || [];
+        updateDecisionsBadge();
+        renderRelatedDecisions();
+
+      } catch (err) {
+        console.error('Failed to load related decisions:', err);
+        listEl.innerHTML = '<p class="text-error center">Villa við að hlaða ákvarðanir</p>';
+      }
+    }
+
+    function refreshRelatedDecisions() {
+      loadRelatedDecisions();
+    }
+
+    function updateDecisionsBadge() {
+      const badge = document.getElementById('decision-count-badge');
+      const count = relatedDecisions.length;
+
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = 'inline';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    function renderRelatedDecisions() {
+      const listEl = document.getElementById('decisions-list');
+
+      if (relatedDecisions.length === 0) {
+        listEl.innerHTML = `
+          <div class="empty-decisions">
+            <p class="text-muted">Engar tengdar ákvarðanir fundust</p>
+            <p class="text-small text-muted">Skráðu ákvörðun þegar þú þarft að velja milli möguleika</p>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = relatedDecisions.map(d => {
+        const typeInfo = decisionTypes[d.type] || { icon: '📌', name: d.type };
+        const date = new Date(d.decidedAt).toLocaleDateString('is-IS');
+
+        return `
+          <div class="decision-card" data-id="${d.id}">
+            <div class="decision-header-row">
+              <span class="decision-type-icon">${typeInfo.icon}</span>
+              <span class="decision-badge badge-${d.type}">${typeInfo.name}</span>
+              ${d._relevanceScore > 3 ? '<span class="relevance-badge">Mjög viðeigandi</span>' : ''}
+            </div>
+            <div class="decision-terms">
+              ${d.englishTerm ? `<span class="term-en">${escapeHtml(d.englishTerm)}</span>` : ''}
+              ${d.englishTerm && d.icelandicTerm ? '<span class="term-arrow">→</span>' : ''}
+              ${d.icelandicTerm ? `<span class="term-is">${escapeHtml(d.icelandicTerm)}</span>` : ''}
+            </div>
+            <div class="decision-rationale">${escapeHtml(d.rationale)}</div>
+            <div class="decision-meta">
+              <span class="meta-user">${escapeHtml(d.decidedBy)}</span>
+              <span class="meta-date">${date}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function showNewDecisionModal() {
+      // Pre-fill context
+      document.getElementById('decision-context-book').textContent = currentBook || '-';
+      document.getElementById('decision-context-chapter').textContent = currentChapter ? `K.${currentChapter}` : '-';
+      document.getElementById('decision-context-section').textContent = currentSection || '-';
+
+      // Clear form
+      document.getElementById('decision-type').value = '';
+      document.getElementById('decision-english').value = '';
+      document.getElementById('decision-icelandic').value = '';
+      document.getElementById('decision-rationale').value = '';
+
+      // Pre-fill with selected text if any
+      if (editor) {
+        const selectedText = editor.codemirror.getSelection();
+        if (selectedText) {
+          document.getElementById('decision-icelandic').value = selectedText;
+        }
+      }
+
+      document.getElementById('new-decision-modal').style.display = 'flex';
+    }
+
+    function closeNewDecisionModal() {
+      document.getElementById('new-decision-modal').style.display = 'none';
+    }
+
+    async function submitNewDecision() {
+      const type = document.getElementById('decision-type').value;
+      const englishTerm = document.getElementById('decision-english').value.trim();
+      const icelandicTerm = document.getElementById('decision-icelandic').value.trim();
+      const rationale = document.getElementById('decision-rationale').value.trim();
+
+      if (!type) {
+        alert('Vinsamlegast veldu flokk');
+        return;
+      }
+      if (!rationale) {
+        alert('Vinsamlegast skrifaðu rökstuðning');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/decisions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type,
+            englishTerm: englishTerm || undefined,
+            icelandicTerm: icelandicTerm || undefined,
+            rationale,
+            book: currentBook,
+            chapter: currentChapter,
+            section: currentSection
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          closeNewDecisionModal();
+          // Refresh the decisions list
+          await loadRelatedDecisions();
+          // Show the sidebar if not visible
+          document.getElementById('decisions-sidebar').style.display = 'block';
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki skráð ákvörðun'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // Initialize decisions button
+    document.addEventListener('DOMContentLoaded', () => {
+      const decisionsBtn = document.getElementById('decisions-btn');
+      if (decisionsBtn) {
+        decisionsBtn.addEventListener('click', toggleDecisions);
+      }
+
+      const closeDecisionsBtn = document.getElementById('close-decisions');
+      if (closeDecisionsBtn) {
+        closeDecisionsBtn.addEventListener('click', () => {
+          document.getElementById('decisions-sidebar').style.display = 'none';
+        });
+      }
+    });
+
+    // ========================================
+    // ISSUES SIDEBAR
+    // ========================================
+
+    let chapterIssues = [];
+    let currentIssueTab = 'quick';
+    const ISSUE_CATEGORIES = {
+      AUTO_FIX: { label: 'Sjálfvirkt', class: 'auto-fix', icon: '⚡' },
+      EDITOR_CONFIRM: { label: 'Staðfesta', class: 'editor-confirm', icon: '✓' },
+      BOARD_REVIEW: { label: 'Umræða', class: 'board-review', icon: '💬' },
+      BLOCKED: { label: 'Lokað', class: 'blocked', icon: '🔒' }
+    };
+
+    function toggleIssues() {
+      const sidebar = document.getElementById('issues-sidebar');
+      const isVisible = sidebar.style.display !== 'none';
+
+      // Close other sidebars
+      document.getElementById('history-sidebar').style.display = 'none';
+      document.getElementById('comments-sidebar').style.display = 'none';
+      document.getElementById('decisions-sidebar').style.display = 'none';
+      document.getElementById('terminology-sidebar').style.display = 'none';
+
+      sidebar.style.display = isVisible ? 'none' : 'block';
+
+      if (!isVisible) {
+        loadChapterIssues();
+      }
+    }
+
+    async function loadChapterIssues() {
+      if (!currentBook || !currentChapter) {
+        document.getElementById('issues-list').innerHTML =
+          '<p class="text-muted center">Veldu kafla til að sjá atriði</p>';
+        return;
+      }
+
+      const listEl = document.getElementById('issues-list');
+      listEl.innerHTML = '<p class="text-muted center">Hleður...</p>';
+
+      try {
+        const params = new URLSearchParams({
+          book: currentBook,
+          chapter: currentChapter,
+          status: 'pending'
+        });
+
+        const res = await fetch('/api/issues?' + params);
+        const data = await res.json();
+
+        // Combine issues from categories
+        chapterIssues = [
+          ...(data.byCategory?.AUTO_FIX || []),
+          ...(data.byCategory?.EDITOR_CONFIRM || []),
+          ...(data.byCategory?.BOARD_REVIEW || []),
+          ...(data.byCategory?.BLOCKED || [])
+        ];
+
+        updateIssuesCounts(data.byCategory);
+        updateIssuesBadge();
+        renderIssues();
+
+      } catch (err) {
+        console.error('Failed to load issues:', err);
+        listEl.innerHTML = '<p class="text-error center">Villa við að hlaða atriði</p>';
+      }
+    }
+
+    function updateIssuesCounts(byCategory) {
+      const quickCount = (byCategory?.AUTO_FIX?.length || 0) + (byCategory?.EDITOR_CONFIRM?.length || 0);
+      const discussionCount = (byCategory?.BOARD_REVIEW?.length || 0) + (byCategory?.BLOCKED?.length || 0);
+
+      document.getElementById('quick-count').textContent = quickCount;
+      document.getElementById('discussion-count').textContent = discussionCount;
+    }
+
+    function updateIssuesBadge() {
+      const badge = document.getElementById('issue-count-badge');
+      const pendingCount = chapterIssues.filter(i => i.status === 'pending').length;
+
+      if (pendingCount > 0) {
+        badge.textContent = pendingCount;
+        badge.style.display = 'inline';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    function switchIssueTab(tab) {
+      currentIssueTab = tab;
+
+      // Update tab styles
+      document.querySelectorAll('.issue-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector(`.issue-tab[data-tab="${tab}"]`).classList.add('active');
+
+      renderIssues();
+    }
+
+    function renderIssues() {
+      const listEl = document.getElementById('issues-list');
+
+      // Filter by tab
+      let filtered;
+      if (currentIssueTab === 'quick') {
+        filtered = chapterIssues.filter(i =>
+          i.category === 'AUTO_FIX' || i.category === 'EDITOR_CONFIRM'
+        );
+      } else {
+        filtered = chapterIssues.filter(i =>
+          i.category === 'BOARD_REVIEW' || i.category === 'BLOCKED'
+        );
+      }
+
+      if (filtered.length === 0) {
+        const emptyMsg = currentIssueTab === 'quick'
+          ? 'Engin einföld atriði til að leysa'
+          : 'Engin atriði bíða umræðu';
+        listEl.innerHTML = `
+          <div class="empty-issues">
+            <i class="fas fa-check-circle text-success"></i>
+            <p>${emptyMsg}</p>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = filtered.map(issue => {
+        const catInfo = ISSUE_CATEGORIES[issue.category] || { label: issue.category, class: 'default', icon: '?' };
+
+        return `
+          <div class="issue-card" data-id="${issue.id}" data-session="${issue.sessionId || ''}">
+            <div class="issue-header">
+              <span class="issue-badge badge-${catInfo.class}">${catInfo.icon} ${catInfo.label}</span>
+              ${issue.sourceFile ? `<span class="issue-file">${escapeHtml(issue.sourceFile.split('/').pop())}</span>` : ''}
+            </div>
+            <div class="issue-description">${escapeHtml(issue.description)}</div>
+            ${issue.context ? `<div class="issue-context"><code>${escapeHtml(issue.context)}</code></div>` : ''}
+            ${issue.suggestion ? `<div class="issue-suggestion">Tillaga: <strong>${escapeHtml(issue.suggestion)}</strong></div>` : ''}
+            <div class="issue-actions">
+              <button class="btn btn-success btn-small" onclick="resolveIssueInline('${issue.id}', '${issue.sessionId || ''}', 'accept')">
+                <i class="fas fa-check"></i> Samþykkja
+              </button>
+              ${issue.category !== 'BOARD_REVIEW' && issue.category !== 'BLOCKED' ? `
+                <button class="btn btn-secondary btn-small" onclick="resolveIssueInline('${issue.id}', '${issue.sessionId || ''}', 'reject')">
+                  <i class="fas fa-times"></i>
+                </button>
+              ` : ''}
+              ${issue.category === 'EDITOR_CONFIRM' || issue.category === 'AUTO_FIX' ? `
+                <button class="btn btn-secondary btn-small" onclick="escalateIssue('${issue.id}', '${issue.sessionId || ''}')" title="Flytja í umræðu">
+                  <i class="fas fa-arrow-up"></i>
+                </button>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function resolveIssueInline(issueId, sessionId, action) {
+      try {
+        let url;
+        if (sessionId) {
+          url = `/api/issues/session/${sessionId}/${issueId}/resolve`;
+        } else {
+          url = `/api/issues/${issueId}/resolve`;
+        }
+
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action,
+            resolution: action === 'accept' ? 'Samþykkt í ritstjóra' : 'Hafnað í ritstjóra'
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          // Remove from local list and re-render
+          chapterIssues = chapterIssues.filter(i => i.id !== issueId);
+          updateIssuesBadge();
+          renderIssues();
+
+          // Update counts
+          const quickCount = chapterIssues.filter(i =>
+            i.category === 'AUTO_FIX' || i.category === 'EDITOR_CONFIRM'
+          ).length;
+          const discussionCount = chapterIssues.filter(i =>
+            i.category === 'BOARD_REVIEW' || i.category === 'BLOCKED'
+          ).length;
+          document.getElementById('quick-count').textContent = quickCount;
+          document.getElementById('discussion-count').textContent = discussionCount;
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki leyst atriði'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function escalateIssue(issueId, sessionId) {
+      const reason = prompt('Hvers vegna þarf umræðu?');
+      if (!reason) return;
+
+      try {
+        let url;
+        if (sessionId) {
+          url = `/api/issues/session/${sessionId}/${issueId}/resolve`;
+        } else {
+          url = `/api/issues/${issueId}/resolve`;
+        }
+
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'escalate',
+            resolution: reason
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          // Update issue category locally and re-render
+          const issue = chapterIssues.find(i => i.id === issueId);
+          if (issue) {
+            issue.category = 'BOARD_REVIEW';
+          }
+          renderIssues();
+
+          // Update counts
+          const quickCount = chapterIssues.filter(i =>
+            i.category === 'AUTO_FIX' || i.category === 'EDITOR_CONFIRM'
+          ).length;
+          const discussionCount = chapterIssues.filter(i =>
+            i.category === 'BOARD_REVIEW' || i.category === 'BLOCKED'
+          ).length;
+          document.getElementById('quick-count').textContent = quickCount;
+          document.getElementById('discussion-count').textContent = discussionCount;
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki flutt atriði'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    function reportNewIssue() {
+      const description = prompt('Lýstu atriðinu:');
+      if (!description) return;
+
+      fetch('/api/issues/report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          book: currentBook,
+          chapter: currentChapter,
+          description,
+          category: 'EDITOR_CONFIRM',
+          location: currentSection
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert('Atriði tilkynnt!');
+          loadChapterIssues();
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki tilkynnt'));
+        }
+      })
+      .catch(err => alert('Villa: ' + err.message));
+    }
+
+    // ========================================
+    // TERMINOLOGY LOOKUP SIDEBAR
+    // ========================================
+
+    let terminologySearchTimeout = null;
+    let terminologyStats = null;
+
+    function toggleTerminology() {
+      const sidebar = document.getElementById('terminology-sidebar');
+      const isVisible = sidebar.style.display !== 'none';
+
+      // Close other sidebars
+      document.getElementById('history-sidebar').style.display = 'none';
+      document.getElementById('comments-sidebar').style.display = 'none';
+      document.getElementById('decisions-sidebar').style.display = 'none';
+      document.getElementById('issues-sidebar').style.display = 'none';
+
+      sidebar.style.display = isVisible ? 'none' : 'block';
+
+      if (!isVisible) {
+        // Focus search input
+        setTimeout(() => {
+          document.getElementById('terminology-search').focus();
+        }, 100);
+
+        // Load stats if not loaded
+        if (!terminologyStats) {
+          loadTerminologyStats();
+        }
+      }
+    }
+
+    async function loadTerminologyStats() {
+      try {
+        const res = await fetch('/api/terminology/stats');
+        const data = await res.json();
+        terminologyStats = data;
+
+        document.getElementById('term-stat-approved').textContent = data.byStatus?.approved || 0;
+        document.getElementById('term-stat-proposed').textContent = data.byStatus?.proposed || 0;
+        document.getElementById('terminology-stats').style.display = 'block';
+      } catch (err) {
+        console.error('Failed to load terminology stats:', err);
+      }
+    }
+
+    function handleTerminologySearch(e) {
+      const query = e.target.value.trim();
+
+      // Clear previous timeout
+      if (terminologySearchTimeout) {
+        clearTimeout(terminologySearchTimeout);
+      }
+
+      // Debounce search
+      terminologySearchTimeout = setTimeout(() => {
+        searchTerminology(query);
+      }, 300);
+    }
+
+    async function searchTerminology(query) {
+      const resultsEl = document.getElementById('terminology-results');
+
+      if (!query || query.length < 2) {
+        resultsEl.innerHTML = `
+          <div class="terminology-placeholder">
+            <i class="fas fa-lightbulb"></i>
+            <p>Leitaðu að ensku eða íslensku orði</p>
+          </div>
+        `;
+        return;
+      }
+
+      resultsEl.innerHTML = '<p class="text-muted center">Leitar...</p>';
+
+      try {
+        const params = new URLSearchParams({ q: query });
+        const res = await fetch('/api/terminology/lookup?' + params);
+        const data = await res.json();
+
+        renderTerminologyResults(data.terms || [], query);
+      } catch (err) {
+        console.error('Terminology search failed:', err);
+        resultsEl.innerHTML = '<p class="text-error center">Villa við leit</p>';
+      }
+    }
+
+    function renderTerminologyResults(terms, query) {
+      const resultsEl = document.getElementById('terminology-results');
+
+      if (terms.length === 0) {
+        resultsEl.innerHTML = `
+          <div class="terminology-no-results">
+            <i class="fas fa-search"></i>
+            <p>Ekkert fannst fyrir "${escapeHtml(query)}"</p>
+            <button class="btn btn-primary btn-small" onclick="openTermProposalWithQuery('${escapeHtml(query)}')">
+              <i class="fas fa-plus"></i> Leggja til þýðingu
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      resultsEl.innerHTML = terms.map(term => {
+        const statusClass = term.status === 'approved' ? 'approved' : term.status === 'disputed' ? 'disputed' : 'proposed';
+        const statusIcon = term.status === 'approved' ? '✓' : term.status === 'disputed' ? '⚠' : '○';
+        const statusLabel = term.status === 'approved' ? 'Samþykkt' : term.status === 'disputed' ? 'Í umræðu' : 'Í bið';
+
+        return `
+          <div class="term-card">
+            <div class="term-header">
+              <span class="term-status term-status-${statusClass}" title="${statusLabel}">${statusIcon}</span>
+              <span class="term-english">${escapeHtml(term.english)}</span>
+            </div>
+            <div class="term-translation">
+              <i class="fas fa-arrow-right"></i>
+              <strong>${escapeHtml(term.icelandic)}</strong>
+            </div>
+            ${term.alternatives && term.alternatives.length > 0 ? `
+              <div class="term-alternatives">
+                <span class="text-muted">Aðrar:</span> ${term.alternatives.map(a => escapeHtml(a)).join(', ')}
+              </div>
+            ` : ''}
+            ${term.notes ? `
+              <div class="term-notes">
+                <i class="fas fa-info-circle"></i> ${escapeHtml(term.notes.substring(0, 100))}${term.notes.length > 100 ? '...' : ''}
+              </div>
+            ` : ''}
+            ${term.category && term.category !== 'other' ? `
+              <div class="term-category">
+                <span class="badge badge-small">${escapeHtml(term.category)}</span>
+              </div>
+            ` : ''}
+            <div class="term-actions">
+              <button class="btn btn-secondary btn-tiny" onclick="insertTerm('${escapeHtml(term.icelandic)}')" title="Setja inn í texta">
+                <i class="fas fa-paste"></i>
+              </button>
+              <button class="btn btn-secondary btn-tiny" onclick="copyTerm('${escapeHtml(term.icelandic)}')" title="Afrita">
+                <i class="fas fa-copy"></i>
+              </button>
+              ${term.status !== 'approved' ? `
+                <button class="btn btn-secondary btn-tiny" onclick="disputeTerm(${term.id})" title="Mótmæla">
+                  <i class="fas fa-question-circle"></i>
+                </button>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function insertTerm(icelandic) {
+      if (islandEditor && islandEditor.codemirror) {
+        const cm = islandEditor.codemirror;
+        cm.replaceSelection(icelandic);
+        cm.focus();
+
+        // Close sidebar
+        document.getElementById('terminology-sidebar').style.display = 'none';
+      }
+    }
+
+    function copyTerm(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        // Brief feedback
+        const btn = event.target.closest('button');
+        const icon = btn.querySelector('i');
+        icon.className = 'fas fa-check';
+        setTimeout(() => {
+          icon.className = 'fas fa-copy';
+        }, 1000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+      });
+    }
+
+    function openTermProposalFromSidebar() {
+      const searchInput = document.getElementById('terminology-search');
+      const query = searchInput ? searchInput.value.trim() : '';
+      openTermProposalWithQuery(query);
+    }
+
+    function openTermProposalWithQuery(query) {
+      // Pre-fill the proposal modal
+      const modal = document.getElementById('propose-term-modal');
+      const englishInput = document.getElementById('propose-english');
+      const icelandicInput = document.getElementById('propose-icelandic');
+
+      // Try to detect if query is English or Icelandic
+      // Simple heuristic: if contains Icelandic letters, it's probably Icelandic
+      const isIcelandic = /[áéíóúýþæöð]/i.test(query);
+
+      if (isIcelandic) {
+        icelandicInput.value = query;
+        englishInput.value = '';
+      } else {
+        englishInput.value = query;
+        icelandicInput.value = '';
+      }
+
+      modal.style.display = 'block';
+    }
+
+    async function disputeTerm(termId) {
+      const comment = prompt('Hvers vegna mótmælir þú þessari þýðingu?');
+      if (!comment) return;
+
+      const proposedTranslation = prompt('Stingur þú upp á annarri þýðingu? (valfrjálst)');
+
+      try {
+        const res = await fetch(`/api/terminology/${termId}/dispute`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ comment, proposedTranslation: proposedTranslation || null })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          alert('Mótmæli skráð. Orðið fer í yfirferð.');
+          // Refresh search
+          const query = document.getElementById('terminology-search').value;
+          searchTerminology(query);
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki skráð mótmæli'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // Initialize terminology button and sidebar
+    document.addEventListener('DOMContentLoaded', () => {
+      const terminologyBtn = document.getElementById('terminology-btn');
+      if (terminologyBtn) {
+        terminologyBtn.addEventListener('click', toggleTerminology);
+      }
+
+      const closeTerminologyBtn = document.getElementById('close-terminology');
+      if (closeTerminologyBtn) {
+        closeTerminologyBtn.addEventListener('click', () => {
+          document.getElementById('terminology-sidebar').style.display = 'none';
+        });
+      }
+
+      const terminologySearch = document.getElementById('terminology-search');
+      if (terminologySearch) {
+        terminologySearch.addEventListener('input', handleTerminologySearch);
+
+        // Also search on Enter
+        terminologySearch.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            searchTerminology(e.target.value.trim());
+          }
+        });
+      }
+    });
+
+    // Initialize issues button
+    document.addEventListener('DOMContentLoaded', () => {
+      const issuesBtn = document.getElementById('issues-btn');
+      if (issuesBtn) {
+        issuesBtn.addEventListener('click', toggleIssues);
+      }
+
+      const closeIssuesBtn = document.getElementById('close-issues');
+      if (closeIssuesBtn) {
+        closeIssuesBtn.addEventListener('click', () => {
+          document.getElementById('issues-sidebar').style.display = 'none';
+        });
+      }
+    });
+
+    // ========================================
+    // NOTIFICATION BELL
+    // ========================================
+
+    let notificationCheckInterval = null;
+
+    function initNotifications() {
+      const bellBtn = document.getElementById('bell-btn');
+      const dropdown = document.getElementById('notification-dropdown');
+      const markAllBtn = document.getElementById('mark-all-read-btn');
+
+      if (bellBtn) {
+        bellBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleNotificationDropdown();
+        });
+      }
+
+      if (markAllBtn) {
+        markAllBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          markAllNotificationsRead();
+        });
+      }
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', (e) => {
+        if (dropdown && !dropdown.contains(e.target) && !bellBtn.contains(e.target)) {
+          dropdown.style.display = 'none';
+        }
+      });
+
+      // Load initial count
+      loadNotificationCount();
+
+      // Check for new notifications every 60 seconds
+      notificationCheckInterval = setInterval(loadNotificationCount, 60000);
+    }
+
+    async function loadNotificationCount() {
+      try {
+        const res = await fetch('/api/notifications/count');
+        const data = await res.json();
+
+        const badge = document.getElementById('notification-badge');
+        if (data.count > 0) {
+          badge.textContent = data.count > 99 ? '99+' : data.count;
+          badge.style.display = 'inline-flex';
+        } else {
+          badge.style.display = 'none';
+        }
+      } catch (err) {
+        console.error('Failed to load notification count:', err);
+      }
+    }
+
+    function toggleNotificationDropdown() {
+      const dropdown = document.getElementById('notification-dropdown');
+      const isVisible = dropdown.style.display !== 'none';
+
+      if (isVisible) {
+        dropdown.style.display = 'none';
+      } else {
+        dropdown.style.display = 'block';
+        loadNotifications();
+      }
+    }
+
+    async function loadNotifications() {
+      const listEl = document.getElementById('notification-list');
+      listEl.innerHTML = '<p class="text-muted center">Hleður...</p>';
+
+      try {
+        const res = await fetch('/api/notifications?limit=10');
+        const data = await res.json();
+
+        renderNotifications(data.notifications || []);
+      } catch (err) {
+        console.error('Failed to load notifications:', err);
+        listEl.innerHTML = '<p class="text-error center">Villa við að hlaða tilkynningar</p>';
+      }
+    }
+
+    function renderNotifications(notifications) {
+      const listEl = document.getElementById('notification-list');
+
+      if (notifications.length === 0) {
+        listEl.innerHTML = `
+          <div class="empty-notifications">
+            <i class="fas fa-bell-slash"></i>
+            <p>Engar tilkynningar</p>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = notifications.map(n => {
+        const timeAgo = formatTimeAgo(n.createdAt);
+        const iconMap = {
+          'assignment_created': 'fa-user-plus',
+          'assignment_handoff': 'fa-exchange-alt',
+          'stage_completed': 'fa-check-circle',
+          'chapter_kickoff': 'fa-rocket',
+          'review_submitted': 'fa-paper-plane',
+          'review_approved': 'fa-thumbs-up',
+          'changes_requested': 'fa-comment-dots'
+        };
+        const icon = iconMap[n.type] || 'fa-bell';
+
+        return `
+          <div class="notification-item ${n.read ? 'read' : 'unread'}" data-id="${n.id}" onclick="handleNotificationClick(${n.id}, '${n.link || ''}')">
+            <div class="notification-icon">
+              <i class="fas ${icon}"></i>
+            </div>
+            <div class="notification-content">
+              <div class="notification-title">${escapeHtml(n.title)}</div>
+              <div class="notification-message">${escapeHtml(n.message.substring(0, 80))}${n.message.length > 80 ? '...' : ''}</div>
+              <div class="notification-time">${timeAgo}</div>
+            </div>
+            ${!n.read ? '<div class="unread-dot"></div>' : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function handleNotificationClick(id, link) {
+      // Mark as read
+      fetch(`/api/notifications/${id}/read`, { method: 'POST' })
+        .then(() => {
+          loadNotificationCount();
+        })
+        .catch(err => console.error('Failed to mark notification as read:', err));
+
+      // Navigate to link if provided
+      if (link) {
+        window.location.href = link;
+      }
+    }
+
+    async function markAllNotificationsRead() {
+      try {
+        await fetch('/api/notifications/read-all', { method: 'POST' });
+        loadNotificationCount();
+        loadNotifications();
+      } catch (err) {
+        console.error('Failed to mark all as read:', err);
+      }
+    }
+
+    function formatTimeAgo(dateString) {
+      const date = new Date(dateString);
+      const now = new Date();
+      const diffMs = now - date;
+      const diffMins = Math.floor(diffMs / 60000);
+      const diffHours = Math.floor(diffMins / 60);
+      const diffDays = Math.floor(diffHours / 24);
+
+      if (diffMins < 1) return 'Rétt núna';
+      if (diffMins < 60) return `${diffMins} mín. síðan`;
+      if (diffHours < 24) return `${diffHours} klst. síðan`;
+      if (diffDays < 7) return `${diffDays} d. síðan`;
+      return date.toLocaleDateString('is-IS');
+    }
+
+    // Initialize notifications on page load
+    document.addEventListener('DOMContentLoaded', initNotifications);
+
     // Initialize on page load
     init();
   </script>
@@ -1843,8 +2958,169 @@
     .header nav { display: flex; gap: 1.5rem; }
     .header nav a { color: var(--gray-700); text-decoration: none; font-size: 0.875rem; }
     .header nav a.active { color: var(--primary); font-weight: 500; }
+    .header-actions { display: flex; align-items: center; gap: 1rem; }
     .user-info { display: flex; align-items: center; gap: 0.5rem; }
     .user-info img { width: 28px; height: 28px; border-radius: 50%; }
+
+    /* Notification Bell */
+    .notification-bell {
+      position: relative;
+    }
+    .bell-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: var(--gray-500);
+      font-size: 1.125rem;
+      position: relative;
+      transition: color 0.15s;
+    }
+    .bell-btn:hover {
+      color: var(--primary);
+    }
+    .notification-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--error);
+      color: white;
+      font-size: 0.625rem;
+      font-weight: 600;
+      min-width: 1rem;
+      height: 1rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0.25rem;
+    }
+    .notification-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 360px;
+      max-height: 480px;
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+      z-index: 1000;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .dropdown-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--gray-200);
+      background: var(--gray-50);
+    }
+    .dropdown-header span {
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn-link {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+    .btn-link:hover {
+      text-decoration: underline;
+    }
+    .notification-list {
+      max-height: 360px;
+      overflow-y: auto;
+    }
+    .notification-item {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--gray-100);
+      cursor: pointer;
+      transition: background 0.15s;
+      position: relative;
+    }
+    .notification-item:hover {
+      background: var(--gray-50);
+    }
+    .notification-item.unread {
+      background: #eff6ff;
+    }
+    .notification-item.unread:hover {
+      background: #dbeafe;
+    }
+    .notification-icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gray-500);
+      font-size: 0.875rem;
+    }
+    .notification-item.unread .notification-icon {
+      background: var(--primary);
+      color: white;
+    }
+    .notification-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .notification-title {
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: var(--gray-900);
+      margin-bottom: 0.125rem;
+    }
+    .notification-message {
+      font-size: 0.75rem;
+      color: var(--gray-600);
+      line-height: 1.4;
+      margin-bottom: 0.25rem;
+    }
+    .notification-time {
+      font-size: 0.6875rem;
+      color: var(--gray-400);
+    }
+    .unread-dot {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: var(--primary);
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+    }
+    .dropdown-footer {
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--gray-200);
+      background: var(--gray-50);
+      text-align: center;
+    }
+    .dropdown-footer a {
+      font-size: 0.8125rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .dropdown-footer a:hover {
+      text-decoration: underline;
+    }
+    .empty-notifications {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--gray-400);
+    }
+    .empty-notifications i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
 
     .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem; }
     .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); padding: 1.5rem; margin-bottom: 1.5rem; }
@@ -2081,6 +3357,533 @@
     .text-primary { color: var(--primary); }
     .text-info { color: #0891b2; }
 
+    /* Decisions Sidebar */
+    .decisions-sidebar {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 380px;
+      height: calc(100vh - 60px);
+      background: white;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .decisions-sidebar .sidebar-header {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: white;
+      border-bottom: none;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .decisions-sidebar .sidebar-header h3 {
+      color: white;
+      font-size: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .decisions-sidebar .btn-close { color: white; opacity: 0.8; }
+    .decisions-sidebar .btn-close:hover { opacity: 1; }
+    .decisions-info {
+      padding: 0.5rem 0.75rem;
+      background: #ecfdf5;
+      border-bottom: 1px solid #a7f3d0;
+    }
+    .decisions-info .text-small { font-size: 0.75rem; }
+    .decisions-actions {
+      padding: 0.75rem;
+      background: var(--gray-50);
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      gap: 0.5rem;
+    }
+    .decisions-list {
+      flex: 1;
+      padding: 0.75rem;
+      overflow-y: auto;
+    }
+    .decisions-footer {
+      padding: 0.75rem;
+      border-top: 1px solid var(--gray-200);
+      background: var(--gray-50);
+    }
+    .btn-block { width: 100%; justify-content: center; }
+
+    /* Decision Card */
+    .decision-card {
+      background: var(--gray-50);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-left: 3px solid #059669;
+      transition: all 0.15s;
+    }
+    .decision-card:hover {
+      background: var(--gray-100);
+      border-left-color: #047857;
+    }
+    .decision-header-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .decision-type-icon {
+      font-size: 1rem;
+    }
+    .decision-badge {
+      font-size: 0.625rem;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+    .badge-terminology { background: #dcfce7; color: #166534; }
+    .badge-localization { background: #dbeafe; color: #1e40af; }
+    .badge-issue { background: #fef3c7; color: #92400e; }
+    .badge-style { background: #f3e8ff; color: #7c3aed; }
+    .relevance-badge {
+      font-size: 0.5rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 9999px;
+      background: #059669;
+      color: white;
+      margin-left: auto;
+    }
+    .decision-terms {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .term-en {
+      color: var(--gray-500);
+      font-size: 0.875rem;
+    }
+    .term-arrow {
+      color: var(--gray-400);
+      font-size: 0.75rem;
+    }
+    .term-is {
+      color: #059669;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .decision-rationale {
+      font-size: 0.8125rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+    .decision-meta {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.6875rem;
+      color: var(--gray-500);
+    }
+    .meta-user { font-weight: 500; }
+    .empty-decisions {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .decision-count {
+      background: #059669;
+      color: white;
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 9999px;
+      margin-left: 0.25rem;
+    }
+
+    /* Decision context in modal */
+    .decision-context {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--gray-50);
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+      font-size: 0.8125rem;
+    }
+    .decision-context .context-book { color: var(--primary); font-weight: 500; }
+    .decision-context .context-chapter,
+    .decision-context .context-section { color: var(--gray-500); }
+    .decision-context .context-sep { color: var(--gray-300); }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Issues Sidebar */
+    .issues-sidebar {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 400px;
+      height: calc(100vh - 60px);
+      background: white;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .issues-sidebar .sidebar-header {
+      background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      color: white;
+      border-bottom: none;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .issues-sidebar .sidebar-header h3 {
+      color: white;
+      font-size: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .issues-sidebar .btn-close { color: white; opacity: 0.8; }
+    .issues-sidebar .btn-close:hover { opacity: 1; }
+    .issues-info {
+      padding: 0.5rem 0.75rem;
+      background: #fffbeb;
+      border-bottom: 1px solid #fcd34d;
+    }
+    .issues-info .text-small { font-size: 0.75rem; }
+    .issues-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .issue-tab {
+      flex: 1;
+      padding: 0.625rem 0.75rem;
+      background: var(--gray-50);
+      border: none;
+      cursor: pointer;
+      font-size: 0.8125rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.375rem;
+      color: var(--gray-600);
+      transition: all 0.15s;
+    }
+    .issue-tab:hover { background: var(--gray-100); }
+    .issue-tab.active {
+      background: white;
+      color: var(--warning);
+      font-weight: 600;
+      border-bottom: 2px solid var(--warning);
+    }
+    .tab-count {
+      background: var(--gray-200);
+      color: var(--gray-700);
+      font-size: 0.6875rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 9999px;
+    }
+    .issue-tab.active .tab-count {
+      background: var(--warning);
+      color: white;
+    }
+    .issues-list {
+      flex: 1;
+      padding: 0.75rem;
+      overflow-y: auto;
+    }
+    .issues-footer {
+      padding: 0.75rem;
+      border-top: 1px solid var(--gray-200);
+      background: var(--gray-50);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* Issue Card */
+    .issue-card {
+      background: var(--gray-50);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-left: 3px solid var(--warning);
+      transition: all 0.15s;
+    }
+    .issue-card:hover {
+      background: var(--gray-100);
+    }
+    .issue-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .issue-badge {
+      font-size: 0.625rem;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+    .badge-auto-fix { background: #dcfce7; color: #166534; }
+    .badge-editor-confirm { background: #dbeafe; color: #1e40af; }
+    .badge-board-review { background: #fef3c7; color: #92400e; }
+    .badge-blocked { background: #fee2e2; color: #991b1b; }
+    .issue-file {
+      font-size: 0.6875rem;
+      color: var(--gray-500);
+      font-family: monospace;
+      margin-left: auto;
+    }
+    .issue-description {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      margin-bottom: 0.375rem;
+    }
+    .issue-context {
+      margin-bottom: 0.375rem;
+    }
+    .issue-context code {
+      font-size: 0.75rem;
+      background: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--gray-600);
+    }
+    .issue-suggestion {
+      font-size: 0.8125rem;
+      color: #166534;
+      margin-bottom: 0.5rem;
+    }
+    .issue-suggestion strong {
+      color: #15803d;
+    }
+    .issue-actions {
+      display: flex;
+      gap: 0.375rem;
+    }
+    .issue-actions .btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+    }
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+    .btn-success:hover { background: #15803d; }
+    .empty-issues {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--gray-500);
+    }
+    .empty-issues i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .issue-count {
+      background: var(--warning);
+      color: white;
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+      border-radius: 9999px;
+      margin-left: 0.25rem;
+    }
+
+    /* Terminology Sidebar */
+    .terminology-sidebar {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 380px;
+      height: calc(100vh - 60px);
+      background: white;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .terminology-sidebar .sidebar-header {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      color: white;
+      border-bottom: none;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .terminology-sidebar .sidebar-header h3 {
+      color: white;
+      font-size: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .terminology-sidebar .btn-close { color: white; opacity: 0.8; }
+    .terminology-sidebar .btn-close:hover { opacity: 1; }
+    .terminology-search {
+      padding: 0.75rem;
+      background: #eef2ff;
+      border-bottom: 1px solid #c7d2fe;
+    }
+    .search-input-wrapper {
+      position: relative;
+    }
+    .search-input-wrapper i {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-400);
+    }
+    .search-input-wrapper .form-input {
+      padding-left: 2.25rem;
+    }
+    .terminology-search .text-small {
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .terminology-results {
+      flex: 1;
+      padding: 0.75rem;
+      overflow-y: auto;
+    }
+    .terminology-placeholder,
+    .terminology-no-results {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--gray-500);
+    }
+    .terminology-placeholder i,
+    .terminology-no-results i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: #a5b4fc;
+    }
+    .terminology-no-results p {
+      margin-bottom: 1rem;
+    }
+    .terminology-stats {
+      padding: 0.5rem 0.75rem;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+      display: flex;
+      gap: 1rem;
+    }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.75rem;
+    }
+    .stat-label { color: var(--gray-500); }
+    .stat-value { font-weight: 600; color: var(--gray-700); }
+    .terminology-footer {
+      padding: 0.75rem;
+      border-top: 1px solid var(--gray-200);
+      background: var(--gray-50);
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* Term Card */
+    .term-card {
+      background: var(--gray-50);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-left: 3px solid #6366f1;
+      transition: all 0.15s;
+    }
+    .term-card:hover {
+      background: var(--gray-100);
+      border-left-color: #4f46e5;
+    }
+    .term-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.375rem;
+    }
+    .term-status {
+      font-size: 0.875rem;
+      width: 1.25rem;
+      text-align: center;
+    }
+    .term-status-approved { color: #16a34a; }
+    .term-status-proposed { color: #6366f1; }
+    .term-status-disputed { color: #d97706; }
+    .term-english {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+    }
+    .term-translation {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.375rem;
+    }
+    .term-translation i {
+      color: var(--gray-400);
+      font-size: 0.75rem;
+    }
+    .term-translation strong {
+      color: #4f46e5;
+      font-size: 1rem;
+    }
+    .term-alternatives {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-bottom: 0.375rem;
+    }
+    .term-notes {
+      font-size: 0.75rem;
+      color: var(--gray-600);
+      background: white;
+      padding: 0.375rem 0.5rem;
+      border-radius: 0.25rem;
+      margin-bottom: 0.375rem;
+    }
+    .term-notes i {
+      color: #6366f1;
+      margin-right: 0.25rem;
+    }
+    .term-category {
+      margin-bottom: 0.375rem;
+    }
+    .badge-small {
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+      background: #e0e7ff;
+      color: #3730a3;
+      border-radius: 9999px;
+    }
+    .term-actions {
+      display: flex;
+      gap: 0.25rem;
+    }
+    .btn-tiny {
+      padding: 0.25rem 0.375rem;
+      font-size: 0.6875rem;
+    }
+
     .text-muted { color: var(--gray-500); }
 
     /* EasyMDE customizations */
@@ -2093,8 +3896,14 @@
       .editor-content { flex-direction: column; }
       .editor-content.side-by-side .source-panel { flex: none; }
       .history-sidebar { width: 100%; }
+      .comments-sidebar { width: 100%; }
+      .decisions-sidebar { width: 100%; }
+      .issues-sidebar { width: 100%; }
+      .terminology-sidebar { width: 100%; }
+      .notification-dropdown { width: calc(100vw - 2rem); right: -1rem; }
       .editor-header { flex-direction: column; gap: 1rem; }
       .editor-actions { flex-wrap: wrap; }
+      .form-row { grid-template-columns: 1fr; }
     }
 
     /* Terminology Panel */
