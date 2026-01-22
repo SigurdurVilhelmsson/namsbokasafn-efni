@@ -528,6 +528,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/terminology` |
 | GET | `/decisions` |
 | GET | `/my-work` |
+| GET | `/assignments` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
 | GET | `/admin/feedback` |
@@ -555,6 +556,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/assignments` |
 | GET | `/assignments/mine` |
 | POST | `/assignments/:id/complete` |
+| GET | `/assignments/matrix` |
 | POST | `/assignments/:id/cancel` |
 
 

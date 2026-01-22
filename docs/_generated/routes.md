@@ -304,6 +304,7 @@
 | GET | `/terminology` |
 | GET | `/decisions` |
 | GET | `/my-work` |
+| GET | `/assignments` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
 | GET | `/admin/feedback` |
@@ -331,5 +332,6 @@
 | GET | `/assignments` |
 | GET | `/assignments/mine` |
 | POST | `/assignments/:id/complete` |
+| GET | `/assignments/matrix` |
 | POST | `/assignments/:id/cancel` |
 
