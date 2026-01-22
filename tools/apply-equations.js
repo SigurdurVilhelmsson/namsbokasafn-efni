@@ -102,7 +102,9 @@ function loadEquations(filePath, verbose) {
 }
 
 function findPlaceholders(content) {
-  const pattern = /\[\[EQ:(\d+)\]\]/g;
+  // Match both plain placeholders and those with MT-safe ID attributes
+  // Pattern: [[EQ:n]] or [[EQ:n]]{id="..."}
+  const pattern = /\[\[EQ:(\d+)\]\](?:\{id="([^"]*)"\})?/g;
   const found = [];
   let match;
 
@@ -111,7 +113,8 @@ function findPlaceholders(content) {
       placeholder: match[0],
       key: 'EQ:' + match[1],
       num: parseInt(match[1]),
-      index: match.index
+      index: match.index,
+      id: match[2] || null  // ID from MT-safe attribute if present
     });
   }
 
@@ -128,19 +131,29 @@ function applyEquations(content, equations, options, verbose) {
   placeholders.sort((a, b) => b.index - a.index);
 
   for (const p of placeholders) {
-    const latex = equations[p.key];
+    const eqData = equations[p.key];
 
-    if (latex === undefined) {
+    if (eqData === undefined) {
       missing.push(p.key);
       continue;
     }
+
+    // Handle both old format (string) and new format (object with latex and id)
+    const latex = typeof eqData === 'string' ? eqData : eqData.latex;
+    // ID can come from placeholder attribute or equation data
+    const equationId = p.id || (typeof eqData === 'object' ? eqData.id : null);
 
     // Determine if this should be inline or display math
     // Display math: placeholder is on its own line or is a large equation
     const isDisplay = isDisplayEquation(result, p.index, latex);
     const delimiter = isDisplay ? options.displayDelimiter : options.inlineDelimiter;
 
-    const replacement = delimiter + latex + delimiter;
+    // Build replacement with optional Pandoc ID attribute
+    let replacement = delimiter + latex + delimiter;
+    if (equationId) {
+      // Add Pandoc-style ID attribute for cross-referencing
+      replacement += '{#' + equationId + '}';
+    }
 
     if (verbose) {
       console.error(`  ${p.placeholder} → ${replacement.substring(0, 50)}${replacement.length > 50 ? '...' : ''}`);

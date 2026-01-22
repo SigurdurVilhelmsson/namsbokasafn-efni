@@ -250,6 +250,8 @@ function restoreLinks(content, bookSlug, verbose) {
   let refCount = 0;
   let docCount = 0;
   let unknownDocCount = 0;
+  let imageCount = 0;
+  let attrCount = 0;
 
   // Restore external URLs: [text]{url="http://..."} → [text](http://...)
   content = content.replace(/\[([^\]]*)\]\{url="([^"]*)"\}/g, (match, text, url) => {
@@ -286,8 +288,44 @@ function restoreLinks(content, bookSlug, verbose) {
     }
   });
 
+  // Restore image attributes: ![](file){id="..." class="..." alt="..."} → ![alt](file){#id .class}
+  content = content.replace(/!\[\]\(([^)]+)\)\{([^}]+)\}/g, (match, src, attrs) => {
+    imageCount++;
+    // Parse attributes
+    const idMatch = attrs.match(/id="([^"]*)"/);
+    const classMatch = attrs.match(/class="([^"]*)"/);
+    const altMatch = attrs.match(/alt="([^"]*)"/);
+
+    const id = idMatch ? idMatch[1] : '';
+    const className = classMatch ? classMatch[1] : '';
+    const alt = altMatch ? altMatch[1] : '';
+
+    // Build Pandoc-style attribute string
+    const pandocAttrs = [];
+    if (id) pandocAttrs.push(`#${id}`);
+    if (className) pandocAttrs.push(`.${className}`);
+
+    const attrStr = pandocAttrs.length > 0 ? `{${pandocAttrs.join(' ')}}` : '';
+    return `![${alt}](${src})${attrStr}`;
+  });
+
+  // Restore term/figure caption IDs: **term**{id="..."} → **term**{#...}
+  // Also handles: *Figure 1.1: caption*{id="..."} → *Figure 1.1: caption*{#...}
+  content = content.replace(/(\*[^*]+\*|\*\*[^*]+\*\*)\{id="([^"]*)"\}/g, (match, text, id) => {
+    attrCount++;
+    return `${text}{#${id}}`;
+  });
+
+  // Restore standalone attribute blocks (for tables): {id="..." summary="..."} → {#id}
+  // Keep on separate lines (after tables)
+  content = content.replace(/^\{id="([^"]*)"[^}]*\}$/gm, (match, id) => {
+    attrCount++;
+    return `{#${id}}`;
+  });
+
   if (verbose) {
     console.error(`Restored links: ${urlCount} URLs, ${refCount} refs, ${docCount} docs`);
+    console.error(`Restored attributes: ${imageCount} images, ${attrCount} IDs`);
     if (unknownDocCount > 0) {
       console.error(`Warning: ${unknownDocCount} unknown document references`);
     }

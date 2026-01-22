@@ -438,14 +438,35 @@ function extractContent(cnxml, options = {}) {
   if (!contentMatch) throw new Error('No <content> element found in CNXML');
   let content = contentMatch[1];
 
-  // Replace MathML with placeholders
+  // Replace MathML with placeholders, preserving equation IDs
+  // First pass: Replace MathML inside <equation id="..."> elements, storing the ID
+  const equationWithIdPattern = /<equation\s+id="([^"]*)"[^>]*>([\s\S]*?)<\/equation>/g;
+  content = content.replace(equationWithIdPattern, (match, eqId, eqContent) => {
+    // Replace MathML within this equation, preserving the ID
+    const processedContent = eqContent.replace(/<m:math[^>]*>[\s\S]*?<\/m:math>/g, (mathml) => {
+      equationCounter++;
+      const latex = convertMathMLToLatex(mathml);
+      // Store equation data as object with latex and optional id
+      equations['EQ:' + equationCounter] = { latex: latex, id: eqId };
+      // Output with MT-safe ID format
+      return '[[EQ:' + equationCounter + ']]{id="' + eqId + '"}';
+    });
+    // Keep the equation wrapper for later processing (will be stripped when outputting)
+    return '<equation>' + processedContent + '</equation>';
+  });
+
+  // Second pass: Replace remaining MathML (inline math without equation wrappers or equations without IDs)
   const mathPattern = /<m:math[^>]*>[\s\S]*?<\/m:math>/g;
   content = content.replace(mathPattern, (mathml) => {
     equationCounter++;
     const latex = convertMathMLToLatex(mathml);
-    equations['EQ:' + equationCounter] = latex;
+    // Store equation data - no ID for inline math
+    equations['EQ:' + equationCounter] = { latex: latex };
     return '[[EQ:' + equationCounter + ']]';
   });
+
+  // The equation wrappers will be stripped when processing sections
+  // We keep them for now so equations are found during element processing
 
   // Build markdown
   const lines = [];
@@ -564,25 +585,46 @@ function extractContent(cnxml, options = {}) {
           lines.push('');
         }
       } else if (elem.type === 'figure') {
-        // Process figure - extract image and caption
+        // Process figure - extract image, alt text, class, and caption
         const idMatch = elem.attrs.match(/id="([^"]*)"/);
         const figureId = idMatch ? idMatch[1] : null;
-        const mediaMatch = elem.content.match(/<media[^>]*>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
+        const classMatch = elem.attrs.match(/class="([^"]*)"/);
+        const figureClass = classMatch ? classMatch[1] : '';
+
+        // Extract media element with alt text from media tag
+        const mediaMatch = elem.content.match(/<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
         const captionMatch = elem.content.match(/<caption>([\s\S]*?)<\/caption>/);
 
-        // For pre-section figures (like splash images), use a simple format
+        // For pre-section figures (like splash images), use MT-safe format
         if (mediaMatch) {
-          const imageSrc = mediaMatch[1];
+          const mediaAttrs = mediaMatch[1];
+          const imageSrc = mediaMatch[2];
+          // Extract alt text from media attributes
+          const altMatch = mediaAttrs.match(/alt="([^"]*)"/);
+          const altText = altMatch ? altMatch[1] : '';
+
           // Convert relative path to just filename for now
           const imageFile = imageSrc.split('/').pop();
-          lines.push(`![${figureId || 'figure'}](${imageFile})`);
+
+          // Build MT-safe attribute string: {id="..." class="..." alt="..."}
+          const attrs = [];
+          if (figureId) attrs.push(`id="${figureId}"`);
+          if (figureClass) attrs.push(`class="${figureClass}"`);
+          if (altText) attrs.push(`alt="${altText}"`);
+
+          if (attrs.length > 0) {
+            lines.push(`![](${imageFile}){${attrs.join(' ')}}`);
+          } else {
+            lines.push(`![](${imageFile})`);
+          }
           lines.push('');
         }
 
         if (captionMatch) {
           const captionText = processInlineContent(captionMatch[1]);
+          // Use MT-safe format {id="..."} instead of {#...}
           if (figureId) {
-            lines.push('*Figure: ' + captionText + '*{#' + figureId + '}');
+            lines.push('*Figure: ' + captionText + '*{id="' + figureId + '"}');
           } else {
             lines.push('*Figure: ' + captionText + '*');
           }
@@ -714,12 +756,21 @@ function extractContent(cnxml, options = {}) {
           lines.push('');
         }
       } else if (elem.type === 'list') {
+        // Extract list type and numbering style
+        const listTypeMatch = elem.attrs.match(/list-type="([^"]*)"/);
+        const numberStyleMatch = elem.attrs.match(/number-style="([^"]*)"/);
+        const isOrdered = listTypeMatch && listTypeMatch[1] === 'enumerated';
+        const numberStyle = numberStyleMatch ? numberStyleMatch[1] : 'arabic';
+
         const itemPattern = /<item[^>]*>([\s\S]*?)<\/item>/g;
         let itemMatch;
+        let itemIndex = 0;
         while ((itemMatch = itemPattern.exec(elem.content)) !== null) {
           const itemText = processInlineContent(itemMatch[1]);
           if (itemText.trim()) {
-            lines.push('- ' + itemText);
+            itemIndex++;
+            const prefix = isOrdered ? getListPrefix(itemIndex, numberStyle) : '-';
+            lines.push(prefix + ' ' + itemText);
           }
         }
         lines.push('');
@@ -739,6 +790,12 @@ function extractContent(cnxml, options = {}) {
           directive = ':::scientist-spotlight';
         } else if (noteClass.includes('sciences-interconnect')) {
           directive = ':::how-science-connects';
+        } else if (noteClass.includes('summary')) {
+          directive = ':::summary';
+        } else if (noteClass.includes('key-equations')) {
+          directive = ':::key-equations';
+        } else if (noteClass.includes('key-concepts')) {
+          directive = ':::key-concepts';
         }
 
         lines.push(directive);
@@ -825,13 +882,42 @@ function extractContent(cnxml, options = {}) {
         const captionMatch = elem.content.match(/<caption>([\s\S]*?)<\/caption>/);
         const idMatch = elem.attrs.match(/id="([^"]*)"/);
         const figureId = idMatch ? idMatch[1] : null;
+        const classMatch = elem.attrs.match(/class="([^"]*)"/);
+        const figureClass = classMatch ? classMatch[1] : '';
         // Use chapter-based numbering: [chapter].[running_number]
         const figureNumber = chapter ? `${chapter}.${figureCounter}` : String(figureCounter);
 
+        // Extract image with alt text from media element
+        const mediaMatch = elem.content.match(/<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
+        if (mediaMatch) {
+          const mediaAttrs = mediaMatch[1];
+          const imageSrc = mediaMatch[2];
+          // Extract alt text from media attributes
+          const altMatch = mediaAttrs.match(/alt="([^"]*)"/);
+          const altText = altMatch ? altMatch[1] : '';
+
+          // Convert relative path to just filename
+          const imageFile = imageSrc.split('/').pop();
+
+          // Build MT-safe attribute string: {id="..." class="..." alt="..."}
+          const attrs = [];
+          if (figureId) attrs.push(`id="${figureId}"`);
+          if (figureClass) attrs.push(`class="${figureClass}"`);
+          if (altText) attrs.push(`alt="${altText}"`);
+
+          if (attrs.length > 0) {
+            lines.push(`![](${imageFile}){${attrs.join(' ')}}`);
+          } else {
+            lines.push(`![](${imageFile})`);
+          }
+          lines.push('');
+        }
+
         if (captionMatch) {
           const captionText = processInlineContent(captionMatch[1]);
+          // Use MT-safe format {id="..."} instead of {#...}
           if (figureId) {
-            lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{#' + figureId + '}');
+            lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{id="' + figureId + '"}');
           } else {
             lines.push('*Figure ' + figureNumber + ': ' + captionText + '*');
           }
@@ -936,14 +1022,26 @@ function extractContent(cnxml, options = {}) {
  * Process a CNXML table element into markdown
  */
 function processTable(tableAttrs, tableContent, lines, processInlineContent) {
-  // Extract table ID and class
+  // Extract table ID, class, and summary
   const idMatch = tableAttrs.match(/id="([^"]*)"/);
   const tableId = idMatch ? idMatch[1] : null;
   const classMatch = tableAttrs.match(/class="([^"]*)"/);
   const tableClass = classMatch ? classMatch[1] : '';
+  const summaryMatch = tableAttrs.match(/summary="([^"]*)"/);
+  const tableSummary = summaryMatch ? summaryMatch[1] : '';
 
   // Check if it's a key-equations table (special handling)
   const isKeyEquations = tableId === 'key-equations-table' || tableClass.includes('key-equations');
+
+  // Extract column alignments from colspec elements
+  const columnAlignments = [];
+  const colspecPattern = /<colspec[^>]*>/g;
+  let colspecMatch;
+  while ((colspecMatch = colspecPattern.exec(tableContent)) !== null) {
+    const alignMatch = colspecMatch[0].match(/align="([^"]*)"/);
+    const align = alignMatch ? alignMatch[1] : 'left';
+    columnAlignments.push(align);
+  }
 
   // Extract and remove footnotes from content, collect them for later
   const footnotes = [];
@@ -1022,7 +1120,18 @@ function processTable(tableAttrs, tableContent, lines, processInlineContent) {
     const header = headerRows.length > 0 ? headerRows[0] : (bodyRows.length > 0 ? bodyRows.shift() : []);
     if (header.length > 0) {
       lines.push('| ' + header.join(' | ') + ' |');
-      lines.push('| ' + header.map(() => '---').join(' | ') + ' |');
+
+      // Generate alignment row with proper markdown alignment markers
+      const alignmentRow = header.map((_, i) => {
+        const align = columnAlignments[i] || 'left';
+        switch (align) {
+          case 'right': return '---:';
+          case 'center': return ':---:';
+          case 'left':
+          default: return ':---';
+        }
+      });
+      lines.push('| ' + alignmentRow.join(' | ') + ' |');
 
       // Add remaining header rows (if multi-row header) and body rows
       const dataRows = [...headerRows.slice(1), ...bodyRows];
@@ -1031,24 +1140,77 @@ function processTable(tableAttrs, tableContent, lines, processInlineContent) {
         while (row.length < header.length) row.push('');
         lines.push('| ' + row.join(' | ') + ' |');
       }
+
+      // Add MT-safe table attributes after the table
+      const attrs = [];
+      if (tableId) attrs.push(`id="${tableId}"`);
+      if (tableSummary) attrs.push(`summary="${tableSummary}"`);
+      if (attrs.length > 0) {
+        lines.push(`{${attrs.join(' ')}}`);
+      }
       lines.push('');
     }
   }
 
-  // Output footnotes if present
+  // Output footnotes if present using proper markdown footnote syntax
   if (footnotes.length > 0) {
-    for (const footnote of footnotes) {
-      lines.push('*' + footnote + '*');
+    lines.push('');
+    for (let i = 0; i < footnotes.length; i++) {
+      lines.push(`[^${tableId || 'table'}-${i + 1}]: ${footnotes[i]}`);
     }
     lines.push('');
   }
 }
 
+/**
+ * Convert number to Roman numeral
+ */
+function toRoman(num) {
+  const romanNumerals = [
+    ['M', 1000], ['CM', 900], ['D', 500], ['CD', 400],
+    ['C', 100], ['XC', 90], ['L', 50], ['XL', 40],
+    ['X', 10], ['IX', 9], ['V', 5], ['IV', 4], ['I', 1]
+  ];
+  let result = '';
+  for (const [letter, value] of romanNumerals) {
+    while (num >= value) {
+      result += letter;
+      num -= value;
+    }
+  }
+  return result;
+}
+
+/**
+ * Get list prefix based on numbering style
+ * @param {number} index - 1-based item index
+ * @param {string} style - Numbering style: arabic, lower-alpha, upper-alpha, lower-roman, upper-roman
+ * @returns {string} List prefix (e.g., "1.", "a.", "A.", "i.", "I.")
+ */
+function getListPrefix(index, style) {
+  switch (style) {
+    case 'lower-alpha':
+      return String.fromCharCode(96 + index) + '.';
+    case 'upper-alpha':
+      return String.fromCharCode(64 + index) + '.';
+    case 'lower-roman':
+      return toRoman(index).toLowerCase() + '.';
+    case 'upper-roman':
+      return toRoman(index) + '.';
+    case 'arabic':
+    default:
+      return index + '.';
+  }
+}
+
 function processInlineContent(content) {
   return content
+    // Emphasis types: italics, underline (both use *text*), bold (default)
+    .replace(/<emphasis[^>]*effect="italics"[^>]*>([^<]*)<\/emphasis>/g, '*$1*')
+    .replace(/<emphasis[^>]*effect="underline"[^>]*>([^<]*)<\/emphasis>/g, '_$1_')
     .replace(/<emphasis[^>]*>([^<]*)<\/emphasis>/g, '**$1**')
-    // Term with ID preservation: <term id="term-00001">chemistry</term> → **chemistry**{#term-00001}
-    .replace(/<term\s+id="([^"]*)"[^>]*>([^<]*)<\/term>/g, '**$2**{#$1}')
+    // Term with ID preservation using MT-safe format: <term id="term-00001">chemistry</term> → **chemistry**{id="term-00001"}
+    .replace(/<term\s+id="([^"]*)"[^>]*>([^<]*)<\/term>/g, '**$2**{id="$1"}')
     .replace(/<term[^>]*>([^<]*)<\/term>/g, '**$1**')
     // External URL links: <link url="http://...">text</link> → [text]{url="http://..."}
     // Uses {url=""} syntax to survive MT (parentheses get stripped)
