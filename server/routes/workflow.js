@@ -23,7 +23,14 @@ const archiver = require('archiver');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireContributor } = require('../middleware/requireRole');
 const session = require('../services/session');
-const pipelineRunner = require('../../tools/pipeline-runner');
+// pipelineRunner is an ES module - use dynamic import
+let pipelineRunner = null;
+const getPipelineRunner = async () => {
+  if (!pipelineRunner) {
+    pipelineRunner = await import('../../tools/pipeline-runner.js');
+  }
+  return pipelineRunner;
+};
 const { classifyIssues, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
 const assignmentStore = require('../services/assignmentStore');
 const activityLog = require('../services/activityLog');
@@ -149,7 +156,8 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
 
       try {
         console.log(`Processing module ${moduleId}...`);
-        const results = await pipelineRunner.run({
+        const runner = await getPipelineRunner();
+        const results = await runner.run({
           input: moduleId,
           outputDir: sessionData.outputDir,
           book,

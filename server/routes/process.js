@@ -16,8 +16,14 @@ const path = require('path');
 const fs = require('fs');
 const archiver = require('archiver');
 
-// Import pipeline runner
-const pipelineRunner = require('../../tools/pipeline-runner');
+// Import pipeline runner (ES module - use dynamic import)
+let pipelineRunner = null;
+const getPipelineRunner = async () => {
+  if (!pipelineRunner) {
+    pipelineRunner = await import('../../tools/pipeline-runner.js');
+  }
+  return pipelineRunner;
+};
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -83,7 +89,8 @@ router.post('/cnxml', upload.single('file'), async (req, res) => {
     });
 
     // Run pipeline
-    const results = await pipelineRunner.run({
+    const runner = await getPipelineRunner();
+    const results = await runner.run({
       input: req.file.path,
       outputDir,
       skipXliff: req.body.skipXliff === 'true',
@@ -198,7 +205,8 @@ router.post('/module/:moduleId', async (req, res) => {
     });
 
     // Run pipeline
-    const results = await pipelineRunner.run({
+    const runner = await getPipelineRunner();
+    const results = await runner.run({
       input: moduleId,
       outputDir,
       skipXliff: req.body.skipXliff === true,
