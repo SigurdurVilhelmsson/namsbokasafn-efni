@@ -500,7 +500,6 @@ eðlismassa rauðu blokkarinnar.
 gildi sem eru vel yfir, síðan vel undir og að lokum næstum jöfn
 eðlismassa rauðu blokkarinnar og skráðu niður athuganir þínar.
 
-:::
 
 :::æfingadæmi{#fs-idm160286704} Farðu í þessa \[hermun á
 eðlismassa\](http://openstax.org/l/16phetmasvolden) og smelltu á
@@ -522,7 +521,6 @@ sem færist úr stað = 2,8 g; (c) Massi blokkarinnar er 2,76 g, í raun
 jafn massa vatnsins sem færðist úr stað (2,8 g) og í samræmi við lögmál
 Arkímedesar um uppdrif.
 
-:::
 :::
 
 ### 1.5 Óvissa í mælingum, hittni og nákvæmni
@@ -571,7 +569,6 @@ veldisvísisformi með réttum fjölda markverðra stafa:
 $\times$ 10^−3^
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp26053648} Tilgreinið hvort hægt sé að ákvarða
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
@@ -591,7 +588,6 @@ bifreiðar
 (f) tímann sem það tekur að aka frá San Francisco til Kansas City á 53
 mílna meðalhraða á klukkustund
 
-:::
 
 :::æfingadæmi{#fs-idp30473840} Tilgreinið hvort hægt sé að ákvarða
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
@@ -614,7 +610,6 @@ eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 (f) óvisst
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp191983136} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
@@ -633,7 +628,6 @@ hver eftirfarandi mælinga?
 
 (g) 0,01400 g/mL
 
-:::
 
 :::æfingadæmi{#fs-idp16088144} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
@@ -658,7 +652,6 @@ hver eftirfarandi mælinga?
 (g) fimm
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp334498416} Eftirfarandi magn var gefið upp á
 merkimiðum á söluvörum. Ákvarðaðu fjölda markverðra stafa í hverju
@@ -680,7 +673,6 @@ tilfelli.
 
 (h) 99,80% óvirk efni
 
-:::
 
 :::æfingadæmi{#fs-idp15391168} Sléttaðu eftirfarandi tölur að tveimur
 markverðum stöfum:
@@ -702,7 +694,6 @@ markverðum stöfum:
 10^−3^; (f) 0,44
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp108082000} Sléttaðu eftirfarandi tölur að tveimur
 markverðum stöfum:
@@ -719,7 +710,6 @@ markverðum stöfum:
 
 (f) 0,885
 
-:::
 
 :::æfingadæmi{#fs-idp358584288} Framkvæmdu eftirfarandi útreikninga og
 gefðu upp hvert svar með réttum fjölda markverðra stafa.
@@ -741,7 +731,6 @@ gefðu upp hvert svar með réttum fjölda markverðra stafa.
 2,08; (d) 0,19; (e) 27.440; (f) 43,0
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp356573616} Framkvæmdu eftirfarandi útreikninga og
 gefðu upp hvert svar með réttum fjölda markverðra stafa.
@@ -762,7 +751,6 @@ gefðu upp hvert svar með réttum fjölda markverðra stafa.
 
 (h) $${\frac{{(88.5-87.57)}}{{45.13}}}$$
 
-:::
 
 **43.**
 
@@ -947,7 +935,6 @@ löndum. Hversu marga lítra þarf til að fylla 12.0-gal bensíntank?
 :::æfingadæmi{#fs-idm242942368} Mjólk er seld í lítrum í mörgum löndum.
 Hvert er rúmmál nákvæmlega 1/2 g af mjólk í lítrum?
 
-:::
 
 :::æfingadæmi{#fs-idm186995360} Langt tonn er skilgreint sem nákvæmlega
 2240 lb. Hver er þessi massi í kílógrömmum?
@@ -955,7 +942,6 @@ Hvert er rúmmál nákvæmlega 1/2 g af mjólk í lítrum?
 :::svar
 1,0160 $\times$ 10^3^ kg
 
-:::
 :::
 
 :::æfingadæmi{#fs-idm311016240} Framkvæmdu umreikninginn sem tilgreindur
@@ -975,7 +961,6 @@ er í hverjum af eftirfarandi liðum:
 
 (g) massa 2,3 oz eggs í grömm
 
-:::
 
 :::æfingadæmi{#fs-idm250694352} Framkvæmdu umreikninginn sem tilgreindur
 er í hverjum af eftirfarandi liðum:
@@ -1000,14 +985,12 @@ kílómetra
 L; (e) 5,1 $\times$ 10^18^ kg; (f) 14,5 kg; (g) 324 mg
 
 :::
-:::
 
 :::æfingadæmi{#fs-idm219388000} Á mörgum efnafræðiráðstefnum hefur verið
 haldið 50 trilljón angstroma hlaup (tveir markverðir stafir). Hversu
 langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 $\times$
 10^−10^ m)
 
-:::
 
 :::æfingadæmi{#fs-idm311640624} 50 trilljón angstroma hlaup efnafræðings
 (sjá \[↗\](#fs-idm219388000)) væri 10.900 álna hlaup
@@ -1018,14 +1001,12 @@ $\times$ 10^−8^ cm)
 0,46 m; 1,5 ft/áln
 
 :::
-:::
 
 :::æfingadæmi{#fs-idm306975136} Bensíntankur ákveðins lúxusbíls tekur
 22,3 gallon samkvæmt handbók eiganda. Ef eðlismassi bensíns er 0,8206
 g/mL, ákvarðaðu massa eldsneytisins í fullum tanki í kílógrömmum og
 pundum.
 
-:::
 
 :::æfingadæmi{#fs-idm244153744} Kennari er að undirbúa tilraun og þarf
 225 g af fosfórsýru. Eina ílátið sem er aðgengilegt er 150 ml
@@ -1036,14 +1017,12 @@ er 1,83 g/mL?
 Já, rúmmál sýrunnar er 123 ml.
 
 :::
-:::
 
 :::æfingadæmi{#fs-idm110873792} Til að undirbúa sig fyrir
 rannsóknarstofutíma þarf aðstoðarmaður nemanda 125 g af efnasambandi.
 Flaska sem inniheldur 1/4 lb er fáanleg. Hafði nemandinn nóg af
 efnasambandinu?
 
-:::
 
 :::æfingadæmi{#fs-idp15401744} Efnafræðinemi er 159 cm á hæð og vegur
 45,8 kg. Hver er hæð hennar í tommum og þyngd í pundum?
@@ -1052,13 +1031,11 @@ efnasambandinu?
 62,6 tommur (um 5 fet 3 tommur) og 101 lb
 
 :::
-:::
 
 :::æfingadæmi{#fs-idm207241008} Í nýlegum Grand Prix-kappakstri lauk
 sigurvegarinn keppni með meðalhraðann 229.8 km/klst. Hver var hraði hans
 í mílum á klukkustund, metrum á sekúndu og fetum á sekúndu?
 
-:::
 
 **62.**
 

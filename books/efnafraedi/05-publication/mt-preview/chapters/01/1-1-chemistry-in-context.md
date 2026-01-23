@@ -56,7 +56,7 @@ Miðjarðarhafs með gullgerðarmönnum, sem reyndu að breyta „grunnmálmum�
 eins og blýi í „góðmálma“ eins og gull og búa til lífselixíra til að
 lækna sjúkdóma og lengja líf ([↗](#CNX_Chem_01_01_Alchemist)).
 
-![](images/media/CNX_Chem_01_01_Alchemist.jpg){#CNX_Chem_01_01_Alchemist}
+![Skissa sýnir 4 manneskjur að hræra í og meðhöndla efni. Efnin eru í ýmsum tunnum og stórum sílindrum. Nokkur ílátanna eru hituð yfir glóð. Stór ofn á rannsóknarstofunni er fullur af glóð. Einnig er stór kista í horninu sem gefur frá sér gufu.](images/media/CNX_Chem_01_01_Alchemist.jpg){#CNX_Chem_01_01_Alchemist}
 
 *Mynd: (a) Þessi mynd sýnir verkstæði gullgerðarmanns um 1580. Þrátt
 fyrir að gullgerðarlist hafi lagt sitt af mörkum til þess hvernig hægt
@@ -117,7 +117,7 @@ stjörnufræði og heimsfræði.
 
 .
 
-![](images/media/CNX_Chem_01_01_ChemWeb.jpg){#CNX_Chem_01_01_ChemWeb}
+![Flæðirit sýnir kassa með orðinu efnafræði í miðjunni. Efnafræði er tengd jarðefnafræði, kjarnaefnafræði, efnafræðilegri eðlisfræði, nanóvísindum og nanótækni, efnisvísindum, efnaverkfræði, lífefnafræði og sameindalíffræði, umhverfisvísindum, landbúnaði og stærðfræði. Hver þessara greina er síðan tengd öðrum skyldum sviðum, þar á meðal læknisfræði, líffræði, matvælafræði, jarðvísindum, eiturefnafræði, eðlisfræði og tölvunarfræði.](images/media/CNX_Chem_01_01_ChemWeb.jpg){#CNX_Chem_01_01_ChemWeb}
 
 *Mynd 1.1: Þekking á efnafræði er lykilatriði til að skilja fjölmargar
 vísindagreinar. Þetta skýringarmynd sýnir aðeins nokkur af samspilum
@@ -166,7 +166,7 @@ tilraunakenndri staðfestingu á tilgátunni og nauðsynlegri breytingu á
 kenningunni, er kölluð **vísindalega aðferðin**{#term-00005}
 ([↗](#CNX_Chem_01_01_SciMethod)).
 
-![](images/media/CNX_Chem_01_01_SciMethod.jpg){#CNX_Chem_01_01_SciMethod}
+![Í þessu flæðiriti vísar ör frá kassanum athugun og forvitni yfir í kassa merktan mynda tilgátu; setja fram spá. Bogadregin ör merkt næst tengir þennan kassa við kassa merktan framkvæma tilraun; gera fleiri athuganir. Önnur ör vísar aftur í kassann sem segir mynda tilgátu; setja fram spá. Þessi ör er merkt niðurstöður stangast á við spá. Önnur ör, merkt niðurstöður eru í samræmi við spá, vísar frá kassanum framkvæma tilraun yfir í kassa merktan leggur til þekkingarforða. Hins vegar vísar ör einnig frá leggur til þekkingarforða aftur í kassann mynda tilgátu; setja fram spá. Þessi ör er merkt frekari prófanir styðja ekki tilgátu. Það eru líka tvær aðrar örvar sem leiða út frá leggur til þekkingarforða. Ein ör er merkt miklar viðbótarprófanir gefa stöðugar athuganir. Þetta leiðir að kassanum athugun verður að lögmáli. Hin örin er merkt miklar viðbótarprófanir styðja tilgátu. Þessi ör leiðir að kassanum tilgáta verður að kenningu.](images/media/CNX_Chem_01_01_SciMethod.jpg){#CNX_Chem_01_01_SciMethod}
 
 *Mynd 1.2: Vísindalega aðferðin fylgir ferli sem svipar til þess sem
 sýnt er á þessari mynd. Allir lykilþættir eru sýndir, í nokkurn veginn
@@ -227,7 +227,7 @@ stórsæju eða smásæju stigi, er dæmi um táknræna sviðið. Skammstafanirn
 (*g*) fyrir gas, (*s*) fyrir fast efni og (*l*) fyrir vökva eru einnig
 táknrænar.
 
-![](images/media/CNX_Chem_01_01_WaterDom.jpg){#CNX_Chem_01_01_WaterDom}
+![Mynd A sýnir ljósmynd af ísjaka sem flýtur í sjó með þremur örvum. Hver ör vísar á mynd B, sem inniheldur þrjár skýringarmyndir sem sýna hvernig vatnssameindirnar eru skipulagðar í loftinu, ísnum og sjónum. Í loftinu, sem inniheldur vatn á gasformi, H með neðanskrift 2 O gas, eru vatnssameindirnar ótengdar og dreifðar. Í ísnum, sem er vatn á föstu formi, H með neðanskrift 2 O fast efni, eru vatnssameindirnar tengdar saman í hringi, þar sem hver hringur inniheldur sex vatnssameindir. Þrír þessara hringja eru tengdir hver öðrum. Í sjónum, sem er vatn á vökvaformi, H með neðanskrift 2 O vökvi, eru vatnssameindirnar mjög þétt pakkaðar. Sameindirnar eru ekki tengdar saman.](images/media/CNX_Chem_01_01_WaterDom.jpg){#CNX_Chem_01_01_WaterDom}
 
 *Mynd 1.3: (a) Raki í lofti, ísjakar og hafið tákna vatn á stórsæja
 sviðinu. (b) Á sameindastigi (smásæja sviðinu) eru gassameindir langt í
@@ -331,11 +331,12 @@ hvort þeir séu tákn fyrir stórsæjan eða smásæjan eiginleika.
 
 (d) *Brennisteinssameind* er samsett úr átta brennisteinsatómum.
 
+:::
+
 :::svar
 (a) táknrænt, smásætt; (b) stórsætt; (c) táknrænt, stórsætt; (d)
 smásætt
 
-:::
 :::
 
 :::practice-problem{#fs-idp6505632}
@@ -353,9 +354,10 @@ pund af ís er tvöfalt meira en varmamagnið sem þarf til að bræða 1 pund
 af ís. Er þessi athugun stórsæ eða smásæ lýsing á efnafræðilegri hegðun?
 Útskýrðu svarið.
 
+:::
+
 :::svar
 Stórsæ. Nauðsynlegur varmi er ákvarðaður út frá stórsæjum
 eiginleikum.
 
-:::
 :::

@@ -42,7 +42,7 @@ hann. (Í þyngdarleysi taka vökvar á sig kúlulaga form.) Bæði sýni af
 vökva og föstu efni hafa rúmmál sem eru nánast óháð þrýstingi.
 **Gas**{#term-00004} tekur bæði lögun og rúmmál íláts síns.
 
-![](images/media/CNX_Chem_01_02_StatesMatt.jpg){#CNX_Chem_01_02_StatesMatt}
+![Bikarglas merkt „fast efni“ inniheldur rauðan tening og á því stendur „hefur fast form og rúmmál“. Bikarglas merkt „vökvi“ inniheldur brúnrauðan vökva. Á þessu bikarglasi stendur „tekur lögun íláts, myndar lárétt yfirborð, hefur fast rúmmál“. Bikarglasið merkt „gas“ er fyllt með ljósbrúnu gasi. Á þessu bikarglasi stendur „þenst út til að fylla ílát“.“} *Mynd: Algengustu þrír efnishamirnir eru fast efni, vökvi og gas.*{id="CNX_Chem_01_02_StatesMatt](images/media/CNX_Chem_01_02_StatesMatt.jpg){#CNX_Chem_01_02_StatesMatt}
 
 *Mynd: Algengustu þrír efnishamirnir eru fast efni, vökvi og
 gas.*{#CNX_Chem_01_02_StatesMatt}
@@ -57,7 +57,7 @@ aðskilinn frá gasi. Auk stjarna er plasma að finna í öðru háhitaumhverfi
 sjónvarpsskjám og sérhæfðum mælitækjum sem notuð eru til að greina
 snefilmagn málma.
 
-![](images/media/CNX_Chem_01_02_Plasma.jpg){#CNX_Chem_01_02_Plasma}
+![Skurðarkyndill er notaður til að skera málmstykki. Sjá má skæran, hvítan plasma nálægt oddi kyndilsins, þar sem hann snertir málminn.“} *Mynd: Hægt er að nota plasmakyndil til að skera málm. (Heimild: „Hypertherm“/Wikimedia Commons)*{id="CNX_Chem_01_02_Plasma](images/media/CNX_Chem_01_02_Plasma.jpg){#CNX_Chem_01_02_Plasma}
 
 *Mynd: Hægt er að nota plasmakyndil til að skera málm. (Heimild:
 „Hypertherm“/Wikimedia Commons)*{#CNX_Chem_01_02_Plasma}
@@ -110,7 +110,7 @@ brennisteinssýra), sem geta framleitt rafmagn, breytast í önnur efni
 (blýsúlfat og vatn) sem framleiða ekki rafmagn, án þess að raunverulegt
 magn efnis breytist.
 
-![](images/media/CNX_Chem_01_02_ConsMatter.jpg){#CNX_Chem_01_02_ConsMatter}
+![Mynd A sýnir bjórflösku sem inniheldur forstig bjórs og sykur. Ör bendir frá þessari flösku yfir á aðra flösku. Þessi seinni flaska inniheldur sama rúmmál af vökva, en sykurinn hefur breyst í etanól og kolsýru þegar bjórinn var búinn til. Mynd B sýnir bílarafhlöðu sem inniheldur plötur af P B og P B O með neðanskrift 2 ásamt H með neðanskrift 2 S O með neðanskrift 4. Eftir að rafhlaðan hefur verið notuð inniheldur hún jafnan massa af P B S O með neðanskrift 4 og H með neðanskrift 2 O.](images/media/CNX_Chem_01_02_ConsMatter.jpg){#CNX_Chem_01_02_ConsMatter}
 
 *Mynd: (a) Massi hráefna í bjór er sá sami og massi bjórsins sem
 framleiddur er: Sykur hefur orðið að alkóhóli og koldíoxíði. (b) Massi
@@ -159,7 +159,7 @@ eiginleiki er grundvöllur notkunar þessa efnasambands í ljósmyndafilmur
 og ljóslit gleraugu (þau með linsum sem dökkna þegar þau verða fyrir
 ljósi).
 
-![](images/media/CNX_Chem_01_02_decomp.jpg){#CNX_Chem_01_02_decomp}
+![Þessi mynd sýnir röð þriggja mynda merktar a, b og c. Mynd a sýnir botninn á tilraunaglasi sem er fyllt með appelsínurauðu efni. Örlítið magn af silfruðu efni er einnig sýnilegt. Mynd b sýnir efnið í tilraunaglasinu hitað yfir loga. Mynd c sýnir tilraunaglas sem er ekki lengur hitað. Appelsínurauða efnið er næstum alveg horfið og eftir eru litlir, silfurdropar af efni.](images/media/CNX_Chem_01_02_decomp.jpg){#CNX_Chem_01_02_decomp}
 
 *Mynd 1.4: (a) Efnasambandið kvikasilfurs(II)oxíð, (b) þegar það er
 hitað, (c) brotnar niður í silfraða dropa af fljótandi kvikasilfri og
@@ -215,7 +215,7 @@ minni sykri, bragðefni eða öðrum íhlutum og samt verið íþróttadrykkur.
 Önnur dæmi um einsleitar efnablöndur eru loft, hlynsíróp, bensín og
 lausn af salti í vatni.
 
-![](images/media/CNX_Chem_01_02_Mixtures.jpg){#CNX_Chem_01_02_Mixtures}
+![Skýringarmynd A sýnir glas sem inniheldur rauðan vökva með lagi af gulri olíu sem flýtur ofan á rauða vökvanum. Stækkunargluggi stækkar hluta af rauða vökvanum sem inniheldur eitthvað af gulu olíunni. Stækkaða myndin sýnir að olían myndar hringlaga dropa í rauða vökvanum. Skýringarmynd B sýnir mynd af Gatorade G 2. Stækkunargluggi stækkar hluta af Gatorade-drykknum, sem er einsleitur rauður.](images/media/CNX_Chem_01_02_Mixtures.jpg){#CNX_Chem_01_02_Mixtures}
 
 *Mynd 1.5: (a) Salatsósa úr olíu og ediki er misleit efnablanda því
 samsetning hennar er ekki einsleit út í gegn. (b) Íþróttadrykkur úr búð
@@ -233,7 +233,7 @@ að mynda mismunandi efnablöndur. Yfirlit yfir hvernig á að greina á
 milli hinna ýmsu helstu flokkunartegunda efnis er sýnt í
 ([↗](#CNX_Chem_01_02_MattType)).
 
-![](images/media/CNX_Chem_01_02_MattType.jpg){#CNX_Chem_01_02_MattType}
+![Þetta flæðirit byrjar með efni efst og spurningunni: hefur efnið fasta eiginleika og samsetningu? Ef nei, þá er það efnablanda. Þetta leiðir að næstu spurningu: er það einsleitt út í gegn? Ef nei, þá er það misleitt. Ef já, þá er það einsleitt. Ef efnið hefur fasta eiginleika og samsetningu, þá er það hreint efni. Þetta leiðir að næstu spurningu: er hægt að einfalda það efnafræðilega? Ef nei, þá er það frumefni. Ef já, þá er það efnasamband.](images/media/CNX_Chem_01_02_MattType.jpg){#CNX_Chem_01_02_MattType}
 
 *Mynd 1.6: Eftir eiginleikum sínum er hægt að flokka tiltekið efni sem
 einsleita efnablöndu, misleita efnablöndu, efnasamband eða
@@ -286,7 +286,7 @@ minnsta mögulega gullstykki er atóm (úr grísku *atomos*, sem þýðir
 ekki lengur gull ef því væri skipt frekar.
 
 
-![](images/media/CNX_Chem_01_02_GoldAtoms.jpg){#CNX_Chem_01_02_GoldAtoms}
+![Mynd A sýnir gullmola eins og hann liti út fyrir berum augum. Gullmolinn er mjög óreglulegur, með mörgum hvössum brúnum. Hann virðist gulllitaður. Smásjármynd af gullkristal sýnir margar gullrendur af svipaðri stærð sem eru aðskildar af dökkum svæðum. Ef grannt er skoðað má sjá að gullrendurnar eru gerðar úr mörgum, örsmáum, hringlaga atómum.“} *Mynd 1.7: (a) Þessi ljósmynd sýnir gullmola. (b) Skannandi gangasmásjá (STM) getur búið til myndir af yfirborði fastra efna, eins og þessa mynd af gullkristal. Hver kúla táknar eitt gullatóm. (heimild a: breyting á vinnu United States Geological Survey; heimild b: breyting á vinnu „Erwinrossen“/Wikimedia Commons)*{id="CNX_Chem_01_02_GoldAtoms](images/media/CNX_Chem_01_02_GoldAtoms.jpg){#CNX_Chem_01_02_GoldAtoms}
 
 *Mynd 1.7: (a) Þessi ljósmynd sýnir gullmola. (b) Skannandi gangasmásjá
 (STM) getur búið til myndir af yfirborði fastra efna, eins og þessa mynd
@@ -317,7 +317,7 @@ sem þyrfti um 150 milljónir kolefnisatóma-„tíkalla“ til að hylja.
 ([↗](#CNX_Chem_01_02_Cellulose)) sýnir sífellt nánari smásjár- og
 atómsmyndir af venjulegri bómull.
 
-![](images/media/CNX_Chem_01_02_Cellulose.jpg){#CNX_Chem_01_02_Cellulose}
+![Mynd A sýnir dúnkenndan hvítan bómullarhnoðra sem vex á brúnum sprota. Mynd B sýnir stækkaðan bómullarþráð. Þráðurinn virðist gegnsær en inniheldur dökk svæði að innan. Mynd C sýnir yfirborð nokkurra bómullartrefja sem liggja á víxl og skarast. Yfirborð þeirra er hrjúft meðfram brúnum en slétt nálægt miðju hvers þráðar. Mynd D sýnir þrjá þræði sameinda sem eru tengdir í þrjár lóðréttar keðjur. Hver þráður inniheldur um fimm sameindir. Mynd E sýnir að bómullarsameindin inniheldur um tug atóma. Svörtu kolefnisatómin mynda hringi sem eru tengdir með rauðum súrefnisatómum. Mörg kolefnisatómanna eru einnig tengd vetnisatómum, sýnd sem hvítar kúlur, eða öðrum súrefnisatómum.“} *Mynd 1.8: Þessar myndir sýna sífellt nánari sýn: (a) bómullarhnoðri, (b) einn bómullarþráður séður í ljóssmásjá (stækkað 40 sinnum), (c) mynd af bómullarþræði tekin með rafeindasmásjá (mun meiri stækkun en með ljóssmásjá); og (d og e) líkön af þræðinum á atómstigi (kúlur í mismunandi litum tákna atóm mismunandi frumefna). (heimild c: breyting á vinnu „Featheredtar“/Wikimedia Commons)*{id="CNX_Chem_01_02_Cellulose](images/media/CNX_Chem_01_02_Cellulose.jpg){#CNX_Chem_01_02_Cellulose}
 
 *Mynd 1.8: Þessar myndir sýna sífellt nánari sýn: (a) bómullarhnoðri,
 (b) einn bómullarþráður séður í ljóssmásjá (stækkað 40 sinnum), (c) mynd
@@ -356,7 +356,7 @@ Eins og atóm eru sameindir ótrúlega litlar og léttar. Ef venjulegt
 vatnsglas væri stækkað í stærð jarðarinnar, væru vatnssameindirnar í því
 á stærð við golfkúlur.
 
-![](images/media/CNX_Chem_01_02_Molecules.jpg){#CNX_Chem_01_02_Molecules}
+![Vetnissameindin, H með neðanskrift 2, er sýnd sem tvær litlar, hvítar kúlur tengdar saman. Súrefnissameindin O með neðanskrift 2, er sýnd sem tvær rauðar kúlur tengdar saman. Fosfórsameindin, P með neðanskrift 4, er sýnd sem fjórar appelsínugular kúlur þétt tengdar saman. Brennisteinssameindin, S með neðanskrift 8, er sýnd sem 8 gular kúlur tengdar saman. Vatnssameindir, H með neðanskrift 2 O, samanstanda af einu rauðu súrefnisatómi sem er tengt tveimur minni hvítum vetnisatómum. Vetnisatómin eru undir horni á súrefnissameindinni“} . Koldíoxíð, C O subscript 2, samanstendur af einu kolefnisatómi og tveimur súrefnisatómum. Eitt súrefnisatóm er tengt við hægri hlið kolefnisins og hitt súrefnisatómið er tengt við vinstri hlið kolefnisins. Glúkósi, C subscript 6 H subscript 12 O subscript 6, inniheldur keðju kolefnisatóma sem hafa súrefnis- eða vetnisatóm tengd við sig.“ *Mynd 1.9: Frumefnin vetni, súrefni, fosfór og brennisteinn mynda sameindir sem samanstanda af tveimur eða fleiri atómum af sama frumefni. Efnasamböndin vatn, koldíoxíð og glúkósi samanstanda af samsetningum atóma úr mismunandi frumefnum.*{id="CNX_Chem_01_02_Molecules](images/media/CNX_Chem_01_02_Molecules.jpg){#CNX_Chem_01_02_Molecules}
 
 . Koldíoxíð, C O subscript 2, samanstendur af einu kolefnisatómi og
 tveimur súrefnisatómum. Eitt súrefnisatóm er tengt við hægri hlið
@@ -400,7 +400,7 @@ efnarafalsbílar verið framtíðin.
 
 :::
 
-![](images/media/CNX_Chem_01_01_Electrolys.jpg){#CNX_Chem_01_01_Electrolys}
+![Rétthyrnd rafhlaða er sökkt í bikarglas fyllt með vökva. Hver rafskautspólur rafhlöðunnar er hulinn með tilraunaglasi á hvolfi. Tilraunaglösin innihalda hvort um sig freyðandi vökva. Aðdráttarsvæði sýna að vökvinn í bikarglasinu er vatn, 2 H subscript 2 O vökvi. Bólurnar í tilraunaglasinu yfir neikvæða skautinu eru vetnisgas, 2 H subscript 2 gas. Bólurnar í tilraunaglasinu yfir jákvæða skautinu eru súrefnisgas, O subscript 2 gas.](images/media/CNX_Chem_01_01_Electrolys.jpg){#CNX_Chem_01_01_Electrolys}
 
 *Mynd 1.10: Niðurbrot vatns er sýnt á stórsæju, smásæju og táknrænu
 stigi. Rafhlaðan gefur straum (smásætt) sem brýtur niður vatn. Á
@@ -409,7 +409,7 @@ stórsæju stigi skiptist vökvinn í gasið vetni (vinstra megin) og súrefni
 vökvinn H~2~O skiptist í H~2~ og O~2~
 gas.*{#CNX_Chem_01_01_Electrolys}
 
-![](images/media/CNX_Chem_01_01_FuelCell.jpg){#CNX_Chem_01_01_FuelCell}
+![Efnarafallið samanstendur af róteindaskiptihimnu sem er á milli anóðu og katóðu. Vetnisgas fer inn í rafhlöðuna nálægt anóðunni. Súrefnisgas fer inn í rafhlöðuna nálægt katóðunni. Vetnisgasið sem kemur inn brotnar niður í stakar hvítar kúlur sem hver hefur jákvæða hleðslu. Þetta eru róteindir. Róteindirnar hrinda frá sér neikvætt hlöðnum rafeindum innan anóðunnar. Þessar rafeindir fara í gegnum rafrás og veita rafmagni til alls sem er tengt við rafhlöðuna. Róteindirnar halda áfram í gegnum róteindaskiptihimnuna og í gegnum katóðuna til að ná til súrefnisgassameindanna á gagnstæðum enda rafhlöðunnar. Þar klofna súrefnisatómin í stakar rauðar kúlur. Hvert súrefnisatóm tekur til sín tvær af róteindunum sem koma inn til að mynda vatnssameind.](images/media/CNX_Chem_01_01_FuelCell.jpg){#CNX_Chem_01_01_FuelCell}
 
 *Mynd 1.11: Efnarafall framleiðir raforku úr vetni og súrefni með
 rafefnafræðilegu ferli og framleiðir aðeins vatn sem

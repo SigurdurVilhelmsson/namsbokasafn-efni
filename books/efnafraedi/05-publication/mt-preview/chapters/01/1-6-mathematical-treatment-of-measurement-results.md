@@ -160,7 +160,6 @@ Umreiknaðu rúmmál upp á 9,345 qt í lítra.
 
 8,844 L
 
-:::
 
 :::note
 
@@ -219,7 +218,6 @@ og 1 qt = 32 oz (nákvæmlega)?
 
 2,957 × 10^−2^ L
 
-:::
 
 :::note
 
@@ -278,7 +276,6 @@ eldsneytiskostnaðurinn fyrir þessa ferð?
 
 (a) 51 mpg; (b) 62 $
 
-:::
 
 :::note
 
@@ -376,7 +373,7 @@ Talan 273,15 í þessum jöfnum hefur verið ákvörðuð með tilraunum, svo h�
 er ekki nákvæm. \[↗\](#CNX_Chem_01_06_TempScales) sýnir sambandið
 milli þriggja hitastigskvarðanna.
 
-![](images/media/CNX_Chem_01_06_TempScales.jpg){#CNX_Chem_01_06_TempScales}
+![Sýndur er hitamælir fyrir Fahrenheit-, Celsíus- og kelvin-kvarðana. Á Fahrenheit-kvarðanum er suðumark vatns 212 gráður en frostmark vatns er 32 gráður. Því eru 180 Fahrenheit-gráður á milli suðumarks og frostmarks vatns. Á Celsíus-kvarðanum er suðumark vatns 100 gráður en frostmark vatns er 0 gráður. Því eru 100 Celsíus-gráður á milli suðumarks og frostmarks vatns. Á kelvin-kvarðanum er suðumark vatns 373,15 K en frostmark vatns er 273,15 K. 233,15 K er jafnt og mínus 40 gráður á Celsíus, sem er einnig jafnt og mínus 40 gráður á Fahrenheit.](images/media/CNX_Chem_01_06_TempScales.jpg){#CNX_Chem_01_06_TempScales}
 
 *Mynd 1.18: Fahrenheit-, Celsíus- og kelvin-hitastigskvarðarnir eru
 bornir saman.*{#CNX_Chem_01_06_TempScales}
@@ -409,7 +406,6 @@ Umreiknaðu 80,92 °C í K og °F.
 
 354,07 K, 177,7 °F
 
-:::
 
 :::note
 
@@ -439,7 +435,6 @@ Umbreyttu 50 °F í °C og K.
 
 10 °C, 280 K
 
-:::
 
 :::note
 
@@ -666,16 +661,16 @@ umreikninga milli SI-eininga.
 Bensín er selt í lítrum í mörgum
 löndum. Hversu marga lítra þarf til að fylla 12.0-gal bensíntank?
 
+:::
+
 :::svar
 45,4 L
 
-:::
 :::
 
 :::æfingadæmi{#fs-idm242942368} Mjólk er seld í lítrum í mörgum löndum.
 Hvert er rúmmál nákvæmlega 1/2 g af mjólk í lítrum?
 
-:::
 
 :::æfingadæmi{#fs-idm186995360} Langt tonn er skilgreint sem nákvæmlega
 2240 lb. Hver er þessi massi í kílógrömmum?
@@ -683,7 +678,6 @@ Hvert er rúmmál nákvæmlega 1/2 g af mjólk í lítrum?
 :::svar
 1,0160 $\times$ 10^3^ kg
 
-:::
 :::
 
 :::æfingadæmi{#fs-idm311016240} Framkvæmdu umreikninginn sem tilgreindur
@@ -703,7 +697,6 @@ er í hverjum af eftirfarandi liðum:
 
 (g) massa 2,3 oz eggs í grömm
 
-:::
 
 :::æfingadæmi{#fs-idm250694352} Framkvæmdu umreikninginn sem tilgreindur
 er í hverjum af eftirfarandi liðum:
@@ -728,14 +721,12 @@ kílómetra
 L; (e) 5,1 $\times$ 10^18^ kg; (f) 14,5 kg; (g) 324 mg
 
 :::
-:::
 
 :::æfingadæmi{#fs-idm219388000} Á mörgum efnafræðiráðstefnum hefur verið
 haldið 50 trilljón angstroma hlaup (tveir markverðir stafir). Hversu
 langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 $\times$
 10^−10^ m)
 
-:::
 
 :::æfingadæmi{#fs-idm311640624} 50 trilljón angstroma hlaup efnafræðings
 (sjá \[↗\](#fs-idm219388000)) væri 10.900 álna hlaup
@@ -746,14 +737,12 @@ $\times$ 10^−8^ cm)
 0,46 m; 1,5 ft/áln
 
 :::
-:::
 
 :::æfingadæmi{#fs-idm306975136} Bensíntankur ákveðins lúxusbíls tekur
 22,3 gallon samkvæmt handbók eiganda. Ef eðlismassi bensíns er 0,8206
 g/mL, ákvarðaðu massa eldsneytisins í fullum tanki í kílógrömmum og
 pundum.
 
-:::
 
 :::æfingadæmi{#fs-idm244153744} Kennari er að undirbúa tilraun og þarf
 225 g af fosfórsýru. Eina ílátið sem er aðgengilegt er 150 ml
@@ -764,14 +753,12 @@ er 1,83 g/mL?
 Já, rúmmál sýrunnar er 123 ml.
 
 :::
-:::
 
 :::æfingadæmi{#fs-idm110873792} Til að undirbúa sig fyrir
 rannsóknarstofutíma þarf aðstoðarmaður nemanda 125 g af efnasambandi.
 Flaska sem inniheldur 1/4 lb er fáanleg. Hafði nemandinn nóg af
 efnasambandinu?
 
-:::
 
 :::æfingadæmi{#fs-idp15401744} Efnafræðinemi er 159 cm á hæð og vegur
 45,8 kg. Hver er hæð hennar í tommum og þyngd í pundum?
@@ -780,13 +767,11 @@ efnasambandinu?
 62,6 tommur (um 5 fet 3 tommur) og 101 lb
 
 :::
-:::
 
 :::æfingadæmi{#fs-idm207241008} Í nýlegum Grand Prix-kappakstri lauk
 sigurvegarinn keppni með meðalhraðann 229.8 km/klst. Hver var hraði hans
 í mílum á klukkustund, metrum á sekúndu og fetum á sekúndu?
 
-:::
 
 :::practice-problem{#fs-idm289866560}
 Leysið þessi dæmi um timburmál.

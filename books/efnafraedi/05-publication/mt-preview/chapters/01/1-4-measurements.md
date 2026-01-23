@@ -100,7 +100,7 @@ kílómetrum (1 km = 1000 m = 10^3^ m), en styttri vegalengdir má gefa upp
 í sentimetrum (1 cm = 0,01 m = 10^−2^ m) eða millimetrum (1 mm = 0,001 m
 = 10^−3^ m).
 
-![](images/media/CNX_Chem_01_04_MYdCmIn.jpg){#CNX_Chem_01_04_MYdCmIn}
+![Einn metri er örlítið stærri en einn yard og einn sentimetri er minna en helmingur af stærð einnar tommu. 1 tomma er jafnt og 2,54 cm. 1 m er jafnt og 1,094 yard sem er jafnt og 39,36 tommur.](images/media/CNX_Chem_01_04_MYdCmIn.jpg){#CNX_Chem_01_04_MYdCmIn}
 
 *Mynd 1*
 
@@ -122,7 +122,7 @@ finna á https://www.nist.gov/pml/weights-and-measures/si-units-mass.
 Eitt kílógramm er um 2,2 pund. Grammið (g) er nákvæmlega 1/1000 af massa
 kílógrammsins (10^−3^ kg).
 
-![](images/media/CNX_Chem_01_04_Kilogram.jpg){#CNX_Chem_01_04_Kilogram}
+![Myndin sýnir lítinn málmsívalning á standi. Sívalningurinn er hulinn tveimur glerlokum, þar sem minna glerlokið er umlukið því stærra.](images/media/CNX_Chem_01_04_Kilogram.jpg){#CNX_Chem_01_04_Kilogram}
 
 *Mynd 1.14: Þessi eftirmynd af frumgerð kílógrammsins, eins og það var
 áður skilgreint, er geymd hjá National Institute of Standards and
@@ -176,7 +176,7 @@ sentimetra. Skammstöfunin **cc** (úr ensku **c**ubic **c**entimeter) er
 oft notuð af heilbrigðisstarfsfólki. Einn rúmsentimetri jafngildir einum
 **millilítra (mL)**{#term-00015} og er 1/1000 úr lítra.
 
-![](images/media/CNX_Chem_01_04_Volume.jpg){#CNX_Chem_01_04_Volume}
+![Mynd A sýnir stóran tening sem hefur rúmmálið 1 rúmmetra. Þessi stærri teningur er samsettur úr mörgum minni teningum í 10 sinnum 10 mynstri. Hver þessara minni teninga hefur rúmmálið 1 rúmdesimetra, eða einn lítra. Hver þessara minni teninga er aftur á móti samsettur úr mörgum örsmáum teningum. Hver þessara örsmáu teninga hefur rúmmálið 1 rúmsentimetra, eða einn millilítra. Einn rúmsentimetra teningur er um það bil jafn breiður og tíu senta mynt, sem hefur breiddina 1,8 sentimetra.](images/media/CNX_Chem_01_04_Volume.jpg){#CNX_Chem_01_04_Volume}
 
 *Mynd 1.15: (a) Hlutfallslegt rúmmál er sýnt fyrir teninga sem eru 1
 m^3^, 1 dm^3^ (1 L) og 1 cm^3^ (1 mL) (ekki í raunstærð). (b) Þvermál
@@ -387,11 +387,12 @@ gimsteina\](https://www.gemsociety.org/article/select-gems-ordered-density/).
 (d) Hvernig tengjast massi og eðlismassi fyrir blokkir með sama
 rúmmál?
 
+:::
+
 :::svar
 (a) m = 18,58 g, V = 5,7 ml; (b) d = 3,3 g/ml; (c) malakít
 (basískt koparkarbónat, d = 3,25–4,10 g/ml).
 
-:::
 :::
 
 :::æfingadæmi{#fs-idm307823136} Farðu í þessa \[hermun á
@@ -409,7 +410,6 @@ eðlismassa rauðu blokkarinnar.
 gildi sem eru vel yfir, síðan vel undir og að lokum næstum jöfn
 eðlismassa rauðu blokkarinnar og skráðu niður athuganir þínar.
 
-:::
 
 :::æfingadæmi{#fs-idm160286704} Farðu í þessa \[hermun á
 eðlismassa\](http://openstax.org/l/16phetmasvolden) og smelltu á
@@ -431,5 +431,4 @@ sem færist úr stað = 2,8 g; (c) Massi blokkarinnar er 2,76 g, í raun
 jafn massa vatnsins sem færðist úr stað (2,8 g) og í samræmi við lögmál
 Arkímedesar um uppdrif.
 
-:::
 :::

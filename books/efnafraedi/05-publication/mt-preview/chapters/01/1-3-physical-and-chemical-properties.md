@@ -38,7 +38,7 @@ stundum leitt til áberandi litabreytinga). Í öllum þessum dæmum verður
 breyting á eðlisástandi, formi eða eiginleikum efnisins, en engin
 breyting á efnasamsetningu þess.
 
-![](images/media/CNX_Chem_01_03_PhysChange.jpg){#CNX_Chem_01_03_PhysChange}
+![Mynd A er ljósmynd af smjöri sem bráðnar í potti á eldavél. Mynd B er ljósmynd af einhverju sem er hitað í potti á eldavél. Vatnsdropar myndast á neðanverðu glerloki sem hefur verið sett yfir pottinn.](images/media/CNX_Chem_01_03_PhysChange.jpg){#CNX_Chem_01_03_PhysChange}
 
 *Mynd: (a) Vax gengst undir eðlisbreytingu þegar fast vax er hitað og
 myndar fljótandi vax. (b) Gufa sem þéttist innan í potti er
@@ -54,7 +54,7 @@ og myndar ryð; króm oxast ekki (\[↗\](#CNX_Chem_01_03_Rust)).
 Nítróglýserín er mjög hættulegt vegna þess að það springur auðveldlega;
 neon er nánast hættulaust vegna þess að það er mjög óhvarfgjarnt.
 
-![](images/media/CNX_Chem_01_03_Rust.jpg){#CNX_Chem_01_03_Rust}
+![Mynd A er mynd af málmvélbúnaði sem er nú að mestu þakinn rauðappelsínugulu ryði. Mynd B sýnir silfurlitaða krómhluta á mótorhjóli. Einn hlutinn er svo glansandi að þú getur séð spegilmynd af götunni og byggingum í kring.](images/media/CNX_Chem_01_03_Rust.jpg){#CNX_Chem_01_03_Rust}
 
 *Mynd: (a) Einn af efnaeiginleikum járns er að það ryðgar; (b) einn af
 efnaeiginleikum króms er að það gerir það ekki. (Heimild a: breyting á
@@ -72,7 +72,7 @@ og þegar kopar hvarfast við saltpéturssýru), allar tegundir bruna og
 þegar matur er eldaður, meltur eða rotnar
 (\[↗\](#CNX_Chem_01_03_ChemChange)).
 
-![](images/media/CNX_Chem_01_03_ChemChange.jpg){#CNX_Chem_01_03_ChemChange}
+![Mynd A er mynd af flösku sem inniheldur bláan vökva. Nokkrir brúnleitir koparþræðir eru ofan í bláa vökvanum. Brúnleitt gas stígur upp úr vökvanum og fyllir efri hluta flöskunnar. Mynd B sýnir brennandi eldspýtu. Mynd C sýnir rautt kjöt sem er eldað á pönnu. Mynd D sýnir lítinn klasa af gulum banönum sem eru með mörgum svörtum blettum.](images/media/CNX_Chem_01_03_ChemChange.jpg){#CNX_Chem_01_03_ChemChange}
 
 *Mynd: (a) Kopar og saltpéturssýra gangast undir efnabreytingu og mynda
 koparnítrat og brúnt köfnunarefnisdíoxíðgas. (b) Við bruna eldspýtu
@@ -110,7 +110,7 @@ kallaður „eldtígull“ eða „hættutígull“, veitir verðmætar upplýsi
 draga stuttlega saman hinar ýmsu hættur sem ber að varast þegar unnið er
 með tiltekið efni.
 
-![](images/media/CNX_Chem_01_03_HazDiamond.jpg){#CNX_Chem_01_03_HazDiamond}
+![Tígullinn skiptist í fjóra minni tígla. Efri tígullinn er rauður og tengist eldhættu. Tölurnar í eldhættutíglinum eru á bilinu 0 til 4. Eftir því sem tölurnar hækka lækkar blossamark efnisins. 0 gefur til kynna efni sem brennur ekki, 1 gefur til kynna efni með blossamark yfir 200 gráðum Fahrenheit, 2 gefur til kynna efni með blossamark yfir 100 gráðum Fahrenheit en ekki yfir 200 gráðum Fahrenheit, 3 gefur til kynna efni með blossamark undir 100 gráðum Fahrenheit og 4 gefur til kynna efni með blossamark undir 73 gráðum Fahrenheit. Hægri tígullinn er gulur og tengist hvarfgirni. Tölur fyrir hvarfgirni eru á bilinu 0 til 4. 0 gefur til kynna stöðugt efni, 1 gefur til kynna efni sem er óstöðugt ef það er hitað, 2 gefur til kynna möguleika á ofsafenginni efnabreytingu, 3 gefur til kynna að högg og hiti geti sprengt efnið og 4 gefur til kynna að efnið geti sprungið. Neðri tígullinn er hvítur og tengist sérstökum hættum. Þar eru skammstafanir sem lýsa sérstökum hættulegum eiginleikum efnisins. OX gefur til kynna oxara, ACID gefur til kynna sýru, ALK gefur til kynna basa, COR gefur til kynna ætandi efni, W með línu í gegn gefur til kynna að ekki megi nota vatn og tákn með punkti umkringdum þremur þríhyrningum gefur til kynna geislavirkni. Tígullinn lengst til vinstri er blár og tengist heilsufarsáhættu. Tölurnar í heilsufarstíglinum eru á bilinu 0 til 4. 0 gefur til kynna venjulegt efni, 1 gefur til kynna lítilsháttar hættu, 2 gefur til kynna hættu, 3 gefur til kynna mikla hættu og 4 gefur til kynna lífshættu.](images/media/CNX_Chem_01_03_HazDiamond.jpg){#CNX_Chem_01_03_HazDiamond}
 
 *Mynd: Hættutígull Landssambands brunavarna í Bandaríkjunum (NFPA)
 dregur saman helstu hættur af völdum
@@ -142,7 +142,7 @@ eiginleika nálægt hvort öðru ([↗](#CNX_Chem_01_03_PeriodicPU)).
 Þú munt læra meira um lotukerfið eftir því sem þú heldur áfram í
 efnafræðináminu.
 
-![](images/media/CNX_Chem_01_03_PeriodicPU.jpg){#CNX_Chem_01_03_PeriodicPU}
+![Á þessari mynd af lotukerfinu eru málmar merktir með gulum lit og eru ríkjandi á vinstri tveimur þriðju hlutum lotukerfisins. Málmleysingjar eru ferskjugulir og eru að mestu bundnir við efra hægra svæði töflunnar, að undanskildu vetni, H, sem er staðsett efst til vinstri í töflunni. Hálfmálmar eru fjólubláir og mynda skálínu milli málma og málmleysingja í töflunni. Hópur 13 inniheldur bæði málma og hálfmálma. Hópur 17 inniheldur bæði málmleysingja og hálfmálma. Hópar 14 til 16 innihalda að minnsta kosti einn fulltrúa málms, hálfmálms og málmleysingja. Skýringarlykill sýnir að við stofuhita eru málmar föst efni, hálfmálmar eru vökvar og málmleysingjar eru lofttegundir.](images/media/CNX_Chem_01_03_PeriodicPU.jpg){#CNX_Chem_01_03_PeriodicPU}
 
 *Mynd: Lotukerfið sýnir hvernig hægt er að flokka frumefni eftir
 ákveðnum svipuðum eiginleikum. Athugið að bakgrunnsliturinn gefur til

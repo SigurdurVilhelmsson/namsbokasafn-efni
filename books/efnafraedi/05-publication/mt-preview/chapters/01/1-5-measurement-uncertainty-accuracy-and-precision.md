@@ -181,7 +181,6 @@ Námundaðu eftirfarandi að tilgreindum fjölda markverðra stafa:
 
 (a) 0,42; (b) 0,00387; (c) 421,2; (d) 28.684
 
-:::
 
 :::note
 
@@ -221,7 +220,6 @@ Svarið er 65 g (námundað að einingum; engir aukastafir)
 
 (a) 2,64 ml; (b) 0,658 m
 
-:::
 
 :::note
 
@@ -257,7 +255,6 @@ niðurstöðuna að sama fjölda tölustafa og talan með fæsta markverða staf
 
 (a) 0,747 cm^2^ (b) 0,9884 m/s
 
-:::
 
 :::note
 
@@ -291,7 +288,6 @@ Hver er eðlismassi vökva með massa 31,1415 g og rúmmál 30,13 cm^3^?
 
 1,034 g/ml
 
-:::
 
 :::note
 
@@ -345,7 +341,6 @@ sökkt í mæliglas, með niðurstöðum eins og sýnt er.
 eðlismassinn er mjög nálægt þeim eðlismassa sem gefinn er fyrir gull í
 \[↗\](#fs-idm45639696).
 
-:::
 
 :::note
 
@@ -458,7 +453,6 @@ veldisvísisformi með réttum fjölda markverðra stafa:
 $\times$ 10^−3^
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp26053648} Tilgreinið hvort hægt sé að ákvarða
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
@@ -478,7 +472,6 @@ bifreiðar
 (f) tímann sem það tekur að aka frá San Francisco til Kansas City á 53
 mílna meðalhraða á klukkustund
 
-:::
 
 :::æfingadæmi{#fs-idp30473840} Tilgreinið hvort hægt sé að ákvarða
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
@@ -501,7 +494,6 @@ eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 (f) óvisst
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp191983136} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
@@ -520,7 +512,6 @@ hver eftirfarandi mælinga?
 
 (g) 0,01400 g/mL
 
-:::
 
 :::æfingadæmi{#fs-idp16088144} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
@@ -545,7 +536,6 @@ hver eftirfarandi mælinga?
 (g) fimm
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp334498416} Eftirfarandi magn var gefið upp á
 merkimiðum á söluvörum. Ákvarðaðu fjölda markverðra stafa í hverju
@@ -567,7 +557,6 @@ tilfelli.
 
 (h) 99,80% óvirk efni
 
-:::
 
 :::æfingadæmi{#fs-idp15391168} Sléttaðu eftirfarandi tölur að tveimur
 markverðum stöfum:
@@ -589,7 +578,6 @@ markverðum stöfum:
 10^−3^; (f) 0,44
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp108082000} Sléttaðu eftirfarandi tölur að tveimur
 markverðum stöfum:
@@ -606,7 +594,6 @@ markverðum stöfum:
 
 (f) 0,885
 
-:::
 
 :::æfingadæmi{#fs-idp358584288} Framkvæmdu eftirfarandi útreikninga og
 gefðu upp hvert svar með réttum fjölda markverðra stafa.
@@ -628,7 +615,6 @@ gefðu upp hvert svar með réttum fjölda markverðra stafa.
 2,08; (d) 0,19; (e) 27.440; (f) 43,0
 
 :::
-:::
 
 :::æfingadæmi{#fs-idp356573616} Framkvæmdu eftirfarandi útreikninga og
 gefðu upp hvert svar með réttum fjölda markverðra stafa.
@@ -649,7 +635,6 @@ gefðu upp hvert svar með réttum fjölda markverðra stafa.
 
 (h) $${\frac{{(88.5-87.57)}}{{45.13}}}$$
 
-:::
 
 :::practice-problem{#fs-idp30946992}
 Skoðaðu niðurstöður

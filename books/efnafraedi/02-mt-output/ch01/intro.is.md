@@ -21,9 +21,9 @@
 - Eining til að prófa virkni ýmissa atriða til að sjá hvernig þau
   birtast í PDF-skjali :::
 
-{id="CNX_Chem_01_00_DailyChem" class="splash" alt="Myndasamsetning sýnir
-bolla af svörtu kaffi, hönd þakta froðukenndri sápu, fjarstýringu og
-bensíndælustút sem stungið er í bensíntank ökutækis."}
+:::
+
+![Myndasamsetning sýnir bolla af svörtu kaffi, hönd þakta froðukenndri sápu, fjarstýringu og bensíndælustút sem stungið er í bensíntank ökutækis.](images/media/CNX_Chem_01_00_DailyChem.jpg){#CNX_Chem_01_00_DailyChem .splash}
 
 *Mynd: Hrein efni og efnaferli eru nauðsynleg fyrir tilveru okkar, þau
 sjá okkur fyrir næringu, halda okkur hreinum og heilbrigðum, eru notuð
@@ -32,7 +32,7 @@ fleira. (heimild „vinstri“: breyting á verki eftir „vxla“/Flickr;
 heimild „vinstri miðja“: breyting á verki eftir „the Italian
 voice“/Flickr; heimild „hægri miðja“: breyting á verki eftir Jason Trim;
 heimild „hægri“: breyting á verki eftir
-„gosheshe“/Flickr)*{id="CNX_Chem_01_00_DailyChem"}
+„gosheshe“/Flickr)*{#CNX_Chem_01_00_DailyChem}
 
 Vekjaraklukkan þín hringir og eftir að hafa ýtt einu sinni eða tvisvar á
 blundhnappinn kemurðu þér fram úr rúminu. Þú býrð til kaffibolla til að

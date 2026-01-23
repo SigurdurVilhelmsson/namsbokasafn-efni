@@ -23,8 +23,12 @@
  *   node tools/repair-directives.js --all --dry-run
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Directives that can contain nested directives
 const CONTAINER_DIRECTIVES = ['practice-problem'];
@@ -247,12 +251,13 @@ function repairDirectives(content, verbose = false) {
   const lines = content.split('\n');
   const result = [];
   const stack = []; // Stack of {name, state}
-  let changes = 0;
+  let addedClosings = 0;
+  let removedOrphans = 0;
 
   function closeDirective(name) {
     result.push(':::');
     result.push(''); // Blank line after closing
-    changes++;
+    addedClosings++;
     if (verbose) {
       console.log(`  + Added closing ::: for :::${name} at line ${result.length - 1}`);
     }
@@ -304,8 +309,14 @@ function repairDirectives(content, verbose = false) {
       // Found a closing ::: marker
       if (stack.length > 0) {
         stack.pop();
+        result.push(line);
+      } else {
+        // Orphaned closing - skip it
+        removedOrphans++;
+        if (verbose) {
+          console.log(`  - Removed orphaned ::: at line ${i + 1}`);
+        }
       }
-      result.push(line);
     } else {
       // Regular line - check if we should close the current directive
       result.push(line);
@@ -337,7 +348,9 @@ function repairDirectives(content, verbose = false) {
 
   return {
     content: result.join('\n'),
-    changes,
+    changes: addedClosings + removedOrphans,
+    addedClosings,
+    removedOrphans,
   };
 }
 
@@ -374,14 +387,23 @@ function processFile(filePath, options = {}) {
     return { changed: false, changes: 0 };
   }
 
+  const parts = [];
+  if (result.addedClosings > 0) {
+    parts.push(`${result.addedClosings} closing marker(s) added`);
+  }
+  if (result.removedOrphans > 0) {
+    parts.push(`${result.removedOrphans} orphan(s) removed`);
+  }
+  const changeDesc = parts.join(', ');
+
   if (dryRun) {
-    console.log(`[DRY RUN] Would add ${result.changes} closing marker(s): ${filePath}`);
+    console.log(`[DRY RUN] ${changeDesc}: ${filePath}`);
   } else {
     fs.writeFileSync(filePath, result.content, 'utf8');
-    console.log(`Added ${result.changes} closing marker(s): ${filePath}`);
+    console.log(`${changeDesc}: ${filePath}`);
   }
 
-  return { changed: true, changes: result.changes };
+  return { changed: true, changes: result.changes, addedClosings: result.addedClosings, removedOrphans: result.removedOrphans };
 }
 
 /**
@@ -420,6 +442,8 @@ function processBatch(directory, options = {}) {
   }
 
   let totalChanges = 0;
+  let totalAdded = 0;
+  let totalRemoved = 0;
   let filesChanged = 0;
 
   for (const file of files) {
@@ -427,12 +451,15 @@ function processBatch(directory, options = {}) {
     if (result && result.changed) {
       filesChanged++;
       totalChanges += result.changes;
+      totalAdded += result.addedClosings || 0;
+      totalRemoved += result.removedOrphans || 0;
     }
   }
 
   console.log('\n' + '─'.repeat(50));
   console.log(`Files changed: ${filesChanged}`);
-  console.log(`Total closing markers added: ${totalChanges}`);
+  console.log(`Total closing markers added: ${totalAdded}`);
+  console.log(`Total orphaned markers removed: ${totalRemoved}`);
 }
 
 /**

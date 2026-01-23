@@ -29,7 +29,7 @@ publication-track: mt-preview
   birtast í PDF-skjali
 :::
 
-![](images/media/CNX_Chem_01_00_DailyChem.jpg){#CNX_Chem_01_00_DailyChem}
+![Myndasamsetning sýnir bolla af svörtu kaffi, hönd þakta froðukenndri sápu, fjarstýringu og bensíndælustút sem stungið er í bensíntank ökutækis.](images/media/CNX_Chem_01_00_DailyChem.jpg){#CNX_Chem_01_00_DailyChem}
 
 *Mynd: Hrein efni og efnaferli eru nauðsynleg fyrir tilveru okkar, þau
 sjá okkur fyrir næringu, halda okkur hreinum og heilbrigðum, eru notuð
