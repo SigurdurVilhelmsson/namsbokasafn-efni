@@ -225,6 +225,41 @@ function runTool(scriptPath, args, options = {}) {
 }
 
 // ============================================================================
+// Sidecar Path Resolution
+// ============================================================================
+
+/**
+ * Get the path to a sidecar file in 02-for-mt/ for a file in 02-mt-output/
+ *
+ * MT output files are in 02-mt-output/ but their sidecar files (equations,
+ * protected content) remain in 02-for-mt/ since they don't go through translation.
+ *
+ * @param {string} filePath - Path to the MT output file (e.g., .../02-mt-output/ch01/1-2.is.md)
+ * @param {string} sidecarType - Type of sidecar: 'equations' or 'protected'
+ * @returns {string|null} Path to the sidecar file, or null if not found
+ */
+function getSidecarPath(filePath, sidecarType) {
+  // Convert 02-mt-output path to 02-for-mt path
+  const forMtPath = filePath.replace(/02-mt-output/, '02-for-mt');
+
+  // Get the base name without language suffix and extension
+  // e.g., "1-2.is.md" -> "1-2" or "intro.is.md" -> "intro"
+  const dir = path.dirname(forMtPath);
+  const basename = path.basename(forMtPath)
+    .replace(/\.is\.md$/, '')  // Remove .is.md
+    .replace(/\.en\.md$/, '')  // Remove .en.md (shouldn't happen but be safe)
+    .replace(/\.md$/, '');     // Remove plain .md
+
+  const sidecarPath = path.join(dir, `${basename}-${sidecarType}.json`);
+
+  if (fs.existsSync(sidecarPath)) {
+    return sidecarPath;
+  }
+
+  return null;
+}
+
+// ============================================================================
 // Pipeline Processing
 // ============================================================================
 
@@ -319,8 +354,23 @@ async function processFile(filePath, options) {
         args.push('--verbose');
       }
     } else if (step.id === 'equations') {
+      // Find equations sidecar in 02-for-mt/ (not in 02-mt-output/)
+      const equationsSidecar = getSidecarPath(filePath, 'equations');
+
+      if (!equationsSidecar) {
+        // No equations file - skip this step
+        result.steps[step.id] = {
+          skipped: true,
+          reason: 'No equations sidecar found'
+        };
+        if (verbose) {
+          console.log(`  [SKIP] ${step.name}: No equations sidecar found`);
+        }
+        continue;
+      }
+
       args.push(filePath);
-      args.push('--auto');  // Auto-detect equations sidecar file
+      args.push('--equations', equationsSidecar);  // Use explicit path
       if (!dryRun) {
         args.push('--output', filePath);  // Write in-place
       }
