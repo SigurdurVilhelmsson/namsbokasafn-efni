@@ -49,6 +49,12 @@ const PIPELINE_STEPS = [
     description: 'Convert MT-safe [text]{url="..."} syntax back to standard markdown links'
   },
   {
+    id: 'strings',
+    name: 'Restore Strings',
+    script: 'restore-strings.js',
+    description: 'Update sidecar with translated frontmatter titles, table titles, and summaries'
+  },
+  {
     id: 'tables',
     name: 'Restore Tables',
     script: 'restore-tables.js',
@@ -114,8 +120,9 @@ Chains cleanup tools to process translated markdown files after MT output.
 Pipeline Steps:
   1. restore-images.js    Reconstruct images from MT-stripped attribute blocks
   2. restore-links.js     Convert MT-safe link syntax back to standard markdown
-  3. restore-tables.js    Restore tables from sidecar JSON files
-  4. repair-directives.js Add missing ::: closing markers
+  3. restore-strings.js   Update sidecar with translated titles and summaries
+  4. restore-tables.js    Restore tables from sidecar JSON files
+  5. repair-directives.js Add missing ::: closing markers
 
 Usage:
   node tools/post-mt-pipeline.js <file.is.md> [options]
@@ -130,7 +137,7 @@ Options:
   --batch <directory>    Process all .md files in directory recursively
   --dry-run              Show changes without writing files
   --verbose, -v          Show detailed processing information
-  --skip <step>          Skip a step (images|links|tables|directives). Can be used multiple times.
+  --skip <step>          Skip a step (images|links|strings|tables|directives). Can be used multiple times.
   --json                 Output results as JSON
   -h, --help             Show this help message
 
@@ -285,6 +292,14 @@ async function processFile(filePath, options) {
       if (verbose) {
         args.push('--verbose');
       }
+    } else if (step.id === 'strings') {
+      args.push(filePath);
+      if (dryRun) {
+        args.push('--dry-run');
+      }
+      if (verbose) {
+        args.push('--verbose');
+      }
     } else if (step.id === 'tables') {
       args.push(filePath);
       if (!dryRun) {
@@ -328,6 +343,12 @@ async function processFile(filePath, options) {
         stepResult.urlCount = parseInt(match[1], 10);
         stepResult.refCount = parseInt(match[2], 10);
         stepResult.docCount = parseInt(match[3], 10);
+      }
+    } else if (step.id === 'strings' && toolResult.stderr) {
+      // restore-strings.js outputs to stderr in verbose mode
+      const match = toolResult.stderr.match(/Restored (\d+) string/);
+      if (match) {
+        stepResult.count = parseInt(match[1], 10);
       }
     } else if (step.id === 'tables' && toolResult.stderr) {
       // restore-tables.js outputs to stderr in verbose mode
@@ -404,6 +425,7 @@ async function processMultipleFiles(files, options) {
     steps: {
       images: { total: 0, count: 0 },
       links: { total: 0, urls: 0, refs: 0, docs: 0 },
+      strings: { total: 0, count: 0 },
       tables: { total: 0, count: 0 },
       directives: { total: 0, count: 0 }
     },
@@ -444,6 +466,11 @@ async function processMultipleFiles(files, options) {
       results.steps.links.urls += fileResult.steps.links.urlCount || 0;
       results.steps.links.refs += fileResult.steps.links.refCount || 0;
       results.steps.links.docs += fileResult.steps.links.docCount || 0;
+    }
+
+    if (fileResult.steps.strings && !fileResult.steps.strings.skipped) {
+      results.steps.strings.total++;
+      results.steps.strings.count += fileResult.steps.strings.count || 0;
     }
 
     if (fileResult.steps.tables && !fileResult.steps.tables.skipped) {
@@ -530,6 +557,7 @@ async function main() {
     console.log('Step Statistics:');
     console.log(`  Images restored: ${results.steps.images.count}`);
     console.log(`  Links restored: ${results.steps.links.urls} URLs, ${results.steps.links.refs} refs, ${results.steps.links.docs} docs`);
+    console.log(`  Strings restored: ${results.steps.strings.count}`);
     console.log(`  Tables restored: ${results.steps.tables.count}`);
     console.log(`  Directives repaired: ${results.steps.directives.count} closing markers added`);
   }

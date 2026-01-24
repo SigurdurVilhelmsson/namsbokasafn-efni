@@ -70,6 +70,13 @@ protect-for-mt.js - Pre-MT protection for tables and frontmatter
 Extracts content that would be destroyed by MT and saves to sidecar JSON.
 Tables are replaced with [[TABLE:N]]{id="..."} placeholders.
 
+Also generates a strings file (*-strings.en.txt) with translatable content:
+- Frontmatter titles
+- Table titles
+- Table summaries (accessibility text)
+
+The strings file should be sent to MT alongside the main content.
+
 Usage:
   node tools/protect-for-mt.js <file.en.md> [options]
   node tools/protect-for-mt.js --batch <directory>
@@ -80,6 +87,10 @@ Options:
   --dry-run         Show what would change without writing files
   --verbose, -v     Show processing details
   -h, --help        Show this help message
+
+Output Files:
+  *-protected.json  Sidecar with extracted tables and frontmatter
+  *-strings.en.txt  Translatable strings for MT
 
 Examples:
   # Preview protection for a single file
@@ -210,6 +221,45 @@ function getSidecarPath(mdPath) {
 }
 
 /**
+ * Get the strings file path for a markdown file
+ * @param {string} mdPath - Path to the markdown file
+ * @returns {string} Path to the strings .en.txt file
+ */
+function getStringsPath(mdPath) {
+  const dir = path.dirname(mdPath);
+  const basename = path.basename(mdPath, '.en.md');
+  return path.join(dir, `${basename}-strings.en.txt`);
+}
+
+/**
+ * Generate translatable strings content from sidecar data
+ * @param {object} sidecar - The sidecar data with frontmatter and tables
+ * @returns {string} Formatted strings content for MT
+ */
+function generateStringsContent(sidecar) {
+  const lines = [];
+
+  // Add frontmatter title if present
+  if (sidecar.frontmatter?.title) {
+    lines.push(`[[FRONTMATTER:title]] ${sidecar.frontmatter.title}`);
+  }
+
+  // Add table titles and summaries
+  if (sidecar.tables) {
+    for (const [key, table] of Object.entries(sidecar.tables)) {
+      if (table.title) {
+        lines.push(`[[${key}:title]] ${table.title}`);
+      }
+      if (table.summary) {
+        lines.push(`[[${key}:summary]] ${table.summary}`);
+      }
+    }
+  }
+
+  return lines.join('\n\n');
+}
+
+/**
  * Process a single file
  * @param {string} filePath - Path to the markdown file
  * @param {object} options - Processing options
@@ -255,6 +305,9 @@ function processFile(filePath, options) {
 
   // Determine outputs
   const sidecarPath = getSidecarPath(filePath);
+  const stringsPath = getStringsPath(filePath);
+  const stringsContent = generateStringsContent(sidecar);
+  const hasStrings = stringsContent.length > 0;
 
   if (dryRun) {
     console.log(`[DRY RUN] Would protect ${tableCount} table(s) in: ${filePath}`);
@@ -269,7 +322,17 @@ function processFile(filePath, options) {
       }
     }
     console.log(`  Would write sidecar: ${sidecarPath}`);
-    return { success: true, tablesProtected: tableCount, hasFrontmatter, dryRun: true };
+    if (hasStrings) {
+      console.log(`  Would write strings: ${stringsPath}`);
+      console.log(`  Translatable strings:`);
+      for (const line of stringsContent.split('\n\n')) {
+        if (line.trim()) {
+          const preview = line.length > 80 ? line.substring(0, 77) + '...' : line;
+          console.log(`    ${preview}`);
+        }
+      }
+    }
+    return { success: true, tablesProtected: tableCount, hasFrontmatter, hasStrings, dryRun: true };
   }
 
   // Write sidecar file
@@ -277,6 +340,14 @@ function processFile(filePath, options) {
 
   if (verbose) {
     console.log(`  Wrote sidecar: ${sidecarPath}`);
+  }
+
+  // Write strings file if there's translatable content
+  if (hasStrings) {
+    fs.writeFileSync(stringsPath, stringsContent);
+    if (verbose) {
+      console.log(`  Wrote strings: ${stringsPath}`);
+    }
   }
 
   // Write protected content (without frontmatter, tables replaced with placeholders)
@@ -293,7 +364,9 @@ function processFile(filePath, options) {
     success: true,
     tablesProtected: tableCount,
     hasFrontmatter,
-    sidecarPath
+    hasStrings,
+    sidecarPath,
+    stringsPath: hasStrings ? stringsPath : null
   };
 }
 
@@ -346,6 +419,7 @@ function processBatch(directory, options) {
   let totalTables = 0;
   let filesWithTables = 0;
   let filesWithFrontmatter = 0;
+  let filesWithStrings = 0;
 
   for (const file of files) {
     if (options.verbose) {
@@ -365,6 +439,9 @@ function processBatch(directory, options) {
       if (result.hasFrontmatter) {
         filesWithFrontmatter++;
       }
+      if (result.hasStrings) {
+        filesWithStrings++;
+      }
     } else {
       console.error(`  Error: ${result.error}`);
     }
@@ -378,6 +455,7 @@ function processBatch(directory, options) {
   console.log(`  Files with frontmatter: ${filesWithFrontmatter}`);
   console.log(`  Files with tables: ${filesWithTables}`);
   console.log(`  Total tables protected: ${totalTables}`);
+  console.log(`  Files with translatable strings: ${filesWithStrings}`);
 }
 
 // ============================================================================
@@ -409,10 +487,13 @@ function main() {
         process.exit(1);
       }
 
-      if (!args.dryRun && result.tablesProtected > 0) {
+      if (!args.dryRun && (result.tablesProtected > 0 || result.hasFrontmatter)) {
         console.error(`Protected ${result.tablesProtected} table(s)`);
         if (result.sidecarPath) {
           console.error(`Sidecar: ${result.sidecarPath}`);
+        }
+        if (result.stringsPath) {
+          console.error(`Strings: ${result.stringsPath}`);
         }
       }
     }
