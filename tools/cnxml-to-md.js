@@ -570,6 +570,20 @@ function extractContent(cnxml, options = {}) {
       topLevelElements.push({ type: 'figure', pos: figureMatch.index, content: figureMatch[2], attrs: figureMatch[1] });
     }
 
+    // Find tables (important for tables that appear before the first section)
+    const tablePattern = /<table([^>]*)>([\s\S]*?)<\/table>/g;
+    let tableMatch;
+    while ((tableMatch = tablePattern.exec(preSectionContent)) !== null) {
+      topLevelElements.push({ type: 'table', pos: tableMatch.index, content: tableMatch[2], attrs: tableMatch[1] });
+    }
+
+    // Find notes (link-to-learning, etc. that appear before sections)
+    const notePattern = /<note([^>]*)>([\s\S]*?)<\/note>/g;
+    let noteMatch;
+    while ((noteMatch = notePattern.exec(preSectionContent)) !== null) {
+      topLevelElements.push({ type: 'note', pos: noteMatch.index, content: noteMatch[2], attrs: noteMatch[1] });
+    }
+
     // Sort by position in document
     topLevelElements.sort((a, b) => a.pos - b.pos);
 
@@ -634,6 +648,41 @@ function extractContent(cnxml, options = {}) {
           }
           lines.push('');
         }
+      } else if (elem.type === 'table') {
+        // Process table (inline, same as section tables)
+        processTable(elem.attrs, elem.content, lines, processInlineContent);
+      } else if (elem.type === 'note') {
+        // Process note - extract class and content
+        const classMatch = elem.attrs.match(/class="([^"]*)"/);
+        const noteClass = classMatch ? classMatch[1] : '';
+
+        // Map CNXML note classes to website directive types
+        let directive = ':::note';
+        if (noteClass.includes('link-to-learning')) {
+          directive = ':::link-to-material';
+        }
+
+        lines.push(directive);
+
+        const noteTitleMatch = elem.content.match(/<title>([^<]+)<\/title>/);
+        if (noteTitleMatch) {
+          lines.push('### ' + processInlineContent(noteTitleMatch[1]));
+          lines.push('');
+        }
+
+        // Process note content (paragraphs)
+        const noteParaPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
+        let noteParaMatch;
+        while ((noteParaMatch = noteParaPattern.exec(elem.content)) !== null) {
+          const paraText = processInlineContent(noteParaMatch[1]);
+          if (paraText.trim()) {
+            lines.push(paraText);
+            lines.push('');
+          }
+        }
+
+        lines.push(':::');
+        lines.push('');
       }
     }
   }

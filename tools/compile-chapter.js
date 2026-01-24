@@ -48,6 +48,67 @@ const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.dirname(__dirname);
 
 // ============================================================================
+// Content Cleanup
+// ============================================================================
+
+/**
+ * Clean Pandoc-style attributes and artifacts from markdown
+ * Removes {#id}, {.class}, arrow cross-references, and other pipeline artifacts
+ * that shouldn't appear in the final rendered output.
+ */
+function cleanupContent(content) {
+  let result = content;
+
+  // 1. Strip Pandoc attributes from images: ![alt](url){#id .class} → ![alt](url)
+  result = result.replace(/!\[([^\]]*)\]\(([^)]+)\)\{[^}]+\}/g, '![$1]($2)');
+
+  // 2. Strip Pandoc attributes from italics/captions: *text*{#id} → *text*
+  result = result.replace(/(?<!\*)\*([^*\n]+)\*\{#[^}]+\}/g, '*$1*');
+
+  // 2b. Handle captions where the ID is at very end of line after closing *
+  result = result.replace(/(\S)\*\{#[^}]+\}$/gm, '$1*');
+
+  // 3. Strip term IDs from bold: **term**{#term-00001} → **term**
+  result = result.replace(/\*\*([^*]+)\*\*\{#[^}]+\}/g, '**$1**');
+
+  // 4. Convert arrow cross-references to cleaner text
+  // Distinguish between table and figure references based on ID patterns
+  const isTableRef = (id) => id.startsWith('fs-') || id.endsWith('-table') || id.includes('table');
+  const getRefText = (id) => isTableRef(id) ? 'sjá töflu' : 'sjá mynd';
+
+  result = result.replace(/\[↗\]\(#([^)]+)\)/g, (match, id) => `[${getRefText(id)}](#${id})`);
+  result = result.replace(/\[↑\]\(#([^)]+)\)/g, (match, id) => `[${getRefText(id)}](#${id})`);
+  result = result.replace(/\(\[↗\]\(#([^)]+)\)\)/g, (match, id) => `([${getRefText(id)}](#${id}))`);
+  result = result.replace(/\(\[↑\]\(#([^)]+)\)\)/g, (match, id) => `([${getRefText(id)}](#${id}))`)
+
+  // 5. Remove standalone table/element attribute lines
+  // Handles both {id="..." summary="..."} and {#id} formats
+  result = result.replace(/^\{id="[^"]*"(?:\s+summary="[^"]*")?\}\s*$/gm, '');
+  result = result.replace(/^\{#[^}]+\}\s*$/gm, '');
+
+  // 6. Strip attributes from equation placeholders: [[EQ:n]]{id="..."} → [[EQ:n]]
+  result = result.replace(/\[\[EQ:(\d+)\]\]\{[^}]+\}/g, '[[EQ:$1]]');
+
+  // 6b. Strip Pandoc attributes from display math: $$...$${ #id} → $$...$$
+  result = result.replace(/(\$\$[^$]+\$\$)\{#[^}]+\}/g, '$1');
+
+  // 6c. Strip Pandoc attributes from inline math: $...${ #id} → $...$
+  // Be careful not to match display math ($$)
+  result = result.replace(/(?<!\$)(\$[^$]+\$)\{#[^}]+\}/g, '$1');
+
+  // 7. Clean up .{id="..."} patterns attached to text
+  result = result.replace(/\.\{id="[^"]*"\}/g, '.');
+
+  // 8. Remove lines that contain only a period (orphaned from ID cleanup)
+  result = result.replace(/^\.\s*$/gm, '');
+
+  // Clean up multiple blank lines
+  result = result.replace(/\n{3,}/g, '\n\n');
+
+  return result;
+}
+
+// ============================================================================
 // Configuration
 // ============================================================================
 
@@ -594,13 +655,16 @@ function generateFrontmatter(options) {
 }
 
 /**
- * Write output file
+ * Write output file with optional cleanup
  */
 function writeOutput(filePath, content, options) {
+  // Apply cleanup to remove Pandoc artifacts before writing
+  const cleanedContent = cleanupContent(content);
+
   if (options.dryRun) {
     console.log(`[DRY RUN] Would write: ${filePath}`);
     if (options.verbose) {
-      console.log(`  Content length: ${content.length} chars`);
+      console.log(`  Content length: ${cleanedContent.length} chars`);
     }
     return;
   }
@@ -610,7 +674,7 @@ function writeOutput(filePath, content, options) {
     fs.mkdirSync(dir, { recursive: true });
   }
 
-  fs.writeFileSync(filePath, content);
+  fs.writeFileSync(filePath, cleanedContent);
   console.log(`  Written: ${path.basename(filePath)}`);
 }
 
