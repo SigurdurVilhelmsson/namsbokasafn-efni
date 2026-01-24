@@ -23,6 +23,7 @@
 | `docx-to-md` | Convert DOCX files to Markdown format |
 | `export-parallel-corpus` | Export Translation Memory to parallel text files |
 | `generate-glossary` | 1. Extracting English terms + definitions from CNXML <glossary> elements |
+| `merge-split-files` | Merges split Erlendur MT files back into single files. |
 | `patch-alt-text` | Patches missing alt text in publication files using alt text from MT output. |
 | `post-mt-pipeline` | Chains post-MT cleanup tools to process translated markdown files. |
 | `process-chapter` | Full chapter processing pipeline |
@@ -50,6 +51,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*29 tools total (24 active, 5 deprecated)*
+*30 tools total (25 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
