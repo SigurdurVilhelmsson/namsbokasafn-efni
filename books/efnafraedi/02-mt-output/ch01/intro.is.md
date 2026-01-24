@@ -22,7 +22,7 @@ myndast í PDF-skjalinu
 
 ![Myndaklippimynd sýnir bolla af svörtu kaffi, hönd þakta sápufroðu, fjarstýringu og bensíndælustút sem stungið er í bensíntank ökutækis.](images/media/CNX_Chem_01_00_DailyChem.jpg){#CNX_Chem_01_00_DailyChem .splash}
 
-*Mynd: Hrein efni og efnaferli eru nauðsynleg fyrir tilveru okkar, þau
+*Mynd 1.1: Hrein efni og efnaferli eru nauðsynleg fyrir tilveru okkar, þau
 sjá okkur fyrir næringu, halda okkur hreinum og heilbrigðum, eru notuð
 til að framleiða rafeindatæki, gera okkur kleift að ferðast og margt
 fleira. (heimild „vinstri“: breyting á verki eftir „vxla“/Flickr;
