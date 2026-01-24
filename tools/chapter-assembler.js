@@ -372,27 +372,28 @@ function extractKeyEquations(content) {
 
 /**
  * Extract practice problems (exercises)
+ * Supports both :::practice-problem and :::æfingadæmi (Icelandic) directives
  */
 function extractExercises(content) {
   const exercises = [];
 
-  // Match :::practice-problem blocks
-  const problemPattern = /:::practice-problem\{#([^}]+)\}([\s\S]*?)(?=:::practice-problem|$)/g;
+  // Match :::practice-problem or :::æfingadæmi blocks (Icelandic alias)
+  const problemPattern = /:::(?:practice-problem|æfingadæmi)\{#([^}]+)\}([\s\S]*?)(?=:::(?:practice-problem|æfingadæmi)|$)/g;
 
   let match;
   while ((match = problemPattern.exec(content)) !== null) {
     const problemId = match[1];
     let problemContent = match[2];
 
-    // Extract answer if present
+    // Extract answer if present (supports :::answer and :::svar - Icelandic alias)
     let answer = null;
-    const answerMatch = problemContent.match(/:::answer\s*([\s\S]*?):::/);
+    const answerMatch = problemContent.match(/:::(?:answer|svar)\s*([\s\S]*?):::/);
     if (answerMatch) {
       answer = answerMatch[1].trim();
       // Remove answer block from problem content
-      problemContent = problemContent.replace(/:::answer[\s\S]*?:::\s*:::\s*$/m, '').trim();
+      problemContent = problemContent.replace(/:::(?:answer|svar)[\s\S]*?:::\s*:::\s*$/m, '').trim();
       // Also handle case where answer is at end
-      problemContent = problemContent.replace(/:::answer[\s\S]*$/m, '').trim();
+      problemContent = problemContent.replace(/:::(?:answer|svar)[\s\S]*$/m, '').trim();
     }
 
     // Clean up trailing ::: from problem content

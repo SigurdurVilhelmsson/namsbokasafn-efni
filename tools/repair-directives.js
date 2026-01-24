@@ -31,29 +31,144 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Directives that can contain nested directives
-const CONTAINER_DIRECTIVES = ['practice-problem'];
+// Includes æfingadæmi (Icelandic alias for practice-problem)
+const CONTAINER_DIRECTIVES = ['practice-problem', 'æfingadæmi'];
 
 // Directives that must be nested inside a container
-const NESTED_DIRECTIVES = ['answer'];
+// Includes svar (Icelandic alias for answer)
+const NESTED_DIRECTIVES = ['answer', 'svar'];
 
 // Directives that should close after a bullet list ends
 const BULLET_LIST_DIRECTIVES = ['learning-objectives'];
 
 // Directives that close after short content (typically 1-3 paragraphs)
-const SHORT_CONTENT_DIRECTIVES = ['answer', 'link-to-material'];
+// Includes svar (Icelandic alias for answer)
+const SHORT_CONTENT_DIRECTIVES = ['answer', 'svar', 'link-to-material'];
 
-// All known directive types
+// All known directive types (includes Icelandic aliases)
 const ALL_DIRECTIVES = [
   'learning-objectives',
   'example',
   'practice-problem',
+  'æfingadæmi',  // Icelandic alias for practice-problem
   'answer',
+  'svar',         // Icelandic alias for answer
   'link-to-material',
   'chemistry-everyday',
   'how-science-connects',
   'scientist-spotlight',
   'chapter-overview',
 ];
+
+/**
+ * Pre-process content to fix MT artifacts where ::: markers are merged with content.
+ * Erlendur MT often puts closing ::: on the same line as content.
+ * Examples:
+ *   "Some content :::" → "Some content\n:::"
+ *   "::: :::" → ":::\n:::"
+ *   "content ::: :::" → "content\n:::\n:::"
+ *   ":::note content :::" → ":::note content\n:::"
+ *   ":::note ::: " → ":::note\n:::"
+ *   ":::note content ::: :::warning more :::" → multiple lines
+ */
+function fixMergedDirectiveMarkers(content, verbose = false) {
+  let fixCount = 0;
+  const lines = content.split('\n');
+  const result = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    // Skip empty lines
+    if (!trimmed) {
+      result.push(line);
+      continue;
+    }
+
+    // Check if line has any ::: markers
+    if (!trimmed.includes(':::')) {
+      result.push(line);
+      continue;
+    }
+
+    // Split line by ::: and process each part
+    // This handles all cases: opening directives, content, closing markers
+    const parts = trimmed.split(/(\s*:::)/);
+    const outputParts = [];
+    let currentPart = '';
+
+    for (let i = 0; i < parts.length; i++) {
+      const part = parts[i].trim();
+
+      if (part === ':::') {
+        // This is a ::: marker
+        // Check if next part is a directive name (e.g., "note", "example")
+        const nextPart = parts[i + 1] ? parts[i + 1].trim() : '';
+        const directiveMatch = nextPart.match(/^([a-zA-Z][-a-zA-Z0-9]*)(\{[^}]*\})?(.*)/);
+
+        if (directiveMatch) {
+          // This is an opening directive
+          if (currentPart) {
+            // Output any accumulated content first
+            outputParts.push(currentPart);
+            currentPart = '';
+            fixCount++;
+          }
+
+          const directiveName = directiveMatch[1];
+          const directiveAttrs = directiveMatch[2] || '';
+          const afterDirective = directiveMatch[3] ? directiveMatch[3].trim() : '';
+
+          if (afterDirective) {
+            // Content follows the directive opening on the same line
+            outputParts.push(`:::${directiveName}${directiveAttrs}`);
+            currentPart = afterDirective;
+            fixCount++;
+          } else {
+            // Just the directive opening
+            outputParts.push(`:::${directiveName}${directiveAttrs}`);
+          }
+          i++; // Skip the next part since we consumed it
+        } else {
+          // This is a closing :::
+          if (currentPart) {
+            // Output any accumulated content first
+            outputParts.push(currentPart);
+            currentPart = '';
+            fixCount++;
+          }
+          outputParts.push(':::');
+        }
+      } else if (part) {
+        // This is content
+        if (currentPart) {
+          currentPart += ' ' + part;
+        } else {
+          currentPart = part;
+        }
+      }
+    }
+
+    // Don't forget any remaining content
+    if (currentPart) {
+      outputParts.push(currentPart);
+    }
+
+    // Add all output parts as separate lines
+    for (const part of outputParts) {
+      result.push(part);
+    }
+  }
+
+  if (verbose && fixCount > 0) {
+    console.log(`  Fixed ${fixCount} merged ::: marker(s)`);
+  }
+
+  return {
+    content: result.join('\n'),
+    fixCount
+  };
+}
 
 /**
  * Parse a directive line and extract the directive name
@@ -201,8 +316,8 @@ function shouldCloseDirective(directiveName, currentLine, nextLines, state) {
     }
   }
 
-  // For other short content directives (answer): close after content paragraph ends
-  if (directiveName === 'answer') {
+  // For other short content directives (answer/svar): close after content paragraph ends
+  if (directiveName === 'answer' || directiveName === 'svar') {
     if (state.hadContent && isEmptyLine(currentLine)) {
       // Check if next non-empty line is regular paragraph (not indented, not bullet)
       for (const nextLine of nextLines) {
@@ -221,8 +336,8 @@ function shouldCloseDirective(directiveName, currentLine, nextLines, state) {
     }
   }
 
-  // For practice-problem: close if we see a non-nested directive
-  if (directiveName === 'practice-problem') {
+  // For practice-problem/æfingadæmi: close if we see a non-nested directive
+  if (directiveName === 'practice-problem' || directiveName === 'æfingadæmi') {
     if (nextLines.length > 0) {
       const nextDirective = parseDirective(nextLines[0]);
       if (nextDirective && nextDirective !== 'close' && !NESTED_DIRECTIVES.includes(nextDirective)) {
@@ -248,6 +363,11 @@ function shouldCloseDirective(directiveName, currentLine, nextLines, state) {
  * Repair unclosed directives in content
  */
 function repairDirectives(content, verbose = false) {
+  // First, fix any merged ::: markers from MT
+  const mergeResult = fixMergedDirectiveMarkers(content, verbose);
+  content = mergeResult.content;
+  const mergedMarkersFixes = mergeResult.fixCount;
+
   const lines = content.split('\n');
   const result = [];
   const stack = []; // Stack of {name, state}
@@ -348,9 +468,10 @@ function repairDirectives(content, verbose = false) {
 
   return {
     content: result.join('\n'),
-    changes: addedClosings + removedOrphans,
+    changes: addedClosings + removedOrphans + mergedMarkersFixes,
     addedClosings,
     removedOrphans,
+    mergedMarkersFixes,
   };
 }
 
@@ -388,6 +509,9 @@ function processFile(filePath, options = {}) {
   }
 
   const parts = [];
+  if (result.mergedMarkersFixes > 0) {
+    parts.push(`${result.mergedMarkersFixes} merged marker(s) split`);
+  }
   if (result.addedClosings > 0) {
     parts.push(`${result.addedClosings} closing marker(s) added`);
   }
@@ -403,7 +527,7 @@ function processFile(filePath, options = {}) {
     console.log(`${changeDesc}: ${filePath}`);
   }
 
-  return { changed: true, changes: result.changes, addedClosings: result.addedClosings, removedOrphans: result.removedOrphans };
+  return { changed: true, changes: result.changes, addedClosings: result.addedClosings, removedOrphans: result.removedOrphans, mergedMarkersFixes: result.mergedMarkersFixes };
 }
 
 /**
@@ -444,6 +568,7 @@ function processBatch(directory, options = {}) {
   let totalChanges = 0;
   let totalAdded = 0;
   let totalRemoved = 0;
+  let totalMergedSplit = 0;
   let filesChanged = 0;
 
   for (const file of files) {
@@ -453,11 +578,13 @@ function processBatch(directory, options = {}) {
       totalChanges += result.changes;
       totalAdded += result.addedClosings || 0;
       totalRemoved += result.removedOrphans || 0;
+      totalMergedSplit += result.mergedMarkersFixes || 0;
     }
   }
 
   console.log('\n' + '─'.repeat(50));
   console.log(`Files changed: ${filesChanged}`);
+  console.log(`Total merged markers split: ${totalMergedSplit}`);
   console.log(`Total closing markers added: ${totalAdded}`);
   console.log(`Total orphaned markers removed: ${totalRemoved}`);
 }

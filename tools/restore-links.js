@@ -252,6 +252,71 @@ function restoreLinks(content, bookSlug, verbose) {
   let unknownDocCount = 0;
   let imageCount = 0;
   let attrCount = 0;
+  let bracketCount = 0;
+  let equationCount = 0;
+  let latexFixCount = 0;
+
+  // ============================================================================
+  // STEP 1: Unescape MT-escaped characters FIRST (before pattern matching)
+  // Erlendur MT escapes brackets with backslashes: \[ \] → [ ]
+  // This must happen before link patterns can match
+  // ============================================================================
+
+  // Unescape brackets in link patterns: \[text\]{url="..."} → [text]{url="..."}
+  // Also handles ref and doc patterns
+  content = content.replace(/\\(\[)([^\]\\]*(?:\\.[^\]\\]*)*)\\(\])\{(url|ref|doc)=/g, (match, ob, text, cb, type) => {
+    bracketCount += 2;
+    // Also unescape any brackets inside the text
+    const cleanText = text.replace(/\\([\[\]])/g, '$1');
+    return `[${cleanText}]{${type}=`;
+  });
+
+  // Unescape equation placeholders: \[\[EQ:N\]\] → [[EQ:N]]
+  content = content.replace(/\\\[\\\[EQ:(\d+)\\\]\\\]/g, (match, num) => {
+    equationCount++;
+    return `[[EQ:${num}]]`;
+  });
+
+  // Also handle equation with attributes: \[\[EQ:N\]\]{id="..."} → [[EQ:N]]{id="..."}
+  content = content.replace(/\\\[\\\[EQ:(\d+)\\\]\\\](\{[^}]+\})/g, (match, num, attrs) => {
+    equationCount++;
+    return `[[EQ:${num}]]${attrs}`;
+  });
+
+  // Unescape LaTeX content within math blocks
+  // Fix escaped underscores: \_ → _ (for subscripts like K_{eq})
+  // Fix escaped brackets inside math: \[ \] → [ ] (for concentration notation [A])
+  content = content.replace(/\$\$([^$]+)\$\$/g, (match, mathContent) => {
+    const fixed = mathContent
+      .replace(/\\_/g, '_')
+      .replace(/\\\[/g, '[')
+      .replace(/\\\]/g, ']');
+    if (fixed !== mathContent) {
+      latexFixCount++;
+    }
+    return `$$${fixed}$$`;
+  });
+
+  content = content.replace(/\$([^$\n]+)\$/g, (match, mathContent) => {
+    const fixed = mathContent
+      .replace(/\\_/g, '_')
+      .replace(/\\\[/g, '[')
+      .replace(/\\\]/g, ']');
+    if (fixed !== mathContent) {
+      latexFixCount++;
+    }
+    return `$${fixed}$`;
+  });
+
+  // Unescape isotope notation outside math: \_{6}^{14}C → _{6}^{14}C
+  content = content.replace(/\\_\{(\d+)\}\^/g, (match, num) => {
+    latexFixCount++;
+    return `_{${num}}^`;
+  });
+
+  // ============================================================================
+  // STEP 2: Restore link syntax (now works because brackets are unescaped)
+  // ============================================================================
 
   // Restore external URLs: [text]{url="http://..."} → [text](http://...)
   content = content.replace(/\[([^\]]*)\]\{url="([^"]*)"\}/g, (match, text, url) => {
@@ -323,7 +388,17 @@ function restoreLinks(content, bookSlug, verbose) {
     return `{#${id}}`;
   });
 
+  // ============================================================================
+  // STEP 3: Final cleanup - catch any remaining escaped brackets
+  // ============================================================================
+
+  // Catch any remaining escaped brackets not caught by specific patterns
+  const remainingBrackets = (content.match(/\\[\[\]]/g) || []).length;
+  content = content.replace(/\\([\[\]])/g, '$1');
+  bracketCount += remainingBrackets;
+
   if (verbose) {
+    console.error(`MT escape fixes: ${bracketCount} brackets, ${equationCount} equations, ${latexFixCount} LaTeX`);
     console.error(`Restored links: ${urlCount} URLs, ${refCount} refs, ${docCount} docs`);
     console.error(`Restored attributes: ${imageCount} images, ${attrCount} IDs`);
     if (unknownDocCount > 0) {
