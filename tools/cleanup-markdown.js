@@ -189,6 +189,81 @@ function buildElementNumberMap(content, verbose = false) {
     }
   }
 
+  // Pattern 5: Auto-number unnumbered figures based on document order
+  // This handles figures with *Figure:* or *Mynd:* captions (no number)
+  // First, find all figures in order (both numbered and unnumbered)
+  // Then assign numbers to unnumbered ones based on their position
+
+  // Extract chapter number from existing numbered figures (e.g., "1" from "1.5")
+  let chapterNum = null;
+  for (const num of Object.values(idToNumber)) {
+    const chapterMatch = num.match(/^(\d+)\./);
+    if (chapterMatch) {
+      chapterNum = chapterMatch[1];
+      break;
+    }
+  }
+
+  if (chapterNum) {
+    // Find all figures in order by scanning for image URLs followed by any caption
+    let figureOrder = [];
+    for (let i = 0; i < lines.length; i++) {
+      const imageUrlMatch = lines[i].match(/!\[[^\]]*\]\([^)]*\/(CNX_[A-Za-z0-9_]+)\.[a-z]+\)/i);
+      if (imageUrlMatch) {
+        const id = imageUrlMatch[1];
+        // Check if this figure has an unnumbered caption nearby
+        for (let j = i + 1; j <= i + 10 && j < lines.length; j++) {
+          // Check for unnumbered caption: *Mynd:* or *Figure:*
+          const unnumberedCaption = lines[j].match(/^\*(?:Mynd|Figure):\s/i);
+          if (unnumberedCaption && !idToNumber[id]) {
+            figureOrder.push({ id, line: i, hasNumber: false });
+            break;
+          }
+          // Check for numbered caption
+          const numberedCaption = lines[j].match(/^\*(?:Mynd|Figure)\s+(\d+\.?\d*):/i);
+          if (numberedCaption) {
+            figureOrder.push({ id, line: i, hasNumber: true, number: numberedCaption[1] });
+            break;
+          }
+          // Stop if we hit another image
+          if (lines[j].match(/^!\[/)) break;
+        }
+      }
+    }
+
+    // Sort by line number to get document order
+    figureOrder.sort((a, b) => a.line - b.line);
+
+    // Find the index of the first numbered figure
+    // Unnumbered figures before this are intro/decorative and should NOT be auto-numbered
+    const firstNumberedIdx = figureOrder.findIndex(f => f.hasNumber);
+
+    // Assign sequential numbers based on position
+    // Start with the first explicit number, or 1 if none exists
+    let nextNum = 1;
+    for (let i = 0; i < figureOrder.length; i++) {
+      const fig = figureOrder[i];
+      if (fig.hasNumber) {
+        // Update nextNum based on existing numbers
+        const existingNum = parseFloat(fig.number.split('.').pop());
+        if (existingNum >= nextNum) {
+          nextNum = Math.floor(existingNum) + 1;
+        }
+      } else if (!idToNumber[fig.id]) {
+        // Only auto-number figures that appear AFTER the first numbered figure
+        // Figures before the first numbered one are intro/decorative figures
+        if (firstNumberedIdx >= 0 && i < firstNumberedIdx) {
+          if (verbose) console.error(`  Skipping intro figure (no auto-number): ${fig.id}`);
+          continue; // Skip intro figures
+        }
+        // Assign next number to unnumbered figure
+        idToNumber[fig.id] = `${chapterNum}.${nextNum}`;
+        if (verbose) console.error(`  Auto-numbered figure: ${fig.id} -> ${chapterNum}.${nextNum}`);
+        nextNum++;
+      }
+    }
+  }
+
   return idToNumber;
 }
 
@@ -321,6 +396,44 @@ function cleanupMarkdown(content, verbose = false) {
     }
     return match; // Keep unchanged if no number found
   });
+
+  // 4c. Update unnumbered figure captions to include numbers
+  // This converts *Mynd: caption* to *Mynd X.X: caption* based on preceding image IDs
+  // We need to work line-by-line to match images with their captions
+  const resultLines = result.split('\n');
+  let lastImageId = null;
+  for (let i = 0; i < resultLines.length; i++) {
+    // Check for image with ID in URL (CNX_Chem_XX_XX_Name pattern)
+    const imageUrlMatch = resultLines[i].match(/!\[[^\]]*\]\([^)]*\/(CNX_[A-Za-z0-9_]+)\.[a-z]+\)/i);
+    if (imageUrlMatch) {
+      lastImageId = imageUrlMatch[1];
+      continue;
+    }
+
+    // Check for unnumbered caption that follows an image
+    if (lastImageId && resultLines[i].match(/^\*(?:Mynd|Figure):\s/i)) {
+      const number = idToNumber[lastImageId];
+      if (number) {
+        // Replace *Mynd: with *Mynd X.X:
+        resultLines[i] = resultLines[i].replace(
+          /^\*(?:Mynd|Figure):\s/i,
+          `*Mynd ${number}: `
+        );
+        if (verbose) console.error(`  Updated caption: Mynd ${number}: (for ${lastImageId})`);
+        stats.captionAttrs++;
+      }
+      lastImageId = null; // Reset after processing caption
+    }
+
+    // Reset if we hit a blank line or non-caption content after image
+    if (resultLines[i].trim() === '' || (!resultLines[i].startsWith('*') && !resultLines[i].startsWith('!'))) {
+      // Don't reset too quickly - captions can follow blank lines
+      if (i > 0 && resultLines[i - 1].trim() === '' && resultLines[i].trim() === '') {
+        lastImageId = null;
+      }
+    }
+  }
+  result = resultLines.join('\n');
 
   // 5. Remove standalone table/element attribute lines
   // Handles both {id="..." summary="..."} and {#id} formats
