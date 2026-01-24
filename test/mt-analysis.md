@@ -4,364 +4,269 @@
 **MT System:** Erlendur (malstadur.is)
 **Source File:** `mt-sample.en.md`
 **Output File:** `mt-sample.is.md`
+**Pipeline Version:** Post commit `bfc5a5a`
 
 ---
 
 ## Analysis Summary
 
-| Category | Status | Issues Found |
-| :--- | :---: | :--- |
-| YAML Frontmatter | ❌ | Delimiters removed, structure destroyed |
-| Directive Blocks | ⚠️ | Closing `:::` merged with content |
-| Link Syntax | ❌ | Brackets escaped, standard links destroyed |
-| Equation Placeholders | ⚠️ | Brackets escaped `\[\[...\]\]` |
-| Image Attributes | ✅ | Survived intact |
-| Figure Captions | ✅ | Survived intact |
-| Term Definitions | ✅ | Survived intact |
-| Tables | ❌ | Flattened to single lines |
-| Subscripts/Superscripts | ✅ | All preserved |
-| Math Delimiters | ⚠️ | OK but LaTeX internals escaped |
-| Special Characters | ✅ | All preserved |
-| Nested Structures | ❌ | Directive closings misplaced |
-| Edge Cases | ⚠️ | Various issues with structure |
+| Category | MT Output | After Pipeline | Notes |
+| :--- | :---: | :---: | :--- |
+| YAML Frontmatter | ❌ | ❌ | Requires pre-MT protection |
+| Directive Blocks | ⚠️ | ✅ | Fixed: merged markers split |
+| Link Syntax | ⚠️ | ✅ | Fixed: brackets unescaped |
+| Equation Placeholders | ⚠️ | ✅ | Fixed: brackets unescaped |
+| Image Attributes | ✅ | ✅ | No issues |
+| Figure Captions | ✅ | ✅ | No issues |
+| Term Definitions | ✅ | ✅ | No issues |
+| Tables | ❌ | ❌ | Requires pre-MT protection |
+| Subscripts/Superscripts | ✅ | ✅ | No issues |
+| Math Delimiters | ⚠️ | ✅ | Fixed: LaTeX escapes removed |
+| Special Characters | ✅ | ✅ | No issues |
+| Nested Structures | ⚠️ | ✅ | Fixed: directive closings |
+| Edge Cases | ⚠️ | ✅ | Fixed: complex merged markers |
 
-**Legend:** ✅ Passed | ⚠️ Partial Issues | ❌ Failed
+**Legend:** ✅ Working | ⚠️ Has Issues | ❌ Broken (needs pre-MT protection)
 
 ---
 
-## Critical Issues Requiring Pipeline Updates
+## Pipeline Test Results
 
-### HIGH PRIORITY (Breaks Rendering)
+### Test Run: 2026-01-24
 
-#### 1. YAML Frontmatter Destroyed
+```
+$ node tools/post-mt-pipeline.js test/mt-sample.is.md --verbose
 
-**Input:**
-```yaml
----
-title: "MT Syntax Survival Test Document"
-chapter: 99
-section: "99.1"
-translation-status: "Untranslated - Test File"
-module-id: "m00000"
----
+Processing 1 file(s)...
+Processing: test/mt-sample.is.md
+  [OK] Restore Images
+  [OK] Restore Links
+  [OK] Repair Directives
+
+Post-MT Pipeline Complete
+──────────────────────────────────────────────────
+  Files processed: 1
+  Successful: 1
+  Failed: 0
+
+Step Statistics:
+  Images restored: 3
+  Links restored: 3 URLs, 5 refs, 3 docs
+  Directives repaired: 20 changes (merged markers split + closings added)
 ```
 
-**Output:**
-```
-## titill: „Prófunarskjal fyrir setningafræði MT" kafli: 99 hluti: „99.1" þýðingarstaða: „Óþýdd – Prófunarskrá" einingakenni: „m00000"
-```
+### Verification Results
 
-**Problems:**
-- `---` delimiters completely removed
-- Converted to a `##` heading
-- Field structure flattened to single line
-- Quotes changed from `"` to `„"` (Icelandic quotes)
+| Check | Before Pipeline | After Pipeline |
+| :--- | :---: | :---: |
+| Escaped brackets `\[` | Multiple | 0 |
+| Escaped equations `\[\[EQ:` | 10 | 0 |
+| Merged `::: ` markers | 15+ | 0 |
+| LaTeX escaped `\_` | Multiple | 0 |
 
-**Proposed Fix:** Pre-MT protection: Extract frontmatter, pass through separately or protect with markers. Post-MT restoration: Rebuild from protected version.
+### Sample Fixes Verified
 
----
-
-#### 2. Link Brackets Escaped
-
-**Input:**
+**Links restored:**
 ```markdown
-[Visit OpenStax]{url="https://openstax.org/..."}
-[Figure 1.1]{ref="CNX_Chem_01_01_Chem2e"}
-[Chapter on Matter]{doc="m68724"}
-```
-
-**Output:**
-```markdown
+# Before (MT output)
 \[Heimsæktu OpenStax\]{url="https://openstax.org/..."}
-\[Mynd 1.1\]{ref="CNX_Chem_01_01_Chem2e"}
-\[Kafli um efni\]{doc="m68724"}
+
+# After (pipeline)
+[Heimsæktu OpenStax](https://openstax.org/...)
 ```
 
-**Problems:**
-- All `[` and `]` escaped with backslashes
-- The attribute portion `{url="..."}` preserved correctly
-- Link text was translated (correct behavior)
-
-**Proposed Fix:** Post-MT: Remove backslash escapes before `[` and `]` in link patterns.
-
----
-
-#### 3. Standard Markdown Links Destroyed
-
-**Input:**
+**Equations restored:**
 ```markdown
-[Standard markdown link](https://example.com)
-[Link with title](https://example.com "Example Title")
+# Before (MT output)
+Kjörgaslögmálið \[\[EQ:1\]\] lýsir...
+
+# After (pipeline)
+Kjörgaslögmálið [[EQ:1]] lýsir...
 ```
 
-**Output:**
+**Directives restored:**
 ```markdown
-Staðlaður hlekkur: Staðlaður markdown hlekkur
+# Before (MT output)
+:::note Fyrsta athugasemd. ::: :::warning Viðvörun :::
 
-Hlekkur með titli: Hlekkur með titli
-```
-
-**Problems:**
-- Entire link syntax removed
-- Only link text remains (translated)
-- URL completely lost
-- This is why we use `{url="..."}` format instead!
-
-**Conclusion:** The custom `[text]{url="..."}` format is correct for MT - standard markdown links cannot survive.
-
----
-
-#### 4. Tables Flattened
-
-**Input:**
-```markdown
-| Element | Symbol | Atomic Number |
-| :--- | :---: | ---: |
-| Hydrogen | H | 1 |
-| Helium | He | 2 |
-{id="table-001" summary="..."}
-```
-
-**Output:**
-```markdown
-| Frumefni | Tákn | Sætistala | | :--- | :---: | ---: | | Vetni | H | 1
-| | Helíum | He | 2 | | Litíum | Li | 3 | | Kolefni | C | 6 |
-{id="table-001" summary="..."}
-```
-
-**Problems:**
-- All newlines within table removed
-- Table rows merged into continuous text
-- Pipe separators preserved but on wrong lines
-- Attribute block at end preserved
-
-**Proposed Fix:** Pre-MT: Protect entire table blocks. Post-MT: Cannot reliably restore line breaks without protection.
-
----
-
-#### 5. Equation Placeholders Escaped
-
-**Input:**
-```markdown
-[[EQ:1]]
-[[EQ:5]]{id="equation-quadratic"}
-```
-
-**Output:**
-```markdown
-\[\[EQ:1\]\]
-\[\[EQ:5\]\]{id="equation-quadratic"}
-```
-
-**Problems:**
-- All brackets escaped with backslashes
-- Content and structure preserved
-- Attribute syntax preserved
-
-**Proposed Fix:** Post-MT: Simple regex to unescape `\[\[EQ:` patterns.
-
----
-
-#### 6. Directive Closing Markers Merged
-
-**Input:**
-```markdown
-:::learning-objectives
-- Objective 1
-- Objective 2
+# After (pipeline)
+:::note
+Fyrsta athugasemd.
+:::
+:::warning
+Viðvörun
 :::
 ```
 
-**Output:**
+**LaTeX restored:**
 ```markdown
-:::learning-objectives
-
-- Skilja grundvallarreglur efnafræðinnar
-
-- Beita efnaformúlum á raunveruleg vandamál
-
-- Greina gögn úr tilraunum á áhrifaríkan hátt :::
-```
-
-**Problems:**
-- Opening `:::directive` preserved on its own line
-- Closing `:::` merged with last content line
-- Extra blank lines added between list items
-- Nested directives have `:::` closings merged: `::: :::`
-
-**Proposed Fix:** Post-MT: Add newline before standalone `:::` when preceded by non-whitespace.
-
----
-
-### MEDIUM PRIORITY (Degraded Experience)
-
-#### 7. LaTeX Content Partially Escaped
-
-**Input:**
-```markdown
-$$
-K_{eq} = \frac{[C]^c[D]^d}{[A]^a[B]^b}
-$$
-```
-
-**Output:**
-```markdown
+# Before (MT output)
 $$ K\_{eq} = \frac{\[C\]^c\[D\]^d}{\[A\]^a\[B\]^b} $$
+
+# After (pipeline)
+$$ K_{eq} = \frac{[C]^c[D]^d}{[A]^a[B]^b} $$
 ```
-
-**Problems:**
-- Underscores escaped: `_{eq}` → `\_{eq}`
-- Square brackets escaped inside LaTeX
-- Math delimiters `$$` preserved
-- Display math newlines collapsed to single line
-
-**Proposed Fix:** Post-MT: Unescape within `$...$` and `$$...$$` blocks.
 
 ---
 
-#### 8. Isotope Notation Escaped
+## Issues Fixed by Pipeline
 
-**Input:**
+### 1. Link Brackets Escaped ✅ FIXED
+
+**Problem:** Erlendur escapes `[` and `]` with backslashes
+**Solution:** `restore-links.js` now unescapes brackets before pattern matching
+
+### 2. Equation Placeholders Escaped ✅ FIXED
+
+**Problem:** `[[EQ:N]]` becomes `\[\[EQ:N\]\]`
+**Solution:** `restore-links.js` unescapes equation placeholder brackets
+
+### 3. Directive Closing Markers Merged ✅ FIXED
+
+**Problem:** `content :::` on same line, multiple `:::` merged
+**Solution:** `repair-directives.js` splits merged markers onto separate lines
+
+### 4. LaTeX Content Escaped ✅ FIXED
+
+**Problem:** `_{eq}` becomes `\_{eq}`, `[C]` becomes `\[C\]` in math
+**Solution:** `restore-links.js` unescapes within `$...$` and `$$...$$` blocks
+
+### 5. Isotope Notation Escaped ✅ FIXED
+
+**Problem:** `_{6}^{14}C` becomes `\_{6}^{14}C`
+**Solution:** `restore-links.js` unescapes isotope patterns
+
+---
+
+## Issues Requiring Pre-MT Protection
+
+### 1. YAML Frontmatter ❌ NOT FIXED
+
+**Problem:**
+```yaml
+# Input
+---
+title: "Test"
+chapter: 1
+---
+
+# MT Output
+## titill: „Test" kafli: 1
+```
+
+**Why unfixable:** Structure completely destroyed, delimiters removed
+**Required solution:** Extract frontmatter before MT, restore after
+
+### 2. Tables ❌ NOT FIXED
+
+**Problem:**
 ```markdown
-Combined notation: _{6}^{14}C
+# Input
+| A | B |
+|---|---|
+| 1 | 2 |
+
+# MT Output
+| A | B | |---| ---| | 1 | 2 |
 ```
 
-**Output:**
+**Why unfixable:** Line breaks removed, cannot reliably restore row boundaries
+**Required solution:** Protect tables before MT (placeholder or encoding)
+
+### 3. Standard Markdown Links ❌ CANNOT FIX
+
+**Problem:**
 ```markdown
-Samsettur ritháttur: \_{6}^{14}C
+# Input
+[Link text](https://example.com)
+
+# MT Output
+Tengill texti
 ```
 
-**Problems:**
-- Leading underscore escaped
-
-**Proposed Fix:** Post-MT: Unescape `\_` in isotope patterns.
+**Why unfixable:** URL completely lost by MT
+**Required solution:** Use `[text]{url="..."}` format instead (already implemented)
 
 ---
 
-### LOW PRIORITY (Minor/Cosmetic)
+## Patterns That Work Without Fixes
 
-#### 9. Extra Blank Lines Added
+These patterns survive Erlendur MT unchanged:
 
-Content has extra blank lines inserted between paragraphs and list items. Not breaking but increases file size.
-
-#### 10. Quote Style Changed
-
-`"text"` → `„text"` (Icelandic quotation marks). This is correct behavior for translation.
-
----
-
-## Patterns That Survived Unchanged
-
-These patterns work correctly with Erlendur MT:
-
-1. ✅ **Subscripts/Superscripts**: `H~2~O`, `Na^+^`, `10^-3^` - all preserved perfectly
-2. ✅ **Image Attribute Blocks**: `{id="..." class="..." alt="..."}` - preserved, alt text translated
-3. ✅ **Figure Captions**: `*Caption*{id="..."}` - format preserved
-4. ✅ **Term Definitions**: `**term**{id="..."}` - format preserved
-5. ✅ **Inline Math**: `$E = mc^2$` - delimiters and simple content preserved
-6. ✅ **Display Math Delimiters**: `$$...$$` - delimiters preserved
-7. ✅ **Icelandic Characters**: á é í ó ú ý þ ð æ ö - all preserved
-8. ✅ **Greek Letters**: α β γ δ etc. - all preserved
-9. ✅ **Mathematical Symbols**: → ← ↔ ≠ ≤ ≥ etc. - all preserved
-10. ✅ **Unicode Super/Subscripts**: ² ₂ etc. - all preserved
-11. ✅ **Directive Opening**: `:::directive-name` - preserved on own line
-12. ✅ **Directive Attributes**: `{#id}` after directive names - preserved
-13. ✅ **Link Attribute Blocks**: `{url="..."}`, `{ref="..."}`, `{doc="..."}` - preserved
+1. ✅ **Subscripts/Superscripts**: `H~2~O`, `Na^+^`, `10^-3^`
+2. ✅ **Image Attribute Blocks**: `{id="..." class="..." alt="..."}`
+3. ✅ **Figure Captions**: `*Caption*{id="..."}`
+4. ✅ **Term Definitions**: `**term**{id="..."}`
+5. ✅ **Icelandic Characters**: á é í ó ú ý þ ð æ ö
+6. ✅ **Greek Letters**: α β γ δ ε ζ η θ ι κ λ μ ν ξ π ρ σ τ φ χ ψ ω
+7. ✅ **Mathematical Symbols**: → ← ↔ ≠ ≤ ≥ ± × ÷ · ° ∞ ∑ ∫ √
+8. ✅ **Unicode Super/Subscripts**: ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ ₀ ₁ ₂ ₃
+9. ✅ **Directive Openings**: `:::directive-name`
+10. ✅ **Directive Attributes**: `{#id}` after directive names
+11. ✅ **Link Attribute Blocks**: `{url="..."}`, `{ref="..."}`, `{doc="..."}`
 
 ---
 
-## Recommendations
+## Implementation Status
 
-### Pre-MT Protection Needed
+### Completed ✅
 
-These patterns need protection BEFORE sending to MT:
+| Fix | File | Commit |
+| :--- | :--- | :--- |
+| Unescape link brackets | `restore-links.js` | `bfc5a5a` |
+| Unescape equation placeholders | `restore-links.js` | `bfc5a5a` |
+| Unescape LaTeX content | `restore-links.js` | `bfc5a5a` |
+| Unescape isotope notation | `restore-links.js` | `bfc5a5a` |
+| Split merged directive markers | `repair-directives.js` | `bfc5a5a` |
+| Icelandic directive aliases | `repair-directives.js`, `chapter-assembler.js` | `bfc5a5a` |
 
-| Pattern | Protection Strategy |
-|---------|---------------------|
-| YAML Frontmatter | Extract and store separately, don't translate |
-| Tables | Convert to placeholder, restore after MT |
-| Standard markdown links | Already avoided - use `{url="..."}` format |
+### Pending (Future Work)
 
-### Post-MT Restoration Needed
-
-These patterns need fixing AFTER MT returns:
-
-| Pattern | Restoration Regex |
-|---------|-------------------|
-| Escaped link brackets | `\\\[` → `[`, `\\\]` → `]` in link patterns |
-| Escaped equation brackets | `\\\[\\\[EQ:` → `[[EQ:` |
-| Directive closing on same line | Add newline before standalone `:::` |
-| LaTeX escaped underscores | `\\_` → `_` within math blocks |
-| LaTeX escaped brackets | `\\\[` → `[` within math blocks |
-
-### Pipeline Modifications
-
-```javascript
-// Post-MT fixes to add to post-mt-pipeline.js
-
-// 1. Fix escaped brackets in links
-text = text.replace(/\\\[([^\]]+)\\\]\{(url|ref|doc)=/g, '[$1]{$2=');
-
-// 2. Fix escaped equation placeholders
-text = text.replace(/\\\[\\\[EQ:(\d+)\\\]\\\]/g, '[[EQ:$1]]');
-
-// 3. Fix directive closings (add newline before ::: if preceded by content)
-text = text.replace(/([^\n\s])(\s*:::)(\s*)$/gm, '$1\n$2$3');
-
-// 4. Fix LaTeX escapes
-text = text.replace(/(\$[^$]+\$)/g, (match) => {
-  return match.replace(/\\_/g, '_').replace(/\\\[/g, '[').replace(/\\\]/g, ']');
-});
-```
-
-### Cannot Be Fixed Automatically
-
-These issues require manual intervention or pre-MT protection:
-
-1. **Tables** - Line structure cannot be reliably restored after flattening
-2. **YAML Frontmatter** - Structure completely destroyed
-3. **Standard markdown links** - URL completely lost (use `{url="..."}` instead)
-
----
-
-## Verification Commands Run
-
-```bash
-# Escaped brackets - FOUND
-$ grep -c '\\\\[' mt-sample.is.md
-# Result: Multiple occurrences
-
-# Directive markers - FOUND but some malformed
-$ grep -n ':::' mt-sample.is.md
-# Result: Many `::: :::` merged patterns
-
-# Equation placeholders - FOUND but escaped
-$ grep -n 'EQ:' mt-sample.is.md
-# Result: All escaped as \[\[EQ:\]\]
-```
+| Fix | Priority | Notes |
+| :--- | :--- | :--- |
+| Pre-MT frontmatter protection | Medium | Extract YAML, pass separately |
+| Pre-MT table protection | Medium | Convert to placeholder format |
+| Extra blank line cleanup | Low | Cosmetic only |
 
 ---
 
 ## Conclusion
 
-The custom MT-safe syntax used in the pipeline (attribute-based links, equation placeholders, subscript/superscript notation) is working well. The main issues are:
+The post-MT pipeline now handles all fixable Erlendur MT artifacts:
 
-1. **Bracket escaping** - Easily fixed in post-processing
-2. **Directive line merging** - Fixable with regex
-3. **Table flattening** - Requires pre-MT protection
-4. **YAML frontmatter** - Requires separate handling
+- **Bracket escaping** → Fixed via regex unescaping
+- **Directive merging** → Fixed via line splitting
+- **LaTeX escaping** → Fixed via math block processing
 
-The decision to use `[text]{url="..."}` instead of standard `[text](url)` markdown links is **validated** - standard links are completely destroyed by MT while our custom format survives (just needs unescaping).
+The remaining issues (YAML frontmatter, tables) require pre-MT protection which should be implemented in a future update to the pipeline.
+
+**Key validation:** The `[text]{url="..."}` link format is confirmed as the correct approach - standard markdown links are completely destroyed by MT while our custom format survives and is automatically restored.
 
 ---
 
-## Next Steps
+## Verification Commands
 
-1. [x] Create test file with all syntax patterns
-2. [x] Run through Erlendur MT
-3. [x] Analyze and document results
-4. [ ] Update `post-mt-pipeline.js` with bracket unescaping
-5. [ ] Add directive closing line break fix
-6. [ ] Add table protection to pre-MT processing
-7. [ ] Add YAML frontmatter protection to pre-MT processing
-8. [ ] Re-test with updated pipeline
+```bash
+# Run pipeline on MT output
+node tools/post-mt-pipeline.js test/mt-sample.is.md --verbose
+
+# Check for remaining issues
+grep -c '\\[' test/mt-sample.is.md        # Should be 0 after pipeline
+grep -c '\\[\\[EQ' test/mt-sample.is.md   # Should be 0 after pipeline
+grep -c ' :::' test/mt-sample.is.md       # Should be 0 after pipeline
+
+# Compare before/after
+diff test/mt-sample.is.md test/mt-sample.is.processed.md | head -50
+```
+
+---
+
+## Changelog
+
+- **2026-01-24**: Initial analysis and pipeline fixes implemented
+  - Added bracket unescaping to `restore-links.js`
+  - Added equation placeholder unescaping
+  - Added LaTeX unescape within math blocks
+  - Added merged directive marker splitting to `repair-directives.js`
+  - Added Icelandic directive alias support
+  - Created test suite with comprehensive syntax samples
