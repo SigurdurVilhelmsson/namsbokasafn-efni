@@ -31,6 +31,7 @@
 | `replace-math-images` | Replace equation images with LaTeX code |
 | `restore-images` | Post-MT processing script that reconstructs image markdown from attribute blocks |
 | `restore-links` | Post-MT processing script that restores markdown links from MT-safe syntax. |
+| `restore-strings` | Post-MT processing script that updates sidecar JSON with translated strings. |
 | `restore-tables` | Post-MT processing script that restores tables from sidecar JSON files. |
 | `strip-docx-to-txt` | Extract plain text from DOCX files |
 | `validate-chapter` | Validate chapter structure and status |
@@ -49,6 +50,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*28 tools total (23 active, 5 deprecated)*
+*29 tools total (24 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
