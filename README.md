@@ -281,12 +281,22 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/:bookId/chapters/:chapter` |
 | GET | `/:slug/download` |
 
+## /deadlines
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/calendar` |
+| GET | `/stats` |
+| GET | `/alerts` |
+
 ## /decisions
 
 | Method | Path |
 |--------|------|
 | GET | `/types` |
 | GET | `/stats` |
+| GET | `/related` |
 | GET | `/recent` |
 | GET | `/` |
 | GET | `/:id` |
@@ -379,6 +389,13 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/jobs/:id/download` |
 | GET | `/projects` |
 | POST | `/projects/:id/poll` |
+
+## /meetings
+
+| Method | Path |
+|--------|------|
+| GET | `/agenda` |
+| GET | `/agenda/preview` |
 
 ## /modules
 
@@ -529,6 +546,8 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/decisions` |
 | GET | `/my-work` |
 | GET | `/assignments` |
+| GET | `/meetings` |
+| GET | `/deadlines` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
 | GET | `/admin/feedback` |
@@ -553,6 +572,8 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | POST | `/:sessionId/reset` |
 | GET | `/:sessionId/recovery` |
 | POST | `/assignments` |
+| POST | `/assignments/kickoff` |
+| GET | `/assignments/workload` |
 | GET | `/assignments` |
 | GET | `/assignments/mine` |
 | POST | `/assignments/:id/complete` |

@@ -23,10 +23,12 @@
 | `docx-to-md` | Convert DOCX files to Markdown format |
 | `export-parallel-corpus` | Export Translation Memory to parallel text files |
 | `generate-glossary` | 1. Extracting English terms + definitions from CNXML <glossary> elements |
+| `patch-alt-text` | Patches missing alt text in publication files using alt text from MT output. |
 | `post-mt-pipeline` | Chains post-MT cleanup tools to process translated markdown files. |
 | `process-chapter` | Full chapter processing pipeline |
 | `repair-directives` | Fix directive syntax issues in markdown |
 | `replace-math-images` | Replace equation images with LaTeX code |
+| `restore-images` | Post-MT processing script that reconstructs image markdown from attribute blocks |
 | `restore-links` | Post-MT processing script that restores markdown links from MT-safe syntax. |
 | `strip-docx-to-txt` | Extract plain text from DOCX files |
 | `validate-chapter` | Validate chapter structure and status |
@@ -45,6 +47,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*24 tools total (19 active, 5 deprecated)*
+*26 tools total (21 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
