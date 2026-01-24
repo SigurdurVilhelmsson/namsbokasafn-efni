@@ -61,6 +61,12 @@ const PIPELINE_STEPS = [
     description: 'Restore tables from sidecar JSON files'
   },
   {
+    id: 'equations',
+    name: 'Apply Equations',
+    script: 'apply-equations.js',
+    description: 'Replace [[EQ:n]] placeholders with LaTeX from sidecar JSON'
+  },
+  {
     id: 'directives',
     name: 'Repair Directives',
     script: 'repair-directives.js',
@@ -122,7 +128,8 @@ Pipeline Steps:
   2. restore-links.js     Convert MT-safe link syntax back to standard markdown
   3. restore-strings.js   Update sidecar with translated titles and summaries
   4. restore-tables.js    Restore tables from sidecar JSON files
-  5. repair-directives.js Add missing ::: closing markers
+  5. apply-equations.js   Replace [[EQ:n]] placeholders with LaTeX
+  6. repair-directives.js Add missing ::: closing markers
 
 Usage:
   node tools/post-mt-pipeline.js <file.is.md> [options]
@@ -137,7 +144,7 @@ Options:
   --batch <directory>    Process all .md files in directory recursively
   --dry-run              Show changes without writing files
   --verbose, -v          Show detailed processing information
-  --skip <step>          Skip a step (images|links|strings|tables|directives). Can be used multiple times.
+  --skip <step>          Skip a step (images|links|strings|tables|equations|directives). Can be used multiple times.
   --json                 Output results as JSON
   -h, --help             Show this help message
 
@@ -311,6 +318,18 @@ async function processFile(filePath, options) {
       if (verbose) {
         args.push('--verbose');
       }
+    } else if (step.id === 'equations') {
+      args.push(filePath);
+      args.push('--auto');  // Auto-detect equations sidecar file
+      if (!dryRun) {
+        args.push('--output', filePath);  // Write in-place
+      }
+      if (dryRun) {
+        args.push('--dry-run');
+      }
+      if (verbose) {
+        args.push('--verbose');
+      }
     } else if (step.id === 'directives') {
       args.push(filePath);
       if (dryRun) {
@@ -355,6 +374,14 @@ async function processFile(filePath, options) {
       const match = toolResult.stderr.match(/Restored (\d+) table/);
       if (match) {
         stepResult.count = parseInt(match[1], 10);
+      }
+    } else if (step.id === 'equations' && toolResult.stderr) {
+      // apply-equations.js outputs to stderr in verbose mode
+      const match = toolResult.stderr.match(/Equations restored: (\d+)/);
+      if (match) {
+        stepResult.count = parseInt(match[1], 10);
+      } else if (toolResult.stderr.includes('No [[EQ:n]] placeholders')) {
+        stepResult.count = 0;
       }
     } else if (step.id === 'directives' && toolResult.stdout) {
       // repair-directives.js outputs counts in stdout
@@ -427,6 +454,7 @@ async function processMultipleFiles(files, options) {
       links: { total: 0, urls: 0, refs: 0, docs: 0 },
       strings: { total: 0, count: 0 },
       tables: { total: 0, count: 0 },
+      equations: { total: 0, count: 0 },
       directives: { total: 0, count: 0 }
     },
     files: []
@@ -476,6 +504,11 @@ async function processMultipleFiles(files, options) {
     if (fileResult.steps.tables && !fileResult.steps.tables.skipped) {
       results.steps.tables.total++;
       results.steps.tables.count += fileResult.steps.tables.count || 0;
+    }
+
+    if (fileResult.steps.equations && !fileResult.steps.equations.skipped) {
+      results.steps.equations.total++;
+      results.steps.equations.count += fileResult.steps.equations.count || 0;
     }
 
     if (fileResult.steps.directives && !fileResult.steps.directives.skipped) {
@@ -559,6 +592,7 @@ async function main() {
     console.log(`  Links restored: ${results.steps.links.urls} URLs, ${results.steps.links.refs} refs, ${results.steps.links.docs} docs`);
     console.log(`  Strings restored: ${results.steps.strings.count}`);
     console.log(`  Tables restored: ${results.steps.tables.count}`);
+    console.log(`  Equations applied: ${results.steps.equations.count}`);
     console.log(`  Directives repaired: ${results.steps.directives.count} closing markers added`);
   }
 

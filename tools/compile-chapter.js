@@ -89,6 +89,13 @@ const EOC_FILES = {
   keyEquations: { filename: 'key-equations', titleIs: 'Lykiljöfnur', titleEn: 'Key Equations' }
 };
 
+// Default section titles (Icelandic)
+const DEFAULT_SECTION_TITLES = {
+  'intro': 'Inngangur',
+  'introduction': 'Inngangur',
+  '0': 'Inngangur'
+};
+
 // ============================================================================
 // Argument Parsing
 // ============================================================================
@@ -294,6 +301,47 @@ function processSectionFile(filePath, options) {
     extractedContent,
     originalContent: content
   };
+}
+
+/**
+ * Extract title from markdown content (first h1 or h2 heading)
+ */
+function extractTitleFromContent(content) {
+  // Look for first # or ## heading
+  const h1Match = content.match(/^#\s+(.+)$/m);
+  if (h1Match) {
+    return h1Match[1].trim();
+  }
+  const h2Match = content.match(/^##\s+(.+)$/m);
+  if (h2Match) {
+    return h2Match[1].trim();
+  }
+  return null;
+}
+
+/**
+ * Get title for a section file, with fallbacks
+ */
+function getSectionTitle(frontmatter, content, sectionInfo, filename) {
+  // 1. Try frontmatter title
+  const fmTitle = frontmatter?.title || frontmatter?.titleIs;
+  if (fmTitle && fmTitle.trim()) {
+    return fmTitle.trim();
+  }
+
+  // 2. For intro sections, use default Icelandic title
+  if (sectionInfo.isIntro) {
+    return DEFAULT_SECTION_TITLES['intro'];
+  }
+
+  // 3. Try extracting from content
+  const contentTitle = extractTitleFromContent(content);
+  if (contentTitle) {
+    return contentTitle;
+  }
+
+  // 4. Return empty - let TOC handle it
+  return '';
 }
 
 /**
@@ -669,8 +717,16 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
       outputFilename = `${chapter}-${file.sectionNum}.md`;
     }
 
+    // Get title with fallbacks
+    const sectionTitle = getSectionTitle(
+      result.frontmatter,
+      result.cleanContent,
+      { isIntro: file.isIntro, sectionNum: file.sectionNum },
+      file.filename
+    );
+
     const frontmatter = generateFrontmatter({
-      title: result.frontmatter?.title || result.frontmatter?.titleIs || '',
+      title: sectionTitle,
       chapter: chapter,
       section: file.isIntro ? 0 : file.sectionNum,
       track: track
@@ -715,7 +771,6 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
     });
 
     // Combine all content blocks
-    let combinedContent = `## ${title}\n\n`;
     let rawContent = content.join('\n\n');
 
     // Special formatting for key-terms: convert to definition list syntax
@@ -723,7 +778,14 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
       rawContent = formatKeyTermsContent(rawContent);
     }
 
-    combinedContent += rawContent;
+    // Remove existing heading if it matches the title (to prevent duplicates)
+    // This handles cases where content already has "## Samantekt" etc.
+    const headingPattern = new RegExp(`^##\\s+(${title}|${config.titleEn})[\\s\\n]*`, 'i');
+    rawContent = rawContent.replace(headingPattern, '');
+
+    // Build final content with single heading
+    let combinedContent = `## ${title}\n\n`;
+    combinedContent += rawContent.trim();
 
     const outputContent = frontmatter + combinedContent;
     writeOutput(path.join(outputDir, outputFilename), outputContent, options);
