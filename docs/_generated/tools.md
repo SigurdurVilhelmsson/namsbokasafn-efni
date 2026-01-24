@@ -18,6 +18,7 @@
 |------|-------------|
 | `apply-equations` | Restore LaTeX equations from JSON mapping file |
 | `chapter-assembler` | Assembles 7 module files into 12 publication files for the Chemistry Reader webs |
+| `cleanup-markdown` | Final cleanup step for publication-ready markdown. |
 | `cnxml-math-extract` | Extract MathML equations from CNXML and convert to LaTeX |
 | `compile-chapter` | Compiles chapter content for web publication by: |
 | `docx-to-md` | Convert DOCX files to Markdown format |
@@ -51,6 +52,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*30 tools total (25 active, 5 deprecated)*
+*31 tools total (26 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
