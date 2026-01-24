@@ -49,6 +49,12 @@ const PIPELINE_STEPS = [
     description: 'Convert MT-safe [text]{url="..."} syntax back to standard markdown links'
   },
   {
+    id: 'tables',
+    name: 'Restore Tables',
+    script: 'restore-tables.js',
+    description: 'Restore tables from sidecar JSON files'
+  },
+  {
     id: 'directives',
     name: 'Repair Directives',
     script: 'repair-directives.js',
@@ -108,7 +114,8 @@ Chains cleanup tools to process translated markdown files after MT output.
 Pipeline Steps:
   1. restore-images.js    Reconstruct images from MT-stripped attribute blocks
   2. restore-links.js     Convert MT-safe link syntax back to standard markdown
-  3. repair-directives.js Add missing ::: closing markers
+  3. restore-tables.js    Restore tables from sidecar JSON files
+  4. repair-directives.js Add missing ::: closing markers
 
 Usage:
   node tools/post-mt-pipeline.js <file.is.md> [options]
@@ -123,7 +130,7 @@ Options:
   --batch <directory>    Process all .md files in directory recursively
   --dry-run              Show changes without writing files
   --verbose, -v          Show detailed processing information
-  --skip <step>          Skip a step (images|links|directives). Can be used multiple times.
+  --skip <step>          Skip a step (images|links|tables|directives). Can be used multiple times.
   --json                 Output results as JSON
   -h, --help             Show this help message
 
@@ -278,6 +285,17 @@ async function processFile(filePath, options) {
       if (verbose) {
         args.push('--verbose');
       }
+    } else if (step.id === 'tables') {
+      args.push(filePath);
+      if (!dryRun) {
+        args.push('--in-place');
+      }
+      if (dryRun) {
+        args.push('--dry-run');
+      }
+      if (verbose) {
+        args.push('--verbose');
+      }
     } else if (step.id === 'directives') {
       args.push(filePath);
       if (dryRun) {
@@ -310,6 +328,12 @@ async function processFile(filePath, options) {
         stepResult.urlCount = parseInt(match[1], 10);
         stepResult.refCount = parseInt(match[2], 10);
         stepResult.docCount = parseInt(match[3], 10);
+      }
+    } else if (step.id === 'tables' && toolResult.stderr) {
+      // restore-tables.js outputs to stderr in verbose mode
+      const match = toolResult.stderr.match(/Restored (\d+) table/);
+      if (match) {
+        stepResult.count = parseInt(match[1], 10);
       }
     } else if (step.id === 'directives' && toolResult.stdout) {
       // repair-directives.js outputs counts in stdout
@@ -380,6 +404,7 @@ async function processMultipleFiles(files, options) {
     steps: {
       images: { total: 0, count: 0 },
       links: { total: 0, urls: 0, refs: 0, docs: 0 },
+      tables: { total: 0, count: 0 },
       directives: { total: 0, count: 0 }
     },
     files: []
@@ -419,6 +444,11 @@ async function processMultipleFiles(files, options) {
       results.steps.links.urls += fileResult.steps.links.urlCount || 0;
       results.steps.links.refs += fileResult.steps.links.refCount || 0;
       results.steps.links.docs += fileResult.steps.links.docCount || 0;
+    }
+
+    if (fileResult.steps.tables && !fileResult.steps.tables.skipped) {
+      results.steps.tables.total++;
+      results.steps.tables.count += fileResult.steps.tables.count || 0;
     }
 
     if (fileResult.steps.directives && !fileResult.steps.directives.skipped) {
@@ -500,6 +530,7 @@ async function main() {
     console.log('Step Statistics:');
     console.log(`  Images restored: ${results.steps.images.count}`);
     console.log(`  Links restored: ${results.steps.links.urls} URLs, ${results.steps.links.refs} refs, ${results.steps.links.docs} docs`);
+    console.log(`  Tables restored: ${results.steps.tables.count}`);
     console.log(`  Directives repaired: ${results.steps.directives.count} closing markers added`);
   }
 
