@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mín verkefni - Námsbókasafn</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header class="header">
@@ -181,8 +182,33 @@
     </div>
   </main>
 
+  <!-- Settings Modal -->
+  <div class="modal" id="settings-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-cog"></i> Stillingar</h3>
+        <button class="btn-close" onclick="closeSettingsModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4 class="settings-section-title">Tilkynningar</h4>
+        <p class="settings-description">Veldu hvers konar tilkynningar þú vilt fá.</p>
+
+        <div class="preference-list" id="preference-list">
+          <p class="loading"><i class="fas fa-spinner fa-spin"></i> Hleður...</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeSettingsModal()">Hætta við</button>
+        <button class="btn btn-primary" onclick="savePreferences()">
+          <i class="fas fa-save"></i> Vista
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script>
     let todayData = null;
+    let notificationPreferences = null;
     let detailedData = null;
     let currentView = 'focus';
 
@@ -203,7 +229,13 @@
         return;
       }
 
-      userEl.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
+      userEl.innerHTML = `
+        <button class="btn-icon settings-btn" onclick="openSettingsModal()" title="Stillingar">
+          <i class="fas fa-cog"></i>
+        </button>
+        <img src="${authData.user.avatar}" alt="">
+        <span>${authData.user.name}</span>
+      `;
 
       // Load focus view data
       await loadTodayView();
@@ -676,6 +708,109 @@
       `).join('');
 
       banner.style.display = 'block';
+    }
+
+    // ========================================
+    // SETTINGS / NOTIFICATION PREFERENCES
+    // ========================================
+
+    async function openSettingsModal() {
+      document.getElementById('settings-modal').style.display = 'flex';
+      await loadNotificationPreferences();
+    }
+
+    function closeSettingsModal() {
+      document.getElementById('settings-modal').style.display = 'none';
+    }
+
+    async function loadNotificationPreferences() {
+      const list = document.getElementById('preference-list');
+      list.innerHTML = '<p class="loading"><i class="fas fa-spinner fa-spin"></i> Hleður...</p>';
+
+      try {
+        const res = await fetch('/api/notifications/preferences');
+        const data = await res.json();
+        notificationPreferences = data.preferences;
+
+        list.innerHTML = Object.entries(data.categories).map(([key, category]) => {
+          const prefs = notificationPreferences[key] || { inApp: true, email: true };
+          return `
+            <div class="preference-item">
+              <div class="preference-info">
+                <span class="preference-label">${category.label}</span>
+                <span class="preference-description">${category.description}</span>
+              </div>
+              <div class="preference-toggles">
+                <label class="toggle-label">
+                  <input type="checkbox" id="pref-${key}-inApp" ${prefs.inApp ? 'checked' : ''}>
+                  <span class="toggle-text"><i class="fas fa-bell"></i> Í appinu</span>
+                </label>
+                <label class="toggle-label">
+                  <input type="checkbox" id="pref-${key}-email" ${prefs.email ? 'checked' : ''}>
+                  <span class="toggle-text"><i class="fas fa-envelope"></i> Tölvupóstur</span>
+                </label>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+      } catch (err) {
+        console.error('Error loading preferences:', err);
+        list.innerHTML = '<p class="error">Villa við að hlaða stillingum</p>';
+      }
+    }
+
+    async function savePreferences() {
+      const preferences = {};
+
+      // Collect values from checkboxes
+      document.querySelectorAll('.preference-item').forEach(item => {
+        const inAppInput = item.querySelector('input[id$="-inApp"]');
+        const emailInput = item.querySelector('input[id$="-email"]');
+
+        if (inAppInput && emailInput) {
+          const key = inAppInput.id.replace('pref-', '').replace('-inApp', '');
+          preferences[key] = {
+            inApp: inAppInput.checked,
+            email: emailInput.checked
+          };
+        }
+      });
+
+      try {
+        const res = await fetch('/api/notifications/preferences', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(preferences)
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          notificationPreferences = data.preferences;
+          closeSettingsModal();
+          showToast('Stillingar vistaðar', 'success');
+        } else {
+          showToast('Villa við að vista stillingar', 'error');
+        }
+      } catch (err) {
+        console.error('Error saving preferences:', err);
+        showToast('Villa við að vista stillingar', 'error');
+      }
+    }
+
+    function showToast(message, type = 'info') {
+      // Simple toast notification
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.innerHTML = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => toast.classList.add('show'), 10);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
     }
 
     // Initialize
@@ -1265,6 +1400,159 @@
       box-shadow: 0 6px 16px rgba(109, 40, 217, 0.5);
       color: white;
     }
+
+    /* Settings Button */
+    .settings-btn {
+      background: transparent;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--gray-400);
+      border-radius: 0.375rem;
+      transition: color 0.15s, background-color 0.15s;
+    }
+    .settings-btn:hover {
+      color: var(--primary);
+      background: var(--gray-100);
+    }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 0.75rem;
+      width: 90%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .modal-header h3 {
+      margin: 0;
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray-400);
+      line-height: 1;
+    }
+    .modal-body {
+      padding: 1.25rem;
+      overflow-y: auto;
+    }
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    /* Settings Styles */
+    .settings-section-title {
+      margin: 0 0 0.25rem 0;
+      font-size: 1rem;
+    }
+    .settings-description {
+      color: var(--gray-500);
+      font-size: 0.875rem;
+      margin: 0 0 1rem 0;
+    }
+    .preference-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .preference-item {
+      padding: 1rem;
+      background: var(--gray-50);
+      border-radius: 0.5rem;
+      border: 1px solid var(--gray-200);
+    }
+    .preference-info {
+      margin-bottom: 0.75rem;
+    }
+    .preference-label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .preference-description {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+    }
+    .preference-toggles {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .toggle-label input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+    .toggle-text {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .toggle-text i {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+    }
+
+    /* Toast Notifications */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      padding: 0.75rem 1.25rem;
+      background: var(--gray-800);
+      color: white;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 2000;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .toast-success { background: var(--success); }
+    .toast-error { background: var(--error); }
   </style>
 
   <!-- Floating Feedback Button -->

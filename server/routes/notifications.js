@@ -96,4 +96,66 @@ router.post('/read-all', requireAuth, (req, res) => {
   }
 });
 
+/**
+ * GET /api/notifications/preferences
+ * Get notification preferences for current user
+ */
+router.get('/preferences', requireAuth, (req, res) => {
+  try {
+    const prefs = notifications.getPreferences(req.user.id);
+    res.json({
+      preferences: prefs,
+      categories: notifications.NOTIFICATION_CATEGORIES,
+      defaults: notifications.DEFAULT_PREFERENCES
+    });
+  } catch (err) {
+    console.error('Error getting notification preferences:', err);
+    res.status(500).json({
+      error: 'Failed to get preferences',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * PUT /api/notifications/preferences
+ * Update notification preferences
+ *
+ * Body: {
+ *   reviews: { inApp: true, email: false },
+ *   assignments: { inApp: true, email: true },
+ *   feedback: { inApp: true, email: true }
+ * }
+ */
+router.put('/preferences', requireAuth, (req, res) => {
+  const { body } = req;
+
+  // Validate structure
+  const validCategories = Object.keys(notifications.NOTIFICATION_CATEGORIES);
+  const preferences = {};
+
+  for (const category of validCategories) {
+    if (body[category]) {
+      preferences[category] = {
+        inApp: body[category].inApp !== false,
+        email: body[category].email !== false
+      };
+    }
+  }
+
+  try {
+    const updated = notifications.setPreferences(req.user.id, preferences);
+    res.json({
+      success: true,
+      preferences: updated
+    });
+  } catch (err) {
+    console.error('Error updating notification preferences:', err);
+    res.status(500).json({
+      error: 'Failed to update preferences',
+      message: err.message
+    });
+  }
+});
+
 module.exports = router;

@@ -38,6 +38,32 @@ const STAGE_LABELS = {
   publication: 'Útgáfa'
 };
 
+// Notification categories for preferences
+const NOTIFICATION_CATEGORIES = {
+  reviews: {
+    label: 'Yfirferðir',
+    description: 'Tilkynningar um yfirferðir (sendar, samþykktar, breytingar óskast)',
+    types: ['review_submitted', 'review_approved', 'changes_requested']
+  },
+  assignments: {
+    label: 'Úthlutanir',
+    description: 'Tilkynningar um verkefnaúthlutanir og afhendingar',
+    types: ['assignment_created', 'assignment_handoff', 'stage_completed', 'chapter_kickoff']
+  },
+  feedback: {
+    label: 'Endurgjöf',
+    description: 'Tilkynningar um endurgjöf frá lesendum',
+    types: ['feedback_received']
+  }
+};
+
+// Default preferences (all enabled)
+const DEFAULT_PREFERENCES = {
+  reviews: { inApp: true, email: true },
+  assignments: { inApp: true, email: true },
+  feedback: { inApp: true, email: true }
+};
+
 // Initialize database tables
 function initDb() {
   const dbDir = path.dirname(DB_PATH);
@@ -66,6 +92,13 @@ function initDb() {
     CREATE INDEX IF NOT EXISTS idx_notifications_user_id ON notifications(user_id);
     CREATE INDEX IF NOT EXISTS idx_notifications_read ON notifications(read);
     CREATE INDEX IF NOT EXISTS idx_notifications_created_at ON notifications(created_at);
+
+    -- Notification preferences table
+    CREATE TABLE IF NOT EXISTS notification_preferences (
+      user_id TEXT PRIMARY KEY,
+      preferences TEXT NOT NULL,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
   `);
 
   return db;
@@ -104,8 +137,63 @@ const statements = {
     SELECT DISTINCT user_id FROM notifications WHERE user_id IN (
       SELECT user_id FROM notifications GROUP BY user_id
     )
+  `),
+  // Preferences statements
+  getPreferences: db.prepare(`
+    SELECT preferences FROM notification_preferences WHERE user_id = ?
+  `),
+  upsertPreferences: db.prepare(`
+    INSERT INTO notification_preferences (user_id, preferences, updated_at)
+    VALUES (?, ?, CURRENT_TIMESTAMP)
+    ON CONFLICT(user_id) DO UPDATE SET preferences = excluded.preferences, updated_at = CURRENT_TIMESTAMP
   `)
 };
+
+/**
+ * Get notification preferences for a user
+ * Returns default preferences if user hasn't set any
+ */
+function getPreferences(userId) {
+  const row = statements.getPreferences.get(userId);
+  if (row && row.preferences) {
+    try {
+      return { ...DEFAULT_PREFERENCES, ...JSON.parse(row.preferences) };
+    } catch (e) {
+      console.error('Error parsing preferences:', e);
+    }
+  }
+  return { ...DEFAULT_PREFERENCES };
+}
+
+/**
+ * Set notification preferences for a user
+ */
+function setPreferences(userId, preferences) {
+  const merged = { ...DEFAULT_PREFERENCES, ...preferences };
+  statements.upsertPreferences.run(userId, JSON.stringify(merged));
+  return merged;
+}
+
+/**
+ * Check if a notification type is enabled for a user
+ * @param {string} userId - User ID
+ * @param {string} type - Notification type
+ * @param {string} channel - 'inApp' or 'email'
+ * @returns {boolean}
+ */
+function isNotificationEnabled(userId, type, channel = 'inApp') {
+  const prefs = getPreferences(userId);
+
+  // Find which category this type belongs to
+  for (const [category, config] of Object.entries(NOTIFICATION_CATEGORIES)) {
+    if (config.types.includes(type)) {
+      return prefs[category]?.[channel] !== false;
+    }
+  }
+
+  // Unknown type - default to enabled
+  return true;
+}
 
 /**
  * Check if email is configured
@@ -157,6 +245,7 @@ async function sendEmail(to, subject, htmlBody, textBody) {
 
 /**
  * Create a notification (in-app + optional email)
+ * Respects user's notification preferences
  */
 async function createNotification(options) {
   const {
@@ -166,38 +255,48 @@ async function createNotification(options) {
     title,
     message,
     link,
-    metadata = {}
+    metadata = {},
+    skipPreferenceCheck = false // For system/admin notifications
   } = options;
 
-  // Store in database
-  const result = statements.insertNotification.run(
-    userId,
-    type,
-    title,
-    message,
-    link || null,
-    JSON.stringify(metadata),
-    0 // email_sent = false initially
-  );
+  // Check if in-app notification is enabled for this user
+  const inAppEnabled = skipPreferenceCheck || isNotificationEnabled(userId, type, 'inApp');
+  const emailEnabled = skipPreferenceCheck || isNotificationEnabled(userId, type, 'email');
 
-  const notificationId = result.lastInsertRowid;
-
-  // Try to send email if we have an email address
+  let notificationId = null;
   let emailSent = false;
-  if (userEmail) {
+
+  // Store in database if in-app is enabled
+  if (inAppEnabled) {
+    const result = statements.insertNotification.run(
+      userId,
+      type,
+      title,
+      message,
+      link || null,
+      JSON.stringify(metadata),
+      0 // email_sent = false initially
+    );
+    notificationId = result.lastInsertRowid;
+  }
+
+  // Try to send email if enabled and we have an email address
+  if (emailEnabled && userEmail) {
     const htmlBody = generateEmailHtml(title, message, link);
     const textBody = `${title}\n\n${message}\n\n${link ? `View: ${link}` : ''}`;
 
     emailSent = await sendEmail(userEmail, title, htmlBody, textBody);
 
-    if (emailSent) {
-      statements.markAsRead.run(notificationId); // Mark as email_sent
+    if (emailSent && notificationId) {
+      // Update email_sent flag
+      db.prepare('UPDATE notifications SET email_sent = 1 WHERE id = ?').run(notificationId);
     }
   }
 
   return {
     id: notificationId,
-    emailSent
+    emailSent,
+    skipped: !inAppEnabled && !emailSent
   };
 }
 
@@ -623,6 +722,8 @@ function parseNotificationRow(row) {
 
 module.exports = {
   NOTIFICATION_TYPES,
+  NOTIFICATION_CATEGORIES,
+  DEFAULT_PREFERENCES,
   STAGE_LABELS,
   isEmailConfigured,
   createNotification,
@@ -641,5 +742,9 @@ module.exports = {
   getAllNotifications,
   getUnreadCount,
   markAsRead,
-  markAllAsRead
+  markAllAsRead,
+  // Preferences
+  getPreferences,
+  setPreferences,
+  isNotificationEnabled
 };
