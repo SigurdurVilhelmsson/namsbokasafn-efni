@@ -466,6 +466,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 |--------|------|
 | GET | `/` |
 | GET | `/count` |
+| GET | `/sla` |
 | GET | `/:id` |
 | POST | `/:id/approve` |
 | POST | `/:id/changes` |

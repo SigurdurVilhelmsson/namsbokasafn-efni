@@ -242,6 +242,7 @@
 |--------|------|
 | GET | `/` |
 | GET | `/count` |
+| GET | `/sla` |
 | GET | `/:id` |
 | POST | `/:id/approve` |
 | POST | `/:id/changes` |
