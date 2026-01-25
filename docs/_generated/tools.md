@@ -23,6 +23,8 @@
 | `compile-chapter` | Compiles chapter content for web publication by: |
 | `docx-to-md` | Convert DOCX files to Markdown format |
 | `export-parallel-corpus` | Export Translation Memory to parallel text files |
+| `extract-glossary` | Extracts glossary terms from CNXML source files and outputs markdown |
+| `extract-key-equations` | Extracts key equations from OpenStax CNXML source files and outputs markdown |
 | `generate-glossary` | 1. Extracting English terms + definitions from CNXML <glossary> elements |
 | `merge-split-files` | Merges split Erlendur MT files back into single files. |
 | `patch-alt-text` | Patches missing alt text in publication files using alt text from MT output. |
@@ -53,6 +55,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*32 tools total (27 active, 5 deprecated)*
+*34 tools total (29 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
