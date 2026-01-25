@@ -762,20 +762,20 @@
               <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>S</kbd><span>Vista</span></div>
               <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>B</kbd><span>Feitletra</span></div>
               <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>I</kbd><span>Skáletra</span></div>
-              <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>K</kbd><span>Tengill</span></div>
-              <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>M</kbd><span>Athugasemd</span></div>
+              <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>M</kbd><span>Bæta við athugasemd</span></div>
               <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>Z</kbd><span>Afturkalla</span></div>
               <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>Y</kbd><span>Endurgera</span></div>
             </div>
           </div>
           <div class="keyboard-help-section">
-            <h4>Skoðun</h4>
+            <h4>Hliðarspjöld</h4>
             <div class="shortcut-list">
               <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>E</kbd><span>EN/IS tvískipting</span></div>
               <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>T</kbd><span>Orðasafn</span></div>
-              <div class="shortcut-item"><kbd>F11</kbd><span>Heilskjár</span></div>
-              <div class="shortcut-item"><kbd>Esc</kbd><span>Loka glugga</span></div>
-              <div class="shortcut-item"><kbd>?</kbd><span>Sýna þessa hjálp</span></div>
+              <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>H</kbd><span>Útgáfusaga</span></div>
+              <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>K</kbd><span>Athugasemdir</span></div>
+              <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>J</kbd><span>Atriði</span></div>
+              <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>N</kbd><span>Mínir minnispunktar</span></div>
             </div>
           </div>
           <div class="keyboard-help-section">
@@ -783,14 +783,15 @@
             <div class="shortcut-list">
               <div class="shortcut-item"><kbd>Alt</kbd>+<kbd>←</kbd><span>Fyrri hluti</span></div>
               <div class="shortcut-item"><kbd>Alt</kbd>+<kbd>→</kbd><span>Næsti hluti</span></div>
+              <div class="shortcut-item"><kbd>Esc</kbd><span>Loka öllum gluggum</span></div>
             </div>
           </div>
           <div class="keyboard-help-section">
-            <h4>Orðauppfletting</h4>
+            <h4>Hjálp</h4>
             <div class="shortcut-list">
-              <div class="shortcut-item"><span class="hint-action">Tvísmelltu</span><span>Fletta upp völdu orði</span></div>
-              <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>T</kbd><span>Leita í orðasafni</span></div>
-              <div class="shortcut-item"><kbd>Esc</kbd><span>Loka uppflettingu</span></div>
+              <div class="shortcut-item"><kbd>?</kbd> eða <kbd>F1</kbd><span>Sýna þessa hjálp</span></div>
+              <div class="shortcut-item"><kbd>F11</kbd><span>Heilskjár</span></div>
+              <div class="shortcut-item"><span class="hint-action">Tvísmelltu</span><span>Fletta upp orði</span></div>
             </div>
           </div>
         </div>
@@ -1271,11 +1272,23 @@
         showKeyboardHelp();
       }
 
-      // Escape closes modals/dropdowns
+      // Escape closes modals/dropdowns/sidebars
       if (e.key === 'Escape') {
+        // Close dropdowns
         document.getElementById('more-menu').style.display = 'none';
+
+        // Close modals
         document.getElementById('keyboard-help-modal').style.display = 'none';
         document.getElementById('split-info-modal').style.display = 'none';
+        if (typeof closeConsistencyModal === 'function') closeConsistencyModal();
+
+        // Close all sidebars
+        document.getElementById('history-sidebar').style.display = 'none';
+        document.getElementById('comments-sidebar').style.display = 'none';
+        document.getElementById('decisions-sidebar').style.display = 'none';
+        document.getElementById('issues-sidebar').style.display = 'none';
+        document.getElementById('terminology-sidebar').style.display = 'none';
+        document.getElementById('notes-sidebar').style.display = 'none';
       }
 
       // Ctrl+E toggles source view
@@ -1296,6 +1309,24 @@
         toggleNotes();
       }
 
+      // Ctrl+H opens history
+      if (e.ctrlKey && e.key === 'h' && editor) {
+        e.preventDefault();
+        toggleHistory();
+      }
+
+      // Ctrl+J opens issues
+      if (e.ctrlKey && e.key === 'j' && editor) {
+        e.preventDefault();
+        toggleIssues();
+      }
+
+      // Ctrl+K opens comments
+      if (e.ctrlKey && e.key === 'k' && editor) {
+        e.preventDefault();
+        toggleComments();
+      }
+
       // Alt+Arrow for section navigation
       if (e.altKey && e.key === 'ArrowLeft') {
         e.preventDefault();
@@ -1304,6 +1335,12 @@
       if (e.altKey && e.key === 'ArrowRight') {
         e.preventDefault();
         navigateSection(1);
+      }
+
+      // F1 for keyboard help
+      if (e.key === 'F1') {
+        e.preventDefault();
+        showKeyboardHelp();
       }
     });
 
