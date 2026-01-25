@@ -130,6 +130,9 @@
                 <i class="fas fa-keyboard"></i> Flýtilyklar
                 <span class="dropdown-item-hint">?</span>
               </button>
+              <button class="dropdown-item" id="tutorial-btn" onclick="document.getElementById('more-menu').style.display='none'; startTutorial();">
+                <i class="fas fa-graduation-cap"></i> Leiðsögn
+              </button>
             </div>
           </div>
         </div>
@@ -734,7 +737,58 @@
         </div>
       </div>
       <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeKeyboardHelp(); startTutorial();">
+          <i class="fas fa-graduation-cap"></i> Byrja leiðsögn
+        </button>
         <button class="btn btn-primary" onclick="closeKeyboardHelp()">Loka</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tutorial Overlay -->
+  <div class="tutorial-overlay" id="tutorial-overlay"></div>
+  <div class="tutorial-tooltip" id="tutorial-tooltip">
+    <div class="tutorial-tooltip-content">
+      <div class="tutorial-step-indicator" id="tutorial-step-indicator"></div>
+      <h4 id="tutorial-title"></h4>
+      <p id="tutorial-description"></p>
+    </div>
+    <div class="tutorial-tooltip-footer">
+      <button class="btn btn-secondary btn-small" id="tutorial-skip" onclick="endTutorial()">Sleppa</button>
+      <div class="tutorial-nav">
+        <button class="btn btn-secondary btn-small" id="tutorial-prev" onclick="prevTutorialStep()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="btn btn-primary btn-small" id="tutorial-next" onclick="nextTutorialStep()">
+          Næsta <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- First-time Welcome Modal -->
+  <div class="modal" id="welcome-modal" style="display: none;">
+    <div class="modal-content" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3><i class="fas fa-graduation-cap"></i> Velkomin/n í ritstjórann!</h3>
+      </div>
+      <div class="modal-body" style="text-align: center; padding: 2rem;">
+        <div style="font-size: 4rem; margin-bottom: 1rem;">🎓</div>
+        <p style="font-size: 1rem; color: var(--gray-600); margin-bottom: 1.5rem;">
+          Þetta er fyrsta skipti sem þú opnar ritstjórann.<br>
+          Viltu fara í stutta leiðsögn um helstu aðgerðir?
+        </p>
+        <p style="font-size: 0.875rem; color: var(--gray-500);">
+          Þú getur alltaf farið í leiðsögn aftur með því að ýta á <kbd>?</kbd>
+        </p>
+      </div>
+      <div class="modal-footer" style="justify-content: center; gap: 1rem;">
+        <button class="btn btn-secondary" onclick="dismissWelcome(false)">
+          Sleppa
+        </button>
+        <button class="btn btn-primary" onclick="dismissWelcome(true)">
+          <i class="fas fa-play"></i> Byrja leiðsögn
+        </button>
       </div>
     </div>
   </div>
@@ -5556,6 +5610,93 @@
       opacity: 0.3;
     }
 
+    /* Tutorial System */
+    .tutorial-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 9998;
+      pointer-events: none;
+    }
+    .tutorial-overlay.active {
+      display: block;
+    }
+    .tutorial-highlight {
+      position: relative;
+      z-index: 9999 !important;
+      box-shadow: 0 0 0 4px #8b5cf6, 0 0 0 8px rgba(139, 92, 246, 0.3) !important;
+      border-radius: 0.375rem;
+      pointer-events: auto;
+    }
+    .tutorial-tooltip {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      max-width: 360px;
+      animation: tutorialFadeIn 0.3s ease;
+    }
+    @keyframes tutorialFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .tutorial-tooltip.active {
+      display: block;
+    }
+    .tutorial-tooltip-content {
+      padding: 1.25rem;
+    }
+    .tutorial-step-indicator {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .tutorial-step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gray-300);
+    }
+    .tutorial-step-dot.active {
+      background: #8b5cf6;
+    }
+    .tutorial-step-dot.completed {
+      background: #10b981;
+    }
+    .tutorial-tooltip h4 {
+      margin: 0 0 0.5rem;
+      color: #6d28d9;
+      font-size: 1rem;
+    }
+    .tutorial-tooltip p {
+      margin: 0;
+      color: var(--gray-600);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+    .tutorial-tooltip-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+      border-radius: 0 0 0.75rem 0.75rem;
+    }
+    .tutorial-nav {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .tutorial-tooltip .btn-primary {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    }
+
     /* Floating Feedback Button */
     .feedback-fab {
       position: fixed;
@@ -5940,6 +6081,279 @@
 
     // Add input listener for textarea
     document.getElementById('feedback-message')?.addEventListener('input', updateFeedbackSubmitButton);
+
+    // ========================================
+    // TUTORIAL / WALKTHROUGH SYSTEM
+    // ========================================
+
+    const TUTORIAL_STORAGE_KEY = 'namsbokasafn_tutorial_completed';
+    let currentTutorialStep = 0;
+    let tutorialActive = false;
+
+    // Tutorial steps - each step highlights an element and shows explanation
+    const tutorialSteps = [
+      {
+        title: 'Velkomin/n í ritstjórann!',
+        description: 'Þetta er þýðingarritstjórinn þar sem þú skoðar og lagar vélþýðingar. Hér eru helstu aðgerðirnar.',
+        element: null, // No element - just intro
+        position: 'center'
+      },
+      {
+        title: 'Þýðingartextinn',
+        description: 'Hér er íslenska þýðingin sem þú vinnur með. Þú getur breytt textanum beint og notað Markdown-snið.',
+        element: '.EasyMDEContainer',
+        position: 'top'
+      },
+      {
+        title: 'Vista breytingar',
+        description: 'Smelltu á "Vista" til að vista breytingar. Ritstjórinn vistar líka sjálfkrafa á 30 sekúndna fresti.',
+        element: '#save-btn',
+        position: 'bottom'
+      },
+      {
+        title: 'Senda til yfirferðar',
+        description: 'Þegar þú ert sátt/sáttur við þýðinguna, smelltu á "Senda" til að senda hana til ritstjóra.',
+        element: '#submit-btn',
+        position: 'bottom'
+      },
+      {
+        title: 'Meira valmynd',
+        description: 'Hér finnur þú fleiri valkosti: EN/IS samanburð, athugasemdir, útgáfusögu, og orðasafn.',
+        element: '#more-dropdown',
+        position: 'bottom'
+      },
+      {
+        title: 'Orðauppfletting',
+        description: 'Tvísmelltu á hvaða orð sem er til að fletta því upp í orðasafninu. Eða ýttu á Ctrl+T.',
+        element: '.EasyMDEContainer',
+        position: 'top'
+      },
+      {
+        title: 'Flýtilyklar',
+        description: 'Ýttu á ? hvenær sem er til að sjá alla flýtilykla. Ctrl+S vistar, Ctrl+E sýnir enska textann.',
+        element: null,
+        position: 'center'
+      },
+      {
+        title: 'Endurgjöf',
+        description: 'Ef þú finnur villur eða hefur tillögur, smelltu á fjólubláa hnappinn neðst til hægri.',
+        element: '.feedback-fab',
+        position: 'top-left'
+      },
+      {
+        title: 'Þú ert tilbúin/n!',
+        description: 'Gangi þér vel með þýðinguna! Ef þú þarft hjálp, ekki hika við að nota endurgjöfarhnappinn.',
+        element: null,
+        position: 'center'
+      }
+    ];
+
+    /**
+     * Check if user is new and show welcome modal
+     */
+    function checkFirstTimeUser() {
+      // Only check after editor is loaded with content
+      if (!editor || !currentSection) return;
+
+      const completed = localStorage.getItem(TUTORIAL_STORAGE_KEY);
+      if (!completed) {
+        // Show welcome modal after a short delay
+        setTimeout(() => {
+          document.getElementById('welcome-modal').style.display = 'flex';
+        }, 1000);
+      }
+    }
+
+    /**
+     * Dismiss welcome modal
+     */
+    function dismissWelcome(startTour) {
+      document.getElementById('welcome-modal').style.display = 'none';
+      localStorage.setItem(TUTORIAL_STORAGE_KEY, 'true');
+      if (startTour) {
+        startTutorial();
+      }
+    }
+
+    /**
+     * Start the tutorial
+     */
+    function startTutorial() {
+      if (tutorialActive) return;
+      tutorialActive = true;
+      currentTutorialStep = 0;
+
+      // Close any open modals/menus
+      document.getElementById('more-menu').style.display = 'none';
+      document.getElementById('keyboard-help-modal').style.display = 'none';
+
+      // Show overlay
+      document.getElementById('tutorial-overlay').classList.add('active');
+      document.getElementById('tutorial-tooltip').classList.add('active');
+
+      showTutorialStep(0);
+    }
+
+    /**
+     * End the tutorial
+     */
+    function endTutorial() {
+      tutorialActive = false;
+      currentTutorialStep = 0;
+
+      // Hide overlay and tooltip
+      document.getElementById('tutorial-overlay').classList.remove('active');
+      document.getElementById('tutorial-tooltip').classList.remove('active');
+
+      // Remove all highlights
+      document.querySelectorAll('.tutorial-highlight').forEach(el => {
+        el.classList.remove('tutorial-highlight');
+      });
+
+      // Mark as completed
+      localStorage.setItem(TUTORIAL_STORAGE_KEY, 'true');
+    }
+
+    /**
+     * Show a specific tutorial step
+     */
+    function showTutorialStep(stepIndex) {
+      const step = tutorialSteps[stepIndex];
+      if (!step) {
+        endTutorial();
+        return;
+      }
+
+      currentTutorialStep = stepIndex;
+
+      // Remove previous highlights
+      document.querySelectorAll('.tutorial-highlight').forEach(el => {
+        el.classList.remove('tutorial-highlight');
+      });
+
+      // Highlight current element if specified
+      let targetEl = null;
+      if (step.element) {
+        targetEl = document.querySelector(step.element);
+        if (targetEl) {
+          targetEl.classList.add('tutorial-highlight');
+          // Scroll element into view if needed
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+
+      // Update step indicator
+      const indicator = document.getElementById('tutorial-step-indicator');
+      indicator.innerHTML = tutorialSteps.map((_, i) => {
+        let className = 'tutorial-step-dot';
+        if (i < stepIndex) className += ' completed';
+        else if (i === stepIndex) className += ' active';
+        return `<span class="${className}"></span>`;
+      }).join('');
+
+      // Update content
+      document.getElementById('tutorial-title').textContent = step.title;
+      document.getElementById('tutorial-description').textContent = step.description;
+
+      // Update buttons
+      document.getElementById('tutorial-prev').style.display = stepIndex > 0 ? 'inline-flex' : 'none';
+      const nextBtn = document.getElementById('tutorial-next');
+      if (stepIndex === tutorialSteps.length - 1) {
+        nextBtn.innerHTML = '<i class="fas fa-check"></i> Ljúka';
+      } else {
+        nextBtn.innerHTML = 'Næsta <i class="fas fa-chevron-right"></i>';
+      }
+
+      // Position tooltip
+      positionTutorialTooltip(targetEl, step.position);
+    }
+
+    /**
+     * Position the tutorial tooltip
+     */
+    function positionTutorialTooltip(targetEl, position) {
+      const tooltip = document.getElementById('tutorial-tooltip');
+      const tooltipRect = tooltip.getBoundingClientRect();
+
+      if (!targetEl || position === 'center') {
+        // Center in viewport
+        tooltip.style.top = '50%';
+        tooltip.style.left = '50%';
+        tooltip.style.transform = 'translate(-50%, -50%)';
+        return;
+      }
+
+      tooltip.style.transform = 'none';
+
+      const targetRect = targetEl.getBoundingClientRect();
+      const padding = 16;
+
+      switch (position) {
+        case 'bottom':
+          tooltip.style.top = (targetRect.bottom + padding) + 'px';
+          tooltip.style.left = Math.max(padding, Math.min(
+            targetRect.left + targetRect.width / 2 - 180,
+            window.innerWidth - 360 - padding
+          )) + 'px';
+          break;
+        case 'top':
+          tooltip.style.top = Math.max(padding, targetRect.top - tooltipRect.height - padding) + 'px';
+          tooltip.style.left = Math.max(padding, Math.min(
+            targetRect.left + targetRect.width / 2 - 180,
+            window.innerWidth - 360 - padding
+          )) + 'px';
+          break;
+        case 'top-left':
+          tooltip.style.top = Math.max(padding, targetRect.top - tooltipRect.height - padding) + 'px';
+          tooltip.style.left = Math.max(padding, targetRect.right - 360) + 'px';
+          break;
+        default:
+          // Default to bottom
+          tooltip.style.top = (targetRect.bottom + padding) + 'px';
+          tooltip.style.left = Math.max(padding, targetRect.left) + 'px';
+      }
+    }
+
+    /**
+     * Go to next tutorial step
+     */
+    function nextTutorialStep() {
+      if (currentTutorialStep >= tutorialSteps.length - 1) {
+        endTutorial();
+      } else {
+        showTutorialStep(currentTutorialStep + 1);
+      }
+    }
+
+    /**
+     * Go to previous tutorial step
+     */
+    function prevTutorialStep() {
+      if (currentTutorialStep > 0) {
+        showTutorialStep(currentTutorialStep - 1);
+      }
+    }
+
+    // Keyboard navigation for tutorial
+    document.addEventListener('keydown', (e) => {
+      if (!tutorialActive) return;
+
+      if (e.key === 'Escape') {
+        endTutorial();
+      } else if (e.key === 'ArrowRight' || e.key === 'Enter') {
+        nextTutorialStep();
+      } else if (e.key === 'ArrowLeft') {
+        prevTutorialStep();
+      }
+    });
+
+    // Check for first-time user after editor loads
+    const originalLoadEditor = loadEditor;
+    loadEditor = async function(book, chapter, section) {
+      await originalLoadEditor(book, chapter, section);
+      // Check if first time after content is loaded
+      setTimeout(checkFirstTimeUser, 500);
+    };
   </script>
 </body>
 </html>
