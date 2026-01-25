@@ -148,6 +148,14 @@ router.get('/reports', (req, res) => {
 });
 
 /**
+ * GET /analytics
+ * Usage analytics dashboard
+ */
+router.get('/analytics', (req, res) => {
+  sendView(res, 'analytics.html');
+});
+
+/**
  * GET /localization-review
  * Split-panel localization review page
  */

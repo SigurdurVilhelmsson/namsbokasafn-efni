@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tölfræði - Námsbókasafn</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/my-work">Mín verkefni</a>
+      <a href="/status">Stjórnborð</a>
+      <a href="/reports">Skýrslur</a>
+      <a href="/analytics" class="active">Tölfræði</a>
+    </nav>
+    <div class="user-info" id="user-info"></div>
+  </header>
+
+  <main class="container">
+    <div class="page-header">
+      <h1><i class="fas fa-chart-line"></i> Notkun og tölfræði</h1>
+      <div class="period-selector">
+        <button class="period-btn active" data-period="-7 days">7 dagar</button>
+        <button class="period-btn" data-period="-30 days">30 dagar</button>
+        <button class="period-btn" data-period="-90 days">90 dagar</button>
+      </div>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-eye"></i></div>
+        <div class="stat-content">
+          <span class="stat-value" id="stat-pageviews">-</span>
+          <span class="stat-label">Síðuflettingar</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-content">
+          <span class="stat-value" id="stat-sessions">-</span>
+          <span class="stat-label">Einstakar lotur</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+        <div class="stat-content">
+          <span class="stat-value" id="stat-chapters">-</span>
+          <span class="stat-label">Kaflar skoðaðir</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-download"></i></div>
+        <div class="stat-content">
+          <span class="stat-value" id="stat-downloads">-</span>
+          <span class="stat-label">Niðurhal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popular Content -->
+    <div class="card">
+      <div class="card-header">
+        <h2><i class="fas fa-fire"></i> Vinsælasti efnið</h2>
+      </div>
+      <div class="card-body">
+        <table class="data-table" id="popular-table">
+          <thead>
+            <tr>
+              <th>Kafli</th>
+              <th>Flettingar</th>
+              <th class="progress-col">%</th>
+            </tr>
+          </thead>
+          <tbody id="popular-body">
+            <tr><td colspan="3" class="loading">Hleður...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="card">
+      <div class="card-header">
+        <h2><i class="fas fa-history"></i> Nýleg virkni</h2>
+      </div>
+      <div class="card-body">
+        <div class="activity-list" id="activity-list">
+          <p class="loading">Hleður...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let currentPeriod = '-7 days';
+
+    async function init() {
+      // Check auth
+      const authRes = await fetch('/api/auth/me');
+      const authData = await authRes.json();
+      const userEl = document.getElementById('user-info');
+
+      if (!authData.authenticated) {
+        userEl.innerHTML = '<a href="/api/auth/login?redirect=/analytics" class="btn btn-primary">Innskráning</a>';
+        return;
+      }
+
+      if (!['admin', 'head-editor'].includes(authData.user.role)) {
+        document.querySelector('main').innerHTML = `
+          <div class="alert alert-warning">
+            <i class="fas fa-lock"></i>
+            Þú hefur ekki réttindi til að skoða tölfræði.
+          </div>
+        `;
+        return;
+      }
+
+      userEl.innerHTML = '<img src="' + authData.user.avatar + '" alt=""><span>' + authData.user.name + '</span>';
+
+      // Setup period buttons
+      document.querySelectorAll('.period-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentPeriod = btn.dataset.period;
+          loadData();
+        });
+      });
+
+      loadData();
+    }
+
+    async function loadData() {
+      try {
+        const [statsRes, recentRes] = await Promise.all([
+          fetch(`/api/analytics/stats?period=${encodeURIComponent(currentPeriod)}`),
+          fetch('/api/analytics/recent?limit=20')
+        ]);
+
+        const stats = await statsRes.json();
+        const recent = await recentRes.json();
+
+        updateStats(stats);
+        updatePopularContent(stats);
+        updateRecentActivity(recent.events);
+
+      } catch (err) {
+        console.error('Error loading analytics:', err);
+      }
+    }
+
+    function updateStats(stats) {
+      document.getElementById('stat-pageviews').textContent = formatNumber(stats.totalPageViews || 0);
+      document.getElementById('stat-sessions').textContent = formatNumber(stats.uniqueSessions || 0);
+      document.getElementById('stat-chapters').textContent = formatNumber(stats.chaptersViewed || 0);
+      document.getElementById('stat-downloads').textContent = formatNumber(stats.downloads || 0);
+    }
+
+    function updatePopularContent(stats) {
+      const tbody = document.getElementById('popular-body');
+
+      if (!stats.topContent || stats.topContent.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="empty">Engin gögn</td></tr>';
+        return;
+      }
+
+      const maxViews = Math.max(...stats.topContent.map(c => c.views));
+
+      tbody.innerHTML = stats.topContent.slice(0, 10).map(item => {
+        const percent = Math.round((item.views / maxViews) * 100);
+        return `
+          <tr>
+            <td>
+              <strong>${escapeHtml(item.book || 'Efnafræði')}</strong>
+              ${item.chapter ? `/ K${item.chapter}` : ''}
+              ${item.section ? `/ ${item.section}` : ''}
+            </td>
+            <td class="views-col">${formatNumber(item.views)}</td>
+            <td class="progress-col">
+              <div class="mini-progress">
+                <div class="mini-progress-bar" style="width: ${percent}%"></div>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function updateRecentActivity(events) {
+      const list = document.getElementById('activity-list');
+
+      if (!events || events.length === 0) {
+        list.innerHTML = '<p class="empty">Engin nýleg virkni</p>';
+        return;
+      }
+
+      list.innerHTML = events.slice(0, 20).map(event => {
+        const icon = getEventIcon(event.eventType);
+        const time = new Date(event.timestamp).toLocaleString('is-IS', {
+          day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
+        });
+
+        return `
+          <div class="activity-item">
+            <span class="activity-icon">${icon}</span>
+            <span class="activity-text">${getEventDescription(event)}</span>
+            <span class="activity-time">${time}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function getEventIcon(type) {
+      const icons = {
+        'page_view': '<i class="fas fa-eye"></i>',
+        'chapter_view': '<i class="fas fa-book-open"></i>',
+        'section_view': '<i class="fas fa-file-alt"></i>',
+        'download': '<i class="fas fa-download"></i>',
+        'search': '<i class="fas fa-search"></i>',
+        'error': '<i class="fas fa-exclamation-triangle"></i>'
+      };
+      return icons[type] || '<i class="fas fa-circle"></i>';
+    }
+
+    function getEventDescription(event) {
+      const parts = [];
+      if (event.book) parts.push(event.book);
+      if (event.chapter) parts.push(`K${event.chapter}`);
+      if (event.section) parts.push(event.section);
+
+      const location = parts.length > 0 ? parts.join(' / ') : '';
+
+      switch (event.eventType) {
+        case 'page_view': return `Síða skoðuð ${location}`;
+        case 'chapter_view': return `Kafli skoðaður: ${location}`;
+        case 'section_view': return `Hluti skoðaður: ${location}`;
+        case 'download': return `Hlaðið niður: ${location}`;
+        case 'search': return `Leitað: ${event.metadata?.query || ''}`;
+        default: return event.eventType;
+      }
+    }
+
+    function formatNumber(num) {
+      if (num >= 1000000) return (num / 1000000).toFixed(1) + 'm';
+      if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
+      return num.toLocaleString('is-IS');
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    init();
+  </script>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #dbeafe;
+      --success: #16a34a;
+      --warning: #d97706;
+      --error: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-400: #9ca3af;
+      --gray-500: #6b7280;
+      --gray-600: #4b5563;
+      --gray-800: #1f2937;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--gray-100); color: var(--gray-800); }
+
+    .header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background: white; border-bottom: 1px solid var(--gray-200); }
+    .header h1 { font-size: 1.25rem; color: var(--primary); }
+    .header nav { display: flex; gap: 1.5rem; }
+    .header nav a { color: var(--gray-600); text-decoration: none; font-weight: 500; }
+    .header nav a:hover, .header nav a.active { color: var(--primary); }
+    .user-info { display: flex; align-items: center; gap: 0.5rem; }
+    .user-info img { width: 32px; height: 32px; border-radius: 50%; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+    .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+    .page-header h1 { font-size: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
+    .period-selector { display: flex; gap: 0.5rem; }
+    .period-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--gray-300);
+      background: white;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: all 0.15s;
+    }
+    .period-btn:hover { border-color: var(--primary); }
+    .period-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .stat-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .stat-icon { font-size: 1.5rem; color: var(--primary); opacity: 0.8; }
+    .stat-value { display: block; font-size: 1.75rem; font-weight: 700; color: var(--gray-800); }
+    .stat-label { font-size: 0.8rem; color: var(--gray-500); }
+
+    .card { background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1.5rem; overflow: hidden; }
+    .card-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--gray-200); }
+    .card-header h2 { font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .card-body { padding: 1.25rem; }
+
+    .data-table { width: 100%; border-collapse: collapse; }
+    .data-table th, .data-table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
+    .data-table th { font-size: 0.75rem; text-transform: uppercase; color: var(--gray-500); font-weight: 600; }
+    .views-col { text-align: right; font-variant-numeric: tabular-nums; }
+    .progress-col { width: 100px; }
+    .mini-progress { height: 6px; background: var(--gray-200); border-radius: 3px; overflow: hidden; }
+    .mini-progress-bar { height: 100%; background: var(--primary); border-radius: 3px; }
+
+    .activity-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .activity-item { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--gray-100); }
+    .activity-icon { color: var(--gray-400); width: 1.5rem; text-align: center; }
+    .activity-text { flex: 1; font-size: 0.875rem; }
+    .activity-time { font-size: 0.75rem; color: var(--gray-400); }
+
+    .loading, .empty { text-align: center; padding: 2rem; color: var(--gray-500); }
+
+    .alert { padding: 1rem; border-radius: 0.5rem; margin: 2rem 0; }
+    .alert-warning { background: #fef3c7; color: #92400e; }
+  </style>
+</body>
+</html>
