@@ -77,16 +77,50 @@ Click **"Meira"** (More) for additional tools:
 |----------|--------|
 | Ctrl+S | Save |
 | Ctrl+E | Toggle EN/IS split view |
-| Ctrl+T | Open terminology |
+| Ctrl+T | Open terminology search |
 | Ctrl+Z | Undo |
+| Alt+← | Previous section (or split part) |
+| Alt+→ | Next section (or split part) |
+| Esc | Close any open panel |
 | ? | Show all shortcuts |
+
+## Working with Split Files
+
+Some long sections are split into multiple parts for machine translation. You'll recognize these by the "Part X of Y" badge in the editor header.
+
+### How Split Files Work
+- Long sections (>18,000 characters) are split automatically
+- Parts are named like `5-1(a)`, `5-1(b)`, etc.
+- You must review **each part separately**
+
+### Navigating Between Parts
+- Use the **←** and **→** arrows next to the part badge
+- Or use **Alt+←** and **Alt+→** keyboard shortcuts
+- Click the **ℹ** icon to see all parts and their status
+
+### Completing Split Sections
+1. Review and submit Part 1 (a)
+2. Navigate to Part 2 (b) and review
+3. Continue until all parts are complete
+4. The section is ready when all parts are submitted
 
 ## Terminology Guidelines
 
 ### Checking Terms
-1. Double-click any word to look it up
-2. Or press Ctrl+T to open terminology panel
-3. Use approved Icelandic terms from the glossary
+There are two ways to look up terms:
+
+**Method 1: Double-click lookup**
+1. Double-click any word in the editor
+2. A terminology panel appears near your cursor
+3. Click "Insert" to use the approved term
+4. Click "Copy" to copy to clipboard
+
+**Method 2: Manual search**
+1. Press Ctrl+T to open terminology panel
+2. Type the term you want to look up
+3. Browse results and select
+
+Use approved Icelandic terms from the glossary
 
 ### Proposing New Terms
 If you encounter a term not in the glossary:
@@ -158,13 +192,16 @@ If you encounter a term not in the glossary:
 
 ## Quick Reference
 
-| Need | Where to Go |
-|------|-------------|
+| Need | Where to Go / What to Do |
+|------|--------------------------|
 | My assignments | `/my-work` |
 | Edit content | `/editor` |
-| Check terms | `/terminology` |
+| Check terms | Double-click word or Ctrl+T |
 | See decisions | `/decisions` |
 | Report issues | `/issues` |
+| Navigate split parts | Alt+← and Alt+→ |
+| Toggle source view | Ctrl+E |
+| Show all shortcuts | Press ? |
 | Get help | Ask admin or team meeting |
 
 ## Contact

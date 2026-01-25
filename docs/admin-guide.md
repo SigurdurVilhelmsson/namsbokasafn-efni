@@ -22,8 +22,18 @@ Start each day by checking these items:
 - [ ] Reassign if editor is unavailable
 
 ### 4. Pending Reviews (`/reviews`)
-- [ ] Complete any reviews pending >3 days
+- [ ] Check SLA summary panel for review status
+- [ ] Complete reviews pending >2 days (SLA target)
+- [ ] Address critical (red) reviews immediately
 - [ ] Prioritize reviews blocking publication
+
+**SLA Status Colors:**
+| Color | Status | Days | Action |
+|-------|--------|------|--------|
+| Green | On Track | 0-2 | Normal processing |
+| Yellow | At Risk | 2-3 | Prioritize today |
+| Orange | Overdue | 3-5 | Process immediately |
+| Red | Critical | 5+ | Drop everything, handle now |
 
 ### 5. Team Communications
 - [ ] Respond to editor questions
@@ -79,8 +89,9 @@ Start each day by checking these items:
 
 ### Creating Assignments
 1. Check editor workload before assigning:
-   - Go to `/api/assignments/overview`
-   - Verify editor has capacity (target: 2-3 active chapters max)
+   - Go to `/assignments` and view the **Workload Panel**
+   - Look for the capacity indicator when typing assignee name
+   - Verify editor has capacity (see defaults below)
 2. Set realistic due dates:
    - Linguistic review: 1-2 weeks per chapter
    - Localization: 1 week per chapter
@@ -88,6 +99,26 @@ Start each day by checking these items:
    - Priority level
    - Special considerations
    - Related decisions to follow
+
+### Capacity Defaults
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| Weekly chapters | 2 | Max new assignments per week |
+| Concurrent max | 3 | Max active assignments at once |
+| Hours/week | 10 | Available translation hours |
+
+### Capacity Indicators
+
+When assigning work, watch for these warnings:
+
+| Icon | Status | Meaning |
+|------|--------|---------|
+| ✓ (green) | Available | Editor can take more work |
+| ⚡ (yellow) | Nearly Full | Assign only if urgent |
+| ⛔ (red) | At Capacity | Do not assign; suggest alternatives |
+
+The system will show **suggested alternative assignees** if you try to assign to someone at capacity.
 
 ### Reassigning Work
 1. Communicate with current assignee first
@@ -104,6 +135,19 @@ When work is blocked:
    - Technical: Contact development team
 3. Document the resolution
 4. Notify affected editors
+
+### Understanding Split Files
+
+When a section exceeds 18,000 characters, it's automatically split for machine translation:
+- **Naming**: `5-1(a).is.md`, `5-1(b).is.md`, etc.
+- **Editor view**: Shows "Part X of Y" badge with navigation
+- **Assignment**: Assign the whole section; editors review each part
+
+**What to tell editors about splits:**
+- Each part must be reviewed separately
+- Use the prev/next arrows to navigate between parts
+- Click the info icon for explanation
+- All parts should be completed before submission
 
 ## Escalation Procedures
 
