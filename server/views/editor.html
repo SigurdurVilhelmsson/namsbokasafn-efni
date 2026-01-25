@@ -129,6 +129,10 @@
                 <i class="fas fa-exclamation-triangle"></i> Atriði
                 <span class="issue-count dropdown-item-badge" id="issue-count-badge" style="display: none;">0</span>
               </button>
+              <button class="dropdown-item" id="notes-btn" title="Persónulegar minnispunktar" onclick="closeMoreMenu(); toggleNotes();">
+                <i class="fas fa-sticky-note"></i> Mínir minnispunktar
+                <span class="notes-indicator" id="notes-indicator" style="display: none;"><i class="fas fa-circle"></i></span>
+              </button>
               <div class="dropdown-divider"></div>
               <button class="dropdown-item" id="keyboard-help-btn" onclick="showKeyboardHelp()">
                 <i class="fas fa-keyboard"></i> Flýtilyklar
@@ -373,6 +377,41 @@
           <a href="/terminology" target="_blank" class="btn btn-secondary btn-small">
             <i class="fas fa-external-link-alt"></i> Orðasafn
           </a>
+        </div>
+      </div>
+
+      <!-- Personal Notes sidebar -->
+      <div class="notes-sidebar" id="notes-sidebar" style="display: none;">
+        <div class="sidebar-header">
+          <h3><i class="fas fa-sticky-note"></i> Mínir minnispunktar</h3>
+          <button class="btn-close" id="close-notes">&times;</button>
+        </div>
+        <div class="notes-info">
+          <p class="text-muted text-small">Persónulegir minnispunktar (ekki sýnilegir öðrum)</p>
+        </div>
+        <div class="notes-editor">
+          <textarea class="notes-textarea" id="notes-textarea" placeholder="Skrifaðu minnispunkta hér..."></textarea>
+          <div class="notes-actions">
+            <button class="btn btn-primary btn-small" onclick="saveNote()">
+              <i class="fas fa-save"></i> Vista
+            </button>
+            <button class="btn btn-icon btn-small" id="pin-note-btn" onclick="togglePinNote()" title="Festa minnispunkt">
+              <i class="fas fa-thumbtack"></i>
+            </button>
+            <button class="btn btn-icon btn-small" onclick="deleteNote()" title="Eyða minnispunkti">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+        <div class="notes-save-status" id="notes-save-status"></div>
+        <div class="notes-all-section">
+          <div class="notes-section-header" onclick="toggleAllNotes()">
+            <span><i class="fas fa-list"></i> Allir minnispunktar</span>
+            <i class="fas fa-chevron-down notes-expand-icon" id="notes-expand-icon"></i>
+          </div>
+          <div class="notes-all-list" id="notes-all-list" style="display: none;">
+            <p class="text-muted center">Hleður...</p>
+          </div>
         </div>
       </div>
 
@@ -1247,6 +1286,12 @@
         toggleTerminology();
       }
 
+      // Ctrl+N opens personal notes
+      if (e.ctrlKey && e.key === 'n' && editor) {
+        e.preventDefault();
+        toggleNotes();
+      }
+
       // Alt+Arrow for section navigation
       if (e.altKey && e.key === 'ArrowLeft') {
         e.preventDefault();
@@ -1342,6 +1387,11 @@
       document.getElementById('history-btn').addEventListener('click', toggleHistory);
       document.getElementById('close-history').addEventListener('click', () => {
         document.getElementById('history-sidebar').style.display = 'none';
+      });
+
+      // Notes close button
+      document.getElementById('close-notes').addEventListener('click', () => {
+        document.getElementById('notes-sidebar').style.display = 'none';
       });
 
       // Comments button
@@ -1544,6 +1594,25 @@
 
       // Setup spell checking
       setupSpellCheck();
+
+      // Load personal note indicator
+      loadNoteIndicator();
+    }
+
+    async function loadNoteIndicator() {
+      if (!currentBook || !currentChapter || !currentSection) return;
+
+      try {
+        const res = await fetch(`/api/editor/${currentBook}/${currentChapter}/${currentSection}/notes`);
+        const data = await res.json();
+
+        currentNoteContent = data.note.content || '';
+        notePinned = data.note.pinned || false;
+        updateNotesIndicator();
+      } catch (err) {
+        // Silently fail - notes are not critical
+        console.error('Error loading note indicator:', err);
+      }
     }
 
     async function autoSave() {
@@ -1671,8 +1740,225 @@
       document.getElementById('decisions-sidebar').style.display = 'none';
       document.getElementById('issues-sidebar').style.display = 'none';
       document.getElementById('terminology-sidebar').style.display = 'none';
+      document.getElementById('notes-sidebar').style.display = 'none';
 
       sidebar.style.display = isVisible ? 'none' : 'block';
+    }
+
+    // ========================================
+    // PERSONAL NOTES
+    // ========================================
+
+    let currentNoteContent = '';
+    let notePinned = false;
+
+    function toggleNotes() {
+      const sidebar = document.getElementById('notes-sidebar');
+      const isVisible = sidebar.style.display !== 'none';
+
+      // Close other sidebars
+      document.getElementById('comments-sidebar').style.display = 'none';
+      document.getElementById('decisions-sidebar').style.display = 'none';
+      document.getElementById('issues-sidebar').style.display = 'none';
+      document.getElementById('terminology-sidebar').style.display = 'none';
+      document.getElementById('history-sidebar').style.display = 'none';
+
+      sidebar.style.display = isVisible ? 'none' : 'block';
+
+      if (!isVisible) {
+        loadCurrentNote();
+      }
+    }
+
+    async function loadCurrentNote() {
+      if (!currentBook || !currentChapter || !currentSection) return;
+
+      try {
+        const res = await fetch(`/api/editor/${currentBook}/${currentChapter}/${currentSection}/notes`);
+        const data = await res.json();
+
+        const textarea = document.getElementById('notes-textarea');
+        textarea.value = data.note.content || '';
+        currentNoteContent = data.note.content || '';
+        notePinned = data.note.pinned || false;
+
+        updatePinButton();
+        updateNotesIndicator();
+      } catch (err) {
+        console.error('Error loading note:', err);
+      }
+    }
+
+    async function saveNote() {
+      if (!currentBook || !currentChapter || !currentSection) return;
+
+      const textarea = document.getElementById('notes-textarea');
+      const content = textarea.value;
+
+      updateNotesSaveStatus('saving');
+
+      try {
+        const res = await fetch(`/api/editor/${currentBook}/${currentChapter}/${currentSection}/notes`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content, pinned: notePinned })
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          currentNoteContent = content;
+          updateNotesSaveStatus('saved');
+          updateNotesIndicator();
+          showToast('Minnispunktur vistaður', 'success');
+        } else {
+          updateNotesSaveStatus('error');
+          showToast('Villa við að vista minnispunkt', 'error');
+        }
+      } catch (err) {
+        console.error('Error saving note:', err);
+        updateNotesSaveStatus('error');
+        showToast('Villa við að vista minnispunkt', 'error');
+      }
+    }
+
+    async function deleteNote() {
+      if (!currentBook || !currentChapter || !currentSection) return;
+
+      if (!confirm('Ertu viss um að þú viljir eyða þessum minnispunkti?')) return;
+
+      try {
+        const res = await fetch(`/api/editor/${currentBook}/${currentChapter}/${currentSection}/notes`, {
+          method: 'DELETE'
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          document.getElementById('notes-textarea').value = '';
+          currentNoteContent = '';
+          notePinned = false;
+          updatePinButton();
+          updateNotesIndicator();
+          showToast('Minnispunkti eytt', 'success');
+        }
+      } catch (err) {
+        console.error('Error deleting note:', err);
+        showToast('Villa við að eyða minnispunkti', 'error');
+      }
+    }
+
+    async function togglePinNote() {
+      if (!currentBook || !currentChapter || !currentSection) return;
+
+      // Save first if there's content
+      const textarea = document.getElementById('notes-textarea');
+      if (textarea.value.trim()) {
+        notePinned = !notePinned;
+        await saveNote();
+        updatePinButton();
+      }
+    }
+
+    function updatePinButton() {
+      const btn = document.getElementById('pin-note-btn');
+      if (notePinned) {
+        btn.classList.add('active');
+        btn.title = 'Losa minnispunkt';
+      } else {
+        btn.classList.remove('active');
+        btn.title = 'Festa minnispunkt';
+      }
+    }
+
+    function updateNotesIndicator() {
+      const indicator = document.getElementById('notes-indicator');
+      const hasNote = currentNoteContent && currentNoteContent.trim().length > 0;
+      indicator.style.display = hasNote ? 'inline' : 'none';
+    }
+
+    function updateNotesSaveStatus(status) {
+      const el = document.getElementById('notes-save-status');
+      const messages = {
+        saving: '<i class="fas fa-spinner fa-spin"></i> Vistar...',
+        saved: '<i class="fas fa-check"></i> Vistað',
+        error: '<i class="fas fa-exclamation-triangle"></i> Villa'
+      };
+      el.innerHTML = messages[status] || '';
+
+      if (status === 'saved') {
+        setTimeout(() => { el.innerHTML = ''; }, 2000);
+      }
+    }
+
+    async function toggleAllNotes() {
+      const list = document.getElementById('notes-all-list');
+      const icon = document.getElementById('notes-expand-icon');
+      const isVisible = list.style.display !== 'none';
+
+      if (isVisible) {
+        list.style.display = 'none';
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        list.style.display = 'block';
+        icon.style.transform = 'rotate(180deg)';
+        loadAllNotes();
+      }
+    }
+
+    async function loadAllNotes() {
+      const list = document.getElementById('notes-all-list');
+      list.innerHTML = '<p class="loading">Hleður...</p>';
+
+      try {
+        const res = await fetch('/api/editor/notes/all');
+        const data = await res.json();
+
+        if (data.notes.length === 0) {
+          list.innerHTML = '<p class="text-muted center">Engir minnispunktar</p>';
+          return;
+        }
+
+        list.innerHTML = data.notes.map(note => {
+          const date = new Date(note.updatedAt).toLocaleDateString('is-IS');
+          const preview = note.content.substring(0, 60) + (note.content.length > 60 ? '...' : '');
+          const pinIcon = note.pinned ? '<i class="fas fa-thumbtack text-primary"></i> ' : '';
+
+          return `
+            <div class="note-item" onclick="goToNoteSection('${note.book}', '${note.chapter}', '${note.section}')">
+              <div class="note-item-header">
+                ${pinIcon}
+                <span class="note-location">K${note.chapter} / ${note.section}</span>
+                <span class="note-date">${date}</span>
+              </div>
+              <div class="note-preview">${escapeHtml(preview)}</div>
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        console.error('Error loading all notes:', err);
+        list.innerHTML = '<p class="text-error center">Villa við að hlaða minnispunktum</p>';
+      }
+    }
+
+    function goToNoteSection(book, chapter, section) {
+      // Update URL and load section
+      const url = new URL(window.location);
+      url.searchParams.set('book', book);
+      url.searchParams.set('chapter', chapter);
+      url.searchParams.set('section', section);
+      window.history.pushState({}, '', url);
+
+      document.getElementById('book-select').value = book;
+      loadChapters(book).then(() => {
+        document.getElementById('chapter-select').value = chapter;
+        loadSections(book, chapter).then(() => {
+          loadEditor(book, chapter, section);
+        });
+      });
+
+      // Close notes sidebar
+      document.getElementById('notes-sidebar').style.display = 'none';
     }
 
     async function loadHistory(book, chapter, section) {
@@ -2931,6 +3217,7 @@
       document.getElementById('decisions-sidebar').style.display = 'none';
       document.getElementById('issues-sidebar').style.display = 'none';
       document.getElementById('terminology-sidebar').style.display = 'none';
+      document.getElementById('notes-sidebar').style.display = 'none';
 
       sidebar.style.display = isVisible ? 'none' : 'block';
 
@@ -3197,6 +3484,7 @@
       document.getElementById('comments-sidebar').style.display = 'none';
       document.getElementById('issues-sidebar').style.display = 'none';
       document.getElementById('terminology-sidebar').style.display = 'none';
+      document.getElementById('notes-sidebar').style.display = 'none';
 
       sidebar.style.display = isVisible ? 'none' : 'block';
 
@@ -3406,6 +3694,7 @@
       document.getElementById('comments-sidebar').style.display = 'none';
       document.getElementById('decisions-sidebar').style.display = 'none';
       document.getElementById('terminology-sidebar').style.display = 'none';
+      document.getElementById('notes-sidebar').style.display = 'none';
 
       sidebar.style.display = isVisible ? 'none' : 'block';
 
@@ -3676,6 +3965,7 @@
       document.getElementById('comments-sidebar').style.display = 'none';
       document.getElementById('decisions-sidebar').style.display = 'none';
       document.getElementById('issues-sidebar').style.display = 'none';
+      document.getElementById('notes-sidebar').style.display = 'none';
 
       sidebar.style.display = isVisible ? 'none' : 'block';
 
@@ -4885,6 +5175,144 @@
     /* Text colors for comment types */
     .text-primary { color: var(--primary); }
     .text-info { color: #0891b2; }
+
+    /* Notes Sidebar */
+    .notes-sidebar {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 360px;
+      height: calc(100vh - 60px);
+      background: white;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      z-index: 100;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .notes-sidebar .sidebar-header {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: white;
+      border-bottom: none;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .notes-sidebar .sidebar-header h3 {
+      color: white;
+      font-size: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .notes-sidebar .btn-close { color: white; opacity: 0.8; }
+    .notes-sidebar .btn-close:hover { opacity: 1; }
+    .notes-info {
+      padding: 0.5rem 0.75rem;
+      background: #fef3c7;
+      border-bottom: 1px solid #fcd34d;
+    }
+    .notes-editor {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .notes-textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 0.75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      resize: vertical;
+      font-family: inherit;
+    }
+    .notes-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .notes-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .notes-actions .btn-icon {
+      padding: 0.375rem 0.5rem;
+    }
+    .notes-actions .btn-icon.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    .notes-save-status {
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .notes-all-section {
+      border-top: 1px solid var(--gray-200);
+      margin-top: auto;
+    }
+    .notes-section-header {
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .notes-section-header:hover {
+      background: var(--gray-100);
+    }
+    .notes-expand-icon {
+      transition: transform 0.2s;
+    }
+    .notes-all-list {
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 0.5rem;
+    }
+    .note-item {
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      background: var(--gray-50);
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      border-left: 3px solid #f59e0b;
+    }
+    .note-item:hover {
+      background: var(--gray-100);
+    }
+    .note-item-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      margin-bottom: 0.25rem;
+    }
+    .note-location {
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+    .note-date {
+      color: var(--gray-400);
+      margin-left: auto;
+    }
+    .note-preview {
+      font-size: 0.8125rem;
+      color: var(--gray-600);
+      line-height: 1.4;
+    }
+    .notes-indicator {
+      font-size: 0.5rem;
+      color: #f59e0b;
+      margin-left: 0.25rem;
+    }
 
     /* Decisions Sidebar */
     .decisions-sidebar {

@@ -20,6 +20,7 @@ const editorHistory = require('../services/editorHistory');
 const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
 const bookRegistration = require('../services/bookRegistration');
+const notesStore = require('../services/notesStore');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 
@@ -711,6 +712,155 @@ router.post('/section/:sectionId/submit-localization', requireAuth, requireRole(
     console.error('Error submitting localization:', err);
     res.status(500).json({
       error: 'Failed to submit localization',
+      message: err.message
+    });
+  }
+});
+
+// ============================================================================
+// PERSONAL NOTES ROUTES
+// ============================================================================
+
+/**
+ * GET /api/editor/:book/:chapter/:section/notes
+ * Get personal note for a section
+ */
+router.get('/:book/:chapter/:section/notes', requireAuth, validateParams, validateSection, (req, res) => {
+  const { book, chapter, section } = req.params;
+  const userId = String(req.user.id);
+
+  try {
+    const note = notesStore.getNote(userId, book, chapter, section);
+
+    res.json({
+      book,
+      chapter,
+      section,
+      note
+    });
+  } catch (err) {
+    console.error('Error loading note:', err);
+    res.status(500).json({
+      error: 'Failed to load note',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/editor/:book/:chapter/:section/notes
+ * Save personal note for a section
+ */
+router.post('/:book/:chapter/:section/notes', requireAuth, validateParams, validateSection, (req, res) => {
+  const { book, chapter, section } = req.params;
+  const { content, pinned } = req.body;
+  const userId = String(req.user.id);
+
+  if (content !== undefined && typeof content !== 'string') {
+    return res.status(400).json({
+      error: 'Invalid content',
+      message: 'Content must be a string'
+    });
+  }
+
+  try {
+    const note = notesStore.saveNote(userId, book, chapter, section, content, pinned);
+
+    res.json({
+      success: true,
+      book,
+      chapter,
+      section,
+      note
+    });
+  } catch (err) {
+    console.error('Error saving note:', err);
+    res.status(500).json({
+      error: 'Failed to save note',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * DELETE /api/editor/:book/:chapter/:section/notes
+ * Delete personal note for a section
+ */
+router.delete('/:book/:chapter/:section/notes', requireAuth, validateParams, validateSection, (req, res) => {
+  const { book, chapter, section } = req.params;
+  const userId = String(req.user.id);
+
+  try {
+    const deleted = notesStore.deleteNote(userId, book, chapter, section);
+
+    res.json({
+      success: true,
+      deleted,
+      book,
+      chapter,
+      section
+    });
+  } catch (err) {
+    console.error('Error deleting note:', err);
+    res.status(500).json({
+      error: 'Failed to delete note',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/editor/notes/all
+ * Get all personal notes for the current user
+ */
+router.get('/notes/all', requireAuth, (req, res) => {
+  const userId = String(req.user.id);
+  const { book, chapter, pinnedOnly } = req.query;
+
+  try {
+    const notes = notesStore.getAllNotes(userId, {
+      book,
+      chapter,
+      pinnedOnly: pinnedOnly === 'true'
+    });
+
+    const counts = notesStore.getNotesCount(userId);
+
+    res.json({
+      notes,
+      counts
+    });
+  } catch (err) {
+    console.error('Error loading notes:', err);
+    res.status(500).json({
+      error: 'Failed to load notes',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/editor/:book/:chapter/:section/notes/pin
+ * Toggle pinned status for a note
+ */
+router.post('/:book/:chapter/:section/notes/pin', requireAuth, validateParams, validateSection, (req, res) => {
+  const { book, chapter, section } = req.params;
+  const userId = String(req.user.id);
+
+  try {
+    const pinned = notesStore.togglePinned(userId, book, chapter, section);
+
+    res.json({
+      success: true,
+      pinned,
+      book,
+      chapter,
+      section
+    });
+  } catch (err) {
+    console.error('Error toggling pin:', err);
+    res.status(500).json({
+      error: 'Failed to toggle pin',
       message: err.message
     });
   }
