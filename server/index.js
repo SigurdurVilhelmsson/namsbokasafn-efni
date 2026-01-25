@@ -79,6 +79,9 @@ const deadlinesRoutes = require('./routes/deadlines');
 // Import Assignment routes (team management)
 const assignmentsRoutes = require('./routes/assignments');
 
+// Import Reports routes (progress tracking)
+const reportsRoutes = require('./routes/reports');
+
 // Configuration
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -175,6 +178,9 @@ app.use('/api/deadlines', deadlinesRoutes);
 
 // Assignment Management API Routes
 app.use('/api/assignments', assignmentsRoutes);
+
+// Reports API Routes
+app.use('/api/reports', reportsRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

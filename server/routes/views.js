@@ -140,6 +140,14 @@ router.get('/deadlines', (req, res) => {
 });
 
 /**
+ * GET /reports
+ * Weekly progress reports for stakeholders
+ */
+router.get('/reports', (req, res) => {
+  sendView(res, 'reports.html');
+});
+
+/**
  * GET /localization-review
  * Split-panel localization review page
  */
