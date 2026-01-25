@@ -116,6 +116,14 @@ router.get('/assignments', (req, res) => {
 });
 
 /**
+ * GET /chapter
+ * Chapter control panel for admin/head editor
+ */
+router.get('/chapter', (req, res) => {
+  sendView(res, 'chapter.html');
+});
+
+/**
  * GET /meetings
  * Meeting agenda generator
  */

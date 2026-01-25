@@ -40,6 +40,18 @@
         <span class="alert-text" id="alert-text"></span>
       </div>
 
+      <!-- Blocked Issues Banner (critical - always show first) -->
+      <div class="blocked-banner" id="blocked-banner" style="display: none;">
+        <div class="blocked-header">
+          <span class="blocked-icon">🚫</span>
+          <strong>Verk stöðvað</strong>
+          <span class="blocked-count" id="blocked-count">0</span>
+        </div>
+        <div class="blocked-list" id="blocked-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
       <!-- Current Task Card -->
       <div class="current-task-section" id="current-task-section">
         <h2 class="section-label">Núverandi verkefni</h2>
@@ -219,6 +231,11 @@
             ? 'Þú ert með 1 verkefni'
             : `Þú ert með ${todayData.quickStats.totalTasks} verkefni`;
         document.getElementById('greeting-subtitle').textContent = subtitle;
+
+        // Show blocked issues banner (highest priority)
+        if (todayData.blockedIssues && todayData.blockedIssues.length > 0) {
+          renderBlockedBanner(todayData.blockedIssues);
+        }
 
         // Show alert if needed
         if (todayData.needsAttention.length > 0) {
@@ -628,6 +645,39 @@
       return icons[type] || '📌';
     }
 
+    // ========================================
+    // BLOCKED ISSUES BANNER
+    // ========================================
+
+    function renderBlockedBanner(blockedIssues) {
+      const banner = document.getElementById('blocked-banner');
+      const countEl = document.getElementById('blocked-count');
+      const listEl = document.getElementById('blocked-list');
+
+      if (!blockedIssues || blockedIssues.length === 0) {
+        banner.style.display = 'none';
+        return;
+      }
+
+      countEl.textContent = blockedIssues.length;
+
+      listEl.innerHTML = blockedIssues.map(issue => `
+        <div class="blocked-item">
+          <div class="blocked-item-main">
+            <span class="blocked-item-location">
+              ${escapeHtml(issue.bookLabel)} - Kafli ${issue.chapter}
+            </span>
+            <span class="blocked-item-description">${escapeHtml(issue.description)}</span>
+          </div>
+          <a href="/issues?id=${issue.id}" class="btn btn-small btn-blocked">
+            Sjá atriði
+          </a>
+        </div>
+      `).join('');
+
+      banner.style.display = 'block';
+    }
+
     // Initialize
     init();
   </script>
@@ -728,6 +778,68 @@
     }
     .alert-icon { font-size: 1.25rem; }
     .alert-text { font-weight: 500; color: #92400e; }
+
+    /* Blocked Issues Banner */
+    .blocked-banner {
+      background: var(--error-light);
+      border: 2px solid var(--error);
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .blocked-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(220, 38, 38, 0.1);
+      border-bottom: 1px solid rgba(220, 38, 38, 0.2);
+    }
+    .blocked-icon { font-size: 1.25rem; }
+    .blocked-header strong { color: #991b1b; }
+    .blocked-count {
+      background: var(--error);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      margin-left: auto;
+    }
+    .blocked-list {
+      padding: 0.5rem;
+    }
+    .blocked-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem;
+      background: white;
+      border-radius: 0.375rem;
+      margin-bottom: 0.5rem;
+    }
+    .blocked-item:last-child { margin-bottom: 0; }
+    .blocked-item-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .blocked-item-location {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+    .blocked-item-description {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+    }
+    .btn-blocked {
+      background: var(--error);
+      color: white;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.75rem;
+    }
+    .btn-blocked:hover { background: #b91c1c; }
 
     /* Section Label */
     .section-label {

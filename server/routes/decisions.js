@@ -155,6 +155,65 @@ router.get('/related', (req, res) => {
 });
 
 /**
+ * GET /api/decisions/highlights
+ * Get decision terms for highlighting in the editor
+ * Returns terms and their decisions for decision enforcement
+ *
+ * Query params:
+ *   book - Filter by book (optional)
+ *   chapter - Filter by chapter (optional)
+ */
+router.get('/highlights', (req, res) => {
+  const { book, chapter } = req.query;
+
+  try {
+    const decisions = decisionStore.getRelevantDecisions({
+      book: book || undefined,
+      chapter: chapter ? parseInt(chapter) : undefined
+    });
+
+    // Group by English term for efficient lookup
+    const termMap = {};
+
+    for (const decision of decisions) {
+      const term = decision.englishTerm.toLowerCase();
+
+      if (!termMap[term]) {
+        termMap[term] = {
+          term: decision.englishTerm,
+          termLower: term,
+          icelandic: decision.icelandicTerm,
+          decisions: []
+        };
+      }
+
+      termMap[term].decisions.push({
+        id: decision.id,
+        icelandicTerm: decision.icelandicTerm,
+        rationale: decision.rationale,
+        decidedBy: decision.decidedBy,
+        decidedAt: decision.decidedAt,
+        type: decision.type
+      });
+    }
+
+    // Convert to array and sort by term length (longer terms first for highlighting)
+    const highlights = Object.values(termMap)
+      .sort((a, b) => b.termLower.length - a.termLower.length);
+
+    res.json({
+      highlights,
+      total: highlights.length,
+      filters: { book, chapter }
+    });
+
+  } catch (err) {
+    console.error('Highlights error:', err);
+    res.status(500).json({ error: 'Failed to get highlights', message: err.message });
+  }
+});
+
+/**
  * GET /api/decisions/recent
  * Get recent decisions
  */

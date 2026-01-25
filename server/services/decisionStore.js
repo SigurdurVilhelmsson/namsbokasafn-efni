@@ -310,6 +310,50 @@ function generateId() {
   return 'dec_' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 }
 
+/**
+ * Get terminology decisions relevant to a piece of content
+ * Used for decision enforcement highlighting in the editor
+ *
+ * @param {object} options
+ * @param {string} [options.book] Filter by book
+ * @param {number} [options.chapter] Filter by chapter (include book-level decisions)
+ * @param {string[]} [options.types] Decision types to include (default: terminology, style)
+ * @returns {object[]} Decisions with searchable terms
+ */
+function getRelevantDecisions(options = {}) {
+  const { book, chapter, types = ['terminology', 'style'] } = options;
+  let decisions = loadDecisions();
+
+  // Filter by type
+  decisions = decisions.filter(d => types.includes(d.type));
+
+  // Filter to book-wide decisions or chapter-specific decisions
+  if (book) {
+    decisions = decisions.filter(d =>
+      d.book === book || !d.book // Include global decisions
+    );
+  }
+
+  if (chapter !== undefined) {
+    decisions = decisions.filter(d =>
+      !d.chapter || d.chapter === parseInt(chapter) // Include chapter-agnostic decisions
+    );
+  }
+
+  // Return only decisions with searchable English terms
+  return decisions
+    .filter(d => d.englishTerm && d.englishTerm.length >= 2)
+    .map(d => ({
+      id: d.id,
+      englishTerm: d.englishTerm,
+      icelandicTerm: d.icelandicTerm,
+      type: d.type,
+      rationale: d.rationale,
+      decidedBy: d.decidedBy,
+      decidedAt: d.decidedAt
+    }));
+}
+
 module.exports = {
   DECISION_TYPES,
   logDecision,
@@ -318,6 +362,7 @@ module.exports = {
   getDecisionsByIssue,
   getRecentDecisions,
   getStats,
+  getRelevantDecisions,
   importFromTerminology,
   importFromIssue,
   importFromLocalization

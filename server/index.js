@@ -76,6 +76,9 @@ const meetingsRoutes = require('./routes/meetings');
 // Import Deadline routes
 const deadlinesRoutes = require('./routes/deadlines');
 
+// Import Assignment routes (team management)
+const assignmentsRoutes = require('./routes/assignments');
+
 // Configuration
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
@@ -170,6 +173,9 @@ app.use('/api/meetings', meetingsRoutes);
 // Deadline Dashboard API Routes
 app.use('/api/deadlines', deadlinesRoutes);
 
+// Assignment Management API Routes
+app.use('/api/assignments', assignmentsRoutes);
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({
@@ -253,7 +259,14 @@ app.get('/api', (req, res) => {
       'POST /api/feedback/:id/resolve': 'Resolve feedback',
       'GET /api/analytics/stats': 'Get analytics statistics',
       'GET /api/analytics/recent': 'Get recent events',
-      'POST /api/analytics/event': 'Log client-side event (public)'
+      'POST /api/analytics/event': 'Log client-side event (public)',
+      // Assignments Management
+      'GET /api/assignments': 'List all assignments (EDITOR)',
+      'GET /api/assignments/overview': 'Team workload overview (HEAD_EDITOR)',
+      'GET /api/assignments/:id': 'Get assignment details',
+      'POST /api/assignments': 'Create assignment (HEAD_EDITOR)',
+      'PUT /api/assignments/:id': 'Update assignment',
+      'DELETE /api/assignments/:id': 'Cancel assignment (HEAD_EDITOR)'
     },
     documentation: 'https://github.com/SigurdurVilhelmsson/namsbokasafn-efni'
   });

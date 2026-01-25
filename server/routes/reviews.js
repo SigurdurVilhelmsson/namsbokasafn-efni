@@ -19,6 +19,7 @@ const path = require('path');
 const editorHistory = require('../services/editorHistory');
 const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
+const { calculateEscalationLevel } = require('../services/issueClassifier');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 
@@ -27,14 +28,47 @@ const { requireRole, ROLES } = require('../middleware/requireRole');
  * List all pending reviews (admin/head-editor only)
  */
 router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
-  const { book } = req.query;
+  const { book, includeEscalation = 'true' } = req.query;
 
   try {
-    const reviews = editorHistory.getPendingReviews(book || null);
+    let reviews = editorHistory.getPendingReviews(book || null);
+
+    // Add escalation info if requested
+    if (includeEscalation === 'true') {
+      reviews = reviews.map(review => {
+        const escalation = calculateEscalationLevel(review.submittedAt, 'reviewPending');
+        return {
+          ...review,
+          escalation: {
+            level: escalation.level,
+            daysPending: escalation.days,
+            message: escalation.message,
+            shouldEscalate: escalation.shouldEscalate
+          }
+        };
+      });
+
+      // Sort by escalation level (critical first), then by days pending
+      reviews.sort((a, b) => {
+        const levelOrder = { critical: 0, warning: 1, notice: 2, null: 3 };
+        const levelDiff = levelOrder[a.escalation.level] - levelOrder[b.escalation.level];
+        if (levelDiff !== 0) return levelDiff;
+        return b.escalation.daysPending - a.escalation.daysPending;
+      });
+    }
+
+    // Calculate escalation stats
+    const escalationStats = {
+      critical: reviews.filter(r => r.escalation?.level === 'critical').length,
+      warning: reviews.filter(r => r.escalation?.level === 'warning').length,
+      notice: reviews.filter(r => r.escalation?.level === 'notice').length,
+      oldest: reviews.length > 0 ? reviews[0] : null
+    };
 
     res.json({
       count: reviews.length,
-      reviews
+      reviews,
+      escalationStats
     });
   } catch (err) {
     console.error('Error listing reviews:', err);

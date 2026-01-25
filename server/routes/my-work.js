@@ -18,6 +18,7 @@ const Database = require('better-sqlite3');
 const { requireAuth } = require('../middleware/requireAuth');
 const assignmentStore = require('../services/assignmentStore');
 const activityLog = require('../services/activityLog');
+const session = require('../services/session');
 
 // Database path (same as other services)
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -70,6 +71,88 @@ function getDueDateInfo(dueDate) {
     daysUntil,
     status: daysUntil < 0 ? 'overdue' : daysUntil === 0 ? 'today' : daysUntil <= 3 ? 'soon' : 'normal'
   };
+}
+
+/**
+ * Get blocked issues for user's assigned chapters
+ */
+function getBlockedIssuesForAssignments(assignments) {
+  const blockedIssues = [];
+
+  try {
+    const sessions = session.listAllSessions();
+
+    for (const sess of sessions) {
+      const sessionData = session.getSession(sess.id);
+      if (!sessionData) continue;
+
+      // Check if this session's chapter matches any of the user's assignments
+      const matchingAssignment = assignments.find(a =>
+        a.book === sessionData.book && a.chapter === sessionData.chapter
+      );
+
+      if (matchingAssignment) {
+        // Find blocked issues in this session
+        const blocked = sessionData.issues.filter(i =>
+          i.category === 'BLOCKED' && i.status === 'pending'
+        );
+
+        for (const issue of blocked) {
+          blockedIssues.push({
+            id: issue.id,
+            sessionId: sess.id,
+            book: sessionData.book,
+            bookLabel: BOOK_LABELS[sessionData.book] || sessionData.book,
+            chapter: sessionData.chapter,
+            description: issue.description,
+            category: issue.category,
+            patternId: issue.patternId,
+            createdAt: issue.createdAt || sess.createdAt,
+            context: issue.context,
+            line: issue.line,
+            assignmentId: matchingAssignment.id
+          });
+        }
+      }
+    }
+  } catch (err) {
+    console.error('Error getting blocked issues:', err);
+  }
+
+  return blockedIssues;
+}
+
+/**
+ * Get escalation info for overdue items
+ */
+function getEscalationInfo(items) {
+  const now = new Date();
+  const escalations = [];
+
+  for (const item of items) {
+    let daysOverdue = 0;
+    let escalationLevel = null;
+
+    if (item.dueDate?.status === 'overdue') {
+      daysOverdue = Math.abs(item.dueDate.daysUntil);
+
+      if (daysOverdue >= 7) {
+        escalationLevel = 'critical';
+      } else if (daysOverdue >= 3) {
+        escalationLevel = 'warning';
+      } else {
+        escalationLevel = 'notice';
+      }
+
+      escalations.push({
+        ...item,
+        daysOverdue,
+        escalationLevel
+      });
+    }
+  }
+
+  return escalations.sort((a, b) => b.daysOverdue - a.daysOverdue);
 }
 
 /**
@@ -345,11 +428,36 @@ router.get('/today', requireAuth, (req, res) => {
     // Up next is the rest (limit to 5)
     const upNext = allTasks.slice(1, 6);
 
-    // Needs attention: overdue items and changes requested (for alert banner)
-    const needsAttention = allTasks.filter(t =>
-      t.type === 'changes_requested' ||
-      t.dueDate?.status === 'overdue'
-    );
+    // Get blocked issues for user's assignments
+    const blockedIssues = getBlockedIssuesForAssignments(assignments);
+
+    // Mark assignments that are blocked
+    for (const assignment of formattedAssignments) {
+      const relatedBlocked = blockedIssues.filter(b =>
+        b.book === assignment.book && b.chapter === assignment.chapter
+      );
+      if (relatedBlocked.length > 0) {
+        assignment.isBlocked = true;
+        assignment.blockedReason = relatedBlocked[0].description;
+        assignment.blockedIssueId = relatedBlocked[0].id;
+        assignment.blockedCount = relatedBlocked.length;
+      }
+    }
+
+    // Needs attention: overdue items, changes requested, and blocked items (for alert banner)
+    const needsAttention = [
+      ...allTasks.filter(t =>
+        t.type === 'changes_requested' ||
+        t.dueDate?.status === 'overdue'
+      ),
+      ...blockedIssues.map(b => ({
+        type: 'blocked',
+        ...b
+      }))
+    ];
+
+    // Get escalation info for overdue items
+    const escalations = getEscalationInfo(formattedAssignments);
 
     // Quick stats
     const pendingSubmissions = getUserPendingSubmissions(username);
@@ -372,10 +480,13 @@ router.get('/today', requireAuth, (req, res) => {
       currentTask,
       upNext,
       needsAttention,
+      blockedIssues,
+      escalations,
       quickStats: {
         totalTasks: allTasks.length,
         changesRequested: changesRequested.length,
         overdue: formattedAssignments.filter(a => a.dueDate?.status === 'overdue').length,
+        blocked: blockedIssues.length,
         pendingReview: pendingSubmissions.length,
         completedThisWeek,
         proposedTerms: proposedTerms.length

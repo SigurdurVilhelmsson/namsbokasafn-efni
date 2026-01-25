@@ -456,13 +456,96 @@ function escapeRegex(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+/**
+ * Escalation rules for overdue items
+ */
+const ESCALATION_RULES = {
+  reviewPending: {
+    notice: 3,    // Days until notice level
+    warning: 5,   // Days until warning level
+    critical: 7   // Days until critical (auto-escalate)
+  },
+  assignmentOverdue: {
+    notice: 0,    // Immediately on overdue
+    warning: 3,   // 3 days overdue
+    critical: 7   // 7 days overdue (auto-reassign candidate)
+  },
+  blockedIssue: {
+    notice: 1,    // 1 day blocked
+    warning: 3,   // 3 days blocked
+    critical: 7   // 7 days blocked (requires immediate attention)
+  }
+};
+
+/**
+ * Calculate escalation level for a pending item
+ *
+ * @param {Date|string} startDate When the item started pending
+ * @param {string} ruleType Type of escalation rule to use
+ * @returns {object} Escalation info { level, days, message }
+ */
+function calculateEscalationLevel(startDate, ruleType = 'reviewPending') {
+  const rules = ESCALATION_RULES[ruleType];
+  if (!rules) return { level: null, days: 0, message: null };
+
+  const start = new Date(startDate);
+  const now = new Date();
+  const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+
+  let level = null;
+  let message = null;
+
+  if (days >= rules.critical) {
+    level = 'critical';
+    message = `Bráðabirgðastaða: ${days} dagar (mörk: ${rules.critical})`;
+  } else if (days >= rules.warning) {
+    level = 'warning';
+    message = `Viðvörun: ${days} dagar í bið (mörk: ${rules.warning})`;
+  } else if (days >= rules.notice) {
+    level = 'notice';
+    message = `Athugið: ${days} dagar í bið (mörk: ${rules.notice})`;
+  }
+
+  return {
+    level,
+    days,
+    message,
+    shouldEscalate: level === 'critical',
+    targetDays: {
+      notice: rules.notice,
+      warning: rules.warning,
+      critical: rules.critical
+    }
+  };
+}
+
+/**
+ * Get items that should be auto-escalated
+ *
+ * @param {object[]} items Array of items with startDate/createdAt field
+ * @param {string} ruleType Type of escalation rule
+ * @returns {object[]} Items that should be escalated
+ */
+function getItemsForEscalation(items, ruleType = 'reviewPending') {
+  return items.filter(item => {
+    const dateField = item.submittedAt || item.createdAt || item.assignedAt;
+    if (!dateField) return false;
+
+    const escalation = calculateEscalationLevel(dateField, ruleType);
+    return escalation.shouldEscalate;
+  });
+}
+
 module.exports = {
   ISSUE_CATEGORIES,
   ISSUE_PATTERNS,
   SIMPLE_TIERS,
+  ESCALATION_RULES,
   classifyIssues,
   applyAutoFixes,
   getIssueStats,
   checkGlossaryTerms,
-  getSimpleTier
+  getSimpleTier,
+  calculateEscalationLevel,
+  getItemsForEscalation
 };
