@@ -282,6 +282,10 @@ app.get('/api', (req, res) => {
 const downloadsPath = path.join(__dirname, '..', 'pipeline-output');
 app.use('/downloads', express.static(downloadsPath));
 
+// Static file serving for public assets (CSS, JS)
+const publicPath = path.join(__dirname, 'public');
+app.use(express.static(publicPath));
+
 // HTML Views (must be after API routes)
 app.use('/', viewRoutes);
 

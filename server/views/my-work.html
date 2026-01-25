@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mín verkefni - Námsbókasafn</title>
+  <link rel="stylesheet" href="/css/common.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -16,7 +17,17 @@
       <a href="/terminology">Orðasafn</a>
       <a href="/decisions">Ákvarðanir</a>
     </nav>
-    <div class="user-info" id="user-info"></div>
+    <div class="header-actions">
+      <button class="theme-toggle" title="Skipta um þema">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <div class="notification-bell" id="notification-bell" title="Tilkynningar" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        <span class="notification-badge" id="notification-count" style="display: none;">0</span>
+      </div>
+      <div class="user-info" id="user-info"></div>
+    </div>
   </header>
 
   <main class="container">
@@ -818,60 +829,13 @@
   </script>
 
   <style>
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --primary-light: #dbeafe;
-      --success: #16a34a;
-      --success-light: #dcfce7;
-      --warning: #d97706;
-      --warning-light: #fef3c7;
-      --error: #dc2626;
-      --error-light: #fee2e2;
-      --gray-50: #f9fafb;
-      --gray-100: #f3f4f6;
-      --gray-200: #e5e7eb;
-      --gray-300: #d1d5db;
-      --gray-500: #6b7280;
-      --gray-700: #374151;
-      --gray-900: #111827;
-    }
+    /* ==========================================================================
+       MY-WORK PAGE SPECIFIC STYLES
+       Extends common.css with page-specific components
+       ========================================================================== */
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--gray-100);
-      color: var(--gray-900);
-      line-height: 1.5;
-    }
-
-    /* Header */
-    .header {
-      background: white;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      border-bottom: 1px solid var(--gray-200);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .header h1 { font-size: 1.25rem; color: var(--primary); }
-    .header nav { display: flex; gap: 1rem; flex: 1; }
-    .header nav a {
-      color: var(--gray-500);
-      text-decoration: none;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.375rem;
-      transition: all 0.15s;
-    }
-    .header nav a:hover { color: var(--gray-700); background: var(--gray-100); }
-    .header nav a.active { color: var(--primary); background: var(--primary-light); font-weight: 500; }
-    .user-info { display: flex; align-items: center; gap: 0.5rem; }
-    .user-info img { width: 32px; height: 32px; border-radius: 50%; }
-
-    /* Container */
-    .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    /* Container override for narrower content */
+    .container { max-width: 800px; }
 
     /* ========================================
        FOCUS VIEW STYLES
@@ -1220,35 +1184,8 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Cards */
-    .card {
-      background: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--gray-200);
-      background: var(--gray-50);
-    }
-    .card-title { font-size: 1rem; font-weight: 600; }
-    .card-body { padding: 1rem 1.25rem; max-height: 400px; overflow-y: auto; }
-    .card-footer { padding: 0.75rem 1.25rem; border-top: 1px solid var(--gray-200); background: var(--gray-50); }
-
-    /* Badges */
-    .badge {
-      background: var(--gray-200);
-      color: var(--gray-700);
-      padding: 0.25rem 0.625rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    .badge-warning { background: var(--warning-light); color: #92400e; }
+    /* Card body max height override for this page */
+    .card-body { max-height: 400px; overflow-y: auto; }
 
     /* Work Items */
     .work-item {
@@ -1326,79 +1263,15 @@
     .activity-desc { display: block; font-size: 0.875rem; }
     .activity-time { font-size: 0.75rem; color: var(--gray-500); }
 
-    /* Empty State */
-    .empty-state {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: var(--gray-500);
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 0.375rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.15s;
-    }
-    .btn-primary { background: var(--primary); color: white; }
-    .btn-primary:hover { background: var(--primary-dark); }
-    .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
-    .btn-secondary:hover { background: var(--gray-300); }
-    .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
-
-    /* Text utilities */
-    .text-muted { color: var(--gray-500); }
-    .text-success { color: var(--success); }
-    .text-warning { color: var(--warning); }
-
-    /* Responsive */
+    /* Page-specific responsive */
     @media (max-width: 1024px) {
       .summary-grid { grid-template-columns: repeat(2, 1fr); }
       .content-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      .header { flex-direction: column; gap: 1rem; padding: 1rem; }
-      .header nav { width: 100%; justify-content: center; }
-      .container { padding: 1rem; }
       .welcome-section { flex-direction: column; gap: 1rem; }
       .quick-stats { flex-direction: column; }
       .summary-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* Floating Feedback Button */
-    .feedback-fab {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 1000;
-    }
-    .feedback-fab-btn {
-      width: 56px;
-      height: 56px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-      color: white;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(109, 40, 217, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-    }
-    .feedback-fab-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(109, 40, 217, 0.5);
-      color: white;
     }
 
     /* Settings Button */
@@ -1416,64 +1289,7 @@
       background: var(--gray-100);
     }
 
-    /* Modal Styles */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      background: white;
-      border-radius: 0.75rem;
-      width: 90%;
-      max-width: 500px;
-      max-height: 90vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .modal-header h3 {
-      margin: 0;
-      font-size: 1.125rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .btn-close {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--gray-400);
-      line-height: 1;
-    }
-    .modal-body {
-      padding: 1.25rem;
-      overflow-y: auto;
-    }
-    .modal-footer {
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.75rem;
-      padding: 1rem 1.25rem;
-      border-top: 1px solid var(--gray-200);
-    }
-
-    /* Settings Styles */
+    /* Settings Styles (page-specific) */
     .settings-section-title {
       margin: 0 0 0.25rem 0;
       font-size: 1rem;
@@ -1532,27 +1348,6 @@
       color: var(--gray-400);
     }
 
-    /* Toast Notifications */
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      padding: 0.75rem 1.25rem;
-      background: var(--gray-800);
-      color: white;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-      z-index: 2000;
-    }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-    .toast-success { background: var(--success); }
-    .toast-error { background: var(--error); }
   </style>
 
   <!-- Floating Feedback Button -->
@@ -1561,5 +1356,7 @@
       <i class="fas fa-comment-dots"></i>
     </a>
   </div>
+
+  <script src="/js/theme.js"></script>
 </body>
 </html>
