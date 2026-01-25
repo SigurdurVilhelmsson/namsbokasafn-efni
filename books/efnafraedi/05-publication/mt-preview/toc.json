@@ -16,13 +16,18 @@
       "number": 1,
       "title": "Grunnhugmyndir",
       "sections": [
-        {"number": "1.1", "title": "Efnafræði í samhengi", "file": "1-1-chemistry-in-context.md"},
-        {"number": "1.2", "title": "Fasar og flokkun efnis", "file": "1-2-phases-and-classification-of-matter.md"},
-        {"number": "1.3", "title": "Eðlis- og efnafræðilegir eiginleikar", "file": "1-3-physical-and-chemical-properties.md"},
-        {"number": "1.4", "title": "Mælingar", "file": "1-4-measurements.md"},
-        {"number": "1.5", "title": "Óvissa mælinga, nákvæmni og skerpa", "file": "1-5-measurement-uncertainty-accuracy-and-precision.md"},
-        {"number": "1.6", "title": "Stærðfræðileg meðhöndlun mæligagna", "file": "1-6-mathematical-treatment-of-measurement-results.md"},
-        {"number": "1.7", "title": "Lykilhugtök", "file": "1-key-terms.md", "type": "glossary"}
+        {"number": "1.0", "title": "Inngangur", "file": "1-0-introduction.md"},
+        {"number": "1.1", "title": "Efnafræði í samhengi", "file": "1-1.md"},
+        {"number": "1.2", "title": "Fasar og flokkun efnis", "file": "1-2.md"},
+        {"number": "1.3", "title": "Eðlis- og efnafræðilegir eiginleikar", "file": "1-3.md"},
+        {"number": "1.4", "title": "Mælingar", "file": "1-4.md"},
+        {"number": "1.5", "title": "Óvissa mælinga, nákvæmni og skerpa", "file": "1-5.md"},
+        {"number": "1.6", "title": "Stærðfræðileg meðhöndlun mæligagna", "file": "1-6.md"},
+        {"number": "1.7", "title": "Lykilhugtök", "file": "1-key-terms.md", "type": "glossary"},
+        {"number": "1.8", "title": "Lykiljöfnur", "file": "1-key-equations.md", "type": "equations"},
+        {"number": "1.9", "title": "Samantekt", "file": "1-summary.md", "type": "summary"},
+        {"number": "1.10", "title": "Æfingar", "file": "1-exercises.md", "type": "exercises"},
+        {"number": "1.11", "title": "Svör við æfingum", "file": "1-answer-key.md", "type": "answers"}
       ]
     },
     {
