@@ -265,6 +265,10 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 
 | Method | Path |
 |--------|------|
+| GET | `/capacity` |
+| GET | `/capacity/:username` |
+| PUT | `/capacity/:username` |
+| GET | `/check-capacity` |
 | GET | `/` |
 | GET | `/overview` |
 | GET | `/:id` |

@@ -41,6 +41,10 @@
 
 | Method | Path |
 |--------|------|
+| GET | `/capacity` |
+| GET | `/capacity/:username` |
+| PUT | `/capacity/:username` |
+| GET | `/check-capacity` |
 | GET | `/` |
 | GET | `/overview` |
 | GET | `/:id` |
