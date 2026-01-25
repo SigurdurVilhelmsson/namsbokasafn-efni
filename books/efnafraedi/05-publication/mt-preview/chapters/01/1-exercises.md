@@ -9,6 +9,8 @@ type: exercises
 
 ## Æfingar
 
+### 1.1 Efnafræði í samhengi
+
 :::exercise{#fs-idm34987968 number=1}
 Útskýrðu hvernig þú gætir ákvarðað
 með tilraun hvort útihitastigið sé hærra eða lægra en 0 °C (32 °F) án
@@ -96,6 +98,8 @@ af ís. Er þessi athugun stórsæ eða smásæ lýsing á efnafræðilegri heg�
 
 :::
 
+### 1.2 Efnishamir og flokkun efnis
+
 :::exercise{#fs-idm68837632 number=8}
 Hvers vegna er massi hlutar, frekar
 en þyngd hans, notaður til að gefa til kynna magn efnis sem hann
@@ -169,6 +173,8 @@ joðatóm
 \(h\) bensín
 
 :::
+
+### 1.3 Eðlis- og efnaeiginleikar
 
 :::exercise{#fs-idp134896512 number=17}
 Flokkaðu eftirfarandi sem
@@ -261,6 +267,8 @@ hélst massi lokuðu flöskunnar og innihalds hennar óbreyttur eftir
 hitunina?
 
 :::
+
+### 1.4 Mælingar
 
 :::exercise{#fs-idp17769472 number=25}
 Ger breytir glúkósa í etanól og
@@ -370,6 +378,8 @@ $${\text{density}=\,\frac{{\text{mass}}}{{\text{volume}}}\,\text{d}=\,\frac{\tex
 í ljósi þess að massi og rúmmál eru bæði magnbundnir eiginleikar.
 
 :::
+
+### 1.5 Óvissa í mælingum, hittni og nákvæmni
 
 :::exercise{#fs-idm230641408 number=34}
 Er einn lítri um það bil ein unsa,
@@ -778,6 +788,8 @@ ml, 27,01 ml
 99,9999%
 
 :::
+
+### 1.6 Stærðfræðileg meðferð mælinganiðurstaðna
 
 :::exercise{#fs-idm287695728 number=57}
 Skrifaðu umreikningsstuðla (sem
