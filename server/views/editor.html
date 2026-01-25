@@ -5555,6 +5555,391 @@
     .progress-nav .btn:disabled {
       opacity: 0.3;
     }
+
+    /* Floating Feedback Button */
+    .feedback-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+    }
+    .feedback-fab-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(109, 40, 217, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feedback-fab-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(109, 40, 217, 0.5);
+    }
+    .feedback-fab-btn.has-tooltip::after {
+      content: 'Endurgjöf';
+      position: absolute;
+      right: 100%;
+      margin-right: 12px;
+      background: var(--gray-800);
+      color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .feedback-fab-btn:hover.has-tooltip::after {
+      opacity: 1;
+    }
+
+    /* Feedback Modal */
+    .feedback-modal {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      width: 360px;
+      max-width: calc(100vw - 48px);
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      z-index: 1001;
+      animation: feedbackSlideUp 0.2s ease;
+    }
+    @keyframes feedbackSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .feedback-modal.visible {
+      display: block;
+    }
+    .feedback-modal-header {
+      padding: 1rem;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feedback-modal-header h3 {
+      margin: 0;
+      font-size: 1rem;
+      color: #6d28d9;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .feedback-modal-body {
+      padding: 1rem;
+    }
+    .feedback-type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .feedback-type-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.75rem 0.5rem;
+      background: var(--gray-50);
+      border: 2px solid transparent;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+    .feedback-type-btn:hover {
+      background: var(--gray-100);
+    }
+    .feedback-type-btn.selected {
+      background: #f5f3ff;
+      border-color: #8b5cf6;
+    }
+    .feedback-type-btn i {
+      font-size: 1.25rem;
+      color: #6d28d9;
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 0.375rem;
+      font-family: inherit;
+      font-size: 0.875rem;
+      resize: vertical;
+      margin-bottom: 0.5rem;
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: #8b5cf6;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    }
+    .feedback-context {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-bottom: 0.75rem;
+      padding: 0.5rem;
+      background: var(--gray-50);
+      border-radius: 0.25rem;
+    }
+    .feedback-modal-footer {
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feedback-submit-btn {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: opacity 0.15s;
+    }
+    .feedback-submit-btn:hover:not(:disabled) {
+      opacity: 0.9;
+    }
+    .feedback-submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .feedback-success {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .feedback-success i {
+      font-size: 3rem;
+      color: #10b981;
+      margin-bottom: 1rem;
+    }
+    .feedback-success h4 {
+      margin: 0 0 0.5rem;
+      color: var(--gray-800);
+    }
+    .feedback-success p {
+      margin: 0;
+      color: var(--gray-500);
+      font-size: 0.875rem;
+    }
   </style>
+
+  <!-- Floating Feedback Button -->
+  <div class="feedback-fab">
+    <button class="feedback-fab-btn has-tooltip" onclick="toggleFeedbackModal()" title="Senda endurgjöf">
+      <i class="fas fa-comment-dots"></i>
+    </button>
+  </div>
+
+  <!-- Feedback Modal -->
+  <div class="feedback-modal" id="feedback-modal">
+    <div class="feedback-modal-header">
+      <h3><i class="fas fa-comment-dots"></i> Endurgjöf</h3>
+      <button class="btn-close" onclick="closeFeedbackModal()">&times;</button>
+    </div>
+    <div class="feedback-modal-body" id="feedback-form-container">
+      <div class="feedback-type-grid">
+        <button class="feedback-type-btn" data-type="translation_error" onclick="selectFeedbackType(this)">
+          <i class="fas fa-language"></i>
+          Villa í þýðingu
+        </button>
+        <button class="feedback-type-btn" data-type="technical_issue" onclick="selectFeedbackType(this)">
+          <i class="fas fa-bug"></i>
+          Tæknilegt vandamál
+        </button>
+        <button class="feedback-type-btn" data-type="improvement" onclick="selectFeedbackType(this)">
+          <i class="fas fa-lightbulb"></i>
+          Tillaga
+        </button>
+        <button class="feedback-type-btn" data-type="other" onclick="selectFeedbackType(this)">
+          <i class="fas fa-comment"></i>
+          Annað
+        </button>
+      </div>
+      <div class="feedback-context" id="feedback-context">
+        <i class="fas fa-map-marker-alt"></i> <span id="feedback-location">Hleður...</span>
+      </div>
+      <textarea class="feedback-textarea" id="feedback-message" placeholder="Lýstu athugasemdinni þinni hér... (lágmark 10 stafir)"></textarea>
+    </div>
+    <div class="feedback-modal-footer">
+      <a href="/feedback" target="_blank" style="font-size: 0.75rem; color: var(--gray-500);">
+        <i class="fas fa-external-link-alt"></i> Nákvæmara form
+      </a>
+      <button class="feedback-submit-btn" id="feedback-submit-btn" onclick="submitQuickFeedback()" disabled>
+        <i class="fas fa-paper-plane"></i> Senda
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ========================================
+    // FLOATING FEEDBACK BUTTON
+    // ========================================
+    let selectedFeedbackType = null;
+
+    function toggleFeedbackModal() {
+      const modal = document.getElementById('feedback-modal');
+      if (modal.classList.contains('visible')) {
+        closeFeedbackModal();
+      } else {
+        openFeedbackModal();
+      }
+    }
+
+    function openFeedbackModal() {
+      const modal = document.getElementById('feedback-modal');
+      modal.classList.add('visible');
+
+      // Update context with current location
+      updateFeedbackContext();
+
+      // Reset form
+      resetFeedbackForm();
+    }
+
+    function closeFeedbackModal() {
+      const modal = document.getElementById('feedback-modal');
+      modal.classList.remove('visible');
+    }
+
+    function updateFeedbackContext() {
+      const location = document.getElementById('feedback-location');
+      if (currentBook && currentChapter && currentSection) {
+        location.textContent = `${currentBook} / Kafli ${currentChapter} / ${currentSection}`;
+      } else if (currentBook && currentChapter) {
+        location.textContent = `${currentBook} / Kafli ${currentChapter}`;
+      } else {
+        location.textContent = 'Ritstjóri';
+      }
+    }
+
+    function selectFeedbackType(btn) {
+      // Deselect all
+      document.querySelectorAll('.feedback-type-btn').forEach(b => b.classList.remove('selected'));
+      // Select this one
+      btn.classList.add('selected');
+      selectedFeedbackType = btn.dataset.type;
+      updateFeedbackSubmitButton();
+    }
+
+    function updateFeedbackSubmitButton() {
+      const message = document.getElementById('feedback-message').value.trim();
+      const submitBtn = document.getElementById('feedback-submit-btn');
+      submitBtn.disabled = !selectedFeedbackType || message.length < 10;
+    }
+
+    function resetFeedbackForm() {
+      selectedFeedbackType = null;
+      document.querySelectorAll('.feedback-type-btn').forEach(b => b.classList.remove('selected'));
+      document.getElementById('feedback-message').value = '';
+      document.getElementById('feedback-submit-btn').disabled = true;
+
+      // Restore form if showing success
+      document.getElementById('feedback-form-container').innerHTML = `
+        <div class="feedback-type-grid">
+          <button class="feedback-type-btn" data-type="translation_error" onclick="selectFeedbackType(this)">
+            <i class="fas fa-language"></i>
+            Villa í þýðingu
+          </button>
+          <button class="feedback-type-btn" data-type="technical_issue" onclick="selectFeedbackType(this)">
+            <i class="fas fa-bug"></i>
+            Tæknilegt vandamál
+          </button>
+          <button class="feedback-type-btn" data-type="improvement" onclick="selectFeedbackType(this)">
+            <i class="fas fa-lightbulb"></i>
+            Tillaga
+          </button>
+          <button class="feedback-type-btn" data-type="other" onclick="selectFeedbackType(this)">
+            <i class="fas fa-comment"></i>
+            Annað
+          </button>
+        </div>
+        <div class="feedback-context" id="feedback-context">
+          <i class="fas fa-map-marker-alt"></i> <span id="feedback-location">Hleður...</span>
+        </div>
+        <textarea class="feedback-textarea" id="feedback-message" placeholder="Lýstu athugasemdinni þinni hér... (lágmark 10 stafir)" oninput="updateFeedbackSubmitButton()"></textarea>
+      `;
+      updateFeedbackContext();
+    }
+
+    async function submitQuickFeedback() {
+      const message = document.getElementById('feedback-message').value.trim();
+      if (!selectedFeedbackType || message.length < 10) return;
+
+      const submitBtn = document.getElementById('feedback-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sendir...';
+
+      try {
+        const response = await fetch('/api/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: selectedFeedbackType,
+            book: currentBook || null,
+            chapter: currentChapter ? String(currentChapter) : null,
+            section: currentSection || null,
+            message: message
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Villa við að senda endurgjöf');
+        }
+
+        // Show success
+        document.getElementById('feedback-form-container').innerHTML = `
+          <div class="feedback-success">
+            <i class="fas fa-check-circle"></i>
+            <h4>Takk fyrir!</h4>
+            <p>Endurgjöfin þín hefur verið móttekin.</p>
+          </div>
+        `;
+
+        // Hide footer buttons
+        document.querySelector('.feedback-modal-footer').style.display = 'none';
+
+        // Auto-close after 2 seconds
+        setTimeout(() => {
+          closeFeedbackModal();
+          // Restore form for next time
+          setTimeout(() => {
+            document.querySelector('.feedback-modal-footer').style.display = 'flex';
+            resetFeedbackForm();
+          }, 300);
+        }, 2000);
+
+      } catch (err) {
+        alert('Villa: ' + err.message);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Senda';
+      }
+    }
+
+    // Close feedback modal on escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeFeedbackModal();
+      }
+    });
+
+    // Add input listener for textarea
+    document.getElementById('feedback-message')?.addEventListener('input', updateFeedbackSubmitButton);
+  </script>
 </body>
 </html>

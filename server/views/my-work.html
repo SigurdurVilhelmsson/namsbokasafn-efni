@@ -1236,6 +1236,42 @@
       .quick-stats { flex-direction: column; }
       .summary-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* Floating Feedback Button */
+    .feedback-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+    }
+    .feedback-fab-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(109, 40, 217, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .feedback-fab-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(109, 40, 217, 0.5);
+      color: white;
+    }
   </style>
+
+  <!-- Floating Feedback Button -->
+  <div class="feedback-fab">
+    <a href="/feedback" class="feedback-fab-btn" title="Senda endurgjöf">
+      <i class="fas fa-comment-dots"></i>
+    </a>
+  </div>
 </body>
 </html>
