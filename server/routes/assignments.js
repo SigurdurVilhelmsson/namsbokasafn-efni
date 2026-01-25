@@ -404,6 +404,252 @@ router.get('/:id', requireAuth, (req, res) => {
 });
 
 /**
+ * POST /api/assignments/bulk/assign
+ * Bulk assign multiple chapters to a translator
+ *
+ * Body:
+ *   - assignments: Array of { book, chapter, stage }
+ *   - assignedTo: Username to assign all to
+ *   - dueDate: Optional shared due date
+ *   - notes: Optional shared notes
+ *   - forceAssign: Override capacity limits
+ */
+router.post('/bulk/assign', requireAuth, requireHeadEditor(), (req, res) => {
+  const { assignments, assignedTo, dueDate, notes, forceAssign = false } = req.body;
+
+  if (!assignments || !Array.isArray(assignments) || assignments.length === 0) {
+    return res.status(400).json({
+      error: 'Invalid assignments',
+      message: 'assignments must be a non-empty array'
+    });
+  }
+
+  if (!assignedTo) {
+    return res.status(400).json({
+      error: 'Missing assignedTo',
+      message: 'assignedTo is required for bulk assignment'
+    });
+  }
+
+  const results = {
+    created: [],
+    failed: [],
+    skipped: []
+  };
+
+  // Check capacity once for all assignments
+  const allAssignments = assignmentStore.getAllPendingAssignments();
+  const capacityWarning = capacityStore.checkCapacityWarning(
+    assignedTo,
+    allAssignments,
+    assignments[0]?.stage || 'linguisticReview'
+  );
+
+  if (capacityWarning.hasErrors && !forceAssign) {
+    return res.status(400).json({
+      error: 'Capacity exceeded',
+      message: capacityWarning.warnings[0]?.message || 'User at capacity',
+      capacityWarning,
+      hint: 'Set forceAssign=true to override capacity limits'
+    });
+  }
+
+  for (const item of assignments) {
+    if (!item.book || !item.chapter || !item.stage) {
+      results.failed.push({
+        item,
+        error: 'Missing required fields (book, chapter, stage)'
+      });
+      continue;
+    }
+
+    // Check for existing assignment
+    const existing = allAssignments.find(a =>
+      a.book === item.book &&
+      a.chapter === parseInt(item.chapter) &&
+      a.stage === item.stage &&
+      a.status === 'pending'
+    );
+
+    if (existing) {
+      results.skipped.push({
+        item,
+        reason: 'Assignment already exists',
+        existingId: existing.id
+      });
+      continue;
+    }
+
+    try {
+      const assignment = assignmentStore.createAssignment({
+        book: item.book,
+        chapter: parseInt(item.chapter),
+        stage: item.stage,
+        assignedTo,
+        assignedBy: req.user.username,
+        dueDate: dueDate || null,
+        notes: notes || null,
+        priority: item.priority || 2
+      });
+
+      results.created.push({
+        id: assignment.id,
+        book: item.book,
+        chapter: item.chapter,
+        stage: item.stage
+      });
+
+    } catch (err) {
+      results.failed.push({
+        item,
+        error: err.message
+      });
+    }
+  }
+
+  // Log bulk activity
+  if (results.created.length > 0) {
+    activityLog.log({
+      userId: req.user.id,
+      action: 'bulk_assignment_created',
+      details: `Bulk assigned ${results.created.length} chapters to ${assignedTo}`,
+      metadata: {
+        assignedTo,
+        created: results.created.length,
+        failed: results.failed.length,
+        skipped: results.skipped.length
+      }
+    });
+  }
+
+  res.json({
+    success: results.failed.length === 0,
+    summary: {
+      total: assignments.length,
+      created: results.created.length,
+      failed: results.failed.length,
+      skipped: results.skipped.length
+    },
+    results,
+    capacityWarning: capacityWarning.hasWarnings ? capacityWarning : null
+  });
+});
+
+/**
+ * PUT /api/assignments/bulk/update
+ * Bulk update multiple assignments
+ *
+ * Body:
+ *   - assignmentIds: Array of assignment IDs to update
+ *   - updates: Object with fields to update { assignedTo, dueDate, status, priority }
+ */
+router.put('/bulk/update', requireAuth, requireHeadEditor(), (req, res) => {
+  const { assignmentIds, updates } = req.body;
+
+  if (!assignmentIds || !Array.isArray(assignmentIds) || assignmentIds.length === 0) {
+    return res.status(400).json({
+      error: 'Invalid assignmentIds',
+      message: 'assignmentIds must be a non-empty array'
+    });
+  }
+
+  if (!updates || Object.keys(updates).length === 0) {
+    return res.status(400).json({
+      error: 'Missing updates',
+      message: 'updates object is required'
+    });
+  }
+
+  const results = {
+    updated: [],
+    failed: [],
+    skipped: []
+  };
+
+  for (const id of assignmentIds) {
+    try {
+      const assignment = assignmentStore.getAssignmentById(id);
+
+      if (!assignment) {
+        results.failed.push({ id, error: 'Assignment not found' });
+        continue;
+      }
+
+      if (assignment.status === 'completed' || assignment.status === 'cancelled') {
+        results.skipped.push({ id, reason: 'Assignment already finalized' });
+        continue;
+      }
+
+      // Handle status changes
+      if (updates.status === 'completed') {
+        const completed = assignmentStore.completeAssignment(id, req.user.username);
+        if (completed) {
+          results.updated.push({ id, action: 'completed' });
+        } else {
+          results.failed.push({ id, error: 'Failed to complete' });
+        }
+        continue;
+      }
+
+      if (updates.status === 'cancelled') {
+        const cancelled = assignmentStore.cancelAssignment(id, req.user.username, updates.notes || 'Bulk cancelled');
+        if (cancelled) {
+          results.updated.push({ id, action: 'cancelled' });
+        } else {
+          results.failed.push({ id, error: 'Failed to cancel' });
+        }
+        continue;
+      }
+
+      // For other updates, create a new assignment to replace
+      const updatedAssignment = assignmentStore.createAssignment({
+        ...assignment,
+        assignedTo: updates.assignedTo !== undefined ? updates.assignedTo : assignment.assignedTo,
+        assignedBy: req.user.username,
+        dueDate: updates.dueDate !== undefined ? updates.dueDate : assignment.dueDate,
+        notes: updates.notes !== undefined ? updates.notes : assignment.notes,
+        priority: updates.priority !== undefined ? updates.priority : assignment.priority
+      });
+
+      results.updated.push({
+        id,
+        newId: updatedAssignment.id,
+        action: 'updated'
+      });
+
+    } catch (err) {
+      results.failed.push({ id, error: err.message });
+    }
+  }
+
+  // Log bulk activity
+  if (results.updated.length > 0) {
+    activityLog.log({
+      userId: req.user.id,
+      action: 'bulk_assignment_updated',
+      details: `Bulk updated ${results.updated.length} assignments`,
+      metadata: {
+        updated: results.updated.length,
+        failed: results.failed.length,
+        skipped: results.skipped.length,
+        updates
+      }
+    });
+  }
+
+  res.json({
+    success: results.failed.length === 0,
+    summary: {
+      total: assignmentIds.length,
+      updated: results.updated.length,
+      failed: results.failed.length,
+      skipped: results.skipped.length
+    },
+    results
+  });
+});
+
+/**
  * POST /api/assignments
  * Create new assignment
  *

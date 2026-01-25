@@ -597,35 +597,33 @@
         return;
       }
 
-      const results = { success: 0, failed: 0, errors: [] };
+      try {
+        const reviewIds = Array.from(selectedReviews);
+        const res = await fetch('/api/reviews/bulk/approve', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            reviewIds,
+            commit: false
+          })
+        });
 
-      for (const reviewId of selectedReviews) {
-        try {
-          const res = await fetch('/api/reviews/' + reviewId + '/approve', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ commit: false })
-          });
-          const data = await res.json();
+        const data = await res.json();
 
-          if (data.success) {
-            results.success++;
-          } else {
-            results.failed++;
-            results.errors.push({ id: reviewId, error: data.error || 'Unknown error' });
-          }
-        } catch (err) {
-          results.failed++;
-          results.errors.push({ id: reviewId, error: err.message });
+        // Show results
+        let message = `Samþykkt: ${data.summary.approved}`;
+        if (data.summary.skipped > 0) {
+          message += `\nSleppt: ${data.summary.skipped}`;
         }
-      }
+        if (data.summary.failed > 0) {
+          message += `\nMistókst: ${data.summary.failed}`;
+        }
+        alert(message);
 
-      // Show results
-      let message = `Samþykkt: ${results.success}`;
-      if (results.failed > 0) {
-        message += `\nMistókst: ${results.failed}`;
+      } catch (err) {
+        console.error('Bulk approve error:', err);
+        alert('Villa við fjöldasamþykkt: ' + err.message);
       }
-      alert(message);
 
       // Refresh list
       clearSelection();

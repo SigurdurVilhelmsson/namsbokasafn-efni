@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Úthlutanir - Námsbókasafn</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <header class="header">
@@ -101,17 +102,69 @@
       </table>
     </div>
 
-    <!-- Quick Actions Bar -->
-    <div class="quick-actions" id="quick-actions" style="display: none;">
-      <span class="quick-actions-label">Hraðaðgerðir:</span>
-      <button class="btn btn-secondary btn-sm" onclick="bulkAssignChapter()">
-        Úthluta völdum kafla
-      </button>
-      <button class="btn btn-secondary btn-sm" onclick="clearFilters()">
-        Hreinsa síu
-      </button>
+    <!-- Bulk Actions Bar (floating) -->
+    <div class="bulk-actions-bar" id="bulk-actions-bar" style="display: none;">
+      <div class="bulk-actions-content">
+        <div class="bulk-selection-info">
+          <span class="bulk-count" id="bulk-count">0</span>
+          <span class="bulk-label">valin</span>
+          <button class="btn-link" onclick="clearBulkSelection()">Hreinsa val</button>
+        </div>
+        <div class="bulk-actions">
+          <button class="btn btn-primary btn-sm" onclick="openBulkAssignModal()">
+            <i class="fas fa-user-plus"></i> Úthluta öllum
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="bulkSetDueDate()">
+            <i class="fas fa-calendar"></i> Setja skiladag
+          </button>
+          <button class="btn btn-error btn-sm" onclick="bulkCancel()">
+            <i class="fas fa-times"></i> Hætta við öll
+          </button>
+        </div>
+      </div>
     </div>
   </main>
+
+  <!-- Bulk Assign Modal -->
+  <div class="modal" id="bulk-assign-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Fjöldaúthlutun</h3>
+        <button class="btn-close" onclick="closeBulkAssignModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="bulk-summary" id="bulk-summary">
+          <p>Þú ert að úthluta <strong id="bulk-assign-count">0</strong> verkefnum.</p>
+          <div class="bulk-items-preview" id="bulk-items-preview"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Úthluta öllum til</label>
+          <input type="text" id="bulk-assign-to" class="form-input" placeholder="Notandanafn" list="team-members-bulk">
+          <datalist id="team-members-bulk"></datalist>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Skiladagur (valfrjálst)</label>
+          <input type="date" id="bulk-assign-due" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Athugasemdir (valfrjálst)</label>
+          <textarea id="bulk-assign-notes" class="form-textarea" rows="2" placeholder="Leiðbeiningar..."></textarea>
+        </div>
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="bulk-force-assign">
+            <span>Hunsa afkastamörk (forceAssign)</span>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeBulkAssignModal()">Hætta við</button>
+        <button class="btn btn-primary" onclick="submitBulkAssign()">
+          <i class="fas fa-users"></i> Úthluta öllum
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- Assignment Modal -->
   <div class="modal" id="assignment-modal" style="display: none;">
@@ -454,8 +507,8 @@
             <td class="${cellClass}"
                 data-chapter="${chapter.chapter}"
                 data-stage="${stage.id}"
-                title="${cellTitle}"
-                onclick="openAssignModal(${chapter.chapter}, '${stage.id}')">
+                title="${cellTitle} (Ctrl+smelltu til að velja mörg)"
+                onclick="handleCellClick(${chapter.chapter}, '${stage.id}', event)">
               ${cellContent}
             </td>
           `;
@@ -1175,6 +1228,238 @@
       return labels[status] || status;
     }
 
+    // ========================================
+    // BULK SELECTION & ACTIONS
+    // ========================================
+
+    let bulkSelection = []; // Array of { chapter, stage, assignment }
+    let bulkSelectMode = false;
+
+    function toggleBulkSelectMode() {
+      bulkSelectMode = !bulkSelectMode;
+      if (!bulkSelectMode) {
+        clearBulkSelection();
+      }
+      updateBulkUI();
+    }
+
+    function toggleCellSelection(chapter, stage, event) {
+      if (event) event.stopPropagation();
+
+      const index = bulkSelection.findIndex(
+        s => s.chapter === chapter && s.stage === stage
+      );
+
+      if (index >= 0) {
+        bulkSelection.splice(index, 1);
+      } else {
+        const chapterData = matrixData.chapters.find(c => c.chapter === chapter);
+        const stageData = chapterData?.stages[stage];
+        bulkSelection.push({
+          chapter,
+          stage,
+          assignment: stageData?.assignment || null
+        });
+      }
+
+      updateBulkUI();
+    }
+
+    function clearBulkSelection() {
+      bulkSelection = [];
+      updateBulkUI();
+    }
+
+    function updateBulkUI() {
+      // Update cell selection styling
+      document.querySelectorAll('.matrix-cell').forEach(cell => {
+        const chapter = parseInt(cell.dataset.chapter);
+        const stage = cell.dataset.stage;
+        const isSelected = bulkSelection.some(
+          s => s.chapter === chapter && s.stage === stage
+        );
+        cell.classList.toggle('selected', isSelected);
+      });
+
+      // Show/hide bulk actions bar
+      const bar = document.getElementById('bulk-actions-bar');
+      if (bulkSelection.length > 0) {
+        bar.style.display = 'block';
+        document.getElementById('bulk-count').textContent = bulkSelection.length;
+      } else {
+        bar.style.display = 'none';
+      }
+    }
+
+    // Override cell click to support selection with Ctrl/Cmd
+    function handleCellClick(chapter, stage, event) {
+      if (event.ctrlKey || event.metaKey || event.shiftKey) {
+        toggleCellSelection(chapter, stage, event);
+      } else if (bulkSelection.length > 0) {
+        // If there's already a selection, add to it
+        toggleCellSelection(chapter, stage, event);
+      } else {
+        // Normal click - open assign modal
+        openAssignModal(chapter, stage);
+      }
+    }
+
+    function openBulkAssignModal() {
+      if (bulkSelection.length === 0) return;
+
+      // Update modal content
+      document.getElementById('bulk-assign-count').textContent = bulkSelection.length;
+
+      // Populate team members
+      const datalist = document.getElementById('team-members-bulk');
+      datalist.innerHTML = matrixData.team.map(t => `<option value="${escapeHtml(t)}">`).join('');
+
+      // Show preview of items
+      const preview = document.getElementById('bulk-items-preview');
+      preview.innerHTML = bulkSelection.slice(0, 5).map(s =>
+        `K${s.chapter} - ${STAGE_LABELS[s.stage] || s.stage}`
+      ).join(', ') + (bulkSelection.length > 5 ? `, ... (+${bulkSelection.length - 5} í viðbót)` : '');
+
+      // Clear form
+      document.getElementById('bulk-assign-to').value = '';
+      document.getElementById('bulk-assign-due').value = '';
+      document.getElementById('bulk-assign-notes').value = '';
+      document.getElementById('bulk-force-assign').checked = false;
+
+      document.getElementById('bulk-assign-modal').style.display = 'flex';
+    }
+
+    function closeBulkAssignModal() {
+      document.getElementById('bulk-assign-modal').style.display = 'none';
+    }
+
+    async function submitBulkAssign() {
+      const assignedTo = document.getElementById('bulk-assign-to').value.trim();
+      if (!assignedTo) {
+        alert('Vinsamlegast veldu notanda til að úthluta til.');
+        return;
+      }
+
+      const dueDate = document.getElementById('bulk-assign-due').value || null;
+      const notes = document.getElementById('bulk-assign-notes').value || null;
+      const forceAssign = document.getElementById('bulk-force-assign').checked;
+
+      const assignments = bulkSelection.map(s => ({
+        book: matrixData.book,
+        chapter: s.chapter,
+        stage: s.stage
+      }));
+
+      try {
+        const res = await fetch('/api/assignments/bulk/assign', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            assignments,
+            assignedTo,
+            dueDate,
+            notes,
+            forceAssign
+          })
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          closeBulkAssignModal();
+          clearBulkSelection();
+
+          const msg = `Úthlutað: ${result.summary.created}, sleppt: ${result.summary.skipped}, mistókst: ${result.summary.failed}`;
+          alert(msg);
+
+          // Reload data
+          loadMatrix();
+          loadWorkload();
+        } else {
+          alert(result.message || result.error || 'Villa við úthlutun');
+        }
+      } catch (err) {
+        console.error('Bulk assign error:', err);
+        alert('Villa við úthlutun: ' + err.message);
+      }
+    }
+
+    async function bulkSetDueDate() {
+      const existingAssignments = bulkSelection.filter(s => s.assignment);
+      if (existingAssignments.length === 0) {
+        alert('Engin valin verkefni hafa úthlutun til að uppfæra.');
+        return;
+      }
+
+      const newDueDate = prompt('Nýr skiladagur (YYYY-MM-DD):');
+      if (!newDueDate) return;
+
+      const assignmentIds = existingAssignments.map(s => s.assignment.id);
+
+      try {
+        const res = await fetch('/api/assignments/bulk/update', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            assignmentIds,
+            updates: { dueDate: newDueDate }
+          })
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          clearBulkSelection();
+          alert(`Uppfært: ${result.summary.updated}, mistókst: ${result.summary.failed}`);
+          loadMatrix();
+        } else {
+          alert(result.message || result.error || 'Villa við uppfærslu');
+        }
+      } catch (err) {
+        console.error('Bulk update error:', err);
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function bulkCancel() {
+      const existingAssignments = bulkSelection.filter(s => s.assignment);
+      if (existingAssignments.length === 0) {
+        alert('Engin valin verkefni hafa úthlutun til að hætta við.');
+        return;
+      }
+
+      if (!confirm(`Ertu viss um að þú viljir hætta við ${existingAssignments.length} úthlutanir?`)) {
+        return;
+      }
+
+      const assignmentIds = existingAssignments.map(s => s.assignment.id);
+
+      try {
+        const res = await fetch('/api/assignments/bulk/update', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            assignmentIds,
+            updates: { status: 'cancelled', notes: 'Hætt við í fjöldaaðgerð' }
+          })
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          clearBulkSelection();
+          alert(`Hætt við: ${result.summary.updated}, mistókst: ${result.summary.failed}`);
+          loadMatrix();
+          loadWorkload();
+        } else {
+          alert(result.message || result.error || 'Villa');
+        }
+      } catch (err) {
+        console.error('Bulk cancel error:', err);
+        alert('Villa: ' + err.message);
+      }
+    }
+
     // Initialize
     init();
   </script>
@@ -1553,19 +1838,83 @@
     }
     .error-cell { color: var(--error); }
 
-    /* Quick Actions */
-    .quick-actions {
+    /* Bulk Actions Bar (floating at bottom) */
+    .bulk-actions-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid var(--gray-200);
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+      z-index: 100;
+      animation: slideUp 0.2s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    .bulk-actions-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .bulk-selection-info {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      margin-top: 1rem;
-      background: var(--gray-50);
-      border-radius: 0.5rem;
+      gap: 0.5rem;
     }
-    .quick-actions-label {
-      font-size: 0.875rem;
-      color: var(--gray-500);
+    .bulk-count {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .bulk-label {
+      color: var(--gray-600);
+    }
+    .bulk-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    /* Cell selection styling */
+    .matrix-cell.selected {
+      outline: 3px solid var(--primary);
+      outline-offset: -3px;
+      background: rgba(37, 99, 235, 0.1) !important;
+    }
+    .matrix-cell.selectable:hover {
+      cursor: pointer;
+      outline: 2px dashed var(--gray-400);
+      outline-offset: -2px;
+    }
+
+    /* Bulk summary in modal */
+    .bulk-summary {
+      background: var(--gray-50);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .bulk-items-preview {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      margin-top: 0.5rem;
+      max-height: 100px;
+      overflow-y: auto;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .checkbox-label input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
     }
 
     /* Forms */

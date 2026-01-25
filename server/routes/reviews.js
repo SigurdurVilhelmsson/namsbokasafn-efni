@@ -379,6 +379,109 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
 });
 
 /**
+ * POST /api/reviews/bulk/approve
+ * Bulk approve multiple reviews
+ *
+ * Body:
+ *   - reviewIds: Array of review IDs to approve
+ *   - commit: Whether to commit each approval to git (default: false)
+ */
+router.post('/bulk/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (req, res) => {
+  const { reviewIds, commit = false } = req.body;
+
+  if (!reviewIds || !Array.isArray(reviewIds) || reviewIds.length === 0) {
+    return res.status(400).json({
+      error: 'Invalid reviewIds',
+      message: 'reviewIds must be a non-empty array of review IDs'
+    });
+  }
+
+  const results = {
+    approved: [],
+    failed: [],
+    skipped: []
+  };
+
+  for (const id of reviewIds) {
+    try {
+      const review = editorHistory.getReview(parseInt(id));
+
+      if (!review) {
+        results.failed.push({ id, error: 'Review not found' });
+        continue;
+      }
+
+      if (review.status !== 'pending') {
+        results.skipped.push({ id, reason: 'Already processed' });
+        continue;
+      }
+
+      let commitSha = null;
+
+      // Optionally commit to git
+      if (commit) {
+        try {
+          commitSha = await commitApprovedReview(review, req.user);
+        } catch (gitErr) {
+          console.error(`Git commit error for review ${id}:`, gitErr);
+        }
+      }
+
+      // Mark as approved
+      const result = editorHistory.approveReview(
+        parseInt(id),
+        req.user.id,
+        req.user.username,
+        commitSha
+      );
+
+      if (result.success) {
+        results.approved.push({
+          id,
+          book: review.book,
+          chapter: review.chapter,
+          section: review.section,
+          commitSha
+        });
+
+        // Log the activity
+        activityLog.logReviewApproved(
+          req.user,
+          review.submittedByUsername,
+          review.book,
+          review.chapter,
+          review.section,
+          parseInt(id),
+          commitSha
+        );
+
+        // Try to notify (don't wait)
+        notifications.notifyReviewApproved(
+          { ...review, reviewedByUsername: req.user.username },
+          { id: review.submittedBy, email: null }
+        ).catch(err => console.error('Notification error:', err));
+      } else {
+        results.failed.push({ id, error: result.error || 'Unknown error' });
+      }
+    } catch (err) {
+      console.error(`Error approving review ${id}:`, err);
+      results.failed.push({ id, error: err.message });
+    }
+  }
+
+  res.json({
+    success: results.failed.length === 0,
+    summary: {
+      total: reviewIds.length,
+      approved: results.approved.length,
+      failed: results.failed.length,
+      skipped: results.skipped.length
+    },
+    results
+  });
+});
+
+/**
  * POST /api/reviews/:id/changes
  * Request changes on a review
  */
