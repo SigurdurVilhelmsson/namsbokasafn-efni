@@ -19,6 +19,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireEditor, requireHeadEditor } = require('../middleware/requireRole');
 const assignmentStore = require('../services/assignmentStore');
 const activityLog = require('../services/activityLog');
+const capacityStore = require('../services/capacityStore');
 
 // Stage labels for display
 const STAGE_LABELS = {
@@ -36,6 +37,139 @@ const BOOK_LABELS = {
   'efnafraedi': 'Efnafræði',
   'liffraedi': 'Líffræði'
 };
+
+/**
+ * GET /api/assignments/capacity
+ * Get team capacity overview with workload for all editors
+ */
+router.get('/capacity', requireAuth, requireHeadEditor(), (req, res) => {
+  try {
+    const assignments = assignmentStore.getAllPendingAssignments();
+    const teamWorkload = capacityStore.getTeamWorkload(assignments);
+    const defaults = capacityStore.getDefaults();
+
+    // Calculate team totals
+    const totals = {
+      totalEditors: teamWorkload.length,
+      available: teamWorkload.filter(w => w.status === 'available').length,
+      nearlyFull: teamWorkload.filter(w => w.status === 'nearly-full').length,
+      atCapacity: teamWorkload.filter(w => w.status === 'at-capacity').length,
+      hasOverdue: teamWorkload.filter(w => w.status === 'has-overdue').length,
+      totalAssignments: teamWorkload.reduce((sum, w) => sum + w.current.assignments, 0),
+      totalOverdue: teamWorkload.reduce((sum, w) => sum + w.current.overdue, 0)
+    };
+
+    res.json({
+      totals,
+      defaults,
+      editors: teamWorkload
+    });
+
+  } catch (err) {
+    console.error('Error getting capacity overview:', err);
+    res.status(500).json({
+      error: 'Failed to get capacity overview',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/assignments/capacity/:username
+ * Get capacity settings and current workload for a specific user
+ */
+router.get('/capacity/:username', requireAuth, requireEditor(), (req, res) => {
+  const { username } = req.params;
+
+  try {
+    const assignments = assignmentStore.getAllPendingAssignments();
+    const workload = capacityStore.calculateWorkload(username, assignments);
+
+    res.json(workload);
+
+  } catch (err) {
+    console.error('Error getting user capacity:', err);
+    res.status(500).json({
+      error: 'Failed to get user capacity',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * PUT /api/assignments/capacity/:username
+ * Update capacity settings for a user
+ *
+ * Body:
+ *   - weeklyChapters: Max chapters per week
+ *   - maxConcurrent: Max concurrent assignments
+ *   - availableHoursPerWeek: Available hours per week
+ *   - notes: Optional notes about the user
+ */
+router.put('/capacity/:username', requireAuth, requireHeadEditor(), (req, res) => {
+  const { username } = req.params;
+  const { weeklyChapters, maxConcurrent, availableHoursPerWeek, notes } = req.body;
+
+  try {
+    const capacity = capacityStore.setUserCapacity(username, {
+      weeklyChapters,
+      maxConcurrent,
+      availableHoursPerWeek,
+      notes
+    });
+
+    activityLog.log({
+      userId: req.user.id,
+      action: 'capacity_updated',
+      details: `Updated capacity for ${username}`,
+      metadata: { username, capacity }
+    });
+
+    res.json({
+      success: true,
+      capacity
+    });
+
+  } catch (err) {
+    console.error('Error updating capacity:', err);
+    res.status(500).json({
+      error: 'Failed to update capacity',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/assignments/check-capacity
+ * Check if assigning work to a user would exceed their capacity
+ *
+ * Query params:
+ *   - username: User to check
+ *   - stage: Stage being assigned
+ */
+router.get('/check-capacity', requireAuth, requireEditor(), (req, res) => {
+  const { username, stage } = req.query;
+
+  if (!username) {
+    return res.status(400).json({
+      error: 'Missing username parameter'
+    });
+  }
+
+  try {
+    const assignments = assignmentStore.getAllPendingAssignments();
+    const warning = capacityStore.checkCapacityWarning(username, assignments, stage || 'linguisticReview');
+
+    res.json(warning);
+
+  } catch (err) {
+    console.error('Error checking capacity:', err);
+    res.status(500).json({
+      error: 'Failed to check capacity',
+      message: err.message
+    });
+  }
+});
 
 /**
  * GET /api/assignments
@@ -124,7 +258,10 @@ router.get('/overview', requireAuth, requireHeadEditor(), (req, res) => {
   try {
     const assignments = assignmentStore.getAllPendingAssignments();
 
-    // Group by assignee
+    // Get team workload with capacity
+    const teamWorkload = capacityStore.getTeamWorkload(assignments);
+
+    // Group by assignee with capacity info
     const byAssignee = {};
     const unassigned = [];
 
@@ -135,12 +272,22 @@ router.get('/overview', requireAuth, requireHeadEditor(), (req, res) => {
       }
 
       if (!byAssignee[a.assignedTo]) {
+        // Get capacity info from team workload
+        const workload = teamWorkload.find(w => w.username === a.assignedTo) ||
+          capacityStore.calculateWorkload(a.assignedTo, assignments);
+
         byAssignee[a.assignedTo] = {
           username: a.assignedTo,
           assignments: [],
           totalAssignments: 0,
           overdueCount: 0,
-          dueSoonCount: 0
+          dueSoonCount: 0,
+          // Add capacity info
+          capacity: workload.capacity,
+          capacityStatus: workload.status,
+          capacityMessage: workload.statusMessage,
+          remainingCapacity: workload.remainingCapacity,
+          percentages: workload.percentages
         };
       }
 
@@ -179,24 +326,30 @@ router.get('/overview', requireAuth, requireHeadEditor(), (req, res) => {
       });
     }
 
-    // Calculate totals
+    // Calculate totals including capacity stats
+    const assigneeValues = Object.values(byAssignee);
     const totals = {
       totalAssignments: assignments.length,
-      totalOverdue: Object.values(byAssignee).reduce((sum, u) => sum + u.overdueCount, 0),
-      totalDueSoon: Object.values(byAssignee).reduce((sum, u) => sum + u.dueSoonCount, 0),
+      totalOverdue: assigneeValues.reduce((sum, u) => sum + u.overdueCount, 0),
+      totalDueSoon: assigneeValues.reduce((sum, u) => sum + u.dueSoonCount, 0),
       unassignedCount: unassigned.length,
-      activeEditors: Object.keys(byAssignee).length
+      activeEditors: assigneeValues.length,
+      // Capacity stats
+      editorsAvailable: assigneeValues.filter(u => u.capacityStatus === 'available').length,
+      editorsNearlyFull: assigneeValues.filter(u => u.capacityStatus === 'nearly-full').length,
+      editorsAtCapacity: assigneeValues.filter(u => u.capacityStatus === 'at-capacity').length
     };
 
     res.json({
       totals,
-      byAssignee: Object.values(byAssignee),
+      byAssignee: assigneeValues,
       byChapter: Object.values(byChapter),
       unassigned: unassigned.map(a => ({
         ...a,
         bookLabel: BOOK_LABELS[a.book] || a.book,
         stageLabel: STAGE_LABELS[a.stage] || a.stage
-      }))
+      })),
+      capacityDefaults: capacityStore.getDefaults()
     });
 
   } catch (err) {
@@ -291,6 +444,21 @@ router.post('/', requireAuth, requireHeadEditor(), (req, res) => {
   }
 
   try {
+    // Check capacity before creating assignment
+    const allAssignments = assignmentStore.getAllPendingAssignments();
+    const capacityWarning = capacityStore.checkCapacityWarning(assignedTo, allAssignments, stage);
+
+    // If forceAssign is not set and there are errors, reject
+    const { forceAssign } = req.body;
+    if (capacityWarning.hasErrors && !forceAssign) {
+      return res.status(400).json({
+        error: 'Capacity exceeded',
+        message: capacityWarning.warnings[0].message,
+        capacityWarning,
+        hint: 'Set forceAssign=true to override capacity limits'
+      });
+    }
+
     const assignment = assignmentStore.createAssignment({
       book,
       chapter: parseInt(chapter),
@@ -312,7 +480,8 @@ router.post('/', requireAuth, requireHeadEditor(), (req, res) => {
         book,
         chapter,
         stage,
-        assignedTo
+        assignedTo,
+        overrodeCapacity: capacityWarning.hasWarnings
       }
     });
 
@@ -322,7 +491,8 @@ router.post('/', requireAuth, requireHeadEditor(), (req, res) => {
         ...assignment,
         bookLabel: BOOK_LABELS[assignment.book] || assignment.book,
         stageLabel: STAGE_LABELS[assignment.stage] || assignment.stage
-      }
+      },
+      capacityWarning: capacityWarning.hasWarnings ? capacityWarning : null
     });
 
   } catch (err) {
