@@ -48,6 +48,8 @@
 | GET | `/` |
 | GET | `/overview` |
 | GET | `/:id` |
+| POST | `/bulk/assign` |
+| PUT | `/bulk/update` |
 | POST | `/` |
 | PUT | `/:id` |
 | DELETE | `/:id` |
@@ -110,6 +112,15 @@
 | POST | `/section/:sectionId/save` |
 | POST | `/section/:sectionId/submit-review` |
 | POST | `/section/:sectionId/submit-localization` |
+| GET | `/:book/:chapter/:section/notes` |
+| POST | `/:book/:chapter/:section/notes` |
+| DELETE | `/:book/:chapter/:section/notes` |
+| GET | `/notes/all` |
+| POST | `/:book/:chapter/:section/notes/pin` |
+| POST | `/:book/:chapter/:section/presence` |
+| DELETE | `/:book/:chapter/:section/presence` |
+| GET | `/:book/:chapter/:section/presence` |
+| DELETE | `/presence/me` |
 
 ## /feedback
 
@@ -215,6 +226,8 @@
 | GET | `/count` |
 | POST | `/:id/read` |
 | POST | `/read-all` |
+| GET | `/preferences` |
+| PUT | `/preferences` |
 
 ## /process
 
@@ -253,6 +266,7 @@
 | GET | `/sla` |
 | GET | `/:id` |
 | POST | `/:id/approve` |
+| POST | `/bulk/approve` |
 | POST | `/:id/changes` |
 
 ## /sections
@@ -329,6 +343,7 @@
 | POST | `/import/excel` |
 | POST | `/import/key-terms` |
 | POST | `/import/existing-glossary` |
+| POST | `/check-consistency` |
 
 ## /views
 
@@ -351,6 +366,7 @@
 | GET | `/meetings` |
 | GET | `/deadlines` |
 | GET | `/reports` |
+| GET | `/analytics` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
 | GET | `/admin/feedback` |
