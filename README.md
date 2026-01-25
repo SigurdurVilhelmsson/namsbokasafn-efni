@@ -460,6 +460,14 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | POST | `/:bookSlug/:chapterNum/localized` |
 | GET | `/:bookSlug/overview` |
 
+## /reports
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/weekly` |
+| GET | `/comparison` |
+
 ## /reviews
 
 | Method | Path |
@@ -566,6 +574,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/chapter` |
 | GET | `/meetings` |
 | GET | `/deadlines` |
+| GET | `/reports` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
 | GET | `/admin/feedback` |
