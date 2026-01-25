@@ -261,6 +261,17 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | POST | `/event` |
 | GET | `/dashboard-data` |
 
+## /assignments
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/overview` |
+| GET | `/:id` |
+| POST | `/` |
+| PUT | `/:id` |
+| DELETE | `/:id` |
+
 ## /auth
 
 | Method | Path |
@@ -297,6 +308,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/types` |
 | GET | `/stats` |
 | GET | `/related` |
+| GET | `/highlights` |
 | GET | `/recent` |
 | GET | `/` |
 | GET | `/:id` |
@@ -546,6 +558,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/decisions` |
 | GET | `/my-work` |
 | GET | `/assignments` |
+| GET | `/chapter` |
 | GET | `/meetings` |
 | GET | `/deadlines` |
 | GET | `/localization-review` |

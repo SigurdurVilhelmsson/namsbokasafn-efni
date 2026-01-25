@@ -37,6 +37,17 @@
 | POST | `/event` |
 | GET | `/dashboard-data` |
 
+## /assignments
+
+| Method | Path |
+|--------|------|
+| GET | `/` |
+| GET | `/overview` |
+| GET | `/:id` |
+| POST | `/` |
+| PUT | `/:id` |
+| DELETE | `/:id` |
+
 ## /auth
 
 | Method | Path |
@@ -73,6 +84,7 @@
 | GET | `/types` |
 | GET | `/stats` |
 | GET | `/related` |
+| GET | `/highlights` |
 | GET | `/recent` |
 | GET | `/` |
 | GET | `/:id` |
@@ -322,6 +334,7 @@
 | GET | `/decisions` |
 | GET | `/my-work` |
 | GET | `/assignments` |
+| GET | `/chapter` |
 | GET | `/meetings` |
 | GET | `/deadlines` |
 | GET | `/localization-review` |
