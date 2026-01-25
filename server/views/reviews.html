@@ -21,6 +21,45 @@
   </header>
 
   <main class="container">
+    <!-- SLA Summary -->
+    <div class="sla-summary" id="sla-summary" style="display: none;">
+      <div class="sla-header">
+        <h3><i class="fas fa-clock"></i> SLA Staða</h3>
+        <span class="sla-target">Markmið: <strong id="sla-target-days">2</strong> dagar</span>
+      </div>
+      <div class="sla-stats">
+        <div class="sla-stat sla-on-track">
+          <span class="sla-stat-value" id="sla-on-track">0</span>
+          <span class="sla-stat-label">Á réttri leið</span>
+        </div>
+        <div class="sla-stat sla-at-risk">
+          <span class="sla-stat-value" id="sla-at-risk">0</span>
+          <span class="sla-stat-label">Á mörkum</span>
+        </div>
+        <div class="sla-stat sla-overdue">
+          <span class="sla-stat-value" id="sla-overdue">0</span>
+          <span class="sla-stat-label">Yfir tíma</span>
+        </div>
+        <div class="sla-stat sla-critical">
+          <span class="sla-stat-value" id="sla-critical">0</span>
+          <span class="sla-stat-label">Mjög seint</span>
+        </div>
+        <div class="sla-stat sla-avg">
+          <span class="sla-stat-value" id="sla-avg">0</span>
+          <span class="sla-stat-label">Meðaltal (dagar)</span>
+        </div>
+        <div class="sla-stat sla-performance">
+          <span class="sla-stat-value" id="sla-performance">-</span>
+          <span class="sla-stat-label">SLA fylgni</span>
+        </div>
+      </div>
+      <div class="sla-oldest" id="sla-oldest" style="display: none;">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>Elsta yfirferð: <strong id="oldest-review-info"></strong></span>
+        <button class="btn btn-sm btn-primary" id="view-oldest-btn">Skoða</button>
+      </div>
+    </div>
+
     <!-- Reviews List -->
     <div class="card" id="reviews-list-card">
       <div class="card-header">
@@ -181,8 +220,12 @@
         const res = await fetch(url);
         const data = await res.json();
 
+        // Update SLA summary
+        updateSLASummary(data.slaStats);
+
         if (data.reviews.length === 0) {
           listEl.innerHTML = '<div class="empty-state"><i class="fas fa-check-circle"></i><p>Engar yfirferðir í bið</p></div>';
+          document.getElementById('sla-summary').style.display = 'none';
           allReviews = [];
           updateBulkActionsBar();
           return;
@@ -195,21 +238,74 @@
         listEl.innerHTML = '<table class="table">' +
           '<thead><tr>' +
           '<th class="th-checkbox"><input type="checkbox" id="select-all" onchange="toggleSelectAll()"></th>' +
-          '<th>Kafli</th><th>Sent af</th><th>Tími</th><th></th></tr></thead>' +
+          '<th>Kafli</th><th>Sent af</th><th class="th-sla">SLA Staða</th><th></th></tr></thead>' +
           '<tbody>' +
           data.reviews.map(r => {
-            const date = new Date(r.submittedAt).toLocaleString('is-IS');
-            return '<tr data-id="' + r.id + '">' +
+            const sla = r.sla || {};
+            const slaClass = sla.statusClass || 'sla-on-track';
+            const slaPercent = Math.min(sla.slaPercentage || 0, 100);
+            const slaOverflow = (sla.slaPercentage || 0) > 100 ? Math.min((sla.slaPercentage - 100), 100) : 0;
+
+            return '<tr data-id="' + r.id + '" class="' + slaClass + '">' +
               '<td class="td-checkbox"><input type="checkbox" class="review-checkbox" value="' + r.id + '" onchange="toggleReviewSelect(' + r.id + ')"></td>' +
-              '<td><strong>' + r.book + '</strong> / ' + r.chapter + ' / ' + r.section + '</td>' +
+              '<td><strong>' + r.book + '</strong> / K' + r.chapter + ' / ' + r.section + '</td>' +
               '<td>' + escapeHtml(r.submittedByUsername) + '</td>' +
-              '<td>' + date + '</td>' +
+              '<td class="td-sla">' +
+                '<div class="sla-cell">' +
+                  '<div class="sla-bar-container">' +
+                    '<div class="sla-bar">' +
+                      '<div class="sla-bar-fill ' + slaClass + '" style="width: ' + slaPercent + '%"></div>' +
+                      (slaOverflow > 0 ? '<div class="sla-bar-overflow" style="width: ' + slaOverflow + '%"></div>' : '') +
+                    '</div>' +
+                    '<div class="sla-bar-target" title="Markmið: ' + (sla.target?.days || 2) + ' dagar"></div>' +
+                  '</div>' +
+                  '<div class="sla-info">' +
+                    '<span class="sla-status-badge ' + slaClass + '">' + (sla.statusLabel || '-') + '</span>' +
+                    '<span class="sla-time">' + (sla.timeMessage || '-') + '</span>' +
+                  '</div>' +
+                '</div>' +
+              '</td>' +
               '<td><button class="btn btn-primary btn-small" onclick="openReview(' + r.id + ')">Skoða</button></td>' +
               '</tr>';
           }).join('') +
           '</tbody></table>';
       } catch (err) {
         listEl.innerHTML = '<div class="alert alert-error">Villa: ' + err.message + '</div>';
+      }
+    }
+
+    function updateSLASummary(stats) {
+      if (!stats) {
+        document.getElementById('sla-summary').style.display = 'none';
+        return;
+      }
+
+      document.getElementById('sla-summary').style.display = 'block';
+      document.getElementById('sla-target-days').textContent = stats.target?.targetDays || 2;
+      document.getElementById('sla-on-track').textContent = stats.onTrack || 0;
+      document.getElementById('sla-at-risk').textContent = stats.atRisk || 0;
+      document.getElementById('sla-overdue').textContent = stats.overdue || 0;
+      document.getElementById('sla-critical').textContent = stats.critical || 0;
+      document.getElementById('sla-avg').textContent = stats.avgDaysPending || 0;
+
+      // SLA performance percentage
+      const perfEl = document.getElementById('sla-performance');
+      const perf = stats.total > 0
+        ? Math.round((stats.onTrack / stats.total) * 100)
+        : 100;
+      perfEl.textContent = perf + '%';
+      perfEl.className = 'sla-stat-value ' + (perf >= 80 ? 'perf-good' : perf >= 50 ? 'perf-ok' : 'perf-bad');
+
+      // Oldest review
+      const oldestEl = document.getElementById('sla-oldest');
+      if (stats.oldest && stats.oldest.sla?.isCritical) {
+        const oldest = stats.oldest;
+        document.getElementById('oldest-review-info').textContent =
+          oldest.book + ' K' + oldest.chapter + ' - ' + oldest.sla.daysPending + ' dagar í bið';
+        document.getElementById('view-oldest-btn').onclick = () => openReview(oldest.id);
+        oldestEl.style.display = 'flex';
+      } else {
+        oldestEl.style.display = 'none';
       }
     }
 
@@ -659,11 +755,194 @@
       cursor: pointer;
     }
 
+    /* SLA Summary Panel */
+    .sla-summary {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .sla-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .sla-header h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sla-header h3 i { color: var(--primary); }
+    .sla-target {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+    .sla-stats {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .sla-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 70px;
+    }
+    .sla-stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .sla-stat-label {
+      font-size: 0.625rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+    .sla-stat.sla-on-track .sla-stat-value { color: var(--success); }
+    .sla-stat.sla-at-risk .sla-stat-value { color: #f59e0b; }
+    .sla-stat.sla-overdue .sla-stat-value { color: var(--warning); }
+    .sla-stat.sla-critical .sla-stat-value { color: var(--error); }
+    .sla-stat.sla-avg .sla-stat-value { color: var(--primary); }
+    .sla-stat-value.perf-good { color: var(--success); }
+    .sla-stat-value.perf-ok { color: var(--warning); }
+    .sla-stat-value.perf-bad { color: var(--error); }
+
+    .sla-oldest {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--error);
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+      border-radius: 0.375rem;
+      border: 1px solid #fca5a5;
+      font-size: 0.875rem;
+      color: #991b1b;
+    }
+    .sla-oldest i { color: #dc2626; }
+
+    /* SLA in Table */
+    .th-sla { width: 200px; }
+    .td-sla { padding: 0.5rem 0.75rem !important; }
+    .sla-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+    .sla-bar-container {
+      position: relative;
+      width: 100%;
+    }
+    .sla-bar {
+      height: 6px;
+      background: var(--gray-200);
+      border-radius: 3px;
+      overflow: visible;
+      display: flex;
+    }
+    .sla-bar-fill {
+      height: 100%;
+      border-radius: 3px 0 0 3px;
+      transition: width 0.3s ease;
+    }
+    .sla-bar-fill.sla-on-track { background: var(--success); }
+    .sla-bar-fill.sla-at-risk { background: #f59e0b; }
+    .sla-bar-fill.sla-overdue { background: var(--warning); }
+    .sla-bar-fill.sla-critical { background: var(--error); }
+    .sla-bar-overflow {
+      height: 100%;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--error),
+        var(--error) 2px,
+        #fca5a5 2px,
+        #fca5a5 4px
+      );
+      border-radius: 0 3px 3px 0;
+    }
+    .sla-bar-target {
+      position: absolute;
+      right: 0;
+      top: -2px;
+      bottom: -2px;
+      width: 2px;
+      background: var(--gray-700);
+    }
+    .sla-bar-target::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 8px;
+      height: 3px;
+      background: var(--gray-700);
+      border-radius: 1px;
+    }
+    .sla-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.6875rem;
+    }
+    .sla-status-badge {
+      padding: 0.125rem 0.375rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .sla-status-badge.sla-on-track {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .sla-status-badge.sla-at-risk {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .sla-status-badge.sla-overdue {
+      background: #fed7aa;
+      color: #9a3412;
+    }
+    .sla-status-badge.sla-critical {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    .sla-time {
+      color: var(--gray-500);
+    }
+
+    /* Row highlighting based on SLA */
+    tr.sla-critical {
+      background: #fef2f2 !important;
+    }
+    tr.sla-critical:hover {
+      background: #fee2e2 !important;
+    }
+    tr.sla-overdue {
+      background: #fffbeb !important;
+    }
+    tr.sla-overdue:hover {
+      background: #fef3c7 !important;
+    }
+    tr.sla-at-risk {
+      background: #fefce8 !important;
+    }
+
     @media (max-width: 768px) {
       .modal-content { width: 100%; height: 100%; max-height: 100%; border-radius: 0; }
       .modal-footer { flex-wrap: wrap; }
       .modal-footer .btn { flex: 1; min-width: 120px; }
       .bulk-actions-bar { flex-wrap: wrap; }
+      .sla-stats { gap: 1rem; }
+      .sla-stat { min-width: 50px; }
+      .th-sla { width: 150px; }
     }
   </style>
 </body>

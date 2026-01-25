@@ -23,6 +23,85 @@ const { calculateEscalationLevel } = require('../services/issueClassifier');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 
+// SLA Configuration
+const REVIEW_SLA = {
+  targetDays: 2,          // Target: review within 2 days
+  warningDays: 3,         // Warning at 3 days
+  criticalDays: 5,        // Critical at 5 days
+  maxDays: 7              // Maximum acceptable: 7 days
+};
+
+/**
+ * Calculate SLA status for a review
+ * @param {string} submittedAt - ISO date string of when review was submitted
+ * @returns {object} SLA status info
+ */
+function calculateSLAStatus(submittedAt) {
+  const submitted = new Date(submittedAt);
+  const now = new Date();
+  const diffMs = now - submitted;
+  const diffDays = diffMs / (1000 * 60 * 60 * 24);
+  const daysPending = Math.floor(diffDays);
+  const hoursPending = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
+
+  // Calculate percentage of SLA used
+  const slaPercentage = Math.round((diffDays / REVIEW_SLA.targetDays) * 100);
+
+  // Determine status
+  let status = 'on-track';
+  let statusLabel = 'Á réttri leið';
+  let statusClass = 'sla-on-track';
+
+  if (diffDays >= REVIEW_SLA.criticalDays) {
+    status = 'critical';
+    statusLabel = 'Mjög seint';
+    statusClass = 'sla-critical';
+  } else if (diffDays >= REVIEW_SLA.warningDays) {
+    status = 'overdue';
+    statusLabel = 'Yfir tíma';
+    statusClass = 'sla-overdue';
+  } else if (diffDays >= REVIEW_SLA.targetDays) {
+    status = 'at-risk';
+    statusLabel = 'Á mörkum';
+    statusClass = 'sla-at-risk';
+  }
+
+  // Time remaining or overdue
+  const remainingDays = REVIEW_SLA.targetDays - diffDays;
+  let timeMessage;
+  if (remainingDays > 0) {
+    const remainingHours = Math.round(remainingDays * 24);
+    if (remainingHours < 24) {
+      timeMessage = `${remainingHours} klst. eftir`;
+    } else {
+      timeMessage = `${Math.floor(remainingDays)} d. eftir`;
+    }
+  } else {
+    const overdueDays = Math.abs(remainingDays);
+    if (overdueDays < 1) {
+      timeMessage = `${Math.round(overdueDays * 24)} klst. yfir`;
+    } else {
+      timeMessage = `${Math.floor(overdueDays)} d. yfir tíma`;
+    }
+  }
+
+  return {
+    daysPending,
+    hoursPending,
+    slaPercentage: Math.min(slaPercentage, 200), // Cap at 200%
+    status,
+    statusLabel,
+    statusClass,
+    timeMessage,
+    isOverdue: diffDays >= REVIEW_SLA.targetDays,
+    isCritical: diffDays >= REVIEW_SLA.criticalDays,
+    target: {
+      days: REVIEW_SLA.targetDays,
+      label: `Markmið: ${REVIEW_SLA.targetDays} dagar`
+    }
+  };
+}
+
 /**
  * GET /api/reviews
  * List all pending reviews (admin/head-editor only)
@@ -33,31 +112,48 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
   try {
     let reviews = editorHistory.getPendingReviews(book || null);
 
-    // Add escalation info if requested
-    if (includeEscalation === 'true') {
-      reviews = reviews.map(review => {
-        const escalation = calculateEscalationLevel(review.submittedAt, 'reviewPending');
-        return {
-          ...review,
-          escalation: {
-            level: escalation.level,
-            daysPending: escalation.days,
-            message: escalation.message,
-            shouldEscalate: escalation.shouldEscalate
-          }
-        };
-      });
+    // Add escalation and SLA info
+    reviews = reviews.map(review => {
+      const escalation = includeEscalation === 'true'
+        ? calculateEscalationLevel(review.submittedAt, 'reviewPending')
+        : null;
+      const sla = calculateSLAStatus(review.submittedAt);
 
-      // Sort by escalation level (critical first), then by days pending
-      reviews.sort((a, b) => {
-        const levelOrder = { critical: 0, warning: 1, notice: 2, null: 3 };
-        const levelDiff = levelOrder[a.escalation.level] - levelOrder[b.escalation.level];
-        if (levelDiff !== 0) return levelDiff;
-        return b.escalation.daysPending - a.escalation.daysPending;
-      });
-    }
+      return {
+        ...review,
+        escalation: escalation ? {
+          level: escalation.level,
+          daysPending: escalation.days,
+          message: escalation.message,
+          shouldEscalate: escalation.shouldEscalate
+        } : null,
+        sla
+      };
+    });
 
-    // Calculate escalation stats
+    // Sort by SLA status (critical first), then by days pending
+    reviews.sort((a, b) => {
+      const statusOrder = { 'critical': 0, 'overdue': 1, 'at-risk': 2, 'on-track': 3 };
+      const statusDiff = statusOrder[a.sla.status] - statusOrder[b.sla.status];
+      if (statusDiff !== 0) return statusDiff;
+      return b.sla.daysPending - a.sla.daysPending;
+    });
+
+    // Calculate SLA stats
+    const slaStats = {
+      total: reviews.length,
+      onTrack: reviews.filter(r => r.sla.status === 'on-track').length,
+      atRisk: reviews.filter(r => r.sla.status === 'at-risk').length,
+      overdue: reviews.filter(r => r.sla.status === 'overdue').length,
+      critical: reviews.filter(r => r.sla.status === 'critical').length,
+      oldest: reviews.length > 0 ? reviews[0] : null,
+      avgDaysPending: reviews.length > 0
+        ? Math.round(reviews.reduce((sum, r) => sum + r.sla.daysPending, 0) / reviews.length * 10) / 10
+        : 0,
+      target: REVIEW_SLA
+    };
+
+    // Legacy escalation stats for backwards compatibility
     const escalationStats = {
       critical: reviews.filter(r => r.escalation?.level === 'critical').length,
       warning: reviews.filter(r => r.escalation?.level === 'warning').length,
@@ -68,6 +164,7 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     res.json({
       count: reviews.length,
       reviews,
+      slaStats,
       escalationStats
     });
   } catch (err) {
@@ -94,6 +191,57 @@ router.get('/count', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => 
     console.error('Error getting review count:', err);
     res.status(500).json({
       error: 'Failed to get review count',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/reviews/sla
+ * Get SLA statistics for reviews
+ */
+router.get('/sla', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
+  const { book } = req.query;
+
+  try {
+    const reviews = editorHistory.getPendingReviews(book || null);
+
+    // Calculate SLA for each review
+    const reviewsWithSLA = reviews.map(r => ({
+      ...r,
+      sla: calculateSLAStatus(r.submittedAt)
+    }));
+
+    // Sort by urgency
+    reviewsWithSLA.sort((a, b) => {
+      const statusOrder = { 'critical': 0, 'overdue': 1, 'at-risk': 2, 'on-track': 3 };
+      return statusOrder[a.sla.status] - statusOrder[b.sla.status];
+    });
+
+    // Calculate statistics
+    const stats = {
+      total: reviews.length,
+      byStatus: {
+        onTrack: reviewsWithSLA.filter(r => r.sla.status === 'on-track').length,
+        atRisk: reviewsWithSLA.filter(r => r.sla.status === 'at-risk').length,
+        overdue: reviewsWithSLA.filter(r => r.sla.status === 'overdue').length,
+        critical: reviewsWithSLA.filter(r => r.sla.status === 'critical').length
+      },
+      avgDaysPending: reviews.length > 0
+        ? Math.round(reviewsWithSLA.reduce((sum, r) => sum + r.sla.daysPending, 0) / reviews.length * 10) / 10
+        : 0,
+      oldest: reviewsWithSLA[0] || null,
+      slaPerformance: reviews.length > 0
+        ? Math.round((reviewsWithSLA.filter(r => r.sla.status === 'on-track').length / reviews.length) * 100)
+        : 100,
+      config: REVIEW_SLA
+    };
+
+    res.json(stats);
+  } catch (err) {
+    console.error('Error getting SLA stats:', err);
+    res.status(500).json({
+      error: 'Failed to get SLA stats',
       message: err.message
     });
   }
