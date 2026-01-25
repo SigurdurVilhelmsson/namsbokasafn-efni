@@ -88,6 +88,10 @@
           </div>
         </div>
         <div class="editor-actions">
+          <button class="btn btn-icon spell-check-toggle" id="spell-check-btn" onclick="toggleSpellCheck()" title="Kveikja/slökkva á stafsetningarleit">
+            <i class="fas fa-spell-check"></i>
+            <span class="spell-check-status" id="spell-check-status">✓</span>
+          </button>
           <span class="save-status" id="save-status"></span>
           <button class="btn btn-secondary" id="save-btn">
             <i class="fas fa-save"></i> Vista
@@ -1146,7 +1150,7 @@
       editor = new EasyMDE({
         element: document.getElementById('markdown-editor'),
         initialValue: content,
-        spellChecker: false,
+        spellChecker: false, // Disable EasyMDE's English-only spell checker
         autosave: {
           enabled: false // We'll handle autosave ourselves
         },
@@ -1160,7 +1164,8 @@
         placeholder: 'Skrifaðu þýðingu hér...',
         status: ['lines', 'words', 'cursor'],
         previewImagesInEditor: true,
-        sideBySideFullscreen: false
+        sideBySideFullscreen: false,
+        inputStyle: 'contenteditable' // Required for browser spell check
       });
 
       lastSavedContent = content;
@@ -1174,6 +1179,9 @@
 
       // Setup terminology lookup
       setupTerminologyLookup();
+
+      // Setup spell checking
+      setupSpellCheck();
     }
 
     async function autoSave() {
@@ -1378,6 +1386,93 @@
       const div = document.createElement('div');
       div.textContent = text;
       return div.innerHTML;
+    }
+
+    // ========================================
+    // TERMINOLOGY LOOKUP
+    // ========================================
+
+    // ========================================
+    // SPELL CHECK
+    // ========================================
+
+    let spellCheckEnabled = localStorage.getItem('spellCheckEnabled') !== 'false';
+
+    function setupSpellCheck() {
+      if (!editor || !editor.codemirror) return;
+
+      const cm = editor.codemirror;
+
+      // Get the CodeMirror wrapper element
+      const cmWrapper = cm.getWrapperElement();
+
+      // Enable spell checking on the editor
+      if (spellCheckEnabled) {
+        enableSpellCheck(cmWrapper);
+      }
+
+      // Update the UI indicator
+      updateSpellCheckIndicator();
+    }
+
+    function enableSpellCheck(cmWrapper) {
+      // Set language to Icelandic for browser spell checking
+      cmWrapper.setAttribute('lang', 'is');
+      cmWrapper.setAttribute('spellcheck', 'true');
+
+      // Also set on the lines element for contenteditable mode
+      const lines = cmWrapper.querySelector('.CodeMirror-lines');
+      if (lines) {
+        lines.setAttribute('lang', 'is');
+        lines.setAttribute('spellcheck', 'true');
+      }
+
+      // For textarea fallback
+      const textarea = cmWrapper.querySelector('textarea');
+      if (textarea) {
+        textarea.setAttribute('lang', 'is');
+        textarea.setAttribute('spellcheck', 'true');
+      }
+    }
+
+    function disableSpellCheck(cmWrapper) {
+      cmWrapper.setAttribute('spellcheck', 'false');
+      const lines = cmWrapper.querySelector('.CodeMirror-lines');
+      if (lines) {
+        lines.setAttribute('spellcheck', 'false');
+      }
+      const textarea = cmWrapper.querySelector('textarea');
+      if (textarea) {
+        textarea.setAttribute('spellcheck', 'false');
+      }
+    }
+
+    function toggleSpellCheck() {
+      spellCheckEnabled = !spellCheckEnabled;
+      localStorage.setItem('spellCheckEnabled', spellCheckEnabled);
+
+      if (editor && editor.codemirror) {
+        const cmWrapper = editor.codemirror.getWrapperElement();
+        if (spellCheckEnabled) {
+          enableSpellCheck(cmWrapper);
+          showToast('Stafsetningarleit virkjuð', 'success');
+        } else {
+          disableSpellCheck(cmWrapper);
+          showToast('Stafsetningarleit óvirkjuð', 'info');
+        }
+      }
+
+      updateSpellCheckIndicator();
+    }
+
+    function updateSpellCheckIndicator() {
+      const btn = document.getElementById('spell-check-btn');
+      if (btn) {
+        btn.classList.toggle('active', spellCheckEnabled);
+        btn.title = spellCheckEnabled
+          ? 'Stafsetningarleit virk (smelltu til að slökkva)'
+          : 'Stafsetningarleit óvirk (smelltu til að virkja)';
+      }
     }
 
     // ========================================
@@ -3884,6 +3979,46 @@
     .editor-title h2 { font-size: 1.125rem; font-weight: 600; }
     .editor-actions { display: flex; align-items: center; gap: 0.75rem; }
     .save-status { font-size: 0.75rem; color: var(--gray-500); }
+
+    /* Spell Check Toggle */
+    .spell-check-toggle {
+      position: relative;
+      background: transparent;
+      border: 1px solid var(--gray-300);
+      padding: 0.375rem 0.625rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      color: var(--gray-500);
+      font-size: 0.875rem;
+      transition: all 0.15s;
+    }
+    .spell-check-toggle:hover {
+      background: var(--gray-100);
+      border-color: var(--gray-400);
+    }
+    .spell-check-toggle.active {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #047857;
+    }
+    .spell-check-toggle .spell-check-status {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: #10b981;
+      color: white;
+      font-size: 0.625rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .spell-check-toggle:not(.active) .spell-check-status {
+      display: none;
+    }
 
     /* Split File Indicator */
     .split-indicator {
