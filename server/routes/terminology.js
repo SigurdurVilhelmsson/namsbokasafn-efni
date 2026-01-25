@@ -618,4 +618,141 @@ router.post('/import/existing-glossary', requireAuth, requireRole(ROLES.HEAD_EDI
   }
 });
 
+// ============================================================================
+// CONSISTENCY CHECK
+// ============================================================================
+
+/**
+ * POST /api/terminology/check-consistency
+ * Check text for terminology consistency issues
+ *
+ * Body:
+ *   content: The translated text to check
+ *   sourceContent: The source (English) text
+ *   bookId: Optional book ID for book-specific terms
+ */
+router.post('/check-consistency', requireAuth, (req, res) => {
+  const { content, sourceContent, bookId } = req.body;
+
+  if (!content) {
+    return res.status(400).json({
+      error: 'Missing content',
+      message: 'Content is required for consistency check'
+    });
+  }
+
+  try {
+    // Get all approved terms for this book
+    const termsResult = terminology.searchTerms('', {
+      bookId: bookId ? parseInt(bookId, 10) : undefined,
+      status: 'approved',
+      limit: 1000
+    });
+
+    const issues = [];
+    const termMap = new Map(); // en_term -> is_term (approved)
+
+    // Build map of approved translations
+    for (const term of termsResult.terms) {
+      if (term.en_term && term.is_term) {
+        const enLower = term.en_term.toLowerCase();
+        if (!termMap.has(enLower)) {
+          termMap.set(enLower, {
+            approved: term.is_term,
+            category: term.category,
+            id: term.id
+          });
+        }
+      }
+    }
+
+    // Check source content for English terms and verify translations
+    if (sourceContent) {
+      for (const [enTerm, termInfo] of termMap) {
+        // Check if EN term exists in source
+        const enRegex = new RegExp(`\\b${escapeRegex(enTerm)}\\b`, 'gi');
+        const enMatches = sourceContent.match(enRegex);
+
+        if (enMatches && enMatches.length > 0) {
+          // Check if approved IS term exists in content
+          const isRegex = new RegExp(`\\b${escapeRegex(termInfo.approved)}\\b`, 'gi');
+          const isMatches = content.match(isRegex);
+
+          if (!isMatches || isMatches.length === 0) {
+            // The approved Icelandic term is missing
+            // Check for other translations of the same word
+            const alternatives = termsResult.terms
+              .filter(t => t.en_term && t.en_term.toLowerCase() === enTerm && t.is_term !== termInfo.approved)
+              .map(t => t.is_term);
+
+            // Check if any alternative is used
+            let alternativeUsed = null;
+            for (const alt of alternatives) {
+              const altRegex = new RegExp(`\\b${escapeRegex(alt)}\\b`, 'gi');
+              if (content.match(altRegex)) {
+                alternativeUsed = alt;
+                break;
+              }
+            }
+
+            if (alternativeUsed) {
+              issues.push({
+                type: 'inconsistent_translation',
+                severity: 'warning',
+                enTerm: enTerm,
+                expectedTerm: termInfo.approved,
+                foundTerm: alternativeUsed,
+                message: `"${enTerm}" ætti að vera "${termInfo.approved}" (ekki "${alternativeUsed}")`,
+                termId: termInfo.id
+              });
+            } else {
+              issues.push({
+                type: 'missing_term',
+                severity: 'info',
+                enTerm: enTerm,
+                expectedTerm: termInfo.approved,
+                message: `Hugtakið "${enTerm}" → "${termInfo.approved}" fannst ekki í þýðingunni`,
+                termId: termInfo.id
+              });
+            }
+          }
+        }
+      }
+    }
+
+    // Check for terms that appear inconsistently within the text itself
+    const wordFreq = new Map();
+    const words = content.match(/[\wáéíóúýþæöðÁÉÍÓÚÝÞÆÖÐ]+/g) || [];
+
+    for (const word of words) {
+      const lower = word.toLowerCase();
+      if (lower.length >= 4) { // Skip short words
+        wordFreq.set(lower, (wordFreq.get(lower) || 0) + 1);
+      }
+    }
+
+    res.json({
+      success: true,
+      issues,
+      stats: {
+        termsChecked: termMap.size,
+        issuesFound: issues.length,
+        warnings: issues.filter(i => i.severity === 'warning').length,
+        infos: issues.filter(i => i.severity === 'info').length
+      }
+    });
+
+  } catch (err) {
+    console.error('Consistency check error:', err);
+    res.status(500).json({
+      error: 'Failed to check consistency',
+      message: err.message
+    });
+  }
+});
+
+function escapeRegex(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 module.exports = router;
