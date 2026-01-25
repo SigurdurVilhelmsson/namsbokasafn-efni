@@ -6,7 +6,9 @@ Review of the translation management system from a professional translator's per
 
 **Key Finding:** The system is feature-rich but complex. A small team working chapter-by-chapter needs streamlined visibility and simpler workflows over sophisticated automation.
 
-**Status:** ALL ITEMS COMPLETE (as of 2026-01-22)
+**Status:** PHASE 1 COMPLETE (as of 2026-01-22)
+
+> **Phase 2 (Editor Improvements):** See [editor-improvements-jan2026.md](./editor-improvements-jan2026.md) for 10 additional editor-focused improvements completed 2026-01-25.
 
 ---
 

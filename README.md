@@ -79,6 +79,8 @@ Sjá [server/README.md](server/README.md) fyrir nánari upplýsingar.
 | [Hugtök](docs/editorial/terminology.md) | Hugtakastaðlar og orðasafn |
 | [CLI tól](docs/technical/cli-reference.md) | Skipanalínutól |
 | [Vefþjónn](server/README.md) | Sjálfvirknivefþjónn |
+| [Viðmótsumbætur](docs/workflow/ui-improvements-plan.md) | Umbætur á vefviðmóti (1. áfangi) |
+| [Ritillsumbætur](docs/workflow/editor-improvements-jan2026.md) | Umbætur á ritli (2. áfangi) |
 
 ## Að taka þátt
 
@@ -188,6 +190,8 @@ See [server/README.md](server/README.md) for full documentation.
 | [Publication Format](docs/technical/publication-format.md) | 3-track publication structure |
 | [Pipeline Server](server/README.md) | Web automation server |
 | [Contributing](docs/contributing/getting-started.md) | How to participate |
+| [UI Improvements Phase 1](docs/workflow/ui-improvements-plan.md) | Dashboard, assignments, navigation |
+| [Editor Improvements Phase 2](docs/workflow/editor-improvements-jan2026.md) | Spell check, dark mode, notes, presence |
 
 ## CLI Tools
 
