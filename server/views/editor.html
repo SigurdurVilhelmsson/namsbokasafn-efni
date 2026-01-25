@@ -250,7 +250,7 @@
               <h4><i class="fas fa-info-circle"></i> Almennar leiðbeiningar</h4>
               <ul>
                 <li>Vistaðu reglulega með <kbd>Ctrl+S</kbd></li>
-                <li>Tvísmelltu á orð til að fletta upp í orðasafni</li>
+                <li>Tvísmelltu á orð eða notaðu <kbd>Ctrl+T</kbd> til að fletta upp í orðasafni</li>
                 <li>Notaðu EN/IS hnappinn til að sjá enska textann</li>
                 <li>Skoðaðu útgáfusögu til að endurheimta eldri útgáfur</li>
               </ul>
@@ -275,6 +275,8 @@
           <!-- Keyboard hints moved to modal - access via More menu -->
           <div class="keyboard-hints-mini" id="keyboard-hints-mini">
             <span class="hint-mini"><kbd>Ctrl+S</kbd> Vista</span>
+            <span class="hint-mini hint-separator">|</span>
+            <span class="hint-mini"><kbd>Ctrl+T</kbd> Orðasafn</span>
             <span class="hint-mini hint-separator">|</span>
             <span class="hint-mini"><kbd>?</kbd> Hjálp</span>
           </div>
@@ -320,18 +322,25 @@
       <!-- Terminology lookup panel -->
       <div class="terminology-panel" id="terminology-panel" style="display: none;">
         <div class="terminology-header">
-          <span class="terminology-query" id="terminology-query"></span>
-          <button class="btn-close btn-small" onclick="hideTerminologyPanel()">&times;</button>
+          <div class="terminology-header-left">
+            <i class="fas fa-search"></i>
+            <span class="terminology-query" id="terminology-query"></span>
+          </div>
+          <button class="btn-close" onclick="hideTerminologyPanel()" title="Loka (Esc)">&times;</button>
+        </div>
+        <div class="terminology-hint">
+          <i class="fas fa-lightbulb"></i>
+          <span>Tvísmelltu á orð til að fletta upp eða notaðu <kbd>Ctrl</kbd>+<kbd>T</kbd></span>
         </div>
         <div class="terminology-results" id="terminology-results">
-          <p class="loading">Leita...</p>
+          <p class="loading"><i class="fas fa-spinner"></i> Leita...</p>
         </div>
         <div class="terminology-footer">
           <button class="btn btn-secondary btn-small" onclick="proposeNewTerm()">
-            <i class="fas fa-plus"></i> Bæta við orði
+            <i class="fas fa-plus"></i> Nýtt hugtak
           </button>
           <a href="/terminology" target="_blank" class="btn btn-secondary btn-small">
-            <i class="fas fa-book"></i> Orðasafn
+            <i class="fas fa-external-link-alt"></i> Orðasafn
           </a>
         </div>
       </div>
@@ -684,7 +693,9 @@
           <div class="keyboard-help-section">
             <h4>Orðauppfletting</h4>
             <div class="shortcut-list">
-              <div class="shortcut-item"><span class="hint-action">Tvísmelltu</span><span>Fletta upp orði</span></div>
+              <div class="shortcut-item"><span class="hint-action">Tvísmelltu</span><span>Fletta upp völdu orði</span></div>
+              <div class="shortcut-item"><kbd>Ctrl</kbd>+<kbd>T</kbd><span>Leita í orðasafni</span></div>
+              <div class="shortcut-item"><kbd>Esc</kbd><span>Loka uppflettingu</span></div>
             </div>
           </div>
         </div>
@@ -1274,6 +1285,7 @@
 
     let terminologyTimer = null;
     let lastTermQuery = '';
+    let lastCursorCoords = null;
 
     function setupTerminologyLookup() {
       if (!editor || !editor.codemirror) return;
@@ -1283,29 +1295,79 @@
       // Listen for cursor activity (selection changes)
       cm.on('cursorActivity', () => {
         clearTimeout(terminologyTimer);
-        terminologyTimer = setTimeout(checkForTerminology, 500);
+        // Only auto-lookup after a brief pause when selecting
+        if (cm.somethingSelected()) {
+          terminologyTimer = setTimeout(() => checkForTerminology(false), 800);
+        }
       });
 
-      // Listen for double-click to select word
-      cm.on('dblclick', () => {
-        setTimeout(checkForTerminology, 100);
+      // Listen for double-click to select word - more immediate
+      cm.on('dblclick', (cm, event) => {
+        // Store cursor position for positioning the panel
+        storeCursorPosition();
+        setTimeout(() => checkForTerminology(true), 50);
+      });
+
+      // Add keyboard shortcut Ctrl+T for manual lookup
+      cm.setOption('extraKeys', {
+        ...cm.getOption('extraKeys'),
+        'Ctrl-T': function(cm) {
+          const selection = cm.getSelection().trim();
+          if (selection) {
+            storeCursorPosition();
+            checkForTerminology(true);
+          } else {
+            // Prompt for manual search if nothing selected
+            openManualTerminologySearch();
+          }
+        }
+      });
+
+      // Close panel on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const panel = document.getElementById('terminology-panel');
+          if (panel.style.display !== 'none') {
+            hideTerminologyPanel();
+            cm.focus();
+          }
+        }
+      });
+
+      // Close panel when clicking outside
+      document.addEventListener('click', (e) => {
+        const panel = document.getElementById('terminology-panel');
+        if (panel.style.display !== 'none' && !panel.contains(e.target)) {
+          // Don't close if clicking in the editor (user might be selecting)
+          const editorEl = document.querySelector('.EasyMDEContainer');
+          if (!editorEl || !editorEl.contains(e.target)) {
+            hideTerminologyPanel();
+          }
+        }
       });
     }
 
-    function checkForTerminology() {
+    function storeCursorPosition() {
+      if (!editor || !editor.codemirror) return;
+      const cm = editor.codemirror;
+      const cursor = cm.getCursor();
+      lastCursorCoords = cm.cursorCoords(cursor, 'page');
+    }
+
+    function checkForTerminology(immediate = false) {
       if (!editor || !editor.codemirror) return;
 
       const cm = editor.codemirror;
       const selection = cm.getSelection().trim();
 
-      // Only lookup if selection is 2-50 characters and looks like a word
+      // Only lookup if selection is 2-50 characters and looks like a word/phrase
       if (selection.length < 2 || selection.length > 50 || /[\n\r]/.test(selection)) {
-        hideTerminologyPanel();
+        if (!immediate) hideTerminologyPanel();
         return;
       }
 
-      // Don't repeat the same query
-      if (selection === lastTermQuery) return;
+      // Don't repeat the same query unless forced
+      if (!immediate && selection === lastTermQuery) return;
       lastTermQuery = selection;
 
       lookupTerminology(selection);
@@ -1317,19 +1379,23 @@
       const queryEl = document.getElementById('terminology-query');
 
       queryEl.textContent = '"' + query + '"';
-      resultsEl.innerHTML = '<p class="loading">Leita...</p>';
+      resultsEl.innerHTML = '<p class="loading"><i class="fas fa-spinner"></i> Leita...</p>';
+
+      // Position panel near cursor
+      positionTerminologyPanel();
       panel.style.display = 'block';
+      panel.classList.remove('hiding');
 
       try {
         const res = await fetch('/api/terminology/lookup?q=' + encodeURIComponent(query));
         const data = await res.json();
 
         if (data.terms && data.terms.length > 0) {
-          resultsEl.innerHTML = data.terms.map(term => `
-            <div class="term-result" onclick="insertTerm('${escapeHtml(term.icelandic)}')">
+          resultsEl.innerHTML = data.terms.map((term, index) => `
+            <div class="term-result" data-icelandic="${escapeHtml(term.icelandic)}">
               <div class="term-main">
                 <span class="term-english">${escapeHtml(term.english)}</span>
-                <span class="term-arrow">&rarr;</span>
+                <span class="term-arrow">→</span>
                 <span class="term-icelandic">${escapeHtml(term.icelandic)}</span>
               </div>
               <div class="term-meta">
@@ -1337,13 +1403,69 @@
                 ${term.category ? '<span class="term-category">' + escapeHtml(term.category) + '</span>' : ''}
               </div>
               ${term.notes ? '<div class="term-notes">' + escapeHtml(term.notes) + '</div>' : ''}
+              <div class="term-actions">
+                <button class="btn-insert" onclick="insertTerm('${escapeHtml(term.icelandic)}')">
+                  <i class="fas fa-check"></i> Setja inn
+                </button>
+                <button class="btn-copy" onclick="copyTerm(this, '${escapeHtml(term.icelandic)}')">
+                  <i class="fas fa-copy"></i> Afrita
+                </button>
+              </div>
             </div>
           `).join('');
         } else {
-          resultsEl.innerHTML = '<p class="no-results">Ekkert orð fannst. <a href="#" onclick="proposeNewTerm()">Leggja til?</a></p>';
+          resultsEl.innerHTML = `
+            <div class="no-results">
+              <i class="fas fa-search"></i>
+              <p>Ekkert hugtak fannst fyrir „${escapeHtml(query)}"</p>
+              <span class="propose-link" onclick="proposeNewTerm()">
+                <i class="fas fa-plus"></i> Leggja til nýtt hugtak
+              </span>
+            </div>
+          `;
         }
       } catch (err) {
-        resultsEl.innerHTML = '<p class="error">Villa við leit</p>';
+        resultsEl.innerHTML = '<p class="error"><i class="fas fa-exclamation-circle"></i> Villa við leit</p>';
+      }
+    }
+
+    function positionTerminologyPanel() {
+      const panel = document.getElementById('terminology-panel');
+
+      if (lastCursorCoords) {
+        // Position below and to the right of the cursor
+        const panelWidth = 380;
+        const panelHeight = 400;
+        const padding = 10;
+
+        let left = lastCursorCoords.left;
+        let top = lastCursorCoords.bottom + padding;
+
+        // Make sure panel stays within viewport
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        if (left + panelWidth > viewportWidth - padding) {
+          left = viewportWidth - panelWidth - padding;
+        }
+        if (left < padding) left = padding;
+
+        if (top + panelHeight > viewportHeight - padding) {
+          // Show above the cursor instead
+          top = lastCursorCoords.top - panelHeight - padding;
+          if (top < padding) top = padding;
+        }
+
+        panel.style.left = left + 'px';
+        panel.style.top = top + 'px';
+        panel.style.right = 'auto';
+        panel.style.bottom = 'auto';
+      } else {
+        // Fallback: position in bottom-right corner
+        panel.style.left = 'auto';
+        panel.style.top = 'auto';
+        panel.style.right = '20px';
+        panel.style.bottom = '20px';
       }
     }
 
@@ -1354,11 +1476,41 @@
       cm.replaceSelection(icelandicTerm);
       hideTerminologyPanel();
       cm.focus();
+
+      // Show brief success indicator
+      showToast('Orð sett inn', 'success');
+    }
+
+    function copyTerm(button, icelandicTerm) {
+      navigator.clipboard.writeText(icelandicTerm).then(() => {
+        button.classList.add('copied');
+        button.innerHTML = '<i class="fas fa-check"></i> Afritað!';
+        setTimeout(() => {
+          button.classList.remove('copied');
+          button.innerHTML = '<i class="fas fa-copy"></i> Afrita';
+        }, 1500);
+      }).catch(() => {
+        showToast('Gat ekki afritað', 'error');
+      });
     }
 
     function hideTerminologyPanel() {
-      document.getElementById('terminology-panel').style.display = 'none';
+      const panel = document.getElementById('terminology-panel');
+      panel.classList.add('hiding');
+      setTimeout(() => {
+        panel.style.display = 'none';
+        panel.classList.remove('hiding');
+      }, 150);
       lastTermQuery = '';
+    }
+
+    function openManualTerminologySearch() {
+      const query = prompt('Sláðu inn orð til að leita í orðasafni:');
+      if (query && query.trim()) {
+        lastTermQuery = '';
+        storeCursorPosition();
+        lookupTerminology(query.trim());
+      }
     }
 
     function formatTermStatus(status) {
@@ -1391,7 +1543,7 @@
       const notes = document.getElementById('propose-notes').value.trim();
 
       if (!english || !icelandic) {
-        alert('Enska og íslenska eru nauðsynleg');
+        showToast('Enska og íslenska eru nauðsynleg', 'error');
         return;
       }
 
@@ -1411,14 +1563,50 @@
         const data = await res.json();
 
         if (data.success || data.term) {
-          alert('Orð bætt við í bið eftir samþykki!');
+          showToast('Orð bætt við í bið eftir samþykki!', 'success');
           closeProposalModal();
         } else {
-          alert('Villa: ' + (data.message || 'Gat ekki bætt við orði'));
+          showToast('Villa: ' + (data.message || 'Gat ekki bætt við orði'), 'error');
         }
       } catch (err) {
-        alert('Villa: ' + err.message);
+        showToast('Villa: ' + err.message, 'error');
       }
+    }
+
+    // Toast notification helper
+    function showToast(message, type = 'info') {
+      // Check if toast container exists, create if not
+      let toastContainer = document.getElementById('toast-container');
+      if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toast-container';
+        toastContainer.style.cssText = 'position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 8px;';
+        document.body.appendChild(toastContainer);
+      }
+
+      const toast = document.createElement('div');
+      const colors = {
+        success: 'background: #dcfce7; color: #166534; border-color: #86efac;',
+        error: 'background: #fee2e2; color: #991b1b; border-color: #fca5a5;',
+        info: 'background: #dbeafe; color: #1e40af; border-color: #93c5fd;'
+      };
+      toast.style.cssText = `
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border: 1px solid;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        animation: toastIn 0.2s ease-out;
+        ${colors[type] || colors.info}
+      `;
+      toast.textContent = message;
+      toastContainer.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.animation = 'toastOut 0.2s ease-in forwards';
+        setTimeout(() => toast.remove(), 200);
+      }, 2500);
     }
 
     // ========================================
@@ -4420,82 +4608,189 @@
       .form-row { grid-template-columns: 1fr; }
     }
 
-    /* Terminology Panel */
+    /* Terminology Panel - Enhanced Inline Lookup */
     .terminology-panel {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 350px;
-      max-height: 400px;
+      position: absolute;
+      width: 380px;
+      max-height: 450px;
       background: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      z-index: 200;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.05);
+      z-index: 300;
       overflow: hidden;
+      animation: terminologyPanelIn 0.2s ease-out;
+    }
+    @keyframes terminologyPanelIn {
+      from { opacity: 0; transform: translateY(-10px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .terminology-panel.hiding {
+      animation: terminologyPanelOut 0.15s ease-in forwards;
+    }
+    @keyframes terminologyPanelOut {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to { opacity: 0; transform: translateY(-10px) scale(0.95); }
     }
     .terminology-header {
-      padding: 0.75rem 1rem;
-      background: var(--gray-100);
-      border-bottom: 1px solid var(--gray-200);
+      padding: 0.875rem 1rem;
+      background: linear-gradient(135deg, var(--primary) 0%, #4338ca 100%);
+      color: white;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+    .terminology-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .terminology-header-left i {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
     .terminology-query {
       font-weight: 600;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
+      color: white;
+    }
+    .terminology-header .btn-close {
+      color: white;
+      opacity: 0.8;
+      font-size: 1.25rem;
+      line-height: 1;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .terminology-header .btn-close:hover {
+      opacity: 1;
+    }
+    .terminology-hint {
+      padding: 0.5rem 1rem;
+      background: var(--primary-light);
+      font-size: 0.75rem;
       color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .terminology-hint kbd {
+      background: white;
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-family: inherit;
+      font-size: 0.7rem;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
     .terminology-results {
-      max-height: 250px;
+      max-height: 280px;
       overflow-y: auto;
       padding: 0.5rem;
     }
-    .terminology-results .loading,
-    .terminology-results .no-results,
-    .terminology-results .error {
-      padding: 1rem;
+    .terminology-results .loading {
+      padding: 2rem 1rem;
       text-align: center;
       color: var(--gray-500);
       font-size: 0.875rem;
     }
-    .terminology-results .error { color: var(--error); }
+    .terminology-results .loading i {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      display: block;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes toastOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-10px); }
+    }
+    .terminology-results .no-results {
+      padding: 1.5rem 1rem;
+      text-align: center;
+      color: var(--gray-600);
+      font-size: 0.875rem;
+    }
+    .terminology-results .no-results i {
+      font-size: 2rem;
+      color: var(--gray-400);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .terminology-results .no-results .propose-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--primary);
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .terminology-results .no-results .propose-link:hover {
+      text-decoration: underline;
+    }
+    .terminology-results .error {
+      padding: 1rem;
+      text-align: center;
+      color: var(--error);
+      font-size: 0.875rem;
+    }
     .terminology-results a { color: var(--primary); }
     .terminology-footer {
-      padding: 0.75rem;
+      padding: 0.75rem 1rem;
       background: var(--gray-50);
       border-top: 1px solid var(--gray-200);
       display: flex;
       gap: 0.5rem;
-      justify-content: center;
+      justify-content: space-between;
     }
     .term-result {
-      padding: 0.75rem;
-      border-radius: 0.375rem;
-      cursor: pointer;
-      margin-bottom: 0.25rem;
+      padding: 0.875rem;
+      border-radius: 0.5rem;
+      margin-bottom: 0.375rem;
+      border: 1px solid var(--gray-200);
+      transition: all 0.15s ease;
+      background: white;
     }
     .term-result:hover {
       background: var(--gray-50);
+      border-color: var(--gray-300);
+    }
+    .term-result:last-child {
+      margin-bottom: 0;
     }
     .term-main {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
     }
     .term-english { color: var(--gray-700); }
-    .term-arrow { color: var(--gray-400); }
-    .term-icelandic { color: var(--primary); font-weight: 500; }
+    .term-arrow { color: var(--gray-400); font-size: 0.8rem; }
+    .term-icelandic {
+      color: var(--primary);
+      font-weight: 600;
+      background: var(--primary-light);
+      padding: 0.125rem 0.5rem;
+      border-radius: 0.25rem;
+    }
     .term-meta {
       display: flex;
       gap: 0.5rem;
-      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
     }
     .term-status {
       font-size: 0.625rem;
       padding: 0.125rem 0.375rem;
       border-radius: 9999px;
+      font-weight: 500;
     }
     .status-approved { background: #dcfce7; color: #166534; }
     .status-proposed { background: #dbeafe; color: #1e40af; }
@@ -4506,8 +4801,64 @@
     }
     .term-notes {
       font-size: 0.75rem;
-      color: var(--gray-500);
-      margin-top: 0.25rem;
+      color: var(--gray-600);
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+    .term-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--gray-100);
+    }
+    .term-actions .btn {
+      flex: 1;
+      justify-content: center;
+    }
+    .btn-insert {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: all 0.15s ease;
+    }
+    .btn-insert:hover {
+      background: var(--primary-dark);
+    }
+    .btn-copy {
+      background: white;
+      color: var(--gray-700);
+      border: 1px solid var(--gray-300);
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: all 0.15s ease;
+    }
+    .btn-copy:hover {
+      background: var(--gray-50);
+    }
+    .btn-copy.copied {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #86efac;
+    }
+
+    /* Terminology selection indicator in editor */
+    .CodeMirror .cm-term-highlight {
+      background: rgba(99, 102, 241, 0.15);
+      border-bottom: 2px solid var(--primary);
     }
 
     /* Modal styles */
