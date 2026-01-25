@@ -35,6 +35,7 @@ function parseArgs(args) {
   const result = {
     input: null,
     output: null,
+    figuresSidecar: null,  // Optional figures sidecar JSON path
     inPlace: false,
     verbose: false,
     dryRun: false,
@@ -48,6 +49,7 @@ function parseArgs(args) {
     else if (arg === '--dry-run') result.dryRun = true;
     else if (arg === '--in-place') result.inPlace = true;
     else if (arg === '--output' && args[i + 1]) result.output = args[++i];
+    else if ((arg === '--figures-sidecar' || arg === '--figures') && args[i + 1]) result.figuresSidecar = args[++i];
     else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
   return result;
@@ -65,11 +67,12 @@ Usage:
   cat input.md | node tools/cleanup-markdown.js > output.md
 
 Options:
-  --output <file>   Write to specified file (default: stdout)
-  --in-place        Modify the input file in place
-  --verbose         Show what's being cleaned
-  --dry-run         Show changes without writing
-  -h, --help        Show this help message
+  --output <file>         Write to specified file (default: stdout)
+  --in-place              Modify the input file in place
+  --figures-sidecar <f>   Use figures sidecar JSON for authoritative numbering
+  --verbose               Show what's being cleaned
+  --dry-run               Show changes without writing
+  -h, --help              Show this help message
 
 Transformations:
   - ![alt](url){#id .class}  → ![alt](url)
@@ -82,25 +85,73 @@ Transformations:
 }
 
 /**
+ * Load figure numbers from a sidecar JSON file.
+ * Returns a map of figure IDs to their numbers.
+ * @param {string} sidecarPath - Path to the figures sidecar JSON
+ * @param {boolean} verbose - Whether to output verbose info
+ * @returns {Object} Map of figure ID to number
+ */
+function loadFiguresSidecar(sidecarPath, verbose = false) {
+  const idToNumber = {};
+
+  if (!fs.existsSync(sidecarPath)) {
+    if (verbose) console.error(`  Figures sidecar not found: ${sidecarPath}`);
+    return idToNumber;
+  }
+
+  try {
+    const content = fs.readFileSync(sidecarPath, 'utf-8');
+    const data = JSON.parse(content);
+
+    if (data.figures) {
+      for (const [id, figData] of Object.entries(data.figures)) {
+        if (figData.number) {
+          idToNumber[id] = figData.number;
+          if (verbose) console.error(`  Sidecar: ${id} -> ${figData.number}`);
+        }
+      }
+    }
+
+    if (verbose) {
+      console.error(`  Loaded ${Object.keys(idToNumber).length} figure numbers from sidecar`);
+    }
+  } catch (err) {
+    if (verbose) console.error(`  Error loading sidecar: ${err.message}`);
+  }
+
+  return idToNumber;
+}
+
+/**
  * Build a map of element IDs to their numbers by scanning the content.
+ * If a figures sidecar is provided, use it as the primary source.
  * Looks for patterns like:
  *   - *Mynd 1.5: caption*{#id} or *Figure 1.5: caption*{#id}
  *   - *Tafla 1.2: caption*{#id} or *Table 1.2: caption*{#id}
  *   - Image with ID followed by numbered caption
  *   - Image URL containing ID (e.g., CNX_Chem_01_01_WaterDom.jpg) with nearby caption
+ * @param {string} content - The markdown content
+ * @param {boolean} verbose - Whether to output verbose info
+ * @param {string|null} figuresSidecarPath - Optional path to figures sidecar JSON
  */
-function buildElementNumberMap(content, verbose = false) {
-  const idToNumber = {};
+function buildElementNumberMap(content, verbose = false, figuresSidecarPath = null) {
+  // Start with sidecar data if provided (authoritative source)
+  const idToNumber = figuresSidecarPath
+    ? loadFiguresSidecar(figuresSidecarPath, verbose)
+    : {};
 
   // Pattern 1a: Numbered captions with {#id} attributes
   // Matches: *Mynd 1.5: caption text*{#some-id}
+  // Note: Skip if already in map (sidecar takes precedence)
   const captionWithHashIdPattern = /\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):?\s+[^*]*\*\{#([^}]+)\}/gi;
   let match;
   while ((match = captionWithHashIdPattern.exec(content)) !== null) {
     const number = match[1];
     const id = match[2];
-    idToNumber[id] = number;
-    if (verbose) console.error(`  Found caption with {#id}: ${id} -> ${number}`);
+    if (!idToNumber[id]) {
+      idToNumber[id] = number;
+      if (verbose) console.error(`  Found caption with {#id}: ${id} -> ${number}`);
+    }
   }
 
   // Pattern 1b: Numbered captions with {id="..."} attributes
@@ -269,8 +320,11 @@ function buildElementNumberMap(content, verbose = false) {
 
 /**
  * Clean Pandoc-style attributes and artifacts from markdown
+ * @param {string} content - The markdown content
+ * @param {boolean} verbose - Whether to output verbose info
+ * @param {string|null} figuresSidecarPath - Optional path to figures sidecar JSON
  */
-function cleanupMarkdown(content, verbose = false) {
+function cleanupMarkdown(content, verbose = false, figuresSidecarPath = null) {
   let result = content;
   const stats = {
     imageAttrs: 0,
@@ -279,11 +333,16 @@ function cleanupMarkdown(content, verbose = false) {
     arrowRefs: 0,
     arrowRefsNumbered: 0,
     tableAttrs: 0,
-    equationAttrs: 0
+    equationAttrs: 0,
+    sidecarFigures: 0
   };
 
   // Build element ID to number map BEFORE stripping IDs
-  const idToNumber = buildElementNumberMap(content, verbose);
+  // Use sidecar data if provided (authoritative), otherwise scan content
+  const idToNumber = buildElementNumberMap(content, verbose, figuresSidecarPath);
+  if (figuresSidecarPath) {
+    stats.sidecarFigures = Object.keys(idToNumber).length;
+  }
   if (verbose) {
     console.error(`\nBuilt element number map with ${Object.keys(idToNumber).length} entries`);
   }
@@ -512,12 +571,15 @@ async function main() {
     content = chunks.join('');
   }
 
-  const { result, stats } = cleanupMarkdown(content, options.verbose);
+  const { result, stats } = cleanupMarkdown(content, options.verbose, options.figuresSidecar);
 
   const totalChanges = Object.values(stats).reduce((a, b) => a + b, 0);
 
   if (options.verbose || options.dryRun) {
     console.error(`\nCleanup statistics:`);
+    if (stats.sidecarFigures > 0) {
+      console.error(`  Figures from sidecar: ${stats.sidecarFigures}`);
+    }
     console.error(`  Image attributes removed: ${stats.imageAttrs}`);
     console.error(`  Caption attributes removed: ${stats.captionAttrs}`);
     console.error(`  Term attributes removed: ${stats.termAttrs}`);

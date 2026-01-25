@@ -468,6 +468,175 @@ const VALIDATORS = {
 
       return issues;
     }
+  },
+
+  'figure-numbers': {
+    severity: SEVERITY.WARNING,
+    description: 'Figure numbers are sequential within chapter (no gaps)',
+    check: async ({ book, chapter, track, chapterDir }) => {
+      const issues = [];
+      const trackConfig = TRACKS[track];
+      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+
+      if (!fs.existsSync(sourceDir)) {
+        return issues;
+      }
+
+      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md')).sort();
+
+      // Collect all figure numbers across the chapter
+      const figureNumbers = [];
+      const captionPattern = /\*(?:Mynd|Figure)\s+(\d+)\.(\d+):/g;
+
+      for (const file of files) {
+        const filePath = path.join(sourceDir, file);
+        const content = fs.readFileSync(filePath, 'utf-8');
+
+        let match;
+        while ((match = captionPattern.exec(content)) !== null) {
+          const chapterNum = parseInt(match[1], 10);
+          const figNum = parseInt(match[2], 10);
+          const lineNum = content.substring(0, match.index).split('\n').length;
+
+          figureNumbers.push({
+            chapter: chapterNum,
+            figure: figNum,
+            full: `${chapterNum}.${figNum}`,
+            file,
+            line: lineNum
+          });
+        }
+      }
+
+      // Sort by figure number
+      figureNumbers.sort((a, b) => {
+        if (a.chapter !== b.chapter) return a.chapter - b.chapter;
+        return a.figure - b.figure;
+      });
+
+      // Check for gaps and duplicates
+      const expectedChapter = parseInt(chapter, 10);
+      let expectedFigure = 1;
+      const seen = new Set();
+
+      for (const fig of figureNumbers) {
+        const key = fig.full;
+
+        // Check for duplicate
+        if (seen.has(key)) {
+          issues.push({
+            file: fig.file,
+            line: fig.line,
+            message: `Duplicate figure number: Mynd ${key}`
+          });
+        }
+        seen.add(key);
+
+        // Check chapter number
+        if (fig.chapter !== expectedChapter) {
+          issues.push({
+            file: fig.file,
+            line: fig.line,
+            message: `Wrong chapter number: Mynd ${key} (expected chapter ${expectedChapter})`
+          });
+        }
+
+        // Check for gap
+        if (fig.figure !== expectedFigure && fig.figure > expectedFigure) {
+          issues.push({
+            file: fig.file,
+            line: fig.line,
+            message: `Gap in figure numbering: Mynd ${expectedChapter}.${expectedFigure} missing before Mynd ${key}`
+          });
+        }
+
+        expectedFigure = Math.max(expectedFigure, fig.figure + 1);
+      }
+
+      return issues;
+    }
+  },
+
+  'cross-references': {
+    severity: SEVERITY.WARNING,
+    description: 'Cross-references match existing figure/table captions',
+    check: async ({ book, chapter, track, chapterDir }) => {
+      const issues = [];
+      const trackConfig = TRACKS[track];
+      const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
+
+      if (!fs.existsSync(sourceDir)) {
+        return issues;
+      }
+
+      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md')).sort();
+
+      // First pass: collect all figure/table numbers from captions
+      const figureIds = new Set();
+      const tableIds = new Set();
+      const captionPattern = /\*(?:Mynd|Figure)\s+(\d+\.?\d*):.*?\*(?:\{(?:#|id=")([^}"]+))?/g;
+      const tableCaptionPattern = /\*(?:Tafla|Table)\s+(\d+\.?\d*):.*?\*(?:\{(?:#|id=")([^}"]+))?/g;
+
+      for (const file of files) {
+        const filePath = path.join(sourceDir, file);
+        const content = fs.readFileSync(filePath, 'utf-8');
+
+        let match;
+        while ((match = captionPattern.exec(content)) !== null) {
+          figureIds.add(match[1]);
+          if (match[2]) figureIds.add(match[2]);
+        }
+        while ((match = tableCaptionPattern.exec(content)) !== null) {
+          tableIds.add(match[1]);
+          if (match[2]) tableIds.add(match[2]);
+        }
+      }
+
+      // Second pass: check cross-references
+      const figRefPattern = /\[sjá mynd\s*(\d+\.?\d*)?\]\(#([^)]+)\)/g;
+      const tableRefPattern = /\[sjá töflu\s*(\d+\.?\d*)?\]\(#([^)]+)\)/g;
+
+      for (const file of files) {
+        const filePath = path.join(sourceDir, file);
+        const content = fs.readFileSync(filePath, 'utf-8');
+
+        let match;
+        while ((match = figRefPattern.exec(content)) !== null) {
+          const refNumber = match[1];
+          const refId = match[2];
+          const lineNum = content.substring(0, match.index).split('\n').length;
+
+          // Check if referenced number or ID exists
+          if (refNumber && !figureIds.has(refNumber)) {
+            issues.push({
+              file,
+              line: lineNum,
+              message: `Cross-reference to non-existent figure: Mynd ${refNumber}`
+            });
+          }
+          // Also check ID if provided (CNX_Chem_... pattern)
+          if (refId && refId.startsWith('CNX_') && !figureIds.has(refId)) {
+            // Only warn if no number was provided - the ID might be in the caption
+          }
+        }
+
+        while ((match = tableRefPattern.exec(content)) !== null) {
+          const refNumber = match[1];
+          const refId = match[2];
+          const lineNum = content.substring(0, match.index).split('\n').length;
+
+          if (refNumber && !tableIds.has(refNumber)) {
+            issues.push({
+              file,
+              line: lineNum,
+              message: `Cross-reference to non-existent table: Tafla ${refNumber}`
+            });
+          }
+        }
+      }
+
+      return issues;
+    }
   }
 };
 

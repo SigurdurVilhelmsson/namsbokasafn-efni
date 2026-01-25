@@ -81,19 +81,28 @@ const TRACK_LABELS = {
 };
 
 // End-of-chapter content patterns
+// NOTE: Directive patterns take priority over heading patterns (language-agnostic)
 const EOC_PATTERNS = {
-  // Heading-based patterns (## Heading)
-  keyConceptsSummary: /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt)/i,
-  exercises: /^##\s+(?:Chemistry End of Chapter Exercises|Æfingar|Dæmi|Exercises)/i,
-  keyTerms: /^##\s+(?:Key Terms|Lykilhugtök|Hugtök)/i,
-  keyEquations: /^##\s+(?:Key Equations|Lykiljöfnur|Jöfnur)/i,
+  // Directive-based patterns (:::directive) - PREFERRED, language-agnostic
+  summaryDirective: /^:::(?:summary|samantekt)\b/i,
+  exercisesDirective: /^:::(?:exercises|æfingar)\b/i,
+  glossaryDirective: /^:::(?:glossary|ordabok|orðabók)\b/i,
+  keyEquationsDirective: /^:::(?:key-equations?|lykiljöfnur)\b/i,
+  keyTermsDirective: /^:::(?:key-terms?|lykilhugtök)\b/i,
+  practiceProblems: /^:::practice-problem\b/,
 
-  // Directive-based patterns (:::directive)
-  summaryDirective: /^:::summary\b/,
-  exercisesDirective: /^:::exercises\b/,
-  glossaryDirective: /^:::glossary\b/,
-  keyEquationsDirective: /^:::key-equations?\b/,
-  practiceProblems: /^:::practice-problem\b/
+  // Heading-based patterns (## Heading) - fallback for content without directives
+  // Summary patterns (Icelandic and English)
+  keyConceptsSummary: /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt|Yfirlit|Summary)/i,
+
+  // Exercises patterns (Icelandic and English)
+  exercises: /^##\s+(?:Chemistry End of Chapter Exercises|Efnafræði[\s-]+æfingar í lok kafla|Æfingar|Dæmi|Verkefni|Exercises)/i,
+
+  // Key terms patterns (Icelandic and English)
+  keyTerms: /^##\s+(?:Key Terms|Lykilhugtök|Hugtök|Helstu hugtök)/i,
+
+  // Key equations patterns (Icelandic and English)
+  keyEquations: /^##\s+(?:Key Equations|Lykiljöfnur|Jöfnur|Helstu jöfnur)/i
 };
 
 // End-of-chapter output file configuration
@@ -404,40 +413,9 @@ function extractEOCContent(body) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
 
-    // Check for heading-based EOC sections
-    if (EOC_PATTERNS.keyConceptsSummary.test(line)) {
-      flushBuffer();
-      currentSection = 'summary';
-      currentBuffer = [line];
-      inEOCSection = true;
-      continue;
-    }
+    // DIRECTIVE-BASED PATTERNS (check first - more reliable, language-agnostic)
 
-    if (EOC_PATTERNS.exercises.test(line)) {
-      flushBuffer();
-      currentSection = 'exercises';
-      currentBuffer = [line];
-      inEOCSection = true;
-      continue;
-    }
-
-    if (EOC_PATTERNS.keyTerms.test(line)) {
-      flushBuffer();
-      currentSection = 'keyTerms';
-      currentBuffer = [line];
-      inEOCSection = true;
-      continue;
-    }
-
-    if (EOC_PATTERNS.keyEquations.test(line)) {
-      flushBuffer();
-      currentSection = 'keyEquations';
-      currentBuffer = [line];
-      inEOCSection = true;
-      continue;
-    }
-
-    // Check for directive-based content
+    // Check for practice-problem directive (belongs to exercises)
     if (EOC_PATTERNS.practiceProblems.test(line)) {
       if (!currentSection) {
         currentSection = 'exercises';
@@ -449,6 +427,7 @@ function extractEOCContent(body) {
       continue;
     }
 
+    // Check for summary directive
     if (EOC_PATTERNS.summaryDirective.test(line)) {
       flushBuffer();
       currentSection = 'summary';
@@ -458,7 +437,18 @@ function extractEOCContent(body) {
       continue;
     }
 
-    if (EOC_PATTERNS.glossaryDirective.test(line)) {
+    // Check for exercises directive
+    if (EOC_PATTERNS.exercisesDirective.test(line)) {
+      flushBuffer();
+      currentSection = 'exercises';
+      currentBuffer = [];
+      directiveDepth++;
+      inEOCSection = true;
+      continue;
+    }
+
+    // Check for glossary/key-terms directive
+    if (EOC_PATTERNS.glossaryDirective.test(line) || EOC_PATTERNS.keyTermsDirective.test(line)) {
       flushBuffer();
       currentSection = 'keyTerms';
       currentBuffer = [];
@@ -467,11 +457,50 @@ function extractEOCContent(body) {
       continue;
     }
 
+    // Check for key-equations directive
     if (EOC_PATTERNS.keyEquationsDirective.test(line)) {
       flushBuffer();
       currentSection = 'keyEquations';
       currentBuffer = [];
       directiveDepth++;
+      inEOCSection = true;
+      continue;
+    }
+
+    // HEADING-BASED PATTERNS (fallback for content without directives)
+
+    // Check for summary heading
+    if (EOC_PATTERNS.keyConceptsSummary.test(line)) {
+      flushBuffer();
+      currentSection = 'summary';
+      currentBuffer = [line];
+      inEOCSection = true;
+      continue;
+    }
+
+    // Check for exercises heading
+    if (EOC_PATTERNS.exercises.test(line)) {
+      flushBuffer();
+      currentSection = 'exercises';
+      currentBuffer = [line];
+      inEOCSection = true;
+      continue;
+    }
+
+    // Check for key-terms heading
+    if (EOC_PATTERNS.keyTerms.test(line)) {
+      flushBuffer();
+      currentSection = 'keyTerms';
+      currentBuffer = [line];
+      inEOCSection = true;
+      continue;
+    }
+
+    // Check for key-equations heading
+    if (EOC_PATTERNS.keyEquations.test(line)) {
+      flushBuffer();
+      currentSection = 'keyEquations';
+      currentBuffer = [line];
       inEOCSection = true;
       continue;
     }
@@ -515,6 +544,16 @@ function extractEOCContent(body) {
   }
 
   function isEOCHeading(line) {
+    // Check directive patterns first
+    if (EOC_PATTERNS.summaryDirective.test(line) ||
+        EOC_PATTERNS.exercisesDirective.test(line) ||
+        EOC_PATTERNS.glossaryDirective.test(line) ||
+        EOC_PATTERNS.keyTermsDirective.test(line) ||
+        EOC_PATTERNS.keyEquationsDirective.test(line) ||
+        EOC_PATTERNS.practiceProblems.test(line)) {
+      return true;
+    }
+    // Then check heading patterns
     return EOC_PATTERNS.keyConceptsSummary.test(line) ||
            EOC_PATTERNS.exercises.test(line) ||
            EOC_PATTERNS.keyTerms.test(line) ||

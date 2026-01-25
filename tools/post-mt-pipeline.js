@@ -43,6 +43,12 @@ const PIPELINE_STEPS = [
     description: 'Reconstruct image markdown from MT-stripped attribute blocks'
   },
   {
+    id: 'figures',
+    name: 'Restore Figures',
+    script: 'restore-figures.js',
+    description: 'Restore correct figure numbers and cross-references from sidecar'
+  },
+  {
     id: 'links',
     name: 'Restore Links',
     script: 'restore-links.js',
@@ -125,11 +131,12 @@ Chains cleanup tools to process translated markdown files after MT output.
 
 Pipeline Steps:
   1. restore-images.js    Reconstruct images from MT-stripped attribute blocks
-  2. restore-links.js     Convert MT-safe link syntax back to standard markdown
-  3. restore-strings.js   Update sidecar with translated titles and summaries
-  4. restore-tables.js    Restore tables from sidecar JSON files
-  5. apply-equations.js   Replace [[EQ:n]] placeholders with LaTeX
-  6. repair-directives.js Add missing ::: closing markers
+  2. restore-figures.js   Restore correct figure numbers and cross-refs from sidecar
+  3. restore-links.js     Convert MT-safe link syntax back to standard markdown
+  4. restore-strings.js   Update sidecar with translated titles and summaries
+  5. restore-tables.js    Restore tables from sidecar JSON files
+  6. apply-equations.js   Replace [[EQ:n]] placeholders with LaTeX
+  7. repair-directives.js Add missing ::: closing markers
 
 Usage:
   node tools/post-mt-pipeline.js <file.is.md> [options]
@@ -144,7 +151,7 @@ Options:
   --batch <directory>    Process all .md files in directory recursively
   --dry-run              Show changes without writing files
   --verbose, -v          Show detailed processing information
-  --skip <step>          Skip a step (images|links|strings|tables|equations|directives). Can be used multiple times.
+  --skip <step>          Skip a step (images|figures|links|strings|tables|equations|directives). Can be used multiple times.
   --json                 Output results as JSON
   -h, --help             Show this help message
 
@@ -326,6 +333,33 @@ async function processFile(filePath, options) {
       if (verbose) {
         args.push('--verbose');
       }
+    } else if (step.id === 'figures') {
+      // Find figures sidecar in 02-for-mt/ (not in 02-mt-output/)
+      const figuresSidecar = getSidecarPath(filePath, 'figures');
+
+      if (!figuresSidecar) {
+        // No figures file - skip this step (script handles gracefully anyway)
+        result.steps[step.id] = {
+          skipped: true,
+          reason: 'No figures sidecar found'
+        };
+        if (verbose) {
+          console.log(`  [SKIP] ${step.name}: No figures sidecar found`);
+        }
+        continue;
+      }
+
+      args.push(filePath);
+      args.push('--figures', figuresSidecar);
+      if (!dryRun) {
+        args.push('--in-place');
+      }
+      if (dryRun) {
+        args.push('--dry-run');
+      }
+      if (verbose) {
+        args.push('--verbose');
+      }
     } else if (step.id === 'links') {
       args.push(filePath);
       if (!dryRun) {
@@ -404,6 +438,13 @@ async function processFile(filePath, options) {
       const match = toolResult.stderr.match(/Restored (\d+) image/);
       if (match) {
         stepResult.count = parseInt(match[1], 10);
+      }
+    } else if (step.id === 'figures' && toolResult.stderr) {
+      // restore-figures.js outputs to stderr in verbose mode
+      const match = toolResult.stderr.match(/Figures restored: (\d+) cross-refs, (\d+) captions/);
+      if (match) {
+        stepResult.crossRefs = parseInt(match[1], 10);
+        stepResult.captions = parseInt(match[2], 10);
       }
     } else if (step.id === 'links' && toolResult.stderr) {
       // restore-links.js outputs to stderr in verbose mode
@@ -501,6 +542,7 @@ async function processMultipleFiles(files, options) {
     failed: 0,
     steps: {
       images: { total: 0, count: 0 },
+      figures: { total: 0, crossRefs: 0, captions: 0 },
       links: { total: 0, urls: 0, refs: 0, docs: 0 },
       strings: { total: 0, count: 0 },
       tables: { total: 0, count: 0 },
@@ -537,6 +579,12 @@ async function processMultipleFiles(files, options) {
     if (fileResult.steps.images && !fileResult.steps.images.skipped) {
       results.steps.images.total++;
       results.steps.images.count += fileResult.steps.images.count || 0;
+    }
+
+    if (fileResult.steps.figures && !fileResult.steps.figures.skipped) {
+      results.steps.figures.total++;
+      results.steps.figures.crossRefs += fileResult.steps.figures.crossRefs || 0;
+      results.steps.figures.captions += fileResult.steps.figures.captions || 0;
     }
 
     if (fileResult.steps.links && !fileResult.steps.links.skipped) {
@@ -639,6 +687,7 @@ async function main() {
     console.log('');
     console.log('Step Statistics:');
     console.log(`  Images restored: ${results.steps.images.count}`);
+    console.log(`  Figures restored: ${results.steps.figures.crossRefs} cross-refs, ${results.steps.figures.captions} captions`);
     console.log(`  Links restored: ${results.steps.links.urls} URLs, ${results.steps.links.refs} refs, ${results.steps.links.docs} docs`);
     console.log(`  Strings restored: ${results.steps.strings.count}`);
     console.log(`  Tables restored: ${results.steps.tables.count}`);

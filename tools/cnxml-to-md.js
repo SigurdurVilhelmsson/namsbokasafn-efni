@@ -75,6 +75,7 @@ function parseArgs(args) {
     input: null,
     output: null,
     equationsOutput: null,
+    figuresOutput: null,     // Output path for figures sidecar JSON
     verbose: false,
     listModules: false,
     help: false,
@@ -93,6 +94,7 @@ function parseArgs(args) {
     else if (arg === '--list-modules') result.listModules = true;
     else if (arg === '--output' && args[i + 1]) result.output = args[++i];
     else if (arg === '--equations' && args[i + 1]) result.equationsOutput = args[++i];
+    else if (arg === '--figures' && args[i + 1]) result.figuresOutput = args[++i];
     else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
     else if (arg === '--example-start' && args[i + 1]) result.exampleStart = parseInt(args[++i], 10);
     else if (arg === '--figure-start' && args[i + 1]) result.figureStart = parseInt(args[++i], 10);
@@ -119,6 +121,7 @@ Usage:
 Options:
   --output <file>      Output markdown file (default: stdout)
   --equations <file>   Output equations JSON file (default: <output>-equations.json)
+  --figures <file>     Output figures JSON file (default: <output>-figures.json)
   --chapter <num>      Override chapter number for numbering (default: from module lookup)
   --example-start <n>  Starting counter for examples (default: 0)
   --figure-start <n>   Starting counter for figures (default: 0)
@@ -414,6 +417,7 @@ function splitMathParts(content) {
 function extractContent(cnxml, options = {}) {
   const verbose = options.verbose || false;
   const equations = {};
+  const figures = {};  // Figure metadata for sidecar
   let equationCounter = 0;
 
   const titleMatch = cnxml.match(/<title>([^<]+)<\/title>/);
@@ -539,6 +543,13 @@ function extractContent(cnxml, options = {}) {
     lines.push('');
   }
 
+  // Counters for examples, figures, and tables (chapter-based numbering)
+  // Initialize from options to support running counters across modules
+  // Note: Declared here before pre-section processing which may use them
+  let exampleCounter = options.exampleStart || 0;
+  let figureCounter = options.figureStart || 0;
+  let tableCounter = options.tableStart || 0;
+
   // Process top-level content BEFORE sections (or ALL content if no sections exist)
   // This handles introduction modules that have no <section> tags
   const firstSectionIndex = content.search(/<section[^>]*>/);
@@ -604,14 +615,23 @@ function extractContent(cnxml, options = {}) {
         }
       } else if (elem.type === 'figure') {
         // Process figure - extract image, alt text, class, and caption
+        // Note: Pre-section figures also get numbered for consistent cross-references
+        figureCounter++;
         const idMatch = elem.attrs.match(/id="([^"]*)"/);
         const figureId = idMatch ? idMatch[1] : null;
         const classMatch = elem.attrs.match(/class="([^"]*)"/);
         const figureClass = classMatch ? classMatch[1] : '';
+        // Use chapter-based numbering: [chapter].[running_number]
+        const figureNumber = chapter ? `${chapter}.${figureCounter}` : String(figureCounter);
 
         // Extract media element with alt text from media tag
         const mediaMatch = elem.content.match(/<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
         const captionMatch = elem.content.match(/<caption>([\s\S]*?)<\/caption>/);
+
+        // Extract figure metadata for sidecar
+        let imageFile = '';
+        let altText = '';
+        let captionText = '';
 
         // For pre-section figures (like splash images), use MT-safe format
         if (mediaMatch) {
@@ -619,10 +639,10 @@ function extractContent(cnxml, options = {}) {
           const imageSrc = mediaMatch[2];
           // Extract alt text from media attributes
           const altMatch = mediaAttrs.match(/alt="([^"]*)"/);
-          const altText = altMatch ? altMatch[1] : '';
+          altText = altMatch ? altMatch[1] : '';
 
           // Convert relative path to just filename for now
-          const imageFile = imageSrc.split('/').pop();
+          imageFile = imageSrc.split('/').pop();
 
           // Build MT-safe attribute string: {id="..." class="..." alt="..."}
           const attrs = [];
@@ -639,14 +659,26 @@ function extractContent(cnxml, options = {}) {
         }
 
         if (captionMatch) {
-          const captionText = processInlineContent(captionMatch[1]);
-          // Use MT-safe format {id="..."} instead of {#...}
+          captionText = processInlineContent(captionMatch[1]);
+          // Use numbered format with MT-safe ID: *Figure X.X: caption*{id="..."}
           if (figureId) {
-            lines.push('*Figure: ' + captionText + '*{id="' + figureId + '"}');
+            lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{id="' + figureId + '"}');
           } else {
-            lines.push('*Figure: ' + captionText + '*');
+            lines.push('*Figure ' + figureNumber + ': ' + captionText + '*');
           }
           lines.push('');
+        }
+
+        // Store figure metadata in sidecar (keyed by ID or synthetic ID)
+        const figureKey = figureId || `figure-${figureCounter}`;
+        figures[figureKey] = {
+          number: figureNumber,
+          imagePath: imageFile,
+          captionEn: captionText,
+          altText: altText
+        };
+        if (figureClass) {
+          figures[figureKey].class = figureClass;
         }
       } else if (elem.type === 'table') {
         // Process table (inline, same as section tables)
@@ -686,12 +718,6 @@ function extractContent(cnxml, options = {}) {
       }
     }
   }
-
-  // Counters for examples, figures, and tables (chapter-based numbering)
-  // Initialize from options to support running counters across modules
-  let exampleCounter = options.exampleStart || 0;
-  let figureCounter = options.figureStart || 0;
-  let tableCounter = options.tableStart || 0;
 
   // Process sections
   const sectionPattern = /<section[^>]*>([\s\S]*?)<\/section>/g;
@@ -940,6 +966,11 @@ function extractContent(cnxml, options = {}) {
         // Use chapter-based numbering: [chapter].[running_number]
         const figureNumber = chapter ? `${chapter}.${figureCounter}` : String(figureCounter);
 
+        // Extract figure metadata for sidecar
+        let imageFile = '';
+        let altText = '';
+        let captionText = '';
+
         // Extract image with alt text from media element
         const mediaMatch = elem.content.match(/<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
         if (mediaMatch) {
@@ -947,10 +978,10 @@ function extractContent(cnxml, options = {}) {
           const imageSrc = mediaMatch[2];
           // Extract alt text from media attributes
           const altMatch = mediaAttrs.match(/alt="([^"]*)"/);
-          const altText = altMatch ? altMatch[1] : '';
+          altText = altMatch ? altMatch[1] : '';
 
           // Convert relative path to just filename
-          const imageFile = imageSrc.split('/').pop();
+          imageFile = imageSrc.split('/').pop();
 
           // Build MT-safe attribute string: {id="..." class="..." alt="..."}
           const attrs = [];
@@ -967,7 +998,7 @@ function extractContent(cnxml, options = {}) {
         }
 
         if (captionMatch) {
-          const captionText = processInlineContent(captionMatch[1]);
+          captionText = processInlineContent(captionMatch[1]);
           // Use MT-safe format {id="..."} instead of {#...}
           if (figureId) {
             lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{id="' + figureId + '"}');
@@ -975,6 +1006,18 @@ function extractContent(cnxml, options = {}) {
             lines.push('*Figure ' + figureNumber + ': ' + captionText + '*');
           }
           lines.push('');
+        }
+
+        // Store figure metadata in sidecar (keyed by ID or synthetic ID)
+        const figureKey = figureId || `figure-${figureCounter}`;
+        figures[figureKey] = {
+          number: figureNumber,
+          imagePath: imageFile,
+          captionEn: captionText,
+          altText: altText
+        };
+        if (figureClass) {
+          figures[figureKey].class = figureClass;
         }
       } else if (elem.type === 'exercise') {
         const idMatch = elem.attrs.match(/id="([^"]*)"/);
@@ -1062,6 +1105,7 @@ function extractContent(cnxml, options = {}) {
     metadata: docMetadata,
     markdown: lines.join('\n'),
     equations,
+    figures,
     // Final counter values for pipeline coordination
     counters: {
       examples: exampleCounter,
@@ -1328,8 +1372,12 @@ async function main() {
       console.error('Markdown written to: ' + args.output);
 
       // Write equations JSON
-      const equationsPath = args.equationsOutput ||
-        args.output.replace(/\.md$/, '-equations.json');
+      // Strip language suffix from sidecar names for consistency (e.g., 1-1.en.md → 1-1-equations.json)
+      const basePath = args.output
+        .replace(/\.en\.md$/, '')
+        .replace(/\.is\.md$/, '')
+        .replace(/\.md$/, '');
+      const equationsPath = args.equationsOutput || `${basePath}-equations.json`;
       const equationsData = {
         module: data.moduleId,
         section: data.section,
@@ -1340,10 +1388,26 @@ async function main() {
       fs.writeFileSync(equationsPath, JSON.stringify(equationsData, null, 2));
       console.error('Equations written to: ' + equationsPath);
       console.error('Total equations: ' + Object.keys(data.equations).length);
+
+      // Write figures JSON
+      const figuresPath = args.figuresOutput || `${basePath}-figures.json`;
+      const figuresData = {
+        module: data.moduleId,
+        section: data.section,
+        chapter: data.chapter,
+        title: data.documentTitle,
+        figures: data.figures,
+        counters: { figures: data.counters.figures }
+      };
+      fs.writeFileSync(figuresPath, JSON.stringify(figuresData, null, 2));
+      console.error('Figures written to: ' + figuresPath);
+      console.error('Total figures: ' + Object.keys(data.figures).length);
     } else {
       console.log(data.markdown);
       console.error('\n--- Equations (not saved - use --output to save) ---');
       console.error(JSON.stringify(data.equations, null, 2));
+      console.error('\n--- Figures (not saved - use --output to save) ---');
+      console.error(JSON.stringify(data.figures, null, 2));
     }
 
     // Output final counter values for pipeline coordination
