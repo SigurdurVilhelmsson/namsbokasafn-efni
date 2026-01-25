@@ -3,7 +3,7 @@ title: Æfingar
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-25T13:11:19.534Z"
+published-at: "2026-01-25T14:31:01.235Z"
 type: exercises
 ---
 
@@ -174,8 +174,6 @@ joðatóm
 
 :::
 
-### 1.3 Eðlis- og efnaeiginleikar
-
 :::exercise{#fs-idp134896512 number=17}
 Flokkaðu eftirfarandi sem
 frumefni, efnasamband eða efnablöndu:
@@ -268,8 +266,6 @@ hitunina?
 
 :::
 
-### 1.4 Mælingar
-
 :::exercise{#fs-idp17769472 number=25}
 Ger breytir glúkósa í etanól og
 koldíoxíð við loftfirrta gerjun eins og sýnt er í einföldu efnajöfnunni
@@ -277,6 +273,8 @@ hér: ${\text{glucose}\,\longrightarrow \,\text{ethanol}+\text{carbon dioxide}}$
 
 \(a\) Ef 200,0 g af glúkósa breytast að fullu, hver verður heildarmassi
 etanóls og koldíoxíðs sem myndast?
+
+:::
 
 \(b\) Ef gerjunin fer fram í opnu íláti, myndir þú búast við að massi
 ílátsins og innihaldsins eftir gerjun væri minni en, meiri en eða sá
@@ -286,6 +284,8 @@ sami og massi ílátsins og innihaldsins fyrir gerjun? Útskýrðu.
 myndast?
 
 :::
+
+### 1.3 Eðlis- og efnaeiginleikar
 
 :::exercise{#fs-idp14236032 number=26}
 Flokkaðu sex undirstrikuðu
@@ -379,7 +379,7 @@ $${\text{density}=\,\frac{{\text{mass}}}{{\text{volume}}}\,\text{d}=\,\frac{\tex
 
 :::
 
-### 1.5 Óvissa í mælingum, hittni og nákvæmni
+### 1.4 Mælingar
 
 :::exercise{#fs-idm230641408 number=34}
 Er einn lítri um það bil ein unsa,
@@ -474,6 +474,8 @@ SI-grunneiningum.
 \(h\) T
 
 :::
+
+### 1.5 Óvissa í mælingum, hittni og nákvæmni
 
 :::exercise{#fs-idm239239696 number=40}
 Stór skartgripur hefur massann 132,6 g.
@@ -680,6 +682,8 @@ umbúðum vöru. Ákvarðaðu fjölda markverðra stafa í hverju tilfelli.
 
 \(f\) 1,75% bismút
 
+:::
+
 \(g\) 0,001% fosfórsýra
 
 \(h\) 99,80% óvirk efni
@@ -721,6 +725,8 @@ tveimur markverðum stöfum:
 \(f\) 0,885
 
 :::
+
+### 1.6 Stærðfræðileg meðferð mælinganiðurstaðna
 
 :::exercise{#fs-idp358584288 number=53}
 Framkvæmdu eftirfarandi
@@ -788,8 +794,6 @@ ml, 27,01 ml
 99,9999%
 
 :::
-
-### 1.6 Stærðfræðileg meðferð mælinganiðurstaðna
 
 :::exercise{#fs-idm287695728 number=57}
 Skrifaðu umreikningsstuðla (sem
@@ -1173,5 +1177,7 @@ samsvarandi hitastig á Selsíus- og kelvinkvarða?
 Veðrið í Evrópu var óvenjulega
 hlýtt sumarið 1995. Í sjónvarpsfréttum var greint frá hitastigi allt að
 45 °C. Hvert var hitastigið á Fahrenheit-kvarða?
+
+:::
 
 :::

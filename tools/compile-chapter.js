@@ -739,6 +739,24 @@ function extractAnswersFromExercises(exercisesContent, chapter) {
 }
 
 /**
+ * Add links to section headers in summary content.
+ * Transforms: ### 1.1 Title
+ * Into:       ### [1.1 Title](../1-1)
+ *
+ * The relative path works from /kafli/01/1-summary to /kafli/01/1-1
+ */
+function addLinksToSummaryHeaders(content, chapter) {
+  // Match section headers like "### 1.1 Title" or "### 1.2 Another Title"
+  const headerPattern = /^(###\s*)(\d+)\.(\d+)\s+(.+)$/gm;
+
+  return content.replace(headerPattern, (match, prefix, chNum, secNum, title) => {
+    // Create relative link to section: ../1-1 (relative to summary page)
+    const linkPath = `${chNum}-${secNum}`;
+    return `${prefix}[${chNum}.${secNum} ${title}](${linkPath})`;
+  });
+}
+
+/**
  * Format key-terms content to use markdown definition list syntax.
  * Input format (current):
  *   Term
@@ -908,6 +926,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
   const existingEOCFiles = files.filter(f => f.isEOC);
 
   // Collected EOC content from all sections
+  // Each entry can have { content, sectionNum, sectionTitle } for tracking source
   const collectedEOC = {
     summary: [],
     exercises: [],
@@ -915,6 +934,9 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
     keyTerms: [],
     keyEquations: []
   };
+
+  // Track section titles for linking (populated during processing)
+  const sectionTitles = new Map(); // sectionNum -> title
 
   // Process regular section files
   console.log('Processing section files...');
@@ -925,10 +947,32 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
 
     const result = processSectionFile(file.path, options);
 
-    // Collect extracted EOC content
+    // Track section title for linking
+    const sectionTitle = getSectionTitle(
+      result.frontmatter,
+      result.cleanContent,
+      { isIntro: file.isIntro, sectionNum: file.sectionNum },
+      file.filename
+    );
+    if (!file.isIntro && file.sectionNum > 0) {
+      sectionTitles.set(file.sectionNum, sectionTitle);
+    }
+
+    // Collect extracted EOC content with source section info
     for (const [type, content] of Object.entries(result.extractedContent)) {
       if (content.length > 0) {
-        collectedEOC[type].push(...content);
+        // For exercises and summary, track source section
+        if (type === 'exercises' || type === 'summary') {
+          for (const block of content) {
+            collectedEOC[type].push({
+              content: block,
+              sectionNum: file.sectionNum,
+              sectionTitle: sectionTitle
+            });
+          }
+        } else {
+          collectedEOC[type].push(...content);
+        }
         if (verbose) {
           console.log(`    Extracted ${type}: ${content.length} block(s)`);
         }
@@ -943,14 +987,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
       outputFilename = `${chapter}-${file.sectionNum}.md`;
     }
 
-    // Get title with fallbacks
-    const sectionTitle = getSectionTitle(
-      result.frontmatter,
-      result.cleanContent,
-      { isIntro: file.isIntro, sectionNum: file.sectionNum },
-      file.filename
-    );
-
+    // sectionTitle was already computed above for tracking
     const frontmatter = generateFrontmatter({
       title: sectionTitle,
       chapter: chapter,
@@ -979,8 +1016,48 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
   // This must happen AFTER all exercises are collected but BEFORE writing
   if (collectedEOC.exercises.length > 0) {
     console.log('\nExtracting answers from exercises...');
-    const { cleanExercises, answerKey } = extractAnswersFromExercises(collectedEOC.exercises, chapter);
-    collectedEOC.exercises = cleanExercises;
+    // Extract just the content strings for processing, keeping section info
+    const exerciseBlocks = collectedEOC.exercises.map(e =>
+      typeof e === 'string' ? e : e.content
+    );
+    const { cleanExercises, answerKey } = extractAnswersFromExercises(exerciseBlocks, chapter);
+
+    // Rebuild exercises with section info and section headers
+    const exercisesWithSections = [];
+    let exerciseIndex = 0;
+    let currentSection = null;
+
+    for (const original of collectedEOC.exercises) {
+      const sectionNum = typeof original === 'string' ? null : original.sectionNum;
+      const sectionTitle = typeof original === 'string' ? null : original.sectionTitle;
+
+      // Count exercises in this block
+      const blockContent = typeof original === 'string' ? original : original.content;
+      const exerciseCount = (blockContent.match(/:::(?:practice-problem|exercise)\{/g) || []).length;
+
+      // Add section header if section changed and we have section info
+      if (sectionNum && sectionNum !== currentSection && sectionTitle) {
+        const sectionId = `${chapter}.${sectionNum}`;
+        // Create linked header: ### [1.1 Title](/bookSlug/kafli/01/1-1)
+        // Note: bookSlug will be replaced at render time or we use relative path
+        exercisesWithSections.push(`### ${sectionId} ${sectionTitle}\n`);
+        currentSection = sectionNum;
+      }
+
+      // Add exercises from this block
+      for (let i = 0; i < exerciseCount && exerciseIndex < cleanExercises.length; i++) {
+        exercisesWithSections.push(cleanExercises[exerciseIndex]);
+        exerciseIndex++;
+      }
+    }
+
+    // Add any remaining exercises (shouldn't happen normally)
+    while (exerciseIndex < cleanExercises.length) {
+      exercisesWithSections.push(cleanExercises[exerciseIndex]);
+      exerciseIndex++;
+    }
+
+    collectedEOC.exercises = exercisesWithSections;
     collectedEOC.answerKey = answerKey;
     if (verbose) {
       console.log(`  Extracted ${answerKey.length} answer(s) from ${cleanExercises.length} exercise(s)`);
@@ -1009,7 +1086,35 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
     });
 
     // Combine all content blocks
-    let rawContent = content.join('\n\n');
+    // For summary, extract content from objects and add section headers with links
+    let rawContent;
+    if (type === 'summary') {
+      const summaryParts = [];
+      for (const item of content) {
+        const itemContent = typeof item === 'string' ? item : item.content;
+        const sectionNum = typeof item === 'string' ? null : item.sectionNum;
+        const sectionTitle = typeof item === 'string' ? null : item.sectionTitle;
+
+        // Add section header with link if we have section info
+        if (sectionNum && sectionTitle) {
+          const sectionId = `${chapter}.${sectionNum}`;
+          // Remove any existing "## Lykilhugtök og samantekt" or similar headers
+          const cleanedContent = itemContent
+            .replace(/^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt|Summary)\s*\n*/im, '')
+            .trim();
+          // Add linked section header
+          summaryParts.push(`### [${sectionId} ${sectionTitle}](${chapter}-${sectionNum})\n\n${cleanedContent}`);
+        } else {
+          summaryParts.push(itemContent);
+        }
+      }
+      rawContent = summaryParts.join('\n\n');
+    } else {
+      rawContent = content.join('\n\n');
+    }
+
+    // Clean up extra closing tags (:::) that may appear between exercises
+    rawContent = rawContent.replace(/:::\s*\n\s*:::\s*\n/g, ':::\n\n');
 
     // Special formatting for key-terms: convert to definition list syntax
     if (type === 'keyTerms') {

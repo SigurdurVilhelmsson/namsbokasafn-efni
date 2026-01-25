@@ -3,13 +3,13 @@ title: Samantekt
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-24T20:37:27.751Z"
+published-at: "2026-01-25T14:31:01.234Z"
 type: summary
 ---
 
 ## Samantekt
 
-## Lykilhugtök og samantekt
+### [1.1 Efnafræði í samhengi](1-1)
 
 Efnafræði fjallar um samsetningu, byggingu og eiginleika efnis og
 hvernig ýmsum formum efnis má breyta hvert í annað. Þannig gegnir hún
@@ -20,7 +20,7 @@ hegðun náttúrunnar. Til þess starfa þeir á stórsæja, smásæja og táknr
 sviðinu. Efnafræðingar mæla, greina, hreinsa og búa til margs konar efni
 sem eru mikilvæg fyrir líf okkar.
 
-## Lykilhugtök og samantekt
+### [1.2 Efnishamir og flokkun efnis](1-2)
 
 Efni er allt sem tekur rúm og hefur massa. Grunnbyggingareining efnis er
 atómið, minnsta eining frumefnis sem getur myndað tengi við atóm sama
@@ -38,7 +38,7 @@ verið frumefni, sem samanstendur aðeins af einni tegund atóms og er ekki
 hægt að brjóta niður með efnabreytingu, eða efnasamband, sem
 samanstendur af tveimur eða fleiri tegundum atóma.
 
-## Lykilhugtök og samantekt
+### [1.3 Eðlis- og efnaeiginleikar](1-3)
 
 Öll efni hafa sérstaka eðlis- og efnaeiginleika og geta tekið eðlis- eða
 efnabreytingum. Eðliseiginleikar, svo sem hörku og suðumark, og
@@ -53,7 +53,7 @@ gulls. Óháðir eiginleikar eru ekki háðir magni efnis sem er til staðar,
 til dæmis eðlismassi gulls. Varmi er dæmi um háðan eiginleika og
 hitastig er dæmi um óháðan eiginleika.
 
-## Lykilhugtök og samantekt
+### [1.4 Mælingar](1-4)
 
 Mælingar veita magnbundnar upplýsingar sem eru mikilvægar við nám og
 iðkun efnafræði. Hver mæling hefur stærð, einingu til samanburðar og
@@ -64,7 +64,7 @@ rúmmál) og g/cm^3^ (fyrir eðlismassa). Í mörgum tilfellum er hentugt að
 nota forskeyti sem gefa brot úr einingum og margfeldi þeirra, eins og
 míkrósekúndur (10^−6^ sekúndur) og megarið (10^6^ rið).
 
-## Lykilhugtök og samantekt
+### [1.5 Óvissa í mælingum, hittni og nákvæmni](1-5)
 
 Stærðir geta verið skilgreindar eða mældar. Mældar stærðir hafa
 tilheyrandi óvissu sem er táknuð með fjölda markverðra stafa í tölu
@@ -74,7 +74,7 @@ gildið er námundað. Stærðir eru einkenndar með tilliti til hittni
 (nálægð við satt eða viðurkennt gildi) og nákvæmni (breytileiki milli
 endurtekinna mælinganiðurstaðna).
 
-## Lykilhugtök og samantekt
+### [1.6 Stærðfræðileg meðferð mælinganiðurstaðna](1-6)
 
 Mælingar eru gerðar með ýmsum einingum. Það er oft gagnlegt eða
 nauðsynlegt að breyta mældri stærð úr einni einingu í aðra. Þessar
