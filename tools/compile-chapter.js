@@ -109,6 +109,7 @@ const EOC_PATTERNS = {
 const EOC_FILES = {
   summary: { filename: 'summary', titleIs: 'Samantekt', titleEn: 'Summary' },
   exercises: { filename: 'exercises', titleIs: 'Æfingar', titleEn: 'Exercises' },
+  answerKey: { filename: 'answer-key', titleIs: 'Svarlykill', titleEn: 'Answer Key' },
   keyTerms: { filename: 'key-terms', titleIs: 'Lykilhugtök', titleEn: 'Key Terms' },
   keyEquations: { filename: 'key-equations', titleIs: 'Lykiljöfnur', titleEn: 'Key Equations' }
 };
@@ -571,6 +572,173 @@ function extractEOCContent(body) {
 // ============================================================================
 
 /**
+ * Extract answers from exercises content and return separated exercises and answer-key
+ *
+ * Input format (exercises with inline answers):
+ *   :::practice-problem{#fs-id123}
+ *   Question text...
+ *
+ *   :::answer
+ *   Answer text...
+ *   :::
+ *   :::
+ *
+ * Output (OpenStax style with running numbers):
+ *   exercises: :::exercise{#fs-id123 number=1}
+ *              Question text...
+ *              :::
+ *
+ *   answerKey: :::answer-entry{#fs-id123 number=1}
+ *              Answer text...
+ *              :::
+ *
+ * Odd-numbered exercises have answers, even-numbered typically don't.
+ */
+function extractAnswersFromExercises(exercisesContent, chapter) {
+  const cleanExercises = [];
+  const answerEntries = [];
+  let exerciseNumber = 0;
+
+  // Process each exercise block
+  for (const block of exercisesContent) {
+    const lines = block.split('\n');
+    let currentProblemId = null;
+    let currentExerciseNum = null;
+    let inAnswer = false;
+    let answerDepth = 0;
+    let exerciseLines = [];
+    let answerLines = [];
+    let problemDepth = 0;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+
+      // Check for practice-problem or exercise start (proper directive format)
+      // Also handles :::exercise{#id number=N} from previous compile runs
+      const problemMatch = line.match(/^:::(?:practice-problem|exercise)\{#([^}\s]+)/);
+      if (problemMatch) {
+        // If we had a previous problem, flush it
+        if (currentProblemId && exerciseLines.length > 0) {
+          // Ensure the previous exercise ends with :::
+          if (!exerciseLines[exerciseLines.length - 1].trim().startsWith(':::')) {
+            exerciseLines.push(':::');
+          }
+          cleanExercises.push(exerciseLines.join('\n'));
+          if (answerLines.length > 0) {
+            answerEntries.push({
+              id: currentProblemId,
+              number: currentExerciseNum,
+              content: answerLines.join('\n')
+            });
+          }
+        }
+
+        exerciseNumber++;
+        currentProblemId = problemMatch[1];
+        currentExerciseNum = exerciseNumber;
+        // Use :::exercise directive with number attribute for cleaner rendering
+        exerciseLines = [`:::exercise{#${currentProblemId} number=${exerciseNumber}}`];
+        answerLines = [];
+        inAnswer = false;
+        problemDepth = 1;
+        continue;
+      }
+
+      // Check for malformed æfingadæmi{#id} (missing ::: prefix from MT)
+      const malformedMatch = line.match(/^æfingadæmi\{#([^}]+)\}\s*(.*)/);
+      if (malformedMatch) {
+        // Flush previous problem if any
+        if (currentProblemId && exerciseLines.length > 0) {
+          // Ensure the previous exercise ends with :::
+          if (!exerciseLines[exerciseLines.length - 1].trim().startsWith(':::')) {
+            exerciseLines.push(':::');
+          }
+          cleanExercises.push(exerciseLines.join('\n'));
+          if (answerLines.length > 0) {
+            answerEntries.push({
+              id: currentProblemId,
+              number: currentExerciseNum,
+              content: answerLines.join('\n')
+            });
+          }
+        }
+
+        exerciseNumber++;
+        currentProblemId = malformedMatch[1];
+        currentExerciseNum = exerciseNumber;
+        const restOfLine = malformedMatch[2].trim();
+        exerciseLines = [`:::exercise{#${currentProblemId} number=${exerciseNumber}}`];
+        if (restOfLine) {
+          exerciseLines.push(restOfLine);
+        }
+        answerLines = [];
+        inAnswer = false;
+        problemDepth = 1;
+        continue;
+      }
+
+      // Check for answer/svar start within a problem
+      if (currentProblemId && /^:::(?:answer|svar)\s*$/.test(line)) {
+        inAnswer = true;
+        answerDepth = 1;
+        continue;
+      }
+
+      // Track directive closing
+      if (line.trim() === ':::') {
+        if (inAnswer) {
+          answerDepth--;
+          if (answerDepth <= 0) {
+            inAnswer = false;
+            // Don't add closing ::: to answer, we'll add it when writing
+          }
+        } else if (problemDepth > 0) {
+          problemDepth--;
+          if (problemDepth === 0) {
+            // End of exercise - add closing
+            exerciseLines.push(':::');
+          }
+        }
+        continue;
+      }
+
+      // Accumulate lines
+      if (inAnswer) {
+        answerLines.push(line);
+      } else if (currentProblemId) {
+        exerciseLines.push(line);
+      }
+    }
+
+    // Flush last problem
+    if (currentProblemId && exerciseLines.length > 0) {
+      // Make sure it ends with :::
+      if (!exerciseLines[exerciseLines.length - 1].trim().startsWith(':::')) {
+        exerciseLines.push(':::');
+      }
+      cleanExercises.push(exerciseLines.join('\n'));
+      if (answerLines.length > 0) {
+        answerEntries.push({
+          id: currentProblemId,
+          number: currentExerciseNum,
+          content: answerLines.join('\n').trim()
+        });
+      }
+    }
+  }
+
+  // Format answer entries as :::answer-entry{#id number=N} directives
+  const formattedAnswers = answerEntries.map(entry => {
+    return `:::answer-entry{#${entry.id} number=${entry.number}}\n${entry.content}\n:::`;
+  });
+
+  return {
+    cleanExercises,
+    answerKey: formattedAnswers
+  };
+}
+
+/**
  * Format key-terms content to use markdown definition list syntax.
  * Input format (current):
  *   Term
@@ -743,6 +911,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
   const collectedEOC = {
     summary: [],
     exercises: [],
+    answerKey: [],
     keyTerms: [],
     keyEquations: []
   };
@@ -806,11 +975,23 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
     }
   }
 
+  // Extract answers from exercises into separate answer-key
+  // This must happen AFTER all exercises are collected but BEFORE writing
+  if (collectedEOC.exercises.length > 0) {
+    console.log('\nExtracting answers from exercises...');
+    const { cleanExercises, answerKey } = extractAnswersFromExercises(collectedEOC.exercises, chapter);
+    collectedEOC.exercises = cleanExercises;
+    collectedEOC.answerKey = answerKey;
+    if (verbose) {
+      console.log(`  Extracted ${answerKey.length} answer(s) from ${cleanExercises.length} exercise(s)`);
+    }
+  }
+
   // Write compiled EOC files
   console.log('\nWriting end-of-chapter files...');
   for (const [type, config] of Object.entries(EOC_FILES)) {
     const content = collectedEOC[type];
-    if (content.length === 0) {
+    if (!content || content.length === 0) {
       if (verbose) {
         console.log(`  Skipping ${config.filename} (no content)`);
       }
@@ -824,7 +1005,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
       title: title,
       chapter: chapter,
       track: track,
-      type: type
+      type: type === 'answerKey' ? 'answer-key' : type
     });
 
     // Combine all content blocks
@@ -855,6 +1036,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
   console.log(`  Existing EOC files: ${existingEOCFiles.length}`);
   console.log(`  Summary blocks: ${collectedEOC.summary.length}`);
   console.log(`  Exercise blocks: ${collectedEOC.exercises.length}`);
+  console.log(`  Answer entries: ${collectedEOC.answerKey.length}`);
   console.log(`  Key Terms blocks: ${collectedEOC.keyTerms.length}`);
   console.log(`  Key Equations blocks: ${collectedEOC.keyEquations.length}`);
 
@@ -865,6 +1047,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
       existingEOCFiles: existingEOCFiles.length,
       summary: collectedEOC.summary.length,
       exercises: collectedEOC.exercises.length,
+      answerKey: collectedEOC.answerKey.length,
       keyTerms: collectedEOC.keyTerms.length,
       keyEquations: collectedEOC.keyEquations.length
     }
