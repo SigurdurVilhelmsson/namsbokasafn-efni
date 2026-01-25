@@ -21,6 +21,7 @@ const notifications = require('../services/notifications');
 const activityLog = require('../services/activityLog');
 const bookRegistration = require('../services/bookRegistration');
 const notesStore = require('../services/notesStore');
+const presenceStore = require('../services/presenceStore');
 const { requireAuth } = require('../middleware/requireAuth');
 const { requireRole, ROLES } = require('../middleware/requireRole');
 
@@ -861,6 +862,119 @@ router.post('/:book/:chapter/:section/notes/pin', requireAuth, validateParams, v
     console.error('Error toggling pin:', err);
     res.status(500).json({
       error: 'Failed to toggle pin',
+      message: err.message
+    });
+  }
+});
+
+// ============================================================================
+// PRESENCE ROUTES
+// ============================================================================
+
+/**
+ * POST /api/editor/:book/:chapter/:section/presence
+ * Register/update presence for a section
+ */
+router.post('/:book/:chapter/:section/presence', requireAuth, validateParams, validateSection, (req, res) => {
+  const { book, chapter, section } = req.params;
+
+  try {
+    // Set presence for this user
+    presenceStore.setPresence(book, chapter, section, req.user);
+
+    // Get other users currently on this section
+    const others = presenceStore.getPresence(book, chapter, section, req.user.id);
+
+    res.json({
+      success: true,
+      presence: {
+        book,
+        chapter,
+        section,
+        others,
+        lastUpdated: new Date().toISOString()
+      }
+    });
+  } catch (err) {
+    console.error('Error setting presence:', err);
+    res.status(500).json({
+      error: 'Failed to set presence',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * DELETE /api/editor/:book/:chapter/:section/presence
+ * Remove presence for a section (when leaving)
+ */
+router.delete('/:book/:chapter/:section/presence', requireAuth, validateParams, validateSection, (req, res) => {
+  const { book, chapter, section } = req.params;
+  const userId = String(req.user.id);
+
+  try {
+    const removed = presenceStore.removePresence(book, chapter, section, userId);
+
+    res.json({
+      success: true,
+      removed,
+      book,
+      chapter,
+      section
+    });
+  } catch (err) {
+    console.error('Error removing presence:', err);
+    res.status(500).json({
+      error: 'Failed to remove presence',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/editor/:book/:chapter/:section/presence
+ * Get current presence for a section
+ */
+router.get('/:book/:chapter/:section/presence', requireAuth, validateParams, validateSection, (req, res) => {
+  const { book, chapter, section } = req.params;
+
+  try {
+    const others = presenceStore.getPresence(book, chapter, section, req.user.id);
+
+    res.json({
+      book,
+      chapter,
+      section,
+      others,
+      count: others.length
+    });
+  } catch (err) {
+    console.error('Error getting presence:', err);
+    res.status(500).json({
+      error: 'Failed to get presence',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * DELETE /api/editor/presence/me
+ * Clear all presence for current user (logout/disconnect)
+ */
+router.delete('/presence/me', requireAuth, (req, res) => {
+  const userId = String(req.user.id);
+
+  try {
+    const cleared = presenceStore.clearUserPresence(userId);
+
+    res.json({
+      success: true,
+      cleared
+    });
+  } catch (err) {
+    console.error('Error clearing presence:', err);
+    res.status(500).json({
+      error: 'Failed to clear presence',
       message: err.message
     });
   }

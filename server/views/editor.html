@@ -93,6 +93,10 @@
             <span class="spell-check-status" id="spell-check-status">✓</span>
           </button>
           <span class="save-status" id="save-status"></span>
+          <div class="presence-indicator" id="presence-indicator" style="display: none;">
+            <div class="presence-avatars" id="presence-avatars"></div>
+            <span class="presence-text" id="presence-text"></span>
+          </div>
           <button class="btn btn-secondary" id="save-btn">
             <i class="fas fa-save"></i> Vista
           </button>
@@ -1597,6 +1601,9 @@
 
       // Load personal note indicator
       loadNoteIndicator();
+
+      // Start presence tracking
+      startPresenceTracking();
     }
 
     async function loadNoteIndicator() {
@@ -1614,6 +1621,132 @@
         console.error('Error loading note indicator:', err);
       }
     }
+
+    // ========================================
+    // PRESENCE TRACKING
+    // ========================================
+
+    let presenceInterval = null;
+    const PRESENCE_POLL_INTERVAL = 30000; // 30 seconds
+
+    async function registerPresence() {
+      if (!currentBook || !currentChapter || !currentSection) return;
+
+      try {
+        const res = await fetch(`/api/editor/${currentBook}/${currentChapter}/${currentSection}/presence`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          updatePresenceIndicator(data.presence.others);
+        }
+      } catch (err) {
+        console.error('Error registering presence:', err);
+      }
+    }
+
+    async function clearPresence() {
+      if (!currentBook || !currentChapter || !currentSection) return;
+
+      try {
+        await fetch(`/api/editor/${currentBook}/${currentChapter}/${currentSection}/presence`, {
+          method: 'DELETE'
+        });
+      } catch (err) {
+        console.error('Error clearing presence:', err);
+      }
+    }
+
+    function startPresenceTracking() {
+      // Register immediately
+      registerPresence();
+
+      // Clear any existing interval
+      if (presenceInterval) {
+        clearInterval(presenceInterval);
+      }
+
+      // Poll periodically
+      presenceInterval = setInterval(registerPresence, PRESENCE_POLL_INTERVAL);
+    }
+
+    function stopPresenceTracking() {
+      if (presenceInterval) {
+        clearInterval(presenceInterval);
+        presenceInterval = null;
+      }
+      clearPresence();
+      hidePresenceIndicator();
+    }
+
+    function updatePresenceIndicator(others) {
+      const indicator = document.getElementById('presence-indicator');
+      const avatarsEl = document.getElementById('presence-avatars');
+      const textEl = document.getElementById('presence-text');
+
+      if (!others || others.length === 0) {
+        indicator.style.display = 'none';
+        return;
+      }
+
+      // Show indicator
+      indicator.style.display = 'flex';
+
+      // Render avatars (max 3)
+      const displayOthers = others.slice(0, 3);
+      avatarsEl.innerHTML = displayOthers.map(user => {
+        if (user.avatar) {
+          return `<img src="${escapeHtml(user.avatar)}" alt="${escapeHtml(user.username)}" title="${escapeHtml(user.username)}" class="presence-avatar">`;
+        } else {
+          const initial = (user.username || '?').charAt(0).toUpperCase();
+          return `<div class="presence-avatar presence-avatar-placeholder" title="${escapeHtml(user.username)}">${initial}</div>`;
+        }
+      }).join('');
+
+      // Show additional count if more than 3
+      if (others.length > 3) {
+        avatarsEl.innerHTML += `<div class="presence-avatar presence-avatar-more">+${others.length - 3}</div>`;
+      }
+
+      // Text
+      if (others.length === 1) {
+        textEl.textContent = `${others[0].username} er að breyta`;
+      } else {
+        textEl.textContent = `${others.length} aðrir eru að breyta`;
+      }
+    }
+
+    function hidePresenceIndicator() {
+      const indicator = document.getElementById('presence-indicator');
+      indicator.style.display = 'none';
+    }
+
+    // Clear presence when leaving page
+    window.addEventListener('beforeunload', () => {
+      // Use sendBeacon for reliable unload tracking
+      if (currentBook && currentChapter && currentSection && navigator.sendBeacon) {
+        navigator.sendBeacon(`/api/editor/${currentBook}/${currentChapter}/${currentSection}/presence?_method=DELETE`);
+      }
+    });
+
+    // Handle visibility change (user switches tabs)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        // User left - stop polling but don't clear presence yet
+        if (presenceInterval) {
+          clearInterval(presenceInterval);
+          presenceInterval = null;
+        }
+      } else {
+        // User returned - resume tracking
+        if (currentBook && currentChapter && currentSection && editor) {
+          startPresenceTracking();
+        }
+      }
+    });
 
     async function autoSave() {
       const content = editor.value();
@@ -2022,6 +2155,9 @@
       const url = new URL(window.location);
       url.searchParams.delete('section');
       window.history.pushState({}, '', url);
+
+      // Stop presence tracking
+      stopPresenceTracking();
 
       // Destroy editor
       if (editor) {
@@ -4631,6 +4767,55 @@
     .editor-title h2 { font-size: 1.125rem; font-weight: 600; }
     .editor-actions { display: flex; align-items: center; gap: 0.75rem; }
     .save-status { font-size: 0.75rem; color: var(--gray-500); }
+
+    /* Presence Indicator */
+    .presence-indicator {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      background: var(--warning-light);
+      border: 1px solid #fcd34d;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      color: #92400e;
+    }
+    .presence-avatars {
+      display: flex;
+      align-items: center;
+    }
+    .presence-avatar {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-left: -0.375rem;
+      object-fit: cover;
+    }
+    .presence-avatar:first-child {
+      margin-left: 0;
+    }
+    .presence-avatar-placeholder {
+      background: var(--primary);
+      color: white;
+      font-size: 0.625rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .presence-avatar-more {
+      background: var(--gray-300);
+      color: var(--gray-700);
+      font-size: 0.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .presence-text {
+      white-space: nowrap;
+    }
 
     /* Spell Check Toggle */
     .spell-check-toggle {
