@@ -74,6 +74,18 @@
             <i class="fas fa-arrow-left"></i> Til baka
           </button>
           <h2 id="section-title">Kafli</h2>
+          <div class="split-indicator" id="split-indicator" style="display: none;">
+            <span class="split-badge" id="split-badge"></span>
+            <button class="split-nav-btn" id="split-prev" title="Fyrri hluti">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="split-nav-btn" id="split-next" title="Næsti hluti">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="split-info-btn" id="split-info-btn" title="Upplýsingar um skiptingu">
+              <i class="fas fa-info-circle"></i>
+            </button>
+          </div>
         </div>
         <div class="editor-actions">
           <span class="save-status" id="save-status"></span>
@@ -652,6 +664,27 @@
     </div>
   </div>
 
+  <!-- Split Info Modal -->
+  <div class="split-info-modal" id="split-info-modal">
+    <div class="split-info-content">
+      <h3><i class="fas fa-cut"></i> Skipt skrá</h3>
+      <div class="split-explanation">
+        <strong>Af hverju er þessi hluti skipt?</strong><br>
+        Þegar kafli er mjög langur (yfir 18.000 stafir) er hann sjálfkrafa skipt í smærri hluta
+        fyrir vélþýðingu. Þetta tryggir betri gæði vélþýðingar og auðveldari yfirferð.<br><br>
+        <strong>Þú þarft að yfirfara hvern hluta fyrir sig.</strong> Notaðu örvatakkana til að flakka
+        á milli hluta eða smelltu á hluta hér að neðan.
+      </div>
+      <h4>Hlutar í þessari skiptingu:</h4>
+      <ul class="split-parts-list" id="split-parts-list">
+        <!-- Populated dynamically -->
+      </ul>
+      <div style="text-align: right; margin-top: 1rem;">
+        <button class="btn btn-primary" onclick="closeSplitInfoModal()">Loka</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Keyboard Help Modal -->
   <div class="modal" id="keyboard-help-modal" style="display: none;">
     <div class="modal-content">
@@ -779,6 +812,7 @@
       if (e.key === 'Escape') {
         document.getElementById('more-menu').style.display = 'none';
         document.getElementById('keyboard-help-modal').style.display = 'none';
+        document.getElementById('split-info-modal').style.display = 'none';
       }
 
       // Ctrl+E toggles source view
@@ -949,8 +983,18 @@
         container.innerHTML = data.sections.map(s => {
           const statusClass = s.source === 'faithful' ? 'status-edited' : 'status-mt';
           const statusLabel = s.source === 'faithful' ? 'Breytt' : 'MT úttak';
+
+          // Add split indicator if this is a split section
+          let splitBadge = '';
+          if (s.splitInfo) {
+            splitBadge = '<span class="split-badge-small" title="Skipt skrá: hluti ' +
+              s.splitInfo.partNumber + ' af ' + s.splitInfo.totalParts + '">' +
+              '<i class="fas fa-cut"></i> ' + s.splitInfo.partNumber + '/' + s.splitInfo.totalParts +
+              '</span>';
+          }
+
           return '<div class="section-item" data-section="' + s.section + '">' +
-            '<span class="section-name">' + s.section + '</span>' +
+            '<span class="section-name">' + s.section + splitBadge + '</span>' +
             '<span class="section-status ' + statusClass + '">' + statusLabel + '</span>' +
             '<button class="btn btn-primary btn-small" onclick="loadEditor(\'' + book + '\', \'' + chapter + '\', \'' + s.section + '\')">Opna</button>' +
             '</div>';
@@ -1029,6 +1073,9 @@
 
         // Load chapter issues
         setTimeout(loadChapterIssues, 1200);
+
+        // Update split indicator if this is a split file
+        updateSplitIndicator(data.splitInfo);
 
       } catch (err) {
         alert('Villa við að hlaða kafla: ' + err.message);
@@ -1647,6 +1694,108 @@
       feedbackDismissed = true;
       document.getElementById('feedback-alert').style.display = 'none';
     }
+
+    // ========================================
+    // SPLIT FILE INDICATOR
+    // ========================================
+
+    let currentSplitInfo = null;
+
+    /**
+     * Update the split indicator based on API response
+     * @param {object|null} splitInfo - Split info from API
+     */
+    function updateSplitIndicator(splitInfo) {
+      const indicator = document.getElementById('split-indicator');
+      currentSplitInfo = splitInfo;
+
+      if (!splitInfo) {
+        indicator.style.display = 'none';
+        return;
+      }
+
+      // Show the indicator
+      indicator.style.display = 'flex';
+
+      // Update badge text
+      const badge = document.getElementById('split-badge');
+      badge.textContent = `Hluti ${splitInfo.partNumber} af ${splitInfo.totalParts}`;
+
+      // Update navigation buttons
+      const prevBtn = document.getElementById('split-prev');
+      const nextBtn = document.getElementById('split-next');
+
+      // Find current part index
+      const currentIdx = splitInfo.parts.findIndex(p => p.section === currentSection);
+
+      // Enable/disable prev button
+      if (currentIdx > 0) {
+        prevBtn.disabled = false;
+        prevBtn.onclick = () => {
+          const prevPart = splitInfo.parts[currentIdx - 1];
+          loadEditor(currentBook, currentChapter, prevPart.section);
+        };
+      } else {
+        prevBtn.disabled = true;
+        prevBtn.onclick = null;
+      }
+
+      // Enable/disable next button
+      if (currentIdx < splitInfo.parts.length - 1) {
+        nextBtn.disabled = false;
+        nextBtn.onclick = () => {
+          const nextPart = splitInfo.parts[currentIdx + 1];
+          loadEditor(currentBook, currentChapter, nextPart.section);
+        };
+      } else {
+        nextBtn.disabled = true;
+        nextBtn.onclick = null;
+      }
+
+      // Update info button
+      document.getElementById('split-info-btn').onclick = showSplitInfoModal;
+    }
+
+    /**
+     * Show the split info modal with explanation
+     */
+    function showSplitInfoModal() {
+      if (!currentSplitInfo) return;
+
+      const list = document.getElementById('split-parts-list');
+      list.innerHTML = currentSplitInfo.parts.map(part => {
+        const isCurrent = part.section === currentSection;
+        const statusLabel = part.source === 'faithful' ? 'Breytt' : 'MT úttak';
+        const statusClass = part.source === 'faithful' ? 'faithful' : 'mt-output';
+
+        return `
+          <li class="${isCurrent ? 'current' : ''}">
+            <span class="part-name">
+              <i class="fas ${isCurrent ? 'fa-edit' : 'fa-file-alt'}"></i>
+              ${part.section} (hluti ${part.partNumber})
+            </span>
+            <span class="part-status ${statusClass}">${statusLabel}</span>
+            ${!isCurrent ? `<button class="btn btn-secondary btn-small" onclick="loadEditor('${currentBook}', '${currentChapter}', '${part.section}'); closeSplitInfoModal();">Opna</button>` : ''}
+          </li>
+        `;
+      }).join('');
+
+      document.getElementById('split-info-modal').style.display = 'flex';
+    }
+
+    /**
+     * Close the split info modal
+     */
+    function closeSplitInfoModal() {
+      document.getElementById('split-info-modal').style.display = 'none';
+    }
+
+    // Close modal on click outside
+    document.getElementById('split-info-modal')?.addEventListener('click', (e) => {
+      if (e.target.id === 'split-info-modal') {
+        closeSplitInfoModal();
+      }
+    });
 
     // ========================================
     // GUIDANCE PANEL
@@ -3659,17 +3808,144 @@
     .sections-list { margin-top: 1.5rem; }
     .sections-list h3 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.75rem; }
     .section-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--gray-50); border-radius: 0.375rem; margin-bottom: 0.5rem; }
-    .section-name { font-family: monospace; font-weight: 500; min-width: 80px; }
+    .section-name { font-family: monospace; font-weight: 500; min-width: 80px; display: flex; align-items: center; gap: 0.5rem; }
     .section-status { font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 9999px; }
     .status-edited { background: #dcfce7; color: #166534; }
     .status-mt { background: #dbeafe; color: #1e40af; }
     .section-item .btn { margin-left: auto; }
+    .split-badge-small {
+      font-size: 0.625rem;
+      padding: 0.125rem 0.375rem;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #f59e0b;
+      border-radius: 0.25rem;
+      white-space: nowrap;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .split-badge-small i { font-size: 0.5rem; }
 
     .editor-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding: 0.75rem 1rem; background: white; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     .editor-title { display: flex; align-items: center; gap: 1rem; }
     .editor-title h2 { font-size: 1.125rem; font-weight: 600; }
     .editor-actions { display: flex; align-items: center; gap: 0.75rem; }
     .save-status { font-size: 0.75rem; color: var(--gray-500); }
+
+    /* Split File Indicator */
+    .split-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-radius: 0.375rem;
+      border: 1px solid #f59e0b;
+      font-size: 0.875rem;
+    }
+    .split-badge {
+      font-weight: 600;
+      color: #92400e;
+      white-space: nowrap;
+    }
+    .split-nav-btn {
+      background: transparent;
+      border: none;
+      padding: 0.25rem 0.5rem;
+      cursor: pointer;
+      color: #92400e;
+      border-radius: 0.25rem;
+      transition: background-color 0.15s;
+    }
+    .split-nav-btn:hover:not(:disabled) {
+      background: rgba(146, 64, 14, 0.1);
+    }
+    .split-nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .split-info-btn {
+      background: transparent;
+      border: none;
+      padding: 0.25rem;
+      cursor: pointer;
+      color: #92400e;
+      border-radius: 0.25rem;
+    }
+    .split-info-btn:hover {
+      background: rgba(146, 64, 14, 0.1);
+    }
+
+    /* Split Info Modal */
+    .split-info-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .split-info-content {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    }
+    .split-info-content h3 {
+      margin: 0 0 1rem;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .split-explanation {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 0.375rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      color: #78350f;
+      line-height: 1.5;
+    }
+    .split-parts-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .split-parts-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+    .split-parts-list li.current {
+      background: #fef3c7;
+      font-weight: 600;
+    }
+    .split-parts-list li .part-name {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .split-parts-list li .part-status {
+      font-size: 0.75rem;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+    }
+    .split-parts-list li .part-status.faithful { background: #dcfce7; color: #166534; }
+    .split-parts-list li .part-status.mt-output { background: #dbeafe; color: #1e40af; }
+    .split-parts-list li button {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
 
     /* Dropdown Menu (More button) */
     .dropdown { position: relative; display: inline-block; }

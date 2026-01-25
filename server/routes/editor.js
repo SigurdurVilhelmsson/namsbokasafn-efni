@@ -114,6 +114,9 @@ router.get('/:book/:chapter/:section', requireAuth, validateParams, validateSect
     // Check for recent feedback (changes requested)
     const recentFeedback = editorHistory.getRecentFeedback(book, chapter, section);
 
+    // Check if this is a split file
+    const splitInfo = editorHistory.getSplitInfo(book, chapter, section);
+
     res.json({
       book,
       chapter,
@@ -131,7 +134,8 @@ router.get('/:book/:chapter/:section', requireAuth, validateParams, validateSect
         submittedBy: pendingReview.submittedByUsername,
         submittedAt: pendingReview.submittedAt
       } : null,
-      recentFeedback: recentFeedback
+      recentFeedback: recentFeedback,
+      splitInfo: splitInfo
     });
   } catch (err) {
     console.error('Error loading section:', err);

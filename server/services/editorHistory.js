@@ -447,6 +447,28 @@ function getCurrentContent(book, chapter, section) {
 }
 
 /**
+ * Parse split file info from section name
+ * Split files follow pattern: {section}({letter}) e.g., "1-1(a)", "1-1(b)"
+ * @param {string} section - Section name
+ * @returns {object|null} Split info or null if not a split file
+ */
+function parseSplitInfo(section) {
+  const match = section.match(/^(.+)\(([a-z])\)$/);
+  if (!match) return null;
+
+  const baseSection = match[1];
+  const partLetter = match[2];
+  const partNumber = partLetter.charCodeAt(0) - 'a'.charCodeAt(0) + 1;
+
+  return {
+    isSplit: true,
+    baseSection,
+    partLetter,
+    partNumber
+  };
+}
+
+/**
  * List all sections available for editing in a chapter
  */
 function listSections(book, chapter) {
@@ -485,17 +507,75 @@ function listSections(book, chapter) {
     }
   }
 
+  // Detect and annotate split files
+  const splitGroups = new Map(); // baseSection -> array of sections
+
+  for (const s of sections) {
+    const splitInfo = parseSplitInfo(s.section);
+    if (splitInfo) {
+      s.splitInfo = splitInfo;
+      const group = splitGroups.get(splitInfo.baseSection) || [];
+      group.push(s);
+      splitGroups.set(splitInfo.baseSection, group);
+    }
+  }
+
+  // Add total parts count to each split section
+  for (const [baseSection, group] of splitGroups) {
+    const totalParts = group.length;
+    for (const s of group) {
+      s.splitInfo.totalParts = totalParts;
+      s.splitInfo.partsInGroup = group.map(g => g.section).sort();
+    }
+  }
+
   return sections.sort((a, b) => {
-    // Sort by section number (e.g., "1-1" < "1-2" < "2-1")
-    const aParts = a.section.split('-').map(Number);
-    const bParts = b.section.split('-').map(Number);
+    // Extract base section and optional split letter
+    const aMatch = a.section.match(/^(.+?)(?:\(([a-z])\))?$/);
+    const bMatch = b.section.match(/^(.+?)(?:\(([a-z])\))?$/);
+    const aBase = aMatch[1];
+    const bBase = bMatch[1];
+    const aLetter = aMatch[2] || '';
+    const bLetter = bMatch[2] || '';
+
+    // Sort by section number first (e.g., "1-1" < "1-2" < "2-1")
+    const aParts = aBase.split('-').map(Number);
+    const bParts = bBase.split('-').map(Number);
     for (let i = 0; i < Math.max(aParts.length, bParts.length); i++) {
       const aVal = aParts[i] || 0;
       const bVal = bParts[i] || 0;
       if (aVal !== bVal) return aVal - bVal;
     }
-    return 0;
+
+    // If same base section, sort by split letter (a < b < c)
+    return aLetter.localeCompare(bLetter);
   });
+}
+
+/**
+ * Get split info for a specific section
+ * Returns info about all parts if this is a split section
+ */
+function getSplitInfo(book, chapter, section) {
+  const splitInfo = parseSplitInfo(section);
+  if (!splitInfo) return null;
+
+  // List all sections to find siblings
+  const sections = listSections(book, chapter);
+  const siblings = sections.filter(s =>
+    s.splitInfo && s.splitInfo.baseSection === splitInfo.baseSection
+  );
+
+  return {
+    ...splitInfo,
+    totalParts: siblings.length,
+    parts: siblings.map(s => ({
+      section: s.section,
+      partNumber: s.splitInfo.partNumber,
+      partLetter: s.splitInfo.partLetter,
+      source: s.source
+    })).sort((a, b) => a.partNumber - b.partNumber)
+  };
 }
 
 /**
@@ -532,6 +612,7 @@ module.exports = {
   getRecentFeedback,
   getCurrentContent,
   listSections,
+  getSplitInfo,
   getFilePath,
   getEnSourcePath,
   PROJECT_ROOT
