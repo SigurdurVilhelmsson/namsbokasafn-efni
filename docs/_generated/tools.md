@@ -31,6 +31,7 @@
 | `protect-for-mt` | Pre-MT protection script that extracts frontmatter and tables before |
 | `repair-directives` | Fix directive syntax issues in markdown |
 | `replace-math-images` | Replace equation images with LaTeX code |
+| `restore-figures` | Post-MT processing script that restores correct figure numbers from sidecar. |
 | `restore-images` | Post-MT processing script that reconstructs image markdown from attribute blocks |
 | `restore-links` | Post-MT processing script that restores markdown links from MT-safe syntax. |
 | `restore-strings` | Post-MT processing script that updates sidecar JSON with translated strings. |
@@ -52,6 +53,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*31 tools total (26 active, 5 deprecated)*
+*32 tools total (27 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
