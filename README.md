@@ -310,6 +310,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/:bookId/chapters/:chapter` |
 | GET | `/:bookId/chapters/:chapter/files` |
 | POST | `/:bookId/chapters/:chapter/files/scan` |
+| POST | `/:bookId/chapters/:chapter/generate` |
 | DELETE | `/:bookId/chapters/:chapter/files` |
 | GET | `/:bookId/files/summary` |
 | GET | `/:slug/download` |
@@ -599,6 +600,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/editor` |
 | GET | `/reviews` |
 | GET | `/status` |
+| GET | `/dashboard` |
 | GET | `/books` |
 | GET | `/terminology` |
 | GET | `/decisions` |
