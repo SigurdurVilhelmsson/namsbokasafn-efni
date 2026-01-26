@@ -254,6 +254,14 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/books` |
 | GET | `/books/:slug` |
 | GET | `/books/:slug/chapters/:chapter` |
+| GET | `/users` |
+| GET | `/users/:id` |
+| POST | `/users` |
+| PUT | `/users/:id` |
+| DELETE | `/users/:id` |
+| POST | `/users/:id/books` |
+| DELETE | `/users/:id/books/:bookSlug` |
+| GET | `/users/roles` |
 | POST | `/migrate` |
 
 ## /analytics
@@ -300,7 +308,12 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/` |
 | GET | `/:bookId` |
 | GET | `/:bookId/chapters/:chapter` |
+| GET | `/:bookId/chapters/:chapter/files` |
+| POST | `/:bookId/chapters/:chapter/files/scan` |
+| DELETE | `/:bookId/chapters/:chapter/files` |
+| GET | `/:bookId/files/summary` |
 | GET | `/:slug/download` |
+| POST | `/:bookId/chapters/:chapter/import` |
 
 ## /deadlines
 
@@ -462,6 +475,7 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | Method | Path |
 |--------|------|
 | POST | `/cnxml` |
+| POST | `/chapter/:chapter` |
 | POST | `/module/:moduleId` |
 | GET | `/jobs/:jobId` |
 | GET | `/jobs` |
@@ -597,6 +611,9 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/analytics` |
 | GET | `/localization-review` |
 | GET | `/feedback` |
+| GET | `/admin` |
+| GET | `/admin/users` |
+| GET | `/admin/books` |
 | GET | `/admin/feedback` |
 | GET | `/for-teachers` |
 
