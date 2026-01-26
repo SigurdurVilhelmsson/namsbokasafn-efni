@@ -5,8 +5,10 @@
  *
  * Endpoints:
  *   POST /api/process/cnxml           Process uploaded CNXML file
+ *   POST /api/process/chapter/:ch     Process entire chapter with running counters
  *   POST /api/process/module/:id      Process module by OpenStax ID
  *   GET  /api/process/jobs/:jobId     Get job status (for async processing)
+ *   GET  /api/process/jobs            List recent jobs
  */
 
 const express = require('express');
@@ -164,6 +166,114 @@ router.post('/cnxml', upload.single('file'), async (req, res) => {
       error: 'Processing failed',
       message: err.message,
       jobId
+    });
+  }
+});
+
+/**
+ * POST /api/process/chapter/:chapter
+ * Process entire chapter using chapter mode with running counters
+ *
+ * URL params:
+ *   - chapter: Chapter number (1-21)
+ *
+ * Body (JSON):
+ *   - book: string (optional, defaults to 'efnafraedi')
+ *   - skipXliff: boolean (optional, defaults to true)
+ */
+router.post('/chapter/:chapter', async (req, res) => {
+  const chapter = parseInt(req.params.chapter, 10);
+
+  // Validate chapter number
+  if (isNaN(chapter) || chapter < 1 || chapter > 21) {
+    return res.status(400).json({
+      error: 'Invalid chapter number',
+      message: 'Chapter must be a number between 1 and 21'
+    });
+  }
+
+  const book = req.body.book || 'efnafraedi';
+  const chapterPadded = String(chapter).padStart(2, '0');
+  const outputDir = path.join(__dirname, '..', '..', 'books', book, '02-for-mt', `ch${chapterPadded}`);
+  const jobId = uuidv4();
+
+  try {
+    // Create job record
+    jobs.set(jobId, {
+      id: jobId,
+      status: 'processing',
+      input: `chapter ${chapter}`,
+      inputType: 'chapter',
+      book,
+      startedAt: new Date().toISOString(),
+      outputDir
+    });
+
+    // Run chapter pipeline
+    const runner = await getPipelineRunner();
+    const results = await runner.runChapterPipeline({
+      chapter,
+      outputDir,
+      skipXliff: req.body.skipXliff !== false, // Default to true
+      verbose: false
+    });
+
+    if (!results.success) {
+      jobs.set(jobId, {
+        ...jobs.get(jobId),
+        status: 'failed',
+        error: results.error || 'Chapter pipeline failed',
+        completedAt: new Date().toISOString()
+      });
+
+      return res.status(500).json({
+        error: 'Chapter pipeline failed',
+        message: results.error || 'Unknown error',
+        jobId,
+        chapter,
+        book
+      });
+    }
+
+    // Update job record
+    jobs.set(jobId, {
+      ...jobs.get(jobId),
+      status: 'completed',
+      outputs: results.outputs,
+      modules: results.modules,
+      completedAt: new Date().toISOString()
+    });
+
+    res.json({
+      success: true,
+      jobId,
+      chapter,
+      book,
+      outputDir,
+      modules: results.modules,
+      outputs: results.outputs.map(o => ({
+        type: o.type,
+        filename: path.basename(o.path),
+        description: o.description
+      }))
+    });
+
+  } catch (err) {
+    console.error('Chapter process error:', err);
+
+    jobs.set(jobId, {
+      ...jobs.get(jobId),
+      status: 'failed',
+      error: err.message,
+      completedAt: new Date().toISOString()
+    });
+
+    res.status(500).json({
+      error: 'Chapter processing failed',
+      message: err.message,
+      jobId,
+      chapter,
+      book
     });
   }
 });
