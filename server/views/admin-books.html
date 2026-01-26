@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bækur - Stjórnandi - Námsbókasafn</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-header h1 i {
+      color: var(--success);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    /* Stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-card .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-card .value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .tab {
+      padding: 0.75rem 1.5rem;
+      background: none;
+      border: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all var(--transition-fast);
+    }
+
+    .tab:hover {
+      color: var(--text-primary);
+    }
+
+    .tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* Book grid */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .book-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      transition: box-shadow var(--transition-fast);
+    }
+
+    .book-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .book-card.registered {
+      border-left: 3px solid var(--success);
+    }
+
+    .book-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .book-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .book-card .subtitle {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .book-card .description {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .book-card .meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .book-card .meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .book-card .actions {
+      display: flex;
+      gap: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Register modal */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .modal-header h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0.25rem;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .breadcrumb {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .breadcrumb a {
+      color: var(--text-muted);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--primary);
+    }
+
+    .breadcrumb span {
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/my-work">Mín verkefni</a>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/status">Stjórnborð</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/terminology">Orðasafn</a>
+      <a href="/decisions">Ákvarðanir</a>
+      <span class="nav-separator admin-only"></span>
+      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" title="Skipta um þema">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <div class="notification-bell" id="notification-bell" title="Tilkynningar" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        <span class="notification-badge" id="notification-count" style="display: none;">0</span>
+      </div>
+      <div class="user-info" id="user-info"></div>
+    </div>
+  </header>
+
+  <main class="container" id="main-content">
+    <div class="loading" id="loading">
+      <p>Hleður...</p>
+    </div>
+
+    <div id="content" style="display: none;">
+      <div class="breadcrumb">
+        <a href="/admin">Stjórnandi</a>
+        <span>/</span>
+        <span>Bækur</span>
+      </div>
+
+      <div class="page-header">
+        <h1><i class="fas fa-book"></i> Bækur</h1>
+        <div class="header-actions">
+          <button class="btn btn-secondary" id="sync-btn">
+            <i class="fas fa-sync-alt"></i> Samstilla
+          </button>
+        </div>
+      </div>
+
+      <div class="stats-row" id="stats-row">
+        <div class="stat-card">
+          <div class="label">Í lista</div>
+          <div class="value" id="stat-total">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Skráðar</div>
+          <div class="value" id="stat-registered">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Óskráðar</div>
+          <div class="value" id="stat-unregistered">-</div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="all">Allar bækur</button>
+        <button class="tab" data-tab="registered">Skráðar</button>
+        <button class="tab" data-tab="unregistered">Óskráðar</button>
+      </div>
+
+      <div class="book-grid" id="book-grid">
+        <div class="empty-state">
+          <i class="fas fa-book-open"></i>
+          <p>Engar bækur fundust</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="access-denied" style="display: none;">
+      <div class="access-denied">
+        <i class="fas fa-lock"></i>
+        <h2>Aðgangur bannaður</h2>
+        <p>Þú hefur ekki heimild til að skoða þessa síðu.</p>
+        <a href="/my-work" class="btn btn-primary mt-4">Til baka</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Register Book Modal -->
+  <div class="modal" id="register-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Skrá bók</h2>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="register-form">
+        <input type="hidden" name="catalogueSlug" id="reg-catalogue-slug">
+
+        <div class="form-group">
+          <label class="form-label">Ensk heiti</label>
+          <input type="text" class="form-input" id="reg-title-en" disabled>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Íslenskt heiti</label>
+          <input type="text" class="form-input" name="titleIs" id="reg-title-is" required placeholder="t.d. Efnafræði">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Slug (stytting)</label>
+          <input type="text" class="form-input" name="slug" id="reg-slug" required placeholder="t.d. efnafraedi" pattern="[a-z0-9-]+">
+          <small class="text-muted">Notað í slóðir, aðeins lágstafir og bandstrik</small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-check">
+            <input type="checkbox" name="fetchFromOpenstax" id="reg-fetch" checked>
+            <span>Sækja kaflaskipan frá OpenStax</span>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Hætta við</button>
+          <button type="submit" class="btn btn-primary">Skrá bók</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/nav.js"></script>
+  <script>
+    const adminRoles = ['admin', 'head-editor'];
+    let catalogueData = [];
+    let currentTab = 'all';
+
+    async function checkAccess() {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+
+        document.getElementById('loading').style.display = 'none';
+
+        if (data.authenticated && adminRoles.includes(data.user.role)) {
+          document.getElementById('content').style.display = 'block';
+          loadCatalogue();
+        } else {
+          document.getElementById('access-denied').style.display = 'block';
+        }
+      } catch (error) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('access-denied').style.display = 'block';
+      }
+    }
+
+    async function loadCatalogue() {
+      try {
+        const res = await fetch('/api/admin/catalogue');
+        const data = await res.json();
+
+        if (!res.ok) {
+          if (res.status === 503) {
+            // Database not ready
+            document.getElementById('book-grid').innerHTML =
+              '<div class="empty-state">' +
+              '<i class="fas fa-database"></i>' +
+              '<p>Gagnagrunnur ekki tilbúinn</p>' +
+              '<button class="btn btn-primary" onclick="runMigration()">Keyra uppsetningu</button>' +
+              '</div>';
+            return;
+          }
+          throw new Error(data.message || 'Failed to load catalogue');
+        }
+
+        catalogueData = data.books;
+        updateStats(data);
+        renderBooks();
+      } catch (e) {
+        console.error('Load catalogue error:', e);
+        document.getElementById('book-grid').innerHTML =
+          '<div class="empty-state">' +
+          '<i class="fas fa-exclamation-triangle"></i>' +
+          '<p>Villa við að hlaða bókum: ' + escapeHtml(e.message) + '</p>' +
+          '</div>';
+      }
+    }
+
+    function updateStats(data) {
+      document.getElementById('stat-total').textContent = data.total || 0;
+      document.getElementById('stat-registered').textContent = data.registered || 0;
+      document.getElementById('stat-unregistered').textContent = (data.total || 0) - (data.registered || 0);
+    }
+
+    function renderBooks() {
+      const grid = document.getElementById('book-grid');
+      let books = catalogueData;
+
+      // Filter by tab
+      if (currentTab === 'registered') {
+        books = books.filter(b => b.registered);
+      } else if (currentTab === 'unregistered') {
+        books = books.filter(b => !b.registered);
+      }
+
+      if (books.length === 0) {
+        grid.innerHTML =
+          '<div class="empty-state">' +
+          '<i class="fas fa-book-open"></i>' +
+          '<p>Engar bækur fundust</p>' +
+          '</div>';
+        return;
+      }
+
+      grid.innerHTML = books.map(book => {
+        const isRegistered = book.registered;
+        const reg = book.registration || {};
+
+        return '<div class="book-card' + (isRegistered ? ' registered' : '') + '">' +
+          '<div class="book-card-header">' +
+          '<div>' +
+          '<h3>' + escapeHtml(book.title) + '</h3>' +
+          (isRegistered && reg.titleIs ? '<div class="subtitle">' + escapeHtml(reg.titleIs) + '</div>' : '') +
+          '</div>' +
+          (isRegistered
+            ? '<span class="badge badge-success">Skráð</span>'
+            : '<span class="badge badge-secondary">Óskráð</span>') +
+          '</div>' +
+          (book.description ? '<p class="description">' + escapeHtml(book.description.substring(0, 150)) + (book.description.length > 150 ? '...' : '') + '</p>' : '') +
+          '<div class="meta">' +
+          '<span><i class="fas fa-code"></i> ' + escapeHtml(book.slug) + '</span>' +
+          (book.chapterCount ? '<span><i class="fas fa-list"></i> ' + book.chapterCount + ' kaflar</span>' : '') +
+          '</div>' +
+          '<div class="actions">' +
+          (isRegistered
+            ? '<a href="/books/' + escapeHtml(reg.slug || book.slug) + '" class="btn btn-secondary btn-small">Skoða</a>'
+            : '<button class="btn btn-primary btn-small" onclick="openRegisterModal(\'' + escapeHtml(book.slug) + '\', \'' + escapeHtml(book.title.replace(/'/g, "\\'")) + '\')">Skrá</button>') +
+          (book.repoUrl ? '<a href="' + escapeHtml(book.repoUrl) + '" target="_blank" class="btn btn-secondary btn-small"><i class="fas fa-external-link-alt"></i></a>' : '') +
+          '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Tab handling
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentTab = tab.dataset.tab;
+        renderBooks();
+      });
+    });
+
+    // Sync button
+    document.getElementById('sync-btn').addEventListener('click', async () => {
+      const btn = document.getElementById('sync-btn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Samstillir...';
+
+      try {
+        const res = await fetch('/api/admin/catalogue/sync', { method: 'POST' });
+        const data = await res.json();
+
+        if (data.success) {
+          alert('Samstilling lokið: ' + data.message);
+          loadCatalogue();
+        } else {
+          alert('Villa: ' + (data.message || data.error));
+        }
+      } catch (e) {
+        alert('Villa: ' + e.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-sync-alt"></i> Samstilla';
+      }
+    });
+
+    // Register modal
+    function openRegisterModal(slug, title) {
+      document.getElementById('reg-catalogue-slug').value = slug;
+      document.getElementById('reg-title-en').value = title;
+      document.getElementById('reg-title-is').value = '';
+      document.getElementById('reg-slug').value = '';
+      document.getElementById('reg-fetch').checked = true;
+      document.getElementById('register-modal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('register-modal').classList.remove('active');
+    }
+
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+
+      const data = {
+        catalogueSlug: form.catalogueSlug.value,
+        slug: form.slug.value,
+        titleIs: form.titleIs.value,
+        fetchFromOpenstax: form.fetchFromOpenstax.checked
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Skráir...';
+
+      try {
+        const res = await fetch('/api/admin/books/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          alert('Bók skráð!');
+          closeModal();
+          loadCatalogue();
+        } else {
+          alert('Villa: ' + (result.message || result.error));
+        }
+      } catch (e) {
+        alert('Villa: ' + e.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Skrá bók';
+      }
+    });
+
+    // Close modal on background click
+    document.getElementById('register-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        closeModal();
+      }
+    });
+
+    async function runMigration() {
+      try {
+        const res = await fetch('/api/admin/migrate', { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          alert('Uppsetning lokið!');
+          loadCatalogue();
+        } else {
+          alert('Villa við uppsetningu');
+        }
+      } catch (e) {
+        alert('Villa: ' + e.message);
+      }
+    }
+
+    // Check access on page load
+    checkAccess();
+  </script>
+</body>
+</html>

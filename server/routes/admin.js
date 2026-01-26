@@ -16,6 +16,8 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireAdmin, requireRole, ROLES } = require('../middleware/requireRole');
 const openstaxCatalogue = require('../services/openstaxCatalogue');
 const bookRegistration = require('../services/bookRegistration');
+const userService = require('../services/userService');
+const https = require('https');
 
 // ============================================================================
 // CATALOGUE MANAGEMENT
@@ -325,6 +327,380 @@ router.get('/books/:slug/chapters/:chapter', requireAuth, requireRole(ROLES.EDIT
 });
 
 // ============================================================================
+// USER MANAGEMENT
+// ============================================================================
+
+/**
+ * GET /api/admin/users
+ * List all users
+ *
+ * Query params:
+ *   - role: Filter by role
+ *   - active: Filter by active status (true/false)
+ *   - limit: Max results (default 100)
+ *   - offset: Pagination offset
+ */
+router.get('/users', requireAuth, requireAdmin(), (req, res) => {
+  try {
+    if (!userService.isUserTableReady()) {
+      return res.status(503).json({
+        error: 'Database not ready',
+        message: 'Run migration 006-user-management first',
+        suggestion: 'POST /api/admin/migrate'
+      });
+    }
+
+    const options = {
+      role: req.query.role,
+      isActive: req.query.active !== undefined ? req.query.active === 'true' : undefined,
+      limit: parseInt(req.query.limit, 10) || 100,
+      offset: parseInt(req.query.offset, 10) || 0
+    };
+
+    const result = userService.listUsers(options);
+
+    res.json({
+      users: result.users.map(formatUser),
+      total: result.total,
+      limit: options.limit,
+      offset: options.offset
+    });
+  } catch (err) {
+    console.error('List users error:', err);
+    res.status(500).json({
+      error: 'Failed to list users',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/admin/users/:id
+ * Get user details
+ */
+router.get('/users/:id', requireAuth, requireAdmin(), (req, res) => {
+  try {
+    const user = userService.findById(parseInt(req.params.id, 10));
+
+    if (!user) {
+      return res.status(404).json({
+        error: 'Not found',
+        message: 'User not found'
+      });
+    }
+
+    res.json(formatUser(user));
+  } catch (err) {
+    console.error('Get user error:', err);
+    res.status(500).json({
+      error: 'Failed to get user',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/admin/users
+ * Add a new user by GitHub username
+ *
+ * Body:
+ *   - githubUsername: GitHub username (required)
+ *   - role: Initial role (default: viewer)
+ */
+router.post('/users', requireAuth, requireAdmin(), async (req, res) => {
+  const { githubUsername, role = 'viewer' } = req.body;
+
+  if (!githubUsername) {
+    return res.status(400).json({
+      error: 'Missing parameters',
+      message: 'githubUsername is required'
+    });
+  }
+
+  try {
+    // Check if user already exists
+    const existing = userService.findByUsername(githubUsername);
+    if (existing) {
+      return res.status(409).json({
+        error: 'Already exists',
+        message: `User ${githubUsername} is already registered`,
+        user: formatUser(existing)
+      });
+    }
+
+    // Fetch user info from GitHub
+    const githubUser = await fetchGitHubUser(githubUsername);
+    if (!githubUser) {
+      return res.status(404).json({
+        error: 'GitHub user not found',
+        message: `Could not find GitHub user: ${githubUsername}`
+      });
+    }
+
+    // Create user
+    const user = userService.createUser({
+      githubId: githubUser.id,
+      githubUsername: githubUser.login,
+      displayName: githubUser.name || githubUser.login,
+      avatarUrl: githubUser.avatar_url,
+      email: githubUser.email,
+      role
+    }, req.user.username);
+
+    res.status(201).json({
+      success: true,
+      message: `User ${githubUsername} added successfully`,
+      user: formatUser(user)
+    });
+  } catch (err) {
+    console.error('Add user error:', err);
+    res.status(500).json({
+      error: 'Failed to add user',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * PUT /api/admin/users/:id
+ * Update user role or status
+ *
+ * Body (all optional):
+ *   - role: New role
+ *   - isActive: Active status
+ *   - displayName: Display name
+ */
+router.put('/users/:id', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const { role, isActive, displayName } = req.body;
+
+  try {
+    const existing = userService.findById(userId);
+    if (!existing) {
+      return res.status(404).json({
+        error: 'Not found',
+        message: 'User not found'
+      });
+    }
+
+    // Prevent demoting self
+    if (existing.github_username === req.user.username && role && role !== 'admin') {
+      return res.status(400).json({
+        error: 'Invalid operation',
+        message: 'You cannot demote yourself'
+      });
+    }
+
+    const updates = {};
+    if (role !== undefined) updates.role = role;
+    if (isActive !== undefined) updates.isActive = isActive;
+    if (displayName !== undefined) updates.displayName = displayName;
+
+    const user = userService.updateUser(userId, updates, req.user.username);
+
+    res.json({
+      success: true,
+      message: 'User updated successfully',
+      user: formatUser(user)
+    });
+  } catch (err) {
+    console.error('Update user error:', err);
+    res.status(500).json({
+      error: 'Failed to update user',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * DELETE /api/admin/users/:id
+ * Deactivate or delete a user
+ *
+ * Query params:
+ *   - hard: If true, permanently delete (default: deactivate)
+ */
+router.delete('/users/:id', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const hardDelete = req.query.hard === 'true';
+
+  try {
+    const existing = userService.findById(userId);
+    if (!existing) {
+      return res.status(404).json({
+        error: 'Not found',
+        message: 'User not found'
+      });
+    }
+
+    // Prevent deleting self
+    if (existing.github_username === req.user.username) {
+      return res.status(400).json({
+        error: 'Invalid operation',
+        message: 'You cannot delete yourself'
+      });
+    }
+
+    if (hardDelete) {
+      userService.deleteUser(userId);
+      res.json({
+        success: true,
+        message: 'User permanently deleted'
+      });
+    } else {
+      userService.deactivateUser(userId);
+      res.json({
+        success: true,
+        message: 'User deactivated'
+      });
+    }
+  } catch (err) {
+    console.error('Delete user error:', err);
+    res.status(500).json({
+      error: 'Failed to delete user',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/admin/users/:id/books
+ * Assign book access to user
+ *
+ * Body:
+ *   - bookSlug: Book slug (required)
+ *   - role: Role for this book (head-editor, editor, contributor)
+ */
+router.post('/users/:id/books', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const { bookSlug, role } = req.body;
+
+  if (!bookSlug || !role) {
+    return res.status(400).json({
+      error: 'Missing parameters',
+      message: 'bookSlug and role are required'
+    });
+  }
+
+  try {
+    const user = userService.assignBookAccess(userId, bookSlug, role, req.user.username);
+
+    res.json({
+      success: true,
+      message: `Assigned ${role} access to ${bookSlug}`,
+      user: formatUser(user)
+    });
+  } catch (err) {
+    console.error('Assign book access error:', err);
+    res.status(500).json({
+      error: 'Failed to assign book access',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * DELETE /api/admin/users/:id/books/:bookSlug
+ * Remove book access from user
+ */
+router.delete('/users/:id/books/:bookSlug', requireAuth, requireAdmin(), (req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const { bookSlug } = req.params;
+
+  try {
+    const user = userService.removeBookAccess(userId, bookSlug);
+
+    res.json({
+      success: true,
+      message: `Removed access to ${bookSlug}`,
+      user: formatUser(user)
+    });
+  } catch (err) {
+    console.error('Remove book access error:', err);
+    res.status(500).json({
+      error: 'Failed to remove book access',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/admin/users/roles
+ * Get available roles and their descriptions
+ */
+router.get('/users/roles', requireAuth, requireAdmin(), (req, res) => {
+  res.json({
+    roles: [
+      { id: 'admin', name: 'Kerfisstjóri', description: 'Full access to all features', level: 5 },
+      { id: 'head-editor', name: 'Aðalritstjóri', description: 'Manage assigned books and reviewers', level: 4 },
+      { id: 'editor', name: 'Ritstjóri', description: 'Review and approve translations', level: 3 },
+      { id: 'contributor', name: 'Þýðandi', description: 'Contribute translations', level: 2 },
+      { id: 'viewer', name: 'Lesandi', description: 'View only access', level: 1 }
+    ]
+  });
+});
+
+/**
+ * Helper: Format user for API response
+ */
+function formatUser(user) {
+  if (!user) return null;
+
+  return {
+    id: user.id,
+    githubId: user.github_id,
+    githubUsername: user.github_username,
+    displayName: user.display_name,
+    avatarUrl: user.avatar_url,
+    email: user.email,
+    role: user.role,
+    isActive: !!user.is_active,
+    bookAccess: user.bookAccess || [],
+    createdAt: user.created_at,
+    updatedAt: user.updated_at,
+    lastLoginAt: user.last_login_at,
+    createdBy: user.created_by
+  };
+}
+
+/**
+ * Helper: Fetch GitHub user info by username
+ */
+function fetchGitHubUser(username) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      hostname: 'api.github.com',
+      path: `/users/${username}`,
+      method: 'GET',
+      headers: {
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'namsbokasafn-pipeline'
+      }
+    };
+
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        if (res.statusCode === 404) {
+          resolve(null);
+        } else if (res.statusCode >= 400) {
+          reject(new Error(`GitHub API error: ${res.statusCode}`));
+        } else {
+          try {
+            resolve(JSON.parse(data));
+          } catch (e) {
+            reject(new Error('Failed to parse GitHub response'));
+          }
+        }
+      });
+    });
+
+    req.on('error', reject);
+    req.end();
+  });
+}
+
+// ============================================================================
 // DATABASE MANAGEMENT
 // ============================================================================
 
@@ -337,7 +713,11 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
     const migrations = [
       require('../migrations/001-add-error-recovery'),
       require('../migrations/002-editor-tables'),
-      require('../migrations/003-book-catalogue')
+      require('../migrations/003-book-catalogue'),
+      require('../migrations/004-terminology'),
+      require('../migrations/005-feedback'),
+      require('../migrations/006-user-management'),
+      require('../migrations/007-chapter-files')
     ];
 
     const results = [];

@@ -21,6 +21,7 @@
 
 const jwt = require('jsonwebtoken');
 const https = require('https');
+const userService = require('./userService');
 
 // Configuration from environment
 const CONFIG = {
@@ -166,14 +167,58 @@ async function isOrgOwner(accessToken, username) {
 }
 
 /**
- * Determine user role based on org membership and teams
+ * Determine user role based on in-app user database
+ * Falls back to GitHub teams if user not in database (legacy mode)
  */
-async function determineUserRole(accessToken, username) {
+async function determineUserRole(accessToken, username, githubUser = null) {
   // Check explicit admin list first (for org owners, useful when API check fails)
   if (CONFIG.adminUsers.includes(username)) {
-    return { role: ROLES.ADMIN, books: [] };
+    return { role: ROLES.ADMIN, books: [], source: 'admin-list' };
   }
 
+  // Check in-app user database first (new system)
+  if (userService.isUserTableReady()) {
+    // Try to find existing user or create from GitHub
+    let dbUser = userService.findByUsername(username);
+
+    if (dbUser) {
+      // Check if user is active
+      if (!dbUser.is_active) {
+        return null; // User deactivated, no access
+      }
+
+      // Get head editor books from book_access table
+      const headEditorBooks = userService.getHeadEditorBooks(dbUser);
+
+      return {
+        role: dbUser.role,
+        books: headEditorBooks,
+        source: 'database',
+        dbUserId: dbUser.id
+      };
+    }
+
+    // User not in database - either auto-create or deny based on config
+    if (githubUser && process.env.AUTO_CREATE_USERS !== 'false') {
+      // Auto-create with viewer role
+      dbUser = userService.upsertFromGitHub(githubUser, { autoCreate: true });
+      if (dbUser) {
+        return {
+          role: dbUser.role,
+          books: [],
+          source: 'database-new',
+          dbUserId: dbUser.id
+        };
+      }
+    }
+
+    // If AUTO_CREATE_USERS=false and user not in database, deny access
+    if (process.env.AUTO_CREATE_USERS === 'false') {
+      return null;
+    }
+  }
+
+  // Fall back to GitHub org/teams (legacy mode)
   // Check if org member first
   const isMember = await checkOrgMembership(accessToken, username);
   if (!isMember) {
@@ -182,7 +227,7 @@ async function determineUserRole(accessToken, username) {
 
   // Check if org owner (admin)
   if (await isOrgOwner(accessToken, username)) {
-    return { role: ROLES.ADMIN, books: [] };
+    return { role: ROLES.ADMIN, books: [], source: 'github-owner' };
   }
 
   // Get teams
@@ -194,21 +239,21 @@ async function determineUserRole(accessToken, username) {
     .map(t => t.replace('book-', '').replace('-head', ''));
 
   if (headEditorBooks.length > 0) {
-    return { role: ROLES.HEAD_EDITOR, books: headEditorBooks };
+    return { role: ROLES.HEAD_EDITOR, books: headEditorBooks, source: 'github-team' };
   }
 
   // Check for editors team
   if (teams.includes('editors')) {
-    return { role: ROLES.EDITOR, books: [] };
+    return { role: ROLES.EDITOR, books: [], source: 'github-team' };
   }
 
   // Check for contributors team
   if (teams.includes('contributors')) {
-    return { role: ROLES.CONTRIBUTOR, books: [] };
+    return { role: ROLES.CONTRIBUTOR, books: [], source: 'github-team' };
   }
 
   // Default: viewer (org member)
-  return { role: ROLES.VIEWER, books: [] };
+  return { role: ROLES.VIEWER, books: [], source: 'github-member' };
 }
 
 /**
@@ -299,11 +344,16 @@ async function authenticate(code) {
   // Get user info
   const githubUser = await getGitHubUser(accessToken);
 
-  // Determine role
-  const roleInfo = await determineUserRole(accessToken, githubUser.login);
+  // Determine role (pass GitHub user for potential auto-creation)
+  const roleInfo = await determineUserRole(accessToken, githubUser.login, githubUser);
 
   if (!roleInfo) {
-    throw new Error('User is not a member of the organization');
+    throw new Error('User is not authorized. Contact an administrator to request access.');
+  }
+
+  // Update last login if using database
+  if (roleInfo.dbUserId) {
+    userService.updateLastLogin(roleInfo.dbUserId);
   }
 
   // Create user object
@@ -315,6 +365,8 @@ async function authenticate(code) {
     avatar: githubUser.avatar_url,
     role: roleInfo.role,
     books: roleInfo.books,
+    roleSource: roleInfo.source, // Track where role came from
+    dbUserId: roleInfo.dbUserId, // Database user ID if applicable
     githubAccessToken: accessToken // Store for API calls
   };
 

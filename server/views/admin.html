@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stjórnandi - Námsbókasafn</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .admin-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .admin-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+    }
+
+    .admin-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .admin-card-icon.users { background: var(--primary-light); color: var(--primary); }
+    .admin-card-icon.books { background: var(--success-light); color: var(--success); }
+    .admin-card-icon.feedback { background: var(--warning-light); color: var(--warning); }
+    .admin-card-icon.reports { background: var(--info-light); color: var(--info); }
+    .admin-card-icon.settings { background: var(--gray-200); color: var(--gray-600); }
+    .admin-card-icon.analytics { background: #fae8ff; color: #a855f7; }
+
+    .admin-card h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .admin-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .admin-card .badge {
+      margin-top: 0.75rem;
+      display: inline-flex;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-header h1 i {
+      color: var(--warning);
+    }
+
+    .section-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+
+    .access-denied {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .access-denied i {
+      font-size: 4rem;
+      color: var(--error);
+      margin-bottom: 1rem;
+    }
+
+    .access-denied h2 {
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .access-denied p {
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/my-work">Mín verkefni</a>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/status">Stjórnborð</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/terminology">Orðasafn</a>
+      <a href="/decisions">Ákvarðanir</a>
+      <span class="nav-separator admin-only"></span>
+      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" title="Skipta um þema">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <div class="notification-bell" id="notification-bell" title="Tilkynningar" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        <span class="notification-badge" id="notification-count" style="display: none;">0</span>
+      </div>
+      <div class="user-info" id="user-info"></div>
+    </div>
+  </header>
+
+  <main class="container" id="main-content">
+    <div class="loading" id="loading">
+      <p>Hleður...</p>
+    </div>
+
+    <div id="admin-content" style="display: none;">
+      <div class="page-header">
+        <h1><i class="fas fa-shield-halved"></i> Stjórnandi</h1>
+      </div>
+
+      <p class="text-muted">Stjórnunarverkfæri fyrir kerfisstjóra og aðalritstjóra.</p>
+
+      <h2 class="section-title">Kerfisstjórnun</h2>
+      <div class="admin-grid">
+        <a href="/admin/users" class="admin-card" id="users-card">
+          <div class="admin-card-icon users">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Notendur</h3>
+          <p>Stjórna notendum, úthluta hlutverkum og aðgangi að bókum.</p>
+        </a>
+
+        <a href="/admin/books" class="admin-card">
+          <div class="admin-card-icon books">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3>Bækur</h3>
+          <p>Skrá nýjar bækur, skoða stöðu þýðinga og kafla.</p>
+        </a>
+
+        <a href="/admin/feedback" class="admin-card">
+          <div class="admin-card-icon feedback">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3>Endurgjöf</h3>
+          <p>Skoða og svara endurgjöf frá notendum og kennurum.</p>
+          <span class="badge" id="feedback-badge" style="display: none;"></span>
+        </a>
+      </div>
+
+      <h2 class="section-title">Skýrslur og tölfræði</h2>
+      <div class="admin-grid">
+        <a href="/reports" class="admin-card">
+          <div class="admin-card-icon reports">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Vikuskýrslur</h3>
+          <p>Framvinduskýrslur fyrir hagsmunaaðila og samstarfsaðila.</p>
+        </a>
+
+        <a href="/analytics" class="admin-card">
+          <div class="admin-card-icon analytics">
+            <i class="fas fa-chart-pie"></i>
+          </div>
+          <h3>Tölfræði</h3>
+          <p>Notkunartölfræði og greining á virkni kerfisins.</p>
+        </a>
+
+        <a href="/assignments" class="admin-card">
+          <div class="admin-card-icon settings">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3>Úthlutanir</h3>
+          <p>Stjórna verkefnaúthlutun og fylgjast með álagi.</p>
+        </a>
+      </div>
+    </div>
+
+    <div id="access-denied" style="display: none;">
+      <div class="access-denied">
+        <i class="fas fa-lock"></i>
+        <h2>Aðgangur bannaður</h2>
+        <p>Þú hefur ekki heimild til að skoða þessa síðu. Hafðu samband við kerfisstjóra ef þú telur þetta vera villu.</p>
+        <a href="/my-work" class="btn btn-primary mt-4">Til baka</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/nav.js"></script>
+  <script>
+    const adminRoles = ['admin', 'head-editor'];
+
+    async function checkAccess() {
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+
+        document.getElementById('loading').style.display = 'none';
+
+        if (data.authenticated && adminRoles.includes(data.user.role)) {
+          document.getElementById('admin-content').style.display = 'block';
+          loadFeedbackCount();
+        } else {
+          document.getElementById('access-denied').style.display = 'block';
+        }
+      } catch (error) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('access-denied').style.display = 'block';
+      }
+    }
+
+    async function loadFeedbackCount() {
+      try {
+        const res = await fetch('/api/feedback/stats');
+        if (res.ok) {
+          const data = await res.json();
+          const pending = data.byStatus?.new || 0;
+          if (pending > 0) {
+            const badge = document.getElementById('feedback-badge');
+            badge.textContent = pending + ' ný';
+            badge.classList.add('badge-warning');
+            badge.style.display = '';
+          }
+        }
+      } catch (e) {
+        // Ignore error - feedback count is optional
+      }
+    }
+
+    // Check access on page load
+    checkAccess();
+  </script>
+</body>
+</html>

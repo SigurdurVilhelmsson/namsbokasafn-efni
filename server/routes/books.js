@@ -10,8 +10,30 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 const archiver = require('archiver');
+const multer = require('multer');
 
-const { requireAuth } = require('../middleware/requireAuth');
+const { requireAuth, optionalAuth } = require('../middleware/requireAuth');
+const { requireRole, ROLES } = require('../middleware/requireRole');
+const chapterFilesService = require('../services/chapterFilesService');
+
+// Configure multer for file uploads
+const uploadDir = path.join(__dirname, '..', '..', 'pipeline-output', 'uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+const upload = multer({
+  dest: uploadDir,
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
+  fileFilter: (req, file, cb) => {
+    // Only accept .md files
+    if (file.originalname.endsWith('.md')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only .md files are allowed'), false);
+    }
+  }
+});
 
 // Load book data
 const dataDir = path.join(__dirname, '..', 'data');
@@ -200,6 +222,127 @@ router.get('/:bookId/chapters/:chapter', (req, res) => {
 });
 
 /**
+ * GET /api/books/:bookId/chapters/:chapter/files
+ * List generated files for a chapter
+ */
+router.get('/:bookId/chapters/:chapter/files', requireAuth, (req, res) => {
+  const { bookId, chapter } = req.params;
+  const chapterNum = parseInt(chapter, 10);
+
+  try {
+    // Get files from database
+    const dbFiles = chapterFilesService.getChapterFiles(bookId, chapterNum);
+
+    // Also get section-level files from disk
+    const sectionFiles = chapterFilesService.getChapterSectionFiles(bookId, chapterNum);
+
+    // Get generation history
+    const history = chapterFilesService.getGenerationHistory(bookId, chapterNum, 5);
+
+    res.json({
+      bookId,
+      chapter: chapterNum,
+      hasRequiredFiles: chapterFilesService.hasRequiredFiles(bookId, chapterNum),
+      files: dbFiles,
+      sections: sectionFiles,
+      recentHistory: history
+    });
+  } catch (err) {
+    console.error('Error listing chapter files:', err);
+    res.status(500).json({
+      error: 'Failed to list chapter files',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/books/:bookId/chapters/:chapter/files/scan
+ * Scan existing files on disk and register them in database
+ */
+router.post('/:bookId/chapters/:chapter/files/scan', requireAuth, (req, res) => {
+  const { bookId, chapter } = req.params;
+  const chapterNum = parseInt(chapter, 10);
+  const userId = req.user?.username || 'system';
+
+  try {
+    const result = chapterFilesService.scanAndRegisterExistingFiles(bookId, chapterNum, userId);
+
+    res.json({
+      success: true,
+      bookId,
+      chapter: chapterNum,
+      ...result
+    });
+  } catch (err) {
+    console.error('Error scanning chapter files:', err);
+    res.status(500).json({
+      error: 'Failed to scan chapter files',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * DELETE /api/books/:bookId/chapters/:chapter/files
+ * Clear generated files for regeneration
+ */
+router.delete('/:bookId/chapters/:chapter/files', requireAuth, (req, res) => {
+  const { bookId, chapter } = req.params;
+  const { deleteFromDisk } = req.query;
+  const chapterNum = parseInt(chapter, 10);
+  const userId = req.user?.username || 'system';
+
+  try {
+    // Mark files as superseded in database
+    const dbCleared = chapterFilesService.clearChapterFiles(bookId, chapterNum, userId);
+
+    let diskDeleted = 0;
+    if (deleteFromDisk === 'true') {
+      const diskResult = chapterFilesService.deleteChapterFilesFromDisk(bookId, chapterNum);
+      diskDeleted = diskResult.deleted;
+    }
+
+    res.json({
+      success: true,
+      bookId,
+      chapter: chapterNum,
+      filesCleared: dbCleared,
+      filesDeletedFromDisk: diskDeleted
+    });
+  } catch (err) {
+    console.error('Error clearing chapter files:', err);
+    res.status(500).json({
+      error: 'Failed to clear chapter files',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/books/:bookId/files/summary
+ * Get summary of generated files for all chapters
+ */
+router.get('/:bookId/files/summary', requireAuth, (req, res) => {
+  const { bookId } = req.params;
+
+  try {
+    const summary = chapterFilesService.getBookFilesSummary(bookId);
+
+    res.json({
+      bookId,
+      chapters: summary
+    });
+  } catch (err) {
+    console.error('Error getting book files summary:', err);
+    res.status(500).json({
+      error: 'Failed to get files summary',
+      message: err.message
+    });
+  }
+});
+
+/**
  * GET /api/books/:slug/download
  * Download book content as ZIP
  *
@@ -320,6 +463,112 @@ router.get('/:slug/download', requireAuth, async (req, res) => {
       });
     }
   }
+});
+
+/**
+ * POST /api/books/:bookId/chapters/:chapter/import
+ * Import markdown files for a chapter
+ *
+ * Accepts multiple .md files and stores them in 02-for-mt/ch{NN}/
+ * Registers files in the database for tracking.
+ */
+router.post('/:bookId/chapters/:chapter/import', requireAuth, upload.array('files', 50), async (req, res) => {
+  const { bookId, chapter } = req.params;
+  const chapterNum = parseInt(chapter, 10);
+  const userId = req.user?.username || 'system';
+
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({
+      error: 'No files uploaded',
+      message: 'Please upload at least one .md file'
+    });
+  }
+
+  const chapterDir = chapterFilesService.getChapterDir(bookId, chapterNum);
+
+  // Ensure chapter directory exists
+  if (!fs.existsSync(chapterDir)) {
+    fs.mkdirSync(chapterDir, { recursive: true });
+  }
+
+  const imported = [];
+  const errors = [];
+
+  for (const file of req.files) {
+    try {
+      // Validate filename pattern (e.g., 1-1.en.md, intro.en.md)
+      const filename = file.originalname;
+      const validPattern = /^(\d+-\d+|intro)(\.en)?\.md$/;
+
+      if (!validPattern.test(filename)) {
+        errors.push({
+          file: filename,
+          error: 'Invalid filename format. Expected: {section}.en.md or {section}.md'
+        });
+        // Clean up temp file
+        fs.unlinkSync(file.path);
+        continue;
+      }
+
+      // Determine target filename (ensure .en.md extension)
+      let targetName = filename;
+      if (!filename.includes('.en.md')) {
+        targetName = filename.replace('.md', '.en.md');
+      }
+
+      const targetPath = path.join(chapterDir, targetName);
+
+      // Move file to chapter directory
+      fs.renameSync(file.path, targetPath);
+
+      // Determine file type
+      const fileType = chapterFilesService.FILE_TYPES.EN_MD;
+
+      imported.push({
+        originalName: filename,
+        storedAs: targetName,
+        path: targetPath,
+        type: fileType
+      });
+    } catch (err) {
+      errors.push({
+        file: file.originalname,
+        error: err.message
+      });
+      // Clean up temp file if it exists
+      if (fs.existsSync(file.path)) {
+        fs.unlinkSync(file.path);
+      }
+    }
+  }
+
+  // Register imported files in database
+  if (imported.length > 0) {
+    try {
+      const filesToRegister = imported.map(f => ({
+        type: f.type,
+        path: f.path,
+        metadata: { importedFrom: f.originalName }
+      }));
+
+      chapterFilesService.registerFiles(bookId, chapterNum, filesToRegister, userId);
+    } catch (dbErr) {
+      console.error('Failed to register imported files:', dbErr);
+      // Don't fail the request - files are already stored
+    }
+  }
+
+  res.json({
+    success: true,
+    bookId,
+    chapter: chapterNum,
+    imported: imported.length,
+    errors: errors.length > 0 ? errors : undefined,
+    files: imported.map(f => ({
+      original: f.originalName,
+      stored: f.storedAs
+    }))
+  });
 });
 
 module.exports = router;

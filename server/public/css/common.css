@@ -231,6 +231,33 @@ a:hover {
   font-weight: 500;
 }
 
+/* Navigation Separator */
+.header nav .nav-separator {
+  width: 1px;
+  height: 1.25rem;
+  background: var(--border-color);
+  margin: 0 0.25rem;
+}
+
+/* Admin-only elements - hidden by default, shown by nav.js when authorized */
+.admin-only {
+  display: none;
+}
+
+/* Admin link special styling */
+.header nav a.admin-link {
+  color: var(--warning);
+}
+
+.header nav a.admin-link:hover {
+  background: var(--warning-light);
+}
+
+.header nav a.admin-link.active {
+  background: var(--warning-light);
+  color: var(--warning);
+}
+
 /* Header Actions (right side) */
 .header-actions {
   display: flex;

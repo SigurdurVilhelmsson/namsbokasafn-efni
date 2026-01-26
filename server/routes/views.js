@@ -172,6 +172,30 @@ router.get('/feedback', (req, res) => {
 });
 
 /**
+ * GET /admin
+ * Admin dashboard
+ */
+router.get('/admin', (req, res) => {
+  sendView(res, 'admin.html');
+});
+
+/**
+ * GET /admin/users
+ * User management page
+ */
+router.get('/admin/users', (req, res) => {
+  sendView(res, 'admin-users.html');
+});
+
+/**
+ * GET /admin/books
+ * Book catalogue management page
+ */
+router.get('/admin/books', (req, res) => {
+  sendView(res, 'admin-books.html');
+});
+
+/**
  * GET /admin/feedback
  * Admin feedback dashboard
  */

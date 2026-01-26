@@ -11,10 +11,13 @@
     <h1>Námsbókasafn</h1>
     <nav>
       <a href="/my-work">Mín verkefni</a>
+      <a href="/workflow">Verkflæði</a>
       <a href="/status">Stjórnborð</a>
       <a href="/editor">Ritstjóri</a>
       <a href="/terminology">Orðasafn</a>
       <a href="/decisions">Ákvarðanir</a>
+      <span class="nav-separator admin-only"></span>
+      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" title="Skipta um þema">
@@ -63,6 +66,16 @@
           <p><strong>Kafli inniheldur:</strong> <span id="module-count">0</span> einingar</p>
           <ul id="module-list" class="module-list"></ul>
         </div>
+
+        <!-- Permanent chapter files section -->
+        <div id="chapter-files" class="chapter-files" style="display: none;">
+          <h4>Skrár kafla</h4>
+          <div id="files-loading" style="display: none;">
+            <p class="text-muted">Hleður...</p>
+          </div>
+          <div id="files-status"></div>
+        </div>
+
         <button type="submit" class="btn btn-primary" id="submit-btn" disabled>Hefja verkflæði</button>
       </form>
     </div>
@@ -131,10 +144,12 @@
     // Show chapter details when chapter is selected
     function showChapterInfo(bookId, chapterNum) {
       const chapterInfo = document.getElementById('chapter-info');
+      const chapterFiles = document.getElementById('chapter-files');
       const submitBtn = document.getElementById('submit-btn');
 
       if (!chapterNum || !booksData[bookId]) {
         chapterInfo.style.display = 'none';
+        chapterFiles.style.display = 'none';
         submitBtn.disabled = true;
         selectedChapter = null;
         return;
@@ -143,6 +158,7 @@
       const chapter = booksData[bookId].chapters.find(c => c.chapter === parseInt(chapterNum, 10));
       if (!chapter) {
         chapterInfo.style.display = 'none';
+        chapterFiles.style.display = 'none';
         submitBtn.disabled = true;
         return;
       }
@@ -154,6 +170,165 @@
       ).join('');
       chapterInfo.style.display = 'block';
       submitBtn.disabled = false;
+
+      // Load chapter files status
+      loadChapterFiles(bookId, chapterNum);
+    }
+
+    // Load chapter files status (permanent storage)
+    async function loadChapterFiles(bookId, chapterNum) {
+      const filesEl = document.getElementById('chapter-files');
+      const loadingEl = document.getElementById('files-loading');
+      const statusEl = document.getElementById('files-status');
+
+      filesEl.style.display = 'block';
+      loadingEl.style.display = 'block';
+      statusEl.innerHTML = '';
+
+      try {
+        const res = await fetch('/api/books/' + bookId + '/chapters/' + chapterNum + '/files');
+        loadingEl.style.display = 'none';
+
+        if (!res.ok) {
+          statusEl.innerHTML = '<p class="text-muted">Engar skrár fundust</p>';
+          return;
+        }
+
+        const data = await res.json();
+
+        if (data.hasRequiredFiles && data.sections && data.sections.length > 0) {
+          // Files exist - show download option
+          let html = '<div class="files-available">' +
+            '<p class="text-success"><strong>✓ Skrár til staðar</strong></p>' +
+            '<p class="text-muted">' + data.sections.length + ' einingar með skrár</p>';
+
+          // Show sections list
+          html += '<ul class="section-list">';
+          for (const section of data.sections) {
+            const fileTypes = section.files.map(f => f.type).join(', ');
+            html += '<li><code>' + escapeHtml(section.section) + '</code> - ' +
+              section.files.length + ' skrár (' + fileTypes + ')</li>';
+          }
+          html += '</ul>';
+
+          // Recent history
+          if (data.recentHistory && data.recentHistory.length > 0) {
+            const lastGen = data.recentHistory.find(h => h.action === 'files_generated' || h.action === 'file_generated');
+            if (lastGen) {
+              const date = new Date(lastGen.created_at).toLocaleString('is-IS');
+              html += '<p class="text-muted" style="font-size: 0.75rem;">Síðast búið til: ' + date + '</p>';
+            }
+          }
+
+          // Actions
+          html += '<div class="files-actions">' +
+            '<a href="/api/books/' + bookId + '/download?chapter=' + chapterNum + '&type=en-md" class="btn btn-secondary btn-small">Sækja EN .md</a>' +
+            '<button type="button" class="btn btn-small" onclick="scanChapterFiles(\'' + bookId + '\', ' + chapterNum + ')">Endurskanna</button>' +
+            '</div>';
+
+          html += '</div>';
+          statusEl.innerHTML = html;
+        } else {
+          // No files - offer to scan, generate, or import
+          let html = '<div class="files-missing">' +
+            '<p class="text-muted">Engar skrár fundust fyrir þennan kafla.</p>' +
+            '<div class="files-actions">' +
+            '<button type="button" class="btn btn-secondary btn-small" onclick="scanChapterFiles(\'' + bookId + '\', ' + chapterNum + ')">Leita að skrám</button>' +
+            '<button type="button" class="btn btn-small" onclick="showImportDialog(\'' + bookId + '\', ' + chapterNum + ')">Flytja inn</button>' +
+            '</div>' +
+            '</div>';
+          statusEl.innerHTML = html;
+        }
+      } catch (e) {
+        loadingEl.style.display = 'none';
+        statusEl.innerHTML = '<p class="text-muted">Gat ekki hlaðið skrástöðu</p>';
+      }
+    }
+
+    // Scan for existing files on disk
+    async function scanChapterFiles(bookId, chapterNum) {
+      try {
+        const res = await fetch('/api/books/' + bookId + '/chapters/' + chapterNum + '/files/scan', {
+          method: 'POST'
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert('Skönnun lokið: ' + data.found + ' skrár fundnar, ' + data.registered + ' skráðar.');
+          loadChapterFiles(bookId, chapterNum);
+        } else {
+          alert('Villa við skönnun: ' + (data.message || data.error));
+        }
+      } catch (e) {
+        alert('Villa: ' + e.message);
+      }
+    }
+
+    // Show import dialog for chapter files
+    let importBookId = null;
+    let importChapterNum = null;
+
+    function showImportDialog(bookId, chapterNum) {
+      importBookId = bookId;
+      importChapterNum = chapterNum;
+
+      const statusEl = document.getElementById('files-status');
+      statusEl.innerHTML = '<div class="import-dialog">' +
+        '<h5>Flytja inn .md skrár</h5>' +
+        '<p class="text-muted" style="font-size: 0.8125rem;">Veldu .en.md skrár sem búnar voru til með CLI verkfærum.</p>' +
+        '<form id="import-form" class="import-form">' +
+        '<input type="file" id="import-files" name="files" multiple accept=".md" required>' +
+        '<div class="import-actions">' +
+        '<button type="submit" class="btn btn-primary btn-small">Flytja inn</button>' +
+        '<button type="button" class="btn btn-secondary btn-small" onclick="loadChapterFiles(\'' + bookId + '\', ' + chapterNum + ')">Hætta við</button>' +
+        '</div>' +
+        '</form>' +
+        '</div>';
+
+      // Setup form handler
+      document.getElementById('import-form').addEventListener('submit', handleImport);
+    }
+
+    async function handleImport(e) {
+      e.preventDefault();
+
+      const files = document.getElementById('import-files').files;
+      if (!files.length) {
+        alert('Veldu skrár til að flytja inn');
+        return;
+      }
+
+      const formData = new FormData();
+      for (const file of files) {
+        formData.append('files', file);
+      }
+
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Flytur inn...';
+
+      try {
+        const res = await fetch('/api/books/' + importBookId + '/chapters/' + importChapterNum + '/import', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          let msg = 'Innflutningur lokið: ' + data.imported + ' skrár fluttar inn.';
+          if (data.errors && data.errors.length > 0) {
+            msg += '\n\nVillur:\n' + data.errors.map(e => e.file + ': ' + e.error).join('\n');
+          }
+          alert(msg);
+          loadChapterFiles(importBookId, importChapterNum);
+        } else {
+          alert('Villa: ' + (data.message || data.error));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Flytja inn';
+      }
     }
 
     // Event listeners
@@ -845,6 +1020,7 @@
   </script>
 
   <script src="/js/theme.js"></script>
+  <script src="/js/nav.js"></script>
 
   <style>
     /* Page-specific styles for workflow management */
@@ -954,6 +1130,76 @@
     .notification-date { font-size: 0.625rem; color: var(--text-muted); }
     .notification-link { font-size: 0.75rem; color: var(--primary); }
     .notification-empty { padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.875rem; }
+
+    /* Chapter files section */
+    .chapter-files {
+      background: var(--gray-50);
+      border-radius: 0.375rem;
+      padding: 1rem;
+      margin-top: 1rem;
+      border: 1px solid var(--border-color);
+    }
+    .chapter-files h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--text-secondary);
+    }
+    .files-available, .files-missing {
+      font-size: 0.875rem;
+    }
+    .section-list {
+      list-style: none;
+      margin: 0.5rem 0;
+      padding: 0;
+      max-height: 120px;
+      overflow-y: auto;
+      font-size: 0.75rem;
+    }
+    .section-list li {
+      padding: 0.25rem 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .section-list li:last-child {
+      border-bottom: none;
+    }
+    .section-list code {
+      background: var(--gray-200);
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.7rem;
+    }
+    .files-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* Import dialog */
+    .import-dialog {
+      padding: 0.5rem 0;
+    }
+    .import-dialog h5 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .import-form {
+      margin-top: 0.75rem;
+    }
+    .import-form input[type="file"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px dashed var(--border-color);
+      border-radius: 0.375rem;
+      background: var(--bg-card);
+      margin-bottom: 0.75rem;
+    }
+    .import-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
 
     @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .notification-dropdown { width: 280px; right: -1rem; } }
   </style>
