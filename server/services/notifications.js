@@ -720,6 +720,96 @@ function parseNotificationRow(row) {
   };
 }
 
+/**
+ * Notify user when they're assigned access to a book
+ *
+ * @param {number} userId - User ID
+ * @param {string} bookSlug - Book slug
+ * @param {string} role - Assigned role (head-editor, editor, contributor)
+ * @param {string} assignedByUsername - Username of who assigned the access
+ */
+async function notifyBookAccessAssigned(userId, bookSlug, role, assignedByUsername) {
+  const baseUrl = process.env.BASE_URL || 'https://ritstjorn.namsbokasafn.is';
+
+  // Role labels in Icelandic
+  const roleLabels = {
+    'head-editor': 'aðalritstjóri',
+    'editor': 'ritstjóri',
+    'contributor': 'þýðandi',
+    'viewer': 'lesandi'
+  };
+
+  const roleLabel = roleLabels[role] || role;
+  const title = 'Nýr aðgangur að bók';
+  const message = `${assignedByUsername} hefur úthlutað þér sem ${roleLabel} fyrir ${bookSlug}`;
+
+  // Create in-app notification
+  const result = await createNotification({
+    userId: String(userId),
+    type: 'book_access_assigned',
+    title,
+    message,
+    link: '/workflow',
+    metadata: {
+      bookSlug,
+      role,
+      assignedBy: assignedByUsername
+    }
+  });
+
+  // Try to send email notification if configured
+  if (isEmailConfigured()) {
+    try {
+      // Get user email - need to import userService dynamically to avoid circular deps
+      const userService = require('./userService');
+      const user = userService.findById(userId);
+
+      if (user && user.email) {
+        const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #2563eb; color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+    .content { background: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; }
+    .button { display: inline-block; background: #2563eb; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; margin-top: 16px; }
+    .footer { padding: 16px 20px; font-size: 12px; color: #6b7280; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 style="margin: 0; font-size: 20px;">Nýr aðgangur að bók</h1>
+    </div>
+    <div class="content">
+      <p>Þér hefur verið úthlutað sem <strong>${roleLabel}</strong> fyrir bókina <strong>${bookSlug}</strong>.</p>
+      <p>Úthlutað af: ${assignedByUsername}</p>
+      <a href="${baseUrl}/workflow" class="button">Opna verkflæði</a>
+    </div>
+    <div class="footer">
+      <p style="margin: 0;">Þetta er sjálfvirk tilkynning frá Námsbókasafni.</p>
+    </div>
+  </div>
+</body>
+</html>
+        `.trim();
+
+        const textBody = `Nýr aðgangur að bók\n\nÞér hefur verið úthlutað sem ${roleLabel} fyrir bókina ${bookSlug}.\nÚthlutað af: ${assignedByUsername}\n\nOpna verkflæði: ${baseUrl}/workflow`;
+
+        await sendEmail(user.email, title, htmlBody, textBody);
+        result.emailSent = true;
+      }
+    } catch (emailErr) {
+      console.error('Failed to send book access email:', emailErr.message);
+    }
+  }
+
+  return result;
+}
+
 module.exports = {
   NOTIFICATION_TYPES,
   NOTIFICATION_CATEGORIES,
@@ -737,6 +827,8 @@ module.exports = {
   notifyHandoff,
   notifyStageCompleted,
   notifyChapterKickoff,
+  // Book access notifications
+  notifyBookAccessAssigned,
   // Notification retrieval
   getUnreadNotifications,
   getAllNotifications,

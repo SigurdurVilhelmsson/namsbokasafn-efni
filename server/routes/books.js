@@ -284,6 +284,85 @@ router.post('/:bookId/chapters/:chapter/files/scan', requireAuth, (req, res) => 
 });
 
 /**
+ * POST /api/books/:bookId/chapters/:chapter/generate
+ * Generate files from CNXML source using pipeline-runner
+ */
+router.post('/:bookId/chapters/:chapter/generate', requireAuth, async (req, res) => {
+  const { bookId, chapter } = req.params;
+  const chapterNum = parseInt(chapter, 10);
+  const userId = req.user?.username || 'system';
+
+  try {
+    // Import pipeline runner (ES module, use dynamic import)
+    const pipelineModule = await import('../../tools/pipeline-runner.js');
+    const { runChapterPipeline } = pipelineModule;
+
+    // Determine output directory
+    const outputDir = chapterFilesService.getChapterDir(bookId, chapterNum);
+
+    // Ensure output directory exists
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
+
+    console.log(`[Generate] Starting pipeline for ${bookId} chapter ${chapterNum} -> ${outputDir}`);
+
+    // Run pipeline
+    const result = await runChapterPipeline({
+      chapter: chapterNum,
+      outputDir,
+      skipXliff: true,  // Skip XLIFF for now - we use Matecat Align instead
+      verbose: false
+    });
+
+    if (!result.success) {
+      return res.status(500).json({
+        error: 'Pipeline failed',
+        message: result.error || 'Unknown error'
+      });
+    }
+
+    // Register generated files
+    const filesToRegister = result.outputs
+      .filter(o => o.type === 'markdown' || o.type === 'equations')
+      .map(o => ({
+        type: o.type === 'markdown' ? chapterFilesService.FILE_TYPES.EN_MD : 'equations',
+        path: o.path,
+        metadata: {
+          section: o.section,
+          description: o.description,
+          generatedFrom: 'pipeline-runner'
+        }
+      }));
+
+    if (filesToRegister.length > 0) {
+      chapterFilesService.registerFiles(bookId, chapterNum, filesToRegister, userId);
+    }
+
+    console.log(`[Generate] Completed: ${result.outputs.length} files generated for ${bookId} chapter ${chapterNum}`);
+
+    res.json({
+      success: true,
+      bookId,
+      chapter: chapterNum,
+      filesGenerated: result.outputs.length,
+      modulesProcessed: result.modules.length,
+      outputs: result.outputs.map(o => ({
+        type: o.type,
+        section: o.section,
+        path: path.basename(o.path)
+      }))
+    });
+  } catch (err) {
+    console.error('Generate error:', err);
+    res.status(500).json({
+      error: 'Failed to generate files',
+      message: err.message
+    });
+  }
+});
+
+/**
  * DELETE /api/books/:bookId/chapters/:chapter/files
  * Clear generated files for regeneration
  */

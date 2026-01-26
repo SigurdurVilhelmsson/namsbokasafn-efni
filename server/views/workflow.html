@@ -17,6 +17,7 @@
       <a href="/terminology">Orðasafn</a>
       <a href="/decisions">Ákvarðanir</a>
       <span class="nav-separator admin-only"></span>
+      <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
     </nav>
     <div class="header-actions">
@@ -229,10 +230,11 @@
           html += '</div>';
           statusEl.innerHTML = html;
         } else {
-          // No files - offer to scan, generate, or import
+          // No files - offer to generate, scan, or import
           let html = '<div class="files-missing">' +
             '<p class="text-muted">Engar skrár fundust fyrir þennan kafla.</p>' +
             '<div class="files-actions">' +
+            '<button type="button" class="btn btn-primary btn-small" onclick="generateFromSource(\'' + bookId + '\', ' + chapterNum + ')"><i class="fas fa-cog"></i> Búa til úr uppruna</button>' +
             '<button type="button" class="btn btn-secondary btn-small" onclick="scanChapterFiles(\'' + bookId + '\', ' + chapterNum + ')">Leita að skrám</button>' +
             '<button type="button" class="btn btn-small" onclick="showImportDialog(\'' + bookId + '\', ' + chapterNum + ')">Flytja inn</button>' +
             '</div>' +
@@ -242,6 +244,37 @@
       } catch (e) {
         loadingEl.style.display = 'none';
         statusEl.innerHTML = '<p class="text-muted">Gat ekki hlaðið skrástöðu</p>';
+      }
+    }
+
+    // Generate files from source using pipeline-runner
+    async function generateFromSource(bookId, chapterNum) {
+      if (!confirm('Þetta mun búa til .md skrár úr CNXML uppruna. Þetta getur tekið nokkrar sekúndur. Halda áfram?')) {
+        return;
+      }
+
+      const statusEl = document.getElementById('files-status');
+      statusEl.innerHTML = '<p class="text-muted"><i class="fas fa-spinner fa-spin"></i> Býr til skrár úr uppruna...</p>';
+
+      try {
+        const res = await fetch('/api/books/' + bookId + '/chapters/' + chapterNum + '/generate', {
+          method: 'POST'
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.error || data.message || 'Generation failed');
+        }
+
+        if (data.success) {
+          alert(data.filesGenerated + ' skrár búnar til fyrir kafla ' + chapterNum);
+          loadChapterFiles(bookId, chapterNum);
+        } else {
+          throw new Error(data.error || 'Generation failed');
+        }
+      } catch (err) {
+        alert('Villa við að búa til skrár: ' + err.message);
+        loadChapterFiles(bookId, chapterNum);
       }
     }
 

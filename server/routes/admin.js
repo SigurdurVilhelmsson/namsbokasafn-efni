@@ -176,7 +176,7 @@ router.post('/catalogue/add', requireAuth, requireAdmin(), (req, res) => {
  *   - forceReregister: If true, delete existing registration first (optional)
  */
 router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => {
-  const { catalogueSlug, slug, titleIs, fetchFromOpenstax, forceReregister } = req.body;
+  const { catalogueSlug, slug, titleIs, fetchFromOpenstax, forceReregister, headEditorId } = req.body;
 
   if (!catalogueSlug || !slug || !titleIs) {
     return res.status(400).json({
@@ -194,6 +194,17 @@ router.post('/books/register', requireAuth, requireAdmin(), async (req, res) => 
       fetchFromOpenstax: fetchFromOpenstax === true,
       forceReregister: forceReregister === true
     });
+
+    // Assign head editor if specified
+    if (headEditorId && result.success && result.book) {
+      try {
+        userService.assignBookAccess(headEditorId, slug, 'head-editor', req.user.username);
+        result.headEditorAssigned = true;
+      } catch (assignErr) {
+        console.error('Failed to assign head editor:', assignErr);
+        result.headEditorError = assignErr.message;
+      }
+    }
 
     res.json(result);
   } catch (err) {

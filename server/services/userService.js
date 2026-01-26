@@ -322,6 +322,15 @@ function assignBookAccess(userId, bookSlug, roleForBook, assignedBy = null) {
       DO UPDATE SET role_for_book = excluded.role_for_book, assigned_by = excluded.assigned_by, assigned_at = CURRENT_TIMESTAMP
     `).run(userId, bookSlug, roleForBook, assignedBy);
 
+    // Send notification (async, don't block)
+    try {
+      const notifications = require('./notifications');
+      notifications.notifyBookAccessAssigned(userId, bookSlug, roleForBook, assignedBy || 'kerfi')
+        .catch(err => console.error('Failed to send book access notification:', err.message));
+    } catch (notifyErr) {
+      console.error('Failed to notify book access:', notifyErr.message);
+    }
+
     return findById(userId);
   } finally {
     db.close();

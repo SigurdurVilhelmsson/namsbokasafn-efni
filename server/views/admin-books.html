@@ -260,6 +260,7 @@
       <a href="/terminology">Orðasafn</a>
       <a href="/decisions">Ákvarðanir</a>
       <span class="nav-separator admin-only"></span>
+      <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
     </nav>
     <div class="header-actions">
@@ -359,6 +360,13 @@
           <label class="form-label">Slug (stytting)</label>
           <input type="text" class="form-input" name="slug" id="reg-slug" required placeholder="t.d. efnafraedi" pattern="[a-z0-9-]+">
           <small class="text-muted">Notað í slóðir, aðeins lágstafir og bandstrik</small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Aðalritstjóri (valkvætt)</label>
+          <select class="form-select" name="headEditorId" id="reg-head-editor">
+            <option value="">Velja síðar...</option>
+          </select>
         </div>
 
         <div class="form-group">
@@ -532,12 +540,34 @@
     });
 
     // Register modal
-    function openRegisterModal(slug, title) {
+    async function openRegisterModal(slug, title) {
       document.getElementById('reg-catalogue-slug').value = slug;
       document.getElementById('reg-title-en').value = title;
       document.getElementById('reg-title-is').value = '';
       document.getElementById('reg-slug').value = '';
       document.getElementById('reg-fetch').checked = true;
+
+      // Load editors for head editor dropdown
+      try {
+        const res = await fetch('/api/admin/users');
+        const data = await res.json();
+        const select = document.getElementById('reg-head-editor');
+        select.innerHTML = '<option value="">Velja síðar...</option>';
+
+        if (data.users) {
+          data.users
+            .filter(u => ['admin', 'head-editor', 'editor'].includes(u.role) && u.isActive)
+            .forEach(u => {
+              const opt = document.createElement('option');
+              opt.value = u.id;
+              opt.textContent = (u.displayName || u.githubUsername) + ' (' + u.role + ')';
+              select.appendChild(opt);
+            });
+        }
+      } catch (e) {
+        console.error('Failed to load editors:', e);
+      }
+
       document.getElementById('register-modal').classList.add('active');
     }
 
@@ -550,12 +580,14 @@
       const form = e.target;
       const btn = form.querySelector('button[type="submit"]');
 
+      const headEditorId = document.getElementById('reg-head-editor').value;
       const data = {
         catalogueSlug: form.catalogueSlug.value,
         slug: form.slug.value,
         titleIs: form.titleIs.value,
         fetchFromOpenstax: form.fetchFromOpenstax.checked
       };
+      if (headEditorId) data.headEditorId = parseInt(headEditorId, 10);
 
       btn.disabled = true;
       btn.textContent = 'Skráir...';
