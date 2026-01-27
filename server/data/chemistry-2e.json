@@ -11,13 +11,48 @@
       "title": "Essential Ideas",
       "titleIs": "Grunnhugmyndir",
       "modules": [
-        { "id": "m68663", "section": "intro", "title": "Introduction" },
-        { "id": "m68664", "section": "1.1", "title": "Chemistry in Context" },
-        { "id": "m68667", "section": "1.2", "title": "Phases and Classification of Matter" },
-        { "id": "m68670", "section": "1.3", "title": "Physical and Chemical Properties" },
-        { "id": "m68674", "section": "1.4", "title": "Measurements" },
-        { "id": "m68690", "section": "1.5", "title": "Measurement Uncertainty, Accuracy, and Precision" },
-        { "id": "m68683", "section": "1.6", "title": "Mathematical Treatment of Measurement Results" }
+        {
+          "id": "m68663",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68664",
+          "section": "1.1",
+          "title": "Chemistry in Context",
+          "titleIs": null
+        },
+        {
+          "id": "m68667",
+          "section": "1.2",
+          "title": "Phases and Classification of Matter",
+          "titleIs": null
+        },
+        {
+          "id": "m68670",
+          "section": "1.3",
+          "title": "Physical and Chemical Properties",
+          "titleIs": null
+        },
+        {
+          "id": "m68674",
+          "section": "1.4",
+          "title": "Measurements",
+          "titleIs": null
+        },
+        {
+          "id": "m68690",
+          "section": "1.5",
+          "title": "Measurement Uncertainty, Accuracy, and Precision",
+          "titleIs": null
+        },
+        {
+          "id": "m68683",
+          "section": "1.6",
+          "title": "Mathematical Treatment of Measurement Results",
+          "titleIs": null
+        }
       ]
     },
     {
@@ -25,14 +60,54 @@
       "title": "Atoms, Molecules, and Ions",
       "titleIs": "Atóm, sameindir og jónir",
       "modules": [
-        { "id": "m68684", "section": "intro", "title": "Introduction" },
-        { "id": "m68685", "section": "2.1", "title": "Early Ideas in Atomic Theory" },
-        { "id": "m68687", "section": "2.2", "title": "Evolution of Atomic Theory" },
-        { "id": "m68692", "section": "2.3", "title": "Atomic Structure and Symbolism" },
-        { "id": "m68693", "section": "2.4", "title": "Chemical Formulas" },
-        { "id": "m68695", "section": "2.5", "title": "The Periodic Table" },
-        { "id": "m68696", "section": "2.6", "title": "Ionic and Molecular Compounds" },
-        { "id": "m68698", "section": "2.7", "title": "Chemical Nomenclature" }
+        {
+          "id": "m68684",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68685",
+          "section": "2.1",
+          "title": "Early Ideas in Atomic Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m68687",
+          "section": "2.2",
+          "title": "Evolution of Atomic Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m68692",
+          "section": "2.3",
+          "title": "Atomic Structure and Symbolism",
+          "titleIs": null
+        },
+        {
+          "id": "m68693",
+          "section": "2.4",
+          "title": "Chemical Formulas",
+          "titleIs": null
+        },
+        {
+          "id": "m68695",
+          "section": "2.5",
+          "title": "The Periodic Table",
+          "titleIs": null
+        },
+        {
+          "id": "m68696",
+          "section": "2.6",
+          "title": "Ionic and Molecular Compounds",
+          "titleIs": null
+        },
+        {
+          "id": "m68698",
+          "section": "2.7",
+          "title": "Chemical Nomenclature",
+          "titleIs": null
+        }
       ]
     },
     {
@@ -40,11 +115,36 @@
       "title": "Composition of Substances and Solutions",
       "titleIs": "Samsetning efna og lausna",
       "modules": [
-        { "id": "m68699", "section": "intro", "title": "Introduction" },
-        { "id": "m68700", "section": "3.1", "title": "Formula Mass and the Mole Concept" },
-        { "id": "m68702", "section": "3.2", "title": "Determining Empirical and Molecular Formulas" },
-        { "id": "m68703", "section": "3.3", "title": "Molarity" },
-        { "id": "m68704", "section": "3.4", "title": "Other Units for Solution Concentrations" }
+        {
+          "id": "m68699",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68700",
+          "section": "3.1",
+          "title": "Formula Mass and the Mole Concept",
+          "titleIs": null
+        },
+        {
+          "id": "m68702",
+          "section": "3.2",
+          "title": "Determining Empirical and Molecular Formulas",
+          "titleIs": null
+        },
+        {
+          "id": "m68703",
+          "section": "3.3",
+          "title": "Molarity",
+          "titleIs": null
+        },
+        {
+          "id": "m68704",
+          "section": "3.4",
+          "title": "Other Units for Solution Concentrations",
+          "titleIs": null
+        }
       ]
     },
     {
@@ -52,17 +152,872 @@
       "title": "Stoichiometry of Chemical Reactions",
       "titleIs": "Stökkfræði efnahvarfa",
       "modules": [
-        { "id": "m68730", "section": "intro", "title": "Introduction" },
-        { "id": "m68709", "section": "4.1", "title": "Writing and Balancing Chemical Equations" },
-        { "id": "m68710", "section": "4.2", "title": "Classifying Chemical Reactions" },
-        { "id": "m68713", "section": "4.3", "title": "Reaction Stoichiometry" },
-        { "id": "m68714", "section": "4.4", "title": "Reaction Yields" },
-        { "id": "m68716", "section": "4.5", "title": "Quantitative Chemical Analysis" }
+        {
+          "id": "m68730",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68709",
+          "section": "4.1",
+          "title": "Writing and Balancing Chemical Equations",
+          "titleIs": null
+        },
+        {
+          "id": "m68710",
+          "section": "4.2",
+          "title": "Classifying Chemical Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m68713",
+          "section": "4.3",
+          "title": "Reaction Stoichiometry",
+          "titleIs": null
+        },
+        {
+          "id": "m68714",
+          "section": "4.4",
+          "title": "Reaction Yields",
+          "titleIs": null
+        },
+        {
+          "id": "m68716",
+          "section": "4.5",
+          "title": "Quantitative Chemical Analysis",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "title": "Thermochemistry",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68723",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68724",
+          "section": "5.1",
+          "title": "Energy Basics",
+          "titleIs": null
+        },
+        {
+          "id": "m68726",
+          "section": "5.2",
+          "title": "Calorimetry",
+          "titleIs": null
+        },
+        {
+          "id": "m68727",
+          "section": "5.3",
+          "title": "Enthalpy",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "title": "Electronic Structure and Periodic Properties of Elements",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68728",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68729",
+          "section": "6.1",
+          "title": "Electromagnetic Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m68732",
+          "section": "6.2",
+          "title": "The Bohr Model",
+          "titleIs": null
+        },
+        {
+          "id": "m68733",
+          "section": "6.3",
+          "title": "Development of Quantum Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m68734",
+          "section": "6.4",
+          "title": "Electronic Structure of Atoms (Electron Configurations)",
+          "titleIs": null
+        },
+        {
+          "id": "m68735",
+          "section": "6.5",
+          "title": "Periodic Variations in Element Properties",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "title": "Chemical Bonding and Molecular Geometry",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68736",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68737",
+          "section": "7.1",
+          "title": "Ionic Bonding",
+          "titleIs": null
+        },
+        {
+          "id": "m68738",
+          "section": "7.2",
+          "title": "Covalent Bonding",
+          "titleIs": null
+        },
+        {
+          "id": "m68739",
+          "section": "7.3",
+          "title": "Lewis Symbols and Structures",
+          "titleIs": null
+        },
+        {
+          "id": "m68740",
+          "section": "7.4",
+          "title": "Formal Charges and Resonance",
+          "titleIs": null
+        },
+        {
+          "id": "m68741",
+          "section": "7.5",
+          "title": "Strengths of Ionic and Covalent Bonds",
+          "titleIs": null
+        },
+        {
+          "id": "m68742",
+          "section": "7.6",
+          "title": "Molecular Structure and Polarity",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 8,
+      "title": "Advanced Theories of Covalent Bonding",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68743",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68744",
+          "section": "8.1",
+          "title": "Valence Bond Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m68745",
+          "section": "8.2",
+          "title": "Hybrid Atomic Orbitals",
+          "titleIs": null
+        },
+        {
+          "id": "m68746",
+          "section": "8.3",
+          "title": "Multiple Bonds",
+          "titleIs": null
+        },
+        {
+          "id": "m68747",
+          "section": "8.4",
+          "title": "Molecular Orbital Theory",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "title": "Gases",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68748",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68750",
+          "section": "9.1",
+          "title": "Gas Pressure",
+          "titleIs": null
+        },
+        {
+          "id": "m68751",
+          "section": "9.2",
+          "title": "Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law",
+          "titleIs": null
+        },
+        {
+          "id": "m68752",
+          "section": "9.3",
+          "title": "Stoichiometry of Gaseous Substances, Mixtures, and Reactions",
+          "titleIs": null
+        },
+        {
+          "id": "m68754",
+          "section": "9.4",
+          "title": "Effusion and Diffusion of Gases",
+          "titleIs": null
+        },
+        {
+          "id": "m68758",
+          "section": "9.5",
+          "title": "The Kinetic-Molecular Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m68759",
+          "section": "9.6",
+          "title": "Non-Ideal Gas Behavior",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "title": "Liquids and Solids",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68760",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68761",
+          "section": "10.1",
+          "title": "Intermolecular Forces",
+          "titleIs": null
+        },
+        {
+          "id": "m68764",
+          "section": "10.2",
+          "title": "Properties of Liquids",
+          "titleIs": null
+        },
+        {
+          "id": "m68768",
+          "section": "10.3",
+          "title": "Phase Transitions",
+          "titleIs": null
+        },
+        {
+          "id": "m68769",
+          "section": "10.4",
+          "title": "Phase Diagrams",
+          "titleIs": null
+        },
+        {
+          "id": "m68770",
+          "section": "10.5",
+          "title": "The Solid State of Matter",
+          "titleIs": null
+        },
+        {
+          "id": "m68773",
+          "section": "10.6",
+          "title": "Lattice Structures in Crystalline Solids",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 11,
+      "title": "Solutions and Colloids",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68776",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68778",
+          "section": "11.1",
+          "title": "The Dissolution Process",
+          "titleIs": null
+        },
+        {
+          "id": "m68781",
+          "section": "11.2",
+          "title": "Electrolytes",
+          "titleIs": null
+        },
+        {
+          "id": "m68782",
+          "section": "11.3",
+          "title": "Solubility",
+          "titleIs": null
+        },
+        {
+          "id": "m68783",
+          "section": "11.4",
+          "title": "Colligative Properties",
+          "titleIs": null
+        },
+        {
+          "id": "m68784",
+          "section": "11.5",
+          "title": "Colloids",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 12,
+      "title": "Kinetics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68785",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68786",
+          "section": "12.1",
+          "title": "Chemical Reaction Rates",
+          "titleIs": null
+        },
+        {
+          "id": "m68787",
+          "section": "12.2",
+          "title": "Factors Affecting Reaction Rates",
+          "titleIs": null
+        },
+        {
+          "id": "m68789",
+          "section": "12.3",
+          "title": "Rate Laws",
+          "titleIs": null
+        },
+        {
+          "id": "m68791",
+          "section": "12.4",
+          "title": "Integrated Rate Laws",
+          "titleIs": null
+        },
+        {
+          "id": "m68793",
+          "section": "12.5",
+          "title": "Collision Theory",
+          "titleIs": null
+        },
+        {
+          "id": "m68794",
+          "section": "12.6",
+          "title": "Reaction Mechanisms",
+          "titleIs": null
+        },
+        {
+          "id": "m68795",
+          "section": "12.7",
+          "title": "Catalysis",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 13,
+      "title": "Fundamental Equilibrium Concepts",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68796",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68797",
+          "section": "13.1",
+          "title": "Chemical Equilibria",
+          "titleIs": null
+        },
+        {
+          "id": "m68798",
+          "section": "13.2",
+          "title": "Equilibrium Constants",
+          "titleIs": null
+        },
+        {
+          "id": "m68799",
+          "section": "13.3",
+          "title": "Shifting Equilibria: Le Châtelier’s Principle",
+          "titleIs": null
+        },
+        {
+          "id": "m68801",
+          "section": "13.4",
+          "title": "Equilibrium Calculations",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 14,
+      "title": "Acid-Base Equilibria",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68802",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68803",
+          "section": "14.1",
+          "title": "Brønsted-Lowry Acids and Bases",
+          "titleIs": null
+        },
+        {
+          "id": "m68804",
+          "section": "14.2",
+          "title": "pH and pOH",
+          "titleIs": null
+        },
+        {
+          "id": "m68805",
+          "section": "14.3",
+          "title": "Relative Strengths of Acids and Bases",
+          "titleIs": null
+        },
+        {
+          "id": "m68806",
+          "section": "14.4",
+          "title": "Hydrolysis of Salts",
+          "titleIs": null
+        },
+        {
+          "id": "m68807",
+          "section": "14.5",
+          "title": "Polyprotic Acids",
+          "titleIs": null
+        },
+        {
+          "id": "m68808",
+          "section": "14.6",
+          "title": "Buffers",
+          "titleIs": null
+        },
+        {
+          "id": "m68809",
+          "section": "14.7",
+          "title": "Acid-Base Titrations",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 15,
+      "title": "Equilibria of Other Reaction Classes",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68810",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68811",
+          "section": "15.1",
+          "title": "Precipitation and Dissolution",
+          "titleIs": null
+        },
+        {
+          "id": "m68813",
+          "section": "15.2",
+          "title": "Lewis Acids and Bases",
+          "titleIs": null
+        },
+        {
+          "id": "m68814",
+          "section": "15.3",
+          "title": "Coupled Equilibria",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "title": "Thermodynamics",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68815",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68816",
+          "section": "16.1",
+          "title": "Spontaneity",
+          "titleIs": null
+        },
+        {
+          "id": "m68817",
+          "section": "16.2",
+          "title": "Entropy",
+          "titleIs": null
+        },
+        {
+          "id": "m68818",
+          "section": "16.3",
+          "title": "The Second and Third Laws of Thermodynamics",
+          "titleIs": null
+        },
+        {
+          "id": "m68819",
+          "section": "16.4",
+          "title": "Free Energy",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 17,
+      "title": "Electrochemistry",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68820",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68821",
+          "section": "17.1",
+          "title": "Review of Redox Chemistry",
+          "titleIs": null
+        },
+        {
+          "id": "m68822",
+          "section": "17.2",
+          "title": "Galvanic Cells",
+          "titleIs": null
+        },
+        {
+          "id": "m68823",
+          "section": "17.3",
+          "title": "Electrode and Cell Potentials",
+          "titleIs": null
+        },
+        {
+          "id": "m68824",
+          "section": "17.4",
+          "title": "Potential, Free Energy, and Equilibrium",
+          "titleIs": null
+        },
+        {
+          "id": "m68825",
+          "section": "17.5",
+          "title": "Batteries and Fuel Cells",
+          "titleIs": null
+        },
+        {
+          "id": "m68826",
+          "section": "17.6",
+          "title": "Corrosion",
+          "titleIs": null
+        },
+        {
+          "id": "m68827",
+          "section": "17.7",
+          "title": "Electrolysis",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 18,
+      "title": "Representative Metals, Metalloids, and Nonmetals",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68828",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68829",
+          "section": "18.1",
+          "title": "Periodicity",
+          "titleIs": null
+        },
+        {
+          "id": "m68830",
+          "section": "18.2",
+          "title": "Occurrence and Preparation of the Representative Metals",
+          "titleIs": null
+        },
+        {
+          "id": "m68831",
+          "section": "18.3",
+          "title": "Structure and General Properties of the Metalloids",
+          "titleIs": null
+        },
+        {
+          "id": "m68832",
+          "section": "18.4",
+          "title": "Structure and General Properties of the Nonmetals",
+          "titleIs": null
+        },
+        {
+          "id": "m68833",
+          "section": "18.5",
+          "title": "Occurrence, Preparation, and Compounds of Hydrogen",
+          "titleIs": null
+        },
+        {
+          "id": "m68834",
+          "section": "18.6",
+          "title": "Occurrence, Preparation, and Properties of Carbonates",
+          "titleIs": null
+        },
+        {
+          "id": "m68835",
+          "section": "18.7",
+          "title": "Occurrence, Preparation, and Properties of Nitrogen",
+          "titleIs": null
+        },
+        {
+          "id": "m68836",
+          "section": "18.8",
+          "title": "Occurrence, Preparation, and Properties of Phosphorus",
+          "titleIs": null
+        },
+        {
+          "id": "m68837",
+          "section": "18.9",
+          "title": "Occurrence, Preparation, and Compounds of Oxygen",
+          "titleIs": null
+        },
+        {
+          "id": "m68838",
+          "section": "18.10",
+          "title": "Occurrence, Preparation, and Properties of Sulfur",
+          "titleIs": null
+        },
+        {
+          "id": "m68839",
+          "section": "18.11",
+          "title": "Occurrence, Preparation, and Properties of Halogens",
+          "titleIs": null
+        },
+        {
+          "id": "m68840",
+          "section": "18.12",
+          "title": "Occurrence, Preparation, and Properties of the Noble Gases",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 19,
+      "title": "Transition Metals and Coordination Chemistry",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68841",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68842",
+          "section": "19.1",
+          "title": "Occurrence, Preparation, and Properties of Transition Metals and Their Compounds",
+          "titleIs": null
+        },
+        {
+          "id": "m68843",
+          "section": "19.2",
+          "title": "Coordination Chemistry of Transition Metals",
+          "titleIs": null
+        },
+        {
+          "id": "m68844",
+          "section": "19.3",
+          "title": "Spectroscopic and Magnetic Properties of Coordination Compounds",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 20,
+      "title": "Organic Chemistry",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68845",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68846",
+          "section": "20.1",
+          "title": "Hydrocarbons",
+          "titleIs": null
+        },
+        {
+          "id": "m68847",
+          "section": "20.2",
+          "title": "Alcohols and Ethers",
+          "titleIs": null
+        },
+        {
+          "id": "m68848",
+          "section": "20.3",
+          "title": "Aldehydes, Ketones, Carboxylic Acids, and Esters",
+          "titleIs": null
+        },
+        {
+          "id": "m68849",
+          "section": "20.4",
+          "title": "Amines and Amides",
+          "titleIs": null
+        }
+      ]
+    },
+    {
+      "chapter": 21,
+      "title": "Nuclear Chemistry",
+      "titleIs": null,
+      "modules": [
+        {
+          "id": "m68850",
+          "section": "intro",
+          "title": "Introduction",
+          "titleIs": null
+        },
+        {
+          "id": "m68851",
+          "section": "21.1",
+          "title": "Nuclear Structure and Stability",
+          "titleIs": null
+        },
+        {
+          "id": "m68852",
+          "section": "21.2",
+          "title": "Nuclear Equations",
+          "titleIs": null
+        },
+        {
+          "id": "m68854",
+          "section": "21.3",
+          "title": "Radioactive Decay",
+          "titleIs": null
+        },
+        {
+          "id": "m68856",
+          "section": "21.4",
+          "title": "Transmutation and Nuclear Energy",
+          "titleIs": null
+        },
+        {
+          "id": "m68857",
+          "section": "21.5",
+          "title": "Uses of Radioisotopes",
+          "titleIs": null
+        },
+        {
+          "id": "m68858",
+          "section": "21.6",
+          "title": "Biological Effects of Radiation",
+          "titleIs": null
+        }
       ]
     }
   ],
-  "notes": {
-    "supplementaryContent": "Key Terms, Key Equations, Summary, and Exercises are embedded within each section module. They are extracted from the CNXML content during processing, not stored as separate modules.",
-    "answerKey": "Answer keys are found at the end of the book, not in chapter modules."
-  }
+  "appendices": [
+    {
+      "id": "m68859",
+      "title": "The Periodic Table"
+    },
+    {
+      "id": "m68860",
+      "title": "Essential Mathematics"
+    },
+    {
+      "id": "m68861",
+      "title": "Units and Conversion Factors"
+    },
+    {
+      "id": "m68862",
+      "title": "Fundamental Physical Constants"
+    },
+    {
+      "id": "m68863",
+      "title": "Water Properties"
+    },
+    {
+      "id": "m68864",
+      "title": "Composition of Commercial Acids and Bases"
+    },
+    {
+      "id": "m68865",
+      "title": "Standard Thermodynamic Properties for Selected Substances"
+    },
+    {
+      "id": "m68866",
+      "title": "Ionization Constants of Weak Acids"
+    },
+    {
+      "id": "m68867",
+      "title": "Ionization Constants of Weak Bases"
+    },
+    {
+      "id": "m68868",
+      "title": "Solubility Products"
+    },
+    {
+      "id": "m68869",
+      "title": "Formation Constants for Complex Ions"
+    },
+    {
+      "id": "m68870",
+      "title": "Standard Electrode (Half-Cell) Potentials"
+    },
+    {
+      "id": "m68871",
+      "title": "Half-Lives for Several Radioactive Isotopes"
+    }
+  ],
+  "generatedAt": "2026-01-27T15:26:14.376Z",
+  "fetchedFrom": "openstax-github"
 }

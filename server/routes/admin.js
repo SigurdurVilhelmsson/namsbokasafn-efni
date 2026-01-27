@@ -16,6 +16,7 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireAdmin, requireRole, ROLES } = require('../middleware/requireRole');
 const openstaxCatalogue = require('../services/openstaxCatalogue');
 const bookRegistration = require('../services/bookRegistration');
+const bookDataGenerator = require('../services/bookDataGenerator');
 const userService = require('../services/userService');
 const https = require('https');
 
@@ -332,6 +333,82 @@ router.get('/books/:slug/chapters/:chapter', requireAuth, requireRole(ROLES.EDIT
     console.error('Get chapter error:', err);
     res.status(500).json({
       error: 'Failed to get chapter',
+      message: err.message
+    });
+  }
+});
+
+// ============================================================================
+// BOOK DATA GENERATION
+// ============================================================================
+
+/**
+ * POST /api/admin/books/:slug/generate-data
+ * Generate/regenerate the JSON data file for a book
+ *
+ * This fetches the complete chapter structure from OpenStax and merges
+ * Icelandic titles from the database, then writes to server/data/{slug}.json.
+ *
+ * Query params:
+ *   - force: If true, regenerate even if file exists with correct chapter count
+ */
+router.post('/books/:slug/generate-data', requireAuth, requireAdmin(), async (req, res) => {
+  const { slug } = req.params;
+  const force = req.query.force === 'true';
+
+  try {
+    // The slug here could be either the OpenStax catalogue slug (chemistry-2e)
+    // or the Icelandic slug (efnafraedi). We need to find the catalogue slug.
+    let catalogueSlug = slug;
+
+    // Check if this is an Icelandic slug by looking up registration
+    const registeredBook = bookRegistration.getRegisteredBook(slug);
+    if (registeredBook) {
+      catalogueSlug = registeredBook.catalogueSlug;
+    }
+
+    const result = await bookDataGenerator.generateBookData(catalogueSlug, { force });
+
+    res.json({
+      success: true,
+      ...result
+    });
+  } catch (err) {
+    console.error('Generate book data error:', err);
+
+    if (err.message.includes('not available')) {
+      return res.status(400).json({
+        error: 'Book not available',
+        message: err.message
+      });
+    }
+
+    res.status(500).json({
+      error: 'Failed to generate book data',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/admin/books/data-status
+ * Get status of book data files for all available books
+ */
+router.get('/books/data-status', requireAuth, requireAdmin(), (req, res) => {
+  try {
+    const books = bookDataGenerator.listBooks();
+
+    res.json({
+      books,
+      total: books.length,
+      withDataFile: books.filter(b => b.hasDataFile).length,
+      needsUpdate: books.filter(b => b.needsUpdate).length,
+      missingFile: books.filter(b => !b.hasDataFile).length
+    });
+  } catch (err) {
+    console.error('List book data status error:', err);
+    res.status(500).json({
+      error: 'Failed to list book data status',
       message: err.message
     });
   }

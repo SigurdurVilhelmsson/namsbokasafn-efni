@@ -490,7 +490,8 @@
           '</div>' +
           '<div class="actions">' +
           (isRegistered
-            ? '<a href="/books/' + escapeHtml(reg.slug || book.slug) + '" class="btn btn-secondary btn-small">Skoða</a>'
+            ? '<a href="/books/' + escapeHtml(reg.slug || book.slug) + '" class="btn btn-secondary btn-small">Skoða</a>' +
+              '<button class="btn btn-secondary btn-small" onclick="generateBookData(\'' + escapeHtml(book.slug) + '\')" title="Endurgera kaflaskipan"><i class="fas fa-sync"></i></button>'
             : '<button class="btn btn-primary btn-small" onclick="openRegisterModal(\'' + escapeHtml(book.slug) + '\', \'' + escapeHtml(book.title.replace(/'/g, "\\'")) + '\')">Skrá</button>') +
           (book.repoUrl ? '<a href="' + escapeHtml(book.repoUrl) + '" target="_blank" class="btn btn-secondary btn-small"><i class="fas fa-external-link-alt"></i></a>' : '') +
           '</div>' +
@@ -631,6 +632,31 @@
           loadCatalogue();
         } else {
           alert('Villa við uppsetningu');
+        }
+      } catch (e) {
+        alert('Villa: ' + e.message);
+      }
+    }
+
+    async function generateBookData(slug) {
+      if (!confirm('Viltu endurgera kaflaskipan fyrir þessa bók? Þetta sækir nýjustu gögn frá OpenStax.')) {
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/admin/books/' + encodeURIComponent(slug) + '/generate-data?force=true', {
+          method: 'POST'
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          if (data.skipped) {
+            alert('Kaflaskipan þegar til staðar með ' + data.chapters + ' köflum.');
+          } else {
+            alert('Kaflaskipan endurgerð!\n\nKaflar: ' + data.chapters + '\nEiningar: ' + data.modules);
+          }
+        } else {
+          alert('Villa: ' + (data.message || data.error));
         }
       } catch (e) {
         alert('Villa: ' + e.message);
