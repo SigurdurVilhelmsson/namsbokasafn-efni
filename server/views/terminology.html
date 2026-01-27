@@ -50,28 +50,39 @@
         </button>
       </div>
 
-      <div class="filters">
-        <div class="filter-group">
-          <label>Flokkur:</label>
-          <select id="filter-category" onchange="searchTerms()">
-            <option value="">Allir flokkar</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label>Staða:</label>
-          <select id="filter-status" onchange="searchTerms()">
-            <option value="">Allar stöður</option>
-            <option value="approved">Samþykkt</option>
-            <option value="proposed">Í bið</option>
-            <option value="disputed">Til umræðu</option>
-            <option value="needs_review">Þarf yfirferð</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label>Uppruni:</label>
-          <select id="filter-source" onchange="searchTerms()">
-            <option value="">Allir upprunar</option>
-          </select>
+      <div class="accordion" id="filters-accordion">
+        <button class="accordion-header" onclick="toggleAccordion('filters-accordion')">
+          <div class="accordion-header-left">
+            <span class="accordion-toggle">▼</span>
+            <span>Síur</span>
+          </div>
+          <span id="active-filters-badge" class="badge" style="display: none;">0</span>
+        </button>
+        <div class="accordion-body">
+          <div class="filters" style="margin: 0; padding: 0; border: none;">
+            <div class="filter-group">
+              <label>Flokkur:</label>
+              <select id="filter-category" onchange="searchTerms(); updateFilterBadge();">
+                <option value="">Allir flokkar</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Staða:</label>
+              <select id="filter-status" onchange="searchTerms(); updateFilterBadge();">
+                <option value="">Allar stöður</option>
+                <option value="approved">Samþykkt</option>
+                <option value="proposed">Í bið</option>
+                <option value="disputed">Til umræðu</option>
+                <option value="needs_review">Þarf yfirferð</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Uppruni:</label>
+              <select id="filter-source" onchange="searchTerms(); updateFilterBadge();">
+                <option value="">Allir upprunar</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -302,6 +313,34 @@
     let currentPage = 0;
     const pageSize = 50;
 
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
+
+    // Update filter badge to show active filter count
+    function updateFilterBadge() {
+      const category = document.getElementById('filter-category').value;
+      const status = document.getElementById('filter-status').value;
+      const source = document.getElementById('filter-source').value;
+
+      let activeCount = 0;
+      if (category) activeCount++;
+      if (status) activeCount++;
+      if (source) activeCount++;
+
+      const badge = document.getElementById('active-filters-badge');
+      if (activeCount > 0) {
+        badge.textContent = activeCount;
+        badge.style.display = 'inline';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
     // Initialize
     async function init() {
       const authRes = await fetch('/api/auth/me');
@@ -442,13 +481,40 @@
         return;
       }
 
-      let html = '<button class="btn btn-secondary btn-small" onclick="goToPage(' + (currentPageNum - 1) + ')" ' +
-                 (currentPageNum === 0 ? 'disabled' : '') + '><i class="fas fa-chevron-left"></i></button>';
+      let html = '<div class="pagination-controls">';
 
-      html += '<span class="page-info">Síða ' + (currentPageNum + 1) + ' af ' + totalPages + '</span>';
+      // Previous button
+      html += '<button class="pagination-btn" onclick="goToPage(' + (currentPageNum - 1) + ')" ' +
+              (currentPageNum === 0 ? 'disabled' : '') + '><i class="fas fa-chevron-left"></i></button>';
 
-      html += '<button class="btn btn-secondary btn-small" onclick="goToPage(' + (currentPageNum + 1) + ')" ' +
+      // Page numbers (show max 5 pages around current)
+      const startPage = Math.max(0, currentPageNum - 2);
+      const endPage = Math.min(totalPages - 1, currentPageNum + 2);
+
+      if (startPage > 0) {
+        html += '<button class="pagination-btn" onclick="goToPage(0)">1</button>';
+        if (startPage > 1) {
+          html += '<span class="pagination-info">...</span>';
+        }
+      }
+
+      for (let i = startPage; i <= endPage; i++) {
+        html += '<button class="pagination-btn' + (i === currentPageNum ? ' active' : '') + '" ' +
+                'onclick="goToPage(' + i + ')">' + (i + 1) + '</button>';
+      }
+
+      if (endPage < totalPages - 1) {
+        if (endPage < totalPages - 2) {
+          html += '<span class="pagination-info">...</span>';
+        }
+        html += '<button class="pagination-btn" onclick="goToPage(' + (totalPages - 1) + ')">' + totalPages + '</button>';
+      }
+
+      // Next button
+      html += '<button class="pagination-btn" onclick="goToPage(' + (currentPageNum + 1) + ')" ' +
               (currentPageNum >= totalPages - 1 ? 'disabled' : '') + '><i class="fas fa-chevron-right"></i></button>';
+
+      html += '</div>';
 
       document.getElementById('pagination').innerHTML = html;
     }

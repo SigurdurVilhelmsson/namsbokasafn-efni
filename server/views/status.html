@@ -486,13 +486,14 @@
 
     function renderAttentionItems(items) {
       const container = document.getElementById('attention-list');
+      const INITIAL_SHOW = 5;
 
       if (items.length === 0) {
         container.innerHTML = '<p class="text-success center">Ekkert þarfnast athygli!</p>';
         return;
       }
 
-      container.innerHTML = items.slice(0, 5).map(item => {
+      const renderItem = (item) => {
         let icon = '📌';
         let actionUrl = '#';
 
@@ -515,18 +516,52 @@
               `<a href="${actionUrl}" class="btn btn-sm btn-secondary">Skoða</a>`}
           </div>
         `;
-      }).join('');
+      };
+
+      // Show first items directly
+      const visibleItems = items.slice(0, INITIAL_SHOW);
+      const hiddenItems = items.slice(INITIAL_SHOW);
+
+      let html = visibleItems.map(renderItem).join('');
+
+      // Add accordion for remaining items
+      if (hiddenItems.length > 0) {
+        html += `
+          <div class="accordion collapsed" id="attention-more-accordion">
+            <button class="accordion-header" onclick="toggleAccordion('attention-more-accordion')">
+              <div class="accordion-header-left">
+                <span class="accordion-toggle">▼</span>
+                <span>Sýna ${hiddenItems.length} fleiri atriði</span>
+              </div>
+            </button>
+            <div class="accordion-body">
+              ${hiddenItems.map(renderItem).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
     }
 
     function renderActivityFeed(activities) {
       const container = document.getElementById('activity-feed');
+      const INITIAL_SHOW = 5;
 
       if (activities.length === 0) {
         container.innerHTML = '<p class="text-muted center">Engin virkni skráð enn. Virkni birtist hér þegar ritstjórar hefja vinnu.</p>';
         return;
       }
 
-      container.innerHTML = activities.map(activity => `
+      const renderActivity = (activity) => `
         <div class="activity-item">
           <span class="activity-icon">${activity.icon || '📌'}</span>
           <div class="activity-content">
@@ -535,18 +570,55 @@
             <span class="activity-time">${activity.timeAgo}</span>
           </div>
         </div>
-      `).join('');
+      `;
+
+      const visibleActivities = activities.slice(0, INITIAL_SHOW);
+      const hiddenActivities = activities.slice(INITIAL_SHOW);
+
+      let html = visibleActivities.map(renderActivity).join('');
+
+      if (hiddenActivities.length > 0) {
+        html += `
+          <div class="accordion collapsed" id="activity-more-accordion">
+            <button class="accordion-header" onclick="toggleAccordion('activity-more-accordion')">
+              <div class="accordion-header-left">
+                <span class="accordion-toggle">▼</span>
+                <span>Sýna ${hiddenActivities.length} fleiri</span>
+              </div>
+            </button>
+            <div class="accordion-body">
+              ${hiddenActivities.map(renderActivity).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
     }
 
     function renderMiniMatrix(chapterMatrix) {
       const container = document.getElementById('mini-matrix');
+      const PILOT_CHAPTERS = 4; // Chapters 1-4 for pilot
 
       if (!chapterMatrix.efnafraedi) {
         container.innerHTML = '<p class="text-muted">Engin gögn</p>';
         return;
       }
 
-      const chapters = chapterMatrix.efnafraedi.chapters.slice(0, 8);
+      const allChapters = chapterMatrix.efnafraedi.chapters.slice(0, 8);
+      const pilotChapters = allChapters.filter(ch => ch.chapter <= PILOT_CHAPTERS);
+      const otherChapters = allChapters.filter(ch => ch.chapter > PILOT_CHAPTERS);
+
+      const renderChapterRow = (ch) => {
+        let row = `<div class="matrix-mini-chapter" onclick="openAssignmentModal('efnafraedi', ${ch.chapter})">K${ch.chapter}</div>`;
+        for (const stage of DISPLAY_STAGES) {
+          const status = ch.stages[stage] || 'not-started';
+          const stageLabel = STAGE_FULL_LABELS[stage] || STAGE_LABELS[stage] || stage;
+          const statusLabel = STATUS_LABELS[status] || status;
+          row += `<div class="matrix-mini-cell status-${status}" title="${stageLabel}: ${statusLabel}"></div>`;
+        }
+        return row;
+      };
 
       let html = '<div class="matrix-mini-grid">';
 
@@ -556,18 +628,30 @@
         html += `<div class="matrix-mini-header">${STAGE_LABELS[stage] || stage}</div>`;
       }
 
-      // Chapter rows
-      for (const ch of chapters) {
-        html += `<div class="matrix-mini-chapter" onclick="openAssignmentModal('efnafraedi', ${ch.chapter})">K${ch.chapter}</div>`;
-        for (const stage of DISPLAY_STAGES) {
-          const status = ch.stages[stage] || 'not-started';
-          const stageLabel = STAGE_FULL_LABELS[stage] || STAGE_LABELS[stage] || stage;
-          const statusLabel = STATUS_LABELS[status] || status;
-          html += `<div class="matrix-mini-cell status-${status}" title="${stageLabel}: ${statusLabel}"></div>`;
-        }
-      }
+      // Pilot chapter rows (always visible)
+      html += pilotChapters.map(renderChapterRow).join('');
 
       html += '</div>';
+
+      // Other chapters in accordion (collapsed by default)
+      if (otherChapters.length > 0) {
+        html += `
+          <div class="accordion collapsed" id="matrix-more-accordion" style="margin-top: 0.5rem;">
+            <button class="accordion-header" onclick="toggleAccordion('matrix-more-accordion')">
+              <div class="accordion-header-left">
+                <span class="accordion-toggle">▼</span>
+                <span>Kaflar ${PILOT_CHAPTERS + 1}+ (${otherChapters.length} kaflar)</span>
+              </div>
+            </button>
+            <div class="accordion-body" style="padding: 0;">
+              <div class="matrix-mini-grid">
+                ${otherChapters.map(renderChapterRow).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
       container.innerHTML = html;
     }
 

@@ -1121,7 +1121,486 @@ a:hover {
 }
 
 /* ==========================================================================
-   11. RESPONSIVE BREAKPOINTS
+   11. PROGRESSIVE DISCLOSURE COMPONENTS
+   ========================================================================== */
+
+/* --- Accordion Component --- */
+.accordion {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--gray-50);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: background var(--transition-fast);
+}
+
+.accordion-header:hover {
+  background: var(--gray-100);
+}
+
+.accordion-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.accordion-toggle {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+
+.accordion.collapsed .accordion-toggle {
+  transform: rotate(-90deg);
+}
+
+.accordion.collapsed .accordion-body {
+  display: none;
+}
+
+.accordion-body {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.accordion-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* --- Dropzone Component --- */
+.dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--bg-card);
+}
+
+.dropzone:hover {
+  border-color: var(--primary);
+  background: rgba(37, 99, 235, 0.03);
+}
+
+.dropzone.drag-over {
+  border-color: var(--primary);
+  background: rgba(37, 99, 235, 0.08);
+  border-style: solid;
+}
+
+.dropzone-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.dropzone-text {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.dropzone-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.dropzone input[type="file"] {
+  display: none;
+}
+
+.dropzone .btn {
+  margin-top: 0.5rem;
+}
+
+/* --- Progress Ring (Circular) --- */
+.progress-ring {
+  width: 48px;
+  height: 48px;
+  transform: rotate(-90deg);
+}
+
+.progress-ring-bg {
+  fill: none;
+  stroke: var(--gray-200);
+  stroke-width: 4;
+}
+
+.progress-ring-fill {
+  fill: none;
+  stroke: var(--success);
+  stroke-width: 4;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-ring-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Size variants */
+.progress-ring-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.progress-ring-lg {
+  width: 64px;
+  height: 64px;
+}
+
+/* --- Progress Linear Bar --- */
+.progress-linear {
+  height: 0.5rem;
+  background: var(--gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  flex: 1;
+  max-width: 120px;
+}
+
+.progress-linear-fill {
+  height: 100%;
+  background: var(--success);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.progress-linear-full {
+  max-width: none;
+}
+
+/* --- Warning Banner (Dismissible) --- */
+.warning-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--warning-light);
+  border: 1px solid var(--warning);
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+}
+
+.warning-banner-icon {
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.warning-banner-content {
+  flex: 1;
+}
+
+.warning-banner-content strong {
+  display: block;
+  margin-bottom: 0.125rem;
+}
+
+.warning-banner-content p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.warning-dismiss {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.6;
+}
+
+.warning-dismiss:hover {
+  opacity: 1;
+}
+
+/* Info/Error banner variants */
+.info-banner {
+  background: var(--info-light);
+  border-color: var(--info);
+}
+
+.error-banner {
+  background: var(--error-light);
+  border-color: var(--error);
+}
+
+.success-banner {
+  background: var(--success-light);
+  border-color: var(--success);
+}
+
+/* --- File Grid --- */
+.file-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.25rem 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.file-grid-compact {
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  padding: 0.125rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-item.uploaded {
+  color: var(--success);
+}
+
+.file-item.pending {
+  color: var(--text-muted);
+}
+
+.file-item .file-icon {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+}
+
+.file-item .file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- Step Header --- */
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.step-header-left h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-header-left p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.step-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.875rem;
+}
+
+/* --- Step Navigation --- */
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.step-nav .btn-primary {
+  margin-left: auto;
+}
+
+/* --- Spinner --- */
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--gray-200);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.spinner-sm {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-width: 1.5px;
+}
+
+.spinner-lg {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-width: 3px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Button Size/Variant Additions --- */
+.btn-large {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+}
+
+.btn-small {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.btn-danger {
+  background: var(--error);
+  color: white;
+  border: 1px solid var(--error);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #b91c1c;
+  border-color: #b91c1c;
+}
+
+.btn-outline-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-outline-secondary:hover:not(:disabled) {
+  background: var(--gray-100);
+  border-color: var(--gray-400);
+}
+
+/* --- Expandable Section --- */
+.expandable {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.expandable.collapsed {
+  max-height: 0;
+}
+
+.expandable-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+.expandable-toggle:hover {
+  text-decoration: underline;
+}
+
+.expandable-toggle-icon {
+  transition: transform 0.2s ease;
+}
+
+.expandable-toggle.expanded .expandable-toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* --- Pagination --- */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.pagination-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: var(--gray-100);
+  border-color: var(--gray-300);
+}
+
+.pagination-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0 0.5rem;
+}
+
+/* ==========================================================================
+   12. RESPONSIVE BREAKPOINTS
    ========================================================================== */
 
 @media (max-width: 1024px) {
@@ -1167,6 +1646,45 @@ a:hover {
   .modal-content {
     margin: 0.5rem;
     max-height: calc(100vh - 1rem);
+  }
+
+  /* Progressive disclosure components - tablet */
+  .step-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-card);
+    padding: 1rem;
+    margin: 0;
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+
+  .step-nav-sticky-spacer {
+    height: 5rem;
+  }
+
+  .file-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .step-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .step-header-right {
+    align-self: flex-start;
+  }
+
+  .dropzone {
+    padding: 1.5rem 1rem;
+  }
+
+  .dropzone-icon {
+    font-size: 1.5rem;
   }
 }
 

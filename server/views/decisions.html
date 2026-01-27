@@ -71,15 +71,26 @@
           <span class="icon">🔍</span> Leita
         </button>
       </div>
-      <div class="filters">
-        <select class="form-select" id="filter-type" onchange="searchDecisions()">
-          <option value="">Allir flokkar</option>
-        </select>
-        <select class="form-select" id="filter-book" onchange="searchDecisions()">
-          <option value="">Allar bækur</option>
-          <option value="efnafraedi">Efnafræði</option>
-        </select>
-        <button class="btn btn-secondary btn-sm" onclick="clearFilters()">Hreinsa</button>
+      <div class="accordion" id="filters-accordion">
+        <button class="accordion-header" onclick="toggleAccordion('filters-accordion')">
+          <div class="accordion-header-left">
+            <span class="accordion-toggle">▼</span>
+            <span>Síur</span>
+          </div>
+          <span id="active-filters-badge" class="badge" style="display: none;">0</span>
+        </button>
+        <div class="accordion-body">
+          <div class="filters" style="margin: 0; padding: 0; border: none;">
+            <select class="form-select" id="filter-type" onchange="searchDecisions(); updateFilterBadge();">
+              <option value="">Allir flokkar</option>
+            </select>
+            <select class="form-select" id="filter-book" onchange="searchDecisions(); updateFilterBadge();">
+              <option value="">Allar bækur</option>
+              <option value="efnafraedi">Efnafræði</option>
+            </select>
+            <button class="btn btn-secondary btn-sm" onclick="clearFilters()">Hreinsa</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -162,6 +173,32 @@
     let currentOffset = 0;
     let hasMore = false;
     let decisionTypes = [];
+
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
+
+    // Update filter badge to show active filter count
+    function updateFilterBadge() {
+      const type = document.getElementById('filter-type').value;
+      const book = document.getElementById('filter-book').value;
+
+      let activeCount = 0;
+      if (type) activeCount++;
+      if (book) activeCount++;
+
+      const badge = document.getElementById('active-filters-badge');
+      if (activeCount > 0) {
+        badge.textContent = activeCount;
+        badge.style.display = 'inline';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
 
     // ============================================================================
     // INITIALIZATION

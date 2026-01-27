@@ -109,6 +109,14 @@
   <script>
     let currentAgenda = null;
 
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
+
     async function init() {
       await loadUserInfo();
       await loadAgenda();

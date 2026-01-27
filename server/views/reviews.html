@@ -36,13 +36,17 @@
   </header>
 
   <main class="container">
-    <!-- SLA Summary -->
-    <div class="sla-summary" id="sla-summary" style="display: none;">
-      <div class="sla-header">
-        <h3><i class="fas fa-clock"></i> SLA Staða</h3>
+    <!-- SLA Summary - Accordion -->
+    <div class="accordion" id="sla-accordion" style="display: none;">
+      <button class="accordion-header" onclick="toggleAccordion('sla-accordion')">
+        <div class="accordion-header-left">
+          <span class="accordion-toggle">▼</span>
+          <span><i class="fas fa-clock" style="margin-right: 0.5rem; color: var(--primary);"></i> SLA Staða</span>
+        </div>
         <span class="sla-target">Markmið: <strong id="sla-target-days">2</strong> dagar</span>
-      </div>
-      <div class="sla-stats">
+      </button>
+      <div class="accordion-body" id="sla-summary">
+        <div class="sla-stats">
         <div class="sla-stat sla-on-track">
           <span class="sla-stat-value" id="sla-on-track">0</span>
           <span class="sla-stat-label">Á réttri leið</span>
@@ -68,10 +72,11 @@
           <span class="sla-stat-label">SLA fylgni</span>
         </div>
       </div>
-      <div class="sla-oldest" id="sla-oldest" style="display: none;">
-        <i class="fas fa-exclamation-triangle"></i>
-        <span>Elsta yfirferð: <strong id="oldest-review-info"></strong></span>
-        <button class="btn btn-sm btn-primary" id="view-oldest-btn">Skoða</button>
+        <div class="sla-oldest" id="sla-oldest" style="display: none;">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>Elsta yfirferð: <strong id="oldest-review-info"></strong></span>
+          <button class="btn btn-sm btn-primary" id="view-oldest-btn">Skoða</button>
+        </div>
       </div>
     </div>
 
@@ -289,13 +294,22 @@
       }
     }
 
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
+
     function updateSLASummary(stats) {
+      const accordion = document.getElementById('sla-accordion');
       if (!stats) {
-        document.getElementById('sla-summary').style.display = 'none';
+        accordion.style.display = 'none';
         return;
       }
 
-      document.getElementById('sla-summary').style.display = 'block';
+      accordion.style.display = 'block';
       document.getElementById('sla-target-days').textContent = stats.target?.targetDays || 2;
       document.getElementById('sla-on-track').textContent = stats.onTrack || 0;
       document.getElementById('sla-at-risk').textContent = stats.atRisk || 0;
@@ -768,29 +782,10 @@
       cursor: pointer;
     }
 
-    /* SLA Summary Panel */
-    .sla-summary {
-      background: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      padding: 1rem 1.5rem;
+    /* SLA Summary Panel - now using accordion */
+    #sla-accordion {
       margin-bottom: 1rem;
     }
-    .sla-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    .sla-header h3 {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--gray-700);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .sla-header h3 i { color: var(--primary); }
     .sla-target {
       font-size: 0.75rem;
       color: var(--gray-500);

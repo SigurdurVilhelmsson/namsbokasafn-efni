@@ -932,6 +932,17 @@
     let isSourceVisible = false;
 
     // ========================================
+    // COMMON ACCORDION TOGGLE
+    // ========================================
+
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
+
+    // ========================================
     // MORE DROPDOWN MENU (Simplified Header)
     // ========================================
 

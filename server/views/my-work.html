@@ -379,6 +379,7 @@
       const section = document.getElementById('up-next-section');
       const container = document.getElementById('up-next-list');
       const countBadge = document.getElementById('up-next-count');
+      const INITIAL_SHOW = 3;
 
       if (!tasks || tasks.length === 0) {
         section.style.display = 'none';
@@ -388,7 +389,7 @@
       section.style.display = 'block';
       countBadge.textContent = tasks.length;
 
-      container.innerHTML = tasks.map(task => {
+      const renderTask = (task) => {
         const isChangesRequested = task.type === 'changes_requested';
         const priorityClass = task.priority === 1 ? 'item-urgent' : task.priority === 2 ? 'item-soon' : '';
 
@@ -411,7 +412,38 @@
             <span class="item-arrow">→</span>
           </a>
         `;
-      }).join('');
+      };
+
+      const visibleTasks = tasks.slice(0, INITIAL_SHOW);
+      const hiddenTasks = tasks.slice(INITIAL_SHOW);
+
+      let html = visibleTasks.map(renderTask).join('');
+
+      if (hiddenTasks.length > 0) {
+        html += `
+          <div class="accordion collapsed" id="up-next-more-accordion">
+            <button class="accordion-header" onclick="toggleAccordion('up-next-more-accordion')">
+              <div class="accordion-header-left">
+                <span class="accordion-toggle">▼</span>
+                <span>Sýna ${hiddenTasks.length} fleiri verkefni</span>
+              </div>
+            </button>
+            <div class="accordion-body">
+              ${hiddenTasks.map(renderTask).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = html;
+    }
+
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
     }
 
     // ========================================

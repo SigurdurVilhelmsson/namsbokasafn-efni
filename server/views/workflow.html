@@ -818,10 +818,104 @@
       // Get upload progress from data
       const progress = data.uploadProgress || { uploaded: 0, expected: 0, complete: false, missing: [], matchedFiles: [] };
       const expectedFiles = data.session?.expectedFiles?.['mt-upload'] || [];
-      const uploadedFiles = data.session?.uploadedFiles?.['mt-upload'] || [];
       const matchedFiles = progress.matchedFiles || [];
+      const hasSplitFiles = expectedFiles.some(exp => exp.part);
+      const progressPercent = progress.expected > 0
+        ? Math.round((progress.uploaded / progress.expected) * 100) : 0;
 
-      // Create a lookup for matched uploads (by section+part or section)
+      // Issue analysis
+      const sessionIssues = data.session?.issues || [];
+      const pendingIssues = sessionIssues.filter(i => i.status === 'pending');
+      const blockedIssues = pendingIssues.filter(i => i.category === 'BLOCKED');
+
+      // Build the page with modular functions
+      contentEl.innerHTML = '<div class="mt-upload-content">' +
+        buildMTStepHeader(progress, progressPercent) +
+        buildMTUploadZone(data.sessionId) +
+        (hasSplitFiles ? buildMTWarningBanner(data.sessionId) : '') +
+        buildMTFilesAccordion(expectedFiles, matchedFiles, progress, progressPercent) +
+        buildMTSupplementaryAccordion(data.supplementaryFiles, data.sessionId) +
+        buildMTInstructionsAccordion() +
+        buildMTIssuesSection(sessionIssues, data.sessionId) +
+        buildMTStepNav(data, progress, blockedIssues) +
+        '</div>';
+
+      // Setup interactions
+      setupMTDropzone(data.sessionId, data);
+      setupUploadHandler(data, 'mt-upload');
+      setupRollbackButton(data);
+      setupMTProceedButton(data, progress);
+    }
+
+    // Build step header with circular progress ring
+    function buildMTStepHeader(progress, progressPercent) {
+      const circumference = 2 * Math.PI * 18; // radius = 18
+      const offset = circumference - (progressPercent / 100) * circumference;
+
+      return '<div class="step-header">' +
+        '<div class="step-header-left">' +
+        '<h3><span class="step-num">2</span> Vélþýðing</h3>' +
+        '<p>Þýddu skrár á malstadur.is</p>' +
+        '</div>' +
+        '<div class="step-header-right">' +
+        '<svg class="progress-ring" viewBox="0 0 48 48">' +
+        '<circle class="progress-ring-bg" cx="24" cy="24" r="18"/>' +
+        '<circle class="progress-ring-fill" cx="24" cy="24" r="18" ' +
+        'stroke-dasharray="' + circumference + '" stroke-dashoffset="' + offset + '"/>' +
+        '</svg>' +
+        '<span class="progress-ring-text">' + progress.uploaded + '/' + progress.expected + '</span>' +
+        '</div>' +
+        '</div>';
+    }
+
+    // Build the upload dropzone (primary action)
+    function buildMTUploadZone(sessionId) {
+      return '<div class="upload-hero">' +
+        '<div class="dropzone" id="dropzone">' +
+        '<div class="dropzone-icon">📁</div>' +
+        '<div class="dropzone-text">Dragðu .md skrár hingað</div>' +
+        '<div class="dropzone-hint">eða</div>' +
+        '<input type="file" id="dropzone-input" multiple accept=".md">' +
+        '<button type="button" class="btn btn-secondary" onclick="document.getElementById(\'dropzone-input\').click()">Velja skrár</button>' +
+        '</div>' +
+        '</div>';
+    }
+
+    // Build dismissible warning banner for split files
+    function buildMTWarningBanner(sessionId) {
+      // Check if user has dismissed this warning
+      const dismissKey = 'mt-split-warning-dismissed-' + sessionId;
+      if (localStorage.getItem(dismissKey)) {
+        return '';
+      }
+
+      return '<div class="warning-banner" id="split-warning">' +
+        '<span class="warning-banner-icon">⚠️</span>' +
+        '<div class="warning-banner-content">' +
+        '<strong>Sumar skrár voru skiptar í hluta</strong>' +
+        '<p>Þýddu hvern hluta fyrir sig og hladdu þeim öllum upp.</p>' +
+        '</div>' +
+        '<button class="warning-dismiss" onclick="dismissMTWarning(\'' + sessionId + '\')" title="Loka">×</button>' +
+        '</div>';
+    }
+
+    // Dismiss split files warning
+    function dismissMTWarning(sessionId) {
+      const dismissKey = 'mt-split-warning-dismissed-' + sessionId;
+      localStorage.setItem(dismissKey, 'true');
+      const warning = document.getElementById('split-warning');
+      if (warning) {
+        warning.style.display = 'none';
+      }
+    }
+
+    // Build collapsible files accordion
+    function buildMTFilesAccordion(expectedFiles, matchedFiles, progress, progressPercent) {
+      if (expectedFiles.length === 0) {
+        return '';
+      }
+
+      // Create lookup for matched uploads
       const matchedKeys = new Set();
       for (const m of matchedFiles) {
         if (m.section && m.part) {
@@ -833,184 +927,283 @@
         }
       }
 
-      // Create compact file checklist with collapsible header
-      let checklistHtml = '';
-      if (expectedFiles.length > 0) {
-        const shouldCollapse = expectedFiles.length > 6;
-        const collapseClass = shouldCollapse ? ' collapsed' : '';
+      // Build file grid items
+      let fileItems = '';
+      for (const exp of expectedFiles) {
+        const section = typeof exp === 'object' ? exp.section : null;
+        const part = typeof exp === 'object' ? exp.part : null;
+        const moduleId = typeof exp === 'object' ? exp.moduleId : null;
+        const displayName = typeof exp === 'object' ? exp.displayName : exp;
 
-        checklistHtml = '<div class="file-checklist' + collapseClass + '" id="file-checklist">' +
-          '<div class="checklist-header" onclick="toggleChecklist()">' +
-          '<div class="checklist-header-left">' +
-          '<strong>Skrár: ' + progress.uploaded + '/' + progress.expected + ' hlaðið upp</strong>' +
-          '</div>' +
-          '<span class="checklist-toggle">▼</span>' +
-          '</div>' +
-          '<div class="checklist-body"><ul class="checklist">';
-
-        for (const exp of expectedFiles) {
-          // Expected is object with section, part, displayName, downloadName, expectedUpload
-          const section = typeof exp === 'object' ? exp.section : null;
-          const part = typeof exp === 'object' ? exp.part : null;
-          const moduleId = typeof exp === 'object' ? exp.moduleId : (exp.match && exp.match(/(m\d+)/)?.[1]);
-          const displayName = typeof exp === 'object' ? exp.displayName : exp;
-          const downloadName = typeof exp === 'object' ? exp.downloadName : null;
-          const expectedUpload = typeof exp === 'object' ? exp.expectedUpload : null;
-
-          // Check if uploaded (by section+part, section, or moduleId)
-          let key = null;
-          if (section && part) {
-            key = section + ':' + part;
-          } else if (section) {
-            key = section;
-          } else if (moduleId) {
-            key = moduleId;
-          }
-          const isUploaded = key && matchedKeys.has(key);
-          const icon = isUploaded ? '✓' : '○';
-          const cls = isUploaded ? 'uploaded' : 'pending';
-
-          // Compact display: just section name, full details in tooltip
-          const shortName = escapeHtml(displayName);
-          let tooltipText = displayName;
-          if (downloadName) {
-            tooltipText += '\nNiðurhal: ' + downloadName;
-            if (expectedUpload) {
-              tooltipText += '\nUpphal: ' + expectedUpload;
-            }
-          }
-
-          checklistHtml += '<li class="checklist-item ' + cls + '" title="' + escapeHtml(tooltipText) + '">' +
-            '<span class="check-icon">' + icon + '</span>' +
-            '<span class="file-info">' + shortName + '</span></li>';
+        // Check if uploaded
+        let key = null;
+        if (section && part) {
+          key = section + ':' + part;
+        } else if (section) {
+          key = section;
+        } else if (moduleId) {
+          key = moduleId;
         }
-        checklistHtml += '</ul></div></div>';
-      }
+        const isUploaded = key && matchedKeys.has(key);
+        const icon = isUploaded ? '✓' : '○';
+        const cls = isUploaded ? 'uploaded' : 'pending';
 
-      // Show warning if split files
-      const hasSplitFiles = expectedFiles.some(exp => exp.part);
-      let splitWarning = '';
-      if (hasSplitFiles) {
-        splitWarning = '<div class="alert alert-warning" style="margin-bottom: 1rem;">' +
-          '<strong>⚠️ Stórar skrár skipt upp</strong><br>' +
-          'Sumar skrár voru of stórar fyrir Erlendur (>18.000 stafir) og hafa verið skiptar í hluta. ' +
-          'Þýddu hvern hluta fyrir sig og hladdu þeim öllum upp.' +
+        fileItems += '<div class="file-item ' + cls + '" title="' + escapeHtml(displayName) + '">' +
+          '<span class="file-icon">' + icon + '</span>' +
+          '<span class="file-name">' + escapeHtml(displayName) + '</span>' +
           '</div>';
       }
 
-      // Progress summary
-      const progressSummary = progress.expected > 0
-        ? '<div class="progress-summary"><strong>' + progress.uploaded + ' af ' + progress.expected + '</strong> skrám hlaðið upp' +
-          (progress.complete ? ' <span class="text-success">✓ Tilbúið</span>' : '') + '</div>'
-        : '';
+      const remaining = progress.expected - progress.uploaded;
+      const statusText = progress.complete
+        ? '<span class="text-success">✓ Allar skrár</span>'
+        : remaining + ' eftir';
 
-      // Issue summary from session
-      const sessionIssues = data.session?.issues || [];
+      return '<div class="accordion" id="files-accordion">' +
+        '<button class="accordion-header" onclick="toggleAccordion(\'files-accordion\')">' +
+        '<div class="accordion-header-left">' +
+        '<span class="accordion-toggle">▼</span>' +
+        '<span>Skrár: ' + progress.uploaded + ' hlaðið upp, ' + statusText + '</span>' +
+        '</div>' +
+        '<div class="accordion-progress">' +
+        '<div class="progress-linear"><div class="progress-linear-fill" style="width: ' + progressPercent + '%"></div></div>' +
+        '<span>' + progressPercent + '%</span>' +
+        '</div>' +
+        '</button>' +
+        '<div class="accordion-body">' +
+        '<div class="file-grid">' + fileItems + '</div>' +
+        '</div>' +
+        '</div>';
+    }
+
+    // Build collapsible supplementary files accordion
+    function buildMTSupplementaryAccordion(suppFiles, sessionId) {
+      if (!suppFiles || suppFiles.length === 0) {
+        return '';
+      }
+
+      const translatableFiles = suppFiles.filter(f => f.translatableStrings > 0);
+      if (translatableFiles.length === 0) {
+        return '';
+      }
+
+      let fileItems = '';
+      for (const sf of suppFiles) {
+        if (sf.translatableStrings > 0) {
+          fileItems += '<div class="supp-file">' +
+            '<span>📝</span>' +
+            '<a href="/api/workflow/' + sessionId + '/supplementary-file/' + encodeURIComponent(sf.filename) + '" ' +
+            'download="' + escapeHtml(sf.filename) + '">' + escapeHtml(sf.filename) + '</a>' +
+            '<span class="supp-count">' + sf.translatableStrings + ' strengir</span>' +
+            '</div>';
+        }
+      }
+
+      return '<div class="accordion collapsed" id="supp-accordion">' +
+        '<button class="accordion-header" onclick="toggleAccordion(\'supp-accordion\')">' +
+        '<div class="accordion-header-left">' +
+        '<span class="accordion-toggle">▼</span>' +
+        '<span>Viðbótarskrár (' + translatableFiles.length + ' skrár)</span>' +
+        '</div>' +
+        '</button>' +
+        '<div class="accordion-body">' +
+        '<div class="supp-grid">' + fileItems + '</div>' +
+        '<div style="margin-top: 0.75rem;">' +
+        '<a href="/api/workflow/' + sessionId + '/supplementary-files" class="btn btn-secondary btn-small" download>' +
+        'Sækja allar (ZIP)</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+    }
+
+    // Build collapsible instructions accordion
+    function buildMTInstructionsAccordion() {
+      return '<div class="accordion collapsed" id="instructions-accordion">' +
+        '<button class="accordion-header" onclick="toggleAccordion(\'instructions-accordion\')">' +
+        '<div class="accordion-header-left">' +
+        '<span class="accordion-toggle">▼</span>' +
+        '<span>Leiðbeiningar</span>' +
+        '</div>' +
+        '</button>' +
+        '<div class="accordion-body">' +
+        '<div class="instructions-content">' +
+        '<ol>' +
+        '<li>Farðu á <a href="https://malstadur.is" target="_blank">malstadur.is</a></li>' +
+        '<li>Hladdu upp .md skránum (ein í einu)</li>' +
+        '<li>Veldu enska → íslenska</li>' +
+        '<li>Sæktu þýddu skrárnar</li>' +
+        '<li>Hladdu þeim upp hér (drag-and-drop eða veldu skrár)</li>' +
+        '</ol>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+    }
+
+    // Build issues section (if any)
+    function buildMTIssuesSection(sessionIssues, sessionId) {
+      if (!sessionIssues || sessionIssues.length === 0) {
+        return '';
+      }
+
       const pendingIssues = sessionIssues.filter(i => i.status === 'pending');
       const blockedIssues = pendingIssues.filter(i => i.category === 'BLOCKED');
       const reviewIssues = pendingIssues.filter(i => i.category === 'EDITOR_CONFIRM' || i.category === 'BOARD_REVIEW');
       const autoFixedCount = sessionIssues.filter(i => i.category === 'AUTO_FIX' && i.status === 'resolved').length;
 
-      let issueSummaryHtml = '';
-      if (sessionIssues.length > 0) {
-        issueSummaryHtml = '<div class="issue-summary">';
-        issueSummaryHtml += '<h4>Atriðagreining:</h4>';
-        issueSummaryHtml += '<div class="issue-stats">';
-        if (autoFixedCount > 0) {
-          issueSummaryHtml += '<span class="issue-stat stat-success">' + autoFixedCount + ' sjálfvirkt lagfært</span>';
-        }
-        if (reviewIssues.length > 0) {
-          issueSummaryHtml += '<span class="issue-stat stat-warning">' + reviewIssues.length + ' þarf yfirlestur</span>';
-        }
-        if (blockedIssues.length > 0) {
-          issueSummaryHtml += '<span class="issue-stat stat-error">' + blockedIssues.length + ' vandamál lokað á</span>';
-        }
-        issueSummaryHtml += '</div>';
-        if (pendingIssues.length > 0) {
-          issueSummaryHtml += '<a href="/issues?sessionId=' + (data.sessionId || '') + '" class="btn btn-secondary btn-small" style="margin-top: 0.5rem;">Skoða atriði →</a>';
-        }
-        issueSummaryHtml += '</div>';
+      if (autoFixedCount === 0 && reviewIssues.length === 0 && blockedIssues.length === 0) {
+        return '';
       }
 
-      // Build supplementary files section (figures, equations, strings)
-      let supplementaryHtml = '';
-      const suppFiles = data.supplementaryFiles || [];
-      if (suppFiles.length > 0) {
-        const translatableFiles = suppFiles.filter(f => f.translatableStrings > 0);
-        supplementaryHtml = '<div class="supplementary-section">' +
-          '<h4>Viðbótarskrár fyrir þýðingu</h4>' +
-          '<p class="supp-desc">Eftirfarandi skrár innihalda texta sem þarf að þýða (myndatextar, lýsingar o.fl.):</p>' +
-          '<ul class="supplementary-list">';
-
-        for (const sf of suppFiles) {
-          const hasContent = sf.translatableStrings > 0;
-          const icon = hasContent ? '📝' : '📄';
-          const countText = hasContent ? ' (' + sf.translatableStrings + ' strengir)' : ' (ekkert þýðanlegt)';
-          const cls = hasContent ? 'has-content' : 'no-content';
-          supplementaryHtml += '<li class="supp-item ' + cls + '">' +
-            '<span class="supp-icon">' + icon + '</span>' +
-            '<span class="supp-info">' +
-            '<a href="/api/workflow/' + data.sessionId + '/supplementary-file/' + encodeURIComponent(sf.filename) + '" ' +
-            'download="' + escapeHtml(sf.filename) + '">' + escapeHtml(sf.filename) + '</a>' +
-            '<span class="supp-type">' + escapeHtml(sf.typeLabel) + countText + '</span>' +
-            '</span></li>';
-        }
-        supplementaryHtml += '</ul>';
-
-        if (translatableFiles.length > 0) {
-          supplementaryHtml += '<div class="supp-actions">' +
-            '<a href="/api/workflow/' + data.sessionId + '/supplementary-files" class="btn btn-secondary btn-small" download>' +
-            'Sækja allar viðbótarskrár (ZIP)</a>' +
-            '</div>';
-        }
-        supplementaryHtml += '</div>';
+      let stats = '';
+      if (autoFixedCount > 0) {
+        stats += '<span class="issue-stat stat-success">' + autoFixedCount + ' sjálfvirkt lagfært</span>';
+      }
+      if (reviewIssues.length > 0) {
+        stats += '<span class="issue-stat stat-warning">' + reviewIssues.length + ' þarf yfirlestur</span>';
+      }
+      if (blockedIssues.length > 0) {
+        stats += '<span class="issue-stat stat-error">' + blockedIssues.length + ' vandamál</span>';
       }
 
-      // Determine if proceed button should be enabled
+      return '<div class="issue-summary" style="margin-top: 0.75rem;">' +
+        '<div class="issue-stats">' + stats + '</div>' +
+        (pendingIssues.length > 0
+          ? '<a href="/issues?sessionId=' + sessionId + '" class="btn btn-secondary btn-small" style="margin-top: 0.5rem;">Skoða atriði →</a>'
+          : '') +
+        '</div>';
+    }
+
+    // Build step navigation
+    function buildMTStepNav(data, progress, blockedIssues) {
       const canProceed = progress.complete || progress.expected === 0;
-
-      // Check if blocked issues prevent proceeding
       const cannotProceedDueToIssues = blockedIssues.length > 0;
       const proceedDisabled = !canProceed || cannotProceedDueToIssues;
-      const proceedTitle = cannotProceedDueToIssues
-        ? 'Leystu vandamál fyrst'
-        : (canProceed ? '' : 'Hladdu upp öllum skrám fyrst');
 
-      // Get rollback button HTML
+      let proceedTitle = '';
+      if (cannotProceedDueToIssues) {
+        proceedTitle = 'Leystu vandamál fyrst';
+      } else if (!canProceed) {
+        proceedTitle = 'Hladdu upp öllum skrám fyrst';
+      }
+
       const rollbackHtml = getRollbackButtonHtml(data);
 
-      contentEl.innerHTML =
-        '<div class="alert alert-info">' +
-        '<strong>Skref 2: Vélþýðing</strong>' +
-        splitWarning +
-        '<ol class="instructions-list">' +
-        '<li>Farðu á <a href="https://malstadur.is" target="_blank">malstadur.is</a></li>' +
-        '<li>Hladdu upp .md skránum (ein í einu)</li>' +
-        '<li>Veldu enska → íslenska</li>' +
-        '<li>Sæktu þýddu skrárnar</li>' +
-        '<li>Hladdu þeim upp hér fyrir neðan</li>' +
-        '</ol>' +
-        progressSummary +
-        issueSummaryHtml +
-        checklistHtml +
-        supplementaryHtml +
-        '<div class="upload-section"><h4>Hlaða upp þýddum .md skrám:</h4>' +
-        '<form id="upload-form" class="upload-form">' +
-        '<input type="file" name="file" id="upload-file" multiple accept=".md">' +
-        '<button type="submit" class="btn btn-secondary">Hlaða upp</button>' +
-        '</form>' +
-        '<div class="step-nav-buttons">' +
+      return '<div class="step-nav">' +
         rollbackHtml +
         '<button id="proceed-btn" class="btn btn-primary btn-large"' +
         (proceedDisabled ? ' disabled title="' + proceedTitle + '"' : '') +
-        '>Halda áfram í næsta skref →</button>' +
-        '</div>' +
-        '</div></div>';
+        '>Halda áfram í yfirferð →</button>' +
+        '</div>';
+    }
 
-      setupUploadHandler(data, 'mt-upload');
-      setupRollbackButton(data);
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
 
-      // Setup proceed button
+    // Setup drag-and-drop for the dropzone
+    function setupMTDropzone(sessionId, data) {
+      const dropzone = document.getElementById('dropzone');
+      const dropzoneInput = document.getElementById('dropzone-input');
+
+      if (!dropzone || !dropzoneInput) return;
+
+      // Prevent default drag behaviors on document
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+      });
+
+      // Highlight on drag over
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropzone.addEventListener(eventName, () => {
+          dropzone.classList.add('drag-over');
+        });
+      });
+
+      // Remove highlight on drag leave/drop
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropzone.addEventListener(eventName, () => {
+          dropzone.classList.remove('drag-over');
+        });
+      });
+
+      // Handle dropped files
+      dropzone.addEventListener('drop', async (e) => {
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          await handleMTFileUpload(files, sessionId, data);
+        }
+      });
+
+      // Handle file input change
+      dropzoneInput.addEventListener('change', async (e) => {
+        const files = e.target.files;
+        if (files.length > 0) {
+          await handleMTFileUpload(files, sessionId, data);
+        }
+      });
+
+      // Make entire dropzone clickable
+      dropzone.addEventListener('click', (e) => {
+        if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
+          dropzoneInput.click();
+        }
+      });
+    }
+
+    // Handle file upload from dropzone
+    async function handleMTFileUpload(files, sessionId, data) {
+      const dropzone = document.getElementById('dropzone');
+      const originalText = dropzone.querySelector('.dropzone-text').textContent;
+
+      // Show uploading state
+      dropzone.querySelector('.dropzone-text').textContent = 'Hleður upp ' + files.length + ' skrám...';
+
+      let successCount = 0;
+      let errorMessages = [];
+
+      for (const file of files) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          const res = await fetch('/api/workflow/' + sessionId + '/upload/mt-upload', {
+            method: 'POST',
+            body: formData
+          });
+          const result = await res.json();
+          if (result.success) {
+            successCount++;
+          } else {
+            errorMessages.push(file.name + ': ' + (result.message || result.error));
+          }
+        } catch (err) {
+          errorMessages.push(file.name + ': ' + err.message);
+        }
+      }
+
+      // Show result
+      if (errorMessages.length > 0) {
+        alert('Villur við upphleðslu:\n' + errorMessages.join('\n'));
+      }
+
+      if (successCount > 0) {
+        // Reload workflow to show updated state
+        loadWorkflow(sessionId);
+      } else {
+        // Restore original text
+        dropzone.querySelector('.dropzone-text').textContent = originalText;
+      }
+    }
+
+    // Setup proceed button for MT upload step
+    function setupMTProceedButton(data, progress) {
       document.getElementById('proceed-btn')?.addEventListener('click', async () => {
         const btn = document.getElementById('proceed-btn');
         if (btn.disabled) {
@@ -1032,12 +1225,12 @@
           } else {
             alert('Villa: ' + (result.message || result.error || 'Gat ekki haldið áfram'));
             btn.disabled = false;
-            btn.textContent = 'Halda áfram í næsta skref →';
+            btn.textContent = 'Halda áfram í yfirferð →';
           }
         } catch (e) {
           alert('Villa: ' + e.message);
           btn.disabled = false;
-          btn.textContent = 'Halda áfram í næsta skref →';
+          btn.textContent = 'Halda áfram í yfirferð →';
         }
       });
     }
@@ -1768,6 +1961,348 @@
       .grid-2 { grid-template-columns: 1fr; }
       .notification-dropdown { width: 280px; right: -1rem; }
       .checklist { grid-template-columns: 1fr; }
+    }
+
+    /* ==========================================
+       MT Upload Step - Progressive Disclosure
+       ========================================== */
+
+    /* Step Header with Progress Ring */
+    .step-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .step-header-left h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .step-header-left h3 .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.875rem;
+    }
+    .step-header-left p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .step-header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .progress-ring {
+      width: 48px;
+      height: 48px;
+      transform: rotate(-90deg);
+    }
+    .progress-ring-bg {
+      fill: none;
+      stroke: var(--gray-200);
+      stroke-width: 4;
+    }
+    .progress-ring-fill {
+      fill: none;
+      stroke: var(--success);
+      stroke-width: 4;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.3s ease;
+    }
+    .progress-ring-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* Upload Dropzone (Primary Action) */
+    .upload-hero {
+      margin-bottom: 1.5rem;
+    }
+    .dropzone {
+      border: 2px dashed var(--border-color);
+      border-radius: 0.5rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: var(--bg-card);
+    }
+    .dropzone:hover {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.03);
+    }
+    .dropzone.drag-over {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.08);
+      border-style: solid;
+    }
+    .dropzone-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .dropzone-text {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .dropzone-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .dropzone input[type="file"] {
+      display: none;
+    }
+    .dropzone .btn {
+      margin-top: 0.5rem;
+    }
+
+    /* Compact Warning Banner (dismissible) */
+    .warning-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--warning-light);
+      border: 1px solid var(--warning);
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+      font-size: 0.8125rem;
+    }
+    .warning-banner-icon {
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+    .warning-banner-content {
+      flex: 1;
+    }
+    .warning-banner-content strong {
+      display: block;
+      margin-bottom: 0.125rem;
+    }
+    .warning-banner-content p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      line-height: 1.4;
+    }
+    .warning-dismiss {
+      flex-shrink: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      line-height: 1;
+      padding: 0;
+      opacity: 0.6;
+    }
+    .warning-dismiss:hover {
+      opacity: 1;
+    }
+
+    /* Accordion Component */
+    .accordion {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 0.375rem;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: background 0.15s ease;
+    }
+    .accordion-header:hover {
+      background: var(--gray-100);
+    }
+    .accordion-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+    }
+    .accordion-toggle {
+      font-size: 0.625rem;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+    .accordion.collapsed .accordion-toggle {
+      transform: rotate(-90deg);
+    }
+    .accordion.collapsed .accordion-body {
+      display: none;
+    }
+    .accordion-body {
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Compact File Grid */
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.25rem 1rem;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+      padding: 0.125rem 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .file-item.uploaded {
+      color: var(--success);
+    }
+    .file-item.pending {
+      color: var(--text-muted);
+    }
+    .file-item .file-icon {
+      flex-shrink: 0;
+      font-size: 0.875rem;
+    }
+    .file-item .file-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Linear Progress Bar */
+    .progress-linear {
+      height: 0.5rem;
+      background: var(--gray-200);
+      border-radius: 9999px;
+      overflow: hidden;
+      flex: 1;
+      max-width: 120px;
+    }
+    .progress-linear-fill {
+      height: 100%;
+      background: var(--success);
+      border-radius: 9999px;
+      transition: width 0.3s ease;
+    }
+    .accordion-progress {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Step Navigation */
+    .step-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .step-nav .btn-primary {
+      margin-left: auto;
+    }
+
+    /* Instructions accordion content */
+    .instructions-content {
+      font-size: 0.8125rem;
+    }
+    .instructions-content ol {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+    .instructions-content li {
+      margin: 0.375rem 0;
+    }
+
+    /* Supplementary files in accordion */
+    .supp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+    .supp-file {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: var(--gray-50);
+      border-radius: 0.25rem;
+      font-size: 0.8125rem;
+    }
+    .supp-file a {
+      color: var(--link-color);
+      text-decoration: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .supp-file a:hover {
+      text-decoration: underline;
+    }
+    .supp-file .supp-count {
+      font-size: 0.6875rem;
+      color: var(--text-muted);
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* Mobile: Sticky Nav */
+    @media (max-width: 768px) {
+      .step-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--bg-card);
+        padding: 1rem;
+        margin: 0;
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+      }
+      .mt-upload-content {
+        padding-bottom: 5rem;
+      }
+      .file-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      }
+      .step-header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .step-header-right {
+        align-self: flex-start;
+      }
     }
   </style>
 </body>

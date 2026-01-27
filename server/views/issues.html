@@ -167,6 +167,14 @@
     let currentTab = 'quick-fix';
     let selectedIssue = null;
 
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
+
     // Map old categories to simple tiers
     const SIMPLE_TIER_MAP = {
       'AUTO_FIX': 'QUICK_FIX',

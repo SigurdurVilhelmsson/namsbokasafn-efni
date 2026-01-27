@@ -433,6 +433,14 @@
     let currentWeeksAgo = 0;
     const book = 'efnafraedi';
 
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
+
     // Load available weeks
     async function loadWeeks() {
       try {

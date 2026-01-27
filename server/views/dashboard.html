@@ -587,7 +587,9 @@
         return;
       }
 
-      itemsEl.innerHTML = attention.items.slice(0, 10).map(item => {
+      const INITIAL_SHOW = 5;
+
+      const renderItem = (item) => {
         const iconClass = item.type;
         const icon = {
           overdue: 'fa-clock',
@@ -616,7 +618,38 @@
             </button>
           </div>
         `;
-      }).join('');
+      };
+
+      const visibleItems = attention.items.slice(0, INITIAL_SHOW);
+      const hiddenItems = attention.items.slice(INITIAL_SHOW);
+
+      let html = visibleItems.map(renderItem).join('');
+
+      if (hiddenItems.length > 0) {
+        html += `
+          <div class="accordion collapsed" id="attention-more-accordion">
+            <button class="accordion-header" onclick="toggleAccordion('attention-more-accordion')">
+              <div class="accordion-header-left">
+                <span class="accordion-toggle">▼</span>
+                <span>Sýna ${hiddenItems.length} fleiri atriði</span>
+              </div>
+            </button>
+            <div class="accordion-body">
+              ${hiddenItems.map(renderItem).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      itemsEl.innerHTML = html;
+    }
+
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
     }
 
     // Render workload table
@@ -666,6 +699,7 @@
     // Render ready for assignment list
     function renderReadyList(items) {
       const listEl = document.getElementById('ready-list');
+      const INITIAL_SHOW = 4;
 
       if (!items || items.length === 0) {
         listEl.innerHTML = `
@@ -677,7 +711,7 @@
         return;
       }
 
-      listEl.innerHTML = items.slice(0, 8).map(item => `
+      const renderReadyItem = (item) => `
         <div class="ready-item" onclick="assignChapter('${item.book}', ${item.chapter}, '${item.nextStage}')">
           <div class="ready-item-header">
             <span class="ready-item-title">Kafli ${item.chapter}</span>
@@ -687,12 +721,36 @@
             ${item.title || item.book} - ${item.progress}% lokið
           </div>
         </div>
-      `).join('');
+      `;
+
+      const visibleItems = items.slice(0, INITIAL_SHOW);
+      const hiddenItems = items.slice(INITIAL_SHOW);
+
+      let html = visibleItems.map(renderReadyItem).join('');
+
+      if (hiddenItems.length > 0) {
+        html += `
+          <div class="accordion collapsed" id="ready-more-accordion">
+            <button class="accordion-header" onclick="toggleAccordion('ready-more-accordion')">
+              <div class="accordion-header-left">
+                <span class="accordion-toggle">▼</span>
+                <span>Sýna ${hiddenItems.length} fleiri</span>
+              </div>
+            </button>
+            <div class="accordion-body">
+              ${hiddenItems.map(renderReadyItem).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      listEl.innerHTML = html;
     }
 
     // Render activity list
     function renderActivity(activities) {
       const listEl = document.getElementById('activity-list');
+      const INITIAL_SHOW = 5;
 
       if (!activities || activities.length === 0) {
         listEl.innerHTML = `
@@ -704,7 +762,7 @@
         return;
       }
 
-      listEl.innerHTML = activities.slice(0, 8).map(activity => `
+      const renderActivityItem = (activity) => `
         <div class="activity-item">
           <div class="activity-icon" style="${activity.color ? `background: ${activity.color}20; color: ${activity.color};` : ''}">
             <i class="fas ${activity.icon || 'fa-circle'}"></i>
@@ -719,7 +777,30 @@
             <div class="activity-time">${activity.timeAgo || ''}</div>
           </div>
         </div>
-      `).join('');
+      `;
+
+      const visibleActivities = activities.slice(0, INITIAL_SHOW);
+      const hiddenActivities = activities.slice(INITIAL_SHOW);
+
+      let html = visibleActivities.map(renderActivityItem).join('');
+
+      if (hiddenActivities.length > 0) {
+        html += `
+          <div class="accordion collapsed" id="activity-more-accordion">
+            <button class="accordion-header" onclick="toggleAccordion('activity-more-accordion')">
+              <div class="accordion-header-left">
+                <span class="accordion-toggle">▼</span>
+                <span>Sýna ${hiddenActivities.length} fleiri</span>
+              </div>
+            </button>
+            <div class="accordion-body">
+              ${hiddenActivities.map(renderActivityItem).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      listEl.innerHTML = html;
     }
 
     // Handle attention item click

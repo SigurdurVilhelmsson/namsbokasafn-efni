@@ -78,15 +78,15 @@
       </div>
     </div>
 
-    <!-- Team Workload Panel -->
-    <div class="workload-panel" id="workload-panel">
-      <div class="workload-header">
-        <h3 class="workload-title">👥 Álag teymis</h3>
-        <button class="btn btn-secondary btn-sm" onclick="toggleWorkloadPanel()">
-          <span id="workload-toggle-icon">▼</span>
-        </button>
-      </div>
-      <div class="workload-content" id="workload-content">
+    <!-- Team Workload Panel - Accordion -->
+    <div class="accordion" id="workload-accordion">
+      <button class="accordion-header" onclick="toggleAccordion('workload-accordion')">
+        <div class="accordion-header-left">
+          <span class="accordion-toggle">▼</span>
+          <span>👥 Álag teymis</span>
+        </div>
+      </button>
+      <div class="accordion-body" id="workload-content">
         <div class="workload-loading" id="workload-loading">Hleður...</div>
         <div class="workload-bars" id="workload-bars" style="display: none;"></div>
         <div class="workload-empty" id="workload-empty" style="display: none;">
@@ -464,6 +464,14 @@
     let matrixData = null;
     let selectedCell = null;
     let currentAssignment = null;
+
+    // Toggle accordion open/closed
+    function toggleAccordion(accordionId) {
+      const accordion = document.getElementById(accordionId);
+      if (accordion) {
+        accordion.classList.toggle('collapsed');
+      }
+    }
 
     const STAGE_LABELS = {
       'enMarkdown': 'EN Markdown',
