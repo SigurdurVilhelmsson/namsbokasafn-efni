@@ -133,8 +133,24 @@
         const data = await res.json();
         booksData[bookId] = data;
 
-        chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>' +
-          data.chapters.map(c => '<option value="' + c.chapter + '">Kafli ' + c.chapter + ': ' + (c.titleIs || c.title) + '</option>').join('');
+        // Build chapter options
+        let options = '<option value="">Veldu kafla...</option>';
+
+        // Regular chapters
+        options += data.chapters.map(c =>
+          '<option value="' + c.chapter + '">Kafli ' + c.chapter + ': ' + (c.titleIs || c.title) + '</option>'
+        ).join('');
+
+        // Appendices (if any)
+        if (data.appendices && data.appendices.length > 0) {
+          options += '<optgroup label="Viðaukar">';
+          options += data.appendices.map((a, i) =>
+            '<option value="appendix-' + (i + 1) + '" data-appendix-id="' + a.id + '">Viðauki ' + String.fromCharCode(65 + i) + ': ' + (a.titleIs || a.title) + '</option>'
+          ).join('');
+          options += '</optgroup>';
+        }
+
+        chapterSelect.innerHTML = options;
         chapterSelect.disabled = false;
         chapterInfo.style.display = 'none';
       } catch (e) {
@@ -156,6 +172,47 @@
         return;
       }
 
+      // Check if it's an appendix
+      if (String(chapterNum).startsWith('appendix-')) {
+        const appendixIndex = parseInt(chapterNum.replace('appendix-', ''), 10) - 1;
+        const appendices = booksData[bookId].appendices || [];
+        const appendix = appendices[appendixIndex];
+
+        if (!appendix) {
+          chapterInfo.style.display = 'none';
+          chapterFiles.style.display = 'none';
+          submitBtn.disabled = true;
+          return;
+        }
+
+        // Create a chapter-like object for the appendix
+        selectedChapter = {
+          chapter: chapterNum,
+          title: appendix.title,
+          titleIs: appendix.titleIs,
+          isAppendix: true,
+          appendixLetter: String.fromCharCode(65 + appendixIndex),
+          modules: [{
+            id: appendix.id,
+            section: 'appendix-' + String.fromCharCode(65 + appendixIndex).toLowerCase(),
+            title: appendix.title,
+            titleIs: appendix.titleIs
+          }]
+        };
+
+        document.getElementById('module-count').textContent = '1 (viðauki)';
+        document.getElementById('module-list').innerHTML =
+          '<li><code>' + appendix.id + '</code> - Viðauki ' + selectedChapter.appendixLetter + ': ' + appendix.title + '</li>';
+        chapterInfo.style.display = 'block';
+        submitBtn.disabled = false;
+
+        // Load files for appendix (use chapter 0 or special appendix path)
+        loadChapterFiles(bookId, chapterNum);
+        checkWorkflowProgress(bookId, chapterNum);
+        return;
+      }
+
+      // Regular chapter
       const chapter = booksData[bookId].chapters.find(c => c.chapter === parseInt(chapterNum, 10));
       if (!chapter) {
         chapterInfo.style.display = 'none';
@@ -609,6 +666,12 @@
       joinBtn.addEventListener('click', () => loadWorkflow(existing.id));
       actionsDiv.appendChild(joinBtn);
 
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'btn btn-danger';
+      deleteBtn.textContent = 'Eyða og byrja aftur';
+      deleteBtn.addEventListener('click', () => deleteExistingSession(existing.id));
+      actionsDiv.appendChild(deleteBtn);
+
       const cancelBtn = document.createElement('button');
       cancelBtn.className = 'btn btn-secondary';
       cancelBtn.textContent = 'Hætta við';
@@ -622,6 +685,30 @@
       document.getElementById('detail-title').textContent = 'Verkflæði þegar til';
       document.getElementById('workflow-steps').innerHTML = '';
       document.getElementById('step-actions').innerHTML = '';
+    }
+
+    async function deleteExistingSession(sessionId) {
+      if (!confirm('Ertu viss um að þú viljir eyða þessu verkflæði? Öll gögn munu tapast.')) {
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/workflow/' + sessionId, {
+          method: 'DELETE'
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          alert('Verkflæði eytt. Þú getur nú byrjað nýtt verkflæði.');
+          closeExistingDialog();
+          // Refresh the workflows list
+          loadWorkflows();
+        } else {
+          alert('Villa: ' + (result.message || result.error));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
     }
 
     function closeExistingDialog() {
@@ -845,6 +932,40 @@
         issueSummaryHtml += '</div>';
       }
 
+      // Build supplementary files section (figures, equations, strings)
+      let supplementaryHtml = '';
+      const suppFiles = data.supplementaryFiles || [];
+      if (suppFiles.length > 0) {
+        const translatableFiles = suppFiles.filter(f => f.translatableStrings > 0);
+        supplementaryHtml = '<div class="supplementary-section">' +
+          '<h4>Viðbótarskrár fyrir þýðingu</h4>' +
+          '<p class="supp-desc">Eftirfarandi skrár innihalda texta sem þarf að þýða (myndatextar, lýsingar o.fl.):</p>' +
+          '<ul class="supplementary-list">';
+
+        for (const sf of suppFiles) {
+          const hasContent = sf.translatableStrings > 0;
+          const icon = hasContent ? '📝' : '📄';
+          const countText = hasContent ? ' (' + sf.translatableStrings + ' strengir)' : ' (ekkert þýðanlegt)';
+          const cls = hasContent ? 'has-content' : 'no-content';
+          supplementaryHtml += '<li class="supp-item ' + cls + '">' +
+            '<span class="supp-icon">' + icon + '</span>' +
+            '<span class="supp-info">' +
+            '<a href="/api/workflow/' + data.sessionId + '/supplementary-file/' + encodeURIComponent(sf.filename) + '" ' +
+            'download="' + escapeHtml(sf.filename) + '">' + escapeHtml(sf.filename) + '</a>' +
+            '<span class="supp-type">' + escapeHtml(sf.typeLabel) + countText + '</span>' +
+            '</span></li>';
+        }
+        supplementaryHtml += '</ul>';
+
+        if (translatableFiles.length > 0) {
+          supplementaryHtml += '<div class="supp-actions">' +
+            '<a href="/api/workflow/' + data.sessionId + '/supplementary-files" class="btn btn-secondary btn-small" download>' +
+            'Sækja allar viðbótarskrár (ZIP)</a>' +
+            '</div>';
+        }
+        supplementaryHtml += '</div>';
+      }
+
       // Determine if proceed button should be enabled
       const canProceed = progress.complete || progress.expected === 0;
 
@@ -854,6 +975,9 @@
       const proceedTitle = cannotProceedDueToIssues
         ? 'Leystu vandamál fyrst'
         : (canProceed ? '' : 'Hladdu upp öllum skrám fyrst');
+
+      // Get rollback button HTML
+      const rollbackHtml = getRollbackButtonHtml(data);
 
       contentEl.innerHTML =
         '<div class="alert alert-info">' +
@@ -869,17 +993,22 @@
         progressSummary +
         issueSummaryHtml +
         checklistHtml +
+        supplementaryHtml +
         '<div class="upload-section"><h4>Hlaða upp þýddum .md skrám:</h4>' +
         '<form id="upload-form" class="upload-form">' +
         '<input type="file" name="file" id="upload-file" multiple accept=".md">' +
         '<button type="submit" class="btn btn-secondary">Hlaða upp</button>' +
         '</form>' +
-        '<button id="proceed-btn" class="btn btn-primary btn-large" style="margin-top: 1rem;"' +
+        '<div class="step-nav-buttons">' +
+        rollbackHtml +
+        '<button id="proceed-btn" class="btn btn-primary btn-large"' +
         (proceedDisabled ? ' disabled title="' + proceedTitle + '"' : '') +
         '>Halda áfram í næsta skref →</button>' +
+        '</div>' +
         '</div></div>';
 
       setupUploadHandler(data, 'mt-upload');
+      setupRollbackButton(data);
 
       // Setup proceed button
       document.getElementById('proceed-btn')?.addEventListener('click', async () => {
@@ -926,6 +1055,8 @@
           '</div>';
       }
 
+      const rollbackHtml = getRollbackButtonHtml(data);
+
       contentEl.innerHTML =
         '<div class="alert alert-info">' +
         '<strong>Skref ' + (stepIndex + 1) + ': 1. yfirferð (Trú þýðing)</strong>' +
@@ -939,15 +1070,20 @@
         issuesList +
         '<div class="action-buttons">' +
         '<a href="/editor?sessionId=' + data.sessionId + '" class="btn btn-secondary" target="_blank">Opna ritstjóra</a>' +
+        '</div>' +
+        '<div class="step-nav-buttons">' +
+        rollbackHtml +
         '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram í næsta skref →</button>' +
         '</div>' +
         '</div>';
 
       setupProceedButton(data);
+      setupRollbackButton(data);
     }
 
     function showTMCreationStep(data, stepIndex) {
       const contentEl = document.getElementById('step-content');
+      const rollbackHtml = getRollbackButtonHtml(data);
 
       contentEl.innerHTML =
         '<div class="alert alert-info">' +
@@ -966,12 +1102,16 @@
         '<input type="file" name="file" id="upload-file" accept=".tmx">' +
         '<button type="submit" class="btn btn-secondary">Hlaða upp</button>' +
         '</form>' +
-        '<button id="proceed-btn" class="btn btn-primary btn-large" style="margin-top: 1rem;">Halda áfram (sleppa TM)</button>' +
+        '<div class="step-nav-buttons">' +
+        rollbackHtml +
+        '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram (sleppa TM)</button>' +
+        '</div>' +
         '</div>' +
         '</div>';
 
       setupUploadHandler(data, 'tm-creation');
       setupProceedButton(data);
+      setupRollbackButton(data);
     }
 
     function showLocalizationStep(data, stepIndex) {
@@ -987,6 +1127,8 @@
           '</div>';
       }
 
+      const rollbackHtml = getRollbackButtonHtml(data);
+
       contentEl.innerHTML =
         '<div class="alert alert-info">' +
         '<strong>Skref ' + (stepIndex + 1) + ': Staðfærsla</strong>' +
@@ -1000,11 +1142,15 @@
         issuesList +
         '<div class="action-buttons">' +
         '<a href="/localization-review?sessionId=' + data.sessionId + '" class="btn btn-secondary" target="_blank">Opna staðfærsluyfirlit</a>' +
+        '</div>' +
+        '<div class="step-nav-buttons">' +
+        rollbackHtml +
         '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram í næsta skref →</button>' +
         '</div>' +
         '</div>';
 
       setupProceedButton(data);
+      setupRollbackButton(data);
     }
 
     function setupProceedButton(data) {
@@ -1032,6 +1178,61 @@
           btn.textContent = 'Halda áfram í næsta skref →';
         }
       });
+    }
+
+    function setupRollbackButton(data) {
+      document.getElementById('rollback-btn')?.addEventListener('click', async () => {
+        if (!confirm('Ertu viss? Þú ferð til baka í fyrra skref. Gögn frá núverandi skrefi gætu glatast.')) {
+          return;
+        }
+
+        const btn = document.getElementById('rollback-btn');
+        try {
+          btn.disabled = true;
+          btn.textContent = 'Vinnur...';
+          const res = await fetch('/api/workflow/' + data.sessionId + '/rollback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+          });
+          const result = await res.json();
+          if (result.success) {
+            loadWorkflow(data.sessionId);
+          } else {
+            alert('Villa: ' + (result.message || result.error || 'Gat ekki farið til baka'));
+            btn.disabled = false;
+            btn.textContent = '← Til baka';
+          }
+        } catch (e) {
+          alert('Villa: ' + e.message);
+          btn.disabled = false;
+          btn.textContent = '← Til baka';
+        }
+      });
+    }
+
+    // Get rollback button HTML based on current step
+    function getRollbackButtonHtml(data) {
+      // Determine current step index
+      let currentStepIndex;
+      if (typeof data.currentStep === 'number') {
+        currentStepIndex = data.currentStep;
+      } else if (data.session && typeof data.session.currentStep === 'number') {
+        currentStepIndex = data.session.currentStep;
+      } else {
+        // Find by step id
+        const currentStepObj = typeof data.currentStep === 'object' ? data.currentStep : null;
+        if (currentStepObj && data.steps) {
+          currentStepIndex = data.steps.findIndex(s => s.id === currentStepObj.id);
+        } else {
+          currentStepIndex = 0;
+        }
+      }
+
+      // Only show rollback button if not on first step
+      if (currentStepIndex > 0) {
+        return '<button id="rollback-btn" class="btn btn-outline-secondary" title="Fara til baka í fyrra skref">← Til baka</button>';
+      }
+      return '';
     }
 
     function setupUploadHandler(data, stepId) {
@@ -1267,7 +1468,7 @@
     .next-action p { margin-bottom: 1rem; }
     .btn-large { padding: 0.75rem 2rem; font-size: 1rem; }
 
-    /* File checklist - compact two-column layout */
+    /* File checklist - responsive layout with full filenames */
     .file-checklist { margin: 1rem 0; background: var(--bg-card); border-radius: 0.375rem; border: 1px solid var(--border-color); }
     .checklist-header {
       display: flex;
@@ -1290,33 +1491,37 @@
     .file-checklist.collapsed .checklist-toggle { transform: rotate(-90deg); }
     .file-checklist.collapsed .checklist-body { display: none; }
     .checklist-body { padding: 0.75rem 1rem; }
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.25rem 1rem;
+      max-height: 300px;
+      overflow-y: auto;
+    }
     .checklist {
       list-style: none;
       margin: 0;
       padding: 0;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 0.25rem 1rem;
-      max-height: 180px;
+      max-height: 300px;
       overflow-y: auto;
     }
     .checklist-item {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.375rem;
       padding: 0.25rem 0;
       font-size: 0.8125rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      white-space: normal;
+      word-break: break-word;
     }
     .checklist-item.uploaded { color: var(--success); }
     .checklist-item.pending { color: var(--text-muted); }
-    .check-icon { width: 1rem; text-align: center; font-weight: bold; flex-shrink: 0; }
+    .check-icon { width: 1rem; text-align: center; font-weight: bold; flex-shrink: 0; margin-top: 0.1rem; }
     .checklist-item.uploaded .check-icon { color: var(--success); }
     .file-info {
-      overflow: hidden;
-      text-overflow: ellipsis;
       cursor: help;
     }
     .progress-summary { margin: 0.75rem 0; padding: 0.75rem; background: var(--bg-card); border-radius: 0.375rem; border: 1px solid var(--border-color); }
@@ -1338,8 +1543,94 @@
     .stat-error { background: var(--error-light); color: #991b1b; }
     .btn-small { padding: 0.25rem 0.75rem; font-size: 0.75rem; }
 
+    /* Supplementary files section */
+    .supplementary-section {
+      margin: 1rem 0;
+      padding: 1rem;
+      background: var(--bg-card);
+      border-radius: 0.375rem;
+      border: 1px solid var(--border-color);
+    }
+    .supplementary-section h4 {
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+    .supp-desc {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .supplementary-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .supp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .supp-item:last-child {
+      border-bottom: none;
+    }
+    .supp-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .supp-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.125rem;
+    }
+    .supp-info a {
+      font-weight: 500;
+      color: var(--link-color);
+      text-decoration: none;
+    }
+    .supp-info a:hover {
+      text-decoration: underline;
+    }
+    .supp-type {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .supp-item.has-content .supp-type {
+      color: var(--success);
+    }
+    .supp-item.no-content {
+      opacity: 0.6;
+    }
+    .supp-actions {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-color);
+    }
+
     /* Nav badge */
     .nav-badge { background: var(--error); color: white; font-size: 0.625rem; padding: 0.125rem 0.375rem; border-radius: 9999px; font-weight: 600; margin-left: 0.25rem; }
+
+    /* Danger button */
+    .btn-danger { background: var(--error); color: white; border: 1px solid var(--error); }
+    .btn-danger:hover { background: #b91c1c; border-color: #b91c1c; }
+
+    /* Outline secondary button */
+    .btn-outline-secondary { background: transparent; color: var(--text-secondary); border: 1px solid var(--border-color); }
+    .btn-outline-secondary:hover { background: var(--gray-100); border-color: var(--gray-400); }
+
+    /* Step navigation buttons */
+    .step-nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .step-nav-buttons .btn-large { margin-left: auto; }
 
     /* Notification widget */
     .notifications { position: relative; }

@@ -165,7 +165,8 @@ const statements = {
   listByUser: db.prepare('SELECT * FROM sessions WHERE user_id = ? AND status = ? ORDER BY updated_at DESC'),
   listAll: db.prepare('SELECT * FROM sessions WHERE status = ? ORDER BY updated_at DESC'),
   deleteExpired: db.prepare('DELETE FROM sessions WHERE expires_at < ?'),
-  getExpired: db.prepare('SELECT * FROM sessions WHERE expires_at < ?')
+  getExpired: db.prepare('SELECT * FROM sessions WHERE expires_at < ?'),
+  deleteById: db.prepare('DELETE FROM sessions WHERE id = ?')
 };
 
 /**
@@ -1543,6 +1544,38 @@ function getRecoveryActions(sessionId) {
   };
 }
 
+/**
+ * Delete a session by ID
+ * Removes the session from the database and cleans up associated files
+ * @param {string} sessionId - Session ID to delete
+ * @returns {Object} Result with success status
+ */
+function deleteSession(sessionId) {
+  const session = getSession(sessionId);
+  if (!session) {
+    return { success: false, error: 'Session not found' };
+  }
+
+  // Clean up output directory if it exists
+  if (session.outputDir && fs.existsSync(session.outputDir)) {
+    try {
+      fs.rmSync(session.outputDir, { recursive: true, force: true });
+    } catch (err) {
+      console.error(`Failed to clean up session directory ${session.outputDir}:`, err);
+      // Continue with deletion even if directory cleanup fails
+    }
+  }
+
+  // Delete from database
+  statements.deleteById.run(sessionId);
+
+  return {
+    success: true,
+    message: 'Session deleted',
+    sessionId
+  };
+}
+
 module.exports = {
   WORKFLOW_STEPS,
   ERLENDUR_CHAR_LIMIT,
@@ -1573,6 +1606,7 @@ module.exports = {
   listAllSessions,
   cleanupExpiredSessions,
   getDbStats,
+  deleteSession,
   // Error recovery functions
   withTransaction,
   createStateSnapshot,

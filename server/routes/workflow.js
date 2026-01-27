@@ -66,6 +66,112 @@ function getBookSlug(bookId) {
   return bookId;
 }
 
+/**
+ * Get supplementary files for a chapter
+ * These are JSON and TXT files containing translatable content that's
+ * separate from the main markdown files (figures, equations, strings).
+ * @param {string} bookId - Book ID
+ * @param {number|string} chapter - Chapter number or 'appendix-X'
+ * @returns {Array} List of supplementary files with their translatable content counts
+ */
+function getSupplementaryFiles(bookId, chapter) {
+  const bookSlug = getBookSlug(bookId);
+  const booksDir = path.join(__dirname, '..', '..', 'books');
+
+  // Determine chapter directory
+  let chapterDir;
+  if (String(chapter).startsWith('appendix-')) {
+    chapterDir = path.join(booksDir, bookSlug, '02-for-mt', 'appendix');
+  } else {
+    const chapterNum = parseInt(chapter, 10);
+    chapterDir = path.join(booksDir, bookSlug, '02-for-mt', `ch${String(chapterNum).padStart(2, '0')}`);
+  }
+
+  const supplementaryFiles = [];
+
+  if (!fs.existsSync(chapterDir)) {
+    return supplementaryFiles;
+  }
+
+  try {
+    const files = fs.readdirSync(chapterDir);
+
+    for (const file of files) {
+      const filePath = path.join(chapterDir, file);
+
+      // Figures JSON - contains captions and alt text
+      if (file.endsWith('-figures.json') || file.endsWith('.en-figures.json')) {
+        try {
+          const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+          const figureCount = data.figures ? Object.keys(data.figures).length : 0;
+          let translatableStrings = 0;
+          if (data.figures) {
+            for (const fig of Object.values(data.figures)) {
+              if (fig.captionEn) translatableStrings++;
+              if (fig.altText) translatableStrings++;
+            }
+          }
+          supplementaryFiles.push({
+            filename: file,
+            type: 'figures',
+            typeLabel: 'Myndir',
+            path: filePath,
+            section: file.match(/^(\d+-\d+|\d+\.\d+|intro)/)?.[1] || file,
+            figureCount,
+            translatableStrings,
+            description: `${figureCount} myndir, ${translatableStrings} strengir til þýðingar`
+          });
+        } catch (e) {
+          console.warn('Failed to parse figures file:', file, e.message);
+        }
+      }
+
+      // Equations JSON - contains LaTeX (usually not translated, but shown for reference)
+      if (file.endsWith('-equations.json') || file.endsWith('.en-equations.json')) {
+        try {
+          const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+          const equationCount = data.equations ? Object.keys(data.equations).length : 0;
+          supplementaryFiles.push({
+            filename: file,
+            type: 'equations',
+            typeLabel: 'Jöfnur',
+            path: filePath,
+            section: file.match(/^(\d+-\d+|\d+\.\d+|intro)/)?.[1] || file,
+            equationCount,
+            translatableStrings: 0, // Equations are typically not translated
+            description: `${equationCount} jöfnur (LaTeX)`
+          });
+        } catch (e) {
+          console.warn('Failed to parse equations file:', file, e.message);
+        }
+      }
+
+      // Strings TXT - contains frontmatter and other extracted strings
+      if (file.endsWith('-strings.en.txt')) {
+        try {
+          const content = fs.readFileSync(filePath, 'utf8');
+          const lines = content.split('\n').filter(l => l.trim());
+          supplementaryFiles.push({
+            filename: file,
+            type: 'strings',
+            typeLabel: 'Strengir',
+            path: filePath,
+            section: file.match(/^(\d+-\d+|\d+\.\d+|intro)/)?.[1] || file,
+            translatableStrings: lines.length,
+            description: `${lines.length} strengir til þýðingar`
+          });
+        } catch (e) {
+          console.warn('Failed to read strings file:', file, e.message);
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Failed to read chapter directory:', chapterDir, err.message);
+  }
+
+  return supplementaryFiles;
+}
+
 // Configure multer for workflow file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -578,6 +684,9 @@ router.get('/:sessionId', requireAuth, (req, res) => {
     uploadProgress = session.getUploadProgress(sessionId, 'mt-upload');
   }
 
+  // Get supplementary files (figures, equations, strings)
+  const supplementaryFiles = getSupplementaryFiles(sessionData.book, sessionData.chapter);
+
   res.json({
     session: {
       id: sessionData.id,
@@ -606,6 +715,7 @@ router.get('/:sessionId', requireAuth, (req, res) => {
       expiresAt: sessionData.expiresAt
     },
     uploadProgress,
+    supplementaryFiles,
     downloads: getDownloadLinks(sessionId, sessionData),
     actions: getAvailableActions(sessionData)
   });
@@ -999,6 +1109,93 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
 });
 
 /**
+ * GET /api/workflow/:sessionId/supplementary-files
+ * Download supplementary files (figures, equations, strings) as ZIP
+ */
+router.get('/:sessionId/supplementary-files', requireAuth, async (req, res) => {
+  const { sessionId } = req.params;
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({ error: 'Session not found' });
+  }
+
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
+    return res.status(403).json({ error: 'Access denied' });
+  }
+
+  const supplementaryFiles = getSupplementaryFiles(sessionData.book, sessionData.chapter);
+
+  if (supplementaryFiles.length === 0) {
+    return res.status(404).json({
+      error: 'No supplementary files found',
+      message: 'Engar viðbótarskrár fundust fyrir þennan kafla'
+    });
+  }
+
+  try {
+    const slug = sessionData.bookSlug || getBookSlug(sessionData.book);
+    const zipFilename = `${slug}-K${sessionData.chapter}-supplementary.zip`;
+
+    res.setHeader('Content-Type', 'application/zip');
+    res.setHeader('Content-Disposition', `attachment; filename="${zipFilename}"`);
+
+    const archive = archiver('zip', { zlib: { level: 9 } });
+    archive.pipe(res);
+
+    for (const file of supplementaryFiles) {
+      if (fs.existsSync(file.path)) {
+        archive.file(file.path, { name: file.filename });
+      }
+    }
+
+    await archive.finalize();
+
+  } catch (err) {
+    console.error('Supplementary files download error:', err);
+    res.status(500).json({
+      error: 'Failed to create archive',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/workflow/:sessionId/supplementary-file/:filename
+ * Download a single supplementary file
+ */
+router.get('/:sessionId/supplementary-file/:filename', requireAuth, (req, res) => {
+  const { sessionId, filename } = req.params;
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({ error: 'Session not found' });
+  }
+
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
+    return res.status(403).json({ error: 'Access denied' });
+  }
+
+  const supplementaryFiles = getSupplementaryFiles(sessionData.book, sessionData.chapter);
+  const file = supplementaryFiles.find(f => f.filename === filename);
+
+  if (!file || !fs.existsSync(file.path)) {
+    return res.status(404).json({ error: 'File not found' });
+  }
+
+  // Set appropriate content type
+  const ext = path.extname(filename).toLowerCase();
+  const contentTypes = {
+    '.json': 'application/json',
+    '.txt': 'text/plain; charset=utf-8'
+  };
+
+  res.setHeader('Content-Type', contentTypes[ext] || 'application/octet-stream');
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+  res.sendFile(file.path);
+});
+
+/**
  * Build descriptive ZIP filename from session data
  * Format: {slug}-K{chapter}-{sections}{-filter}.zip
  * Example: efnafraedi-K4-4.1-4.5-md.zip
@@ -1197,6 +1394,46 @@ router.post('/:sessionId/cancel', requireAuth, (req, res) => {
       status: cancelled.status,
       cancelReason: cancelled.cancelReason
     }
+  });
+});
+
+/**
+ * DELETE /api/workflow/:sessionId
+ * Delete a workflow session permanently
+ * Useful for clearing stale sessions that block new workflows
+ */
+router.delete('/:sessionId', requireAuth, (req, res) => {
+  const { sessionId } = req.params;
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  // Allow owner or admin to delete
+  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
+    return res.status(403).json({
+      error: 'Access denied',
+      message: 'Only the session owner or an admin can delete this session'
+    });
+  }
+
+  const result = session.deleteSession(sessionId);
+
+  if (!result.success) {
+    return res.status(500).json({
+      error: 'Failed to delete session',
+      message: result.error
+    });
+  }
+
+  res.json({
+    success: true,
+    message: 'Verkflæði eytt',
+    messageEn: 'Session deleted',
+    sessionId
   });
 });
 

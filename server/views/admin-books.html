@@ -291,6 +291,9 @@
       <div class="page-header">
         <h1><i class="fas fa-book"></i> Bækur</h1>
         <div class="header-actions">
+          <button class="btn btn-primary" id="add-book-btn">
+            <i class="fas fa-plus"></i> Bæta við bók
+          </button>
           <button class="btn btn-secondary" id="sync-btn">
             <i class="fas fa-sync-alt"></i> Samstilla
           </button>
@@ -379,6 +382,57 @@
         <div class="form-actions">
           <button type="button" class="btn btn-secondary" onclick="closeModal()">Hætta við</button>
           <button type="submit" class="btn btn-primary">Skrá bók</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Custom Book Modal -->
+  <div class="modal" id="add-book-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Bæta við bók í lista</h2>
+        <button class="modal-close" onclick="closeAddBookModal()">&times;</button>
+      </div>
+      <form id="add-book-form">
+        <div class="form-group">
+          <label class="form-label">Slug (kennimerki)</label>
+          <input type="text" class="form-input" name="slug" id="add-slug" required placeholder="t.d. physics-2e" pattern="[a-z0-9-]+">
+          <small class="text-muted">OpenStax slug, aðeins lágstafir, tölur og bandstrik</small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Enskt heiti</label>
+          <input type="text" class="form-input" name="title" id="add-title" required placeholder="t.d. University Physics Volume 1">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Lýsing (valkvætt)</label>
+          <textarea class="form-input" name="description" id="add-description" rows="2" placeholder="Stutt lýsing á bókinni"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">GitHub repo URL (valkvætt)</label>
+          <input type="url" class="form-input" name="repoUrl" id="add-repo-url" placeholder="https://github.com/openstax/osbooks-...">
+        </div>
+
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label class="form-label">Fjöldi kafla (valkvætt)</label>
+            <input type="number" class="form-input" name="chapterCount" id="add-chapter-count" min="1" max="100" placeholder="t.d. 21">
+          </div>
+          <div class="form-group">
+            <label class="form-label">&nbsp;</label>
+            <label class="form-check">
+              <input type="checkbox" name="hasAppendices" id="add-has-appendices">
+              <span>Hefur viðauka</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeAddBookModal()">Hætta við</button>
+          <button type="submit" class="btn btn-primary">Bæta við</button>
         </div>
       </form>
     </div>
@@ -620,6 +674,67 @@
     document.getElementById('register-modal').addEventListener('click', (e) => {
       if (e.target === e.currentTarget) {
         closeModal();
+      }
+    });
+
+    // Add book modal
+    document.getElementById('add-book-btn').addEventListener('click', () => {
+      document.getElementById('add-slug').value = '';
+      document.getElementById('add-title').value = '';
+      document.getElementById('add-description').value = '';
+      document.getElementById('add-repo-url').value = '';
+      document.getElementById('add-chapter-count').value = '';
+      document.getElementById('add-has-appendices').checked = false;
+      document.getElementById('add-book-modal').classList.add('active');
+    });
+
+    function closeAddBookModal() {
+      document.getElementById('add-book-modal').classList.remove('active');
+    }
+
+    document.getElementById('add-book-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        closeAddBookModal();
+      }
+    });
+
+    document.getElementById('add-book-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+
+      const data = {
+        slug: form.slug.value.trim(),
+        title: form.title.value.trim(),
+        description: form.description.value.trim() || undefined,
+        repoUrl: form.repoUrl.value.trim() || undefined,
+        chapterCount: form.chapterCount.value ? parseInt(form.chapterCount.value, 10) : undefined,
+        hasAppendices: form.hasAppendices.checked
+      };
+
+      btn.disabled = true;
+      btn.textContent = 'Bætir við...';
+
+      try {
+        const res = await fetch('/api/admin/catalogue/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+
+        if (result.success) {
+          alert('Bók bætt við lista: ' + result.book.title);
+          closeAddBookModal();
+          loadCatalogue();
+        } else {
+          alert('Villa: ' + (result.message || result.error));
+        }
+      } catch (e) {
+        alert('Villa: ' + e.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Bæta við';
       }
     });
 
