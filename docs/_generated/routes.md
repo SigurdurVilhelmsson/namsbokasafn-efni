@@ -425,4 +425,6 @@
 | POST | `/assignments/:id/complete` |
 | GET | `/assignments/matrix` |
 | POST | `/assignments/:id/cancel` |
+| GET | `/:sessionId/git-preview` |
+| POST | `/:sessionId/git-commit` |
 

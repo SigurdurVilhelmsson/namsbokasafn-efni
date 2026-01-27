@@ -653,6 +653,8 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | POST | `/assignments/:id/complete` |
 | GET | `/assignments/matrix` |
 | POST | `/assignments/:id/cancel` |
+| GET | `/:sessionId/git-preview` |
+| POST | `/:sessionId/git-commit` |
 
 
 <!-- routes-end -->
