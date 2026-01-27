@@ -76,6 +76,14 @@ router.get('/status', (req, res) => {
 });
 
 /**
+ * GET /dashboard
+ * Head editor dashboard with attention items, workload, and activity
+ */
+router.get('/dashboard', (req, res) => {
+  sendView(res, 'dashboard.html');
+});
+
+/**
  * GET /books
  * Book management page
  */
