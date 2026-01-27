@@ -529,8 +529,15 @@ function extractModuleId(filename) {
 /**
  * Extract section number from filename
  * e.g., "1-2.en.md" -> "1.2", "1-2-chemistry-in-context.md" -> "1.2"
+ * For strings files: "1-2-strings.is.md" -> "1.2-strings"
  */
 function extractSectionFromFilename(filename) {
+  // Check if it's a strings file first
+  const stringsMatch = filename.match(/^(\d+)[-.](\d+)-strings\./);
+  if (stringsMatch) {
+    return `${stringsMatch[1]}.${stringsMatch[2]}-strings`;
+  }
+
   // Match patterns like "1-2" or "1.2" at start of filename
   const match = filename.match(/^(\d+)[-.](\d+)/);
   if (match) {

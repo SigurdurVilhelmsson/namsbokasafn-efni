@@ -97,6 +97,7 @@
   <script>
     let booksData = {};
     let selectedChapter = null;
+    let currentUser = null;  // Track logged-in user for role checks
 
     // Load books on page load
     async function loadBooks() {
@@ -761,7 +762,12 @@
 
       // Step-specific content
       if (current.id === 'source' || (stepIndex === 0 && current.status === 'completed')) {
-        // Source step completed - show download button to proceed
+        // Source step completed - show download button and git commit option
+        const isAdmin = currentUser?.role === 'admin';
+        const gitCommitButton = isAdmin
+          ? '<button id="git-commit-btn" class="btn btn-secondary" title="Vista skrár í GitHub">Vista í GitHub</button>'
+          : '';
+
         contentEl.innerHTML =
           '<div class="alert alert-success">' + moduleInfo +
           '<strong>Skref 1: Undirbúningur - Lokið</strong>' +
@@ -769,7 +775,10 @@
           '</div>' +
           '<div class="next-action">' +
           '<p>Sæktu .md skrárnar og þýddu þær á <a href="https://malstadur.is" target="_blank">malstadur.is</a> (Erlendur MT)</p>' +
+          '<div class="step-action-buttons">' +
           '<button id="download-proceed" class="btn btn-primary btn-large">Sækja .md skrár og halda áfram →</button>' +
+          gitCommitButton +
+          '</div>' +
           '</div>';
 
         document.getElementById('download-proceed')?.addEventListener('click', async () => {
@@ -791,6 +800,9 @@
             setTimeout(() => showMTUploadStep(data), 500);
           }
         });
+
+        // Setup git commit button (admin only)
+        setupGitCommitButton(data.sessionId);
 
       } else if (current.id === 'mt-upload') {
         showMTUploadStep(data);
@@ -845,6 +857,7 @@
       setupUploadHandler(data, 'mt-upload');
       setupRollbackButton(data);
       setupMTProceedButton(data, progress);
+      setupGitCommitButton(data.sessionId);
     }
 
     // Build step header with circular progress ring
@@ -1087,9 +1100,11 @@
       }
 
       const rollbackHtml = getRollbackButtonHtml(data);
+      const gitCommitHtml = getGitCommitButtonHtml(data.sessionId);
 
       return '<div class="step-nav">' +
         rollbackHtml +
+        gitCommitHtml +
         '<button id="proceed-btn" class="btn btn-primary btn-large"' +
         (proceedDisabled ? ' disabled title="' + proceedTitle + '"' : '') +
         '>Halda áfram í yfirferð →</button>' +
@@ -1249,6 +1264,7 @@
       }
 
       const rollbackHtml = getRollbackButtonHtml(data);
+      const gitCommitHtml = getGitCommitButtonHtml(data.sessionId);
 
       contentEl.innerHTML =
         '<div class="alert alert-info">' +
@@ -1266,17 +1282,20 @@
         '</div>' +
         '<div class="step-nav-buttons">' +
         rollbackHtml +
+        gitCommitHtml +
         '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram í næsta skref →</button>' +
         '</div>' +
         '</div>';
 
       setupProceedButton(data);
       setupRollbackButton(data);
+      setupGitCommitButton(data.sessionId);
     }
 
     function showTMCreationStep(data, stepIndex) {
       const contentEl = document.getElementById('step-content');
       const rollbackHtml = getRollbackButtonHtml(data);
+      const gitCommitHtml = getGitCommitButtonHtml(data.sessionId);
 
       contentEl.innerHTML =
         '<div class="alert alert-info">' +
@@ -1297,6 +1316,7 @@
         '</form>' +
         '<div class="step-nav-buttons">' +
         rollbackHtml +
+        gitCommitHtml +
         '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram (sleppa TM)</button>' +
         '</div>' +
         '</div>' +
@@ -1305,6 +1325,7 @@
       setupUploadHandler(data, 'tm-creation');
       setupProceedButton(data);
       setupRollbackButton(data);
+      setupGitCommitButton(data.sessionId);
     }
 
     function showLocalizationStep(data, stepIndex) {
@@ -1321,6 +1342,7 @@
       }
 
       const rollbackHtml = getRollbackButtonHtml(data);
+      const gitCommitHtml = getGitCommitButtonHtml(data.sessionId);
 
       contentEl.innerHTML =
         '<div class="alert alert-info">' +
@@ -1338,12 +1360,14 @@
         '</div>' +
         '<div class="step-nav-buttons">' +
         rollbackHtml +
+        gitCommitHtml +
         '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram í næsta skref →</button>' +
         '</div>' +
         '</div>';
 
       setupProceedButton(data);
       setupRollbackButton(data);
+      setupGitCommitButton(data.sessionId);
     }
 
     function setupProceedButton(data) {
@@ -1428,6 +1452,75 @@
       return '';
     }
 
+    // Get git commit button HTML (admin only)
+    function getGitCommitButtonHtml(sessionId) {
+      if (currentUser?.role !== 'admin') {
+        return '';
+      }
+      return '<button id="git-commit-btn" class="btn btn-secondary" title="Vista skrár í GitHub">Vista í GitHub</button>';
+    }
+
+    // Setup git commit button click handler
+    function setupGitCommitButton(sessionId) {
+      const btn = document.getElementById('git-commit-btn');
+      if (!btn) return;
+
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        const originalText = btn.textContent;
+        btn.innerHTML = '<span class="spinner"></span> Sendi...';
+
+        try {
+          const res = await fetch('/api/workflow/' + sessionId + '/git-commit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ push: true })
+          });
+
+          const result = await res.json();
+
+          if (result.success) {
+            btn.innerHTML = '✓ Vistað';
+            btn.classList.add('btn-success');
+            btn.classList.remove('btn-secondary');
+
+            // Show success message
+            const commitInfo = result.pushed
+              ? `${result.filesCommitted} skrár vistaðar og sendar (${result.sha.substring(0, 7)})`
+              : `${result.filesCommitted} skrár vistaðar (${result.sha.substring(0, 7)})`;
+
+            if (!result.pushed && result.pushError) {
+              alert(commitInfo + '\n\nAthugið: Push mistókst. Keyrðu git push handvirkt.');
+            }
+          } else {
+            btn.innerHTML = 'Villa';
+            btn.classList.add('btn-danger');
+            btn.classList.remove('btn-secondary');
+            alert('Villa við að vista: ' + (result.error || 'Óþekkt villa'));
+            // Reset button after 3 seconds
+            setTimeout(() => {
+              btn.innerHTML = originalText;
+              btn.classList.remove('btn-danger');
+              btn.classList.add('btn-secondary');
+              btn.disabled = false;
+            }, 3000);
+          }
+        } catch (err) {
+          btn.innerHTML = 'Villa';
+          btn.classList.add('btn-danger');
+          btn.classList.remove('btn-secondary');
+          alert('Villa: ' + err.message);
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove('btn-danger');
+            btn.classList.add('btn-secondary');
+            btn.disabled = false;
+          }, 3000);
+        }
+      });
+    }
+
     function setupUploadHandler(data, stepId) {
       const uploadFormEl = document.getElementById('upload-form');
       if (uploadFormEl && data.sessionId) {
@@ -1506,6 +1599,7 @@
     fetch('/api/auth/me').then(r => r.json()).then(data => {
       const el = document.getElementById('user-info');
       if (data.authenticated) {
+        currentUser = data.user;  // Store for role checks
         el.innerHTML = '<img src="' + data.user.avatar + '" alt=""><span>' + data.user.name + '</span>';
         loadBooks();
         loadWorkflows();
@@ -2276,6 +2370,47 @@
       flex-shrink: 0;
     }
 
+    /* Step action buttons (download + git commit side by side) */
+    .step-action-buttons {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Git commit button states */
+    #git-commit-btn {
+      min-width: 120px;
+      transition: all 0.2s ease;
+    }
+    #git-commit-btn.btn-success {
+      background: var(--success);
+      color: white;
+      border-color: var(--success);
+    }
+    #git-commit-btn.btn-danger {
+      background: var(--error);
+      color: white;
+      border-color: var(--error);
+    }
+
+    /* Inline spinner for buttons */
+    .spinner {
+      display: inline-block;
+      width: 0.875rem;
+      height: 0.875rem;
+      border: 2px solid transparent;
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+      vertical-align: middle;
+      margin-right: 0.25rem;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
     /* Mobile: Sticky Nav */
     @media (max-width: 768px) {
       .step-nav {
@@ -2302,6 +2437,13 @@
       }
       .step-header-right {
         align-self: flex-start;
+      }
+      .step-action-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      .step-action-buttons .btn {
+        width: 100%;
       }
     }
   </style>

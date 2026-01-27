@@ -21,8 +21,9 @@ const fs = require('fs');
 const archiver = require('archiver');
 
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireContributor } = require('../middleware/requireRole');
+const { requireContributor, requireAdmin } = require('../middleware/requireRole');
 const session = require('../services/session');
+const gitService = require('../services/gitService');
 // pipelineRunner is an ES module - use dynamic import
 let pipelineRunner = null;
 const getPipelineRunner = async () => {
@@ -405,7 +406,9 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
       });
 
       // Update expected files with split info (section-based naming)
-      const updatedExpected = buildExpectedFiles(allOutputs, splitInfo);
+      // Include strings files in expected uploads
+      const supplementaryFiles = getSupplementaryFiles(book, chapter);
+      const updatedExpected = buildExpectedFiles(allOutputs, splitInfo, supplementaryFiles);
       session.updateExpectedFiles(newSession.sessionId, 'mt-upload', updatedExpected);
 
       // Save checkpoint after successful source step
@@ -1889,7 +1892,7 @@ async function runAutomaticStep(sessionId, stepId, sessionData) {
  * Build expected files list from processed outputs
  * Handles split files by creating separate entries for each part
  */
-function buildExpectedFiles(outputs, splitInfo) {
+function buildExpectedFiles(outputs, splitInfo, supplementaryFiles = []) {
   const expected = [];
   const splitSections = new Map(splitInfo.map(s => [s.section, s.parts]));
 
@@ -1930,6 +1933,27 @@ function buildExpectedFiles(outputs, splitInfo) {
           : moduleId,
         downloadName: section ? `${section.replace('.', '-')}.en.md` : `${moduleId}.en.md`,
         expectedUpload: section ? `${section.replace('.', '-')}.is.md` : `${moduleId}.is.md`
+      });
+    }
+  }
+
+  // Add strings files to expected uploads (they contain translatable content)
+  for (const sf of supplementaryFiles) {
+    if (sf.type === 'strings' && sf.translatableStrings > 0) {
+      // Use a special marker to distinguish strings files from content files
+      // Section format: "1.1-strings" to differentiate from "1.1" content files
+      const rawSection = sf.section || sf.filename.replace('-strings.en.md', '');
+      const baseSection = rawSection.replace('-', '.');
+      const section = `${baseSection}-strings`;
+      expected.push({
+        moduleId: null,
+        section,
+        title: `Strengir (${baseSection})`,
+        displayName: `${baseSection.replace('.', '-')}-strings: ${sf.translatableStrings} strengir`,
+        downloadName: sf.filename,
+        expectedUpload: sf.filename.replace('.en.md', '.is.md'),
+        isSupplementary: true,
+        isStringsFile: true
       });
     }
   }
@@ -2566,6 +2590,139 @@ router.post('/assignments/:id/cancel', requireAuth, (req, res) => {
     console.error('Cancel assignment error:', err);
     res.status(500).json({
       error: 'Failed to cancel assignment',
+      message: err.message
+    });
+  }
+});
+
+// ============================================================================
+// GIT COMMIT ROUTES (Admin only)
+// ============================================================================
+
+/**
+ * GET /api/workflow/:sessionId/git-preview
+ * Preview what files would be committed for the current step
+ * Admin only
+ */
+router.get('/:sessionId/git-preview', requireAuth, requireAdmin(), (req, res) => {
+  const { sessionId } = req.params;
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  try {
+    const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
+    const currentStep = sessionData.steps[sessionData.currentStep];
+    const stepId = currentStep?.id;
+
+    if (!stepId) {
+      return res.status(400).json({
+        error: 'No current step'
+      });
+    }
+
+    const preview = gitService.previewChanges(bookSlug, sessionData.chapter, stepId);
+
+    res.json({
+      sessionId,
+      book: sessionData.book,
+      bookSlug,
+      chapter: sessionData.chapter,
+      stepId,
+      stepLabel: preview.stepLabel,
+      ...preview
+    });
+  } catch (err) {
+    console.error('Git preview error:', err);
+    res.status(500).json({
+      error: 'Failed to preview changes',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/workflow/:sessionId/git-commit
+ * Commit workflow files to git
+ * Admin only
+ *
+ * Body:
+ *   - message: Optional custom commit message
+ *   - push: Whether to push after commit (default: true)
+ */
+router.post('/:sessionId/git-commit', requireAuth, requireAdmin(), (req, res) => {
+  const { sessionId } = req.params;
+  const { message, push = true } = req.body || {};
+  const sessionData = session.getSession(sessionId);
+
+  if (!sessionData) {
+    return res.status(404).json({
+      error: 'Session not found'
+    });
+  }
+
+  try {
+    const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
+    const currentStep = sessionData.steps[sessionData.currentStep];
+    const stepId = currentStep?.id;
+
+    if (!stepId) {
+      return res.status(400).json({
+        error: 'No current step'
+      });
+    }
+
+    // Commit (and optionally push)
+    const result = gitService.commitAndPush({
+      bookSlug,
+      chapter: sessionData.chapter,
+      stepId,
+      user: req.user,
+      message,
+      push
+    });
+
+    if (!result.success) {
+      return res.status(400).json({
+        error: result.error,
+        suggestion: result.pushSuggestion
+      });
+    }
+
+    // Log the activity
+    activityLog.log({
+      type: activityLog.ACTIVITY_TYPES.WORKFLOW_GIT_COMMIT,
+      userId: req.user.id,
+      username: req.user.username,
+      book: sessionData.book,
+      chapter: String(sessionData.chapter),
+      description: `Committed ${result.filesCommitted} files for ${stepId}`,
+      metadata: {
+        sha: result.sha,
+        stepId,
+        filesCommitted: result.filesCommitted,
+        pushed: result.pushed,
+        files: result.files
+      }
+    });
+
+    res.json({
+      success: true,
+      sha: result.sha,
+      filesCommitted: result.filesCommitted,
+      pushed: result.pushed,
+      pushError: result.pushError,
+      pushSuggestion: result.pushSuggestion,
+      message: result.message
+    });
+  } catch (err) {
+    console.error('Git commit error:', err);
+    res.status(500).json({
+      error: 'Failed to commit changes',
       message: err.message
     });
   }

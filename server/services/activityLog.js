@@ -30,7 +30,8 @@ const ACTIVITY_TYPES = {
   // Workflow actions
   WORKFLOW_STARTED: 'workflow_started',
   WORKFLOW_COMPLETED: 'workflow_completed',
-  FILE_UPLOADED: 'file_uploaded'
+  FILE_UPLOADED: 'file_uploaded',
+  WORKFLOW_GIT_COMMIT: 'workflow_git_commit'
 };
 
 // Initialize database tables
