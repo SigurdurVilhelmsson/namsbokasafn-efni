@@ -19,6 +19,7 @@
       <a href="/terminology">Orðasafn</a>
       <a href="/decisions">Ákvarðanir</a>
       <span class="nav-separator admin-only"></span>
+      <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
     </nav>
     <div class="header-actions">
@@ -856,6 +857,65 @@
         </button>
         <button class="btn btn-primary" onclick="dismissWelcome(true)">
           <i class="fas fa-play"></i> Byrja leiðsögn
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pre-Submission Checklist Modal -->
+  <div class="modal" id="submit-checklist-modal" style="display: none;">
+    <div class="modal-content" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3><i class="fas fa-clipboard-check"></i> Staðfesta áður en þú skilar</h3>
+        <button class="btn-close" onclick="closeSubmitChecklist()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-subtitle" id="checklist-context" style="color: var(--gray-500); margin-bottom: 1.5rem;">
+          <!-- Will be populated by JS -->
+        </p>
+
+        <div class="submit-checklist">
+          <label class="checklist-item">
+            <input type="checkbox" id="check-spell" onchange="updateChecklistState()">
+            <span class="checkmark"></span>
+            <span class="checklist-text">Stafsetning og málfar yfirfarið</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" id="check-equations" onchange="updateChecklistState()">
+            <span class="checkmark"></span>
+            <span class="checklist-text">Allir [[EQ:n]] staðgenglar á sínum stað</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" id="check-terminology" onchange="updateChecklistState()">
+            <span class="checkmark"></span>
+            <span class="checklist-text">Hugtök samræmd við orðasafn</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" id="check-questions" onchange="updateChecklistState()">
+            <span class="checkmark"></span>
+            <span class="checklist-text">Engar óleystar spurningar</span>
+          </label>
+          <label class="checklist-item">
+            <input type="checkbox" id="check-flow" onchange="updateChecklistState()">
+            <span class="checkmark"></span>
+            <span class="checklist-text">Lesið í gegn einu sinni til að athuga flæði</span>
+          </label>
+        </div>
+
+        <div class="checklist-progress" style="margin-top: 1rem;">
+          <div class="progress-bar-container" style="background: var(--gray-200); border-radius: 4px; height: 4px;">
+            <div class="progress-bar-fill" id="checklist-progress" style="background: var(--primary-500); height: 100%; border-radius: 4px; width: 0%; transition: width 0.3s;"></div>
+          </div>
+          <p class="progress-text" id="checklist-progress-text" style="font-size: 0.75rem; color: var(--gray-500); text-align: center; margin-top: 0.5rem;">0 af 5 atriðum</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeSubmitChecklist()">Hætta við</button>
+        <button class="btn btn-outline" onclick="submitAnywayFromChecklist()" style="color: var(--gray-600);">
+          <i class="fas fa-forward"></i> Skila samt
+        </button>
+        <button class="btn btn-primary" id="checklist-submit-btn" onclick="confirmSubmitFromChecklist()" disabled>
+          <i class="fas fa-check-circle"></i> Staðfesta og skila
         </button>
       </div>
     </div>
@@ -1893,13 +1953,79 @@
       }
     }
 
-    async function submitForReview() {
-      const content = editor.value();
+    // ========================================
+    // PRE-SUBMISSION CHECKLIST
+    // ========================================
 
-      if (!confirm('Ertu viss um að þú viljir senda þessa þýðingu til yfirferðar?')) {
-        return;
+    function submitForReview() {
+      // Show checklist modal instead of simple confirm
+      openSubmitChecklist();
+    }
+
+    function openSubmitChecklist() {
+      // Reset all checkboxes
+      const checkboxes = document.querySelectorAll('#submit-checklist-modal input[type="checkbox"]');
+      checkboxes.forEach(cb => cb.checked = false);
+
+      // Update context text
+      const sectionLabel = currentSection || 'kafla';
+      document.getElementById('checklist-context').textContent =
+        `${currentSection || ''} - Kafli ${currentChapter}`;
+
+      // Reset progress
+      updateChecklistState();
+
+      // Show modal
+      document.getElementById('submit-checklist-modal').style.display = 'flex';
+    }
+
+    function closeSubmitChecklist() {
+      document.getElementById('submit-checklist-modal').style.display = 'none';
+    }
+
+    function updateChecklistState() {
+      const checkboxes = document.querySelectorAll('#submit-checklist-modal input[type="checkbox"]');
+      const total = checkboxes.length;
+      let checked = 0;
+
+      checkboxes.forEach(cb => {
+        if (cb.checked) checked++;
+      });
+
+      // Update progress bar
+      const percentage = (checked / total) * 100;
+      document.getElementById('checklist-progress').style.width = percentage + '%';
+      document.getElementById('checklist-progress-text').textContent = `${checked} af ${total} atriðum`;
+
+      // Enable/disable submit button
+      const submitBtn = document.getElementById('checklist-submit-btn');
+      submitBtn.disabled = checked < total;
+
+      // Change progress bar color based on completion
+      const progressBar = document.getElementById('checklist-progress');
+      if (checked === total) {
+        progressBar.style.background = 'var(--success-500, #10b981)';
+      } else if (checked >= total / 2) {
+        progressBar.style.background = 'var(--warning-500, #f59e0b)';
+      } else {
+        progressBar.style.background = 'var(--primary-500)';
       }
+    }
 
+    function confirmSubmitFromChecklist() {
+      closeSubmitChecklist();
+      doSubmitForReview();
+    }
+
+    function submitAnywayFromChecklist() {
+      if (confirm('Ertu viss um að þú viljir skila án þess að klára gátlistann?')) {
+        closeSubmitChecklist();
+        doSubmitForReview();
+      }
+    }
+
+    async function doSubmitForReview() {
+      const content = editor.value();
       const btn = document.getElementById('submit-btn');
       btn.disabled = true;
 
@@ -7213,6 +7339,88 @@
       margin: 0;
       color: var(--gray-500);
       font-size: 0.875rem;
+    }
+
+    /* Submit Checklist Styles */
+    .submit-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: 1px solid transparent;
+    }
+
+    .checklist-item:hover {
+      background: var(--gray-100);
+    }
+
+    .checklist-item input[type="checkbox"] {
+      display: none;
+    }
+
+    .checklist-item .checkmark {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--gray-300);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .checklist-item .checkmark::after {
+      content: '';
+      width: 6px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) scale(0);
+      transition: transform 0.15s ease;
+    }
+
+    .checklist-item input:checked + .checkmark {
+      background: var(--success-500, #10b981);
+      border-color: var(--success-500, #10b981);
+    }
+
+    .checklist-item input:checked + .checkmark::after {
+      transform: rotate(45deg) scale(1);
+    }
+
+    .checklist-item input:checked ~ .checklist-text {
+      color: var(--gray-500);
+      text-decoration: line-through;
+    }
+
+    .checklist-text {
+      font-size: 0.9375rem;
+      color: var(--gray-700);
+      line-height: 1.4;
+    }
+
+    #submit-checklist-modal .modal-subtitle {
+      font-size: 0.875rem;
+    }
+
+    #submit-checklist-modal .btn-outline {
+      border: 1px solid var(--gray-300);
+      background: transparent;
+    }
+
+    #submit-checklist-modal .btn-outline:hover {
+      background: var(--gray-100);
     }
   </style>
 

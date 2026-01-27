@@ -17,6 +17,7 @@
       <a href="/terminology">Orðasafn</a>
       <a href="/decisions">Ákvarðanir</a>
       <span class="nav-separator admin-only"></span>
+      <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
     </nav>
     <div class="header-actions">
@@ -574,6 +575,9 @@
     // FULL MATRIX
     // ============================================================================
 
+    // Track which chapters are expanded
+    let expandedChapters = {};
+
     async function loadFullMatrix() {
       const book = document.getElementById('book-select').value;
       const container = document.getElementById('full-matrix');
@@ -591,8 +595,13 @@
         html += '<th>Framvinda</th><th>Úthlutun</th></tr></thead><tbody>';
 
         for (const ch of data.chapters) {
-          html += '<tr>';
-          html += `<td><strong>K${ch.chapter}</strong>${ch.title ? '<br><small>' + escapeHtml(ch.title) + '</small>' : ''}</td>`;
+          const isExpanded = expandedChapters[`${book}-${ch.chapter}`];
+
+          // Chapter row (clickable to expand)
+          html += `<tr class="chapter-row ${isExpanded ? 'expanded' : ''}" onclick="toggleSections('${book}', ${ch.chapter}, this)">`;
+          html += `<td class="chapter-cell">`;
+          html += `<span class="expand-icon">${isExpanded ? '▼' : '▶'}</span>`;
+          html += `<strong>K${ch.chapter}</strong>${ch.title ? '<br><small class="chapter-title-text">' + escapeHtml(ch.title) + '</small>' : ''}</td>`;
 
           for (const stage of DISPLAY_STAGES) {
             const stageData = ch.stages.find(s => s.stage === stage);
@@ -604,16 +613,122 @@
           }
 
           html += `<td><div class="progress-bar"><div class="progress-bar-fill" style="width: ${ch.progress}%"></div></div><small>${ch.progress}%</small></td>`;
-          html += `<td><button class="btn btn-sm btn-secondary" onclick="openAssignmentModal('${book}', ${ch.chapter})">Úthluta</button></td>`;
+          html += `<td onclick="event.stopPropagation();"><button class="btn btn-sm btn-secondary" onclick="openAssignmentModal('${book}', ${ch.chapter})">Úthluta</button></td>`;
           html += '</tr>';
+
+          // Section expansion row (hidden by default)
+          html += `<tr class="sections-row" id="sections-${book}-${ch.chapter}" style="display: ${isExpanded ? 'table-row' : 'none'};">`;
+          html += `<td colspan="8" class="sections-container">`;
+          html += `<div class="sections-loading" id="sections-loading-${book}-${ch.chapter}">Hleður hlutum...</div>`;
+          html += `<div class="sections-content" id="sections-content-${book}-${ch.chapter}"></div>`;
+          html += `</td></tr>`;
         }
 
         html += '</tbody></table>';
         container.innerHTML = html;
 
+        // Load sections for already expanded chapters
+        for (const key of Object.keys(expandedChapters)) {
+          if (expandedChapters[key]) {
+            const [b, c] = key.split('-');
+            if (b === book) {
+              loadSections(book, parseInt(c));
+            }
+          }
+        }
+
       } catch (err) {
         container.innerHTML = '<p class="text-error">Villa við að hlaða gögnum</p>';
       }
+    }
+
+    async function toggleSections(book, chapter, rowEl) {
+      const key = `${book}-${chapter}`;
+      const sectionsRow = document.getElementById(`sections-${book}-${chapter}`);
+      const expandIcon = rowEl.querySelector('.expand-icon');
+
+      if (expandedChapters[key]) {
+        // Collapse
+        expandedChapters[key] = false;
+        sectionsRow.style.display = 'none';
+        rowEl.classList.remove('expanded');
+        expandIcon.textContent = '▶';
+      } else {
+        // Expand
+        expandedChapters[key] = true;
+        sectionsRow.style.display = 'table-row';
+        rowEl.classList.add('expanded');
+        expandIcon.textContent = '▼';
+        loadSections(book, chapter);
+      }
+    }
+
+    async function loadSections(book, chapter) {
+      const loadingEl = document.getElementById(`sections-loading-${book}-${chapter}`);
+      const contentEl = document.getElementById(`sections-content-${book}-${chapter}`);
+
+      loadingEl.style.display = 'block';
+      contentEl.innerHTML = '';
+
+      try {
+        const res = await fetch(`/api/status/${book}/${chapter}/sections`);
+        const data = await res.json();
+
+        loadingEl.style.display = 'none';
+
+        if (data.sections.length === 0) {
+          contentEl.innerHTML = '<p class="text-muted">Engir hlutar fundnir</p>';
+          return;
+        }
+
+        let html = '<table class="sections-table">';
+        html += '<thead><tr>';
+        html += '<th class="section-id-col">Hluti</th>';
+        for (const stage of data.stages) {
+          html += `<th class="section-stage-col">${stage.shortLabel}</th>`;
+        }
+        html += '</tr></thead><tbody>';
+
+        for (const section of data.sections) {
+          html += '<tr>';
+          html += `<td class="section-id">${escapeHtml(section.id)}</td>`;
+
+          for (const stage of data.stages) {
+            const status = section.stages[stage.id] || 'not-started';
+            const symbol = getSectionStatusSymbol(status);
+            const statusLabel = STATUS_LABELS[status] || status;
+            html += `<td class="section-cell status-${status}" title="${statusLabel}">${symbol}</td>`;
+          }
+          html += '</tr>';
+        }
+
+        html += '</tbody></table>';
+
+        // Summary line
+        html += '<div class="sections-summary">';
+        html += `<span class="sections-count">${data.sections.length} hlutar</span>`;
+        const linguisticComplete = data.summary.byStage.linguisticReview.complete;
+        const linguisticTotal = data.sections.length;
+        const linguisticPercent = linguisticTotal > 0 ? Math.round((linguisticComplete / linguisticTotal) * 100) : 0;
+        html += ` · <span class="sections-progress">${linguisticComplete}/${linguisticTotal} yfirfarnir (${linguisticPercent}%)</span>`;
+        html += '</div>';
+
+        contentEl.innerHTML = html;
+
+      } catch (err) {
+        loadingEl.style.display = 'none';
+        contentEl.innerHTML = '<p class="text-error">Villa við að hlaða hlutum</p>';
+      }
+    }
+
+    function getSectionStatusSymbol(status) {
+      const symbols = {
+        'complete': '✓',
+        'in-progress': '◐',
+        'pending': '○',
+        'not-started': '·'
+      };
+      return symbols[status] || '·';
     }
 
     function getStatusSymbol(status) {
@@ -1756,6 +1871,131 @@
       .velocity-metrics { flex-direction: column; }
       .burndown-stats { flex-direction: column; }
       .pilot-details { flex-direction: column; }
+    }
+
+    /* Expandable Chapter Rows */
+    .chapter-row {
+      cursor: pointer;
+      transition: background-color 0.15s;
+    }
+
+    .chapter-row:hover {
+      background-color: var(--gray-50);
+    }
+
+    .chapter-row.expanded {
+      background-color: var(--primary-50);
+    }
+
+    .chapter-cell {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .expand-icon {
+      font-size: 0.75rem;
+      color: var(--gray-400);
+      flex-shrink: 0;
+      width: 1rem;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .chapter-row:hover .expand-icon {
+      color: var(--gray-600);
+    }
+
+    .chapter-title-text {
+      color: var(--gray-500);
+      font-weight: normal;
+    }
+
+    /* Sections Row */
+    .sections-row {
+      background-color: var(--gray-50);
+    }
+
+    .sections-container {
+      padding: 0.75rem 1rem 1rem 2.25rem;
+    }
+
+    .sections-loading {
+      color: var(--gray-500);
+      font-size: 0.875rem;
+      padding: 0.5rem;
+    }
+
+    /* Sections Table */
+    .sections-table {
+      width: 100%;
+      max-width: 600px;
+      font-size: 0.8125rem;
+      border-collapse: collapse;
+    }
+
+    .sections-table th,
+    .sections-table td {
+      padding: 0.375rem 0.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .sections-table th {
+      background: var(--gray-100);
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: var(--gray-600);
+    }
+
+    .section-id-col {
+      text-align: left !important;
+      width: 80px;
+    }
+
+    .section-stage-col {
+      width: 45px;
+    }
+
+    .section-id {
+      text-align: left !important;
+      font-weight: 500;
+      color: var(--gray-700);
+    }
+
+    .section-cell {
+      font-size: 0.875rem;
+    }
+
+    .section-cell.status-complete {
+      color: var(--success-500, #16a34a);
+    }
+
+    .section-cell.status-in-progress {
+      color: var(--primary-500);
+    }
+
+    .section-cell.status-pending {
+      color: var(--warning-500, #d97706);
+    }
+
+    .section-cell.status-not-started {
+      color: var(--gray-300);
+    }
+
+    /* Sections Summary */
+    .sections-summary {
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--gray-500);
+    }
+
+    .sections-count {
+      font-weight: 500;
+    }
+
+    .sections-progress {
+      color: var(--success-600, #16a34a);
     }
   </style>
   <script src="/js/theme.js"></script>

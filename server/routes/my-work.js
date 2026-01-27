@@ -49,6 +49,27 @@ const STAGE_LABELS = {
   'publication': 'Útgáfa'
 };
 
+// Stage to editor pass mapping
+const STAGE_TO_PASS = {
+  'linguisticReview': 'pass1',
+  'editorialPass1': 'pass1',
+  'editorialPass2': 'pass2'
+};
+
+/**
+ * Build editor URL with stage parameter
+ */
+function buildEditorUrl(book, chapter, section, stage) {
+  let url = `/editor?book=${book}&chapter=${chapter}`;
+  if (section) {
+    url += `&section=${section}`;
+  }
+  if (stage && STAGE_TO_PASS[stage]) {
+    url += `&stage=${STAGE_TO_PASS[stage]}`;
+  }
+  return url;
+}
+
 // Book labels
 const BOOK_LABELS = {
   'efnafraedi': 'Efnafræði',
@@ -268,7 +289,7 @@ router.get('/', requireAuth, async (req, res) => {
       assignedAt: a.assignedAt,
       dueDate: getDueDateInfo(a.dueDate),
       notes: a.notes,
-      editorUrl: `/editor?book=${a.book}&chapter=${a.chapter}`
+      editorUrl: buildEditorUrl(a.book, a.chapter, null, a.stage)
     }));
 
     // Get pending submissions (awaiting review)
@@ -281,7 +302,7 @@ router.get('/', requireAuth, async (req, res) => {
       section: s.section,
       submittedAt: s.submitted_at,
       daysPending: Math.floor((Date.now() - new Date(s.submitted_at).getTime()) / (1000 * 60 * 60 * 24)),
-      editorUrl: `/editor?book=${s.book}&chapter=${s.chapter}&section=${s.section}`
+      editorUrl: buildEditorUrl(s.book, s.chapter, s.section, null)
     }));
 
     // Get recent review decisions (feedback)
@@ -297,7 +318,7 @@ router.get('/', requireAuth, async (req, res) => {
       reviewedAt: r.reviewed_at,
       notes: r.review_notes,
       hasNotes: !!r.review_notes,
-      editorUrl: `/editor?book=${r.book}&chapter=${r.chapter}&section=${r.section}`
+      editorUrl: buildEditorUrl(r.book, r.chapter, r.section, null)
     }));
 
     // Get proposed terminology
@@ -370,7 +391,7 @@ router.get('/today', requireAuth, (req, res) => {
         reviewedBy: r.reviewed_by_username,
         reviewedAt: r.reviewed_at,
         notes: r.review_notes,
-        editorUrl: `/editor?book=${r.book}&chapter=${r.chapter}&section=${r.section}`,
+        editorUrl: buildEditorUrl(r.book, r.chapter, r.section, null),
         priority: 1, // Highest priority
         priorityLabel: 'Breytingar óskast'
       }));
@@ -404,7 +425,7 @@ router.get('/today', requireAuth, (req, res) => {
         assignedAt: a.assignedAt,
         dueDate: dueInfo,
         notes: a.notes,
-        editorUrl: `/editor?book=${a.book}&chapter=${a.chapter}`,
+        editorUrl: buildEditorUrl(a.book, a.chapter, null, a.stage),
         priority,
         priorityLabel
       };

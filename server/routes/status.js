@@ -77,25 +77,110 @@ const STATUS_SYMBOLS = {
 /**
  * GET /api/status/dashboard
  * Get unified dashboard data for admin overview
- * Returns: needsAttention, teamActivity (24h), chapterMatrix, metrics
+ * Returns: needsAttention, teamActivity (24h), chapterMatrix, metrics, workload, overdueItems
  */
 router.get('/dashboard', async (req, res) => {
   try {
+    // Import capacity store for workload calculations
+    let capacityStore;
+    try {
+      capacityStore = require('../services/capacityStore');
+    } catch (e) {
+      capacityStore = null;
+    }
+
     const dashboard = {
       needsAttention: {
         pendingReviews: 0,
         blockedIssues: 0,
         unassignedWork: 0,
+        overdueCount: 0,
         items: []
       },
       teamActivity: [],
       chapterMatrix: {},
+      workload: [],  // Editor workload summary
+      overdueItems: [],  // Assignments > 3 days old
+      readyForAssignment: [],  // Chapters ready for next stage
       metrics: {
         velocity: null,
         projection: null,
         milestones: []
       }
     };
+
+    // Calculate overdue assignments (> 3 days old)
+    const OVERDUE_DAYS = 3;
+    const overdueThreshold = new Date();
+    overdueThreshold.setDate(overdueThreshold.getDate() - OVERDUE_DAYS);
+
+    if (assignmentStore) {
+      try {
+        const allAssignments = assignmentStore.getAllPendingAssignments();
+
+        // Group assignments by assignee for workload
+        const workloadMap = {};
+
+        for (const assignment of allAssignments) {
+          const assignee = assignment.assignedTo;
+          if (!workloadMap[assignee]) {
+            workloadMap[assignee] = {
+              username: assignee,
+              pending: 0,
+              overdue: 0,
+              assignments: []
+            };
+          }
+
+          workloadMap[assignee].pending++;
+          workloadMap[assignee].assignments.push({
+            book: assignment.book,
+            chapter: assignment.chapter,
+            stage: assignment.stage,
+            assignedAt: assignment.assignedAt,
+            dueDate: assignment.dueDate
+          });
+
+          // Check if overdue
+          const assignedDate = new Date(assignment.assignedAt);
+          const dueDate = assignment.dueDate ? new Date(assignment.dueDate) : null;
+          const isOverdue = (dueDate && dueDate < new Date()) ||
+                           (!dueDate && assignedDate < overdueThreshold);
+
+          if (isOverdue) {
+            workloadMap[assignee].overdue++;
+            dashboard.overdueItems.push({
+              ...assignment,
+              daysOld: Math.floor((new Date() - assignedDate) / (1000 * 60 * 60 * 24)),
+              type: 'assignment'
+            });
+            dashboard.needsAttention.items.push({
+              type: 'overdue',
+              book: assignment.book,
+              chapter: assignment.chapter,
+              stage: assignment.stage,
+              assignedTo: assignee,
+              daysOld: Math.floor((new Date() - assignedDate) / (1000 * 60 * 60 * 24)),
+              message: `Úthlutun ${OVERDUE_DAYS}+ daga gömul: Kafli ${assignment.chapter} (${assignment.stage})`
+            });
+          }
+        }
+
+        // Convert workload map to array and add capacity info
+        dashboard.workload = Object.values(workloadMap).map(w => {
+          if (capacityStore) {
+            const capacity = capacityStore.getUserCapacity(w.username);
+            w.maxConcurrent = capacity.maxConcurrent;
+            w.utilizationPercent = Math.round((w.pending / capacity.maxConcurrent) * 100);
+          }
+          return w;
+        }).sort((a, b) => b.pending - a.pending);
+
+        dashboard.needsAttention.overdueCount = dashboard.overdueItems.length;
+      } catch (e) {
+        console.error('Error calculating workload:', e);
+      }
+    }
 
     // Get all books
     for (const book of VALID_BOOKS) {
@@ -168,6 +253,19 @@ router.get('/dashboard', async (req, res) => {
           } catch (e) {
             // Assignment store not available
           }
+        }
+
+        // Check if chapter is ready for next assignment
+        // (has a next stage and no current assignment for that stage)
+        if (chapterData.nextStage && !chapterData.assignment) {
+          dashboard.readyForAssignment.push({
+            book,
+            chapter: chapterNum,
+            title: chapterData.title,
+            nextStage: chapterData.nextStage,
+            progress: chapterData.progress,
+            message: `Kafli ${chapterNum} tilbúinn fyrir: ${chapterData.nextStage}`
+          });
         }
 
         dashboard.chapterMatrix[book].chapters.push(chapterData);
@@ -567,6 +665,172 @@ router.get('/:book/:chapter', (req, res) => {
   } catch (err) {
     res.status(500).json({
       error: 'Failed to get chapter status',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/status/:book/:chapter/sections
+ * Get section-level status for a specific chapter
+ * Returns per-section stage status for expandable view
+ */
+router.get('/:book/:chapter/sections', (req, res) => {
+  const { book, chapter } = req.params;
+  const chapterNum = parseInt(chapter);
+
+  if (!VALID_BOOKS.includes(book)) {
+    return res.status(400).json({
+      error: 'Invalid book',
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+    });
+  }
+
+  if (isNaN(chapterNum) || chapterNum < 1) {
+    return res.status(400).json({
+      error: 'Invalid chapter',
+      message: 'Chapter must be a positive number'
+    });
+  }
+
+  try {
+    const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+    const bookPath = path.join(PROJECT_ROOT, 'books', book);
+
+    // Define directories to check for sections
+    const stagePaths = {
+      enMarkdown: path.join(bookPath, '02-for-mt', chapterDir),
+      mtOutput: path.join(bookPath, '02-mt-output', chapterDir),
+      linguisticReview: path.join(bookPath, '03-faithful', chapterDir),
+      tmCreated: path.join(bookPath, 'tm', chapterDir),
+      publication: path.join(bookPath, '05-publication', 'faithful', chapterDir)
+    };
+
+    // Collect all unique section IDs from all directories
+    const sectionSet = new Set();
+
+    // Check MT output first (primary source of sections)
+    if (fs.existsSync(stagePaths.mtOutput)) {
+      const files = fs.readdirSync(stagePaths.mtOutput)
+        .filter(f => f.endsWith('.is.md'));
+      files.forEach(f => {
+        // Extract section ID: "1-1.is.md" -> "1-1", "intro.is.md" -> "intro"
+        const sectionId = f.replace('.is.md', '');
+        sectionSet.add(sectionId);
+      });
+    }
+
+    // Also check EN markdown for sections not yet translated
+    if (fs.existsSync(stagePaths.enMarkdown)) {
+      const files = fs.readdirSync(stagePaths.enMarkdown)
+        .filter(f => f.endsWith('.en.md'));
+      files.forEach(f => {
+        const sectionId = f.replace('.en.md', '');
+        sectionSet.add(sectionId);
+      });
+    }
+
+    // Sort sections naturally (intro first, then 1-1, 1-2, etc.)
+    const sections = Array.from(sectionSet).sort((a, b) => {
+      if (a === 'intro') return -1;
+      if (b === 'intro') return 1;
+      // Extract numeric parts for natural sort
+      const [aMain, aSub] = a.split('-').map(Number);
+      const [bMain, bSub] = b.split('-').map(Number);
+      if (aMain !== bMain) return aMain - bMain;
+      return (aSub || 0) - (bSub || 0);
+    });
+
+    // Build section status for each section
+    const sectionStatuses = sections.map(sectionId => {
+      const stages = {};
+
+      // Check EN markdown
+      const enFile = path.join(stagePaths.enMarkdown, `${sectionId}.en.md`);
+      stages.enMarkdown = fs.existsSync(enFile) ? 'complete' : 'not-started';
+
+      // Check MT output
+      const mtFile = path.join(stagePaths.mtOutput, `${sectionId}.is.md`);
+      stages.mtOutput = fs.existsSync(mtFile) ? 'complete' : 'not-started';
+
+      // Check faithful translation (Pass 1 review)
+      const faithfulFile = path.join(stagePaths.linguisticReview, `${sectionId}.is.md`);
+      if (fs.existsSync(faithfulFile)) {
+        stages.linguisticReview = 'complete';
+      } else if (stages.mtOutput === 'complete') {
+        stages.linguisticReview = 'pending'; // Ready for review
+      } else {
+        stages.linguisticReview = 'not-started';
+      }
+
+      // Check TM (simplified - just check if any TMX exists for the chapter)
+      const tmxFile = path.join(stagePaths.tmCreated, `${sectionId}.tmx`);
+      const tmxAlternate = path.join(bookPath, 'tm', `${chapterDir}-${sectionId}.tmx`);
+      if (fs.existsSync(tmxFile) || fs.existsSync(tmxAlternate)) {
+        stages.tmCreated = 'complete';
+      } else if (stages.linguisticReview === 'complete') {
+        stages.tmCreated = 'pending';
+      } else {
+        stages.tmCreated = 'not-started';
+      }
+
+      // Check publication
+      const pubFile = path.join(stagePaths.publication, `${sectionId}.md`);
+      const pubFileFaithful = path.join(bookPath, '05-publication', 'faithful', chapterDir, `${sectionId}.md`);
+      const pubFileMt = path.join(bookPath, '05-publication', 'mt-preview', 'chapters', chapterDir, `${sectionId}.md`);
+      if (fs.existsSync(pubFile) || fs.existsSync(pubFileFaithful)) {
+        stages.publication = 'complete';
+      } else if (fs.existsSync(pubFileMt)) {
+        stages.publication = 'in-progress'; // MT preview published but not faithful
+      } else if (stages.linguisticReview === 'complete') {
+        stages.publication = 'pending';
+      } else {
+        stages.publication = 'not-started';
+      }
+
+      return {
+        id: sectionId,
+        stages
+      };
+    });
+
+    // Calculate summary
+    const summary = {
+      totalSections: sections.length,
+      byStage: {}
+    };
+
+    for (const stage of PIPELINE_STAGES) {
+      summary.byStage[stage] = {
+        complete: sectionStatuses.filter(s => s.stages[stage] === 'complete').length,
+        inProgress: sectionStatuses.filter(s => s.stages[stage] === 'in-progress').length,
+        pending: sectionStatuses.filter(s => s.stages[stage] === 'pending').length,
+        notStarted: sectionStatuses.filter(s => s.stages[stage] === 'not-started').length
+      };
+    }
+
+    res.json({
+      book,
+      chapter: chapterNum,
+      chapterDir,
+      sections: sectionStatuses,
+      summary,
+      stages: PIPELINE_STAGES.map(s => ({
+        id: s,
+        shortLabel: {
+          enMarkdown: 'EN',
+          mtOutput: 'MT',
+          linguisticReview: 'Y1',
+          tmCreated: 'TM',
+          publication: 'Pub'
+        }[s] || s
+      }))
+    });
+
+  } catch (err) {
+    console.error('Error getting section status:', err);
+    res.status(500).json({
+      error: 'Failed to get section status',
       message: err.message
     });
   }

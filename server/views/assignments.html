@@ -18,6 +18,7 @@
       <a href="/terminology">Orðasafn</a>
       <a href="/decisions">Ákvarðanir</a>
       <span class="nav-separator admin-only"></span>
+      <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
     </nav>
     <div class="header-actions">
@@ -40,10 +41,18 @@
         <p class="page-subtitle">Úthlutaðu verkefnum til teymismeðlima</p>
       </div>
       <div class="page-actions">
+        <div class="view-toggle">
+          <button class="view-btn active" id="matrix-view-btn" onclick="showView('matrix')">
+            <i class="fas fa-th"></i> Yfirlit
+          </button>
+          <button class="view-btn" id="focus-view-btn" onclick="showView('focus')">
+            <i class="fas fa-bullseye"></i> Kafli
+          </button>
+        </div>
         <button class="btn btn-primary" onclick="openKickoffModal()">
           <span class="btn-icon">🚀</span> Hefja kafla
         </button>
-        <select class="form-select" id="book-select" onchange="loadMatrix()">
+        <select class="form-select" id="book-select" onchange="onBookChange()">
           <option value="efnafraedi" selected>Efnafræði</option>
         </select>
       </div>
@@ -95,25 +104,93 @@
       <span class="legend-item"><span class="legend-avatar">👤</span> Úthlutað</span>
     </div>
 
-    <!-- Assignment Matrix -->
-    <div class="matrix-container">
-      <table class="assignment-matrix" id="assignment-matrix">
-        <thead>
-          <tr>
-            <th class="col-chapter">Kafli</th>
-            <th class="col-stage" id="th-stage-0">-</th>
-            <th class="col-stage" id="th-stage-1">-</th>
-            <th class="col-stage" id="th-stage-2">-</th>
-            <th class="col-stage" id="th-stage-3">-</th>
-            <th class="col-stage" id="th-stage-4">-</th>
-          </tr>
-        </thead>
-        <tbody id="matrix-body">
-          <tr>
-            <td colspan="6" class="loading-cell">Hleður...</td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Assignment Matrix View -->
+    <div id="matrix-view">
+      <div class="matrix-container">
+        <table class="assignment-matrix" id="assignment-matrix">
+          <thead>
+            <tr>
+              <th class="col-chapter">Kafli</th>
+              <th class="col-stage" id="th-stage-0">-</th>
+              <th class="col-stage" id="th-stage-1">-</th>
+              <th class="col-stage" id="th-stage-2">-</th>
+              <th class="col-stage" id="th-stage-3">-</th>
+              <th class="col-stage" id="th-stage-4">-</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-body">
+            <tr>
+              <td colspan="6" class="loading-cell">Hleður...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Chapter Focus View -->
+    <div id="focus-view" style="display: none;">
+      <div class="focus-header">
+        <button class="btn btn-secondary" onclick="navigateChapter(-1)" id="prev-chapter-btn" disabled>
+          <i class="fas fa-chevron-left"></i> Fyrri kafli
+        </button>
+        <div class="focus-chapter-info">
+          <h2 class="focus-chapter-title" id="focus-chapter-title">Kafli 1</h2>
+          <span class="focus-chapter-subtitle" id="focus-chapter-subtitle">Grundvallaratriði</span>
+        </div>
+        <button class="btn btn-secondary" onclick="navigateChapter(1)" id="next-chapter-btn">
+          Næsti kafli <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="focus-progress">
+        <div class="focus-progress-bar">
+          <div class="focus-progress-fill" id="focus-progress-fill" style="width: 0%"></div>
+        </div>
+        <span class="focus-progress-text" id="focus-progress-text">0% klárað</span>
+      </div>
+
+      <div class="focus-sections-table-container">
+        <table class="focus-sections-table" id="focus-sections-table">
+          <thead>
+            <tr>
+              <th class="focus-col-section">Hluti</th>
+              <th class="focus-col-stage">EN MD</th>
+              <th class="focus-col-stage">VÞ</th>
+              <th class="focus-col-stage">Yfirl. 1</th>
+              <th class="focus-col-stage">TM</th>
+              <th class="focus-col-stage">Útg.</th>
+              <th class="focus-col-action">Aðgerðir</th>
+            </tr>
+          </thead>
+          <tbody id="focus-sections-body">
+            <tr>
+              <td colspan="7" class="loading-cell">Hleður...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="focus-batch-actions">
+        <div class="batch-assign-row">
+          <label class="batch-label">Úthluta öllum óúthlutum til:</label>
+          <input type="text" id="focus-batch-assignee" class="form-input" placeholder="Notandanafn" list="team-members-focus">
+          <datalist id="team-members-focus"></datalist>
+          <select class="form-select" id="focus-batch-stage">
+            <option value="linguisticReview">Yfirferð 1</option>
+            <option value="tmCreated">TM uppfærsla</option>
+            <option value="publication">Útgáfa</option>
+          </select>
+          <button class="btn btn-primary" onclick="batchAssignFocus()">
+            <i class="fas fa-user-plus"></i> Úthluta
+          </button>
+        </div>
+        <div class="focus-chapter-status">
+          <span id="focus-sections-complete">0</span> af <span id="focus-sections-total">0</span> hlutum klárir
+          <button class="btn btn-success btn-sm" onclick="navigateChapter(1)" id="advance-chapter-btn" disabled>
+            Næsti kafli <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Bulk Actions Bar (floating) -->
@@ -404,6 +481,274 @@
       'pending': 'status-pending',
       'not-started': 'status-not-started'
     };
+
+    // ========================================
+    // VIEW SWITCHING
+    // ========================================
+
+    let currentView = 'matrix';
+    let focusChapter = 1;
+    let focusData = null;
+
+    function showView(view) {
+      currentView = view;
+
+      // Update toggle buttons
+      document.getElementById('matrix-view-btn').classList.toggle('active', view === 'matrix');
+      document.getElementById('focus-view-btn').classList.toggle('active', view === 'focus');
+
+      // Show/hide views
+      document.getElementById('matrix-view').style.display = view === 'matrix' ? 'block' : 'none';
+      document.getElementById('focus-view').style.display = view === 'focus' ? 'block' : 'none';
+
+      if (view === 'focus') {
+        loadFocusView();
+      }
+    }
+
+    function onBookChange() {
+      loadMatrix();
+      if (currentView === 'focus') {
+        focusChapter = 1;
+        loadFocusView();
+      }
+    }
+
+    // ========================================
+    // CHAPTER FOCUS MODE
+    // ========================================
+
+    async function loadFocusView() {
+      const book = document.getElementById('book-select').value;
+
+      // Update navigation buttons
+      updateFocusNavigation();
+
+      try {
+        // Load chapter sections
+        const sectionsRes = await fetch(`/api/status/${book}/${focusChapter}/sections`);
+        const sectionsData = await sectionsRes.json();
+
+        // Load assignments for this chapter
+        const assignRes = await fetch(`/api/workflow/assignments/matrix?book=${book}`);
+        const assignData = await assignRes.json();
+
+        focusData = {
+          sections: sectionsData.sections,
+          stages: sectionsData.stages,
+          chapter: assignData.chapters.find(ch => ch.chapter === focusChapter),
+          allChapters: assignData.chapters,
+          book
+        };
+
+        // Update chapter title
+        const chapterTitle = focusData.chapter?.title || `Kafli ${focusChapter}`;
+        document.getElementById('focus-chapter-title').textContent = `Kafli ${focusChapter}`;
+        document.getElementById('focus-chapter-subtitle').textContent = chapterTitle;
+
+        // Calculate progress
+        const totalStages = focusData.sections.length * 5; // 5 stages per section
+        let completeStages = 0;
+        for (const section of focusData.sections) {
+          for (const [stage, status] of Object.entries(section.stages)) {
+            if (status === 'complete') completeStages++;
+          }
+        }
+        const progress = totalStages > 0 ? Math.round((completeStages / totalStages) * 100) : 0;
+        document.getElementById('focus-progress-fill').style.width = progress + '%';
+        document.getElementById('focus-progress-text').textContent = progress + '% klárað';
+
+        // Render sections table
+        renderFocusSections();
+
+        // Update summary
+        const linguisticComplete = focusData.sections.filter(s => s.stages.linguisticReview === 'complete').length;
+        document.getElementById('focus-sections-complete').textContent = linguisticComplete;
+        document.getElementById('focus-sections-total').textContent = focusData.sections.length;
+
+        // Enable advance button if all sections complete
+        const allComplete = focusData.sections.every(s => s.stages.linguisticReview === 'complete');
+        document.getElementById('advance-chapter-btn').disabled = !allComplete;
+
+        // Load team members for batch assign
+        loadTeamMembersForFocus();
+
+      } catch (err) {
+        console.error('Failed to load focus view:', err);
+        document.getElementById('focus-sections-body').innerHTML =
+          '<tr><td colspan="7" class="error-cell">Villa við að hlaða kafla</td></tr>';
+      }
+    }
+
+    function renderFocusSections() {
+      const tbody = document.getElementById('focus-sections-body');
+
+      if (!focusData || focusData.sections.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-cell">Engir hlutar fundnir</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = focusData.sections.map(section => {
+        const stages = ['enMarkdown', 'mtOutput', 'linguisticReview', 'tmCreated', 'publication'];
+
+        let stageCells = stages.map(stage => {
+          const status = section.stages[stage] || 'not-started';
+          const symbol = status === 'complete' ? '✓' :
+                        status === 'in-progress' ? '◐' :
+                        status === 'pending' ? '○' : '·';
+
+          // Check if there's an assignment for this section/stage
+          const assignee = getAssigneeForSection(section.id, stage);
+          const assigneeText = assignee ? `<br><small class="assignee-name">${escapeHtml(assignee)}</small>` : '';
+
+          return `<td class="focus-stage-cell ${STATUS_CLASSES[status] || ''}" title="${STAGE_LABELS[stage] || stage}: ${status}">${symbol}${assigneeText}</td>`;
+        }).join('');
+
+        // Determine available action
+        let actionBtn = '';
+        if (section.stages.linguisticReview !== 'complete' && section.stages.mtOutput === 'complete') {
+          // Ready for linguistic review
+          actionBtn = `<button class="btn btn-sm btn-primary" onclick="quickAssign('${section.id}', 'linguisticReview')">
+            <i class="fas fa-user-plus"></i>
+          </button>`;
+        } else if (section.stages.linguisticReview === 'complete' && section.stages.publication !== 'complete') {
+          // Ready for publication
+          actionBtn = `<button class="btn btn-sm btn-secondary" onclick="quickAssign('${section.id}', 'publication')">
+            <i class="fas fa-user-plus"></i>
+          </button>`;
+        }
+
+        return `
+          <tr>
+            <td class="focus-section-id">${escapeHtml(section.id)}</td>
+            ${stageCells}
+            <td class="focus-action-cell">${actionBtn}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function getAssigneeForSection(sectionId, stage) {
+      // For now, return null - would need section-level assignment data
+      // This is a placeholder for future implementation
+      return null;
+    }
+
+    function updateFocusNavigation() {
+      const totalChapters = matrixData?.chapters?.length || 21;
+      document.getElementById('prev-chapter-btn').disabled = focusChapter <= 1;
+      document.getElementById('next-chapter-btn').disabled = focusChapter >= totalChapters;
+    }
+
+    function navigateChapter(direction) {
+      const totalChapters = matrixData?.chapters?.length || 21;
+      const newChapter = focusChapter + direction;
+
+      if (newChapter >= 1 && newChapter <= totalChapters) {
+        focusChapter = newChapter;
+        loadFocusView();
+      }
+    }
+
+    async function loadTeamMembersForFocus() {
+      try {
+        const res = await fetch('/api/admin/users');
+        if (!res.ok) return;
+
+        const data = await res.json();
+        const datalist = document.getElementById('team-members-focus');
+        datalist.innerHTML = data.users
+          .filter(u => ['TRANSLATOR', 'HEAD_EDITOR', 'ADMIN'].includes(u.role))
+          .map(u => `<option value="${escapeHtml(u.username)}">${escapeHtml(u.name || u.username)}</option>`)
+          .join('');
+      } catch (err) {
+        console.error('Failed to load team members:', err);
+      }
+    }
+
+    async function quickAssign(sectionId, stage) {
+      const assignee = prompt(`Úthluta ${sectionId} (${STAGE_LABELS[stage]}) til:`);
+      if (!assignee) return;
+
+      const book = document.getElementById('book-select').value;
+
+      try {
+        const res = await fetch('/api/workflow/assignments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            book,
+            chapter: focusChapter,
+            section: sectionId,
+            stage,
+            assignedTo: assignee
+          })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          loadFocusView();
+        } else {
+          alert('Villa: ' + (data.error || 'Gat ekki úthlutað'));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    async function batchAssignFocus() {
+      const assignee = document.getElementById('focus-batch-assignee').value.trim();
+      const stage = document.getElementById('focus-batch-stage').value;
+
+      if (!assignee) {
+        alert('Vinsamlegast sláðu inn notandanafn');
+        return;
+      }
+
+      const book = document.getElementById('book-select').value;
+
+      // Find sections that need assignment for this stage
+      const sectionsToAssign = focusData.sections.filter(s => {
+        const status = s.stages[stage];
+        return status === 'pending' || status === 'not-started';
+      });
+
+      if (sectionsToAssign.length === 0) {
+        alert('Engir hlutar til að úthluta');
+        return;
+      }
+
+      if (!confirm(`Úthluta ${sectionsToAssign.length} hlutum til ${assignee}?`)) {
+        return;
+      }
+
+      try {
+        // Create assignments for each section
+        let successCount = 0;
+        for (const section of sectionsToAssign) {
+          const res = await fetch('/api/workflow/assignments', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              book,
+              chapter: focusChapter,
+              section: section.id,
+              stage,
+              assignedTo: assignee
+            })
+          });
+
+          const data = await res.json();
+          if (data.success) successCount++;
+        }
+
+        alert(`✓ ${successCount} af ${sectionsToAssign.length} hlutum úthlutað til ${assignee}`);
+        loadFocusView();
+
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
 
     async function init() {
       // Check auth
@@ -2376,6 +2721,235 @@
       .workload-user { min-width: 100%; margin-bottom: 0.25rem; }
       .workload-bar-container { flex: 1; min-width: 60%; }
       .workload-summary { flex-wrap: wrap; gap: 0.75rem; }
+    }
+
+    /* ========================================
+       VIEW TOGGLE
+       ======================================== */
+
+    .view-toggle {
+      display: flex;
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 2px;
+    }
+
+    .view-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background: transparent;
+      color: var(--gray-600);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+
+    .view-btn:hover {
+      color: var(--gray-800);
+    }
+
+    .view-btn.active {
+      background: var(--white);
+      color: var(--primary-600);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* ========================================
+       CHAPTER FOCUS MODE
+       ======================================== */
+
+    .focus-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--gray-200);
+      margin-bottom: 1rem;
+    }
+
+    .focus-chapter-info {
+      text-align: center;
+    }
+
+    .focus-chapter-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem;
+      color: var(--gray-800);
+    }
+
+    .focus-chapter-subtitle {
+      color: var(--gray-500);
+      font-size: 0.9375rem;
+    }
+
+    .focus-progress {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .focus-progress-bar {
+      flex: 1;
+      height: 8px;
+      background: var(--gray-200);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .focus-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-500), var(--success-500, #16a34a));
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .focus-progress-text {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      white-space: nowrap;
+    }
+
+    .focus-sections-table-container {
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    .focus-sections-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .focus-sections-table th,
+    .focus-sections-table td {
+      padding: 0.75rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .focus-sections-table th {
+      background: var(--gray-50);
+      font-weight: 600;
+      font-size: 0.8125rem;
+      color: var(--gray-600);
+      text-transform: uppercase;
+      letter-spacing: 0.025em;
+    }
+
+    .focus-col-section {
+      text-align: left !important;
+      width: 100px;
+    }
+
+    .focus-col-stage {
+      width: 80px;
+    }
+
+    .focus-col-action {
+      width: 80px;
+    }
+
+    .focus-section-id {
+      text-align: left !important;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+
+    .focus-stage-cell {
+      font-size: 0.9375rem;
+    }
+
+    .focus-stage-cell.status-complete {
+      color: var(--success-500, #16a34a);
+    }
+
+    .focus-stage-cell.status-in-progress {
+      color: var(--primary-500);
+    }
+
+    .focus-stage-cell.status-pending {
+      color: var(--warning-500, #d97706);
+    }
+
+    .focus-stage-cell.status-not-started {
+      color: var(--gray-300);
+    }
+
+    .focus-stage-cell .assignee-name {
+      display: block;
+      font-size: 0.6875rem;
+      color: var(--gray-500);
+      margin-top: 0.125rem;
+    }
+
+    .focus-action-cell {
+      padding: 0.5rem;
+    }
+
+    .focus-batch-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: var(--gray-50);
+      border-radius: 8px;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .batch-assign-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .batch-label {
+      font-weight: 500;
+      color: var(--gray-700);
+      white-space: nowrap;
+    }
+
+    .batch-assign-row .form-input {
+      width: 150px;
+    }
+
+    .batch-assign-row .form-select {
+      width: 140px;
+    }
+
+    .focus-chapter-status {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--gray-600);
+      font-size: 0.875rem;
+    }
+
+    .focus-chapter-status #focus-sections-complete {
+      font-weight: 600;
+      color: var(--success-600, #16a34a);
+    }
+
+    @media (max-width: 768px) {
+      .focus-header { flex-direction: column; gap: 1rem; }
+      .focus-batch-actions { flex-direction: column; align-items: stretch; }
+      .batch-assign-row { flex-direction: column; align-items: stretch; }
+      .batch-assign-row .form-input,
+      .batch-assign-row .form-select { width: 100%; }
+      .focus-chapter-status { justify-content: center; flex-wrap: wrap; }
+      .view-toggle { width: 100%; justify-content: center; }
     }
   </style>
 
