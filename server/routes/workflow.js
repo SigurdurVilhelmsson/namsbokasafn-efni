@@ -147,12 +147,16 @@ function getSupplementaryFiles(bookId, chapter) {
         }
       }
 
-      // Strings MD - contains frontmatter, tables, and figures (new markdown format)
+      // Strings MD - contains frontmatter, tables, and figures (two formats supported)
       if (file.endsWith('-strings.en.md')) {
         try {
           const content = fs.readFileSync(filePath, 'utf8');
-          // Count translatable items by counting **Label:** patterns
-          const labelCount = (content.match(/\*\*[^*]+:\*\*/g) || []).length;
+          // Count translatable items - support both formats:
+          // Format 1: [[LABEL:...]] value (e.g., [[TABLE:1:title]] Elemental Composition)
+          // Format 2: **Label:** value (e.g., **Caption:** This portrayal shows...)
+          const bracketCount = (content.match(/\[\[[A-Z_]+:[^\]]+\]\]/g) || []).length;
+          const boldCount = (content.match(/\*\*[^*]+:\*\*/g) || []).length;
+          const labelCount = bracketCount + boldCount;
           supplementaryFiles.push({
             filename: file,
             type: 'strings',
@@ -1939,7 +1943,7 @@ function buildExpectedFiles(outputs, splitInfo, supplementaryFiles = []) {
 
   // Add strings files to expected uploads (they contain translatable content)
   for (const sf of supplementaryFiles) {
-    if (sf.type === 'strings' && sf.translatableStrings > 0) {
+    if (sf.type === 'strings') {
       // Use a special marker to distinguish strings files from content files
       // Section format: "1.1-strings" to differentiate from "1.1" content files
       const rawSection = sf.section || sf.filename.replace('-strings.en.md', '');
@@ -1949,7 +1953,7 @@ function buildExpectedFiles(outputs, splitInfo, supplementaryFiles = []) {
         moduleId: null,
         section,
         title: `Strengir (${baseSection})`,
-        displayName: `${baseSection.replace('.', '-')}-strings: ${sf.translatableStrings} strengir`,
+        displayName: `${baseSection.replace('.', '-')}-strings: ${sf.translatableStrings || 0} strengir`,
         downloadName: sf.filename,
         expectedUpload: sf.filename.replace('.en.md', '.is.md'),
         isSupplementary: true,
