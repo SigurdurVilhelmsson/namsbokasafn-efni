@@ -307,6 +307,7 @@
 | GET | `/:book` |
 | GET | `/:book/summary` |
 | GET | `/:book/:chapter` |
+| GET | `/:book/:chapter/sections` |
 | GET | `/:book/scan` |
 | POST | `/:book/sync` |
 | POST | `/:book/:chapter/sync` |
