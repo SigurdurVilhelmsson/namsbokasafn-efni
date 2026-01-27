@@ -562,6 +562,14 @@
       return div.innerHTML;
     }
 
+    // Toggle file checklist expand/collapse
+    function toggleChecklist() {
+      const checklist = document.getElementById('file-checklist');
+      if (checklist) {
+        checklist.classList.toggle('collapsed');
+      }
+    }
+
     function showExistingWorkflowDialog(result) {
       const existing = result.existingSession;
       const progressText = existing.progress
@@ -738,10 +746,21 @@
         }
       }
 
-      // Create file checklist with friendly names
+      // Create compact file checklist with collapsible header
       let checklistHtml = '';
       if (expectedFiles.length > 0) {
-        checklistHtml = '<div class="file-checklist"><h4>Skrár sem þarf að hlaða upp:</h4><ul class="checklist">';
+        const shouldCollapse = expectedFiles.length > 6;
+        const collapseClass = shouldCollapse ? ' collapsed' : '';
+
+        checklistHtml = '<div class="file-checklist' + collapseClass + '" id="file-checklist">' +
+          '<div class="checklist-header" onclick="toggleChecklist()">' +
+          '<div class="checklist-header-left">' +
+          '<strong>Skrár: ' + progress.uploaded + '/' + progress.expected + ' hlaðið upp</strong>' +
+          '</div>' +
+          '<span class="checklist-toggle">▼</span>' +
+          '</div>' +
+          '<div class="checklist-body"><ul class="checklist">';
+
         for (const exp of expectedFiles) {
           // Expected is object with section, part, displayName, downloadName, expectedUpload
           const section = typeof exp === 'object' ? exp.section : null;
@@ -764,19 +783,21 @@
           const icon = isUploaded ? '✓' : '○';
           const cls = isUploaded ? 'uploaded' : 'pending';
 
-          // Show download name and expected upload name for clarity
-          let fileInfo = escapeHtml(displayName);
+          // Compact display: just section name, full details in tooltip
+          const shortName = escapeHtml(displayName);
+          let tooltipText = displayName;
           if (downloadName) {
-            fileInfo += '<br><small class="file-names">Niðurhal: <code>' + escapeHtml(downloadName) + '</code>';
+            tooltipText += '\nNiðurhal: ' + downloadName;
             if (expectedUpload) {
-              fileInfo += ' → Upphal: <code>' + escapeHtml(expectedUpload) + '</code>';
+              tooltipText += '\nUpphal: ' + expectedUpload;
             }
-            fileInfo += '</small>';
           }
 
-          checklistHtml += '<li class="checklist-item ' + cls + '"><span class="check-icon">' + icon + '</span><span class="file-info">' + fileInfo + '</span></li>';
+          checklistHtml += '<li class="checklist-item ' + cls + '" title="' + escapeHtml(tooltipText) + '">' +
+            '<span class="check-icon">' + icon + '</span>' +
+            '<span class="file-info">' + shortName + '</span></li>';
         }
-        checklistHtml += '</ul></div>';
+        checklistHtml += '</ul></div></div>';
       }
 
       // Show warning if split files
@@ -1246,21 +1267,60 @@
     .next-action p { margin-bottom: 1rem; }
     .btn-large { padding: 0.75rem 2rem; font-size: 1rem; }
 
-    /* File checklist */
-    .file-checklist { margin: 1rem 0; padding: 1rem; background: var(--bg-card); border-radius: 0.375rem; border: 1px solid var(--border-color); }
-    .file-checklist h4 { font-size: 0.875rem; margin-bottom: 0.5rem; }
-    .checklist { list-style: none; margin: 0; padding: 0; }
-    .checklist-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.375rem 0; font-size: 0.875rem; border-bottom: 1px solid var(--gray-50); }
-    .checklist-item:last-child { border-bottom: none; }
+    /* File checklist - compact two-column layout */
+    .file-checklist { margin: 1rem 0; background: var(--bg-card); border-radius: 0.375rem; border: 1px solid var(--border-color); }
+    .checklist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+      background: var(--gray-50);
+      border-radius: 0.375rem 0.375rem 0 0;
+      user-select: none;
+    }
+    .checklist-header:hover { background: var(--gray-100); }
+    .checklist-header-left { display: flex; align-items: center; gap: 0.5rem; }
+    .checklist-header-left strong { font-size: 0.875rem; }
+    .checklist-toggle {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+    .file-checklist.collapsed .checklist-toggle { transform: rotate(-90deg); }
+    .file-checklist.collapsed .checklist-body { display: none; }
+    .checklist-body { padding: 0.75rem 1rem; }
+    .checklist {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.25rem 1rem;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      padding: 0.25rem 0;
+      font-size: 0.8125rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .checklist-item.uploaded { color: var(--success); }
     .checklist-item.pending { color: var(--text-muted); }
-    .check-icon { width: 1.25rem; text-align: center; font-weight: bold; }
+    .check-icon { width: 1rem; text-align: center; font-weight: bold; flex-shrink: 0; }
     .checklist-item.uploaded .check-icon { color: var(--success); }
+    .file-info {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: help;
+    }
     .progress-summary { margin: 0.75rem 0; padding: 0.75rem; background: var(--bg-card); border-radius: 0.375rem; border: 1px solid var(--border-color); }
     .text-success { color: var(--success); }
-    .file-names { display: block; margin-top: 0.25rem; color: var(--text-muted); }
-    .file-names code { background: var(--gray-200); padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.7rem; }
-    .file-info { flex: 1; }
 
     /* Warning alert */
     .alert-warning h3 { font-size: 1rem; margin-bottom: 0.5rem; }
@@ -1413,7 +1473,11 @@
       margin-top: 0.75rem;
     }
 
-    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .notification-dropdown { width: 280px; right: -1rem; } }
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .notification-dropdown { width: 280px; right: -1rem; }
+      .checklist { grid-template-columns: 1fr; }
+    }
   </style>
 </body>
 </html>
