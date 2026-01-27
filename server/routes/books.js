@@ -168,13 +168,21 @@ router.get('/', (req, res) => {
   if (fs.existsSync(dataDir)) {
     const files = fs.readdirSync(dataDir).filter(f => f.endsWith('.json'));
     for (const file of files) {
-      const data = JSON.parse(fs.readFileSync(path.join(dataDir, file), 'utf8'));
-      books.push({
-        id: data.book,
-        title: data.title,
-        titleIs: data.titleIs,
-        chapterCount: data.chapters.length
-      });
+      try {
+        const data = JSON.parse(fs.readFileSync(path.join(dataDir, file), 'utf8'));
+        // Only include files that have book structure (book id and chapters array)
+        if (data.book && Array.isArray(data.chapters)) {
+          books.push({
+            id: data.book,
+            title: data.title,
+            titleIs: data.titleIs,
+            chapterCount: data.chapters.length
+          });
+        }
+      } catch (err) {
+        // Skip files that can't be parsed or don't have expected structure
+        console.warn(`Skipping ${file}: ${err.message}`);
+      }
     }
   }
 
