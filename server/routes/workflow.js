@@ -146,19 +146,39 @@ function getSupplementaryFiles(bookId, chapter) {
         }
       }
 
-      // Strings TXT - contains frontmatter and other extracted strings
+      // Strings MD - contains frontmatter, tables, and figures (new markdown format)
+      if (file.endsWith('-strings.en.md')) {
+        try {
+          const content = fs.readFileSync(filePath, 'utf8');
+          // Count translatable items by counting **Label:** patterns
+          const labelCount = (content.match(/\*\*[^*]+:\*\*/g) || []).length;
+          supplementaryFiles.push({
+            filename: file,
+            type: 'strings',
+            typeLabel: 'Strengir (MD)',
+            path: filePath,
+            section: file.match(/^(\d+-\d+|\d+\.\d+|intro)/)?.[1] || file,
+            translatableStrings: labelCount,
+            description: `${labelCount} strengir til þýðingar (markdown)`
+          });
+        } catch (e) {
+          console.warn('Failed to read strings file:', file, e.message);
+        }
+      }
+
+      // Strings TXT - legacy format (for backwards compatibility)
       if (file.endsWith('-strings.en.txt')) {
         try {
           const content = fs.readFileSync(filePath, 'utf8');
           const lines = content.split('\n').filter(l => l.trim());
           supplementaryFiles.push({
             filename: file,
-            type: 'strings',
-            typeLabel: 'Strengir',
+            type: 'strings-legacy',
+            typeLabel: 'Strengir (TXT)',
             path: filePath,
             section: file.match(/^(\d+-\d+|\d+\.\d+|intro)/)?.[1] || file,
             translatableStrings: lines.length,
-            description: `${lines.length} strengir til þýðingar`
+            description: `${lines.length} strengir til þýðingar (legacy)`
           });
         } catch (e) {
           console.warn('Failed to read strings file:', file, e.message);
@@ -833,6 +853,35 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
             bookSlug, sessionData.chapter, lastUploaded.section,
             'mt-upload', { filePath: saveResult.destPath }
           );
+        }
+      }
+
+      // === Handle strings.is.md uploads (translated strings file) ===
+      if (req.file.originalname.endsWith('-strings.is.md')) {
+        try {
+          // Import restore-strings module dynamically
+          const restoreStringsModule = await import('../../tools/restore-strings.js');
+
+          // Parse the section from filename (e.g., "1-1-strings.is.md" -> "1.1")
+          const sectionMatch = req.file.originalname.match(/^(\d+-\d+|\d+\.\d+|intro)-strings\.is\.md$/);
+          if (sectionMatch) {
+            const section = sectionMatch[1].replace('-', '.');
+            const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
+            const chapterNum = parseInt(sessionData.chapter, 10);
+            const chapterDir = path.join(__dirname, '..', '..', 'books', bookSlug, '02-for-mt',
+              `ch${String(chapterNum).padStart(2, '0')}`);
+
+            // Save the strings file to the chapter directory
+            const stringsDestPath = path.join(chapterDir, req.file.originalname);
+            fs.copyFileSync(req.file.path, stringsDestPath);
+            console.log(`  Saved translated strings to: ${stringsDestPath}`);
+
+            // Note: The restore-strings.js script will be run manually or during faithful-edit step
+            // to update the protected.json and figures.json with translated values
+          }
+        } catch (stringsErr) {
+          console.error('Error processing strings file:', stringsErr);
+          // Don't fail the upload - strings processing is optional
         }
       }
     }

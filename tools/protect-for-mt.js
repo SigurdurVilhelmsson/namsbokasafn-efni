@@ -70,12 +70,12 @@ protect-for-mt.js - Pre-MT protection for tables and frontmatter
 Extracts content that would be destroyed by MT and saves to sidecar JSON.
 Tables are replaced with [[TABLE:N]]{id="..."} placeholders.
 
-Also generates a strings file (*-strings.en.txt) with translatable content:
+Also generates a strings file (*-strings.en.md) in markdown format with:
 - Frontmatter titles
-- Table titles
-- Table summaries (accessibility text)
+- Table titles and summaries (accessibility text)
+- Figure captions and alt text (from figures.json)
 
-The strings file should be sent to MT alongside the main content.
+The markdown format is compatible with Erlendur MT (malstadur.is).
 
 Usage:
   node tools/protect-for-mt.js <file.en.md> [options]
@@ -90,7 +90,7 @@ Options:
 
 Output Files:
   *-protected.json  Sidecar with extracted tables and frontmatter
-  *-strings.en.txt  Translatable strings for MT
+  *-strings.en.md   Translatable strings in markdown format (for Erlendur MT)
 
 Examples:
   # Preview protection for a single file
@@ -223,40 +223,139 @@ function getSidecarPath(mdPath) {
 /**
  * Get the strings file path for a markdown file
  * @param {string} mdPath - Path to the markdown file
- * @returns {string} Path to the strings .en.txt file
+ * @returns {string} Path to the strings .en.md file
  */
 function getStringsPath(mdPath) {
   const dir = path.dirname(mdPath);
   const basename = path.basename(mdPath, '.en.md');
-  return path.join(dir, `${basename}-strings.en.txt`);
+  return path.join(dir, `${basename}-strings.en.md`);
 }
 
 /**
- * Generate translatable strings content from sidecar data
- * @param {object} sidecar - The sidecar data with frontmatter and tables
- * @returns {string} Formatted strings content for MT
+ * Get the figures file path for a markdown file
+ * @param {string} mdPath - Path to the markdown file
+ * @returns {string|null} Path to the figures.json file if it exists
  */
-function generateStringsContent(sidecar) {
-  const lines = [];
+function getFiguresPath(mdPath) {
+  const dir = path.dirname(mdPath);
+  const basename = path.basename(mdPath, '.en.md');
 
-  // Add frontmatter title if present
-  if (sidecar.frontmatter?.title) {
-    lines.push(`[[FRONTMATTER:title]] ${sidecar.frontmatter.title}`);
+  // Try different naming conventions
+  const candidates = [
+    path.join(dir, `${basename}-figures.json`),
+    path.join(dir, `${basename}.en-figures.json`)
+  ];
+
+  for (const candidate of candidates) {
+    if (fs.existsSync(candidate)) {
+      return candidate;
+    }
   }
 
-  // Add table titles and summaries
-  if (sidecar.tables) {
+  return null;
+}
+
+/**
+ * Load figures data from JSON file
+ * @param {string} mdPath - Path to the markdown file
+ * @returns {object|null} Figures data or null if not found
+ */
+function loadFiguresData(mdPath) {
+  const figuresPath = getFiguresPath(mdPath);
+  if (!figuresPath) return null;
+
+  try {
+    return JSON.parse(fs.readFileSync(figuresPath, 'utf-8'));
+  } catch (err) {
+    return null;
+  }
+}
+
+/**
+ * Generate translatable strings content in markdown format
+ *
+ * Format designed for Erlendur MT compatibility:
+ * - Uses markdown headers and bold labels
+ * - Readable format that survives MT processing
+ *
+ * @param {object} sidecar - The sidecar data with frontmatter and tables
+ * @param {object|null} figuresData - The figures data from figures.json
+ * @returns {string} Formatted markdown content for MT
+ */
+function generateStringsContent(sidecar, figuresData) {
+  const lines = [];
+  const section = sidecar.section || sidecar.frontmatter?.section || 'unknown';
+
+  lines.push(`# Translatable Strings - Section ${section}`);
+  lines.push('');
+
+  let hasContent = false;
+
+  // Frontmatter section
+  if (sidecar.frontmatter?.title) {
+    hasContent = true;
+    lines.push('## Frontmatter');
+    lines.push('');
+    lines.push(`**Title:** ${sidecar.frontmatter.title}`);
+    lines.push('');
+    lines.push('---');
+    lines.push('');
+  }
+
+  // Tables section
+  if (sidecar.tables && Object.keys(sidecar.tables).length > 0) {
+    hasContent = true;
+    lines.push('## Tables');
+    lines.push('');
+
     for (const [key, table] of Object.entries(sidecar.tables)) {
+      const tableNum = key.replace('TABLE:', '');
+      lines.push(`### Table ${tableNum}`);
+      lines.push('');
+
       if (table.title) {
-        lines.push(`[[${key}:title]] ${table.title}`);
+        lines.push(`**Title:** ${table.title}`);
+        lines.push('');
       }
+
       if (table.summary) {
-        lines.push(`[[${key}:summary]] ${table.summary}`);
+        lines.push(`**Summary:** ${table.summary}`);
+        lines.push('');
+      }
+    }
+    lines.push('---');
+    lines.push('');
+  }
+
+  // Figures section (from figures.json)
+  const figures = figuresData?.figures;
+  if (figures && Object.keys(figures).length > 0) {
+    hasContent = true;
+    lines.push('## Figures');
+    lines.push('');
+
+    for (const [figId, fig] of Object.entries(figures)) {
+      lines.push(`### ${figId}`);
+      lines.push('');
+
+      if (fig.captionEn) {
+        lines.push(`**Caption:** ${fig.captionEn}`);
+        lines.push('');
+      }
+
+      if (fig.altText) {
+        lines.push(`**Alt text:** ${fig.altText}`);
+        lines.push('');
       }
     }
   }
 
-  return lines.join('\n\n');
+  // Only return content if there's something to translate
+  if (!hasContent) {
+    return '';
+  }
+
+  return lines.join('\n');
 }
 
 /**
@@ -303,10 +402,14 @@ function processFile(filePath, options) {
     ...(tableCount > 0 && { tables })
   };
 
+  // Load figures data if available
+  const figuresData = loadFiguresData(filePath);
+  const hasFigures = figuresData?.figures && Object.keys(figuresData.figures).length > 0;
+
   // Determine outputs
   const sidecarPath = getSidecarPath(filePath);
   const stringsPath = getStringsPath(filePath);
-  const stringsContent = generateStringsContent(sidecar);
+  const stringsContent = generateStringsContent(sidecar, figuresData);
   const hasStrings = stringsContent.length > 0;
 
   if (dryRun) {
@@ -321,18 +424,23 @@ function processFile(filePath, options) {
         console.log(`    ${key}: ${table.title || '(no title)'} - ${preview}...`);
       }
     }
-    console.log(`  Would write sidecar: ${sidecarPath}`);
-    if (hasStrings) {
-      console.log(`  Would write strings: ${stringsPath}`);
-      console.log(`  Translatable strings:`);
-      for (const line of stringsContent.split('\n\n')) {
-        if (line.trim()) {
-          const preview = line.length > 80 ? line.substring(0, 77) + '...' : line;
-          console.log(`    ${preview}`);
-        }
+    if (hasFigures) {
+      const figureIds = Object.keys(figuresData.figures);
+      console.log(`  Figures: ${figureIds.length} figure(s)`);
+      for (const figId of figureIds.slice(0, 3)) {
+        const fig = figuresData.figures[figId];
+        const captionPreview = fig.captionEn ? fig.captionEn.substring(0, 50) + '...' : '(no caption)';
+        console.log(`    ${figId}: ${captionPreview}`);
+      }
+      if (figureIds.length > 3) {
+        console.log(`    ... and ${figureIds.length - 3} more`);
       }
     }
-    return { success: true, tablesProtected: tableCount, hasFrontmatter, hasStrings, dryRun: true };
+    console.log(`  Would write sidecar: ${sidecarPath}`);
+    if (hasStrings) {
+      console.log(`  Would write strings (markdown): ${stringsPath}`);
+    }
+    return { success: true, tablesProtected: tableCount, hasFrontmatter, hasFigures, hasStrings, dryRun: true };
   }
 
   // Write sidecar file
@@ -364,6 +472,7 @@ function processFile(filePath, options) {
     success: true,
     tablesProtected: tableCount,
     hasFrontmatter,
+    hasFigures,
     hasStrings,
     sidecarPath,
     stringsPath: hasStrings ? stringsPath : null
@@ -419,6 +528,7 @@ function processBatch(directory, options) {
   let totalTables = 0;
   let filesWithTables = 0;
   let filesWithFrontmatter = 0;
+  let filesWithFigures = 0;
   let filesWithStrings = 0;
 
   for (const file of files) {
@@ -439,6 +549,9 @@ function processBatch(directory, options) {
       if (result.hasFrontmatter) {
         filesWithFrontmatter++;
       }
+      if (result.hasFigures) {
+        filesWithFigures++;
+      }
       if (result.hasStrings) {
         filesWithStrings++;
       }
@@ -455,7 +568,8 @@ function processBatch(directory, options) {
   console.log(`  Files with frontmatter: ${filesWithFrontmatter}`);
   console.log(`  Files with tables: ${filesWithTables}`);
   console.log(`  Total tables protected: ${totalTables}`);
-  console.log(`  Files with translatable strings: ${filesWithStrings}`);
+  console.log(`  Files with figures: ${filesWithFigures}`);
+  console.log(`  Files with translatable strings (markdown): ${filesWithStrings}`);
 }
 
 // ============================================================================

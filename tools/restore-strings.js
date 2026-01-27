@@ -6,10 +6,11 @@
  * Post-MT processing script that updates sidecar JSON with translated strings.
  *
  * After machine translation, this script:
- * 1. Finds the translated strings file (*-strings.is.txt)
- * 2. Parses [[KEY]] value format
+ * 1. Finds the translated strings file (*-strings.is.md)
+ * 2. Parses markdown format (sections with **Label:** values)
  * 3. Updates the sidecar JSON with translated values
- * 4. Optionally updates table titles in the markdown file
+ * 4. Updates figures.json with translated captions and alt text
+ * 5. Optionally updates table titles in the markdown file
  *
  * Usage:
  *   node tools/restore-strings.js <file.is.md> [options]
@@ -60,8 +61,9 @@ function printHelp() {
   console.log(`
 restore-strings.js - Update sidecar with translated strings after MT
 
-Reads translated strings file (*-strings.is.txt) and updates the sidecar
-JSON with translated frontmatter titles, table titles, and summaries.
+Reads translated strings file (*-strings.is.md) in markdown format and updates:
+- Sidecar JSON with translated frontmatter titles, table titles, and summaries
+- Figures JSON with translated captions (captionIs) and alt text (altTextIs)
 
 Usage:
   node tools/restore-strings.js <file.is.md> [options]
@@ -76,15 +78,23 @@ Options:
 
 File Resolution:
   For file.is.md, looks for:
-  - file-strings.is.txt (translated strings)
+  - file-strings.is.md (translated strings in markdown)
   - file-protected.json (sidecar to update)
+  - file-figures.json or file.en-figures.json (figures to update)
 
-Strings File Format:
-  [[FRONTMATTER:title]] Translated title here
+Markdown Strings Format:
+  ## Frontmatter
+  **Title:** Translated title here
 
-  [[TABLE:1:title]] Translated table title
+  ## Tables
+  ### Table 1
+  **Title:** Translated table title
+  **Summary:** Translated table summary text
 
-  [[TABLE:1:summary]] Translated table summary text
+  ## Figures
+  ### CNX_Chem_01_01_Alchemist
+  **Caption:** Translated caption
+  **Alt text:** Translated alt text
 
 Examples:
   # Preview string restoration
@@ -118,11 +128,15 @@ function findStringsFile(mdPath) {
   // Remove split file suffix like (a), (b), etc.
   baseName = baseName.replace(/\([a-z]\)$/, '');
 
-  // Look for translated strings file
+  // Look for translated strings file (prefer .md format, fallback to .txt)
   const possiblePaths = [
-    // Same directory - translated strings
+    // New markdown format - same directory
+    path.join(dir, `${baseName}-strings.is.md`),
+    // New markdown format - source directory
+    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-strings.is.md`),
+    // Legacy txt format - same directory (backwards compatibility)
     path.join(dir, `${baseName}-strings.is.txt`),
-    // Source directory (02-for-mt instead of 02-mt-output)
+    // Legacy txt format - source directory
     path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-strings.is.txt`)
   ];
 
@@ -165,12 +179,138 @@ function findSidecarFile(mdPath) {
   return null;
 }
 
+/**
+ * Find the figures file for a translated markdown file.
+ *
+ * @param {string} mdPath - Path to the translated markdown file
+ * @returns {string|null} Path to figures file, or null if not found
+ */
+function findFiguresFile(mdPath) {
+  const dir = path.dirname(mdPath);
+  const basename = path.basename(mdPath);
+
+  // Extract base name
+  let baseName = basename.replace(/\.is\.md$/, '').replace(/\.md$/, '');
+  baseName = baseName.replace(/\([a-z]\)$/, '');
+
+  const possiblePaths = [
+    // Same directory - various naming conventions
+    path.join(dir, `${baseName}-figures.json`),
+    path.join(dir, `${baseName}.en-figures.json`),
+    // Source directory (02-for-mt instead of 02-mt-output)
+    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-figures.json`),
+    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}.en-figures.json`)
+  ];
+
+  for (const figuresPath of possiblePaths) {
+    if (fs.existsSync(figuresPath)) {
+      return figuresPath;
+    }
+  }
+
+  return null;
+}
+
 // ============================================================================
 // Strings Parsing
 // ============================================================================
 
 /**
- * Parse a strings file into key-value pairs.
+ * Determine if content is markdown format (new) or legacy txt format.
+ *
+ * @param {string} content - The strings file content
+ * @returns {boolean} True if markdown format
+ */
+function isMarkdownFormat(content) {
+  // Check for markdown headers that indicate new format
+  return content.includes('# Translatable Strings') ||
+         content.includes('## Frontmatter') ||
+         content.includes('## Tables') ||
+         content.includes('## Figures');
+}
+
+/**
+ * Parse a markdown strings file into structured data.
+ *
+ * @param {string} content - The markdown content
+ * @returns {object} Parsed data with frontmatter, tables, and figures
+ */
+function parseMarkdownStrings(content) {
+  const result = {
+    frontmatter: {},
+    tables: {},
+    figures: {}
+  };
+
+  // Clean up common MT artifacts
+  content = cleanMTMangling(content);
+
+  // Parse frontmatter title
+  const titleMatch = content.match(/## Frontmatter[\s\S]*?\*\*Title:\*\*\s*(.+?)(?=\n\n|\n---|$)/);
+  if (titleMatch) {
+    result.frontmatter.title = titleMatch[1].trim();
+  }
+
+  // Parse tables section
+  const tablesSection = content.match(/## Tables\s+([\s\S]*?)(?=\n## |$)/);
+  if (tablesSection) {
+    const tableContent = tablesSection[1];
+
+    // Find all table entries
+    const tablePattern = /### Table (\d+)\s+([\s\S]*?)(?=### Table |\n## |$)/g;
+    let tableMatch;
+    while ((tableMatch = tablePattern.exec(tableContent)) !== null) {
+      const tableNum = tableMatch[1];
+      const tableData = tableMatch[2];
+
+      result.tables[`TABLE:${tableNum}`] = {};
+
+      const tableTitle = tableData.match(/\*\*Title:\*\*\s*(.+?)(?=\n\n|\n\*\*|$)/);
+      if (tableTitle) {
+        result.tables[`TABLE:${tableNum}`].title = tableTitle[1].trim();
+      }
+
+      const tableSummary = tableData.match(/\*\*Summary:\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/);
+      if (tableSummary) {
+        result.tables[`TABLE:${tableNum}`].summary = tableSummary[1].trim();
+      }
+    }
+  }
+
+  // Parse figures section
+  const figuresSection = content.match(/## Figures\s+([\s\S]*?)$/);
+  if (figuresSection) {
+    const figureContent = figuresSection[1];
+
+    // Find all figure entries - match figure IDs (CNX_*, or any alphanumeric with underscores)
+    const figurePattern = /### ([A-Za-z0-9_-]+)\s+([\s\S]*?)(?=### [A-Za-z0-9_-]+|\n## |$)/g;
+    let figMatch;
+    while ((figMatch = figurePattern.exec(figureContent)) !== null) {
+      const figId = figMatch[1].trim();
+      const figData = figMatch[2];
+
+      // Skip if this looks like a table header we accidentally matched
+      if (figId.toLowerCase().startsWith('table')) continue;
+
+      result.figures[figId] = {};
+
+      const caption = figData.match(/\*\*Caption:\*\*\s*([\s\S]+?)(?=\n\n|\n\*\*|$)/);
+      if (caption) {
+        result.figures[figId].captionIs = caption[1].trim();
+      }
+
+      const altText = figData.match(/\*\*Alt text:\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/);
+      if (altText) {
+        result.figures[figId].altTextIs = altText[1].trim();
+      }
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Parse a legacy txt strings file into key-value pairs.
  *
  * Format:
  *   [[KEY]] Value text that can span
@@ -181,8 +321,11 @@ function findSidecarFile(mdPath) {
  * @param {string} content - The strings file content
  * @returns {Map<string, string>} Map of key to value
  */
-function parseStringsFile(content) {
+function parseLegacyStringsFile(content) {
   const strings = new Map();
+
+  // Clean up MT artifacts first
+  content = cleanMTMangling(content);
 
   // Pattern: [[KEY]] followed by value until next [[ or end
   const pattern = /\[\[([^\]]+)\]\]\s*([\s\S]*?)(?=\[\[|$)/g;
@@ -201,7 +344,56 @@ function parseStringsFile(content) {
 }
 
 /**
- * Also handle common MT mangling of markers
+ * Convert legacy parsed strings to structured format
+ * @param {Map<string, string>} strings - Legacy parsed strings
+ * @returns {object} Structured data
+ */
+function legacyToStructured(strings) {
+  const result = {
+    frontmatter: {},
+    tables: {},
+    figures: {}
+  };
+
+  for (const [key, value] of strings) {
+    if (key === 'FRONTMATTER:title') {
+      result.frontmatter.title = value;
+    } else if (key.startsWith('TABLE:')) {
+      // Parse TABLE:N:field format
+      const match = key.match(/TABLE:(\d+):(\w+)/);
+      if (match) {
+        const tableNum = match[1];
+        const field = match[2];
+        if (!result.tables[`TABLE:${tableNum}`]) {
+          result.tables[`TABLE:${tableNum}`] = {};
+        }
+        result.tables[`TABLE:${tableNum}`][field] = value;
+      }
+    }
+    // Note: Legacy format didn't support figures
+  }
+
+  return result;
+}
+
+/**
+ * Parse strings file content (auto-detects format).
+ *
+ * @param {string} content - The strings file content
+ * @returns {object} Parsed data with frontmatter, tables, and figures
+ */
+function parseStringsFile(content) {
+  if (isMarkdownFormat(content)) {
+    return parseMarkdownStrings(content);
+  } else {
+    // Legacy format
+    const strings = parseLegacyStringsFile(content);
+    return legacyToStructured(strings);
+  }
+}
+
+/**
+ * Handle common MT mangling of content
  * @param {string} content - The potentially mangled strings content
  * @returns {string} Cleaned content
  */
@@ -214,27 +406,30 @@ function cleanMTMangling(content) {
   cleaned = cleaned.replace(/\[\s+\[/g, '[[');
   cleaned = cleaned.replace(/\]\s+\]/g, ']]');
 
+  // Handle escaped asterisks: \*\* -> **
+  cleaned = cleaned.replace(/\\\*\\\*/g, '**');
+
   return cleaned;
 }
 
 // ============================================================================
-// Sidecar Updating
+// Sidecar and Figures Updating
 // ============================================================================
 
 /**
  * Update sidecar with translated strings
  *
  * @param {object} sidecar - The sidecar data
- * @param {Map<string, string>} strings - Translated strings
+ * @param {object} parsed - Parsed translated strings (structured format)
  * @param {boolean} verbose - Whether to log details
  * @returns {{sidecar: object, updates: number}}
  */
-function updateSidecar(sidecar, strings, verbose) {
+function updateSidecar(sidecar, parsed, verbose) {
   let updates = 0;
 
   // Update frontmatter title
-  if (strings.has('FRONTMATTER:title') && sidecar.frontmatter) {
-    const translatedTitle = strings.get('FRONTMATTER:title');
+  if (parsed.frontmatter?.title && sidecar.frontmatter) {
+    const translatedTitle = parsed.frontmatter.title;
     if (sidecar.frontmatter.title !== translatedTitle) {
       if (verbose) {
         console.error(`  Updating frontmatter title: "${sidecar.frontmatter.title}" -> "${translatedTitle}"`);
@@ -245,33 +440,32 @@ function updateSidecar(sidecar, strings, verbose) {
   }
 
   // Update table titles and summaries
-  if (sidecar.tables) {
+  if (sidecar.tables && parsed.tables) {
     for (const [tableKey, tableData] of Object.entries(sidecar.tables)) {
+      const translatedTable = parsed.tables[tableKey];
+      if (!translatedTable) continue;
+
       // Update table title
-      const titleKey = `${tableKey}:title`;
-      if (strings.has(titleKey)) {
-        const translatedTitle = strings.get(titleKey);
-        if (tableData.title !== translatedTitle) {
+      if (translatedTable.title) {
+        if (tableData.title !== translatedTable.title) {
           if (verbose) {
             const oldTitle = tableData.title || '(none)';
-            console.error(`  Updating ${tableKey} title: "${oldTitle}" -> "${translatedTitle}"`);
+            console.error(`  Updating ${tableKey} title: "${oldTitle}" -> "${translatedTable.title}"`);
           }
-          tableData.title = translatedTitle;
+          tableData.title = translatedTable.title;
           updates++;
         }
       }
 
       // Update table summary
-      const summaryKey = `${tableKey}:summary`;
-      if (strings.has(summaryKey)) {
-        const translatedSummary = strings.get(summaryKey);
-        if (tableData.summary !== translatedSummary) {
+      if (translatedTable.summary) {
+        if (tableData.summary !== translatedTable.summary) {
           if (verbose) {
             const oldSummary = tableData.summary ? tableData.summary.substring(0, 40) + '...' : '(none)';
-            const newSummary = translatedSummary.substring(0, 40) + '...';
+            const newSummary = translatedTable.summary.substring(0, 40) + '...';
             console.error(`  Updating ${tableKey} summary: "${oldSummary}" -> "${newSummary}"`);
           }
-          tableData.summary = translatedSummary;
+          tableData.summary = translatedTable.summary;
           updates++;
         }
       }
@@ -279,6 +473,55 @@ function updateSidecar(sidecar, strings, verbose) {
   }
 
   return { sidecar, updates };
+}
+
+/**
+ * Update figures JSON with translated captions and alt text
+ *
+ * @param {object} figuresData - The figures data
+ * @param {object} parsed - Parsed translated strings (structured format)
+ * @param {boolean} verbose - Whether to log details
+ * @returns {{figuresData: object, updates: number}}
+ */
+function updateFigures(figuresData, parsed, verbose) {
+  let updates = 0;
+
+  if (!figuresData?.figures || !parsed.figures) {
+    return { figuresData, updates };
+  }
+
+  for (const [figId, figData] of Object.entries(figuresData.figures)) {
+    const translatedFig = parsed.figures[figId];
+    if (!translatedFig) continue;
+
+    // Update caption (captionIs)
+    if (translatedFig.captionIs) {
+      if (figData.captionIs !== translatedFig.captionIs) {
+        if (verbose) {
+          const oldCaption = figData.captionIs ? figData.captionIs.substring(0, 40) + '...' : '(none)';
+          const newCaption = translatedFig.captionIs.substring(0, 40) + '...';
+          console.error(`  Updating ${figId} caption: "${oldCaption}" -> "${newCaption}"`);
+        }
+        figData.captionIs = translatedFig.captionIs;
+        updates++;
+      }
+    }
+
+    // Update alt text (altTextIs)
+    if (translatedFig.altTextIs) {
+      if (figData.altTextIs !== translatedFig.altTextIs) {
+        if (verbose) {
+          const oldAlt = figData.altTextIs ? figData.altTextIs.substring(0, 40) + '...' : '(none)';
+          const newAlt = translatedFig.altTextIs.substring(0, 40) + '...';
+          console.error(`  Updating ${figId} alt text: "${oldAlt}" -> "${newAlt}"`);
+        }
+        figData.altTextIs = translatedFig.altTextIs;
+        updates++;
+      }
+    }
+  }
+
+  return { figuresData, updates };
 }
 
 /**
@@ -355,41 +598,84 @@ function processFile(filePath, options) {
   // Find sidecar file
   const sidecarPath = findSidecarFile(filePath);
 
-  if (!sidecarPath) {
+  // Find figures file
+  const figuresPath = findFiguresFile(filePath);
+
+  // Need at least sidecar or figures to update
+  if (!sidecarPath && !figuresPath) {
     if (verbose) {
-      console.error(`  No sidecar file found for: ${filePath}`);
+      console.error(`  No sidecar or figures file found for: ${filePath}`);
     }
     return { success: true, updates: 0, noSidecar: true };
   }
 
   // Load and parse strings file
-  let stringsContent = fs.readFileSync(stringsPath, 'utf-8');
-  stringsContent = cleanMTMangling(stringsContent);
-  const strings = parseStringsFile(stringsContent);
+  const stringsContent = fs.readFileSync(stringsPath, 'utf-8');
+  const parsed = parseStringsFile(stringsContent);
 
-  if (strings.size === 0) {
+  // Check if there's anything to update
+  const hasContent = parsed.frontmatter?.title ||
+                     Object.keys(parsed.tables).length > 0 ||
+                     Object.keys(parsed.figures).length > 0;
+
+  if (!hasContent) {
     if (verbose) {
       console.error(`  No valid strings found in: ${stringsPath}`);
     }
     return { success: true, updates: 0, emptyStrings: true };
   }
 
-  // Load sidecar
-  let sidecar;
-  try {
-    sidecar = JSON.parse(fs.readFileSync(sidecarPath, 'utf-8'));
-  } catch (err) {
-    return { success: false, error: `Failed to parse sidecar: ${sidecarPath}` };
+  // Load sidecar if available
+  let sidecar = null;
+  if (sidecarPath) {
+    try {
+      sidecar = JSON.parse(fs.readFileSync(sidecarPath, 'utf-8'));
+    } catch (err) {
+      return { success: false, error: `Failed to parse sidecar: ${sidecarPath}` };
+    }
+  }
+
+  // Load figures if available
+  let figuresData = null;
+  if (figuresPath) {
+    try {
+      figuresData = JSON.parse(fs.readFileSync(figuresPath, 'utf-8'));
+    } catch (err) {
+      if (verbose) {
+        console.error(`  Warning: Failed to parse figures: ${figuresPath}`);
+      }
+    }
   }
 
   // Update sidecar with translated strings
-  const { sidecar: updatedSidecar, updates: sidecarUpdates } = updateSidecar(sidecar, strings, verbose);
+  let sidecarUpdates = 0;
+  let updatedSidecar = sidecar;
+  if (sidecar) {
+    const result = updateSidecar(sidecar, parsed, verbose);
+    updatedSidecar = result.sidecar;
+    sidecarUpdates = result.updates;
+  }
+
+  // Update figures with translated captions/alt text
+  let figuresUpdates = 0;
+  let updatedFigures = figuresData;
+  if (figuresData && Object.keys(parsed.figures).length > 0) {
+    const result = updateFigures(figuresData, parsed, verbose);
+    updatedFigures = result.figuresData;
+    figuresUpdates = result.updates;
+  }
 
   // Update markdown file with translated table titles
-  const mdContent = fs.readFileSync(filePath, 'utf-8');
-  const { content: updatedMdContent, updates: mdUpdates } = updateMarkdownTitles(mdContent, updatedSidecar, verbose);
+  let mdUpdates = 0;
+  let updatedMdContent = null;
+  if (updatedSidecar) {
+    const mdContent = fs.readFileSync(filePath, 'utf-8');
+    const result = updateMarkdownTitles(mdContent, updatedSidecar, verbose);
+    updatedMdContent = result.content;
+    mdUpdates = result.updates;
+  }
 
-  const totalUpdates = sidecarUpdates + mdUpdates;
+  const totalUpdates = sidecarUpdates + figuresUpdates + mdUpdates;
 
   if (totalUpdates === 0) {
     if (verbose) {
@@ -400,23 +686,39 @@ function processFile(filePath, options) {
 
   if (dryRun) {
     console.log(`[DRY RUN] Would update ${totalUpdates} string(s) for: ${filePath}`);
-    console.log(`  Strings file: ${stringsPath}`);
-    console.log(`  Sidecar updates: ${sidecarUpdates}`);
-    console.log(`  Markdown title updates: ${mdUpdates}`);
+    console.log(`  Strings file: ${stringsPath} (${stringsPath.endsWith('.md') ? 'markdown' : 'legacy txt'})`);
+    if (sidecarUpdates > 0) {
+      console.log(`  Sidecar updates: ${sidecarUpdates}`);
+    }
+    if (figuresUpdates > 0) {
+      console.log(`  Figures updates: ${figuresUpdates}`);
+    }
+    if (mdUpdates > 0) {
+      console.log(`  Markdown title updates: ${mdUpdates}`);
+    }
     return { success: true, updates: totalUpdates, dryRun: true };
   }
 
   // Write updated sidecar
-  fs.writeFileSync(sidecarPath, JSON.stringify(updatedSidecar, null, 2));
-
-  // Write updated markdown if titles changed
-  if (mdUpdates > 0) {
-    fs.writeFileSync(filePath, updatedMdContent);
+  if (sidecarUpdates > 0 && sidecarPath) {
+    fs.writeFileSync(sidecarPath, JSON.stringify(updatedSidecar, null, 2));
+    if (verbose) {
+      console.error(`  Updated sidecar: ${sidecarPath}`);
+    }
   }
 
-  if (verbose) {
-    console.error(`  Updated sidecar: ${sidecarPath}`);
-    if (mdUpdates > 0) {
+  // Write updated figures
+  if (figuresUpdates > 0 && figuresPath) {
+    fs.writeFileSync(figuresPath, JSON.stringify(updatedFigures, null, 2));
+    if (verbose) {
+      console.error(`  Updated figures: ${figuresPath}`);
+    }
+  }
+
+  // Write updated markdown if titles changed
+  if (mdUpdates > 0 && updatedMdContent) {
+    fs.writeFileSync(filePath, updatedMdContent);
+    if (verbose) {
       console.error(`  Updated markdown: ${filePath}`);
     }
   }
@@ -425,9 +727,11 @@ function processFile(filePath, options) {
     success: true,
     updates: totalUpdates,
     sidecarUpdates,
+    figuresUpdates,
     mdUpdates,
     stringsPath,
-    sidecarPath
+    sidecarPath,
+    figuresPath: figuresUpdates > 0 ? figuresPath : null
   };
 }
 
@@ -511,7 +815,8 @@ function processBatch(directory, options) {
   console.log(`  Files processed: ${files.length}`);
   console.log(`  Files updated: ${filesUpdated}`);
   console.log(`  Files without strings: ${filesNoStrings}`);
-  console.log(`  Total strings restored: ${totalUpdates}`);
+  console.log(`  Total updates applied: ${totalUpdates}`);
+  console.log(`    (includes frontmatter, tables, and figures)`);
 }
 
 // ============================================================================
