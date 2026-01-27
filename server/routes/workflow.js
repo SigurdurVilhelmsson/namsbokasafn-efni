@@ -46,6 +46,26 @@ const {
   MAX_RETRY_ATTEMPTS
 } = session;
 
+/**
+ * Get book slug from book ID
+ * The filesystem uses slugs (e.g., 'efnafraedi') but the workflow uses
+ * book IDs (e.g., 'chemistry-2e'). This helper resolves the slug.
+ * @param {string} bookId - Book ID (e.g., 'chemistry-2e')
+ * @returns {string} Book slug (e.g., 'efnafraedi')
+ */
+function getBookSlug(bookId) {
+  try {
+    const bookDataPath = path.join(__dirname, '..', 'data', `${bookId}.json`);
+    if (fs.existsSync(bookDataPath)) {
+      const bookData = JSON.parse(fs.readFileSync(bookDataPath, 'utf8'));
+      return bookData.slug || bookId;
+    }
+  } catch (err) {
+    console.warn('Could not load book data for slug:', err.message);
+  }
+  return bookId;
+}
+
 // Configure multer for workflow file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -129,9 +149,13 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
   }
 
   try {
+    // Resolve book slug for filesystem operations
+    const bookSlug = getBookSlug(book);
+
     // Create session
     const newSession = session.createSession({
       book,
+      bookSlug,  // Store slug for persistence operations
       chapter,
       modules,
       sourceType: 'modules',
@@ -227,7 +251,7 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
             if (moduleSection && output.path) {
               const fileType = output.type === 'markdown' ? undefined : output.type;
               const saveResult = workflowPersistence.saveWorkflowFile(
-                book, chapter, moduleSection, 'source', output.path,
+                bookSlug, chapter, moduleSection, 'source', output.path,
                 { fileType: fileType === 'equations' ? 'equations' : undefined }
               );
               if (saveResult.success) {
@@ -266,11 +290,11 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
         .filter(o => o.section && o.type === 'markdown')
         .map(o => ({
           section: o.section,
-          filePath: workflowPersistence.checkFileExists(book, chapter, o.section, 'source').path
+          filePath: workflowPersistence.checkFileExists(bookSlug, chapter, o.section, 'source').path
         }));
 
       if (sectionFiles.length > 0) {
-        const batchResult = workflowPersistence.batchUpdateSections(book, chapter, 'source', sectionFiles);
+        const batchResult = workflowPersistence.batchUpdateSections(bookSlug, chapter, 'source', sectionFiles);
         console.log(`Updated ${batchResult.updated} sections to mt_pending status`);
         if (batchResult.errors.length > 0) {
           console.warn('Section update errors:', batchResult.errors);
@@ -687,15 +711,16 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       // === PERSISTENCE: Save MT output to permanent folder ===
       const lastUploaded = progress.uploadedFiles[progress.uploadedFiles.length - 1];
       if (lastUploaded?.section) {
+        const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
         const saveResult = workflowPersistence.saveWorkflowFile(
-          sessionData.book, sessionData.chapter, lastUploaded.section,
+          bookSlug, sessionData.chapter, lastUploaded.section,
           'mt-upload', req.file.path
         );
         if (saveResult.success) {
           console.log(`  Saved MT output to permanent: ${saveResult.destPath}`);
           // Update database status
           workflowPersistence.updateSectionFromWorkflow(
-            sessionData.book, sessionData.chapter, lastUploaded.section,
+            bookSlug, sessionData.chapter, lastUploaded.section,
             'mt-upload', { filePath: saveResult.destPath }
           );
         }
@@ -714,14 +739,15 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       // === PERSISTENCE: Save faithful edit to permanent folder ===
       const lastUploaded = progress.uploadedFiles[progress.uploadedFiles.length - 1];
       if (lastUploaded?.section) {
+        const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
         const saveResult = workflowPersistence.saveWorkflowFile(
-          sessionData.book, sessionData.chapter, lastUploaded.section,
+          bookSlug, sessionData.chapter, lastUploaded.section,
           'faithful-edit', req.file.path
         );
         if (saveResult.success) {
           console.log(`  Saved faithful edit to permanent: ${saveResult.destPath}`);
           workflowPersistence.updateSectionFromWorkflow(
-            sessionData.book, sessionData.chapter, lastUploaded.section,
+            bookSlug, sessionData.chapter, lastUploaded.section,
             'faithful-edit', { filePath: saveResult.destPath }
           );
         }
@@ -738,14 +764,15 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       // === PERSISTENCE: Save TMX to permanent folder ===
       const lastUploaded = progress.uploadedFiles[progress.uploadedFiles.length - 1];
       if (lastUploaded?.section) {
+        const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
         const saveResult = workflowPersistence.saveWorkflowFile(
-          sessionData.book, sessionData.chapter, lastUploaded.section,
+          bookSlug, sessionData.chapter, lastUploaded.section,
           'tm-creation', req.file.path
         );
         if (saveResult.success) {
           console.log(`  Saved TMX to permanent: ${saveResult.destPath}`);
           workflowPersistence.updateSectionFromWorkflow(
-            sessionData.book, sessionData.chapter, lastUploaded.section,
+            bookSlug, sessionData.chapter, lastUploaded.section,
             'tm-creation', { filePath: saveResult.destPath }
           );
         }
@@ -804,14 +831,15 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       // === PERSISTENCE: Save localized file to permanent folder ===
       const lastUploadedLoc = progress.uploadedFiles[progress.uploadedFiles.length - 1];
       if (lastUploadedLoc?.section) {
+        const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
         const saveResult = workflowPersistence.saveWorkflowFile(
-          sessionData.book, sessionData.chapter, lastUploadedLoc.section,
+          bookSlug, sessionData.chapter, lastUploadedLoc.section,
           'localization', req.file.path
         );
         if (saveResult.success) {
           console.log(`  Saved localized file to permanent: ${saveResult.destPath}`);
           workflowPersistence.updateSectionFromWorkflow(
-            sessionData.book, sessionData.chapter, lastUploadedLoc.section,
+            bookSlug, sessionData.chapter, lastUploadedLoc.section,
             'localization', { filePath: saveResult.destPath }
           );
         }
@@ -978,17 +1006,8 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
 function buildZipFilename(sessionData, filter) {
   const { book, chapter, modules } = sessionData;
 
-  // Get book slug from data file
-  let slug = book; // Default to book ID
-  try {
-    const bookDataPath = path.join(__dirname, '..', 'data', `${book}.json`);
-    if (fs.existsSync(bookDataPath)) {
-      const bookData = JSON.parse(fs.readFileSync(bookDataPath, 'utf8'));
-      slug = bookData.slug || book;
-    }
-  } catch (err) {
-    console.warn('Could not load book data for slug:', err.message);
-  }
+  // Get book slug (use cached value from session or resolve from book ID)
+  const slug = sessionData.bookSlug || getBookSlug(book);
 
   // Extract section numbers and determine range
   const sectionNumbers = [];
