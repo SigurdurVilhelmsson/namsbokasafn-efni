@@ -635,8 +635,11 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | POST | `/:sessionId/upload/:step` |
 | GET | `/:sessionId/download/:artifact` |
 | GET | `/:sessionId/download-all` |
+| GET | `/:sessionId/supplementary-files` |
+| GET | `/:sessionId/supplementary-file/:filename` |
 | POST | `/:sessionId/advance` |
 | POST | `/:sessionId/cancel` |
+| DELETE | `/:sessionId` |
 | GET | `/:sessionId/errors` |
 | POST | `/:sessionId/retry` |
 | POST | `/:sessionId/rollback` |
