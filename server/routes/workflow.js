@@ -1146,6 +1146,17 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
       archive.file(file.path, { name: file.originalName || path.basename(file.path) });
     }
 
+    // Include strings.md files when downloading md files (needed for Erlendur MT)
+    if (!filter || filter === 'md') {
+      const supplementaryFiles = getSupplementaryFiles(sessionData.book, sessionData.chapter);
+      for (const sf of supplementaryFiles) {
+        // Include strings.en.md files (type === 'strings')
+        if (sf.type === 'strings' && sf.path && fs.existsSync(sf.path)) {
+          archive.file(sf.path, { name: sf.filename });
+        }
+      }
+    }
+
     await archive.finalize();
 
   } catch (err) {
