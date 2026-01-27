@@ -35,6 +35,7 @@ const { classifyIssues, applyAutoFixes, getIssueStats } = require('../services/i
 const assignmentStore = require('../services/assignmentStore');
 const activityLog = require('../services/activityLog');
 const notifications = require('../services/notifications');
+const workflowPersistence = require('../services/workflowPersistence');
 
 // Re-export splitting functions for use in this module
 const {
@@ -221,6 +222,20 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
                 });
               }
             }
+
+            // === PERSISTENCE: Save to permanent folder ===
+            if (moduleSection && output.path) {
+              const fileType = output.type === 'markdown' ? undefined : output.type;
+              const saveResult = workflowPersistence.saveWorkflowFile(
+                book, chapter, moduleSection, 'source', output.path,
+                { fileType: fileType === 'equations' ? 'equations' : undefined }
+              );
+              if (saveResult.success) {
+                console.log(`  Saved to permanent: ${saveResult.destPath}`);
+              } else {
+                console.warn(`  Failed to save permanently: ${saveResult.error}`);
+              }
+            }
           }
         } else {
           errors.push({ moduleId, error: results.error });
@@ -245,6 +260,22 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
 
       // Save checkpoint after successful source step
       session.saveCheckpoint(newSession.sessionId);
+
+      // === PERSISTENCE: Update book_sections status to mt_pending ===
+      const sectionFiles = allOutputs
+        .filter(o => o.section && o.type === 'markdown')
+        .map(o => ({
+          section: o.section,
+          filePath: workflowPersistence.checkFileExists(book, chapter, o.section, 'source').path
+        }));
+
+      if (sectionFiles.length > 0) {
+        const batchResult = workflowPersistence.batchUpdateSections(book, chapter, 'source', sectionFiles);
+        console.log(`Updated ${batchResult.updated} sections to mt_pending status`);
+        if (batchResult.errors.length > 0) {
+          console.warn('Section update errors:', batchResult.errors);
+        }
+      }
 
       // Don't auto-advance - let the UI control progression via download button
     } else {
@@ -322,6 +353,175 @@ router.get('/sessions/all', requireAuth, (req, res) => {
     sessions,
     total: sessions.length
   });
+});
+
+/**
+ * GET /api/workflow/check/:book/:chapter
+ * Check existing progress for a chapter
+ *
+ * Returns information about what files already exist and what step
+ * the workflow can resume from.
+ */
+router.get('/check/:book/:chapter', requireAuth, (req, res) => {
+  const { book, chapter } = req.params;
+  const chapterNum = parseInt(chapter, 10);
+
+  if (!book || isNaN(chapterNum)) {
+    return res.status(400).json({
+      error: 'Invalid parameters',
+      message: 'book and chapter are required'
+    });
+  }
+
+  try {
+    const progress = workflowPersistence.detectExistingProgress(book, chapterNum);
+
+    // Also check for active session
+    const activeSession = session.findActiveWorkflow(book, chapterNum);
+
+    res.json({
+      book,
+      chapter: chapterNum,
+      hasProgress: progress.canResume,
+      activeSession: activeSession ? {
+        id: activeSession.id,
+        startedBy: activeSession.username,
+        currentStep: activeSession.steps[activeSession.currentStep]?.name,
+        createdAt: activeSession.createdAt
+      } : null,
+      progress: {
+        canResume: progress.canResume,
+        resumeStep: progress.resumeStep,
+        resumeStepIndex: progress.resumeStepIndex,
+        completedSteps: progress.completedSteps,
+        stepProgress: progress.stepProgress
+      },
+      sections: progress.sections,
+      downloads: progress.completedSteps.length > 0
+        ? workflowPersistence.getCompletedStepDownloads(book, chapterNum, progress.completedSteps)
+        : {}
+    });
+
+  } catch (err) {
+    console.error('Check progress error:', err);
+    res.status(500).json({
+      error: 'Failed to check progress',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * POST /api/workflow/resume
+ * Resume workflow from existing progress
+ *
+ * Body:
+ *   - book: Book identifier
+ *   - chapter: Chapter number
+ *   - modules: Array of module IDs to process
+ *   - resumeFromStep: Step index to resume from (optional, auto-detected if not provided)
+ */
+router.post('/resume', requireAuth, requireContributor(), async (req, res) => {
+  const { book, chapter, modules, resumeFromStep } = req.body;
+
+  if (!book || !chapter) {
+    return res.status(400).json({
+      error: 'Missing parameters',
+      message: 'book and chapter are required'
+    });
+  }
+
+  if (!modules || !Array.isArray(modules) || modules.length === 0) {
+    return res.status(400).json({
+      error: 'Missing modules',
+      message: 'At least one module is required'
+    });
+  }
+
+  try {
+    // Detect existing progress
+    const progress = workflowPersistence.detectExistingProgress(book, chapter);
+
+    if (!progress.canResume) {
+      return res.status(400).json({
+        error: 'No progress to resume',
+        message: 'No existing files found for this chapter. Use /start instead.',
+        suggestion: 'POST /api/workflow/start'
+      });
+    }
+
+    // Determine start step
+    const startStep = resumeFromStep !== undefined
+      ? resumeFromStep
+      : progress.resumeStepIndex;
+
+    // Create session starting from the resume point
+    const newSession = session.createSession({
+      book,
+      chapter,
+      modules,
+      sourceType: 'modules',
+      userId: req.user.id,
+      username: req.user.username,
+      startStep,
+      completedSteps: progress.completedSteps
+    });
+
+    const sessionData = session.getSession(newSession.sessionId);
+
+    // Build expected files for current step
+    if (startStep === 1) {
+      // Resuming at MT upload - build expected files from sections
+      const expected = modules.map(m => ({
+        moduleId: typeof m === 'object' ? m.id : m,
+        section: typeof m === 'object' ? m.section : null,
+        title: typeof m === 'object' ? m.title : null,
+        displayName: typeof m === 'object' && m.section
+          ? `${m.section}: ${m.title || m.id}`
+          : (typeof m === 'object' ? m.id : m),
+        expectedUpload: typeof m === 'object' && m.section
+          ? `${m.section.replace('.', '-')}.is.md`
+          : null
+      }));
+      session.updateExpectedFiles(newSession.sessionId, 'mt-upload', expected);
+    }
+
+    // Save checkpoint
+    session.saveCheckpoint(newSession.sessionId);
+
+    // Get upload progress for current step if applicable
+    let uploadProgress = null;
+    const currentStepData = sessionData.steps[startStep];
+    if (currentStepData && currentStepData.id === 'mt-upload') {
+      uploadProgress = session.getUploadProgress(newSession.sessionId, 'mt-upload');
+    }
+
+    res.json({
+      success: true,
+      sessionId: newSession.sessionId,
+      book,
+      chapter,
+      resumed: true,
+      resumedFromStep: startStep,
+      completedSteps: progress.completedSteps,
+      steps: sessionData.steps.map(s => ({
+        id: s.id,
+        name: s.name,
+        status: s.status,
+        manual: s.manual
+      })),
+      currentStep: sessionData.steps[startStep],
+      downloads: workflowPersistence.getCompletedStepDownloads(book, chapter, progress.completedSteps),
+      uploadProgress
+    });
+
+  } catch (err) {
+    console.error('Workflow resume error:', err);
+    res.status(500).json({
+      error: 'Failed to resume workflow',
+      message: err.message
+    });
+  }
 });
 
 /**
@@ -483,6 +683,23 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         // Don't fail the upload if issue detection fails
         issuesSummary = { error: issueErr.message };
       }
+
+      // === PERSISTENCE: Save MT output to permanent folder ===
+      const lastUploaded = progress.uploadedFiles[progress.uploadedFiles.length - 1];
+      if (lastUploaded?.section) {
+        const saveResult = workflowPersistence.saveWorkflowFile(
+          sessionData.book, sessionData.chapter, lastUploaded.section,
+          'mt-upload', req.file.path
+        );
+        if (saveResult.success) {
+          console.log(`  Saved MT output to permanent: ${saveResult.destPath}`);
+          // Update database status
+          workflowPersistence.updateSectionFromWorkflow(
+            sessionData.book, sessionData.chapter, lastUploaded.section,
+            'mt-upload', { filePath: saveResult.destPath }
+          );
+        }
+      }
     }
 
     if (step === 'faithful-edit') {
@@ -493,6 +710,22 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         complete: progress.complete,
         message: `${progress.uploaded}/${progress.expected} skrá(r) yfirfarnar`
       };
+
+      // === PERSISTENCE: Save faithful edit to permanent folder ===
+      const lastUploaded = progress.uploadedFiles[progress.uploadedFiles.length - 1];
+      if (lastUploaded?.section) {
+        const saveResult = workflowPersistence.saveWorkflowFile(
+          sessionData.book, sessionData.chapter, lastUploaded.section,
+          'faithful-edit', req.file.path
+        );
+        if (saveResult.success) {
+          console.log(`  Saved faithful edit to permanent: ${saveResult.destPath}`);
+          workflowPersistence.updateSectionFromWorkflow(
+            sessionData.book, sessionData.chapter, lastUploaded.section,
+            'faithful-edit', { filePath: saveResult.destPath }
+          );
+        }
+      }
     }
 
     if (step === 'tm-creation') {
@@ -501,6 +734,22 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         filesUploaded: 1,
         message: 'TMX skrá móttekin frá Matecat Align'
       };
+
+      // === PERSISTENCE: Save TMX to permanent folder ===
+      const lastUploaded = progress.uploadedFiles[progress.uploadedFiles.length - 1];
+      if (lastUploaded?.section) {
+        const saveResult = workflowPersistence.saveWorkflowFile(
+          sessionData.book, sessionData.chapter, lastUploaded.section,
+          'tm-creation', req.file.path
+        );
+        if (saveResult.success) {
+          console.log(`  Saved TMX to permanent: ${saveResult.destPath}`);
+          workflowPersistence.updateSectionFromWorkflow(
+            sessionData.book, sessionData.chapter, lastUploaded.section,
+            'tm-creation', { filePath: saveResult.destPath }
+          );
+        }
+      }
     }
 
     if (step === 'localization') {
@@ -551,6 +800,22 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         complete: progress.complete,
         message: `${progress.uploaded}/${progress.expected} staðfærð(ar) skrá(r) mótteknar`
       };
+
+      // === PERSISTENCE: Save localized file to permanent folder ===
+      const lastUploadedLoc = progress.uploadedFiles[progress.uploadedFiles.length - 1];
+      if (lastUploadedLoc?.section) {
+        const saveResult = workflowPersistence.saveWorkflowFile(
+          sessionData.book, sessionData.chapter, lastUploadedLoc.section,
+          'localization', req.file.path
+        );
+        if (saveResult.success) {
+          console.log(`  Saved localized file to permanent: ${saveResult.destPath}`);
+          workflowPersistence.updateSectionFromWorkflow(
+            sessionData.book, sessionData.chapter, lastUploadedLoc.section,
+            'localization', { filePath: saveResult.destPath }
+          );
+        }
+      }
     }
 
     const updatedSession = session.getSession(sessionId);

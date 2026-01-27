@@ -172,8 +172,144 @@
       chapterInfo.style.display = 'block';
       submitBtn.disabled = false;
 
-      // Load chapter files status
+      // Load chapter files status and check for workflow progress
       loadChapterFiles(bookId, chapterNum);
+      checkWorkflowProgress(bookId, chapterNum);
+    }
+
+    // Check for existing workflow progress
+    async function checkWorkflowProgress(bookId, chapterNum) {
+      try {
+        const res = await fetch('/api/workflow/check/' + bookId + '/' + chapterNum);
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        // Update submit button based on progress
+        const submitBtn = document.getElementById('submit-btn');
+        const chapterInfo = document.getElementById('chapter-info');
+
+        // If there's an active session, show join option
+        if (data.activeSession) {
+          let progressHtml = '<div class="workflow-progress active-session">' +
+            '<p class="text-info"><strong>⚡ Virkt verkflæði</strong></p>' +
+            '<p class="text-muted">Byrjað af ' + escapeHtml(data.activeSession.startedBy) +
+            ' - ' + escapeHtml(data.activeSession.currentStep) + '</p>' +
+            '<div class="progress-actions">' +
+            '<button type="button" class="btn btn-primary btn-small" onclick="loadWorkflow(\'' + data.activeSession.id + '\')">Skoða verkflæði</button>' +
+            '</div></div>';
+
+          // Prepend to chapter info
+          const existingProgress = chapterInfo.querySelector('.workflow-progress');
+          if (existingProgress) existingProgress.remove();
+          chapterInfo.insertAdjacentHTML('afterbegin', progressHtml);
+
+          submitBtn.textContent = 'Hefja nýtt (óháð)';
+          return;
+        }
+
+        // If there's resumable progress, show resume option
+        if (data.hasProgress && data.progress.canResume) {
+          const stepNames = {
+            'source': 'Undirbúningur',
+            'mt-upload': 'Vélþýðing',
+            'faithful-edit': '1. yfirferð',
+            'tm-creation': 'Þýðingaminni',
+            'localization': 'Staðfærsla'
+          };
+
+          const completedNames = data.progress.completedSteps.map(s => stepNames[s] || s).join(', ');
+          const resumeStepName = stepNames[data.progress.resumeStep] || data.progress.resumeStep;
+
+          let progressHtml = '<div class="workflow-progress resumable">' +
+            '<p class="text-success"><strong>✓ Framvinda til staðar</strong></p>' +
+            '<p class="text-muted">Lokið: ' + escapeHtml(completedNames) + '</p>' +
+            '<p class="text-muted">Næsta skref: ' + escapeHtml(resumeStepName) + '</p>';
+
+          // Show completed step downloads
+          if (data.downloads && Object.keys(data.downloads).length > 0) {
+            progressHtml += '<div class="completed-downloads">';
+            for (const [step, info] of Object.entries(data.downloads)) {
+              if (info.fileCount > 0) {
+                progressHtml += '<span class="download-badge">' +
+                  escapeHtml(stepNames[step] || step) + ': ' + info.fileCount + ' skrár</span>';
+              }
+            }
+            progressHtml += '</div>';
+          }
+
+          progressHtml += '<div class="progress-actions">' +
+            '<button type="button" class="btn btn-primary btn-small" onclick="resumeWorkflow(\'' + bookId + '\', ' + chapterNum + ')">Halda áfram →</button>' +
+            '<button type="button" class="btn btn-secondary btn-small" onclick="startFreshWorkflow()">Byrja upp á nýtt</button>' +
+            '</div></div>';
+
+          // Prepend to chapter info
+          const existingProgress = chapterInfo.querySelector('.workflow-progress');
+          if (existingProgress) existingProgress.remove();
+          chapterInfo.insertAdjacentHTML('afterbegin', progressHtml);
+
+          // Update submit button
+          submitBtn.textContent = 'Byrja upp á nýtt';
+        } else {
+          // No progress - remove any existing progress UI
+          const existingProgress = chapterInfo.querySelector('.workflow-progress');
+          if (existingProgress) existingProgress.remove();
+          submitBtn.textContent = 'Hefja verkflæði';
+        }
+
+      } catch (e) {
+        console.error('Error checking workflow progress:', e);
+      }
+    }
+
+    // Resume workflow from existing progress
+    async function resumeWorkflow(bookId, chapterNum) {
+      if (!selectedChapter) {
+        alert('Enginn kafli valinn');
+        return;
+      }
+
+      const submitBtn = document.getElementById('submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Hleður...';
+
+      try {
+        const res = await fetch('/api/workflow/resume', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            book: bookId,
+            chapter: parseInt(chapterNum, 10),
+            modules: selectedChapter.modules.map(m => ({
+              id: m.id,
+              section: m.section,
+              title: m.title
+            }))
+          })
+        });
+
+        const result = await res.json();
+        if (result.success) {
+          showWorkflow(result);
+          loadWorkflows();
+        } else {
+          alert('Villa: ' + (result.message || result.error));
+        }
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Hefja verkflæði';
+      }
+    }
+
+    // Start fresh workflow (used when progress exists but user wants to restart)
+    function startFreshWorkflow() {
+      const progressEl = document.querySelector('.workflow-progress');
+      if (progressEl) progressEl.remove();
+
+      const submitBtn = document.getElementById('submit-btn');
+      submitBtn.textContent = 'Hefja verkflæði';
     }
 
     // Load chapter files status (permanent storage)
@@ -1232,6 +1368,49 @@
     .import-actions {
       display: flex;
       gap: 0.5rem;
+    }
+
+    /* Workflow progress section */
+    .workflow-progress {
+      background: var(--bg-card);
+      border-radius: 0.375rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--border-color);
+    }
+    .workflow-progress.resumable {
+      border-color: var(--success);
+      background: rgba(16, 185, 129, 0.05);
+    }
+    .workflow-progress.active-session {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.05);
+    }
+    .workflow-progress p {
+      margin: 0.25rem 0;
+      font-size: 0.875rem;
+    }
+    .workflow-progress .text-info {
+      color: var(--primary);
+    }
+    .completed-downloads {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      margin: 0.5rem 0;
+    }
+    .download-badge {
+      background: var(--success-light);
+      color: #166534;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.6875rem;
+      font-weight: 500;
+    }
+    .progress-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
     }
 
     @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .notification-dropdown { width: 280px; right: -1rem; } }

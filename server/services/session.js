@@ -263,6 +263,16 @@ function findActiveWorkflow(book, chapter) {
 
 /**
  * Create a new workflow session
+ *
+ * @param {object} options - Session options
+ * @param {string} options.book - Book identifier
+ * @param {number} options.chapter - Chapter number
+ * @param {Array} options.modules - Array of module objects or IDs
+ * @param {string} options.sourceType - Source type (default: 'cnxml')
+ * @param {string} options.userId - User ID
+ * @param {string} options.username - Username
+ * @param {number} options.startStep - Step index to start from (for resuming, default: 0)
+ * @param {Array<string>} options.completedSteps - Array of step IDs already completed (for resuming)
  */
 function createSession(options) {
   const {
@@ -271,7 +281,9 @@ function createSession(options) {
     modules = [],
     sourceType = 'cnxml',
     userId,
-    username
+    username,
+    startStep = 0,
+    completedSteps = []
   } = options;
 
   const sessionId = uuidv4();
@@ -285,14 +297,30 @@ function createSession(options) {
   const now = new Date().toISOString();
   const expiresAt = new Date(Date.now() + SESSION_EXPIRY).toISOString();
 
-  const steps = WORKFLOW_STEPS.map(step => ({
-    ...step,
-    status: 'pending',
-    startedAt: null,
-    completedAt: null,
-    data: {},
-    issues: []
-  }));
+  // Initialize steps with appropriate status based on startStep and completedSteps
+  const steps = WORKFLOW_STEPS.map((step, index) => {
+    let status = 'pending';
+    let completedAt = null;
+
+    // Mark previously completed steps
+    if (completedSteps.includes(step.id) || index < startStep) {
+      status = 'completed';
+      completedAt = new Date().toISOString();
+    }
+    // Mark current step as in-progress
+    else if (index === startStep) {
+      status = 'in-progress';
+    }
+
+    return {
+      ...step,
+      status,
+      startedAt: index === startStep ? new Date().toISOString() : null,
+      completedAt,
+      data: {},
+      issues: []
+    };
+  });
 
   // Normalize modules - can be array of strings (IDs) or objects with id/section/title
   const normalizedModules = modules.map(m => {
@@ -329,7 +357,7 @@ function createSession(options) {
     userId,
     username,
     'active',
-    0,
+    startStep,  // Use startStep instead of always 0
     JSON.stringify(steps),
     JSON.stringify({}),
     JSON.stringify(expectedFiles),
@@ -355,7 +383,9 @@ function createSession(options) {
       name: s.name,
       status: s.status
     })),
-    currentStep: steps[0]
+    currentStep: steps[startStep],
+    startedAt: startStep,
+    resumed: startStep > 0
   };
 }
 
