@@ -26,6 +26,8 @@
 | GET | `/books` |
 | GET | `/books/:slug` |
 | GET | `/books/:slug/chapters/:chapter` |
+| POST | `/books/:slug/generate-data` |
+| GET | `/books/data-status` |
 | GET | `/users` |
 | GET | `/users/:id` |
 | POST | `/users` |
@@ -399,6 +401,8 @@
 | POST | `/start` |
 | GET | `/sessions` |
 | GET | `/sessions/all` |
+| GET | `/check/:book/:chapter` |
+| POST | `/resume` |
 | GET | `/:sessionId` |
 | POST | `/:sessionId/upload/:step` |
 | GET | `/:sessionId/download/:artifact` |
