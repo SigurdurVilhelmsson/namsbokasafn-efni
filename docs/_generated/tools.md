@@ -36,7 +36,7 @@
 | `restore-figures` | Post-MT processing script that restores correct figure numbers from sidecar. |
 | `restore-images` | Post-MT processing script that reconstructs image markdown from attribute blocks |
 | `restore-links` | Post-MT processing script that restores markdown links from MT-safe syntax. |
-| `restore-strings` | Post-MT processing script that updates sidecar JSON with translated strings. |
+| `restore-strings` | Post-MT processing script that integrates translated strings into content. |
 | `restore-tables` | Post-MT processing script that restores tables from sidecar JSON files. |
 | `strip-docx-to-txt` | Extract plain text from DOCX files |
 | `validate-chapter` | Validate chapter structure and status |
