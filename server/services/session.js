@@ -18,6 +18,7 @@ const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
 const Database = require('better-sqlite3');
+const { extractBaseSectionId, extractPartLetter } = require('./splitFileUtils');
 
 // Database path - stored in pipeline-output directory
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -837,6 +838,10 @@ function recombineSplitFiles(uploads, outputDir, section) {
 /**
  * Get upload progress for a workflow step
  * Only counts uploads that match expected files (by section+part or moduleId)
+ *
+ * Returns both file-level and section-level progress:
+ * - File-level: counts each part separately (for completion check)
+ * - Section-level: counts base sections (splits collapsed) for user-facing progress
  */
 function getUploadProgress(sessionId, stepId) {
   const sess = getSession(sessionId);
@@ -910,7 +915,13 @@ function getUploadProgress(sessionId, stepId) {
     return !matchedKeys.has(key);
   });
 
+  // Calculate section-level progress (splits collapsed)
+  // This groups split files by their base section and counts sections as complete
+  // only when ALL parts of a split section are uploaded
+  const sectionProgress = calculateSectionProgress(expected, matchedKeys);
+
   return {
+    // File-level progress (for completion check)
     expected: expected.length,
     uploaded: matchedKeys.size,
     complete: missing.length === 0,
@@ -918,7 +929,99 @@ function getUploadProgress(sessionId, stepId) {
     matchedFiles: matchedUploads,
     unmatchedFiles: unmatchedUploads,
     uploadedFiles: uploaded,
-    expectedFiles: expected
+    expectedFiles: expected,
+    // Section-level progress (for user-facing display)
+    sections: sectionProgress
+  };
+}
+
+/**
+ * Calculate section-level progress from expected files and matched keys.
+ * Groups split files by base section and reports section-level completion.
+ *
+ * @param {Array} expected - Expected file objects with section/part info
+ * @param {Set} matchedKeys - Set of matched keys (section:part or section)
+ * @returns {Object} Section progress info
+ */
+function calculateSectionProgress(expected, matchedKeys) {
+  // Build a map of sections to their expected parts
+  // sectionMap[section] = { parts: ['a', 'b', 'c'] or null for non-split, uploaded: [...] }
+  const sectionMap = new Map();
+
+  for (const exp of expected) {
+    if (typeof exp !== 'object' || !exp.section) continue;
+
+    // Get base section (for strings files like "1.1-strings", keep as-is)
+    const baseSection = exp.section;
+
+    if (!sectionMap.has(baseSection)) {
+      sectionMap.set(baseSection, { expectedParts: [], uploadedParts: [] });
+    }
+
+    const info = sectionMap.get(baseSection);
+
+    if (exp.part) {
+      // Split file - track the part
+      info.expectedParts.push(exp.part);
+      // Check if this part was uploaded
+      const key = `${exp.section}:${exp.part}`;
+      if (matchedKeys.has(key)) {
+        info.uploadedParts.push(exp.part);
+      }
+    } else {
+      // Non-split file
+      info.expectedParts.push(null);
+      if (matchedKeys.has(exp.section)) {
+        info.uploadedParts.push(null);
+      }
+    }
+  }
+
+  // Calculate which sections are complete
+  let totalSections = 0;
+  let completeSections = 0;
+  const incompleteSections = [];
+
+  for (const [section, info] of sectionMap) {
+    totalSections++;
+    const isSplit = info.expectedParts.some(p => p !== null);
+
+    if (isSplit) {
+      // For split sections, all parts must be uploaded
+      const expectedSet = new Set(info.expectedParts.filter(p => p !== null));
+      const uploadedSet = new Set(info.uploadedParts.filter(p => p !== null));
+      const allUploaded = [...expectedSet].every(p => uploadedSet.has(p));
+
+      if (allUploaded && uploadedSet.size === expectedSet.size) {
+        completeSections++;
+      } else {
+        const missingParts = [...expectedSet].filter(p => !uploadedSet.has(p));
+        incompleteSections.push({
+          section,
+          expected: info.expectedParts.length,
+          uploaded: info.uploadedParts.length,
+          missingParts
+        });
+      }
+    } else {
+      // Non-split: just need one file
+      if (info.uploadedParts.length > 0) {
+        completeSections++;
+      } else {
+        incompleteSections.push({
+          section,
+          expected: 1,
+          uploaded: 0
+        });
+      }
+    }
+  }
+
+  return {
+    total: totalSections,
+    complete: completeSections,
+    incomplete: incompleteSections,
+    percentComplete: totalSections > 0 ? Math.round((completeSections / totalSections) * 100) : 0
   };
 }
 

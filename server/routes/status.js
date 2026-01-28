@@ -15,6 +15,12 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 const activityLog = require('../services/activityLog');
+const {
+  extractBaseSectionId,
+  sectionHasAnyFile,
+  getSectionFiles,
+  getUniqueSections
+} = require('../services/splitFileUtils');
 
 // Import assignment store (will create if not exists)
 let assignmentStore;
@@ -710,12 +716,13 @@ router.get('/:book/:chapter/sections', (req, res) => {
     const sectionSet = new Set();
 
     // Check MT output first (primary source of sections)
+    // Use extractBaseSectionId to normalize split files (e.g., "1-2(a).is.md" → "1-2")
     if (fs.existsSync(stagePaths.mtOutput)) {
       const files = fs.readdirSync(stagePaths.mtOutput)
         .filter(f => f.endsWith('.is.md'));
       files.forEach(f => {
-        // Extract section ID: "1-1.is.md" -> "1-1", "intro.is.md" -> "intro"
-        const sectionId = f.replace('.is.md', '');
+        // Extract base section ID, collapsing splits to their parent
+        const sectionId = extractBaseSectionId(f);
         sectionSet.add(sectionId);
       });
     }
@@ -725,7 +732,8 @@ router.get('/:book/:chapter/sections', (req, res) => {
       const files = fs.readdirSync(stagePaths.enMarkdown)
         .filter(f => f.endsWith('.en.md'));
       files.forEach(f => {
-        const sectionId = f.replace('.en.md', '');
+        // Extract base section ID, collapsing splits to their parent
+        const sectionId = extractBaseSectionId(f);
         sectionSet.add(sectionId);
       });
     }
@@ -745,13 +753,13 @@ router.get('/:book/:chapter/sections', (req, res) => {
     const sectionStatuses = sections.map(sectionId => {
       const stages = {};
 
-      // Check EN markdown
-      const enFile = path.join(stagePaths.enMarkdown, `${sectionId}.en.md`);
-      stages.enMarkdown = fs.existsSync(enFile) ? 'complete' : 'not-started';
+      // Check EN markdown (may be split into parts like "1-2(a).en.md")
+      const enFileExists = sectionHasAnyFile(stagePaths.enMarkdown, sectionId, '.en.md');
+      stages.enMarkdown = enFileExists ? 'complete' : 'not-started';
 
-      // Check MT output
-      const mtFile = path.join(stagePaths.mtOutput, `${sectionId}.is.md`);
-      stages.mtOutput = fs.existsSync(mtFile) ? 'complete' : 'not-started';
+      // Check MT output (may be split into parts like "1-2(a).is.md")
+      const mtFileExists = sectionHasAnyFile(stagePaths.mtOutput, sectionId, '.is.md');
+      stages.mtOutput = mtFileExists ? 'complete' : 'not-started';
 
       // Check faithful translation (Pass 1 review)
       const faithfulFile = path.join(stagePaths.linguisticReview, `${sectionId}.is.md`);
@@ -1306,13 +1314,14 @@ router.get('/analytics', async (req, res) => {
         const faithfulPath = path.join(bookPath, '03-faithful', chapterDir.replace('ch', 'ch'));
         const mtOutputPath = path.join(bookPath, '02-mt-output', chapterDir.replace('ch', 'ch'));
 
-        // Estimate sections based on files
+        // Estimate sections based on files (normalize split files to base sections)
         if (fs.existsSync(faithfulPath)) {
           try {
             const faithfulFiles = fs.readdirSync(faithfulPath)
               .filter(f => f.endsWith('.is.md'));
-            completedSections += faithfulFiles.length;
-            totalSections += faithfulFiles.length;
+            const uniqueFaithfulSections = getUniqueSections(faithfulFiles);
+            completedSections += uniqueFaithfulSections.length;
+            totalSections += uniqueFaithfulSections.length;
           } catch (e) { }
         }
 
@@ -1320,11 +1329,12 @@ router.get('/analytics', async (req, res) => {
           try {
             const mtFiles = fs.readdirSync(mtOutputPath)
               .filter(f => f.endsWith('.is.md'));
+            const uniqueMtSections = getUniqueSections(mtFiles);
             // Add sections that are in MT output but not in faithful
             const faithfulCount = fs.existsSync(faithfulPath)
-              ? fs.readdirSync(faithfulPath).filter(f => f.endsWith('.is.md')).length
+              ? getUniqueSections(fs.readdirSync(faithfulPath).filter(f => f.endsWith('.is.md'))).length
               : 0;
-            const mtOnlyCount = Math.max(0, mtFiles.length - faithfulCount);
+            const mtOnlyCount = Math.max(0, uniqueMtSections.length - faithfulCount);
             inProgressSections += mtOnlyCount;
             totalSections += mtOnlyCount;
           } catch (e) { }
@@ -1506,14 +1516,16 @@ router.get('/analytics', async (req, res) => {
       if (fs.existsSync(mtOutputPath)) {
         try {
           const mtFiles = fs.readdirSync(mtOutputPath).filter(f => f.endsWith('.is.md'));
-          pilotSectionsTotal += mtFiles.length;
+          // Count unique base sections (collapse split parts)
+          pilotSectionsTotal += getUniqueSections(mtFiles).length;
         } catch (e) { }
       }
 
       if (fs.existsSync(faithfulPath)) {
         try {
           const faithfulFiles = fs.readdirSync(faithfulPath).filter(f => f.endsWith('.is.md'));
-          pilotSectionsComplete += faithfulFiles.length;
+          // Count unique base sections (collapse split parts)
+          pilotSectionsComplete += getUniqueSections(faithfulFiles).length;
         } catch (e) { }
       }
     }
