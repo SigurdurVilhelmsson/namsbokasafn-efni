@@ -753,6 +753,7 @@ router.get('/:sessionId', requireAuth, (req, res) => {
     session: {
       id: sessionData.id,
       book: sessionData.book,
+      bookSlug: sessionData.bookSlug || getBookSlug(sessionData.book),
       chapter: sessionData.chapter,
       modules: sessionData.modules,
       status: sessionData.status,
@@ -882,7 +883,6 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
 
       // === PERSISTENCE: Save MT output to permanent folder ===
       const lastUploaded = progress.uploadedFiles[progress.uploadedFiles.length - 1];
-      console.log(`  MT upload persistence: filename=${req.file.originalname}, lastUploaded.section=${lastUploaded?.section}`);
 
       // Determine section from tracking data or filename
       let section = lastUploaded?.section;
@@ -891,13 +891,11 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         const match = req.file.originalname.match(/^(\d+-\d+|intro)\.is\.md$/);
         if (match) {
           section = match[1].replace('-', '.');
-          console.log(`  Extracted section from filename: ${section}`);
         }
       }
 
       if (section) {
         const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
-        console.log(`  Saving MT output: book=${bookSlug}, chapter=${sessionData.chapter}, section=${section}`);
         const saveResult = workflowPersistence.saveWorkflowFile(
           bookSlug, sessionData.chapter, section,
           'mt-upload', req.file.path

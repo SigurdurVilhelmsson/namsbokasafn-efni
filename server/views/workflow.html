@@ -1126,7 +1126,7 @@
 
       // Add MT publish button if upload is complete and user can publish
       const publishHtml = (canProceed && canPublish())
-        ? buildMTPublishAction(data.book, data.chapter, true)
+        ? buildMTPublishAction(data.bookSlug || data.book, data.chapter, true)
         : '';
 
       return publishHtml +
@@ -1304,7 +1304,7 @@
 
       // Build section publication list (async)
       const sectionPublishHtml = canPublish()
-        ? await buildSectionPublishList('faithful', data.book, data.chapter)
+        ? await buildSectionPublishList('faithful', data.bookSlug || data.book, data.chapter)
         : '';
 
       contentEl.innerHTML = '<div class="step-content-wrapper">' +
@@ -1450,7 +1450,7 @@
 
       // Build section publication list (async)
       const sectionPublishHtml = canPublish()
-        ? await buildSectionPublishList('localized', data.book, data.chapter)
+        ? await buildSectionPublishList('localized', data.bookSlug || data.book, data.chapter)
         : '';
 
       contentEl.innerHTML = '<div class="step-content-wrapper">' +
