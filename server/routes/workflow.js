@@ -882,20 +882,35 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
 
       // === PERSISTENCE: Save MT output to permanent folder ===
       const lastUploaded = progress.uploadedFiles[progress.uploadedFiles.length - 1];
-      if (lastUploaded?.section) {
+
+      // Determine section from tracking data or filename
+      let section = lastUploaded?.section;
+      if (!section && req.file.originalname) {
+        // Extract section from filename (e.g., "1-1.is.md" -> "1.1", "intro.is.md" -> "intro")
+        const match = req.file.originalname.match(/^(\d+-\d+|intro)\.is\.md$/);
+        if (match) {
+          section = match[1].replace('-', '.');
+        }
+      }
+
+      if (section) {
         const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
         const saveResult = workflowPersistence.saveWorkflowFile(
-          bookSlug, sessionData.chapter, lastUploaded.section,
+          bookSlug, sessionData.chapter, section,
           'mt-upload', req.file.path
         );
         if (saveResult.success) {
           console.log(`  Saved MT output to permanent: ${saveResult.destPath}`);
           // Update database status
           workflowPersistence.updateSectionFromWorkflow(
-            bookSlug, sessionData.chapter, lastUploaded.section,
+            bookSlug, sessionData.chapter, section,
             'mt-upload', { filePath: saveResult.destPath }
           );
+        } else {
+          console.warn(`  Failed to save MT output: ${saveResult.error}`);
         }
+      } else {
+        console.warn(`  Could not determine section for file: ${req.file.originalname}`);
       }
 
       // === Handle strings.is.md uploads (translated strings file) ===
