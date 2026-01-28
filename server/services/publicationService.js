@@ -83,7 +83,10 @@ function checkMtPreviewReadiness(bookSlug, chapterNum) {
     };
   }
 
-  const files = fs.readdirSync(mtOutputDir).filter(f => f.endsWith('.is.md'));
+  // Filter for main .is.md files, excluding -strings.is.md (content is integrated during restoration)
+  const files = fs.readdirSync(mtOutputDir).filter(f =>
+    f.endsWith('.is.md') && !f.endsWith('-strings.is.md')
+  );
 
   if (files.length === 0) {
     return {
