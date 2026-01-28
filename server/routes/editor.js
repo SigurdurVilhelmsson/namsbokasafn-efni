@@ -59,11 +59,11 @@ function validateParams(req, res, next) {
 function validateSection(req, res, next) {
   const { section } = req.params;
 
-  // Section format: "1-1", "1-2", "2-1", etc.
-  if (!/^\d+-\d+(-[a-z0-9-]+)?$/.test(section)) {
+  // Section format: "intro", "1-1", "1-2", "2-1", etc.
+  if (!/^(intro|\d+-\d+)(-[a-z0-9-]+)?$/.test(section)) {
     return res.status(400).json({
       error: 'Invalid section',
-      message: 'Section must be in format like "1-1" or "1-2-title"'
+      message: 'Section must be "intro" or in format like "1-1" or "1-2-title"'
     });
   }
 

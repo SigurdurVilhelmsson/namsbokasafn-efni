@@ -107,6 +107,133 @@ router.get('/:bookSlug/:chapterNum/readiness', requireAuth, validateChapterParam
 });
 
 /**
+ * GET /api/publication/:bookSlug/:chapterNum/sections
+ * Get section-level publication status for a chapter
+ *
+ * Returns each section's approval and publication state
+ */
+router.get('/:bookSlug/:chapterNum/sections', requireAuth, validateChapterParams, (req, res) => {
+  const { bookSlug } = req.params;
+  const { chapter } = req;
+
+  try {
+    const sectionStatus = publicationService.getSectionPublicationStatus(bookSlug, chapter);
+
+    res.json({
+      book: bookSlug,
+      chapter,
+      ...sectionStatus
+    });
+  } catch (err) {
+    console.error('Error getting section status:', err);
+    res.status(500).json({
+      error: 'Failed to get section status',
+      message: err.message
+    });
+  }
+});
+
+/**
+ * GET /api/publication/:bookSlug/:chapterNum/:type/preview
+ * Preview what files will be created/overwritten before publishing
+ *
+ * Type can be: mt-preview, faithful, localized
+ * Requires: HEAD_EDITOR role
+ */
+router.get(
+  '/:bookSlug/:chapterNum/:type/preview',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  validateChapterParams,
+  (req, res) => {
+    const { bookSlug, type } = req.params;
+    const { chapter } = req;
+
+    try {
+      let preview;
+      switch (type) {
+        case 'mt-preview':
+          preview = publicationService.publishMtPreview(bookSlug, chapter, null, null, { dryRun: true });
+          break;
+        case 'faithful':
+          preview = publicationService.publishFaithful(bookSlug, chapter, null, null, { dryRun: true });
+          break;
+        case 'localized':
+          preview = publicationService.publishLocalized(bookSlug, chapter, null, null, { dryRun: true });
+          break;
+        default:
+          return res.status(400).json({
+            error: 'Invalid publication type',
+            message: 'Type must be mt-preview, faithful, or localized'
+          });
+      }
+
+      res.json({
+        book: bookSlug,
+        chapter,
+        type,
+        ...preview
+      });
+    } catch (err) {
+      console.error('Error getting publication preview:', err);
+      res.status(400).json({
+        error: 'Failed to get publication preview',
+        message: err.message
+      });
+    }
+  }
+);
+
+/**
+ * GET /api/publication/:bookSlug/:chapterNum/:type/:section/preview
+ * Preview what files will be created/overwritten for a single section
+ *
+ * Type can be: faithful, localized (MT preview is chapter-level only)
+ * Requires: HEAD_EDITOR role
+ */
+router.get(
+  '/:bookSlug/:chapterNum/:type/:section/preview',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  validateChapterParams,
+  (req, res) => {
+    const { bookSlug, type, section } = req.params;
+    const { chapter } = req;
+
+    try {
+      let preview;
+      switch (type) {
+        case 'faithful':
+          preview = publicationService.publishFaithfulSection(bookSlug, chapter, section, null, null, { dryRun: true });
+          break;
+        case 'localized':
+          preview = publicationService.publishLocalizedSection(bookSlug, chapter, section, null, null, { dryRun: true });
+          break;
+        default:
+          return res.status(400).json({
+            error: 'Invalid publication type',
+            message: 'Section-level publishing supports faithful or localized only'
+          });
+      }
+
+      res.json({
+        book: bookSlug,
+        chapter,
+        section,
+        type,
+        ...preview
+      });
+    } catch (err) {
+      console.error('Error getting section publication preview:', err);
+      res.status(400).json({
+        error: 'Failed to get section publication preview',
+        message: err.message
+      });
+    }
+  }
+);
+
+/**
  * POST /api/publication/:bookSlug/:chapterNum/mt-preview
  * Publish MT preview for a chapter
  *
@@ -301,6 +428,140 @@ router.post(
       console.error('Error publishing localized content:', err);
       res.status(500).json({
         error: 'Failed to publish localized content',
+        message: err.message
+      });
+    }
+  }
+);
+
+/**
+ * POST /api/publication/:bookSlug/:chapterNum/faithful/:section
+ * Publish faithful translation for a single section
+ *
+ * Requires: HEAD_EDITOR role
+ * Requires: Section has passed linguistic review
+ */
+router.post(
+  '/:bookSlug/:chapterNum/faithful/:section',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  validateChapterParams,
+  async (req, res) => {
+    const { bookSlug, section } = req.params;
+    const { chapter } = req;
+
+    try {
+      // Check section readiness
+      const readiness = publicationService.checkSectionReadiness(bookSlug, chapter, section);
+      if (!readiness.ready) {
+        return res.status(400).json({
+          error: 'Section not ready for faithful publication',
+          reason: readiness.reason,
+          details: readiness
+        });
+      }
+
+      // Publish section
+      const result = publicationService.publishFaithfulSection(
+        bookSlug,
+        chapter,
+        section,
+        req.user.id,
+        req.user.name || req.user.login
+      );
+
+      // Log activity
+      try {
+        activityLog.log({
+          type: 'publish_faithful_section',
+          userId: req.user.id,
+          username: req.user.name || req.user.login,
+          book: bookSlug,
+          chapter: String(chapter),
+          section,
+          description: `Published faithful translation for ${bookSlug} chapter ${chapter} section ${section}`,
+          metadata: { filesPublished: result.filesPublished, warning: result.warning }
+        });
+      } catch (logErr) {
+        console.error('Failed to log activity:', logErr);
+      }
+
+      res.json({
+        success: true,
+        message: `Faithful translation published for section ${section}`,
+        ...result
+      });
+    } catch (err) {
+      console.error('Error publishing faithful section:', err);
+      res.status(500).json({
+        error: 'Failed to publish faithful section',
+        message: err.message
+      });
+    }
+  }
+);
+
+/**
+ * POST /api/publication/:bookSlug/:chapterNum/localized/:section
+ * Publish localized content for a single section
+ *
+ * Requires: HEAD_EDITOR role
+ * Requires: Section has passed localization review
+ */
+router.post(
+  '/:bookSlug/:chapterNum/localized/:section',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  validateChapterParams,
+  async (req, res) => {
+    const { bookSlug, section } = req.params;
+    const { chapter } = req;
+
+    try {
+      // Check section readiness
+      const readiness = publicationService.checkSectionLocalizedReadiness(bookSlug, chapter, section);
+      if (!readiness.ready) {
+        return res.status(400).json({
+          error: 'Section not ready for localized publication',
+          reason: readiness.reason,
+          details: readiness
+        });
+      }
+
+      // Publish section
+      const result = publicationService.publishLocalizedSection(
+        bookSlug,
+        chapter,
+        section,
+        req.user.id,
+        req.user.name || req.user.login
+      );
+
+      // Log activity
+      try {
+        activityLog.log({
+          type: 'publish_localized_section',
+          userId: req.user.id,
+          username: req.user.name || req.user.login,
+          book: bookSlug,
+          chapter: String(chapter),
+          section,
+          description: `Published localized content for ${bookSlug} chapter ${chapter} section ${section}`,
+          metadata: { filesPublished: result.filesPublished, warning: result.warning }
+        });
+      } catch (logErr) {
+        console.error('Failed to log activity:', logErr);
+      }
+
+      res.json({
+        success: true,
+        message: `Localized content published for section ${section}`,
+        ...result
+      });
+    } catch (err) {
+      console.error('Error publishing localized section:', err);
+      res.status(500).json({
+        error: 'Failed to publish localized section',
         message: err.message
       });
     }

@@ -94,6 +94,28 @@
     </div>
   </main>
 
+  <!-- Overwrite Confirmation Modal -->
+  <div id="overwrite-modal" class="modal" style="display: none;">
+    <div class="modal-overlay" onclick="closeOverwriteModal()"></div>
+    <div class="modal-content">
+      <h3 id="modal-title">Staðfesta birtingu</h3>
+      <p id="modal-description"></p>
+      <div id="overwrite-list-container" style="display: none;">
+        <p class="text-warning"><strong>Eftirfarandi skrár verða yfirskrifaðar:</strong></p>
+        <ul id="overwrite-list" class="overwrite-list"></ul>
+      </div>
+      <div id="create-list-container" style="display: none;">
+        <p class="text-muted"><strong>Nýjar skrár:</strong></p>
+        <ul id="create-list" class="create-list"></ul>
+      </div>
+      <div id="modal-warning" class="modal-warning" style="display: none;"></div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeOverwriteModal()">Hætta við</button>
+        <button class="btn btn-primary" id="confirm-publish-btn">Birta</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     let booksData = {};
     let selectedChapter = null;
@@ -716,7 +738,7 @@
       document.getElementById('workflow-detail').style.display = 'none';
     }
 
-    function showWorkflow(data) {
+    async function showWorkflow(data) {
       document.getElementById('workflow-detail').style.display = 'block';
       document.getElementById('detail-title').textContent = data.book + ' - Kafli ' + data.chapter;
 
@@ -808,13 +830,13 @@
         showMTUploadStep(data);
 
       } else if (current.id === 'faithful-edit') {
-        showFaithfulEditStep(data, stepIndex);
+        await showFaithfulEditStep(data, stepIndex);
 
       } else if (current.id === 'tm-creation') {
         showTMCreationStep(data, stepIndex);
 
       } else if (current.id === 'localization') {
-        showLocalizationStep(data, stepIndex);
+        await showLocalizationStep(data, stepIndex);
 
       } else {
         const statusText = current.status === 'completed' ? 'Lokið' : current.status === 'in-progress' ? 'Í vinnslu' : 'Bíður';
@@ -1102,7 +1124,13 @@
       const rollbackHtml = getRollbackButtonHtml(data);
       const gitCommitHtml = getGitCommitButtonHtml(data.sessionId);
 
-      return '<div class="step-nav">' +
+      // Add MT publish button if upload is complete and user can publish
+      const publishHtml = (canProceed && canPublish())
+        ? buildMTPublishAction(data.book, data.chapter, true)
+        : '';
+
+      return publishHtml +
+        '<div class="step-nav">' +
         rollbackHtml +
         gitCommitHtml +
         '<button id="proceed-btn" class="btn btn-primary btn-large"' +
@@ -1250,7 +1278,7 @@
       });
     }
 
-    function showFaithfulEditStep(data, stepIndex) {
+    async function showFaithfulEditStep(data, stepIndex) {
       const contentEl = document.getElementById('step-content');
       const sessionIssues = data.session?.issues || [];
       const pendingIssues = sessionIssues.filter(i => i.status === 'pending');
@@ -1273,6 +1301,11 @@
           '</div>' +
           '</div>';
       }
+
+      // Build section publication list (async)
+      const sectionPublishHtml = canPublish()
+        ? await buildSectionPublishList('faithful', data.book, data.chapter)
+        : '';
 
       contentEl.innerHTML = '<div class="step-content-wrapper">' +
         // Step header
@@ -1309,6 +1342,8 @@
         '</div>' +
         // Issues accordion
         issuesAccordion +
+        // Section publication (for head editors/admins)
+        sectionPublishHtml +
         // Step navigation
         '<div class="step-nav">' +
         rollbackHtml +
@@ -1389,7 +1424,7 @@
       setupGitCommitButton(data.sessionId);
     }
 
-    function showLocalizationStep(data, stepIndex) {
+    async function showLocalizationStep(data, stepIndex) {
       const contentEl = document.getElementById('step-content');
       const sessionIssues = data.session?.issues || [];
       const localizationIssues = sessionIssues.filter(i => i.category === 'BOARD_REVIEW' && i.status === 'pending');
@@ -1412,6 +1447,11 @@
           '</div>' +
           '</div>';
       }
+
+      // Build section publication list (async)
+      const sectionPublishHtml = canPublish()
+        ? await buildSectionPublishList('localized', data.book, data.chapter)
+        : '';
 
       contentEl.innerHTML = '<div class="step-content-wrapper">' +
         // Step header
@@ -1448,6 +1488,8 @@
         '</div>' +
         // Issues accordion
         issuesAccordion +
+        // Section publication (for head editors/admins)
+        sectionPublishHtml +
         // Step navigation
         '<div class="step-nav">' +
         rollbackHtml +
@@ -1675,6 +1717,7 @@
     }
 
     async function loadWorkflow(id) {
+      currentSessionId = id;  // Track for publication reloads
       const res = await fetch('/api/workflow/' + id);
       const data = await res.json();
       showWorkflow({
@@ -1685,6 +1728,223 @@
         session: data.session  // Keep full session for file tracking
       });
     }
+
+    // ==========================================
+    // Publication Functions
+    // ==========================================
+
+    let pendingPublishAction = null;
+
+    // Check if current user can publish (HEAD_EDITOR or ADMIN)
+    function canPublish() {
+      return currentUser && ['admin', 'head-editor'].includes(currentUser.role);
+    }
+
+    // Show overwrite confirmation modal
+    function showOverwriteModal(title, description, preview, onConfirm) {
+      const modal = document.getElementById('overwrite-modal');
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-description').textContent = description;
+
+      // Show overwrite list if files will be replaced
+      const overwriteContainer = document.getElementById('overwrite-list-container');
+      const overwriteList = document.getElementById('overwrite-list');
+      if (preview.willOverwrite && preview.willOverwrite.length > 0) {
+        overwriteList.innerHTML = preview.willOverwrite.map(f =>
+          '<li>' + escapeHtml(f.name) + '</li>'
+        ).join('');
+        overwriteContainer.style.display = 'block';
+      } else {
+        overwriteContainer.style.display = 'none';
+      }
+
+      // Show create list if new files will be created
+      const createContainer = document.getElementById('create-list-container');
+      const createList = document.getElementById('create-list');
+      if (preview.willCreate && preview.willCreate.length > 0) {
+        createList.innerHTML = preview.willCreate.map(f =>
+          '<li>' + escapeHtml(f) + '</li>'
+        ).join('');
+        createContainer.style.display = 'block';
+      } else {
+        createContainer.style.display = 'none';
+      }
+
+      // Show warning if any
+      const warningEl = document.getElementById('modal-warning');
+      if (preview.warning) {
+        warningEl.textContent = '⚠️ ' + preview.warning;
+        warningEl.style.display = 'block';
+      } else {
+        warningEl.style.display = 'none';
+      }
+
+      // Store the confirm action
+      pendingPublishAction = onConfirm;
+
+      // Show modal
+      modal.style.display = 'flex';
+    }
+
+    function closeOverwriteModal() {
+      document.getElementById('overwrite-modal').style.display = 'none';
+      pendingPublishAction = null;
+    }
+
+    // Setup confirm button click handler
+    document.getElementById('confirm-publish-btn')?.addEventListener('click', async () => {
+      if (pendingPublishAction) {
+        const btn = document.getElementById('confirm-publish-btn');
+        btn.disabled = true;
+        btn.textContent = 'Birtir...';
+        try {
+          await pendingPublishAction();
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Birta';
+          closeOverwriteModal();
+        }
+      }
+    });
+
+    // Handle publication with confirmation
+    async function handlePublish(type, bookSlug, chapter, section = null) {
+      if (!canPublish()) {
+        alert('Aðeins ritstjórar og stjórnendur geta birt efni.');
+        return;
+      }
+
+      // Step 1: Get preview of what will be overwritten
+      const previewEndpoint = section
+        ? '/api/publication/' + bookSlug + '/' + chapter + '/' + type + '/' + section + '/preview'
+        : '/api/publication/' + bookSlug + '/' + chapter + '/' + type + '/preview';
+
+      try {
+        const previewRes = await fetch(previewEndpoint);
+        if (!previewRes.ok) {
+          const err = await previewRes.json();
+          alert('Villa: ' + (err.message || err.error || 'Gat ekki sótt forskoðun'));
+          return;
+        }
+
+        const preview = await previewRes.json();
+
+        // Build description
+        const typeNames = {
+          'mt-preview': 'vélþýðingu',
+          'faithful': 'ritstýrðri þýðingu',
+          'localized': 'staðfærðu efni'
+        };
+        const typeName = typeNames[type] || type;
+        const description = section
+          ? 'Birta eining ' + section + ' með ' + typeName + '.'
+          : 'Birta kafla ' + chapter + ' með ' + typeName + '. ' + preview.totalFiles + ' skrár verða birtar.';
+
+        // Step 2: Show confirmation modal
+        const title = preview.willOverwrite.length > 0
+          ? 'Yfirskrifa fyrri birtingu?'
+          : 'Staðfesta birtingu';
+
+        showOverwriteModal(title, description, preview, async () => {
+          // Step 3: Actually publish
+          const publishEndpoint = section
+            ? '/api/publication/' + bookSlug + '/' + chapter + '/' + type + '/' + section
+            : '/api/publication/' + bookSlug + '/' + chapter + '/' + type;
+
+          const publishRes = await fetch(publishEndpoint, { method: 'POST' });
+          const result = await publishRes.json();
+
+          if (result.success) {
+            alert('Birting tókst! ' + result.filesPublished + ' skrár birtar.');
+            // Reload workflow to reflect new state
+            if (currentSessionId) {
+              loadWorkflow(currentSessionId);
+            }
+          } else {
+            alert('Villa: ' + (result.message || result.error));
+          }
+        });
+
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // Build MT Preview publication action box
+    function buildMTPublishAction(bookSlug, chapter, isComplete) {
+      if (!canPublish() || !isComplete) {
+        return '';
+      }
+
+      return '<div class="publication-action">' +
+        '<h4>📤 Birta vélþýðingu</h4>' +
+        '<p>Gerðu vélþýðinguna aðgengilega lesendum strax, með viðvörun um að hún hafi ekki verið yfirfarin.</p>' +
+        '<button class="btn btn-publish" onclick="handlePublish(\'mt-preview\', \'' + escapeHtml(bookSlug) + '\', ' + chapter + ')">' +
+        'Birta vélþýðingu' +
+        '</button>' +
+        '</div>';
+    }
+
+    // Build section-level publication list for faithful/localized
+    async function buildSectionPublishList(type, bookSlug, chapter) {
+      if (!canPublish()) {
+        return '';
+      }
+
+      try {
+        const res = await fetch('/api/publication/' + bookSlug + '/' + chapter + '/sections');
+        if (!res.ok) {
+          return '<p class="text-muted">Gat ekki sótt einingar.</p>';
+        }
+
+        const data = await res.json();
+        if (!data.sections || data.sections.length === 0) {
+          return '<p class="text-muted">Engar einingar skráðar.</p>';
+        }
+
+        const typeKey = type === 'faithful' ? 'faithful' : 'localized';
+        const typeName = type === 'faithful' ? 'Ritstýrð þýðing' : 'Staðfærð útgáfa';
+
+        let html = '<div class="section-publish-list">' +
+          '<h4>Birta einingar (' + typeName + ')</h4>';
+
+        for (const section of data.sections) {
+          const sectionData = section[typeKey];
+          const isApproved = sectionData.approved;
+          const isPublished = sectionData.published;
+
+          let statusText = '';
+          let btnHtml = '';
+
+          if (isPublished) {
+            statusText = '<span class="published-badge">✓ Birt</span>';
+          } else if (isApproved) {
+            statusText = '<span class="text-success">✓ Samþykkt</span>';
+            btnHtml = '<button class="btn btn-sm btn-publish-section" ' +
+              'onclick="handlePublish(\'' + type + '\', \'' + escapeHtml(bookSlug) + '\', ' + chapter + ', \'' + escapeHtml(section.sectionNum) + '\')">' +
+              'Birta</button>';
+          } else {
+            statusText = '<span class="text-muted">⏳ Bíður</span>';
+          }
+
+          html += '<div class="section-row' + (isPublished ? ' published' : '') + '">' +
+            '<span class="section-name">' + escapeHtml(section.sectionNum) + ': ' + escapeHtml(section.title) + '</span>' +
+            '<span class="section-status">' + statusText + '</span>' +
+            btnHtml +
+            '</div>';
+        }
+
+        html += '</div>';
+        return html;
+
+      } catch (err) {
+        console.error('Error building section list:', err);
+        return '<p class="text-muted">Villa við að sækja einingar.</p>';
+      }
+    }
+
+    // Track current session ID for reloading
+    let currentSessionId = null;
 
     // Auth check and init
     fetch('/api/auth/me').then(r => r.json()).then(data => {
@@ -2601,6 +2861,182 @@
       .step-action-buttons .btn {
         width: 100%;
       }
+    }
+
+    /* ==========================================
+       Publication Modal & Buttons
+       ========================================== */
+
+    /* Modal overlay and container */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      max-width: 480px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    .modal-content h3 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1.125rem;
+    }
+    .modal-content p {
+      margin: 0 0 1rem 0;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    .modal-actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .modal-warning {
+      background: var(--warning-light);
+      border: 1px solid var(--warning);
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+    }
+    .overwrite-list, .create-list {
+      list-style: none;
+      margin: 0.5rem 0;
+      padding: 0;
+      max-height: 150px;
+      overflow-y: auto;
+      font-size: 0.8125rem;
+    }
+    .overwrite-list li, .create-list li {
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      margin: 0.125rem 0;
+    }
+    .overwrite-list li {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--error);
+    }
+    .create-list li {
+      background: var(--gray-50);
+      color: var(--text-secondary);
+    }
+
+    /* Publication action box */
+    .publication-action {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--bg-card);
+      border-radius: 0.375rem;
+      border: 1px solid var(--border-color);
+    }
+    .publication-action h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem 0;
+      color: var(--text-secondary);
+    }
+    .publication-action p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin: 0 0 0.75rem 0;
+    }
+    .publication-action .btn-publish {
+      background: var(--success);
+      color: white;
+      border: 1px solid var(--success);
+    }
+    .publication-action .btn-publish:hover {
+      background: #059669;
+      border-color: #059669;
+    }
+    .publication-action .btn-publish:disabled {
+      background: var(--gray-300);
+      border-color: var(--gray-300);
+      cursor: not-allowed;
+    }
+
+    /* Section publish list */
+    .section-publish-list {
+      margin-top: 1rem;
+    }
+    .section-publish-list h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin: 0 0 0.75rem 0;
+      color: var(--text-secondary);
+    }
+    .section-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      background: var(--gray-50);
+      margin-bottom: 0.375rem;
+    }
+    .section-row.published {
+      background: rgba(16, 185, 129, 0.08);
+    }
+    .section-name {
+      flex: 1;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .section-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .section-row.published .section-status {
+      color: var(--success);
+    }
+    .section-row .btn-sm {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.6875rem;
+    }
+    .section-row .btn-publish-section {
+      background: var(--success);
+      color: white;
+      border: 1px solid var(--success);
+    }
+    .section-row .btn-publish-section:hover {
+      background: #059669;
+    }
+
+    /* Published badge */
+    .published-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.125rem 0.5rem;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+      border-radius: 9999px;
+      font-size: 0.6875rem;
+      font-weight: 500;
     }
   </style>
 </body>

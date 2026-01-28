@@ -151,10 +151,27 @@ function splitContentForErlendur(fullContent) {
 }
 
 function loadBookData(bookId) {
-  const filePath = path.join(dataDir, `${bookId}.json`);
-  if (fs.existsSync(filePath)) {
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  // Try direct filename match first
+  const directPath = path.join(dataDir, `${bookId}.json`);
+  if (fs.existsSync(directPath)) {
+    return JSON.parse(fs.readFileSync(directPath, 'utf8'));
   }
+
+  // Search by slug or book ID in file contents
+  if (fs.existsSync(dataDir)) {
+    const files = fs.readdirSync(dataDir).filter(f => f.endsWith('.json'));
+    for (const file of files) {
+      try {
+        const data = JSON.parse(fs.readFileSync(path.join(dataDir, file), 'utf8'));
+        if (data.slug === bookId || data.book === bookId) {
+          return data;
+        }
+      } catch (e) {
+        // Skip files that can't be parsed
+      }
+    }
+  }
+
   return null;
 }
 

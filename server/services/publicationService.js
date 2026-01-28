@@ -16,6 +16,24 @@ const fs = require('fs');
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
 
+/**
+ * Get existing files in a target directory that would be overwritten
+ *
+ * @param {string} targetDir - Target directory path
+ * @param {string} pattern - File extension pattern (default: '.is.md')
+ * @returns {Array} Array of file info objects
+ */
+function getExistingFiles(targetDir, pattern = '.is.md') {
+  if (!fs.existsSync(targetDir)) return [];
+  return fs.readdirSync(targetDir)
+    .filter(f => f.endsWith(pattern))
+    .map(f => ({
+      name: f,
+      path: path.join(targetDir, f),
+      mtime: fs.statSync(path.join(targetDir, f)).mtime.toISOString()
+    }));
+}
+
 // Publication tracks
 const PUBLICATION_TRACKS = {
   MT_PREVIEW: 'mt-preview',
@@ -220,9 +238,10 @@ function checkLocalizedReadiness(bookSlug, chapterNum) {
  * @param {number} chapterNum - Chapter number
  * @param {string} approvedBy - User ID of approving head editor
  * @param {string} approvedByName - Name of approving head editor
- * @returns {object} Publication result
+ * @param {object} options - Options: { dryRun: boolean }
+ * @returns {object} Publication result or preview info
  */
-function publishMtPreview(bookSlug, chapterNum, approvedBy, approvedByName) {
+function publishMtPreview(bookSlug, chapterNum, approvedBy, approvedByName, { dryRun = false } = {}) {
   const readiness = checkMtPreviewReadiness(bookSlug, chapterNum);
   if (!readiness.ready) {
     throw new Error(`Chapter not ready for MT preview: ${readiness.reason}`);
@@ -231,6 +250,24 @@ function publishMtPreview(bookSlug, chapterNum, approvedBy, approvedByName) {
   const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
   const sourceDir = path.join(BOOKS_DIR, bookSlug, '02-mt-output', chapterDir);
   const targetDir = path.join(BOOKS_DIR, bookSlug, '05-publication', 'mt-preview', 'chapters', chapterDir);
+
+  // Check for existing files that would be overwritten
+  const existingFiles = getExistingFiles(targetDir);
+  const existingNames = new Set(existingFiles.map(f => f.name));
+  const willOverwrite = existingFiles.filter(f => readiness.files.includes(f.name));
+  const willCreate = readiness.files.filter(f => !existingNames.has(f));
+
+  // If dry run, return preview info
+  if (dryRun) {
+    return {
+      dryRun: true,
+      sourceDir: `02-mt-output/${chapterDir}`,
+      targetDir: `05-publication/mt-preview/chapters/${chapterDir}`,
+      willOverwrite,
+      willCreate,
+      totalFiles: readiness.files.length
+    };
+  }
 
   // Create target directory
   if (!fs.existsSync(targetDir)) {
@@ -286,9 +323,10 @@ function publishMtPreview(bookSlug, chapterNum, approvedBy, approvedByName) {
  * @param {number} chapterNum - Chapter number
  * @param {string} approvedBy - User ID of approving head editor
  * @param {string} approvedByName - Name of approving head editor
- * @returns {object} Publication result
+ * @param {object} options - Options: { dryRun: boolean }
+ * @returns {object} Publication result or preview info
  */
-function publishFaithful(bookSlug, chapterNum, approvedBy, approvedByName) {
+function publishFaithful(bookSlug, chapterNum, approvedBy, approvedByName, { dryRun = false } = {}) {
   const readiness = checkFaithfulReadiness(bookSlug, chapterNum);
   if (!readiness.ready) {
     throw new Error(`Chapter not ready for faithful publication: ${readiness.reason}`);
@@ -305,6 +343,26 @@ function publishFaithful(bookSlug, chapterNum, approvedBy, approvedByName) {
       FROM book_sections
       WHERE book_id = ? AND chapter_num = ?
     `).all(book.id, chapterNum);
+
+    // Calculate source files for dry run
+    const sourceFiles = sections.map(s => path.basename(s.faithful_path));
+    const existingFiles = getExistingFiles(targetDir);
+    const existingNames = new Set(existingFiles.map(f => f.name));
+    const willOverwrite = existingFiles.filter(f => sourceFiles.includes(f.name));
+    const willCreate = sourceFiles.filter(f => !existingNames.has(f));
+
+    // If dry run, return preview info
+    if (dryRun) {
+      db.close();
+      return {
+        dryRun: true,
+        sourceDir: `03-faithful/${chapterDir}`,
+        targetDir: `05-publication/faithful/chapters/${chapterDir}`,
+        willOverwrite,
+        willCreate,
+        totalFiles: sourceFiles.length
+      };
+    }
 
     // Create target directory
     if (!fs.existsSync(targetDir)) {
@@ -375,9 +433,10 @@ function publishFaithful(bookSlug, chapterNum, approvedBy, approvedByName) {
  * @param {number} chapterNum - Chapter number
  * @param {string} approvedBy - User ID of approving head editor
  * @param {string} approvedByName - Name of approving head editor
- * @returns {object} Publication result
+ * @param {object} options - Options: { dryRun: boolean }
+ * @returns {object} Publication result or preview info
  */
-function publishLocalized(bookSlug, chapterNum, approvedBy, approvedByName) {
+function publishLocalized(bookSlug, chapterNum, approvedBy, approvedByName, { dryRun = false } = {}) {
   const readiness = checkLocalizedReadiness(bookSlug, chapterNum);
   if (!readiness.ready) {
     throw new Error(`Chapter not ready for localized publication: ${readiness.reason}`);
@@ -394,6 +453,26 @@ function publishLocalized(bookSlug, chapterNum, approvedBy, approvedByName) {
       FROM book_sections
       WHERE book_id = ? AND chapter_num = ?
     `).all(book.id, chapterNum);
+
+    // Calculate source files for dry run
+    const sourceFiles = sections.map(s => path.basename(s.localized_path));
+    const existingFiles = getExistingFiles(targetDir);
+    const existingNames = new Set(existingFiles.map(f => f.name));
+    const willOverwrite = existingFiles.filter(f => sourceFiles.includes(f.name));
+    const willCreate = sourceFiles.filter(f => !existingNames.has(f));
+
+    // If dry run, return preview info
+    if (dryRun) {
+      db.close();
+      return {
+        dryRun: true,
+        sourceDir: `04-localized/${chapterDir}`,
+        targetDir: `05-publication/localized/chapters/${chapterDir}`,
+        willOverwrite,
+        willCreate,
+        totalFiles: sourceFiles.length
+      };
+    }
 
     // Create target directory
     if (!fs.existsSync(targetDir)) {
@@ -524,6 +603,400 @@ function getPublicationStatus(bookSlug, chapterNum) {
   return status;
 }
 
+/**
+ * Check if a specific section is ready for faithful publication
+ * Requirements:
+ * - Section has linguistic review approved
+ * - Main .is.md file exists
+ * - Strings file exists (warning only if missing)
+ *
+ * @param {string} bookSlug - Book slug
+ * @param {number} chapterNum - Chapter number
+ * @param {string} sectionNum - Section number (e.g., "1-1", "intro")
+ * @returns {object} Readiness status
+ */
+function checkSectionReadiness(bookSlug, chapterNum, sectionNum) {
+  const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+  const faithfulDir = path.join(BOOKS_DIR, bookSlug, '03-faithful', chapterDir);
+
+  const mainFile = path.join(faithfulDir, `${sectionNum}.is.md`);
+  const stringsFile = path.join(faithfulDir, `${sectionNum}-strings.is.md`);
+
+  const hasMain = fs.existsSync(mainFile);
+  const hasStrings = fs.existsSync(stringsFile);
+
+  // Check database for approval
+  const db = getDb();
+  try {
+    const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+    if (!book) {
+      db.close();
+      return { ready: false, reason: 'Bók ekki skráð' };
+    }
+
+    const section = db.prepare(`
+      SELECT id, section_num, linguistic_approved_at
+      FROM book_sections
+      WHERE book_id = ? AND chapter_num = ? AND section_num = ?
+    `).get(book.id, chapterNum, sectionNum);
+
+    db.close();
+
+    if (!section) {
+      return { ready: false, reason: `Eining ${sectionNum} ekki skráð` };
+    }
+
+    const isApproved = section.linguistic_approved_at != null;
+
+    if (!isApproved) {
+      return { ready: false, reason: 'Yfirferð ekki lokið' };
+    }
+    if (!hasMain) {
+      return { ready: false, reason: `Vantar skrá: ${sectionNum}.is.md` };
+    }
+    if (!hasStrings) {
+      return { ready: true, warning: `Vantar strengjaskrá: ${sectionNum}-strings.is.md`, hasStrings: false };
+    }
+
+    return { ready: true, hasStrings: true };
+  } catch (err) {
+    db.close();
+    throw err;
+  }
+}
+
+/**
+ * Check if a specific section is ready for localized publication
+ *
+ * @param {string} bookSlug - Book slug
+ * @param {number} chapterNum - Chapter number
+ * @param {string} sectionNum - Section number
+ * @returns {object} Readiness status
+ */
+function checkSectionLocalizedReadiness(bookSlug, chapterNum, sectionNum) {
+  const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+  const localizedDir = path.join(BOOKS_DIR, bookSlug, '04-localized', chapterDir);
+
+  const mainFile = path.join(localizedDir, `${sectionNum}.is.md`);
+  const stringsFile = path.join(localizedDir, `${sectionNum}-strings.is.md`);
+
+  const hasMain = fs.existsSync(mainFile);
+  const hasStrings = fs.existsSync(stringsFile);
+
+  // Check database for approval
+  const db = getDb();
+  try {
+    const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+    if (!book) {
+      db.close();
+      return { ready: false, reason: 'Bók ekki skráð' };
+    }
+
+    const section = db.prepare(`
+      SELECT id, section_num, localization_approved_at
+      FROM book_sections
+      WHERE book_id = ? AND chapter_num = ? AND section_num = ?
+    `).get(book.id, chapterNum, sectionNum);
+
+    db.close();
+
+    if (!section) {
+      return { ready: false, reason: `Eining ${sectionNum} ekki skráð` };
+    }
+
+    const isApproved = section.localization_approved_at != null;
+
+    if (!isApproved) {
+      return { ready: false, reason: 'Staðfærsla ekki lokið' };
+    }
+    if (!hasMain) {
+      return { ready: false, reason: `Vantar skrá: ${sectionNum}.is.md` };
+    }
+    if (!hasStrings) {
+      return { ready: true, warning: `Vantar strengjaskrá: ${sectionNum}-strings.is.md`, hasStrings: false };
+    }
+
+    return { ready: true, hasStrings: true };
+  } catch (err) {
+    db.close();
+    throw err;
+  }
+}
+
+/**
+ * Publish faithful translation for a single section
+ *
+ * @param {string} bookSlug - Book slug
+ * @param {number} chapterNum - Chapter number
+ * @param {string} sectionNum - Section number
+ * @param {string} approvedBy - User ID of approving head editor
+ * @param {string} approvedByName - Name of approving head editor
+ * @param {object} options - Options: { dryRun: boolean }
+ * @returns {object} Publication result or preview info
+ */
+function publishFaithfulSection(bookSlug, chapterNum, sectionNum, approvedBy, approvedByName, { dryRun = false } = {}) {
+  const readiness = checkSectionReadiness(bookSlug, chapterNum, sectionNum);
+  if (!readiness.ready) {
+    throw new Error(`Section not ready for faithful publication: ${readiness.reason}`);
+  }
+
+  const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+  const sourceDir = path.join(BOOKS_DIR, bookSlug, '03-faithful', chapterDir);
+  const targetDir = path.join(BOOKS_DIR, bookSlug, '05-publication', 'faithful', 'chapters', chapterDir);
+
+  // Files to publish
+  const mainFile = `${sectionNum}.is.md`;
+  const stringsFile = `${sectionNum}-strings.is.md`;
+  const filesToPublish = [mainFile];
+  if (readiness.hasStrings) {
+    filesToPublish.push(stringsFile);
+  }
+
+  // Check for existing files
+  const existingFiles = getExistingFiles(targetDir);
+  const existingNames = new Set(existingFiles.map(f => f.name));
+  const willOverwrite = existingFiles.filter(f => filesToPublish.includes(f.name));
+  const willCreate = filesToPublish.filter(f => !existingNames.has(f));
+
+  if (dryRun) {
+    return {
+      dryRun: true,
+      section: sectionNum,
+      sourceDir: `03-faithful/${chapterDir}`,
+      targetDir: `05-publication/faithful/chapters/${chapterDir}`,
+      willOverwrite,
+      willCreate,
+      totalFiles: filesToPublish.length,
+      warning: readiness.warning || null
+    };
+  }
+
+  // Create target directory
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+  }
+
+  const publishedFiles = [];
+
+  for (const file of filesToPublish) {
+    const sourcePath = path.join(sourceDir, file);
+    const targetPath = path.join(targetDir, file);
+
+    if (!fs.existsSync(sourcePath)) {
+      continue;
+    }
+
+    let content = fs.readFileSync(sourcePath, 'utf8');
+
+    // Remove any MT preview banner if present
+    content = removeMtPreviewBanner(content);
+
+    // Update frontmatter
+    content = updateFrontmatter(content, {
+      'translation-status': 'Ritstýrð þýðing',
+      'published-at': new Date().toISOString(),
+      'approved-by': approvedByName
+    });
+
+    fs.writeFileSync(targetPath, content, 'utf8');
+    publishedFiles.push(file);
+  }
+
+  // Update section record in database
+  const db = getDb();
+  try {
+    const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+    db.prepare(`
+      UPDATE book_sections
+      SET faithful_published_at = CURRENT_TIMESTAMP
+      WHERE book_id = ? AND chapter_num = ? AND section_num = ?
+    `).run(book.id, chapterNum, sectionNum);
+    db.close();
+  } catch (err) {
+    db.close();
+    throw err;
+  }
+
+  return {
+    success: true,
+    track: PUBLICATION_TRACKS.FAITHFUL,
+    chapter: chapterNum,
+    section: sectionNum,
+    filesPublished: publishedFiles.length,
+    files: publishedFiles,
+    warning: readiness.warning || null
+  };
+}
+
+/**
+ * Publish localized content for a single section
+ *
+ * @param {string} bookSlug - Book slug
+ * @param {number} chapterNum - Chapter number
+ * @param {string} sectionNum - Section number
+ * @param {string} approvedBy - User ID of approving head editor
+ * @param {string} approvedByName - Name of approving head editor
+ * @param {object} options - Options: { dryRun: boolean }
+ * @returns {object} Publication result or preview info
+ */
+function publishLocalizedSection(bookSlug, chapterNum, sectionNum, approvedBy, approvedByName, { dryRun = false } = {}) {
+  const readiness = checkSectionLocalizedReadiness(bookSlug, chapterNum, sectionNum);
+  if (!readiness.ready) {
+    throw new Error(`Section not ready for localized publication: ${readiness.reason}`);
+  }
+
+  const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+  const sourceDir = path.join(BOOKS_DIR, bookSlug, '04-localized', chapterDir);
+  const targetDir = path.join(BOOKS_DIR, bookSlug, '05-publication', 'localized', 'chapters', chapterDir);
+
+  // Files to publish
+  const mainFile = `${sectionNum}.is.md`;
+  const stringsFile = `${sectionNum}-strings.is.md`;
+  const filesToPublish = [mainFile];
+  if (readiness.hasStrings) {
+    filesToPublish.push(stringsFile);
+  }
+
+  // Check for existing files
+  const existingFiles = getExistingFiles(targetDir);
+  const existingNames = new Set(existingFiles.map(f => f.name));
+  const willOverwrite = existingFiles.filter(f => filesToPublish.includes(f.name));
+  const willCreate = filesToPublish.filter(f => !existingNames.has(f));
+
+  if (dryRun) {
+    return {
+      dryRun: true,
+      section: sectionNum,
+      sourceDir: `04-localized/${chapterDir}`,
+      targetDir: `05-publication/localized/chapters/${chapterDir}`,
+      willOverwrite,
+      willCreate,
+      totalFiles: filesToPublish.length,
+      warning: readiness.warning || null
+    };
+  }
+
+  // Create target directory
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+  }
+
+  const publishedFiles = [];
+
+  for (const file of filesToPublish) {
+    const sourcePath = path.join(sourceDir, file);
+    const targetPath = path.join(targetDir, file);
+
+    if (!fs.existsSync(sourcePath)) {
+      continue;
+    }
+
+    let content = fs.readFileSync(sourcePath, 'utf8');
+
+    // Update frontmatter
+    content = updateFrontmatter(content, {
+      'translation-status': 'Staðfærð útgáfa',
+      'published-at': new Date().toISOString(),
+      'approved-by': approvedByName
+    });
+
+    fs.writeFileSync(targetPath, content, 'utf8');
+    publishedFiles.push(file);
+  }
+
+  // Update section record in database
+  const db = getDb();
+  try {
+    const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+    db.prepare(`
+      UPDATE book_sections
+      SET localized_published_at = CURRENT_TIMESTAMP
+      WHERE book_id = ? AND chapter_num = ? AND section_num = ?
+    `).run(book.id, chapterNum, sectionNum);
+    db.close();
+  } catch (err) {
+    db.close();
+    throw err;
+  }
+
+  return {
+    success: true,
+    track: PUBLICATION_TRACKS.LOCALIZED,
+    chapter: chapterNum,
+    section: sectionNum,
+    filesPublished: publishedFiles.length,
+    files: publishedFiles,
+    warning: readiness.warning || null
+  };
+}
+
+/**
+ * Get section-level publication status for a chapter
+ * Returns each section's publication state
+ *
+ * @param {string} bookSlug - Book slug
+ * @param {number} chapterNum - Chapter number
+ * @returns {object} Section-level status for faithful and localized tracks
+ */
+function getSectionPublicationStatus(bookSlug, chapterNum) {
+  const db = getDb();
+  const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
+  const pubDir = path.join(BOOKS_DIR, bookSlug, '05-publication');
+
+  try {
+    const book = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(bookSlug);
+    if (!book) {
+      db.close();
+      return { sections: [] };
+    }
+
+    const sections = db.prepare(`
+      SELECT id, section_num, title, title_is,
+             linguistic_approved_at, localization_approved_at,
+             faithful_published_at, localized_published_at
+      FROM book_sections
+      WHERE book_id = ? AND chapter_num = ?
+      ORDER BY id
+    `).all(book.id, chapterNum);
+
+    db.close();
+
+    // Check published files on disk
+    const faithfulDir = path.join(pubDir, 'faithful', 'chapters', chapterDir);
+    const localizedDir = path.join(pubDir, 'localized', 'chapters', chapterDir);
+
+    const faithfulFiles = fs.existsSync(faithfulDir)
+      ? new Set(fs.readdirSync(faithfulDir).filter(f => f.endsWith('.is.md')))
+      : new Set();
+    const localizedFiles = fs.existsSync(localizedDir)
+      ? new Set(fs.readdirSync(localizedDir).filter(f => f.endsWith('.is.md')))
+      : new Set();
+
+    return {
+      sections: sections.map(s => {
+        const mainFile = `${s.section_num}.is.md`;
+        return {
+          sectionNum: s.section_num,
+          title: s.title_is || s.title,
+          faithful: {
+            approved: !!s.linguistic_approved_at,
+            published: faithfulFiles.has(mainFile),
+            publishedAt: s.faithful_published_at
+          },
+          localized: {
+            approved: !!s.localization_approved_at,
+            published: localizedFiles.has(mainFile),
+            publishedAt: s.localized_published_at
+          }
+        };
+      })
+    };
+  } catch (err) {
+    db.close();
+    throw err;
+  }
+}
+
 // Helper functions
 
 function addMtPreviewBanner(content) {
@@ -604,8 +1077,14 @@ module.exports = {
   checkMtPreviewReadiness,
   checkFaithfulReadiness,
   checkLocalizedReadiness,
+  checkSectionReadiness,
+  checkSectionLocalizedReadiness,
   publishMtPreview,
   publishFaithful,
   publishLocalized,
-  getPublicationStatus
+  publishFaithfulSection,
+  publishLocalizedSection,
+  getPublicationStatus,
+  getSectionPublicationStatus,
+  getExistingFiles
 };
