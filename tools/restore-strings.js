@@ -3,14 +3,15 @@
 /**
  * restore-strings.js
  *
- * Post-MT processing script that updates sidecar JSON with translated strings.
+ * Post-MT processing script that integrates translated strings into content.
  *
  * After machine translation, this script:
  * 1. Finds the translated strings file (*-strings.is.md)
  * 2. Parses markdown format (sections with **Label:** values)
- * 3. Updates the sidecar JSON with translated values
- * 4. Updates figures.json with translated captions and alt text
- * 5. Optionally updates table titles in the markdown file
+ * 3. Updates the markdown file's YAML frontmatter with translated title
+ * 4. Updates the sidecar JSON with translated values
+ * 5. Updates figures.json with translated captions and alt text
+ * 6. Updates table titles in the markdown file
  *
  * Usage:
  *   node tools/restore-strings.js <file.is.md> [options]
@@ -59,11 +60,13 @@ function parseArgs(args) {
 
 function printHelp() {
   console.log(`
-restore-strings.js - Update sidecar with translated strings after MT
+restore-strings.js - Integrate translated strings into content after MT
 
 Reads translated strings file (*-strings.is.md) in markdown format and updates:
+- Markdown file frontmatter with translated title
 - Sidecar JSON with translated frontmatter titles, table titles, and summaries
 - Figures JSON with translated captions (captionIs) and alt text (altTextIs)
+- Table titles in the markdown content
 
 Usage:
   node tools/restore-strings.js <file.is.md> [options]
@@ -568,6 +571,73 @@ function updateMarkdownTitles(content, sidecar, verbose) {
   return { content: updatedContent, updates };
 }
 
+/**
+ * Update markdown file frontmatter with translated title
+ *
+ * Adds or updates the `title` field in the YAML frontmatter with the
+ * translated title from the strings file.
+ *
+ * @param {string} content - The markdown content
+ * @param {object} parsed - Parsed translated strings
+ * @param {boolean} verbose - Whether to log details
+ * @returns {{content: string, updates: number}}
+ */
+function updateMarkdownFrontmatter(content, parsed, verbose) {
+  if (!parsed.frontmatter?.title) {
+    return { content, updates: 0 };
+  }
+
+  const translatedTitle = parsed.frontmatter.title;
+  let updates = 0;
+
+  // Check if content has frontmatter
+  if (content.startsWith('---')) {
+    const endOfFrontmatter = content.indexOf('---', 3);
+    if (endOfFrontmatter !== -1) {
+      let frontmatter = content.substring(4, endOfFrontmatter).trim();
+      const body = content.substring(endOfFrontmatter + 3);
+
+      // Check if title already exists in frontmatter
+      const titleRegex = /^title:\s*["']?(.+?)["']?\s*$/m;
+      const titleMatch = frontmatter.match(titleRegex);
+
+      if (titleMatch) {
+        // Update existing title if different
+        if (titleMatch[1].trim() !== translatedTitle) {
+          frontmatter = frontmatter.replace(titleRegex, `title: "${translatedTitle}"`);
+          updates++;
+          if (verbose) {
+            console.error(`  Updated frontmatter title: "${titleMatch[1].trim()}" -> "${translatedTitle}"`);
+          }
+        }
+      } else {
+        // Add title to frontmatter
+        frontmatter = `title: "${translatedTitle}"\n${frontmatter}`;
+        updates++;
+        if (verbose) {
+          console.error(`  Added frontmatter title: "${translatedTitle}"`);
+        }
+      }
+
+      return {
+        content: `---\n${frontmatter}\n---${body}`,
+        updates
+      };
+    }
+  }
+
+  // No frontmatter exists - create one with the title
+  updates++;
+  if (verbose) {
+    console.error(`  Created frontmatter with title: "${translatedTitle}"`);
+  }
+
+  return {
+    content: `---\ntitle: "${translatedTitle}"\n---\n\n${content}`,
+    updates
+  };
+}
+
 // ============================================================================
 // File Processing
 // ============================================================================
@@ -665,17 +735,29 @@ function processFile(filePath, options) {
     figuresUpdates = result.updates;
   }
 
-  // Update markdown file with translated table titles
+  // Update markdown file with translated frontmatter title and table titles
   let mdUpdates = 0;
+  let frontmatterUpdates = 0;
   let updatedMdContent = null;
+
+  const mdContent = fs.readFileSync(filePath, 'utf-8');
+  updatedMdContent = mdContent;
+
+  // Update frontmatter with translated title
+  if (parsed.frontmatter?.title) {
+    const fmResult = updateMarkdownFrontmatter(updatedMdContent, parsed, verbose);
+    updatedMdContent = fmResult.content;
+    frontmatterUpdates = fmResult.updates;
+  }
+
+  // Update table titles in markdown
   if (updatedSidecar) {
-    const mdContent = fs.readFileSync(filePath, 'utf-8');
-    const result = updateMarkdownTitles(mdContent, updatedSidecar, verbose);
+    const result = updateMarkdownTitles(updatedMdContent, updatedSidecar, verbose);
     updatedMdContent = result.content;
     mdUpdates = result.updates;
   }
 
-  const totalUpdates = sidecarUpdates + figuresUpdates + mdUpdates;
+  const totalUpdates = sidecarUpdates + figuresUpdates + mdUpdates + frontmatterUpdates;
 
   if (totalUpdates === 0) {
     if (verbose) {
@@ -687,6 +769,9 @@ function processFile(filePath, options) {
   if (dryRun) {
     console.log(`[DRY RUN] Would update ${totalUpdates} string(s) for: ${filePath}`);
     console.log(`  Strings file: ${stringsPath} (${stringsPath.endsWith('.md') ? 'markdown' : 'legacy txt'})`);
+    if (frontmatterUpdates > 0) {
+      console.log(`  Frontmatter title updates: ${frontmatterUpdates}`);
+    }
     if (sidecarUpdates > 0) {
       console.log(`  Sidecar updates: ${sidecarUpdates}`);
     }
@@ -694,7 +779,7 @@ function processFile(filePath, options) {
       console.log(`  Figures updates: ${figuresUpdates}`);
     }
     if (mdUpdates > 0) {
-      console.log(`  Markdown title updates: ${mdUpdates}`);
+      console.log(`  Markdown table title updates: ${mdUpdates}`);
     }
     return { success: true, updates: totalUpdates, dryRun: true };
   }
@@ -715,8 +800,8 @@ function processFile(filePath, options) {
     }
   }
 
-  // Write updated markdown if titles changed
-  if (mdUpdates > 0 && updatedMdContent) {
+  // Write updated markdown if frontmatter or table titles changed
+  if ((frontmatterUpdates > 0 || mdUpdates > 0) && updatedMdContent) {
     fs.writeFileSync(filePath, updatedMdContent);
     if (verbose) {
       console.error(`  Updated markdown: ${filePath}`);
@@ -726,6 +811,7 @@ function processFile(filePath, options) {
   return {
     success: true,
     updates: totalUpdates,
+    frontmatterUpdates,
     sidecarUpdates,
     figuresUpdates,
     mdUpdates,
@@ -816,7 +902,7 @@ function processBatch(directory, options) {
   console.log(`  Files updated: ${filesUpdated}`);
   console.log(`  Files without strings: ${filesNoStrings}`);
   console.log(`  Total updates applied: ${totalUpdates}`);
-  console.log(`    (includes frontmatter, tables, and figures)`);
+  console.log(`    (includes markdown frontmatter, sidecar, tables, and figures)`);
 }
 
 // ============================================================================
