@@ -530,9 +530,20 @@ function extractModuleId(filename) {
  * Extract section number from filename
  * e.g., "1-2.en.md" -> "1.2", "1-2-chemistry-in-context.md" -> "1.2"
  * For strings files: "1-2-strings.is.md" -> "1.2-strings"
+ * For intro files: "intro.is.md" -> "intro", "intro-strings.is.md" -> "intro-strings"
  */
 function extractSectionFromFilename(filename) {
-  // Check if it's a strings file first
+  // Check if it's an intro-strings file
+  if (filename.match(/^intro-strings\./)) {
+    return 'intro-strings';
+  }
+
+  // Check if it's an intro file (not strings)
+  if (filename.match(/^intro\./)) {
+    return 'intro';
+  }
+
+  // Check if it's a numbered strings file
   const stringsMatch = filename.match(/^(\d+)[-.](\d+)-strings\./);
   if (stringsMatch) {
     return `${stringsMatch[1]}.${stringsMatch[2]}-strings`;
