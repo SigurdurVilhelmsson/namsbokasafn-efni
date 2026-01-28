@@ -269,6 +269,16 @@ function publishMtPreview(bookSlug, chapterNum, approvedBy, approvedByName, { dr
     };
   }
 
+  // Run MT restoration before copying files
+  // This integrates translated strings and restores table content
+  const mtRestoration = require('./mtRestoration');
+  const restorationResult = mtRestoration.runMtRestoration(bookSlug, chapterNum, { verbose: false });
+
+  if (!restorationResult.success) {
+    console.error(`MT restoration warning: ${restorationResult.error}`);
+    // Continue with publication even if restoration fails - files may not have strings/tables
+  }
+
   // Create target directory
   if (!fs.existsSync(targetDir)) {
     fs.mkdirSync(targetDir, { recursive: true });
@@ -311,7 +321,8 @@ function publishMtPreview(bookSlug, chapterNum, approvedBy, approvedByName, { dr
     track: PUBLICATION_TRACKS.MT_PREVIEW,
     chapter: chapterNum,
     filesPublished: publishedFiles.length,
-    files: publishedFiles
+    files: publishedFiles,
+    restoration: restorationResult.success ? restorationResult.summary : null
   };
 }
 
