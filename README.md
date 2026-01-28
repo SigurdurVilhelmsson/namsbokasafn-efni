@@ -489,9 +489,14 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 |--------|------|
 | GET | `/:bookSlug/:chapterNum/status` |
 | GET | `/:bookSlug/:chapterNum/readiness` |
+| GET | `/:bookSlug/:chapterNum/sections` |
+| GET | `/:bookSlug/:chapterNum/:type/preview` |
+| GET | `/:bookSlug/:chapterNum/:type/:section/preview` |
 | POST | `/:bookSlug/:chapterNum/mt-preview` |
 | POST | `/:bookSlug/:chapterNum/faithful` |
 | POST | `/:bookSlug/:chapterNum/localized` |
+| POST | `/:bookSlug/:chapterNum/faithful/:section` |
+| POST | `/:bookSlug/:chapterNum/localized/:section` |
 | GET | `/:bookSlug/overview` |
 
 ## /reports
