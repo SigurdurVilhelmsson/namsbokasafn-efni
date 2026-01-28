@@ -866,9 +866,6 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       // === Handle strings.is.md uploads (translated strings file) ===
       if (req.file.originalname.endsWith('-strings.is.md')) {
         try {
-          // Import restore-strings module dynamically
-          const restoreStringsModule = await import('../../tools/restore-strings.js');
-
           // Parse the section from filename (e.g., "1-1-strings.is.md" -> "1.1")
           const sectionMatch = req.file.originalname.match(/^(\d+-\d+|\d+\.\d+|intro)-strings\.is\.md$/);
           if (sectionMatch) {
@@ -883,8 +880,9 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
             fs.copyFileSync(req.file.path, stringsDestPath);
             console.log(`  Saved translated strings to: ${stringsDestPath}`);
 
-            // Note: The restore-strings.js script will be run manually or during faithful-edit step
-            // to update the protected.json and figures.json with translated values
+            // Note: The restore-strings.js script should be run manually or during faithful-edit step
+            // to update the sidecar JSON files with translated values:
+            //   node tools/restore-strings.js --batch books/{book}/02-for-mt/ch{NN}/
           }
         } catch (stringsErr) {
           console.error('Error processing strings file:', stringsErr);
