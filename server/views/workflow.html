@@ -1254,36 +1254,66 @@
       const contentEl = document.getElementById('step-content');
       const sessionIssues = data.session?.issues || [];
       const pendingIssues = sessionIssues.filter(i => i.status === 'pending');
-
-      let issuesList = '';
-      if (pendingIssues.length > 0) {
-        issuesList = '<div class="issue-summary"><h4>Atriði til yfirferðar:</h4>' +
-          '<p>' + pendingIssues.length + ' atriði þarf að yfirfara</p>' +
-          '<a href="/issues?sessionId=' + data.sessionId + '" class="btn btn-secondary btn-small">Opna atriðalista →</a>' +
-          '</div>';
-      }
-
       const rollbackHtml = getRollbackButtonHtml(data);
       const gitCommitHtml = getGitCommitButtonHtml(data.sessionId);
 
-      contentEl.innerHTML =
-        '<div class="alert alert-info">' +
-        '<strong>Skref ' + (stepIndex + 1) + ': 1. yfirferð (Trú þýðing)</strong>' +
-        '<p class="step-desc">Málfarsyfirferð á vélþýðingu til að búa til trúa þýðingu.</p>' +
-        '<ol class="instructions-list">' +
-        '<li>Farðu yfir þýddu skrárnar í <a href="/editor?sessionId=' + data.sessionId + '" target="_blank">ritstjóranum</a></li>' +
+      // Build issues accordion if there are issues
+      let issuesAccordion = '';
+      if (pendingIssues.length > 0) {
+        issuesAccordion = '<div class="accordion" id="issues-accordion">' +
+          '<button class="accordion-header" onclick="toggleAccordion(\'issues-accordion\')">' +
+          '<div class="accordion-header-left">' +
+          '<span class="accordion-toggle">▼</span>' +
+          '<span>Atriði til yfirferðar: <strong>' + pendingIssues.length + '</strong></span>' +
+          '</div>' +
+          '</button>' +
+          '<div class="accordion-body">' +
+          '<p>' + pendingIssues.length + ' atriði þarf að yfirfara áður en haldið er áfram.</p>' +
+          '<a href="/issues?sessionId=' + data.sessionId + '" class="btn btn-secondary btn-small">Opna atriðalista →</a>' +
+          '</div>' +
+          '</div>';
+      }
+
+      contentEl.innerHTML = '<div class="step-content-wrapper">' +
+        // Step header
+        '<div class="step-header">' +
+        '<div class="step-header-left">' +
+        '<h3><span class="step-num">3</span> 1. yfirferð</h3>' +
+        '<p>Málfarsyfirferð á vélþýðingu</p>' +
+        '</div>' +
+        '</div>' +
+        // Primary action - Editor link
+        '<div class="primary-action">' +
+        '<a href="/editor?sessionId=' + data.sessionId + '" class="btn btn-primary btn-large" target="_blank">' +
+        '📝 Opna ritstjóra</a>' +
+        '<p class="action-hint">Farðu yfir þýddu skrárnar og leiðréttu málfarsvillur</p>' +
+        '</div>' +
+        // Instructions accordion
+        '<div class="accordion collapsed" id="instructions-accordion">' +
+        '<button class="accordion-header" onclick="toggleAccordion(\'instructions-accordion\')">' +
+        '<div class="accordion-header-left">' +
+        '<span class="accordion-toggle">▼</span>' +
+        '<span>Leiðbeiningar</span>' +
+        '</div>' +
+        '</button>' +
+        '<div class="accordion-body">' +
+        '<div class="instructions-content">' +
+        '<ol>' +
+        '<li>Farðu yfir þýddu skrárnar í ritstjóranum</li>' +
         '<li>Leiðréttu málfarsvillur og samræmdu hugtök við <a href="/terminology" target="_blank">orðalista</a></li>' +
         '<li>Notaðu <strong>Ctrl+S</strong> til að vista breytingar</li>' +
         '<li>Þegar búið er, smelltu á "Halda áfram"</li>' +
         '</ol>' +
-        issuesList +
-        '<div class="action-buttons">' +
-        '<a href="/editor?sessionId=' + data.sessionId + '" class="btn btn-secondary" target="_blank">Opna ritstjóra</a>' +
         '</div>' +
-        '<div class="step-nav-buttons">' +
+        '</div>' +
+        '</div>' +
+        // Issues accordion
+        issuesAccordion +
+        // Step navigation
+        '<div class="step-nav">' +
         rollbackHtml +
         gitCommitHtml +
-        '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram í næsta skref →</button>' +
+        '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram →</button>' +
         '</div>' +
         '</div>';
 
@@ -1297,28 +1327,59 @@
       const rollbackHtml = getRollbackButtonHtml(data);
       const gitCommitHtml = getGitCommitButtonHtml(data.sessionId);
 
-      contentEl.innerHTML =
-        '<div class="alert alert-info">' +
-        '<strong>Skref ' + (stepIndex + 1) + ': Þýðingaminni (TM)</strong>' +
-        '<p class="step-desc">Búa til þýðingaminni úr trúrri þýðingu með Matecat Align.</p>' +
-        '<ol class="instructions-list">' +
+      contentEl.innerHTML = '<div class="step-content-wrapper">' +
+        // Step header
+        '<div class="step-header">' +
+        '<div class="step-header-left">' +
+        '<h3><span class="step-num">4</span> Þýðingaminni</h3>' +
+        '<p>Búa til TM með Matecat Align</p>' +
+        '</div>' +
+        '</div>' +
+        // Primary action - Upload zone
+        '<div class="upload-hero">' +
+        '<div class="dropzone" id="dropzone">' +
+        '<div class="dropzone-icon">📁</div>' +
+        '<div class="dropzone-text">Dragðu TMX skrá hingað</div>' +
+        '<div class="dropzone-hint">eða</div>' +
+        '<form id="upload-form" class="upload-form-inline">' +
+        '<input type="file" name="file" id="upload-file" accept=".tmx">' +
+        '<button type="submit" class="btn btn-secondary">Velja skrá</button>' +
+        '</form>' +
+        '</div>' +
+        '</div>' +
+        // Instructions accordion
+        '<div class="accordion collapsed" id="instructions-accordion">' +
+        '<button class="accordion-header" onclick="toggleAccordion(\'instructions-accordion\')">' +
+        '<div class="accordion-header-left">' +
+        '<span class="accordion-toggle">▼</span>' +
+        '<span>Leiðbeiningar</span>' +
+        '</div>' +
+        '</button>' +
+        '<div class="accordion-body">' +
+        '<div class="instructions-content">' +
+        '<ol>' +
         '<li>Opnaðu <a href="https://matecat.com/align" target="_blank">Matecat Align</a></li>' +
         '<li>Hladdu upp ensku og íslensku skránum</li>' +
         '<li>Samræmdu setningar sem þarf</li>' +
         '<li>Fluttu út TMX skrá</li>' +
         '<li>Hladdu TMX skránni upp hér</li>' +
         '</ol>' +
-        '<div class="upload-section">' +
-        '<h4>Hlaða upp TMX skrá:</h4>' +
-        '<form id="upload-form" class="upload-form">' +
-        '<input type="file" name="file" id="upload-file" accept=".tmx">' +
-        '<button type="submit" class="btn btn-secondary">Hlaða upp</button>' +
-        '</form>' +
-        '<div class="step-nav-buttons">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        // Info banner
+        '<div class="info-banner">' +
+        '<span class="info-banner-icon">ℹ️</span>' +
+        '<div class="info-banner-content">' +
+        '<strong>Valfrjálst skref</strong>' +
+        '<p>Þú getur sleppt þessu skrefi ef þú vilt ekki búa til þýðingaminni.</p>' +
+        '</div>' +
+        '</div>' +
+        // Step navigation
+        '<div class="step-nav">' +
         rollbackHtml +
         gitCommitHtml +
-        '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram (sleppa TM)</button>' +
-        '</div>' +
+        '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram →</button>' +
         '</div>' +
         '</div>';
 
@@ -1332,36 +1393,66 @@
       const contentEl = document.getElementById('step-content');
       const sessionIssues = data.session?.issues || [];
       const localizationIssues = sessionIssues.filter(i => i.category === 'BOARD_REVIEW' && i.status === 'pending');
-
-      let issuesList = '';
-      if (localizationIssues.length > 0) {
-        issuesList = '<div class="issue-summary"><h4>Staðfærsluatriði:</h4>' +
-          '<p>' + localizationIssues.length + ' atriði til að staðfæra</p>' +
-          '<a href="/localization-review?sessionId=' + data.sessionId + '" class="btn btn-secondary btn-small">Opna staðfærsluyfirlit →</a>' +
-          '</div>';
-      }
-
       const rollbackHtml = getRollbackButtonHtml(data);
       const gitCommitHtml = getGitCommitButtonHtml(data.sessionId);
 
-      contentEl.innerHTML =
-        '<div class="alert alert-info">' +
-        '<strong>Skref ' + (stepIndex + 1) + ': Staðfærsla</strong>' +
-        '<p class="step-desc">Aðlaga efni fyrir íslenskt samhengi og nemendur.</p>' +
-        '<ol class="instructions-list">' +
+      // Build issues accordion if there are localization issues
+      let issuesAccordion = '';
+      if (localizationIssues.length > 0) {
+        issuesAccordion = '<div class="accordion" id="issues-accordion">' +
+          '<button class="accordion-header" onclick="toggleAccordion(\'issues-accordion\')">' +
+          '<div class="accordion-header-left">' +
+          '<span class="accordion-toggle">▼</span>' +
+          '<span>Staðfærsluatriði: <strong>' + localizationIssues.length + '</strong></span>' +
+          '</div>' +
+          '</button>' +
+          '<div class="accordion-body">' +
+          '<p>' + localizationIssues.length + ' atriði til að staðfæra (einingar, dæmi, o.fl.).</p>' +
+          '<a href="/localization-review?sessionId=' + data.sessionId + '" class="btn btn-secondary btn-small">Opna staðfærsluyfirlit →</a>' +
+          '</div>' +
+          '</div>';
+      }
+
+      contentEl.innerHTML = '<div class="step-content-wrapper">' +
+        // Step header
+        '<div class="step-header">' +
+        '<div class="step-header-left">' +
+        '<h3><span class="step-num">5</span> Staðfærsla</h3>' +
+        '<p>Aðlaga efni fyrir íslenskt samhengi</p>' +
+        '</div>' +
+        '</div>' +
+        // Primary action - Localization review link
+        '<div class="primary-action">' +
+        '<a href="/localization-review?sessionId=' + data.sessionId + '" class="btn btn-primary btn-large" target="_blank">' +
+        '🌍 Opna staðfærsluyfirlit</a>' +
+        '<p class="action-hint">Umbreyttu einingum og bættu við íslenskum dæmum</p>' +
+        '</div>' +
+        // Instructions accordion
+        '<div class="accordion collapsed" id="instructions-accordion">' +
+        '<button class="accordion-header" onclick="toggleAccordion(\'instructions-accordion\')">' +
+        '<div class="accordion-header-left">' +
+        '<span class="accordion-toggle">▼</span>' +
+        '<span>Leiðbeiningar</span>' +
+        '</div>' +
+        '</button>' +
+        '<div class="accordion-body">' +
+        '<div class="instructions-content">' +
+        '<ol>' +
         '<li>Farðu yfir staðfærsluatriði</li>' +
         '<li>Umbreyttu einingum (mílu→km, Fahrenheit→Celsius)</li>' +
         '<li>Settu inn íslensk dæmi þar sem við á</li>' +
         '<li>Vistaðu breytingar</li>' +
         '</ol>' +
-        issuesList +
-        '<div class="action-buttons">' +
-        '<a href="/localization-review?sessionId=' + data.sessionId + '" class="btn btn-secondary" target="_blank">Opna staðfærsluyfirlit</a>' +
         '</div>' +
-        '<div class="step-nav-buttons">' +
+        '</div>' +
+        '</div>' +
+        // Issues accordion
+        issuesAccordion +
+        // Step navigation
+        '<div class="step-nav">' +
         rollbackHtml +
         gitCommitHtml +
-        '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram í næsta skref →</button>' +
+        '<button id="proceed-btn" class="btn btn-primary btn-large">Halda áfram →</button>' +
         '</div>' +
         '</div>';
 
@@ -2368,6 +2459,71 @@
       color: var(--text-muted);
       margin-left: auto;
       flex-shrink: 0;
+    }
+
+    /* Step content wrapper */
+    .step-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Primary action (centered button with hint) */
+    .primary-action {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-radius: 0.5rem;
+      border: 2px solid var(--primary);
+    }
+    .primary-action .btn-large {
+      padding: 0.875rem 2rem;
+      font-size: 1rem;
+    }
+    .action-hint {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* Info banner */
+    .info-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: rgba(99, 102, 241, 0.08);
+      border-radius: 0.375rem;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+    .info-banner-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .info-banner-content {
+      flex: 1;
+    }
+    .info-banner-content strong {
+      font-size: 0.8125rem;
+      display: block;
+      margin-bottom: 0.125rem;
+    }
+    .info-banner-content p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Upload form inline (for TM step) */
+    .upload-form-inline {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .upload-form-inline input[type="file"] {
+      display: none;
     }
 
     /* Step action buttons (download + git commit side by side) */
