@@ -32,6 +32,15 @@ const getPipelineRunner = async () => {
   }
   return pipelineRunner;
 };
+
+// protect-for-mt is an ES module - use dynamic import
+let protectForMt = null;
+const getProtectForMt = async () => {
+  if (!protectForMt) {
+    protectForMt = await import('../../tools/protect-for-mt.js');
+  }
+  return protectForMt;
+};
 const { classifyIssues, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
 const assignmentStore = require('../services/assignmentStore');
 const activityLog = require('../services/activityLog');
@@ -315,6 +324,8 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
         const runner = await getPipelineRunner();
         const results = await runner.run({
           input: moduleId,
+          section: moduleSection,  // Pass section from JSON data (e.g., "1.5" or "intro")
+          title: moduleTitle,      // Pass title for metadata
           outputDir: sessionData.outputDir,
           book,
           verbose: false
@@ -387,6 +398,30 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
               );
               if (saveResult.success) {
                 console.log(`  Saved to permanent: ${saveResult.destPath}`);
+
+                // === AUTO-GENERATE STRING FILES ===
+                // Generate sidecar and strings files for markdown files
+                if (output.type === 'markdown') {
+                  try {
+                    const protector = await getProtectForMt();
+                    const protectResult = protector.processFile(saveResult.destPath, {
+                      inPlace: false,  // Don't modify the original file
+                      dryRun: false,
+                      verbose: false
+                    });
+                    if (protectResult.success) {
+                      const generated = [];
+                      if (protectResult.sidecarPath) generated.push('sidecar');
+                      if (protectResult.stringsPath) generated.push('strings');
+                      if (generated.length > 0) {
+                        console.log(`  Generated sidecars: ${generated.join(', ')}`);
+                      }
+                    }
+                  } catch (protectErr) {
+                    console.warn(`  Failed to generate sidecars: ${protectErr.message}`);
+                    // Don't fail the workflow - string files are supplementary
+                  }
+                }
               } else {
                 console.warn(`  Failed to save permanently: ${saveResult.error}`);
               }

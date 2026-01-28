@@ -298,19 +298,26 @@ function runTool(scriptPath, args, options = {}) {
  * @param {boolean} verbose - Verbose output
  * @param {object} counters - Optional starting counters {examples, figures, tables}
  * @param {number} chapter - Optional chapter number override
+ * @param {string} sectionOverride - Optional section from caller (e.g., "1.5" or "intro")
  * @returns {Promise<{mdPath: string, equationsPath: string, section: string, counters: object}>}
  */
-async function stepCnxmlToMd(input, outputDir, verbose, counters = null, chapter = null) {
+async function stepCnxmlToMd(input, outputDir, verbose, counters = null, chapter = null, sectionOverride = null) {
   const projectRoot = getProjectRoot();
   const scriptPath = path.join(projectRoot, 'tools', 'cnxml-to-md.js');
 
   // Determine output filename
   let section = 'document';
-  if (/^m\d+$/.test(input)) {
+
+  if (sectionOverride) {
+    // Use provided section (from workflow JSON data) - THIS IS THE PRIMARY PATH
+    section = sectionOverride.replace('.', '-');
+  } else if (/^m\d+$/.test(input)) {
+    // Fallback to hardcoded lookup (for CLI use, backward compatibility)
     const moduleInfo = CHEMISTRY_2E_MODULES[input];
     if (moduleInfo) {
       section = moduleInfo.section.replace('.', '-');
     } else {
+      // Last resort: use module ID as section
       section = input;
     }
   } else {
@@ -394,7 +401,7 @@ async function stepMdToXliff(mdPath, outputDir, section, verbose) {
  * @returns {Promise<{outputs: object[], steps: object[]}>}
  */
 async function runPipeline(options) {
-  const { input, outputDir, skipXliff, verbose } = options;
+  const { input, section: sectionOverride, title, outputDir, skipXliff, verbose } = options;
 
   const results = {
     input,
@@ -430,7 +437,7 @@ async function runPipeline(options) {
     // Step 1: CNXML → Markdown + Equations
     console.log('Step 1/2: Converting CNXML to Markdown...');
     const step1Start = Date.now();
-    const { mdPath, equationsPath, section } = await stepCnxmlToMd(input, outputDir, verbose);
+    const { mdPath, equationsPath, section } = await stepCnxmlToMd(input, outputDir, verbose, null, null, sectionOverride);
     const step1Time = Date.now() - step1Start;
 
     results.steps.push({
@@ -699,6 +706,8 @@ async function runChapterPipeline(options) {
 async function run(options) {
   const finalOptions = {
     input: options.input || options.moduleId,
+    section: options.section || null,  // Accept section from caller (e.g., "1.5" or "intro")
+    title: options.title || null,      // Accept title for metadata
     outputDir: options.outputDir || DEFAULT_OUTPUT_DIR,
     book: options.book || null,
     skipXliff: options.skipXliff || false,

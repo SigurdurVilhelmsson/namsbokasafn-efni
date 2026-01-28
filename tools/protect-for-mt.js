@@ -573,6 +573,12 @@ function processBatch(directory, options) {
 }
 
 // ============================================================================
+// Exports for programmatic use
+// ============================================================================
+
+export { processFile, processBatch, findEnglishMarkdownFiles };
+
+// ============================================================================
 // Main
 // ============================================================================
 
@@ -617,4 +623,7 @@ function main() {
   }
 }
 
-main();
+// Only run main if executed directly (not imported)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}

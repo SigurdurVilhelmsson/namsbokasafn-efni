@@ -55,35 +55,38 @@ const BOOKS = {
   }
 };
 
-// Module ID to metadata mapping (Chemistry 2e chapters 1-4)
-const CHEMISTRY_MODULES = {
-  'm68662': { chapter: 1, section: 'intro', title: 'Introduction' },
-  'm68663': { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
-  'm68664': { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
-  'm68667': { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
-  'm68674': { chapter: 1, section: '1.4', title: 'Measurements' },
-  'm68690': { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
-  'm68683': { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
-  'm68695': { chapter: 2, section: 'intro', title: 'Introduction' },
-  'm68696': { chapter: 2, section: '2.1', title: 'Early Ideas in Atomic Theory' },
-  'm68698': { chapter: 2, section: '2.2', title: 'Evolution of Atomic Theory' },
-  'm68700': { chapter: 2, section: '2.3', title: 'Atomic Structure and Symbolism' },
-  'm68701': { chapter: 2, section: '2.4', title: 'Chemical Formulas' },
-  'm68704': { chapter: 2, section: '2.5', title: 'The Periodic Table' },
-  'm68710': { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
-  'm68712': { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
-  'm68718': { chapter: 3, section: 'intro', title: 'Introduction' },
-  'm68720': { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
-  'm68723': { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
-  'm68730': { chapter: 3, section: '3.3', title: 'Molarity' },
-  'm68738': { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
-  'm68743': { chapter: 4, section: 'intro', title: 'Introduction' },
-  'm68748': { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
-  'm68754': { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },
-  'm68759': { chapter: 4, section: '4.3', title: 'Reaction Stoichiometry' },
-  'm68766': { chapter: 4, section: '4.4', title: 'Reaction Yields' },
-  'm68768': { chapter: 4, section: '4.5', title: 'Quantitative Chemical Analysis' },
-};
+// Module ID to metadata mapping - loaded dynamically from chemistry-2e.json
+// This replaces the old hardcoded (and incomplete/incorrect) mapping
+let CHEMISTRY_MODULES = null;
+
+/**
+ * Load Chemistry 2e modules from the JSON data file (single source of truth)
+ * @returns {object} Module ID to metadata mapping
+ */
+function loadChemistryModules() {
+  if (CHEMISTRY_MODULES) return CHEMISTRY_MODULES;
+
+  try {
+    const dataPath = path.join(__dirname, '..', 'server', 'data', 'chemistry-2e.json');
+    const bookData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+
+    CHEMISTRY_MODULES = {};
+    for (const chapter of bookData.chapters) {
+      for (const mod of chapter.modules) {
+        CHEMISTRY_MODULES[mod.id] = {
+          chapter: chapter.chapter,
+          section: mod.section,
+          title: mod.title
+        };
+      }
+    }
+    return CHEMISTRY_MODULES;
+  } catch (err) {
+    console.warn('Failed to load chemistry-2e.json, using empty mapping:', err.message);
+    CHEMISTRY_MODULES = {};
+    return CHEMISTRY_MODULES;
+  }
+}
 
 // ============================================================================
 // Argument Parsing
@@ -344,11 +347,12 @@ async function fetchCollection(book, options) {
 }
 
 /**
- * Get modules for a specific book (from hardcoded list or collection)
+ * Get modules for a specific book (from JSON data or collection)
  */
 function getModulesForBook(book, chapter = null) {
   if (book === 'chemistry-2e') {
-    let modules = Object.entries(CHEMISTRY_MODULES).map(([id, info]) => ({
+    const chemModules = loadChemistryModules();
+    let modules = Object.entries(chemModules).map(([id, info]) => ({
       id,
       chapter: info.chapter,
       section: info.section,
@@ -358,6 +362,16 @@ function getModulesForBook(book, chapter = null) {
     if (chapter !== null) {
       modules = modules.filter(m => m.chapter === chapter);
     }
+
+    // Sort by chapter, then by section
+    modules.sort((a, b) => {
+      if (a.chapter !== b.chapter) return a.chapter - b.chapter;
+      if (a.section === 'intro') return -1;
+      if (b.section === 'intro') return 1;
+      const aNum = parseFloat(a.section.split('.')[1]) || 0;
+      const bNum = parseFloat(b.section.split('.')[1]) || 0;
+      return aNum - bNum;
+    });
 
     return modules;
   }
@@ -521,7 +535,9 @@ module.exports = {
   getModuleUrl,
   getCollectionUrl,
   BOOKS,
-  CHEMISTRY_MODULES
+  loadChemistryModules,
+  // Getter for backward compatibility (returns loaded modules)
+  get CHEMISTRY_MODULES() { return loadChemistryModules(); }
 };
 
 // CLI execution
