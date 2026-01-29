@@ -1,0 +1,123 @@
+{
+  "module": "m68700",
+  "section": "3.1",
+  "chapter": 3,
+  "title": "Formula Mass and the Mole Concept",
+  "equations": {
+    "EQ:1": {
+      "latex": "{4.7\\,\\text{g}\\,\\text{K}\\,{({\\frac{{\\text{mol K}}}{{39.10\\,\\text{g K}}}})\\,}=\\,0.12\\,\\text{mol K}}",
+      "id": "fs-idp8892544"
+    },
+    "EQ:2": {
+      "latex": "{9.2\\,\\times \\,{{10}}^{{−4}}\\,{\\text{mol}\\,\\text{Ar}}\\,{({\\frac{{39.95\\,\\text{g Ar}}}{{{\\text{mol}}\\,\\text{Ar}}}})\\,}=\\,0.037\\,\\text{g Ar}}",
+      "id": "fs-idp10617648"
+    },
+    "EQ:3": {
+      "latex": "{5.00\\,\\text{g}\\,\\text{Cu}\\,{({\\frac{{{\\text{mol}}\\,\\text{Cu}}}{{63.55\\,\\text{g Cu}}}})}{({\\frac{{6.022\\,\\times \\,{{10}}^{{23}}\\,\\text{Cu atoms}}}{{{\\text{mol Cu}}}}})\\,}=\\,4.74\\,\\times \\,{{10}}^{{22}}\\text{Cu atoms}}",
+      "id": "fs-idp20004432"
+    },
+    "EQ:4": {
+      "latex": "{28.35\\,\\text{g}\\,\\text{glycine}\\,{({\\frac{{\\text{mol glycine}}}{{75.07\\,\\text{g glycine}}}})\\,}=\\,0.378\\,\\text{mol glycine}}",
+      "id": "fs-idp15857520"
+    },
+    "EQ:5": {
+      "latex": "{1.42\\,\\times \\,{{10}}^{{−4}}\\,{\\text{mol}}\\,\\text{vitamin C}{\\,({\\frac{{176.124\\,\\text{g vitamin C}}}{{{\\text{mol}}\\,\\text{vitamin C}}}})\\,}=\\,0.0250\\,\\text{g vitamin C}}",
+      "id": "fs-idm25244336"
+    },
+    "EQ:6": {
+      "latex": "0.0400\\,\\text{g}\\,{\\text{C}}_{7}{\\text{H}}_{5}{\\text{NO}}_{3}\\text{S} \\,{({\\frac{{{\\text{mol}}\\,{\\text{C}}_{7}{\\text{H}}_{5}{{\\text{NO}}}_{3}\\text{S} }}{{183.18\\,\\text{g}\\,{\\text{C}}_{7}{\\text{H}}_{5}{{\\text{NO}}}_{3}\\text{S} }}})}{({\\frac{{6.022\\,\\times \\,{{10}}^{{23}}\\,{\\text{C}}_{7}{\\text{H}}_{5}{{\\text{NO}}}_{3}\\text{S} \\,\\text{molecules}}}{{1\\,{\\text{mol}}\\,{\\text{C}}_{7}{\\text{H}}_{5}{{\\text{NO}}}_{3}\\text{S}}}})} =\\,1.31\\,\\times \\,{10}^{{20}}\\,{\\text{C}}_{7}{\\text{H}}_{5}{\\text{NO}}_{3}\\text{S}\\,\\text{molecules}",
+      "id": "fs-idp15266832"
+    },
+    "EQ:7": {
+      "latex": "{1.31\\,\\times \\,{{10}}^{{20}}\\,{\\text{C}}_{7}{\\text{H}}_{5}{{\\text{NO}}}_{3}\\text{S molecules}\\,{({\\frac{{7\\,\\text{C atoms}}}{{1\\,{\\text{C}}_{7}{\\text{H}}_{5}{{\\text{NO}}}_{3}\\text{S molecule}}}})\\,}=\\,9.17\\,\\times \\,{{10}}^{{20}}\\,\\text{C atoms}}",
+      "id": "fs-idp3901232"
+    },
+    "EQ:8": {
+      "latex": "\\times"
+    },
+    "EQ:9": {
+      "latex": "\\times"
+    },
+    "EQ:10": {
+      "latex": "\\times"
+    },
+    "EQ:11": {
+      "latex": "\\times"
+    },
+    "EQ:12": {
+      "latex": "\\times"
+    },
+    "EQ:13": {
+      "latex": "\\times"
+    },
+    "EQ:14": {
+      "latex": "\\times"
+    },
+    "EQ:15": {
+      "latex": "\\times"
+    },
+    "EQ:16": {
+      "latex": "\\times"
+    },
+    "EQ:17": {
+      "latex": "\\times"
+    },
+    "EQ:18": {
+      "latex": "\\times"
+    },
+    "EQ:19": {
+      "latex": "\\times"
+    },
+    "EQ:20": {
+      "latex": "\\times"
+    },
+    "EQ:21": {
+      "latex": "\\times"
+    },
+    "EQ:22": {
+      "latex": "\\times"
+    },
+    "EQ:23": {
+      "latex": "{5\\,\\times \\,{{10}}^{{−20}}}"
+    },
+    "EQ:24": {
+      "latex": "\\times"
+    },
+    "EQ:25": {
+      "latex": "\\times"
+    },
+    "EQ:26": {
+      "latex": "\\times"
+    },
+    "EQ:27": {
+      "latex": "\\times"
+    },
+    "EQ:28": {
+      "latex": "\\times"
+    },
+    "EQ:29": {
+      "latex": "\\times"
+    },
+    "EQ:30": {
+      "latex": "\\times"
+    },
+    "EQ:31": {
+      "latex": "\\times"
+    },
+    "EQ:32": {
+      "latex": "\\times"
+    },
+    "EQ:33": {
+      "latex": "\\times"
+    },
+    "EQ:34": {
+      "latex": "\\times"
+    },
+    "EQ:35": {
+      "latex": "\\times"
+    },
+    "EQ:36": {
+      "latex": "\\times"
+    }
+  }
+}
