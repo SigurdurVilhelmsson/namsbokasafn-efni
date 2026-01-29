@@ -3,7 +3,7 @@ title: Samantekt
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T16:20:51.179Z"
+published-at: "2026-01-29T16:45:09.780Z"
 type: summary
 ---
 
