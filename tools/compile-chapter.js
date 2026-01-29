@@ -49,6 +49,81 @@ const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.dirname(__dirname);
 
 // ============================================================================
+// Image Handling
+// ============================================================================
+
+/**
+ * Extract all image paths referenced in content
+ * Handles patterns like: ![alt](images/media/CNX_Chem_01_01_Name.jpg)
+ * @param {string} content - Markdown content
+ * @returns {string[]} Array of unique image filenames
+ */
+function extractImageReferences(content) {
+  const imagePattern = /!\[[^\]]*\]\(images\/media\/([^)]+)\)/g;
+  const images = new Set();
+  let match;
+  while ((match = imagePattern.exec(content)) !== null) {
+    images.add(match[1]);
+  }
+  return Array.from(images);
+}
+
+/**
+ * Copy referenced images from source media to publication output
+ * @param {string[]} imageFiles - Array of image filenames to copy
+ * @param {string} sourceMediaDir - Path to 01-source/media/
+ * @param {string} outputImagesDir - Path to output images/media/
+ * @param {object} options - Processing options (dryRun, verbose)
+ * @returns {object} Stats about copied images
+ */
+function copyImages(imageFiles, sourceMediaDir, outputImagesDir, options) {
+  const stats = { copied: 0, missing: 0, skipped: 0 };
+
+  if (imageFiles.length === 0) {
+    return stats;
+  }
+
+  // Create output directory if it doesn't exist
+  if (!options.dryRun && !fs.existsSync(outputImagesDir)) {
+    fs.mkdirSync(outputImagesDir, { recursive: true });
+  }
+
+  for (const imageFile of imageFiles) {
+    const sourcePath = path.join(sourceMediaDir, imageFile);
+    const destPath = path.join(outputImagesDir, imageFile);
+
+    if (!fs.existsSync(sourcePath)) {
+      stats.missing++;
+      if (options.verbose) {
+        console.log(`  Warning: Image not found: ${imageFile}`);
+      }
+      continue;
+    }
+
+    if (fs.existsSync(destPath)) {
+      stats.skipped++;
+      if (options.verbose) {
+        console.log(`  Skipping (exists): ${imageFile}`);
+      }
+      continue;
+    }
+
+    if (options.dryRun) {
+      console.log(`[DRY RUN] Would copy: ${imageFile}`);
+      stats.copied++;
+    } else {
+      fs.copyFileSync(sourcePath, destPath);
+      stats.copied++;
+      if (options.verbose) {
+        console.log(`  Copied: ${imageFile}`);
+      }
+    }
+  }
+
+  return stats;
+}
+
+// ============================================================================
 // Content Cleanup
 // ============================================================================
 
@@ -1134,6 +1209,40 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
     writeOutput(path.join(outputDir, outputFilename), outputContent, options);
   }
 
+  // Copy images from source media to publication output
+  console.log('\nCopying images...');
+
+  // Collect all image references from the written markdown files
+  const allImages = new Set();
+  const writtenFiles = fs.readdirSync(outputDir)
+    .filter(f => f.endsWith('.md'))
+    .map(f => path.join(outputDir, f));
+
+  for (const file of writtenFiles) {
+    if (fs.existsSync(file)) {
+      const content = fs.readFileSync(file, 'utf-8');
+      const images = extractImageReferences(content);
+      images.forEach(img => allImages.add(img));
+    }
+  }
+
+  // Determine source media directory (01-source/media/)
+  const sourceMediaDir = path.join(PROJECT_ROOT, 'books', book, '01-source', 'media');
+  const outputImagesDir = path.join(outputDir, 'images', 'media');
+
+  const imageStats = copyImages(Array.from(allImages), sourceMediaDir, outputImagesDir, options);
+
+  if (verbose) {
+    console.log(`  Images found in content: ${allImages.size}`);
+  }
+  console.log(`  Images copied: ${imageStats.copied}`);
+  if (imageStats.missing > 0) {
+    console.log(`  Images missing: ${imageStats.missing}`);
+  }
+  if (imageStats.skipped > 0) {
+    console.log(`  Images skipped (already exist): ${imageStats.skipped}`);
+  }
+
   // Summary
   console.log('\n' + '─'.repeat(50));
   console.log('Compilation complete');
@@ -1144,6 +1253,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
   console.log(`  Answer entries: ${collectedEOC.answerKey.length}`);
   console.log(`  Key Terms blocks: ${collectedEOC.keyTerms.length}`);
   console.log(`  Key Equations blocks: ${collectedEOC.keyEquations.length}`);
+  console.log(`  Images: ${imageStats.copied} copied, ${imageStats.missing} missing, ${imageStats.skipped} skipped`);
 
   return {
     success: true,
@@ -1154,7 +1264,10 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
       exercises: collectedEOC.exercises.length,
       answerKey: collectedEOC.answerKey.length,
       keyTerms: collectedEOC.keyTerms.length,
-      keyEquations: collectedEOC.keyEquations.length
+      keyEquations: collectedEOC.keyEquations.length,
+      imagesCopied: imageStats.copied,
+      imagesMissing: imageStats.missing,
+      imagesSkipped: imageStats.skipped
     }
   };
 }

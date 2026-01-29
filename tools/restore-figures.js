@@ -223,21 +223,44 @@ function restoreFigures(content, figures, verbose) {
     }
   );
 
-  // 6. Verify existing numbered captions match sidecar
-  // Pattern: *Mynd X.X: caption*{id="..."}
-  const captionPattern = /\*Mynd (\d+\.?\d*):([^*]+)\*\{id="([^"]+)"\}/g;
-  let captionMatch;
-  while ((captionMatch = captionPattern.exec(content)) !== null) {
-    const [, currentNumber, , id] = captionMatch;
-    const expectedNumber = idToNumber[id];
-    if (expectedNumber && currentNumber !== expectedNumber) {
-      if (verbose) {
-        console.error(`    Warning: Mismatched caption number for ${id}: ${currentNumber} vs expected ${expectedNumber}`);
+  // 6. Fix existing numbered captions that have wrong numbers
+  // Pattern: *Mynd X.X: caption*{id="..."} or *Mynd X.X: caption*{#id}
+  // Also handles *Mynd X.X: caption*.{id="..."} (with period before attribute)
+  // Replace wrong numbers with correct ones from sidecar
+  content = content.replace(
+    /\*Mynd (\d+\.?\d*):\s*([^*]+)\*\.?\{(?:id="|#)([^}"]+)(?:"|)\}/g,
+    (match, currentNumber, caption, id) => {
+      const expectedNumber = idToNumber[id];
+      if (expectedNumber && currentNumber !== expectedNumber) {
+        stats.captionsUpdated++;
+        if (verbose) {
+          console.error(`    Fixed caption number for ${id}: ${currentNumber} → ${expectedNumber}`);
+        }
+        // Preserve the original attribute format (id="..." or #id), remove extra period
+        const attrFormat = match.includes('id="') ? `{id="${id}"}` : `{#${id}}`;
+        return `*Mynd ${expectedNumber}: ${caption.trim()}*${attrFormat}`;
       }
-    } else {
       stats.captionsVerified++;
+      return match;
     }
-  }
+  );
+
+  // 7. Also fix Figure captions (English remnants) with wrong numbers
+  content = content.replace(
+    /\*Figure (\d+\.?\d*):\s*([^*]+)\*\.?\{(?:id="|#)([^}"]+)(?:"|)\}/g,
+    (match, currentNumber, caption, id) => {
+      const expectedNumber = idToNumber[id];
+      if (expectedNumber) {
+        stats.captionsUpdated++;
+        if (verbose) {
+          console.error(`    Fixed English caption for ${id}: Figure ${currentNumber} → Mynd ${expectedNumber}`);
+        }
+        const attrFormat = match.includes('id="') ? `{id="${id}"}` : `{#${id}}`;
+        return `*Mynd ${expectedNumber}: ${caption.trim()}*${attrFormat}`;
+      }
+      return match;
+    }
+  );
 
   return { content, stats };
 }

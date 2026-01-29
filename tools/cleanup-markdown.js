@@ -319,6 +319,135 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
 }
 
 /**
+ * Remove duplicate content that appears after directive blocks.
+ * MT sometimes copies the content from inside a directive and places it
+ * immediately after the closing :::
+ *
+ * Pattern detected:
+ *   :::link-to-material
+ *   Content inside directive...
+ *   :::
+ *
+ *   Content inside directive...  ← DUPLICATE (should be removed)
+ *
+ * @param {string} content - The markdown content
+ * @param {boolean} verbose - Whether to output verbose info
+ * @param {object} stats - Stats object to update
+ * @returns {string} Content with duplicates removed
+ */
+function removeDuplicateDirectiveContent(content, verbose, stats) {
+  const lines = content.split('\n');
+  const result = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    // Check if this is the start of a directive (:::something)
+    if (line.match(/^:::[a-z-]+/i)) {
+      // Find the directive content and closing :::
+      const directiveStart = i;
+      const directiveContent = [];
+      i++;
+
+      // Collect content until we hit the closing :::
+      let depth = 1;
+      while (i < lines.length && depth > 0) {
+        const currentLine = lines[i];
+        if (currentLine.trim() === ':::') {
+          depth--;
+          if (depth === 0) break;
+        } else if (currentLine.match(/^:::[a-z-]+/i)) {
+          depth++;
+        }
+        directiveContent.push(currentLine);
+        i++;
+      }
+
+      // Add the directive opening, content, and closing
+      result.push(line); // opening :::directive
+      result.push(...directiveContent);
+      if (i < lines.length && lines[i].trim() === ':::') {
+        result.push(lines[i]); // closing :::
+        i++;
+      }
+
+      // Now check if the content immediately after is a duplicate
+      // Skip empty lines first
+      let afterIdx = i;
+      while (afterIdx < lines.length && lines[afterIdx].trim() === '') {
+        afterIdx++;
+      }
+
+      // Check if the following content matches the directive content
+      if (directiveContent.length > 0 && afterIdx < lines.length) {
+        // Normalize content for comparison: collapse all whitespace to single spaces
+        // This handles cases where MT wraps lines differently
+        const normalizeText = (text) => text
+          .replace(/\s+/g, ' ')  // collapse all whitespace
+          .trim();
+
+        const directiveText = normalizeText(
+          directiveContent
+            .filter(l => l.trim() !== '')
+            .join(' ')
+        );
+
+        // Look ahead to see if we have duplicate content
+        let matchLength = 0;
+        let potentialDuplicate = [];
+        let checkIdx = afterIdx;
+
+        while (checkIdx < lines.length) {
+          const checkLine = lines[checkIdx];
+          // Stop at next heading, directive, or image
+          if (checkLine.match(/^#{1,6}\s/) ||
+              checkLine.match(/^:::[a-z-]+/i) ||
+              checkLine.match(/^!\[/)) {
+            break;
+          }
+          potentialDuplicate.push(checkLine);
+          checkIdx++;
+
+          // Check if we have enough content to compare
+          const duplicateText = normalizeText(
+            potentialDuplicate
+              .filter(l => l.trim() !== '')
+              .join(' ')
+          );
+
+          if (duplicateText === directiveText) {
+            // Found a duplicate! Skip these lines
+            matchLength = checkIdx - afterIdx;
+            stats.duplicateContent++;
+            if (verbose) {
+              console.error(`  Duplicate content removed after directive (${matchLength} lines)`);
+            }
+            break;
+          }
+
+          // If we've collected more text than the directive content, it's not a duplicate
+          // Use character count since line wrapping may differ
+          if (duplicateText.length > directiveText.length * 1.1) {
+            break;
+          }
+        }
+
+        if (matchLength > 0) {
+          // Skip the duplicate content, but keep empty lines between
+          i = afterIdx + matchLength;
+        }
+      }
+    } else {
+      result.push(line);
+      i++;
+    }
+  }
+
+  return result.join('\n');
+}
+
+/**
  * Clean Pandoc-style attributes and artifacts from markdown
  * @param {string} content - The markdown content
  * @param {boolean} verbose - Whether to output verbose info
@@ -334,8 +463,25 @@ function cleanupMarkdown(content, verbose = false, figuresSidecarPath = null) {
     arrowRefsNumbered: 0,
     tableAttrs: 0,
     equationAttrs: 0,
-    sidecarFigures: 0
+    sidecarFigures: 0,
+    strayMetadata: 0,
+    duplicateContent: 0
   };
+
+  // 0a. Remove stray metadata lines from MT output
+  // Pattern: ## titill: „..." kafli: „..." eining: „..." tungumál: „..." hluti: „..."
+  // These appear in MT output and should be stripped
+  // Note: Quotes can be „..." (U+201E...U+201C) or regular "..." - handle both
+  result = result.replace(/^##\s*titill:\s*[„"][^""\u201C]*["\u201C]\s*kafli:\s*[„"][^""\u201C]*["\u201C].*$/gm, (match) => {
+    stats.strayMetadata++;
+    if (verbose) console.error(`  Stray metadata removed: ${match.substring(0, 50)}...`);
+    return '';
+  });
+
+  // 0b. Remove duplicate content after directives
+  // MT sometimes duplicates content from inside :::directive blocks immediately after the closing :::
+  // Pattern: directive content followed by ::: followed by identical content
+  result = removeDuplicateDirectiveContent(result, verbose, stats);
 
   // Build element ID to number map BEFORE stripping IDs
   // Use sidecar data if provided (authoritative), otherwise scan content
@@ -577,6 +723,12 @@ async function main() {
 
   if (options.verbose || options.dryRun) {
     console.error(`\nCleanup statistics:`);
+    if (stats.strayMetadata > 0) {
+      console.error(`  Stray metadata lines removed: ${stats.strayMetadata}`);
+    }
+    if (stats.duplicateContent > 0) {
+      console.error(`  Duplicate directive content removed: ${stats.duplicateContent}`);
+    }
     if (stats.sidecarFigures > 0) {
       console.error(`  Figures from sidecar: ${stats.sidecarFigures}`);
     }
