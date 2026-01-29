@@ -250,6 +250,57 @@ function splitFile(inputPath, outputDir, options) {
   return results;
 }
 
+// ============================================================================
+// Exports for programmatic use
+// ============================================================================
+
+export { splitFile, ERLENDUR_SOFT_LIMIT, ERLENDUR_HARD_LIMIT };
+
+/**
+ * Split all .en.md files in a directory for Erlendur MT
+ * @param {string} directory - Directory containing .en.md files
+ * @param {object} options - Options for splitting
+ * @returns {{filesSplit: number, partsCreated: number, filesUnchanged: number}}
+ */
+export function splitDirectory(directory, options = {}) {
+  const { verbose, dryRun } = options;
+
+  // Find all .en.md files (excluding already-split files with (a), (b) etc.)
+  const files = fs.readdirSync(directory)
+    .filter(f => f.endsWith('.en.md') && !f.match(/\([a-z]\)\.en\.md$/))
+    .map(f => path.join(directory, f));
+
+  if (files.length === 0) {
+    return { filesSplit: 0, partsCreated: 0, filesUnchanged: 0 };
+  }
+
+  let filesSplit = 0;
+  let partsCreated = 0;
+  let filesUnchanged = 0;
+
+  for (const file of files) {
+    const results = splitFile(file, directory, { verbose, dryRun });
+
+    if (results.length > 1) {
+      filesSplit++;
+      partsCreated += results.length;
+
+      // Remove the original file after splitting (unless dry run)
+      if (!dryRun) {
+        fs.unlinkSync(file);
+      }
+    } else {
+      filesUnchanged++;
+    }
+  }
+
+  return { filesSplit, partsCreated, filesUnchanged };
+}
+
+// ============================================================================
+// CLI
+// ============================================================================
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
 
@@ -297,4 +348,7 @@ async function main() {
   }
 }
 
-main();
+// Only run main if executed directly (not imported)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}

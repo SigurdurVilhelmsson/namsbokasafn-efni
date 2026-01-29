@@ -35,6 +35,7 @@ import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
 import { assembleChapter } from './chapter-assembler.js';
 import { processBatch as protectForMT } from './protect-for-mt.js';
+import { splitDirectory as splitForErlendur, ERLENDUR_SOFT_LIMIT } from './split-for-erlendur.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -119,6 +120,7 @@ function parseArgs(args) {
     book: null,
     skipXliff: false,
     skipProtect: false,  // Skip the pre-MT protection step
+    skipSplit: false,    // Skip the file splitting step
     verbose: false,
     help: false,
     listModules: false,
@@ -154,6 +156,8 @@ function parseArgs(args) {
       result.assembleTrack = args[++i];
     } else if (arg === '--skip-protect') {
       result.skipProtect = true;
+    } else if (arg === '--skip-split') {
+      result.skipSplit = true;
     } else if (!arg.startsWith('-') && !result.input) {
       result.input = arg;
     }
@@ -187,6 +191,7 @@ Options:
   --chapter <num>      Process all modules in a chapter with correct numbering
   --skip-xliff         Don't generate XLIFF (only markdown + equations)
   --skip-protect       Skip pre-MT protection (for manual workflows)
+  --skip-split         Skip file splitting for Erlendur 18k limit
   --assemble           Run chapter assembly after conversion (requires --chapter)
   --assemble-only      Only run assembly, skip conversion (requires --chapter)
   --assemble-track T   Publication track for assembly: mt-preview, faithful, localized
@@ -198,6 +203,7 @@ Pipeline Steps:
   1. cnxml-to-md.js:               CNXML → {section}.en.md + {section}-equations.json
   1b. extract-equation-strings.js: Extract translatable text from equations
   1c. protect-for-mt.js:           Protect tables/frontmatter → {section}-protected.json
+  1d. split-for-erlendur.js:       Split files >18k chars → {section}(a).en.md, etc.
   2. md-to-xliff.js:               {section}.en.md → {section}.en.xliff (unless --skip-xliff)
   3. chapter-assembler.js:         7 modules → 12 publication files (with --assemble)
 
@@ -502,6 +508,24 @@ async function stepProtectForMT(outputDir, verbose) {
 }
 
 /**
+ * Step 1d: Split large files for Erlendur MT character limits
+ * Files >18,000 characters are split at paragraph boundaries
+ * @param {string} outputDir - Directory containing .en.md files
+ * @param {boolean} verbose - Verbose output
+ * @returns {Promise<{filesSplit: number, partsCreated: number, filesUnchanged: number}>}
+ */
+async function stepSplitForErlendur(outputDir, verbose) {
+  if (verbose) {
+    console.log(`  Splitting large files (>${ERLENDUR_SOFT_LIMIT} chars) in: ${outputDir}`);
+  }
+
+  // Use the imported splitForErlendur (splitDirectory) function
+  const result = splitForErlendur(outputDir, { verbose, dryRun: false });
+
+  return result;
+}
+
+/**
  * Step 2: Convert Markdown to XLIFF
  * @param {string} mdPath - Path to markdown file
  * @param {string} outputDir - Output directory
@@ -536,7 +560,7 @@ async function stepMdToXliff(mdPath, outputDir, section, verbose) {
  * @returns {Promise<{outputs: object[], steps: object[]}>}
  */
 async function runPipeline(options) {
-  const { input, section: sectionOverride, title, outputDir, skipXliff, skipProtect, verbose } = options;
+  const { input, section: sectionOverride, title, outputDir, skipXliff, skipProtect, skipSplit, verbose } = options;
 
   const results = {
     input,
@@ -569,7 +593,7 @@ async function runPipeline(options) {
   }
 
   // Determine total steps for progress display
-  const totalSteps = skipXliff ? 2 : 3;
+  const totalSteps = (skipXliff ? 0 : 1) + 3; // Convert + Protect + Split + optionally XLIFF
   let currentStep = 0;
 
   try {
@@ -627,7 +651,34 @@ async function runPipeline(options) {
       console.log('');
     }
 
-    // Step 3: Markdown → XLIFF (optional)
+    // Step 3: Split large files for Erlendur 18k character limit
+    currentStep++;
+    if (!skipSplit) {
+      console.log(`Step ${currentStep}/${totalSteps}: Splitting large files for Erlendur...`);
+      const step3Start = Date.now();
+      const { filesSplit, partsCreated, filesUnchanged } = await stepSplitForErlendur(outputDir, verbose);
+      const step3Time = Date.now() - step3Start;
+
+      results.steps.push({
+        name: 'split-for-erlendur',
+        success: true,
+        timeMs: step3Time,
+        filesSplit,
+        partsCreated
+      });
+
+      if (filesSplit > 0) {
+        console.log(`  ✓ Split ${filesSplit} file(s) into ${partsCreated} parts`);
+      } else {
+        console.log(`  ✓ No files needed splitting (all under 18k chars)`);
+      }
+      console.log('');
+    } else {
+      console.log(`Step ${currentStep}/${totalSteps}: Skipped file splitting (--skip-split)`);
+      console.log('');
+    }
+
+    // Step 4: Markdown → XLIFF (optional)
     if (!skipXliff) {
       currentStep++;
       console.log(`Step ${currentStep}/${totalSteps}: Generating XLIFF for Matecat...`);
@@ -717,7 +768,7 @@ function getChapterModules(chapter) {
  * @returns {Promise<{outputs: object[], steps: object[]}>}
  */
 async function runChapterPipeline(options) {
-  const { chapter, outputDir, skipXliff, skipProtect, verbose } = options;
+  const { chapter, outputDir, skipXliff, skipProtect, skipSplit, verbose } = options;
 
   const modules = getChapterModules(chapter);
   if (modules.length === 0) {
@@ -862,6 +913,33 @@ async function runChapterPipeline(options) {
       console.log('');
     }
 
+    // Split large files for Erlendur 18k character limit
+    console.log(`─`.repeat(60));
+    if (!skipSplit) {
+      console.log('Splitting large files for Erlendur...');
+      const splitStart = Date.now();
+      const { filesSplit, partsCreated, filesUnchanged } = await stepSplitForErlendur(outputDir, verbose);
+      const splitTime = Date.now() - splitStart;
+
+      results.steps.push({
+        name: 'split-for-erlendur',
+        success: true,
+        timeMs: splitTime,
+        filesSplit,
+        partsCreated
+      });
+
+      if (filesSplit > 0) {
+        console.log(`  ✓ Split ${filesSplit} file(s) into ${partsCreated} parts`);
+      } else {
+        console.log(`  ✓ No files needed splitting (all under 18k chars)`);
+      }
+      console.log('');
+    } else {
+      console.log('Skipped file splitting (--skip-split)');
+      console.log('');
+    }
+
     results.success = true;
 
   } catch (err) {
@@ -917,6 +995,7 @@ async function run(options) {
     book: options.book || null,
     skipXliff: options.skipXliff || false,
     skipProtect: options.skipProtect || false,
+    skipSplit: options.skipSplit || false,
     verbose: options.verbose || false
   };
 
