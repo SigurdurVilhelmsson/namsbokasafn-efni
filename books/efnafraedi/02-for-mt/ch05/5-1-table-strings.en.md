@@ -1,3 +1,5 @@
+## titill: „Unknown" kafli: „unknown" eining: „unknown" tungumál: „en"
+
 # Table Strings - Section 5.1
 
 Translatable text extracted from tables.
