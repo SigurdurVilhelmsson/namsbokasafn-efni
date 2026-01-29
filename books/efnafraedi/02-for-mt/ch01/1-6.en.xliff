@@ -1,0 +1,1429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68683" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Mathematical Treatment of Measurement Results</note>
+      <note>Section: 1.6</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Mathematical Treatment of Measurement Results</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Explain the dimensional analysis (factor label) approach to mathematical calculations involving quantities</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Use dimensional analysis to carry out unit conversions for a given property and computations involving two or more properties</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-paragraph">
+        <source>It is often the case that a quantity of interest may not be easy (or even possible) to measure directly but instead must be calculated from other directly measured properties and appropriate mathematical relationships.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-paragraph">
+        <source>For example, consider measuring the average speed of an athlete running sprints.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>This is typically accomplished by measuring the <g id="1" ctype="x-italic">time</g> required for the athlete to run from the starting line to the finish line, and the <g id="2" ctype="x-italic">distance</g> between these two lines, and then computing <g id="3" ctype="x-italic">speed</g> from the equation that relates these three properties:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:1]]" ctype="x-equation"/>{id="fs-idm290867056"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>An Olympic-quality sprinter can run 100 m in approximately 10 s, corresponding to an average speed of</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:2]]" ctype="x-equation"/>{id="fs-idm257675424"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>(For this and the next calculation, assume the trailing zeros are significant digits.) Note that this simple arithmetic involves dividing the numbers of each measured quantity to yield the number of the computed quantity (100/10 = 10) <g id="1" ctype="x-italic">and likewise</g> dividing the units of each measured quantity to yield the unit of the computed quantity (m/s = m/s).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>Now, consider using this same relation to predict the time required for a person running at this speed to travel a distance of 25 m.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>The same relation among the three properties is used, but in this case, the two quantities provided are a speed (10 m/s) and a distance (25 m).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>To yield the sought property, time, the equation must be rearranged appropriately:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:3]]" ctype="x-equation"/>{id="fs-idm219214640"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>The time can then be computed as:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:4]]" ctype="x-equation"/>{id="fs-idp106016944"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>Again, arithmetic on the numbers (25/10 = 2.5) was accompanied by the same arithmetic on the units (m/(m/s) = s) to yield the number and unit of the result, 2.5 s.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>Note that, just as for numbers, when a unit is divided by an identical unit (in this case, m/m), the result is “1”—or, as commonly phrased, the units “cancel.”</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>These calculations are examples of a versatile mathematical approach known as <g id="1" ctype="x-bold">dimensional analysis</g>{id="term-00001"} (or the <g id="2" ctype="x-bold">factor-label method</g>{id="term-00002"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>Dimensional analysis is based on this premise: <g id="1" ctype="x-italic">the units of quantities must be subjected to the same mathematical operations as their associated numbers</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source>This method can be applied to computations ranging from simple unit conversions to more complex, multi-step calculations involving several different quantities.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-section-title">
+        <source>Conversion Factors and Dimensional Analysis</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source>A ratio of two equivalent quantities expressed with different measurement units can be used as a <g id="1" ctype="x-bold">unit conversion factor</g>{id="term-00003"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-paragraph">
+        <source>For example, the lengths of 2.54 cm and 1 in. are equivalent (by definition), and so a unit conversion factor may be derived from the ratio,</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:5]]" ctype="x-equation"/>{id="fs-idm256748160"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>Several other commonly used conversion factors are given in [↗]{ref="fs-idm222237232"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source><g id="1" ctype="x-bold">Common Conversion Factors</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>| Length | Volume | Mass | | :--- | :--- | :--- | | 1 m = 1.0936 yd | 1 L = 1.0567 qt | 1 kg = 2.2046 lb | | 1 in. = 2.54 cm (exact) | 1 qt = 0.94635 L | 1 lb = 453.59 g | | 1 km = 0.62137 mi | 1 ft<g id="1" ctype="x-sup">3</g> = 28.317 L | 1 (avoirdupois) oz = 28.349 g | | 1 mi = 1609.3 m | 1 tbsp = 14.787 mL | 1 (troy) oz = 31.103 g | {id="fs-idm222237232" summary="This table is divided into 3 columns.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>They are titled length, volume, and mass.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-paragraph">
+        <source>The following units are under the length column: 1 meter is equal to 1.0936 yards, 1 inch is equal to 2.54 cm 1 kilometer is equal to 0.62137 miles, 1 mile is equal to 1609.3 meters.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-paragraph">
+        <source>The following units are under the volume column: 1 liter is equal to 1.0567 quarts, 1 quart is equal to 0.94635 meters, one cubic foot is equal to 28.317 liters, 1 tablespoon is equal to 14.787 milliliters.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>The following units are under the mass column: 1 kilogram is equal to 2.2046 pounds, 1 pound is equal to 453.59 grams, 1 avoirdupois ounce is equal to 28.349 grams, 1 troy ounce is equal to 31.103 grams."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>[^fs-idm222237232-1]: Strictly speaking, the ounce and pound are units of weight, <g id="1" ctype="x-italic">W</g> (a force equal to the product of mass and gravitational acceleration, <g id="2" ctype="x-italic">W</g> = <g id="3" ctype="x-italic">mg</g>).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-paragraph">
+        <source>The conversion relations in this table are commonly used to equate masses and weight assuming a nominal value for <g id="1" ctype="x-italic">g</g> at the surface of the earth.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source>When a quantity (such as distance in inches) is multiplied by an appropriate unit conversion factor, the quantity is converted to an equivalent value with different units (such as distance in centimeters).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source>For example, a basketball player’s vertical jump of 34 inches can be converted to centimeters by:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:6]]" ctype="x-equation"/>{id="fs-idm153590912"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-paragraph">
+        <source>Since this simple arithmetic involves <g id="1" ctype="x-italic">quantities</g>, the premise of dimensional analysis requires that we multiply both <g id="2" ctype="x-italic">numbers and units</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source>The numbers of these two quantities are multiplied to yield the number of the product quantity, 86, whereas the units are multiplied to yield <x id="1" equiv-text="[[EQ:32]]" ctype="x-equation"/>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-paragraph">
+        <source>Just as for numbers, a ratio of identical units is also numerically equal to one, <x id="1" equiv-text="[[EQ:33]]" ctype="x-equation"/> and the unit product thus simplifies to <g id="2" ctype="x-italic">cm</g>. (When identical units divide to yield a factor of 1, they are said to “cancel.”) Dimensional analysis may be used to confirm the proper application of unit conversion factors as demonstrated in the following example.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-example-subsection-title">
+        <source>Example 1.6: Using a Unit Conversion Factor</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-example-paragraph">
+        <source>The mass of a competition frisbee is 125 g.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-example-paragraph">
+        <source>Convert its mass to ounces using the unit conversion factor derived from the relationship 1 oz = 28.349 g ([↗]{ref="fs-idm222237232"}).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-example-paragraph">
+        <source>Given the conversion factor, the mass in ounces may be derived using an equation similar to the one used for converting length from inches to centimeters.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:7]]" ctype="x-equation"/>{id="fs-idm138056288"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-example-paragraph">
+        <source>The unit conversion factor may be represented as:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:8]]" ctype="x-equation"/>{id="fs-idm233281680"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-example-paragraph">
+        <source>The correct unit conversion factor is the ratio that cancels the units of grams and leaves ounces.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:9]]" ctype="x-equation"/>{id="fs-idm222314304"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-example-paragraph">
+        <source>Convert a volume of 9.345 qt to liters.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-example-paragraph">
+        <source>8.844 L</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-paragraph">
+        <source>8.844 L</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-paragraph">
+        <source>Beyond simple unit conversions, the factor-label method can be used to solve more complex problems involving computations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-paragraph">
+        <source>Regardless of the details, the basic approach is the same—all the <g id="1" ctype="x-italic">factors</g> involved in the calculation must be appropriately oriented to ensure that their <g id="2" ctype="x-italic">labels</g> (units) will appropriately cancel and/or combine to yield the desired unit in the result.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-paragraph">
+        <source>As your study of chemistry continues, you will encounter many opportunities to apply this approach.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-example-subsection-title">
+        <source>Example 1.7: Computing Quantities from Measurement Results and Known Mathematical Relations</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-example-paragraph">
+        <source>What is the density of common antifreeze in units of g/mL?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-example-paragraph">
+        <source>A 4.00-qt sample of the antifreeze weighs 9.26 lb.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-example-paragraph">
+        <source>Since <x id="1" equiv-text="[[EQ:34]]" ctype="x-equation"/>, we need to divide the mass in grams by the volume in milliliters.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-example-paragraph">
+        <source>In general: the number of units of B = the number of units of A <x id="1" equiv-text="[[EQ:35]]" ctype="x-equation"/> unit conversion factor.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-example-paragraph">
+        <source>The necessary conversion factors are given in [↗]{ref="fs-idm222237232"}: 1 lb = 453.59 g; 1 L = 1.0567 qt; 1 L = 1,000 mL.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-example-paragraph">
+        <source>Mass may be converted from pounds to grams as follows:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:10]]" ctype="x-equation"/>{id="fs-idm336821696"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-example-paragraph">
+        <source>Volume may be converted from quarts to milliliters via two steps:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/>{id="fs-idm279137456"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:12]]" ctype="x-equation"/>{id="fs-idm289883088"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-example-paragraph">
+        <source>Then,</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:13]]" ctype="x-equation"/>{id="fs-idm144640128"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-example-paragraph">
+        <source>Alternatively, the calculation could be set up in a way that uses three unit conversion factors sequentially as follows:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:14]]" ctype="x-equation"/>{id="fs-idm9873904"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-example-paragraph">
+        <source>What is the volume in liters of 1.000 oz, given that 1 L = 1.0567 qt and 1 qt = 32 oz (exactly)?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-example-paragraph">
+        <source>2.957 × 10<g id="1" ctype="x-sup">−2</g> L</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-paragraph">
+        <source>2.957 × 10<g id="1" ctype="x-sup">−2</g> L</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-example-subsection-title">
+        <source>Example 1.8: Computing Quantities from Measurement Results and Known Mathematical Relations</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-example-paragraph">
+        <source>While being driven from Philadelphia to Atlanta, a distance of about 1250 km, a 2014 Lamborghini Aventador Roadster uses 213 L gasoline.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-example-paragraph">
+        <source>(a) What (average) fuel economy, in miles per gallon, did the Roadster get during this trip?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-example-paragraph">
+        <source>(b) If gasoline costs $3.80 per gallon, what was the fuel cost for this trip?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-example-paragraph">
+        <source>(a) First convert distance from kilometers to miles:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:15]]" ctype="x-equation"/>{id="fs-idm60362224"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-example-paragraph">
+        <source>and then convert volume from liters to gallons:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:16]]" ctype="x-equation"/>{id="fs-idm214696672"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-example-paragraph">
+        <source>Finally,</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:17]]" ctype="x-equation"/>{id="fs-idm114266320"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-example-paragraph">
+        <source>Alternatively, the calculation could be set up in a way that uses all the conversion factors sequentially, as follows:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-97" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:18]]" ctype="x-equation"/>{id="fs-idm171836160"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-98" restype="x-example-paragraph">
+        <source>(b) Using the previously calculated volume in gallons, we find:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-99" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:19]]" ctype="x-equation"/>{id="fs-idm328491840"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-100" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-101" restype="x-example-paragraph">
+        <source>A Toyota Prius Hybrid uses 59.7 L gasoline to drive from San Francisco to Seattle, a distance of 1300 km (two significant digits).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-102" restype="x-example-paragraph">
+        <source>(a) What (average) fuel economy, in miles per gallon, did the Prius get during this trip?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-103" restype="x-example-paragraph">
+        <source>(b) If gasoline costs $3.90 per gallon, what was the fuel cost for this trip?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-104" restype="x-example-paragraph">
+        <source>(a) 51 mpg; (b) $62</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-105" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-106" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-107" restype="x-paragraph">
+        <source>(a) 51 mpg; (b) $62</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-108" restype="x-section-title">
+        <source>Conversion of Temperature Units</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-109" restype="x-paragraph">
+        <source>We use the word <g id="1" ctype="x-bold">temperature</g>{id="term-00004"} to refer to the hotness or coldness of a substance.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-110" restype="x-paragraph">
+        <source>One way we measure a change in temperature is to use the fact that most substances expand when their temperature increases and contract when their temperature decreases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-111" restype="x-paragraph">
+        <source>The liquid in a common glass thermometer changes its volume as the temperature changes, and the position of the trapped liquid's surface along a printed scale may be used as a measure of temperature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-112" restype="x-paragraph">
+        <source>Temperature scales are defined relative to selected reference temperatures: Two of the most commonly used are the freezing and boiling temperatures of water at a specified atmospheric pressure.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-113" restype="x-paragraph">
+        <source>On the Celsius scale, 0 °C is defined as the freezing temperature of water and 100 °C as the boiling temperature of water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-114" restype="x-paragraph">
+        <source>The space between the two temperatures is divided into 100 equal intervals, which we call degrees.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-115" restype="x-paragraph">
+        <source>On the <g id="1" ctype="x-bold">Fahrenheit</g>{id="term-00005"} scale, the freezing point of water is defined as 32 °F and the boiling temperature as 212 °F.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-116" restype="x-paragraph">
+        <source>The space between these two points on a Fahrenheit thermometer is divided into 180 equal parts (degrees).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-117" restype="x-paragraph">
+        <source>Defining the Celsius and Fahrenheit temperature scales as described in the previous paragraph results in a slightly more complex relationship between temperature values on these two scales than for different units of measure for other properties.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-118" restype="x-paragraph">
+        <source>Most measurement units for a given property are directly proportional to one another (y = mx).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-119" restype="x-paragraph">
+        <source>Using familiar length units as one example:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-120" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:20]]" ctype="x-equation"/>{id="fs-idm6121760"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-121" restype="x-paragraph">
+        <source>where y = length in feet, x = length in inches, and the proportionality constant, m, is the conversion factor.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-122" restype="x-paragraph">
+        <source>The Celsius and Fahrenheit temperature scales, however, do not share a common zero point, and so the relationship between these two scales is a linear one rather than a proportional one (y = mx + b).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-123" restype="x-paragraph">
+        <source>Consequently, converting a temperature from one of these scales into the other requires more than simple multiplication by a conversion factor, m; it also must take into account differences in the scales’ zero points (b).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-124" restype="x-paragraph">
+        <source>The linear equation relating Celsius and Fahrenheit temperatures is easily derived from the two temperatures used to define each scale.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-125" restype="x-paragraph">
+        <source>Representing the Celsius temperature as <g id="1" ctype="x-italic">x</g> and the Fahrenheit temperature as <g id="2" ctype="x-italic">y</g>, the slope, <g id="3" ctype="x-italic">m</g>, is computed to be:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-126" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:21]]" ctype="x-equation"/>{id="fs-idm229969840"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-127" restype="x-paragraph">
+        <source>The <g id="1" ctype="x-italic">y</g>-intercept of the equation, <g id="2" ctype="x-italic">b</g>, is then calculated using either of the equivalent temperature pairs, (100 °C, 212 °F) or (0 °C, 32 °F), as:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-128" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:22]]" ctype="x-equation"/>{id="fs-idm234430272"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-129" restype="x-paragraph">
+        <source>The equation relating the temperature (<g id="1" ctype="x-italic">T</g>) scales is then:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-130" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:23]]" ctype="x-equation"/>{id="fs-idm305465424"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-131" restype="x-paragraph">
+        <source>An abbreviated form of this equation that omits the measurement units is:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-132" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:24]]" ctype="x-equation"/>{id="fs-idm226315088"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-133" restype="x-paragraph">
+        <source>Rearrangement of this equation yields the form useful for converting from Fahrenheit to Celsius:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-134" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:25]]" ctype="x-equation"/>{id="fs-idm138168256"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-135" restype="x-paragraph">
+        <source>As mentioned earlier in this chapter, the SI unit of temperature is the kelvin (K).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-136" restype="x-paragraph">
+        <source>Unlike the Celsius and Fahrenheit scales, the kelvin scale is an absolute temperature scale in which 0 (zero) K corresponds to the lowest temperature that can theoretically be achieved.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-137" restype="x-paragraph">
+        <source>Since the kelvin temperature scale is absolute, a degree symbol is not included in the unit abbreviation, K.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-138" restype="x-paragraph">
+        <source>The early 19th-century discovery of the relationship between a gas’s volume and temperature suggested that the volume of a gas would be zero at −273.15 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-139" restype="x-paragraph">
+        <source>In 1848, British physicist William Thompson, who later adopted the title of Lord Kelvin, proposed an absolute temperature scale based on this concept (further treatment of this topic is provided in this text’s chapter on gases).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-140" restype="x-paragraph">
+        <source>The freezing temperature of water on this scale is 273.15 K and its boiling temperature is 373.15 K.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-141" restype="x-paragraph">
+        <source>Notice the numerical difference in these two reference temperatures is 100, the same as for the Celsius scale, and so the linear relation between these two temperature scales will exhibit a slope of <x id="1" equiv-text="[[EQ:36]]" ctype="x-equation"/>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-142" restype="x-paragraph">
+        <source>Following the same approach, the equations for converting between the kelvin and Celsius temperature scales are derived to be:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-143" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:26]]" ctype="x-equation"/>{id="fs-idp289344"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-144" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:27]]" ctype="x-equation"/>{id="fs-idm303916848"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-145" restype="x-paragraph">
+        <source>The 273.15 in these equations has been determined experimentally, so it is not exact. [↗]{ref="CNX_Chem_01_06_TempScales"} shows the relationship among the three temperature scales.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-146" restype="x-paragraph">
+        <source>![](CNX_Chem_01_06_TempScales.jpg){id="CNX_Chem_01_06_TempScales" alt="A thermometer is shown for the Fahrenheit, Celsius and Kelvin scales.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-147" restype="x-paragraph">
+        <source>Under the Fahrenheit scale, the boiling point of water is 212 degrees while the freezing point of water is 32 degrees.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-148" restype="x-paragraph">
+        <source>Therefore, there are 180 Fahrenheit degrees between the boiling point of water and the freezing point of water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-149" restype="x-paragraph">
+        <source>Under the Celsius scale, the boiling point of water is 100 degrees while the freezing point of water is 0 degrees.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-150" restype="x-paragraph">
+        <source>Therefore, there are 100 Celsius degrees between the boiling point and freezing point of water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-151" restype="x-paragraph">
+        <source>Under the kelvin scale, the boiling point of water is 373.15 K, while the freezing point of water is 273.15 K. 233.15 K is equal to negative 40 degrees Celsius, which is also equal to negative 40 degrees Fahrenheit."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-152" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 1.28: The Fahrenheit, Celsius, and kelvin temperature scales are compared.</g>{id="CNX_Chem_01_06_TempScales"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-153" restype="x-paragraph">
+        <source>Although the kelvin (absolute) temperature scale is the official SI temperature scale, Celsius is commonly used in many scientific contexts and is the scale of choice for nonscience contexts in almost all areas of the world.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-154" restype="x-paragraph">
+        <source>Very few countries (the U.S. and its territories, the Bahamas, Belize, Cayman Islands, and Palau) still use Fahrenheit for weather, medicine, and cooking.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-155" restype="x-example-subsection-title">
+        <source>Example 1.9: Conversion from Celsius</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-156" restype="x-example-paragraph">
+        <source>Normal body temperature has been commonly accepted as 37.0 °C (although it varies depending on time of day and method of measurement, as well as among individuals).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-157" restype="x-example-paragraph">
+        <source>What is this temperature on the kelvin scale and on the Fahrenheit scale?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-158" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-159" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:28]]" ctype="x-equation"/>{id="fs-idm223031696"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-160" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:29]]" ctype="x-equation"/>{id="fs-idp114907616"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-161" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-162" restype="x-example-paragraph">
+        <source>Convert 80.92 °C to K and °F.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-163" restype="x-example-paragraph">
+        <source>354.07 K, 177.7 °F</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-164" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-165" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-166" restype="x-paragraph">
+        <source>354.07 K, 177.7 °F</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-167" restype="x-example-subsection-title">
+        <source>Example 1.10: Conversion from Fahrenheit</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-168" restype="x-example-paragraph">
+        <source>Baking a ready-made pizza calls for an oven temperature of 450 °F.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-169" restype="x-example-paragraph">
+        <source>If you are in Europe, and your oven thermometer uses the Celsius scale, what is the setting?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-170" restype="x-example-paragraph">
+        <source>What is the kelvin temperature?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-171" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-172" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:30]]" ctype="x-equation"/>{id="fs-idm32912"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-173" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:31]]" ctype="x-equation"/>{id="fs-idm144212448"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-174" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-175" restype="x-example-paragraph">
+        <source>Convert 50 °F to °C and K.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-176" restype="x-example-paragraph">
+        <source>10 °C, 280 K</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-177" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-178" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-179" restype="x-paragraph">
+        <source>10 °C, 280 K</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-180" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-181" restype="x-paragraph">
+        <source>Measurements are made using a variety of units.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-182" restype="x-paragraph">
+        <source>It is often useful or necessary to convert a measured quantity from one unit into another.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-183" restype="x-paragraph">
+        <source>These conversions are accomplished using unit conversion factors, which are derived by simple applications of a mathematical approach called the factor-label method or dimensional analysis.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-184" restype="x-paragraph">
+        <source>This strategy is also employed to calculate sought quantities using measured quantities and appropriate mathematical relations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-185" restype="x-section-title">
+        <source>Key Equations</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-186" restype="x-paragraph">
+        <source>| <x id="1" equiv-text="[[EQ:37]]" ctype="x-equation"/> | | :--- | | <x id="2" equiv-text="[[EQ:38]]" ctype="x-equation"/> | | <x id="3" equiv-text="[[EQ:39]]" ctype="x-equation"/> | | <x id="4" equiv-text="[[EQ:40]]" ctype="x-equation"/> | {id="key-equations-table" summary="key equations table"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-187" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-188" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm287695728} Write conversion factors (as ratios) for the number of:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-189" restype="x-paragraph">
+        <source>(a) yards in 1 meter</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-190" restype="x-paragraph">
+        <source>(b) liters in 1 liquid quart</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-191" restype="x-paragraph">
+        <source>(c) pounds in 1 kilogram</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-192" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:41]]" ctype="x-equation"/>; (b) <x id="2" equiv-text="[[EQ:42]]" ctype="x-equation"/>; (c) <x id="3" equiv-text="[[EQ:43]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-193" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm321326256} Write conversion factors (as ratios) for the number of:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-194" restype="x-paragraph">
+        <source>(a) kilometers in 1 mile</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-195" restype="x-paragraph">
+        <source>(b) liters in 1 cubic foot</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-196" restype="x-paragraph">
+        <source>(c) grams in 1 ounce</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-197" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp43396912} The label on a soft drink bottle gives the volume in two units: 2.0 L and 67.6 fl oz.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-198" restype="x-paragraph">
+        <source>Use this information to derive a conversion factor between the English and metric units.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-199" restype="x-paragraph">
+        <source>How many significant figures can you justify in your conversion factor?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-200" restype="x-paragraph">
+        <source>:::answer <x id="1" equiv-text="[[EQ:44]]" ctype="x-equation"/> Only two significant figures are justified.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-201" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm124621456} The label on a box of cereal gives the mass of cereal in two units: 978 grams and 34.5 oz.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-202" restype="x-paragraph">
+        <source>Use this information to find a conversion factor between the English and metric units.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-203" restype="x-paragraph">
+        <source>How many significant figures can you justify in your conversion factor?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-204" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm125803088} Soccer is played with a round ball having a circumference between 27 and 28 in. and a weight between 14 and 16 oz.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-205" restype="x-paragraph">
+        <source>What are these specifications in units of centimeters and grams?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-206" restype="x-paragraph">
+        <source>:::answer 68–71 cm; 400–450 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-207" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm128259568} A woman’s basketball has a circumference between 28.5 and 29.0 inches and a maximum weight of 20 ounces (two significant figures).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-208" restype="x-paragraph">
+        <source>What are these specifications in units of centimeters and grams?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-209" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm203954352} How many milliliters of a soft drink are contained in a 12.0-oz can?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-210" restype="x-paragraph">
+        <source>:::answer 355 mL</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-211" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm290820272} A barrel of oil is exactly 42 gal.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-212" restype="x-paragraph">
+        <source>How many liters of oil are in a barrel?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-213" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp32978240} The diameter of a red blood cell is about 3 <x id="1" equiv-text="[[EQ:45]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−4</g> in.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-214" restype="x-paragraph">
+        <source>What is its diameter in centimeters?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-215" restype="x-paragraph">
+        <source>:::answer 8 <x id="1" equiv-text="[[EQ:46]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−4</g> cm</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-216" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp3893440} The distance between the centers of the two oxygen atoms in an oxygen molecule is 1.21 <x id="1" equiv-text="[[EQ:47]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−8</g> cm.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-217" restype="x-paragraph">
+        <source>What is this distance in inches?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-218" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm280166528} Is a 197-lb weight lifter light enough to compete in a class limited to those weighing 90 kg or less?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-219" restype="x-paragraph">
+        <source>:::answer yes; weight = 89.4 kg</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-220" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm311405440} A very good 197-lb weight lifter lifted 192 kg in a move called the clean and jerk.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-221" restype="x-paragraph">
+        <source>What was the mass of the weight lifted in pounds?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-222" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm159954784} Many medical laboratory tests are run using 5.0 μL blood serum.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-223" restype="x-paragraph">
+        <source>What is this volume in milliliters?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-224" restype="x-paragraph">
+        <source>:::answer 5.0 <x id="1" equiv-text="[[EQ:48]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−3</g> mL</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-225" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm293326720} If an aspirin tablet contains 325 mg aspirin, how many grams of aspirin does it contain?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-226" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm101514016} Use scientific (exponential) notation to express the following quantities in terms of the SI base units in [↗]{ref="fs-idm81346144"}:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-227" restype="x-paragraph">
+        <source>(a) 0.13 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-228" restype="x-paragraph">
+        <source>(b) 232 Gg</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-229" restype="x-paragraph">
+        <source>(c) 5.23 pm</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-230" restype="x-paragraph">
+        <source>(d) 86.3 mg</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-231" restype="x-paragraph">
+        <source>(e) 37.6 cm</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-232" restype="x-paragraph">
+        <source>(f) 54 μm</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-233" restype="x-paragraph">
+        <source>(g) 1 Ts</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-234" restype="x-paragraph">
+        <source>(h) 27 ps</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-235" restype="x-paragraph">
+        <source>(i) 0.15 mK</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-236" restype="x-paragraph">
+        <source>:::answer (a) 1.3 <x id="1" equiv-text="[[EQ:49]]" ctype="x-equation"/> 10<g id="10" ctype="x-sup">−4</g> kg; (b) 2.32 <x id="2" equiv-text="[[EQ:50]]" ctype="x-equation"/> 10<g id="11" ctype="x-sup">8</g> kg; (c) 5.23 <x id="3" equiv-text="[[EQ:51]]" ctype="x-equation"/> 10<g id="12" ctype="x-sup">−12</g> m; (d) 8.63 <x id="4" equiv-text="[[EQ:52]]" ctype="x-equation"/> 10<g id="13" ctype="x-sup">−5</g> kg; (e) 3.76 <x id="5" equiv-text="[[EQ:53]]" ctype="x-equation"/> 10<g id="14" ctype="x-sup">−1</g> m; (f) 5.4 <x id="6" equiv-text="[[EQ:54]]" ctype="x-equation"/> 10<g id="15" ctype="x-sup">−5</g> m; (g) 1 <x id="7" equiv-text="[[EQ:55]]" ctype="x-equation"/> 10<g id="16" ctype="x-sup">12</g> s; (h) 2.7 <x id="8" equiv-text="[[EQ:56]]" ctype="x-equation"/> 10<g id="17" ctype="x-sup">−11</g> s; (i) 1.5 <x id="9" equiv-text="[[EQ:57]]" ctype="x-equation"/> 10<g id="18" ctype="x-sup">−4</g> K</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-237" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm247037968} Complete the following conversions between SI units.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-238" restype="x-paragraph">
+        <source>(a) 612 g = ________ mg</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-239" restype="x-paragraph">
+        <source>(b) 8.160 m = ________ cm</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-240" restype="x-paragraph">
+        <source>(c) 3779 μg = ________ g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-241" restype="x-paragraph">
+        <source>(d) 781 mL = ________ L</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-242" restype="x-paragraph">
+        <source>(e) 4.18 kg = ________ g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-243" restype="x-paragraph">
+        <source>(f) 27.8 m = ________ km</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-244" restype="x-paragraph">
+        <source>(g) 0.13 mL = ________ L</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-245" restype="x-paragraph">
+        <source>(h) 1738 km = ________ m</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-246" restype="x-paragraph">
+        <source>(i) 1.9 Gg = ________ g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-247" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp54026624} Gasoline is sold by the liter in many countries.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-248" restype="x-paragraph">
+        <source>How many liters are required to fill a 12.0-gal gas tank?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-249" restype="x-paragraph">
+        <source>:::answer 45.4 L</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-250" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm242942368} Milk is sold by the liter in many countries.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-251" restype="x-paragraph">
+        <source>What is the volume of exactly 1/2 gal of milk in liters?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-252" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm186995360} A long ton is defined as exactly 2240 lb.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-253" restype="x-paragraph">
+        <source>What is this mass in kilograms?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-254" restype="x-paragraph">
+        <source>:::answer 1.0160 <x id="1" equiv-text="[[EQ:58]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">3</g> kg</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-255" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm311016240} Make the conversion indicated in each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-256" restype="x-paragraph">
+        <source>(a) the men’s world record long jump, 29 ft 4¼ in., to meters</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-257" restype="x-paragraph">
+        <source>(b) the greatest depth of the ocean, about 6.5 mi, to kilometers</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-258" restype="x-paragraph">
+        <source>(c) the area of the state of Oregon, 96,981 mi<g id="1" ctype="x-sup">2</g>, to square kilometers</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-259" restype="x-paragraph">
+        <source>(d) the volume of 1 gill (exactly 4 oz) to milliliters</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-260" restype="x-paragraph">
+        <source>(e) the estimated volume of the oceans, 330,000,000 mi<g id="1" ctype="x-sup">3</g>, to cubic kilometers.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-261" restype="x-paragraph">
+        <source>(f) the mass of a 3525-lb car to kilograms</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-262" restype="x-paragraph">
+        <source>(g) the mass of a 2.3-oz egg to grams</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-263" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm250694352} Make the conversion indicated in each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-264" restype="x-paragraph">
+        <source>(a) the length of a soccer field, 120 m (three significant figures), to feet</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-265" restype="x-paragraph">
+        <source>(b) the height of Mt.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-266" restype="x-paragraph">
+        <source>Kilimanjaro, at 19,565 ft, the highest mountain in Africa, to kilometers</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-267" restype="x-paragraph">
+        <source>(c) the area of an 8.5- × 11-inch sheet of paper in cm<g id="1" ctype="x-sup">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-268" restype="x-paragraph">
+        <source>(d) the displacement volume of an automobile engine, 161 in.<g id="1" ctype="x-sup">3</g>, to liters</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-269" restype="x-paragraph">
+        <source>(e) the estimated mass of the atmosphere, 5.6 × 10<g id="1" ctype="x-sup">15</g> tons, to kilograms</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-270" restype="x-paragraph">
+        <source>(f) the mass of a bushel of rye, 32.0 lb, to kilograms</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-271" restype="x-paragraph">
+        <source>(g) the mass of a 5.00-grain aspirin tablet to milligrams (1 grain = 0.00229 oz)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-272" restype="x-paragraph">
+        <source>:::answer (a) 394 ft; (b) 5.9634 km; (c) 6.0 <x id="1" equiv-text="[[EQ:59]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">2</g>; (d) 2.64 L; (e) 5.1 <x id="2" equiv-text="[[EQ:60]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">18</g> kg; (f) 14.5 kg; (g) 324 mg</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-273" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm219388000} Many chemistry conferences have held a 50-Trillion Angstrom Run (two significant figures).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-274" restype="x-paragraph">
+        <source>How long is this run in kilometers and in miles? (1 Å = 1 <x id="1" equiv-text="[[EQ:61]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−10</g> m)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-275" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm311640624} A chemist’s 50-Trillion Angstrom Run (see [↗]{ref="fs-idm219388000"}) would be an archeologist’s 10,900 cubit run.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-276" restype="x-paragraph">
+        <source>How long is one cubit in meters and in feet? (1 Å = 1 <x id="1" equiv-text="[[EQ:62]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−8</g> cm)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-277" restype="x-paragraph">
+        <source>:::answer 0.46 m; 1.5 ft/cubit</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-278" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm306975136} The gas tank of a certain luxury automobile holds 22.3 gallons according to the owner’s manual.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-279" restype="x-paragraph">
+        <source>If the density of gasoline is 0.8206 g/mL, determine the mass in kilograms and pounds of the fuel in a full tank.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-280" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm244153744} As an instructor is preparing for an experiment, he requires 225 g phosphoric acid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-281" restype="x-paragraph">
+        <source>The only container readily available is a 150-mL Erlenmeyer flask.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-282" restype="x-paragraph">
+        <source>Is it large enough to contain the acid, whose density is 1.83 g/mL?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-283" restype="x-paragraph">
+        <source>:::answer Yes, the acid’s volume is 123 mL.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-284" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm110873792} To prepare for a laboratory period, a student lab assistant needs 125 g of a compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-285" restype="x-paragraph">
+        <source>A bottle containing 1/4 lb is available.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-286" restype="x-paragraph">
+        <source>Did the student have enough of the compound?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-287" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp15401744} A chemistry student is 159 cm tall and weighs 45.8 kg.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-288" restype="x-paragraph">
+        <source>What is her height in inches and weight in pounds?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-289" restype="x-paragraph">
+        <source>:::answer 62.6 in (about 5 ft 3 in.) and 101 lb</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-290" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm207241008} In a recent Grand Prix, the winner completed the race with an average speed of 229.8 km/h.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-291" restype="x-paragraph">
+        <source>What was his speed in miles per hour, meters per second, and feet per second?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-292" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm289866560} Solve these problems about lumber dimensions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-293" restype="x-paragraph">
+        <source>(a) To describe to a European how houses are constructed in the US, the dimensions of “two-by-four” lumber must be converted into metric units.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-294" restype="x-paragraph">
+        <source>The thickness <x id="1" equiv-text="[[EQ:63]]" ctype="x-equation"/> width <x id="2" equiv-text="[[EQ:64]]" ctype="x-equation"/> length dimensions are 1.50 in. <x id="3" equiv-text="[[EQ:65]]" ctype="x-equation"/> 3.50 in. <x id="4" equiv-text="[[EQ:66]]" ctype="x-equation"/> 8.00 ft in the US.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-295" restype="x-paragraph">
+        <source>What are the dimensions in cm <x id="1" equiv-text="[[EQ:67]]" ctype="x-equation"/> cm <x id="2" equiv-text="[[EQ:68]]" ctype="x-equation"/> m?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-296" restype="x-paragraph">
+        <source>(b) This lumber can be used as vertical studs, which are typically placed 16.0 in. apart.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-297" restype="x-paragraph">
+        <source>What is that distance in centimeters?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-298" restype="x-paragraph">
+        <source>:::answer (a) 3.81 cm <x id="1" equiv-text="[[EQ:69]]" ctype="x-equation"/> 8.89 cm <x id="2" equiv-text="[[EQ:70]]" ctype="x-equation"/> 2.44 m; (b) 40.6 cm</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-299" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm95632784} The mercury content of a stream was believed to be above the minimum considered safe—1 part per billion (ppb) by weight.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-300" restype="x-paragraph">
+        <source>An analysis indicated that the concentration was 0.68 parts per billion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-301" restype="x-paragraph">
+        <source>What quantity of mercury in grams was present in 15.0 L of the water, the density of which is 0.998 g/ml? <x id="1" equiv-text="[[EQ:71]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-302" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm215857872} Calculate the density of aluminum if 27.6 cm<g id="1" ctype="x-sup">3</g> has a mass of 74.6 g.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-303" restype="x-paragraph">
+        <source>:::answer 2.70 g/cm<g id="1" ctype="x-sup">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-304" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm215482272} Osmium is one of the densest elements known.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-305" restype="x-paragraph">
+        <source>What is its density if 2.72 g has a volume of 0.121 cm<g id="1" ctype="x-sup">3</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-306" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm361862336} Calculate these masses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-307" restype="x-paragraph">
+        <source>(a) What is the mass of 6.00 cm<g id="1" ctype="x-sup">3</g> of mercury, density = 13.5939 g/cm<g id="2" ctype="x-sup">3</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-308" restype="x-paragraph">
+        <source>(b) What is the mass of 25.0 mL octane, density = 0.702 g/cm<g id="1" ctype="x-sup">3</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-309" restype="x-paragraph">
+        <source>:::answer (a) 81.6 g; (b) 17.6 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-310" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm305607360} Calculate these masses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-311" restype="x-paragraph">
+        <source>(a) What is the mass of 4.00 cm<g id="1" ctype="x-sup">3</g> of sodium, density = 0.97 g/cm<g id="2" ctype="x-sup">3</g> ?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-312" restype="x-paragraph">
+        <source>(b) What is the mass of 125 mL gaseous chlorine, density = 3.16 g/L?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-313" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm216432832} Calculate these volumes.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-314" restype="x-paragraph">
+        <source>(a) What is the volume of 25 g iodine, density = 4.93 g/cm<g id="1" ctype="x-sup">3</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-315" restype="x-paragraph">
+        <source>(b) What is the volume of 3.28 g gaseous hydrogen, density = 0.089 g/L?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-316" restype="x-paragraph">
+        <source>:::answer (a) 5.1 mL; (b) 37 L</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-317" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm182387776} Calculate these volumes.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-318" restype="x-paragraph">
+        <source>(a) What is the volume of 11.3 g graphite, density = 2.25 g/cm<g id="1" ctype="x-sup">3</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-319" restype="x-paragraph">
+        <source>(b) What is the volume of 39.657 g bromine, density = 2.928 g/cm<g id="1" ctype="x-sup">3</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-320" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm208263472} Convert the boiling temperature of gold, 2966 °C, into degrees Fahrenheit and kelvin.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-321" restype="x-paragraph">
+        <source>:::answer 5371 °F, 3239 K</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-322" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm291580080} Convert the temperature of scalding water, 54 °C, into degrees Fahrenheit and kelvin.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-323" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm126910176} Convert the temperature of the coldest area in a freezer, −10 °F, to degrees Celsius and kelvin.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-324" restype="x-paragraph">
+        <source>:::answer −23 °C, 250 K</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-325" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm294247168} Convert the temperature of dry ice, −77 °C, into degrees Fahrenheit and kelvin.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-326" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm312310640} Convert the boiling temperature of liquid ammonia, −28.1 °F, into degrees Celsius and kelvin.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-327" restype="x-paragraph">
+        <source>:::answer −33.4 °C, 239.8 K</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-328" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm307064960} The label on a pressurized can of spray disinfectant warns against heating the can above 130 °F.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-329" restype="x-paragraph">
+        <source>What are the corresponding temperatures on the Celsius and kelvin temperature scales?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-330" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm161487744} The weather in Europe was unusually warm during the summer of 1995.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-331" restype="x-paragraph">
+        <source>The TV news reported temperatures as high as 45 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-332" restype="x-paragraph">
+        <source>What was the temperature on the Fahrenheit scale?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-333" restype="x-paragraph">
+        <source>:::answer 113 °F</source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

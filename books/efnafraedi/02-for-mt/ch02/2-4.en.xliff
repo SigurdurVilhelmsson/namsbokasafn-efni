@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68693" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Chemical Formulas</note>
+      <note>Section: 2.4</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Chemical Formulas</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Symbolize the composition of molecules using molecular formulas and empirical formulas</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Represent the bonding arrangement of atoms within molecules using structural formulas</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-paragraph">
+        <source>A <g id="1" ctype="x-bold">molecular formula</g>{id="term-00001"} is a representation of a molecule that uses chemical symbols to indicate the types of atoms followed by subscripts to show the number of atoms of each type in the molecule. (A subscript is used only when more than one atom of a given type is present.) Molecular formulas are also used as abbreviations for the names of compounds.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-paragraph">
+        <source>The <g id="1" ctype="x-bold">structural formula</g>{id="term-00002"} for a compound gives the same information as its molecular formula (the types and numbers of atoms in the molecule) but also shows how the atoms are connected in the molecule.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>The structural formula for methane contains symbols for one C atom and four H atoms, indicating the number of atoms in the molecule ([↗]{ref="CNX_Chem_02_04_MethaneRep"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>The lines represent bonds that hold the atoms together. (A chemical bond is an attraction between atoms or ions that holds them together in a molecule or a crystal.) We will discuss chemical bonds and see how to predict the arrangement of atoms in a molecule later.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>For now, simply know that the lines are an indication of how the atoms are connected in a molecule.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>A ball-and-stick model shows the geometric arrangement of the atoms with atomic sizes not to scale, and a space-filling model shows the relative sizes of the atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>![](CNX_Chem_02_04_MethaneRep.jpg){id="CNX_Chem_02_04_MethaneRep" class="scaled-down" alt="Figure A shows C H subscript 4.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>Figure B shows a carbon atom that is bonded to four hydrogen atoms at right angles: one above, one to the left, one to the right, and one below.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>Figure C shows a 3-D, ball-and-stick model of the carbon atom bonded to four hydrogen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>Figure D shows a space-filling model of a carbon atom with hydrogen atoms partially embedded into the surface of the carbon atom."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source>*Figure 2.16: A methane molecule can be represented as (a) a molecular formula, (b) a structural formula, (c) a ball-and-stick model, and (d) a space-filling model.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>Carbon and hydrogen atoms are represented by black and white spheres, respectively.*{id="CNX_Chem_02_04_MethaneRep"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>Although many elements consist of discrete, individual atoms, some exist as molecules made up of two or more atoms of the element chemically bonded together.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>For example, most samples of the elements hydrogen, oxygen, and nitrogen are composed of molecules that contain two atoms each (called diatomic molecules) and thus have the molecular formulas H<g id="1" ctype="x-sub">2</g>, O<g id="2" ctype="x-sub">2</g>, and N<g id="3" ctype="x-sub">2</g>, respectively.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>Other elements commonly found as diatomic molecules are fluorine (F<g id="1" ctype="x-sub">2</g>), chlorine (Cl<g id="2" ctype="x-sub">2</g>), bromine (Br<g id="3" ctype="x-sub">2</g>), and iodine (I<g id="4" ctype="x-sub">2</g>).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>The most common form of the element sulfur is composed of molecules that consist of eight atoms of sulfur; its molecular formula is S<g id="1" ctype="x-sub">8</g> ([↗]{ref="CNX_Chem_02_04_Sulfur"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>![](CNX_Chem_02_04_Sulfur.jpg){id="CNX_Chem_02_04_Sulfur" class="scaled-down" alt="Figure A shows eight sulfur atoms, symbolized with the letter S, that are bonded to each other to form an octagon.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source>Figure B shows a 3-D, ball-and-stick model of the arrangement of the sulfur atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-paragraph">
+        <source>The shape is clearly not octagonal as it is represented in the structural formula.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source>Figure C is a space-filling model that shows each sulfur atom is partially embedded into the sulfur atom it bonds with."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-paragraph">
+        <source>*Figure 2.17: A molecule of sulfur is composed of eight sulfur atoms and is therefore written as S<g id="1" ctype="x-sub">8</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source>It can be represented as (a) a structural formula, (b) a ball-and-stick model, and (c) a space-filling model.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>Sulfur atoms are represented by yellow spheres.*{id="CNX_Chem_02_04_Sulfur"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source>It is important to note that a subscript following a symbol and a number in front of a symbol do not represent the same thing; for example, H<g id="1" ctype="x-sub">2</g> and 2H represent distinctly different species.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>H<g id="1" ctype="x-sub">2</g> is a molecular formula; it represents a diatomic molecule of hydrogen, consisting of two atoms of the element that are chemically bonded together.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>The expression 2H, on the other hand, indicates two separate hydrogen atoms that are not combined as a unit.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-paragraph">
+        <source>The expression 2H<g id="1" ctype="x-sub">2</g> represents two molecules of diatomic hydrogen ([↗]{ref="CNX_Chem_02_04_Hydrogen"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-paragraph">
+        <source>![](CNX_Chem_02_04_Hydrogen.jpg){id="CNX_Chem_02_04_Hydrogen" class="scaled-down" alt="This figure shows four diagrams.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>The diagram for H shows a single, white sphere and is labeled one H atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>The diagram for 2 H shows two white spheres that are not bonded together.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-paragraph">
+        <source>It is labeled 2 H atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source>The diagram for H subscript 2 shows two white spheres bonded together.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source>It is labeled one H subscript 2 molecule.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source>The diagram for 2 H subscript 2 shows two sets of bonded, white spheres.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-paragraph">
+        <source>It is labeled 2 H subscript 2 molecules."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 2.18: The symbols H, 2H, H<g id="2" ctype="x-sub">2</g>, and 2H<g id="3" ctype="x-sub">2</g> represent very different entities.</g>{id="CNX_Chem_02_04_Hydrogen"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-paragraph">
+        <source>Compounds are formed when two or more elements chemically combine, resulting in the formation of bonds.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-paragraph">
+        <source>For example, hydrogen and oxygen can react to form water, and sodium and chlorine can react to form table salt.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-paragraph">
+        <source>We sometimes describe the composition of these compounds with an <g id="1" ctype="x-bold">empirical formula</g>{id="term-00003"}, which indicates the types of atoms present and <g id="2" ctype="x-italic">the simplest whole-number ratio of the number of atoms (or ions) in the compound</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-paragraph">
+        <source>For example, titanium dioxide (used as pigment in white paint and in the thick, white, blocking type of sunscreen) has an empirical formula of TiO<g id="1" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-paragraph">
+        <source>This identifies the elements titanium (Ti) and oxygen (O) as the constituents of titanium dioxide, and indicates the presence of twice as many atoms of the element oxygen as atoms of the element titanium ([↗]{ref="CNX_Chem_02_04_TiO2"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-paragraph">
+        <source>![](CNX_Chem_02_04_TiO2.jpg){id="CNX_Chem_02_04_TiO2" class="scaled-down" alt="Figure A shows a photo of a person applying suntan lotion to his or her lower leg.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-paragraph">
+        <source>Figure B shows a 3-D ball-and-stick model of the molecule titanium dioxide, which involves a complicated interlocking of many titanium and oxygen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-paragraph">
+        <source>The titanium atoms in the molecule are shown as silver spheres and the oxygen atoms are shown as red spheres.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-paragraph">
+        <source>There are twice as many oxygen atoms as titanium atoms in the molecule."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-paragraph">
+        <source>*Figure 2.19: (a) The white compound titanium dioxide provides effective protection from the sun. (b) A crystal of titanium dioxide, TiO<g id="1" ctype="x-sub">2</g>, contains titanium and oxygen in a ratio of 1 to 2.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-paragraph">
+        <source>The titanium atoms are gray and the oxygen atoms are red. (credit a: modification of work by “osseous”/Flickr)*{id="CNX_Chem_02_04_TiO2"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-paragraph">
+        <source>As discussed previously, we can describe a compound with a molecular formula, in which the subscripts indicate the <g id="1" ctype="x-italic">actual numbers of atoms</g> of each element in a molecule of the compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-paragraph">
+        <source>In many cases, the molecular formula of a substance is derived from experimental determination of both its empirical formula and its <g id="1" ctype="x-bold">molecular mass</g> (the sum of atomic masses for all atoms composing the molecule).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-paragraph">
+        <source>For example, it can be determined experimentally that benzene contains two elements, carbon (C) and hydrogen (H), and that for every carbon atom in benzene, there is one hydrogen atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-paragraph">
+        <source>Thus, the empirical formula is CH.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-paragraph">
+        <source>An experimental determination of the molecular mass reveals that a molecule of benzene contains six carbon atoms and six hydrogen atoms, so the molecular formula for benzene is C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">6</g> ([↗]{ref="CNX_Chem_02_04_Benzene"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-paragraph">
+        <source>![](CNX_Chem_02_04_Benzene.jpg){id="CNX_Chem_02_04_Benzene" alt="Figure A shows that benzene is composed of six carbons shaped like a hexagon.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-paragraph">
+        <source>Every other bond between the carbon atoms is a double bond.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-paragraph">
+        <source>Each carbon also has a single bonded hydrogen atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-paragraph">
+        <source>Figure B shows a 3-D, ball-and-stick drawing of benzene.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-paragraph">
+        <source>The six carbon atoms are black spheres while the six hydrogen atoms are smaller, white spheres.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-paragraph">
+        <source>Figure C is a space-filling model of benzene which shows that most of the interior space is occupied by the carbon atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-paragraph">
+        <source>The hydrogen atoms are embedded in the outside surface of the carbon atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-paragraph">
+        <source>Figure d shows a small vial filled with benzene which appears to be clear."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-paragraph">
+        <source>*Figure 2.20: Benzene, C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">6</g>, is produced during oil refining and has many industrial uses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-paragraph">
+        <source>A benzene molecule can be represented as (a) a structural formula, (b) a ball-and-stick model, and (c) a space-filling model. (d) Benzene is a clear liquid. (credit d: modification of work by Sahar Atwa)*{id="CNX_Chem_02_04_Benzene"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-paragraph">
+        <source>If we know a compound’s formula, we can easily determine the empirical formula. (This is somewhat of an academic exercise; the reverse chronology is generally followed in actual practice.) For example, the molecular formula for acetic acid, the component that gives vinegar its sharp taste, is C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">4</g>O<g id="3" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-paragraph">
+        <source>This formula indicates that a molecule of acetic acid ([↗]{ref="CNX_Chem_02_04_AceticAcid"}) contains two carbon atoms, four hydrogen atoms, and two oxygen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-paragraph">
+        <source>The ratio of atoms is 2:4:2.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-paragraph">
+        <source>Dividing by the lowest common denominator (2) gives the simplest, whole-number ratio of atoms, 1:2:1, so the empirical formula is CH<g id="1" ctype="x-sub">2</g>O.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-paragraph">
+        <source>Note that a molecular formula is always a whole-number multiple of an empirical formula.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-paragraph">
+        <source>![](CNX_Chem_02_04_AceticAcid.jpg){id="CNX_Chem_02_04_AceticAcid" class="scaled-down" alt="Figure A shows a jug of distilled, white vinegar.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-paragraph">
+        <source>Figure B shows a structural formula for acetic acid which contains two carbon atoms connected by a single bond.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-paragraph">
+        <source>The left carbon atom forms single bonds with three hydrogen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-paragraph">
+        <source>The right carbon atom forms a double bond with an oxygen atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-paragraph">
+        <source>The right carbon atom also forms a single bond with an oxygen atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-paragraph">
+        <source>This oxygen forms a single bond with a hydrogen atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-paragraph">
+        <source>Figure C shows a 3-D ball-and-stick model of acetic acid."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-paragraph">
+        <source>*Figure 2.21: (a) Vinegar contains acetic acid, C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">4</g>O<g id="3" ctype="x-sub">2</g>, which has an empirical formula of CH<g id="4" ctype="x-sub">2</g>O.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-paragraph">
+        <source>It can be represented as (b) a structural formula and (c) as a ball-and-stick model. (credit a: modification of work by “HomeSpot HQ”/Flickr)*{id="CNX_Chem_02_04_AceticAcid"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-paragraph">
+        <source>Empirical and Molecular Formulas Molecules of glucose (blood sugar) contain 6 carbon atoms, 12 hydrogen atoms, and 6 oxygen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-paragraph">
+        <source>What are the molecular and empirical formulas of glucose?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-paragraph">
+        <source>Solution The molecular formula is C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">12</g>O<g id="3" ctype="x-sub">6</g> because one molecule actually contains 6 C, 12 H, and 6 O atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-paragraph">
+        <source>The simplest whole-number ratio of C to H to O atoms in glucose is 1:2:1, so the empirical formula is CH<g id="1" ctype="x-sub">2</g>O.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-paragraph">
+        <source>Check Your Learning A molecule of metaldehyde (a pesticide used for snails and slugs) contains 8 carbon atoms, 16 hydrogen atoms, and 4 oxygen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-paragraph">
+        <source>What are the molecular and empirical formulas of metaldehyde?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-paragraph">
+        <source>Molecular formula, C<g id="1" ctype="x-sub">8</g>H<g id="2" ctype="x-sub">16</g>O<g id="3" ctype="x-sub">4</g>; empirical formula, C<g id="4" ctype="x-sub">2</g>H<g id="5" ctype="x-sub">4</g>O</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-paragraph">
+        <source>Molecular formula, C<g id="1" ctype="x-sub">8</g>H<g id="2" ctype="x-sub">16</g>O<g id="3" ctype="x-sub">4</g>; empirical formula, C<g id="4" ctype="x-sub">2</g>H<g id="5" ctype="x-sub">4</g>O</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-paragraph">
+        <source>:::link-to-material You can explore [molecule building]{url="http://openstax.org/l/16molbuilding"} using an online simulation.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-paragraph">
+        <source>You can explore [molecule building]{url="http://openstax.org/l/16molbuilding"} using an online simulation.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-subsection-title">
+        <source>Paula Hammond</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-97" restype="x-paragraph">
+        <source>You’ve learned about the evolution of atomic theory, and you’ve started to explore different chemical structures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-98" restype="x-paragraph">
+        <source>These structures result in molecules attracting or repelling each other, or help them arrange into our cell membranes or lead them to either spread into thin films or clump into solid masses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-99" restype="x-paragraph">
+        <source>What do these structures mean to scientists, and to us?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-100" restype="x-paragraph">
+        <source>Essentially, everything.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-101" restype="x-paragraph">
+        <source>It’s the structure and makeup of a molecule on a virus surface that allows it to attach to one of our cells, and it’s the structure and makeup of antibodies—substances created by our immune system—that block that attachment.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-102" restype="x-paragraph">
+        <source>Chlorophyll’s structure enables it to use the sun’s energy to make glucose.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-103" restype="x-paragraph">
+        <source>Chemists and chemical engineers don’t simply observe and understand these structures—they can create new ones.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-104" restype="x-paragraph">
+        <source>Paula Hammond does exactly that to solve challenging problems ranging from cancer to energy consumption.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-105" restype="x-paragraph">
+        <source>She is the chair of the department of chemical engineering at Massachusetts Institute of Technology, and leads a research team focused on assembling unique molecular structures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-106" restype="x-paragraph">
+        <source>They have created cancer drug carriers—nanoparticle-sized coatings that enable medicines to travel into tumors without being affected by its defenses—that can deliver pharmaceuticals directly into cancerous tumors.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-107" restype="x-paragraph">
+        <source>They build these “stealth” molecules layer by layer; using certain properties of electricity and chemical behavior, they can “tune” the coatings to address particular cancers and other variables.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-108" restype="x-paragraph">
+        <source>This precision approach is necessary to treat cancers more effectively and with less harm to the patient.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-109" restype="x-paragraph">
+        <source>The company Hammond founded uses similar technology to release medication into cataract patients’ eyes, as well as to improve wound healing.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-110" restype="x-paragraph">
+        <source>While Hammond’s research team is composed of established and leading experts such as herself, students certainly play a role.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-111" restype="x-paragraph">
+        <source>College research labs are typically full of PhD, graduate, and even undergraduate students who participate in the work.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-112" restype="x-paragraph">
+        <source>And thus chemists and chemical engineers who use their knowledge to solve problems are also supporting the next generation of creators and problem-solvers.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-113" restype="x-paragraph">
+        <source>You’ve learned about the evolution of atomic theory, and you’ve started to explore different chemical structures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-114" restype="x-paragraph">
+        <source>These structures result in molecules attracting or repelling each other, or help them arrange into our cell membranes or lead them to either spread into thin films or clump into solid masses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-115" restype="x-paragraph">
+        <source>What do these structures mean to scientists, and to us?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-116" restype="x-paragraph">
+        <source>Essentially, everything.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-117" restype="x-paragraph">
+        <source>It’s the structure and makeup of a molecule on a virus surface that allows it to attach to one of our cells, and it’s the structure and makeup of antibodies—substances created by our immune system—that block that attachment.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-118" restype="x-paragraph">
+        <source>Chlorophyll’s structure enables it to use the sun’s energy to make glucose.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-119" restype="x-paragraph">
+        <source>Chemists and chemical engineers don’t simply observe and understand these structures—they can create new ones.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-120" restype="x-paragraph">
+        <source>![](CNX_Chem_02_04_PaulaHammond.jpg){id="CNX_Chem_02_04_PaulaHammond" alt="A portrait of Paula Hammond."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-121" restype="x-paragraph">
+        <source>*Figure 2.22: Paula Hammond pioneered new techniques to precisely formulate chemical structures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-122" restype="x-paragraph">
+        <source>Hammond’s work applies to cancer treatments, wound healing, cataract medicine, and fuel cells.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-123" restype="x-paragraph">
+        <source>Widely recognized as a leader in the field, she has won numerous awards and has been elected to various prestigious positions and fellowships by her peers and the U.S. government.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-124" restype="x-paragraph">
+        <source>She chairs the chemical engineering department at MIT, which is usually ranked as one of the best engineering and science institutions in the world. (credit: modification of work by The White House)*{id="CNX_Chem_02_04_PaulaHammond"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-125" restype="x-paragraph">
+        <source>Paula Hammond does exactly that to solve challenging problems ranging from cancer to energy consumption.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-126" restype="x-paragraph">
+        <source>She is the chair of the department of chemical engineering at Massachusetts Institute of Technology, and leads a research team focused on assembling unique molecular structures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-127" restype="x-paragraph">
+        <source>They have created cancer drug carriers—nanoparticle-sized coatings that enable medicines to travel into tumors without being affected by its defenses—that can deliver pharmaceuticals directly into cancerous tumors.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-128" restype="x-paragraph">
+        <source>They build these “stealth” molecules layer by layer; using certain properties of electricity and chemical behavior, they can “tune” the coatings to address particular cancers and other variables.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-129" restype="x-paragraph">
+        <source>This precision approach is necessary to treat cancers more effectively and with less harm to the patient.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-130" restype="x-paragraph">
+        <source>The company Hammond founded uses similar technology to release medication into cataract patients’ eyes, as well as to improve wound healing.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-131" restype="x-paragraph">
+        <source>While Hammond’s research team is composed of established and leading experts such as herself, students certainly play a role.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-132" restype="x-paragraph">
+        <source>College research labs are typically full of PhD, graduate, and even undergraduate students who participate in the work.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-133" restype="x-paragraph">
+        <source>And thus chemists and chemical engineers who use their knowledge to solve problems are also supporting the next generation of creators and problem-solvers.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-134" restype="x-paragraph">
+        <source>It is important to be aware that it may be possible for the same atoms to be arranged in different ways: Compounds with the same molecular formula may have different atom-to-atom bonding and therefore different structures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-135" restype="x-paragraph">
+        <source>For example, could there be another compound with the same formula as acetic acid, C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">4</g>O<g id="3" ctype="x-sub">2</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-136" restype="x-paragraph">
+        <source>And if so, what would be the structure of its molecules?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-137" restype="x-paragraph">
+        <source>If you predict that another compound with the formula C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">4</g>O<g id="3" ctype="x-sub">2</g> could exist, then you demonstrated good chemical insight and are correct.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-138" restype="x-paragraph">
+        <source>Two C atoms, four H atoms, and two O atoms can also be arranged to form a methyl formate, which is used in manufacturing, as an insecticide, and for quick-drying finishes.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-139" restype="x-paragraph">
+        <source>Methyl formate molecules have one of the oxygen atoms between the two carbon atoms, differing from the arrangement in acetic acid molecules.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-140" restype="x-paragraph">
+        <source>Acetic acid and methyl formate are examples of <g id="1" ctype="x-bold">isomers</g>{id="term-00006"}—compounds with the same chemical formula but different molecular structures ([↗]{ref="CNX_Chem_02_04_Isomers"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-141" restype="x-paragraph">
+        <source>Note that this small difference in the arrangement of the atoms has a major effect on their respective chemical properties.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-142" restype="x-paragraph">
+        <source>You would certainly not want to use a solution of methyl formate as a substitute for a solution of acetic acid (vinegar) when you make salad dressing.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-143" restype="x-paragraph">
+        <source>![](CNX_Chem_02_04_Isomers.jpg){id="CNX_Chem_02_04_Isomers" class="scaled-down" alt="Figure A shows a structural diagram of acetic acid, C subscript 2 H subscript 4 O subscript 2.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-144" restype="x-paragraph">
+        <source>Acetic acid contains two carbon atoms connected by a single bond.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-145" restype="x-paragraph">
+        <source>The left carbon atom forms single bonds with three hydrogen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-146" restype="x-paragraph">
+        <source>The carbon on the right forms a double bond with an oxygen atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-147" restype="x-paragraph">
+        <source>The right carbon atom also forms a single bond to an oxygen atom which forms a single bond with a hydrogen atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-148" restype="x-paragraph">
+        <source>Figure B shows a structural diagram of methyl formate, C subscript 2 H subscript 4 O subscript 2.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-149" restype="x-paragraph">
+        <source>This molecule contains a carbon atom which forms single bonds with three hydrogen atoms, and a single bond with an oxygen atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-150" restype="x-paragraph">
+        <source>The oxygen atom forms a single bond with another carbon atom which forms a double bond with another oxygen atom and a single bond with a hydrogen atom."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-151" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 2.23: Molecules of (a) acetic acid and methyl formate (b) are structural isomers; they have the same formula (C<g id="2" ctype="x-sub">2</g>H<g id="3" ctype="x-sub">4</g>O<g id="4" ctype="x-sub">2</g>) but different structures (and therefore different chemical properties).</g>{id="CNX_Chem_02_04_Isomers"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-152" restype="x-paragraph">
+        <source>Many types of isomers exist ([↗]{ref="CNX_Chem_02_04_Isomers2"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-153" restype="x-paragraph">
+        <source>Acetic acid and methyl formate are <g id="1" ctype="x-bold">structural isomers</g>{id="term-00007"}, compounds in which the molecules differ in how the atoms are connected to each other.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-154" restype="x-paragraph">
+        <source>There are also various types of <g id="1" ctype="x-bold">spatial isomers</g>{id="term-00008"}, in which the relative orientations of the atoms in space can be different.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-155" restype="x-paragraph">
+        <source>For example, the compound carvone (found in caraway seeds, spearmint, and mandarin orange peels) consists of two isomers that are mirror images of each other. <g id="1" ctype="x-italic">S</g>-(+)-carvone smells like caraway, and <g id="2" ctype="x-italic">R</g>-(−)-carvone smells like spearmint.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-156" restype="x-paragraph">
+        <source>![](CNX_Chem_02_04_Isomers2.jpg){id="CNX_Chem_02_04_Isomers2" alt="The top left portion of this 2 row, 4 column figure shows a structural diagram of positive carvone, C subscript 10 H subscript 14 O.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-157" restype="x-paragraph">
+        <source>This molecule has a carbon atom which forms a double bond with a C H subscript 2 group and a C H subscript 3 group.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-158" restype="x-paragraph">
+        <source>The carbon atom also forms a single bond with another carbon atom which is part of a ring.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-159" restype="x-paragraph">
+        <source>This carbon atom, being part of the ring, forms single bonds with a hydrogen atom, a C H subscript 2 group, and a C H subscript 2 group.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-160" restype="x-paragraph">
+        <source>The first C H subscript two group forms a single bond with C H which forms a double bond with a carbon atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-161" restype="x-paragraph">
+        <source>This carbon atom forms a single bond with a C H subscript 3 group.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-162" restype="x-paragraph">
+        <source>The carbon atom forming part of the ring forms a single bond with a carbon atom which forms a double bond with an oxygen atom and a single bond with a C H subscript 2 group to complete the ring.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-163" restype="x-paragraph">
+        <source>Below the structural diagram of carvone is a photo of caraway seeds.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-164" restype="x-paragraph">
+        <source>Column 2 contains identical ball and stick representations of the structural diagram in the top left position.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-165" restype="x-paragraph">
+        <source>The top right portions of these images each contains the letter “S” and there is an arrow pointing downward from the top image to the bottom image.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-166" restype="x-paragraph">
+        <source>Columns 3 and 4 are representations of negative carvone.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-167" restype="x-paragraph">
+        <source>The top row in column three depicts a mirrored image of the ball and stick structure to its left, reflected across the y axis.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-168" restype="x-paragraph">
+        <source>There is a downward pointing arrow to the image below, which is the same structure rotated counter clockwise 180 degrees.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-169" restype="x-paragraph">
+        <source>Both images in column 3 have an “R” in the top right corner.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-170" restype="x-paragraph">
+        <source>The image in the first row of column 4 is the same as the lewis structure in the first row of column 1, reflected across the y axis.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-171" restype="x-paragraph">
+        <source>Below this negative carvone structural diagram is a photo of spearmint leaves."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-172" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 2.24: Molecules of carvone are spatial isomers; they only differ in the relative orientations of the atoms in space. (credit bottom left: modification of work by “Miansari66”/Wikimedia Commons; credit bottom right: modification of work by Forest &amp;amp; Kim Starr)</g>{id="CNX_Chem_02_04_Isomers2"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-173" restype="x-paragraph">
+        <source>:::link-to-material Select this [link]{url="http://openstax.org/l/16isomers"} to view an explanation of isomers, spatial isomers, and why they have different smells (select the video titled “Mirror Molecule: Carvone”).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-174" restype="x-paragraph">
+        <source>Select this [link]{url="http://openstax.org/l/16isomers"} to view an explanation of isomers, spatial isomers, and why they have different smells (select the video titled “Mirror Molecule: Carvone”).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-175" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-176" restype="x-paragraph">
+        <source>A molecular formula uses chemical symbols and subscripts to indicate the exact numbers of different atoms in a molecule or compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-177" restype="x-paragraph">
+        <source>An empirical formula gives the simplest, whole-number ratio of atoms in a compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-178" restype="x-paragraph">
+        <source>A structural formula indicates the bonding arrangement of the atoms in the molecule.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-179" restype="x-paragraph">
+        <source>Ball-and-stick and space-filling models show the geometric arrangement of atoms in a molecule.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-180" restype="x-paragraph">
+        <source>Isomers are compounds with the same molecular formula but different arrangements of atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-181" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-182" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm188711792} Explain why the symbol for an atom of the element oxygen and the formula for a molecule of oxygen differ.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-183" restype="x-paragraph">
+        <source>:::answer The symbol for the element oxygen, O, represents both the element and one atom of oxygen.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-184" restype="x-paragraph">
+        <source>A molecule of oxygen, O<g id="1" ctype="x-sub">2</g>, contains two oxygen atoms; the subscript 2 in the formula must be used to distinguish the diatomic molecule from two single oxygen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-185" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm171756048} Explain why the symbol for the element sulfur and the formula for a molecule of sulfur differ.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-186" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm157365408} Write the molecular and empirical formulas of the following compounds:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-187" restype="x-paragraph">
+        <source>(a) (b) (c) (d)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-188" restype="x-paragraph">
+        <source>:::answer (a) molecular CO<g id="1" ctype="x-sub">2</g>, empirical CO<g id="2" ctype="x-sub">2</g>; (b) molecular C<g id="3" ctype="x-sub">2</g>H<g id="4" ctype="x-sub">2</g>, empirical CH; (c) molecular C<g id="5" ctype="x-sub">2</g>H<g id="6" ctype="x-sub">4</g>, empirical CH<g id="7" ctype="x-sub">2</g>; (d) molecular H<g id="8" ctype="x-sub">2</g>SO<g id="9" ctype="x-sub">4</g>, empirical H<g id="10" ctype="x-sub">2</g>SO<g id="11" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-189" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp231487264} Write the molecular and empirical formulas of the following compounds:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-190" restype="x-paragraph">
+        <source>(a) (b) (c) (d)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-191" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm64843712} Determine the empirical formulas for the following compounds:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-192" restype="x-paragraph">
+        <source>(a) caffeine, C<g id="1" ctype="x-sub">8</g>H<g id="2" ctype="x-sub">10</g>N<g id="3" ctype="x-sub">4</g>O<g id="4" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-193" restype="x-paragraph">
+        <source>(b) sucrose, C<g id="1" ctype="x-sub">12</g>H<g id="2" ctype="x-sub">22</g>O<g id="3" ctype="x-sub">11</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-194" restype="x-paragraph">
+        <source>(c) hydrogen peroxide, H<g id="1" ctype="x-sub">2</g>O<g id="2" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-195" restype="x-paragraph">
+        <source>(d) glucose, C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">12</g>O<g id="3" ctype="x-sub">6</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-196" restype="x-paragraph">
+        <source>(e) ascorbic acid (vitamin C), C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">8</g>O<g id="3" ctype="x-sub">6</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-197" restype="x-paragraph">
+        <source>:::answer (a) C<g id="1" ctype="x-sub">4</g>H<g id="2" ctype="x-sub">5</g>N<g id="3" ctype="x-sub">2</g>O; (b) C<g id="4" ctype="x-sub">12</g>H<g id="5" ctype="x-sub">22</g>O<g id="6" ctype="x-sub">11</g>; (c) HO; (d) CH<g id="7" ctype="x-sub">2</g>O; (e) C<g id="8" ctype="x-sub">3</g>H<g id="9" ctype="x-sub">4</g>O<g id="10" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-198" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp33519568} Determine the empirical formulas for the following compounds:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-199" restype="x-paragraph">
+        <source>(a) acetic acid, C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">4</g>O<g id="3" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-200" restype="x-paragraph">
+        <source>(b) citric acid, C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">8</g>O<g id="3" ctype="x-sub">7</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-201" restype="x-paragraph">
+        <source>(c) hydrazine, N<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-202" restype="x-paragraph">
+        <source>(d) nicotine, C<g id="1" ctype="x-sub">10</g>H<g id="2" ctype="x-sub">14</g>N<g id="3" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-203" restype="x-paragraph">
+        <source>(e) butane, C<g id="1" ctype="x-sub">4</g>H<g id="2" ctype="x-sub">10</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-204" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp2601824} Write the empirical formulas for the following compounds:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-205" restype="x-paragraph">
+        <source>(a) (b)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-206" restype="x-paragraph">
+        <source>:::answer (a) CH<g id="1" ctype="x-sub">2</g>O; (b) C<g id="2" ctype="x-sub">2</g>H<g id="3" ctype="x-sub">4</g>O</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-207" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm75792016} Open the [Build a Molecule simulation]{url="http://openstax.org/l/16molbuilding"} and select the “Larger Molecules” tab.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-208" restype="x-paragraph">
+        <source>Select an appropriate atom’s “Kit” to build a molecule with two carbon and six hydrogen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-209" restype="x-paragraph">
+        <source>Drag atoms into the space above the “Kit” to make a molecule.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-210" restype="x-paragraph">
+        <source>A name will appear when you have made an actual molecule that exists (even if it is not the one you want).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-211" restype="x-paragraph">
+        <source>You can use the scissors tool to separate atoms if you would like to change the connections.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-212" restype="x-paragraph">
+        <source>Click on “3D” to see the molecule, and look at both the space-filling and ball-and-stick possibilities.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-213" restype="x-paragraph">
+        <source>(a) Draw the structural formula of this molecule and state its name.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-214" restype="x-paragraph">
+        <source>(b) Can you arrange these atoms in any way to make a different compound?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-215" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm57514192} Use the [Build a Molecule simulation]{url="http://openstax.org/l/16molbuilding"} to repeat [↗]{ref="fs-idm75792016"}, but build a molecule with two carbons, six hydrogens, and one oxygen.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-216" restype="x-paragraph">
+        <source>(a) Draw the structural formula of this molecule and state its name.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-217" restype="x-paragraph">
+        <source>(b) Can you arrange these atoms to make a different molecule?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-218" restype="x-paragraph">
+        <source>If so, draw its structural formula and state its name.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-219" restype="x-paragraph">
+        <source>(c) How are the molecules drawn in (a) and (b) the same?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-220" restype="x-paragraph">
+        <source>How do they differ?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-221" restype="x-paragraph">
+        <source>What are they called (the type of relationship between these molecules, not their names).?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-222" restype="x-paragraph">
+        <source>:::answer (a) ethanol</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-223" restype="x-paragraph">
+        <source>(b) methoxymethane, more commonly known as dimethyl ether</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-224" restype="x-paragraph">
+        <source>(c) These molecules have the same chemical composition (types and number of atoms) but different chemical structures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-225" restype="x-paragraph">
+        <source>They are structural isomers.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-226" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm80750976} Use the [Build a Molecule simulation]{url="http://openstax.org/l/16molbuilding"} to repeat [↗]{ref="fs-idm75792016"}, but build a molecule with three carbons, seven hydrogens, and one chlorine.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-227" restype="x-paragraph">
+        <source>(a) Draw the structural formula of this molecule and state its name.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-228" restype="x-paragraph">
+        <source>(b) Can you arrange these atoms to make a different molecule?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-229" restype="x-paragraph">
+        <source>If so, draw its structural formula and state its name.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-230" restype="x-paragraph">
+        <source>(c) How are the molecules drawn in (a) and (b) the same?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-231" restype="x-paragraph">
+        <source>How do they differ?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-232" restype="x-paragraph">
+        <source>What are they called (the type of relationship between these molecules, not their names)?</source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

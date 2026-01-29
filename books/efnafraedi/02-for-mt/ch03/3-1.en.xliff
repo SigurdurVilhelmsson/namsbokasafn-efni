@@ -1,0 +1,1884 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68700" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Formula Mass and the Mole Concept</note>
+      <note>Section: 3.1</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Formula Mass and the Mole Concept</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Calculate formula masses for covalent and ionic compounds</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Define the amount unit mole and the related quantity Avogadro’s number</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-list-item">
+        <source>Explain the relation between mass, moles, and numbers of atoms or molecules, and perform calculations deriving these quantities from one another</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-paragraph">
+        <source>Many argue that modern chemical science began when scientists started exploring the quantitative as well as the qualitative aspects of chemistry.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>For example, Dalton’s atomic theory was an attempt to explain the results of measurements that allowed him to calculate the relative masses of elements combined in various compounds.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>Understanding the relationship between the masses of atoms and the chemical formulas of compounds allows us to quantitatively describe the composition of substances.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-section-title">
+        <source>Formula Mass</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>An earlier chapter of this text described the development of the atomic mass unit, the concept of average atomic masses, and the use of chemical formulas to represent the elemental makeup of substances.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>These ideas can be extended to calculate the <g id="1" ctype="x-bold">formula mass</g>{id="term-00001"} of a substance by summing the average atomic masses of all the atoms represented in the substance’s formula.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>For covalent substances, the formula represents the numbers and types of atoms composing a single molecule of the substance; therefore, the formula mass may be correctly referred to as a molecular mass.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>Consider chloroform (CHCl<g id="1" ctype="x-sub">3</g>), a covalent compound once used as a surgical anesthetic and now primarily used in the production of tetrafluoroethylene, the building block for the "anti-stick" polymer, Teflon.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>The molecular formula of chloroform indicates that a single molecule contains one carbon atom, one hydrogen atom, and three chlorine atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source>The average molecular mass of a chloroform molecule is therefore equal to the sum of the average atomic masses of these atoms. [↗]{ref="CNX_Chem_03_01_chloroform"} outlines the calculations used to derive the molecular mass of chloroform, which is 119.37 amu.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>![](CNX_Chem_03_01_chloroform.jpg){id="CNX_Chem_03_01_chloroform" alt="A table and diagram are shown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>The table is made up of six columns and five rows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “C l” and a blank, merged cell that runs the width of the first five columns.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>The second column contains the numbers “1,” “1,” and “3” as well as the merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>The third column contains the multiplication symbol in each cell except for the last, merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>The fourth column contains the numbers “12.01,” “1.008,” and “35.45” as well as the merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source>The fifth column contains the symbol “=” in each cell except for the last, merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-paragraph">
+        <source>The sixth column contains the values “12.01,” “1.008,” “106.35,” and “119.37.” There is a thick black line below the number 106.35.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source>The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-paragraph">
+        <source>Three green spheres are attached to a slightly smaller black sphere, which is also attached to a smaller white sphere.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source>The green spheres lie beneath and to the sides of the black sphere while the white sphere is located straight up from the black sphere."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>*Figure 3.2: The average mass of a chloroform molecule, CHCl<g id="1" ctype="x-sub">3</g>, is 119.37 amu, which is the sum of the average atomic masses of each of its constituent atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source>The model shows the molecular structure of chloroform.*{id="CNX_Chem_03_01_chloroform"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>Likewise, the molecular mass of an aspirin molecule, C<g id="1" ctype="x-sub">9</g>H<g id="2" ctype="x-sub">8</g>O<g id="3" ctype="x-sub">4</g>, is the sum of the atomic masses of nine carbon atoms, eight hydrogen atoms, and four oxygen atoms, which amounts to 180.15 amu ([↗]{ref="CNX_Chem_03_01_aspirin"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>![](CNX_Chem_03_01_aspirin.jpg){id="CNX_Chem_03_01_aspirin" alt="A table and diagram are shown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-paragraph">
+        <source>The table is made up of six columns and five rows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-paragraph">
+        <source>The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” and a merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>The merged cell runs the length of the first five columns.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>The second column contains the numbers “9,” “8,” and “4” as well as the merged, cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-paragraph">
+        <source>The third column contains the multiplication symbol in each cell except for the last, merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source>The fourth column contains the numbers “12.01,” “1.008,” and “16.00” as well as the merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source>The fifth column contains the symbol “=” in each cell except for the last, merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source>The sixth column contains the values: “108.09,” “8.064,” “64.00,” and “180.15.” There is a thick black line below the number 64.00.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-paragraph">
+        <source>The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source>Six black spheres are located in a six-sided ring and connected by alternating double and single black bonds.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-paragraph">
+        <source>Attached to each of the four black spheres is one smaller white sphere.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-paragraph">
+        <source>Attached to the farthest right black sphere is a red sphere, connected to two more black spheres, all in a row.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-paragraph">
+        <source>Attached to the last black sphere of that row are two more white spheres.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-paragraph">
+        <source>Attached to the first black sphere of that row is another red sphere.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-paragraph">
+        <source>A black sphere, attached to two red spheres and a white sphere is attached to the black sphere on the top right of the six-sided ring."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-paragraph">
+        <source>*Figure 3.3: The average mass of an aspirin molecule is 180.15 amu.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-paragraph">
+        <source>The model shows the molecular structure of aspirin, C<g id="1" ctype="x-sub">9</g>H<g id="2" ctype="x-sub">8</g>O<g id="3" ctype="x-sub">4</g>.*{id="CNX_Chem_03_01_aspirin"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-example-subsection-title">
+        <source>Example 3.1: Computing Molecular Mass for a Covalent Compound</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-example-paragraph">
+        <source>Ibuprofen, C<g id="1" ctype="x-sub">13</g>H<g id="2" ctype="x-sub">18</g>O<g id="3" ctype="x-sub">2</g>, is a covalent compound and the active ingredient in several popular nonprescription pain medications, such as Advil and Motrin.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-example-paragraph">
+        <source>What is the molecular mass (amu) for this compound?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-example-paragraph">
+        <source>Molecules of this compound are composed of 13 carbon atoms, 18 hydrogen atoms, and 2 oxygen atoms.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-example-paragraph">
+        <source>Following the approach described above, the average molecular mass for this compound is therefore:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-example-paragraph">
+        <source>Acetaminophen, C<g id="1" ctype="x-sub">8</g>H<g id="2" ctype="x-sub">9</g>NO<g id="3" ctype="x-sub">2</g>, is a covalent compound and the active ingredient in several popular nonprescription pain medications, such as Tylenol.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-example-paragraph">
+        <source>What is the molecular mass (amu) for this compound?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-example-paragraph">
+        <source>151.16 amu</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-paragraph">
+        <source>151.16 amu</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-section-title">
+        <source>Formula Mass for Ionic Compounds</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-paragraph">
+        <source>Ionic compounds are composed of discrete cations and anions combined in ratios to yield electrically neutral bulk matter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-paragraph">
+        <source>The formula mass for an ionic compound is calculated in the same way as the formula mass for covalent compounds: by summing the average atomic masses of all the atoms in the compound’s formula.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-paragraph">
+        <source>Keep in mind, however, that the formula for an ionic compound does not represent the composition of a discrete molecule, so it may not correctly be referred to as the “molecular mass.”</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-paragraph">
+        <source>As an example, consider sodium chloride, NaCl, the chemical name for common table salt.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-paragraph">
+        <source>Sodium chloride is an ionic compound composed of sodium cations, Na<g id="1" ctype="x-sup">+</g>, and chloride anions, Cl<g id="2" ctype="x-sup">−</g>, combined in a 1:1 ratio.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-paragraph">
+        <source>The formula mass for this compound is computed as 58.44 amu (see [↗]{ref="CNX_Chem_03_01_saltMass"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-paragraph">
+        <source>![](CNX_Chem_03_01_saltMass.jpg){id="CNX_Chem_03_01_saltMass" alt="A table and diagram are shown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-paragraph">
+        <source>The table is made up of six columns and four rows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-paragraph">
+        <source>The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space and “Subtotal (a m u).” The first column contains the symbols “N a”, “C l,” and a merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-paragraph">
+        <source>The merged cell runs the length of the first five columns.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-paragraph">
+        <source>The second column contains the numbers “1” and “1” as well as the merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-paragraph">
+        <source>The third column contains the multiplication symbol in each cell except for the last, merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-paragraph">
+        <source>The fourth column contains the numbers “22.99” and “35.45” as well as the merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-paragraph">
+        <source>The fifth column contains the symbol “=” in each cell except for the last, merged cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-paragraph">
+        <source>The sixth column contains the values “22.99,” “35.45,” and “58.44.” There is a thick black line below the number “35.45.” The merged cell under the first five columns reads “Formula mass.” To the left of the table is a diagram of a chemical structure.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-paragraph">
+        <source>The diagram shows green and purple spheres placed in an alternating pattern, making up the corners of eight stacked cubes to form one larger cube.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-paragraph">
+        <source>The green spheres are slightly smaller than the purple spheres."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-paragraph">
+        <source>*Figure 3.4: Table salt, NaCl, contains an array of sodium and chloride ions combined in a 1:1 ratio.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-paragraph">
+        <source>Its formula mass is 58.44 amu.*{id="CNX_Chem_03_01_saltMass"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-paragraph">
+        <source>Note that the average masses of neutral sodium and chlorine atoms were used in this computation, rather than the masses for sodium cations and chlorine anions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-paragraph">
+        <source>This approach is perfectly acceptable when computing the formula mass of an ionic compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-paragraph">
+        <source>Even though a sodium cation has a slightly smaller mass than a sodium atom (since it is missing an electron), this difference will be offset by the fact that a chloride anion is slightly more massive than a chloride atom (due to the extra electron).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-paragraph">
+        <source>Moreover, the mass of an electron is negligibly small with respect to the mass of a typical atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-paragraph">
+        <source>Even when calculating the mass of an isolated ion, the missing or additional electrons can generally be ignored, since their contribution to the overall mass is negligible, reflected only in the nonsignificant digits that will be lost when the computed mass is properly rounded.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-paragraph">
+        <source>The few exceptions to this guideline are very light ions derived from elements with precisely known atomic masses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-example-subsection-title">
+        <source>Example 3.2: Computing Formula Mass for an Ionic Compound</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-example-paragraph">
+        <source>Aluminum sulfate, Al<g id="1" ctype="x-sub">2</g>(SO<g id="2" ctype="x-sub">4</g>)<g id="3" ctype="x-sub">3</g>, is an ionic compound that is used in the manufacture of paper and in various water purification processes.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-example-paragraph">
+        <source>What is the formula mass (amu) of this compound?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-example-paragraph">
+        <source>The formula for this compound indicates it contains Al<g id="2" ctype="x-sup">3+</g> and SO<g id="1" ctype="x-sub">4</g><g id="3" ctype="x-sup">2−</g> ions combined in a 2:3 ratio.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-example-paragraph">
+        <source>For purposes of computing a formula mass, it is helpful to rewrite the formula in the simpler format, Al<g id="1" ctype="x-sub">2</g>S<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sub">12</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-example-paragraph">
+        <source>Following the approach outlined above, the formula mass for this compound is calculated as follows:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-97" restype="x-example-paragraph">
+        <source>Calcium phosphate, Ca<g id="1" ctype="x-sub">3</g>(PO<g id="2" ctype="x-sub">4</g>)<g id="3" ctype="x-sub">2</g>, is an ionic compound and a common anti-caking agent added to food products.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-98" restype="x-example-paragraph">
+        <source>What is the formula mass (amu) of calcium phosphate?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-99" restype="x-example-paragraph">
+        <source>310.18 amu</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-100" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-101" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-102" restype="x-paragraph">
+        <source>310.18 amu</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-103" restype="x-section-title">
+        <source>The Mole</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-104" restype="x-paragraph">
+        <source>The identity of a substance is defined not only by the types of atoms or ions it contains, but by the quantity of each type of atom or ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-105" restype="x-paragraph">
+        <source>For example, water, H<g id="1" ctype="x-sub">2</g>O, and hydrogen peroxide, H<g id="2" ctype="x-sub">2</g>O<g id="3" ctype="x-sub">2</g>, are alike in that their respective molecules are composed of hydrogen and oxygen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-106" restype="x-paragraph">
+        <source>However, because a hydrogen peroxide molecule contains two oxygen atoms, as opposed to the water molecule, which has only one, the two substances exhibit very different properties.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-107" restype="x-paragraph">
+        <source>Today, sophisticated instruments allow the direct measurement of these defining microscopic traits; however, the same traits were originally derived from the measurement of macroscopic properties (the masses and volumes of bulk quantities of matter) using relatively simple tools (balances and volumetric glassware).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-108" restype="x-paragraph">
+        <source>This experimental approach required the introduction of a new unit for amount of substances, the <g id="1" ctype="x-italic">mole</g>, which remains indispensable in modern chemical science.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-109" restype="x-paragraph">
+        <source>The <g id="1" ctype="x-italic">mole</g> is an amount unit similar to familiar units like pair, dozen, gross, etc. It provides a specific measure of <g id="2" ctype="x-italic">the number</g> of atoms or molecules in a sample of matter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-110" restype="x-paragraph">
+        <source>One Latin connotation for the word “mole” is “large mass” or “bulk,” which is consistent with its use as the name for this unit.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-111" restype="x-paragraph">
+        <source>The mole provides a link between an easily measured macroscopic property, bulk mass, and an extremely important fundamental property, number of atoms, molecules, and so forth.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-112" restype="x-paragraph">
+        <source>A <g id="2" ctype="x-bold">mole</g>{id="term-00002"} of substance is that amount in which there are 6.02214076 <x id="1" equiv-text="[[EQ:8]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">23</g> discrete entities (atoms or molecules).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-113" restype="x-paragraph">
+        <source>This large number is a fundamental constant known as Avogadro’s number (N<g id="1" ctype="x-sub">A</g>) or the Avogadro constant in honor of Italian scientist Amedeo Avogadro.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-114" restype="x-paragraph">
+        <source>This constant is properly reported with an explicit unit of “per mole,” a conveniently rounded version being 6.022 <x id="1" equiv-text="[[EQ:9]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">23</g>/mol.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-115" restype="x-paragraph">
+        <source>Consistent with its definition as an amount unit, 1 mole of any element contains the same number of atoms as 1 mole of any other element.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-116" restype="x-paragraph">
+        <source>The masses of 1 mole of different elements, however, are different, since the masses of the individual atoms are drastically different.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-117" restype="x-paragraph">
+        <source>The <g id="1" ctype="x-bold">molar mass</g>{id="term-00004"} of an element (or compound) is the mass in grams of 1 mole of that substance, a property expressed in units of grams per mole (g/mol) (see [↗]{ref="CNX_Chem_03_02_moles"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-118" restype="x-paragraph">
+        <source>![](CNX_Chem_03_02_moles-6296.jpg){id="CNX_Chem_03_02_moles" class="scaled-down" alt="This figure contains eight different substances displayed on white circles.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-119" restype="x-paragraph">
+        <source>The amount of each substance is visibly different."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-120" restype="x-paragraph">
+        <source>*Figure 3.5: Each sample contains 6.022 <x id="1" equiv-text="[[EQ:10]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">23</g> atoms —1.00 mol of atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-121" restype="x-paragraph">
+        <source>From left to right (top row): 65.4 g zinc, 12.0 g carbon, 24.3 g magnesium, and 63.5 g copper.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-122" restype="x-paragraph">
+        <source>From left to right (bottom row): 32.1 g sulfur, 28.1 g silicon, 207 g lead, and 118.7 g tin. (credit: modification of work by Mark Ott)*{id="CNX_Chem_03_02_moles"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-123" restype="x-paragraph">
+        <source>The molar mass of any substance is numerically equivalent to its atomic or formula weight in amu.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-124" restype="x-paragraph">
+        <source>Per the amu definition, a single <g id="1" ctype="x-sup">12</g>C atom weighs 12 amu (its atomic mass is 12 amu).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-125" restype="x-paragraph">
+        <source>A mole of <g id="1" ctype="x-sup">12</g>C weighs 12 g (its molar mass is 12 g/mol).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-126" restype="x-paragraph">
+        <source>This relationship holds for all elements, since their atomic masses are measured relative to that of the amu-reference substance, <g id="1" ctype="x-sup">12</g>C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-127" restype="x-paragraph">
+        <source>Extending this principle, the molar mass of a compound in grams is likewise numerically equivalent to its formula mass in amu ([↗]{ref="CNX_Chem_03_02_compound"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-128" restype="x-paragraph">
+        <source>![](CNX_Chem_03_02_compound.jpg){id="CNX_Chem_03_02_compound" class="scaled-down" alt="This photo shows two vials filled with a colorless liquid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-129" restype="x-paragraph">
+        <source>It also shows two bowls: one filled with an off-white powder and one filled with a bright red powder."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-130" restype="x-paragraph">
+        <source>*Figure 3.6: Each sample contains 6.02 <x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">23</g> molecules or formula units—1.00 mol of the compound or element.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-131" restype="x-paragraph">
+        <source>Clock-wise from the upper left: 130.2 g of C<g id="1" ctype="x-sub">8</g>H<g id="2" ctype="x-sub">17</g>OH (1-octanol, formula mass 130.2 amu), 454.4 g of HgI<g id="3" ctype="x-sub">2</g> (mercury(II) iodide, formula mass 454.4 amu), 32.0 g of CH<g id="4" ctype="x-sub">3</g>OH (methanol, formula mass 32.0 amu) and 256.5 g of S<g id="5" ctype="x-sub">8</g> (sulfur, formula mass 256.5 amu). (credit: Sahar Atwa)*{id="CNX_Chem_03_02_compound"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-132" restype="x-paragraph">
+        <source>| Element | Average Atomic Mass (amu) | Molar Mass (g/mol) | Atoms/Mole | | :--- | :--- | :--- | :--- | | C | 12.01 | 12.01 | 6.022 <x id="1" equiv-text="[[EQ:12]]" ctype="x-equation"/> 10<g id="6" ctype="x-sup">23</g> | | H | 1.008 | 1.008 | 6.022 <x id="2" equiv-text="[[EQ:13]]" ctype="x-equation"/> 10<g id="7" ctype="x-sup">23</g> | | O | 16.00 | 16.00 | 6.022 <x id="3" equiv-text="[[EQ:14]]" ctype="x-equation"/> 10<g id="8" ctype="x-sup">23</g> | | Na | 22.99 | 22.99 | 6.022 <x id="4" equiv-text="[[EQ:15]]" ctype="x-equation"/> 10<g id="9" ctype="x-sup">23</g> | | Cl | 35.45 | 35.45 | 6.022 <x id="5" equiv-text="[[EQ:16]]" ctype="x-equation"/> 10<g id="10" ctype="x-sup">23</g> | {id="fs-idp17650992" summary="A table is shown that is made up of four columns and six rows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-133" restype="x-paragraph">
+        <source>The header row reads: “Element,” “Average Atomic Mass (a m u),” “Molar Mass (g / m o l),” and “Atoms / Mole.” The first column contains the symbols “C,” “H,” “O,” “N a,” and “C l.” The second column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “35.45.” The third column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “33.45.” The final column contains the value “6.022 times 10 superscript 23” in each cell."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-134" restype="x-paragraph">
+        <source>While atomic mass and molar mass are numerically equivalent, keep in mind that they are vastly different in terms of scale, as represented by the vast difference in the magnitudes of their respective units (amu versus g).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-135" restype="x-paragraph">
+        <source>To appreciate the enormity of the mole, consider a small drop of water weighing about 0.03 g (see [↗]{ref="CNX_Chem_03_02_water"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-136" restype="x-paragraph">
+        <source>Although this represents just a tiny fraction of 1 mole of water (~18 g), it contains more water molecules than can be clearly imagined.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-137" restype="x-paragraph">
+        <source>If the molecules were distributed equally among the roughly seven billion people on earth, each person would receive more than 100 billion molecules.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-138" restype="x-paragraph">
+        <source>![](CNX_Chem_03_02_water.jpg){id="CNX_Chem_03_02_water" class="scaled-down" alt="A close-up photo of a water droplet on a leaf is shown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-139" restype="x-paragraph">
+        <source>The water droplet is not perfectly spherical."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-140" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 3.7: The number of molecules in a single droplet of water is roughly 100 billion times greater than the number of people on earth. (credit: “tanakawho”/Wikimedia commons)</g>{id="CNX_Chem_03_02_water"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-141" restype="x-paragraph">
+        <source>:::link-to-material The mole is used in chemistry to represent 6.022 <x id="1" equiv-text="[[EQ:17]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">23</g> of something, but it can be difficult to conceptualize such a large number.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-142" restype="x-paragraph">
+        <source>Watch this [video]{url="http://openstax.org/l/16molevideo"} and then complete the “Think” questions that follow.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-143" restype="x-paragraph">
+        <source>Explore more about the mole by reviewing the information under “Dig Deeper.”</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-144" restype="x-paragraph">
+        <source>The relationships between formula mass, the mole, and Avogadro’s number can be applied to compute various quantities that describe the composition of substances and compounds, as demonstrated in the next several example problems.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-145" restype="x-example-subsection-title">
+        <source>Example 3.3: Deriving Moles from Grams for an Element</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-146" restype="x-example-paragraph">
+        <source>According to nutritional guidelines from the US Department of Agriculture, the estimated average requirement for dietary potassium is 4.7 g.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-147" restype="x-example-paragraph">
+        <source>What is the estimated average requirement of potassium in moles?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-148" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-149" restype="x-example-paragraph">
+        <source>The mass of K is provided, and the corresponding amount of K in moles is requested.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-150" restype="x-example-paragraph">
+        <source>Referring to the periodic table, the atomic mass of K is 39.10 amu, and so its molar mass is 39.10 g/mol.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-151" restype="x-example-paragraph">
+        <source>The given mass of K (4.7 g) is a bit more than one-tenth the molar mass (39.10 g), so a reasonable “ballpark” estimate of the number of moles would be slightly greater than 0.1 mol.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-152" restype="x-example-paragraph">
+        <source>The molar amount of a substance may be calculated by dividing its mass (g) by its molar mass (g/mol):</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-153" restype="x-example-paragraph">
+        <source>The factor-label method supports this mathematical approach since the unit “g” cancels and the answer has units of “mol:”</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-154" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:1]]" ctype="x-equation"/>{id="fs-idp8892544"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-155" restype="x-example-paragraph">
+        <source>The calculated magnitude (0.12 mol K) is consistent with our ballpark expectation, since it is a bit greater than 0.1 mol.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-156" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-157" restype="x-example-paragraph">
+        <source>Beryllium is a light metal used to fabricate transparent X-ray windows for medical imaging instruments.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-158" restype="x-example-paragraph">
+        <source>How many moles of Be are in a thin-foil window weighing 3.24 g?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-159" restype="x-example-paragraph">
+        <source>0.360 mol</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-160" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-161" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-162" restype="x-paragraph">
+        <source>0.360 mol</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-163" restype="x-example-subsection-title">
+        <source>Example 3.4: Deriving Grams from Moles for an Element</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-164" restype="x-example-paragraph">
+        <source>A liter of air contains 9.2 <x id="1" equiv-text="[[EQ:18]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−4</g> mol argon.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-165" restype="x-example-paragraph">
+        <source>What is the mass of Ar in a liter of air?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-166" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-167" restype="x-example-paragraph">
+        <source>The molar amount of Ar is provided and must be used to derive the corresponding mass in grams.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-168" restype="x-example-paragraph">
+        <source>Since the amount of Ar is less than 1 mole, the mass will be less than the mass of 1 mole of Ar, approximately 40 g.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-169" restype="x-example-paragraph">
+        <source>The molar amount in question is approximately one-one thousandth (<g id="1" ctype="x-sub">10<g id="2" ctype="x-sup">−3</g>) of a mole, and so the corresponding mass should be roughly one-one thousandth of the molar mass (</g>0.04 g):</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-170" restype="x-example-paragraph">
+        <source>In this case, logic dictates (and the factor-label method supports) multiplying the provided amount (mol) by the molar mass (g/mol):</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-171" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:2]]" ctype="x-equation"/>{id="fs-idp10617648"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-172" restype="x-example-paragraph">
+        <source>The result is in agreement with our expectations, around 0.04 g Ar.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-173" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-174" restype="x-example-paragraph">
+        <source>What is the mass of 2.561 mol of gold?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-175" restype="x-example-paragraph">
+        <source>504.5 g</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-176" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-177" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-178" restype="x-paragraph">
+        <source>504.5 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-179" restype="x-example-subsection-title">
+        <source>Example 3.5: Deriving Number of Atoms from Mass for an Element</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-180" restype="x-example-paragraph">
+        <source>Copper is commonly used to fabricate electrical wire ([↗]{ref="CNX_Chem_03_02_copper"}).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-181" restype="x-example-paragraph">
+        <source>How many copper atoms are in 5.00 g of copper wire?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-182" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-183" restype="x-example-paragraph">
+        <source>The number of Cu atoms in the wire may be conveniently derived from its mass by a two-step computation: first calculating the molar amount of Cu, and then using Avogadro’s number (N<g id="1" ctype="x-sub">A</g>) to convert this molar amount to number of Cu atoms:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-184" restype="x-example-paragraph">
+        <source>Considering that the provided sample mass (5.00 g) is a little less than one-tenth the mass of 1 mole of Cu (<g id="1" ctype="x-sub">64 g), a reasonable estimate for the number of atoms in the sample would be on the order of one-tenth N</g>A~, or approximately 10<g id="2" ctype="x-sup">22</g> Cu atoms.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-185" restype="x-example-paragraph">
+        <source>Carrying out the two-step computation yields:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-186" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:3]]" ctype="x-equation"/>{id="fs-idp20004432"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-187" restype="x-example-paragraph">
+        <source>The factor-label method yields the desired cancellation of units, and the computed result is on the order of 10<g id="1" ctype="x-sup">22</g> as expected.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-188" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-189" restype="x-example-paragraph">
+        <source>A prospector panning for gold in a river collects 15.00 g of pure gold.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-190" restype="x-example-paragraph">
+        <source>How many Au atoms are in this quantity of gold?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-191" restype="x-example-paragraph">
+        <source>4.586 <x id="1" equiv-text="[[EQ:19]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">22</g> Au atoms</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-192" restype="x-paragraph">
+        <source>![](CNX_Chem_03_02_copper.jpg){id="CNX_Chem_03_02_copper" class="scaled-down" alt="A close-up photo of a spool of copper wire is shown."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-193" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 3.8: Copper wire is composed of many, many atoms of Cu. (credit: Emilian Robert Vicol)</g>{id="CNX_Chem_03_02_copper"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-194" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-195" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-196" restype="x-paragraph">
+        <source>4.586 <x id="1" equiv-text="[[EQ:19]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">22</g> Au atoms</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-197" restype="x-example-subsection-title">
+        <source>Example 3.6: Deriving Moles from Grams for a Compound</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-198" restype="x-example-paragraph">
+        <source>Our bodies synthesize protein from amino acids.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-199" restype="x-example-paragraph">
+        <source>One of these amino acids is glycine, which has the molecular formula C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">5</g>O<g id="3" ctype="x-sub">2</g>N.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-200" restype="x-example-paragraph">
+        <source>How many moles of glycine molecules are contained in 28.35 g of glycine?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-201" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-202" restype="x-example-paragraph">
+        <source>Derive the number of moles of a compound from its mass following the same procedure used for an element in [↗]{ref="fs-idp76540048"}:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-203" restype="x-example-paragraph">
+        <source>The molar mass of glycine is required for this calculation, and it is computed in the same fashion as its molecular mass.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-204" restype="x-example-paragraph">
+        <source>One mole of glycine, C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">5</g>O<g id="3" ctype="x-sub">2</g>N, contains 2 moles of carbon, 5 moles of hydrogen, 2 moles of oxygen, and 1 mole of nitrogen:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-205" restype="x-example-paragraph">
+        <source>The provided mass of glycine (<g id="1" ctype="x-sub">28 g) is a bit more than one-third the molar mass (</g>75 g/mol), so the computed result is expected to be a bit greater than one-third of a mole (~0.33 mol).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-206" restype="x-example-paragraph">
+        <source>Dividing the compound’s mass by its molar mass yields:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-207" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:4]]" ctype="x-equation"/>{id="fs-idp15857520"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-208" restype="x-example-paragraph">
+        <source>This result is consistent with the rough estimate.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-209" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-210" restype="x-example-paragraph">
+        <source>How many moles of sucrose, C<g id="1" ctype="x-sub">12</g>H<g id="2" ctype="x-sub">22</g>O<g id="3" ctype="x-sub">11</g>, are in a 25-g sample of sucrose?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-211" restype="x-example-paragraph">
+        <source>0.073 mol</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-212" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-213" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-214" restype="x-paragraph">
+        <source>0.073 mol</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-215" restype="x-example-subsection-title">
+        <source>Example 3.7: Deriving Grams from Moles for a Compound</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-216" restype="x-example-paragraph">
+        <source>Vitamin C is a covalent compound with the molecular formula C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">8</g>O<g id="3" ctype="x-sub">6</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-217" restype="x-example-paragraph">
+        <source>The recommended daily dietary allowance of vitamin C for children aged 4–8 years is 1.42 <x id="1" equiv-text="[[EQ:20]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−4</g> mol.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-218" restype="x-example-paragraph">
+        <source>What is the mass of this allowance in grams?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-219" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-220" restype="x-example-paragraph">
+        <source>As for elements, the mass of a compound can be derived from its molar amount as shown:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-221" restype="x-example-paragraph">
+        <source>The molar mass for this compound is computed to be 176.124 g/mol.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-222" restype="x-example-paragraph">
+        <source>The given number of moles is a very small fraction of a mole (<g id="1" ctype="x-sub">10<g id="2" ctype="x-sup">−4</g> or one-ten thousandth); therefore, the corresponding mass is expected to be about one-ten thousandth of the molar mass (</g>0.02 g).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-223" restype="x-example-paragraph">
+        <source>Performing the calculation yields:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-224" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:5]]" ctype="x-equation"/>{id="fs-idm25244336"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-225" restype="x-example-paragraph">
+        <source>This is consistent with the anticipated result.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-226" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-227" restype="x-example-paragraph">
+        <source>What is the mass of 0.443 mol of hydrazine, N<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">4</g>?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-228" restype="x-example-paragraph">
+        <source>14.2 g</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-229" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-230" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-231" restype="x-paragraph">
+        <source>14.2 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-232" restype="x-example-subsection-title">
+        <source>Example 3.8: Deriving the Number of Atoms and Molecules from the Mass of a Compound</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-233" restype="x-example-paragraph">
+        <source>A packet of an artificial sweetener contains 40.0 mg of saccharin (C<g id="1" ctype="x-sub">7</g>H<g id="2" ctype="x-sub">5</g>NO<g id="3" ctype="x-sub">3</g>S), which has the structural formula:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-234" restype="x-example-paragraph">
+        <source>Given that saccharin has a molar mass of 183.18 g/mol, how many saccharin molecules are in a 40.0-mg (0.0400-g) sample of saccharin?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-235" restype="x-example-paragraph">
+        <source>How many carbon atoms are in the same sample?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-236" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-237" restype="x-example-paragraph">
+        <source>The number of molecules in a given mass of compound is computed by first deriving the number of moles, as demonstrated in [↗]{ref="fs-idm1714048"}, and then multiplying by Avogadro’s number:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-238" restype="x-example-paragraph">
+        <source>Using the provided mass and molar mass for saccharin yields:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-239" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:6]]" ctype="x-equation"/>{id="fs-idp15266832"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-240" restype="x-example-paragraph">
+        <source>The compound’s formula shows that each molecule contains seven carbon atoms, and so the number of C atoms in the provided sample is:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-241" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:7]]" ctype="x-equation"/>{id="fs-idp3901232"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-242" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-243" restype="x-example-paragraph">
+        <source>How many C<g id="1" ctype="x-sub">4</g>H<g id="2" ctype="x-sub">10</g> molecules are contained in 9.213 g of this compound?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-244" restype="x-example-paragraph">
+        <source>How many hydrogen atoms?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-245" restype="x-example-paragraph">
+        <source>9.545 <x id="1" equiv-text="[[EQ:21]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">22</g> molecules C<g id="3" ctype="x-sub">4</g> H<g id="4" ctype="x-sub">10</g>; 9.545 <x id="2" equiv-text="[[EQ:22]]" ctype="x-equation"/> 10<g id="6" ctype="x-sup">23</g> atoms H</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-246" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-247" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-248" restype="x-paragraph">
+        <source>9.545 <x id="1" equiv-text="[[EQ:21]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">22</g> molecules C<g id="3" ctype="x-sub">4</g> H<g id="4" ctype="x-sub">10</g>; 9.545 <x id="2" equiv-text="[[EQ:22]]" ctype="x-equation"/> 10<g id="6" ctype="x-sup">23</g> atoms H</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-249" restype="x-paragraph">
+        <source>:::how-science-connects</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-250" restype="x-subsection-title">
+        <source>Counting Neurotransmitter Molecules in the Brain</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-251" restype="x-paragraph">
+        <source>The brain is the control center of the central nervous system ([↗]{ref="CNX_Chem_03_01_brain"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-252" restype="x-paragraph">
+        <source>It sends and receives signals to and from muscles and other internal organs to monitor and control their functions; it processes stimuli detected by sensory organs to guide interactions with the external world; and it houses the complex physiological processes that give rise to our intellect and emotions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-253" restype="x-paragraph">
+        <source>The broad field of neuroscience spans all aspects of the structure and function of the central nervous system, including research on the anatomy and physiology of the brain.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-254" restype="x-paragraph">
+        <source>Great progress has been made in brain research over the past few decades, and the BRAIN Initiative, a federal initiative announced in 2013, aims to accelerate and capitalize on these advances through the concerted efforts of various industrial, academic, and government agencies (more details available at www.whitehouse.gov/share/brain-initiative).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-255" restype="x-paragraph">
+        <source>Specialized cells called neurons transmit information between different parts of the central nervous system by way of electrical and chemical signals.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-256" restype="x-paragraph">
+        <source>Chemical signaling occurs at the interface between different neurons when one of the cells releases molecules (called neurotransmitters) that diffuse across the small gap between the cells (called the synapse) and bind to the surface of the other cell.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-257" restype="x-paragraph">
+        <source>These neurotransmitter molecules are stored in small intracellular structures called vesicles that fuse to the cell membrane and then break open to release their contents when the neuron is appropriately stimulated.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-258" restype="x-paragraph">
+        <source>This process is called exocytosis (see [↗]{ref="CNX_Chem_03_01_exocytosis"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-259" restype="x-paragraph">
+        <source>One neurotransmitter that has been very extensively studied is dopamine, C<g id="1" ctype="x-sub">8</g>H<g id="2" ctype="x-sub">11</g>NO<g id="3" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-260" restype="x-paragraph">
+        <source>Dopamine is involved in various neurological processes that impact a wide variety of human behaviors.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-261" restype="x-paragraph">
+        <source>Dysfunctions in the dopamine systems of the brain underlie serious neurological diseases such as Parkinson’s and schizophrenia.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-262" restype="x-paragraph">
+        <source>One important aspect of the complex processes related to dopamine signaling is the number of neurotransmitter molecules released during exocytosis.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-263" restype="x-paragraph">
+        <source>Since this number is a central factor in determining neurological response (and subsequent human thought and action), it is important to know how this number changes with certain controlled stimulations, such as the administration of drugs.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-264" restype="x-paragraph">
+        <source>It is also important to understand the mechanism responsible for any changes in the number of neurotransmitter molecules released—for example, some dysfunction in exocytosis, a change in the number of vesicles in the neuron, or a change in the number of neurotransmitter molecules in each vesicle.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-265" restype="x-paragraph">
+        <source>Significant progress has been made recently in directly measuring the number of dopamine molecules stored in individual vesicles and the amount actually released when the vesicle undergoes exocytosis.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-266" restype="x-paragraph">
+        <source>Using miniaturized probes that can selectively detect dopamine molecules in very small amounts, scientists have determined that the vesicles of a certain type of mouse brain neuron contain an average of 30,000 dopamine molecules per vesicle (about <x id="1" equiv-text="[[EQ:23]]" ctype="x-equation"/> mol or 50 zmol).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-267" restype="x-paragraph">
+        <source>Analysis of these neurons from mice subjected to various drug therapies shows significant changes in the average number of dopamine molecules contained in individual vesicles, increasing or decreasing by up to three-fold, depending on the specific drug used.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-268" restype="x-paragraph">
+        <source>These studies also indicate that not all of the dopamine in a given vesicle is released during exocytosis, suggesting that it may be possible to regulate the fraction released using pharmaceutical therapies.Omiatek, Donna M., Amanda J.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-269" restype="x-paragraph">
+        <source>Bressler, Ann-Sofie Cans, Anne M.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-270" restype="x-paragraph">
+        <source>Andrews, Michael L.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-271" restype="x-paragraph">
+        <source>Heien, and Andrew G.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-272" restype="x-paragraph">
+        <source>Ewing. “The Real Catecholamine Content of Secretory Vesicles in the CNS Revealed by Electrochemical Cytometry.” <g id="1" ctype="x-italic">Scientific Report</g> 3 (2013): 1447, accessed January 14, 2015, doi:10.1038/srep01447.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-273" restype="x-paragraph">
+        <source>![](CNX_Chem_03_01_brain-ec0b.jpg){id="CNX_Chem_03_01_brain" class="scaled-down" alt="Two pictures are shown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-274" restype="x-paragraph">
+        <source>The left picture shows the human brain.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-275" restype="x-paragraph">
+        <source>The right picture is a microscopic image that depicts two large irregularly shaped masses in a field of threadlike material interspersed with smaller, relatively round masses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-276" restype="x-paragraph">
+        <source>The two larger masses are labeled with arrows and the phrase “Neuron cells.”"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-277" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 3.9: (a) A typical human brain weighs about 1.5 kg and occupies a volume of roughly 1.1 L. (b) Information is transmitted in brain tissue and throughout the central nervous system by specialized cells called neurons (micrograph shows cells at 1600× magnification).</g>{id="CNX_Chem_03_01_brain"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-278" restype="x-paragraph">
+        <source>![](CNX_Chem_03_01_exocytosis-88f6.jpg){id="CNX_Chem_03_01_exocytosis" alt="Two diagrams are shown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-279" restype="x-paragraph">
+        <source>In the upper left corner of the left diagram, an oval with a darkened center that has five short, branching appendages and one long tail-like appendage is shown and connected by an arrow to another image.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-280" restype="x-paragraph">
+        <source>This image depicts a close-up view of the oval section and its interaction with the tail-like portion of a similar structure.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-281" restype="x-paragraph">
+        <source>The close up view is composed of a narrow tube labeled “neuron” leading down to a bulbous base that holds thirteen circles filled with small dots.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-282" restype="x-paragraph">
+        <source>These circles are labeled “vesicles.” The base of the bulbous structure is next to a curved object labeled “neuron” and very small dots are emerging from the bulb’s base and flowing toward the curved structure.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-283" restype="x-paragraph">
+        <source>The gap in between the two structures is labeled “synapse,” and the small dots are labeled “neurotransmitters.” The diagram on the right depicts a molecule composed of six black spheres connected by alternating double and single bonds in a hexagonal ring with other spheres attached to it.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-284" restype="x-paragraph">
+        <source>Three of the black spheres are connected to one smaller, white sphere each.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-285" restype="x-paragraph">
+        <source>Two of the black balls are connected to a smaller red sphere each.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-286" restype="x-paragraph">
+        <source>Each red sphere is connected to a smaller, white sphere.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-287" restype="x-paragraph">
+        <source>One black sphere is connected to another black sphere.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-288" restype="x-paragraph">
+        <source>It is connected to two smaller, white spheres and another black sphere.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-289" restype="x-paragraph">
+        <source>This second black sphere is connected to two smaller white spheres, and a slightly smaller blue sphere.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-290" restype="x-paragraph">
+        <source>The blue sphere is connected to two smaller, white spheres."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-291" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 3.10: (a) Chemical signals are transmitted from neurons to other cells by the release of neurotransmitter molecules into the small gaps (synapses) between the cells. (b) Dopamine, C<g id="2" ctype="x-sub">8</g>H<g id="3" ctype="x-sub">11</g>NO<g id="4" ctype="x-sub">2</g>, is a neurotransmitter involved in a number of neurological processes.</g>{id="CNX_Chem_03_01_exocytosis"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-292" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-293" restype="x-paragraph">
+        <source>The formula mass of a substance is the sum of the average atomic masses of each atom represented in the chemical formula and is expressed in atomic mass units.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-294" restype="x-paragraph">
+        <source>The formula mass of a covalent compound is also called the molecular mass.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-295" restype="x-paragraph">
+        <source>A convenient amount unit for expressing very large numbers of atoms or molecules is the mole.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-296" restype="x-paragraph">
+        <source>Experimental measurements have determined the number of entities composing 1 mole of substance to be 6.022 <x id="1" equiv-text="[[EQ:24]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">23</g>, a quantity called Avogadro’s number.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-297" restype="x-paragraph">
+        <source>The mass in grams of 1 mole of substance is its molar mass.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-298" restype="x-paragraph">
+        <source>Due to the use of the same reference substance in defining the atomic mass unit and the mole, the formula mass (amu) and molar mass (g/mol) for any substance are numerically equivalent (for example, one H<g id="1" ctype="x-sub">2</g>O molecule weighs approximately18 amu and 1 mole of H<g id="2" ctype="x-sub">2</g>O molecules weighs approximately 18 g).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-299" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-300" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp14760336} What is the total mass (amu) of carbon in each of the following molecules?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-301" restype="x-paragraph">
+        <source>(a) CH<g id="1" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-302" restype="x-paragraph">
+        <source>(b) CHCl<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-303" restype="x-paragraph">
+        <source>(c) C<g id="1" ctype="x-sub">12</g>H<g id="2" ctype="x-sub">10</g>O<g id="3" ctype="x-sub">6</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-304" restype="x-paragraph">
+        <source>(d) CH<g id="1" ctype="x-sub">3</g>CH<g id="2" ctype="x-sub">2</g>CH<g id="3" ctype="x-sub">2</g>CH<g id="4" ctype="x-sub">2</g>CH<g id="5" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-305" restype="x-paragraph">
+        <source>:::answer (a) 12.01 amu; (b) 12.01 amu; (c) 144.12 amu; (d) 60.05 amu</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-306" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp23290000} What is the total mass of hydrogen in each of the molecules?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-307" restype="x-paragraph">
+        <source>(a) CH<g id="1" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-308" restype="x-paragraph">
+        <source>(b) CHCl<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-309" restype="x-paragraph">
+        <source>(c) C<g id="1" ctype="x-sub">12</g>H<g id="2" ctype="x-sub">10</g>O<g id="3" ctype="x-sub">6</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-310" restype="x-paragraph">
+        <source>(d) CH<g id="1" ctype="x-sub">3</g>CH<g id="2" ctype="x-sub">2</g>CH<g id="3" ctype="x-sub">2</g>CH<g id="4" ctype="x-sub">2</g>CH<g id="5" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-311" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp14091664} Calculate the molecular or formula mass of each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-312" restype="x-paragraph">
+        <source>(a) P<g id="1" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-313" restype="x-paragraph">
+        <source>(b) H<g id="1" ctype="x-sub">2</g>O</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-314" restype="x-paragraph">
+        <source>(c) Ca(NO<g id="1" ctype="x-sub">3</g>)<g id="2" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-315" restype="x-paragraph">
+        <source>(d) CH<g id="1" ctype="x-sub">3</g>CO<g id="2" ctype="x-sub">2</g>H (acetic acid)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-316" restype="x-paragraph">
+        <source>(e) C<g id="1" ctype="x-sub">12</g>H<g id="2" ctype="x-sub">22</g>O<g id="3" ctype="x-sub">11</g> (sucrose, cane sugar)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-317" restype="x-paragraph">
+        <source>:::answer (a) 123.896 amu; (b) 18.015 amu; (c) 164.086 amu; (d) 60.052 amu; (e) 342.297 amu</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-318" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp1038448} Determine the molecular mass of the following compounds:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-319" restype="x-paragraph">
+        <source>(a)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-320" restype="x-paragraph">
+        <source>(b)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-321" restype="x-paragraph">
+        <source>(c)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-322" restype="x-paragraph">
+        <source>(d)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-323" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp20009152} Determine the molecular mass of the following compounds:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-324" restype="x-paragraph">
+        <source>(a)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-325" restype="x-paragraph">
+        <source>(b)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-326" restype="x-paragraph">
+        <source>(c)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-327" restype="x-paragraph">
+        <source>(d)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-328" restype="x-paragraph">
+        <source>:::answer (a) 56.107 amu; (b) 54.091 amu; (c) 199.9976 amu; (d) 97.9950 amu</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-329" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp50213376} Which molecule has a molecular mass of 28.05 amu?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-330" restype="x-paragraph">
+        <source>(a)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-331" restype="x-paragraph">
+        <source>(b)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-332" restype="x-paragraph">
+        <source>(c)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-333" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp17737968} Write a sentence that describes how to determine the number of moles of a compound in a known mass of the compound using its molecular formula.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-334" restype="x-paragraph">
+        <source>:::answer Use the molecular formula to find the molar mass; to obtain the number of moles, divide the mass of compound by the molar mass of the compound expressed in grams.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-335" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp25588816} Compare 1 mole of H<g id="1" ctype="x-sub">2</g>, 1 mole of O<g id="2" ctype="x-sub">2</g>, and 1 mole of F<g id="3" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-336" restype="x-paragraph">
+        <source>(a) Which has the largest number of molecules?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-337" restype="x-paragraph">
+        <source>Explain why.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-338" restype="x-paragraph">
+        <source>(b) Which has the greatest mass?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-339" restype="x-paragraph">
+        <source>Explain why.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-340" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp50267072} Which contains the greatest mass of oxygen: 0.75 mol of ethanol (C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">5</g>OH), 0.60 mol of formic acid (HCO<g id="3" ctype="x-sub">2</g>H), or 1.0 mol of water (H<g id="4" ctype="x-sub">2</g>O)?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-341" restype="x-paragraph">
+        <source>Explain why.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-342" restype="x-paragraph">
+        <source>:::answer Formic acid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-343" restype="x-paragraph">
+        <source>Its formula has twice as many oxygen atoms as the other two compounds (one each).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-344" restype="x-paragraph">
+        <source>Therefore, 0.60 mol of formic acid would be equivalent to 1.20 mol of a compound containing a single oxygen atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-345" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp69842848} Which contains the greatest number of moles of oxygen atoms: 1 mol of ethanol (C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">5</g>OH), 1 mol of formic acid (HCO<g id="3" ctype="x-sub">2</g>H), or 1 mol of water (H<g id="4" ctype="x-sub">2</g>O)?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-346" restype="x-paragraph">
+        <source>Explain why.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-347" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp23072} How are the molecular mass and the molar mass of a compound similar and how are they different?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-348" restype="x-paragraph">
+        <source>:::answer The two masses have the same numerical value, but the units are different: The molecular mass is the mass of 1 molecule while the molar mass is the mass of 6.022 <x id="1" equiv-text="[[EQ:25]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">23</g> molecules.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-349" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp52331008} Calculate the molar mass of each of the following compounds:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-350" restype="x-paragraph">
+        <source>(a) hydrogen fluoride, HF</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-351" restype="x-paragraph">
+        <source>(b) ammonia, NH<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-352" restype="x-paragraph">
+        <source>(c) nitric acid, HNO<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-353" restype="x-paragraph">
+        <source>(d) silver sulfate, Ag<g id="1" ctype="x-sub">2</g>SO<g id="2" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-354" restype="x-paragraph">
+        <source>(e) boric acid, B(OH)<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-355" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp51968592} Calculate the molar mass of each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-356" restype="x-paragraph">
+        <source>(a) S<g id="1" ctype="x-sub">8</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-357" restype="x-paragraph">
+        <source>(b) C<g id="1" ctype="x-sub">5</g>H<g id="2" ctype="x-sub">12</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-358" restype="x-paragraph">
+        <source>(c) Sc<g id="1" ctype="x-sub">2</g>(SO<g id="2" ctype="x-sub">4</g>)<g id="3" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-359" restype="x-paragraph">
+        <source>(d) CH<g id="1" ctype="x-sub">3</g>COCH<g id="2" ctype="x-sub">3</g> (acetone)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-360" restype="x-paragraph">
+        <source>(e) C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">12</g>O<g id="3" ctype="x-sub">6</g> (glucose)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-361" restype="x-paragraph">
+        <source>:::answer (a) 256.48 g/mol; (b) 72.150 g mol<g id="1" ctype="x-sup">−1</g>; (c) 378.103 g mol<g id="2" ctype="x-sup">−1</g>; (d) 58.080 g mol<g id="3" ctype="x-sup">−1</g>; (e) 180.158 g mol<g id="4" ctype="x-sup">−1</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-362" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp56579584} Calculate the empirical or molecular formula mass and the molar mass of each of the following minerals:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-363" restype="x-paragraph">
+        <source>(a) limestone, CaCO<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-364" restype="x-paragraph">
+        <source>(b) halite, NaCl</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-365" restype="x-paragraph">
+        <source>(c) beryl, Be<g id="1" ctype="x-sub">3</g>Al<g id="2" ctype="x-sub">2</g>Si<g id="3" ctype="x-sub">6</g>O<g id="4" ctype="x-sub">18</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-366" restype="x-paragraph">
+        <source>(d) malachite, Cu<g id="1" ctype="x-sub">2</g>(OH)<g id="2" ctype="x-sub">2</g>CO<g id="3" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-367" restype="x-paragraph">
+        <source>(e) turquoise, CuAl<g id="1" ctype="x-sub">6</g>(PO<g id="2" ctype="x-sub">4</g>)<g id="3" ctype="x-sub">4</g>(OH)<g id="4" ctype="x-sub">8</g>(H<g id="5" ctype="x-sub">2</g>O)<g id="6" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-368" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp56656128} Calculate the molar mass of each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-369" restype="x-paragraph">
+        <source>(a) the anesthetic halothane, C<g id="1" ctype="x-sub">2</g>HBrClF<g id="2" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-370" restype="x-paragraph">
+        <source>(b) the herbicide paraquat, C<g id="1" ctype="x-sub">12</g>H<g id="2" ctype="x-sub">14</g>N<g id="3" ctype="x-sub">2</g>Cl<g id="4" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-371" restype="x-paragraph">
+        <source>(c) caffeine, C<g id="1" ctype="x-sub">8</g>H<g id="2" ctype="x-sub">10</g>N<g id="3" ctype="x-sub">4</g>O<g id="4" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-372" restype="x-paragraph">
+        <source>(d) urea, CO(NH<g id="1" ctype="x-sub">2</g>)<g id="2" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-373" restype="x-paragraph">
+        <source>(e) a typical soap, C<g id="1" ctype="x-sub">17</g>H<g id="2" ctype="x-sub">35</g>CO<g id="3" ctype="x-sub">2</g>Na</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-374" restype="x-paragraph">
+        <source>:::answer (a) 197.382 g mol<g id="1" ctype="x-sup">−1</g>; (b) 257.163 g mol<g id="2" ctype="x-sup">−1</g>; (c) 194.193 g mol<g id="3" ctype="x-sup">−1</g>; (d) 60.056 g mol<g id="4" ctype="x-sup">−1</g>; (e) 306.464 g mol<g id="5" ctype="x-sup">−1</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-375" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp51940080} Determine the number of moles of compound and the number of moles of each type of atom in each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-376" restype="x-paragraph">
+        <source>(a) 25.0 g of propylene, C<g id="1" ctype="x-sub">3</g>H<g id="2" ctype="x-sub">6</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-377" restype="x-paragraph">
+        <source>(b) 3.06 <x id="1" equiv-text="[[EQ:26]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">−3</g> g of the amino acid glycine, C<g id="2" ctype="x-sub">2</g>H<g id="3" ctype="x-sub">5</g>NO<g id="4" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-378" restype="x-paragraph">
+        <source>(c) 25 lb of the herbicide Treflan, C<g id="1" ctype="x-sub">13</g>H<g id="2" ctype="x-sub">16</g>N<g id="3" ctype="x-sub">2</g>O<g id="4" ctype="x-sub">4</g>F (1 lb = 454 g)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-379" restype="x-paragraph">
+        <source>(d) 0.125 kg of the insecticide Paris Green, Cu<g id="1" ctype="x-sub">4</g>(AsO<g id="2" ctype="x-sub">3</g>)<g id="3" ctype="x-sub">2</g>(CH<g id="4" ctype="x-sub">3</g>CO<g id="5" ctype="x-sub">2</g>)<g id="6" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-380" restype="x-paragraph">
+        <source>(e) 325 mg of aspirin, C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">4</g>(CO<g id="3" ctype="x-sub">2</g>H)(CO<g id="4" ctype="x-sub">2</g>CH<g id="5" ctype="x-sub">3</g>)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-381" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp56804240} Determine the mass of each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-382" restype="x-paragraph">
+        <source>(a) 0.0146 mol KOH</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-383" restype="x-paragraph">
+        <source>(b) 10.2 mol ethane, C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">6</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-384" restype="x-paragraph">
+        <source>(c) 1.6 <x id="1" equiv-text="[[EQ:27]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">−3</g> mol Na<g id="2" ctype="x-sub">2</g> SO<g id="3" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-385" restype="x-paragraph">
+        <source>(d) 6.854 <x id="1" equiv-text="[[EQ:28]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">3</g> mol glucose, C<g id="2" ctype="x-sub">6</g> H<g id="3" ctype="x-sub">12</g> O<g id="4" ctype="x-sub">6</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-386" restype="x-paragraph">
+        <source>(e) 2.86 mol Co(NH<g id="1" ctype="x-sub">3</g>)<g id="2" ctype="x-sub">6</g>Cl<g id="3" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-387" restype="x-paragraph">
+        <source>:::answer (a) 0.819 g; (b) 307 g; (c) 0.23 g; (d) 1.235 <x id="1" equiv-text="[[EQ:29]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">6</g> g (1235 kg); (e) 765 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-388" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp51218400} Determine the number of moles of the compound and determine the number of moles of each type of atom in each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-389" restype="x-paragraph">
+        <source>(a) 2.12 g of potassium bromide, KBr</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-390" restype="x-paragraph">
+        <source>(b) 0.1488 g of phosphoric acid, H<g id="1" ctype="x-sub">3</g>PO<g id="2" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-391" restype="x-paragraph">
+        <source>(c) 23 kg of calcium carbonate, CaCO<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-392" restype="x-paragraph">
+        <source>(d) 78.452 g of aluminum sulfate, Al<g id="1" ctype="x-sub">2</g>(SO<g id="2" ctype="x-sub">4</g>)<g id="3" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-393" restype="x-paragraph">
+        <source>(e) 0.1250 mg of caffeine, C<g id="1" ctype="x-sub">8</g>H<g id="2" ctype="x-sub">10</g>N<g id="3" ctype="x-sub">4</g>O<g id="4" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-394" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp50969136} Determine the mass of each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-395" restype="x-paragraph">
+        <source>(a) 2.345 mol LiCl</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-396" restype="x-paragraph">
+        <source>(b) 0.0872 mol acetylene, C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-397" restype="x-paragraph">
+        <source>(c) 3.3 <x id="1" equiv-text="[[EQ:30]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">−2</g> mol Na<g id="2" ctype="x-sub">2</g>CO<g id="3" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-398" restype="x-paragraph">
+        <source>(d) 1.23 <x id="1" equiv-text="[[EQ:31]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">3</g> mol fructose, C<g id="2" ctype="x-sub">6</g>H<g id="3" ctype="x-sub">12</g>O<g id="4" ctype="x-sub">6</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-399" restype="x-paragraph">
+        <source>(e) 0.5758 mol FeSO<g id="1" ctype="x-sub">4</g>(H<g id="2" ctype="x-sub">2</g>O)<g id="3" ctype="x-sub">7</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-400" restype="x-paragraph">
+        <source>:::answer (a) 99.41 g; (b) 2.27 g; (c) 3.5 g; (d) 222 kg; (e) 160.1 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-401" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp41399808} The approximate minimum daily dietary requirement of the amino acid leucine, C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">13</g>NO<g id="3" ctype="x-sub">2</g>, is 1.1 g.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-402" restype="x-paragraph">
+        <source>What is this requirement in moles?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-403" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp41416224} Determine the mass in grams of each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-404" restype="x-paragraph">
+        <source>(a) 0.600 mol of oxygen atoms</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-405" restype="x-paragraph">
+        <source>(b) 0.600 mol of oxygen molecules, O<g id="1" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-406" restype="x-paragraph">
+        <source>(c) 0.600 mol of ozone molecules, O<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-407" restype="x-paragraph">
+        <source>:::answer (a) 9.60 g; (b) 19.2 g; (c) 28.8 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-408" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp42845584} A 55-kg woman has 7.5 <x id="1" equiv-text="[[EQ:32]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−3</g> mol of hemoglobin (molar mass = 64,456 g/mol) in her blood.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-409" restype="x-paragraph">
+        <source>How many hemoglobin molecules is this?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-410" restype="x-paragraph">
+        <source>What is this quantity in grams?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-411" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp42864672} Determine the number of atoms and the mass of zirconium, silicon, and oxygen found in 0.3384 mol of zircon, ZrSiO<g id="1" ctype="x-sub">4</g>, a semiprecious stone.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-412" restype="x-paragraph">
+        <source>:::answer zirconium: 2.038 <x id="1" equiv-text="[[EQ:33]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">23</g> atoms; 30.87 g; silicon: 2.038 <x id="2" equiv-text="[[EQ:34]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">23</g> atoms; 9.504 g; oxygen: 8.151 <x id="3" equiv-text="[[EQ:35]]" ctype="x-equation"/> 10<g id="6" ctype="x-sup">23</g> atoms; 21.66 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-413" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp40477040} Determine which of the following contains the greatest mass of hydrogen: 1 mol of CH<g id="1" ctype="x-sub">4</g>, 0.6 mol of C<g id="2" ctype="x-sub">6</g>H<g id="3" ctype="x-sub">6</g>, or 0.4 mol of C<g id="4" ctype="x-sub">3</g>H<g id="5" ctype="x-sub">8</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-414" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp40492096} Determine which of the following contains the greatest mass of aluminum: 122 g of AlPO<g id="1" ctype="x-sub">4</g>, 266 g of Al<g id="2" ctype="x-sub">2</g>Cl<g id="3" ctype="x-sub">6</g>, or 225 g of Al<g id="4" ctype="x-sub">2</g>S<g id="5" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-415" restype="x-paragraph">
+        <source>:::answer AlPO<g id="1" ctype="x-sub">4</g>: 1.000 mol, or 26.98 g Al; Al<g id="2" ctype="x-sub">2</g>Cl<g id="3" ctype="x-sub">6</g>: 1.994 mol, or 53.74 g Al; Al<g id="4" ctype="x-sub">2</g>S<g id="5" ctype="x-sub">3</g>: 3.00 mol, or 80.94 g Al; The Al<g id="6" ctype="x-sub">2</g>S<g id="7" ctype="x-sub">3</g> sample thus contains the greatest mass of Al.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-416" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp48697456} Diamond is one form of elemental carbon.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-417" restype="x-paragraph">
+        <source>An engagement ring contains a diamond weighing 1.25 carats (1 carat = 200 mg).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-418" restype="x-paragraph">
+        <source>How many atoms are present in the diamond?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-419" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp41325184} The Cullinan diamond was the largest natural diamond ever found (January 25, 1905).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-420" restype="x-paragraph">
+        <source>It weighed 3104 carats (1 carat = 200 mg).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-421" restype="x-paragraph">
+        <source>How many carbon atoms were present in the stone?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-422" restype="x-paragraph">
+        <source>:::answer 3.113 <x id="1" equiv-text="[[EQ:36]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">25</g> C atoms</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-423" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp41347136} One 55-gram serving of a particular cereal supplies 270 mg of sodium, 11% of the recommended daily allowance.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-424" restype="x-paragraph">
+        <source>How many moles and atoms of sodium are in the recommended daily allowance?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-425" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp71747216} A certain nut crunch cereal contains 11.0 grams of sugar (sucrose, C<g id="1" ctype="x-sub">12</g>H<g id="2" ctype="x-sub">22</g>O<g id="3" ctype="x-sub">11</g>) per serving size of 60.0 grams.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-426" restype="x-paragraph">
+        <source>How many servings of this cereal must be eaten to consume 0.0278 moles of sugar?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-427" restype="x-paragraph">
+        <source>:::answer 0.865 servings, or about 1 serving.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-428" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp40440256} A tube of toothpaste contains 0.76 g of sodium monofluorophosphate (Na<g id="1" ctype="x-sub">2</g>PO<g id="2" ctype="x-sub">3</g>F) in 100 mL.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-429" restype="x-paragraph">
+        <source>(a) What mass of fluorine atoms in mg was present?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-430" restype="x-paragraph">
+        <source>(b) How many fluorine atoms were present?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-431" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp40890272} Which of the following represents the least number of molecules?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-432" restype="x-paragraph">
+        <source>(a) 20.0 g of H<g id="1" ctype="x-sub">2</g>O (18.02 g/mol)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-433" restype="x-paragraph">
+        <source>(b) 77.0 g of CH<g id="1" ctype="x-sub">4</g> (16.06 g/mol)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-434" restype="x-paragraph">
+        <source>(c) 68.0 g of C<g id="1" ctype="x-sub">3</g>H<g id="2" ctype="x-sub">6</g> (42.08 g/mol)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-435" restype="x-paragraph">
+        <source>(d) 100.0 g of N<g id="1" ctype="x-sub">2</g>O (44.02 g/mol)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-436" restype="x-paragraph">
+        <source>(e) 84.0 g of HF (20.01 g/mol)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-437" restype="x-paragraph">
+        <source>:::answer 20.0 g H<g id="1" ctype="x-sub">2</g>O represents the least number of molecules since it has the least number of moles.</source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

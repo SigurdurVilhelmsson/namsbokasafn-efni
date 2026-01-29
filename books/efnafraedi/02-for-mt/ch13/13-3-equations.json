@@ -1,0 +1,167 @@
+{
+  "module": "m68799",
+  "section": "13.3",
+  "chapter": 13,
+  "title": "Shifting Equilibria: Le Châtelier’s Principle",
+  "equations": {
+    "EQ:1": {
+      "latex": "{{\\text{H}}_{2}(g)+{\\text{I}}_{2}(g)⇌2\\text{HI}(g)\\,{K}_{c}=50.0\\,\\text{at}\\,400\\,\\text{°C}}",
+      "id": "fs-idp25467280"
+    },
+    "EQ:2": {
+      "latex": "{forward\\,{\\text{H}}_{2}(g)+{\\text{I}}_{2}(g)\\,→\\,2\\text{HI}(g){\\text{rate}}_{f}={k}_{f}[{\\text{H}}_{2}{]}^{m}[{\\text{I}}_{2}{]}^{n} reverse\\,2\\text{HI}(g)\\,→\\,{\\text{H}}_{2}(g)+{\\text{I}}_{2}(g){\\text{rate}}_{r}={k}_{r}[\\text{HI}{]}^{x}}",
+      "id": "fs-idm216886944"
+    },
+    "EQ:3": {
+      "latex": "{{\\text{rate}}_{f}={\\text{rate}}_{r}}",
+      "id": "fs-idm172629696"
+    },
+    "EQ:4": {
+      "latex": "{{\\text{rate}}_{f}>{\\text{rate}}_{r}}",
+      "id": "fs-idm191416320"
+    },
+    "EQ:5": {
+      "latex": "{{\\text{rate}}_{f}&lt;{\\text{rate}}_{r}}",
+      "id": "fs-idm223526832"
+    },
+    "EQ:6": {
+      "latex": "{{Q}_{c}=\\frac{{{{[\\text{HI}]}}^{2}}}{{[{\\text{H}}_{2}][{\\text{I}}_{2}]}}={K}_{c}}",
+      "id": "fs-idm212413904"
+    },
+    "EQ:7": {
+      "latex": "{M=\\frac{n}{V}=\\frac{P}{{RT}}}",
+      "id": "fs-idm212442528"
+    },
+    "EQ:8": {
+      "latex": "{{Q}_{P} = \\frac{{{P}_{\\text{HI}}^{2}}}{{{P}_{{H2}}\\,{P}_{{I2}}}}={K}_{P}}",
+      "id": "fs-idm216219232"
+    },
+    "EQ:9": {
+      "latex": "{Q}_{P}^{'}= \\frac{{{{(3{P}_{{\\text{HI}}})}}^{2}}}{{3{P}_{{\\text{H}2}}\\,3 {P}_{{\\text{I}2}}}}= \\frac{{9{P}_{\\text{HI}}^{2}}}{{9{P}_{{\\text{H}2}}\\, {P}_{{\\text{I}2}}}}= \\frac{{{P}_{\\text{HI}}^{2}}}{{{P}_{{\\text{H}2}}\\, {P}_{{\\text{I}2}}}}= {Q}_{P} ={K}_{P}{Q}_{P} ^{'}={Q}_{P}= {K}_{P}",
+      "id": "fs-idm214218336"
+    },
+    "EQ:10": {
+      "latex": "{Q}_{P}= \\frac{{{{{P}_{\\text{NO}}}}^{2}\\, {P}_{{\\text{O}2}}}}{{{{{P}_{{\\text{NO}2}}}}^{2}}} {Q}_{P}^{'}= \\frac{{ {{(3 {P}_{{\\text{NO}}})}}^{2} \\,3{P}_{{\\text{O}2}}}}{{{{(3{P}_{{\\text{NO}2}} )}}^{2} }} =\\frac{{9{{{P}_{\\text{NO}}}}^{\\text{2}} \\,3{P}_{{\\text{O}2}}}}{{9 {{ {P}_{{ \\text{NO} 2} } }}^{2}}} = \\frac{{27{{{P}_{\\text{NO}}}}^{\\text{2}}\\, {P}_{{\\text{O}2}}}}{{9 {{ {P}_{{ \\text{NO} 2} } }}^{2}}} = \\frac{{3{{{P}_{\\text{NO}}}}^{\\text{2}}\\, {P}_{{\\text{O}2}}}}{{ {{ {P}_{{ \\text{NO} 2} } }}^{2}}} =3{Q}_{P} > {K}_{P} {Q}_{P}^{'} =3{Q}_{P}>{K}_{P}",
+      "id": "fs-idm215260720"
+    },
+    "EQ:11": {
+      "latex": "{\\text{dissolution}\\,{\\text{CO}}_{2}(g)⇌{\\text{CO}}_{2}(aq) \\text{hydrolysis}\\,{\\text{CO}}_{2}(aq)+{\\text{H}}_{2}\\text{O}(l)⇌{\\text{H}}_{2}{\\text{CO}}_{3}(aq) \\text{ionization}\\,{\\text{H}}_{2}{\\text{CO}}_{3}(aq)⇌{\\text{HCO}}_{3}^{\\text{−}}(aq)+{\\text{H}}^{\\text{+}}(aq)}",
+      "id": "fs-idm482350368"
+    },
+    "EQ:12": {
+      "latex": "{\\text{A}⇌\\text{B}}",
+      "id": "fs-idp83787056"
+    },
+    "EQ:13": {
+      "latex": "{\\text{rate}}_{f}={k}_{f}[\\text{A}]{\\text{rate}}_{r}={k}_{r}[\\text{B}]",
+      "id": "fs-idp95014512"
+    },
+    "EQ:14": {
+      "latex": "{\\text{rate}}_{r}={\\text{rate}}_{f}",
+      "id": "fs-idm214342512"
+    },
+    "EQ:15": {
+      "latex": "{k}_{f}[\\text{A}]={k}_{r}[\\text{B}]\\frac{{[B]}}{{[A]}}=\\frac{{{k}_{f}}}{{{k}_{r}}}={K}_{c}",
+      "id": "fs-idm208526832"
+    },
+    "EQ:16": {
+      "latex": "{{\\text{N}}_{2}{\\text{O}}_{4}(g)⇌2{{\\text{NO}}}_{2}(g)\\,\\text{Δ}H=+57.20\\,\\text{kJ}}",
+      "id": "fs-idp8775968"
+    },
+    "EQ:17": {
+      "latex": "{\\text{heat}+{\\text{N}}_{2}{\\text{O}}_{4}(g)⇌2{{\\text{NO}}}_{2}(g)}",
+      "id": "fs-idp38589680"
+    },
+    "EQ:18": {
+      "latex": "{{\\text{N}}_{2}(g)+3{\\text{H}}_{2}(g)\\,⇌\\,2{{\\text{NH}}}_{3}(g)\\,\\text{Δ}H=−92.2\\,\\text{kJ}}",
+      "id": "fs-idm143149600"
+    },
+    "EQ:19": {
+      "latex": "{{{\\text{CaCO}}}_{3}(s)⇌\\text{CaO}(s)+{{\\text{CO}}}_{2}(g)}"
+    },
+    "EQ:20": {
+      "latex": "{{P}_{{{\\text{CO}}2}}}"
+    },
+    "EQ:21": {
+      "latex": "{{P}_{{{\\text{CO}}2}}}"
+    },
+    "EQ:22": {
+      "latex": "{{{\\text{CH}}}_{4}(g)+2{\\text{O}}_{2}(g)⇌{{\\text{CO}}}_{2}(g)+2{\\text{H}}_{2}\\text{O}(g)}"
+    },
+    "EQ:23": {
+      "latex": "{2{{\\text{SO}}}_{2}(g)+{\\text{O}}_{2}(g)\\,⇌\\,2{{\\text{SO}}}_{3}(g)}"
+    },
+    "EQ:24": {
+      "latex": "{{\\text{N}}_{2}(g)+2{\\text{H}}_{2}(g)⇌{\\text{N}}_{2}{\\text{H}}_{4}(g)\\,\\text{Δ}H=95\\,\\text{kJ}}"
+    },
+    "EQ:25": {
+      "latex": "{{\\text{P}}_{4}(g)+6{\\text{H}}_{2}(g)⇌4{{\\text{PH}}}_{3}(g)\\,\\text{Δ}H=110.5\\,\\text{kJ}}"
+    },
+    "EQ:26": {
+      "latex": "{2{{\\text{NH}}}_{3}(g)⇌{\\text{N}}_{2}(g)+3{\\text{H}}_{2}(g)\\,\\text{Δ}H=92\\,\\text{kJ}}"
+    },
+    "EQ:27": {
+      "latex": "{{\\text{N}}_{2}(g)+{\\text{O}}_{2}(g)⇌2\\text{NO}(g)\\,\\text{Δ}H=181\\,\\text{kJ}}"
+    },
+    "EQ:28": {
+      "latex": "{2{\\text{O}}_{3}(g)⇌3{\\text{O}}_{2}(g)\\,\\text{Δ}H=−285\\,\\text{kJ}}"
+    },
+    "EQ:29": {
+      "latex": "{\\text{CaO}(s)+{{\\text{CO}}}_{2}(g)⇌{{\\text{CaCO}}}_{3}(s)\\,\\text{Δ}H=−176\\,\\text{kJ}}"
+    },
+    "EQ:30": {
+      "latex": "{2{\\text{H}}_{2}\\text{O}(g)⇌2{\\text{H}}_{2}(g)+{\\text{O}}_{2}(g)\\,\\text{Δ}H=484\\,\\text{kJ}}"
+    },
+    "EQ:31": {
+      "latex": "{{\\text{N}}_{2}(g)+3{\\text{H}}_{2}(g)⇌2{{\\text{NH}}}_{3}(g)\\,\\text{Δ}H=−92.2\\,\\text{kJ}}"
+    },
+    "EQ:32": {
+      "latex": "{2\\text{Br}(g)⇌{{\\text{Br}}}_{2}(g)\\,\\text{Δ}H=−224\\,\\text{kJ}}"
+    },
+    "EQ:33": {
+      "latex": "{{\\text{H}}_{2}(g)+{\\text{I}}_{2}(s)⇌2\\text{HI}(g)\\,\\text{Δ}H=53\\,\\text{kJ}}"
+    },
+    "EQ:34": {
+      "latex": "{2{\\text{H}}_{2}(g)+\\text{CO}(g)⇌{{\\text{CH}}}_{3}\\text{OH}(g)\\,\\text{Δ}H=−90.2\\,\\text{kJ}}"
+    },
+    "EQ:35": {
+      "latex": "{{K}_{c}=\\,\\frac{{[{{\\text{CH}}}_{3}\\text{OH}]}}{{{{[{\\text{H}}_{2}]}}^{2}[\\text{CO}]}};}"
+    },
+    "EQ:36": {
+      "latex": "{{\\text{N}}_{2}(g)+{\\text{O}}_{2}(g)⇌2\\text{NO}(g)\\,\\text{Δ}H=181\\,\\text{kJ}}"
+    },
+    "EQ:37": {
+      "latex": "{\\text{C}(s)+{\\text{H}}_{2}\\text{O}(g)⇌\\text{CO}(g)+{\\text{H}}_{2}(g)\\,\\text{Δ}H=131.30\\,\\text{kJ}}"
+    },
+    "EQ:38": {
+      "latex": "{{K}_{c}=\\,\\frac{{[\\text{CO}][{\\text{H}}_{2}]}}{{[{\\text{H}}_{2}\\text{O}]}};}"
+    },
+    "EQ:39": {
+      "latex": "{{{\\text{Fe}}}_{2}{\\text{O}}_{3}(s)+3{\\text{H}}_{2}(g)⇌2\\text{Fe}(s)+3{\\text{H}}_{2}\\text{O}(g)\\,\\text{Δ}H=98.7\\,\\text{kJ}}"
+    },
+    "EQ:40": {
+      "latex": "{{{\\text{NH}}}_{3}(aq)+{\\text{H}}_{2}\\text{O}(l)⇌{{\\text{NH}}}_{4}^{\\text{+}}(aq)+{{\\text{OH}}}^{\\text{−}}(aq)}"
+    },
+    "EQ:41": {
+      "latex": "{{{\\text{CH}}}_{3}{{\\text{CO}}}_{2}\\text{H}(aq)+{\\text{H}}_{2}\\text{O}(l)⇌{\\text{H}}_{3}{\\text{O}}^{\\text{+}}(aq)+{{\\text{CH}}}_{3}{{\\text{CO}}}_{2}^{\\text{−}}(l)}"
+    },
+    "EQ:42": {
+      "latex": "{{{\\text{CH}}}_{3}{{\\text{CO}}}_{2}^{\\text{−}}}"
+    },
+    "EQ:43": {
+      "latex": "{{{\\text{NO}}}_{3}^{\\text{−}},}"
+    },
+    "EQ:44": {
+      "latex": "{{{\\text{Na}}}^{\\text{+}}(aq)+{{\\text{Cl}}}^{\\text{−}}(aq)+{{\\text{Ag}}}^{\\text{+}}(aq)+{{\\text{NO}}}_{3}^{\\text{−}}(aq)⇌\\text{AgCl}(s)+{{\\text{Na}}}^{\\text{+}}(aq)+{{\\text{NO}}}_{3}^{\\text{−}}(aq)}"
+    },
+    "EQ:45": {
+      "latex": "{\\text{Δ}H=−65.9\\,\\text{kJ}}"
+    },
+    "EQ:46": {
+      "latex": "{{\\text{H}}_{2}\\text{O}(l)⇌{\\text{H}}_{2}\\text{O}(g)\\,\\text{Δ}H=41\\,\\text{kJ}}"
+    },
+    "EQ:47": {
+      "latex": "{{{\\text{Ag}}}_{2}{{\\text{SO}}}_{4}(s)⇌2{{\\text{Ag}}}^{\\text{+}}(aq)+{{\\text{SO}}}_{4}^{{2−}}(aq)}"
+    }
+  }
+}

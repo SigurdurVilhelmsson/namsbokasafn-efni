@@ -1,0 +1,91 @@
+{
+  "module": "m68758",
+  "section": "9.5",
+  "chapter": 9,
+  "title": "The Kinetic-Molecular Theory",
+  "equations": {
+    "EQ:1": {
+      "latex": "{\\text{KE}=\\,\\frac{1}{2}\\,m{u}^{2}}",
+      "id": "fs-idm43195728"
+    },
+    "EQ:2": {
+      "latex": "{{u}_{{\\text{r}\\text{m}\\text{s}}}=\\sqrt{{{{u}^{2}}¯}}=\\sqrt{{\\frac{{{u}_{1}^{2}+{u}_{2}^{2}+{u}_{3}^{2}+{u}_{4}^{2}+…}}{n}}}}",
+      "id": "fs-idp57614544"
+    },
+    "EQ:3": {
+      "latex": "{{{\\text{KE}}}_{{\\text{avg}}}=\\,\\frac{1}{2}{{Mu}}_{{\\text{rms}}}^{{2}}}",
+      "id": "fs-idm248247136"
+    },
+    "EQ:4": {
+      "latex": "{{{\\text{KE}}}_{{\\text{avg}}}=\\,\\frac{3}{2}\\,RT}",
+      "id": "fs-idm181584464"
+    },
+    "EQ:5": {
+      "latex": "{\\frac{1}{2}{{Mu}}_{{\\text{rms}}}^{{2}}=\\,\\frac{3}{2}\\,RT}",
+      "id": "fs-idm155100320"
+    },
+    "EQ:6": {
+      "latex": "{{u}_{{\\text{rms}}}=\\sqrt{{\\frac{{3RT}}{M}}}}",
+      "id": "fs-idp16162192"
+    },
+    "EQ:7": {
+      "latex": "{30\\,\\text{°C}+273=\\text{303 K}}",
+      "id": "fs-idm41104608"
+    },
+    "EQ:8": {
+      "latex": "{\\frac{{28.0\\,\\text{g}}}{{\\text{1 mol}}}\\,\\times \\,\\frac{{\\text{1 kg}}}{{1000\\,\\text{g}}}\\,=0.028\\,\\text{kg/mol}}",
+      "id": "fs-idm215032176"
+    },
+    "EQ:9": {
+      "latex": "{{u}_{{\\text{rms}}}=\\sqrt{{\\frac{{3RT}}{M}}}}",
+      "id": "fs-idm151766032"
+    },
+    "EQ:10": {
+      "latex": "{{u}_{{\\text{r}\\text{m}\\text{s}}}=\\,\\sqrt{{\\frac{{3(8.314\\,\\text{J/mol K})(\\text{303 K})}}{{(0.028\\,\\text{kg/mol})}}}}\\,=\\,\\sqrt{{2.70\\,\\times \\,{{10}}^{5}\\,{\\text{m}}^{2}{\\text{s}}^{{-2}}}}\\,=519\\,\\text{m/s}}",
+      "id": "fs-idm230973056"
+    },
+    "EQ:11": {
+      "latex": "{\\text{effusion rate}\\,∝\\,{u}_{{\\text{rms}}}}",
+      "id": "fs-idp1163392"
+    },
+    "EQ:12": {
+      "latex": "{{u}_{{\\text{rms}}}=\\sqrt{{\\frac{{3RT}}{M}}}}",
+      "id": "fs-idm166257280"
+    },
+    "EQ:13": {
+      "latex": "{M=\\,\\frac{{3RT}}{{{u}_{{\\text{r}\\text{m}\\text{s}}}^{2}}}\\,=\\,\\frac{{3RT}}{{{u¯}^{{2}}}}}",
+      "id": "fs-idm197441248"
+    },
+    "EQ:14": {
+      "latex": "{\\frac{{\\text{effusion rate A}}}{{\\text{effusion rate B}}}\\,=\\,\\frac{{{u}_{{\\text{r}\\text{m}\\text{s}\\,\\text{A}}}}}{{{u}_{{\\text{r}\\text{m}\\text{s}\\,\\text{B}}}}}\\,=\\,{\\sqrt{{\\frac{{3RT}}{{{M}_{\\text{A}}}}}}}{\\sqrt{{\\frac{{3RT}}{{{M}_{\\text{B}}}}}}}\\,=\\,\\sqrt{{\\frac{{{M}_{\\text{B}}}}{{{M}_{\\text{A}}}}}}}",
+      "id": "fs-idm136528624"
+    },
+    "EQ:15": {
+      "latex": "{{u}_{{\\text{r}\\text{m}\\text{s}}}=\\sqrt{{{{u}^{2}}¯}}=\\sqrt{{\\frac{{{u}_{1}^{2}+{u}_{2}^{2}+{u}_{3}^{2}+{u}_{4}^{2}+…}}{n}}}}"
+    },
+    "EQ:16": {
+      "latex": "{{{\\text{KE}}}_{{\\text{avg}}}=\\,\\frac{3}{2}RT}"
+    },
+    "EQ:17": {
+      "latex": "{{u}_{{\\text{rms}}}=\\sqrt{{\\frac{{3RT}}{M}}}}"
+    },
+    "EQ:18": {
+      "latex": "{\\sqrt{2}}"
+    },
+    "EQ:19": {
+      "latex": "{\\sqrt{{{{\\text{KE}}}_{{\\text{avg}}}}}.}"
+    },
+    "EQ:20": {
+      "latex": "\\times"
+    },
+    "EQ:21": {
+      "latex": "\\times"
+    },
+    "EQ:22": {
+      "latex": "\\times"
+    },
+    "EQ:23": {
+      "latex": "{\\frac{{{R}_{1}}}{{{R}_{2}}},}"
+    }
+  }
+}

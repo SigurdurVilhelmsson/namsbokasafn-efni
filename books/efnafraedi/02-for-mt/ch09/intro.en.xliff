@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68748" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Introduction</note>
+      <note>Section: intro</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Introduction</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-list-item">
+        <source>Gas Pressure</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Stoichiometry of Gaseous Substances, Mixtures, and Reactions</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-list-item">
+        <source>Effusion and Diffusion of Gases</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-list-item">
+        <source>The Kinetic-Molecular Theory</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-list-item">
+        <source>Non-Ideal Gas Behavior</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>![](CNX_Chem_09_00_HotAirBall.jpg){id="CNX_Chem_09_00_HotAirBall" class="splash" alt="A photograph shows about twenty colorful hot air balloons at varying stages of inflation.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>Some are deflated, while others are inflated.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>Three of the balloons are off the ground and are visible against a bright blue sky."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>*Figure 9.1: The hot air inside these balloons is less dense than the surrounding cool air.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>This results in a buoyant force that causes the balloons to rise when their guy lines are untied. (credit: modification of work by Anthony Quintano)*{id="CNX_Chem_09_00_HotAirBall"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>We are surrounded by an ocean of gas—the atmosphere—and many of the properties of gases are familiar to us from our daily activities.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>Heated gases expand, which can make a hot air balloon rise ([↗]{ref="CNX_Chem_09_00_HotAirBall"}) or cause a blowout in a bicycle tire left in the sun on a hot day.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source>Gases have played an important part in the development of chemistry.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>In the seventeenth and eighteenth centuries, many scientists investigated gas behavior, providing the first mathematical descriptions of the behavior of matter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>In this chapter, we will examine the relationships between gas temperature, pressure, amount, and volume.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>We will study a simple theoretical model and use it to analyze the experimental behavior of gases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>The results of these analyses will show us the limitations of the theory and how to improve on it.</source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

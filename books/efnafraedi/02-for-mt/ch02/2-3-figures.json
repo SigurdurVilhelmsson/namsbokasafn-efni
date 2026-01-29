@@ -1,0 +1,44 @@
+{
+  "module": "m68692",
+  "section": "2.3",
+  "chapter": 2,
+  "title": "Atomic Structure and Symbolism",
+  "figures": {
+    "CNX_Chem_02_03_AtomSize": {
+      "number": "2.11",
+      "imagePath": "CNX_Chem_02_03_AtomSize.jpg",
+      "captionEn": "If an atom could be expanded to the size of a football stadium, the nucleus would be the size of a single blueberry. (credit middle: modification of work by “babyknight”/Wikimedia Commons; credit right: modification of work by Paxson Woelber)",
+      "altText": "The diagram on the left shows a picture of an atom that is 10 to the negative tenth power meters in diameter. The nucleus is labeled at the center of the atom and is 10 to the negative fifteenth power meters. The central figure shows a photograph of an American football stadium. The figure on the right shows a photograph of a person with a handful of blueberries."
+    },
+    "CNX_Chem_02_03_Iodine": {
+      "number": "2.12",
+      "imagePath": "CNX_Chem_02_03_Iodine.jpg",
+      "captionEn": "(a) Insufficient iodine in the diet can cause an enlargement of the thyroid gland called a goiter. (b) The addition of small amounts of iodine to salt, which prevents the formation of goiters, has helped eliminate this concern in the US where salt consumption is high. (credit a: modification of work by “Almazi”/Wikimedia Commons; credit b: modification of work by Mike Mozart)",
+      "altText": "Figure A shows a photo of a person who has a very swollen thyroid in his or her neck. Figure B shows a photo of a canister of iodized salt.",
+      "class": "scaled-down"
+    },
+    "CNX_Chem_02_03_SiSymbol": {
+      "number": "2.13",
+      "imagePath": "CNX_Chem_02_03_SiSymbol.jpg",
+      "captionEn": "The symbol Hg represents the element mercury regardless of the amount; it could represent one atom of mercury or a large amount of mercury.",
+      "altText": "A jar labeled “H g” is shown with a small amount of liquid mercury in it.",
+      "class": "scaled-down"
+    },
+    "CNX_Chem_02_03_AtomSym": {
+      "number": "2.14",
+      "imagePath": "CNX_Chem_02_03_AtomSym.jpg",
+      "captionEn": "The symbol for an atom indicates the element via its usual two-letter symbol, the mass number as a left superscript, the atomic number as a left subscript (sometimes omitted), and the charge as a right superscript.",
+      "altText": "This diagram shows the symbol for helium, “H e.” The number to the upper left of the symbol is the mass number, which is 4. The number to the upper right of the symbol is the charge which is positive 2. The number to the lower left of the symbol is the atomic number, which is 2. This number is often omitted. Also shown is “M g” which stands for magnesium It has a mass number of 24, a charge of positive 2, and an atomic number of 12.",
+      "class": "scaled-down"
+    },
+    "CNX_Chem_02_03_MassSpec": {
+      "number": "2.15",
+      "imagePath": "CNX_Chem_02_03_MassSpec.jpg",
+      "captionEn": "Analysis of zirconium in a mass spectrometer produces a mass spectrum with peaks showing the different isotopes of Zr.",
+      "altText": "The left diagram shows how a mass spectrometer works, which is primarily a large tube that bends downward at its midpoint. The sample enters on the left side of the tube. A heater heats the sample, causing it to vaporize. The sample is also hit with a beam of electrons as it is being vaporized. Charged particles from the sample, called ions, are then accelerated and pass between two magnets. The magnetic field deflects the lightest ions most. The deflection of the ions is measured by a detector located on the right side of the tube. The graph to the right of the spectrometer shows a mass spectrum of zirconium. The relative abundance, as a percentage from 0 to 100, is graphed on the y axis, and the mass to charge ratio is graphed on the x axis. The sample contains five different isomers of zirconium. Z R 90, which has a mass to charge ratio of 90, is the most abundant isotope at about 51 percent relative abundance. Z R 91 has a mass to charge ratio of 91 and a relative abundance of about 11 percent. Z R 92 has a mass to charge ratio of 92 and a relative abundance of about 18 percent. Z R 94 has a mass to charge ratio of 94 and a relative abundance of about 18 percent. Z R 96, which has a mass to charge ratio of 96, is the least abundant zirconium isotope with a relative abundance of about 2 percent."
+    }
+  },
+  "counters": {
+    "figures": 15
+  }
+}

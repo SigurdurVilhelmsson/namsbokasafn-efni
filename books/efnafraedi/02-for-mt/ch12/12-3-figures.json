@@ -1,0 +1,18 @@
+{
+  "module": "m68789",
+  "section": "12.3",
+  "chapter": 12,
+  "title": "Rate Laws",
+  "figures": {
+    "CNX_Chem_12_03_OzoneHole": {
+      "number": "12.8",
+      "imagePath": "CNX_Chem_12_03_OzoneHole.jpg",
+      "captionEn": "A contour map showing stratospheric ozone concentration and the “ozone hole” that occurs over Antarctica during its spring months. (credit: modification of work by NASA)",
+      "altText": "A view of Earth’s southern hemisphere is shown. A nearly circular region of approximately half the diameter of the image is shown in shades of purple, with Antarctica appearing in a slightly lighter color than the surrounding ocean areas. Immediately outside this region is a narrow bright blue zone followed by a bright green zone. In the top half of the figure, the purple region extends slightly outward from the circle and the blue zone extends more outward to the right of the center as compared to the lower half of the image. In the upper half of the image, the majority of the space outside the purple region is shaded green, with a few small strips of interspersed blue regions. The lower half however shows the majority of the space outside the central purple zone in yellow, orange, and red. The red zones appear in the lower central and left regions outside the purple zone. To the lower right of this image is a color scale that is labeled “Total Ozone (Dobsone units).” This scale begins at 0 and increases by 100’s up to 700. At the left end of the scale, the value 0 shows a very deep purple color, 100 is indigo, 200 is blue, 300 is green, 400 is a yellow-orange, 500 is red, 600 is pink, and 700 is white.",
+      "class": "scaled-down"
+    }
+  },
+  "counters": {
+    "figures": 8
+  }
+}

@@ -1,0 +1,24 @@
+---
+title: "Introduction"
+section: "intro"
+module: "m68796"
+lang: "en"
+license_url: "https://creativecommons.org/licenses/by/4.0/"
+---
+
+# Introduction
+
+:::learning-objectives
+## Learning Objectives
+
+- Chemical Equilibria
+- Equilibrium Constants
+- Shifting Equilibria: Le Châtelier’s Principle
+- Equilibrium Calculations
+:::
+
+![](CNX_Chem_13_00_Blood.jpg){id="CNX_Chem_13_00_Blood" class="splash" alt="An image depicts three tan squares, lying side-by-side along the upper left corner. Two of the same squares also lie side-by-side in the lower right corner. Each square has a black dot in the center. One of the squares is labeled, “C O subscript 2,” and has a double-headed arrow pointing from it to a red tube-like structure that runs between the squares across the image from the upper right to the lower left. This arrow is labeled, “C O subscript 2 dissolved in plasma.” The red tube has two round red shapes in it, and the upper one is labeled, “C O subscript 2 carried in red blood cells.” The gaps between the squares and the red tube are colored light blue. One of the squares along the top of the image is labeled, “C O subscript 2,” and is connected by a double-headed arrow to an equation in the red tube that is labeled, “C O subscript 2, a plus sign, H subscript 2 O, right-facing arrow, H subscript 2 C O subscript 3, right-facing arrow, H C O subscript 3 superscript negative sign, plus sign, H superscript positive sign.” The compound “H C O subscript 3 superscript negative sign” is then connected by a double-headed arrow to the space in the red tube and is labeled, “H C O subscript 3 superscript negative sign dissolved in plasma as carbonic acid.”"}
+
+*Figure 13.1: Transport of carbon dioxide in the body involves several reversible chemical reactions, including hydrolysis and acid ionization (among others).*{id="CNX_Chem_13_00_Blood"}
+
+Imagine a beach populated with sunbathers and swimmers. As those basking in the sun get too hot, they enter the surf to swim and cool off. As the swimmers tire, they return to the beach to rest. If the rate at which sunbathers enter the surf were to equal the rate at which swimmers return to the sand, then the numbers (though not the identities) of sunbathers and swimmers would remain constant. This scenario illustrates a dynamic phenomenon known as *equilibrium*, in which opposing processes occur at equal rates. Chemical and physical processes are subject to this phenomenon; these processes are at equilibrium when the forward and reverse reaction rates are equal. Equilibrium systems are pervasive in nature; the various reactions involving carbon dioxide dissolved in blood are examples (see [↗]{ref="CNX_Chem_13_00_Blood"}). This chapter provides a thorough introduction to the essential aspects of chemical equilibria.

@@ -1,0 +1,36 @@
+{
+  "module": "m68754",
+  "section": "9.4",
+  "chapter": 9,
+  "title": "Effusion and Diffusion of Gases",
+  "figures": {
+    "CNX_Chem_09_04_Diffusion": {
+      "number": "9.27",
+      "imagePath": "CNX_Chem_09_04_Diffusion.jpg",
+      "captionEn": "(a) Two gases, H~2~ and O~2~, are initially separated. (b) When the stopcock is opened, they mix together. The lighter gas, H~2~, passes through the opening faster than O~2~, so just after the stopcock is opened, more H~2~ molecules move to the O~2~ side than O~2~ molecules move to the H~2~ side. (c) After a short time, both the slower-moving O~2~ molecules and the faster-moving H~2~ molecules have distributed themselves evenly on both sides of the vessel.",
+      "altText": "In this figure, three pairs of gas filled spheres or vessels are shown connected with a stopcock between them. In a, the figure is labeled, “Stopcock closed.” Above, the left sphere is labeled, “H subscript 2.” It contains approximately 30 small, white, evenly distributed circles. The sphere to its right is labeled, “O subscript 2.” It contains approximately 30 small red evenly distributed circles. In b, the figure is labeled, “Stopcock open.” The stopcock valve handle is now parallel to the tube connecting the two spheres. On the left, approximately 9 small, white circles and 4 small, red circles are present, with the red spheres appearing slightly closer to the stopcock. On the right side, approximately 25 small, red spheres and 21 small, white spheres are present, with the concentration of white spheres slightly greater near the stopcock. In c, the figure is labeled “Some time after Stopcock open.” In this situation, the red and white spheres appear evenly mixed and uniformly distributed throughout both spheres."
+    },
+    "CNX_Chem_09_04_DiffEff": {
+      "number": "9.28",
+      "imagePath": "CNX_Chem_09_04_DiffEff.jpg",
+      "captionEn": "Diffusion involves the unrestricted dispersal of molecules throughout space due to their random motion. When this process is restricted to passage of molecules through very small openings in a physical barrier, the process is called effusion.",
+      "altText": "This figure contains two cylindrical containers which are oriented horizontally. The first is labeled “Diffusion.” In this container, approximately 25 purple and 25 green circles are shown, evenly distributed throughout the container. “Trails” behind some of the circles indicate motion. In the second container, which is labeled “Effusion,” a boundary layer is evident across the center of the cylindrical container, dividing the cylinder into two halves. A black arrow is drawn pointing through this boundary from left to right. To the left of the boundary, approximately 16 green circles and 20 purple circles are shown again with motion indicated by “trails” behind some of the circles. To the right of the boundary, only 4 purple and 16 green circles are shown."
+    },
+    "CNX_Chem_09_04_Effusion2": {
+      "number": "9.29",
+      "imagePath": "CNX_Chem_09_04_Effusion2.jpg",
+      "captionEn": "The left photograph shows two balloons inflated with different gases, helium (orange) and argon (blue).The right-side photograph shows the balloons approximately 12 hours after being filled, at which time the helium balloon has become noticeably more deflated than the argon balloon, due to the greater effusion rate of the lighter helium gas. (credit: modification of work by Paul Flowers)",
+      "altText": "This figure shows two photos. The first photo shows an inflated orange balloon and an inflated blue balloon. Both balloons are about the same size. The second photo shows the same two balloons, but the orange one is now smaller than the blue one.",
+      "class": "scaled-down"
+    },
+    "CNX_Chem_09_04_GasDiff": {
+      "number": "9.30",
+      "imagePath": "CNX_Chem_09_04_GasDiff.jpg",
+      "captionEn": "In a diffuser, gaseous UF~6~ is pumped through a porous barrier, which partially separates ^235^UF~6~ from ^238^UF~6~ The UF~6~ must pass through many large diffuser units to achieve sufficient enrichment in ^235^U.",
+      "altText": "This figure shows a large cylindrical container oriented horizontally. A narrow tube or pipe which is labeled “porous barrier” runs horizontally through the center of the tube and extends a short distance out from the left and right ends of the cylinder. At the far left, an arrow points right into the tube. This arrow is labele, “Uranium hexafluoride ( U F subscript 6 ).” A line segment connects the label, “High pressure feed tube,” to the tube where it enters the cylinder. In the short region of tube outside the cylinder, 5 small, purple circles and 4 small, green circles are present. Inside the cylinder, an arrow points right through the tube which contains many evenly distributed, purple circles and a handful of green circles which decrease in quantity moving left to right through the cylinder. Curved arrows extend from the inner area of the tube into the outer region of the cylinder. Three of these arrows point into the area above the tube and three point into the area below. Two line segments extend from the label, “Higher speed superscript 235 U F subscript 6 diffuses through barrier faster than superscript 238 U F subscript 6,” to two green circles in the space above the tube. In the short section of tubing just outside the cylinder, 8 small, purple circles are present. An arrow labeled, “Depleted superscript 238 U F subscript 6,” points right extending from the end of this tube. The larger space outside the tube contains approximately 100 evenly distributed small green circles and only 5 purple circles. Eight of the purple circles appear at the left end of the cylinder. A tube exits the lower right end of the cylinder. It has 5 green circles followed by a right pointing arrow and the label, “Enriched superscript 235 U F subscript 6.”"
+    }
+  },
+  "counters": {
+    "figures": 30
+  }
+}

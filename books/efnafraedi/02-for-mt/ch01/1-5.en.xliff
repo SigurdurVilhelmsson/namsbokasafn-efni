@@ -1,0 +1,1202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68690" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Measurement Uncertainty, Accuracy, and Precision</note>
+      <note>Section: 1.5</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Measurement Uncertainty, Accuracy, and Precision</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Define accuracy and precision</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Distinguish exact and uncertain numbers</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-list-item">
+        <source>Correctly represent uncertainty in quantities using significant figures</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-list-item">
+        <source>Apply proper rounding rules to computed quantities</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>Counting is the only type of measurement that is free from uncertainty, provided the number of objects being counted does not change while the counting process is underway.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>The result of such a counting measurement is an example of an <g id="1" ctype="x-bold">exact number</g>{id="term-00001"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>By counting the eggs in a carton, one can determine <g id="1" ctype="x-italic">exactly</g> how many eggs the carton contains.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>The numbers of defined quantities are also exact.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>By definition, 1 foot is exactly 12 inches, 1 inch is exactly 2.54 centimeters, and 1 gram is exactly 0.001 kilogram.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>Quantities derived from measurements other than counting, however, are uncertain to varying extents due to practical limitations of the measurement process used.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-section-title">
+        <source>Significant Figures in Measurement</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>The numbers of measured quantities, unlike defined or directly counted quantities, are not exact.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source>To measure the volume of liquid in a graduated cylinder, you should make a reading at the bottom of the meniscus, the lowest point on the curved surface of the liquid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>![](CNX_Chem_01_05_Measure.jpg){id="fs-idm337865984" alt="This diagram shows a 25 milliliter graduated cylinder filled with about 20.8 milliliters of fluid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>The diagram zooms in on the meniscus, which is the curved surface of the water that is visible when the graduated cylinder is viewed from the side.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>You make the reading at the lowest point of the curve of the meniscus."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 1.26: To measure the volume of liquid in this graduated cylinder, you must mentally subdivide the distance between the 21 and 22 mL marks into tenths of a milliliter, and then make a reading (estimate) at the bottom of the meniscus.</g>{id="fs-idm337865984"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>Refer to the illustration in [↗]{ref="fs-idm337865984"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>The bottom of the meniscus in this case clearly lies between the 21 and 22 markings, meaning the liquid volume is <g id="1" ctype="x-italic">certainly</g> greater than 21 mL but less than 22 mL.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source>The meniscus appears to be a bit closer to the 22-mL mark than to the 21-mL mark, and so a reasonable estimate of the liquid’s volume would be 21.6 mL.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-paragraph">
+        <source>In the number 21.6, then, the digits 2 and 1 are certain, but the 6 is an estimate.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source>Some people might estimate the meniscus position to be equally distant from each of the markings and estimate the tenth-place digit as 5, while others may think it to be even closer to the 22-mL mark and estimate this digit to be 7.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-paragraph">
+        <source>Note that it would be pointless to attempt to estimate a digit for the hundredths place, given that the tenths-place digit is uncertain.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source>In general, numerical scales such as the one on this graduated cylinder will permit measurements to one-tenth of the smallest scale division.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>The scale in this case has 1-mL divisions, and so volumes may be measured to the nearest 0.1 mL.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source>This concept holds true for all measurements, even if you do not actively make an estimate.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>If you place a quarter on a standard electronic balance, you may obtain a reading of 6.72 g.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>The digits 6 and 7 are certain, and the 2 indicates that the mass of the quarter is likely between 6.71 and 6.73 grams.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-paragraph">
+        <source>The quarter weighs <g id="1" ctype="x-italic">about</g> 6.72 grams, with a nominal uncertainty in the measurement of ± 0.01 gram.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-paragraph">
+        <source>If the coin is weighed on a more sensitive balance, the mass might be 6.723 g.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>This means its mass lies between 6.722 and 6.724 grams, an uncertainty of 0.001 gram.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>Every measurement has some <g id="1" ctype="x-bold">uncertainty</g>{id="term-00002"}, which depends on the device used (and the user’s ability).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-paragraph">
+        <source>All of the digits in a measurement, including the uncertain last digit, are called <g id="1" ctype="x-bold">significant figures</g>{id="term-00003"} or <g id="2" ctype="x-bold">significant digits</g>{id="term-00004"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source>Note that zero may be a measured value; for example, if you stand on a scale that shows weight to the nearest pound and it shows “120,” then the 1 (hundreds), 2 (tens) and 0 (ones) are all significant (measured) values.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source>A measurement result is properly reported when its significant digits accurately represent the certainty of the measurement process.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source>But what if you were analyzing a reported value and trying to determine what is significant and what is not?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-paragraph">
+        <source>Well, for starters, all nonzero digits are significant, and it is only zeros that require some thought.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source>We will use the terms “leading,” “trailing,” and “captive” for the zeros and will consider how to deal with them.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-paragraph">
+        <source>Starting with the first nonzero digit on the left, count this digit and all remaining digits to the right.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-paragraph">
+        <source>This is the number of significant figures in the measurement unless the last digit is a trailing zero lying to the left of the decimal point.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-paragraph">
+        <source>Captive zeros result from measurement and are therefore always significant.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-paragraph">
+        <source>Leading zeros, however, are never significant—they merely tell us where the decimal point is located.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-paragraph">
+        <source>The leading zeros in this example are not significant.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-paragraph">
+        <source>We could use exponential notation (as described in [Appendix B]{doc="m68860"}) and express the number as 8.32407 <x id="1" equiv-text="[[EQ:4]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−3</g>; then the number 8.32407 contains all of the significant figures, and 10<g id="3" ctype="x-sup">−3</g> locates the decimal point.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-paragraph">
+        <source>The number of significant figures is uncertain in a number that ends with a zero to the left of the decimal point location.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-paragraph">
+        <source>The zeros in the measurement 1,300 grams could be significant or they could simply indicate where the decimal point is located.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-paragraph">
+        <source>The ambiguity can be resolved with the use of exponential notation: 1.3 <x id="1" equiv-text="[[EQ:5]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">3</g> (two significant figures), 1.30 <x id="2" equiv-text="[[EQ:6]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">3</g> (three significant figures, if the tens place was measured), or 1.300 <x id="3" equiv-text="[[EQ:7]]" ctype="x-equation"/> 10<g id="6" ctype="x-sup">3</g> (four significant figures, if the ones place was also measured).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-paragraph">
+        <source>In cases where only the decimal-formatted number is available, it is prudent to assume that all trailing zeros are not significant.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-paragraph">
+        <source>When determining significant figures, be sure to pay attention to reported values and think about the measurement and significant figures in terms of what is reasonable or likely when evaluating whether the value makes sense.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-paragraph">
+        <source>For example, the official January 2014 census reported the resident population of the US as 317,297,725.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-paragraph">
+        <source>Do you think the US population was correctly determined to the reported nine significant figures, that is, to the exact number of people?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-paragraph">
+        <source>People are constantly being born, dying, or moving into or out of the country, and assumptions are made to account for the large number of people who are not actually counted.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-paragraph">
+        <source>Because of these uncertainties, it might be more reasonable to expect that we know the population to within perhaps a million or so, in which case the population should be reported as 3.17 <x id="1" equiv-text="[[EQ:8]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">8</g> people.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-section-title">
+        <source>Significant Figures in Calculations</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-paragraph">
+        <source>A second important principle of uncertainty is that results calculated from a measurement are at least as uncertain as the measurement itself.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-paragraph">
+        <source>Take the uncertainty in measurements into account to avoid misrepresenting the uncertainty in calculated results.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-paragraph">
+        <source>One way to do this is to report the result of a calculation with the correct number of significant figures, which is determined by the following three rules for <g id="1" ctype="x-bold">rounding</g>{id="term-00005"} numbers:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-paragraph">
+        <source>The following examples illustrate the application of this rule in rounding a few different numbers to three significant figures:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-paragraph">
+        <source>Let’s work through these rules with a few examples.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-example-subsection-title">
+        <source>Example 1.1: Rounding Numbers</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-example-paragraph">
+        <source>Round the following to the indicated number of significant figures:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-example-paragraph">
+        <source>(a) 31.57 (to two significant figures)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-example-paragraph">
+        <source>(b) 8.1649 (to three significant figures)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-example-paragraph">
+        <source>(c) 0.051065 (to four significant figures)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-example-paragraph">
+        <source>(d) 0.90275 (to four significant figures)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-example-paragraph">
+        <source>(a) 31.57 rounds “up” to 32 (the dropped digit is 5, and the retained digit is even)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-example-paragraph">
+        <source>(b) 8.1649 rounds “down” to 8.16 (the dropped digit, 4, is less than 5)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-example-paragraph">
+        <source>(c) 0.051065 rounds “down” to 0.05106 (the dropped digit is 5, and the retained digit is even)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-example-paragraph">
+        <source>(d) 0.90275 rounds “up” to 0.9028 (the dropped digit is 5, and the retained digit is even)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-example-paragraph">
+        <source>Round the following to the indicated number of significant figures:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-example-paragraph">
+        <source>(a) 0.424 (to two significant figures)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-example-paragraph">
+        <source>(b) 0.0038661 (to three significant figures)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-example-paragraph">
+        <source>(c) 421.25 (to four significant figures)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-example-paragraph">
+        <source>(d) 28,683.5 (to five significant figures)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-example-paragraph">
+        <source>(a) 0.42; (b) 0.00387; (c) 421.2; (d) 28,684</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-paragraph">
+        <source>(a) 0.42; (b) 0.00387; (c) 421.2; (d) 28,684</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-example-subsection-title">
+        <source>Example 1.2: Addition and Subtraction with Significant Figures</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-example-paragraph">
+        <source>Rule: When adding or subtracting numbers, round the result to the same number of decimal places as the number with the fewest decimal places (i.e., the least certain value in terms of addition and subtraction).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-example-paragraph">
+        <source>(a) Add 1.0023 g and 4.383 g.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-example-paragraph">
+        <source>(b) Subtract 421.23 g from 486 g.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-example-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:9]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-example-paragraph">
+        <source>Answer is 5.385 g (round to the thousandths place; three decimal places)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-example-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:10]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-example-paragraph">
+        <source>Answer is 65 g (round to the ones place; no decimal places)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-example-paragraph">
+        <source>(a) Add 2.334 mL and 0.31 mL.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-example-paragraph">
+        <source>(b) Subtract 55.8752 m from 56.533 m.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-97" restype="x-example-paragraph">
+        <source>(a) 2.64 mL; (b) 0.658 m</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-98" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-99" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-100" restype="x-paragraph">
+        <source>(a) 2.64 mL; (b) 0.658 m</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-101" restype="x-example-subsection-title">
+        <source>Example 1.3: Multiplication and Division with Significant Figures</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-102" restype="x-example-paragraph">
+        <source>Rule: When multiplying or dividing numbers, round the result to the same number of digits as the number with the fewest significant figures (the least certain value in terms of multiplication and division).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-103" restype="x-example-paragraph">
+        <source>(a) Multiply 0.6238 cm by 6.6 cm.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-104" restype="x-example-paragraph">
+        <source>(b) Divide 421.23 g by 486 mL.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-105" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-106" restype="x-example-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-107" restype="x-example-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:12]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-108" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-109" restype="x-example-paragraph">
+        <source>(a) Multiply 2.334 cm and 0.320 cm.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-110" restype="x-example-paragraph">
+        <source>(b) Divide 55.8752 m by 56.53 s.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-111" restype="x-example-paragraph">
+        <source>(a) 0.747 cm<g id="1" ctype="x-sup">2</g> (b) 0.9884 m/s</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-112" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-113" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-114" restype="x-paragraph">
+        <source>(a) 0.747 cm<g id="1" ctype="x-sup">2</g> (b) 0.9884 m/s</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-115" restype="x-paragraph">
+        <source>In the midst of all these technicalities, it is important to keep in mind the reason for these rules about significant figures and rounding—to correctly represent the certainty of the values reported and to ensure that a calculated result is not represented as being more certain than the least certain value used in the calculation.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-116" restype="x-example-subsection-title">
+        <source>Example 1.4: Calculation with Significant Figures</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-117" restype="x-example-paragraph">
+        <source>One common bathtub is 13.44 dm long, 5.920 dm wide, and 2.54 dm deep.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-118" restype="x-example-paragraph">
+        <source>Assume that the tub is rectangular and calculate its approximate volume in liters.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-119" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-120" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:1]]" ctype="x-equation"/>{id="fs-idm15365184"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-121" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-122" restype="x-example-paragraph">
+        <source>What is the density of a liquid with a mass of 31.1415 g and a volume of 30.13 cm<g id="1" ctype="x-sup">3</g>?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-123" restype="x-example-paragraph">
+        <source>1.034 g/mL</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-124" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-125" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-126" restype="x-paragraph">
+        <source>1.034 g/mL</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-127" restype="x-example-subsection-title">
+        <source>Example 1.5: Experimental Determination of Density Using Water Displacement</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-128" restype="x-example-paragraph">
+        <source>A piece of rebar is weighed and then submerged in a graduated cylinder partially filled with water, with results as shown.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-129" restype="x-example-paragraph">
+        <source>(a) Use these values to determine the density of this piece of rebar.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-130" restype="x-example-paragraph">
+        <source>(b) Rebar is mostly iron.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-131" restype="x-example-paragraph">
+        <source>Does your result in (a) support this statement?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-132" restype="x-example-paragraph">
+        <source>How?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-133" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-134" restype="x-example-paragraph">
+        <source>The volume of the piece of rebar is equal to the volume of the water displaced:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-135" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:2]]" ctype="x-equation"/>{id="fs-idm180698816"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-136" restype="x-example-paragraph">
+        <source>(rounded to the nearest 0.1 mL, per the rule for addition and subtraction)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-137" restype="x-example-paragraph">
+        <source>The density is the mass-to-volume ratio:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-138" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:3]]" ctype="x-equation"/>{id="fs-idp135143440"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-139" restype="x-example-paragraph">
+        <source>(rounded to two significant figures, per the rule for multiplication and division)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-140" restype="x-example-paragraph">
+        <source>From [↗]{ref="fs-idm45639696"}, the density of iron is 7.9 g/cm<g id="1" ctype="x-sup">3</g>, very close to that of rebar, which lends some support to the fact that rebar is mostly iron.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-141" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-142" restype="x-example-paragraph">
+        <source>An irregularly shaped piece of a shiny yellowish material is weighed and then submerged in a graduated cylinder, with results as shown.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-143" restype="x-example-paragraph">
+        <source>(a) Use these values to determine the density of this material.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-144" restype="x-example-paragraph">
+        <source>(b) Do you have any reasonable guesses as to the identity of this material?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-145" restype="x-example-paragraph">
+        <source>Explain your reasoning.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-146" restype="x-example-paragraph">
+        <source>(a) 19 g/cm<g id="1" ctype="x-sup">3</g>; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [↗]{ref="fs-idm45639696"}.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-147" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-148" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-149" restype="x-paragraph">
+        <source>(a) 19 g/cm<g id="1" ctype="x-sup">3</g>; (b) It is likely gold; the right appearance for gold and very close to the density given for gold in [↗]{ref="fs-idm45639696"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-150" restype="x-section-title">
+        <source>Accuracy and Precision</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-151" restype="x-paragraph">
+        <source>Scientists typically make repeated measurements of a quantity to ensure the quality of their findings and to evaluate both the <g id="1" ctype="x-bold">precision</g>{id="term-00006"} and the <g id="2" ctype="x-bold">accuracy</g>{id="term-00007"} of their results.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-152" restype="x-paragraph">
+        <source>Measurements are said to be precise if they yield very similar results when repeated in the same manner.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-153" restype="x-paragraph">
+        <source>A measurement is considered accurate if it yields a result that is very close to the true or accepted value.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-154" restype="x-paragraph">
+        <source>Precise values agree with each other; accurate values agree with a true value.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-155" restype="x-paragraph">
+        <source>These characterizations can be extended to other contexts, such as the results of an archery competition ([↗]{ref="fs-idm1827280"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-156" restype="x-paragraph">
+        <source>![](CNX_Chem_01_05_Archery.jpg){id="fs-idm1827280" alt="Figures A through C each show targets with holes where the arrows hit.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-157" restype="x-paragraph">
+        <source>The archer in figure A was both accurate and precise as all 3 arrows are clustered in the center of the target.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-158" restype="x-paragraph">
+        <source>In figure B, the archer is precise but not accurate, as all 3 arrows are clustered together but to the upper right of the center of the target.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-159" restype="x-paragraph">
+        <source>In Figure C, the archer is neither accurate nor precise as the 3 holes are not close together and are located both to the upper right and right of the target."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-160" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 1.27: (a) These arrows are close to both the bull’s eye and one another, so they are both accurate and precise. (b) These arrows are close to one another but not on target, so they are precise but not accurate. (c) These arrows are neither on target nor close to one another, so they are neither accurate nor precise.</g>{id="fs-idm1827280"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-161" restype="x-paragraph">
+        <source>Suppose a quality control chemist at a pharmaceutical company is tasked with checking the accuracy and precision of three different machines that are meant to dispense 10 ounces (296 mL) of cough syrup into storage bottles.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-162" restype="x-paragraph">
+        <source>She proceeds to use each machine to fill five bottles and then carefully determines the actual volume dispensed, obtaining the results tabulated in [↗]{ref="fs-idp31780400"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-163" restype="x-paragraph">
+        <source><g id="1" ctype="x-bold">Volume (mL) of Cough Medicine Delivered by 10-oz (296 mL) Dispensers</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-164" restype="x-paragraph">
+        <source>| Dispenser #1 | Dispenser #2 | Dispenser #3 | | :--- | :--- | :--- | | 283.3 | 298.3 | 296.1 | | 284.1 | 294.2 | 295.9 | | 283.9 | 296.0 | 296.1 | | 284.0 | 297.8 | 296.0 | | 284.1 | 293.9 | 296.1 | {id="fs-idp31780400" summary="The volume, in milliliters, of cough medicine delivered by dispensers 1, 2 and 3 are shown in a table.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-165" restype="x-paragraph">
+        <source>The values for dispenser 1 are 283.3, 284.1, 283.9, 284.0, and 284.1.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-166" restype="x-paragraph">
+        <source>The values for dispenser 2 are 298.3, 294.2, 296.0, 297.8, and 293.9.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-167" restype="x-paragraph">
+        <source>The values for dispenser 3 are 296.1, 295.9, 296.1, 296.0, and 296.1."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-168" restype="x-paragraph">
+        <source>Considering these results, she will report that dispenser #1 is precise (values all close to one another, within a few tenths of a milliliter) but not accurate (none of the values are close to the target value of 296 mL, each being more than 10 mL too low).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-169" restype="x-paragraph">
+        <source>Results for dispenser #2 represent improved accuracy (each volume is less than 3 mL away from 296 mL) but worse precision (volumes vary by more than 4 mL).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-170" restype="x-paragraph">
+        <source>Finally, she can report that dispenser #3 is working well, dispensing cough syrup both accurately (all volumes within 0.1 mL of the target volume) and precisely (volumes differing from each other by no more than 0.2 mL).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-171" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-172" restype="x-paragraph">
+        <source>Quantities can be defined or measured.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-173" restype="x-paragraph">
+        <source>Measured quantities have an associated uncertainty that is represented by the number of significant figures in the quantity’s number.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-174" restype="x-paragraph">
+        <source>The uncertainty of a calculated quantity depends on the uncertainties in the quantities used in the calculation and is reflected in how the value is rounded.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-175" restype="x-paragraph">
+        <source>Quantities are characterized with regard to accuracy (closeness to a true or accepted value) and precision (variation among replicate measurement results).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-176" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-177" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm29064528} Express each of the following numbers in scientific notation with correct significant figures:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-178" restype="x-paragraph">
+        <source>(a) 711.0</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-179" restype="x-paragraph">
+        <source>(b) 0.239</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-180" restype="x-paragraph">
+        <source>(c) 90743</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-181" restype="x-paragraph">
+        <source>(d) 134.2</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-182" restype="x-paragraph">
+        <source>(e) 0.05499</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-183" restype="x-paragraph">
+        <source>(f) 10000.0</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-184" restype="x-paragraph">
+        <source>(g) 0.000000738592</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-185" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp24074624} Express each of the following numbers in exponential notation with correct significant figures:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-186" restype="x-paragraph">
+        <source>(a) 704</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-187" restype="x-paragraph">
+        <source>(b) 0.03344</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-188" restype="x-paragraph">
+        <source>(c) 547.9</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-189" restype="x-paragraph">
+        <source>(d) 22086</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-190" restype="x-paragraph">
+        <source>(e) 1000.00</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-191" restype="x-paragraph">
+        <source>(f) 0.0000000651</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-192" restype="x-paragraph">
+        <source>(g) 0.007157</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-193" restype="x-paragraph">
+        <source>:::answer (a) 7.04 <x id="1" equiv-text="[[EQ:13]]" ctype="x-equation"/> 10<g id="8" ctype="x-sup">2</g>; (b) 3.344 <x id="2" equiv-text="[[EQ:14]]" ctype="x-equation"/> 10<g id="9" ctype="x-sup">−2</g>; (c) 5.479 <x id="3" equiv-text="[[EQ:15]]" ctype="x-equation"/> 10<g id="10" ctype="x-sup">2</g>; (d) 2.2086 <x id="4" equiv-text="[[EQ:16]]" ctype="x-equation"/> 10<g id="11" ctype="x-sup">4</g>; (e) 1.00000 <x id="5" equiv-text="[[EQ:17]]" ctype="x-equation"/> 10<g id="12" ctype="x-sup">3</g>; (f) 6.51 <x id="6" equiv-text="[[EQ:18]]" ctype="x-equation"/> 10<g id="13" ctype="x-sup">−8</g>; (g) 7.157 <x id="7" equiv-text="[[EQ:19]]" ctype="x-equation"/> 10<g id="14" ctype="x-sup">−3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-194" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp26053648} Indicate whether each of the following can be determined exactly or must be measured with some degree of uncertainty:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-195" restype="x-paragraph">
+        <source>(a) the number of eggs in a basket</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-196" restype="x-paragraph">
+        <source>(b) the mass of a dozen eggs</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-197" restype="x-paragraph">
+        <source>(c) the number of gallons of gasoline necessary to fill an automobile gas tank</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-198" restype="x-paragraph">
+        <source>(d) the number of cm in 2 m</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-199" restype="x-paragraph">
+        <source>(e) the mass of a textbook</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-200" restype="x-paragraph">
+        <source>(f) the time required to drive from San Francisco to Kansas City at an average speed of 53 mi/h</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-201" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp30473840} Indicate whether each of the following can be determined exactly or must be measured with some degree of uncertainty:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-202" restype="x-paragraph">
+        <source>(a) the number of seconds in an hour</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-203" restype="x-paragraph">
+        <source>(b) the number of pages in this book</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-204" restype="x-paragraph">
+        <source>(c) the number of grams in your weight</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-205" restype="x-paragraph">
+        <source>(d) the number of grams in 3 kilograms</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-206" restype="x-paragraph">
+        <source>(e) the volume of water you drink in one day</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-207" restype="x-paragraph">
+        <source>(f) the distance from San Francisco to Kansas City</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-208" restype="x-paragraph">
+        <source>:::answer (a) exact; (b) exact; (c) uncertain; (d) exact; (e) uncertain; (f) uncertain</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-209" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp191983136} How many significant figures are contained in each of the following measurements?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-210" restype="x-paragraph">
+        <source>(a) 38.7 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-211" restype="x-paragraph">
+        <source>(b) 2 <x id="1" equiv-text="[[EQ:20]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">18</g> m</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-212" restype="x-paragraph">
+        <source>(c) 3,486,002 kg</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-213" restype="x-paragraph">
+        <source>(d) 9.74150 <x id="1" equiv-text="[[EQ:21]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−4</g> J</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-214" restype="x-paragraph">
+        <source>(e) 0.0613 cm<g id="1" ctype="x-sup">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-215" restype="x-paragraph">
+        <source>(f) 17.0 kg</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-216" restype="x-paragraph">
+        <source>(g) 0.01400 g/mL</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-217" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp16088144} How many significant figures are contained in each of the following measurements?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-218" restype="x-paragraph">
+        <source>(a) 53 cm</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-219" restype="x-paragraph">
+        <source>(b) 2.05 <x id="1" equiv-text="[[EQ:22]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">8</g> m</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-220" restype="x-paragraph">
+        <source>(c) 86,002 J</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-221" restype="x-paragraph">
+        <source>(d) 9.740 <x id="1" equiv-text="[[EQ:23]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">4</g> m/s</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-222" restype="x-paragraph">
+        <source>(e) 10.0613 m<g id="1" ctype="x-sup">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-223" restype="x-paragraph">
+        <source>(f) 0.17 g/mL</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-224" restype="x-paragraph">
+        <source>(g) 0.88400 s</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-225" restype="x-paragraph">
+        <source>:::answer (a) two; (b) three; (c) five; (d) four; (e) six; (f) two; (g) five</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-226" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp334498416} The following quantities were reported on the labels of commercial products.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-227" restype="x-paragraph">
+        <source>Determine the number of significant figures in each.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-228" restype="x-paragraph">
+        <source>(a) 0.0055 g active ingredients</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-229" restype="x-paragraph">
+        <source>(b) 12 tablets</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-230" restype="x-paragraph">
+        <source>(c) 3% hydrogen peroxide</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-231" restype="x-paragraph">
+        <source>(d) 5.5 ounces</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-232" restype="x-paragraph">
+        <source>(e) 473 mL</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-233" restype="x-paragraph">
+        <source>(f) 1.75% bismuth</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-234" restype="x-paragraph">
+        <source>(g) 0.001% phosphoric acid</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-235" restype="x-paragraph">
+        <source>(h) 99.80% inert ingredients</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-236" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp15391168} Round off each of the following numbers to two significant figures:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-237" restype="x-paragraph">
+        <source>(a) 0.436</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-238" restype="x-paragraph">
+        <source>(b) 9.000</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-239" restype="x-paragraph">
+        <source>(c) 27.2</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-240" restype="x-paragraph">
+        <source>(d) 135</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-241" restype="x-paragraph">
+        <source>(e) 1.497 <x id="1" equiv-text="[[EQ:24]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-242" restype="x-paragraph">
+        <source>(f) 0.445</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-243" restype="x-paragraph">
+        <source>:::answer (a) 0.44; (b) 9.0; (c) 27; (d) 140; (e) 1.5 <x id="1" equiv-text="[[EQ:25]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−3</g>; (f) 0.44</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-244" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp108082000} Round off each of the following numbers to two significant figures:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-245" restype="x-paragraph">
+        <source>(a) 517</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-246" restype="x-paragraph">
+        <source>(b) 86.3</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-247" restype="x-paragraph">
+        <source>(c) 6.382 <x id="1" equiv-text="[[EQ:26]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-248" restype="x-paragraph">
+        <source>(d) 5.0008</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-249" restype="x-paragraph">
+        <source>(e) 22.497</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-250" restype="x-paragraph">
+        <source>(f) 0.885</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-251" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp358584288} Perform the following calculations and report each answer with the correct number of significant figures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-252" restype="x-paragraph">
+        <source>(a) 628 <x id="1" equiv-text="[[EQ:27]]" ctype="x-equation"/> 342</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-253" restype="x-paragraph">
+        <source>(b) (5.63 <x id="1" equiv-text="[[EQ:28]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">2</g>) <x id="2" equiv-text="[[EQ:29]]" ctype="x-equation"/> (7.4 <x id="3" equiv-text="[[EQ:30]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">3</g>)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-254" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:31]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-255" restype="x-paragraph">
+        <source>(d) 8119 <x id="1" equiv-text="[[EQ:32]]" ctype="x-equation"/> 0.000023</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-256" restype="x-paragraph">
+        <source>(e) 14.98 + 27,340 + 84.7593</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-257" restype="x-paragraph">
+        <source>(f) 42.7 + 0.259</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-258" restype="x-paragraph">
+        <source>:::answer (a) 2.15 <x id="1" equiv-text="[[EQ:33]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">5</g>; (b) 4.2 <x id="2" equiv-text="[[EQ:34]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">6</g>; (c) 2.08; (d) 0.19; (e) 27,440; (f) 43.0</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-259" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp356573616} Perform the following calculations and report each answer with the correct number of significant figures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-260" restype="x-paragraph">
+        <source>(a) 62.8 <x id="1" equiv-text="[[EQ:35]]" ctype="x-equation"/> 34</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-261" restype="x-paragraph">
+        <source>(b) 0.147 + 0.0066 + 0.012</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-262" restype="x-paragraph">
+        <source>(c) 38 <x id="1" equiv-text="[[EQ:36]]" ctype="x-equation"/> 95 <x id="2" equiv-text="[[EQ:37]]" ctype="x-equation"/> 1.792</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-263" restype="x-paragraph">
+        <source>(d) 15 – 0.15 – 0.6155</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-264" restype="x-paragraph">
+        <source>(e) <x id="1" equiv-text="[[EQ:38]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-265" restype="x-paragraph">
+        <source>(f) 140 + 7.68 + 0.014</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-266" restype="x-paragraph">
+        <source>(g) 28.7 – 0.0483</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-267" restype="x-paragraph">
+        <source>(h) <x id="1" equiv-text="[[EQ:39]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-268" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp30946992} Consider the results of the archery contest shown in this figure.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-269" restype="x-paragraph">
+        <source>(a) Which archer is most precise?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-270" restype="x-paragraph">
+        <source>(b) Which archer is most accurate?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-271" restype="x-paragraph">
+        <source>(c) Who is both least precise and least accurate?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-272" restype="x-paragraph">
+        <source>:::answer (a) Archer X; (b) Archer W; (c) Archer Y</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-273" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp33718320} Classify the following sets of measurements as accurate, precise, both, or neither.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-274" restype="x-paragraph">
+        <source>(a) Checking for consistency in the weight of chocolate chip cookies: 17.27 g, 13.05 g, 19.46 g, 16.92 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-275" restype="x-paragraph">
+        <source>(b) Testing the volume of a batch of 25-mL pipettes: 27.02 mL, 26.99 mL, 26.97 mL, 27.01 mL</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-276" restype="x-paragraph">
+        <source>(c) Determining the purity of gold: 99.9999%, 99.9998%, 99.9998%, 99.9999%</source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68730" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Introduction</note>
+      <note>Section: intro</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Introduction</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-list-item">
+        <source>Writing and Balancing Chemical Equations</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Classifying Chemical Reactions</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Reaction Stoichiometry</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-list-item">
+        <source>Reaction Yields</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-list-item">
+        <source>Quantitative Chemical Analysis</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>![](CNX_Chem_04_00_Rocket.jpg){id="CNX_Chem_04_00_Rocket" class="splash" alt="An image is shown of a rocket that appears to have just passed through a layer of clouds as it travels skyward.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>A bright white light is seen in the upper right corner of the image.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>To the lower left appears the layer of clouds and the bottom of the rocket with fire projecting from the fuel cones at its base."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 4.1: Many modern rocket fuels are solid mixtures of substances combined in carefully measured amounts and ignited to yield a thrust-generating chemical reaction. (credit: modification of work by NASA)</g>{id="CNX_Chem_04_00_Rocket"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>Solid-fuel rockets are a central feature in the world’s space exploration programs, including the new Space Launch System being developed by the National Aeronautics and Space Administration (NASA) to replace the retired Space Shuttle fleet ([↗]{ref="CNX_Chem_04_00_Rocket"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>The engines of these rockets rely on carefully prepared solid mixtures of chemicals combined in precisely measured amounts.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>Igniting the mixture initiates a vigorous chemical reaction that rapidly generates large amounts of gaseous products.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>These gases are ejected from the rocket engine through its nozzle, providing the thrust needed to propel heavy payloads into space.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source>Both the nature of this chemical reaction and the relationships between the amounts of the substances being consumed and produced by the reaction are critically important considerations that determine the success of the technology.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>This chapter will describe how to symbolize chemical reactions using chemical equations, how to classify some common chemical reactions by identifying patterns of reactivity, and how to determine the quantitative relations between the amounts of substances involved in chemical reactions—that is, the reaction <g id="1" ctype="x-italic">stoichiometry</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

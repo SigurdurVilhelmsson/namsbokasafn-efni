@@ -1,0 +1,25 @@
+{
+  "module": "m68787",
+  "section": "12.2",
+  "chapter": 12,
+  "title": "Factors Affecting Reaction Rates",
+  "figures": {
+    "CNX_Chem_12_02_AcidDissol": {
+      "number": "12.6",
+      "imagePath": "CNX_Chem_12_02_AcidDissol.jpg",
+      "captionEn": "(a) Iron powder reacts rapidly with dilute hydrochloric acid and produces bubbles of hydrogen gas: Fe(*s*) + HCl(*aq*) [[EQ:4]] 2FeCl~2~(*aq*) + 3H~2~(*g*). (b) An iron nail reacts more slowly because the surface area exposed to the acid is much less.",
+      "altText": "This figure shows two photos labeled (a) and (b). Photo (a) shows the bottom of a test tube. The test tube is filled with a dark gas, and there is a dark substance and bubbles in the bottom. Photo (b) shows a rod and bubbles in a test tube similar to photo (a), but the gas in the test tube is not as dark.",
+      "class": "scaled-down"
+    },
+    "CNX_Chem_12_02_NYSStatue": {
+      "number": "12.7",
+      "imagePath": "CNX_Chem_12_02_NYSStatue.jpg",
+      "captionEn": "Statues made from carbonate compounds such as limestone and marble typically weather slowly over time due to the actions of water, and thermal expansion and contraction. However, pollutants like sulfur dioxide can accelerate weathering. As the concentration of air pollutants increases, deterioration of limestone occurs more rapidly. (credit: James P Fisher III)",
+      "altText": "A photograph is shown of an angel statue. While some details of the statue, including facial features, are present, effects of weathering appear to be diminishing these features.",
+      "class": "scaled-down"
+    }
+  },
+  "counters": {
+    "figures": 7
+  }
+}

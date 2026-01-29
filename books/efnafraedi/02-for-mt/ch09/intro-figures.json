@@ -1,0 +1,18 @@
+{
+  "module": "m68748",
+  "section": "intro",
+  "chapter": 9,
+  "title": "Introduction",
+  "figures": {
+    "CNX_Chem_09_00_HotAirBall": {
+      "number": "9.1",
+      "imagePath": "CNX_Chem_09_00_HotAirBall.jpg",
+      "captionEn": "The hot air inside these balloons is less dense than the surrounding cool air. This results in a buoyant force that causes the balloons to rise when their guy lines are untied. (credit: modification of work by Anthony Quintano)",
+      "altText": "A photograph shows about twenty colorful hot air balloons at varying stages of inflation. Some are deflated, while others are inflated. Three of the balloons are off the ground and are visible against a bright blue sky.",
+      "class": "splash"
+    }
+  },
+  "counters": {
+    "figures": 1
+  }
+}

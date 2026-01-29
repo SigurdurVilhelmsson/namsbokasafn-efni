@@ -1,0 +1,31 @@
+{
+  "module": "m68702",
+  "section": "3.2",
+  "chapter": 3,
+  "title": "Determining Empirical and Molecular Formulas",
+  "figures": {
+    "CNX_Chem_03_03_empform": {
+      "number": "3.11",
+      "imagePath": "CNX_Chem_03_03_empform.jpg",
+      "captionEn": "The empirical formula of a compound can be derived from the masses of all elements in the sample.",
+      "altText": "A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, “Mass of A atoms” and “Moles of A atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass,” written below it. The second two bottom boxes have the phrases, “Mass of X atoms” and “Moles of X atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass” written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase “Divide by lowest number of moles” written below it. The last two boxes have the phrases, “A to X mole ratio” and “Empirical formula” respectively, while the arrow that connects them has the phrase, “Convert ratio to lowest whole numbers” written below it."
+    },
+    "CNX_Chem_03_03_hematite": {
+      "number": "3.12",
+      "imagePath": "CNX_Chem_03_03_hematite.jpg",
+      "captionEn": "Hematite is an iron oxide that is used in jewelry. (credit: Mauro Cateb)",
+      "altText": "Two rounded, smooth black stones are shown.",
+      "class": "scaled-down"
+    },
+    "CNX_Chem_03_03_BrewTank": {
+      "number": "3.13",
+      "imagePath": "CNX_Chem_03_03_BrewTank.jpg",
+      "captionEn": "An oxide of carbon is removed from these fermentation tanks through the large copper pipes at the top. (credit: “Dual Freq”/Wikimedia Commons)",
+      "altText": "A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.",
+      "class": "scaled-down"
+    }
+  },
+  "counters": {
+    "figures": 13
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "module": "m68698",
+  "section": "2.7",
+  "chapter": 2,
+  "title": "Chemical Nomenclature",
+  "figures": {
+    "CNX_Chem_02_07_ErinBrocko": {
+      "number": "2.31",
+      "imagePath": "CNX_Chem_02_07_ErinBrocko.jpg",
+      "captionEn": "(a) Erin Brockovich found that Cr(VI), used by PG&amp;E, had contaminated the Hinckley, California, water supply. (b) The Cr(VI) ion is often present in water as the polyatomic ions chromate, [[EQ:4]] (left), and dichromate, [[EQ:5]] (right).",
+      "altText": "Figure A shows a photo of Erin Brockovich. Figure B shows a 3-D ball-and-stick model of chromate. Chromate has a chromium atom at its center that forms bonds with four oxygen atoms each. Two of the oxygen atoms form single bonds with the chromium atom while the other two form double bonds each. The structure of dichromate consists of two chromate ions that are bonded and share one of their oxygen atoms to which each chromate atom has a single bond."
+    }
+  },
+  "counters": {
+    "figures": 31
+  }
+}

@@ -68,6 +68,29 @@ const CHEMISTRY_2E_MODULES = {
   'm68724': { chapter: 5, section: '5.1', title: 'Energy Basics' },
   'm68726': { chapter: 5, section: '5.2', title: 'Calorimetry' },
   'm68727': { chapter: 5, section: '5.3', title: 'Enthalpy' },
+  // Chapter 9: Gases
+  'm68748': { chapter: 9, section: 'intro', title: 'Introduction' },
+  'm68750': { chapter: 9, section: '9.1', title: 'Gas Pressure' },
+  'm68751': { chapter: 9, section: '9.2', title: 'Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law' },
+  'm68752': { chapter: 9, section: '9.3', title: 'Stoichiometry of Gaseous Substances, Mixtures, and Reactions' },
+  'm68754': { chapter: 9, section: '9.4', title: 'Effusion and Diffusion of Gases' },
+  'm68758': { chapter: 9, section: '9.5', title: 'The Kinetic-Molecular Theory' },
+  'm68759': { chapter: 9, section: '9.6', title: 'Non-Ideal Gas Behavior' },
+  // Chapter 12: Kinetics
+  'm68785': { chapter: 12, section: 'intro', title: 'Introduction' },
+  'm68786': { chapter: 12, section: '12.1', title: 'Chemical Reaction Rates' },
+  'm68787': { chapter: 12, section: '12.2', title: 'Factors Affecting Reaction Rates' },
+  'm68789': { chapter: 12, section: '12.3', title: 'Rate Laws' },
+  'm68791': { chapter: 12, section: '12.4', title: 'Integrated Rate Laws' },
+  'm68793': { chapter: 12, section: '12.5', title: 'Collision Theory' },
+  'm68794': { chapter: 12, section: '12.6', title: 'Reaction Mechanisms' },
+  'm68795': { chapter: 12, section: '12.7', title: 'Catalysis' },
+  // Chapter 13: Fundamental Equilibrium Concepts
+  'm68796': { chapter: 13, section: 'intro', title: 'Introduction' },
+  'm68797': { chapter: 13, section: '13.1', title: 'Chemical Equilibria' },
+  'm68798': { chapter: 13, section: '13.2', title: 'Equilibrium Constants' },
+  'm68799': { chapter: 13, section: '13.3', title: 'Shifting Equilibria: Le Châtelier\'s Principle' },
+  'm68801': { chapter: 13, section: '13.4', title: 'Equilibrium Calculations' },
 };
 
 function parseArgs(args) {
@@ -158,6 +181,17 @@ async function fetchCnxml(input, verbose) {
   }
 
   if (/^m\d+$/.test(input)) {
+    // Check for local file in books/efnafraedi/01-source/ch{chapter}/{moduleId}.cnxml
+    const moduleInfo = CHEMISTRY_2E_MODULES[input];
+    if (moduleInfo) {
+      const chapterDir = String(moduleInfo.chapter).padStart(2, '0');
+      const localPath = path.join(process.cwd(), 'books', 'efnafraedi', '01-source', `ch${chapterDir}`, `${input}.cnxml`);
+      if (fs.existsSync(localPath)) {
+        if (verbose) console.error('Reading local file: ' + localPath);
+        return fs.readFileSync(localPath, 'utf-8');
+      }
+    }
+
     const url = GITHUB_RAW_BASE + MODULES_PATH + '/' + input + '/index.cnxml';
     if (verbose) console.error('Fetching from GitHub: ' + url);
     return fetchUrl(url);
