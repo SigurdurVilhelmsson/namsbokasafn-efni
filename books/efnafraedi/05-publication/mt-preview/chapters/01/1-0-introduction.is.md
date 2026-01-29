@@ -1,5 +1,8 @@
 ---
-title: "Inngangur"
+title: Inngangur
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-29T12:00:09.515Z"
 ---
 
 ## titill: „Inngangur“ kafli: „inngangur“ eining: „m68663“ tungumál: „is“ leyfisvefslóð: „https://creativecommons.org/licenses/by/4.0/“

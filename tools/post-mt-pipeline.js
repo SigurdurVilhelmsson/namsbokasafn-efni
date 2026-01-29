@@ -251,10 +251,12 @@ function getSidecarPath(filePath, sidecarType) {
 
   // Get the base name without language suffix and extension
   // e.g., "1-2.is.md" -> "1-2" or "intro.is.md" -> "intro"
+  // Also handles split files: "1-2(a).is.md" -> "1-2"
   const dir = path.dirname(forMtPath);
   const basename = path.basename(forMtPath)
     .replace(/\.is\.md$/, '')  // Remove .is.md
     .replace(/\.en\.md$/, '')  // Remove .en.md (shouldn't happen but be safe)
+    .replace(/\([a-z]\)$/, '') // Remove split file suffix like (a), (b), etc.
     .replace(/\.md$/, '');     // Remove plain .md
 
   const sidecarPath = path.join(dir, `${basename}-${sidecarType}.json`);

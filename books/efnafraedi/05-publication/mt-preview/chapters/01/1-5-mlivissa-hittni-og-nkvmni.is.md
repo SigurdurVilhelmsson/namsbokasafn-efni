@@ -1,3 +1,10 @@
+---
+title: Mælióvissa, hittni og nákvæmni
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-29T12:00:09.529Z"
+---
+
 ## titill: „Óvissa í mælingum, hittni og nákvæmni“ kafli: „1.5“ eining: „m68690“ tungumál: „is“ hluti: „a“
 
 # Óvissa í mælingum, hittni og nákvæmni
@@ -14,12 +21,13 @@
 
 - Sýnt óvissu í stærðum rétt með markverðum stöfum
 
-- Beitt réttum námundunarreglum á útreiknaðar stærðir :::
+- Beitt réttum námundunarreglum á útreiknaðar stærðir
+:::
 
 Talning er eina tegund mælinga sem er laus við óvissu, að því gefnu að
 fjöldi hluta sem verið er að telja breytist ekki á meðan talningin fer
 fram. Niðurstaða slíkrar talningarmælingar er dæmi um **nákvæma
-tölu**{id="term-00001"}. Með því að telja eggin í öskju er hægt að
+tölu**{#term-00001}. Með því að telja eggin í öskju er hægt að
 ákvarða *nákvæmlega* hversu mörg egg askjan inniheldur. Tölur
 skilgreindra stærða eru einnig nákvæmar. Samkvæmt skilgreiningu er 1 fet
 nákvæmlega 12 tommur, 1 tomma er nákvæmlega 2,54 sentimetrar og 1 gramm
@@ -33,18 +41,14 @@ Tölur mældra stærða, ólíkt skilgreindum eða beintöldum stærðum, eru ek
 nákvæmar. Til að mæla rúmmál vökva í mæliglasi ættir þú að lesa af neðst
 á bjúgfletinum, lægsta punkti á bogadregnu yfirborði vökvans.
 
-{id="fs-idm337865984" alt="Þessi skýringarmynd sýnir 25 millilítra
-mæliglas fyllt með um 20,8 millilítrum af vökva. Myndin þysjar inn á
-bjúgflötinn, sem er bogadregið yfirborð vatnsins sem sést þegar
-mæliglasið er skoðað frá hlið. Þú lest af lægsta punkti á sveigju
-bjúgflatarins."}
+{#fs-idm337865984}
 
 *Mynd 1.1: Til að mæla rúmmál vökva í þessu mæliglasi verður þú að
 skipta fjarlægðinni milli 21 og 22 ml merkja í huganum í tíundu úr
 millilítra og lesa síðan af (áætla) neðst á
-bjúgfletinum.*{id="fs-idm337865984"}
+bjúgfletinum.*{#fs-idm337865984}
 
-Vísað er til myndarinnar í \[↑\]{ref="fs-idm337865984"}. Neðsti hluti
+Vísað er til myndarinnar í [↑](#fs-idm337865984). Neðsti hluti
 bjúgflatarins í þessu tilfelli liggur greinilega á milli 21 og 22
 merkinganna, sem þýðir að rúmmál vökvans er *vissulega* meira en 21 ml
 en minna en 22 ml. Bjúgflöturinn virðist vera aðeins nær 22 ml merkinu
@@ -68,10 +72,10 @@ Krónupeningurinn vegur *um það bil* 6,72 grömm, með nafnóvissu í
 mælingunni upp á ± 0,01 gramm. Ef myntin er vegin á næmari vog gæti
 massinn verið 6,723 g. Þetta þýðir að massi hennar liggur á milli 6,722
 og 6,724 grömm, sem er óvissa upp á 0,001 gramm. Sérhver mæling hefur
-einhverja **óvissu**{id="term-00002"}, sem fer eftir tækinu sem notað er
+einhverja **óvissu**{#term-00002}, sem fer eftir tækinu sem notað er
 (og hæfni notandans). Allir tölustafir í mælingu, þar með talinn óvissi
 síðasti tölustafurinn, eru kallaðir **markverðir
-stafir**{id="term-00003"} eða **marktækir tölustafir**{id="term-00004"}.
+stafir**{#term-00003} eða **marktækir tölustafir**{#term-00004}.
 Athugaðu að núll getur verið mælt gildi; til dæmis, ef þú stendur á vog
 sem sýnir þyngd með nákvæmni upp á næsta pund og hún sýnir „120“, þá eru
 1 (hundruð), 2 (tugir) og 0 (einingar) öll marktæk (mæld) gildi.
@@ -94,18 +98,18 @@ eru hins vegar aldrei marktæk — þau segja okkur aðeins hvar komman er
 staðsett.
 
 Núllin á undan í þessu dæmi eru ekki marktæk. Við gætum notað
-veldisvísanotkun (eins og lýst er í \[viðauka B\]{doc="m68860"}) og tjáð
+veldisvísanotkun (eins og lýst er í viðauka B) og tjáð
 töluna sem 8
 
-.32407 \[\[EQ:4\]\] 10^−3^; þá inniheldur talan 8,32407 alla markverðu
+.32407 [[EQ:4]] 10^−3^; þá inniheldur talan 8,32407 alla markverðu
 stafina og 10^−3^ staðsetur kommu.
 
 Fjöldi markverðra stafa er óviss í tölu sem endar á núlli vinstra megin
 við kommu. Núllin í mælingunni 1.300 grömm gætu verið markverð eða þau
 gætu einfaldlega gefið til kynna hvar komman er staðsett. Hægt er að
 leysa úr þessari tvíræðni með því að nota veldisvísanotkun: 1,3
-\[\[EQ:5\]\] 10^3^ (tveir markverðir stafir), 1,30 \[\[EQ:6\]\] 10^3^
-(þrír markverðir stafir, ef tugirnir voru mældir) eða 1,300 \[\[EQ:7\]\]
+[[EQ:5]] 10^3^ (tveir markverðir stafir), 1,30 [[EQ:6]] 10^3^
+(þrír markverðir stafir, ef tugirnir voru mældir) eða 1,300 [[EQ:7]]
 10^3^ (fjórir markverðir stafir, ef einingarnar voru einnig mældar). Í
 tilfellum þar sem aðeins talan á kommuformi er tiltæk er skynsamlegt að
 gera ráð fyrir að öll núll aftast séu ekki markverð.
@@ -121,7 +125,7 @@ og gert er ráð fyrir ákveðnum forsendum til að taka tillit til þess
 mikla fjölda fólks sem er í raun ekki talinn. Vegna þessarar óvissu gæti
 verið skynsamlegra að búast við því að við þekkjum íbúafjöldann með um
 það bil milljón manna skekkjumörkum, en þá ætti að gefa íbúafjöldann upp
-sem 3,17 \[\[EQ:8\]\] 10^8^ manns.
+sem 3,17 [[EQ:8]] 10^8^ manns.
 
 ## Markverðir stafir í útreikningum
 
@@ -130,14 +134,14 @@ frá mælingu eru að minnsta kosti jafn óvissar og mælingin sjálf. Taktu
 tillit til óvissu í mælingum til að forðast að gefa ranga mynd af óvissu
 í reiknuðum niðurstöðum. Ein leið til þess er að gefa upp niðurstöðu
 útreiknings með réttum fjölda markverðra stafa, sem er ákvarðaður af
-eftirfarandi þremur reglum um **námundun**{id="term-00005"} talna:
+eftirfarandi þremur reglum um **námundun**{#term-00005} talna:
 
 Eftirfarandi dæmi sýna hvernig þessi regla er notuð við að námunda
 nokkrar mismunandi tölur að þremur markverðum stöfum:
 
 Við skulum fara í gegnum þessar reglur með nokkrum dæmum.
 
-::: example
+:::example
 
 ### Dæmi 1.1: Námundun talna
 
@@ -189,7 +193,7 @@ Námundaðu eftirfarandi að tilgreindum fjölda markverðra stafa:
 
 :::
 
-::: example
+:::example
 
 ### Dæmi 1.2: Samlagning og frádráttur með markverðum stöfum
 
@@ -203,11 +207,11 @@ niðurstöðuna að sama fjölda aukastafa og talan með fæsta aukastafi (þ.e.
 
 **Lausn**
 
-\(a\) \[\[EQ:9\]\]
+\(a\) [[EQ:9]]
 
 Svarið er 5.385 g (rúnnað að þúsundasta sæti; þrír aukastafir)
 
-\(b\) \[\[EQ:10\]\]
+\(b\) [[EQ:10]]
 
 Svarið er 65 g (rúnnað að einingarsæti; engir aukastafir)
 
@@ -229,7 +233,7 @@ Svarið er 65 g (rúnnað að einingarsæti; engir aukastafir)
 
 :::
 
-::: example
+:::example
 
 ### Dæmi 1.3: Margföldun og deiling með markverðum stöfum
 
@@ -243,9 +247,9 @@ niðurstöðuna að sama fjölda tölustafa og talan með fæsta markverða staf
 
 **Lausn**
 
-\(a\) \[\[EQ:11\]\]
+\(a\) [[EQ:11]]
 
-\(b\) \[\[EQ:12\]\]
+\(b\) [[EQ:12]]
 
 **Kannaðu þekkingu þína**
 
@@ -271,7 +275,7 @@ hátt nákvæmni gildanna sem gefin eru upp og tryggja að reiknuð
 niðurstaða sé ekki sýnd nákvæmari en minnst nákvæma gildið sem notað var
 í útreikningnum.
 
-::: example
+:::example
 
 ### Dæmi 1.4: Útreikningur með markverðum stöfum
 
@@ -281,7 +285,7 @@ dýpt. Gerðu ráð fyrir að baðkarið sé rétthyrnt og reiknaðu nálgað r�
 
 **Lausn**
 
-\[\[EQ:1\]\]{id="fs-idm15365184"}
+[[EQ:1]]{id="fs-idm15365184"}
 
 **Kannaðu þekkingu þína**
 
@@ -299,7 +303,7 @@ Hver er eðlismassi vökva með massa 31,1415 g og rúmmál 30,13 cm^3^?
 
 :::
 
-::: example
+:::example
 
 ### Dæmi 1.5: Tilraunaákvörðun á eðlismassa með vatnsyfirfærslu
 
@@ -315,18 +319,18 @@ staðhæfingu? Hvernig?
 
 Rúmmál kambstálsins er jafnt rúmmáli vatnsins sem það ryður frá sér:
 
-\[\[EQ:2\]\]{id="fs-idm180698816"}
+[[EQ:2]]{id="fs-idm180698816"}
 
 (rúnnað að næsta 0,1 ml, samkvæmt reglunni um samlagningu og frádrátt)
 
 Eðlismassinn er hlutfallið milli massa og rúmmáls:
 
-\[\[EQ:3\]\]{id="fs-idp135143440"}
+[[EQ:3]]{id="fs-idp135143440"}
 
 (rúnnað að tveimur markverðum stöfum, samkvæmt reglunni um margföldun og
 deilingu)
 
-Samkvæmt \[↗\]{ref="fs-idm45639696"} er eðlismassi járns 7,9 g/cm^3^,
+Samkvæmt [↗](#fs-idm45639696) er eðlismassi járns 7,9 g/cm^3^,
 mjög nálægt eðlismassa kambstáls, sem styður þá staðreynd að kambstál er
 að mestu leyti járn.
 
@@ -342,7 +346,7 @@ rökstuðning þinn.
 
 \(a\) 19 g/cm^3^; (b) Það er líklega gull; útlitið passar við gull og
 eðlismassinn er mjög nálægt þeim eðlismassa sem gefinn er fyrir gull í
-\[↗\]{ref="fs-idm45639696"}.
+[↗](#fs-idm45639696).
 
 :::
 
@@ -352,55 +356,44 @@ eðlismassinn er mjög nálægt þeim eðlismassa sem gefinn er fyrir gull í
 
 \(a\) 19 g/cm^3^; (b) Það er líklega gull; útlitið passar við gull og
 eðlismassinn er mjög nálægt þeim eðlismassa sem gefinn er fyrir gull í
-\[↗\]{ref="fs-idm45639696"}.
+[↗](#fs-idm45639696).
 
 :::
 
 ## Hittni og nákvæmni
 
 Vísindamenn gera yfirleitt endurteknar mælingar á stærð til að tryggja
-gæði niðurstaðna sinna og til að meta bæði **nákvæmni**{id="term-00006"}
-og **hittni**{id="term-00007"} niðurstaðna sinna. Mælingar eru sagðar
+gæði niðurstaðna sinna og til að meta bæði **nákvæmni**{#term-00006}
+og **hittni**{#term-00007} niðurstaðna sinna. Mælingar eru sagðar
 vera nákvæmar ef þær gefa mjög svipaðar niðurstöður þegar þær eru
 endurteknar á sama hátt. Mæling er talin vera með góða hittni ef hún
 gefur niðurstöðu sem er mjög nálægt sönnu eða viðurkenndu gildi. Nákvæm
 gildi eru samhljóða; gildin með góða hittni eru samhljóða sönnu gildi.
 Þessar lýsingar má yfirfæra á annað samhengi, svo sem niðurstöður úr
-bogfimikeppni (\[↗\]{ref="fs-idm1827280"}).
+bogfimikeppni ([↗](#fs-idm1827280)).
 
-{id="fs-idm1827280" alt="Myndir A til C sýna hver um sig skotmörk með
-götum þar sem örvarnar hæfðu. Bogmaðurinn á mynd A var bæði með góða
-hittni og nákvæmni þar sem allar 3 örvarnar eru þétt saman í miðju
-skotmarksins. Á mynd B er bogmaðurinn nákvæmur en ekki með góða hittni,
-þar sem allar 3 örvarnar eru þétt saman en uppi til hægri við miðju
-skotmarksins. Á mynd C er bogmaðurinn hvorki með góða hittni né nákvæmni
-þar sem 3 götin eru ekki nálægt hvort öðru og eru staðsett bæði uppi til
-hægri og til hægri við skotmarkið."}
+{#fs-idm1827280}
 
 *Mynd 1.2: (a) Þessar örvar eru nálægt bæði miðjunni og hver annarri,
 svo þær eru bæði með góða hittni og nákvæmni. (b) Þessar örvar eru
 nálægt hver annarri en ekki á skotmarkinu, svo þær eru nákvæmar en ekki
 með góða hittni. (c) Þessar örvar eru hvorki á skotmarkinu né nálægt
 hver annarri, svo þær eru hvorki með góða hittni né
-nákvæmar.*{id="fs-idm1827280"}
+nákvæmar.*{#fs-idm1827280}
 
 Gerum ráð fyrir að efnafræðingur í gæðaeftirliti hjá lyfjafyrirtæki fái
 það verkefni að athuga hittni og nákvæmni þriggja mismunandi véla sem
 eiga að skammta 10 únsur (296 ml) af hóstasaft í geymsluflöskur. Hún
 notar hverja vél til að fylla fimm flöskur og ákvarðar síðan vandlega
 raunverulegt rúmmál sem skammtað var og fær niðurstöðurnar sem sýndar
-eru í töflunni í \[↗\]{ref="fs-idp31780400"}.
+eru í töflunni í [↗](#fs-idp31780400).
 
 **Rúmmál (ml) hóstalyfs afhent af 10 únsu (296 ml) skammtara**
 
 | Skammtari nr. 1 | Skammtari nr. 2 | Skammtari nr. 3 | | :--- | :--- |
 :--- | | 283,3 | 298,3 | 296,1 | | 284,1 | 294,2 | 295,9 | | 283,9 |
 296,0 | 296,1 | | 284,0 | 297,8 | 296,0 | | 284,1 | 293,9 | 296,1 |
-{id="fs-idp31780400" summary="Rúmmál, í millilítrum, hóstalyfs sem
-afhent er af skammtara 1, 2 og 3 er sýnt í töflu. Gildin fyrir skammtara
-1 eru 283,3, 284,1, 283,9, 284,0 og 284,1. Gildin fyrir skammtara 2 eru
-298,3, 294,2, 296,0, 297,8 og 293,9. Gildin fyrir skammtara 3 eru 296,1,
-295,9, 296,1, 296,0 og 296,1."}
+{#fs-idp31780400}
 
 Miðað við þessar niðurstöður mun hún tilkynna að skammtari nr. 1 sé
 nákvæmur (gildin öll nálægt hvert öðru, innan nokkurra tíundu úr
@@ -413,9 +406,6 @@ hóstasaft bæði með góðri hittni (öll rúmmál innan 0,1 ml frá
 markrúmmáli) og nákvæmni (rúmmál víkja ekki meira en 0,2 ml frá hvort
 öðru).
 
-## Lykilhugtök og samantekt
-
-Stærðir geta verið skilgreindar eða mældar. Mældar stærðir hafa
 tilheyrandi óvissu sem er táknuð með fjölda markverðra stafa í tölu
 stærðarinnar. Óvissa reiknaðrar stærðar fer eftir óvissunni í þeim
 stærðum sem notaðar eru í útreikningnum og endurspeglast í því hvernig
@@ -425,7 +415,8 @@ endurtekinna mælinganiðurstaðna).
 
 ## Efnafræði – æfingar í lok kafla
 
-:::practice-problem{#fs-idm29064528} Tjáðu hverja af eftirfarandi tölum
+:::practice-problem{#fs-idm29064528}
+Tjáðu hverja af eftirfarandi tölum
 á staðalformi með réttum fjölda markverðra stafa:
 
 \(a\) 711,0
@@ -444,7 +435,7 @@ endurtekinna mælinganiðurstaðna).
 
 :::
 
-:::æfingadæmi{#fs-idp24074624} Skráið hverja eftirfarandi talna á
+æfingadæmi{#fs-idp24074624} Skráið hverja eftirfarandi talna á
 veldisvísisformi með réttum fjölda markverðra stafa:
 
 \(a\) 704
@@ -461,14 +452,15 @@ veldisvísisformi með réttum fjölda markverðra stafa:
 
 \(g\) 0,007157
 
-:::svar (a) 7,04 \[\[EQ:13\]\] 10^2^; (b) 3,344 \[\[EQ:14\]\] 10^−2^;
-(c) 5,479 \[\[EQ:15\]\] 10^2^; (d) 2,2086 \[\[EQ:16\]\] 10^4^; (e)
-1,00000 \[\[EQ:17\]\] 10^3^; (f) 6,51 \[\[EQ:18\]\] 10^−8^; (g) 7,157
-\[\[EQ:19\]\] 10^−3^
+:::svar
+(a) 7,04 [[EQ:13]] 10^2^; (b) 3,344 [[EQ:14]] 10^−2^;
+(c) 5,479 [[EQ:15]] 10^2^; (d) 2,2086 [[EQ:16]] 10^4^; (e)
+1,00000 [[EQ:17]] 10^3^; (f) 6,51 [[EQ:18]] 10^−8^; (g) 7,157
+[[EQ:19]] 10^−3^
 
-::: :::
+:::
 
-:::æfingadæmi{#fs-idp26053648} Tilgreinið hvort hægt sé að ákvarða
+æfingadæmi{#fs-idp26053648} Tilgreinið hvort hægt sé að ákvarða
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 óvissu:
 
@@ -486,9 +478,7 @@ bifreiðar
 \(f\) tímann sem það tekur að aka frá San Francisco til Kansas City á 53
 mílna meðalhraða á klukkustund
 
-:::
-
-:::æfingadæmi{#fs-idp30473840} Tilgreinið hvort hægt sé að ákvarða
+æfingadæmi{#fs-idp30473840} Tilgreinið hvort hægt sé að ákvarða
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 óvissu:
 
@@ -504,21 +494,22 @@ eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 
 \(f\) vegalengdina frá San Francisco til Kansas City
 
-:::svar (a) nákvæmt; (b) nákvæmt; (c) óvisst; (d) nákvæmt; (e) óvisst;
+:::svar
+(a) nákvæmt; (b) nákvæmt; (c) óvisst; (d) nákvæmt; (e) óvisst;
 (f) óvisst
 
-::: :::
+:::
 
-:::æfingadæmi{#fs-idp191983136} Hversu marga markverða stafi inniheldur
+æfingadæmi{#fs-idp191983136} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
 
 \(a\) 38,7 g
 
-\(b\) 2 \[\[EQ:20\]\] 10^18^ m
+\(b\) 2 [[EQ:20]] 10^18^ m
 
 \(c\) 3.486.002 kg
 
-\(d\) 9,74150 \[\[EQ:21\]\] 10^−4^ J
+\(d\) 9,74150 [[EQ:21]] 10^−4^ J
 
 \(e\) 0,0613 cm^3^
 
@@ -526,9 +517,158 @@ hver eftirfarandi mælinga?
 
 \(g\) 0,01400 g/mL
 
-:::
-
-:::æfingadæmi{#fs-idp16088144} Hversu marga markverða stafi inniheldur
+æfingadæmi{#fs-idp16088144} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
 
 \(a\) 53 cm
+
+---
+title: "Mælióvissa, hittni og nákvæmni"
+---
+
+## titill: „Óvissa í mælingum, hittni og nákvæmni“ kafli: „1.5“ eining: „m68690“ tungumál: „is“ hluti: „b“
+
+\(b\) 2,05 [[EQ:22]] 10^8^ m
+
+\(c\) 86,002 J
+
+\(d\) 9,740 [[EQ:23]] 10^4^ m/s
+
+\(e\) 10,0613 m^3^
+
+\(f\) 0,17 g/mL
+
+\(g\) 0,88400 s
+
+:::svar
+(a) tveir; (b) þrír; (c) fimm; (d) fjórir; (e) sex; (f) tveir;
+(g) fimm
+
+:::
+
+æfingadæmi{#fs-idp334498416} Eftirfarandi stærðir voru gefnar upp á
+merkingum á söluvörum. Ákvarðaðu fjölda markverðra stafa í hverri
+þeirra.
+
+\(a\) 0,0055 g af virkum efnum
+
+\(b\) 12 töflur
+
+\(c\) 3% vetnisperoxíð
+
+\(d\) 5,5 únsur
+
+\(e\) 473 ml
+
+\(f\) 1,75% bismút
+
+\(g\) 0,001% fosfórsýra
+
+\(h\) 99,80% óvirk efni
+
+æfingadæmi{#fs-idp15391168} Sléttaðu eftirfarandi tölur að tveimur
+markverðum stöfum:
+
+\(a\) 0,436
+
+\(b\) 9,000
+
+\(c\) 27,2
+
+\(d\) 135
+
+\(e\) 1,497 [[EQ:24]] 10^−3^
+
+\(f\) 0,445
+
+:::svar
+(a) 0,44; (b) 9,0; (c) 27; (d) 140; (e) 1,5 [[EQ:25]]
+10^−3^; (f) 0,44
+
+:::
+
+æfingadæmi{#fs-idp108082000} Sléttaðu eftirfarandi tölur að tveimur
+markverðum stöfum:
+
+\(a\) 517
+
+\(b\) 86,3
+
+\(c\) 6,382 [[EQ:26]] 10^3^
+
+\(d\) 5,0008
+
+\(e\) 22,497
+
+\(f\) 0,885
+
+æfingadæmi{#fs-idp358584288} Framkvæmdu eftirfarandi útreikninga og
+gefðu upp hvert svar með réttum fjölda markverðra stafa.
+
+\(a\) 628 [[EQ:27]] 342
+
+\(b\) (5,63 [[EQ:28]] 10^2^) [[EQ:29]] (7,4 [[EQ:30]] 10^3^)
+
+\(c\) [[EQ:31]]
+
+\(d\) 8119 [[EQ:32]] 0,000023
+
+\(e\) 14,98 + 27.340 + 84,7593
+
+\(f\) 42,7 + 0,259
+
+:::svar
+(a) 2,15 [[EQ:33]] 10^5^; (b) 4,2 [[EQ:34]] 10^6^; (c)
+2,08; (d) 0,19; (e) 27.440; (f) 43,0
+
+:::
+
+æfingadæmi{#fs-idp356573616} Framkvæmdu eftirfarandi útreikninga og
+gefðu upp hvert svar með réttum fjölda markverðra stafa.
+
+\(a\) 62,8 [[EQ:35]] 34
+
+\(b\) 0,147 + 0,0066 + 0,012
+
+\(c\) 38 [[EQ:36]] 95 [[EQ:37]] 1,792
+
+\(d\) 15 – 0,15 – 0,6155
+
+\(e\) [[EQ:38]]
+
+\(f\) 140 + 7,68 + 0,014
+
+\(g\) 28,7 – 0.0483
+
+\(h\) [[EQ:39]]
+
+:::practice-problem{#fs-idp30946992}
+Skoðaðu niðurstöður
+bogfimikeppninnar sem sýndar eru á þessari mynd.
+
+\(a\) Hvaða bogmaður er nákvæmastur?
+
+\(b\) Hvaða bogmaður er réttastur?
+
+\(c\) Hver er bæði ónákvæmastur og óréttastur?
+
+:::svar
+(a) Bogmaður X; (b) Bogmaður W; (c) Bogmaður Y
+
+:::
+:::
+
+:::practice-problem{#fs-idp33718320}
+Flokkaðu eftirfarandi mælingasett
+sem rétt, nákvæmt, hvort tveggja eða hvorugt.
+
+\(a\) Athugun á samræmi í þyngd súkkulaðibitakaka: 17,27 g, 13,05 g,
+19,46 g, 16,92 g
+
+\(b\) Prófun á rúmmáli lotu af 25 ml pípettum: 27,02 ml, 26,99 ml, 26,97
+ml, 27,01 ml
+
+\(c\) Ákvörðun á hreinleika gulls: 99,9999%, 99,9998%, 99,9998%,
+99,9999%
+
+:::

@@ -1,5 +1,8 @@
 ---
-title: "Eðlis- og efnaeiginleikar"
+title: Eðlis- og efnaeiginleikar
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-01-29T12:00:09.526Z"
 ---
 
 ## titill: „Eðlis- og efnaeiginleikar“ kafli: „1.3“ eining: „m68670“ tungumál: „is“ leyfisvefslóð: „https://creativecommons.org/licenses/by/4.0/“
@@ -169,9 +172,6 @@ efnafræðináminu.
 
 ![Á þessari mynd af lotukerfinu eru málmarnir merktir með gulum lit og eru ríkjandi á vinstri tveimur þriðju hlutum lotukerfisins. Málmleysingjarnir eru ferskjugulir og eru að mestu bundnir við efra hægra svæði töflunnar, að undanskildu vetni, H, sem er staðsett efst til vinstri í töflunni. Hálfmálmarnir eru fjólubláir og mynda skálínu milli málma- og málmleysingjasvæða töflunnar. Hópur 13 inniheldur bæði málma og hálfmálma](images/media/CNX_Chem_01_03_PeriodicPU.jpg){#CNX_Chem_01_03_PeriodicPU}
 
-## Lykilhugtök og samantekt
-
-Öll efni hafa sérstaka eðlis- og efnaeiginleika og geta tekið eðlis- eða
 efnabreytingum. Eðliseiginleikar, svo sem hörku og suðumark, og
 eðlisbreytingar, svo sem bráðnun eða storknun, fela ekki í sér breytingu
 á samsetningu efnisins. Efnaeiginleikar, svo sem eldfimi og sýrustig, og

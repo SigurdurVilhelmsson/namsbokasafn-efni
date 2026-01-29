@@ -1,8 +1,8 @@
-\[\[FRONTMATTER:title\]\] Fasar og flokkun efnis
+[[FRONTMATTER:title]] Fasar og flokkun efnis
 
-\[\[TABLE:1:title\]\] Frumefnasamsetning jarðar
+[[TABLE:1:title]] Frumefnasamsetning jarðar
 
-\[\[TABLE:1:summary\]\] Súrefni, táknað með O, hefur massaprósentuna
+[[TABLE:1:summary]] Súrefni, táknað með O, hefur massaprósentuna
 49,20. Kísill, táknaður með Si, hefur massaprósentuna 25,67. Ál, táknað
 með Al, hefur massaprósentuna 7,50. Járn, táknað með Fe, hefur
 massaprósentuna 4,71. Kalsíum, táknað með Ca, hefur massaprósentuna

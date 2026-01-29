@@ -1,8 +1,8 @@
-\[\[FRONTMATTER:title\]\] Stærðfræðileg meðferð mælinganiðurstaðna
+[[FRONTMATTER:title]] Stærðfræðileg meðferð mælinganiðurstaðna
 
-\[\[TABLE:1:title\]\] Algengir umreikningsstuðlar
+[[TABLE:1:title]] Algengir umreikningsstuðlar
 
-\[\[TABLE:1:summary\]\] Þessari töflu er skipt í 3 dálka. Þeir heita
+[[TABLE:1:summary]] Þessari töflu er skipt í 3 dálka. Þeir heita
 lengd, rúmmál og massi. Eftirfarandi einingar eru í lengdardálknum: 1
 metri er jafnt og 1,0936 yardar, 1 tommur er jafnt og 2,54 cm, 1
 kílómetri er jafnt og 0,62137 mílur, 1 míla er jafnt og 1609,3 metrar.
@@ -13,4 +13,4 @@ einingar eru í massadálknum: 1 kílógramm er jafnt og 2,2046 pund, 1 pund
 er jafnt og 453,59 grömm, 1 avoirdupois-únsa er jafnt og 28,349 grömm, 1
 troy-únsa er jafnt og 31,103 grömm.
 
-\[\[TABLE:2:summary\]\] tafla með lykiljöfnum
+[[TABLE:2:summary]] tafla með lykiljöfnum
