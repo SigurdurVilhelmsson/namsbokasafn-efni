@@ -2,7 +2,7 @@
 title: Eðlis- og efnaeiginleikar
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T12:00:09.526Z"
+published-at: "2026-01-29T13:15:53.082Z"
 ---
 
 ## titill: „Eðlis- og efnaeiginleikar“ kafli: „1.3“ eining: „m68670“ tungumál: „is“ leyfisvefslóð: „https://creativecommons.org/licenses/by/4.0/“
@@ -285,7 +285,7 @@ Eðlismassi (d) efnis er
 eðliseiginleiki sem er skilgreindur sem hlutfall massa þess (m) og
 rúmmáls (V).
 
-[[EQ:1]]
+$${\text{eðlismassi}=\,\frac{{\text{massi}}}{{\text{rúmmál}}}\,\text{d}=\,\frac{\text{m}}{\text{V}}}$$
 
 Í ljósi þess að massi og rúmmál eru bæði magnbundnir eiginleikar,
 útskýrðu hvers vegna hlutfall þeirra, eðlismassi, er eðliseiginleiki.

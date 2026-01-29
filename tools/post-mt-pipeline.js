@@ -424,8 +424,24 @@ async function processFile(filePath, options) {
         args.push('--verbose');
       }
     } else if (step.id === 'equations') {
-      // Find equations sidecar in 02-for-mt/ (not in 02-mt-output/)
-      const equationsSidecar = getSidecarPath(filePath, 'equations');
+      // First check for translated equations.json in 02-mt-output (created by inject-equation-strings)
+      const dir = path.dirname(filePath);
+      const basename = path.basename(filePath)
+        .replace(/\.is\.md$/, '')
+        .replace(/\([a-z]\)$/, '');  // Handle split files
+      const translatedEquationsPath = path.join(dir, `${basename}-equations.json`);
+
+      let equationsSidecar;
+      if (fs.existsSync(translatedEquationsPath)) {
+        // Use translated equations from 02-mt-output
+        equationsSidecar = translatedEquationsPath;
+        if (verbose) {
+          console.log(`  Using translated equations: ${path.basename(translatedEquationsPath)}`);
+        }
+      } else {
+        // Fall back to original equations in 02-for-mt/
+        equationsSidecar = getSidecarPath(filePath, 'equations');
+      }
 
       if (!equationsSidecar) {
         // No equations file - skip this step

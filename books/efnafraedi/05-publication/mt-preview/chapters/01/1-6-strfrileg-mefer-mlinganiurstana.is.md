@@ -2,7 +2,7 @@
 title: Stærðfræðileg meðferð mælinganiðurstaðna
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T12:00:09.532Z"
+published-at: "2026-01-29T13:15:53.088Z"
 ---
 
 ## titill: „Stærðfræðileg meðferð á niðurstöðum mælinga“ kafli: „1.6“ eining: „m68683“ tungumál: „is“ hluti: „a“
@@ -32,12 +32,12 @@ hlaupa frá ráslínu að marklínu og *vegalengdina* milli þessara tveggja
 lína og reikna síðan *hraða* út frá jöfnunni sem tengir þessa þrjá
 eiginleika:
 
-[[EQ:1]]{id="fs-idm290867056"}
+$${\text{hraði}=\,\frac{{\text{vegalengd}}}{{\text{tími}}}}$${#fs-idm290867056}
 
 Spretthlaupari á Ólympíugæðum getur hlaupið 100 m á um það bil 10 s, sem
 samsvarar meðalhraða upp á
 
-[[EQ:2]]{id="fs-idm257675424"}
+$${\frac{{\text{100 m}}}{{\text{10 s}}}\,=\text{10 m/s}}$${#fs-idm257675424}
 
 (Fyrir þennan og næsta útreikning skal gera ráð fyrir að núllin aftast
 séu markverðir stafir.) Athugaðu að þessi einfalda reikningsaðgerð felur
@@ -51,11 +51,11 @@ stærðirnar tvær sem gefnar eru upp hraði (10 m/s) og vegalengd (25 m).
 Til að fá þann eiginleika sem leitað er að, tíma, verður að umraða
 jöfnunni á viðeigandi hátt:
 
-[[EQ:3]]{id="fs-idm219214640"}
+$${\text{tími}=\,\frac{{\text{vegalengd}}}{{\text{hraði}}}}$${#fs-idm219214640}
 
 Þá er hægt að reikna tímann út sem:
 
-[[EQ:4]]{id="fs-idp106016944"}
+$${\frac{{\text{25 m}}}{{\text{10 m/s}}}\,=\text{2,5 s}}$${#fs-idp106016944}
 
 Aftur fylgdi sömu reikningsaðgerð á einingunum (m/(m/s) = s)
 reikningsaðgerðinni á tölunum (25/10 = 2,5) til að fá tölu og einingu
@@ -80,7 +80,7 @@ einingar**{#term-00003}. Til dæmis eru lengdirnar 2,54 cm og 1
 tommur jafngildar (samkvæmt skilgreiningu) og því er hægt að leiða
 umreikningsstuðul fyrir einingar út frá hlutfallinu,
 
-[[EQ:5]]{id="fs-idm256748160"}
+$${\frac{{\text{2,54 cm}}}{{\text{1 in.}}}\,\text{(2,54 cm}=\text{1 in.) eða 2,54}\,\frac{{\text{cm}}}{{\text{in.}}}}$${#fs-idm256748160}
 
 Nokkrir aðrir algengir umreikningsstuðlar eru gefnir í
 [↗](#fs-idm222237232).
@@ -117,14 +117,14 @@ einingum (eins og fjarlægð í sentímetrum). Til dæmis er hægt að breyta
 lóðréttu stökki körfuboltaleikmanns upp á 34 tommur í sentímetra með því
 að:
 
-[[EQ:6]]{id="fs-idm153590912"}
+$${34\,{\text{in.}}\,\times \,\frac{{\text{2,54 cm}}}{{1\,{\text{in.}}}}\,=\text{86 cm}}$${#fs-idm153590912}
 
 Þar sem þessi einfalda reikniaðgerð felur í sér *stærðir* krefst
 forsenda einingagreiningar þess að við margföldum bæði *tölur og
 einingar*. Tölur þessara tveggja stærða eru margfaldaðar saman til að fá
 tölu myndefnisins, 86, en einingarnar eru margfaldaðar saman til að fá
-[[EQ:32]]. Rétt eins og með tölur er hlutfall eins eininga einnig
-tölulega jafnt og einn, [[EQ:33]] og einingamargfeldið einfaldast
+$${\frac{{\text{in.}\,\times \,\text{cm}}}{{\text{in.}}}}$$. Rétt eins og með tölur er hlutfall eins eininga einnig
+tölulega jafnt og einn, ${\frac{{\text{in.}}}{{\text{in.}}}\,=\text{1,}}$ og einingamargfeldið einfaldast
 því í *cm*. (Þegar eins einingar deilast og gefa stuðulinn 1 er sagt að
 þær „stytta“ út.) Einingagreiningu má nota til að staðfesta rétta notkun
 einingabreytingarstuðla eins og sýnt er í eftirfarandi dæmi.
@@ -143,16 +143,16 @@ Miðað við umreikningsstuðulinn má finna massann í únsum með jöfnu
 svipaðri þeirri sem notuð var til að breyta lengd úr tommum í
 sentímetra.
 
-[[EQ:7]]{id="fs-idm138056288"}
+${x\,\text{oz}=\text{125 g}\,\times \,\text{umreiknistuðull}}${#fs-idm138056288}
 
 Einingabreytingarstuðulinn má tákna sem:
 
-[[EQ:8]]{id="fs-idm233281680"}
+$${\frac{{\text{1 oz}}}{{\text{28,349 g}}}\,\text{og}\,\frac{{\text{28,349 g}}}{{\text{1 oz}}}}$${#fs-idm233281680}
 
 Rétti einingabreytingarstuðullinn er hlutfallið sem styttir út eininguna
 grömm og skilur eftir únsur.
 
-[[EQ:9]]{id="fs-idm222314304"}
+$${x\,\text{oz}}=125\,\text{1 oz}\,\times \,\frac{{\text{oz}}}{{\text{28.349}\,\text{4,41 oz (þrír markverðir stafir)}}}{=}(\frac{{125}}{{\text{28.349}}})\,\text{oz}=\text{4.41 oz (three significant figures)}$${#fs-idm222314304}
 
 **Spyrðu sjálfan þig**
 
@@ -188,29 +188,29 @@ frostlöginum vegur 9,26 lb.
 
 **Lausn**
 
-Þar sem [[EQ:34]] þurfum við að deila massanum í grömmum með
+Þar sem ${\text{eðlismassi}\,=\,\frac{{\text{massi}}}{{\text{rúmmál}}}}$ þurfum við að deila massanum í grömmum með
 rúmmálinu í millilítrum. Almennt gildir: fjöldi eininga B = fjöldi
-eininga A [[EQ:35]] einingabreytingarstuðull. Nauðsynlegir
+eininga A $\times$ einingabreytingarstuðull. Nauðsynlegir
 umreikningsstuðlar eru gefnir í [↗](#fs-idm222237232): 1 lb =
 453,59 g; 1 L = 1,0567 qt; 1 L = 1.000 ml. Hægt er að breyta massa úr
 pundum í grömm á eftirfarandi hátt:
 
-[[EQ:10]]{id="fs-idm336821696"}
+$${\text{9.26}\,{\text{lb}}\,\times \,\frac{{\text{453,59 g}}}{{1\,{\text{lb}}}}\,=4.20\,\times \,{{10}}^{3}}\,\text{g}$${#fs-idm336821696}
 
 Hægt er að breyta rúmmáli úr kvörtum í millilítra í tveimur skrefum:
 
-[[EQ:11]]{id="fs-idm279137456"}
+$${\text{4.00}\,{\text{qt}}\,\times \,\frac{{\text{1 L}}}{{\text{1.0567}\,{\text{qt}}}}\,=\text{3,78 L}}$${#fs-idm279137456}
 
-[[EQ:12]]{id="fs-idm289883088"}
+$${\text{3.78}\,\text{1000 mL}\,\times \,\frac{{\text{mL}}}{{1\,\text{L}}}\,=3.78\,\times \,{{10}}^{3}\,\text{mL}}$${#fs-idm289883088}
 
 Þá,
 
-[[EQ:13]]{id="fs-idm144640128"}
+$${\text{eðlismassi}=\,\frac{{\text{4.20}\,\times \,{{10}}^{3}\,\text{mL}}}{{3.78\,\times \,{{10}}^{3}\,\text{1,11 g/mL}}}\,=\text{1.11 g/mL}}$${#fs-idm144640128}
 
 Að öðrum kosti væri hægt að setja útreikninginn upp á þann hátt að þrír
 einingabreytingarstuðlar séu notaðir í röð á eftirfarandi hátt:
 
-[[EQ:14]]{id="fs-idm9873904"}
+$${\frac{{\text{9.26}\,{\text{lb}}}}{{\text{4.00}\,{\text{qt}}}}\,\times \,\frac{{\text{453,59 g}}}{{1\,{\text{lb}}}}\,\times \,\frac{{\text{1.0567}\,{\text{qt}}}}{{1\,\text{1000 mL}}}\,\times \,\frac{{1\,\text{1,11 g/mL}}}{{\text{1000 mL}}}\,=\text{1.11 g/mL}}$${#fs-idm9873904}
 
 **Spyrðu sjálfan þig**
 
@@ -246,24 +246,24 @@ eldsneytiskostnaðurinn fyrir þessa ferð?
 
 \(a\) Fyrst er vegalengdinni breytt úr kílómetrum í mílur:
 
-[[EQ:15]]{id="fs-idm60362224"}
+$${1250\,\text{km}\,\times \,\frac{{\text{0,62137 mi}}}{{1\,\text{km}}}\,=\text{777 mi}}$${#fs-idm60362224}
 
 og síðan er rúmmálinu breytt úr lítrum í gallon:
 
-[[EQ:16]]{id="fs-idm214696672"}
+$${213\,\text{qt}\,\times \,\frac{{\text{1.0567}\,{\text{1 gal}}}}{{1\,\text{qt}}}\,\times \,\frac{{\text{56,3 gal}}}{{4\,{\text{qt}}}}\,=\text{56.3 gal}}$${#fs-idm214696672}
 
 Að lokum,
 
-[[EQ:17]]{id="fs-idm114266320"}
+$${\text{(meðal) eyðsla}=\,\frac{{\text{777 mi}}}{{\text{56.3 gal}}}\,=\text{13.8 mílur/gallon}=\text{13.8 mpg}}$${#fs-idm114266320}
 
 Einnig væri hægt að setja útreikninginn upp þannig að allir
 umreikningsstuðlar séu notaðir í röð, eins og hér segir:
 
-[[EQ:18]]{id="fs-idm171836160"}
+$${\frac{{1250\,{\text{km}}}}{{213\,\text{0,62137 mi}}}\,\times \,\frac{{\text{km}}}{{1\,{\text{qt}}}}\,\times \,\frac{{1\,\text{qt}}}{{\text{1.0567}\,{\text{1 gal}}}}\,\times \,\frac{{4\,{\text{13,8 mpg}}}}{{\text{1 gal}}}=\text{13.8 mpg}}$${#fs-idm171836160}
 
 \(b\) Með því að nota áður útreiknað rúmmál í gallonum finnum við:
 
-[[EQ:19]]{id="fs-idm328491840"}
+$${56.3\,\text{gal}\,\times \,\frac{{\text{$3.80}}}{{1\,\text{gal}}}=\text{$214}}$${#fs-idm328491840}
 
 **Spyrðu sjálfan þig**
 
@@ -314,7 +314,7 @@ eiginleika. Flestar mælieiningar fyrir tiltekinn eiginleika eru í beinu
 hlutfalli hver við aðra (y = mx). Ef við notum kunnuglegar
 lengdareiningar sem dæmi:
 
-[[EQ:20]]{id="fs-idm6121760"}
+$${\text{lengd í fetum}={({\frac{{\text{1 ft}}}{{\text{12 in.}}}})}\,\times \,\text{lengd í tommum}}$${#fs-idm6121760}
 
 þar sem y = lengd í fetum, x = lengd í tommum og hlutfallsvakinn, m, er
 umreikningsstuðullinn. Celsíus- og Fahrenheit-hitakvarðarnir deila hins
@@ -329,26 +329,26 @@ auðveldlega leidd út frá þeim tveimur hitastigum sem notuð eru til að
 skilgreina hvorn kvarða. Ef við táknum hitastig á Celsíus sem *x* og
 hitastig á Fahrenheit sem *y* er hallatalan, *m*, reiknuð svona:
 
-[[EQ:21]]{id="fs-idm229969840"}
+$${m=\,\frac{{\text{Δ}y}}{{\text{Δ}x}}\,=\frac{{\text{212 °F}-\text{32 °F}\,}}{{\text{100 °C}-\text{0 °C}}}\,=\,\frac{{\text{180 °F}}}{{\text{100 °C}}}\,=\,\frac{{\text{9 °F}}}{{\text{5 °C}}}}$${#fs-idm229969840}
 
 Skurðpunktur jöfnunnar við *y*-ás, *b*, er síðan reiknaður með því að
 nota annaðhvort jafngildu hitastigsparanna, (100 °C, 212 °F) eða (0 °C,
 32 °F), á þennan hátt:
 
-[[EQ:22]]{id="fs-idm234430272"}
+$${b=y-mx=\text{32 °F}-\,\frac{{\text{9 °F}}}{{\text{5 °C}}}\,\times \,\text{0 °C}=\text{32 °F}}$${#fs-idm234430272}
 
 Jafnan sem tengir saman hitastigskvarðana (*T*) er þá:
 
-[[EQ:23]]{id="fs-idm305465424"}
+$${{T}_{{\text{°F}}}={({\frac{{\text{9 °F}}}{{\text{5 °C}}}\,\times \,{T}_{{\text{°C}}}})}+\text{32 °F}}$${#fs-idm305465424}
 
 Stytt útgáfa af þessari jöfnu sem sleppir mælieiningunum er:
 
-[[EQ:24]]{id="fs-idm226315088"}
+$${{T}_{{\text{°F}}}=\,(\frac{9}{{5\,}}\,\times \,{T}_{{\text{°C}}})+32}$${#fs-idm226315088}
 
 Með því að umraða þessari jöfnu fæst form sem er gagnlegt til að breyta
 úr Fahrenheit í Celsíus:
 
-[[EQ:25]]{id="fs-idm138168256"}
+$${{T}_{{\text{°C}}}=\,\frac{{5\,}}{{9}}{({{T}_{{\text{°F}}}-32})}}$${#fs-idm138168256}
 
 Eins og fyrr var nefnt í þessum kafla er SI-eining hitastigs kelvin (K).
 Ólíkt Celsíus- og Fahrenheit-kvarðanum er kelvin-kvarðinn alger
@@ -365,12 +365,12 @@ Frostmark vatns á þessum kvarða er 273,15 K og suðumark þess er 373,15
 K. Takið eftir að tölulegur munur á þessum tveimur viðmiðunarhitastigum
 er 100, sá sami og fyrir Celsíus-kvarðann, og því mun línulegt samband
 milli þessara tveggja hitastigskvarða sýna hallatölu upp á
-[[EQ:36]]. Með sömu aðferð eru jöfnurnar til að breyta á milli
+$${1\,\frac{\text{°C}}{{\text{°C}}}}$$. Með sömu aðferð eru jöfnurnar til að breyta á milli
 kelvin- og Celsíus-hitastigskvarðanna leiddar út og eru þær:
 
-[[EQ:26]]{id="fs-idp289344"}
+${{T}_{\text{°C}}={T}_{{\text{°C}}}+\text{273.15}}${#fs-idp289344}
 
-[[EQ:27]]{id="fs-idm303916848"}
+${{T}_{{\text{°C}}}={T}_{\text{K}}-\text{273.15}}${#fs-idm303916848}
 
 Talan 273,15 í þessum jöfnum hefur verið ákvörðuð með tilraunum, svo hún
 er ekki nákvæm. [↗](#CNX_Chem_01_06_TempScales) sýnir sambandið
@@ -399,9 +399,9 @@ Fahrenheit-kvarða?
 
 **Lausn**
 
-[[EQ:28]]{id="fs-idm223031696"}
+${\text{°C}=\text{310,2 K}+273.15=37.0+273.2=\text{310.2 K}}${#fs-idm223031696}
 
-[[EQ:29]]{id="fs-idp114907616"}
+$${\text{°F}=\frac{9}{5}\text{°C}+32.0={({\frac{9}{5}\,\times \,37.0})}+32.0=66.6+32.0=\text{98,6 °F}}$${#fs-idp114907616}
 
 **Skoðaðu þekkingu þína**
 
@@ -429,9 +429,9 @@ stillingin? Hver er hitinn í kelvin?
 
 **Lausn**
 
-[[EQ:30]]{id="fs-idm32912"}
+$${\text{°C}=\,\frac{5}{9}\text{(°F}-\text{32)}=\,\frac{5}{9}{({450-32})}=\,\frac{5}{9}\,\times \,418=\text{232 °C}\,\longrightarrow \,\text{stilltu ofninn á 230 °C}\,{({\text{tveir markverðir stafir}})}}$${#fs-idm32912}
 
-[[EQ:31]]{id="fs-idm144212448"}
+$${\text{°C}=\text{(°F}+273.15=\frac{5}{9}\text{(°F}-\text{32)}=\frac{5}{9}(450-32)+273.15=505.4\,\text{K}\,\longrightarrow 5.1\times {10}^{2}\text{K}}$${#fs-idm144212448}
 
 **Prófaðu þekkingu þína**
 
@@ -456,7 +456,7 @@ með einfaldri beitingu stærðfræðilegrar aðferðar sem kallast
 til að reikna út umbeðnar stærðir með því að nota mældar stærðir og
 viðeigandi stærðfræðileg tengsl.
 
-[[EQ:40]] | {id="key-equations-table" summary="key equations table"}
+${{T}_{{\text{°C}}}=\text{K}-273.15}$ | {id="key-equations-table" summary="key equations table"}
 
 ## Efnafræði – Æfingar í lok kafla
 
@@ -471,7 +471,7 @@ hlutföll) fyrir fjölda:
 \(c\) punda í 1 kílógrammi
 
 :::answer
-(a) [[EQ:41]]; (b) [[EQ:42]]; (c) [[EQ:43]]
+(a) ${\frac{{\text{1,0936 yd}}}{{\text{1 m}}}}$; (b) ${\frac{{\text{0,94635 L}}}{{\text{1 qt}}}}$; (c) $${\frac{{\text{2,2046 lb}}}{{\text{1 kg}}}}$$
 
 :::
 :::
@@ -496,7 +496,7 @@ metrakerfiseininga. Hversu marga markverða stafi geturðu réttlætt í
 umreikningsþættinum þínum?
 
 :::answer
-[[EQ:44]] Aðeins tveir markverðir stafir eru
+$$\frac{{\text{2,0 L}}}{{\text{67,6 fl oz}}}\,=\,\frac{{\text{0,030 L}}}{{\text{1 fl oz}}}$$ Aðeins tveir markverðir stafir eru
 réttlætanlegir.
 
 :::
@@ -555,17 +555,17 @@ Hversu margir lítrar af olíu eru í tunnu?
 
 :::practice-problem{#fs-idp32978240}
 Þvermál rauðrar blóðfrumu er um 3
-[[EQ:45]] 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
+$\times$ 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
 
 :::answer
-8 [[EQ:46]] 10^−4^ cm
+8 $\times$ 10^−4^ cm
 
 :::
 :::
 
 :::practice-problem{#fs-idp3893440}
 Fjarlægðin milli miðju tveggja
-súrefnisatóma í súrefnissameind er 1,21 [[EQ:47]] 10^−8^ cm. Hver er
+súrefnisatóma í súrefnissameind er 1,21 $\times$ 10^−8^ cm. Hver er
 þessi fjarlægð í tommum?
 
 :::
@@ -594,7 +594,7 @@ rannsóknarstofupróf eru framkvæmd með 5,0 μL af blóðsermi. Hvert er
 þetta rúmmál í millilítrum?
 
 :::answer
-5,0 [[EQ:48]] 10^−3^ ml
+5,0 $\times$ 10^−3^ ml
 
 :::
 :::
@@ -629,11 +629,11 @@ rithátt til að tjá eftirfarandi stærðir með SI-grunneiningum í
 \(i\) 0,15 mK
 
 :::answer
-(a) 1,3 [[EQ:49]] 10^−4^ kg; (b) 2,32 [[EQ:50]] 10^8^
-kg; (c) 5,23 [[EQ:51]] 10^−12^ m; (d) 8,63 [[EQ:52]] 10^−5^ kg;
-(e) 3,76 [[EQ:53]] 10^−1^ m; (f) 5,4 [[EQ:54]] 10^−5^ m; (g) 1
-[[EQ:55]] 10^12^ s; (h) 2,7 [[EQ:56]] 10^−11^ s; (i) 1,5
-[[EQ:57]] 10^−4^ K
+(a) 1,3 $\times$ 10^−4^ kg; (b) 2,32 $\times$ 10^8^
+kg; (c) 5,23 $\times$ 10^−12^ m; (d) 8,63 $\times$ 10^−5^ kg;
+(e) 3,76 $\times$ 10^−1^ m; (f) 5,4 $\times$ 10^−5^ m; (g) 1
+$\times$ 10^12^ s; (h) 2,7 $\times$ 10^−11^ s; (i) 1,5
+$\times$ 10^−4^ K
 
 :::
 :::
@@ -681,7 +681,7 @@ Hvert er rúmmál nákvæmlega 1/2 gallona af mjólk í lítrum?
 nákvæmlega 2240 pund. Hver er þessi massi í kílógrömmum?
 
 :::svar
-1,0160 [[EQ:58]] 10^3^ kg
+1,0160 $\times$ 10^3^ kg
 
 :::
 
@@ -721,20 +721,20 @@ kílómetra
 \(g\) massa 5,00 greina aspiríntöflu í milligrömm (1 grein = 0,00229 oz)
 
 :::svar
-(a) 394 fet; (b) 5,9634 km; (c) 6,0 [[EQ:59]] 10^2^; (d)
-2,64 L; (e) 5,1 [[EQ:60]] 10^18^ kg; (f) 14,5 kg; (g) 324 mg
+(a) 394 fet; (b) 5,9634 km; (c) 6,0 $\times$ 10^2^; (d)
+2,64 L; (e) 5,1 $\times$ 10^18^ kg; (f) 14,5 kg; (g) 324 mg
 
 :::
 
 æfingadæmi{#fs-idm219388000} Á mörgum efnafræðiráðstefnum hefur verið
 haldið 50 trilljón angstroma hlaup (tveir markverðir stafir). Hversu
-langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 [[EQ:61]]
+langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 $\times$
 10^−10^ m)
 
 æfingadæmi{#fs-idm311640624} 50 trilljón angstroma hlaup efnafræðings
 (sjá [↗](#fs-idm219388000)) væri 10.900 álna hlaup
 fornleifafræðings. Hversu löng er ein alin í metrum og fetum? (1 Å = 1
-[[EQ:62]] 10^−8^ cm)
+$\times$ 10^−8^ cm)
 
 :::svar
 0,46 m; 1,5 fet/alin
@@ -779,15 +779,15 @@ timburstærðir.
 
 \(a\) Til að lýsa fyrir Evrópubúa hvernig hús eru byggð í Bandaríkjunum
 þarf að breyta stærðum „tveir á fjóra“ timburs í metrakerfiseiningar.
-Þykktin [[EQ:63]] breiddin [[EQ:64]] lengdin eru 1,50 tommur
-[[EQ:65]] 3,50 tommur [[EQ:66]] 8,00 fet í Bandaríkjunum.
-Hverjar eru stærðirnar í cm [[EQ:67]] cm [[EQ:68]] m?
+Þykktin $\times$ breiddin $\times$ lengdin eru 1,50 tommur
+$\times$ 3,50 tommur $\times$ 8,00 fet í Bandaríkjunum.
+Hverjar eru stærðirnar í cm $\times$ cm $\times$ m?
 
 \(b\) Þetta timbur er hægt að nota sem lóðrétta stoð, sem venjulega er
 komið fyrir með 16,0 tommu millibili. Hver er sú fjarlægð í sentímetrum?
 
 :::answer
-(a) 3,81 cm [[EQ:69]] 8,89 cm [[EQ:70]] 2,44 m; (b)
+(a) 3,81 cm $\times$ 8,89 cm $\times$ 2,44 m; (b)
 40,6 cm
 
 :::
@@ -798,7 +798,7 @@ Talið var að kvikasilfursinnihald í
 læk væri yfir því lágmarki sem talið er öruggt – 1 hluti á milljarð
 (ppb) miðað við þyngd. Greining leiddi í ljós að styrkurinn var 0,68
 hlutar á milljarð. Hvaða magn kvikasilfurs í grömmum var til staðar í
-15,0 L af vatninu, en eðlismassi þess er 0,998 g/ml? [[EQ:71]]
+15,0 L af vatninu, en eðlismassi þess er 0,998 g/ml? $${\text{(1 ppb Hg}=\,\frac{{\text{1 ng Hg}}}{{\text{1 g vatn}}}\text{)}}$$
 
 :::
 

@@ -2,7 +2,7 @@
 title: Mælióvissa, hittni og nákvæmni
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T12:00:09.529Z"
+published-at: "2026-01-29T13:15:53.086Z"
 ---
 
 ## titill: „Óvissa í mælingum, hittni og nákvæmni“ kafli: „1.5“ eining: „m68690“ tungumál: „is“ hluti: „a“
@@ -48,7 +48,7 @@ skipta fjarlægðinni milli 21 og 22 ml merkja í huganum í tíundu úr
 millilítra og lesa síðan af (áætla) neðst á
 bjúgfletinum.*{#fs-idm337865984}
 
-Vísað er til myndarinnar í [↑](#fs-idm337865984). Neðsti hluti
+Vísað er til myndarinnar í [sjá mynd 1.26](#fs-idm337865984). Neðsti hluti
 bjúgflatarins í þessu tilfelli liggur greinilega á milli 21 og 22
 merkinganna, sem þýðir að rúmmál vökvans er *vissulega* meira en 21 ml
 en minna en 22 ml. Bjúgflöturinn virðist vera aðeins nær 22 ml merkinu
@@ -101,15 +101,15 @@ Núllin á undan í þessu dæmi eru ekki marktæk. Við gætum notað
 veldisvísanotkun (eins og lýst er í viðauka B) og tjáð
 töluna sem 8
 
-.32407 [[EQ:4]] 10^−3^; þá inniheldur talan 8,32407 alla markverðu
+.32407 $\times$ 10^−3^; þá inniheldur talan 8,32407 alla markverðu
 stafina og 10^−3^ staðsetur kommu.
 
 Fjöldi markverðra stafa er óviss í tölu sem endar á núlli vinstra megin
 við kommu. Núllin í mælingunni 1.300 grömm gætu verið markverð eða þau
 gætu einfaldlega gefið til kynna hvar komman er staðsett. Hægt er að
 leysa úr þessari tvíræðni með því að nota veldisvísanotkun: 1,3
-[[EQ:5]] 10^3^ (tveir markverðir stafir), 1,30 [[EQ:6]] 10^3^
-(þrír markverðir stafir, ef tugirnir voru mældir) eða 1,300 [[EQ:7]]
+$\times$ 10^3^ (tveir markverðir stafir), 1,30 $\times$ 10^3^
+(þrír markverðir stafir, ef tugirnir voru mældir) eða 1,300 $\times$
 10^3^ (fjórir markverðir stafir, ef einingarnar voru einnig mældar). Í
 tilfellum þar sem aðeins talan á kommuformi er tiltæk er skynsamlegt að
 gera ráð fyrir að öll núll aftast séu ekki markverð.
@@ -125,7 +125,7 @@ og gert er ráð fyrir ákveðnum forsendum til að taka tillit til þess
 mikla fjölda fólks sem er í raun ekki talinn. Vegna þessarar óvissu gæti
 verið skynsamlegra að búast við því að við þekkjum íbúafjöldann með um
 það bil milljón manna skekkjumörkum, en þá ætti að gefa íbúafjöldann upp
-sem 3,17 [[EQ:8]] 10^8^ manns.
+sem 3,17 $\times$ 10^8^ manns.
 
 ## Markverðir stafir í útreikningum
 
@@ -207,11 +207,11 @@ niðurstöðuna að sama fjölda aukastafa og talan með fæsta aukastafi (þ.e.
 
 **Lausn**
 
-\(a\) [[EQ:9]]
+\(a\) ${\frac{{{\,1.0023 g}{\text{+ 4,383 g}}}}{{\,5.3853 g}}}$
 
 Svarið er 5.385 g (rúnnað að þúsundasta sæti; þrír aukastafir)
 
-\(b\) [[EQ:10]]
+\(b\) $$\frac{{{\text\,486 g}{-421.23 g}}}{{\,64.77 g}}$$
 
 Svarið er 65 g (rúnnað að einingarsæti; engir aukastafir)
 
@@ -247,9 +247,9 @@ niðurstöðuna að sama fjölda tölustafa og talan með fæsta markverða staf
 
 **Lausn**
 
-\(a\) [[EQ:11]]
+\(a\) ${{{\text{0,6238 cm}\,\times \,6.6\,\text{cm}=4.11708\,{{\text{cm}}}^{2}\,\longrightarrow \,\text{niðurstaðan er}\,4.1\,{{\text{cm}}}^{2}\,(\text{námundað að tveimur markverðum stöfum})}{\text{fjórir markverðir stafir}\,\times \,\text{tveir markverðir stafir}\,\longrightarrow \,\text{tveir markverðir stafir í svari}}}}$
 
-\(b\) [[EQ:12]]
+\(b\) $$\frac{{\text{421,23 g}}}{{\text{486 mL}}}\,=\text{0,866728... g/mL}\,\longrightarrow \,\text{niðurstaðan er 0,867 g/mL}\,{({\text{námundað að þremur markverðum stöfum}})}\frac{{\text{fimm markverðir stafir}}}{{\text{þrír markverðir stafir}}}\,\longrightarrow \,\text{þrír markverðir stafir}$$
 
 **Kannaðu þekkingu þína**
 
@@ -285,7 +285,7 @@ dýpt. Gerðu ráð fyrir að baðkarið sé rétthyrnt og reiknaðu nálgað r�
 
 **Lausn**
 
-[[EQ:1]]{id="fs-idm15365184"}
+$V=l\,\times \,w\,\times \,d=\text{13,44 dm}\,\times \,\text{5,920 dm}\,\times \,\text{2,54 dm}=\text{202.09459}...\,{\text{dm}}^{3}{({\text{gildi úr reiknivél}})}={\text{202 dm}}^{3}\text{, eða 202 L}\,{({\text{svar námundað að þremur markverðum stöfum}})}${#fs-idm15365184}
 
 **Kannaðu þekkingu þína**
 
@@ -319,13 +319,13 @@ staðhæfingu? Hvernig?
 
 Rúmmál kambstálsins er jafnt rúmmáli vatnsins sem það ryður frá sér:
 
-[[EQ:2]]{id="fs-idm180698816"}
+${\text{rúmmál}=\text{22,4 mL}-\text{13,5 mL}=\text{8,9 mL}={{\text{8,9 cm}}}^{3}}${#fs-idm180698816}
 
 (rúnnað að næsta 0,1 ml, samkvæmt reglunni um samlagningu og frádrátt)
 
 Eðlismassinn er hlutfallið milli massa og rúmmáls:
 
-[[EQ:3]]{id="fs-idp135143440"}
+$${\text{eðlismassi}=\,\frac{{\text{massi}}}{{\text{rúmmál}}}\,=\,\frac{{\text{69,658 g}}}{{{{\text{8,9 cm}}}^{3}}}={{\text{7,8 g/cm}}}^{3}}$${#fs-idp135143440}
 
 (rúnnað að tveimur markverðum stöfum, samkvæmt reglunni um margföldun og
 deilingu)
@@ -453,10 +453,10 @@ veldisvísisformi með réttum fjölda markverðra stafa:
 \(g\) 0,007157
 
 :::svar
-(a) 7,04 [[EQ:13]] 10^2^; (b) 3,344 [[EQ:14]] 10^−2^;
-(c) 5,479 [[EQ:15]] 10^2^; (d) 2,2086 [[EQ:16]] 10^4^; (e)
-1,00000 [[EQ:17]] 10^3^; (f) 6,51 [[EQ:18]] 10^−8^; (g) 7,157
-[[EQ:19]] 10^−3^
+(a) 7,04 $\times$ 10^2^; (b) 3,344 $\times$ 10^−2^;
+(c) 5,479 $\times$ 10^2^; (d) 2,2086 $\times$ 10^4^; (e)
+1,00000 $\times$ 10^3^; (f) 6,51 $\times$ 10^−8^; (g) 7,157
+$\times$ 10^−3^
 
 :::
 
@@ -505,11 +505,11 @@ hver eftirfarandi mælinga?
 
 \(a\) 38,7 g
 
-\(b\) 2 [[EQ:20]] 10^18^ m
+\(b\) 2 $\times$ 10^18^ m
 
 \(c\) 3.486.002 kg
 
-\(d\) 9,74150 [[EQ:21]] 10^−4^ J
+\(d\) 9,74150 $\times$ 10^−4^ J
 
 \(e\) 0,0613 cm^3^
 
@@ -528,11 +528,11 @@ title: "Mælióvissa, hittni og nákvæmni"
 
 ## titill: „Óvissa í mælingum, hittni og nákvæmni“ kafli: „1.5“ eining: „m68690“ tungumál: „is“ hluti: „b“
 
-\(b\) 2,05 [[EQ:22]] 10^8^ m
+\(b\) 2,05 $\times$ 10^8^ m
 
 \(c\) 86,002 J
 
-\(d\) 9,740 [[EQ:23]] 10^4^ m/s
+\(d\) 9,740 $\times$ 10^4^ m/s
 
 \(e\) 10,0613 m^3^
 
@@ -577,12 +577,12 @@ markverðum stöfum:
 
 \(d\) 135
 
-\(e\) 1,497 [[EQ:24]] 10^−3^
+\(e\) 1,497 $\times$ 10^−3^
 
 \(f\) 0,445
 
 :::svar
-(a) 0,44; (b) 9,0; (c) 27; (d) 140; (e) 1,5 [[EQ:25]]
+(a) 0,44; (b) 9,0; (c) 27; (d) 140; (e) 1,5 $\times$
 10^−3^; (f) 0,44
 
 :::
@@ -594,7 +594,7 @@ markverðum stöfum:
 
 \(b\) 86,3
 
-\(c\) 6,382 [[EQ:26]] 10^3^
+\(c\) 6,382 $\times$ 10^3^
 
 \(d\) 5,0008
 
@@ -605,20 +605,20 @@ markverðum stöfum:
 æfingadæmi{#fs-idp358584288} Framkvæmdu eftirfarandi útreikninga og
 gefðu upp hvert svar með réttum fjölda markverðra stafa.
 
-\(a\) 628 [[EQ:27]] 342
+\(a\) 628 $\times$ 342
 
-\(b\) (5,63 [[EQ:28]] 10^2^) [[EQ:29]] (7,4 [[EQ:30]] 10^3^)
+\(b\) (5,63 $\times$ 10^2^) $\times$ (7,4 $\times$ 10^3^)
 
-\(c\) [[EQ:31]]
+\(c\) $${\frac{{28.0}}{{13.483}}}$$
 
-\(d\) 8119 [[EQ:32]] 0,000023
+\(d\) 8119 $\times$ 0,000023
 
 \(e\) 14,98 + 27.340 + 84,7593
 
 \(f\) 42,7 + 0,259
 
 :::svar
-(a) 2,15 [[EQ:33]] 10^5^; (b) 4,2 [[EQ:34]] 10^6^; (c)
+(a) 2,15 $\times$ 10^5^; (b) 4,2 $\times$ 10^6^; (c)
 2,08; (d) 0,19; (e) 27.440; (f) 43,0
 
 :::
@@ -626,21 +626,21 @@ gefðu upp hvert svar með réttum fjölda markverðra stafa.
 æfingadæmi{#fs-idp356573616} Framkvæmdu eftirfarandi útreikninga og
 gefðu upp hvert svar með réttum fjölda markverðra stafa.
 
-\(a\) 62,8 [[EQ:35]] 34
+\(a\) 62,8 $\times$ 34
 
 \(b\) 0,147 + 0,0066 + 0,012
 
-\(c\) 38 [[EQ:36]] 95 [[EQ:37]] 1,792
+\(c\) 38 $\times$ 95 $\times$ 1,792
 
 \(d\) 15 – 0,15 – 0,6155
 
-\(e\) [[EQ:38]]
+\(e\) $${8.78\,\times \,{({\frac{{0.0500}}{{0.478}}})}}$$
 
 \(f\) 140 + 7,68 + 0,014
 
 \(g\) 28,7 – 0.0483
 
-\(h\) [[EQ:39]]
+\(h\) $${\frac{{(88.5-87.57)}}{{45.13}}}$$
 
 :::practice-problem{#fs-idp30946992}
 Skoðaðu niðurstöður
