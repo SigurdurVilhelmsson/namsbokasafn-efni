@@ -381,7 +381,6 @@
 | GET | `/reviews` |
 | GET | `/status` |
 | GET | `/dashboard` |
-| GET | `/pipeline` |
 | GET | `/books` |
 | GET | `/terminology` |
 | GET | `/decisions` |

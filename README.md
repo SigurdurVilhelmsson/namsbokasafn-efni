@@ -609,7 +609,6 @@ See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detai
 | GET | `/reviews` |
 | GET | `/status` |
 | GET | `/dashboard` |
-| GET | `/pipeline` |
 | GET | `/books` |
 | GET | `/terminology` |
 | GET | `/decisions` |

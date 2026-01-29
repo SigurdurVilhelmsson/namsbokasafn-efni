@@ -23,14 +23,20 @@
 | `compile-chapter` | Compiles chapter content for web publication by: |
 | `docx-to-md` | Convert DOCX files to Markdown format |
 | `export-parallel-corpus` | Export Translation Memory to parallel text files |
+| `extract-equation-strings` | Extracts translatable text from LaTeX equations (\text{...} content). |
 | `extract-glossary` | Extracts glossary terms from CNXML source files and outputs markdown |
 | `extract-key-equations` | Extracts key equations from OpenStax CNXML source files and outputs markdown |
+| `extract-table-strings` | Extracts translatable text from table cells for MT translation. |
 | `generate-glossary` | 1. Extracting English terms + definitions from CNXML <glossary> elements |
+| `inject-equation-strings` | Injects translated text back into LaTeX equations. |
+| `inject-table-strings` | This script takes translated *-table-strings.is.md files and |
+| `integrate-translated-tables` | Integrates translated table markdown files into the MT output and publication co |
 | `merge-split-files` | Merges split Erlendur MT files back into single files. |
 | `patch-alt-text` | Patches missing alt text in publication files using alt text from MT output. |
 | `post-mt-pipeline` | Chains post-MT cleanup tools to process translated markdown files. |
 | `process-chapter` | Full chapter processing pipeline |
 | `protect-for-mt` | Pre-MT protection script that extracts frontmatter and tables before |
+| `repair-corrupted-tables` | Repairs corrupted tables in MT output that were translated without protection. |
 | `repair-directives` | Fix directive syntax issues in markdown |
 | `replace-math-images` | Replace equation images with LaTeX code |
 | `restore-figures` | Post-MT processing script that restores correct figure numbers from sidecar. |
@@ -55,6 +61,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*34 tools total (29 active, 5 deprecated)*
+*40 tools total (35 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
