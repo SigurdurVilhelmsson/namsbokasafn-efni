@@ -1,0 +1,1642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68726" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Calorimetry</note>
+      <note>Section: 5.2</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Calorimetry</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Explain the technique of calorimetry</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Calculate and interpret heat and related properties using typical calorimetry data</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-paragraph">
+        <source>One technique we can use to measure the amount of heat involved in a chemical or physical process is known as <g id="1" ctype="x-bold">calorimetry</g>{id="term-00001"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-paragraph">
+        <source>Calorimetry is used to measure amounts of heat transferred to or from a substance.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>To do so, the heat is exchanged with a calibrated object (calorimeter).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>The temperature change measured by the calorimeter is used to derive the amount of heat transferred by the process under study.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>The measurement of heat transfer using this approach requires the definition of a <g id="1" ctype="x-bold">system</g>{id="term-00002"} (the substance or substances undergoing the chemical or physical change) and its <g id="2" ctype="x-bold">surroundings</g>{id="term-00003"} (all other matter, including components of the measurement apparatus, that serve to either provide heat to the system or absorb heat from the system).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>A <g id="1" ctype="x-bold">calorimeter</g>{id="term-00004"} is a device used to measure the amount of heat involved in a chemical or physical process.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>For example, when an exothermic reaction occurs in solution in a calorimeter, the heat produced by the reaction is absorbed by the solution, which increases its temperature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>When an endothermic reaction occurs, the heat required is absorbed from the thermal energy of the solution, which decreases its temperature ([↗]{ref="CNX_Chem_05_02_HeatMeas"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>The temperature change, along with the specific heat and mass of the solution, can then be used to calculate the amount of heat involved in either case.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>![](CNX_Chem_05_02_HeatMeas.jpg){id="CNX_Chem_05_02_HeatMeas" alt="Two diagrams labeled a and b are shown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source>Each is made up of two rectangular containers with a thermometer inserted into the top right and extending inside.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>There is a right facing arrow connecting each box in each diagram.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>The left container in diagram a depicts a pink and green swirling solution with the terms “Exothermic process” and “System” written in the center with arrows facing away from the terms pointing to “q.” The labels “Solution” and “Surroundings” are written at the bottom of the container.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>The right container in diagram a has the term “Solution” written at the bottom of the container and a red arrow facing up near the thermometer with the phrase “Temperature increased” next to it.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>The pink and green swirls are more blended in this container.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>The left container in diagram b depicts a purple and blue swirling solution with the terms “Endothermic process” and “System” written in the center with arrows facing away from the terms and “Solution” and “Surroundings” written at the bottom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>The arrows point away from the letter “q.” The right container in diagram b has the term “Solution” written at the bottom and a red arrow facing down near the thermometer with the phrase “Temperature decreased” next to it.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source>The blue and purple swirls are more blended in this container."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 5.11: In a calorimetric determination, either (a) an exothermic process occurs and heat, </g>q<g id="2" ctype="x-italic">, is negative, indicating that thermal energy is transferred from the system to its surroundings, or (b) an endothermic process occurs and heat, </g>q<g id="3" ctype="x-italic">, is positive, indicating that thermal energy is transferred from the surroundings to the system.</g>{id="CNX_Chem_05_02_HeatMeas"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source>Calorimetry measurements are important in understanding the heat transferred in reactions involving everything from microscopic proteins to massive machines.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-paragraph">
+        <source>During her time at the National Bureau of Standards, research chemist Reatha Clark King performed calorimetric experiments to understand the precise heats of various fluorine compounds.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source>Her work was important to NASA in their quest for better rocket fuels.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>Scientists use well-insulated calorimeters that all but prevent the transfer of heat between the calorimeter and its environment, which effectively limits the “surroundings” to the nonsystem components within the calorimeter (and the calorimeter itself).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source>This enables the accurate determination of the heat involved in chemical processes, the energy content of foods, and so on.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>General chemistry students often use simple calorimeters constructed from polystyrene cups ([↗]{ref="CNX_Chem_05_02_Calorim"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>These easy-to-use “coffee cup” calorimeters allow more heat exchange with the outside environment, and therefore produce less accurate energy values.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-paragraph">
+        <source>![](CNX_Chem_05_02_Calorim.jpg){id="CNX_Chem_05_02_Calorim" class="scaled-down" alt="Two Styrofoam cups are shown nested in one another with a cover over the top.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-paragraph">
+        <source>A thermometer and stirring rod are inserted through the cover and into the solution inside the cup, which is shown as a cut-away.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>The stirring rod has a double headed arrow next to it facing up and down.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>The liquid mixture inside the cup is labeled “Reaction mixture.”"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-paragraph">
+        <source>*Figure 5.12: A simple calorimeter can be constructed from two polystyrene cups.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source>A thermometer and stirrer extend through the cover into the reaction mixture.*{id="CNX_Chem_05_02_Calorim"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source>Commercial solution calorimeters are also available.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source>Relatively inexpensive calorimeters often consist of two thin-walled cups that are nested in a way that minimizes thermal contact during use, along with an insulated cover, handheld stirrer, and simple thermometer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-paragraph">
+        <source>More expensive calorimeters used for industry and research typically have a well-insulated, fully enclosed reaction vessel, motorized stirring mechanism, and a more accurate temperature sensor ([↗]{ref="CNX_Chem_05_02_Calorim2"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source>![](CNX_Chem_05_02_Calorim2.jpg){id="CNX_Chem_05_02_Calorim2" alt="Two diagrams are shown and labeled a and b.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-paragraph">
+        <source>Diagram a depicts a thermometer which passes through a disk-like insulating cover and into a metal cylinder which is labeled “metal inner vessel,” which is in turn nested in a metal cylinder labeled “metal outer vessel.” The inner cylinder rests on an insulating support ring.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-paragraph">
+        <source>A stirrer passes through the insulating cover and into the inner cylinder as well.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-paragraph">
+        <source>Diagram b shows an inner metal vessel half full of liquid resting on an insulating support ring and nested in a metal outer vessel.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-paragraph">
+        <source>A precision temperature probe and motorized stirring rod are placed into the solution in the inner vessel and connected by wires to equipment exterior to the set-up."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 5.13: Commercial solution calorimeters range from (a) simple, inexpensive models for student use to (b) expensive, more accurate models for industry and research.</g>{id="CNX_Chem_05_02_Calorim2"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-paragraph">
+        <source>Before discussing the calorimetry of chemical reactions, consider a simpler example that illustrates the core idea behind calorimetry.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-paragraph">
+        <source>Suppose we initially have a high-temperature substance, such as a hot piece of metal (M), and a low-temperature substance, such as cool water (W).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-paragraph">
+        <source>If we place the metal in the water, heat will flow from M to W.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-paragraph">
+        <source>The temperature of M will decrease, and the temperature of W will increase, until the two substances have the same temperature—that is, when they reach thermal equilibrium ([↗]{ref="CNX_Chem_05_02_HeatTrans2"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-paragraph">
+        <source>If this occurs in a calorimeter, ideally all of this heat transfer occurs between the two substances, with no heat gained or lost by either its external environment.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-paragraph">
+        <source>Under these ideal circumstances, the net heat change is zero:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:1]]" ctype="x-equation"/>{id="fs-idm194903168"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-paragraph">
+        <source>This relationship can be rearranged to show that the heat gained by substance M is equal to the heat lost by substance W:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:2]]" ctype="x-equation"/>{id="fs-idm280055136"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-paragraph">
+        <source>The magnitude of the heat (change) is therefore the same for both substances, and the negative sign merely shows that <g id="1" ctype="x-italic">q</g><g id="4" ctype="x-sub">substance M</g> and <g id="2" ctype="x-italic">q</g><g id="5" ctype="x-sub">substance W</g> are opposite in direction of heat flow (gain or loss) but does not indicate the arithmetic sign of either <g id="3" ctype="x-italic">q</g> value (that is determined by whether the matter in question gains or loses heat, per definition).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-paragraph">
+        <source>In the specific situation described, <g id="1" ctype="x-italic">q</g><g id="3" ctype="x-sub">substance M</g> is a negative value and <g id="2" ctype="x-italic">q</g><g id="4" ctype="x-sub">substance W</g> is positive, since heat is transferred from M to W.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-paragraph">
+        <source>![](CNX_Chem_05_02_HeatTrans2.jpg){id="CNX_Chem_05_02_HeatTrans2" class="scaled-down" alt="Two diagrams are shown and labeled a and b.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-paragraph">
+        <source>Each diagram is composed of a rectangular container with a thermometer inserted inside from the top right corner.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-paragraph">
+        <source>Both containers are connected by a right-facing arrow.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-paragraph">
+        <source>Both containers are full of water, which is depicted by the letter “W,” and each container has a square in the middle which represents a metal which is labeled with a letter “M.” In diagram a, the metal is drawn in brown and has three arrows facing away from it.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-paragraph">
+        <source>Each arrow has the letter “q” at its end.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-paragraph">
+        <source>The metal is labeled “system” and the water is labeled “surroundings.” The thermometer in this diagram has a relatively low reading.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-paragraph">
+        <source>In diagram b, the metal is depicted in purple and the thermometer has a relatively high reading."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 5.14: In a simple calorimetry process, (a) heat, </g>q<g id="2" ctype="x-italic">, is transferred from the hot metal, M, to the cool water, W, until (b) both are at the same temperature.</g>{id="CNX_Chem_05_02_HeatTrans2"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-paragraph">
+        <source>Heat Transfer between Substances at Different TemperaturesA 360.0-g piece of rebar (a steel rod used for reinforcing concrete) is dropped into 425 mL of water at 24.0 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-paragraph">
+        <source>The final temperature of the water was measured as 42.7 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-paragraph">
+        <source>Calculate the initial temperature of the piece of rebar.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-paragraph">
+        <source>Assume the specific heat of steel is approximately the same as that for iron ([↗]{ref="fs-idm68801008"}), and that all heat transfer occurs between the rebar and the water (there is no heat exchange with the surroundings).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-paragraph">
+        <source>SolutionThe temperature of the water increases from 24.0 °C to 42.7 °C, so the water absorbs heat.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-paragraph">
+        <source>That heat came from the piece of rebar, which initially was at a higher temperature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-paragraph">
+        <source>Assuming that all heat transfer was between the rebar and the water, with no heat “lost” to the outside environment, then <g id="1" ctype="x-italic">heat given off by rebar = −heat taken in by water</g>, or:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:3]]" ctype="x-equation"/>{id="fs-idm107179568"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-paragraph">
+        <source>Since we know how heat is related to other measurable quantities, we have:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:4]]" ctype="x-equation"/>{id="fs-idm52673840"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-paragraph">
+        <source>Letting f = final and i = initial, in expanded form, this becomes:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:5]]" ctype="x-equation"/>{id="fs-idp7508656"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-paragraph">
+        <source>The density of water is 1.0 g/mL, so 425 mL of water = 425 g.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-paragraph">
+        <source>Noting that the final temperature of both the rebar and water is 42.7 °C, substituting known values yields:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:6]]" ctype="x-equation"/>{id="fs-idm160292560"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:7]]" ctype="x-equation"/>{id="fs-idp7310352"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-paragraph">
+        <source>Solving this gives <g id="1" ctype="x-italic">T</g><g id="2" ctype="x-sub">i,rebar</g>= 248 °C, so the initial temperature of the rebar was 248 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-paragraph">
+        <source>Check Your Learning A 248-g piece of copper is dropped into 390 mL of water at 22.6 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-paragraph">
+        <source>The final temperature of the water was measured as 39.9 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-paragraph">
+        <source>Calculate the initial temperature of the piece of copper.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-paragraph">
+        <source>Assume that all heat transfer occurs between the copper and the water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-paragraph">
+        <source>The initial temperature of the copper was 335.6 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-paragraph">
+        <source>The initial temperature of the copper was 335.6 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-paragraph">
+        <source>Check Your Learning A 248-g piece of copper initially at 314 °C is dropped into 390 mL of water initially at 22.6 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-paragraph">
+        <source>Assuming that all heat transfer occurs between the copper and the water, calculate the final temperature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-paragraph">
+        <source>The final temperature (reached by both copper and water) is 38.7 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-97" restype="x-paragraph">
+        <source>The final temperature (reached by both copper and water) is 38.7 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-98" restype="x-paragraph">
+        <source>This method can also be used to determine other quantities, such as the specific heat of an unknown metal.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-99" restype="x-paragraph">
+        <source>Identifying a Metal by Measuring Specific Heat A 59.7 g piece of metal that had been submerged in boiling water was quickly transferred into 60.0 mL of water initially at 22.0 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-100" restype="x-paragraph">
+        <source>The final temperature is 28.5 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-101" restype="x-paragraph">
+        <source>Use these data to determine the specific heat of the metal.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-102" restype="x-paragraph">
+        <source>Use this result to identify the metal.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-103" restype="x-paragraph">
+        <source>Solution Assuming perfect heat transfer, <g id="1" ctype="x-italic">heat given off by metal = −heat taken in by water</g>, or:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-104" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:8]]" ctype="x-equation"/>{id="fs-idm199710176"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-105" restype="x-paragraph">
+        <source>In expanded form, this is:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-106" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:9]]" ctype="x-equation"/>{id="fs-idm4542240"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-107" restype="x-paragraph">
+        <source>Noting that since the metal was submerged in boiling water, its initial temperature was 100.0 °C; and that for water, 60.0 mL = 60.0 g; we have:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-108" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:10]]" ctype="x-equation"/>{id="fs-idm127022128"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-109" restype="x-paragraph">
+        <source>Solving this:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-110" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/>{id="fs-idm13040064"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-111" restype="x-paragraph">
+        <source>Comparing this with values in [↗]{ref="fs-idm68801008"}, our experimental specific heat is closest to the value for copper (0.39 J/g °C), so we identify the metal as copper.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-112" restype="x-paragraph">
+        <source>Check Your Learning A 92.9-g piece of a silver/gray metal is heated to 178.0 °C, and then quickly transferred into 75.0 mL of water initially at 24.0 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-113" restype="x-paragraph">
+        <source>After 5 minutes, both the metal and the water have reached the same temperature: 29.7 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-114" restype="x-paragraph">
+        <source>Determine the specific heat and the identity of the metal. (Note: You should find that the specific heat is close to that of two different metals.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-115" restype="x-paragraph">
+        <source>Explain how you can confidently determine the identity of the metal).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-116" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-117" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-118" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">c</g><g id="2" ctype="x-sub">metal</g>= 0.13 J/g °C</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-119" restype="x-paragraph">
+        <source>This specific heat is close to that of either gold or lead.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-120" restype="x-paragraph">
+        <source>It would be difficult to determine which metal this was based solely on the numerical values.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-121" restype="x-paragraph">
+        <source>However, the observation that the metal is silver/gray in addition to the value for the specific heat indicates that the metal is lead.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-122" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">c</g><g id="2" ctype="x-sub">metal</g>= 0.13 J/g °C</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-123" restype="x-paragraph">
+        <source>This specific heat is close to that of either gold or lead.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-124" restype="x-paragraph">
+        <source>It would be difficult to determine which metal this was based solely on the numerical values.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-125" restype="x-paragraph">
+        <source>However, the observation that the metal is silver/gray in addition to the value for the specific heat indicates that the metal is lead.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-126" restype="x-paragraph">
+        <source>When we use calorimetry to determine the heat involved in a chemical reaction, the same principles we have been discussing apply.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-127" restype="x-paragraph">
+        <source>The amount of heat absorbed by the calorimeter is often small enough that we can neglect it (though not for highly accurate measurements, as discussed later), and the calorimeter minimizes energy exchange with the outside environment.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-128" restype="x-paragraph">
+        <source>Because energy is neither created nor destroyed during a chemical reaction, the heat produced or consumed in the reaction (the “system”), <g id="1" ctype="x-italic">q</g><g id="3" ctype="x-sub">reaction</g>, plus the heat absorbed or lost by the solution (the “surroundings”), <g id="2" ctype="x-italic">q</g><g id="4" ctype="x-sub">solution</g>, must add up to zero:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-129" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:12]]" ctype="x-equation"/>{id="fs-idm289467200"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-130" restype="x-paragraph">
+        <source>This means that the amount of heat produced or consumed in the reaction equals the amount of heat absorbed or lost by the solution:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-131" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:13]]" ctype="x-equation"/>{id="fs-idm208991056"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-132" restype="x-paragraph">
+        <source>This concept lies at the heart of all calorimetry problems and calculations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-133" restype="x-paragraph">
+        <source>Heat Produced by an Exothermic ReactionWhen 50.0 mL of 1.00 M HCl(<g id="1" ctype="x-italic">aq</g>) and 50.0 mL of 1.00 M NaOH(<g id="2" ctype="x-italic">aq</g>), both at 22.0 °C, are added to a coffee cup calorimeter, the temperature of the mixture reaches a maximum of 28.9 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-134" restype="x-paragraph">
+        <source>What is the approximate amount of heat produced by this reaction?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-135" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:14]]" ctype="x-equation"/>{id="fs-idm32936848"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-136" restype="x-paragraph">
+        <source>Solution To visualize what is going on, imagine that you could combine the two solutions so quickly that no reaction took place while they mixed; then after mixing, the reaction took place.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-137" restype="x-paragraph">
+        <source>At the instant of mixing, you have 100.0 mL of a mixture of HCl and NaOH at 22.0 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-138" restype="x-paragraph">
+        <source>The HCl and NaOH then react until the solution temperature reaches 28.9 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-139" restype="x-paragraph">
+        <source>The heat given off by the reaction is equal to that taken in by the solution.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-140" restype="x-paragraph">
+        <source>Therefore:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-141" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:15]]" ctype="x-equation"/>{id="fs-idm259063904"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-142" restype="x-paragraph">
+        <source>(It is important to remember that this relationship only holds if the calorimeter does not absorb any heat from the reaction, and there is no heat exchange between the calorimeter and the outside environment.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-143" restype="x-paragraph">
+        <source>Next, we know that the heat absorbed by the solution depends on its specific heat, mass, and temperature change:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-144" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:16]]" ctype="x-equation"/>{id="fs-idm174034752"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-145" restype="x-paragraph">
+        <source>To proceed with this calculation, we need to make a few more reasonable assumptions or approximations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-146" restype="x-paragraph">
+        <source>Since the solution is aqueous, we can proceed as if it were water in terms of its specific heat and mass values.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-147" restype="x-paragraph">
+        <source>The density of water is approximately 1.0 g/mL, so 100.0 mL has a mass of about 1.0 <x id="1" equiv-text="[[EQ:23]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">2</g> g (two significant figures).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-148" restype="x-paragraph">
+        <source>The specific heat of water is approximately 4.184 J/g °C, so we use that for the specific heat of the solution.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-149" restype="x-paragraph">
+        <source>Substituting these values gives:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-150" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:17]]" ctype="x-equation"/>{id="fs-idm261390032"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-151" restype="x-paragraph">
+        <source>Finally, since we are trying to find the heat of the reaction, we have:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-152" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:18]]" ctype="x-equation"/>{id="fs-idm178566000"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-153" restype="x-paragraph">
+        <source>The negative sign indicates that the reaction is exothermic.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-154" restype="x-paragraph">
+        <source>It produces 2.9 kJ of heat.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-155" restype="x-paragraph">
+        <source>Check Your Learning When 100 mL of 0.200 M NaCl(<g id="1" ctype="x-italic">aq</g>) and 100 mL of 0.200 M AgNO<g id="3" ctype="x-sub">3</g>(<g id="2" ctype="x-italic">aq</g>), both at 21.9 °C, are mixed in a coffee cup calorimeter, the temperature increases to 23.5 °C as solid AgCl forms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-156" restype="x-paragraph">
+        <source>How much heat is produced by this precipitation reaction?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-157" restype="x-paragraph">
+        <source>What assumptions did you make to determine your value?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-158" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-159" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-160" restype="x-paragraph">
+        <source>1.34 <x id="1" equiv-text="[[EQ:24]]" ctype="x-equation"/> 10 <g id="2" ctype="x-sup">3</g> kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-161" restype="x-paragraph">
+        <source>1.34 <x id="1" equiv-text="[[EQ:24]]" ctype="x-equation"/> 10 <g id="2" ctype="x-sup">3</g> kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-162" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-163" restype="x-subsection-title">
+        <source>Thermochemistry of Hand Warmers</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-164" restype="x-paragraph">
+        <source>When working or playing outdoors on a cold day, you might use a hand warmer to warm your hands ([↗]{ref="CNX_Chem_05_02_HandWarmer"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-165" restype="x-paragraph">
+        <source>A common reusable hand warmer contains a supersaturated solution of NaC<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sub">2</g> (sodium acetate) and a metal disc.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-166" restype="x-paragraph">
+        <source>Bending the disk creates nucleation sites around which the metastable NaC<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sub">2</g> quickly crystallizes (a later chapter on solutions will investigate saturation and supersaturation in more detail).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-167" restype="x-paragraph">
+        <source>The process <x id="1" equiv-text="[[EQ:25]]" ctype="x-equation"/> is exothermic, and the heat produced by this process is absorbed by your hands, thereby warming them (at least for a while).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-168" restype="x-paragraph">
+        <source>If the hand warmer is reheated, the NaC<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sub">2</g> redissolves and can be reused.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-169" restype="x-paragraph">
+        <source>Another common hand warmer produces heat when it is ripped open, exposing iron and water in the hand warmer to oxygen in the air.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-170" restype="x-paragraph">
+        <source>One simplified version of this exothermic reaction is <x id="1" equiv-text="[[EQ:26]]" ctype="x-equation"/> Salt in the hand warmer catalyzes the reaction, so it produces heat more rapidly; cellulose, vermiculite, and activated carbon help distribute the heat evenly.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-171" restype="x-paragraph">
+        <source>Other types of hand warmers use lighter fluid (a platinum catalyst helps lighter fluid oxidize exothermically), charcoal (charcoal oxidizes in a special case), or electrical units that produce heat by passing an electrical current from a battery through resistive wires.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-172" restype="x-paragraph">
+        <source>When working or playing outdoors on a cold day, you might use a hand warmer to warm your hands ([↗]{ref="CNX_Chem_05_02_HandWarmer"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-173" restype="x-paragraph">
+        <source>A common reusable hand warmer contains a supersaturated solution of NaC<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sub">2</g> (sodium acetate) and a metal disc.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-174" restype="x-paragraph">
+        <source>Bending the disk creates nucleation sites around which the metastable NaC<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sub">2</g> quickly crystallizes (a later chapter on solutions will investigate saturation and supersaturation in more detail).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-175" restype="x-paragraph">
+        <source>The process <x id="1" equiv-text="[[EQ:25]]" ctype="x-equation"/> is exothermic, and the heat produced by this process is absorbed by your hands, thereby warming them (at least for a while).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-176" restype="x-paragraph">
+        <source>If the hand warmer is reheated, the NaC<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sub">2</g> redissolves and can be reused.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-177" restype="x-paragraph">
+        <source>![](CNX_Chem_05_02_HandWarmer.jpg){id="CNX_Chem_05_02_HandWarmer" alt="A series of three photos is shown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-178" restype="x-paragraph">
+        <source>There are two right-facing arrows connecting one photo to the next.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-179" restype="x-paragraph">
+        <source>The first photo shows a chemical hand warmer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-180" restype="x-paragraph">
+        <source>It is a bag that contains a clear, colorless liquid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-181" restype="x-paragraph">
+        <source>There is a white disk located to the right inside the bag.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-182" restype="x-paragraph">
+        <source>The second photo shows the same thing, except the white disc has become a white, cloudy substance.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-183" restype="x-paragraph">
+        <source>The third photo shows the entire bag filled with this white substance."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-184" restype="x-paragraph">
+        <source>*Figure 5.15: Chemical hand warmers produce heat that warms your hand on a cold day.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-185" restype="x-paragraph">
+        <source>In this one, you can see the metal disc that initiates the exothermic precipitation reaction. (credit: modification of work by Science Buddies TV/YouTube)*{id="CNX_Chem_05_02_HandWarmer"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-186" restype="x-paragraph">
+        <source>Another common hand warmer produces heat when it is ripped open, exposing iron and water in the hand warmer to oxygen in the air.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-187" restype="x-paragraph">
+        <source>One simplified version of this exothermic reaction is <x id="1" equiv-text="[[EQ:26]]" ctype="x-equation"/> Salt in the hand warmer catalyzes the reaction, so it produces heat more rapidly; cellulose, vermiculite, and activated carbon help distribute the heat evenly.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-188" restype="x-paragraph">
+        <source>Other types of hand warmers use lighter fluid (a platinum catalyst helps lighter fluid oxidize exothermically), charcoal (charcoal oxidizes in a special case), or electrical units that produce heat by passing an electrical current from a battery through resistive wires.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-189" restype="x-paragraph">
+        <source>:::link-to-material This [link]{url="http://openstax.org/l/16Handwarmer"} shows the precipitation reaction that occurs when the disk in a chemical hand warmer is flexed.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-190" restype="x-paragraph">
+        <source>This [link]{url="http://openstax.org/l/16Handwarmer"} shows the precipitation reaction that occurs when the disk in a chemical hand warmer is flexed.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-191" restype="x-paragraph">
+        <source>Heat Flow in an Instant Ice Pack When solid ammonium nitrate dissolves in water, the solution becomes cold.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-192" restype="x-paragraph">
+        <source>This is the basis for an “instant ice pack” ([↗]{ref="CNX_Chem_05_02_IcePack"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-193" restype="x-paragraph">
+        <source>When 3.21 g of solid NH<g id="1" ctype="x-sub">4</g>NO<g id="2" ctype="x-sub">3</g> dissolves in 50.0 g of water at 24.9 °C in a calorimeter, the temperature decreases to 20.3 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-194" restype="x-paragraph">
+        <source>Calculate the value of <g id="1" ctype="x-italic">q</g> for this reaction and explain the meaning of its arithmetic sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-195" restype="x-paragraph">
+        <source>State any assumptions that you made.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-196" restype="x-paragraph">
+        <source>![](CNX_Chem_05_02_IcePack.jpg){id="CNX_Chem_05_02_IcePack" class="scaled-down" alt="A diagram depicts a rectangular pack containing a white, solid substance and an interior bag full of water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-197" restype="x-paragraph">
+        <source>The white solid is labeled “ammonium nitrate.” The top of the packet has the words “Instant Cold Pack” written on it.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-198" restype="x-paragraph">
+        <source>It also has three pictograms, which from right to left, show a hand squeezing the pack, agitating the pack and placing the pack on a person’s body.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-199" restype="x-paragraph">
+        <source>The bottom of the pack has printed words that read “single use only.”"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-200" restype="x-paragraph">
+        <source>*Figure 5.16: An instant cold pack consists of a bag containing solid ammonium nitrate and a second bag of water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-201" restype="x-paragraph">
+        <source>When the bag of water is broken, the pack becomes cold because the dissolution of ammonium nitrate is an endothermic process that removes thermal energy from the water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-202" restype="x-paragraph">
+        <source>The cold pack then removes thermal energy from your body.*{id="CNX_Chem_05_02_IcePack"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-203" restype="x-paragraph">
+        <source>Solution We assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself), in which case:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-204" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:19]]" ctype="x-equation"/>{id="fs-idm127206368"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-205" restype="x-paragraph">
+        <source>with “rxn” and “soln” used as shorthand for “reaction” and “solution,” respectively.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-206" restype="x-paragraph">
+        <source>Assuming also that the specific heat of the solution is the same as that for water, we have:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-207" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:20]]" ctype="x-equation"/>{id="fs-idm183045408"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-208" restype="x-paragraph">
+        <source>The positive sign for <g id="1" ctype="x-italic">q</g> indicates that the dissolution is an endothermic process.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-209" restype="x-paragraph">
+        <source>Check Your Learning When a 3.00-g sample of KCl was added to 3.00 <x id="1" equiv-text="[[EQ:27]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">2</g> g of water in a coffee cup calorimeter, the temperature decreased by 1.05 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-210" restype="x-paragraph">
+        <source>How much heat is involved in the dissolution of the KCl?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-211" restype="x-paragraph">
+        <source>What assumptions did you make?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-212" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-213" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-214" restype="x-paragraph">
+        <source>1.33 kJ; assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself) and that the specific heat of the solution is the same as that for water</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-215" restype="x-paragraph">
+        <source>1.33 kJ; assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself) and that the specific heat of the solution is the same as that for water</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-216" restype="x-paragraph">
+        <source>If the amount of heat absorbed by a calorimeter is too large to neglect or if we require more accurate results, then we must take into account the heat absorbed both by the solution and by the calorimeter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-217" restype="x-paragraph">
+        <source>The calorimeters described are designed to operate at constant (atmospheric) pressure and are convenient to measure heat flow accompanying processes that occur in solution.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-218" restype="x-paragraph">
+        <source>A different type of calorimeter that operates at constant volume, colloquially known as a <g id="1" ctype="x-bold">bomb calorimeter</g>{id="term-00005"}, is used to measure the energy produced by reactions that yield large amounts of heat and gaseous products, such as combustion reactions. (The term “bomb” comes from the observation that these reactions can be vigorous enough to resemble explosions that would damage other calorimeters.) This type of calorimeter consists of a robust steel container (the “bomb”) that contains the reactants and is itself submerged in water ([↗]{ref="CNX_Chem_05_02_BombCalor"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-219" restype="x-paragraph">
+        <source>The sample is placed in the bomb, which is then filled with oxygen at high pressure.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-220" restype="x-paragraph">
+        <source>A small electrical spark is used to ignite the sample.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-221" restype="x-paragraph">
+        <source>The energy produced by the reaction is absorbed by the steel bomb and the surrounding water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-222" restype="x-paragraph">
+        <source>The temperature increase is measured and, along with the known heat capacity of the calorimeter, is used to calculate the energy produced by the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-223" restype="x-paragraph">
+        <source>Bomb calorimeters require calibration to determine the heat capacity of the calorimeter and ensure accurate results.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-224" restype="x-paragraph">
+        <source>The calibration is accomplished using a reaction with a known <g id="1" ctype="x-italic">q</g>, such as a measured quantity of benzoic acid ignited by a spark from a nickel fuse wire that is weighed before and after the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-225" restype="x-paragraph">
+        <source>The temperature change produced by the known reaction is used to determine the heat capacity of the calorimeter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-226" restype="x-paragraph">
+        <source>The calibration is generally performed each time before the calorimeter is used to gather research data.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-227" restype="x-paragraph">
+        <source>![](CNX_Chem_05_02_BombCalor.jpg){id="CNX_Chem_05_02_BombCalor" alt="A picture and a diagram are shown, labeled a and b, respectively.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-228" restype="x-paragraph">
+        <source>Picture a depicts a bomb calorimeter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-229" restype="x-paragraph">
+        <source>It is a cube-shaped machine with a cavity in the top, a metal cylinder that is above the cavity, and a read-out panel attached to the top-right side.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-230" restype="x-paragraph">
+        <source>Diagram b depicts a cut away figure of a cube with a cylindrical container full of water in the middle of it.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-231" restype="x-paragraph">
+        <source>Another container, labeled “bomb,” sits inside of a smaller cylinder which holds a sample cup and is nested in the cylindrical container surrounded by the water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-232" restype="x-paragraph">
+        <source>A black line extends into the water and is labeled “Precision thermometer.” Two wires labeled “Electrodes” extend away from a cover that sits on top of the interior container.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-233" restype="x-paragraph">
+        <source>A read-out panel is located at the top right of the cube."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-234" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 5.17: (a) A bomb calorimeter is used to measure heat produced by reactions involving gaseous reactants or products, such as combustion. (b) The reactants are contained in the gas-tight “bomb,” which is submerged in water and surrounded by insulating materials. (credit a: modification of work by “Harbor1”/Wikimedia commons)</g>{id="CNX_Chem_05_02_BombCalor"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-235" restype="x-paragraph">
+        <source>:::link-to-material Click on this [link]{url="http://openstax.org/l/16BombCal"} to view how a bomb calorimeter is prepared for action.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-236" restype="x-paragraph">
+        <source>This [site]{url="http://openstax.org/l/16Calorcalcs"} shows calorimetric calculations using sample data.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-237" restype="x-paragraph">
+        <source>Click on this [link]{url="http://openstax.org/l/16BombCal"} to view how a bomb calorimeter is prepared for action.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-238" restype="x-paragraph">
+        <source>This [site]{url="http://openstax.org/l/16Calorcalcs"} shows calorimetric calculations using sample data.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-239" restype="x-paragraph">
+        <source>Bomb Calorimetry When 3.12 g of glucose, C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">12</g>O<g id="3" ctype="x-sub">6</g>, is burned in a bomb calorimeter, the temperature of the calorimeter increases from 23.8 °C to 35.6 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-240" restype="x-paragraph">
+        <source>The calorimeter contains 775 g of water, and the bomb itself has a heat capacity of 893 J/°C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-241" restype="x-paragraph">
+        <source>How much heat was produced by the combustion of the glucose sample?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-242" restype="x-paragraph">
+        <source>Solution The combustion produces heat that is primarily absorbed by the water and the bomb. (The amounts of heat absorbed by the reaction products and the unreacted excess oxygen are relatively small and dealing with them is beyond the scope of this text.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-243" restype="x-paragraph">
+        <source>We will neglect them in our calculations.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-244" restype="x-paragraph">
+        <source>The heat produced by the reaction is absorbed by the water and the bomb:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-245" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:21]]" ctype="x-equation"/>{id="fs-idm137623248"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-246" restype="x-paragraph">
+        <source>This reaction released 48.7 kJ of heat when 3.12 g of glucose was burned.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-247" restype="x-paragraph">
+        <source>Check Your LearningWhen 0.963 g of benzene, C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">6</g>, is burned in a bomb calorimeter, the temperature of the calorimeter increases by 8.39 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-248" restype="x-paragraph">
+        <source>The bomb has a heat capacity of 784 J/°C and is submerged in 925 mL of water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-249" restype="x-paragraph">
+        <source>How much heat was produced by the combustion of the benzene sample?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-250" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-251" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-252" restype="x-paragraph">
+        <source>q<g id="1" ctype="x-sub">rx</g> = –39.0 kJ (the reaction produced 39.0 kJ of heat)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-253" restype="x-paragraph">
+        <source>q<g id="1" ctype="x-sub">rx</g> = –39.0 kJ (the reaction produced 39.0 kJ of heat)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-254" restype="x-paragraph">
+        <source>Since the first one was constructed in 1899, 35 calorimeters have been built to measure the heat produced by a living person.Francis D.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-255" restype="x-paragraph">
+        <source>Reardon et al. “The Snellen human calorimeter revisited, re-engineered and upgraded: Design and performance characteristics.” <g id="1" ctype="x-italic">Medical and Biological Engineering and Computing</g> 8 (2006)721–28, http://link.springer.com/article/10.1007/s11517-006-0086-5.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-256" restype="x-paragraph">
+        <source>These whole-body calorimeters of various designs are large enough to hold an individual human being.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-257" restype="x-paragraph">
+        <source>More recently, whole-room calorimeters allow for relatively normal activities to be performed, and these calorimeters generate data that more closely reflect the real world.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-258" restype="x-paragraph">
+        <source>These calorimeters are used to measure the metabolism of individuals under different environmental conditions, different dietary regimes, and with different health conditions, such as diabetes.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-259" restype="x-paragraph">
+        <source>For example Carla Prado's team at University of Alberta undertook whole-body calorimetry to understand the energy expenditures of women who had recently given birth.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-260" restype="x-paragraph">
+        <source>Studies like this help develop better recommendations and regimens for nutrition, exercise, and general wellbeing during this period of significant physiological change.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-261" restype="x-paragraph">
+        <source>In humans, metabolism is typically measured in Calories per day.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-262" restype="x-paragraph">
+        <source>A <g id="1" ctype="x-bold">nutritional calorie (Calorie)</g>{id="term-00006"} is the energy unit used to quantify the amount of energy derived from the metabolism of foods; one Calorie is equal to 1000 calories (1 kcal), the amount of energy needed to heat 1 kg of water by 1 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-263" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-264" restype="x-subsection-title">
+        <source>Measuring Nutritional Calories</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-265" restype="x-paragraph">
+        <source>In your day-to-day life, you may be more familiar with energy being given in Calories, or nutritional calories, which are used to quantify the amount of energy in foods.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-266" restype="x-paragraph">
+        <source>One calorie (cal) = exactly 4.184 joules, and one Calorie (note the capitalization) = 1000 cal, or 1 kcal. (This is approximately the amount of energy needed to heat 1 kg of water by 1 °C.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-267" restype="x-paragraph">
+        <source>The macronutrients in food are proteins, carbohydrates, and fats or oils.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-268" restype="x-paragraph">
+        <source>Proteins provide about 4 Calories per gram, carbohydrates also provide about 4 Calories per gram, and fats and oils provide about 9 Calories/g.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-269" restype="x-paragraph">
+        <source>Nutritional labels on food packages show the caloric content of one serving of the food, as well as the breakdown into Calories from each of the three macronutrients ([↗]{ref="CNX_Chem_05_02_FoodLabel"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-270" restype="x-paragraph">
+        <source>For the example shown in (b), the total energy per 228-g portion is calculated by:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-271" restype="x-paragraph">
+        <source>So, you can use food labels to count your Calories.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-272" restype="x-paragraph">
+        <source>But where do the values come from?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-273" restype="x-paragraph">
+        <source>And how accurate are they?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-274" restype="x-paragraph">
+        <source>The caloric content of foods can be determined by using bomb calorimetry; that is, by burning the food and measuring the energy it contains.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-275" restype="x-paragraph">
+        <source>A sample of food is weighed, mixed in a blender, freeze-dried, ground into powder, and formed into a pellet.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-276" restype="x-paragraph">
+        <source>The pellet is burned inside a bomb calorimeter, and the measured temperature change is converted into energy per gram of food.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-277" restype="x-paragraph">
+        <source>Today, the caloric content on food labels is derived using a method called the <g id="1" ctype="x-bold">Atwater system</g> that uses the average caloric content of the different chemical constituents of food, protein, carbohydrate, and fats.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-278" restype="x-paragraph">
+        <source>The average amounts are those given in the equation and are derived from the various results given by bomb calorimetry of whole foods.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-279" restype="x-paragraph">
+        <source>The carbohydrate amount is discounted a certain amount for the fiber content, which is indigestible carbohydrate.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-280" restype="x-paragraph">
+        <source>To determine the energy content of a food, the quantities of carbohydrate, protein, and fat are each multiplied by the average Calories per gram for each and the products summed to obtain the total energy.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-281" restype="x-paragraph">
+        <source>In your day-to-day life, you may be more familiar with energy being given in Calories, or nutritional calories, which are used to quantify the amount of energy in foods.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-282" restype="x-paragraph">
+        <source>One calorie (cal) = exactly 4.184 joules, and one Calorie (note the capitalization) = 1000 cal, or 1 kcal. (This is approximately the amount of energy needed to heat 1 kg of water by 1 °C.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-283" restype="x-paragraph">
+        <source>The macronutrients in food are proteins, carbohydrates, and fats or oils.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-284" restype="x-paragraph">
+        <source>Proteins provide about 4 Calories per gram, carbohydrates also provide about 4 Calories per gram, and fats and oils provide about 9 Calories/g.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-285" restype="x-paragraph">
+        <source>Nutritional labels on food packages show the caloric content of one serving of the food, as well as the breakdown into Calories from each of the three macronutrients ([↗]{ref="CNX_Chem_05_02_FoodLabel"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-286" restype="x-paragraph">
+        <source>![](CNX_Chem_05_02_FoodLabel.jpg){id="CNX_Chem_05_02_FoodLabel" alt="Two pictures are shown and labeled a and b.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-287" restype="x-paragraph">
+        <source>Picture a shows a close-up of a bowl of macaroni and cheese.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-288" restype="x-paragraph">
+        <source>Picture b is a food label that contains highlighted information in a table format.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-289" restype="x-paragraph">
+        <source>The top of the label reads “Sample label for macaroni and cheese.” Below this are the words “Nutrition facts.” Below this are two lines of highlighted text that read “Serving size one cup (228 g)” and “Servings per container 2.” A label to the left of these lines reads “Start here” and a right-facing arrow is beside these words.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-290" restype="x-paragraph">
+        <source>Below this are the words “check calories” which lie to the left of the phrases “Amount per serving” which is above the words “Calories 250” and “Calories from fat 210.” The next segment of the label is highlighted and contains five phrases “Total fat 12 g,” “Saturated fat 3 g,” “Trans fat 3 g,” “Cholesterol 30 m g,” and “Sodium 470 m g.” The phrase “Limit these nutrients” lies to the left of these five phrases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-291" restype="x-paragraph">
+        <source>The phrase below these is “Total carbohydrates 31 g” and is followed by a highlighted phrase, “Dietary fiber 0 g.” Below this are the phrases “Sugars 5 g” and “Proteins 5 g.” Below this is a highlighted portion containing the phrases “Vitamin A,” “Vitamin C,” “Calcium,” and “Iron.” A label to the left of these terms states “Get enough of these nutrients.” The bottom of the label is labeled “Footnote” and reads “Percent daily values are based on a 2,000 calorie diet.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-292" restype="x-paragraph">
+        <source>Your daily values may be higher or lower depending on your calorie needs.” Each of the highlighted terms in the table are in line with a percentage value to the right of the table.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-293" restype="x-paragraph">
+        <source>A note on the outer right of the table states “Quick guide to % DV”, “5% or less is low” and “20% or more is high.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-294" restype="x-paragraph">
+        <source>The daily value for total fat is 18%, for saturated fat is 15%, for cholesterol is 10%, for sodium is 20%, for total carbohydrates is 10%, for dietary fiber is 0%, for vitamin A is 4%, for vitamin C is 2%, for calcium is 20%, and for iron is 4%.” At the very bottom is a table that indicates calories at 2,000 and 2,500.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-295" restype="x-paragraph">
+        <source>For total fat the table indicates less than 65 g for 2,000 calories and 80 g from 2,500 calories.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-296" restype="x-paragraph">
+        <source>For saturated fat the table indicates less than 20 g for 2,000 calories and 25 g for 2,500 calories.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-297" restype="x-paragraph">
+        <source>For cholesterol the table indicates less than 300 m g for 2,000 calories and 300 m g for 2,500 calories.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-298" restype="x-paragraph">
+        <source>For sodium the table indicates less than 2,400 m g for 2,000 calories and 2,400 m g for 2,500 calories.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-299" restype="x-paragraph">
+        <source>For total carbohydrate the table indicates 300 g for 2,000 calories and 375 g for 2,500 calories.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-300" restype="x-paragraph">
+        <source>For dietary fiber the table indicates 25 g for 2,000 calories and 30 g for 2,500 calories."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-301" restype="x-paragraph">
+        <source>*Figure 5.18: (a) Macaroni and cheese contain energy in the form of the macronutrients in the food. (b) The food’s nutritional information is shown on the package label.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-302" restype="x-paragraph">
+        <source>In the US, the energy content is given in Calories (per serving); the rest of the world usually uses kilojoules. (credit a: modification of work by “Rex Roof”/Flickr)*{id="CNX_Chem_05_02_FoodLabel"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-303" restype="x-paragraph">
+        <source>For the example shown in (b), the total energy per 228-g portion is calculated by:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-304" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:22]]" ctype="x-equation"/>{id="fs-idm196775520"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-305" restype="x-paragraph">
+        <source>So, you can use food labels to count your Calories.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-306" restype="x-paragraph">
+        <source>But where do the values come from?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-307" restype="x-paragraph">
+        <source>And how accurate are they?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-308" restype="x-paragraph">
+        <source>The caloric content of foods can be determined by using bomb calorimetry; that is, by burning the food and measuring the energy it contains.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-309" restype="x-paragraph">
+        <source>A sample of food is weighed, mixed in a blender, freeze-dried, ground into powder, and formed into a pellet.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-310" restype="x-paragraph">
+        <source>The pellet is burned inside a bomb calorimeter, and the measured temperature change is converted into energy per gram of food.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-311" restype="x-paragraph">
+        <source>Today, the caloric content on food labels is derived using a method called the <g id="1" ctype="x-bold">Atwater system</g> that uses the average caloric content of the different chemical constituents of food, protein, carbohydrate, and fats.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-312" restype="x-paragraph">
+        <source>The average amounts are those given in the equation and are derived from the various results given by bomb calorimetry of whole foods.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-313" restype="x-paragraph">
+        <source>The carbohydrate amount is discounted a certain amount for the fiber content, which is indigestible carbohydrate.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-314" restype="x-paragraph">
+        <source>To determine the energy content of a food, the quantities of carbohydrate, protein, and fat are each multiplied by the average Calories per gram for each and the products summed to obtain the total energy.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-315" restype="x-paragraph">
+        <source>:::link-to-material Click on this [link]{url="http://openstax.org/l/16USDA"} to access the US Department of Agriculture (USDA) National Nutrient Database, containing nutritional information on over 8000 foods.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-316" restype="x-paragraph">
+        <source>Click on this [link]{url="http://openstax.org/l/16USDA"} to access the US Department of Agriculture (USDA) National Nutrient Database, containing nutritional information on over 8000 foods.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-317" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-318" restype="x-paragraph">
+        <source>Calorimetry is used to measure the amount of thermal energy transferred in a chemical or physical process.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-319" restype="x-paragraph">
+        <source>This requires careful measurement of the temperature change that occurs during the process and the masses of the system and surroundings.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-320" restype="x-paragraph">
+        <source>These measured quantities are then used to compute the amount of heat produced or consumed in the process using known mathematical relations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-321" restype="x-paragraph">
+        <source>Calorimeters are designed to minimize energy exchange between their contents and the external environment.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-322" restype="x-paragraph">
+        <source>They range from simple coffee cup calorimeters used by introductory chemistry students to sophisticated bomb calorimeters used to determine the energy content of food.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-323" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-324" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm40469024} A 500-mL bottle of water at room temperature and a 2-L bottle of water at the same temperature were placed in a refrigerator.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-325" restype="x-paragraph">
+        <source>After 30 minutes, the 500-mL bottle of water had cooled to the temperature of the refrigerator.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-326" restype="x-paragraph">
+        <source>An hour later, the 2-L of water had cooled to the same temperature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-327" restype="x-paragraph">
+        <source>When asked which sample of water lost the most heat, one student replied that both bottles lost the same amount of heat because they started at the same temperature and finished at the same temperature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-328" restype="x-paragraph">
+        <source>A second student thought that the 2-L bottle of water lost more heat because there was more water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-329" restype="x-paragraph">
+        <source>A third student believed that the 500-mL bottle of water lost more heat because it cooled more quickly.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-330" restype="x-paragraph">
+        <source>A fourth student thought that it was not possible to tell because we do not know the initial temperature and the final temperature of the water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-331" restype="x-paragraph">
+        <source>Indicate which of these answers is correct and describe the error in each of the other answers.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-332" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm72048864} Would the amount of heat measured for the reaction in [↗]{ref="fs-idm19242032"} be greater, lesser, or remain the same if we used a calorimeter that was a poorer insulator than a coffee cup calorimeter?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-333" restype="x-paragraph">
+        <source>Explain your answer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-334" restype="x-paragraph">
+        <source>:::answer lesser; more heat would be lost to the coffee cup and the environment and so Δ<g id="1" ctype="x-italic">T</g> for the water would be lesser and the calculated <g id="2" ctype="x-italic">q</g> would be lesser</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-335" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm15197120} Would the amount of heat absorbed by the dissolution in [↗]{ref="fs-idp325184"} appear greater, lesser, or remain the same if the experimenter used a calorimeter that was a poorer insulator than a coffee cup calorimeter?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-336" restype="x-paragraph">
+        <source>Explain your answer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-337" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm40185072} Would the amount of heat absorbed by the dissolution in [↗]{ref="fs-idp325184"} appear greater, lesser, or remain the same if the heat capacity of the calorimeter were taken into account?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-338" restype="x-paragraph">
+        <source>Explain your answer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-339" restype="x-paragraph">
+        <source>:::answer greater, since taking the calorimeter’s heat capacity into account will compensate for the thermal energy transferred to the solution from the calorimeter; this approach includes the calorimeter itself, along with the solution, as “surroundings”: <g id="1" ctype="x-italic">q</g><g id="7" ctype="x-sub">rxn</g> = −(<g id="2" ctype="x-italic">q</g><g id="8" ctype="x-sub">solution</g> + <g id="3" ctype="x-italic">q</g><g id="9" ctype="x-sub">calorimeter</g>); since both <g id="4" ctype="x-italic">q</g><g id="10" ctype="x-sub">solution</g> and <g id="5" ctype="x-italic">q</g><g id="11" ctype="x-sub">calorimeter</g> are negative, including the latter term (<g id="6" ctype="x-italic">q</g><g id="12" ctype="x-sub">rxn</g>) will yield a greater value for the heat of the dissolution</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-340" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm75457248} How many milliliters of water at 23 °C with a density of 1.00 g/mL must be mixed with 180 mL (about 6 oz) of coffee at 95 °C so that the resulting combination will have a temperature of 60 °C?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-341" restype="x-paragraph">
+        <source>Assume that coffee and water have the same density and the same specific heat.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-342" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm50720272} How much will the temperature of a cup (180 g) of coffee at 95 °C be reduced when a 45 g silver spoon (specific heat 0.24 J/g °C) at 25 °C is placed in the coffee and the two are allowed to reach the same temperature?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-343" restype="x-paragraph">
+        <source>Assume that the coffee has the same density and specific heat as water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-344" restype="x-paragraph">
+        <source>:::answer The temperature of the coffee will drop 1 degree.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-345" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm5511248} A 45-g aluminum spoon (specific heat 0.88 J/g °C) at 24 °C is placed in 180 mL (180 g) of coffee at 85 °C and the temperature of the two become equal.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-346" restype="x-paragraph">
+        <source>(a) What is the final temperature when the two become equal?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-347" restype="x-paragraph">
+        <source>Assume that coffee has the same specific heat as water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-348" restype="x-paragraph">
+        <source>(b) The first time a student solved this problem she got an answer of 88 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-349" restype="x-paragraph">
+        <source>Explain why this is clearly an incorrect answer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-350" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm17023280} The temperature of the cooling water as it leaves the hot engine of an automobile is 240 °F.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-351" restype="x-paragraph">
+        <source>After it passes through the radiator it has a temperature of 175 °F.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-352" restype="x-paragraph">
+        <source>Calculate the amount of heat transferred from the engine to the surroundings by one gallon of water with a specific heat of 4.184 J/g °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-353" restype="x-paragraph">
+        <source>:::answer 5.7 <x id="1" equiv-text="[[EQ:28]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">2</g> kJ</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-354" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm57057808} A 70.0-g piece of metal at 80.0 °C is placed in 100 g of water at 22.0 °C contained in a calorimeter like that shown in [↗]{ref="CNX_Chem_05_02_Calorim"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-355" restype="x-paragraph">
+        <source>The metal and water come to the same temperature at 24.6 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-356" restype="x-paragraph">
+        <source>How much heat did the metal give up to the water?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-357" restype="x-paragraph">
+        <source>What is the specific heat of the metal?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-358" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm9202400} If a reaction produces 1.506 kJ of heat, which is trapped in 30.0 g of water initially at 26.5 °C in a calorimeter like that in [↗]{ref="CNX_Chem_05_02_Calorim"}, what is the resulting temperature of the water?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-359" restype="x-paragraph">
+        <source>:::answer 38.5 °C</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-360" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm66134336} A 0.500-g sample of KCl is added to 50.0 g of water in a calorimeter ([↗]{ref="CNX_Chem_05_02_Calorim"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-361" restype="x-paragraph">
+        <source>If the temperature decreases by 1.05 °C, what is the approximate amount of heat involved in the dissolution of the KCl, assuming the specific heat of the resulting solution is 4.18 J/g °C?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-362" restype="x-paragraph">
+        <source>Is the reaction exothermic or endothermic?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-363" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm68277040} Dissolving 3.0 g of CaCl<g id="2" ctype="x-sub">2</g>(<g id="1" ctype="x-italic">s</g>) in 150.0 g of water in a calorimeter ([↗]{ref="CNX_Chem_05_02_Calorim"}) at 22.4 °C causes the temperature to rise to 25.8 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-364" restype="x-paragraph">
+        <source>What is the approximate amount of heat involved in the dissolution, assuming the specific heat of the resulting solution is 4.18 J/g °C?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-365" restype="x-paragraph">
+        <source>Is the reaction exothermic or endothermic?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-366" restype="x-paragraph">
+        <source>:::answer −2.2 kJ; The heat produced shows that the reaction is exothermic.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-367" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm54145200} When 50.0 g of 0.200 M NaCl(<g id="1" ctype="x-italic">aq</g>) at 24.1 °C is added to 100.0 g of 0.100 M AgNO<g id="4" ctype="x-sub">3</g>(<g id="2" ctype="x-italic">aq</g>) at 24.1 °C in a calorimeter, the temperature increases to 25.2 °C as AgCl(<g id="3" ctype="x-italic">s</g>) forms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-368" restype="x-paragraph">
+        <source>Assuming the specific heat of the solution and products is 4.20 J/g °C, calculate the approximate amount of heat in joules produced.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-369" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm11354032} The addition of 3.15 g of Ba(OH)<g id="1" ctype="x-sub">2</g>·8H<g id="2" ctype="x-sub">2</g>O to a solution of 1.52 g of NH<g id="3" ctype="x-sub">4</g>SCN in 100 g of water in a calorimeter caused the temperature to fall by 3.1 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-370" restype="x-paragraph">
+        <source>Assuming the specific heat of the solution and products is 4.20 J/g °C, calculate the approximate amount of heat absorbed by the reaction, which can be represented by the following equation:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-371" restype="x-paragraph">
+        <source>Ba(OH)<g id="6" ctype="x-sub">2</g>·8H<g id="7" ctype="x-sub">2</g>O(<g id="1" ctype="x-italic">s</g>) + 2NH<g id="8" ctype="x-sub">4</g>SCN(<g id="2" ctype="x-italic">aq</g>) ⟶ Ba(SCN)<g id="9" ctype="x-sub">2</g>(<g id="3" ctype="x-italic">aq</g>) + 2NH<g id="10" ctype="x-sub">3</g>(<g id="4" ctype="x-italic">aq</g>) + 10H<g id="11" ctype="x-sub">2</g>O(<g id="5" ctype="x-italic">l</g>)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-372" restype="x-paragraph">
+        <source>:::answer 1.4 kJ</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-373" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp3696624} The reaction of 50 mL of acid and 50 mL of base described in [↗]{ref="fs-idm19242032"} increased the temperature of the solution by 6.9 ºC.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-374" restype="x-paragraph">
+        <source>How much would the temperature have increased if 100 mL of acid and 100 mL of base had been used in the same calorimeter starting at the same temperature of 22.0 ºC?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-375" restype="x-paragraph">
+        <source>Explain your answer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-376" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp22524928} If the 3.21 g of NH<g id="1" ctype="x-sub">4</g>NO<g id="2" ctype="x-sub">3</g> in [↗]{ref="fs-idp325184"} were dissolved in 100.0 g of water under the same conditions, how much would the temperature change?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-377" restype="x-paragraph">
+        <source>Explain your answer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-378" restype="x-paragraph">
+        <source>:::answer 22.6.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-379" restype="x-paragraph">
+        <source>Since the mass and the heat capacity of the solution is approximately equal to that of the water, the two-fold increase in the amount of water leads to a two-fold decrease of the temperature change.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-380" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp17899648} When 1.0 g of fructose, C<g id="2" ctype="x-sub">6</g>H<g id="3" ctype="x-sub">12</g>O<g id="4" ctype="x-sub">6</g>(<g id="1" ctype="x-italic">s</g>), a sugar commonly found in fruits, is burned in oxygen in a bomb calorimeter, the temperature of the calorimeter increases by 1.58 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-381" restype="x-paragraph">
+        <source>If the heat capacity of the calorimeter and its contents is 9.90 kJ/°C, what is <g id="1" ctype="x-italic">q</g> for this combustion?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-382" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp40934400} When a 0.740-g sample of trinitrotoluene (TNT), C<g id="1" ctype="x-sub">7</g>H<g id="2" ctype="x-sub">5</g>N<g id="3" ctype="x-sub">2</g>O<g id="4" ctype="x-sub">6</g>, is burned in a bomb calorimeter, the temperature increases from 23.4 °C to 26.9 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-383" restype="x-paragraph">
+        <source>The heat capacity of the calorimeter is 534 J/°C, and it contains 675 mL of water.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-384" restype="x-paragraph">
+        <source>How much heat was produced by the combustion of the TNT sample?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-385" restype="x-paragraph">
+        <source>:::answer 11.7 kJ</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-386" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp26469408} One method of generating electricity is by burning coal to heat water, which produces steam that drives an electric generator.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-387" restype="x-paragraph">
+        <source>To determine the rate at which coal is to be fed into the burner in this type of plant, the heat of combustion per ton of coal must be determined using a bomb calorimeter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-388" restype="x-paragraph">
+        <source>When 1.00 g of coal is burned in a bomb calorimeter ([↗]{ref="CNX_Chem_05_02_BombCalor"}), the temperature increases by 1.48 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-389" restype="x-paragraph">
+        <source>If the heat capacity of the calorimeter is 21.6 kJ/°C, determine the heat produced by combustion of a ton of coal (2.000 <x id="1" equiv-text="[[EQ:29]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">3</g> pounds).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-390" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp11692560} The amount of fat recommended for someone with a daily diet of 2000 Calories is 65 g.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-391" restype="x-paragraph">
+        <source>What percent of the calories in this diet would be supplied by this amount of fat if the average number of Calories for fat is9.1 Calories/g?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-392" restype="x-paragraph">
+        <source>:::answer 30%</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-393" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp47280960} A teaspoon of the carbohydrate sucrose (common sugar) contains 16 Calories (16 kcal).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-394" restype="x-paragraph">
+        <source>What is the mass of one teaspoon of sucrose if the average number of Calories for carbohydrates is 4.1 Calories/g?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-395" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp47067840} What is the maximum mass of carbohydrate in a 6-oz serving of diet soda that contains less than 1 Calorie per can if the average number of Calories for carbohydrates is 4.1 Calories/g?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-396" restype="x-paragraph">
+        <source>:::answer 0.24 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-397" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm30519744} A pint of premium ice cream can contain 1100 Calories.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-398" restype="x-paragraph">
+        <source>What mass of fat, in grams and pounds, must be produced in the body to store an extra 1.1 <x id="1" equiv-text="[[EQ:30]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">3</g> Calories if the average number of Calories for fat is9.1 Calories/g?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-399" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp1428384} A serving of a breakfast cereal contains 3 g of protein, 18 g of carbohydrates, and 6 g of fat.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-400" restype="x-paragraph">
+        <source>What is the Calorie content of a serving of this cereal if the average number of Calories for fat is 9.1 Calories/g, for carbohydrates is 4.1 Calories/g, and for protein is 4.1 Calories/g?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-401" restype="x-paragraph">
+        <source>:::answer 1.4 <x id="1" equiv-text="[[EQ:31]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">2</g> Calories</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-402" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp47244464} Which is the least expensive source of energy in kilojoules per dollar: a box of breakfast cereal that weighs 32 ounces and costs $4.23, or a liter of isooctane (density, 0.6919 g/mL) that costs $0.45?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-403" restype="x-paragraph">
+        <source>Compare the nutritional value of the cereal with the heat produced by combustion of the isooctane under standard conditions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-404" restype="x-paragraph">
+        <source>A 1.0-ounce serving of the cereal provides 130 Calories.</source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

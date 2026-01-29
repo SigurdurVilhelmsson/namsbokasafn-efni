@@ -1,0 +1,2342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68710" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Classifying Chemical Reactions</note>
+      <note>Section: 4.2</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Classifying Chemical Reactions</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Define three common types of chemical reactions (precipitation, acid-base, and oxidation-reduction)</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Classify chemical reactions as one of these three types given appropriate descriptions or chemical equations</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-list-item">
+        <source>Identify common acids and bases</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-list-item">
+        <source>Predict the solubility of common inorganic compounds by using solubility rules</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-list-item">
+        <source>Compute the oxidation states for elements in compounds</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>Humans interact with one another in various and complex ways, and we classify these interactions according to common patterns of behavior.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>When two humans exchange information, we say they are communicating.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>When they exchange blows with their fists or feet, we say they are fighting.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>Faced with a wide range of varied interactions between chemical substances, scientists have likewise found it convenient (or even necessary) to classify chemical interactions by identifying common patterns of reactivity.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>This module will provide an introduction to three of the most prevalent types of chemical reactions: precipitation, acid-base, and oxidation-reduction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-section-title">
+        <source>Precipitation Reactions and Solubility Rules</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>A <g id="1" ctype="x-bold">precipitation reaction</g>{id="term-00001"} is one in which dissolved substances react to form one (or more) solid products.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source>Many reactions of this type involve the exchange of ions between ionic compounds in aqueous solution and are sometimes referred to as <g id="1" ctype="x-italic">double displacement</g>, <g id="2" ctype="x-italic">double replacement</g>, or <g id="3" ctype="x-italic">metathesis</g> reactions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>These reactions are common in nature and are responsible for the formation of coral reefs in ocean waters and kidney stones in animals.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>They are used widely in industry for production of a number of commodity and specialty chemicals.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>Precipitation reactions also play a central role in many chemical analysis techniques, including spot tests used to identify metal ions and <g id="1" ctype="x-italic">gravimetric methods</g> for determining the composition of matter (see the last module of this chapter).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>The extent to which a substance may be dissolved in water, or any solvent, is quantitatively expressed as its <g id="1" ctype="x-bold">solubility</g>{id="term-00002"}, defined as the maximum concentration of a substance that can be achieved under specified conditions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>Substances with relatively large solubilities are said to be <g id="1" ctype="x-bold">soluble</g>{id="term-00003"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>A substance will <g id="1" ctype="x-bold">precipitate</g>{id="term-00004"} when solution conditions are such that its concentration exceeds its solubility.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source>Substances with relatively low solubilities are said to be <g id="1" ctype="x-bold">insoluble</g>{id="term-00005"}, and these are the substances that readily precipitate from solution.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-paragraph">
+        <source>More information on these important concepts is provided in a later chapter on solutions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source>For purposes of predicting the identities of solids formed by precipitation reactions, one may simply refer to patterns of solubility that have been observed for many ionic compounds ([↗]{ref="fs-idp140132617697568"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-paragraph">
+        <source>| <g id="1" ctype="x-bold">Soluble Ionic Compounds</g> | contain these ions | exceptions | | :--- | :--- | :--- | | NH<g id="3" ctype="x-sub">4</g><g id="17" ctype="x-sup">+</g> group I cations: Li<g id="18" ctype="x-sup">+</g> Na<g id="19" ctype="x-sup">+</g> K<g id="20" ctype="x-sup">+</g> Rb<g id="21" ctype="x-sup">+</g> Cs<g id="22" ctype="x-sup">+</g> | none |  | | Cl<g id="23" ctype="x-sup">-</g> Br<g id="24" ctype="x-sup">-</g> I<g id="25" ctype="x-sup">-</g> | compounds with Ag<g id="26" ctype="x-sup">+</g>, Hg<g id="4" ctype="x-sub">2</g><g id="27" ctype="x-sup">2+</g>, and Pb<g id="28" ctype="x-sup">2+</g> |  | | F<g id="29" ctype="x-sup">-</g> | compounds with group 2 metal cations, Pb<g id="30" ctype="x-sup">2+</g>, and Fe<g id="31" ctype="x-sup">3+</g> |  | | C<g id="5" ctype="x-sub">2</g>H<g id="6" ctype="x-sub">3</g>O<g id="7" ctype="x-sub">2</g><g id="32" ctype="x-sup">-</g> HCO<g id="8" ctype="x-sub">3</g><g id="33" ctype="x-sup">-</g> NO<g id="9" ctype="x-sub">3</g><g id="34" ctype="x-sup">-</g> ClO<g id="10" ctype="x-sub">3</g><g id="35" ctype="x-sup">-</g> | none |  | | SO<g id="11" ctype="x-sub">4</g><g id="36" ctype="x-sup">2-</g> | compounds with Ag<g id="37" ctype="x-sup">+</g>, Ba<g id="38" ctype="x-sup">2+</g>, Ca<g id="39" ctype="x-sup">2+</g>, Hg<g id="12" ctype="x-sub">2</g><g id="40" ctype="x-sup">2+</g>, Pb<g id="41" ctype="x-sup">2+</g> and Sr<g id="42" ctype="x-sup">2+</g> |  | | <g id="2" ctype="x-bold">Insoluble Ionic Compounds</g> | contain these ions | exceptions | | CO<g id="13" ctype="x-sub">3</g><g id="43" ctype="x-sup">2-</g> CrO<g id="14" ctype="x-sub">4</g><g id="44" ctype="x-sup">2-</g> PO<g id="15" ctype="x-sub">4</g><g id="45" ctype="x-sup">3-</g> S<g id="46" ctype="x-sup">2-</g> | compounds with group 1 cations and NH<g id="16" ctype="x-sub">4</g><g id="47" ctype="x-sup">+</g> |  | | OH<g id="48" ctype="x-sup">-</g> | compounds with group 1 cations and Ba<g id="49" ctype="x-sup">2+</g> |  | {id="fs-idp140132617697568" summary="This table has two columns and two rows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source>The cell that is in the first column and first row contains the following information: 'Soluble compounds contain, (bullet point) group 1 metal cations (L I superscript positive sign, N a superscript positive sign, K superscript positive sign, R b superscript positive sign, C s superscript positive sign and ammonium ion (N H subscript 4 superscript positive sign); (bullet point) the halide ions C l superscript negative sign, B r superscript negative sign, and I superscript negative sign; (bullet point) the halide ion F superscript negative sign; (bullet point) the acetate C subscript 2 H subscript 3 O subscript 2 superscript negative sign, bicarbonate, H C O subscript 3 superscript negative sign, nitrate, N O subscript 3 superscript negative sign, and chlorate, C l O subscript 3 superscript negative sign ions. (bullet point) the sulfate, S O subscript 4 superscript negative sign ion.' The cell that is in the top row, second column, contains the following information: 'Exceptions to these solubility rules include (bullet point) none; (bullet point) halides of A g superscript positive sign, H g subscript 2 superscript 2 positive sign, and P B superscript 2 positive sign; (bullet point) fluorides of group 2 metal cations, P b superscript 2 positive sign and F e superscrip 3 positive sign; (bullet point) none; (bullet point) sulfates of A g superscript positive sign, B a superscript 2 positive sign, C a superscript 2 positive sign, H g subscript 2 superscript 2 positive sign, P b superscript 2 positive sign and S r superscript 2 positive sign.' The next cell on the bottom row, first column, contains the following information: 'Insoluble compounds contain (bullet point) carbonate C O subscript 3 superscript 2 negative sign, chromate, C r O subscript 3 superscript 2 negative sign, phosphate, P O subscript 4 superscript 3 negative sign, and sulfide, S superscript 2 negative sign ions; (bullet point) hydroxide ion, O H superscript negative sign.' The last cell, in the last row, second column, contains the following information: 'Exceptions to these insolubility rules include (bullet point) compounds of these anions with group 1 metal cations and ammonium ion; (bullet point) hydroxides of group 1 metal cations and B a superscript 2 positive sign."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>A vivid example of precipitation is observed when solutions of potassium iodide and lead nitrate are mixed, resulting in the formation of solid lead iodide:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:1]]" ctype="x-equation"/>{id="fs-idp98445312"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>This observation is consistent with the solubility guidelines: The only insoluble compound among all those involved is lead iodide, one of the exceptions to the general solubility of iodide salts.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>The net ionic equation representing this reaction is:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:2]]" ctype="x-equation"/>{id="fs-idp31365696"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-paragraph">
+        <source>Lead iodide is a bright yellow solid that was formerly used as an artist’s pigment known as iodine yellow ([↗]{ref="CNX_Chem_04_02_LeadIodide"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>The properties of pure PbI<g id="1" ctype="x-sub">2</g> crystals make them useful for fabrication of X-ray and gamma ray detectors.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>![](CNX_Chem_04_02_LeadIodide.jpg){id="CNX_Chem_04_02_LeadIodide" class="scaled-down" alt="A photograph is shown of a yellow green opaque substance swirled through a clear, colorless liquid in a test tube."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 4.4: A precipitate of PbI<g id="2" ctype="x-sub">2</g> forms when solutions containing Pb<g id="3" ctype="x-sup">2+</g> and I<g id="4" ctype="x-sup">−</g> are mixed. (credit: Der Kreole/Wikimedia Commons)</g>{id="CNX_Chem_04_02_LeadIodide"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source>The solubility guidelines in [↗]{ref="fs-idp140132617697568"} may be used to predict whether a precipitation reaction will occur when solutions of soluble ionic compounds are mixed together.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source>One merely needs to identify all the ions present in the solution and then consider if possible cation/anion pairing could result in an insoluble compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source>For example, mixing solutions of silver nitrate and sodium chloride will yield a solution containing Ag<g id="2" ctype="x-sup">+</g>, <x id="1" equiv-text="[[EQ:45]]" ctype="x-equation"/> Na<g id="3" ctype="x-sup">+</g>, and Cl<g id="4" ctype="x-sup">−</g> ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-paragraph">
+        <source>Aside from the two ionic compounds originally present in the solutions, AgNO<g id="1" ctype="x-sub">3</g> and NaCl, two additional ionic compounds may be derived from this collection of ions: NaNO<g id="2" ctype="x-sub">3</g> and AgCl.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source>The solubility guidelines indicate all nitrate salts are soluble but that AgCl is one of insoluble.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-paragraph">
+        <source>A precipitation reaction, therefore, is predicted to occur, as described by the following equations:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:3]]" ctype="x-equation"/>{id="fs-idm4746128"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-example-subsection-title">
+        <source>Example 4.3: Predicting Precipitation Reactions</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-example-paragraph">
+        <source>Predict the result of mixing reasonably concentrated solutions of the following ionic compounds.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-example-paragraph">
+        <source>If precipitation is expected, write a balanced net ionic equation for the reaction.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-example-paragraph">
+        <source>(a) potassium sulfate and barium nitrate</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-example-paragraph">
+        <source>(b) lithium chloride and silver acetate</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-example-paragraph">
+        <source>(c) lead (II) nitrate and ammonium carbonate</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-example-paragraph">
+        <source>(a) The two possible products for this combination are KNO<g id="1" ctype="x-sub">3</g> and BaSO<g id="2" ctype="x-sub">4</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-example-paragraph">
+        <source>The solubility guidelines indicate BaSO<g id="1" ctype="x-sub">4</g> is insoluble, and so a precipitation reaction is expected.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-example-paragraph">
+        <source>The net ionic equation for this reaction, derived in the manner detailed in the previous module, is</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:4]]" ctype="x-equation"/>{id="eip-799"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-example-paragraph">
+        <source>(b) The two possible products for this combination are LiC<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sub">2</g> and AgCl.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-example-paragraph">
+        <source>The solubility guidelines indicate AgCl is insoluble, and so a precipitation reaction is expected.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-example-paragraph">
+        <source>The net ionic equation for this reaction, derived in the manner detailed in the previous module, is</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:5]]" ctype="x-equation"/>{id="fs-idm70392576"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-example-paragraph">
+        <source>(c) The two possible products for this combination are PbCO<g id="1" ctype="x-sub">3</g> and NH<g id="2" ctype="x-sub">4</g>NO<g id="3" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-example-paragraph">
+        <source>The solubility guidelines indicate PbCO<g id="1" ctype="x-sub">3</g> is insoluble, and so a precipitation reaction is expected.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-example-paragraph">
+        <source>The net ionic equation for this reaction, derived in the manner detailed in the previous module, is</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:6]]" ctype="x-equation"/>{id="eip-767"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-example-paragraph">
+        <source>Which solution could be used to precipitate the barium ion, Ba<g id="1" ctype="x-sup">2+</g>, in a water sample: sodium chloride, sodium hydroxide, or sodium sulfate?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-example-paragraph">
+        <source>What is the formula for the expected precipitate?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-example-paragraph">
+        <source>sodium sulfate, BaSO<g id="1" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-paragraph">
+        <source>sodium sulfate, BaSO<g id="1" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-section-title">
+        <source>Acid-Base Reactions</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-paragraph">
+        <source>An <g id="1" ctype="x-bold">acid-base reaction</g>{id="term-00006"} is one in which a hydrogen ion, H<g id="2" ctype="x-sup">+</g>, is transferred from one chemical species to another.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-paragraph">
+        <source>Such reactions are of central importance to numerous natural and technological processes, ranging from the chemical transformations that take place within cells and the lakes and oceans, to the industrial-scale production of fertilizers, pharmaceuticals, and other substances essential to society.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-paragraph">
+        <source>The subject of acid-base chemistry, therefore, is worthy of thorough discussion, and a full chapter is devoted to this topic later in the text.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-paragraph">
+        <source>For purposes of this brief introduction, we will consider only the more common types of acid-base reactions that take place in aqueous solutions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-paragraph">
+        <source>In this context, an <g id="1" ctype="x-bold">acid</g>{id="term-00007"} is a substance that will dissolve in water to yield hydronium ions, H<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sup">+</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-paragraph">
+        <source>As an example, consider the equation shown here:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:7]]" ctype="x-equation"/>{id="fs-idm54028336"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-paragraph">
+        <source>The process represented by this equation confirms that hydrogen chloride is an acid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-paragraph">
+        <source>When dissolved in water, H<g id="1" ctype="x-sub">3</g>O<g id="3" ctype="x-sup">+</g> ions are produced by a chemical reaction in which H<g id="4" ctype="x-sup">+</g> ions are transferred from HCl molecules to H<g id="2" ctype="x-sub">2</g>O molecules ([↗]{ref="CNX_Chem_04_02_HClsoln"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-paragraph">
+        <source>![](CNX_Chem_04_02_HClsoln.jpg){id="CNX_Chem_04_02_HClsoln" class="scaled-down" alt="This figure shows two flasks, labeled a and b.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-paragraph">
+        <source>The flasks are both sealed with stoppers and are nearly three-quarters full of a liquid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-paragraph">
+        <source>Flask a is labeled H C l followed by g in parentheses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-paragraph">
+        <source>In the liquid there are approximately twenty space-filling molecular models composed of one red sphere and two smaller attached white spheres.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-paragraph">
+        <source>The label H subscript 2 O followed by a q in parentheses is connected with a line to one of these models.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-paragraph">
+        <source>In the space above the liquid in the flask, four space filling molecular models composed of one larger green sphere to which a smaller white sphere is bonded are shown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-paragraph">
+        <source>To one of these models, the label H C l followed by g in parentheses is attached with a line segment.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-paragraph">
+        <source>An arrow is drawn from the space above the liquid pointing down into the liquid below.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-paragraph">
+        <source>Flask b is labeled H subscript 3 O superscript positive sign followed by a q in parentheses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-paragraph">
+        <source>This is followed by a plus sign and C l superscript negative sign which is also followed by a q in parentheses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-paragraph">
+        <source>In this flask, no molecules are shown in the open space above the liquid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-paragraph">
+        <source>A label, C l superscript negative sign followed by a q in parentheses, is connected with a line segment to a green sphere.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-paragraph">
+        <source>This sphere is surrounded by four molecules composed each of one red sphere and two white smaller spheres.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-paragraph">
+        <source>A few of these same molecules appear separate from the green spheres in the liquid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-paragraph">
+        <source>A line segment connects one of them to the label H subscript 2 O which is followed by l in parentheses.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-paragraph">
+        <source>There are a few molecules formed from one central larger red sphere to which three smaller white spheres are bonded.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-97" restype="x-paragraph">
+        <source>A line segment is drawn from one of these to the label H subscript 3 O superscript positive sign, followed by a q in parentheses."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-98" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 4.5: When hydrogen chloride gas dissolves in water, (a) it reacts as an acid, transferring protons to water molecules to yield (b) hydronium ions (and solvated chloride ions).</g>{id="CNX_Chem_04_02_HClsoln"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-99" restype="x-paragraph">
+        <source>The nature of HCl is such that its reaction with water as just described is essentially 100% efficient: Virtually every HCl molecule that dissolves in water will undergo this reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-100" restype="x-paragraph">
+        <source>Acids that completely react in this fashion are called <g id="1" ctype="x-bold">strong acids</g>{id="term-00008"}, and HCl is one among just a handful of common acid compounds that are classified as strong ([↗]{ref="fs-idp55395904"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-101" restype="x-paragraph">
+        <source>A far greater number of compounds behave as <g id="1" ctype="x-bold">weak acids</g>{id="term-00009"} and only partially react with water, leaving a large majority of dissolved molecules in their original form and generating a relatively small amount of hydronium ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-102" restype="x-paragraph">
+        <source>Weak acids are commonly encountered in nature, being the substances partly responsible for the tangy taste of citrus fruits, the stinging sensation of insect bites, and the unpleasant smells associated with body odor.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-103" restype="x-paragraph">
+        <source>A familiar example of a weak acid is acetic acid, the main ingredient in food vinegars:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-104" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:8]]" ctype="x-equation"/>{id="fs-idp23273024"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-105" restype="x-paragraph">
+        <source>When dissolved in water under typical conditions, only about 1% of acetic acid molecules are present in the ionized form, <x id="1" equiv-text="[[EQ:46]]" ctype="x-equation"/> ([↗]{ref="CNX_Chem_04_02_Citrus"}). (The use of a double-arrow in the equation above denotes the partial reaction aspect of this process, a concept addressed fully in the chapters on chemical equilibrium.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-106" restype="x-paragraph">
+        <source>![](CNX_Chem_04_02_Citrus.jpg){id="CNX_Chem_04_02_Citrus" class="scaled-down" alt="This figure contains two images, each with an associated structural formula provided in the lower left corner of the image.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-107" restype="x-paragraph">
+        <source>The first image is a photograph of a variety of thinly sliced, circular cross sections of citrus fruits ranging in color for green to yellow, to orange and reddish-orange.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-108" restype="x-paragraph">
+        <source>The slices are closely packed on a white background.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-109" restype="x-paragraph">
+        <source>The structural formula with this picture shows a central chain of five C atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-110" restype="x-paragraph">
+        <source>The leftmost C atom has an O atom double bonded above and to the left and a singly bonded O atom below and to the left.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-111" restype="x-paragraph">
+        <source>This single bonded O atom has an H atom indicated in red on its left side which is highlighted in pink.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-112" restype="x-paragraph">
+        <source>The second C atom moving to the right has H atoms bonded above and below.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-113" restype="x-paragraph">
+        <source>The third C atom has a single bonded O atom above which has an H atom on its right.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-114" restype="x-paragraph">
+        <source>This third C atom has a C atom bonded below it which has an O atom double bonded below and to the left and a singly bonded O atom below and to the right.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-115" restype="x-paragraph">
+        <source>An H atom appears in red and is highlighted in pink to the right of the singly bonded O atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-116" restype="x-paragraph">
+        <source>The fourth C atom has H atoms bonded above and below.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-117" restype="x-paragraph">
+        <source>The fifth C atom is at the right end of the structure.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-118" restype="x-paragraph">
+        <source>It has an O atom double bonded above and to the right and a singly bonded O atom below and to the right.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-119" restype="x-paragraph">
+        <source>This single bonded O atom has a red H atom on its right side which is highlighted in pink.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-120" restype="x-paragraph">
+        <source>The second image is a photograph of bottles of vinegar.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-121" restype="x-paragraph">
+        <source>The bottles are labeled, “Balsamic Vinegar,” and appear to be clear and colorless.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-122" restype="x-paragraph">
+        <source>The liquid in this bottle appears to be brown.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-123" restype="x-paragraph">
+        <source>The structural formula that appears with this image shows a chain of two C atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-124" restype="x-paragraph">
+        <source>The leftmost C atom has H atoms bonded above, below, and to the left.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-125" restype="x-paragraph">
+        <source>The C atom on the right has a doubly bonded O atom above and to the right and a singly bonded O atom below and to the right.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-126" restype="x-paragraph">
+        <source>This O atom has an H atom bonded to its right which is highlighted in pink."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-127" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 4.6: (a) Fruits such as oranges, lemons, and grapefruit contain the weak acid citric acid. (b) Vinegars contain the weak acid acetic acid. (credit a: modification of work by Scott Bauer; credit b: modification of work by Brücke-Osteuropa/Wikimedia Commons)</g>{id="CNX_Chem_04_02_Citrus"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-128" restype="x-paragraph">
+        <source><g id="1" ctype="x-bold">Common Strong Acids</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-129" restype="x-paragraph">
+        <source>| Compound Formula | Name in Aqueous Solution | | :--- | :--- | | HBr | hydrobromic acid | | HCl | hydrochloric acid | | HI | hydroiodic acid | | HNO<g id="1" ctype="x-sub">3</g> | nitric acid | | HClO<g id="2" ctype="x-sub">4</g> | perchloric acid | | H<g id="3" ctype="x-sub">2</g>SO<g id="4" ctype="x-sub">4</g> | sulfuric acid | {id="fs-idp55395904" summary="This table contains two columns and seven rows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-130" restype="x-paragraph">
+        <source>The columns are labeled, “Compound Formula,” and, “Name in Aqueous Solution.” Under the column, “Compound Formula,” are: “H B r,” “H C l,” “H I,” “H N O subscript 3,” “H C l O subscript 4,” and, “H subscript 2 S O subscript 4.” Under the column, “Name in Aqueous Solution,” are: “hydrobromic acid,” “hydrochloric acid,” “hydroiodic acid,” “nitric acid,” “perchloric acid,” and, “sulfuric acid.”"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-131" restype="x-paragraph">
+        <source>A <g id="1" ctype="x-bold">base</g>{id="term-00010"} is a substance that will dissolve in water to yield hydroxide ions, OH<g id="2" ctype="x-sup">−</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-132" restype="x-paragraph">
+        <source>The most common bases are ionic compounds composed of alkali or alkaline earth metal cations (groups 1 and 2) combined with the hydroxide ion—for example, NaOH and Ca(OH)<g id="1" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-133" restype="x-paragraph">
+        <source>Unlike the acid compounds discussed previously, these compounds do not react chemically with water; instead they dissolve and dissociate, releasing hydroxide ions directly into the solution.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-134" restype="x-paragraph">
+        <source>For example, KOH and Ba(OH)<g id="1" ctype="x-sub">2</g> dissolve in water and dissociate completely to produce cations (K<g id="2" ctype="x-sup">+</g> and Ba<g id="3" ctype="x-sup">2+</g>, respectively) and hydroxide ions, OH<g id="4" ctype="x-sup">−</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-135" restype="x-paragraph">
+        <source>These bases, along with other hydroxides that completely dissociate in water, are considered <g id="1" ctype="x-bold">strong bases</g>{id="term-00011"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-136" restype="x-paragraph">
+        <source>Consider as an example the dissolution of lye (sodium hydroxide) in water:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-137" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:9]]" ctype="x-equation"/>{id="fs-idm62931696"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-138" restype="x-paragraph">
+        <source>This equation confirms that sodium hydroxide is a base.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-139" restype="x-paragraph">
+        <source>When dissolved in water, NaOH dissociates to yield Na<g id="1" ctype="x-sup">+</g> and OH<g id="2" ctype="x-sup">−</g> ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-140" restype="x-paragraph">
+        <source>This is also true for any other ionic compound containing hydroxide ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-141" restype="x-paragraph">
+        <source>Since the dissociation process is essentially complete when ionic compounds dissolve in water under typical conditions, NaOH and other ionic hydroxides are all classified as strong bases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-142" restype="x-paragraph">
+        <source>Unlike ionic hydroxides, some compounds produce hydroxide ions when dissolved by chemically reacting with water molecules.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-143" restype="x-paragraph">
+        <source>In all cases, these compounds react only partially and so are classified as <g id="1" ctype="x-bold">weak bases</g>{id="term-00012"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-144" restype="x-paragraph">
+        <source>These types of compounds are also abundant in nature and important commodities in various technologies.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-145" restype="x-paragraph">
+        <source>For example, global production of the weak base ammonia is typically well over 100 million metric tons annually, being widely used as an agricultural fertilizer, a raw material for chemical synthesis of other compounds, and an active ingredient in household cleaners ([↗]{ref="CNX_Chem_04_02_ammonia"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-146" restype="x-paragraph">
+        <source>When dissolved in water, ammonia reacts partially to yield hydroxide ions, as shown here:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-147" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:10]]" ctype="x-equation"/>{id="fs-idm9327664"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-148" restype="x-paragraph">
+        <source>This is, by definition, an acid-base reaction, in this case involving the transfer of H<g id="1" ctype="x-sup">+</g> ions from water molecules to ammonia molecules.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-149" restype="x-paragraph">
+        <source>Under typical conditions, only about 1% of the dissolved ammonia is present as <x id="1" equiv-text="[[EQ:47]]" ctype="x-equation"/> ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-150" restype="x-paragraph">
+        <source>![](CNX_Chem_04_02_ammonia.jpg){id="CNX_Chem_04_02_ammonia" class="scaled-down" alt="This photograph shows a large agricultural tractor in a field pulling a field sprayer and a large, white cylindrical tank which is labeled “Caution Ammonia.”"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-151" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 4.7: Ammonia is a weak base used in a variety of applications. (a) Pure ammonia is commonly applied as an agricultural fertilizer. (b) Dilute solutions of ammonia are effective household cleansers. (credit a: modification of work by National Resources Conservation Service; credit b: modification of work by pat00139)</g>{id="CNX_Chem_04_02_ammonia"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-152" restype="x-paragraph">
+        <source>A <g id="1" ctype="x-bold">neutralization reaction</g>{id="term-00013"} is a specific type of acid-base reaction in which the reactants are an acid and a base (but not water), and the products are often a <g id="2" ctype="x-bold">salt</g>{id="term-00014"} and water</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-153" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/>{id="fs-idm49357376"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-154" restype="x-paragraph">
+        <source>To illustrate a neutralization reaction, consider what happens when a typical antacid such as milk of magnesia (an aqueous suspension of solid Mg(OH)<g id="1" ctype="x-sub">2</g>) is ingested to ease symptoms associated with excess stomach acid (HCl):</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-155" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:12]]" ctype="x-equation"/>{id="fs-idm8492448"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-156" restype="x-paragraph">
+        <source>Note that in addition to water, this reaction produces a salt, magnesium chloride.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-157" restype="x-example-subsection-title">
+        <source>Example 4.4: Writing Equations for Acid-Base Reactions</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-158" restype="x-example-paragraph">
+        <source>Write balanced chemical equations for the acid-base reactions described here:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-159" restype="x-example-paragraph">
+        <source>(a) the weak acid hydrogen hypochlorite reacts with water</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-160" restype="x-example-paragraph">
+        <source>(b) a solution of barium hydroxide is neutralized with a solution of nitric acid</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-161" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-162" restype="x-example-paragraph">
+        <source>(a) The two reactants are provided, HOCl and H<g id="1" ctype="x-sub">2</g>O.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-163" restype="x-example-paragraph">
+        <source>Since the substance is reported to be an acid, its reaction with water will involve the transfer of H<g id="3" ctype="x-sup">+</g> from HOCl to H<g id="1" ctype="x-sub">2</g>O to generate hydronium ions, H<g id="2" ctype="x-sub">3</g>O<g id="4" ctype="x-sup">+</g> and hypochlorite ions, OCl<g id="5" ctype="x-sup">−</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-164" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:13]]" ctype="x-equation"/>{id="fs-idm141852368"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-165" restype="x-example-paragraph">
+        <source>A double-arrow is appropriate in this equation because it indicates the HOCl is a weak acid that has not reacted completely.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-166" restype="x-example-paragraph">
+        <source>(b) The two reactants are provided, Ba(OH)<g id="1" ctype="x-sub">2</g> and HNO<g id="2" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-167" restype="x-example-paragraph">
+        <source>Since this is a neutralization reaction, the two products will be water and a salt composed of the cation of the ionic hydroxide (Ba<g id="2" ctype="x-sup">2+</g>) and the anion generated when the acid transfers its hydrogen ion <x id="1" equiv-text="[[EQ:48]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-168" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:14]]" ctype="x-equation"/>{id="fs-idp42762464"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-169" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-170" restype="x-example-paragraph">
+        <source>Write the net ionic equation representing the neutralization of any strong acid with an ionic hydroxide. (Hint: Consider the ions produced when a strong acid is dissolved in water.)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-171" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-172" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-173" restype="x-paragraph">
+        <source>:::chemistry-everyday</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-174" restype="x-subsection-title">
+        <source>Stomach Antacids</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-175" restype="x-paragraph">
+        <source>Our stomachs contain a solution of roughly 0.03 <g id="1" ctype="x-italic">M</g> HCl, which helps us digest the food we eat.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-176" restype="x-paragraph">
+        <source>The burning sensation associated with heartburn is a result of the acid of the stomach leaking through the muscular valve at the top of the stomach into the lower reaches of the esophagus.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-177" restype="x-paragraph">
+        <source>The lining of the esophagus is not protected from the corrosive effects of stomach acid the way the lining of the stomach is, and the results can be very painful.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-178" restype="x-paragraph">
+        <source>When we have heartburn, it feels better if we reduce the excess acid in the esophagus by taking an antacid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-179" restype="x-paragraph">
+        <source>As you may have guessed, antacids are bases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-180" restype="x-paragraph">
+        <source>One of the most common antacids is calcium carbonate, CaCO<g id="1" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-181" restype="x-paragraph">
+        <source>The reaction,</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-182" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:15]]" ctype="x-equation"/>{id="fs-idm156299504"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-183" restype="x-paragraph">
+        <source>not only neutralizes stomach acid, it also produces CO<g id="2" ctype="x-sub">2</g>(<g id="1" ctype="x-italic">g</g>), which may result in a satisfying belch.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-184" restype="x-paragraph">
+        <source>Milk of Magnesia is a suspension of the sparingly soluble base magnesium hydroxide, Mg(OH)<g id="1" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-185" restype="x-paragraph">
+        <source>It works according to the reaction:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-186" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:16]]" ctype="x-equation"/>{id="fs-idp1457888"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-187" restype="x-paragraph">
+        <source>The hydroxide ions generated in this equilibrium then go on to react with the hydronium ions from the stomach acid, so that:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-188" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:17]]" ctype="x-equation"/>{id="fs-idp51950320"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-189" restype="x-paragraph">
+        <source>This reaction does not produce carbon dioxide, but magnesium-containing antacids can have a laxative effect.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-190" restype="x-paragraph">
+        <source>Several antacids have aluminum hydroxide, Al(OH)<g id="1" ctype="x-sub">3</g>, as an active ingredient.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-191" restype="x-paragraph">
+        <source>The aluminum hydroxide tends to cause constipation, and some antacids use aluminum hydroxide in concert with magnesium hydroxide to balance the side effects of the two substances.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-192" restype="x-paragraph">
+        <source>:::chemistry-everyday</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-193" restype="x-subsection-title">
+        <source>Culinary Aspects of Chemistry</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-194" restype="x-paragraph">
+        <source>Examples of acid-base chemistry are abundant in the culinary world.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-195" restype="x-paragraph">
+        <source>One example is the use of baking soda, or sodium bicarbonate in baking.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-196" restype="x-paragraph">
+        <source>NaHCO<g id="1" ctype="x-sub">3</g> is a base.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-197" restype="x-paragraph">
+        <source>When it reacts with an acid such as lemon juice, buttermilk, or sour cream in a batter, bubbles of carbon dioxide gas are formed from decomposition of the resulting carbonic acid, and the batter “rises.” Baking powder is a combination of sodium bicarbonate, and one or more acid salts that react when the two chemicals come in contact with water in the batter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-198" restype="x-paragraph">
+        <source>Many people like to put lemon juice or vinegar, both of which are acids, on cooked fish ([↗]{ref="CNX_Chem_14_03_FishLemon"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-199" restype="x-paragraph">
+        <source>It turns out that fish have volatile amines (bases) in their systems, which are neutralized by the acids to yield involatile ammonium salts.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-200" restype="x-paragraph">
+        <source>This reduces the odor of the fish, and also adds a “sour” taste that we seem to enjoy.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-201" restype="x-paragraph">
+        <source>Pickling is a method used to preserve vegetables using a naturally produced acidic environment.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-202" restype="x-paragraph">
+        <source>The vegetable, such as a cucumber, is placed in a sealed jar submerged in a brine solution.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-203" restype="x-paragraph">
+        <source>The brine solution favors the growth of beneficial bacteria and suppresses the growth of harmful bacteria.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-204" restype="x-paragraph">
+        <source>The beneficial bacteria feed on starches in the cucumber and produce lactic acid as a waste product in a process called fermentation.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-205" restype="x-paragraph">
+        <source>The lactic acid eventually increases the acidity of the brine to a level that kills any harmful bacteria, which require a basic environment.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-206" restype="x-paragraph">
+        <source>Without the harmful bacteria consuming the cucumbers they are able to last much longer than if they were unprotected.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-207" restype="x-paragraph">
+        <source>A byproduct of the pickling process changes the flavor of the vegetables with the acid making them taste sour.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-208" restype="x-paragraph">
+        <source>![](CNX_Chem_14_03_FishLemon.jpg){id="CNX_Chem_14_03_FishLemon" alt="An image is shown of two fish with heads removed and skin on with lemon slices placed in the body cavity.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-209" restype="x-paragraph">
+        <source>The first line of an equation below the image reads C H subscript 3 C O O H plus N H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 N H subscript 2 arrow C H subscript 3 C O O superscript negative sign plus N H subscript 3 superscript positive sign C H subscript 2 C H subscript 2 C H subscript 2 C H subscript 2 N H subscript 2.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-210" restype="x-paragraph">
+        <source>The second line of the equation reads Acetic acid plus sign Putrescine arrow Acetate ion plus sign Putrescinium ion."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-211" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 4.8: A neutralization reaction takes place between citric acid in lemons or acetic acid in vinegar, and the bases in the flesh of fish.</g>{id="CNX_Chem_14_03_FishLemon"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-212" restype="x-paragraph">
+        <source>:::link-to-material Explore the microscopic [view]{url="http://openstax.org/l/16AcidsBases"} of strong and weak acids and bases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-213" restype="x-section-title">
+        <source>Oxidation-Reduction Reactions</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-214" restype="x-paragraph">
+        <source>Earth’s atmosphere contains about 20% molecular oxygen, O<g id="1" ctype="x-sub">2</g>, a chemically reactive gas that plays an essential role in the metabolism of aerobic organisms and in many environmental processes that shape the world.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-215" restype="x-paragraph">
+        <source>The term <g id="1" ctype="x-bold">oxidation</g>{id="term-00015"} was originally used to describe chemical reactions involving O<g id="3" ctype="x-sub">2</g>, but its meaning has evolved to refer to a broad and important reaction class known as <g id="2" ctype="x-italic">oxidation-reduction (redox) reactions</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-216" restype="x-paragraph">
+        <source>A few examples of such reactions will be used to develop a clear picture of this classification.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-217" restype="x-paragraph">
+        <source>Some redox reactions involve the transfer of electrons between reactant entities to yield ionic products, such as the reaction between sodium and chlorine to yield sodium chloride:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-218" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:18]]" ctype="x-equation"/>{id="fs-idm5657872"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-219" restype="x-paragraph">
+        <source>It is helpful to view the process with regard to each individual reactant, that is, to represent the fate of each reactant in the form of an equation called a <g id="1" ctype="x-bold">half-reaction</g>{id="term-00016"}:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-220" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:19]]" ctype="x-equation"/>{id="fs-idp15924368"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-221" restype="x-paragraph">
+        <source>These equations show that Na atoms <g id="1" ctype="x-italic">lose electrons</g> while Cl atoms (in the Cl<g id="4" ctype="x-sub">2</g> molecule) <g id="2" ctype="x-italic">gain electrons</g>, the “<g id="3" ctype="x-italic">s</g>” subscripts for the resulting ions signifying they are present in the form of a solid ionic compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-222" restype="x-paragraph">
+        <source>For redox reactions of this sort, the loss and gain of electrons define the complementary processes that occur:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-223" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:20]]" ctype="x-equation"/>{id="fs-idp61672384"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-224" restype="x-paragraph">
+        <source>In this reaction, then, sodium is <g id="2" ctype="x-italic">oxidized</g> and chlorine undergoes <g id="1" ctype="x-bold">reduction</g>{id="term-00017"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-225" restype="x-paragraph">
+        <source>Viewed from a more active perspective, sodium functions as a <g id="1" ctype="x-bold">reducing agent (reductant)</g>{id="term-00018"}, since it provides electrons to (or reduces) chlorine.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-226" restype="x-paragraph">
+        <source>Likewise, chlorine functions as an <g id="1" ctype="x-bold">oxidizing agent (oxidant)</g>{id="term-00019"}, as it effectively removes electrons from (oxidizes) sodium.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-227" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:21]]" ctype="x-equation"/>{id="fs-idm29833328"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-228" restype="x-paragraph">
+        <source>Some redox processes, however, do not involve the transfer of electrons.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-229" restype="x-paragraph">
+        <source>Consider, for example, a reaction similar to the one yielding NaCl:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-230" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:22]]" ctype="x-equation"/>{id="fs-idp37282464"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-231" restype="x-paragraph">
+        <source>The product of this reaction is a covalent compound, so transfer of electrons in the explicit sense is not involved.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-232" restype="x-paragraph">
+        <source>To clarify the similarity of this reaction to the previous one and permit an unambiguous definition of redox reactions, a property called <g id="1" ctype="x-italic">oxidation number</g> has been defined.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-233" restype="x-paragraph">
+        <source>The <g id="1" ctype="x-bold">oxidation number</g>{id="term-00020"} (or <g id="2" ctype="x-bold">oxidation state</g>{id="term-00021"}) of an element in a compound is the charge its atoms would possess <g id="3" ctype="x-italic">if the compound were ionic</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-234" restype="x-paragraph">
+        <source>The following guidelines are used to assign oxidation numbers to each element in a molecule or ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-235" restype="x-paragraph">
+        <source>Note: The proper convention for reporting charge is to write the number first, followed by the sign (e.g., 2+), while oxidation number is written with the reversed sequence, sign followed by number (e.g., +2).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-236" restype="x-paragraph">
+        <source>This convention aims to emphasize the distinction between these two related properties.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-237" restype="x-example-subsection-title">
+        <source>Example 4.5: Assigning Oxidation Numbers</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-238" restype="x-example-paragraph">
+        <source>Follow the guidelines in this section of the text to assign oxidation numbers to all the elements in the following species:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-239" restype="x-example-paragraph">
+        <source>(a) H<g id="1" ctype="x-sub">2</g>S</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-240" restype="x-example-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:53]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-241" restype="x-example-paragraph">
+        <source>(c) Na<g id="1" ctype="x-sub">2</g>SO<g id="2" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-242" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-243" restype="x-example-paragraph">
+        <source>(a) According to guideline 3, the oxidation number for H is +1.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-244" restype="x-example-paragraph">
+        <source>Using this oxidation number and the compound’s formula, guideline 4 may then be used to calculate the oxidation number for sulfur:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-245" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:23]]" ctype="x-equation"/>{id="fs-idm58489232"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-246" restype="x-example-paragraph">
+        <source>(b) Guideline 3 suggests the oxidation number for oxygen is −2.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-247" restype="x-example-paragraph">
+        <source>Using this oxidation number and the ion’s formula, guideline 4 may then be used to calculate the oxidation number for sulfur:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-248" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:24]]" ctype="x-equation"/>{id="fs-idm22135232"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-249" restype="x-example-paragraph">
+        <source>(c) For ionic compounds, it’s convenient to assign oxidation numbers for the cation and anion separately.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-250" restype="x-example-paragraph">
+        <source>According to guideline 2, the oxidation number for sodium is +1.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-251" restype="x-example-paragraph">
+        <source>Assuming the usual oxidation number for oxygen (−2 per guideline 3), the oxidation number for sulfur is calculated as directed by guideline 4:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-252" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:25]]" ctype="x-equation"/>{id="fs-idp6634688"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-253" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-254" restype="x-example-paragraph">
+        <source>Assign oxidation states to the elements whose atoms are underlined in each of the following compounds or ions:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-255" restype="x-example-paragraph">
+        <source>(a) K_N_O<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-256" restype="x-example-paragraph">
+        <source>(b) _Al_H<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-257" restype="x-example-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:54]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-258" restype="x-example-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:55]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-259" restype="x-example-paragraph">
+        <source>(a) N, +5; (b) Al, +3; (c) N, −3; (d) P, +5</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-260" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-261" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-262" restype="x-paragraph">
+        <source>(a) N, +5; (b) Al, +3; (c) N, −3; (d) P, +5</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-263" restype="x-paragraph">
+        <source>Using the oxidation number concept, an all-inclusive definition of redox reaction has been established. <g id="1" ctype="x-bold">Oxidation-reduction (redox) reactions</g>{id="term-00022"} are those in which one or more elements involved undergo a change in oxidation number. (While the vast majority of redox reactions involve changes in oxidation number for two or more elements, a few interesting exceptions to this rule do exist [↗]{ref="fs-idp180799104"}.) Definitions for the complementary processes of this reaction class are correspondingly revised as shown here:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-264" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:26]]" ctype="x-equation"/>{id="fs-idp231200304"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-265" restype="x-paragraph">
+        <source>Returning to the reactions used to introduce this topic, they may now both be identified as redox processes.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-266" restype="x-paragraph">
+        <source>In the reaction between sodium and chlorine to yield sodium chloride, sodium is oxidized (its oxidation number increases from 0 in Na to +1 in NaCl) and chlorine is reduced (its oxidation number decreases from 0 in Cl<g id="1" ctype="x-sub">2</g> to −1 in NaCl).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-267" restype="x-paragraph">
+        <source>In the reaction between molecular hydrogen and chlorine, hydrogen is oxidized (its oxidation number increases from 0 in H<g id="1" ctype="x-sub">2</g> to +1 in HCl) and chlorine is reduced (its oxidation number decreases from 0 in Cl<g id="2" ctype="x-sub">2</g> to −1 in HCl).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-268" restype="x-paragraph">
+        <source>Several subclasses of redox reactions are recognized, including <g id="1" ctype="x-bold">combustion reactions</g>{id="term-00023"} in which the reductant (also called a <g id="2" ctype="x-italic">fuel</g>) and oxidant (often, but not necessarily, molecular oxygen) react vigorously and produce significant amounts of heat, and often light, in the form of a flame.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-269" restype="x-paragraph">
+        <source>Solid rocket-fuel reactions such as the one depicted in [↗]{ref="CNX_Chem_04_00_Rocket"} are combustion processes.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-270" restype="x-paragraph">
+        <source>A typical propellant reaction in which solid aluminum is oxidized by ammonium perchlorate is represented by this equation:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-271" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:27]]" ctype="x-equation"/>{id="fs-idp91244624"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-272" restype="x-paragraph">
+        <source>:::link-to-material Watch a brief [video]{url="http://openstax.org/l/16hybridrocket"} showing the test firing of a small-scale, prototype, hybrid rocket engine planned for use in the new Space Launch System being developed by NASA.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-273" restype="x-paragraph">
+        <source>The first engines firing at3 s (green flame) use a liquid fuel/oxidant mixture, and the second, more powerful engines firing at 4 s (yellow flame) use a solid mixture.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-274" restype="x-paragraph">
+        <source><g id="1" ctype="x-bold">Single-displacement (replacement) reactions</g>{id="term-00024"} are redox reactions in which an ion in solution is displaced (or replaced) via the oxidation of a metallic element.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-275" restype="x-paragraph">
+        <source>One common example of this type of reaction is the acid oxidation of certain metals:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-276" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:28]]" ctype="x-equation"/>{id="fs-idp4619296"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-277" restype="x-paragraph">
+        <source>Metallic elements may also be oxidized by solutions of other metal salts; for example:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-278" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:29]]" ctype="x-equation"/>{id="fs-idm10324592"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-279" restype="x-paragraph">
+        <source>This reaction may be observed by placing copper wire in a solution containing a dissolved silver salt.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-280" restype="x-paragraph">
+        <source>Silver ions in solution are reduced to elemental silver at the surface of the copper wire, and the resulting Cu<g id="1" ctype="x-sup">2+</g> ions dissolve in the solution to yield a characteristic blue color ([↗]{ref="CNX_Chem_04_02_CuAgNO3"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-281" restype="x-paragraph">
+        <source>![](CNX_Chem_04_04_CuAgNO3.jpg){id="CNX_Chem_04_02_CuAgNO3" class="scaled-down" alt="This figure contains three photographs.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-282" restype="x-paragraph">
+        <source>In a, a coiled copper wire is shown beside a test tube filled with a clear, colorless liquid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-283" restype="x-paragraph">
+        <source>In b, the wire has been inserted into the test tube with the clear, colorless liquid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-284" restype="x-paragraph">
+        <source>In c, the test tube contains a light blue liquid and the coiled wire appears to have a fuzzy silver gray coating."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-285" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 4.9: (a) A copper wire is shown next to a solution containing silver(I) ions. (b) Displacement of dissolved silver ions by copper ions results in (c) accumulation of gray-colored silver metal on the wire and development of a blue color in the solution, due to dissolved copper ions. (credit: modification of work by Mark Ott)</g>{id="CNX_Chem_04_02_CuAgNO3"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-286" restype="x-example-subsection-title">
+        <source>Example 4.6: Describing Redox Reactions</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-287" restype="x-example-paragraph">
+        <source>Identify which equations represent redox reactions, providing a name for the reaction if appropriate.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-288" restype="x-example-paragraph">
+        <source>For those reactions identified as redox, name the oxidant and reductant.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-289" restype="x-example-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:56]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-290" restype="x-example-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:57]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-291" restype="x-example-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:58]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-292" restype="x-example-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:59]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-293" restype="x-example-paragraph">
+        <source>(e) <x id="1" equiv-text="[[EQ:60]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-294" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-295" restype="x-example-paragraph">
+        <source>Redox reactions are identified per definition if one or more elements undergo a change in oxidation number.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-296" restype="x-example-paragraph">
+        <source>(a) This is not a redox reaction, since oxidation numbers remain unchanged for all elements.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-297" restype="x-example-paragraph">
+        <source>(b) This is a redox reaction.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-298" restype="x-example-paragraph">
+        <source>Gallium is oxidized, its oxidation number increasing from 0 in Ga(<g id="1" ctype="x-italic">l</g>) to +3 in GaBr<g id="3" ctype="x-sub">3</g>(<g id="2" ctype="x-italic">s</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-299" restype="x-example-paragraph">
+        <source>The reducing agent is Ga(<g id="1" ctype="x-italic">l</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-300" restype="x-example-paragraph">
+        <source>Bromine is reduced, its oxidation number decreasing from 0 in Br<g id="3" ctype="x-sub">2</g>(<g id="1" ctype="x-italic">l</g>) to −1 in GaBr<g id="4" ctype="x-sub">3</g>(<g id="2" ctype="x-italic">s</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-301" restype="x-example-paragraph">
+        <source>The oxidizing agent is Br<g id="2" ctype="x-sub">2</g>(<g id="1" ctype="x-italic">l</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-302" restype="x-example-paragraph">
+        <source>(c) This is a redox reaction.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-303" restype="x-example-paragraph">
+        <source>It is a particularly interesting process, as it involves the same element, oxygen, undergoing both oxidation and reduction (a so-called <g id="1" ctype="x-italic">disproportionation reaction)</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-304" restype="x-example-paragraph">
+        <source>Oxygen is oxidized, its oxidation number increasing from −1 in H<g id="3" ctype="x-sub">2</g>O<g id="4" ctype="x-sub">2</g>(<g id="1" ctype="x-italic">aq</g>) to 0 in O<g id="5" ctype="x-sub">2</g>(<g id="2" ctype="x-italic">g</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-305" restype="x-example-paragraph">
+        <source>Oxygen is also reduced, its oxidation number decreasing from −1 in H<g id="3" ctype="x-sub">2</g>O<g id="4" ctype="x-sub">2</g>(<g id="1" ctype="x-italic">aq</g>) to −2 in H<g id="5" ctype="x-sub">2</g>O(<g id="2" ctype="x-italic">l</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-306" restype="x-example-paragraph">
+        <source>For disproportionation reactions, the same substance functions as an oxidant and a reductant.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-307" restype="x-example-paragraph">
+        <source>(d) This is not a redox reaction, since oxidation numbers remain unchanged for all elements.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-308" restype="x-example-paragraph">
+        <source>(e) This is a redox reaction (combustion).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-309" restype="x-example-paragraph">
+        <source>Carbon is oxidized, its oxidation number increasing from −2 in C<g id="3" ctype="x-sub">2</g>H<g id="4" ctype="x-sub">4</g>(<g id="1" ctype="x-italic">g</g>) to +4 in CO<g id="5" ctype="x-sub">2</g>(<g id="2" ctype="x-italic">g</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-310" restype="x-example-paragraph">
+        <source>The reducing agent (fuel) is C<g id="2" ctype="x-sub">2</g>H<g id="3" ctype="x-sub">4</g>(<g id="1" ctype="x-italic">g</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-311" restype="x-example-paragraph">
+        <source>Oxygen is reduced, its oxidation number decreasing from 0 in O<g id="3" ctype="x-sub">2</g>(<g id="1" ctype="x-italic">g</g>) to −2 in H<g id="4" ctype="x-sub">2</g>O(<g id="2" ctype="x-italic">l</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-312" restype="x-example-paragraph">
+        <source>The oxidizing agent is O<g id="2" ctype="x-sub">2</g>(<g id="1" ctype="x-italic">g</g>).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-313" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-314" restype="x-example-paragraph">
+        <source>This equation describes the production of tin(II) chloride:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-315" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:30]]" ctype="x-equation"/>{id="fs-idm73301872"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-316" restype="x-example-paragraph">
+        <source>Is this a redox reaction?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-317" restype="x-example-paragraph">
+        <source>If so, provide a more specific name for the reaction if appropriate, and identify the oxidant and reductant.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-318" restype="x-example-paragraph">
+        <source>Yes, a single-replacement reaction.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-319" restype="x-example-paragraph">
+        <source>Sn(<g id="1" ctype="x-italic">s</g>)is the reductant, HCl(<g id="2" ctype="x-italic">g</g>) is the oxidant.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-320" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-321" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-322" restype="x-paragraph">
+        <source>Yes, a single-replacement reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-323" restype="x-paragraph">
+        <source>Sn(<g id="1" ctype="x-italic">s</g>)is the reductant, HCl(<g id="2" ctype="x-italic">g</g>) is the oxidant.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-324" restype="x-paragraph">
+        <source>Redox reactions that take place in aqueous media often involve water, hydronium ions, and hydroxide ions as reactants or products.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-325" restype="x-paragraph">
+        <source>Although these species are not oxidized or reduced, they do participate in chemical change in other ways (e.g., by providing the elements required to form oxyanions).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-326" restype="x-paragraph">
+        <source>Equations representing these reactions are sometimes very difficult to balance by inspection, so systematic approaches have been developed to assist in the process.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-327" restype="x-paragraph">
+        <source>One very useful approach is to use the method of half-reactions, which involves the following steps:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-328" restype="x-list-item">
+        <source>Write the two half-reactions representing the redox process.</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-329" restype="x-list-item">
+        <source>Balance all elements except oxygen and hydrogen.</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-330" restype="x-list-item">
+        <source>Balance oxygen atoms by adding H<g id="1" ctype="x-sub">2</g>O molecules.</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-331" restype="x-list-item">
+        <source>Balance hydrogen atoms by adding H<g id="1" ctype="x-sup">+</g> ions.</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-332" restype="x-list-item">
+        <source>Balance charge by adding electrons.</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-333" restype="x-list-item">
+        <source>If necessary, multiply each half-reaction’s coefficients by the smallest possible integers to yield equal numbers of electrons in each.</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-334" restype="x-list-item">
+        <source>Add the balanced half-reactions together and simplify by removing species that appear on both sides of the equation.</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-335" restype="x-list-item">
+        <source>For reactions occurring in basic media (excess hydroxide ions), carry out these additional steps:</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-336" restype="x-list-item">
+        <source>Finally, check to see that both the number of atoms and the total chargesThe requirement of “charge balance” is just a specific type of “mass balance” in which the species in question are electrons.</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-337" restype="x-list-item">
+        <source>An equation must represent equal numbers of electrons on the reactant and product sides, and so both atoms and charges must be balanced. are balanced.</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-338" restype="x-example-subsection-title">
+        <source>Example 4.7: Balancing Redox Reactions in Acidic Solution</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-339" restype="x-example-paragraph">
+        <source>Write a balanced equation for the reaction between dichromate ion and iron(II) to yield iron(III) and chromium(III) in acidic solution.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-340" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:31]]" ctype="x-equation"/>{id="fs-idm59837744"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-341" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-342" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Write the two half-reactions</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-343" restype="x-example-paragraph">
+        <source>Each half-reaction will contain one reactant and one product with one element in common. <x id="1" equiv-text="[[EQ:32]]" ctype="x-equation"/>{id="fs-idm158485920"} <x id="2" equiv-text="[[EQ:33]]" ctype="x-equation"/>{id="fs-idm115501120"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-344" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Balance all elements except oxygen and hydrogen</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-345" restype="x-example-paragraph">
+        <source>The iron half-reaction is already balanced, but the chromium half-reaction shows two Cr atoms on the left and one Cr atom on the right.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-346" restype="x-example-paragraph">
+        <source>Changing the coefficient on the right side of the equation to 2 achieves balance with regard to Cr atoms. <x id="1" equiv-text="[[EQ:34]]" ctype="x-equation"/>{id="fs-idm214288784"} <x id="2" equiv-text="[[EQ:35]]" ctype="x-equation"/>{id="fs-idm209224928"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-347" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Balance oxygen atoms by adding</g> H<g id="3" ctype="x-sub">2</g>O<g id="2" ctype="x-italic"> molecules</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-348" restype="x-example-paragraph">
+        <source>The iron half-reaction does not contain O atoms.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-349" restype="x-example-paragraph">
+        <source>The chromium half-reaction shows seven O atoms on the left and none on the right, so seven water molecules are added to the right side. <x id="1" equiv-text="[[EQ:36]]" ctype="x-equation"/>{id="fs-idm223648432"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-350" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Balance hydrogen atoms by adding</g> H<g id="3" ctype="x-sup">+</g><g id="2" ctype="x-italic">ions</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-351" restype="x-example-paragraph">
+        <source>The iron half-reaction does not contain H atoms.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-352" restype="x-example-paragraph">
+        <source>The chromium half-reaction shows 14 H atoms on the right and none on the left, so 14 hydrogen ions are added to the left side. <x id="1" equiv-text="[[EQ:37]]" ctype="x-equation"/>{id="fs-idm110660208"} <x id="2" equiv-text="[[EQ:38]]" ctype="x-equation"/>{id="fs-idm113051632"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-353" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Balance charge by adding electrons</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-354" restype="x-example-paragraph">
+        <source>The iron half-reaction shows a total charge of 2+ on the left side (1 Fe<g id="1" ctype="x-sup">2+</g> ion) and 3+ on the right side (1 Fe<g id="2" ctype="x-sup">3+</g> ion).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-355" restype="x-example-paragraph">
+        <source>Adding one electron to the right side brings that side’s total charge to (3+) + (1−) = 2+, and charge balance is achieved.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-356" restype="x-example-paragraph">
+        <source>The chromium half-reaction shows a total charge of (1 <x id="1" equiv-text="[[EQ:61]]" ctype="x-equation"/> 2−) + (14 <x id="2" equiv-text="[[EQ:62]]" ctype="x-equation"/> 1+) = 12+ on the left side <x id="3" equiv-text="[[EQ:63]]" ctype="x-equation"/> ion and 14 H<g id="4" ctype="x-sup">+</g> ions).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-357" restype="x-example-paragraph">
+        <source>The total charge on the right side is (2 <x id="1" equiv-text="[[EQ:64]]" ctype="x-equation"/> 3+) = 6 + (2 Cr<g id="2" ctype="x-sup">3+</g> ions).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-358" restype="x-example-paragraph">
+        <source>Adding six electrons to the left side will bring that side’s total charge to (12+ + 6−) = 6+, and charge balance is achieved. <x id="1" equiv-text="[[EQ:39]]" ctype="x-equation"/>{id="fs-idm225038592"} <x id="2" equiv-text="[[EQ:40]]" ctype="x-equation"/>{id="fs-idm249297696"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-359" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Multiply the two half-reactions so the number of electrons in one reaction equals the number of electrons in the other reaction</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-360" restype="x-example-paragraph">
+        <source>To be consistent with mass conservation, and the idea that redox reactions involve the transfer (not creation or destruction) of electrons, the iron half-reaction’s coefficient must be multiplied by 6. <x id="1" equiv-text="[[EQ:41]]" ctype="x-equation"/>{id="fs-idm65092096"} <x id="2" equiv-text="[[EQ:42]]" ctype="x-equation"/>{id="fs-idm129012256"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-361" restype="x-example-paragraph">
+        <source><g id="2" ctype="x-italic">Add the balanced half-reactions and cancel species that appear on both sides of the equation</g>. <x id="1" equiv-text="[[EQ:43]]" ctype="x-equation"/>{id="fs-idm208390896"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-362" restype="x-example-paragraph">
+        <source>Only the six electrons are redundant species.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-363" restype="x-example-paragraph">
+        <source>Removing them from each side of the equation yields the simplified, balanced equation here: <x id="1" equiv-text="[[EQ:44]]" ctype="x-equation"/>{id="fs-idm273483584"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-364" restype="x-example-paragraph">
+        <source>A final check of atom and charge balance confirms the equation is balanced.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-365" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-366" restype="x-example-paragraph">
+        <source>In basic solution, molecular chlorine, Cl<g id="1" ctype="x-sub">2</g>, reacts with hydroxide ions, OH<g id="3" ctype="x-sup">−</g>, to yield chloride ions, Cl<g id="4" ctype="x-sup">−</g>. and chlorate ions, ClO<g id="2" ctype="x-sub">3</g><g id="5" ctype="x-sup">−</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-367" restype="x-example-paragraph">
+        <source>HINT: This is a <g id="1" ctype="x-italic">disproportionation reaction</g> in which the element chlorine is both oxidized and reduced.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-368" restype="x-example-paragraph">
+        <source>Write a balanced equation for this reaction.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-369" restype="x-paragraph">
+        <source>| Reactants | Products | | :--- | :--- | | Fe | 6 | 6 | | Cr | 2 | 2 | | O | 7 | 7 | | H | 14 | 14 | | charge | 24+ | 24+ | {id="fs-idp8525760" summary="This table has three columns and six rows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-370" restype="x-paragraph">
+        <source>The first column is unlabeled but the second and third columns are labeled, “Reactants,” and “Products.” Under the first column are the following: “F e,” “C r,” “O,” “H,” and, “charge.” Under the “Reactants” column are the numbers: 6, 2, 7, 14, 24 plus sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-371" restype="x-paragraph">
+        <source>Under the “Products” column are the numbers: 6, 2, 7, 14 and 24 plus sign."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-372" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-373" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-374" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-375" restype="x-paragraph">
+        <source>Chemical reactions are classified according to similar patterns of behavior.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-376" restype="x-paragraph">
+        <source>A large number of important reactions are included in three categories: precipitation, acid-base, and oxidation-reduction (redox).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-377" restype="x-paragraph">
+        <source>Precipitation reactions involve the formation of one or more insoluble products.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-378" restype="x-paragraph">
+        <source>Acid-base reactions involve the transfer of hydrogen ions between reactants.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-379" restype="x-paragraph">
+        <source>Redox reactions involve a change in oxidation number for one or more reactant elements.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-380" restype="x-paragraph">
+        <source>Writing balanced equations for some redox reactions that occur in aqueous solutions is simplified by using a systematic approach called the half-reaction method.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-381" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-382" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp29496096} Use the following equations to answer the next four questions:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-383" restype="x-paragraph">
+        <source>i. <x id="1" equiv-text="[[EQ:66]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-384" restype="x-paragraph">
+        <source>ii. <x id="1" equiv-text="[[EQ:67]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-385" restype="x-paragraph">
+        <source>iii. <x id="1" equiv-text="[[EQ:68]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-386" restype="x-paragraph">
+        <source>iv. <x id="1" equiv-text="[[EQ:69]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-387" restype="x-paragraph">
+        <source>v. <x id="1" equiv-text="[[EQ:70]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-388" restype="x-paragraph">
+        <source>(a) Which equation describes a physical change?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-389" restype="x-paragraph">
+        <source>(b) Which equation identifies the reactants and products of a combustion reaction?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-390" restype="x-paragraph">
+        <source>(c) Which equation is not balanced?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-391" restype="x-paragraph">
+        <source>(d) Which is a net ionic equation?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-392" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp89395536} Indicate what type, or types, of reaction each of the following represents:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-393" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:71]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-394" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:72]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-395" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:73]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-396" restype="x-paragraph">
+        <source>:::answer (a) oxidation-reduction (addition); (b) acid-base (neutralization); (c) oxidation-reduction (combustion)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-397" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp45308224} Indicate what type, or types, of reaction each of the following represents:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-398" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:74]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-399" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:75]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-400" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:76]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-401" restype="x-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:77]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-402" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm49658992} Silver can be separated from gold because silver dissolves in nitric acid while gold does not.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-403" restype="x-paragraph">
+        <source>Is the dissolution of silver in nitric acid an acid-base reaction or an oxidation-reduction reaction?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-404" restype="x-paragraph">
+        <source>Explain your answer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-405" restype="x-paragraph">
+        <source>:::answer It is an oxidation-reduction reaction because the oxidation state of the silver changes during the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-406" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm120814704} Determine the oxidation states of the elements in the following compounds:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-407" restype="x-paragraph">
+        <source>(a) NaI</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-408" restype="x-paragraph">
+        <source>(b) GdCl<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-409" restype="x-paragraph">
+        <source>(c) LiNO<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-410" restype="x-paragraph">
+        <source>(d) H<g id="1" ctype="x-sub">2</g>Se</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-411" restype="x-paragraph">
+        <source>(e) Mg<g id="1" ctype="x-sub">2</g>Si</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-412" restype="x-paragraph">
+        <source>(f) RbO<g id="1" ctype="x-sub">2</g>, rubidium superoxide</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-413" restype="x-paragraph">
+        <source>(g) HF</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-414" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm48178048} Determine the oxidation states of the elements in the compounds listed.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-415" restype="x-paragraph">
+        <source>None of the oxygen-containing compounds are peroxides or superoxides.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-416" restype="x-paragraph">
+        <source>(a) H<g id="1" ctype="x-sub">3</g>PO<g id="2" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-417" restype="x-paragraph">
+        <source>(b) Al(OH)<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-418" restype="x-paragraph">
+        <source>(c) SeO<g id="1" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-419" restype="x-paragraph">
+        <source>(d) KNO<g id="1" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-420" restype="x-paragraph">
+        <source>(e) In<g id="1" ctype="x-sub">2</g>S<g id="2" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-421" restype="x-paragraph">
+        <source>(f) P<g id="1" ctype="x-sub">4</g>O<g id="2" ctype="x-sub">6</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-422" restype="x-paragraph">
+        <source>:::answer (a) H +1, P +5, O −2; (b) Al +3, H +1, O −2; (c) Se +4, O −2; (d) K +1, N +3, O −2; (e) In +3, S −2; (f) P +3, O −2</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-423" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp9450288} Determine the oxidation states of the elements in the compounds listed.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-424" restype="x-paragraph">
+        <source>None of the oxygen-containing compounds are peroxides or superoxides.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-425" restype="x-paragraph">
+        <source>(a) H<g id="1" ctype="x-sub">2</g>SO<g id="2" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-426" restype="x-paragraph">
+        <source>(b) Ca(OH)<g id="1" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-427" restype="x-paragraph">
+        <source>(c) BrOH</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-428" restype="x-paragraph">
+        <source>(d) ClNO<g id="1" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-429" restype="x-paragraph">
+        <source>(e) TiCl<g id="1" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-430" restype="x-paragraph">
+        <source>(f) NaH</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-431" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp153725776} Classify the following as acid-base reactions or oxidation-reduction reactions:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-432" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:78]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-433" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:79]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-434" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:80]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-435" restype="x-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:81]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-436" restype="x-paragraph">
+        <source>(e) <x id="1" equiv-text="[[EQ:82]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-437" restype="x-paragraph">
+        <source>(f) <x id="1" equiv-text="[[EQ:83]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-438" restype="x-paragraph">
+        <source>:::answer (a) acid-base; (b) oxidation-reduction: Na is oxidized, H<g id="3" ctype="x-sup">+</g> is reduced; (c) oxidation-reduction: Mg is oxidized, Cl<g id="1" ctype="x-sub">2</g> is reduced; (d) acid-base; (e) oxidation-reduction: P<g id="4" ctype="x-sup">3−</g> is oxidized, O<g id="2" ctype="x-sub">2</g> is reduced; (f) acid-base</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-439" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp16823936} Identify the atoms that are oxidized and reduced, the change in oxidation state for each, and the oxidizing and reducing agents in each of the following equations:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-440" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:84]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-441" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:85]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-442" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:86]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-443" restype="x-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:87]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-444" restype="x-paragraph">
+        <source>(e) <x id="1" equiv-text="[[EQ:88]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-445" restype="x-paragraph">
+        <source>(f) <x id="1" equiv-text="[[EQ:89]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-446" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm48437584} Complete and balance the following acid-base equations:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-447" restype="x-paragraph">
+        <source>(a) HCl gas reacts with solid Ca(OH)<g id="2" ctype="x-sub">2</g>(<g id="1" ctype="x-italic">s</g>).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-448" restype="x-paragraph">
+        <source>(b) A solution of Sr(OH)<g id="1" ctype="x-sub">2</g> is added to a solution of HNO<g id="2" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-449" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:90]]" ctype="x-equation"/> (b) <x id="2" equiv-text="[[EQ:91]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-450" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp4908480} Complete and balance the following acid-base equations:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-451" restype="x-paragraph">
+        <source>(a) A solution of HClO<g id="1" ctype="x-sub">4</g> is added to a solution of LiOH.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-452" restype="x-paragraph">
+        <source>(b) Aqueous H<g id="1" ctype="x-sub">2</g>SO<g id="2" ctype="x-sub">4</g> reacts with NaOH.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-453" restype="x-paragraph">
+        <source>(c) Ba(OH)<g id="1" ctype="x-sub">2</g> reacts with HF gas.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-454" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm6604608} Complete and balance the following oxidation-reduction reactions, which give the highest possible oxidation state for the oxidized atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-455" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:92]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-456" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:93]]" ctype="x-equation"/> (single displacement)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-457" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:94]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-458" restype="x-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:95]]" ctype="x-equation"/> (products are a strong base and a diatomic gas)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-459" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:96]]" ctype="x-equation"/> (b) <x id="2" equiv-text="[[EQ:97]]" ctype="x-equation"/> (c) <x id="3" equiv-text="[[EQ:98]]" ctype="x-equation"/> (d) <x id="4" equiv-text="[[EQ:99]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-460" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp9275200} Complete and balance the following oxidation-reduction reactions, which give the highest possible oxidation state for the oxidized atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-461" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:100]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-462" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:101]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-463" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:102]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-464" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp105919968} Complete and balance the equations for the following acid-base neutralization reactions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-465" restype="x-paragraph">
+        <source>If water is used as a solvent, write the reactants and products as aqueous ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-466" restype="x-paragraph">
+        <source>In some cases, there may be more than one correct answer, depending on the amounts of reactants used.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-467" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:103]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-468" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:104]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-469" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:105]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-470" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:106]]" ctype="x-equation"/> (b) <x id="2" equiv-text="[[EQ:107]]" ctype="x-equation"/> (a solution of H<g id="4" ctype="x-sub">2</g>SO<g id="5" ctype="x-sub">4</g>); (c) <x id="3" equiv-text="[[EQ:108]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-471" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm58208656} When heated to 700–800 °C, diamonds, which are pure carbon, are oxidized by atmospheric oxygen. (They burn!) Write the balanced equation for this reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-472" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm9932800} The military has experimented with lasers that produce very intense light when fluorine combines explosively with hydrogen.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-473" restype="x-paragraph">
+        <source>What is the balanced equation for this reaction?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-474" restype="x-paragraph">
+        <source>:::answer <x id="1" equiv-text="[[EQ:109]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-475" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm48911936} Write the molecular, total ionic, and net ionic equations for the following reactions:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-476" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:110]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-477" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:111]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-478" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp187257568} Great Lakes Chemical Company produces bromine, Br<g id="1" ctype="x-sub">2</g>, from bromide salts such as NaBr, in Arkansas brine by treating the brine with chlorine gas.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-479" restype="x-paragraph">
+        <source>Write a balanced equation for the reaction of NaBr with Cl<g id="1" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-480" restype="x-paragraph">
+        <source>:::answer <x id="1" equiv-text="[[EQ:112]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-481" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm49879312} In a common experiment in the general chemistry laboratory, magnesium metal is heated in air to produce MgO.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-482" restype="x-paragraph">
+        <source>MgO is a white solid, but in these experiments it often looks gray, due to small amounts of Mg<g id="1" ctype="x-sub">3</g>N<g id="2" ctype="x-sub">2</g>, a compound formed as some of the magnesium reacts with nitrogen.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-483" restype="x-paragraph">
+        <source>Write a balanced equation for each reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-484" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp89418928} Lithium hydroxide may be used to absorb carbon dioxide in enclosed environments, such as manned spacecraft and submarines.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-485" restype="x-paragraph">
+        <source>Write an equation for the reaction that involves 2 mol of LiOH per 1 mol of CO<g id="1" ctype="x-sub">2</g>. (Hint: Water is one of the products.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-486" restype="x-paragraph">
+        <source>:::answer <x id="1" equiv-text="[[EQ:113]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-487" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp45994720} Calcium propionate is sometimes added to bread to retard spoilage.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-488" restype="x-paragraph">
+        <source>This compound can be prepared by the reaction of calcium carbonate, CaCO<g id="1" ctype="x-sub">3</g>, with propionic acid, C<g id="2" ctype="x-sub">2</g>H<g id="3" ctype="x-sub">5</g>CO<g id="4" ctype="x-sub">2</g>H, which has properties similar to those of acetic acid.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-489" restype="x-paragraph">
+        <source>Write the balanced equation for the formation of calcium propionate.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-490" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp89462576} Complete and balance the equations of the following reactions, each of which could be used to remove hydrogen sulfide from natural gas:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-491" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:114]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-492" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:115]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-493" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:116]]" ctype="x-equation"/> (b) <x id="2" equiv-text="[[EQ:117]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-494" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp68926672} Copper(II) sulfide is oxidized by molecular oxygen to produce gaseous sulfur trioxide and solid copper(II) oxide.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-495" restype="x-paragraph">
+        <source>The gaseous product then reacts with liquid water to produce liquid dihydrogen sulfate as the only product.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-496" restype="x-paragraph">
+        <source>Write the two equations which represent these reactions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-497" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm49311296} Write balanced chemical equations for the reactions used to prepare each of the following compounds from the given starting material(s).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-498" restype="x-paragraph">
+        <source>In some cases, additional reactants may be required.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-499" restype="x-paragraph">
+        <source>(a) solid ammonium nitrate from gaseous molecular nitrogen via a two-step process (first reduce the nitrogen to ammonia, then neutralize the ammonia with an appropriate acid)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-500" restype="x-paragraph">
+        <source>(b) gaseous hydrogen bromide from liquid molecular bromine via a one-step redox reaction</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-501" restype="x-paragraph">
+        <source>(c) gaseous H<g id="1" ctype="x-sub">2</g>S from solid Zn and S via a two-step process (first a redox reaction between the starting materials, then reaction of the product with a strong acid)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-502" restype="x-paragraph">
+        <source>:::answer (a) step 1: <x id="1" equiv-text="[[EQ:118]]" ctype="x-equation"/> step 2: <x id="2" equiv-text="[[EQ:119]]" ctype="x-equation"/> (b) <x id="3" equiv-text="[[EQ:120]]" ctype="x-equation"/> (c) <x id="4" equiv-text="[[EQ:121]]" ctype="x-equation"/> and <x id="5" equiv-text="[[EQ:122]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-503" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp89842528} Calcium cyclamate Ca(C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">11</g>NHSO<g id="3" ctype="x-sub">3</g>)<g id="4" ctype="x-sub">2</g> is an artificial sweetener used in many countries around the world but is banned in the United States.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-504" restype="x-paragraph">
+        <source>It can be purified industrially by converting it to the barium salt through reaction of the acid C<g id="1" ctype="x-sub">6</g>H<g id="2" ctype="x-sub">11</g>NHSO<g id="3" ctype="x-sub">3</g>H with barium carbonate, treatment with sulfuric acid (barium sulfate is very insoluble), and then neutralization with calcium hydroxide.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-505" restype="x-paragraph">
+        <source>Write the balanced equations for these reactions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-506" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm11103504} Complete and balance each of the following half-reactions (steps 2–5 in half-reaction method):</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-507" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:123]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-508" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:124]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-509" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:125]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-510" restype="x-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:126]]" ctype="x-equation"/> (in acidic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-511" restype="x-paragraph">
+        <source>(e) <x id="1" equiv-text="[[EQ:127]]" ctype="x-equation"/> (in basic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-512" restype="x-paragraph">
+        <source>(f) <x id="1" equiv-text="[[EQ:128]]" ctype="x-equation"/> (in acidic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-513" restype="x-paragraph">
+        <source>(g) <x id="1" equiv-text="[[EQ:129]]" ctype="x-equation"/> (in acidic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-514" restype="x-paragraph">
+        <source>(h) <x id="1" equiv-text="[[EQ:130]]" ctype="x-equation"/> (in basic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-515" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:131]]" ctype="x-equation"/> (b) <x id="2" equiv-text="[[EQ:132]]" ctype="x-equation"/> (c) <x id="3" equiv-text="[[EQ:133]]" ctype="x-equation"/> (d) <x id="4" equiv-text="[[EQ:134]]" ctype="x-equation"/> (e) <x id="5" equiv-text="[[EQ:135]]" ctype="x-equation"/> (f) <x id="6" equiv-text="[[EQ:136]]" ctype="x-equation"/> (g) <x id="7" equiv-text="[[EQ:137]]" ctype="x-equation"/> (h) <x id="8" equiv-text="[[EQ:138]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-516" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp30749376} Complete and balance each of the following half-reactions (steps 2–5 in half-reaction method):</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-517" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:139]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-518" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:140]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-519" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:141]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-520" restype="x-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:142]]" ctype="x-equation"/> (in basic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-521" restype="x-paragraph">
+        <source>(e) <x id="1" equiv-text="[[EQ:143]]" ctype="x-equation"/> (in acidic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-522" restype="x-paragraph">
+        <source>(f) <x id="1" equiv-text="[[EQ:144]]" ctype="x-equation"/> (in acidic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-523" restype="x-paragraph">
+        <source>(g) <x id="1" equiv-text="[[EQ:145]]" ctype="x-equation"/> (in basic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-524" restype="x-paragraph">
+        <source>(h) <x id="1" equiv-text="[[EQ:146]]" ctype="x-equation"/> (in acidic solution)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-525" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm48094672} Balance each of the following equations according to the half-reaction method:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-526" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:147]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-527" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:148]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-528" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:149]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-529" restype="x-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:150]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-530" restype="x-paragraph">
+        <source>(e) <x id="1" equiv-text="[[EQ:151]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-531" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:152]]" ctype="x-equation"/> (b) <x id="2" equiv-text="[[EQ:153]]" ctype="x-equation"/> (c) <x id="3" equiv-text="[[EQ:154]]" ctype="x-equation"/> (d) <x id="4" equiv-text="[[EQ:155]]" ctype="x-equation"/> (e) <x id="5" equiv-text="[[EQ:156]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-532" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp27470448} Balance each of the following equations according to the half-reaction method:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-533" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:157]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-534" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:158]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-535" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:159]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-536" restype="x-paragraph">
+        <source>(d) <x id="1" equiv-text="[[EQ:160]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-537" restype="x-paragraph">
+        <source>(e) <x id="1" equiv-text="[[EQ:161]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-538" restype="x-paragraph">
+        <source>(f) <x id="1" equiv-text="[[EQ:162]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-539" restype="x-paragraph">
+        <source>(g) <x id="1" equiv-text="[[EQ:163]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-540" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp46083440} Balance each of the following equations according to the half-reaction method:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-541" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:164]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-542" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:165]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-543" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:166]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-544" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:167]]" ctype="x-equation"/> (b) <x id="2" equiv-text="[[EQ:168]]" ctype="x-equation"/> (c) <x id="3" equiv-text="[[EQ:169]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,1596 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68801" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Equilibrium Calculations</note>
+      <note>Section: 13.4</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Equilibrium Calculations</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Identify the changes in concentration or pressure that occur for chemical species in equilibrium systems</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Calculate equilibrium concentrations or pressures and equilibrium constants, using various algebraic approaches</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-paragraph">
+        <source>Having covered the essential concepts of chemical equilibria in the preceding sections of this chapter, this final section will demonstrate the more practical aspect of using these concepts and appropriate mathematical strategies to perform various equilibrium calculations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-paragraph">
+        <source>These types of computations are essential to many areas of science and technology—for example, in the formulation and dosing of pharmaceutical products.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>After a drug is ingested or injected, it is typically involved in several chemical equilibria that affect its ultimate concentration in the body system of interest.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>Knowledge of the quantitative aspects of these equilibria is required to compute a dosage amount that will solicit the desired therapeutic effect.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>Many of the useful equilibrium calculations that will be demonstrated here require terms representing changes in reactant and product concentrations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>These terms are derived from the stoichiometry of the reaction, as illustrated by decomposition of ammonia:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:1]]" ctype="x-equation"/>{id="fs-idp2372544"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>As shown earlier in this chapter, this equilibrium may be established within a sealed container that initially contains either NH<g id="1" ctype="x-sub">3</g> only, or a mixture of any two of the three chemical species involved in the equilibrium.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>Regardless of its initial composition, a reaction mixture will show the same relationships between changes in the concentrations of the three species involved, as dictated by the reaction stoichiometry (see also the related content on expressing reaction rates in the chapter on kinetics).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>For example, if the nitrogen concentration increases by an amount <g id="1" ctype="x-italic">x</g>:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:2]]" ctype="x-equation"/>{id="fs-idp309373104"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>the corresponding changes in the other species concentrations are</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:3]]" ctype="x-equation"/>{id="fs-idp117027920"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:4]]" ctype="x-equation"/>{id="fs-idp301878592"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>where the negative sign indicates a decrease in concentration.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>Determining Relative Changes in Concentration Derive the missing terms representing concentration changes for each of the following reactions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:51]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:52]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:53]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source>Solution (a) <x id="1" equiv-text="[[EQ:54]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:55]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:56]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>Check Your Learning Complete the changes in concentrations for each of the following reactions:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source>(a) <x id="1" equiv-text="[[EQ:57]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:58]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>(c) <x id="1" equiv-text="[[EQ:59]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>(a) 2<g id="1" ctype="x-italic">x</g>, <g id="2" ctype="x-italic">x</g>, −2<g id="3" ctype="x-italic">x;</g> (b) <g id="4" ctype="x-italic">x</g>, −2<g id="5" ctype="x-italic">x;</g> (c) 4<g id="6" ctype="x-italic">x</g>, 7<g id="7" ctype="x-italic">x</g>, −4<g id="8" ctype="x-italic">x</g>, −6<g id="9" ctype="x-italic">x</g> or −4<g id="10" ctype="x-italic">x</g>, −7<g id="11" ctype="x-italic">x</g>, 4<g id="12" ctype="x-italic">x</g>, 6<g id="13" ctype="x-italic">x</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>(a) 2<g id="1" ctype="x-italic">x</g>, <g id="2" ctype="x-italic">x</g>, −2<g id="3" ctype="x-italic">x;</g> (b) <g id="4" ctype="x-italic">x</g>, −2<g id="5" ctype="x-italic">x;</g> (c) 4<g id="6" ctype="x-italic">x</g>, 7<g id="7" ctype="x-italic">x</g>, −4<g id="8" ctype="x-italic">x</g>, −6<g id="9" ctype="x-italic">x</g> or −4<g id="10" ctype="x-italic">x</g>, −7<g id="11" ctype="x-italic">x</g>, 4<g id="12" ctype="x-italic">x</g>, 6<g id="13" ctype="x-italic">x</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-section-title">
+        <source>Calculation of an Equilibrium Constant</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source>The equilibrium constant for a reaction is calculated from the equilibrium concentrations (or pressures) of its reactants and products.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source>If these concentrations are known, the calculation simply involves their substitution into the K expression, as was illustrated by [↗]{ref="fs-idp54423808"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source>A slightly more challenging example is provided next, in which the reaction stoichiometry is used to derive equilibrium concentrations from the information provided.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-paragraph">
+        <source>The basic strategy of this computation is helpful for many types of equilibrium computations and relies on the use of terms for the reactant and product concentrations <g id="1" ctype="x-italic">initially</g> present, for how they <g id="2" ctype="x-italic">change</g> as the reaction proceeds, and for what they are when the system reaches <g id="3" ctype="x-italic">equilibrium</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source>The acronym ICE is commonly used to refer to this mathematical approach, and the concentrations terms are usually gathered in a tabular format called an ICE table.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-example-subsection-title">
+        <source>Example 13.3: Calculation of an Equilibrium Constant</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-example-paragraph">
+        <source>Iodine molecules react reversibly with iodide ions to produce triiodide ions.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:5]]" ctype="x-equation"/>{id="fs-idp73967168"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-example-paragraph">
+        <source>If a solution with the concentrations of I<g id="5" ctype="x-sub">2</g> and I<g id="7" ctype="x-sup">−</g> both equal to 1.000 <x id="1" equiv-text="[[EQ:60]]" ctype="x-equation"/> 10<g id="8" ctype="x-sup">−3</g> <g id="3" ctype="x-italic">M</g> before reaction gives an equilibrium concentration of I<g id="6" ctype="x-sub">2</g> of 6.61 <x id="2" equiv-text="[[EQ:61]]" ctype="x-equation"/> 10<g id="9" ctype="x-sup">−4</g> <g id="4" ctype="x-italic">M</g>, what is the equilibrium constant for the reaction?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-example-paragraph">
+        <source>To calculate the equilibrium constants, equilibrium concentrations are needed for all the reactants and products:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:6]]" ctype="x-equation"/>{id="fs-idm215755504"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-example-paragraph">
+        <source>Provided are the initial concentrations of the reactants and the equilibrium concentration of the product.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-example-paragraph">
+        <source>Use this information to derive terms for the equilibrium concentrations of the reactants, presenting all the information in an ICE table.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-example-paragraph">
+        <source>At equilibrium the concentration of I<g id="3" ctype="x-sub">2</g> is 6.61 <x id="1" equiv-text="[[EQ:62]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">−4</g> <g id="2" ctype="x-italic">M</g> so that</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:7]]" ctype="x-equation"/>{id="fs-idp119575776"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:8]]" ctype="x-equation"/>{id="fs-idp120750608"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:9]]" ctype="x-equation"/>{id="fs-idp8604640"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-example-paragraph">
+        <source>The ICE table may now be updated with numerical values for all its concentrations:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-example-paragraph">
+        <source>Finally, substitute the equilibrium concentrations into the <g id="1" ctype="x-italic">K</g> expression and solve:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:10]]" ctype="x-equation"/>{id="fs-idp140787760"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/>{id="fs-idp97785984"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-example-paragraph">
+        <source>Ethanol and acetic acid react and form water and ethyl acetate, the solvent responsible for the odor of some nail polish removers.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:12]]" ctype="x-equation"/>{id="fs-idp343410432"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-example-paragraph">
+        <source>When 1 mol each of C<g id="2" ctype="x-sub">2</g>H<g id="3" ctype="x-sub">5</g>OH and CH<g id="4" ctype="x-sub">3</g>CO<g id="5" ctype="x-sub">2</g>H are allowed to react in 1 L of the solvent dioxane, equilibrium is established when <x id="1" equiv-text="[[EQ:63]]" ctype="x-equation"/> mol of each of the reactants remains.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-example-paragraph">
+        <source>Calculate the equilibrium constant for the reaction. (Note: Water is a solute in this reaction.)</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-example-paragraph">
+        <source>K<g id="1" ctype="x-sub">c</g> = 4</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-paragraph">
+        <source>K<g id="1" ctype="x-sub">c</g> = 4</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-section-title">
+        <source>Calculation of a Missing Equilibrium Concentration</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-paragraph">
+        <source>When the equilibrium constant and all but one equilibrium concentration are provided, the other equilibrium concentration(s) may be calculated.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-paragraph">
+        <source>A computation of this sort is illustrated in the next example exercise.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-example-subsection-title">
+        <source>Example 13.4: Calculation of a Missing Equilibrium Concentration</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-example-paragraph">
+        <source>Nitrogen oxides are air pollutants produced by the reaction of nitrogen and oxygen at high temperatures.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-example-paragraph">
+        <source>At 2000 °C, the value of the K<g id="3" ctype="x-sub">c</g> for the reaction, <x id="1" equiv-text="[[EQ:64]]" ctype="x-equation"/> is 4.1 <x id="2" equiv-text="[[EQ:65]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">−4</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-example-paragraph">
+        <source>Calculate the equilibrium concentration of NO(<g id="1" ctype="x-italic">g</g>) in air at 1 atm pressure and 2000 °C.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-example-paragraph">
+        <source>The equilibrium concentrations of N<g id="1" ctype="x-sub">2</g> and O<g id="2" ctype="x-sub">2</g> at this pressure and temperature are 0.036 M and 0.0089 M, respectively.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-example-paragraph">
+        <source>Substitute the provided quantities into the equilibrium constant expression and solve for [NO]:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:13]]" ctype="x-equation"/>{id="fs-idp57551600"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:14]]" ctype="x-equation"/>{id="fs-idp68622944"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:15]]" ctype="x-equation"/>{id="fs-idp146257328"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:16]]" ctype="x-equation"/>{id="fs-idp60894832"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:17]]" ctype="x-equation"/>{id="fs-idp334861312"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:18]]" ctype="x-equation"/>{id="fs-idp166439104"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-example-paragraph">
+        <source>Thus [NO] is 3.6 <x id="1" equiv-text="[[EQ:66]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">−4</g> mol/L at equilibrium under these conditions.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-example-paragraph">
+        <source>To confirm this result, it may be used along with the provided equilibrium concentrations to calculate a value for <g id="1" ctype="x-italic">K</g>:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:19]]" ctype="x-equation"/>{id="fs-idp71208832"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:20]]" ctype="x-equation"/>{id="fs-idp217492240"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:21]]" ctype="x-equation"/>{id="fs-idp175632608"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-example-paragraph">
+        <source>This result is consistent with the provided value for <g id="1" ctype="x-italic">K</g> within nominal uncertainty, differing by just 1 in the least significant digit’s place.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-example-paragraph">
+        <source>The equilibrium constant K<g id="2" ctype="x-sub">c</g> for the reaction of nitrogen and hydrogen to produce ammonia at a certain temperature is 6.00 <x id="1" equiv-text="[[EQ:67]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">−2</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-example-paragraph">
+        <source>Calculate the equilibrium concentration of ammonia if the equilibrium concentrations of nitrogen and hydrogen are 4.26 <g id="1" ctype="x-italic">M</g> and 2.09 <g id="2" ctype="x-italic">M</g>, respectively.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-example-paragraph">
+        <source>1.53 mol/L</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-97" restype="x-paragraph">
+        <source>1.53 mol/L</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-98" restype="x-section-title">
+        <source>Calculation of Equilibrium Concentrations from Initial Concentrations</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-99" restype="x-paragraph">
+        <source>Perhaps the most challenging type of equilibrium calculation can be one in which equilibrium concentrations are derived from initial concentrations and an equilibrium constant.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-100" restype="x-paragraph">
+        <source>For these calculations, a four-step approach is typically useful:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-101" restype="x-paragraph">
+        <source>The last two example exercises of this chapter demonstrate the application of this strategy.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-102" restype="x-example-subsection-title">
+        <source>Example 13.5: Calculation of Equilibrium Concentrations</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-103" restype="x-example-paragraph">
+        <source>Under certain conditions, the equilibrium constant K<g id="4" ctype="x-sub">c</g> for the decomposition of PCl<g id="5" ctype="x-sub">5</g>(<g id="1" ctype="x-italic">g</g>) into PCl<g id="6" ctype="x-sub">3</g>(<g id="2" ctype="x-italic">g</g>) and Cl<g id="7" ctype="x-sub">2</g>(<g id="3" ctype="x-italic">g</g>) is 0.0211.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-104" restype="x-example-paragraph">
+        <source>What are the equilibrium concentrations of PCl<g id="2" ctype="x-sub">5</g>, PCl<g id="3" ctype="x-sub">3</g>, and Cl<g id="4" ctype="x-sub">2</g> in a mixture that initially contained only PCl<g id="5" ctype="x-sub">5</g> at a concentration of 1.00 <g id="1" ctype="x-italic">M</g>?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-105" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-106" restype="x-example-paragraph">
+        <source>Use the stepwise process described earlier.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-107" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Determine the direction the reaction proceeds.</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-108" restype="x-example-paragraph">
+        <source>The balanced equation for the decomposition of PCl<g id="1" ctype="x-sub">5</g> is</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-109" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:22]]" ctype="x-equation"/>{id="fs-idp154661952"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-110" restype="x-example-paragraph">
+        <source>Because only the reactant is present initially Q<g id="1" ctype="x-sub">c</g> = 0 and the reaction will proceed to the right.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-111" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Develop an ICE table.</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-112" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Solve for the change and the equilibrium concentrations.</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-113" restype="x-example-paragraph">
+        <source>Substituting the equilibrium concentrations into the equilibrium constant equation gives</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-114" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:23]]" ctype="x-equation"/>{id="fs-idp164721504"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-115" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:24]]" ctype="x-equation"/>{id="fs-idp53365296"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-116" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:25]]" ctype="x-equation"/>{id="fs-idp149459776"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-117" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:26]]" ctype="x-equation"/>{id="fs-idp140218208"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-118" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:27]]" ctype="x-equation"/>{id="fs-idp163277840"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-119" restype="x-example-paragraph">
+        <source>[Appendix B]{doc="m68860"} shows an equation of the form <g id="1" ctype="x-italic">ax</g><g id="5" ctype="x-sup">2</g> + <g id="2" ctype="x-italic">bx</g> + <g id="3" ctype="x-italic">c</g> = 0 can be rearranged to solve for <g id="4" ctype="x-italic">x</g>:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-120" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:28]]" ctype="x-equation"/>{id="fs-idp334007984"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-121" restype="x-example-paragraph">
+        <source>In this case, <g id="1" ctype="x-italic">a</g> = 1, <g id="2" ctype="x-italic">b</g> = 0.0211, and <g id="3" ctype="x-italic">c</g> = −0.0211.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-122" restype="x-example-paragraph">
+        <source>Substituting the appropriate values for <g id="1" ctype="x-italic">a</g>, <g id="2" ctype="x-italic">b</g>, and <g id="3" ctype="x-italic">c</g> yields:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-123" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:29]]" ctype="x-equation"/>{id="fs-idp226282512"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-124" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:30]]" ctype="x-equation"/>{id="fs-idp87874832"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-125" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:31]]" ctype="x-equation"/>{id="fs-idp272647552"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-126" restype="x-example-paragraph">
+        <source>The two roots of the quadratic are, therefore,</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-127" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:32]]" ctype="x-equation"/>{id="fs-idp157645520"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-128" restype="x-example-paragraph">
+        <source>and</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-129" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:33]]" ctype="x-equation"/>{id="fs-idp43934576"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-130" restype="x-example-paragraph">
+        <source>For this scenario, only the positive root is physically meaningful (concentrations are either zero or positive), and so <g id="1" ctype="x-italic">x</g> = 0.135 <g id="2" ctype="x-italic">M</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-131" restype="x-example-paragraph">
+        <source>The equilibrium concentrations are</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-132" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:34]]" ctype="x-equation"/>{id="fs-idp178654352"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-133" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:35]]" ctype="x-equation"/>{id="fs-idp220490768"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-134" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:36]]" ctype="x-equation"/>{id="fs-idp86894240"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-135" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-italic">Confirm the calculated equilibrium concentrations.</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-136" restype="x-example-paragraph">
+        <source>Substitution into the expression for K<g id="1" ctype="x-sub">c</g> (to check the calculation) gives</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-137" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:37]]" ctype="x-equation"/>{id="fs-idp129485024"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-138" restype="x-example-paragraph">
+        <source>The equilibrium constant calculated from the equilibrium concentrations is equal to the value of K<g id="1" ctype="x-sub">c</g> given in the problem (when rounded to the proper number of significant figures).</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-139" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-140" restype="x-example-paragraph">
+        <source>Acetic acid, CH<g id="1" ctype="x-sub">3</g>CO<g id="2" ctype="x-sub">2</g>H, reacts with ethanol, C<g id="3" ctype="x-sub">2</g>H<g id="4" ctype="x-sub">5</g>OH, to form water and ethyl acetate, CH<g id="5" ctype="x-sub">3</g>CO<g id="6" ctype="x-sub">2</g>C<g id="7" ctype="x-sub">2</g>H<g id="8" ctype="x-sub">5</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-141" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:38]]" ctype="x-equation"/>{id="fs-idp176324304"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-142" restype="x-example-paragraph">
+        <source>The equilibrium constant for this reaction with dioxane as a solvent is 4.0.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-143" restype="x-example-paragraph">
+        <source>What are the equilibrium concentrations for a mixture that is initially 0.15 <g id="1" ctype="x-italic">M</g> in CH<g id="5" ctype="x-sub">3</g>CO<g id="6" ctype="x-sub">2</g>H, 0.15 <g id="2" ctype="x-italic">M</g> in C<g id="7" ctype="x-sub">2</g>H<g id="8" ctype="x-sub">5</g>OH, 0.40 <g id="3" ctype="x-italic">M</g> in CH<g id="9" ctype="x-sub">3</g>CO<g id="10" ctype="x-sub">2</g>C<g id="11" ctype="x-sub">2</g>H<g id="12" ctype="x-sub">5</g>, and 0.40 <g id="4" ctype="x-italic">M</g> in H<g id="13" ctype="x-sub">2</g>O?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-144" restype="x-example-paragraph">
+        <source>[CH<g id="5" ctype="x-sub">3</g>CO<g id="6" ctype="x-sub">2</g>H] = 0.18 <g id="1" ctype="x-italic">M</g>, [C<g id="7" ctype="x-sub">2</g>H<g id="8" ctype="x-sub">5</g>OH] = 0.18 <g id="2" ctype="x-italic">M</g>, [CH<g id="9" ctype="x-sub">3</g>CO<g id="10" ctype="x-sub">2</g>C<g id="11" ctype="x-sub">2</g>H<g id="12" ctype="x-sub">5</g>] = 0.37 <g id="3" ctype="x-italic">M</g>, [H<g id="13" ctype="x-sub">2</g>O] = 0.37 <g id="4" ctype="x-italic">M</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-145" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-146" restype="x-example-paragraph">
+        <source>A 1.00-L flask is filled with 1.00 mole of H<g id="1" ctype="x-sub">2</g> and 2.00 moles of I<g id="2" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-147" restype="x-example-paragraph">
+        <source>The value of the equilibrium constant for the reaction of hydrogen and iodine reacting to form hydrogen iodide is 50.5 under the given conditions.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-148" restype="x-example-paragraph">
+        <source>What are the equilibrium concentrations of H<g id="1" ctype="x-sub">2</g>, I<g id="2" ctype="x-sub">2</g>, and HI in moles/L?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-149" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:39]]" ctype="x-equation"/>{id="fs-idp140225920"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-150" restype="x-example-paragraph">
+        <source>[H<g id="4" ctype="x-sub">2</g>] = 0.06 <g id="1" ctype="x-italic">M</g>, [I<g id="5" ctype="x-sub">2</g>] = 1.06 <g id="2" ctype="x-italic">M</g>, [HI] = 1.88 <g id="3" ctype="x-italic">M</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-151" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-152" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-153" restype="x-paragraph">
+        <source>[CH<g id="5" ctype="x-sub">3</g>CO<g id="6" ctype="x-sub">2</g>H] = 0.18 <g id="1" ctype="x-italic">M</g>, [C<g id="7" ctype="x-sub">2</g>H<g id="8" ctype="x-sub">5</g>OH] = 0.18 <g id="2" ctype="x-italic">M</g>, [CH<g id="9" ctype="x-sub">3</g>CO<g id="10" ctype="x-sub">2</g>C<g id="11" ctype="x-sub">2</g>H<g id="12" ctype="x-sub">5</g>] = 0.37 <g id="3" ctype="x-italic">M</g>, [H<g id="13" ctype="x-sub">2</g>O] = 0.37 <g id="4" ctype="x-italic">M</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-154" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-155" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-156" restype="x-paragraph">
+        <source>[H<g id="4" ctype="x-sub">2</g>] = 0.06 <g id="1" ctype="x-italic">M</g>, [I<g id="5" ctype="x-sub">2</g>] = 1.06 <g id="2" ctype="x-italic">M</g>, [HI] = 1.88 <g id="3" ctype="x-italic">M</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-157" restype="x-example-subsection-title">
+        <source>Example 13.6: Calculation of Equilibrium Concentrations Using an Algebra-Simplifying Assumption</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-158" restype="x-example-paragraph">
+        <source>What are the concentrations at equilibrium of a 0.15 <g id="1" ctype="x-italic">M</g> solution of HCN?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-159" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:40]]" ctype="x-equation"/>{id="fs-idm7657280"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-160" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-161" restype="x-example-paragraph">
+        <source>Using “<g id="1" ctype="x-italic">x</g>” to represent the concentration of each product at equilibrium gives this ICE table.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-162" restype="x-example-paragraph">
+        <source>Substitute the equilibrium concentration terms into the K<g id="1" ctype="x-sub">c</g> expression</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-163" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:41]]" ctype="x-equation"/>{id="fs-idp73418848"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-164" restype="x-example-paragraph">
+        <source>rearrange to the quadratic form and solve for <g id="1" ctype="x-italic">x</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-165" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:42]]" ctype="x-equation"/>{id="fs-idm107468128"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-166" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:43]]" ctype="x-equation"/>{id="fs-idp64062640"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-167" restype="x-example-paragraph">
+        <source>Thus [H<g id="6" ctype="x-sup">+</g>] = [CN<g id="7" ctype="x-sup">–</g>] = <g id="2" ctype="x-italic">x</g> = 8.6 <x id="1" equiv-text="[[EQ:68]]" ctype="x-equation"/> 10<g id="8" ctype="x-sup">–6</g> <g id="3" ctype="x-italic">M</g> and [HCN] = 0.15 – <g id="4" ctype="x-italic">x</g> = 0.15 <g id="5" ctype="x-italic">M</g>.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-168" restype="x-example-paragraph">
+        <source>Note in this case that the change in concentration is significantly less than the initial concentration (a consequence of the small <g id="1" ctype="x-italic">K</g>), and so the initial concentration experiences a negligible change:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-169" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:44]]" ctype="x-equation"/>{id="fs-idm475573296"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-170" restype="x-example-paragraph">
+        <source>This approximation allows for a more expedient mathematical approach to the calculation that avoids the need to solve for the roots of a quadratic equation:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-171" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:45]]" ctype="x-equation"/>{id="fs-idm85563776"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-172" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:46]]" ctype="x-equation"/>{id="fs-idm30961472"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-173" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:47]]" ctype="x-equation"/>{id="fs-idp78338656"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-174" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:48]]" ctype="x-equation"/>{id="fs-idm27824720"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-175" restype="x-example-paragraph">
+        <source>The value of <g id="1" ctype="x-italic">x</g> calculated is, indeed, much less than the initial concentration</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-176" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:49]]" ctype="x-equation"/>{id="fs-idm477300048"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-177" restype="x-example-paragraph">
+        <source>and so the approximation was justified.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-178" restype="x-example-paragraph">
+        <source>If this simplified approach were to yield a value for <g id="1" ctype="x-italic">x</g> that did <g id="2" ctype="x-italic">not</g> justify the approximation, the calculation would need to be repeated without making the approximation.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-179" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-180" restype="x-example-paragraph">
+        <source>What are the equilibrium concentrations in a 0.25 <g id="1" ctype="x-italic">M</g> NH<g id="2" ctype="x-sub">3</g> solution?</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-181" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:50]]" ctype="x-equation"/>{id="fs-idm103584160"}</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-182" restype="x-example-paragraph">
+        <source><x id="1" equiv-text="[[EQ:69]]" ctype="x-equation"/> [NH<g id="3" ctype="x-sub">3</g>] = 0.25 <g id="2" ctype="x-italic">M</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-183" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-184" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-185" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:69]]" ctype="x-equation"/> [NH<g id="3" ctype="x-sub">3</g>] = 0.25 <g id="2" ctype="x-italic">M</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-186" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-187" restype="x-paragraph">
+        <source>Calculating values for equilibrium constants and/or equilibrium concentrations is of practical benefit to many applications.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-188" restype="x-paragraph">
+        <source>A mathematical strategy that uses initial concentrations, changes in concentrations, and equilibrium concentrations (and goes by the acronym ICE) is useful for several types of equilibrium calculations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-189" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-190" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp78773232} A reaction is represented by this equation: <x id="1" equiv-text="[[EQ:70]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-191" restype="x-paragraph">
+        <source>(a) Write the mathematical expression for the equilibrium constant.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-192" restype="x-paragraph">
+        <source>(b) Using concentrations ≤1 <g id="1" ctype="x-italic">M</g>, identify two sets of concentrations that describe a mixture of A, B, and C at equilibrium.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-193" restype="x-paragraph">
+        <source>:::answer <x id="1" equiv-text="[[EQ:71]]" ctype="x-equation"/> [A] = 0.1 <g id="2" ctype="x-italic">M</g>, [B] = 0.1 <g id="3" ctype="x-italic">M</g>, [C] = 1 <g id="4" ctype="x-italic">M</g>; and [A] = 0.01, [B] = 0.250, [C] = 0.791.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-194" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp235853120} A reaction is represented by this equation: <x id="1" equiv-text="[[EQ:72]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-195" restype="x-paragraph">
+        <source>(a) Write the mathematical expression for the equilibrium constant.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-196" restype="x-paragraph">
+        <source>(b) Using concentrations of ≤1 <g id="1" ctype="x-italic">M</g>, identify two sets of concentrations that describe a mixture of W, X, and Y at equilibrium.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-197" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp288474752} What is the value of the equilibrium constant at 500 °C for the formation of NH<g id="1" ctype="x-sub">3</g> according to the following equation?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-198" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:73]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-199" restype="x-paragraph">
+        <source>An equilibrium mixture of NH<g id="8" ctype="x-sub">3</g>(<g id="2" ctype="x-italic">g</g>), H<g id="9" ctype="x-sub">2</g>(<g id="3" ctype="x-italic">g</g>), and N<g id="10" ctype="x-sub">2</g>(<g id="4" ctype="x-italic">g</g>) at 500 °C was found to contain 1.35 <g id="5" ctype="x-italic">M</g> H<g id="11" ctype="x-sub">2</g>, 1.15 <g id="6" ctype="x-italic">M</g> N<g id="12" ctype="x-sub">2</g>, and 4.12 <x id="1" equiv-text="[[EQ:74]]" ctype="x-equation"/> 10<g id="14" ctype="x-sup">−1</g> <g id="7" ctype="x-italic">M</g> NH<g id="13" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-200" restype="x-paragraph">
+        <source>:::answer K<g id="2" ctype="x-sub">c</g> = 6.00 <x id="1" equiv-text="[[EQ:75]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">−2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-201" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp220009680} Hydrogen is prepared commercially by the reaction of methane and water vapor at elevated temperatures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-202" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:76]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-203" restype="x-paragraph">
+        <source>What is the equilibrium constant for the reaction if a mixture at equilibrium contains gases with the following concentrations: CH<g id="5" ctype="x-sub">4</g>, 0.126 <g id="1" ctype="x-italic">M</g>; H<g id="6" ctype="x-sub">2</g>O, 0.242 <g id="2" ctype="x-italic">M</g>; CO, 0.126 <g id="3" ctype="x-italic">M</g>; H<g id="7" ctype="x-sub">2</g> 1.15 <g id="4" ctype="x-italic">M</g>, at a temperature of 760 °C?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-204" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp343440336} A 0.72-mol sample of PCl<g id="1" ctype="x-sub">5</g> is put into a 1.00-L vessel and heated.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-205" restype="x-paragraph">
+        <source>At equilibrium, the vessel contains 0.40 mol of PCl<g id="3" ctype="x-sub">3</g>(<g id="1" ctype="x-italic">g</g>) and 0.40 mol of Cl<g id="4" ctype="x-sub">2</g>(<g id="2" ctype="x-italic">g</g>).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-206" restype="x-paragraph">
+        <source>Calculate the value of the equilibrium constant for the decomposition of PCl<g id="1" ctype="x-sub">5</g> to PCl<g id="2" ctype="x-sub">3</g> and Cl<g id="3" ctype="x-sub">2</g> at this temperature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-207" restype="x-paragraph">
+        <source>:::answer K<g id="1" ctype="x-sub">c</g> = 0.50</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-208" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp99340080} At 1 atm and 25 °C, NO<g id="2" ctype="x-sub">2</g> with an initial concentration of 1.00 <g id="1" ctype="x-italic">M</g> is 0.0033% decomposed into NO and O<g id="3" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-209" restype="x-paragraph">
+        <source>Calculate the value of the equilibrium constant for the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-210" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:77]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-211" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp70745776} Calculate the value of the equilibrium constant K<g id="2" ctype="x-sub">P</g> for the reaction <x id="1" equiv-text="[[EQ:78]]" ctype="x-equation"/> from these equilibrium pressures: NO, 0.050 atm; Cl<g id="3" ctype="x-sub">2</g>, 0.30 atm; NOCl, 1.2 atm.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-212" restype="x-paragraph">
+        <source>:::answer K<g id="2" ctype="x-sub">P</g> = 1.9 <x id="1" equiv-text="[[EQ:79]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-213" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp95397216} When heated, iodine vapor dissociates according to this equation:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-214" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:80]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-215" restype="x-paragraph">
+        <source>At 1274 K, a sample exhibits a partial pressure of I<g id="1" ctype="x-sub">2</g> of 0.1122 atm and a partial pressure due to I atoms of 0.1378 atm.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-216" restype="x-paragraph">
+        <source>Determine the value of the equilibrium constant, K<g id="1" ctype="x-sub">P</g>, for the decomposition at 1274 K.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-217" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp148498768} A sample of ammonium chloride was heated in a closed container.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-218" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:81]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-219" restype="x-paragraph">
+        <source>At equilibrium, the pressure of NH<g id="2" ctype="x-sub">3</g>(<g id="1" ctype="x-italic">g</g>) was found to be 1.75 atm.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-220" restype="x-paragraph">
+        <source>What is the value of the equilibrium constant K<g id="1" ctype="x-sub">P</g> for the decomposition at this temperature?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-221" restype="x-paragraph">
+        <source>:::answer K<g id="1" ctype="x-sub">P</g> = 3.06</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-222" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp165909856} At a temperature of 60 °C, the vapor pressure of water is 0.196 atm.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-223" restype="x-paragraph">
+        <source>What is the value of the equilibrium constant K<g id="1" ctype="x-sub">P</g> for the vaporization equilibrium at 60 °C?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-224" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:82]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-225" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp189641568} Complete the following partial ICE tables.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-226" restype="x-paragraph">
+        <source>(a)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-227" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:83]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-228" restype="x-paragraph">
+        <source>(b)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-229" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:84]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-230" restype="x-paragraph">
+        <source>(c)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-231" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:85]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-232" restype="x-paragraph">
+        <source>(d)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-233" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:86]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-234" restype="x-paragraph">
+        <source>(e)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-235" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:87]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-236" restype="x-paragraph">
+        <source>(f)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-237" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:88]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-238" restype="x-paragraph">
+        <source>:::answer (a) −2<g id="4" ctype="x-italic">x</g>, +2<g id="5" ctype="x-italic">x</g>; (b) <x id="1" equiv-text="[[EQ:89]]" ctype="x-equation"/>, <x id="2" equiv-text="[[EQ:90]]" ctype="x-equation"/>, −2<g id="6" ctype="x-italic">x</g>; (c) −2<g id="7" ctype="x-italic">x</g>, 3<g id="8" ctype="x-italic">x</g>; (d) <g id="9" ctype="x-italic">x</g>, –<g id="10" ctype="x-italic">x</g>, −3<g id="11" ctype="x-italic">x</g>; (e) +<g id="12" ctype="x-italic">x</g>; (f) <x id="3" equiv-text="[[EQ:91]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-239" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp155255936} Complete the following partial ICE tables.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-240" restype="x-paragraph">
+        <source>(a)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-241" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:92]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-242" restype="x-paragraph">
+        <source>(b)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-243" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:93]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-244" restype="x-paragraph">
+        <source>(c)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-245" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:94]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-246" restype="x-paragraph">
+        <source>(d)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-247" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:95]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-248" restype="x-paragraph">
+        <source>(e)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-249" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:96]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-250" restype="x-paragraph">
+        <source>(f)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-251" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:97]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-252" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp116788016} Why are there no changes specified for Ni in [↗]{ref="fs-idp189641568"}, part (f)?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-253" restype="x-paragraph">
+        <source>What property of Ni does change?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-254" restype="x-paragraph">
+        <source>:::answer Activities of pure crystalline solids equal 1 and are constant; however, the mass of Ni does change.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-255" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp76682304} Why are there no changes specified for NH<g id="1" ctype="x-sub">4</g>HS in [↗]{ref="fs-idp155255936"}, part (e)?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-256" restype="x-paragraph">
+        <source>What property of NH<g id="1" ctype="x-sub">4</g>HS does change?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-257" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp99980832} Analysis of the gases in a sealed reaction vessel containing NH<g id="3" ctype="x-sub">3</g>, N<g id="4" ctype="x-sub">2</g>, and H<g id="5" ctype="x-sub">2</g> at equilibrium at 400 °C established the concentration of N<g id="6" ctype="x-sub">2</g> to be 1.2 <g id="1" ctype="x-italic">M</g> and the concentration of H<g id="7" ctype="x-sub">2</g> to be 0.24 <g id="2" ctype="x-italic">M</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-258" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:98]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-259" restype="x-paragraph">
+        <source>Calculate the equilibrium molar concentration of NH<g id="1" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-260" restype="x-paragraph">
+        <source>:::answer [NH<g id="3" ctype="x-sub">3</g>] = 9.1 <x id="1" equiv-text="[[EQ:99]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">−2</g> <g id="2" ctype="x-italic">M</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-261" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp120770528} Calculate the number of moles of HI that are at equilibrium with 1.25 mol of H<g id="1" ctype="x-sub">2</g> and 1.25 mol of I<g id="2" ctype="x-sub">2</g> in a 5.00−L flask at 448 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-262" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:100]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-263" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp316125088} What is the pressure of BrCl in an equilibrium mixture of Cl<g id="1" ctype="x-sub">2</g>, Br<g id="2" ctype="x-sub">2</g>, and BrCl if the pressure of Cl<g id="3" ctype="x-sub">2</g> in the mixture is 0.115 atm and the pressure of Br<g id="4" ctype="x-sub">2</g> in the mixture is 0.450 atm?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-264" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:101]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-265" restype="x-paragraph">
+        <source>:::answer <g id="2" ctype="x-italic">P</g><g id="3" ctype="x-sub">BrCl</g> = 4.9 <x id="1" equiv-text="[[EQ:102]]" ctype="x-equation"/> 10<g id="4" ctype="x-sup">−2</g> atm</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-266" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp193760224} What is the pressure of CO<g id="1" ctype="x-sub">2</g> in a mixture at equilibrium that contains 0.50 atm H<g id="2" ctype="x-sub">2</g>, 2.0 atm of H<g id="3" ctype="x-sub">2</g>O, and 1.0 atm of CO at 990 °C?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-267" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:103]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-268" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp170146416} Cobalt metal can be prepared by reducing cobalt(II) oxide with carbon monoxide.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-269" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:104]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-270" restype="x-paragraph">
+        <source>What concentration of CO remains in an equilibrium mixture with [CO<g id="2" ctype="x-sub">2</g>] = 0.100 <g id="1" ctype="x-italic">M</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-271" restype="x-paragraph">
+        <source>:::answer [CO] = 2.04 <x id="1" equiv-text="[[EQ:105]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">−4</g> <g id="2" ctype="x-italic">M</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-272" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp277387888} Carbon reacts with water vapor at elevated temperatures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-273" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:106]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-274" restype="x-paragraph">
+        <source>Assuming a reaction mixture initially contains only reactants, what is the concentration of CO in an equilibrium mixture with [H<g id="2" ctype="x-sub">2</g>O] = 0.500 <g id="1" ctype="x-italic">M</g> at 1000 °C?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-275" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp151659712} Sodium sulfate 10−hydrate, Na<g id="1" ctype="x-sub">2</g>SO<g id="2" ctype="x-sub">4</g>·10H<g id="3" ctype="x-sub">2</g>O, dehydrates according to the equation</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-276" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:107]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-277" restype="x-paragraph">
+        <source>What is the pressure of water vapor at equilibrium with a mixture of Na<g id="1" ctype="x-sub">2</g>SO<g id="2" ctype="x-sub">4</g>·10H<g id="3" ctype="x-sub">2</g>O and NaSO<g id="4" ctype="x-sub">4</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-278" restype="x-paragraph">
+        <source>:::answer <x id="1" equiv-text="[[EQ:108]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-279" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp97213088} Calcium chloride 6−hydrate, CaCl<g id="1" ctype="x-sub">2</g>·6H<g id="2" ctype="x-sub">2</g>O, dehydrates according to the equation</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-280" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:109]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-281" restype="x-paragraph">
+        <source>What is the pressure of water vapor at equilibrium with a mixture of CaCl<g id="1" ctype="x-sub">2</g>·6H<g id="2" ctype="x-sub">2</g>O and CaCl<g id="3" ctype="x-sub">2</g> at 25 °C?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-282" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp210607184} A student solved the following problem and found the equilibrium concentrations to be [SO<g id="4" ctype="x-sub">2</g>] = 0.590 <g id="1" ctype="x-italic">M</g>, [O<g id="5" ctype="x-sub">2</g>] = 0.0450 <g id="2" ctype="x-italic">M</g>, and [SO<g id="6" ctype="x-sub">3</g>] = 0.260 <g id="3" ctype="x-italic">M</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-283" restype="x-paragraph">
+        <source>How could this student check the work without reworking the problem?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-284" restype="x-paragraph">
+        <source>The problem was: For the following reaction at 600 °C:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-285" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:110]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-286" restype="x-paragraph">
+        <source>:::answer Calculate <g id="1" ctype="x-italic">Q</g> based on the calculated concentrations and see if it is equal to K<g id="2" ctype="x-sub">c</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-287" restype="x-paragraph">
+        <source>Because <g id="1" ctype="x-italic">Q</g> does equal 4.32, the system must be at equilibrium.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-288" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp359131456} A student solved the following problem and found [N<g id="2" ctype="x-sub">2</g>O<g id="3" ctype="x-sub">4</g>] = 0.16 <g id="1" ctype="x-italic">M</g> at equilibrium.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-289" restype="x-paragraph">
+        <source>How could this student recognize that the answer was wrong without reworking the problem?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-290" restype="x-paragraph">
+        <source>The problem was: What is the equilibrium concentration of N<g id="2" ctype="x-sub">2</g>O<g id="3" ctype="x-sub">4</g> in a mixture formed from a sample of NO<g id="4" ctype="x-sub">2</g> with a concentration of 0.10 <g id="1" ctype="x-italic">M</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-291" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:111]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-292" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp91440288} Assume that the change in concentration of N<g id="1" ctype="x-sub">2</g>O<g id="2" ctype="x-sub">4</g> is small enough to be neglected in the following problem.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-293" restype="x-paragraph">
+        <source>(a) Calculate the equilibrium concentration of both species in 1.00 L of a solution prepared from 0.129 mol of N<g id="1" ctype="x-sub">2</g>O<g id="2" ctype="x-sub">4</g> with chloroform as the solvent.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-294" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:112]]" ctype="x-equation"/> in chloroform</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-295" restype="x-paragraph">
+        <source>(b) Confirm that the change is small enough to be neglected.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-296" restype="x-paragraph">
+        <source>:::answer (a) [NO<g id="5" ctype="x-sub">2</g>] = 1.17 <x id="1" equiv-text="[[EQ:113]]" ctype="x-equation"/> 10<g id="10" ctype="x-sup">−3</g> <g id="2" ctype="x-italic">M</g>; [N<g id="6" ctype="x-sub">2</g>O<g id="7" ctype="x-sub">4</g>] = 0.128 <g id="3" ctype="x-italic">M</g>; (b) The assumption that <g id="4" ctype="x-italic">x</g> is negligibly small compared to 0.129 is confirmed by comparing the initial concentration of the N<g id="8" ctype="x-sub">2</g>O<g id="9" ctype="x-sub">4</g> to its concentration at equilibrium (they differ by just 1 in the least significant digit’s place).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-297" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp145400352} Assume that the change in concentration of COCl<g id="1" ctype="x-sub">2</g> is small enough to be neglected in the following problem.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-298" restype="x-paragraph">
+        <source>(a) Calculate the equilibrium concentration of all species in an equilibrium mixture that results from the decomposition of COCl<g id="2" ctype="x-sub">2</g> with an initial concentration of 0.3166 <g id="1" ctype="x-italic">M</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-299" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:114]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-300" restype="x-paragraph">
+        <source>(b) Confirm that the change is small enough to be neglected.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-301" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm19235840} Assume that the change in pressure of H<g id="1" ctype="x-sub">2</g>S is small enough to be neglected in the following problem.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-302" restype="x-paragraph">
+        <source>(a) Calculate the equilibrium pressures of all species in an equilibrium mixture that results from the decomposition of H<g id="1" ctype="x-sub">2</g>S with an initial pressure of 0.824 atm.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-303" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:115]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-304" restype="x-paragraph">
+        <source>(b) Confirm that the change is small enough to be neglected.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-305" restype="x-paragraph">
+        <source>:::answer (a) [H<g id="2" ctype="x-sub">2</g>S] = 0.810 atm, [H<g id="3" ctype="x-sub">2</g>] = 0.014 atm, [S<g id="4" ctype="x-sub">2</g>] = 0.0072 atm; (b) The assumption that 2<g id="1" ctype="x-italic">x</g> is negligibly small compared to 0.824 is confirmed by comparing the initial concentration of the H<g id="5" ctype="x-sub">2</g>S to its concentration at equilibrium (0.824 atm versus 0.810 atm, a difference of less than 2%).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-306" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp124881392} What are all concentrations after a mixture that contains [H<g id="3" ctype="x-sub">2</g>O] = 1.00 <g id="1" ctype="x-italic">M</g> and [Cl<g id="4" ctype="x-sub">2</g>O] = 1.00 <g id="2" ctype="x-italic">M</g> comes to equilibrium at 25 °C?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-307" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:116]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-308" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp55521216} What are the concentrations of PCl<g id="2" ctype="x-sub">5</g>, PCl<g id="3" ctype="x-sub">3</g>, and Cl<g id="4" ctype="x-sub">2</g> in an equilibrium mixture produced by the decomposition of a sample of pure PCl<g id="5" ctype="x-sub">5</g> with [PCl<g id="6" ctype="x-sub">5</g>] = 2.00 <g id="1" ctype="x-italic">M</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-309" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:117]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-310" restype="x-paragraph">
+        <source>:::answer [PCl<g id="4" ctype="x-sub">5</g>] = 1.80 <g id="1" ctype="x-italic">M</g>; [Cl<g id="5" ctype="x-sub">2</g>] = 0.195 <g id="2" ctype="x-italic">M</g>; [PCl<g id="6" ctype="x-sub">3</g>] = 0.195 <g id="3" ctype="x-italic">M</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-311" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp116933168} Calculate the number of grams of HI that are at equilibrium with 1.25 mol of H<g id="1" ctype="x-sub">2</g> and 63.5 g of iodine at 448 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-312" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:118]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-313" restype="x-paragraph">
+        <source>:::answer 507 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-314" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp307489856} Butane exists as two isomers, <g id="1" ctype="x-italic">n</g>−butane and isobutane.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-315" restype="x-paragraph">
+        <source>K<g id="1" ctype="x-sub">P</g> = 2.5 at 25 °C</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-316" restype="x-paragraph">
+        <source>What is the pressure of isobutane in a container of the two isomers at equilibrium with a total pressure of 1.22 atm?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-317" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp99670512} What is the minimum mass of CaCO<g id="1" ctype="x-sub">3</g> required to establish equilibrium at a certain temperature in a 6.50-L container if the equilibrium constant (K<g id="2" ctype="x-sub">c</g>) is 0.50 for the decomposition reaction of CaCO<g id="3" ctype="x-sub">3</g> at that temperature?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-318" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:119]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-319" restype="x-paragraph">
+        <source>:::answer 330 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-320" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp186517200} The equilibrium constant (K<g id="1" ctype="x-sub">c</g>) for this reaction is 1.60 at 990 °C:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-321" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:120]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-322" restype="x-paragraph">
+        <source>Calculate the number of moles of each component in the final equilibrium mixture obtained from adding 1.00 mol of H<g id="1" ctype="x-sub">2</g>, 2.00 mol of CO<g id="2" ctype="x-sub">2</g>, 0.750 mol of H<g id="3" ctype="x-sub">2</g>O, and 1.00 mol of CO to a 5.00-L container at 990 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-323" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp301926064} In a 3.0-L vessel, the following equilibrium partial pressures are measured: N<g id="2" ctype="x-sub">2</g>, 190 torr; H<g id="3" ctype="x-sub">2</g>, 317 torr; NH<g id="4" ctype="x-sub">3</g>, 1.00 <x id="1" equiv-text="[[EQ:121]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">3</g> torr.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-324" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:122]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-325" restype="x-paragraph">
+        <source>(a) How will the partial pressures of H<g id="1" ctype="x-sub">2</g>, N<g id="2" ctype="x-sub">2</g>, and NH<g id="3" ctype="x-sub">3</g> change if H<g id="4" ctype="x-sub">2</g> is removed from the system?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-326" restype="x-paragraph">
+        <source>Will they increase, decrease, or remain the same?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-327" restype="x-paragraph">
+        <source>(b) Hydrogen is removed from the vessel until the partial pressure of nitrogen, at equilibrium, is 250 torr.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-328" restype="x-paragraph">
+        <source>Calculate the partial pressures of the other substances under the new conditions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-329" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp291800000} The equilibrium constant (K<g id="1" ctype="x-sub">c</g>) for this reaction is 5.0 at a given temperature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-330" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:123]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-331" restype="x-paragraph">
+        <source>(a) On analysis, an equilibrium mixture of the substances present at the given temperature was found to contain 0.20 mol of CO, 0.30 mol of water vapor, and 0.90 mol of H<g id="1" ctype="x-sub">2</g> in a liter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-332" restype="x-paragraph">
+        <source>How many moles of CO<g id="1" ctype="x-sub">2</g> were there in the equilibrium mixture?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-333" restype="x-paragraph">
+        <source>(b) Maintaining the same temperature, additional H<g id="1" ctype="x-sub">2</g> was added to the system, and some water vapor was removed by drying.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-334" restype="x-paragraph">
+        <source>A new equilibrium mixture was thereby established containing 0.40 mol of CO, 0.30 mol of water vapor, and 1.2 mol of H<g id="1" ctype="x-sub">2</g> in a liter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-335" restype="x-paragraph">
+        <source>How many moles of CO<g id="1" ctype="x-sub">2</g> were in the new equilibrium mixture?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-336" restype="x-paragraph">
+        <source>Compare this with the quantity in part (a), and discuss whether the second value is reasonable.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-337" restype="x-paragraph">
+        <source>Explain how it is possible for the water vapor concentration to be the same in the two equilibrium solutions even though some vapor was removed before the second equilibrium was established.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-338" restype="x-paragraph">
+        <source>:::answer (a) 0.33 mol. (b) [CO<g id="2" ctype="x-sub">2</g>] = 0.50 <g id="1" ctype="x-italic">M</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-339" restype="x-paragraph">
+        <source>Added H<g id="1" ctype="x-sub">2</g> forms some water as a result of a shift to the left after H<g id="2" ctype="x-sub">2</g> is added.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-340" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp157265136} Antimony pentachloride decomposes according to this equation:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-341" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:124]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-342" restype="x-paragraph">
+        <source>An equilibrium mixture in a 5.00-L flask at 448 °C contains 3.85 g of SbCl<g id="1" ctype="x-sub">5</g>, 9.14 g of SbCl<g id="2" ctype="x-sub">3</g>, and 2.84 g of Cl<g id="3" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-343" restype="x-paragraph">
+        <source>How many grams of each will be found if the mixture is transferred into a 2.00-L flask at the same temperature?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-344" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp121255200} Consider the equilibrium</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-345" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:125]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-346" restype="x-paragraph">
+        <source>(a) What is the expression for the equilibrium constant (K<g id="1" ctype="x-sub">c</g>) of the reaction?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-347" restype="x-paragraph">
+        <source>(b) How must the concentration of NH<g id="1" ctype="x-sub">3</g> change to reach equilibrium if the reaction quotient is less than the equilibrium constant?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-348" restype="x-paragraph">
+        <source>(c) If the reaction were at equilibrium, how would an increase in the volume of the reaction vessel affect the pressure of NO<g id="1" ctype="x-sub">2</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-349" restype="x-paragraph">
+        <source>(d) If the change in the pressure of NO<g id="1" ctype="x-sub">2</g> is 28 torr as a mixture of the four gases reaches equilibrium, how much will the pressure of O<g id="2" ctype="x-sub">2</g> change?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-350" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:126]]" ctype="x-equation"/> (b) [NH<g id="3" ctype="x-sub">3</g>] must increase for Q<g id="4" ctype="x-sub">c</g> to reach K<g id="5" ctype="x-sub">c</g>. (c) The increase in system volume would lower the partial pressures of all reactants (including NO<g id="6" ctype="x-sub">2</g>). (d) <x id="2" equiv-text="[[EQ:127]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-351" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp222775760} The binding of oxygen by hemoglobin (Hb), giving oxyhemoglobin (HbO<g id="1" ctype="x-sub">2</g>), is partially regulated by the concentration of H<g id="2" ctype="x-sub">3</g>O<g id="4" ctype="x-sup">+</g> and dissolved CO<g id="3" ctype="x-sub">2</g> in the blood.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-352" restype="x-paragraph">
+        <source>Although the equilibrium is complicated, it can be summarized as</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-353" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:128]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-354" restype="x-paragraph">
+        <source>(a) Write the equilibrium constant expression for this reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-355" restype="x-paragraph">
+        <source>(b) Explain why the production of lactic acid and CO<g id="1" ctype="x-sub">2</g> in a muscle during exertion stimulates release of O<g id="2" ctype="x-sub">2</g> from the oxyhemoglobin in the blood passing through the muscle.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-356" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp149802032} Liquid N<g id="1" ctype="x-sub">2</g>O<g id="2" ctype="x-sub">3</g> is dark blue at low temperatures, but the color fades and becomes greenish at higher temperatures as the compound decomposes to NO and NO<g id="3" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-357" restype="x-paragraph">
+        <source>At 25 °C, a value of K<g id="1" ctype="x-sub">P</g> = 1.91 has been established for this decomposition.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-358" restype="x-paragraph">
+        <source>If 0.236 moles of N<g id="4" ctype="x-sub">2</g>O<g id="5" ctype="x-sub">3</g> are placed in a 1.52-L vessel at 25 °C, calculate the equilibrium partial pressures of N<g id="6" ctype="x-sub">2</g>O<g id="7" ctype="x-sub">3</g>(<g id="1" ctype="x-italic">g</g>), NO<g id="8" ctype="x-sub">2</g>(<g id="2" ctype="x-italic">g</g>), and NO(<g id="3" ctype="x-italic">g</g>).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-359" restype="x-paragraph">
+        <source>:::answer <x id="1" equiv-text="[[EQ:129]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-360" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp303786512} A 1.00-L vessel at 400 °C contains the following equilibrium concentrations: N<g id="4" ctype="x-sub">2</g>, 1.00 <g id="1" ctype="x-italic">M</g>; H<g id="5" ctype="x-sub">2</g>, 0.50 <g id="2" ctype="x-italic">M</g>; and NH<g id="6" ctype="x-sub">3</g>, 0.25 <g id="3" ctype="x-italic">M</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-361" restype="x-paragraph">
+        <source>How many moles of hydrogen must be removed from the vessel to increase the concentration of nitrogen to 1.1 <g id="1" ctype="x-italic">M</g>?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-362" restype="x-paragraph">
+        <source>The equilibrium reaction is <x id="1" equiv-text="[[EQ:130]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,30 @@
+{
+  "module": "m68799",
+  "section": "13.3",
+  "chapter": 13,
+  "title": "Shifting Equilibria: Le Châtelier’s Principle",
+  "figures": {
+    "CNX_Chem_13_01_SuperSat": {
+      "number": "13.7",
+      "imagePath": "CNX_Chem_13_01_SuperSat.jpg",
+      "captionEn": "Opening a soft-drink bottle lowers the CO~2~ pressure above the beverage, shifting the dissolution equilibrium and releasing dissolved CO~2~ from the beverage. (credit: modification of work by “D Coetzee”/Flickr)",
+      "altText": "A bottle of soda sitting on the ground is shown with a large amount of fizz-filled liquid spewing out of the top."
+    },
+    "CNX_Chem_13_03_catalyst": {
+      "number": "13.8",
+      "imagePath": "CNX_Chem_13_03_catalyst.jpg",
+      "captionEn": "Reaction diagrams for an elementary process in the absence (red) and presence (blue) of a catalyst. The presence of catalyst lowers the activation energies of both the forward and reverse reactions but does not affect the value of the equilibrium constant.",
+      "altText": "A graph is shown labeled “Transition state.” The y-axis on the graph is labeled “Energy” and the x-axis is labeled “Extent of Reaction.” Two curves are plotted on the graph. Both start mid-way up the y-axis. The red curve has a steep initial slope as it increases, then reaches its peak where it meets a horizontal dotted line, then has a steep decline before leveling out. From the initial point to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a forward.” From the end point to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a reverse.” The second curve is less steep than the first and does not reach as high of a peak on the y-axis. It meets a separate horizontal dotted line at its peak, then declines at a similar rate to the first curve before leveling out with the first curve. From the initial point where the slope begins to increase to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a forward.” From the end point right as it levels out to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a reverse.”",
+      "class": "scaled-down"
+    },
+    "CNX_Chem_13_03_factory": {
+      "number": "13.9",
+      "imagePath": "CNX_Chem_13_03_factory.jpg",
+      "captionEn": "The figure shows a typical industrial setup for the commercial production of ammonia by the Haber-Bosch process. The process operates under conditions that stress the chemical equilibrium to favor product formation.",
+      "altText": "A diagram is shown that is composed of three main sections. The first section shows an intake pipe labeled with blue arrows and the terms, “N subscript 2, H subscript 2, feed gases,” and “Compressor.” This pipe leads to a large chamber with a turbine in the top section and a coil in the bottom section. From top to bottom, the sections of this chamber are labeled, “Heat exchanger,” “Catalyst chamber 400 to 500 degrees C,” “Catalyst,” “Heater,” and “Preheated feed gases.” One pipe leads from the top of this chamber with red arrows and is labeled, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” while another pipe leads to the bottom of the chamber and reads, “Compressor,” and has orange arrows going through it. These two pipes are connected to a square container that is labeled, “Heat exchanger,” and has red arrows going into it from the upper pipe, orange arrows going away from it to the lower pipe and into a third system. The pipes leading into and out of the heat exchanger are labeled, “Recycled N subscript 2, H subscript 2.” The third system shows a container with an interior zig-zag-shaped pipe that sits on a base that contains a curled pipe on a storage tank. From the top of the image to the bottom are the terms, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” “Condenser,” “Cold water in,” “Refrigeration,” “N H subscript 3 ( l ),” and “Storage” Blue arrows lead away from the base of this system and into the second system while other blue arrows lead into the system from the right side of the diagram and back out of the same chamber."
+    }
+  },
+  "counters": {
+    "figures": 9
+  }
+}

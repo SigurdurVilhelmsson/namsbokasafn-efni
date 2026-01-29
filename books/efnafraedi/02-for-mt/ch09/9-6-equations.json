@@ -1,0 +1,29 @@
+{
+  "module": "m68759",
+  "section": "9.6",
+  "chapter": 9,
+  "title": "Non-Ideal Gas Behavior",
+  "equations": {
+    "EQ:1": {
+      "latex": "{\\text{Z}=\\,\\frac{{\\text{molar volume of gas at same}\\,T\\,\\text{and}\\,P}}{{\\text{molar volume of ideal gas at same}\\,T\\,\\text{and}\\,P}}\\,={{{({\\frac{{P{V}_{m}}}{{RT}}})}}}_{{\\text{measured}}}}"
+    },
+    "EQ:2": {
+      "latex": "{\\frac{{{n}^{2}a}}{{{V}^{2}}},}"
+    },
+    "EQ:3": {
+      "latex": "{P=\\,\\frac{{nRT}}{V}\\,=\\,\\frac{{3.46\\,{\\text{mol}}\\,\\times \\,0.08206\\,\\text{L}\\,\\text{atm}\\,{{{\\text{mol}}}^{{\\text{−1}}}}\\,{{\\text{K}}^{{\\text{−1}}}}\\,\\times \\,502\\,\\text{K}}}{{4.25\\,\\text{L}}}\\,=33.5\\,\\text{atm}}"
+    },
+    "EQ:4": {
+      "latex": "{{({P+\\frac{{{n}^{2}a}}{{{V}^{2}}}})}\\,\\times \\,{({V-nb})}=nRT\\,\\longrightarrow \\,P=\\,\\frac{{nRT}}{{{({V-nb})}}}\\,-\\,\\frac{{{n}^{2}a}}{{{V}^{2}}}}"
+    },
+    "EQ:5": {
+      "latex": "{P=\\,\\frac{{3.46\\,\\text{mol}\\,\\times \\,0.08206\\,\\text{L}\\,\\text{atm}\\,{{\\text{mol}}}^{{\\text{−1}}}\\,{\\text{K}}^{{\\text{−1}}}\\,\\times \\,\\text{502 K}}}{{{({4.25\\,\\text{L}-3.46\\,\\text{mol}\\,\\times \\,0.0427\\,\\text{L}\\,{{\\text{mol}}}^{{\\text{−1}}}})}}}\\,-\\,\\frac{{{{{({3.46\\,\\text{mol}})}}}^{2}\\,\\times \\,3.59\\,{\\text{L}}^{2}\\,\\text{atm}\\,{{\\text{mol}}}^{2}}}{{{{{({4.25\\,\\text{L}})}}}^{2}}}}"
+    },
+    "EQ:6": {
+      "latex": "{\\text{Z}=\\,\\frac{{\\text{molar}\\,\\text{volume of gas at same}\\,T\\,\\text{and}\\,P}}{{\\text{molar volume of ideal gas at same}\\,T\\,\\text{and}\\,P}}\\,={{{({\\frac{{P\\,\\times \\,{V}_{m}}}{{R\\,\\times \\,T}}})}}}_{{\\text{measured}}}}"
+    },
+    "EQ:7": {
+      "latex": "{{({P+\\frac{{{n}^{2}a}}{{{V}^{2}}}})}\\,\\times \\,{({V-nb})}=nRT}"
+    }
+  }
+}

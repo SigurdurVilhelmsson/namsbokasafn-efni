@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68785" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Introduction</note>
+      <note>Section: intro</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Introduction</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-list-item">
+        <source>Chemical Reaction Rates</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Factors Affecting Reaction Rates</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Rate Laws</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-list-item">
+        <source>Integrated Rate Laws</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-list-item">
+        <source>Collision Theory</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-list-item">
+        <source>Reaction Mechanisms</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-list-item">
+        <source>Catalysis</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>![](CNX_Chem_12_00_Ectotherm.jpg){id="CNX_Chem_12_00_Ectotherm" class="splash" alt="A photograph shows the head and part of the body of a lizard on a rock in a well-lit area."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>*Figure 12.1: An agama lizard basks in the sun.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>As its body warms, the chemical reactions of its metabolism speed up.*{id="CNX_Chem_12_00_Ectotherm"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>The lizard in the photograph is not simply enjoying the sunshine or working on its tan.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>The heat from the sun’s rays is critical to the lizard’s survival.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>A warm lizard can move faster than a cold one because the chemical reactions that allow its muscles to move occur more rapidly at higher temperatures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source>A cold lizard is a slower lizard and an easier meal for predators.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>From baking a cake to determining the useful lifespan of a bridge, rates of chemical reactions play important roles in our understanding of processes that involve chemical changes.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>Two questions are typically posed when planning to carry out a chemical reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>The first is: “Will the reaction produce the desired products in useful quantities?” The second question is: “How rapidly will the reaction occur?” A third question is often asked when investigating reactions in greater detail: “What specific molecular-level processes take place as the reaction occurs?” Knowing the answer to this question is of practical importance when the yield or rate of a reaction needs to be controlled.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>The study of chemical kinetics concerns the second and third questions—that is, the rate at which a reaction yields products and the molecular-scale means by which a reaction occurs.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>This chapter examines the factors that influence the rates of chemical reactions, the mechanisms by which reactions proceed, and the quantitative techniques used to describe the rates at which reactions occur.</source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

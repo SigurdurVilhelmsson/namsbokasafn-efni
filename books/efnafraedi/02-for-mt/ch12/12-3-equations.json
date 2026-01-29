@@ -1,0 +1,447 @@
+{
+  "module": "m68789",
+  "section": "12.3",
+  "chapter": 12,
+  "title": "Rate Laws",
+  "equations": {
+    "EQ:1": {
+      "latex": "{aA+bB\\,\\longrightarrow \\,products}",
+      "id": "fs-idm248316432"
+    },
+    "EQ:2": {
+      "latex": "{\\text{rate}=k[A{{]}}^{m}[B{{]}}^{n}}",
+      "id": "fs-idm276589968"
+    },
+    "EQ:3": {
+      "latex": "{\\text{rate}=k{[{{\\text{H}}_{2}{\\text{O}}_{2}}]}}",
+      "id": "fs-idm204886480"
+    },
+    "EQ:4": {
+      "latex": "{\\text{rate}=k{{{[{{\\text{C}}_{4}{\\text{H}}_{6}}]}}}^{2}}",
+      "id": "fs-idm185553664"
+    },
+    "EQ:5": {
+      "latex": "{\\text{rate}=k{[{{\\text{H}}^{\\text{+}}}]}{[{{{\\text{OH}}}^{\\text{−}}}]}}",
+      "id": "fs-idm41933536"
+    },
+    "EQ:6": {
+      "latex": "{{{\\text{NO}}}_{\\text{2}}(g)+\\text{CO(}g)\\,\\longrightarrow \\,\\text{NO(}g)+{{\\text{CO}}}_{2}(g)}",
+      "id": "fs-idm189808080"
+    },
+    "EQ:7": {
+      "latex": "{\\text{rate}=k[{{{\\text{NO}}}_{2}}{{]}}^{m}{{{[{\\text{CO}}]}}}^{n}}",
+      "id": "fs-idm212887136"
+    },
+    "EQ:8": {
+      "latex": "{\\text{rate}=k[{{\\text{NO}}}_{2}{]}^{2}[\\text{CO}{{]}}^{0}=k{{[{{\\text{NO}}}_{2}]}}^{2}}",
+      "id": "fs-idm49710800"
+    },
+    "EQ:9": {
+      "latex": "{{\\text{H}}_{\\text{2}}(g)+2\\text{NO(}g)\\,\\longrightarrow \\,{\\text{N}}_{2}\\text{O(}g)+{\\text{H}}_{2}\\text{O(}g)}",
+      "id": "fs-idm122197664"
+    },
+    "EQ:10": {
+      "latex": "{{{\\text{CH}}}_{3}\\text{OH}+{{\\text{CH}}}_{3}{{\\text{CH}}}_{2}{{\\text{OCOCH}}}_{3}\\,\\longrightarrow \\,{{\\text{CH}}}_{3}{{\\text{OCOCH}}}_{3}+{{\\text{CH}}}_{3}{{\\text{CH}}}_{2}\\text{OH}}",
+      "id": "fs-idm155639824"
+    },
+    "EQ:11": {
+      "latex": "{\\text{rate}=k{[{{{\\text{CH}}}_{3}\\text{OH}}]}}",
+      "id": "fs-idm236204576"
+    },
+    "EQ:12": {
+      "latex": "{\\text{NO(}g)+{\\text{O}}_{3}(g)\\,\\longrightarrow \\,{{\\text{NO}}}_{\\text{2}}(g)+{\\text{O}}_{2}(g)}",
+      "id": "fs-idm215850976"
+    },
+    "EQ:13": {
+      "latex": "{\\text{rate}=k[\\text{NO}{{]}}^{m}[{\\text{O}}_{\\text{3}}{{]}}^{n}}",
+      "id": "fs-idm14888352"
+    },
+    "EQ:14": {
+      "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{1}{{{[{{\\text{O}}_{3}}]}}}^{1}=k{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}",
+      "id": "fs-idm236326672"
+    },
+    "EQ:15": {
+      "latex": "k=\\,\\frac{{\\text{rate}}}{{{[{\\text{NO}}]}{[{{\\text{O}}_{3}}]}}}=\\,\\frac{{6.60\\,\\times \\,{{10}}^{{−5}}\\,{{{\\text{mol L}}}^{{−1}}}{\\text{s}}^{{-1}}}}{{{({1.00\\,\\times \\,{{10}}^{{−6}}\\,{{{\\text{mol L}}}^{{−1}}}})}\\,(3.00\\,\\times \\,{{10}}^{{−6}}\\,\\text{mol}\\,{\\text{L}}^{{-1}})}}=\\text{2}.\\text{2}0\\,\\times \\,{10}^{7}\\,\\text{L}\\,{\\text{mol}}^{{-1}}{\\text{s}}^{{-1}}",
+      "id": "fs-idm208899344"
+    },
+    "EQ:16": {
+      "latex": "{{{\\text{CH}}}_{3}\\text{CHO(}g)\\,\\longrightarrow \\,{{\\text{CH}}}_{\\text{4}}(g)+\\text{CO(}g)}",
+      "id": "fs-idm196768496"
+    },
+    "EQ:17": {
+      "latex": "{\\text{2NO(}g)+{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,\\text{2NOCl(}g)}",
+      "id": "fs-idm275365520"
+    },
+    "EQ:18": {
+      "latex": "{\\text{rate}=k[{\\text{NO}}{{]}}^{m}{{{[{{{\\text{Cl}}}_{2}}]}}}^{n}}",
+      "id": "fs-idm220277104"
+    },
+    "EQ:19": {
+      "latex": "{\\frac{{{{\\text{rate}}}_{x}}}{{{{\\text{rate}}}_{y}}}\\,=\\,\\frac{{k{{\\text{[}\\text{NO}\\text{]}}}_{x}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{x}^{n}}}{{k{{\\text{[}\\text{NO}\\text{]}}}_{y}^{m}{{\\text{[}{{\\text{Cl}}}_{2}\\text{]}}}_{y}^{n}}}}",
+      "id": "fs-idm359376496"
+    },
+    "EQ:20": {
+      "latex": "{\\frac{{\\text{rate 3}}}{{\\text{rate 1}}}\\,=\\,\\frac{{0.00675}}{{0.00300}}\\,=\\,\\frac{{k(0.15{{)}}^{m}(0.10{{)}}^{n}}}{{k{{\\text{(0.10)}}}^{m}(0.10{{)}}^{n}}}}",
+      "id": "fs-idp81408128"
+    },
+    "EQ:21": {
+      "latex": "{\\frac{{0.00675}}{{0.00300}}\\,=\\,\\frac{{{{(0.15)}}^{m}}}{{{{(0.10)}}^{m}}}}",
+      "id": "fs-idm185610624"
+    },
+    "EQ:22": {
+      "latex": "{2.25={{{({1.5})}}}^{m}}",
+      "id": "fs-idm285203088"
+    },
+    "EQ:23": {
+      "latex": "\\text{ln}{({2.25})}=m\\text{ln}{({1.5})}\\frac{{\\text{ln}{({2.25})}}}{{\\text{ln}{({1.5})}}}=m2=m",
+      "id": "fs-idm222931920"
+    },
+    "EQ:24": {
+      "latex": "{{{1.5}}^{2}=2.25}",
+      "id": "fs-idm10561024"
+    },
+    "EQ:25": {
+      "latex": "{\\frac{{\\text{rate 2}}}{{\\text{rate 1}}}\\,=\\,\\frac{{0.00450}}{{0.00300}}\\,=\\,\\frac{{k(0.10{{)}}^{m}(0.15{{)}}^{n}}}{{k(0.10{{)}}^{m}(0.10{{)}}^{n}}}}",
+      "id": "fs-idp69093344"
+    },
+    "EQ:26": {
+      "latex": "{\\frac{{0.0045}}{{0.0030}}\\,=\\,\\frac{{{{{({0.15})}}}^{n}}}{{{{{({0.10})}}}^{n}}}}",
+      "id": "fs-idp5205776"
+    },
+    "EQ:27": {
+      "latex": "{1.5={{(1.5)}}^{n}}",
+      "id": "fs-idm97106784"
+    },
+    "EQ:28": {
+      "latex": "{\\text{rate}=k{{{[{\\text{NO}}]}}}^{m}{{{[{{{\\text{Cl}}}_{2}}]}}}^{n}=k{{{[{\\text{NO}}]}}}^{2}{[{{{\\text{Cl}}}_{2}}]}}",
+      "id": "fs-idm215496784"
+    },
+    "EQ:29": {
+      "latex": "0.00300\\,\\text{mol}\\,{\\text{L}}^{{-1}}\\,{\\text{s}}^{{−1}}=k{({0.10\\,\\text{mol}\\,\\text{L}{−1}})}2{({0.10\\,\\text{mol}\\,\\text{L}{−1}})}1k=3.0\\,{\\text{mol}}^{{−2}}\\,{\\text{L}}^{2}\\,{\\text{s}}^{{−1}}",
+      "id": "fs-idm263345248"
+    },
+    "EQ:30": {
+      "latex": "{{{\\text{OCl}}}^{\\text{−}}(aq)+{\\text{I}}^{\\text{−}}(aq)\\,\\longrightarrow \\,{{\\text{OI}}}^{\\text{−}}(aq)+{\\text{Cl}}^{\\text{−}}(aq)}",
+      "id": "fs-idm205740176"
+    },
+    "EQ:31": {
+      "latex": "{\\text{NO}}_{2}+\\text{CO}\\,\\longrightarrow \\,\\text{NO}+{\\text{CO}}_{\\text{2}}\\,\\text{rate}=k[{{{\\text{NO}}}_{2}}{{]}}^{2}{\\text{CH}}_{3}\\text{CHO}\\,\\longrightarrow \\,{\\text{CH}}_{4}+\\text{CO}\\,\\text{rate}=k[{{{\\text{CH}}}_{3}\\text{CHO}}{{]}}^{2}{\\text{2N}}_{2}{\\text{O}}_{5}\\,\\longrightarrow \\,{\\text{NO}}_{2}+{\\text{O}}_{\\text{2}}\\,\\text{rate}=k{[{{\\text{N}}_{2}{\\text{O}}_{5}}]}{\\text{2NO}}_{2}+{\\text{F}}_{2}\\,\\longrightarrow \\,{\\text{2NO}}_{2}\\text{F}\\,\\text{rate}=k{[{{{\\text{NO}}}_{2}}]}\\,{[{{\\text{F}}_{2}}]}{\\text{2NO}}_{2}\\text{Cl}\\,\\longrightarrow \\,{\\text{2NO}}_{2}+{\\text{Cl}}_{2}\\,\\text{rate}=k{[{{{\\text{NO}}}_{2}\\text{Cl}}]}",
+      "id": "fs-idm213140144"
+    },
+    "EQ:32": {
+      "latex": "{\\frac{{\\text{Δ}[{{\\text{NO}}}_{2}]}}{{\\text{Δ}t}}\\,(\\text{mol}\\,{\\text{L}}^{{−1}}\\,{\\text{s}}^{{−1}})}"
+    },
+    "EQ:33": {
+      "latex": "{\\times }"
+    },
+    "EQ:34": {
+      "latex": "{\\times }"
+    },
+    "EQ:35": {
+      "latex": "{\\times }"
+    },
+    "EQ:36": {
+      "latex": "{\\times }"
+    },
+    "EQ:37": {
+      "latex": "{\\times }"
+    },
+    "EQ:38": {
+      "latex": "{\\times }"
+    },
+    "EQ:39": {
+      "latex": "{\\times }"
+    },
+    "EQ:40": {
+      "latex": "{\\times }"
+    },
+    "EQ:41": {
+      "latex": "{\\times }"
+    },
+    "EQ:42": {
+      "latex": "{\\times }"
+    },
+    "EQ:43": {
+      "latex": "{\\times }"
+    },
+    "EQ:44": {
+      "latex": "{\\times }"
+    },
+    "EQ:45": {
+      "latex": "{\\times }"
+    },
+    "EQ:46": {
+      "latex": "{\\times }"
+    },
+    "EQ:47": {
+      "latex": "{\\times }"
+    },
+    "EQ:48": {
+      "latex": "{-\\,\\frac{{{{\\text{Δ[CH}}}_{3}\\text{CHO]}}}{{\\text{Δ}t}}\\,(\\text{mol}\\,{\\text{L}}^{{−1}}\\,{\\text{s}}^{{−1}})}"
+    },
+    "EQ:49": {
+      "latex": "{\\times }"
+    },
+    "EQ:50": {
+      "latex": "{\\times }"
+    },
+    "EQ:51": {
+      "latex": "{\\times }"
+    },
+    "EQ:52": {
+      "latex": "{\\times }"
+    },
+    "EQ:53": {
+      "latex": "{\\times }"
+    },
+    "EQ:54": {
+      "latex": "{\\times }"
+    },
+    "EQ:55": {
+      "latex": "{\\text{rate}=k{{{[{{{\\text{CH}}}_{3}\\text{CHO}}]}}}^{2}}"
+    },
+    "EQ:56": {
+      "latex": "{\\times }"
+    },
+    "EQ:57": {
+      "latex": "{-\\,\\frac{{\\text{Δ}{[{\\text{NO}}]}}}{{\\text{Δ}t}}\\,(\\text{mol}\\,{\\text{L}}^{{−1}}\\,{\\text{s}}^{{−1}})}"
+    },
+    "EQ:58": {
+      "latex": "{\\frac{{\\text{rate 2}}}{{\\text{rate 3}}}\\,=\\,\\frac{{0.00092}}{{0.00046}}\\,=\\,\\frac{{k(0.0020{{)}}^{x}(0.0040{{)}}^{y}}}{{k(0.0020{{)}}^{x}(0.0020{{)}}^{y}}}}"
+    },
+    "EQ:59": {
+      "latex": "{\\frac{{\\text{rate 1}}}{{\\text{rate 2}}}\\,=\\,\\frac{{0.00184}}{{0.00092}}\\,=\\,\\frac{{k(0.0040{{)}}^{x}(0.0020{{)}}^{y}}}{{k(0.0020{{)}}^{x}(0.0040{{)}}^{y}}}}"
+    },
+    "EQ:60": {
+      "latex": "2.00=\\frac{{{2}^{x}}}{{{2}^{y}}}2.00=\\frac{{{2}^{x}}}{{{2}^{1}}}4.00={2}^{x}x=2"
+    },
+    "EQ:61": {
+      "latex": "\\text{rate}=k{[{\\text{OCl}}\\text{−}]}2{[\\text{I}\\text{−}]}10.00184=k{{\\text{(0.0040)}}}^{\\text{2}}{{\\text{(0.0020)}}}^{1}k=5.75\\,\\times \\,{10}^{4}\\,{\\text{mol}}^{{-2}}\\,{\\text{L}}^{2}{\\text{s}}^{{-1}}"
+    },
+    "EQ:62": {
+      "latex": "{\\text{L}\\,{{\\text{mol}}}^{{−1}}\\,{\\text{s}}^{{−1}}.}"
+    },
+    "EQ:63": {
+      "latex": "{{\\text{L}}^{2}\\,{{\\text{mol}}}^{{−2}}\\,{\\text{s}}^{{−1}}.}"
+    },
+    "EQ:64": {
+      "latex": "{{\\text{L}}^{{x-1}}\\,{{\\text{mol}}}^{{1-x}}\\,{\\text{s}}^{{−1}}.}"
+    },
+    "EQ:65": {
+      "latex": "{\\text{CO(}g)+{{\\text{NO}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)+\\text{NO(}g)}"
+    },
+    "EQ:66": {
+      "latex": "{\\text{rate}=k{{{[{{{\\text{NO}}}_{2}}]}}}^{2}}?"
+    },
+    "EQ:67": {
+      "latex": "{\\text{CO(}g)+{{\\text{NO}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)+\\text{NO(}g)}"
+    },
+    "EQ:68": {
+      "latex": "{\\text{rate}=k{[{{{\\text{NO}}}_{2}}]}{[{\\text{CO}}]}}"
+    },
+    "EQ:69": {
+      "latex": "{\\text{NO}+{\\text{O}}_{3}\\,\\longrightarrow \\,{{\\text{NO}}}_{2}+{\\text{O}}_{2}}"
+    },
+    "EQ:70": {
+      "latex": "\\times"
+    },
+    "EQ:71": {
+      "latex": "\\times"
+    },
+    "EQ:72": {
+      "latex": "\\times"
+    },
+    "EQ:73": {
+      "latex": "\\times"
+    },
+    "EQ:74": {
+      "latex": "{_{\\text{15}}^{\\text{32}}\\text{P}\\,\\longrightarrow \\, _{16}^{32}\\text{S}+{\\text{e}}^{-}}"
+    },
+    "EQ:75": {
+      "latex": "\\times"
+    },
+    "EQ:76": {
+      "latex": "{\\text{day}}^{{-1}}[^{32}\\text{P}]"
+    },
+    "EQ:77": {
+      "latex": "\\times"
+    },
+    "EQ:78": {
+      "latex": "_{6}^{{14}}\\text{C}\\,\\longrightarrow \\,_{7}^{{14}}\\text{N}+{\\text{e}}^{-}"
+    },
+    "EQ:79": {
+      "latex": "\\text{rate}=k[_{6}^{{14}}\\text{C}]"
+    },
+    "EQ:80": {
+      "latex": "\\times"
+    },
+    "EQ:81": {
+      "latex": "\\times"
+    },
+    "EQ:82": {
+      "latex": "\\times"
+    },
+    "EQ:83": {
+      "latex": "\\times"
+    },
+    "EQ:84": {
+      "latex": "\\times"
+    },
+    "EQ:85": {
+      "latex": "\\times"
+    },
+    "EQ:86": {
+      "latex": "\\times"
+    },
+    "EQ:87": {
+      "latex": "\\times"
+    },
+    "EQ:88": {
+      "latex": "\\times"
+    },
+    "EQ:89": {
+      "latex": "\\times"
+    },
+    "EQ:90": {
+      "latex": "\\times"
+    },
+    "EQ:91": {
+      "latex": "\\times"
+    },
+    "EQ:92": {
+      "latex": "\\times"
+    },
+    "EQ:93": {
+      "latex": "\\times"
+    },
+    "EQ:94": {
+      "latex": "\\times"
+    },
+    "EQ:95": {
+      "latex": "\\times"
+    },
+    "EQ:96": {
+      "latex": "\\times"
+    },
+    "EQ:97": {
+      "latex": "{\\text{2NOCl(}g)\\,\\longrightarrow \\,\\text{2NO(}g)+{{\\text{Cl}}}_{2}(g)}"
+    },
+    "EQ:98": {
+      "latex": "\\times"
+    },
+    "EQ:99": {
+      "latex": "\\times"
+    },
+    "EQ:100": {
+      "latex": "\\times"
+    },
+    "EQ:101": {
+      "latex": "\\times"
+    },
+    "EQ:102": {
+      "latex": "{A\\,\\longrightarrow \\,2C.}"
+    },
+    "EQ:103": {
+      "latex": "\\times"
+    },
+    "EQ:104": {
+      "latex": "\\times"
+    },
+    "EQ:105": {
+      "latex": "\\times"
+    },
+    "EQ:106": {
+      "latex": "\\times"
+    },
+    "EQ:107": {
+      "latex": "\\times"
+    },
+    "EQ:108": {
+      "latex": "\\times"
+    },
+    "EQ:109": {
+      "latex": "{\\text{2NO(}g)+{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,\\text{2NOCl(}g)}"
+    },
+    "EQ:110": {
+      "latex": "{{\\text{H}}_{2}(g)+\\text{2NO(}g)\\,\\longrightarrow \\,{\\text{N}}_{2}\\text{O(}g)+{\\text{H}}_{2}\\text{O(}g)}"
+    },
+    "EQ:111": {
+      "latex": "\\times"
+    },
+    "EQ:112": {
+      "latex": "\\times"
+    },
+    "EQ:113": {
+      "latex": "\\times"
+    },
+    "EQ:114": {
+      "latex": "{A\\,\\longrightarrow \\,B+C,}"
+    },
+    "EQ:115": {
+      "latex": "\\times"
+    },
+    "EQ:116": {
+      "latex": "\\times"
+    },
+    "EQ:117": {
+      "latex": "\\times"
+    },
+    "EQ:118": {
+      "latex": "\\times"
+    },
+    "EQ:119": {
+      "latex": "{Q\\,\\longrightarrow \\,W+X,}"
+    },
+    "EQ:120": {
+      "latex": "\\times"
+    },
+    "EQ:121": {
+      "latex": "\\times"
+    },
+    "EQ:122": {
+      "latex": "\\times"
+    },
+    "EQ:123": {
+      "latex": "\\times"
+    },
+    "EQ:124": {
+      "latex": "{{{\\text{2N}}}_{2}{\\text{O}}_{5}\\,\\longrightarrow \\,{{\\text{4NO}}}_{2}+{\\text{O}}_{2}}"
+    },
+    "EQ:125": {
+      "latex": "\\times"
+    },
+    "EQ:126": {
+      "latex": "{{{\\text{4NH}}}_{3}(g)+{{\\text{5O}}}_{2}(g)\\,\\longrightarrow \\,\\text{4NO(}g)+{{\\text{6H}}}_{2}\\text{O(}g)}"
+    },
+    "EQ:127": {
+      "latex": "{\\text{2NO(}g)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{2NO}}}_{2}(g)}"
+    },
+    "EQ:128": {
+      "latex": "{{{\\text{3NO}}}_{2}(g)+{\\text{H}}_{2}\\text{O(}l)\\,\\longrightarrow \\,{{\\text{2HNO}}}_{3}(aq)+\\text{NO(}g)}"
+    },
+    "EQ:129": {
+      "latex": "\\times"
+    },
+    "EQ:130": {
+      "latex": "{{\\text{I}}^{\\text{−}}+{{\\text{OCl}}}^{\\text{−}}\\,\\longrightarrow \\,{{\\text{IO}}}^{\\text{−}}+{{\\text{Cl}}}^{\\text{−}}}"
+    },
+    "EQ:131": {
+      "latex": "{{{[{\\text{I}}^{\\text{−}}]}}_{{\\text{initial}}}}"
+    },
+    "EQ:132": {
+      "latex": "{{{[{{\\text{OCl}}}^{\\text{−}}]}}_{{\\text{initial}}}}"
+    },
+    "EQ:133": {
+      "latex": "\\times"
+    },
+    "EQ:134": {
+      "latex": "\\times"
+    },
+    "EQ:135": {
+      "latex": "\\times"
+    },
+    "EQ:136": {
+      "latex": "\\times"
+    }
+  }
+}

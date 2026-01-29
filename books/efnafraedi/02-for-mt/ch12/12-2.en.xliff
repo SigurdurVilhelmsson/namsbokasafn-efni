@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68787" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Factors Affecting Reaction Rates</note>
+      <note>Section: 12.2</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Factors Affecting Reaction Rates</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Describe the effects of chemical nature, physical state, temperature, concentration, and catalysis on reaction rates</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-paragraph">
+        <source>The rates at which reactants are consumed and products are formed during chemical reactions vary greatly.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-paragraph">
+        <source>Five factors typically affecting the rates of chemical reactions will be explored in this section: the chemical nature of the reacting substances, the state of subdivision (one large lump versus many small particles) of the reactants, the temperature of the reactants, the concentration of the reactants, and the presence of a catalyst.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-section-title">
+        <source>The Chemical Nature of the Reacting Substances</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>The rate of a reaction depends on the nature of the participating substances.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>Reactions that appear similar may have different rates under the same conditions, depending on the identity of the reactants.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>For example, when small pieces of the metals iron and sodium are exposed to air, the sodium reacts completely with air overnight, whereas the iron is barely affected.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>The active metals calcium and sodium both react with water to form hydrogen gas and a base.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>Yet calcium reacts at a moderate rate, whereas sodium reacts so rapidly that the reaction is almost explosive.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-section-title">
+        <source>The Physical States of the Reactants</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>A chemical reaction between two or more substances requires intimate contact between the reactants.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>When reactants are in different physical states, or phases (solid, liquid, gaseous, dissolved), the reaction takes place only at the interface between the phases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source>Consider the heterogeneous reaction between a solid phase and either a liquid or gaseous phase.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>Compared with the reaction rate for large solid particles, the rate for smaller particles will be greater because the surface area in contact with the other reactant phase is greater.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>For example, large pieces of iron react more slowly with acids than they do with finely divided iron powder ([↗]{ref="CNX_Chem_12_02_AcidDissol"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>Large pieces of wood smolder, smaller pieces burn rapidly, and saw dust burns explosively.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>![](CNX_Chem_12_02_AcidDissol.jpg){id="CNX_Chem_12_02_AcidDissol" class="scaled-down" alt="This figure shows two photos labeled (a) and (b).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>Photo (a) shows the bottom of a test tube.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>The test tube is filled with a dark gas, and there is a dark substance and bubbles in the bottom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source>Photo (b) shows a rod and bubbles in a test tube similar to photo (a), but the gas in the test tube is not as dark."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-paragraph">
+        <source><g id="2" ctype="x-italic">Figure 12.6: (a) Iron powder reacts rapidly with dilute hydrochloric acid and produces bubbles of hydrogen gas: Fe(</g>s<g id="3" ctype="x-italic">) + HCl(</g>aq<g id="4" ctype="x-italic">) &lt;x id=&quot;1&quot; equiv-text=&quot;[[EQ:4]]&quot; ctype=&quot;x-equation&quot;/&gt; 2FeCl<g id="7" ctype="x-sub">2</g>(</g>aq<g id="5" ctype="x-italic">) + 3H<g id="8" ctype="x-sub">2</g>(</g>g<g id="6" ctype="x-italic">). (b) An iron nail reacts more slowly because the surface area exposed to the acid is much less.</g>{id="CNX_Chem_12_02_AcidDissol"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source>:::link-to-material Watch [this video]{url="http://openstax.org/l/16cesium"} to see the reaction of cesium with water in slow motion and a discussion of how the state of reactants and particle size affect reaction rates.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-section-title">
+        <source>Temperature of the Reactants</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source>Chemical reactions typically occur faster at higher temperatures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>Food can spoil quickly when left on the kitchen counter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source>However, the lower temperature inside of a refrigerator slows that process so that the same food remains fresh for days.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>Gas burners, hot plates, and ovens are often used in the laboratory to increase the speed of reactions that proceed slowly at ordinary temperatures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>For many chemical processes, reaction rates are approximately doubled when the temperature is raised by 10 °C.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-section-title">
+        <source>Concentrations of the Reactants</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-paragraph">
+        <source>The rates of many reactions depend on the concentrations of the reactants.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>Rates usually increase when the concentration of one or more of the reactants increases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>For example, calcium carbonate (CaCO<g id="1" ctype="x-sub">3</g>) deteriorates as a result of its reaction with the pollutant sulfur dioxide.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-paragraph">
+        <source>The rate of this reaction depends on the amount of sulfur dioxide in the air ([↗]{ref="CNX_Chem_12_02_NYSStatue"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source>An acidic oxide, sulfur dioxide combines with water vapor in the air to produce sulfurous acid in the following reaction:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:1]]" ctype="x-equation"/>{id="fs-idm37870480"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source>Calcium carbonate reacts with sulfurous acid as follows:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:2]]" ctype="x-equation"/>{id="fs-idp86192224"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source>In a polluted atmosphere where the concentration of sulfur dioxide is high, calcium carbonate deteriorates more rapidly than in less polluted air.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-paragraph">
+        <source>Similarly, phosphorus burns much more rapidly in an atmosphere of pure oxygen than in air, which is only about 20% oxygen.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-paragraph">
+        <source>![](CNX_Chem_12_02_NYSStatue.jpg){id="CNX_Chem_12_02_NYSStatue" class="scaled-down" alt="A photograph is shown of an angel statue.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-paragraph">
+        <source>While some details of the statue, including facial features, are present, effects of weathering appear to be diminishing these features."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-paragraph">
+        <source>*Figure 12.7: Statues made from carbonate compounds such as limestone and marble typically weather slowly over time due to the actions of water, and thermal expansion and contraction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-paragraph">
+        <source>However, pollutants like sulfur dioxide can accelerate weathering.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-paragraph">
+        <source>As the concentration of air pollutants increases, deterioration of limestone occurs more rapidly. (credit: James P Fisher III)*{id="CNX_Chem_12_02_NYSStatue"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-paragraph">
+        <source>:::link-to-material Phosphorus burns rapidly in air, but it will burn even more rapidly if the concentration of oxygen is higher.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-paragraph">
+        <source>Watch this [video]{url="http://openstax.org/l/16phosphor"} to see an example.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-section-title">
+        <source>The Presence of a Catalyst</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-paragraph">
+        <source>Relatively dilute aqueous solutions of hydrogen peroxide, H<g id="1" ctype="x-sub">2</g>O<g id="2" ctype="x-sub">2</g>, are commonly used as topical antiseptics.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-paragraph">
+        <source>Hydrogen peroxide decomposes to yield water and oxygen gas according to the equation:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:3]]" ctype="x-equation"/>{id="fs-idm641705824"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-paragraph">
+        <source>Under typical conditions, this decomposition occurs very slowly.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-paragraph">
+        <source>When dilute H<g id="1" ctype="x-sub">2</g>O<g id="2" ctype="x-sub">2</g>(aq) is poured onto an open wound, however, the reaction occurs rapidly and the solution foams because of the vigorous production of oxygen gas.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-paragraph">
+        <source>This dramatic difference is caused by the presence of substances within the wound’s exposed tissues that accelerate the decomposition process.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-paragraph">
+        <source>Substances that function to increase the rate of a reaction are called <g id="1" ctype="x-bold">catalysts</g>{id="term-00001"}, a topic treated in greater detail later in this chapter.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-paragraph">
+        <source>:::link-to-material Chemical reactions occur when molecules collide with each other and undergo a chemical transformation.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-paragraph">
+        <source>Before physically performing a reaction in a laboratory, scientists can use molecular modeling simulations to predict how the parameters discussed earlier will influence the rate of a reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-paragraph">
+        <source>Use the [PhET Reactions &amp; Rates interactive]{url="http://openstax.org/l/16PHETreaction"} to explore how temperature, concentration, and the nature of the reactants affect reaction rates.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-paragraph">
+        <source>The rate of a chemical reaction is affected by several parameters.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-paragraph">
+        <source>Reactions involving two phases proceed more rapidly when there is greater surface area contact.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-paragraph">
+        <source>If temperature or reactant concentration is increased, the rate of a given reaction generally increases as well.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-paragraph">
+        <source>A catalyst can increase the rate of a reaction by providing an alternative pathway with a lower activation energy.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm30837936} Describe the effect of each of the following on the rate of the reaction of magnesium metal with a solution of hydrochloric acid: the molarity of the hydrochloric acid, the temperature of the solution, and the size of the pieces of magnesium.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-paragraph">
+        <source>:::answer Higher molarity increases the rate of the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-paragraph">
+        <source>Higher temperature increases the rate of the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-paragraph">
+        <source>Smaller pieces of magnesium metal will react more rapidly than larger pieces because more reactive surface exists.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm86018304} Explain why an egg cooks more slowly in boiling water in Denver than in New York City. (Hint: Consider the effect of temperature on reaction rate and the effect of pressure on boiling point.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm66513728} Go to the [PhET Reactions &amp; Rates]{url="http://openstax.org/l/16PHETreaction"} interactive.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-paragraph">
+        <source>Use the Single Collision tab to represent how the collision between monatomic oxygen (O) and carbon monoxide (CO) results in the breaking of one bond and the formation of another.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-paragraph">
+        <source>Pull back on the red plunger to release the atom and observe the results.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-paragraph">
+        <source>Then, click on “Reload Launcher” and change to “Angled shot” to see the difference.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-paragraph">
+        <source>(a) What happens when the angle of the collision is changed?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-paragraph">
+        <source>(b) Explain how this is relevant to rate of reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-paragraph">
+        <source>:::answer (a) Depending on the angle selected, the atom may take a long time to collide with the molecule and, when a collision does occur, it may not result in the breaking of the bond and the forming of the other. (b) Particles of reactant must come into contact with each other before they can react.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm66455280} In the [PhET Reactions &amp; Rates]{url="http://openstax.org/l/16PHETreaction"} interactive, use the “Many Collisions” tab to observe how multiple atoms and molecules interact under varying conditions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-paragraph">
+        <source>Select a molecule to pump into the chamber.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-paragraph">
+        <source>Set the initial temperature and select the current amounts of each reactant.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-paragraph">
+        <source>Select “Show bonds” under Options.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-paragraph">
+        <source>How is the rate of the reaction affected by concentration and temperature?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idm49710224} In the [PhET Reactions &amp; Rates]{url="http://openstax.org/l/16PHETreaction"} interactive, on the Many Collisions tab, set up a simulation with 15 molecules of A and 10 molecules of BC.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-paragraph">
+        <source>Select “Show Bonds” under Options.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-paragraph">
+        <source>(a) Leave the Initial Temperature at the default setting.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-paragraph">
+        <source>Observe the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-paragraph">
+        <source>Is the rate of reaction fast or slow?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-paragraph">
+        <source>(b) Click “Pause” and then “Reset All,” and then enter 15 molecules of A and 10 molecules of BC once again.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-paragraph">
+        <source>Select “Show Bonds” under Options.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-paragraph">
+        <source>This time, increase the initial temperature until, on the graph, the total average energy line is completely above the potential energy curve.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-paragraph">
+        <source>Describe what happens to the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-paragraph">
+        <source>:::answer (a) very slow; (b) As the temperature is increased, the reaction proceeds at a faster rate.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-paragraph">
+        <source>The amount of reactants decreases, and the amount of products increases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-paragraph">
+        <source>After a while, there is a roughly equal amount of <g id="1" ctype="x-italic">BC</g>, <g id="2" ctype="x-italic">AB</g>, and <g id="3" ctype="x-italic">C</g> in the mixture and a slight excess of <g id="4" ctype="x-italic">A</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

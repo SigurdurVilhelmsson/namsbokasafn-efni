@@ -1,0 +1,27 @@
+# Translatable Strings - Section 13.1
+
+## Frontmatter
+
+**Title:** Chemical Equilibria
+
+---
+
+## Figures
+
+### CNX_Chem_13_01_equilibrium
+
+**Caption:** (a) A sealed tube containing colorless N~2~O~4~ darkens as it decomposes to yield brown NO~2~. (b) Changes in concentration over time as the decomposition reaction achieves equilibrium. (c) At equilibrium, the forward and reverse reaction rates are equal.
+
+**Alt text:** A three-part diagram is shown and labeled, “a,” “b,” and “c.” In part a, at the top of the diagram, three beakers are shown, and each one contains a sealed tube. The tube in the left beaker is labeled “t equals 0.” It is full of a colorless gas which is connected to a zoom-in view of the particles in the tube by a downward-facing arrow. This particle view shows seven particles, each composed of two connected blue spheres. Each blue sphere is connected to two red spheres. This type of particle is labeled “N subscript 2 O subscript 4.” The tube in the middle beaker is labeled “pre-equilibrium.” It is full of a light brown gas which is connected to a zoom-in view of the particles in the tube by a downward-facing arrow. This particle view shows nine particles, five of which are composed of two connected blue spheres. Each blue sphere is connected to two red spheres. This type of particle is labeled “N subscript 2 O subscript 4.” The remaining four are composed of two red spheres connected to a blue sphere. This type of particle is labeled “N O subscript 2.”  The tube in the right beaker is labeled “at equilibrium.” It is full of a brown gas which is connected to a zoom-in view of the particles in the tube by a downward-facing arrow. This particle view shows eleven particles, three of which are composed of two connected blue spheres. Each blue sphere is connected to two red spheres. The remaining eight are composed of two red spheres connected to a blue sphere. In part b, in the middle of the image, is one graph. This graph has a y-axis labeled, “Concentration,” and an x-axis labeled, “Time.” A red line labeled, “N O subscript 2,” begins in the bottom left corner of the graph at a point labeled, “0,” and rises near the highest point on the y-axis before it levels off and becomes horizontal. A blue line labeled, “N subscript 2 O subscript 4,” begins near the highest point on the y-axis and drops below the midpoint of the y-axis before leveling off. In part c, at the bottom of the image is another graph. This graph has a y-axis labeled, “Rate,” and an x-axis labeled, “Time.” A red line labeled, “k subscript f, [ N subscript 2 O subscript 4 ],” begins in the bottom left corner of the graph at a point labeled, “0,” and rises near the middle of the y-axis before it levels off and becomes horizontal. A blue line labeled, “k subscript f, [ N O subscript 2 ] superscript 2,” begins near the highest point on the y-axis and drops to the same point on the y-axis as the red line before leveling off. The point where both lines become horizontal is labeled, “Equilibrium achieved.”
+
+### CNX_Chem_13_01_dynamic
+
+**Caption:** A two-person juggling act illustrates the dynamic aspect of chemical equilibria. Each person is throwing and catching clubs at the same rate, and each holds a (approximately) constant number of clubs.
+
+**Alt text:** Two people are shown throwing juggling pins back and forth to one another.
+
+### CNX_Chem_13_01_bromine
+
+**Caption:** A sealed tube containing an equilibrium mixture of liquid and gaseous bromine. (credit: http://images-of-elements.com/bromine.php)
+
+**Alt text:** A glass container is shown that is filled with an orange-brown gas and a small amount of dark orange liquid.

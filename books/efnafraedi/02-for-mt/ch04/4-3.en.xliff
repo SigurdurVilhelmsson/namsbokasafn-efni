@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68713" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Reaction Stoichiometry</note>
+      <note>Section: 4.3</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Reaction Stoichiometry</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Explain the concept of stoichiometry as it pertains to chemical reactions</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Use balanced chemical equations to derive stoichiometric factors relating amounts of reactants and products</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-list-item">
+        <source>Perform stoichiometric calculations involving mass, moles, and solution molarity</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-paragraph">
+        <source>A balanced chemical equation provides a great deal of information in a very succinct format.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>Chemical formulas provide the identities of the reactants and products involved in the chemical change, allowing classification of the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>Coefficients provide the relative numbers of these chemical species, allowing a quantitative assessment of the relationships between the amounts of substances consumed and produced by the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>These quantitative relationships are known as the reaction’s <g id="1" ctype="x-bold">stoichiometry</g>{id="term-00001"}, a term derived from the Greek words <g id="2" ctype="x-italic">stoicheion</g> (meaning “element”) and <g id="3" ctype="x-italic">metron</g> (meaning “measure”).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>In this module, the use of balanced chemical equations for various stoichiometric applications is explored.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>The general approach to using stoichiometric relationships is similar in concept to the way people go about many common activities.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>Food preparation, for example, offers an appropriate comparison.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>A recipe for making eight pancakes calls for 1 cup pancake mix, <x id="1" equiv-text="[[EQ:1]]" ctype="x-equation"/> cup milk, and one egg.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>The “equation” representing the preparation of pancakes per this recipe is</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:2]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>If two dozen pancakes are needed for a big family breakfast, the ingredient amounts must be increased proportionally according to the amounts given in the recipe.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>For example, the number of eggs required to make 24 pancakes is</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:3]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>Balanced chemical equations are used in much the same fashion to determine the amount of one reactant required to react with a given amount of another reactant, or to yield a given amount of product, and so forth.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>The coefficients in the balanced equation are used to derive <g id="1" ctype="x-bold">stoichiometric factors</g>{id="term-00002"} that permit computation of the desired quantity.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>To illustrate this idea, consider the production of ammonia by reaction of hydrogen and nitrogen:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:4]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-paragraph">
+        <source>This equation shows ammonia molecules are produced from hydrogen molecules in a 2:3 ratio, and stoichiometric factors may be derived using any amount (number) unit:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:5]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-paragraph">
+        <source>These stoichiometric factors can be used to compute the number of ammonia molecules produced from a given number of hydrogen molecules, or the number of hydrogen molecules required to produce a given number of ammonia molecules.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source>Similar factors may be derived for any pair of substances in any chemical equation.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>Moles of Reactant Required in a Reaction How many moles of I<g id="1" ctype="x-sub">2</g> are required to react with 0.429 mol of Al according to the following equation (see [↗]{ref="CNX_Chem_04_03_iodine"})?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:6]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>![](CNX_Chem_04_03_iodine.jpg){id="CNX_Chem_04_03_iodine" class="scaled-down" alt="This figure shows three photos with an arrow leading from one to the next.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>The first photo shows a small pile of iodine and aluminum on a white surface.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-paragraph">
+        <source>The second photo shows a small amount of purple smoke coming from the pile.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-paragraph">
+        <source>The third photo shows a large amount of purple and gray smoke coming from the pile."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>*Figure 4.10: Aluminum and iodine react to produce aluminum iodide.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>The heat of the reaction vaporizes some of the solid iodine as a purple vapor. (credit: modification of work by Mark Ott)*{id="CNX_Chem_04_03_iodine"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-paragraph">
+        <source>Solution Referring to the balanced chemical equation, the stoichiometric factor relating the two substances of interest is <x id="1" equiv-text="[[EQ:7]]" ctype="x-equation"/> The molar amount of iodine is derived by multiplying the provided molar amount of aluminum by this factor:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:8]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source>Check Your Learning How many moles of Ca(OH)<g id="2" ctype="x-sub">2</g> are required to react with 1.36 mol of H<g id="3" ctype="x-sub">3</g>PO<g id="4" ctype="x-sub">4</g> to produce Ca<g id="5" ctype="x-sub">3</g>(PO<g id="6" ctype="x-sub">4</g>)<g id="7" ctype="x-sub">2</g> according to the equation <x id="1" equiv-text="[[EQ:9]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source>2.04 mol</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-paragraph">
+        <source>2.04 mol</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-paragraph">
+        <source>Number of Product Molecules Generated by a Reaction How many carbon dioxide molecules are produced when 0.75 mol of propane is combusted according to this equation?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:10]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-paragraph">
+        <source>Solution The approach here is the same as for [↗]{ref="fs-idp48900096"}, though the absolute number of molecules is requested, not the number of moles of molecules.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-paragraph">
+        <source>This will simply require use of the moles-to-numbers conversion factor, Avogadro’s number.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-paragraph">
+        <source>The balanced equation shows that carbon dioxide is produced from propane in a 3:1 ratio:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:11]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-paragraph">
+        <source>Using this stoichiometric factor, the provided molar amount of propane, and Avogadro’s number,</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:12]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-paragraph">
+        <source>Check Your Learning How many NH<g id="1" ctype="x-sub">3</g> molecules are produced by the reaction of 4.0 mol of Ca(OH)<g id="2" ctype="x-sub">2</g> according to the following equation:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:13]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-paragraph">
+        <source>4.8 <x id="1" equiv-text="[[EQ:14]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">24</g> NH<g id="2" ctype="x-sub">3</g> molecules</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-paragraph">
+        <source>4.8 <x id="1" equiv-text="[[EQ:14]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">24</g> NH<g id="2" ctype="x-sub">3</g> molecules</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-paragraph">
+        <source>These examples illustrate the ease with which the amounts of substances involved in a chemical reaction of known stoichiometry may be related.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-paragraph">
+        <source>Directly measuring numbers of atoms and molecules is, however, not an easy task, and the practical application of stoichiometry requires that we use the more readily measured property of mass.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-paragraph">
+        <source>Relating Masses of Reactants and Products What mass of sodium hydroxide, NaOH, would be required to produce 16 g of the antacid milk of magnesia [magnesium hydroxide, Mg(OH)<g id="1" ctype="x-sub">2</g>] by the following reaction?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:15]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-paragraph">
+        <source>Solution The approach used previously in [↗]{ref="fs-idp48900096"} and [↗]{ref="fs-idp9124448"} is likewise used here; that is, we must derive an appropriate stoichiometric factor from the balanced chemical equation and use it to relate the amounts of the two substances of interest.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-paragraph">
+        <source>In this case, however, masses (not molar amounts) are provided and requested, so additional steps of the sort learned in the previous chapter are required.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-paragraph">
+        <source>The calculations required are outlined in this flowchart:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:16]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-paragraph">
+        <source>Check Your Learning What mass of gallium oxide, Ga<g id="1" ctype="x-sub">2</g>O<g id="2" ctype="x-sub">3</g>, can be prepared from 29.0 g of gallium metal?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-paragraph">
+        <source>The equation for the reaction is <x id="1" equiv-text="[[EQ:17]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-paragraph">
+        <source>39.0 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-paragraph">
+        <source>39.0 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-paragraph">
+        <source>Relating Masses of Reactants What mass of oxygen gas, O<g id="1" ctype="x-sub">2</g>, from the air is consumed in the combustion of 702 g of octane, C<g id="2" ctype="x-sub">8</g>H<g id="3" ctype="x-sub">18</g>, one of the principal components of gasoline?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:18]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-paragraph">
+        <source>Solution The approach required here is the same as for the [↗]{ref="fs-idp113495744"}, differing only in that the provided and requested masses are both for reactant species.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:19]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-paragraph">
+        <source>Check Your Learning What mass of CO is required to react with 25.13 g of Fe<g id="2" ctype="x-sub">2</g>O<g id="3" ctype="x-sub">3</g> according to the equation <x id="1" equiv-text="[[EQ:20]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-paragraph">
+        <source>13.22 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-paragraph">
+        <source>13.22 g</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-paragraph">
+        <source>These examples illustrate just a few instances of reaction stoichiometry calculations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-paragraph">
+        <source>Numerous variations on the beginning and ending computational steps are possible depending upon what particular quantities are provided and sought (volumes, solution concentrations, and so forth).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-paragraph">
+        <source>Regardless of the details, all these calculations share a common essential component: the use of stoichiometric factors derived from balanced chemical equations. [↗]{ref="CNX_Chem_04_03_flowchart"} provides a general outline of the various computational steps associated with many reaction stoichiometry calculations.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-paragraph">
+        <source>![](CNX_Chem_04_03_flowchart.jpg){id="CNX_Chem_04_03_flowchart" alt="This flowchart shows 10 rectangles connected by double headed arrows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-paragraph">
+        <source>To the upper left, a rectangle is shaded lavender and is labeled, “Volume of pure substance A.” This rectangle is followed by a horizontal double headed arrow labeled, “Density.” It connects to a second rectangle which is shaded yellow and is labeled, “Mass of A.” This rectangle is followed by a double headed arrow which is labeled, “Molar Mass,” that connects to a third rectangle which is shaded pink and is labeled, “Moles of A.” To the left of this rectangle is a horizontal double headed arrow labeled, “Molarity,” which connects to a lavender rectangle which is labeled, “Volume of solution A.” The pink, “Moles of A,” rectangle is also connected with a double headed arrow below and to the left.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-paragraph">
+        <source>This arrow is labeled “Avogadro’s number.” It connects to a green shaded rectangle that is labeled, “Number of particles of A.” To the right of the pink “Moles of A,” rectangle is a horizontal double headed arrow which is labeled, “Stoichiometric factor.” It connects to a second pink rectangle which is labeled, “Moles of B.” A double headed arrow which is labeled, “Molar mass,” extends from the top of this rectangle above and to the right to a yellow shaded rectangle labeled, “Mass of B.” A horizontal double headed arrow which is labeled, “Density” links to a lavender rectangle labeled, “Volume of substance B,” to the right.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-paragraph">
+        <source>A horizontal double headed arrow labeled, “Molarity,” extends right to the of the pink “Moles of B” rectangle.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-paragraph">
+        <source>This arrow connects to a lavender rectangle that is labeled, “Volume of substance B.” Another double headed arrow extends below and to the right of the pink “Moles of B” rectangle.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-paragraph">
+        <source>This arrow is labeled “Avogadro’s number,” and it extends to a green rectangle which is labeled, “Number of particles of B.”"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 4.11: The flowchart depicts the various computational steps involved in most reaction stoichiometry calculations.</g>{id="CNX_Chem_04_03_flowchart"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-subsection-title">
+        <source>Airbags</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-paragraph">
+        <source>Airbags ([↗]{ref="CNX_Chem_04_03_airbag"}) are a safety feature provided in most automobiles since the 1990s.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-paragraph">
+        <source>The effective operation of an airbag requires that it be rapidly inflated with an appropriate amount (volume) of gas when the vehicle is involved in a collision.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-paragraph">
+        <source>This requirement is satisfied in many automotive airbag systems through use of explosive chemical reactions, one common choice being the decomposition of sodium azide, NaN<g id="1" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-paragraph">
+        <source>When sensors in the vehicle detect a collision, an electrical current is passed through a carefully measured amount of NaN<g id="1" ctype="x-sub">3</g> to initiate its decomposition:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-97" restype="x-paragraph">
+        <source>This reaction is very rapid, generating gaseous nitrogen that can deploy and fully inflate a typical airbag in a fraction of a second (~0.03–0.1 s).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-98" restype="x-paragraph">
+        <source>Among many engineering considerations, the amount of sodium azide used must be appropriate for generating enough nitrogen gas to fully inflate the air bag and ensure its proper function.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-99" restype="x-paragraph">
+        <source>For example, a small mass (<g id="1" ctype="x-sub">100 g) of NaN</g>3<g id="2" ctype="x-sub"> will generate approximately 50 L of N</g>2~.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-100" restype="x-paragraph">
+        <source>Airbags ([↗]{ref="CNX_Chem_04_03_airbag"}) are a safety feature provided in most automobiles since the 1990s.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-101" restype="x-paragraph">
+        <source>The effective operation of an airbag requires that it be rapidly inflated with an appropriate amount (volume) of gas when the vehicle is involved in a collision.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-102" restype="x-paragraph">
+        <source>This requirement is satisfied in many automotive airbag systems through use of explosive chemical reactions, one common choice being the decomposition of sodium azide, NaN<g id="1" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-103" restype="x-paragraph">
+        <source>When sensors in the vehicle detect a collision, an electrical current is passed through a carefully measured amount of NaN<g id="1" ctype="x-sub">3</g> to initiate its decomposition:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-104" restype="x-paragraph">
+        <source><x id="1" equiv-text="[[EQ:21]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-105" restype="x-paragraph">
+        <source>This reaction is very rapid, generating gaseous nitrogen that can deploy and fully inflate a typical airbag in a fraction of a second (~0.03–0.1 s).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-106" restype="x-paragraph">
+        <source>Among many engineering considerations, the amount of sodium azide used must be appropriate for generating enough nitrogen gas to fully inflate the air bag and ensure its proper function.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-107" restype="x-paragraph">
+        <source>For example, a small mass (<g id="1" ctype="x-sub">100 g) of NaN</g>3<g id="2" ctype="x-sub"> will generate approximately 50 L of N</g>2~.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-108" restype="x-paragraph">
+        <source>![](CNX_Chem_04_03_airbag.jpg){id="CNX_Chem_04_03_airbag" class="scaled-down" alt="This photograph shows the inside of an automobile from the driver’s side area.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-109" restype="x-paragraph">
+        <source>The image shows inflated airbags positioned just in front of the driver’s and passenger’s seats and along the length of the passenger side over the windows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-110" restype="x-paragraph">
+        <source>A large, round airbag covers the steering wheel."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-111" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 4.12: Airbags deploy upon impact to minimize serious injuries to passengers. (credit: Jon Seidman)</g>{id="CNX_Chem_04_03_airbag"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-112" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-113" restype="x-paragraph">
+        <source>A balanced chemical equation may be used to describe a reaction’s stoichiometry (the relationships between amounts of reactants and products).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-114" restype="x-paragraph">
+        <source>Coefficients from the equation are used to derive stoichiometric factors that subsequently may be used for computations relating reactant and product masses, molar amounts, and other quantitative properties.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-115" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-116" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp166618800} Write the balanced equation, then outline the steps necessary to determine the information requested in each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-117" restype="x-paragraph">
+        <source>(a) The number of moles and the mass of chlorine, Cl<g id="1" ctype="x-sub">2</g>, required to react with 10.0 g of sodium metal, Na, to produce sodium chloride, NaCl.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-118" restype="x-paragraph">
+        <source>(b) The number of moles and the mass of oxygen formed by the decomposition of 1.252 g of mercury(II) oxide.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-119" restype="x-paragraph">
+        <source>(c) The number of moles and the mass of sodium nitrate, NaNO<g id="1" ctype="x-sub">3</g>, required to produce 128 g of oxygen. (NaNO<g id="2" ctype="x-sub">2</g> is the other product.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-120" restype="x-paragraph">
+        <source>(d) The number of moles and the mass of carbon dioxide formed by the combustion of 20.0 kg of carbon in an excess of oxygen.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-121" restype="x-paragraph">
+        <source>(e) The number of moles and the mass of copper(II) carbonate needed to produce 1.500 kg of copper(II) oxide. (CO<g id="1" ctype="x-sub">2</g> is the other product.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-122" restype="x-paragraph">
+        <source>(f)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-123" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp147780304} Determine the number of moles and the mass requested for each reaction in [↗]{ref="fs-idp166618800"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-124" restype="x-paragraph">
+        <source>:::answer (a) 0.435 mol Na, 0.217 mol Cl<g id="4" ctype="x-sub">2</g>, 15.4 g Cl<g id="5" ctype="x-sub">2</g>; (b) 0.005780 mol HgO, 2.890 <x id="1" equiv-text="[[EQ:22]]" ctype="x-equation"/> 10<g id="19" ctype="x-sup">−3</g> mol O<g id="6" ctype="x-sub">2</g>, 9.248 <x id="2" equiv-text="[[EQ:23]]" ctype="x-equation"/> 10<g id="20" ctype="x-sup">−2</g> g O<g id="7" ctype="x-sub">2</g>; (c) 8.00 mol NaNO<g id="8" ctype="x-sub">3</g>, 6.8 <x id="3" equiv-text="[[EQ:24]]" ctype="x-equation"/> 10<g id="21" ctype="x-sup">2</g> g NaNO<g id="9" ctype="x-sub">3</g>; (d) 1665 mol CO<g id="10" ctype="x-sub">2</g>, 73.3 kg CO<g id="11" ctype="x-sub">2</g>; (e) 18.86 mol CuO, 2.330 kg CuCO<g id="12" ctype="x-sub">3</g>; (f) 0.4580 mol C<g id="13" ctype="x-sub">2</g>H<g id="14" ctype="x-sub">4</g>Br<g id="15" ctype="x-sub">2</g>, 86.05 g C<g id="16" ctype="x-sub">2</g>H<g id="17" ctype="x-sub">4</g>Br<g id="18" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-125" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp16477696} Write the balanced equation, then outline the steps necessary to determine the information requested in each of the following:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-126" restype="x-paragraph">
+        <source>(a) The number of moles and the mass of Mg required to react with 5.00 g of HCl and produce MgCl<g id="1" ctype="x-sub">2</g> and H<g id="2" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-127" restype="x-paragraph">
+        <source>(b) The number of moles and the mass of oxygen formed by the decomposition of 1.252 g of silver(I) oxide.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-128" restype="x-paragraph">
+        <source>(c) The number of moles and the mass of magnesium carbonate, MgCO<g id="1" ctype="x-sub">3</g>, required to produce 283 g of carbon dioxide. (MgO is the other product.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-129" restype="x-paragraph">
+        <source>(d) The number of moles and the mass of water formed by the combustion of 20.0 kg of acetylene, C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">2</g>, in an excess of oxygen.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-130" restype="x-paragraph">
+        <source>(e) The number of moles and the mass of barium peroxide, BaO<g id="1" ctype="x-sub">2</g>, needed to produce 2.500 kg of barium oxide, BaO (O<g id="2" ctype="x-sub">2</g> is the other product.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-131" restype="x-paragraph">
+        <source>(f)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-132" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp61309952} Determine the number of moles and the mass requested for each reaction in [↗]{ref="fs-idp16477696"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-133" restype="x-paragraph">
+        <source>:::answer (a) 0.0686 mol Mg, 1.67 g Mg; (b) 2.701 <x id="1" equiv-text="[[EQ:25]]" ctype="x-equation"/> 10<g id="14" ctype="x-sup">−3</g> mol O<g id="2" ctype="x-sub">2</g>, 0.08644 g O<g id="3" ctype="x-sub">2</g>; (c) 6.43 mol MgCO<g id="4" ctype="x-sub">3</g>, 542 g MgCO<g id="5" ctype="x-sub">3</g> (d) 768 mol H<g id="6" ctype="x-sub">2</g>O, 13.8 kg H<g id="7" ctype="x-sub">2</g>O; (e) 16.31 mol BaO<g id="8" ctype="x-sub">2</g>, 2762 g BaO<g id="9" ctype="x-sub">2</g>; (f) 0.207 mol C<g id="10" ctype="x-sub">2</g>H<g id="11" ctype="x-sub">4</g>, 5.81 g C<g id="12" ctype="x-sub">2</g>H<g id="13" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-134" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp33547424} H<g id="2" ctype="x-sub">2</g> is produced by the reaction of 118.5 mL of a 0.8775-M solution of H<g id="3" ctype="x-sub">3</g>PO<g id="4" ctype="x-sub">4</g> according to the following equation: <x id="1" equiv-text="[[EQ:26]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-135" restype="x-paragraph">
+        <source>(a) Outline the steps necessary to determine the number of moles and mass of H<g id="1" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-136" restype="x-paragraph">
+        <source>(b) Perform the calculations outlined.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-137" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp272460112} Gallium chloride is formed by the reaction of 2.6 L of a 1.44 M solution of HCl according to the following equation: <x id="1" equiv-text="[[EQ:27]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-138" restype="x-paragraph">
+        <source>(a) Outline the steps necessary to determine the number of moles and mass of gallium chloride.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-139" restype="x-paragraph">
+        <source>(b) Perform the calculations outlined.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-140" restype="x-paragraph">
+        <source>:::answer (a) <x id="1" equiv-text="[[EQ:28]]" ctype="x-equation"/> (b) 1.25 mol GaCl<g id="3" ctype="x-sub">3</g>, 2.2 <x id="2" equiv-text="[[EQ:29]]" ctype="x-equation"/> 10<g id="5" ctype="x-sup">2</g> g GaCl<g id="4" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-141" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp102353344} I<g id="2" ctype="x-sub">2</g> is produced by the reaction of 0.4235 mol of CuCl<g id="3" ctype="x-sub">2</g> according to the following equation: <x id="1" equiv-text="[[EQ:30]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-142" restype="x-paragraph">
+        <source>(a) How many molecules of I<g id="1" ctype="x-sub">2</g> are produced?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-143" restype="x-paragraph">
+        <source>(b) What mass of I<g id="1" ctype="x-sub">2</g> is produced?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-144" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp172099056} Silver is often extracted from ores such as K[Ag(CN)<g id="2" ctype="x-sub">2</g>] and then recovered by the reaction <x id="1" equiv-text="[[EQ:31]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-145" restype="x-paragraph">
+        <source>(a) How many molecules of Zn(CN)<g id="1" ctype="x-sub">2</g> are produced by the reaction of 35.27 g of K[Ag(CN)<g id="2" ctype="x-sub">2</g>]?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-146" restype="x-paragraph">
+        <source>(b) What mass of Zn(CN)<g id="1" ctype="x-sub">2</g> is produced?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-147" restype="x-paragraph">
+        <source>:::answer (a) 5.337 <x id="1" equiv-text="[[EQ:32]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">22</g> molecules; (b) 10.41 g Zn(CN)<g id="2" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-148" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp216213984} What mass of silver oxide, Ag<g id="2" ctype="x-sub">2</g>O, is required to produce 25.0 g of silver sulfadiazine, AgC<g id="3" ctype="x-sub">10</g>H<g id="4" ctype="x-sub">9</g>N<g id="5" ctype="x-sub">4</g>SO<g id="6" ctype="x-sub">2</g>, from the reaction of silver oxide and sulfadiazine? <x id="1" equiv-text="[[EQ:33]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-149" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp65199360} Carborundum is silicon carbide, SiC, a very hard material used as an abrasive on sandpaper and in other applications.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-150" restype="x-paragraph">
+        <source>It is prepared by the reaction of pure sand, SiO<g id="1" ctype="x-sub">2</g>, with carbon at high temperature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-151" restype="x-paragraph">
+        <source>Carbon monoxide, CO, is the other product of this reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-152" restype="x-paragraph">
+        <source>Write the balanced equation for the reaction, and calculate how much SiO<g id="1" ctype="x-sub">2</g> is required to produce 3.00 kg of SiC.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-153" restype="x-paragraph">
+        <source>:::answer <x id="1" equiv-text="[[EQ:34]]" ctype="x-equation"/> 4.50 kg SiO<g id="2" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-154" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp9841552} Automotive air bags inflate when a sample of sodium azide, NaN<g id="2" ctype="x-sub">3</g>, is very rapidly decomposed. <x id="1" equiv-text="[[EQ:35]]" ctype="x-equation"/> What mass of sodium azide is required to produce 2.6 ft<g id="3" ctype="x-sup">3</g> (73.6 L) of nitrogen gas with a density of 1.25 g/L?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-155" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp220471472} Urea, CO(NH<g id="1" ctype="x-sub">2</g>)<g id="2" ctype="x-sub">2</g>, is manufactured on a large scale for use in producing urea-formaldehyde plastics and as a fertilizer.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-156" restype="x-paragraph">
+        <source>What is the maximum mass of urea that can be manufactured from the CO<g id="3" ctype="x-sub">2</g> produced by combustion of <x id="1" equiv-text="[[EQ:36]]" ctype="x-equation"/> of carbon followed by the reaction? <x id="2" equiv-text="[[EQ:37]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-157" restype="x-paragraph">
+        <source>:::answer 5.00 <x id="1" equiv-text="[[EQ:38]]" ctype="x-equation"/> 10<g id="2" ctype="x-sup">3</g> kg</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-158" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp89497728} In an accident, a solution containing 2.5 kg of nitric acid was spilled.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-159" restype="x-paragraph">
+        <source>Two kilograms of Na<g id="1" ctype="x-sub">2</g>CO<g id="2" ctype="x-sub">3</g> was quickly spread on the area and CO<g id="3" ctype="x-sub">2</g> was released by the reaction.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-160" restype="x-paragraph">
+        <source>Was sufficient Na<g id="1" ctype="x-sub">2</g>CO<g id="2" ctype="x-sub">3</g> used to neutralize all of the acid?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-161" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp82714064} A compact car gets 37.5 miles per gallon on the highway.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-162" restype="x-paragraph">
+        <source>If gasoline contains 84.2% carbon by mass and has a density of 0.8205 g/mL, determine the mass of carbon dioxide produced during a 500-mile trip (3.785 liters per gallon).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-163" restype="x-paragraph">
+        <source>:::answer 1.28 <x id="1" equiv-text="[[EQ:39]]" ctype="x-equation"/> 10<g id="3" ctype="x-sup">5</g> g CO<g id="2" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-164" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp10650096} What volume of 0.750 M hydrochloric acid solution can be prepared from the HCl produced by the reaction of 25.0 g of NaCl with excess sulfuric acid? <x id="1" equiv-text="[[EQ:40]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-165" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp8090960} What volume of a 0.2089 <g id="2" ctype="x-italic">M</g> KI solution contains enough KI to react exactly with the Cu(NO<g id="4" ctype="x-sub">3</g>)<g id="5" ctype="x-sub">2</g> in 43.88 mL of a 0.3842 <g id="3" ctype="x-italic">M</g> solution of Cu(NO<g id="6" ctype="x-sub">3</g>)<g id="7" ctype="x-sub">2</g>? <x id="1" equiv-text="[[EQ:41]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-166" restype="x-paragraph">
+        <source>:::answer 161.4 mL KI solution</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-167" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp158165536} A mordant is a substance that combines with a dye to produce a stable fixed color in a dyed fabric.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-168" restype="x-paragraph">
+        <source>Calcium acetate is used as a mordant.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-169" restype="x-paragraph">
+        <source>It is prepared by the reaction of acetic acid with calcium hydroxide. <x id="1" equiv-text="[[EQ:42]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-170" restype="x-paragraph">
+        <source>What mass of Ca(OH)<g id="1" ctype="x-sub">2</g> is required to react with the acetic acid in 25.0 mL of a solution having a density of 1.065 g/mL and containing 58.0% acetic acid by mass?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-171" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp149769296} The toxic pigment called white lead, Pb<g id="1" ctype="x-sub">3</g>(OH)<g id="2" ctype="x-sub">2</g>(CO<g id="3" ctype="x-sub">3</g>)<g id="4" ctype="x-sub">2</g>, has been replaced in white paints by rutile, TiO<g id="5" ctype="x-sub">2</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-172" restype="x-paragraph">
+        <source>How much rutile (g) can be prepared from 379 g of an ore that contains 88.3% ilmenite (FeTiO<g id="2" ctype="x-sub">3</g>) by mass? <x id="1" equiv-text="[[EQ:43]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-173" restype="x-paragraph">
+        <source>:::answer 176 g TiO<g id="1" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

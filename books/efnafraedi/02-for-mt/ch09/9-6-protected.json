@@ -1,0 +1,25 @@
+{
+  "sourceFile": "9-6.en.md",
+  "module": "m68759",
+  "section": "9.6",
+  "frontmatter": {
+    "title": "Non-Ideal Gas Behavior",
+    "section": "9.6",
+    "module": "m68759",
+    "lang": "en",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tables": {
+    "TABLE:1": {
+      "markdown": "| Gas | *a* (L^2^ atm/mol^2^) | *b* (L/mol) |\n| :--- | :--- | :--- |\n| N~2~ | 1.39 | 0.0391 |\n| O~2~ | 1.36 | 0.0318 |\n| CO~2~ | 3.59 | 0.0427 |\n| H~2~O | 5.46 | 0.0305 |\n| He | 0.0342 | 0.0237 |\n| CCl~4~ | 20.4 | 0.1383 |",
+      "title": "Values of van der Waals Constants for Some Common Gases",
+      "id": "fs-idm15100464",
+      "summary": "This table has three columns and seven rows. The first row is a header, and it labels each column, “Gas,” “a ( L to the second power a t m divided by m o l to the second power ),” “b ( L divided by m o l ).” Under “Gas” are the following: N subscript 2, O subscript 2, C O subscript 2, H subscript 2 O, H e, and C C l subscript 4. Under “a ( L to the second power a t m divided by m o l to the second power )” are the following: 1.39, 1.36, 3.59, 5.46, 0.0342, and 20.4. Under “b ( L divided by m o l )” are the following: 0.0391, 0.0318, 0.0427, 0.0305, 0.0237, and 0.1383."
+    },
+    "TABLE:2": {
+      "markdown": "| [[EQ:6]] |\n| :--- |\n| [[EQ:7]] |",
+      "id": "key-equations-table",
+      "summary": "key equations table"
+    }
+  }
+}

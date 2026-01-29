@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="m68696" source-language="en" target-language="is" datatype="x-markdown">
+    <header>
+      <note>Converted from markdown: Ionic and Molecular Compounds</note>
+      <note>Section: 2.6</note>
+      <note>Inline elements marked with [[EQ:n]] are equation placeholders - do not translate</note>
+    </header>
+    <body>
+      <trans-unit id="seg-1" restype="x-title">
+        <source>Ionic and Molecular Compounds</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 1</note>
+      </trans-unit>
+      <trans-unit id="seg-2" restype="x-paragraph">
+        <source>:::learning-objectives</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-3" restype="x-section-title">
+        <source>Learning Objectives</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-4" restype="x-paragraph">
+        <source>By the end of this section, you will be able to:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-5" restype="x-list-item">
+        <source>Define ionic and molecular (covalent) compounds</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-6" restype="x-list-item">
+        <source>Predict the type of compound formed from elements based on their location within the periodic table</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-7" restype="x-list-item">
+        <source>Determine formulas for simple ionic compounds</source>
+        <target state="new"></target>
+        <note from="developer">List item</note>
+      </trans-unit>
+      <trans-unit id="seg-8" restype="x-paragraph">
+        <source>In ordinary chemical reactions, the nucleus of each atom (and thus the identity of the element) remains unchanged.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-9" restype="x-paragraph">
+        <source>Electrons, however, can be added to atoms by transfer from other atoms, lost by transfer to other atoms, or shared with other atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-10" restype="x-paragraph">
+        <source>The transfer and sharing of electrons among atoms govern the chemistry of the elements.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-11" restype="x-paragraph">
+        <source>During the formation of some compounds, atoms gain or lose electrons, and form electrically charged particles called ions ([↗]{ref="CNX_Chem_02_06_NaCation"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-12" restype="x-paragraph">
+        <source>![](CNX_Chem_02_06_NaCation.jpg){id="CNX_Chem_02_06_NaCation" alt="Figure A shows a sodium atom, N a, which has a nucleus containing 11 protons and 12 neutrons.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-13" restype="x-paragraph">
+        <source>The atom’s surrounding electron cloud contains 11 electrons.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-14" restype="x-paragraph">
+        <source>Figure B shows a sodium ion, N a superscript plus sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-15" restype="x-paragraph">
+        <source>Its nucleus contains 11 protons and 12 neutrons.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-16" restype="x-paragraph">
+        <source>The ion’s electron cloud contains 10 electrons and is smaller than that of the sodium atom in figure A."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-17" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 2.28: (a) A sodium atom (Na) has equal numbers of protons and electrons (11) and is uncharged. (b) A sodium cation (Na<g id="2" ctype="x-sup">+</g>) has lost an electron, so it has one more proton (11) than electrons (10), giving it an overall positive charge, signified by a superscripted plus sign.</g>{id="CNX_Chem_02_06_NaCation"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-18" restype="x-paragraph">
+        <source>You can use the periodic table to predict whether an atom will form an anion or a cation, and you can often predict the charge of the resulting ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-19" restype="x-paragraph">
+        <source>Atoms of many main-group metals lose enough electrons to leave them with the same number of electrons as an atom of the preceding noble gas.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-20" restype="x-paragraph">
+        <source>To illustrate, an atom of an alkali metal (group 1) loses one electron and forms a cation with a 1+ charge; an alkaline earth metal (group 2) loses two electrons and forms a cation with a 2+ charge, and so on.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-21" restype="x-paragraph">
+        <source>For example, a neutral calcium atom, with 20 protons and 20 electrons, readily loses two electrons.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-22" restype="x-paragraph">
+        <source>This results in a cation with 20 protons, 18 electrons, and a 2+ charge.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-23" restype="x-paragraph">
+        <source>It has the same number of electrons as atoms of the preceding noble gas, argon, and is symbolized Ca<g id="1" ctype="x-sup">2+</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-24" restype="x-paragraph">
+        <source>The name of a metal ion is the same as the name of the metal atom from which it forms, so Ca<g id="1" ctype="x-sup">2+</g> is called a calcium ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-25" restype="x-paragraph">
+        <source>When atoms of nonmetal elements form ions, they generally gain enough electrons to give them the same number of electrons as an atom of the next noble gas in the periodic table.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-26" restype="x-paragraph">
+        <source>Atoms of group 17 gain one electron and form anions with a 1− charge; atoms of group 16 gain two electrons and form ions with a 2− charge, and so on.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-27" restype="x-paragraph">
+        <source>For example, the neutral bromine atom, with 35 protons and 35 electrons, can gain one electron to provide it with 36 electrons.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-28" restype="x-paragraph">
+        <source>This results in an anion with 35 protons, 36 electrons, and a 1− charge.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-29" restype="x-paragraph">
+        <source>It has the same number of electrons as atoms of the next noble gas, krypton, and is symbolized Br<g id="1" ctype="x-sup">−</g>. (A discussion of the theory supporting the favored status of noble gas electron numbers reflected in these predictive rules for ion formation is provided in a later chapter of this text.)</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-30" restype="x-paragraph">
+        <source>Note the usefulness of the periodic table in predicting likely ion formation and charge ([↗]{ref="CNX_Chem_02_06_IonCharges"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-31" restype="x-paragraph">
+        <source>Moving from the far left to the right on the periodic table, main-group elements tend to form cations with a charge equal to the group number.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-32" restype="x-paragraph">
+        <source>That is, group 1 elements form 1+ ions; group 2 elements form 2+ ions, and so on.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-33" restype="x-paragraph">
+        <source>Moving from the far right to the left on the periodic table, elements often form anions with a negative charge equal to the number of groups moved left from the noble gases.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-34" restype="x-paragraph">
+        <source>For example, group 17 elements (one group left of the noble gases) form 1− ions; group 16 elements (two groups left) form 2− ions, and so on.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-35" restype="x-paragraph">
+        <source>This trend can be used as a guide in many cases, but its predictive value decreases when moving toward the center of the periodic table.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-36" restype="x-paragraph">
+        <source>In fact, transition metals and some other metals often exhibit variable charges that are not predictable by their location in the table.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-37" restype="x-paragraph">
+        <source>For example, copper can form ions with a 1+ or 2+ charge, and iron can form ions with a 2+ or 3+ charge.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-38" restype="x-paragraph">
+        <source>![](CNX_Chem_02_06_IonCharges.jpg){id="CNX_Chem_02_06_IonCharges" alt="Group one of the periodic table contains L i superscript plus sign in period 2, N a superscript plus sign in period 3, K superscript plus sign in period 4, R b superscript plus sign in period 5, C s superscript plus sign in period 6, and F r superscript plus sign in period 7.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-39" restype="x-paragraph">
+        <source>Group two contains B e superscript 2 plus sign in period 2, M g superscript 2 plus sign in period 3, C a superscript 2 plus sign in period 4, S r superscript 2 plus sign in period 5, B a superscript 2 plus sign in period 6, and R a superscript 2 plus sign in period 7.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-40" restype="x-paragraph">
+        <source>Group six contains C r superscript 3 plus sign and C r superscript 6 plus sign in period 4.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-41" restype="x-paragraph">
+        <source>Group seven contains M n superscript 2 plus sign in period 4.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-42" restype="x-paragraph">
+        <source>Group eight contains F e superscript 2 plus sign and F e superscript 3 plus sign in period 4.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-43" restype="x-paragraph">
+        <source>Group nine contains C o superscript 2 plus sign in period 4.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-44" restype="x-paragraph">
+        <source>Group ten contains N i superscript 2 plus sign in period 4, and P t superscript 2 plus sign in period 6.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-45" restype="x-paragraph">
+        <source>Group 11 contains C U superscript plus sign and C U superscript 2 plus sign in period 4, A g superscript plus sign in period 5, and A u superscript plus sign and A u superscript 3 plus sign in period 6.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-46" restype="x-paragraph">
+        <source>Group 12 contains Z n superscript 2 plus sign in period 4, C d superscript 2 plus sign in period 5, and H g subscript 2 superscript 2 plus sign and H g superscript 2 plus sign in period 6.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-47" restype="x-paragraph">
+        <source>Group 13 contains A l superscript 3 plus sign in period 3.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-48" restype="x-paragraph">
+        <source>Group 14 contains C superscript 4 negative sign in period 2.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-49" restype="x-paragraph">
+        <source>Group 15 contains N superscript 3 negative sign in period 2, P superscript 3 negative sign in period 3, and A s superscript 3 negative sign in period 4.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-50" restype="x-paragraph">
+        <source>Group 16 contains O superscript 2 negative sign in period 2, S superscript 2 negative sign in period 3, S e superscript 2 negative sign in period 4 and T e superscript 2 negative sign in period 5.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-51" restype="x-paragraph">
+        <source>Group 17 contains F superscript negative sign in period 2, C l superscript negative sign in period 3, B r superscript negative sign in period 4, I superscript negative sign in period 5, and A t superscript negative sign in period 6.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-52" restype="x-paragraph">
+        <source>Group 18 contains H e in period 1, N e in period 2, A r in period 3, K r in period 4, X e in period 5 and R n in period 6."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-53" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 2.29: Some elements exhibit a regular pattern of ionic charge when they form ions.</g>{id="CNX_Chem_02_06_IonCharges"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-54" restype="x-paragraph">
+        <source>Composition of Ions An ion found in some compounds used as antiperspirants contains 13 protons and 10 electrons.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-55" restype="x-paragraph">
+        <source>What is its symbol?</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-56" restype="x-paragraph">
+        <source>Solution Because the number of protons remains unchanged when an atom forms an ion, the atomic number of the element must be 13.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-57" restype="x-paragraph">
+        <source>Knowing this lets us use the periodic table to identify the element as Al (aluminum).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-58" restype="x-paragraph">
+        <source>The Al atom has lost three electrons and thus has three more positive charges (13) than it has electrons (10).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-59" restype="x-paragraph">
+        <source>This is the aluminum cation, Al<g id="1" ctype="x-sup">3+</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-60" restype="x-paragraph">
+        <source>Check Your Learning Give the symbol and name for the ion with 34 protons and 36 electrons.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-61" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-62" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-63" restype="x-paragraph">
+        <source>Se<g id="1" ctype="x-sup">2−</g>, the selenide ion</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-64" restype="x-paragraph">
+        <source>Se<g id="1" ctype="x-sup">2−</g>, the selenide ion</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-65" restype="x-paragraph">
+        <source>Formation of Ions Magnesium and nitrogen react to form an ionic compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-66" restype="x-paragraph">
+        <source>Predict which forms an anion, which forms a cation, and the charges of each ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-67" restype="x-paragraph">
+        <source>Write the symbol for each ion and name them.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-68" restype="x-paragraph">
+        <source>Solution Magnesium’s position in the periodic table (group 2) tells us that it is a metal.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-69" restype="x-paragraph">
+        <source>Metals form positive ions (cations).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-70" restype="x-paragraph">
+        <source>A magnesium atom must lose two electrons to have the same number electrons as an atom of the previous noble gas, neon.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-71" restype="x-paragraph">
+        <source>Thus, a magnesium atom will form a cation with two fewer electrons than protons and a charge of 2+.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-72" restype="x-paragraph">
+        <source>The symbol for the ion is Mg<g id="1" ctype="x-sup">2+</g>, and it is called a magnesium ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-73" restype="x-paragraph">
+        <source>Nitrogen’s position in the periodic table (group 15) reveals that it is a nonmetal.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-74" restype="x-paragraph">
+        <source>Nonmetals form negative ions (anions).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-75" restype="x-paragraph">
+        <source>A nitrogen atom must gain three electrons to have the same number of electrons as an atom of the following noble gas, neon.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-76" restype="x-paragraph">
+        <source>Thus, a nitrogen atom will form an anion with three more electrons than protons and a charge of 3−.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-77" restype="x-paragraph">
+        <source>The symbol for the ion is N<g id="1" ctype="x-sup">3−</g>, and it is called a nitride ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-78" restype="x-paragraph">
+        <source>Check Your Learning Aluminum and carbon react to form an ionic compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-79" restype="x-paragraph">
+        <source>Predict which forms an anion, which forms a cation, and the charges of each ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-80" restype="x-paragraph">
+        <source>Write the symbol for each ion and name them.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-81" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-82" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-83" restype="x-paragraph">
+        <source>Al will form a cation with a charge of 3+: Al<g id="1" ctype="x-sup">3+</g>, an aluminum ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-84" restype="x-paragraph">
+        <source>Carbon will form an anion with a charge of 4−: C<g id="1" ctype="x-sup">4−</g>, a carbide ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-85" restype="x-paragraph">
+        <source>Al will form a cation with a charge of 3+: Al<g id="1" ctype="x-sup">3+</g>, an aluminum ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-86" restype="x-paragraph">
+        <source>Carbon will form an anion with a charge of 4−: C<g id="1" ctype="x-sup">4−</g>, a carbide ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-87" restype="x-paragraph">
+        <source>The ions that we have discussed so far are called <g id="1" ctype="x-bold">monatomic ions</g>{id="term-00001"}, that is, they are ions formed from only one atom.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-88" restype="x-paragraph">
+        <source>We also find many <g id="1" ctype="x-bold">polyatomic ions</g>{id="term-00002"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-89" restype="x-paragraph">
+        <source>These ions, which act as discrete units, are electrically charged molecules (a group of bonded atoms with an overall charge).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-90" restype="x-paragraph">
+        <source>Some of the more important polyatomic ions are listed in [↗]{ref="fs-idp278664880"}. <g id="1" ctype="x-bold">Oxyanions</g>{id="term-00003"} are polyatomic ions that contain one or more oxygen atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-91" restype="x-paragraph">
+        <source>At this point in your study of chemistry, you should memorize the names, formulas, and charges of the most common polyatomic ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-92" restype="x-paragraph">
+        <source>Because you will use them repeatedly, they will soon become familiar.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-93" restype="x-paragraph">
+        <source><g id="1" ctype="x-bold">Common Polyatomic Ions</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-94" restype="x-paragraph">
+        <source>| Name | Formula | Related Acid | Formula | | :--- | :--- | :--- | :--- | | ammonium | <x id="1" equiv-text="[[EQ:1]]" ctype="x-equation"/> |  |  | | hydronium | <x id="2" equiv-text="[[EQ:2]]" ctype="x-equation"/> |  |  | | peroxide | <x id="3" equiv-text="[[EQ:3]]" ctype="x-equation"/> |  |  | | hydroxide | <x id="4" equiv-text="[[EQ:4]]" ctype="x-equation"/> |  |  | | acetate | <x id="5" equiv-text="[[EQ:5]]" ctype="x-equation"/> | acetic acid | CH<g id="24" ctype="x-sub">3</g>COOH | | cyanide | CN<g id="45" ctype="x-sup">−</g> | hydrocyanic acid | HCN | | azide | <x id="6" equiv-text="[[EQ:6]]" ctype="x-equation"/> | hydrazoic acid | HN<g id="25" ctype="x-sub">3</g> | | carbonate | <x id="7" equiv-text="[[EQ:7]]" ctype="x-equation"/> | carbonic acid | H<g id="26" ctype="x-sub">2</g>CO<g id="27" ctype="x-sub">3</g> | | bicarbonate | <x id="8" equiv-text="[[EQ:8]]" ctype="x-equation"/> |  |  | | nitrate | <x id="9" equiv-text="[[EQ:9]]" ctype="x-equation"/> | nitric acid | HNO<g id="28" ctype="x-sub">3</g> | | nitrite | <x id="10" equiv-text="[[EQ:10]]" ctype="x-equation"/> | nitrous acid | HNO<g id="29" ctype="x-sub">2</g> | | sulfate | <x id="11" equiv-text="[[EQ:11]]" ctype="x-equation"/> | sulfuric acid | H<g id="30" ctype="x-sub">2</g>SO<g id="31" ctype="x-sub">4</g> | | hydrogen sulfate | <x id="12" equiv-text="[[EQ:12]]" ctype="x-equation"/> |  |  | | sulfite | <x id="13" equiv-text="[[EQ:13]]" ctype="x-equation"/> | sulfurous acid | H<g id="32" ctype="x-sub">2</g>SO<g id="33" ctype="x-sub">3</g> | | hydrogen sulfite | <x id="14" equiv-text="[[EQ:14]]" ctype="x-equation"/> |  |  | | phosphate | <x id="15" equiv-text="[[EQ:15]]" ctype="x-equation"/> | phosphoric acid | H<g id="34" ctype="x-sub">3</g>PO<g id="35" ctype="x-sub">4</g> | | hydrogen phosphate | <x id="16" equiv-text="[[EQ:16]]" ctype="x-equation"/> |  |  | | dihydrogen phosphate | <x id="17" equiv-text="[[EQ:17]]" ctype="x-equation"/> |  |  | | perchlorate | <x id="18" equiv-text="[[EQ:18]]" ctype="x-equation"/> | perchloric acid | HClO<g id="36" ctype="x-sub">4</g> | | chlorate | <x id="19" equiv-text="[[EQ:19]]" ctype="x-equation"/> | chloric acid | HClO<g id="37" ctype="x-sub">3</g> | | chlorite | <x id="20" equiv-text="[[EQ:20]]" ctype="x-equation"/> | chlorous acid | HClO<g id="38" ctype="x-sub">2</g> | | hypochlorite | ClO<g id="46" ctype="x-sup">−</g> | hypochlorous acid | HClO | | chromate | <x id="21" equiv-text="[[EQ:21]]" ctype="x-equation"/> | chromic acid | H<g id="39" ctype="x-sub">2</g>CrO<g id="40" ctype="x-sub">4</g> | | dichromate | <x id="22" equiv-text="[[EQ:22]]" ctype="x-equation"/> | dichromic acid | H<g id="41" ctype="x-sub">2</g>Cr<g id="42" ctype="x-sub">2</g>O<g id="43" ctype="x-sub">7</g> | | permanganate | <x id="23" equiv-text="[[EQ:23]]" ctype="x-equation"/> | permanganic acid | HMnO<g id="44" ctype="x-sub">4</g> | {id="fs-idp278664880" summary="This table has three columns labeled “charge,” “name,” and “formula.” Ammonium has a charge of positive 1 and the formula N H subscript 4 superscript plus sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-95" restype="x-paragraph">
+        <source>Acetate has a charge of negative 1 and the formula C subscript 2 H subscript 3 O subscript 2 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-96" restype="x-paragraph">
+        <source>Cyanide has a charge of negative 1, and the formula C N superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-97" restype="x-paragraph">
+        <source>Hydroxide has a charge of negative 1 and the formula O H superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-98" restype="x-paragraph">
+        <source>Nitrate has a charge of negative 1 and the formula N O subscript 3 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-99" restype="x-paragraph">
+        <source>Nitrite has a charge of negative 1 and the formula N O subscript 2 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-100" restype="x-paragraph">
+        <source>Perchlorate has a charge of negative 1 and the formula C l O subscript 4 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-101" restype="x-paragraph">
+        <source>Chlorate has a charge of negative 1 and the formula C l O subscript 3 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-102" restype="x-paragraph">
+        <source>Chlorite has a charge of negative 1 and the formula C l O subscript 2 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-103" restype="x-paragraph">
+        <source>Hypochlorite has a charge of negative 1 and the formula C l O superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-104" restype="x-paragraph">
+        <source>Permanganate has a charge of negative 1 and the formula M n O subscript 4 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-105" restype="x-paragraph">
+        <source>Hydrogen carbonate, or bicarbonate has a charge of negative 1 and the formula H C O subscript 3 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-106" restype="x-paragraph">
+        <source>Carbonate has a charge of negative 2 and the formula C O subscript 3 superscript 2 negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-107" restype="x-paragraph">
+        <source>Peroxide has a charge of negative 2 and the formula O subscript 2 superscript 2 negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-108" restype="x-paragraph">
+        <source>Hydrogen sulfate, or bisulfate, has a charge of negative 1 and the formula H S O subscript 4 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-109" restype="x-paragraph">
+        <source>Sulfate has a charge of negative 2 and the formula S O subscript 4 superscript 2 negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-110" restype="x-paragraph">
+        <source>Sulfite has a charge of negative 2 and the formula S O subscript 3 superscript 2 negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-111" restype="x-paragraph">
+        <source>Dihydrogen phosphate has a charge of negative 1 and the formula H subscript 2 P O subscript 4 superscript negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-112" restype="x-paragraph">
+        <source>Hydrogen phosphate has a charge of negative 2 and the formula H P O subscript 4 superscript 2 negative sign.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-113" restype="x-paragraph">
+        <source>Phosphate has a charge of negative 3 and the formula P O subscript 4 superscript 3 negative sign."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-114" restype="x-paragraph">
+        <source>Note that there is a system for naming some polyatomic ions; <g id="1" ctype="x-italic">-ate</g> and <g id="2" ctype="x-italic">-ite</g> are suffixes designating polyatomic ions containing more or fewer oxygen atoms. <g id="3" ctype="x-italic">Per-</g> (short for “hyper”) and <g id="4" ctype="x-italic">hypo-</g> (meaning “under”) are prefixes meaning more oxygen atoms than <g id="5" ctype="x-italic">-ate</g> and fewer oxygen atoms than <g id="6" ctype="x-italic">-ite</g>, respectively.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-115" restype="x-paragraph">
+        <source>For example, perchlorate is <x id="1" equiv-text="[[EQ:24]]" ctype="x-equation"/> chlorate is <x id="2" equiv-text="[[EQ:25]]" ctype="x-equation"/> chlorite is <x id="3" equiv-text="[[EQ:26]]" ctype="x-equation"/> and hypochlorite is ClO<g id="4" ctype="x-sup">−</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-116" restype="x-paragraph">
+        <source>Unfortunately, the number of oxygen atoms corresponding to a given suffix or prefix is not consistent; for example, nitrate is <x id="1" equiv-text="[[EQ:27]]" ctype="x-equation"/> while sulfate is <x id="2" equiv-text="[[EQ:28]]" ctype="x-equation"/> This will be covered in more detail in the next module on nomenclature.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-117" restype="x-paragraph">
+        <source>The nature of the attractive forces that hold atoms or ions together within a compound is the basis for classifying chemical bonding.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-118" restype="x-paragraph">
+        <source>When electrons are transferred and ions form, <g id="1" ctype="x-bold">ionic bonds</g>{id="term-00004"} result.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-119" restype="x-paragraph">
+        <source>Ionic bonds are electrostatic forces of attraction, that is, the attractive forces experienced between objects of opposite electrical charge (in this case, cations and anions).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-120" restype="x-paragraph">
+        <source>When electrons are “shared” and molecules form, <g id="1" ctype="x-bold">covalent bonds</g>{id="term-00005"} result.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-121" restype="x-paragraph">
+        <source>Covalent bonds are the attractive forces between the positively charged nuclei of the bonded atoms and one or more pairs of electrons that are located between the atoms.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-122" restype="x-paragraph">
+        <source>Compounds are classified as ionic or molecular (covalent) on the basis of the bonds present in them.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-123" restype="x-section-title">
+        <source>Ionic Compounds</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-124" restype="x-paragraph">
+        <source>When an element composed of atoms that readily lose electrons (a metal) reacts with an element composed of atoms that readily gain electrons (a nonmetal), a transfer of electrons usually occurs, producing ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-125" restype="x-paragraph">
+        <source>The compound formed by this transfer is stabilized by the electrostatic attractions (ionic bonds) between the ions of opposite charge present in the compound.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-126" restype="x-paragraph">
+        <source>For example, when each sodium atom in a sample of sodium metal (group 1) gives up one electron to form a sodium cation, Na<g id="1" ctype="x-sup">+</g>, and each chlorine atom in a sample of chlorine gas (group 17) accepts one electron to form a chloride anion, Cl<g id="2" ctype="x-sup">−</g>, the resulting compound, NaCl, is composed of sodium ions and chloride ions in the ratio of one Na<g id="3" ctype="x-sup">+</g> ion for each Cl<g id="4" ctype="x-sup">−</g> ion.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-127" restype="x-paragraph">
+        <source>Similarly, each calcium atom (group 2) can give up two electrons and transfer one to each of two chlorine atoms to form CaCl<g id="1" ctype="x-sub">2</g>, which is composed of Ca<g id="2" ctype="x-sup">2+</g> and Cl<g id="3" ctype="x-sup">−</g> ions in the ratio of one Ca<g id="4" ctype="x-sup">2+</g> ion to two Cl<g id="5" ctype="x-sup">−</g> ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-128" restype="x-paragraph">
+        <source>A compound that contains ions and is held together by ionic bonds is called an <g id="1" ctype="x-bold">ionic compound</g>{id="term-00006"}.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-129" restype="x-paragraph">
+        <source>The periodic table can help us recognize many of the compounds that are ionic: When a metal is combined with one or more nonmetals, the compound is usually ionic.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-130" restype="x-paragraph">
+        <source>This guideline works well for predicting ionic compound formation for most of the compounds typically encountered in an introductory chemistry course.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-131" restype="x-paragraph">
+        <source>However, it is not always true (for example, aluminum chloride, AlCl<g id="1" ctype="x-sub">3</g>, is not ionic).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-132" restype="x-paragraph">
+        <source>You can often recognize ionic compounds because of their properties.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-133" restype="x-paragraph">
+        <source>Ionic compounds are solids that typically melt at high temperatures and boil at even higher temperatures.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-134" restype="x-paragraph">
+        <source>For example, sodium chloride melts at 801 °C and boils at 1413 °C. (As a comparison, the molecular compound water melts at 0 °C and boils at 100 °C.) In solid form, an ionic compound is not electrically conductive because its ions are unable to flow (“electricity” is the flow of charged particles).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-135" restype="x-paragraph">
+        <source>When molten, however, it can conduct electricity because its ions are able to move freely through the liquid ([↗]{ref="CNX_Chem_02_06_NaClMolten"}).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-136" restype="x-paragraph">
+        <source>![](CNX_Chem_02_06_NaClMolten.jpg){id="CNX_Chem_02_06_NaClMolten" class="scaled-down" alt="This figure shows three photos connected by right-facing arrows.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-137" restype="x-paragraph">
+        <source>The first shows a light bulb as part of a complex lab equipment setup.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-138" restype="x-paragraph">
+        <source>The light bulb is not lit.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-139" restype="x-paragraph">
+        <source>The second photo shows a substances being heated or set on fire.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-140" restype="x-paragraph">
+        <source>The third shows the light bulb again which is lit."}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-141" restype="x-paragraph">
+        <source><g id="1" ctype="x-italic">Figure 2.30: Sodium chloride melts at 801 °C and conducts electricity when molten. (credit: modification of work by Mark Blaser and Matt Evans)</g>{id="CNX_Chem_02_06_NaClMolten"}</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-142" restype="x-section-title">
+        <source>Molecular Compounds</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-143" restype="x-paragraph">
+        <source>Many compounds do not contain ions but instead consist solely of discrete, neutral molecules.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-144" restype="x-paragraph">
+        <source>These <g id="1" ctype="x-bold">molecular compounds</g>{id="term-00007"} (covalent compounds) result when atoms share, rather than transfer (gain or lose), electrons.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-145" restype="x-paragraph">
+        <source>Covalent bonding is an important and extensive concept in chemistry, and it will be treated in considerable detail in a later chapter of this text.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-146" restype="x-paragraph">
+        <source>We can often identify molecular compounds on the basis of their physical properties.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-147" restype="x-paragraph">
+        <source>Under normal conditions, molecular compounds often exist as gases, low-boiling liquids, and low-melting solids, although many important exceptions exist.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-148" restype="x-paragraph">
+        <source>Whereas ionic compounds are usually formed when a metal and a nonmetal combine, covalent compounds are usually formed by a combination of nonmetals.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-149" restype="x-paragraph">
+        <source>Thus, the periodic table can help us recognize many of the compounds that are covalent.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-150" restype="x-paragraph">
+        <source>While we can use the positions of a compound’s elements in the periodic table to predict whether it is ionic or covalent at this point in our study of chemistry, you should be aware that this is a very simplistic approach that does not account for a number of interesting exceptions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-151" restype="x-paragraph">
+        <source>Shades of gray exist between ionic and molecular compounds, and you’ll learn more about those later.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-152" restype="x-example-subsection-title">
+        <source>Example 2.3: Predicting the Type of Bonding in Compounds</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-153" restype="x-example-paragraph">
+        <source>Predict whether the following compounds are ionic or molecular:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-154" restype="x-example-paragraph">
+        <source>(a) KI, the compound used as a source of iodine in table salt</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-155" restype="x-example-paragraph">
+        <source>(b) H<g id="1" ctype="x-sub">2</g>O<g id="2" ctype="x-sub">2</g>, the bleach and disinfectant hydrogen peroxide</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-156" restype="x-example-paragraph">
+        <source>(c) CHCl<g id="1" ctype="x-sub">3</g>, the anesthetic chloroform</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-157" restype="x-example-paragraph">
+        <source>(d) Li<g id="1" ctype="x-sub">2</g>CO<g id="2" ctype="x-sub">3</g>, a source of lithium in antidepressants</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-158" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Solution</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-159" restype="x-example-paragraph">
+        <source>(a) Potassium (group 1) is a metal, and iodine (group 17) is a nonmetal; KI is predicted to be ionic.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-160" restype="x-example-paragraph">
+        <source>(b) Hydrogen (group 1) is a nonmetal, and oxygen (group 16) is a nonmetal; H<g id="1" ctype="x-sub">2</g>O<g id="2" ctype="x-sub">2</g> is predicted to be molecular.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-161" restype="x-example-paragraph">
+        <source>(c) Carbon (group 14) is a nonmetal, hydrogen (group 1) is a nonmetal, and chlorine (group 17) is a nonmetal; CHCl<g id="1" ctype="x-sub">3</g> is predicted to be molecular.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-162" restype="x-example-paragraph">
+        <source>(d) Lithium (group 1) is a metal, and carbonate is a polyatomic ion; Li<g id="1" ctype="x-sub">2</g>CO<g id="2" ctype="x-sub">3</g> is predicted to be ionic.</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-163" restype="x-example-paragraph">
+        <source><g id="1" ctype="x-bold">Check Your Learning</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-164" restype="x-example-paragraph">
+        <source>Using the periodic table, predict whether the following compounds are ionic or covalent:</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-165" restype="x-example-paragraph">
+        <source>(a) SO<g id="1" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-166" restype="x-example-paragraph">
+        <source>(b) CaF<g id="1" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-167" restype="x-example-paragraph">
+        <source>(c) N<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-168" restype="x-example-paragraph">
+        <source>(d) Al<g id="1" ctype="x-sub">2</g>(SO<g id="2" ctype="x-sub">4</g>)<g id="3" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-169" restype="x-example-paragraph">
+        <source>(a) molecular; (b) ionic; (c) molecular; (d) ionic</source>
+        <target state="new"></target>
+        <note from="developer">Example content</note>
+      </trans-unit>
+      <trans-unit id="seg-170" restype="x-paragraph">
+        <source>:::note</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-171" restype="x-subsection-title">
+        <source>Answer:</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 3</note>
+      </trans-unit>
+      <trans-unit id="seg-172" restype="x-paragraph">
+        <source>(a) molecular; (b) ionic; (c) molecular; (d) ionic</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-173" restype="x-section-title">
+        <source>Key Concepts and Summary</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-174" restype="x-paragraph">
+        <source>Metals (particularly those in groups 1 and 2) tend to lose the number of electrons that would leave them with the same number of electrons as in the preceding noble gas in the periodic table.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-175" restype="x-paragraph">
+        <source>By this means, a positively charged ion is formed.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-176" restype="x-paragraph">
+        <source>Similarly, nonmetals (especially those in groups 16 and 17, and, to a lesser extent, those in Group 15) can gain the number of electrons needed to provide atoms with the same number of electrons as in the next noble gas in the periodic table.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-177" restype="x-paragraph">
+        <source>Thus, nonmetals tend to form negative ions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-178" restype="x-paragraph">
+        <source>Positively charged ions are called cations, and negatively charged ions are called anions.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-179" restype="x-paragraph">
+        <source>Ions can be either monatomic (containing only one atom) or polyatomic (containing more than one atom).</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-180" restype="x-paragraph">
+        <source>Compounds that contain ions are called ionic compounds.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-181" restype="x-paragraph">
+        <source>Ionic compounds generally form from metals and nonmetals.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-182" restype="x-paragraph">
+        <source>Compounds that do not contain ions, but instead consist of atoms bonded tightly together in molecules (uncharged groups of atoms that behave as a single unit), are called covalent compounds.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-183" restype="x-paragraph">
+        <source>Covalent compounds usually form from two nonmetals.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-184" restype="x-section-title">
+        <source>Chemistry End of Chapter Exercises</source>
+        <target state="new"></target>
+        <note from="developer">Heading level 2</note>
+      </trans-unit>
+      <trans-unit id="seg-185" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp298677568} Using the periodic table, predict whether the following chlorides are ionic or covalent: KCl, NCl<g id="1" ctype="x-sub">3</g>, ICl, MgCl<g id="2" ctype="x-sub">2</g>, PCl<g id="3" ctype="x-sub">5</g>, and CCl<g id="4" ctype="x-sub">4</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-186" restype="x-paragraph">
+        <source>:::answer Ionic: KCl, MgCl<g id="1" ctype="x-sub">2</g>; Covalent: NCl<g id="2" ctype="x-sub">3</g>, ICl, PCl<g id="3" ctype="x-sub">5</g>, CCl<g id="4" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-187" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp44267360} Using the periodic table, predict whether the following chlorides are ionic or covalent: SiCl<g id="1" ctype="x-sub">4</g>, PCl<g id="2" ctype="x-sub">3</g>, CaCl<g id="3" ctype="x-sub">2</g>, CsCl, CuCl<g id="4" ctype="x-sub">2</g>, and CrCl<g id="5" ctype="x-sub">3</g>.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-188" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp221295264} For each of the following compounds, state whether it is ionic or covalent.</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-189" restype="x-paragraph">
+        <source>If it is ionic, write the symbols for the ions involved:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-190" restype="x-paragraph">
+        <source>(a) NF<g id="1" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-191" restype="x-paragraph">
+        <source>(b) BaO</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-192" restype="x-paragraph">
+        <source>(c) (NH<g id="1" ctype="x-sub">4</g>)<g id="2" ctype="x-sub">2</g>CO<g id="3" ctype="x-sub">3</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-193" restype="x-paragraph">
+        <source>(d) Sr(H<g id="1" ctype="x-sub">2</g>PO<g id="2" ctype="x-sub">4</g>)<g id="3" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-194" restype="x-paragraph">
+        <source>(e) IBr</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-195" restype="x-paragraph">
+        <source>(f) Na<g id="1" ctype="x-sub">2</g>O</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-196" restype="x-paragraph">
+        <source>:::answer (a) covalent; (b) ionic, Ba<g id="4" ctype="x-sup">2+</g>, O<g id="5" ctype="x-sup">2−</g>; (c) ionic, <x id="1" equiv-text="[[EQ:36]]" ctype="x-equation"/> <x id="2" equiv-text="[[EQ:37]]" ctype="x-equation"/> (d) ionic, Sr<g id="6" ctype="x-sup">2+</g>, <x id="3" equiv-text="[[EQ:38]]" ctype="x-equation"/> (e) covalent; (f) ionic, Na<g id="7" ctype="x-sup">+</g>, O<g id="8" ctype="x-sup">2−</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-197" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp4856416} For each of the following compounds, state whether it is ionic or covalent, and if it is ionic, write the symbols for the ions involved:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-198" restype="x-paragraph">
+        <source>(a) KClO<g id="1" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-199" restype="x-paragraph">
+        <source>(b) Mg(C<g id="1" ctype="x-sub">2</g>H<g id="2" ctype="x-sub">3</g>O<g id="3" ctype="x-sub">2</g>)<g id="4" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-200" restype="x-paragraph">
+        <source>(c) H<g id="1" ctype="x-sub">2</g>S</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-201" restype="x-paragraph">
+        <source>(d) Ag<g id="1" ctype="x-sub">2</g>S</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-202" restype="x-paragraph">
+        <source>(e) N<g id="1" ctype="x-sub">2</g>Cl<g id="2" ctype="x-sub">4</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-203" restype="x-paragraph">
+        <source>(f) Co(NO<g id="1" ctype="x-sub">3</g>)<g id="2" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-204" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp178456496} For each of the following pairs of ions, write the formula of the compound they will form:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-205" restype="x-paragraph">
+        <source>(a) Ca<g id="1" ctype="x-sup">2+</g>, S<g id="2" ctype="x-sup">2−</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-206" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:39]]" ctype="x-equation"/> <x id="2" equiv-text="[[EQ:40]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-207" restype="x-paragraph">
+        <source>(c) Al<g id="1" ctype="x-sup">3+</g>, Br<g id="2" ctype="x-sup">−</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-208" restype="x-paragraph">
+        <source>(d) Na<g id="2" ctype="x-sup">+</g>, <x id="1" equiv-text="[[EQ:41]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-209" restype="x-paragraph">
+        <source>(e) Mg<g id="2" ctype="x-sup">2+</g>, <x id="1" equiv-text="[[EQ:42]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-210" restype="x-paragraph">
+        <source>:::answer (a) CaS; (b) (NH<g id="1" ctype="x-sub">4</g>)<g id="2" ctype="x-sub">2</g>SO<g id="3" ctype="x-sub">4</g>; (c) AlBr<g id="4" ctype="x-sub">3</g>; (d) Na<g id="5" ctype="x-sub">2</g>HPO<g id="6" ctype="x-sub">4</g>; (e) Mg<g id="7" ctype="x-sub">3</g> (PO<g id="8" ctype="x-sub">4</g>)<g id="9" ctype="x-sub">2</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-211" restype="x-paragraph">
+        <source>:::practice-problem{#fs-idp286976176} For each of the following pairs of ions, write the formula of the compound they will form:</source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-212" restype="x-paragraph">
+        <source>(a) K<g id="1" ctype="x-sup">+</g>, O<g id="2" ctype="x-sup">2−</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-213" restype="x-paragraph">
+        <source>(b) <x id="1" equiv-text="[[EQ:43]]" ctype="x-equation"/> <x id="2" equiv-text="[[EQ:44]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-214" restype="x-paragraph">
+        <source>(c) Al<g id="1" ctype="x-sup">3+</g>, O<g id="2" ctype="x-sup">2−</g></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-215" restype="x-paragraph">
+        <source>(d) Na<g id="2" ctype="x-sup">+</g>, <x id="1" equiv-text="[[EQ:45]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+      <trans-unit id="seg-216" restype="x-paragraph">
+        <source>(e) Ba<g id="2" ctype="x-sup">2+</g>, <x id="1" equiv-text="[[EQ:46]]" ctype="x-equation"/></source>
+        <target state="new"></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
