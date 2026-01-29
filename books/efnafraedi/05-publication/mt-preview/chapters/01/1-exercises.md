@@ -3,7 +3,7 @@ title: Æfingar
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T15:51:40.460Z"
+published-at: "2026-01-29T16:20:51.180Z"
 type: exercises
 ---
 
@@ -574,63 +574,7 @@ ml, 27,01 ml
 
 :::
 
-:::exercise{#fs-idm287695728 number=46}
-Skrifaðu umreikningsþætti (sem
-hlutföll) fyrir fjölda:
-
-\(a\) yarda í 1 metra
-
-\(b\) lítra í 1 „liquid quart“
-
-\(c\) punda í 1 kílógrammi
-
-:::
-
-:::exercise{#fs-idm321326256 number=47}
-Skrifaðu umreikningsþætti (sem
-hlutföll) fyrir fjölda:
-
-\(a\) kílómetra í 1 mílu
-
-\(b\) lítra í 1 rúmfeti
-
-\(c\) gramma í 1 únsu
-
-:::
-
-:::exercise{#fs-idp43396912 number=48}
-Á miðanum á gosflösku er rúmmálið
-gefið upp í tveimur einingum: 2,0 L og 67,6 fl oz. Notaðu þessar
-upplýsingar til að leiða út umreikningsþátt milli enskra og
-metrakerfiseininga. Hversu marga markverða stafi geturðu réttlætt í
-umreikningsþættinum þínum?
-
-:::
-
-:::exercise{#fs-idm124621456 number=49}
-Á miðanum á morgunkornspakka er
-massi morgunkornsins gefinn upp í tveimur einingum: 978 grömm og 34,5
-oz. Notaðu þessar upplýsingar til að finna umreikningsþátt milli enskra
-og metrakerfiseininga. Hversu marga markverða stafi geturðu réttlætt í
-umreikningsþættinum þínum?
-
-:::
-
-:::exercise{#fs-idm125803088 number=50}
-Fótbolti er spilaður með
-kringlóttum bolta sem hefur ummál á milli 27 og 28 tommur og þyngd á
-milli 14 og 16 únsur. Hverjar eru þessar forskriftir í einingum
-sentímetra og gramma?
-
-:::
-
----
-title: "Stærðfræðileg meðferð mælinganiðurstaðna"
----
-
-:::
-
-:::exercise{#fs-idm128259568 number=51}
+:::exercise{#fs-idm128259568 number=46}
 Ummál körfubolta fyrir konur er á
 milli 28,5 og 29,0 tommur og hámarksþyngd hans er 20 únsur (tveir
 markverðir stafir). Hverjar eru þessar forskriftir í sentímetrum og
@@ -638,59 +582,59 @@ grömmum?
 
 :::
 
-:::exercise{#fs-idm203954352 number=52}
+:::exercise{#fs-idm203954352 number=47}
 Hversu margir millilítrar af
 gosdrykk eru í 12,0 únsu dós?
 
 :::
 
-:::exercise{#fs-idm290820272 number=53}
+:::exercise{#fs-idm290820272 number=48}
 Olíutunna er nákvæmlega 42 gallon.
 Hversu margir lítrar af olíu eru í tunnu?
 
 :::
 
-:::exercise{#fs-idp32978240 number=54}
+:::exercise{#fs-idp32978240 number=49}
 Þvermál rauðrar blóðfrumu er um 3
 $\times$ 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
 
 :::
 
-:::exercise{#fs-idp3893440 number=55}
+:::exercise{#fs-idp3893440 number=50}
 Fjarlægðin milli miðju tveggja
 súrefnisatóma í súrefnissameind er 1,21 $\times$ 10^−8^ cm. Hver er
 þessi fjarlægð í tommum?
 
 :::
 
-:::exercise{#fs-idm280166528 number=56}
+:::exercise{#fs-idm280166528 number=51}
 Er 197 punda lyftingamaður nógu
 léttur til að keppa í flokki sem er takmarkaður við þá sem vega 90 kg
 eða minna?
 
 :::
 
-:::exercise{#fs-idm311405440 number=57}
+:::exercise{#fs-idm311405440 number=52}
 Mjög góður 197 punda lyftingamaður
 lyfti 192 kg í hreyfingu sem kallast jafnhending og snörun. Hver var
 massi þyngdarinnar sem lyft var í pundum?
 
 :::
 
-:::exercise{#fs-idm159954784 number=58}
+:::exercise{#fs-idm159954784 number=53}
 Mörg læknisfræðileg
 rannsóknarstofupróf eru framkvæmd með 5,0 μL af blóðsermi. Hvert er
 þetta rúmmál í millilítrum?
 
 :::
 
-:::exercise{#fs-idm293326720 number=59}
+:::exercise{#fs-idm293326720 number=54}
 Ef aspiríntöflu inniheldur 325 mg
 af aspiríni, hversu mörg grömm af aspiríni inniheldur hún?
 
 :::
 
-:::exercise{#fs-idm101514016 number=60}
+:::exercise{#fs-idm101514016 number=55}
 Notaðu vísindalegan (veldisvísis)
 rithátt til að tjá eftirfarandi stærðir með SI-grunneiningum í
 [sjá töflu](#fs-idm81346144):
@@ -715,7 +659,7 @@ rithátt til að tjá eftirfarandi stærðir með SI-grunneiningum í
 
 :::
 
-:::exercise{#fs-idm247037968 number=61}
+:::exercise{#fs-idm247037968 number=56}
 Ljúktu við eftirfarandi
 umbreytingar milli SI-eininga.
 
@@ -739,7 +683,7 @@ umbreytingar milli SI-eininga.
 
 :::
 
-:::exercise{#fs-idp54026624 number=62}
+:::exercise{#fs-idp54026624 number=57}
 Bensín er selt í lítrum í mörgum
 löndum. Hversu marga lítra þarf til að fylla 12
 
@@ -747,19 +691,19 @@ löndum. Hversu marga lítra þarf til að fylla 12
 
 :::
 
-:::exercise{#fs-idm242942368 number=63}
+:::exercise{#fs-idm242942368 number=58}
 Mjólk er seld í lítrum í mörgum löndum.
 Hvert er rúmmál nákvæmlega 1/2 gallona af mjólk í lítrum?
 
 :::
 
-:::exercise{#fs-idm186995360 number=64}
+:::exercise{#fs-idm186995360 number=59}
 Eitt „long ton“ er skilgreint sem
 nákvæmlega 2240 pund. Hver er þessi massi í kílógrömmum?
 
 :::
 
-:::exercise{#fs-idm311016240 number=65}
+:::exercise{#fs-idm311016240 number=60}
 Framkvæmdu umreikninginn sem tilgreindur
 er í hverjum eftirfarandi liða:
 
@@ -779,7 +723,7 @@ er í hverjum eftirfarandi liða:
 
 :::
 
-:::exercise{#fs-idm250694352 number=66}
+:::exercise{#fs-idm250694352 number=61}
 Framkvæmdu umreikninginn sem tilgreindur
 er í hverjum eftirfarandi liða:
 
@@ -800,7 +744,7 @@ kílómetra
 
 :::
 
-:::exercise{#fs-idm219388000 number=67}
+:::exercise{#fs-idm219388000 number=62}
 Á mörgum efnafræðiráðstefnum hefur verið
 haldið 50 trilljón angstroma hlaup (tveir markverðir stafir). Hversu
 langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 $\times$
@@ -808,7 +752,7 @@ langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 $\times$
 
 :::
 
-:::exercise{#fs-idm311640624 number=68}
+:::exercise{#fs-idm311640624 number=63}
 50 trilljón angstroma hlaup efnafræðings
 (sjá [sjá töflu](#fs-idm219388000)) væri 10.900 álna hlaup
 fornleifafræðings. Hversu löng er ein alin í metrum og fetum? (1 Å = 1
@@ -816,7 +760,7 @@ $\times$ 10^−8^ cm)
 
 :::
 
-:::exercise{#fs-idm306975136 number=69}
+:::exercise{#fs-idm306975136 number=64}
 Bensíntankur ákveðins lúxusbifreiðar
 tekur 22,3 gallon samkvæmt handbók eiganda. Ef eðlismassi bensíns er
 0,8206 g/ml, ákvarðaðu þá massa eldsneytisins í kílógrömmum og pundum í
@@ -824,7 +768,7 @@ fullum tanki.
 
 :::
 
-:::exercise{#fs-idm244153744 number=70}
+:::exercise{#fs-idm244153744 number=65}
 Kennari er að undirbúa tilraun og þarf
 225 g af fosfórsýru. Eina ílátið sem er aðgengilegt er 150 ml
 keiluflaska. Er hún nógu stór til að rúma sýruna, en eðlismassi hennar
@@ -832,7 +776,7 @@ er 1,83 g/ml?
 
 :::
 
-:::exercise{#fs-idm110873792 number=71}
+:::exercise{#fs-idm110873792 number=66}
 Til að undirbúa sig fyrir tíma á
 rannsóknarstofu þarf aðstoðarmaður nemanda 125 g af efnasambandi. Flaska
 sem inniheldur 1/4 pund er fáanleg. Hafði nemandinn nóg af
@@ -840,20 +784,20 @@ efnasambandinu?
 
 :::
 
-:::exercise{#fs-idp15401744 number=72}
+:::exercise{#fs-idp15401744 number=67}
 Efnafræðinemi er 159 cm á hæð og vegur
 45,8 kg. Hver er hæð hennar í tommum og þyngd í pundum?
 
 :::
 
-:::exercise{#fs-idm207241008 number=73}
+:::exercise{#fs-idm207241008 number=68}
 Í nýlegri Grand Prix-kappaksturskeppni
 lauk sigurvegarinn keppni með meðalhraðann 229.8 km/klst. Hver var hraði
 hans í mílum á klukkustund, metrum á sekúndu og fetum á sekúndu?
 
 :::
 
-:::exercise{#fs-idm289866560 number=74}
+:::exercise{#fs-idm289866560 number=69}
 Leystu þessi dæmi um
 timburstærðir.
 
@@ -868,7 +812,7 @@ komið fyrir með 16,0 tommu millibili. Hver er sú fjarlægð í sentímetrum?
 
 :::
 
-:::exercise{#fs-idm95632784 number=75}
+:::exercise{#fs-idm95632784 number=70}
 Talið var að kvikasilfursinnihald í
 læk væri yfir því lágmarki sem talið er öruggt – 1 hluti á milljarð
 (ppb) miðað við þyngd. Greining leiddi í ljós að styrkurinn var 0,68
@@ -877,20 +821,20 @@ hlutar á milljarð. Hvaða magn kvikasilfurs í grömmum var til staðar í
 
 :::
 
-:::exercise{#fs-idm215857872 number=76}
+:::exercise{#fs-idm215857872 number=71}
 Reiknaðu eðlismassa áls ef 27,6
 cm^3^ hefur massann 74,6 g.
 
 :::
 
-:::exercise{#fs-idm215482272 number=77}
+:::exercise{#fs-idm215482272 number=72}
 Osmín er eitt af eðlisþyngstu
 frumefnum sem þekkt eru. Hver er eðlismassi þess ef 2,72 g hefur
 rúmmálið 0,121 cm^3^?
 
 :::
 
-:::exercise{#fs-idm361862336 number=78}
+:::exercise{#fs-idm361862336 number=73}
 Reiknaðu þessa massa.
 
 \(a\) Hver er massi 6,00 cm^3^ af kvikasilfri, eðlismassi = 13,5939
@@ -900,7 +844,7 @@ g/cm^3^?
 
 :::
 
-:::exercise{#fs-idm305607360 number=79}
+:::exercise{#fs-idm305607360 number=74}
 Reiknaðu þessa massa.
 
 \(a\) Hver er massi 4,00 cm^3^ af natríni, eðlismassi = 0,97 g/cm^3^?
@@ -909,7 +853,7 @@ Reiknaðu þessa massa.
 
 :::
 
-:::exercise{#fs-idm216432832 number=80}
+:::exercise{#fs-idm216432832 number=75}
 Reiknaðu þessi rúmmál.
 
 \(a\) Hvert er rúmmál 25 g af joði, eðlismassi = 4,93 g/cm^3^?
@@ -918,7 +862,7 @@ Reiknaðu þessi rúmmál.
 
 :::
 
-:::exercise{#fs-idm182387776 number=81}
+:::exercise{#fs-idm182387776 number=76}
 Reiknaðu þessi rúmmál.
 
 \(a\) Hvert er rúmmál 11,3 g af grafíti, eðlismassi = 2,25 g/cm^3^?
@@ -927,44 +871,44 @@ Reiknaðu þessi rúmmál.
 
 :::
 
-:::exercise{#fs-idm208263472 number=82}
+:::exercise{#fs-idm208263472 number=77}
 Umbreyttu suðuhitastigi gulls,
 2966 °C, í gráður á Fahrenheit og kelvin.
 
 :::
 
-:::exercise{#fs-idm291580080 number=83}
+:::exercise{#fs-idm291580080 number=78}
 Umbreyttu hitastigi sjóðandi heits
 vatns, 54 °C, í gráður á Fahrenheit og kelvin.
 
 :::
 
-:::exercise{#fs-idm126910176 number=84}
+:::exercise{#fs-idm126910176 number=79}
 Umbreyttu hitastigi kaldasta
 svæðisins í frysti, −10 °F, í gráður á Selsíus og kelvin.
 
 :::
 
-:::exercise{#fs-idm294247168 number=85}
+:::exercise{#fs-idm294247168 number=80}
 Umbreyttu hitastigi þurríss, −77
 °C, í gráður á Fahrenheit og kelvin.
 
 :::
 
-:::exercise{#fs-idm312310640 number=86}
+:::exercise{#fs-idm312310640 number=81}
 Umbreyttu suðuhitastigi fljótandi
 ammóníaks, −28,1 °F, í gráður á Selsíus og kelvin.
 
 :::
 
-:::exercise{#fs-idm307064960 number=87}
+:::exercise{#fs-idm307064960 number=82}
 Á merkimiða á úðabrúsa með
 sótthreinsiefni er varað við því að hita brúsann yfir 130 °F. Hvert er
 samsvarandi hitastig á Celsíus- og kelvinkvarða?
 
 :::
 
-:::exercise{#fs-idm161487744 number=88}
+:::exercise{#fs-idm161487744 number=83}
 Veðrið í Evrópu var óvenjulega
 hlýtt sumarið 1995. Í sjónvarpsfréttum var greint frá hitastigi allt að
 45 °C. Hvert var hitastigið á Fahrenheit-kvarða?

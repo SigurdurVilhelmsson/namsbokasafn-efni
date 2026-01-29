@@ -3,7 +3,7 @@ title: Inngangur
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T15:51:40.426Z"
+published-at: "2026-01-29T16:20:51.142Z"
 section: "1.0"
 ---
 

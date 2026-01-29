@@ -3,7 +3,7 @@ title: Svarlykill
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T15:51:40.463Z"
+published-at: "2026-01-29T16:20:51.183Z"
 type: answer-key
 ---
 
@@ -144,42 +144,27 @@ $\times$ 10^−3^
 
 :::
 
-:::answer-entry{#fs-idm287695728 number=46}
-(a) ${\frac{{\text{1,0936 yd}}}{{\text{1 m}}}}$; (b) ${\frac{{\text{0,94635 L}}}{{\text{1 qt}}}}$; (c) $${\frac{{\text{2,2046 lb}}}{{\text{1 kg}}}}$$
-
-:::
-
-:::answer-entry{#fs-idp43396912 number=48}
-$$\frac{{\text{2,0 L}}}{{\text{67,6 fl oz}}}\,=\,\frac{{\text{0,030 L}}}{{\text{1 fl oz}}}$$ Aðeins tveir markverðir stafir eru
-réttlætanlegir.
-
-:::
-
-:::answer-entry{#fs-idm125803088 number=50}
-68–71 cm; 400–450 g
-:::
-
-:::answer-entry{#fs-idm203954352 number=52}
+:::answer-entry{#fs-idm203954352 number=47}
 355 ml
 
 :::
 
-:::answer-entry{#fs-idp32978240 number=54}
+:::answer-entry{#fs-idp32978240 number=49}
 8 $\times$ 10^−4^ cm
 
 :::
 
-:::answer-entry{#fs-idm280166528 number=56}
+:::answer-entry{#fs-idm280166528 number=51}
 já; þyngd = 89,4 kg
 
 :::
 
-:::answer-entry{#fs-idm159954784 number=58}
+:::answer-entry{#fs-idm159954784 number=53}
 5,0 $\times$ 10^−3^ ml
 
 :::
 
-:::answer-entry{#fs-idm101514016 number=60}
+:::answer-entry{#fs-idm101514016 number=55}
 (a) 1,3 $\times$ 10^−4^ kg; (b) 2,32 $\times$ 10^8^
 kg; (c) 5,23 $\times$ 10^−12^ m; (d) 8,63 $\times$ 10^−5^ kg;
 (e) 3,76 $\times$ 10^−1^ m; (f) 5,4 $\times$ 10^−5^ m; (g) 1
@@ -188,73 +173,73 @@ $\times$ 10^−4^ K
 
 :::
 
-:::answer-entry{#fs-idp54026624 number=62}
+:::answer-entry{#fs-idp54026624 number=57}
 45,4 L
 
 :::
 
-:::answer-entry{#fs-idm186995360 number=64}
+:::answer-entry{#fs-idm186995360 number=59}
 1,0160 $\times$ 10^3^ kg
 
 :::
 
-:::answer-entry{#fs-idm250694352 number=66}
+:::answer-entry{#fs-idm250694352 number=61}
 (a) 394 fet; (b) 5,9634 km; (c) 6,0 $\times$ 10^2^; (d)
 2,64 L; (e) 5,1 $\times$ 10^18^ kg; (f) 14,5 kg; (g) 324 mg
 
 :::
 
-:::answer-entry{#fs-idm311640624 number=68}
+:::answer-entry{#fs-idm311640624 number=63}
 0,46 m; 1,5 fet/alin
 
 :::
 
-:::answer-entry{#fs-idm244153744 number=70}
+:::answer-entry{#fs-idm244153744 number=65}
 Já, rúmmál sýrunnar er 123 ml.
 
 :::
 
-:::answer-entry{#fs-idp15401744 number=72}
+:::answer-entry{#fs-idp15401744 number=67}
 62,6 tommur (um 5 fet 3 tommur) og 101 pund
 
 :::
 
-:::answer-entry{#fs-idm289866560 number=74}
+:::answer-entry{#fs-idm289866560 number=69}
 (a) 3,81 cm $\times$ 8,89 cm $\times$ 2,44 m; (b)
 40,6 cm
 
 :::
 
-:::answer-entry{#fs-idm215857872 number=76}
+:::answer-entry{#fs-idm215857872 number=71}
 2,70 g/cm^3^
 
 :::
 
-:::answer-entry{#fs-idm361862336 number=78}
+:::answer-entry{#fs-idm361862336 number=73}
 (a) 81,6 g; (b) 17,6 g
 
 :::
 
-:::answer-entry{#fs-idm216432832 number=80}
+:::answer-entry{#fs-idm216432832 number=75}
 (a) 5,1 ml; (b) 37 L
 
 :::
 
-:::answer-entry{#fs-idm208263472 number=82}
+:::answer-entry{#fs-idm208263472 number=77}
 5371 °F, 3239 K
 
 :::
 
-:::answer-entry{#fs-idm126910176 number=84}
+:::answer-entry{#fs-idm126910176 number=79}
 −23 °C, 250 K
 
 :::
 
-:::answer-entry{#fs-idm312310640 number=86}
+:::answer-entry{#fs-idm312310640 number=81}
 −33,4 °C, 239.8 K
 
 :::
 
-:::answer-entry{#fs-idm161487744 number=88}
+:::answer-entry{#fs-idm161487744 number=83}
 113 °F
 :::
