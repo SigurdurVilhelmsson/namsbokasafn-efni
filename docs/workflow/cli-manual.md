@@ -56,9 +56,9 @@ node tools/pipeline-runner.js m68685 --output-dir books/efnafraedi/02-for-mt/ch0
 **Output:** `books/efnafraedi/02-for-mt/ch##/`
 - `{section}.en.md` - English markdown with `[[EQ:n]]` equation placeholders
 - `{section}-equations.json` - LaTeX equations for restoration
+- `{section}-equation-strings.en.md` - Translatable text from equations (auto-generated)
 - `{section}-figures.json` - Figure references
-- `{section}-tables.json` - Table data
-- `{section}-strings.json` - Translatable strings (titles, captions)
+- `{section}-protected.json` - Protected tables and frontmatter
 
 **Options:**
 ```bash
@@ -134,12 +134,58 @@ node tools/protect-for-mt.js --batch books/efnafraedi/02-for-mt/ch02 --verbose  
 
 ---
 
+### Step 1c: Extract Equation Strings (Auto)
+
+Extracts translatable text from LaTeX equations (`\text{...}` content) into separate files for translation. This step runs automatically as part of Step 1, but can be run manually.
+
+**Why this step is needed:**
+- LaTeX equations contain translatable text inside `\text{}` blocks (e.g., `\text{14.82 g carbon}`)
+- This text needs translation AND locale conversion (decimal dots → commas)
+- Example: `\text{14.82 g carbon}` → `\text{14,82 g kolefni}`
+
+**By chapter (if not already done):**
+```bash
+# Chapter 2
+node tools/extract-equation-strings.js --chapter efnafraedi 02
+
+# Chapter 3
+node tools/extract-equation-strings.js --chapter efnafraedi 03
+```
+
+**Single file:**
+```bash
+node tools/extract-equation-strings.js books/efnafraedi/02-for-mt/ch02/2-1-equations.json
+```
+
+**Output file generated:**
+- `{section}-equation-strings.en.md` - Translatable equation text in markdown format
+
+**Equation strings file format** (`-equation-strings.en.md`):
+```markdown
+# Equation Strings - Section 2.4
+
+Translatable text extracted from LaTeX equations.
+
+## EQ:1
+
+**TEXT:1:** 14.82 g carbon
+**TEXT:2:** 2.78 g hydrogen
+
+## EQ:2
+
+**TEXT:1:** specific heat
+**TEXT:2:** mass of substance
+```
+
+---
+
 ### Step 2: Machine Translation (Manual)
 
 1. Go to [malstadur.is](https://malstadur.is)
-2. Upload **both** file types from `02-for-mt/ch##/`:
+2. Upload **all** translatable file types from `02-for-mt/ch##/`:
    - Content files: `{section}.en.md`
-   - Strings files: `{section}-strings.en.md`
+   - Strings files: `{section}-strings.en.md` (frontmatter, figures, tables)
+   - Equation strings: `{section}-equation-strings.en.md` (if present)
 3. Download translated output
 4. Save to `02-mt-output/ch##/` with `.is.md` extension
 
@@ -148,12 +194,14 @@ node tools/protect-for-mt.js --batch books/efnafraedi/02-for-mt/ch02 --verbose  
 |--------|-------------|
 | `02-for-mt/ch02/2-1.en.md` | `02-mt-output/ch02/2-1.is.md` |
 | `02-for-mt/ch02/2-1-strings.en.md` | `02-mt-output/ch02/2-1-strings.is.md` |
+| `02-for-mt/ch02/2-1-equation-strings.en.md` | `02-mt-output/ch02/2-1-equation-strings.is.md` |
 | `02-for-mt/ch02/2-1(a).en.md` | `02-mt-output/ch02/2-1(a).is.md` |
 
 **Important:**
 - Preserve the file naming pattern - only change `.en.md` to `.is.md`
 - The strings files contain figure captions, alt text, and titles that need translation
-- Post-MT cleanup (Step 3) will restore translated strings into the JSON sidecars
+- The equation-strings files contain translatable text from LaTeX equations
+- Post-MT cleanup (Step 3) will restore translated strings into the JSON sidecars and equations
 
 ---
 
@@ -193,9 +241,10 @@ npm run post-mt -- --chapter efnafraedi ch02 --skip merge      # Skip split file
 3. `links` - Convert `[text]{url="..."}` back to standard markdown links
 4. `strings` - Update sidecar with translated titles
 5. `tables` - Restore tables from sidecar JSON
-6. `equations` - Replace `[[EQ:n]]` with LaTeX from sidecar
-7. `directives` - Add missing `:::` closing markers
-8. `merge` - Merge split files (e.g., `1-1(a).is.md` + `1-1(b).is.md` → `1-1.is.md`)
+6. `equation-strings` - Inject translated text into LaTeX equations from equation-strings.is.md
+7. `equations` - Replace `[[EQ:n]]` with LaTeX from sidecar
+8. `directives` - Add missing `:::` closing markers
+9. `merge` - Merge split files (e.g., `1-1(a).is.md` + `1-1(b).is.md` → `1-1.is.md`)
 
 ---
 
@@ -326,15 +375,19 @@ node tools/chapter-assembler.js --chapter 2 --book efnafraedi --track faithful -
 
 ### Chapter 1
 ```bash
-# Step 1: Generate EN markdown
+# Step 1: Generate EN markdown (also generates equation-strings.en.md)
 npm run pipeline -- --chapter 1 --book efnafraedi
 
 # Step 1b: Extract translatable strings
 node tools/protect-for-mt.js --batch books/efnafraedi/02-for-mt/ch01 --in-place
 
-# Step 2: Upload .en.md and -strings.en.md to malstadur.is, save output to 02-mt-output/
+# Step 2: Upload to malstadur.is:
+#   - *.en.md (content)
+#   - *-strings.en.md (titles, captions)
+#   - *-equation-strings.en.md (equation text)
+# Save output to 02-mt-output/
 
-# Step 3: Post-MT cleanup
+# Step 3: Post-MT cleanup (includes equation string injection)
 npm run post-mt -- --chapter efnafraedi ch01
 
 # Step 6: Publish MT preview
@@ -422,15 +475,17 @@ books/efnafraedi/
 ├── 01-source/              # 🔒 READ ONLY - OpenStax CNXML
 ├── 02-for-mt/              # EN markdown for MT
 │   └── ch##/
-│       ├── {section}.en.md           # Content for MT
-│       ├── {section}-strings.en.md   # Translatable strings for MT
-│       ├── {section}-equations.json  # LaTeX equations (not translated)
-│       ├── {section}-figures.json    # Figure metadata (updated by restore-strings)
-│       └── {section}-protected.json  # Protected tables and frontmatter
+│       ├── {section}.en.md                   # Content for MT
+│       ├── {section}-strings.en.md           # Translatable strings for MT
+│       ├── {section}-equation-strings.en.md  # Equation text for MT
+│       ├── {section}-equations.json          # LaTeX equations
+│       ├── {section}-figures.json            # Figure metadata
+│       └── {section}-protected.json          # Protected tables and frontmatter
 ├── 02-mt-output/           # 🔒 READ ONLY - MT output
 │   └── ch##/
-│       ├── {section}.is.md           # Translated content
-│       └── {section}-strings.is.md   # Translated strings
+│       ├── {section}.is.md                   # Translated content
+│       ├── {section}-strings.is.md           # Translated strings
+│       └── {section}-equation-strings.is.md  # Translated equation text
 ├── 03-faithful/            # ✏️ Reviewed translations
 │   └── ch##/
 │       └── {section}.is.md
@@ -457,6 +512,8 @@ books/efnafraedi/
 | `{N}-{N}(a).en.md` | `2-1(a).en.md` | Split part for large files |
 | `intro.en.md` | `intro.en.md` | Chapter introduction |
 | `{N}-{N}-equations.json` | `2-1-equations.json` | Equation sidecar (LaTeX) |
+| `{N}-{N}-equation-strings.en.md` | `2-1-equation-strings.en.md` | Equation text for MT |
+| `{N}-{N}-equation-strings.is.md` | `2-1-equation-strings.is.md` | Translated equation text |
 | `{N}-{N}-figures.json` | `2-1-figures.json` | Figure sidecar (captions, alt text) |
 | `{N}-{N}-protected.json` | `2-1-protected.json` | Protected tables and frontmatter |
 | `{N}-{N}-strings.en.md` | `2-1-strings.en.md` | Translatable strings (for MT) |
@@ -464,13 +521,25 @@ books/efnafraedi/
 
 ### Sidecar Files Explained
 
-**equations.json** - Maps `[[EQ:n]]` placeholders to LaTeX (not translatable):
+**equations.json** - Maps `[[EQ:n]]` placeholders to LaTeX:
 ```json
 {
   "EQ:1": { "latex": "E = mc^2", "id": "fs-id123" },
-  "EQ:2": { "latex": "F = ma", "id": "fs-id456" }
+  "EQ:2": { "latex": "\\text{14.82 g carbon}", "id": "fs-id456" }
 }
 ```
+Note: The `\text{...}` content inside LaTeX IS translatable. See equation-strings below.
+
+**equation-strings.en.md / equation-strings.is.md** - Translatable text from LaTeX equations:
+```markdown
+# Equation Strings - Section 2.4
+
+## EQ:2
+
+**TEXT:1:** 14.82 g carbon
+**TEXT:2:** 2.78 g hydrogen
+```
+The `-equation-strings.en.md` file is sent to MT alongside the content. After translation, `inject-equation-strings.js` (called by post-mt) reads `-equation-strings.is.md` and updates the equations.json with translated text.
 
 **figures.json** - Figure metadata with translatable captions and alt text:
 ```json
@@ -533,7 +602,9 @@ The `-strings.en.md` file is sent to MT alongside the content. After translation
 | Script | Command | Description |
 |--------|---------|-------------|
 | `protect-for-mt.js` | `node tools/protect-for-mt.js [args]` | Extract translatable strings before MT |
+| `extract-equation-strings.js` | `node tools/extract-equation-strings.js [args]` | Extract translatable text from LaTeX equations (auto-run by pipeline) |
 | `restore-strings.js` | `node tools/restore-strings.js [args]` | Restore translated strings after MT |
+| `inject-equation-strings.js` | `node tools/inject-equation-strings.js [args]` | Inject translated text into LaTeX equations (auto-run by post-mt) |
 | `merge-split-files.js` | `node tools/merge-split-files.js [args]` | Merge split files back together (auto-run by post-mt) |
 | `chapter-assembler.js` | `node tools/chapter-assembler.js [args]` | Assemble chapters for publication |
 | `prepare-for-align.js` | `node tools/prepare-for-align.js [args]` | Prepare files for Matecat Align |

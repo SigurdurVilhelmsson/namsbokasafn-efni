@@ -190,15 +190,17 @@ Options:
   -h, --help           Show this help message
 
 Pipeline Steps:
-  1. cnxml-to-md.js:        CNXML → {section}.en.md + {section}-equations.json
-  2. md-to-xliff.js:        {section}.en.md → {section}.en.xliff (unless --skip-xliff)
-  3. chapter-assembler.js:  7 modules → 12 publication files (with --assemble)
+  1. cnxml-to-md.js:               CNXML → {section}.en.md + {section}-equations.json
+  1b. extract-equation-strings.js: Extract translatable text from equations
+  2. md-to-xliff.js:               {section}.en.md → {section}.en.xliff (unless --skip-xliff)
+  3. chapter-assembler.js:         7 modules → 12 publication files (with --assemble)
 
 Output Files:
   {output-dir}/
-  ├── {section}.en.md           # Markdown for Erlendur MT
-  ├── {section}-equations.json  # Equation mappings for restoration
-  └── {section}.en.xliff        # XLIFF for Matecat (optional)
+  ├── {section}.en.md                   # Markdown for Erlendur MT
+  ├── {section}-equations.json          # Equation mappings for restoration
+  ├── {section}-equation-strings.en.md  # Translatable equation text (for MT)
+  └── {section}.en.xliff                # XLIFF for Matecat (optional)
 
   With --assemble:
   05-publication/{track}/chapters/{NN}/
@@ -390,6 +392,53 @@ async function stepCnxmlToMd(input, outputDir, verbose, counters = null, chapter
 }
 
 /**
+ * Step 1b: Extract translatable text from equations
+ * @param {string} equationsPath - Path to equations.json file
+ * @param {boolean} verbose - Verbose output
+ * @returns {Promise<{stringsPath: string|null, stringsExtracted: number}>}
+ */
+async function stepExtractEquationStrings(equationsPath, verbose) {
+  const projectRoot = getProjectRoot();
+  const scriptPath = path.join(projectRoot, 'tools', 'extract-equation-strings.js');
+
+  if (!fs.existsSync(scriptPath)) {
+    if (verbose) {
+      console.log('  [SKIP] extract-equation-strings.js not found');
+    }
+    return { stringsPath: null, stringsExtracted: 0 };
+  }
+
+  const args = [equationsPath];
+  if (verbose) args.push('--verbose');
+
+  try {
+    const output = await runTool(scriptPath, args, { verbose, captureStderr: true });
+
+    // Parse output to get extraction count
+    let stringsExtracted = 0;
+    const countMatch = output.stdout?.match(/Extracted (\d+) translatable string/);
+    if (countMatch) {
+      stringsExtracted = parseInt(countMatch[1], 10);
+    }
+
+    // Determine output file path
+    const dir = path.dirname(equationsPath);
+    const basename = path.basename(equationsPath, '-equations.json');
+    const stringsPath = path.join(dir, `${basename}-equation-strings.en.md`);
+
+    return {
+      stringsPath: fs.existsSync(stringsPath) ? stringsPath : null,
+      stringsExtracted
+    };
+  } catch (err) {
+    if (verbose) {
+      console.log(`  [WARN] Equation string extraction failed: ${err.message}`);
+    }
+    return { stringsPath: null, stringsExtracted: 0 };
+  }
+}
+
+/**
  * Step 2: Convert Markdown to XLIFF
  * @param {string} mdPath - Path to markdown file
  * @param {string} outputDir - Output directory
@@ -476,6 +525,15 @@ async function runPipeline(options) {
 
     console.log(`  ✓ Generated: ${path.basename(mdPath)}`);
     console.log(`  ✓ Generated: ${path.basename(equationsPath)}`);
+
+    // Step 1b: Extract translatable text from equations
+    const { stringsPath, stringsExtracted } = await stepExtractEquationStrings(equationsPath, verbose);
+    if (stringsPath) {
+      results.outputs.push(
+        { type: 'equation-strings', path: stringsPath, description: 'Equation text for translation' }
+      );
+      console.log(`  ✓ Generated: ${path.basename(stringsPath)} (${stringsExtracted} strings)`);
+    }
     console.log('');
 
     // Step 2: Markdown → XLIFF (optional)
@@ -645,17 +703,29 @@ async function runChapterPipeline(options) {
         { type: 'markdown', path: mdPath, section, description: `${mod.section} Markdown` },
         { type: 'equations', path: equationsPath, section, description: `${mod.section} Equations` }
       );
+      // Step 1b: Extract translatable text from equations
+      const { stringsPath: eqStringsPath, stringsExtracted } = await stepExtractEquationStrings(equationsPath, verbose);
+      if (eqStringsPath) {
+        results.outputs.push(
+          { type: 'equation-strings', path: eqStringsPath, section, description: `${mod.section} Equation Strings` }
+        );
+      }
+
       results.modules.push({
         moduleId: mod.moduleId,
         section: mod.section,
         title: mod.title,
         mdPath,
         equationsPath,
+        equationStringsPath: eqStringsPath,
         counters: { ...newCounters }
       });
 
       console.log(`    ✓ ${path.basename(mdPath)}`);
       console.log(`    ✓ ${path.basename(equationsPath)}`);
+      if (eqStringsPath) {
+        console.log(`    ✓ ${path.basename(eqStringsPath)} (${stringsExtracted} strings)`);
+      }
 
       // Step 2: Markdown → XLIFF (optional)
       if (!skipXliff) {
