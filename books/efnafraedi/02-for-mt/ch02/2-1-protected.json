@@ -1,0 +1,25 @@
+{
+  "sourceFile": "2-1.en.md",
+  "module": "m68685",
+  "section": "2.1",
+  "frontmatter": {
+    "title": "Early Ideas in Atomic Theory",
+    "section": "2.1",
+    "module": "m68685",
+    "lang": "en",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tables": {
+    "TABLE:1": {
+      "markdown": "| Sample | Carbon | Hydrogen | Mass Ratio |\n| :--- | :--- | :--- | :--- |\n| A | 14.82 g | 2.78 g | [[EQ:6]] |\n| B | 22.33 g | 4.19 g | [[EQ:7]] |\n| C | 19.40 g | 3.64 g | [[EQ:8]] |",
+      "title": "Constant Composition of Isooctane",
+      "id": "fs-idp114534448",
+      "summary": "This table displays how much carbon and hydrogen are in samples A, B and C, as well as the mass ratio of each. Sample A contains 14.82 grams of carbon and 2.78 grams of hydrogen. Its mass ratio is, therefore, 14.82 grams of carbon over 2.78 grams of hydrogen. This ratio is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample B contains 22.33 grams of carbon and 4.19 grams of hydrogen. Its mass ratio is 22.3 grams of carbon over 4.19 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample C contains 19.40 grams of carbon and 3.64 grams of hydrogen. Its mass ratio is 19.40 grams of carbon over 3.63 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen."
+    },
+    "TABLE:2": {
+      "markdown": "| Compound | Description | Mass of Carbon | Mass of Hydrogen |\n| :--- | :--- | :--- | :--- |\n| X | clear, colorless, liquid with strong odor | 1.776 g | 0.148 g |\n| Y | clear, colorless, liquid with strong odor | 1.974 g | 0.329 g |\n| Z | clear, colorless, liquid with strong odor | 7.812 g | 0.651 g |",
+      "id": "fs-idp22296752",
+      "summary": "This table has a “description” column, a “mass of carbon” column, and a “mass of hydrogen” column for compounds X, Y and Z. Compound X is a clear, colorless liquid with a strong odor. Its mass of carbon is 1.776 grams, and its mass of hydrogen is 0.148 grams. Compound Y is also a clear, colorless liquid with a strong odor. Its mass of carbon is 1.974 grams, and its mass of hydrogen is 0.329 grams. Compound Z is also a clear, colorless liquid with a strong odor. Its mass of carbon is 7.812 grams and its mass of hydrogen is 0.651 g."
+    }
+  }
+}

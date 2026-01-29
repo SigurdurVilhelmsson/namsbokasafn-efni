@@ -1,0 +1,20 @@
+{
+  "sourceFile": "1-2.en.md",
+  "module": "m68667",
+  "section": "1.2",
+  "frontmatter": {
+    "title": "Phases and Classification of Matter",
+    "section": "1.2",
+    "module": "m68667",
+    "lang": "en",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tables": {
+    "TABLE:1": {
+      "markdown": "| Element | Symbol | Percent Mass | Element | Symbol | Percent Mass |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| oxygen | O | 49.20 | chlorine | Cl | 0.19 |\n| silicon | Si | 25.67 | phosphorus | P | 0.11 |\n| aluminum | Al | 7.50 | manganese | Mn | 0.09 |\n| iron | Fe | 4.71 | carbon | C | 0.08 |\n| calcium | Ca | 3.39 | sulfur | S | 0.06 |\n| sodium | Na | 2.63 | barium | Ba | 0.04 |\n| potassium | K | 2.40 | nitrogen | N | 0.03 |\n| magnesium | Mg | 1.93 | fluorine | F | 0.03 |\n| hydrogen | H | 0.87 | strontium | Sr | 0.02 |\n| titanium | Ti | 0.58 | all others | - | 0.47 |",
+      "title": "Elemental Composition of Earth",
+      "id": "fs-idp31507504",
+      "summary": "Oxygen, symbolized by O, has a percent mass of 49.20. Silicon, symbolized by S I, has a percent mass of 25.67. Aluminum, symbolized by A L, has a percent mass of 7.50. Iron, symbolized by F E, has a percent mass of 4.71. Calcium, symbolized by C A, has a percent mass of 3.39. Sodium, symbolized by N A, has a percent mass of 2.63. Potassium, symbolized by K, has a percent mass of 2.40. Magnesium, symbolized by M G, has a percent mass of 1.93. Hydrogen, symbolized by H, has a percent mass of 0.87. Titanium, symbolized by T I, has a percent mass of 0.58. Chlorine, symbolized by C L, has a percent mass of 0.19. Phosphorus, symbolized by P, has a percent mass of 0.11. Manganese, symbolized by M N, has a percent mass of 0.09. Carbon, symbolized by C, has a percent mass of 0.08. Sulfur, symbolized by S, has a percent mass of 0.06. Barium, symbolized by B A, has a percent mass of 0.04. Nitrogen, symbolized by N, has a percent mass of 0.03. Fluorine, symbolized by F, has a percent mass of 0.03. Strontium, symbolized by S R, has a percent mass of 0.02. All others have a percent mass of 0.47."
+    }
+  }
+}

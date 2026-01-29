@@ -1,10 +1,3 @@
----
-title: "Introduction"
-section: "intro"
-module: "m68699"
-lang: "en"
-license_url: "https://creativecommons.org/licenses/by/4.0/"
----
 
 # Introduction
 

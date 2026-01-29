@@ -1,0 +1,71 @@
+# Translatable Strings - Section 3.1
+
+## Frontmatter
+
+**Title:** Formula Mass and the Mole Concept
+
+---
+
+## Tables
+
+### Table 1
+
+**Summary:** A table is shown that is made up of four columns and six rows. The header row reads: “Element,” “Average Atomic Mass (a m u),” “Molar Mass (g / m o l),” and “Atoms / Mole.” The first column contains the symbols “C,” “H,” “O,” “N a,” and “C l.” The second column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “35.45.” The third column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “33.45.” The final column contains the value “6.022 times 10 superscript 23” in each cell.
+
+---
+
+## Figures
+
+### CNX_Chem_03_01_chloroform
+
+**Caption:** The average mass of a chloroform molecule, CHCl~3~, is 119.37 amu, which is the sum of the average atomic masses of each of its constituent atoms. The model shows the molecular structure of chloroform.
+
+**Alt text:** A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “C l” and a blank, merged cell that runs the width of the first five columns. The second column contains the numbers “1,” “1,” and “3” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “12.01,” “1.008,” “106.35,” and “119.37.” There is a thick black line below the number 106.35. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Three green spheres are attached to a slightly smaller black sphere, which is also attached to a smaller white sphere. The green spheres lie beneath and to the sides of the black sphere while the white sphere is located straight up from the black sphere.
+
+### CNX_Chem_03_01_aspirin
+
+**Caption:** The average mass of an aspirin molecule is 180.15 amu. The model shows the molecular structure of aspirin, C~9~H~8~O~4~.
+
+**Alt text:** A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “9,” “8,” and “4” as well as the merged, cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “16.00” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values: “108.09,” “8.064,” “64.00,” and “180.15.” There is a thick black line below the number 64.00. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Six black spheres are located in a six-sided ring and connected by alternating double and single black bonds. Attached to each of the four black spheres is one smaller white sphere. Attached to the farthest right black sphere is a red sphere, connected to two more black spheres, all in a row. Attached to the last black sphere of that row are two more white spheres. Attached to the first black sphere of that row is another red sphere. A black sphere, attached to two red spheres and a white sphere is attached to the black sphere on the top right of the six-sided ring.
+
+### CNX_Chem_03_01_saltMass
+
+**Caption:** Table salt, NaCl, contains an array of sodium and chloride ions combined in a 1:1 ratio. Its formula mass is 58.44 amu.
+
+**Alt text:** A table and diagram are shown. The table is made up of six columns and four rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space and “Subtotal (a m u).” The first column contains the symbols “N a”, “C l,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “1” and “1” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “22.99” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “22.99,” “35.45,” and “58.44.” There is a thick black line below the number “35.45.” The merged cell under the first five columns reads “Formula mass.” To the left of the table is a diagram of a chemical structure. The diagram shows green and purple spheres placed in an alternating pattern, making up the corners of eight stacked cubes to form one larger cube. The green spheres are slightly smaller than the purple spheres.
+
+### CNX_Chem_03_02_moles
+
+**Caption:** Each sample contains 6.022 [[EQ:10]] 10^23^ atoms —1.00 mol of atoms. From left to right (top row): 65.4 g zinc, 12.0 g carbon, 24.3 g magnesium, and 63.5 g copper. From left to right (bottom row): 32.1 g sulfur, 28.1 g silicon, 207 g lead, and 118.7 g tin. (credit: modification of work by Mark Ott)
+
+**Alt text:** This figure contains eight different substances displayed on white circles. The amount of each substance is visibly different.
+
+### CNX_Chem_03_02_compound
+
+**Caption:** Each sample contains 6.02 [[EQ:11]] 10^23^ molecules or formula units—1.00 mol of the compound or element. Clock-wise from the upper left: 130.2 g of C~8~H~17~OH (1-octanol, formula mass 130.2 amu), 454.4 g of HgI~2~ (mercury(II) iodide, formula mass 454.4 amu), 32.0 g of CH~3~OH (methanol, formula mass 32.0 amu) and 256.5 g of S~8~ (sulfur, formula mass 256.5 amu). (credit: Sahar Atwa)
+
+**Alt text:** This photo shows two vials filled with a colorless liquid. It also shows two bowls: one filled with an off-white powder and one filled with a bright red powder.
+
+### CNX_Chem_03_02_water
+
+**Caption:** The number of molecules in a single droplet of water is roughly 100 billion times greater than the number of people on earth. (credit: “tanakawho”/Wikimedia commons)
+
+**Alt text:** A close-up photo of a water droplet on a leaf is shown. The water droplet is not perfectly spherical.
+
+### CNX_Chem_03_02_copper
+
+**Caption:** Copper wire is composed of many, many atoms of Cu. (credit: Emilian Robert Vicol)
+
+**Alt text:** A close-up photo of a spool of copper wire is shown.
+
+### CNX_Chem_03_01_brain
+
+**Caption:** (a) A typical human brain weighs about 1.5 kg and occupies a volume of roughly 1.1 L. (b) Information is transmitted in brain tissue and throughout the central nervous system by specialized cells called neurons (micrograph shows cells at 1600× magnification).
+
+**Alt text:** Two pictures are shown. The left picture shows the human brain. The right picture is a microscopic image that depicts two large irregularly shaped masses in a field of threadlike material interspersed with smaller, relatively round masses. The two larger masses are labeled with arrows and the phrase “Neuron cells.”
+
+### CNX_Chem_03_01_exocytosis
+
+**Caption:** (a) Chemical signals are transmitted from neurons to other cells by the release of neurotransmitter molecules into the small gaps (synapses) between the cells. (b) Dopamine, C~8~H~11~NO~2~, is a neurotransmitter involved in a number of neurological processes.
+
+**Alt text:** Two diagrams are shown. In the upper left corner of the left diagram, an oval with a darkened center that has five short, branching appendages and one long tail-like appendage is shown and connected by an arrow to another image. This image depicts a close-up view of the oval section and its interaction with the tail-like portion of a similar structure. The close up view is composed of a narrow tube labeled “neuron” leading down to a bulbous base that holds thirteen circles filled with small dots. These circles are labeled “vesicles.” The base of the bulbous structure is next to a curved object labeled “neuron” and very small dots are emerging from the bulb’s base and flowing toward the curved structure. The gap in between the two structures is labeled “synapse,” and the small dots are labeled “neurotransmitters.” The diagram on the right depicts a molecule composed of six black spheres connected by alternating double and single bonds in a hexagonal ring with other spheres attached to it. Three of the black spheres are connected to one smaller, white sphere each. Two of the black balls are connected to a smaller red sphere each. Each red sphere is connected to a smaller, white sphere. One black sphere is connected to another black sphere. It is connected to two smaller, white spheres and another black sphere. This second black sphere is connected to two smaller white spheres, and a slightly smaller blue sphere. The blue sphere is connected to two smaller, white spheres.
