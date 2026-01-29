@@ -1,0 +1,77 @@
+# Translatable Strings - Section 9.2
+
+## Frontmatter
+
+**Title:** Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law
+
+---
+
+## Tables
+
+### Table 1
+
+**Summary:** key equations table
+
+---
+
+## Figures
+
+### CNX_Chem_09_02_Ballooning
+
+**Caption:** In 1783, the first (a) hydrogen-filled balloon flight, (b) manned hot air balloon flight, and (c) manned hydrogen-filled balloon flight occurred. When the hydrogen-filled balloon depicted in (a) landed, the frightened villagers of Gonesse reportedly destroyed it with pitchforks and knives. The launch of the latter was reportedly viewed by 400,000 people in Paris.
+
+**Alt text:** This figure includes three images. Image a is a black and white image of a hydrogen balloon apparently being deflated by a mob of people. In image b, a blue, gold, and red balloon is being held to the ground with ropes while positioned above a platform from which smoke is rising beneath the balloon. In c, an image is shown in grey on a peach-colored background of an inflated balloon with vertical striping in the air. It appears to have a basket attached to its lower side. A large stately building appears in the background.
+
+### CNX_Chem_09_01_Amontons1
+
+**Caption:** The effect of temperature on gas pressure: When the hot plate is off, the pressure of the gas in the sphere is relatively low. As the gas is heated, the pressure of the gas in the sphere increases.
+
+**Alt text:** This figure includes three similar diagrams. In the first diagram to the left, a rigid spherical container of a gas to which a pressure gauge is attached at the top is placed in a large beaker of water, indicated in light blue, atop a hot plate. The needle on the pressure gauge points to the far left on the gauge. The diagram is labeled “low P” above and “hot plate off” below. The second similar diagram also has the rigid spherical container of gas placed in a large beaker from which light blue wavy line segments extend from the top of the liquid in the beaker. The beaker is situated on top of a slightly reddened circular area. The needle on the pressure gauge points straight up, or to the middle on the gauge. The diagram is labeled “medium P” above and “hot plate on medium” below. The third diagram also has the rigid spherical container of gas placed in a large beaker in which bubbles appear near the liquid surface and several wavy light blue line segments extend from the surface out of the beaker. The beaker is situated on top of a bright red circular area. The needle on the pressure gauge points to the far right on the gauge. The diagram is labeled “high P” above and “hot plate on high” below.
+
+### CNX_Chem_09_02_Amontons2
+
+**Caption:** For a constant volume and amount of air, the pressure and temperature are directly proportional, provided the temperature is in kelvin. (Measurements cannot be made at lower temperatures because of the condensation of the gas.) When this line is extrapolated to lower pressures, it reaches a pressure of 0 at –273 °C, which is 0 on the kelvin scale and the lowest possible temperature, called absolute zero.
+
+**Alt text:** This figure includes a table and a graph. The table has 3 columns and 7 rows. The first row is a header, which labels the columns “Temperature, degrees C,” “Temperature, K,” and “Pressure, kPa.” The first column contains the following values from top to bottom: negative 100, negative 50, 0, 50, 100, and 150. The second column contains the values, from top to bottom, 173, 223, 273, 323, 373, and 423. The third column contains the values 36.0, 46.4, 56.7, 67.1, 77.5, and 88.0. A graph appears to the right of the table. The horizontal axis is labeled “Temperature ( K ).” with markings and labels provided for multiples of 100 beginning at 0 and ending at 500. The vertical axis is labeled “Pressure ( kPa )” with markings and labels provided for multiples of 10, beginning at 0 and ending at 100. Six data points from the table are plotted on the graph with black dots. These dots are connected with a solid black line. A dashed line extends from the data point furthest to the left to the origin. The graph shows a positive linear trend.
+
+### CNX_Chem_09_02_Charles2
+
+**Caption:** The volume and temperature are linearly related for 1 mole of methane gas at a constant pressure of 1 atm. If the temperature is in kelvin, volume and temperature are directly proportional. The line stops at 111 K because methane liquefies at this temperature; when extrapolated, it intersects the graph’s origin, representing a temperature of absolute zero.
+
+**Alt text:** This figure includes a table and a graph. The table has 3 columns and 6 rows. The first row is a header, which labels the columns “Temperature, degrees C,” “Temperature, K,” and “Pressure, k P a.” The first column contains the values from top to bottom negative 100, negative 50, 0, 100, and 200. The second column contains the values from top to bottom 173, 223, 273, 373, and 473. The third column contains the values 14.10, 18.26, 22.40, 30.65, and 38.88. A graph appears to the right of the table. The horizontal axis is labeled “Temperature ( K ).” with markings and labels provided for multiples of 100 beginning at 0 and ending at 300. The vertical axis is labeled “Volume ( L )” with marking and labels provided for multiples of 10, beginning at 0 and ending at 30. Five data points from the table are plotted on the graph with black dots. These dots are connected with a solid black line. The graph shows a positive linear trend.
+
+### CNX_Chem_09_03_BoylesLaw1
+
+**Caption:** When a gas occupies a smaller volume, it exerts a higher pressure; when it occupies a larger volume, it exerts a lower pressure (assuming the amount of gas and the temperature do not change). Since *P* and *V* are inversely proportional, a graph of [[EQ:27]] vs. *V* is linear.
+
+**Alt text:** This figure contains a diagram and two graphs. The diagram shows a syringe labeled with a scale in m l or c c with multiples of 5 labeled beginning at 5 and ending at 30. The markings halfway between these measurements are also provided. Attached at the top of the syringe is a pressure gauge with a scale marked by fives from 40 on the left to 5 on the right. The gauge needle rests between 10 and 15, slightly closer to 15. The syringe plunger position indicates a volume measurement about halfway between 10 and 15 m l or c c. The first graph is labeled “V ( m L )” on the horizontal axis and “P ( p s i )” on the vertical axis. Points are labeled at 5, 10, 15, 20, and 25 m L with corresponding values of 39.0, 19.5, 13.0, 9.8, and 6.5 p s i. The points are connected with a smooth curve that is declining at a decreasing rate of change. The second graph is labeled “V ( m L )” on the horizontal axis and “1 divided by P ( p s i )” on the vertical axis. The horizontal axis is labeled at multiples of 5, beginning at zero and extending up to 35 m L. The vertical axis is labeled by multiples of 0.02, beginning at 0 and extending up to 0.18. Six points indicated by black dots on this graph are connected with a black line segment showing a positive linear trend.
+
+### CNX_Chem_09_02_Boyleslaw2
+
+**Caption:** The relationship between pressure and volume is inversely proportional. (a) The graph of *P* vs. *V* is a hyperbola, whereas (b) the graph of [[EQ:30]] vs. *V* is linear.
+
+**Alt text:** This diagram shows two graphs. In a, a graph is shown with volume on the horizontal axis and pressure on the vertical axis. A curved line is shown on the graph showing a decreasing trend with a decreasing rate of change. In b, a graph is shown with volume on the horizontal axis and one divided by pressure on the vertical axis. A line segment, beginning at the origin of the graph, shows a positive, linear trend.
+
+### CNX_Chem_09_02_BoylesLaw4
+
+**Caption:** Breathing occurs because expanding and contracting lung volume creates small pressure differences between your lungs and your surroundings, causing air to be drawn into and forced out of your lungs.
+
+**Alt text:** This figure contains two diagrams of a cross section of the human head and torso. The first diagram on the left is labeled “Inspiration.” It shows curved arrows in gray proceeding through the nasal passages and mouth to the lungs. An arrow points downward from the diaphragm, which is relatively flat, just beneath the lungs. This arrow is labeled “Diaphragm contracts.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr lower” is provided. The second, similar diagram, which is labeled “Expiration,” reverses the direction of both arrows. Arrows extend from the lungs out through the nasal passages and mouth. Similarly, an arrow points up to the diaphragm, showing a curved diaphragm and lungs reduced in size from the previous image. This arrow is labeled “Diaphragm relaxes.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr higher” is provided.
+
+### CNX_Chem_09_02_Scuba
+
+**Caption:** Scuba divers use compressed air to breathe while underwater. (credit: modification of work by Mark Goodchild)
+
+**Alt text:** This photograph shows a scuba diver underwater with a tank on his or her back and bubbles ascending from the breathing apparatus.
+
+### CNX_Chem_09_02_GreatBarri
+
+**Caption:** Scuba divers, whether at the Great Barrier Reef or in the Caribbean, must be aware of buoyancy, pressure equalization, and the amount of time they spend underwater, to avoid the risks associated with pressurized gases in the body. (credit: Kyle Taylor)
+
+**Alt text:** This picture shows colorful underwater corals and anemones in hues of yellow, orange, green, and brown, surrounded by water that appears blue in color.
+
+### CNX_Chem_09_02_HENH3O2
+
+**Caption:** Regardless of its chemical identity, one mole of gas behaving ideally occupies a volume of ~22.4 L at STP.
+
+**Alt text:** This figure shows three balloons each filled with He, NH subscript 2, and O subscript 2, respectively. Beneath the first balloon is the label “4 g of He” Beneath the second balloon is the label, “17 g of NH subscript 2.” Beneath the third balloon is the label “32 g of O subscript 2.” Each balloon contains the same number of molecules of their respective gases.

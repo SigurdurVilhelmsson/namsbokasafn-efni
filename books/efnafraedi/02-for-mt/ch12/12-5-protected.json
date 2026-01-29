@@ -1,0 +1,39 @@
+{
+  "sourceFile": "12-5.en.md",
+  "module": "m68793",
+  "section": "12.5",
+  "frontmatter": {
+    "title": "Collision Theory",
+    "section": "12.5",
+    "module": "m68793",
+    "lang": "en",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tables": {
+    "TABLE:1": {
+      "markdown": "| *T* (K) | *k* (L/mol/s) |\n| :--- | :--- |\n| 555 | 3.52 [[EQ:12]] 10^−7^ |\n| 575 | 1.22 [[EQ:13]] 10^−6^ |\n| 645 | 8.59 [[EQ:14]] 10^−5^ |\n| 700 | 1.16 [[EQ:15]] 10^−3^ |\n| 781 | 3.95 [[EQ:16]] 10^−2^ |",
+      "id": "fs-idm125968016",
+      "summary": "This table has two columns and six rows. The first column is labeled, “T ( K ),” and the second is labeled, “k ( L / mol / s ).” Under the first column are the numbers: 555, 575, 645, 700, and 781. Under the second column are the numbers: 3.52 times ten to the negative 7; 1.22 times ten to the negative 6; 8.59 times ten to the negative 5; 1.16 times ten to the negative 3; and 3.95 times ten to the negative 2."
+    },
+    "TABLE:2": {
+      "markdown": "| [[EQ:18]] | ln *k* |\n| :--- | :--- |\n| 1.80 [[EQ:19]] 10^−3^ | −14.860 |\n| 1.74 [[EQ:20]] 10^−3^ | −13.617 |\n| 1.55 [[EQ:21]] 10^−3^ | −9.362 |\n| 1.43 [[EQ:22]] 10^−3^ | −6.759 |\n| 1.28 [[EQ:23]] 10^−3^ | −3.231 |",
+      "id": "fs-idp10812288",
+      "summary": "This table has two columns and six rows. The first row is labeled, “1 over T ( K superscript negative 1 ),” and, “l n k.” Under the first column are the numbers: 1.80 times ten to the negative 3; 1.74 times ten to the negative 3; 1.55 times ten to the negative 3; 1.43 times ten to the negative 3; and 1.28 times ten to the negative 3. Under the second column are the numbers: negative 14.860, negative 13.617, negative 9.362, negative 6.759, and negative 3.231."
+    },
+    "TABLE:3": {
+      "markdown": "| [[EQ:34]] |\n| :--- |\n| [[EQ:35]] |\n| [[EQ:36]] |",
+      "id": "key-equations-table",
+      "summary": "key equations table"
+    },
+    "TABLE:4": {
+      "markdown": "| Temperature (K) | *k* (L mol^−1^ s^−1^) |\n| :--- | :--- |\n| 555 | 6.23 [[EQ:43]] 10^−7^ |\n| 575 | 2.42 [[EQ:44]] 10^−6^ |\n| 645 | 1.44 [[EQ:45]] 10^−4^ |\n| 700 | 2.01 [[EQ:46]] 10^−3^ |",
+      "id": "fs-idm124800496",
+      "summary": "This table has two columns and five rows. The first column is labeled, “Temperature ( K ),” and the second column is labeled, “k ( M superscript negative 1 s superscript negative 1 ).” Under the first column are the numbers: 555, 575, 645, and 700. Under the second column are the numbers: 6.23 times ten to the negative 7; 2.42 times ten to the negative 6; 1.44 times ten to the negative 4; and 2.01 times ten to the negative 3."
+    },
+    "TABLE:5": {
+      "markdown": "| *T* (K) | *k* (s^−1^) |\n| :--- | :--- |\n| 293 | 0.054 |\n| 298 | 0.100 |",
+      "id": "fs-idm163198896",
+      "summary": "This table contains two columns and three rows. The first row is a header row, and it labels each column, “T ( K )” and “k ( s superscript negative 1 ).” Under the first column are the numbers 293 and 298. Under the second column are the numbers 0.054 and 0.100."
+    }
+  }
+}

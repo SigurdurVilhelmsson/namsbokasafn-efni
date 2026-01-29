@@ -1,0 +1,19 @@
+{
+  "sourceFile": "9-4.en.md",
+  "module": "m68754",
+  "section": "9.4",
+  "frontmatter": {
+    "title": "Effusion and Diffusion of Gases",
+    "section": "9.4",
+    "module": "m68754",
+    "lang": "en",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tables": {
+    "TABLE:1": {
+      "markdown": "| [[EQ:18]] |\n| :--- |\n| [[EQ:19]] |",
+      "id": "key-equations-table",
+      "summary": "key equations table"
+    }
+  }
+}

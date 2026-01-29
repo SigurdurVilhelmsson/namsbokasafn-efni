@@ -1,0 +1,19 @@
+{
+  "sourceFile": "12-6.en.md",
+  "module": "m68794",
+  "section": "12.6",
+  "frontmatter": {
+    "title": "Reaction Mechanisms",
+    "section": "12.6",
+    "module": "m68794",
+    "lang": "en",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tables": {
+    "TABLE:1": {
+      "markdown": "| Experiment | Initial Concentration [NO] (mol L^−1^) | Initial Concentration, [H~2~] (mol L^−1^) | Initial Rate of Formation of N~2~ (mol L^−1^ min^−1^) |\n| :--- | :--- | :--- | :--- |\n| 1 | 0.0060 | 0.0010 | 1.8 [[EQ:43]] 10^−4^ |\n| 2 | 0.0060 | 0.0020 | 3.6 [[EQ:44]] 10^−4^ |\n| 3 | 0.0010 | 0.0060 | 0.30 [[EQ:45]] 10^−4^ |\n| 4 | 0.0020 | 0.0060 | 1.2 [[EQ:46]] 10^−4^ |",
+      "id": "fs-idp16941152",
+      "summary": "This table has four columns and five rows. The first row is a header row and it labels each column, “Experiment,” “Initial Concentration [ N O ] ( mol / L ),” “Initial Concentration, [ H subscript 2 ] ( mol / L ),” and “Initial Rate of Formation of N subscript 2 ( mol / L min ).” Under the “Experiment” columns are the numbers: 1, 2, 3, and 4. Under the “Initial Concentration [ N O ] ( mol / L )” column are the numbers: 0.0060, 0.0060, 0.0010, and 0.0020. Under the “Initial Concentration, [ H subscript 2 ] ( mol / L )” column are the numbers: 0.0010, 0.0020, 0.0060, 0.0060. Under the “Initial Rate of Formation of N subscript 2 ( mol / L min )” are the numbers: 1.8 times ten to the negative 4; 3.6 times ten to the negative 4; 0.30 times ten to the negative 4; and 1.2 times ten to the negative 4."
+    }
+  }
+}
