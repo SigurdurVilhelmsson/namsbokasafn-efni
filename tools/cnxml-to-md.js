@@ -723,9 +723,22 @@ function extractContent(cnxml, options = {}) {
         const noteClass = classMatch ? classMatch[1] : '';
 
         // Map CNXML note classes to website directive types
+        // Use original OpenStax class names as directive names for consistency
         let directive = ':::note';
         if (noteClass.includes('link-to-learning')) {
-          directive = ':::link-to-material';
+          directive = ':::link-to-learning';
+        } else if (noteClass.includes('everyday-life')) {
+          directive = ':::everyday-life';
+        } else if (noteClass.includes('chemist-portrait')) {
+          directive = ':::chemist-portrait';
+        } else if (noteClass.includes('sciences-interconnect')) {
+          directive = ':::sciences-interconnect';
+        } else if (noteClass.includes('summary')) {
+          directive = ':::summary';
+        } else if (noteClass.includes('key-equations')) {
+          directive = ':::key-equations';
+        } else if (noteClass.includes('key-concepts')) {
+          directive = ':::key-concepts';
         }
 
         lines.push(directive);
@@ -753,16 +766,51 @@ function extractContent(cnxml, options = {}) {
     }
   }
 
+  /**
+   * Determine if an exercise is end-of-chapter or in-chapter
+   * based on section attributes and title.
+   */
+  function detectExerciseContext(sectionAttrs, sectionTitle) {
+    // Check if section has class="exercises"
+    if (sectionAttrs && sectionAttrs.includes('class="exercises"')) {
+      return 'end-of-chapter';
+    }
+
+    // Check if section title indicates end-of-chapter exercises
+    // Only match if the section is specifically about exercises (not mentioning them in passing)
+    if (sectionTitle) {
+      const title = sectionTitle.toLowerCase();
+      // Match patterns like "Exercises", "Chapter Exercises", "Key Terms", etc.
+      // But NOT "Section with Exercises" or "Test Exercises"
+      if (title === 'exercises' ||
+          title.startsWith('exercises') ||
+          title.endsWith('exercises') ||
+          title.includes('end of chapter') ||
+          title.includes('key terms') ||
+          title.includes('key concepts') ||
+          title.includes('summary')) {
+        return 'end-of-chapter';
+      }
+    }
+
+    return 'in-chapter';
+  }
+
   // Process sections
-  const sectionPattern = /<section[^>]*>([\s\S]*?)<\/section>/g;
+  const sectionPattern = /<section([^>]*)>([\s\S]*?)<\/section>/g;
   let sectionMatch;
 
   while ((sectionMatch = sectionPattern.exec(content)) !== null) {
-    const sectionContent = sectionMatch[1];
+    const sectionAttrs = sectionMatch[1];
+    const sectionContent = sectionMatch[2];
     const sectionTitleMatch = sectionContent.match(/<title>([^<]+)<\/title>/);
+    const sectionTitle = sectionTitleMatch ? sectionTitleMatch[1] : null;
 
-    if (sectionTitleMatch) {
-      lines.push('## ' + processInlineContent(sectionTitleMatch[1]));
+    // Detect exercise context for this section
+    const exerciseContext = detectExerciseContext(sectionAttrs, sectionTitle);
+
+    if (sectionTitle) {
+      lines.push('## ' + processInlineContent(sectionTitle));
       lines.push('');
     }
 
@@ -893,16 +941,17 @@ function extractContent(cnxml, options = {}) {
         const noteClass = classMatch ? classMatch[1] : '';
 
         // Map CNXML note classes to website directive types
+        // Use original OpenStax class names as directive names for consistency
         // See: namsbokasafn-vefur/src/lib/utils/markdown.ts DIRECTIVE_CONFIG
         let directive = ':::note';
         if (noteClass.includes('link-to-learning')) {
-          directive = ':::link-to-material';
+          directive = ':::link-to-learning';
         } else if (noteClass.includes('everyday-life')) {
-          directive = ':::chemistry-everyday';
+          directive = ':::everyday-life';
         } else if (noteClass.includes('chemist-portrait')) {
-          directive = ':::scientist-spotlight';
+          directive = ':::chemist-portrait';
         } else if (noteClass.includes('sciences-interconnect')) {
-          directive = ':::how-science-connects';
+          directive = ':::sciences-interconnect';
         } else if (noteClass.includes('summary')) {
           directive = ':::summary';
         } else if (noteClass.includes('key-equations')) {
@@ -945,7 +994,16 @@ function extractContent(cnxml, options = {}) {
         // Use chapter-based numbering: [chapter].[running_number]
         const exampleNumber = chapter ? `${chapter}.${exampleCounter}` : String(exampleCounter);
 
-        lines.push('::: example');
+        // Extract ID from example element
+        const idMatch = elem.attrs.match(/id="([^"]*)"/);
+        const exampleId = idMatch ? idMatch[1] : null;
+
+        // Generate directive with MT-safe ID attribute
+        if (exampleId) {
+          lines.push(`:::example{id="${exampleId}"}`);
+        } else {
+          lines.push(':::example');
+        }
         if (exampleTitle) {
           lines.push('### Example ' + exampleNumber + ': ' + processInlineContent(exampleTitle));
           lines.push('');
@@ -1060,10 +1118,14 @@ function extractContent(cnxml, options = {}) {
         const solutionMatch = elem.content.match(/<solution[^>]*>([\s\S]*?)<\/solution>/);
 
         if (problemMatch) {
+          // Determine directive type based on section context
+          const directive = exerciseContext === 'end-of-chapter' ? 'exercise' : 'practice-problem';
+
+          // Use MT-safe {id="..."} format instead of {#...}
           if (exerciseId) {
-            lines.push(':::practice-problem{#' + exerciseId + '}');
+            lines.push(`:::${directive}{id="${exerciseId}"}`);
           } else {
-            lines.push(':::practice-problem');
+            lines.push(`:::${directive}`);
           }
 
           const problemContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
