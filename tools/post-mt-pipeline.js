@@ -67,6 +67,12 @@ const PIPELINE_STEPS = [
     description: 'Restore tables from sidecar JSON files'
   },
   {
+    id: 'equation-strings',
+    name: 'Inject Equation Strings',
+    script: 'inject-equation-strings.js',
+    description: 'Inject translated text into LaTeX equations from equation-strings.is.md'
+  },
+  {
     id: 'equations',
     name: 'Apply Equations',
     script: 'apply-equations.js',
@@ -130,13 +136,14 @@ post-mt-pipeline.js - Post-MT processing pipeline
 Chains cleanup tools to process translated markdown files after MT output.
 
 Pipeline Steps:
-  1. restore-images.js    Reconstruct images from MT-stripped attribute blocks
-  2. restore-figures.js   Restore correct figure numbers and cross-refs from sidecar
-  3. restore-links.js     Convert MT-safe link syntax back to standard markdown
-  4. restore-strings.js   Update sidecar with translated titles and summaries
-  5. restore-tables.js    Restore tables from sidecar JSON files
-  6. apply-equations.js   Replace [[EQ:n]] placeholders with LaTeX
-  7. repair-directives.js Add missing ::: closing markers
+  1. restore-images.js          Reconstruct images from MT-stripped attribute blocks
+  2. restore-figures.js         Restore correct figure numbers and cross-refs from sidecar
+  3. restore-links.js           Convert MT-safe link syntax back to standard markdown
+  4. restore-strings.js         Update sidecar with translated titles and summaries
+  5. restore-tables.js          Restore tables from sidecar JSON files
+  6. inject-equation-strings.js Inject translated text into LaTeX equations
+  7. apply-equations.js         Replace [[EQ:n]] placeholders with LaTeX
+  8. repair-directives.js       Add missing ::: closing markers
 
 Usage:
   node tools/post-mt-pipeline.js <file.is.md> [options]
@@ -389,6 +396,33 @@ async function processFile(filePath, options) {
       if (verbose) {
         args.push('--verbose');
       }
+    } else if (step.id === 'equation-strings') {
+      // Find translated equation strings file in same directory
+      const dir = path.dirname(filePath);
+      const basename = path.basename(filePath)
+        .replace(/\.is\.md$/, '')
+        .replace(/\([a-z]\)$/, '');  // Handle split files
+      const equationStringsPath = path.join(dir, `${basename}-equation-strings.is.md`);
+
+      if (!fs.existsSync(equationStringsPath)) {
+        // No translated equation strings - skip this step
+        result.steps[step.id] = {
+          skipped: true,
+          reason: 'No translated equation strings found'
+        };
+        if (verbose) {
+          console.log(`  [SKIP] ${step.name}: No equation-strings.is.md found`);
+        }
+        continue;
+      }
+
+      args.push(equationStringsPath);
+      if (dryRun) {
+        args.push('--dry-run');
+      }
+      if (verbose) {
+        args.push('--verbose');
+      }
     } else if (step.id === 'equations') {
       // Find equations sidecar in 02-for-mt/ (not in 02-mt-output/)
       const equationsSidecar = getSidecarPath(filePath, 'equations');
@@ -465,6 +499,12 @@ async function processFile(filePath, options) {
     } else if (step.id === 'tables' && toolResult.stderr) {
       // restore-tables.js outputs to stderr in verbose mode
       const match = toolResult.stderr.match(/Restored (\d+) table/);
+      if (match) {
+        stepResult.count = parseInt(match[1], 10);
+      }
+    } else if (step.id === 'equation-strings' && toolResult.stdout) {
+      // inject-equation-strings.js outputs counts
+      const match = toolResult.stdout.match(/Injected (\d+) translated string/);
       if (match) {
         stepResult.count = parseInt(match[1], 10);
       }
@@ -548,6 +588,7 @@ async function processMultipleFiles(files, options) {
       links: { total: 0, urls: 0, refs: 0, docs: 0 },
       strings: { total: 0, count: 0 },
       tables: { total: 0, count: 0 },
+      'equation-strings': { total: 0, count: 0 },
       equations: { total: 0, count: 0 },
       directives: { total: 0, count: 0 }
     },
@@ -604,6 +645,11 @@ async function processMultipleFiles(files, options) {
     if (fileResult.steps.tables && !fileResult.steps.tables.skipped) {
       results.steps.tables.total++;
       results.steps.tables.count += fileResult.steps.tables.count || 0;
+    }
+
+    if (fileResult.steps['equation-strings'] && !fileResult.steps['equation-strings'].skipped) {
+      results.steps['equation-strings'].total++;
+      results.steps['equation-strings'].count += fileResult.steps['equation-strings'].count || 0;
     }
 
     if (fileResult.steps.equations && !fileResult.steps.equations.skipped) {
@@ -728,6 +774,7 @@ async function main() {
     console.log(`  Links restored: ${results.steps.links.urls} URLs, ${results.steps.links.refs} refs, ${results.steps.links.docs} docs`);
     console.log(`  Strings restored: ${results.steps.strings.count}`);
     console.log(`  Tables restored: ${results.steps.tables.count}`);
+    console.log(`  Equation strings injected: ${results.steps['equation-strings'].count}`);
     console.log(`  Equations applied: ${results.steps.equations.count}`);
     console.log(`  Directives repaired: ${results.steps.directives.count} closing markers added`);
     if (results.steps.merge && results.steps.merge.merged > 0) {
