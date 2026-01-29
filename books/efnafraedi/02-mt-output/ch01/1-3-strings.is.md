@@ -1,1 +1,1 @@
-\[\[FRONTMATTER:title\]\] Eðlis- og efnaeiginleikar
+[[FRONTMATTER:title]] Eðlis- og efnaeiginleikar

@@ -159,7 +159,7 @@ node tools/protect-for-mt.js --batch books/efnafraedi/02-for-mt/ch02 --verbose  
 
 ### Step 3: Post-MT Cleanup
 
-Restores equations, figures, links, and tables from sidecar JSON files.
+Restores equations, figures, links, and tables from sidecar JSON files. Also automatically merges split files back together.
 
 **By chapter (recommended):**
 ```bash
@@ -184,6 +184,7 @@ npm run post-mt -- --batch books/efnafraedi/02-mt-output/ch02/
 npm run post-mt -- --chapter efnafraedi ch02 --dry-run   # Preview changes
 npm run post-mt -- --chapter efnafraedi ch02 --verbose   # Detailed output
 npm run post-mt -- --chapter efnafraedi ch02 --skip equations  # Skip specific step
+npm run post-mt -- --chapter efnafraedi ch02 --skip merge      # Skip split file merging
 ```
 
 **Pipeline steps (in order):**
@@ -194,6 +195,7 @@ npm run post-mt -- --chapter efnafraedi ch02 --skip equations  # Skip specific s
 5. `tables` - Restore tables from sidecar JSON
 6. `equations` - Replace `[[EQ:n]]` with LaTeX from sidecar
 7. `directives` - Add missing `:::` closing markers
+8. `merge` - Merge split files (e.g., `1-1(a).is.md` + `1-1(b).is.md` → `1-1.is.md`)
 
 ---
 
@@ -520,7 +522,7 @@ The `-strings.en.md` file is sent to MT alongside the content. After translation
 | Script | Command | Description |
 |--------|---------|-------------|
 | `pipeline` | `npm run pipeline -- [args]` | CNXML → EN markdown |
-| `post-mt` | `npm run post-mt -- [args]` | Post-MT cleanup (includes string restoration) |
+| `post-mt` | `npm run post-mt -- [args]` | Post-MT cleanup (includes string restoration and split file merging) |
 | `apply-equations` | `npm run apply-equations -- [file]` | Restore equations |
 | `cnxml-to-md` | `npm run cnxml-to-md -- [args]` | Direct CNXML conversion |
 | `update-status` | `npm run update-status -- [args]` | Update chapter status |
@@ -532,6 +534,7 @@ The `-strings.en.md` file is sent to MT alongside the content. After translation
 |--------|---------|-------------|
 | `protect-for-mt.js` | `node tools/protect-for-mt.js [args]` | Extract translatable strings before MT |
 | `restore-strings.js` | `node tools/restore-strings.js [args]` | Restore translated strings after MT |
+| `merge-split-files.js` | `node tools/merge-split-files.js [args]` | Merge split files back together (auto-run by post-mt) |
 | `chapter-assembler.js` | `node tools/chapter-assembler.js [args]` | Assemble chapters for publication |
 | `prepare-for-align.js` | `node tools/prepare-for-align.js [args]` | Prepare files for Matecat Align |
 | `split-for-erlendur.js` | `node tools/split-for-erlendur.js [file]` | Split large files for MT |

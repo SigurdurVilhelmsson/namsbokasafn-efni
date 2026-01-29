@@ -1,0 +1,329 @@
+{
+  "module": "m68709",
+  "section": "4.1",
+  "chapter": 4,
+  "title": "Writing and Balancing Chemical Equations",
+  "equations": {
+    "EQ:1": {
+      "latex": "{\\text{(⟶)}}"
+    },
+    "EQ:2": {
+      "latex": "{{({1\\,{{\\text{CO}}}_{2}\\,\\text{molecule}\\,\\times \\,\\frac{{\\text{2 O atoms}}}{{{{\\text{CO}}}_{2}\\,\\text{molecule}}}})}\\,+\\,{({2\\,{\\text{H}}_{2}\\text{O molecules}\\,\\times \\,\\frac{{\\text{1 O atom}}}{{{\\text{H}}_{2}\\text{O molecule}\\,}}})}\\,=\\,\\text{4 O atoms}}"
+    },
+    "EQ:3": {
+      "latex": "{{{\\text{CH}}}_{4}+2{\\text{O}}_{2}\\,\\longrightarrow \\,{{\\text{CO}}}_{2}+2{\\text{H}}_{2}\\text{O}}"
+    },
+    "EQ:4": {
+      "latex": "{\\times }"
+    },
+    "EQ:5": {
+      "latex": "{\\times }"
+    },
+    "EQ:6": {
+      "latex": "{\\times }"
+    },
+    "EQ:7": {
+      "latex": "{\\times }"
+    },
+    "EQ:8": {
+      "latex": "{\\times }"
+    },
+    "EQ:9": {
+      "latex": "{\\times }"
+    },
+    "EQ:10": {
+      "latex": "{\\times }"
+    },
+    "EQ:11": {
+      "latex": "{{\\text{H}}_{2}\\text{O}\\,\\longrightarrow \\,{\\text{H}}_{2}+{\\text{O}}_{2}\\,\\text{(unbalanced)}}"
+    },
+    "EQ:12": {
+      "latex": "{\\times }"
+    },
+    "EQ:13": {
+      "latex": "{\\times }"
+    },
+    "EQ:14": {
+      "latex": "{\\times }"
+    },
+    "EQ:15": {
+      "latex": "{\\times }"
+    },
+    "EQ:16": {
+      "latex": "{2{\\text{H}}_{2}\\text{O}\\,\\longrightarrow \\,{\\text{H}}_{2}+{\\text{O}}_{2}\\,\\text{(unbalanced)}}"
+    },
+    "EQ:17": {
+      "latex": "{\\times }"
+    },
+    "EQ:18": {
+      "latex": "{\\times }"
+    },
+    "EQ:19": {
+      "latex": "{\\times }"
+    },
+    "EQ:20": {
+      "latex": "{\\times }"
+    },
+    "EQ:21": {
+      "latex": "{2{\\text{H}}_{2}\\text{O}\\,\\longrightarrow \\,2{\\text{H}}_{2}+{\\text{O}}_{2}\\,\\text{(balanced)}}"
+    },
+    "EQ:22": {
+      "latex": "{\\times }"
+    },
+    "EQ:23": {
+      "latex": "{\\times }"
+    },
+    "EQ:24": {
+      "latex": "{\\times }"
+    },
+    "EQ:25": {
+      "latex": "{\\times }"
+    },
+    "EQ:26": {
+      "latex": "{2{\\text{H}}_{2}\\text{O}\\,\\longrightarrow \\,2{\\text{H}}_{2}+{\\text{O}}_{2}}"
+    },
+    "EQ:27": {
+      "latex": "{{\\text{N}}_{2}+\\,{\\text{O}}_{2}\\,\\longrightarrow \\,{\\text{N}}_{2}{\\text{O}}_{5}\\,\\text{(unbalanced)}}"
+    },
+    "EQ:28": {
+      "latex": "{\\times }"
+    },
+    "EQ:29": {
+      "latex": "{\\times }"
+    },
+    "EQ:30": {
+      "latex": "{\\times }"
+    },
+    "EQ:31": {
+      "latex": "{\\times }"
+    },
+    "EQ:32": {
+      "latex": "{{\\text{N}}_{2}+5{\\text{O}}_{2}\\,\\longrightarrow \\,2{\\text{N}}_{2}{\\text{O}}_{5}\\,\\text{(unbalanced)}}"
+    },
+    "EQ:33": {
+      "latex": "{\\times }"
+    },
+    "EQ:34": {
+      "latex": "{\\times }"
+    },
+    "EQ:35": {
+      "latex": "{\\times }"
+    },
+    "EQ:36": {
+      "latex": "{\\times }"
+    },
+    "EQ:37": {
+      "latex": "{2{\\text{N}}_{2}+5{\\text{O}}_{2}\\,\\longrightarrow \\,2{\\text{N}}_{2}{\\text{O}}_{5}}"
+    },
+    "EQ:38": {
+      "latex": "{\\times }"
+    },
+    "EQ:39": {
+      "latex": "{\\times }"
+    },
+    "EQ:40": {
+      "latex": "{\\times }"
+    },
+    "EQ:41": {
+      "latex": "{\\times }"
+    },
+    "EQ:42": {
+      "latex": "{2{{\\text{NH}}}_{4}{{\\text{NO}}}_{3}\\,\\longrightarrow \\,2{\\text{N}}_{2}+{\\text{O}}_{2}+4{\\text{H}}_{2}\\text{O}}"
+    },
+    "EQ:43": {
+      "latex": "{{\\text{C}}_{2}{\\text{H}}_{6}+{\\text{O}}_{2}\\,\\longrightarrow \\,{\\text{H}}_{2}\\text{O}+{{\\text{CO}}}_{2}\\,\\text{(unbalanced)}}"
+    },
+    "EQ:44": {
+      "latex": "{{\\text{C}}_{2}{\\text{H}}_{6}+{\\text{O}}_{2}\\,\\longrightarrow \\,3{\\text{H}}_{2}\\text{O}+2{{\\text{CO}}}_{2}\\,\\text{(unbalanced)}}"
+    },
+    "EQ:45": {
+      "latex": "{\\frac{7}{2},}"
+    },
+    "EQ:46": {
+      "latex": "{{\\text{C}}_{2}{\\text{H}}_{6}+\\,\\frac{7}{2}\\,{\\text{O}}_{2}\\,\\longrightarrow \\,3{\\text{H}}_{2}\\text{O}+2{{\\text{CO}}}_{2}}"
+    },
+    "EQ:47": {
+      "latex": "{2{\\text{C}}_{2}{\\text{H}}_{6}+7{\\text{O}}_{2}\\,\\longrightarrow \\,6{\\text{H}}_{2}\\text{O}+4{{\\text{CO}}}_{2}}"
+    },
+    "EQ:48": {
+      "latex": "{3{\\text{N}}_{2}+9{\\text{H}}_{2}\\,\\longrightarrow \\,6{{\\text{NH}}}_{3}}"
+    },
+    "EQ:49": {
+      "latex": "{{\\text{N}}_{2}+3{\\text{H}}_{2}\\,\\longrightarrow \\,2{{\\text{NH}}}_{3}}"
+    },
+    "EQ:50": {
+      "latex": "{2\\text{Na}(s)+2{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,2\\text{NaOH}(aq)+{\\text{H}}_{2}(g)}"
+    },
+    "EQ:51": {
+      "latex": "{{{\\text{CaCO}}}_{3}(s)\\,\\longrightarrow \\text{Δ}\\,\\text{CaO}(s)+{{\\text{CO}}}_{2}(g)}"
+    },
+    "EQ:52": {
+      "latex": "{{{\\text{CaCl}}}_{2}(aq)+2{{\\text{AgNO}}}_{3}(aq)\\,\\longrightarrow \\,\\text{Ca}{({{\\text{NO}}}_{3})}_{2}(aq)+2\\text{AgCl}(s)}"
+    },
+    "EQ:53": {
+      "latex": "{\\text{CaCl}}_{2}(aq)\\,\\longrightarrow \\,{\\text{Ca}}^{{2+}}(aq)+2{\\text{Cl}}^{\\text{−}}(aq)2{\\text{AgNO}}_{3}(aq)\\,\\longrightarrow \\,2{\\text{Ag}}^{\\text{+}}(aq)+2{\\text{NO}}_{3}^{\\text{−}}(aq)\\text{Ca}{({{{\\text{NO}}}_{3}})}_{2}(aq)\\,\\longrightarrow \\,{\\text{Ca}}^{{2+}}(aq)+2{\\text{NO}}_{3}^{\\text{−}}(aq)"
+    },
+    "EQ:54": {
+      "latex": "{{\\text{Ca}}^{{2+}}(aq)+2{\\text{Cl}}^{\\text{−}}(aq)+2{{\\text{Ag}}}^{\\text{+}}(aq)+2{{\\text{NO}}}_{3}^{\\text{−}}(aq)\\,\\longrightarrow \\,{{\\text{Ca}}}^{{2+}}(aq)+2{{\\text{NO}}}_{3}^{\\text{−}}(aq)+2\\text{AgCl}(s)}"
+    },
+    "EQ:55": {
+      "latex": "{{{\\text{NO}}}_{3}^{\\text{−}}}{({aq}).}"
+    },
+    "EQ:56": {
+      "latex": "{{\\text{Ca}}^{2+}(aq)}+2{\\text{Cl}}^{\\text{−}}(aq)+2{\\text{Ag}}^{+}(aq)+{2{{\\text{NO}}}_{3}^{\\text{−}}(aq)}\\,\\longrightarrow \\,{{{\\text{Ca}}}^{{2+}}(aq)}+{2{{\\text{NO}}}_{3}^{\\text{−}}(aq)}+2\\text{AgCl}(s)2{\\text{Cl}}^{\\text{−}}(aq)+2{\\text{Ag}}^{\\text{+}}(aq)\\,\\longrightarrow \\,2\\text{AgCl}(s)"
+    },
+    "EQ:57": {
+      "latex": "{{{\\text{Cl}}}^{\\text{−}}(aq)+{\\text{Ag}}^{\\text{+}}(aq)\\,\\longrightarrow \\,\\text{AgCl}(s)}"
+    },
+    "EQ:58": {
+      "latex": "{{{\\text{CO}}}_{2}(aq)+\\text{NaOH}(aq)\\,\\longrightarrow \\,{{\\text{Na}}}_{2}{{\\text{CO}}}_{3}(aq)+{\\text{H}}_{2}\\text{O}(l)\\,\\text{(unbalanced)}}"
+    },
+    "EQ:59": {
+      "latex": "{{{\\text{CO}}}_{2}(aq)+2\\text{NaOH}(aq)\\,\\longrightarrow \\,{{\\text{Na}}}_{2}{{\\text{CO}}}_{3}(aq)+{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:60": {
+      "latex": "{{{\\text{CO}}}_{2}(aq)+2{{\\text{Na}}}^{\\text{+}}(aq)+2{\\text{OH}}^{\\text{−}}(aq)\\,\\longrightarrow \\,2{\\text{Na}}^{\\text{+}}(aq)+{{\\text{CO}}}_{3}^{{2−}}(aq)+{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:61": {
+      "latex": "{\\text{CO}}_{2}(aq)+{2{{\\text{Na}}}^{\\text{+}}(aq)}+2{\\text{OH}}^{\\text{−}}(aq)\\,\\longrightarrow \\,2{{{\\text{Na}}}^{\\text{+}}(aq)}+{\\text{CO}}_{3}^{{2−}}(aq)+{\\text{H}}_{2}\\text{O}(l){\\text{CO}}_{2}(aq)+2{\\text{OH}}^{\\text{−}}(aq)\\,\\longrightarrow \\,{\\text{CO}}_{3}^{{2−}}(aq)+{\\text{H}}_{2}\\text{O}(l)"
+    },
+    "EQ:62": {
+      "latex": "\\text{NaCl}(aq)+{\\text{H}}_{2}\\text{O}(l)\\,\\rightarrow {\\,\\text{electricity}\\,}\\,\\text{NaOH}(aq)+{\\text{H}}_{2}(g)+{\\text{Cl}}_{2}(g)"
+    },
+    "EQ:63": {
+      "latex": "2\\text{NaCl}(aq)+2{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,2\\text{NaOH}{({aq})}+{\\text{H}}_{2}(g)+{\\text{Cl}}_{2}(g)\\,{({\\text{molecular}})}"
+    },
+    "EQ:64": {
+      "latex": "2{\\text{Na}}^{\\text{+}}(aq)+2{\\text{Cl}}^{\\text{−}}(aq)+2{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,2{\\text{Na}}^{\\text{+}}(aq)+2{\\text{OH}}^{\\text{−}}(aq)+{\\text{H}}_{2}(g)+{\\text{Cl}}_{2}(g)\\,{({\\text{complete ionic}})}"
+    },
+    "EQ:65": {
+      "latex": "2{\\text{Cl}}^{\\text{−}}(aq)+2{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,2{\\text{OH}}^{\\text{−}}(aq)+{\\text{H}}_{2}(g)+{\\text{Cl}}_{2}(g)\\,\\text{(net ionic)}"
+    },
+    "EQ:66": {
+      "latex": "{{{\\text{PCl}}}_{5}(s)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{{\\text{POCl}}}_{3}(l)+\\text{HCl}(aq)}"
+    },
+    "EQ:67": {
+      "latex": "{\\text{Cu}(s)+{{\\text{HNO}}}_{3}(aq)\\,\\longrightarrow \\,\\text{Cu}{({\\text{NO}}3)}2(aq)+{\\text{H}}_{2}\\text{O}(l)+\\text{NO}(g)}"
+    },
+    "EQ:68": {
+      "latex": "{{\\text{H}}_{2}(g)+{\\text{I}}_{2}(s)\\,\\longrightarrow \\,\\text{HI}(s)}"
+    },
+    "EQ:69": {
+      "latex": "{\\text{Fe}(s)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{Fe}}}_{2}{\\text{O}}_{3}(s)}"
+    },
+    "EQ:70": {
+      "latex": "{\\text{Na}(s)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{NaOH}{({aq})}+{\\text{H}}_{2}(g)}"
+    },
+    "EQ:71": {
+      "latex": "{ ({ {{\\text{NH}}}_{4} }{)}_{2} {{\\text{Cr}}}_{2}{\\text{O}}_{7}(s)\\,\\longrightarrow \\,{{\\text{Cr}}}_{2}{\\text{O}}_{3}(s)+{\\text{N}}_{2}(g)+{\\text{H}}_{2}\\text{O}(g)}"
+    },
+    "EQ:72": {
+      "latex": "{{\\text{P}}_{4}(s)+{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{PCl}}}_{3}(l)}"
+    },
+    "EQ:73": {
+      "latex": "{{{\\text{PtCl}}}_{4}(s)\\,\\longrightarrow \\,\\text{Pt}{(s)}+{{\\text{Cl}}}_{2}(g)}"
+    },
+    "EQ:74": {
+      "latex": "{{{\\text{PCl}}}_{5}(s)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{{\\text{POCl}}}_{3}(l)+2\\text{HCl}(aq\\text{);}}"
+    },
+    "EQ:75": {
+      "latex": "{3\\text{Cu}{(s)}+8{{\\text{HNO}}}_{3}(aq)\\,\\longrightarrow \\,3\\text{Cu}{{({{\\text{NO}}3})}}2(aq)+4{\\text{H}}_{2}\\text{O}(l)+2\\text{NO}(g\\text{);}}"
+    },
+    "EQ:76": {
+      "latex": "{{\\text{H}}_{2}(g)+{\\text{I}}_{2}(s)\\,\\longrightarrow \\,2\\text{HI}(s\\text{);}}"
+    },
+    "EQ:77": {
+      "latex": "{4\\text{Fe}(s)+3{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{Fe}}}_{2}{\\text{O}}_{3}(s\\text{);}}"
+    },
+    "EQ:78": {
+      "latex": "{2\\text{Na}(s)+2{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,2\\text{NaOH}(aq)+{\\text{H}}_{2}(g\\text{);}}"
+    },
+    "EQ:79": {
+      "latex": "{({{{\\text{NH}}}_{4}} {)}_{2}{{\\text{Cr}}}_{2}{\\text{O}}_{7}(s)\\,\\longrightarrow \\,{{\\text{Cr}}}_{2}{\\text{O}}_{3}(s)+{\\text{N}}_{2}(g)+4{\\text{H}}_{2}\\text{O}(g\\text{);}}"
+    },
+    "EQ:80": {
+      "latex": "{{\\text{P}}_{4}(s)+6{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,4{{\\text{PCl}}}_{3}(l\\text{);}}"
+    },
+    "EQ:81": {
+      "latex": "{{{\\text{PtCl}}}_{4}(s)\\,\\longrightarrow \\,\\text{Pt}(s)+2{{\\text{Cl}}}_{2}(g)}"
+    },
+    "EQ:82": {
+      "latex": "{\\text{Ag}{(s)}+{\\text{H}}_{2}\\text{S}{(g)}+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{Ag}}}_{2}\\text{S}{(s)}+{\\text{H}}_{2}\\text{O}{(l)}}"
+    },
+    "EQ:83": {
+      "latex": "{{\\text{P}}_{4}(s)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{P}}_{4}{\\text{O}}_{{10}}(s)}"
+    },
+    "EQ:84": {
+      "latex": "{\\text{Pb}(s)+{\\text{H}}_{2}\\text{O}(l)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{Pb(OH)}}}_{2}(s)}"
+    },
+    "EQ:85": {
+      "latex": "{\\text{Fe}(s)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{{\\text{Fe}}}_{3}{\\text{O}}_{4}(s)+{\\text{H}}_{2}(g)}"
+    },
+    "EQ:86": {
+      "latex": "{{{\\text{Sc}}}_{2}{\\text{O}}_{3}(s)+{{\\text{SO}}}_{3}(l)\\,\\longrightarrow \\,{{\\text{Sc}}}_{\\text{2}}({\\text{S}{\\text{O}}4)}3(s)}"
+    },
+    "EQ:87": {
+      "latex": "{{{\\text{Ca}}}_{\\text{3}}({\\text{P}{\\text{O}}4)}2(aq)+{\\text{H}}_{3}{{\\text{PO}}}_{4}(aq)\\,\\longrightarrow \\,\\text{Ca}{(\\text{H}2{{\\text{PO}}}_{4})}2(aq)}"
+    },
+    "EQ:88": {
+      "latex": "{\\text{Al}(s)+{\\text{H}}_{2}{{\\text{SO}}}_{4}(aq)\\,\\longrightarrow \\,{{\\text{Al}}}_{\\text{2}}({\\text{S}{\\text{O}}4)}3(s)+{\\text{H}}_{2}(g)}"
+    },
+    "EQ:89": {
+      "latex": "{{{\\text{TiCl}}}_{4}(s)+{\\text{H}}_{2}\\text{O}(g)\\,\\longrightarrow \\,{{\\text{TiO}}}_{2}(s)+\\text{HCl}(g)}"
+    },
+    "EQ:90": {
+      "latex": "{{{\\text{CaCO}}}_{3}(s)\\,\\longrightarrow \\,\\text{CaO}(s)+{{\\text{CO}}}_{2}(g\\text{);}}"
+    },
+    "EQ:91": {
+      "latex": "{2{\\text{C}}_{4}{\\text{H}}_{{10}}(g)+13{\\text{O}}_{2}(g)\\,\\longrightarrow \\,8{{\\text{CO}}}_{2}(g)+10{\\text{H}}_{2}\\text{O}(g\\text{);}}"
+    },
+    "EQ:92": {
+      "latex": "{{{\\text{MgC1}}}_{2}(aq)+2\\text{NaOH}(aq)\\,\\longrightarrow \\,\\text{Mg}{{\\text{(OH)}}}_{2}(s)+2\\text{NaCl}(aq\\text{);}}"
+    },
+    "EQ:93": {
+      "latex": "{2{\\text{H}}_{2}\\text{O}(g)+2\\text{Na}(s)\\,\\longrightarrow \\,2\\text{NaOH}(s)+{\\text{H}}_{2}(g)}"
+    },
+    "EQ:94": {
+      "latex": "{2{{\\text{KClO}}}_{3}(s)\\,\\longrightarrow \\,2\\text{KCl}(s)+3{\\text{O}}_{2}(g\\text{);}}"
+    },
+    "EQ:95": {
+      "latex": "{2\\text{Ba}{({\\text{NO}}3)}2(s)\\,\\longrightarrow \\,2\\text{BaO}(s)+2{\\text{N}}_{2}(g)+5{\\text{O}}_{2}(g\\text{);}}"
+    },
+    "EQ:96": {
+      "latex": "2\\text{Mg}(s)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2\\text{MgO}(s);"
+    },
+    "EQ:97": {
+      "latex": "4\\text{Al}(s)+3{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{\\text{Al}}_{2}{\\text{O}}_{3}(s);"
+    },
+    "EQ:98": {
+      "latex": "4\\text{Fe}(s)+3{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{\\text{Fe}}_{2}{\\text{O}}_{3}(s)"
+    },
+    "EQ:99": {
+      "latex": "{4\\text{HF}(aq)+{{\\text{SiO}}}_{2}(s)\\,\\longrightarrow \\,{{\\text{SiF}}}_{4}(g)+2{\\text{H}}_{2}\\text{O}(l\\text{);}}"
+    },
+    "EQ:100": {
+      "latex": "{2{{\\text{Na}}}^{\\text{+}}(aq)+2{\\text{F}}^{\\text{−}}(aq)+{{\\text{Ca}}}^{{2+}}(aq)+2{{\\text{Cl}}}^{\\text{−}}(aq)\\,\\longrightarrow \\,\\text{Ca}{\\text{F}}_{2}(s)+2{{\\text{Na}}}^{\\text{+}}(aq)+2{{\\text{Cl}}}^{\\text{−}}(aq\\text{),}}"
+    },
+    "EQ:101": {
+      "latex": "{2{\\text{F}}^{\\text{−}}(aq)+{{\\text{Ca}}}^{{2+}}(aq)\\,\\longrightarrow \\,{{\\text{CaF}}}_{2}(s)}"
+    },
+    "EQ:102": {
+      "latex": "{{\\text{K}}_{2}{\\text{C}}_{2}{\\text{O}}_{4}(aq)+\\text{Ba}{{\\text{(OH)}}}_{2}(aq)\\,\\longrightarrow \\,2\\text{KOH}(aq)+{{\\text{BaC}}}_{2}{\\text{O}}_{4}(s)}"
+    },
+    "EQ:103": {
+      "latex": "{\\text{Pb}({\\text{N}{\\text{O}}3)}2(aq)+{\\text{H}}_{2}{{\\text{SO}}}_{4}(aq)\\,\\longrightarrow \\,{{\\text{PbSO}}}_{4}(s)+2{{\\text{HNO}}}_{3}(aq)}"
+    },
+    "EQ:104": {
+      "latex": "{{{\\text{CaCO}}}_{3}(s)+{\\text{H}}_{2}{{\\text{SO}}}_{4}(aq)\\,\\longrightarrow \\,{{\\text{CaSO}}}_{4}(s)+{{\\text{CO}}}_{2}(g)+{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:105": {
+      "latex": "2{\\text{K}}^{\\text{+}}(aq)+{\\text{C}}_{2}{\\text{O}}_{4}^{{2−}}(aq)+{\\text{Ba}}^{{2+}}(aq)+2{\\text{OH}}^{\\text{−}}(aq)\\,\\longrightarrow \\,2{\\text{K}}^{\\text{+}}(aq)+2{\\text{OH}}^{\\text{−}}(aq)+{\\text{BaC}}_{2}{\\text{O}}_{4}(s)\\,\\text{(complete)}{\\text{Ba}}^{{2+}}(aq)+{\\text{C}}_{2}{\\text{O}}_{4}^{{2−}}(aq)\\,\\longrightarrow \\,{\\text{BaC}}_{2}{\\text{O}}_{4}(s)\\,\\text{(net)}"
+    },
+    "EQ:106": {
+      "latex": "{\\text{Pb}}^{{2+}}(aq)+2{\\text{NO}}_{3}^{\\text{−}}(aq)+2{\\text{H}}^{\\text{+}}(aq)+{\\text{SO}}_{4}^{{2−}}(aq)\\,\\longrightarrow \\,{\\text{PbSO}}_{4}(s)+2{\\text{H}}^{\\text{+}}(aq)+2{\\text{NO}}_{3}^{\\text{−}}(aq)\\,\\text{(complete)}{\\text{Pb}}^{{2+}}(aq)+{\\text{SO}}_{4}^{{2−}}(aq)\\,\\longrightarrow \\,{\\text{PbSO}}_{4}(s)\\,\\text{(net)}"
+    },
+    "EQ:107": {
+      "latex": "{\\text{CaCO}}_{3}(s)+2{\\text{H}}^{\\text{+}}(aq)+{\\text{SO}}_{4}^{{2−}}(aq)\\,\\longrightarrow \\,{\\text{CaSO}}_{4}(s)+{\\text{CO}}_{2}(g)+{\\text{H}}_{2}\\text{O}(l)\\,\\text{(complete)}{\\text{CaCO}}_{3}(s)+2{\\text{H}}^{\\text{+}}(aq)+{\\text{SO}}_{4}^{{2−}}(aq)\\,\\longrightarrow \\,{\\text{CaSO}}_{4}(s)+{\\text{CO}}_{2}(g)+{\\text{H}}_{2}\\text{O}(l)\\,\\text{(net)}"
+    }
+  }
+}

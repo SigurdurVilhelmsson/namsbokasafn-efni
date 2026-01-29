@@ -151,7 +151,7 @@ Options:
   --batch <directory>    Process all .md files in directory recursively
   --dry-run              Show changes without writing files
   --verbose, -v          Show detailed processing information
-  --skip <step>          Skip a step (images|figures|links|strings|tables|equations|directives). Can be used multiple times.
+  --skip <step>          Skip a step (images|figures|links|strings|tables|equations|directives|merge). Can be used multiple times.
   --json                 Output results as JSON
   -h, --help             Show this help message
 
@@ -251,10 +251,12 @@ function getSidecarPath(filePath, sidecarType) {
 
   // Get the base name without language suffix and extension
   // e.g., "1-2.is.md" -> "1-2" or "intro.is.md" -> "intro"
+  // Also handles split files: "1-2(a).is.md" -> "1-2"
   const dir = path.dirname(forMtPath);
   const basename = path.basename(forMtPath)
     .replace(/\.is\.md$/, '')  // Remove .is.md
     .replace(/\.en\.md$/, '')  // Remove .en.md (shouldn't happen but be safe)
+    .replace(/\([a-z]\)$/, '') // Remove split file suffix like (a), (b), etc.
     .replace(/\.md$/, '');     // Remove plain .md
 
   const sidecarPath = path.join(dir, `${basename}-${sidecarType}.json`);
@@ -673,6 +675,41 @@ async function main() {
 
   const results = await processMultipleFiles(files, args);
 
+  // Merge split files if processing a directory (chapter or batch)
+  let mergeResult = { merged: 0, parts: 0 };
+  if ((args.chapter || args.batch) && !args.skip.includes('merge')) {
+    const targetDir = args.chapter
+      ? path.join(process.cwd(), 'books', args.book, '02-mt-output', `ch${args.chapter.padStart(2, '0')}`)
+      : path.resolve(args.batch);
+
+    if (fs.existsSync(targetDir)) {
+      const mergeScript = path.join(__dirname, 'merge-split-files.js');
+      if (fs.existsSync(mergeScript)) {
+        const mergeArgs = ['--batch', targetDir];
+        if (args.dryRun) mergeArgs.push('--dry-run');
+        if (args.verbose) mergeArgs.push('--verbose');
+
+        if (!args.json) {
+          console.log('');
+          console.log('Merging split files...');
+        }
+
+        const mergeToolResult = runTool(mergeScript, mergeArgs, args.verbose);
+        if (mergeToolResult.success) {
+          // Parse merge output for statistics
+          const groupsMatch = mergeToolResult.stderr?.match(/Groups merged: (\d+)/);
+          const partsMatch = mergeToolResult.stderr?.match(/Total parts merged: (\d+)/);
+          mergeResult.merged = groupsMatch ? parseInt(groupsMatch[1], 10) : 0;
+          mergeResult.parts = partsMatch ? parseInt(partsMatch[1], 10) : 0;
+          if (!args.json && args.verbose) {
+            console.log(`  Merged ${mergeResult.merged} groups (${mergeResult.parts} parts)`);
+          }
+        }
+      }
+    }
+  }
+  results.steps.merge = mergeResult;
+
   // Output results
   if (args.json) {
     console.log(JSON.stringify(results, null, 2));
@@ -693,6 +730,9 @@ async function main() {
     console.log(`  Tables restored: ${results.steps.tables.count}`);
     console.log(`  Equations applied: ${results.steps.equations.count}`);
     console.log(`  Directives repaired: ${results.steps.directives.count} closing markers added`);
+    if (results.steps.merge && results.steps.merge.merged > 0) {
+      console.log(`  Split files merged: ${results.steps.merge.merged} groups (${results.steps.merge.parts} parts)`);
+    }
   }
 
   process.exit(results.failed > 0 ? 1 : 0);
