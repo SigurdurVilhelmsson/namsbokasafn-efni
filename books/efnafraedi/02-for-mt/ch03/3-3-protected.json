@@ -1,0 +1,19 @@
+{
+  "sourceFile": "3-3.en.md",
+  "module": "m68703",
+  "section": "3.3",
+  "frontmatter": {
+    "title": "Molarity",
+    "section": "3.3",
+    "module": "m68703",
+    "lang": "en",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tables": {
+    "TABLE:1": {
+      "markdown": "| [[EQ:37]] |\n| :--- |\n| *C*~1~*V*~1~ = *C*~2~*V*~2~ |",
+      "id": "key-equations-table",
+      "summary": "key equations table"
+    }
+  }
+}

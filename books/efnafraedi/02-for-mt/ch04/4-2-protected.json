@@ -1,0 +1,30 @@
+{
+  "sourceFile": "4-2.en.md",
+  "module": "m68710",
+  "section": "4.2",
+  "frontmatter": {
+    "title": "Classifying Chemical Reactions",
+    "section": "4.2",
+    "module": "m68710",
+    "lang": "en",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "tables": {
+    "TABLE:1": {
+      "markdown": "| **Soluble Ionic Compounds** | contain these ions | exceptions |\n| :--- | :--- | :--- |\n| NH~4~^+^ group I cations: Li^+^ Na^+^ K^+^ Rb^+^ Cs^+^ | none |  |\n| Cl^-^ Br^-^ I^-^ | compounds with Ag^+^, Hg~2~^2+^, and Pb^2+^ |  |\n| F^-^ | compounds with group 2 metal cations, Pb^2+^, and Fe^3+^ |  |\n| C~2~H~3~O~2~^-^ HCO~3~^-^ NO~3~^-^ ClO~3~^-^ | none |  |\n| SO~4~^2-^ | compounds with Ag^+^, Ba^2+^, Ca^2+^, Hg~2~^2+^, Pb^2+^ and Sr^2+^ |  |\n| **Insoluble Ionic Compounds** | contain these ions | exceptions |\n| CO~3~^2-^ CrO~4~^2-^ PO~4~^3-^ S^2-^ | compounds with group 1 cations and NH~4~^+^ |  |\n| OH^-^ | compounds with group 1 cations and Ba^2+^ |  |",
+      "id": "fs-idp140132617697568",
+      "summary": "This table has two columns and two rows. The cell that is in the first column and first row contains the following information: 'Soluble compounds contain, (bullet point) group 1 metal cations (L I superscript positive sign, N a superscript positive sign, K superscript positive sign, R b superscript positive sign, C s superscript positive sign and ammonium ion (N H subscript 4 superscript positive sign); (bullet point) the halide ions C l superscript negative sign, B r superscript negative sign, and I superscript negative sign; (bullet point) the halide ion F superscript negative sign; (bullet point) the acetate C subscript 2 H subscript 3 O subscript 2 superscript negative sign, bicarbonate, H C O subscript 3 superscript negative sign, nitrate, N O subscript 3 superscript negative sign, and chlorate, C l O subscript 3 superscript negative sign ions. (bullet point) the sulfate, S O subscript 4 superscript negative sign ion.' The cell that is in the top row, second column, contains the following information: 'Exceptions to these solubility rules include (bullet point) none; (bullet point) halides of A g superscript positive sign, H g subscript 2 superscript 2 positive sign, and P B superscript 2 positive sign; (bullet point) fluorides of group 2 metal cations, P b superscript 2 positive sign and F e superscrip 3 positive sign; (bullet point) none; (bullet point) sulfates of A g superscript positive sign, B a superscript 2 positive sign, C a superscript 2 positive sign, H g subscript 2 superscript 2 positive sign, P b superscript 2 positive sign and S r superscript 2 positive sign.' The next cell on the bottom row, first column, contains the following information: 'Insoluble compounds contain (bullet point) carbonate C O subscript 3 superscript 2 negative sign, chromate, C r O subscript 3 superscript 2 negative sign, phosphate, P O subscript 4 superscript 3 negative sign, and sulfide, S superscript 2 negative sign ions; (bullet point) hydroxide ion, O H superscript negative sign.' The last cell, in the last row, second column, contains the following information: 'Exceptions to these insolubility rules include (bullet point) compounds of these anions with group 1 metal cations and ammonium ion; (bullet point) hydroxides of group 1 metal cations and B a superscript 2 positive sign."
+    },
+    "TABLE:2": {
+      "markdown": "| Compound Formula | Name in Aqueous Solution |\n| :--- | :--- |\n| HBr | hydrobromic acid |\n| HCl | hydrochloric acid |\n| HI | hydroiodic acid |\n| HNO~3~ | nitric acid |\n| HClO~4~ | perchloric acid |\n| H~2~SO~4~ | sulfuric acid |",
+      "title": "Common Strong Acids",
+      "id": "fs-idp55395904",
+      "summary": "This table contains two columns and seven rows. The columns are labeled, “Compound Formula,” and, “Name in Aqueous Solution.” Under the column, “Compound Formula,” are: “H B r,” “H C l,” “H I,” “H N O subscript 3,” “H C l O subscript 4,” and, “H subscript 2 S O subscript 4.” Under the column, “Name in Aqueous Solution,” are: “hydrobromic acid,” “hydrochloric acid,” “hydroiodic acid,” “nitric acid,” “perchloric acid,” and, “sulfuric acid.”"
+    },
+    "TABLE:3": {
+      "markdown": "| Reactants | Products |\n| :--- | :--- |\n| Fe | 6 | 6 |\n| Cr | 2 | 2 |\n| O | 7 | 7 |\n| H | 14 | 14 |\n| charge | 24+ | 24+ |",
+      "id": "fs-idp8525760",
+      "summary": "This table has three columns and six rows. The first column is unlabeled but the second and third columns are labeled, “Reactants,” and “Products.” Under the first column are the following: “F e,” “C r,” “O,” “H,” and, “charge.” Under the “Reactants” column are the numbers: 6, 2, 7, 14, 24 plus sign. Under the “Products” column are the numbers: 6, 2, 7, 14 and 24 plus sign."
+    }
+  }
+}
