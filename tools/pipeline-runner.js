@@ -34,6 +34,7 @@ import path from 'path';
 import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
 import { assembleChapter } from './chapter-assembler.js';
+import { processBatch as protectForMT } from './protect-for-mt.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -117,6 +118,7 @@ function parseArgs(args) {
     outputDir: DEFAULT_OUTPUT_DIR,
     book: null,
     skipXliff: false,
+    skipProtect: false,  // Skip the pre-MT protection step
     verbose: false,
     help: false,
     listModules: false,
@@ -150,6 +152,8 @@ function parseArgs(args) {
       result.assemble = true;
     } else if (arg === '--assemble-track' && args[i + 1]) {
       result.assembleTrack = args[++i];
+    } else if (arg === '--skip-protect') {
+      result.skipProtect = true;
     } else if (!arg.startsWith('-') && !result.input) {
       result.input = arg;
     }
@@ -182,6 +186,7 @@ Options:
   --book <name>        Book identifier (e.g., efnafraedi)
   --chapter <num>      Process all modules in a chapter with correct numbering
   --skip-xliff         Don't generate XLIFF (only markdown + equations)
+  --skip-protect       Skip pre-MT protection (for manual workflows)
   --assemble           Run chapter assembly after conversion (requires --chapter)
   --assemble-only      Only run assembly, skip conversion (requires --chapter)
   --assemble-track T   Publication track for assembly: mt-preview, faithful, localized
@@ -192,14 +197,17 @@ Options:
 Pipeline Steps:
   1. cnxml-to-md.js:               CNXML → {section}.en.md + {section}-equations.json
   1b. extract-equation-strings.js: Extract translatable text from equations
+  1c. protect-for-mt.js:           Protect tables/frontmatter → {section}-protected.json
   2. md-to-xliff.js:               {section}.en.md → {section}.en.xliff (unless --skip-xliff)
   3. chapter-assembler.js:         7 modules → 12 publication files (with --assemble)
 
 Output Files:
   {output-dir}/
-  ├── {section}.en.md                   # Markdown for Erlendur MT
+  ├── {section}.en.md                   # Markdown for Erlendur MT (tables protected)
   ├── {section}-equations.json          # Equation mappings for restoration
   ├── {section}-equation-strings.en.md  # Translatable equation text (for MT)
+  ├── {section}-protected.json          # Protected tables/frontmatter for restoration
+  ├── {section}-strings.en.md           # Translatable titles/summaries (for MT)
   └── {section}.en.xliff                # XLIFF for Matecat (optional)
 
   With --assemble:
@@ -439,6 +447,61 @@ async function stepExtractEquationStrings(equationsPath, verbose) {
 }
 
 /**
+ * Step 1c: Run pre-MT protection on output directory
+ * Protects tables and frontmatter by replacing with placeholders
+ * @param {string} outputDir - Directory containing .en.md files
+ * @param {boolean} verbose - Verbose output
+ * @returns {Promise<{tablesProtected: number, filesProtected: number}>}
+ */
+async function stepProtectForMT(outputDir, verbose) {
+  if (verbose) {
+    console.log(`  Running pre-MT protection on: ${outputDir}`);
+  }
+
+  // Capture console output to count results
+  let tablesProtected = 0;
+  let filesProtected = 0;
+
+  // Use the imported protectForMT (processBatch) function
+  // It processes all .en.md files in the directory
+  const originalLog = console.log;
+  const originalError = console.error;
+
+  // Temporarily capture output to parse results
+  const capturedOutput = [];
+  console.log = (...args) => {
+    capturedOutput.push(args.join(' '));
+    if (verbose) originalLog(...args);
+  };
+  console.error = (...args) => {
+    capturedOutput.push(args.join(' '));
+    if (verbose) originalError(...args);
+  };
+
+  try {
+    protectForMT(outputDir, { inPlace: true, verbose, dryRun: false });
+
+    // Parse output to count results
+    for (const line of capturedOutput) {
+      const tableMatch = line.match(/Total tables protected:\s*(\d+)/);
+      if (tableMatch) {
+        tablesProtected = parseInt(tableMatch[1], 10);
+      }
+      const filesMatch = line.match(/Files with tables:\s*(\d+)/);
+      if (filesMatch) {
+        filesProtected = parseInt(filesMatch[1], 10);
+      }
+    }
+  } finally {
+    // Restore console
+    console.log = originalLog;
+    console.error = originalError;
+  }
+
+  return { tablesProtected, filesProtected };
+}
+
+/**
  * Step 2: Convert Markdown to XLIFF
  * @param {string} mdPath - Path to markdown file
  * @param {string} outputDir - Output directory
@@ -473,7 +536,7 @@ async function stepMdToXliff(mdPath, outputDir, section, verbose) {
  * @returns {Promise<{outputs: object[], steps: object[]}>}
  */
 async function runPipeline(options) {
-  const { input, section: sectionOverride, title, outputDir, skipXliff, verbose } = options;
+  const { input, section: sectionOverride, title, outputDir, skipXliff, skipProtect, verbose } = options;
 
   const results = {
     input,
@@ -505,9 +568,14 @@ async function runPipeline(options) {
     }
   }
 
+  // Determine total steps for progress display
+  const totalSteps = skipXliff ? 2 : 3;
+  let currentStep = 0;
+
   try {
     // Step 1: CNXML → Markdown + Equations
-    console.log('Step 1/2: Converting CNXML to Markdown...');
+    currentStep++;
+    console.log(`Step ${currentStep}/${totalSteps}: Converting CNXML to Markdown...`);
     const step1Start = Date.now();
     const { mdPath, equationsPath, section } = await stepCnxmlToMd(input, outputDir, verbose, null, null, sectionOverride);
     const step1Time = Date.now() - step1Start;
@@ -536,17 +604,41 @@ async function runPipeline(options) {
     }
     console.log('');
 
-    // Step 2: Markdown → XLIFF (optional)
-    if (!skipXliff) {
-      console.log('Step 2/2: Generating XLIFF for Matecat...');
+    // Step 2: Pre-MT protection (tables and frontmatter)
+    currentStep++;
+    if (!skipProtect) {
+      console.log(`Step ${currentStep}/${totalSteps}: Protecting tables and frontmatter for MT...`);
       const step2Start = Date.now();
-      const { xliffPath } = await stepMdToXliff(mdPath, outputDir, section, verbose);
+      const { tablesProtected, filesProtected } = await stepProtectForMT(outputDir, verbose);
       const step2Time = Date.now() - step2Start;
+
+      results.steps.push({
+        name: 'protect-for-mt',
+        success: true,
+        timeMs: step2Time,
+        tablesProtected,
+        filesProtected
+      });
+
+      console.log(`  ✓ Protected ${tablesProtected} table(s) in ${filesProtected} file(s)`);
+      console.log('');
+    } else {
+      console.log(`Step ${currentStep}/${totalSteps}: Skipped pre-MT protection (--skip-protect)`);
+      console.log('');
+    }
+
+    // Step 3: Markdown → XLIFF (optional)
+    if (!skipXliff) {
+      currentStep++;
+      console.log(`Step ${currentStep}/${totalSteps}: Generating XLIFF for Matecat...`);
+      const step3Start = Date.now();
+      const { xliffPath } = await stepMdToXliff(mdPath, outputDir, section, verbose);
+      const step3Time = Date.now() - step3Start;
 
       results.steps.push({
         name: 'md-to-xliff',
         success: true,
-        timeMs: step2Time,
+        timeMs: step3Time,
         outputs: [xliffPath]
       });
       results.outputs.push(
@@ -554,9 +646,6 @@ async function runPipeline(options) {
       );
 
       console.log(`  ✓ Generated: ${path.basename(xliffPath)}`);
-      console.log('');
-    } else {
-      console.log('Step 2/2: Skipped XLIFF generation (--skip-xliff)');
       console.log('');
     }
 
@@ -628,7 +717,7 @@ function getChapterModules(chapter) {
  * @returns {Promise<{outputs: object[], steps: object[]}>}
  */
 async function runChapterPipeline(options) {
-  const { chapter, outputDir, skipXliff, verbose } = options;
+  const { chapter, outputDir, skipXliff, skipProtect, verbose } = options;
 
   const modules = getChapterModules(chapter);
   if (modules.length === 0) {
@@ -750,6 +839,29 @@ async function runChapterPipeline(options) {
       console.log('');
     }
 
+    // After all modules processed, run pre-MT protection on the entire directory
+    console.log(`─`.repeat(60));
+    if (!skipProtect) {
+      console.log('Running pre-MT protection on all files...');
+      const protectStart = Date.now();
+      const { tablesProtected, filesProtected } = await stepProtectForMT(outputDir, verbose);
+      const protectTime = Date.now() - protectStart;
+
+      results.steps.push({
+        name: 'protect-for-mt',
+        success: true,
+        timeMs: protectTime,
+        tablesProtected,
+        filesProtected
+      });
+
+      console.log(`  ✓ Protected ${tablesProtected} table(s) in ${filesProtected} file(s)`);
+      console.log('');
+    } else {
+      console.log('Skipped pre-MT protection (--skip-protect)');
+      console.log('');
+    }
+
     results.success = true;
 
   } catch (err) {
@@ -804,6 +916,7 @@ async function run(options) {
     outputDir: options.outputDir || DEFAULT_OUTPUT_DIR,
     book: options.book || null,
     skipXliff: options.skipXliff || false,
+    skipProtect: options.skipProtect || false,
     verbose: options.verbose || false
   };
 
