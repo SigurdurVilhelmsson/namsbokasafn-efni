@@ -584,6 +584,22 @@ function extractContent(cnxml, options = {}) {
   let figureCounter = options.figureStart || 0;
   let tableCounter = options.tableStart || 0;
 
+  // Extract ALL examples globally from the entire content first
+  // This ensures we catch examples regardless of where they appear (including between subsections)
+  const allExamples = [];
+  const allExamplesPattern = /<example([^>]*)>([\s\S]*?)<\/example>/g;
+  let allExamplesMatch;
+  while ((allExamplesMatch = allExamplesPattern.exec(content)) !== null) {
+    const exampleId = allExamplesMatch[1].match(/id="([^"]*)"/);
+    allExamples.push({
+      id: exampleId ? exampleId[1] : `example-${allExamples.length}`,
+      attrs: allExamplesMatch[1],
+      content: allExamplesMatch[2],
+      startPos: allExamplesMatch.index,
+      endPos: allExamplesMatch.index + allExamplesMatch[0].length
+    });
+  }
+
   // Process top-level content BEFORE sections (or ALL content if no sections exist)
   // This handles introduction modules that have no <section> tags
   const firstSectionIndex = content.search(/<section[^>]*>/);
@@ -628,6 +644,8 @@ function extractContent(cnxml, options = {}) {
     while ((noteMatch = notePattern.exec(preSectionContent)) !== null) {
       topLevelElements.push({ type: 'note', pos: noteMatch.index, content: noteMatch[2], attrs: noteMatch[1] });
     }
+
+    // Examples are handled globally, not in pre-section processing
 
     // Sort by position in document
     topLevelElements.sort((a, b) => a.pos - b.pos);
@@ -763,6 +781,7 @@ function extractContent(cnxml, options = {}) {
         lines.push(':::');
         lines.push('');
       }
+      // Examples are handled globally, removed from here
     }
   }
 
@@ -796,11 +815,76 @@ function extractContent(cnxml, options = {}) {
     return 'in-chapter';
   }
 
-  // Process sections
+  // Process sections and examples in document order
+  // Track which examples we've already output
+  let nextExampleIndex = 0;
+
   const sectionPattern = /<section([^>]*)>([\s\S]*?)<\/section>/g;
   let sectionMatch;
 
   while ((sectionMatch = sectionPattern.exec(content)) !== null) {
+    const sectionStart = sectionMatch.index;
+
+    // Output any examples that appear before this section
+    while (nextExampleIndex < allExamples.length &&
+           allExamples[nextExampleIndex].endPos <= sectionStart) {
+      const example = allExamples[nextExampleIndex];
+      exampleCounter++;
+
+      const exampleTitleMatch = example.content.match(/<title>([^<]+)<\/title>/);
+      const exampleTitle = exampleTitleMatch ? exampleTitleMatch[1] : null;
+      const exampleNumber = chapter ? `${chapter}.${exampleCounter}` : String(exampleCounter);
+
+      if (example.id) {
+        lines.push(`:::example{id="${example.id}"}`);
+      } else {
+        lines.push(':::example');
+      }
+
+      if (exampleTitle) {
+        lines.push('### Example ' + exampleNumber + ': ' + processInlineContent(exampleTitle));
+        lines.push('');
+      } else {
+        lines.push('### Example ' + exampleNumber);
+        lines.push('');
+      }
+
+      // Process example content
+      const exContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+      let exContentMatch;
+      while ((exContentMatch = exContentPattern.exec(example.content)) !== null) {
+        const elementType = exContentMatch[1];
+        let elementContent = exContentMatch[3];
+
+        const innerTitleMatch = elementContent.match(/<title>([^<]+)<\/title>/);
+        if (innerTitleMatch) {
+          const innerTitle = innerTitleMatch[1];
+          elementContent = elementContent.replace(/<title>[^<]*<\/title>/g, '');
+          if (innerTitle !== exampleTitle) {
+            lines.push('**' + processInlineContent(innerTitle) + '**');
+            lines.push('');
+          }
+        }
+
+        if (elementType === 'para') {
+          const paraText = processInlineContent(elementContent);
+          if (paraText.trim()) {
+            lines.push(paraText);
+            lines.push('');
+          }
+        } else if (elementType === 'equation') {
+          const eqText = processInlineContent(elementContent);
+          if (eqText.trim()) {
+            lines.push(eqText);
+            lines.push('');
+          }
+        }
+      }
+
+      lines.push(':::');
+      lines.push('');
+      nextExampleIndex++;
+    }
     const sectionAttrs = sectionMatch[1];
     const sectionContent = sectionMatch[2];
     const sectionTitleMatch = sectionContent.match(/<title>([^<]+)<\/title>/);
@@ -871,12 +955,8 @@ function extractContent(cnxml, options = {}) {
       elements.push({ type: 'note', pos: noteMatch.index, content: noteMatch[2], attrs: noteMatch[1] });
     }
 
-    // Find examples
-    const examplePattern = /<example([^>]*)>([\s\S]*?)<\/example>/g;
-    let exampleMatch;
-    while ((exampleMatch = examplePattern.exec(sectionContent)) !== null) {
-      elements.push({ type: 'example', pos: exampleMatch.index, content: exampleMatch[2], attrs: exampleMatch[1] });
-    }
+    // Examples are now handled globally (output before sections based on position)
+    // so we don't need to find them within section content
 
     // Find figures
     const figurePattern = /<figure([^>]*)>([\s\S]*?)<\/figure>/g;
@@ -1180,6 +1260,66 @@ function extractContent(cnxml, options = {}) {
         processTable(elem.attrs, elem.content, lines, processInlineContent);
       }
     }
+  }
+
+  // Output any remaining examples that appear after all sections
+  while (nextExampleIndex < allExamples.length) {
+    const example = allExamples[nextExampleIndex];
+    exampleCounter++;
+
+    const exampleTitleMatch = example.content.match(/<title>([^<]+)<\/title>/);
+    const exampleTitle = exampleTitleMatch ? exampleTitleMatch[1] : null;
+    const exampleNumber = chapter ? `${chapter}.${exampleCounter}` : String(exampleCounter);
+
+    if (example.id) {
+      lines.push(`:::example{id="${example.id}"}`);
+    } else {
+      lines.push(':::example');
+    }
+
+    if (exampleTitle) {
+      lines.push('### Example ' + exampleNumber + ': ' + processInlineContent(exampleTitle));
+      lines.push('');
+    } else {
+      lines.push('### Example ' + exampleNumber);
+      lines.push('');
+    }
+
+    // Process example content
+    const exContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
+    let exContentMatch;
+    while ((exContentMatch = exContentPattern.exec(example.content)) !== null) {
+      const elementType = exContentMatch[1];
+      let elementContent = exContentMatch[3];
+
+      const innerTitleMatch = elementContent.match(/<title>([^<]+)<\/title>/);
+      if (innerTitleMatch) {
+        const innerTitle = innerTitleMatch[1];
+        elementContent = elementContent.replace(/<title>[^<]*<\/title>/g, '');
+        if (innerTitle !== exampleTitle) {
+          lines.push('**' + processInlineContent(innerTitle) + '**');
+          lines.push('');
+        }
+      }
+
+      if (elementType === 'para') {
+        const paraText = processInlineContent(elementContent);
+        if (paraText.trim()) {
+          lines.push(paraText);
+          lines.push('');
+        }
+      } else if (elementType === 'equation') {
+        const eqText = processInlineContent(elementContent);
+        if (eqText.trim()) {
+          lines.push(eqText);
+          lines.push('');
+        }
+      }
+    }
+
+    lines.push(':::');
+    lines.push('');
+    nextExampleIndex++;
   }
 
   if (verbose) {
