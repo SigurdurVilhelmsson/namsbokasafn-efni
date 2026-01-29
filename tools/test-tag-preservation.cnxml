@@ -6,7 +6,7 @@
   </metadata>
   <content>
     <section id="test-section-1">
-      <title>Test Section with Practice Problems</title>
+      <title>Test Section with Content</title>
 
       <para id="test-para-1">This is a test paragraph.</para>
 
@@ -14,15 +14,6 @@
         <title>Test Example</title>
         <para id="test-example-para">This is an example with an ID.</para>
       </example>
-
-      <exercise id="test-exercise-1">
-        <problem id="test-problem-1">
-          <para id="test-problem-para">What is the answer?</para>
-        </problem>
-        <solution id="test-solution-1">
-          <para id="test-solution-para">This is the answer.</para>
-        </solution>
-      </exercise>
 
       <note id="test-note-1" class="chemistry link-to-learning">
         <para id="test-note-para-1">This is a link to learning note.</para>

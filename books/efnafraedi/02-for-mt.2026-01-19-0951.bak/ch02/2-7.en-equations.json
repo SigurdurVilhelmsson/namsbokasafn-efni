@@ -1,0 +1,12 @@
+{
+  "module": "m68698",
+  "section": "2.7",
+  "title": "Chemical Nomenclature",
+  "equations": {
+    "EQ:1": "{\\text{copper(II) sulfate pentahydrate}\\,{\\text{CuSO}}_{4}∙5{\\text{H}}_{2}\\text{O}}",
+    "EQ:2": "{\\text{sodium carbonate decahydrate}\\,{\\text{Na}}_{2}{\\text{CO}}_{3}∙10{\\text{H}}_{2}\\text{O}}",
+    "EQ:3": "{{{\\text{SO}}}_{4}^{{2−}}),}",
+    "EQ:4": "{{{\\text{CrO}}}_{4}^{{2−}}}",
+    "EQ:5": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{2−}}}"
+  }
+}

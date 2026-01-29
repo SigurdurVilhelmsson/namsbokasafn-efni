@@ -1,0 +1,25 @@
+{
+  "module": "m68846",
+  "section": "",
+  "title": "Hydrocarbons",
+  "equations": {
+    "EQ:1": "{{{\\text{CH}}}_{4}(g)+2{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)+2{\\text{H}}_{2}\\text{O}{(\\text{g})}}",
+    "EQ:2": "{\\text{C}=\\text{C}}",
+    "EQ:3": "{\\text{C}=\\text{C}}",
+    "EQ:4": "{{{\\text{CH}}}_{3}{{\\text{CH}}}_{2}\\text{C}≡\\text{CH}}",
+    "EQ:5": "{\\text{C}≡\\text{C}}",
+    "EQ:6": "{\\text{C}=\\text{C}}",
+    "EQ:7": "{\\text{C}=\\text{C}}",
+    "EQ:8": "{{{({{\\text{CH}}3})}}2{{\\text{CHCH}}}_{2}\\text{CH}={{\\text{CH}}}_{2}}",
+    "EQ:9": "{{{\\text{CH}}}_{3}{{\\text{CH}}}_{2}\\text{CH}={{\\text{CHCH}}}_{3}}",
+    "EQ:10": "{{{({{\\text{CH}}3})}}3{{\\text{CCH}}}_{2}\\text{C}≡\\text{CH}}",
+    "EQ:11": "{{{\\text{CH}}}_{3}\\text{CH}=\\text{CHCl.}}",
+    "EQ:12": "{3{\\text{C}}_{2}{\\text{H}}_{2}\\,\\longrightarrow \\,{\\text{C}}_{6}{\\text{H}}_{6}}",
+    "EQ:13": "{\\text{CH}≡{{\\text{CCH}}}_{2}{{\\text{CH}}}_{3}+2{\\text{I}}_{2}\\,\\longrightarrow \\,{{\\text{CHI}}}_{2}{{\\text{CI}}}_{2}{{\\text{CH}}}_{2}{{\\text{CH}}}_{3}}",
+    "EQ:14": "{{{\\text{CH}}}_{3}{{\\text{CH}}}_{2}{{\\text{CH}}}_{2}{{\\text{CH}}}_{2}{{\\text{CH}}}_{3}+8{\\text{O}}_{2}\\,\\longrightarrow \\,5{{\\text{CO}}}_{2}+{{\\text{6H}}}_{2}\\text{O}}",
+    "EQ:15": "{{{\\text{C}}}_{2}^{{2−}}}",
+    "EQ:16": "{{\\text{C}}_{2}{\\text{H}}_{6}\\,\\longrightarrow \\,{\\text{C}}_{2}{\\text{H}}_{4}+{\\text{H}}_{2}}",
+    "EQ:17": "\\times",
+    "EQ:18": "\\times"
+  }
+}

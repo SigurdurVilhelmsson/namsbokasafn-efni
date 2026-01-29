@@ -35,35 +35,7 @@ Example content here...
 
 ### Exercises
 
-#### In-Chapter Practice Problems
-
-**CNXML:**
-```xml
-<exercise id="fs-idm68837632">
-  <problem>
-    <para>What is the question?</para>
-  </problem>
-  <solution>
-    <para>This is the answer.</para>
-  </solution>
-</exercise>
-```
-
-**Markdown (inside regular section):**
-```markdown
-:::practice-problem{id="fs-idm68837632"}
-What is the question?
-
-:::answer
-This is the answer.
-
-:::
-:::
-```
-
-**Detection:** Exercises inside sections WITHOUT `class="exercises"` or EOC-indicating titles.
-
-#### End-of-Chapter Exercises
+**Important:** All `<exercise>` tags in OpenStax Chemistry are end-of-chapter exercises. In-chapter practice is handled within `<example>` tags as "Check Your Learning" sections.
 
 **CNXML:**
 ```xml
@@ -73,6 +45,14 @@ This is the answer.
     <problem>
       <para>What is the EOC question?</para>
     </problem>
+  </exercise>
+  <exercise id="fs-idm323373040">
+    <problem>
+      <para>Another question?</para>
+    </problem>
+    <solution>
+      <para>Answer to every other exercise.</para>
+    </solution>
   </exercise>
 </section>
 ```
@@ -85,13 +65,21 @@ This is the answer.
 What is the EOC question?
 
 :::
+
+:::exercise{id="fs-idm323373040"}
+Another question?
+
+:::answer
+Answer to every other exercise.
+
+:::
+:::
 ```
 
-**Detection criteria:**
-- Section has `class="exercises"`, OR
-- Section title is "Exercises" (exact match), OR
-- Section title starts/ends with "Exercises", OR
-- Section title contains "End of Chapter", "Key Terms", "Key Concepts", or "Summary"
+**Notes:**
+- All exercises appear in sections with `class="exercises"`
+- Every other exercise includes a `<solution>` (for the answer key)
+- Solutions are rendered as nested `:::answer` directives
 
 ### Figures
 
@@ -362,12 +350,11 @@ The following directive names are supported in `namsbokasafn-vefur/src/lib/utils
 | `:::everyday-life` | 🌟 | Efnafræði í daglegu lífi | Purple |
 | `:::chemist-portrait` | 👤 | Efnafræðingur | Teal |
 | `:::sciences-interconnect` | 🔬 | Tengsl vísindagreina | Green |
-| `:::practice-problem` | ✏️ | Æfingadæmi | Orange |
 | `:::exercise` | 📝 | Æfing | Blue |
 | `:::example` | 💡 | Dæmi | Yellow |
 | `:::summary` | 📋 | Samantekt | Gray |
 | `:::key-concepts` | 🔑 | Lykilhugtök | Blue |
-| `:::key-equations` | ➕ | Lykilj öfnur | Green |
+| `:::key-equations` | ➕ | Lykiljöfnur | Green |
 
 ## Known Limitations
 

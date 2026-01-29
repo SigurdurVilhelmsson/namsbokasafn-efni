@@ -1,0 +1,8 @@
+{
+  "module": "m68670",
+  "section": "1.3",
+  "title": "Physical and Chemical Properties",
+  "equations": {
+    "EQ:1": "{\\text{density}=\\,\\frac{{\\text{mass}}}{{\\text{volume}}}\\,\\text{d}=\\,\\frac{\\text{m}}{\\text{V}}}"
+  }
+}

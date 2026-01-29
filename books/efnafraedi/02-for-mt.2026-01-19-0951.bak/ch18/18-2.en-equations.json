@@ -1,0 +1,28 @@
+{
+  "module": "m68830",
+  "section": "",
+  "title": "Occurrence and Preparation of the Representative Metals",
+  "equations": {
+    "EQ:1": "{\\text{2NaCl}(l)\\,\\rightarrow {600\\,\\text{°C}}{\\,\\text{electrolysis}\\,}\\,\\text{2Na}(l)+{{\\text{Cl}}}_{2}(g)}",
+    "EQ:2": "\\text{at the cathode:}\\,{\\text{2Na}}^{+}+{\\text{2e}}^{-}\\,\\longrightarrow \\,\\text{2Na}(l)\\text{at the anode:}\\,{\\text{2Cl}}^{-}\\,\\longrightarrow \\,{\\text{Cl}}_{2}(g)+{\\text{2e}}^{-}\\text{overall change:}\\,{\\text{2Na}}^{+}+{\\text{2Cl}}^{-}\\,\\longrightarrow \\,\\text{2Na}(l)+{\\text{Cl}}_{2}(g)",
+    "EQ:3": "{\\text{AlO}(\\text{OH})(s)+\\text{NaOH}(aq)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{Na}[\\text{Al}{{(\\text{OH})}}_{4}](aq)}",
+    "EQ:4": "{\\text{Na}[\\text{Al}{{(\\text{OH})}}_{4}](aq)+{\\text{H}}_{3}{\\text{O}}^{\\text{+}}(aq)\\,\\longrightarrow \\,\\text{Al}{{(\\text{OH})}}_{3}(s)+{{\\text{Na}}}^{\\text{+}}(aq)+{{\\text{2H}}}_{2}\\text{O}(l)}",
+    "EQ:5": "{{{\\text{MgCl}}}_{2}(aq)+\\text{Ca}{{(\\text{OH})}}_{2}(aq)\\,\\longrightarrow \\,\\text{Mg}{{(\\text{OH})}}_{2}(s)+{{\\text{CaCl}}}_{2}(aq)}",
+    "EQ:6": "{\\text{Mg}{{(\\text{OH})}}_{2}(s)+\\text{2HCl}(aq)\\,\\longrightarrow \\,{{\\text{MgCl}}}_{2}(aq)+{{\\text{2H}}}_{2}\\text{O}(l)}",
+    "EQ:7": "{{{\\text{MgCl}}}_{2}(l)\\,\\longrightarrow \\,\\text{Mg}(l)+{{\\text{Cl}}}_{2}(g)}",
+    "EQ:8": "{\\text{Si}(s)+\\text{2MgO}(s)\\,\\rightarrow {\\,\\text{Δ}\\,}\\,{{\\text{SiO}}}_{2}(s)+\\text{2Mg}(g)}",
+    "EQ:9": "{\\text{2ZnS}(s)+{{\\text{3O}}}_{2}(g)\\,\\rightarrow {\\,\\text{Δ}\\,}\\,\\text{2ZnO}(s)+{{\\text{2SO}}}_{2}(g)}",
+    "EQ:10": "{{{\\text{ZnCO}}}_{3}(s)\\,\\rightarrow {\\,\\text{Δ}\\,}\\,\\text{ZnO}(s)+{{\\text{CO}}}_{2}(g)}",
+    "EQ:11": "{\\text{ZnO}(s)+\\text{C}(s)\\,\\longrightarrow \\,\\text{Zn}(g)+\\text{CO}(g)}",
+    "EQ:12": "{{{\\text{SnO}}}_{2}(s)+\\text{2C}(s)\\,\\rightarrow {\\,\\text{Δ}\\,}\\,\\text{Sn}(s)+\\text{2CO}(g)}",
+    "EQ:13": "{\\text{2CsCl}(l)+\\text{Ca}(g)\\,\\rightarrow {\\,{\\text{countercurrent}}{\\text{fractionating}}{\\text{tower}}}\\,\\text{2Cs}(g)+{{\\text{CaCl}}}_{2}(l)}",
+    "EQ:14": "{{{\\text{2Li}}}^{+}+{{\\text{2e}}}^{-}\\,\\longrightarrow \\,\\text{2Li}(l)\\text{;}}",
+    "EQ:15": "{{{\\text{2Cl}}}^{-}\\,\\longrightarrow \\,{{\\text{Cl}}}_{2}(g)+{{\\text{2e}}}^{\\text{−}};}",
+    "EQ:16": "{{{\\text{2Li}}}^{+}+{{\\text{2Cl}}}^{-}\\,\\longrightarrow \\,\\text{2Li}(l)+{\\text{Cl}}_{2}(g)}",
+    "EQ:17": "{\\times }",
+    "EQ:18": "{\\text{AlO}(\\text{OH})(s)+\\text{NaOH}(aq)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{Na}{[ {\\text{Al}{{(\\text{OH})}}_{4}} ]}(aq)}",
+    "EQ:19": "{\\text{2Na}{[ {\\text{Al}{{(\\text{OH})}}_{4}} ]}(s)+{\\text{H}}_{2}{{\\text{SO}}}_{4}(aq)\\,\\longrightarrow \\,\\text{2Al}{{(\\text{OH})}}_{3}(s)+{{\\text{Na}}}_{2}{{\\text{SO}}}_{4}(aq)+{{\\text{2H}}}_{2}\\text{O}(l)}",
+    "EQ:20": "{\\text{2Al}{{(\\text{OH})}}_{3}(s)\\,\\longrightarrow \\,{{\\text{Al}}}_{2}{\\text{O}}_{3}(s)+{{\\text{3H}}}_{2}\\text{O}(g)}",
+    "EQ:21": "{{{\\text{Al}}}^{{3+}}+{{\\text{3e}}}^{-}\\,\\longrightarrow \\,\\text{Al}(s)}"
+  }
+}

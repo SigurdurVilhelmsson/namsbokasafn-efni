@@ -1,0 +1,11 @@
+{
+  "module": "m68695",
+  "section": "2.5",
+  "title": "The Periodic Table",
+  "equations": {
+    "EQ:1": "_{11}^{23}\\text{Na}",
+    "EQ:2": "_{{\\,54}}^{129}\\text{Xe}",
+    "EQ:3": "_{33}^{73}\\text{As}",
+    "EQ:4": "_{{\\,88}}^{226}\\text{Ra}"
+  }
+}

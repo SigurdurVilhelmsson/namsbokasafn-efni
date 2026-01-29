@@ -84,6 +84,14 @@ router.get('/dashboard', (req, res) => {
 });
 
 /**
+ * GET /pipeline
+ * Pipeline flow dashboard with Nordic design
+ */
+router.get('/pipeline', (req, res) => {
+  sendView(res, 'pipeline-dashboard.html');
+});
+
+/**
  * GET /books
  * Book management page
  */

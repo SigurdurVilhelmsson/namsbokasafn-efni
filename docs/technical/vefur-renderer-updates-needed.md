@@ -21,9 +21,10 @@ Update the `DIRECTIVE_CONFIG` object to support new directive names.
 | `summary` | `summary` | ✅ No change |
 | `key-equations` | `key-equations` | ✅ No change |
 | `key-concepts` | `key-concepts` | ✅ No change |
-| `practice-problem` | `practice-problem` | ✅ No change |
-| `exercise` | `exercise` | ⚠️ ENHANCED (now has proper context detection) |
+| `exercise` | `exercise` | ✅ No change (all exercises are EOC) |
 | `example` | `example` | ⚠️ ENHANCED (now has ID attributes) |
+
+**Note:** The `practice-problem` directive has been removed. All `<exercise>` tags in OpenStax are end-of-chapter exercises. In-chapter practice appears within `<example>` tags as "Check Your Learning" sections.
 
 ### Implementation Approach
 
@@ -95,31 +96,29 @@ Content here...
 - Parse `id="..."` attribute for anchor link
 - Support cross-references to this ID
 
-#### Exercise Type Distinction
+#### Exercise Directive
 
-**In-chapter (practice-problem):**
-```markdown
-:::practice-problem{id="fs-idm68837632"}
-Question content...
-
-:::answer
-Answer content...
-
-:::
-:::
-```
-
-**End-of-chapter (exercise):**
+**All exercises are end-of-chapter:**
 ```markdown
 :::exercise{id="fs-idm68837632"}
 Question content...
 
 :::
+
+:::exercise{id="fs-idm323373040"}
+Another question...
+
+:::answer
+Answer for every other exercise.
+
+:::
+:::
 ```
 
-**Note:** Both should render differently:
-- Practice problems: Orange styling, inline in content flow
-- Exercises: Blue styling, possibly grouped/numbered
+**Note:**
+- All exercises appear in end-of-chapter sections
+- Every other exercise includes an `:::answer` directive with solution
+- Blue styling, possibly grouped/numbered
 
 ### Testing Checklist
 
@@ -130,8 +129,8 @@ After updating vefur, verify:
 - [ ] `:::chemist-portrait` renders with teal icon
 - [ ] `:::sciences-interconnect` renders with green icon
 - [ ] `:::example{id="..."}` renders with ID attribute in DOM
-- [ ] `:::practice-problem` renders with orange styling
-- [ ] `:::exercise` renders with blue styling (distinct from practice-problem)
+- [ ] `:::exercise` renders with appropriate styling
+- [ ] `:::answer` (nested in exercise) renders correctly
 - [ ] Old directive names still work (if using backward-compatible approach)
 - [ ] Cross-references to example IDs work
 - [ ] No console errors

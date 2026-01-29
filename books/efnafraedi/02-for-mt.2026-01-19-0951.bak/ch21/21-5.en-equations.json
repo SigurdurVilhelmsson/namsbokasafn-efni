@@ -1,0 +1,20 @@
+{
+  "module": "m68857",
+  "section": "",
+  "title": "Uses of Radioisotopes",
+  "equations": {
+    "EQ:1": "{(_{43}^{99}\\text{Tc})}",
+    "EQ:2": "{(_{{\\,81}}^{201}\\text{Tl})}",
+    "EQ:3": "{(_{{\\,53}}^{131}\\text{I})}",
+    "EQ:4": "{(_{11}^{24}\\text{Na})}",
+    "EQ:5": "{{{\\text{MoO}}}_{4}^{{2−}};}",
+    "EQ:6": "{{{\\text{TcO}}}_{4}^{\\text{−}}.}",
+    "EQ:7": "{{{\\text{MoO}}}_{4}^{{2−}}}",
+    "EQ:8": "{{{\\text{TcO}}}_{4}^{\\text{−}}}",
+    "EQ:9": "{_{27}^{59} \\text{Co}+ _{0}^{1} \\text{n}\\,\\longrightarrow \\, _{27}^{60} \\text{Co}\\,\\longrightarrow \\, _{28}^{60} \\text{Ni}+ _{−1}^{{0}} \\text{β}+2 _{0}^{0} \\text{γ}}",
+    "EQ:10": "{{{\\text{6CO}}}_{2}(g)+{\\text{6H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{\\text{C}}_{6}{\\text{H}}_{{12}}{\\text{O}}_{6}(s)+{\\text{6O}}_{2}(g),}",
+    "EQ:11": "{_{{\\,6}}^{14}\\text{C}}",
+    "EQ:12": "{\\text{AgCl}(s)\\,⇌\\,{{\\text{Ag}}}^{\\text{+}}(aq)+{{\\text{Cl}}}^{\\text{−}}(aq)}",
+    "EQ:13": "{_{{\\,53}}^{133} \\text{I}\\,\\longrightarrow \\, _{{\\,54}}^{133} \\text{Xe}+ _{−1}^{{\\,0}} \\text{e};}"
+  }
+}

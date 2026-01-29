@@ -1,0 +1,16 @@
+{
+  "module": "m68826",
+  "section": "",
+  "title": "Corrosion",
+  "equations": {
+    "EQ:1": "{\\text{2Cu}(s)+\\,\\frac{1}{2}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{Cu}}}_{2}\\text{O}(s)\\,(\\text{red})}",
+    "EQ:2": "{{{\\text{Cu}}}_{2}\\text{O}(s)+\\,\\frac{1}{2}\\,{\\text{O}}_{2}(g)\\,\\longrightarrow \\,\\text{2CuO}(s)\\,(\\text{black})}",
+    "EQ:3": "{\\text{2CuO}(s)+{{\\text{CO}}}_{2}(g)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{{\\text{Cu}}}_{2}{{\\text{CO}}}_{3}{{\\text{(OH)}}}_{2}(s)\\,\\text{(green)}}",
+    "EQ:4": "{\\text{3CuO}(s)+{{\\text{2CO}}}_{2}(g)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{{\\text{Cu}}}_{3}{{(\\text{CO}}3)}2{{\\text{(OH)}}}_{2}(s)\\,\\text{(blue)}}",
+    "EQ:5": "{\\text{4CuO}(s)+{{\\text{SO}}}_{3}(g)+{{\\text{3H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{{\\text{Cu}}}_{4}{{\\text{SO}}}_{4}{{\\text{(OH)}}}_{6}(s)\\,\\text{(green)}}",
+    "EQ:6": "\\text{anode:}\\text{Fe}(s)\\,\\longrightarrow \\,{{\\text{Fe}}}^{{2+}}(aq)+2{\\text{e}}^{\\text{−}}{E}_{{{{\\text{Fe}}}^{{\\text{2+}}}\\text{/Fe}}}^{^{\\circ}}=\\text{−0.44 V} \\text{cathode:}{{\\text{O}}}_{2}(g)+4{\\text{H}}^{\\text{+}}(aq)+4{\\text{e}}^{\\text{−}}\\,\\longrightarrow \\,2{\\text{H}}_{2}\\text{O}(l){E}_{{{\\text{O}}_{2}{{\\text{/O}}}^{2}}}^{^{\\circ}}=\\text{+1.23 V} \\text{overall:}\\text{2Fe}(s)+{\\text{O}}_{2}(g)+{{\\text{4H}}}^{\\text{+}}(aq)\\,\\longrightarrow \\,2{{\\text{Fe}}}^{{2+}}(aq)+2{\\text{H}}_{2}\\text{O}(l){E}_{{\\text{cell}}}^{^{\\circ}}=+1.67 V",
+    "EQ:7": "{4{{\\text{Fe}}}^{{2+}}(aq)+{\\text{O}}_{2}(g)+(4+2x)\\,{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,2{{\\text{Fe}}}_{2}{\\text{O}}_{3}\\text{·}x{\\text{H}}_{2}\\text{O}(s)+8{\\text{H}}^{\\text{+}}(aq)}",
+    "EQ:8": "{({E}_{{{{\\text{Al}}}^{{\\text{3+}}}\\text{/Al}}}^{^{\\circ}}=\\text{−2.07 V})}",
+    "EQ:9": "{({E}_{{{{\\text{Fe}}}^{{\\text{3+}}}\\text{/Fe}}}^{^{\\circ}}=\\text{−0.477 V}),}"
+  }
+}

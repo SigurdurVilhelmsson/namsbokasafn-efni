@@ -785,36 +785,6 @@ function extractContent(cnxml, options = {}) {
     }
   }
 
-  /**
-   * Determine if an exercise is end-of-chapter or in-chapter
-   * based on section attributes and title.
-   */
-  function detectExerciseContext(sectionAttrs, sectionTitle) {
-    // Check if section has class="exercises"
-    if (sectionAttrs && sectionAttrs.includes('class="exercises"')) {
-      return 'end-of-chapter';
-    }
-
-    // Check if section title indicates end-of-chapter exercises
-    // Only match if the section is specifically about exercises (not mentioning them in passing)
-    if (sectionTitle) {
-      const title = sectionTitle.toLowerCase();
-      // Match patterns like "Exercises", "Chapter Exercises", "Key Terms", etc.
-      // But NOT "Section with Exercises" or "Test Exercises"
-      if (title === 'exercises' ||
-          title.startsWith('exercises') ||
-          title.endsWith('exercises') ||
-          title.includes('end of chapter') ||
-          title.includes('key terms') ||
-          title.includes('key concepts') ||
-          title.includes('summary')) {
-        return 'end-of-chapter';
-      }
-    }
-
-    return 'in-chapter';
-  }
-
   // Process sections and examples in document order
   // Track which examples we've already output
   let nextExampleIndex = 0;
@@ -889,9 +859,6 @@ function extractContent(cnxml, options = {}) {
     const sectionContent = sectionMatch[2];
     const sectionTitleMatch = sectionContent.match(/<title>([^<]+)<\/title>/);
     const sectionTitle = sectionTitleMatch ? sectionTitleMatch[1] : null;
-
-    // Detect exercise context for this section
-    const exerciseContext = detectExerciseContext(sectionAttrs, sectionTitle);
 
     if (sectionTitle) {
       lines.push('## ' + processInlineContent(sectionTitle));
@@ -1198,14 +1165,12 @@ function extractContent(cnxml, options = {}) {
         const solutionMatch = elem.content.match(/<solution[^>]*>([\s\S]*?)<\/solution>/);
 
         if (problemMatch) {
-          // Determine directive type based on section context
-          const directive = exerciseContext === 'end-of-chapter' ? 'exercise' : 'practice-problem';
-
-          // Use MT-safe {id="..."} format instead of {#...}
+          // All exercises in OpenStax are end-of-chapter exercises
+          // (in-chapter practice is handled within <example> tags as "Check Your Learning")
           if (exerciseId) {
-            lines.push(`:::${directive}{id="${exerciseId}"}`);
+            lines.push(`:::exercise{id="${exerciseId}"}`);
           } else {
-            lines.push(`:::${directive}`);
+            lines.push(':::exercise');
           }
 
           const problemContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;

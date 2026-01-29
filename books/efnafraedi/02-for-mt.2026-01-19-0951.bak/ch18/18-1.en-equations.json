@@ -1,0 +1,31 @@
+{
+  "module": "m68829",
+  "section": "",
+  "title": "Periodicity",
+  "equations": {
+    "EQ:1": "{\\text{2Li}(s)+{{\\text{2H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{2LiOH}(aq)+{\\text{H}}_{2}(g)}",
+    "EQ:2": "{\\text{2Mg}(s)+{{\\text{CO}}}_{2}(g)\\,\\longrightarrow \\,\\text{2MgO}(s)+\\text{C}(s)}",
+    "EQ:3": "{{{\\text{Hg}}}_{2}^{{2+}}}",
+    "EQ:4": "{\\text{Zn}(s)+{{\\text{2H}}}_{3}{\\text{O}}^{\\text{+}}(aq)+{{\\text{2Cl}}}^{\\text{−}}(aq)\\,\\longrightarrow \\,{\\text{H}}_{2}(g)+{{\\text{Zn}}}^{{2+}}(aq)+{{\\text{2Cl}}}^{\\text{−}}(aq)+{{\\text{2H}}}_{2}\\text{O}(l)}",
+    "EQ:5": "{\\text{Hg}(l)+\\text{HCl}(aq)\\,\\longrightarrow \\,\\text{no reaction}}",
+    "EQ:6": "{\\text{3Hg}(l)+{{\\text{8HNO}}}_{3}(aq)\\,\\longrightarrow \\,\\text{3Hg}{({\\text{NO}}3)}2(aq)+{{\\text{4H}}}_{2}\\text{O}(l)+\\text{2NO}(g)}",
+    "EQ:7": "{{{\\text{Hg}}}_{2}^{{2+}}}",
+    "EQ:8": "{\\text{2Al}(s)+\\text{6HCl}(aq)\\,\\longrightarrow \\,{{\\text{2AlCl}}}_{3}(aq)+{{\\text{3H}}}_{2}(g)}",
+    "EQ:9": "{\\text{2Al}(s)+\\text{2NaOH}(aq)+{{\\text{6H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{2Na}{[ {\\text{Al}{{{({\\text{OH}})}}}_{4}} ]}(aq)+{{\\text{3H}}}_{2}(g)}",
+    "EQ:10": "{{{{[ {\\text{Al}{{({\\text{H}2\\text{O}})}}6} ]}}}^{{3+}},}",
+    "EQ:11": "{{{\\text{Hg}}}_{2}^{2+}).}",
+    "EQ:12": "\\text{Na}+{\\text{I}}_{2}\\,\\longrightarrow \\,\\text{2NaI}\\text{2Na}+\\text{Se}\\,\\longrightarrow \\,{\\text{Na}}_{2}\\text{Se}\\text{2Na}+{\\text{O}}_{2}\\,\\longrightarrow \\,{\\text{Na}}_{2}{\\text{O}}_{2}",
+    "EQ:13": "\\text{Sr}+{\\text{I}}_{2}\\,\\longrightarrow \\,{\\text{SrI}}_{2}\\text{Sr}+\\text{Se}\\,\\longrightarrow \\,\\text{SrSe}\\text{2Sr}+{\\text{O}}_{2}\\,\\longrightarrow \\,\\text{2SrO}",
+    "EQ:14": "\\text{2Al}+{\\text{3I}}_{2}\\,\\longrightarrow \\,{\\text{2AlI}}_{3}\\text{2Al}+\\text{3Se}\\,\\longrightarrow \\,{\\text{Al}}_{2}{\\text{Se}}_{3}\\text{4Al}+{\\text{3O}}_{2}\\,\\longrightarrow \\,{\\text{2Al}}_{2}{\\text{O}}_{3}",
+    "EQ:15": "{\\frac{{\\text{35.7 g}}}{{\\text{100 mL}}}}",
+    "EQ:16": "{\\frac{{\\text{53.8 g}}}{{\\text{100 mL}}}}",
+    "EQ:17": "{\\frac{{\\text{39.12 g}}}{{\\text{100 mL}}},}",
+    "EQ:18": "{\\frac{{\\text{100.8 g}}}{{\\text{100 mL}}}.}",
+    "EQ:19": "{\\text{CaO}(s)+{\\text{H}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{Ca}{{(\\text{OH})}}_{2}(s)\\,\\text{Δ}H=\\text{−350 kJ}\\,{{\\text{mol}}}^{\\text{−1}}}",
+    "EQ:20": "{\\text{2Sr}(s)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,\\text{2SrO}(s);}",
+    "EQ:21": "{\\text{Sr}(s)+\\text{2HBr}(g)\\,\\longrightarrow \\,{{\\text{SrBr}}}_{2}(s)+{\\text{H}}_{2}(g);}",
+    "EQ:22": "{\\text{Sr}(s)+{\\text{H}}_{2}(g)\\,\\longrightarrow \\,{{\\text{SrH}}}_{2}(s);}",
+    "EQ:23": "{\\text{6Sr}(s)+{\\text{P}}_{4}(s)\\,\\longrightarrow \\,{{\\text{2Sr}}}_{3}{\\text{P}}_{2}(s);}",
+    "EQ:24": "{\\text{Sr}(s)+{{\\text{2H}}}_{2}\\text{O}(l)\\,\\longrightarrow \\,\\text{Sr}{{(\\text{OH})}}_{2}(aq)+{\\text{H}}_{2}(g)}"
+  }
+}
