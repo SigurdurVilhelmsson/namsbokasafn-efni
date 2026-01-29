@@ -1,3 +1,5 @@
+## titill: „Unknown" kafli: „unknown" eining: „unknown" tungumál: „en"
+
 # Equation Strings - Section 5.2
 
 Translatable text extracted from LaTeX equations.

@@ -36,6 +36,7 @@ import { fileURLToPath } from 'url';
 import { assembleChapter } from './chapter-assembler.js';
 import { processBatch as protectForMT } from './protect-for-mt.js';
 import { splitDirectory as splitForErlendur, ERLENDUR_SOFT_LIMIT } from './split-for-erlendur.js';
+import { processBatch as extractTableStrings } from './extract-table-strings.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -508,6 +509,57 @@ async function stepProtectForMT(outputDir, verbose) {
 }
 
 /**
+ * Step 1c2: Extract translatable strings from tables
+ * Reads protected.json files and extracts headers/cell values for MT
+ * @param {string} outputDir - Directory containing *-protected.json files
+ * @param {boolean} verbose - Verbose output
+ * @returns {Promise<{tableStringsExtracted: number, filesWithTableStrings: number}>}
+ */
+async function stepExtractTableStrings(outputDir, verbose) {
+  if (verbose) {
+    console.log(`  Extracting table strings from: ${outputDir}`);
+  }
+
+  // Capture console output to count results
+  let tableStringsExtracted = 0;
+  let filesWithTableStrings = 0;
+
+  const originalLog = console.log;
+  const originalError = console.error;
+
+  const capturedOutput = [];
+  console.log = (...args) => {
+    capturedOutput.push(args.join(' '));
+    if (verbose) originalLog(...args);
+  };
+  console.error = (...args) => {
+    capturedOutput.push(args.join(' '));
+    if (verbose) originalError(...args);
+  };
+
+  try {
+    extractTableStrings(outputDir, { verbose, dryRun: false });
+
+    // Parse output to count results
+    for (const line of capturedOutput) {
+      const stringsMatch = line.match(/Total strings extracted:\s*(\d+)/);
+      if (stringsMatch) {
+        tableStringsExtracted = parseInt(stringsMatch[1], 10);
+      }
+      const filesMatch = line.match(/Files with translatable strings:\s*(\d+)/);
+      if (filesMatch) {
+        filesWithTableStrings = parseInt(filesMatch[1], 10);
+      }
+    }
+  } finally {
+    console.log = originalLog;
+    console.error = originalError;
+  }
+
+  return { tableStringsExtracted, filesWithTableStrings };
+}
+
+/**
  * Step 1d: Split large files for Erlendur MT character limits
  * Files >18,000 characters are split at paragraph boundaries
  * @param {string} outputDir - Directory containing .en.md files
@@ -907,6 +959,25 @@ async function runChapterPipeline(options) {
       });
 
       console.log(`  ✓ Protected ${tablesProtected} table(s) in ${filesProtected} file(s)`);
+
+      // Extract table strings for MT (only if tables were protected)
+      if (tablesProtected > 0) {
+        const tableStringsStart = Date.now();
+        const { tableStringsExtracted, filesWithTableStrings } = await stepExtractTableStrings(outputDir, verbose);
+        const tableStringsTime = Date.now() - tableStringsStart;
+
+        results.steps.push({
+          name: 'extract-table-strings',
+          success: true,
+          timeMs: tableStringsTime,
+          tableStringsExtracted,
+          filesWithTableStrings
+        });
+
+        if (tableStringsExtracted > 0) {
+          console.log(`  ✓ Extracted ${tableStringsExtracted} table string(s) from ${filesWithTableStrings} file(s)`);
+        }
+      }
       console.log('');
     } else {
       console.log('Skipped pre-MT protection (--skip-protect)');

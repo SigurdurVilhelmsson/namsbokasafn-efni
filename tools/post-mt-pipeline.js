@@ -61,6 +61,12 @@ const PIPELINE_STEPS = [
     description: 'Update sidecar with translated frontmatter titles, table titles, and summaries'
   },
   {
+    id: 'table-strings',
+    name: 'Inject Table Strings',
+    script: 'inject-table-strings.js',
+    description: 'Inject translated table headers and cells from table-strings.is.md'
+  },
+  {
     id: 'tables',
     name: 'Restore Tables',
     script: 'restore-tables.js',
@@ -385,7 +391,47 @@ async function processFile(filePath, options) {
       if (verbose) {
         args.push('--verbose');
       }
+    } else if (step.id === 'table-strings') {
+      // Find translated table strings file in same directory
+      const dir = path.dirname(filePath);
+      const basename = path.basename(filePath)
+        .replace(/\.is\.md$/, '')
+        .replace(/\([a-z]\)$/, '');  // Handle split files
+      const tableStringsPath = path.join(dir, `${basename}-table-strings.is.md`);
+
+      if (!fs.existsSync(tableStringsPath)) {
+        // No translated table strings - skip this step
+        result.steps[step.id] = {
+          skipped: true,
+          reason: 'No translated table strings found'
+        };
+        if (verbose) {
+          console.log(`  [SKIP] ${step.name}: No table-strings.is.md found`);
+        }
+        continue;
+      }
+
+      args.push(tableStringsPath);
+      if (dryRun) {
+        args.push('--dry-run');
+      }
+      if (verbose) {
+        args.push('--verbose');
+      }
     } else if (step.id === 'tables') {
+      // Check for translated protected.json in 02-mt-output (created by inject-table-strings)
+      const dir = path.dirname(filePath);
+      const basename = path.basename(filePath)
+        .replace(/\.is\.md$/, '')
+        .replace(/\([a-z]\)$/, '');  // Handle split files
+      const translatedProtectedPath = path.join(dir, `${basename}-protected.json`);
+
+      // If translated protected.json exists in mt-output, restore-tables will use it
+      // Otherwise it falls back to the original in 02-for-mt
+      if (fs.existsSync(translatedProtectedPath) && verbose) {
+        console.log(`  Using translated tables: ${path.basename(translatedProtectedPath)}`);
+      }
+
       args.push(filePath);
       if (!dryRun) {
         args.push('--in-place');
@@ -603,6 +649,7 @@ async function processMultipleFiles(files, options) {
       figures: { total: 0, crossRefs: 0, captions: 0 },
       links: { total: 0, urls: 0, refs: 0, docs: 0 },
       strings: { total: 0, count: 0 },
+      'table-strings': { total: 0, count: 0 },
       tables: { total: 0, count: 0 },
       'equation-strings': { total: 0, count: 0 },
       equations: { total: 0, count: 0 },
@@ -656,6 +703,11 @@ async function processMultipleFiles(files, options) {
     if (fileResult.steps.strings && !fileResult.steps.strings.skipped) {
       results.steps.strings.total++;
       results.steps.strings.count += fileResult.steps.strings.count || 0;
+    }
+
+    if (fileResult.steps['table-strings'] && !fileResult.steps['table-strings'].skipped) {
+      results.steps['table-strings'].total++;
+      results.steps['table-strings'].count += fileResult.steps['table-strings'].count || 0;
     }
 
     if (fileResult.steps.tables && !fileResult.steps.tables.skipped) {
@@ -789,6 +841,7 @@ async function main() {
     console.log(`  Figures restored: ${results.steps.figures.crossRefs} cross-refs, ${results.steps.figures.captions} captions`);
     console.log(`  Links restored: ${results.steps.links.urls} URLs, ${results.steps.links.refs} refs, ${results.steps.links.docs} docs`);
     console.log(`  Strings restored: ${results.steps.strings.count}`);
+    console.log(`  Table strings injected: ${results.steps['table-strings'].count}`);
     console.log(`  Tables restored: ${results.steps.tables.count}`);
     console.log(`  Equation strings injected: ${results.steps['equation-strings'].count}`);
     console.log(`  Equations applied: ${results.steps.equations.count}`);

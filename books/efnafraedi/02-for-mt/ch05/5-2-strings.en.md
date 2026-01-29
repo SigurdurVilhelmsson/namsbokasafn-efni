@@ -1,3 +1,5 @@
+## titill: „Unknown" kafli: „unknown" eining: „unknown" tungumál: „en"
+
 # Translatable Strings - Section 5.2
 
 ## Frontmatter
