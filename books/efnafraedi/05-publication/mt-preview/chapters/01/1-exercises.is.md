@@ -3,7 +3,7 @@ title: Æfingar
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T12:00:09.544Z"
+published-at: "2026-01-29T13:15:53.102Z"
 type: exercises
 ---
 
@@ -250,7 +250,7 @@ hélst massi lokuðu flöskunnar og innihaldsins óbreyttur eftir hitunina?
 
 Ger breytir glúkósa í etanól og
 koldíoxíð við loftfirrta gerjun eins og sýnt er í einföldu efnajöfnunni
-hér: [[EQ:1]]{id="fs-idp17770496"}
+hér: ${\text{glúkósi}\,\longrightarrow \,\text{etanól}+\text{koldíoxíð}}${#fs-idp17770496}
 
 \(a\) Ef 200,0 g af glúkósa breytist að fullu, hver verður heildarmassi
 etanóls og koldíoxíðs sem myndast?
@@ -342,7 +342,7 @@ Eðlismassi (d) efnis er
 eðliseiginleiki sem er skilgreindur sem hlutfall massa þess (m) og
 rúmmáls (V).
 
-[[EQ:1]]
+$${\text{eðlismassi}=\,\frac{{\text{massi}}}{{\text{rúmmál}}}\,\text{d}=\,\frac{\text{m}}{\text{V}}}$$
 
 Í ljósi þess að massi og rúmmál eru bæði magnbundnir eiginleikar,
 útskýrðu hvers vegna hlutfall þeirra, eðlismassi, er eðliseiginleiki.
@@ -542,12 +542,12 @@ Hversu margir lítrar af olíu eru í tunnu?
 **49.**
 
 Þvermál rauðrar blóðfrumu er um 3
-[[EQ:45]] 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
+$\times$ 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
 
 **50.**
 
 Fjarlægðin milli miðju tveggja
-súrefnisatóma í súrefnissameind er 1,21 [[EQ:47]] 10^−8^ cm. Hver er
+súrefnisatóma í súrefnissameind er 1,21 $\times$ 10^−8^ cm. Hver er
 þessi fjarlægð í tommum?
 
 **51.**
@@ -642,9 +642,9 @@ timburstærðir.
 
 \(a\) Til að lýsa fyrir Evrópubúa hvernig hús eru byggð í Bandaríkjunum
 þarf að breyta stærðum „tveir á fjóra“ timburs í metrakerfiseiningar.
-Þykktin [[EQ:63]] breiddin [[EQ:64]] lengdin eru 1,50 tommur
-[[EQ:65]] 3,50 tommur [[EQ:66]] 8,00 fet í Bandaríkjunum.
-Hverjar eru stærðirnar í cm [[EQ:67]] cm [[EQ:68]] m?
+Þykktin $\times$ breiddin $\times$ lengdin eru 1,50 tommur
+$\times$ 3,50 tommur $\times$ 8,00 fet í Bandaríkjunum.
+Hverjar eru stærðirnar í cm $\times$ cm $\times$ m?
 
 \(b\) Þetta timbur er hægt að nota sem lóðrétta stoð, sem venjulega er
 komið fyrir með 16,0 tommu millibili. Hver er sú fjarlægð í sentímetrum?
@@ -655,7 +655,7 @@ Talið var að kvikasilfursinnihald í
 læk væri yfir því lágmarki sem talið er öruggt – 1 hluti á milljarð
 (ppb) miðað við þyngd. Greining leiddi í ljós að styrkurinn var 0,68
 hlutar á milljarð. Hvaða magn kvikasilfurs í grömmum var til staðar í
-15,0 L af vatninu, en eðlismassi þess er 0,998 g/ml? [[EQ:71]]
+15,0 L af vatninu, en eðlismassi þess er 0,998 g/ml? $${\text{(1 ppb Hg}=\,\frac{{\text{1 ng Hg}}}{{\text{1 g vatn}}}\text{)}}$$
 
 **60.**
 

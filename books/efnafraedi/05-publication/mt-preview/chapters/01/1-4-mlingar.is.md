@@ -2,7 +2,7 @@
 title: Mælingar
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T12:00:09.527Z"
+published-at: "2026-01-29T13:15:53.084Z"
 ---
 
 ## titill: „Mælingar“ kafli: „1.4“ eining: „m68674“ tungumál: „is“ hluti: „a“
@@ -40,8 +40,8 @@ tugabrotsformi og með staðalformi. (Staðalform er einnig þekkt sem
 veldisvísir; yfirlit yfir þetta efni má finna í viðauka
 B.) Til dæmis er hámarksflugtaksmassi Boeing 777-200ER
 farþegaþotu 298.000 kílógrömm, sem einnig má skrifa sem 2,98
-[[EQ:7]] 10^5^ kg. Massi meðalmoskítóflugunnar er um 0,0000025
-kílógrömm, sem má skrifa sem 2,5 [[EQ:8]] 10^−6^ kg.
+$\times$ 10^5^ kg. Massi meðalmoskítóflugunnar er um 0,0000025
+kílógrömm, sem má skrifa sem 2,5 $\times$ 10^−6^ kg.
 
 **Einingar**{#term-00001}, svo sem lítrar, pund og sentimetrar, eru
 samanburðarstaðlar fyrir mælingar. Tveggja lítra gosflaska inniheldur
@@ -93,19 +93,19 @@ notuð eru og veldin sem 10 er hafið í eru talin upp í
 **Algeng einingaforskeyti**
 
 | Forskeyti | Tákn | Þáttur | Dæmi | | :--- | :--- | :--- | :--- | |
-femtó | f | 10^−15^ | 1 femtósekúnda (fs) = 1 [[EQ:9]] 10^−15^ s
+femtó | f | 10^−15^ | 1 femtósekúnda (fs) = 1 $\times$ 10^−15^ s
 (0,000000000000001 s) | | píkó | p | 10^−12^ | 1 píkómetri (pm) = 1
-[[EQ:10]] 10^−12^ m (0,000000000001 m) | | nanó | n | 10^−9^ | 4
-nanógrömm (ng) = 4 [[EQ:11]] 10^−9^ g (0,000000004 g) | | míkró | µ
-| 10^−6^ | 1 míkrólítri (μL) = 1 [[EQ:12]] 10^−6^ L (0.000001 L) | |
-milli | m | 10^−3^ | 2 millimól (mmol) = 2 [[EQ:13]] 10^−3^ mól
+$\times$ 10^−12^ m (0,000000000001 m) | | nanó | n | 10^−9^ | 4
+nanógrömm (ng) = 4 $\times$ 10^−9^ g (0,000000004 g) | | míkró | µ
+| 10^−6^ | 1 míkrólítri (μL) = 1 $\times$ 10^−6^ L (0.000001 L) | |
+milli | m | 10^−3^ | 2 millimól (mmol) = 2 $\times$ 10^−3^ mól
 (0,002 mól) | | senti | c | 10^−2^ | 7 sentimetrar (cm) = 7
-[[EQ:14]] 10^−2^ m (0,07 m) | | desi | d | 10^−1^ | 1 desilítri (dL)
-= 1 [[EQ:15]] 10^−1^ L (0,1 L ) | | kíló | k | 10^3^ | 1 kílómetri
-(km) = 1 [[EQ:16]] 10^3^ m (1000 m) | | mega | M | 10^6^ | 3
-megahertz (MHz) = 3 [[EQ:17]] 10^6^ Hz (3.000.000 Hz) | | gíga | G |
-10^9^ | 8 gígaár (Gyr) = 8 [[EQ:18]] 10^9^ ár (8.000.000.000 ár) | |
-tera | T | 10^12^ | 5 teravött (TW) = 5 [[EQ:19]] 10^12^ W
+$\times$ 10^−2^ m (0,07 m) | | desi | d | 10^−1^ | 1 desilítri (dL)
+= 1 $\times$ 10^−1^ L (0,1 L ) | | kíló | k | 10^3^ | 1 kílómetri
+(km) = 1 $\times$ 10^3^ m (1000 m) | | mega | M | 10^6^ | 3
+megahertz (MHz) = 3 $\times$ 10^6^ Hz (3.000.000 Hz) | | gíga | G |
+10^9^ | 8 gígaár (Gyr) = 8 $\times$ 10^9^ ár (8.000.000.000 ár) | |
+tera | T | 10^12^ | 5 teravött (TW) = 5 $\times$ 10^12^ W
 (5.000.000.000.000 W) | {id="fs-idm81128320" summary="Forskeytið femtó
 hefur táknið litla f og þáttinn 10 í mínus fimmtánda veldi. Þess vegna
 er 1 femtósekúnda, FS, jöfn 1 sinnum 10 í mínus 15. veldi metra, eða
@@ -160,7 +160,7 @@ upprunalega metrakerfinu er **metri (m)**{#term-00005}. Metri var
 upphaflega skilgreindur sem 1/10.000.000 af vegalengdinni frá
 norðurpólnum að miðbaug. Hann er nú skilgreindur sem vegalengdin sem
 ljós ferðast í lofttæmi á 1/299.792.458 úr sekúndu. Metri er um 3 tommum
-lengri en stika ([↑](#CNX_Chem_01_04_MYdCmIn)); einn metri er um
+lengri en stika ([sjá mynd 1.23](#CNX_Chem_01_04_MYdCmIn)); einn metri er um
 39,37 tommur eða 1,094 stikur. Lengri vegalengdir eru oft gefnar upp í
 kílómetrum (1 km = 1000 m = 10^3^ m), en styttri vegalengdir má gefa upp
 í sentimetrum (1 cm = 0,01 m = 10^−2^ m) eða millimetrum (1 mm = 0,001 m
@@ -179,7 +179,7 @@ Kílógrammið var áður skilgreint af Alþjóðasambandi um hreina og hagnýta
 efnafræði (**IUPAC**) sem massi ákveðins viðmiðunarhlutar. Þessi hlutur
 var upphaflega einn lítri af hreinu vatni og síðar var það málmhólkur úr
 platínu-iridíum-melmi með hæð og þvermál 39 mm
-([↑](#CNX_Chem_01_04_Kilogram)). Í maí 2019 var þessari
+([sjá mynd 1.24](#CNX_Chem_01_04_Kilogram)). Í maí 2019 var þessari
 skilgreiningu breytt í skilgreiningu sem byggir á nákvæmum mælingum á
 nokkrum grundvallareðlisfræðilegum föstum. Nánari upplýsingar má finna á
 https://www.nist.gov/pml/weights-and-measures/si-units-mass. Eitt
@@ -210,8 +210,8 @@ eininga og Fahrenheit-kvarðans verður rædd síðar í þessum kafla.
 
 SI-grunneining tímans er **sekúnda (s)**{#term-00010}. Hægt er að
 tákna lítil og stór tímabil með viðeigandi forskeytum; til dæmis, 3
-míkrósekúndur = 0,000003 s = 3 [[EQ:20]] 10⁻⁶ og 5 megasekúndur =
-5.000.000 s = 5 [[EQ:21]] 10⁶ s. Einnig er hægt að nota
+míkrósekúndur = 0,000003 s = 3 $\times$ 10⁻⁶ og 5 megasekúndur =
+5.000.000 s = 5 $\times$ 10⁶ s. Einnig er hægt að nota
 klukkustundir, daga og ár.
 
 ## Afleiddar SI-einingar
@@ -223,7 +223,7 @@ eðlismassa.
 
 **Rúmmál**{#term-00011} er mælikvarði á það rými sem hlutur tekur.
 Stöðluð SI-eining rúmmáls er skilgreind með grunneiningu lengdar
-([↑](#CNX_Chem_01_04_Volume)). Staðlað rúmmál er rúmmetri (m³),
+([sjá mynd 1.25](#CNX_Chem_01_04_Volume)). Staðlað rúmmál er rúmmetri (m³),
 teningur með brúnlengd nákvæmlega einn metra. Til að skammta einn
 rúmmetra af vatni gætum við smíðað teningslaga kassa með brúnlengd
 nákvæmlega einn metra. Þessi kassi myndi rúma einn rúmmetra af vatni eða
@@ -286,7 +286,7 @@ einfaldasta aðferðin líklega sú að finna massa og rúmmál hlutarins hvort
 eftirfarandi dæmi er massi hlutarins mældur með vog en rúmmál hans er
 reiknað út rúmfræðilega út frá lengdarmælingum.
 
-[[EQ:1]]{id="fs-idm166517584"}
+$${\text{eðlismassi}=\,\frac{{\text{massi}}}{{\text{rúmmál}}}}$${#fs-idm166517584}
 
 iðkun efnafræði. Hver mæling hefur stærð, einingu til samanburðar og
 óvissu. Mælingar má tákna með tugabrotum eða á vísindalegu formi.
@@ -405,10 +405,10 @@ SI-grunneiningum.
 \(h\) T
 
 :::svar
-(a) senti-, [[EQ:23]] 10^−2^; (b) desi-, [[EQ:24]]
-10^−1^; (c) gíga-, [[EQ:25]] 10^9^; (d) kíló-, [[EQ:26]] 10^3^;
-(e) milli-, [[EQ:27]] 10^−3^; (f) nanó-, [[EQ:28]] 10^−9^; (g)
-píkó-, [[EQ:29]] 10^−12^; (h) tera-, [[EQ:30]] 10^12^
+(a) senti-, $\times$ 10^−2^; (b) desi-, $\times$
+10^−1^; (c) gíga-, $\times$ 10^9^; (d) kíló-, $\times$ 10^3^;
+(e) milli-, $\times$ 10^−3^; (f) nanó-, $\times$ 10^−9^; (g)
+píkó-, $\times$ 10^−12^; (h) tera-, $\times$ 10^12^
 
 :::
 

@@ -1,0 +1,252 @@
+{
+  "module": "m68683",
+  "section": "1.6",
+  "chapter": 1,
+  "title": "Mathematical Treatment of Measurement Results",
+  "equations": {
+    "EQ:1": {
+      "latex": "{\\text{hraði}=\\,\\frac{{\\text{vegalengd}}}{{\\text{tími}}}}",
+      "id": "fs-idm290867056"
+    },
+    "EQ:2": {
+      "latex": "{\\frac{{\\text{100 m}}}{{\\text{10 s}}}\\,=\\text{10 m/s}}",
+      "id": "fs-idm257675424"
+    },
+    "EQ:3": {
+      "latex": "{\\text{tími}=\\,\\frac{{\\text{vegalengd}}}{{\\text{hraði}}}}",
+      "id": "fs-idm219214640"
+    },
+    "EQ:4": {
+      "latex": "{\\frac{{\\text{25 m}}}{{\\text{10 m/s}}}\\,=\\text{2,5 s}}",
+      "id": "fs-idp106016944"
+    },
+    "EQ:5": {
+      "latex": "{\\frac{{\\text{2,54 cm}}}{{\\text{1 in.}}}\\,\\text{(2,54 cm}=\\text{1 in.) eða 2,54}\\,\\frac{{\\text{cm}}}{{\\text{in.}}}}",
+      "id": "fs-idm256748160"
+    },
+    "EQ:6": {
+      "latex": "{34\\,{\\text{in.}}\\,\\times \\,\\frac{{\\text{2,54 cm}}}{{1\\,{\\text{in.}}}}\\,=\\text{86 cm}}",
+      "id": "fs-idm153590912"
+    },
+    "EQ:7": {
+      "latex": "{x\\,\\text{oz}=\\text{125 g}\\,\\times \\,\\text{umreiknistuðull}}",
+      "id": "fs-idm138056288"
+    },
+    "EQ:8": {
+      "latex": "{\\frac{{\\text{1 oz}}}{{\\text{28,349 g}}}\\,\\text{og}\\,\\frac{{\\text{28,349 g}}}{{\\text{1 oz}}}}",
+      "id": "fs-idm233281680"
+    },
+    "EQ:9": {
+      "latex": "{x\\,\\text{oz}}=125\\,\\text{1 oz}\\,\\times \\,\\frac{{\\text{oz}}}{{\\text{28.349}\\,\\text{4,41 oz (þrír markverðir stafir)}}}{=}(\\frac{{125}}{{\\text{28.349}}})\\,\\text{oz}=\\text{4.41 oz (three significant figures)}",
+      "id": "fs-idm222314304"
+    },
+    "EQ:10": {
+      "latex": "{\\text{9.26}\\,{\\text{lb}}\\,\\times \\,\\frac{{\\text{453,59 g}}}{{1\\,{\\text{lb}}}}\\,=4.20\\,\\times \\,{{10}}^{3}}\\,\\text{g}",
+      "id": "fs-idm336821696"
+    },
+    "EQ:11": {
+      "latex": "{\\text{4.00}\\,{\\text{qt}}\\,\\times \\,\\frac{{\\text{1 L}}}{{\\text{1.0567}\\,{\\text{qt}}}}\\,=\\text{3,78 L}}",
+      "id": "fs-idm279137456"
+    },
+    "EQ:12": {
+      "latex": "{\\text{3.78}\\,\\text{1000 mL}\\,\\times \\,\\frac{{\\text{mL}}}{{1\\,\\text{L}}}\\,=3.78\\,\\times \\,{{10}}^{3}\\,\\text{mL}}",
+      "id": "fs-idm289883088"
+    },
+    "EQ:13": {
+      "latex": "{\\text{eðlismassi}=\\,\\frac{{\\text{4.20}\\,\\times \\,{{10}}^{3}\\,\\text{mL}}}{{3.78\\,\\times \\,{{10}}^{3}\\,\\text{1,11 g/mL}}}\\,=\\text{1.11 g/mL}}",
+      "id": "fs-idm144640128"
+    },
+    "EQ:14": {
+      "latex": "{\\frac{{\\text{9.26}\\,{\\text{lb}}}}{{\\text{4.00}\\,{\\text{qt}}}}\\,\\times \\,\\frac{{\\text{453,59 g}}}{{1\\,{\\text{lb}}}}\\,\\times \\,\\frac{{\\text{1.0567}\\,{\\text{qt}}}}{{1\\,\\text{1000 mL}}}\\,\\times \\,\\frac{{1\\,\\text{1,11 g/mL}}}{{\\text{1000 mL}}}\\,=\\text{1.11 g/mL}}",
+      "id": "fs-idm9873904"
+    },
+    "EQ:15": {
+      "latex": "{1250\\,\\text{km}\\,\\times \\,\\frac{{\\text{0,62137 mi}}}{{1\\,\\text{km}}}\\,=\\text{777 mi}}",
+      "id": "fs-idm60362224"
+    },
+    "EQ:16": {
+      "latex": "{213\\,\\text{qt}\\,\\times \\,\\frac{{\\text{1.0567}\\,{\\text{1 gal}}}}{{1\\,\\text{qt}}}\\,\\times \\,\\frac{{\\text{56,3 gal}}}{{4\\,{\\text{qt}}}}\\,=\\text{56.3 gal}}",
+      "id": "fs-idm214696672"
+    },
+    "EQ:17": {
+      "latex": "{\\text{(meðal) eyðsla}=\\,\\frac{{\\text{777 mi}}}{{\\text{56.3 gal}}}\\,=\\text{13.8 mílur/gallon}=\\text{13.8 mpg}}",
+      "id": "fs-idm114266320"
+    },
+    "EQ:18": {
+      "latex": "{\\frac{{1250\\,{\\text{km}}}}{{213\\,\\text{0,62137 mi}}}\\,\\times \\,\\frac{{\\text{km}}}{{1\\,{\\text{qt}}}}\\,\\times \\,\\frac{{1\\,\\text{qt}}}{{\\text{1.0567}\\,{\\text{1 gal}}}}\\,\\times \\,\\frac{{4\\,{\\text{13,8 mpg}}}}{{\\text{1 gal}}}=\\text{13.8 mpg}}",
+      "id": "fs-idm171836160"
+    },
+    "EQ:19": {
+      "latex": "{56.3\\,\\text{gal}\\,\\times \\,\\frac{{\\text{$3.80}}}{{1\\,\\text{gal}}}=\\text{$214}}",
+      "id": "fs-idm328491840"
+    },
+    "EQ:20": {
+      "latex": "{\\text{lengd í fetum}={({\\frac{{\\text{1 ft}}}{{\\text{12 in.}}}})}\\,\\times \\,\\text{lengd í tommum}}",
+      "id": "fs-idm6121760"
+    },
+    "EQ:21": {
+      "latex": "{m=\\,\\frac{{\\text{Δ}y}}{{\\text{Δ}x}}\\,=\\frac{{\\text{212 °F}-\\text{32 °F}\\,}}{{\\text{100 °C}-\\text{0 °C}}}\\,=\\,\\frac{{\\text{180 °F}}}{{\\text{100 °C}}}\\,=\\,\\frac{{\\text{9 °F}}}{{\\text{5 °C}}}}",
+      "id": "fs-idm229969840"
+    },
+    "EQ:22": {
+      "latex": "{b=y-mx=\\text{32 °F}-\\,\\frac{{\\text{9 °F}}}{{\\text{5 °C}}}\\,\\times \\,\\text{0 °C}=\\text{32 °F}}",
+      "id": "fs-idm234430272"
+    },
+    "EQ:23": {
+      "latex": "{{T}_{{\\text{°F}}}={({\\frac{{\\text{9 °F}}}{{\\text{5 °C}}}\\,\\times \\,{T}_{{\\text{°C}}}})}+\\text{32 °F}}",
+      "id": "fs-idm305465424"
+    },
+    "EQ:24": {
+      "latex": "{{T}_{{\\text{°F}}}=\\,(\\frac{9}{{5\\,}}\\,\\times \\,{T}_{{\\text{°C}}})+32}",
+      "id": "fs-idm226315088"
+    },
+    "EQ:25": {
+      "latex": "{{T}_{{\\text{°C}}}=\\,\\frac{{5\\,}}{{9}}{({{T}_{{\\text{°F}}}-32})}}",
+      "id": "fs-idm138168256"
+    },
+    "EQ:26": {
+      "latex": "{{T}_{\\text{°C}}={T}_{{\\text{°C}}}+\\text{273.15}}",
+      "id": "fs-idp289344"
+    },
+    "EQ:27": {
+      "latex": "{{T}_{{\\text{°C}}}={T}_{\\text{K}}-\\text{273.15}}",
+      "id": "fs-idm303916848"
+    },
+    "EQ:28": {
+      "latex": "{\\text{°C}=\\text{310,2 K}+273.15=37.0+273.2=\\text{310.2 K}}",
+      "id": "fs-idm223031696"
+    },
+    "EQ:29": {
+      "latex": "{\\text{°F}=\\frac{9}{5}\\text{°C}+32.0={({\\frac{9}{5}\\,\\times \\,37.0})}+32.0=66.6+32.0=\\text{98,6 °F}}",
+      "id": "fs-idp114907616"
+    },
+    "EQ:30": {
+      "latex": "{\\text{°C}=\\,\\frac{5}{9}\\text{(°F}-\\text{32)}=\\,\\frac{5}{9}{({450-32})}=\\,\\frac{5}{9}\\,\\times \\,418=\\text{232 °C}\\,\\longrightarrow \\,\\text{stilltu ofninn á 230 °C}\\,{({\\text{tveir markverðir stafir}})}}",
+      "id": "fs-idm32912"
+    },
+    "EQ:31": {
+      "latex": "{\\text{°C}=\\text{(°F}+273.15=\\frac{5}{9}\\text{(°F}-\\text{32)}=\\frac{5}{9}(450-32)+273.15=505.4\\,\\text{K}\\,\\longrightarrow 5.1\\times {10}^{2}\\text{K}}",
+      "id": "fs-idm144212448"
+    },
+    "EQ:32": {
+      "latex": "{\\frac{{\\text{in.}\\,\\times \\,\\text{cm}}}{{\\text{in.}}}}"
+    },
+    "EQ:33": {
+      "latex": "{\\frac{{\\text{in.}}}{{\\text{in.}}}\\,=\\text{1,}}"
+    },
+    "EQ:34": {
+      "latex": "{\\text{eðlismassi}\\,=\\,\\frac{{\\text{massi}}}{{\\text{rúmmál}}}}"
+    },
+    "EQ:35": {
+      "latex": "\\times"
+    },
+    "EQ:36": {
+      "latex": "{1\\,\\frac{\\text{°C}}{{\\text{°C}}}}"
+    },
+    "EQ:37": {
+      "latex": "{{T}_{{\\text{°C}}}=\\,\\frac{{5}}{{9}}\\,\\times \\,({T}_{{\\text{°F}}}-32})"
+    },
+    "EQ:38": {
+      "latex": "{{T}_{{\\text{°F}}}=\\,(\\frac{9}{{5}}\\,\\times \\,{T}_{{\\text{°C}}})+32}"
+    },
+    "EQ:39": {
+      "latex": "{{T}_{\\text{°C}}=\\text{°C}+273.15}"
+    },
+    "EQ:40": {
+      "latex": "{{T}_{{\\text{°C}}}=\\text{K}-273.15}"
+    },
+    "EQ:41": {
+      "latex": "{\\frac{{\\text{1,0936 yd}}}{{\\text{1 m}}}}"
+    },
+    "EQ:42": {
+      "latex": "{\\frac{{\\text{0,94635 L}}}{{\\text{1 qt}}}}"
+    },
+    "EQ:43": {
+      "latex": "{\\frac{{\\text{2,2046 lb}}}{{\\text{1 kg}}}}"
+    },
+    "EQ:44": {
+      "latex": "\\frac{{\\text{2,0 L}}}{{\\text{67,6 fl oz}}}\\,=\\,\\frac{{\\text{0,030 L}}}{{\\text{1 fl oz}}}"
+    },
+    "EQ:45": {
+      "latex": "\\times"
+    },
+    "EQ:46": {
+      "latex": "\\times"
+    },
+    "EQ:47": {
+      "latex": "\\times"
+    },
+    "EQ:48": {
+      "latex": "\\times"
+    },
+    "EQ:49": {
+      "latex": "\\times"
+    },
+    "EQ:50": {
+      "latex": "\\times"
+    },
+    "EQ:51": {
+      "latex": "\\times"
+    },
+    "EQ:52": {
+      "latex": "\\times"
+    },
+    "EQ:53": {
+      "latex": "\\times"
+    },
+    "EQ:54": {
+      "latex": "\\times"
+    },
+    "EQ:55": {
+      "latex": "\\times"
+    },
+    "EQ:56": {
+      "latex": "\\times"
+    },
+    "EQ:57": {
+      "latex": "\\times"
+    },
+    "EQ:58": {
+      "latex": "\\times"
+    },
+    "EQ:59": {
+      "latex": "\\times"
+    },
+    "EQ:60": {
+      "latex": "\\times"
+    },
+    "EQ:61": {
+      "latex": "\\times"
+    },
+    "EQ:62": {
+      "latex": "\\times"
+    },
+    "EQ:63": {
+      "latex": "\\times"
+    },
+    "EQ:64": {
+      "latex": "\\times"
+    },
+    "EQ:65": {
+      "latex": "\\times"
+    },
+    "EQ:66": {
+      "latex": "\\times"
+    },
+    "EQ:67": {
+      "latex": "\\times"
+    },
+    "EQ:68": {
+      "latex": "\\times"
+    },
+    "EQ:69": {
+      "latex": "\\times"
+    },
+    "EQ:70": {
+      "latex": "\\times"
+    },
+    "EQ:71": {
+      "latex": "{\\text{(1 ppb Hg}=\\,\\frac{{\\text{1 ng Hg}}}{{\\text{1 g vatn}}}\\text{)}}"
+    }
+  }
+}
