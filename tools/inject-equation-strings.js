@@ -129,16 +129,22 @@ function parseTranslatedStrings(content) {
   const lines = content.split('\n');
 
   for (const line of lines) {
-    // Match equation header: ## EQ:N or ## JAFNA:N (Icelandic translation)
-    const eqMatch = line.match(/^##\s+(?:EQ|JAFNA):(\d+)/);
+    // Match equation header in multiple formats:
+    // - Protected: ## [[EQ:N]]
+    // - Legacy EN: ## EQ:N
+    // - Legacy IS: ## JAFNA:N (Icelandic translation of legacy format)
+    const eqMatch = line.match(/^##\s+(?:\[\[)?(?:EQ|JAFNA):(\d+)(?:\]\])?/);
     if (eqMatch) {
       currentEq = `EQ:${eqMatch[1]}`; // Normalize to EQ:N
       result[currentEq] = {};
       continue;
     }
 
-    // Match text entry: **TEXT:N:** or **TEXTI:N:** (Icelandic translation)
-    const textMatch = line.match(/^\*\*(?:TEXT|TEXTI):(\d+):\*\*\s*(.*)$/);
+    // Match text entry in multiple formats:
+    // - Protected: **[[TEXT:N]]:** text
+    // - Legacy EN: **TEXT:N:** text
+    // - Legacy IS: **TEXTI:N:** text (Icelandic translation of legacy format)
+    const textMatch = line.match(/^\*\*(?:\[\[)?(?:TEXT|TEXTI):(\d+)(?:\]\])?:\*\*\s*(.*)$/);
     if (textMatch && currentEq) {
       const textId = parseInt(textMatch[1], 10);
       const text = textMatch[2].trim();

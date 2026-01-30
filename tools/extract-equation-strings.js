@@ -203,7 +203,7 @@ function generateStringsContent(data, extractedStrings) {
   lines.push(`# Equation Strings - Section ${section}`);
   lines.push('');
   lines.push('Translatable text extracted from LaTeX equations.');
-  lines.push('Translate the text content while preserving the structure.');
+  lines.push('Translate the text content while preserving the [[markers]].');
   lines.push('');
 
   let hasContent = false;
@@ -213,11 +213,13 @@ function generateStringsContent(data, extractedStrings) {
     if (translatableStrings.length === 0) continue;
 
     hasContent = true;
-    lines.push(`## ${eqId}`);
+    // Use [[EQ:N]] format - double brackets signal MT to not translate
+    lines.push(`## [[${eqId}]]`);
     lines.push('');
 
     translatableStrings.forEach((text, index) => {
-      const textId = `TEXT:${index + 1}`;
+      // Use [[TEXT:N]] format - double brackets protect from MT translation
+      const textId = `[[TEXT:${index + 1}]]`;
       lines.push(`**${textId}:** ${text}`);
       lines.push('');
     });

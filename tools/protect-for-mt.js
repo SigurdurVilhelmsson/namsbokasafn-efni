@@ -291,35 +291,35 @@ function generateStringsContent(sidecar, figuresData) {
 
   let hasContent = false;
 
-  // Frontmatter section
+  // Frontmatter section - use [[markers]] to protect from MT translation
   if (sidecar.frontmatter?.title) {
     hasContent = true;
-    lines.push('## Frontmatter');
+    lines.push('## [[FRONTMATTER]]');
     lines.push('');
-    lines.push(`**Title:** ${sidecar.frontmatter.title}`);
+    lines.push(`**[[TITLE]]:** ${sidecar.frontmatter.title}`);
     lines.push('');
     lines.push('---');
     lines.push('');
   }
 
-  // Tables section
+  // Tables section - use [[markers]] to protect from MT translation
   if (sidecar.tables && Object.keys(sidecar.tables).length > 0) {
     hasContent = true;
-    lines.push('## Tables');
+    lines.push('## [[TABLES]]');
     lines.push('');
 
     for (const [key, table] of Object.entries(sidecar.tables)) {
       const tableNum = key.replace('TABLE:', '');
-      lines.push(`### Table ${tableNum}`);
+      lines.push(`### [[TABLE:${tableNum}]]`);
       lines.push('');
 
       if (table.title) {
-        lines.push(`**Title:** ${table.title}`);
+        lines.push(`**[[TITLE]]:** ${table.title}`);
         lines.push('');
       }
 
       if (table.summary) {
-        lines.push(`**Summary:** ${table.summary}`);
+        lines.push(`**[[SUMMARY]]:** ${table.summary}`);
         lines.push('');
       }
     }
@@ -327,24 +327,24 @@ function generateStringsContent(sidecar, figuresData) {
     lines.push('');
   }
 
-  // Figures section (from figures.json)
+  // Figures section (from figures.json) - use [[markers]] to protect from MT
   const figures = figuresData?.figures;
   if (figures && Object.keys(figures).length > 0) {
     hasContent = true;
-    lines.push('## Figures');
+    lines.push('## [[FIGURES]]');
     lines.push('');
 
     for (const [figId, fig] of Object.entries(figures)) {
-      lines.push(`### ${figId}`);
+      lines.push(`### [[${figId}]]`);
       lines.push('');
 
       if (fig.captionEn) {
-        lines.push(`**Caption:** ${fig.captionEn}`);
+        lines.push(`**[[CAPTION]]:** ${fig.captionEn}`);
         lines.push('');
       }
 
       if (fig.altText) {
-        lines.push(`**Alt text:** ${fig.altText}`);
+        lines.push(`**[[ALT_TEXT]]:** ${fig.altText}`);
         lines.push('');
       }
     }

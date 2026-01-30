@@ -243,7 +243,7 @@ function generateStringsContent(data, extractedStrings) {
   lines.push(`# Table Strings - Section ${section}`);
   lines.push('');
   lines.push('Translatable text extracted from tables.');
-  lines.push('Translate the text content while preserving the structure.');
+  lines.push('Translate the text content while preserving the [[markers]].');
   lines.push('');
 
   let hasContent = false;
@@ -252,12 +252,14 @@ function generateStringsContent(data, extractedStrings) {
     if (strings.headers.length === 0 && strings.cells.length === 0) continue;
 
     hasContent = true;
-    lines.push(`## ${tableId}`);
+    // Use [[TABLE:N]] format - double brackets signal MT to not translate
+    lines.push(`## [[${tableId}]]`);
     lines.push('');
 
     // Output headers
     if (strings.headers.length > 0) {
-      lines.push('### Headers');
+      // Use [[HEADERS]] to protect section marker
+      lines.push('### [[HEADERS]]');
       lines.push('');
       strings.headers.forEach((h, index) => {
         lines.push(`**H${h.col + 1}:** ${h.text}`);
@@ -267,7 +269,8 @@ function generateStringsContent(data, extractedStrings) {
 
     // Output cells
     if (strings.cells.length > 0) {
-      lines.push('### Cells');
+      // Use [[CELLS]] to protect section marker
+      lines.push('### [[CELLS]]');
       lines.push('');
       strings.cells.forEach((c, index) => {
         // Use R{row}C{col} format for cell reference

@@ -131,8 +131,11 @@ function parseTranslatedStrings(content) {
   const lines = content.split('\n');
 
   for (const line of lines) {
-    // Match table header: ## TABLE:N or ## TAFLA:N (Icelandic translation)
-    const tableMatch = line.match(/^##\s+(?:TABLE|TAFLA):(\d+)/);
+    // Match table header in multiple formats:
+    // - Protected: ## [[TABLE:N]]
+    // - Legacy EN: ## TABLE:N
+    // - Legacy IS: ## TAFLA:N (Icelandic translation of legacy format)
+    const tableMatch = line.match(/^##\s+(?:\[\[)?(?:TABLE|TAFLA):(\d+)(?:\]\])?/);
     if (tableMatch) {
       currentTable = `TABLE:${tableMatch[1]}`; // Normalize to TABLE:N
       result[currentTable] = { headers: {}, cells: {} };
@@ -140,8 +143,11 @@ function parseTranslatedStrings(content) {
       continue;
     }
 
-    // Match section header: ### Headers/Cells or ### Fyrirsagnir/Reitir (Icelandic)
-    const sectionMatch = line.match(/^###\s+(Headers|Cells|Fyrirsagnir|Reitir)/i);
+    // Match section header in multiple formats:
+    // - Protected: ### [[HEADERS]] / ### [[CELLS]]
+    // - Legacy EN: ### Headers / ### Cells
+    // - Legacy IS: ### Fyrirsagnir / ### Reitir (Icelandic translation)
+    const sectionMatch = line.match(/^###\s+(?:\[\[)?(Headers|Cells|Fyrirsagnir|Reitir)(?:\]\])?/i);
     if (sectionMatch && currentTable) {
       const section = sectionMatch[1].toLowerCase();
       // Normalize Icelandic to English
