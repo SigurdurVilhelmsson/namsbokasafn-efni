@@ -89,6 +89,49 @@ function parseMarkdownFrontmatter(content) {
 }
 
 /**
+ * Load metadata from sidecar JSON file (e.g., 5-1-protected.json for 5-1.en.md)
+ */
+function loadSidecarMetadata(inputPath) {
+  const dir = path.dirname(inputPath);
+  const basename = path.basename(inputPath, '.en.md');
+
+  // Try different sidecar file patterns
+  const sidecarPatterns = [
+    `${basename}-protected.json`,
+    `${basename}-equations.json`,
+    `${basename}-figures.json`
+  ];
+
+  for (const pattern of sidecarPatterns) {
+    const sidecarPath = path.join(dir, pattern);
+    if (fs.existsSync(sidecarPath)) {
+      try {
+        const sidecar = JSON.parse(fs.readFileSync(sidecarPath, 'utf-8'));
+        // Extract metadata from sidecar
+        const metadata = {};
+        if (sidecar.frontmatter) {
+          metadata.title = sidecar.frontmatter.title;
+          metadata.section = sidecar.frontmatter.section;
+          metadata.module = sidecar.frontmatter.module;
+          metadata.lang = sidecar.frontmatter.lang || 'en';
+        } else {
+          // Fallback to top-level fields
+          metadata.title = sidecar.title;
+          metadata.section = sidecar.section;
+          metadata.module = sidecar.module;
+          metadata.lang = 'en';
+        }
+        return metadata;
+      } catch (e) {
+        // Continue to next pattern
+      }
+    }
+  }
+
+  return null;
+}
+
+/**
  * Generate Erlendur-format header for a split part
  */
 function makeErlendurHeader(metadata, partLetter) {
@@ -181,8 +224,19 @@ function splitFile(inputPath, outputDir, options) {
     console.log(`  Total characters: ${charCount}`);
   }
 
-  // Parse metadata
-  const metadata = parseMarkdownFrontmatter(content) || {};
+  // Parse metadata from YAML frontmatter or sidecar JSON
+  let metadata = parseMarkdownFrontmatter(content) || {};
+
+  // If no YAML frontmatter or missing key fields, try sidecar JSON
+  if (!metadata.title || !metadata.section) {
+    const sidecarMetadata = loadSidecarMetadata(inputPath);
+    if (sidecarMetadata) {
+      metadata = { ...sidecarMetadata, ...metadata }; // YAML takes precedence
+      if (verbose) {
+        console.log(`  Loaded metadata from sidecar: title="${metadata.title}", section="${metadata.section}"`);
+      }
+    }
+  }
 
   // Remove frontmatter from content
   let bodyContent = content;
