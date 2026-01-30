@@ -60,20 +60,18 @@ function removeErlendurHeader(content) {
   // Match various translated versions of the header
   // Original: ## titill: „Unknown" kafli: „unknown" eining: „unknown" tungumál: „is" hluti: „a"
   // Could also be: ## Title: "Unknown" Chapter: "unknown" ...
+  // Use multiline flag and remove anywhere in content (not just at start)
   const headerPatterns = [
-    /^##\s*titill:.*?hluti:.*?\n\n?/i,
-    /^##\s*Titill:.*?Hluti:.*?\n\n?/i,
-    /^##\s*title:.*?part:.*?\n\n?/i,
-    /^##\s*Title:.*?Part:.*?\n\n?/i,
+    /^##\s*titill:.*?hluti:.*?$\n?\n?/gim,
+    /^##\s*title:.*?part:.*?$\n?\n?/gim,
   ];
 
+  let result = content;
   for (const pattern of headerPatterns) {
-    if (pattern.test(content)) {
-      return content.replace(pattern, '');
-    }
+    result = result.replace(pattern, '');
   }
 
-  return content;
+  return result;
 }
 
 /**

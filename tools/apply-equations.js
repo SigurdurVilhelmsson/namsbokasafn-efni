@@ -104,7 +104,8 @@ function loadEquations(filePath, verbose) {
 function findPlaceholders(content) {
   // Match both plain placeholders and those with MT-safe ID attributes
   // Pattern: [[EQ:n]] or [[EQ:n]]{id="..."}
-  const pattern = /\[\[EQ:(\d+)\]\](?:\{id="([^"]*)"\})?/g;
+  // Also match escaped brackets from MT: \[\[EQ:n\]\]
+  const pattern = /\\?\[\\?\[EQ:(\d+)\\?\]\\?\](?:\{id="([^"]*)"\})?/g;
   const found = [];
   let match;
 
@@ -207,12 +208,24 @@ function isDisplayEquation(content, index, latex) {
 
 function autoDetectEquationsFile(inputPath) {
   // Try: input.md → input-equations.json
+  // Also handle language suffixes: input.is.md → input-equations.json
   const basename = inputPath.replace(/\.md$/, '');
+  const basenameNoLang = basename.replace(/\.(is|en)$/, '');  // Strip language suffix
+  const dir = path.dirname(inputPath);
+
   const candidates = [
+    // With full basename (e.g., 5-1.is-equations.json)
     basename + '-equations.json',
     basename + '.equations.json',
-    path.join(path.dirname(inputPath), 'equations', path.basename(basename) + '-equations.json'),
-    path.join(path.dirname(inputPath), '..', 'equations', path.basename(basename) + '-equations.json'),
+    // Without language suffix (e.g., 5-1-equations.json)
+    basenameNoLang + '-equations.json',
+    basenameNoLang + '.equations.json',
+    // In equations subdirectory
+    path.join(dir, 'equations', path.basename(basename) + '-equations.json'),
+    path.join(dir, 'equations', path.basename(basenameNoLang) + '-equations.json'),
+    // In parent equations directory
+    path.join(dir, '..', 'equations', path.basename(basename) + '-equations.json'),
+    path.join(dir, '..', 'equations', path.basename(basenameNoLang) + '-equations.json'),
   ];
 
   for (const candidate of candidates) {
