@@ -27,6 +27,7 @@
 | `extract-glossary` | Extracts glossary terms from CNXML source files and outputs markdown |
 | `extract-key-equations` | Extracts key equations from OpenStax CNXML source files and outputs markdown |
 | `extract-table-strings` | Extracts translatable text from table cells for MT translation. |
+| `fix-exercises-format` | Converts exercises from old format to new format: |
 | `generate-glossary` | 1. Extracting English terms + definitions from CNXML <glossary> elements |
 | `inject-equation-strings` | Injects translated text back into LaTeX equations. |
 | `inject-table-strings` | This script takes translated *-table-strings.is.md files and |
@@ -61,6 +62,6 @@ These tools are deprecated and replaced by Matecat Align in the simplified workf
 
 ---
 
-*40 tools total (35 active, 5 deprecated)*
+*41 tools total (36 active, 5 deprecated)*
 
 See [cli-reference.md](../technical/cli-reference.md) for detailed usage instructions.
