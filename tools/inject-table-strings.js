@@ -131,19 +131,22 @@ function parseTranslatedStrings(content) {
   const lines = content.split('\n');
 
   for (const line of lines) {
-    // Match table header: ## TABLE:N
-    const tableMatch = line.match(/^##\s+(TABLE:\d+)/);
+    // Match table header: ## TABLE:N or ## TAFLA:N (Icelandic translation)
+    const tableMatch = line.match(/^##\s+(?:TABLE|TAFLA):(\d+)/);
     if (tableMatch) {
-      currentTable = tableMatch[1];
+      currentTable = `TABLE:${tableMatch[1]}`; // Normalize to TABLE:N
       result[currentTable] = { headers: {}, cells: {} };
       currentSection = null;
       continue;
     }
 
-    // Match section header: ### Headers or ### Cells
-    const sectionMatch = line.match(/^###\s+(Headers|Cells)/i);
+    // Match section header: ### Headers/Cells or ### Fyrirsagnir/Reitir (Icelandic)
+    const sectionMatch = line.match(/^###\s+(Headers|Cells|Fyrirsagnir|Reitir)/i);
     if (sectionMatch && currentTable) {
-      currentSection = sectionMatch[1].toLowerCase();
+      const section = sectionMatch[1].toLowerCase();
+      // Normalize Icelandic to English
+      currentSection = (section === 'fyrirsagnir') ? 'headers' :
+                       (section === 'reitir') ? 'cells' : section;
       continue;
     }
 

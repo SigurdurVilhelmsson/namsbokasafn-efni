@@ -248,19 +248,20 @@ function parseMarkdownStrings(content) {
   // Clean up common MT artifacts
   content = cleanMTMangling(content);
 
-  // Parse frontmatter title
-  const titleMatch = content.match(/## Frontmatter[\s\S]*?\*\*Title:\*\*\s*(.+?)(?=\n\n|\n---|$)/);
+  // Parse frontmatter title (supports both EN and IS labels from MT)
+  // EN: ## Frontmatter ... **Title:** / IS: ## Formáli ... **Titill:**
+  const titleMatch = content.match(/## (?:Frontmatter|Formáli)[\s\S]*?\*\*(?:Title|Titill):\*\*\s*(.+?)(?=\n\n|\n---|$)/);
   if (titleMatch) {
     result.frontmatter.title = titleMatch[1].trim();
   }
 
-  // Parse tables section
-  const tablesSection = content.match(/## Tables\s+([\s\S]*?)(?=\n## |$)/);
+  // Parse tables section (EN: ## Tables / IS: ## Töflur)
+  const tablesSection = content.match(/## (?:Tables|Töflur)\s+([\s\S]*?)(?=\n## |$)/);
   if (tablesSection) {
     const tableContent = tablesSection[1];
 
-    // Find all table entries
-    const tablePattern = /### Table (\d+)\s+([\s\S]*?)(?=### Table |\n## |$)/g;
+    // Find all table entries (EN: ### Table N / IS: ### Tafla N)
+    const tablePattern = /### (?:Table|Tafla) (\d+)\s+([\s\S]*?)(?=### (?:Table|Tafla) |\n## |$)/g;
     let tableMatch;
     while ((tableMatch = tablePattern.exec(tableContent)) !== null) {
       const tableNum = tableMatch[1];
@@ -268,20 +269,22 @@ function parseMarkdownStrings(content) {
 
       result.tables[`TABLE:${tableNum}`] = {};
 
-      const tableTitle = tableData.match(/\*\*Title:\*\*\s*(.+?)(?=\n\n|\n\*\*|$)/);
+      // EN: **Title:** / IS: **Titill:**
+      const tableTitle = tableData.match(/\*\*(?:Title|Titill):\*\*\s*(.+?)(?=\n\n|\n\*\*|$)/);
       if (tableTitle) {
         result.tables[`TABLE:${tableNum}`].title = tableTitle[1].trim();
       }
 
-      const tableSummary = tableData.match(/\*\*Summary:\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/);
+      // EN: **Summary:** / IS: **Samantekt:**
+      const tableSummary = tableData.match(/\*\*(?:Summary|Samantekt):\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/);
       if (tableSummary) {
         result.tables[`TABLE:${tableNum}`].summary = tableSummary[1].trim();
       }
     }
   }
 
-  // Parse figures section
-  const figuresSection = content.match(/## Figures\s+([\s\S]*?)$/);
+  // Parse figures section (EN: ## Figures / IS: ## Myndir)
+  const figuresSection = content.match(/## (?:Figures|Myndir)\s+([\s\S]*?)$/);
   if (figuresSection) {
     const figureContent = figuresSection[1];
 
@@ -293,16 +296,18 @@ function parseMarkdownStrings(content) {
       const figData = figMatch[2];
 
       // Skip if this looks like a table header we accidentally matched
-      if (figId.toLowerCase().startsWith('table')) continue;
+      if (figId.toLowerCase().startsWith('table') || figId.toLowerCase().startsWith('tafla')) continue;
 
       result.figures[figId] = {};
 
-      const caption = figData.match(/\*\*Caption:\*\*\s*([\s\S]+?)(?=\n\n|\n\*\*|$)/);
+      // EN: **Caption:** / IS: **Myndatexti:**
+      const caption = figData.match(/\*\*(?:Caption|Myndatexti):\*\*\s*([\s\S]+?)(?=\n\n|\n\*\*|$)/);
       if (caption) {
         result.figures[figId].captionIs = caption[1].trim();
       }
 
-      const altText = figData.match(/\*\*Alt text:\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/);
+      // EN: **Alt text:** / IS: **Alt-texti:**
+      const altText = figData.match(/\*\*(?:Alt text|Alt-texti):\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/);
       if (altText) {
         result.figures[figId].altTextIs = altText[1].trim();
       }
