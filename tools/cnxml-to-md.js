@@ -453,6 +453,7 @@ function extractContent(cnxml, options = {}) {
   const equations = {};
   const figures = {};  // Figure metadata for sidecar
   let equationCounter = 0;
+  let exerciseCounter = 0;  // Track exercise numbers for proper formatting
 
   const titleMatch = cnxml.match(/<title>([^<]+)<\/title>/);
   const moduleIdMatch = cnxml.match(/<md:content-id>([^<]+)<\/md:content-id>/);
@@ -1279,10 +1280,12 @@ function extractContent(cnxml, options = {}) {
         if (problemMatch) {
           // All exercises in OpenStax are end-of-chapter exercises
           // (in-chapter practice is handled within <example> tags as "Check Your Learning")
+          exerciseCounter++;
           if (exerciseId) {
-            lines.push(`:::exercise{id="${exerciseId}"}`);
+            // Use #id format for anchor linking and number=N for display
+            lines.push(`:::exercise{#${exerciseId} number=${exerciseCounter}}`);
           } else {
-            lines.push(':::exercise');
+            lines.push(`:::exercise{number=${exerciseCounter}}`);
           }
 
           const problemContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
