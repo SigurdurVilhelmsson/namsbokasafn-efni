@@ -226,10 +226,18 @@ function findFiguresFile(mdPath) {
  */
 function isMarkdownFormat(content) {
   // Check for markdown headers that indicate new format
+  // Supports EN, IS (translated), and protected [[marker]] variants
   return content.includes('# Translatable Strings') ||
+         content.includes('# Þýðanlegir strengir') ||  // Icelandic
          content.includes('## Frontmatter') ||
+         content.includes('## Formáli') ||             // Icelandic
+         content.includes('## [[FRONTMATTER]]') ||     // Protected
          content.includes('## Tables') ||
-         content.includes('## Figures');
+         content.includes('## Töflur') ||              // Icelandic
+         content.includes('## [[TABLES]]') ||          // Protected
+         content.includes('## Figures') ||
+         content.includes('## Myndir') ||              // Icelandic
+         content.includes('## [[FIGURES]]');           // Protected
 }
 
 /**
