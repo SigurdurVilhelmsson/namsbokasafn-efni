@@ -922,14 +922,39 @@ function extractContent(cnxml, options = {}) {
       elements.push({ type: 'note', pos: noteMatch.index, content: noteMatch[2], attrs: noteMatch[1] });
     }
 
-    // Examples are now handled globally (output before sections based on position)
-    // so we don't need to find them within section content
+    // Add examples that fall within this section to elements array
+    // This ensures examples are interleaved correctly with other content
+    const sectionContentStartAbsolute = sectionMatch.index + sectionMatch[0].indexOf(sectionContent);
+    const sectionContentEndAbsolute = sectionContentStartAbsolute + sectionContent.length;
 
-    // Find figures
+    for (let i = nextExampleIndex; i < allExamples.length; i++) {
+      const example = allExamples[i];
+      // Check if example starts within this section's content
+      if (example.startPos >= sectionContentStartAbsolute &&
+          example.startPos < sectionContentEndAbsolute) {
+        // Calculate position relative to sectionContent
+        const relativePos = example.startPos - sectionContentStartAbsolute;
+        elements.push({
+          type: 'example',
+          pos: relativePos,
+          content: example.content,
+          attrs: example.attrs,
+          id: example.id,
+          globalIndex: i  // Track which example this is for numbering and dedup
+        });
+      } else if (example.startPos >= sectionContentEndAbsolute) {
+        // Examples are in document order, so stop once we pass this section
+        break;
+      }
+    }
+
+    // Find figures (excluding those inside notes, which are processed by note content handler)
     const figurePattern = /<figure([^>]*)>([\s\S]*?)<\/figure>/g;
     let figureMatch;
     while ((figureMatch = figurePattern.exec(sectionContent)) !== null) {
-      elements.push({ type: 'figure', pos: figureMatch.index, content: figureMatch[2], attrs: figureMatch[1] });
+      if (!isInsideNested(figureMatch.index)) {
+        elements.push({ type: 'figure', pos: figureMatch.index, content: figureMatch[2], attrs: figureMatch[1] });
+      }
     }
 
     // Find exercises
@@ -1013,22 +1038,103 @@ function extractContent(cnxml, options = {}) {
           lines.push('');
         }
 
-        const noteContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
-        let noteContentMatch;
-        while ((noteContentMatch = noteContentPattern.exec(elem.content)) !== null) {
-          const elementType = noteContentMatch[1];
-          const elementContent = noteContentMatch[3];
-          if (elementType === 'para') {
-            const paraText = processInlineContent(elementContent);
+        // Extract all content elements with positions for proper interleaving
+        const noteElements = [];
+
+        // Find paras
+        const noteParaPattern = /<para([^>]*)>([\s\S]*?)<\/para>/g;
+        let noteParaMatch;
+        while ((noteParaMatch = noteParaPattern.exec(elem.content)) !== null) {
+          noteElements.push({ type: 'para', pos: noteParaMatch.index, content: noteParaMatch[2], attrs: noteParaMatch[1] });
+        }
+
+        // Find equations
+        const noteEqPattern = /<equation([^>]*)>([\s\S]*?)<\/equation>/g;
+        let noteEqMatch;
+        while ((noteEqMatch = noteEqPattern.exec(elem.content)) !== null) {
+          noteElements.push({ type: 'equation', pos: noteEqMatch.index, content: noteEqMatch[2], attrs: noteEqMatch[1] });
+        }
+
+        // Find figures
+        const noteFigPattern = /<figure([^>]*)>([\s\S]*?)<\/figure>/g;
+        let noteFigMatch;
+        while ((noteFigMatch = noteFigPattern.exec(elem.content)) !== null) {
+          noteElements.push({ type: 'figure', pos: noteFigMatch.index, content: noteFigMatch[2], attrs: noteFigMatch[1] });
+        }
+
+        // Sort by position in document
+        noteElements.sort((a, b) => a.pos - b.pos);
+
+        // Process each element in document order
+        for (const noteElem of noteElements) {
+          if (noteElem.type === 'para') {
+            const paraText = processInlineContent(noteElem.content);
             if (paraText.trim()) {
               lines.push(paraText);
               lines.push('');
             }
-          } else if (elementType === 'equation') {
-            const eqText = processInlineContent(elementContent);
+          } else if (noteElem.type === 'equation') {
+            const eqText = processInlineContent(noteElem.content);
             if (eqText.trim()) {
               lines.push(eqText);
               lines.push('');
+            }
+          } else if (noteElem.type === 'figure') {
+            // Process figure inside note - same logic as top-level figures
+            figureCounter++;
+            const idMatch = noteElem.attrs.match(/id="([^"]*)"/);
+            const figureId = idMatch ? idMatch[1] : null;
+            const classMatch = noteElem.attrs.match(/class="([^"]*)"/);
+            const figureClass = classMatch ? classMatch[1] : '';
+            const figureNumber = chapter ? `${chapter}.${figureCounter}` : String(figureCounter);
+
+            const mediaMatch = noteElem.content.match(/<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
+            const captionMatch = noteElem.content.match(/<caption>([\s\S]*?)<\/caption>/);
+
+            let imageFile = '';
+            let altText = '';
+            let captionText = '';
+
+            if (mediaMatch) {
+              const mediaAttrs = mediaMatch[1];
+              const imageSrc = mediaMatch[2];
+              const altMatch = mediaAttrs.match(/alt="([^"]*)"/);
+              altText = altMatch ? altMatch[1] : '';
+              imageFile = imageSrc.split('/').pop();
+
+              const attrs = [];
+              if (figureId) attrs.push(`id="${figureId}"`);
+              if (figureClass) attrs.push(`class="${figureClass}"`);
+              if (altText) attrs.push(`alt="${altText}"`);
+
+              if (attrs.length > 0) {
+                lines.push(`![](${imageFile}){${attrs.join(' ')}}`);
+              } else {
+                lines.push(`![](${imageFile})`);
+              }
+              lines.push('');
+            }
+
+            if (captionMatch) {
+              captionText = processInlineContent(captionMatch[1]);
+              if (figureId) {
+                lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{id="' + figureId + '"}');
+              } else {
+                lines.push('*Figure ' + figureNumber + ': ' + captionText + '*');
+              }
+              lines.push('');
+            }
+
+            // Store figure metadata in sidecar
+            const figureKey = figureId || `figure-${figureCounter}`;
+            figures[figureKey] = {
+              number: figureNumber,
+              imagePath: imageFile,
+              captionEn: captionText,
+              altText: altText
+            };
+            if (figureClass) {
+              figures[figureKey].class = figureClass;
             }
           }
         }
@@ -1095,6 +1201,12 @@ function extractContent(cnxml, options = {}) {
         }
         lines.push(':::');
         lines.push('');
+
+        // Mark this example as processed by advancing nextExampleIndex
+        // This prevents the example from being output again in "before section" or "after sections" loops
+        if (elem.globalIndex !== undefined && elem.globalIndex >= nextExampleIndex) {
+          nextExampleIndex = elem.globalIndex + 1;
+        }
       } else if (elem.type === 'figure') {
         figureCounter++;
         const captionMatch = elem.content.match(/<caption>([\s\S]*?)<\/caption>/);
