@@ -1,0 +1,1104 @@
+## titill: – ÓÞEKKT kafli: – ÓÞEKKT eining: – ÓÞEKKT tungumál: – "is"
+
+# Jöfnustrengir - Kafli 5.3
+
+Þýðanlegur texti úr LaTeX-jöfnum. Þýddu textainnihaldið en haltu
+uppbyggingunni.
+
+## JAFNA:6
+
+**TEXTI:1:** kJ
+
+## JAFNA:7
+
+**TEXTI:1:** (tvöföldun á magni)
+
+**TEXTI:2:** kJ
+
+**TEXTI:3:** kJ
+
+**TEXTI:4:** helmingun á magni
+
+**TEXTI:5:** kJ
+
+**TEXTI:6:** kJ
+
+## JAFNA:8
+
+**TEXTI:1:** kJ
+
+## JAFNA:9
+
+**TEXTI:1:** HCl
+
+**TEXTI:2:** NaOH
+
+**TEXTI:3:** NaCl
+
+## JAFNA:10
+
+**TEXTI:1:** mól HCl
+
+**TEXTI:2:** kJ
+
+**TEXTI:3:** mól HCl
+
+**TEXTI:4:** kJ
+
+## JAFNA:11
+
+**TEXTI:1:** HCl
+
+**TEXTI:2:** NaOH
+
+**TEXTI:3:** NaCl
+
+**TEXTI:4:** kJ
+
+## JAFNA:12
+
+**TEXTI:1:** Zn
+
+**TEXTI:2:** HCl
+
+**TEXTI:3:** ZnCl
+
+## JAFNA:13
+
+**TEXTI:1:** KClO
+
+**TEXTI:2:** CO
+
+**TEXTI:3:** KCl
+
+## JAFNA:14
+
+**TEXTI:1:** mól
+
+**TEXTI:2:** mól
+
+**TEXTI:3:** mól
+
+**TEXTI:4:** mól
+
+**TEXTI:5:** KCl
+
+## JAFNA:15
+
+**TEXTI:1:** mól
+
+**TEXTI:2:** KCl
+
+**TEXTI:3:** mól
+
+## JAFNA:16
+
+**TEXTI:1:** kJ
+
+**TEXTI:2:** mól KCl
+
+**TEXTI:3:** kJ
+
+**TEXTI:4:** mól
+
+**TEXTI:5:** KCl
+
+## JAFNA:17
+
+**TEXTI:1:** kJ
+
+**TEXTI:2:** mól
+
+**TEXTI:3:** KCl
+
+**TEXTI:4:** mól
+
+**TEXTI:5:** KCl
+
+**TEXTI:6:** kJ
+
+## JAFNA:18
+
+**TEXTI:1:** KClO
+
+**TEXTI:2:** CO
+
+**TEXTI:3:** KCl
+
+**TEXTI:4:** kJ
+
+## JAFNA:19
+
+**TEXTI:1:** OH
+
+**TEXTI:2:** CO
+
+**TEXTI:3:** −1366
+
+.8 kJ
+
+## EQ:20
+
+**TEXT:1:** ml
+
+**TEXT:2:** ml
+
+**TEXT:3:** mól
+
+**TEXT:4:** kJ
+
+**TEXT:5:** mól
+
+**TEXT:6:** kJ
+
+## EQ:21
+
+**TEXT:1:** ml
+
+**TEXT:2:** ml
+
+**TEXT:3:** mól
+
+**TEXT:4:** mól
+
+**TEXT:5:** kJ
+
+## EQ:22
+
+**TEXT:1:** CO
+
+**TEXT:2:** kJ
+
+## EQ:23
+
+**TEXT:1:** NO
+
+**TEXT:2:** +33,2 kJ
+
+## EQ:24
+
+**TEXT:1:** +286 kJ
+
+## EQ:26
+
+**TEXT:1:** ° fyrir
+
+**TEXT:2:** mól af
+
+**TEXT:3:** mól
+
+**TEXT:4:** kJ
+
+**TEXT:5:** mól
+
+**TEXT:6:** kJ
+
+## EQ:27
+
+**TEXT:1:** CO
+
+**TEXT:2:** kJ
+
+## EQ:28
+
+**TEXT:1:** CO
+
+**TEXT:2:** kJ
+
+## EQ:29
+
+**TEXT:1:** CO
+
+**TEXT:2:** CO
+
+**TEXT:3:** kJ
+
+## EQ:30
+
+**TEXT:1:** Skref 1: C
+
+**TEXT:2:** CO
+
+**TEXT:3:** Skref 2: CO
+
+**TEXT:4:** CO
+
+**TEXT:5:** Su C
+
+**TEXT:6:** CO
+
+**TEXT:7:** CO
+
+**TEXT:8:** CO
+
+## EQ:31
+
+**TEXT:1:** CO
+
+## EQ:32
+
+**TEXT:1:** CO
+
+**TEXT:2:** kJ
+
+**TEXT:3:** CO
+
+**TEXT:4:** CO
+
+**TEXT:5:** CO
+
+**TEXT:6:** kJ
+
+**TEXT:7:** kJ
+
+## EQ:33
+
+**TEXT:1:** NO
+
+**TEXT:2:** +33,2 kJ
+
+## EQ:34
+
+**TEXT:1:** NO
+
+**TEXT:2:** +66.4 kJ
+
+## JAFNA:35
+
+**TEXTI:1:** Cl
+
+**TEXTI:2:** HCl
+
+**TEXTI:3:** kJ
+
+## JAFNA:36
+
+**TEXTI:1:** HCl
+
+**TEXTI:2:** Cl
+
+**TEXTI:3:** +184.6 kJ
+
+## JAFNA:37
+
+**TEXTI:1:** Fe
+
+**TEXTI:2:** Cl
+
+**TEXTI:3:** FeCl
+
+**TEXTI:4:** kJ
+
+## JAFNA:38
+
+**TEXTI:1:** FeCl
+
+**TEXTI:2:** Cl
+
+**TEXTI:3:** FeCl
+
+**TEXTI:4:** kJ
+
+## JAFNA:39
+
+**TEXTI:1:** Fe
+
+**TEXTI:2:** Cl
+
+**TEXTI:3:** FeCl
+
+## JAFNA:40
+
+**TEXTI:1:** Fe
+
+**TEXTI:2:** Cl
+
+**TEXTI:3:** FeCl
+
+**TEXTI:4:** kJ
+
+**TEXTI:5:** FeCl
+
+**TEXTI:6:** Cl
+
+**TEXTI:7:** FeCl
+
+**TEXTI:8:** Fe
+
+**TEXTI:9:** Cl
+
+**TEXTI:10:** FeCl
+
+**TEXTI:11:** kJ
+
+**TEXTI:12:** kJ
+
+## JAFNA:41
+
+**TEXTI:1:** NO
+
+## JAFNA:42
+
+**TEXTI:1:** NO
+
+**TEXTI:2:** kJ
+
+## JAFNA:43
+
+**TEXTI:1:** NO
+
+**TEXTI:2:** NO
+
+**TEXTI:3:** kJ
+
+## JAFNA:44
+
+**TEXTI:1:** ClF
+
+**TEXTI:2:** Cl
+
+**TEXTI:3:** OF
+
+**TEXTI:4:** +107.0 kJ
+
+## JAFNA:45
+
+**TEXTI:1:** OF
+
+**TEXTI:2:** +24.7 kJ
+
+## JAFNA:46
+
+**TEXTI:1:** Cl
+
+**TEXTI:2:** OF
+
+**TEXTI:3:** ClF
+
+**TEXTI:4:** −236.2 kJ
+
+## JAFNA:47
+
+**TEXTI:1:** ClF
+
+**TEXTI:2:** Cl
+
+**TEXTI:3:** OF
+
+**TEXTI:4:** +107.0 kJ
+
+**TEXTI:5:** OF
+
+**TEXTI:6:** +24.7 kJ
+
+**TEXT:7:** Cl
+
+**TEXT:8:** OF
+
+**TEXT:9:** ClF
+
+**TEXT:10:** ClF
+
+**TEXT:11:** ClF
+
+**TEXT:12:** kJ
+
+**TEXT:13:** kJ
+
+## EQ:48
+
+**TEXT:1:** kJ
+
+**TEXT:2:** kJ
+
+**TEXT:3:** kJ
+
+**TEXT:4:** kJ
+
+## EQ:49
+
+**TEXT:1:** efnahvarf
+
+**TEXT:2:** myndefni
+
+**TEXT:3:** hvarfefni
+
+## EQ:50
+
+**TEXT:1:** NO
+
+**TEXT:2:** HNO
+
+**TEXT:3:** NO
+
+## EQ:51
+
+**TEXT:1:** efnahvarf
+
+**TEXT:2:** (myndefni)
+
+**TEXT:3:** hvarfefni
+
+## EQ:52
+
+**TEXT:1:** mól
+
+**TEXT:2:** HNO
+
+**TEXT:3:** kJ
+
+**TEXT:4:** mól
+
+**TEXT:5:** HNO
+
+**TEXT:6:** mól NO
+
+**TEXT:7:** +90,25 kJ
+
+**TEXT:8:** mól NO
+
+**TEXT:9:** mól
+
+**TEXT:10:** NO
+
+**TEXT:11:** +33,2 kJ
+
+**TEXT:12:** mól
+
+**TEXT:13:** NO
+
+**TEXT:14:** mól
+
+**TEXT:15:** kJ
+
+**TEXT:16:** mól
+
+**TEXT:17:** kJ
+
+## EQ:53
+
+**TEXT:1:** NO
+
+**TEXT:2:** 3/2N
+
+**TEXT:3:** 3O
+
+**TEXT:4:** kJ
+
+## EQ:54
+
+**TEXT:1:** +285,8 kJ
+
+## EQ:55
+
+**TEXT:1:** HNO
+
+**TEXT:2:** kJ
+
+**TEXT:3:** HNO
+
+## EQ:56
+
+**TEXT:1:** NO
+
+**TEXT:2:** +90,2 kJ
+
+**TEXT:3:** NO
+
+## EQ:57
+
+**TEXT:1:** 3NO
+
+**TEXT:2:** HNO
+
+**TEXT:3:** NO
+
+## EQ:58
+
+**TEXT:1:** efnahvarf
+
+**TEXT:2:** kJ
+
+**TEXT:3:** +285,8 kJ
+
+**TEXT:4:** kJ
+
+**TEXT:5:** +90.2 kJ
+
+**TEXT:6:** kJ
+
+## EQ:64
+
+**TEXT:1:** kJ
+
+**TEXT:2:** mól
+
+**TEXT:3:** við
+
+**TEXT:4:** °C
+
+## EQ:65
+
+**TEXT:1:** CO
+
+## EQ:67
+
+**TEXT:1:** Mg
+
+**TEXT:2:** MgO
+
+## EQ:68
+
+**TEXT:1:** SO
+
+## EQ:69
+
+**TEXT:1:** CO
+
+**TEXT:2:** CO
+
+## EQ:70
+
+**TEXT:1:** CH
+
+**TEXT:2:** CO
+
+## EQ:71
+
+**TEXT:1:** CO
+
+## EQ:72
+
+**TEXT:1:** OH
+
+**TEXT:2:** 2CO
+
+## EQ:73
+
+**TEXT:1:** CH
+
+**TEXT:2:** OH
+
+**TEXT:3:** CO
+
+## EQ:74
+
+**TEXT:1:** CO
+
+## EQ:83
+
+**TEXT:1:** +286 kJ.
+
+## EQ:84
+
+**TEXT:1:** kJ
+
+**TEXT:2:** mól
+
+## EQ:85
+
+**TEXT:1:** +143 kJ/mól
+
+## EQ:86
+
+**TEXT:1:** Cl
+
+**TEXT:2:** HCl
+
+**TEXT:3:** kJ
+
+## EQ:89
+
+**TEXT:1:** grafít
+
+**TEXT:2:** OH
+
+## EQ:90
+
+**TEXT:1:** Ca
+
+**TEXT:2:** Ca
+
+**TEXT:3:** PO
+
+## EQ:91
+
+**TEXT:1:** grafít
+
+**TEXT:2:** OC
+
+## EQ:92
+
+**TEXT:1:** Na
+
+**TEXT:2:** grafít
+
+**TEXT:3:** Na
+
+**TEXT:4:** CO
+
+## EQ:96
+
+**TEXT:1:** ClF
+
+**TEXT:2:** ClF
+
+## EQ:97
+
+**TEXT:1:** OF
+
+**TEXT:2:** kJ
+
+## EQ:98
+
+**TEXT:1:** ClF
+
+**TEXT:2:** Cl
+
+**TEXT:3:** OF
+
+**TEXT:4:** +214,0 kJ
+
+## EQ:99
+
+**TEXT:1:** ClF
+
+**TEXT:2:** Cl
+
+**TEXT:3:** OF
+
+**TEXT:4:** +236.2 kJ
+
+## JAFNA:104
+
+**TEXT:1:** Cl
+
+## JAFNA:105
+
+**TEXT:1:** Cl
+
+**TEXT:2:** O;
+
+## JAFNA:106
+
+**TEXT:1:** OF
+
+## JAFNA:107
+
+**TEXT:1:** OF
+
+## JAFNA:108
+
+**TEXT:1:** Al
+
+**TEXT:2:** Cl
+
+**TEXT:3:** AlCl
+
+## JAFNA:109
+
+**TEXT:1:** HCl
+
+**TEXT:2:** HCl
+
+**TEXT:3:** kJ
+
+## JAFNA:110
+
+**TEXT:1:** Cl
+
+**TEXT:2:** HCl
+
+**TEXT:3:** kJ
+
+## JAFNA:111
+
+**TEXT:1:** AlCl
+
+**TEXT:2:** AlCl
+
+**TEXT:3:** kJ/mól
+
+## JAFNA:112
+
+**TEXT:1:** 2Al
+
+**TEXT:2:** HCl
+
+**TEXT:3:** AlCl
+
+**TEXT:4:** kJ
+
+## JAFNA:119
+
+**TEXT:1:** hvarf
+
+**TEXT:2:** (myndefni)
+
+**TEXT:3:** hvarfefni
+
+## JAFNA:120
+
+**TEXT:1:** HCl
+
+**TEXT:2:** NaOH
+
+**TEXT:3:** NaCl
+
+## JAFNA:121
+
+**TEXT:1:** NaCl
+
+**TEXT:2:** AgNO
+
+**TEXT:3:** AgCl
+
+**TEXT:4:** NaNO
+
+## JAFNA:122
+
+**TEXT:1:** Ba
+
+**TEXT:2:** OH
+
+**TEXT:3:** NH
+
+**TEXT:4:** SCN
+
+**TEXT:5:** Ba
+
+**TEXT:6:** SCN
+
+**TEXT:7:** NH
+
+## JAFNA:124
+
+**TEXT:1:** HCl
+
+**TEXT:2:** NaOH
+
+**TEXT:3:** NaCl
+
+**TEXT:4:** kJ
+
+## JAFNA:125
+
+**TEXT:1:** SO
+
+**TEXT:2:** SO
+
+## JAFNA:126
+
+**TEXT:1:** CCl
+
+**TEXT:2:** CCl
+
+## JAFNA:127
+
+**TEXT:1:** 2H
+
+## JAFNA:128
+
+**TEXT:1:** NH
+
+**TEXT:2:** NO
+
+**TEXT:3:** kJ
+
+## JAFNA:129
+
+**TEXT:1:** NO
+
+**TEXT:2:** NO
+
+**TEXT:3:** kJ
+
+## EQ:130
+
+**TEXT:1:** NO
+
+**TEXT:2:** HNO
+
+**TEXT:3:** NO
+
+**TEXT:4:** kJ
+
+## EQ:131
+
+**TEXT:1:** demantur
+
+**TEXT:2:** CO
+
+## EQ:132
+
+**TEXT:1:** grafít
+
+**TEXT:2:** demantur
+
+**TEXT:3:** kJ
+
+## EQ:134
+
+**TEXT:1:** Os
+
+**TEXT:2:** OsO
+
+## EQ:135
+
+**TEXT:1:** Os
+
+**TEXT:2:** OsO
+
+## EQ:136
+
+**TEXT:1:** OsO
+
+**TEXT:2:** OsO
+
+**TEXT:3:** kJ
+
+## EQ:138
+
+**TEXT:1:** Sb
+
+**TEXT:2:** Cl
+
+**TEXT:3:** SbCl
+
+## EQ:139
+
+**TEXT:1:** Sb
+
+**TEXT:2:** Cl
+
+**TEXT:3:** SbCl
+
+**TEXT:4:** kJ
+
+**TEXT:5:** SbCl
+
+**TEXT:6:** Cl
+
+**TEXT:7:** SbCl
+
+**TEXT:8:** kJ
+
+## EQ:141
+
+**TEXT:1:** Zn
+
+**TEXT:2:** ZnSO
+
+## EQ:142
+
+**TEXT:1:** Zn
+
+**TEXT:2:** ZnS
+
+**TEXT:3:** kJ
+
+**TEXT:4:** ZnS
+
+**TEXT:5:** 2O
+
+**TEXT:6:** ZnSO
+
+**TEXT:7:** kJ
+
+## EQ:143
+
+**TEXT:1:** Hg
+
+**TEXT:2:** Cl
+
+**TEXT:3:** Hg
+
+**TEXT:4:** Cl
+
+## EQ:144
+
+**TEXT:1:** Hg
+
+**TEXT:2:** Cl
+
+**TEXT:3:** HgCl
+
+**TEXT:4:** kJ
+
+**TEXT:5:** Hg
+
+**TEXT:6:** HgCl
+
+**TEXT:7:** Hg
+
+**TEXT:8:** Cl
+
+**TEXT:9:** kJ
+
+## EQ:146
+
+**TEXT:1:** Co
+
+**TEXT:2:** Co
+
+## EQ:147
+
+**TEXT:1:** Co
+
+**TEXT:2:** CoO
+
+**TEXT:3:** kJ
+
+**TEXT:4:** 3CoO
+
+**TEXT:5:** Co
+
+**TEXTI:6:** kJ
+
+## JAFNA:148
+
+**TEXTI:1:** NO
+
+**TEXTI:2:** kJ
+
+**TEXTI:3:** 2NO
+
+**TEXTI:4:** NO
+
+**TEXTI:5:** kJ
+
+## JAFNA:149
+
+**TEXTI:1:** NO
+
+## JAFNA:150
+
+**TEXTI:1:** Si
+
+**TEXTI:2:** Cl
+
+**TEXTI:3:** SiCl
+
+## JAFNA:151
+
+**TEXTI:1:** Fe
+
+**TEXTI:2:** Fe
+
+## JAFNA:152
+
+**TEXTI:1:** LiOH
+
+**TEXTI:2:** CO
+
+**TEXTI:3:** Li
+
+**TEXTI:4:** CO
+
+## JAFNA:153
+
+**TEXTI:1:** Si
+
+**TEXTI:2:** SiF
+
+## JAFNA:154
+
+**TEXTI:1:** CH
+
+**TEXTI:2:** CO
+
+## JAFNA:155
+
+**TEXTI:1:** CH
+
+**TEXTI:2:** HCN
+
+**TEXTI:3:** NH
+
+## JAFNA:156
+
+**TEXTI:1:** CS
+
+**TEXTI:2:** Cl
+
+**TEXTI:3:** CCl
+
+**TEXTI:4:** Cl
+
+## JAFNA:157
+
+**TEXTI:1:** Ag
+
+**TEXTI:2:** Ag
+
+## JAFNA:158
+
+**TEXTI:1:** SnO
+
+**TEXTI:2:** CO
+
+**TEXTI:3:** Sn
+
+**TEXTI:4:** CO
+
+## JAFNA:159
+
+**TEXTI:1:** Cr
+
+**TEXTI:2:** Cr
+
+## JAFNA:160
+
+**TEXTI:1:** Al
+
+**TEXTI:2:** Fe
+
+**TEXTI:3:** Al
+
+**TEXTI:4:** Fe
+
+## JAFNA:162
+
+**TEXTI:1:** TiCl
+
+**TEXTI:2:** TiO
+
+**TEXTI:3:** HCl
+
+## JAFNA:163
+
+**TEXTI:1:** CO
+
+## JAFNA:165
+
+**TEXTI:1:** CO
+
+**TEXTI:2:** CH
+
+**TEXTI:3:** OH
+
+## JAFNA:167
+
+**TEXTI:1:** CaC
+
+**TEXTI:2:** Ca
+
+**TEXTI:3:** OH
+
+## JAFNA:170
+
+**TEXTI:1:** kJ/mól;
+
+## JAFNA:172
+
+**TEXTI:1:** OH
+
+## JAFNA:173
+
+**TEXTI:1:** CO
+
+**TEXT:2:** kJ
+
+## EQ:177
+
+**TEXT:1:** CO

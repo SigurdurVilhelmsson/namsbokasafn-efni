@@ -1,0 +1,600 @@
+{
+  "module": "m68727",
+  "section": "5.3",
+  "chapter": 5,
+  "title": "Enthalpy",
+  "equations": {
+    "EQ:1": {
+      "latex": "\\text{Δ}U=q+w",
+      "id": "fs-idm150109936"
+    },
+    "EQ:2": {
+      "latex": "H=U+PV",
+      "id": "fs-idm231773856"
+    },
+    "EQ:3": {
+      "latex": "\\text{Δ}H=\\text{Δ}U+P\\text{Δ}V",
+      "id": "fs-idm182172016"
+    },
+    "EQ:4": {
+      "latex": "P\\text{Δ}V=\\text{−}w",
+      "id": "fs-idm223126448"
+    },
+    "EQ:5": {
+      "latex": "\\text{Δ}H=\\text{Δ}U+P\\text{Δ}V={q}_{\\text{p}}+w-w={q}_{\\text{p}}",
+      "id": "fs-idm223599728"
+    },
+    "EQ:6": {
+      "latex": "{{\\text{kJ}}_{2}(g)+\\,\\frac{1}{2}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{H}}_{2}\\text{O}(l)\\,\\text{Δ}\\text{H}=−286\\,\\text{kJ}}",
+      "id": "fs-idp13211824"
+    },
+    "EQ:7": {
+      "latex": "{\\text{(tvöföldun á magni)}}2{\\text{kJ}}_{2}(g)+{\\text{kJ}}_{2}(g)\\,\\longrightarrow \\,2{\\text{helmingun á magni}}_{2}\\text{kJ}(l)\\,\\text{Δ}\\text{kJ}=2\\,\\times \\,(−286\\,\\text{kJ})=−572\\,\\text{kJ}{({\\text{two-fold decrease in amounts}})}\\frac{1}{2}{\\text{H}}_{2}(g)+\\,\\frac{1}{4}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{\\text{H}}_{2}\\text{O}(l)\\,\\text{Δ}\\text{H}=\\,\\frac{1}{2}\\,\\times \\,(−286\\,\\text{kJ})=−143\\,\\text{kJ}",
+      "id": "fs-idm23265328"
+    },
+    "EQ:8": {
+      "latex": "{{\\text{kJ}}_{2}(g)+\\,\\frac{1}{2}\\,{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{H}}_{2}\\text{O}(g)\\,\\text{Δ}\\text{H}=−242\\,\\text{kJ}}",
+      "id": "fs-idp4587936"
+    },
+    "EQ:9": {
+      "latex": "{\\text{HCl}(aq)+\\text{NaOH}(aq)\\,\\longrightarrow \\,\\text{NaCl}(aq)+{\\text{H}}_{2}\\text{O}(l)}",
+      "id": "fs-idp149553440"
+    },
+    "EQ:10": {
+      "latex": "{\\text{Δ}\\text{mól HCl}=1\\,{\\text{kJ}}\\,\\times \\,\\frac{{−2.9\\,\\text{mól HCl}}}{{0.0500\\,{\\text{kJ}}}}\\,=−58\\,\\text{kJ}}",
+      "id": "fs-idp125057232"
+    },
+    "EQ:11": {
+      "latex": "{\\text{HCl}(aq)+\\text{NaOH}(aq)\\,\\longrightarrow \\,\\text{NaCl}(aq)+{\\text{kJ}}_{2}\\text{O}(l)\\,\\text{Δ}\\text{H}=−58\\,\\text{kJ}}",
+      "id": "fs-idm13850464"
+    },
+    "EQ:12": {
+      "latex": "{\\text{Zn}(s)+2\\text{HCl}(aq)\\,\\longrightarrow \\,{{\\text{ZnCl}}}_{2}(aq)+{\\text{H}}_{2}(g)}",
+      "id": "fs-idp6791056"
+    },
+    "EQ:13": {
+      "latex": "{{\\text{KClO}}_{{12}}{\\text{CO}}_{{22}}{\\text{KCl}}_{{11}}(aq)+8{{\\text{KClO}}}_{3}(aq)\\,\\longrightarrow \\,12{{\\text{CO}}}_{2}(g)+11{\\text{H}}_{2}\\text{O}(l)+8\\text{KCl}(aq).}",
+      "id": "fs-idp12841552"
+    },
+    "EQ:14": {
+      "latex": "{( { 2.67\\,\\text{mól}} )}{( { 1\\,\\text{mól}\\text{/}342.3\\,\\text{mól}} )}=0.00780\\,\\text{mól}\\,{\\text{KCl}}_{{ 12}} \\,{\\text{H}}_{{ 22}} \\,{\\text{O}}_{{ 11}} {( { 7.19\\,\\text{g}} )}{( { 1\\,\\text{mol}\\text{/}122.5\\,\\text{g}} )}=0.0587\\,\\text{mol}\\,\\text{KCl}{\\text{O}}_{3}",
+      "id": "fs-idm372152464"
+    },
+    "EQ:15": {
+      "latex": "{ 0.0587\\,\\text{mól}\\,\\text{KCl}{\\text{mól}}_{3} \\text{/}0.00780\\,\\text{mol}\\,{\\text{C}}_{{ 12}} {\\text{H}}_{{ 22}} {\\text{O}}_{{ 11}} =7.52}",
+      "id": "fs-idm378911456"
+    },
+    "EQ:16": {
+      "latex": "{ △\\text{kJ}=-43.7\\text{​}\\,\\text{mól KCl}\\text{/}0.0587\\,\\text{kJ}{\\text{mól}}_{3} =–744\\,\\text{KCl}\\text{/}\\text{mol}\\,\\text{KCl}{\\text{O}}_{3} }",
+      "id": "fs-idm352441488"
+    },
+    "EQ:17": {
+      "latex": "{ {( { –744\\,\\text{kJ}\\text{/}\\text{mól}\\,\\text{KCl}{\\text{mól}}_{3} } )}{( { 8\\,\\text{KCl}\\,\\text{kJ}{\\text{O}}_{3} } )}=–5960\\,\\text{kJ}}",
+      "id": "fs-idm389610336"
+    },
+    "EQ:18": {
+      "latex": "{{\\text{KClO}}_{{12}}{\\text{CO}}_{{22}}{\\text{KCl}}_{{11}}+8{{\\text{kJ}}}_{3}\\,\\longrightarrow \\,12{{\\text{CO}}}_{2}+11{\\text{H}}_{2}\\text{O}+8\\text{KCl}\\,\\text{Δ}\\text{H}=−5960\\,\\text{kJ}}",
+      "id": "fs-idp90097408"
+    },
+    "EQ:19": {
+      "latex": "{{\\text{OH}}_{2}{\\text{CO}}_{5}\\text{−1366}(l)+3{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{CO}}}_{2}(g+3{\\text{H}}_{2}\\text{O}(l)\\,\\text{Δ}H\\text{°}=\\text{−1366.8 kJ}}",
+      "id": "fs-idm27865968"
+    },
+    "EQ:20": {
+      "latex": "{1.00\\,{\\text{ml}\\,{\\text{ml}}_{8}{\\text{mól}}_{{18}}}\\,\\times \\,\\frac{{1000\\,{\\text{kJ}\\,{\\text{mól}}_{8}{\\text{kJ}}_{{18}}}}}{{1\\,{\\text{L}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}}}}\\,\\times \\,\\frac{{0.692\\,{\\text{g}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}}}}{{1\\,{\\text{mL}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}}}}\\,\\times \\,\\frac{{1\\,{\\text{mol}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}}}}{{114\\,{\\text{g}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}}}}\\,\\times \\,\\frac{{-5460\\,\\text{kJ}}}{{1\\,{\\text{mol}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}}}}\\,=−3.31\\,\\times \\,{{10}}^{4}\\text{kJ}}",
+      "id": "fs-idp6149744"
+    },
+    "EQ:21": {
+      "latex": "1.00\\,\\text{ml}\\,{\\text{ml}}_{8}{\\text{mól}}_{{18}}\\,\\longrightarrow \\,1.00\\,\\times \\,{10}^{3}\\,\\text{mól}\\,{\\text{kJ}}_{8}{\\text{H}}_{{18}}1.00\\,\\times \\,{10}^{3}\\,\\text{mL}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}\\,\\longrightarrow \\,692\\,\\text{g}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}692\\,\\text{g}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}\\,\\longrightarrow \\,6.07\\,\\text{mol}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}6.07\\,\\text{mol}\\,{\\text{C}}_{8}{\\text{H}}_{{18}}\\,\\longrightarrow \\,−3.31\\,\\times \\,{10}^{4}\\text{kJ}",
+      "id": "fs-idp94999984"
+    },
+    "EQ:22": {
+      "latex": "{\\text{CO}(s)+{\\text{kJ}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)\\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}=\\text{Δ}H\\text{°}=−393.5\\,\\text{kJ}}",
+      "id": "fs-idp185901552"
+    },
+    "EQ:23": {
+      "latex": "{\\frac{1}{2}{\\text{NO}}_{2}(g)+{\\text{+33,2 kJ}}_{2}(g)\\,\\longrightarrow \\,{{\\text{NO}}}_{2}(g)\\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}=\\text{Δ}H\\text{°}=\\text{+33.2 kJ}}",
+      "id": "fs-idp185944512"
+    },
+    "EQ:24": {
+      "latex": "{3{\\text{+286 kJ}}_{2}(g)\\,\\longrightarrow \\,2{\\text{O}}_{3}(g)\\,\\text{Δ}H\\text{°}=\\text{+286 kJ}}",
+      "id": "fs-idp167765152"
+    },
+    "EQ:25": {
+      "latex": "{\\frac{3}{2}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{O}}_{3}(g)}",
+      "id": "fs-idp166474448"
+    },
+    "EQ:26": {
+      "latex": "{\\text{Δ}\\text{° fyrir}\\text{mól af}\\,1\\,\\text{mól}\\,{\\text{kJ}}_{3}(g)=1\\,{\\text{mól}\\,{\\text{kJ}}_{3}}\\,\\times \\,\\frac{{286\\,\\text{kJ}}}{{2\\,{\\text{mol}\\,{\\text{O}}_{3}}}}\\,=143\\,\\text{kJ}}",
+      "id": "fs-idp90148272"
+    },
+    "EQ:27": {
+      "latex": "{\\text{CO}(s)+{\\text{kJ}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)\\,\\text{Δ}H\\text{°}=−394\\,\\text{kJ}}",
+      "id": "fs-idp177510624"
+    },
+    "EQ:28": {
+      "latex": "{\\text{CO}(s)+\\,\\frac{1}{2}{\\text{kJ}}_{2}(g)\\,\\longrightarrow \\,\\text{CO}(g)\\,\\text{Δ}H\\text{°}=−111\\,\\text{kJ}}",
+      "id": "fs-idp51925136"
+    },
+    "EQ:29": {
+      "latex": "{\\text{CO}(g)+\\,\\frac{1}{2}{\\text{CO}}_{2}(g)\\,\\longrightarrow \\,{\\text{kJ}}_{2}(g)\\,\\text{Δ}H\\text{°}=−283\\,\\text{kJ}}",
+      "id": "fs-idp161438800"
+    },
+    "EQ:30": {
+      "latex": "\\text{Skref 1: C}(s)+\\,\\frac{1}{2}{\\text{CO}}_{2}(g)\\,\\longrightarrow \\,\\text{Skref 2: CO}(g){\\text{CO}(g)+\\,\\frac{1}{2}{\\text{Su C}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)}¯\\text{CO}(s)+\\,\\frac{1}{2}{\\text{CO}}_{2}(g)+\\text{CO}(g)+\\,\\frac{1}{2}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,\\text{CO}(g)+{\\text{CO}}_{2}(g)",
+      "id": "fs-idp186572384"
+    },
+    "EQ:31": {
+      "latex": "{\\text{CO}(s)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)}",
+      "id": "fs-idp40119312"
+    },
+    "EQ:32": {
+      "latex": "{\\text{CO}(s)+\\,\\frac{1}{2}{\\text{kJ}}_{2}(g)\\,\\longrightarrow \\,\\text{CO}(g)}{\\text{Δ}H\\text{°}=−111\\,\\text{CO}}{{\\text{CO}(g)+\\,12{\\text{kJ}}_{2}(g)\\,\\longrightarrow \\,{{\\text{kJ}}}_{2}(g)}{\\text{C}(s)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)\\,}}{\\frac{{\\text{Δ}H\\text{°}=−283\\,\\text{kJ}}}{{\\text{Δ}H\\text{°}=−394\\,\\text{kJ}}}}",
+      "id": "fs-idp128371600"
+    },
+    "EQ:33": {
+      "latex": "{\\frac{1}{2}{\\text{NO}}_{2}(g)+{\\text{+33,2 kJ}}_{2}(g)\\,\\longrightarrow \\,{{\\text{NO}}}_{2}(g)\\,\\text{Δ}\\text{H}=\\text{+33.2 kJ}}",
+      "id": "fs-idp167201504"
+    },
+    "EQ:34": {
+      "latex": "{{\\text{NO}}_{2}(g)+2{\\text{+66.4 kJ}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{NO}}}_{2}(g)\\,\\text{Δ}\\text{H}=\\text{+66.4 kJ}}",
+      "id": "fs-idp160717072"
+    },
+    "EQ:35": {
+      "latex": "{{\\text{Cl}}_{2}(g)+{{\\text{HCl}}}_{2}(g)\\,\\longrightarrow \\,2\\text{kJ}(g)\\,\\text{Δ}\\text{H}=−184.6\\,\\text{kJ}}",
+      "id": "fs-idp146333552"
+    },
+    "EQ:36": {
+      "latex": "{2\\text{HCl}(g)\\,\\longrightarrow \\,{\\text{Cl}}_{2}(g)+{{\\text{+184.6 kJ}}}_{2}(g)\\,\\text{Δ}\\text{H}=\\text{+184.6 kJ}}",
+      "id": "fs-idp146345216"
+    },
+    "EQ:37": {
+      "latex": "{\\text{Fe}(s)+{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{FeCl}}}_{2}(s)\\,\\text{Δ}\\text{kJ}\\text{°}=−341.8\\,\\text{kJ}}",
+      "id": "fs-idp103964560"
+    },
+    "EQ:38": {
+      "latex": "{{{\\text{FeCl}}}_{2}(s)+\\,\\frac{1}{2}{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{FeCl}}}_{3}(s)\\,\\text{Δ}\\text{kJ}\\text{°}=−57.7\\,\\text{kJ}}",
+      "id": "fs-idp103976192"
+    },
+    "EQ:39": {
+      "latex": "{\\text{Fe}(s)+\\,\\frac{3}{2}{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{FeCl}}}_{3}(s)\\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}=?}",
+      "id": "fs-idp190751040"
+    },
+    "EQ:40": {
+      "latex": "{{\\text{Fe}(s)+{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{FeCl}}}_{2}(s)}{\\text{Δ}H\\text{°}=−341.8\\,\\text{kJ}}{{{{\\text{FeCl}}}_{2}(s)+\\,12{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{FeCl}}}_{3}(s)}{\\text{Fe}(s)+\\,\\frac{3}{2}{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{FeCl}}}_{3}(s)\\,}}{\\frac{{\\text{Δ}H\\text{°}=−57.7\\,\\text{kJ}}}{{\\text{Δ}H\\text{°}=−399.5\\,\\text{kJ}}}}}",
+      "id": "fs-idp133790064"
+    },
+    "EQ:41": {
+      "latex": "{\\text{NO}}_{2}(g)+2{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{\\text{NO}}_{2}(g)",
+      "id": "fs-idp149512304"
+    },
+    "EQ:42": {
+      "latex": "{{\\text{NO}}_{2}(g)+{\\text{kJ}}_{2}(g)\\,\\longrightarrow \\,2\\text{NO}(g)\\,\\text{Δ}\\text{H}=180.5\\,\\text{kJ}}",
+      "id": "fs-idp164463232"
+    },
+    "EQ:43": {
+      "latex": "{\\text{NO}(g)+\\,\\frac{1}{2}{\\text{NO}}_{2}(g)\\,\\longrightarrow \\,{{\\text{kJ}}}_{2}(g)\\,\\text{Δ}\\text{H}=−57.06\\,\\text{kJ}}",
+      "id": "fs-idp164473712"
+    },
+    "EQ:44": {
+      "latex": "{\\text{ClF}(g)+\\frac{1}{2}{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{{\\text{OF}}}_{2}\\text{+107.0 kJ}(g)+\\,\\frac{1}{2}{{\\text{OF}}}_{2}(g)\\,\\text{Δ}\\text{H}\\text{°}=\\,\\frac{1}{2}(214.0)=\\text{+107.0 kJ}}",
+      "id": "fs-idp167256800"
+    },
+    "EQ:45": {
+      "latex": "{\\frac{1}{2}{\\text{OF}}_{2}(g)+{\\text{+24.7 kJ}}_{2}(g)\\,\\longrightarrow \\,{{\\text{OF}}}_{2}(g)\\,\\text{Δ}\\text{H}\\text{°}=\\text{+24.7 kJ}}",
+      "id": "fs-idp160400816"
+    },
+    "EQ:46": {
+      "latex": "{\\frac{1}{2}{{\\text{Cl}}}_{2}\\text{OF}(g)+\\,\\frac{3}{2}{{\\text{ClF}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{−236.2 kJ}}}_{3}(g)+{\\text{O}}_{2}(g)\\,\\text{Δ}\\text{H}\\text{°}=\\text{−236.2 kJ}}",
+      "id": "fs-idp134608368"
+    },
+    "EQ:47": {
+      "latex": "{{\\text{ClF}(g)+\\,\\frac{1}{2}{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{{\\text{OF}}}_{2}\\text{+107.0 kJ}(g)+\\,\\frac{1}{2}{{\\text{OF}}}_{2}(g)}{\\text{Δ}H\\text{°}=\\text{+24.7 kJ}}{\\frac{1}{2}{\\text{Cl}}_{2}(g)+{\\text{OF}}_{2}(g)\\,\\longrightarrow \\,{{\\text{ClF}}}_{2}(g)}{\\text{Δ}H\\text{°}=\\text{ClF}}{{12{{\\text{ClF}}}_{2}\\text{kJ}(g)+\\,\\frac{3}{2}{{\\text{kJ}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{ClF}}}_{3}(g)+{\\text{O}}_{2}(g)}{\\text{ClF}(g)+{\\text{F}}_{2}\\,\\longrightarrow \\,{{\\text{ClF}}}_{3}(g)\\,}}{\\frac{{\\text{Δ}H\\text{°}=−236.2\\,\\text{kJ}}}{{\\text{Δ}H\\text{°}=−104.5\\,\\text{kJ}}}}}",
+      "id": "fs-idp134626752"
+    },
+    "EQ:48": {
+      "latex": "\\text{Δ}H\\text{°}=(+107.0\\,\\text{kJ})+(24.7\\,\\text{kJ})+(−236.2\\,\\text{kJ})=−104.5\\,\\text{kJ}",
+      "id": "fs-idm259960768"
+    },
+    "EQ:49": {
+      "latex": "{\\text{Δ}{H}_{{\\text{efnahvarf}}}^{^{\\circ}}=∑n\\,\\times \\,\\text{Δ}{H}_{\\text{myndefni}}^{^{\\circ}}(\\text{hvarfefni})-∑ n\\,\\times \\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}(\\text{reactants})}",
+      "id": "fs-idp120716832"
+    },
+    "EQ:50": {
+      "latex": "{3{{\\text{NO}}}_{2}(g)+{\\text{HNO}}_{2}\\text{NO}(l)\\,\\longrightarrow \\,2{{\\text{HNO}}}_{3}(aq)+\\text{NO}(g)\\,\\text{Δ}\\text{H}\\text{°}=?}",
+      "id": "fs-idp134549904"
+    },
+    "EQ:51": {
+      "latex": "{\\text{Δ}{H}_{{\\text{efnahvarf}}}^{^{\\circ}}=∑ {n\\,\\times \\,\\text{Δ}{H}_{\\text{(myndefni)}}^{^{\\circ}}\\text{hvarfefni}}-∑ n\\,\\times \\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}(\\text{reactants})}",
+      "id": "fs-idp146127936"
+    },
+    "EQ:52": {
+      "latex": "={[ {2\\,{\\text{mól}\\,{{\\text{HNO}}}_{3}(aq)}\\,\\times \\,\\frac{{−207.4\\,\\text{kJ}}}{{{\\text{mól}\\,{{\\text{HNO}}}_{3}(aq)}}}\\,+1\\,{\\text{mól NO}(g)}\\,\\times \\,\\frac{{\\text{+90,25 kJ}}}{{{\\text{mól NO}(g)}}}} ]}-{[ {3\\,{\\text{mól}\\,{{\\text{NO}}}_{2}(g)}\\,\\times \\,\\frac{{\\text{+33,2 kJ}}}{{{\\text{mól}\\,{{\\text{NO}}}_{2}(g)}}}\\,+1\\,{\\text{mól}\\,{\\text{kJ}}_{2}\\text{mól}(l)}\\,\\times \\,\\frac{{−285.83\\,\\text{kJ}}}{{{\\text{mol}\\,{\\text{H}}_{2}\\text{O}(l)}}}} ]} =[2\\times {({−206.64})}+90.25]-[3{\\times {33.2}+}{(−285.83)]} =–323.03+186.23 =−138.32\\,\\text{kJ}",
+      "id": "fs-idp146140160"
+    },
+    "EQ:53": {
+      "latex": "{3{{\\text{NO}}}_{2}(g)\\,\\longrightarrow \\,{\\text{3/2N}}_{2}(g)+{\\text{3O}}_{2}(g)\\,\\text{Δ}{H}_{1}^{^{\\circ}}=−99.6\\,\\text{kJ}}",
+      "id": "fs-idp134571776"
+    },
+    "EQ:54": {
+      "latex": "{{\\text{+285,8 kJ}}_{2}\\text{O}(l)\\,\\longrightarrow \\,{\\text{H}}_{2}(g)+\\,\\frac{1}{2}{\\text{O}}_{2}(g)\\,\\text{Δ}{H}_{2}^{^{\\circ}}=\\text{+285.8 kJ}\\,{{[−1\\,\\times \\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}({\\text{H}}_{2}\\text{O})]}}}",
+      "id": "fs-idp168099120"
+    },
+    "EQ:55": {
+      "latex": "{{\\text{HNO}}_{2}(g)+{\\text{kJ}}_{2}(g)+3{\\text{HNO}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{HNO}}}_{3}(aq)\\,\\text{Δ}{H}_{3}^{^{\\circ}}=−414.8\\,\\text{kJ}\\,{[ {2\\,\\times \\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}({{\\text{HNO}}}_{3})]}}}",
+      "id": "fs-idp168119776"
+    },
+    "EQ:56": {
+      "latex": "{\\frac{1}{2}{\\text{NO}}_{2}(g)+\\,\\frac{1}{2}{\\text{+90,2 kJ}}_{2}(g)\\,\\longrightarrow \\,\\text{NO}(g)\\,\\text{Δ}{H}_{4}^{^{\\circ}}=\\text{+90.2 kJ}\\,{[ {1\\,\\times \\,(\\text{NO})]}}}",
+      "id": "fs-idp194526576"
+    },
+    "EQ:57": {
+      "latex": "{{{\\text{3NO}}}_{2}(g)+{\\text{HNO}}_{2}\\text{NO}(l)\\,\\longrightarrow \\,2{{\\text{HNO}}}_{3}(aq)+\\text{NO}(g)}",
+      "id": "fs-idp155650448"
+    },
+    "EQ:58": {
+      "latex": "\\text{Δ}{H}_{{\\text{efnahvarf}}}^{^{\\circ}}=\\text{Δ}{H}_{1}^{^{\\circ}}+\\text{Δ}{H}_{2}^{^{\\circ}}+\\text{Δ}{H}_{3}^{^{\\circ}}+\\text{Δ}{H}_{4}^{^{\\circ}}=(−99.6\\,\\text{kJ})+(\\text{+285,8 kJ})+(−414.8\\,\\text{kJ})+(\\text{+90.2 kJ})=−138.4\\,\\text{kJ}",
+      "id": "fs-idp155662864"
+    },
+    "EQ:59": {
+      "latex": "{\\frac{1}{2}}"
+    },
+    "EQ:60": {
+      "latex": "{\\frac{1}{2}}"
+    },
+    "EQ:61": {
+      "latex": "{(\\text{Δ}H\\text{°})}"
+    },
+    "EQ:62": {
+      "latex": "{(\\text{Δ}{H}_{C}^{\\text{°}})}"
+    },
+    "EQ:63": {
+      "latex": "{\\text{Δ}{H}_{c}^{^{\\circ}}}"
+    },
+    "EQ:64": {
+      "latex": "{(\\frac{{\\text{kJ}}}{{\\text{mól}}}\\,\\text{við}\\,25\\,\\text{°C})}"
+    },
+    "EQ:65": {
+      "latex": "{\\text{CO}(s)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)}"
+    },
+    "EQ:66": {
+      "latex": "{{\\text{H}}_{2}(g)+\\,\\frac{1}{2}\\,{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:67": {
+      "latex": "{\\text{Mg}(s)+\\,\\frac{1}{2}\\,{\\text{MgO}}_{2}(g)\\,\\longrightarrow \\,\\text{MgO}(s)}"
+    },
+    "EQ:68": {
+      "latex": "{\\text{SO}(s)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{SO}}}_{2}(g)}"
+    },
+    "EQ:69": {
+      "latex": "{\\text{CO}(g)+\\,\\frac{1}{2}\\,{\\text{CO}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)}"
+    },
+    "EQ:70": {
+      "latex": "{{{\\text{CH}}}_{4}(g)+2{\\text{CO}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)+2{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:71": {
+      "latex": "{{\\text{CO}}_{2}{\\text{H}}_{2}(g)+\\,\\frac{5}{2}\\,{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{CO}}}_{2}(g)+{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:72": {
+      "latex": "{{\\text{OH}}_{2}{\\text{2CO}}_{5}\\text{OH}(l)+3{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{2CO}}}_{2}(g)+3{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:73": {
+      "latex": "{{{\\text{CH}}}_{3}\\text{OH}(l)+\\,\\frac{3}{2}\\,{\\text{CO}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)+2{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:74": {
+      "latex": "{{\\text{CO}}_{8}{\\text{H}}_{{18}}(l)+\\,\\frac{{25}}{2}\\,{\\text{O}}_{2}(g)\\,\\longrightarrow \\,8{{\\text{CO}}}_{2}(g)+9{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:75": {
+      "latex": "{\\times }"
+    },
+    "EQ:76": {
+      "latex": "{\\frac{1}{7}}"
+    },
+    "EQ:77": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:78": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:79": {
+      "latex": "{\\frac{1}{2}}"
+    },
+    "EQ:80": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:81": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:82": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:83": {
+      "latex": "{\\text{Δ}H\\text{°}=\\text{+286 kJ.}}"
+    },
+    "EQ:84": {
+      "latex": "{{({\\frac{{286\\,\\text{kJ}}}{{2\\,\\text{mól}\\,{\\text{O}}_{3}}}})},}"
+    },
+    "EQ:85": {
+      "latex": "{\\text{Δ}{H}_{\\text{+143 kJ/mól}}^{^{\\circ}}{[ {{\\text{O}}_{3}(g)} ]}=\\text{+143 kJ/mol}.}"
+    },
+    "EQ:86": {
+      "latex": "{{\\text{Cl}}_{2}(g)+{{\\text{HCl}}}_{2}(g)\\,\\longrightarrow \\,2\\text{kJ}(g)\\,\\text{Δ}H\\text{°}=−184.6\\,\\text{kJ}}"
+    },
+    "EQ:87": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:88": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:89": {
+      "latex": "{2\\text{grafít}(s,\\,\\text{OH})+3{\\text{H}}_{2}(g)+\\,\\frac{1}{2}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{C}}_{2}{\\text{H}}_{5}\\text{OH}(l)}"
+    },
+    "EQ:90": {
+      "latex": "{3\\text{Ca}(s)+\\,\\frac{1}{2}{\\text{Ca}}_{4}(s)+4{\\text{PO}}_{2}(g)\\,\\longrightarrow \\,{\\text{Ca}}_{3}({{\\text{PO}}}_{4}{{)}}_{2}(s)}"
+    },
+    "EQ:91": {
+      "latex": "{4\\text{grafít}(s,\\,\\text{OC})+5{\\text{H}}_{2}(g)+\\,\\frac{1}{2}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{C}}_{2}{\\text{H}}_{5}{{\\text{OC}}}_{2}{\\text{H}}_{5}(l);}"
+    },
+    "EQ:92": {
+      "latex": "{2\\text{Na}(s)+\\text{grafít}(s,\\,\\text{Na})+\\,\\frac{3}{2}{\\text{CO}}_{2}(g)\\,\\longrightarrow \\,{{\\text{Na}}}_{2}{{\\text{CO}}}_{3}(s)}"
+    },
+    "EQ:93": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:94": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}},}"
+    },
+    "EQ:95": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}},}"
+    },
+    "EQ:96": {
+      "latex": "\\text{ClF}(g)+{\\text{ClF}}_{2}(g)\\,\\longrightarrow \\,{\\text{ClF}}_{3}(g)\\,\\text{Δ}\\text{H}\\text{°}=?"
+    },
+    "EQ:97": {
+      "latex": "{2{{\\text{OF}}}_{2}(g)\\,\\longrightarrow \\,{\\text{kJ}}_{2}(g)+2{{\\text{F}}}_{2}(g)\\,\\text{Δ}{H}_{{(ii)}}^{^{\\circ}}=−49.4\\,\\text{kJ}}"
+    },
+    "EQ:98": {
+      "latex": "{2\\text{ClF}(g)+{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,{{\\text{OF}}}_{2}\\text{+214,0 kJ}(g)+{{\\text{OF}}}_{2}(g)\\,\\text{Δ}{H}_{{(iii)}}^{^{\\circ}}=\\text{+214.0 kJ}}"
+    },
+    "EQ:99": {
+      "latex": "{{{\\text{ClF}}}_{3}(g)+{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{{\\text{OF}}}_{2}\\text{+236.2 kJ}(g)+\\,\\frac{3}{2}{{\\text{OF}}}_{2}(g)\\,\\text{Δ}{H}_{{(iv)}}^{^{\\circ}}=\\text{+236.2 kJ}}"
+    },
+    "EQ:100": {
+      "latex": "\\frac{1}{2},"
+    },
+    "EQ:101": {
+      "latex": "\\frac{1}{2}\\text{:}"
+    },
+    "EQ:102": {
+      "latex": "\\frac{1}{2}{\\text{O}}_{2}"
+    },
+    "EQ:103": {
+      "latex": "\\frac{1}{2}{\\text{O}}_{2}"
+    },
+    "EQ:104": {
+      "latex": "\\frac{1}{2}{\\text{Cl}}_{2}\\text{O}"
+    },
+    "EQ:105": {
+      "latex": "\\frac{1}{2}{\\text{Cl}}_{2}\\text{O;}"
+    },
+    "EQ:106": {
+      "latex": "\\frac{3}{2}{\\text{OF}}_{2}"
+    },
+    "EQ:107": {
+      "latex": "\\frac{1}{2}{\\text{OF}}_{2}"
+    },
+    "EQ:108": {
+      "latex": "{2\\text{Al}(s)+3{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{AlCl}}}_{3}(s)\\,\\text{Δ}H\\text{°}=?}"
+    },
+    "EQ:109": {
+      "latex": "{\\text{HCl}(g)\\,\\longrightarrow \\,\\text{HCl}(aq)\\,\\text{Δ}{H}_{{(ii)}}^{^{\\circ}}=−74.8\\,\\text{kJ}}"
+    },
+    "EQ:110": {
+      "latex": "{{\\text{Cl}}_{2}(g)+{{\\text{HCl}}}_{2}(g)\\,\\longrightarrow \\,2\\text{kJ}(g)\\,\\text{Δ}{H}_{{(iii)}}^{^{\\circ}}=−185\\,\\text{kJ}}"
+    },
+    "EQ:111": {
+      "latex": "{{{\\text{AlCl}}}_{3}(aq)\\,\\longrightarrow \\,{{\\text{AlCl}}}_{3}(s)\\,\\text{Δ}{H}_{{(iv)}}^{^{\\circ}}=+323\\,\\text{kJ/mól}}"
+    },
+    "EQ:112": {
+      "latex": "{\\text{2Al}(s)+6\\text{HCl}(aq)\\,\\longrightarrow \\,2{{\\text{AlCl}}}_{3}(aq)+3{\\text{kJ}}_{2}(g)\\,\\text{Δ}{H}_{{(v)}}^{^{\\circ}}=−1049\\,\\text{kJ}}"
+    },
+    "EQ:113": {
+      "latex": "\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}"
+    },
+    "EQ:114": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:115": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:116": {
+      "latex": "{\\text{Δ}H\\text{°}}"
+    },
+    "EQ:117": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}},}"
+    },
+    "EQ:118": {
+      "latex": "\\text{Δ}U=q+w"
+    },
+    "EQ:119": {
+      "latex": "{\\text{Δ}{H}_{{\\text{hvarf}}}^{^{\\circ}}=∑ {n\\,\\times \\,\\text{Δ}{H}_{\\text{(myndefni)}}^{^{\\circ}}\\text{hvarfefni}}-∑ n\\,\\times \\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}(\\text{reactants})}"
+    },
+    "EQ:120": {
+      "latex": "{\\text{HCl}(aq)+\\text{NaOH}(aq)\\,\\longrightarrow \\,\\text{NaCl}(aq)+{\\text{H}}_{2}\\text{O}(l)}"
+    },
+    "EQ:121": {
+      "latex": "\\text{NaCl}(aq)+{\\text{AgNO}}_{3}(aq)\\,\\longrightarrow \\,\\text{AgCl}(s)+{\\text{NaNO}}_{3}(aq)"
+    },
+    "EQ:122": {
+      "latex": "{\\text{Ba}{{{({\\text{OH}})}}}_{2}\\text{·}8{\\text{NH}}_{2}\\text{SCN}(s)+2{{\\text{Ba}}}_{4}\\text{SCN}(aq)\\,\\longrightarrow \\,\\text{NH}{{(\\text{SCN})}}_{2}(aq)+2{{\\text{NH}}}_{3}(aq)+10{\\text{H}}_{2}\\text{O}{(l)}}"
+    },
+    "EQ:123": {
+      "latex": "\\times"
+    },
+    "EQ:124": {
+      "latex": "{\\text{HCl}{({aq})}+\\text{NaOH}{({aq})}\\,\\longrightarrow \\,\\text{NaCl}{({aq})}+{\\text{kJ}}_{2}\\text{O}{(l)}\\,\\text{Δ}H\\text{°}=−58\\,\\text{kJ}}"
+    },
+    "EQ:125": {
+      "latex": "{{{\\text{SO}}}_{2}(l)\\,\\longrightarrow \\,{{\\text{SO}}}_{2}(g)}"
+    },
+    "EQ:126": {
+      "latex": "{{{\\text{CCl}}}_{2}{{\\text{CCl}}}_{2}{(l)}\\,\\longrightarrow \\,{{\\text{CCl}}}_{2}{\\text{F}}_{2}(g),}"
+    },
+    "EQ:127": {
+      "latex": "{{{\\text{2H}}}_{2}(g)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{\\text{H}}_{2}\\text{O}{(g)}?}"
+    },
+    "EQ:128": {
+      "latex": "{4{{\\text{NH}}}_{3}(g)+5{\\text{NO}}_{2}(g)\\,\\longrightarrow \\,4\\text{kJ}{(g)}+6{\\text{H}}_{2}\\text{O}{(l)}\\,\\text{Δ}\\text{H}=−907\\,\\text{kJ}}"
+    },
+    "EQ:129": {
+      "latex": "{2\\text{NO}{(g)}+{\\text{NO}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{kJ}}}_{2}(g)\\,\\text{Δ}\\text{H}=−113\\,\\text{kJ}}"
+    },
+    "EQ:130": {
+      "latex": "{3{{\\text{NO}}}_{2}+{\\text{HNO}}_{2}\\text{NO}{(l)}\\,\\longrightarrow \\,2{{\\text{kJ}}}_{3}(aq)+\\text{NO}(g)\\,\\text{Δ}\\text{H}=−139\\,\\text{kJ}}"
+    },
+    "EQ:131": {
+      "latex": "{\\text{demantur}{({s,\\,\\text{CO}})}+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CO}}}_{2}(g)}"
+    },
+    "EQ:132": {
+      "latex": "{\\text{grafít}{({s,\\,\\text{demantur}})}\\,\\longrightarrow \\,\\text{kJ}{({s,\\,\\text{diamond}})}\\,\\text{Δ}H\\text{°}=1.90\\,\\text{kJ}}"
+    },
+    "EQ:133": {
+      "latex": "{{\\text{H}}_{2}\\text{O}{(l)}\\,\\longrightarrow \\,{\\text{H}}_{2}\\text{O}{(g)}}"
+    },
+    "EQ:134": {
+      "latex": "{\\text{Os}{(s)}\\,+\\,2{\\text{OsO}}_{2}(g)\\,\\longrightarrow \\,{{\\text{OsO}}}_{4}(s)}"
+    },
+    "EQ:135": {
+      "latex": "{\\text{Os}{(s)}\\,+\\,2{\\text{OsO}}_{2}(g)\\,\\longrightarrow \\,{{\\text{OsO}}}_{4}(g)}"
+    },
+    "EQ:136": {
+      "latex": "{{{\\text{OsO}}}_{4}(s)\\,\\longrightarrow \\,{{\\text{OsO}}}_{4}(g)\\,\\text{Δ}\\text{kJ}=56.4\\,\\text{kJ}}"
+    },
+    "EQ:137": {
+      "latex": "\\text{Δ}H\\text{°}"
+    },
+    "EQ:138": {
+      "latex": "{\\text{Sb}{(s)}+\\,\\frac{5}{2}{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{SbCl}}}_{5}(s)}"
+    },
+    "EQ:139": {
+      "latex": "\\text{Sb}{(s)}+\\,\\frac{3}{2}{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,{\\text{SbCl}}_{3}(s)\\,\\text{Δ}H\\text{°}=−314\\,\\text{kJ}{\\text{SbCl}}_{3}(s)+{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,{\\text{SbCl}}_{5}(s)\\,\\text{Δ}H\\text{°}=−80\\,\\text{kJ}"
+    },
+    "EQ:140": {
+      "latex": "\\text{Δ}H\\text{°}"
+    },
+    "EQ:141": {
+      "latex": "{\\text{Zn}{(s)}+\\text{ZnSO}{(s)}+2{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{ZnSO}}}_{4}(s)}"
+    },
+    "EQ:142": {
+      "latex": "\\text{Zn}(s)+\\text{ZnS}(s)\\,\\longrightarrow \\,\\text{kJ}(s)\\,\\text{Δ}H\\text{°}=−206.0\\,\\text{ZnS}\\text{2O}(s)+{\\text{ZnSO}}_{2}(g)\\,\\longrightarrow \\,{\\text{kJ}}_{4}(s)\\,\\text{Δ}H\\text{°}=−776.8\\,\\text{kJ}"
+    },
+    "EQ:143": {
+      "latex": "{{{\\text{Hg}}}_{2}{{\\text{Cl}}}_{2}(s)\\,\\longrightarrow \\,2\\text{Hg}{(l)}+{{\\text{Cl}}}_{2}(g)}"
+    },
+    "EQ:144": {
+      "latex": "\\text{Hg}(l)+{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,{\\text{HgCl}}_{2}(s)\\,\\text{Δ}H=−224\\,\\text{kJ}\\text{Hg}(l)+{\\text{HgCl}}_{2}(s)\\,\\longrightarrow \\,{\\text{Hg}}_{2}{\\text{Cl}}_{2}(s)\\,\\text{Δ}H=−41.2\\,\\text{kJ}"
+    },
+    "EQ:145": {
+      "latex": "\\text{Δ}H\\text{°}"
+    },
+    "EQ:146": {
+      "latex": "{{{\\text{Co}}}_{3}{\\text{Co}}_{4}(s)\\,\\longrightarrow \\,3\\text{Co}{(s)}+2{\\text{O}}_{2}(g)}"
+    },
+    "EQ:147": {
+      "latex": "\\text{Co}(s)+\\,\\frac{1}{2}{\\text{CoO}}_{2}(g)\\, \\longrightarrow \\,\\text{kJ}(s)\\,\\text{Δ}H\\text{°} =−237.9\\text{3CoO}\\text{Co}(s)+\\frac{1}{2}{\\text{kJ}}_{2}(g)\\, \\longrightarrow \\,{\\text{Co}}_{3}{\\text{O}}_{4}(s)\\,\\text{Δ}H\\text{°} =−177.5\\text{kJ}"
+    },
+    "EQ:148": {
+      "latex": "{\\text{NO}}_{2}(g)+2{\\text{kJ}}_{2}(g)\\,\\longrightarrow \\,2{\\text{2NO}}_{2}(g)\\,\\text{Δ}H\\text{°}=66.4\\,\\text{NO}\\text{kJ}(g)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{\\text{NO}}_{2}(g)\\,\\text{Δ}H\\text{°}=−114.1\\,\\text{kJ}"
+    },
+    "EQ:149": {
+      "latex": "{{\\text{NO}}_{2}(g)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2\\text{NO}{(g)}}"
+    },
+    "EQ:150": {
+      "latex": "{\\text{Si}{(s)}+2{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{SiCl}}}_{4}(g)}"
+    },
+    "EQ:151": {
+      "latex": "{{{\\text{Fe}}}_{2}{\\text{Fe}}_{3}{(s)}+3{\\text{H}}_{2}(g)\\,\\longrightarrow \\,2\\text{Fe}{(s)}+3{\\text{H}}_{2}\\text{O}{(l)}}"
+    },
+    "EQ:152": {
+      "latex": "{2\\text{LiOH}(s)+{{\\text{CO}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{Li}}}_{2}{{\\text{CO}}}_{3}(s)+{\\text{H}}_{2}\\text{O}(g)}"
+    },
+    "EQ:153": {
+      "latex": "{\\text{Si}{(s)}+2{\\text{SiF}}_{2}(g)\\,\\longrightarrow \\,{{\\text{SiF}}}_{4}(g)}"
+    },
+    "EQ:154": {
+      "latex": "{2\\text{CH}{(s)}+2{\\text{CO}}_{2}(g)+{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CH}}}_{3}{{\\text{CO}}}_{2}\\text{H}{(l)}}"
+    },
+    "EQ:155": {
+      "latex": "{{{\\text{CH}}}_{4}(g)+{\\text{HCN}}_{2}(g)\\,\\longrightarrow \\,\\text{NH}{(g)}+{{\\text{NH}}}_{3}(g)}\\text{;}"
+    },
+    "EQ:156": {
+      "latex": "{{{\\text{CS}}}_{2}(g)+3{{\\text{Cl}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{CCl}}}_{4}(g)+{{\\text{Cl}}}_{2}{{\\text{Cl}}}_{2}(g)}"
+    },
+    "EQ:157": {
+      "latex": "{2{{\\text{Ag}}}_{2}\\text{Ag}{(s)}\\,\\longrightarrow \\,4\\text{Ag}{(s)}+{\\text{O}}_{2}(g)}"
+    },
+    "EQ:158": {
+      "latex": "{\\text{SnO}{(s)}+\\text{CO}{(g)}\\,\\longrightarrow \\,\\text{Sn}{(s)}+{{\\text{CO}}}_{2}(g)}"
+    },
+    "EQ:159": {
+      "latex": "{{{\\text{Cr}}}_{2}{\\text{Cr}}_{3}(s)+3{\\text{H}}_{2}(g)\\,\\longrightarrow \\,2\\text{Cr}{(s)}+3{\\text{H}}_{2}\\text{O}{(l)}}"
+    },
+    "EQ:160": {
+      "latex": "{2\\text{Al}{(s)}+{{\\text{Fe}}}_{2}{\\text{Al}}_{3}(s)\\,\\longrightarrow \\,{{\\text{Fe}}}_{2}{\\text{O}}_{3}(s)+2\\text{Fe}{(s)}}"
+    },
+    "EQ:161": {
+      "latex": "{2{\\text{H}}_{2}{\\text{O}}_{2}(l)\\,\\longrightarrow \\,2{\\text{H}}_{2}\\text{O}{(g)}+{\\text{O}}_{2}(g)}"
+    },
+    "EQ:162": {
+      "latex": "{{{\\text{TiCl}}}_{4}(g)+2{\\text{TiO}}_{2}\\text{HCl}{(g)}\\,\\longrightarrow \\,{{\\text{TiO}}}_{2}(s)+4\\text{HCl}{(g)}.}"
+    },
+    "EQ:163": {
+      "latex": "{\\text{CO}{(s)}+{\\text{H}}_{2}\\text{O}{(g)}\\,\\longrightarrow \\,\\text{CO}{(g)}+{\\text{H}}_{2}(g).}"
+    },
+    "EQ:164": {
+      "latex": "{\\text{Δ}H\\text{°}}"
+    },
+    "EQ:165": {
+      "latex": "{2{\\text{CO}}_{2}(g)+\\text{CH}(g)\\,\\longrightarrow \\,{{\\text{OH}}}_{3}\\text{OH}(g).}"
+    },
+    "EQ:166": {
+      "latex": "{\\text{Δ}H\\text{°}}"
+    },
+    "EQ:167": {
+      "latex": "{{{\\text{CaC}}}_{2}(s)+2{\\text{Ca}}_{2}\\text{OH}{(l)}\\,\\longrightarrow \\,\\text{Ca}{{{({\\text{OH}})}}}_{2}(s)+{\\text{C}}_{2}{\\text{H}}_{2}(g).}"
+    },
+    "EQ:168": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:169": {
+      "latex": "{\\times }"
+    },
+    "EQ:170": {
+      "latex": "{(\\text{Δ}{H}_{\\text{kJ/mól;}}^{^{\\circ}}=−208.4\\,\\text{kJ/mol;}}"
+    },
+    "EQ:171": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:172": {
+      "latex": "{{\\text{OH}}_{2}{\\text{H}}_{4}(g)+{\\text{H}}_{2}\\text{O}{(g)}\\,\\longrightarrow \\,{\\text{C}}_{2}{\\text{H}}_{5}\\text{OH}{(l)}}"
+    },
+    "EQ:173": {
+      "latex": "{{\\text{CO}}_{6}{\\text{kJ}}_{{12}}{\\text{O}}_{6}(s)+6{\\text{O}}_{2}(g)\\,\\longrightarrow \\,6{{\\text{CO}}}_{2}(g)+6{\\text{H}}_{2}\\text{O}{(l)}\\,\\text{Δ}\\text{H}=−2816\\,\\text{kJ}}"
+    },
+    "EQ:174": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:175": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:176": {
+      "latex": "{\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}}"
+    },
+    "EQ:177": {
+      "latex": "{{\\text{CO}}_{3}{\\text{H}}_{8}(g)+5{\\text{O}}_{2}(g)\\,\\longrightarrow \\,3{{\\text{CO}}}_{2}(g)+4{\\text{H}}_{2}\\text{O}{(l)};}"
+    },
+    "EQ:178": {
+      "latex": "{\\times }"
+    }
+  }
+}
