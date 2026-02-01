@@ -194,8 +194,11 @@ function getStringsPath(jsonPath) {
 function generateStringsContent(data, extractedStrings) {
   const lines = [];
   const section = data.section || 'unknown';
+  const version = data.version || 'unknown';
 
   lines.push(`# Equation Strings - Section ${section}`);
+  lines.push('');
+  lines.push(`<!-- source-version: ${version} -->`);
   lines.push('');
   lines.push('Translatable text extracted from LaTeX equations.');
   lines.push('Translate the text content while preserving the [[markers]].');

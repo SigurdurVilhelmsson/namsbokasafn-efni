@@ -104,6 +104,7 @@ Examples:
  *
  * Expected format:
  *   # Equation Strings - Section X.X
+ *   <!-- source-version: 2026-02-01T17:06:00.000Z -->
  *   ...
  *   ## EQ:1
  *
@@ -115,15 +116,25 @@ Examples:
  *   ...
  *
  * @param {string} content - The markdown content
- * @returns {object} Map of equation IDs to arrays of translated strings
+ * @returns {object} Object with translations map and source version
  */
 function parseTranslatedStrings(content) {
-  const result = {};
+  const result = {
+    translations: {},
+    sourceVersion: null,
+  };
   let currentEq = null;
 
   const lines = content.split('\n');
 
   for (const line of lines) {
+    // Extract source version from HTML comment
+    const versionMatch = line.match(/<!--\s*source-version:\s*([^\s]+)\s*-->/);
+    if (versionMatch) {
+      result.sourceVersion = versionMatch[1];
+      continue;
+    }
+
     // Match equation header in multiple formats:
     // - Protected: ## [[EQ:N]]
     // - Legacy EN: ## EQ:N
@@ -131,7 +142,7 @@ function parseTranslatedStrings(content) {
     const eqMatch = line.match(/^##\s+(?:\[\[)?(?:EQ|JAFNA):(\d+)(?:\]\])?/);
     if (eqMatch) {
       currentEq = `EQ:${eqMatch[1]}`; // Normalize to EQ:N
-      result[currentEq] = {};
+      result.translations[currentEq] = {};
       continue;
     }
 
@@ -143,7 +154,7 @@ function parseTranslatedStrings(content) {
     if (textMatch && currentEq) {
       const textId = parseInt(textMatch[1], 10);
       const text = textMatch[2].trim();
-      result[currentEq][textId] = text;
+      result.translations[currentEq][textId] = text;
     }
   }
 
@@ -301,13 +312,31 @@ function processFile(filePath, options) {
 
   // Read and parse translated strings
   const stringsContent = fs.readFileSync(filePath, 'utf-8');
-  const translations = parseTranslatedStrings(stringsContent);
+  const { translations, sourceVersion } = parseTranslatedStrings(stringsContent);
 
   if (Object.keys(translations).length === 0) {
     if (verbose) {
       console.log(`  No translations found in: ${filePath}`);
     }
     return { success: true, stringsInjected: 0 };
+  }
+
+  // VERSION VALIDATION: Check if extraction was done from same equations.json version
+  const equationsVersion = equationsData.version;
+  if (sourceVersion && equationsVersion && sourceVersion !== equationsVersion) {
+    const warning = `VERSION MISMATCH: Extraction was done from equations.json version ${sourceVersion}, but current version is ${equationsVersion}. Equation IDs may not match! Re-run extract-equation-strings.js to update.`;
+    console.error(`\n⚠️  ${warning}\n`);
+    return {
+      success: false,
+      error: warning,
+      versionMismatch: true,
+      extractionVersion: sourceVersion,
+      currentVersion: equationsVersion,
+    };
+  }
+
+  if (verbose && sourceVersion) {
+    console.log(`  Version check passed: ${sourceVersion}`);
   }
 
   // Inject translations into equations

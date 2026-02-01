@@ -129,9 +129,9 @@ function parseArgs(args) {
     else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
     else if (arg === '--example-start' && args[i + 1]) {
       result.exampleStart = parseInt(args[++i], 10);
-    } else if (arg === '--figure-start' && args[i + 1])
+    } else if (arg === '--figure-start' && args[i + 1]) {
       result.figureStart = parseInt(args[++i], 10);
-    else if (arg === '--table-start' && args[i + 1]) result.tableStart = parseInt(args[++i], 10);
+    } else if (arg === '--table-start' && args[i + 1]) result.tableStart = parseInt(args[++i], 10);
     else if (arg === '--output-counters') result.outputCounters = true;
     else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
@@ -1940,6 +1940,7 @@ async function main() {
         .replace(/\.md$/, '');
       const equationsPath = args.equationsOutput || `${basePath}-equations.json`;
       const equationsData = {
+        version: new Date().toISOString(), // Versioning for equation string extraction sync
         module: data.moduleId,
         section: data.section,
         chapter: data.chapter,
