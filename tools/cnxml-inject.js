@@ -517,6 +517,9 @@ function buildExample(element, getSeg, equations, originalCnxml) {
         }
       }
 
+      // Strip nested elements that are handled separately
+      exampleCnxml = stripNestedElements(exampleCnxml, ['figure', 'table', 'equation']);
+
       return exampleCnxml;
     }
   }
@@ -576,6 +579,9 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
         }
       }
 
+      // Strip nested elements that are handled separately
+      exerciseCnxml = stripNestedElements(exerciseCnxml, ['figure', 'table', 'equation']);
+
       return exerciseCnxml;
     }
   }
@@ -615,6 +621,16 @@ function buildNote(element, getSeg, equations, originalCnxml) {
           }
         }
       }
+
+      // Strip nested elements that are handled separately (figures, tables, equations)
+      // These are extracted as standalone elements in the structure
+      noteCnxml = stripNestedElements(noteCnxml, [
+        'figure',
+        'table',
+        'equation',
+        'example',
+        'exercise',
+      ]);
 
       return noteCnxml;
     }
@@ -711,6 +727,59 @@ function escapeXml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&apos;');
+}
+
+/**
+ * Strip nested elements from CNXML content.
+ * Used to remove figures, tables, etc. that are handled separately.
+ * @param {string} cnxml - CNXML content
+ * @param {string[]} tagNames - Array of tag names to strip
+ * @returns {string} CNXML with nested elements removed
+ */
+function stripNestedElements(cnxml, tagNames) {
+  let result = cnxml;
+
+  for (const tagName of tagNames) {
+    // Match opening and closing tags with proper nesting
+    const openTag = new RegExp(`<${tagName}(\\s[^>]*)?>`, 'g');
+    const closeTag = `</${tagName}>`;
+
+    let match;
+    while ((match = openTag.exec(result)) !== null) {
+      const startIdx = match.index;
+      let depth = 1;
+      let idx = startIdx + match[0].length;
+
+      // Find matching close tag
+      while (depth > 0 && idx < result.length) {
+        const nextOpen = result.indexOf(`<${tagName}`, idx);
+        const nextClose = result.indexOf(closeTag, idx);
+
+        if (nextClose === -1) break;
+
+        if (nextOpen !== -1 && nextOpen < nextClose) {
+          depth++;
+          idx = nextOpen + tagName.length + 1;
+        } else {
+          depth--;
+          if (depth === 0) {
+            const endIdx = nextClose + closeTag.length;
+            // Remove the element and leave a comment placeholder
+            result =
+              result.substring(0, startIdx) +
+              `<!-- ${tagName} handled separately -->` +
+              result.substring(endIdx);
+            // Reset regex since we modified the string
+            openTag.lastIndex = 0;
+            break;
+          }
+          idx = nextClose + closeTag.length;
+        }
+      }
+    }
+  }
+
+  return result;
 }
 
 // =====================================================================

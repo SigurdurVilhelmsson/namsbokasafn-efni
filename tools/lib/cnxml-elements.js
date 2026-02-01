@@ -5,7 +5,27 @@
  * Each handler converts a CNXML element to semantic HTML.
  */
 
+import katex from 'katex';
 import { convertMathMLToLatex } from './mathml-to-latex.js';
+
+/**
+ * Render LaTeX to KaTeX HTML (inline mode).
+ * @param {string} latex - LaTeX string
+ * @returns {string} KaTeX HTML or error fallback
+ */
+function renderInlineLatex(latex) {
+  try {
+    return katex.renderToString(latex, {
+      displayMode: false,
+      throwOnError: false,
+      strict: false,
+      trust: true,
+    });
+  } catch (err) {
+    // Return placeholder with original LaTeX for debugging
+    return `<span class="katex-error" data-latex="${escapeAttr(latex)}">[Math]</span>`;
+  }
+}
 
 /**
  * Create an HTML element string with attributes.
@@ -351,10 +371,11 @@ export function processInlineContent(content, context) {
 
   let result = content;
 
-  // Convert inline MathML to KaTeX placeholders
+  // Convert inline MathML to pre-rendered KaTeX (keep data-latex for copy)
   result = result.replace(/<m:math[^>]*>[\s\S]*?<\/m:math>/g, (mathml) => {
     const latex = convertMathMLToLatex(mathml);
-    return `<span class="katex" data-latex="${escapeAttr(latex)}"></span>`;
+    const katexHtml = renderInlineLatex(latex);
+    return `<span class="katex" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
   });
 
   // Convert emphasis
@@ -427,7 +448,7 @@ export function processInlineContent(content, context) {
  */
 function normalizeSrc(src, _context) {
   // Remove ../../media/ prefix and map to images/
-  return src.replace(/^\.\.\/\.\.\/media\//, 'images/');
+  return src.replace(/^\.\.\/\.\.\/media\//, 'images/media/');
 }
 
 /**

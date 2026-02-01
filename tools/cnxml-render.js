@@ -25,6 +25,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import katex from 'katex';
 import {
   parseCnxmlDocument,
   extractNestedElements,
@@ -34,6 +35,27 @@ import {
 } from './lib/cnxml-parser.js';
 import { escapeAttr, escapeHtml, processInlineContent } from './lib/cnxml-elements.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
+
+/**
+ * Render LaTeX to KaTeX HTML.
+ * @param {string} latex - LaTeX string
+ * @param {boolean} displayMode - True for block equations, false for inline
+ * @returns {string} KaTeX HTML or error fallback
+ */
+function renderLatex(latex, displayMode = true) {
+  try {
+    return katex.renderToString(latex, {
+      displayMode,
+      throwOnError: false,
+      strict: false,
+      trust: true,
+    });
+  } catch (err) {
+    console.error(`KaTeX error for: ${latex.substring(0, 50)}...`, err.message);
+    // Return a placeholder with the original LaTeX for debugging
+    return `<span class="katex-error" data-latex="${escapeAttr(latex)}">[Math Error]</span>`;
+  }
+}
 
 // =====================================================================
 // CONFIGURATION
@@ -406,7 +428,12 @@ function renderFigure(figure, context) {
     if (imageMatch) {
       const imageAttrs = parseAttributes(imageMatch[1]);
       const src = imageAttrs.src || '';
-      const normalizedSrc = src.replace(/^\.\.\/\.\.\/media\//, 'images/');
+      // Use absolute path for vefur content serving
+      const chapterStr = String(context.chapter).padStart(2, '0');
+      const normalizedSrc = src.replace(
+        /^\.\.\/\.\.\/media\//,
+        `/content/efnafraedi/chapters/${chapterStr}/images/media/`
+      );
       const alt = mediaAttrs.alt || '';
 
       lines.push(
@@ -682,7 +709,9 @@ function renderEquation(eq, context) {
   // Track equation
   context.equations.push({ id, latex });
 
-  const eqContent = `<span class="katex-display" data-latex="${escapeAttr(latex)}"></span>`;
+  // Pre-render KaTeX HTML (keep data-latex for copy functionality)
+  const katexHtml = renderLatex(latex, true);
+  const eqContent = `<span class="katex-display" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
   const numberSpan = isUnnumbered ? '' : '<span class="equation-number"></span>';
 
   return `<div${id ? ` id="${escapeAttr(id)}"` : ''} class="equation${isUnnumbered ? ' unnumbered' : ''}">${eqContent}${numberSpan}</div>`;

@@ -46,8 +46,6 @@ notað gríðarlegt magn af orku til að framleiða hráefni (eins og járn og
 ál). Orka er síðan notuð til að framleiða úr þessum hráefnum nytsamlegar
 vörur, svo sem bíla, skýjakljúfa og brýr.
 
-{#CNX_Chem_05_01_Thermochem}
-
 *Mynd 5.2: Orkan sem fylgir efnabreytingum er mikilvæg fyrir daglegt líf
 okkar: (a) Ostborgari í hádeginu veitir þér þá orku sem þú þarft til að
 komast í gegnum restina af deginum; (b) bruni bensíns veitir þá orku sem
@@ -56,7 +54,7 @@ koks, unnin mynd af kolum, veitir þá orku sem þarf til að breyta
 járngrýti í járn, sem er nauðsynlegt til að framleiða margar af þeim
 vörum sem við notum daglega. (heimild a: breyting á verki eftir „Pink
 Sherbet Photography“/Flickr; heimild b: breyting á verki eftir Jeffery
-Turner)*{#CNX_Chem_05_01_Thermochem}
+Turner)*
 
 Yfir 90% af orkunni sem við notum kemur upphaflega frá sólinni. Á
 hverjum degi veitir sólin jörðinni næstum 10.000 sinnum meiri orku en
@@ -73,7 +71,7 @@ plöntu- og dýraleifar.
 
 Þessi kafli mun kynna grunnhugmyndir mikilvægs sviðs vísinda sem fjallar
 um magn varma sem frásogast eða losnar við efna- og eðlisfræðilegar
-breytingar – svið sem kallast **varmefnafræði**{#term-00001}.
+breytingar – svið sem kallast **varmefnafræði**.
 Hugtökin sem kynnt eru í þessum kafla eru víða notuð á nánast öllum
 vísinda- og tæknisviðum. Matvælafræðingar nota þau til að ákvarða
 orkuinnihald matvæla. Líffræðingar rannsaka orkubúskap lifandi vera, svo
@@ -90,16 +88,16 @@ vinna að hvers kyns vísindum.
 
 ## Orka
 
-**Orku**{#term-00002} má skilgreina sem getu til að veita varma eða
-vinna vinnu. Ein tegund **vinnu (*w*)**{id="term-00003"} er ferlið að
+**Orku** má skilgreina sem getu til að veita varma eða
+vinna vinnu. Ein tegund **vinnu (*w*)** er ferlið að
 láta efni hreyfast gegn andstæðum krafti. Til dæmis vinnum við vinnu
 þegar við blásum í hjólbarða – við hreyfum efni (loftið í pumpunni) gegn
 andstæðum krafti loftsins sem þegar er í hjólbarðanum.
 
 Líkt og efni kemur orka fyrir í mismunandi tegundum. Eitt flokkunarkerfi
-skiptir orku í tvær tegundir: **stöðuorku**{#term-00004}, orku sem
+skiptir orku í tvær tegundir: **stöðuorku**, orku sem
 hlutur hefur vegna hlutfallslegrar stöðu sinnar, samsetningar eða
-ástands, og **hreyfiorku**{#term-00005}, orku sem hlutur býr yfir
+ástands, og **hreyfiorku**, orku sem hlutur býr yfir
 vegna hreyfingar sinnar. Vatn efst í fossi eða stíflu hefur stöðuorku
 vegna stöðu sinnar; þegar það rennur niður í gegnum rafala hefur það
 hreyfiorku sem hægt er að nota til að vinna vinnu og framleiða rafmagn í
@@ -135,9 +133,9 @@ umtalsverð. Þetta verður skoðað nánar í síðari kafla um kjarnaefnafræ�
 
 ## Varmaorka, hitastig og varmi
 
-**Varmaorka**{#term-00006} er hreyfiorka sem tengist
+**Varmaorka** er hreyfiorka sem tengist
 tilviljunarkenndri hreyfingu atóma og sameinda.
-**Hitastig**{#term-00007} er magnbundinn mælikvarði á „hita“ eða
+**Hitastig** er magnbundinn mælikvarði á „hita“ eða
 „kulda“. Þegar atóm og sameindir í hlut hreyfast eða titra hratt hafa
 þau hærri meðalhreyfiorku (KE) og við segjum að hluturinn sé „heitur“.
 Þegar atóm og sameindir hreyfast hægt hafa þau lægri meðalhreyfiorku og
@@ -166,7 +164,7 @@ Eftirfarandi
 kleift að sjá áhrif þess að hita og kæla uppvafinn tvímálmsstrimil.
 :::
 
-**Varmi (*q*)**{id="term-00008"} er flutningur varmaorku milli tveggja
+**Varmi (*q*)** er flutningur varmaorku milli tveggja
 hluta með mismunandi hitastig. Varmaflæði (óþarft hugtak, en algengt)
 eykur varmaorku annars hlutans og minnkar varmaorku hins. Gerum ráð
 fyrir að við höfum í upphafi efni með hátt hitastig (og mikla varmaorku)
@@ -188,23 +186,23 @@ Smelltu á „Orkutákn“ til að sjá orkuflutninginn myndrænt.
 
 Efni sem gangast undir efnahvörf og eðlisfræðilegar breytingar geta
 losað eða tekið upp varma. Breyting sem losar varma er kölluð **útvermið
-ferli**{#term-00009}. Til dæmis er brunahvarfið sem á sér stað við
+ferli**. Til dæmis er brunahvarfið sem á sér stað við
 notkun súrefnis-asetýlen logsuðutækis útvermið ferli – þetta ferli losar
 einnig orku í formi ljóss eins og sést á loga tækisins (mynd 5.7). Hvarf
 eða breyting sem tekur upp varma er **innvermið
-ferli**{#term-00010}. Kaldur bakstur sem notaður er til að meðhöndla
+ferli**. Kaldur bakstur sem notaður er til að meðhöndla
 tognun á vöðvum er dæmi um innvermið ferli. Þegar efnin í kalda
 bakstrinum (vatn og salt eins og ammóníumnítrat) eru sett saman tekur
 ferlið sem myndast upp varma, sem leiðir til kuldatilfinningar.
 
 Sögulega var orka mæld í einingum sem kallast **kaloríur
-(cal)**{#term-00011}. Kaloría er það magn orku sem þarf til að hita
+(cal)**. Kaloría er það magn orku sem þarf til að hita
 eitt gramm af vatni um 1 gráðu á Celsíus (1 kelvín). Þetta magn fer þó
 eftir loftþrýstingi og upphafshitastigi vatnsins. Auðveld mæling á
 orkubreytingum í kaloríum hefur þýtt að kalorían er enn oft notuð.
 Kalorían (með stóru K), eða stóra kalorían, sem almennt er notuð til að
 magngreina orkuinnihald matvæla, er kílókaloría. SI-eining varma, vinnu
-og orku er júl. **Júl (J)**{#term-00012} er skilgreint sem það magn
+og orku er júl. **Júl (J)** er skilgreint sem það magn
 orku sem notað er þegar kraftur upp á 1 njúton færir hlut um 1 metra.
 Það er nefnt til heiðurs enska eðlisfræðingnum James Prescott Joule.
 Eitt júl jafngildir 1 kg m^2^/s^2^, sem einnig er kallað 1 njútonmetri.
@@ -212,12 +210,12 @@ Kílójúl (kJ) er 1000 júl. Til að staðla skilgreiningu þess hefur 1
 kaloría verið sett sem jafngildi 4,184 júla.
 
 Við kynnum nú tvö hugtök sem eru gagnleg til að lýsa varmaflæði og
-hitastigsbreytingum. **Varmarýmd (*C*)**{id="term-00013"} efnis er það
+hitastigsbreytingum. **Varmarýmd (*C*)** efnis er það
 magn varma (*q*) sem það tekur upp eða losar þegar það verður fyrir
 hitastigsbreytingu (Δ*T*) um 1 gráðu á Celsíus (eða samsvarandi, 1
 kelvín):
 
-$${C=\,\frac{q}{{\text{Δ}T}}}$${#fs-idp12406672}
+$${C=\,\frac{q}{{\text{Δ}T}}}$$
 
 Varmarýmd ræðst bæði af gerð og magni efnis sem tekur upp eða losar
 varma. Það er því víðtækur eiginleiki – gildi hans er í réttu hlutfalli
@@ -231,20 +229,20 @@ pönnunnar. Meiri massi þýðir að fleiri atóm eru í stærri pönnunni, svo
 litlu steypujárnspönnunnar er fundin með því að sjá að það þarf 18.140 J
 af orku til að hækka hitastig pönnunnar um 50,0 °C:
 
-$${{C}_{{\text{lítil panna}}}=\,\frac{{\text{18.140 J}}}{{50.0\,\text{°C}}}=363\,\text{J/°C}}$${#fs-idm70951696}
+$${C}_{{\text{lítil panna}}}=\,\frac{{\text{18.140 J}}}{{50.0\,\text{°C}}}=363\,\text{J/°C}$$
 
 Stærri steypujárnspannan, þótt hún sé úr sama efni, þarf 90.700 J af
 orku til að hækka hitastig sitt um 50,0 °C. Stærri pannan hefur
 (hlutfallslega) meiri varmarýmd vegna þess að meira magn efnis krefst
 (hlutfallslega) meiri orku til að gefa sömu hitastigsbreytingu:
 
-$${{C}_{{\text{stór panna}}}=\,\frac{{\text{90.700 J}}}{{50.0\,\text{°C}}}\,=1814\,\text{J/°C}}$${#fs-idp13532880}
+$${C}_{{\text{stór panna}}}=\,\frac{{\text{90.700 J}}}{{50.0\,\text{°C}}}\,=1814\,\text{J/°C}$$
 
-**Eðlisvarmi (*c*)**{id="term-00014"} efnis, oft kallaður „eðlisvarmi“
+**Eðlisvarmi (*c*)** efnis, oft kallaður „eðlisvarmi“
 þess, er það magn varma sem þarf til að hækka hitastig 1 gramms af efni
 um 1 gráðu á Celsíus (eða 1 kelvín):
 
-$${c=\,\frac{q}{{\text{m}\text{Δ}\text{T}}}}$${#fs-idm28369232}
+$${c=\,\frac{q}{{\text{m}\text{Δ}\text{T}}}}$$
 
 Eðlisvarmi fer aðeins eftir tegund efnisins sem tekur við eða losar
 varma. Það er aðgreinanlegur eiginleiki – tegundin, en ekki magn
@@ -252,12 +250,12 @@ efnisins, er það eina sem skiptir máli. Til dæmis hefur litla
 steypujárnspannan massa upp á 808 g. Eðlisvarmi járns (efnið sem notað
 er til að búa til pönnuna) er því:
 
-$${{c}_{{\text{járn}}}=\,\frac{{\text{18.140 J}}}{{(\text{808 g})(50.0\,\text{°C})}}\,=\text{0,449 J/g °C}}$${#fs-idm67226544}
+$${c}_{{\text{járn}}}=\,\frac{{\text{18.140 J}}}{{(\text{808 g})(50.0\,\text{°C})}}\,=\text{0,449 J/g °C}$$
 
 Stóra pannan hefur massa upp á 4040 g. Með því að nota gögnin fyrir
 þessa pönnu getum við einnig reiknað út eðlisvarma járns:
 
-$${{c}_{{\text{járn}}}=\,\frac{{\text{90.700 J}}}{{(\text{4040 g})(50.0\,\text{°C})}}\,=\text{0,449 J/g °C}}$${#fs-idm54139424}
+$${c}_{{\text{járn}}}=\,\frac{{\text{90.700 J}}}{{(\text{4040 g})(50.0\,\text{°C})}}\,=\text{0,449 J/g °C}$$
 
 Þrátt fyrir að stóra pannan sé massameiri en litla pannan, þar sem báðar
 eru úr sama efni, gefa þær báðar sama gildi fyrir eðlisvarma (fyrir
@@ -295,13 +293,12 @@ töflu 5.1.
 | blý | Pb(*s*) | 0.130 |
 | gull | Au(*s*) | 0.129 |
 | kísill | Si(*s*) | 0.712 |
-{#fs-idm68801008}
 
 Ef við þekkjum massa efnis og eðlisvarma þess getum við ákvarðað magn
 varma, *q*, sem fer inn í eða út úr efninu með því að mæla
 hitastigsbreytinguna fyrir og eftir að varminn er fenginn eða tapaður:
 
-$q=(\text{eðlisvarmi})\,\times \,(\text{massi efnis})\,\times \,(\text{hitastigsbreyting})q=c\,\times \,m\,\times \,\text{Δ}\text{lok}=c\,\times \,m\,\times \,({T}_{{\text{upphafs}}}-{T}_{{\text{initial}}})${#fs-idp8176432}
+$q=(\text{eðlisvarmi})\,\times \,(\text{massi efnis})\,\times \,(\text{hitastigsbreyting})q=c\,\times \,m\,\times \,\text{Δ}\text{lok}=c\,\times \,m\,\times \,({T}_{{\text{upphafs}}}-{T}_{{\text{initial}}})$
 
 Í þessari jöfnu er *c* eðlisvarmi efnisins, *m* er massi þess og Δ*T*
 (sem er lesið „delta T“) er hitastigsbreytingin, *T*~lok~ − *T*~upphaf~.
@@ -311,7 +308,7 @@ gildi *q* er jákvætt. Ef efni tapar varmaorku lækkar hitastig þess,
 lokahitastigið er lægra en upphafshitastigið, *T*~lok~ − *T*~upphaf~
 hefur neikvætt gildi og gildi *q* er neikvætt.
 
-:::example{id="fs-idp1783792"}
+:::example
 
 ### Dæmi 5.1: Að mæla varma
 
@@ -334,9 +331,9 @@ að hita 1 g af vatni um 1 °C, þurfum við *64 sinnum meira* til að hita
 
 Þetta má draga saman með jöfnunni:
 
-${q=c\,\times \,m\,\times \,\text{Δ}T=c\,\times \,m\,\times \,({T}_{{\text{lok}}}-{T}_{{\text{upphafs}}})}${#fs-idp82666784}
+${q=c\,\times \,m\,\times \,\text{Δ}T=c\,\times \,m\,\times \,({T}_{{\text{lok}}}-{T}_{{\text{upphafs}}})}$
 
-$=(4.184\,\text{J/}\text{°C}\,\text{°C})\,\times \,(8.0\,\text{J/}\,{10}^{2}\,\text{210.000 J})\,\times \,(85-21)\,\text{kJ}=(4.184\,\text{J/}\text{g}\,\text{°}\text{C})\,\times \,(8.0\,\text{x}\,{10}^{2}\,\text{g})\,\times \,(64)\,\text{°}\text{C}=\text{210,000 J}\,(=2.1\,\text{×}\,{10}^{2}\text{kJ})${#fs-idp59324528}
+$=(4.184\,\text{J/}\text{°C}\,\text{°C})\,\times \,(8.0\,\text{J/}\,{10}^{2}\,\text{210.000 J})\,\times \,(85-21)\,\text{kJ}=(4.184\,\text{J/}\text{g}\,\text{°}\text{C})\,\times \,(8.0\,\text{x}\,{10}^{2}\,\text{g})\,\times \,(64)\,\text{°}\text{C}=\text{210,000 J}\,(=2.1\,\text{×}\,{10}^{2}\text{kJ})$
 
 Vegna þess að hitastigið jókst, drakk vatnið í sig varma og *q* er
 jákvætt.
@@ -361,7 +358,7 @@ hitastigsbreytingar er hægt að nota til að ákvarða hvaða stærð sem er af
 þessum (ekki bara varma) ef hinar þrjár eru þekktar eða hægt er að leiða
 þær út.
 
-:::example{id="fs-idm41581920"}
+:::example
 
 ### Dæmi 5.2: Ákvörðun annarra stærða
 
@@ -375,15 +372,15 @@ er).
 Þar sem massi, varmi og hitastigsbreyting eru þekkt fyrir þennan málm
 getum við ákvarðað eðlisvarma hans með því að nota sambandið:
 
-${q=c\,\times \,m\,\times \,\text{Δ}\text{lok}=c\,\times \,m\,\times \,({T}_{{\text{upphafs}}}-{T}_{{\text{initial}}})}${#fs-idp21155408}
+${q=c\,\times \,m\,\times \,\text{Δ}\text{lok}=c\,\times \,m\,\times \,({T}_{{\text{upphafs}}}-{T}_{{\text{initial}}})}$
 
 Setjum inn þekktu gildin:
 
-${\text{6640 J}=c\,\times \,(\text{348 g})\,\times \,(43.6-22.4)\,\text{°C}}${#fs-idp25098320}
+${\text{6640 J}=c\,\times \,(\text{348 g})\,\times \,(43.6-22.4)\,\text{°C}}$
 
 Leysum:
 
-$${c=\,\frac{{\text{6640 J}}}{{(\text{348 g})\,\times \,(21.2\,\text{°C})}}\,=0.900\,\text{J/g °C}}$${#fs-idm38894688}
+$${c=\,\frac{{\text{6640 J}}}{{(\text{348 g})\,\times \,(21.2\,\text{°C})}}\,=0.900\,\text{J/g °C}}$$
 
 Þegar þetta gildi er borið saman við gildin í töflu 5.1, samsvarar það
 eðlisvarma áls, sem bendir til þess að óþekkti málmurinn gæti verið ál.
@@ -430,11 +427,9 @@ keyra hverflana í 6 klukkustundir. Bráðin sölt eru notuð vegna þess að
 þau hafa ýmsa hagstæða eiginleika, þar á meðal mikla varmarýmd og
 varmaleiðni.
 
-{#CNX_Chem_05_01_SolTherm1}
-
 *Mynd 5.3: Þetta varmaorkuver notar íhvolfa spegla til að safna saman
 sólarljósi. (heimild a: breytt útgáfa af verki Bureau of Land
-Management)*{#CNX_Chem_05_01_SolTherm1}
+Management)*
 
 Ivanpah-sólarorkuverið, sem er 377 megavött og staðsett í
 Mojave-eyðimörkinni í Kaliforníu, er stærsta varmaorkuver heims (mynd
@@ -444,14 +439,12 @@ rafmagnsframleiðandi hverfla. Það framleiðir næga orku til að sjá
 140.000 heimilum fyrir rafmagni. Vatn er notað sem vinnsluvökvi vegna
 mikillar varmarýmdar og gufunarvarma.
 
-{#CNX_Chem_05_01_SolTherm2}
-
 *Mynd 5.4: (a) Ivanpah-varmaorkuverið notar 170.000 spegla til að beina
 sólarljósi að vatnsfylltum turnum. (b) Það nær yfir 4000 ekrur af
 almenningslandi nálægt Mojave-eyðimörkinni og landamærum Kaliforníu og
 Nevada. (heimild a: breytt útgáfa af verki Craig Dietrich; heimild b:
 breytt útgáfa af verki „USFWS Pacific Southwest
-Region“/Flickr)*{#CNX_Chem_05_01_SolTherm2}
+Region“/Flickr)*
 :::
 
 færa efni). Hreyfiorka (KE) er orka hreyfingar; stöðuorka er orka vegna
@@ -471,16 +464,12 @@ hitastigi efnis eða hlutar. Magn varma sem efni tekur í sig eða losar er
 í beinu hlutfalli við gerð efnisins, massa þess og hitastigsbreytinguna
 sem það verður fyrir.
 
-| :--- |
-{#key-equations-table}
-
 ## Efnafræði – æfingar í lok kafla
 
 Brennandi
 eldspýta og varðeldur geta haft sama hitastig en samt myndir þú ekki
 sitja við brennandi eldspýtu á haustkvöldi til að halda á þér hita.
 Hvers vegna ekki?
-:::
 
 :::answer
 Hitastig 1 gramms af brennandi viði er um
@@ -499,11 +488,8 @@ bifreiðar
 
 .
 
-:::
-
 Útskýrðu muninn
 á varmarýmd og eðlisvarma efnis.
-:::
 
 :::answer
 Varmarýmd vísar til þess varma sem þarf til
@@ -518,7 +504,6 @@ varmarýmdina, í joulum og í kaloríum á gráðu, fyrir eftirfarandi:
 \(a\) 28,4 g af vatni
 
 \(b\) 1,00 oz af blýi
-:::
 
 Reiknaðu
 varmarýmdina, í joulum og í kaloríum á gráðu, fyrir eftirfarandi:
@@ -526,7 +511,6 @@ varmarýmdina, í joulum og í kaloríum á gráðu, fyrir eftirfarandi:
 \(a\) 45,8 g af niturgasi
 
 \(b\) 1,00 pund af álmálmi
-:::
 
 :::answer
 (a) 47,6 J/°C; 11,38 cal °C⁻¹; (b) 407 J/°C;
@@ -537,12 +521,10 @@ Hversu miklum
 varma, í joulum og í kaloríum, þarf að bæta við 75,0 g járnblokk með
 eðlisvarma 0,449 J/g °C til að hækka hitastig hennar úr 25 °C í
 bræðslumark sitt, 1535 °C?
-:::
 
 Hversu mikinn
 varma, í joulum og í kaloríum, þarf til að hita 28,4 g (1 oz) ísmola úr
 −23,0 °C í −1,0 °C?
-:::
 
 :::answer
 1310 J; 313 cal
@@ -550,12 +532,10 @@ varma, í joulum og í kaloríum, þarf til að hita 28,4 g (1 oz) ísmola úr
 
 Hversu mikið
 myndi hitastig 275 g af vatni hækka ef 36,5 kJ af varma væri bætt við?
-:::
 
 Ef 14,5 kJ af
 varma væri bætt við 485 g af fljótandi vatni, hversu mikið myndi
 hitastig þess hækka?
-:::
 
 :::answer
 7,15 °C
@@ -568,7 +548,6 @@ Bútur af
 \(a\) Hver er eðlisvarmi efnisins?
 
 \(b\) Ef það er eitt af efnunum í töflu 5.1, hvert er það líklega?
-:::
 
 Bútur af
 óþekktu föstu efni vegur 437,2 g og þarf 8460 J til að hækka hitastig
@@ -577,7 +556,6 @@ sitt úr 19,3 °C í 68,9 °C.
 \(a\) Hver er eðlisvarmi efnisins?
 
 \(b\) Ef það er eitt af efnunum í töflu 5.1, hvert er það líklega?
-:::
 
 :::answer
 (a) 0,390 J/g °C; (b) Kopar er líklegur
@@ -595,7 +573,6 @@ kandídat.
 \(c\) Hversu mikinn varma þarf til að hita þennan ketil úr 23,0 °C í
 99,0 °C ef hann inniheldur 1,25 L af vatni (eðlismassi 0,997 g/mL og
 eðlisvarmi 4,184 J/g °C)?
-:::
 
 Flestum finnst
 vatnsrúm óþægileg nema hitastig vatnsins sé haldið við um 85 °F. Nema
@@ -606,7 +583,6 @@ kílóvattstund (kWh) = 3,6 ${\times }$ 10^6^ J, og gerðu ráð fyrir að
 eðlismassi vatns sé 1,0 g/mL (óháð hitastigi). Hvaða aðrar forsendur
 gerðir þú? Hvernig höfðu þær áhrif á útreiknaða niðurstöðu þína (þ.e..,
 var líklegt að þær myndu gefa „jákvæðar“ eða „neikvæðar“ skekkjur)?
-:::
 
 :::answer
 Við gefum okkur að eðlismassi vatns sé 1,0
