@@ -455,6 +455,14 @@ function extractContent(cnxml, options = {}) {
   let equationCounter = 0;
   let exerciseCounter = 0;  // Track exercise numbers for proper formatting
 
+  // Element registry for cross-reference resolution
+  // Maps element IDs to their type and number (e.g., { type: 'Figure', number: '5.1' })
+  const elementRegistry = {};
+
+  // Local wrapper for processInlineContent that captures the element registry
+  // This allows cross-references to be resolved to descriptive links like [Figure 5.1](#id)
+  const processInline = (content) => processInlineContent(content, elementRegistry);
+
   const titleMatch = cnxml.match(/<title>([^<]+)<\/title>/);
   const moduleIdMatch = cnxml.match(/<md:content-id>([^<]+)<\/md:content-id>/);
   const documentTitle = titleMatch ? titleMatch[1].trim() : 'Untitled';
@@ -510,6 +518,51 @@ function extractContent(cnxml, options = {}) {
 
   // The equation wrappers will be stripped when processing sections
   // We keep them for now so equations are found during element processing
+
+  // =====================================================================
+  // PRE-SCAN PHASE: Build element registry BEFORE processing content
+  // This enables forward references (e.g., text referencing a figure below)
+  // =====================================================================
+
+  // Count figures, examples, tables to generate numbers
+  // Initialize from options to support running counters across modules
+  let preFigureCounter = options.figureStart || 0;
+  let preExampleCounter = options.exampleStart || 0;
+  let preTableCounter = options.tableStart || 0;
+
+  // Pre-scan all figures and register them
+  const preFigurePattern = /<figure\s+id="([^"]*)"[^>]*>/g;
+  let preFigureMatch;
+  while ((preFigureMatch = preFigurePattern.exec(content)) !== null) {
+    preFigureCounter++;
+    const figureId = preFigureMatch[1];
+    const figureNumber = chapter ? `${chapter}.${preFigureCounter}` : String(preFigureCounter);
+    elementRegistry[figureId] = { type: 'Figure', number: figureNumber };
+  }
+
+  // Pre-scan all examples and register them
+  const preExamplePattern = /<example\s+id="([^"]*)"[^>]*>/g;
+  let preExampleMatch;
+  while ((preExampleMatch = preExamplePattern.exec(content)) !== null) {
+    preExampleCounter++;
+    const exampleId = preExampleMatch[1];
+    const exampleNumber = chapter ? `${chapter}.${preExampleCounter}` : String(preExampleCounter);
+    elementRegistry[exampleId] = { type: 'Example', number: exampleNumber };
+  }
+
+  // Pre-scan all tables and register them
+  const preTablePattern = /<table\s+id="([^"]*)"[^>]*>/g;
+  let preTableMatch;
+  while ((preTableMatch = preTablePattern.exec(content)) !== null) {
+    preTableCounter++;
+    const tableId = preTableMatch[1];
+    const tableNumber = chapter ? `${chapter}.${preTableCounter}` : String(preTableCounter);
+    elementRegistry[tableId] = { type: 'Table', number: tableNumber };
+  }
+
+  // =====================================================================
+  // BUILD MARKDOWN
+  // =====================================================================
 
   // Build markdown
   const lines = [];
@@ -654,14 +707,14 @@ function extractContent(cnxml, options = {}) {
     // Process elements in document order
     for (const elem of topLevelElements) {
       if (elem.type === 'para') {
-        const paraText = processInlineContent(elem.content);
+        const paraText = processInline(elem.content);
         if (paraText.trim()) {
           lines.push(paraText);
           lines.push('');
         }
       } else if (elem.type === 'equation') {
         // Equations already have MathML replaced with [[EQ:n]] placeholders
-        const eqText = processInlineContent(elem.content);
+        const eqText = processInline(elem.content);
         if (eqText.trim()) {
           lines.push(eqText);
           lines.push('');
@@ -712,7 +765,7 @@ function extractContent(cnxml, options = {}) {
         }
 
         if (captionMatch) {
-          captionText = processInlineContent(captionMatch[1]);
+          captionText = processInline(captionMatch[1]);
           // Use numbered format with MT-safe ID: *Figure X.X: caption*{id="..."}
           if (figureId) {
             lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{id="' + figureId + '"}');
@@ -733,9 +786,24 @@ function extractContent(cnxml, options = {}) {
         if (figureClass) {
           figures[figureKey].class = figureClass;
         }
+        // Register figure for cross-reference resolution
+        if (figureId) {
+          elementRegistry[figureId] = { type: 'Figure', number: figureNumber };
+        }
       } else if (elem.type === 'table') {
+        // Extract table ID for registration
+        const tableIdMatch = elem.attrs.match(/id="([^"]*)"/);
+        const tableId = tableIdMatch ? tableIdMatch[1] : null;
+
+        // Increment table counter and register for cross-references
+        tableCounter++;
+        const tableNumber = chapter ? `${chapter}.${tableCounter}` : String(tableCounter);
+        if (tableId) {
+          elementRegistry[tableId] = { type: 'Table', number: tableNumber };
+        }
+
         // Process table (inline, same as section tables)
-        processTable(elem.attrs, elem.content, lines, processInlineContent);
+        processTable(elem.attrs, elem.content, lines, processInline);
       } else if (elem.type === 'note') {
         // Process note - extract class and content
         const classMatch = elem.attrs.match(/class="([^"]*)"/);
@@ -764,7 +832,7 @@ function extractContent(cnxml, options = {}) {
 
         const noteTitleMatch = elem.content.match(/<title>([^<]+)<\/title>/);
         if (noteTitleMatch) {
-          lines.push('### ' + processInlineContent(noteTitleMatch[1]));
+          lines.push('### ' + processInline(noteTitleMatch[1]));
           lines.push('');
         }
 
@@ -772,7 +840,7 @@ function extractContent(cnxml, options = {}) {
         const noteParaPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
         let noteParaMatch;
         while ((noteParaMatch = noteParaPattern.exec(elem.content)) !== null) {
-          const paraText = processInlineContent(noteParaMatch[1]);
+          const paraText = processInline(noteParaMatch[1]);
           if (paraText.trim()) {
             lines.push(paraText);
             lines.push('');
@@ -806,6 +874,11 @@ function extractContent(cnxml, options = {}) {
       const exampleTitle = exampleTitleMatch ? exampleTitleMatch[1] : null;
       const exampleNumber = chapter ? `${chapter}.${exampleCounter}` : String(exampleCounter);
 
+      // Register example for cross-reference resolution
+      if (example.id) {
+        elementRegistry[example.id] = { type: 'Example', number: exampleNumber };
+      }
+
       if (example.id) {
         lines.push(`:::example{id="${example.id}"}`);
       } else {
@@ -813,7 +886,7 @@ function extractContent(cnxml, options = {}) {
       }
 
       if (exampleTitle) {
-        lines.push('### Example ' + exampleNumber + ': ' + processInlineContent(exampleTitle));
+        lines.push('### Example ' + exampleNumber + ': ' + processInline(exampleTitle));
         lines.push('');
       } else {
         lines.push('### Example ' + exampleNumber);
@@ -832,19 +905,19 @@ function extractContent(cnxml, options = {}) {
           const innerTitle = innerTitleMatch[1];
           elementContent = elementContent.replace(/<title>[^<]*<\/title>/g, '');
           if (innerTitle !== exampleTitle) {
-            lines.push('**' + processInlineContent(innerTitle) + '**');
+            lines.push('**' + processInline(innerTitle) + '**');
             lines.push('');
           }
         }
 
         if (elementType === 'para') {
-          const paraText = processInlineContent(elementContent);
+          const paraText = processInline(elementContent);
           if (paraText.trim()) {
             lines.push(paraText);
             lines.push('');
           }
         } else if (elementType === 'equation') {
-          const eqText = processInlineContent(elementContent);
+          const eqText = processInline(elementContent);
           if (eqText.trim()) {
             lines.push(eqText);
             lines.push('');
@@ -862,7 +935,7 @@ function extractContent(cnxml, options = {}) {
     const sectionTitle = sectionTitleMatch ? sectionTitleMatch[1] : null;
 
     if (sectionTitle) {
-      lines.push('## ' + processInlineContent(sectionTitle));
+      lines.push('## ' + processInline(sectionTitle));
       lines.push('');
     }
 
@@ -978,13 +1051,13 @@ function extractContent(cnxml, options = {}) {
     // Process elements in document order
     for (const elem of elements) {
       if (elem.type === 'para') {
-        const paraText = processInlineContent(elem.content);
+        const paraText = processInline(elem.content);
         if (paraText.trim()) {
           lines.push(paraText);
           lines.push('');
         }
       } else if (elem.type === 'equation') {
-        const eqText = processInlineContent(elem.content);
+        const eqText = processInline(elem.content);
         if (eqText.trim()) {
           lines.push(eqText);
           lines.push('');
@@ -1000,7 +1073,7 @@ function extractContent(cnxml, options = {}) {
         let itemMatch;
         let itemIndex = 0;
         while ((itemMatch = itemPattern.exec(elem.content)) !== null) {
-          const itemText = processInlineContent(itemMatch[1]);
+          const itemText = processInline(itemMatch[1]);
           if (itemText.trim()) {
             itemIndex++;
             const prefix = isOrdered ? getListPrefix(itemIndex, numberStyle) : '-';
@@ -1035,7 +1108,7 @@ function extractContent(cnxml, options = {}) {
 
         lines.push(directive);
         if (noteTitleMatch) {
-          lines.push('### ' + processInlineContent(noteTitleMatch[1]));
+          lines.push('### ' + processInline(noteTitleMatch[1]));
           lines.push('');
         }
 
@@ -1069,13 +1142,13 @@ function extractContent(cnxml, options = {}) {
         // Process each element in document order
         for (const noteElem of noteElements) {
           if (noteElem.type === 'para') {
-            const paraText = processInlineContent(noteElem.content);
+            const paraText = processInline(noteElem.content);
             if (paraText.trim()) {
               lines.push(paraText);
               lines.push('');
             }
           } else if (noteElem.type === 'equation') {
-            const eqText = processInlineContent(noteElem.content);
+            const eqText = processInline(noteElem.content);
             if (eqText.trim()) {
               lines.push(eqText);
               lines.push('');
@@ -1117,7 +1190,7 @@ function extractContent(cnxml, options = {}) {
             }
 
             if (captionMatch) {
-              captionText = processInlineContent(captionMatch[1]);
+              captionText = processInline(captionMatch[1]);
               if (figureId) {
                 lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{id="' + figureId + '"}');
               } else {
@@ -1137,6 +1210,10 @@ function extractContent(cnxml, options = {}) {
             if (figureClass) {
               figures[figureKey].class = figureClass;
             }
+            // Register figure for cross-reference resolution
+            if (figureId) {
+              elementRegistry[figureId] = { type: 'Figure', number: figureNumber };
+            }
           }
         }
         lines.push(':::');
@@ -1152,6 +1229,11 @@ function extractContent(cnxml, options = {}) {
         const idMatch = elem.attrs.match(/id="([^"]*)"/);
         const exampleId = idMatch ? idMatch[1] : null;
 
+        // Register example for cross-reference resolution
+        if (exampleId) {
+          elementRegistry[exampleId] = { type: 'Example', number: exampleNumber };
+        }
+
         // Generate directive with MT-safe ID attribute
         if (exampleId) {
           lines.push(`:::example{id="${exampleId}"}`);
@@ -1159,7 +1241,7 @@ function extractContent(cnxml, options = {}) {
           lines.push(':::example');
         }
         if (exampleTitle) {
-          lines.push('### Example ' + exampleNumber + ': ' + processInlineContent(exampleTitle));
+          lines.push('### Example ' + exampleNumber + ': ' + processInline(exampleTitle));
           lines.push('');
         } else {
           lines.push('### Example ' + exampleNumber);
@@ -1181,19 +1263,19 @@ function extractContent(cnxml, options = {}) {
             // If this is the main example title, skip outputting it again
             // Otherwise output it as a bold label (e.g., "Solution")
             if (innerTitle !== exampleTitle) {
-              lines.push('**' + processInlineContent(innerTitle) + '**');
+              lines.push('**' + processInline(innerTitle) + '**');
               lines.push('');
             }
           }
 
           if (elementType === 'para') {
-            const paraText = processInlineContent(elementContent);
+            const paraText = processInline(elementContent);
             if (paraText.trim()) {
               lines.push(paraText);
               lines.push('');
             }
           } else if (elementType === 'equation') {
-            const eqText = processInlineContent(elementContent);
+            const eqText = processInline(elementContent);
             if (eqText.trim()) {
               lines.push(eqText);
               lines.push('');
@@ -1250,7 +1332,7 @@ function extractContent(cnxml, options = {}) {
         }
 
         if (captionMatch) {
-          captionText = processInlineContent(captionMatch[1]);
+          captionText = processInline(captionMatch[1]);
           // Use MT-safe format {id="..."} instead of {#...}
           if (figureId) {
             lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{id="' + figureId + '"}');
@@ -1270,6 +1352,10 @@ function extractContent(cnxml, options = {}) {
         };
         if (figureClass) {
           figures[figureKey].class = figureClass;
+        }
+        // Register figure for cross-reference resolution
+        if (figureId) {
+          elementRegistry[figureId] = { type: 'Figure', number: figureNumber };
         }
       } else if (elem.type === 'exercise') {
         const idMatch = elem.attrs.match(/id="([^"]*)"/);
@@ -1294,13 +1380,13 @@ function extractContent(cnxml, options = {}) {
             const elementType = problemContentMatch[1];
             const elementContent = problemContentMatch[3];
             if (elementType === 'para') {
-              const paraText = processInlineContent(elementContent);
+              const paraText = processInline(elementContent);
               if (paraText.trim()) {
                 lines.push(paraText);
                 lines.push('');
               }
             } else if (elementType === 'equation') {
-              const eqText = processInlineContent(elementContent);
+              const eqText = processInline(elementContent);
               if (eqText.trim()) {
                 lines.push(eqText);
                 lines.push('');
@@ -1316,13 +1402,13 @@ function extractContent(cnxml, options = {}) {
               const elementType = solutionContentMatch[1];
               const elementContent = solutionContentMatch[3];
               if (elementType === 'para') {
-                const paraText = processInlineContent(elementContent);
+                const paraText = processInline(elementContent);
                 if (paraText.trim()) {
                   lines.push(paraText);
                   lines.push('');
                 }
               } else if (elementType === 'equation') {
-                const eqText = processInlineContent(elementContent);
+                const eqText = processInline(elementContent);
                 if (eqText.trim()) {
                   lines.push(eqText);
                   lines.push('');
@@ -1336,8 +1422,19 @@ function extractContent(cnxml, options = {}) {
           lines.push('');
         }
       } else if (elem.type === 'table') {
+        // Extract table ID for registration
+        const tableIdMatch = elem.attrs.match(/id="([^"]*)"/);
+        const tableId = tableIdMatch ? tableIdMatch[1] : null;
+
+        // Increment table counter and register for cross-references
+        tableCounter++;
+        const tableNumber = chapter ? `${chapter}.${tableCounter}` : String(tableCounter);
+        if (tableId) {
+          elementRegistry[tableId] = { type: 'Table', number: tableNumber };
+        }
+
         // Process table (inline, will be handled below)
-        processTable(elem.attrs, elem.content, lines, processInlineContent);
+        processTable(elem.attrs, elem.content, lines, processInline);
       }
     }
   }
@@ -1351,6 +1448,11 @@ function extractContent(cnxml, options = {}) {
     const exampleTitle = exampleTitleMatch ? exampleTitleMatch[1] : null;
     const exampleNumber = chapter ? `${chapter}.${exampleCounter}` : String(exampleCounter);
 
+    // Register example for cross-reference resolution
+    if (example.id) {
+      elementRegistry[example.id] = { type: 'Example', number: exampleNumber };
+    }
+
     if (example.id) {
       lines.push(`:::example{id="${example.id}"}`);
     } else {
@@ -1358,7 +1460,7 @@ function extractContent(cnxml, options = {}) {
     }
 
     if (exampleTitle) {
-      lines.push('### Example ' + exampleNumber + ': ' + processInlineContent(exampleTitle));
+      lines.push('### Example ' + exampleNumber + ': ' + processInline(exampleTitle));
       lines.push('');
     } else {
       lines.push('### Example ' + exampleNumber);
@@ -1377,19 +1479,19 @@ function extractContent(cnxml, options = {}) {
         const innerTitle = innerTitleMatch[1];
         elementContent = elementContent.replace(/<title>[^<]*<\/title>/g, '');
         if (innerTitle !== exampleTitle) {
-          lines.push('**' + processInlineContent(innerTitle) + '**');
+          lines.push('**' + processInline(innerTitle) + '**');
           lines.push('');
         }
       }
 
       if (elementType === 'para') {
-        const paraText = processInlineContent(elementContent);
+        const paraText = processInline(elementContent);
         if (paraText.trim()) {
           lines.push(paraText);
           lines.push('');
         }
       } else if (elementType === 'equation') {
-        const eqText = processInlineContent(elementContent);
+        const eqText = processInline(elementContent);
         if (eqText.trim()) {
           lines.push(eqText);
           lines.push('');
@@ -1616,7 +1718,7 @@ function getListPrefix(index, style) {
   }
 }
 
-function processInlineContent(content) {
+function processInlineContent(content, elementRegistry = {}) {
   return content
     // Emphasis types: italics, underline (both use *text*), bold (default)
     .replace(/<emphasis[^>]*effect="italics"[^>]*>([^<]*)<\/emphasis>/g, '*$1*')
@@ -1628,12 +1730,19 @@ function processInlineContent(content) {
     // External URL links: <link url="http://...">text</link> → [text]{url="http://..."}
     // Uses {url=""} syntax to survive MT (parentheses get stripped)
     .replace(/<link[^>]*url="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{url="$1"}')
-    // Internal cross-references: <link target-id="CNX_Chem_01_01_SciMethod"/> → [↗]{ref="CNX_Chem_01_01_SciMethod"}
-    // Uses {ref=""} syntax to survive MT
-    .replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, '[↗]{ref="$1"}')
-    .replace(/<link\s+target-id="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{ref="$1"}')
+    // Internal cross-references with target-id: convert to standard markdown anchor links
+    // Self-closing link: <link target-id="CNX_Chem_05_03_Systemqw"/> → [Figure 5.1](#CNX_Chem_05_03_Systemqw)
+    .replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, id) => {
+      const elem = elementRegistry[id];
+      if (elem) {
+        return `[${elem.type} ${elem.number}](#${id})`;
+      }
+      return `[↗](#${id})`; // Fallback for unknown references
+    })
+    // Link with text: <link target-id="id">custom text</link> → [custom text](#id)
+    .replace(/<link\s+target-id="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2](#$1)')
     // Document cross-references: <link document="m68778"/> → [Section]{doc="m68778"}
-    // Uses {doc=""} syntax to survive MT
+    // Uses {doc=""} syntax to survive MT (cross-module refs need special handling)
     .replace(/<link\s+document="([^"]*)"[^>]*\/>/g, '[Section]{doc="$1"}')
     .replace(/<link\s+document="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{doc="$1"}')
     // Fallback for other links
