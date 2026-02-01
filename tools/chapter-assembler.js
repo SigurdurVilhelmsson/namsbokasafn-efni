@@ -985,4 +985,18 @@ if (isMain) {
 }
 
 // Export for programmatic use
-export { assembleChapter, findModuleFiles, parseMarkdown };
+export {
+  assembleChapter,
+  findModuleFiles,
+  parseMarkdown,
+  // Exports for testing
+  parseArgs,
+  extractSummary,
+  extractKeyEquations,
+  extractExercises,
+  extractTerms,
+  stripSections,
+  getModuleOutputFilename,
+  SECTION_TITLES,
+  TRACK_LABELS,
+};

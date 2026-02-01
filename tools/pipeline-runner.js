@@ -1130,7 +1130,16 @@ async function run(options) {
 }
 
 // Export for programmatic use
-export { run, runChapterPipeline, CHEMISTRY_2E_MODULES, assembleChapter };
+export {
+  run,
+  runChapterPipeline,
+  CHEMISTRY_2E_MODULES,
+  assembleChapter,
+  // Exports for testing
+  parseArgs,
+  getChapterModules,
+  getProjectRoot,
+};
 
 // ============================================================================
 // CLI Execution
