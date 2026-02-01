@@ -2,12 +2,9 @@
 title: "Inngangur"
 ---
 
-## titill: „Inngangur“ kafli: „inngangur“ eining: „m68663“ tungumál: „is“ leyfisvefslóð: „https://creativecommons.org/licenses/by/4.0/“
-
 # Inngangur
 
-:::n
-ámsmarkmið
+:::learning-objectives
 
 ## Námsmarkmið
 

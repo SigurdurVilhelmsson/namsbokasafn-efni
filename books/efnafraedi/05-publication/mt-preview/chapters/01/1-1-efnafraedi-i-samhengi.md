@@ -1,10 +1,19 @@
 ---
 title: Efnafræði í samhengi
+section: "1.1"
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T16:45:09.751Z"
-section: "1.1"
+published-at: "2026-02-01T15:10:11.914Z"
+source:
+  original: Chemistry 2e by OpenStax
+  authors: Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0/
+  originalUrl: https://openstax.org/details/books/chemistry-2e
+  translator: Sigurður E. Vilhelmsson
+  translationYear: 2026
+  modifications: Translated to Icelandic, adapted for Icelandic secondary school students
 ---
 
 # Efnafræði í samhengi
@@ -55,7 +64,7 @@ Miðjarðarhafs með gullgerðarmönnum, sem reyndu að breyta „grunnmálmum�
 eins og blýi í „eðalmálma“ eins og gull og búa til lífselixíra til að
 lækna sjúkdóma og lengja líf ([sjá mynd 1.2](#CNX_Chem_01_01_Alchemist)).
 
-![Skissa sýnir 4 manneskjur að hræra í og meðhöndla efni. Efnin eru í ýmsum tunnum og stórum sílindrum. Nokkur ílátanna eru hituð yfir glóð. Stór ofn á rannsóknarstofunni er fullur af glóð. Einnig er stór kista í horninu sem gefur frá sér gufu.](images/media/CNX_Chem_01_01_Alchemist.jpg)
+![Skissa sýnir 4 manneskjur að hræra í og meðhöndla efni. Efnin eru í ýmsum tunnum og stórum sílindrum. Nokkur ílátanna eru hituð yfir glóð. Stór ofn á rannsóknarstofunni er fullur af glóð. Einnig er stór kista í horninu sem gefur frá sér gufu.](images/media/CNX_Chem_01_01_Alchemist.jpg){#CNX_Chem_01_01_Alchemist .scaled-down}
 
 *Mynd 1.2: (a) Þessi mynd sýnir verkstæði gullgerðarmanns um 1580. Þótt
 gullgerðarlist hafi lagt sitt af mörkum til þess hvernig hægt er að
@@ -66,7 +75,7 @@ nálgun hennar mjög kerfisbundin og vandlega skráð. Hayden var
 deildarstjóri hjá FDA og er frægust fyrir að afhjúpa ágengt markaðssett
 krabbameinslyf sem ekkert annað en gagnslausa lausn af algengum efnum.
 (heimild a: Chemical Heritage Foundation; b: NIH History
-Office)*
+Office)*{#CNX_Chem_01_01_Alchemist}
 
 Frá gullgerðarlistinni kom söguleg framvinda sem leiddi til nútíma
 efnafræði: einangrun lyfja úr náttúrulegum uppsprettum, svo sem plöntum
@@ -114,11 +123,13 @@ hjálpa okkur að skilja og vernda efnisheiminn okkar betur.
 Efnafræðilegar hugmyndir eru notaðar til að skilja alheiminn í
 stjörnufræði og heimsfræði.
 
-![Flæðirit sýnir kassa með orðinu efnafræði í miðjunni. Efnafræði er tengd jarðefnafræði, kjarnaefnafræði, efnafræðilegri eðlisfræði, nanóvísindum og nanótækni, efnisvísindum, efnaverkfræði, lífefnafræði og sameindalíffræði, umhverfisvísindum, landbúnaði og stærðfræði. Hver þessara fræðigreina er síðan tengd öðrum skyldum sviðum, þar á meðal læknisfræði, líffræði, matvælafræði, jarðvísindum, eiturefnafræði, eðlisfræði og tölvunarfræði.](images/media/CNX_Chem_01_01_ChemWeb.jpg)
+.
+
+![Flæðirit sýnir kassa með orðinu efnafræði í miðjunni. Efnafræði er tengd jarðefnafræði, kjarnaefnafræði, efnafræðilegri eðlisfræði, nanóvísindum og nanótækni, efnisvísindum, efnaverkfræði, lífefnafræði og sameindalíffræði, umhverfisvísindum, landbúnaði og stærðfræði. Hver þessara fræðigreina er síðan tengd öðrum skyldum sviðum, þar á meðal læknisfræði, líffræði, matvælafræði, jarðvísindum, eiturefnafræði, eðlisfræði og tölvunarfræði.](images/media/CNX_Chem_01_01_ChemWeb.jpg){#CNX_Chem_01_01_ChemWeb}
 
 *Mynd 1.3: Þekking á efnafræði er lykilatriði til að skilja fjölmargar
 vísindagreinar. Þessi skýringarmynd sýnir aðeins nokkur af samspilum
-efnafræði og annarra sviða.*
+efnafræði og annarra sviða.*{#CNX_Chem_01_01_ChemWeb}
 
 Hvaða breytingar á efni eru nauðsynlegar í daglegu lífi? Melting og
 upptaka fæðu, nýmyndun fjölliða sem notaðar eru til að búa til fatnað,
@@ -128,7 +139,7 @@ uppgötva mörg mismunandi dæmi um breytingar á samsetningu og byggingu
 efnis, hvernig á að flokka þessar breytingar og hvernig þær urðu,
 orsakir þeirra, orkubreytingarnar sem fylgja þeim og þau lögmál og
 reglur sem eiga við. Þegar þú lærir um þessa hluti ertu að læra
-**efnafræði**, fræðigreinina um samsetningu, eiginleika
+**efnafræði**{#term-00001}, fræðigreinina um samsetningu, eiginleika
 og víxlverkun efnis. Iðkun efnafræði er ekki takmörkuð við
 efnafræðibækur eða rannsóknarstofur: Hún á sér stað hvenær sem einhver
 tekur þátt í breytingum á efni eða aðstæðum sem geta leitt til slíkra
@@ -143,33 +154,33 @@ aðferðir sem eru viðurkenndar af vísindasamfélaginu. Það er engin ein
 leið til að svara spurningu eða útskýra athugun, en það er eitt sem
 allar aðferðir eiga sameiginlegt: Hver og ein notar þekkingu sem byggir
 á tilraunum sem hægt er að endurtaka til að staðfesta niðurstöðurnar.
-Sumar leiðir fela í sér **tilgátu**, sem er
+Sumar leiðir fela í sér **tilgátu**{#term-00002}, sem er
 bráðabirgðaútskýring á athugunum sem þjónar sem leiðarvísir við söfnun
 og yfirferð upplýsinga. Tilgáta er prófuð með tilraunum, útreikningum
 og/eða samanburði við tilraunir annarra og síðan betrumbætt eftir
 þörfum.
 
 Sumar tilgátur eru tilraunir til að útskýra hegðun sem er tekin saman í
-lögmálum. **Lögmál** vísindanna draga saman gríðarlegan
+lögmálum. **Lögmál**{#term-00003} vísindanna draga saman gríðarlegan
 fjölda tilraunaathugana og lýsa eða spá fyrir um einhvern þátt
 náttúrunnar. Ef slík tilgáta reynist geta útskýrt mikið magn
 tilraunagagna getur hún náð stöðu kenningar. Vísindalegar
-**kenningar** eru vel rökstuddar, yfirgripsmiklar og
+**kenningar**{#term-00004} eru vel rökstuddar, yfirgripsmiklar og
 prófanlegar útskýringar á tilteknum þáttum náttúrunnar. Kenningar eru
 viðurkenndar vegna þess að þær veita fullnægjandi útskýringar, en þær
 geta breyst ef ný gögn koma fram. Sú uppgötvunarleið sem liggur frá
 spurningu og athugun til lögmáls eða tilgátu til kenningar, ásamt
 tilraunakenndri staðfestingu á tilgátunni og nauðsynlegum breytingum á
-kenningunni, er kölluð **vísindalega aðferðin**
-([sjá mynd 1.4](#CNX_Chem_01_01_SciMethod)).
+kenningunni, er kölluð **vísindalega aðferðin**{#term-00005}
+([↗](#CNX_Chem_01_01_SciMethod)).
 
-![Í þessu flæðiriti vísar ör frá kassanum „athugun og forvitni“ í kassa merktan „móta tilgátu; setja fram spá“. Bogadregin ör merkt „næst“ tengir þennan kassa við kassa merktan „framkvæma tilraun; gera fleiri athuganir“. Önnur ör vísar aftur í kassann sem segir „móta tilgátu; setja fram spá“. Þessi ör er merkt „niðurstöður stangast á við spá“. Önnur ör, merkt „niðurstöður í samræmi við spá“, vísar frá kassanum „framkvæma tilraun“ í kassa merktan „stuðlar að þekkingarforða“. Hins vegar vísar ör einnig frá „stuðlar að þekkingarforða“ aftur í kassann „móta tilgátu; setja fram spá“. Þessi ör er merkt „frekari prófanir styðja ekki tilgátu“. Það eru líka tvær aðrar örvar sem leiða út frá „stuðlar að þekkingarforða“. Önnur örin er merkt „miklar viðbótarprófanir gefa stöðugar athuganir“. Hún leiðir að kassanum „athugun verður að lögmáli“. Hin örin er merkt „miklar viðbótarprófanir styðja tilgátu“. Þessi ör leiðir að kassanum „tilgáta verður að kenningu“.](images/media/CNX_Chem_01_01_SciMethod.jpg)
+![Í þessu flæðiriti vísar ör frá kassanum „athugun og forvitni“ í kassa merktan „móta tilgátu; setja fram spá“. Bogadregin ör merkt „næst“ tengir þennan kassa við kassa merktan „framkvæma tilraun; gera fleiri athuganir“. Önnur ör vísar aftur í kassann sem segir „móta tilgátu; setja fram spá“. Þessi ör er merkt „niðurstöður stangast á við spá“. Önnur ör, merkt „niðurstöður í samræmi við spá“, vísar frá kassanum „framkvæma tilraun“ í kassa merktan „stuðlar að þekkingarforða“. Hins vegar vísar ör einnig frá „stuðlar að þekkingarforða“ aftur í kassann „móta tilgátu; setja fram spá“. Þessi ör er merkt „frekari prófanir styðja ekki tilgátu“. Það eru líka tvær aðrar örvar sem leiða út frá „stuðlar að þekkingarforða“. Önnur örin er merkt „miklar viðbótarprófanir gefa stöðugar athuganir“. Hún leiðir að kassanum „athugun verður að lögmáli“. Hin örin er merkt „miklar viðbótarprófanir styðja tilgátu“. Þessi ör leiðir að kassanum „tilgáta verður að kenningu“.](images/media/CNX_Chem_01_01_SciMethod.jpg){#CNX_Chem_01_01_SciMethod}
 
 *Mynd 1.4: Vísindalega aðferðin fylgir ferli svipuðu því sem sýnt er á
 þessari skýringarmynd. Allir lykilþættir eru sýndir, í nokkurn veginn
 réttri röð. Vísindalegar framfarir eru sjaldan snyrtilegar og hreinar:
 Þær krefjast opinnar rannsóknar og endurmótunar spurninga og hugmynda í
-ljósi niðurstaðna.*
+ljósi niðurstaðna.*{#CNX_Chem_01_01_SciMethod}
 
 ## Svið efnafræðinnar
 
@@ -178,7 +189,7 @@ sviðum: stórsæju, smásæju og táknrænu. Þessi svið bjóða upp á mismun
 leiðir til að íhuga og lýsa efnafræðilegri hegðun.
 
 *Makró* er grískt orð sem þýðir „stórt“. **Stórsæja
-sviðið** er okkur kunnuglegt: Það er heimur
+sviðið**{#term-00006} er okkur kunnuglegt: Það er heimur
 hversdagslegra hluta sem eru nógu stórir til að vera skynjaðir beint með
 sjón eða snertingu manna. Í daglegu lífi nær þetta yfir matinn sem þú
 borðar og goluna sem þú finnur á andlitinu. Stórsæja sviðið nær yfir
@@ -186,11 +197,11 @@ hversdags- og rannsóknarstofuefnafræði, þar sem við fylgjumst með og
 mælum eðlis- og efnaeiginleika eins og eðlismassa, leysni og eldfimi.
 
 *Míkró* kemur úr grísku og þýðir „lítið“. **Smásæja
-svið** efnafræðinnar er oft heimsótt í huganum. Sumir
+svið**{#term-00007} efnafræðinnar er oft heimsótt í huganum. Sumir
 þættir smásæja sviðsins eru sýnilegir með venjulegum ljóssmásjám, til
 dæmis margar líffræðilegar frumur. Fullkomnari tæki geta myndað enn
 smærri einingar eins og sameindir og atóm (sjá
-[sjá mynd 1.5](#CNX_Chem_01_01_WaterDom) (**b**)).
+[↗](#CNX_Chem_01_01_WaterDom) (**b**)).
 
 Hins vegar eru flest viðfangsefni á smásæja sviði efnafræðinnar of lítil
 til að sjást jafnvel með fullkomnustu smásjám og er aðeins hægt að
@@ -198,7 +209,7 @@ til að sjást jafnvel með fullkomnustu smásjám og er aðeins hægt að
 róteindir og nifteindir og efnatengi, sem öll eru allt of lítil til að
 sjá.
 
-**Táknræna sviðið** inniheldur sérhæft tungumál sem
+**Táknræna sviðið**{#term-00008} inniheldur sérhæft tungumál sem
 notað er til að tákna þætti stórsæja og smásæja sviðsins. Efnatákn (eins
 og þau sem notuð eru í lotukerfinu), efnaformúlur og efnajöfnur eru
 hluti af táknræna sviðinu, ásamt gröfum, teikningum og útreikningum.
@@ -223,7 +234,7 @@ stórsæju eða smásæju stigi, er dæmi um táknræna sviðið. Skammstafanirn
 (*g*) fyrir gas, (*s*) fyrir fast efni og (*l*) fyrir vökva eru einnig
 táknrænar.
 
-![Mynd A sýnir ljósmynd af ísjaka sem flýtur í sjó með þremur örvum. Hver ör bendir á mynd B, sem inniheldur þrjár skýringarmyndir sem sýna hvernig vatnssameindirnar eru skipulagðar í loftinu, ísnum og sjónum. Í loftinu, sem inniheldur vatn á gasformi, H með lágstaf 2 O gas, eru vatnssameindirnar ótengdar og dreifðar. Í ísnum, sem er fast form vatns, H með lágstaf 2 O fast efni, eru vatnssameindirnar tengdar saman í hringi, þar sem hver hringur inniheldur sex vatnssameindir. Þrír þessara hringja eru tengdir hver öðrum. Í sjónum, sem er fljótandi form vatns, H með lágstaf 2 O vökvi, eru vatnssameindirnar mjög þétt pakkaðar. Sameindirnar eru ekki tengdar saman.](images/media/CNX_Chem_01_01_WaterDom.jpg)
+![Mynd A sýnir ljósmynd af ísjaka sem flýtur í sjó með þremur örvum. Hver ör bendir á mynd B, sem inniheldur þrjár skýringarmyndir sem sýna hvernig vatnssameindirnar eru skipulagðar í loftinu, ísnum og sjónum. Í loftinu, sem inniheldur vatn á gasformi, H með lágstaf 2 O gas, eru vatnssameindirnar ótengdar og dreifðar. Í ísnum, sem er fast form vatns, H með lágstaf 2 O fast efni, eru vatnssameindirnar tengdar saman í hringi, þar sem hver hringur inniheldur sex vatnssameindir. Þrír þessara hringja eru tengdir hver öðrum. Í sjónum, sem er fljótandi form vatns, H með lágstaf 2 O vökvi, eru vatnssameindirnar mjög þétt pakkaðar. Sameindirnar eru ekki tengdar saman.](images/media/CNX_Chem_01_01_WaterDom.jpg){#CNX_Chem_01_01_WaterDom}
 
 *Mynd 1.5: (a) Raki í lofti, ísjakar og hafið tákna vatn á stórsæja
 sviðinu. (b) Á sameindastigi (smásæja sviðinu) eru gassameindir langt í
@@ -234,6 +245,114 @@ að ský eru í raun samsett úr annaðhvort mjög litlum dropum af fljótandi
 vatni eða kristöllum af föstu vatni; vatn á gasformi í andrúmslofti
 okkar er ekki sýnilegt með berum augum, þótt það megi skynja sem raka.
 (heimild a: breyting á verki eftir „Gorkaazk“/Wikimedia
-Commons)*
+Commons)*{#CNX_Chem_01_01_WaterDom}
+
+hvernig ýmsum formum efnis má breyta hvert í annað. Þannig gegnir hún
+lykilhlutverki í rannsóknum og iðkun vísinda og tækni. Efnafræðingar
+nota vísindalegu aðferðina til að framkvæma tilraunir, setja fram
+tilgátur og móta lögmál og þróa kenningar, svo þeir geti betur skilið
+hegðun náttúrunnar. Til þess starfa þeir á stórsæja, smásæja og táknræna
+sviðinu. Efnafræðingar mæla, greina, hreinsa og búa til margs konar efni
+sem eru mikilvæg fyrir líf okkar.
 
 ## Efnafræði – Æfingar í lok kafla
+
+Útskýrðu hvernig þú gætir með
+tilraun ákvarðað hvort hitastigið úti sé hærra eða lægra en 0 °C (32 °F)
+án þess að nota hitamæli.
+
+:::answer
+Settu glas af vatni út. Það mun frjósa ef hitastigið er undir
+0 °C.
+
+:::
+:::
+
+Tilgreindu hvort hver eftirfarandi
+staðhæfinga líkist mest tilgátu, lögmáli eða kenningu. Útskýrðu
+rökstuðning þinn.
+
+\(a\) Lækkandi loftvogarþrýstingur er fyrirboði slæms veðurs.
+
+\(b\) Allt líf á jörðinni hefur þróast frá sameiginlegri, frumstæðri
+lífveru með náttúruvali.
+
+\(c\) Bensíneyðsla pallbílsins míns hefur minnkað verulega, líklega
+vegna þess að það er kominn tími á smurningu.
+
+:::
+
+Tilgreindu hvort hver eftirfarandi
+staðhæfinga líkist mest tilgátu, lögmáli eða kenningu. Útskýrðu
+rökstuðning þinn.
+
+\(a\) Þrýstingur gassýnis er í beinu hlutfalli við hitastig gassins.
+
+\(b\) Efni samanstendur af örsmáum eindum sem geta sameinast í ákveðnum
+hlutföllum til að mynda efni með sérstaka eiginleika.
+
+\(c\) Við hærra hitastig leysast föst efni (eins og salt eða sykur)
+betur upp í vatni.
+
+:::answer
+(a) lögmál (lýsir fyrirbæri sem sést reglulega, hægt að nota
+til forspár); (b) kenning (víðtæk viðurkennd útskýring á hegðun efnis);
+(c) tilgáta (bráðabirgðaútskýring, hægt að rannsaka með tilraunum)
+
+:::
+:::
+
+Flokkaðu hvern undirstrikaðan lið
+sem hluta af annaðhvort stórsæja sviðinu, smásæja sviðinu eða táknræna
+sviðinu í efnafræði. Fyrir alla liði á táknræna sviðinu, tilgreindu
+hvort þeir séu tákn fyrir stórsæjan eða smásæjan eiginleika.
+
+\(a\) Massi *blýpípu* er 14 lb.
+
+\(b\) Massi ákveðins *klóratóms* er 35 amu.
+
+\(c\) Flaska með miða sem á stendur *Al* inniheldur álmálm.
+
+\(d\) *Al* er táknið fyrir ál atóm.
+
+:::
+
+Flokkaðu hvern undirstrikaðan lið
+sem hluta af annaðhvort stórsæja sviðinu, smásæja sviðinu eða táknræna
+sviðinu í efnafræði. Fyrir þá sem eru á táknræna sviðinu, tilgreindu
+hvort þeir séu tákn fyrir stórsæjan eða smásæjan eiginleika.
+
+\(a\) Ákveðin sameind inniheldur eitt *H* atóm og eitt Cl atóm.
+
+\(b\) *Koparvír* hefur eðlismassa sem er um 8 g/cm^3^.
+
+\(c\) Flaskan inniheldur 15 grömm af *Ni-dufti*.
+
+\(d\) *Brennisteinssameind* er samsett úr átta brennisteinsatómum.
+
+:::answer
+(a) táknrænt, smásætt; (b) stórsætt; (c) táknrænt, stórsætt; (d)
+smásætt
+
+:::
+:::
+
+Samkvæmt einni kenningu eykst
+þrýstingur gass þegar rúmmál þess minnkar vegna þess að sameindirnar í
+gasinu þurfa að fara styttri vegalengd til að rekast á veggi ílátsins.
+Fylgir þessi kenning stórsærri eða smásærri lýsingu á efnafræðilegri
+hegðun? Útskýrðu svarið.
+
+:::
+
+Varmamagnið sem þarf til að bræða 2
+pund af ís er tvöfalt meira en varmamagnið sem þarf til að bræða 1 pund
+af ís. Er þessi athugun stórsæ eða smásæ lýsing á efnafræðilegri hegðun?
+Útskýrðu svarið.
+
+:::answer
+Stórsæ. Nauðsynlegur varmi er ákvarðaður út frá stórsæjum
+eiginleikum.
+
+:::
+:::

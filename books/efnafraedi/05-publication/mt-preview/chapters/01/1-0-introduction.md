@@ -1,16 +1,26 @@
 ---
 title: Inngangur
+section: ""
 chapter: 1
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T16:45:09.742Z"
-section: "1.0"
+published-at: "2026-02-01T15:10:11.911Z"
+objectives:
+  - Efnafræði í samhengi
+source:
+  original: Chemistry 2e by OpenStax
+  authors: Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0/
+  originalUrl: https://openstax.org/details/books/chemistry-2e
+  translator: Sigurður E. Vilhelmsson
+  translationYear: 2026
+  modifications: Translated to Icelandic, adapted for Icelandic secondary school students
 ---
 
 # Inngangur
 
-:::n
-ámsmarkmið
+:::learning-objectives
 
 ## Námsmarkmið
 
@@ -30,7 +40,7 @@ section: "1.0"
 birtast í PDF-skjali
 :::
 
-![Myndaklippimynd sýnir bolla af svörtu kaffi, hönd þakta sápufroðu, fjarstýringu og bensíndælustút sem stungið er í bensíntank ökutækis.](images/media/CNX_Chem_01_00_DailyChem.jpg)
+![Myndaklippimynd sýnir bolla af svörtu kaffi, hönd þakta sápufroðu, fjarstýringu og bensíndælustút sem stungið er í bensíntank ökutækis.](images/media/CNX_Chem_01_00_DailyChem.jpg){#CNX_Chem_01_00_DailyChem .splash}
 
 *Mynd 1.1: Hrein efni og efnaferli eru nauðsynleg fyrir tilveru okkar,
 þau sjá okkur fyrir næringu, halda okkur hreinum og heilbrigðum, eru
@@ -39,7 +49,7 @@ margt fleira. (heimild „vinstri“: breyting á verki eftir „vxla“/Flickr;
 heimild „vinstri miðja“: breyting á verki eftir „the Italian
 voice“/Flickr; heimild „hægri miðja“: breyting á verki eftir Jason Trim;
 heimild „hægri“: breyting á verki eftir
-„gosheshe“/Flickr)*
+„gosheshe“/Flickr)*{#CNX_Chem_01_00_DailyChem}
 
 Vekjaraklukkan þín hringir og eftir að hafa ýtt einu sinni eða tvisvar á
 blundhnappinn dregur þú þig á fætur. Þú býrð til kaffibolla til að koma

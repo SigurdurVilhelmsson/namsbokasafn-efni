@@ -1,5 +1,19 @@
 ---
-title: "Eðlis- og efnaeiginleikar"
+title: Eðlis- og efnafræðilegir eiginleikar
+section: "1.3"
+chapter: 1
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-02-01T15:10:11.920Z"
+source:
+  original: Chemistry 2e by OpenStax
+  authors: Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0/
+  originalUrl: https://openstax.org/details/books/chemistry-2e
+  translator: Sigurður E. Vilhelmsson
+  translationYear: 2026
+  modifications: Translated to Icelandic, adapted for Icelandic secondary school students
 ---
 
 # Eðlis- og efnaeiginleikar
@@ -167,9 +181,6 @@ efnafræðináminu.
 
 ![Á þessari mynd af lotukerfinu eru málmarnir merktir með gulum lit og eru ríkjandi á vinstri tveimur þriðju hlutum lotukerfisins. Málmleysingjarnir eru ferskjugulir og eru að mestu bundnir við efra hægra svæði töflunnar, að undanskildu vetni, H, sem er staðsett efst til vinstri í töflunni. Hálfmálmarnir eru fjólubláir og mynda skálínu milli málma- og málmleysingjasvæða töflunnar. Hópur 13 inniheldur bæði málma og hálfmálma](images/media/CNX_Chem_01_03_PeriodicPU.jpg){#CNX_Chem_01_03_PeriodicPU}
 
-## Lykilhugtök og samantekt
-
-Öll efni hafa sérstaka eðlis- og efnaeiginleika og geta tekið eðlis- eða
 efnabreytingum. Eðliseiginleikar, svo sem hörku og suðumark, og
 eðlisbreytingar, svo sem bráðnun eða storknun, fela ekki í sér breytingu
 á samsetningu efnisins. Efnaeiginleikar, svo sem eldfimi og sýrustig, og
@@ -184,7 +195,6 @@ hitastig er dæmi um eðliseiginleika.
 
 ## Efnafræði – Æfingar í lok kafla
 
-:::practice-problem{#fs-idp14236032}
 Flokkaðu sex undirstrikuðu
 eiginleikana í eftirfarandi málsgrein sem efna- eða eðliseiginleika:
 
@@ -195,7 +205,6 @@ brennur í flúor* með skærum loga. *Nítján grömm af flúor hvarfast við
 
 :::
 
-:::practice-problem{#fs-idp131775248}
 Flokkaðu hverja eftirfarandi
 breytingu sem eðlis- eða efnabreytingu:
 
@@ -216,7 +225,6 @@ eðlisbreyting; (e) eðlisbreyting
 :::
 :::
 
-:::practice-problem{#fs-idp293285456}
 Flokkaðu hverja eftirfarandi
 breytingu sem eðlis- eða efnabreytingu:
 
@@ -232,7 +240,6 @@ breytingu sem eðlis- eða efnabreytingu:
 
 :::
 
-:::practice-problem{#fs-idm547056}
 Rúmmál sýnis af súrefnisgasi
 breyttist úr 10 ml í 11 ml þegar hitastigið breyttist. Er þetta efna-
 eða eðlisbreyting?
@@ -243,14 +250,12 @@ eðlisbreyting
 :::
 :::
 
-:::practice-problem{#fs-idp144519488}
 2,0 lítra rúmmál af vetnisgasi
 sameinaðist 1,0 lítra af súrefnisgasi og myndaði 2,0 lítra af vatnsgufu.
 Verður súrefni fyrir efna- eða eðlisbreytingu?
 
 :::
 
-:::practice-problem{#fs-idp42952176}
 Útskýrðu muninn á magnbundnum
 eiginleikum og eðliseiginleikum.
 
@@ -262,7 +267,6 @@ er til skoðunar.
 :::
 :::
 
-:::practice-problem{#fs-idp85586464}
 Tilgreindu hvort eftirfarandi
 eiginleikar séu magnbundnir eða eðliseiginleikar.
 
@@ -278,7 +282,6 @@ eiginleikar séu magnbundnir eða eðliseiginleikar.
 
 :::
 
-:::practice-problem{#fs-idp121106016}
 Eðlismassi (d) efnis er
 eðliseiginleiki sem er skilgreindur sem hlutfall massa þess (m) og
 rúmmáls (V).

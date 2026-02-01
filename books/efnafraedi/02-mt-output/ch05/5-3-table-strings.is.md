@@ -13,7 +13,7 @@ uppbyggingunni óbreyttri.
 
 **H2:** Brunahvarf
 
-**H3:** Brunavermi, \[\[EQ:63\]\]\[\[EQ:64\]\]
+**H3:** Brunavermi, [[EQ:63]][[EQ:64]]
 
 ### Reitir
 

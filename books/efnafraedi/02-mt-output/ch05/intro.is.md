@@ -13,15 +13,10 @@ title: "Inngangur"
 
 - Varmamælingar
 
-- Varmaþyngd :::
+- Varmaþyngd
+:::
 
-{id="CNX_Chem_05_00_Match" class="splash" alt="Kveikt er í eldspýtu sem
-maður heldur á þegar henni er strokið eftir hrjúfu yfirborði
-eldspýtustokks.“}
-
-*Mynd 5.1: Þegar eldspýtshaus er strokið eftir hrjúfu yfirborði hefst
-brunahvarf sem framleiðir orku í formi varma og ljóss. (heimild:
-breyting á verki eftir Laszlo Ilyes)*{id="CNX_Chem_05_00_Match"}
+![Kveikt er í eldspýtu sem maður heldur á þegar henni er strokið eftir hrjúfu yfirborði eldspýtustokks.“} *Mynd 5.1: Þegar eldspýtshaus er strokið eftir hrjúfu yfirborði hefst brunahvarf sem framleiðir orku í formi varma og ljóss. (heimild: breyting á verki eftir Laszlo Ilyes)*{id="CNX_Chem_05_00_Match](images/media/CNX_Chem_05_00_Match.jpg){#CNX_Chem_05_00_Match .splash}
 
 Efnahvörf, eins og þau sem eiga sér stað þegar þú kveikir á eldspýtu,
 fela í sér breytingar á orku jafnt sem efni. Samfélög á öllum

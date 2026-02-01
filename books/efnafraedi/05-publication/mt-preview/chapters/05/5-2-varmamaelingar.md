@@ -4,16 +4,7 @@ section: "5.2"
 chapter: 5
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-30T09:29:02.278Z"
-source:
-  original: Chemistry 2e by OpenStax
-  authors: Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0/
-  originalUrl: https://openstax.org/details/books/chemistry-2e
-  translator: Sigurður E. Vilhelmsson
-  translationYear: 2026
-  modifications: Translated to Icelandic, adapted for Icelandic secondary school students
+published-at: "2026-02-01T14:29:48.997Z"
 ---
 
 # Varmamælingar
@@ -27,54 +18,33 @@ source:
 - Útskýrt aðferðina við varmamælingar
 
 - Reiknað út og túlkað varma og tengda eiginleika með dæmigerðum gögnum
-  úr varmamælingum :::
+úr varmamælingum
+:::
 
 Ein aðferð sem við getum notað til að mæla magn varma sem tekur þátt í
 efna- eða eðlisfræðilegu ferli er þekkt sem
-**varmamæling**{id="term-00001"}. Varmamælingar eru notaðar til að mæla
+**varmamæling**{#term-00001}. Varmamælingar eru notaðar til að mæla
 magn varma sem flyst til eða frá efni. Til þess er varmanum skipt við
 kvarðaðan hlut (varmamæli). Hitastigsbreytingin sem mæld er með
 varmamælinum er notuð til að leiða út magn varma sem fluttist við ferlið
 sem er til rannsóknar. Mæling á varmaflutningi með þessari aðferð krefst
-skilgreiningar á **kerfi**{id="term-00002"} (efnið eða efnin sem gangast
+skilgreiningar á **kerfi**{#term-00002} (efnið eða efnin sem gangast
 undir efna- eða eðlisfræðilega breytingu) og
-**umhverfi**{id="term-00003"} þess (allt annað efni, þar á meðal hlutar
+**umhverfi**{#term-00003} þess (allt annað efni, þar á meðal hlutar
 mælibúnaðarins, sem annaðhvort veita kerfinu varma eða gleypa varma úr
 kerfinu).
 
-**Varmamælir**{id="term-00004"} er tæki sem notað er til að mæla magn
+**Varmamælir**{#term-00004} er tæki sem notað er til að mæla magn
 varma sem tekur þátt í efna- eða eðlisfræðilegu ferli. Til dæmis, þegar
 útvermið efnahvarf á sér stað í lausn í varmamæli, gleypir lausnin
 varmann sem myndast við hvarfið, sem eykur hitastig hennar. Þegar
 innvermið efnahvarf á sér stað, er nauðsynlegur varmi tekinn úr
 varmaorku lausnarinnar, sem lækkar hitastig hennar
-(\[↑\]{ref="CNX_Chem_05_02_HeatMeas"}). Hitastigsbreytinguna, ásamt
+([↑](#CNX_Chem_05_02_HeatMeas)). Hitastigsbreytinguna, ásamt
 eðlisvarma og massa lausnarinnar, er síðan hægt að nota til að reikna út
 magn varma sem um ræðir í hvoru tilviki.
 
-{id="CNX_Chem_05_02_HeatMeas" alt="Tvær skýringarmyndir merktar a og b
-eru sýndar. Hvor um sig samanstendur af tveimur rétthyrndum ílátum með
-hitamæli sem stungið er í efra hægra hornið og nær inn í ílátið. Hægri
-ör tengir hvert ílát á hvorri mynd. Vinstra ílátið á mynd a sýnir bleika
-og græna hringiður í lausn með orðunum „Útvermið ferli“ og „Kerfi“
-skrifuð í miðjunni með örvum sem vísa frá orðunum að „q“. Merkingarnar
-„Lausn“ og „Umhverfi“ eru skrifaðar neðst í ílátinu. Hægra ílátið á mynd
-a hefur orðið „Lausn“ skrifað neðst í ílátinu og rauða ör sem vísar upp
-nálægt hitamælinum með setningunni „Hitastig hækkaði“ við hliðina.
-Bleiku og grænu hringiður eru meira blandaðar í þessu íláti. Vinstra
-ílátið á mynd b sýnir fjólubláa og bláa hringiður í lausn með orðunum
-„Innvermið ferli“ og „Kerfi“ skrifuð í miðjunni með örvum sem vísa frá
-orðunum og „Lausn“ og „Umhverfi“ skrifuð neðst. Örvarnar vísa frá
-bókstafnum „q“. Hægra ílátið á mynd b hefur orðið „Lausn“ skrifað neðst
-og rauða ör sem vísar niður nálægt hitamælinum með setningunni „Hitastig
-lækkaði“ við hliðina. Bláu og fjólubláu hringiður eru meira blandaðar í
-þessu íláti.“}
-
-*Mynd 5.11: Við varmamælingu á sér annaðhvort stað (a) útvermið ferli og
-varmi, q, er neikvæður, sem gefur til kynna að varmaorka flytjist frá
-kerfinu til umhverfis þess, eða (b) innvermið ferli og varmi, q, er
-jákvæður, sem gefur til kynna að varmaorka flytjist frá umhverfinu til
-kerfisins.*{id="CNX_Chem_05_02_HeatMeas"}
+![Tvær skýringarmyndir merktar a og b eru sýndar. Hvor um sig samanstendur af tveimur rétthyrndum ílátum með hitamæli sem stungið er í efra hægra hornið og nær inn í ílátið. Hægri ör tengir hvert ílát á hvorri mynd. Vinstra ílátið á mynd a sýnir bleika og græna hringiður í lausn með orðunum „Útvermið ferli“ og „Kerfi“ skrifuð í miðjunni með örvum sem vísa frá orðunum að „q“. Merkingarnar „Lausn“ og „Umhverfi“ eru skrifaðar neðst í ílátinu. Hægra ílátið á mynd a hefur orðið „Lausn“ skrifað neðst í ílátinu og rauða ör sem vísar upp nálægt hitamælinum með setningunni „Hitastig hækkaði“ við hliðina. Bleiku og grænu hringiður eru meira blandaðar í þessu íláti. Vinstra ílátið á mynd b sýnir fjólubláa og bláa hringiður í lausn með orðunum „Innvermið ferli“ og „Kerfi“ skrifuð í miðjunni með örvum sem vísa frá orðunum og „Lausn“ og „Umhverfi“ skrifuð neðst. Örvarnar vísa frá bókstafnum „q“. Hægra ílátið á mynd b hefur orðið „Lausn“ skrifað neðst og rauða ör sem vísar niður nálægt hitamælinum með setningunni „Hitastig lækkaði“ við hliðina. Bláu og fjólubláu hringiður eru meira blandaðar í þessu íláti.“} *Mynd 5.11: Við varmamælingu á sér annaðhvort stað (a) útvermið ferli og varmi, q, er neikvæður, sem gefur til kynna að varmaorka flytjist frá kerfinu til umhverfis þess, eða (b) innvermið ferli og varmi, q, er jákvæður, sem gefur til kynna að varmaorka flytjist frá umhverfinu til kerfisins.*{id="CNX_Chem_05_02_HeatMeas](images/media/CNX_Chem_05_02_HeatMeas.jpg){#CNX_Chem_05_02_HeatMeas}
 
 Varmamælingar eru mikilvægar til að skilja varmaflutning í efnahvörfum
 sem ná yfir allt frá smásæjum próteinum til risastórra véla. Á meðan hún
@@ -90,20 +60,11 @@ varmamælisins (og varmamælinn sjálfan). Þetta gerir kleift að ákvarða
 nákvæmlega varmann sem tekur þátt í efnaferlum, orkuinnihald matvæla og
 svo framvegis. Nemendur í almennri efnafræði nota oft einfalda varmamæla
 sem smíðaðir eru úr frauðplastsmálum
-(\[↑\]{ref="CNX_Chem_05_02_Calorim"}). Þessir auðveldu
+([↑](#CNX_Chem_05_02_Calorim)). Þessir auðveldu
 „kaffibolla“-varmamælar leyfa meiri varmaskipti við ytra umhverfi og
 gefa því ónákvæmari orkugildi.
 
-{id="CNX_Chem_05_02_Calorim" class="scaled-down" alt="Tveir
-frauðplastbollar eru sýndir hreiðraðir hver í annan með loki yfir.
-Hitamælir og hræristöng eru stungin í gegnum lokið og ofan í lausnina
-inni í bollanum, sem er sýndur í þverskurði. Hræristöngin hefur tvíhöfða
-ör við hliðina sem vísar upp og niður. Vökvablandan inni í bollanum er
-merkt „Hvarfblanda“.“}
-
-*Mynd 5.12: Hægt er að smíða einfaldan varmamæli úr tveimur
-frauðplastbollum. Hitamælir og hræristöng ná í gegnum lokið og ofan í
-hvarfblönduna.*{id="CNX_Chem_05_02_Calorim"}
+![Tveir frauðplastbollar eru sýndir hreiðraðir hver í annan með loki yfir. Hitamælir og hræristöng eru stungin í gegnum lokið og ofan í lausnina inni í bollanum, sem er sýndur í þverskurði. Hræristöngin hefur tvíhöfða ör við hliðina sem vísar upp og niður. Vökvablandan inni í bollanum er merkt „Hvarfblanda“.“} *Mynd 5.12: Hægt er að smíða einfaldan varmamæli úr tveimur frauðplastbollum. Hitamælir og hræristöng ná í gegnum lokið og ofan í hvarfblönduna.*{id="CNX_Chem_05_02_Calorim](images/media/CNX_Chem_05_02_Calorim.jpg){#CNX_Chem_05_02_Calorim .scaled-down}
 
 Einnig eru fáanlegir varmamælar fyrir lausnir í atvinnuskyni.
 Tiltölulega ódýrir varmamælar samanstanda oft af tveimur þunnveggjuðum
@@ -111,23 +72,9 @@ bollum sem eru hreiðraðir saman á þann hátt að varmaflutningur minnkar
 við notkun, ásamt einangruðu loki, handhræru og einföldum hitamæli.
 Dýrari varmamælar sem notaðir eru í iðnaði og rannsóknum hafa yfirleitt
 vel einangrað, alveg lokað hvarfílát, vélknúinn hræribúnað og nákvæmari
-hitaskynjara (\[↑\]{ref="CNX_Chem_05_02_Calorim2"}).
+hitaskynjara ([↑](#CNX_Chem_05_02_Calorim2)).
 
-{id="CNX_Chem_05_02_Calorim2" alt="Tvær skýringarmyndir eru sýndar og
-merktar a og b. Mynd a sýnir hitamæli sem fer í gegnum diskalaga
-einangrunarlok og ofan í málmhólk sem er merktur „innra málmílát“, sem
-aftur er hreiðrað í málmhólk merktan „ytra málmílát“Innra hólkið hvílir
-á einangrandi stuðningshring. Hrærari fer einnig í gegnum
-einangrunarlokið og niður í innra hólkið. Mynd b sýnir innra málmílát,
-hálffullt af vökva, sem hvílir á einangrandi stuðningshring og er komið
-fyrir inni í ytra málmíláti. Nákvæmur hitamælir og vélknúinn hræristafur
-eru settir í lausnina í innra ílátinu og tengdir með vírum við búnað
-utan við uppsetninguna.“
-
-*Mynd 5.13: Lausnarvarmamælar sem fást í verslunum eru allt frá (a)
-einföldum, ódýrum gerðum til notkunar fyrir nemendur til (b) dýrra,
-nákvæmari gerða fyrir iðnað og
-rannsóknir.*{id="CNX_Chem_05_02_Calorim2"}
+![Tvær skýringarmyndir eru sýndar og merktar a og b. Mynd a sýnir hitamæli sem fer í gegnum diskalaga einangrunarlok og ofan í málmhólk sem er merktur „innra málmílát“, sem aftur er hreiðrað í málmhólk merktan „ytra málmílát“Innra hólkið hvílir á einangrandi stuðningshring. Hrærari fer einnig í gegnum einangrunarlokið og niður í innra hólkið. Mynd b sýnir innra málmílát, hálffullt af vökva, sem hvílir á einangrandi stuðningshring og er komið fyrir inni í ytra málmíláti. Nákvæmur hitamælir og vélknúinn hræristafur eru settir í lausnina í innra ílátinu og tengdir með vírum við búnað utan við uppsetninguna.“ *Mynd 5.13: Lausnarvarmamælar sem fást í verslunum eru allt frá (a) einföldum, ódýrum gerðum til notkunar fyrir nemendur til (b) dýrra, nákvæmari gerða fyrir iðnað og rannsóknir.*{id="CNX_Chem_05_02_Calorim2](images/media/CNX_Chem_05_02_Calorim2.jpg){#CNX_Chem_05_02_Calorim2}
 
 Áður en við ræðum varmamælingar á efnahvörfum skulum við skoða
 einfaldara dæmi sem sýnir grundvallarhugmyndina á bak við varmamælingar.
@@ -136,7 +83,7 @@ heitan málmhleif (M), og efni með lágt hitastig, eins og kalt vatn (W).
 Ef við setjum málminn í vatnið mun varmi flæða frá M til W. Hitastig M
 mun lækka og hitastig W mun hækka þar til efnin tvö hafa náð sama
 hitastigi – það er að segja, þegar þau ná varmajafnvægi
-(\[↑\]{ref="CNX_Chem_05_02_HeatTrans2"}). Ef þetta gerist í varmamæli
+([↑](#CNX_Chem_05_02_HeatTrans2)). Ef þetta gerist í varmamæli
 eiga allir þessir varmaflutningar helst að eiga sér stað á milli efnanna
 tveggja, án þess að varmi berist til eða frá ytra umhverfi. Við þessar
 kjöraðstæður er nettóvarmabreytingin núll:
@@ -156,28 +103,14 @@ við eða tapar varma, samkvæmt skilgreiningu). Í þeim sérstöku aðstæðum
 sem lýst er er *q*~efni M~ neikvætt gildi og *q*~efni W~ er jákvætt, þar
 sem varmi flyst frá M til W.
 
-{id="CNX_Chem_05_02_HeatTrans2" class="scaled-down" alt="Sýndar eru tvær
-skýringarmyndir merktar a og b. Hver mynd samanstendur af ferhyrndu
-íláti með hitamæli sem stungið er inn í það efst frá hægra horni. Bæði
-ílátin eru tengd með ör sem vísar til hægri. Bæði ílátin eru full af
-vatni, sem táknað er með bókstafnum „W“, og í hvoru íláti er ferningur
-sem táknar málm og er merktur með bókstafnum „M“. Á mynd a er málmurinn
-teiknaður brúnn og þrjár örvar vísa frá honum. Við enda hverrar örvar er
-bókstafurinn „q“. Málmurinn er merktur „kerfi“ og vatnið er merkt
-„umhverfi“. Hitamælirinn á þessari mynd sýnir tiltölulega lága mælingu.
-Á mynd b er málmurinn sýndur fjólublár og hitamælirinn sýnir tiltölulega
-háa mælingu.“}
-
-*Mynd 5.14: Í einföldu varmamælingarferli er (a) varmi, q, fluttur frá
-heita málminum, M, yfir í kalda vatnið, W, þar til (b) bæði eru við sama
-hitastig.*{id="CNX_Chem_05_02_HeatTrans2"}
+![Sýndar eru tvær skýringarmyndir merktar a og b. Hver mynd samanstendur af ferhyrndu íláti með hitamæli sem stungið er inn í það efst frá hægra horni. Bæði ílátin eru tengd með ör sem vísar til hægri. Bæði ílátin eru full af vatni, sem táknað er með bókstafnum „W“, og í hvoru íláti er ferningur sem táknar málm og er merktur með bókstafnum „M“. Á mynd a er málmurinn teiknaður brúnn og þrjár örvar vísa frá honum. Við enda hverrar örvar er bókstafurinn „q“. Málmurinn er merktur „kerfi“ og vatnið er merkt „umhverfi“. Hitamælirinn á þessari mynd sýnir tiltölulega lága mælingu. Á mynd b er málmurinn sýndur fjólublár og hitamælirinn sýnir tiltölulega háa mælingu.“} *Mynd 5.14: Í einföldu varmamælingarferli er (a) varmi, q, fluttur frá heita málminum, M, yfir í kalda vatnið, W, þar til (b) bæði eru við sama hitastig.*{id="CNX_Chem_05_02_HeatTrans2](images/media/CNX_Chem_05_02_HeatTrans2.jpg){#CNX_Chem_05_02_HeatTrans2 .scaled-down}
 
 Varmaflutningur milli efna við mismunandi hitastig360,0 g stykki af
 steypustyrktarjárni (stálstöng sem notuð er til að styrkja steypu) er
 sleppt í 425 ml af vatni við 24,0 °C. Mælt var með að lokahitastig
 vatnsins væri 42,7 °C. Reiknaðu upphafshitastig steypustyrktarjárnsins.
 Gerðu ráð fyrir að eðlisvarmi stáls sé um það bil sá sami og fyrir járn
-(\[↑\]{ref="fs-idm68801008"}) og að allur varmaflutningur eigi sér stað
+([↑](#fs-idm68801008)) og að allur varmaflutningur eigi sér stað
 milli steypustyrktarjárnsins og vatnsins (engin varmaskipti verða við
 umhverfið).
 
@@ -269,7 +202,7 @@ ${({c}_{{\text{málmur}}})(59.7\,\text{°C})(28.5\,\text{°C}-100.0\,\text{J/g �
 
 $${{c}_{{\text{málmur}}}=\,\frac{{-(4.184\,\text{J/g °C})(60.0\,\text{°C})(6.5\,\text{°C})}}{{(59.7\,\text{J/g °C})(−71.5\,\text{°C})}}\,=0.38\,\text{J/g °C}}$${#fs-idm13040064}
 
-Þegar þetta er borið saman við gildin í \[↗\]{ref="fs-idm68801008"} er
+Þegar þetta er borið saman við gildin í [↗](#fs-idm68801008) er
 eðlisvarmi okkar úr tilrauninni næstur gildinu fyrir kopar (0,39 J/g
 °C), þannig að við auðkennum málminn sem kopar.
 
@@ -396,7 +329,7 @@ lausnarinnar séu þeir sömu og fyrir vatn
 
 Þegar þú vinnur eða leikur þér utandyra á köldum degi gætirðu notað
 handhitara til að verma hendurnar
-(\[↑\]{ref="CNX_Chem_05_02_HandWarmer"}). Algengur endurnýtanlegur
+([↑](#CNX_Chem_05_02_HandWarmer)). Algengur endurnýtanlegur
 handhitari inniheldur yfirmettaða lausn af NaC~2~H~3~O~2~
 (natríumasetati) og málmskífu. Með því að beygja skífuna myndast
 kristalkjarnar sem hið óstöðuga NaC~2~H~3~O~2~ kristallast hratt í
@@ -412,7 +345,6 @@ aftur og hægt er að endurnýta hann.
 title: "Varmamælingar"
 ---
 
-
 Annar algengur handhitari framleiðir varma þegar hann er rifinn opinn og
 járn og vatn í handhitaranum komast í snertingu við súrefni í loftinu.
 Ein einfölduð útgáfa af þessu útverma hvarfi er ${2\text{Fe}(s)+\frac{3}{2}\,{\text{Fe}}_{2}(g)\,\longrightarrow \,{{\text{Fe}}}_{2}{\text{O}}_{3}(s).}$ Salt í
@@ -427,7 +359,7 @@ viðnámsvíra.
 :::
 
 Þegar þú vinnur eða leikur þér úti í kulda gætirðu notað handhitara til
-að verma hendurnar (\[↑\]{ref="CNX_Chem_05_02_HandWarmer"}). Algengur
+að verma hendurnar ([↑](#CNX_Chem_05_02_HandWarmer)). Algengur
 endurnýtanlegur handhitari inniheldur yfirmettaða lausn af
 NaC~2~H~3~O~2~ (natríumasetati) og málmskífu. Þegar skífan er beygð
 myndast kristöllunarkjarnar sem hin óstöðuga NaC~2~H~3~O~2~ lausn
@@ -439,17 +371,12 @@ frásogast af höndum þínum og vermir þær þannig (að minnsta kosti um
 stund). Ef handhitarinn er hitaður aftur leysist NaC~2~H~3~O~2~ upp á ný
 og hægt er að endurnýta hann.
 
-{id="CNX_Chem_05_02_HandWarmer" alt="Sýnd er röð þriggja mynda. Tvær
-örvar sem vísa til hægri tengja eina mynd við þá næstu. Fyrsta myndin
-sýnir efnafræðilegan handhitara. Þetta er poki sem inniheldur tæran,
-litlausan vökva. Inni í pokanum hægra megin er hvít skífa. Önnur myndin
-sýnir það sama, nema hvíta skífan er orðin að hvítu, skýjuðu efni.
-Þriðja myndin sýnir allan pokann fylltan af þessu hvíta efni."}
+![Sýnd er röð þriggja mynda. Tvær örvar sem vísa til hægri tengja eina mynd við þá næstu. Fyrsta myndin sýnir efnafræðilegan handhitara. Þetta er poki sem inniheldur tæran, litlausan vökva. Inni í pokanum hægra megin er hvít skífa. Önnur myndin sýnir það sama, nema hvíta skífan er orðin að hvítu, skýjuðu efni. Þriðja myndin sýnir allan pokann fylltan af þessu hvíta efni.](images/media/CNX_Chem_05_02_HandWarmer.jpg){#CNX_Chem_05_02_HandWarmer}
 
 *Mynd 5.15: Efnafræðilegir handhitarar framleiða varma sem vermir hendur
 þínar á köldum degi. Í þessum má sjá málmskífuna sem kemur af stað
 útvermu útfellingunni. (heimild: breyting á verki eftir Science Buddies
-TV/YouTube)*{id="CNX_Chem_05_02_HandWarmer"}
+TV/YouTube)*{#CNX_Chem_05_02_HandWarmer}
 
 Annar algengur handhitari framleiðir varma þegar hann er rifinn opinn og
 járn og vatn í handhitaranum komast í snertingu við súrefni í loftinu.
@@ -462,38 +389,27 @@ viðarkol (viðarkol oxast í sérstöku tilfelli) eða rafmagnstæki sem
 framleiða varma með því að leiða straum úr rafhlöðu í gegnum
 viðnámsvíra.
 
-:::tengill-til-náms Þessi
-\[tengill\]{url="http://openstax.org/l/16Handwarmer"} sýnir útfellinguna
+:::tengill-til-n
+áms Þessi
+[tengill](http://openstax.org/l/16Handwarmer) sýnir útfellinguna
 sem á sér stað þegar skífan í efnafræðilegum handhitara er beygð.
 
 :::
 
-Þessi \[tengill\]{url="http://openstax.org/l/16Handwarmer"} sýnir
+Þessi [tengill](http://openstax.org/l/16Handwarmer) sýnir
 útfellinguna sem á sér stað þegar skífan í efnafræðilegum handhitara er
 beygð.
 
 Varmaflæði í skyndikælipoka Þegar fast ammóníumnítrat leysist upp í
 vatni verður lausnin köld. Þetta er grundvöllur „skyndikælipoka“
-(\[↑\]{ref="CNX_Chem_05_02_IcePack"}). Þegar 3,21 g af föstu NH~4~NO~3~
+([↑](#CNX_Chem_05_02_IcePack)). Þegar 3,21 g af föstu NH~4~NO~3~
 leysist upp í 50,0 g af vatni við 24,9 °C í varmaflæðimæli lækkar
 hitastigið í 20,3 °C.
 
 Reiknaðu gildið á *q* fyrir þetta hvarf og útskýrðu merkingu
 formerkisins. Tilgreindu allar forsendur sem þú gafst þér.
 
-{id="CNX_Chem_05_02_IcePack" class="scaled-down" alt="Skýringarmynd
-sýnir ferhyrndan poka sem inniheldur hvítt, fast efni og innri poka
-fullan af vatni. Hvíta fasta efnið er merkt „ammóníumnítrat“. Efst á
-pokanum stendur „Skyndikælipoki“. Á honum eru einnig þrjú táknmyndir,
-sem frá hægri til vinstri sýna hönd kreista pokann, hrista pokann og
-setja pokann á líkama manns. Neðst á pokanum eru prentuð orð sem segja
-„aðeins til einnota“.“}
-
-*Mynd 5.16: Skyndikælipoki samanstendur af poka sem inniheldur fast
-ammóníumnítrat og öðrum poka með vatni. Þegar vatnspokinn er brotinn
-verður pokinn kaldur vegna þess að upplausn ammóníumnítrats er innvermið
-ferli sem fjarlægir varmaorku úr vatninu. Kælipokinn fjarlægir síðan
-varmaorku úr líkama þínum.*{id="CNX_Chem_05_02_IcePack"}
+![Skýringarmynd sýnir ferhyrndan poka sem inniheldur hvítt, fast efni og innri poka fullan af vatni. Hvíta fasta efnið er merkt „ammóníumnítrat“. Efst á pokanum stendur „Skyndikælipoki“. Á honum eru einnig þrjú táknmyndir, sem frá hægri til vinstri sýna hönd kreista pokann, hrista pokann og setja pokann á líkama manns. Neðst á pokanum eru prentuð orð sem segja „aðeins til einnota“.“} *Mynd 5.16: Skyndikælipoki samanstendur af poka sem inniheldur fast ammóníumnítrat og öðrum poka með vatni. Þegar vatnspokinn er brotinn verður pokinn kaldur vegna þess að upplausn ammóníumnítrats er innvermið ferli sem fjarlægir varmaorku úr vatninu. Kælipokinn fjarlægir síðan varmaorku úr líkama þínum.*{id="CNX_Chem_05_02_IcePack](images/media/CNX_Chem_05_02_IcePack.jpg){#CNX_Chem_05_02_IcePack .scaled-down}
 
 Lausn Við gerum ráð fyrir að varmaflæðimælirinn komi í veg fyrir
 varmaflutning milli lausnarinnar og ytra umhverfis hennar (þar með talið
@@ -542,14 +458,14 @@ Varmamælarnir sem lýst er eru hannaðir til að starfa við stöðugan
 (loft)þrýsting og eru hentugir til að mæla varmaflæði sem fylgir ferlum
 sem eiga sér stað í lausn. Annars konar varmamælir sem starfar við
 stöðugt rúmmál, í daglegu tali þekktur sem
-**sprengivarmamælir**{id="term-00005"}, er notaður til að mæla orkuna
+**sprengivarmamælir**{#term-00005}, er notaður til að mæla orkuna
 sem myndast við efnahvörf sem gefa af sér mikið magn af varma og
 loftkennd myndefni, svo sem brunahvörf. (Orðið „sprengja“ kemur frá
 þeirri athugun að þessi efnahvörf geta verið nógu kröftug til að líkjast
 sprengingum sem myndu skemma aðra varmamæla.) Þessi tegund varmamælis
 samanstendur af sterku stálíláti („sprengjunni“) sem inniheldur
 hvarfefnin og er sjálft á kafi í vatni
-(\[↗\]{ref="CNX_Chem_05_02_BombCalor"}). Sýnið er sett í sprengjuna, sem
+([↗](#CNX_Chem_05_02_BombCalor)). Sýnið er sett í sprengjuna, sem
 er síðan fyllt með súrefni við háan þrýsting. Lítill neisti er notaður
 til að kveikja í sýninu. Orkan sem myndast við efnahvarfið frásogast af
 stálsprengjunni og vatninu í kring. Hitastigshækkunin er mæld og ásamt
@@ -563,36 +479,28 @@ efnahvarfið er notuð til að ákvarða varmarýmd varmamælisins. Kvörðunin
 er yfirleitt framkvæmd í hvert skipti áður en varmamælirinn er notaður
 til að safna rannsóknargögnum.
 
-{id="CNX_Chem_05_02_BombCalor" alt="Sýnd er mynd og skýringarmynd, merkt
-a og b. Mynd a sýnir sprengivarmamæli. Þetta er teningslaga vél með
-holrúmi að ofan, málmhólki sem er fyrir ofan holrúmið og aflestrarborði
-sem er fest við efra hægra hornið. Skýringarmynd b sýnir þverskurðarmynd
-af teningi með sívölu íláti fullu af vatni í miðjunni. Annað ílát, merkt
-„sprengja“, er inni í minni hólki sem heldur sýnisbolla og er staðsett í
-sívala ílátinu umkringt vatni. Svört lína teygir sig inn í vatnið og er
-merkt „Nákvæmur hitamælir“. Tveir vírar merktir „Rafskaut“ teygja sig
-frá loki sem er ofan á innra ílátinu. Aflestrarborð er staðsett efst til
-hægri á teningnum."}
+![Sýnd er mynd og skýringarmynd, merkt a og b. Mynd a sýnir sprengivarmamæli. Þetta er teningslaga vél með holrúmi að ofan, málmhólki sem er fyrir ofan holrúmið og aflestrarborði sem er fest við efra hægra hornið. Skýringarmynd b sýnir þverskurðarmynd af teningi með sívölu íláti fullu af vatni í miðjunni. Annað ílát, merkt „sprengja“, er inni í minni hólki sem heldur sýnisbolla og er staðsett í sívala ílátinu umkringt vatni. Svört lína teygir sig inn í vatnið og er merkt „Nákvæmur hitamælir“. Tveir vírar merktir „Rafskaut“ teygja sig frá loki sem er ofan á innra ílátinu. Aflestrarborð er staðsett efst til hægri á teningnum.](images/media/CNX_Chem_05_02_BombCalor.jpg){#CNX_Chem_05_02_BombCalor}
 
 *Mynd 5.17: (a) Sprengivarmamælir er notaður til að mæla varma sem
 myndast við efnahvörf sem fela í sér loftkennd hvarfefni eða myndefni,
 svo sem bruna. (b) Hvarfefnin eru í loftþéttu „sprengjunni“, sem er á
 kafi í vatni og umkringd einangrunarefnum. (heimild a: breyting á verki
-eftir „Harbor1“/Wikimedia commons)*{id="CNX_Chem_05_02_BombCalor"}
+eftir „Harbor1“/Wikimedia commons)*{#CNX_Chem_05_02_BombCalor}
 
-:::link-to-learning Smelltu á þennan
-\[hlekk\]{url="http://openstax.org/l/16BombCal"} til að sjá hvernig
+:::link-to-learning
+Smelltu á þennan
+[hlekk](http://openstax.org/l/16BombCal) til að sjá hvernig
 sprengivarmamælir er undirbúinn fyrir notkun.
 
-Þessi \[síða\]{url="http://openstax.org/l/16Calorcalcs"} sýnir
+Þessi [síða](http://openstax.org/l/16Calorcalcs) sýnir
 varmamælingaútreikninga með sýnisgögnum.
 
 :::
 
-Smelltu á þennan \[hlekk\]{url="http://openstax.org/l/16BombCal"} til að
+Smelltu á þennan [hlekk](http://openstax.org/l/16BombCal) til að
 sjá hvernig sprengivarmamælir er undirbúinn fyrir notkun.
 
-Þessi \[síða\]{url="http://openstax.org/l/16Calorcalcs"} sýnir
+Þessi [síða](http://openstax.org/l/16Calorcalcs) sýnir
 varmamælingaútreikninga með sýnisgögnum.
 
 Sprengivarmamælingar Þegar 3,12 g af glúkósa, C~6~H~12~O~6~, er brennt í
@@ -648,7 +556,7 @@ fætt barn. Rannsóknir sem þessar hjálpa til við að þróa betri
 ráðleggingar og meðferðaráætlanir fyrir næringu, hreyfingu og almenna
 vellíðan á þessu tímabili verulegra lífeðlisfræðilegra breytinga. Í
 mönnum eru efnaskipti venjulega mæld í kaloríum á dag. **Næringarkaloría
-(kaloría)**{id="term-00006"} er orkueiningin sem notuð er til að
+(kaloría)**{#term-00006} er orkueiningin sem notuð er til að
 magngreina orkuna sem fæst úr efnaskiptum matvæla; ein kaloría er jöfn
 1000 litlum hitaeiningum (1 kkal), sem er orkumagnið sem þarf til að
 hita 1 kg af vatni um 1 °C.
@@ -668,7 +576,7 @@ Orkuefnin í mat eru prótein, kolvetni og fita eða olíur. Prótein gefa um
 og olíur gefa um 9 kaloríur/g. Næringargildismerkingar á matvælaumbúðum
 sýna kaloríuinnihald eins skammts af matnum, auk sundurliðunar í
 kaloríur frá hverju þriggja orkuefnanna
-(\[↑\]{ref="CNX_Chem_05_02_FoodLabel"}).
+([↑](#CNX_Chem_05_02_FoodLabel)).
 
 Fyrir dæmið sem sýnt er í (b) er heildarorkan í 228 g skammti reiknuð
 með:
@@ -704,54 +612,9 @@ Orkuefnin í mat eru prótein, kolvetni og fita eða olíur. Prótein gefa um
 og olíur gefa um 9 kaloríur/g. Næringargildismerkingar á matvælaumbúðum
 sýna kaloríuinnihald eins skammts af matnum, auk sundurliðunar í
 kaloríur frá hverju þriggja orkuefnanna
-(\[↑\]{ref="CNX_Chem_05_02_FoodLabel"}).
+([↑](#CNX_Chem_05_02_FoodLabel)).
 
-{id="CNX_Chem_05_02_FoodLabel" alt="Sýndar eru tvær myndir merktar a og
-b. Mynd a sýnir nærmynd af skál með makkarónum og osti. Mynd b er
-matvælamerking sem inniheldur auðkenndar upplýsingar á töfluformi. Efst
-á miðanum stendur „Dæmi um merkingu fyrir makkarónur og ost.“ Fyrir
-neðan þetta eru orðin „Næringargildi.“ Fyrir neðan þetta eru tvær línur
-af auðkenndum texta sem segja „Skammtastærð einn bolli (228 g)“ og
-„Skammtar í íláti 2.“ Merki vinstra megin við þessar línur segir
-„Byrjaðu hér“ og ör sem vísar til hægri er við hliðina á þessum orðum.
-Fyrir neðan þetta eru orðin „athugaðu kaloríur“ sem liggja vinstra megin
-við orðasamböndin „Magn í skammti“ sem er fyrir ofan orðin „Kaloríur
-250“ og „Kaloríur úr fitu 210.“ Næsti hluti merkisins er auðkenndur og
-inniheldur fimm orðasambönd „Heildarfita 12 g,“ „Mettuð fita 3 g,“
-„Transfita 3 g,“ „Kólesteról 30 mg,“ og „Natríum 470 mg.“ Orðasambandið
-„Takmarkaðu þessi næringarefni“ liggur vinstra megin við þessi fimm
-orðasambönd. Orðasambandið fyrir neðan þetta er „Heildarkolvetni 31 g“
-og er fylgt eftir með auðkenndu orðasambandi, „Trefjar 0 g.“ Fyrir neðan
-þetta eru orðasamböndin „Sykur 5 g“ og „Prótein 5 g.“ Fyrir neðan þetta
-er auðkenndur hluti sem inniheldur orðasamböndin „A-vítamín,“
-„C-vítamín,“ „Kalsíum,“ og „Járn.“ Merki vinstra megin við þessi hugtök
-segir „Fáðu nóg af þessum næringarefnum.“ Neðst á miðanum er merkt
-„Neðanmálsgrein“ og þar stendur „Hlutfall daglegra gilda er byggt á
-2.000 kaloríu mataræði. Dagleg gildi þín geta verið hærri eða lægri
-eftir kaloríuþörf þinni“}.“ Hvert auðkenndu hugtakanna í töflunni er í
-línu með prósentugildi hægra megin við töfluna. Í athugasemd yst til
-hægri í töflunni stendur „Stutt leiðarvísir að % af dagskammti“, „5% eða
-minna er lítið“ og „20% eða meira er mikið. Dagskammtur fyrir
-heildarfitu er 18%, fyrir mettaða fitu er 15%, fyrir kólesteról er 10%,
-fyrir natríum er 20%, fyrir heildarkolvetni er 10%, fyrir trefjar er 0%,
-fyrir A-vítamín er 4%, fyrir C-vítamín er 2%, fyrir kalsíum er 20% og
-fyrir járn er 4%.“ Neðst er tafla sem sýnir hitaeiningar við 2.000 og
-2.500. Fyrir heildarfitu sýnir taflan minna en 65 g fyrir 2.000
-hitaeiningar og 80 g fyrir 2.500 hitaeiningar. Fyrir mettaða fitu sýnir
-taflan minna en 20 g fyrir 2.000 hitaeiningar og 25 g fyrir 2.500
-hitaeiningar. Fyrir kólesteról sýnir taflan minna en 300 mg fyrir 2.000
-hitaeiningar og 300 mg fyrir 2.500 hitaeiningar. Fyrir natríum sýnir
-taflan minna en 2.400 mg fyrir 2.000 hitaeiningar og 2.400 mg fyrir
-2.500 hitaeiningar. Fyrir heildarkolvetni sýnir taflan 300 g fyrir 2.000
-hitaeiningar og 375 g fyrir 2.500 hitaeiningar. Fyrir trefjar sýnir
-taflan 25 g fyrir 2.000 hitaeiningar og 30 g fyrir 2.500 hitaeiningar.“
-
-*Mynd 5.18: (a) Makkarónur og ostur innihalda orku í formi
-stórnæringarefna í matnum. (b) Næringarupplýsingar matvælanna eru sýndar
-á umbúðamerkingunni. Í Bandaríkjunum er orkuinnihaldið gefið upp í
-hitaeiningum (á skammt); annars staðar í heiminum eru kílójúl yfirleitt
-notuð. (heimild a: breyting á verki eftir „Rex
-Roof“/Flickr)*{id="CNX_Chem_05_02_FoodLabel"}
+![Sýndar eru tvær myndir merktar a og b. Mynd a sýnir nærmynd af skál með makkarónum og osti. Mynd b er matvælamerking sem inniheldur auðkenndar upplýsingar á töfluformi. Efst á miðanum stendur „Dæmi um merkingu fyrir makkarónur og ost.“ Fyrir neðan þetta eru orðin „Næringargildi.“ Fyrir neðan þetta eru tvær línur af auðkenndum texta sem segja „Skammtastærð einn bolli (228 g)“ og „Skammtar í íláti 2.“ Merki vinstra megin við þessar línur segir „Byrjaðu hér“ og ör sem vísar til hægri er við hliðina á þessum orðum. Fyrir neðan þetta eru orðin „athugaðu kaloríur“ sem liggja vinstra megin við orðasamböndin „Magn í skammti“ sem er fyrir ofan orðin „Kaloríur 250“ og „Kaloríur úr fitu 210.“ Næsti hluti merkisins er auðkenndur og inniheldur fimm orðasambönd „Heildarfita 12 g,“ „Mettuð fita 3 g,“ „Transfita 3 g,“ „Kólesteról 30 mg,“ og „Natríum 470 mg.“ Orðasambandið „Takmarkaðu þessi næringarefni“ liggur vinstra megin við þessi fimm orðasambönd. Orðasambandið fyrir neðan þetta er „Heildarkolvetni 31 g“ og er fylgt eftir með auðkenndu orðasambandi, „Trefjar 0 g.“ Fyrir neðan þetta eru orðasamböndin „Sykur 5 g“ og „Prótein 5 g.“ Fyrir neðan þetta er auðkenndur hluti sem inniheldur orðasamböndin „A-vítamín,“ „C-vítamín,“ „Kalsíum,“ og „Járn.“ Merki vinstra megin við þessi hugtök segir „Fáðu nóg af þessum næringarefnum.“ Neðst á miðanum er merkt „Neðanmálsgrein“ og þar stendur „Hlutfall daglegra gilda er byggt á 2.000 kaloríu mataræði. Dagleg gildi þín geta verið hærri eða lægri eftir kaloríuþörf þinni“}.“ Hvert auðkenndu hugtakanna í töflunni er í línu með prósentugildi hægra megin við töfluna. Í athugasemd yst til hægri í töflunni stendur „Stutt leiðarvísir að % af dagskammti“, „5% eða minna er lítið“ og „20% eða meira er mikið. Dagskammtur fyrir heildarfitu er 18%, fyrir mettaða fitu er 15%, fyrir kólesteról er 10%, fyrir natríum er 20%, fyrir heildarkolvetni er 10%, fyrir trefjar er 0%, fyrir A-vítamín er 4%, fyrir C-vítamín er 2%, fyrir kalsíum er 20% og fyrir járn er 4%.“ Neðst er tafla sem sýnir hitaeiningar við 2.000 og 2.500. Fyrir heildarfitu sýnir taflan minna en 65 g fyrir 2.000 hitaeiningar og 80 g fyrir 2.500 hitaeiningar. Fyrir mettaða fitu sýnir taflan minna en 20 g fyrir 2.000 hitaeiningar og 25 g fyrir 2.500 hitaeiningar. Fyrir kólesteról sýnir taflan minna en 300 mg fyrir 2.000 hitaeiningar og 300 mg fyrir 2.500 hitaeiningar. Fyrir natríum sýnir taflan minna en 2.400 mg fyrir 2.000 hitaeiningar og 2.400 mg fyrir 2.500 hitaeiningar. Fyrir heildarkolvetni sýnir taflan 300 g fyrir 2.000 hitaeiningar og 375 g fyrir 2.500 hitaeiningar. Fyrir trefjar sýnir taflan 25 g fyrir 2.000 hitaeiningar og 30 g fyrir 2.500 hitaeiningar.“ *Mynd 5.18: (a) Makkarónur og ostur innihalda orku í formi stórnæringarefna í matnum. (b) Næringarupplýsingar matvælanna eru sýndar á umbúðamerkingunni. Í Bandaríkjunum er orkuinnihaldið gefið upp í hitaeiningum (á skammt); annars staðar í heiminum eru kílójúl yfirleitt notuð. (heimild a: breyting á verki eftir „Rex Roof“/Flickr)*{id="CNX_Chem_05_02_FoodLabel](images/media/CNX_Chem_05_02_FoodLabel.jpg){#CNX_Chem_05_02_FoodLabel}
 
 Fyrir dæmið sem sýnt er í (b) er heildarorkan í 228 g skammti reiknuð
 með:
@@ -761,7 +624,6 @@ ${(5\,\text{g prótein}\,\times \,4\,\text{Hitaeiningar/g})+(31\,\text{g kolvetn
 ---
 title: "Varmamælingar"
 ---
-
 
 Þú getur því notað innihaldslýsingar til að telja hitaeiningarnar þínar.
 En hvaðan koma gildin? Og hversu nákvæm eru þau? Hitaeiningainnihald
@@ -781,14 +643,15 @@ að ákvarða orkuinnihald matvæla er magn kolvetna, próteina og fitu
 margfaldað með meðalfjölda hitaeininga á gramm fyrir hvert þeirra og
 myndefnin lögð saman til að fá heildarorkuna.
 
-:::link-to-learning Smelltu á þennan
-\[hlekk\]{url="http://openstax.org/l/16USDA"} til að fá aðgang að
+:::link-to-learning
+Smelltu á þennan
+[hlekk](http://openstax.org/l/16USDA) til að fá aðgang að
 innlendum næringarefnagagnagrunni landbúnaðarráðuneytis Bandaríkjanna
 (USDA), sem inniheldur næringarupplýsingar um yfir 8000 matvæli.
 
 :::
 
-Smelltu á þennan \[hlekk\]{url="http://openstax.org/l/16USDA"} til að fá
+Smelltu á þennan [hlekk](http://openstax.org/l/16USDA) til að fá
 aðgang að innlendum næringarefnagagnagrunni landbúnaðarráðuneytis
 Bandaríkjanna (USDA), sem inniheldur næringarupplýsingar um yfir 8000
 matvæli.
@@ -801,7 +664,7 @@ matvæli.
 styrkja steypu) er sleppt í 425 ml af vatni við 24,0 °C. Lokahitastig
 vatnsins var mælt 42,7 °C. Reiknaðu upphafshitastig
 steypustyrktarjárnsins. Gerðu ráð fyrir að eðlisvarmi stáls sé um það
-bil sá sami og fyrir járn (\[↑\]{ref="fs-idm68801008"}) og að allur
+bil sá sami og fyrir járn ([↑](#fs-idm68801008)) og að allur
 varmaflutningur eigi sér stað milli steypustyrktarjárnsins og vatnsins
 (engin varmaskipti verða við umhverfið).
 
@@ -887,7 +750,7 @@ ${({c}_{{\text{málmur}}})(59.7\,\text{°C})(28.5\,\text{°C}-100.0\,\text{J/g �
 
 $${{c}_{{\text{málmur}}}=\,\frac{{-(4.184\,\text{J/g °C})(60.0\,\text{°C})(6.5\,\text{°C})}}{{(59.7\,\text{J/g °C})(−71.5\,\text{°C})}}\,=0.38\,\text{J/g °C}}$${#fs-idm13040064}
 
-Þegar þetta er borið saman við gildin í \[↗\]{ref="fs-idm68801008"} er
+Þegar þetta er borið saman við gildin í [↗](#fs-idm68801008) er
 eðlisvarmi málmsins úr tilrauninni næstur gildinu fyrir kopar (0,39 J/g
 °C), þannig að við ályktum að málmurinn sé kopar.
 
@@ -983,7 +846,7 @@ lausnarinnar séu þeir sömu og fyrir vatn
 
 Þegar fast ammóníumnítrat leysist upp í vatni verður lausnin köld. Þetta
 er grundvöllurinn að „skyndikælipoka“
-(\[↑\]{ref="CNX_Chem_05_02_IcePack"}). Þegar 3,21 g af föstu NH~4~NO~3~
+([↑](#CNX_Chem_05_02_IcePack)). Þegar 3,21 g af föstu NH~4~NO~3~
 leysist upp í 50,0 g af vatni við 24,9 °C í varmamæli lækkar hitastigið
 í 20,3 °C.
 
@@ -1054,9 +917,6 @@ q~hvarf~ = –39,0 kJ (hvarfið framleiddi 39,0 kJ af varma)
 
 :::
 
-## Lykilhugtök og samantekt
-
-Varmamæling er notuð til að mæla magn varmaorku sem flyst í
 efnafræðilegu eða eðlisfræðilegu ferli. Þetta krefst nákvæmrar mælingar
 á hitastigsbreytingunni sem verður á meðan á ferlinu stendur og massa
 kerfisins og umhverfisins. Þessar mældu stærðir eru síðan notaðar til að
@@ -1069,3 +929,280 @@ kaffibollavarmamælum sem notaðir eru af byrjendum í efnafræði til
 háþróaðra sprengivarmamæla sem notaðir eru til að ákvarða orkuinnihald
 matvæla.
 
+## Efnafræði – Æfingar í lok kafla
+
+500 ml flaska af vatni við stofuhita og
+2 l flaska af vatni við sama hitastig voru settar í ísskáp. Eftir 30
+mínútur hafði 500 ml flaskan af vatni kólnað niður í hitastig
+ísskápsins. Klukkutíma síðar hafði 2 l flaskan af vatni kólnað niður í
+sama hitastig. Þegar spurt var hvaða vatnssýni hefði tapað mestum varma
+svaraði einn nemandi að báðar flöskurnar hefðu tapað sama magni af varma
+vegna þess að þær byrjuðu við sama hitastig og enduðu við sama hitastig.
+Annar nemandi taldi að 2 l flaskan af vatni hefði tapað meiri varma
+vegna þess að þar væri meira vatn. Þriðji nemandinn taldi að 500 ml
+flaskan af vatni hefði tapað meiri varma vegna þess að hún kólnaði
+hraðar. Fjórði nemandinn taldi að ekki væri hægt að segja til um það
+vegna þess að við vissum ekki upphafs- og lokahitastig vatnsins.
+Tilgreindu hvaða af þessum svörum er rétt og lýstu villunni í hverju
+hinna svaranna.
+
+:::
+
+Yrði varmamagnið sem mælt er fyrir
+hvarfið í [↗](#fs-idm19242032) meira, minna eða óbreytt ef við
+notuðum varmamæli sem var lélegri einangrari en kaffibollavarmamælir?
+Útskýrðu svarið.
+
+:::
+
+:::answer
+Minna; meiri varmi myndi tapast út í kaffibollann og umhverfið
+og því yrði Δ*T* fyrir vatnið minna og reiknað *q* yrði minna
+
+:::
+
+Myndi varmamagnið sem uppleysingin í
+[↗](#fs-idp325184) gleypir virðast meira, minna eða óbreytt ef
+tilraunamaðurinn notaði varmamæli sem var lélegri einangrari en
+kaffibollavarmamælir? Útskýrðu svarið.
+
+:::
+
+Myndi varmamagnið sem uppleysingin í
+[↗](#fs-idp325184) gleypir virðast meira, minna eða óbreytt ef
+tekið væri tillit til varmarýmdar varmamælisins? Útskýrðu svarið.
+
+:::
+
+:::answer
+Meira, þar sem að taka tillit til varmarýmdar varmamælisins
+mun bæta fyrir varmaorkuna sem flyst yfir í lausnina frá varmamælinum;
+þessi nálgun felur í sér varmamælinn sjálfan, ásamt lausninni, sem
+„umhverfi“: *q*~hvarf~ = −(*q*~lausn~ + *q*~varmamælir~); þar sem bæði
+*q*~lausn~ og *q*~varmamælir~ eru neikvæð, mun það að taka síðari liðinn
+með (*q*~hvarf~) gefa hærra gildi fyrir uppleysingarvarmann
+
+:::
+
+Hve mörgum millilítrum af vatni við 23
+°C með eðlismassa 1,00 g/ml þarf að blanda saman við 180 ml (um 6 oz) af
+kaffi við 95 °C þannig að blandan sem myndast verði með hitastigið 60
+°C? Gerðu ráð fyrir að kaffi og vatn hafi sama eðlismassa og sama
+eðlisvarma.
+
+:::
+
+Hversu mikið mun hitastig á bolla (180
+g) af kaffi við 95 °C lækka þegar 45 g silfurskeið (eðlisvarmi 0,24 J/g
+°C) við 25 °C er sett í kaffið og þau tvö fá að ná sama hitastigi? Gerðu
+ráð fyrir að kaffið hafi sama eðlismassa og eðlisvarma og vatn.
+
+:::
+
+:::answer
+Hitastig kaffisins mun lækka um 1 gráðu.
+
+:::
+
+45 g álskeið (eðlisvarmi 0,88 J/g °C)
+við 24 °C er sett í 180 ml (180 g) af kaffi við 85 °C og hitastig þeirra
+tveggja verður jafnt.
+
+\(a\) Hvert er lokahitastigið þegar þau tvö verða jöfn? Gerðu ráð fyrir
+að kaffi hafi sama eðlisvarma og vatn.
+
+\(b\) Í fyrsta skipti sem nemandi leysti þetta dæmi fékk hann svarið 88
+°C. Útskýrðu hvers vegna þetta er augljóslega rangt svar.
+
+:::
+
+Hitastig kælivatnsins þegar það
+yfirgefur heita vél bifreiðar er 240 °F. Eftir að það fer í gegnum
+vatnskassann er hitastigið 175 °F. Reiknaðu varmamagnið sem flyst frá
+vélinni til umhverfisins með einu galloni af vatni með eðlisvarma 4,184
+J/g °C.
+
+:::
+
+:::answer
+5,7 ${\times }$ 10^2^ kJ
+
+:::
+
+70,0 g málmstykki við 80,0 °C er komið
+fyrir í 100 g af vatni við 22,0 °C í varmamæli eins og sýndur er í
+[↗](#CNX_Chem_05_02_Calorim). Málmurinn og vatnið ná sama
+hitastigi við 24,6 °C. Hversu mikinn varma gaf málmurinn frá sér til
+vatnsins? Hver er eðlisvarmi málmsins?
+
+:::
+
+Ef hvarf framleiðir 1,506 kJ af varma,
+sem er fangaður í 30,0 g af vatni sem er upphaflega við 26,5 °C í
+varmamæli eins og í [↗](#CNX_Chem_05_02_Calorim), hvert er þá
+lokahitastig vatnsins?
+
+:::
+
+:::answer
+38,5 °C
+
+:::
+
+0,500 g sýni af KCl er bætt við 50,0 g
+af vatni í varmamæli ([↗](#CNX_Chem_05_02_Calorim)). Ef
+hitastigið lækkar um 1,05 °C, hvert er þá áætlað varmamagn sem fylgir
+uppleysingu KCl, að því gefnu að eðlisvarmi lausnarinnar sem myndast sé
+4,18 J/g °C? Er hvarfið útvermið eða innvermið?
+
+:::
+
+Að leysa upp 3,0 g af CaCl~2~(*s*) í
+150,0 g af vatni í varmamæli ([↗](#CNX_Chem_05_02_Calorim)) við
+22
+
+.4 °C veldur því að hitastigið hækkar í 25,8 °C. Hversu mikill er
+nálgaður varmi sem verður til við upplausnina, að því gefnu að
+eðlisvarmi lausnarinnar sem myndast sé 4,18 J/g °C? Er hvarfið útvermið
+eða innvermið?
+
+:::
+
+:::answer
+−2,2 kJ; Varminn sem myndast sýnir að hvarfið er útvermið.
+
+:::
+
+æfing{id="fs-idm54145200"} Þegar 50,0 g af 0,200 M NaCl(*aq*) við
+24,1 °C er bætt við 100,0 g af 0,100 M AgNO~3~(*aq*) við 24,1 °C í
+hitaeiningamæli hækkar hitastigið í 25,2 °C þegar AgCl(*s*) myndast. Að
+því gefnu að eðlisvarmi lausnarinnar og myndefnanna sé 4,20 J/g °C,
+reiknaðu nálgað magn varma í júlum sem myndast.
+
+æfing{id="fs-idm11354032"} Álagning 3,15 g af Ba(OH)~2~·8H~2~O í
+lausn af 1,52 g af NH~4~SCN í 100 g af vatni í hitaeiningamæli olli því
+að hitastigið lækkaði um 3,1 °C. Að því gefnu að eðlisvarmi lausnarinnar
+og myndefnanna sé 4,20 J/g °C, reiknaðu nálgað magn varma sem hvarfið
+gleypir, sem má tákna með eftirfarandi jöfnu:
+
+Ba(OH)~2~·8H~2~O(*s*) + 2NH~4~SCN(*aq*) ⟶ Ba(SCN)~2~(*aq*) +
+2NH~3~(*aq*) + 10H~2~O(*l*)
+
+:::answer
+1,4 kJ
+
+:::
+
+æfing{id="fs-idp3696624"} Hvarf 50 ml af sýru og 50 ml af basa sem
+lýst er í [↗](#fs-idm19242032) hækkaði hitastig lausnarinnar um
+6,9 °C. Hversu mikið hefði hitastigið hækkað ef 100 ml af sýru og 100 ml
+af basa hefðu verið notuð í sama hitaeiningamæli með sama
+upphafshitastigi, 22,0 °C? Útskýrðu svarið.
+
+---
+title: "Varmamælingar"
+---
+
+Ef 3,21 g af NH~4~NO~3~ í
+[↗](#fs-idp325184) væru leyst upp í 100,0 g af vatni við sömu
+aðstæður, hversu mikið myndi hitastigið breytast? Útskýrðu svarið.
+
+:::
+
+:::answer
+22.6. Þar sem massi og varmarýmd lausnarinnar eru um það bil
+jöfn massa og varmarýmd vatnsins, leiðir tvöföldun á magni vatnsins til
+þess að hitastigsbreytingin minnkar um helming.
+
+:::
+
+Þegar 1,0 g af frúktósa,
+C~6~H~12~O~6~(*s*), sykri sem algengt er að finna í ávöxtum, er brennt í
+súrefni í sprengihitamæli, hækkar hitastig hitamælisins um 1,58 °C. Ef
+varmarýmd hitamælisins og innihalds hans er 9,90 kJ/°C, hvað er *q*
+fyrir þennan bruna?
+
+:::
+
+Þegar 0,740 g sýni af trínítrótólúeni
+(TNT), C~7~H~5~N~2~O~6~, er brennt í sprengihitamæli, hækkar hitastigið
+úr 23,4 °C í 26,9 °C. Varmarýmd hitamælisins er 534 J/°C og hann
+inniheldur 675 ml af vatni. Hversu mikill varmi myndaðist við bruna
+TNT-sýnisins?
+
+:::
+
+:::answer
+11,7 kJ
+
+:::
+
+Ein aðferð til að framleiða rafmagn er
+að brenna kolum til að hita vatn, sem framleiðir gufu sem knýr rafala.
+Til að ákvarða hraðann sem kolum er matað inn í brennarann í slíkri
+verksmiðju þarf að ákvarða brunavarmann á hvert tonn af kolum með
+sprengihitamæli. Þegar 1,00 g af kolum er brennt í sprengihitamæli
+([↗](#CNX_Chem_05_02_BombCalor)) hækkar hitastigið um 1,48 °C. Ef
+varmarýmd hitamælisins er 21,6 kJ/°C, ákvarðaðu varmann sem myndast við
+bruna á einu tonni af kolum (2,000 ${\times }$ 10^3^ pund).
+
+:::
+
+Ráðlagt magn fitu fyrir einstakling á
+2000 kaloríu daglegu mataræði er 65 g. Hvaða hlutfall kaloría í þessu
+mataræði kæmi frá þessu magni af fitu ef meðalfjöldi kaloría fyrir fitu
+er 9,1 kaloría/g?
+
+:::
+
+:::answer
+30%
+
+:::
+
+Teskeið af kolvetninu súkrósa
+(venjulegur sykur) inniheldur 16 kaloríur (16 kkal). Hver er massi
+einnar teskeiðar af súkrósa ef meðalfjöldi kaloría fyrir kolvetni er 4,1
+kaloría/g?
+
+:::
+
+Hver er hámarksmassi kolvetna í 6 únsu
+skammti af léttgosdrykk sem inniheldur minna en 1 kaloríu á dós ef
+meðalfjöldi kaloría fyrir kolvetni er 4,1 kaloría/g?
+
+:::
+
+:::answer
+0,24 g
+
+:::
+
+Hálfur lítri af gæðaís getur innihaldið
+1100 kaloríur. Hvaða massa af fitu, í grömmum og pundum, þarf að
+framleiða í líkamanum til að geyma auka 1,1 ${\times }$ 10^3^ kaloríur
+ef meðalfjöldi kaloría fyrir fitu er 9,1 kaloría/g?
+
+:::
+
+Skammtur af morgunkorni inniheldur 3 g
+af próteini, 18 g af kolvetnum og 6 g af fitu. Hvert er kaloríuinnihald
+skammts af þessu morgunkorni ef meðalfjöldi kaloría fyrir fitu er 9,1
+kaloría/g, fyrir kolvetni er 4,1 kaloría/g og fyrir prótein er 4,1
+kaloría/g?
+
+:::
+
+:::answer
+1,4 $\times$ 10^2^ kaloríur
+
+:::
+
+Hver er ódýrasti orkugjafinn í
+kílójúlum á dollar: kassi af morgunkorni sem vegur 32 únsur og kostar
+4,23 dollara, eða lítri af ísóoktani (eðlismassi, 0,6919 g/ml) sem
+kostar 0,45 dollara? Berðu saman næringargildi morgunkornsins við
+varmann sem myndast við bruna ísóoktans við staðlaðar aðstæður. 1,0 únsu
+skammtur af morgunkorninu gefur 130 kaloríur.
+
+:::

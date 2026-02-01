@@ -1,21 +1,10 @@
 ---
 title: Inngangur
-section: "5.0"
+section: intro
 chapter: 5
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-30T09:29:02.269Z"
-objectives:
-  - Grundvallaratriði orku
-source:
-  original: Chemistry 2e by OpenStax
-  authors: Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0/
-  originalUrl: https://openstax.org/details/books/chemistry-2e
-  translator: Sigurður E. Vilhelmsson
-  translationYear: 2026
-  modifications: Translated to Icelandic, adapted for Icelandic secondary school students
+published-at: "2026-02-01T14:29:48.990Z"
 ---
 
 # Inngangur
@@ -28,15 +17,10 @@ source:
 
 - Varmamælingar
 
-- Varmaþyngd :::
+- Varmaþyngd
+:::
 
-{id="CNX_Chem_05_00_Match" class="splash" alt="Kveikt er í eldspýtu sem
-maður heldur á þegar henni er strokið eftir hrjúfu yfirborði
-eldspýtustokks.“}
-
-*Mynd 5.1: Þegar eldspýtshaus er strokið eftir hrjúfu yfirborði hefst
-brunahvarf sem framleiðir orku í formi varma og ljóss. (heimild:
-breyting á verki eftir Laszlo Ilyes)*{id="CNX_Chem_05_00_Match"}
+![Kveikt er í eldspýtu sem maður heldur á þegar henni er strokið eftir hrjúfu yfirborði eldspýtustokks.“} *Mynd 5.1: Þegar eldspýtshaus er strokið eftir hrjúfu yfirborði hefst brunahvarf sem framleiðir orku í formi varma og ljóss. (heimild: breyting á verki eftir Laszlo Ilyes)*{id="CNX_Chem_05_00_Match](images/media/CNX_Chem_05_00_Match.jpg){#CNX_Chem_05_00_Match .splash}
 
 Efnahvörf, eins og þau sem eiga sér stað þegar þú kveikir á eldspýtu,
 fela í sér breytingar á orku jafnt sem efni. Samfélög á öllum

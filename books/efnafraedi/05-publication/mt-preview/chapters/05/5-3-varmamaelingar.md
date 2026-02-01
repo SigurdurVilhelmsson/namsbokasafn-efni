@@ -1,19 +1,10 @@
 ---
-title: Vermi
+title: Varmamælingar
 section: "5.3"
 chapter: 5
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-30T09:29:02.280Z"
-source:
-  original: Chemistry 2e by OpenStax
-  authors: Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
-  license: CC BY 4.0
-  licenseUrl: https://creativecommons.org/licenses/by/4.0/
-  originalUrl: https://openstax.org/details/books/chemistry-2e
-  translator: Sigurður E. Vilhelmsson
-  translationYear: 2026
-  modifications: Translated to Icelandic, adapted for Icelandic secondary school students
+published-at: "2026-02-01T14:29:49.000Z"
 ---
 
 # Vermi
@@ -32,9 +23,10 @@ source:
 
 - Reiknað vermisbreytingar fyrir ýmis efnahvörf
 
-- Útskýrt lögmál Hess og notað það til að reikna út hvarfvermi :::
+- Útskýrt lögmál Hess og notað það til að reikna út hvarfvermi
+:::
 
-Varmaefnafræði er grein innan **varmaefnafræði**{id="term-00001"},
+Varmaefnafræði er grein innan **varmaefnafræði**{#term-00001},
 vísindanna sem fjalla um tengslin milli varma, vinnu og annarra
 orkuforma í samhengi við efna- og eðlisfræðilega ferla. Þar sem við
 einbeitum okkur að varmaefnafræði í þessum kafla þurfum við að skoða
@@ -64,22 +56,22 @@ Sambandið milli innri orku, varma og vinnu má tákna með jöfnunni:
 
 $\text{Δ}U=q+w${#fs-idm150109936}
 
-eins og sýnt er í \[↑\]{ref="CNX_Chem_05_03_Systemqw"}. Þetta er ein
-útgáfa af **fyrsta lögmáli varmafræðinnar**{id="term-00003"} og það
+eins og sýnt er í [↑](#CNX_Chem_05_03_Systemqw). Þetta er ein
+útgáfa af **fyrsta lögmáli varmafræðinnar**{#term-00003} og það
 sýnir að innri orka kerfis breytist með varmaflæði inn í eða út úr
 kerfinu (jákvætt *q* er varmaflæði inn; neikvætt *q* er varmaflæði út)
 eða vinnu sem er framkvæmd á eða af kerfinu. Vinnan, *w*, er jákvæð ef
 hún er framkvæmd á kerfinu og neikvæð ef hún er framkvæmd af kerfinu.
 
-{id="CNX_Chem_05_03_Systemqw" class="scaled-down"}
+![](images/media/CNX_Chem_05_03_Systemqw.jpg)
 
 *Mynd 5.19: Innri orku, U, kerfis má breyta með varmaflæði og vinnu. Ef
 varmi flæðir inn í kerfið, q~inn~, eða vinna er framkvæmd á kerfinu,
 w~á~, eykst innri orka þess, Δ*U\* \> 0. Ef varmi flæðir út úr kerfinu,
 *q*~út~, eða vinna er framkvæmd af kerfinu, *w*~af~, minnkar innri orka
-þess, Δ*U* \< 0.\*{id="CNX_Chem_05_03_Systemqw"}
+þess, Δ*U* \< 0.\*{#CNX_Chem_05_03_Systemqw}
 
-Tegund vinnu sem kallast **þensluvinna**{id="term-00004"} (eða
+Tegund vinnu sem kallast **þensluvinna**{#term-00004} (eða
 þrýstings-rúmmálsvinna) á sér stað þegar kerfi þrýstir á móti umhverfinu
 gegn hamlandi þrýstingi eða þegar umhverfið þjappar kerfinu saman. Dæmi
 um þetta á sér stað við notkun brunahreyfils. Hvarf bensíns og súrefnis
@@ -93,20 +85,21 @@ mörgum sinnum á sekúndu á meðan hreyfillinn er í gangi.) Við munum skoða
 hvernig á að ákvarða magn vinnu sem fylgir efna- eða eðlisfræðilegri
 breytingu í kaflanum um varmafræði.
 
-:::link-to-learning Þessi sýn á
-\[brunahreyfil\]{url="http://openstax.org/l/16combustion"} sýnir
+:::link-to-learning
+Þessi sýn á
+[brunahreyfil](http://openstax.org/l/16combustion) sýnir
 umbreytingu orku sem myndast við útvermið brunahvarf eldsneytis eins og
 bensíns í hreyfiorku.
 
 :::
 
-Þessi sýn á \[brunahreyfil\]{url="http://openstax.org/l/16combustion"}
+Þessi sýn á [brunahreyfil](http://openstax.org/l/16combustion)
 sýnir umbreytingu orku sem myndast við útvermið brunahvarf eldsneytis
 eins og bensíns í hreyfiorku.
 
 Eins og fjallað var um má tákna sambandið milli innri orku, varma og
 vinnu sem Δ*U* = *q* + *w*. Innri orka er dæmi um
-**ástandsfall**{id="term-00005"} (eða ástandsbreytu), en varmi og vinna
+**ástandsfall**{#term-00005} (eða ástandsbreytu), en varmi og vinna
 eru ekki ástandsföll. Gildi ástandsfalls fer aðeins eftir því ástandi
 sem kerfi er í, en ekki hvernig því ástandi er náð. Ef stærð er ekki
 ástandsfall, þá fer gildi hennar *vissulega* eftir því hvernig ástandinu
@@ -117,23 +110,18 @@ Kilimanjaro ertu í 5.895 m hæð og það skiptir ekki máli hvort þú gekkst
 þangað eða komst þangað í fallhlíf. Vegalengdin sem þú fórst til að
 komast á tind Kilimanjaro er hins vegar ekki ástandsfall. Þú gætir
 klifið á tindinn eftir beinni leið eða eftir krókóttari hringleið
-(\[↑\]{ref="CNX_Chem_05_03_Summit"}). Vegalengdirnar sem farnar eru væru
+([↑](#CNX_Chem_05_03_Summit)). Vegalengdirnar sem farnar eru væru
 ólíkar (vegalengd er ekki ástandsfall) en hæðin sem náðst hefur væri sú
 sama (hæð yfir sjávarmáli er ástandsfall).
 
-{id="CNX_Chem_05_03_Summit" class="scaled-down" alt="Loftmynd sýnir
-útsýni yfir Kilimanjaro-fjall. Bein, græn ör merkt X er dregin frá
-orðinu „grunnur“, sem er skrifað neðst á fjallinu, að orðinu „tindur“,
-sem er skrifað efst á fjallinu. Önnur ör merkt Y er dregin frá grunninum
-að tindinum við hliðina á grænu örinni, en þessi ör er bleik og hefur
-þrjár stórar S-laga sveigjur á lengd sinni."}
+![Loftmynd sýnir útsýni yfir Kilimanjaro-fjall. Bein, græn ör merkt X er dregin frá orðinu „grunnur“, sem er skrifað neðst á fjallinu, að orðinu „tindur“, sem er skrifað efst á fjallinu. Önnur ör merkt Y er dregin frá grunninum að tindinum við hliðina á grænu örinni, en þessi ör er bleik og hefur þrjár stórar S-laga sveigjur á lengd sinni.](images/media/CNX_Chem_05_03_Summit.jpg){#CNX_Chem_05_03_Summit .scaled-down}
 
 *Mynd 5.20: Leiðir X og Y tákna tvær mismunandi leiðir á tind
 Kilimanjaro. Báðar hafa sömu hæðarbreytingu (hæð yfir sjávarmáli á
 fjalli er ástandsfall; það fer ekki eftir leiðinni), en þær hafa mjög
 mismunandi vegalengdir (gengin vegalengd er ekki ástandsfall; hún fer
 eftir leiðinni). (Heimild: breyting á verki eftir Paul
-Shaffner)*{id="CNX_Chem_05_03_Summit"}
+Shaffner)*{#CNX_Chem_05_03_Summit}
 
 Efnafræðingar nota venjulega eiginleika sem kallast **vermi
 (*H*)**{id="term-00006"} til að lýsa varmafræði efna- og eðlisfræðilegra
@@ -171,7 +159,7 @@ eru varmaflæðið (q~p~) og vermibreytingin (Δ*H*) fyrir ferlið jöfn.
 Varminn sem losnar þegar þú notar Bunsen brennara er jafn vermibreytingu
 metanbrunans sem á sér stað, þar sem hann gerist við í raun stöðugan
 þrýsting andrúmsloftsins. Á hinn bóginn er varminn sem myndast við hvarf
-sem mælt er í sprengihitamæli (\[Kafli\]{doc="m68726"}) ekki jafn Δ*H*
+sem mælt er í sprengihitamæli ([Kafli](/efnafraedi/kafli/05/5-2-varmamaelingar)) ekki jafn Δ*H*
 vegna þess að lokað málmílát með stöðugu rúmmáli kemur í veg fyrir að
 þrýstingurinn haldist stöðugur (hann getur aukist eða minnkað ef hvarfið
 skilar auknu eða minnkuðu magni af gasefnum). Efnafræðingar framkvæma
@@ -303,7 +291,7 @@ fyrir hvarfið þegar 1 mól af FeCl~2~(*s*) myndast?
 
 Vermibreytingar eru venjulega settar fram í töflum fyrir hvörf þar sem
 bæði hvarfefni og myndefni eru við sömu aðstæður.
-**Staðalástand**{id="term-00008"} er almennt viðurkennt sett af
+**Staðalástand**{#term-00008} er almennt viðurkennt sett af
 skilyrðum sem notað er sem viðmiðunarpunktur til að ákvarða eiginleika
 við aðrar aðstæður. Fyrir efnafræðinga vísar IUPAC-staðalástandið til
 efna við 1 bar þrýsting og lausna við 1 M og tilgreinir ekki hitastig.
@@ -425,33 +413,42 @@ hvarfið þegar 1 mól af FeCl~2~(*s*) myndast?
 title: "Varmamælingar"
 ---
 
-
-**Staðalbrunavermi**{id="term-00009"} ${(\text{Δ}{H}_{C}^{\text{°}})}$ er vermibreytingin
+**Staðalbrunavermi**{#term-00009} ${(\text{Δ}{H}_{C}^{\text{°}})}$ er vermibreytingin
 þegar 1 mól af efni brennur (hvarfast kröftuglega við súrefni) við
 staðalaðstæður; það er stundum kallað „brunavarmi“. Til dæmis er
 brunavermi etanóls, −1366,8 kJ/mól, sá varmi sem myndast þegar eitt mól
 af etanóli gengst undir fullkominn bruna við 25 °C og 1 atm þrýsting, og
 myndefnin eru einnig við 25 °C og 1 atm.
 
-${{\text{OH}}_{2}{\text{CO}}_{5}\text{−1366}(l)+3{\text{O}}_{2}(g)\,\longrightarrow \,2{{\text{CO}}}_{2}(g+3{\text{H}}_{2}\text{O}(l)\,\text{Δ}H\text{°}=\text{−1366.8 kJ}}${#fs-idm27865968}
+${{\text{OH}}_{2}{\text{CO}}_{5}\text{−1366}(l)+3{\text{−1366}}_{2}(g)\,\longrightarrow \,2{{\text{CO}}}_{2}(g+3{\text{H}}_{2}\text{O}(l)\,\text{Δ}H\text{°}=\text{−1366.8 kJ}}${#fs-idm27865968}
 
 Brunavermi margra efna hefur verið mælt; nokkur þeirra eru talin upp í
-\[↗\]{ref="fs-idp98710048"}. Mörg aðgengileg efni með hátt brunavermi
+[↗](#fs-idp98710048). Mörg aðgengileg efni með hátt brunavermi
 eru notuð sem eldsneyti, þar á meðal vetni, kolefni (sem kol eða
-viðarkol) og **kolvetni**{id="term-00010"} (efnasambönd sem innihalda
+viðarkol) og **kolvetni**{#term-00010} (efnasambönd sem innihalda
 aðeins vetni og kolefni), svo sem metan, própan og aðalefnisþættir
 bensíns.
 
 **Standard Molar Enthalpies of Combustion**
 
-[[TABLE:1]]{id="fs-idp98710048"}
+| Efni | Brunahvarf | Brunavermi, ${\text{Δ}{H}_{c}^{^{\circ}}}$${(\frac{{\text{kJ}}}{{\text{mól}}}\,\text{við}\,25\,\text{°C})}$ |
+| :--- | :--- | :--- |
+| kolefni | ${\text{CO}(s)+{\text{O}}_{2}(g)\,\longrightarrow \,{{\text{CO}}}_{2}(g)}$ | −393.5 |
+| vetni | ${{\text{H}}_{2}(g)+\,\frac{1}{2}\,{\text{O}}_{2}(g)\,\longrightarrow \,{\text{H}}_{2}\text{O}(l)}$ | −285.8 |
+| magnesín | ${\text{Mg}(s)+\,\frac{1}{2}\,{\text{MgO}}_{2}(g)\,\longrightarrow \,\text{MgO}(s)}$ | −601.6 |
+| brennisteinn | ${\text{SO}(s)+{\text{O}}_{2}(g)\,\longrightarrow \,{{\text{SO}}}_{2}(g)}$ | −296.8 |
+| kolmónoxíð | ${\text{CO}(g)+\,\frac{1}{2}\,{\text{CO}}_{2}(g)\,\longrightarrow \,{{\text{CO}}}_{2}(g)}$ | −283.0 |
+| metan | ${{{\text{CH}}}_{4}(g)+2{\text{CO}}_{2}(g)\,\longrightarrow \,{{\text{CO}}}_{2}(g)+2{\text{H}}_{2}\text{O}(l)}$ | −890.8 |
+| asetýlen | ${{\text{CO}}_{2}{\text{H}}_{2}(g)+\,\frac{5}{2}\,{\text{O}}_{2}(g)\,\longrightarrow \,2{{\text{CO}}}_{2}(g)+{\text{H}}_{2}\text{O}(l)}$ | −1301.1 |
+| etanól | ${{\text{OH}}_{2}{\text{2CO}}_{5}\text{OH}(l)+3{\text{O}}_{2}(g)\,\longrightarrow \,{{\text{2CO}}}_{2}(g)+3{\text{H}}_{2}\text{O}(l)}$ | −1366.8 |
+| metanól | ${{{\text{CH}}}_{3}\text{OH}(l)+\,\frac{3}{2}\,{\text{CO}}_{2}(g)\,\longrightarrow \,{{\text{CO}}}_{2}(g)+2{\text{H}}_{2}\text{O}(l)}$ | −726.1 |
+| ísóoktan | ${{\text{CO}}_{8}{\text{H}}_{{18}}(l)+\,\frac{{25}}{2}\,{\text{O}}_{2}(g)\,\longrightarrow \,8{{\text{CO}}}_{2}(g)+9{\text{H}}_{2}\text{O}(l)}$ | –5465.5 |
+{id="fs-idp98710048" summary="A data table is shown that has three columns and eleven rows. The header row reads “Substance,” “Combustion reaction,” and “Enthalpy of Combustion, Δ H subscript C superscript degree symbol (k J/ mol at 25 ° C).” The first column contains entries reading “carbon,” “hydrogen,” “magnesium,” “sulfur,” “carbon monoxide,” “methane,” “acetylene,” “ethanol,” “methanol,” and “isooctane.” The second column contains the equations “C (s) + O (g) right-facing arrow C O subscript 2 (g),” “H subscript 2 (g) + one half O subscript 2 (g) right-facing arrow H subscript 2 O (l),” “M g (s) + one half O subscript 2 (g) right-facing arrow M g O (s),” “S (s) + O subscript 2 (g) right-facing arrow S O subscript 2 (g),” “C O (g) + one half O subscript 2 (g) right-facing arrow C O subscript 2 (g),” “C H subscript 4 (g) + 2 O subscript 2 (g) right-facing arrow C O subscript 2 (g) + 2 H subscript 2 O (g),” “C subscript 2 H subscript 2 (g) + five halves O subscript 2 (g) right-facing arrow 2 C O subscript 2 (g) + H subscript 2 O (l),” “C subscript 2 H subscript 5 O H (l) + 2 O subscript 2 (g) right-facing arrow C O subscript 2 (g) + 3 H subscript 2 O (l),” “C H subscript 3 O H (l) + three halves O subscript 2 (g) right-facing arrow C O subscript 2 (g) + 2 H subscript 2 O (l),” and “C subscript 8 H subscript 18 (l) + twenty five halves O subscript 2 (g) right-facing arrow 8 C O subscript 2 (g) + 9 H subscript 2 O (l).” The final column contains the values “–393.5,” “–285.8,” “–601.6,” “–296.8,” “–283.0,” “–890.8,” “–1301.1,” “–1366.8,” “–726.1,” and “–5460.”"}
 
-{id="CNX_Chem_05_03_GasBurning" class="scaled-down" alt="Mynd sýnir
-stóran eldhnött brenna á vegi. Slökkviliðsbíll og slökkviliðsmaður sjást
-í forgrunni."}
+![Mynd sýnir stóran eldhnött brenna á vegi. Slökkviliðsbíll og slökkviliðsmaður sjást í forgrunni.](images/media/CNX_Chem_05_03_GasBurning.jpg){#CNX_Chem_05_03_GasBurning .scaled-down}
 
 *Mynd 5.21: Bruni bensíns er mjög útvermið. (heimild: breyting á verki
-eftir „AlexEagle“/Flickr)*{id="CNX_Chem_05_03_GasBurning"}
+eftir „AlexEagle“/Flickr)*{#CNX_Chem_05_03_GasBurning}
 
 :::note
 
@@ -468,7 +465,7 @@ eftir „AlexEagle“/Flickr)*{id="CNX_Chem_05_03_GasBurning"}
 Eftir því sem birgðir jarðefnaeldsneytis minnka og verða dýrari í
 vinnslu er stöðugt leitað að nýjum orkugjöfum fyrir framtíðina. Meðal
 þeirra lífeldsneyta sem lofa mestu góðu eru þau sem unnin eru úr
-þörungum (\[↗\]{ref="CNX_Chem_05_03_AlgalFuel1"}). Þær þörungategundir
+þörungum ([↗](#CNX_Chem_05_03_AlgalFuel1)). Þær þörungategundir
 sem notaðar eru, eru óeitraðar, lífbrjótanlegar og meðal hraðvöxnustu
 lífvera heims. Um 50% af þyngd þörunga er olía, sem auðveldlega má
 breyta í eldsneyti eins og lífdísil. Þörungar geta gefið af sér 26.000
@@ -492,39 +489,27 @@ rækta þörungana (sem nota sólarljós sem orkugjafa og CO~2~ sem hráefni);
 uppskera þörungana; vinna eldsneytisefnasamböndin (eða forvera
 efnasambanda); vinna eftir þörfum (t.d. framkvæma umesterun til að búa
 til lífdísil); hreinsa; og dreifa
-(\[↗\]{ref="CNX_Chem_05_03_AlgalFuel2"}).
+([↗](#CNX_Chem_05_03_AlgalFuel2)).
 
 :::
 
-{id="CNX_Chem_05_03_AlgalFuel1" class="scaled-down" alt="Þrjár myndir
-eru sýndar og merktar a, b og c. Mynd a sýnir smásjármynd af þörungum.
-Þeir eru brúnir, margskiptir þræðir og netlíkar byggingar á
-ljósfjólubláum bakgrunni. Mynd b sýnir fimm stór ker full af brúnum
-vökva sem inniheldur þessa þörunga. Mynd c sýnir sívalning fullan af
-grænum vökva í forgrunni og plakat í bakgrunni með titlinum „From Field
-to Fleet.“"}
+![Þrjár myndir eru sýndar og merktar a, b og c. Mynd a sýnir smásjármynd af þörungum. Þeir eru brúnir, margskiptir þræðir og netlíkar byggingar á ljósfjólubláum bakgrunni. Mynd b sýnir fimm stór ker full af brúnum vökva sem inniheldur þessa þörunga. Mynd c sýnir sívalning fullan af grænum vökva í forgrunni og plakat í bakgrunni með titlinum „From Field to Fleet.“](images/media/CNX_Chem_05_03_AlgalFuel1.jpg){#CNX_Chem_05_03_AlgalFuel1 .scaled-down}
 
 *Mynd 5.22: (a) Örsmáa þörunga má (b) rækta í miklu magni og að lokum
 (c) breyta í nytsamlegt eldsneyti eins og lífdísil. (heimild a: breyting
 á verki eftir Micah Sittig; heimild b: breyting á verki eftir Robert
 Kerton; heimild c: breyting á verki eftir John F.
-Williams)*{id="CNX_Chem_05_03_AlgalFuel1"}
+Williams)*{#CNX_Chem_05_03_AlgalFuel1}
 
-{id="CNX_Chem_05_03_AlgalFuel2" alt="Sýnt er flæðirit sem inniheldur
-myndir og orð. Lesið frá vinstri til hægri eru hugtökin „Rækta“,
-„Uppskera“, „Vinna“, „Vinnsla og hreinsun“ og „Þotueldsneyti bensín
-dísill“ sýnd með hægri örvum á milli. Fyrir ofan hvert hugtak eru, í
-sömu röð, skýringarmyndir af þremur ílátum, þremur sívalningum sem
-liggja hlið við hlið, pýramídalíku íláti með vökva inni, verksmiðju og
-eldsneytisdælu. Í rýminu fyrir ofan allar skýringarmyndirnar og vinstra
-megin við myndirnar er skýringarmynd af sólinni."}
+![Sýnt er flæðirit sem inniheldur myndir og orð. Lesið frá vinstri til hægri eru hugtökin „Rækta“, „Uppskera“, „Vinna“, „Vinnsla og hreinsun“ og „Þotueldsneyti bensín dísill“ sýnd með hægri örvum á milli. Fyrir ofan hvert hugtak eru, í sömu röð, skýringarmyndir af þremur ílátum, þremur sívalningum sem liggja hlið við hlið, pýramídalíku íláti með vökva inni, verksmiðju og eldsneytisdælu. Í rýminu fyrir ofan allar skýringarmyndirnar og vinstra megin við myndirnar er skýringarmynd af sólinni.](images/media/CNX_Chem_05_03_AlgalFuel2.jpg){#CNX_Chem_05_03_AlgalFuel2}
 
 *Mynd 5.23: Þörungar breyta sólarljósi og koldíoxíði í olíu sem er
 uppskorin, unnin, hreinsuð og umbreytt í ýmsar gerðir endurnýjanlegs
-eldsneytis.*{id="CNX_Chem_05_03_AlgalFuel2"}
+eldsneytis.*{#CNX_Chem_05_03_AlgalFuel2}
 
-:::link-to-learning Smelltu
-\[hér\]{url="http://openstax.org/l/16biofuel"} til að læra meira um
+:::link-to-learning
+Smelltu
+[hér](http://openstax.org/l/16biofuel) til að læra meira um
 ferlið við framleiðslu á lífeldsneyti úr þörungum.
 
 :::
@@ -533,7 +518,7 @@ ferlið við framleiðslu á lífeldsneyti úr þörungum.
 
 ### Dæmi 5.10: Notkun brunavermis
 
-Eins og \[↗\]{ref="CNX_Chem_05_03_GasBurning"} gefur til kynna er bruni
+Eins og [↗](#CNX_Chem_05_03_GasBurning) gefur til kynna er bruni
 bensíns mjög útvermið ferli. Við skulum ákvarða áætlað magn varma sem
 myndast við bruna á 1,00 L af bensíni, að því gefnu að brunavermi
 bensíns sé það sama og ísóoktans, sem er algengt innihaldsefni í
@@ -544,7 +529,7 @@ bensíni. Eðlismassi ísóoktans er 0,692 g/mL.
 Við byrjum með þekkt magn (1,00 L af ísóoktani) og getum framkvæmt
 umreikninga milli eininga þar til við fáum æskilegt magn varma eða orku.
 Brunavermi ísóoktans gefur okkur einn af nauðsynlegu umreikningunum.
-\[↗\]{ref="fs-idp98710048"} gefur þetta gildi sem −5460 kJ á hvert 1 mól
+[↗](#fs-idp98710048) gefur þetta gildi sem −5460 kJ á hvert 1 mól
 af ísóoktani (C~8~H~18~).
 
 Með því að nota þessi gögn,
@@ -569,7 +554,7 @@ Hversu mikill varmi myndast við bruna á 125 g af asetýleni?
 
 ## Staðalmyndunarvermi
 
-**Staðalmyndunarvermi ${\text{Δ}{H}_{\text{f}}^{^{\circ}}}$**{id="term-00012"} er vermibreyting
+**Staðalmyndunarvermi ${\text{Δ}{H}_{\text{f}}^{^{\circ}}}$**{#term-00012} er vermibreyting
 fyrir efnahvarf þar sem nákvæmlega 1 mól af hreinu efni myndast úr
 frjálsum frumefnum í sínu stöðugasta formi við staðalaðstæður. Þessi
 gildi eru sérstaklega gagnleg til að reikna út eða spá fyrir um
@@ -596,7 +581,7 @@ Efnahvarfsjafna með ${\frac{1}{2}}$ móli af N~2~ og 1 móli af O~2~ er rétt
 móls af myndefni, NO~2~(*g*).
 
 Þú finnur töflu yfir staðalmyndunarvermi margra algengra efna í
-\[viðauka G\]{doc="m68865"}. Þessi gildi sýna að myndunarhvörf eru allt
+viðauka G. Þessi gildi sýna að myndunarhvörf eru allt
 frá því að vera mjög útvermin (eins og −2984 kJ/mól fyrir myndun
 P~4~O~10~) til þess að vera sterklega innvermin (eins og +226,7 kJ/mól
 fyrir myndun asetýlens, C~2~H~2~). Samkvæmt skilgreiningu er
@@ -705,7 +690,7 @@ geta ákvarðað varmann sem fylgir hvarfinu án þess að þurfa að gera
 tilraun.
 
 Þessi tegund útreikninga felur venjulega í sér notkun á **lögmáli
-Hess**{id="term-00013"}, sem segir: *Ef hægt er að skrifa ferli sem
+Hess**{#term-00013}, sem segir: *Ef hægt er að skrifa ferli sem
 summu nokkurra skrefbundinna ferla er vermibreyting heildarferlisins
 jöfn summu vermibreytinga hinna ýmsu skrefa*. Lögmál Hess gildir vegna
 þess að vermi er ástandsfall: Vermibreytingar ráðast aðeins af því hvar
@@ -738,36 +723,19 @@ vermibreytinga skrefanna.
 
 $${\text{CO}(s)+\,\frac{1}{2}{\text{kJ}}_{2}(g)\,\longrightarrow \,\text{CO}(g)}{\text{Δ}H\text{°}=−111\,\text{CO}}{{\text{CO}(g)+\,12{\text{kJ}}_{2}(g)\,\longrightarrow \,{{\text{kJ}}}_{2}(g)}{\text{C}(s)+{\text{O}}_{2}(g)\,\longrightarrow \,{{\text{CO}}}_{2}(g)\,}}{\frac{{\text{Δ}H\text{°}=−283\,\text{kJ}}}{{\text{Δ}H\text{°}=−394\,\text{kJ}}}}$${#fs-idp128371600}
 
-Niðurstaðan er sýnd á \[↗\]{ref="CNX_Chem_05_03_HessCO2"}. Við sjáum að
+Niðurstaðan er sýnd á [↗](#CNX_Chem_05_03_HessCO2). Við sjáum að
 Δ*H* fyrir heildarhvarfið er það sama hvort sem það gerist í einu skrefi
 eða tveimur. Þessi niðurstaða (heildar-Δ*H* fyrir hvarfið = summa
 Δ*H*-gilda fyrir „skref“ hvarfsins í heildarhvarfinu) gildir almennt
 fyrir efna- og eðlisfræðilega ferla.
 
-{id="CNX_Chem_05_03_HessCO2" alt="Myndin sýnir skýringarmynd. Löng ör
-vísar upp á við vinstra megin með textanum „vermi (H) eykst“. Lárétt
-lína neðst á myndinni er sýnd með formúlunni „C O með neðanskrift 2 (g)“
-fyrir neðan hana. Lárétt lína efst á myndinni er með formúlurnar „C
-(s) + O með neðanskrift 2 (g)“ fyrir ofan hana. Efri og neðri línurnar
-eru tengdar með ör sem vísar niður á við með gildinu „Δ H = –394 k J“
-skrifað við hliðina á henni. Fyrir neðan og til hægri við efri láréttu
-línuna er önnur lárétt lína með jöfnunum „C O (g) + einn helmingur O með
-neðanskrift 2 (g)“ fyrir ofan hana. Þessi lína og neðri línan eru
-tengdar með ör sem vísar niður á við með gildinu „Δ H = –283 k J“
-skrifað við hliðina á henni. Sama lína og efri línan eru tengdar með ör
-sem vísar niður á við með gildinu „Δ H = –111 k J“ skrifað við hliðina á
-henni. Þrír svigar eru hægra megin við myndina. Fyrsti sviginn nær frá
-efri láréttu línunni að annarri láréttu línunni. Hann er merktur „Vermi
-hvarfefna“. Annar sviginn nær frá annarri láréttu línunni að neðri
-láréttu línunni. Hann er merktur „Vermi myndefna“. Báðir þessir svigar
-eru innan þriðja svigans sem nær frá toppi til botns á myndinni. Hann er
-merktur „Vermibreyting útverma hvarfs í 1 eða 2 skrefum.“"}
+![Myndin sýnir skýringarmynd. Löng ör vísar upp á við vinstra megin með textanum „vermi (H) eykst“. Lárétt lína neðst á myndinni er sýnd með formúlunni „C O með neðanskrift 2 (g)“ fyrir neðan hana. Lárétt lína efst á myndinni er með formúlurnar „C (s) + O með neðanskrift 2 (g)“ fyrir ofan hana. Efri og neðri línurnar eru tengdar með ör sem vísar niður á við með gildinu „Δ H = –394 k J“ skrifað við hliðina á henni. Fyrir neðan og til hægri við efri láréttu línuna er önnur lárétt lína með jöfnunum „C O (g) + einn helmingur O með neðanskrift 2 (g)“ fyrir ofan hana. Þessi lína og neðri línan eru tengdar með ör sem vísar niður á við með gildinu „Δ H = –283 k J“ skrifað við hliðina á henni. Sama lína og efri línan eru tengdar með ör sem vísar niður á við með gildinu „Δ H = –111 k J“ skrifað við hliðina á henni. Þrír svigar eru hægra megin við myndina. Fyrsti sviginn nær frá efri láréttu línunni að annarri láréttu línunni. Hann er merktur „Vermi hvarfefna“. Annar sviginn nær frá annarri láréttu línunni að neðri láréttu línunni. Hann er merktur „Vermi myndefna“. Báðir þessir svigar eru innan þriðja svigans sem nær frá toppi til botns á myndinni. Hann er merktur „Vermibreyting útverma hvarfs í 1 eða 2 skrefum.“](images/media/CNX_Chem_05_03_HessCO2.jpg){#CNX_Chem_05_03_HessCO2}
 
 *Mynd 5.24: Myndun CO~2~(g) úr frumefnum sínum má hugsa sér að eigi sér
 stað í tveimur skrefum, sem samanlagt mynda heildarhvarfið, eins og
 lögmál Hess lýsir. Láréttu bláu línurnar tákna vermi. Fyrir útvermið
 ferli eru myndefnin með lægra vermi en
-hvarfefnin.*{id="CNX_Chem_05_03_HessCO2"}
+hvarfefnin.*{#CNX_Chem_05_03_HessCO2}
 
 Áður en við æfum okkur frekar í notkun lögmáls Hess skulum við rifja upp
 tvo mikilvæga eiginleika Δ*H*.
@@ -925,7 +893,6 @@ $\text{Δ}H\text{°}=(+107.0\,\text{kJ})+(24.7\,\text{kJ})+(−236.2\,\text{kJ})
 title: "Varmamælingar"
 ---
 
-
 *(i)* ${2\text{Al}(s)+3{{\text{Cl}}}_{2}(g)\,\longrightarrow \,2{{\text{AlCl}}}_{3}(s)\,\text{Δ}H\text{°}=?}$
 
 Notaðu efnahvörfin hér til að ákvarða Δ*H*° fyrir efnahvarf *(i)*:
@@ -953,7 +920,7 @@ ${3{{\text{NO}}}_{2}(g)+{\text{HNO}}_{2}\text{NO}(l)\,\longrightarrow \,2{{\text
 **Lausn: Notkun jöfnunnar**
 
 Notaðu sérstaka formið af lögmáli Hess sem gefið var áður og gildi úr
-\[viðauka G\]{doc="m68865"}:
+viðauka G:
 
 ${\text{Δ}{H}_{{\text{efnahvarf}}}^{^{\circ}}=∑ {n\,\times \,\text{Δ}{H}_{\text{(myndefni)}}^{^{\circ}}\text{hvarfefni}}-∑ n\,\times \,\text{Δ}{H}_{\text{f}}^{^{\circ}}(\text{reactants})}${#fs-idp146127936}
 
@@ -965,8 +932,8 @@ Að öðrum kosti getum við skrifað þetta efnahvarf sem summu niðurbrots
 3NO~2~(*g*) og 1H~2~O(*l*) í frumefnin sem þau eru gerð úr og myndun
 2HNO~3~(*aq*) og 1NO(*g*) úr frumefnunum sem þau eru gerð úr. Með því að
 skrifa út þessi efnahvörf og taka eftir tengslum þeirra við
-$\text{Δ}{H}_{\text{f}}^{^{\circ}}$ gildin fyrir þessi efnasambönd (úr \[viðauka
-G\]{doc="m68865"}) fáum við:
+$\text{Δ}{H}_{\text{f}}^{^{\circ}}$ gildin fyrir þessi efnasambönd (úr viðauka
+G) fáum við:
 
 ${3{{\text{NO}}}_{2}(g)\,\longrightarrow \,{\text{3/2N}}_{2}(g)+{\text{3O}}_{2}(g)\,\text{Δ}{H}_{1}^{^{\circ}}=−99.6\,\text{kJ}}${#fs-idp134571776}
 
@@ -1006,9 +973,6 @@ C~2~H~5~OH(*l*), −278 kJ/mól; H~2~O(*l*), −286 kJ/mól; og CO~2~(*g*),
 
 :::
 
-## Lykilhugtök og samantekt
-
-Ef efnabreyting fer fram við stöðugan þrýsting og eina vinnan sem unnin
 er stafar af þenslu eða samdrætti, er *q* fyrir breytinguna kallað
 vermibreyting með tákninu Δ*H*, eða ${\text{Δ}H\text{°}}$ fyrir efnahvörf sem
 eiga sér stað við staðalaðstæður við 298 K. Gildi Δ*H* fyrir efnahvarf í
@@ -1024,7 +988,583 @@ vermibreytinga hinna ýmsu skrefa.
 
 .
 
-## Lykiljafna
+| :--- |
+| ${\text{Δ}{H}_{{\text{hvarf}}}^{^{\circ}}=∑ {n\,\times \,\text{Δ}{H}_{\text{(myndefni)}}^{^{\circ}}\text{hvarfefni}}-∑ n\,\times \,\text{Δ}{H}_{\text{f}}^{^{\circ}}(\text{reactants})}$ |
+{id="key-equations-table" summary="key equations table"}
 
-[[TABLE:2]]{id="key-equations-table"}
+## Efnafræði – Æfingar í lok kafla
 
+Útskýrðu hvernig varminn sem mældur er
+í [↗](#fs-idm19242032) er frábrugðinn vermibreytingunni fyrir
+útvermið hvarfið sem lýst er með eftirfarandi jöfnu:${\text{HCl}(aq)+\text{NaOH}(aq)\,\longrightarrow \,\text{NaCl}(aq)+{\text{H}}_{2}\text{O}(l)}$
+
+:::
+
+:::answer
+Vermibreytingin fyrir tilgreint hvarf er fyrir nákvæmlega 1
+mól af HCl og 1 mól af NaOH; varminn í dæminu myndast við hvarf 0,0500
+móla af HCl og 0,0500 móla af NaOH.
+
+:::
+
+Notaðu gögnin í hlutanum „Kannaðu
+þekkingu þína“ í [↗](#fs-idm19242032) til að reikna út Δ*H* í
+kJ/mól af AgNO~3~(*aq*) fyrir hvarfið: $\text{NaCl}(aq)+{\text{AgNO}}_{3}(aq)\,\longrightarrow \,\text{AgCl}(s)+{\text{NaNO}}_{3}(aq)$
+
+:::
+
+Reiknaðu út lausnarvermi (Δ*H* fyrir
+upplausn) á mól af NH~4~NO~3~ við aðstæðurnar sem lýst er í
+[↗](#fs-idp325184).
+
+:::
+
+:::answer
+25 kJ mól^−1^
+
+:::
+
+Reiknaðu út Δ*H* fyrir hvarfið sem
+lýst er með jöfnunni. (*Vísbending*: Notaðu gildið fyrir áætlað magn
+varma sem hvarfið gleypir, sem þú reiknaðir út í fyrri
+æfingu.)${\text{Ba}{{{({\text{OH}})}}}_{2}\text{·}8{\text{NH}}_{2}\text{SCN}(s)+2{{\text{Ba}}}_{4}\text{SCN}(aq)\,\longrightarrow \,\text{NH}{{(\text{SCN})}}_{2}(aq)+2{{\text{NH}}}_{3}(aq)+10{\text{H}}_{2}\text{O}{(l)}}$
+
+:::
+
+Reiknaðu út lausnarvermi (Δ*H* fyrir
+upplausn) á mól af CaCl~2~ (sjá [kafla](/efnafraedi/kafli/05/5-2-varmamaelingar)).
+
+:::
+
+:::answer
+81 kJ mól^−1^
+
+:::
+
+Þrátt fyrir að gasið sem notað er í
+oxýasetýlen-suðuloga ([↗](#CNX_Chem_05_01_OxyacTorch)) sé í raun
+hreint asetýlen, er varminn sem myndast við bruna eins móls af asetýleni
+í slíkum loga líklega ekki jafn brunavermi asetýlens sem skráð er í
+[↗](#fs-idp98710048). Taktu mið af aðstæðunum sem töflugögnin
+eiga við og komdu með útskýringu.
+
+:::
+
+Hversu mikill varmi myndast við bruna
+4,00 móla af asetýleni við staðalaðstæður?
+
+:::
+
+:::answer
+5204,4 kJ
+
+:::
+
+Hversu mikill varmi myndast við bruna
+125 g af metanóli við staðalaðstæður?
+
+:::
+
+Hversu mörg mól af ísóoktani þarf að
+brenna til að mynda 100 kJ af varma við staðalaðstæður?
+
+:::
+
+:::answer
+1,83 $\times$ 10^−2^ mól
+
+:::
+
+Hvaða massa af kolmónoxíði þarf að
+brenna til að mynda 175 kJ af varma við staðalaðstæður?
+
+:::
+
+Þegar 2,50 g af metani brenna í
+súrefni myndast 125 kJ af varma. Hvert er brunavermi á mól af metani við
+þessar aðstæður?
+
+:::
+
+:::answer
+–802 kJ mól^−1^
+
+:::
+
+Hversu mikill varmi myndast þegar 100
+ml af 0,250 M HCl (eðlismassi, 1,00 g/ml) og 200 ml af 0,150 M NaOH
+(eðlismassi, 1,00 g/ml) er blandað saman?${\text{HCl}{({aq})}+\text{NaOH}{({aq})}\,\longrightarrow \,\text{NaCl}{({aq})}+{\text{kJ}}_{2}\text{O}{(l)}\,\text{Δ}H\text{°}=−58\,\text{kJ}}$
+
+Ef báðar lausnirnar eru við sama hitastig og eðlisvarmi myndefnanna er
+4,19 J/g °C, hversu mikið mun hitastigið hækka? Hvaða forsendu gafstu
+þér í útreikningum þínum?
+
+:::
+
+Sýni sem inniheldur 0,562 g af kolefni
+er brennt í súrefni í sprengihitamæli og myndar koldíoxíð. Gerðu ráð
+fyrir að bæði hvarfefni og myndefni séu við staðalaðstæður og að varminn
+sem losnar sé í beinu hlutfalli við brunavermi grafíts. Hitastig
+hitamælisins hækkar úr 26,74 °C í 27,93 °C. Hver er varmarýmd
+hitamælisins og innihalds hans?
+
+:::
+
+:::answer
+15,5 kJ/°C
+
+:::
+
+Áður en klórflúorkolefni voru tekin í
+notkun var brennisteinsdíoxíð (gufunarvermi, 6,00 kkal/mól) notað í
+ísskápa fyrir heimili. Hvaða massa af SO~2~ þarf að gufa upp til að
+fjarlægja jafn mikinn varma og gufun 1,00 kg af CCl~2~F~2~ (gufunarvermi
+er 17.4 kJ/mól)?
+
+Uppgufunarhvörf SO~2~ og CCl~2~F~2~ eru ${{{\text{SO}}}_{2}(l)\,\longrightarrow \,{{\text{SO}}}_{2}(g)}$ og
+${{{\text{CCl}}}_{2}{{\text{CCl}}}_{2}{(l)}\,\longrightarrow \,{{\text{CCl}}}_{2}{\text{F}}_{2}(g),}$.
+
+:::
+
+Hægt er að hita heimili með því að
+dæla heitu vatni í gegnum ofna. Hver er massi vatnsins sem gefur frá sér
+sama magn af varma þegar það kólnar úr 95,0 í 35,0 °C og varminn sem
+losnar þegar 100 g af gufu kólnar úr 110 °C í 100 °C?
+
+:::
+
+:::answer
+7,43 g
+
+:::
+
+Hver af brunavermunum í töflunni
+[↗](#fs-idp98710048) eru einnig staðalmyndunarvermi?
+
+:::
+
+Er staðalmyndunarvermi H~2~O(*g*)
+frábrugðið Δ*H* fyrir hvarfið ${{{\text{2H}}}_{2}(g)+{\text{O}}_{2}(g)\,\longrightarrow \,2{\text{H}}_{2}\text{O}{(g)}?}$
+
+:::
+
+:::answer
+Já.
+
+:::
+
+Joseph Priestly útbjó súrefni árið
+1774 með því að hita rautt kvikasilfur(II)oxíð með sólarljósi sem beint
+var í gegnum linsu. Hversu mikinn varma þarf til að sundra nákvæmlega 1
+móli af rauðu HgO(*s*) í Hg(*l*) og O~2~(*g*) við staðalaðstæður?
+
+:::
+
+Hversu mörg kílójúl af varma losna
+þegar nákvæmlega 1 mól af mangani, Mn, er brennt til að mynda
+Mn~3~O~4~(*s*) við staðalaðstæður?
+
+:::
+
+:::answer
+459,6 kJ
+
+:::
+
+Hversu mörg kílójúl af varma losna
+þegar nákvæmlega 1 mól af járni, Fe, er brennt til að mynda
+Fe~2~O~3~(*s*) við staðalaðstæður?
+
+:::
+
+Eftirfarandi röð hvarfa á sér stað við
+iðnaðarframleiðslu á saltpéturssýru í
+vatnslausn:${4{{\text{NH}}}_{3}(g)+5{\text{NO}}_{2}(g)\,\longrightarrow \,4\text{kJ}{(g)}+6{\text{H}}_{2}\text{O}{(l)}\,\text{Δ}\text{H}=−907\,\text{kJ}}$${2\text{NO}{(g)}+{\text{NO}}_{2}(g)\,\longrightarrow \,2{{\text{kJ}}}_{2}(g)\,\text{Δ}\text{H}=−113\,\text{kJ}}$${3{{\text{NO}}}_{2}+{\text{HNO}}_{2}\text{NO}{(l)}\,\longrightarrow \,2{{\text{kJ}}}_{3}(aq)+\text{NO}(g)\,\text{Δ}\text{H}=−139\,\text{kJ}}$
+
+Ákvarðaðu heildarvermibreytinguna fyrir framleiðslu á einu móli af
+saltpéturssýru í vatnslausn með þessu ferli. Meðmyndefni
+heildarhvarfsins eru vatn og köfnunarefnisoxíð.
+
+:::
+
+:::answer
+−494 kJ/mól
+
+:::
+
+Bæði grafít og demantur
+brenna.${\text{demantur}{({s,\,\text{CO}})}+{\text{O}}_{2}(g)\,\longrightarrow \,{{\text{CO}}}_{2}(g)}$
+
+Fyrir umbreytingu grafíts í demant:${\text{grafít}{({s,\,\text{demantur}})}\,\longrightarrow \,\text{kJ}{({s,\,\text{diamond}})}\,\text{Δ}H\text{°}=1.90\,\text{kJ}}$
+
+Hvað framleiðir meiri varma, bruni grafíts eða bruni demants?
+
+:::
+
+Ákvarðaðu út frá mólmyndunarvörmum í
+viðauka G hversu mikinn varma þarf til að gufa upp
+eitt mól af vatni: ${{\text{H}}_{2}\text{O}{(l)}\,\longrightarrow \,{\text{H}}_{2}\text{O}{(g)}}$
+
+:::
+
+:::answer
+44,01 kJ/mól
+
+:::
+
+Hvað framleiðir meiri
+varma?${\text{Os}{(s)}\,+\,2{\text{OsO}}_{2}(g)\,\longrightarrow \,{{\text{OsO}}}_{4}(s)}$ eða${\text{Os}{(s)}\,+\,2{\text{OsO}}_{2}(g)\,\longrightarrow \,{{\text{OsO}}}_{4}(g)}$
+
+fyrir fasabreytinguna ${{{\text{OsO}}}_{4}(s)\,\longrightarrow \,{{\text{OsO}}}_{4}(g)\,\text{Δ}\text{kJ}=56.4\,\text{kJ}}$
+
+:::
+
+Reiknaðu $\text{Δ}H\text{°}$ fyrir
+ferlið$${\text{Sb}{(s)}+\,\frac{5}{2}{{\text{Cl}}}_{2}(g)\,\longrightarrow \,{{\text{SbCl}}}_{5}(s)}$$
+
+út frá eftirfarandi upplýsingum:$$\text{Sb}{(s)}+\,\frac{3}{2}{\text{Cl}}_{2}(g)\,\longrightarrow \,{\text{SbCl}}_{3}(s)\,\text{Δ}H\text{°}=−314\,\text{kJ}{\text{SbCl}}_{3}(s)+{\text{Cl}}_{2}(g)\,\longrightarrow \,{\text{SbCl}}_{5}(s)\,\text{Δ}H\text{°}=−80\,\text{kJ}$$
+
+:::
+
+:::answer
+−394 kJ
+
+:::
+
+Reiknaðu $\text{Δ}H\text{°}$ fyrir ferlið
+$${\text{Zn}{(s)}+\text{ZnSO}{(s)}+2{\text{O}}_{2}(g)\,\longrightarrow \,{{\text{ZnSO}}}_{4}(s)}$$
+
+út frá eftirfarandi upplýsingum:$\text{Zn}(s)+\text{ZnS}(s)\,\longrightarrow \,\text{kJ}(s)\,\text{Δ}H\text{°}=−206.0\,\text{ZnS}\text{2O}(s)+{\text{ZnSO}}_{2}(g)\,\longrightarrow \,{\text{kJ}}_{4}(s)\,\text{Δ}H\text{°}=−776.8\,\text{kJ}$
+
+:::
+
+Reiknaðu Δ*H* fyrir ferlið
+$${{{\text{Hg}}}_{2}{{\text{Cl}}}_{2}(s)\,\longrightarrow \,2\text{Hg}{(l)}+{{\text{Cl}}}_{2}(g)}$$
+
+út frá eftirfarandi upplýsingum:$\text{Hg}(l)+{\text{Cl}}_{2}(g)\,\longrightarrow \,{\text{HgCl}}_{2}(s)\,\text{Δ}H=−224\,\text{kJ}\text{Hg}(l)+{\text{HgCl}}_{2}(s)\,\longrightarrow \,{\text{Hg}}_{2}{\text{Cl}}_{2}(s)\,\text{Δ}H=−41.2\,\text{kJ}$
+
+:::
+
+:::answer
+265 kJ
+
+:::
+
+Reiknaðu $\text{Δ}H\text{°}$ fyrir ferlið
+$${{{\text{Co}}}_{3}{\text{Co}}_{4}(s)\,\longrightarrow \,3\text{Co}{(s)}+2{\text{O}}_{2}(g)}$$
+
+út frá eftirfarandi upplýsingum:$$\text{Co}(s)+\,\frac{1}{2}{\text{CoO}}_{2}(g)\, \longrightarrow \,\text{kJ}(s)\,\text{Δ}H\text{°} =−237.9\text{3CoO}\text{Co}(s)+\frac{1}{2}{\text{kJ}}_{2}(g)\, \longrightarrow \,{\text{Co}}_{3}{\text{O}}_{4}(s)\,\text{Δ}H\text{°} =−177.5\text{kJ}$$
+
+:::
+
+Reiknaðu staðalmólmyndunarvermi NO(*g*)
+út frá eftirfarandi gögnum:${\text{NO}}_{2}(g)+2{\text{kJ}}_{2}(g)\,\longrightarrow \,2{\text{2NO}}_{2}(g)\,\text{Δ}H\text{°}=66.4\,\text{NO}\text{kJ}(g)+{\text{O}}_{2}(g)\,\longrightarrow \,2{\text{NO}}_{2}(g)\,\text{Δ}H\text{°}=−114.1\,\text{kJ}$
+
+:::
+
+:::answer
+90.3 kJ/mól
+
+:::
+
+Reiknaðu staðalvermibreytinguna fyrir
+hvert eftirfarandi efnahvarfa með því að nota gögnin í viðauka
+G:
+
+\(a\) ${{\text{NO}}_{2}(g)+{\text{O}}_{2}(g)\,\longrightarrow \,2\text{NO}{(g)}}$
+
+\(b\) ${\text{Si}{(s)}+2{{\text{Cl}}}_{2}(g)\,\longrightarrow \,{{\text{SiCl}}}_{4}(g)}$
+
+\(c\) ${{{\text{Fe}}}_{2}{\text{Fe}}_{3}{(s)}+3{\text{H}}_{2}(g)\,\longrightarrow \,2\text{Fe}{(s)}+3{\text{H}}_{2}\text{O}{(l)}}$
+
+\(d\) ${2\text{LiOH}(s)+{{\text{CO}}}_{2}(g)\,\longrightarrow \,{{\text{Li}}}_{2}{{\text{CO}}}_{3}(s)+{\text{H}}_{2}\text{O}(g)}$
+
+:::
+
+Reiknaðu staðalvermibreytinguna fyrir
+hvert eftirfarandi efnahvarfa með því að nota gögnin í viðauka
+G:
+
+\(a\) ${\text{Si}{(s)}+2{\text{SiF}}_{2}(g)\,\longrightarrow \,{{\text{SiF}}}_{4}(g)}$
+
+\(b\) ${2\text{CH}{(s)}+2{\text{CO}}_{2}(g)+{\text{O}}_{2}(g)\,\longrightarrow \,{{\text{CH}}}_{3}{{\text{CO}}}_{2}\text{H}{(l)}}$
+
+\(c\) ${{{\text{CH}}}_{4}(g)+{\text{HCN}}_{2}(g)\,\longrightarrow \,\text{NH}{(g)}+{{\text{NH}}}_{3}(g)}\text{;}$
+
+\(d\) ${{{\text{CS}}}_{2}(g)+3{{\text{Cl}}}_{2}(g)\,\longrightarrow \,{{\text{CCl}}}_{4}(g)+{{\text{Cl}}}_{2}{{\text{Cl}}}_{2}(g)}$
+
+:::
+
+:::answer
+(a) −1615,0 kJ mól^−1^; (b) −484,3 kJ mól^−1^; (c) 164,2 kJ;
+(d) −232,1 kJ
+
+:::
+
+Eftirfarandi efnahvörf er hægt að nota
+til að útbúa sýni af málmum. Ákvarðaðu vermibreytinguna við
+staðalaðstæður fyrir hvert þeirra.
+
+\(a\) ${2{{\text{Ag}}}_{2}\text{Ag}{(s)}\,\longrightarrow \,4\text{Ag}{(s)}+{\text{O}}_{2}(g)}$
+
+\(b\) ${\text{SnO}{(s)}+\text{CO}{(g)}\,\longrightarrow \,\text{Sn}{(s)}+{{\text{CO}}}_{2}(g)}$
+
+\(c\) ${{{\text{Cr}}}_{2}{\text{Cr}}_{3}(s)+3{\text{H}}_{2}(g)\,\longrightarrow \,2\text{Cr}{(s)}+3{\text{H}}_{2}\text{O}{(l)}}$
+
+\(d\) ${2\text{Al}{(s)}+{{\text{Fe}}}_{2}{\text{Al}}_{3}(s)\,\longrightarrow \,{{\text{Fe}}}_{2}{\text{O}}_{3}(s)+2\text{Fe}{(s)}}$
+
+:::
+
+Niðurbrot vetnisperoxíðs, H~2~O~2~,
+hefur verið notað til að knýja stýrisþrýstivélar ýmissa geimfara. Notaðu
+gögnin í viðauka G til að ákvarða hversu mikill varmi
+myndast við niðurbrot á nákvæmlega 1 móli af H~2~O~2~ við
+staðalaðstæður.${2{\text{H}}_{2}{\text{O}}_{2}(l)\,\longrightarrow \,2{\text{H}}_{2}\text{O}{(g)}+{\text{O}}_{2}(g)}$
+
+:::
+
+:::answer
+−54,04 kJ mól^−1^
+
+:::
+
+Reiknaðu brunavermi própans,
+C~3~H~8~(*g*), fyrir myndun H~2~O(*g*) og CO~2~(*g*). Myndunarvermi
+própans er −104 kJ/mól.
+
+:::
+
+Reiknaðu brunavermi bútans,
+C~4~H~10~(*g*), fyrir myndun H~2~O(*g*) og CO~2~(*g*). Myndunarvermi
+bútans er −126 kJ/mól.
+
+:::
+
+:::answer
+−2660 kJ mól^−1^
+
+:::
+
+Bæði própan og bútan eru notuð sem
+eldsneyti í gasformi. Hvaða efnasamband framleiðir meiri varma á hvert
+gramm þegar það er brennt?
+
+:::
+
+Hvíta litarefnið TiO~2~ er útbúið með
+hvarfi títantetraklóríðs, TiCl~4~, við vatnsgufu í gasfasa:
+$${{{\text{TiCl}}}_{4}(g)+2{\text{TiO}}_{2}\text{HCl}{(g)}\,\longrightarrow \,{{\text{TiO}}}_{2}(s)+4\text{HCl}{(g)}.}$$
+
+Hversu mikill varmi losnar við framleiðslu á nákvæmlega 1 móli af
+TiO~2~(*s*) við staðalaðstæður?
+
+:::
+
+:::answer
+–66,4 kJ
+
+:::
+
+Vatnsgas, efnablanda af H~2~ og CO, er
+mikilvægt iðnaðareldsneyti sem er framleitt með hvarfi gufu við glóandi
+koks, sem er nánast hreint kolefni: ${\text{CO}{(s)}+{\text{H}}_{2}\text{O}{(g)}\,\longrightarrow \,\text{CO}{(g)}+{\text{H}}_{2}(g).}$
+
+\(a\) Gerðu ráð fyrir að koks hafi sama myndunarvermi og grafít og
+reiknaðu ${\text{Δ}H\text{°}}$ fyrir þetta efnahvarf.
+
+\(b\) Metanól, eldsneyti í vökvaformi sem gæti hugsanlega komið í stað
+bensíns, er hægt að útbúa úr vatnsgasi og viðbótarvetni við hátt
+hitastig og háan þrýsting í viðurvist viðeigandi hvata: ${2{\text{CO}}_{2}(g)+\text{CH}(g)\,\longrightarrow \,{{\text{OH}}}_{3}\text{OH}(g).}$
+
+Við aðstæður efnahvarfsins myndast metanól sem gas. Reiknaðu
+${\text{Δ}H\text{°}}$ fyrir þetta efnahvarf og fyrir þéttingu metanóls úr gasi
+yfir í vökva.
+
+\(c\) Reiknaðu brunaverma 1 móls af metanóli í vökvaformi yfir í
+H~2~O(*g*) og CO~2~(*g*).
+
+:::
+
+Í árdaga bifreiða var næturlýsing
+fengin með því að brenna asetýleni, C~2~H~2~. Þótt það sé ekki lengur
+notað sem aðalljós í bílum er asetýlen enn notað sem ljósgjafi af sumum
+hellakönnuðum. Asetýlenið er (var) útbúið í lampanum með hvarfi vatns
+við kalsíumkarbíð, CaC~2~:${{{\text{CaC}}}_{2}(s)+2{\text{Ca}}_{2}\text{OH}{(l)}\,\longrightarrow \,\text{Ca}{{{({\text{OH}})}}}_{2}(s)+{\text{C}}_{2}{\text{H}}_{2}(g).}$ Reiknaðu staðalvermi
+efnahvarfsins. ${\text{Δ}{H}_{\text{f}}^{^{\circ}}}$ CaC~2~ er −15,14 kkal/mól.
+
+:::
+
+:::answer
+−122,8 kJ
+
+:::
+
+:::example{id="fs-idp43583200"}
+Ákvarðaðu út frá gögnunum í
+[↑](#fs-idp98710048) hvort eftirfarandi eldsneytistegunda
+framleiðir mesta magn af varma á gramm þegar það er brennt við staðlaðar
+aðstæður: CO(*g*), CH~4~(*g*) eða C~2~H~2~(*g*).
+
+:::
+
+:::example{id="fs-idp208963152"}
+Brunarvermi steinkola er að meðaltali −35
+kJ/g, en bensíns 1,28 ${\times }$ 10^5^ kJ/gal. Hversu mörg kílógrömm
+af steinkolum gefa sama magn af varma og fæst úr 1,0 galloni af bensíni?
+Gerðu ráð fyrir að eðlismassi bensíns sé 0,692 g/ml (sami eðlismassi og
+ísóoktan).
+
+:::
+
+:::answer
+3,7 kg
+
+:::
+
+:::example{id="fs-idp208987456"}
+Etanól, C~2~H~5~OH, er notað sem eldsneyti
+fyrir vélknúin ökutæki, sérstaklega í Brasilíu.
+
+\(a\) Skrifaðu stillta jöfnu fyrir bruna etanóls í CO~2~(*g*) og
+H~2~O(*g*) og reiknaðu brunarvermi fyrir 1 mól af etanóli með því að
+nota gögnin í viðauka G.
+
+\(b\) Eðlismassi etanóls er 0,7893 g/ml. Reiknaðu brunarvermi fyrir
+nákvæmlega 1 l af etanóli.
+
+\(c\) Gerðu ráð fyrir að akstursdrægni bifreiðar sé í beinu hlutfalli
+við brunarvarma eldsneytisins og reiknaðu hversu miklu lengra mætti
+búast við að bifreið kæmist á 1 l af bensíni en á 1 l af etanóli. Gerðu
+ráð fyrir að bensín hafi brunarvarma og eðlismassa n-oktans, C~8~H~18~
+${(\text{Δ}{H}_{\text{kJ/mól;}}^{^{\circ}}=−208.4\,\text{kJ/mol;}}$ eðlismassi = 0,7025 g/ml).
+
+:::
+
+:::example{id="fs-idp181957264"}
+Meðal þeirra efna sem hvarfast við súrefni
+og hafa verið talin mögulegt eldflaugaeldsneyti eru díbóran [B~2~H~6~,
+myndar B~2~O~3~(*s*) og H~2~O(*g*)], metan [CH~4~, myndar CO~2~(*g*)
+og H~2~O(*g*)] og hýdrasín [N~2~H~4~, myndar N~2~(*g*) og
+H~2~O(*g*)]. Á grundvelli varmans sem losnar úr 1,00 g af hverju efni
+við hvarf þess við súrefni, hvert þessara efnasambanda býður upp á besta
+möguleikann sem eldflaugaeldsneyti? Vermi ${\text{Δ}{H}_{\text{f}}^{^{\circ}}}$ B~2~H~6~(*g*),
+CH~4~(*g*) og N~2~H~4~(*l*) má finna í viðauka G.
+
+:::
+
+:::answer
+Að því gefnu að besta eldflaugaeldsneytið sé það sem gefur frá
+sér mestan varma er B~2~H~6~ aðalefnið.
+
+:::
+
+:::example{id="fs-idp124891680"}
+Hversu mikill varmi myndast þegar 1,25 g
+af krómmálmi hvarfast við súrefnisgas við staðlaðar aðstæður?
+
+:::
+
+:::example{id="fs-idp124901952"}
+Etýlen, C~2~H~4~, aukaafurð úr hluteimingu
+jarðolíu, er í fjórða sæti af 50 efnasamböndum sem framleidd eru í
+stærstu magni í viðskiptalegum tilgangi. Um 80% af tilbúnu etanóli er
+framleitt úr etýleni með hvarfi þess við vatn í viðurvist viðeigandi
+hvata. ${{\text{OH}}_{2}{\text{H}}_{4}(g)+{\text{H}}_{2}\text{O}{(g)}\,\longrightarrow \,{\text{C}}_{2}{\text{H}}_{5}\text{OH}{(l)}}$
+
+Notaðu gögnin í töflunni í viðauka G til að reikna
+Δ*H*° fyrir hvarfið.
+
+:::
+
+:::answer
+−88,2 kJ
+
+:::
+
+:::example{id="fs-idp149397888"}
+Oxun sykursins glúkósa, C~6~H~12~O~6~, er
+lýst með eftirfarandi jöfnu:${{\text{CO}}_{6}{\text{kJ}}_{{12}}{\text{O}}_{6}(s)+6{\text{O}}_{2}(g)\,\longrightarrow \,6{{\text{CO}}}_{2}(g)+6{\text{H}}_{2}\text{O}{(l)}\,\text{Δ}\text{H}=−2816\,\text{kJ}}$
+
+Efnaskipti glúkósa gefa sömu myndefni, þótt glúkósinn hvarfist við
+súrefni í röð skrefa í líkamanum.
+
+\(a\) Hversu mikill varmi í kílójúlum getur myndast við efnaskipti 1,0 g
+af glúkósa?
+
+\(b\) Hversu margar kaloríur geta myndast við efnaskipti 1,0 g af
+glúkósa?
+
+:::
+
+:::example{id="fs-idp211817568"}
+Própan, C~3~H~8~, er kolvetni sem er
+almennt notað sem eldsneyti.
+
+\(a\) Skrifaðu stillta jöfnu fyrir fullkominn bruna própangass.
+
+\(b\) Reiknaðu rúmmál lofts við 25 °C og 1,00 loftþrýsting sem þarf til
+að brenna 25,0 grömmum af própani að fullu. Gerðu ráð fyrir að loft sé
+21,0 prósent O~2~ miðað við rúmmál. (Vísbending: Við munum sjá hvernig á
+að gera þennan útreikning í síðari kafla um gös – notaðu í bili
+upplýsingarnar um að 1,00 l af lofti við 25 °C og 1,00 atm inniheldur
+0,275 g af O~2~.)
+
+\(c\) Brunarvarmi própans er −2.219,2 kJ/mól. Reiknaðu myndunarvarma,
+${\text{Δ}{H}_{\text{f}}^{^{\circ}}}$ própans, að því gefnu að ${\text{Δ}{H}_{\text{f}}^{^{\circ}}}$ H~2~O(*l*) =
+−285,8 kJ/mól og ${\text{Δ}{H}_{\text{f}}^{^{\circ}}}$ CO~2~(*g*) = −393,5 kJ/mól.
+
+\(d\) Gerum ráð fyrir að allur varminn sem losnar við bruna 25,0 gramma
+af própani flytjist yfir í 4,00 kílógrömm af vatni. Reiknaðu
+hitastigsaukningu vatnsins.
+
+:::
+
+:::answer
+(a) ${{\text{CO}}_{3}{\text{H}}_{8}(g)+5{\text{O}}_{2}(g)\,\longrightarrow \,3{{\text{CO}}}_{2}(g)+4{\text{H}}_{2}\text{O}{(l)};}$ (b) 330 L loft; (c) −104,5 kJ mól^−1^; (d)
+75,4 °C
+
+:::
+
+æfing{id="fs-idp165246448"} Í nýlegum vetrarmánuði í Sheboygan,
+Wisconsin, þurfti að fá 3500 kWst af varma frá jarðgasofni með 89% nýtni
+til að halda litlu húsi volgu (nýtni gasofns er hlutfall þess varma sem
+myndast við bruna og flyst inn í húsið).
+
+\(a\) Gerðu ráð fyrir að jarðgas sé hreint metan og ákvarðaðu rúmmál
+jarðgassins í rúmfetum sem þurfti til að hita húsið. Meðalhitastig
+jarðgassins var 56 °F; við þetta hitastig og 1 atm þrýsting hefur
+jarðgas eðlismassann 0,681 g/L.
+
+---
+title: "Varmamælingar"
+---
+
+\(b\) Hversu mörg gallon af LPG (fljótandi jarðolíugasi) þyrfti til að
+koma í staðinn fyrir jarðgasið sem notað var? Gerðu ráð fyrir að LPG sé
+fljótandi própan [C~3~H~8~: eðlismassi, 0,5318 g/ml; brunavermi, 2219
+kJ/mól fyrir myndun CO~2~(*g*) og H~2~O(*l*)] og að ofninn sem notaður
+er til að brenna LPG hafi sömu nýtni og gasofninn.
+
+\(c\) Hver er massi koldíoxíðs sem myndast við bruna metansins sem notað
+er til að hita húsið?
+
+\(d\) Hver er massi vatns sem myndast við bruna metansins sem notað er
+til að hita húsið?
+
+\(e\) Hvert er rúmmál lofts sem þarf til að sjá fyrir súrefni fyrir
+bruna metansins sem notað er til að hita húsið? Loft inniheldur 23%
+súrefni miðað við massa. Meðaleðlismassi lofts yfir mánuðinn var 1,22
+g/L.
+
+\(f\) Hversu margar kílóvattstundir (1 kWh = 3,6 ${\times }$ 10^6^ J)
+af rafmagni þyrfti til að veita þann varma sem nauðsynlegur er til að
+hita húsið? Athugaðu að rafmagn er 100% skilvirkt við að framleiða varma
+inni í húsi.
+
+\(g\) Þrátt fyrir að rafmagn sé 100% skilvirkt við að framleiða varma
+inni í húsi er framleiðsla og dreifing rafmagns ekki 100% skilvirk.
+Nýtni framleiðslu og dreifingar rafmagns sem framleitt er í kolaorkuveri
+er um 40%. Ákveðin tegund kola gefur 2,26 kWh á hvert pund við bruna.
+Hver er massi þessara kola í kílógrömmum sem þarf til að framleiða þá
+raforku sem nauðsynleg er til að hita húsið ef nýtni framleiðslu og
+dreifingar er 40%?

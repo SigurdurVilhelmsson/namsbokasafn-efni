@@ -1,5 +1,19 @@
 ---
-title: "Stærðfræðileg meðferð mælinganiðurstaðna"
+title: Stærðfræðileg meðhöndlun mæligagna
+section: "1.6"
+chapter: 1
+translation-status: Vélþýðing - ekki yfirfarin
+publication-track: mt-preview
+published-at: "2026-02-01T15:10:11.923Z"
+source:
+  original: Chemistry 2e by OpenStax
+  authors: Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0/
+  originalUrl: https://openstax.org/details/books/chemistry-2e
+  translator: Sigurður E. Vilhelmsson
+  translationYear: 2026
+  modifications: Translated to Icelandic, adapted for Icelandic secondary school students
 ---
 
 # Stærðfræðileg meðferð á niðurstöðum mælinga
@@ -436,9 +450,6 @@ Umbreyttu 50 °F í °C og K.
 
 :::
 
-## Lykilhugtök og samantekt
-
-Mælingar eru gerðar með ýmsum einingum. Það er oft gagnlegt eða
 nauðsynlegt að umbreyta mældri stærð úr einni einingu í aðra. Þessar
 umbreytingar eru gerðar með umreikningsþáttum eininga, sem eru fengnir
 með einfaldri beitingu stærðfræðilegrar aðferðar sem kallast
@@ -446,9 +457,6 @@ með einfaldri beitingu stærðfræðilegrar aðferðar sem kallast
 til að reikna út umbeðnar stærðir með því að nota mældar stærðir og
 viðeigandi stærðfræðileg tengsl.
 
-## Lykiljöfnur
-
-| ${{T}_{{\text{°C}}}=\,\frac{{5}}{{9}}\,\times \,({T}_{{\text{°F}}}-32})$ |
 | :--- |
 | ${{T}_{{\text{°F}}}=\,(\frac{9}{{5}}\,\times \,{T}_{{\text{°C}}})+32}$ |
 | ${{T}_{\text{°C}}=\text{°C}+273.15}$ |
@@ -468,7 +476,6 @@ hlutföll) fyrir fjölda:
 
 :::
 
-:::practice-problem{#fs-idm321326256}
 Skrifaðu umreikningsþætti (sem
 hlutföll) fyrir fjölda:
 
@@ -480,7 +487,6 @@ hlutföll) fyrir fjölda:
 
 :::
 
-:::practice-problem{#fs-idp43396912}
 Á miðanum á gosflösku er rúmmálið
 gefið upp í tveimur einingum: 2,0 L og 67,6 fl oz. Notaðu þessar
 upplýsingar til að leiða út umreikningsþátt milli enskra og
@@ -494,7 +500,6 @@ réttlætanlegir.
 :::
 :::
 
-:::practice-problem{#fs-idm124621456}
 Á miðanum á morgunkornspakka er
 massi morgunkornsins gefinn upp í tveimur einingum: 978 grömm og 34,5
 oz. Notaðu þessar upplýsingar til að finna umreikningsþátt milli enskra
@@ -503,7 +508,6 @@ umreikningsþættinum þínum?
 
 :::
 
-:::practice-problem{#fs-idm125803088}
 Fótbolti er spilaður með
 kringlóttum bolta sem hefur ummál á milli 27 og 28 tommur og þyngd á
 milli 14 og 16 únsur. Hverjar eru þessar forskriftir í einingum
@@ -519,7 +523,6 @@ sentímetra og gramma?
 title: "Stærðfræðileg meðferð mælinganiðurstaðna"
 ---
 
-:::practice-problem{#fs-idm128259568}
 Ummál körfubolta fyrir konur er á
 milli 28,5 og 29,0 tommur og hámarksþyngd hans er 20 únsur (tveir
 markverðir stafir). Hverjar eru þessar forskriftir í sentímetrum og
@@ -527,7 +530,6 @@ grömmum?
 
 :::
 
-:::practice-problem{#fs-idm203954352}
 Hversu margir millilítrar af
 gosdrykk eru í 12,0 únsu dós?
 
@@ -537,13 +539,11 @@ gosdrykk eru í 12,0 únsu dós?
 :::
 :::
 
-:::practice-problem{#fs-idm290820272}
 Olíutunna er nákvæmlega 42 gallon.
 Hversu margir lítrar af olíu eru í tunnu?
 
 :::
 
-:::practice-problem{#fs-idp32978240}
 Þvermál rauðrar blóðfrumu er um 3
 $\times$ 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
 
@@ -553,14 +553,12 @@ $\times$ 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
 :::
 :::
 
-:::practice-problem{#fs-idp3893440}
 Fjarlægðin milli miðju tveggja
 súrefnisatóma í súrefnissameind er 1,21 $\times$ 10^−8^ cm. Hver er
 þessi fjarlægð í tommum?
 
 :::
 
-:::practice-problem{#fs-idm280166528}
 Er 197 punda lyftingamaður nógu
 léttur til að keppa í flokki sem er takmarkaður við þá sem vega 90 kg
 eða minna?
@@ -571,14 +569,12 @@ já; þyngd = 89,4 kg
 :::
 :::
 
-:::practice-problem{#fs-idm311405440}
 Mjög góður 197 punda lyftingamaður
 lyfti 192 kg í hreyfingu sem kallast jafnhending og snörun. Hver var
 massi þyngdarinnar sem lyft var í pundum?
 
 :::
 
-:::practice-problem{#fs-idm159954784}
 Mörg læknisfræðileg
 rannsóknarstofupróf eru framkvæmd með 5,0 μL af blóðsermi. Hvert er
 þetta rúmmál í millilítrum?
@@ -589,13 +585,11 @@ rannsóknarstofupróf eru framkvæmd með 5,0 μL af blóðsermi. Hvert er
 :::
 :::
 
-:::practice-problem{#fs-idm293326720}
 Ef aspiríntöflu inniheldur 325 mg
 af aspiríni, hversu mörg grömm af aspiríni inniheldur hún?
 
 :::
 
-:::practice-problem{#fs-idm101514016}
 Notaðu vísindalegan (veldisvísis)
 rithátt til að tjá eftirfarandi stærðir með SI-grunneiningum í
 [↗](#fs-idm81346144):
@@ -628,7 +622,6 @@ $\times$ 10^−4^ K
 :::
 :::
 
-:::practice-problem{#fs-idm247037968}
 Ljúktu við eftirfarandi
 umbreytingar milli SI-eininga.
 
@@ -652,7 +645,6 @@ umbreytingar milli SI-eininga.
 
 :::
 
-:::practice-problem{#fs-idp54026624}
 Bensín er selt í lítrum í mörgum
 löndum. Hversu marga lítra þarf til að fylla 12
 
@@ -763,7 +755,6 @@ efnasambandinu?
 lauk sigurvegarinn keppni með meðalhraðann 229.8 km/klst. Hver var hraði
 hans í mílum á klukkustund, metrum á sekúndu og fetum á sekúndu?
 
-:::practice-problem{#fs-idm289866560}
 Leystu þessi dæmi um
 timburstærðir.
 
@@ -783,7 +774,6 @@ komið fyrir með 16,0 tommu millibili. Hver er sú fjarlægð í sentímetrum?
 :::
 :::
 
-:::practice-problem{#fs-idm95632784}
 Talið var að kvikasilfursinnihald í
 læk væri yfir því lágmarki sem talið er öruggt – 1 hluti á milljarð
 (ppb) miðað við þyngd. Greining leiddi í ljós að styrkurinn var 0,68
@@ -792,7 +782,6 @@ hlutar á milljarð. Hvaða magn kvikasilfurs í grömmum var til staðar í
 
 :::
 
-:::practice-problem{#fs-idm215857872}
 Reiknaðu eðlismassa áls ef 27,6
 cm^3^ hefur massann 74,6 g.
 
@@ -802,14 +791,12 @@ cm^3^ hefur massann 74,6 g.
 :::
 :::
 
-:::practice-problem{#fs-idm215482272}
 Osmín er eitt af eðlisþyngstu
 frumefnum sem þekkt eru. Hver er eðlismassi þess ef 2,72 g hefur
 rúmmálið 0,121 cm^3^?
 
 :::
 
-:::practice-problem{#fs-idm361862336}
 Reiknaðu þessa massa.
 
 \(a\) Hver er massi 6,00 cm^3^ af kvikasilfri, eðlismassi = 13,5939
@@ -823,7 +810,6 @@ g/cm^3^?
 :::
 :::
 
-:::practice-problem{#fs-idm305607360}
 Reiknaðu þessa massa.
 
 \(a\) Hver er massi 4,00 cm^3^ af natríni, eðlismassi = 0,97 g/cm^3^?
@@ -832,7 +818,6 @@ Reiknaðu þessa massa.
 
 :::
 
-:::practice-problem{#fs-idm216432832}
 Reiknaðu þessi rúmmál.
 
 \(a\) Hvert er rúmmál 25 g af joði, eðlismassi = 4,93 g/cm^3^?
@@ -845,7 +830,6 @@ Reiknaðu þessi rúmmál.
 :::
 :::
 
-:::practice-problem{#fs-idm182387776}
 Reiknaðu þessi rúmmál.
 
 \(a\) Hvert er rúmmál 11,3 g af grafíti, eðlismassi = 2,25 g/cm^3^?
@@ -854,7 +838,6 @@ Reiknaðu þessi rúmmál.
 
 :::
 
-:::practice-problem{#fs-idm208263472}
 Umbreyttu suðuhitastigi gulls,
 2966 °C, í gráður á Fahrenheit og kelvin.
 
@@ -864,13 +847,11 @@ Umbreyttu suðuhitastigi gulls,
 :::
 :::
 
-:::practice-problem{#fs-idm291580080}
 Umbreyttu hitastigi sjóðandi heits
 vatns, 54 °C, í gráður á Fahrenheit og kelvin.
 
 :::
 
-:::practice-problem{#fs-idm126910176}
 Umbreyttu hitastigi kaldasta
 svæðisins í frysti, −10 °F, í gráður á Selsíus og kelvin.
 
@@ -880,13 +861,11 @@ svæðisins í frysti, −10 °F, í gráður á Selsíus og kelvin.
 :::
 :::
 
-:::practice-problem{#fs-idm294247168}
 Umbreyttu hitastigi þurríss, −77
 °C, í gráður á Fahrenheit og kelvin.
 
 :::
 
-:::practice-problem{#fs-idm312310640}
 Umbreyttu suðuhitastigi fljótandi
 ammóníaks, −28,1 °F, í gráður á Selsíus og kelvin.
 
@@ -896,14 +875,12 @@ ammóníaks, −28,1 °F, í gráður á Selsíus og kelvin.
 :::
 :::
 
-:::practice-problem{#fs-idm307064960}
 Á merkimiða á úðabrúsa með
 sótthreinsiefni er varað við því að hita brúsann yfir 130 °F. Hvert er
 samsvarandi hitastig á Celsíus- og kelvinkvarða?
 
 :::
 
-:::practice-problem{#fs-idm161487744}
 Veðrið í Evrópu var óvenjulega
 hlýtt sumarið 1995. Í sjónvarpsfréttum var greint frá hitastigi allt að
 45 °C. Hvert var hitastigið á Fahrenheit-kvarða?

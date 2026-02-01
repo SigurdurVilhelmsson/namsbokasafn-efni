@@ -1,24 +1,33 @@
 ---
 title: Æfingar
-chapter: 1
+section: ""
+chapter: 0
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-01-29T16:45:09.781Z"
-type: exercises
+published-at: "2026-02-01T15:10:11.925Z"
+source:
+  original: Chemistry 2e by OpenStax
+  authors: Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0/
+  originalUrl: https://openstax.org/details/books/chemistry-2e
+  translator: Sigurður E. Vilhelmsson
+  translationYear: 2026
+  modifications: Translated to Icelandic, adapted for Icelandic secondary school students
 ---
 
 ## Æfingar
 
 ### 1.1 Efnafræði í samhengi
 
-:::exercise{#fs-idm34987968 number=1}
+**1.**
+
 Útskýrðu hvernig þú gætir með
 tilraun ákvarðað hvort hitastigið úti sé hærra eða lægra en 0 °C (32 °F)
 án þess að nota hitamæli.
 
-:::
+**2.**
 
-:::exercise{#fs-idp45595424 number=2}
 Tilgreindu hvort hver eftirfarandi
 staðhæfinga líkist mest tilgátu, lögmáli eða kenningu. Útskýrðu
 rökstuðning þinn.
@@ -31,9 +40,8 @@ lífveru með náttúruvali.
 \(c\) Bensíneyðsla pallbílsins míns hefur minnkað verulega, líklega
 vegna þess að það er kominn tími á smurningu.
 
-:::
+**3.**
 
-:::exercise{#fs-idp38309200 number=3}
 Tilgreindu hvort hver eftirfarandi
 staðhæfinga líkist mest tilgátu, lögmáli eða kenningu. Útskýrðu
 rökstuðning þinn.
@@ -46,9 +54,8 @@ hlutföllum til að mynda efni með sérstaka eiginleika.
 \(c\) Við hærra hitastig leysast föst efni (eins og salt eða sykur)
 betur upp í vatni.
 
-:::
+**4.**
 
-:::exercise{#fs-idm58468592 number=4}
 Flokkaðu hvern undirstrikaðan lið
 sem hluta af annaðhvort stórsæja sviðinu, smásæja sviðinu eða táknræna
 sviðinu í efnafræði. Fyrir alla liði á táknræna sviðinu, tilgreindu
@@ -62,9 +69,8 @@ hvort þeir séu tákn fyrir stórsæjan eða smásæjan eiginleika.
 
 \(d\) *Al* er táknið fyrir ál atóm.
 
-:::
+**5.**
 
-:::exercise{#fs-idm67489232 number=5}
 Flokkaðu hvern undirstrikaðan lið
 sem hluta af annaðhvort stórsæja sviðinu, smásæja sviðinu eða táknræna
 sviðinu í efnafræði. Fyrir þá sem eru á táknræna sviðinu, tilgreindu
@@ -78,79 +84,68 @@ hvort þeir séu tákn fyrir stórsæjan eða smásæjan eiginleika.
 
 \(d\) *Brennisteinssameind* er samsett úr átta brennisteinsatómum.
 
-:::
+**6.**
 
-:::exercise{#fs-idp6505632 number=6}
 Samkvæmt einni kenningu eykst
 þrýstingur gass þegar rúmmál þess minnkar vegna þess að sameindirnar í
 gasinu þurfa að fara styttri vegalengd til að rekast á veggi ílátsins.
 Fylgir þessi kenning stórsærri eða smásærri lýsingu á efnafræðilegri
 hegðun? Útskýrðu svarið.
 
-:::
+**7.**
 
-:::exercise{#fs-idp40361152 number=7}
 Varmamagnið sem þarf til að bræða 2
 pund af ís er tvöfalt meira en varmamagnið sem þarf til að bræða 1 pund
 af ís. Er þessi athugun stórsæ eða smásæ lýsing á efnafræðilegri hegðun?
 Útskýrðu svarið.
 
-:::
-
 ### 1.2 Fasar og flokkun efnis
 
-:::exercise{#fs-idm68837632 number=8}
+**8.**
+
 Hvers vegna er massi hlutar, frekar
 en þyngd hans, notaður til að gefa til kynna magn efnis sem hann
 inniheldur?
 
-:::
+**9.**
 
-:::exercise{#fs-idp51841840 number=9}
 Hvaða eiginleikar greina föst efni
 frá vökvum? Vökva frá gösum? Föst efni frá gösum?
 
-:::
+**10.**
 
-:::exercise{#fs-idm29164608 number=10}
 Hvernig er misleit efnablanda
 frábrugðin einsleitri efnablöndu? Hvernig eru þær líkar?
 
-:::
+**11.**
 
-:::exercise{#fs-idp135248192 number=11}
 Hvernig er einsleit efnablanda
 frábrugðin hreinu efni? Hvernig eru þær líkar?
 
-:::
+**12.**
 
-:::exercise{#fs-idm23683040 number=12}
 Hvernig er frumefni frábrugðið
 efnasambandi? Hvernig eru þau lík?
 
-:::
+**13.**
 
-:::exercise{#fs-idm34556656 number=13}
 Hvernig eru sameindir frumefna og
 sameindir efnasambanda ólíkar? Að hvaða leyti eru þær líkar?
 
-:::
+**14.**
 
-:::exercise{#fs-idm12578096 number=14}
 Hvernig er atóm frábrugðið sameind?
 Að hvaða leyti eru þau lík?
 
-:::
+**15.**
 
-:::exercise{#fs-idm11351120 number=15}
 Margar af þeim vörum sem þú kaupir
 eru efnablöndur af hreinum efnasamböndum. Veldu þrjár af þessum
 verslunarvörum og búðu til lista yfir innihaldsefni sem eru hrein
 efnasambönd.
 
-:::
+**16.**
 
-:::exercise{#fs-idm27722240 number=16}
 Flokkaðu eftirfarandi sem frumefni,
 efnasamband eða efnablöndu:
 
@@ -170,9 +165,8 @@ efnasamband eða efnablöndu:
 
 \(h\) bensín
 
-:::
+**17.**
 
-:::exercise{#fs-idp134896512 number=17}
 Flokkaðu eftirfarandi sem
 frumefni, efnasamband eða efnablöndu:
 
@@ -193,49 +187,42 @@ vetnisatóm og eitt klóratóm
 
 \(h\) lyftiduft
 
-:::
+**18.**
 
-:::exercise{#fs-idm25131712 number=18}
 Brennisteinsatóm og
 brennisteinssameind eru ekki eins. Hver er munurinn?
 
-:::
+**19.**
 
-:::exercise{#fs-idm38551280 number=19}
 Hvað eiga sameindir í súrefnisgasi,
 sameindir í vetnisgasi og vatnssameindir sameiginlegt? Hvernig eru þær
 ólíkar?
 
-:::
+**20.**
 
-:::exercise{#fs-idm29444768 number=20}
 Af hverju er sagt að geimfarar í
 geimnum séu „þyngdarlausir“ en ekki „massalausir“?
 
-:::
+**21.**
 
-:::exercise{#fs-idm50582272 number=21}
 Gerðu lista yfir helstu efnin sem
 eyðast og myndast við notkun bifreiðar.
 
-:::
+**22.**
 
-:::exercise{#fs-idm10469360 number=22}
 Efni er allt í kringum okkur. Gerðu
 lista yfir fimmtán mismunandi tegundir efna sem þú rekst á daglega.
 Listinn þinn ætti að innihalda (og merkja að minnsta kosti eitt dæmi af
 hverju) eftirfarandi: fast efni, vökva, gas, frumefni, efnasamband,
 einsleita efnablöndu, misleita efnablöndu og hreint efni.
 
-:::
 
 ---
 title: "Fasar og flokkun efnis"
 ---
 
-:::
+**23.**
 
-:::exercise{#fs-idp17429552 number=23}
 Þegar frumefnið járn tærist
 sameinast það súrefni í loftinu og myndar að lokum rauðbrúnt
 járn(III)oxíð sem kallast ryð. (a) Ef glansandi járnnagli með
@@ -244,9 +231,8 @@ með ryðlagi, myndir þú búast við að massinn hafi aukist, minnkað eða
 verið sá sami? Útskýrðu. (b) Ef massi járnnaglans eykst í 24,1 g, hversu
 mikill massi súrefnis sameinaðist járninu?
 
-:::
+**24.**
 
-:::exercise{#fs-idm1546416 number=24}
 Eins og fram kemur í textanum eru
 sannfærandi dæmi sem sýna fram á massavarðveislulögmálið utan
 rannsóknarstofunnar fá og stopul. Tilgreindu hvort massinn myndi aukast,
@@ -267,12 +253,11 @@ fyrst sett fram massavarðveislulögmálið, hitaði efnablöndu af tini og
 lofti í lokaðri flösku til að framleiða tinoxíð. Minnkaði, jókst eða
 hélst massi lokuðu flöskunnar og innihaldsins óbreyttur eftir hitunina?
 
-:::
+**25.**
 
-:::exercise{#fs-idp17769472 number=25}
 Ger breytir glúkósa í etanól og
 koldíoxíð við loftfirrta gerjun eins og sýnt er í einföldu efnajöfnunni
-hér: ${\text{glúkósi}\,\longrightarrow \,\text{etanól}+\text{koldíoxíð}}$
+hér: ${\text{glúkósi}\,\longrightarrow \,\text{etanól}+\text{koldíoxíð}}${#fs-idp17770496}
 
 \(a\) Ef 200,0 g af glúkósa breytist að fullu, hver verður heildarmassi
 etanóls og koldíoxíðs sem myndast?
@@ -284,11 +269,10 @@ massi ílátsins og innihalds fyrir gerjun? Útskýrðu.
 \(c\) Ef 97,7 g af koldíoxíði myndast, hversu mikill massi etanóls
 myndast?
 
-:::
-
 ### 1.3 Eðlis- og efnaeiginleikar
 
-:::exercise{#fs-idp14236032 number=26}
+**26.**
+
 Flokkaðu sex undirstrikuðu
 eiginleikana í eftirfarandi málsgrein sem efna- eða eðliseiginleika:
 
@@ -297,9 +281,8 @@ Flúor er fölleitt *gas* sem *hvarfast við flest efni*. Frumefnið
 brennur í flúor* með skærum loga. *Nítján grömm af flúor hvarfast við
 1,0 gramm af vetni*.
 
-:::
+**27.**
 
-:::exercise{#fs-idp131775248 number=27}
 Flokkaðu hverja eftirfarandi
 breytingu sem eðlis- eða efnabreytingu:
 
@@ -313,9 +296,8 @@ breytingu sem eðlis- eða efnabreytingu:
 
 \(e\) bráðnun gulls
 
-:::
+**28.**
 
-:::exercise{#fs-idp293285456 number=28}
 Flokkaðu hverja eftirfarandi
 breytingu sem eðlis- eða efnabreytingu:
 
@@ -329,29 +311,25 @@ breytingu sem eðlis- eða efnabreytingu:
 
 \(e\) segulmögnun skrúfjárns
 
-:::
+**29.**
 
-:::exercise{#fs-idm547056 number=29}
 Rúmmál sýnis af súrefnisgasi
 breyttist úr 10 ml í 11 ml þegar hitastigið breyttist. Er þetta efna-
 eða eðlisbreyting?
 
-:::
+**30.**
 
-:::exercise{#fs-idp144519488 number=30}
 2,0 lítra rúmmál af vetnisgasi
 sameinaðist 1,0 lítra af súrefnisgasi og myndaði 2,0 lítra af vatnsgufu.
 Verður súrefni fyrir efna- eða eðlisbreytingu?
 
-:::
+**31.**
 
-:::exercise{#fs-idp42952176 number=31}
 Útskýrðu muninn á magnbundnum
 eiginleikum og eðliseiginleikum.
 
-:::
+**32.**
 
-:::exercise{#fs-idp85586464 number=32}
 Tilgreindu hvort eftirfarandi
 eiginleikar séu magnbundnir eða eðliseiginleikar.
 
@@ -365,9 +343,8 @@ eiginleikar séu magnbundnir eða eðliseiginleikar.
 
 \(e\) suðumark
 
-:::
+**33.**
 
-:::exercise{#fs-idp121106016 number=33}
 Eðlismassi (d) efnis er
 eðliseiginleiki sem er skilgreindur sem hlutfall massa þess (m) og
 rúmmáls (V).
@@ -377,23 +354,20 @@ $${\text{eðlismassi}=\,\frac{{\text{massi}}}{{\text{rúmmál}}}\,\text{d}=\,\fr
 Í ljósi þess að massi og rúmmál eru bæði magnbundnir eiginleikar,
 útskýrðu hvers vegna hlutfall þeirra, eðlismassi, er eðliseiginleiki.
 
-:::
-
 ### 1.4 Mælingar
 
-:::exercise{#fs-idm230641408 number=34}
+**34.**
+
 Er einn lítri um það bil únsa,
 pint, kvart eða gallon?
 
-:::
+**35.**
 
-:::exercise{#fs-idm323373040 number=35}
 Er metri um það bil þumlungur,
 fet, yard eða míla?
 
-:::
+**36.**
 
-:::exercise{#fs-idm147829600 number=36}
 Tilgreindu þær SI-grunneiningar
 eða afleiddu einingar sem eiga við um eftirfarandi mælingar:
 
@@ -411,9 +385,8 @@ eða afleiddu einingar sem eiga við um eftirfarandi mælingar:
 
 \(g\) hámarkshitastig á Suðurpólnum 1. apríl 1913
 
-:::
+**37.**
 
-:::exercise{#fs-idm314038064 number=37}
 Tilgreindu þær SI-grunneiningar
 eða afleiddu einingar sem eiga við um eftirfarandi mælingar:
 
@@ -423,17 +396,142 @@ eða afleiddu einingar sem eiga við um eftirfarandi mælingar:
 
 \(c\) hljóðhraði
 
-:::
 
 ---
 title: "Mælingar"
 ---
 
+\(d\) eðlismassi lofts
+
+\(e\) hitastigið sem alkóhól sýður við
+
+\(f\) flatarmál Delaware-fylkis
+
+\(g\) rúmmál inflúensubólusetningar eða mislingabólusetningar
+
+
+
+æfingadæmi{#fs-idm323234992} Gefðu upp heiti og tákn þeirra forskeyta
+sem notuð eru með SI-einingum til að gefa til kynna margföldun með
+eftirfarandi nákvæmum stærðum.
+
+\(a\) 10^3^
+
+\(b\) 10^−2^
+
+\(c\) 0,1
+
+\(d\) 10^−3^
+
+\(e\) 1.000.000
+
+\(f\) 0,000001
+
+æfingadæmi{#fs-idm344858160} Gefðu upp heiti forskeytisins og
+stærðina sem eftirfarandi tákn gefa til kynna, en þau eru notuð með
+SI-grunneiningum.
+
+\(a\) c
+
+\(b\) d
+
+\(c\) G
+
+\(d\) k
+
+\(e\) m
+
+\(f\) n
+
+\(g\) p
+
+\(h\) T
+
+:::answer
+(a) senti-, $\times$ 10^−2^; (b) desi-, $\times$
+10^−1^; (c) gíga-, $\times$ 10^9^; (d) kíló-, $\times$ 10^3^;
+(e) milli-, $\times$ 10^−3^; (f) nanó-, $\times$ 10^−9^; (g)
+píkó-, $\times$ 10^−12^; (h) tera-, $\times$ 10^12^
+
+:::
+
+æfingadæmi{#fs-idm239239696} Stór skartgripur hefur massann 132,6 g.
+Mæliglas inniheldur upphaflega 48,6 ml af vatni. Þegar skartgripnum er
+sökkt í mæliglasið eykst heildarrúmmálið í 61,2 ml.
+
+\(a\) Ákvarðaðu eðlismassa þessa skartgrips.
+
+\(b\) Ef gert er ráð fyrir að skartgripurinn sé aðeins úr einu efni,
+hvaða efni er það líklega? Útskýrðu.
+
+æfingadæmi{#fs-idm165750544} Farðu í þessa
+[eðlismassahermun](http://openstax.org/l/16phetmasvolden) og
+smelltu á hnappinn „breyta vökva í vatn“ til að stilla eðlismassa
+vökvans í bikarglasinu á 1,00 g/ml.
+
+\(a\) Notaðu aðferðina með vatnsyfirborðshækkun til að mæla massa og
+rúmmál óþekkta efnisins (veldu grænu blokkina með spurningamerkjum).
+
+\(b\) Notaðu mæld gögn um massa og rúmmál úr skrefi (a) til að reikna út
+eðlismassa óþekkta efnisins.
+
+\(c\) Ef gert er ráð fyrir að þetta efni sé víða fáanlegur gimsteinn sem
+inniheldur kopar, hver er þá líkleg auðkenning hans? Berðu saman mældan
+eðlismassa við gildin í töflunni í [þessari handbók um eðlismassa
+gimsteina](https://www.gemsociety.org/article/select-gems-ordered-density/).
+
+\(d\) Hvernig tengjast massi og eðlismassi fyrir blokkir með sama
+rúmmál?
+
+:::answer
+(a) m = 18,58 g, V = 5,7 ml; (b) d = 3,3 g/ml; (c) malakít
+(basískt koparkarbónat, d = 3,25–4,10 g/ml).
+
+:::
+
+æfingadæmi{#fs-idm307823136} Farðu í þessa
+[eðlismassahermun](http://openstax.org/l/16phetmasvolden) og
+smelltu á „endurstilla“ hnappinn til að tryggja að allar stillingar
+hermisins séu á sjálfgefnum gildum.
+
+\(a\) Notaðu aðferðina með vatnsyfirborðshækkun til að mæla massa og
+rúmmál rauðu blokkarinnar.
+
+\(b\) Notaðu mæld gögn um massa og rúmmál úr skrefi (a) til að reikna út
+eðlismassa rauðu blokkarinnar.
+
+\(c\) Notaðu lóðrétta græna sleðann til að stilla eðlismassa vökvans á
+gildi vel yfir, síðan vel undir og að lokum næstum jafnt eðlismassa
+rauðu blokkarinnar og skráðu athuganir þínar.
+
+æfingadæmi{#fs-idm160286704} Farðu í þessa
+[eðlismassahermun](http://openstax.org/l/16phetmasvolden) og
+smelltu á hnappinn „breyta vökva í vatn“ til að stilla eðlismassa
+vökvans í bikarglasinu á 1,00 g/ml. Breyttu efninu í blokkinni í frauð
+og bíddu síðan þolinmóð/ur þar til frauðblokkin hættir að veltast upp og
+niður í vatninu
+
+.
+
+\(a\) Svampblokkin ætti að fljóta á yfirborði vatnsins (þ.e. vera aðeins
+að hluta til á kafi). Hvert er rúmmál vatnsins sem hún ryður frá sér?
+(b) Notaðu rúmmál vatnsins úr lið (a) og eðlismassa vatns (1,00 g/ml)
+til að reikna út massa vatnsins sem hún ryður frá sér. (c) Fjarlægðu og
+vigtaðu svampblokkina. Hvernig er massi blokkarinnar í samanburði við
+massa vatnsins sem hún ruddi frá sér í lið (b)?
+
+:::answer
+(a) rúmmál vatns sem er rutt frá = 2,8 ml; (b) massi vatns sem
+er rutt frá = 2,8 g; (c) Massi blokkarinnar er 2,76 g, sem er í raun
+jafnt massa vatnsins sem er rutt frá (2,8 g) og í samræmi við lögmál
+Arkímedesar um uppdrif.
+
 :::
 
 ### 1.5 Mælióvissa, hittni og nákvæmni
 
-:::exercise{#fs-idm29064528 number=38}
+**38.**
+
 Tjáðu hverja af eftirfarandi tölum
 á staðalformi með réttum fjölda markverðra stafa:
 
@@ -451,10 +549,8 @@ Tjáðu hverja af eftirfarandi tölum
 
 \(g\) 0.000000738592
 
-:::
 
-:::exercise{#fs-idp24074624 number=39}
-Skráið hverja eftirfarandi talna á
+æfingadæmi{#fs-idp24074624} Skráið hverja eftirfarandi talna á
 veldisvísisformi með réttum fjölda markverðra stafa:
 
 \(a\) 704
@@ -471,10 +567,9 @@ veldisvísisformi með réttum fjölda markverðra stafa:
 
 \(g\) 0,007157
 
-:::
 
-:::exercise{#fs-idp26053648 number=40}
-Tilgreinið hvort hægt sé að ákvarða
+
+æfingadæmi{#fs-idp26053648} Tilgreinið hvort hægt sé að ákvarða
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 óvissu:
 
@@ -492,12 +587,7 @@ bifreiðar
 \(f\) tímann sem það tekur að aka frá San Francisco til Kansas City á 53
 mílna meðalhraða á klukkustund
 
-:::
-
-### 1.6 Stærðfræðileg meðferð mælinganiðurstaðna
-
-:::exercise{#fs-idp30473840 number=41}
-Tilgreinið hvort hægt sé að ákvarða
+æfingadæmi{#fs-idp30473840} Tilgreinið hvort hægt sé að ákvarða
 eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 óvissu:
 
@@ -513,10 +603,13 @@ eftirfarandi nákvæmlega eða hvort það þurfi að mæla það með einhverri
 
 \(f\) vegalengdina frá San Francisco til Kansas City
 
+:::answer
+(a) nákvæmt; (b) nákvæmt; (c) óvisst; (d) nákvæmt; (e) óvisst;
+(f) óvisst
+
 :::
 
-:::exercise{#fs-idp191983136 number=42}
-Hversu marga markverða stafi inniheldur
+æfingadæmi{#fs-idp191983136} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
 
 \(a\) 38,7 g
@@ -533,10 +626,7 @@ hver eftirfarandi mælinga?
 
 \(g\) 0,01400 g/mL
 
-:::
-
-:::exercise{#fs-idp16088144 number=43}
-Hversu marga markverða stafi inniheldur
+æfingadæmi{#fs-idp16088144} Hversu marga markverða stafi inniheldur
 hver eftirfarandi mælinga?
 
 \(a\) 53 cm
@@ -545,9 +635,122 @@ hver eftirfarandi mælinga?
 title: "Mælióvissa, hittni og nákvæmni"
 ---
 
+\(b\) 2,05 $\times$ 10^8^ m
+
+\(c\) 86,002 J
+
+\(d\) 9,740 $\times$ 10^4^ m/s
+
+\(e\) 10,0613 m^3^
+
+\(f\) 0,17 g/mL
+
+\(g\) 0,88400 s
+
+:::answer
+(a) tveir; (b) þrír; (c) fimm; (d) fjórir; (e) sex; (f) tveir;
+(g) fimm
+
 :::
 
-:::exercise{#fs-idp30946992 number=44}
+æfingadæmi{#fs-idp334498416} Eftirfarandi stærðir voru gefnar upp á
+merkingum á söluvörum. Ákvarðaðu fjölda markverðra stafa í hverri
+þeirra.
+
+\(a\) 0,0055 g af virkum efnum
+
+\(b\) 12 töflur
+
+\(c\) 3% vetnisperoxíð
+
+\(d\) 5,5 únsur
+
+\(e\) 473 ml
+
+\(f\) 1,75% bismút
+
+\(g\) 0,001% fosfórsýra
+
+\(h\) 99,80% óvirk efni
+
+æfingadæmi{#fs-idp15391168} Sléttaðu eftirfarandi tölur að tveimur
+markverðum stöfum:
+
+\(a\) 0,436
+
+\(b\) 9,000
+
+\(c\) 27,2
+
+\(d\) 135
+
+\(e\) 1,497 $\times$ 10^−3^
+
+\(f\) 0,445
+
+:::answer
+(a) 0,44; (b) 9,0; (c) 27; (d) 140; (e) 1,5 $\times$
+10^−3^; (f) 0,44
+
+:::
+
+æfingadæmi{#fs-idp108082000} Sléttaðu eftirfarandi tölur að tveimur
+markverðum stöfum:
+
+\(a\) 517
+
+\(b\) 86,3
+
+\(c\) 6,382 $\times$ 10^3^
+
+\(d\) 5,0008
+
+\(e\) 22,497
+
+\(f\) 0,885
+
+æfingadæmi{#fs-idp358584288} Framkvæmdu eftirfarandi útreikninga og
+gefðu upp hvert svar með réttum fjölda markverðra stafa.
+
+\(a\) 628 $\times$ 342
+
+\(b\) (5,63 $\times$ 10^2^) $\times$ (7,4 $\times$ 10^3^)
+
+\(c\) $${\frac{{28.0}}{{13.483}}}$$
+
+\(d\) 8119 $\times$ 0,000023
+
+\(e\) 14,98 + 27.340 + 84,7593
+
+\(f\) 42,7 + 0,259
+
+:::answer
+(a) 2,15 $\times$ 10^5^; (b) 4,2 $\times$ 10^6^; (c)
+2,08; (d) 0,19; (e) 27.440; (f) 43,0
+
+:::
+
+æfingadæmi{#fs-idp356573616} Framkvæmdu eftirfarandi útreikninga og
+gefðu upp hvert svar með réttum fjölda markverðra stafa.
+
+\(a\) 62,8 $\times$ 34
+
+\(b\) 0,147 + 0,0066 + 0,012
+
+\(c\) 38 $\times$ 95 $\times$ 1,792
+
+\(d\) 15 – 0,15 – 0,6155
+
+\(e\) $${8.78\,\times \,{({\frac{{0.0500}}{{0.478}}})}}$$
+
+\(f\) 140 + 7,68 + 0,014
+
+\(g\) 28,7 – 0.0483
+
+\(h\) $${\frac{{(88.5-87.57)}}{{45.13}}}$$
+
+**39.**
+
 Skoðaðu niðurstöður
 bogfimikeppninnar sem sýndar eru á þessari mynd.
 
@@ -557,9 +760,8 @@ bogfimikeppninnar sem sýndar eru á þessari mynd.
 
 \(c\) Hver er bæði ónákvæmastur og óréttastur?
 
-:::
+**40.**
 
-:::exercise{#fs-idp33718320 number=45}
 Flokkaðu eftirfarandi mælingasett
 sem rétt, nákvæmt, hvort tveggja eða hvorugt.
 
@@ -572,72 +774,104 @@ ml, 27,01 ml
 \(c\) Ákvörðun á hreinleika gulls: 99,9999%, 99,9998%, 99,9998%,
 99,9999%
 
-:::
+### 1.6 Stærðfræðileg meðferð mælinganiðurstaðna
 
-:::exercise{#fs-idm128259568 number=46}
+**41.**
+
+Skrifaðu umreikningsþætti (sem
+hlutföll) fyrir fjölda:
+
+\(a\) kílómetra í 1 mílu
+
+\(b\) lítra í 1 rúmfeti
+
+\(c\) gramma í 1 únsu
+
+**42.**
+
+Á miðanum á gosflösku er rúmmálið
+gefið upp í tveimur einingum: 2,0 L og 67,6 fl oz. Notaðu þessar
+upplýsingar til að leiða út umreikningsþátt milli enskra og
+metrakerfiseininga. Hversu marga markverða stafi geturðu réttlætt í
+umreikningsþættinum þínum?
+
+**43.**
+
+Á miðanum á morgunkornspakka er
+massi morgunkornsins gefinn upp í tveimur einingum: 978 grömm og 34,5
+oz. Notaðu þessar upplýsingar til að finna umreikningsþátt milli enskra
+og metrakerfiseininga. Hversu marga markverða stafi geturðu réttlætt í
+umreikningsþættinum þínum?
+
+**44.**
+
+Fótbolti er spilaður með
+kringlóttum bolta sem hefur ummál á milli 27 og 28 tommur og þyngd á
+milli 14 og 16 únsur. Hverjar eru þessar forskriftir í einingum
+sentímetra og gramma?
+
+
+
+---
+title: "Stærðfræðileg meðferð mælinganiðurstaðna"
+---
+
+**45.**
+
 Ummál körfubolta fyrir konur er á
 milli 28,5 og 29,0 tommur og hámarksþyngd hans er 20 únsur (tveir
 markverðir stafir). Hverjar eru þessar forskriftir í sentímetrum og
 grömmum?
 
-:::
+**46.**
 
-:::exercise{#fs-idm203954352 number=47}
 Hversu margir millilítrar af
 gosdrykk eru í 12,0 únsu dós?
 
-:::
+**47.**
 
-:::exercise{#fs-idm290820272 number=48}
 Olíutunna er nákvæmlega 42 gallon.
 Hversu margir lítrar af olíu eru í tunnu?
 
-:::
+**48.**
 
-:::exercise{#fs-idp32978240 number=49}
 Þvermál rauðrar blóðfrumu er um 3
 $\times$ 10^−4^ tommur. Hvert er þvermál hennar í sentímetrum?
 
-:::
+**49.**
 
-:::exercise{#fs-idp3893440 number=50}
 Fjarlægðin milli miðju tveggja
 súrefnisatóma í súrefnissameind er 1,21 $\times$ 10^−8^ cm. Hver er
 þessi fjarlægð í tommum?
 
-:::
+**50.**
 
-:::exercise{#fs-idm280166528 number=51}
 Er 197 punda lyftingamaður nógu
 léttur til að keppa í flokki sem er takmarkaður við þá sem vega 90 kg
 eða minna?
 
-:::
+**51.**
 
-:::exercise{#fs-idm311405440 number=52}
 Mjög góður 197 punda lyftingamaður
 lyfti 192 kg í hreyfingu sem kallast jafnhending og snörun. Hver var
 massi þyngdarinnar sem lyft var í pundum?
 
-:::
+**52.**
 
-:::exercise{#fs-idm159954784 number=53}
 Mörg læknisfræðileg
 rannsóknarstofupróf eru framkvæmd með 5,0 μL af blóðsermi. Hvert er
 þetta rúmmál í millilítrum?
 
-:::
+**53.**
 
-:::exercise{#fs-idm293326720 number=54}
 Ef aspiríntöflu inniheldur 325 mg
 af aspiríni, hversu mörg grömm af aspiríni inniheldur hún?
 
-:::
+**54.**
 
-:::exercise{#fs-idm101514016 number=55}
 Notaðu vísindalegan (veldisvísis)
 rithátt til að tjá eftirfarandi stærðir með SI-grunneiningum í
-[sjá töflu](#fs-idm81346144):
+[↗](#fs-idm81346144):
 
 \(a\) 0,13 g
 
@@ -657,9 +891,8 @@ rithátt til að tjá eftirfarandi stærðir með SI-grunneiningum í
 
 \(i\) 0,15 mK
 
-:::
+**55.**
 
-:::exercise{#fs-idm247037968 number=56}
 Ljúktu við eftirfarandi
 umbreytingar milli SI-eininga.
 
@@ -681,30 +914,27 @@ umbreytingar milli SI-eininga.
 
 \(i\) 1,9 Gg = \_\_\_\_\_\_\_\_ g
 
-:::
+**56.**
 
-:::exercise{#fs-idp54026624 number=57}
 Bensín er selt í lítrum í mörgum
 löndum. Hversu marga lítra þarf til að fylla 12
 
 .0 gallona bensíntank?
 
-:::
 
-:::exercise{#fs-idm242942368 number=58}
-Mjólk er seld í lítrum í mörgum löndum.
+
+æfingadæmi{#fs-idm242942368} Mjólk er seld í lítrum í mörgum löndum.
 Hvert er rúmmál nákvæmlega 1/2 gallona af mjólk í lítrum?
 
-:::
-
-:::exercise{#fs-idm186995360 number=59}
-Eitt „long ton“ er skilgreint sem
+æfingadæmi{#fs-idm186995360} Eitt „long ton“ er skilgreint sem
 nákvæmlega 2240 pund. Hver er þessi massi í kílógrömmum?
 
+:::answer
+1,0160 $\times$ 10^3^ kg
+
 :::
 
-:::exercise{#fs-idm311016240 number=60}
-Framkvæmdu umreikninginn sem tilgreindur
+æfingadæmi{#fs-idm311016240} Framkvæmdu umreikninginn sem tilgreindur
 er í hverjum eftirfarandi liða:
 
 \(a\) heimsmet karla í langstökki, 29 fet 4¼ tommur, í metra
@@ -721,10 +951,7 @@ er í hverjum eftirfarandi liða:
 
 \(g\) massa 2,3 oz eggs í grömm
 
-:::
-
-:::exercise{#fs-idm250694352 number=61}
-Framkvæmdu umreikninginn sem tilgreindur
+æfingadæmi{#fs-idm250694352} Framkvæmdu umreikninginn sem tilgreindur
 er í hverjum eftirfarandi liða:
 
 \(a\) lengd fótboltavallar, 120 m (þrír markverðir stafir), í fet
@@ -742,62 +969,61 @@ kílómetra
 
 \(g\) massa 5,00 greina aspiríntöflu í milligrömm (1 grein = 0,00229 oz)
 
+:::answer
+(a) 394 fet; (b) 5,9634 km; (c) 6,0 $\times$ 10^2^; (d)
+2,64 L; (e) 5,1 $\times$ 10^18^ kg; (f) 14,5 kg; (g) 324 mg
+
 :::
 
-:::exercise{#fs-idm219388000 number=62}
-Á mörgum efnafræðiráðstefnum hefur verið
+æfingadæmi{#fs-idm219388000} Á mörgum efnafræðiráðstefnum hefur verið
 haldið 50 trilljón angstroma hlaup (tveir markverðir stafir). Hversu
 langt er þetta hlaup í kílómetrum og mílum? (1 Å = 1 $\times$
 10^−10^ m)
 
-:::
-
-:::exercise{#fs-idm311640624 number=63}
-50 trilljón angstroma hlaup efnafræðings
-(sjá [sjá töflu](#fs-idm219388000)) væri 10.900 álna hlaup
+æfingadæmi{#fs-idm311640624} 50 trilljón angstroma hlaup efnafræðings
+(sjá [↗](#fs-idm219388000)) væri 10.900 álna hlaup
 fornleifafræðings. Hversu löng er ein alin í metrum og fetum? (1 Å = 1
 $\times$ 10^−8^ cm)
 
+:::answer
+0,46 m; 1,5 fet/alin
+
 :::
 
-:::exercise{#fs-idm306975136 number=64}
-Bensíntankur ákveðins lúxusbifreiðar
+æfingadæmi{#fs-idm306975136} Bensíntankur ákveðins lúxusbifreiðar
 tekur 22,3 gallon samkvæmt handbók eiganda. Ef eðlismassi bensíns er
 0,8206 g/ml, ákvarðaðu þá massa eldsneytisins í kílógrömmum og pundum í
 fullum tanki.
 
-:::
-
-:::exercise{#fs-idm244153744 number=65}
-Kennari er að undirbúa tilraun og þarf
+æfingadæmi{#fs-idm244153744} Kennari er að undirbúa tilraun og þarf
 225 g af fosfórsýru. Eina ílátið sem er aðgengilegt er 150 ml
 keiluflaska. Er hún nógu stór til að rúma sýruna, en eðlismassi hennar
 er 1,83 g/ml?
 
+:::answer
+Já, rúmmál sýrunnar er 123 ml.
+
 :::
 
-:::exercise{#fs-idm110873792 number=66}
-Til að undirbúa sig fyrir tíma á
+æfingadæmi{#fs-idm110873792} Til að undirbúa sig fyrir tíma á
 rannsóknarstofu þarf aðstoðarmaður nemanda 125 g af efnasambandi. Flaska
 sem inniheldur 1/4 pund er fáanleg. Hafði nemandinn nóg af
 efnasambandinu?
 
-:::
-
-:::exercise{#fs-idp15401744 number=67}
-Efnafræðinemi er 159 cm á hæð og vegur
+æfingadæmi{#fs-idp15401744} Efnafræðinemi er 159 cm á hæð og vegur
 45,8 kg. Hver er hæð hennar í tommum og þyngd í pundum?
 
+:::answer
+62,6 tommur (um 5 fet 3 tommur) og 101 pund
+
 :::
 
-:::exercise{#fs-idm207241008 number=68}
-Í nýlegri Grand Prix-kappaksturskeppni
+æfingadæmi{#fs-idm207241008} Í nýlegri Grand Prix-kappaksturskeppni
 lauk sigurvegarinn keppni með meðalhraðann 229.8 km/klst. Hver var hraði
 hans í mílum á klukkustund, metrum á sekúndu og fetum á sekúndu?
 
-:::
+**57.**
 
-:::exercise{#fs-idm289866560 number=69}
 Leystu þessi dæmi um
 timburstærðir.
 
@@ -810,31 +1036,27 @@ Hverjar eru stærðirnar í cm $\times$ cm $\times$ m?
 \(b\) Þetta timbur er hægt að nota sem lóðrétta stoð, sem venjulega er
 komið fyrir með 16,0 tommu millibili. Hver er sú fjarlægð í sentímetrum?
 
-:::
+**58.**
 
-:::exercise{#fs-idm95632784 number=70}
 Talið var að kvikasilfursinnihald í
 læk væri yfir því lágmarki sem talið er öruggt – 1 hluti á milljarð
 (ppb) miðað við þyngd. Greining leiddi í ljós að styrkurinn var 0,68
 hlutar á milljarð. Hvaða magn kvikasilfurs í grömmum var til staðar í
 15,0 L af vatninu, en eðlismassi þess er 0,998 g/ml? $${\text{(1 ppb Hg}=\,\frac{{\text{1 ng Hg}}}{{\text{1 g vatn}}}\text{)}}$$
 
-:::
+**59.**
 
-:::exercise{#fs-idm215857872 number=71}
 Reiknaðu eðlismassa áls ef 27,6
 cm^3^ hefur massann 74,6 g.
 
-:::
+**60.**
 
-:::exercise{#fs-idm215482272 number=72}
 Osmín er eitt af eðlisþyngstu
 frumefnum sem þekkt eru. Hver er eðlismassi þess ef 2,72 g hefur
 rúmmálið 0,121 cm^3^?
 
-:::
+**61.**
 
-:::exercise{#fs-idm361862336 number=73}
 Reiknaðu þessa massa.
 
 \(a\) Hver er massi 6,00 cm^3^ af kvikasilfri, eðlismassi = 13,5939
@@ -842,77 +1064,64 @@ g/cm^3^?
 
 \(b\) Hver er massi 25,0 ml af oktani, eðlismassi = 0,702 g/cm^3^?
 
-:::
+**62.**
 
-:::exercise{#fs-idm305607360 number=74}
 Reiknaðu þessa massa.
 
 \(a\) Hver er massi 4,00 cm^3^ af natríni, eðlismassi = 0,97 g/cm^3^?
 
 \(b\) Hver er massi 125 ml af klórgasi, eðlismassi = 3,16 g/L?
 
-:::
+**63.**
 
-:::exercise{#fs-idm216432832 number=75}
 Reiknaðu þessi rúmmál.
 
 \(a\) Hvert er rúmmál 25 g af joði, eðlismassi = 4,93 g/cm^3^?
 
 \(b\) Hvert er rúmmál 3,28 g af vetnisgasi, eðlismassi = 0,089 g/L?
 
-:::
+**64.**
 
-:::exercise{#fs-idm182387776 number=76}
 Reiknaðu þessi rúmmál.
 
 \(a\) Hvert er rúmmál 11,3 g af grafíti, eðlismassi = 2,25 g/cm^3^?
 
 \(b\) Hvert er rúmmál 39,657 g af brómi, eðlismassi = 2,928 g/cm^3^?
 
-:::
+**65.**
 
-:::exercise{#fs-idm208263472 number=77}
 Umbreyttu suðuhitastigi gulls,
 2966 °C, í gráður á Fahrenheit og kelvin.
 
-:::
+**66.**
 
-:::exercise{#fs-idm291580080 number=78}
 Umbreyttu hitastigi sjóðandi heits
 vatns, 54 °C, í gráður á Fahrenheit og kelvin.
 
-:::
+**67.**
 
-:::exercise{#fs-idm126910176 number=79}
 Umbreyttu hitastigi kaldasta
 svæðisins í frysti, −10 °F, í gráður á Selsíus og kelvin.
 
-:::
+**68.**
 
-:::exercise{#fs-idm294247168 number=80}
 Umbreyttu hitastigi þurríss, −77
 °C, í gráður á Fahrenheit og kelvin.
 
-:::
+**69.**
 
-:::exercise{#fs-idm312310640 number=81}
 Umbreyttu suðuhitastigi fljótandi
 ammóníaks, −28,1 °F, í gráður á Selsíus og kelvin.
 
-:::
+**70.**
 
-:::exercise{#fs-idm307064960 number=82}
 Á merkimiða á úðabrúsa með
 sótthreinsiefni er varað við því að hita brúsann yfir 130 °F. Hvert er
 samsvarandi hitastig á Celsíus- og kelvinkvarða?
 
-:::
+**71.**
 
-:::exercise{#fs-idm161487744 number=83}
 Veðrið í Evrópu var óvenjulega
 hlýtt sumarið 1995. Í sjónvarpsfréttum var greint frá hitastigi allt að
 45 °C. Hvert var hitastigið á Fahrenheit-kvarða?
 
-:::
-
-:::
