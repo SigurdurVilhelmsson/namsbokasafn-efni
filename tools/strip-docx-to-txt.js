@@ -28,9 +28,6 @@
  * - [ ] Add batch processing for entire directories
  */
 
-const fs = require('fs');
-const path = require('path');
-
 // Parse command line arguments
 const args = process.argv.slice(2);
 

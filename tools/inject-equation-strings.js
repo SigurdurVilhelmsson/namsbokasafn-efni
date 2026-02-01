@@ -25,10 +25,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // ============================================================================
 // Argument Parsing
@@ -43,7 +39,7 @@ function parseArgs(args) {
     output: null,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -56,8 +52,7 @@ function parseArgs(args) {
     else if (arg === '--chapter' && args[i + 1] && args[i + 2]) {
       result.book = args[++i];
       result.chapter = args[++i];
-    }
-    else if (!arg.startsWith('-') && !result.input) result.input = arg;
+    } else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
   return result;
 }
@@ -195,7 +190,8 @@ function injectTextContent(latex, translations) {
 
       // Check if this is a translatable text (not just symbols)
       const isTranslatableText = originalContent.length > 1 || /[a-zA-Z0-9]/.test(originalContent);
-      const isNotJustSymbols = !/^[Δ×°]+$/.test(originalContent) && !/^[\d,.\s]+$/.test(originalContent);
+      const isNotJustSymbols =
+        !/^[Δ×°]+$/.test(originalContent) && !/^[\d,.\s]+$/.test(originalContent);
 
       if (isTranslatableText && isNotJustSymbols && /[a-zA-Z]/.test(originalContent)) {
         textIndex++;
@@ -283,7 +279,10 @@ function processFile(filePath, options) {
   }
 
   if (!filePath.endsWith('-equation-strings.is.md')) {
-    return { success: false, error: 'File must be a translated equation strings file (*-equation-strings.is.md)' };
+    return {
+      success: false,
+      error: 'File must be a translated equation strings file (*-equation-strings.is.md)',
+    };
   }
 
   // Find source equations.json
@@ -325,7 +324,7 @@ function processFile(filePath, options) {
           eqId,
           original: originalLatex,
           translated: translatedLatex,
-          stringsReplaced: Object.keys(translations[eqId]).length
+          stringsReplaced: Object.keys(translations[eqId]).length,
         });
         eq.latex = translatedLatex;
         totalInjected += Object.keys(translations[eqId]).length;
@@ -360,13 +359,15 @@ function processFile(filePath, options) {
   fs.writeFileSync(outputPath, JSON.stringify(equationsData, null, 2));
 
   if (verbose) {
-    console.log(`  Injected ${totalInjected} string(s): ${path.basename(filePath)} -> ${path.basename(outputPath)}`);
+    console.log(
+      `  Injected ${totalInjected} string(s): ${path.basename(filePath)} -> ${path.basename(outputPath)}`
+    );
   }
 
   return {
     success: true,
     stringsInjected: totalInjected,
-    outputPath
+    outputPath,
   };
 }
 
@@ -426,7 +427,9 @@ function processBatch(directory, options) {
       filesWithStrings++;
       totalStrings += result.stringsInjected;
       if (!options.verbose && !options.dryRun) {
-        console.log(`  Injected ${result.stringsInjected} string(s): ${path.relative(directory, file)}`);
+        console.log(
+          `  Injected ${result.stringsInjected} string(s): ${path.relative(directory, file)}`
+        );
       }
     }
   }
@@ -446,7 +449,13 @@ function processBatch(directory, options) {
 // Exports for programmatic use
 // ============================================================================
 
-export { processFile, processBatch, findTranslatedStringsFiles, parseTranslatedStrings, injectTextContent };
+export {
+  processFile,
+  processBatch,
+  findTranslatedStringsFiles,
+  parseTranslatedStrings,
+  injectTextContent,
+};
 
 // ============================================================================
 // Main

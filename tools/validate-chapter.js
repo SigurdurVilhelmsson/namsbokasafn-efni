@@ -35,30 +35,24 @@ const PROJECT_ROOT = path.join(__dirname, '..');
 const SEVERITY = {
   ERROR: 'error',
   WARNING: 'warning',
-  INFO: 'info'
+  INFO: 'info',
 };
 
 // Publication tracks and their source directories
 const TRACKS = {
   'mt-preview': {
     sourceDir: '02-mt-output',
-    pubDir: '05-publication/mt-preview'
+    pubDir: '05-publication/mt-preview',
   },
-  'faithful': {
+  faithful: {
     sourceDir: '03-faithful',
-    pubDir: '05-publication/faithful'
+    pubDir: '05-publication/faithful',
   },
-  'localized': {
+  localized: {
     sourceDir: '04-localized',
-    pubDir: '05-publication/localized'
-  }
+    pubDir: '05-publication/localized',
+  },
 };
-
-// Section numbering patterns for different chapter ranges
-function getSectionPattern(chapter) {
-  // Sections are named like: 1-1.is.md, 1-2.is.md, intro.is.md
-  return new RegExp(`^(intro|${chapter}-\\d+)\\.is\\.md$`);
-}
 
 // ============================================================================
 // Validators
@@ -77,7 +71,7 @@ const VALIDATORS = {
   'files-exist': {
     severity: SEVERITY.ERROR,
     description: 'Required markdown files are present',
-    check: async ({ book, chapter, track, chapterDir, statusData }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, statusData }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -86,18 +80,13 @@ const VALIDATORS = {
       if (!fs.existsSync(sourceDir)) {
         issues.push({
           file: sourceDir,
-          message: `Source directory not found for ${track} track`
+          message: `Source directory not found for ${track} track`,
         });
         return issues;
       }
 
       // Get expected sections from status.json
       const sections = statusData?.sections || [];
-      const pattern = getSectionPattern(chapter);
-
-      // Check for section files
-      const existingFiles = fs.readdirSync(sourceDir)
-        .filter(f => f.endsWith('.md') || f.endsWith('.is.md'));
 
       for (const section of sections) {
         // Convert section ID (e.g., "1.1") to filename (e.g., "1-1.is.md")
@@ -118,20 +107,20 @@ const VALIDATORS = {
           if (!fs.existsSync(altPath)) {
             issues.push({
               file: expectedFilename,
-              message: `Section ${sectionId} "${section.titleIs || section.titleEn}" file not found`
+              message: `Section ${sectionId} "${section.titleIs || section.titleEn}" file not found`,
             });
           }
         }
       }
 
       return issues;
-    }
+    },
   },
 
-  'frontmatter': {
+  frontmatter: {
     severity: SEVERITY.ERROR,
     description: 'Valid YAML frontmatter with required fields',
-    check: async ({ book, chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -140,7 +129,7 @@ const VALIDATORS = {
         return issues;
       }
 
-      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
+      const files = fs.readdirSync(sourceDir).filter((f) => f.endsWith('.md'));
 
       for (const file of files) {
         const filePath = path.join(sourceDir, file);
@@ -151,7 +140,7 @@ const VALIDATORS = {
           issues.push({
             file,
             line: 1,
-            message: 'Missing YAML frontmatter (file must start with ---)'
+            message: 'Missing YAML frontmatter (file must start with ---)',
           });
           continue;
         }
@@ -162,7 +151,7 @@ const VALIDATORS = {
           issues.push({
             file,
             line: 1,
-            message: 'Malformed frontmatter (missing closing ---)'
+            message: 'Malformed frontmatter (missing closing ---)',
           });
           continue;
         }
@@ -177,7 +166,7 @@ const VALIDATORS = {
             issues.push({
               file,
               line: 1,
-              message: `Missing required frontmatter field: ${field}`
+              message: `Missing required frontmatter field: ${field}`,
             });
           }
         }
@@ -188,19 +177,19 @@ const VALIDATORS = {
           issues.push({
             file,
             line: 2,
-            message: 'Frontmatter title is empty'
+            message: 'Frontmatter title is empty',
           });
         }
       }
 
       return issues;
-    }
+    },
   },
 
-  'equations': {
+  equations: {
     severity: SEVERITY.ERROR,
     description: 'No orphan equation placeholders',
-    check: async ({ book, chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -209,7 +198,7 @@ const VALIDATORS = {
         return issues;
       }
 
-      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
+      const files = fs.readdirSync(sourceDir).filter((f) => f.endsWith('.md'));
 
       // Pattern for equation placeholders
       const eqPattern = /\[\[EQ:(\d+)\]\]/g;
@@ -217,7 +206,6 @@ const VALIDATORS = {
       for (const file of files) {
         const filePath = path.join(sourceDir, file);
         const content = fs.readFileSync(filePath, 'utf-8');
-        const lines = content.split('\n');
 
         let match;
         while ((match = eqPattern.exec(content)) !== null) {
@@ -225,19 +213,19 @@ const VALIDATORS = {
           issues.push({
             file,
             line: lineNum,
-            message: `Orphan equation placeholder: ${match[0]}`
+            message: `Orphan equation placeholder: ${match[0]}`,
           });
         }
       }
 
       return issues;
-    }
+    },
   },
 
-  'images': {
+  images: {
     severity: SEVERITY.WARNING,
     description: 'All referenced images exist',
-    check: async ({ book, chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -246,7 +234,7 @@ const VALIDATORS = {
         return issues;
       }
 
-      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
+      const files = fs.readdirSync(sourceDir).filter((f) => f.endsWith('.md'));
 
       // Pattern for markdown images
       const imgPattern = /!\[([^\]]*)\]\(([^)]+)\)/g;
@@ -272,20 +260,20 @@ const VALIDATORS = {
             issues.push({
               file,
               line: lineNum,
-              message: `Image not found: ${imagePath}`
+              message: `Image not found: ${imagePath}`,
             });
           }
         }
       }
 
       return issues;
-    }
+    },
   },
 
-  'directives': {
+  directives: {
     severity: SEVERITY.WARNING,
     description: 'All directive blocks properly closed',
-    check: async ({ book, chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -294,14 +282,14 @@ const VALIDATORS = {
         return issues;
       }
 
-      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
+      const files = fs.readdirSync(sourceDir).filter((f) => f.endsWith('.md'));
 
       for (const file of files) {
         const filePath = path.join(sourceDir, file);
         const content = fs.readFileSync(filePath, 'utf-8');
         const lines = content.split('\n');
 
-        let openDirectives = [];
+        const openDirectives = [];
 
         for (let i = 0; i < lines.length; i++) {
           const line = lines[i].trim();
@@ -311,7 +299,7 @@ const VALIDATORS = {
           if (openMatch) {
             openDirectives.push({
               name: openMatch[1],
-              line: i + 1
+              line: i + 1,
             });
             continue;
           }
@@ -330,19 +318,19 @@ const VALIDATORS = {
             file,
             line: directive.line,
             message: `Unclosed directive: :::${directive.name}`,
-            fix: 'Run: node tools/repair-directives.js'
+            fix: 'Run: node tools/repair-directives.js',
           });
         }
       }
 
       return issues;
-    }
+    },
   },
 
-  'links': {
+  links: {
     severity: SEVERITY.WARNING,
     description: 'No broken internal links',
-    check: async ({ book, chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -351,7 +339,7 @@ const VALIDATORS = {
         return issues;
       }
 
-      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
+      const files = fs.readdirSync(sourceDir).filter((f) => f.endsWith('.md'));
 
       // Collect all defined IDs first
       const definedIds = new Set();
@@ -383,20 +371,20 @@ const VALIDATORS = {
             issues.push({
               file,
               line: lineNum,
-              message: `Broken internal link: #${targetId}`
+              message: `Broken internal link: #${targetId}`,
             });
           }
         }
       }
 
       return issues;
-    }
+    },
   },
 
   'mt-safe-syntax': {
     severity: SEVERITY.WARNING,
     description: 'No remaining MT-safe link syntax',
-    check: async ({ book, chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -405,7 +393,7 @@ const VALIDATORS = {
         return issues;
       }
 
-      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md'));
+      const files = fs.readdirSync(sourceDir).filter((f) => f.endsWith('.md'));
 
       // Pattern for MT-safe link syntax that should have been restored
       const mtSafePattern = /\[([^\]]*)\]\{(url|ref|doc)="[^"]*"\}/g;
@@ -421,19 +409,19 @@ const VALIDATORS = {
             file,
             line: lineNum,
             message: `Unrestored MT-safe link syntax: ${match[0].substring(0, 50)}...`,
-            fix: 'Run: node tools/restore-links.js'
+            fix: 'Run: node tools/restore-links.js',
           });
         }
       }
 
       return issues;
-    }
+    },
   },
 
   'status-match': {
     severity: SEVERITY.INFO,
     description: 'File state matches status.json',
-    check: async ({ book, chapter, track, chapterDir, statusData }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir, statusData }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -444,30 +432,31 @@ const VALIDATORS = {
       // Map track to status field
       const trackStatusMap = {
         'mt-preview': status.mtOutput?.complete || status.publication?.mtPreview?.complete,
-        'faithful': status.editorialPass1?.complete,
-        'localized': status.editorialPass2?.complete
+        faithful: status.editorialPass1?.complete,
+        localized: status.editorialPass2?.complete,
       };
 
       const shouldHaveContent = trackStatusMap[track];
-      const hasContent = fs.existsSync(sourceDir) &&
-        fs.readdirSync(sourceDir).filter(f => f.endsWith('.md')).length > 0;
+      const hasContent =
+        fs.existsSync(sourceDir) &&
+        fs.readdirSync(sourceDir).filter((f) => f.endsWith('.md')).length > 0;
 
       if (shouldHaveContent && !hasContent) {
         issues.push({
           file: 'status.json',
-          message: `Status indicates ${track} track complete, but no files found`
+          message: `Status indicates ${track} track complete, but no files found`,
         });
       }
 
       if (hasContent && !shouldHaveContent) {
         issues.push({
           file: 'status.json',
-          message: `Files exist for ${track} track, but status doesn't indicate completion`
+          message: `Files exist for ${track} track, but status doesn't indicate completion`,
         });
       }
 
       return issues;
-    }
+    },
   },
 
   'figure-numbers': {
@@ -482,7 +471,10 @@ const VALIDATORS = {
         return issues;
       }
 
-      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md')).sort();
+      const files = fs
+        .readdirSync(sourceDir)
+        .filter((f) => f.endsWith('.md'))
+        .sort();
 
       // Collect all figure numbers across the chapter
       const figureNumbers = [];
@@ -503,7 +495,7 @@ const VALIDATORS = {
             figure: figNum,
             full: `${chapterNum}.${figNum}`,
             file,
-            line: lineNum
+            line: lineNum,
           });
         }
       }
@@ -527,7 +519,7 @@ const VALIDATORS = {
           issues.push({
             file: fig.file,
             line: fig.line,
-            message: `Duplicate figure number: Mynd ${key}`
+            message: `Duplicate figure number: Mynd ${key}`,
           });
         }
         seen.add(key);
@@ -537,7 +529,7 @@ const VALIDATORS = {
           issues.push({
             file: fig.file,
             line: fig.line,
-            message: `Wrong chapter number: Mynd ${key} (expected chapter ${expectedChapter})`
+            message: `Wrong chapter number: Mynd ${key} (expected chapter ${expectedChapter})`,
           });
         }
 
@@ -546,7 +538,7 @@ const VALIDATORS = {
           issues.push({
             file: fig.file,
             line: fig.line,
-            message: `Gap in figure numbering: Mynd ${expectedChapter}.${expectedFigure} missing before Mynd ${key}`
+            message: `Gap in figure numbering: Mynd ${expectedChapter}.${expectedFigure} missing before Mynd ${key}`,
           });
         }
 
@@ -554,13 +546,13 @@ const VALIDATORS = {
       }
 
       return issues;
-    }
+    },
   },
 
   'cross-references': {
     severity: SEVERITY.WARNING,
     description: 'Cross-references match existing figure/table captions',
-    check: async ({ book, chapter, track, chapterDir }) => {
+    check: async ({ book, chapter: _chapter, track, chapterDir }) => {
       const issues = [];
       const trackConfig = TRACKS[track];
       const sourceDir = path.join(PROJECT_ROOT, 'books', book, trackConfig.sourceDir, chapterDir);
@@ -569,7 +561,10 @@ const VALIDATORS = {
         return issues;
       }
 
-      const files = fs.readdirSync(sourceDir).filter(f => f.endsWith('.md')).sort();
+      const files = fs
+        .readdirSync(sourceDir)
+        .filter((f) => f.endsWith('.md'))
+        .sort();
 
       // First pass: collect all figure/table numbers from captions
       const figureIds = new Set();
@@ -611,7 +606,7 @@ const VALIDATORS = {
             issues.push({
               file,
               line: lineNum,
-              message: `Cross-reference to non-existent figure: Mynd ${refNumber}`
+              message: `Cross-reference to non-existent figure: Mynd ${refNumber}`,
             });
           }
           // Also check ID if provided (CNX_Chem_... pattern)
@@ -622,22 +617,21 @@ const VALIDATORS = {
 
         while ((match = tableRefPattern.exec(content)) !== null) {
           const refNumber = match[1];
-          const refId = match[2];
           const lineNum = content.substring(0, match.index).split('\n').length;
 
           if (refNumber && !tableIds.has(refNumber)) {
             issues.push({
               file,
               line: lineNum,
-              message: `Cross-reference to non-existent table: Tafla ${refNumber}`
+              message: `Cross-reference to non-existent table: Tafla ${refNumber}`,
             });
           }
         }
       }
 
       return issues;
-    }
-  }
+    },
+  },
 };
 
 // ============================================================================
@@ -652,7 +646,7 @@ function parseArgs(args) {
     strict: false,
     json: false,
     fix: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -725,7 +719,7 @@ Examples:
 // ============================================================================
 
 async function validateChapter(options) {
-  const { book, chapter, track, strict, fix } = options;
+  const { book, chapter, track, strict } = options;
 
   // Validate track
   if (!TRACKS[track]) {
@@ -750,7 +744,7 @@ async function validateChapter(options) {
     chapter,
     track,
     chapterDir,
-    statusData
+    statusData,
   };
 
   const results = {
@@ -764,8 +758,8 @@ async function validateChapter(options) {
       errors: 0,
       warnings: 0,
       info: 0,
-      passed: 0
-    }
+      passed: 0,
+    },
   };
 
   // Run each validator
@@ -777,10 +771,10 @@ async function validateChapter(options) {
         description: validator.description,
         severity: validator.severity,
         passed: issues.length === 0,
-        issues: issues.map(issue => ({
+        issues: issues.map((issue) => ({
           ...issue,
-          severity: validator.severity
-        }))
+          severity: validator.severity,
+        })),
       };
 
       if (issues.length === 0) {
@@ -803,7 +797,7 @@ async function validateChapter(options) {
         description: validator.description,
         severity: validator.severity,
         passed: false,
-        error: err.message
+        error: err.message,
       };
       results.summary.errors++;
       results.valid = false;
@@ -827,7 +821,7 @@ function formatResults(results, options) {
 
   // Show each check result
   for (const [name, check] of Object.entries(results.checks)) {
-    const symbol = check.passed ? '\u2713' : (check.severity === 'error' ? '\u2717' : '\u26a0');
+    const symbol = check.passed ? '\u2713' : check.severity === 'error' ? '\u2717' : '\u26a0';
     const issueCount = check.issues?.length || 0;
 
     if (check.passed) {
@@ -840,7 +834,8 @@ function formatResults(results, options) {
       // Show issues
       for (const issue of check.issues || []) {
         const location = issue.line ? `${issue.file}:${issue.line}` : issue.file;
-        const prefix = check.severity === 'error' ? 'ERROR' : (check.severity === 'warning' ? 'WARNING' : 'INFO');
+        const prefix =
+          check.severity === 'error' ? 'ERROR' : check.severity === 'warning' ? 'WARNING' : 'INFO';
         lines.push(`  ${prefix}: ${issue.message} (${location})`);
 
         if (fix && issue.fix) {
@@ -851,7 +846,9 @@ function formatResults(results, options) {
   }
 
   lines.push('');
-  lines.push(`Summary: ${results.summary.errors} error(s), ${results.summary.warnings} warning(s), ${results.summary.info} info`);
+  lines.push(
+    `Summary: ${results.summary.errors} error(s), ${results.summary.warnings} warning(s), ${results.summary.info} info`
+  );
 
   if (results.valid) {
     lines.push('');

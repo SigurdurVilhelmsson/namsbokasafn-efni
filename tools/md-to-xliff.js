@@ -29,7 +29,7 @@ function parseArgs(args) {
     sourceLang: 'en',
     targetLang: 'is',
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -102,10 +102,23 @@ function segmentText(text) {
   // But not on: abbreviations, decimals, etc.
 
   const segments = [];
-  let current = '';
 
   // Common abbreviations to not split on
-  const abbreviations = ['Mr.', 'Mrs.', 'Ms.', 'Dr.', 'Prof.', 'e.g.', 'i.e.', 'etc.', 'vs.', 'Fig.', 'fig.', 'eq.', 'Eq.'];
+  const abbreviations = [
+    'Mr.',
+    'Mrs.',
+    'Ms.',
+    'Dr.',
+    'Prof.',
+    'e.g.',
+    'i.e.',
+    'etc.',
+    'vs.',
+    'Fig.',
+    'fig.',
+    'eq.',
+    'Eq.',
+  ];
 
   // Replace abbreviations temporarily
   let processed = text;
@@ -187,7 +200,7 @@ function extractSegments(body, verbose) {
           id: 'seg-' + segmentId,
           type: inDirective ? directiveType + '-' + type : type,
           source: text,
-          note: 'Heading level ' + level
+          note: 'Heading level ' + level,
         });
       }
       continue;
@@ -208,7 +221,7 @@ function extractSegments(body, verbose) {
           id: 'seg-' + segmentId,
           type: inDirective ? directiveType + '-list-item' : 'list-item',
           source: sentence,
-          note: 'List item'
+          note: 'List item',
         });
       }
       continue;
@@ -226,7 +239,7 @@ function extractSegments(body, verbose) {
         id: 'seg-' + segmentId,
         type: 'figure-caption',
         source: captionText,
-        note: 'Figure caption'
+        note: 'Figure caption',
       });
       continue;
     }
@@ -259,8 +272,11 @@ function extractSegments(body, verbose) {
         id: 'seg-' + segmentId,
         type: currentType,
         source: sentence,
-        note: currentType.includes('note') ? 'Note content' :
-              currentType.includes('example') ? 'Example content' : null
+        note: currentType.includes('note')
+          ? 'Note content'
+          : currentType.includes('example')
+            ? 'Example content'
+            : null,
       });
     }
 
@@ -285,7 +301,7 @@ function convertInlineToXliff(text) {
   let inlineId = 0;
 
   // Convert [[EQ:n]] to locked inline elements
-  result = result.replace(/\[\[EQ:(\d+)\]\]/g, (match, num) => {
+  result = result.replace(/\[\[EQ:(\d+)\]\]/g, (match, _num) => {
     inlineId++;
     return `<x id="${inlineId}" equiv-text="${escapeXml(match)}" ctype="x-equation"/>`;
   });
@@ -365,10 +381,10 @@ function generateXliff(segments, frontmatter, sourceLang, targetLang) {
 
 function mapRestype(type) {
   const mapping = {
-    'title': 'x-title',
+    title: 'x-title',
     'section-title': 'x-section-title',
     'subsection-title': 'x-subsection-title',
-    'paragraph': 'x-paragraph',
+    paragraph: 'x-paragraph',
     'list-item': 'x-list-item',
     'figure-caption': 'x-figure-caption',
     'note-title': 'x-note-title',
@@ -434,7 +450,6 @@ async function main() {
     } else {
       console.log(xliff);
     }
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);

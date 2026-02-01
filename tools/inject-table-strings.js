@@ -25,10 +25,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // ============================================================================
 // Argument Parsing
@@ -43,7 +39,7 @@ function parseArgs(args) {
     output: null,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -56,8 +52,7 @@ function parseArgs(args) {
     else if (arg === '--chapter' && args[i + 1] && args[i + 2]) {
       result.book = args[++i];
       result.chapter = args[++i];
-    }
-    else if (!arg.startsWith('-') && !result.input) result.input = arg;
+    } else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
   return result;
 }
@@ -126,7 +121,7 @@ Examples:
 function parseTranslatedStrings(content) {
   const result = {};
   let currentTable = null;
-  let currentSection = null;  // 'headers' or 'cells'
+  let currentSection = null; // 'headers' or 'cells'
 
   const lines = content.split('\n');
 
@@ -151,15 +146,15 @@ function parseTranslatedStrings(content) {
     if (sectionMatch && currentTable) {
       const section = sectionMatch[1].toLowerCase();
       // Normalize Icelandic to English
-      currentSection = (section === 'fyrirsagnir') ? 'headers' :
-                       (section === 'reitir') ? 'cells' : section;
+      currentSection =
+        section === 'fyrirsagnir' ? 'headers' : section === 'reitir' ? 'cells' : section;
       continue;
     }
 
     // Match header entry: **H1:** translated text
     const headerMatch = line.match(/^\*\*H(\d+):\*\*\s*(.*)$/);
     if (headerMatch && currentTable && currentSection === 'headers') {
-      const colIndex = parseInt(headerMatch[1], 10) - 1;  // Convert to 0-based
+      const colIndex = parseInt(headerMatch[1], 10) - 1; // Convert to 0-based
       const text = headerMatch[2].trim();
       result[currentTable].headers[colIndex] = text;
       continue;
@@ -168,7 +163,7 @@ function parseTranslatedStrings(content) {
     // Match cell entry: **R1C1:** translated text
     const cellMatch = line.match(/^\*\*R(\d+)C(\d+):\*\*\s*(.*)$/);
     if (cellMatch && currentTable && currentSection === 'cells') {
-      const rowIndex = parseInt(cellMatch[1], 10) - 1;  // Convert to 0-based
+      const rowIndex = parseInt(cellMatch[1], 10) - 1; // Convert to 0-based
       const colIndex = parseInt(cellMatch[2], 10) - 1;
       const text = cellMatch[3].trim();
       const key = `${rowIndex},${colIndex}`;
@@ -191,15 +186,17 @@ function parseTranslatedStrings(content) {
  * @returns {string} Updated table markdown
  */
 function injectTableContent(markdown, translations) {
-  if (!translations || (Object.keys(translations.headers).length === 0 && Object.keys(translations.cells).length === 0)) {
+  if (
+    !translations ||
+    (Object.keys(translations.headers).length === 0 && Object.keys(translations.cells).length === 0)
+  ) {
     return markdown;
   }
 
   const lines = markdown.split('\n');
   const result = [];
 
-  let dataRowIndex = -1;  // Track data row index (excluding header and alignment rows)
-  let isAlignmentRow = false;
+  let dataRowIndex = -1; // Track data row index (excluding header and alignment rows)
 
   for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
     const line = lines[lineIndex];
@@ -213,8 +210,7 @@ function injectTableContent(markdown, translations) {
     const cells = line.split('|');
 
     // Check if this is the alignment row (second row, contains :--- patterns)
-    if (lineIndex === 1 && cells.some(c => /^[\s:]*-+[\s:]*$/.test(c))) {
-      isAlignmentRow = true;
+    if (lineIndex === 1 && cells.some((c) => /^[\s:]*-+[\s:]*$/.test(c))) {
       result.push(line);
       continue;
     }
@@ -325,7 +321,10 @@ function processFile(filePath, options) {
   }
 
   if (!filePath.endsWith('-table-strings.is.md')) {
-    return { success: false, error: 'File must be a translated table strings file (*-table-strings.is.md)' };
+    return {
+      success: false,
+      error: 'File must be a translated table strings file (*-table-strings.is.md)',
+    };
   }
 
   // Find source protected.json
@@ -371,7 +370,7 @@ function processFile(filePath, options) {
           changes.push({
             tableId,
             headersReplaced: headerCount,
-            cellsReplaced: cellCount
+            cellsReplaced: cellCount,
           });
           table.markdown = translatedMarkdown;
           totalInjected += headerCount + cellCount;
@@ -392,7 +391,9 @@ function processFile(filePath, options) {
   if (dryRun) {
     console.log(`[DRY RUN] Would inject ${totalInjected} string(s) in: ${path.basename(filePath)}`);
     for (const change of changes) {
-      console.log(`  ${change.tableId}: ${change.headersReplaced} headers, ${change.cellsReplaced} cells`);
+      console.log(
+        `  ${change.tableId}: ${change.headersReplaced} headers, ${change.cellsReplaced} cells`
+      );
     }
     console.log(`  Would write to: ${outputPath}`);
     return { success: true, stringsInjected: totalInjected, dryRun: true };
@@ -403,13 +404,15 @@ function processFile(filePath, options) {
   fs.writeFileSync(outputPath, JSON.stringify(protectedData, null, 2));
 
   if (verbose) {
-    console.log(`  Injected ${totalInjected} string(s): ${path.basename(filePath)} -> ${path.basename(outputPath)}`);
+    console.log(
+      `  Injected ${totalInjected} string(s): ${path.basename(filePath)} -> ${path.basename(outputPath)}`
+    );
   }
 
   return {
     success: true,
     stringsInjected: totalInjected,
-    outputPath
+    outputPath,
   };
 }
 
@@ -469,7 +472,9 @@ function processBatch(directory, options) {
       filesWithStrings++;
       totalStrings += result.stringsInjected;
       if (!options.verbose && !options.dryRun) {
-        console.log(`  Injected ${result.stringsInjected} string(s): ${path.relative(directory, file)}`);
+        console.log(
+          `  Injected ${result.stringsInjected} string(s): ${path.relative(directory, file)}`
+        );
       }
     }
   }
@@ -489,7 +494,13 @@ function processBatch(directory, options) {
 // Exports for programmatic use
 // ============================================================================
 
-export { processFile, processBatch, findTranslatedStringsFiles, parseTranslatedStrings, injectTableContent };
+export {
+  processFile,
+  processBatch,
+  findTranslatedStringsFiles,
+  parseTranslatedStrings,
+  injectTableContent,
+};
 
 // ============================================================================
 // Main

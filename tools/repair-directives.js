@@ -43,16 +43,18 @@ const BULLET_LIST_DIRECTIVES = ['learning-objectives'];
 
 // Directives that close after short content (typically 1-3 paragraphs)
 // Includes svar (Icelandic alias for answer)
+// eslint-disable-next-line no-unused-vars
 const SHORT_CONTENT_DIRECTIVES = ['answer', 'svar', 'link-to-material'];
 
 // All known directive types (includes Icelandic aliases)
+// eslint-disable-next-line no-unused-vars
 const ALL_DIRECTIVES = [
   'learning-objectives',
   'example',
   'practice-problem',
-  'æfingadæmi',  // Icelandic alias for practice-problem
+  'æfingadæmi', // Icelandic alias for practice-problem
   'answer',
-  'svar',         // Icelandic alias for answer
+  'svar', // Icelandic alias for answer
   'link-to-material',
   'chemistry-everyday',
   'how-science-connects',
@@ -166,7 +168,7 @@ function fixMergedDirectiveMarkers(content, verbose = false) {
 
   return {
     content: result.join('\n'),
-    fixCount
+    fixCount,
   };
 }
 
@@ -216,6 +218,7 @@ function containsLink(line) {
 /**
  * Check if a line looks like a figure caption (Mynd X.Y)
  */
+// eslint-disable-next-line no-unused-vars
 function isFigureCaption(line) {
   return /^Mynd\s+\d+\.\d+/.test(line.trim());
 }
@@ -231,15 +234,15 @@ function isSectionHeading(line) {
  * Detect natural end of directive content
  */
 function shouldCloseDirective(directiveName, currentLine, nextLines, state) {
-  const trimmed = currentLine.trim();
-
   // Check if next line is a new directive (except for nested ones)
   if (nextLines.length > 0) {
     const nextDirective = parseDirective(nextLines[0]);
     if (nextDirective && nextDirective !== 'close') {
       // If next is a nested directive and we're in a container, don't close
-      if (NESTED_DIRECTIVES.includes(nextDirective) &&
-          CONTAINER_DIRECTIVES.includes(directiveName)) {
+      if (
+        NESTED_DIRECTIVES.includes(nextDirective) &&
+        CONTAINER_DIRECTIVES.includes(directiveName)
+      ) {
         return false;
       }
       return true;
@@ -340,7 +343,11 @@ function shouldCloseDirective(directiveName, currentLine, nextLines, state) {
   if (directiveName === 'practice-problem' || directiveName === 'æfingadæmi') {
     if (nextLines.length > 0) {
       const nextDirective = parseDirective(nextLines[0]);
-      if (nextDirective && nextDirective !== 'close' && !NESTED_DIRECTIVES.includes(nextDirective)) {
+      if (
+        nextDirective &&
+        nextDirective !== 'close' &&
+        !NESTED_DIRECTIVES.includes(nextDirective)
+      ) {
         return true;
       }
     }
@@ -422,7 +429,7 @@ function repairDirectives(content, verbose = false) {
 
       stack.push({
         name: directive,
-        state: { hadBulletPoints: false, hadContent: false, hadLinkContent: false }
+        state: { hadBulletPoints: false, hadContent: false, hadLinkContent: false },
       });
       result.push(line);
     } else if (directive === 'close') {
@@ -527,7 +534,13 @@ function processFile(filePath, options = {}) {
     console.log(`${changeDesc}: ${filePath}`);
   }
 
-  return { changed: true, changes: result.changes, addedClosings: result.addedClosings, removedOrphans: result.removedOrphans, mergedMarkersFixes: result.mergedMarkersFixes };
+  return {
+    changed: true,
+    changes: result.changes,
+    addedClosings: result.addedClosings,
+    removedOrphans: result.removedOrphans,
+    mergedMarkersFixes: result.mergedMarkersFixes,
+  };
 }
 
 /**
@@ -584,6 +597,7 @@ function processBatch(directory, options = {}) {
 
   console.log('\n' + '─'.repeat(50));
   console.log(`Files changed: ${filesChanged}`);
+  console.log(`Total changes: ${totalChanges}`);
   console.log(`Total merged markers split: ${totalMergedSplit}`);
   console.log(`Total closing markers added: ${totalAdded}`);
   console.log(`Total orphaned markers removed: ${totalRemoved}`);
@@ -678,9 +692,10 @@ async function main() {
         process.exit(1);
       }
 
-      const books = fs.readdirSync(booksDir, { withFileTypes: true })
-        .filter(d => d.isDirectory())
-        .map(d => d.name);
+      const books = fs
+        .readdirSync(booksDir, { withFileTypes: true })
+        .filter((d) => d.isDirectory())
+        .map((d) => d.name);
 
       for (const book of books) {
         const mtPreviewDir = path.join(booksDir, book, '05-publication', 'mt-preview');

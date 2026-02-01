@@ -28,7 +28,7 @@ function parseArgs(args) {
     displayDelimiter: '$$',
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -115,7 +115,7 @@ function findPlaceholders(content) {
       key: 'EQ:' + match[1],
       num: parseInt(match[1]),
       index: match.index,
-      id: match[2] || null  // ID from MT-safe attribute if present
+      id: match[2] || null, // ID from MT-safe attribute if present
     });
   }
 
@@ -126,7 +126,7 @@ function applyEquations(content, equations, options, verbose) {
   const placeholders = findPlaceholders(content);
   let result = content;
   let replacements = 0;
-  let missing = [];
+  const missing = [];
 
   // Sort by position descending so we can replace without affecting indices
   placeholders.sort((a, b) => b.index - a.index);
@@ -157,10 +157,13 @@ function applyEquations(content, equations, options, verbose) {
     }
 
     if (verbose) {
-      console.error(`  ${p.placeholder} → ${replacement.substring(0, 50)}${replacement.length > 50 ? '...' : ''}`);
+      console.error(
+        `  ${p.placeholder} → ${replacement.substring(0, 50)}${replacement.length > 50 ? '...' : ''}`
+      );
     }
 
-    result = result.substring(0, p.index) + replacement + result.substring(p.index + p.placeholder.length);
+    result =
+      result.substring(0, p.index) + replacement + result.substring(p.index + p.placeholder.length);
     replacements++;
   }
 
@@ -191,12 +194,14 @@ function isDisplayEquation(content, index, latex) {
   }
 
   // Large equations (fractions, sums, matrices) are typically display
-  if (latex.includes('\\frac') ||
-      latex.includes('\\sum') ||
-      latex.includes('\\int') ||
-      latex.includes('\\prod') ||
-      latex.includes('\\begin{') ||
-      latex.includes('\\matrix')) {
+  if (
+    latex.includes('\\frac') ||
+    latex.includes('\\sum') ||
+    latex.includes('\\int') ||
+    latex.includes('\\prod') ||
+    latex.includes('\\begin{') ||
+    latex.includes('\\matrix')
+  ) {
     // But only if not embedded in text
     if (textBefore.trim() === '' || textAfter.trim() === '') {
       return true;
@@ -210,7 +215,7 @@ function autoDetectEquationsFile(inputPath) {
   // Try: input.md → input-equations.json
   // Also handle language suffixes: input.is.md → input-equations.json
   const basename = inputPath.replace(/\.md$/, '');
-  const basenameNoLang = basename.replace(/\.(is|en)$/, '');  // Strip language suffix
+  const basenameNoLang = basename.replace(/\.(is|en)$/, ''); // Strip language suffix
   const dir = path.dirname(inputPath);
 
   const candidates = [
@@ -293,11 +298,18 @@ async function main() {
     }
 
     // Apply equations
-    const { result, replacements, missing } = applyEquations(content, equations, args, args.verbose);
+    const { result, replacements, missing } = applyEquations(
+      content,
+      equations,
+      args,
+      args.verbose
+    );
 
     // Handle missing equations
     if (missing.length > 0) {
-      console.error('Warning: ' + missing.length + ' equation(s) not found in JSON: ' + missing.join(', '));
+      console.error(
+        'Warning: ' + missing.length + ' equation(s) not found in JSON: ' + missing.join(', ')
+      );
     }
 
     // Output
@@ -315,7 +327,6 @@ async function main() {
     } else {
       console.log(result);
     }
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);

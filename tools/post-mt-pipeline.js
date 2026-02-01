@@ -40,56 +40,56 @@ const PIPELINE_STEPS = [
     id: 'images',
     name: 'Restore Images',
     script: 'restore-images.js',
-    description: 'Reconstruct image markdown from MT-stripped attribute blocks'
+    description: 'Reconstruct image markdown from MT-stripped attribute blocks',
   },
   {
     id: 'figures',
     name: 'Restore Figures',
     script: 'restore-figures.js',
-    description: 'Restore correct figure numbers and cross-references from sidecar'
+    description: 'Restore correct figure numbers and cross-references from sidecar',
   },
   {
     id: 'links',
     name: 'Restore Links',
     script: 'restore-links.js',
-    description: 'Convert MT-safe [text]{url="..."} syntax back to standard markdown links'
+    description: 'Convert MT-safe [text]{url="..."} syntax back to standard markdown links',
   },
   {
     id: 'strings',
     name: 'Restore Strings',
     script: 'restore-strings.js',
-    description: 'Update sidecar with translated frontmatter titles, table titles, and summaries'
+    description: 'Update sidecar with translated frontmatter titles, table titles, and summaries',
   },
   {
     id: 'table-strings',
     name: 'Inject Table Strings',
     script: 'inject-table-strings.js',
-    description: 'Inject translated table headers and cells from table-strings.is.md'
+    description: 'Inject translated table headers and cells from table-strings.is.md',
   },
   {
     id: 'tables',
     name: 'Restore Tables',
     script: 'restore-tables.js',
-    description: 'Restore tables from sidecar JSON files'
+    description: 'Restore tables from sidecar JSON files',
   },
   {
     id: 'equation-strings',
     name: 'Inject Equation Strings',
     script: 'inject-equation-strings.js',
-    description: 'Inject translated text into LaTeX equations from equation-strings.is.md'
+    description: 'Inject translated text into LaTeX equations from equation-strings.is.md',
   },
   {
     id: 'equations',
     name: 'Apply Equations',
     script: 'apply-equations.js',
-    description: 'Replace [[EQ:n]] placeholders with LaTeX from sidecar JSON'
+    description: 'Replace [[EQ:n]] placeholders with LaTeX from sidecar JSON',
   },
   {
     id: 'directives',
     name: 'Repair Directives',
     script: 'repair-directives.js',
-    description: 'Add missing ::: closing markers to directive blocks'
-  }
+    description: 'Add missing ::: closing markers to directive blocks',
+  },
 ];
 
 // ============================================================================
@@ -106,7 +106,7 @@ function parseArgs(args) {
     verbose: false,
     json: false,
     skip: [],
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -215,30 +215,34 @@ function runTool(scriptPath, args, options = {}) {
 
     const child = spawn('node', [scriptPath, ...args], {
       cwd: getProjectRoot(),
-      stdio: 'pipe'
+      stdio: 'pipe',
     });
 
     let stdout = '';
     let stderr = '';
 
-    child.stdout.on('data', data => { stdout += data; });
-    child.stderr.on('data', data => { stderr += data; });
+    child.stdout.on('data', (data) => {
+      stdout += data;
+    });
+    child.stderr.on('data', (data) => {
+      stderr += data;
+    });
 
-    child.on('close', code => {
+    child.on('close', (code) => {
       resolve({
         success: code === 0,
         exitCode: code,
         stdout: stdout.trim(),
-        stderr: stderr.trim()
+        stderr: stderr.trim(),
       });
     });
 
-    child.on('error', err => {
+    child.on('error', (err) => {
       resolve({
         success: false,
         exitCode: -1,
         stdout: '',
-        stderr: err.message
+        stderr: err.message,
       });
     });
   });
@@ -266,11 +270,12 @@ function getSidecarPath(filePath, sidecarType) {
   // e.g., "1-2.is.md" -> "1-2" or "intro.is.md" -> "intro"
   // Also handles split files: "1-2(a).is.md" -> "1-2"
   const dir = path.dirname(forMtPath);
-  const basename = path.basename(forMtPath)
-    .replace(/\.is\.md$/, '')  // Remove .is.md
-    .replace(/\.en\.md$/, '')  // Remove .en.md (shouldn't happen but be safe)
+  const basename = path
+    .basename(forMtPath)
+    .replace(/\.is\.md$/, '') // Remove .is.md
+    .replace(/\.en\.md$/, '') // Remove .en.md (shouldn't happen but be safe)
     .replace(/\([a-z]\)$/, '') // Remove split file suffix like (a), (b), etc.
-    .replace(/\.md$/, '');     // Remove plain .md
+    .replace(/\.md$/, ''); // Remove plain .md
 
   const sidecarPath = path.join(dir, `${basename}-${sidecarType}.json`);
 
@@ -298,7 +303,7 @@ async function processFile(filePath, options) {
   const result = {
     file: filePath,
     success: true,
-    steps: {}
+    steps: {},
   };
 
   if (!fs.existsSync(filePath)) {
@@ -328,7 +333,7 @@ async function processFile(filePath, options) {
     if (!fs.existsSync(scriptPath)) {
       result.steps[step.id] = {
         success: false,
-        error: `Script not found: ${step.script}`
+        error: `Script not found: ${step.script}`,
       };
       result.success = false;
       continue;
@@ -356,7 +361,7 @@ async function processFile(filePath, options) {
         // No figures file - skip this step (script handles gracefully anyway)
         result.steps[step.id] = {
           skipped: true,
-          reason: 'No figures sidecar found'
+          reason: 'No figures sidecar found',
         };
         if (verbose) {
           console.log(`  [SKIP] ${step.name}: No figures sidecar found`);
@@ -394,16 +399,17 @@ async function processFile(filePath, options) {
     } else if (step.id === 'table-strings') {
       // Find translated table strings file in same directory
       const dir = path.dirname(filePath);
-      const basename = path.basename(filePath)
+      const basename = path
+        .basename(filePath)
         .replace(/\.is\.md$/, '')
-        .replace(/\([a-z]\)$/, '');  // Handle split files
+        .replace(/\([a-z]\)$/, ''); // Handle split files
       const tableStringsPath = path.join(dir, `${basename}-table-strings.is.md`);
 
       if (!fs.existsSync(tableStringsPath)) {
         // No translated table strings - skip this step
         result.steps[step.id] = {
           skipped: true,
-          reason: 'No translated table strings found'
+          reason: 'No translated table strings found',
         };
         if (verbose) {
           console.log(`  [SKIP] ${step.name}: No table-strings.is.md found`);
@@ -421,9 +427,10 @@ async function processFile(filePath, options) {
     } else if (step.id === 'tables') {
       // Check for translated protected.json in 02-mt-output (created by inject-table-strings)
       const dir = path.dirname(filePath);
-      const basename = path.basename(filePath)
+      const basename = path
+        .basename(filePath)
         .replace(/\.is\.md$/, '')
-        .replace(/\([a-z]\)$/, '');  // Handle split files
+        .replace(/\([a-z]\)$/, ''); // Handle split files
       const translatedProtectedPath = path.join(dir, `${basename}-protected.json`);
 
       // If translated protected.json exists in mt-output, restore-tables will use it
@@ -445,16 +452,17 @@ async function processFile(filePath, options) {
     } else if (step.id === 'equation-strings') {
       // Find translated equation strings file in same directory
       const dir = path.dirname(filePath);
-      const basename = path.basename(filePath)
+      const basename = path
+        .basename(filePath)
         .replace(/\.is\.md$/, '')
-        .replace(/\([a-z]\)$/, '');  // Handle split files
+        .replace(/\([a-z]\)$/, ''); // Handle split files
       const equationStringsPath = path.join(dir, `${basename}-equation-strings.is.md`);
 
       if (!fs.existsSync(equationStringsPath)) {
         // No translated equation strings - skip this step
         result.steps[step.id] = {
           skipped: true,
-          reason: 'No translated equation strings found'
+          reason: 'No translated equation strings found',
         };
         if (verbose) {
           console.log(`  [SKIP] ${step.name}: No equation-strings.is.md found`);
@@ -472,9 +480,10 @@ async function processFile(filePath, options) {
     } else if (step.id === 'equations') {
       // First check for translated equations.json in 02-mt-output (created by inject-equation-strings)
       const dir = path.dirname(filePath);
-      const basename = path.basename(filePath)
+      const basename = path
+        .basename(filePath)
         .replace(/\.is\.md$/, '')
-        .replace(/\([a-z]\)$/, '');  // Handle split files
+        .replace(/\([a-z]\)$/, ''); // Handle split files
       const translatedEquationsPath = path.join(dir, `${basename}-equations.json`);
 
       let equationsSidecar;
@@ -493,7 +502,7 @@ async function processFile(filePath, options) {
         // No equations file - skip this step
         result.steps[step.id] = {
           skipped: true,
-          reason: 'No equations sidecar found'
+          reason: 'No equations sidecar found',
         };
         if (verbose) {
           console.log(`  [SKIP] ${step.name}: No equations sidecar found`);
@@ -502,9 +511,9 @@ async function processFile(filePath, options) {
       }
 
       args.push(filePath);
-      args.push('--equations', equationsSidecar);  // Use explicit path
+      args.push('--equations', equationsSidecar); // Use explicit path
       if (!dryRun) {
-        args.push('--output', filePath);  // Write in-place
+        args.push('--output', filePath); // Write in-place
       }
       if (dryRun) {
         args.push('--dry-run');
@@ -525,9 +534,9 @@ async function processFile(filePath, options) {
     const toolResult = await runTool(scriptPath, args, { verbose });
 
     // Parse output to extract counts
-    let stepResult = {
+    const stepResult = {
       success: toolResult.success,
-      output: toolResult.stdout
+      output: toolResult.stdout,
     };
 
     // Extract statistics from output
@@ -653,9 +662,9 @@ async function processMultipleFiles(files, options) {
       tables: { total: 0, count: 0 },
       'equation-strings': { total: 0, count: 0 },
       equations: { total: 0, count: 0 },
-      directives: { total: 0, count: 0 }
+      directives: { total: 0, count: 0 },
     },
-    files: []
+    files: [],
   };
 
   if (!json) {
@@ -790,10 +799,16 @@ async function main() {
   const results = await processMultipleFiles(files, args);
 
   // Merge split files if processing a directory (chapter or batch)
-  let mergeResult = { merged: 0, parts: 0 };
+  const mergeResult = { merged: 0, parts: 0 };
   if ((args.chapter || args.batch) && !args.skip.includes('merge')) {
     const targetDir = args.chapter
-      ? path.join(process.cwd(), 'books', args.book, '02-mt-output', `ch${args.chapter.padStart(2, '0')}`)
+      ? path.join(
+          process.cwd(),
+          'books',
+          args.book,
+          '02-mt-output',
+          `ch${args.chapter.padStart(2, '0')}`
+        )
       : path.resolve(args.batch);
 
     if (fs.existsSync(targetDir)) {
@@ -838,8 +853,12 @@ async function main() {
     console.log('');
     console.log('Step Statistics:');
     console.log(`  Images restored: ${results.steps.images.count}`);
-    console.log(`  Figures restored: ${results.steps.figures.crossRefs} cross-refs, ${results.steps.figures.captions} captions`);
-    console.log(`  Links restored: ${results.steps.links.urls} URLs, ${results.steps.links.refs} refs, ${results.steps.links.docs} docs`);
+    console.log(
+      `  Figures restored: ${results.steps.figures.crossRefs} cross-refs, ${results.steps.figures.captions} captions`
+    );
+    console.log(
+      `  Links restored: ${results.steps.links.urls} URLs, ${results.steps.links.refs} refs, ${results.steps.links.docs} docs`
+    );
     console.log(`  Strings restored: ${results.steps.strings.count}`);
     console.log(`  Table strings injected: ${results.steps['table-strings'].count}`);
     console.log(`  Tables restored: ${results.steps.tables.count}`);
@@ -847,14 +866,16 @@ async function main() {
     console.log(`  Equations applied: ${results.steps.equations.count}`);
     console.log(`  Directives repaired: ${results.steps.directives.count} closing markers added`);
     if (results.steps.merge && results.steps.merge.merged > 0) {
-      console.log(`  Split files merged: ${results.steps.merge.merged} groups (${results.steps.merge.parts} parts)`);
+      console.log(
+        `  Split files merged: ${results.steps.merge.merged} groups (${results.steps.merge.parts} parts)`
+      );
     }
   }
 
   process.exit(results.failed > 0 ? 1 : 0);
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error('Fatal error:', err.message);
   process.exit(1);
 });

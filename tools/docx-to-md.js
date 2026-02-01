@@ -46,7 +46,7 @@ function parseArgs(args) {
     imagesDir: null,
     verbose: false,
     dryRun: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -201,7 +201,7 @@ function createTurndownService() {
     hr: '---',
     bulletListMarker: '-',
     codeBlockStyle: 'fenced',
-    emDelimiter: '*'
+    emDelimiter: '*',
   });
 
   // Custom rule for tables
@@ -209,7 +209,7 @@ function createTurndownService() {
     filter: 'table',
     replacement: function (content, node) {
       return convertTableToMarkdown(node);
-    }
+    },
   });
 
   // Keep certain HTML tags as-is (for later processing)
@@ -326,7 +326,7 @@ class ImageHandler {
       'image/webp': '.webp',
       'image/svg+xml': '.svg',
       'image/tiff': '.tiff',
-      'image/bmp': '.bmp'
+      'image/bmp': '.bmp',
     };
     return extensions[contentType] || '.png';
   }
@@ -339,11 +339,11 @@ class ImageHandler {
     if (buffer.length < 8) return null;
 
     // JPEG: starts with FF D8 FF
-    if (buffer[0] === 0xFF && buffer[1] === 0xD8 && buffer[2] === 0xFF) {
+    if (buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff) {
       return '.jpg';
     }
     // PNG: starts with 89 50 4E 47 0D 0A 1A 0A
-    if (buffer[0] === 0x89 && buffer[1] === 0x50 && buffer[2] === 0x4E && buffer[3] === 0x47) {
+    if (buffer[0] === 0x89 && buffer[1] === 0x50 && buffer[2] === 0x4e && buffer[3] === 0x47) {
       return '.png';
     }
     // GIF: starts with GIF87a or GIF89a
@@ -351,12 +351,20 @@ class ImageHandler {
       return '.gif';
     }
     // WebP: starts with RIFF....WEBP
-    if (buffer[0] === 0x52 && buffer[1] === 0x49 && buffer[2] === 0x46 && buffer[3] === 0x46 &&
-        buffer[8] === 0x57 && buffer[9] === 0x45 && buffer[10] === 0x42 && buffer[11] === 0x50) {
+    if (
+      buffer[0] === 0x52 &&
+      buffer[1] === 0x49 &&
+      buffer[2] === 0x46 &&
+      buffer[3] === 0x46 &&
+      buffer[8] === 0x57 &&
+      buffer[9] === 0x45 &&
+      buffer[10] === 0x42 &&
+      buffer[11] === 0x50
+    ) {
       return '.webp';
     }
     // BMP: starts with BM
-    if (buffer[0] === 0x42 && buffer[1] === 0x4D) {
+    if (buffer[0] === 0x42 && buffer[1] === 0x4d) {
       return '.bmp';
     }
 
@@ -431,8 +439,8 @@ async function convertDocxToMarkdown(inputPath, outputPath, imagesDir, options) 
       "p[style-name='Heading 6'] => h6:fresh",
       // Map common OpenStax styles
       "p[style-name='Title'] => h1:fresh",
-      "p[style-name='Subtitle'] => h2:fresh"
-    ]
+      "p[style-name='Subtitle'] => h2:fresh",
+    ],
   };
 
   // Convert DOCX to HTML
@@ -440,14 +448,17 @@ async function convertDocxToMarkdown(inputPath, outputPath, imagesDir, options) 
 
   if (verbose && result.messages.length > 0) {
     console.log('  Mammoth messages:');
-    result.messages.forEach(msg => console.log(`    ${msg.type}: ${msg.message}`));
+    result.messages.forEach((msg) => console.log(`    ${msg.type}: ${msg.message}`));
   }
 
   let html = result.value;
 
   // Mark equations as placeholders (they often appear as images or specific elements)
   // This is a basic approach - equations in Word are complex
-  html = html.replace(/<span[^>]*class="[^"]*equation[^"]*"[^>]*>.*?<\/span>/gi, EQUATION_PLACEHOLDER);
+  html = html.replace(
+    /<span[^>]*class="[^"]*equation[^"]*"[^>]*>.*?<\/span>/gi,
+    EQUATION_PLACEHOLDER
+  );
   html = html.replace(/<math[^>]*>.*?<\/math>/gi, EQUATION_PLACEHOLDER);
   html = html.replace(/<omml[^>]*>.*?<\/omml>/gi, EQUATION_PLACEHOLDER);
 
@@ -484,7 +495,7 @@ async function convertDocxToMarkdown(inputPath, outputPath, imagesDir, options) 
   return {
     outputPath,
     imageCount: imageHandler.imageCount,
-    warnings: result.messages.filter(m => m.type === 'warning')
+    warnings: result.messages.filter((m) => m.type === 'warning'),
   };
 }
 
@@ -496,21 +507,15 @@ function postProcessMarkdown(markdown) {
 
   // Fix Pandoc-style figure tables: remove horizontal rule wrappers around images
   // Pattern: ---...--- followed by image followed by ---...---
-  result = result.replace(
-    /-{50,}\s*\n\s*(!\[[^\]]*?\]\([^)]+\))\s*\n\s*-{50,}/gs,
-    '\n$1\n'
-  );
+  result = result.replace(/-{50,}\s*\n\s*(!\[[^\]]*?\]\([^)]+\))\s*\n\s*-{50,}/gs, '\n$1\n');
 
   // Normalize multiline image alt text to single line
   // Match ![...](path) where alt text may contain newlines
-  result = result.replace(
-    /!\[([^\]]*?)\]\((\.[^)]+)\)/gs,
-    (match, altText, imgPath) => {
-      // Join multiline alt text into single line, normalize whitespace
-      const cleanAlt = altText.replace(/\s+/g, ' ').trim();
-      return `![${cleanAlt}](${imgPath})`;
-    }
-  );
+  result = result.replace(/!\[([^\]]*?)\]\((\.[^)]+)\)/gs, (match, altText, imgPath) => {
+    // Join multiline alt text into single line, normalize whitespace
+    const cleanAlt = altText.replace(/\s+/g, ' ').trim();
+    return `![${cleanAlt}](${imgPath})`;
+  });
 
   // Wrap images with their Icelandic captions into HTML figure elements
   result = wrapFiguresWithCaptions(result);
@@ -553,7 +558,8 @@ function wrapFiguresWithCaptions(markdown) {
   // Pattern to match: image on its own line, followed by blank line(s),
   // followed by a paragraph starting with "Mynd X.Y" (Icelandic figure caption)
   // Caption continues until we hit a blank line, heading, another image, etc.
-  const figurePattern = /!\[([^\]]*)\]\(([^)]+)\)\s*\n\s*\n(Mynd\s+\d+\.\d+[^\n]+(?:\n(?!(?:\n|#|!\[|<|:::|-{3,}|\||>|\d+\.|-))[^\n]+)*)/g;
+  const figurePattern =
+    /!\[([^\]]*)\]\(([^)]+)\)\s*\n\s*\n(Mynd\s+\d+\.\d+[^\n]+(?:\n(?!(?:\n|#|!\[|<|:::|-{3,}|\||>|\d+\.|-))[^\n]+)*)/g;
 
   return markdown.replace(figurePattern, (match, altText, src, caption) => {
     // Clean up alt text and caption
@@ -572,7 +578,7 @@ function wrapFiguresWithCaptions(markdown) {
 // ============================================================================
 
 async function processBatch(directory, options) {
-  const { verbose, dryRun } = options;
+  const { dryRun } = options;
 
   const absDir = path.resolve(directory);
 
@@ -598,7 +604,7 @@ async function processBatch(directory, options) {
     success: 0,
     failed: 0,
     totalImages: 0,
-    errors: []
+    errors: [],
   };
 
   for (const file of files) {

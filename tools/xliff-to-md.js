@@ -14,7 +14,6 @@
  */
 
 import fs from 'fs';
-import path from 'path';
 
 function parseArgs(args) {
   const result = {
@@ -23,7 +22,7 @@ function parseArgs(args) {
     section: null,
     title: null,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -60,10 +59,13 @@ function parseXliff(xliffContent, verbose) {
   const fileMatch = xliffContent.match(/<file[^>]+original="([^"]+)"[^]*>/);
   const moduleId = fileMatch ? fileMatch[1] : 'unknown';
 
-  const headerNoteMatch = xliffContent.match(/<header>[\s\S]*?<note>Generated from OpenStax CNXML: ([^<]+)<\/note>/);
+  const headerNoteMatch = xliffContent.match(
+    /<header>[\s\S]*?<note>Generated from OpenStax CNXML: ([^<]+)<\/note>/
+  );
   const documentTitle = headerNoteMatch ? headerNoteMatch[1] : 'Untitled';
 
-  const unitPattern = /<trans-unit[^>]+id="([^"]+)"[^>]+restype="([^"]+)">([\s\S]*?)<\/trans-unit>/g;
+  const unitPattern =
+    /<trans-unit[^>]+id="([^"]+)"[^>]+restype="([^"]+)">([\s\S]*?)<\/trans-unit>/g;
   let match;
 
   while ((match = unitPattern.exec(xliffContent)) !== null) {
@@ -87,7 +89,7 @@ function parseXliff(xliffContent, verbose) {
         if (eqMatch) {
           equations.push({
             id: parseInt(eqMatch[1]),
-            latex: eqMatch[2]
+            latex: eqMatch[2],
           });
         }
       }
@@ -98,13 +100,13 @@ function parseXliff(xliffContent, verbose) {
       type: restype.replace('x-', ''),
       source,
       target: target || source,
-      equations
+      equations,
     });
   }
 
   if (verbose) {
     console.error('Parsed ' + units.length + ' translation units from ' + moduleId);
-    const translated = units.filter(u => u.target && u.target !== u.source).length;
+    const translated = units.filter((u) => u.target && u.target !== u.source).length;
     console.error('Translated: ' + translated + ' / ' + units.length);
   }
 
@@ -154,8 +156,16 @@ function generateMarkdown(data, options) {
           lines.push('');
           listItems = [];
         }
-        if (inNote) { lines.push(':::'); lines.push(''); inNote = false; }
-        if (inExample) { lines.push(':::'); lines.push(''); inExample = false; }
+        if (inNote) {
+          lines.push(':::');
+          lines.push('');
+          inNote = false;
+        }
+        if (inExample) {
+          lines.push(':::');
+          lines.push('');
+          inExample = false;
+        }
         lines.push('## ' + text);
         lines.push('');
         break;
@@ -176,7 +186,11 @@ function generateMarkdown(data, options) {
           lines.push('');
           listItems = [];
         }
-        if (inExample) { lines.push(':::'); lines.push(''); inExample = false; }
+        if (inExample) {
+          lines.push(':::');
+          lines.push('');
+          inExample = false;
+        }
         inNote = true;
         lines.push('::: note');
         lines.push('### ' + text);
@@ -194,7 +208,11 @@ function generateMarkdown(data, options) {
           lines.push('');
           listItems = [];
         }
-        if (inNote) { lines.push(':::'); lines.push(''); inNote = false; }
+        if (inNote) {
+          lines.push(':::');
+          lines.push('');
+          inNote = false;
+        }
         inExample = true;
         lines.push('::: example');
         lines.push('### ' + text);
@@ -275,7 +293,7 @@ async function main() {
     const data = parseXliff(xliffContent, args.verbose);
     const markdown = generateMarkdown(data, {
       title: args.title,
-      section: args.section
+      section: args.section,
     });
 
     if (args.output) {
@@ -284,7 +302,6 @@ async function main() {
     } else {
       console.log(markdown);
     }
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);

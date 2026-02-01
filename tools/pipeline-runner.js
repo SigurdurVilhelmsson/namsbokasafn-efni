@@ -51,63 +51,71 @@ const DEFAULT_OUTPUT_DIR = './pipeline-output';
 // Verified against chemistry-2e.collection.xml from GitHub
 const CHEMISTRY_2E_MODULES = {
   // Chapter 1: Essential Ideas
-  'm68663': { chapter: 1, section: 'intro', title: 'Introduction' },
-  'm68664': { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
-  'm68667': { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
-  'm68670': { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
-  'm68674': { chapter: 1, section: '1.4', title: 'Measurements' },
-  'm68690': { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
-  'm68683': { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
+  m68663: { chapter: 1, section: 'intro', title: 'Introduction' },
+  m68664: { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
+  m68667: { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
+  m68670: { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
+  m68674: { chapter: 1, section: '1.4', title: 'Measurements' },
+  m68690: { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
+  m68683: { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
   // Chapter 2: Atoms, Molecules, and Ions
-  'm68684': { chapter: 2, section: 'intro', title: 'Introduction' },
-  'm68685': { chapter: 2, section: '2.1', title: 'Early Ideas in Atomic Theory' },
-  'm68687': { chapter: 2, section: '2.2', title: 'Evolution of Atomic Theory' },
-  'm68692': { chapter: 2, section: '2.3', title: 'Atomic Structure and Symbolism' },
-  'm68693': { chapter: 2, section: '2.4', title: 'Chemical Formulas' },
-  'm68695': { chapter: 2, section: '2.5', title: 'The Periodic Table' },
-  'm68696': { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
-  'm68698': { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
+  m68684: { chapter: 2, section: 'intro', title: 'Introduction' },
+  m68685: { chapter: 2, section: '2.1', title: 'Early Ideas in Atomic Theory' },
+  m68687: { chapter: 2, section: '2.2', title: 'Evolution of Atomic Theory' },
+  m68692: { chapter: 2, section: '2.3', title: 'Atomic Structure and Symbolism' },
+  m68693: { chapter: 2, section: '2.4', title: 'Chemical Formulas' },
+  m68695: { chapter: 2, section: '2.5', title: 'The Periodic Table' },
+  m68696: { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
+  m68698: { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
   // Chapter 3: Composition of Substances and Solutions
-  'm68699': { chapter: 3, section: 'intro', title: 'Introduction' },
-  'm68700': { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
-  'm68702': { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
-  'm68703': { chapter: 3, section: '3.3', title: 'Molarity' },
-  'm68704': { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
+  m68699: { chapter: 3, section: 'intro', title: 'Introduction' },
+  m68700: { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
+  m68702: { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
+  m68703: { chapter: 3, section: '3.3', title: 'Molarity' },
+  m68704: { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
   // Chapter 4: Stoichiometry of Chemical Reactions
-  'm68730': { chapter: 4, section: 'intro', title: 'Introduction' },
-  'm68709': { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
-  'm68710': { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },
-  'm68713': { chapter: 4, section: '4.3', title: 'Reaction Stoichiometry' },
-  'm68714': { chapter: 4, section: '4.4', title: 'Reaction Yields' },
-  'm68716': { chapter: 4, section: '4.5', title: 'Quantitative Chemical Analysis' },
+  m68730: { chapter: 4, section: 'intro', title: 'Introduction' },
+  m68709: { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
+  m68710: { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },
+  m68713: { chapter: 4, section: '4.3', title: 'Reaction Stoichiometry' },
+  m68714: { chapter: 4, section: '4.4', title: 'Reaction Yields' },
+  m68716: { chapter: 4, section: '4.5', title: 'Quantitative Chemical Analysis' },
   // Chapter 5: Thermochemistry
-  'm68723': { chapter: 5, section: 'intro', title: 'Introduction' },
-  'm68724': { chapter: 5, section: '5.1', title: 'Energy Basics' },
-  'm68726': { chapter: 5, section: '5.2', title: 'Calorimetry' },
-  'm68727': { chapter: 5, section: '5.3', title: 'Enthalpy' },
+  m68723: { chapter: 5, section: 'intro', title: 'Introduction' },
+  m68724: { chapter: 5, section: '5.1', title: 'Energy Basics' },
+  m68726: { chapter: 5, section: '5.2', title: 'Calorimetry' },
+  m68727: { chapter: 5, section: '5.3', title: 'Enthalpy' },
   // Chapter 9: Gases
-  'm68748': { chapter: 9, section: 'intro', title: 'Introduction' },
-  'm68750': { chapter: 9, section: '9.1', title: 'Gas Pressure' },
-  'm68751': { chapter: 9, section: '9.2', title: 'Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law' },
-  'm68752': { chapter: 9, section: '9.3', title: 'Stoichiometry of Gaseous Substances, Mixtures, and Reactions' },
-  'm68754': { chapter: 9, section: '9.4', title: 'Effusion and Diffusion of Gases' },
-  'm68758': { chapter: 9, section: '9.5', title: 'The Kinetic-Molecular Theory' },
-  'm68759': { chapter: 9, section: '9.6', title: 'Non-Ideal Gas Behavior' },
+  m68748: { chapter: 9, section: 'intro', title: 'Introduction' },
+  m68750: { chapter: 9, section: '9.1', title: 'Gas Pressure' },
+  m68751: {
+    chapter: 9,
+    section: '9.2',
+    title: 'Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law',
+  },
+  m68752: {
+    chapter: 9,
+    section: '9.3',
+    title: 'Stoichiometry of Gaseous Substances, Mixtures, and Reactions',
+  },
+  m68754: { chapter: 9, section: '9.4', title: 'Effusion and Diffusion of Gases' },
+  m68758: { chapter: 9, section: '9.5', title: 'The Kinetic-Molecular Theory' },
+  m68759: { chapter: 9, section: '9.6', title: 'Non-Ideal Gas Behavior' },
   // Chapter 12: Kinetics
-  'm68785': { chapter: 12, section: 'intro', title: 'Introduction' },
-  'm68786': { chapter: 12, section: '12.1', title: 'Chemical Reaction Rates' },
-  'm68787': { chapter: 12, section: '12.2', title: 'Factors Affecting Reaction Rates' },
-  'm68789': { chapter: 12, section: '12.3', title: 'Rate Laws' },
-  'm68791': { chapter: 12, section: '12.4', title: 'Integrated Rate Laws' },
-  'm68793': { chapter: 12, section: '12.5', title: 'Collision Theory' },
-  'm68794': { chapter: 12, section: '12.6', title: 'Reaction Mechanisms' },
-  'm68795': { chapter: 12, section: '12.7', title: 'Catalysis' },
+  m68785: { chapter: 12, section: 'intro', title: 'Introduction' },
+  m68786: { chapter: 12, section: '12.1', title: 'Chemical Reaction Rates' },
+  m68787: { chapter: 12, section: '12.2', title: 'Factors Affecting Reaction Rates' },
+  m68789: { chapter: 12, section: '12.3', title: 'Rate Laws' },
+  m68791: { chapter: 12, section: '12.4', title: 'Integrated Rate Laws' },
+  m68793: { chapter: 12, section: '12.5', title: 'Collision Theory' },
+  m68794: { chapter: 12, section: '12.6', title: 'Reaction Mechanisms' },
+  m68795: { chapter: 12, section: '12.7', title: 'Catalysis' },
   // Chapter 13: Fundamental Equilibrium Concepts
-  'm68796': { chapter: 13, section: 'intro', title: 'Introduction' },
-  'm68797': { chapter: 13, section: '13.1', title: 'Chemical Equilibria' },
-  'm68798': { chapter: 13, section: '13.2', title: 'Equilibrium Constants' },
-  'm68799': { chapter: 13, section: '13.3', title: 'Shifting Equilibria: Le Châtelier\'s Principle' },
-  'm68801': { chapter: 13, section: '13.4', title: 'Equilibrium Calculations' },
+  m68796: { chapter: 13, section: 'intro', title: 'Introduction' },
+  m68797: { chapter: 13, section: '13.1', title: 'Chemical Equilibria' },
+  m68798: { chapter: 13, section: '13.2', title: 'Equilibrium Constants' },
+  m68799: { chapter: 13, section: '13.3', title: "Shifting Equilibria: Le Châtelier's Principle" },
+  m68801: { chapter: 13, section: '13.4', title: 'Equilibrium Calculations' },
 };
 
 // ============================================================================
@@ -120,15 +128,15 @@ function parseArgs(args) {
     outputDir: DEFAULT_OUTPUT_DIR,
     book: null,
     skipXliff: false,
-    skipProtect: false,  // Skip the pre-MT protection step
-    skipSplit: false,    // Skip the file splitting step
+    skipProtect: false, // Skip the pre-MT protection step
+    skipSplit: false, // Skip the file splitting step
     verbose: false,
     help: false,
     listModules: false,
-    chapter: null,  // Process entire chapter with correct numbering
-    assemble: false,  // Run chapter assembly after conversion
-    assembleTrack: 'faithful',  // Publication track for assembly: mt-preview, faithful, localized
-    assembleOnly: false  // Only run assembly (skip conversion)
+    chapter: null, // Process entire chapter with correct numbering
+    assemble: false, // Run chapter assembly after conversion
+    assembleTrack: 'faithful', // Publication track for assembly: mt-preview, faithful, localized
+    assembleOnly: false, // Only run assembly (skip conversion)
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -288,23 +296,26 @@ function runTool(scriptPath, args, options = {}) {
     }
 
     // If captureStderr is true, always capture stderr even in verbose mode
-    const stdioConfig = verbose && !captureStderr
-      ? 'inherit'
-      : captureStderr
-        ? ['pipe', verbose ? 'inherit' : 'pipe', 'pipe']
-        : 'pipe';
+    const stdioConfig =
+      verbose && !captureStderr
+        ? 'inherit'
+        : captureStderr
+          ? ['pipe', verbose ? 'inherit' : 'pipe', 'pipe']
+          : 'pipe';
 
     const child = spawn('node', [scriptPath, ...args], {
       stdio: stdioConfig,
-      cwd: getProjectRoot()
+      cwd: getProjectRoot(),
     });
 
     let stdout = '';
     let stderr = '';
 
     if (stdioConfig !== 'inherit') {
-      child.stdout?.on('data', data => { stdout += data; });
-      child.stderr?.on('data', data => {
+      child.stdout?.on('data', (data) => {
+        stdout += data;
+      });
+      child.stderr?.on('data', (data) => {
         stderr += data;
         // In captureStderr + verbose mode, also print stderr to console
         if (captureStderr && verbose) {
@@ -313,7 +324,7 @@ function runTool(scriptPath, args, options = {}) {
       });
     }
 
-    child.on('close', code => {
+    child.on('close', (code) => {
       if (code === 0) {
         resolve({ success: true, stdout, stderr });
       } else {
@@ -321,7 +332,7 @@ function runTool(scriptPath, args, options = {}) {
       }
     });
 
-    child.on('error', err => {
+    child.on('error', (err) => {
       reject(err);
     });
   });
@@ -341,7 +352,14 @@ function runTool(scriptPath, args, options = {}) {
  * @param {string} sectionOverride - Optional section from caller (e.g., "1.5" or "intro")
  * @returns {Promise<{mdPath: string, equationsPath: string, section: string, counters: object}>}
  */
-async function stepCnxmlToMd(input, outputDir, verbose, counters = null, chapter = null, sectionOverride = null) {
+async function stepCnxmlToMd(
+  input,
+  outputDir,
+  verbose,
+  counters = null,
+  chapter = null,
+  sectionOverride = null
+) {
   const projectRoot = getProjectRoot();
   const scriptPath = path.join(projectRoot, 'tools', 'cnxml-to-md.js');
 
@@ -369,9 +387,11 @@ async function stepCnxmlToMd(input, outputDir, verbose, counters = null, chapter
 
   const args = [
     input,
-    '--output', mdPath,
-    '--equations', equationsPath,
-    '--output-counters'  // Request counter output for pipeline coordination
+    '--output',
+    mdPath,
+    '--equations',
+    equationsPath,
+    '--output-counters', // Request counter output for pipeline coordination
   ];
 
   // Add counter starting values if provided
@@ -443,7 +463,7 @@ async function stepExtractEquationStrings(equationsPath, verbose) {
 
     return {
       stringsPath: fs.existsSync(stringsPath) ? stringsPath : null,
-      stringsExtracted
+      stringsExtracted,
     };
   } catch (err) {
     if (verbose) {
@@ -591,10 +611,7 @@ async function stepMdToXliff(mdPath, outputDir, section, verbose) {
 
   const xliffPath = path.join(outputDir, `${section}.en.xliff`);
 
-  const args = [
-    mdPath,
-    '--output', xliffPath
-  ];
+  const args = [mdPath, '--output', xliffPath];
   if (verbose) args.push('--verbose');
 
   await runTool(scriptPath, args, { verbose });
@@ -612,14 +629,22 @@ async function stepMdToXliff(mdPath, outputDir, section, verbose) {
  * @returns {Promise<{outputs: object[], steps: object[]}>}
  */
 async function runPipeline(options) {
-  const { input, section: sectionOverride, title, outputDir, skipXliff, skipProtect, skipSplit, verbose } = options;
+  const {
+    input,
+    section: sectionOverride,
+    outputDir,
+    skipXliff,
+    skipProtect,
+    skipSplit,
+    verbose,
+  } = options;
 
   const results = {
     input,
     outputDir,
     steps: [],
     outputs: [],
-    success: false
+    success: false,
   };
 
   console.log('');
@@ -653,14 +678,21 @@ async function runPipeline(options) {
     currentStep++;
     console.log(`Step ${currentStep}/${totalSteps}: Converting CNXML to Markdown...`);
     const step1Start = Date.now();
-    const { mdPath, equationsPath, section } = await stepCnxmlToMd(input, outputDir, verbose, null, null, sectionOverride);
+    const { mdPath, equationsPath, section } = await stepCnxmlToMd(
+      input,
+      outputDir,
+      verbose,
+      null,
+      null,
+      sectionOverride
+    );
     const step1Time = Date.now() - step1Start;
 
     results.steps.push({
       name: 'cnxml-to-md',
       success: true,
       timeMs: step1Time,
-      outputs: [mdPath, equationsPath]
+      outputs: [mdPath, equationsPath],
     });
     results.outputs.push(
       { type: 'markdown', path: mdPath, description: 'Markdown for Erlendur MT' },
@@ -671,11 +703,16 @@ async function runPipeline(options) {
     console.log(`  ✓ Generated: ${path.basename(equationsPath)}`);
 
     // Step 1b: Extract translatable text from equations
-    const { stringsPath, stringsExtracted } = await stepExtractEquationStrings(equationsPath, verbose);
+    const { stringsPath, stringsExtracted } = await stepExtractEquationStrings(
+      equationsPath,
+      verbose
+    );
     if (stringsPath) {
-      results.outputs.push(
-        { type: 'equation-strings', path: stringsPath, description: 'Equation text for translation' }
-      );
+      results.outputs.push({
+        type: 'equation-strings',
+        path: stringsPath,
+        description: 'Equation text for translation',
+      });
       console.log(`  ✓ Generated: ${path.basename(stringsPath)} (${stringsExtracted} strings)`);
     }
     console.log('');
@@ -693,7 +730,7 @@ async function runPipeline(options) {
         success: true,
         timeMs: step2Time,
         tablesProtected,
-        filesProtected
+        filesProtected,
       });
 
       console.log(`  ✓ Protected ${tablesProtected} table(s) in ${filesProtected} file(s)`);
@@ -708,7 +745,7 @@ async function runPipeline(options) {
     if (!skipSplit) {
       console.log(`Step ${currentStep}/${totalSteps}: Splitting large files for Erlendur...`);
       const step3Start = Date.now();
-      const { filesSplit, partsCreated, filesUnchanged } = await stepSplitForErlendur(outputDir, verbose);
+      const { filesSplit, partsCreated } = await stepSplitForErlendur(outputDir, verbose);
       const step3Time = Date.now() - step3Start;
 
       results.steps.push({
@@ -716,7 +753,7 @@ async function runPipeline(options) {
         success: true,
         timeMs: step3Time,
         filesSplit,
-        partsCreated
+        partsCreated,
       });
 
       if (filesSplit > 0) {
@@ -742,18 +779,19 @@ async function runPipeline(options) {
         name: 'md-to-xliff',
         success: true,
         timeMs: step3Time,
-        outputs: [xliffPath]
+        outputs: [xliffPath],
       });
-      results.outputs.push(
-        { type: 'xliff', path: xliffPath, description: 'XLIFF for Matecat translation' }
-      );
+      results.outputs.push({
+        type: 'xliff',
+        path: xliffPath,
+        description: 'XLIFF for Matecat translation',
+      });
 
       console.log(`  ✓ Generated: ${path.basename(xliffPath)}`);
       console.log('');
     }
 
     results.success = true;
-
   } catch (err) {
     results.error = err.message;
     console.error(`\n✗ Error: ${err.message}`);
@@ -833,7 +871,7 @@ async function runChapterPipeline(options) {
     modules: [],
     steps: [],
     outputs: [],
-    success: false
+    success: false,
   };
 
   console.log('');
@@ -867,19 +905,20 @@ async function runChapterPipeline(options) {
 
       console.log(`─`.repeat(60));
       console.log(`Module ${stepNum}/${totalSteps}: ${mod.section} - ${mod.title}`);
-      console.log(`  Counters: examples=${counters.examples}, figures=${counters.figures}, tables=${counters.tables}`);
+      console.log(
+        `  Counters: examples=${counters.examples}, figures=${counters.figures}, tables=${counters.tables}`
+      );
       console.log('');
 
       // Step 1: CNXML → Markdown + Equations
       console.log('  Converting CNXML to Markdown...');
       const step1Start = Date.now();
-      const { mdPath, equationsPath, section, counters: newCounters } = await stepCnxmlToMd(
-        mod.moduleId,
-        outputDir,
-        verbose,
-        counters,
-        chapter
-      );
+      const {
+        mdPath,
+        equationsPath,
+        section,
+        counters: newCounters,
+      } = await stepCnxmlToMd(mod.moduleId, outputDir, verbose, counters, chapter);
       const step1Time = Date.now() - step1Start;
 
       // Update counters for next module
@@ -889,18 +928,24 @@ async function runChapterPipeline(options) {
         name: `cnxml-to-md:${mod.moduleId}`,
         success: true,
         timeMs: step1Time,
-        outputs: [mdPath, equationsPath]
+        outputs: [mdPath, equationsPath],
       });
       results.outputs.push(
         { type: 'markdown', path: mdPath, section, description: `${mod.section} Markdown` },
         { type: 'equations', path: equationsPath, section, description: `${mod.section} Equations` }
       );
       // Step 1b: Extract translatable text from equations
-      const { stringsPath: eqStringsPath, stringsExtracted } = await stepExtractEquationStrings(equationsPath, verbose);
+      const { stringsPath: eqStringsPath, stringsExtracted } = await stepExtractEquationStrings(
+        equationsPath,
+        verbose
+      );
       if (eqStringsPath) {
-        results.outputs.push(
-          { type: 'equation-strings', path: eqStringsPath, section, description: `${mod.section} Equation Strings` }
-        );
+        results.outputs.push({
+          type: 'equation-strings',
+          path: eqStringsPath,
+          section,
+          description: `${mod.section} Equation Strings`,
+        });
       }
 
       results.modules.push({
@@ -910,7 +955,7 @@ async function runChapterPipeline(options) {
         mdPath,
         equationsPath,
         equationStringsPath: eqStringsPath,
-        counters: { ...newCounters }
+        counters: { ...newCounters },
       });
 
       console.log(`    ✓ ${path.basename(mdPath)}`);
@@ -930,11 +975,14 @@ async function runChapterPipeline(options) {
           name: `md-to-xliff:${mod.moduleId}`,
           success: true,
           timeMs: step2Time,
-          outputs: [xliffPath]
+          outputs: [xliffPath],
         });
-        results.outputs.push(
-          { type: 'xliff', path: xliffPath, section, description: `${mod.section} XLIFF` }
-        );
+        results.outputs.push({
+          type: 'xliff',
+          path: xliffPath,
+          section,
+          description: `${mod.section} XLIFF`,
+        });
 
         console.log(`    ✓ ${path.basename(xliffPath)}`);
       }
@@ -955,7 +1003,7 @@ async function runChapterPipeline(options) {
         success: true,
         timeMs: protectTime,
         tablesProtected,
-        filesProtected
+        filesProtected,
       });
 
       console.log(`  ✓ Protected ${tablesProtected} table(s) in ${filesProtected} file(s)`);
@@ -963,7 +1011,10 @@ async function runChapterPipeline(options) {
       // Extract table strings for MT (only if tables were protected)
       if (tablesProtected > 0) {
         const tableStringsStart = Date.now();
-        const { tableStringsExtracted, filesWithTableStrings } = await stepExtractTableStrings(outputDir, verbose);
+        const { tableStringsExtracted, filesWithTableStrings } = await stepExtractTableStrings(
+          outputDir,
+          verbose
+        );
         const tableStringsTime = Date.now() - tableStringsStart;
 
         results.steps.push({
@@ -971,11 +1022,13 @@ async function runChapterPipeline(options) {
           success: true,
           timeMs: tableStringsTime,
           tableStringsExtracted,
-          filesWithTableStrings
+          filesWithTableStrings,
         });
 
         if (tableStringsExtracted > 0) {
-          console.log(`  ✓ Extracted ${tableStringsExtracted} table string(s) from ${filesWithTableStrings} file(s)`);
+          console.log(
+            `  ✓ Extracted ${tableStringsExtracted} table string(s) from ${filesWithTableStrings} file(s)`
+          );
         }
       }
       console.log('');
@@ -989,7 +1042,7 @@ async function runChapterPipeline(options) {
     if (!skipSplit) {
       console.log('Splitting large files for Erlendur...');
       const splitStart = Date.now();
-      const { filesSplit, partsCreated, filesUnchanged } = await stepSplitForErlendur(outputDir, verbose);
+      const { filesSplit, partsCreated } = await stepSplitForErlendur(outputDir, verbose);
       const splitTime = Date.now() - splitStart;
 
       results.steps.push({
@@ -997,7 +1050,7 @@ async function runChapterPipeline(options) {
         success: true,
         timeMs: splitTime,
         filesSplit,
-        partsCreated
+        partsCreated,
       });
 
       if (filesSplit > 0) {
@@ -1012,7 +1065,6 @@ async function runChapterPipeline(options) {
     }
 
     results.success = true;
-
   } catch (err) {
     results.error = err.message;
     console.error(`\n✗ Error: ${err.message}`);
@@ -1060,14 +1112,14 @@ async function runChapterPipeline(options) {
 async function run(options) {
   const finalOptions = {
     input: options.input || options.moduleId,
-    section: options.section || null,  // Accept section from caller (e.g., "1.5" or "intro")
-    title: options.title || null,      // Accept title for metadata
+    section: options.section || null, // Accept section from caller (e.g., "1.5" or "intro")
+    title: options.title || null, // Accept title for metadata
     outputDir: options.outputDir || DEFAULT_OUTPUT_DIR,
     book: options.book || null,
     skipXliff: options.skipXliff || false,
     skipProtect: options.skipProtect || false,
     skipSplit: options.skipSplit || false,
-    verbose: options.verbose || false
+    verbose: options.verbose || false,
   };
 
   if (!finalOptions.input) {
@@ -1116,7 +1168,7 @@ async function main() {
           track: args.assembleTrack,
           verbose: args.verbose,
           dryRun: false,
-          lang: 'is'
+          lang: 'is',
         };
 
         console.log('\n');

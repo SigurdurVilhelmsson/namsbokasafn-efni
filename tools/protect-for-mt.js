@@ -32,10 +32,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // ============================================================================
 // Argument Parsing
@@ -48,7 +44,7 @@ function parseArgs(args) {
     inPlace: false,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -160,47 +156,50 @@ function extractTables(content, verbose) {
   const tables = {};
   let tableCount = 0;
 
-  const protectedContent = content.replace(TABLE_PATTERN, (match, title, tableMarkdown, attributes) => {
-    tableCount++;
-    const key = `TABLE:${tableCount}`;
+  const protectedContent = content.replace(
+    TABLE_PATTERN,
+    (match, title, tableMarkdown, attributes) => {
+      tableCount++;
+      const key = `TABLE:${tableCount}`;
 
-    // Parse attributes to extract id
-    let id = null;
-    let summary = null;
+      // Parse attributes to extract id
+      let id = null;
+      let summary = null;
 
-    if (attributes) {
-      const idMatch = attributes.match(/id="([^"]+)"/);
-      if (idMatch) id = idMatch[1];
+      if (attributes) {
+        const idMatch = attributes.match(/id="([^"]+)"/);
+        if (idMatch) id = idMatch[1];
 
-      const summaryMatch = attributes.match(/summary="([^"]+)"/);
-      if (summaryMatch) summary = summaryMatch[1];
+        const summaryMatch = attributes.match(/summary="([^"]+)"/);
+        if (summaryMatch) summary = summaryMatch[1];
+      }
+
+      // Store the table data
+      tables[key] = {
+        markdown: tableMarkdown.trim(),
+        ...(title && { title: title.trim() }),
+        ...(id && { id }),
+        ...(summary && { summary }),
+      };
+
+      if (verbose) {
+        console.error(`  Protected ${key}: ${title || '(no title)'} ${id ? `(id="${id}")` : ''}`);
+      }
+
+      // Create placeholder with optional id attribute
+      let placeholder = `[[${key}]]`;
+      if (id) {
+        placeholder += `{id="${id}"}`;
+      }
+
+      // If there was a title, preserve it before the placeholder
+      if (title) {
+        return `**${title.trim()}**\n\n${placeholder}`;
+      }
+
+      return placeholder;
     }
-
-    // Store the table data
-    tables[key] = {
-      markdown: tableMarkdown.trim(),
-      ...(title && { title: title.trim() }),
-      ...(id && { id }),
-      ...(summary && { summary })
-    };
-
-    if (verbose) {
-      console.error(`  Protected ${key}: ${title || '(no title)'} ${id ? `(id="${id}")` : ''}`);
-    }
-
-    // Create placeholder with optional id attribute
-    let placeholder = `[[${key}]]`;
-    if (id) {
-      placeholder += `{id="${id}"}`;
-    }
-
-    // If there was a title, preserve it before the placeholder
-    if (title) {
-      return `**${title.trim()}**\n\n${placeholder}`;
-    }
-
-    return placeholder;
-  });
+  );
 
   return { content: protectedContent, tables };
 }
@@ -243,7 +242,7 @@ function getFiguresPath(mdPath) {
   // Try different naming conventions
   const candidates = [
     path.join(dir, `${basename}-figures.json`),
-    path.join(dir, `${basename}.en-figures.json`)
+    path.join(dir, `${basename}.en-figures.json`),
   ];
 
   for (const candidate of candidates) {
@@ -399,7 +398,7 @@ function processFile(filePath, options) {
     ...(frontmatter?.module && { module: frontmatter.module }),
     ...(frontmatter?.section && { section: frontmatter.section }),
     ...(hasFrontmatter && { frontmatter }),
-    ...(tableCount > 0 && { tables })
+    ...(tableCount > 0 && { tables }),
   };
 
   // Load figures data if available
@@ -429,7 +428,9 @@ function processFile(filePath, options) {
       console.log(`  Figures: ${figureIds.length} figure(s)`);
       for (const figId of figureIds.slice(0, 3)) {
         const fig = figuresData.figures[figId];
-        const captionPreview = fig.captionEn ? fig.captionEn.substring(0, 50) + '...' : '(no caption)';
+        const captionPreview = fig.captionEn
+          ? fig.captionEn.substring(0, 50) + '...'
+          : '(no caption)';
         console.log(`    ${figId}: ${captionPreview}`);
       }
       if (figureIds.length > 3) {
@@ -440,7 +441,14 @@ function processFile(filePath, options) {
     if (hasStrings) {
       console.log(`  Would write strings (markdown): ${stringsPath}`);
     }
-    return { success: true, tablesProtected: tableCount, hasFrontmatter, hasFigures, hasStrings, dryRun: true };
+    return {
+      success: true,
+      tablesProtected: tableCount,
+      hasFrontmatter,
+      hasFigures,
+      hasStrings,
+      dryRun: true,
+    };
   }
 
   // Write sidecar file
@@ -475,7 +483,7 @@ function processFile(filePath, options) {
     hasFigures,
     hasStrings,
     sidecarPath,
-    stringsPath: hasStrings ? stringsPath : null
+    stringsPath: hasStrings ? stringsPath : null,
   };
 }
 
@@ -543,7 +551,9 @@ function processBatch(directory, options) {
         filesWithTables++;
         totalTables += result.tablesProtected;
         if (!options.verbose && !options.dryRun) {
-          console.log(`  Protected ${result.tablesProtected} table(s): ${path.relative(directory, file)}`);
+          console.log(
+            `  Protected ${result.tablesProtected} table(s): ${path.relative(directory, file)}`
+          );
         }
       }
       if (result.hasFrontmatter) {

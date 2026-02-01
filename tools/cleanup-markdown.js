@@ -29,17 +29,16 @@
  */
 
 import fs from 'fs';
-import path from 'path';
 
 function parseArgs(args) {
   const result = {
     input: null,
     output: null,
-    figuresSidecar: null,  // Optional figures sidecar JSON path
+    figuresSidecar: null, // Optional figures sidecar JSON path
     inPlace: false,
     verbose: false,
     dryRun: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -49,7 +48,8 @@ function parseArgs(args) {
     else if (arg === '--dry-run') result.dryRun = true;
     else if (arg === '--in-place') result.inPlace = true;
     else if (arg === '--output' && args[i + 1]) result.output = args[++i];
-    else if ((arg === '--figures-sidecar' || arg === '--figures') && args[i + 1]) result.figuresSidecar = args[++i];
+    else if ((arg === '--figures-sidecar' || arg === '--figures') && args[i + 1])
+      result.figuresSidecar = args[++i];
     else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
   return result;
@@ -136,14 +136,13 @@ function loadFiguresSidecar(sidecarPath, verbose = false) {
  */
 function buildElementNumberMap(content, verbose = false, figuresSidecarPath = null) {
   // Start with sidecar data if provided (authoritative source)
-  const idToNumber = figuresSidecarPath
-    ? loadFiguresSidecar(figuresSidecarPath, verbose)
-    : {};
+  const idToNumber = figuresSidecarPath ? loadFiguresSidecar(figuresSidecarPath, verbose) : {};
 
   // Pattern 1a: Numbered captions with {#id} attributes
   // Matches: *Mynd 1.5: caption text*{#some-id}
   // Note: Skip if already in map (sidecar takes precedence)
-  const captionWithHashIdPattern = /\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):?\s+[^*]*\*\{#([^}]+)\}/gi;
+  const captionWithHashIdPattern =
+    /\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):?\s+[^*]*\*\{#([^}]+)\}/gi;
   let match;
   while ((match = captionWithHashIdPattern.exec(content)) !== null) {
     const number = match[1];
@@ -156,7 +155,8 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
 
   // Pattern 1b: Numbered captions with {id="..."} attributes
   // Matches: *Figure 1.5: caption text*{id="some-id"}
-  const captionWithIdAttrPattern = /\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):?\s+[^*]*\*\{id="([^"]+)"/gi;
+  const captionWithIdAttrPattern =
+    /\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):?\s+[^*]*\*\{id="([^"]+)"/gi;
   while ((match = captionWithIdAttrPattern.exec(content)) !== null) {
     const number = match[1];
     const id = match[2];
@@ -167,7 +167,8 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
   }
 
   // Pattern 2a: Image with {#id} followed by numbered caption
-  const imageHashIdCaptionPattern = /!\[[^\]]*\]\([^)]+\)\{#([^}]+)[^}]*\}\s*\n+\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):/gi;
+  const imageHashIdCaptionPattern =
+    /!\[[^\]]*\]\([^)]+\)\{#([^}]+)[^}]*\}\s*\n+\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):/gi;
   while ((match = imageHashIdCaptionPattern.exec(content)) !== null) {
     const id = match[1];
     const number = match[2];
@@ -178,7 +179,8 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
   }
 
   // Pattern 2b: Image with {id="..."} followed by numbered caption
-  const imageIdAttrCaptionPattern = /!\[[^\]]*\]\([^)]+\)\{id="([^"]+)"[^}]*\}\s*\n+\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):/gi;
+  const imageIdAttrCaptionPattern =
+    /!\[[^\]]*\]\([^)]+\)\{id="([^"]+)"[^}]*\}\s*\n+\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):/gi;
   while ((match = imageIdAttrCaptionPattern.exec(content)) !== null) {
     const id = match[1];
     const number = match[2];
@@ -203,7 +205,8 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
         const captionMatch = lines[j].match(/^\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):/i);
         if (captionMatch && !idToNumber[id]) {
           idToNumber[id] = captionMatch[1];
-          if (verbose) console.error(`  Found URL ID + nearby caption: ${id} -> ${captionMatch[1]}`);
+          if (verbose)
+            console.error(`  Found URL ID + nearby caption: ${id} -> ${captionMatch[1]}`);
           break;
         }
         // Stop if we hit another image (we've gone too far)
@@ -220,7 +223,8 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
         const captionMatch = lines[j].match(/^\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):/i);
         if (captionMatch && !idToNumber[id]) {
           idToNumber[id] = captionMatch[1];
-          if (verbose) console.error(`  Found image ID + nearby caption: ${id} -> ${captionMatch[1]}`);
+          if (verbose)
+            console.error(`  Found image ID + nearby caption: ${id} -> ${captionMatch[1]}`);
           break;
         }
         // Stop if we hit another image
@@ -257,7 +261,7 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
 
   if (chapterNum) {
     // Find all figures in order by scanning for image URLs followed by any caption
-    let figureOrder = [];
+    const figureOrder = [];
     for (let i = 0; i < lines.length; i++) {
       const imageUrlMatch = lines[i].match(/!\[[^\]]*\]\([^)]*\/(CNX_[A-Za-z0-9_]+)\.[a-z]+\)/i);
       if (imageUrlMatch) {
@@ -287,7 +291,7 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
 
     // Find the index of the first numbered figure
     // Unnumbered figures before this are intro/decorative and should NOT be auto-numbered
-    const firstNumberedIdx = figureOrder.findIndex(f => f.hasNumber);
+    const firstNumberedIdx = figureOrder.findIndex((f) => f.hasNumber);
 
     // Assign sequential numbers based on position
     // Start with the first explicit number, or 1 if none exists
@@ -346,7 +350,6 @@ function removeDuplicateDirectiveContent(content, verbose, stats) {
     // Check if this is the start of a directive (:::something)
     if (line.match(/^:::[a-z-]+/i)) {
       // Find the directive content and closing :::
-      const directiveStart = i;
       const directiveContent = [];
       i++;
 
@@ -383,27 +386,28 @@ function removeDuplicateDirectiveContent(content, verbose, stats) {
       if (directiveContent.length > 0 && afterIdx < lines.length) {
         // Normalize content for comparison: collapse all whitespace to single spaces
         // This handles cases where MT wraps lines differently
-        const normalizeText = (text) => text
-          .replace(/\s+/g, ' ')  // collapse all whitespace
-          .trim();
+        const normalizeText = (text) =>
+          text
+            .replace(/\s+/g, ' ') // collapse all whitespace
+            .trim();
 
         const directiveText = normalizeText(
-          directiveContent
-            .filter(l => l.trim() !== '')
-            .join(' ')
+          directiveContent.filter((l) => l.trim() !== '').join(' ')
         );
 
         // Look ahead to see if we have duplicate content
         let matchLength = 0;
-        let potentialDuplicate = [];
+        const potentialDuplicate = [];
         let checkIdx = afterIdx;
 
         while (checkIdx < lines.length) {
           const checkLine = lines[checkIdx];
           // Stop at next heading, directive, or image
-          if (checkLine.match(/^#{1,6}\s/) ||
-              checkLine.match(/^:::[a-z-]+/i) ||
-              checkLine.match(/^!\[/)) {
+          if (
+            checkLine.match(/^#{1,6}\s/) ||
+            checkLine.match(/^:::[a-z-]+/i) ||
+            checkLine.match(/^!\[/)
+          ) {
             break;
           }
           potentialDuplicate.push(checkLine);
@@ -411,9 +415,7 @@ function removeDuplicateDirectiveContent(content, verbose, stats) {
 
           // Check if we have enough content to compare
           const duplicateText = normalizeText(
-            potentialDuplicate
-              .filter(l => l.trim() !== '')
-              .join(' ')
+            potentialDuplicate.filter((l) => l.trim() !== '').join(' ')
           );
 
           if (duplicateText === directiveText) {
@@ -465,18 +467,21 @@ function cleanupMarkdown(content, verbose = false, figuresSidecarPath = null) {
     equationAttrs: 0,
     sidecarFigures: 0,
     strayMetadata: 0,
-    duplicateContent: 0
+    duplicateContent: 0,
   };
 
   // 0a. Remove stray metadata lines from MT output
   // Pattern: ## titill: „..." kafli: „..." eining: „..." tungumál: „..." hluti: „..."
   // These appear in MT output and should be stripped
   // Note: Quotes can be „..." (U+201E...U+201C) or regular "..." - handle both
-  result = result.replace(/^##\s*titill:\s*[„"][^""\u201C]*["\u201C]\s*kafli:\s*[„"][^""\u201C]*["\u201C].*$/gm, (match) => {
-    stats.strayMetadata++;
-    if (verbose) console.error(`  Stray metadata removed: ${match.substring(0, 50)}...`);
-    return '';
-  });
+  result = result.replace(
+    /^##\s*titill:\s*[„"][^""\u201C]*["\u201C]\s*kafli:\s*[„"][^""\u201C]*["\u201C].*$/gm,
+    (match) => {
+      stats.strayMetadata++;
+      if (verbose) console.error(`  Stray metadata removed: ${match.substring(0, 50)}...`);
+      return '';
+    }
+  );
 
   // 0b. Remove duplicate content after directives
   // MT sometimes duplicates content from inside :::directive blocks immediately after the closing :::
@@ -609,7 +614,9 @@ function cleanupMarkdown(content, verbose = false, figuresSidecarPath = null) {
   let lastImageId = null;
   for (let i = 0; i < resultLines.length; i++) {
     // Check for image with ID in URL (CNX_Chem_XX_XX_Name pattern)
-    const imageUrlMatch = resultLines[i].match(/!\[[^\]]*\]\([^)]*\/(CNX_[A-Za-z0-9_]+)\.[a-z]+\)/i);
+    const imageUrlMatch = resultLines[i].match(
+      /!\[[^\]]*\]\([^)]*\/(CNX_[A-Za-z0-9_]+)\.[a-z]+\)/i
+    );
     if (imageUrlMatch) {
       lastImageId = imageUrlMatch[1];
       continue;
@@ -620,10 +627,7 @@ function cleanupMarkdown(content, verbose = false, figuresSidecarPath = null) {
       const number = idToNumber[lastImageId];
       if (number) {
         // Replace *Mynd: with *Mynd X.X:
-        resultLines[i] = resultLines[i].replace(
-          /^\*(?:Mynd|Figure):\s/i,
-          `*Mynd ${number}: `
-        );
+        resultLines[i] = resultLines[i].replace(/^\*(?:Mynd|Figure):\s/i, `*Mynd ${number}: `);
         if (verbose) console.error(`  Updated caption: Mynd ${number}: (for ${lastImageId})`);
         stats.captionAttrs++;
       }
@@ -631,7 +635,10 @@ function cleanupMarkdown(content, verbose = false, figuresSidecarPath = null) {
     }
 
     // Reset if we hit a blank line or non-caption content after image
-    if (resultLines[i].trim() === '' || (!resultLines[i].startsWith('*') && !resultLines[i].startsWith('!'))) {
+    if (
+      resultLines[i].trim() === '' ||
+      (!resultLines[i].startsWith('*') && !resultLines[i].startsWith('!'))
+    ) {
       // Don't reset too quickly - captions can follow blank lines
       if (i > 0 && resultLines[i - 1].trim() === '' && resultLines[i].trim() === '') {
         lastImageId = null;
@@ -642,7 +649,7 @@ function cleanupMarkdown(content, verbose = false, figuresSidecarPath = null) {
 
   // 5. Remove standalone table/element attribute lines
   // Handles both {id="..." summary="..."} and {#id} formats
-  result = result.replace(/^\{id="[^"]*"(?:\s+summary="[^"]*")?\}\s*$/gm, (match) => {
+  result = result.replace(/^\{id="[^"]*"(?:\s+summary="[^"]*")?\}\s*$/gm, (_match) => {
     stats.tableAttrs++;
     if (verbose) console.error(`  Table attr line removed`);
     return '';
@@ -676,7 +683,7 @@ function cleanupMarkdown(content, verbose = false, figuresSidecarPath = null) {
   });
 
   // 7. Clean up any remaining .{id="..."} patterns attached to text
-  result = result.replace(/\.\{id="[^"]*"\}/g, (match) => {
+  result = result.replace(/\.\{id="[^"]*"\}/g, (_match) => {
     stats.tableAttrs++;
     if (verbose) console.error(`  Inline ID attr removed`);
     return '.';
@@ -735,7 +742,9 @@ async function main() {
     console.error(`  Image attributes removed: ${stats.imageAttrs}`);
     console.error(`  Caption attributes removed: ${stats.captionAttrs}`);
     console.error(`  Term attributes removed: ${stats.termAttrs}`);
-    console.error(`  Arrow references converted: ${stats.arrowRefs} (${stats.arrowRefsNumbered} with numbers)`);
+    console.error(
+      `  Arrow references converted: ${stats.arrowRefs} (${stats.arrowRefsNumbered} with numbers)`
+    );
     console.error(`  Table attribute lines removed: ${stats.tableAttrs}`);
     console.error(`  Equation attributes removed: ${stats.equationAttrs}`);
     console.error(`  Total changes: ${totalChanges}`);
@@ -765,13 +774,12 @@ async function main() {
 export { cleanupMarkdown, buildElementNumberMap };
 
 // Only run main() if this is the entry point
-const isMainModule = process.argv[1] && (
-  process.argv[1].endsWith('cleanup-markdown.js') ||
-  process.argv[1].includes('cleanup-markdown')
-);
+const isMainModule =
+  process.argv[1] &&
+  (process.argv[1].endsWith('cleanup-markdown.js') || process.argv[1].includes('cleanup-markdown'));
 
 if (isMainModule) {
-  main().catch(err => {
+  main().catch((err) => {
     console.error('Error:', err.message);
     process.exit(1);
   });

@@ -40,7 +40,7 @@ function parseArgs(args) {
     output: null,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -221,7 +221,6 @@ function extractTwoChildren(content) {
   let depth = 0;
   let current = '';
   let inTag = false;
-  let tagName = '';
 
   for (let i = 0; i < content.length; i++) {
     const char = content[i];
@@ -311,7 +310,7 @@ function extractKeyEquationsFromCnxml(cnxmlPath, verbose) {
         equations.push({
           latex,
           moduleId,
-          mathml
+          mathml,
         });
       }
     }
@@ -409,8 +408,9 @@ async function main() {
     process.exit(1);
   }
 
-  const cnxmlFiles = fs.readdirSync(sourceDir)
-    .filter(name => name.endsWith('.cnxml'))
+  const cnxmlFiles = fs
+    .readdirSync(sourceDir)
+    .filter((name) => name.endsWith('.cnxml'))
     .sort();
 
   console.log(`Found ${cnxmlFiles.length} CNXML files in chapter ${args.chapter}`);
@@ -434,16 +434,18 @@ async function main() {
   const markdown = generateMarkdown(allEquations, args.chapter);
 
   // Determine output path
-  const outputPath = args.output || path.join(
-    projectRoot,
-    'books',
-    args.book,
-    '05-publication',
-    'mt-preview',
-    'chapters',
-    chapterPadded,
-    `${args.chapter}-key-equations.md`
-  );
+  const outputPath =
+    args.output ||
+    path.join(
+      projectRoot,
+      'books',
+      args.book,
+      '05-publication',
+      'mt-preview',
+      'chapters',
+      chapterPadded,
+      `${args.chapter}-key-equations.md`
+    );
 
   if (args.dryRun) {
     console.log('');
@@ -468,7 +470,7 @@ async function main() {
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(`\nError: ${err.message}`);
   console.error(err.stack);
   process.exit(1);

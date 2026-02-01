@@ -38,7 +38,7 @@ function parseArgs(args) {
     inPlace: false,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -114,7 +114,7 @@ function restoreImages(content, verbose) {
   //
   // Match pattern: {id="CNX_Chem_XX_XX_Name" followed by optional attrs ending with }
   // This uses a non-greedy match to handle multiline alt text
-  const FIGURE_ATTR_PATTERN = /^\{id="(CNX_Chem_\d+_\d+_[^"]+)"([^}]*)\}$/gm;
+  // Note: Pattern defined inline below due to multiline limitations
 
   // First, we need to handle multiline attribute blocks
   // The regex above doesn't work well with multiline, so we need a different approach
@@ -176,7 +176,7 @@ function restoreImages(content, verbose) {
 
   return {
     content: result.join('\n'),
-    count
+    count,
   };
 }
 
@@ -211,14 +211,16 @@ function processAttributeBlock(block, verbose) {
   attrs.push(`#${figureId}`);
   if (className) {
     // Convert space-separated classes to pandoc format
-    className.split(/\s+/).forEach(cls => {
+    className.split(/\s+/).forEach((cls) => {
       if (cls) attrs.push(`.${cls}`);
     });
   }
   const attrStr = `{${attrs.join(' ')}}`;
 
   if (verbose) {
-    console.error(`  Restored: ${figureId} (alt: ${alt.substring(0, 50)}${alt.length > 50 ? '...' : ''})`);
+    console.error(
+      `  Restored: ${figureId} (alt: ${alt.substring(0, 50)}${alt.length > 50 ? '...' : ''})`
+    );
   }
 
   return `![${alt}](${imagePath})${attrStr}`;
@@ -287,7 +289,7 @@ async function main() {
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error('Error:', err.message);
   process.exit(1);
 });

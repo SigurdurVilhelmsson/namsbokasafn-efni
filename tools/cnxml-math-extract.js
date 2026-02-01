@@ -25,7 +25,6 @@
  */
 
 const fs = require('fs');
-const path = require('path');
 const https = require('https');
 
 // ============================================================================
@@ -38,13 +37,13 @@ const MODULES_PATH = '/modules';
 // Chemistry 2e module mapping (Chapter 1 as example - can be extended)
 const CHEMISTRY_2E_MODULES = {
   // Chapter 1: Essential Ideas
-  'm68662': { chapter: 1, section: 'intro', title: 'Introduction' },
-  'm68663': { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
-  'm68664': { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
-  'm68667': { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
-  'm68674': { chapter: 1, section: '1.4', title: 'Measurements' },
-  'm68690': { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
-  'm68683': { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
+  m68662: { chapter: 1, section: 'intro', title: 'Introduction' },
+  m68663: { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
+  m68664: { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
+  m68667: { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
+  m68674: { chapter: 1, section: '1.4', title: 'Measurements' },
+  m68690: { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
+  m68683: { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
 };
 
 // ============================================================================
@@ -59,7 +58,7 @@ function parseArgs(args) {
     context: false,
     verbose: false,
     listModules: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -169,7 +168,9 @@ async function fetchCnxml(input, verbose) {
     return fetchUrl(url);
   }
 
-  throw new Error(`Input not found: ${input}\nProvide a module ID (e.g., m68690) or path to a .cnxml file`);
+  throw new Error(
+    `Input not found: ${input}\nProvide a module ID (e.g., m68690) or path to a .cnxml file`
+  );
 }
 
 /**
@@ -177,23 +178,25 @@ async function fetchCnxml(input, verbose) {
  */
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      if (res.statusCode === 301 || res.statusCode === 302) {
-        // Follow redirect
-        fetchUrl(res.headers.location).then(resolve).catch(reject);
-        return;
-      }
+    https
+      .get(url, (res) => {
+        if (res.statusCode === 301 || res.statusCode === 302) {
+          // Follow redirect
+          fetchUrl(res.headers.location).then(resolve).catch(reject);
+          return;
+        }
 
-      if (res.statusCode !== 200) {
-        reject(new Error(`HTTP ${res.statusCode}: Failed to fetch ${url}`));
-        return;
-      }
+        if (res.statusCode !== 200) {
+          reject(new Error(`HTTP ${res.statusCode}: Failed to fetch ${url}`));
+          return;
+        }
 
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(data));
-      res.on('error', reject);
-    }).on('error', reject);
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => resolve(data));
+        res.on('error', reject);
+      })
+      .on('error', reject);
   });
 }
 
@@ -240,7 +243,7 @@ function extractMathML(cnxml, includeContext) {
       latex: convertMathMLToLatex(fullMatch),
       type: eqType,
       context,
-      position
+      position,
     });
   }
 
@@ -248,7 +251,7 @@ function extractMathML(cnxml, includeContext) {
     documentTitle,
     moduleId: extractModuleId(cnxml),
     equationCount: equations.length,
-    equations
+    equations,
   };
 }
 
@@ -284,7 +287,7 @@ function extractContext(cnxml, position) {
 
   return {
     before: before || '...',
-    after: after || '...'
+    after: after || '...',
   };
 }
 
@@ -371,32 +374,41 @@ function convertMathMLToLatex(mathml) {
 
     // Fractions
     [/<mfrac>\s*{([^}]*)}\s*{([^}]*)}\s*<\/mfrac>/g, '\\frac{$1}{$2}'],
-    [/<mfrac>([\s\S]*?)<\/mfrac>/g, (match, content) => {
-      // Split content into numerator and denominator
-      const parts = splitFractionParts(content);
-      if (parts.length === 2) {
-        return `\\frac{${cleanLatex(parts[0])}}{${cleanLatex(parts[1])}}`;
-      }
-      return match;
-    }],
+    [
+      /<mfrac>([\s\S]*?)<\/mfrac>/g,
+      (match, content) => {
+        // Split content into numerator and denominator
+        const parts = splitFractionParts(content);
+        if (parts.length === 2) {
+          return `\\frac{${cleanLatex(parts[0])}}{${cleanLatex(parts[1])}}`;
+        }
+        return match;
+      },
+    ],
 
     // Superscripts and subscripts
     [/<msup>\s*{([^}]*)}\s*{([^}]*)}\s*<\/msup>/g, '{$1}^{$2}'],
-    [/<msup>([\s\S]*?)<\/msup>/g, (match, content) => {
-      const parts = splitMathParts(content, 2);
-      if (parts.length === 2) {
-        return `{${cleanLatex(parts[0])}}^{${cleanLatex(parts[1])}}`;
-      }
-      return match;
-    }],
+    [
+      /<msup>([\s\S]*?)<\/msup>/g,
+      (match, content) => {
+        const parts = splitMathParts(content, 2);
+        if (parts.length === 2) {
+          return `{${cleanLatex(parts[0])}}^{${cleanLatex(parts[1])}}`;
+        }
+        return match;
+      },
+    ],
     [/<msub>\s*{([^}]*)}\s*{([^}]*)}\s*<\/msub>/g, '{$1}_{$2}'],
-    [/<msub>([\s\S]*?)<\/msub>/g, (match, content) => {
-      const parts = splitMathParts(content, 2);
-      if (parts.length === 2) {
-        return `{${cleanLatex(parts[0])}}_{${cleanLatex(parts[1])}}`;
-      }
-      return match;
-    }],
+    [
+      /<msub>([\s\S]*?)<\/msub>/g,
+      (match, content) => {
+        const parts = splitMathParts(content, 2);
+        if (parts.length === 2) {
+          return `{${cleanLatex(parts[0])}}_{${cleanLatex(parts[1])}}`;
+        }
+        return match;
+      },
+    ],
 
     // Square root
     [/<msqrt>([\s\S]*?)<\/msqrt>/g, '\\sqrt{$1}'],
@@ -518,8 +530,8 @@ function formatOutput(data, format, includeContext) {
 
     case 'latex':
       return data.equations
-        .map(eq => eq.latex)
-        .filter(l => l && l.length > 3) // Skip trivial ones
+        .map((eq) => eq.latex)
+        .filter((l) => l && l.length > 3) // Skip trivial ones
         .join('\n');
 
     case 'markdown':
@@ -556,8 +568,8 @@ function formatMarkdown(data, includeContext) {
   lines.push('');
 
   // List significant equations (skip inline symbols)
-  const significant = data.equations.filter(eq =>
-    eq.type !== 'inline-symbol' && eq.latex.length > 5
+  const significant = data.equations.filter(
+    (eq) => eq.type !== 'inline-symbol' && eq.latex.length > 5
   );
 
   if (significant.length > 0) {
@@ -581,7 +593,7 @@ function formatMarkdown(data, includeContext) {
   }
 
   // List inline symbols separately
-  const symbols = data.equations.filter(eq => eq.type === 'inline-symbol');
+  const symbols = data.equations.filter((eq) => eq.type === 'inline-symbol');
   if (symbols.length > 0) {
     lines.push('## Inline Symbols');
     lines.push('| # | LaTeX |');
@@ -643,7 +655,6 @@ async function main() {
     } else {
       console.log(output);
     }
-
   } catch (err) {
     console.error(`Error: ${err.message}`);
     if (args.verbose) {

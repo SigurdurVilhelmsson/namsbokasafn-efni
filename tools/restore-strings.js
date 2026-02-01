@@ -27,10 +27,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // ============================================================================
 // Argument Parsing
@@ -43,7 +39,7 @@ function parseArgs(args) {
     inPlace: true, // Default to in-place for pipeline use
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -140,7 +136,7 @@ function findStringsFile(mdPath) {
     // Legacy txt format - same directory (backwards compatibility)
     path.join(dir, `${baseName}-strings.is.txt`),
     // Legacy txt format - source directory
-    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-strings.is.txt`)
+    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-strings.is.txt`),
   ];
 
   for (const stringsPath of possiblePaths) {
@@ -170,7 +166,7 @@ function findSidecarFile(mdPath) {
     // Same directory
     path.join(dir, `${baseName}-protected.json`),
     // Source directory (02-for-mt instead of 02-mt-output)
-    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-protected.json`)
+    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-protected.json`),
   ];
 
   for (const sidecarPath of possiblePaths) {
@@ -202,7 +198,7 @@ function findFiguresFile(mdPath) {
     path.join(dir, `${baseName}.en-figures.json`),
     // Source directory (02-for-mt instead of 02-mt-output)
     path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-figures.json`),
-    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}.en-figures.json`)
+    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}.en-figures.json`),
   ];
 
   for (const figuresPath of possiblePaths) {
@@ -227,17 +223,19 @@ function findFiguresFile(mdPath) {
 function isMarkdownFormat(content) {
   // Check for markdown headers that indicate new format
   // Supports EN, IS (translated), and protected [[marker]] variants
-  return content.includes('# Translatable Strings') ||
-         content.includes('# Þýðanlegir strengir') ||  // Icelandic
-         content.includes('## Frontmatter') ||
-         content.includes('## Formáli') ||             // Icelandic
-         content.includes('## [[FRONTMATTER]]') ||     // Protected
-         content.includes('## Tables') ||
-         content.includes('## Töflur') ||              // Icelandic
-         content.includes('## [[TABLES]]') ||          // Protected
-         content.includes('## Figures') ||
-         content.includes('## Myndir') ||              // Icelandic
-         content.includes('## [[FIGURES]]');           // Protected
+  return (
+    content.includes('# Translatable Strings') ||
+    content.includes('# Þýðanlegir strengir') || // Icelandic
+    content.includes('## Frontmatter') ||
+    content.includes('## Formáli') || // Icelandic
+    content.includes('## [[FRONTMATTER]]') || // Protected
+    content.includes('## Tables') ||
+    content.includes('## Töflur') || // Icelandic
+    content.includes('## [[TABLES]]') || // Protected
+    content.includes('## Figures') ||
+    content.includes('## Myndir') || // Icelandic
+    content.includes('## [[FIGURES]]')
+  ); // Protected
 }
 
 /**
@@ -250,7 +248,7 @@ function parseMarkdownStrings(content) {
   const result = {
     frontmatter: {},
     tables: {},
-    figures: {}
+    figures: {},
   };
 
   // Clean up common MT artifacts
@@ -259,19 +257,24 @@ function parseMarkdownStrings(content) {
   // Parse frontmatter title (supports protected, EN, and IS labels)
   // Protected: ## [[FRONTMATTER]] ... **[[TITLE]]:**
   // EN: ## Frontmatter ... **Title:** / IS: ## Formáli ... **Titill:**
-  const titleMatch = content.match(/## (?:\[\[FRONTMATTER\]\]|Frontmatter|Formáli)[\s\S]*?\*\*(?:\[\[TITLE\]\]|Title|Titill):\*\*\s*(.+?)(?=\n\n|\n---|$)/);
+  const titleMatch = content.match(
+    /## (?:\[\[FRONTMATTER\]\]|Frontmatter|Formáli)[\s\S]*?\*\*(?:\[\[TITLE\]\]|Title|Titill):\*\*\s*(.+?)(?=\n\n|\n---|$)/
+  );
   if (titleMatch) {
     result.frontmatter.title = titleMatch[1].trim();
   }
 
   // Parse tables section (Protected: ## [[TABLES]] / EN: ## Tables / IS: ## Töflur)
-  const tablesSection = content.match(/## (?:\[\[TABLES\]\]|Tables|Töflur)\s+([\s\S]*?)(?=\n## |$)/);
+  const tablesSection = content.match(
+    /## (?:\[\[TABLES\]\]|Tables|Töflur)\s+([\s\S]*?)(?=\n## |$)/
+  );
   if (tablesSection) {
     const tableContent = tablesSection[1];
 
     // Find all table entries
     // Protected: ### [[TABLE:N]] / EN: ### Table N / IS: ### Tafla N
-    const tablePattern = /### (?:\[\[TABLE:(\d+)\]\]|(?:Table|Tafla) (\d+))\s+([\s\S]*?)(?=### (?:\[\[TABLE:|\bTable\b|\bTafla\b)|\n## |$)/g;
+    const tablePattern =
+      /### (?:\[\[TABLE:(\d+)\]\]|(?:Table|Tafla) (\d+))\s+([\s\S]*?)(?=### (?:\[\[TABLE:|\bTable\b|\bTafla\b)|\n## |$)/g;
     let tableMatch;
     while ((tableMatch = tablePattern.exec(tableContent)) !== null) {
       const tableNum = tableMatch[1] || tableMatch[2];
@@ -280,13 +283,17 @@ function parseMarkdownStrings(content) {
       result.tables[`TABLE:${tableNum}`] = {};
 
       // Protected: **[[TITLE]]:** / EN: **Title:** / IS: **Titill:**
-      const tableTitle = tableData.match(/\*\*(?:\[\[TITLE\]\]|Title|Titill):\*\*\s*(.+?)(?=\n\n|\n\*\*|$)/);
+      const tableTitle = tableData.match(
+        /\*\*(?:\[\[TITLE\]\]|Title|Titill):\*\*\s*(.+?)(?=\n\n|\n\*\*|$)/
+      );
       if (tableTitle) {
         result.tables[`TABLE:${tableNum}`].title = tableTitle[1].trim();
       }
 
       // Protected: **[[SUMMARY]]:** / EN: **Summary:** / IS: **Samantekt:**
-      const tableSummary = tableData.match(/\*\*(?:\[\[SUMMARY\]\]|Summary|Samantekt):\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/);
+      const tableSummary = tableData.match(
+        /\*\*(?:\[\[SUMMARY\]\]|Summary|Samantekt):\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/
+      );
       if (tableSummary) {
         result.tables[`TABLE:${tableNum}`].summary = tableSummary[1].trim();
       }
@@ -300,25 +307,31 @@ function parseMarkdownStrings(content) {
 
     // Find all figure entries - match figure IDs
     // Protected: ### [[CNX_*]] / Legacy: ### CNX_*
-    const figurePattern = /### (?:\[\[)?([A-Za-z0-9_-]+)(?:\]\])?\s+([\s\S]*?)(?=### (?:\[\[)?[A-Za-z0-9_-]+|\n## |$)/g;
+    const figurePattern =
+      /### (?:\[\[)?([A-Za-z0-9_-]+)(?:\]\])?\s+([\s\S]*?)(?=### (?:\[\[)?[A-Za-z0-9_-]+|\n## |$)/g;
     let figMatch;
     while ((figMatch = figurePattern.exec(figureContent)) !== null) {
       const figId = figMatch[1].trim();
       const figData = figMatch[2];
 
       // Skip if this looks like a table header we accidentally matched
-      if (figId.toLowerCase().startsWith('table') || figId.toLowerCase().startsWith('tafla')) continue;
+      if (figId.toLowerCase().startsWith('table') || figId.toLowerCase().startsWith('tafla'))
+        continue;
 
       result.figures[figId] = {};
 
       // Protected: **[[CAPTION]]:** / EN: **Caption:** / IS: **Myndatexti:**
-      const caption = figData.match(/\*\*(?:\[\[CAPTION\]\]|Caption|Myndatexti):\*\*\s*([\s\S]+?)(?=\n\n|\n\*\*|$)/);
+      const caption = figData.match(
+        /\*\*(?:\[\[CAPTION\]\]|Caption|Myndatexti):\*\*\s*([\s\S]+?)(?=\n\n|\n\*\*|$)/
+      );
       if (caption) {
         result.figures[figId].captionIs = caption[1].trim();
       }
 
       // Protected: **[[ALT_TEXT]]:** / EN: **Alt text:** / IS: **Alt-texti:**
-      const altText = figData.match(/\*\*(?:\[\[ALT_TEXT\]\]|Alt text|Alt-texti):\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/);
+      const altText = figData.match(
+        /\*\*(?:\[\[ALT_TEXT\]\]|Alt text|Alt-texti):\*\*\s*([\s\S]+?)(?=\n\n|\n---|$)/
+      );
       if (altText) {
         result.figures[figId].altTextIs = altText[1].trim();
       }
@@ -371,7 +384,7 @@ function legacyToStructured(strings) {
   const result = {
     frontmatter: {},
     tables: {},
-    figures: {}
+    figures: {},
   };
 
   for (const [key, value] of strings) {
@@ -451,7 +464,9 @@ function updateSidecar(sidecar, parsed, verbose) {
     const translatedTitle = parsed.frontmatter.title;
     if (sidecar.frontmatter.title !== translatedTitle) {
       if (verbose) {
-        console.error(`  Updating frontmatter title: "${sidecar.frontmatter.title}" -> "${translatedTitle}"`);
+        console.error(
+          `  Updating frontmatter title: "${sidecar.frontmatter.title}" -> "${translatedTitle}"`
+        );
       }
       sidecar.frontmatter.title = translatedTitle;
       updates++;
@@ -469,7 +484,9 @@ function updateSidecar(sidecar, parsed, verbose) {
         if (tableData.title !== translatedTable.title) {
           if (verbose) {
             const oldTitle = tableData.title || '(none)';
-            console.error(`  Updating ${tableKey} title: "${oldTitle}" -> "${translatedTable.title}"`);
+            console.error(
+              `  Updating ${tableKey} title: "${oldTitle}" -> "${translatedTable.title}"`
+            );
           }
           tableData.title = translatedTable.title;
           updates++;
@@ -480,7 +497,9 @@ function updateSidecar(sidecar, parsed, verbose) {
       if (translatedTable.summary) {
         if (tableData.summary !== translatedTable.summary) {
           if (verbose) {
-            const oldSummary = tableData.summary ? tableData.summary.substring(0, 40) + '...' : '(none)';
+            const oldSummary = tableData.summary
+              ? tableData.summary.substring(0, 40) + '...'
+              : '(none)';
             const newSummary = translatedTable.summary.substring(0, 40) + '...';
             console.error(`  Updating ${tableKey} summary: "${oldSummary}" -> "${newSummary}"`);
           }
@@ -517,7 +536,9 @@ function updateFigures(figuresData, parsed, verbose) {
     if (translatedFig.captionIs) {
       if (figData.captionIs !== translatedFig.captionIs) {
         if (verbose) {
-          const oldCaption = figData.captionIs ? figData.captionIs.substring(0, 40) + '...' : '(none)';
+          const oldCaption = figData.captionIs
+            ? figData.captionIs.substring(0, 40) + '...'
+            : '(none)';
           const newCaption = translatedFig.captionIs.substring(0, 40) + '...';
           console.error(`  Updating ${figId} caption: "${oldCaption}" -> "${newCaption}"`);
         }
@@ -623,7 +644,9 @@ function updateMarkdownFrontmatter(content, parsed, verbose) {
           frontmatter = frontmatter.replace(titleRegex, `title: "${translatedTitle}"`);
           updates++;
           if (verbose) {
-            console.error(`  Updated frontmatter title: "${titleMatch[1].trim()}" -> "${translatedTitle}"`);
+            console.error(
+              `  Updated frontmatter title: "${titleMatch[1].trim()}" -> "${translatedTitle}"`
+            );
           }
         }
       } else {
@@ -637,7 +660,7 @@ function updateMarkdownFrontmatter(content, parsed, verbose) {
 
       return {
         content: `---\n${frontmatter}\n---${body}`,
-        updates
+        updates,
       };
     }
   }
@@ -650,7 +673,7 @@ function updateMarkdownFrontmatter(content, parsed, verbose) {
 
   return {
     content: `---\ntitle: "${translatedTitle}"\n---\n\n${content}`,
-    updates
+    updates,
   };
 }
 
@@ -700,9 +723,10 @@ function processFile(filePath, options) {
   const parsed = parseStringsFile(stringsContent);
 
   // Check if there's anything to update
-  const hasContent = parsed.frontmatter?.title ||
-                     Object.keys(parsed.tables).length > 0 ||
-                     Object.keys(parsed.figures).length > 0;
+  const hasContent =
+    parsed.frontmatter?.title ||
+    Object.keys(parsed.tables).length > 0 ||
+    Object.keys(parsed.figures).length > 0;
 
   if (!hasContent) {
     if (verbose) {
@@ -784,7 +808,9 @@ function processFile(filePath, options) {
 
   if (dryRun) {
     console.log(`[DRY RUN] Would update ${totalUpdates} string(s) for: ${filePath}`);
-    console.log(`  Strings file: ${stringsPath} (${stringsPath.endsWith('.md') ? 'markdown' : 'legacy txt'})`);
+    console.log(
+      `  Strings file: ${stringsPath} (${stringsPath.endsWith('.md') ? 'markdown' : 'legacy txt'})`
+    );
     if (frontmatterUpdates > 0) {
       console.log(`  Frontmatter title updates: ${frontmatterUpdates}`);
     }
@@ -833,7 +859,7 @@ function processFile(filePath, options) {
     mdUpdates,
     stringsPath,
     sidecarPath,
-    figuresPath: figuresUpdates > 0 ? figuresPath : null
+    figuresPath: figuresUpdates > 0 ? figuresPath : null,
   };
 }
 

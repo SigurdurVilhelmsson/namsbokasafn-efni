@@ -20,7 +20,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +31,7 @@ function parseArgs(args) {
     chapter: null,
     verbose: false,
     dryRun: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -165,7 +164,7 @@ async function main() {
   const booksDir = path.join(__dirname, '..', 'books');
   // Check both possible locations for translated table files
   let tablesDir = path.join(booksDir, args.book, '02-mt-output', args.chapter);
-  if (!fs.readdirSync(tablesDir).some(f => f.endsWith('-tables.is.md'))) {
+  if (!fs.readdirSync(tablesDir).some((f) => f.endsWith('-tables.is.md'))) {
     tablesDir = path.join(booksDir, args.book, '02-for-mt', args.chapter, 'tables-for-mt');
   }
   const mtOutputDir = path.join(booksDir, args.book, '02-mt-output', args.chapter);
@@ -177,8 +176,9 @@ async function main() {
   }
 
   // Find translated table files
-  const tableFiles = fs.readdirSync(tablesDir)
-    .filter(f => f.endsWith('-tables.is.md'))
+  const tableFiles = fs
+    .readdirSync(tablesDir)
+    .filter((f) => f.endsWith('-tables.is.md'))
     .sort();
 
   if (tableFiles.length === 0) {
@@ -230,7 +230,10 @@ async function main() {
 
     for (const [tableKey, tableMarkdown] of Object.entries(translatedTables)) {
       const { content: newContent, replaced } = replaceTableInContent(
-        updatedContent, tableKey, tableMarkdown, sidecar
+        updatedContent,
+        tableKey,
+        tableMarkdown,
+        sidecar
       );
 
       if (replaced) {
@@ -252,7 +255,9 @@ async function main() {
         fs.writeFileSync(mtOutputFile, updatedContent);
         console.log(`  Updated: ${path.basename(mtOutputFile)} (${tablesReplaced} tables)`);
       } else {
-        console.log(`  [DRY RUN] Would update: ${path.basename(mtOutputFile)} (${tablesReplaced} tables)`);
+        console.log(
+          `  [DRY RUN] Would update: ${path.basename(mtOutputFile)} (${tablesReplaced} tables)`
+        );
       }
     }
   }
@@ -267,12 +272,14 @@ async function main() {
   if (!args.dryRun && filesUpdated > 0) {
     console.log('');
     console.log('Next steps:');
-    console.log(`  1. Run: node tools/compile-chapter.js ${args.book} ${args.chapter.replace('ch', '')} --track mt-preview`);
+    console.log(
+      `  1. Run: node tools/compile-chapter.js ${args.book} ${args.chapter.replace('ch', '')} --track mt-preview`
+    );
     console.log(`  2. Sync: node scripts/sync-content.js --source ../namsbokasafn-efni`);
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(`Error: ${err.message}`);
   process.exit(1);
 });

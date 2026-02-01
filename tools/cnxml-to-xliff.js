@@ -16,39 +16,38 @@
  */
 
 const fs = require('fs');
-const path = require('path');
 const https = require('https');
 
 const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/openstax/osbooks-chemistry-bundle/main';
 const MODULES_PATH = '/modules';
 
 const CHEMISTRY_2E_MODULES = {
-  'm68662': { chapter: 1, section: 'intro', title: 'Introduction' },
-  'm68663': { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
-  'm68664': { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
-  'm68667': { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
-  'm68674': { chapter: 1, section: '1.4', title: 'Measurements' },
-  'm68690': { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
-  'm68683': { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
-  'm68695': { chapter: 2, section: 'intro', title: 'Introduction' },
-  'm68696': { chapter: 2, section: '2.1', title: 'Early Ideas in Atomic Theory' },
-  'm68698': { chapter: 2, section: '2.2', title: 'Evolution of Atomic Theory' },
-  'm68700': { chapter: 2, section: '2.3', title: 'Atomic Structure and Symbolism' },
-  'm68701': { chapter: 2, section: '2.4', title: 'Chemical Formulas' },
-  'm68704': { chapter: 2, section: '2.5', title: 'The Periodic Table' },
-  'm68710': { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
-  'm68712': { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
-  'm68718': { chapter: 3, section: 'intro', title: 'Introduction' },
-  'm68720': { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
-  'm68723': { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
-  'm68730': { chapter: 3, section: '3.3', title: 'Molarity' },
-  'm68738': { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
-  'm68743': { chapter: 4, section: 'intro', title: 'Introduction' },
-  'm68748': { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
-  'm68754': { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },
-  'm68759': { chapter: 4, section: '4.3', title: 'Reaction Stoichiometry' },
-  'm68766': { chapter: 4, section: '4.4', title: 'Reaction Yields' },
-  'm68768': { chapter: 4, section: '4.5', title: 'Quantitative Chemical Analysis' },
+  m68662: { chapter: 1, section: 'intro', title: 'Introduction' },
+  m68663: { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
+  m68664: { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
+  m68667: { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
+  m68674: { chapter: 1, section: '1.4', title: 'Measurements' },
+  m68690: { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
+  m68683: { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
+  m68695: { chapter: 2, section: 'intro', title: 'Introduction' },
+  m68696: { chapter: 2, section: '2.1', title: 'Early Ideas in Atomic Theory' },
+  m68698: { chapter: 2, section: '2.2', title: 'Evolution of Atomic Theory' },
+  m68700: { chapter: 2, section: '2.3', title: 'Atomic Structure and Symbolism' },
+  m68701: { chapter: 2, section: '2.4', title: 'Chemical Formulas' },
+  m68704: { chapter: 2, section: '2.5', title: 'The Periodic Table' },
+  m68710: { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
+  m68712: { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
+  m68718: { chapter: 3, section: 'intro', title: 'Introduction' },
+  m68720: { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
+  m68723: { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
+  m68730: { chapter: 3, section: '3.3', title: 'Molarity' },
+  m68738: { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
+  m68743: { chapter: 4, section: 'intro', title: 'Introduction' },
+  m68748: { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
+  m68754: { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },
+  m68759: { chapter: 4, section: '4.3', title: 'Reaction Stoichiometry' },
+  m68766: { chapter: 4, section: '4.4', title: 'Reaction Yields' },
+  m68768: { chapter: 4, section: '4.5', title: 'Quantitative Chemical Analysis' },
 };
 
 function parseArgs(args) {
@@ -59,7 +58,7 @@ function parseArgs(args) {
     targetLang: 'is',
     verbose: false,
     listModules: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -118,20 +117,22 @@ async function fetchCnxml(input, verbose) {
 
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      if (res.statusCode === 301 || res.statusCode === 302) {
-        fetchUrl(res.headers.location).then(resolve).catch(reject);
-        return;
-      }
-      if (res.statusCode !== 200) {
-        reject(new Error('HTTP ' + res.statusCode + ': Failed to fetch ' + url));
-        return;
-      }
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(data));
-      res.on('error', reject);
-    }).on('error', reject);
+    https
+      .get(url, (res) => {
+        if (res.statusCode === 301 || res.statusCode === 302) {
+          fetchUrl(res.headers.location).then(resolve).catch(reject);
+          return;
+        }
+        if (res.statusCode !== 200) {
+          reject(new Error('HTTP ' + res.statusCode + ': Failed to fetch ' + url));
+          return;
+        }
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => resolve(data));
+        res.on('error', reject);
+      })
+      .on('error', reject);
   });
 }
 
@@ -241,10 +242,10 @@ function extractSegments(cnxml, verbose) {
 
   if (documentTitle && documentTitle !== 'Unknown') {
     segments.push({
-      id: 'seg-' + (++segmentId),
+      id: 'seg-' + ++segmentId,
       type: 'title',
       source: documentTitle,
-      note: 'Document title'
+      note: 'Document title',
     });
   }
 
@@ -257,10 +258,10 @@ function extractSegments(cnxml, verbose) {
   let match;
   while ((match = sectionTitlePattern.exec(content)) !== null) {
     segments.push({
-      id: 'seg-' + (++segmentId),
+      id: 'seg-' + ++segmentId,
       type: 'section-title',
       source: match[1].trim(),
-      note: 'Section title'
+      note: 'Section title',
     });
   }
 
@@ -270,13 +271,14 @@ function extractSegments(cnxml, verbose) {
     const processed = processSegmentWithMath(match[1]);
     if (processed.text.trim()) {
       segments.push({
-        id: 'seg-' + (++segmentId),
+        id: 'seg-' + ++segmentId,
         type: 'paragraph',
         source: processed.text,
         inlineElements: processed.inlineElements,
-        note: processed.inlineElements.length > 0
-          ? 'Contains ' + processed.inlineElements.length + ' equation(s)'
-          : null
+        note:
+          processed.inlineElements.length > 0
+            ? 'Contains ' + processed.inlineElements.length + ' equation(s)'
+            : null,
       });
     }
   }
@@ -288,10 +290,10 @@ function extractSegments(cnxml, verbose) {
     const noteTitleMatch = noteContent.match(/<title>([^<]+)<\/title>/);
     if (noteTitleMatch) {
       segments.push({
-        id: 'seg-' + (++segmentId),
+        id: 'seg-' + ++segmentId,
         type: 'note-title',
         source: noteTitleMatch[1].trim(),
-        note: 'Note title'
+        note: 'Note title',
       });
     }
     const noteParagraphs = noteContent.match(/<para[^>]*>([\s\S]*?)<\/para>/g) || [];
@@ -301,11 +303,11 @@ function extractSegments(cnxml, verbose) {
         const processed = processSegmentWithMath(paraMatch[1]);
         if (processed.text.trim()) {
           segments.push({
-            id: 'seg-' + (++segmentId),
+            id: 'seg-' + ++segmentId,
             type: 'note-paragraph',
             source: processed.text,
             inlineElements: processed.inlineElements,
-            note: 'Note content'
+            note: 'Note content',
           });
         }
       }
@@ -319,10 +321,10 @@ function extractSegments(cnxml, verbose) {
     const exampleTitleMatch = exampleContent.match(/<title>([^<]+)<\/title>/);
     if (exampleTitleMatch) {
       segments.push({
-        id: 'seg-' + (++segmentId),
+        id: 'seg-' + ++segmentId,
         type: 'example-title',
         source: exampleTitleMatch[1].trim(),
-        note: 'Example title'
+        note: 'Example title',
       });
     }
   }
@@ -333,11 +335,11 @@ function extractSegments(cnxml, verbose) {
     const processed = processSegmentWithMath(match[1]);
     if (processed.text.trim() && processed.text.length > 2) {
       segments.push({
-        id: 'seg-' + (++segmentId),
+        id: 'seg-' + ++segmentId,
         type: 'list-item',
         source: processed.text,
         inlineElements: processed.inlineElements,
-        note: 'List item'
+        note: 'List item',
       });
     }
   }
@@ -350,11 +352,11 @@ function extractSegments(cnxml, verbose) {
       const processed = processSegmentWithMath(captionMatch[1]);
       if (processed.text.trim()) {
         segments.push({
-          id: 'seg-' + (++segmentId),
+          id: 'seg-' + ++segmentId,
           type: 'figure-caption',
           source: processed.text,
           inlineElements: processed.inlineElements,
-          note: 'Figure caption'
+          note: 'Figure caption',
         });
       }
     }
@@ -368,11 +370,11 @@ function extractSegments(cnxml, verbose) {
       const processed = processSegmentWithMath(cellContent);
       if (processed.text.trim() && processed.text.length > 1) {
         segments.push({
-          id: 'seg-' + (++segmentId),
+          id: 'seg-' + ++segmentId,
           type: 'table-cell',
           source: processed.text,
           inlineElements: processed.inlineElements,
-          note: 'Table cell'
+          note: 'Table cell',
         });
       }
     }
@@ -403,7 +405,7 @@ function processSegmentWithMath(content) {
       id: inlineId,
       type: 'math',
       latex: latex,
-      original: mathml
+      original: mathml,
     });
     return '[[EQ:' + inlineId + ']]';
   });
@@ -439,12 +441,15 @@ function generateXliff(data, sourceLang, targetLang) {
     let inlineNotes = '';
     if (seg.inlineElements && seg.inlineElements.length > 0) {
       const noteContent = seg.inlineElements
-        .map(el => '[[EQ:' + el.id + ']]: $' + el.latex + '$')
+        .map((el) => '[[EQ:' + el.id + ']]: $' + el.latex + '$')
         .join(' | ');
-      inlineNotes = '\n        <note from="developer">Equations: ' + escapeXml(noteContent) + '</note>';
+      inlineNotes =
+        '\n        <note from="developer">Equations: ' + escapeXml(noteContent) + '</note>';
     }
 
-    const typeNote = seg.note ? '\n        <note from="developer">' + escapeXml(seg.note) + '</note>' : '';
+    const typeNote = seg.note
+      ? '\n        <note from="developer">' + escapeXml(seg.note) + '</note>'
+      : '';
 
     xliff += `
       <trans-unit id="${seg.id}" restype="${mapRestype(seg.type)}">
@@ -463,16 +468,16 @@ function generateXliff(data, sourceLang, targetLang) {
 
 function mapRestype(type) {
   const mapping = {
-    'title': 'x-title',
+    title: 'x-title',
     'section-title': 'x-section-title',
-    'paragraph': 'x-paragraph',
+    paragraph: 'x-paragraph',
     'note-title': 'x-note-title',
     'note-paragraph': 'x-note-paragraph',
     'example-title': 'x-example-title',
     'example-paragraph': 'x-example-paragraph',
     'list-item': 'x-list-item',
     'figure-caption': 'x-figure-caption',
-    'table-cell': 'x-table-cell'
+    'table-cell': 'x-table-cell',
   };
   return mapping[type] || 'x-other';
 }
@@ -519,7 +524,6 @@ async function main() {
     } else {
       console.log(xliff);
     }
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);

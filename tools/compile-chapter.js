@@ -144,15 +144,15 @@ function cleanupContent(content) {
 // Publication tracks and their source directories
 const TRACK_SOURCES = {
   'mt-preview': '02-mt-output',
-  'faithful': '03-faithful',
-  'localized': '04-localized'
+  faithful: '03-faithful',
+  localized: '04-localized',
 };
 
 // Track labels for frontmatter
 const TRACK_LABELS = {
   'mt-preview': 'Vélþýðing - ekki yfirfarin',
-  'faithful': 'Ritstýrð þýðing',
-  'localized': 'Staðfærð útgáfa'
+  faithful: 'Ritstýrð þýðing',
+  localized: 'Staðfærð útgáfa',
 };
 
 // End-of-chapter content patterns
@@ -168,16 +168,18 @@ const EOC_PATTERNS = {
 
   // Heading-based patterns (## Heading) - fallback for content without directives
   // Summary patterns (Icelandic and English)
-  keyConceptsSummary: /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt|Yfirlit|Summary)/i,
+  keyConceptsSummary:
+    /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt|Yfirlit|Summary)/i,
 
   // Exercises patterns (Icelandic and English)
-  exercises: /^##\s+(?:Chemistry End of Chapter Exercises|Efnafræði[\s-]+æfingar í lok kafla|Æfingar|Dæmi|Verkefni|Exercises)/i,
+  exercises:
+    /^##\s+(?:Chemistry End of Chapter Exercises|Efnafræði[\s-]+æfingar í lok kafla|Æfingar|Dæmi|Verkefni|Exercises)/i,
 
   // Key terms patterns (Icelandic and English)
   keyTerms: /^##\s+(?:Key Terms|Lykilhugtök|Hugtök|Helstu hugtök)/i,
 
   // Key equations patterns (Icelandic and English)
-  keyEquations: /^##\s+(?:Key Equations|Lykiljöfnur|Jöfnur|Helstu jöfnur)/i
+  keyEquations: /^##\s+(?:Key Equations|Lykiljöfnur|Jöfnur|Helstu jöfnur)/i,
 };
 
 // End-of-chapter output file configuration
@@ -186,14 +188,14 @@ const EOC_FILES = {
   exercises: { filename: 'exercises', titleIs: 'Æfingar', titleEn: 'Exercises' },
   answerKey: { filename: 'answer-key', titleIs: 'Svarlykill', titleEn: 'Answer Key' },
   keyTerms: { filename: 'key-terms', titleIs: 'Lykilhugtök', titleEn: 'Key Terms' },
-  keyEquations: { filename: 'key-equations', titleIs: 'Lykiljöfnur', titleEn: 'Key Equations' }
+  keyEquations: { filename: 'key-equations', titleIs: 'Lykiljöfnur', titleEn: 'Key Equations' },
 };
 
 // Default section titles (Icelandic)
 const DEFAULT_SECTION_TITLES = {
-  'intro': 'Inngangur',
-  'introduction': 'Inngangur',
-  '0': 'Inngangur'
+  intro: 'Inngangur',
+  introduction: 'Inngangur',
+  0: 'Inngangur',
 };
 
 // ============================================================================
@@ -209,7 +211,7 @@ function parseArgs(args) {
     outputDir: null,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -320,7 +322,7 @@ function findFilesInDir(dir, chapter) {
         files.push({
           path: filePath,
           filename: entry.name,
-          ...sectionInfo
+          ...sectionInfo,
         });
       }
     }
@@ -344,7 +346,11 @@ function parseSectionFilename(filename, chapter) {
   const baseName = filename.replace(/\.(en|is)?\.md$/, '').replace(/\.md$/, '');
 
   // Introduction pattern
-  if (baseName === 'intro' || baseName.match(/^\d+-0-intro/i) || baseName.match(/^\d+-introduction/i)) {
+  if (
+    baseName === 'intro' ||
+    baseName.match(/^\d+-0-intro/i) ||
+    baseName.match(/^\d+-introduction/i)
+  ) {
     return { sectionNum: 0, isIntro: true, isEOC: false, eocType: null };
   }
 
@@ -388,7 +394,7 @@ function parseSectionFilename(filename, chapter) {
 /**
  * Process a section file - extract EOC content and clean main content
  */
-function processSectionFile(filePath, options) {
+function processSectionFile(filePath, _options) {
   const content = fs.readFileSync(filePath, 'utf8');
   const { frontmatter, body } = parseFrontmatter(content);
 
@@ -399,7 +405,7 @@ function processSectionFile(filePath, options) {
     frontmatter,
     cleanContent: cleanContent.trim(),
     extractedContent,
-    originalContent: content
+    originalContent: content,
   };
 }
 
@@ -422,7 +428,7 @@ function extractTitleFromContent(content) {
 /**
  * Get title for a section file, with fallbacks
  */
-function getSectionTitle(frontmatter, content, sectionInfo, filename) {
+function getSectionTitle(frontmatter, content, sectionInfo, _filename) {
   // 1. Try frontmatter title
   const fmTitle = frontmatter?.title || frontmatter?.titleIs;
   if (fmTitle && fmTitle.trim()) {
@@ -476,11 +482,11 @@ function extractEOCContent(body) {
     summary: [],
     exercises: [],
     keyTerms: [],
-    keyEquations: []
+    keyEquations: [],
   };
 
   const lines = body.split('\n');
-  let cleanLines = [];
+  const cleanLines = [];
   let currentSection = null;
   let currentBuffer = [];
   let directiveDepth = 0;
@@ -621,24 +627,28 @@ function extractEOCContent(body) {
 
   function isEOCHeading(line) {
     // Check directive patterns first
-    if (EOC_PATTERNS.summaryDirective.test(line) ||
-        EOC_PATTERNS.exercisesDirective.test(line) ||
-        EOC_PATTERNS.glossaryDirective.test(line) ||
-        EOC_PATTERNS.keyTermsDirective.test(line) ||
-        EOC_PATTERNS.keyEquationsDirective.test(line) ||
-        EOC_PATTERNS.practiceProblems.test(line)) {
+    if (
+      EOC_PATTERNS.summaryDirective.test(line) ||
+      EOC_PATTERNS.exercisesDirective.test(line) ||
+      EOC_PATTERNS.glossaryDirective.test(line) ||
+      EOC_PATTERNS.keyTermsDirective.test(line) ||
+      EOC_PATTERNS.keyEquationsDirective.test(line) ||
+      EOC_PATTERNS.practiceProblems.test(line)
+    ) {
       return true;
     }
     // Then check heading patterns
-    return EOC_PATTERNS.keyConceptsSummary.test(line) ||
-           EOC_PATTERNS.exercises.test(line) ||
-           EOC_PATTERNS.keyTerms.test(line) ||
-           EOC_PATTERNS.keyEquations.test(line);
+    return (
+      EOC_PATTERNS.keyConceptsSummary.test(line) ||
+      EOC_PATTERNS.exercises.test(line) ||
+      EOC_PATTERNS.keyTerms.test(line) ||
+      EOC_PATTERNS.keyEquations.test(line)
+    );
   }
 
   return {
     cleanContent: cleanLines.join('\n'),
-    extractedContent
+    extractedContent,
   };
 }
 
@@ -669,7 +679,7 @@ function extractEOCContent(body) {
  *
  * Odd-numbered exercises have answers, even-numbered typically don't.
  */
-function extractAnswersFromExercises(exercisesContent, chapter) {
+function extractAnswersFromExercises(exercisesContent, _chapter) {
   const cleanExercises = [];
   const answerEntries = [];
   let exerciseNumber = 0;
@@ -703,7 +713,7 @@ function extractAnswersFromExercises(exercisesContent, chapter) {
             answerEntries.push({
               id: currentProblemId,
               number: currentExerciseNum,
-              content: answerLines.join('\n')
+              content: answerLines.join('\n'),
             });
           }
         }
@@ -733,7 +743,7 @@ function extractAnswersFromExercises(exercisesContent, chapter) {
             answerEntries.push({
               id: currentProblemId,
               number: currentExerciseNum,
-              content: answerLines.join('\n')
+              content: answerLines.join('\n'),
             });
           }
         }
@@ -796,20 +806,20 @@ function extractAnswersFromExercises(exercisesContent, chapter) {
         answerEntries.push({
           id: currentProblemId,
           number: currentExerciseNum,
-          content: answerLines.join('\n').trim()
+          content: answerLines.join('\n').trim(),
         });
       }
     }
   }
 
   // Format answer entries as :::answer-entry{#id number=N} directives
-  const formattedAnswers = answerEntries.map(entry => {
+  const formattedAnswers = answerEntries.map((entry) => {
     return `:::answer-entry{#${entry.id} number=${entry.number}}\n${entry.content}\n:::`;
   });
 
   return {
     cleanExercises,
-    answerKey: formattedAnswers
+    answerKey: formattedAnswers,
   };
 }
 
@@ -820,7 +830,8 @@ function extractAnswersFromExercises(exercisesContent, chapter) {
  *
  * The relative path works from /kafli/01/1-summary to /kafli/01/1-1
  */
-function addLinksToSummaryHeaders(content, chapter) {
+// eslint-disable-next-line no-unused-vars
+function addLinksToSummaryHeaders(content, _chapter) {
   // Match section headers like "### 1.1 Title" or "### 1.2 Another Title"
   const headerPattern = /^(###\s*)(\d+)\.(\d+)\s+(.+)$/gm;
 
@@ -848,8 +859,8 @@ function formatKeyTermsContent(content) {
   // Split into paragraphs (blocks separated by blank lines)
   const paragraphs = content
     .split(/\n\s*\n/)
-    .map(p => p.trim())
-    .filter(p => p.length > 0 && !p.startsWith('##'));
+    .map((p) => p.trim())
+    .filter((p) => p.length > 0 && !p.startsWith('##'));
 
   const formatted = [];
 
@@ -886,7 +897,7 @@ function generateFrontmatter(options) {
     chapter: chapter,
     'translation-status': TRACK_LABELS[track] || track,
     'publication-track': track,
-    'published-at': new Date().toISOString()
+    'published-at': new Date().toISOString(),
   };
 
   if (section !== undefined && section !== null) {
@@ -902,7 +913,7 @@ function generateFrontmatter(options) {
     lineWidth: 100,
     noRefs: true,
     quotingType: '"',
-    forceQuotes: false
+    forceQuotes: false,
   });
 
   return `---\n${yamlStr}---\n\n`;
@@ -937,14 +948,16 @@ function writeOutput(filePath, content, options) {
 // ============================================================================
 
 async function compileChapter(book, chapter, options) {
-  const { track, verbose, dryRun } = options;
+  const { track, dryRun } = options;
 
   // Determine source directory
   let sourceDir = options.sourceDir;
   if (!sourceDir) {
     const sourceFolder = TRACK_SOURCES[track];
     if (!sourceFolder) {
-      throw new Error(`Unknown track: ${track}. Valid tracks: ${Object.keys(TRACK_SOURCES).join(', ')}`);
+      throw new Error(
+        `Unknown track: ${track}. Valid tracks: ${Object.keys(TRACK_SOURCES).join(', ')}`
+      );
     }
     sourceDir = path.join(PROJECT_ROOT, 'books', book, sourceFolder);
   }
@@ -954,7 +967,13 @@ async function compileChapter(book, chapter, options) {
   if (!outputDir) {
     const chapterPadded = chapter.toString().padStart(2, '0');
     outputDir = path.join(
-      PROJECT_ROOT, 'books', book, '05-publication', track, 'chapters', chapterPadded
+      PROJECT_ROOT,
+      'books',
+      book,
+      '05-publication',
+      track,
+      'chapters',
+      chapterPadded
     );
   }
 
@@ -966,7 +985,7 @@ async function compileChapter(book, chapter, options) {
   console.log('');
 
   // Find section files
-  const { files, chapterDir } = findSectionFiles(sourceDir, chapter);
+  const { files } = findSectionFiles(sourceDir, chapter);
 
   if (files.length === 0) {
     console.log(`No section files found in ${sourceDir}`);
@@ -988,17 +1007,19 @@ async function compileChapter(book, chapter, options) {
 }
 
 async function compileFromFiles(book, chapter, files, outputDir, options) {
-  const { track, verbose, dryRun } = options;
+  const { track, verbose } = options;
 
   console.log(`Found ${files.length} source file(s)`);
   if (verbose) {
-    files.forEach(f => console.log(`  - ${f.filename} (section: ${f.sectionNum}, EOC: ${f.isEOC})`));
+    files.forEach((f) =>
+      console.log(`  - ${f.filename} (section: ${f.sectionNum}, EOC: ${f.isEOC})`)
+    );
   }
   console.log('');
 
   // Separate regular sections from pre-existing EOC files
-  const regularFiles = files.filter(f => !f.isEOC);
-  const existingEOCFiles = files.filter(f => f.isEOC);
+  const regularFiles = files.filter((f) => !f.isEOC);
+  const existingEOCFiles = files.filter((f) => f.isEOC);
 
   // Collected EOC content from all sections
   // Each entry can have { content, sectionNum, sectionTitle } for tracking source
@@ -1007,7 +1028,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
     exercises: [],
     answerKey: [],
     keyTerms: [],
-    keyEquations: []
+    keyEquations: [],
   };
 
   // Track section titles for linking (populated during processing)
@@ -1042,7 +1063,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
             collectedEOC[type].push({
               content: block,
               sectionNum: file.sectionNum,
-              sectionTitle: sectionTitle
+              sectionTitle: sectionTitle,
             });
           }
         } else {
@@ -1067,7 +1088,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
       title: sectionTitle,
       chapter: chapter,
       section: file.isIntro ? 0 : file.sectionNum,
-      track: track
+      track: track,
     });
 
     const outputContent = frontmatter + result.cleanContent;
@@ -1077,7 +1098,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
   // Process pre-existing EOC files (if any)
   for (const file of existingEOCFiles) {
     const content = fs.readFileSync(file.path, 'utf8');
-    const { frontmatter, body } = parseFrontmatter(content);
+    const { body } = parseFrontmatter(content);
 
     if (file.eocType && body.trim()) {
       collectedEOC[file.eocType].push(body.trim());
@@ -1092,7 +1113,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
   if (collectedEOC.exercises.length > 0) {
     console.log('\nExtracting answers from exercises...');
     // Extract just the content strings for processing, keeping section info
-    const exerciseBlocks = collectedEOC.exercises.map(e =>
+    const exerciseBlocks = collectedEOC.exercises.map((e) =>
       typeof e === 'string' ? e : e.content
     );
     const { cleanExercises, answerKey } = extractAnswersFromExercises(exerciseBlocks, chapter);
@@ -1108,7 +1129,8 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
 
       // Count exercises in this block
       const blockContent = typeof original === 'string' ? original : original.content;
-      const exerciseCount = (blockContent.match(/:::(?:practice-problem|exercise)\{/g) || []).length;
+      const exerciseCount = (blockContent.match(/:::(?:practice-problem|exercise)\{/g) || [])
+        .length;
 
       // Add section header if section changed and we have section info
       if (sectionNum && sectionNum !== currentSection && sectionTitle) {
@@ -1135,7 +1157,9 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
     collectedEOC.exercises = exercisesWithSections;
     collectedEOC.answerKey = answerKey;
     if (verbose) {
-      console.log(`  Extracted ${answerKey.length} answer(s) from ${cleanExercises.length} exercise(s)`);
+      console.log(
+        `  Extracted ${answerKey.length} answer(s) from ${cleanExercises.length} exercise(s)`
+      );
     }
   }
 
@@ -1157,7 +1181,7 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
       title: title,
       chapter: chapter,
       track: track,
-      type: type === 'answerKey' ? 'answer-key' : type
+      type: type === 'answerKey' ? 'answer-key' : type,
     });
 
     // Combine all content blocks
@@ -1175,10 +1199,15 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
           const sectionId = `${chapter}.${sectionNum}`;
           // Remove any existing "## Lykilhugtök og samantekt" or similar headers
           const cleanedContent = itemContent
-            .replace(/^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt|Summary)\s*\n*/im, '')
+            .replace(
+              /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt|Summary)\s*\n*/im,
+              ''
+            )
             .trim();
           // Add linked section header
-          summaryParts.push(`### [${sectionId} ${sectionTitle}](${chapter}-${sectionNum})\n\n${cleanedContent}`);
+          summaryParts.push(
+            `### [${sectionId} ${sectionTitle}](${chapter}-${sectionNum})\n\n${cleanedContent}`
+          );
         } else {
           summaryParts.push(itemContent);
         }
@@ -1214,15 +1243,16 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
 
   // Collect all image references from the written markdown files
   const allImages = new Set();
-  const writtenFiles = fs.readdirSync(outputDir)
-    .filter(f => f.endsWith('.md'))
-    .map(f => path.join(outputDir, f));
+  const writtenFiles = fs
+    .readdirSync(outputDir)
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => path.join(outputDir, f));
 
   for (const file of writtenFiles) {
     if (fs.existsSync(file)) {
       const content = fs.readFileSync(file, 'utf-8');
       const images = extractImageReferences(content);
-      images.forEach(img => allImages.add(img));
+      images.forEach((img) => allImages.add(img));
     }
   }
 
@@ -1253,7 +1283,9 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
   console.log(`  Answer entries: ${collectedEOC.answerKey.length}`);
   console.log(`  Key Terms blocks: ${collectedEOC.keyTerms.length}`);
   console.log(`  Key Equations blocks: ${collectedEOC.keyEquations.length}`);
-  console.log(`  Images: ${imageStats.copied} copied, ${imageStats.missing} missing, ${imageStats.skipped} skipped`);
+  console.log(
+    `  Images: ${imageStats.copied} copied, ${imageStats.missing} missing, ${imageStats.skipped} skipped`
+  );
 
   return {
     success: true,
@@ -1267,8 +1299,8 @@ async function compileFromFiles(book, chapter, files, outputDir, options) {
       keyEquations: collectedEOC.keyEquations.length,
       imagesCopied: imageStats.copied,
       imagesMissing: imageStats.missing,
-      imagesSkipped: imageStats.skipped
-    }
+      imagesSkipped: imageStats.skipped,
+    },
   };
 }
 

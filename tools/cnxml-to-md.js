@@ -27,70 +27,78 @@ const MODULES_PATH = '/modules';
 // OpenStax default license (CC BY 4.0) - used when license not in CNXML
 const OPENSTAX_DEFAULT_LICENSE = {
   name: 'Creative Commons Attribution License',
-  url: 'https://creativecommons.org/licenses/by/4.0/'
+  url: 'https://creativecommons.org/licenses/by/4.0/',
 };
 
 // Module mappings from OpenStax Chemistry 2e collection
 // Verified against chemistry-2e.collection.xml from GitHub
 const CHEMISTRY_2E_MODULES = {
   // Chapter 1: Essential Ideas
-  'm68663': { chapter: 1, section: 'intro', title: 'Introduction' },
-  'm68664': { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
-  'm68667': { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
-  'm68670': { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
-  'm68674': { chapter: 1, section: '1.4', title: 'Measurements' },
-  'm68690': { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
-  'm68683': { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
+  m68663: { chapter: 1, section: 'intro', title: 'Introduction' },
+  m68664: { chapter: 1, section: '1.1', title: 'Chemistry in Context' },
+  m68667: { chapter: 1, section: '1.2', title: 'Phases and Classification of Matter' },
+  m68670: { chapter: 1, section: '1.3', title: 'Physical and Chemical Properties' },
+  m68674: { chapter: 1, section: '1.4', title: 'Measurements' },
+  m68690: { chapter: 1, section: '1.5', title: 'Measurement Uncertainty, Accuracy, and Precision' },
+  m68683: { chapter: 1, section: '1.6', title: 'Mathematical Treatment of Measurement Results' },
   // Chapter 2: Atoms, Molecules, and Ions
-  'm68684': { chapter: 2, section: 'intro', title: 'Introduction' },
-  'm68685': { chapter: 2, section: '2.1', title: 'Early Ideas in Atomic Theory' },
-  'm68687': { chapter: 2, section: '2.2', title: 'Evolution of Atomic Theory' },
-  'm68692': { chapter: 2, section: '2.3', title: 'Atomic Structure and Symbolism' },
-  'm68693': { chapter: 2, section: '2.4', title: 'Chemical Formulas' },
-  'm68695': { chapter: 2, section: '2.5', title: 'The Periodic Table' },
-  'm68696': { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
-  'm68698': { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
+  m68684: { chapter: 2, section: 'intro', title: 'Introduction' },
+  m68685: { chapter: 2, section: '2.1', title: 'Early Ideas in Atomic Theory' },
+  m68687: { chapter: 2, section: '2.2', title: 'Evolution of Atomic Theory' },
+  m68692: { chapter: 2, section: '2.3', title: 'Atomic Structure and Symbolism' },
+  m68693: { chapter: 2, section: '2.4', title: 'Chemical Formulas' },
+  m68695: { chapter: 2, section: '2.5', title: 'The Periodic Table' },
+  m68696: { chapter: 2, section: '2.6', title: 'Ionic and Molecular Compounds' },
+  m68698: { chapter: 2, section: '2.7', title: 'Chemical Nomenclature' },
   // Chapter 3: Composition of Substances and Solutions
-  'm68699': { chapter: 3, section: 'intro', title: 'Introduction' },
-  'm68700': { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
-  'm68702': { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
-  'm68703': { chapter: 3, section: '3.3', title: 'Molarity' },
-  'm68704': { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
+  m68699: { chapter: 3, section: 'intro', title: 'Introduction' },
+  m68700: { chapter: 3, section: '3.1', title: 'Formula Mass and the Mole Concept' },
+  m68702: { chapter: 3, section: '3.2', title: 'Determining Empirical and Molecular Formulas' },
+  m68703: { chapter: 3, section: '3.3', title: 'Molarity' },
+  m68704: { chapter: 3, section: '3.4', title: 'Other Units for Solution Concentrations' },
   // Chapter 4: Stoichiometry of Chemical Reactions
-  'm68730': { chapter: 4, section: 'intro', title: 'Introduction' },
-  'm68709': { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
-  'm68710': { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },
-  'm68713': { chapter: 4, section: '4.3', title: 'Reaction Stoichiometry' },
-  'm68714': { chapter: 4, section: '4.4', title: 'Reaction Yields' },
-  'm68716': { chapter: 4, section: '4.5', title: 'Quantitative Chemical Analysis' },
+  m68730: { chapter: 4, section: 'intro', title: 'Introduction' },
+  m68709: { chapter: 4, section: '4.1', title: 'Writing and Balancing Chemical Equations' },
+  m68710: { chapter: 4, section: '4.2', title: 'Classifying Chemical Reactions' },
+  m68713: { chapter: 4, section: '4.3', title: 'Reaction Stoichiometry' },
+  m68714: { chapter: 4, section: '4.4', title: 'Reaction Yields' },
+  m68716: { chapter: 4, section: '4.5', title: 'Quantitative Chemical Analysis' },
   // Chapter 5: Thermochemistry
-  'm68723': { chapter: 5, section: 'intro', title: 'Introduction' },
-  'm68724': { chapter: 5, section: '5.1', title: 'Energy Basics' },
-  'm68726': { chapter: 5, section: '5.2', title: 'Calorimetry' },
-  'm68727': { chapter: 5, section: '5.3', title: 'Enthalpy' },
+  m68723: { chapter: 5, section: 'intro', title: 'Introduction' },
+  m68724: { chapter: 5, section: '5.1', title: 'Energy Basics' },
+  m68726: { chapter: 5, section: '5.2', title: 'Calorimetry' },
+  m68727: { chapter: 5, section: '5.3', title: 'Enthalpy' },
   // Chapter 9: Gases
-  'm68748': { chapter: 9, section: 'intro', title: 'Introduction' },
-  'm68750': { chapter: 9, section: '9.1', title: 'Gas Pressure' },
-  'm68751': { chapter: 9, section: '9.2', title: 'Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law' },
-  'm68752': { chapter: 9, section: '9.3', title: 'Stoichiometry of Gaseous Substances, Mixtures, and Reactions' },
-  'm68754': { chapter: 9, section: '9.4', title: 'Effusion and Diffusion of Gases' },
-  'm68758': { chapter: 9, section: '9.5', title: 'The Kinetic-Molecular Theory' },
-  'm68759': { chapter: 9, section: '9.6', title: 'Non-Ideal Gas Behavior' },
+  m68748: { chapter: 9, section: 'intro', title: 'Introduction' },
+  m68750: { chapter: 9, section: '9.1', title: 'Gas Pressure' },
+  m68751: {
+    chapter: 9,
+    section: '9.2',
+    title: 'Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law',
+  },
+  m68752: {
+    chapter: 9,
+    section: '9.3',
+    title: 'Stoichiometry of Gaseous Substances, Mixtures, and Reactions',
+  },
+  m68754: { chapter: 9, section: '9.4', title: 'Effusion and Diffusion of Gases' },
+  m68758: { chapter: 9, section: '9.5', title: 'The Kinetic-Molecular Theory' },
+  m68759: { chapter: 9, section: '9.6', title: 'Non-Ideal Gas Behavior' },
   // Chapter 12: Kinetics
-  'm68785': { chapter: 12, section: 'intro', title: 'Introduction' },
-  'm68786': { chapter: 12, section: '12.1', title: 'Chemical Reaction Rates' },
-  'm68787': { chapter: 12, section: '12.2', title: 'Factors Affecting Reaction Rates' },
-  'm68789': { chapter: 12, section: '12.3', title: 'Rate Laws' },
-  'm68791': { chapter: 12, section: '12.4', title: 'Integrated Rate Laws' },
-  'm68793': { chapter: 12, section: '12.5', title: 'Collision Theory' },
-  'm68794': { chapter: 12, section: '12.6', title: 'Reaction Mechanisms' },
-  'm68795': { chapter: 12, section: '12.7', title: 'Catalysis' },
+  m68785: { chapter: 12, section: 'intro', title: 'Introduction' },
+  m68786: { chapter: 12, section: '12.1', title: 'Chemical Reaction Rates' },
+  m68787: { chapter: 12, section: '12.2', title: 'Factors Affecting Reaction Rates' },
+  m68789: { chapter: 12, section: '12.3', title: 'Rate Laws' },
+  m68791: { chapter: 12, section: '12.4', title: 'Integrated Rate Laws' },
+  m68793: { chapter: 12, section: '12.5', title: 'Collision Theory' },
+  m68794: { chapter: 12, section: '12.6', title: 'Reaction Mechanisms' },
+  m68795: { chapter: 12, section: '12.7', title: 'Catalysis' },
   // Chapter 13: Fundamental Equilibrium Concepts
-  'm68796': { chapter: 13, section: 'intro', title: 'Introduction' },
-  'm68797': { chapter: 13, section: '13.1', title: 'Chemical Equilibria' },
-  'm68798': { chapter: 13, section: '13.2', title: 'Equilibrium Constants' },
-  'm68799': { chapter: 13, section: '13.3', title: 'Shifting Equilibria: Le Châtelier\'s Principle' },
-  'm68801': { chapter: 13, section: '13.4', title: 'Equilibrium Calculations' },
+  m68796: { chapter: 13, section: 'intro', title: 'Introduction' },
+  m68797: { chapter: 13, section: '13.1', title: 'Chemical Equilibria' },
+  m68798: { chapter: 13, section: '13.2', title: 'Equilibrium Constants' },
+  m68799: { chapter: 13, section: '13.3', title: "Shifting Equilibria: Le Châtelier's Principle" },
+  m68801: { chapter: 13, section: '13.4', title: 'Equilibrium Calculations' },
 };
 
 function parseArgs(args) {
@@ -98,16 +106,16 @@ function parseArgs(args) {
     input: null,
     output: null,
     equationsOutput: null,
-    figuresOutput: null,     // Output path for figures sidecar JSON
+    figuresOutput: null, // Output path for figures sidecar JSON
     verbose: false,
     listModules: false,
     help: false,
     // Chapter-based numbering options
-    chapter: null,           // Override chapter number (e.g., 1)
-    exampleStart: 0,         // Starting counter for examples
-    figureStart: 0,          // Starting counter for figures
-    tableStart: 0,           // Starting counter for tables
-    outputCounters: false    // Output final counter values to stderr
+    chapter: null, // Override chapter number (e.g., 1)
+    exampleStart: 0, // Starting counter for examples
+    figureStart: 0, // Starting counter for figures
+    tableStart: 0, // Starting counter for tables
+    outputCounters: false, // Output final counter values to stderr
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -119,7 +127,8 @@ function parseArgs(args) {
     else if (arg === '--equations' && args[i + 1]) result.equationsOutput = args[++i];
     else if (arg === '--figures' && args[i + 1]) result.figuresOutput = args[++i];
     else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
-    else if (arg === '--example-start' && args[i + 1]) result.exampleStart = parseInt(args[++i], 10);
+    else if (arg === '--example-start' && args[i + 1])
+      result.exampleStart = parseInt(args[++i], 10);
     else if (arg === '--figure-start' && args[i + 1]) result.figureStart = parseInt(args[++i], 10);
     else if (arg === '--table-start' && args[i + 1]) result.tableStart = parseInt(args[++i], 10);
     else if (arg === '--output-counters') result.outputCounters = true;
@@ -185,7 +194,14 @@ async function fetchCnxml(input, verbose) {
     const moduleInfo = CHEMISTRY_2E_MODULES[input];
     if (moduleInfo) {
       const chapterDir = String(moduleInfo.chapter).padStart(2, '0');
-      const localPath = path.join(process.cwd(), 'books', 'efnafraedi', '01-source', `ch${chapterDir}`, `${input}.cnxml`);
+      const localPath = path.join(
+        process.cwd(),
+        'books',
+        'efnafraedi',
+        '01-source',
+        `ch${chapterDir}`,
+        `${input}.cnxml`
+      );
       if (fs.existsSync(localPath)) {
         if (verbose) console.error('Reading local file: ' + localPath);
         return fs.readFileSync(localPath, 'utf-8');
@@ -202,24 +218,26 @@ async function fetchCnxml(input, verbose) {
 
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      if (res.statusCode === 301 || res.statusCode === 302) {
-        fetchUrl(res.headers.location).then(resolve).catch(reject);
-        return;
-      }
-      if (res.statusCode !== 200) {
-        reject(new Error('HTTP ' + res.statusCode + ': Failed to fetch ' + url));
-        return;
-      }
-      // Collect chunks as Buffers to avoid UTF-8 corruption at chunk boundaries
-      const chunks = [];
-      res.on('data', chunk => chunks.push(chunk));
-      res.on('end', () => {
-        const data = Buffer.concat(chunks).toString('utf8');
-        resolve(data);
-      });
-      res.on('error', reject);
-    }).on('error', reject);
+    https
+      .get(url, (res) => {
+        if (res.statusCode === 301 || res.statusCode === 302) {
+          fetchUrl(res.headers.location).then(resolve).catch(reject);
+          return;
+        }
+        if (res.statusCode !== 200) {
+          reject(new Error('HTTP ' + res.statusCode + ': Failed to fetch ' + url));
+          return;
+        }
+        // Collect chunks as Buffers to avoid UTF-8 corruption at chunk boundaries
+        const chunks = [];
+        res.on('data', (chunk) => chunks.push(chunk));
+        res.on('end', () => {
+          const data = Buffer.concat(chunks).toString('utf8');
+          resolve(data);
+        });
+        res.on('error', reject);
+      })
+      .on('error', reject);
   });
 }
 
@@ -240,16 +258,28 @@ function extractMetadata(cnxml) {
 
   // Helper to extract element content (handles md: prefix or unprefixed)
   const extractElement = (name) => {
-    const prefixedMatch = metadataContent.match(new RegExp('<md:' + name + '[^>]*>([^<]*)<\\/md:' + name + '>'));
-    const unprefixedMatch = metadataContent.match(new RegExp('<' + name + '[^>]*>([^<]*)<\\/' + name + '>'));
-    return prefixedMatch ? prefixedMatch[1].trim() : (unprefixedMatch ? unprefixedMatch[1].trim() : null);
+    const prefixedMatch = metadataContent.match(
+      new RegExp('<md:' + name + '[^>]*>([^<]*)<\\/md:' + name + '>')
+    );
+    const unprefixedMatch = metadataContent.match(
+      new RegExp('<' + name + '[^>]*>([^<]*)<\\/' + name + '>')
+    );
+    return prefixedMatch
+      ? prefixedMatch[1].trim()
+      : unprefixedMatch
+        ? unprefixedMatch[1].trim()
+        : null;
   };
 
   // Helper to extract attribute from element
   const extractAttribute = (name, attr) => {
-    const prefixedMatch = metadataContent.match(new RegExp('<md:' + name + '[^>]*' + attr + '="([^"]*)"'));
-    const unprefixedMatch = metadataContent.match(new RegExp('<' + name + '[^>]*' + attr + '="([^"]*)"'));
-    return prefixedMatch ? prefixedMatch[1] : (unprefixedMatch ? unprefixedMatch[1] : null);
+    const prefixedMatch = metadataContent.match(
+      new RegExp('<md:' + name + '[^>]*' + attr + '="([^"]*)"')
+    );
+    const unprefixedMatch = metadataContent.match(
+      new RegExp('<' + name + '[^>]*' + attr + '="([^"]*)"')
+    );
+    return prefixedMatch ? prefixedMatch[1] : unprefixedMatch ? unprefixedMatch[1] : null;
   };
 
   // Extract created date (md:created)
@@ -290,7 +320,9 @@ function extractMetadata(cnxml) {
   if (subjects.length > 0) metadata.subjects = subjects;
 
   // Extract abstract (learning objectives) - contains para and list elements
-  const abstractMatch = metadataContent.match(/<md:abstract[^>]*>([\s\S]*?)<\/md:abstract>|<abstract[^>]*>([\s\S]*?)<\/abstract>/);
+  const abstractMatch = metadataContent.match(
+    /<md:abstract[^>]*>([\s\S]*?)<\/md:abstract>|<abstract[^>]*>([\s\S]*?)<\/abstract>/
+  );
   if (abstractMatch) {
     const abstractContent = abstractMatch[1] || abstractMatch[2];
     const abstract = { intro: null, items: [] };
@@ -451,9 +483,9 @@ function splitMathParts(content) {
 function extractContent(cnxml, options = {}) {
   const verbose = options.verbose || false;
   const equations = {};
-  const figures = {};  // Figure metadata for sidecar
+  const figures = {}; // Figure metadata for sidecar
   let equationCounter = 0;
-  let exerciseCounter = 0;  // Track exercise numbers for proper formatting
+  let exerciseCounter = 0; // Track exercise numbers for proper formatting
 
   // Element registry for cross-reference resolution
   // Maps element IDs to their type and number (e.g., { type: 'Figure', number: '5.1' })
@@ -650,7 +682,7 @@ function extractContent(cnxml, options = {}) {
       attrs: allExamplesMatch[1],
       content: allExamplesMatch[2],
       startPos: allExamplesMatch.index,
-      endPos: allExamplesMatch.index + allExamplesMatch[0].length
+      endPos: allExamplesMatch.index + allExamplesMatch[0].length,
     });
   }
 
@@ -668,35 +700,60 @@ function extractContent(cnxml, options = {}) {
     const paraPattern = /<para([^>]*)>([\s\S]*?)<\/para>/g;
     let paraMatch;
     while ((paraMatch = paraPattern.exec(preSectionContent)) !== null) {
-      topLevelElements.push({ type: 'para', pos: paraMatch.index, content: paraMatch[2], attrs: paraMatch[1] });
+      topLevelElements.push({
+        type: 'para',
+        pos: paraMatch.index,
+        content: paraMatch[2],
+        attrs: paraMatch[1],
+      });
     }
 
     // Find equations
     const eqPattern = /<equation([^>]*)>([\s\S]*?)<\/equation>/g;
     let eqMatch;
     while ((eqMatch = eqPattern.exec(preSectionContent)) !== null) {
-      topLevelElements.push({ type: 'equation', pos: eqMatch.index, content: eqMatch[2], attrs: eqMatch[1] });
+      topLevelElements.push({
+        type: 'equation',
+        pos: eqMatch.index,
+        content: eqMatch[2],
+        attrs: eqMatch[1],
+      });
     }
 
     // Find figures (important for introduction modules with splash images)
     const figurePattern = /<figure([^>]*)>([\s\S]*?)<\/figure>/g;
     let figureMatch;
     while ((figureMatch = figurePattern.exec(preSectionContent)) !== null) {
-      topLevelElements.push({ type: 'figure', pos: figureMatch.index, content: figureMatch[2], attrs: figureMatch[1] });
+      topLevelElements.push({
+        type: 'figure',
+        pos: figureMatch.index,
+        content: figureMatch[2],
+        attrs: figureMatch[1],
+      });
     }
 
     // Find tables (important for tables that appear before the first section)
     const tablePattern = /<table([^>]*)>([\s\S]*?)<\/table>/g;
     let tableMatch;
     while ((tableMatch = tablePattern.exec(preSectionContent)) !== null) {
-      topLevelElements.push({ type: 'table', pos: tableMatch.index, content: tableMatch[2], attrs: tableMatch[1] });
+      topLevelElements.push({
+        type: 'table',
+        pos: tableMatch.index,
+        content: tableMatch[2],
+        attrs: tableMatch[1],
+      });
     }
 
     // Find notes (link-to-learning, etc. that appear before sections)
     const notePattern = /<note([^>]*)>([\s\S]*?)<\/note>/g;
     let noteMatch;
     while ((noteMatch = notePattern.exec(preSectionContent)) !== null) {
-      topLevelElements.push({ type: 'note', pos: noteMatch.index, content: noteMatch[2], attrs: noteMatch[1] });
+      topLevelElements.push({
+        type: 'note',
+        pos: noteMatch.index,
+        content: noteMatch[2],
+        attrs: noteMatch[1],
+      });
     }
 
     // Examples are handled globally, not in pre-section processing
@@ -731,7 +788,9 @@ function extractContent(cnxml, options = {}) {
         const figureNumber = chapter ? `${chapter}.${figureCounter}` : String(figureCounter);
 
         // Extract media element with alt text from media tag
-        const mediaMatch = elem.content.match(/<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
+        const mediaMatch = elem.content.match(
+          /<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/
+        );
         const captionMatch = elem.content.match(/<caption>([\s\S]*?)<\/caption>/);
 
         // Extract figure metadata for sidecar
@@ -781,7 +840,7 @@ function extractContent(cnxml, options = {}) {
           number: figureNumber,
           imagePath: imageFile,
           captionEn: captionText,
-          altText: altText
+          altText: altText,
         };
         if (figureClass) {
           figures[figureKey].class = figureClass;
@@ -865,8 +924,10 @@ function extractContent(cnxml, options = {}) {
     const sectionStart = sectionMatch.index;
 
     // Output any examples that appear before this section
-    while (nextExampleIndex < allExamples.length &&
-           allExamples[nextExampleIndex].endPos <= sectionStart) {
+    while (
+      nextExampleIndex < allExamples.length &&
+      allExamples[nextExampleIndex].endPos <= sectionStart
+    ) {
       const example = allExamples[nextExampleIndex];
       exampleCounter++;
 
@@ -929,7 +990,7 @@ function extractContent(cnxml, options = {}) {
       lines.push('');
       nextExampleIndex++;
     }
-    const sectionAttrs = sectionMatch[1];
+    // sectionMatch[1] contains attributes - reserved for future use
     const sectionContent = sectionMatch[2];
     const sectionTitleMatch = sectionContent.match(/<title>([^<]+)<\/title>/);
     const sectionTitle = sectionTitleMatch ? sectionTitleMatch[1] : null;
@@ -951,7 +1012,7 @@ function extractContent(cnxml, options = {}) {
       /<exercise[^>]*>[\s\S]*?<\/exercise>/g,
       /<figure[^>]*>[\s\S]*?<\/figure>/g,
       /<table[^>]*>[\s\S]*?<\/table>/g,
-      /<list[^>]*>[\s\S]*?<\/list>/g
+      /<list[^>]*>[\s\S]*?<\/list>/g,
     ];
     for (const pattern of nestedPatterns) {
       let m;
@@ -960,14 +1021,19 @@ function extractContent(cnxml, options = {}) {
       }
     }
 
-    const isInsideNested = (pos) => nestedRanges.some(r => pos >= r.start && pos < r.end);
+    const isInsideNested = (pos) => nestedRanges.some((r) => pos >= r.start && pos < r.end);
 
     // Find top-level paragraphs
     const paraPattern = /<para([^>]*)>([\s\S]*?)<\/para>/g;
     let paraMatch;
     while ((paraMatch = paraPattern.exec(sectionContent)) !== null) {
       if (!isInsideNested(paraMatch.index)) {
-        elements.push({ type: 'para', pos: paraMatch.index, content: paraMatch[2], attrs: paraMatch[1] });
+        elements.push({
+          type: 'para',
+          pos: paraMatch.index,
+          content: paraMatch[2],
+          attrs: paraMatch[1],
+        });
       }
     }
 
@@ -976,7 +1042,12 @@ function extractContent(cnxml, options = {}) {
     let eqMatch;
     while ((eqMatch = eqPattern.exec(sectionContent)) !== null) {
       if (!isInsideNested(eqMatch.index)) {
-        elements.push({ type: 'equation', pos: eqMatch.index, content: eqMatch[2], attrs: eqMatch[1] });
+        elements.push({
+          type: 'equation',
+          pos: eqMatch.index,
+          content: eqMatch[2],
+          attrs: eqMatch[1],
+        });
       }
     }
 
@@ -985,7 +1056,12 @@ function extractContent(cnxml, options = {}) {
     let listMatch;
     while ((listMatch = listPattern.exec(sectionContent)) !== null) {
       if (!isInsideNested(listMatch.index)) {
-        elements.push({ type: 'list', pos: listMatch.index, content: listMatch[2], attrs: listMatch[1] });
+        elements.push({
+          type: 'list',
+          pos: listMatch.index,
+          content: listMatch[2],
+          attrs: listMatch[1],
+        });
       }
     }
 
@@ -993,19 +1069,27 @@ function extractContent(cnxml, options = {}) {
     const notePattern = /<note([^>]*)>([\s\S]*?)<\/note>/g;
     let noteMatch;
     while ((noteMatch = notePattern.exec(sectionContent)) !== null) {
-      elements.push({ type: 'note', pos: noteMatch.index, content: noteMatch[2], attrs: noteMatch[1] });
+      elements.push({
+        type: 'note',
+        pos: noteMatch.index,
+        content: noteMatch[2],
+        attrs: noteMatch[1],
+      });
     }
 
     // Add examples that fall within this section to elements array
     // This ensures examples are interleaved correctly with other content
-    const sectionContentStartAbsolute = sectionMatch.index + sectionMatch[0].indexOf(sectionContent);
+    const sectionContentStartAbsolute =
+      sectionMatch.index + sectionMatch[0].indexOf(sectionContent);
     const sectionContentEndAbsolute = sectionContentStartAbsolute + sectionContent.length;
 
     for (let i = nextExampleIndex; i < allExamples.length; i++) {
       const example = allExamples[i];
       // Check if example starts within this section's content
-      if (example.startPos >= sectionContentStartAbsolute &&
-          example.startPos < sectionContentEndAbsolute) {
+      if (
+        example.startPos >= sectionContentStartAbsolute &&
+        example.startPos < sectionContentEndAbsolute
+      ) {
         // Calculate position relative to sectionContent
         const relativePos = example.startPos - sectionContentStartAbsolute;
         elements.push({
@@ -1014,7 +1098,7 @@ function extractContent(cnxml, options = {}) {
           content: example.content,
           attrs: example.attrs,
           id: example.id,
-          globalIndex: i  // Track which example this is for numbering and dedup
+          globalIndex: i, // Track which example this is for numbering and dedup
         });
       } else if (example.startPos >= sectionContentEndAbsolute) {
         // Examples are in document order, so stop once we pass this section
@@ -1027,7 +1111,12 @@ function extractContent(cnxml, options = {}) {
     let figureMatch;
     while ((figureMatch = figurePattern.exec(sectionContent)) !== null) {
       if (!isInsideNested(figureMatch.index)) {
-        elements.push({ type: 'figure', pos: figureMatch.index, content: figureMatch[2], attrs: figureMatch[1] });
+        elements.push({
+          type: 'figure',
+          pos: figureMatch.index,
+          content: figureMatch[2],
+          attrs: figureMatch[1],
+        });
       }
     }
 
@@ -1035,14 +1124,24 @@ function extractContent(cnxml, options = {}) {
     const exercisePattern = /<exercise([^>]*)>([\s\S]*?)<\/exercise>/g;
     let exerciseMatch;
     while ((exerciseMatch = exercisePattern.exec(sectionContent)) !== null) {
-      elements.push({ type: 'exercise', pos: exerciseMatch.index, content: exerciseMatch[2], attrs: exerciseMatch[1] });
+      elements.push({
+        type: 'exercise',
+        pos: exerciseMatch.index,
+        content: exerciseMatch[2],
+        attrs: exerciseMatch[1],
+      });
     }
 
     // Find tables
     const tablePattern = /<table([^>]*)>([\s\S]*?)<\/table>/g;
     let tableMatch;
     while ((tableMatch = tablePattern.exec(sectionContent)) !== null) {
-      elements.push({ type: 'table', pos: tableMatch.index, content: tableMatch[2], attrs: tableMatch[1] });
+      elements.push({
+        type: 'table',
+        pos: tableMatch.index,
+        content: tableMatch[2],
+        attrs: tableMatch[1],
+      });
     }
 
     // Sort elements by position in document
@@ -1119,21 +1218,36 @@ function extractContent(cnxml, options = {}) {
         const noteParaPattern = /<para([^>]*)>([\s\S]*?)<\/para>/g;
         let noteParaMatch;
         while ((noteParaMatch = noteParaPattern.exec(elem.content)) !== null) {
-          noteElements.push({ type: 'para', pos: noteParaMatch.index, content: noteParaMatch[2], attrs: noteParaMatch[1] });
+          noteElements.push({
+            type: 'para',
+            pos: noteParaMatch.index,
+            content: noteParaMatch[2],
+            attrs: noteParaMatch[1],
+          });
         }
 
         // Find equations
         const noteEqPattern = /<equation([^>]*)>([\s\S]*?)<\/equation>/g;
         let noteEqMatch;
         while ((noteEqMatch = noteEqPattern.exec(elem.content)) !== null) {
-          noteElements.push({ type: 'equation', pos: noteEqMatch.index, content: noteEqMatch[2], attrs: noteEqMatch[1] });
+          noteElements.push({
+            type: 'equation',
+            pos: noteEqMatch.index,
+            content: noteEqMatch[2],
+            attrs: noteEqMatch[1],
+          });
         }
 
         // Find figures
         const noteFigPattern = /<figure([^>]*)>([\s\S]*?)<\/figure>/g;
         let noteFigMatch;
         while ((noteFigMatch = noteFigPattern.exec(elem.content)) !== null) {
-          noteElements.push({ type: 'figure', pos: noteFigMatch.index, content: noteFigMatch[2], attrs: noteFigMatch[1] });
+          noteElements.push({
+            type: 'figure',
+            pos: noteFigMatch.index,
+            content: noteFigMatch[2],
+            attrs: noteFigMatch[1],
+          });
         }
 
         // Sort by position in document
@@ -1162,7 +1276,9 @@ function extractContent(cnxml, options = {}) {
             const figureClass = classMatch ? classMatch[1] : '';
             const figureNumber = chapter ? `${chapter}.${figureCounter}` : String(figureCounter);
 
-            const mediaMatch = noteElem.content.match(/<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
+            const mediaMatch = noteElem.content.match(
+              /<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/
+            );
             const captionMatch = noteElem.content.match(/<caption>([\s\S]*?)<\/caption>/);
 
             let imageFile = '';
@@ -1192,7 +1308,9 @@ function extractContent(cnxml, options = {}) {
             if (captionMatch) {
               captionText = processInline(captionMatch[1]);
               if (figureId) {
-                lines.push('*Figure ' + figureNumber + ': ' + captionText + '*{id="' + figureId + '"}');
+                lines.push(
+                  '*Figure ' + figureNumber + ': ' + captionText + '*{id="' + figureId + '"}'
+                );
               } else {
                 lines.push('*Figure ' + figureNumber + ': ' + captionText + '*');
               }
@@ -1205,7 +1323,7 @@ function extractContent(cnxml, options = {}) {
               number: figureNumber,
               imagePath: imageFile,
               captionEn: captionText,
-              altText: altText
+              altText: altText,
             };
             if (figureClass) {
               figures[figureKey].class = figureClass;
@@ -1306,7 +1424,9 @@ function extractContent(cnxml, options = {}) {
         let captionText = '';
 
         // Extract image with alt text from media element
-        const mediaMatch = elem.content.match(/<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/);
+        const mediaMatch = elem.content.match(
+          /<media([^>]*)>[\s\S]*?<image[^>]*src="([^"]*)"[^>]*\/>[\s\S]*?<\/media>/
+        );
         if (mediaMatch) {
           const mediaAttrs = mediaMatch[1];
           const imageSrc = mediaMatch[2];
@@ -1348,7 +1468,7 @@ function extractContent(cnxml, options = {}) {
           number: figureNumber,
           imagePath: imageFile,
           captionEn: captionText,
-          altText: altText
+          altText: altText,
         };
         if (figureClass) {
           figures[figureKey].class = figureClass;
@@ -1398,7 +1518,9 @@ function extractContent(cnxml, options = {}) {
             lines.push(':::answer');
             const solutionContentPattern = /<(para|equation)([^>]*)>([\s\S]*?)<\/\1>/g;
             let solutionContentMatch;
-            while ((solutionContentMatch = solutionContentPattern.exec(solutionMatch[1])) !== null) {
+            while (
+              (solutionContentMatch = solutionContentPattern.exec(solutionMatch[1])) !== null
+            ) {
               const elementType = solutionContentMatch[1];
               const elementContent = solutionContentMatch[3];
               if (elementType === 'para') {
@@ -1508,7 +1630,9 @@ function extractContent(cnxml, options = {}) {
     console.error('Extracted from ' + moduleId + ': ' + documentTitle);
     console.error('Chapter: ' + (chapter || 'unknown'));
     console.error('Equations found: ' + equationCounter);
-    console.error('Examples: ' + exampleCounter + ', Figures: ' + figureCounter + ', Tables: ' + tableCounter);
+    console.error(
+      'Examples: ' + exampleCounter + ', Figures: ' + figureCounter + ', Tables: ' + tableCounter
+    );
     console.error('Output lines: ' + lines.length);
     if (docMetadata.created) console.error('Created: ' + docMetadata.created);
     if (docMetadata.revised) console.error('Revised: ' + docMetadata.revised);
@@ -1528,8 +1652,8 @@ function extractContent(cnxml, options = {}) {
     counters: {
       examples: exampleCounter,
       figures: figureCounter,
-      tables: tableCounter
-    }
+      tables: tableCounter,
+    },
   };
 }
 
@@ -1537,16 +1661,11 @@ function extractContent(cnxml, options = {}) {
  * Process a CNXML table element into markdown
  */
 function processTable(tableAttrs, tableContent, lines, processInlineContent) {
-  // Extract table ID, class, and summary
+  // Extract table ID and summary
   const idMatch = tableAttrs.match(/id="([^"]*)"/);
   const tableId = idMatch ? idMatch[1] : null;
-  const classMatch = tableAttrs.match(/class="([^"]*)"/);
-  const tableClass = classMatch ? classMatch[1] : '';
   const summaryMatch = tableAttrs.match(/summary="([^"]*)"/);
   const tableSummary = summaryMatch ? summaryMatch[1] : '';
-
-  // Check if it's a key-equations table (special handling)
-  const isKeyEquations = tableId === 'key-equations-table' || tableClass.includes('key-equations');
 
   // Extract column alignments from colspec elements
   const columnAlignments = [];
@@ -1632,7 +1751,8 @@ function processTable(tableAttrs, tableContent, lines, processInlineContent) {
   // Output markdown table
   if (headerRows.length > 0 || bodyRows.length > 0) {
     // Use header row if available, otherwise use first body row as header
-    const header = headerRows.length > 0 ? headerRows[0] : (bodyRows.length > 0 ? bodyRows.shift() : []);
+    const header =
+      headerRows.length > 0 ? headerRows[0] : bodyRows.length > 0 ? bodyRows.shift() : [];
     if (header.length > 0) {
       lines.push('| ' + header.join(' | ') + ' |');
 
@@ -1640,10 +1760,13 @@ function processTable(tableAttrs, tableContent, lines, processInlineContent) {
       const alignmentRow = header.map((_, i) => {
         const align = columnAlignments[i] || 'left';
         switch (align) {
-          case 'right': return '---:';
-          case 'center': return ':---:';
+          case 'right':
+            return '---:';
+          case 'center':
+            return ':---:';
           case 'left':
-          default: return ':---';
+          default:
+            return ':---';
         }
       });
       lines.push('| ' + alignmentRow.join(' | ') + ' |');
@@ -1682,9 +1805,19 @@ function processTable(tableAttrs, tableContent, lines, processInlineContent) {
  */
 function toRoman(num) {
   const romanNumerals = [
-    ['M', 1000], ['CM', 900], ['D', 500], ['CD', 400],
-    ['C', 100], ['XC', 90], ['L', 50], ['XL', 40],
-    ['X', 10], ['IX', 9], ['V', 5], ['IV', 4], ['I', 1]
+    ['M', 1000],
+    ['CM', 900],
+    ['D', 500],
+    ['CD', 400],
+    ['C', 100],
+    ['XC', 90],
+    ['L', 50],
+    ['XL', 40],
+    ['X', 10],
+    ['IX', 9],
+    ['V', 5],
+    ['IV', 4],
+    ['I', 1],
   ];
   let result = '';
   for (const [letter, value] of romanNumerals) {
@@ -1719,39 +1852,41 @@ function getListPrefix(index, style) {
 }
 
 function processInlineContent(content, elementRegistry = {}) {
-  return content
-    // Emphasis types: italics, underline (both use *text*), bold (default)
-    .replace(/<emphasis[^>]*effect="italics"[^>]*>([^<]*)<\/emphasis>/g, '*$1*')
-    .replace(/<emphasis[^>]*effect="underline"[^>]*>([^<]*)<\/emphasis>/g, '_$1_')
-    .replace(/<emphasis[^>]*>([^<]*)<\/emphasis>/g, '**$1**')
-    // Term with ID preservation using MT-safe format: <term id="term-00001">chemistry</term> → **chemistry**{id="term-00001"}
-    .replace(/<term\s+id="([^"]*)"[^>]*>([^<]*)<\/term>/g, '**$2**{id="$1"}')
-    .replace(/<term[^>]*>([^<]*)<\/term>/g, '**$1**')
-    // External URL links: <link url="http://...">text</link> → [text]{url="http://..."}
-    // Uses {url=""} syntax to survive MT (parentheses get stripped)
-    .replace(/<link[^>]*url="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{url="$1"}')
-    // Internal cross-references with target-id: convert to standard markdown anchor links
-    // Self-closing link: <link target-id="CNX_Chem_05_03_Systemqw"/> → [Figure 5.1](#CNX_Chem_05_03_Systemqw)
-    .replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, id) => {
-      const elem = elementRegistry[id];
-      if (elem) {
-        return `[${elem.type} ${elem.number}](#${id})`;
-      }
-      return `[↗](#${id})`; // Fallback for unknown references
-    })
-    // Link with text: <link target-id="id">custom text</link> → [custom text](#id)
-    .replace(/<link\s+target-id="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2](#$1)')
-    // Document cross-references: <link document="m68778"/> → [Section]{doc="m68778"}
-    // Uses {doc=""} syntax to survive MT (cross-module refs need special handling)
-    .replace(/<link\s+document="([^"]*)"[^>]*\/>/g, '[Section]{doc="$1"}')
-    .replace(/<link\s+document="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{doc="$1"}')
-    // Fallback for other links
-    .replace(/<link[^>]*>([^<]*)<\/link>/g, '$1')
-    .replace(/<sub>([^<]*)<\/sub>/g, '~$1~')
-    .replace(/<sup>([^<]*)<\/sup>/g, '^$1^')
-    .replace(/<[^>]+>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+  return (
+    content
+      // Emphasis types: italics, underline (both use *text*), bold (default)
+      .replace(/<emphasis[^>]*effect="italics"[^>]*>([^<]*)<\/emphasis>/g, '*$1*')
+      .replace(/<emphasis[^>]*effect="underline"[^>]*>([^<]*)<\/emphasis>/g, '_$1_')
+      .replace(/<emphasis[^>]*>([^<]*)<\/emphasis>/g, '**$1**')
+      // Term with ID preservation using MT-safe format: <term id="term-00001">chemistry</term> → **chemistry**{id="term-00001"}
+      .replace(/<term\s+id="([^"]*)"[^>]*>([^<]*)<\/term>/g, '**$2**{id="$1"}')
+      .replace(/<term[^>]*>([^<]*)<\/term>/g, '**$1**')
+      // External URL links: <link url="http://...">text</link> → [text]{url="http://..."}
+      // Uses {url=""} syntax to survive MT (parentheses get stripped)
+      .replace(/<link[^>]*url="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{url="$1"}')
+      // Internal cross-references with target-id: convert to standard markdown anchor links
+      // Self-closing link: <link target-id="CNX_Chem_05_03_Systemqw"/> → [Figure 5.1](#CNX_Chem_05_03_Systemqw)
+      .replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, id) => {
+        const elem = elementRegistry[id];
+        if (elem) {
+          return `[${elem.type} ${elem.number}](#${id})`;
+        }
+        return `[↗](#${id})`; // Fallback for unknown references
+      })
+      // Link with text: <link target-id="id">custom text</link> → [custom text](#id)
+      .replace(/<link\s+target-id="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2](#$1)')
+      // Document cross-references: <link document="m68778"/> → [Section]{doc="m68778"}
+      // Uses {doc=""} syntax to survive MT (cross-module refs need special handling)
+      .replace(/<link\s+document="([^"]*)"[^>]*\/>/g, '[Section]{doc="$1"}')
+      .replace(/<link\s+document="([^"]*)"[^>]*>([^<]*)<\/link>/g, '[$2]{doc="$1"}')
+      // Fallback for other links
+      .replace(/<link[^>]*>([^<]*)<\/link>/g, '$1')
+      .replace(/<sub>([^<]*)<\/sub>/g, '~$1~')
+      .replace(/<sup>([^<]*)<\/sup>/g, '^$1^')
+      .replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+  );
 }
 
 async function main() {
@@ -1783,7 +1918,7 @@ async function main() {
       chapter: args.chapter,
       exampleStart: args.exampleStart,
       figureStart: args.figureStart,
-      tableStart: args.tableStart
+      tableStart: args.tableStart,
     };
     const data = extractContent(cnxml, extractOptions);
 
@@ -1808,7 +1943,7 @@ async function main() {
         section: data.section,
         chapter: data.chapter,
         title: data.documentTitle,
-        equations: data.equations
+        equations: data.equations,
       };
       fs.writeFileSync(equationsPath, JSON.stringify(equationsData, null, 2));
       console.error('Equations written to: ' + equationsPath);
@@ -1822,7 +1957,7 @@ async function main() {
         chapter: data.chapter,
         title: data.documentTitle,
         figures: data.figures,
-        counters: { figures: data.counters.figures }
+        counters: { figures: data.counters.figures },
       };
       fs.writeFileSync(figuresPath, JSON.stringify(figuresData, null, 2));
       console.error('Figures written to: ' + figuresPath);
@@ -1839,7 +1974,6 @@ async function main() {
     if (args.outputCounters) {
       console.error('COUNTERS:' + JSON.stringify(data.counters));
     }
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);

@@ -48,26 +48,27 @@ const SECTION_TITLES = {
     keyTerms: 'Key Terms',
     keyEquations: 'Key Equations',
     summary: 'Summary',
-    exercises: 'Exercises'
+    exercises: 'Exercises',
   },
   is: {
     keyTerms: 'Lykilhugtök',
     keyEquations: 'Lykiljöfnur',
     summary: 'Samantekt',
-    exercises: 'Æfingar'
-  }
+    exercises: 'Æfingar',
+  },
 };
 
 const TRACK_LABELS = {
   'mt-preview': 'Vélþýðing - ekki yfirfarin',
-  'faithful': 'Ritstýrð þýðing',
-  'localized': 'Staðfærð útgáfa'
+  faithful: 'Ritstýrð þýðing',
+  localized: 'Staðfærð útgáfa',
 };
 
-// Module file patterns (order matters)
+// Module file patterns (order matters) - reserved for future use
+// eslint-disable-next-line no-unused-vars
 const MODULE_PATTERNS = [
   { pattern: /^intro\./, section: 'intro', order: 0 },
-  { pattern: /^(\d+)-(\d+)\./, section: null, order: null }  // Dynamic: 1-1, 1-2, etc.
+  { pattern: /^(\d+)-(\d+)\./, section: null, order: null }, // Dynamic: 1-1, 1-2, etc.
 ];
 
 // ============================================================================
@@ -84,7 +85,7 @@ function parseArgs(args) {
     lang: 'is',
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -250,7 +251,7 @@ function findModuleFiles(inputDir, chapter, lang) {
         section: 'intro',
         sectionNum: 0,
         sectionId: `${chapter}.0`,
-        order: 0
+        order: 0,
       });
     } else if (sectionMatch) {
       const chNum = parseInt(sectionMatch[1], 10);
@@ -262,7 +263,7 @@ function findModuleFiles(inputDir, chapter, lang) {
           section: `${chNum}.${secNum}`,
           sectionNum: secNum,
           sectionId: `${chNum}.${secNum}`,
-          order: secNum
+          order: secNum,
         });
       }
     } else if (sectionMatchNoLang) {
@@ -275,7 +276,7 @@ function findModuleFiles(inputDir, chapter, lang) {
           section: `${chNum}.${secNum}`,
           sectionNum: secNum,
           sectionId: `${chNum}.${secNum}`,
-          order: secNum
+          order: secNum,
         });
       }
     }
@@ -297,7 +298,7 @@ function findModuleFiles(inputDir, chapter, lang) {
 function parseMarkdown(content) {
   const result = {
     frontmatter: {},
-    content: content
+    content: content,
   };
 
   if (content.startsWith('---')) {
@@ -331,7 +332,7 @@ function extractSummary(content) {
     return {
       found: true,
       content: summaryMatch[1].trim(),
-      fullMatch: summaryMatch[0]
+      fullMatch: summaryMatch[0],
     };
   }
 
@@ -360,7 +361,7 @@ function extractKeyEquations(content) {
     while ((match = eqRefPattern.exec(eqMatch[1])) !== null) {
       equations.push({
         id: match[1],
-        ref: match[0]
+        ref: match[0],
       });
     }
 
@@ -368,7 +369,7 @@ function extractKeyEquations(content) {
       found: true,
       content: eqMatch[1].trim(),
       equations,
-      fullMatch: eqMatch[0]
+      fullMatch: eqMatch[0],
     };
   }
 
@@ -387,13 +388,16 @@ function extractExercises(content) {
   const exercises = [];
 
   // Pattern 1: :::practice-problem{#id} or :::æfingadæmi{#id} format
-  const problemPattern1 = /:::(?:practice-problem|æfingadæmi)\{#([^}]+)\}([\s\S]*?)(?=:::(?:practice-problem|æfingadæmi|exercise)|$)/g;
+  const problemPattern1 =
+    /:::(?:practice-problem|æfingadæmi)\{#([^}]+)\}([\s\S]*?)(?=:::(?:practice-problem|æfingadæmi|exercise)|$)/g;
 
   // Pattern 2: :::exercise{id="id"} format (MT output - content may be on same line)
-  const problemPattern2 = /:::exercise\{id="([^"]+)"\}\s*([\s\S]*?)(?=:::exercise\{|:::(?:practice-problem|æfingadæmi)|$)/g;
+  const problemPattern2 =
+    /:::exercise\{id="([^"]+)"\}\s*([\s\S]*?)(?=:::exercise\{|:::(?:practice-problem|æfingadæmi)|$)/g;
 
   // Pattern 3: :::exercise{#id} shorthand format
-  const problemPattern3 = /:::exercise\{#([^}]+)\}([\s\S]*?)(?=:::exercise\{|:::(?:practice-problem|æfingadæmi)|$)/g;
+  const problemPattern3 =
+    /:::exercise\{#([^}]+)\}([\s\S]*?)(?=:::exercise\{|:::(?:practice-problem|æfingadæmi)|$)/g;
 
   // Process all patterns
   for (const pattern of [problemPattern1, problemPattern2, problemPattern3]) {
@@ -427,7 +431,7 @@ function extractExercises(content) {
       problemContent = problemContent.replace(/:::\s*$/m, '').trim();
 
       // Skip if we already have this exercise (avoid duplicates from overlapping patterns)
-      if (exercises.some(e => e.id === problemId)) {
+      if (exercises.some((e) => e.id === problemId)) {
         continue;
       }
 
@@ -435,7 +439,7 @@ function extractExercises(content) {
         id: problemId,
         content: problemContent,
         answer: answer,
-        fullMatch: match[0]
+        fullMatch: match[0],
       });
     }
   }
@@ -463,7 +467,7 @@ function extractTerms(content) {
     terms.push({
       term: term,
       id: termId,
-      fullMatch: match[0]
+      fullMatch: match[0],
     });
   }
 
@@ -529,7 +533,7 @@ function generateFrontmatter(data) {
     lineWidth: 100,
     noRefs: true,
     quotingType: '"',
-    forceQuotes: false
+    forceQuotes: false,
   });
   return `---\n${yamlStr}---\n\n`;
 }
@@ -575,9 +579,7 @@ function writeKeyTermsFile(outputDir, chapter, terms, options) {
 
   for (const term of sortedTerms) {
     // Format term with ID if available
-    const termText = term.id
-      ? `**${term.term}**{#${term.id}}`
-      : `**${term.term}**`;
+    const termText = term.id ? `**${term.term}**{#${term.id}}` : `**${term.term}**`;
 
     content += `${termText}\n`;
     if (term.definition) {
@@ -593,7 +595,7 @@ function writeKeyTermsFile(outputDir, chapter, terms, options) {
     'translation-status': TRACK_LABELS[options.track] || options.track,
     'publication-track': options.track,
     'published-at': new Date().toISOString(),
-    type: 'keyTerms'
+    type: 'keyTerms',
   };
 
   const outputPath = path.join(outputDir, `${chapter}-key-terms.${options.lang}.md`);
@@ -625,7 +627,7 @@ function writeKeyEquationsFile(outputDir, chapter, equations, options) {
     'translation-status': TRACK_LABELS[options.track] || options.track,
     'publication-track': options.track,
     'published-at': new Date().toISOString(),
-    type: 'keyEquations'
+    type: 'keyEquations',
   };
 
   const outputPath = path.join(outputDir, `${chapter}-key-equations.${options.lang}.md`);
@@ -658,7 +660,7 @@ function writeSummaryFile(outputDir, chapter, summaries, options) {
     'translation-status': TRACK_LABELS[options.track] || options.track,
     'publication-track': options.track,
     'published-at': new Date().toISOString(),
-    type: 'summary'
+    type: 'summary',
   };
 
   const outputPath = path.join(outputDir, `${chapter}-summary.${options.lang}.md`);
@@ -697,7 +699,7 @@ function writeExercisesFile(outputDir, chapter, exercisesBySection, options) {
         answers.push({
           number: exerciseNumber,
           chapter: chapter,
-          answer: exercise.answer
+          answer: exercise.answer,
         });
       }
 
@@ -711,7 +713,7 @@ function writeExercisesFile(outputDir, chapter, exercisesBySection, options) {
     'translation-status': TRACK_LABELS[options.track] || options.track,
     'publication-track': options.track,
     'published-at': new Date().toISOString(),
-    type: 'exercises'
+    type: 'exercises',
   };
 
   const outputPath = path.join(outputDir, `${chapter}-exercises.${options.lang}.md`);
@@ -724,7 +726,7 @@ function writeExercisesFile(outputDir, chapter, exercisesBySection, options) {
   return {
     path: outputPath,
     exerciseCount: exerciseNumber - 1,
-    answers: answers
+    answers: answers,
   };
 }
 
@@ -742,7 +744,7 @@ function writeModuleFile(outputDir, moduleData, options) {
     ...frontmatter,
     'translation-status': TRACK_LABELS[options.track] || options.track,
     'publication-track': options.track,
-    'published-at': new Date().toISOString()
+    'published-at': new Date().toISOString(),
   };
 
   const output = generateFrontmatter(newFrontmatter) + strippedContent;
@@ -852,7 +854,7 @@ async function assembleChapter(options) {
       allSummaries.push({
         sectionId: moduleFile.sectionId,
         title: title,
-        content: summary.content
+        content: summary.content,
       });
     }
 
@@ -862,7 +864,7 @@ async function assembleChapter(options) {
       allExercisesBySection.push({
         sectionId: moduleFile.sectionId,
         title: title,
-        exercises: exercises
+        exercises: exercises,
       });
     }
 
@@ -871,13 +873,17 @@ async function assembleChapter(options) {
     // Strip sections and write module file
     const strippedContent = stripSections(parsed.content);
 
-    const moduleResult = writeModuleFile(outputDir, {
-      chapter,
-      section: moduleFile.section,
-      title,
-      strippedContent,
-      frontmatter: parsed.frontmatter
-    }, options);
+    const moduleResult = writeModuleFile(
+      outputDir,
+      {
+        chapter,
+        section: moduleFile.section,
+        title,
+        strippedContent,
+        frontmatter: parsed.frontmatter,
+      },
+      options
+    );
 
     console.log(`  → ${moduleResult.filename}`);
     console.log('');
@@ -894,15 +900,21 @@ async function assembleChapter(options) {
 
   // Key Equations
   const equationsResult = writeKeyEquationsFile(outputDir, chapter, allEquations, options);
-  console.log(`  Key Equations: ${equationsResult.equationCount} equations → ${path.basename(equationsResult.path)}`);
+  console.log(
+    `  Key Equations: ${equationsResult.equationCount} equations → ${path.basename(equationsResult.path)}`
+  );
 
   // Summary
   const summaryResult = writeSummaryFile(outputDir, chapter, allSummaries, options);
-  console.log(`  Summary: ${summaryResult.sectionCount} sections → ${path.basename(summaryResult.path)}`);
+  console.log(
+    `  Summary: ${summaryResult.sectionCount} sections → ${path.basename(summaryResult.path)}`
+  );
 
   // Exercises
   const exercisesResult = writeExercisesFile(outputDir, chapter, allExercisesBySection, options);
-  console.log(`  Exercises: ${exercisesResult.exerciseCount} exercises → ${path.basename(exercisesResult.path)}`);
+  console.log(
+    `  Exercises: ${exercisesResult.exerciseCount} exercises → ${path.basename(exercisesResult.path)}`
+  );
   console.log(`  Answers collected: ${exercisesResult.answers.length}`);
 
   // Summary
@@ -932,7 +944,7 @@ async function assembleChapter(options) {
     equationCount: equationsResult.equationCount,
     summaryCount: summaryResult.sectionCount,
     exerciseCount: exercisesResult.exerciseCount,
-    answers: exercisesResult.answers
+    answers: exercisesResult.answers,
   };
 }
 

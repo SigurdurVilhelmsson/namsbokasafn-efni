@@ -83,7 +83,9 @@ function checkStringConstraints(data, schema, dataPath) {
 
   const errors = [];
   if (schema.minLength !== undefined && data.length < schema.minLength) {
-    errors.push(`${dataPath}: string length ${data.length} is less than minLength ${schema.minLength}`);
+    errors.push(
+      `${dataPath}: string length ${data.length} is less than minLength ${schema.minLength}`
+    );
   }
   if (schema.pattern && !new RegExp(schema.pattern).test(data)) {
     errors.push(`${dataPath}: string "${data}" does not match pattern ${schema.pattern}`);
@@ -188,7 +190,7 @@ const expandedSchema = expandRefs(schema, schema);
 // Find all books
 let books;
 try {
-  books = fs.readdirSync(booksDir).filter(name => {
+  books = fs.readdirSync(booksDir).filter((name) => {
     const bookPath = path.join(booksDir, name);
     return fs.statSync(bookPath).isDirectory() && fs.existsSync(path.join(bookPath, 'chapters'));
   });
@@ -207,7 +209,7 @@ if (bookFilter) {
 
 let totalFiles = 0;
 let validFiles = 0;
-let allErrors = [];
+const allErrors = [];
 
 console.log('Validating chapter status files...\n');
 
@@ -216,7 +218,7 @@ for (const book of books) {
 
   let chapters;
   try {
-    chapters = fs.readdirSync(chaptersDir).filter(name => name.startsWith('ch'));
+    chapters = fs.readdirSync(chaptersDir).filter((name) => name.startsWith('ch'));
   } catch {
     continue;
   }
@@ -234,7 +236,10 @@ for (const book of books) {
     try {
       data = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
     } catch (err) {
-      allErrors.push({ file: `${book}/${chapter}/status.json`, errors: [`JSON parse error: ${err.message}`] });
+      allErrors.push({
+        file: `${book}/${chapter}/status.json`,
+        errors: [`JSON parse error: ${err.message}`],
+      });
       continue;
     }
 
@@ -245,7 +250,9 @@ for (const book of books) {
       console.log(`  ✓ ${book}/${chapter}/status.json`);
     } else {
       allErrors.push({ file: `${book}/${chapter}/status.json`, errors });
-      console.log(`  ✗ ${book}/${chapter}/status.json (${errors.length} error${errors.length > 1 ? 's' : ''})`);
+      console.log(
+        `  ✗ ${book}/${chapter}/status.json (${errors.length} error${errors.length > 1 ? 's' : ''})`
+      );
     }
   }
 }

@@ -31,7 +31,7 @@ function parseArgs(args) {
     sourceLang: 'en',
     targetLang: 'is',
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -92,21 +92,23 @@ function parseFrontmatter(content) {
     }
     return {
       frontmatter,
-      body: content.substring(yamlMatch[0].length).trim()
+      body: content.substring(yamlMatch[0].length).trim(),
     };
   }
 
   // Try Erlendur header format
-  const erlendurMatch = content.match(/^##\s*titill:\s*„([^"]+)"\s*kafli:\s*„([^"]+)"\s*eining:\s*„([^"]+)"\s*tungumál:\s*„([^"]+)".*?\n\n/);
+  const erlendurMatch = content.match(
+    /^##\s*titill:\s*„([^"]+)"\s*kafli:\s*„([^"]+)"\s*eining:\s*„([^"]+)"\s*tungumál:\s*„([^"]+)".*?\n\n/
+  );
   if (erlendurMatch) {
     return {
       frontmatter: {
         title: erlendurMatch[1],
         section: erlendurMatch[2],
         module: erlendurMatch[3],
-        lang: erlendurMatch[4]
+        lang: erlendurMatch[4],
       },
-      body: content.substring(erlendurMatch[0].length).trim()
+      body: content.substring(erlendurMatch[0].length).trim(),
     };
   }
 
@@ -121,7 +123,21 @@ function segmentText(text) {
   if (!text || !text.trim()) return [];
 
   // Common abbreviations to not split on
-  const abbreviations = ['Mr.', 'Mrs.', 'Ms.', 'Dr.', 'Prof.', 'e.g.', 'i.e.', 'etc.', 'vs.', 'Fig.', 'fig.', 'eq.', 'Eq.'];
+  const abbreviations = [
+    'Mr.',
+    'Mrs.',
+    'Ms.',
+    'Dr.',
+    'Prof.',
+    'e.g.',
+    'i.e.',
+    'etc.',
+    'vs.',
+    'Fig.',
+    'fig.',
+    'eq.',
+    'Eq.',
+  ];
 
   // Replace abbreviations temporarily
   let processed = text;
@@ -180,8 +196,11 @@ function extractSegments(body, verbose) {
       segments.push({
         type: currentType,
         text: sentence,
-        note: currentType.includes('note') ? 'Note content' :
-              currentType.includes('example') ? 'Example content' : null
+        note: currentType.includes('note')
+          ? 'Note content'
+          : currentType.includes('example')
+            ? 'Example content'
+            : null,
       });
     }
 
@@ -220,7 +239,7 @@ function extractSegments(body, verbose) {
         segments.push({
           type: inDirective ? directiveType + '-' + type : type,
           text: text,
-          note: 'Heading level ' + level
+          note: 'Heading level ' + level,
         });
       }
       continue;
@@ -239,7 +258,7 @@ function extractSegments(body, verbose) {
         segments.push({
           type: inDirective ? directiveType + '-list-item' : 'list-item',
           text: sentence,
-          note: 'List item'
+          note: 'List item',
         });
       }
       continue;
@@ -262,7 +281,7 @@ function extractSegments(body, verbose) {
         segments.push({
           type: 'figure-caption',
           text: sentence,
-          note: 'Figure caption'
+          note: 'Figure caption',
         });
       }
       continue;
@@ -316,13 +335,13 @@ function convertInlineToXliff(text) {
   let inlineId = 0;
 
   // Convert [[EQ:n]] to locked inline elements
-  result = result.replace(/\[\[EQ:(\d+)\]\]/g, (match, num) => {
+  result = result.replace(/\[\[EQ:(\d+)\]\]/g, (match, _num) => {
     inlineId++;
     return `<x id="${inlineId}" equiv-text="${escapeXml(match)}" ctype="x-equation"/>`;
   });
 
   // Convert $..$ math to inline elements (already restored equations)
-  result = result.replace(/\$([^$]+)\$/g, (match, content) => {
+  result = result.replace(/\$([^$]+)\$/g, (match, _content) => {
     inlineId++;
     return `<x id="${inlineId}" equiv-text="${escapeXml(match)}" ctype="x-math"/>`;
   });
@@ -341,7 +360,7 @@ function convertInlineToXliff(text) {
 
   // Convert [text](url) links to inline elements
   // Store URL in equiv-text for Matecat compatibility (xlink:href not universally supported)
-  result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+  result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, _url) => {
     inlineId++;
     return `<g id="${inlineId}" ctype="link" equiv-text="${escapeXml(match)}">${escapeXml(text)}</g>`;
   });
@@ -369,12 +388,13 @@ function convertInlineToXliff(text) {
  * Map segment type to XLIFF restype
  * Matches spec from md-to-xliff.js mapRestype()
  */
+// eslint-disable-next-line no-unused-vars
 function mapRestype(type) {
   const mapping = {
-    'title': 'x-title',
+    title: 'x-title',
     'section-title': 'x-section-title',
     'subsection-title': 'x-subsection-title',
-    'paragraph': 'x-paragraph',
+    paragraph: 'x-paragraph',
     'list-item': 'x-list-item',
     'figure-caption': 'x-figure-caption',
     'note-title': 'x-note-title',
@@ -419,7 +439,9 @@ function generateXliff(sourceSegs, targetSegs, metadata, sourceLang, targetLang,
     const state = targetText ? 'translated' : 'new';
     // Store segment type in note for reference (removed custom restype for Matecat compatibility)
     const typeNote = `<note from="tool">type:${segType}</note>`;
-    const devNote = src?.note ? `\n        <note from="developer">${escapeXml(src.note)}</note>` : '';
+    const devNote = src?.note
+      ? `\n        <note from="developer">${escapeXml(src.note)}</note>`
+      : '';
 
     if (src && tgt) alignedCount++;
     else mismatchCount++;
@@ -491,7 +513,14 @@ async function main() {
     }
 
     // Generate XLIFF
-    const xliff = generateXliff(sourceSegs, targetSegs, metadata, args.sourceLang, args.targetLang, args.verbose);
+    const xliff = generateXliff(
+      sourceSegs,
+      targetSegs,
+      metadata,
+      args.sourceLang,
+      args.targetLang,
+      args.verbose
+    );
 
     // Output
     if (args.output) {
@@ -505,7 +534,6 @@ async function main() {
     } else {
       console.log(xliff);
     }
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);

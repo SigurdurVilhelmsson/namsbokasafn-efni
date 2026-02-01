@@ -42,8 +42,8 @@ import yaml from 'js-yaml';
 // Publication track labels (Icelandic)
 const TRACK_LABELS = {
   'mt-preview': 'Vélþýðing - ekki yfirfarin',
-  'faithful': 'Ritstýrð þýðing',
-  'localized': 'Staðfærð útgáfa'
+  faithful: 'Ritstýrð þýðing',
+  localized: 'Staðfærð útgáfa',
 };
 
 // Valid publication tracks
@@ -62,7 +62,7 @@ function parseArgs(args) {
     update: false,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -189,7 +189,7 @@ function detectFromPath(filePath) {
     book: null,
     chapter: null,
     section: null,
-    projectRoot: null
+    projectRoot: null,
   };
 
   // Try to match book structure path
@@ -284,7 +284,7 @@ function getSectionTitle(chapterStatus, chapter, section) {
   }
 
   const sectionId = `${chapter}.${section}`;
-  const sectionInfo = chapterStatus.sections.find(s => s.id === sectionId);
+  const sectionInfo = chapterStatus.sections.find((s) => s.id === sectionId);
 
   return sectionInfo ? sectionInfo.titleIs : null;
 }
@@ -299,7 +299,7 @@ function getSectionTitle(chapterStatus, chapter, section) {
 function parseMarkdown(content) {
   const result = {
     frontmatter: null,
-    content: content
+    content: content,
   };
 
   // Check for YAML frontmatter (starts with ---)
@@ -347,7 +347,7 @@ function extractObjectives(content) {
     const items = listContent.match(/[-*]\s+(.+)/g);
 
     if (items) {
-      items.forEach(item => {
+      items.forEach((item) => {
         const text = item.replace(/^[-*]\s+/, '').trim();
         if (text) objectives.push(text);
       });
@@ -373,11 +373,11 @@ function generateFrontmatter(options) {
     bookMetadata,
     existingFrontmatter,
     updateMode,
-    track
+    track,
   } = options;
 
   // Start with existing frontmatter if in update mode
-  let frontmatter = updateMode && existingFrontmatter ? { ...existingFrontmatter } : {};
+  const frontmatter = updateMode && existingFrontmatter ? { ...existingFrontmatter } : {};
 
   // Required fields
   frontmatter.title = title || frontmatter.title || '';
@@ -397,12 +397,20 @@ function generateFrontmatter(options) {
   }
 
   // Preserve keywords from existing frontmatter (these come from CNXML metadata)
-  if (existingFrontmatter && existingFrontmatter.keywords && existingFrontmatter.keywords.length > 0) {
+  if (
+    existingFrontmatter &&
+    existingFrontmatter.keywords &&
+    existingFrontmatter.keywords.length > 0
+  ) {
     frontmatter.keywords = existingFrontmatter.keywords;
   }
 
   // Preserve subjects from existing frontmatter
-  if (existingFrontmatter && existingFrontmatter.subjects && existingFrontmatter.subjects.length > 0) {
+  if (
+    existingFrontmatter &&
+    existingFrontmatter.subjects &&
+    existingFrontmatter.subjects.length > 0
+  ) {
     frontmatter.subjects = existingFrontmatter.subjects;
   }
 
@@ -416,7 +424,7 @@ function generateFrontmatter(options) {
       originalUrl: bookMetadata.source.url,
       translator: bookMetadata.translation?.translator || 'Unknown',
       translationYear: new Date().getFullYear(),
-      modifications: 'Translated to Icelandic, adapted for Icelandic secondary school students'
+      modifications: 'Translated to Icelandic, adapted for Icelandic secondary school students',
     };
   }
 
@@ -433,7 +441,7 @@ function frontmatterToYaml(frontmatter) {
     lineWidth: 100,
     noRefs: true,
     quotingType: '"',
-    forceQuotes: false
+    forceQuotes: false,
   });
 
   return `---\n${yamlStr}---\n\n`;
@@ -522,7 +530,7 @@ async function processFile(filePath, options) {
     bookMetadata,
     existingFrontmatter: parsed.frontmatter,
     updateMode: update,
-    track
+    track,
   });
 
   // Generate output
@@ -549,7 +557,7 @@ async function processFile(filePath, options) {
 // ============================================================================
 
 async function processBatch(directory, options) {
-  const { verbose, dryRun } = options;
+  const { dryRun } = options;
 
   const absDir = path.resolve(directory);
 
@@ -574,7 +582,7 @@ async function processBatch(directory, options) {
   const results = {
     success: 0,
     failed: 0,
-    errors: []
+    errors: [],
   };
 
   for (const file of files) {

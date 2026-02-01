@@ -32,10 +32,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // ============================================================================
 // Argument Parsing
@@ -49,7 +45,7 @@ function parseArgs(args) {
     book: null,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -61,8 +57,7 @@ function parseArgs(args) {
     else if (arg === '--chapter' && args[i + 1] && args[i + 2]) {
       result.book = args[++i];
       result.chapter = args[++i];
-    }
-    else if (!arg.startsWith('-') && !result.input) result.input = arg;
+    } else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
   return result;
 }
@@ -137,9 +132,9 @@ function extractTextContent(latex) {
       if (content.length > 1 || /[a-zA-Z0-9]/.test(content)) {
         // Clean up content: remove nested \text{} and LaTeX formatting
         const cleanContent = content
-          .replace(/\\text\{([^}]*)\}/g, '$1')  // Flatten nested \text{}
-          .replace(/\\\,/g, ' ')                 // \, -> space
-          .replace(/\\,/g, ' ')                  // \, -> space
+          .replace(/\\text\{([^}]*)\}/g, '$1') // Flatten nested \text{}
+          .replace(/\\,/g, ' ') // \, -> space
+          .replace(/\\,/g, ' ') // \, -> space
           .trim();
 
         if (cleanContent.length > 0) {
@@ -286,7 +281,9 @@ function processFile(filePath, options) {
   const stringsPath = getStringsPath(filePath);
 
   if (dryRun) {
-    console.log(`[DRY RUN] Would extract ${totalStrings} string(s) from: ${path.basename(filePath)}`);
+    console.log(
+      `[DRY RUN] Would extract ${totalStrings} string(s) from: ${path.basename(filePath)}`
+    );
     for (const [eqId, strings] of Object.entries(extractedStrings)) {
       const translatableStrings = strings.filter(isTranslatable);
       if (translatableStrings.length > 0) {
@@ -303,13 +300,15 @@ function processFile(filePath, options) {
   fs.writeFileSync(stringsPath, stringsContent);
 
   if (verbose) {
-    console.log(`  Extracted ${totalStrings} string(s): ${path.basename(filePath)} -> ${path.basename(stringsPath)}`);
+    console.log(
+      `  Extracted ${totalStrings} string(s): ${path.basename(filePath)} -> ${path.basename(stringsPath)}`
+    );
   }
 
   return {
     success: true,
     stringsExtracted: totalStrings,
-    stringsPath
+    stringsPath,
   };
 }
 
@@ -369,7 +368,9 @@ function processBatch(directory, options) {
       filesWithStrings++;
       totalStrings += result.stringsExtracted;
       if (!options.verbose && !options.dryRun) {
-        console.log(`  Extracted ${result.stringsExtracted} string(s): ${path.relative(directory, file)}`);
+        console.log(
+          `  Extracted ${result.stringsExtracted} string(s): ${path.relative(directory, file)}`
+        );
       }
     }
   }

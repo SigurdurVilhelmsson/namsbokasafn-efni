@@ -47,12 +47,10 @@ function extractExercisesFromSection(filePath, sectionTitle) {
     const startPos = match.index + match[0].length;
 
     // Find the end of this exercise (next exercise start or end of content)
-    const endPos = i < exerciseStarts.length - 1
-      ? exerciseStarts[i + 1].index
-      : content.length;
+    const endPos = i < exerciseStarts.length - 1 ? exerciseStarts[i + 1].index : content.length;
 
     // Get the content between this exercise start and the next one (or end)
-    let blockContent = content.slice(startPos, endPos);
+    const blockContent = content.slice(startPos, endPos);
 
     // Check for :::answer within this block
     const answerMatch = blockContent.match(/\n?:::answer\s*/);
@@ -97,19 +95,17 @@ function extractExercisesFromSection(filePath, sectionTitle) {
     answerContent = answerContent.replace(/\n:::(\s*:::)?\s*$/g, '').trim();
 
     // Split into lines
-    const exerciseLines = exerciseContent
-      .split('\n')
-      .map(l => l.trim() === '' ? '' : l);
+    const exerciseLines = exerciseContent.split('\n').map((l) => (l.trim() === '' ? '' : l));
 
     const answerLines = answerContent
-      ? answerContent.split('\n').map(l => l.trim() === '' ? '' : l)
+      ? answerContent.split('\n').map((l) => (l.trim() === '' ? '' : l))
       : [];
 
     exercises.push({
       id: exerciseId,
       lines: exerciseLines,
       hasAnswer,
-      answerLines
+      answerLines,
     });
   }
 
@@ -136,8 +132,9 @@ function fixExercisesFormat(chapter, dryRun = false) {
   }
 
   // Then, extract from section files
-  const sectionFiles = fs.readdirSync(chapterDir)
-    .filter(f => f.match(new RegExp(`^${chapter}-(\\d+)\\.md$`)))
+  const sectionFiles = fs
+    .readdirSync(chapterDir)
+    .filter((f) => f.match(new RegExp(`^${chapter}-(\\d+)\\.md$`)))
     .sort();
 
   for (const sectionFile of sectionFiles) {
@@ -171,14 +168,14 @@ function fixExercisesFormat(chapter, dryRun = false) {
     numberedExercises.push({
       id: ex.id,
       number,
-      lines: ex.lines
+      lines: ex.lines,
     });
 
     if (ex.hasAnswer && ex.answerLines.length > 0) {
       answers.push({
         id: ex.id,
         number,
-        lines: ex.answerLines
+        lines: ex.answerLines,
       });
     }
   }
@@ -202,7 +199,11 @@ type: exercises
   let exerciseIndex = 0;
   for (const section of sectionInfo) {
     newExercisesContent += `### ${section.title}\n\n`;
-    for (let i = 0; i < section.count && exerciseIndex < numberedExercises.length; i++, exerciseIndex++) {
+    for (
+      let i = 0;
+      i < section.count && exerciseIndex < numberedExercises.length;
+      i++, exerciseIndex++
+    ) {
       const ex = numberedExercises[exerciseIndex];
       newExercisesContent += `:::exercise{#${ex.id} number=${ex.number}}\n`;
       newExercisesContent += ex.lines.join('\n');
@@ -250,7 +251,8 @@ type: answer-key
     console.log('...\n');
   } else {
     // Backup original file
-    const backupPath = exercisesPath + `.${new Date().toISOString().slice(0, 16).replace(/[:-]/g, '')}.bak`;
+    const backupPath =
+      exercisesPath + `.${new Date().toISOString().slice(0, 16).replace(/[:-]/g, '')}.bak`;
     fs.copyFileSync(exercisesPath, backupPath);
     console.log(`Backup created: ${backupPath}`);
 

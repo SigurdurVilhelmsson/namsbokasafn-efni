@@ -31,10 +31,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // ============================================================================
 // Argument Parsing
@@ -49,7 +45,7 @@ function parseArgs(args) {
     inPlace: false,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -140,7 +136,7 @@ function findSidecarFile(mdPath) {
     // Source directory (02-for-mt instead of 02-mt-output)
     path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-protected.json`),
     // With .en suffix (in case sidecar was created from .en.md)
-    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}.en-protected.json`)
+    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}.en-protected.json`),
   ];
 
   for (const sidecarPath of possiblePaths) {

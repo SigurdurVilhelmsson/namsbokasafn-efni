@@ -31,10 +31,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // ============================================================================
 // Argument Parsing
@@ -48,7 +44,7 @@ function parseArgs(args) {
     book: null,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -60,8 +56,7 @@ function parseArgs(args) {
     else if (arg === '--chapter' && args[i + 1] && args[i + 2]) {
       result.book = args[++i];
       result.chapter = args[++i];
-    }
-    else if (!arg.startsWith('-') && !result.input) result.input = arg;
+    } else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
   return result;
 }
@@ -119,9 +114,9 @@ function isTranslatable(text) {
 
   // Skip chemical formulas: He, H~2~O, CO~2~, etc.
   // These typically have format like X~n~Y or just element symbols
-  if (/^[A-Z][a-z]?\d*(\([a-z]\))?$/.test(trimmed)) return false;  // Simple: He, Al, Fe
-  if (/^[A-Z][a-z]?~\d+~[A-Z]?[a-z]?(\([a-z]\))?$/.test(trimmed)) return false;  // H~2~O
-  if (/^[A-Z]~?\d*~?[A-Z]?~?\d*~?[A-Z]?~?\d*~?\([a-z]\)$/.test(trimmed)) return false;  // Complex formulas
+  if (/^[A-Z][a-z]?\d*(\([a-z]\))?$/.test(trimmed)) return false; // Simple: He, Al, Fe
+  if (/^[A-Z][a-z]?~\d+~[A-Z]?[a-z]?(\([a-z]\))?$/.test(trimmed)) return false; // H~2~O
+  if (/^[A-Z]~?\d*~?[A-Z]?~?\d*~?[A-Z]?~?\d*~?\([a-z]\)$/.test(trimmed)) return false; // Complex formulas
 
   // Skip state indicators in parentheses: (*g*), (*l*), (*s*)
   if (/^\(\*[a-z]\*\)$/.test(trimmed)) return false;
@@ -134,7 +129,8 @@ function isTranslatable(text) {
 
   // Skip cells that are mostly chemical notation
   // Pattern: optional element, subscript notation, optional state
-  if (/^[A-Z][a-z]?(?:~\d+~)?(?:[A-Z][a-z]?(?:~\d+~)?)*(?:\(\*?[a-z]\*?\))?$/.test(trimmed)) return false;
+  if (/^[A-Z][a-z]?(?:~\d+~)?(?:[A-Z][a-z]?(?:~\d+~)?)*(?:\(\*?[a-z]\*?\))?$/.test(trimmed))
+    return false;
 
   // Keep anything with lowercase letters that aren't part of chemical notation
   // Words like "helium", "water", "ethanol" have multiple lowercase letters
@@ -152,7 +148,7 @@ function isTranslatable(text) {
  * @returns {object} { headers: string[], rows: string[][] }
  */
 function parseTable(markdown) {
-  const lines = markdown.split('\n').filter(line => line.trim().startsWith('|'));
+  const lines = markdown.split('\n').filter((line) => line.trim().startsWith('|'));
 
   if (lines.length < 2) {
     return { headers: [], rows: [] };
@@ -162,8 +158,8 @@ function parseTable(markdown) {
   const parseRow = (line) => {
     return line
       .split('|')
-      .slice(1, -1)  // Remove empty first/last from split
-      .map(cell => cell.trim());
+      .slice(1, -1) // Remove empty first/last from split
+      .map((cell) => cell.trim());
   };
 
   const headers = parseRow(lines[0]);
@@ -180,10 +176,10 @@ function parseTable(markdown) {
  * @param {string} tableId - The table ID (e.g., "TABLE:1")
  * @returns {object} Extracted strings with cell references
  */
-function extractTableStrings(table, tableId) {
+function extractTableStrings(table, _tableId) {
   const strings = {
     headers: [],
-    cells: []
+    cells: [],
   };
 
   const { headers, rows } = parseTable(table.markdown);
@@ -193,7 +189,7 @@ function extractTableStrings(table, tableId) {
     if (isTranslatable(header)) {
       strings.headers.push({
         col: colIndex,
-        text: header
+        text: header,
       });
     }
   });
@@ -205,7 +201,7 @@ function extractTableStrings(table, tableId) {
         strings.cells.push({
           row: rowIndex,
           col: colIndex,
-          text: cell
+          text: cell,
         });
       }
     });
@@ -261,7 +257,7 @@ function generateStringsContent(data, extractedStrings) {
       // Use [[HEADERS]] to protect section marker
       lines.push('### [[HEADERS]]');
       lines.push('');
-      strings.headers.forEach((h, index) => {
+      strings.headers.forEach((h, _index) => {
         lines.push(`**H${h.col + 1}:** ${h.text}`);
         lines.push('');
       });
@@ -272,7 +268,7 @@ function generateStringsContent(data, extractedStrings) {
       // Use [[CELLS]] to protect section marker
       lines.push('### [[CELLS]]');
       lines.push('');
-      strings.cells.forEach((c, index) => {
+      strings.cells.forEach((c, _index) => {
         // Use R{row}C{col} format for cell reference
         lines.push(`**R${c.row + 1}C${c.col + 1}:** ${c.text}`);
         lines.push('');
@@ -342,14 +338,19 @@ function processFile(filePath, options) {
   const stringsPath = getStringsPath(filePath);
 
   if (dryRun) {
-    console.log(`[DRY RUN] Would extract ${totalStrings} string(s) from: ${path.basename(filePath)}`);
+    console.log(
+      `[DRY RUN] Would extract ${totalStrings} string(s) from: ${path.basename(filePath)}`
+    );
     for (const [tableId, strings] of Object.entries(extractedStrings)) {
       console.log(`  ${tableId}:`);
       if (strings.headers.length > 0) {
-        console.log(`    Headers: ${strings.headers.map(h => `"${h.text}"`).join(', ')}`);
+        console.log(`    Headers: ${strings.headers.map((h) => `"${h.text}"`).join(', ')}`);
       }
       if (strings.cells.length > 0) {
-        const preview = strings.cells.slice(0, 5).map(c => `"${c.text}"`).join(', ');
+        const preview = strings.cells
+          .slice(0, 5)
+          .map((c) => `"${c.text}"`)
+          .join(', ');
         const more = strings.cells.length > 5 ? ` (+${strings.cells.length - 5} more)` : '';
         console.log(`    Cells: ${preview}${more}`);
       }
@@ -361,13 +362,15 @@ function processFile(filePath, options) {
   fs.writeFileSync(stringsPath, stringsContent);
 
   if (verbose) {
-    console.log(`  Extracted ${totalStrings} string(s): ${path.basename(filePath)} -> ${path.basename(stringsPath)}`);
+    console.log(
+      `  Extracted ${totalStrings} string(s): ${path.basename(filePath)} -> ${path.basename(stringsPath)}`
+    );
   }
 
   return {
     success: true,
     stringsExtracted: totalStrings,
-    stringsPath
+    stringsPath,
   };
 }
 
@@ -427,7 +430,9 @@ function processBatch(directory, options) {
       filesWithStrings++;
       totalStrings += result.stringsExtracted;
       if (!options.verbose && !options.dryRun) {
-        console.log(`  Extracted ${result.stringsExtracted} string(s): ${path.relative(directory, file)}`);
+        console.log(
+          `  Extracted ${result.stringsExtracted} string(s): ${path.relative(directory, file)}`
+        );
       }
     }
   }
@@ -447,7 +452,14 @@ function processBatch(directory, options) {
 // Exports for programmatic use
 // ============================================================================
 
-export { processFile, processBatch, findProtectedFiles, extractTableStrings, isTranslatable, parseTable };
+export {
+  processFile,
+  processBatch,
+  findProtectedFiles,
+  extractTableStrings,
+  isTranslatable,
+  parseTable,
+};
 
 // ============================================================================
 // Main

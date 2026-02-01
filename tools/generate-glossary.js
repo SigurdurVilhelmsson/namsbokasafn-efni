@@ -55,7 +55,7 @@ function parseArgs(args) {
     output: null,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -72,7 +72,7 @@ function parseArgs(args) {
     } else if (arg === '--track' && args[i + 1]) {
       result.track = args[++i];
     } else if (arg === '--chapters' && args[i + 1]) {
-      result.chapters = args[++i].split(',').map(n => parseInt(n.trim(), 10));
+      result.chapters = args[++i].split(',').map((n) => parseInt(n.trim(), 10));
     } else if (arg === '--output' && args[i + 1]) {
       result.output = args[++i];
     }
@@ -200,7 +200,7 @@ function extractGlossaryFromCnxml(cnxmlPath, verbose) {
       terms.push({
         id: termId,
         englishTerm,
-        englishDefinition
+        englishDefinition,
       });
     }
   }
@@ -211,6 +211,7 @@ function extractGlossaryFromCnxml(cnxmlPath, verbose) {
 /**
  * Get module info (chapter, section) from CNXML metadata
  */
+// eslint-disable-next-line no-unused-vars
 function getModuleInfo(cnxmlPath) {
   if (!fs.existsSync(cnxmlPath)) {
     return { chapter: null, section: null };
@@ -245,10 +246,11 @@ function extractTermsFromMarkdown(translationDir, chapters, verbose) {
   }
 
   // List chapter directories
-  const chapterDirs = fs.readdirSync(translationDir)
-    .filter(name => /^\d+$/.test(name))
-    .map(name => parseInt(name, 10))
-    .filter(num => !chapters || chapters.includes(num))
+  const chapterDirs = fs
+    .readdirSync(translationDir)
+    .filter((name) => /^\d+$/.test(name))
+    .map((name) => parseInt(name, 10))
+    .filter((num) => !chapters || chapters.includes(num))
     .sort((a, b) => a - b);
 
   for (const chapterNum of chapterDirs) {
@@ -259,8 +261,9 @@ function extractTermsFromMarkdown(translationDir, chapters, verbose) {
     }
 
     // Find markdown files in chapter directory
-    const mdFiles = fs.readdirSync(chapterDir)
-      .filter(name => name.endsWith('.md'))
+    const mdFiles = fs
+      .readdirSync(chapterDir)
+      .filter((name) => name.endsWith('.md'))
       .sort();
 
     for (const mdFile of mdFiles) {
@@ -284,7 +287,7 @@ function extractTermsFromMarkdown(translationDir, chapters, verbose) {
         termMap.set(termId, {
           icelandicTerm,
           chapter: chapterNum,
-          section
+          section,
         });
 
         if (verbose) {
@@ -313,18 +316,20 @@ function extractDefinitionsFromKeyTerms(translationDir, chapters, verbose) {
     return defMap;
   }
 
-  const chapterDirs = fs.readdirSync(translationDir)
-    .filter(name => /^\d+$/.test(name))
-    .map(name => parseInt(name, 10))
-    .filter(num => !chapters || chapters.includes(num))
+  const chapterDirs = fs
+    .readdirSync(translationDir)
+    .filter((name) => /^\d+$/.test(name))
+    .map((name) => parseInt(name, 10))
+    .filter((num) => !chapters || chapters.includes(num))
     .sort((a, b) => a - b);
 
   for (const chapterNum of chapterDirs) {
     const chapterDir = path.join(translationDir, chapterNum.toString().padStart(2, '0'));
 
     // Look for key-terms file
-    const keyTermsFiles = fs.readdirSync(chapterDir)
-      .filter(name => name.includes('key-terms') && name.endsWith('.md'));
+    const keyTermsFiles = fs
+      .readdirSync(chapterDir)
+      .filter((name) => name.includes('key-terms') && name.endsWith('.md'));
 
     for (const keyTermsFile of keyTermsFiles) {
       const keyTermsPath = path.join(chapterDir, keyTermsFile);
@@ -345,8 +350,8 @@ function extractDefinitionsFromKeyTerms(translationDir, chapters, verbose) {
       // Split into non-empty paragraphs (blocks separated by blank lines)
       const paragraphs = cleanContent
         .split(/\n\s*\n/)
-        .map(p => p.trim())
-        .filter(p => p.length > 0);
+        .map((p) => p.trim())
+        .filter((p) => p.length > 0);
 
       // Parse pairs: term is usually short (1-3 words), definition is longer
       for (let i = 0; i < paragraphs.length - 1; i += 2) {
@@ -355,20 +360,23 @@ function extractDefinitionsFromKeyTerms(translationDir, chapters, verbose) {
 
         // Validate: term should be relatively short and not look like a sentence
         // Definition should be longer or at least different
-        if (term && definition &&
-            !term.includes('.') &&  // Terms don't end with periods
-            term.length < 100 &&    // Terms are short
-            definition !== term) {
-
+        if (
+          term &&
+          definition &&
+          !term.includes('.') && // Terms don't end with periods
+          term.length < 100 && // Terms are short
+          definition !== term
+        ) {
           // Normalize term for matching (lowercase, remove parentheticals)
-          const normalizedTerm = term.toLowerCase()
+          const normalizedTerm = term
+            .toLowerCase()
             .replace(/\s*\([^)]*\)\s*/g, '')
             .trim();
 
           defMap.set(normalizedTerm, {
             icelandicTerm: term,
             icelandicDefinition: definition,
-            chapter: chapterNum
+            chapter: chapterNum,
           });
 
           if (verbose) {
@@ -417,10 +425,11 @@ async function generateGlossary(options) {
   const englishTerms = [];
 
   // Find all chapter source directories
-  const chapterSourceDirs = fs.readdirSync(sourceDir)
-    .filter(name => name.startsWith('ch'))
-    .map(name => parseInt(name.replace('ch', ''), 10))
-    .filter(num => !isNaN(num) && (!chapters || chapters.includes(num)))
+  const chapterSourceDirs = fs
+    .readdirSync(sourceDir)
+    .filter((name) => name.startsWith('ch'))
+    .map((name) => parseInt(name.replace('ch', ''), 10))
+    .filter((num) => !isNaN(num) && (!chapters || chapters.includes(num)))
     .sort((a, b) => a - b);
 
   for (const chapterNum of chapterSourceDirs) {
@@ -431,8 +440,9 @@ async function generateGlossary(options) {
     }
 
     // Find all CNXML files in chapter
-    const cnxmlFiles = fs.readdirSync(chapterSourceDir)
-      .filter(name => name.endsWith('.cnxml'))
+    const cnxmlFiles = fs
+      .readdirSync(chapterSourceDir)
+      .filter((name) => name.endsWith('.cnxml'))
       .sort();
 
     if (verbose) {
@@ -478,11 +488,11 @@ async function generateGlossary(options) {
   const glossaryTerms = [];
 
   // Use Icelandic key-terms as the primary source
-  for (const [normTerm, icEntry] of icelandicDefMap.entries()) {
+  for (const icEntry of icelandicDefMap.values()) {
     glossaryTerms.push({
       term: icEntry.icelandicTerm,
       definition: icEntry.icelandicDefinition,
-      chapter: icEntry.chapter
+      chapter: icEntry.chapter,
     });
   }
 
@@ -490,9 +500,7 @@ async function generateGlossary(options) {
   console.log('');
 
   // Sort alphabetically by term (Icelandic collation)
-  glossaryTerms.sort((a, b) =>
-    a.term.toLowerCase().localeCompare(b.term.toLowerCase(), 'is')
-  );
+  glossaryTerms.sort((a, b) => a.term.toLowerCase().localeCompare(b.term.toLowerCase(), 'is'));
 
   console.log(`Total glossary entries: ${glossaryTerms.length}`);
 
@@ -546,7 +554,6 @@ async function main() {
       console.log(`Output: ${outputPath}`);
       console.log(`Terms: ${glossary.terms.length}`);
     }
-
   } catch (err) {
     console.error(`\nError: ${err.message}`);
     if (args.verbose) {

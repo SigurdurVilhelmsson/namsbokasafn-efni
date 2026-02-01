@@ -34,10 +34,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // ============================================================================
 // Argument Parsing
@@ -52,7 +48,7 @@ function parseArgs(args) {
     inPlace: false,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -126,7 +122,7 @@ function findSidecarFile(mdPath) {
   const possiblePaths = [
     path.join(dir, `${baseName}-protected.json`),
     path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}-protected.json`),
-    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}.en-protected.json`)
+    path.join(dir.replace('02-mt-output', '02-for-mt'), `${baseName}.en-protected.json`),
   ];
 
   for (const sidecarPath of possiblePaths) {
@@ -248,7 +244,12 @@ function findCorruptedTables(content) {
               break;
             }
           }
-        } else if (nextLine.trim() === '' || nextLine.startsWith('#') || nextLine.startsWith(':::') || nextLine.startsWith('*')) {
+        } else if (
+          nextLine.trim() === '' ||
+          nextLine.startsWith('#') ||
+          nextLine.startsWith(':::') ||
+          nextLine.startsWith('*')
+        ) {
           // Hit a clear boundary - not a corrupted table with attributes
           break;
         } else {
@@ -284,22 +285,29 @@ function findCorruptedTables(content) {
           const nextLine = lines[j];
 
           // Stop at clear markdown boundaries
-          if (nextLine.match(/^#{1,6}\s/) ||     // Heading
-              nextLine.startsWith(':::') ||      // Directive
-              nextLine.startsWith('**') ||       // Bold (likely table title)
-              nextLine.startsWith('![') ||       // Image
-              nextLine.match(/^\*[^*]/) ||       // Italic/figure caption
-              nextLine.startsWith('|') ||        // Another table
-              (nextLine.trim() === '' && j + 1 < lines.length &&
-               (lines[j + 1].match(/^#{1,6}\s/) || lines[j + 1].startsWith(':::') ||
-                lines[j + 1].startsWith('**') || lines[j + 1].startsWith('![')))) {
+          if (
+            nextLine.match(/^#{1,6}\s/) || // Heading
+            nextLine.startsWith(':::') || // Directive
+            nextLine.startsWith('**') || // Bold (likely table title)
+            nextLine.startsWith('![') || // Image
+            nextLine.match(/^\*[^*]/) || // Italic/figure caption
+            nextLine.startsWith('|') || // Another table
+            (nextLine.trim() === '' &&
+              j + 1 < lines.length &&
+              (lines[j + 1].match(/^#{1,6}\s/) ||
+                lines[j + 1].startsWith(':::') ||
+                lines[j + 1].startsWith('**') ||
+                lines[j + 1].startsWith('![')))
+          ) {
             break;
           }
 
           // Also stop if we see end of sentence followed by clear structural change
-          if (nextLine.trim().match(/[.?!]["']?\s*$/) &&
-              j + 1 < lines.length &&
-              (lines[j + 1].trim() === '' || lines[j + 1].match(/^#{1,6}\s/))) {
+          if (
+            nextLine.trim().match(/[.?!]["']?\s*$/) &&
+            j + 1 < lines.length &&
+            (lines[j + 1].trim() === '' || lines[j + 1].match(/^#{1,6}\s/))
+          ) {
             endIndex = j;
             break;
           }
@@ -312,7 +320,7 @@ function findCorruptedTables(content) {
         startLine: i,
         endLine: endIndex,
         content: tableContent,
-        id: tableId
+        id: tableId,
       });
       i = endIndex + 1;
     } else {
@@ -366,7 +374,7 @@ function repairTables(content, sidecar, verbose) {
     }
 
     // Check if this line is the start of a corrupted table
-    const corrupted_entry = corrupted.find(c => c.startLine === i);
+    const corrupted_entry = corrupted.find((c) => c.startLine === i);
 
     if (corrupted_entry) {
       const tableInfo = tableIdMap[corrupted_entry.id];

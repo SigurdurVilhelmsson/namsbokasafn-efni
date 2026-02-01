@@ -36,7 +36,7 @@ function parseArgs(args) {
     output: null,
     verbose: false,
     dryRun: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -108,7 +108,7 @@ WORKFLOW:
 // Markdown Scanning
 // ============================================================================
 
-function scanMarkdown(content, filePath, verbose) {
+function scanMarkdown(content, _filePath, _verbose) {
   const images = [];
   const lines = content.split('\n');
   const imagePattern = /!\[([^\]]*)\]\(([^)]+)\)/g;
@@ -134,7 +134,7 @@ function scanMarkdown(content, filePath, verbose) {
           reason: isEquation.reason,
           equationIndex: null,
           latex: null,
-          displayMode: true
+          displayMode: true,
         });
       }
     }
@@ -172,10 +172,19 @@ function checkIfEquationImage(altText, imagePath, lines, lineIndex) {
 }
 
 function extractImageContext(lines, lineIndex) {
-  const before = lines.slice(Math.max(0, lineIndex - 2), lineIndex)
-    .join(' ').replace(/\s+/g, ' ').trim().slice(-80);
-  const after = lines.slice(lineIndex + 1, Math.min(lines.length, lineIndex + 3))
-    .join(' ').replace(/\s+/g, ' ').replace(/!\[[^\]]*\]\([^)]+\)/g, '').trim().slice(0, 80);
+  const before = lines
+    .slice(Math.max(0, lineIndex - 2), lineIndex)
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(-80);
+  const after = lines
+    .slice(lineIndex + 1, Math.min(lines.length, lineIndex + 3))
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
+    .trim()
+    .slice(0, 80);
   return `...${before}...[IMAGE]...${after}...`;
 }
 
@@ -219,20 +228,22 @@ async function fetchCnxml(moduleId, verbose) {
 
 function fetchUrl(url) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
-      if (res.statusCode === 301 || res.statusCode === 302) {
-        fetchUrl(res.headers.location).then(resolve).catch(reject);
-        return;
-      }
-      if (res.statusCode !== 200) {
-        reject(new Error(`HTTP ${res.statusCode}: Failed to fetch ${url}`));
-        return;
-      }
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(data));
-      res.on('error', reject);
-    }).on('error', reject);
+    https
+      .get(url, (res) => {
+        if (res.statusCode === 301 || res.statusCode === 302) {
+          fetchUrl(res.headers.location).then(resolve).catch(reject);
+          return;
+        }
+        if (res.statusCode !== 200) {
+          reject(new Error(`HTTP ${res.statusCode}: Failed to fetch ${url}`));
+          return;
+        }
+        let data = '';
+        res.on('data', (chunk) => (data += chunk));
+        res.on('end', () => resolve(data));
+        res.on('error', reject);
+      })
+      .on('error', reject);
   });
 }
 
@@ -260,10 +271,18 @@ function extractEquations(cnxml) {
 }
 
 function extractCnxmlContext(cnxml, position) {
-  const before = cnxml.substring(Math.max(0, position - 200), position)
-    .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(-60);
-  const after = cnxml.substring(position, Math.min(cnxml.length, position + 500))
-    .replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60);
+  const before = cnxml
+    .substring(Math.max(0, position - 200), position)
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(-60);
+  const after = cnxml
+    .substring(position, Math.min(cnxml.length, position + 500))
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 60);
   return `...${before}...[EQUATION]...${after}...`;
 }
 
@@ -296,9 +315,27 @@ function convertMathMLToLatex(mathml) {
     [/<mo>\(<\/mo>/g, '('],
     [/<mo>\)<\/mo>/g, ')'],
     [/<mo>([^<]+)<\/mo>/g, '$1'],
-    [/<msup>([\s\S]*?)<\/msup>/g, (m, c) => { const p = splitParts(c); return p.length >= 2 ? `{${clean(p[0])}}^{${clean(p[1])}}` : m; }],
-    [/<msub>([\s\S]*?)<\/msub>/g, (m, c) => { const p = splitParts(c); return p.length >= 2 ? `{${clean(p[0])}}_{${clean(p[1])}}` : m; }],
-    [/<mfrac>([\s\S]*?)<\/mfrac>/g, (m, c) => { const p = splitParts(c); return p.length >= 2 ? `\\frac{${clean(p[0])}}{${clean(p[1])}}` : m; }],
+    [
+      /<msup>([\s\S]*?)<\/msup>/g,
+      (m, c) => {
+        const p = splitParts(c);
+        return p.length >= 2 ? `{${clean(p[0])}}^{${clean(p[1])}}` : m;
+      },
+    ],
+    [
+      /<msub>([\s\S]*?)<\/msub>/g,
+      (m, c) => {
+        const p = splitParts(c);
+        return p.length >= 2 ? `{${clean(p[0])}}_{${clean(p[1])}}` : m;
+      },
+    ],
+    [
+      /<mfrac>([\s\S]*?)<\/mfrac>/g,
+      (m, c) => {
+        const p = splitParts(c);
+        return p.length >= 2 ? `\\frac{${clean(p[0])}}{${clean(p[1])}}` : m;
+      },
+    ],
     [/<msqrt>([\s\S]*?)<\/msqrt>/g, '\\sqrt{$1}'],
     [/<mtable[^>]*>/g, '\\begin{array}{l}'],
     [/<\/mtable>/g, '\\end{array}'],
@@ -324,25 +361,41 @@ function convertMathMLToLatex(mathml) {
 
 function splitParts(content) {
   const parts = [];
-  let depth = 0, current = '', inTag = false, tagBuffer = '';
+  let depth = 0,
+    current = '',
+    inTag = false,
+    tagBuffer = '';
 
   for (const char of content) {
-    if (char === '<') { inTag = true; tagBuffer = '<'; }
-    else if (char === '>' && inTag) {
-      inTag = false; tagBuffer += '>';
+    if (char === '<') {
+      inTag = true;
+      tagBuffer = '<';
+    } else if (char === '>' && inTag) {
+      inTag = false;
+      tagBuffer += '>';
       if (tagBuffer.startsWith('</')) depth--;
       else if (!tagBuffer.endsWith('/>')) depth++;
-      current += tagBuffer; tagBuffer = '';
-      if (depth === 0 && current.trim()) { parts.push(current.trim()); current = ''; }
-    } else if (inTag) { tagBuffer += char; }
-    else { current += char; }
+      current += tagBuffer;
+      tagBuffer = '';
+      if (depth === 0 && current.trim()) {
+        parts.push(current.trim());
+        current = '';
+      }
+    } else if (inTag) {
+      tagBuffer += char;
+    } else {
+      current += char;
+    }
   }
   if (current.trim()) parts.push(current.trim());
   return parts;
 }
 
 function clean(str) {
-  return str.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  return str
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 // ============================================================================
@@ -356,7 +409,8 @@ async function generateMapping(mdPath, moduleId, verbose) {
   const equations = extractEquations(cnxml);
 
   return {
-    _comment: 'Edit this file to map images to equations. Set equationIndex or latex for each image.',
+    _comment:
+      'Edit this file to map images to equations. Set equationIndex or latex for each image.',
     source: path.basename(mdPath),
     module: moduleId,
     generatedAt: new Date().toISOString(),
@@ -365,12 +419,12 @@ async function generateMapping(mdPath, moduleId, verbose) {
       _hint: `Image ${i + 1}: Review context and match to an equation below`,
       equationIndex: null,
       latex: null,
-      displayMode: true
+      displayMode: true,
     })),
-    equations: equations.map(eq => ({
+    equations: equations.map((eq) => ({
       ...eq,
-      _preview: eq.latex.slice(0, 60) + (eq.latex.length > 60 ? '...' : '')
-    }))
+      _preview: eq.latex.slice(0, 60) + (eq.latex.length > 60 ? '...' : ''),
+    })),
   };
 }
 
@@ -400,20 +454,31 @@ function applyMapping(mdPath, mappingPath, dryRun, verbose) {
     if (!latex && img.equationIndex) {
       const eq = equationLookup[img.equationIndex];
       if (eq) latex = eq.latex;
-      else { console.warn(`Warning: Equation index ${img.equationIndex} not found`); continue; }
+      else {
+        console.warn(`Warning: Equation index ${img.equationIndex} not found`);
+        continue;
+      }
     }
 
-    if (!latex) { console.warn(`Warning: No LaTeX for ${img.path}`); continue; }
+    if (!latex) {
+      console.warn(`Warning: No LaTeX for ${img.path}`);
+      continue;
+    }
 
     const escapedPath = img.path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const altPattern = img.altText === '(empty)' ? '' : img.altText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const altPattern =
+      img.altText === '(empty)' ? '' : img.altText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const imagePattern = new RegExp(`!\\[${altPattern}\\]\\(${escapedPath}\\)`, 'g');
 
     const latexFormatted = img.displayMode !== false ? `$$\n${latex}\n$$` : `$${latex}$`;
 
     const matches = result.match(imagePattern);
     if (matches) {
-      replacements.push({ image: img.path, latex: latex.slice(0, 40) + '...', count: matches.length });
+      replacements.push({
+        image: img.path,
+        latex: latex.slice(0, 40) + '...',
+        count: matches.length,
+      });
       result = result.replace(imagePattern, latexFormatted);
     } else {
       console.warn(`Warning: Image pattern not found: ${img.path}`);
@@ -438,7 +503,10 @@ async function main() {
   try {
     switch (args.mode) {
       case 'scan': {
-        if (!args.input) { console.error('Error: --scan requires a markdown file'); process.exit(1); }
+        if (!args.input) {
+          console.error('Error: --scan requires a markdown file');
+          process.exit(1);
+        }
         const content = fs.readFileSync(args.input, 'utf-8');
         const images = scanMarkdown(content, args.input, args.verbose);
         displayScanResults(images, args.input);
@@ -467,7 +535,12 @@ async function main() {
           process.exit(1);
         }
         console.log(`Applying mapping from ${args.mapping}...`);
-        const { result, replacements } = applyMapping(args.input, args.mapping, args.dryRun, args.verbose);
+        const { result, replacements } = applyMapping(
+          args.input,
+          args.mapping,
+          args.dryRun,
+          args.verbose
+        );
 
         if (replacements.length === 0) {
           console.log('No replacements made. Check your mapping file.');

@@ -39,7 +39,7 @@ function parseArgs(args) {
     output: null,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -201,7 +201,7 @@ function extractGlossaryFromCnxml(cnxmlPath, verbose) {
       terms.push({
         id: termId,
         term,
-        definition
+        definition,
       });
     }
   }
@@ -214,28 +214,29 @@ function extractGlossaryFromCnxml(cnxmlPath, verbose) {
  */
 function cleanHtml(text) {
   return text
-    .replace(/<sup>([^<]*)<\/sup>/g, '^$1^')  // Superscript
-    .replace(/<sub>([^<]*)<\/sub>/g, '~$1~')  // Subscript
-    .replace(/<emphasis[^>]*>([^<]*)<\/emphasis>/g, '*$1*')  // Emphasis
-    .replace(/<[^>]+>/g, '')  // Remove remaining tags
-    .replace(/\s+/g, ' ')  // Normalize whitespace
+    .replace(/<sup>([^<]*)<\/sup>/g, '^$1^') // Superscript
+    .replace(/<sub>([^<]*)<\/sub>/g, '~$1~') // Subscript
+    .replace(/<emphasis[^>]*>([^<]*)<\/emphasis>/g, '*$1*') // Emphasis
+    .replace(/<[^>]+>/g, '') // Remove remaining tags
+    .replace(/\s+/g, ' ') // Normalize whitespace
     .trim();
 }
 
 /**
  * Get section number from CNXML module ID
  */
-function getModuleSection(moduleId, chapter) {
+// eslint-disable-next-line no-unused-vars
+function getModuleSection(moduleId, _chapter) {
   // Module ID to section mapping for Chemistry 2e
   const sectionMap = {
     // Chapter 1
-    'm68663': 'intro',
-    'm68664': '1.1',
-    'm68667': '1.2',
-    'm68670': '1.3',
-    'm68674': '1.4',
-    'm68690': '1.5',
-    'm68683': '1.6',
+    m68663: 'intro',
+    m68664: '1.1',
+    m68667: '1.2',
+    m68670: '1.3',
+    m68674: '1.4',
+    m68690: '1.5',
+    m68683: '1.6',
     // Add more as needed
   };
 
@@ -340,8 +341,9 @@ async function main() {
     process.exit(1);
   }
 
-  const cnxmlFiles = fs.readdirSync(sourceDir)
-    .filter(name => name.endsWith('.cnxml'))
+  const cnxmlFiles = fs
+    .readdirSync(sourceDir)
+    .filter((name) => name.endsWith('.cnxml'))
     .sort();
 
   console.log(`Found ${cnxmlFiles.length} CNXML files in chapter ${args.chapter}`);
@@ -365,16 +367,18 @@ async function main() {
   const markdown = generateMarkdown(allTerms, args.chapter, terminology, args.verbose);
 
   // Determine output path
-  const outputPath = args.output || path.join(
-    projectRoot,
-    'books',
-    args.book,
-    '05-publication',
-    'mt-preview',
-    'chapters',
-    chapterPadded,
-    `${args.chapter}-key-terms.md`
-  );
+  const outputPath =
+    args.output ||
+    path.join(
+      projectRoot,
+      'books',
+      args.book,
+      '05-publication',
+      'mt-preview',
+      'chapters',
+      chapterPadded,
+      `${args.chapter}-key-terms.md`
+    );
 
   if (args.dryRun) {
     console.log('');
@@ -400,7 +404,7 @@ async function main() {
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(`\nError: ${err.message}`);
   console.error(err.stack);
   process.exit(1);
