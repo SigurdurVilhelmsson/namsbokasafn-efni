@@ -315,8 +315,9 @@ function parseMarkdownStrings(content) {
       const figData = figMatch[2];
 
       // Skip if this looks like a table header we accidentally matched
-      if (figId.toLowerCase().startsWith('table') || figId.toLowerCase().startsWith('tafla'))
+      if (figId.toLowerCase().startsWith('table') || figId.toLowerCase().startsWith('tafla')) {
         continue;
+      }
 
       result.figures[figId] = {};
 
@@ -986,4 +987,23 @@ function main() {
   }
 }
 
-main();
+// ============================================================================
+// Exports for testing
+// ============================================================================
+
+export {
+  isMarkdownFormat,
+  parseMarkdownStrings,
+  parseLegacyStringsFile,
+  legacyToStructured,
+  cleanMTMangling,
+  updateSidecar,
+  updateFigures,
+  updateMarkdownTitles,
+  updateMarkdownFrontmatter,
+};
+
+// Only run main if executed directly (not imported)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}

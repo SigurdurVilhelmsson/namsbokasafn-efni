@@ -127,9 +127,10 @@ function parseArgs(args) {
     else if (arg === '--equations' && args[i + 1]) result.equationsOutput = args[++i];
     else if (arg === '--figures' && args[i + 1]) result.figuresOutput = args[++i];
     else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
-    else if (arg === '--example-start' && args[i + 1])
+    else if (arg === '--example-start' && args[i + 1]) {
       result.exampleStart = parseInt(args[++i], 10);
-    else if (arg === '--figure-start' && args[i + 1]) result.figureStart = parseInt(args[++i], 10);
+    } else if (arg === '--figure-start' && args[i + 1])
+      result.figureStart = parseInt(args[++i], 10);
     else if (arg === '--table-start' && args[i + 1]) result.tableStart = parseInt(args[++i], 10);
     else if (arg === '--output-counters') result.outputCounters = true;
     else if (!arg.startsWith('-') && !result.input) result.input = arg;
@@ -1981,4 +1982,21 @@ async function main() {
   }
 }
 
-main();
+// ============================================================================
+// Exports for testing
+// ============================================================================
+
+export {
+  convertMathMLToLatex,
+  splitMathParts,
+  toRoman,
+  getListPrefix,
+  processInlineContent,
+  extractMetadata,
+  extractContent,
+};
+
+// Only run main if executed directly (not imported)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}
