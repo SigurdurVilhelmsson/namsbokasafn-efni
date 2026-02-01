@@ -7,7 +7,7 @@
  * sending content to Erlendur machine translation (malstadur.is).
  *
  * The MT process destroys these structures:
- * - YAML frontmatter: converted to `## titill:...` heading
+ * - YAML frontmatter: converted to `## title:...` heading
  * - Tables: line breaks removed, pipes merged
  *
  * This script:

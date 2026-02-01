@@ -2,7 +2,7 @@
 
 # Introduction
 
-:::learning-objectives
+:::[[DIRECTIVE:learning-objectives]]
 ## Learning Objectives
 
 - Energy Basics

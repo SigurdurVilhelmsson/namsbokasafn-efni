@@ -96,7 +96,23 @@ function parseFrontmatter(content) {
     };
   }
 
-  // Try Erlendur header format
+  // Try Erlendur header format (English)
+  const erlendurMatchEn = content.match(
+    /^##\s*title:\s*"([^"]+)"\s*chapter:\s*"([^"]+)"\s*module:\s*"([^"]+)"\s*language:\s*"([^"]+)".*?\n\n/
+  );
+  if (erlendurMatchEn) {
+    return {
+      frontmatter: {
+        title: erlendurMatchEn[1],
+        section: erlendurMatchEn[2],
+        module: erlendurMatchEn[3],
+        lang: erlendurMatchEn[4],
+      },
+      body: content.substring(erlendurMatchEn[0].length).trim(),
+    };
+  }
+
+  // Try Erlendur header format (legacy Icelandic)
   const erlendurMatch = content.match(
     /^##\s*titill:\s*„([^"]+)"\s*kafli:\s*„([^"]+)"\s*eining:\s*„([^"]+)"\s*tungumál:\s*„([^"]+)".*?\n\n/
   );

@@ -3,7 +3,7 @@
   "module": "m68724",
   "section": "5.1",
   "frontmatter": {
-    "title": "Energy Basics",
+    "title": "Grunnatriði orku",
     "section": "5.1",
     "module": "m68724",
     "lang": "en",
@@ -12,14 +12,14 @@
   "tables": {
     "TABLE:1": {
       "markdown": "| Substance | Symbol (*state*) | Specific Heat (J/g °C) |\n| :--- | :--- | :--- |\n| helium | He(*g*) | 5.193 |\n| water | H~2~O(*l*) | 4.184 |\n| ethanol | C~2~H~6~O(*l*) | 2.376 |\n| ice | H~2~O(*s*) | 2.093 (at −10 °C) |\n| water vapor | H~2~O(*g*) | 1.864 |\n| nitrogen | N~2~(*g*) | 1.040 |\n| air | 1.007 |  |\n| oxygen | O~2~(*g*) | 0.918 |\n| aluminum | Al(*s*) | 0.897 |\n| carbon dioxide | CO~2~(*g*) | 0.853 |\n| argon | Ar(*g*) | 0.522 |\n| iron | Fe(*s*) | 0.449 |\n| copper | Cu(*s*) | 0.385 |\n| lead | Pb(*s*) | 0.130 |\n| gold | Au(*s*) | 0.129 |\n| silicon | Si(*s*) | 0.712 |",
-      "title": "Specific Heats of Common Substances at 25 °C and 1 bar",
+      "title": "Eðlisvarmi algengra efna við 25 °C og 1 bar",
       "id": "fs-idm68801008",
-      "summary": "A table with three columns and seventeen rows is shown. The top row is the header row and contains the headers “Substance,” “State and Symbol,” and “Specific Heat (J / g ° C)”. Under the first heading are the terms “helium,” “water,” “ethanol,” “ice,” “water vapor,” “nitrogen,” “air,” “oxygen,” “aluminum,” “carbon dioxide,” “argon,” “iron,” “copper,” “lead,” “gold” and “silicon.” The second column contains the symbols and signs: “H e (g),” “H subscript 2 O (l),” “C subscript 2 H subscript 6 O (l),” “H subscript 2 O (s),” “H subscript 2 O (g),” “N subscript 2 (g),” a blank entry for air, “O subscript 2 (g),” “A l (s),” “C O subscript 2 (g),” “A r (g),” “F e (s),” “C u (s),” “P b (s),” “A u (s),” and “S I (s).” The last column contains the values “5.193,” “4.184,” “2.376,” “2.093 (at –10 °C), ” “1.864,” “1.040,” “1.007,” “0.918.” “0.897,” “0.853,” “0.522,” “0.449,” “0.385,” “0.130,” “0.129,” and “0.712.”"
+      "summary": "Sýnd er tafla með þremur dálkum og sautján röðum.\nEfsta röðin er hausaröð og inniheldur hausana –Efni“, –Ástand og tákn“\nog –Eðlisvarmi (J/g °C)“. Undir fyrsta hausnum eru hugtökin –helín“,\n–vatn“, –etanól“, –ís“, –vatnsgufa“, –köfnunarefni“, –loft“, –súrefni“,\n–ál“, –koldíoxíð“, –argon“, –járn“, –kopar“, –blý“, –gull“ og –kísill“.\nAnnar dálkurinn inniheldur táknin og merkin: –He(g)“, –H með lágstaf 2\nO(l)“, –C með lágstaf 2 H með lágstaf 6 O(l)“, –H með lágstaf 2 O(s)“,\n–H með lágstaf 2 O(g)“, –N með lágstaf 2(g)“, auð færsla fyrir loft, –O\nmeð lágstaf 2(g)“, –Al(s)“, –CO með lágstaf 2(g)“, –Ar(g)“, –Fe(s)“,\n–Cu(s)“, –Pb(s)“, –Au(s)“ og –Si(s)“. Síðasti dálkurinn inniheldur\ngildin –5,193“, –4,184“, –2,376“, –2,093 (við –10 °C)“, –1,864“,\n–1,040“, –1,007“, –0,918“, –0,897“, –0,853“, –0,522“, –0,449“, –0,385“,\n–0,130“, –0,129“ og –0,712“."
     },
     "TABLE:2": {
       "markdown": "| [[EQ:15]] |\n| :--- |",
       "id": "key-equations-table",
-      "summary": "key equations table"
+      "summary": "tafla með lykiljögnum"
     }
   }
 }

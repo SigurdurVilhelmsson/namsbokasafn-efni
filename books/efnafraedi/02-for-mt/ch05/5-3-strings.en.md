@@ -34,12 +34,6 @@
 
 **[[ALT_TEXT]]:** An aerial photo depicts a view of Mount Kilimanjaro. A straight, green arrow labeled X is drawn from the term “base,” written at the bottom of the mountain, to the term “Summit,” written at the top of the mountain. Another arrow labeled Y is draw from the base to the summit alongside the green arrow, but this arrow is pink and has three large S-shaped curves along its length.
 
-### [[CNX_Chem_05_03_GasBurning]]
-
-**[[CAPTION]]:** The combustion of gasoline is very exothermic. (credit: modification of work by “AlexEagle”/Flickr)
-
-**[[ALT_TEXT]]:** A picture shows a large ball of fire burning on a road. A fire truck and fireman are shown in the foreground.
-
 ### [[CNX_Chem_05_03_AlgalFuel1]]
 
 **[[CAPTION]]:** (a) Tiny algal organisms can be (b) grown in large quantities and eventually (c) turned into a useful fuel such as biodiesel. (credit a: modification of work by Micah Sittig; credit b: modification of work by Robert Kerton; credit c: modification of work by John F. Williams)
@@ -51,9 +45,3 @@
 **[[CAPTION]]:** Algae convert sunlight and carbon dioxide into oil that is harvested, extracted, purified, and transformed into a variety of renewable fuels.
 
 **[[ALT_TEXT]]:** A flowchart is shown that contains pictures and words. Reading from left to right, the terms “Grow,” “Harvest,” “Extract,” “Process and purify,” and “Jet fuel gasoline diesel” are shown with right-facing arrows in between each. Above each term, respectively, are diagrams of three containers, three cylinders lying side-by-side, a pyramid-like container with liquid inside, a factory, and a fuel pump. In the space above all of the diagrams and to the left of the images is a diagram of the sun.
-
-### [[CNX_Chem_05_03_HessCO2]]
-
-**[[CAPTION]]:** The formation of CO~2~(*g*) from its elements can be thought of as occurring in two steps, which sum to the overall reaction, as described by Hess’s law. The horizontal blue lines represent enthalpies. For an exothermic process, the products are at lower enthalpy than are the reactants.
-
-**[[ALT_TEXT]]:** A diagram is shown. A long arrow faces upward on the left with the phrase “H increasing.” A horizontal line at the bottom of the diagram is shown with the formula “C O subscript 2 (g)” below it. A horizontal line at the top of the diagram has the formulas “C (s) + O subscript 2 (g)” above it. The top and bottom lines are connected by a downward facing arrow with the value “Δ H = –394 k J” written beside it. Below and to the right of the top horizontal line is a second horizontal line with the equations “C O (g) + one half O subscript 2 (g)” above it. This line and the bottom line are connected by a downward facing arrow with the value “Δ H = –283 k J” written beside it. The same line and the top line are connected by a downward facing arrow with the value “Δ H = –111 k J” written beside it. There are three brackets to the right of the diagram. The first bracket runs from the top horizontal line to the second horizontal line. It is labeled, “Enthalpy of reactants.” The second bracket runs from the second horizontal line to the bottom horizontal line. It is labeled, “Enthalpy of products.” Both of these brackets are included in the third bracket which runs from the top to the bottom of the diagram. It is labeled, “Enthalpy change of exothermic reaction in 1 or 2 steps.”

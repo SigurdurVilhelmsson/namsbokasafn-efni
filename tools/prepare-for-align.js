@@ -4,7 +4,7 @@
  * prepare-for-align.js
  *
  * Prepares markdown files for Matecat Align by:
- * - Stripping Erlendur headers (## titill: ...)
+ * - Stripping Erlendur headers (## title: ... or ## titill: ...)
  * - Stripping YAML frontmatter
  * - Combining split parts (a, b, c) into single files
  * - Normalizing whitespace
@@ -19,15 +19,15 @@ import path from 'path';
 
 function parseArgs(args) {
   const result = {
-    en: null,         // Single EN file
-    is: null,         // Single IS file
-    enDir: null,      // Directory with EN files
-    isDir: null,      // Directory with IS files
+    en: null, // Single EN file
+    is: null, // Single IS file
+    enDir: null, // Directory with EN files
+    isDir: null, // Directory with IS files
     outputDir: null,
-    section: null,    // Section to process (e.g., "5-1")
+    section: null, // Section to process (e.g., "5-1")
     verbose: false,
     dryRun: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -92,28 +92,31 @@ function stripYamlFrontmatter(content) {
 
 /**
  * Strip Erlendur-style headers
- * Format: ## titill: "Title" kafli: "5.1" eining: "m68724" tungumaal: "en" hluti: "a"
+ * Format: ## title: "Title" chapter: "5.1" module: "m68724" language: "en" part: "a"
+ * Also handles legacy Icelandic format: ## titill: "Title" kafli: "5.1" ...
  */
 function stripErlendurHeader(content) {
-  // Match various forms of the Erlendur header
-  return content.replace(/^##\s*titill:.*?\n\n?/i, '');
+  // Match various forms of the Erlendur header (English or Icelandic)
+  return content.replace(/^##\s*(?:titill|title):.*?\n\n?/i, '');
 }
 
 /**
  * Normalize whitespace: consistent line endings, trim extra blank lines
  */
 function normalizeWhitespace(content) {
-  return content
-    // Normalize line endings
-    .replace(/\r\n/g, '\n')
-    // Remove trailing whitespace from lines
-    .split('\n')
-    .map(line => line.trimEnd())
-    .join('\n')
-    // Collapse multiple blank lines to two newlines
-    .replace(/\n{3,}/g, '\n\n')
-    // Trim start and end
-    .trim();
+  return (
+    content
+      // Normalize line endings
+      .replace(/\r\n/g, '\n')
+      // Remove trailing whitespace from lines
+      .split('\n')
+      .map((line) => line.trimEnd())
+      .join('\n')
+      // Collapse multiple blank lines to two newlines
+      .replace(/\n{3,}/g, '\n\n')
+      // Trim start and end
+      .trim()
+  );
 }
 
 /**
@@ -148,7 +151,7 @@ function findAndCombineParts(dir, section, lang, verbose) {
         file,
         path: filePath,
         part: partLetter,
-        content: cleanMarkdown(content)
+        content: cleanMarkdown(content),
       });
 
       if (verbose) {
@@ -162,8 +165,8 @@ function findAndCombineParts(dir, section, lang, verbose) {
   }
 
   // Check if we have an unsplit combined file (no part letter)
-  const combinedFile = parts.find(p => p.part === null);
-  const splitParts = parts.filter(p => p.part !== null);
+  const combinedFile = parts.find((p) => p.part === null);
+  const splitParts = parts.filter((p) => p.part !== null);
 
   // Prefer the combined file if it exists
   if (combinedFile) {
@@ -177,10 +180,12 @@ function findAndCombineParts(dir, section, lang, verbose) {
   splitParts.sort((a, b) => a.part.localeCompare(b.part));
 
   if (verbose) {
-    console.log(`  Combining ${splitParts.length} parts: ${splitParts.map(p => p.part).join(', ')}`);
+    console.log(
+      `  Combining ${splitParts.length} parts: ${splitParts.map((p) => p.part).join(', ')}`
+    );
   }
 
-  return splitParts.map(p => p.content).join('\n\n');
+  return splitParts.map((p) => p.content).join('\n\n');
 }
 
 /**
@@ -336,7 +341,6 @@ async function main() {
 
     console.log('\nFiles ready for Matecat Align upload.');
     console.log('Upload the EN and IS files as a pair to create TM.');
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);

@@ -165,9 +165,10 @@ function fixSplitDirectiveNames(content, verbose = false) {
 
   // Finally, remove spurious MT-generated metadata headings
   // These are YAML-like metadata that MT translated and converted to headings
-  // Pattern: ## titill: "..." kafli: "..." eining: "..." tungumál: "..."
+  // Pattern: ## title: "..." chapter: "..." module: "..." language: "..."
+  // Also handles legacy Icelandic: ## titill: "..." kafli: "..." eining: "..." tungumál: "..."
   const metadataHeadingPattern =
-    /^## titill:.*(?:kafli:|eining:|tungumál:|hluti:|leyfisvefslóð:).*$/gm;
+    /^## (?:titill|title):.*(?:kafli:|chapter:|eining:|module:|tungumál:|language:|hluti:|part:|leyfisvefslóð:|license_url:).*$/gm;
   const metadataMatches = content.match(metadataHeadingPattern);
   if (metadataMatches) {
     fixCount += metadataMatches.length;

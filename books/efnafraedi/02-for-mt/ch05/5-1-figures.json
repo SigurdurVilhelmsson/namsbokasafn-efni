@@ -9,73 +9,27 @@
       "imagePath": "CNX_Chem_05_01_Thermochem.jpg",
       "captionEn": "The energy involved in chemical changes is important to our daily lives: (a) A cheeseburger for lunch provides the energy you need to get through the rest of the day; (b) the combustion of gasoline provides the energy that moves your car (and you) between home, work, and school; and (c) coke, a processed form of coal, provides the energy needed to convert iron ore into iron, which is essential for making many of the products we use daily. (credit a: modification of work by “Pink Sherbet Photography”/Flickr; credit b: modification of work by Jeffery Turner)",
       "altText": "Three pictures are shown and labeled a, b, and c. Picture a is a cheeseburger. Picture b depicts a highway that is full of traffic. Picture c is a view into an industrial metal furnace. The view into the furnace shows a hot fire burning inside.",
-      "captionIs": "Orkan sem fylgir efnabreytingum er mikilvæg í daglegu\nlífi okkar: (a) Ostborgari í hádeginu gefur þér þá orku sem þú þarft til\nað komast í gegnum restina af deginum; (b) bruni bensíns gefur þá orku\nsem hreyfir bílinn þinn (og þig) milli heimilis, vinnu og skóla; og (c)\nkox, unnin mynd af kolum, gefur þá orku sem þarf til að breyta járngrýti\ní járn, sem er nauðsynlegt til að framleiða margar af þeim vörum sem við\nnotum daglega. (mynd a: breyting á verki eftir „Pink Sherbet\nPhotography“/Flickr; mynd b: breyting á verki eftir Jeffery Turner)",
-      "altTextIs": "Þrjár myndir eru sýndar og merktar a, b og c. Mynd a er\naf ostborgara. Mynd b sýnir hraðbraut fulla af umferð. Mynd c er sýn inn\ní iðnaðarbræðsluofn fyrir málm. Sýnin inn í ofninn sýnir heitan eld\nbrenna inni."
-    },
-    "CNX_Chem_05_01_Waterfall": {
-      "number": "5.3",
-      "imagePath": "CNX_Chem_05_01_Waterfall.jpg",
-      "captionEn": "(a) Water at a higher elevation, for example, at the top of Victoria Falls, has a higher potential energy than water at a lower elevation. As the water falls, some of its potential energy is converted into kinetic energy. (b) If the water flows through generators at the bottom of a dam, such as the Hoover Dam shown here, its kinetic energy is converted into electrical energy. (credit a: modification of work by Steve Jurvetson; credit b: modification of work by “curimedia”/Wikimedia commons)",
-      "altText": "Two pictures are shown and labeled a and b. Picture a shows a large waterfall with water falling from a high elevation at the top of the falls to a lower elevation. The second picture is a view looking down into the Hoover Dam. Water is shown behind the high wall of the dam on one side and at the base of the dam on the other.",
-      "class": "scaled-down",
-      "captionIs": "(a) Vatn í meiri hæð, til dæmis efst í Viktoríufossum,\nhefur meiri stöðuorku en vatn í minni hæð. Þegar vatnið fellur breytist\nhluti af stöðuorku þess í hreyfiorku. (b) Ef vatnið rennur í gegnum\nrafala neðst í stíflu, eins og Hoover-stíflunni sem sýnd er hér,\nbreytist hreyfiorka þess í raforku. (mynd a: breyting á verki eftir\nSteve Jurvetson; mynd b: breyting á verki eftir „curimedia“/Wikimedia\ncommons)",
-      "altTextIs": "Tvær myndir eru sýndar og merktar a og b. Mynd a sýnir\nstóran foss með vatni sem fellur úr mikilli hæð efst á fossinum niður í\nminni hæð. Seinni myndin er sýn niður í Hoover-stífluna. Vatn sést fyrir\naftan háan vegg stíflunnar öðrum megin og við grunn stíflunnar hinum\nmegin."
-    },
-    "CNX_Chem_05_01_HotCold": {
-      "number": "5.4",
-      "imagePath": "CNX_Chem_05_01_HotCold.jpg",
-      "captionEn": "(a) The molecules in a sample of hot water move more rapidly than (b) those in a sample of cold water.",
-      "altText": "Two molecular drawings are shown and labeled a and b. Drawing a is a box containing fourteen red spheres that are surrounded by lines indicating that the particles are moving rapidly. This drawing has a label that reads “Hot liquid.” Drawing b depicts another box of equal size that also contains fourteen spheres, but these are blue. They are all surrounded by smaller lines that depict some particle motion, but not as much as in drawing a. This drawing has a label that reads “Cold liquid.”",
-      "class": "scaled-down",
-      "captionIs": "(a) Sameindirnar í sýni af heitu vatni hreyfast hraðar\nen (b) þær í sýni af köldu vatni.",
-      "altTextIs": "Tvær sameindateikningar eru sýndar og merktar a og b.\nTeikning a er kassi sem inniheldur fjórtán rauðar kúlur sem eru\numkringdar línum sem gefa til kynna að eindirnar hreyfist hratt. Þessi\nteikning er með merki sem á stendur „Heitur vökvi“. Teikning b sýnir\nannan kassa af sömu stærð sem inniheldur einnig fjórtán kúlur, en þær\neru bláar. Þær eru allar umkringdar minni línum sem sýna einhverja\neindahreyfingu, en ekki eins mikla og á teikningu a. Þessi teikning er\nmeð merki sem á stendur „Kaldur vökvi“."
-    },
-    "CNX_Chem_05_01_Thermom": {
-      "number": "5.5",
-      "imagePath": "CNX_Chem_05_01_Thermom.jpg",
-      "captionEn": "(a) In an alcohol or mercury thermometer, the liquid (dyed red for visibility) expands when heated and contracts when cooled, much more so than the glass tube that contains the liquid. (b) In a bimetallic thermometer, two different metals (such as brass and steel) form a two-layered strip. When heated or cooled, one of the metals (brass) expands or contracts more than the other metal (steel), causing the strip to coil or uncoil. Both types of thermometers have a calibrated scale that indicates the temperature. (credit a: modification of work by “dwstucke”/Flickr)",
-      "altText": "A picture labeled a is shown as well as a pair of drawings labeled b. Picture a shows the lower portion of an alcohol thermometer. The thermometer has a printed scale to the left of the tube in the center that reads from negative forty degrees at the bottom to forty degrees at the top. It also has a scale printed to the right of the tube that reads from negative thirty degrees at the bottom to thirty five degrees at the top. On both scales, the volume of the alcohol in the tube reads between nine and ten degrees. The two images labeled b both depict a metal strip coiled into a spiral and composed of brass and steel. The left coil, which is loosely coiled, is labeled along its upper edge with the 30 degrees C and 10 degrees C. The end of the coil is near the 30 degrees C label. The right hand coil is much more tightly wound and the end is near the 10 degree C label.",
-      "captionIs": "(a) Í vínanda- eða kvikasilfurshitamæli þenst vökvinn\n(rauðlitaður til að sjást betur) út þegar hann er hitaður og dregst\nsaman þegar hann er kældur, mun meira en glerrörið sem inniheldur\nvökvann. (b) Í tvímálmshitamæli mynda tveir mismunandi málmar (eins og\nmessing og stál) tveggja laga ræmu. Þegar hún er hituð eða kæld þenst\nannar málmurinn (messing) út eða dregst saman meira en hinn málmurinn\n(stál), sem veldur því að ræman vefst upp eða ofan af sér. Báðar gerðir\nhitamæla hafa kvarðaðan skala sem sýnir hitastigið. (mynd a: breyting á\nverki eftir „dwstucke“/Flickr)",
-      "altTextIs": "Mynd merkt a er sýnd ásamt pari af teikningum merktum b.\nMynd a sýnir neðri hluta vínandahitamælis. Hitamælirinn er með prentuðum\nskala vinstra megin við rörið í miðjunni sem sýnir frá mínus fjörutíu\ngráðum neðst upp í fjörutíu gráður efst."
-    },
-    "CNX_Chem_05_01_HeatTrans1": {
-      "number": "5.6",
-      "imagePath": "CNX_Chem_05_01_HeatTrans1.jpg",
-      "captionEn": "(a) Substances H and L are initially at different temperatures, and their atoms have different average kinetic energies. (b) When they contact each other, collisions between the molecules result in the transfer of kinetic (thermal) energy from the hotter to the cooler matter. (c) The two objects reach “thermal equilibrium” when both substances are at the same temperature and their molecules have the same average kinetic energy.",
-      "altText": "Three drawings are shown and labeled a, b, and c, respectively. The first drawing labeled a depicts two boxes, with a space in between and the pair is captioned “Different temperatures.” The left hand box is labeled H and holds fourteen well-spaced red spheres with lines drawn around them to indicate rapid motion. The right hand box is labeled L and depicts fourteen blue spheres that are closer together than the red spheres and have smaller lines around them showing less particle motion. The second drawing labeled b depicts two boxes that are touching one another. The left box is labeled H and contains fourteen maroon spheres that are spaced evenly apart. There are tiny lines around each sphere depicting particle movement. The right box is labeled L and holds fourteen purple spheres that are slightly closer together than the maroon spheres. There are also tiny lines around each sphere depicting particle movement. A black arrow points from the left box to the right box and the pair of diagrams is captioned “Contact.” The third drawing labeled c, is labeled “Thermal equilibrium.” There are two boxes shown in contact with one another. Both boxes contain fourteen purple spheres with small lines around them depicting moderate movement. The left box is labeled H and the right box is labeled L.",
-      "captionIs": "(a) Efnin H og L eru upphaflega með mismunandi hitastig\nog atóm þeirra hafa mismunandi meðalhreyfiorku. (b) Þegar þau komast í\nsnertingu hvort við annað leiða árekstrar milli sameindanna til\nflutnings á hreyfiorku (varmaorku) frá heitara efninu yfir í það\nkaldara. (c) Hlutirnir tveir ná „varmajafnvægi“ þegar bæði efnin eru við\nsama hitastig og sameindir þeirra hafa sömu meðalhreyfiorku."
-    },
-    "CNX_Chem_05_01_OxyacTorch": {
-      "number": "5.7",
-      "imagePath": "CNX_Chem_05_01_OxyacTorch.jpg",
-      "captionEn": "(a) An oxyacetylene torch produces heat by the combustion of acetylene in oxygen. The energy released by this exothermic reaction heats and then melts the metal being cut. The sparks are tiny bits of the molten metal flying away. (b) A cold pack uses an endothermic process to create the sensation of cold. (credit a: modification of work by “Skatebiker”/Wikimedia commons)",
-      "altText": "Two pictures are shown and labeled a and b. Picture a shows a metal railroad tie being cut with the flame of an acetylene torch. Picture b shows a chemical cold pack containing ammonium nitrate.",
-      "captionIs": "(a) Acetýlen-súrefniskyndill framleiðir varma með bruna\ná acetýleni í súrefni. Orkan sem losnar við þetta útverma hvarf hitar og\nbræðir síðan málminn sem verið er að skera. Neistarnir eru örsmáir bitar\naf bráðnum málmi sem fljúga í burtu. (b) Kaldur bakstur notar innvermið\nferli til að skapa kuldatilfinningu. (mynd a: breytt útgáfa af verki\n„Skatebiker“/Wikimedia commons)"
-    },
-    "CNX_Chem_05_01_HeatCapacity": {
-      "number": "5.8",
-      "imagePath": "CNX_Chem_05_01_HeatCapacity.jpg",
-      "captionEn": "Because of its larger mass, a large frying pan has a larger heat capacity than a small frying pan. Because they are made of the same material, both frying pans have the same specific heat. (credit: Mark Blaser)",
-      "altText": "The picture shows two black metal frying pans sitting on a flat surface. The left pan is about half the size of the right pan.",
-      "class": "scaled-down",
-      "captionIs": "Vegna meiri massa hefur stór steikarpanna meiri\nvarmarýmd en lítil steikarpanna. Þar sem þær eru gerðar úr sama efni\nhafa báðar steikarpönnurnar sömu eðlisvarmarýmd. (mynd: Mark Blaser)"
+      "captionIs": "Orkan sem fylgir efnabreytingum er mikilvæg í\ndaglegu lífi okkar: (a) Ostborgari í hádeginu gefur þér orkuna sem þú\nþarft til að komast í gegnum restina af deginum; (b) bruni bensíns gefur\norkuna sem hreyfir bílinn þinn (og þig) milli heimilis, vinnu og skóla;\nog (c) kox, unnin útgáfa af kolum, gefur orkuna sem þarf til að breyta\njárngrýti í járn, sem er nauðsynlegt til að framleiða margar af þeim\nvörum sem við notum daglega. (heimild a: breyting á verki eftir –Pink\nSherbet Photography“/Flickr; heimild b: breyting á verki eftir Jeffery\nTurner)",
+      "altTextIs": "Þrjár myndir eru sýndar og merktar a, b og c. Mynd\na er af ostborgara. Mynd b sýnir hraðbraut með mikilli umferð. Mynd c er\nsýn inn í iðnaðarbræðsluofn fyrir málm. Sýnin inn í ofninn sýnir heitan\neld brenna inni."
     },
     "CNX_Chem_05_01_SolTherm1": {
-      "number": "5.9",
+      "number": "5.3",
       "imagePath": "CNX_Chem_05_01_SolTherm1.jpg",
       "captionEn": "This solar thermal plant uses parabolic trough mirrors to concentrate sunlight. (credit a: modification of work by Bureau of Land Management)",
       "altText": "This figure has two parts labeled a and b. Part a shows rows and rows of trough mirrors. Part b shows how a solar thermal plant works. Heat transfer fluid enters a tank via pipes. The tank contains water which is heated. As the heat is exchanged from the pipes to the water, the water becomes steam. The steam travels to a steam turbine. The steam turbine begins to turn which powers a generator. Exhaust steam exits the steam turbine and enters a cooling tower.",
-      "captionIs": "Þetta sólarvarmaver notar fleygbogaspegla til að safna\nsaman sólarljósi. (mynd a: breytt útgáfa af verki Bureau of Land\nManagement)"
+      "captionIs": "Þessi sólarvarmaverksmiðja notar fleygbogaspegla\ntil að safna saman sólarljósi. (heimild a: breyting á verki eftir Bureau\nof Land Management)",
+      "altTextIs": "Þessi mynd hefur tvo hluta merkta a og b. Hluti a\nsýnir raðir af trogspeglum. Hluti b sýnir hvernig sólarvarmaverksmiðja\nvirkar. Varmaflutningsvökvi fer inn í tank um rör. Tankurinn inniheldur\nvatn sem er hitað. Þegar varminn flyst frá rörunum yfir í vatnið verður\nvatnið að gufu. Gufan fer í gufuhverfil. Gufuhverfillinn byrjar að\nsnúast sem knýr rafal. Útblástursgufa fer úr gufuhverflinum og inn í\nkæliturn."
     },
     "CNX_Chem_05_01_SolTherm2": {
-      "number": "5.10",
+      "number": "5.4",
       "imagePath": "CNX_Chem_05_01_SolTherm2.jpg",
       "captionEn": "(a) The Ivanpah solar thermal plant uses 170,000 mirrors to concentrate sunlight on water-filled towers. (b) It covers 4000 acres of public land near the Mojave Desert and the California-Nevada border. (credit a: modification of work by Craig Dietrich; credit b: modification of work by “USFWS Pacific Southwest Region”/Flickr)",
       "altText": "Two pictures are shown and labeled a and b. Picture a shows a thermal plant with three tall metal towers. Picture b is an arial picture of the mirrors used at the plant. They are arranged in rows.",
-      "captionIs": "(a) Ivanpah sólarvarmaverið notar 170.000 spegla til að\nsafna saman sólarljósi á vatnsfyllta turna. (b) Það nær yfir 4000 ekrur\naf almenningslandi nálægt Mojave-eyðimörkinni og landamærum Kaliforníu\nog Nevada. (mynd a: breytt útgáfa af verki Craig Dietrich; mynd b:\nbreytt útgáfa af verki „USFWS Pacific Southwest Region“/Flickr)"
+      "captionIs": "(a) Ivanpah sólarvarmaverksmiðjan notar 170.000\nspegla til að safna saman sólarljósi á vatnsfyllta turna. (b) Hún þekur\n4000 ekrur af almenningslandi nálægt Mojave-eyðimörkinni og landamærum\nKaliforníu og Nevada. (heimild a: breyting á verki eftir Craig Dietrich;\nheimild b: breyting á verki eftir –USFWS Pacific Southwest\nRegion“/Flickr)",
+      "altTextIs": "Tvær myndir eru sýndar og merktar a og b. Mynd a\nsýnir varmaverksmiðju með þremur háum málmturnum. Mynd b er loftmynd af\nspeglunum sem notaðir eru í verksmiðjunni. Þeim er raðað í raðir."
     }
   },
   "counters": {
-    "figures": 10
+    "figures": 4
   }
 }

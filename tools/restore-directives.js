@@ -90,19 +90,26 @@ Examples:
 
 /**
  * Restore directive names from [[DIRECTIVE:name]] markers
+ * Also handles MT escaping of brackets: \[\[ → [[ and \]\] → ]]
  *
  * @param {string} content - Markdown content
  * @param {boolean} verbose - Whether to log restoration details
- * @returns {{content: string, directivesRestored: number}}
+ * @returns {{content: string, directivesRestored: number, stats: object}}
  */
 function restoreDirectives(content, verbose) {
   let directivesRestored = 0;
+  let bracketsUnescaped = 0;
+  let closingDirectivesFixed = 0;
+  let linksUnescaped = 0;
 
-  // Pattern matches: :::[[DIRECTIVE:name]] or :::[[DIRECTIVE:name]]{attributes}
-  // Captures: (1) directive name, (2) optional attributes
-  const protectedPattern = /^(:::)\[\[DIRECTIVE:(\w+(?:-\w+)*)\]\]((?:\{[^}]*\})?)/gm;
+  let result = content;
 
-  const restoredContent = content.replace(protectedPattern, (match, prefix, name, attrs) => {
+  // Step 1: Unescape MT-escaped brackets in directive markers
+  // MT converts [[DIRECTIVE:name]] to \[\[DIRECTIVE:name\]\]
+  const escapedDirectivePattern =
+    /^(:::)\\?\[\\?\[DIRECTIVE:(\w+(?:-\w+)*)\\?\]\\?\]((?:\{[^}]*\})?)/gm;
+
+  result = result.replace(escapedDirectivePattern, (match, prefix, name, attrs) => {
     directivesRestored++;
     if (verbose) {
       console.error(`  Restored directive: :::${name}`);
@@ -110,7 +117,54 @@ function restoreDirectives(content, verbose) {
     return `${prefix}${name}${attrs}`;
   });
 
-  return { content: restoredContent, directivesRestored };
+  // Step 2: Unescape equation placeholders: \[\[EQ:N\]\] → [[EQ:N]]
+  const escapedEqPattern = /\\?\[\\?\[EQ:(\d+)\\?\]\\?\]/g;
+  result = result.replace(escapedEqPattern, (match, num) => {
+    bracketsUnescaped++;
+    return `[[EQ:${num}]]`;
+  });
+
+  // Step 3: Unescape table placeholders: \[\[TABLE:N\]\] → [[TABLE:N]]
+  const escapedTablePattern = /\\?\[\\?\[TABLE:(\d+)\\?\]\\?\]/g;
+  result = result.replace(escapedTablePattern, (match, num) => {
+    bracketsUnescaped++;
+    return `[[TABLE:${num}]]`;
+  });
+
+  // Step 4: Fix directive closing on same line as content
+  // Pattern: "content :::" at end of line → "content\n:::"
+  const closingOnSameLinePattern = /^(.+[^\s])\s+:::$/gm;
+  result = result.replace(closingOnSameLinePattern, (match, content) => {
+    closingDirectivesFixed++;
+    if (verbose) {
+      console.error(`  Fixed closing directive on same line`);
+    }
+    return `${content}\n:::`;
+  });
+
+  // Step 5: Unescape escaped brackets in links: \[ → [ and \] → ]
+  // MT escapes brackets in link text, e.g., \[text\]{url="..."} → [text]{url="..."}
+  // This is safe to do globally since \[ and \] only appear in MT-escaped contexts
+  const escapedOpenMatches = result.match(/\\\[/g);
+  const escapedCloseMatches = result.match(/\\]/g);
+  if (escapedOpenMatches || escapedCloseMatches) {
+    result = result.replace(/\\\[/g, '[');
+    result = result.replace(/\\]/g, ']');
+    linksUnescaped = (escapedOpenMatches?.length || 0) + (escapedCloseMatches?.length || 0);
+    if (verbose) {
+      console.error(`  Unescaped ${linksUnescaped} bracket(s) in links`);
+    }
+  }
+
+  return {
+    content: result,
+    directivesRestored,
+    stats: {
+      bracketsUnescaped,
+      closingDirectivesFixed,
+      linksUnescaped,
+    },
+  };
 }
 
 // ============================================================================
@@ -133,11 +187,15 @@ function processFile(filePath, options) {
 
   const content = fs.readFileSync(filePath, 'utf-8');
 
-  // Restore directives
-  const { content: restoredContent, directivesRestored } = restoreDirectives(content, verbose);
+  // Restore directives and fix MT artifacts
+  const {
+    content: restoredContent,
+    directivesRestored,
+    stats,
+  } = restoreDirectives(content, verbose);
 
-  if (directivesRestored === 0 && verbose) {
-    console.error(`  No protected directives found in: ${filePath}`);
+  if (directivesRestored === 0 && stats.bracketsUnescaped === 0 && verbose) {
+    console.error(`  No MT artifacts found in: ${filePath}`);
   }
 
   // Output result
@@ -158,6 +216,7 @@ function processFile(filePath, options) {
   return {
     success: true,
     directivesRestored,
+    stats,
   };
 }
 
@@ -207,7 +266,10 @@ function processBatch(directory, options) {
   console.log('');
 
   let totalDirectives = 0;
-  let filesWithDirectives = 0;
+  let totalBrackets = 0;
+  let totalClosings = 0;
+  let totalLinks = 0;
+  let filesModified = 0;
 
   for (const file of files) {
     if (options.verbose) {
@@ -217,13 +279,32 @@ function processBatch(directory, options) {
     const result = processFile(file, { ...options, inPlace: true });
 
     if (result.success) {
-      if (result.directivesRestored > 0) {
-        filesWithDirectives++;
+      const totalChanges =
+        result.directivesRestored +
+        (result.stats?.bracketsUnescaped || 0) +
+        (result.stats?.closingDirectivesFixed || 0) +
+        (result.stats?.linksUnescaped || 0);
+
+      if (totalChanges > 0) {
+        filesModified++;
         totalDirectives += result.directivesRestored;
+        totalBrackets += result.stats?.bracketsUnescaped || 0;
+        totalClosings += result.stats?.closingDirectivesFixed || 0;
+        totalLinks += result.stats?.linksUnescaped || 0;
+
         if (!options.verbose) {
-          console.log(
-            `  Restored ${result.directivesRestored} directive(s): ${path.relative(directory, file)}`
-          );
+          const changes = [];
+          if (result.directivesRestored > 0)
+            changes.push(`${result.directivesRestored} directives`);
+          if (result.stats?.bracketsUnescaped > 0) {
+            changes.push(`${result.stats.bracketsUnescaped} brackets`);
+          }
+          if (result.stats?.closingDirectivesFixed > 0) {
+            changes.push(`${result.stats.closingDirectivesFixed} closings`);
+          }
+          if (result.stats?.linksUnescaped > 0)
+            changes.push(`${result.stats.linksUnescaped} links`);
+          console.log(`  Fixed ${changes.join(', ')}: ${path.relative(directory, file)}`);
         }
       }
     } else {
@@ -233,11 +314,14 @@ function processBatch(directory, options) {
 
   console.log('');
   console.log('─'.repeat(50));
-  console.log('Directive Restoration Complete');
+  console.log('MT Artifact Restoration Complete');
   console.log('─'.repeat(50));
   console.log(`  Files processed: ${files.length}`);
-  console.log(`  Files with directives: ${filesWithDirectives}`);
-  console.log(`  Total directives restored: ${totalDirectives}`);
+  console.log(`  Files modified: ${filesModified}`);
+  console.log(`  Directives restored: ${totalDirectives}`);
+  console.log(`  Brackets unescaped: ${totalBrackets}`);
+  console.log(`  Closings fixed: ${totalClosings}`);
+  console.log(`  Links unescaped: ${totalLinks}`);
 }
 
 // ============================================================================
@@ -275,8 +359,26 @@ function main() {
         process.exit(1);
       }
 
-      if (result.directivesRestored > 0) {
-        console.error(`Directives restored: ${result.directivesRestored}`);
+      const totalChanges =
+        result.directivesRestored +
+        (result.stats?.bracketsUnescaped || 0) +
+        (result.stats?.closingDirectivesFixed || 0) +
+        (result.stats?.linksUnescaped || 0);
+
+      if (totalChanges > 0) {
+        console.error(`MT artifacts fixed:`);
+        if (result.directivesRestored > 0) {
+          console.error(`  Directives restored: ${result.directivesRestored}`);
+        }
+        if (result.stats?.bracketsUnescaped > 0) {
+          console.error(`  Brackets unescaped: ${result.stats.bracketsUnescaped}`);
+        }
+        if (result.stats?.closingDirectivesFixed > 0) {
+          console.error(`  Closings fixed: ${result.stats.closingDirectivesFixed}`);
+        }
+        if (result.stats?.linksUnescaped > 0) {
+          console.error(`  Links unescaped: ${result.stats.linksUnescaped}`);
+        }
       }
     }
   } catch (err) {

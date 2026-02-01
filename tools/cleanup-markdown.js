@@ -48,9 +48,9 @@ function parseArgs(args) {
     else if (arg === '--dry-run') result.dryRun = true;
     else if (arg === '--in-place') result.inPlace = true;
     else if (arg === '--output' && args[i + 1]) result.output = args[++i];
-    else if ((arg === '--figures-sidecar' || arg === '--figures') && args[i + 1])
+    else if ((arg === '--figures-sidecar' || arg === '--figures') && args[i + 1]) {
       result.figuresSidecar = args[++i];
-    else if (!arg.startsWith('-') && !result.input) result.input = arg;
+    } else if (!arg.startsWith('-') && !result.input) result.input = arg;
   }
   return result;
 }
@@ -205,8 +205,9 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
         const captionMatch = lines[j].match(/^\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):/i);
         if (captionMatch && !idToNumber[id]) {
           idToNumber[id] = captionMatch[1];
-          if (verbose)
+          if (verbose) {
             console.error(`  Found URL ID + nearby caption: ${id} -> ${captionMatch[1]}`);
+          }
           break;
         }
         // Stop if we hit another image (we've gone too far)
@@ -223,8 +224,9 @@ function buildElementNumberMap(content, verbose = false, figuresSidecarPath = nu
         const captionMatch = lines[j].match(/^\*(?:Mynd|Figure|Tafla|Table)\s+(\d+\.?\d*):/i);
         if (captionMatch && !idToNumber[id]) {
           idToNumber[id] = captionMatch[1];
-          if (verbose)
+          if (verbose) {
             console.error(`  Found image ID + nearby caption: ${id} -> ${captionMatch[1]}`);
+          }
           break;
         }
         // Stop if we hit another image
@@ -471,11 +473,12 @@ function cleanupMarkdown(content, verbose = false, figuresSidecarPath = null) {
   };
 
   // 0a. Remove stray metadata lines from MT output
-  // Pattern: ## titill: „..." kafli: „..." eining: „..." tungumál: „..." hluti: „..."
+  // Pattern: ## title: "..." chapter: "..." module: "..." language: "..." part: "..."
+  // Also handles legacy Icelandic: ## titill: „..." kafli: „..." eining: „..." tungumál: „..."
   // These appear in MT output and should be stripped
   // Note: Quotes can be „..." (U+201E...U+201C) or regular "..." - handle both
   result = result.replace(
-    /^##\s*titill:\s*[„"][^""\u201C]*["\u201C]\s*kafli:\s*[„"][^""\u201C]*["\u201C].*$/gm,
+    /^##\s*(?:titill|title):\s*[„"][^""\u201C]*["\u201C]\s*(?:kafli|chapter):\s*[„"][^""\u201C]*["\u201C].*$/gm,
     (match) => {
       stats.strayMetadata++;
       if (verbose) console.error(`  Stray metadata removed: ${match.substring(0, 50)}...`);

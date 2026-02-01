@@ -27,7 +27,7 @@ function parseArgs(args) {
     outputDir: null,
     verbose: false,
     dryRun: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -99,7 +99,7 @@ function loadSidecarMetadata(inputPath) {
   const sidecarPatterns = [
     `${basename}-protected.json`,
     `${basename}-equations.json`,
-    `${basename}-figures.json`
+    `${basename}-figures.json`,
   ];
 
   for (const pattern of sidecarPatterns) {
@@ -140,7 +140,7 @@ function makeErlendurHeader(metadata, partLetter) {
   const module = metadata.module || 'unknown';
   const lang = metadata.lang || 'en';
 
-  return `## titill: „${title}" kafli: „${section}" eining: „${module}" tungumál: „${lang}" hluti: „${partLetter}"\n\n`;
+  return `## title: "${title}" chapter: "${section}" module: "${module}" language: "${lang}" part: "${partLetter}"\n\n`;
 }
 
 /**
@@ -175,11 +175,13 @@ function splitContent(content, metadata, verbose) {
       const header = makeErlendurHeader(metadata, partLetter);
       parts.push({
         content: header + currentPart.join('\n\n'),
-        part: partLetter
+        part: partLetter,
       });
 
       if (verbose) {
-        console.log(`  Part ${partLetter}: ${currentLength} chars, ${currentPart.length} paragraphs`);
+        console.log(
+          `  Part ${partLetter}: ${currentLength} chars, ${currentPart.length} paragraphs`
+        );
       }
 
       // Start new part
@@ -198,7 +200,7 @@ function splitContent(content, metadata, verbose) {
     const header = makeErlendurHeader(metadata, partLetter);
     parts.push({
       content: header + currentPart.join('\n\n'),
-      part: partLetter
+      part: partLetter,
     });
 
     if (verbose) {
@@ -233,7 +235,9 @@ function splitFile(inputPath, outputDir, options) {
     if (sidecarMetadata) {
       metadata = { ...sidecarMetadata, ...metadata }; // YAML takes precedence
       if (verbose) {
-        console.log(`  Loaded metadata from sidecar: title="${metadata.title}", section="${metadata.section}"`);
+        console.log(
+          `  Loaded metadata from sidecar: title="${metadata.title}", section="${metadata.section}"`
+        );
       }
     }
   }
@@ -245,8 +249,8 @@ function splitFile(inputPath, outputDir, options) {
     bodyContent = content.substring(yamlMatch[0].length);
   }
 
-  // Also remove Erlendur-style headers if present
-  const erlendurMatch = bodyContent.match(/^##\s*titill:.*?\n\n/);
+  // Also remove Erlendur-style headers if present (English or legacy Icelandic)
+  const erlendurMatch = bodyContent.match(/^##\s*(?:title|titill):.*?\n\n/);
   if (erlendurMatch) {
     bodyContent = bodyContent.substring(erlendurMatch[0].length);
   }
@@ -255,8 +259,9 @@ function splitFile(inputPath, outputDir, options) {
   const parts = splitContent(bodyContent.trim(), metadata, verbose);
 
   // Determine section base for filenames
-  const sectionBase = metadata.section ? metadata.section.replace('.', '-') :
-                      path.basename(inputPath, '.en.md').replace('.', '-');
+  const sectionBase = metadata.section
+    ? metadata.section.replace('.', '-')
+    : path.basename(inputPath, '.en.md').replace('.', '-');
 
   // Ensure output directory exists
   if (!dryRun && !fs.existsSync(outputDir)) {
@@ -320,9 +325,10 @@ export function splitDirectory(directory, options = {}) {
   const { verbose, dryRun } = options;
 
   // Find all .en.md files (excluding already-split files with (a), (b) etc.)
-  const files = fs.readdirSync(directory)
-    .filter(f => f.endsWith('.en.md') && !f.match(/\([a-z]\)\.en\.md$/))
-    .map(f => path.join(directory, f));
+  const files = fs
+    .readdirSync(directory)
+    .filter((f) => f.endsWith('.en.md') && !f.match(/\([a-z]\)\.en\.md$/))
+    .map((f) => path.join(directory, f));
 
   if (files.length === 0) {
     return { filesSplit: 0, partsCreated: 0, filesUnchanged: 0 };
@@ -390,11 +396,10 @@ async function main() {
       console.log(`  ${r.filename}${partInfo} - ${r.chars} chars`);
     }
 
-    if (results.some(r => r.chars > ERLENDUR_HARD_LIMIT)) {
+    if (results.some((r) => r.chars > ERLENDUR_HARD_LIMIT)) {
       console.log('\nWARNING: Some files still exceed the 20,000 character hard limit!');
       process.exit(1);
     }
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);

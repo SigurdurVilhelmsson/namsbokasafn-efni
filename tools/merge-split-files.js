@@ -18,7 +18,7 @@ function parseArgs(args) {
     batch: null,
     verbose: false,
     dryRun: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -54,12 +54,11 @@ Examples:
 
 /**
  * Remove Erlendur header from content
- * Headers look like: ## titill: „..." kafli: „..." eining: „..." tungumál: „..." hluti: „..."
+ * Headers look like: ## title: "..." chapter: "..." module: "..." language: "..." part: "..."
+ * Also handles legacy Icelandic: ## titill: „..." kafli: „..." eining: „..." tungumál: „..." hluti: „..."
  */
 function removeErlendurHeader(content) {
-  // Match various translated versions of the header
-  // Original: ## titill: „Unknown" kafli: „unknown" eining: „unknown" tungumál: „is" hluti: „a"
-  // Could also be: ## Title: "Unknown" Chapter: "unknown" ...
+  // Match various versions of the header (English and legacy Icelandic)
   // Use multiline flag and remove anywhere in content (not just at start)
   const headerPatterns = [
     /^##\s*titill:.*?hluti:.*?$\n?\n?/gim,
@@ -200,7 +199,6 @@ async function main() {
     console.log('─'.repeat(50));
     console.log(`  Groups merged: ${results.length}`);
     console.log(`  Total parts merged: ${results.reduce((sum, r) => sum + r.partsCount, 0)}`);
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);
