@@ -1,0 +1,67 @@
+{
+  "chapter": 5,
+  "titleEn": "Thermochemistry",
+  "titleIs": "Varmafræði",
+  "sections": [
+    {
+      "id": "5.1",
+      "titleEn": "Energy Basics",
+      "titleIs": "Grundvallaratriði orku"
+    },
+    {
+      "id": "5.2",
+      "titleEn": "Calorimetry",
+      "titleIs": "Varmamælingar"
+    },
+    {
+      "id": "5.3",
+      "titleEn": "Enthalpy",
+      "titleIs": "Vermi"
+    }
+  ],
+  "status": {
+    "source": {
+      "complete": true,
+      "date": "2026-01-29",
+      "inProgress": false,
+      "pending": false
+    },
+    "mtOutput": {
+      "complete": true,
+      "date": "2026-01-30",
+      "inProgress": false,
+      "pending": false
+    },
+    "matecat": {
+      "complete": false,
+      "inProgress": false,
+      "pending": true,
+      "notes": "Not yet started"
+    },
+    "editorialPass1": {
+      "complete": false
+    },
+    "tmUpdated": {
+      "complete": false
+    },
+    "editorialPass2": {
+      "complete": false
+    },
+    "publication": {
+      "mtPreview": {
+        "complete": true,
+        "date": "2026-02-01",
+        "notes": "Regenerated with current pipeline (8 files)"
+      },
+      "faithful": {
+        "complete": false
+      }
+    }
+  },
+  "images": {
+    "total": null,
+    "translated": 0,
+    "status": "not-started"
+  },
+  "notes": "Reference chapter for pipeline development. First chapter processed with CNXML-based pipeline."
+}
