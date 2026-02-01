@@ -406,25 +406,42 @@ function extractExercises(content) {
       const problemId = match[1];
       let problemContent = match[2];
 
-      // Extract answer if present (supports :::answer and :::svar - Icelandic alias)
-      // Handle both block format and inline format (content on same line as :::answer)
+      // Extract answer if present
+      // Handle multiple formats:
+      // 1. Nested: :::answer\ncontent\n::: inside exercise
+      // 2. Adjacent: :::answer\ncontent\n::: after exercise closing :::
+      // 3. Inline: :::answer content on same line
       let answer = null;
 
-      // Try block format first: :::answer\ncontent\n:::
-      let answerMatch = problemContent.match(/:::(?:answer|svar)\s*\n([\s\S]*?)(?::::|$)/);
+      // First, check for NESTED answer inside the exercise block
+      let answerMatch = problemContent.match(/:::(?:answer|svar)\s*\n([\s\S]*?):::/);
       if (answerMatch) {
         answer = answerMatch[1].trim();
+        // Remove answer block from problem content
+        problemContent = problemContent.replace(/:::(?:answer|svar)[\s\S]*?:::/m, '').trim();
       } else {
         // Try inline format: :::answer content (no closing :::)
         answerMatch = problemContent.match(/:::(?:answer|svar)\s+([^\n]+(?:\n(?!:::)[^\n]*)*)/);
         if (answerMatch) {
           answer = answerMatch[1].trim();
+          problemContent = problemContent.replace(/:::(?:answer|svar)[\s\S]*$/m, '').trim();
         }
       }
 
-      if (answer) {
-        // Remove answer block from problem content
-        problemContent = problemContent.replace(/:::(?:answer|svar)[\s\S]*$/m, '').trim();
+      // Check for ADJACENT answer block (separate from exercise)
+      // MT output format: :::exercise{...}\ncontent\n:::\n\n:::answer\ncontent\n:::
+      if (!answer) {
+        // Look ahead in the original content for an adjacent :::answer block
+        const exerciseEndPos = match.index + match[0].length;
+        const contentAfter = content.substring(exerciseEndPos);
+
+        // Match: optional whitespace, :::\n, whitespace/newlines, :::answer\ncontent\n:::
+        const adjacentPattern =
+          /^\s*:::\s*\n\s*:::(?:answer|svar)\s*\n([\s\S]*?)(?=\n:::(?:\n|$)|$)/;
+        const adjacentMatch = contentAfter.match(adjacentPattern);
+        if (adjacentMatch) {
+          answer = adjacentMatch[1].trim();
+        }
       }
 
       // Clean up trailing ::: from problem content
@@ -539,25 +556,66 @@ function generateFrontmatter(data) {
 }
 
 /**
- * Generate output filename for module content
+ * Transliterate Icelandic characters to ASCII for URL-friendly slugs
+ * Following OpenStax URL convention (e.g., /5-1-energy-basics)
  */
-function getModuleOutputFilename(chapter, section, title, lang) {
+function transliterateIcelandic(text) {
+  const map = {
+    ð: 'd',
+    Ð: 'D',
+    þ: 'th',
+    Þ: 'Th',
+    æ: 'ae',
+    Æ: 'Ae',
+    ö: 'o',
+    Ö: 'O',
+    á: 'a',
+    Á: 'A',
+    é: 'e',
+    É: 'E',
+    í: 'i',
+    Í: 'I',
+    ó: 'o',
+    Ó: 'O',
+    ú: 'u',
+    Ú: 'U',
+    ý: 'y',
+    Ý: 'Y',
+  };
+  return text.replace(/[ðÐþÞæÆöÖáÁéÉíÍóÓúÚýÝ]/g, (char) => map[char] || char);
+}
+
+/**
+ * Generate URL-friendly slug from title
+ * Matches OpenStax URL format (e.g., "Energy Basics" → "energy-basics")
+ */
+function slugify(title) {
+  return transliterateIcelandic(title)
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '') // Remove non-alphanumeric except spaces and hyphens
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-') // Collapse multiple hyphens
+    .replace(/^-|-$/g, '') // Trim leading/trailing hyphens
+    .substring(0, 50); // Limit length
+}
+
+/**
+ * Generate output filename for module content
+ * Note: Output files use .md extension (without language code) for vefur compatibility
+ * Uses OpenStax URL format (e.g., 5-1-energy-basics.md)
+ */
+function getModuleOutputFilename(chapter, section, title) {
   const chapterStr = chapter.toString();
 
   if (section === 'intro') {
-    return `${chapterStr}-0-introduction.${lang}.md`;
+    return `${chapterStr}-0-introduction.md`;
   }
 
-  // Convert title to slug
-  const slug = title
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .substring(0, 50);
-
   const sectionNum = section.split('.')[1];
-  return `${chapterStr}-${sectionNum}-${slug}.${lang}.md`;
+  const slug = slugify(title);
+
+  // Format: N-M-slug.md (e.g., 5-1-energy-basics.md)
+  return slug ? `${chapterStr}-${sectionNum}-${slug}.md` : `${chapterStr}-${sectionNum}.md`;
 }
 
 /**
@@ -598,7 +656,7 @@ function writeKeyTermsFile(outputDir, chapter, terms, options) {
     type: 'keyTerms',
   };
 
-  const outputPath = path.join(outputDir, `${chapter}-key-terms.${options.lang}.md`);
+  const outputPath = path.join(outputDir, `${chapter}-key-terms.md`);
   const output = generateFrontmatter(frontmatter) + content;
 
   if (!options.dryRun) {
@@ -630,7 +688,7 @@ function writeKeyEquationsFile(outputDir, chapter, equations, options) {
     type: 'keyEquations',
   };
 
-  const outputPath = path.join(outputDir, `${chapter}-key-equations.${options.lang}.md`);
+  const outputPath = path.join(outputDir, `${chapter}-key-equations.md`);
   const output = generateFrontmatter(frontmatter) + content;
 
   if (!options.dryRun) {
@@ -663,7 +721,7 @@ function writeSummaryFile(outputDir, chapter, summaries, options) {
     type: 'summary',
   };
 
-  const outputPath = path.join(outputDir, `${chapter}-summary.${options.lang}.md`);
+  const outputPath = path.join(outputDir, `${chapter}-summary.md`);
   const output = generateFrontmatter(frontmatter) + content;
 
   if (!options.dryRun) {
@@ -716,7 +774,7 @@ function writeExercisesFile(outputDir, chapter, exercisesBySection, options) {
     type: 'exercises',
   };
 
-  const outputPath = path.join(outputDir, `${chapter}-exercises.${options.lang}.md`);
+  const outputPath = path.join(outputDir, `${chapter}-exercises.md`);
   const output = generateFrontmatter(frontmatter) + content;
 
   if (!options.dryRun) {
@@ -731,17 +789,55 @@ function writeExercisesFile(outputDir, chapter, exercisesBySection, options) {
 }
 
 /**
+ * Write answer key file
+ * Contains all answers that exist in the source (OpenStax only provides answers for select exercises)
+ */
+function writeAnswerKeyFile(outputDir, chapter, answers, options) {
+  const answerKeyTitle = options.lang === 'is' ? 'Svarlykill' : 'Answer Key';
+
+  // Include all collected answers (source already limits to select exercises)
+  // Generate content with answer-entry directives
+  let content = `## ${answerKeyTitle}\n\n`;
+
+  for (const answer of answers) {
+    content += `:::answer-entry{number=${answer.number}}\n`;
+    content += answer.answer.trim() + '\n';
+    content += ':::\n\n';
+  }
+
+  const frontmatter = {
+    title: answerKeyTitle,
+    chapter: chapter,
+    'translation-status': TRACK_LABELS[options.track] || options.track,
+    'publication-track': options.track,
+    'published-at': new Date().toISOString(),
+    type: 'answer-key',
+  };
+
+  const outputPath = path.join(outputDir, `${chapter}-answer-key.md`);
+  const output = generateFrontmatter(frontmatter) + content;
+
+  if (!options.dryRun) {
+    fs.writeFileSync(outputPath, output);
+  }
+
+  return { path: outputPath, answerCount: answers.length };
+}
+
+/**
  * Write stripped module content file
  */
 function writeModuleFile(outputDir, moduleData, options) {
   const { chapter, section, title, strippedContent, frontmatter } = moduleData;
 
-  const outputFilename = getModuleOutputFilename(chapter, section, title, options.lang);
+  const outputFilename = getModuleOutputFilename(chapter, section, title);
   const outputPath = path.join(outputDir, outputFilename);
 
-  // Update frontmatter
+  // Build complete frontmatter with chapter/section info
   const newFrontmatter = {
-    ...frontmatter,
+    title: frontmatter.title || title,
+    section: section === 'intro' ? 'intro' : section,
+    chapter: chapter,
     'translation-status': TRACK_LABELS[options.track] || options.track,
     'publication-track': options.track,
     'published-at': new Date().toISOString(),
@@ -917,6 +1013,12 @@ async function assembleChapter(options) {
   );
   console.log(`  Answers collected: ${exercisesResult.answers.length}`);
 
+  // Answer Key (odd-numbered only, per OpenStax convention)
+  const answerKeyResult = writeAnswerKeyFile(outputDir, chapter, exercisesResult.answers, options);
+  console.log(
+    `  Answer Key: ${answerKeyResult.answerCount} answers → ${path.basename(answerKeyResult.path)}`
+  );
+
   // Summary
   console.log('');
   console.log('═'.repeat(60));
@@ -930,6 +1032,7 @@ async function assembleChapter(options) {
   console.log(`  Key Equations: ${equationsResult.equationCount} equations`);
   console.log(`  Summary: ${summaryResult.sectionCount} sections`);
   console.log(`  Exercises: ${exercisesResult.exerciseCount} exercises`);
+  console.log(`  Answer Key: ${answerKeyResult.answerCount} answers`);
   console.log('');
 
   console.log(`Output directory: ${outputDir}`);

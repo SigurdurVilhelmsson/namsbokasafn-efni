@@ -43,6 +43,12 @@ const PIPELINE_STEPS = [
     description: 'Reconstruct image markdown from MT-stripped attribute blocks',
   },
   {
+    id: 'directive-names',
+    name: 'Restore Directive Names',
+    script: 'restore-directives.js',
+    description: 'Restore directive names from [[DIRECTIVE:name]] markers',
+  },
+  {
     id: 'figures',
     name: 'Restore Figures',
     script: 'restore-figures.js',
@@ -353,6 +359,14 @@ async function processFile(filePath, options) {
       if (verbose) {
         args.push('--verbose');
       }
+    } else if (step.id === 'directive-names') {
+      args.push(filePath);
+      if (!dryRun) {
+        args.push('--in-place');
+      }
+      if (verbose) {
+        args.push('--verbose');
+      }
     } else if (step.id === 'figures') {
       // Find figures sidecar in 02-for-mt/ (not in 02-mt-output/)
       const figuresSidecar = getSidecarPath(filePath, 'figures');
@@ -546,6 +560,12 @@ async function processFile(filePath, options) {
       if (match) {
         stepResult.count = parseInt(match[1], 10);
       }
+    } else if (step.id === 'directive-names' && toolResult.stderr) {
+      // restore-directives.js outputs to stderr
+      const match = toolResult.stderr.match(/Directives restored: (\d+)/);
+      if (match) {
+        stepResult.count = parseInt(match[1], 10);
+      }
     } else if (step.id === 'figures' && toolResult.stderr) {
       // restore-figures.js outputs to stderr in verbose mode
       const match = toolResult.stderr.match(/Figures restored: (\d+) cross-refs, (\d+) captions/);
@@ -655,6 +675,7 @@ async function processMultipleFiles(files, options) {
     failed: 0,
     steps: {
       images: { total: 0, count: 0 },
+      'directive-names': { total: 0, count: 0 },
       figures: { total: 0, crossRefs: 0, captions: 0 },
       links: { total: 0, urls: 0, refs: 0, docs: 0 },
       strings: { total: 0, count: 0 },
@@ -694,6 +715,11 @@ async function processMultipleFiles(files, options) {
     if (fileResult.steps.images && !fileResult.steps.images.skipped) {
       results.steps.images.total++;
       results.steps.images.count += fileResult.steps.images.count || 0;
+    }
+
+    if (fileResult.steps['directive-names'] && !fileResult.steps['directive-names'].skipped) {
+      results.steps['directive-names'].total++;
+      results.steps['directive-names'].count += fileResult.steps['directive-names'].count || 0;
     }
 
     if (fileResult.steps.figures && !fileResult.steps.figures.skipped) {
@@ -853,6 +879,7 @@ async function main() {
     console.log('');
     console.log('Step Statistics:');
     console.log(`  Images restored: ${results.steps.images.count}`);
+    console.log(`  Directive names restored: ${results.steps['directive-names'].count}`);
     console.log(
       `  Figures restored: ${results.steps.figures.crossRefs} cross-refs, ${results.steps.figures.captions} captions`
     );

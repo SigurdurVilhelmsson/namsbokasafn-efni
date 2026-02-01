@@ -224,6 +224,20 @@ function detectFromPath(filePath) {
     if (!result.section) result.section = parseInt(dotMatch[2], 10);
   }
 
+  // Pattern: N-M-slug.md (e.g., 5-1-energy-basics.md) - OpenStax URL format
+  const dashMatch = filename.match(/^(\d+)-(\d+)/);
+  if (dashMatch) {
+    if (!result.chapter) result.chapter = parseInt(dashMatch[1], 10);
+    if (!result.section) result.section = parseInt(dashMatch[2], 10);
+  }
+
+  // Pattern: N-0-introduction.md (intro section)
+  const introMatch = filename.match(/^(\d+)-0-introduction/i);
+  if (introMatch) {
+    if (!result.chapter) result.chapter = parseInt(introMatch[1], 10);
+    result.section = 0; // Mark as intro
+  }
+
   return result;
 }
 

@@ -133,6 +133,73 @@ function extractFrontmatter(content) {
 }
 
 // ============================================================================
+// Directive Protection
+// ============================================================================
+
+/**
+ * Directive names that should NOT be translated by MT.
+ * These are markdown-it-container directive names used by the rendering system.
+ * They are NOT user-facing content, so they must remain in English.
+ */
+const PROTECTED_DIRECTIVES = [
+  'example',
+  'answer',
+  'exercise',
+  'learning-objectives',
+  'link-to-learning',
+  'everyday-life',
+  'chemist-portrait',
+  'how-sciences-interconnect',
+  'sciences-interconnect',
+  'glossary-entry',
+  'key-term',
+  'note',
+  'warning',
+  'tip',
+  'important',
+  'caution',
+  'info',
+  'summary',
+  'solution',
+  'problem',
+  'question',
+  'worked-example',
+];
+
+/**
+ * Protect directive names from MT translation by wrapping them in [[markers]].
+ *
+ * Transforms: :::example{id="..."} → :::[[DIRECTIVE:example]]{id="..."}
+ *
+ * The post-MT restoration script will convert these back.
+ *
+ * @param {string} content - Markdown content
+ * @param {boolean} verbose - Whether to log protection details
+ * @returns {{content: string, directivesProtected: number}}
+ */
+function protectDirectives(content, verbose) {
+  let directivesProtected = 0;
+
+  // Pattern matches directive opening: :::name or :::name{attributes}
+  // Captures: (1) directive name, (2) optional attributes including braces
+  const directivePattern = /^(:::)(\w+(?:-\w+)*)((?:\{[^}]*\})?)/gm;
+
+  const protectedContent = content.replace(directivePattern, (match, prefix, name, attrs) => {
+    // Only protect known directive names
+    if (PROTECTED_DIRECTIVES.includes(name.toLowerCase())) {
+      directivesProtected++;
+      if (verbose) {
+        console.error(`  Protected directive: :::${name}`);
+      }
+      return `${prefix}[[DIRECTIVE:${name}]]${attrs}`;
+    }
+    return match;
+  });
+
+  return { content: protectedContent, directivesProtected };
+}
+
+// ============================================================================
 // Table Detection and Protection
 // ============================================================================
 
@@ -379,17 +446,23 @@ function processFile(filePath, options) {
   // Extract frontmatter
   const { frontmatter, contentWithoutFrontmatter } = extractFrontmatter(content);
 
+  // Protect directives from translation
+  const { content: directiveProtectedContent, directivesProtected } = protectDirectives(
+    contentWithoutFrontmatter,
+    verbose
+  );
+
   // Extract tables
-  const { content: protectedContent, tables } = extractTables(contentWithoutFrontmatter, verbose);
+  const { content: protectedContent, tables } = extractTables(directiveProtectedContent, verbose);
 
   const tableCount = Object.keys(tables).length;
   const hasFrontmatter = frontmatter !== null;
 
-  if (tableCount === 0 && !hasFrontmatter) {
+  if (tableCount === 0 && !hasFrontmatter && directivesProtected === 0) {
     if (verbose) {
-      console.log(`  No tables or frontmatter to protect in: ${filePath}`);
+      console.log(`  No tables, frontmatter, or directives to protect in: ${filePath}`);
     }
-    return { success: true, tablesProtected: 0, hasFrontmatter: false };
+    return { success: true, tablesProtected: 0, directivesProtected: 0, hasFrontmatter: false };
   }
 
   // Build sidecar data
@@ -412,9 +485,12 @@ function processFile(filePath, options) {
   const hasStrings = stringsContent.length > 0;
 
   if (dryRun) {
-    console.log(`[DRY RUN] Would protect ${tableCount} table(s) in: ${filePath}`);
+    console.log(`[DRY RUN] Would protect in: ${filePath}`);
     if (hasFrontmatter) {
       console.log(`  Frontmatter keys: ${Object.keys(frontmatter).join(', ')}`);
+    }
+    if (directivesProtected > 0) {
+      console.log(`  Directives: ${directivesProtected} directive(s)`);
     }
     if (tableCount > 0) {
       console.log(`  Tables: ${Object.keys(tables).join(', ')}`);
@@ -444,6 +520,7 @@ function processFile(filePath, options) {
     return {
       success: true,
       tablesProtected: tableCount,
+      directivesProtected,
       hasFrontmatter,
       hasFigures,
       hasStrings,
@@ -466,7 +543,7 @@ function processFile(filePath, options) {
     }
   }
 
-  // Write protected content (without frontmatter, tables replaced with placeholders)
+  // Write protected content (without frontmatter, tables replaced with placeholders, directives protected)
   if (inPlace) {
     fs.writeFileSync(filePath, protectedContent);
     if (verbose) {
@@ -479,6 +556,7 @@ function processFile(filePath, options) {
   return {
     success: true,
     tablesProtected: tableCount,
+    directivesProtected,
     hasFrontmatter,
     hasFigures,
     hasStrings,
@@ -534,7 +612,9 @@ function processBatch(directory, options) {
   console.log('');
 
   let totalTables = 0;
+  let totalDirectives = 0;
   let filesWithTables = 0;
+  let filesWithDirectives = 0;
   let filesWithFrontmatter = 0;
   let filesWithFigures = 0;
   let filesWithStrings = 0;
@@ -553,6 +633,15 @@ function processBatch(directory, options) {
         if (!options.verbose && !options.dryRun) {
           console.log(
             `  Protected ${result.tablesProtected} table(s): ${path.relative(directory, file)}`
+          );
+        }
+      }
+      if (result.directivesProtected > 0) {
+        filesWithDirectives++;
+        totalDirectives += result.directivesProtected;
+        if (!options.verbose && !options.dryRun) {
+          console.log(
+            `  Protected ${result.directivesProtected} directive(s): ${path.relative(directory, file)}`
           );
         }
       }
@@ -576,6 +665,8 @@ function processBatch(directory, options) {
   console.log('─'.repeat(50));
   console.log(`  Files processed: ${files.length}`);
   console.log(`  Files with frontmatter: ${filesWithFrontmatter}`);
+  console.log(`  Files with directives: ${filesWithDirectives}`);
+  console.log(`  Total directives protected: ${totalDirectives}`);
   console.log(`  Files with tables: ${filesWithTables}`);
   console.log(`  Total tables protected: ${totalTables}`);
   console.log(`  Files with figures: ${filesWithFigures}`);

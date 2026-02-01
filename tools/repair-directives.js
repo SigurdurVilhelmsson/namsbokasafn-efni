@@ -63,6 +63,129 @@ const ALL_DIRECTIVES = [
 ];
 
 /**
+ * Fix directive names that were translated or split by MT.
+ * Directive names should stay in English (they're technical markup, not content).
+ *
+ * Handles two issues:
+ * 1. Split names: ":::d\næmi{id=...}" where MT inserted a line break
+ * 2. Translated names: ":::dæmi" should be ":::example"
+ */
+function fixSplitDirectiveNames(content, verbose = false) {
+  let fixCount = 0;
+
+  // First, fix split directive names (line breaks inserted by MT)
+  const splitPatterns = [
+    // :::d\næmi → :::example (split + translated)
+    { find: /:::d\næmi/g, replace: ':::example', desc: 'split :::dæmi → :::example' },
+    // :::n\námsmarkmið → :::learning-objectives (split + translated)
+    {
+      find: /:::n\námsmarkmið/g,
+      replace: ':::learning-objectives',
+      desc: 'split :::námsmarkmið → :::learning-objectives',
+    },
+    // :::link-to-\nlearning → :::link-to-learning
+    { find: /:::link-to-\nlearning/g, replace: ':::link-to-learning', desc: ':::link-to-learning' },
+    // :::link-to-\nmaterial → :::link-to-material
+    { find: /:::link-to-\nmaterial/g, replace: ':::link-to-material', desc: ':::link-to-material' },
+    // :::learning-\nobjectives → :::learning-objectives
+    {
+      find: /:::learning-\nobjectives/g,
+      replace: ':::learning-objectives',
+      desc: ':::learning-objectives',
+    },
+    // :::practice-\nproblem → :::practice-problem
+    { find: /:::practice-\nproblem/g, replace: ':::practice-problem', desc: ':::practice-problem' },
+  ];
+
+  for (const pattern of splitPatterns) {
+    const matches = content.match(pattern.find);
+    if (matches) {
+      fixCount += matches.length;
+      content = content.replace(pattern.find, pattern.replace);
+      if (verbose) {
+        console.log(`  Fixed ${matches.length} ${pattern.desc}`);
+      }
+    }
+  }
+
+  // Then, normalize translated Icelandic directive names back to English
+  // These are technical markup, not user-facing content
+  const translationPatterns = [
+    // :::dæmi → :::example
+    { find: /:::dæmi(\{[^}]*\})?/g, replace: ':::example$1', desc: ':::dæmi → :::example' },
+    // :::æfingadæmi → :::practice-problem
+    {
+      find: /:::æfingadæmi(\{[^}]*\})?/g,
+      replace: ':::practice-problem$1',
+      desc: ':::æfingadæmi → :::practice-problem',
+    },
+    // :::svar → :::answer
+    { find: /:::svar(\s|$)/g, replace: ':::answer$1', desc: ':::svar → :::answer' },
+    // :::æfingar → :::exercises
+    { find: /:::æfingar(\s|$)/g, replace: ':::exercises$1', desc: ':::æfingar → :::exercises' },
+    // :::athugasemd → :::note
+    { find: /:::athugasemd(\{[^}]*\})?/g, replace: ':::note$1', desc: ':::athugasemd → :::note' },
+    // :::námsmarkmið → :::learning-objectives
+    {
+      find: /:::námsmarkmið(\s|$)/g,
+      replace: ':::learning-objectives$1',
+      desc: ':::námsmarkmið → :::learning-objectives',
+    },
+  ];
+
+  for (const pattern of translationPatterns) {
+    const matches = content.match(pattern.find);
+    if (matches) {
+      fixCount += matches.length;
+      content = content.replace(pattern.find, pattern.replace);
+      if (verbose) {
+        console.log(`  Normalized ${matches.length} ${pattern.desc}`);
+      }
+    }
+  }
+
+  // Generic pattern for split hyphenated directives: :::partial-\nname{...}
+  const genericPattern = /:::([a-zA-Z-]{1,20})-\n([a-zA-Z-]+)(\{[^}]*\})?/g;
+  let match;
+  while ((match = genericPattern.exec(content)) !== null) {
+    const full = match[0];
+    const part1 = match[1];
+    const part2 = match[2];
+    const attrs = match[3] || '';
+    const fixed = `:::${part1}-${part2}${attrs}`;
+
+    if (content.includes(full)) {
+      content = content.replace(full, fixed);
+      fixCount++;
+      if (verbose) {
+        console.log(`  Fixed split directive: ${part1}-${part2}`);
+      }
+    }
+  }
+
+  // Finally, remove spurious MT-generated metadata headings
+  // These are YAML-like metadata that MT translated and converted to headings
+  // Pattern: ## titill: "..." kafli: "..." eining: "..." tungumál: "..."
+  const metadataHeadingPattern =
+    /^## titill:.*(?:kafli:|eining:|tungumál:|hluti:|leyfisvefslóð:).*$/gm;
+  const metadataMatches = content.match(metadataHeadingPattern);
+  if (metadataMatches) {
+    fixCount += metadataMatches.length;
+    content = content.replace(metadataHeadingPattern, '');
+    // Clean up any resulting empty lines (but keep at most 2 consecutive blank lines)
+    content = content.replace(/\n{3,}/g, '\n\n');
+    if (verbose) {
+      console.log(`  Removed ${metadataMatches.length} spurious MT metadata heading(s)`);
+    }
+  }
+
+  return {
+    content,
+    fixCount,
+  };
+}
+
+/**
  * Pre-process content to fix MT artifacts where ::: markers are merged with content.
  * Erlendur MT often puts closing ::: on the same line as content.
  * Examples:
@@ -370,10 +493,15 @@ function shouldCloseDirective(directiveName, currentLine, nextLines, state) {
  * Repair unclosed directives in content
  */
 function repairDirectives(content, verbose = false) {
-  // First, fix any merged ::: markers from MT
+  // First, fix any split directive names from MT
+  const splitResult = fixSplitDirectiveNames(content, verbose);
+  content = splitResult.content;
+  const splitDirectiveFixes = splitResult.fixCount;
+
+  // Then, fix any merged ::: markers from MT
   const mergeResult = fixMergedDirectiveMarkers(content, verbose);
   content = mergeResult.content;
-  const mergedMarkersFixes = mergeResult.fixCount;
+  const mergedMarkersFixes = mergeResult.fixCount + splitDirectiveFixes;
 
   const lines = content.split('\n');
   const result = [];
