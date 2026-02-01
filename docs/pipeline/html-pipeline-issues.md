@@ -51,32 +51,53 @@ noteCnxml = stripNestedElements(noteCnxml, ['figure', 'table', 'equation', 'exam
 
 ---
 
-## Open Issues
-
-### 3. Equations Not Rendering (Client-Side)
-**Status:** Open - needs vefur changes
+### 3. Equations Not Rendering
+**Status:** FIXED
 **Severity:** High - math shows as empty boxes
 
 **Problem:**
-- HTML contains correct `<span class="katex-display" data-latex="...">` placeholders
-- KaTeX is NOT rendering them client-side
-- Markdown pipeline uses `rehype-katex` at build time, but HTML bypasses this
+- HTML contained `<span class="katex-display" data-latex="...">` placeholders
+- KaTeX was NOT rendering them client-side
 
-**Root Cause:**
-vefur's markdown processing pipeline uses `rehype-katex` to convert LaTeX to KaTeX HTML during build. HTML content bypasses this pipeline, so `data-latex` attributes are never processed.
+**Fix Applied:**
+Added KaTeX pre-rendering in `cnxml-render.js` and `cnxml-elements.js`:
+```javascript
+import katex from 'katex';
 
-**Options:**
-1. **Pre-render KaTeX in cnxml-render.js** (preferred - no client JS needed)
-   - Use katex npm package to generate HTML during render
-   - Larger HTML files but faster load
-2. **Add client-side KaTeX rendering in vefur**
-   - Detect HTML content with `data-latex` attributes
-   - Call `katex.render()` on mount
-   - Requires loading KaTeX JS globally
+function renderLatex(latex, displayMode = true) {
+  return katex.renderToString(latex, { displayMode, throwOnError: false });
+}
+```
+Both display equations and inline math are now pre-rendered server-side.
 
 ---
 
-### 4. Examples Not Structured Properly
+### 4. Duplicate Notes in Examples
+**Status:** FIXED
+**Severity:** Medium - Answer boxes appeared twice
+
+**Problem:**
+Notes nested inside examples (e.g., Answer boxes) appeared twice:
+- Once inside the example (from `buildExample()` extracting original CNXML)
+- Once as standalone notes (from `buildNote()` processing structure.content)
+
+**Fix Applied:**
+Added check in `buildNote()` to skip notes that are nested inside examples/exercises:
+```javascript
+// Check if note is nested inside example/exercise in original
+const noteInExamplePattern = new RegExp(
+  `<example[^>]*>[\\s\\S]*?<note\\s+id="${element.id}"[^>]*>...`
+);
+if (noteInExamplePattern.test(originalCnxml)) {
+  return null; // Skip - already included via parent
+}
+```
+
+---
+
+## Open Issues
+
+### 5. Examples Not Structured Properly
 **Status:** Open
 **Severity:** Medium - functional but poor UX
 
@@ -97,7 +118,7 @@ The structure is present but may not match vefur's expected CSS classes.
 
 ---
 
-### 5. Exercises Not Structured Properly
+### 6. Exercises Not Structured Properly
 **Status:** Open
 **Severity:** Medium
 
@@ -106,7 +127,7 @@ End-of-chapter exercises structure may not match vefur's CSS expectations.
 
 ---
 
-### 6. Cross-References Empty
+### 7. Cross-References Empty
 **Status:** Open
 **Severity:** Low
 
@@ -118,13 +139,26 @@ References like "as shown in ()" have empty parentheses - figure/table reference
 
 ---
 
+### 8. Inline `\times` Artifacts
+**Status:** Open
+**Severity:** Low
+
+**Problem:**
+Some inline text shows `×{\times}×` instead of just `×`.
+
+**Root Cause:**
+The multiplication symbol in inline text is being triple-rendered - once as Unicode, once as LaTeX, once as Unicode again.
+
+---
+
 ## Testing Checklist
 
 After fixes, verify:
 
 - [x] Images load correctly
 - [x] No duplicate content
-- [ ] Equations render with KaTeX
+- [x] Equations render with KaTeX
+- [x] No duplicate notes in examples
 - [ ] Examples show title, problem, solution structure
 - [ ] Exercises properly formatted
 - [ ] Cross-references resolve
@@ -140,10 +174,12 @@ After fixes, verify:
 |-------|--------|--------------|
 | Image paths | FIXED | cnxml-render.js - absolute paths |
 | Content duplication | FIXED | cnxml-inject.js - stripNestedElements() |
-| Equations | Open | Needs KaTeX pre-rendering or client-side |
+| Equations | FIXED | cnxml-render.js, cnxml-elements.js - KaTeX pre-render |
+| Duplicate notes | FIXED | cnxml-inject.js - skip nested notes |
 | Examples structure | Open | CSS/structure alignment needed |
 | Exercises structure | Open | CSS/structure alignment needed |
 | Cross-references | Open | Link resolution needed |
+| Inline \times | Open | MathML processing issue |
 
 ---
 
@@ -153,9 +189,9 @@ After fixes, verify:
 |--------|---------------|-------------------|
 | ID Preservation | Full (from CNXML) | Partial (generated) |
 | Structure Fidelity | High | Medium |
-| Equation Handling | Needs KaTeX integration | Already works |
-| Image Handling | Now working | Working |
+| Equation Handling | Working (KaTeX pre-render) | Working (rehype-katex) |
+| Image Handling | Working | Working |
 | Complexity | Higher | Lower |
 | Maintenance | Single source | Multiple transforms |
 
-**Conclusion so far:** The HTML pipeline preserves more structure and IDs from the original CNXML. The main remaining issue is KaTeX rendering, which can be solved by pre-rendering in the pipeline.
+**Conclusion so far:** The HTML pipeline preserves more structure and IDs from the original CNXML. Core functionality (images, equations, content) is now working. Remaining issues are lower priority (CSS alignment, cross-references).
