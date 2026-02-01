@@ -1,4 +1,5 @@
 {
+  "version": "2026-02-01T18:03:01.295Z",
   "module": "m68726",
   "section": "5.2",
   "chapter": 5,
@@ -13,23 +14,23 @@
       "id": "fs-idm280055136"
     },
     "EQ:3": {
-      "latex": "{{q}_{\\text{steypustyrktarjárn}}=\\text{−}{q}_{\\text{vatn}}}",
+      "latex": "{{q}_{\\text{járnabinding}}=\\text{−}{q}_{\\text{vatn}}}",
       "id": "fs-idm107179568"
     },
     "EQ:4": {
-      "latex": "{{{(c\\,\\times \\,m\\,\\times \\,\\text{Δ}\\text{steypustyrktarjárn})}}_{{\\text{vatn}}}={{−(c\\,\\times \\,m\\,\\times \\,\\text{Δ}\\text{T})}}_{{\\text{water}}}}",
+      "latex": "{{{(c\\,\\times \\,m\\,\\times \\,\\text{Δ}\\text{járnabinding})}}_{{\\text{vatn}}}={{−(c\\,\\times \\,m\\,\\times \\,\\text{Δ}\\text{T})}}_{{\\text{water}}}}",
       "id": "fs-idm52673840"
     },
     "EQ:5": {
-      "latex": "{{c}_{{\\text{steypustyrktarjárn}}}\\,\\times \\,{m}_{{\\text{steypustyrktarjárn}}}\\,\\times \\,({T}_{{\\text{l,steypustyrktarjárn}}}-{T}_{{\\text{u,steypustyrktarjárn}}})=\\text{−}{c}_{{\\text{vatn}}}\\,\\times \\,{m}_{{\\text{vatn}}}\\,\\times \\,({T}_{{\\text{l,vatn}}}-{T}_{{\\text{u,vatn}}})}",
+      "latex": "{{c}_{{\\text{járnabinding}}}\\,\\times \\,{m}_{{\\text{járnabinding}}}\\,\\times \\,({T}_{{\\text{l,járnabinding}}}-{T}_{{\\text{u,járnabinding}}})=\\text{−}{c}_{{\\text{vatn}}}\\,\\times \\,{m}_{{\\text{vatn}}}\\,\\times \\,({T}_{{\\text{l,vatn}}}-{T}_{{\\text{u,vatn}}})}",
       "id": "fs-idp7508656"
     },
     "EQ:6": {
-      "latex": "{(0.449\\,\\text{J/g °C})(360.0\\,\\text{°C})(42.7\\,\\text{u,steypustyrktarjárn}-{T}_{\\text{J/g °C}})=-(4.184\\,\\text{°C})(425\\text{°C})(42.7\\,\\text{°C}-24.0\\,\\text{°C})}",
+      "latex": "{(0.449\\,\\text{J/g °C})(360.0\\,\\text{°C})(42.7\\,\\text{u,járnabinding}-{T}_{\\text{J/g °C}})=-(4.184\\,\\text{°C})(425\\text{°C})(42.7\\,\\text{°C}-24.0\\,\\text{°C})}",
       "id": "fs-idm160292560"
     },
     "EQ:7": {
-      "latex": "{{T}_{{\\text{u,steypustyrktarjárn}}}=\\,\\frac{{(4.184\\,\\text{J/g °C})(425\\,\\text{°C})(42.7\\,\\text{°C}-24.0\\,\\text{J/g °C})}}{{(0.449\\,\\text{°C})(360.0\\,\\text{g})}}\\,+42.7\\,\\text{°C}}",
+      "latex": "{{T}_{{\\text{u,járnabinding}}}=\\,\\frac{{(4.184\\,\\text{J/g °C})(425\\,\\text{°C})(42.7\\,\\text{°C}-24.0\\,\\text{J/g °C})}}{{(0.449\\,\\text{°C})(360.0\\,\\text{g})}}\\,+42.7\\,\\text{°C}}",
       "id": "fs-idp7310352"
     },
     "EQ:8": {
@@ -37,7 +38,7 @@
       "id": "fs-idm199710176"
     },
     "EQ:9": {
-      "latex": "{{c}_{{\\text{málmur}}}\\,\\times \\,{m}_{{\\text{málmur}}}\\,\\times \\,({T}_{{\\text{l,málmur}}}-{T}_{{\\text{u, málmur}}})=\\text{−}{c}_{{\\text{vatn}}}\\,\\times \\,{m}_{{\\text{vatn}}}\\,\\times \\,({T}_{{\\text{l,vatn}}}-{T}_{{\\text{u,vatn}}})}",
+      "latex": "{{c}_{{\\text{málmur}}}\\,\\times \\,{m}_{{\\text{málmur}}}\\,\\times \\,({T}_{{\\text{l,málmur}}}-{T}_{{\\text{u,málmur}}})=\\text{−}{c}_{{\\text{vatn}}}\\,\\times \\,{m}_{{\\text{vatn}}}\\,\\times \\,({T}_{{\\text{l,vatn}}}-{T}_{{\\text{u,vatn}}})}",
       "id": "fs-idm4542240"
     },
     "EQ:10": {
@@ -49,7 +50,7 @@
       "id": "fs-idm13040064"
     },
     "EQ:12": {
-      "latex": "{{q}_{{\\text{efnahvarf}}}+{q}_{{\\text{lausn}}}=0}",
+      "latex": "{{q}_{{\\text{hvarf}}}+{q}_{{\\text{lausn}}}=0}",
       "id": "fs-idm289467200"
     },
     "EQ:13": {

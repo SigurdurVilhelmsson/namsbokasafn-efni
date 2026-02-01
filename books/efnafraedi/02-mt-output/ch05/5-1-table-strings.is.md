@@ -1,21 +1,21 @@
-## titill: "Óþekkt“ kafli: "Óþekkt“ eining: –Óþekkt“ tungumál: "is“
+
 
 # Töflustrengir - Kafli 5.1
 
-Þýðanlegur texti úr töflum. Þýddu textainnihaldið en haltu
-uppbyggingunni.
+Þýðanlegur texti tekinn ùr töflum. Þýðdu textainnihaldið en haltu
+[[merkjunum]] óbreyttum.
 
-## TAFLA:1
+## [[TABLE:1]]
 
-### Fyrirsagnir
+### [[HEADERS]]
 
 **H1:** Efni
 
-**H2:** Tákn (*hamur*)
+**H2:** Tákn (*ástand*)
 
 **H3:** Eðlisvarmi (J/g °C)
 
-### Reitir
+### [[CELLS]]
 
 **R1C1:** helíum
 

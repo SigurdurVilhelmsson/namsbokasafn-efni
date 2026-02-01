@@ -1,27 +1,41 @@
 ---
 title: Lykilhugtök
-chapter: 5
+section: ""
+chapter: 0
 translation-status: Vélþýðing - ekki yfirfarin
 publication-track: mt-preview
-published-at: "2026-02-01T14:29:49.007Z"
-type: keyTerms
+published-at: "2026-02-01T18:48:18.543Z"
+source:
+  original: Chemistry 2e by OpenStax
+  authors: Paul Flowers, Klaus Theopold, Richard Langley, William R. Robinson
+  license: CC BY 4.0
+  licenseUrl: https://creativecommons.org/licenses/by/4.0/
+  originalUrl: https://openstax.org/details/books/chemistry-2e
+  translator: Sigurður E. Vilhelmsson
+  translationYear: 2026
+  modifications: Translated to Icelandic, adapted for Icelandic secondary school students
 ---
 
 ## Lykilhugtök
 
 **ástandsfall**{#term-00005}
 
-**fyrsta lögmáli varmafræðinnar**{#term-00003}
+**efnavarmafræði**{#term-00001}
+
+**fyrsta lögmáli
+varmafræðinnar**{#term-00003}
 
 **Hitastig**{#term-00007}
 
 **hreyfiorku**{#term-00005}
 
-**innvermið ferli**{#term-00010}
+**innvermið
+ferli**{#term-00010}
 
 **Júl (J)**{#term-00012}
 
-**kaloría (cal)**{#term-00011}
+**kaloríur
+(cal)**{#term-00011}
 
 **kerfi**{#term-00002}
 
@@ -47,9 +61,8 @@ Hess**{#term-00013}
 
 **umhverfi**{#term-00003}
 
-**útvermið ferli**{#term-00009}
-
-**varmaefnafræði**{#term-00001}
+**útvermið
+ferli**{#term-00009}
 
 **varmamæling**{#term-00001}
 

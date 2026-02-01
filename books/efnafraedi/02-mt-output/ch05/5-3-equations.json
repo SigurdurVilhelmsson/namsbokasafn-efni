@@ -1,4 +1,5 @@
 {
+  "version": "2026-02-01T18:03:01.477Z",
   "module": "m68727",
   "section": "5.3",
   "chapter": 5,
@@ -25,15 +26,15 @@
       "id": "fs-idm223599728"
     },
     "EQ:6": {
-      "latex": "{{\\text{kJ}}_{2}(g)+\\,\\frac{1}{2}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{H}}_{2}\\text{O}(l)\\,\\text{Δ}\\text{H}=−286\\,\\text{kJ}}",
+      "latex": "{{\\text{kílójúl}}_{2}(g)+\\,\\frac{1}{2}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{H}}_{2}\\text{O}(l)\\,\\text{Δ}\\text{H}=−286\\,\\text{kJ}}",
       "id": "fs-idp13211824"
     },
     "EQ:7": {
-      "latex": "{\\text{(tvöföldun á magni)}}2{\\text{kJ}}_{2}(g)+{\\text{kJ}}_{2}(g)\\,\\longrightarrow \\,2{\\text{helmingun á magni}}_{2}\\text{kJ}(l)\\,\\text{Δ}\\text{kJ}=2\\,\\times \\,(−286\\,\\text{kJ})=−572\\,\\text{kJ}{({\\text{two-fold decrease in amounts}})}\\frac{1}{2}{\\text{H}}_{2}(g)+\\,\\frac{1}{4}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{\\text{H}}_{2}\\text{O}(l)\\,\\text{Δ}\\text{H}=\\,\\frac{1}{2}\\,\\times \\,(−286\\,\\text{kJ})=−143\\,\\text{kJ}",
+      "latex": "{\\text{(tvöföld aukning á magni)}}2{\\text{kílójúl}}_{2}(g)+{\\text{kílójúl}}_{2}(g)\\,\\longrightarrow \\,2{\\text{tvöföld minnkun á magni}}_{2}\\text{kílójúl}(l)\\,\\text{Δ}\\text{kílójúl}=2\\,\\times \\,(−286\\,\\text{kJ})=−572\\,\\text{kJ}{({\\text{two-fold decrease in amounts}})}\\frac{1}{2}{\\text{H}}_{2}(g)+\\,\\frac{1}{4}{\\text{O}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{\\text{H}}_{2}\\text{O}(l)\\,\\text{Δ}\\text{H}=\\,\\frac{1}{2}\\,\\times \\,(−286\\,\\text{kJ})=−143\\,\\text{kJ}",
       "id": "fs-idm23265328"
     },
     "EQ:8": {
-      "latex": "{{\\text{kJ}}_{2}(g)+\\,\\frac{1}{2}\\,{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{H}}_{2}\\text{O}(g)\\,\\text{Δ}\\text{H}=−242\\,\\text{kJ}}",
+      "latex": "{{\\text{kílójúl}}_{2}(g)+\\,\\frac{1}{2}\\,{\\text{O}}_{2}(g)\\,\\longrightarrow \\,{\\text{H}}_{2}\\text{O}(g)\\,\\text{Δ}\\text{H}=−242\\,\\text{kJ}}",
       "id": "fs-idp4587936"
     },
     "EQ:9": {
@@ -41,11 +42,11 @@
       "id": "fs-idp149553440"
     },
     "EQ:10": {
-      "latex": "{\\text{Δ}\\text{mól HCl}=1\\,{\\text{kJ}}\\,\\times \\,\\frac{{−2.9\\,\\text{mól HCl}}}{{0.0500\\,{\\text{kJ}}}}\\,=−58\\,\\text{kJ}}",
+      "latex": "{\\text{Δ}\\text{mól HCl}=1\\,{\\text{kílójúl}}\\,\\times \\,\\frac{{−2.9\\,\\text{mól HCl}}}{{0.0500\\,{\\text{kílójúl}}}}\\,=−58\\,\\text{kJ}}",
       "id": "fs-idp125057232"
     },
     "EQ:11": {
-      "latex": "{\\text{HCl}(aq)+\\text{NaOH}(aq)\\,\\longrightarrow \\,\\text{NaCl}(aq)+{\\text{kJ}}_{2}\\text{O}(l)\\,\\text{Δ}\\text{H}=−58\\,\\text{kJ}}",
+      "latex": "{\\text{HCl}(aq)+\\text{NaOH}(aq)\\,\\longrightarrow \\,\\text{NaCl}(aq)+{\\text{kílójúl}}_{2}\\text{O}(l)\\,\\text{Δ}\\text{H}=−58\\,\\text{kJ}}",
       "id": "fs-idm13850464"
     },
     "EQ:12": {
@@ -65,19 +66,19 @@
       "id": "fs-idm378911456"
     },
     "EQ:16": {
-      "latex": "{ △\\text{kJ}=-43.7\\text{​}\\,\\text{mól KCl}\\text{/}0.0587\\,\\text{kJ}{\\text{mól}}_{3} =–744\\,\\text{KCl}\\text{/}\\text{mol}\\,\\text{KCl}{\\text{O}}_{3} }",
+      "latex": "{ △\\text{kílójúl}=-43.7\\text{​}\\,\\text{mól KCl}\\text{/}0.0587\\,\\text{kílójúl}{\\text{mól}}_{3} =–744\\,\\text{KCl}\\text{/}\\text{mol}\\,\\text{KCl}{\\text{O}}_{3} }",
       "id": "fs-idm352441488"
     },
     "EQ:17": {
-      "latex": "{ {( { –744\\,\\text{kJ}\\text{/}\\text{mól}\\,\\text{KCl}{\\text{mól}}_{3} } )}{( { 8\\,\\text{KCl}\\,\\text{kJ}{\\text{O}}_{3} } )}=–5960\\,\\text{kJ}}",
+      "latex": "{ {( { –744\\,\\text{kílójúl}\\text{/}\\text{mól}\\,\\text{KCl}{\\text{mól}}_{3} } )}{( { 8\\,\\text{KCl}\\,\\text{kílójúl}{\\text{O}}_{3} } )}=–5960\\,\\text{kJ}}",
       "id": "fs-idm389610336"
     },
     "EQ:18": {
-      "latex": "{{\\text{KClO}}_{{12}}{\\text{CO}}_{{22}}{\\text{KCl}}_{{11}}+8{{\\text{kJ}}}_{3}\\,\\longrightarrow \\,12{{\\text{CO}}}_{2}+11{\\text{H}}_{2}\\text{O}+8\\text{KCl}\\,\\text{Δ}\\text{H}=−5960\\,\\text{kJ}}",
+      "latex": "{{\\text{KClO}}_{{12}}{\\text{CO}}_{{22}}{\\text{KCl}}_{{11}}+8{{\\text{kílójúl}}}_{3}\\,\\longrightarrow \\,12{{\\text{CO}}}_{2}+11{\\text{H}}_{2}\\text{O}+8\\text{KCl}\\,\\text{Δ}\\text{H}=−5960\\,\\text{kJ}}",
       "id": "fs-idp90097408"
     },
     "EQ:19": {
-      "latex": "{{\\text{OH}}_{2}{\\text{CO}}_{5}\\text{−1366}(l)+3{\\text{−1366}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{CO}}}_{2}(g+3{\\text{H}}_{2}\\text{O}(l)\\,\\text{Δ}H\\text{°}=\\text{−1366.8 kJ}}",
+      "latex": "{{\\text{OH}}_{2}{\\text{CO}}_{5}\\text{−1366.8 kJ}(l)+3{\\text{O}}_{2}(g)\\,\\longrightarrow \\,2{{\\text{CO}}}_{2}(g+3{\\text{H}}_{2}\\text{O}(l)\\,\\text{Δ}H\\text{°}=\\text{−1366.8 kJ}}",
       "id": "fs-idm27865968"
     },
     "EQ:20": {
@@ -145,7 +146,7 @@
       "id": "fs-idp146333552"
     },
     "EQ:36": {
-      "latex": "{2\\text{HCl}(g)\\,\\longrightarrow \\,{\\text{Cl}}_{2}(g)+{{\\text{+184.6 kJ}}}_{2}(g)\\,\\text{Δ}\\text{H}=\\text{+184.6 kJ}}",
+      "latex": "{2\\text{HCl}(g)\\,\\longrightarrow \\,{\\text{Cl}}_{2}(g)+{{\\text{+184,6 kJ}}}_{2}(g)\\,\\text{Δ}\\text{H}=\\text{+184.6 kJ}}",
       "id": "fs-idp146345216"
     },
     "EQ:37": {
@@ -177,19 +178,19 @@
       "id": "fs-idp164473712"
     },
     "EQ:44": {
-      "latex": "{\\text{ClF}(g)+\\frac{1}{2}{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{{\\text{OF}}}_{2}\\text{+107.0 kJ}(g)+\\,\\frac{1}{2}{{\\text{OF}}}_{2}(g)\\,\\text{Δ}\\text{H}\\text{°}=\\,\\frac{1}{2}(214.0)=\\text{+107.0 kJ}}",
+      "latex": "{\\text{ClF}(g)+\\frac{1}{2}{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{{\\text{OF}}}_{2}\\text{+107,0 kJ}(g)+\\,\\frac{1}{2}{{\\text{OF}}}_{2}(g)\\,\\text{Δ}\\text{H}\\text{°}=\\,\\frac{1}{2}(214.0)=\\text{+107.0 kJ}}",
       "id": "fs-idp167256800"
     },
     "EQ:45": {
-      "latex": "{\\frac{1}{2}{\\text{OF}}_{2}(g)+{\\text{+24.7 kJ}}_{2}(g)\\,\\longrightarrow \\,{{\\text{OF}}}_{2}(g)\\,\\text{Δ}\\text{H}\\text{°}=\\text{+24.7 kJ}}",
+      "latex": "{\\frac{1}{2}{\\text{OF}}_{2}(g)+{\\text{+24,7 kJ}}_{2}(g)\\,\\longrightarrow \\,{{\\text{OF}}}_{2}(g)\\,\\text{Δ}\\text{H}\\text{°}=\\text{+24.7 kJ}}",
       "id": "fs-idp160400816"
     },
     "EQ:46": {
-      "latex": "{\\frac{1}{2}{{\\text{Cl}}}_{2}\\text{OF}(g)+\\,\\frac{3}{2}{{\\text{ClF}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{−236.2 kJ}}}_{3}(g)+{\\text{O}}_{2}(g)\\,\\text{Δ}\\text{H}\\text{°}=\\text{−236.2 kJ}}",
+      "latex": "{\\frac{1}{2}{{\\text{Cl}}}_{2}\\text{OF}(g)+\\,\\frac{3}{2}{{\\text{ClF}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{−236,2 kJ}}}_{3}(g)+{\\text{O}}_{2}(g)\\,\\text{Δ}\\text{H}\\text{°}=\\text{−236.2 kJ}}",
       "id": "fs-idp134608368"
     },
     "EQ:47": {
-      "latex": "{{\\text{ClF}(g)+\\,\\frac{1}{2}{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{{\\text{OF}}}_{2}\\text{+107.0 kJ}(g)+\\,\\frac{1}{2}{{\\text{OF}}}_{2}(g)}{\\text{Δ}H\\text{°}=\\text{+24.7 kJ}}{\\frac{1}{2}{\\text{Cl}}_{2}(g)+{\\text{OF}}_{2}(g)\\,\\longrightarrow \\,{{\\text{ClF}}}_{2}(g)}{\\text{Δ}H\\text{°}=\\text{ClF}}{{12{{\\text{ClF}}}_{2}\\text{kJ}(g)+\\,\\frac{3}{2}{{\\text{kJ}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{ClF}}}_{3}(g)+{\\text{O}}_{2}(g)}{\\text{ClF}(g)+{\\text{F}}_{2}\\,\\longrightarrow \\,{{\\text{ClF}}}_{3}(g)\\,}}{\\frac{{\\text{Δ}H\\text{°}=−236.2\\,\\text{kJ}}}{{\\text{Δ}H\\text{°}=−104.5\\,\\text{kJ}}}}}",
+      "latex": "{{\\text{ClF}(g)+\\,\\frac{1}{2}{\\text{Cl}}_{2}(g)\\,\\longrightarrow \\,\\frac{1}{2}{{\\text{OF}}}_{2}\\text{+107,0 kJ}(g)+\\,\\frac{1}{2}{{\\text{OF}}}_{2}(g)}{\\text{Δ}H\\text{°}=\\text{+24.7 kJ}}{\\frac{1}{2}{\\text{Cl}}_{2}(g)+{\\text{OF}}_{2}(g)\\,\\longrightarrow \\,{{\\text{ClF}}}_{2}(g)}{\\text{Δ}H\\text{°}=\\text{ClF}}{{12{{\\text{ClF}}}_{2}\\text{kJ}(g)+\\,\\frac{3}{2}{{\\text{kJ}}}_{2}(g)\\,\\longrightarrow \\,{{\\text{ClF}}}_{3}(g)+{\\text{O}}_{2}(g)}{\\text{ClF}(g)+{\\text{F}}_{2}\\,\\longrightarrow \\,{{\\text{ClF}}}_{3}(g)\\,}}{\\frac{{\\text{Δ}H\\text{°}=−236.2\\,\\text{kJ}}}{{\\text{Δ}H\\text{°}=−104.5\\,\\text{kJ}}}}}",
       "id": "fs-idp134626752"
     },
     "EQ:48": {
@@ -197,7 +198,7 @@
       "id": "fs-idm259960768"
     },
     "EQ:49": {
-      "latex": "{\\text{Δ}{H}_{{\\text{efnahvarf}}}^{^{\\circ}}=∑n\\,\\times \\,\\text{Δ}{H}_{\\text{myndefni}}^{^{\\circ}}(\\text{hvarfefni})-∑ n\\,\\times \\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}(\\text{reactants})}",
+      "latex": "{\\text{Δ}{H}_{{\\text{hvarf}}}^{^{\\circ}}=∑n\\,\\times \\,\\text{Δ}{H}_{\\text{myndefni}}^{^{\\circ}}(\\text{hvarfefni})-∑ n\\,\\times \\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}(\\text{reactants})}",
       "id": "fs-idp120716832"
     },
     "EQ:50": {
@@ -205,7 +206,7 @@
       "id": "fs-idp134549904"
     },
     "EQ:51": {
-      "latex": "{\\text{Δ}{H}_{{\\text{efnahvarf}}}^{^{\\circ}}=∑ {n\\,\\times \\,\\text{Δ}{H}_{\\text{(myndefni)}}^{^{\\circ}}\\text{hvarfefni}}-∑ n\\,\\times \\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}(\\text{reactants})}",
+      "latex": "{\\text{Δ}{H}_{{\\text{hvarf}}}^{^{\\circ}}=∑ {n\\,\\times \\,\\text{Δ}{H}_{\\text{(myndefni)}}^{^{\\circ}}\\text{hvarfefni}}-∑ n\\,\\times \\,\\text{Δ}{H}_{\\text{f}}^{^{\\circ}}(\\text{reactants})}",
       "id": "fs-idp146127936"
     },
     "EQ:52": {
@@ -225,7 +226,7 @@
       "id": "fs-idp168119776"
     },
     "EQ:56": {
-      "latex": "{\\frac{1}{2}{\\text{NO}}_{2}(g)+\\,\\frac{1}{2}{\\text{+90,2 kJ}}_{2}(g)\\,\\longrightarrow \\,\\text{NO}(g)\\,\\text{Δ}{H}_{4}^{^{\\circ}}=\\text{+90.2 kJ}\\,{[ {1\\,\\times \\,(\\text{NO})]}}}",
+      "latex": "{\\frac{1}{2}{\\text{NO}}_{2}(g)+\\,\\frac{1}{2}{\\text{+90.2 kJ}}_{2}(g)\\,\\longrightarrow \\,\\text{NO}(g)\\,\\text{Δ}{H}_{4}^{^{\\circ}}=\\text{+90.2 kJ}\\,{[ {1\\,\\times \\,(\\text{NO})]}}}",
       "id": "fs-idp194526576"
     },
     "EQ:57": {
@@ -233,7 +234,7 @@
       "id": "fs-idp155650448"
     },
     "EQ:58": {
-      "latex": "\\text{Δ}{H}_{{\\text{efnahvarf}}}^{^{\\circ}}=\\text{Δ}{H}_{1}^{^{\\circ}}+\\text{Δ}{H}_{2}^{^{\\circ}}+\\text{Δ}{H}_{3}^{^{\\circ}}+\\text{Δ}{H}_{4}^{^{\\circ}}=(−99.6\\,\\text{kJ})+(\\text{+285,8 kJ})+(−414.8\\,\\text{kJ})+(\\text{+90.2 kJ})=−138.4\\,\\text{kJ}",
+      "latex": "\\text{Δ}{H}_{{\\text{hvarf}}}^{^{\\circ}}=\\text{Δ}{H}_{1}^{^{\\circ}}+\\text{Δ}{H}_{2}^{^{\\circ}}+\\text{Δ}{H}_{3}^{^{\\circ}}+\\text{Δ}{H}_{4}^{^{\\circ}}=(−99.6\\,\\text{kJ})+(\\text{+285.8 kJ})+(−414.8\\,\\text{kJ})+(\\text{+90.2 kJ})=−138.4\\,\\text{kJ}",
       "id": "fs-idp155662864"
     },
     "EQ:59": {

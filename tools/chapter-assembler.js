@@ -324,8 +324,10 @@ function parseMarkdown(content) {
  */
 function extractSummary(content) {
   // Match "## Key Concepts and Summary" or similar
+  // Note: The lookahead must NOT include |$ because in multiline mode $ matches end of any line,
+  // causing the non-greedy [\s\S]*? to stop at the first line break
   const summaryMatch = content.match(
-    /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt)\s*\n([\s\S]*?)(?=^##\s+(?:Key Equations|Chemistry End of Chapter|Lykiljöfnur|Lykiljafna|Æfingar|Efnafræði\s*[–-]\s*verkefni)|$)/m
+    /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt)\s*\n([\s\S]*?)(?=^##\s+(?:Key Equations|Chemistry End of Chapter|Lykiljöfnur|Lykiljafna|Æfingar|Efnafræði\s*[–-]\s*(?:verkefni|æfingar)))/m
   );
 
   if (summaryMatch) {
@@ -348,8 +350,10 @@ function extractSummary(content) {
  */
 function extractKeyEquations(content) {
   // Match "## Key Equations" / "## Lykiljöfnur" / "## Lykiljafna" section
+  // Note: The lookahead must NOT include |$ because in multiline mode $ matches end of any line,
+  // causing the non-greedy [\s\S]*? to stop at the first line break
   const eqMatch = content.match(
-    /^##\s+(?:Key Equations|Lykiljöfnur|Lykiljafna)\s*\n([\s\S]*?)(?=^##\s+(?:Chemistry End of Chapter|Æfingar|Efnafræði\s*[–-]\s*verkefni)|$)/m
+    /^##\s+(?:Key Equations|Lykiljöfnur|Lykiljafna)\s*\n([\s\S]*?)(?=^##\s+(?:Chemistry End of Chapter|Æfingar|Efnafræði\s*[–-]\s*(?:verkefni|æfingar)))/m
   );
 
   if (eqMatch) {
@@ -675,8 +679,16 @@ function writeKeyEquationsFile(outputDir, chapter, equations, options) {
   // Generate content
   let content = `## ${titles.keyEquations}\n\n`;
 
+  // equations is now an array of {sectionId, title, content} objects
   for (const eq of equations) {
-    content += `- ${eq.ref}\n`;
+    if (eq.sectionId && eq.content) {
+      // Content-based aggregation (new format)
+      content += `### ${eq.sectionId} ${eq.title}\n\n`;
+      content += eq.content + '\n\n';
+    } else if (eq.ref) {
+      // Legacy reference-based format (fallback)
+      content += `- ${eq.ref}\n`;
+    }
   }
 
   const frontmatter = {
@@ -940,7 +952,7 @@ async function assembleChapter(options) {
 
     if (verbose) {
       console.log(`  Summary: ${summary.found ? 'found' : 'not found'}`);
-      console.log(`  Key Equations: ${keyEquations.equations.length} found`);
+      console.log(`  Key Equations: ${keyEquations.found ? 'found' : 'not found'}`);
       console.log(`  Exercises: ${exercises.length} found`);
       console.log(`  Terms: ${terms.length} found`);
     }
@@ -954,7 +966,14 @@ async function assembleChapter(options) {
       });
     }
 
-    allEquations.push(...keyEquations.equations);
+    // Aggregate key equations content (not just references)
+    if (keyEquations.found && keyEquations.content.trim()) {
+      allEquations.push({
+        sectionId: moduleFile.sectionId,
+        title: title,
+        content: keyEquations.content,
+      });
+    }
 
     if (exercises.length > 0) {
       allExercisesBySection.push({

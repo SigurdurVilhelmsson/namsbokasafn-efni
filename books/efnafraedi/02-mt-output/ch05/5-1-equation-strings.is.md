@@ -1,112 +1,112 @@
-## titill: „Unknown“ kafli: „unknown“ eining: „unknown“ tungumál: „is“
 
-# Jöfnustrengir – Kafli 5.1
 
-Þýðanlegur texti dreginn út úr LaTeX-jöfnum. Þýddu textainnihaldið en
-haltu uppbyggingunni.
+# Jöfnustrengir - Kafli 5.1
 
-## JAFNA:2
+Texti sem hægt er að þýða, tekinn ùr LaTeX-jöfnum. Þýðdu textainnihaldið
+en haltu [[merkingunum]] óbreyttum.
 
-**TEXTI:1:** lítil panna
+## [[EQ:2]]
 
-**TEXTI:2:** 18.140 J
+**[[TEXT:1]]:** lítil panna
 
-**TEXTI:3:** °C
+**[[TEXT:2]]:** 18.140 J
 
-**TEXTI:4:** J/°C
+**[[TEXT:3]]:** °C
 
-## JAFNA:3
+**[[TEXT:4]]:** J/°C
 
-**TEXTI:1:** stór panna
+## [[EQ:3]]
 
-**TEXTI:2:** 90.700 J
+**[[TEXT:1]]:** stór panna
 
-**TEXTI:3:** °C
+**[[TEXT:2]]:** 90.700 J
 
-**TEXTI:4:** J/°C
+**[[TEXT:3]]:** °C
 
-## JAFNA:5
+**[[TEXT:4]]:** J/°C
 
-**TEXTI:1:** járn
+## [[EQ:5]]
 
-**TEXTI:2:** 18.140 J
+**[[TEXT:1]]:** járn
 
-**TEXTI:3:** 808 g
+**[[TEXT:2]]:** 18.140 J
 
-**TEXTI:4:** °C
+**[[TEXT:3]]:** 808 g
 
-**TEXTI:5:** 0,449 J/g °C
+**[[TEXT:4]]:** °C
 
-## JAFNA:6
+**[[TEXT:5]]:** 0,449 J/g °C
 
-**TEXTI:1:** járn
+## [[EQ:6]]
 
-**TEXTI:2:** 90.700 J
+**[[TEXT:1]]:** járn
 
-**TEXTI:3:** 4040 g
+**[[TEXT:2]]:** 90.700 J
 
-**TEXTI:4:** °C
+**[[TEXT:3]]:** 4040 g
 
-**TEXTI:5:** 0,449 J/g °C
+**[[TEXT:4]]:** °C
 
-## JAFNA:7
+**[[TEXT:5]]:** 0,449 J/g °C
 
-**TEXTI:1:** eðlisvarmi
+## [[EQ:7]]
 
-**TEXTI:2:** massi efnis
+**[[TEXT:1]]:** eðlisvarmi
 
-**TEXTI:3:** hitastigsbreyting
+**[[TEXT:2]]:** massi efnis
 
-**TEXTI:4:** lok
+**[[TEXT:3]]:** hitastigsbreyting
 
-**TEXTI:5:** upphafs
+**[[TEXT:4]]:** lok
 
-## JAFNA:8
+**[[TEXT:5]]:** upphafs
 
-**TEXTI:1:** lok
+## [[EQ:8]]
 
-**TEXTI:2:** upphafs
+**[[TEXT:1]]:** lok
 
-## JAFNA:9
+**[[TEXT:2]]:** upphafs
 
-**TEXTI:1:** J/
+## [[EQ:9]]
 
-**TEXTI:2:** °C
+**[[TEXT:1]]:** J/
 
-**TEXTI:3:** °C
+**[[TEXT:2]]:** °C
 
-**TEXTI:4:** J/
+**[[TEXT:3]]:** °C
 
-**TEXTI:5:** 210.000 J
+**[[TEXT:4]]:** J/
 
-**TEXTI:6:** kJ
+**[[TEXT:5]]:** 210.000 J
 
-## JAFNA:10
+**[[TEXT:6]]:** kJ
 
-**TEXTI:1:** lok
+## [[EQ:10]]
 
-**TEXTI:2:** upphafs
+**[[TEXT:1]]:** lok
 
-## JAFNA:11
+**[[TEXT:2]]:** upphafs
 
-**TEXTI:1:** 6640 J
+## [[EQ:11]]
 
-**TEXTI:2:** 348 g
+**[[TEXT:1]]:** 6640 J
 
-**TEXTI:3:** °C
+**[[TEXT:2]]:** 348 g
 
-## JAFNA:12
+**[[TEXT:3]]:** °C
 
-**TEXTI:1:** 6640 J
+## [[EQ:12]]
 
-**TEXTI:2:** 348 g
+**[[TEXT:1]]:** 6640 J
 
-**TEXTI:3:** °C
+**[[TEXT:2]]:** 348 g
 
-**TEXTI:4:** J/g °C
+**[[TEXT:3]]:** °C
 
-## JAFNA:15
+**[[TEXT:4]]:** J/g °C
 
-**TEXTI:1:** lok
+## [[EQ:15]]
 
-**TEXTI:2:** upphafs
+**[[TEXT:1]]:** lok
+
+**[[TEXT:2]]:** upphafs

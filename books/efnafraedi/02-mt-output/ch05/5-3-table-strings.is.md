@@ -1,21 +1,21 @@
-## titill: –Óþekkt“ kafli: –Óþekkt“ eining: –Óþekkt“ tungumál: –is“
+
 
 # Töflustrengir – Kafli 5.3
 
 Þýðanlegur texti tekinn úr töflum. Þýddu textainnihaldið en haltu
-uppbyggingunni óbreyttri.
+[[merkjunum]] óbreyttum.
 
-## TAFLA:1
+## [[TABLE:1]]
 
-### Fyrirsagnir
+### [[HEADERS]]
 
 **H1:** Efni
 
 **H2:** Brunahvarf
 
-**H3:** Brunavermi, [[EQ:63]][[EQ:64]]
+**H3:** Brunivermi, [[EQ:63]][[EQ:64]]
 
-### Reitir
+### [[CELLS]]
 
 **R1C1:** kolefni
 
@@ -25,7 +25,7 @@ uppbyggingunni óbreyttri.
 
 **R4C1:** brennisteinn
 
-**R5C1:** kolmónoxíð
+**R5C1:** kolsýringur
 
 **R6C1:** metan
 

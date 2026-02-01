@@ -1,18 +1,18 @@
-## titill: „Óþekkt“ kafli: „óþekkt“ eining: „óþekkt“ tungumál: „is“
 
-# Strengir sem hægt er að þýða – Inngangur kafla
 
-## Formáli
+# Þýðanlegir strengir – Inngangur að kafla
 
-**Titill:** Inngangur
+## [[FRONTMATTER]]
 
-## Myndir
+**[[TITLE]]:** Inngangur
 
-### CNX_Chem_05_00_Match
+## [[FIGURES]]
 
-**Myndatexti:** Þegar eldspýtshaus er strokið eftir hrjúfu yfirborði
-hefst brunahvarf sem framleiðir orku í formi varma og ljóss. (heimild:
-breyting á verki eftir Laszlo Ilyes)
+### [[CNX_Chem_05_00_Match]]
 
-**Alt-texti:** Kveikt er í eldspýtu sem maður heldur á þegar henni er
-strokið eftir hrjúfu yfirborði eldspýtustokks.
+**[[CAPTION]]:** Þegar eldspýtshaus er strokið eftir hrjúfu
+yfirborði hefst brunahvarf sem framleiðir orku í formi varma og ljóss.
+(heimild: breyting á verki eftir Laszlo Ilyes)
+
+**[[ALT_TEXT]]:** Kveikt er í eldspýtu sem maður heldur á þegar
+henni er strokið eftir hrjúfu yfirborði eldspýtustokks.
