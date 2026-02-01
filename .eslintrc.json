@@ -1,0 +1,47 @@
+{
+  "env": {
+    "node": true,
+    "es2022": true
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-console": "off",
+    "prefer-const": "error",
+    "no-var": "error",
+    "eqeqeq": ["error", "always", { "null": "ignore" }],
+    "curly": ["error", "multi-line"],
+    "no-throw-literal": "error"
+  },
+  "overrides": [
+    {
+      "files": ["server/**/*.js"],
+      "parserOptions": {
+        "sourceType": "script"
+      },
+      "env": {
+        "commonjs": true
+      }
+    },
+    {
+      "files": ["**/*.test.js", "**/__tests__/**/*.js"],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
+  "ignorePatterns": [
+    "node_modules/",
+    "server/node_modules/",
+    "tools/archived/",
+    "*.bak",
+    "*.backup",
+    "pipeline-output/",
+    "books/*/01-source/",
+    "books/*/02-mt-output/"
+  ]
+}

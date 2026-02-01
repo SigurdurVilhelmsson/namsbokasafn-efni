@@ -19,13 +19,19 @@
  *   npm run dev                  # Start with watch mode (Node 18+)
  */
 
-// Load environment variables
+// Load environment variables first
 require('dotenv').config();
+
+// Validate configuration before proceeding
+const { validateSecrets, config } = require('./config');
+validateSecrets();
 
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 // Import Phase 1 routes
 const processRoutes = require('./routes/process');
@@ -82,41 +88,83 @@ const assignmentsRoutes = require('./routes/assignments');
 // Import Reports routes (progress tracking)
 const reportsRoutes = require('./routes/reports');
 
-// Configuration
-const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || 'localhost';
+// Configuration (use validated config)
+const PORT = config.port;
+const HOST = config.host;
 
 // Initialize Express app
 const app = express();
+
+// Security middleware - must come before other middleware
+// Helmet sets various HTTP headers for security
+app.use(
+  helmet({
+    // Allow inline scripts for the simple web UI
+    contentSecurityPolicy: config.isProduction ? undefined : false,
+    // Allow cross-origin requests for API
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  })
+);
+
+// Rate limiting - general limiter for all routes
+const generalLimiter = rateLimit({
+  windowMs: config.rateLimit.windowMs,
+  max: config.rateLimit.maxRequests,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    error: 'Too many requests',
+    message: 'Please try again later',
+    retryAfter: Math.ceil(config.rateLimit.windowMs / 1000),
+  },
+});
+
+// Stricter rate limiting for auth endpoints to prevent brute force
+const authLimiter = rateLimit({
+  windowMs: config.rateLimit.windowMs,
+  max: config.rateLimit.authMaxRequests,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    error: 'Too many authentication attempts',
+    message: 'Please try again later',
+    retryAfter: Math.ceil(config.rateLimit.windowMs / 1000),
+  },
+});
+
+// Apply general rate limiting to all routes
+app.use(generalLimiter);
 
 // CORS configuration - allow requests from web reader (vefur)
 const allowedOrigins = [
   'https://namsbokasafn.is',
   'https://www.namsbokasafn.is',
-  'http://localhost:5173',  // Vite dev server
-  'http://localhost:4173',  // Vite preview
-  'http://localhost:3000',  // Local dev
+  'http://localhost:5173', // Vite dev server
+  'http://localhost:4173', // Vite preview
+  'http://localhost:3000', // Local dev
 ];
 
 // Add custom origins from environment
 if (process.env.CORS_ORIGIN) {
-  allowedOrigins.push(...process.env.CORS_ORIGIN.split(',').map(o => o.trim()));
+  allowedOrigins.push(...process.env.CORS_ORIGIN.split(',').map((o) => o.trim()));
 }
 
-app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps, curl, etc.)
-    if (!origin) return callback(null, true);
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps, curl, etc.)
+      if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin) || origin.endsWith('.namsbokasafn.is')) {
-      callback(null, true);
-    } else {
-      console.log(`[CORS] Blocked origin: ${origin}`);
-      callback(null, false);
-    }
-  },
-  credentials: true
-}));
+      if (allowedOrigins.includes(origin) || origin.endsWith('.namsbokasafn.is')) {
+        callback(null, true);
+      } else {
+        console.log(`[CORS] Blocked origin: ${origin}`);
+        callback(null, false);
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -135,7 +183,8 @@ app.use('/api/status', statusRoutes);
 app.use('/api/matecat', matecatRoutes);
 
 // Phase 2 API Routes
-app.use('/api/auth', authRoutes);
+// Apply stricter rate limiting to auth endpoints
+app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/books', booksRoutes);
 app.use('/api/workflow', workflowRoutes);
 app.use('/api/issues', issuesRoutes);
@@ -188,7 +237,7 @@ app.get('/api/health', (req, res) => {
     status: 'ok',
     timestamp: new Date().toISOString(),
     version: '2.0.0',
-    phase: 2
+    phase: 2,
   });
 });
 
@@ -253,8 +302,10 @@ app.get('/api', (req, res) => {
       'GET /api/publication/:bookSlug/:chapter/status': 'Get publication status',
       'GET /api/publication/:bookSlug/:chapter/readiness': 'Check readiness for each track',
       'POST /api/publication/:bookSlug/:chapter/mt-preview': 'Publish MT preview (HEAD_EDITOR)',
-      'POST /api/publication/:bookSlug/:chapter/faithful': 'Publish faithful translation (HEAD_EDITOR)',
-      'POST /api/publication/:bookSlug/:chapter/localized': 'Publish localized content (HEAD_EDITOR)',
+      'POST /api/publication/:bookSlug/:chapter/faithful':
+        'Publish faithful translation (HEAD_EDITOR)',
+      'POST /api/publication/:bookSlug/:chapter/localized':
+        'Publish localized content (HEAD_EDITOR)',
       'GET /api/publication/:bookSlug/overview': 'Get publication overview for book',
       // Phase 7 - Feedback & Analytics
       'GET /api/feedback/types': 'Get feedback types (public)',
@@ -272,9 +323,9 @@ app.get('/api', (req, res) => {
       'GET /api/assignments/:id': 'Get assignment details',
       'POST /api/assignments': 'Create assignment (HEAD_EDITOR)',
       'PUT /api/assignments/:id': 'Update assignment',
-      'DELETE /api/assignments/:id': 'Cancel assignment (HEAD_EDITOR)'
+      'DELETE /api/assignments/:id': 'Cancel assignment (HEAD_EDITOR)',
     },
-    documentation: 'https://github.com/SigurdurVilhelmsson/namsbokasafn-efni'
+    documentation: 'https://github.com/SigurdurVilhelmsson/namsbokasafn-efni',
   });
 });
 
@@ -294,32 +345,32 @@ app.use('/api/*', (req, res) => {
   res.status(404).json({
     error: 'Not Found',
     message: `Endpoint ${req.method} ${req.path} not found`,
-    availableEndpoints: '/api'
+    availableEndpoints: '/api',
   });
 });
 
-// Error handler
-app.use((err, req, res, next) => {
+// Error handler (next is required by Express error handler signature)
+app.use((err, req, res, _next) => {
   console.error('Error:', err);
 
   // Handle multer errors
   if (err.code === 'LIMIT_FILE_SIZE') {
     return res.status(413).json({
       error: 'File Too Large',
-      message: 'Uploaded file exceeds size limit (10MB)'
+      message: 'Uploaded file exceeds size limit (10MB)',
     });
   }
 
   if (err.code === 'LIMIT_UNEXPECTED_FILE') {
     return res.status(400).json({
       error: 'Invalid Upload',
-      message: 'Unexpected field in upload'
+      message: 'Unexpected field in upload',
     });
   }
 
   res.status(err.status || 500).json({
     error: err.name || 'Internal Server Error',
-    message: err.message || 'An unexpected error occurred'
+    message: err.message || 'An unexpected error occurred',
   });
 });
 

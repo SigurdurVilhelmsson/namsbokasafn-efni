@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+server/node_modules/
+
+# Build output
+pipeline-output/
+dist/
+
+# Source content (read-only)
+books/*/01-source/
+books/*/02-mt-output/
+books/*/tm/
+
+# Archives and backups
+tools/archived/
+*.bak
+*.backup
+
+# Generated files
+docs/_generated/
+
+# Package locks
+package-lock.json
+
+# Coverage
+coverage/

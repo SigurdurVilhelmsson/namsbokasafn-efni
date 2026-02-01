@@ -231,6 +231,7 @@ PORT=8080 npm start
 
 ## Related Documentation
 
-- [Workflow Guide](../docs/workflow.md) - 8-step translation pipeline
-- [Editorial Guide](../docs/editorial-guide.md) - Pass 1 and Pass 2 instructions
+- [Workflow Guide](../docs/workflow/simplified-workflow.md) - 5-step translation pipeline
+- [Editorial Guide (Pass 1)](../docs/editorial/pass1-linguistic.md) - Linguistic review instructions
+- [Editorial Guide (Pass 2)](../docs/editorial/pass2-localization.md) - Localization instructions
 - [CLAUDE.md](../CLAUDE.md) - Claude Code project instructions

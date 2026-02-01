@@ -3,19 +3,14 @@
  *
  * Validates JWT tokens from cookies or Authorization header.
  * Attaches user info to req.user if authenticated.
+ *
+ * SECURITY NOTE: There is no bypass for testing. Tests should:
+ * 1. Use proper JWT tokens from the auth service
+ * 2. Run against a test database with test users
+ * 3. Mock the auth middleware in unit tests if needed
  */
 
 const { verifyToken } = require('../services/auth');
-
-// Test mode user for automated testing (only when TEST_MODE=true)
-const TEST_USER = {
-  id: 'test-user-id',
-  username: 'test-user',
-  name: 'Test User',
-  avatar: '',
-  role: 'admin',
-  books: []
-};
 
 /**
  * Require authentication middleware
@@ -26,12 +21,6 @@ const TEST_USER = {
  *   });
  */
 function requireAuth(req, res, next) {
-  // Test mode - bypass auth for local automated testing
-  if (process.env.TEST_MODE === 'true') {
-    req.user = TEST_USER;
-    return next();
-  }
-
   // Check for token in cookie first, then Authorization header
   let token = req.cookies?.auth_token;
 
@@ -46,7 +35,7 @@ function requireAuth(req, res, next) {
     return res.status(401).json({
       error: 'Authentication required',
       message: 'Please log in to access this resource',
-      loginUrl: '/api/auth/login'
+      loginUrl: '/api/auth/login',
     });
   }
 
@@ -55,7 +44,7 @@ function requireAuth(req, res, next) {
     return res.status(401).json({
       error: 'Invalid or expired token',
       message: 'Please log in again',
-      loginUrl: '/api/auth/login'
+      loginUrl: '/api/auth/login',
     });
   }
 
@@ -66,7 +55,7 @@ function requireAuth(req, res, next) {
     name: decoded.name,
     avatar: decoded.avatar,
     role: decoded.role,
-    books: decoded.books || []
+    books: decoded.books || [],
   };
 
   next();
@@ -79,12 +68,6 @@ function requireAuth(req, res, next) {
  * Useful for endpoints that have different behavior for logged-in users.
  */
 function optionalAuth(req, res, next) {
-  // Test mode - bypass auth for local automated testing
-  if (process.env.TEST_MODE === 'true') {
-    req.user = TEST_USER;
-    return next();
-  }
-
   let token = req.cookies?.auth_token;
 
   if (!token) {
@@ -103,7 +86,7 @@ function optionalAuth(req, res, next) {
         name: decoded.name,
         avatar: decoded.avatar,
         role: decoded.role,
-        books: decoded.books || []
+        books: decoded.books || [],
       };
     }
   }

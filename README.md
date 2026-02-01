@@ -84,7 +84,7 @@ Sjá [server/README.md](server/README.md) fyrir nánari upplýsingar.
 
 ## Að taka þátt
 
-Verkefnið þarf ritstjóra til að yfirfara þýðingar. Sjá [docs/contributing.md](docs/contributing.md) fyrir leiðbeiningar.
+Verkefnið þarf ritstjóra til að yfirfara þýðingar. Sjá [docs/contributing/getting-started.md](docs/contributing/getting-started.md) fyrir leiðbeiningar.
 
 ## Höfundaréttur
 

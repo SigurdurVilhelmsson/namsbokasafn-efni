@@ -24,15 +24,28 @@ const https = require('https');
 const userService = require('./userService');
 
 // Configuration from environment
+// Note: Required secrets are validated at startup by server/config.js
 const CONFIG = {
   githubClientId: process.env.GITHUB_CLIENT_ID,
   githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
   githubOrg: process.env.GITHUB_ORG || 'namsbokasafn',
-  jwtSecret: process.env.JWT_SECRET || 'development-secret-change-in-production',
+  // JWT_SECRET is required in production - see server/config.js for validation
+  // In development, we allow a fallback but warn about it
+  jwtSecret:
+    process.env.JWT_SECRET ||
+    (() => {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('⚠️  Using development JWT secret - do not use in production');
+      }
+      return 'development-secret-do-not-use-in-production';
+    })(),
   jwtExpiry: process.env.JWT_EXPIRY || '24h',
   callbackUrl: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3000/api/auth/callback',
   // Comma-separated list of GitHub usernames with admin access (useful for org owners)
-  adminUsers: (process.env.ADMIN_USERS || '').split(',').map(u => u.trim()).filter(Boolean)
+  adminUsers: (process.env.ADMIN_USERS || '')
+    .split(',')
+    .map((u) => u.trim())
+    .filter(Boolean),
 };
 
 // Role hierarchy
@@ -41,7 +54,7 @@ const ROLES = {
   HEAD_EDITOR: 'head-editor',
   EDITOR: 'editor',
   CONTRIBUTOR: 'contributor',
-  VIEWER: 'viewer'
+  VIEWER: 'viewer',
 };
 
 const ROLE_HIERARCHY = {
@@ -49,7 +62,7 @@ const ROLE_HIERARCHY = {
   [ROLES.HEAD_EDITOR]: 4,
   [ROLES.EDITOR]: 3,
   [ROLES.CONTRIBUTOR]: 2,
-  [ROLES.VIEWER]: 1
+  [ROLES.VIEWER]: 1,
 };
 
 /**
@@ -67,7 +80,7 @@ function getAuthUrl(state) {
     client_id: CONFIG.githubClientId,
     redirect_uri: CONFIG.callbackUrl,
     scope: 'read:user read:org',
-    state
+    state,
   });
   return `https://github.com/login/oauth/authorize?${params}`;
 }
@@ -80,7 +93,7 @@ async function exchangeCodeForToken(code) {
     const postData = JSON.stringify({
       client_id: CONFIG.githubClientId,
       client_secret: CONFIG.githubClientSecret,
-      code
+      code,
     });
 
     const options = {
@@ -89,14 +102,14 @@ async function exchangeCodeForToken(code) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Content-Length': Buffer.byteLength(postData)
-      }
+        Accept: 'application/json',
+        'Content-Length': Buffer.byteLength(postData),
+      },
     };
 
     const req = https.request(options, (res) => {
       let data = '';
-      res.on('data', chunk => data += chunk);
+      res.on('data', (chunk) => (data += chunk));
       res.on('end', () => {
         try {
           const json = JSON.parse(data);
@@ -144,8 +157,8 @@ async function getUserTeams(accessToken) {
     const teams = await githubApiRequest(`/user/teams`, accessToken);
     // Filter to only teams in our org
     return teams
-      .filter(team => team.organization?.login === CONFIG.githubOrg)
-      .map(team => team.slug);
+      .filter((team) => team.organization?.login === CONFIG.githubOrg)
+      .map((team) => team.slug);
   } catch (err) {
     return [];
   }
@@ -194,7 +207,7 @@ async function determineUserRole(accessToken, username, githubUser = null) {
         role: dbUser.role,
         books: headEditorBooks,
         source: 'database',
-        dbUserId: dbUser.id
+        dbUserId: dbUser.id,
       };
     }
 
@@ -207,7 +220,7 @@ async function determineUserRole(accessToken, username, githubUser = null) {
           role: dbUser.role,
           books: [],
           source: 'database-new',
-          dbUserId: dbUser.id
+          dbUserId: dbUser.id,
         };
       }
     }
@@ -235,8 +248,8 @@ async function determineUserRole(accessToken, username, githubUser = null) {
 
   // Check for head editor teams (book-{id}-head)
   const headEditorBooks = teams
-    .filter(t => t.startsWith('book-') && t.endsWith('-head'))
-    .map(t => t.replace('book-', '').replace('-head', ''));
+    .filter((t) => t.startsWith('book-') && t.endsWith('-head'))
+    .map((t) => t.replace('book-', '').replace('-head', ''));
 
   if (headEditorBooks.length > 0) {
     return { role: ROLES.HEAD_EDITOR, books: headEditorBooks, source: 'github-team' };
@@ -266,15 +279,15 @@ function githubApiRequest(path, accessToken) {
       path,
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Accept': 'application/vnd.github.v3+json',
-        'User-Agent': 'namsbokasafn-pipeline'
-      }
+        Authorization: `Bearer ${accessToken}`,
+        Accept: 'application/vnd.github.v3+json',
+        'User-Agent': 'namsbokasafn-pipeline',
+      },
     };
 
     const req = https.request(options, (res) => {
       let data = '';
-      res.on('data', chunk => data += chunk);
+      res.on('data', (chunk) => (data += chunk));
       res.on('end', () => {
         if (res.statusCode === 404) {
           reject(new Error('Not found'));
@@ -312,12 +325,12 @@ function createToken(user) {
     name: user.name,
     avatar: user.avatar,
     role: user.role,
-    books: user.books || []
+    books: user.books || [],
   };
 
   return jwt.sign(payload, CONFIG.jwtSecret, {
     expiresIn: CONFIG.jwtExpiry,
-    issuer: 'namsbokasafn-pipeline'
+    issuer: 'namsbokasafn-pipeline',
   });
 }
 
@@ -327,7 +340,7 @@ function createToken(user) {
 function verifyToken(token) {
   try {
     return jwt.verify(token, CONFIG.jwtSecret, {
-      issuer: 'namsbokasafn-pipeline'
+      issuer: 'namsbokasafn-pipeline',
     });
   } catch (err) {
     return null;
@@ -367,7 +380,7 @@ async function authenticate(code) {
     books: roleInfo.books,
     roleSource: roleInfo.source, // Track where role came from
     dbUserId: roleInfo.dbUserId, // Database user ID if applicable
-    githubAccessToken: accessToken // Store for API calls
+    githubAccessToken: accessToken, // Store for API calls
   };
 
   // Create JWT
@@ -392,7 +405,7 @@ function getConfigStatus() {
     hasClientId: !!CONFIG.githubClientId,
     hasClientSecret: !!CONFIG.githubClientSecret,
     org: CONFIG.githubOrg,
-    callbackUrl: CONFIG.callbackUrl
+    callbackUrl: CONFIG.callbackUrl,
   };
 }
 
@@ -410,5 +423,5 @@ module.exports = {
   // Configuration
   isConfigured,
   getConfigStatus,
-  CONFIG
+  CONFIG,
 };

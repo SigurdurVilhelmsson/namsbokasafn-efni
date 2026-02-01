@@ -10,6 +10,11 @@ Thumbs.db
 *.tmp
 *.temp
 
+# Backup files
+*.bak
+*.backup
+*~
+
 # Word temporary files
 ~$*.docx
 ~$*.doc
@@ -35,6 +40,12 @@ build/
 
 # Pipeline runtime output (sessions database, processed files)
 pipeline-output/
+
+# Test coverage
+coverage/
+
+# Archived tools (keep in separate branch if needed)
+# tools/archived/
 
 # Large files exceeding GitHub's 100MB limit
 books/efnafraedi/01-source/images-editable/ch10/CNX_Chem_10_05_MolSolids.eps

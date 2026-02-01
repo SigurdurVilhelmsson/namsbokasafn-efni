@@ -1,6 +1,6 @@
 # Námsbókasafn - Translation Status
 
-> Last updated: 2025-12-26
+> Last updated: 2026-02-01
 
 ## Active Projects
 
@@ -20,6 +20,7 @@
 
 | Date | Update |
 |------|--------|
+| 2026-02-01 | Best practices audit and improvements |
 | 2025-12-26 | Technical debt cleanup |
 | 2024-12-17 | Progress tracking system created |
 | 2024-12-17 | Repository structure created |
@@ -27,5 +28,6 @@
 ## Quick Links
 
 - [Efnafræði detailed status](books/efnafraedi/STATUS.md)
-- [Workflow documentation](docs/workflow.md)
-- [Editorial guide](docs/editorial-guide.md)
+- [Workflow documentation](docs/workflow/simplified-workflow.md)
+- [Editorial guide (Pass 1)](docs/editorial/pass1-linguistic.md)
+- [Editorial guide (Pass 2)](docs/editorial/pass2-localization.md)

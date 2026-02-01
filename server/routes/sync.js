@@ -48,7 +48,7 @@ router.post('/prepare', requireAuth, requireEditor(), async (req, res) => {
   const { sessionId, book, chapter, files } = req.body;
 
   try {
-    let filesToSync = [];
+    const filesToSync = [];
 
     if (sessionId) {
       // Get files from session
@@ -64,34 +64,44 @@ router.post('/prepare', requireAuth, requireEditor(), async (req, res) => {
             type,
             localPath: fileInfo.path,
             content: fs.readFileSync(fileInfo.path, 'utf-8'),
-            targetPath: getTargetPath(sessionData.book, sessionData.chapter, type, fileInfo)
+            targetPath: getTargetPath(sessionData.book, sessionData.chapter, type, fileInfo),
           });
         }
       }
     } else if (book && chapter && files) {
       // Manual file selection
-      const projectRoot = path.join(__dirname, '..', '..');
+      const projectRoot = path.resolve(__dirname, '..', '..');
 
       for (const filePath of files) {
-        const fullPath = path.join(projectRoot, filePath);
+        // Resolve to absolute path and verify it's within project root
+        const fullPath = path.resolve(projectRoot, filePath);
+
+        // Security: Prevent path traversal attacks
+        if (!fullPath.startsWith(projectRoot + path.sep)) {
+          return res.status(400).json({
+            error: 'Invalid file path',
+            message: 'File path must be within the project directory',
+          });
+        }
+
         if (fs.existsSync(fullPath)) {
           filesToSync.push({
             localPath: fullPath,
             content: fs.readFileSync(fullPath, 'utf-8'),
-            targetPath: filePath
+            targetPath: filePath,
           });
         }
       }
     } else {
       return res.status(400).json({
-        error: 'Provide either sessionId or book+chapter+files'
+        error: 'Provide either sessionId or book+chapter+files',
       });
     }
 
     if (filesToSync.length === 0) {
       return res.status(400).json({
         error: 'No files to sync',
-        message: 'No valid files found for synchronization'
+        message: 'No valid files found for synchronization',
       });
     }
 
@@ -100,21 +110,20 @@ router.post('/prepare', requireAuth, requireEditor(), async (req, res) => {
 
     res.json({
       ready: validation.valid,
-      files: filesToSync.map(f => ({
+      files: filesToSync.map((f) => ({
         targetPath: f.targetPath,
         size: f.content.length,
-        type: f.type
+        type: f.type,
       })),
       validation,
       warnings: validation.warnings,
-      errors: validation.errors
+      errors: validation.errors,
     });
-
   } catch (err) {
     console.error('Sync prepare error:', err);
     res.status(500).json({
       error: 'Failed to prepare sync',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -137,7 +146,7 @@ router.post('/create-pr', requireAuth, requireHeadEditor(), async (req, res) => 
   if (!isConfigured()) {
     return res.status(503).json({
       error: 'GitHub integration not configured',
-      message: 'Set GITHUB_REPO_OWNER and GITHUB_REPO_NAME environment variables'
+      message: 'Set GITHUB_REPO_OWNER and GITHUB_REPO_NAME environment variables',
     });
   }
 
@@ -146,7 +155,7 @@ router.post('/create-pr', requireAuth, requireHeadEditor(), async (req, res) => 
   if (!accessToken) {
     return res.status(401).json({
       error: 'GitHub access token required',
-      message: 'User must be authenticated with GitHub'
+      message: 'User must be authenticated with GitHub',
     });
   }
 
@@ -168,7 +177,7 @@ router.post('/create-pr', requireAuth, requireHeadEditor(), async (req, res) => 
         if (fs.existsSync(fileInfo.path)) {
           filesToSync.push({
             path: getTargetPath(syncBook, syncChapter, type, fileInfo),
-            content: fs.readFileSync(fileInfo.path, 'utf-8')
+            content: fs.readFileSync(fileInfo.path, 'utf-8'),
           });
         }
       }
@@ -178,13 +187,13 @@ router.post('/create-pr', requireAuth, requireHeadEditor(), async (req, res) => 
       filesToSync = files;
     } else {
       return res.status(400).json({
-        error: 'Provide either sessionId or book+chapter+files'
+        error: 'Provide either sessionId or book+chapter+files',
       });
     }
 
     if (filesToSync.length === 0) {
       return res.status(400).json({
-        error: 'No files to sync'
+        error: 'No files to sync',
       });
     }
 
@@ -195,7 +204,7 @@ router.post('/create-pr', requireAuth, requireHeadEditor(), async (req, res) => 
       chapter: syncChapter,
       files: filesToSync,
       username: req.user.username,
-      description
+      description,
     });
 
     // Store PR info
@@ -204,20 +213,19 @@ router.post('/create-pr', requireAuth, requireHeadEditor(), async (req, res) => 
       book: syncBook,
       chapter: syncChapter,
       createdBy: req.user.username,
-      files: filesToSync.map(f => f.path)
+      files: filesToSync.map((f) => f.path),
     });
 
     res.json({
       success: true,
       pr: prResult,
-      message: 'Pull request created successfully'
+      message: 'Pull request created successfully',
     });
-
   } catch (err) {
     console.error('Create PR error:', err);
     res.status(500).json({
       error: 'Failed to create PR',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -232,7 +240,7 @@ router.get('/status/:prNumber', requireAuth, async (req, res) => {
   const accessToken = req.user.githubAccessToken || process.env.GITHUB_BOT_TOKEN;
   if (!accessToken) {
     return res.status(401).json({
-      error: 'GitHub access token required'
+      error: 'GitHub access token required',
     });
   }
 
@@ -252,21 +260,20 @@ router.get('/status/:prNumber', requireAuth, async (req, res) => {
       merged: pr.merged,
       mergeable: mergeable.mergeable,
       mergeableState: mergeable.mergeableState,
-      reviews: reviews.map(r => ({
+      reviews: reviews.map((r) => ({
         user: r.user.login,
         state: r.state,
-        submittedAt: r.submitted_at
+        submittedAt: r.submitted_at,
       })),
       createdAt: pr.created_at,
       updatedAt: pr.updated_at,
-      storedInfo
+      storedInfo,
     });
-
   } catch (err) {
     console.error('Get PR status error:', err);
     res.status(500).json({
       error: 'Failed to get PR status',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -283,7 +290,7 @@ router.get('/prs', requireAuth, async (req, res) => {
     // Return only stored PRs if no token
     let prs = Array.from(prStore.values());
     if (book) {
-      prs = prs.filter(p => p.book === book);
+      prs = prs.filter((p) => p.book === book);
     }
     return res.json({ prs, source: 'local' });
   }
@@ -293,14 +300,14 @@ router.get('/prs', requireAuth, async (req, res) => {
     let prs = await client.listPullRequests(state);
 
     // Filter to sync PRs (by branch name pattern)
-    prs = prs.filter(pr => pr.head.ref.startsWith('sync/'));
+    prs = prs.filter((pr) => pr.head.ref.startsWith('sync/'));
 
     if (book) {
-      prs = prs.filter(pr => pr.head.ref.includes('/' + book + '/'));
+      prs = prs.filter((pr) => pr.head.ref.includes('/' + book + '/'));
     }
 
     res.json({
-      prs: prs.map(pr => ({
+      prs: prs.map((pr) => ({
         number: pr.number,
         title: pr.title,
         state: pr.state,
@@ -309,17 +316,16 @@ router.get('/prs', requireAuth, async (req, res) => {
         merged: pr.merged,
         createdAt: pr.created_at,
         updatedAt: pr.updated_at,
-        user: pr.user.login
+        user: pr.user.login,
       })),
       total: prs.length,
-      source: 'github'
+      source: 'github',
     });
-
   } catch (err) {
     console.error('List PRs error:', err);
     res.status(500).json({
       error: 'Failed to list PRs',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -349,15 +355,16 @@ function validateFiles(files) {
   const result = {
     valid: true,
     warnings: [],
-    errors: []
+    errors: [],
   };
 
   for (const file of files) {
     // Check file size
-    if (file.content.length > 1024 * 1024) { // 1MB
+    if (file.content.length > 1024 * 1024) {
+      // 1MB
       result.warnings.push({
         file: file.targetPath,
-        message: 'File is large (>1MB), sync may be slow'
+        message: 'File is large (>1MB), sync may be slow',
       });
     }
 
@@ -365,7 +372,7 @@ function validateFiles(files) {
     if (file.content.includes('[EQUATION_')) {
       result.warnings.push({
         file: file.targetPath,
-        message: 'Contains equation placeholders - ensure equations are restored'
+        message: 'Contains equation placeholders - ensure equations are restored',
       });
     }
 
@@ -373,7 +380,7 @@ function validateFiles(files) {
     if (file.content.match(/password|secret|api[_-]?key/i)) {
       result.errors.push({
         file: file.targetPath,
-        message: 'File may contain sensitive content'
+        message: 'File may contain sensitive content',
       });
       result.valid = false;
     }

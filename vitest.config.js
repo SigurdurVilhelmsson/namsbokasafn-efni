@@ -1,0 +1,29 @@
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'node',
+    include: ['**/*.test.js', '**/__tests__/**/*.js'],
+    exclude: [
+      '**/node_modules/**',
+      '**/archived/**',
+      '**/dist/**',
+      '**/books/**',
+    ],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html', 'lcov'],
+      exclude: [
+        '**/node_modules/**',
+        '**/archived/**',
+        '**/books/**',
+        '**/*.test.js',
+        '**/__tests__/**',
+        'vitest.config.js',
+      ],
+      reportsDirectory: './coverage',
+    },
+    testTimeout: 30000,
+  },
+});

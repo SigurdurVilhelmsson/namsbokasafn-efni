@@ -24,12 +24,46 @@
     "server:dev": "cd server && npm run dev",
     "server:install": "cd server && npm install",
     "docs:generate": "node scripts/generate-tool-inventory.js && node scripts/generate-route-inventory.js && node scripts/update-readme-sections.js",
-    "docs:check": "npm run docs:generate && git diff --exit-code docs/_generated/"
+    "docs:check": "npm run docs:generate && git diff --exit-code docs/_generated/",
+    "lint": "eslint tools/ scripts/ --ext .js",
+    "lint:fix": "eslint tools/ scripts/ --ext .js --fix",
+    "format": "prettier --write 'tools/**/*.js' 'scripts/**/*.js' 'lib/**/*.js'",
+    "format:check": "prettier --check 'tools/**/*.js' 'scripts/**/*.js'",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
     "mammoth": "^1.11.0",
     "turndown": "^7.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.1.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.4.0",
+    "vitest": "^2.1.0"
+  },
+  "lint-staged": {
+    "tools/**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "scripts/**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "lib/**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "server/**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "validate-chapter": "node tools/validate-chapter.js",
   "_future-scripts": {
