@@ -140,14 +140,22 @@ References like "as shown in ()" have empty parentheses - figure/table reference
 ---
 
 ### 8. Inline `\times` Artifacts
-**Status:** Open
+**Status:** FIXED
 **Severity:** Low
 
 **Problem:**
 Some inline text shows `×{\times}×` instead of just `×`.
 
 **Root Cause:**
-The multiplication symbol in inline text is being triple-rendered - once as Unicode, once as LaTeX, once as Unicode again.
+The tag stripping regex in `processInlineContent()` was removing ALL HTML tags, including the KaTeX-generated `<span>` elements. This left only the text content: the Unicode `×` from KaTeX's mathml annotation, the LaTeX source `{\times}`, and the rendered `×` from KaTeX's HTML output.
+
+**Fix Applied:**
+Changed the tag stripping regex in `cnxml-elements.js` to only strip namespaced CNXML/MathML tags (those with prefixes like `m:`, `c:`), preserving standard HTML tags:
+```javascript
+// Strip namespaced tags only (e.g., <m:mspace/>, <m:mo>, </c:para>)
+result = result.replace(/<[a-z]+:[^>]*\/>/gi, '');  // Namespaced self-closing
+result = result.replace(/<\/?[a-z]+:[^>]*>/gi, ''); // Namespaced opening/closing
+```
 
 ---
 
@@ -159,6 +167,7 @@ After fixes, verify:
 - [x] No duplicate content
 - [x] Equations render with KaTeX
 - [x] No duplicate notes in examples
+- [x] Inline math (×, subscripts, etc.) renders correctly
 - [ ] Examples show title, problem, solution structure
 - [ ] Exercises properly formatted
 - [ ] Cross-references resolve
@@ -179,7 +188,7 @@ After fixes, verify:
 | Examples structure | Open | CSS/structure alignment needed |
 | Exercises structure | Open | CSS/structure alignment needed |
 | Cross-references | Open | Link resolution needed |
-| Inline \times | Open | MathML processing issue |
+| Inline \times | FIXED | cnxml-elements.js - preserve HTML tags in stripping |
 
 ---
 
