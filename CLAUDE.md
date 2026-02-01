@@ -1,5 +1,33 @@
 # Claude Code Instructions for namsbokasafn-efni
 
+## ⚠️ MANDATORY: Read Documentation Before Pipeline Operations
+
+**Before performing ANY pipeline operation** (processing, publishing, assembling, syncing content), you MUST:
+
+1. **Read** [docs/workflow/simplified-workflow.md](docs/workflow/simplified-workflow.md) first
+2. **Identify** which step(s) of the 5-step workflow apply
+3. **Use the documented tools** - never bypass with manual file operations
+4. **Follow the documented order** - source fixes go in source directories, not publication directories
+
+**Pipeline operations include:**
+- Processing content through any pipeline stage
+- Publishing or preparing content for publication
+- Splitting or assembling chapter files
+- Syncing content between repositories
+- Fixing content rendering issues
+
+**DO NOT:**
+- Edit files directly in `05-publication/` without using pipeline tools
+- Copy files manually between repositories (use sync scripts)
+- Edit `toc.json` in -vefur directly (source of truth is in content repo)
+- "Quick fix" content issues without understanding the proper workflow
+
+**If documentation is unclear or tools don't work as expected:**
+- Report the issue to the user
+- Do not work around the tooling with manual operations
+
+---
+
 ## Purpose
 
 Translation workflow for Icelandic OpenStax textbooks. Produces three assets:

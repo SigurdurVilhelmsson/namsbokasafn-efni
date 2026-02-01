@@ -3,11 +3,11 @@
 # Table Strings - Section 5.3
 
 Translatable text extracted from tables.
-Translate the text content while preserving the structure.
+Translate the text content while preserving the [[markers]].
 
-## TABLE:1
+## [[TABLE:1]]
 
-### Headers
+### [[HEADERS]]
 
 **H1:** Substance
 
@@ -15,7 +15,7 @@ Translate the text content while preserving the structure.
 
 **H3:** Enthalpy of Combustion, [[EQ:63]][[EQ:64]]
 
-### Cells
+### [[CELLS]]
 
 **R1C1:** carbon
 

@@ -324,7 +324,7 @@ function parseMarkdown(content) {
 function extractSummary(content) {
   // Match "## Key Concepts and Summary" or similar
   const summaryMatch = content.match(
-    /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt)\s*\n([\s\S]*?)(?=^##\s+(?:Key Equations|Chemistry End of Chapter|Lykiljöfnur|Æfingar)|$)/m
+    /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt)\s*\n([\s\S]*?)(?=^##\s+(?:Key Equations|Chemistry End of Chapter|Lykiljöfnur|Lykiljafna|Æfingar|Efnafræði\s*[–-]\s*verkefni)|$)/m
   );
 
   if (summaryMatch) {
@@ -340,17 +340,22 @@ function extractSummary(content) {
 
 /**
  * Extract Key Equations section
+ * Supports:
+ *   - "## Key Equations" (English)
+ *   - "## Lykiljöfnur" (Icelandic plural)
+ *   - "## Lykiljafna" (Icelandic singular, from MT)
  */
 function extractKeyEquations(content) {
-  // Match "## Key Equations" section
+  // Match "## Key Equations" / "## Lykiljöfnur" / "## Lykiljafna" section
   const eqMatch = content.match(
-    /^##\s+(?:Key Equations|Lykiljöfnur)\s*\n([\s\S]*?)(?=^##\s+(?:Chemistry End of Chapter|Æfingar)|$)/m
+    /^##\s+(?:Key Equations|Lykiljöfnur|Lykiljafna)\s*\n([\s\S]*?)(?=^##\s+(?:Chemistry End of Chapter|Æfingar|Efnafræði\s*[–-]\s*verkefni)|$)/m
   );
 
   if (eqMatch) {
-    // Extract equation references like [[EQ:n]]
+    // Extract equation references - supports [[EQ:n]] and [[TABLE:n]] formats
+    // Also handles escaped versions \[\[EQ:n\]\] from MT output
     const equations = [];
-    const eqRefPattern = /\[\[EQ:(\d+)\]\]/g;
+    const eqRefPattern = /\\?\[\\?\[(?:EQ|TABLE):(\d+)\\?\]\\?\]/g;
     let match;
     while ((match = eqRefPattern.exec(eqMatch[1])) !== null) {
       equations.push({
@@ -372,39 +377,67 @@ function extractKeyEquations(content) {
 
 /**
  * Extract practice problems (exercises)
- * Supports both :::practice-problem and :::æfingadæmi (Icelandic) directives
+ * Supports multiple directive formats:
+ *   - :::practice-problem{#id} - original format
+ *   - :::æfingadæmi{#id} - Icelandic alias
+ *   - :::exercise{id="id"} - MT output format (with id= attribute)
+ *   - :::exercise{#id} - shorthand format
  */
 function extractExercises(content) {
   const exercises = [];
 
-  // Match :::practice-problem or :::æfingadæmi blocks (Icelandic alias)
-  const problemPattern = /:::(?:practice-problem|æfingadæmi)\{#([^}]+)\}([\s\S]*?)(?=:::(?:practice-problem|æfingadæmi)|$)/g;
+  // Pattern 1: :::practice-problem{#id} or :::æfingadæmi{#id} format
+  const problemPattern1 = /:::(?:practice-problem|æfingadæmi)\{#([^}]+)\}([\s\S]*?)(?=:::(?:practice-problem|æfingadæmi|exercise)|$)/g;
 
-  let match;
-  while ((match = problemPattern.exec(content)) !== null) {
-    const problemId = match[1];
-    let problemContent = match[2];
+  // Pattern 2: :::exercise{id="id"} format (MT output - content may be on same line)
+  const problemPattern2 = /:::exercise\{id="([^"]+)"\}\s*([\s\S]*?)(?=:::exercise\{|:::(?:practice-problem|æfingadæmi)|$)/g;
 
-    // Extract answer if present (supports :::answer and :::svar - Icelandic alias)
-    let answer = null;
-    const answerMatch = problemContent.match(/:::(?:answer|svar)\s*([\s\S]*?):::/);
-    if (answerMatch) {
-      answer = answerMatch[1].trim();
-      // Remove answer block from problem content
-      problemContent = problemContent.replace(/:::(?:answer|svar)[\s\S]*?:::\s*:::\s*$/m, '').trim();
-      // Also handle case where answer is at end
-      problemContent = problemContent.replace(/:::(?:answer|svar)[\s\S]*$/m, '').trim();
+  // Pattern 3: :::exercise{#id} shorthand format
+  const problemPattern3 = /:::exercise\{#([^}]+)\}([\s\S]*?)(?=:::exercise\{|:::(?:practice-problem|æfingadæmi)|$)/g;
+
+  // Process all patterns
+  for (const pattern of [problemPattern1, problemPattern2, problemPattern3]) {
+    let match;
+    while ((match = pattern.exec(content)) !== null) {
+      const problemId = match[1];
+      let problemContent = match[2];
+
+      // Extract answer if present (supports :::answer and :::svar - Icelandic alias)
+      // Handle both block format and inline format (content on same line as :::answer)
+      let answer = null;
+
+      // Try block format first: :::answer\ncontent\n:::
+      let answerMatch = problemContent.match(/:::(?:answer|svar)\s*\n([\s\S]*?)(?::::|$)/);
+      if (answerMatch) {
+        answer = answerMatch[1].trim();
+      } else {
+        // Try inline format: :::answer content (no closing :::)
+        answerMatch = problemContent.match(/:::(?:answer|svar)\s+([^\n]+(?:\n(?!:::)[^\n]*)*)/);
+        if (answerMatch) {
+          answer = answerMatch[1].trim();
+        }
+      }
+
+      if (answer) {
+        // Remove answer block from problem content
+        problemContent = problemContent.replace(/:::(?:answer|svar)[\s\S]*$/m, '').trim();
+      }
+
+      // Clean up trailing ::: from problem content
+      problemContent = problemContent.replace(/:::\s*$/m, '').trim();
+
+      // Skip if we already have this exercise (avoid duplicates from overlapping patterns)
+      if (exercises.some(e => e.id === problemId)) {
+        continue;
+      }
+
+      exercises.push({
+        id: problemId,
+        content: problemContent,
+        answer: answer,
+        fullMatch: match[0]
+      });
     }
-
-    // Clean up trailing ::: from problem content
-    problemContent = problemContent.replace(/:::\s*$/m, '').trim();
-
-    exercises.push({
-      id: problemId,
-      content: problemContent,
-      answer: answer,
-      fullMatch: match[0]
-    });
   }
 
   return exercises;
@@ -445,19 +478,35 @@ function stripSections(content) {
 
   // Remove "## Key Concepts and Summary" section
   stripped = stripped.replace(
-    /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt)\s*\n[\s\S]*?(?=^##\s+(?:Key Equations|Chemistry End of Chapter|Lykiljöfnur|Æfingar)|$)/m,
+    /^##\s+(?:Key Concepts and Summary|Lykilhugtök og samantekt|Samantekt)\s*\n[\s\S]*?(?=^##\s+(?:Key Equations|Chemistry End of Chapter|Lykiljöfnur|Lykiljafna|Æfingar|Efnafræði\s*[–-]\s*verkefni)|$)/m,
     ''
   );
 
-  // Remove "## Key Equations" section
+  // Remove "## Key Equations" section (supports singular and plural Icelandic)
   stripped = stripped.replace(
-    /^##\s+(?:Key Equations|Lykiljöfnur)\s*\n[\s\S]*?(?=^##\s+(?:Chemistry End of Chapter|Æfingar)|$)/m,
+    /^##\s+(?:Key Equations|Lykiljöfnur|Lykiljafna)\s*\n[\s\S]*?(?=^##\s+(?:Chemistry End of Chapter|Æfingar|Efnafræði\s*[–-]\s*verkefni)|$)/m,
     ''
   );
 
   // Remove "## Chemistry End of Chapter Exercises" section and all practice problems
+  // Supports multiple heading formats:
+  //   - "## Chemistry End of Chapter Exercises" (English)
+  //   - "## Æfingar" (Icelandic short)
+  //   - "## Efnafræði – verkefni í lok kafla" (Icelandic long from MT)
   stripped = stripped.replace(
-    /^##\s+(?:Chemistry End of Chapter Exercises|Æfingar)\s*\n[\s\S]*/m,
+    /^##\s+(?:Chemistry End of Chapter Exercises|Æfingar|Efnafræði\s*[–-]\s*verkefni í lok kafla)\s*\n[\s\S]*/m,
+    ''
+  );
+
+  // Also remove any standalone :::exercise blocks that might be scattered in content
+  stripped = stripped.replace(
+    /:::exercise\{(?:id="[^"]+"|#[^}]+)\}[\s\S]*?(?=:::exercise\{|:::(?:practice-problem|æfingadæmi)|^##\s+|$)/gm,
+    ''
+  );
+
+  // Remove :::practice-problem and :::æfingadæmi blocks
+  stripped = stripped.replace(
+    /:::(?:practice-problem|æfingadæmi)\{#[^}]+\}[\s\S]*?(?=:::(?:practice-problem|æfingadæmi|exercise)|^##\s+|$)/gm,
     ''
   );
 
