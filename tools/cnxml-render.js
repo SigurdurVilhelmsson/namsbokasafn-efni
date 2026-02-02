@@ -36,6 +36,47 @@ import {
 import { escapeAttr, escapeHtml, processInlineContent } from './lib/cnxml-elements.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 
+// =====================================================================
+// NOTE TYPE LABELS
+// =====================================================================
+
+/**
+ * Map note class names to display labels.
+ * These appear as headers above the note content.
+ */
+const NOTE_TYPE_LABELS = {
+  'chemistry everyday-life': 'Chemistry in Everyday Life',
+  'everyday-life': 'Chemistry in Everyday Life',
+  'link-to-learning': 'Link to Learning',
+  'sciences-interconnect': 'How Sciences Interconnect',
+  'chemist-portrait': 'Portrait of a Chemist',
+  'chem-connections': 'Chemistry Connections',
+  'green-chemistry': 'Green Chemistry',
+  'safety-hazard': 'Safety Hazard',
+  'lab-equipment': 'Laboratory Equipment',
+  default: null, // No type label for default notes
+};
+
+/**
+ * Get the display label for a note type.
+ * @param {string} noteClass - The note's class attribute
+ * @returns {string|null} The display label or null
+ */
+function getNoteTypeLabel(noteClass) {
+  if (!noteClass) return null;
+  // Try exact match first
+  if (NOTE_TYPE_LABELS[noteClass]) {
+    return NOTE_TYPE_LABELS[noteClass];
+  }
+  // Try partial match (for compound classes)
+  for (const [key, label] of Object.entries(NOTE_TYPE_LABELS)) {
+    if (noteClass.includes(key)) {
+      return label;
+    }
+  }
+  return null;
+}
+
 /**
  * Render LaTeX to KaTeX HTML.
  * @param {string} latex - LaTeX string
@@ -157,6 +198,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     terms: {},
     figures: [],
     footnoteCounter: 0,
+    exampleCounter: 0,
   };
 
   // Render content
@@ -719,6 +761,12 @@ function renderNote(note, context) {
     `<aside${id ? ` id="${escapeAttr(id)}"` : ''} class="note note-${escapeAttr(noteClass)}">`
   );
 
+  // Note type label (e.g., "Chemistry in Everyday Life", "Link to Learning")
+  const typeLabel = getNoteTypeLabel(noteClass);
+  if (typeLabel) {
+    lines.push(`  <p class="note-type">${escapeHtml(typeLabel)}</p>`);
+  }
+
   // Title
   const titleMatch = note.content.match(/<title>([^<]+)<\/title>/);
   if (titleMatch) {
@@ -748,6 +796,10 @@ function renderExample(example, context) {
   const lines = [];
   const id = example.id || null;
 
+  // Increment example counter and generate example number
+  context.exampleCounter = (context.exampleCounter || 0) + 1;
+  const exampleNumber = `${context.chapter}.${context.exampleCounter}`;
+
   lines.push(`<aside${id ? ` id="${escapeAttr(id)}"` : ''} class="example">`);
 
   // Extract all paragraphs to find the example title from the FIRST one with a title
@@ -771,6 +823,8 @@ function renderExample(example, context) {
     }
   }
 
+  // Example header with number and title
+  lines.push(`  <p class="example-label">Example ${exampleNumber}</p>`);
   if (exampleTitle) {
     lines.push(`  <h4>${processInlineContent(exampleTitle, context)}</h4>`);
   }
