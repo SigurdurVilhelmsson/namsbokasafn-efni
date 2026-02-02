@@ -523,15 +523,15 @@ function buildExercisesHtml(exercises, chapter, _book) {
         `          <li class="exercise" id="${escapeAttr(ex.id)}" value="${globalNumber}">`
       );
 
-      if (ex.problem) {
+      if (ex.problem && ex.problem.content) {
         lines.push('            <div class="problem">');
-        if (ex.problem.paras && ex.problem.paras.length > 0) {
-          for (const para of ex.problem.paras) {
+        if (ex.problem.content.paras && ex.problem.content.paras.length > 0) {
+          for (const para of ex.problem.content.paras) {
             lines.push(`              <p>${para}</p>`);
           }
         }
-        if (ex.problem.lists && ex.problem.lists.length > 0) {
-          for (const list of ex.problem.lists) {
+        if (ex.problem.content.lists && ex.problem.content.lists.length > 0) {
+          for (const list of ex.problem.content.lists) {
             lines.push('              <ol class="exercise-parts" type="a">');
             for (const item of list) {
               lines.push(`                <li>${item}</li>`);
