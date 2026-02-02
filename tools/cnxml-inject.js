@@ -611,17 +611,41 @@ function buildNote(element, getSeg, equations, originalCnxml) {
   if (element.id) {
     // Check if this note is nested inside an example or exercise in the original
     // If so, skip it - it's already included via buildExample/buildExercise
-    const noteInExamplePattern = new RegExp(
-      `<example[^>]*>[\\s\\S]*?<note\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/example>`,
-      's'
-    );
-    const noteInExercisePattern = new RegExp(
-      `<exercise[^>]*>[\\s\\S]*?<note\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/exercise>`,
-      's'
-    );
-    if (noteInExamplePattern.test(originalCnxml) || noteInExercisePattern.test(originalCnxml)) {
-      // This note is nested inside an example/exercise, skip standalone creation
-      return null;
+    // Use position-based check to avoid matching across element boundaries
+    const noteMatch = originalCnxml.match(new RegExp(`<note\\s+id="${element.id}"`));
+    if (noteMatch) {
+      const notePos = noteMatch.index;
+
+      // Check if note is inside any example
+      const examplePattern = /<example[^>]*>[\s\S]*?<\/example>/g;
+      let exMatch;
+      let isInsideExample = false;
+      while ((exMatch = examplePattern.exec(originalCnxml)) !== null) {
+        const exStart = exMatch.index;
+        const exEnd = exStart + exMatch[0].length;
+        if (notePos > exStart && notePos < exEnd) {
+          isInsideExample = true;
+          break;
+        }
+      }
+
+      // Check if note is inside any exercise
+      const exercisePattern = /<exercise[^>]*>[\s\S]*?<\/exercise>/g;
+      let exerMatch;
+      let isInsideExercise = false;
+      while ((exerMatch = exercisePattern.exec(originalCnxml)) !== null) {
+        const exerStart = exerMatch.index;
+        const exerEnd = exerStart + exerMatch[0].length;
+        if (notePos > exerStart && notePos < exerEnd) {
+          isInsideExercise = true;
+          break;
+        }
+      }
+
+      if (isInsideExample || isInsideExercise) {
+        // This note is nested inside an example/exercise, skip standalone creation
+        return null;
+      }
     }
 
     const notePattern = new RegExp(`<note\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/note>`, 'g');
