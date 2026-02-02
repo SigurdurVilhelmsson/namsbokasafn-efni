@@ -199,6 +199,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     figures: [],
     footnoteCounter: 0,
     exampleCounter: 0,
+    renderedFigureIds: new Set(), // Track rendered figures to prevent duplicates
   };
 
   // Render content
@@ -704,10 +705,22 @@ function renderPara(para, context) {
 
 /**
  * Render a figure.
+ * Skips rendering if the figure has already been rendered (tracked in context.renderedFigureIds).
  */
 function renderFigure(figure, context) {
-  const lines = [];
   const id = figure.id || null;
+
+  // Skip if this figure was already rendered (e.g., inside a note)
+  if (id && context.renderedFigureIds && context.renderedFigureIds.has(id)) {
+    return '';
+  }
+
+  // Mark this figure as rendered
+  if (id && context.renderedFigureIds) {
+    context.renderedFigureIds.add(id);
+  }
+
+  const lines = [];
   const className = figure.attributes.class || null;
 
   lines.push(
@@ -751,6 +764,7 @@ function renderFigure(figure, context) {
 
 /**
  * Render a note.
+ * Renders paragraphs and figures in document order to preserve content flow.
  */
 function renderNote(note, context) {
   const lines = [];
@@ -773,11 +787,38 @@ function renderNote(note, context) {
     lines.push(`  <h4>${processInlineContent(titleMatch[1], context)}</h4>`);
   }
 
-  // Paragraphs
+  // Extract paragraphs and figures, then render in document order
   const contentWithoutTitle = note.content.replace(/<title>[^<]*<\/title>/, '');
+
+  // Collect all elements with their positions
+  const elementsWithPositions = [];
+
   const paras = extractElements(contentWithoutTitle, 'para');
   for (const para of paras) {
-    lines.push(`  ${renderPara(para, context)}`);
+    const pos = para.id
+      ? contentWithoutTitle.indexOf(`id="${para.id}"`)
+      : contentWithoutTitle.indexOf('<para');
+    elementsWithPositions.push({ type: 'para', item: para, position: pos !== -1 ? pos : 0 });
+  }
+
+  const figures = extractNestedElements(contentWithoutTitle, 'figure');
+  for (const figure of figures) {
+    const pos = figure.id
+      ? contentWithoutTitle.indexOf(`id="${figure.id}"`)
+      : contentWithoutTitle.indexOf('<figure');
+    elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
+  }
+
+  // Sort by position to preserve document order
+  elementsWithPositions.sort((a, b) => a.position - b.position);
+
+  // Render in order
+  for (const elem of elementsWithPositions) {
+    if (elem.type === 'para') {
+      lines.push(`  ${renderPara(elem.item, context)}`);
+    } else if (elem.type === 'figure') {
+      lines.push(`  ${renderFigure(elem.item, context)}`);
+    }
   }
 
   lines.push('</aside>');

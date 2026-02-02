@@ -687,9 +687,9 @@ function buildNote(element, getSeg, equations, originalCnxml) {
         }
       }
 
-      // Note: We do NOT strip equations - they should pass through unchanged
-      // Only strip elements that might cause duplication issues
-      noteCnxml = stripNestedElements(noteCnxml, ['figure', 'table', 'example', 'exercise']);
+      // Note: We do NOT strip equations or figures - they should pass through unchanged
+      // to preserve document order. Only strip elements that would cause nesting issues.
+      noteCnxml = stripNestedElements(noteCnxml, ['table', 'example', 'exercise']);
 
       return noteCnxml;
     }
