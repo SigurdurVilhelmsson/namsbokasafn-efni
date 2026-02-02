@@ -277,6 +277,7 @@ Extract-Inject Pipeline Stages:
   extract   CNXML → segments.en.md + structure.json + equations.json
   inject    segments.is.md + structure.json → translated CNXML
   render    CNXML → semantic HTML for publication
+  resources Extract glossary, key equations, exercises, answer key
 
 Extract-Inject Output:
   02-for-mt/chNN/           Segments for MT
@@ -1207,7 +1208,7 @@ async function runExtractInjectPipeline(options) {
     console.log('');
   }
 
-  const stages = stage ? [stage] : ['extract', 'inject', 'render'];
+  const stages = stage ? [stage] : ['extract', 'inject', 'render', 'resources'];
 
   try {
     for (const currentStage of stages) {
@@ -1276,6 +1277,34 @@ async function runExtractInjectPipeline(options) {
           break;
         }
 
+        case 'resources': {
+          // Run cnxml-extract-chapter-resources.js to extract glossary, exercises, etc.
+          const resourceArgs = [
+            '--book',
+            book,
+            '--chapter',
+            String(chapter),
+            '--track',
+            'mt-preview',
+          ];
+          if (verbose) resourceArgs.push('--verbose');
+
+          console.log('  Extracting chapter resources (glossary, equations, exercises)...');
+          await runTool(
+            path.join(projectRoot, 'tools', 'cnxml-extract-chapter-resources.js'),
+            resourceArgs,
+            { verbose }
+          );
+
+          results.steps.push({
+            name: 'resources',
+            success: true,
+            timeMs: Date.now() - stageStart,
+          });
+          console.log('  ✓ Key terms, equations, exercises, and answer key extracted');
+          break;
+        }
+
         default:
           throw new Error(`Unknown stage: ${currentStage}`);
       }
@@ -1309,19 +1338,20 @@ async function runExtractInjectPipeline(options) {
     if (!stage || stage === 'inject') {
       console.log(`  03-translated/ch${String(chapter).padStart(2, '0')}/ Translated CNXML`);
     }
-    if (!stage || stage === 'render') {
+    if (!stage || stage === 'render' || stage === 'resources') {
       console.log(
         `  05-publication/mt-preview/chapters/${String(chapter).padStart(2, '0')}/ HTML files`
       );
     }
     console.log('');
 
-    if (stage === 'extract' || !stage) {
+    if (stage === 'extract') {
       console.log('Next steps:');
       console.log('  1. Send 02-for-mt/ files to Erlendur MT (malstadur.is)');
       console.log('  2. Save translated output to 02-mt-output/');
       console.log('  3. Run --stage inject to create translated CNXML');
       console.log('  4. Run --stage render to generate HTML');
+      console.log('  5. Run --stage resources to extract glossary, exercises, etc.');
       console.log('');
     }
   }
