@@ -399,15 +399,40 @@ function processTopLevelContent(content, moduleId, addSegment, mathMap, counters
   // Collect all elements with their positions in the content string
   const elementsWithPositions = [];
 
-  // Extract all element types
-  const paras = extractElements(content, 'para');
+  // Extract container elements first (these contain other elements like paragraphs)
   const figures = extractNestedElements(content, 'figure');
   const tables = extractNestedElements(content, 'table');
   const examples = extractNestedElements(content, 'example');
   const exercises = extractNestedElements(content, 'exercise');
   const notes = extractNestedElements(content, 'note');
-  const equations = extractElements(content, 'equation');
-  const lists = extractNestedElements(content, 'list');
+
+  // For simple elements (paras, lists, equations) - only extract those NOT inside containers
+  // Remove container content to avoid extracting nested elements as top-level
+  let contentForSimpleElements = content;
+  for (const note of notes) {
+    if (note.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
+  }
+  for (const example of examples) {
+    if (example.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(example.fullMatch, '');
+  }
+  for (const exercise of exercises) {
+    if (exercise.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(exercise.fullMatch, '');
+  }
+  for (const figure of figures) {
+    if (figure.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(figure.fullMatch, '');
+  }
+  for (const table of tables) {
+    if (table.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(table.fullMatch, '');
+  }
+
+  const paras = extractElements(contentForSimpleElements, 'para');
+  const equations = extractElements(contentForSimpleElements, 'equation');
+  const lists = extractNestedElements(contentForSimpleElements, 'list');
 
   // Add all elements with their positions
   // For elements without fullMatch, find by id attribute

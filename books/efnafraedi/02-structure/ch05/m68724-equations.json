@@ -12,18 +12,10 @@
     "latex": "{\\times}"
   },
   "math-4": {
-    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
-    "latex": "{\\times}"
-  },
-  "math-5": {
     "mathml": "<m:math><m:mrow><m:mi>q</m:mi><m:mo>=</m:mo><m:mi>c</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>T</m:mtext></m:mstyle><m:mo>=</m:mo><m:mi>c</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>final</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>initial</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
     "latex": "{q=c\\, \\times \\, m\\, \\times \\, \\text{Δ}\\text{T}=c\\, \\times \\, m\\, \\times \\, ({T}_{{\\text{final}}}-{T}_{{\\text{initial}}})}"
   },
-  "math-6": {
-    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
-    "latex": "{\\times}"
-  },
-  "math-7": {
+  "math-5": {
     "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
     "latex": "{\\times}"
   },

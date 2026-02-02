@@ -61,11 +61,6 @@
           "solution": null
         },
         {
-          "type": "para",
-          "id": "fs-idm55422464",
-          "segmentId": "m68726:para:fs-idm55422464"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm72048864",
           "problem": {
@@ -88,16 +83,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idm8837408",
-          "segmentId": "m68726:para:fs-idm8837408"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm68093664",
-          "segmentId": "m68726:para:fs-idm68093664"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm15197120",
           "problem": {
@@ -110,11 +95,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm51232192",
-          "segmentId": "m68726:para:fs-idm51232192"
         },
         {
           "type": "exercise",
@@ -139,16 +119,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idm28590032",
-          "segmentId": "m68726:para:fs-idm28590032"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp32758784",
-          "segmentId": "m68726:para:fs-idp32758784"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm75457248",
           "problem": {
@@ -161,11 +131,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm60807312",
-          "segmentId": "m68726:para:fs-idm60807312"
         },
         {
           "type": "exercise",
@@ -188,16 +153,6 @@
               }
             ]
           }
-        },
-        {
-          "type": "para",
-          "id": "fs-idm84263008",
-          "segmentId": "m68726:para:fs-idm84263008"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm4847104",
-          "segmentId": "m68726:para:fs-idm4847104"
         },
         {
           "type": "exercise",
@@ -224,21 +179,6 @@
           "solution": null
         },
         {
-          "type": "para",
-          "id": "fs-idm53947232",
-          "segmentId": "m68726:para:fs-idm53947232"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm2486224",
-          "segmentId": "m68726:para:fs-idm2486224"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp6315152",
-          "segmentId": "m68726:para:fs-idp6315152"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm17023280",
           "problem": {
@@ -261,16 +201,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idm50578016",
-          "segmentId": "m68726:para:fs-idm50578016"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp5232528",
-          "segmentId": "m68726:para:fs-idp5232528"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm57057808",
           "problem": {
@@ -283,11 +213,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm72237968",
-          "segmentId": "m68726:para:fs-idm72237968"
         },
         {
           "type": "exercise",
@@ -312,16 +237,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idm9201888",
-          "segmentId": "m68726:para:fs-idm9201888"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm161971328",
-          "segmentId": "m68726:para:fs-idm161971328"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm66134336",
           "problem": {
@@ -334,11 +249,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm9945568",
-          "segmentId": "m68726:para:fs-idm9945568"
         },
         {
           "type": "exercise",
@@ -363,16 +273,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idm66505184",
-          "segmentId": "m68726:para:fs-idm66505184"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm53591344",
-          "segmentId": "m68726:para:fs-idm53591344"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm54145200",
           "problem": {
@@ -385,11 +285,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm54144688",
-          "segmentId": "m68726:para:fs-idm54144688"
         },
         {
           "type": "exercise",
@@ -419,21 +314,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idm11353520",
-          "segmentId": "m68726:para:fs-idm11353520"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm106018032",
-          "segmentId": "m68726:para:fs-idm106018032"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm110865664",
-          "segmentId": "m68726:para:fs-idm110865664"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp3696624",
           "problem": {
@@ -446,11 +326,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idp3697136",
-          "segmentId": "m68726:para:fs-idp3697136"
         },
         {
           "type": "exercise",
@@ -475,16 +350,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idp22525440",
-          "segmentId": "m68726:para:fs-idp22525440"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm50695136",
-          "segmentId": "m68726:para:fs-idm50695136"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp17899648",
           "problem": {
@@ -497,11 +362,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idp17900160",
-          "segmentId": "m68726:para:fs-idp17900160"
         },
         {
           "type": "exercise",
@@ -526,16 +386,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idp40934912",
-          "segmentId": "m68726:para:fs-idp40934912"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm70100832",
-          "segmentId": "m68726:para:fs-idm70100832"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp26469408",
           "problem": {
@@ -548,11 +398,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idp26469920",
-          "segmentId": "m68726:para:fs-idp26469920"
         },
         {
           "type": "exercise",
@@ -577,16 +422,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idp11693072",
-          "segmentId": "m68726:para:fs-idp11693072"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm30338240",
-          "segmentId": "m68726:para:fs-idm30338240"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp47280960",
           "problem": {
@@ -599,11 +434,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idp47281472",
-          "segmentId": "m68726:para:fs-idp47281472"
         },
         {
           "type": "exercise",
@@ -628,16 +458,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idp47068352",
-          "segmentId": "m68726:para:fs-idp47068352"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm51374576",
-          "segmentId": "m68726:para:fs-idm51374576"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm30519744",
           "problem": {
@@ -650,11 +470,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm30519232",
-          "segmentId": "m68726:para:fs-idm30519232"
         },
         {
           "type": "exercise",
@@ -679,16 +494,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idm50956864",
-          "segmentId": "m68726:para:fs-idm50956864"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm184550912",
-          "segmentId": "m68726:para:fs-idm184550912"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp47244464",
           "problem": {
@@ -701,11 +506,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idp47244976",
-          "segmentId": "m68726:para:fs-idp47244976"
         }
       ]
     },
@@ -946,11 +746,6 @@
     },
     {
       "type": "para",
-      "id": "fs-idm12419600",
-      "segmentId": "m68726:para:fs-idm12419600"
-    },
-    {
-      "type": "para",
       "id": "fs-idp12008976",
       "segmentId": "m68726:para:fs-idp12008976"
     },
@@ -968,11 +763,6 @@
           "segmentId": "m68726:para:fs-idm84058400"
         }
       ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm84058400",
-      "segmentId": "m68726:para:fs-idm84058400"
     },
     {
       "type": "para",
@@ -1109,16 +899,6 @@
           "segmentId": "m68726:para:fs-idm40554112"
         }
       ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm19048032",
-      "segmentId": "m68726:para:fs-idm19048032"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm40554112",
-      "segmentId": "m68726:para:fs-idm40554112"
     },
     {
       "type": "para",
@@ -1296,11 +1076,6 @@
       ]
     },
     {
-      "type": "para",
-      "id": "fs-idm94618544",
-      "segmentId": "m68726:para:fs-idm94618544"
-    },
-    {
       "type": "note",
       "id": "fs-idm9530672",
       "class": "chemistry everyday-life",
@@ -1327,16 +1102,6 @@
       ]
     },
     {
-      "type": "para",
-      "id": "fs-idm19355440",
-      "segmentId": "m68726:para:fs-idm19355440"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm213136",
-      "segmentId": "m68726:para:fs-idm213136"
-    },
-    {
       "type": "figure",
       "id": "CNX_Chem_05_02_HandWarmer",
       "caption": {
@@ -1347,11 +1112,6 @@
         "alt": "A series of three photos is shown. There are two right-facing arrows connecting one photo to the next. The first photo shows a chemical hand warmer. It is a bag that contains a clear, colorless liquid. There is a white disk located to the right inside the bag. The second photo shows the same thing, except the white disc has become a white, cloudy substance. The third photo shows the entire bag filled with this white substance.",
         "src": "../../media/CNX_Chem_05_02_HandWarmer.jpg"
       }
-    },
-    {
-      "type": "para",
-      "id": "fs-idm15246800",
-      "segmentId": "m68726:para:fs-idm15246800"
     },
     {
       "type": "note",
@@ -1365,11 +1125,6 @@
           "segmentId": "m68726:para:fs-idm81095744"
         }
       ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm81095744",
-      "segmentId": "m68726:para:fs-idm81095744"
     },
     {
       "type": "example",
@@ -1489,11 +1244,6 @@
     },
     {
       "type": "para",
-      "id": "fs-idm5945296",
-      "segmentId": "m68726:para:fs-idm5945296"
-    },
-    {
-      "type": "para",
       "id": "fs-idm33984192",
       "segmentId": "m68726:para:fs-idm33984192"
     },
@@ -1531,16 +1281,6 @@
           "segmentId": "m68726:para:fs-idm11069408"
         }
       ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idp41066256",
-      "segmentId": "m68726:para:fs-idp41066256"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm11069408",
-      "segmentId": "m68726:para:fs-idm11069408"
     },
     {
       "type": "example",
@@ -1618,11 +1358,6 @@
     },
     {
       "type": "para",
-      "id": "fs-idm88592432",
-      "segmentId": "m68726:para:fs-idm88592432"
-    },
-    {
-      "type": "para",
       "id": "fs-idm30236928",
       "segmentId": "m68726:para:fs-idm30236928"
     },
@@ -1668,16 +1403,6 @@
       ]
     },
     {
-      "type": "para",
-      "id": "fs-idm51318912",
-      "segmentId": "m68726:para:fs-idm51318912"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm130611536",
-      "segmentId": "m68726:para:fs-idm130611536"
-    },
-    {
       "type": "figure",
       "id": "CNX_Chem_05_02_FoodLabel",
       "caption": {
@@ -1688,26 +1413,6 @@
         "alt": "Two pictures are shown and labeled a and b. Picture a shows a close-up of a bowl of macaroni and cheese. Picture b is a food label that contains highlighted information in a table format. The top of the label reads “Sample label for macaroni and cheese.” Below this are the words “Nutrition facts.” Below this are two lines of highlighted text that read “Serving size one cup (228 g)” and “Servings per container 2.” A label to the left of these lines reads “Start here” and a right-facing arrow is beside these words. Below this are the words “check calories” which lie to the left of the phrases “Amount per serving” which is above the words “Calories 250” and “Calories from fat 210.” The next segment of the label is highlighted and contains five phrases “Total fat 12 g,” “Saturated fat 3 g,” “Trans fat 3 g,” “Cholesterol 30 m g,” and “Sodium 470 m g.” The phrase “Limit these nutrients” lies to the left of these five phrases. The phrase below these is “Total carbohydrates 31 g” and is followed by a highlighted phrase, “Dietary fiber 0 g.” Below this are the phrases “Sugars 5 g” and “Proteins 5 g.” Below this is a highlighted portion containing the phrases “Vitamin A,” “Vitamin C,” “Calcium,” and “Iron.” A label to the left of these terms states “Get enough of these nutrients.” The bottom of the label is labeled “Footnote” and reads “Percent daily values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs.” Each of the highlighted terms in the table are in line with a percentage value to the right of the table. A note on the outer right of the table states “Quick guide to % DV”, “5% or less is low” and “20% or more is high. The daily value for total fat is 18%, for saturated fat is 15%, for cholesterol is 10%, for sodium is 20%, for total carbohydrates is 10%, for dietary fiber is 0%, for vitamin A is 4%, for vitamin C is 2%, for calcium is 20%, and for iron is 4%.” At the very bottom is a table that indicates calories at 2,000 and 2,500. For total fat the table indicates less than 65 g for 2,000 calories and 80 g from 2,500 calories. For saturated fat the table indicates less than 20 g for 2,000 calories and 25 g for 2,500 calories. For cholesterol the table indicates less than 300 m g for 2,000 calories and 300 m g for 2,500 calories. For sodium the table indicates less than 2,400 m g for 2,000 calories and 2,400 m g for 2,500 calories. For total carbohydrate the table indicates 300 g for 2,000 calories and 375 g for 2,500 calories. For dietary fiber the table indicates 25 g for 2,000 calories and 30 g for 2,500 calories.",
         "src": "../../media/CNX_Chem_05_02_FoodLabel.jpg"
       }
-    },
-    {
-      "type": "para",
-      "id": "fs-idm42605520",
-      "segmentId": "m68726:para:fs-idm42605520"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm196775520",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm63696",
-      "segmentId": "m68726:para:fs-idm63696"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm53626320",
-      "segmentId": "m68726:para:fs-idm53626320"
     },
     {
       "type": "note",
@@ -1721,11 +1426,6 @@
           "segmentId": "m68726:para:fs-idm56857472"
         }
       ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm56857472",
-      "segmentId": "m68726:para:fs-idm56857472"
     }
   ],
   "abstract": {

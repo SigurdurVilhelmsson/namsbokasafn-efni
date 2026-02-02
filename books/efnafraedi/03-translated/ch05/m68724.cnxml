@@ -32,7 +32,6 @@
 <note id="fs-idm31556800" class="chemistry link-to-learning">
 <para id="fs-idp13698432">Click on this <link url="http://openstax.org/l/16PHETtempFX">interactive simulation</link> to view the effects of temperature on molecular motion.</para>
 </note>
-<para id="fs-idp13698432">Click on this <link url="http://openstax.org/l/16PHETtempFX">interactive simulation</link> to view the effects of temperature on molecular motion.</para>
 <para id="fs-idp30910672">Most substances expand as their temperature increases and contract as their temperature decreases. This property can be used to measure temperature changes, as shown in . The operation of many thermometers depends on the expansion and contraction of substances in response to temperature changes.</para>
 <figure id="CNX_Chem_05_01_Thermom">
 <media id="fs-idp22234128" alt="A picture labeled a is shown as well as a pair of drawings labeled b. Picture a shows the lower portion of an alcohol thermometer. The thermometer has a printed scale to the left of the tube in the center that reads from negative forty degrees at the bottom to forty degrees at the top. It also has a scale printed to the right of the tube that reads from negative thirty degrees at the bottom to thirty five degrees at the top. On both scales, the volume of the alcohol in the tube reads between nine and ten degrees. The two images labeled b both depict a metal strip coiled into a spiral and composed of brass and steel. The left coil, which is loosely coiled, is labeled along its upper edge with the 30 degrees C and 10 degrees C. The end of the coil is near the 30 degrees C label. The right hand coil is much more tightly wound and the end is near the 10 degree C label.">
@@ -42,7 +41,6 @@
 <note id="fs-idp20720656" class="chemistry link-to-learning">
 <para id="fs-idp46355168">The following <link url="http://openstax.org/l/16Bimetallic">demonstration</link> allows one to view the effects of heating and cooling a coiled bimetallic strip.</para>
 </note>
-<para id="fs-idp46355168">The following <link url="http://openstax.org/l/16Bimetallic">demonstration</link> allows one to view the effects of heating and cooling a coiled bimetallic strip.</para>
 <para id="fs-idp26888640"><term>Heat (<emphasis effect="italics">q</emphasis>)</term> is the transfer of thermal energy between two bodies at different temperatures. Heat flow (a redundant term, but one commonly used) increases the thermal energy of one body and decreases the thermal energy of the other. Suppose we initially have a high temperature (and high thermal energy) substance (H) and a low temperature (and low thermal energy) substance (L). The atoms and molecules in H have a higher average KE than those in L. If we place substance H in contact with substance L, the thermal energy will flow spontaneously from substance H to substance L. The temperature of substance H will decrease, as will the average KE of its molecules; the temperature of substance L will increase, along with the average KE of its molecules. Heat flow will continue until the two substances are at the same temperature ().</para>
 <figure id="CNX_Chem_05_01_HeatTrans1">
 <media id="fs-idm7390640" alt="Three drawings are shown and labeled a, b, and c, respectively. The first drawing labeled a depicts two boxes, with a space in between and the pair is captioned “Different temperatures.” The left hand box is labeled H and holds fourteen well-spaced red spheres with lines drawn around them to indicate rapid motion. The right hand box is labeled L and depicts fourteen blue spheres that are closer together than the red spheres and have smaller lines around them showing less particle motion. The second drawing labeled b depicts two boxes that are touching one another. The left box is labeled H and contains fourteen maroon spheres that are spaced evenly apart. There are tiny lines around each sphere depicting particle movement. The right box is labeled L and holds fourteen purple spheres that are slightly closer together than the maroon spheres. There are also tiny lines around each sphere depicting particle movement. A black arrow points from the left box to the right box and the pair of diagrams is captioned “Contact.” The third drawing labeled c, is labeled “Thermal equilibrium.” There are two boxes shown in contact with one another. Both boxes contain fourteen purple spheres with small lines around them depicting moderate movement. The left box is labeled H and the right box is labeled L.">
@@ -52,7 +50,6 @@
 <note id="fs-idp13328528" class="chemistry link-to-learning">
 <para id="fs-idm61530880">Click on the <link url="http://openstax.org/l/16PHETenergy">PhET simulation</link> to explore energy forms and changes. Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs. Click on Energy Symbols to visualize the transfer of energy.</para>
 </note>
-<para id="fs-idm61530880">Click on the <link url="http://openstax.org/l/16PHETenergy">PhET simulation</link> to explore energy forms and changes. Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs. Click on Energy Symbols to visualize the transfer of energy.</para>
 <para id="fs-idm61604880">Matter undergoing chemical reactions and physical changes can release or absorb heat. A change that releases heat is called an <term>exothermic process</term>. For example, the combustion reaction that occurs when using an oxyacetylene torch is an exothermic process—this process also releases energy in the form of light as evidenced by the torch’s flame (). A reaction or change that absorbs heat is an <term>endothermic process</term>. A cold pack used to treat muscle strains provides an example of an endothermic process. When the substances in the cold pack (water and a salt like ammonium nitrate) are brought together, the resulting process absorbs heat, leading to the sensation of cold.</para>
 <figure id="CNX_Chem_05_01_OxyacTorch">
 <media id="fs-idp21196832" alt="Two pictures are shown and labeled a and b. Picture a shows a metal railroad tie being cut with the flame of an acetylene torch. Picture b shows a chemical cold pack containing ammonium nitrate.">
@@ -179,7 +176,6 @@ To answer this question, consider these factors:</para>
 <equation id="fs-idp59324528" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mn>4.184</m:mn><m:mspace width="0.2em"/><m:mtext>J/</m:mtext><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>8.0</m:mn><m:mspace width="0.2em"/><m:mtext>x</m:mtext><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>85</m:mn><m:mo>−</m:mo><m:mn>21</m:mn><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mn>4.184</m:mn><m:mspace width="0.2em"/><m:mtext>J/</m:mtext><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:menclose notation="horizontalstrike"><m:mtext>C</m:mtext></m:menclose><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>8.0</m:mn><m:mspace width="0.2em"/><m:mtext>x</m:mtext><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>64</m:mn><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:menclose notation="horizontalstrike"><m:mtext>C</m:mtext></m:menclose></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mtext>210,000 J</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mo>=</m:mo><m:mn>2.1</m:mn><m:mspace width="0.2em"/><m:mtext>×</m:mtext><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>2</m:mn></m:msup><m:mtext>kJ</m:mtext><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idp22566736">Because the temperature increased, the water absorbed heat and <emphasis effect="italics">q</emphasis> is positive.</para>
 <para id="fs-idm1147904">Check Your LearningHow much heat, in joules, must be added to a 502 g iron skillet to increase its temperature from 25 °C to 250 °C? The specific heat of iron is 0.449 J/g °C.</para>
-<para id="fs-idm11745888">5.07 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>4</sup> J</para>
 <para id="fs-idm2064512">Note that the relationship between heat, specific heat, mass, and temperature change can be used to determine any of these quantities (not just heat) if the other three are known or can be deduced.</para>
 <example id="fs-idm41581920">
 <para id="fs-idm4867616">
@@ -209,7 +205,6 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <equation id="fs-idm38894688" class="unnumbered"><m:math><m:mrow><m:mi>c</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>6640 J</m:mtext></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mtext>348 g</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>21.2</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.900</m:mn><m:mspace width="0.2em"/><m:mtext>J/g °C</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm17185344">Comparing this value with the values in , this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.</para>
 <para id="fs-idm40972976">Check Your Learning A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of heat, its temperature increases from 24.5 °C to 39.1 °C. Determine the specific heat of this metal, and predict its identity.</para>
-<para id="fs-idp81248192"><emphasis effect="italics">c</emphasis> = 0.451 J/g °C; the metal is likely to be iron</para>
 <note id="fs-idm28600720" class="chemistry everyday-life">
 <title>Solar Thermal Energy Power Plants</title>
 <para id="fs-idm57967712">The sunlight that reaches the earth contains thousands of times more energy than we presently capture. Solar thermal systems provide one possible solution to the problem of converting energy from the sun into energy we can use. Large-scale solar thermal plants have different design specifics, but all concentrate sunlight to heat some substance; the heat “stored” in that substance is then converted into electricity.</para>
@@ -218,14 +213,11 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idp4162272">The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world (). Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines. It produces enough energy to power 140,000 homes. Water is used as the working fluid because of its large heat capacity and heat of vaporization.</para>
 <!-- figure handled separately -->
 </note>
-<para id="fs-idm57967712">The sunlight that reaches the earth contains thousands of times more energy than we presently capture. Solar thermal systems provide one possible solution to the problem of converting energy from the sun into energy we can use. Large-scale solar thermal plants have different design specifics, but all concentrate sunlight to heat some substance; the heat “stored” in that substance is then converted into electricity.</para>
-<para id="fs-idm30166592">The Solana Generating Station in Arizona’s Sonora Desert produces 280 megawatts of electrical power. It uses parabolic mirrors that focus sunlight on pipes filled with a heat transfer fluid (HTF) (). The HTF then does two things: It turns water into steam, which spins turbines, which in turn produces electricity, and it melts and heats a mixture of salts, which functions as a thermal energy storage system. After the sun goes down, the molten salt mixture can then release enough of its stored heat to produce steam to run the turbines for 6 hours. Molten salts are used because they possess a number of beneficial properties, including high heat capacities and thermal conductivities.</para>
 <figure id="CNX_Chem_05_01_SolTherm1">
 <media id="fs-idm14724048" alt="This figure has two parts labeled a and b. Part a shows rows and rows of trough mirrors. Part b shows how a solar thermal plant works. Heat transfer fluid enters a tank via pipes. The tank contains water which is heated. As the heat is exchanged from the pipes to the water, the water becomes steam. The steam travels to a steam turbine. The steam turbine begins to turn which powers a generator. Exhaust steam exits the steam turbine and enters a cooling tower.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_05_01_SolTherm1.jpg"/></media>
 <caption>This solar thermal plant uses parabolic trough mirrors to concentrate sunlight. (credit a: modification of work by Bureau of Land Management)</caption>
 </figure>
-<para id="fs-idp4162272">The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world (). Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines. It produces enough energy to power 140,000 homes. Water is used as the working fluid because of its large heat capacity and heat of vaporization.</para>
 <figure id="CNX_Chem_05_01_SolTherm2">
 <media id="fs-idp14304832" alt="Two pictures are shown and labeled a and b. Picture a shows a thermal plant with three tall metal towers. Picture b is an arial picture of the mirrors used at the plant. They are arranged in rows.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_05_01_SolTherm2.jpg"/></media>
@@ -257,14 +249,11 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idm40947104">The temperature of 1 gram of burning wood is approximately the same for both a match and a bonfire. This is an intensive property and depends on the material (wood). However, the overall amount of produced heat depends on the amount of material; this is an extensive property. The amount of wood in a bonfire is much greater than that in a match; the total amount of produced heat is also much greater, which is why we can sit around a bonfire to stay warm, but a match would not provide enough heat to keep us from getting cold.</para>
 </solution>
 </exercise>
-<para id="fs-idp13648176">A burning match and a bonfire may have the same temperature, yet you would not sit around a burning match on a fall evening to stay warm. Why not?</para>
-<para id="fs-idm40947104">The temperature of 1 gram of burning wood is approximately the same for both a match and a bonfire. This is an intensive property and depends on the material (wood). However, the overall amount of produced heat depends on the amount of material; this is an extensive property. The amount of wood in a bonfire is much greater than that in a match; the total amount of produced heat is also much greater, which is why we can sit around a bonfire to stay warm, but a match would not provide enough heat to keep us from getting cold.</para>
 <exercise id="fs-idp25217856">
 <problem id="fs-idp32667504">
 <para id="fs-idm40915504">Prepare a table identifying several energy transitions that take place during the typical operation of an automobile.</para>
 </problem>
 </exercise>
-<para id="fs-idm40915504">Prepare a table identifying several energy transitions that take place during the typical operation of an automobile.</para>
 <exercise id="fs-idm60216128">
 <problem id="fs-idm29434736">
 <para id="fs-idp596976">Explain the difference between heat capacity and specific heat of a substance.</para>
@@ -273,8 +262,6 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idm14375488">Heat capacity refers to the heat required to raise the temperature of the mass of the substance 1 degree; specific heat refers to the heat required to raise the temperature of 1 gram of the substance 1 degree. Thus, heat capacity is an extensive property, and specific heat is an intensive one.</para>
 </solution>
 </exercise>
-<para id="fs-idp596976">Explain the difference between heat capacity and specific heat of a substance.</para>
-<para id="fs-idm14375488">Heat capacity refers to the heat required to raise the temperature of the mass of the substance 1 degree; specific heat refers to the heat required to raise the temperature of 1 gram of the substance 1 degree. Thus, heat capacity is an extensive property, and specific heat is an intensive one.</para>
 <exercise id="fs-idm38026992">
 <problem id="fs-idm14502032">
 <para id="fs-idm34726656">Calculate the heat capacity, in joules and in calories per degree, of the following:</para>
@@ -282,9 +269,6 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idm42047408">(b) 1.00 oz of lead</para>
 </problem>
 </exercise>
-<para id="fs-idm34726656">Calculate the heat capacity, in joules and in calories per degree, of the following:</para>
-<para id="fs-idm70483664">(a) 28.4 g of water</para>
-<para id="fs-idm42047408">(b) 1.00 oz of lead</para>
 <exercise id="fs-idm11773136">
 <problem id="fs-idm11159296">
 <para id="fs-idp38079584">Calculate the heat capacity, in joules and in calories per degree, of the following:</para>
@@ -295,16 +279,11 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idm29514016">(a) 47.6 J/°C; 11.38 cal °C<sup>−1</sup>; (b) 407 J/°C; 97.3 cal °C<sup>−1</sup></para>
 </solution>
 </exercise>
-<para id="fs-idp38079584">Calculate the heat capacity, in joules and in calories per degree, of the following:</para>
-<para id="fs-idm54266800">(a) 45.8 g of nitrogen gas</para>
-<para id="fs-idm20478816">(b) 1.00 pound of aluminum metal</para>
-<para id="fs-idm29514016">(a) 47.6 J/°C; 11.38 cal °C<sup>−1</sup>; (b) 407 J/°C; 97.3 cal °C<sup>−1</sup></para>
 <exercise id="fs-idm26658464">
 <problem id="fs-idm58905888">
 <para id="fs-idm69912288">How much heat, in joules and in calories, must be added to a 75.0–g iron block with a specific heat of 0.449 J/g °C to increase its temperature from 25 °C to its melting temperature of 1535 °C?</para>
 </problem>
 </exercise>
-<para id="fs-idm69912288">How much heat, in joules and in calories, must be added to a 75.0–g iron block with a specific heat of 0.449 J/g °C to increase its temperature from 25 °C to its melting temperature of 1535 °C?</para>
 <exercise id="fs-idm34686800">
 <problem id="fs-idm42867648">
 <para id="fs-idm3247776">How much heat, in joules and in calories, is required to heat a 28.4-g (1-oz) ice cube from −23.0 °C to −1.0 °C?</para>
@@ -312,14 +291,11 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <solution id="fs-idm48388048">
 <para id="fs-idm2505712">1310 J; 313 cal</para></solution>
 </exercise>
-<para id="fs-idm3247776">How much heat, in joules and in calories, is required to heat a 28.4-g (1-oz) ice cube from −23.0 °C to −1.0 °C?</para>
-<para id="fs-idm2505712">1310 J; 313 cal</para>
 <exercise id="fs-idm42475152">
 <problem id="fs-idm37347648">
 <para id="fs-idm68896144">How much would the temperature of 275 g of water increase if 36.5 kJ of heat were added?</para>
 </problem>
 </exercise>
-<para id="fs-idm68896144">How much would the temperature of 275 g of water increase if 36.5 kJ of heat were added?</para>
 <exercise id="fs-idp13559760">
 <problem id="fs-idp36280992">
 <para id="fs-idm3366864">If 14.5 kJ of heat were added to 485 g of liquid water, how much would its temperature increase?</para>
@@ -328,8 +304,6 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idp36304960">7.15 °C</para>
 </solution>
 </exercise>
-<para id="fs-idm3366864">If 14.5 kJ of heat were added to 485 g of liquid water, how much would its temperature increase?</para>
-<para id="fs-idp36304960">7.15 °C</para>
 <exercise id="fs-idp43279360">
 <problem id="fs-idp43279616">
 <para id="fs-idp43279872">A piece of unknown substance weighs 44.7 g and requires 2110 J to increase its temperature from 23.2 °C to 89.6 °C.</para>
@@ -337,9 +311,6 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idp36059072">(b) If it is one of the substances found in , what is its likely identity?</para>
 </problem>
 </exercise>
-<para id="fs-idp43279872">A piece of unknown substance weighs 44.7 g and requires 2110 J to increase its temperature from 23.2 °C to 89.6 °C.</para>
-<para id="fs-idp36058688">(a) What is the specific heat of the substance?</para>
-<para id="fs-idp36059072">(b) If it is one of the substances found in , what is its likely identity?</para>
 <exercise id="fs-idp36064736">
 <problem id="fs-idp36064992">
 <para id="fs-idp36065248">A piece of unknown solid substance weighs 437.2 g, and requires 8460 J to increase its temperature from 19.3 °C to 68.9 °C.</para>
@@ -350,10 +321,6 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idp36067056">(a) 0.390 J/g °C; (b) Copper is a likely candidate.</para>
 </solution>
 </exercise>
-<para id="fs-idp36065248">A piece of unknown solid substance weighs 437.2 g, and requires 8460 J to increase its temperature from 19.3 °C to 68.9 °C.</para>
-<para id="fs-idp36065904">(a) What is the specific heat of the substance?</para>
-<para id="fs-idp36066288">(b) If it is one of the substances found in , what is its likely identity?</para>
-<para id="fs-idp36067056">(a) 0.390 J/g °C; (b) Copper is a likely candidate.</para>
 <exercise id="fs-idp36071488">
 <problem id="fs-idp36071744">
 <para id="fs-idp36072000">An aluminum kettle weighs 1.05 kg.</para>
@@ -362,10 +329,6 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idp36073360">(c) How much heat is required to heat this kettle from 23.0 °C to 99.0 °C if it contains 1.25 L of water (density of 0.997 g/mL and a specific heat of 4.184 J/g °C)?</para>
 </problem>
 </exercise>
-<para id="fs-idp36072000">An aluminum kettle weighs 1.05 kg.</para>
-<para id="fs-idp36072384">(a) What is the heat capacity of the kettle?</para>
-<para id="fs-idp36072768">(b) How much heat is required to increase the temperature of this kettle from 23.0 °C to 99.0 °C?</para>
-<para id="fs-idp36073360">(c) How much heat is required to heat this kettle from 23.0 °C to 99.0 °C if it contains 1.25 L of water (density of 0.997 g/mL and a specific heat of 4.184 J/g °C)?</para>
 <exercise id="fs-idp23764656">
 <problem id="fs-idp23764912">
 <para id="fs-idp23765168">Most people find waterbeds uncomfortable unless the water temperature is maintained at about 85 °F. Unless it is heated, a waterbed that contains 892 L of water cools from 85 °F to 72 °F in 24 hours. Estimate the amount of electrical energy required over 24 hours, in kWh, to keep the bed from cooling. Note that 1 kilowatt-hour (kWh) = 3.6 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>6</sup> J, and assume that the density of water is 1.0 g/mL (independent of temperature). What other assumptions did you make? How did they affect your calculated result (i.e., were they likely to yield “positive” or “negative” errors)?</para>
@@ -374,8 +337,6 @@ A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of h
 <para id="fs-idp23772816">We assume that the density of water is 1.0 g/cm<sup>3</sup>(1 g/mL) and that it takes as much energy to keep the water at 85 °F as to heat it from 72 °F to 85 °F. We also assume that only the water is going to be heated. Energy required = 7.47 kWh</para>
 </solution>
 </exercise>
-<para id="fs-idp23765168">Most people find waterbeds uncomfortable unless the water temperature is maintained at about 85 °F. Unless it is heated, a waterbed that contains 892 L of water cools from 85 °F to 72 °F in 24 hours. Estimate the amount of electrical energy required over 24 hours, in kWh, to keep the bed from cooling. Note that 1 kilowatt-hour (kWh) = 3.6 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>6</sup> J, and assume that the density of water is 1.0 g/mL (independent of temperature). What other assumptions did you make? How did they affect your calculated result (i.e., were they likely to yield “positive” or “negative” errors)?</para>
-<para id="fs-idp23772816">We assume that the density of water is 1.0 g/cm<sup>3</sup>(1 g/mL) and that it takes as much energy to keep the water at 85 °F as to heat it from 72 °F to 85 °F. We also assume that only the water is going to be heated. Energy required = 7.47 kWh</para>
 </section>
 <para id="fs-idp32074336">Chemical changes and their accompanying changes in energy are important parts of our everyday world (). The macronutrients in food (proteins, fats, and carbohydrates) undergo metabolic reactions that provide the energy to keep our bodies functioning. We burn a variety of fuels (gasoline, natural gas, coal) to produce energy for transportation, heating, and the generation of electricity. Industrial chemical reactions use enormous amounts of energy to produce raw materials (such as iron and aluminum). Energy is then used to manufacture those raw materials into useful products, such as cars, skyscrapers, and bridges.</para>
 <figure id="CNX_Chem_05_01_Thermochem">

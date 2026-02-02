@@ -109,11 +109,6 @@
         },
         {
           "type": "para",
-          "id": "fs-idp13698432",
-          "segmentId": "m68724:para:fs-idp13698432"
-        },
-        {
-          "type": "para",
           "id": "fs-idp30910672",
           "segmentId": "m68724:para:fs-idp30910672"
         },
@@ -144,11 +139,6 @@
         },
         {
           "type": "para",
-          "id": "fs-idp46355168",
-          "segmentId": "m68724:para:fs-idp46355168"
-        },
-        {
-          "type": "para",
           "id": "fs-idp26888640",
           "segmentId": "m68724:para:fs-idp26888640"
         },
@@ -176,11 +166,6 @@
               "segmentId": "m68724:para:fs-idm61530880"
             }
           ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm61530880",
-          "segmentId": "m68724:para:fs-idm61530880"
         },
         {
           "type": "para",
@@ -301,10 +286,32 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-40",
+                  "segmentId": "m68724:entry:auto-37",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68724:entry:auto-38",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-39",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-40",
+                  "attributes": {
                     "align": "center"
                   }
                 }
@@ -455,17 +462,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-61",
-                  "attributes": {
-                    "align": "center"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68724:entry:auto-61",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
                 {
                   "segmentId": "m68724:entry:auto-62",
                   "attributes": {
@@ -655,28 +662,6 @@
                   }
                 }
               ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68724:entry:auto-88",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-89",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-90",
-                  "attributes": {
-                    "align": "center"
-                  }
-                }
-              ]
             }
           ]
         },
@@ -809,11 +794,6 @@
         },
         {
           "type": "para",
-          "id": "fs-idm11745888",
-          "segmentId": "m68724:para:fs-idm11745888"
-        },
-        {
-          "type": "para",
           "id": "fs-idm2064512",
           "segmentId": "m68724:para:fs-idm2064512"
         },
@@ -920,11 +900,6 @@
           ]
         },
         {
-          "type": "para",
-          "id": "fs-idp81248192",
-          "segmentId": "m68724:para:fs-idp81248192"
-        },
-        {
           "type": "note",
           "id": "fs-idm28600720",
           "class": "chemistry everyday-life",
@@ -951,16 +926,6 @@
           ]
         },
         {
-          "type": "para",
-          "id": "fs-idm57967712",
-          "segmentId": "m68724:para:fs-idm57967712"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm30166592",
-          "segmentId": "m68724:para:fs-idm30166592"
-        },
-        {
           "type": "figure",
           "id": "CNX_Chem_05_01_SolTherm1",
           "caption": {
@@ -971,11 +936,6 @@
             "alt": "This figure has two parts labeled a and b. Part a shows rows and rows of trough mirrors. Part b shows how a solar thermal plant works. Heat transfer fluid enters a tank via pipes. The tank contains water which is heated. As the heat is exchanged from the pipes to the water, the water becomes steam. The steam travels to a steam turbine. The steam turbine begins to turn which powers a generator. Exhaust steam exits the steam turbine and enters a cooling tower.",
             "src": "../../media/CNX_Chem_05_01_SolTherm1.jpg"
           }
-        },
-        {
-          "type": "para",
-          "id": "fs-idp4162272",
-          "segmentId": "m68724:para:fs-idp4162272"
         },
         {
           "type": "figure",
@@ -1035,7 +995,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-139",
+                  "segmentId": "m68724:entry:auto-131",
                   "attributes": {}
                 }
               ]
@@ -1076,16 +1036,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idp13648176",
-          "segmentId": "m68724:para:fs-idp13648176"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm40947104",
-          "segmentId": "m68724:para:fs-idm40947104"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp25217856",
           "problem": {
@@ -1098,11 +1048,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm40915504",
-          "segmentId": "m68724:para:fs-idm40915504"
         },
         {
           "type": "exercise",
@@ -1127,16 +1072,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idp596976",
-          "segmentId": "m68724:para:fs-idp596976"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm14375488",
-          "segmentId": "m68724:para:fs-idm14375488"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm38026992",
           "problem": {
@@ -1159,21 +1094,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm34726656",
-          "segmentId": "m68724:para:fs-idm34726656"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm70483664",
-          "segmentId": "m68724:para:fs-idm70483664"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm42047408",
-          "segmentId": "m68724:para:fs-idm42047408"
         },
         {
           "type": "exercise",
@@ -1208,26 +1128,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idp38079584",
-          "segmentId": "m68724:para:fs-idp38079584"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm54266800",
-          "segmentId": "m68724:para:fs-idm54266800"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm20478816",
-          "segmentId": "m68724:para:fs-idm20478816"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm29514016",
-          "segmentId": "m68724:para:fs-idm29514016"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm26658464",
           "problem": {
@@ -1240,11 +1140,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm69912288",
-          "segmentId": "m68724:para:fs-idm69912288"
         },
         {
           "type": "exercise",
@@ -1269,16 +1164,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idm3247776",
-          "segmentId": "m68724:para:fs-idm3247776"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm2505712",
-          "segmentId": "m68724:para:fs-idm2505712"
-        },
-        {
           "type": "exercise",
           "id": "fs-idm42475152",
           "problem": {
@@ -1291,11 +1176,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idm68896144",
-          "segmentId": "m68724:para:fs-idm68896144"
         },
         {
           "type": "exercise",
@@ -1320,16 +1200,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idm3366864",
-          "segmentId": "m68724:para:fs-idm3366864"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36304960",
-          "segmentId": "m68724:para:fs-idp36304960"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp43279360",
           "problem": {
@@ -1352,21 +1222,6 @@
             ]
           },
           "solution": null
-        },
-        {
-          "type": "para",
-          "id": "fs-idp43279872",
-          "segmentId": "m68724:para:fs-idp43279872"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36058688",
-          "segmentId": "m68724:para:fs-idp36058688"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36059072",
-          "segmentId": "m68724:para:fs-idp36059072"
         },
         {
           "type": "exercise",
@@ -1401,26 +1256,6 @@
           }
         },
         {
-          "type": "para",
-          "id": "fs-idp36065248",
-          "segmentId": "m68724:para:fs-idp36065248"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36065904",
-          "segmentId": "m68724:para:fs-idp36065904"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36066288",
-          "segmentId": "m68724:para:fs-idp36066288"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36067056",
-          "segmentId": "m68724:para:fs-idp36067056"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp36071488",
           "problem": {
@@ -1450,26 +1285,6 @@
           "solution": null
         },
         {
-          "type": "para",
-          "id": "fs-idp36072000",
-          "segmentId": "m68724:para:fs-idp36072000"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36072384",
-          "segmentId": "m68724:para:fs-idp36072384"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36072768",
-          "segmentId": "m68724:para:fs-idp36072768"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp36073360",
-          "segmentId": "m68724:para:fs-idp36073360"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp23764656",
           "problem": {
@@ -1490,16 +1305,6 @@
               }
             ]
           }
-        },
-        {
-          "type": "para",
-          "id": "fs-idp23765168",
-          "segmentId": "m68724:para:fs-idp23765168"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp23772816",
-          "segmentId": "m68724:para:fs-idp23772816"
         }
       ]
     },

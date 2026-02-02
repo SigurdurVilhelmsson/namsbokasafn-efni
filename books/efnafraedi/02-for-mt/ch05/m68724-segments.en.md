@@ -49,9 +49,6 @@ __Thermal energy__ is kinetic energy associated with the random motion of atoms 
 <!-- SEG:m68724:para:fs-idp13698432 -->
 Click on this [interactive simulation](http://openstax.org/l/16PHETtempFX) to view the effects of temperature on molecular motion.
 
-<!-- SEG:m68724:para:fs-idp13698432 -->
-Click on this [interactive simulation](http://openstax.org/l/16PHETtempFX) to view the effects of temperature on molecular motion.
-
 <!-- SEG:m68724:para:fs-idp30910672 -->
 Most substances expand as their temperature increases and contract as their temperature decreases. This property can be used to measure temperature changes, as shown in . The operation of many thermometers depends on the expansion and contraction of substances in response to temperature changes.
 
@@ -61,17 +58,11 @@ Most substances expand as their temperature increases and contract as their temp
 <!-- SEG:m68724:para:fs-idp46355168 -->
 The following [demonstration](http://openstax.org/l/16Bimetallic) allows one to view the effects of heating and cooling a coiled bimetallic strip.
 
-<!-- SEG:m68724:para:fs-idp46355168 -->
-The following [demonstration](http://openstax.org/l/16Bimetallic) allows one to view the effects of heating and cooling a coiled bimetallic strip.
-
 <!-- SEG:m68724:para:fs-idp26888640 -->
 __Heat (*q*)__ is the transfer of thermal energy between two bodies at different temperatures. Heat flow (a redundant term, but one commonly used) increases the thermal energy of one body and decreases the thermal energy of the other. Suppose we initially have a high temperature (and high thermal energy) substance (H) and a low temperature (and low thermal energy) substance (L). The atoms and molecules in H have a higher average KE than those in L. If we place substance H in contact with substance L, the thermal energy will flow spontaneously from substance H to substance L. The temperature of substance H will decrease, as will the average KE of its molecules; the temperature of substance L will increase, along with the average KE of its molecules. Heat flow will continue until the two substances are at the same temperature ().
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HeatTrans1-caption -->
 (a) Substances H and L are initially at different temperatures, and their atoms have different average kinetic energies. (b) When they contact each other, collisions between the molecules result in the transfer of kinetic (thermal) energy from the hotter to the cooler matter. (c) The two objects reach “thermal equilibrium” when both substances are at the same temperature and their molecules have the same average kinetic energy.
-
-<!-- SEG:m68724:para:fs-idm61530880 -->
-Click on the [PhET simulation](http://openstax.org/l/16PHETenergy) to explore energy forms and changes. Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs. Click on Energy Symbols to visualize the transfer of energy.
 
 <!-- SEG:m68724:para:fs-idm61530880 -->
 Click on the [PhET simulation](http://openstax.org/l/16PHETenergy) to explore energy forms and changes. Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs. Click on Energy Symbols to visualize the transfer of energy.
@@ -115,157 +106,157 @@ Because of its larger mass, a large frying pan has a larger heat capacity than a
 <!-- SEG:m68724:para:fs-idm50153600 -->
 Water has a relatively high specific heat (about 4.2 J/g °C for the liquid and 2.09 J/g °C for the solid); most metals have much lower specific heats (usually less than 1 J/g °C). The specific heat of a substance varies somewhat with temperature. However, this variation is usually small enough that we will treat specific heat as constant over the range of temperatures that will be considered in this chapter. Specific heats of some common substances are listed in .
 
-<!-- SEG:m68724:entry:auto-40 -->
+<!-- SEG:m68724:entry:auto-37 -->
 Specific Heats of Common Substances at 25 °C and 1 bar
 
-<!-- SEG:m68724:entry:auto-41 -->
+<!-- SEG:m68724:entry:auto-38 -->
 Substance
 
-<!-- SEG:m68724:entry:auto-42 -->
+<!-- SEG:m68724:entry:auto-39 -->
 Symbol (*state*)
 
-<!-- SEG:m68724:entry:auto-43 -->
+<!-- SEG:m68724:entry:auto-40 -->
 Specific Heat (J/g °C)
 
-<!-- SEG:m68724:entry:auto-44 -->
+<!-- SEG:m68724:entry:auto-41 -->
 helium
 
-<!-- SEG:m68724:entry:auto-45 -->
+<!-- SEG:m68724:entry:auto-42 -->
 He(*g*)
 
-<!-- SEG:m68724:entry:auto-46 -->
+<!-- SEG:m68724:entry:auto-43 -->
 5.193
 
-<!-- SEG:m68724:entry:auto-47 -->
+<!-- SEG:m68724:entry:auto-44 -->
 water
 
-<!-- SEG:m68724:entry:auto-48 -->
+<!-- SEG:m68724:entry:auto-45 -->
 H~2~O(*l*)
 
-<!-- SEG:m68724:entry:auto-49 -->
+<!-- SEG:m68724:entry:auto-46 -->
 4.184
 
-<!-- SEG:m68724:entry:auto-50 -->
+<!-- SEG:m68724:entry:auto-47 -->
 ethanol
 
-<!-- SEG:m68724:entry:auto-51 -->
+<!-- SEG:m68724:entry:auto-48 -->
 C~2~H~6~O(*l*)
 
-<!-- SEG:m68724:entry:auto-52 -->
+<!-- SEG:m68724:entry:auto-49 -->
 2.376
 
-<!-- SEG:m68724:entry:auto-53 -->
+<!-- SEG:m68724:entry:auto-50 -->
 ice
 
-<!-- SEG:m68724:entry:auto-54 -->
+<!-- SEG:m68724:entry:auto-51 -->
 H~2~O(*s*)
 
-<!-- SEG:m68724:entry:auto-55 -->
+<!-- SEG:m68724:entry:auto-52 -->
 2.093 (at −10 °C)
 
-<!-- SEG:m68724:entry:auto-56 -->
+<!-- SEG:m68724:entry:auto-53 -->
 water vapor
 
-<!-- SEG:m68724:entry:auto-57 -->
+<!-- SEG:m68724:entry:auto-54 -->
 H~2~O(*g*)
 
-<!-- SEG:m68724:entry:auto-58 -->
+<!-- SEG:m68724:entry:auto-55 -->
 1.864
 
-<!-- SEG:m68724:entry:auto-59 -->
+<!-- SEG:m68724:entry:auto-56 -->
 nitrogen
 
-<!-- SEG:m68724:entry:auto-60 -->
+<!-- SEG:m68724:entry:auto-57 -->
 N~2~(*g*)
 
-<!-- SEG:m68724:entry:auto-61 -->
+<!-- SEG:m68724:entry:auto-58 -->
 1.040
 
-<!-- SEG:m68724:entry:auto-62 -->
+<!-- SEG:m68724:entry:auto-59 -->
 air
 
-<!-- SEG:m68724:entry:auto-63 -->
+<!-- SEG:m68724:entry:auto-60 -->
 1.007
 
-<!-- SEG:m68724:entry:auto-64 -->
+<!-- SEG:m68724:entry:auto-61 -->
 oxygen
 
-<!-- SEG:m68724:entry:auto-65 -->
+<!-- SEG:m68724:entry:auto-62 -->
 O~2~(*g*)
 
-<!-- SEG:m68724:entry:auto-66 -->
+<!-- SEG:m68724:entry:auto-63 -->
 0.918
 
-<!-- SEG:m68724:entry:auto-67 -->
+<!-- SEG:m68724:entry:auto-64 -->
 aluminum
 
-<!-- SEG:m68724:entry:auto-68 -->
+<!-- SEG:m68724:entry:auto-65 -->
 Al(*s*)
 
-<!-- SEG:m68724:entry:auto-69 -->
+<!-- SEG:m68724:entry:auto-66 -->
 0.897
 
-<!-- SEG:m68724:entry:auto-70 -->
+<!-- SEG:m68724:entry:auto-67 -->
 carbon dioxide
 
-<!-- SEG:m68724:entry:auto-71 -->
+<!-- SEG:m68724:entry:auto-68 -->
 CO~2~(*g*)
 
-<!-- SEG:m68724:entry:auto-72 -->
+<!-- SEG:m68724:entry:auto-69 -->
 0.853
 
-<!-- SEG:m68724:entry:auto-73 -->
+<!-- SEG:m68724:entry:auto-70 -->
 argon
 
-<!-- SEG:m68724:entry:auto-74 -->
+<!-- SEG:m68724:entry:auto-71 -->
 Ar(*g*)
 
-<!-- SEG:m68724:entry:auto-75 -->
+<!-- SEG:m68724:entry:auto-72 -->
 0.522
 
-<!-- SEG:m68724:entry:auto-76 -->
+<!-- SEG:m68724:entry:auto-73 -->
 iron
 
-<!-- SEG:m68724:entry:auto-77 -->
+<!-- SEG:m68724:entry:auto-74 -->
 Fe(*s*)
 
-<!-- SEG:m68724:entry:auto-78 -->
+<!-- SEG:m68724:entry:auto-75 -->
 0.449
 
-<!-- SEG:m68724:entry:auto-79 -->
+<!-- SEG:m68724:entry:auto-76 -->
 copper
 
-<!-- SEG:m68724:entry:auto-80 -->
+<!-- SEG:m68724:entry:auto-77 -->
 Cu(*s*)
 
-<!-- SEG:m68724:entry:auto-81 -->
+<!-- SEG:m68724:entry:auto-78 -->
 0.385
 
-<!-- SEG:m68724:entry:auto-82 -->
+<!-- SEG:m68724:entry:auto-79 -->
 lead
 
-<!-- SEG:m68724:entry:auto-83 -->
+<!-- SEG:m68724:entry:auto-80 -->
 Pb(*s*)
 
-<!-- SEG:m68724:entry:auto-84 -->
+<!-- SEG:m68724:entry:auto-81 -->
 0.130
 
-<!-- SEG:m68724:entry:auto-85 -->
+<!-- SEG:m68724:entry:auto-82 -->
 gold
 
-<!-- SEG:m68724:entry:auto-86 -->
+<!-- SEG:m68724:entry:auto-83 -->
 Au(*s*)
 
-<!-- SEG:m68724:entry:auto-87 -->
+<!-- SEG:m68724:entry:auto-84 -->
 0.129
 
-<!-- SEG:m68724:entry:auto-88 -->
+<!-- SEG:m68724:entry:auto-85 -->
 silicon
 
-<!-- SEG:m68724:entry:auto-89 -->
+<!-- SEG:m68724:entry:auto-86 -->
 Si(*s*)
 
-<!-- SEG:m68724:entry:auto-90 -->
+<!-- SEG:m68724:entry:auto-87 -->
 0.712
 
 <!-- SEG:m68724:para:fs-idp1279024 -->
@@ -322,9 +313,6 @@ Answer:
 <!-- SEG:m68724:para:fs-idm11745888 -->
 5.07 [[MATH:3]] 10^4^ J
 
-<!-- SEG:m68724:para:fs-idm11745888 -->
-5.07 [[MATH:4]] 10^4^ J
-
 <!-- SEG:m68724:para:fs-idm2064512 -->
 Note that the relationship between heat, specific heat, mass, and temperature change can be used to determine any of these quantities (not just heat) if the other three are known or can be deduced.
 
@@ -367,9 +355,6 @@ Answer:
 <!-- SEG:m68724:para:fs-idp81248192 -->
 *c* = 0.451 J/g °C; the metal is likely to be iron
 
-<!-- SEG:m68724:para:fs-idp81248192 -->
-*c* = 0.451 J/g °C; the metal is likely to be iron
-
 <!-- SEG:m68724:note-title:fs-idm28600720-title -->
 Solar Thermal Energy Power Plants
 
@@ -382,17 +367,8 @@ The Solana Generating Station in Arizona’s Sonora Desert produces 280 megawatt
 <!-- SEG:m68724:para:fs-idp4162272 -->
 The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world (). Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines. It produces enough energy to power 140,000 homes. Water is used as the working fluid because of its large heat capacity and heat of vaporization.
 
-<!-- SEG:m68724:para:fs-idm57967712 -->
-The sunlight that reaches the earth contains thousands of times more energy than we presently capture. Solar thermal systems provide one possible solution to the problem of converting energy from the sun into energy we can use. Large-scale solar thermal plants have different design specifics, but all concentrate sunlight to heat some substance; the heat “stored” in that substance is then converted into electricity.
-
-<!-- SEG:m68724:para:fs-idm30166592 -->
-The Solana Generating Station in Arizona’s Sonora Desert produces 280 megawatts of electrical power. It uses parabolic mirrors that focus sunlight on pipes filled with a heat transfer fluid (HTF) (). The HTF then does two things: It turns water into steam, which spins turbines, which in turn produces electricity, and it melts and heats a mixture of salts, which functions as a thermal energy storage system. After the sun goes down, the molten salt mixture can then release enough of its stored heat to produce steam to run the turbines for 6 hours. Molten salts are used because they possess a number of beneficial properties, including high heat capacities and thermal conductivities.
-
 <!-- SEG:m68724:caption:CNX_Chem_05_01_SolTherm1-caption -->
 This solar thermal plant uses parabolic trough mirrors to concentrate sunlight. (credit a: modification of work by Bureau of Land Management)
-
-<!-- SEG:m68724:para:fs-idp4162272 -->
-The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world (). Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines. It produces enough energy to power 140,000 homes. Water is used as the working fluid because of its large heat capacity and heat of vaporization.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_SolTherm2-caption -->
 (a) The Ivanpah solar thermal plant uses 170,000 mirrors to concentrate sunlight on water-filled towers. (b) It covers 4000 acres of public land near the Mojave Desert and the California-Nevada border. (credit a: modification of work by Craig Dietrich; credit b: modification of work by “USFWS Pacific Southwest Region”/Flickr)
@@ -412,8 +388,8 @@ Specific heat and heat capacity are measures of the energy needed to change the 
 <!-- SEG:m68724:title:fs-idm20711744-title -->
 Key Equations
 
-<!-- SEG:m68724:entry:auto-139 -->
-[[MATH:5]]
+<!-- SEG:m68724:entry:auto-131 -->
+[[MATH:4]]
 
 <!-- SEG:m68724:title:fs-idm41088208-title -->
 Chemistry End of Chapter Exercises
@@ -424,28 +400,13 @@ A burning match and a bonfire may have the same temperature, yet you would not s
 <!-- SEG:m68724:solution:fs-idm40947104 -->
 The temperature of 1 gram of burning wood is approximately the same for both a match and a bonfire. This is an intensive property and depends on the material (wood). However, the overall amount of produced heat depends on the amount of material; this is an extensive property. The amount of wood in a bonfire is much greater than that in a match; the total amount of produced heat is also much greater, which is why we can sit around a bonfire to stay warm, but a match would not provide enough heat to keep us from getting cold.
 
-<!-- SEG:m68724:para:fs-idp13648176 -->
-A burning match and a bonfire may have the same temperature, yet you would not sit around a burning match on a fall evening to stay warm. Why not?
-
-<!-- SEG:m68724:para:fs-idm40947104 -->
-The temperature of 1 gram of burning wood is approximately the same for both a match and a bonfire. This is an intensive property and depends on the material (wood). However, the overall amount of produced heat depends on the amount of material; this is an extensive property. The amount of wood in a bonfire is much greater than that in a match; the total amount of produced heat is also much greater, which is why we can sit around a bonfire to stay warm, but a match would not provide enough heat to keep us from getting cold.
-
 <!-- SEG:m68724:problem:fs-idm40915504 -->
-Prepare a table identifying several energy transitions that take place during the typical operation of an automobile.
-
-<!-- SEG:m68724:para:fs-idm40915504 -->
 Prepare a table identifying several energy transitions that take place during the typical operation of an automobile.
 
 <!-- SEG:m68724:problem:fs-idp596976 -->
 Explain the difference between heat capacity and specific heat of a substance.
 
 <!-- SEG:m68724:solution:fs-idm14375488 -->
-Heat capacity refers to the heat required to raise the temperature of the mass of the substance 1 degree; specific heat refers to the heat required to raise the temperature of 1 gram of the substance 1 degree. Thus, heat capacity is an extensive property, and specific heat is an intensive one.
-
-<!-- SEG:m68724:para:fs-idp596976 -->
-Explain the difference between heat capacity and specific heat of a substance.
-
-<!-- SEG:m68724:para:fs-idm14375488 -->
 Heat capacity refers to the heat required to raise the temperature of the mass of the substance 1 degree; specific heat refers to the heat required to raise the temperature of 1 gram of the substance 1 degree. Thus, heat capacity is an extensive property, and specific heat is an intensive one.
 
 <!-- SEG:m68724:problem:fs-idm34726656 -->
@@ -455,15 +416,6 @@ Calculate the heat capacity, in joules and in calories per degree, of the follow
 (a) 28.4 g of water
 
 <!-- SEG:m68724:problem:fs-idm42047408 -->
-(b) 1.00 oz of lead
-
-<!-- SEG:m68724:para:fs-idm34726656 -->
-Calculate the heat capacity, in joules and in calories per degree, of the following:
-
-<!-- SEG:m68724:para:fs-idm70483664 -->
-(a) 28.4 g of water
-
-<!-- SEG:m68724:para:fs-idm42047408 -->
 (b) 1.00 oz of lead
 
 <!-- SEG:m68724:problem:fs-idp38079584 -->
@@ -478,22 +430,7 @@ Calculate the heat capacity, in joules and in calories per degree, of the follow
 <!-- SEG:m68724:solution:fs-idm29514016 -->
 (a) 47.6 J/°C; 11.38 cal °C^−1^; (b) 407 J/°C; 97.3 cal °C^−1^
 
-<!-- SEG:m68724:para:fs-idp38079584 -->
-Calculate the heat capacity, in joules and in calories per degree, of the following:
-
-<!-- SEG:m68724:para:fs-idm54266800 -->
-(a) 45.8 g of nitrogen gas
-
-<!-- SEG:m68724:para:fs-idm20478816 -->
-(b) 1.00 pound of aluminum metal
-
-<!-- SEG:m68724:para:fs-idm29514016 -->
-(a) 47.6 J/°C; 11.38 cal °C^−1^; (b) 407 J/°C; 97.3 cal °C^−1^
-
 <!-- SEG:m68724:problem:fs-idm69912288 -->
-How much heat, in joules and in calories, must be added to a 75.0–g iron block with a specific heat of 0.449 J/g °C to increase its temperature from 25 °C to its melting temperature of 1535 °C?
-
-<!-- SEG:m68724:para:fs-idm69912288 -->
 How much heat, in joules and in calories, must be added to a 75.0–g iron block with a specific heat of 0.449 J/g °C to increase its temperature from 25 °C to its melting temperature of 1535 °C?
 
 <!-- SEG:m68724:problem:fs-idm3247776 -->
@@ -502,28 +439,13 @@ How much heat, in joules and in calories, is required to heat a 28.4-g (1-oz) ic
 <!-- SEG:m68724:solution:fs-idm2505712 -->
 1310 J; 313 cal
 
-<!-- SEG:m68724:para:fs-idm3247776 -->
-How much heat, in joules and in calories, is required to heat a 28.4-g (1-oz) ice cube from −23.0 °C to −1.0 °C?
-
-<!-- SEG:m68724:para:fs-idm2505712 -->
-1310 J; 313 cal
-
 <!-- SEG:m68724:problem:fs-idm68896144 -->
-How much would the temperature of 275 g of water increase if 36.5 kJ of heat were added?
-
-<!-- SEG:m68724:para:fs-idm68896144 -->
 How much would the temperature of 275 g of water increase if 36.5 kJ of heat were added?
 
 <!-- SEG:m68724:problem:fs-idm3366864 -->
 If 14.5 kJ of heat were added to 485 g of liquid water, how much would its temperature increase?
 
 <!-- SEG:m68724:solution:fs-idp36304960 -->
-7.15 °C
-
-<!-- SEG:m68724:para:fs-idm3366864 -->
-If 14.5 kJ of heat were added to 485 g of liquid water, how much would its temperature increase?
-
-<!-- SEG:m68724:para:fs-idp36304960 -->
 7.15 °C
 
 <!-- SEG:m68724:problem:fs-idp43279872 -->
@@ -533,15 +455,6 @@ A piece of unknown substance weighs 44.7 g and requires 2110 J to increase its t
 (a) What is the specific heat of the substance?
 
 <!-- SEG:m68724:problem:fs-idp36059072 -->
-(b) If it is one of the substances found in , what is its likely identity?
-
-<!-- SEG:m68724:para:fs-idp43279872 -->
-A piece of unknown substance weighs 44.7 g and requires 2110 J to increase its temperature from 23.2 °C to 89.6 °C.
-
-<!-- SEG:m68724:para:fs-idp36058688 -->
-(a) What is the specific heat of the substance?
-
-<!-- SEG:m68724:para:fs-idp36059072 -->
 (b) If it is one of the substances found in , what is its likely identity?
 
 <!-- SEG:m68724:problem:fs-idp36065248 -->
@@ -556,18 +469,6 @@ A piece of unknown solid substance weighs 437.2 g, and requires 8460 J to increa
 <!-- SEG:m68724:solution:fs-idp36067056 -->
 (a) 0.390 J/g °C; (b) Copper is a likely candidate.
 
-<!-- SEG:m68724:para:fs-idp36065248 -->
-A piece of unknown solid substance weighs 437.2 g, and requires 8460 J to increase its temperature from 19.3 °C to 68.9 °C.
-
-<!-- SEG:m68724:para:fs-idp36065904 -->
-(a) What is the specific heat of the substance?
-
-<!-- SEG:m68724:para:fs-idp36066288 -->
-(b) If it is one of the substances found in , what is its likely identity?
-
-<!-- SEG:m68724:para:fs-idp36067056 -->
-(a) 0.390 J/g °C; (b) Copper is a likely candidate.
-
 <!-- SEG:m68724:problem:fs-idp36072000 -->
 An aluminum kettle weighs 1.05 kg.
 
@@ -580,28 +481,10 @@ An aluminum kettle weighs 1.05 kg.
 <!-- SEG:m68724:problem:fs-idp36073360 -->
 (c) How much heat is required to heat this kettle from 23.0 °C to 99.0 °C if it contains 1.25 L of water (density of 0.997 g/mL and a specific heat of 4.184 J/g °C)?
 
-<!-- SEG:m68724:para:fs-idp36072000 -->
-An aluminum kettle weighs 1.05 kg.
-
-<!-- SEG:m68724:para:fs-idp36072384 -->
-(a) What is the heat capacity of the kettle?
-
-<!-- SEG:m68724:para:fs-idp36072768 -->
-(b) How much heat is required to increase the temperature of this kettle from 23.0 °C to 99.0 °C?
-
-<!-- SEG:m68724:para:fs-idp36073360 -->
-(c) How much heat is required to heat this kettle from 23.0 °C to 99.0 °C if it contains 1.25 L of water (density of 0.997 g/mL and a specific heat of 4.184 J/g °C)?
-
 <!-- SEG:m68724:problem:fs-idp23765168 -->
-Most people find waterbeds uncomfortable unless the water temperature is maintained at about 85 °F. Unless it is heated, a waterbed that contains 892 L of water cools from 85 °F to 72 °F in 24 hours. Estimate the amount of electrical energy required over 24 hours, in kWh, to keep the bed from cooling. Note that 1 kilowatt-hour (kWh) = 3.6 [[MATH:6]] 10^6^ J, and assume that the density of water is 1.0 g/mL (independent of temperature). What other assumptions did you make? How did they affect your calculated result (i.e., were they likely to yield “positive” or “negative” errors)?
+Most people find waterbeds uncomfortable unless the water temperature is maintained at about 85 °F. Unless it is heated, a waterbed that contains 892 L of water cools from 85 °F to 72 °F in 24 hours. Estimate the amount of electrical energy required over 24 hours, in kWh, to keep the bed from cooling. Note that 1 kilowatt-hour (kWh) = 3.6 [[MATH:5]] 10^6^ J, and assume that the density of water is 1.0 g/mL (independent of temperature). What other assumptions did you make? How did they affect your calculated result (i.e., were they likely to yield “positive” or “negative” errors)?
 
 <!-- SEG:m68724:solution:fs-idp23772816 -->
-We assume that the density of water is 1.0 g/cm^3^(1 g/mL) and that it takes as much energy to keep the water at 85 °F as to heat it from 72 °F to 85 °F. We also assume that only the water is going to be heated. Energy required = 7.47 kWh
-
-<!-- SEG:m68724:para:fs-idp23765168 -->
-Most people find waterbeds uncomfortable unless the water temperature is maintained at about 85 °F. Unless it is heated, a waterbed that contains 892 L of water cools from 85 °F to 72 °F in 24 hours. Estimate the amount of electrical energy required over 24 hours, in kWh, to keep the bed from cooling. Note that 1 kilowatt-hour (kWh) = 3.6 [[MATH:7]] 10^6^ J, and assume that the density of water is 1.0 g/mL (independent of temperature). What other assumptions did you make? How did they affect your calculated result (i.e., were they likely to yield “positive” or “negative” errors)?
-
-<!-- SEG:m68724:para:fs-idp23772816 -->
 We assume that the density of water is 1.0 g/cm^3^(1 g/mL) and that it takes as much energy to keep the water at 85 °F as to heat it from 72 °F to 85 °F. We also assume that only the water is going to be heated. Energy required = 7.47 kWh
 
 <!-- SEG:m68724:para:fs-idp32074336 -->

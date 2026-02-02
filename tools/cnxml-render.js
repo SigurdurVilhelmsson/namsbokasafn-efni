@@ -262,9 +262,18 @@ function buildHtmlDocument(options) {
 function renderContent(content, context, _verbose) {
   const lines = [];
 
+  // Sections to exclude from main content (they have their own pages)
+  const EXCLUDED_SECTION_CLASSES = ['summary', 'key-equations', 'exercises'];
+
   // Process sections first
   const sections = extractNestedElements(content, 'section');
   for (const section of sections) {
+    // Skip sections that have dedicated pages
+    const sectionClass = section.attributes.class || '';
+    const shouldExclude = EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
+    if (shouldExclude) {
+      continue;
+    }
     const sectionHtml = renderSection(section, context, 2);
     lines.push(sectionHtml);
   }
@@ -292,8 +301,11 @@ function renderContent(content, context, _verbose) {
 function renderSection(section, context, level) {
   const lines = [];
   const id = section.id || null;
+  const className = section.attributes.class || null;
 
-  lines.push(`<section${id ? ` id="${escapeAttr(id)}"` : ''}>`);
+  lines.push(
+    `<section${id ? ` id="${escapeAttr(id)}"` : ''}${className ? ` class="${escapeAttr(className)}"` : ''}>`
+  );
 
   // Extract and render title
   const titleMatch = section.content.match(/<title>([^<]+)<\/title>/);
@@ -329,15 +341,40 @@ function renderTopLevelContent(content, context) {
   // Collect all elements with their positions
   const elementsWithPositions = [];
 
-  // Extract all element types
+  // Extract container elements first (notes, examples, exercises contain other elements)
   const figures = extractNestedElements(content, 'figure');
   const notes = extractNestedElements(content, 'note');
   const examples = extractNestedElements(content, 'example');
   const exercises = extractNestedElements(content, 'exercise');
   const tables = extractNestedElements(content, 'table');
-  const lists = extractNestedElements(content, 'list');
-  const equations = extractElements(content, 'equation');
-  const paras = extractElements(content, 'para');
+
+  // For paragraphs, lists, equations - only extract those NOT inside container elements
+  // Remove container element content before extracting to avoid duplicates
+  let contentForSimpleElements = content;
+  for (const note of notes) {
+    if (note.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
+  }
+  for (const example of examples) {
+    if (example.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(example.fullMatch, '');
+  }
+  for (const exercise of exercises) {
+    if (exercise.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(exercise.fullMatch, '');
+  }
+  for (const figure of figures) {
+    if (figure.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(figure.fullMatch, '');
+  }
+  for (const table of tables) {
+    if (table.fullMatch)
+      contentForSimpleElements = contentForSimpleElements.replace(table.fullMatch, '');
+  }
+
+  const lists = extractNestedElements(contentForSimpleElements, 'list');
+  const equations = extractElements(contentForSimpleElements, 'equation');
+  const paras = extractElements(contentForSimpleElements, 'para');
 
   // Add all elements with their positions in the content string
   for (const figure of figures) {
