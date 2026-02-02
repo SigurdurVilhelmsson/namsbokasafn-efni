@@ -16,6 +16,18 @@ Define and distinguish specific heat and heat capacity, and describe the physica
 <!-- SEG:m68724:abstract-item:abstract-item-4 -->
 Perform calculations involving heat, specific heat, and temperature change
 
+<!-- SEG:m68724:para:fs-idp32074336 -->
+Chemical changes and their accompanying changes in energy are important parts of our everyday world (). The macronutrients in food (proteins, fats, and carbohydrates) undergo metabolic reactions that provide the energy to keep our bodies functioning. We burn a variety of fuels (gasoline, natural gas, coal) to produce energy for transportation, heating, and the generation of electricity. Industrial chemical reactions use enormous amounts of energy to produce raw materials (such as iron and aluminum). Energy is then used to manufacture those raw materials into useful products, such as cars, skyscrapers, and bridges.
+
+<!-- SEG:m68724:caption:CNX_Chem_05_01_Thermochem-caption -->
+The energy involved in chemical changes is important to our daily lives: (a) A cheeseburger for lunch provides the energy you need to get through the rest of the day; (b) the combustion of gasoline provides the energy that moves your car (and you) between home, work, and school; and (c) coke, a processed form of coal, provides the energy needed to convert iron ore into iron, which is essential for making many of the products we use daily. (credit a: modification of work by “Pink Sherbet Photography”/Flickr; credit b: modification of work by Jeffery Turner)
+
+<!-- SEG:m68724:para:fs-idm67046496 -->
+Over 90% of the energy we use comes originally from the sun. Every day, the sun provides the earth with almost 10,000 times the amount of energy necessary to meet all of the world’s energy needs for that day. Our challenge is to find ways to convert and store incoming solar energy so that it can be used in reactions or chemical processes that are both convenient and nonpolluting. Plants and many bacteria capture solar energy through photosynthesis. We release the energy stored in plants when we burn wood or plant products such as ethanol. We also use this energy to fuel our bodies by eating food that comes directly from plants or from animals that got their energy by eating plants. Burning coal and petroleum also releases stored solar energy: These fuels are fossilized plant and animal matter.
+
+<!-- SEG:m68724:para:fs-idm26174720 -->
+This chapter will introduce the basic ideas of an important area of science concerned with the amount of heat absorbed or released during chemical and physical changes—an area called __thermochemistry__. The concepts introduced in this chapter are widely used in almost all scientific and technical fields. Food scientists use them to determine the energy content of foods. Biologists study the energetics of living organisms, such as the metabolic combustion of sugar into carbon dioxide and water. The oil, gas, and transportation industries, renewable energy providers, and many others endeavor to find better methods to produce energy for our commercial and personal needs. Engineers strive to improve energy efficiency, find better ways to heat and cool our homes, refrigerate our food and drinks, and meet the energy and cooling needs of computers and electronics, among other applications. Understanding thermochemical principles is essential for chemists, physicists, biologists, geologists, every type of engineer, and just about anyone who studies or does any kind of science.
+
 <!-- SEG:m68724:title:fs-idp13589600-title -->
 Energy
 
@@ -106,157 +118,157 @@ Because of its larger mass, a large frying pan has a larger heat capacity than a
 <!-- SEG:m68724:para:fs-idm50153600 -->
 Water has a relatively high specific heat (about 4.2 J/g °C for the liquid and 2.09 J/g °C for the solid); most metals have much lower specific heats (usually less than 1 J/g °C). The specific heat of a substance varies somewhat with temperature. However, this variation is usually small enough that we will treat specific heat as constant over the range of temperatures that will be considered in this chapter. Specific heats of some common substances are listed in .
 
-<!-- SEG:m68724:entry:auto-37 -->
+<!-- SEG:m68724:entry:auto-41 -->
 Specific Heats of Common Substances at 25 °C and 1 bar
 
-<!-- SEG:m68724:entry:auto-38 -->
+<!-- SEG:m68724:entry:auto-42 -->
 Substance
 
-<!-- SEG:m68724:entry:auto-39 -->
+<!-- SEG:m68724:entry:auto-43 -->
 Symbol (*state*)
 
-<!-- SEG:m68724:entry:auto-40 -->
+<!-- SEG:m68724:entry:auto-44 -->
 Specific Heat (J/g °C)
 
-<!-- SEG:m68724:entry:auto-41 -->
+<!-- SEG:m68724:entry:auto-45 -->
 helium
 
-<!-- SEG:m68724:entry:auto-42 -->
+<!-- SEG:m68724:entry:auto-46 -->
 He(*g*)
 
-<!-- SEG:m68724:entry:auto-43 -->
+<!-- SEG:m68724:entry:auto-47 -->
 5.193
 
-<!-- SEG:m68724:entry:auto-44 -->
+<!-- SEG:m68724:entry:auto-48 -->
 water
 
-<!-- SEG:m68724:entry:auto-45 -->
+<!-- SEG:m68724:entry:auto-49 -->
 H~2~O(*l*)
 
-<!-- SEG:m68724:entry:auto-46 -->
+<!-- SEG:m68724:entry:auto-50 -->
 4.184
 
-<!-- SEG:m68724:entry:auto-47 -->
+<!-- SEG:m68724:entry:auto-51 -->
 ethanol
 
-<!-- SEG:m68724:entry:auto-48 -->
+<!-- SEG:m68724:entry:auto-52 -->
 C~2~H~6~O(*l*)
 
-<!-- SEG:m68724:entry:auto-49 -->
+<!-- SEG:m68724:entry:auto-53 -->
 2.376
 
-<!-- SEG:m68724:entry:auto-50 -->
+<!-- SEG:m68724:entry:auto-54 -->
 ice
 
-<!-- SEG:m68724:entry:auto-51 -->
+<!-- SEG:m68724:entry:auto-55 -->
 H~2~O(*s*)
 
-<!-- SEG:m68724:entry:auto-52 -->
+<!-- SEG:m68724:entry:auto-56 -->
 2.093 (at −10 °C)
 
-<!-- SEG:m68724:entry:auto-53 -->
+<!-- SEG:m68724:entry:auto-57 -->
 water vapor
 
-<!-- SEG:m68724:entry:auto-54 -->
+<!-- SEG:m68724:entry:auto-58 -->
 H~2~O(*g*)
 
-<!-- SEG:m68724:entry:auto-55 -->
+<!-- SEG:m68724:entry:auto-59 -->
 1.864
 
-<!-- SEG:m68724:entry:auto-56 -->
+<!-- SEG:m68724:entry:auto-60 -->
 nitrogen
 
-<!-- SEG:m68724:entry:auto-57 -->
+<!-- SEG:m68724:entry:auto-61 -->
 N~2~(*g*)
 
-<!-- SEG:m68724:entry:auto-58 -->
+<!-- SEG:m68724:entry:auto-62 -->
 1.040
 
-<!-- SEG:m68724:entry:auto-59 -->
+<!-- SEG:m68724:entry:auto-63 -->
 air
 
-<!-- SEG:m68724:entry:auto-60 -->
+<!-- SEG:m68724:entry:auto-64 -->
 1.007
 
-<!-- SEG:m68724:entry:auto-61 -->
+<!-- SEG:m68724:entry:auto-65 -->
 oxygen
 
-<!-- SEG:m68724:entry:auto-62 -->
+<!-- SEG:m68724:entry:auto-66 -->
 O~2~(*g*)
 
-<!-- SEG:m68724:entry:auto-63 -->
+<!-- SEG:m68724:entry:auto-67 -->
 0.918
 
-<!-- SEG:m68724:entry:auto-64 -->
+<!-- SEG:m68724:entry:auto-68 -->
 aluminum
 
-<!-- SEG:m68724:entry:auto-65 -->
+<!-- SEG:m68724:entry:auto-69 -->
 Al(*s*)
 
-<!-- SEG:m68724:entry:auto-66 -->
+<!-- SEG:m68724:entry:auto-70 -->
 0.897
 
-<!-- SEG:m68724:entry:auto-67 -->
+<!-- SEG:m68724:entry:auto-71 -->
 carbon dioxide
 
-<!-- SEG:m68724:entry:auto-68 -->
+<!-- SEG:m68724:entry:auto-72 -->
 CO~2~(*g*)
 
-<!-- SEG:m68724:entry:auto-69 -->
+<!-- SEG:m68724:entry:auto-73 -->
 0.853
 
-<!-- SEG:m68724:entry:auto-70 -->
+<!-- SEG:m68724:entry:auto-74 -->
 argon
 
-<!-- SEG:m68724:entry:auto-71 -->
+<!-- SEG:m68724:entry:auto-75 -->
 Ar(*g*)
 
-<!-- SEG:m68724:entry:auto-72 -->
+<!-- SEG:m68724:entry:auto-76 -->
 0.522
 
-<!-- SEG:m68724:entry:auto-73 -->
+<!-- SEG:m68724:entry:auto-77 -->
 iron
 
-<!-- SEG:m68724:entry:auto-74 -->
+<!-- SEG:m68724:entry:auto-78 -->
 Fe(*s*)
 
-<!-- SEG:m68724:entry:auto-75 -->
+<!-- SEG:m68724:entry:auto-79 -->
 0.449
 
-<!-- SEG:m68724:entry:auto-76 -->
+<!-- SEG:m68724:entry:auto-80 -->
 copper
 
-<!-- SEG:m68724:entry:auto-77 -->
+<!-- SEG:m68724:entry:auto-81 -->
 Cu(*s*)
 
-<!-- SEG:m68724:entry:auto-78 -->
+<!-- SEG:m68724:entry:auto-82 -->
 0.385
 
-<!-- SEG:m68724:entry:auto-79 -->
+<!-- SEG:m68724:entry:auto-83 -->
 lead
 
-<!-- SEG:m68724:entry:auto-80 -->
+<!-- SEG:m68724:entry:auto-84 -->
 Pb(*s*)
 
-<!-- SEG:m68724:entry:auto-81 -->
+<!-- SEG:m68724:entry:auto-85 -->
 0.130
 
-<!-- SEG:m68724:entry:auto-82 -->
+<!-- SEG:m68724:entry:auto-86 -->
 gold
 
-<!-- SEG:m68724:entry:auto-83 -->
+<!-- SEG:m68724:entry:auto-87 -->
 Au(*s*)
 
-<!-- SEG:m68724:entry:auto-84 -->
+<!-- SEG:m68724:entry:auto-88 -->
 0.129
 
-<!-- SEG:m68724:entry:auto-85 -->
+<!-- SEG:m68724:entry:auto-89 -->
 silicon
 
-<!-- SEG:m68724:entry:auto-86 -->
+<!-- SEG:m68724:entry:auto-90 -->
 Si(*s*)
 
-<!-- SEG:m68724:entry:auto-87 -->
+<!-- SEG:m68724:entry:auto-91 -->
 0.712
 
 <!-- SEG:m68724:para:fs-idp1279024 -->
@@ -388,7 +400,7 @@ Specific heat and heat capacity are measures of the energy needed to change the 
 <!-- SEG:m68724:title:fs-idm20711744-title -->
 Key Equations
 
-<!-- SEG:m68724:entry:auto-131 -->
+<!-- SEG:m68724:entry:auto-135 -->
 [[MATH:4]]
 
 <!-- SEG:m68724:title:fs-idm41088208-title -->
@@ -486,18 +498,6 @@ Most people find waterbeds uncomfortable unless the water temperature is maintai
 
 <!-- SEG:m68724:solution:fs-idp23772816 -->
 We assume that the density of water is 1.0 g/cm^3^(1 g/mL) and that it takes as much energy to keep the water at 85 °F as to heat it from 72 °F to 85 °F. We also assume that only the water is going to be heated. Energy required = 7.47 kWh
-
-<!-- SEG:m68724:para:fs-idp32074336 -->
-Chemical changes and their accompanying changes in energy are important parts of our everyday world (). The macronutrients in food (proteins, fats, and carbohydrates) undergo metabolic reactions that provide the energy to keep our bodies functioning. We burn a variety of fuels (gasoline, natural gas, coal) to produce energy for transportation, heating, and the generation of electricity. Industrial chemical reactions use enormous amounts of energy to produce raw materials (such as iron and aluminum). Energy is then used to manufacture those raw materials into useful products, such as cars, skyscrapers, and bridges.
-
-<!-- SEG:m68724:caption:CNX_Chem_05_01_Thermochem-caption -->
-The energy involved in chemical changes is important to our daily lives: (a) A cheeseburger for lunch provides the energy you need to get through the rest of the day; (b) the combustion of gasoline provides the energy that moves your car (and you) between home, work, and school; and (c) coke, a processed form of coal, provides the energy needed to convert iron ore into iron, which is essential for making many of the products we use daily. (credit a: modification of work by “Pink Sherbet Photography”/Flickr; credit b: modification of work by Jeffery Turner)
-
-<!-- SEG:m68724:para:fs-idm67046496 -->
-Over 90% of the energy we use comes originally from the sun. Every day, the sun provides the earth with almost 10,000 times the amount of energy necessary to meet all of the world’s energy needs for that day. Our challenge is to find ways to convert and store incoming solar energy so that it can be used in reactions or chemical processes that are both convenient and nonpolluting. Plants and many bacteria capture solar energy through photosynthesis. We release the energy stored in plants when we burn wood or plant products such as ethanol. We also use this energy to fuel our bodies by eating food that comes directly from plants or from animals that got their energy by eating plants. Burning coal and petroleum also releases stored solar energy: These fuels are fossilized plant and animal matter.
-
-<!-- SEG:m68724:para:fs-idm26174720 -->
-This chapter will introduce the basic ideas of an important area of science concerned with the amount of heat absorbed or released during chemical and physical changes—an area called __thermochemistry__. The concepts introduced in this chapter are widely used in almost all scientific and technical fields. Food scientists use them to determine the energy content of foods. Biologists study the energetics of living organisms, such as the metabolic combustion of sugar into carbon dioxide and water. The oil, gas, and transportation industries, renewable energy providers, and many others endeavor to find better methods to produce energy for our commercial and personal needs. Engineers strive to improve energy efficiency, find better ways to heat and cool our homes, refrigerate our food and drinks, and meet the energy and cooling needs of computers and electronics, among other applications. Understanding thermochemical principles is essential for chemists, physicists, biologists, geologists, every type of engineer, and just about anyone who studies or does any kind of science.
 
 <!-- SEG:m68724:glossary-term:fs-idp25499888-term -->
 calorie (cal)

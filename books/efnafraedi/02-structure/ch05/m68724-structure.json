@@ -19,6 +19,33 @@
   },
   "content": [
     {
+      "type": "para",
+      "id": "fs-idp32074336",
+      "segmentId": "m68724:para:fs-idp32074336"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_05_01_Thermochem",
+      "caption": {
+        "segmentId": "m68724:caption:CNX_Chem_05_01_Thermochem-caption"
+      },
+      "media": {
+        "id": "fs-idp12477984",
+        "alt": "Three pictures are shown and labeled a, b, and c. Picture a is a cheeseburger. Picture b depicts a highway that is full of traffic. Picture c is a view into an industrial metal furnace. The view into the furnace shows a hot fire burning inside.",
+        "src": "../../media/CNX_Chem_05_01_Thermochem.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm67046496",
+      "segmentId": "m68724:para:fs-idm67046496"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm26174720",
+      "segmentId": "m68724:para:fs-idm26174720"
+    },
+    {
       "type": "section",
       "id": "fs-idp13589600",
       "class": null,
@@ -286,7 +313,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-37",
+                  "segmentId": "m68724:entry:auto-41",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
@@ -298,34 +325,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-38",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-39",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-40",
-                  "attributes": {
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68724:entry:auto-41",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
-                {
                   "segmentId": "m68724:entry:auto-42",
                   "attributes": {
                     "align": "center"
@@ -336,17 +335,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-44",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-45",
                   "attributes": {
@@ -358,17 +357,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-47",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-48",
                   "attributes": {
@@ -380,17 +379,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-50",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-51",
                   "attributes": {
@@ -402,17 +401,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-53",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-54",
                   "attributes": {
@@ -424,17 +423,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-56",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-57",
                   "attributes": {
@@ -446,27 +445,23 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-59",
                   "attributes": {
                     "align": "center"
                   }
-                },
-                {
-                  "segmentId": "m68724:entry:auto-60",
-                  "attributes": {
-                    "align": "center"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68724:entry:auto-60",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
                 {
                   "segmentId": "m68724:entry:auto-61",
                   "attributes": {
@@ -478,9 +473,19 @@
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-63",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-64",
                   "attributes": {
                     "align": "center"
                   }
@@ -489,12 +494,6 @@
             },
             {
               "cells": [
-                {
-                  "segmentId": "m68724:entry:auto-64",
-                  "attributes": {
-                    "align": "center"
-                  }
-                },
                 {
                   "segmentId": "m68724:entry:auto-65",
                   "attributes": {
@@ -506,17 +505,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-67",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-68",
                   "attributes": {
@@ -528,17 +527,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-70",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-71",
                   "attributes": {
@@ -550,17 +549,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-73",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-74",
                   "attributes": {
@@ -572,17 +571,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-76",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-77",
                   "attributes": {
@@ -594,17 +593,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-79",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-80",
                   "attributes": {
@@ -616,17 +615,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-82",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-83",
                   "attributes": {
@@ -638,17 +637,17 @@
                   "attributes": {
                     "align": "center"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68724:entry:auto-85",
                   "attributes": {
                     "align": "center"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68724:entry:auto-86",
                   "attributes": {
@@ -657,6 +656,34 @@
                 },
                 {
                   "segmentId": "m68724:entry:auto-87",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-88",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68724:entry:auto-89",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-90",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68724:entry:auto-91",
                   "attributes": {
                     "align": "center"
                   }
@@ -995,7 +1022,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-131",
+                  "segmentId": "m68724:entry:auto-135",
                   "attributes": {}
                 }
               ]
@@ -1307,33 +1334,6 @@
           }
         }
       ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idp32074336",
-      "segmentId": "m68724:para:fs-idp32074336"
-    },
-    {
-      "type": "figure",
-      "id": "CNX_Chem_05_01_Thermochem",
-      "caption": {
-        "segmentId": "m68724:caption:CNX_Chem_05_01_Thermochem-caption"
-      },
-      "media": {
-        "id": "fs-idp12477984",
-        "alt": "Three pictures are shown and labeled a, b, and c. Picture a is a cheeseburger. Picture b depicts a highway that is full of traffic. Picture c is a view into an industrial metal furnace. The view into the furnace shows a hot fire burning inside.",
-        "src": "../../media/CNX_Chem_05_01_Thermochem.jpg"
-      }
-    },
-    {
-      "type": "para",
-      "id": "fs-idm67046496",
-      "segmentId": "m68724:para:fs-idm67046496"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm26174720",
-      "segmentId": "m68724:para:fs-idm26174720"
     }
   ],
   "abstract": {

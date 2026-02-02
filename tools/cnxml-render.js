@@ -258,6 +258,7 @@ function buildHtmlDocument(options) {
 
 /**
  * Render CNXML content to HTML.
+ * Preserves document order by interleaving sections and top-level content.
  */
 function renderContent(content, context, _verbose) {
   const lines = [];
@@ -265,27 +266,124 @@ function renderContent(content, context, _verbose) {
   // Sections to exclude from main content (they have their own pages)
   const EXCLUDED_SECTION_CLASSES = ['summary', 'key-equations', 'exercises'];
 
-  // Process sections first
+  // Extract sections
   const sections = extractNestedElements(content, 'section');
+
+  // Get content without sections for top-level elements
+  const contentWithoutSections = removeNestedElements(content, 'section');
+
+  // Collect all renderable items with their positions
+  const itemsWithPositions = [];
+
+  // Add sections with their positions
   for (const section of sections) {
-    // Skip sections that have dedicated pages
     const sectionClass = section.attributes.class || '';
     const shouldExclude = EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
     if (shouldExclude) {
       continue;
     }
-    const sectionHtml = renderSection(section, context, 2);
-    lines.push(sectionHtml);
+    const position = section.fullMatch ? content.indexOf(section.fullMatch) : 0;
+    itemsWithPositions.push({
+      type: 'section',
+      item: section,
+      position,
+    });
   }
 
-  // Process top-level elements outside sections
-  const contentWithoutSections = removeNestedElements(content, 'section');
-  const topLevelHtml = renderTopLevelContent(contentWithoutSections, context);
-  if (topLevelHtml) {
-    lines.push(topLevelHtml);
+  // Add top-level elements with their positions
+  // Extract and position each top-level element type
+  const figures = extractNestedElements(contentWithoutSections, 'figure');
+  const notes = extractNestedElements(contentWithoutSections, 'note');
+  const examples = extractNestedElements(contentWithoutSections, 'example');
+  const exercises = extractNestedElements(contentWithoutSections, 'exercise');
+  const tables = extractNestedElements(contentWithoutSections, 'table');
+
+  // For simple elements, strip containers first
+  let simpleContent = contentWithoutSections;
+  for (const n of notes) if (n.fullMatch) simpleContent = simpleContent.replace(n.fullMatch, '');
+  for (const e of examples) if (e.fullMatch) simpleContent = simpleContent.replace(e.fullMatch, '');
+  for (const e of exercises)
+    if (e.fullMatch) simpleContent = simpleContent.replace(e.fullMatch, '');
+  for (const f of figures) if (f.fullMatch) simpleContent = simpleContent.replace(f.fullMatch, '');
+  for (const t of tables) if (t.fullMatch) simpleContent = simpleContent.replace(t.fullMatch, '');
+
+  const lists = extractNestedElements(simpleContent, 'list');
+  const equations = extractElements(simpleContent, 'equation');
+  const paras = extractElements(simpleContent, 'para');
+
+  // Add all top-level elements with positions (use original content for position finding)
+  for (const fig of figures) {
+    const pos = fig.fullMatch ? content.indexOf(fig.fullMatch) : content.indexOf(`id="${fig.id}"`);
+    itemsWithPositions.push({ type: 'figure', item: fig, position: pos !== -1 ? pos : 0 });
+  }
+  for (const note of notes) {
+    const pos = note.fullMatch
+      ? content.indexOf(note.fullMatch)
+      : content.indexOf(`id="${note.id}"`);
+    itemsWithPositions.push({ type: 'note', item: note, position: pos !== -1 ? pos : 0 });
+  }
+  for (const ex of examples) {
+    const pos = ex.fullMatch ? content.indexOf(ex.fullMatch) : content.indexOf(`id="${ex.id}"`);
+    itemsWithPositions.push({ type: 'example', item: ex, position: pos !== -1 ? pos : 0 });
+  }
+  for (const ex of exercises) {
+    const pos = ex.fullMatch ? content.indexOf(ex.fullMatch) : content.indexOf(`id="${ex.id}"`);
+    itemsWithPositions.push({ type: 'exercise', item: ex, position: pos !== -1 ? pos : 0 });
+  }
+  for (const tbl of tables) {
+    const pos = tbl.fullMatch ? content.indexOf(tbl.fullMatch) : content.indexOf(`id="${tbl.id}"`);
+    itemsWithPositions.push({ type: 'table', item: tbl, position: pos !== -1 ? pos : 0 });
+  }
+  for (const lst of lists) {
+    const pos = lst.fullMatch ? content.indexOf(lst.fullMatch) : content.indexOf(`id="${lst.id}"`);
+    itemsWithPositions.push({ type: 'list', item: lst, position: pos !== -1 ? pos : 0 });
+  }
+  for (const eq of equations) {
+    const pos = eq.fullMatch ? content.indexOf(eq.fullMatch) : content.indexOf(`id="${eq.id}"`);
+    itemsWithPositions.push({ type: 'equation', item: eq, position: pos !== -1 ? pos : 0 });
+  }
+  for (const para of paras) {
+    const pos = para.id ? content.indexOf(`id="${para.id}"`) : content.indexOf('<para');
+    itemsWithPositions.push({ type: 'para', item: para, position: pos !== -1 ? pos : 0 });
   }
 
-  // Process glossary
+  // Sort by position to preserve document order
+  itemsWithPositions.sort((a, b) => a.position - b.position);
+
+  // Render in document order
+  for (const { type, item } of itemsWithPositions) {
+    switch (type) {
+      case 'section':
+        lines.push(renderSection(item, context, 2));
+        break;
+      case 'figure':
+        lines.push(renderFigure(item, context));
+        break;
+      case 'note':
+        lines.push(renderNote(item, context));
+        break;
+      case 'example':
+        lines.push(renderExample(item, context));
+        break;
+      case 'exercise':
+        lines.push(renderExercise(item, context));
+        break;
+      case 'table':
+        lines.push(renderTable(item, context));
+        break;
+      case 'list':
+        lines.push(renderList(item, context));
+        break;
+      case 'equation':
+        lines.push(renderEquation(item, context));
+        break;
+      case 'para':
+        lines.push(renderPara(item, context));
+        break;
+    }
+  }
+
+  // Process glossary (always at end)
   const glossaryMatch = content.match(/<glossary>([\s\S]*?)<\/glossary>/);
   if (glossaryMatch) {
     const glossaryHtml = renderGlossary(glossaryMatch[1], context);
@@ -352,24 +450,29 @@ function renderTopLevelContent(content, context) {
   // Remove container element content before extracting to avoid duplicates
   let contentForSimpleElements = content;
   for (const note of notes) {
-    if (note.fullMatch)
+    if (note.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
+    }
   }
   for (const example of examples) {
-    if (example.fullMatch)
+    if (example.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(example.fullMatch, '');
+    }
   }
   for (const exercise of exercises) {
-    if (exercise.fullMatch)
+    if (exercise.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(exercise.fullMatch, '');
+    }
   }
   for (const figure of figures) {
-    if (figure.fullMatch)
+    if (figure.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(figure.fullMatch, '');
+    }
   }
   for (const table of tables) {
-    if (table.fullMatch)
+    if (table.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(table.fullMatch, '');
+    }
   }
 
   const lists = extractNestedElements(contentForSimpleElements, 'list');

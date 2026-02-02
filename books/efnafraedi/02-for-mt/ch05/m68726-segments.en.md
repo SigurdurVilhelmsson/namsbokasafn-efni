@@ -10,138 +10,6 @@ Explain the technique of calorimetry
 <!-- SEG:m68726:abstract-item:abstract-item-2 -->
 Calculate and interpret heat and related properties using typical calorimetry data
 
-<!-- SEG:m68726:title:fs-idm31992064-title -->
-Key Concepts and Summary
-
-<!-- SEG:m68726:para:fs-idm25518976 -->
-Calorimetry is used to measure the amount of thermal energy transferred in a chemical or physical process. This requires careful measurement of the temperature change that occurs during the process and the masses of the system and surroundings. These measured quantities are then used to compute the amount of heat produced or consumed in the process using known mathematical relations.
-
-<!-- SEG:m68726:para:fs-idm11014384 -->
-Calorimeters are designed to minimize energy exchange between their contents and the external environment. They range from simple coffee cup calorimeters used by introductory chemistry students to sophisticated bomb calorimeters used to determine the energy content of food.
-
-<!-- SEG:m68726:title:fs-idm18398304-title -->
-Chemistry End of Chapter Exercises
-
-<!-- SEG:m68726:problem:fs-idm55422464 -->
-A 500-mL bottle of water at room temperature and a 2-L bottle of water at the same temperature were placed in a refrigerator. After 30 minutes, the 500-mL bottle of water had cooled to the temperature of the refrigerator. An hour later, the 2-L of water had cooled to the same temperature. When asked which sample of water lost the most heat, one student replied that both bottles lost the same amount of heat because they started at the same temperature and finished at the same temperature. A second student thought that the 2-L bottle of water lost more heat because there was more water. A third student believed that the 500-mL bottle of water lost more heat because it cooled more quickly. A fourth student thought that it was not possible to tell because we do not know the initial temperature and the final temperature of the water. Indicate which of these answers is correct and describe the error in each of the other answers.
-
-<!-- SEG:m68726:problem:fs-idm8837408 -->
-Would the amount of heat measured for the reaction in be greater, lesser, or remain the same if we used a calorimeter that was a poorer insulator than a coffee cup calorimeter? Explain your answer.
-
-<!-- SEG:m68726:solution:fs-idm68093664 -->
-lesser; more heat would be lost to the coffee cup and the environment and so Δ*T* for the water would be lesser and the calculated *q* would be lesser
-
-<!-- SEG:m68726:problem:fs-idm51232192 -->
-Would the amount of heat absorbed by the dissolution in appear greater, lesser, or remain the same if the experimenter used a calorimeter that was a poorer insulator than a coffee cup calorimeter? Explain your answer.
-
-<!-- SEG:m68726:problem:fs-idm28590032 -->
-Would the amount of heat absorbed by the dissolution in appear greater, lesser, or remain the same if the heat capacity of the calorimeter were taken into account? Explain your answer.
-
-<!-- SEG:m68726:solution:fs-idp32758784 -->
-greater, since taking the calorimeter’s heat capacity into account will compensate for the thermal energy transferred to the solution from the calorimeter; this approach includes the calorimeter itself, along with the solution, as “surroundings”: *q*~rxn~ = −(*q*~solution~ + *q*~calorimeter~); since both *q*~solution~ and *q*~calorimeter~ are negative, including the latter term (*q*~rxn~) will yield a greater value for the heat of the dissolution
-
-<!-- SEG:m68726:problem:fs-idm60807312 -->
-How many milliliters of water at 23 °C with a density of 1.00 g/mL must be mixed with 180 mL (about 6 oz) of coffee at 95 °C so that the resulting combination will have a temperature of 60 °C? Assume that coffee and water have the same density and the same specific heat.
-
-<!-- SEG:m68726:problem:fs-idm84263008 -->
-How much will the temperature of a cup (180 g) of coffee at 95 °C be reduced when a 45 g silver spoon (specific heat 0.24 J/g °C) at 25 °C is placed in the coffee and the two are allowed to reach the same temperature? Assume that the coffee has the same density and specific heat as water.
-
-<!-- SEG:m68726:solution:fs-idm4847104 -->
-The temperature of the coffee will drop 1 degree.
-
-<!-- SEG:m68726:problem:fs-idm53947232 -->
-A 45-g aluminum spoon (specific heat 0.88 J/g °C) at 24 °C is placed in 180 mL (180 g) of coffee at 85 °C and the temperature of the two become equal.
-
-<!-- SEG:m68726:problem:fs-idm2486224 -->
-(a) What is the final temperature when the two become equal? Assume that coffee has the same specific heat as water.
-
-<!-- SEG:m68726:problem:fs-idp6315152 -->
-(b) The first time a student solved this problem she got an answer of 88 °C. Explain why this is clearly an incorrect answer.
-
-<!-- SEG:m68726:problem:fs-idm50578016 -->
-The temperature of the cooling water as it leaves the hot engine of an automobile is 240 °F. After it passes through the radiator it has a temperature of 175 °F. Calculate the amount of heat transferred from the engine to the surroundings by one gallon of water with a specific heat of 4.184 J/g °C.
-
-<!-- SEG:m68726:solution:fs-idp5232528 -->
-5.7 [[MATH:1]] 10^2^ kJ
-
-<!-- SEG:m68726:problem:fs-idm72237968 -->
-A 70.0-g piece of metal at 80.0 °C is placed in 100 g of water at 22.0 °C contained in a calorimeter like that shown in . The metal and water come to the same temperature at 24.6 °C. How much heat did the metal give up to the water? What is the specific heat of the metal?
-
-<!-- SEG:m68726:problem:fs-idm9201888 -->
-If a reaction produces 1.506 kJ of heat, which is trapped in 30.0 g of water initially at 26.5 °C in a calorimeter like that in , what is the resulting temperature of the water?
-
-<!-- SEG:m68726:solution:fs-idm161971328 -->
-38.5 °C
-
-<!-- SEG:m68726:problem:fs-idm9945568 -->
-A 0.500-g sample of KCl is added to 50.0 g of water in a calorimeter (). If the temperature decreases by 1.05 °C, what is the approximate amount of heat involved in the dissolution of the KCl, assuming the specific heat of the resulting solution is 4.18 J/g °C? Is the reaction exothermic or endothermic?
-
-<!-- SEG:m68726:problem:fs-idm66505184 -->
-Dissolving 3.0 g of CaCl~2~(*s*) in 150.0 g of water in a calorimeter () at 22.4 °C causes the temperature to rise to 25.8 °C. What is the approximate amount of heat involved in the dissolution, assuming the specific heat of the resulting solution is 4.18 J/g °C? Is the reaction exothermic or endothermic?
-
-<!-- SEG:m68726:solution:fs-idm53591344 -->
-−2.2 kJ; The heat produced shows that the reaction is exothermic.
-
-<!-- SEG:m68726:problem:fs-idm54144688 -->
-When 50.0 g of 0.200 M NaCl(*aq*) at 24.1 °C is added to 100.0 g of 0.100 M AgNO~3~(*aq*) at 24.1 °C in a calorimeter, the temperature increases to 25.2 °C as AgCl(*s*) forms. Assuming the specific heat of the solution and products is 4.20 J/g °C, calculate the approximate amount of heat in joules produced.
-
-<!-- SEG:m68726:problem:fs-idm11353520 -->
-The addition of 3.15 g of Ba(OH)~2~·8H~2~O to a solution of 1.52 g of NH~4~SCN in 100 g of water in a calorimeter caused the temperature to fall by 3.1 °C. Assuming the specific heat of the solution and products is 4.20 J/g °C, calculate the approximate amount of heat absorbed by the reaction, which can be represented by the following equation:
-
-<!-- SEG:m68726:problem:fs-idm106018032 -->
-Ba(OH)~2~·8H~2~O(*s*) + 2NH~4~SCN(*aq*) ⟶ Ba(SCN)~2~(*aq*) + 2NH~3~(*aq*) + 10H~2~O(*l*)
-
-<!-- SEG:m68726:solution:fs-idm110865664 -->
-1.4 kJ
-
-<!-- SEG:m68726:problem:fs-idp3697136 -->
-The reaction of 50 mL of acid and 50 mL of base described in increased the temperature of the solution by 6.9 ºC. How much would the temperature have increased if 100 mL of acid and 100 mL of base had been used in the same calorimeter starting at the same temperature of 22.0 ºC? Explain your answer.
-
-<!-- SEG:m68726:problem:fs-idp22525440 -->
-If the 3.21 g of NH~4~NO~3~ in were dissolved in 100.0 g of water under the same conditions, how much would the temperature change? Explain your answer.
-
-<!-- SEG:m68726:solution:fs-idm50695136 -->
-22.6. Since the mass and the heat capacity of the solution is approximately equal to that of the water, the two-fold increase in the amount of water leads to a two-fold decrease of the temperature change.
-
-<!-- SEG:m68726:problem:fs-idp17900160 -->
-When 1.0 g of fructose, C~6~H~12~O~6~(*s*), a sugar commonly found in fruits, is burned in oxygen in a bomb calorimeter, the temperature of the calorimeter increases by 1.58 °C. If the heat capacity of the calorimeter and its contents is 9.90 kJ/°C, what is *q* for this combustion?
-
-<!-- SEG:m68726:problem:fs-idp40934912 -->
-When a 0.740-g sample of trinitrotoluene (TNT), C~7~H~5~N~2~O~6~, is burned in a bomb calorimeter, the temperature increases from 23.4 °C to 26.9 °C. The heat capacity of the calorimeter is 534 J/°C, and it contains 675 mL of water. How much heat was produced by the combustion of the TNT sample?
-
-<!-- SEG:m68726:solution:fs-idm70100832 -->
-11.7 kJ
-
-<!-- SEG:m68726:problem:fs-idp26469920 -->
-One method of generating electricity is by burning coal to heat water, which produces steam that drives an electric generator. To determine the rate at which coal is to be fed into the burner in this type of plant, the heat of combustion per ton of coal must be determined using a bomb calorimeter. When 1.00 g of coal is burned in a bomb calorimeter (), the temperature increases by 1.48 °C. If the heat capacity of the calorimeter is 21.6 kJ/°C, determine the heat produced by combustion of a ton of coal (2.000 [[MATH:2]] 10^3^ pounds).
-
-<!-- SEG:m68726:problem:fs-idp11693072 -->
-The amount of fat recommended for someone with a daily diet of 2000 Calories is 65 g. What percent of the calories in this diet would be supplied by this amount of fat if the average number of Calories for fat is9.1 Calories/g?
-
-<!-- SEG:m68726:solution:fs-idm30338240 -->
-30%
-
-<!-- SEG:m68726:problem:fs-idp47281472 -->
-A teaspoon of the carbohydrate sucrose (common sugar) contains 16 Calories (16 kcal). What is the mass of one teaspoon of sucrose if the average number of Calories for carbohydrates is 4.1 Calories/g?
-
-<!-- SEG:m68726:problem:fs-idp47068352 -->
-What is the maximum mass of carbohydrate in a 6-oz serving of diet soda that contains less than 1 Calorie per can if the average number of Calories for carbohydrates is 4.1 Calories/g?
-
-<!-- SEG:m68726:solution:fs-idm51374576 -->
-0.24 g
-
-<!-- SEG:m68726:problem:fs-idm30519232 -->
-A pint of premium ice cream can contain 1100 Calories. What mass of fat, in grams and pounds, must be produced in the body to store an extra 1.1 [[MATH:3]] 10^3^ Calories if the average number of Calories for fat is9.1 Calories/g?
-
-<!-- SEG:m68726:problem:fs-idm50956864 -->
-A serving of a breakfast cereal contains 3 g of protein, 18 g of carbohydrates, and 6 g of fat. What is the Calorie content of a serving of this cereal if the average number of Calories for fat is 9.1 Calories/g, for carbohydrates is 4.1 Calories/g, and for protein is 4.1 Calories/g?
-
-<!-- SEG:m68726:solution:fs-idm184550912 -->
-1.4 [[MATH:4]] 10^2^ Calories
-
-<!-- SEG:m68726:problem:fs-idp47244976 -->
-Which is the least expensive source of energy in kilojoules per dollar: a box of breakfast cereal that weighs 32 ounces and costs $4.23, or a liter of isooctane (density, 0.6919 g/mL) that costs $0.45? Compare the nutritional value of the cereal with the heat produced by combustion of the isooctane under standard conditions. A 1.0-ounce serving of the cereal provides 130 Calories.
-
 <!-- SEG:m68726:para:fs-idm52788928 -->
 One technique we can use to measure the amount of heat involved in a chemical or physical process is known as __calorimetry__. Calorimetry is used to measure amounts of heat transferred to or from a substance. To do so, the heat is exchanged with a calibrated object (calorimeter). The temperature change measured by the calorimeter is used to derive the amount of heat transferred by the process under study. The measurement of heat transfer using this approach requires the definition of a __system__ (the substance or substances undergoing the chemical or physical change) and its __surroundings__ (all other matter, including components of the measurement apparatus, that serve to either provide heat to the system or absorb heat from the system).
 
@@ -311,7 +179,7 @@ The heat given off by the reaction is equal to that taken in by the solution. Th
 Next, we know that the heat absorbed by the solution depends on its specific heat, mass, and temperature change:
 
 <!-- SEG:m68726:para:fs-idp12432 -->
-To proceed with this calculation, we need to make a few more reasonable assumptions or approximations. Since the solution is aqueous, we can proceed as if it were water in terms of its specific heat and mass values. The density of water is approximately 1.0 g/mL, so 100.0 mL has a mass of about 1.0 [[MATH:5]] 10^2^ g (two significant figures). The specific heat of water is approximately 4.184 J/g °C, so we use that for the specific heat of the solution. Substituting these values gives:
+To proceed with this calculation, we need to make a few more reasonable assumptions or approximations. Since the solution is aqueous, we can proceed as if it were water in terms of its specific heat and mass values. The density of water is approximately 1.0 g/mL, so 100.0 mL has a mass of about 1.0 [[MATH:1]] 10^2^ g (two significant figures). The specific heat of water is approximately 4.184 J/g °C, so we use that for the specific heat of the solution. Substituting these values gives:
 
 <!-- SEG:m68726:para:fs-idm6689328 -->
 Finally, since we are trying to find the heat of the reaction, we have:
@@ -320,7 +188,7 @@ Finally, since we are trying to find the heat of the reaction, we have:
 The negative sign indicates that the reaction is exothermic. It produces 2.9 kJ of heat.
 
 <!-- SEG:m68726:para:fs-idm94618544 -->
-1.34 [[MATH:6]] 10 ^3^ kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water
+1.34 [[MATH:2]] 10 ^3^ kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water
 
 <!-- SEG:m68726:para:fs-idm66182640 -->
 Heat Produced by an Exothermic ReactionWhen 50.0 mL of 1.00 M HCl(*aq*) and 50.0 mL of 1.00 M NaOH(*aq*), both at 22.0 °C, are added to a coffee cup calorimeter, the temperature of the mixture reaches a maximum of 28.9 °C. What is the approximate amount of heat produced by this reaction?
@@ -338,7 +206,7 @@ The heat given off by the reaction is equal to that taken in by the solution. Th
 Next, we know that the heat absorbed by the solution depends on its specific heat, mass, and temperature change:
 
 <!-- SEG:m68726:para:fs-idp12432 -->
-To proceed with this calculation, we need to make a few more reasonable assumptions or approximations. Since the solution is aqueous, we can proceed as if it were water in terms of its specific heat and mass values. The density of water is approximately 1.0 g/mL, so 100.0 mL has a mass of about 1.0 [[MATH:7]] 10^2^ g (two significant figures). The specific heat of water is approximately 4.184 J/g °C, so we use that for the specific heat of the solution. Substituting these values gives:
+To proceed with this calculation, we need to make a few more reasonable assumptions or approximations. Since the solution is aqueous, we can proceed as if it were water in terms of its specific heat and mass values. The density of water is approximately 1.0 g/mL, so 100.0 mL has a mass of about 1.0 [[MATH:3]] 10^2^ g (two significant figures). The specific heat of water is approximately 4.184 J/g °C, so we use that for the specific heat of the solution. Substituting these values gives:
 
 <!-- SEG:m68726:para:fs-idm6689328 -->
 Finally, since we are trying to find the heat of the reaction, we have:
@@ -353,7 +221,7 @@ Check Your Learning When 100 mL of 0.200 M NaCl(*aq*) and 100 mL of 0.200 M AgNO
 Answer:
 
 <!-- SEG:m68726:para:fs-idm94618544 -->
-1.34 [[MATH:8]] 10 ^3^ kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water
+1.34 [[MATH:4]] 10 ^3^ kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water
 
 <!-- SEG:m68726:note-title:fs-idm9530672-title -->
 Thermochemistry of Hand Warmers
@@ -362,10 +230,10 @@ Thermochemistry of Hand Warmers
 When working or playing outdoors on a cold day, you might use a hand warmer to warm your hands (). A common reusable hand warmer contains a supersaturated solution of NaC~2~H~3~O~2~ (sodium acetate) and a metal disc. Bending the disk creates nucleation sites around which the metastable NaC~2~H~3~O~2~ quickly crystallizes (a later chapter on solutions will investigate saturation and supersaturation in more detail).
 
 <!-- SEG:m68726:para:fs-idm213136 -->
-The process [[MATH:9]] is exothermic, and the heat produced by this process is absorbed by your hands, thereby warming them (at least for a while). If the hand warmer is reheated, the NaC~2~H~3~O~2~ redissolves and can be reused.
+The process [[MATH:5]] is exothermic, and the heat produced by this process is absorbed by your hands, thereby warming them (at least for a while). If the hand warmer is reheated, the NaC~2~H~3~O~2~ redissolves and can be reused.
 
 <!-- SEG:m68726:para:fs-idm15246800 -->
-Another common hand warmer produces heat when it is ripped open, exposing iron and water in the hand warmer to oxygen in the air. One simplified version of this exothermic reaction is [[MATH:10]] Salt in the hand warmer catalyzes the reaction, so it produces heat more rapidly; cellulose, vermiculite, and activated carbon help distribute the heat evenly. Other types of hand warmers use lighter fluid (a platinum catalyst helps lighter fluid oxidize exothermically), charcoal (charcoal oxidizes in a special case), or electrical units that produce heat by passing an electrical current from a battery through resistive wires.
+Another common hand warmer produces heat when it is ripped open, exposing iron and water in the hand warmer to oxygen in the air. One simplified version of this exothermic reaction is [[MATH:6]] Salt in the hand warmer catalyzes the reaction, so it produces heat more rapidly; cellulose, vermiculite, and activated carbon help distribute the heat evenly. Other types of hand warmers use lighter fluid (a platinum catalyst helps lighter fluid oxidize exothermically), charcoal (charcoal oxidizes in a special case), or electrical units that produce heat by passing an electrical current from a battery through resistive wires.
 
 <!-- SEG:m68726:caption:CNX_Chem_05_02_HandWarmer-caption -->
 Chemical hand warmers produce heat that warms your hand on a cold day. In this one, you can see the metal disc that initiates the exothermic precipitation reaction. (credit: modification of work by Science Buddies TV/YouTube)
@@ -413,7 +281,7 @@ Assuming also that the specific heat of the solution is the same as that for wat
 The positive sign for *q* indicates that the dissolution is an endothermic process.
 
 <!-- SEG:m68726:para:fs-idm6778640 -->
-Check Your Learning When a 3.00-g sample of KCl was added to 3.00 [[MATH:11]] 10^2^ g of water in a coffee cup calorimeter, the temperature decreased by 1.05 °C. How much heat is involved in the dissolution of the KCl? What assumptions did you make?
+Check Your Learning When a 3.00-g sample of KCl was added to 3.00 [[MATH:7]] 10^2^ g of water in a coffee cup calorimeter, the temperature decreased by 1.05 °C. How much heat is involved in the dissolution of the KCl? What assumptions did you make?
 
 <!-- SEG:m68726:note-title:fs-idm9544544-title -->
 Answer:
@@ -498,6 +366,138 @@ Today, the caloric content on food labels is derived using a method called the _
 
 <!-- SEG:m68726:para:fs-idm56857472 -->
 Click on this [link](http://openstax.org/l/16USDA) to access the US Department of Agriculture (USDA) National Nutrient Database, containing nutritional information on over 8000 foods.
+
+<!-- SEG:m68726:title:fs-idm31992064-title -->
+Key Concepts and Summary
+
+<!-- SEG:m68726:para:fs-idm25518976 -->
+Calorimetry is used to measure the amount of thermal energy transferred in a chemical or physical process. This requires careful measurement of the temperature change that occurs during the process and the masses of the system and surroundings. These measured quantities are then used to compute the amount of heat produced or consumed in the process using known mathematical relations.
+
+<!-- SEG:m68726:para:fs-idm11014384 -->
+Calorimeters are designed to minimize energy exchange between their contents and the external environment. They range from simple coffee cup calorimeters used by introductory chemistry students to sophisticated bomb calorimeters used to determine the energy content of food.
+
+<!-- SEG:m68726:title:fs-idm18398304-title -->
+Chemistry End of Chapter Exercises
+
+<!-- SEG:m68726:problem:fs-idm55422464 -->
+A 500-mL bottle of water at room temperature and a 2-L bottle of water at the same temperature were placed in a refrigerator. After 30 minutes, the 500-mL bottle of water had cooled to the temperature of the refrigerator. An hour later, the 2-L of water had cooled to the same temperature. When asked which sample of water lost the most heat, one student replied that both bottles lost the same amount of heat because they started at the same temperature and finished at the same temperature. A second student thought that the 2-L bottle of water lost more heat because there was more water. A third student believed that the 500-mL bottle of water lost more heat because it cooled more quickly. A fourth student thought that it was not possible to tell because we do not know the initial temperature and the final temperature of the water. Indicate which of these answers is correct and describe the error in each of the other answers.
+
+<!-- SEG:m68726:problem:fs-idm8837408 -->
+Would the amount of heat measured for the reaction in be greater, lesser, or remain the same if we used a calorimeter that was a poorer insulator than a coffee cup calorimeter? Explain your answer.
+
+<!-- SEG:m68726:solution:fs-idm68093664 -->
+lesser; more heat would be lost to the coffee cup and the environment and so Δ*T* for the water would be lesser and the calculated *q* would be lesser
+
+<!-- SEG:m68726:problem:fs-idm51232192 -->
+Would the amount of heat absorbed by the dissolution in appear greater, lesser, or remain the same if the experimenter used a calorimeter that was a poorer insulator than a coffee cup calorimeter? Explain your answer.
+
+<!-- SEG:m68726:problem:fs-idm28590032 -->
+Would the amount of heat absorbed by the dissolution in appear greater, lesser, or remain the same if the heat capacity of the calorimeter were taken into account? Explain your answer.
+
+<!-- SEG:m68726:solution:fs-idp32758784 -->
+greater, since taking the calorimeter’s heat capacity into account will compensate for the thermal energy transferred to the solution from the calorimeter; this approach includes the calorimeter itself, along with the solution, as “surroundings”: *q*~rxn~ = −(*q*~solution~ + *q*~calorimeter~); since both *q*~solution~ and *q*~calorimeter~ are negative, including the latter term (*q*~rxn~) will yield a greater value for the heat of the dissolution
+
+<!-- SEG:m68726:problem:fs-idm60807312 -->
+How many milliliters of water at 23 °C with a density of 1.00 g/mL must be mixed with 180 mL (about 6 oz) of coffee at 95 °C so that the resulting combination will have a temperature of 60 °C? Assume that coffee and water have the same density and the same specific heat.
+
+<!-- SEG:m68726:problem:fs-idm84263008 -->
+How much will the temperature of a cup (180 g) of coffee at 95 °C be reduced when a 45 g silver spoon (specific heat 0.24 J/g °C) at 25 °C is placed in the coffee and the two are allowed to reach the same temperature? Assume that the coffee has the same density and specific heat as water.
+
+<!-- SEG:m68726:solution:fs-idm4847104 -->
+The temperature of the coffee will drop 1 degree.
+
+<!-- SEG:m68726:problem:fs-idm53947232 -->
+A 45-g aluminum spoon (specific heat 0.88 J/g °C) at 24 °C is placed in 180 mL (180 g) of coffee at 85 °C and the temperature of the two become equal.
+
+<!-- SEG:m68726:problem:fs-idm2486224 -->
+(a) What is the final temperature when the two become equal? Assume that coffee has the same specific heat as water.
+
+<!-- SEG:m68726:problem:fs-idp6315152 -->
+(b) The first time a student solved this problem she got an answer of 88 °C. Explain why this is clearly an incorrect answer.
+
+<!-- SEG:m68726:problem:fs-idm50578016 -->
+The temperature of the cooling water as it leaves the hot engine of an automobile is 240 °F. After it passes through the radiator it has a temperature of 175 °F. Calculate the amount of heat transferred from the engine to the surroundings by one gallon of water with a specific heat of 4.184 J/g °C.
+
+<!-- SEG:m68726:solution:fs-idp5232528 -->
+5.7 [[MATH:8]] 10^2^ kJ
+
+<!-- SEG:m68726:problem:fs-idm72237968 -->
+A 70.0-g piece of metal at 80.0 °C is placed in 100 g of water at 22.0 °C contained in a calorimeter like that shown in . The metal and water come to the same temperature at 24.6 °C. How much heat did the metal give up to the water? What is the specific heat of the metal?
+
+<!-- SEG:m68726:problem:fs-idm9201888 -->
+If a reaction produces 1.506 kJ of heat, which is trapped in 30.0 g of water initially at 26.5 °C in a calorimeter like that in , what is the resulting temperature of the water?
+
+<!-- SEG:m68726:solution:fs-idm161971328 -->
+38.5 °C
+
+<!-- SEG:m68726:problem:fs-idm9945568 -->
+A 0.500-g sample of KCl is added to 50.0 g of water in a calorimeter (). If the temperature decreases by 1.05 °C, what is the approximate amount of heat involved in the dissolution of the KCl, assuming the specific heat of the resulting solution is 4.18 J/g °C? Is the reaction exothermic or endothermic?
+
+<!-- SEG:m68726:problem:fs-idm66505184 -->
+Dissolving 3.0 g of CaCl~2~(*s*) in 150.0 g of water in a calorimeter () at 22.4 °C causes the temperature to rise to 25.8 °C. What is the approximate amount of heat involved in the dissolution, assuming the specific heat of the resulting solution is 4.18 J/g °C? Is the reaction exothermic or endothermic?
+
+<!-- SEG:m68726:solution:fs-idm53591344 -->
+−2.2 kJ; The heat produced shows that the reaction is exothermic.
+
+<!-- SEG:m68726:problem:fs-idm54144688 -->
+When 50.0 g of 0.200 M NaCl(*aq*) at 24.1 °C is added to 100.0 g of 0.100 M AgNO~3~(*aq*) at 24.1 °C in a calorimeter, the temperature increases to 25.2 °C as AgCl(*s*) forms. Assuming the specific heat of the solution and products is 4.20 J/g °C, calculate the approximate amount of heat in joules produced.
+
+<!-- SEG:m68726:problem:fs-idm11353520 -->
+The addition of 3.15 g of Ba(OH)~2~·8H~2~O to a solution of 1.52 g of NH~4~SCN in 100 g of water in a calorimeter caused the temperature to fall by 3.1 °C. Assuming the specific heat of the solution and products is 4.20 J/g °C, calculate the approximate amount of heat absorbed by the reaction, which can be represented by the following equation:
+
+<!-- SEG:m68726:problem:fs-idm106018032 -->
+Ba(OH)~2~·8H~2~O(*s*) + 2NH~4~SCN(*aq*) ⟶ Ba(SCN)~2~(*aq*) + 2NH~3~(*aq*) + 10H~2~O(*l*)
+
+<!-- SEG:m68726:solution:fs-idm110865664 -->
+1.4 kJ
+
+<!-- SEG:m68726:problem:fs-idp3697136 -->
+The reaction of 50 mL of acid and 50 mL of base described in increased the temperature of the solution by 6.9 ºC. How much would the temperature have increased if 100 mL of acid and 100 mL of base had been used in the same calorimeter starting at the same temperature of 22.0 ºC? Explain your answer.
+
+<!-- SEG:m68726:problem:fs-idp22525440 -->
+If the 3.21 g of NH~4~NO~3~ in were dissolved in 100.0 g of water under the same conditions, how much would the temperature change? Explain your answer.
+
+<!-- SEG:m68726:solution:fs-idm50695136 -->
+22.6. Since the mass and the heat capacity of the solution is approximately equal to that of the water, the two-fold increase in the amount of water leads to a two-fold decrease of the temperature change.
+
+<!-- SEG:m68726:problem:fs-idp17900160 -->
+When 1.0 g of fructose, C~6~H~12~O~6~(*s*), a sugar commonly found in fruits, is burned in oxygen in a bomb calorimeter, the temperature of the calorimeter increases by 1.58 °C. If the heat capacity of the calorimeter and its contents is 9.90 kJ/°C, what is *q* for this combustion?
+
+<!-- SEG:m68726:problem:fs-idp40934912 -->
+When a 0.740-g sample of trinitrotoluene (TNT), C~7~H~5~N~2~O~6~, is burned in a bomb calorimeter, the temperature increases from 23.4 °C to 26.9 °C. The heat capacity of the calorimeter is 534 J/°C, and it contains 675 mL of water. How much heat was produced by the combustion of the TNT sample?
+
+<!-- SEG:m68726:solution:fs-idm70100832 -->
+11.7 kJ
+
+<!-- SEG:m68726:problem:fs-idp26469920 -->
+One method of generating electricity is by burning coal to heat water, which produces steam that drives an electric generator. To determine the rate at which coal is to be fed into the burner in this type of plant, the heat of combustion per ton of coal must be determined using a bomb calorimeter. When 1.00 g of coal is burned in a bomb calorimeter (), the temperature increases by 1.48 °C. If the heat capacity of the calorimeter is 21.6 kJ/°C, determine the heat produced by combustion of a ton of coal (2.000 [[MATH:9]] 10^3^ pounds).
+
+<!-- SEG:m68726:problem:fs-idp11693072 -->
+The amount of fat recommended for someone with a daily diet of 2000 Calories is 65 g. What percent of the calories in this diet would be supplied by this amount of fat if the average number of Calories for fat is9.1 Calories/g?
+
+<!-- SEG:m68726:solution:fs-idm30338240 -->
+30%
+
+<!-- SEG:m68726:problem:fs-idp47281472 -->
+A teaspoon of the carbohydrate sucrose (common sugar) contains 16 Calories (16 kcal). What is the mass of one teaspoon of sucrose if the average number of Calories for carbohydrates is 4.1 Calories/g?
+
+<!-- SEG:m68726:problem:fs-idp47068352 -->
+What is the maximum mass of carbohydrate in a 6-oz serving of diet soda that contains less than 1 Calorie per can if the average number of Calories for carbohydrates is 4.1 Calories/g?
+
+<!-- SEG:m68726:solution:fs-idm51374576 -->
+0.24 g
+
+<!-- SEG:m68726:problem:fs-idm30519232 -->
+A pint of premium ice cream can contain 1100 Calories. What mass of fat, in grams and pounds, must be produced in the body to store an extra 1.1 [[MATH:10]] 10^3^ Calories if the average number of Calories for fat is9.1 Calories/g?
+
+<!-- SEG:m68726:problem:fs-idm50956864 -->
+A serving of a breakfast cereal contains 3 g of protein, 18 g of carbohydrates, and 6 g of fat. What is the Calorie content of a serving of this cereal if the average number of Calories for fat is 9.1 Calories/g, for carbohydrates is 4.1 Calories/g, and for protein is 4.1 Calories/g?
+
+<!-- SEG:m68726:solution:fs-idm184550912 -->
+1.4 [[MATH:11]] 10^2^ Calories
+
+<!-- SEG:m68726:problem:fs-idp47244976 -->
+Which is the least expensive source of energy in kilojoules per dollar: a box of breakfast cereal that weighs 32 ounces and costs $4.23, or a liter of isooctane (density, 0.6919 g/mL) that costs $0.45? Compare the nutritional value of the cereal with the heat produced by combustion of the isooctane under standard conditions. A 1.0-ounce serving of the cereal provides 130 Calories.
 
 <!-- SEG:m68726:glossary-term:fs-idm56360448-term -->
 bomb calorimeter

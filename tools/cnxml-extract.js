@@ -262,21 +262,8 @@ function extractSegments(cnxml, options = {}) {
   // Extract content
   const content = doc.rawContent;
 
-  // Process sections
+  // Process sections and top-level elements in document order
   const sections = extractNestedElements(content, 'section');
-  for (const section of sections) {
-    const sectionStructure = processSection(
-      section,
-      moduleId,
-      addSegment,
-      mathMap,
-      counters,
-      verbose
-    );
-    structure.content.push(sectionStructure);
-  }
-
-  // Process top-level elements (outside sections)
   const topLevelContent = removeNestedElements(content, 'section');
   const topLevelElements = processTopLevelContent(
     topLevelContent,
@@ -286,7 +273,39 @@ function extractSegments(cnxml, options = {}) {
     counters,
     verbose
   );
-  structure.content.push(...topLevelElements);
+
+  // Collect all items with positions for document order
+  const itemsWithPositions = [];
+
+  // Add sections with positions
+  for (const section of sections) {
+    const sectionStructure = processSection(
+      section,
+      moduleId,
+      addSegment,
+      mathMap,
+      counters,
+      verbose
+    );
+    const position = section.fullMatch ? content.indexOf(section.fullMatch) : 0;
+    itemsWithPositions.push({ item: sectionStructure, position });
+  }
+
+  // Add top-level elements with positions
+  for (const element of topLevelElements) {
+    // Find position using element id
+    const idStr = element.id ? `id="${element.id}"` : null;
+    const position = idStr ? content.indexOf(idStr) : 0;
+    itemsWithPositions.push({ item: element, position: position !== -1 ? position : 0 });
+  }
+
+  // Sort by position to preserve document order
+  itemsWithPositions.sort((a, b) => a.position - b.position);
+
+  // Add to structure in document order
+  for (const { item } of itemsWithPositions) {
+    structure.content.push(item);
+  }
 
   // Extract glossary
   const glossaryTerms = extractGlossary(cnxml);
@@ -410,24 +429,29 @@ function processTopLevelContent(content, moduleId, addSegment, mathMap, counters
   // Remove container content to avoid extracting nested elements as top-level
   let contentForSimpleElements = content;
   for (const note of notes) {
-    if (note.fullMatch)
+    if (note.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
+    }
   }
   for (const example of examples) {
-    if (example.fullMatch)
+    if (example.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(example.fullMatch, '');
+    }
   }
   for (const exercise of exercises) {
-    if (exercise.fullMatch)
+    if (exercise.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(exercise.fullMatch, '');
+    }
   }
   for (const figure of figures) {
-    if (figure.fullMatch)
+    if (figure.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(figure.fullMatch, '');
+    }
   }
   for (const table of tables) {
-    if (table.fullMatch)
+    if (table.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(table.fullMatch, '');
+    }
   }
 
   const paras = extractElements(contentForSimpleElements, 'para');

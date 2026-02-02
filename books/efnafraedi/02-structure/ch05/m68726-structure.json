@@ -17,499 +17,6 @@
   },
   "content": [
     {
-      "type": "section",
-      "id": "fs-idm31992064",
-      "class": "summary",
-      "title": {
-        "segmentId": "m68726:title:fs-idm31992064-title",
-        "text": "Key Concepts and Summary"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idm25518976",
-          "segmentId": "m68726:para:fs-idm25518976"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm11014384",
-          "segmentId": "m68726:para:fs-idm11014384"
-        }
-      ]
-    },
-    {
-      "type": "section",
-      "id": "fs-idm18398304",
-      "class": "exercises",
-      "title": {
-        "segmentId": "m68726:title:fs-idm18398304-title",
-        "text": "Chemistry End of Chapter Exercises"
-      },
-      "content": [
-        {
-          "type": "exercise",
-          "id": "fs-idm40469024",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm55422464",
-                "segmentId": "m68726:problem:fs-idm55422464"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm72048864",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm8837408",
-                "segmentId": "m68726:problem:fs-idm8837408"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm68093664",
-                "segmentId": "m68726:solution:fs-idm68093664"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm15197120",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm51232192",
-                "segmentId": "m68726:problem:fs-idm51232192"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm40185072",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm28590032",
-                "segmentId": "m68726:problem:fs-idm28590032"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp32758784",
-                "segmentId": "m68726:solution:fs-idp32758784"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm75457248",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm60807312",
-                "segmentId": "m68726:problem:fs-idm60807312"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm50720272",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm84263008",
-                "segmentId": "m68726:problem:fs-idm84263008"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm4847104",
-                "segmentId": "m68726:solution:fs-idm4847104"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm5511248",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm53947232",
-                "segmentId": "m68726:problem:fs-idm53947232"
-              },
-              {
-                "type": "para",
-                "id": "fs-idm2486224",
-                "segmentId": "m68726:problem:fs-idm2486224"
-              },
-              {
-                "type": "para",
-                "id": "fs-idp6315152",
-                "segmentId": "m68726:problem:fs-idp6315152"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm17023280",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm50578016",
-                "segmentId": "m68726:problem:fs-idm50578016"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp5232528",
-                "segmentId": "m68726:solution:fs-idp5232528"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm57057808",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm72237968",
-                "segmentId": "m68726:problem:fs-idm72237968"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm9202400",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm9201888",
-                "segmentId": "m68726:problem:fs-idm9201888"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm161971328",
-                "segmentId": "m68726:solution:fs-idm161971328"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm66134336",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm9945568",
-                "segmentId": "m68726:problem:fs-idm9945568"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm68277040",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm66505184",
-                "segmentId": "m68726:problem:fs-idm66505184"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm53591344",
-                "segmentId": "m68726:solution:fs-idm53591344"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm54145200",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm54144688",
-                "segmentId": "m68726:problem:fs-idm54144688"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm11354032",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm11353520",
-                "segmentId": "m68726:problem:fs-idm11353520"
-              },
-              {
-                "type": "para",
-                "id": "fs-idm106018032",
-                "segmentId": "m68726:problem:fs-idm106018032"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm110865664",
-                "segmentId": "m68726:solution:fs-idm110865664"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp3696624",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp3697136",
-                "segmentId": "m68726:problem:fs-idp3697136"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp22524928",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp22525440",
-                "segmentId": "m68726:problem:fs-idp22525440"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm50695136",
-                "segmentId": "m68726:solution:fs-idm50695136"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp17899648",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp17900160",
-                "segmentId": "m68726:problem:fs-idp17900160"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp40934400",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp40934912",
-                "segmentId": "m68726:problem:fs-idp40934912"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm70100832",
-                "segmentId": "m68726:solution:fs-idm70100832"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp26469408",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp26469920",
-                "segmentId": "m68726:problem:fs-idp26469920"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp11692560",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp11693072",
-                "segmentId": "m68726:problem:fs-idp11693072"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm30338240",
-                "segmentId": "m68726:solution:fs-idm30338240"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp47280960",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp47281472",
-                "segmentId": "m68726:problem:fs-idp47281472"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp47067840",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp47068352",
-                "segmentId": "m68726:problem:fs-idp47068352"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm51374576",
-                "segmentId": "m68726:solution:fs-idm51374576"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idm30519744",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm30519232",
-                "segmentId": "m68726:problem:fs-idm30519232"
-              }
-            ]
-          },
-          "solution": null
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp1428384",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm50956864",
-                "segmentId": "m68726:problem:fs-idm50956864"
-              }
-            ]
-          },
-          "solution": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idm184550912",
-                "segmentId": "m68726:solution:fs-idm184550912"
-              }
-            ]
-          }
-        },
-        {
-          "type": "exercise",
-          "id": "fs-idp47244464",
-          "problem": {
-            "content": [
-              {
-                "type": "para",
-                "id": "fs-idp47244976",
-                "segmentId": "m68726:problem:fs-idp47244976"
-              }
-            ]
-          },
-          "solution": null
-        }
-      ]
-    },
-    {
       "type": "para",
       "id": "fs-idm52788928",
       "segmentId": "m68726:para:fs-idm52788928"
@@ -577,6 +84,19 @@
       "segmentId": "m68726:para:fs-idm10925216"
     },
     {
+      "type": "figure",
+      "id": "CNX_Chem_05_02_HeatTrans2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68726:caption:CNX_Chem_05_02_HeatTrans2-caption"
+      },
+      "media": {
+        "id": "fs-idm50825408",
+        "alt": "Two diagrams are shown and labeled a and b. Each diagram is composed of a rectangular container with a thermometer inserted inside from the top right corner. Both containers are connected by a right-facing arrow. Both containers are full of water, which is depicted by the letter “W,” and each container has a square in the middle which represents a metal which is labeled with a letter “M.” In diagram a, the metal is drawn in brown and has three arrows facing away from it. Each arrow has the letter “q” at its end. The metal is labeled “system” and the water is labeled “surroundings.” The thermometer in this diagram has a relatively low reading. In diagram b, the metal is depicted in purple and the thermometer has a relatively high reading.",
+        "src": "../../media/CNX_Chem_05_02_HeatTrans2.jpg"
+      }
+    },
+    {
       "type": "equation",
       "id": "fs-idm194903168",
       "class": "unnumbered"
@@ -595,19 +115,6 @@
       "type": "para",
       "id": "fs-idm129199216",
       "segmentId": "m68726:para:fs-idm129199216"
-    },
-    {
-      "type": "figure",
-      "id": "CNX_Chem_05_02_HeatTrans2",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68726:caption:CNX_Chem_05_02_HeatTrans2-caption"
-      },
-      "media": {
-        "id": "fs-idm50825408",
-        "alt": "Two diagrams are shown and labeled a and b. Each diagram is composed of a rectangular container with a thermometer inserted inside from the top right corner. Both containers are connected by a right-facing arrow. Both containers are full of water, which is depicted by the letter “W,” and each container has a square in the middle which represents a metal which is labeled with a letter “M.” In diagram a, the metal is drawn in brown and has three arrows facing away from it. Each arrow has the letter “q” at its end. The metal is labeled “system” and the water is labeled “surroundings.” The thermometer in this diagram has a relatively low reading. In diagram b, the metal is depicted in purple and the thermometer has a relatively high reading.",
-        "src": "../../media/CNX_Chem_05_02_HeatTrans2.jpg"
-      }
     },
     {
       "type": "example",
@@ -1175,11 +682,6 @@
       "segmentId": "m68726:para:fs-idm52519632"
     },
     {
-      "type": "para",
-      "id": "fs-idp41329920",
-      "segmentId": "m68726:para:fs-idp41329920"
-    },
-    {
       "type": "figure",
       "id": "CNX_Chem_05_02_IcePack",
       "class": "scaled-down",
@@ -1191,6 +693,11 @@
         "alt": "A diagram depicts a rectangular pack containing a white, solid substance and an interior bag full of water. The white solid is labeled “ammonium nitrate.” The top of the packet has the words “Instant Cold Pack” written on it. It also has three pictograms, which from right to left, show a hand squeezing the pack, agitating the pack and placing the pack on a person’s body. The bottom of the pack has printed words that read “single use only.”",
         "src": "../../media/CNX_Chem_05_02_IcePack.jpg"
       }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp41329920",
+      "segmentId": "m68726:para:fs-idp41329920"
     },
     {
       "type": "para",
@@ -1424,6 +931,499 @@
           "type": "para",
           "id": "fs-idm56857472",
           "segmentId": "m68726:para:fs-idm56857472"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm31992064",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68726:title:fs-idm31992064-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm25518976",
+          "segmentId": "m68726:para:fs-idm25518976"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm11014384",
+          "segmentId": "m68726:para:fs-idm11014384"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm18398304",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68726:title:fs-idm18398304-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm40469024",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm55422464",
+                "segmentId": "m68726:problem:fs-idm55422464"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm72048864",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm8837408",
+                "segmentId": "m68726:problem:fs-idm8837408"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm68093664",
+                "segmentId": "m68726:solution:fs-idm68093664"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm15197120",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm51232192",
+                "segmentId": "m68726:problem:fs-idm51232192"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm40185072",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm28590032",
+                "segmentId": "m68726:problem:fs-idm28590032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp32758784",
+                "segmentId": "m68726:solution:fs-idp32758784"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm75457248",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm60807312",
+                "segmentId": "m68726:problem:fs-idm60807312"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm50720272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm84263008",
+                "segmentId": "m68726:problem:fs-idm84263008"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm4847104",
+                "segmentId": "m68726:solution:fs-idm4847104"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm5511248",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm53947232",
+                "segmentId": "m68726:problem:fs-idm53947232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2486224",
+                "segmentId": "m68726:problem:fs-idm2486224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp6315152",
+                "segmentId": "m68726:problem:fs-idp6315152"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm17023280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm50578016",
+                "segmentId": "m68726:problem:fs-idm50578016"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp5232528",
+                "segmentId": "m68726:solution:fs-idp5232528"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm57057808",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm72237968",
+                "segmentId": "m68726:problem:fs-idm72237968"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm9202400",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm9201888",
+                "segmentId": "m68726:problem:fs-idm9201888"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm161971328",
+                "segmentId": "m68726:solution:fs-idm161971328"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm66134336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm9945568",
+                "segmentId": "m68726:problem:fs-idm9945568"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm68277040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm66505184",
+                "segmentId": "m68726:problem:fs-idm66505184"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm53591344",
+                "segmentId": "m68726:solution:fs-idm53591344"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm54145200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm54144688",
+                "segmentId": "m68726:problem:fs-idm54144688"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm11354032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm11353520",
+                "segmentId": "m68726:problem:fs-idm11353520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm106018032",
+                "segmentId": "m68726:problem:fs-idm106018032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm110865664",
+                "segmentId": "m68726:solution:fs-idm110865664"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp3696624",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp3697136",
+                "segmentId": "m68726:problem:fs-idp3697136"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp22524928",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp22525440",
+                "segmentId": "m68726:problem:fs-idp22525440"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm50695136",
+                "segmentId": "m68726:solution:fs-idm50695136"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp17899648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp17900160",
+                "segmentId": "m68726:problem:fs-idp17900160"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp40934400",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40934912",
+                "segmentId": "m68726:problem:fs-idp40934912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm70100832",
+                "segmentId": "m68726:solution:fs-idm70100832"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp26469408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26469920",
+                "segmentId": "m68726:problem:fs-idp26469920"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp11692560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp11693072",
+                "segmentId": "m68726:problem:fs-idp11693072"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm30338240",
+                "segmentId": "m68726:solution:fs-idm30338240"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp47280960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp47281472",
+                "segmentId": "m68726:problem:fs-idp47281472"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp47067840",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp47068352",
+                "segmentId": "m68726:problem:fs-idp47068352"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm51374576",
+                "segmentId": "m68726:solution:fs-idm51374576"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm30519744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm30519232",
+                "segmentId": "m68726:problem:fs-idm30519232"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp1428384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm50956864",
+                "segmentId": "m68726:problem:fs-idm50956864"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm184550912",
+                "segmentId": "m68726:solution:fs-idm184550912"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp47244464",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp47244976",
+                "segmentId": "m68726:problem:fs-idp47244976"
+              }
+            ]
+          },
+          "solution": null
         }
       ]
     }

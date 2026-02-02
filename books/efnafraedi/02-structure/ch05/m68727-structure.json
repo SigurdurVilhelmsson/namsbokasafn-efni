@@ -20,6 +20,453 @@
   },
   "content": [
     {
+      "type": "para",
+      "id": "fs-idp160276224",
+      "segmentId": "m68727:para:fs-idp160276224"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp5509104",
+      "segmentId": "m68727:para:fs-idp5509104"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm1690784",
+      "segmentId": "m68727:para:fs-idm1690784"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp16545808",
+      "segmentId": "m68727:para:fs-idp16545808"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm150109936",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp146392048",
+      "segmentId": "m68727:para:fs-idp146392048"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_05_03_Systemqw",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68727:caption:CNX_Chem_05_03_Systemqw-caption"
+      },
+      "media": {
+        "id": "fs-idp1427264",
+        "src": "../../media/CNX_Chem_05_03_Systemqw.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp6896176",
+      "segmentId": "m68727:para:fs-idp6896176"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp889984",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp13166816",
+          "segmentId": "m68727:para:fs-idp13166816"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp120420048",
+      "segmentId": "m68727:para:fs-idp120420048"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_05_03_Summit",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68727:caption:CNX_Chem_05_03_Summit-caption"
+      },
+      "media": {
+        "id": "fs-idp164506448",
+        "alt": "An aerial photo depicts a view of Mount Kilimanjaro. A straight, green arrow labeled X is drawn from the term “base,” written at the bottom of the mountain, to the term “Summit,” written at the top of the mountain. Another arrow labeled Y is draw from the base to the summit alongside the green arrow, but this arrow is pink and has three large S-shaped curves along its length.",
+        "src": "../../media/CNX_Chem_05_03_Summit.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp107461968",
+      "segmentId": "m68727:para:fs-idp107461968"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm231773856",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm20812336",
+      "segmentId": "m68727:para:fs-idm20812336"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm182172016",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm15694224",
+      "segmentId": "m68727:para:fs-idm15694224"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm223126448",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp7052304",
+      "segmentId": "m68727:para:fs-idp7052304"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm223599728",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp58958304",
+      "segmentId": "m68727:para:fs-idp58958304"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm50104768",
+      "segmentId": "m68727:para:fs-idm50104768"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm22504976",
+      "segmentId": "m68727:para:fs-idm22504976"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp25166224",
+      "segmentId": "m68727:para:fs-idp25166224"
+    },
+    {
+      "type": "list",
+      "id": "fs-idm49861360",
+      "listType": "bulleted",
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68727:item:fs-idm49861360-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68727:item:fs-idm49861360-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68727:item:fs-idm49861360-item-3"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm11576944",
+      "segmentId": "m68727:para:fs-idm11576944"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp165042832",
+      "segmentId": "m68727:para:fs-idp165042832"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp13211824",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm35882976",
+      "segmentId": "m68727:para:fs-idm35882976"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm23265328",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm72030880",
+      "segmentId": "m68727:para:fs-idm72030880"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp4587936",
+      "class": "unnumbered"
+    },
+    {
+      "type": "example",
+      "id": "fs-idm9240992",
+      "title": {
+        "segmentId": "m68727:example-title:fs-idm9240992-title",
+        "text": "Writing Thermochemical Equations"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp13720784",
+          "segmentId": "m68727:para:fs-idp13720784"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp35719536",
+          "segmentId": "m68727:para:fs-idp35719536"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp149553440"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp125057232"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm13850464"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp6791056"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp52228448",
+      "segmentId": "m68727:para:fs-idp52228448"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp149553440",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm10084896",
+      "segmentId": "m68727:para:fs-idm10084896"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp125057232",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp13720784",
+      "segmentId": "m68727:para:fs-idp13720784"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm13850464",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp6958160",
+      "segmentId": "m68727:para:fs-idp6958160"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp6791056",
+      "class": "unnumbered"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp58943984",
+      "title": {
+        "segmentId": "m68727:note-title:fs-idp58943984-title",
+        "text": "Answer:"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp35719536",
+          "segmentId": "m68727:para:fs-idp35719536"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm14305808",
+      "segmentId": "m68727:para:fs-idm14305808"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp107963312",
+      "title": {
+        "segmentId": "m68727:example-title:fs-idp107963312-title",
+        "text": "Writing Thermochemical Equations"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm378999344",
+          "segmentId": "m68727:para:fs-idm378999344"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm329792512",
+          "segmentId": "m68727:para:fs-idm329792512"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm379230752",
+          "segmentId": "m68727:para:fs-idm379230752"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm386464528",
+          "segmentId": "m68727:para:fs-idm386464528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm379229776",
+          "segmentId": "m68727:para:fs-idm379229776"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm17649024",
+          "segmentId": "m68727:para:fs-idm17649024"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp12841552"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm372152464"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm378911456"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm352441488"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm389610336"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp90097408"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm6526496",
+      "segmentId": "m68727:para:fs-idm6526496"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp12841552",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm42247408",
+      "segmentId": "m68727:para:fs-idm42247408"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm378999344",
+      "segmentId": "m68727:para:fs-idm378999344"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm372152464",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm329792512",
+      "segmentId": "m68727:para:fs-idm329792512"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm378911456",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm379230752",
+      "segmentId": "m68727:para:fs-idm379230752"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm352441488",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm386464528",
+      "segmentId": "m68727:para:fs-idm386464528"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm389610336",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm379229776",
+      "segmentId": "m68727:para:fs-idm379229776"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp90097408",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp82549456",
+      "segmentId": "m68727:para:fs-idp82549456"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp120447376",
+      "title": {
+        "segmentId": "m68727:note-title:fs-idp120447376-title",
+        "text": "Answer:"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm17649024",
+          "segmentId": "m68727:para:fs-idm17649024"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm18196832",
+      "segmentId": "m68727:para:fs-idm18196832"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp148022240",
+      "segmentId": "m68727:para:fs-idp148022240"
+    },
+    {
       "type": "section",
       "id": "fs-idp4580336",
       "class": null,
@@ -52,7 +499,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-11",
+                  "segmentId": "m68727:entry:auto-65",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
@@ -64,19 +511,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-12",
+                  "segmentId": "m68727:entry:auto-66",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-13",
+                  "segmentId": "m68727:entry:auto-67",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-14",
+                  "segmentId": "m68727:entry:auto-68",
                   "attributes": {
                     "align": "left"
                   }
@@ -86,19 +533,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-15",
+                  "segmentId": "m68727:entry:auto-69",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-16",
+                  "segmentId": "m68727:entry:auto-70",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-17",
+                  "segmentId": "m68727:entry:auto-71",
                   "attributes": {
                     "align": "left"
                   }
@@ -108,19 +555,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-18",
+                  "segmentId": "m68727:entry:auto-72",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-19",
+                  "segmentId": "m68727:entry:auto-73",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-20",
+                  "segmentId": "m68727:entry:auto-74",
                   "attributes": {
                     "align": "left"
                   }
@@ -130,19 +577,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-21",
+                  "segmentId": "m68727:entry:auto-75",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-22",
+                  "segmentId": "m68727:entry:auto-76",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-23",
+                  "segmentId": "m68727:entry:auto-77",
                   "attributes": {
                     "align": "left"
                   }
@@ -152,19 +599,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-24",
+                  "segmentId": "m68727:entry:auto-78",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-25",
+                  "segmentId": "m68727:entry:auto-79",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-26",
+                  "segmentId": "m68727:entry:auto-80",
                   "attributes": {
                     "align": "left"
                   }
@@ -174,19 +621,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-27",
+                  "segmentId": "m68727:entry:auto-81",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-28",
+                  "segmentId": "m68727:entry:auto-82",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-29",
+                  "segmentId": "m68727:entry:auto-83",
                   "attributes": {
                     "align": "left"
                   }
@@ -196,19 +643,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-30",
+                  "segmentId": "m68727:entry:auto-84",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-31",
+                  "segmentId": "m68727:entry:auto-85",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-32",
+                  "segmentId": "m68727:entry:auto-86",
                   "attributes": {
                     "align": "left"
                   }
@@ -218,19 +665,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-33",
+                  "segmentId": "m68727:entry:auto-87",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-34",
+                  "segmentId": "m68727:entry:auto-88",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-35",
+                  "segmentId": "m68727:entry:auto-89",
                   "attributes": {
                     "align": "left"
                   }
@@ -240,19 +687,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-36",
+                  "segmentId": "m68727:entry:auto-90",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-37",
+                  "segmentId": "m68727:entry:auto-91",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-38",
+                  "segmentId": "m68727:entry:auto-92",
                   "attributes": {
                     "align": "left"
                   }
@@ -262,19 +709,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-39",
+                  "segmentId": "m68727:entry:auto-93",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-40",
+                  "segmentId": "m68727:entry:auto-94",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-41",
+                  "segmentId": "m68727:entry:auto-95",
                   "attributes": {
                     "align": "left"
                   }
@@ -284,19 +731,19 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-42",
+                  "segmentId": "m68727:entry:auto-96",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-43",
+                  "segmentId": "m68727:entry:auto-97",
                   "attributes": {
                     "align": "left"
                   }
                 },
                 {
-                  "segmentId": "m68727:entry:auto-44",
+                  "segmentId": "m68727:entry:auto-98",
                   "attributes": {
                     "align": "left"
                   }
@@ -1486,7 +1933,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-193",
+                  "segmentId": "m68727:entry:auto-247",
                   "attributes": {}
                 }
               ]
@@ -1494,7 +1941,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-194",
+                  "segmentId": "m68727:entry:auto-248",
                   "attributes": {}
                 }
               ]
@@ -2602,453 +3049,6 @@
           "solution": null
         }
       ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idp160276224",
-      "segmentId": "m68727:para:fs-idp160276224"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp5509104",
-      "segmentId": "m68727:para:fs-idp5509104"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm1690784",
-      "segmentId": "m68727:para:fs-idm1690784"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp16545808",
-      "segmentId": "m68727:para:fs-idp16545808"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm150109936",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp146392048",
-      "segmentId": "m68727:para:fs-idp146392048"
-    },
-    {
-      "type": "figure",
-      "id": "CNX_Chem_05_03_Systemqw",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68727:caption:CNX_Chem_05_03_Systemqw-caption"
-      },
-      "media": {
-        "id": "fs-idp1427264",
-        "src": "../../media/CNX_Chem_05_03_Systemqw.jpg"
-      }
-    },
-    {
-      "type": "para",
-      "id": "fs-idp6896176",
-      "segmentId": "m68727:para:fs-idp6896176"
-    },
-    {
-      "type": "note",
-      "id": "fs-idp889984",
-      "class": "chemistry link-to-learning",
-      "title": null,
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idp13166816",
-          "segmentId": "m68727:para:fs-idp13166816"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idp120420048",
-      "segmentId": "m68727:para:fs-idp120420048"
-    },
-    {
-      "type": "figure",
-      "id": "CNX_Chem_05_03_Summit",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68727:caption:CNX_Chem_05_03_Summit-caption"
-      },
-      "media": {
-        "id": "fs-idp164506448",
-        "alt": "An aerial photo depicts a view of Mount Kilimanjaro. A straight, green arrow labeled X is drawn from the term “base,” written at the bottom of the mountain, to the term “Summit,” written at the top of the mountain. Another arrow labeled Y is draw from the base to the summit alongside the green arrow, but this arrow is pink and has three large S-shaped curves along its length.",
-        "src": "../../media/CNX_Chem_05_03_Summit.jpg"
-      }
-    },
-    {
-      "type": "para",
-      "id": "fs-idp107461968",
-      "segmentId": "m68727:para:fs-idp107461968"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm231773856",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm20812336",
-      "segmentId": "m68727:para:fs-idm20812336"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm182172016",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm15694224",
-      "segmentId": "m68727:para:fs-idm15694224"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm223126448",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp7052304",
-      "segmentId": "m68727:para:fs-idp7052304"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm223599728",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp58958304",
-      "segmentId": "m68727:para:fs-idp58958304"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm50104768",
-      "segmentId": "m68727:para:fs-idm50104768"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm22504976",
-      "segmentId": "m68727:para:fs-idm22504976"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp25166224",
-      "segmentId": "m68727:para:fs-idp25166224"
-    },
-    {
-      "type": "list",
-      "id": "fs-idm49861360",
-      "listType": "bulleted",
-      "items": [
-        {
-          "id": null,
-          "segmentId": "m68727:item:fs-idm49861360-item-1"
-        },
-        {
-          "id": null,
-          "segmentId": "m68727:item:fs-idm49861360-item-2"
-        },
-        {
-          "id": null,
-          "segmentId": "m68727:item:fs-idm49861360-item-3"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm11576944",
-      "segmentId": "m68727:para:fs-idm11576944"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp165042832",
-      "segmentId": "m68727:para:fs-idp165042832"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp13211824",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm35882976",
-      "segmentId": "m68727:para:fs-idm35882976"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm23265328",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm72030880",
-      "segmentId": "m68727:para:fs-idm72030880"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp4587936",
-      "class": "unnumbered"
-    },
-    {
-      "type": "example",
-      "id": "fs-idm9240992",
-      "title": {
-        "segmentId": "m68727:example-title:fs-idm9240992-title",
-        "text": "Writing Thermochemical Equations"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idp13720784",
-          "segmentId": "m68727:para:fs-idp13720784"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp35719536",
-          "segmentId": "m68727:para:fs-idp35719536"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp149553440"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp125057232"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm13850464"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp6791056"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idp52228448",
-      "segmentId": "m68727:para:fs-idp52228448"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp149553440",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm10084896",
-      "segmentId": "m68727:para:fs-idm10084896"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp125057232",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp13720784",
-      "segmentId": "m68727:para:fs-idp13720784"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm13850464",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp6958160",
-      "segmentId": "m68727:para:fs-idp6958160"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp6791056",
-      "class": "unnumbered"
-    },
-    {
-      "type": "note",
-      "id": "fs-idp58943984",
-      "title": {
-        "segmentId": "m68727:note-title:fs-idp58943984-title",
-        "text": "Answer:"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idp35719536",
-          "segmentId": "m68727:para:fs-idp35719536"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm14305808",
-      "segmentId": "m68727:para:fs-idm14305808"
-    },
-    {
-      "type": "example",
-      "id": "fs-idp107963312",
-      "title": {
-        "segmentId": "m68727:example-title:fs-idp107963312-title",
-        "text": "Writing Thermochemical Equations"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idm378999344",
-          "segmentId": "m68727:para:fs-idm378999344"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm329792512",
-          "segmentId": "m68727:para:fs-idm329792512"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm379230752",
-          "segmentId": "m68727:para:fs-idm379230752"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm386464528",
-          "segmentId": "m68727:para:fs-idm386464528"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm379229776",
-          "segmentId": "m68727:para:fs-idm379229776"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm17649024",
-          "segmentId": "m68727:para:fs-idm17649024"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp12841552"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm372152464"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm378911456"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm352441488"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm389610336"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp90097408"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm6526496",
-      "segmentId": "m68727:para:fs-idm6526496"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp12841552",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm42247408",
-      "segmentId": "m68727:para:fs-idm42247408"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm378999344",
-      "segmentId": "m68727:para:fs-idm378999344"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm372152464",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm329792512",
-      "segmentId": "m68727:para:fs-idm329792512"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm378911456",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm379230752",
-      "segmentId": "m68727:para:fs-idm379230752"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm352441488",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm386464528",
-      "segmentId": "m68727:para:fs-idm386464528"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm389610336",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm379229776",
-      "segmentId": "m68727:para:fs-idm379229776"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp90097408",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp82549456",
-      "segmentId": "m68727:para:fs-idp82549456"
-    },
-    {
-      "type": "note",
-      "id": "fs-idp120447376",
-      "title": {
-        "segmentId": "m68727:note-title:fs-idp120447376-title",
-        "text": "Answer:"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idm17649024",
-          "segmentId": "m68727:para:fs-idm17649024"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm18196832",
-      "segmentId": "m68727:para:fs-idm18196832"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp148022240",
-      "segmentId": "m68727:para:fs-idp148022240"
     }
   ],
   "abstract": {
