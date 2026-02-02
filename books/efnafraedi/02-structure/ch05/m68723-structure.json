@@ -18,16 +18,6 @@
   },
   "content": [
     {
-      "type": "para",
-      "id": "fs-idm19082352",
-      "segmentId": "m68723:para:fs-idm19082352"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm15108400",
-      "segmentId": "m68723:para:fs-idm15108400"
-    },
-    {
       "type": "figure",
       "id": "CNX_Chem_05_00_Match",
       "class": "splash",
@@ -39,6 +29,16 @@
         "alt": "A match held in a person’s hand is ignited as it is scratched along the rough surface of a match box.",
         "src": "../../media/CNX_Chem_05_00_Match.jpg"
       }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm19082352",
+      "segmentId": "m68723:para:fs-idm19082352"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm15108400",
+      "segmentId": "m68723:para:fs-idm15108400"
     }
   ],
   "abstract": {

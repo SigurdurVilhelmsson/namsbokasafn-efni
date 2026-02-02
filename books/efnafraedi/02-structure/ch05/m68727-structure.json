@@ -34,97 +34,14 @@
           "segmentId": "m68727:para:fs-idp8281184"
         },
         {
+          "type": "equation",
+          "id": "fs-idm27865968",
+          "class": "unnumbered"
+        },
+        {
           "type": "para",
           "id": "fs-idm75327968",
           "segmentId": "m68727:para:fs-idm75327968"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp186633648",
-          "segmentId": "m68727:para:fs-idp186633648"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp177773984",
-          "segmentId": "m68727:para:fs-idp177773984"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp6149360",
-          "segmentId": "m68727:para:fs-idp6149360"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp145151008",
-          "segmentId": "m68727:para:fs-idp145151008"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp94999600",
-          "segmentId": "m68727:para:fs-idp94999600"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp49733232",
-          "segmentId": "m68727:para:fs-idp49733232"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp49734384",
-          "segmentId": "m68727:para:fs-idp49734384"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp90130976",
-          "segmentId": "m68727:para:fs-idp90130976"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp157750544",
-          "segmentId": "m68727:para:fs-idp157750544"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp93921200",
-          "segmentId": "m68727:para:fs-idp93921200"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_05_03_GasBurning",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68727:caption:CNX_Chem_05_03_GasBurning-caption"
-          },
-          "media": {
-            "id": "fs-idm3605664",
-            "alt": "A picture shows a large ball of fire burning on a road. A fire truck and fireman are shown in the foreground.",
-            "src": "../../media/CNX_Chem_05_03_GasBurning.jpg"
-          }
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_05_03_AlgalFuel1",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68727:caption:CNX_Chem_05_03_AlgalFuel1-caption"
-          },
-          "media": {
-            "id": "fs-idp157749040",
-            "alt": "Three pictures are shown and labeled a, b, and c. Picture a shows a microscopic view of algal organisms. They are brown, multipart strands and net-like structures on a background of light violet. Picture b shows five large tubs full of a brown liquid containing these algal organisms. Picture c depicts a cylinder full of green liquid in the foreground and a poster in the background that has the title “From Field to Fleet.”",
-            "src": "../../media/CNX_Chem_05_03_AlgalFuel1.jpg"
-          }
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_05_03_AlgalFuel2",
-          "caption": {
-            "segmentId": "m68727:caption:CNX_Chem_05_03_AlgalFuel2-caption"
-          },
-          "media": {
-            "id": "fs-idp167165312",
-            "alt": "A flowchart is shown that contains pictures and words. Reading from left to right, the terms “Grow,” “Harvest,” “Extract,” “Process and purify,” and “Jet fuel gasoline diesel” are shown with right-facing arrows in between each. Above each term, respectively, are diagrams of three containers, three cylinders lying side-by-side, a pyramid-like container with liquid inside, a factory, and a fuel pump. In the space above all of the diagrams and to the left of the images is a diagram of the sun.",
-            "src": "../../media/CNX_Chem_05_03_AlgalFuel2.jpg"
-          }
         },
         {
           "type": "table",
@@ -135,7 +52,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-24",
+                  "segmentId": "m68727:entry:auto-11",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
@@ -147,6 +64,100 @@
             {
               "cells": [
                 {
+                  "segmentId": "m68727:entry:auto-12",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-13",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-14",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-15",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-16",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-17",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-18",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-19",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-20",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-21",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-22",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-23",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-24",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
                   "segmentId": "m68727:entry:auto-25",
                   "attributes": {
                     "align": "left"
@@ -157,17 +168,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-27",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-27",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-28",
                   "attributes": {
@@ -179,17 +190,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-30",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-30",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-31",
                   "attributes": {
@@ -201,17 +212,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-33",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-33",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-34",
                   "attributes": {
@@ -223,17 +234,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-36",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-36",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-37",
                   "attributes": {
@@ -245,17 +256,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-39",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-39",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-40",
                   "attributes": {
@@ -267,17 +278,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-42",
-                  "attributes": {
-                    "align": "left"
-                  }
                 }
               ]
             },
             {
               "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-42",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
                 {
                   "segmentId": "m68727:entry:auto-43",
                   "attributes": {
@@ -286,100 +297,6 @@
                 },
                 {
                   "segmentId": "m68727:entry:auto-44",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-45",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68727:entry:auto-46",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-47",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-48",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68727:entry:auto-49",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-50",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-51",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68727:entry:auto-52",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-53",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-54",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68727:entry:auto-55",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-56",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-57",
                   "attributes": {
                     "align": "left"
                   }
@@ -427,6 +344,59 @@
           ]
         },
         {
+          "type": "para",
+          "id": "fs-idp186633648",
+          "segmentId": "m68727:para:fs-idp186633648"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_05_03_GasBurning",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68727:caption:CNX_Chem_05_03_GasBurning-caption"
+          },
+          "media": {
+            "id": "fs-idm3605664",
+            "alt": "A picture shows a large ball of fire burning on a road. A fire truck and fireman are shown in the foreground.",
+            "src": "../../media/CNX_Chem_05_03_GasBurning.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp177773984",
+          "segmentId": "m68727:para:fs-idp177773984"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp6149360",
+          "segmentId": "m68727:para:fs-idp6149360"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp6149744",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp145151008",
+          "segmentId": "m68727:para:fs-idp145151008"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp94999600",
+          "segmentId": "m68727:para:fs-idp94999600"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp94999984",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp49733232",
+          "segmentId": "m68727:para:fs-idp49733232"
+        },
+        {
           "type": "note",
           "id": "fs-idp49733872",
           "title": {
@@ -440,6 +410,11 @@
               "segmentId": "m68727:para:fs-idp49734384"
             }
           ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp49734384",
+          "segmentId": "m68727:para:fs-idp49734384"
         },
         {
           "type": "note",
@@ -463,6 +438,41 @@
           ]
         },
         {
+          "type": "para",
+          "id": "fs-idp90130976",
+          "segmentId": "m68727:para:fs-idp90130976"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_05_03_AlgalFuel1",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68727:caption:CNX_Chem_05_03_AlgalFuel1-caption"
+          },
+          "media": {
+            "id": "fs-idp157749040",
+            "alt": "Three pictures are shown and labeled a, b, and c. Picture a shows a microscopic view of algal organisms. They are brown, multipart strands and net-like structures on a background of light violet. Picture b shows five large tubs full of a brown liquid containing these algal organisms. Picture c depicts a cylinder full of green liquid in the foreground and a poster in the background that has the title “From Field to Fleet.”",
+            "src": "../../media/CNX_Chem_05_03_AlgalFuel1.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp157750544",
+          "segmentId": "m68727:para:fs-idp157750544"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_05_03_AlgalFuel2",
+          "caption": {
+            "segmentId": "m68727:caption:CNX_Chem_05_03_AlgalFuel2-caption"
+          },
+          "media": {
+            "id": "fs-idp167165312",
+            "alt": "A flowchart is shown that contains pictures and words. Reading from left to right, the terms “Grow,” “Harvest,” “Extract,” “Process and purify,” and “Jet fuel gasoline diesel” are shown with right-facing arrows in between each. Above each term, respectively, are diagrams of three containers, three cylinders lying side-by-side, a pyramid-like container with liquid inside, a factory, and a fuel pump. In the space above all of the diagrams and to the left of the images is a diagram of the sun.",
+            "src": "../../media/CNX_Chem_05_03_AlgalFuel2.jpg"
+          }
+        },
+        {
           "type": "note",
           "id": "fs-idp93919792",
           "class": "chemistry link-to-learning",
@@ -476,19 +486,9 @@
           ]
         },
         {
-          "type": "equation",
-          "id": "fs-idm27865968",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp6149744",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp94999984",
-          "class": "unnumbered"
+          "type": "para",
+          "id": "fs-idp93921200",
+          "segmentId": "m68727:para:fs-idp93921200"
         }
       ]
     },
@@ -512,9 +512,19 @@
           "segmentId": "m68727:para:fs-idp185900096"
         },
         {
+          "type": "equation",
+          "id": "fs-idp185901552",
+          "class": "unnumbered"
+        },
+        {
           "type": "para",
           "id": "fs-idp165684992",
           "segmentId": "m68727:para:fs-idp165684992"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp185944512",
+          "class": "unnumbered"
         },
         {
           "type": "para",
@@ -525,91 +535,6 @@
           "type": "para",
           "id": "fs-idp173432432",
           "segmentId": "m68727:para:fs-idp173432432"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp167759872",
-          "segmentId": "m68727:para:fs-idp167759872"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp166467632",
-          "segmentId": "m68727:para:fs-idp166467632"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp95008768",
-          "segmentId": "m68727:para:fs-idp95008768"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp186495680",
-          "segmentId": "m68727:para:fs-idp186495680"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp167644640",
-          "segmentId": "m68727:para:fs-idp167644640"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp167649504",
-          "segmentId": "m68727:para:fs-idp167649504"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp186597568",
-          "segmentId": "m68727:para:fs-idp186597568"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp186600640",
-          "segmentId": "m68727:para:fs-idp186600640"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp186602304",
-          "segmentId": "m68727:para:fs-idp186602304"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp186604352",
-          "segmentId": "m68727:para:fs-idp186604352"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp166486208",
-          "segmentId": "m68727:para:fs-idp166486208"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp145132528",
-          "segmentId": "m68727:para:fs-idp145132528"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp166524800",
-          "segmentId": "m68727:para:fs-idp166524800"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp166525568",
-          "segmentId": "m68727:para:fs-idp166525568"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp166526208",
-          "segmentId": "m68727:para:fs-idp166526208"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp185932768",
-          "segmentId": "m68727:para:fs-idp185932768"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp185934944",
-          "segmentId": "m68727:para:fs-idp185934944"
         },
         {
           "type": "example",
@@ -647,6 +572,66 @@
               "id": "fs-idp90148272"
             }
           ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp167759872",
+          "segmentId": "m68727:para:fs-idp167759872"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp167765152",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp166467632",
+          "segmentId": "m68727:para:fs-idp166467632"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp166474448",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp95008768",
+          "segmentId": "m68727:para:fs-idp95008768"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp90148272",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp186495680",
+          "segmentId": "m68727:para:fs-idp186495680"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp167644640",
+          "segmentId": "m68727:para:fs-idp167644640"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp167648992",
+          "title": {
+            "segmentId": "m68727:note-title:fs-idp167648992-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp167649504",
+              "segmentId": "m68727:para:fs-idp167649504"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp167649504",
+          "segmentId": "m68727:para:fs-idp167649504"
         },
         {
           "type": "example",
@@ -699,19 +684,54 @@
           ]
         },
         {
-          "type": "note",
-          "id": "fs-idp167648992",
-          "title": {
-            "segmentId": "m68727:note-title:fs-idp167648992-title",
-            "text": "Answer:"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idp167649504",
-              "segmentId": "m68727:para:fs-idp167649504"
-            }
-          ]
+          "type": "para",
+          "id": "fs-idp186597568",
+          "segmentId": "m68727:para:fs-idp186597568"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp186600640",
+          "segmentId": "m68727:para:fs-idp186600640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp186602304",
+          "segmentId": "m68727:para:fs-idp186602304"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp186604352",
+          "segmentId": "m68727:para:fs-idp186604352"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp166486208",
+          "segmentId": "m68727:para:fs-idp166486208"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp145132528",
+          "segmentId": "m68727:para:fs-idp145132528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp166524800",
+          "segmentId": "m68727:para:fs-idp166524800"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp166525568",
+          "segmentId": "m68727:para:fs-idp166525568"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp166526208",
+          "segmentId": "m68727:para:fs-idp166526208"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp185932768",
+          "segmentId": "m68727:para:fs-idp185932768"
         },
         {
           "type": "note",
@@ -729,29 +749,9 @@
           ]
         },
         {
-          "type": "equation",
-          "id": "fs-idp185901552",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp185944512",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp167765152",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp166474448",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp90148272",
-          "class": "unnumbered"
+          "type": "para",
+          "id": "fs-idp185934944",
+          "segmentId": "m68727:para:fs-idp185934944"
         }
       ]
     },
@@ -775,9 +775,19 @@
           "segmentId": "m68727:para:fs-idp177508528"
         },
         {
+          "type": "equation",
+          "id": "fs-idp177510624",
+          "class": "unnumbered"
+        },
+        {
           "type": "para",
           "id": "fs-idp51924752",
           "segmentId": "m68727:para:fs-idp51924752"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp51925136",
+          "class": "unnumbered"
         },
         {
           "type": "para",
@@ -785,9 +795,19 @@
           "segmentId": "m68727:para:fs-idp161438416"
         },
         {
+          "type": "equation",
+          "id": "fs-idp161438800",
+          "class": "unnumbered"
+        },
+        {
           "type": "para",
           "id": "fs-idp186572000",
           "segmentId": "m68727:para:fs-idp186572000"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp186572384",
+          "class": "unnumbered"
         },
         {
           "type": "para",
@@ -795,234 +815,24 @@
           "segmentId": "m68727:para:fs-idp40118928"
         },
         {
+          "type": "equation",
+          "id": "fs-idp40119312",
+          "class": "unnumbered"
+        },
+        {
           "type": "para",
           "id": "fs-idp128370320",
           "segmentId": "m68727:para:fs-idp128370320"
         },
         {
+          "type": "equation",
+          "id": "fs-idp128371600",
+          "class": "unnumbered"
+        },
+        {
           "type": "para",
           "id": "fs-idp10365136",
           "segmentId": "m68727:para:fs-idp10365136"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp167197264",
-          "segmentId": "m68727:para:fs-idp167197264"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp167199328",
-          "segmentId": "m68727:para:fs-idp167199328"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp160715680",
-          "segmentId": "m68727:para:fs-idp160715680"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146331072",
-          "segmentId": "m68727:para:fs-idp146331072"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146331744",
-          "segmentId": "m68727:para:fs-idp146331744"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146344672",
-          "segmentId": "m68727:para:fs-idp146344672"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp185549072",
-          "segmentId": "m68727:para:fs-idp185549072"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp190748768",
-          "segmentId": "m68727:para:fs-idp190748768"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp190763840",
-          "segmentId": "m68727:para:fs-idp190763840"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149506592",
-          "segmentId": "m68727:para:fs-idp149506592"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149511040",
-          "segmentId": "m68727:para:fs-idp149511040"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp164462848",
-          "segmentId": "m68727:para:fs-idp164462848"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146899120",
-          "segmentId": "m68727:para:fs-idp146899120"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146899760",
-          "segmentId": "m68727:para:fs-idp146899760"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146901456",
-          "segmentId": "m68727:para:fs-idp146901456"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146902208",
-          "segmentId": "m68727:para:fs-idp146902208"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146912304",
-          "segmentId": "m68727:para:fs-idp146912304"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146913936",
-          "segmentId": "m68727:para:fs-idp146913936"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp107305424",
-          "segmentId": "m68727:para:fs-idp107305424"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp107323264",
-          "segmentId": "m68727:para:fs-idp107323264"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp167247104",
-          "segmentId": "m68727:para:fs-idp167247104"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp160398800",
-          "segmentId": "m68727:para:fs-idp160398800"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp134606352",
-          "segmentId": "m68727:para:fs-idp134606352"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp134626368",
-          "segmentId": "m68727:para:fs-idp134626368"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp154356656",
-          "segmentId": "m68727:para:fs-idp154356656"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp154380128",
-          "segmentId": "m68727:para:fs-idp154380128"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp154380768",
-          "segmentId": "m68727:para:fs-idp154380768"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp154392528",
-          "segmentId": "m68727:para:fs-idp154392528"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp154394160",
-          "segmentId": "m68727:para:fs-idp154394160"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp154404880",
-          "segmentId": "m68727:para:fs-idp154404880"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp174989824",
-          "segmentId": "m68727:para:fs-idp174989824"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp175003104",
-          "segmentId": "m68727:para:fs-idp175003104"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp120712864",
-          "segmentId": "m68727:para:fs-idp120712864"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp120713504",
-          "segmentId": "m68727:para:fs-idp120713504"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp120729664",
-          "segmentId": "m68727:para:fs-idp120729664"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp134549264",
-          "segmentId": "m68727:para:fs-idp134549264"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146127120",
-          "segmentId": "m68727:para:fs-idp146127120"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp134564208",
-          "segmentId": "m68727:para:fs-idp134564208"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp155650064",
-          "segmentId": "m68727:para:fs-idp155650064"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp155662480",
-          "segmentId": "m68727:para:fs-idp155662480"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146119648",
-          "segmentId": "m68727:para:fs-idp146119648"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146120784",
-          "segmentId": "m68727:para:fs-idp146120784"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165556368",
-          "segmentId": "m68727:para:fs-idp165556368"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165564336",
-          "segmentId": "m68727:para:fs-idp165564336"
         },
         {
           "type": "figure",
@@ -1035,6 +845,71 @@
             "alt": "A diagram is shown. A long arrow faces upward on the left with the phrase “H increasing.” A horizontal line at the bottom of the diagram is shown with the formula “C O subscript 2 (g)” below it. A horizontal line at the top of the diagram has the formulas “C (s) + O subscript 2 (g)” above it. The top and bottom lines are connected by a downward facing arrow with the value “Δ H = –394 k J” written beside it. Below and to the right of the top horizontal line is a second horizontal line with the equations “C O (g) + one half O subscript 2 (g)” above it. This line and the bottom line are connected by a downward facing arrow with the value “Δ H = –283 k J” written beside it. The same line and the top line are connected by a downward facing arrow with the value “Δ H = –111 k J” written beside it. There are three brackets to the right of the diagram. The first bracket runs from the top horizontal line to the second horizontal line. It is labeled, “Enthalpy of reactants.” The second bracket runs from the second horizontal line to the bottom horizontal line. It is labeled, “Enthalpy of products.” Both of these brackets are included in the third bracket which runs from the top to the bottom of the diagram. It is labeled, “Enthalpy change of exothermic reaction in 1 or 2 steps.”",
             "src": "../../media/CNX_Chem_05_03_HessCO2.jpg"
           }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp167197264",
+          "segmentId": "m68727:para:fs-idp167197264"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp167198464",
+          "listType": "bulleted",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68727:item:fs-idp167198464-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68727:item:fs-idp167198464-item-2"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp167199328",
+          "segmentId": "m68727:para:fs-idp167199328"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp167201504",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp160715680",
+          "segmentId": "m68727:para:fs-idp160715680"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp160717072",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146331072",
+          "segmentId": "m68727:para:fs-idp146331072"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146331744",
+          "segmentId": "m68727:para:fs-idp146331744"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp146333552",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146344672",
+          "segmentId": "m68727:para:fs-idp146344672"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp146345216",
+          "class": "unnumbered"
         },
         {
           "type": "example",
@@ -1093,6 +968,96 @@
               "id": "fs-idp164473712"
             }
           ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp185549072",
+          "segmentId": "m68727:para:fs-idp185549072"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp103964560",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp103976192",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp190748768",
+          "segmentId": "m68727:para:fs-idp190748768"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp190751040",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp190763840",
+          "segmentId": "m68727:para:fs-idp190763840"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp133790064",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149506592",
+          "segmentId": "m68727:para:fs-idp149506592"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149511040",
+          "segmentId": "m68727:para:fs-idp149511040"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp149512304",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp164462848",
+          "segmentId": "m68727:para:fs-idp164462848"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp164463232",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp164473712",
+          "class": "unnumbered"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp146898608",
+          "title": {
+            "segmentId": "m68727:note-title:fs-idp146898608-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp146899120",
+              "segmentId": "m68727:para:fs-idp146899120"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146899120",
+          "segmentId": "m68727:para:fs-idp146899120"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146899760",
+          "segmentId": "m68727:para:fs-idp146899760"
         },
         {
           "type": "example",
@@ -1205,6 +1170,156 @@
           ]
         },
         {
+          "type": "para",
+          "id": "fs-idp146901456",
+          "segmentId": "m68727:para:fs-idp146901456"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146902208",
+          "segmentId": "m68727:para:fs-idp146902208"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146912304",
+          "segmentId": "m68727:para:fs-idp146912304"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146913936",
+          "segmentId": "m68727:para:fs-idp146913936"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp107305424",
+          "segmentId": "m68727:para:fs-idp107305424"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp107323264",
+          "segmentId": "m68727:para:fs-idp107323264"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp167247104",
+          "segmentId": "m68727:para:fs-idp167247104"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp167256800",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp160398800",
+          "segmentId": "m68727:para:fs-idp160398800"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp160400816",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp134606352",
+          "segmentId": "m68727:para:fs-idp134606352"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp134608368",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp134626368",
+          "segmentId": "m68727:para:fs-idp134626368"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp134626752",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp154356656",
+          "segmentId": "m68727:para:fs-idp154356656"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm259960768",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp154380128",
+          "segmentId": "m68727:para:fs-idp154380128"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp154380768",
+          "segmentId": "m68727:para:fs-idp154380768"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp154392528",
+          "segmentId": "m68727:para:fs-idp154392528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp154394160",
+          "segmentId": "m68727:para:fs-idp154394160"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp154404880",
+          "segmentId": "m68727:para:fs-idp154404880"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp174989824",
+          "segmentId": "m68727:para:fs-idp174989824"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp175003104",
+          "segmentId": "m68727:para:fs-idp175003104"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp120712352",
+          "title": {
+            "segmentId": "m68727:note-title:fs-idp120712352-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp120712864",
+              "segmentId": "m68727:para:fs-idp120712864"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp120712864",
+          "segmentId": "m68727:para:fs-idp120712864"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp120713504",
+          "segmentId": "m68727:para:fs-idp120713504"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp120716832",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp120729664",
+          "segmentId": "m68727:para:fs-idp120729664"
+        },
+        {
           "type": "example",
           "id": "fs-idp120730208",
           "title": {
@@ -1276,169 +1391,19 @@
           ]
         },
         {
-          "type": "note",
-          "id": "fs-idp146898608",
-          "title": {
-            "segmentId": "m68727:note-title:fs-idp146898608-title",
-            "text": "Answer:"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idp146899120",
-              "segmentId": "m68727:para:fs-idp146899120"
-            }
-          ]
-        },
-        {
-          "type": "note",
-          "id": "fs-idp120712352",
-          "title": {
-            "segmentId": "m68727:note-title:fs-idp120712352-title",
-            "text": "Answer:"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idp120712864",
-              "segmentId": "m68727:para:fs-idp120712864"
-            }
-          ]
-        },
-        {
-          "type": "note",
-          "id": "fs-idp165563824",
-          "title": {
-            "segmentId": "m68727:note-title:fs-idp165563824-title",
-            "text": "Answer:"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idp165564336",
-              "segmentId": "m68727:para:fs-idp165564336"
-            }
-          ]
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp177510624",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp51925136",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp161438800",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp186572384",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp40119312",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp128371600",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp167201504",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp160717072",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp146333552",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp146345216",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp103964560",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp103976192",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp190751040",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp133790064",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp149512304",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp164463232",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp164473712",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp167256800",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp160400816",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp134608368",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp134626752",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm259960768",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp120716832",
-          "class": "unnumbered"
+          "type": "para",
+          "id": "fs-idp134549264",
+          "segmentId": "m68727:para:fs-idp134549264"
         },
         {
           "type": "equation",
           "id": "fs-idp134549904",
           "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146127120",
+          "segmentId": "m68727:para:fs-idp146127120"
         },
         {
           "type": "equation",
@@ -1449,6 +1414,11 @@
           "type": "equation",
           "id": "fs-idp146140160",
           "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp134564208",
+          "segmentId": "m68727:para:fs-idp134564208"
         },
         {
           "type": "equation",
@@ -1471,9 +1441,19 @@
           "class": "unnumbered"
         },
         {
+          "type": "para",
+          "id": "fs-idp155650064",
+          "segmentId": "m68727:para:fs-idp155650064"
+        },
+        {
           "type": "equation",
           "id": "fs-idp155650448",
           "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp155662480",
+          "segmentId": "m68727:para:fs-idp155662480"
         },
         {
           "type": "equation",
@@ -1481,19 +1461,39 @@
           "class": "unnumbered"
         },
         {
-          "type": "list",
-          "id": "fs-idp167198464",
-          "listType": "bulleted",
-          "items": [
+          "type": "para",
+          "id": "fs-idp146119648",
+          "segmentId": "m68727:para:fs-idp146119648"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146120784",
+          "segmentId": "m68727:para:fs-idp146120784"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165556368",
+          "segmentId": "m68727:para:fs-idp165556368"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp165563824",
+          "title": {
+            "segmentId": "m68727:note-title:fs-idp165563824-title",
+            "text": "Answer:"
+          },
+          "content": [
             {
-              "id": null,
-              "segmentId": "m68727:item:fs-idp167198464-item-1"
-            },
-            {
-              "id": null,
-              "segmentId": "m68727:item:fs-idp167198464-item-2"
+              "type": "para",
+              "id": "fs-idp165564336",
+              "segmentId": "m68727:para:fs-idp165564336"
             }
           ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165564336",
+          "segmentId": "m68727:para:fs-idp165564336"
         }
       ]
     },
@@ -1558,591 +1558,6 @@
       },
       "content": [
         {
-          "type": "para",
-          "id": "fs-idp167492528",
-          "segmentId": "m68727:para:fs-idp167492528"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp167503872",
-          "segmentId": "m68727:para:fs-idp167503872"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm121017200",
-          "segmentId": "m68727:para:fs-idm121017200"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp146868384",
-          "segmentId": "m68727:para:fs-idp146868384"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp140720784",
-          "segmentId": "m68727:para:fs-idp140720784"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp140737280",
-          "segmentId": "m68727:para:fs-idp140737280"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp107667792",
-          "segmentId": "m68727:para:fs-idp107667792"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp107669568",
-          "segmentId": "m68727:para:fs-idp107669568"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp103276592",
-          "segmentId": "m68727:para:fs-idp103276592"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp103281472",
-          "segmentId": "m68727:para:fs-idp103281472"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp103282352",
-          "segmentId": "m68727:para:fs-idp103282352"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp103290928",
-          "segmentId": "m68727:para:fs-idp103290928"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp169454496",
-          "segmentId": "m68727:para:fs-idp169454496"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm219837376",
-          "segmentId": "m68727:para:fs-idm219837376"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp169467952",
-          "segmentId": "m68727:para:fs-idp169467952"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp155902864",
-          "segmentId": "m68727:para:fs-idp155902864"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp155903792",
-          "segmentId": "m68727:para:fs-idp155903792"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp155925136",
-          "segmentId": "m68727:para:fs-idp155925136"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm11092064",
-          "segmentId": "m68727:para:fs-idm11092064"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp166202064",
-          "segmentId": "m68727:para:fs-idp166202064"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp166203504",
-          "segmentId": "m68727:para:fs-idp166203504"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp25402576",
-          "segmentId": "m68727:para:fs-idp25402576"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp25404288",
-          "segmentId": "m68727:para:fs-idp25404288"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp140767408",
-          "segmentId": "m68727:para:fs-idp140767408"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp140768496",
-          "segmentId": "m68727:para:fs-idp140768496"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp104125104",
-          "segmentId": "m68727:para:fs-idp104125104"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165422368",
-          "segmentId": "m68727:para:fs-idp165422368"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165434480",
-          "segmentId": "m68727:para:fs-idp165434480"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165438096",
-          "segmentId": "m68727:para:fs-idp165438096"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp161282880",
-          "segmentId": "m68727:para:fs-idp161282880"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp161285152",
-          "segmentId": "m68727:para:fs-idp161285152"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp161292160",
-          "segmentId": "m68727:para:fs-idp161292160"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp184316624",
-          "segmentId": "m68727:para:fs-idp184316624"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm165324304",
-          "segmentId": "m68727:para:fs-idm165324304"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp145934880",
-          "segmentId": "m68727:para:fs-idp145934880"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp154783040",
-          "segmentId": "m68727:para:fs-idp154783040"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp1114976",
-          "segmentId": "m68727:para:fs-idp1114976"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm24454080",
-          "segmentId": "m68727:para:fs-idm24454080"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp161090880",
-          "segmentId": "m68727:para:fs-idp161090880"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp157704496",
-          "segmentId": "m68727:para:fs-idp157704496"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp157715136",
-          "segmentId": "m68727:para:fs-idp157715136"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm22161072",
-          "segmentId": "m68727:para:fs-idm22161072"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp155266144",
-          "segmentId": "m68727:para:fs-idp155266144"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm114989872",
-          "segmentId": "m68727:para:fs-idm114989872"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp198391216",
-          "segmentId": "m68727:para:fs-idp198391216"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp173455168",
-          "segmentId": "m68727:para:fs-idp173455168"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm116484704",
-          "segmentId": "m68727:para:fs-idm116484704"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp128497888",
-          "segmentId": "m68727:para:fs-idp128497888"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm141516000",
-          "segmentId": "m68727:para:fs-idm141516000"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149326576",
-          "segmentId": "m68727:para:fs-idp149326576"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp204534736",
-          "segmentId": "m68727:para:fs-idp204534736"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm80871856",
-          "segmentId": "m68727:para:fs-idm80871856"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp28900272",
-          "segmentId": "m68727:para:fs-idp28900272"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp164763184",
-          "segmentId": "m68727:para:fs-idp164763184"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149473088",
-          "segmentId": "m68727:para:fs-idp149473088"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149474336",
-          "segmentId": "m68727:para:fs-idp149474336"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149482400",
-          "segmentId": "m68727:para:fs-idp149482400"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp8022960",
-          "segmentId": "m68727:para:fs-idp8022960"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp8034992",
-          "segmentId": "m68727:para:fs-idp8034992"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp126941376",
-          "segmentId": "m68727:para:fs-idp126941376"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp126942624",
-          "segmentId": "m68727:para:fs-idp126942624"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp126951072",
-          "segmentId": "m68727:para:fs-idp126951072"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp104058128",
-          "segmentId": "m68727:para:fs-idp104058128"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp104069008",
-          "segmentId": "m68727:para:fs-idp104069008"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp104083728",
-          "segmentId": "m68727:para:fs-idp104083728"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp161657296",
-          "segmentId": "m68727:para:fs-idp161657296"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp161657840",
-          "segmentId": "m68727:para:fs-idp161657840"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp161666800",
-          "segmentId": "m68727:para:fs-idp161666800"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp161675760",
-          "segmentId": "m68727:para:fs-idp161675760"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp161688688",
-          "segmentId": "m68727:para:fs-idp161688688"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp184431072",
-          "segmentId": "m68727:para:fs-idp184431072"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm226656768",
-          "segmentId": "m68727:para:fs-idm226656768"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp173501136",
-          "segmentId": "m68727:para:fs-idp173501136"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp86138256",
-          "segmentId": "m68727:para:fs-idp86138256"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm42198768",
-          "segmentId": "m68727:para:fs-idm42198768"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp214812704",
-          "segmentId": "m68727:para:fs-idp214812704"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp214849712",
-          "segmentId": "m68727:para:fs-idp214849712"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp145354032",
-          "segmentId": "m68727:para:fs-idp145354032"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm56034272",
-          "segmentId": "m68727:para:fs-idm56034272"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp195101632",
-          "segmentId": "m68727:para:fs-idp195101632"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp195112128",
-          "segmentId": "m68727:para:fs-idp195112128"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp195115456",
-          "segmentId": "m68727:para:fs-idp195115456"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp160835168",
-          "segmentId": "m68727:para:fs-idp160835168"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp160838496",
-          "segmentId": "m68727:para:fs-idp160838496"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp160736192",
-          "segmentId": "m68727:para:fs-idp160736192"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp160756880",
-          "segmentId": "m68727:para:fs-idp160756880"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp43583712",
-          "segmentId": "m68727:para:fs-idp43583712"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp208963664",
-          "segmentId": "m68727:para:fs-idp208963664"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp208968992",
-          "segmentId": "m68727:para:fs-idp208968992"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp208987968",
-          "segmentId": "m68727:para:fs-idp208987968"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp208989120",
-          "segmentId": "m68727:para:fs-idp208989120"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp208992384",
-          "segmentId": "m68727:para:fs-idp208992384"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp208992896",
-          "segmentId": "m68727:para:fs-idp208992896"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp181957776",
-          "segmentId": "m68727:para:fs-idp181957776"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp7380800",
-          "segmentId": "m68727:para:fs-idp7380800"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp124892192",
-          "segmentId": "m68727:para:fs-idp124892192"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp124902464",
-          "segmentId": "m68727:para:fs-idp124902464"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp124915056",
-          "segmentId": "m68727:para:fs-idp124915056"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm135203232",
-          "segmentId": "m68727:para:fs-idm135203232"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149398400",
-          "segmentId": "m68727:para:fs-idp149398400"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149417584",
-          "segmentId": "m68727:para:fs-idp149417584"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149418112",
-          "segmentId": "m68727:para:fs-idp149418112"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp149418496",
-          "segmentId": "m68727:para:fs-idp149418496"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp211818080",
-          "segmentId": "m68727:para:fs-idp211818080"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp211819232",
-          "segmentId": "m68727:para:fs-idp211819232"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp211819616",
-          "segmentId": "m68727:para:fs-idp211819616"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp211821472",
-          "segmentId": "m68727:para:fs-idp211821472"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp211832480",
-          "segmentId": "m68727:para:fs-idp211832480"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp211833440",
-          "segmentId": "m68727:para:fs-idp211833440"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165246960",
-          "segmentId": "m68727:para:fs-idp165246960"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165247664",
-          "segmentId": "m68727:para:fs-idp165247664"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165248432",
-          "segmentId": "m68727:para:fs-idp165248432"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165251760",
-          "segmentId": "m68727:para:fs-idp165251760"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165252256",
-          "segmentId": "m68727:para:fs-idp165252256"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165252640",
-          "segmentId": "m68727:para:fs-idp165252640"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165253248",
-          "segmentId": "m68727:para:fs-idp165253248"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp165259776",
-          "segmentId": "m68727:para:fs-idp165259776"
-        },
-        {
           "type": "exercise",
           "id": "fs-idp167492016",
           "problem": {
@@ -2165,6 +1580,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp167492528",
+          "segmentId": "m68727:para:fs-idp167492528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp167503872",
+          "segmentId": "m68727:para:fs-idp167503872"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp167504688",
           "problem": {
@@ -2177,6 +1602,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idm121017200",
+          "segmentId": "m68727:para:fs-idm121017200"
         },
         {
           "type": "exercise",
@@ -2201,6 +1631,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp146868384",
+          "segmentId": "m68727:para:fs-idp146868384"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp140720784",
+          "segmentId": "m68727:para:fs-idp140720784"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp140736768",
           "problem": {
@@ -2213,6 +1653,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp140737280",
+          "segmentId": "m68727:para:fs-idp140737280"
         },
         {
           "type": "exercise",
@@ -2237,6 +1682,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp107667792",
+          "segmentId": "m68727:para:fs-idp107667792"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp107669568",
+          "segmentId": "m68727:para:fs-idp107669568"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp103276080",
           "problem": {
@@ -2249,6 +1704,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp103276592",
+          "segmentId": "m68727:para:fs-idp103276592"
         },
         {
           "type": "exercise",
@@ -2273,6 +1733,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp103281472",
+          "segmentId": "m68727:para:fs-idp103281472"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp103282352",
+          "segmentId": "m68727:para:fs-idp103282352"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp103290416",
           "problem": {
@@ -2285,6 +1755,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp103290928",
+          "segmentId": "m68727:para:fs-idp103290928"
         },
         {
           "type": "exercise",
@@ -2309,6 +1784,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp169454496",
+          "segmentId": "m68727:para:fs-idp169454496"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm219837376",
+          "segmentId": "m68727:para:fs-idm219837376"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp169467440",
           "problem": {
@@ -2321,6 +1806,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp169467952",
+          "segmentId": "m68727:para:fs-idp169467952"
         },
         {
           "type": "exercise",
@@ -2345,6 +1835,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp155902864",
+          "segmentId": "m68727:para:fs-idp155902864"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp155903792",
+          "segmentId": "m68727:para:fs-idp155903792"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp155924624",
           "problem": {
@@ -2362,6 +1862,16 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp155925136",
+          "segmentId": "m68727:para:fs-idp155925136"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm11092064",
+          "segmentId": "m68727:para:fs-idm11092064"
         },
         {
           "type": "exercise",
@@ -2386,6 +1896,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp166202064",
+          "segmentId": "m68727:para:fs-idp166202064"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp166203504",
+          "segmentId": "m68727:para:fs-idp166203504"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp25402064",
           "problem": {
@@ -2403,6 +1923,16 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp25402576",
+          "segmentId": "m68727:para:fs-idp25402576"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp25404288",
+          "segmentId": "m68727:para:fs-idp25404288"
         },
         {
           "type": "exercise",
@@ -2427,6 +1957,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp140767408",
+          "segmentId": "m68727:para:fs-idp140767408"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp140768496",
+          "segmentId": "m68727:para:fs-idp140768496"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp104124592",
           "problem": {
@@ -2439,6 +1979,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp104125104",
+          "segmentId": "m68727:para:fs-idp104125104"
         },
         {
           "type": "exercise",
@@ -2463,6 +2008,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp165422368",
+          "segmentId": "m68727:para:fs-idp165422368"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165434480",
+          "segmentId": "m68727:para:fs-idp165434480"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp165437584",
           "problem": {
@@ -2475,6 +2030,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165438096",
+          "segmentId": "m68727:para:fs-idp165438096"
         },
         {
           "type": "exercise",
@@ -2499,6 +2059,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp161282880",
+          "segmentId": "m68727:para:fs-idp161282880"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp161285152",
+          "segmentId": "m68727:para:fs-idp161285152"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp161291648",
           "problem": {
@@ -2511,6 +2081,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp161292160",
+          "segmentId": "m68727:para:fs-idp161292160"
         },
         {
           "type": "exercise",
@@ -2540,6 +2115,21 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp184316624",
+          "segmentId": "m68727:para:fs-idp184316624"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm165324304",
+          "segmentId": "m68727:para:fs-idm165324304"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp145934880",
+          "segmentId": "m68727:para:fs-idp145934880"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp154782528",
           "problem": {
@@ -2564,6 +2154,21 @@
           "solution": null
         },
         {
+          "type": "para",
+          "id": "fs-idp154783040",
+          "segmentId": "m68727:para:fs-idp154783040"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp1114976",
+          "segmentId": "m68727:para:fs-idp1114976"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm24454080",
+          "segmentId": "m68727:para:fs-idm24454080"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp161090368",
           "problem": {
@@ -2586,6 +2191,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp161090880",
+          "segmentId": "m68727:para:fs-idp161090880"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp157704496",
+          "segmentId": "m68727:para:fs-idp157704496"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp157714624",
           "problem": {
@@ -2603,6 +2218,16 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp157715136",
+          "segmentId": "m68727:para:fs-idp157715136"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm22161072",
+          "segmentId": "m68727:para:fs-idm22161072"
         },
         {
           "type": "exercise",
@@ -2632,6 +2257,21 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp155266144",
+          "segmentId": "m68727:para:fs-idp155266144"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm114989872",
+          "segmentId": "m68727:para:fs-idm114989872"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp198391216",
+          "segmentId": "m68727:para:fs-idp198391216"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp173454656",
           "problem": {
@@ -2649,6 +2289,16 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp173455168",
+          "segmentId": "m68727:para:fs-idp173455168"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm116484704",
+          "segmentId": "m68727:para:fs-idm116484704"
         },
         {
           "type": "exercise",
@@ -2678,6 +2328,21 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp128497888",
+          "segmentId": "m68727:para:fs-idp128497888"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm141516000",
+          "segmentId": "m68727:para:fs-idm141516000"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149326576",
+          "segmentId": "m68727:para:fs-idp149326576"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp204534224",
           "problem": {
@@ -2695,6 +2360,16 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp204534736",
+          "segmentId": "m68727:para:fs-idp204534736"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm80871856",
+          "segmentId": "m68727:para:fs-idm80871856"
         },
         {
           "type": "exercise",
@@ -2717,6 +2392,16 @@
               }
             ]
           }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp28900272",
+          "segmentId": "m68727:para:fs-idp28900272"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp164763184",
+          "segmentId": "m68727:para:fs-idp164763184"
         },
         {
           "type": "exercise",
@@ -2751,6 +2436,31 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149473088",
+          "segmentId": "m68727:para:fs-idp149473088"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149474336",
+          "segmentId": "m68727:para:fs-idp149474336"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149482400",
+          "segmentId": "m68727:para:fs-idp149482400"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8022960",
+          "segmentId": "m68727:para:fs-idp8022960"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8034992",
+          "segmentId": "m68727:para:fs-idp8034992"
         },
         {
           "type": "exercise",
@@ -2795,6 +2505,36 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp126941376",
+          "segmentId": "m68727:para:fs-idp126941376"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp126942624",
+          "segmentId": "m68727:para:fs-idp126942624"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp126951072",
+          "segmentId": "m68727:para:fs-idp126951072"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp104058128",
+          "segmentId": "m68727:para:fs-idp104058128"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp104069008",
+          "segmentId": "m68727:para:fs-idp104069008"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp104083728",
+          "segmentId": "m68727:para:fs-idp104083728"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp161656784",
           "problem": {
@@ -2829,6 +2569,31 @@
           "solution": null
         },
         {
+          "type": "para",
+          "id": "fs-idp161657296",
+          "segmentId": "m68727:para:fs-idp161657296"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp161657840",
+          "segmentId": "m68727:para:fs-idp161657840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp161666800",
+          "segmentId": "m68727:para:fs-idp161666800"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp161675760",
+          "segmentId": "m68727:para:fs-idp161675760"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp161688688",
+          "segmentId": "m68727:para:fs-idp161688688"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp184430560",
           "problem": {
@@ -2851,6 +2616,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp184431072",
+          "segmentId": "m68727:para:fs-idp184431072"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm226656768",
+          "segmentId": "m68727:para:fs-idm226656768"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp173500624",
           "problem": {
@@ -2863,6 +2638,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp173501136",
+          "segmentId": "m68727:para:fs-idp173501136"
         },
         {
           "type": "exercise",
@@ -2887,6 +2667,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp86138256",
+          "segmentId": "m68727:para:fs-idp86138256"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm42198768",
+          "segmentId": "m68727:para:fs-idm42198768"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp214812192",
           "problem": {
@@ -2899,6 +2689,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp214812704",
+          "segmentId": "m68727:para:fs-idp214812704"
         },
         {
           "type": "exercise",
@@ -2926,6 +2721,21 @@
               }
             ]
           }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp214849712",
+          "segmentId": "m68727:para:fs-idp214849712"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp145354032",
+          "segmentId": "m68727:para:fs-idp145354032"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm56034272",
+          "segmentId": "m68727:para:fs-idm56034272"
         },
         {
           "type": "exercise",
@@ -2962,6 +2772,31 @@
           "solution": null
         },
         {
+          "type": "para",
+          "id": "fs-idp195101632",
+          "segmentId": "m68727:para:fs-idp195101632"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp195112128",
+          "segmentId": "m68727:para:fs-idp195112128"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp195115456",
+          "segmentId": "m68727:para:fs-idp195115456"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp160835168",
+          "segmentId": "m68727:para:fs-idp160835168"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp160838496",
+          "segmentId": "m68727:para:fs-idp160838496"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp160735680",
           "problem": {
@@ -2984,6 +2819,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp160736192",
+          "segmentId": "m68727:para:fs-idp160736192"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp160756880",
+          "segmentId": "m68727:para:fs-idp160756880"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp43583200",
           "problem": {
@@ -2996,6 +2841,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp43583712",
+          "segmentId": "m68727:para:fs-idp43583712"
         },
         {
           "type": "exercise",
@@ -3018,6 +2868,16 @@
               }
             ]
           }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp208963664",
+          "segmentId": "m68727:para:fs-idp208963664"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp208968992",
+          "segmentId": "m68727:para:fs-idp208968992"
         },
         {
           "type": "exercise",
@@ -3049,6 +2909,26 @@
           "solution": null
         },
         {
+          "type": "para",
+          "id": "fs-idp208987968",
+          "segmentId": "m68727:para:fs-idp208987968"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp208989120",
+          "segmentId": "m68727:para:fs-idp208989120"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp208992384",
+          "segmentId": "m68727:para:fs-idp208992384"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp208992896",
+          "segmentId": "m68727:para:fs-idp208992896"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp181957264",
           "problem": {
@@ -3071,6 +2951,16 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp181957776",
+          "segmentId": "m68727:para:fs-idp181957776"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp7380800",
+          "segmentId": "m68727:para:fs-idp7380800"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp124891680",
           "problem": {
@@ -3083,6 +2973,11 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp124892192",
+          "segmentId": "m68727:para:fs-idp124892192"
         },
         {
           "type": "exercise",
@@ -3112,6 +3007,21 @@
           }
         },
         {
+          "type": "para",
+          "id": "fs-idp124902464",
+          "segmentId": "m68727:para:fs-idp124902464"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp124915056",
+          "segmentId": "m68727:para:fs-idp124915056"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm135203232",
+          "segmentId": "m68727:para:fs-idm135203232"
+        },
+        {
           "type": "exercise",
           "id": "fs-idp149397888",
           "problem": {
@@ -3139,6 +3049,26 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149398400",
+          "segmentId": "m68727:para:fs-idp149398400"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149417584",
+          "segmentId": "m68727:para:fs-idp149417584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149418112",
+          "segmentId": "m68727:para:fs-idp149418112"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp149418496",
+          "segmentId": "m68727:para:fs-idp149418496"
         },
         {
           "type": "exercise",
@@ -3181,6 +3111,36 @@
               }
             ]
           }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp211818080",
+          "segmentId": "m68727:para:fs-idp211818080"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp211819232",
+          "segmentId": "m68727:para:fs-idp211819232"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp211819616",
+          "segmentId": "m68727:para:fs-idp211819616"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp211821472",
+          "segmentId": "m68727:para:fs-idp211821472"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp211832480",
+          "segmentId": "m68727:para:fs-idp211832480"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp211833440",
+          "segmentId": "m68727:para:fs-idp211833440"
         },
         {
           "type": "exercise",
@@ -3230,6 +3190,46 @@
             ]
           },
           "solution": null
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165246960",
+          "segmentId": "m68727:para:fs-idp165246960"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165247664",
+          "segmentId": "m68727:para:fs-idp165247664"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165248432",
+          "segmentId": "m68727:para:fs-idp165248432"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165251760",
+          "segmentId": "m68727:para:fs-idp165251760"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165252256",
+          "segmentId": "m68727:para:fs-idp165252256"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165252640",
+          "segmentId": "m68727:para:fs-idp165252640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165253248",
+          "segmentId": "m68727:para:fs-idp165253248"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp165259776",
+          "segmentId": "m68727:para:fs-idp165259776"
         }
       ]
     },
@@ -3254,14 +3254,44 @@
       "segmentId": "m68727:para:fs-idp16545808"
     },
     {
+      "type": "equation",
+      "id": "fs-idm150109936",
+      "class": "unnumbered"
+    },
+    {
       "type": "para",
       "id": "fs-idp146392048",
       "segmentId": "m68727:para:fs-idp146392048"
     },
     {
+      "type": "figure",
+      "id": "CNX_Chem_05_03_Systemqw",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68727:caption:CNX_Chem_05_03_Systemqw-caption"
+      },
+      "media": {
+        "id": "fs-idp1427264",
+        "src": "../../media/CNX_Chem_05_03_Systemqw.jpg"
+      }
+    },
+    {
       "type": "para",
       "id": "fs-idp6896176",
       "segmentId": "m68727:para:fs-idp6896176"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp889984",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp13166816",
+          "segmentId": "m68727:para:fs-idp13166816"
+        }
+      ]
     },
     {
       "type": "para",
@@ -3274,9 +3304,27 @@
       "segmentId": "m68727:para:fs-idp120420048"
     },
     {
+      "type": "figure",
+      "id": "CNX_Chem_05_03_Summit",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68727:caption:CNX_Chem_05_03_Summit-caption"
+      },
+      "media": {
+        "id": "fs-idp164506448",
+        "alt": "An aerial photo depicts a view of Mount Kilimanjaro. A straight, green arrow labeled X is drawn from the term “base,” written at the bottom of the mountain, to the term “Summit,” written at the top of the mountain. Another arrow labeled Y is draw from the base to the summit alongside the green arrow, but this arrow is pink and has three large S-shaped curves along its length.",
+        "src": "../../media/CNX_Chem_05_03_Summit.jpg"
+      }
+    },
+    {
       "type": "para",
       "id": "fs-idp107461968",
       "segmentId": "m68727:para:fs-idp107461968"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm231773856",
+      "class": "unnumbered"
     },
     {
       "type": "para",
@@ -3284,14 +3332,29 @@
       "segmentId": "m68727:para:fs-idm20812336"
     },
     {
+      "type": "equation",
+      "id": "fs-idm182172016",
+      "class": "unnumbered"
+    },
+    {
       "type": "para",
       "id": "fs-idm15694224",
       "segmentId": "m68727:para:fs-idm15694224"
     },
     {
+      "type": "equation",
+      "id": "fs-idm223126448",
+      "class": "unnumbered"
+    },
+    {
       "type": "para",
       "id": "fs-idp7052304",
       "segmentId": "m68727:para:fs-idp7052304"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm223599728",
+      "class": "unnumbered"
     },
     {
       "type": "para",
@@ -3314,6 +3377,25 @@
       "segmentId": "m68727:para:fs-idp25166224"
     },
     {
+      "type": "list",
+      "id": "fs-idm49861360",
+      "listType": "bulleted",
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68727:item:fs-idm49861360-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68727:item:fs-idm49861360-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68727:item:fs-idm49861360-item-3"
+        }
+      ]
+    },
+    {
       "type": "para",
       "id": "fs-idm11576944",
       "segmentId": "m68727:para:fs-idm11576944"
@@ -3324,9 +3406,19 @@
       "segmentId": "m68727:para:fs-idp165042832"
     },
     {
+      "type": "equation",
+      "id": "fs-idp13211824",
+      "class": "unnumbered"
+    },
+    {
       "type": "para",
       "id": "fs-idm35882976",
       "segmentId": "m68727:para:fs-idm35882976"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm23265328",
+      "class": "unnumbered"
     },
     {
       "type": "para",
@@ -3334,114 +3426,9 @@
       "segmentId": "m68727:para:fs-idm72030880"
     },
     {
-      "type": "para",
-      "id": "fs-idp52228448",
-      "segmentId": "m68727:para:fs-idp52228448"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm10084896",
-      "segmentId": "m68727:para:fs-idm10084896"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp13720784",
-      "segmentId": "m68727:para:fs-idp13720784"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp6958160",
-      "segmentId": "m68727:para:fs-idp6958160"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp35719536",
-      "segmentId": "m68727:para:fs-idp35719536"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm14305808",
-      "segmentId": "m68727:para:fs-idm14305808"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm6526496",
-      "segmentId": "m68727:para:fs-idm6526496"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm42247408",
-      "segmentId": "m68727:para:fs-idm42247408"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm378999344",
-      "segmentId": "m68727:para:fs-idm378999344"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm329792512",
-      "segmentId": "m68727:para:fs-idm329792512"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm379230752",
-      "segmentId": "m68727:para:fs-idm379230752"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm386464528",
-      "segmentId": "m68727:para:fs-idm386464528"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm379229776",
-      "segmentId": "m68727:para:fs-idm379229776"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp82549456",
-      "segmentId": "m68727:para:fs-idp82549456"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm17649024",
-      "segmentId": "m68727:para:fs-idm17649024"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm18196832",
-      "segmentId": "m68727:para:fs-idm18196832"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp148022240",
-      "segmentId": "m68727:para:fs-idp148022240"
-    },
-    {
-      "type": "figure",
-      "id": "CNX_Chem_05_03_Systemqw",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68727:caption:CNX_Chem_05_03_Systemqw-caption"
-      },
-      "media": {
-        "id": "fs-idp1427264",
-        "src": "../../media/CNX_Chem_05_03_Systemqw.jpg"
-      }
-    },
-    {
-      "type": "figure",
-      "id": "CNX_Chem_05_03_Summit",
-      "class": "scaled-down",
-      "caption": {
-        "segmentId": "m68727:caption:CNX_Chem_05_03_Summit-caption"
-      },
-      "media": {
-        "id": "fs-idp164506448",
-        "alt": "An aerial photo depicts a view of Mount Kilimanjaro. A straight, green arrow labeled X is drawn from the term “base,” written at the bottom of the mountain, to the term “Summit,” written at the top of the mountain. Another arrow labeled Y is draw from the base to the summit alongside the green arrow, but this arrow is pink and has three large S-shaped curves along its length.",
-        "src": "../../media/CNX_Chem_05_03_Summit.jpg"
-      }
+      "type": "equation",
+      "id": "fs-idp4587936",
+      "class": "unnumbered"
     },
     {
       "type": "example",
@@ -3478,6 +3465,71 @@
           "id": "fs-idp6791056"
         }
       ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp52228448",
+      "segmentId": "m68727:para:fs-idp52228448"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp149553440",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm10084896",
+      "segmentId": "m68727:para:fs-idm10084896"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp125057232",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp13720784",
+      "segmentId": "m68727:para:fs-idp13720784"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm13850464",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp6958160",
+      "segmentId": "m68727:para:fs-idp6958160"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp6791056",
+      "class": "unnumbered"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp58943984",
+      "title": {
+        "segmentId": "m68727:note-title:fs-idp58943984-title",
+        "text": "Answer:"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp35719536",
+          "segmentId": "m68727:para:fs-idp35719536"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp35719536",
+      "segmentId": "m68727:para:fs-idp35719536"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm14305808",
+      "segmentId": "m68727:para:fs-idm14305808"
     },
     {
       "type": "example",
@@ -3544,32 +3596,74 @@
       ]
     },
     {
-      "type": "note",
-      "id": "fs-idp889984",
-      "class": "chemistry link-to-learning",
-      "title": null,
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idp13166816",
-          "segmentId": "m68727:para:fs-idp13166816"
-        }
-      ]
+      "type": "para",
+      "id": "fs-idm6526496",
+      "segmentId": "m68727:para:fs-idm6526496"
     },
     {
-      "type": "note",
-      "id": "fs-idp58943984",
-      "title": {
-        "segmentId": "m68727:note-title:fs-idp58943984-title",
-        "text": "Answer:"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idp35719536",
-          "segmentId": "m68727:para:fs-idp35719536"
-        }
-      ]
+      "type": "equation",
+      "id": "fs-idp12841552",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm42247408",
+      "segmentId": "m68727:para:fs-idm42247408"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm378999344",
+      "segmentId": "m68727:para:fs-idm378999344"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm372152464",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm329792512",
+      "segmentId": "m68727:para:fs-idm329792512"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm378911456",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm379230752",
+      "segmentId": "m68727:para:fs-idm379230752"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm352441488",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm386464528",
+      "segmentId": "m68727:para:fs-idm386464528"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm389610336",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm379229776",
+      "segmentId": "m68727:para:fs-idm379229776"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp90097408",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp82549456",
+      "segmentId": "m68727:para:fs-idp82549456"
     },
     {
       "type": "note",
@@ -3587,113 +3681,19 @@
       ]
     },
     {
-      "type": "equation",
-      "id": "fs-idm150109936",
-      "class": "unnumbered"
+      "type": "para",
+      "id": "fs-idm17649024",
+      "segmentId": "m68727:para:fs-idm17649024"
     },
     {
-      "type": "equation",
-      "id": "fs-idm231773856",
-      "class": "unnumbered"
+      "type": "para",
+      "id": "fs-idm18196832",
+      "segmentId": "m68727:para:fs-idm18196832"
     },
     {
-      "type": "equation",
-      "id": "fs-idm182172016",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm223126448",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm223599728",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp13211824",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm23265328",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp4587936",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp149553440",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp125057232",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm13850464",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp6791056",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp12841552",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm372152464",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm378911456",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm352441488",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm389610336",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp90097408",
-      "class": "unnumbered"
-    },
-    {
-      "type": "list",
-      "id": "fs-idm49861360",
-      "listType": "bulleted",
-      "items": [
-        {
-          "id": null,
-          "segmentId": "m68727:item:fs-idm49861360-item-1"
-        },
-        {
-          "id": null,
-          "segmentId": "m68727:item:fs-idm49861360-item-2"
-        },
-        {
-          "id": null,
-          "segmentId": "m68727:item:fs-idm49861360-item-3"
-        }
-      ]
+      "type": "para",
+      "id": "fs-idp148022240",
+      "segmentId": "m68727:para:fs-idp148022240"
     }
   ],
   "abstract": {

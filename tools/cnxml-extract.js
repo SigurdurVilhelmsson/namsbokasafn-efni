@@ -393,74 +393,156 @@ function processSection(section, moduleId, addSegment, mathMap, counters, verbos
 
 /**
  * Process top-level content elements (paragraphs, figures, examples, etc.)
+ * IMPORTANT: Preserves document order by finding all elements with their positions first.
  */
 function processTopLevelContent(content, moduleId, addSegment, mathMap, counters, _verbose) {
-  const elements = [];
+  // Collect all elements with their positions in the content string
+  const elementsWithPositions = [];
 
-  // Process paragraphs
+  // Extract all element types
   const paras = extractElements(content, 'para');
-  for (const para of paras) {
-    const text = extractInlineText(para.content, mathMap, counters);
-    if (text) {
-      const segId = addSegment('para', text, para.id);
-      elements.push({
-        type: 'para',
-        id: para.id,
-        segmentId: segId,
-      });
-    }
-  }
-
-  // Process figures
   const figures = extractNestedElements(content, 'figure');
-  for (const figure of figures) {
-    const figStructure = processFigure(figure, moduleId, addSegment, mathMap, counters);
-    elements.push(figStructure);
-  }
-
-  // Process tables
   const tables = extractNestedElements(content, 'table');
-  for (const table of tables) {
-    const tableStructure = processTable(table, moduleId, addSegment, mathMap, counters);
-    elements.push(tableStructure);
-  }
-
-  // Process examples
   const examples = extractNestedElements(content, 'example');
-  for (const example of examples) {
-    const exampleStructure = processExample(example, moduleId, addSegment, mathMap, counters);
-    elements.push(exampleStructure);
-  }
-
-  // Process exercises
   const exercises = extractNestedElements(content, 'exercise');
-  for (const exercise of exercises) {
-    const exerciseStructure = processExercise(exercise, moduleId, addSegment, mathMap, counters);
-    elements.push(exerciseStructure);
-  }
-
-  // Process notes
   const notes = extractNestedElements(content, 'note');
-  for (const note of notes) {
-    const noteStructure = processNote(note, moduleId, addSegment, mathMap, counters);
-    elements.push(noteStructure);
+  const equations = extractElements(content, 'equation');
+  const lists = extractNestedElements(content, 'list');
+
+  // Add all elements with their positions
+  // For elements without fullMatch, find by id attribute
+  for (const para of paras) {
+    const idPattern = para.id ? `id="${para.id}"` : null;
+    const position = idPattern ? content.indexOf(idPattern) : content.indexOf('<para');
+    elementsWithPositions.push({ ...para, type: 'para', position: position !== -1 ? position : 0 });
   }
 
-  // Process equations
-  const equations = extractElements(content, 'equation');
-  for (const eq of equations) {
-    elements.push({
-      type: 'equation',
-      id: eq.id,
-      class: eq.attributes.class,
+  for (const figure of figures) {
+    const position = figure.fullMatch
+      ? content.indexOf(figure.fullMatch)
+      : content.indexOf(`id="${figure.id}"`);
+    elementsWithPositions.push({
+      ...figure,
+      type: 'figure',
+      position: position !== -1 ? position : 0,
     });
   }
 
-  // Process lists
-  const lists = extractNestedElements(content, 'list');
+  for (const table of tables) {
+    const position = table.fullMatch
+      ? content.indexOf(table.fullMatch)
+      : content.indexOf(`id="${table.id}"`);
+    elementsWithPositions.push({
+      ...table,
+      type: 'table',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
+  for (const example of examples) {
+    const position = example.fullMatch
+      ? content.indexOf(example.fullMatch)
+      : content.indexOf(`id="${example.id}"`);
+    elementsWithPositions.push({
+      ...example,
+      type: 'example',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
+  for (const exercise of exercises) {
+    const position = exercise.fullMatch
+      ? content.indexOf(exercise.fullMatch)
+      : content.indexOf(`id="${exercise.id}"`);
+    elementsWithPositions.push({
+      ...exercise,
+      type: 'exercise',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
+  for (const note of notes) {
+    const position = note.fullMatch
+      ? content.indexOf(note.fullMatch)
+      : content.indexOf(`id="${note.id}"`);
+    elementsWithPositions.push({ ...note, type: 'note', position: position !== -1 ? position : 0 });
+  }
+
+  for (const eq of equations) {
+    const idPattern = eq.id ? `id="${eq.id}"` : null;
+    const position = idPattern ? content.indexOf(idPattern) : content.indexOf('<equation');
+    elementsWithPositions.push({
+      ...eq,
+      type: 'equation',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
   for (const list of lists) {
-    const listStructure = processList(list, moduleId, addSegment, mathMap, counters);
-    elements.push(listStructure);
+    const position = list.fullMatch
+      ? content.indexOf(list.fullMatch)
+      : content.indexOf(`id="${list.id}"`);
+    elementsWithPositions.push({ ...list, type: 'list', position: position !== -1 ? position : 0 });
+  }
+
+  // Sort by position to preserve document order
+  elementsWithPositions.sort((a, b) => a.position - b.position);
+
+  // Process elements in document order
+  const elements = [];
+  for (const item of elementsWithPositions) {
+    switch (item.type) {
+      case 'para': {
+        const text = extractInlineText(item.content, mathMap, counters);
+        if (text) {
+          const segId = addSegment('para', text, item.id);
+          elements.push({
+            type: 'para',
+            id: item.id,
+            segmentId: segId,
+          });
+        }
+        break;
+      }
+      case 'figure': {
+        const figStructure = processFigure(item, moduleId, addSegment, mathMap, counters);
+        elements.push(figStructure);
+        break;
+      }
+      case 'table': {
+        const tableStructure = processTable(item, moduleId, addSegment, mathMap, counters);
+        elements.push(tableStructure);
+        break;
+      }
+      case 'example': {
+        const exampleStructure = processExample(item, moduleId, addSegment, mathMap, counters);
+        elements.push(exampleStructure);
+        break;
+      }
+      case 'exercise': {
+        const exerciseStructure = processExercise(item, moduleId, addSegment, mathMap, counters);
+        elements.push(exerciseStructure);
+        break;
+      }
+      case 'note': {
+        const noteStructure = processNote(item, moduleId, addSegment, mathMap, counters);
+        elements.push(noteStructure);
+        break;
+      }
+      case 'equation': {
+        elements.push({
+          type: 'equation',
+          id: item.id,
+          class: item.attributes.class,
+        });
+        break;
+      }
+      case 'list': {
+        const listStructure = processList(item, moduleId, addSegment, mathMap, counters);
+        elements.push(listStructure);
+        break;
+      }
+    }
   }
 
   return elements;
