@@ -841,15 +841,40 @@ function renderExample(example, context) {
   // Sort by position
   elementsWithPositions.sort((a, b) => a.position - b.position);
 
+  // Track if we've stripped the example title (from the first para)
+  let exampleTitleStripped = false;
+
   // Render in document order
   for (const { type, item } of elementsWithPositions) {
     switch (type) {
       case 'para': {
-        // Strip <title> from paragraph content before rendering
-        const contentWithoutTitle = item.content.replace(/<title>[^<]*<\/title>\s*/g, '');
-        if (contentWithoutTitle.trim()) {
+        // Check if this para has a title
+        const titleMatch = item.content.match(/^\s*<title>([^<]+)<\/title>/);
+        let paraTitle = null;
+        let contentWithoutTitle = item.content;
+
+        if (titleMatch) {
+          if (!exampleTitleStripped && exampleTitle && titleMatch[1] === exampleTitle) {
+            // This is the example title - strip it (already rendered as h3)
+            contentWithoutTitle = item.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+            exampleTitleStripped = true;
+          } else {
+            // This is a different para title (e.g., "Check Your Learning", "Solution")
+            // Preserve it and render as a strong heading
+            paraTitle = titleMatch[1];
+            contentWithoutTitle = item.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+          }
+        }
+
+        if (paraTitle || contentWithoutTitle.trim()) {
           const paraWithCleanContent = { ...item, content: contentWithoutTitle };
-          lines.push(`  ${renderPara(paraWithCleanContent, context)}`);
+          if (paraTitle) {
+            // Render para title as a strong element, then the para content
+            lines.push(`  <p class="para-title"><strong>${escapeHtml(paraTitle)}</strong></p>`);
+          }
+          if (contentWithoutTitle.trim()) {
+            lines.push(`  ${renderPara(paraWithCleanContent, context)}`);
+          }
         }
         break;
       }

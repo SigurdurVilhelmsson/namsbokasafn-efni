@@ -332,11 +332,24 @@ function buildElement(element, getSeg, equations, originalCnxml) {
  * Build a paragraph element.
  */
 function buildPara(element, getSeg) {
-  const text = getSeg(element.segmentId);
-  if (!text) return null;
-
   const idAttr = element.id ? ` id="${element.id}"` : '';
-  return `<para${idAttr}>${text}</para>`;
+
+  // Handle para title if present (e.g., "Check Your Learning", "Solution")
+  let titleElement = '';
+  if (element.title) {
+    const titleText = getSeg(element.title.segmentId) || element.title.text;
+    if (titleText) {
+      titleElement = `<title>${titleText}</title>`;
+    }
+  }
+
+  // Get para content
+  const text = element.segmentId ? getSeg(element.segmentId) : '';
+
+  // Return null only if neither title nor content
+  if (!titleElement && !text) return null;
+
+  return `<para${idAttr}>${titleElement}${text}</para>`;
 }
 
 /**
@@ -504,29 +517,27 @@ function buildExample(element, getSeg, equations, originalCnxml) {
       // Replace paragraph content
       // Note: The example title is often inside the FIRST paragraph's <title> child element.
       // When we replace paragraph content, we need to preserve this title.
+      // Other paras may have their own titles (e.g., "Check Your Learning") which should also be preserved.
       let isFirstPara = true;
       for (const child of element.content || []) {
-        if (child.type === 'para' && child.id && child.segmentId) {
-          const paraText = getSeg(child.segmentId);
-          if (paraText) {
-            const paraPattern = new RegExp(
-              `<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`,
-              'g'
-            );
-            // If this is the first para and we have an example title, include the title
-            let replacementText;
-            if (isFirstPara && element.title && element.title.segmentId) {
-              const titleText = getSeg(element.title.segmentId);
-              if (titleText) {
-                replacementText = `<para id="${child.id}"><title>${titleText}</title>${paraText}</para>`;
-              } else {
-                replacementText = `<para id="${child.id}">${paraText}</para>`;
-              }
-            } else {
-              replacementText = `<para id="${child.id}">${paraText}</para>`;
-            }
-            exampleCnxml = exampleCnxml.replace(paraPattern, replacementText);
+        if (child.type === 'para' && child.id) {
+          const paraText = child.segmentId ? getSeg(child.segmentId) : '';
+          const paraPattern = new RegExp(`<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`, 'g');
+
+          let titleText = '';
+          // First para: use the example title
+          if (isFirstPara && element.title && element.title.segmentId) {
+            titleText = getSeg(element.title.segmentId) || '';
           }
+          // Non-first paras: use their own title if present (e.g., "Check Your Learning")
+          else if (child.title && child.title.segmentId) {
+            titleText = getSeg(child.title.segmentId) || child.title.text || '';
+          }
+
+          const titleElement = titleText ? `<title>${titleText}</title>` : '';
+          const replacementText = `<para id="${child.id}">${titleElement}${paraText}</para>`;
+          exampleCnxml = exampleCnxml.replace(paraPattern, replacementText);
+
           isFirstPara = false;
         }
       }

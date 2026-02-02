@@ -568,14 +568,37 @@ function processTopLevelContent(content, moduleId, addSegment, mathMap, counters
   for (const item of elementsWithPositions) {
     switch (item.type) {
       case 'para': {
-        const text = extractInlineText(item.content, mathMap, counters);
-        if (text) {
-          const segId = addSegment('para', text, item.id);
-          elements.push({
+        // Check if para has a title (e.g., "Check Your Learning", "Solution")
+        const titleMatch = item.content.match(/^\s*<title>([^<]+)<\/title>/);
+        let paraTitle = null;
+        let contentWithoutTitle = item.content;
+
+        if (titleMatch) {
+          // Extract and store the para title separately
+          const titleText = titleMatch[1].trim();
+          const titleSegId = addSegment(
+            'para-title',
+            titleText,
+            item.id ? `${item.id}-title` : null
+          );
+          paraTitle = { segmentId: titleSegId, text: titleText };
+          // Remove title from content before extracting text
+          contentWithoutTitle = item.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+        }
+
+        const text = extractInlineText(contentWithoutTitle, mathMap, counters);
+        if (text || paraTitle) {
+          const paraElement = {
             type: 'para',
             id: item.id,
-            segmentId: segId,
-          });
+          };
+          if (paraTitle) {
+            paraElement.title = paraTitle;
+          }
+          if (text) {
+            paraElement.segmentId = addSegment('para', text, item.id);
+          }
+          elements.push(paraElement);
         }
         break;
       }
@@ -746,17 +769,47 @@ function processExample(example, moduleId, addSegment, mathMap, counters) {
     }
   }
 
-  // Process all paragraphs, stripping <title> from content
+  // Process all paragraphs
+  // The first para's title was already used as the example title, so strip it
+  // Other para titles (like "Check Your Learning") should be preserved
+  let firstParaWithTitleProcessed = false;
   for (const para of paras) {
-    // Strip title element from paragraph content before extracting text
-    const contentWithoutTitle = para.content.replace(/<title>[^<]*<\/title>\s*/g, '');
+    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
+    let paraTitle = null;
+    let contentWithoutTitle = para.content;
+
+    if (titleMatch) {
+      if (!firstParaWithTitleProcessed && exampleTitleFound) {
+        // This is the first para whose title was used as the example title - strip it
+        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+        firstParaWithTitleProcessed = true;
+      } else {
+        // This is a different para with its own title (e.g., "Check Your Learning")
+        // Preserve this title in the structure
+        const titleText = titleMatch[1].trim();
+        const titleSegId = addSegment('para-title', titleText, para.id ? `${para.id}-title` : null);
+        paraTitle = { segmentId: titleSegId, text: titleText };
+        contentWithoutTitle = para.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
+      }
+    }
+
     const text = extractInlineText(contentWithoutTitle, mathMap, counters);
     if (text && text.trim()) {
-      const segId = addSegment('para', text, para.id);
+      const paraElement = {
+        type: 'para',
+        id: para.id,
+        segmentId: addSegment('para', text, para.id),
+      };
+      if (paraTitle) {
+        paraElement.title = paraTitle;
+      }
+      exampleStructure.content.push(paraElement);
+    } else if (paraTitle) {
+      // Para has only a title, no other content
       exampleStructure.content.push({
         type: 'para',
         id: para.id,
-        segmentId: segId,
+        title: paraTitle,
       });
     }
   }
