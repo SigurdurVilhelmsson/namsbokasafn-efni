@@ -278,34 +278,13 @@ If we know the mass of a substance and its specific heat, we can determine the a
 In this equation, *c* is the specific heat of the substance, *m* is its mass, and Δ*T* (which is read “delta T”) is the temperature change, *T*~final~ − *T*~initial~. If a substance gains thermal energy, its temperature increases, its final temperature is higher than its initial temperature, *T*~final~ − *T*~initial~ has a positive value, and the value of *q* is positive. If a substance loses thermal energy, its temperature decreases, the final temperature is lower than the initial temperature, *T*~final~ − *T*~initial~ has a negative value, and the value of *q* is negative.
 
 <!-- SEG:m68724:example-title:fs-idp1783792-title -->
-Check Your Learning
-
-<!-- SEG:m68724:para:fs-idm6508272 -->
-The specific heat of water is 4.184 J/g °C, so to heat 1 g of water by 1 °C requires 4.184 J. We note that since 4.184 J is required to heat 1 g of water by 1 °C, we will need *800 times as much* to heat 8.0 × 10^2^ g of water by 1 °C. Finally, we observe that since 4.184 J are required to heat 1 g of water by 1 °C, we will need *64 times as much* to heat it by 64 °C (that is, from 21 °C to 85 °C).
-
-<!-- SEG:m68724:para:fs-idm16704560 -->
-This can be summarized using the equation:
-
-<!-- SEG:m68724:para:fs-idp22566736 -->
-Because the temperature increased, the water absorbed heat and *q* is positive.
-
-<!-- SEG:m68724:para:fs-idm11745888 -->
-5.07 [[MATH:1]] 10^4^ J
+Measuring Heat
 
 <!-- SEG:m68724:para:fs-idm38005904 -->
-Measuring Heat A flask containing 8.0 [[MATH:2]] 10^2^ g of water is heated, and the temperature of the water increases from 21 °C to 85 °C. How much heat did the water absorb?
+A flask containing 8.0 [[MATH:1]] 10^2^ g of water is heated, and the temperature of the water increases from 21 °C to 85 °C. How much heat did the water absorb?
 
 <!-- SEG:m68724:para:fs-idp12392592 -->
-Solution To answer this question, consider these factors:
-
-<!-- SEG:m68724:item:fs-idm19140208-item-1 -->
-the specific heat of the substance being heated (in this case, water)
-
-<!-- SEG:m68724:item:fs-idm19140208-item-2 -->
-the amount of substance being heated (in this case, 8.0 × 10^2^ g)
-
-<!-- SEG:m68724:item:fs-idm19140208-item-3 -->
-the magnitude of the temperature change (in this case, from 21 °C to 85 °C).
+To answer this question, consider these factors:
 
 <!-- SEG:m68724:para:fs-idm6508272 -->
 The specific heat of water is 4.184 J/g °C, so to heat 1 g of water by 1 °C requires 4.184 J. We note that since 4.184 J is required to heat 1 g of water by 1 °C, we will need *800 times as much* to heat 8.0 × 10^2^ g of water by 1 °C. Finally, we observe that since 4.184 J are required to heat 1 g of water by 1 °C, we will need *64 times as much* to heat it by 64 °C (that is, from 21 °C to 85 °C).
@@ -317,7 +296,19 @@ This can be summarized using the equation:
 Because the temperature increased, the water absorbed heat and *q* is positive.
 
 <!-- SEG:m68724:para:fs-idm1147904 -->
-Check Your LearningHow much heat, in joules, must be added to a 502 g iron skillet to increase its temperature from 25 °C to 250 °C? The specific heat of iron is 0.449 J/g °C.
+How much heat, in joules, must be added to a 502 g iron skillet to increase its temperature from 25 °C to 250 °C? The specific heat of iron is 0.449 J/g °C.
+
+<!-- SEG:m68724:para:fs-idm11745888 -->
+5.07 [[MATH:2]] 10^4^ J
+
+<!-- SEG:m68724:item:fs-idm19140208-item-1 -->
+the specific heat of the substance being heated (in this case, water)
+
+<!-- SEG:m68724:item:fs-idm19140208-item-2 -->
+the amount of substance being heated (in this case, 8.0 × 10^2^ g)
+
+<!-- SEG:m68724:item:fs-idm19140208-item-3 -->
+the magnitude of the temperature change (in this case, from 21 °C to 85 °C).
 
 <!-- SEG:m68724:note-title:fs-idm26494944-title -->
 Answer:
@@ -329,25 +320,13 @@ Answer:
 Note that the relationship between heat, specific heat, mass, and temperature change can be used to determine any of these quantities (not just heat) if the other three are known or can be deduced.
 
 <!-- SEG:m68724:example-title:fs-idm41581920-title -->
-Solution
-
-<!-- SEG:m68724:para:fs-idm60199232 -->
-Substituting the known values:
-
-<!-- SEG:m68724:para:fs-idm37413152 -->
-Solving:
-
-<!-- SEG:m68724:para:fs-idm17185344 -->
-Comparing this value with the values in , this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.
-
-<!-- SEG:m68724:para:fs-idp81248192 -->
-*c* = 0.451 J/g °C; the metal is likely to be iron
+Determining Other Quantities
 
 <!-- SEG:m68724:para:fs-idm4867616 -->
-Determining Other Quantities A piece of unknown metal weighs 348 g. When the metal piece absorbs 6.64 kJ of heat, its temperature increases from 22.4 °C to 43.6 °C. Determine the specific heat of this metal (which might provide a clue to its identity).
+A piece of unknown metal weighs 348 g. When the metal piece absorbs 6.64 kJ of heat, its temperature increases from 22.4 °C to 43.6 °C. Determine the specific heat of this metal (which might provide a clue to its identity).
 
 <!-- SEG:m68724:para:fs-idp15079712 -->
-Solution Since mass, heat, and temperature change are known for this metal, we can determine its specific heat using the relationship:
+Since mass, heat, and temperature change are known for this metal, we can determine its specific heat using the relationship:
 
 <!-- SEG:m68724:para:fs-idm60199232 -->
 Substituting the known values:
@@ -359,7 +338,10 @@ Solving:
 Comparing this value with the values in , this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.
 
 <!-- SEG:m68724:para:fs-idm40972976 -->
-Check Your Learning A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of heat, its temperature increases from 24.5 °C to 39.1 °C. Determine the specific heat of this metal, and predict its identity.
+A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of heat, its temperature increases from 24.5 °C to 39.1 °C. Determine the specific heat of this metal, and predict its identity.
+
+<!-- SEG:m68724:para:fs-idp81248192 -->
+*c* = 0.451 J/g °C; the metal is likely to be iron
 
 <!-- SEG:m68724:note-title:fs-idp282981088-title -->
 Answer:
@@ -400,7 +382,7 @@ Specific heat and heat capacity are measures of the energy needed to change the 
 <!-- SEG:m68724:title:fs-idm20711744-title -->
 Key Equations
 
-<!-- SEG:m68724:entry:auto-135 -->
+<!-- SEG:m68724:entry:auto-129 -->
 [[MATH:4]]
 
 <!-- SEG:m68724:title:fs-idm41088208-title -->

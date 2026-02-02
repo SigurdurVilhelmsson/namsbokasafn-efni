@@ -126,6 +126,16 @@
       "content": [
         {
           "type": "para",
+          "id": "fs-idm94530896",
+          "segmentId": "m68726:para:fs-idm94530896"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp13157184",
+          "segmentId": "m68726:para:fs-idp13157184"
+        },
+        {
+          "type": "para",
           "id": "fs-idp46728032",
           "segmentId": "m68726:para:fs-idp46728032"
         },
@@ -146,8 +156,18 @@
         },
         {
           "type": "para",
+          "id": "fs-idm82711952",
+          "segmentId": "m68726:para:fs-idm82711952"
+        },
+        {
+          "type": "para",
           "id": "fs-idm12419600",
           "segmentId": "m68726:para:fs-idm12419600"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp12008976",
+          "segmentId": "m68726:para:fs-idp12008976"
         },
         {
           "type": "para",
@@ -173,101 +193,36 @@
         {
           "type": "equation",
           "id": "fs-idp7310352"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm94530896",
-      "segmentId": "m68726:para:fs-idm94530896"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp13157184",
-      "segmentId": "m68726:para:fs-idp13157184"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm107179568",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp46728032",
-      "segmentId": "m68726:para:fs-idp46728032"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm52673840",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp47392976",
-      "segmentId": "m68726:para:fs-idp47392976"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp7508656",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm100431536",
-      "segmentId": "m68726:para:fs-idm100431536"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm160292560",
-      "class": "unnumbered"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idp7310352",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm56113136",
-      "segmentId": "m68726:para:fs-idm56113136"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm82711952",
-      "segmentId": "m68726:para:fs-idm82711952"
-    },
-    {
-      "type": "note",
-      "id": "fs-idm20275344",
-      "title": {
-        "segmentId": "m68726:note-title:fs-idm20275344-title",
-        "text": "Answer:"
-      },
-      "content": [
+        },
         {
-          "type": "para",
-          "id": "fs-idm12419600",
-          "segmentId": "m68726:para:fs-idm12419600"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idp12008976",
-      "segmentId": "m68726:para:fs-idp12008976"
-    },
-    {
-      "type": "note",
-      "id": "fs-idm17192400",
-      "title": {
-        "segmentId": "m68726:note-title:fs-idm17192400-title",
-        "text": "Answer:"
-      },
-      "content": [
+          "type": "note",
+          "id": "fs-idm20275344",
+          "title": {
+            "segmentId": "m68726:note-title:fs-idm20275344-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm12419600",
+              "segmentId": "m68726:para:fs-idm12419600"
+            }
+          ]
+        },
         {
-          "type": "para",
-          "id": "fs-idm84058400",
-          "segmentId": "m68726:para:fs-idm84058400"
+          "type": "note",
+          "id": "fs-idm17192400",
+          "title": {
+            "segmentId": "m68726:note-title:fs-idm17192400-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm84058400",
+              "segmentId": "m68726:para:fs-idm84058400"
+            }
+          ]
         }
       ]
     },
@@ -284,6 +239,16 @@
         "text": "Identifying a Metal by Measuring Specific Heat"
       },
       "content": [
+        {
+          "type": "para",
+          "id": "fs-idm92661904",
+          "segmentId": "m68726:para:fs-idm92661904"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm56342080",
+          "segmentId": "m68726:para:fs-idm56342080"
+        },
         {
           "type": "para",
           "id": "fs-idm457088",
@@ -303,6 +268,11 @@
           "type": "para",
           "id": "fs-idm61018208",
           "segmentId": "m68726:para:fs-idm61018208"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm42342688",
+          "segmentId": "m68726:para:fs-idm42342688"
         },
         {
           "type": "para",
@@ -329,81 +299,26 @@
         {
           "type": "equation",
           "id": "fs-idm13040064"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm92661904",
-      "segmentId": "m68726:para:fs-idm92661904"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm56342080",
-      "segmentId": "m68726:para:fs-idm56342080"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm199710176",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm457088",
-      "segmentId": "m68726:para:fs-idm457088"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm4542240",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm9602288",
-      "segmentId": "m68726:para:fs-idm9602288"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm127022128",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm4520800",
-      "segmentId": "m68726:para:fs-idm4520800"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm13040064",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm61018208",
-      "segmentId": "m68726:para:fs-idm61018208"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm42342688",
-      "segmentId": "m68726:para:fs-idm42342688"
-    },
-    {
-      "type": "note",
-      "id": "fs-idm64160064",
-      "title": {
-        "segmentId": "m68726:note-title:fs-idm64160064-title",
-        "text": "Answer:"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idm19048032",
-          "segmentId": "m68726:para:fs-idm19048032"
         },
         {
-          "type": "para",
-          "id": "fs-idm40554112",
-          "segmentId": "m68726:para:fs-idm40554112"
+          "type": "note",
+          "id": "fs-idm64160064",
+          "title": {
+            "segmentId": "m68726:note-title:fs-idm64160064-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm19048032",
+              "segmentId": "m68726:para:fs-idm19048032"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm40554112",
+              "segmentId": "m68726:para:fs-idm40554112"
+            }
+          ]
         }
       ]
     },
@@ -442,6 +357,16 @@
       "content": [
         {
           "type": "para",
+          "id": "fs-idm66182640",
+          "segmentId": "m68726:para:fs-idm66182640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm73607008",
+          "segmentId": "m68726:para:fs-idm73607008"
+        },
+        {
+          "type": "para",
           "id": "fs-idm74180672",
           "segmentId": "m68726:para:fs-idm74180672"
         },
@@ -472,6 +397,11 @@
         },
         {
           "type": "para",
+          "id": "fs-idm55750416",
+          "segmentId": "m68726:para:fs-idm55750416"
+        },
+        {
+          "type": "para",
           "id": "fs-idm94618544",
           "segmentId": "m68726:para:fs-idm94618544"
         },
@@ -494,91 +424,21 @@
         {
           "type": "equation",
           "id": "fs-idm178566000"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm66182640",
-      "segmentId": "m68726:para:fs-idm66182640"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm32936848",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm73607008",
-      "segmentId": "m68726:para:fs-idm73607008"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm74180672",
-      "segmentId": "m68726:para:fs-idm74180672"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm259063904",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm11281888",
-      "segmentId": "m68726:para:fs-idm11281888"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm12358560",
-      "segmentId": "m68726:para:fs-idm12358560"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm174034752",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp12432",
-      "segmentId": "m68726:para:fs-idp12432"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm261390032",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm6689328",
-      "segmentId": "m68726:para:fs-idm6689328"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm178566000",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm66484944",
-      "segmentId": "m68726:para:fs-idm66484944"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm55750416",
-      "segmentId": "m68726:para:fs-idm55750416"
-    },
-    {
-      "type": "note",
-      "id": "fs-idm9227984",
-      "title": {
-        "segmentId": "m68726:note-title:fs-idm9227984-title",
-        "text": "Answer:"
-      },
-      "content": [
+        },
         {
-          "type": "para",
-          "id": "fs-idm94618544",
-          "segmentId": "m68726:para:fs-idm94618544"
+          "type": "note",
+          "id": "fs-idm9227984",
+          "title": {
+            "segmentId": "m68726:note-title:fs-idm9227984-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm94618544",
+              "segmentId": "m68726:para:fs-idm94618544"
+            }
+          ]
         }
       ]
     },
@@ -643,8 +503,18 @@
       "content": [
         {
           "type": "para",
+          "id": "fs-idm52519632",
+          "segmentId": "m68726:para:fs-idm52519632"
+        },
+        {
+          "type": "para",
           "id": "fs-idp41329920",
           "segmentId": "m68726:para:fs-idp41329920"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp364256",
+          "segmentId": "m68726:para:fs-idp364256"
         },
         {
           "type": "para",
@@ -663,6 +533,11 @@
         },
         {
           "type": "para",
+          "id": "fs-idm6778640",
+          "segmentId": "m68726:para:fs-idm6778640"
+        },
+        {
+          "type": "para",
           "id": "fs-idm5945296",
           "segmentId": "m68726:para:fs-idm5945296"
         },
@@ -673,13 +548,23 @@
         {
           "type": "equation",
           "id": "fs-idm183045408"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm9544544",
+          "title": {
+            "segmentId": "m68726:note-title:fs-idm9544544-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm5945296",
+              "segmentId": "m68726:para:fs-idm5945296"
+            }
+          ]
         }
       ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idm52519632",
-      "segmentId": "m68726:para:fs-idm52519632"
     },
     {
       "type": "figure",
@@ -693,61 +578,6 @@
         "alt": "A diagram depicts a rectangular pack containing a white, solid substance and an interior bag full of water. The white solid is labeled “ammonium nitrate.” The top of the packet has the words “Instant Cold Pack” written on it. It also has three pictograms, which from right to left, show a hand squeezing the pack, agitating the pack and placing the pack on a person’s body. The bottom of the pack has printed words that read “single use only.”",
         "src": "../../media/CNX_Chem_05_02_IcePack.jpg"
       }
-    },
-    {
-      "type": "para",
-      "id": "fs-idp41329920",
-      "segmentId": "m68726:para:fs-idp41329920"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp364256",
-      "segmentId": "m68726:para:fs-idp364256"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm127206368",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm76420496",
-      "segmentId": "m68726:para:fs-idm76420496"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm52847712",
-      "segmentId": "m68726:para:fs-idm52847712"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm183045408",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idp8566608",
-      "segmentId": "m68726:para:fs-idp8566608"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm6778640",
-      "segmentId": "m68726:para:fs-idm6778640"
-    },
-    {
-      "type": "note",
-      "id": "fs-idm9544544",
-      "title": {
-        "segmentId": "m68726:note-title:fs-idm9544544-title",
-        "text": "Answer:"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idm5945296",
-          "segmentId": "m68726:para:fs-idm5945296"
-        }
-      ]
     },
     {
       "type": "para",
@@ -799,6 +629,16 @@
       "content": [
         {
           "type": "para",
+          "id": "fs-idp23917952",
+          "segmentId": "m68726:para:fs-idp23917952"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm103829360",
+          "segmentId": "m68726:para:fs-idm103829360"
+        },
+        {
+          "type": "para",
           "id": "fs-idm51439440",
           "segmentId": "m68726:para:fs-idm51439440"
         },
@@ -809,57 +649,32 @@
         },
         {
           "type": "para",
+          "id": "fs-idm39952704",
+          "segmentId": "m68726:para:fs-idm39952704"
+        },
+        {
+          "type": "para",
           "id": "fs-idm88592432",
           "segmentId": "m68726:para:fs-idm88592432"
         },
         {
           "type": "equation",
           "id": "fs-idm137623248"
-        }
-      ]
-    },
-    {
-      "type": "para",
-      "id": "fs-idp23917952",
-      "segmentId": "m68726:para:fs-idp23917952"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm103829360",
-      "segmentId": "m68726:para:fs-idm103829360"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm51439440",
-      "segmentId": "m68726:para:fs-idm51439440"
-    },
-    {
-      "type": "equation",
-      "id": "fs-idm137623248",
-      "class": "unnumbered"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm51688848",
-      "segmentId": "m68726:para:fs-idm51688848"
-    },
-    {
-      "type": "para",
-      "id": "fs-idm39952704",
-      "segmentId": "m68726:para:fs-idm39952704"
-    },
-    {
-      "type": "note",
-      "id": "fs-idm11360480",
-      "title": {
-        "segmentId": "m68726:note-title:fs-idm11360480-title",
-        "text": "Answer:"
-      },
-      "content": [
+        },
         {
-          "type": "para",
-          "id": "fs-idm88592432",
-          "segmentId": "m68726:para:fs-idm88592432"
+          "type": "note",
+          "id": "fs-idm11360480",
+          "title": {
+            "segmentId": "m68726:note-title:fs-idm11360480-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm88592432",
+              "segmentId": "m68726:para:fs-idm88592432"
+            }
+          ]
         }
       ]
     },

@@ -49,29 +49,11 @@ In a simple calorimetry process, (a) heat, *q*, is transferred from the hot meta
 <!-- SEG:m68726:example-title:fs-idp13199280-title -->
 Heat Transfer between Substances at Different Temperatures
 
-<!-- SEG:m68726:para:fs-idp46728032 -->
-Since we know how heat is related to other measurable quantities, we have:
-
-<!-- SEG:m68726:para:fs-idp47392976 -->
-Letting f = final and i = initial, in expanded form, this becomes:
-
-<!-- SEG:m68726:para:fs-idm100431536 -->
-The density of water is 1.0 g/mL, so 425 mL of water = 425 g. Noting that the final temperature of both the rebar and water is 42.7 °C, substituting known values yields:
-
-<!-- SEG:m68726:para:fs-idm56113136 -->
-Solving this gives *T*~i,rebar~= 248 °C, so the initial temperature of the rebar was 248 °C.
-
-<!-- SEG:m68726:para:fs-idm12419600 -->
-The initial temperature of the copper was 335.6 °C.
-
-<!-- SEG:m68726:para:fs-idm84058400 -->
-The final temperature (reached by both copper and water) is 38.7 °C.
-
 <!-- SEG:m68726:para:fs-idm94530896 -->
-Heat Transfer between Substances at Different TemperaturesA 360.0-g piece of rebar (a steel rod used for reinforcing concrete) is dropped into 425 mL of water at 24.0 °C. The final temperature of the water was measured as 42.7 °C. Calculate the initial temperature of the piece of rebar. Assume the specific heat of steel is approximately the same as that for iron (), and that all heat transfer occurs between the rebar and the water (there is no heat exchange with the surroundings).
+A 360.0-g piece of rebar (a steel rod used for reinforcing concrete) is dropped into 425 mL of water at 24.0 °C. The final temperature of the water was measured as 42.7 °C. Calculate the initial temperature of the piece of rebar. Assume the specific heat of steel is approximately the same as that for iron (), and that all heat transfer occurs between the rebar and the water (there is no heat exchange with the surroundings).
 
 <!-- SEG:m68726:para:fs-idp13157184 -->
-SolutionThe temperature of the water increases from 24.0 °C to 42.7 °C, so the water absorbs heat. That heat came from the piece of rebar, which initially was at a higher temperature. Assuming that all heat transfer was between the rebar and the water, with no heat “lost” to the outside environment, then *heat given off by rebar = −heat taken in by water*, or:
+The temperature of the water increases from 24.0 °C to 42.7 °C, so the water absorbs heat. That heat came from the piece of rebar, which initially was at a higher temperature. Assuming that all heat transfer was between the rebar and the water, with no heat “lost” to the outside environment, then *heat given off by rebar = −heat taken in by water*, or:
 
 <!-- SEG:m68726:para:fs-idp46728032 -->
 Since we know how heat is related to other measurable quantities, we have:
@@ -86,16 +68,22 @@ The density of water is 1.0 g/mL, so 425 mL of water = 425 g. Noting that the fi
 Solving this gives *T*~i,rebar~= 248 °C, so the initial temperature of the rebar was 248 °C.
 
 <!-- SEG:m68726:para:fs-idm82711952 -->
-Check Your Learning A 248-g piece of copper is dropped into 390 mL of water at 22.6 °C. The final temperature of the water was measured as 39.9 °C. Calculate the initial temperature of the piece of copper. Assume that all heat transfer occurs between the copper and the water.
+A 248-g piece of copper is dropped into 390 mL of water at 22.6 °C. The final temperature of the water was measured as 39.9 °C. Calculate the initial temperature of the piece of copper. Assume that all heat transfer occurs between the copper and the water.
+
+<!-- SEG:m68726:para:fs-idm12419600 -->
+The initial temperature of the copper was 335.6 °C.
+
+<!-- SEG:m68726:para:fs-idp12008976 -->
+A 248-g piece of copper initially at 314 °C is dropped into 390 mL of water initially at 22.6 °C. Assuming that all heat transfer occurs between the copper and the water, calculate the final temperature.
+
+<!-- SEG:m68726:para:fs-idm84058400 -->
+The final temperature (reached by both copper and water) is 38.7 °C.
 
 <!-- SEG:m68726:note-title:fs-idm20275344-title -->
 Answer:
 
 <!-- SEG:m68726:para:fs-idm12419600 -->
 The initial temperature of the copper was 335.6 °C.
-
-<!-- SEG:m68726:para:fs-idp12008976 -->
-Check Your Learning A 248-g piece of copper initially at 314 °C is dropped into 390 mL of water initially at 22.6 °C. Assuming that all heat transfer occurs between the copper and the water, calculate the final temperature.
 
 <!-- SEG:m68726:note-title:fs-idm17192400-title -->
 Answer:
@@ -109,29 +97,11 @@ This method can also be used to determine other quantities, such as the specific
 <!-- SEG:m68726:example-title:fs-idm80667088-title -->
 Identifying a Metal by Measuring Specific Heat
 
-<!-- SEG:m68726:para:fs-idm457088 -->
-In expanded form, this is:
-
-<!-- SEG:m68726:para:fs-idm9602288 -->
-Noting that since the metal was submerged in boiling water, its initial temperature was 100.0 °C; and that for water, 60.0 mL = 60.0 g; we have:
-
-<!-- SEG:m68726:para:fs-idm4520800 -->
-Solving this:
-
-<!-- SEG:m68726:para:fs-idm61018208 -->
-Comparing this with values in , our experimental specific heat is closest to the value for copper (0.39 J/g °C), so we identify the metal as copper.
-
-<!-- SEG:m68726:para:fs-idm19048032 -->
-*c*~metal~= 0.13 J/g °C
-
-<!-- SEG:m68726:para:fs-idm40554112 -->
-This specific heat is close to that of either gold or lead. It would be difficult to determine which metal this was based solely on the numerical values. However, the observation that the metal is silver/gray in addition to the value for the specific heat indicates that the metal is lead.
-
 <!-- SEG:m68726:para:fs-idm92661904 -->
-Identifying a Metal by Measuring Specific Heat A 59.7 g piece of metal that had been submerged in boiling water was quickly transferred into 60.0 mL of water initially at 22.0 °C. The final temperature is 28.5 °C. Use these data to determine the specific heat of the metal. Use this result to identify the metal.
+A 59.7 g piece of metal that had been submerged in boiling water was quickly transferred into 60.0 mL of water initially at 22.0 °C. The final temperature is 28.5 °C. Use these data to determine the specific heat of the metal. Use this result to identify the metal.
 
 <!-- SEG:m68726:para:fs-idm56342080 -->
-Solution Assuming perfect heat transfer, *heat given off by metal = −heat taken in by water*, or:
+Assuming perfect heat transfer, *heat given off by metal = −heat taken in by water*, or:
 
 <!-- SEG:m68726:para:fs-idm457088 -->
 In expanded form, this is:
@@ -146,7 +116,13 @@ Solving this:
 Comparing this with values in , our experimental specific heat is closest to the value for copper (0.39 J/g °C), so we identify the metal as copper.
 
 <!-- SEG:m68726:para:fs-idm42342688 -->
-Check Your Learning A 92.9-g piece of a silver/gray metal is heated to 178.0 °C, and then quickly transferred into 75.0 mL of water initially at 24.0 °C. After 5 minutes, both the metal and the water have reached the same temperature: 29.7 °C. Determine the specific heat and the identity of the metal. (Note: You should find that the specific heat is close to that of two different metals. Explain how you can confidently determine the identity of the metal).
+A 92.9-g piece of a silver/gray metal is heated to 178.0 °C, and then quickly transferred into 75.0 mL of water initially at 24.0 °C. After 5 minutes, both the metal and the water have reached the same temperature: 29.7 °C. Determine the specific heat and the identity of the metal. (Note: You should find that the specific heat is close to that of two different metals. Explain how you can confidently determine the identity of the metal).
+
+<!-- SEG:m68726:para:fs-idm19048032 -->
+*c*~metal~= 0.13 J/g °C
+
+<!-- SEG:m68726:para:fs-idm40554112 -->
+This specific heat is close to that of either gold or lead. It would be difficult to determine which metal this was based solely on the numerical values. However, the observation that the metal is silver/gray in addition to the value for the specific heat indicates that the metal is lead.
 
 <!-- SEG:m68726:note-title:fs-idm64160064-title -->
 Answer:
@@ -169,6 +145,12 @@ This concept lies at the heart of all calorimetry problems and calculations.
 <!-- SEG:m68726:example-title:fs-idm19242032-title -->
 Heat Produced by an Exothermic Reaction
 
+<!-- SEG:m68726:para:fs-idm66182640 -->
+When 50.0 mL of 1.00 M HCl(*aq*) and 50.0 mL of 1.00 M NaOH(*aq*), both at 22.0 °C, are added to a coffee cup calorimeter, the temperature of the mixture reaches a maximum of 28.9 °C. What is the approximate amount of heat produced by this reaction?
+
+<!-- SEG:m68726:para:fs-idm73607008 -->
+To visualize what is going on, imagine that you could combine the two solutions so quickly that no reaction took place while they mixed; then after mixing, the reaction took place. At the instant of mixing, you have 100.0 mL of a mixture of HCl and NaOH at 22.0 °C. The HCl and NaOH then react until the solution temperature reaches 28.9 °C.
+
 <!-- SEG:m68726:para:fs-idm74180672 -->
 The heat given off by the reaction is equal to that taken in by the solution. Therefore:
 
@@ -187,41 +169,17 @@ Finally, since we are trying to find the heat of the reaction, we have:
 <!-- SEG:m68726:para:fs-idm66484944 -->
 The negative sign indicates that the reaction is exothermic. It produces 2.9 kJ of heat.
 
+<!-- SEG:m68726:para:fs-idm55750416 -->
+When 100 mL of 0.200 M NaCl(*aq*) and 100 mL of 0.200 M AgNO~3~(*aq*), both at 21.9 °C, are mixed in a coffee cup calorimeter, the temperature increases to 23.5 °C as solid AgCl forms. How much heat is produced by this precipitation reaction? What assumptions did you make to determine your value?
+
 <!-- SEG:m68726:para:fs-idm94618544 -->
 1.34 [[MATH:2]] 10 ^3^ kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water
-
-<!-- SEG:m68726:para:fs-idm66182640 -->
-Heat Produced by an Exothermic ReactionWhen 50.0 mL of 1.00 M HCl(*aq*) and 50.0 mL of 1.00 M NaOH(*aq*), both at 22.0 °C, are added to a coffee cup calorimeter, the temperature of the mixture reaches a maximum of 28.9 °C. What is the approximate amount of heat produced by this reaction?
-
-<!-- SEG:m68726:para:fs-idm73607008 -->
-Solution To visualize what is going on, imagine that you could combine the two solutions so quickly that no reaction took place while they mixed; then after mixing, the reaction took place. At the instant of mixing, you have 100.0 mL of a mixture of HCl and NaOH at 22.0 °C. The HCl and NaOH then react until the solution temperature reaches 28.9 °C.
-
-<!-- SEG:m68726:para:fs-idm74180672 -->
-The heat given off by the reaction is equal to that taken in by the solution. Therefore:
-
-<!-- SEG:m68726:para:fs-idm11281888 -->
-(It is important to remember that this relationship only holds if the calorimeter does not absorb any heat from the reaction, and there is no heat exchange between the calorimeter and the outside environment.)
-
-<!-- SEG:m68726:para:fs-idm12358560 -->
-Next, we know that the heat absorbed by the solution depends on its specific heat, mass, and temperature change:
-
-<!-- SEG:m68726:para:fs-idp12432 -->
-To proceed with this calculation, we need to make a few more reasonable assumptions or approximations. Since the solution is aqueous, we can proceed as if it were water in terms of its specific heat and mass values. The density of water is approximately 1.0 g/mL, so 100.0 mL has a mass of about 1.0 [[MATH:3]] 10^2^ g (two significant figures). The specific heat of water is approximately 4.184 J/g °C, so we use that for the specific heat of the solution. Substituting these values gives:
-
-<!-- SEG:m68726:para:fs-idm6689328 -->
-Finally, since we are trying to find the heat of the reaction, we have:
-
-<!-- SEG:m68726:para:fs-idm66484944 -->
-The negative sign indicates that the reaction is exothermic. It produces 2.9 kJ of heat.
-
-<!-- SEG:m68726:para:fs-idm55750416 -->
-Check Your Learning When 100 mL of 0.200 M NaCl(*aq*) and 100 mL of 0.200 M AgNO~3~(*aq*), both at 21.9 °C, are mixed in a coffee cup calorimeter, the temperature increases to 23.5 °C as solid AgCl forms. How much heat is produced by this precipitation reaction? What assumptions did you make to determine your value?
 
 <!-- SEG:m68726:note-title:fs-idm9227984-title -->
 Answer:
 
 <!-- SEG:m68726:para:fs-idm94618544 -->
-1.34 [[MATH:4]] 10 ^3^ kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water
+1.34 [[MATH:3]] 10 ^3^ kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water
 
 <!-- SEG:m68726:note-title:fs-idm9530672-title -->
 Thermochemistry of Hand Warmers
@@ -230,10 +188,10 @@ Thermochemistry of Hand Warmers
 When working or playing outdoors on a cold day, you might use a hand warmer to warm your hands (). A common reusable hand warmer contains a supersaturated solution of NaC~2~H~3~O~2~ (sodium acetate) and a metal disc. Bending the disk creates nucleation sites around which the metastable NaC~2~H~3~O~2~ quickly crystallizes (a later chapter on solutions will investigate saturation and supersaturation in more detail).
 
 <!-- SEG:m68726:para:fs-idm213136 -->
-The process [[MATH:5]] is exothermic, and the heat produced by this process is absorbed by your hands, thereby warming them (at least for a while). If the hand warmer is reheated, the NaC~2~H~3~O~2~ redissolves and can be reused.
+The process [[MATH:4]] is exothermic, and the heat produced by this process is absorbed by your hands, thereby warming them (at least for a while). If the hand warmer is reheated, the NaC~2~H~3~O~2~ redissolves and can be reused.
 
 <!-- SEG:m68726:para:fs-idm15246800 -->
-Another common hand warmer produces heat when it is ripped open, exposing iron and water in the hand warmer to oxygen in the air. One simplified version of this exothermic reaction is [[MATH:6]] Salt in the hand warmer catalyzes the reaction, so it produces heat more rapidly; cellulose, vermiculite, and activated carbon help distribute the heat evenly. Other types of hand warmers use lighter fluid (a platinum catalyst helps lighter fluid oxidize exothermically), charcoal (charcoal oxidizes in a special case), or electrical units that produce heat by passing an electrical current from a battery through resistive wires.
+Another common hand warmer produces heat when it is ripped open, exposing iron and water in the hand warmer to oxygen in the air. One simplified version of this exothermic reaction is [[MATH:5]] Salt in the hand warmer catalyzes the reaction, so it produces heat more rapidly; cellulose, vermiculite, and activated carbon help distribute the heat evenly. Other types of hand warmers use lighter fluid (a platinum catalyst helps lighter fluid oxidize exothermically), charcoal (charcoal oxidizes in a special case), or electrical units that produce heat by passing an electrical current from a battery through resistive wires.
 
 <!-- SEG:m68726:caption:CNX_Chem_05_02_HandWarmer-caption -->
 Chemical hand warmers produce heat that warms your hand on a cold day. In this one, you can see the metal disc that initiates the exothermic precipitation reaction. (credit: modification of work by Science Buddies TV/YouTube)
@@ -244,32 +202,14 @@ This [link](http://openstax.org/l/16Handwarmer) shows the precipitation reaction
 <!-- SEG:m68726:example-title:fs-idp325184-title -->
 Heat Flow in an Instant Ice Pack
 
-<!-- SEG:m68726:para:fs-idp41329920 -->
-Calculate the value of *q* for this reaction and explain the meaning of its arithmetic sign. State any assumptions that you made.
-
-<!-- SEG:m68726:para:fs-idm76420496 -->
-with “rxn” and “soln” used as shorthand for “reaction” and “solution,” respectively.
-
-<!-- SEG:m68726:para:fs-idm52847712 -->
-Assuming also that the specific heat of the solution is the same as that for water, we have:
-
-<!-- SEG:m68726:para:fs-idp8566608 -->
-The positive sign for *q* indicates that the dissolution is an endothermic process.
-
-<!-- SEG:m68726:para:fs-idm5945296 -->
-1.33 kJ; assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself) and that the specific heat of the solution is the same as that for water
-
 <!-- SEG:m68726:para:fs-idm52519632 -->
-Heat Flow in an Instant Ice Pack When solid ammonium nitrate dissolves in water, the solution becomes cold. This is the basis for an “instant ice pack” (). When 3.21 g of solid NH~4~NO~3~ dissolves in 50.0 g of water at 24.9 °C in a calorimeter, the temperature decreases to 20.3 °C.
+When solid ammonium nitrate dissolves in water, the solution becomes cold. This is the basis for an “instant ice pack” (). When 3.21 g of solid NH~4~NO~3~ dissolves in 50.0 g of water at 24.9 °C in a calorimeter, the temperature decreases to 20.3 °C.
 
 <!-- SEG:m68726:para:fs-idp41329920 -->
 Calculate the value of *q* for this reaction and explain the meaning of its arithmetic sign. State any assumptions that you made.
-
-<!-- SEG:m68726:caption:CNX_Chem_05_02_IcePack-caption -->
-An instant cold pack consists of a bag containing solid ammonium nitrate and a second bag of water. When the bag of water is broken, the pack becomes cold because the dissolution of ammonium nitrate is an endothermic process that removes thermal energy from the water. The cold pack then removes thermal energy from your body.
 
 <!-- SEG:m68726:para:fs-idp364256 -->
-Solution We assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself), in which case:
+We assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself), in which case:
 
 <!-- SEG:m68726:para:fs-idm76420496 -->
 with “rxn” and “soln” used as shorthand for “reaction” and “solution,” respectively.
@@ -281,13 +221,19 @@ Assuming also that the specific heat of the solution is the same as that for wat
 The positive sign for *q* indicates that the dissolution is an endothermic process.
 
 <!-- SEG:m68726:para:fs-idm6778640 -->
-Check Your Learning When a 3.00-g sample of KCl was added to 3.00 [[MATH:7]] 10^2^ g of water in a coffee cup calorimeter, the temperature decreased by 1.05 °C. How much heat is involved in the dissolution of the KCl? What assumptions did you make?
+When a 3.00-g sample of KCl was added to 3.00 [[MATH:6]] 10^2^ g of water in a coffee cup calorimeter, the temperature decreased by 1.05 °C. How much heat is involved in the dissolution of the KCl? What assumptions did you make?
+
+<!-- SEG:m68726:para:fs-idm5945296 -->
+1.33 kJ; assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself) and that the specific heat of the solution is the same as that for water
 
 <!-- SEG:m68726:note-title:fs-idm9544544-title -->
 Answer:
 
 <!-- SEG:m68726:para:fs-idm5945296 -->
 1.33 kJ; assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself) and that the specific heat of the solution is the same as that for water
+
+<!-- SEG:m68726:caption:CNX_Chem_05_02_IcePack-caption -->
+An instant cold pack consists of a bag containing solid ammonium nitrate and a second bag of water. When the bag of water is broken, the pack becomes cold because the dissolution of ammonium nitrate is an endothermic process that removes thermal energy from the water. The cold pack then removes thermal energy from your body.
 
 <!-- SEG:m68726:para:fs-idm33984192 -->
 If the amount of heat absorbed by a calorimeter is too large to neglect or if we require more accurate results, then we must take into account the heat absorbed both by the solution and by the calorimeter.
@@ -307,20 +253,11 @@ This [site](http://openstax.org/l/16Calorcalcs) shows calorimetric calculations 
 <!-- SEG:m68726:example-title:fs-idm49773520-title -->
 Bomb Calorimetry
 
-<!-- SEG:m68726:para:fs-idm51439440 -->
-The heat produced by the reaction is absorbed by the water and the bomb:
-
-<!-- SEG:m68726:para:fs-idm51688848 -->
-This reaction released 48.7 kJ of heat when 3.12 g of glucose was burned.
-
-<!-- SEG:m68726:para:fs-idm88592432 -->
-q~rx~ = –39.0 kJ (the reaction produced 39.0 kJ of heat)
-
 <!-- SEG:m68726:para:fs-idp23917952 -->
-Bomb Calorimetry When 3.12 g of glucose, C~6~H~12~O~6~, is burned in a bomb calorimeter, the temperature of the calorimeter increases from 23.8 °C to 35.6 °C. The calorimeter contains 775 g of water, and the bomb itself has a heat capacity of 893 J/°C. How much heat was produced by the combustion of the glucose sample?
+When 3.12 g of glucose, C~6~H~12~O~6~, is burned in a bomb calorimeter, the temperature of the calorimeter increases from 23.8 °C to 35.6 °C. The calorimeter contains 775 g of water, and the bomb itself has a heat capacity of 893 J/°C. How much heat was produced by the combustion of the glucose sample?
 
 <!-- SEG:m68726:para:fs-idm103829360 -->
-Solution The combustion produces heat that is primarily absorbed by the water and the bomb. (The amounts of heat absorbed by the reaction products and the unreacted excess oxygen are relatively small and dealing with them is beyond the scope of this text. We will neglect them in our calculations.)
+The combustion produces heat that is primarily absorbed by the water and the bomb. (The amounts of heat absorbed by the reaction products and the unreacted excess oxygen are relatively small and dealing with them is beyond the scope of this text. We will neglect them in our calculations.)
 
 <!-- SEG:m68726:para:fs-idm51439440 -->
 The heat produced by the reaction is absorbed by the water and the bomb:
@@ -329,7 +266,10 @@ The heat produced by the reaction is absorbed by the water and the bomb:
 This reaction released 48.7 kJ of heat when 3.12 g of glucose was burned.
 
 <!-- SEG:m68726:para:fs-idm39952704 -->
-Check Your LearningWhen 0.963 g of benzene, C~6~H~6~, is burned in a bomb calorimeter, the temperature of the calorimeter increases by 8.39 °C. The bomb has a heat capacity of 784 J/°C and is submerged in 925 mL of water. How much heat was produced by the combustion of the benzene sample?
+When 0.963 g of benzene, C~6~H~6~, is burned in a bomb calorimeter, the temperature of the calorimeter increases by 8.39 °C. The bomb has a heat capacity of 784 J/°C and is submerged in 925 mL of water. How much heat was produced by the combustion of the benzene sample?
+
+<!-- SEG:m68726:para:fs-idm88592432 -->
+q~rx~ = –39.0 kJ (the reaction produced 39.0 kJ of heat)
 
 <!-- SEG:m68726:note-title:fs-idm11360480-title -->
 Answer:
@@ -419,7 +359,7 @@ A 45-g aluminum spoon (specific heat 0.88 J/g °C) at 24 °C is placed in 180 mL
 The temperature of the cooling water as it leaves the hot engine of an automobile is 240 °F. After it passes through the radiator it has a temperature of 175 °F. Calculate the amount of heat transferred from the engine to the surroundings by one gallon of water with a specific heat of 4.184 J/g °C.
 
 <!-- SEG:m68726:solution:fs-idp5232528 -->
-5.7 [[MATH:8]] 10^2^ kJ
+5.7 [[MATH:7]] 10^2^ kJ
 
 <!-- SEG:m68726:problem:fs-idm72237968 -->
 A 70.0-g piece of metal at 80.0 °C is placed in 100 g of water at 22.0 °C contained in a calorimeter like that shown in . The metal and water come to the same temperature at 24.6 °C. How much heat did the metal give up to the water? What is the specific heat of the metal?
@@ -470,7 +410,7 @@ When a 0.740-g sample of trinitrotoluene (TNT), C~7~H~5~N~2~O~6~, is burned in a
 11.7 kJ
 
 <!-- SEG:m68726:problem:fs-idp26469920 -->
-One method of generating electricity is by burning coal to heat water, which produces steam that drives an electric generator. To determine the rate at which coal is to be fed into the burner in this type of plant, the heat of combustion per ton of coal must be determined using a bomb calorimeter. When 1.00 g of coal is burned in a bomb calorimeter (), the temperature increases by 1.48 °C. If the heat capacity of the calorimeter is 21.6 kJ/°C, determine the heat produced by combustion of a ton of coal (2.000 [[MATH:9]] 10^3^ pounds).
+One method of generating electricity is by burning coal to heat water, which produces steam that drives an electric generator. To determine the rate at which coal is to be fed into the burner in this type of plant, the heat of combustion per ton of coal must be determined using a bomb calorimeter. When 1.00 g of coal is burned in a bomb calorimeter (), the temperature increases by 1.48 °C. If the heat capacity of the calorimeter is 21.6 kJ/°C, determine the heat produced by combustion of a ton of coal (2.000 [[MATH:8]] 10^3^ pounds).
 
 <!-- SEG:m68726:problem:fs-idp11693072 -->
 The amount of fat recommended for someone with a daily diet of 2000 Calories is 65 g. What percent of the calories in this diet would be supplied by this amount of fat if the average number of Calories for fat is9.1 Calories/g?
@@ -488,13 +428,13 @@ What is the maximum mass of carbohydrate in a 6-oz serving of diet soda that con
 0.24 g
 
 <!-- SEG:m68726:problem:fs-idm30519232 -->
-A pint of premium ice cream can contain 1100 Calories. What mass of fat, in grams and pounds, must be produced in the body to store an extra 1.1 [[MATH:10]] 10^3^ Calories if the average number of Calories for fat is9.1 Calories/g?
+A pint of premium ice cream can contain 1100 Calories. What mass of fat, in grams and pounds, must be produced in the body to store an extra 1.1 [[MATH:9]] 10^3^ Calories if the average number of Calories for fat is9.1 Calories/g?
 
 <!-- SEG:m68726:problem:fs-idm50956864 -->
 A serving of a breakfast cereal contains 3 g of protein, 18 g of carbohydrates, and 6 g of fat. What is the Calorie content of a serving of this cereal if the average number of Calories for fat is 9.1 Calories/g, for carbohydrates is 4.1 Calories/g, and for protein is 4.1 Calories/g?
 
 <!-- SEG:m68726:solution:fs-idm184550912 -->
-1.4 [[MATH:11]] 10^2^ Calories
+1.4 [[MATH:10]] 10^2^ Calories
 
 <!-- SEG:m68726:problem:fs-idp47244976 -->
 Which is the least expensive source of energy in kilojoules per dollar: a box of breakfast cereal that weighs 32 ounces and costs $4.23, or a liter of isooctane (density, 0.6919 g/mL) that costs $0.45? Compare the nutritional value of the cereal with the heat produced by combustion of the isooctane under standard conditions. A 1.0-ounce serving of the cereal provides 130 Calories.

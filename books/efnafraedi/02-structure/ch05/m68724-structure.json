@@ -712,9 +712,19 @@
           "id": "fs-idp1783792",
           "title": {
             "segmentId": "m68724:example-title:fs-idp1783792-title",
-            "text": "Check Your Learning"
+            "text": "Measuring Heat"
           },
           "content": [
+            {
+              "type": "para",
+              "id": "fs-idm38005904",
+              "segmentId": "m68724:para:fs-idm38005904"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp12392592",
+              "segmentId": "m68724:para:fs-idp12392592"
+            },
             {
               "type": "para",
               "id": "fs-idm6508272",
@@ -732,8 +742,32 @@
             },
             {
               "type": "para",
+              "id": "fs-idm1147904",
+              "segmentId": "m68724:para:fs-idm1147904"
+            },
+            {
+              "type": "para",
               "id": "fs-idm11745888",
               "segmentId": "m68724:para:fs-idm11745888"
+            },
+            {
+              "type": "list",
+              "id": "fs-idm19140208",
+              "listType": "bulleted",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68724:item:fs-idm19140208-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68724:item:fs-idm19140208-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68724:item:fs-idm19140208-item-3"
+                }
+              ]
             },
             {
               "type": "equation",
@@ -742,80 +776,21 @@
             {
               "type": "equation",
               "id": "fs-idp59324528"
-            }
-          ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm38005904",
-          "segmentId": "m68724:para:fs-idm38005904"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp12392592",
-          "segmentId": "m68724:para:fs-idp12392592"
-        },
-        {
-          "type": "list",
-          "id": "fs-idm19140208",
-          "listType": "bulleted",
-          "items": [
-            {
-              "id": null,
-              "segmentId": "m68724:item:fs-idm19140208-item-1"
             },
             {
-              "id": null,
-              "segmentId": "m68724:item:fs-idm19140208-item-2"
-            },
-            {
-              "id": null,
-              "segmentId": "m68724:item:fs-idm19140208-item-3"
-            }
-          ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm6508272",
-          "segmentId": "m68724:para:fs-idm6508272"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm16704560",
-          "segmentId": "m68724:para:fs-idm16704560"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp82666784",
-          "class": "unnumbered"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp59324528",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp22566736",
-          "segmentId": "m68724:para:fs-idp22566736"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm1147904",
-          "segmentId": "m68724:para:fs-idm1147904"
-        },
-        {
-          "type": "note",
-          "id": "fs-idm26494944",
-          "title": {
-            "segmentId": "m68724:note-title:fs-idm26494944-title",
-            "text": "Answer:"
-          },
-          "content": [
-            {
-              "type": "para",
-              "id": "fs-idm11745888",
-              "segmentId": "m68724:para:fs-idm11745888"
+              "type": "note",
+              "id": "fs-idm26494944",
+              "title": {
+                "segmentId": "m68724:note-title:fs-idm26494944-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm11745888",
+                  "segmentId": "m68724:para:fs-idm11745888"
+                }
+              ]
             }
           ]
         },
@@ -829,9 +804,19 @@
           "id": "fs-idm41581920",
           "title": {
             "segmentId": "m68724:example-title:fs-idm41581920-title",
-            "text": "Solution"
+            "text": "Determining Other Quantities"
           },
           "content": [
+            {
+              "type": "para",
+              "id": "fs-idm4867616",
+              "segmentId": "m68724:para:fs-idm4867616"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp15079712",
+              "segmentId": "m68724:para:fs-idp15079712"
+            },
             {
               "type": "para",
               "id": "fs-idm60199232",
@@ -849,6 +834,11 @@
             },
             {
               "type": "para",
+              "id": "fs-idm40972976",
+              "segmentId": "m68724:para:fs-idm40972976"
+            },
+            {
+              "type": "para",
               "id": "fs-idp81248192",
               "segmentId": "m68724:para:fs-idp81248192"
             },
@@ -863,66 +853,21 @@
             {
               "type": "equation",
               "id": "fs-idm38894688"
-            }
-          ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm4867616",
-          "segmentId": "m68724:para:fs-idm4867616"
-        },
-        {
-          "type": "para",
-          "id": "fs-idp15079712",
-          "segmentId": "m68724:para:fs-idp15079712"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp21155408",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm60199232",
-          "segmentId": "m68724:para:fs-idm60199232"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idp25098320",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm37413152",
-          "segmentId": "m68724:para:fs-idm37413152"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm38894688",
-          "class": "unnumbered"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm17185344",
-          "segmentId": "m68724:para:fs-idm17185344"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm40972976",
-          "segmentId": "m68724:para:fs-idm40972976"
-        },
-        {
-          "type": "note",
-          "id": "fs-idp282981088",
-          "title": {
-            "segmentId": "m68724:note-title:fs-idp282981088-title",
-            "text": "Answer:"
-          },
-          "content": [
+            },
             {
-              "type": "para",
-              "id": "fs-idp81248192",
-              "segmentId": "m68724:para:fs-idp81248192"
+              "type": "note",
+              "id": "fs-idp282981088",
+              "title": {
+                "segmentId": "m68724:note-title:fs-idp282981088-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp81248192",
+                  "segmentId": "m68724:para:fs-idp81248192"
+                }
+              ]
             }
           ]
         },
@@ -1022,7 +967,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-135",
+                  "segmentId": "m68724:entry:auto-129",
                   "attributes": {}
                 }
               ]
