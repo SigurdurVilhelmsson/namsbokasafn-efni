@@ -32,7 +32,7 @@ As a system undergoes a change, its internal energy can change, and energy can b
 The relationship between internal energy, heat, and work can be represented by the equation:
 
 <!-- SEG:m68727:para:fs-idp146392048 -->
-as shown in . This is one version of the __first law of thermodynamics__, and it shows that the internal energy of a system changes through heat flow into or out of the system (positive *q* is heat flow in; negative *q* is heat flow out) or work done on or by the system. The work, *w*, is positive if it is done on the system and negative if it is done by the system.
+as shown in [#CNX_Chem_05_03_Systemqw]. This is one version of the __first law of thermodynamics__, and it shows that the internal energy of a system changes through heat flow into or out of the system (positive *q* is heat flow in; negative *q* is heat flow out) or work done on or by the system. The work, *w*, is positive if it is done on the system and negative if it is done by the system.
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_Systemqw-caption -->
 The internal energy, *U*, of a system can be changed by heat flow and work. If heat flows into the system, *q*~in~, or work is done on the system, *w*~on~, its internal energy increases, Δ*U* > 0. If heat flows out of the system, *q*~out~, or work is done by the system, *w*~by~, its internal energy decreases, Δ*U* &lt; 0.
@@ -44,7 +44,7 @@ A type of work called __expansion work__ (or pressure-volume work) occurs when a
 This view of [an internal combustion engine](http://openstax.org/l/16combustion) illustrates the conversion of energy produced by the exothermic combustion reaction of a fuel such as gasoline into energy of motion.
 
 <!-- SEG:m68727:para:fs-idp120420048 -->
-As discussed, the relationship between internal energy, heat, and work can be represented as Δ*U* = *q* + *w*. Internal energy is an example of a __state function__ (or state variable), whereas heat and work are not state functions. The value of a state function depends only on the state that a system is in, and not on how that state is reached. If a quantity is not a state function, then its value *does* depend on how the state is reached. An example of a state function is altitude or elevation. If you stand on the summit of Mt. Kilimanjaro, you are at an altitude of 5895 m, and it does not matter whether you hiked there or parachuted there. The distance you traveled to the top of Kilimanjaro, however, is not a state function. You could climb to the summit by a direct route or by a more roundabout, circuitous path (). The distances traveled would differ (distance is not a state function) but the elevation reached would be the same (altitude is a state function).
+As discussed, the relationship between internal energy, heat, and work can be represented as Δ*U* = *q* + *w*. Internal energy is an example of a __state function__ (or state variable), whereas heat and work are not state functions. The value of a state function depends only on the state that a system is in, and not on how that state is reached. If a quantity is not a state function, then its value *does* depend on how the state is reached. An example of a state function is altitude or elevation. If you stand on the summit of Mt. Kilimanjaro, you are at an altitude of 5895 m, and it does not matter whether you hiked there or parachuted there. The distance you traveled to the top of Kilimanjaro, however, is not a state function. You could climb to the summit by a direct route or by a more roundabout, circuitous path ([#CNX_Chem_05_03_Summit]). The distances traveled would differ (distance is not a state function) but the elevation reached would be the same (altitude is a state function).
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_Summit-caption -->
 Paths X and Y represent two different routes to the summit of Mt. Kilimanjaro. Both have the same change in elevation (altitude or elevation on a mountain is a state function; it does not depend on path), but they have very different distances traveled (distance walked is not a state function; it depends on the path). (credit: modification of work by Paul Shaffner)
@@ -68,7 +68,7 @@ where *qp* is the heat of reaction under conditions of constant pressure.
 And so, if a chemical or physical process is carried out at constant pressure with the only work done caused by expansion or contraction, then the heat flow (*qp*) and enthalpy change (Δ*H*) for the process are equal.
 
 <!-- SEG:m68727:para:fs-idm22504976 -->
-The heat given off when you operate a Bunsen burner is equal to the enthalpy change of the methane combustion reaction that takes place, since it occurs at the essentially constant pressure of the atmosphere. On the other hand, the heat produced by a reaction measured in a bomb calorimeter () is not equal to Δ*H* because the closed, constant-volume metal container prevents the pressure from remaining constant (it may increase or decrease if the reaction yields increased or decreased amounts of gaseous species). Chemists usually perform experiments under normal atmospheric conditions, at constant external pressure with *q* = Δ*H*, which makes enthalpy the most convenient choice for determining heat changes for chemical reactions.
+The heat given off when you operate a Bunsen burner is equal to the enthalpy change of the methane combustion reaction that takes place, since it occurs at the essentially constant pressure of the atmosphere. On the other hand, the heat produced by a reaction measured in a bomb calorimeter ([#CNX_Chem_05_02_BombCalor]) is not equal to Δ*H* because the closed, constant-volume metal container prevents the pressure from remaining constant (it may increase or decrease if the reaction yields increased or decreased amounts of gaseous species). Chemists usually perform experiments under normal atmospheric conditions, at constant external pressure with *q* = Δ*H*, which makes enthalpy the most convenient choice for determining heat changes for chemical reactions.
 
 <!-- SEG:m68727:para:fs-idp25166224 -->
 The following conventions apply when using Δ*H*:
@@ -182,7 +182,7 @@ Standard Enthalpy of Combustion
 __Standard enthalpy of combustion__ [[MATH:9]] is the enthalpy change when 1 mole of a substance burns (combines vigorously with oxygen) under standard state conditions; it is sometimes called “heat of combustion.” For example, the enthalpy of combustion of ethanol, −1366.8 kJ/mol, is the amount of heat produced when one mole of ethanol undergoes complete combustion at 25 °C and 1 atmosphere pressure, yielding products also at 25 °C and 1 atm.
 
 <!-- SEG:m68727:para:fs-idm75327968 -->
-Enthalpies of combustion for many substances have been measured; a few of these are listed in . Many readily available substances with large enthalpies of combustion are used as fuels, including hydrogen, carbon (as coal or charcoal), and __hydrocarbons__ (compounds containing only hydrogen and carbon), such as methane, propane, and the major components of gasoline.
+Enthalpies of combustion for many substances have been measured; a few of these are listed in [#fs-idp98710048]. Many readily available substances with large enthalpies of combustion are used as fuels, including hydrogen, carbon (as coal or charcoal), and __hydrocarbons__ (compounds containing only hydrogen and carbon), such as methane, propane, and the major components of gasoline.
 
 <!-- SEG:m68727:entry:auto-63 -->
 Standard Molar Enthalpies of Combustion
@@ -290,13 +290,13 @@ isooctane
 Using Enthalpy of Combustion
 
 <!-- SEG:m68727:para:fs-idp186633648 -->
-As suggests, the combustion of gasoline is a highly exothermic process. Let us determine the approximate amount of heat produced by burning 1.00 L of gasoline, assuming the enthalpy of combustion of gasoline is the same as that of isooctane, a common component of gasoline. The density of isooctane is 0.692 g/mL.
+As [#CNX_Chem_05_03_GasBurning] suggests, the combustion of gasoline is a highly exothermic process. Let us determine the approximate amount of heat produced by burning 1.00 L of gasoline, assuming the enthalpy of combustion of gasoline is the same as that of isooctane, a common component of gasoline. The density of isooctane is 0.692 g/mL.
 
 <!-- SEG:m68727:para-title:fs-idp177773984-title -->
 Solution
 
 <!-- SEG:m68727:para:fs-idp177773984 -->
-Starting with a known amount (1.00 L of isooctane), we can perform conversions between units until we arrive at the desired amount of heat or energy. The enthalpy of combustion of isooctane provides one of the necessary conversions. gives this value as −5460 kJ per 1 mole of isooctane (C~8~H~18~).
+Starting with a known amount (1.00 L of isooctane), we can perform conversions between units until we arrive at the desired amount of heat or energy. The enthalpy of combustion of isooctane provides one of the necessary conversions. [#fs-idp98710048] gives this value as −5460 kJ per 1 mole of isooctane (C~8~H~18~).
 
 <!-- SEG:m68727:para:fs-idp6149360 -->
 Using these data,
@@ -329,10 +329,10 @@ The combustion of gasoline is very exothermic. (credit: modification of work by 
 Emerging Algae-Based Energy Technologies (Biofuels)
 
 <!-- SEG:m68727:para:fs-idp90130976 -->
-As reserves of fossil fuels diminish and become more costly to extract, the search is ongoing for replacement fuel sources for the future. Among the most promising biofuels are those derived from algae (). The species of algae used are nontoxic, biodegradable, and among the world’s fastest growing organisms. About 50% of algal weight is oil, which can be readily converted into fuel such as biodiesel. Algae can yield 26,000 gallons of __biofuel__ per hectare—much more energy per acre than other crops. Some strains of algae can flourish in brackish water that is not usable for growing other crops. Algae can produce biodiesel, biogasoline, ethanol, butanol, methane, and even jet fuel.
+As reserves of fossil fuels diminish and become more costly to extract, the search is ongoing for replacement fuel sources for the future. Among the most promising biofuels are those derived from algae ([#CNX_Chem_05_03_AlgalFuel1]). The species of algae used are nontoxic, biodegradable, and among the world’s fastest growing organisms. About 50% of algal weight is oil, which can be readily converted into fuel such as biodiesel. Algae can yield 26,000 gallons of __biofuel__ per hectare—much more energy per acre than other crops. Some strains of algae can flourish in brackish water that is not usable for growing other crops. Algae can produce biodiesel, biogasoline, ethanol, butanol, methane, and even jet fuel.
 
 <!-- SEG:m68727:para:fs-idp157750544 -->
-According to the US Department of Energy, only 39,000 square kilometers (about 0.4% of the land mass of the US or less than [[MATH:24]] of the area used to grow corn) can produce enough algal fuel to replace all the petroleum-based fuel used in the US. The cost of algal fuels is becoming more competitive—for instance, the US Air Force is producing jet fuel from algae at a total cost of under $5 per gallon. [footnote: For more on algal fuel, see http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.] The process used to produce algal fuel is as follows: grow the algae (which use sunlight as their energy source and CO~2~ as a raw material); harvest the algae; extract the fuel compounds (or precursor compounds); process as necessary (e.g., perform a transesterification reaction to make biodiesel); purify; and distribute ().
+According to the US Department of Energy, only 39,000 square kilometers (about 0.4% of the land mass of the US or less than [[MATH:24]] of the area used to grow corn) can produce enough algal fuel to replace all the petroleum-based fuel used in the US. The cost of algal fuels is becoming more competitive—for instance, the US Air Force is producing jet fuel from algae at a total cost of under $5 per gallon. [footnote: For more on algal fuel, see http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.] The process used to produce algal fuel is as follows: grow the algae (which use sunlight as their energy source and CO~2~ as a raw material); harvest the algae; extract the fuel compounds (or precursor compounds); process as necessary (e.g., perform a transesterification reaction to make biodiesel); purify; and distribute ([#CNX_Chem_05_03_AlgalFuel2]).
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_AlgalFuel1-caption -->
 (a) Tiny algal organisms can be (b) grown in large quantities and eventually (c) turned into a useful fuel such as biodiesel. (credit a: modification of work by Micah Sittig; credit b: modification of work by Robert Kerton; credit c: modification of work by John F. Williams)
@@ -464,7 +464,7 @@ Because the CO produced in Step 1 is consumed in Step 2, the net change is:
 According to Hess’s law, the enthalpy change of the reaction will equal the sum of the enthalpy changes of the steps.
 
 <!-- SEG:m68727:para:fs-idp10365136 -->
-The result is shown in . We see that Δ*H* of the overall reaction is the same whether it occurs in one step or two. This finding (overall Δ*H* for the reaction = sum of Δ*H* values for reaction “steps” in the overall reaction) is true in general for chemical and physical processes.
+The result is shown in [#CNX_Chem_05_03_HessCO2]. We see that Δ*H* of the overall reaction is the same whether it occurs in one step or two. This finding (overall Δ*H* for the reaction = sum of Δ*H* values for reaction “steps” in the overall reaction) is true in general for chemical and physical processes.
 
 <!-- SEG:m68727:caption:CNX_Chem_05_03_HessCO2-caption -->
 The formation of CO~2~(*g*) from its elements can be thought of as occurring in two steps, which sum to the overall reaction, as described by Hess’s law. The horizontal blue lines represent enthalpies. For an exothermic process, the products are at lower enthalpy than are the reactants.
@@ -671,16 +671,16 @@ Key Equations
 Chemistry End of Chapter Exercises
 
 <!-- SEG:m68727:problem:fs-idp167492528 -->
-Explain how the heat measured in differs from the enthalpy change for the exothermic reaction described by the following equation:[[MATH:75]]
+Explain how the heat measured in [#fs-idm19242032] differs from the enthalpy change for the exothermic reaction described by the following equation:[[MATH:75]]
 
 <!-- SEG:m68727:solution:fs-idp167503872 -->
 The enthalpy change of the indicated reaction is for exactly 1 mol HCL and 1 mol NaOH; the heat in the example is produced by 0.0500 mol HCl and 0.0500 mol NaOH.
 
 <!-- SEG:m68727:problem:fs-idm121017200 -->
-Using the data in the check your learning section of , calculate Δ*H* in kJ/mol of AgNO~3~(*aq*) for the reaction: [[MATH:76]]
+Using the data in the check your learning section of [#fs-idm19242032], calculate Δ*H* in kJ/mol of AgNO~3~(*aq*) for the reaction: [[MATH:76]]
 
 <!-- SEG:m68727:problem:fs-idp146868384 -->
-Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of NH~4~NO~3~ under the conditions described in .
+Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of NH~4~NO~3~ under the conditions described in [#fs-idp325184].
 
 <!-- SEG:m68727:solution:fs-idp140720784 -->
 25 kJ mol^−1^
@@ -689,13 +689,13 @@ Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of NH~4~
 Calculate Δ*H* for the reaction described by the equation. (*Hint*: Use the value for the approximate amount of heat absorbed by the reaction that you calculated in a previous exercise.)[[MATH:77]]
 
 <!-- SEG:m68727:problem:fs-idp107667792 -->
-Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of CaCl~2~ (refer to ).
+Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of CaCl~2~ (refer to [#fs-idm68277040]).
 
 <!-- SEG:m68727:solution:fs-idp107669568 -->
 81 kJ mol^−1^
 
 <!-- SEG:m68727:problem:fs-idp103276592 -->
-Although the gas used in an oxyacetylene torch () is essentially pure acetylene, the heat produced by combustion of one mole of acetylene in such a torch is likely not equal to the enthalpy of combustion of acetylene listed in . Considering the conditions for which the tabulated data are reported, suggest an explanation.
+Although the gas used in an oxyacetylene torch ([#CNX_Chem_05_01_OxyacTorch]) is essentially pure acetylene, the heat produced by combustion of one mole of acetylene in such a torch is likely not equal to the enthalpy of combustion of acetylene listed in [#fs-idp98710048]. Considering the conditions for which the tabulated data are reported, suggest an explanation.
 
 <!-- SEG:m68727:problem:fs-idp103281472 -->
 How much heat is produced by burning 4.00 moles of acetylene under standard state conditions?
@@ -746,7 +746,7 @@ Homes may be heated by pumping hot water through radiators. What mass of water w
 7.43 g
 
 <!-- SEG:m68727:problem:fs-idp104125104 -->
-Which of the enthalpies of combustion in the table are also standard enthalpies of formation?
+Which of the enthalpies of combustion in [#fs-idp98710048] the table are also standard enthalpies of formation?
 
 <!-- SEG:m68727:problem:fs-idp165422368 -->
 Does the standard enthalpy of formation of H~2~O(*g*) differ from Δ*H*° for the reaction [[MATH:82]]
@@ -929,7 +929,7 @@ In the early days of automobiles, illumination at night was provided by burning 
 −122.8 kJ
 
 <!-- SEG:m68727:problem:fs-idp43583712 -->
-From the data in , determine which of the following fuels produces the greatest amount of heat per gram when burned under standard conditions: CO(*g*), CH~4~(*g*), or C~2~H~2~(*g*).
+From the data in [#fs-idp98710048], determine which of the following fuels produces the greatest amount of heat per gram when burned under standard conditions: CO(*g*), CH~4~(*g*), or C~2~H~2~(*g*).
 
 <!-- SEG:m68727:problem:fs-idp208963664 -->
 The enthalpy of combustion of hard coal averages −35 kJ/g, that of gasoline, 1.28 [[MATH:124]] 10^5^ kJ/gal. How many kilograms of hard coal provide the same amount of heat as is available from 1.0 gallon of gasoline? Assume that the density of gasoline is 0.692 g/mL (the same as the density of isooctane).

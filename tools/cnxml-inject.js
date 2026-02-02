@@ -147,7 +147,10 @@ function reverseInlineMarkup(text, equations) {
   // Convert term markers back to CNXML (simplified - without IDs)
   result = result.replace(/__([^_]+)__/g, '<term>$1</term>');
 
-  // Convert links back to CNXML
+  // Convert self-closing cross-references (e.g., [#CNX_Chem_05_02_Fig])
+  result = result.replace(/\[#([^\]]+)\]/g, '<link target-id="$1"/>');
+
+  // Convert links with text back to CNXML
   result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
     if (url.startsWith('#')) {
       // Internal reference

@@ -58,6 +58,75 @@ const MODULE_SECTIONS = {
 };
 
 // =====================================================================
+// REFERENCE MAP BUILDER
+// =====================================================================
+
+/**
+ * Build a map of element IDs to their types and numbers.
+ * Scans all CNXML files in the chapter to collect tables, figures, and examples.
+ * @param {string} book - Book slug
+ * @param {number} chapter - Chapter number
+ * @returns {Map<string, {type: string, number: string, title?: string}>}
+ */
+function buildReferenceMap(book, chapter) {
+  const refMap = new Map();
+  const chapterStr = String(chapter).padStart(2, '0');
+  const sourceDir = path.join(CONFIG.sourceDir(book), `ch${chapterStr}`);
+
+  if (!fs.existsSync(sourceDir)) {
+    return refMap;
+  }
+
+  // Get all CNXML files
+  const files = fs.readdirSync(sourceDir).filter((f) => f.endsWith('.cnxml'));
+
+  // Counters for each type (reset per chapter, but continuous across modules)
+  let tableCounter = 0;
+  let figureCounter = 0;
+  let exampleCounter = 0;
+
+  for (const file of files) {
+    const cnxml = fs.readFileSync(path.join(sourceDir, file), 'utf-8');
+
+    // Extract tables with IDs
+    const tablePattern = /<table\s+id="([^"]+)"[^>]*(?:summary="([^"]*)")?[^>]*>/g;
+    let match;
+    while ((match = tablePattern.exec(cnxml)) !== null) {
+      tableCounter++;
+      refMap.set(match[1], {
+        type: 'table',
+        number: `${chapter}.${tableCounter}`,
+        title: match[2] || null,
+      });
+    }
+
+    // Extract figures with IDs
+    const figurePattern = /<figure\s+id="([^"]+)"/g;
+    while ((match = figurePattern.exec(cnxml)) !== null) {
+      figureCounter++;
+      refMap.set(match[1], {
+        type: 'figure',
+        number: `${chapter}.${figureCounter}`,
+      });
+    }
+
+    // Extract examples with IDs and titles
+    const examplePattern = /<example\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/example>/g;
+    while ((match = examplePattern.exec(cnxml)) !== null) {
+      exampleCounter++;
+      const titleMatch = match[2].match(/<title>([^<]+)<\/title>/);
+      refMap.set(match[1], {
+        type: 'example',
+        number: `${chapter}.${exampleCounter}`,
+        title: titleMatch ? titleMatch[1] : null,
+      });
+    }
+  }
+
+  return refMap;
+}
+
+// =====================================================================
 // UTILITY FUNCTIONS
 // =====================================================================
 
@@ -86,10 +155,12 @@ function processContent(content, context = {}) {
   let result = content;
 
   // Convert MathML to KaTeX
+  // Note: KaTeX renderToString already wraps in <span class="katex">, so we use
+  // a different wrapper class to avoid nested .katex elements and font-size issues
   result = result.replace(/<m:math[^>]*>[\s\S]*?<\/m:math>/g, (mathml) => {
     const latex = convertMathMLToLatex(mathml);
     const katexHtml = renderLatex(latex, false);
-    return `<span class="katex" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
+    return `<span class="math-inline" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
   });
 
   // Convert emphasis
@@ -104,6 +175,68 @@ function processContent(content, context = {}) {
   // Convert sub/sup
   result = result.replace(/<sub>([\s\S]*?)<\/sub>/g, '<sub>$1</sub>');
   result = result.replace(/<sup>([\s\S]*?)<\/sup>/g, '<sup>$1</sup>');
+
+  // Convert links
+  // Helper to get link text from reference map
+  const getRefLabel = (targetId) => {
+    if (context.refMap && context.refMap.has(targetId)) {
+      const ref = context.refMap.get(targetId);
+      const typeLabels = {
+        table: 'Table',
+        figure: 'Figure',
+        example: 'Example',
+      };
+      return `${typeLabels[ref.type] || ref.type} ${ref.number}`;
+    }
+    return null;
+  };
+
+  // Self-closing cross-references (e.g., <link target-id="fs-id"/>)
+  result = result.replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, targetId) => {
+    const label = getRefLabel(targetId);
+    if (label) {
+      return `<a href="#${escapeAttr(targetId)}">${label}</a>`;
+    }
+    return `<a href="#${escapeAttr(targetId)}">[${targetId}]</a>`;
+  });
+
+  // Links with content
+  result = result.replace(
+    /<link\s+target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
+    (match, targetId, inner) => {
+      const text = inner.trim();
+      if (text) {
+        return `<a href="#${escapeAttr(targetId)}">${processContent(text, context)}</a>`;
+      }
+      const label = getRefLabel(targetId);
+      if (label) {
+        return `<a href="#${escapeAttr(targetId)}">${label}</a>`;
+      }
+      return `<a href="#${escapeAttr(targetId)}">${targetId}</a>`;
+    }
+  );
+
+  // Document links (cross-module references) - also need to lookup the reference
+  result = result.replace(
+    /<link\s+document="([^"]*)"[^>]*target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
+    (match, doc, targetId, inner) => {
+      const text = inner.trim();
+      if (text) {
+        return `<a href="#${escapeAttr(targetId)}">${processContent(text, context)}</a>`;
+      }
+      // Look up the reference - same chapter, different module
+      const label = getRefLabel(targetId);
+      if (label) {
+        return `<a href="#${escapeAttr(targetId)}">${label}</a>`;
+      }
+      return `<a href="#${escapeAttr(targetId)}">${doc}#${targetId}</a>`;
+    }
+  );
+
+  // URL links
+  result = result.replace(/<link\s+url="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g, (match, url, inner) => {
+    return `<a href="${escapeAttr(url)}">${processContent(inner, context)}</a>`;
+  });
 
   // Strip remaining CNXML/MathML tags (namespaced only)
   result = result.replace(/<[a-z]+:[^>]*\/>/gi, '');
@@ -376,8 +509,9 @@ function buildEquationsHtml(equations, chapter, _book) {
 /**
  * Extract exercises from a CNXML file.
  */
-function extractExercises(cnxmlContent, moduleId, moduleInfo) {
+function extractExercises(cnxmlContent, moduleId, moduleInfo, refMap = new Map()) {
   const exercises = [];
+  const context = { refMap };
 
   // Find exercises section
   const sectionMatch = cnxmlContent.match(
@@ -401,7 +535,7 @@ function extractExercises(cnxmlContent, moduleId, moduleInfo) {
     const problem = problemMatch
       ? {
           id: problemMatch[1],
-          content: extractProblemContent(problemMatch[2]),
+          content: extractProblemContent(problemMatch[2], context),
         }
       : null;
 
@@ -410,7 +544,7 @@ function extractExercises(cnxmlContent, moduleId, moduleInfo) {
     const solution = solutionMatch
       ? {
           id: solutionMatch[1],
-          content: extractSolutionContent(solutionMatch[2]),
+          content: extractSolutionContent(solutionMatch[2], context),
         }
       : null;
 
@@ -431,14 +565,14 @@ function extractExercises(cnxmlContent, moduleId, moduleInfo) {
 /**
  * Extract and process problem content.
  */
-function extractProblemContent(content) {
+function extractProblemContent(content, context = {}) {
   // Extract paragraphs
   const paras = [];
   const paraPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
   let match;
 
   while ((match = paraPattern.exec(content)) !== null) {
-    paras.push(processContent(match[1].trim()));
+    paras.push(processContent(match[1].trim(), context));
   }
 
   // Extract lists
@@ -451,7 +585,7 @@ function extractProblemContent(content) {
     let itemMatch;
 
     while ((itemMatch = itemPattern.exec(match[1])) !== null) {
-      items.push(processContent(itemMatch[1].trim()));
+      items.push(processContent(itemMatch[1].trim(), context));
     }
 
     lists.push(items);
@@ -463,18 +597,18 @@ function extractProblemContent(content) {
 /**
  * Extract and process solution content.
  */
-function extractSolutionContent(content) {
+function extractSolutionContent(content, context = {}) {
   const paras = [];
   const paraPattern = /<para[^>]*>([\s\S]*?)<\/para>/g;
   let match;
 
   while ((match = paraPattern.exec(content)) !== null) {
-    paras.push(processContent(match[1].trim()));
+    paras.push(processContent(match[1].trim(), context));
   }
 
   // If no paras found, try to get direct content
   if (paras.length === 0) {
-    const cleaned = processContent(content.trim());
+    const cleaned = processContent(content.trim(), context);
     if (cleaned) paras.push(cleaned);
   }
 
@@ -833,6 +967,12 @@ async function main() {
     console.log(`  Using source CNXML for equations/exercises (structure preserved)`);
   }
 
+  // Build reference map for cross-references (tables, figures, examples)
+  const refMap = buildReferenceMap(book, chapter);
+  if (verbose) {
+    console.log(`  Built reference map with ${refMap.size} entries`);
+  }
+
   // Collect data from all modules
   const allSummaries = [];
   const allGlossary = [];
@@ -877,7 +1017,7 @@ async function main() {
     }
 
     if (resource === 'all' || resource === 'exercises' || resource === 'answers') {
-      const exercises = extractExercises(content, moduleId, moduleInfo);
+      const exercises = extractExercises(content, moduleId, moduleInfo, refMap);
       allExercises.push(...exercises);
       if (verbose) console.log(`  ${moduleId}: ${exercises.length} exercises (source)`);
     }

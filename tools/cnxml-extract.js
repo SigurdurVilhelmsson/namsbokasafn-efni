@@ -160,7 +160,12 @@ function extractInlineText(content, mathMap, counters) {
     return `[${stripTags(inner)}](${url})`;
   });
 
-  // Handle cross-references
+  // Handle self-closing cross-references (e.g., <link target-id="CNX_Chem_05_02_Fig"/>)
+  text = text.replace(/<link[^>]*target-id="([^"]*)"[^>]*\/>/g, (match, targetId) => {
+    return `[#${targetId}]`;
+  });
+
+  // Handle cross-references with content
   text = text.replace(
     /<link[^>]*target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
     (match, targetId, inner) => {

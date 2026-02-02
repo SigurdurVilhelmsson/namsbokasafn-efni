@@ -33,7 +33,12 @@ import {
   parseAttributes,
   stripTags,
 } from './lib/cnxml-parser.js';
-import { escapeAttr, escapeHtml, processInlineContent } from './lib/cnxml-elements.js';
+import {
+  escapeAttr,
+  escapeHtml,
+  processInlineContent,
+  renderFootnotesSection,
+} from './lib/cnxml-elements.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 
 // =====================================================================
@@ -190,6 +195,17 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   const doc = parseCnxmlDocument(cnxml);
   const title = doc.title;
 
+  // Pre-scan: collect all figure IDs and assign numbers
+  // This enables forward references like "(Figure 5.3)" before the figure appears
+  const figureNumbers = new Map();
+  const figureIdPattern = /<figure\s+id="([^"]+)"/g;
+  let figMatch;
+  let figCounter = 0;
+  while ((figMatch = figureIdPattern.exec(cnxml)) !== null) {
+    figCounter++;
+    figureNumbers.set(figMatch[1], `${chapter}.${figCounter}`);
+  }
+
   // Context for rendering
   const context = {
     chapter,
@@ -197,6 +213,8 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     equations: [],
     terms: {},
     figures: [],
+    figureNumbers, // Map of figure ID -> "Chapter.Number"
+    figureCounter: 0,
     footnoteCounter: 0,
     exampleCounter: 0,
     renderedFigureIds: new Set(), // Track rendered figures to prevent duplicates
@@ -228,6 +246,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     sectionNumber,
     isIntro: sectionInfo.section === '0' || doc.documentClass === 'introduction',
     abstract: doc.metadata.abstract,
+    context, // Pass context for footnotes rendering
   });
 
   return { html, pageData };
@@ -237,7 +256,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
  * Build complete HTML document.
  */
 function buildHtmlDocument(options) {
-  const { title, lang, content, pageData, sectionNumber, isIntro, abstract } = options;
+  const { title, lang, content, pageData, sectionNumber, isIntro, abstract, context } = options;
 
   const lines = [];
 
@@ -281,6 +300,11 @@ function buildHtmlDocument(options) {
   lines.push('    <main>');
   lines.push(content);
   lines.push('    </main>');
+
+  // Footnotes section (if any)
+  if (context && context.footnotes && context.footnotes.length > 0) {
+    lines.push(renderFootnotesSection(context));
+  }
 
   lines.push('  </article>');
 
@@ -755,7 +779,15 @@ function renderFigure(figure, context) {
   const captionMatch = figure.content.match(/<caption>([\s\S]*?)<\/caption>/);
   if (captionMatch) {
     const captionContent = processInlineContent(captionMatch[1], context);
-    lines.push(`  <figcaption>${captionContent}</figcaption>`);
+    // Add figure number if available
+    const figNum = id && context.figureNumbers ? context.figureNumbers.get(id) : null;
+    if (figNum) {
+      lines.push(
+        `  <figcaption><span class="figure-label">Figure ${figNum}</span> ${captionContent}</figcaption>`
+      );
+    } else {
+      lines.push(`  <figcaption>${captionContent}</figcaption>`);
+    }
   }
 
   lines.push('</figure>');

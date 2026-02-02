@@ -318,12 +318,29 @@ export function renderLink(content, attrs, context) {
 }
 
 /**
- * Render a footnote element.
+ * Render all collected footnotes as a section at end of page.
+ * @param {Object} context - Render context with footnotes array
+ * @returns {string} HTML for footnotes section
  */
-export function renderFootnote(content, attrs, context) {
-  const id = attrs.id || `fn-${context.footnoteCounter || 1}`;
-  const processedContent = processInlineContent(content, context);
-  return createElement('span', { class: 'footnote', id }, processedContent);
+export function renderFootnotesSection(context) {
+  if (!context.footnotes || context.footnotes.length === 0) {
+    return '';
+  }
+
+  let html = '<section class="footnotes">\n';
+  html += '  <h2>Neðanmálsgreinar</h2>\n';
+  html += '  <ol class="footnotes-list">\n';
+
+  for (const fn of context.footnotes) {
+    html += `    <li id="${escapeAttr(fn.id)}" class="footnote-item">\n`;
+    html += `      <p>${fn.content} <a href="#fnref-${fn.num}" class="footnote-backref" aria-label="Back to content">↩</a></p>\n`;
+    html += `    </li>\n`;
+  }
+
+  html += '  </ol>\n';
+  html += '</section>\n';
+
+  return html;
 }
 
 /**
@@ -372,10 +389,12 @@ export function processInlineContent(content, context) {
   let result = content;
 
   // Convert inline MathML to pre-rendered KaTeX (keep data-latex for copy)
+  // Note: KaTeX renderToString already wraps in <span class="katex">, so we use
+  // a different wrapper class to avoid nested .katex elements and font-size issues
   result = result.replace(/<m:math[^>]*>[\s\S]*?<\/m:math>/g, (mathml) => {
     const latex = convertMathMLToLatex(mathml);
     const katexHtml = renderInlineLatex(latex);
-    return `<span class="katex" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
+    return `<span class="math-inline" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
   });
 
   // Convert emphasis
@@ -399,11 +418,31 @@ export function processInlineContent(content, context) {
   result = result.replace(/<link\s+url="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g, (match, url, inner) => {
     return `<a href="${escapeAttr(url)}">${processInlineContent(inner, context)}</a>`;
   });
+  // Self-closing link with target-id (e.g., <link target-id="CNX_Chem_05_02_Fig"/>)
+  // This is common for figure references
+  result = result.replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, targetId) => {
+    // Check if this is a figure reference
+    if (context.figureNumbers && context.figureNumbers.has(targetId)) {
+      const figNum = context.figureNumbers.get(targetId);
+      return `<a href="#${escapeAttr(targetId)}">Figure ${figNum}</a>`;
+    }
+    // Fallback for non-figure references (tables, examples, etc.)
+    return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;
+  });
+  // Link with target-id and content
   result = result.replace(
     /<link\s+target-id="([^"]*)"[^>]*>([\s\S]*?)<\/link>/g,
     (match, targetId, inner) => {
-      const text = inner.trim() || targetId;
-      return `<a href="#${escapeAttr(targetId)}">${processInlineContent(text, context)}</a>`;
+      const text = inner.trim();
+      if (text) {
+        return `<a href="#${escapeAttr(targetId)}">${processInlineContent(text, context)}</a>`;
+      }
+      // Empty content - try to resolve reference
+      if (context.figureNumbers && context.figureNumbers.has(targetId)) {
+        const figNum = context.figureNumbers.get(targetId);
+        return `<a href="#${escapeAttr(targetId)}">Figure ${figNum}</a>`;
+      }
+      return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;
     }
   );
   result = result.replace(
@@ -417,15 +456,38 @@ export function processInlineContent(content, context) {
     return `<a href="${escapeAttr(doc)}">${escapeHtml(doc)}</a>`;
   });
 
-  // Convert footnotes
+  // Convert footnotes - collect them for rendering at end of page
+  // Replace inline footnote with superscript reference link
   result = result.replace(
     /<footnote\s+id="([^"]*)"[^>]*>([\s\S]*?)<\/footnote>/g,
     (match, id, inner) => {
-      return `<span class="footnote" id="${escapeAttr(id)}">${processInlineContent(inner, context)}</span>`;
+      // Initialize footnotes array if not exists
+      if (!context.footnotes) context.footnotes = [];
+      const fnNum = context.footnotes.length + 1;
+      const fnId = id || `fn-${fnNum}`;
+      // Collect footnote content for rendering at page end
+      context.footnotes.push({
+        id: fnId,
+        num: fnNum,
+        content: processInlineContent(inner, context),
+      });
+      // Return superscript link
+      return `<sup class="footnote-ref"><a href="#${escapeAttr(fnId)}" id="fnref-${fnNum}">${fnNum}</a></sup>`;
     }
   );
   result = result.replace(/<footnote[^>]*>([\s\S]*?)<\/footnote>/g, (match, inner) => {
-    return `<span class="footnote">${processInlineContent(inner, context)}</span>`;
+    // Initialize footnotes array if not exists
+    if (!context.footnotes) context.footnotes = [];
+    const fnNum = context.footnotes.length + 1;
+    const fnId = `fn-${fnNum}`;
+    // Collect footnote content
+    context.footnotes.push({
+      id: fnId,
+      num: fnNum,
+      content: processInlineContent(inner, context),
+    });
+    // Return superscript link
+    return `<sup class="footnote-ref"><a href="#${escapeAttr(fnId)}" id="fnref-${fnNum}">${fnNum}</a></sup>`;
   });
 
   // Convert sub/sup

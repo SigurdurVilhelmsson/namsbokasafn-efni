@@ -17,7 +17,7 @@ Define and distinguish specific heat and heat capacity, and describe the physica
 Perform calculations involving heat, specific heat, and temperature change
 
 <!-- SEG:m68724:para:fs-idp32074336 -->
-Chemical changes and their accompanying changes in energy are important parts of our everyday world (). The macronutrients in food (proteins, fats, and carbohydrates) undergo metabolic reactions that provide the energy to keep our bodies functioning. We burn a variety of fuels (gasoline, natural gas, coal) to produce energy for transportation, heating, and the generation of electricity. Industrial chemical reactions use enormous amounts of energy to produce raw materials (such as iron and aluminum). Energy is then used to manufacture those raw materials into useful products, such as cars, skyscrapers, and bridges.
+Chemical changes and their accompanying changes in energy are important parts of our everyday world ([#CNX_Chem_05_01_Thermochem]). The macronutrients in food (proteins, fats, and carbohydrates) undergo metabolic reactions that provide the energy to keep our bodies functioning. We burn a variety of fuels (gasoline, natural gas, coal) to produce energy for transportation, heating, and the generation of electricity. Industrial chemical reactions use enormous amounts of energy to produce raw materials (such as iron and aluminum). Energy is then used to manufacture those raw materials into useful products, such as cars, skyscrapers, and bridges.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_Thermochem-caption -->
 The energy involved in chemical changes is important to our daily lives: (a) A cheeseburger for lunch provides the energy you need to get through the rest of the day; (b) the combustion of gasoline provides the energy that moves your car (and you) between home, work, and school; and (c) coke, a processed form of coal, provides the energy needed to convert iron ore into iron, which is essential for making many of the products we use daily. (credit a: modification of work by “Pink Sherbet Photography”/Flickr; credit b: modification of work by Jeffery Turner)
@@ -35,7 +35,7 @@ Energy
 __Energy__ can be defined as the capacity to supply heat or do work. One type of __work (*w*)__ is the process of causing matter to move against an opposing force. For example, we do work when we inflate a bicycle tire—we move matter (the air in the pump) against the opposing force of the air already in the tire.
 
 <!-- SEG:m68724:para:fs-idp11831328 -->
-Like matter, energy comes in different types. One scheme classifies energy into two types: __potential energy__, the energy an object has because of its relative position, composition, or condition, and __kinetic energy__, the energy that an object possesses because of its motion. Water at the top of a waterfall or dam has potential energy because of its position; when it flows downward through generators, it has kinetic energy that can be used to do work and produce electricity in a hydroelectric plant (). A battery has potential energy because the chemicals within it can produce electricity that can do work.
+Like matter, energy comes in different types. One scheme classifies energy into two types: __potential energy__, the energy an object has because of its relative position, composition, or condition, and __kinetic energy__, the energy that an object possesses because of its motion. Water at the top of a waterfall or dam has potential energy because of its position; when it flows downward through generators, it has kinetic energy that can be used to do work and produce electricity in a hydroelectric plant ([#CNX_Chem_05_01_Waterfall]). A battery has potential energy because the chemicals within it can produce electricity that can do work.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_Waterfall-caption -->
 (a) Water at a higher elevation, for example, at the top of Victoria Falls, has a higher potential energy than water at a lower elevation. As the water falls, some of its potential energy is converted into kinetic energy. (b) If the water flows through generators at the bottom of a dam, such as the Hoover Dam shown here, its kinetic energy is converted into electrical energy. (credit a: modification of work by Steve Jurvetson; credit b: modification of work by “curimedia”/Wikimedia commons)
@@ -53,7 +53,7 @@ According to the law of conservation of matter (seen in an earlier chapter), the
 Thermal Energy, Temperature, and Heat
 
 <!-- SEG:m68724:para:fs-idp24322848 -->
-__Thermal energy__ is kinetic energy associated with the random motion of atoms and molecules. __Temperature__ is a quantitative measure of “hot” or “cold.” When the atoms and molecules in an object are moving or vibrating quickly, they have a higher average kinetic energy (KE), and we say that the object is “hot.” When the atoms and molecules are moving slowly, they have lower average KE, and we say that the object is “cold” (). Assuming that no chemical reaction or phase change (such as melting or vaporizing) occurs, increasing the amount of thermal energy in a sample of matter will cause its temperature to increase. And, assuming that no chemical reaction or phase change (such as condensation or freezing) occurs, decreasing the amount of thermal energy in a sample of matter will cause its temperature to decrease.
+__Thermal energy__ is kinetic energy associated with the random motion of atoms and molecules. __Temperature__ is a quantitative measure of “hot” or “cold.” When the atoms and molecules in an object are moving or vibrating quickly, they have a higher average kinetic energy (KE), and we say that the object is “hot.” When the atoms and molecules are moving slowly, they have lower average KE, and we say that the object is “cold” ([#CNX_Chem_05_01_HotCold]). Assuming that no chemical reaction or phase change (such as melting or vaporizing) occurs, increasing the amount of thermal energy in a sample of matter will cause its temperature to increase. And, assuming that no chemical reaction or phase change (such as condensation or freezing) occurs, decreasing the amount of thermal energy in a sample of matter will cause its temperature to decrease.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HotCold-caption -->
 (a) The molecules in a sample of hot water move more rapidly than (b) those in a sample of cold water.
@@ -62,7 +62,7 @@ __Thermal energy__ is kinetic energy associated with the random motion of atoms 
 Click on this [interactive simulation](http://openstax.org/l/16PHETtempFX) to view the effects of temperature on molecular motion.
 
 <!-- SEG:m68724:para:fs-idp30910672 -->
-Most substances expand as their temperature increases and contract as their temperature decreases. This property can be used to measure temperature changes, as shown in . The operation of many thermometers depends on the expansion and contraction of substances in response to temperature changes.
+Most substances expand as their temperature increases and contract as their temperature decreases. This property can be used to measure temperature changes, as shown in [#CNX_Chem_05_01_Thermom]. The operation of many thermometers depends on the expansion and contraction of substances in response to temperature changes.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_Thermom-caption -->
 (a) In an alcohol or mercury thermometer, the liquid (dyed red for visibility) expands when heated and contracts when cooled, much more so than the glass tube that contains the liquid. (b) In a bimetallic thermometer, two different metals (such as brass and steel) form a two-layered strip. When heated or cooled, one of the metals (brass) expands or contracts more than the other metal (steel), causing the strip to coil or uncoil. Both types of thermometers have a calibrated scale that indicates the temperature. (credit a: modification of work by “dwstucke”/Flickr)
@@ -71,7 +71,7 @@ Most substances expand as their temperature increases and contract as their temp
 The following [demonstration](http://openstax.org/l/16Bimetallic) allows one to view the effects of heating and cooling a coiled bimetallic strip.
 
 <!-- SEG:m68724:para:fs-idp26888640 -->
-__Heat (*q*)__ is the transfer of thermal energy between two bodies at different temperatures. Heat flow (a redundant term, but one commonly used) increases the thermal energy of one body and decreases the thermal energy of the other. Suppose we initially have a high temperature (and high thermal energy) substance (H) and a low temperature (and low thermal energy) substance (L). The atoms and molecules in H have a higher average KE than those in L. If we place substance H in contact with substance L, the thermal energy will flow spontaneously from substance H to substance L. The temperature of substance H will decrease, as will the average KE of its molecules; the temperature of substance L will increase, along with the average KE of its molecules. Heat flow will continue until the two substances are at the same temperature ().
+__Heat (*q*)__ is the transfer of thermal energy between two bodies at different temperatures. Heat flow (a redundant term, but one commonly used) increases the thermal energy of one body and decreases the thermal energy of the other. Suppose we initially have a high temperature (and high thermal energy) substance (H) and a low temperature (and low thermal energy) substance (L). The atoms and molecules in H have a higher average KE than those in L. If we place substance H in contact with substance L, the thermal energy will flow spontaneously from substance H to substance L. The temperature of substance H will decrease, as will the average KE of its molecules; the temperature of substance L will increase, along with the average KE of its molecules. Heat flow will continue until the two substances are at the same temperature ([#CNX_Chem_05_01_HeatTrans1]).
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HeatTrans1-caption -->
 (a) Substances H and L are initially at different temperatures, and their atoms have different average kinetic energies. (b) When they contact each other, collisions between the molecules result in the transfer of kinetic (thermal) energy from the hotter to the cooler matter. (c) The two objects reach “thermal equilibrium” when both substances are at the same temperature and their molecules have the same average kinetic energy.
@@ -80,7 +80,7 @@ __Heat (*q*)__ is the transfer of thermal energy between two bodies at different
 Click on the [PhET simulation](http://openstax.org/l/16PHETenergy) to explore energy forms and changes. Visit the Energy Systems tab to create combinations of energy sources, transformation methods, and outputs. Click on Energy Symbols to visualize the transfer of energy.
 
 <!-- SEG:m68724:para:fs-idm61604880 -->
-Matter undergoing chemical reactions and physical changes can release or absorb heat. A change that releases heat is called an __exothermic process__. For example, the combustion reaction that occurs when using an oxyacetylene torch is an exothermic process—this process also releases energy in the form of light as evidenced by the torch’s flame (). A reaction or change that absorbs heat is an __endothermic process__. A cold pack used to treat muscle strains provides an example of an endothermic process. When the substances in the cold pack (water and a salt like ammonium nitrate) are brought together, the resulting process absorbs heat, leading to the sensation of cold.
+Matter undergoing chemical reactions and physical changes can release or absorb heat. A change that releases heat is called an __exothermic process__. For example, the combustion reaction that occurs when using an oxyacetylene torch is an exothermic process—this process also releases energy in the form of light as evidenced by the torch’s flame ([#CNX_Chem_05_01_OxyacTorch]). A reaction or change that absorbs heat is an __endothermic process__. A cold pack used to treat muscle strains provides an example of an endothermic process. When the substances in the cold pack (water and a salt like ammonium nitrate) are brought together, the resulting process absorbs heat, leading to the sensation of cold.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_OxyacTorch-caption -->
 (a) An oxyacetylene torch produces heat by the combustion of acetylene in oxygen. The energy released by this exothermic reaction heats and then melts the metal being cut. The sparks are tiny bits of the molten metal flying away. (b) A cold pack uses an endothermic process to create the sensation of cold. (credit a: modification of work by “Skatebiker”/Wikimedia commons)
@@ -110,13 +110,13 @@ Specific heat capacity depends only on the kind of substance absorbing or releas
 The large frying pan has a mass of 4040 g. Using the data for this pan, we can also calculate the specific heat of iron:
 
 <!-- SEG:m68724:para:fs-idm37197024 -->
-Although the large pan is more massive than the small pan, since both are made of the same material, they both yield the same value for specific heat (for the material of construction, iron). Note that specific heat is measured in units of energy per temperature per mass and is an intensive property, being derived from a ratio of two extensive properties (heat and mass). The molar heat capacity, also an intensive property, is the heat capacity per mole of a particular substance and has units of J/mol °C ().
+Although the large pan is more massive than the small pan, since both are made of the same material, they both yield the same value for specific heat (for the material of construction, iron). Note that specific heat is measured in units of energy per temperature per mass and is an intensive property, being derived from a ratio of two extensive properties (heat and mass). The molar heat capacity, also an intensive property, is the heat capacity per mole of a particular substance and has units of J/mol °C ([#CNX_Chem_05_01_HeatCapacity]).
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_HeatCapacity-caption -->
 Because of its larger mass, a large frying pan has a larger heat capacity than a small frying pan. Because they are made of the same material, both frying pans have the same specific heat. (credit: Mark Blaser)
 
 <!-- SEG:m68724:para:fs-idm50153600 -->
-Water has a relatively high specific heat (about 4.2 J/g °C for the liquid and 2.09 J/g °C for the solid); most metals have much lower specific heats (usually less than 1 J/g °C). The specific heat of a substance varies somewhat with temperature. However, this variation is usually small enough that we will treat specific heat as constant over the range of temperatures that will be considered in this chapter. Specific heats of some common substances are listed in .
+Water has a relatively high specific heat (about 4.2 J/g °C for the liquid and 2.09 J/g °C for the solid); most metals have much lower specific heats (usually less than 1 J/g °C). The specific heat of a substance varies somewhat with temperature. However, this variation is usually small enough that we will treat specific heat as constant over the range of temperatures that will be considered in this chapter. Specific heats of some common substances are listed in [#fs-idm68801008].
 
 <!-- SEG:m68724:entry:auto-41 -->
 Specific Heats of Common Substances at 25 °C and 1 bar
@@ -344,7 +344,7 @@ Substituting the known values:
 Solving:
 
 <!-- SEG:m68724:para:fs-idm17185344 -->
-Comparing this value with the values in , this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.
+Comparing this value with the values in [#fs-idm68801008], this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.
 
 <!-- SEG:m68724:para-title:fs-idm40972976-title -->
 Check Your Learning
@@ -368,10 +368,10 @@ Solar Thermal Energy Power Plants
 The sunlight that reaches the earth contains thousands of times more energy than we presently capture. Solar thermal systems provide one possible solution to the problem of converting energy from the sun into energy we can use. Large-scale solar thermal plants have different design specifics, but all concentrate sunlight to heat some substance; the heat “stored” in that substance is then converted into electricity.
 
 <!-- SEG:m68724:para:fs-idm30166592 -->
-The Solana Generating Station in Arizona’s Sonora Desert produces 280 megawatts of electrical power. It uses parabolic mirrors that focus sunlight on pipes filled with a heat transfer fluid (HTF) (). The HTF then does two things: It turns water into steam, which spins turbines, which in turn produces electricity, and it melts and heats a mixture of salts, which functions as a thermal energy storage system. After the sun goes down, the molten salt mixture can then release enough of its stored heat to produce steam to run the turbines for 6 hours. Molten salts are used because they possess a number of beneficial properties, including high heat capacities and thermal conductivities.
+The Solana Generating Station in Arizona’s Sonora Desert produces 280 megawatts of electrical power. It uses parabolic mirrors that focus sunlight on pipes filled with a heat transfer fluid (HTF) ([#CNX_Chem_05_01_SolTherm1]). The HTF then does two things: It turns water into steam, which spins turbines, which in turn produces electricity, and it melts and heats a mixture of salts, which functions as a thermal energy storage system. After the sun goes down, the molten salt mixture can then release enough of its stored heat to produce steam to run the turbines for 6 hours. Molten salts are used because they possess a number of beneficial properties, including high heat capacities and thermal conductivities.
 
 <!-- SEG:m68724:para:fs-idp4162272 -->
-The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world (). Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines. It produces enough energy to power 140,000 homes. Water is used as the working fluid because of its large heat capacity and heat of vaporization.
+The 377-megawatt Ivanpah Solar Generating System, located in the Mojave Desert in California, is the largest solar thermal power plant in the world ([#CNX_Chem_05_01_SolTherm2]). Its 170,000 mirrors focus huge amounts of sunlight on three water-filled towers, producing steam at over 538 °C that drives electricity-producing turbines. It produces enough energy to power 140,000 homes. Water is used as the working fluid because of its large heat capacity and heat of vaporization.
 
 <!-- SEG:m68724:caption:CNX_Chem_05_01_SolTherm1-caption -->
 This solar thermal plant uses parabolic trough mirrors to concentrate sunlight. (credit a: modification of work by Bureau of Land Management)
@@ -461,7 +461,7 @@ A piece of unknown substance weighs 44.7 g and requires 2110 J to increase its t
 (a) What is the specific heat of the substance?
 
 <!-- SEG:m68724:problem:fs-idp36059072 -->
-(b) If it is one of the substances found in , what is its likely identity?
+(b) If it is one of the substances found in [#fs-idm68801008], what is its likely identity?
 
 <!-- SEG:m68724:problem:fs-idp36065248 -->
 A piece of unknown solid substance weighs 437.2 g, and requires 8460 J to increase its temperature from 19.3 °C to 68.9 °C.
@@ -470,7 +470,7 @@ A piece of unknown solid substance weighs 437.2 g, and requires 8460 J to increa
 (a) What is the specific heat of the substance?
 
 <!-- SEG:m68724:problem:fs-idp36066288 -->
-(b) If it is one of the substances found in , what is its likely identity?
+(b) If it is one of the substances found in [#fs-idm68801008], what is its likely identity?
 
 <!-- SEG:m68724:solution:fs-idp36067056 -->
 (a) 0.390 J/g °C; (b) Copper is a likely candidate.
