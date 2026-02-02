@@ -723,7 +723,11 @@
             {
               "type": "para",
               "id": "fs-idp12392592",
-              "segmentId": "m68724:para:fs-idp12392592"
+              "segmentId": "m68724:para:fs-idp12392592",
+              "title": {
+                "segmentId": "m68724:para-title:fs-idp12392592-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -743,7 +747,11 @@
             {
               "type": "para",
               "id": "fs-idm1147904",
-              "segmentId": "m68724:para:fs-idm1147904"
+              "segmentId": "m68724:para:fs-idm1147904",
+              "title": {
+                "segmentId": "m68724:para-title:fs-idm1147904-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -815,7 +823,11 @@
             {
               "type": "para",
               "id": "fs-idp15079712",
-              "segmentId": "m68724:para:fs-idp15079712"
+              "segmentId": "m68724:para:fs-idp15079712",
+              "title": {
+                "segmentId": "m68724:para-title:fs-idp15079712-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -835,7 +847,11 @@
             {
               "type": "para",
               "id": "fs-idm40972976",
-              "segmentId": "m68724:para:fs-idm40972976"
+              "segmentId": "m68724:para:fs-idm40972976",
+              "title": {
+                "segmentId": "m68724:para-title:fs-idm40972976-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -967,7 +983,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68724:entry:auto-129",
+                  "segmentId": "m68724:entry:auto-133",
                   "attributes": {}
                 }
               ]

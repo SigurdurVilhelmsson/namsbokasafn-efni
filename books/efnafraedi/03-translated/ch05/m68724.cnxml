@@ -155,27 +155,27 @@
 <para id="fs-idm37045440">In this equation, <emphasis effect="italics">c</emphasis> is the specific heat of the substance, <emphasis effect="italics">m</emphasis> is its mass, and Δ<emphasis effect="italics">T</emphasis> (which is read “delta T”) is the temperature change, <emphasis effect="italics">T</emphasis><sub>final</sub> − <emphasis effect="italics">T</emphasis><sub>initial</sub>. If a substance gains thermal energy, its temperature increases, its final temperature is higher than its initial temperature, <emphasis effect="italics">T</emphasis><sub>final</sub> − <emphasis effect="italics">T</emphasis><sub>initial</sub> has a positive value, and the value of <emphasis effect="italics">q</emphasis> is positive. If a substance loses thermal energy, its temperature decreases, the final temperature is lower than the initial temperature, <emphasis effect="italics">T</emphasis><sub>final</sub> − <emphasis effect="italics">T</emphasis><sub>initial</sub> has a negative value, and the value of <emphasis effect="italics">q</emphasis> is negative.</para>
 <example id="fs-idp1783792">
 <para id="fs-idm38005904"><title>Measuring Heat</title>A flask containing 8.0 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>2</sup> g of water is heated, and the temperature of the water increases from 21 °C to 85 °C. How much heat did the water absorb?</para>
-<para id="fs-idp12392592">To answer this question, consider these factors:</para>
+<para id="fs-idp12392592"><title>Solution</title>To answer this question, consider these factors:</para>
 <list id="fs-idm19140208" list-type="bulleted" bullet-style="bullet"><item>the specific heat of the substance being heated (in this case, water)</item>
 <item>the amount of substance being heated (in this case, 8.0 × 10<sup>2</sup> g)</item>
 <item>the magnitude of the temperature change (in this case, from 21 °C to 85 °C).</item>
 </list><para id="fs-idm6508272">The specific heat of water is 4.184 J/g °C, so to heat 1 g of water by 1 °C requires 4.184 J. We note that since 4.184 J is required to heat 1 g of water by 1 °C, we will need <emphasis effect="italics">800 times as much</emphasis> to heat 8.0 × 10<sup>2</sup> g of water by 1 °C. Finally, we observe that since 4.184 J are required to heat 1 g of water by 1 °C, we will need <emphasis effect="italics">64 times as much</emphasis> to heat it by 64 °C (that is, from 21 °C to 85 °C).</para><para id="fs-idm16704560">This can be summarized using the equation:</para>
 <!-- equation handled separately --><!-- equation handled separately --><para id="fs-idp22566736">Because the temperature increased, the water absorbed heat and <emphasis effect="italics">q</emphasis> is positive.</para>
-<para id="fs-idm1147904">How much heat, in joules, must be added to a 502 g iron skillet to increase its temperature from 25 °C to 250 °C? The specific heat of iron is 0.449 J/g °C.</para><note id="fs-idm26494944">
+<para id="fs-idm1147904"><title>Check Your Learning</title>How much heat, in joules, must be added to a 502 g iron skillet to increase its temperature from 25 °C to 250 °C? The specific heat of iron is 0.449 J/g °C.</para><note id="fs-idm26494944">
 <title>Answer:</title>
 <para id="fs-idm11745888">5.07 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>4</sup> J</para></note>
 </example>
 <para id="fs-idm2064512">Note that the relationship between heat, specific heat, mass, and temperature change can be used to determine any of these quantities (not just heat) if the other three are known or can be deduced.</para>
 <example id="fs-idm41581920">
 <para id="fs-idm4867616"><title>Determining Other Quantities</title>A piece of unknown metal weighs 348 g. When the metal piece absorbs 6.64 kJ of heat, its temperature increases from 22.4 °C to 43.6 °C. Determine the specific heat of this metal (which might provide a clue to its identity).</para>
-<para id="fs-idp15079712">Since mass, heat, and temperature change are known for this metal, we can determine its specific heat using the relationship:</para>
+<para id="fs-idp15079712"><title>Solution</title>Since mass, heat, and temperature change are known for this metal, we can determine its specific heat using the relationship:</para>
 <!-- equation handled separately -->
 <para id="fs-idm60199232">Substituting the known values:</para>
 <!-- equation handled separately -->
 <para id="fs-idm37413152">Solving:</para>
 <!-- equation handled separately -->
 <para id="fs-idm17185344">Comparing this value with the values in , this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.</para>
-<para id="fs-idm40972976">A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of heat, its temperature increases from 24.5 °C to 39.1 °C. Determine the specific heat of this metal, and predict its identity.</para>
+<para id="fs-idm40972976"><title>Check Your Learning</title>A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of heat, its temperature increases from 24.5 °C to 39.1 °C. Determine the specific heat of this metal, and predict its identity.</para>
 <note id="fs-idp282981088">
 <title>Answer:</title>
 <para id="fs-idp81248192"><emphasis effect="italics">c</emphasis> = 0.451 J/g °C; the metal is likely to be iron</para></note>

@@ -100,11 +100,17 @@ Writing Thermochemical Equations
 <!-- SEG:m68727:para:fs-idp52228448 -->
 When 0.0500 mol of HCl(*aq*) reacts with 0.0500 mol of NaOH(*aq*) to form 0.0500 mol of NaCl(*aq*), 2.9 kJ of heat are produced. Write a balanced thermochemical equation for the reaction of one mole of HCl.
 
+<!-- SEG:m68727:para-title:fs-idm10084896-title -->
+Solution
+
 <!-- SEG:m68727:para:fs-idm10084896 -->
 For the reaction of 0.0500 mol acid (HCl), *q* = −2.9 kJ. The reactants are provided in stoichiometric amounts (same molar ratio as in the balanced equation), and so the amount of acid may be used to calculate a molar enthalpy change. Since Δ*H* is an extensive property, it is proportional to the amount of acid neutralized:
 
 <!-- SEG:m68727:para:fs-idp13720784 -->
 The thermochemical equation is then
+
+<!-- SEG:m68727:para-title:fs-idp6958160-title -->
+Check Your Learning
 
 <!-- SEG:m68727:para:fs-idp6958160 -->
 When 1.34 g Zn(*s*) reacts with 60.0 mL of 0.750 M HCl(*aq*), 3.14 kJ of heat are produced. Determine the enthalpy change per mole of zinc reacting for the reaction:
@@ -127,6 +133,9 @@ Writing Thermochemical Equations
 <!-- SEG:m68727:para:fs-idm6526496 -->
 A gummy bear contains 2.67 g sucrose, C~12~H~22~O~11~. When it reacts with 7.19 g potassium chlorate, KClO~3~, 43.7 kJ of heat are produced. Write a thermochemical equation for the reaction of one mole of sucrose:
 
+<!-- SEG:m68727:para-title:fs-idm42247408-title -->
+Solution
+
 <!-- SEG:m68727:para:fs-idm42247408 -->
 Unlike the previous example exercise, this one does not involve the reaction of stoichiometric amounts of reactants, and so the *limiting reactant* must be identified (it limits the yield of the reaction and the amount of thermal energy produced or consumed).
 
@@ -144,6 +153,9 @@ Because the equation, as written, represents the reaction of 8 mol KClO~3~, the 
 
 <!-- SEG:m68727:para:fs-idm379229776 -->
 The enthalpy change for this reaction is −5960 kJ, and the thermochemical equation is:
+
+<!-- SEG:m68727:para-title:fs-idp82549456-title -->
+Check Your Learning
 
 <!-- SEG:m68727:para:fs-idp82549456 -->
 When 1.42 g of iron reacts with 1.80 g of chlorine, 3.22 g of FeCl~2~(*s*) and 8.60 kJ of heat is produced. What is the enthalpy change for the reaction when 1 mole of FeCl~2~(*s*) is produced?
@@ -172,106 +184,106 @@ __Standard enthalpy of combustion__ [[MATH:9]] is the enthalpy change when 1 mol
 <!-- SEG:m68727:para:fs-idm75327968 -->
 Enthalpies of combustion for many substances have been measured; a few of these are listed in . Many readily available substances with large enthalpies of combustion are used as fuels, including hydrogen, carbon (as coal or charcoal), and __hydrocarbons__ (compounds containing only hydrogen and carbon), such as methane, propane, and the major components of gasoline.
 
-<!-- SEG:m68727:entry:auto-59 -->
+<!-- SEG:m68727:entry:auto-63 -->
 Standard Molar Enthalpies of Combustion
 
-<!-- SEG:m68727:entry:auto-60 -->
+<!-- SEG:m68727:entry:auto-64 -->
 Substance
 
-<!-- SEG:m68727:entry:auto-61 -->
+<!-- SEG:m68727:entry:auto-65 -->
 Combustion Reaction
 
-<!-- SEG:m68727:entry:auto-62 -->
+<!-- SEG:m68727:entry:auto-66 -->
 Enthalpy of Combustion, [[MATH:10]][[MATH:11]]
 
-<!-- SEG:m68727:entry:auto-63 -->
+<!-- SEG:m68727:entry:auto-67 -->
 carbon
 
-<!-- SEG:m68727:entry:auto-64 -->
+<!-- SEG:m68727:entry:auto-68 -->
 [[MATH:12]]
 
-<!-- SEG:m68727:entry:auto-65 -->
+<!-- SEG:m68727:entry:auto-69 -->
 −393.5
 
-<!-- SEG:m68727:entry:auto-66 -->
+<!-- SEG:m68727:entry:auto-70 -->
 hydrogen
 
-<!-- SEG:m68727:entry:auto-67 -->
+<!-- SEG:m68727:entry:auto-71 -->
 [[MATH:13]]
 
-<!-- SEG:m68727:entry:auto-68 -->
+<!-- SEG:m68727:entry:auto-72 -->
 −285.8
 
-<!-- SEG:m68727:entry:auto-69 -->
+<!-- SEG:m68727:entry:auto-73 -->
 magnesium
 
-<!-- SEG:m68727:entry:auto-70 -->
+<!-- SEG:m68727:entry:auto-74 -->
 [[MATH:14]]
 
-<!-- SEG:m68727:entry:auto-71 -->
+<!-- SEG:m68727:entry:auto-75 -->
 −601.6
 
-<!-- SEG:m68727:entry:auto-72 -->
+<!-- SEG:m68727:entry:auto-76 -->
 sulfur
 
-<!-- SEG:m68727:entry:auto-73 -->
+<!-- SEG:m68727:entry:auto-77 -->
 [[MATH:15]]
 
-<!-- SEG:m68727:entry:auto-74 -->
+<!-- SEG:m68727:entry:auto-78 -->
 −296.8
 
-<!-- SEG:m68727:entry:auto-75 -->
+<!-- SEG:m68727:entry:auto-79 -->
 carbon monoxide
 
-<!-- SEG:m68727:entry:auto-76 -->
+<!-- SEG:m68727:entry:auto-80 -->
 [[MATH:16]]
 
-<!-- SEG:m68727:entry:auto-77 -->
+<!-- SEG:m68727:entry:auto-81 -->
 −283.0
 
-<!-- SEG:m68727:entry:auto-78 -->
+<!-- SEG:m68727:entry:auto-82 -->
 methane
 
-<!-- SEG:m68727:entry:auto-79 -->
+<!-- SEG:m68727:entry:auto-83 -->
 [[MATH:17]]
 
-<!-- SEG:m68727:entry:auto-80 -->
+<!-- SEG:m68727:entry:auto-84 -->
 −890.8
 
-<!-- SEG:m68727:entry:auto-81 -->
+<!-- SEG:m68727:entry:auto-85 -->
 acetylene
 
-<!-- SEG:m68727:entry:auto-82 -->
+<!-- SEG:m68727:entry:auto-86 -->
 [[MATH:18]]
 
-<!-- SEG:m68727:entry:auto-83 -->
+<!-- SEG:m68727:entry:auto-87 -->
 −1301.1
 
-<!-- SEG:m68727:entry:auto-84 -->
+<!-- SEG:m68727:entry:auto-88 -->
 ethanol
 
-<!-- SEG:m68727:entry:auto-85 -->
+<!-- SEG:m68727:entry:auto-89 -->
 [[MATH:19]]
 
-<!-- SEG:m68727:entry:auto-86 -->
+<!-- SEG:m68727:entry:auto-90 -->
 −1366.8
 
-<!-- SEG:m68727:entry:auto-87 -->
+<!-- SEG:m68727:entry:auto-91 -->
 methanol
 
-<!-- SEG:m68727:entry:auto-88 -->
+<!-- SEG:m68727:entry:auto-92 -->
 [[MATH:20]]
 
-<!-- SEG:m68727:entry:auto-89 -->
+<!-- SEG:m68727:entry:auto-93 -->
 −726.1
 
-<!-- SEG:m68727:entry:auto-90 -->
+<!-- SEG:m68727:entry:auto-94 -->
 isooctane
 
-<!-- SEG:m68727:entry:auto-91 -->
+<!-- SEG:m68727:entry:auto-95 -->
 [[MATH:21]]
 
-<!-- SEG:m68727:entry:auto-92 -->
+<!-- SEG:m68727:entry:auto-96 -->
 –5465.5
 
 <!-- SEG:m68727:example-title:fs-idp90124816-title -->
@@ -279,6 +291,9 @@ Using Enthalpy of Combustion
 
 <!-- SEG:m68727:para:fs-idp186633648 -->
 As suggests, the combustion of gasoline is a highly exothermic process. Let us determine the approximate amount of heat produced by burning 1.00 L of gasoline, assuming the enthalpy of combustion of gasoline is the same as that of isooctane, a common component of gasoline. The density of isooctane is 0.692 g/mL.
+
+<!-- SEG:m68727:para-title:fs-idp177773984-title -->
+Solution
 
 <!-- SEG:m68727:para:fs-idp177773984 -->
 Starting with a known amount (1.00 L of isooctane), we can perform conversions between units until we arrive at the desired amount of heat or energy. The enthalpy of combustion of isooctane provides one of the necessary conversions. gives this value as −5460 kJ per 1 mole of isooctane (C~8~H~18~).
@@ -291,6 +306,9 @@ The combustion of 1.00 L of isooctane produces 33,100 kJ of heat. (This amount o
 
 <!-- SEG:m68727:para:fs-idp94999600 -->
 Note: If you do this calculation one step at a time, you would find:
+
+<!-- SEG:m68727:para-title:fs-idp49733232-title -->
+Check Your Learning
 
 <!-- SEG:m68727:para:fs-idp49733232 -->
 How much heat is produced by the combustion of 125 g of acetylene?
@@ -349,6 +367,9 @@ Evaluating an Enthalpy of Formation
 <!-- SEG:m68727:para:fs-idp167759872 -->
 Ozone, O~3~(*g*), forms from oxygen, O~2~(*g*), by an endothermic process. Ultraviolet radiation is the source of the energy that drives this reaction in the upper atmosphere. Assuming that both the reactants and products of the reaction are in their standard states, determine the standard enthalpy of formation, [[MATH:28]] of ozone from the following information:
 
+<!-- SEG:m68727:para-title:fs-idp166467632-title -->
+Solution
+
 <!-- SEG:m68727:para:fs-idp166467632 -->
 [[MATH:29]] is the enthalpy change for the formation of one mole of a substance in its standard state from the elements in their standard states. Thus, [[MATH:30]] for O~3~(*g*) is the enthalpy change for the reaction:
 
@@ -357,6 +378,9 @@ For the formation of 2 mol of O~3~(*g*), [[MATH:31]] This ratio, [[MATH:32]] can
 
 <!-- SEG:m68727:para:fs-idp186495680 -->
 Therefore, [[MATH:33]]
+
+<!-- SEG:m68727:para-title:fs-idp167644640-title -->
+Check Your Learning
 
 <!-- SEG:m68727:para:fs-idp167644640 -->
 Hydrogen gas, H~2~, reacts explosively with gaseous chlorine, Cl~2~, to form hydrogen chloride, HCl(*g*). What is the enthalpy change for the reaction of 1 mole of H~2~(*g*) with 1 mole of Cl~2~(*g*) if both the reactants and products are at standard state conditions? The standard enthalpy of formation of HCl(*g*) is −92.3 kJ/mol.
@@ -393,6 +417,9 @@ Remembering that [[MATH:37]] reaction equations are for forming 1 mole of the co
 
 <!-- SEG:m68727:para:fs-idp166524800 -->
 Note: The standard state of carbon is graphite, and phosphorus exists as P~4~.
+
+<!-- SEG:m68727:para-title:fs-idp166525568-title -->
+Check Your Learning
 
 <!-- SEG:m68727:para:fs-idp166525568 -->
 Write the heat of formation reaction equations for:
@@ -481,6 +508,9 @@ Looking at the reactions, we see that the reaction for which we want to find Δ*
 <!-- SEG:m68727:para:fs-idp149506592 -->
 The enthalpy of formation, [[MATH:50]] of FeCl~3~(*s*) is −399.5 kJ/mol.
 
+<!-- SEG:m68727:para-title:fs-idp149511040-title -->
+Check Your Learning
+
 <!-- SEG:m68727:para:fs-idp149511040 -->
 Calculate Δ*H* for the process:
 
@@ -520,6 +550,9 @@ Use the reactions here to determine the Δ*H*° for reaction *(i)*:
 <!-- SEG:m68727:para:fs-idp107323264 -->
 *(iv)* [[MATH:54]]
 
+<!-- SEG:m68727:para-title:fs-idp167247104-title -->
+Solution
+
 <!-- SEG:m68727:para:fs-idp167247104 -->
 Our goal is to manipulate and combine reactions *(ii)*, *(iii)*, and *(iv)* such that they add up to reaction *(i)*. Going from left to right in *(i)*, we first see that ClF(*g*) is needed as a reactant. This can be obtained by multiplying reaction *(iii)* by [[MATH:55]] which means that the Δ*H*° change is also multiplied by [[MATH:56]]
 
@@ -534,6 +567,9 @@ Now check to make sure that these reactions add up to the reaction we want:
 
 <!-- SEG:m68727:para:fs-idp154356656 -->
 Reactants [[MATH:57]] and [[MATH:58]] cancel out product O~2~; product [[MATH:59]] cancels reactant [[MATH:60]] and reactant [[MATH:61]] is cancelled by products [[MATH:62]] and OF~2~. This leaves only reactants ClF(*g*) and F~2~(*g*) and product ClF~3~(*g*), which are what we want. Since summing these three modified reactions yields the reaction of interest, summing the three modified Δ*H*° values will give the desired Δ*H*°:
+
+<!-- SEG:m68727:para-title:fs-idp154380128-title -->
+Check Your Learning
 
 <!-- SEG:m68727:para:fs-idp154380128 -->
 Aluminum chloride can be formed from its elements:
@@ -577,8 +613,14 @@ Using Hess’s Law
 <!-- SEG:m68727:para:fs-idp134549264 -->
 What is the standard enthalpy change for the reaction:
 
+<!-- SEG:m68727:para-title:fs-idp146127120-title -->
+Solution: Using the Equation
+
 <!-- SEG:m68727:para:fs-idp146127120 -->
 Use the special form of Hess’s law given previously, and values from Appendix G:
+
+<!-- SEG:m68727:para-title:fs-idp134564208-title -->
+Solution: Supporting Why the General Equation Is Valid
 
 <!-- SEG:m68727:para:fs-idp134564208 -->
 Alternatively, we can write this reaction as the sum of the decompositions of 3NO~2~(*g*) and 1H~2~O(*l*) into their constituent elements, and the formation of 2HNO~3~(*aq*) and 1NO(*g*) from their constituent elements. Writing out these reactions, and noting their relationships to the [[MATH:68]] values for these compounds (from Appendix G ), we have:
@@ -594,6 +636,9 @@ So the standard enthalpy change for this reaction is Δ*H*° = −138.4 kJ.
 
 <!-- SEG:m68727:para:fs-idp146120784 -->
 Note that this result was obtained by (1) multiplying the [[MATH:69]] of each product by its stoichiometric coefficient and summing those values, (2) multiplying the [[MATH:70]] of each reactant by its stoichiometric coefficient and summing those values, and then (3) subtracting the result found in (2) from the result found in (1). This is also the procedure in using the general equation, as shown.
+
+<!-- SEG:m68727:para-title:fs-idp165556368-title -->
+Check Your Learning
 
 <!-- SEG:m68727:para:fs-idp165556368 -->
 Calculate the heat of combustion of 1 mole of ethanol, C~2~H~5~OH(*l*), when H~2~O(*l*) and CO~2~(*g*) are formed. Use the following enthalpies of formation: C~2~H~5~OH(*l*), −278 kJ/mol; H~2~O(*l*), −286 kJ/mol; and CO~2~(*g*), −394 kJ/mol.
@@ -616,10 +661,10 @@ If a chemical change is carried out at constant pressure and the only work done 
 <!-- SEG:m68727:title:fs-idp165577648-title -->
 Key Equations
 
-<!-- SEG:m68727:entry:auto-207 -->
+<!-- SEG:m68727:entry:auto-222 -->
 [[MATH:73]]
 
-<!-- SEG:m68727:entry:auto-208 -->
+<!-- SEG:m68727:entry:auto-223 -->
 [[MATH:74]]
 
 <!-- SEG:m68727:title:fs-idp167491136-title -->

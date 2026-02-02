@@ -52,6 +52,9 @@ Heat Transfer between Substances at Different Temperatures
 <!-- SEG:m68726:para:fs-idm94530896 -->
 A 360.0-g piece of rebar (a steel rod used for reinforcing concrete) is dropped into 425 mL of water at 24.0 °C. The final temperature of the water was measured as 42.7 °C. Calculate the initial temperature of the piece of rebar. Assume the specific heat of steel is approximately the same as that for iron (), and that all heat transfer occurs between the rebar and the water (there is no heat exchange with the surroundings).
 
+<!-- SEG:m68726:para-title:fs-idp13157184-title -->
+Solution
+
 <!-- SEG:m68726:para:fs-idp13157184 -->
 The temperature of the water increases from 24.0 °C to 42.7 °C, so the water absorbs heat. That heat came from the piece of rebar, which initially was at a higher temperature. Assuming that all heat transfer was between the rebar and the water, with no heat “lost” to the outside environment, then *heat given off by rebar = −heat taken in by water*, or:
 
@@ -67,11 +70,17 @@ The density of water is 1.0 g/mL, so 425 mL of water = 425 g. Noting that the fi
 <!-- SEG:m68726:para:fs-idm56113136 -->
 Solving this gives *T*~i,rebar~= 248 °C, so the initial temperature of the rebar was 248 °C.
 
+<!-- SEG:m68726:para-title:fs-idm82711952-title -->
+Check Your Learning
+
 <!-- SEG:m68726:para:fs-idm82711952 -->
 A 248-g piece of copper is dropped into 390 mL of water at 22.6 °C. The final temperature of the water was measured as 39.9 °C. Calculate the initial temperature of the piece of copper. Assume that all heat transfer occurs between the copper and the water.
 
 <!-- SEG:m68726:para:fs-idm12419600 -->
 The initial temperature of the copper was 335.6 °C.
+
+<!-- SEG:m68726:para-title:fs-idp12008976-title -->
+Check Your Learning
 
 <!-- SEG:m68726:para:fs-idp12008976 -->
 A 248-g piece of copper initially at 314 °C is dropped into 390 mL of water initially at 22.6 °C. Assuming that all heat transfer occurs between the copper and the water, calculate the final temperature.
@@ -100,6 +109,9 @@ Identifying a Metal by Measuring Specific Heat
 <!-- SEG:m68726:para:fs-idm92661904 -->
 A 59.7 g piece of metal that had been submerged in boiling water was quickly transferred into 60.0 mL of water initially at 22.0 °C. The final temperature is 28.5 °C. Use these data to determine the specific heat of the metal. Use this result to identify the metal.
 
+<!-- SEG:m68726:para-title:fs-idm56342080-title -->
+Solution
+
 <!-- SEG:m68726:para:fs-idm56342080 -->
 Assuming perfect heat transfer, *heat given off by metal = −heat taken in by water*, or:
 
@@ -114,6 +126,9 @@ Solving this:
 
 <!-- SEG:m68726:para:fs-idm61018208 -->
 Comparing this with values in , our experimental specific heat is closest to the value for copper (0.39 J/g °C), so we identify the metal as copper.
+
+<!-- SEG:m68726:para-title:fs-idm42342688-title -->
+Check Your Learning
 
 <!-- SEG:m68726:para:fs-idm42342688 -->
 A 92.9-g piece of a silver/gray metal is heated to 178.0 °C, and then quickly transferred into 75.0 mL of water initially at 24.0 °C. After 5 minutes, both the metal and the water have reached the same temperature: 29.7 °C. Determine the specific heat and the identity of the metal. (Note: You should find that the specific heat is close to that of two different metals. Explain how you can confidently determine the identity of the metal).
@@ -148,6 +163,9 @@ Heat Produced by an Exothermic Reaction
 <!-- SEG:m68726:para:fs-idm66182640 -->
 When 50.0 mL of 1.00 M HCl(*aq*) and 50.0 mL of 1.00 M NaOH(*aq*), both at 22.0 °C, are added to a coffee cup calorimeter, the temperature of the mixture reaches a maximum of 28.9 °C. What is the approximate amount of heat produced by this reaction?
 
+<!-- SEG:m68726:para-title:fs-idm73607008-title -->
+Solution
+
 <!-- SEG:m68726:para:fs-idm73607008 -->
 To visualize what is going on, imagine that you could combine the two solutions so quickly that no reaction took place while they mixed; then after mixing, the reaction took place. At the instant of mixing, you have 100.0 mL of a mixture of HCl and NaOH at 22.0 °C. The HCl and NaOH then react until the solution temperature reaches 28.9 °C.
 
@@ -168,6 +186,9 @@ Finally, since we are trying to find the heat of the reaction, we have:
 
 <!-- SEG:m68726:para:fs-idm66484944 -->
 The negative sign indicates that the reaction is exothermic. It produces 2.9 kJ of heat.
+
+<!-- SEG:m68726:para-title:fs-idm55750416-title -->
+Check Your Learning
 
 <!-- SEG:m68726:para:fs-idm55750416 -->
 When 100 mL of 0.200 M NaCl(*aq*) and 100 mL of 0.200 M AgNO~3~(*aq*), both at 21.9 °C, are mixed in a coffee cup calorimeter, the temperature increases to 23.5 °C as solid AgCl forms. How much heat is produced by this precipitation reaction? What assumptions did you make to determine your value?
@@ -208,6 +229,9 @@ When solid ammonium nitrate dissolves in water, the solution becomes cold. This 
 <!-- SEG:m68726:para:fs-idp41329920 -->
 Calculate the value of *q* for this reaction and explain the meaning of its arithmetic sign. State any assumptions that you made.
 
+<!-- SEG:m68726:para-title:fs-idp364256-title -->
+Solution
+
 <!-- SEG:m68726:para:fs-idp364256 -->
 We assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself), in which case:
 
@@ -219,6 +243,9 @@ Assuming also that the specific heat of the solution is the same as that for wat
 
 <!-- SEG:m68726:para:fs-idp8566608 -->
 The positive sign for *q* indicates that the dissolution is an endothermic process.
+
+<!-- SEG:m68726:para-title:fs-idm6778640-title -->
+Check Your Learning
 
 <!-- SEG:m68726:para:fs-idm6778640 -->
 When a 3.00-g sample of KCl was added to 3.00 [[MATH:6]] 10^2^ g of water in a coffee cup calorimeter, the temperature decreased by 1.05 °C. How much heat is involved in the dissolution of the KCl? What assumptions did you make?
@@ -256,6 +283,9 @@ Bomb Calorimetry
 <!-- SEG:m68726:para:fs-idp23917952 -->
 When 3.12 g of glucose, C~6~H~12~O~6~, is burned in a bomb calorimeter, the temperature of the calorimeter increases from 23.8 °C to 35.6 °C. The calorimeter contains 775 g of water, and the bomb itself has a heat capacity of 893 J/°C. How much heat was produced by the combustion of the glucose sample?
 
+<!-- SEG:m68726:para-title:fs-idm103829360-title -->
+Solution
+
 <!-- SEG:m68726:para:fs-idm103829360 -->
 The combustion produces heat that is primarily absorbed by the water and the bomb. (The amounts of heat absorbed by the reaction products and the unreacted excess oxygen are relatively small and dealing with them is beyond the scope of this text. We will neglect them in our calculations.)
 
@@ -264,6 +294,9 @@ The heat produced by the reaction is absorbed by the water and the bomb:
 
 <!-- SEG:m68726:para:fs-idm51688848 -->
 This reaction released 48.7 kJ of heat when 3.12 g of glucose was burned.
+
+<!-- SEG:m68726:para-title:fs-idm39952704-title -->
+Check Your Learning
 
 <!-- SEG:m68726:para:fs-idm39952704 -->
 When 0.963 g of benzene, C~6~H~6~, is burned in a bomb calorimeter, the temperature of the calorimeter increases by 8.39 °C. The bomb has a heat capacity of 784 J/°C and is submerged in 925 mL of water. How much heat was produced by the combustion of the benzene sample?

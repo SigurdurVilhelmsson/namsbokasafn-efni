@@ -132,7 +132,11 @@
         {
           "type": "para",
           "id": "fs-idp13157184",
-          "segmentId": "m68726:para:fs-idp13157184"
+          "segmentId": "m68726:para:fs-idp13157184",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idp13157184-title",
+            "text": "Solution"
+          }
         },
         {
           "type": "para",
@@ -157,7 +161,11 @@
         {
           "type": "para",
           "id": "fs-idm82711952",
-          "segmentId": "m68726:para:fs-idm82711952"
+          "segmentId": "m68726:para:fs-idm82711952",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idm82711952-title",
+            "text": "Check Your Learning"
+          }
         },
         {
           "type": "para",
@@ -167,7 +175,11 @@
         {
           "type": "para",
           "id": "fs-idp12008976",
-          "segmentId": "m68726:para:fs-idp12008976"
+          "segmentId": "m68726:para:fs-idp12008976",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idp12008976-title",
+            "text": "Check Your Learning"
+          }
         },
         {
           "type": "para",
@@ -247,7 +259,11 @@
         {
           "type": "para",
           "id": "fs-idm56342080",
-          "segmentId": "m68726:para:fs-idm56342080"
+          "segmentId": "m68726:para:fs-idm56342080",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idm56342080-title",
+            "text": "Solution"
+          }
         },
         {
           "type": "para",
@@ -272,7 +288,11 @@
         {
           "type": "para",
           "id": "fs-idm42342688",
-          "segmentId": "m68726:para:fs-idm42342688"
+          "segmentId": "m68726:para:fs-idm42342688",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idm42342688-title",
+            "text": "Check Your Learning"
+          }
         },
         {
           "type": "para",
@@ -363,7 +383,11 @@
         {
           "type": "para",
           "id": "fs-idm73607008",
-          "segmentId": "m68726:para:fs-idm73607008"
+          "segmentId": "m68726:para:fs-idm73607008",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idm73607008-title",
+            "text": "Solution"
+          }
         },
         {
           "type": "para",
@@ -398,7 +422,11 @@
         {
           "type": "para",
           "id": "fs-idm55750416",
-          "segmentId": "m68726:para:fs-idm55750416"
+          "segmentId": "m68726:para:fs-idm55750416",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idm55750416-title",
+            "text": "Check Your Learning"
+          }
         },
         {
           "type": "para",
@@ -514,7 +542,11 @@
         {
           "type": "para",
           "id": "fs-idp364256",
-          "segmentId": "m68726:para:fs-idp364256"
+          "segmentId": "m68726:para:fs-idp364256",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idp364256-title",
+            "text": "Solution"
+          }
         },
         {
           "type": "para",
@@ -534,7 +566,11 @@
         {
           "type": "para",
           "id": "fs-idm6778640",
-          "segmentId": "m68726:para:fs-idm6778640"
+          "segmentId": "m68726:para:fs-idm6778640",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idm6778640-title",
+            "text": "Check Your Learning"
+          }
         },
         {
           "type": "para",
@@ -635,7 +671,11 @@
         {
           "type": "para",
           "id": "fs-idm103829360",
-          "segmentId": "m68726:para:fs-idm103829360"
+          "segmentId": "m68726:para:fs-idm103829360",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idm103829360-title",
+            "text": "Solution"
+          }
         },
         {
           "type": "para",
@@ -650,7 +690,11 @@
         {
           "type": "para",
           "id": "fs-idm39952704",
-          "segmentId": "m68726:para:fs-idm39952704"
+          "segmentId": "m68726:para:fs-idm39952704",
+          "title": {
+            "segmentId": "m68726:para-title:fs-idm39952704-title",
+            "text": "Check Your Learning"
+          }
         },
         {
           "type": "para",

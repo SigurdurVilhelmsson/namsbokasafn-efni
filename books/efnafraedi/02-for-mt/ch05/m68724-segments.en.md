@@ -283,6 +283,9 @@ Measuring Heat
 <!-- SEG:m68724:para:fs-idm38005904 -->
 A flask containing 8.0 [[MATH:1]] 10^2^ g of water is heated, and the temperature of the water increases from 21 °C to 85 °C. How much heat did the water absorb?
 
+<!-- SEG:m68724:para-title:fs-idp12392592-title -->
+Solution
+
 <!-- SEG:m68724:para:fs-idp12392592 -->
 To answer this question, consider these factors:
 
@@ -294,6 +297,9 @@ This can be summarized using the equation:
 
 <!-- SEG:m68724:para:fs-idp22566736 -->
 Because the temperature increased, the water absorbed heat and *q* is positive.
+
+<!-- SEG:m68724:para-title:fs-idm1147904-title -->
+Check Your Learning
 
 <!-- SEG:m68724:para:fs-idm1147904 -->
 How much heat, in joules, must be added to a 502 g iron skillet to increase its temperature from 25 °C to 250 °C? The specific heat of iron is 0.449 J/g °C.
@@ -325,6 +331,9 @@ Determining Other Quantities
 <!-- SEG:m68724:para:fs-idm4867616 -->
 A piece of unknown metal weighs 348 g. When the metal piece absorbs 6.64 kJ of heat, its temperature increases from 22.4 °C to 43.6 °C. Determine the specific heat of this metal (which might provide a clue to its identity).
 
+<!-- SEG:m68724:para-title:fs-idp15079712-title -->
+Solution
+
 <!-- SEG:m68724:para:fs-idp15079712 -->
 Since mass, heat, and temperature change are known for this metal, we can determine its specific heat using the relationship:
 
@@ -336,6 +345,9 @@ Solving:
 
 <!-- SEG:m68724:para:fs-idm17185344 -->
 Comparing this value with the values in , this value matches the specific heat of aluminum, which suggests that the unknown metal may be aluminum.
+
+<!-- SEG:m68724:para-title:fs-idm40972976-title -->
+Check Your Learning
 
 <!-- SEG:m68724:para:fs-idm40972976 -->
 A piece of unknown metal weighs 217 g. When the metal piece absorbs 1.43 kJ of heat, its temperature increases from 24.5 °C to 39.1 °C. Determine the specific heat of this metal, and predict its identity.
@@ -382,7 +394,7 @@ Specific heat and heat capacity are measures of the energy needed to change the 
 <!-- SEG:m68724:title:fs-idm20711744-title -->
 Key Equations
 
-<!-- SEG:m68724:entry:auto-129 -->
+<!-- SEG:m68724:entry:auto-133 -->
 [[MATH:4]]
 
 <!-- SEG:m68724:title:fs-idm41088208-title -->

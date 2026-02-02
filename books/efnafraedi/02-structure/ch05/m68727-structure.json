@@ -227,7 +227,11 @@
         {
           "type": "para",
           "id": "fs-idm10084896",
-          "segmentId": "m68727:para:fs-idm10084896"
+          "segmentId": "m68727:para:fs-idm10084896",
+          "title": {
+            "segmentId": "m68727:para-title:fs-idm10084896-title",
+            "text": "Solution"
+          }
         },
         {
           "type": "para",
@@ -237,7 +241,11 @@
         {
           "type": "para",
           "id": "fs-idp6958160",
-          "segmentId": "m68727:para:fs-idp6958160"
+          "segmentId": "m68727:para:fs-idp6958160",
+          "title": {
+            "segmentId": "m68727:para-title:fs-idp6958160-title",
+            "text": "Check Your Learning"
+          }
         },
         {
           "type": "para",
@@ -298,7 +306,11 @@
         {
           "type": "para",
           "id": "fs-idm42247408",
-          "segmentId": "m68727:para:fs-idm42247408"
+          "segmentId": "m68727:para:fs-idm42247408",
+          "title": {
+            "segmentId": "m68727:para-title:fs-idm42247408-title",
+            "text": "Solution"
+          }
         },
         {
           "type": "para",
@@ -328,7 +340,11 @@
         {
           "type": "para",
           "id": "fs-idp82549456",
-          "segmentId": "m68727:para:fs-idp82549456"
+          "segmentId": "m68727:para:fs-idp82549456",
+          "title": {
+            "segmentId": "m68727:para-title:fs-idp82549456-title",
+            "text": "Check Your Learning"
+          }
         },
         {
           "type": "para",
@@ -419,7 +435,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-59",
+                  "segmentId": "m68727:entry:auto-63",
                   "attributes": {
                     "namest": "c1",
                     "nameend": "c3",
@@ -431,34 +447,6 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-60",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-61",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68727:entry:auto-62",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68727:entry:auto-63",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
                   "segmentId": "m68727:entry:auto-64",
                   "attributes": {
                     "align": "left"
@@ -469,17 +457,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68727:entry:auto-66",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68727:entry:auto-67",
                   "attributes": {
@@ -491,17 +479,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68727:entry:auto-69",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68727:entry:auto-70",
                   "attributes": {
@@ -513,17 +501,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68727:entry:auto-72",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68727:entry:auto-73",
                   "attributes": {
@@ -535,17 +523,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68727:entry:auto-75",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68727:entry:auto-76",
                   "attributes": {
@@ -557,17 +545,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68727:entry:auto-78",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68727:entry:auto-79",
                   "attributes": {
@@ -579,17 +567,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68727:entry:auto-81",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68727:entry:auto-82",
                   "attributes": {
@@ -601,17 +589,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68727:entry:auto-84",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68727:entry:auto-85",
                   "attributes": {
@@ -623,17 +611,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68727:entry:auto-87",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68727:entry:auto-88",
                   "attributes": {
@@ -645,17 +633,17 @@
                   "attributes": {
                     "align": "left"
                   }
-                }
-              ]
-            },
-            {
-              "cells": [
+                },
                 {
                   "segmentId": "m68727:entry:auto-90",
                   "attributes": {
                     "align": "left"
                   }
-                },
+                }
+              ]
+            },
+            {
+              "cells": [
                 {
                   "segmentId": "m68727:entry:auto-91",
                   "attributes": {
@@ -664,6 +652,34 @@
                 },
                 {
                   "segmentId": "m68727:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68727:entry:auto-94",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68727:entry:auto-96",
                   "attributes": {
                     "align": "left"
                   }
@@ -688,7 +704,11 @@
             {
               "type": "para",
               "id": "fs-idp177773984",
-              "segmentId": "m68727:para:fs-idp177773984"
+              "segmentId": "m68727:para:fs-idp177773984",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp177773984-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -708,7 +728,11 @@
             {
               "type": "para",
               "id": "fs-idp49733232",
-              "segmentId": "m68727:para:fs-idp49733232"
+              "segmentId": "m68727:para:fs-idp49733232",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp49733232-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -874,7 +898,11 @@
             {
               "type": "para",
               "id": "fs-idp166467632",
-              "segmentId": "m68727:para:fs-idp166467632"
+              "segmentId": "m68727:para:fs-idp166467632",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp166467632-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -889,7 +917,11 @@
             {
               "type": "para",
               "id": "fs-idp167644640",
-              "segmentId": "m68727:para:fs-idp167644640"
+              "segmentId": "m68727:para:fs-idp167644640",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp167644640-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -971,7 +1003,11 @@
             {
               "type": "para",
               "id": "fs-idp166525568",
-              "segmentId": "m68727:para:fs-idp166525568"
+              "segmentId": "m68727:para:fs-idp166525568",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp166525568-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -1194,7 +1230,11 @@
             {
               "type": "para",
               "id": "fs-idp149511040",
-              "segmentId": "m68727:para:fs-idp149511040"
+              "segmentId": "m68727:para:fs-idp149511040",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp149511040-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -1297,7 +1337,11 @@
             {
               "type": "para",
               "id": "fs-idp167247104",
-              "segmentId": "m68727:para:fs-idp167247104"
+              "segmentId": "m68727:para:fs-idp167247104",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp167247104-title",
+                "text": "Solution"
+              }
             },
             {
               "type": "para",
@@ -1322,7 +1366,11 @@
             {
               "type": "para",
               "id": "fs-idp154380128",
-              "segmentId": "m68727:para:fs-idp154380128"
+              "segmentId": "m68727:para:fs-idp154380128",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp154380128-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -1427,12 +1475,20 @@
             {
               "type": "para",
               "id": "fs-idp146127120",
-              "segmentId": "m68727:para:fs-idp146127120"
+              "segmentId": "m68727:para:fs-idp146127120",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp146127120-title",
+                "text": "Solution: Using the Equation"
+              }
             },
             {
               "type": "para",
               "id": "fs-idp134564208",
-              "segmentId": "m68727:para:fs-idp134564208"
+              "segmentId": "m68727:para:fs-idp134564208",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp134564208-title",
+                "text": "Solution: Supporting Why the General Equation Is Valid"
+              }
             },
             {
               "type": "para",
@@ -1457,7 +1513,11 @@
             {
               "type": "para",
               "id": "fs-idp165556368",
-              "segmentId": "m68727:para:fs-idp165556368"
+              "segmentId": "m68727:para:fs-idp165556368",
+              "title": {
+                "segmentId": "m68727:para-title:fs-idp165556368-title",
+                "text": "Check Your Learning"
+              }
             },
             {
               "type": "para",
@@ -1553,7 +1613,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-207",
+                  "segmentId": "m68727:entry:auto-222",
                   "attributes": {}
                 }
               ]
@@ -1561,7 +1621,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68727:entry:auto-208",
+                  "segmentId": "m68727:entry:auto-223",
                   "attributes": {}
                 }
               ]
