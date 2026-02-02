@@ -38,6 +38,8 @@ import { processBatch as protectForMT } from './protect-for-mt.js';
 import { splitDirectory as splitForErlendur, ERLENDUR_SOFT_LIMIT } from './split-for-erlendur.js';
 import { processBatch as extractTableStrings } from './extract-table-strings.js';
 
+// New extract-inject pipeline tools are run as subprocesses via runTool()
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -137,6 +139,10 @@ function parseArgs(args) {
     assemble: false, // Run chapter assembly after conversion
     assembleTrack: 'faithful', // Publication track for assembly: mt-preview, faithful, localized
     assembleOnly: false, // Only run assembly (skip conversion)
+    // Extract-inject pipeline options
+    mode: 'legacy', // 'legacy' (CNXML→MD→XLIFF) or 'extract-inject' (new pipeline)
+    stage: null, // For extract-inject: 'extract', 'inject', 'render', or null (all)
+    lang: 'is', // Target language for injection
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -167,6 +173,12 @@ function parseArgs(args) {
       result.skipProtect = true;
     } else if (arg === '--skip-split') {
       result.skipSplit = true;
+    } else if (arg === '--mode' && args[i + 1]) {
+      result.mode = args[++i];
+    } else if (arg === '--stage' && args[i + 1]) {
+      result.stage = args[++i];
+    } else if (arg === '--lang' && args[i + 1]) {
+      result.lang = args[++i];
     } else if (!arg.startsWith('-') && !result.input) {
       result.input = arg;
     }
@@ -252,6 +264,26 @@ Examples:
 
   # List available modules
   node tools/pipeline-runner.js --list-modules
+
+  # NEW: Extract-Inject Pipeline (preserves CNXML structure)
+  node tools/pipeline-runner.js --mode extract-inject --chapter 5 --book efnafraedi
+
+  # Run specific stage of extract-inject pipeline
+  node tools/pipeline-runner.js --mode extract-inject --chapter 5 --stage extract
+  node tools/pipeline-runner.js --mode extract-inject --chapter 5 --stage inject --lang is
+  node tools/pipeline-runner.js --mode extract-inject --chapter 5 --stage render
+
+Extract-Inject Pipeline Stages:
+  extract   CNXML → segments.en.md + structure.json + equations.json
+  inject    segments.is.md + structure.json → translated CNXML
+  render    CNXML → semantic HTML for publication
+  resources Extract glossary, key equations, exercises, answer key
+
+Extract-Inject Output:
+  02-for-mt/chNN/           Segments for MT
+  02-structure/chNN/        Structure and equations JSON
+  03-translated/chNN/       Full translated CNXML
+  05-publication/<track>/   Publication-ready HTML
 `);
 }
 
@@ -1129,10 +1161,209 @@ async function run(options) {
   return runPipeline(finalOptions);
 }
 
+// ============================================================================
+// Extract-Inject Pipeline (NEW)
+// ============================================================================
+
+/**
+ * Run the extract-inject pipeline for a chapter
+ * This is the new CNXML-preserving pipeline that maintains document structure.
+ *
+ * Stages:
+ *   extract - CNXML → segments + structure + equations
+ *   inject  - segments + structure → translated CNXML
+ *   render  - CNXML → HTML
+ *
+ * @param {object} options - Pipeline options
+ * @returns {Promise<object>} Pipeline results
+ */
+async function runExtractInjectPipeline(options) {
+  const { chapter, book = 'efnafraedi', stage, lang = 'is', verbose } = options;
+
+  if (!chapter) {
+    throw new Error('Chapter number is required for extract-inject pipeline');
+  }
+
+  const projectRoot = getProjectRoot();
+  const results = {
+    chapter,
+    book,
+    stage: stage || 'all',
+    steps: [],
+    success: false,
+  };
+
+  console.log('');
+  console.log('═'.repeat(60));
+  console.log(`Extract-Inject Pipeline - Chapter ${chapter}`);
+  console.log('═'.repeat(60));
+  console.log('');
+
+  if (verbose) {
+    console.log('Configuration:');
+    console.log(`  Book: ${book}`);
+    console.log(`  Chapter: ${chapter}`);
+    console.log(`  Stage: ${stage || 'all'}`);
+    console.log(`  Language: ${lang}`);
+    console.log('');
+  }
+
+  const stages = stage ? [stage] : ['extract', 'inject', 'render', 'resources'];
+
+  try {
+    for (const currentStage of stages) {
+      console.log(`─`.repeat(60));
+      console.log(`Stage: ${currentStage}`);
+      console.log('');
+
+      const stageStart = Date.now();
+
+      switch (currentStage) {
+        case 'extract': {
+          // Run cnxml-extract.js
+          const extractArgs = ['--chapter', String(chapter)];
+          if (verbose) extractArgs.push('--verbose');
+
+          console.log('  Extracting segments from CNXML...');
+          await runTool(path.join(projectRoot, 'tools', 'cnxml-extract.js'), extractArgs, {
+            verbose,
+          });
+
+          results.steps.push({
+            name: 'extract',
+            success: true,
+            timeMs: Date.now() - stageStart,
+          });
+          console.log('  ✓ Segments extracted to 02-for-mt/');
+          console.log('  ✓ Structure saved to 02-structure/');
+          break;
+        }
+
+        case 'inject': {
+          // Run cnxml-inject.js for each module
+          const injectArgs = ['--chapter', String(chapter), '--lang', lang];
+          if (verbose) injectArgs.push('--verbose');
+
+          console.log(`  Injecting ${lang} translations into CNXML...`);
+          await runTool(path.join(projectRoot, 'tools', 'cnxml-inject.js'), injectArgs, {
+            verbose,
+          });
+
+          results.steps.push({
+            name: 'inject',
+            success: true,
+            timeMs: Date.now() - stageStart,
+          });
+          console.log('  ✓ Translated CNXML written to 03-translated/');
+          break;
+        }
+
+        case 'render': {
+          // Run cnxml-render.js
+          const renderArgs = ['--chapter', String(chapter), '--track', 'mt-preview'];
+          if (verbose) renderArgs.push('--verbose');
+
+          console.log('  Rendering CNXML to HTML...');
+          await runTool(path.join(projectRoot, 'tools', 'cnxml-render.js'), renderArgs, {
+            verbose,
+          });
+
+          results.steps.push({
+            name: 'render',
+            success: true,
+            timeMs: Date.now() - stageStart,
+          });
+          console.log('  ✓ HTML written to 05-publication/mt-preview/');
+          break;
+        }
+
+        case 'resources': {
+          // Run cnxml-extract-chapter-resources.js to extract glossary, exercises, etc.
+          const resourceArgs = [
+            '--book',
+            book,
+            '--chapter',
+            String(chapter),
+            '--track',
+            'mt-preview',
+          ];
+          if (verbose) resourceArgs.push('--verbose');
+
+          console.log('  Extracting chapter resources (glossary, equations, exercises)...');
+          await runTool(
+            path.join(projectRoot, 'tools', 'cnxml-extract-chapter-resources.js'),
+            resourceArgs,
+            { verbose }
+          );
+
+          results.steps.push({
+            name: 'resources',
+            success: true,
+            timeMs: Date.now() - stageStart,
+          });
+          console.log('  ✓ Key terms, equations, exercises, and answer key extracted');
+          break;
+        }
+
+        default:
+          throw new Error(`Unknown stage: ${currentStage}`);
+      }
+
+      console.log('');
+    }
+
+    results.success = true;
+  } catch (err) {
+    results.error = err.message;
+    console.error(`\n✗ Error: ${err.message}`);
+    if (verbose) {
+      console.error(err.stack);
+    }
+  }
+
+  // Summary
+  console.log('═'.repeat(60));
+  console.log(results.success ? 'Extract-Inject Pipeline Complete' : 'Pipeline Failed');
+  console.log('═'.repeat(60));
+  console.log('');
+
+  if (results.success) {
+    console.log('Output directories:');
+    if (!stage || stage === 'extract') {
+      console.log(`  02-for-mt/ch${String(chapter).padStart(2, '0')}/      Segments for MT`);
+      console.log(
+        `  02-structure/ch${String(chapter).padStart(2, '0')}/   Structure and equations`
+      );
+    }
+    if (!stage || stage === 'inject') {
+      console.log(`  03-translated/ch${String(chapter).padStart(2, '0')}/ Translated CNXML`);
+    }
+    if (!stage || stage === 'render' || stage === 'resources') {
+      console.log(
+        `  05-publication/mt-preview/chapters/${String(chapter).padStart(2, '0')}/ HTML files`
+      );
+    }
+    console.log('');
+
+    if (stage === 'extract') {
+      console.log('Next steps:');
+      console.log('  1. Send 02-for-mt/ files to Erlendur MT (malstadur.is)');
+      console.log('  2. Save translated output to 02-mt-output/');
+      console.log('  3. Run --stage inject to create translated CNXML');
+      console.log('  4. Run --stage render to generate HTML');
+      console.log('  5. Run --stage resources to extract glossary, exercises, etc.');
+      console.log('');
+    }
+  }
+
+  return results;
+}
+
 // Export for programmatic use
 export {
   run,
   runChapterPipeline,
+  runExtractInjectPipeline,
   CHEMISTRY_2E_MODULES,
   assembleChapter,
   // Exports for testing
@@ -1158,7 +1389,33 @@ async function main() {
     process.exit(0);
   }
 
-  // Handle chapter mode
+  // Handle extract-inject mode
+  if (args.mode === 'extract-inject') {
+    if (!args.chapter) {
+      console.error('Error: --chapter <num> is required for extract-inject mode');
+      process.exit(1);
+    }
+
+    try {
+      const results = await runExtractInjectPipeline({
+        chapter: args.chapter,
+        book: args.book || 'efnafraedi',
+        stage: args.stage,
+        lang: args.lang,
+        verbose: args.verbose,
+      });
+      process.exit(results.success ? 0 : 1);
+    } catch (err) {
+      console.error(`\nFatal error: ${err.message}`);
+      if (args.verbose) {
+        console.error(err.stack);
+      }
+      process.exit(1);
+    }
+    return;
+  }
+
+  // Handle chapter mode (legacy pipeline)
   if (args.chapter !== null) {
     try {
       let conversionSuccess = true;

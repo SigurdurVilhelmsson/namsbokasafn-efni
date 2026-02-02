@@ -1,0 +1,184 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NaC</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>NaC</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{NaC}}}_{2}{\\text{H}}_{3}{\\text{O}}_{2}(aq)\\, \\longrightarrow \\, {{\\text{NaC}}}_{2}{\\text{H}}_{3}{\\text{O}}_{2}(s)}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mn>2</m:mn><m:mtext>Fe</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.1em\"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{2\\text{Fe}(s)+\\frac{3}{2}\\, {\\text{O}}_{2}(g)\\, \\longrightarrow \\, {{\\text{Fe}}}_{2}{\\text{O}}_{3}(s).}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NaC</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>NaC</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{NaC}}}_{2}{\\text{H}}_{3}{\\text{O}}_{2}(aq)\\, \\longrightarrow \\, {{\\text{NaC}}}_{2}{\\text{H}}_{3}{\\text{O}}_{2}(s)}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:mn>2</m:mn><m:mtext>Fe</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.1em\"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{2\\text{Fe}(s)+\\frac{3}{2}\\, {\\text{O}}_{2}(g)\\, \\longrightarrow \\, {{\\text{Fe}}}_{2}{\\text{O}}_{3}(s).}"
+  },
+  "fs-idm194903168": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mtext>substance M</m:mtext></m:msub><m:mo>+</m:mo><m:msub><m:mi>q</m:mi><m:mtext>substance W</m:mtext></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>",
+    "latex": "{{q}_{\\text{substance M}}+{q}_{\\text{substance W}}=0}",
+    "isBlock": true
+  },
+  "fs-idm280055136": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mtext>substance M</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mtext>substance W</m:mtext></m:msub></m:mrow></m:math>",
+    "latex": "{{q}_{\\text{substance M}}=\\text{−}{q}_{\\text{substance W}}}",
+    "isBlock": true
+  },
+  "fs-idm107179568": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mtext>rebar</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mtext>water</m:mtext></m:msub></m:mrow></m:math>",
+    "latex": "{{q}_{\\text{rebar}}=\\text{−}{q}_{\\text{water}}}",
+    "isBlock": true
+  },
+  "fs-idm52673840": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>c</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>T</m:mtext></m:mstyle><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mtext>rebar</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mrow><m:mo stretchy=\"false\">−(</m:mo><m:mi>c</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant=\"italic\"><m:mtext>T</m:mtext></m:mstyle><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mtext>water</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{{{(c\\, \\times \\, m\\, \\times \\, \\text{Δ}\\text{T})}}_{{\\text{rebar}}}={{−(c\\, \\times \\, m\\, \\times \\, \\text{Δ}\\text{T})}}_{{\\text{water}}}}",
+    "isBlock": true
+  },
+  "fs-idp7508656": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>c</m:mi><m:mrow><m:mtext>rebar</m:mtext></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mi>m</m:mi><m:mrow><m:mtext>rebar</m:mtext></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>f,rebar</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>i,rebar</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>c</m:mi><m:mrow><m:mtext>water</m:mtext></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mi>m</m:mi><m:mrow><m:mtext>water</m:mtext></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>f,water</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>i,water</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{c}_{{\\text{rebar}}}\\, \\times \\, {m}_{{\\text{rebar}}}\\, \\times \\, ({T}_{{\\text{f,rebar}}}-{T}_{{\\text{i,rebar}}})=\\text{−}{c}_{{\\text{water}}}\\, \\times \\, {m}_{{\\text{water}}}\\, \\times \\, ({T}_{{\\text{f,water}}}-{T}_{{\\text{i,water}}})}",
+    "isBlock": true
+  },
+  "fs-idm160292560": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:mn>0.449</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo>)</m:mo><m:mo>(</m:mo><m:mn>360.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo>)</m:mo><m:mo>(</m:mo><m:mn>42.7</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:msub><m:mi>T</m:mi><m:mtext>i,rebar</m:mtext></m:msub><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>−</m:mo><m:mo>(</m:mo><m:mn>4.184</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo>)</m:mo><m:mo>(</m:mo><m:mn>425</m:mn><m:mtext>g</m:mtext><m:mo>)</m:mo><m:mo>(</m:mo><m:mn>42.7</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>24.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{(0.449\\, \\text{J/g °C})(360.0\\, \\text{g})(42.7\\, \\text{°C}-{T}_{\\text{i,rebar}})=-(4.184\\, \\text{J/g °C})(425\\text{g})(42.7\\, \\text{°C}-24.0\\, \\text{°C})}",
+    "isBlock": true
+  },
+  "fs-idp7310352": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mstyle mathvariant=\"italic\"><m:mtext>i,rebar</m:mtext></m:mstyle></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>4.184</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>425</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>42.7</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>24.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>0.449</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>360.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>+</m:mo><m:mn>42.7</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext></m:mrow></m:math>",
+    "latex": "{{T}_{{\\text{i,rebar}}}=\\, \\frac{{(4.184\\, \\text{J/g °C})(425\\, \\text{g})(42.7\\, \\text{°C}-24.0\\, \\text{°C})}}{{(0.449\\, \\text{J/g °C})(360.0\\, \\text{g})}}\\, +42.7\\, \\text{°C}}",
+    "isBlock": true
+  },
+  "fs-idm199710176": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>metal</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>water</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{{q}_{{\\text{metal}}}=\\text{−}{q}_{{\\text{water}}}}",
+    "isBlock": true
+  },
+  "fs-idm4542240": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>c</m:mi><m:mrow><m:mtext>metal</m:mtext></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mi>m</m:mi><m:mrow><m:mtext>metal</m:mtext></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>f,metal</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>i, metal</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>c</m:mi><m:mrow><m:mtext>water</m:mtext></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mi>m</m:mi><m:mrow><m:mtext>water</m:mtext></m:mrow></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>f,water</m:mtext></m:mrow></m:msub><m:mo>−</m:mo><m:msub><m:mi>T</m:mi><m:mrow><m:mtext>i,water</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{c}_{{\\text{metal}}}\\, \\times \\, {m}_{{\\text{metal}}}\\, \\times \\, ({T}_{{\\text{f,metal}}}-{T}_{{\\text{i, metal}}})=\\text{−}{c}_{{\\text{water}}}\\, \\times \\, {m}_{{\\text{water}}}\\, \\times \\, ({T}_{{\\text{f,water}}}-{T}_{{\\text{i,water}}})}",
+    "isBlock": true
+  },
+  "fs-idm127022128": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:msub><m:mi>c</m:mi><m:mrow><m:mtext>metal</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>59.7</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>28.5</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>100.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mo stretchy=\"false\">−(</m:mo><m:mn>4.18</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>60.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>28.5</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>22.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{({c}_{{\\text{metal}}})(59.7\\, \\text{g})(28.5\\, \\text{°C}-100.0\\, \\text{°C})=−(4.18\\, \\text{J/g °C})(60.0\\, \\text{g})(28.5\\, \\text{°C}-22.0\\, \\text{°C})}",
+    "isBlock": true
+  },
+  "fs-idm13040064": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>c</m:mi><m:mrow><m:mtext>metal</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>4.184</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>60.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>6.5</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>59.7</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>−71.5</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.38</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext></m:mrow></m:math>",
+    "latex": "{{c}_{{\\text{metal}}}=\\, \\frac{{-(4.184\\, \\text{J/g °C})(60.0\\, \\text{g})(6.5\\, \\text{°C})}}{{(59.7\\, \\text{g})(−71.5\\, \\text{°C})}}\\, =0.38\\, \\text{J/g °C}}",
+    "isBlock": true
+  },
+  "fs-idm289467200": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>reaction</m:mtext></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math>",
+    "latex": "{{q}_{{\\text{reaction}}}+{q}_{{\\text{solution}}}=0}",
+    "isBlock": true
+  },
+  "fs-idm208991056": {
+    "mathml": "<m:math><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>reaction</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub></m:math>",
+    "latex": "{q}_{{\\text{reaction}}}=\\text{−}{q}_{{\\text{solution}}}",
+    "isBlock": true
+  },
+  "fs-idm32936848": {
+    "mathml": "<m:math><m:mrow><m:mtext>HCl</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>NaOH</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>NaCl</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{\\text{HCl}(aq)+\\text{NaOH}(aq)\\, \\longrightarrow \\, \\text{NaCl}(aq)+{\\text{H}}_{2}\\text{O}(l)}",
+    "isBlock": true
+  },
+  "fs-idm259063904": {
+    "mathml": "<m:math><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>reaction</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub></m:math>",
+    "latex": "{q}_{{\\text{reaction}}}=\\text{−}{q}_{{\\text{solution}}}",
+    "isBlock": true
+  },
+  "fs-idm174034752": {
+    "mathml": "<m:math><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>c</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>Δ</m:mtext><m:mi>T</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub></m:math>",
+    "latex": "{q}_{{\\text{solution}}}={{(c\\, \\times \\, m\\, \\times \\, \\text{Δ}T)}}_{{\\text{solution}}}",
+    "isBlock": true
+  },
+  "fs-idm261390032": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>4.184</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>1.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>28.9</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>22.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mn>2.9</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext></m:mrow></m:math>",
+    "latex": "{{q}_{{\\text{solution}}}=(4.184\\, \\text{J/g °C})(1.0\\, \\times \\, {{10}}^{2}\\, \\text{g})(28.9\\, \\text{°C}-22.0\\, \\text{°C})=2.9\\, \\times \\, {{10}}^{3}\\, \\text{J}}",
+    "isBlock": true
+  },
+  "fs-idm178566000": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>reaction</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>solution</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>−2.9</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext></m:mrow></m:math>",
+    "latex": "{{q}_{{\\text{reaction}}}=\\text{−}{q}_{{\\text{solution}}}=−2.9\\, \\times \\, {{10}}^{3}\\, \\text{J}}",
+    "isBlock": true
+  },
+  "fs-idm127206368": {
+    "mathml": "<m:math><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>rxn</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>soln</m:mtext></m:mrow></m:msub></m:math>",
+    "latex": "{q}_{{\\text{rxn}}}=\\text{−}{q}_{{\\text{soln}}}",
+    "isBlock": true
+  },
+  "fs-idm183045408": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr/><m:mtr><m:mtd><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>rxn</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>soln</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mrow><m:mo stretchy=\"false\">−(</m:mo><m:mi>c</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>Δ</m:mtext><m:mi>T</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mtext>soln</m:mtext></m:mrow></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mtext>−[(</m:mtext><m:mn>4.184</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>53.2</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>20.3</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>24.9</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mtext>−[(</m:mtext><m:mn>4.184</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>53.2</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>−4.6</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mtext>+</m:mtext><m:mn>1.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext><m:mo>=</m:mo><m:mn>+1.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} {q}_{{\\text{rxn}}}=\\text{−}{q}_{{\\text{soln}}}={{−(c\\, \\times \\, m\\, \\times \\, \\text{Δ}T)}}_{{\\text{soln}}} \\\\ =\\text{−[(}4.184\\, \\text{J/g °C})\\, \\times \\, (53.2\\, \\text{g})\\, \\times \\, (20.3\\, \\text{°C}-24.9\\, \\text{°C})] \\\\ =\\text{−[(}4.184\\, \\text{J/g °C})\\, \\times \\, (53.2\\, \\text{g})\\, \\times \\, (−4.6\\, \\text{°C})] \\\\ =\\text{+}1.0\\, \\times \\, {10}^{3}\\, \\text{J}=+1.0\\, \\text{kJ} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idm137623248": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr><m:mtd><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>rxn</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mo stretchy=\"false\">−(</m:mo><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>water</m:mtext></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>q</m:mi><m:mrow><m:mtext>bomb</m:mtext></m:mrow></m:msub><m:mo stretchy=\"false\">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mo stretchy=\"false\">−[(</m:mo><m:mn>4.184</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/g °C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>775</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>35.6</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>23.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mn>893</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/°C</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>35.6</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>23.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mo stretchy=\"false\">−(</m:mo><m:mn>38,300</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext><m:mo>+</m:mo><m:mn>10,500</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mo>=</m:mo><m:mtext>−48,800 J</m:mtext><m:mo>=</m:mo><m:mtext>−48.8 kJ</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} {q}_{{\\text{rxn}}}=−({q}_{{\\text{water}}}+{q}_{{\\text{bomb}}}) \\\\ =−[(4.184\\, \\text{J/g °C})\\, \\times \\, (775\\, \\text{g})\\, \\times \\, (35.6\\, \\text{°C}-23.8\\, \\text{°C})+893\\, \\text{J/°C}\\, \\times \\, (35.6\\, \\text{°C}-23.8\\, \\text{°C})] \\\\ =−(38,300\\, \\text{J}+10,500\\, \\text{J}) \\\\ =\\text{−48,800 J}=\\text{−48.8 kJ} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idm196775520": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>5</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g protein</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>4</m:mn><m:mspace width=\"0.2em\"/><m:mtext>Calories/g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>31</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g carb</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>4</m:mn><m:mspace width=\"0.2em\"/><m:mtext>Calories/g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>12</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g fat</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>9</m:mn><m:mspace width=\"0.2em\"/><m:mtext>Calories/g</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mn>252</m:mn><m:mspace width=\"0.2em\"/><m:mtext>Calories</m:mtext></m:mrow></m:math>",
+    "latex": "{(5\\, \\text{g protein}\\, \\times \\, 4\\, \\text{Calories/g})+(31\\, \\text{g carb}\\, \\times \\, 4\\, \\text{Calories/g})+(12\\, \\text{g fat}\\, \\times \\, 9\\, \\text{Calories/g})=252\\, \\text{Calories}}",
+    "isBlock": true
+  }
+}

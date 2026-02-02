@@ -22,12 +22,9 @@ source:
 
 | ${q=c\,\times \,m\,\times \,\text{Δ}\text{lok}=c\,\times \,m\,\times \,({T}_{{\text{upphafs}}}-{T}_{{\text{initial}}})}$ |
 | :--- |
-{#key-equations-table}
 
 ### 5.3 Vermi
 
 | $\text{Δ}U=q+w$ |
 | :--- |
 | ${\text{Δ}{H}_{{\text{hvarf}}}^{^{\circ}}=∑ {n\,\times \,\text{Δ}{H}_{\text{(myndefni)}}^{^{\circ}}\text{hvarfefni}}-∑ n\,\times \,\text{Δ}{H}_{\text{f}}^{^{\circ}}(\text{reactants})}$ |
-{id="key-equations-table" summary="tafla með lykiljöfnum"}
-

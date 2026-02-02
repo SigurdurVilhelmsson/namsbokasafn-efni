@@ -35,7 +35,7 @@ source:
 
 *Mynd 5.1: Þegar eldspýtshaus er strokið eftir hrjúfu yfirborði hefst
 brunaefnahvarf sem framleiðir orku í formi varma og ljóss. (heimild:
-breyting á verki eftir Laszlo Ilyes)*{#CNX_Chem_05_00_Match}
+breyting á verki eftir Laszlo Ilyes)*
 
 Efnahvörf, eins og þau sem eiga sér stað þegar þú kveikir á eldspýtu,
 fela í sér breytingar á orku jafnt sem efni. Samfélög á öllum

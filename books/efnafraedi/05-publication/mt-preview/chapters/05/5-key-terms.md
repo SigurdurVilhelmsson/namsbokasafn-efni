@@ -18,59 +18,59 @@ source:
 
 ## Lykilhugtök
 
-**ástandsfall**{#term-00005}
+**ástandsfall**
 
-**efnavarmafræði**{#term-00001}
+**efnavarmafræði**
 
 **fyrsta lögmáli
-varmafræðinnar**{#term-00003}
+varmafræðinnar**
 
-**Hitastig**{#term-00007}
+**Hitastig**
 
-**hreyfiorku**{#term-00005}
+**hreyfiorku**
 
 **innvermið
-ferli**{#term-00010}
+ferli**
 
-**Júl (J)**{#term-00012}
+**Júl (J)**
 
 **kaloríur
-(cal)**{#term-00011}
+(cal)**
 
-**kerfi**{#term-00002}
+**kerfi**
 
-**kolvetni**{#term-00010}
+**kolvetni**
 
 **lögmáli
-Hess**{#term-00013}
+Hess**
 
 **Næringarkaloría
-(kaloría)**{#term-00006}
+(kaloría)**
 
-**Orku**{#term-00002}
+**Orku**
 
-**sprengivarmamælir**{#term-00005}
+**sprengivarmamælir**
 
-**Staðalástand**{#term-00008}
+**Staðalástand**
 
-**Staðalbrunavermi**{#term-00009}
+**Staðalbrunavermi**
 
-**Staðalmyndunarvermi ${\text{Δ}{H}_{\text{f}}^{^{\circ}}}$**{#term-00012}
+**Staðalmyndunarvermi ${\text{Δ}{H}_{\text{f}}^{^{\circ}}}$**
 
-**stöðuorku**{#term-00004}
+**stöðuorku**
 
-**umhverfi**{#term-00003}
+**umhverfi**
 
 **útvermið
-ferli**{#term-00009}
+ferli**
 
-**varmamæling**{#term-00001}
+**varmamæling**
 
-**Varmamælir**{#term-00004}
+**Varmamælir**
 
-**Varmaorka**{#term-00006}
+**Varmaorka**
 
-**varmefnafræði**{#term-00001}
+**varmefnafræði**
 
-**þensluvinna**{#term-00004}
+**þensluvinna**
 

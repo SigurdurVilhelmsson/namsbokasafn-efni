@@ -1,0 +1,58 @@
+{
+  "moduleId": "m68723",
+  "title": {
+    "segmentId": "m68723:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "cf0ef76c-34fd-4905-a755-a28d0e4a5d1a",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Energy Basics",
+        "Calorimetry",
+        "Enthalpy"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm19082352",
+      "segmentId": "m68723:para:fs-idm19082352"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm15108400",
+      "segmentId": "m68723:para:fs-idm15108400"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_05_00_Match",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68723:caption:CNX_Chem_05_00_Match-caption"
+      },
+      "media": {
+        "id": "fs-idm65754480",
+        "alt": "A match held in a person’s hand is ignited as it is scratched along the rough surface of a match box.",
+        "src": "../../media/CNX_Chem_05_00_Match.jpg"
+      }
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68723:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68723:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68723:abstract-item:abstract-item-3"
+      }
+    ]
+  }
+}

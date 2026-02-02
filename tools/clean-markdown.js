@@ -11,6 +11,7 @@
  * 2. Orphan ::: directive markers
  * 3. Escaped tildes meant for subscripts
  * 4. Pandoc table border artifacts
+ * 5. Pandoc attributes ({#term-00001}, {#fs-idp...}, {id="..." summary="..."})
  *
  * Usage:
  *   node tools/clean-markdown.js <file.md>
@@ -23,8 +24,12 @@
  *   -h, --help  Show help
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // ============================================================================
 // Cleanup Functions
@@ -179,7 +184,11 @@ function cleanTableArtifacts(content) {
 
       // If next line starts with | it's a table header border - remove
       // If prev line starts with | it's a table footer border - remove
-      if (nextLine.startsWith('|') || prevLine.startsWith('|') || prevLine === '' && nextLine === '') {
+      if (
+        nextLine.startsWith('|') ||
+        prevLine.startsWith('|') ||
+        (prevLine === '' && nextLine === '')
+      ) {
         count++;
         continue;
       }
@@ -192,9 +201,192 @@ function cleanTableArtifacts(content) {
 
   // Also handle inline decorative borders within table context
   // Pattern: long dashes inside content that aren't HR
-  result = result.replace(/^(-{50,})$/gm, (match) => {
+  result = result.replace(/^(-{50,})$/gm, () => {
     count++;
     return '';
+  });
+
+  return { content: result, count };
+}
+
+/**
+ * Remove orphaned table separator rows
+ *
+ * In markdown tables, the separator row (| :--- | :--- |) should immediately follow
+ * the header row. Orphaned separator rows that appear without a header above them
+ * should be removed.
+ */
+function removeOrphanedTableSeparators(content) {
+  const lines = content.split('\n');
+  const result = [];
+  let count = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Check if this is a table separator row (only contains |, :, -, and spaces)
+    if (/^\|[\s:|-]+\|$/.test(trimmed) && /:-+/.test(trimmed)) {
+      // Check if previous non-empty line is a table header row (starts and ends with |)
+      let prevLineIndex = i - 1;
+      while (prevLineIndex >= 0 && lines[prevLineIndex].trim() === '') {
+        prevLineIndex--;
+      }
+
+      const prevLine = prevLineIndex >= 0 ? lines[prevLineIndex].trim() : '';
+
+      // A valid header row should have | delimiters with content between them
+      const isValidHeader =
+        prevLine.startsWith('|') && prevLine.endsWith('|') && !/^[|\s:-]+$/.test(prevLine); // Not another separator row
+
+      if (!isValidHeader) {
+        // This separator row is orphaned - skip it
+        count++;
+        continue;
+      }
+    }
+
+    result.push(line);
+  }
+
+  return { content: result.join('\n'), count };
+}
+
+/**
+ * Strip Pandoc-style attributes from content
+ *
+ * Removes:
+ * 1. Inline span IDs: {#term-00005}, {#fs-idp1234567}
+ * 2. Table attributes: {#key-equations-table}, {id="..." summary="..."}
+ * 3. Figure/equation IDs after $...$ blocks: ${equation}${#fs-id...}
+ *
+ * These are Pandoc-specific syntax that most markdown renderers don't understand.
+ */
+function stripPandocAttributes(content) {
+  let result = content;
+  let count = 0;
+
+  // Pattern 1: Inline span IDs like {#term-00005} or {#fs-idp1234567}
+  // These appear after bold terms or inline content
+  // Match: {#identifier} where identifier is alphanumeric with hyphens
+  const inlineIdPattern = /\{#[a-zA-Z][a-zA-Z0-9_-]*\}/g;
+  const inlineMatches = result.match(inlineIdPattern);
+  if (inlineMatches) {
+    count += inlineMatches.length;
+    result = result.replace(inlineIdPattern, '');
+  }
+
+  // Pattern 1b: Inline id attributes like {id="term-00014"}
+  // These appear after bold terms or inline content
+  const inlineIdAttrPattern = /\{id="[^"]*"\}/g;
+  const inlineIdAttrMatches = result.match(inlineIdAttrPattern);
+  if (inlineIdAttrMatches) {
+    count += inlineIdAttrMatches.length;
+    result = result.replace(inlineIdAttrPattern, '');
+  }
+
+  // Pattern 2: Table attributes like {id="..." summary="..."} or {#id}
+  // These appear on a line by themselves after tables
+  // Match standalone attribute lines
+  const tableAttrPattern =
+    /^\{(?:id="[^"]*"(?:\s+summary="[^"]*")?|#[a-zA-Z][a-zA-Z0-9_-]*)\}\s*$/gm;
+  const tableMatches = result.match(tableAttrPattern);
+  if (tableMatches) {
+    count += tableMatches.length;
+    result = result.replace(tableAttrPattern, '');
+  }
+
+  // Pattern 3: Duplicate equation IDs - ${equation}${#fs-id...}
+  // The second $ block with just an ID should be removed
+  // Match: $}{#fs-id...} at the end of an equation
+  const eqIdPattern = /\$\{#[a-zA-Z][a-zA-Z0-9_-]*\}/g;
+  const eqMatches = result.match(eqIdPattern);
+  if (eqMatches) {
+    count += eqMatches.length;
+    result = result.replace(eqIdPattern, '$');
+  }
+
+  // Clean up any resulting double blank lines
+  result = result.replace(/\n{3,}/g, '\n\n');
+
+  return { content: result, count };
+}
+
+/**
+ * Simplify and fix braces in LaTeX display equations
+ *
+ * The CNXML-to-markdown conversion sometimes generates equations with:
+ * 1. Redundant outer braces like $${{C}_{...}=...}}$$
+ * 2. Extra closing braces that cause KaTeX parse errors
+ *
+ * This function:
+ * - Removes one layer of outer braces when equation starts with {{ and ends with }}
+ * - Removes extra closing braces when equation has more closes than opens
+ */
+function simplifyEquationBraces(content) {
+  let count = 0;
+
+  // Match display math blocks: $$...$$
+  const result = content.replace(/\$\$([^$]+)\$\$/g, (match, eqContent) => {
+    let modified = eqContent;
+    let changed = false;
+
+    // Step 1: Remove redundant outer braces ({{...}} → {...})
+    if (modified.startsWith('{{') && modified.endsWith('}}')) {
+      modified = modified.slice(1, -1);
+      changed = true;
+    }
+
+    // Step 2: Count and fix unbalanced braces
+    // Count braces, ignoring escaped ones (\{ \})
+    let opens = 0;
+    let closes = 0;
+    let i = 0;
+    while (i < modified.length) {
+      if (
+        modified[i] === '\\' &&
+        i + 1 < modified.length &&
+        (modified[i + 1] === '{' || modified[i + 1] === '}')
+      ) {
+        // Skip escaped brace
+        i += 2;
+        continue;
+      }
+      if (modified[i] === '{') opens++;
+      if (modified[i] === '}') closes++;
+      i++;
+    }
+
+    // If there are extra closing braces, remove them from the end
+    if (closes > opens) {
+      const excess = closes - opens;
+      // Remove excess closing braces from the end
+      let trimCount = 0;
+      for (let j = modified.length - 1; j >= 0 && trimCount < excess; j--) {
+        if (modified[j] === '}') {
+          // Check it's not escaped
+          let escapeCount = 0;
+          let k = j - 1;
+          while (k >= 0 && modified[k] === '\\') {
+            escapeCount++;
+            k--;
+          }
+          if (escapeCount % 2 === 0) {
+            // Not escaped, remove it
+            modified = modified.substring(0, j) + modified.substring(j + 1);
+            trimCount++;
+            changed = true;
+          }
+        }
+      }
+    }
+
+    if (changed) {
+      count++;
+      return `$$${modified}$$`;
+    }
+
+    return match;
   });
 
   return { content: result, count };
@@ -226,13 +418,15 @@ function processFile(filePath, options) {
   }
 
   let content = fs.readFileSync(filePath, 'utf8');
-  const originalContent = content;
 
   const stats = {
     mspace: 0,
     orphanDirectives: 0,
     escapedTildes: 0,
     tableArtifacts: 0,
+    orphanedTableSeparators: 0,
+    pandocAttributes: 0,
+    simplifiedEquations: 0,
   };
 
   // Apply all fixes
@@ -254,7 +448,26 @@ function processFile(filePath, options) {
   content = result.content;
   stats.tableArtifacts = result.count;
 
-  const totalChanges = stats.mspace + stats.orphanDirectives + stats.escapedTildes + stats.tableArtifacts;
+  result = removeOrphanedTableSeparators(content);
+  content = result.content;
+  stats.orphanedTableSeparators = result.count;
+
+  result = stripPandocAttributes(content);
+  content = result.content;
+  stats.pandocAttributes = result.count;
+
+  result = simplifyEquationBraces(content);
+  content = result.content;
+  stats.simplifiedEquations = result.count;
+
+  const totalChanges =
+    stats.mspace +
+    stats.orphanDirectives +
+    stats.escapedTildes +
+    stats.tableArtifacts +
+    stats.orphanedTableSeparators +
+    stats.pandocAttributes +
+    stats.simplifiedEquations;
 
   if (totalChanges === 0) {
     if (verbose) {
@@ -266,9 +479,15 @@ function processFile(filePath, options) {
   if (verbose || dryRun) {
     console.log(`\n${dryRun ? '[DRY RUN] ' : ''}Processing: ${filePath}`);
     if (stats.mspace > 0) console.log(`  - \\mspace commands: ${stats.mspace}`);
-    if (stats.orphanDirectives > 0) console.log(`  - Orphan ::: markers: ${stats.orphanDirectives}`);
+    if (stats.orphanDirectives > 0)
+      console.log(`  - Orphan ::: markers: ${stats.orphanDirectives}`);
     if (stats.escapedTildes > 0) console.log(`  - Escaped tildes: ${stats.escapedTildes}`);
     if (stats.tableArtifacts > 0) console.log(`  - Table artifacts: ${stats.tableArtifacts}`);
+    if (stats.orphanedTableSeparators > 0)
+      console.log(`  - Orphaned table separators: ${stats.orphanedTableSeparators}`);
+    if (stats.pandocAttributes > 0) console.log(`  - Pandoc attributes: ${stats.pandocAttributes}`);
+    if (stats.unbalancedBraces > 0)
+      console.log(`  - Simplified equations: ${stats.unbalancedBraces}`);
   }
 
   if (!dryRun) {
@@ -305,7 +524,7 @@ function findMarkdownFiles(dir) {
  * Process all files in a directory
  */
 function processBatch(directory, options) {
-  const { verbose, dryRun } = options;
+  const { dryRun } = options;
 
   if (!fs.existsSync(directory)) {
     throw new Error(`Directory not found: ${directory}`);
@@ -330,6 +549,9 @@ function processBatch(directory, options) {
     orphanDirectives: 0,
     escapedTildes: 0,
     tableArtifacts: 0,
+    orphanedTableSeparators: 0,
+    pandocAttributes: 0,
+    simplifiedEquations: 0,
   };
 
   for (const file of files) {
@@ -343,6 +565,9 @@ function processBatch(directory, options) {
           totals.orphanDirectives += result.stats.orphanDirectives;
           totals.escapedTildes += result.stats.escapedTildes;
           totals.tableArtifacts += result.stats.tableArtifacts;
+          totals.orphanedTableSeparators += result.stats.orphanedTableSeparators;
+          totals.pandocAttributes += result.stats.pandocAttributes;
+          totals.simplifiedEquations += result.stats.simplifiedEquations;
         }
       }
     } catch (err) {
@@ -360,6 +585,9 @@ function processBatch(directory, options) {
   console.log(`    - Orphan ::: markers: ${totals.orphanDirectives}`);
   console.log(`    - Escaped tildes: ${totals.escapedTildes}`);
   console.log(`    - Table artifacts: ${totals.tableArtifacts}`);
+  console.log(`    - Orphaned table separators: ${totals.orphanedTableSeparators}`);
+  console.log(`    - Pandoc attributes: ${totals.pandocAttributes}`);
+  console.log(`    - Simplified equations: ${totals.simplifiedEquations}`);
 }
 
 // ============================================================================
@@ -427,6 +655,7 @@ Fixes Applied:
   2. Orphan ::: directive markers removed
   3. Escaped tildes (\\~) fixed for subscript syntax
   4. Pandoc table border artifacts cleaned
+  5. Pandoc attributes stripped ({#term-00001}, {#fs-idp...}, {id="..." summary="..."})
 
 Examples:
   # Single file
@@ -468,9 +697,10 @@ async function main() {
         process.exit(1);
       }
 
-      const books = fs.readdirSync(booksDir, { withFileTypes: true })
-        .filter(d => d.isDirectory())
-        .map(d => d.name);
+      const books = fs
+        .readdirSync(booksDir, { withFileTypes: true })
+        .filter((d) => d.isDirectory())
+        .map((d) => d.name);
 
       for (const book of books) {
         const mtPreviewDir = path.join(booksDir, book, '05-publication', 'mt-preview');

@@ -32,18 +32,18 @@ source:
 
 Ein aðferð sem við getum notað til að mæla magn varma sem tekur þátt í
 efna- eða eðlisfræðilegu ferli er þekkt sem
-**varmamæling**{#term-00001}. Varmamælingar eru notaðar til að mæla
+**varmamæling**. Varmamælingar eru notaðar til að mæla
 magn varma sem flyst til eða frá efni. Til þess er varmanum skipt við
 kvarðaðan hlut (varmamæli). Hitastigsbreytingin sem mæld er með
 varmamælinum er notuð til að leiða út magn varma sem fluttist í ferlinu
 sem er til rannsóknar. Mæling á varmaflutningi með þessari aðferð krefst
-skilgreiningar á **kerfi**{#term-00002} (efnið eða efnin sem gangast
+skilgreiningar á **kerfi** (efnið eða efnin sem gangast
 undir efna- eða eðlisfræðilega breytingu) og
-**umhverfi**{#term-00003} þess (allt annað efni, þar á meðal hlutar
+**umhverfi** þess (allt annað efni, þar á meðal hlutar
 mælibúnaðarins, sem annaðhvort veita kerfinu varma eða gleypa varma úr
 kerfinu).
 
-**Varmamælir**{#term-00004} er tæki sem notað er til að mæla magn
+**Varmamælir** er tæki sem notað er til að mæla magn
 varma sem tekur þátt í efna- eða eðlisfræðilegu ferli. Til dæmis, þegar
 útvermið hvarf á sér stað í lausn í varmamæli, gleypir lausnin varmann
 sem myndast við hvarfið, sem eykur hitastig hennar. Þegar innvermið
@@ -52,13 +52,11 @@ sem lækkar hitastig hennar (mynd 5.5). Hitastigsbreytinguna, ásamt
 eðlisvarma og massa lausnarinnar, er síðan hægt að nota til að reikna út
 magn varma sem um ræðir í hvoru tilviki.
 
-{#CNX_Chem_05_02_HeatMeas}
-
 *Mynd 5.5: Í varmamælingu á sér stað annaðhvort (a) útvermið ferli og
 varmi, q, er neikvæður, sem gefur til kynna að varmaorka flytjist frá
 kerfinu til umhverfis þess, eða (b) innvermið ferli á sér stað og varmi,
 q, er jákvæður, sem gefur til kynna að varmaorka flytjist frá umhverfinu
-til kerfisins.*{#CNX_Chem_05_02_HeatMeas}
+til kerfisins.*
 
 Varmamælingar eru mikilvægar til að skilja varmaflutning í hvörfum sem
 ná yfir allt frá smásæjum próteinum til risastórra véla. Á meðan hún
@@ -77,11 +75,9 @@ sem smíðaðir eru úr frauðplastsmálum (mynd 5.6). Þessir auðveldu
 „kaffibolla“-varmamælar leyfa meiri varmaskipti við ytra umhverfi og
 gefa því minna nákvæm orkugildi.
 
-{#CNX_Chem_05_02_Calorim}
-
 *Mynd 5.6: Hægt er að smíða einfaldan varmamæli úr tveimur
 frauðplastsmálum. Hitamælir og hræristöng ná í gegnum lokið og ofan í
-hvarfefnablönduna.*{#CNX_Chem_05_02_Calorim}
+hvarfefnablönduna.*
 
 Einnig eru fáanlegir varmamælar fyrir lausnir í atvinnuskyni.
 Tiltölulega ódýrir varmamælar samanstanda oft af tveimur þunnveggjuðum
@@ -91,8 +87,6 @@ varmamælar sem notaðir eru í iðnaði og rannsóknum hafa yfirleitt vel
 einangrað, alveg lokað hvarfílát, vélknúinn hræribúnað og nákvæmari
 hitaskynjara (mynd 5.7).
 
-{#CNX_Chem_05_02_Calorim2}
-
 . Mynd b sýnir innra málmílát hálffullt af vökva sem hvílir á
 einangrandi stuðningshring og er komið fyrir í ytra málmíláti. Nákvæmur
 hitastigsnemi og vélknúinn hræristafur eru settir í lausnina í innra
@@ -100,7 +94,7 @@ hitastigsnemi og vélknúinn hræristafur eru settir í lausnina í innra
 
 *Mynd 5.7: Lausnarvarmamælar í verslunum eru allt frá (a) einföldum,
 ódýrum gerðum til notkunar fyrir nemendur til (b) dýrra, nákvæmari gerða
-fyrir iðnað og rannsóknir.*{#CNX_Chem_05_02_Calorim2}
+fyrir iðnað og rannsóknir.*
 
 Áður en við ræðum varmamælingar á efnahvörfum skulum við skoða
 einfaldara dæmi sem sýnir grundvallarhugmyndina á bak við varmamælingar.
@@ -113,12 +107,12 @@ varmamæli á allur þessi varmaflutningur helst að eiga sér stað á milli
 efnanna tveggja, án þess að varmi tapist eða bætist við úr ytra
 umhverfi. Við þessar kjöraðstæður er nettóvarmabreytingin núll:
 
-${{q}_{\text{efni M}}+{q}_{\text{efni W}}=0}${#fs-idm194903168}
+${{q}_{\text{efni M}}+{q}_{\text{efni W}}=0}$
 
 Þessu sambandi má umraða til að sýna að varminn sem efni M tekur við er
 jafn varmanum sem efni W tapar:
 
-${{q}_{\text{efni M}}=\text{−}{q}_{\text{efni W}}}${#fs-idm280055136}
+${{q}_{\text{efni M}}=\text{−}{q}_{\text{efni W}}}$
 
 Stærð varma (breyting) er því sú sama fyrir bæði efnin og neikvæða
 formerkið sýnir aðeins að *q*~efni M~ og *q*~efni W~ hafa gagnstæða
@@ -128,11 +122,9 @@ við eða tapar varma, samkvæmt skilgreiningu). Í þeim sérstöku aðstæðum
 sem lýst er er *q*~efni M~ neikvætt gildi og *q*~efni W~ er jákvætt, þar
 sem varmi flyst frá M til W.
 
-{#CNX_Chem_05_02_HeatTrans2}
-
 *Mynd 5.8: Í einföldu varmamælingarferli er (a) varmi, q, fluttur frá
 heita málmnum, M, yfir í kalda vatnið, W, þar til (b) bæði eru við sama
-hitastig.*{#CNX_Chem_05_02_HeatTrans2}
+hitastig.*
 
 Varmaflutningur milli efna við mismunandi hitastig360,0 g stykki af
 steypustyrktarjárni (stálstöng sem notuð er til að styrkja steypu) er
@@ -149,24 +141,24 @@ hafi verið á milli steypustyrktarjárnsins og vatnsins, án þess að varmi
 „tapaðist“ út í umhverfið, þá er *varmi sem steypustyrktarjárnið gefur
 frá sér = −varmi sem vatnið tekur við*, eða:
 
-${{q}_{\text{járnabinding}}=\text{−}{q}_{\text{vatn}}}${#fs-idm107179568}
+${{q}_{\text{járnabinding}}=\text{−}{q}_{\text{vatn}}}$
 
 Þar sem við vitum hvernig varmi tengist öðrum mælanlegum stærðum höfum
 við:
 
-${{{(c\,\times \,m\,\times \,\text{Δ}\text{járnabinding})}}_{{\text{vatn}}}={{−(c\,\times \,m\,\times \,\text{Δ}\text{T})}}_{{\text{water}}}}${#fs-idm52673840}
+${{{(c\,\times \,m\,\times \,\text{Δ}\text{járnabinding})}}_{{\text{vatn}}}={{−(c\,\times \,m\,\times \,\text{Δ}\text{T})}}_{{\text{water}}}}$
 
 Látum f = loka og u = upphafs, í útvíkkuðu formi verður þetta:
 
-${{c}_{{\text{járnabinding}}}\,\times \,{m}_{{\text{járnabinding}}}\,\times \,({T}_{{\text{l,járnabinding}}}-{T}_{{\text{u,járnabinding}}})=\text{−}{c}_{{\text{vatn}}}\,\times \,{m}_{{\text{vatn}}}\,\times \,({T}_{{\text{l,vatn}}}-{T}_{{\text{u,vatn}}})}${#fs-idp7508656}
+${{c}_{{\text{járnabinding}}}\,\times \,{m}_{{\text{járnabinding}}}\,\times \,({T}_{{\text{l,járnabinding}}}-{T}_{{\text{u,járnabinding}}})=\text{−}{c}_{{\text{vatn}}}\,\times \,{m}_{{\text{vatn}}}\,\times \,({T}_{{\text{l,vatn}}}-{T}_{{\text{u,vatn}}})}$
 
 Eðlismassi vatns er 1,0 g/ml, þannig að 425 ml af vatni = 425 g. Athugið
 að lokahitastig bæði steypustyrktarjárnsins og vatnsins er 42,7 °C, með
 því að setja inn þekkt gildi fæst:
 
-${(0.449\,\text{J/g °C})(360.0\,\text{°C})(42.7\,\text{u,járnabinding}-{T}_{\text{J/g °C}})=-(4.184\,\text{°C})(425\text{°C})(42.7\,\text{°C}-24.0\,\text{°C})}${#fs-idm160292560}
+${(0.449\,\text{J/g °C})(360.0\,\text{°C})(42.7\,\text{u,járnabinding}-{T}_{\text{J/g °C}})=-(4.184\,\text{°C})(425\text{°C})(42.7\,\text{°C}-24.0\,\text{°C})}$
 
-$${{T}_{{\text{u,járnabinding}}}=\,\frac{{(4.184\,\text{J/g °C})(425\,\text{°C})(42.7\,\text{°C}-24.0\,\text{J/g °C})}}{{(0.449\,\text{°C})(360.0\,\text{g})}}\,+42.7\,\text{°C}}$${#fs-idp7310352}
+$${T}_{{\text{u,járnabinding}}}=\,\frac{{(4.184\,\text{J/g °C})(425\,\text{°C})(42.7\,\text{°C}-24.0\,\text{J/g °C})}}{{(0.449\,\text{°C})(360.0\,\text{g})}}\,+42.7\,\text{°C}$$
 
 Með því að leysa þetta fæst *T*~u,steypustyrktarjárn~= 248 °C, þannig að
 upphafshitastig steypustyrktarjárnsins var 248 °C.
@@ -213,21 +205,21 @@ til að bera kennsl á málminn.
 Lausn: Ef gert er ráð fyrir fullkomnum varmaflutningi er *varmi sem
 málmurinn gefur frá sér = −varmi sem vatnið tekur við*, eða:
 
-${{q}_{{\text{málmur}}}=\text{−}{q}_{{\text{vatn}}}}${#fs-idm199710176}
+${{q}_{{\text{málmur}}}=\text{−}{q}_{{\text{vatn}}}}$
 
 Í útvíkkuðu formi er þetta:
 
-${{c}_{{\text{málmur}}}\,\times \,{m}_{{\text{málmur}}}\,\times \,({T}_{{\text{l,málmur}}}-{T}_{{\text{u,málmur}}})=\text{−}{c}_{{\text{vatn}}}\,\times \,{m}_{{\text{vatn}}}\,\times \,({T}_{{\text{l,vatn}}}-{T}_{{\text{u,vatn}}})}${#fs-idm4542240}
+${{c}_{{\text{málmur}}}\,\times \,{m}_{{\text{málmur}}}\,\times \,({T}_{{\text{l,málmur}}}-{T}_{{\text{u,málmur}}})=\text{−}{c}_{{\text{vatn}}}\,\times \,{m}_{{\text{vatn}}}\,\times \,({T}_{{\text{l,vatn}}}-{T}_{{\text{u,vatn}}})}$
 
 Athugaðu að þar sem málmurinn var sökkt í sjóðandi vatn var
 upphafshitastig hans 100,0 °C; og fyrir vatn er 60,0 ml = 60,0 g; við
 höfum:
 
-${({c}_{{\text{málmur}}})(59.7\,\text{°C})(28.5\,\text{°C}-100.0\,\text{J/g °C})=−(4.18\,\text{°C})(60.0\,\text{°C})(28.5\,\text{°C}-22.0\,\text{°C})}${#fs-idm127022128}
+${({c}_{{\text{málmur}}})(59.7\,\text{°C})(28.5\,\text{°C}-100.0\,\text{J/g °C})=−(4.18\,\text{°C})(60.0\,\text{°C})(28.5\,\text{°C}-22.0\,\text{°C})}$
 
 Þegar þetta er leyst:
 
-$${{c}_{{\text{málmur}}}=\,\frac{{-(4.184\,\text{J/g °C})(60.0\,\text{°C})(6.5\,\text{°C})}}{{(59.7\,\text{J/g °C})(−71.5\,\text{°C})}}\,=0.38\,\text{J/g °C}}$${#fs-idm13040064}
+$${c}_{{\text{málmur}}}=\,\frac{{-(4.184\,\text{J/g °C})(60.0\,\text{°C})(6.5\,\text{°C})}}{{(59.7\,\text{J/g °C})(−71.5\,\text{°C})}}\,=0.38\,\text{J/g °C}$$
 
 Þegar þetta er borið saman við gildin í ⇡ er eðlisvarmi okkar úr
 tilrauninni næstur gildinu fyrir kopar (0,39 J/g °C), þannig að við
@@ -269,12 +261,12 @@ verður hvorki til né eyðist í efnahvarfi verður varminn sem myndast eða
 er neytt í hvarfinu („kerfið“), *q*~hvarf~, auk varmans sem lausnin
 gleypir eða tapar („umhverfið“), *q*~lausn~, að vera núll samanlagt:
 
-${{q}_{{\text{hvarf}}}+{q}_{{\text{lausn}}}=0}${#fs-idm289467200}
+${{q}_{{\text{hvarf}}}+{q}_{{\text{lausn}}}=0}$
 
 Þetta þýðir að magn varmans sem myndast eða er neytt í hvarfinu
 jafngildir magni varmans sem lausnin gleypir eða tapar:
 
-${q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}${#fs-idm208991056}
+${q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}$
 
 Þetta hugtak er kjarninn í öllum varmamælingarverkefnum og útreikningum.
 
@@ -283,7 +275,7 @@ og 50,0 ml af 1,00 M NaOH(*aq*), bæði við 22,0 °C, er bætt í
 kaffibollavarmamæli, nær hitastig efnablöndunnar hámarki 28,9 °C. Hvert
 er áætlað magn varmans sem myndast við þetta hvarf?
 
-${\text{HCl}(aq)+\text{NaOH}(aq)\,\longrightarrow \,\text{NaCl}(aq)+{\text{H}}_{2}\text{O}(l)}${#fs-idm32936848}
+${\text{HCl}(aq)+\text{NaOH}(aq)\,\longrightarrow \,\text{NaCl}(aq)+{\text{H}}_{2}\text{O}(l)}$
 
 Lausn: Til að sjá fyrir þér hvað er að gerast, ímyndaðu þér að þú gætir
 sameinað lausnirnar tvær svo hratt að ekkert hvarf ætti sér stað á meðan
@@ -295,7 +287,7 @@ lausnarinnar nær 28,9 °C.
 Varminn sem hvarfið gefur frá sér er jafn þeim varma sem lausnin tekur
 við. Þess vegna:
 
-${q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}${#fs-idm259063904}
+${q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}$
 
 (Mikilvægt er að muna að þetta samband gildir aðeins ef varmamælirinn
 aðsogar engan varma frá hvarfinu og engin varmaskipti eiga sér stað
@@ -304,7 +296,7 @@ milli varmamælisins og umhverfisins.)
 Næst vitum við að varminn sem lausnin tekur upp fer eftir eðlisvarma
 hennar, massa og hitastigsbreytingu:
 
-${q}_{{\text{lausn}}}={{(c\,\times \,m\,\times \,\text{Δ}T)}}_{{\text{lausn}}}${#fs-idm174034752}
+${q}_{{\text{lausn}}}={{(c\,\times \,m\,\times \,\text{Δ}T)}}_{{\text{lausn}}}$
 
 Til að halda áfram með þennan útreikning þurfum við að gera nokkrar
 sanngjarnar forsendur eða nálganir í viðbót. Þar sem lausnin er
@@ -315,11 +307,11 @@ g (tveir markverðir stafir). Eðlisvarmi vatns er um það bil 4,184 J/g
 °C, þannig að við notum það gildi fyrir eðlisvarma lausnarinnar. Með því
 að setja þessi gildi inn fáum við:
 
-${{q}_{{\text{lausn}}}=(4.184\,\text{J/g °C})(1.0\,\times \,{{10}}^{2}\,\text{°C})(28.9\,\text{°C}-22.0\,\text{°C})=2.9\,\times \,{{10}}^{3}\,\text{J}}${#fs-idm261390032}
+${{q}_{{\text{lausn}}}=(4.184\,\text{J/g °C})(1.0\,\times \,{{10}}^{2}\,\text{°C})(28.9\,\text{°C}-22.0\,\text{°C})=2.9\,\times \,{{10}}^{3}\,\text{J}}$
 
 Að lokum, þar sem við erum að reyna að finna varma hvarfsins, höfum við:
 
-${{q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}=−2.9\,\times \,{{10}}^{3}\,\text{J}}${#fs-idm178566000}
+${{q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}=−2.9\,\times \,{{10}}^{3}\,\text{J}}$
 
 Neikvæða formerkið gefur til kynna að hvarfið sé útvermið. Það
 framleiðir 2,9 kJ af varma.
@@ -391,12 +383,10 @@ frásogast af höndum þínum og vermir þær þannig (að minnsta kosti um
 stund). Ef handhitarinn er hitaður aftur leysist NaC~2~H~3~O~2~ upp á ný
 og hægt er að endurnýta hann.
 
-{#CNX_Chem_05_02_HandWarmer}
-
 *Mynd 5.9: Efnafræðilegir handhitarar framleiða varma sem vermir
 hendurnar á köldum degi. Í þessum má sjá málmskífuna sem kemur af stað
 útverma útfellingarhvarfinu. (heimild: breytt útgáfa af verki eftir
-Science Buddies TV/YouTube)*{#CNX_Chem_05_02_HandWarmer}
+Science Buddies TV/YouTube)*
 
 Annar algengur handhitari framleiðir varma þegar hann er rifinn opinn og
 járn og vatn í handhitaranum komast í snertingu við súrefni í loftinu.
@@ -428,26 +418,24 @@ við 24,9 °C í varmamæli lækkar hitastigið í 20,3 °C.
 Reiknaðu gildi *q* fyrir þetta hvarf og útskýrðu merkingu formerkis
 þess. Tilgreindu allar forsendur sem þú gafst þér.
 
-{#CNX_Chem_05_02_IcePack}
-
 *Mynd 5.10: Skyndikælipoki samanstendur af poka sem inniheldur fast
 ammóníumnítrat og öðrum poka með vatni. Þegar pokinn með vatninu er
 brotinn verður pokinn kaldur vegna þess að upplausn ammóníumnítrats er
 innvermið ferli sem fjarlægir varmaorku úr vatninu. Kælipokinn fjarlægir
-síðan varmaorku frá líkama þínum.*{#CNX_Chem_05_02_IcePack}
+síðan varmaorku frá líkama þínum.*
 
 Lausn Við gerum ráð fyrir að varmamælirinn komi í veg fyrir
 varmaflutning milli lausnarinnar og ytra umhverfis hennar (þar með talið
 varmamælisins sjálfs), en í því tilfelli gildir:
 
-${q}_{{\text{efnahv.}}}=\text{−}{q}_{{\text{lausn}}}${#fs-idm127206368}
+${q}_{{\text{efnahv.}}}=\text{−}{q}_{{\text{lausn}}}$
 
 þar sem „hvarf“ og „lausn“ eru notaðar sem styttingar.
 
 Ef við gerum einnig ráð fyrir að eiginvarmi lausnarinnar sé sá sami og
 fyrir vatn, höfum við:
 
-${q}_{{\text{efnahv.}}}=\text{−}{q}_{{\text{lausn}}}={{−(c\,\times \,m\,\times \,\text{Δ}T)}}_{{\text{lausn}}}=\text{−[(}4.184\,\text{J/g °C})\,\times \,(53.2\,\text{°C})\,\times \,(20.3\,\text{°C}-24.9\,\text{J/g °C})]=\text{−[(}4.184\,\text{°C})\,\times \,(53.2\,\text{kJ})\,\times \,(−4.6\,\text{°C})]=\text{+}1.0\,\times \,{10}^{3}\,\text{J}=+1.0\,\text{kJ}${#fs-idm183045408}
+${q}_{{\text{efnahv.}}}=\text{−}{q}_{{\text{lausn}}}={{−(c\,\times \,m\,\times \,\text{Δ}T)}}_{{\text{lausn}}}=\text{−[(}4.184\,\text{J/g °C})\,\times \,(53.2\,\text{°C})\,\times \,(20.3\,\text{°C}-24.9\,\text{J/g °C})]=\text{−[(}4.184\,\text{°C})\,\times \,(53.2\,\text{kJ})\,\times \,(−4.6\,\text{°C})]=\text{+}1.0\,\times \,{10}^{3}\,\text{J}=+1.0\,\text{kJ}$
 
 Jákvætt formerki fyrir *q* gefur til kynna að upplausnin sé innvermið
 ferli.
@@ -480,7 +468,7 @@ Varmamælarnir sem lýst er eru hannaðir til að starfa við stöðugan
 (loft)þrýsting og eru hentugir til að mæla varmaflæði sem fylgir ferlum
 sem eiga sér stað í lausn. Annars konar varmamælir sem starfar við
 stöðugt rúmmál, í daglegu tali þekktur sem
-**sprengivarmamælir**{#term-00005}, er notaður til að mæla orkuna
+**sprengivarmamælir**, er notaður til að mæla orkuna
 sem myndast við efnahvörf sem gefa af sér mikið magn af varma og
 loftkennd myndefni, svo sem brunahvörf. (Orðið „sprengja“ kemur frá
 þeirri athugun að þessi efnahvörf geta verið nógu kröftug til að líkjast
@@ -501,13 +489,11 @@ notuð til að ákvarða varmarýmd varmamælisins. Kvörðunin er yfirleitt
 framkvæmd í hvert skipti áður en varmamælirinn er notaður til að safna
 rannsóknargögnum.
 
-{#CNX_Chem_05_02_BombCalor}
-
 *Mynd 5.11: (a) Sprengivarmamælir er notaður til að mæla varma sem
 myndast við efnahvörf sem innihalda loftkennd hvarfefni eða myndefni,
 svo sem bruna. (b) Hvarfefnin eru í loftþéttu „sprengjunni“, sem er á
 kafi í vatni og umkringd einangrandi efnum. (heimild a: breyting á verki
-eftir „Harbor1“/Wikimedia commons)*{#CNX_Chem_05_02_BombCalor}
+eftir „Harbor1“/Wikimedia commons)*
 
 :::link-to-learning
 Smelltu á þennan
@@ -538,7 +524,7 @@ utan gildissviðs þessa texta. Við munum hunsa það í útreikningum okkar.)
 Varminn sem myndast við efnahvarfið er gleyptur af vatninu og
 sprengjunni:
 
-${q}_{{\text{efnahv.}}}=−({q}_{{\text{vatn}}}+{q}_{{\text{sprengihylki}}})=−[(4.184\,\text{J/g °C})\,\times \,(775\,\text{°C})\,\times \,(35.6\,\text{°C}-23.8\,\text{J/°C})+893\,\text{°C}\,\times \,(35.6\,\text{°C}-23.8\,\text{−48.800 J})]=−(38,300\,\text{−48.8 kJ}+10,500\,\text{J})=\text{−48,800 J}=\text{−48.8 kJ}${#fs-idm137623248}
+${q}_{{\text{efnahv.}}}=−({q}_{{\text{vatn}}}+{q}_{{\text{sprengihylki}}})=−[(4.184\,\text{J/g °C})\,\times \,(775\,\text{°C})\,\times \,(35.6\,\text{°C}-23.8\,\text{J/°C})+893\,\text{°C}\,\times \,(35.6\,\text{°C}-23.8\,\text{−48.800 J})]=−(38,300\,\text{−48.8 kJ}+10,500\,\text{J})=\text{−48,800 J}=\text{−48.8 kJ}$
 
 Þetta efnahvarf losaði 48,7 kJ af varma þegar 3,12 g af glúkósa var
 brennt.
@@ -577,7 +563,7 @@ fætt barn. Rannsóknir sem þessar hjálpa til við að þróa betri
 ráðleggingar og meðferðaráætlanir fyrir næringu, hreyfingu og almenna
 vellíðan á þessu tímabili verulegra lífeðlisfræðilegra breytinga. Hjá
 mönnum eru efnaskipti venjulega mæld í kaloríum á dag. **Næringarkaloría
-(kaloría)**{#term-00006} er orkueiningin sem notuð er til að
+(kaloría)** er orkueiningin sem notuð er til að
 magngreina orkuna sem fæst úr efnaskiptum matvæla; ein kaloría er jöfn
 1000 kaloríum (1 kkal), sem er orkumagnið sem þarf til að hita 1 kg af
 vatni um 1 °C.
@@ -677,7 +663,7 @@ stórnæringarefna í matnum. (b) Næringarupplýsingar matarins eru sýndar á
 umbúðamerkingunni. Í Bandaríkjunum er orkuinnihaldið gefið upp í
 hitaeiningum (á skammt); annars staðar í heiminum eru kílójúl yfirleitt
 notuð. (heimild a: breyting á verki eftir „Rex
-Roof“/Flickr)*{#CNX_Chem_05_02_FoodLabel}
+Roof“/Flickr)*
 
 ---
 title: "Varmamælingar"
@@ -686,7 +672,7 @@ title: "Varmamælingar"
 Í dæminu sem sýnt er í (b) er heildarorka í hverjum 228 g skammti
 reiknuð út með:
 
-${(5\,\text{g prótein}\,\times \,4\,\text{Hitaeiningar/g})+(31\,\text{g kolvetni}\,\times \,4\,\text{Hitaeiningar/g})+(12\,\text{g fita}\,\times \,9\,\text{Hitaeiningar/g})=252\,\text{Hitaeiningar}}${#fs-idm196775520}
+${(5\,\text{g prótein}\,\times \,4\,\text{Hitaeiningar/g})+(31\,\text{g kolvetni}\,\times \,4\,\text{Hitaeiningar/g})+(12\,\text{g fita}\,\times \,9\,\text{Hitaeiningar/g})=252\,\text{Hitaeiningar}}$
 
 Þú getur því notað innihaldslýsingar til að telja hitaeiningarnar þínar.
 En hvaðan koma þessi gildi? Og hversu nákvæm eru þau?
@@ -719,7 +705,7 @@ aðgang að innlendum næringarefnagagnagrunni landbúnaðarráðuneytis
 Bandaríkjanna (USDA), sem inniheldur næringarupplýsingar um yfir 8000
 matvæli.
 
-:::example{id="fs-idp13199280"}
+:::example
 
 ### Dæmi 5.3: Varmaflutningur milli efna með mismunandi hitastig
 
@@ -739,24 +725,24 @@ milli kambstálsins og vatnsins, án þess að varmi „tapaðist“ út í
 umhverfið, þá er *varmi sem kambstálið gefur frá sér = −varmi sem vatnið
 tekur til sín*, eða:
 
-${{q}_{\text{járnabinding}}=\text{−}{q}_{\text{vatn}}}${#fs-idm107179568}
+${{q}_{\text{járnabinding}}=\text{−}{q}_{\text{vatn}}}$
 
 Þar sem við vitum hvernig varmi tengist öðrum mælanlegum stærðum höfum
 við:
 
-${{{(c\,\times \,m\,\times \,\text{Δ}\text{járnabinding})}}_{{\text{vatn}}}={{−(c\,\times \,m\,\times \,\text{Δ}\text{T})}}_{{\text{water}}}}${#fs-idm52673840}
+${{{(c\,\times \,m\,\times \,\text{Δ}\text{járnabinding})}}_{{\text{vatn}}}={{−(c\,\times \,m\,\times \,\text{Δ}\text{T})}}_{{\text{water}}}}$
 
 Látum f = lokagildi og i = upphafsgildi. Í útvíkkuðu formi verður þetta:
 
-${{c}_{{\text{járnabinding}}}\,\times \,{m}_{{\text{járnabinding}}}\,\times \,({T}_{{\text{l,járnabinding}}}-{T}_{{\text{u,járnabinding}}})=\text{−}{c}_{{\text{vatn}}}\,\times \,{m}_{{\text{vatn}}}\,\times \,({T}_{{\text{l,vatn}}}-{T}_{{\text{u,vatn}}})}${#fs-idp7508656}
+${{c}_{{\text{járnabinding}}}\,\times \,{m}_{{\text{járnabinding}}}\,\times \,({T}_{{\text{l,járnabinding}}}-{T}_{{\text{u,járnabinding}}})=\text{−}{c}_{{\text{vatn}}}\,\times \,{m}_{{\text{vatn}}}\,\times \,({T}_{{\text{l,vatn}}}-{T}_{{\text{u,vatn}}})}$
 
 Eðlismassi vatns er 1,0 g/ml, þannig að 425 ml af vatni = 425 g.
 Athugaðu að lokahitastig bæði kambstálsins og vatnsins er 42,7 °C. Með
 því að setja inn þekkt gildi fæst:
 
-${(0.449\,\text{J/g °C})(360.0\,\text{°C})(42.7\,\text{u,járnabinding}-{T}_{\text{J/g °C}})=-(4.184\,\text{°C})(425\text{°C})(42.7\,\text{°C}-24.0\,\text{°C})}${#fs-idm160292560}
+${(0.449\,\text{J/g °C})(360.0\,\text{°C})(42.7\,\text{u,járnabinding}-{T}_{\text{J/g °C}})=-(4.184\,\text{°C})(425\text{°C})(42.7\,\text{°C}-24.0\,\text{°C})}$
 
-$${{T}_{{\text{u,járnabinding}}}=\,\frac{{(4.184\,\text{J/g °C})(425\,\text{°C})(42.7\,\text{°C}-24.0\,\text{J/g °C})}}{{(0.449\,\text{°C})(360.0\,\text{g})}}\,+42.7\,\text{°C}}$${#fs-idp7310352}
+$${T}_{{\text{u,járnabinding}}}=\,\frac{{(4.184\,\text{J/g °C})(425\,\text{°C})(42.7\,\text{°C}-24.0\,\text{J/g °C})}}{{(0.449\,\text{°C})(360.0\,\text{g})}}\,+42.7\,\text{°C}$$
 
 Lausnin á þessu gefur *T*~i,kambstál~= 248 °C, þannig að upphafshitastig
 kambstálsins var 248 °C.
@@ -780,7 +766,7 @@ lokahitastigið.
 Lokahitastigið (sem bæði kopar og vatn ná) er 38,7 °C.
 :::
 
-:::example{id="fs-idm80667088"}
+:::example
 
 ### Dæmi 5.4: Að bera kennsl á málm með því að mæla eðlisvarma
 
@@ -796,20 +782,20 @@ yfir í 60,0 ml af vatni sem var upphaflega 22,0 °C. Lokahitastigið er
 Ef gert er ráð fyrir fullkominni varmaflutningi er *varmi sem málmurinn
 gefur frá sér = −varmi sem vatnið tekur við*, eða:
 
-${{q}_{{\text{málmur}}}=\text{−}{q}_{{\text{vatn}}}}${#fs-idm199710176}
+${{q}_{{\text{málmur}}}=\text{−}{q}_{{\text{vatn}}}}$
 
 Í lengri útgáfu er þetta:
 
-${{c}_{{\text{málmur}}}\,\times \,{m}_{{\text{málmur}}}\,\times \,({T}_{{\text{l,málmur}}}-{T}_{{\text{u,málmur}}})=\text{−}{c}_{{\text{vatn}}}\,\times \,{m}_{{\text{vatn}}}\,\times \,({T}_{{\text{l,vatn}}}-{T}_{{\text{u,vatn}}})}${#fs-idm4542240}
+${{c}_{{\text{málmur}}}\,\times \,{m}_{{\text{málmur}}}\,\times \,({T}_{{\text{l,málmur}}}-{T}_{{\text{u,málmur}}})=\text{−}{c}_{{\text{vatn}}}\,\times \,{m}_{{\text{vatn}}}\,\times \,({T}_{{\text{l,vatn}}}-{T}_{{\text{u,vatn}}})}$
 
 Þar sem málmurinn var settur í sjóðandi vatn var upphafshitastig hans
 100,0 °C. Fyrir vatn gildir að 60,0 ml = 60,0 g. Þá fáum við:
 
-${({c}_{{\text{málmur}}})(59.7\,\text{°C})(28.5\,\text{°C}-100.0\,\text{J/g °C})=−(4.18\,\text{°C})(60.0\,\text{°C})(28.5\,\text{°C}-22.0\,\text{°C})}${#fs-idm127022128}
+${({c}_{{\text{málmur}}})(59.7\,\text{°C})(28.5\,\text{°C}-100.0\,\text{J/g °C})=−(4.18\,\text{°C})(60.0\,\text{°C})(28.5\,\text{°C}-22.0\,\text{°C})}$
 
 Þegar þetta er leyst fæst:
 
-$${{c}_{{\text{málmur}}}=\,\frac{{-(4.184\,\text{J/g °C})(60.0\,\text{°C})(6.5\,\text{°C})}}{{(59.7\,\text{J/g °C})(−71.5\,\text{°C})}}\,=0.38\,\text{J/g °C}}$${#fs-idm13040064}
+$${c}_{{\text{málmur}}}=\,\frac{{-(4.184\,\text{J/g °C})(60.0\,\text{°C})(6.5\,\text{°C})}}{{(59.7\,\text{J/g °C})(−71.5\,\text{°C})}}\,=0.38\,\text{J/g °C}$$
 
 Þegar þetta er borið saman við gildin í ↑, er eðlisvarmi okkar úr
 tilrauninni næstur gildinu fyrir kopar (0,39 J/g °C), þannig að við
@@ -832,7 +818,7 @@ vegar bendir sú athugun að málmurinn er silfurgrár, auk gildisins fyrir
 eðlisvarma, til þess að málmurinn sé blý.
 :::
 
-:::example{id="fs-idm19242032"}
+:::example
 
 ### Dæmi 5.5: Varmi sem myndast við útvermið efnahvarf
 
@@ -841,7 +827,7 @@ við 22,0 °C, er bætt í kaffibollavarmamæli, nær hitastig efnablöndunnar
 hámarki við 28,9 °C. Hversu mikill varmi myndast um það bil við þetta
 efnahvarf?
 
-${\text{HCl}(aq)+\text{NaOH}(aq)\,\longrightarrow \,\text{NaCl}(aq)+{\text{H}}_{2}\text{O}(l)}${#fs-idm32936848}
+${\text{HCl}(aq)+\text{NaOH}(aq)\,\longrightarrow \,\text{NaCl}(aq)+{\text{H}}_{2}\text{O}(l)}$
 
 **Lausn**
 
@@ -855,7 +841,7 @@ lausnarinnar nær 28,9 °C.
 Varminn sem efnahvarfið gefur frá sér er jafn þeim varma sem lausnin
 tekur við. Þess vegna:
 
-${q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}${#fs-idm259063904}
+${q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}$
 
 (Það er mikilvægt að muna að þetta samband gildir aðeins ef
 varmamælirinn gleypir engan varma frá efnahvarfinu og engin varmaskipti
@@ -864,7 +850,7 @@ eiga sér stað milli varmamælisins og umhverfisins.)
 Næst vitum við að varminn sem lausnin gleypir fer eftir eðlisvarma
 hennar, massa og hitastigsbreytingu:
 
-${q}_{{\text{lausn}}}={{(c\,\times \,m\,\times \,\text{Δ}T)}}_{{\text{lausn}}}${#fs-idm174034752}
+${q}_{{\text{lausn}}}={{(c\,\times \,m\,\times \,\text{Δ}T)}}_{{\text{lausn}}}$
 
 Til að halda áfram með þennan útreikning þurfum við að gera nokkrar
 fleiri sanngjarnar forsendur eða nálganir. Þar sem lausnin er vatnslausn
@@ -875,12 +861,12 @@ markverðir stafir). Eðlisvarmi vatns er um það bil 4,184 J/g °C, þannig
 að við notum það gildi fyrir eðlisvarma lausnarinnar. Þegar þessi gildi
 eru sett inn fæst:
 
-${{q}_{{\text{lausn}}}=(4.184\,\text{J/g °C})(1.0\,\times \,{{10}}^{2}\,\text{°C})(28.9\,\text{°C}-22.0\,\text{°C})=2.9\,\times \,{{10}}^{3}\,\text{J}}${#fs-idm261390032}
+${{q}_{{\text{lausn}}}=(4.184\,\text{J/g °C})(1.0\,\times \,{{10}}^{2}\,\text{°C})(28.9\,\text{°C}-22.0\,\text{°C})=2.9\,\times \,{{10}}^{3}\,\text{J}}$
 
 Að lokum, þar sem við erum að reyna að finna varma efnahvarfsins, höfum
 við:
 
-${{q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}=−2.9\,\times \,{{10}}^{3}\,\text{J}}${#fs-idm178566000}
+${{q}_{{\text{efnahvarf}}}=\text{−}{q}_{{\text{lausn}}}=−2.9\,\times \,{{10}}^{3}\,\text{J}}$
 
 Neikvæða formerkið gefur til kynna að efnahvarfið sé útvermið. Það
 framleiðir 2,9 kJ af varma.
@@ -899,7 +885,7 @@ varmamælisins og umhverfis hans og að eðlisvarmi og eðlismassi
 lausnarinnar séu þeir sömu og fyrir vatn
 :::
 
-:::example{id="fs-idp325184"}
+:::example
 
 ### Dæmi 5.6: Varmaflæði í skyndikælipoka
 
@@ -917,14 +903,14 @@ Við gerum ráð fyrir að varmamælirinn komi í veg fyrir varmaflutning
 milli lausnarinnar og ytra umhverfis hennar (þar með talið varmamælisins
 sjálfs), en í því tilfelli gildir:
 
-${q}_{{\text{efnahv.}}}=\text{−}{q}_{{\text{lausn}}}${#fs-idm127206368}
+${q}_{{\text{efnahv.}}}=\text{−}{q}_{{\text{lausn}}}$
 
 þar sem „hvarf“ og „lausn“ eru notaðar sem styttingar.
 
 Ef við gerum einnig ráð fyrir að eðlisvarmi lausnarinnar sé sá sami og
 fyrir vatn, höfum við:
 
-${q}_{{\text{efnahv.}}}=\text{−}{q}_{{\text{lausn}}}={{−(c\,\times \,m\,\times \,\text{Δ}T)}}_{{\text{lausn}}}=\text{−[(}4.184\,\text{J/g °C})\,\times \,(53.2\,\text{°C})\,\times \,(20.3\,\text{°C}-24.9\,\text{J/g °C})]=\text{−[(}4.184\,\text{°C})\,\times \,(53.2\,\text{kJ})\,\times \,(−4.6\,\text{°C})]=\text{+}1.0\,\times \,{10}^{3}\,\text{J}=+1.0\,\text{kJ}${#fs-idm183045408}
+${q}_{{\text{efnahv.}}}=\text{−}{q}_{{\text{lausn}}}={{−(c\,\times \,m\,\times \,\text{Δ}T)}}_{{\text{lausn}}}=\text{−[(}4.184\,\text{J/g °C})\,\times \,(53.2\,\text{°C})\,\times \,(20.3\,\text{°C}-24.9\,\text{J/g °C})]=\text{−[(}4.184\,\text{°C})\,\times \,(53.2\,\text{kJ})\,\times \,(−4.6\,\text{°C})]=\text{+}1.0\,\times \,{10}^{3}\,\text{J}=+1.0\,\text{kJ}$
 
 Jákvæða formerkið fyrir *q* gefur til kynna að upplausnin sé innvermið
 ferli.
@@ -941,7 +927,7 @@ varmamælisins sjálfs) og að eðlisvarmi lausnarinnar sé sá sami og fyrir
 vatn
 :::
 
-:::example{id="fs-idm49773520"}
+:::example
 
 ### Dæmi 5.7: Sprengivarmamæling
 
@@ -960,7 +946,7 @@ okkar.)
 
 Varminn sem myndast við hvarfið frásogast af vatninu og sprengihólfinu:
 
-${q}_{{\text{efnahv.}}}=−({q}_{{\text{vatn}}}+{q}_{{\text{sprengihylki}}})=−[(4.184\,\text{J/g °C})\,\times \,(775\,\text{°C})\,\times \,(35.6\,\text{°C}-23.8\,\text{J/°C})+893\,\text{°C}\,\times \,(35.6\,\text{°C}-23.8\,\text{−48.800 J})]=−(38,300\,\text{−48.8 kJ}+10,500\,\text{J})=\text{−48,800 J}=\text{−48.8 kJ}${#fs-idm137623248}
+${q}_{{\text{efnahv.}}}=−({q}_{{\text{vatn}}}+{q}_{{\text{sprengihylki}}})=−[(4.184\,\text{J/g °C})\,\times \,(775\,\text{°C})\,\times \,(35.6\,\text{°C}-23.8\,\text{J/°C})+893\,\text{°C}\,\times \,(35.6\,\text{°C}-23.8\,\text{−48.800 J})]=−(38,300\,\text{−48.8 kJ}+10,500\,\text{J})=\text{−48,800 J}=\text{−48.8 kJ}$
 
 Þetta hvarf losaði 48,7 kJ af varma þegar 3,12 g af glúkósa var brennt.
 
