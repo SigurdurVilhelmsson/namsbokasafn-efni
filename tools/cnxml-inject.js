@@ -542,8 +542,9 @@ function buildExample(element, getSeg, equations, originalCnxml) {
         }
       }
 
-      // Strip nested elements that are handled separately
-      exampleCnxml = stripNestedElements(exampleCnxml, ['figure', 'table', 'equation']);
+      // Note: We do NOT strip equations - they should pass through unchanged
+      // Only strip figures and tables that may need special handling
+      exampleCnxml = stripNestedElements(exampleCnxml, ['figure', 'table']);
 
       return exampleCnxml;
     }
@@ -604,8 +605,8 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
         }
       }
 
-      // Strip nested elements that are handled separately
-      exerciseCnxml = stripNestedElements(exerciseCnxml, ['figure', 'table', 'equation']);
+      // Note: We do NOT strip equations - they should pass through unchanged
+      exerciseCnxml = stripNestedElements(exerciseCnxml, ['figure', 'table']);
 
       return exerciseCnxml;
     }
@@ -686,15 +687,9 @@ function buildNote(element, getSeg, equations, originalCnxml) {
         }
       }
 
-      // Strip nested elements that are handled separately (figures, tables, equations)
-      // These are extracted as standalone elements in the structure
-      noteCnxml = stripNestedElements(noteCnxml, [
-        'figure',
-        'table',
-        'equation',
-        'example',
-        'exercise',
-      ]);
+      // Note: We do NOT strip equations - they should pass through unchanged
+      // Only strip elements that might cause duplication issues
+      noteCnxml = stripNestedElements(noteCnxml, ['figure', 'table', 'example', 'exercise']);
 
       return noteCnxml;
     }

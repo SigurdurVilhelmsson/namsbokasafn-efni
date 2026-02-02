@@ -4,6 +4,7 @@
  * cnxml-extract-chapter-resources.js
  *
  * Extract chapter-level resources from translated CNXML files:
+ *   - Summary (Key Concepts and Summary from each section)
  *   - Glossary (Key Terms with definitions)
  *   - Key Equations
  *   - Exercises
@@ -15,7 +16,7 @@
  * Options:
  *   --book <name>      Book slug (e.g., efnafraedi)
  *   --chapter <num>    Chapter number
- *   --resource <type>  Resource type: glossary, equations, exercises, answers, all (default: all)
+ *   --resource <type>  Resource type: summary, glossary, equations, exercises, answers, all (default: all)
  *   --track <name>     Publication track: mt-preview, faithful (default: mt-preview)
  *   --format <fmt>     Output format: html, json (default: html)
  *   --verbose          Show detailed progress
@@ -666,6 +667,105 @@ function buildAnswerKeyHtml(exercises, chapter, _book) {
 }
 
 // =====================================================================
+// SUMMARY EXTRACTION
+// =====================================================================
+
+/**
+ * Extract summary content from a CNXML file.
+ */
+function extractSummary(cnxmlContent, moduleId, moduleInfo) {
+  const summaryData = {
+    moduleId,
+    section: moduleInfo.section,
+    sectionTitle: moduleInfo.title,
+    paragraphs: [],
+  };
+
+  // Find summary section
+  const sectionMatch = cnxmlContent.match(
+    /<section[^>]*class="summary"[^>]*>([\s\S]*?)<\/section>/
+  );
+  if (!sectionMatch) return null;
+
+  const sectionContent = sectionMatch[1];
+
+  // Extract paragraphs
+  const paraPattern = /<para[^>]*id="([^"]*)"[^>]*>([\s\S]*?)<\/para>/g;
+  let match;
+
+  while ((match = paraPattern.exec(sectionContent)) !== null) {
+    const [, id, content] = match;
+    summaryData.paragraphs.push({
+      id,
+      content: processContent(content.trim()),
+    });
+  }
+
+  return summaryData.paragraphs.length > 0 ? summaryData : null;
+}
+
+/**
+ * Build summary HTML page.
+ */
+function buildSummaryHtml(summaries, chapter, _book) {
+  const lines = [
+    '<!DOCTYPE html>',
+    '<html lang="is">',
+    '<head>',
+    '  <meta charset="UTF-8">',
+    '  <meta name="viewport" content="width=device-width, initial-scale=1.0">',
+    `  <title>Kafli ${chapter} - Samantekt</title>`,
+    '  <link rel="stylesheet" href="/styles/content.css">',
+    '</head>',
+    '<body>',
+    '  <article class="chapter-resource summary">',
+    '    <header>',
+    '      <h1>Samantekt</h1>',
+    '    </header>',
+    '    <main>',
+  ];
+
+  let totalParagraphs = 0;
+
+  for (const summary of summaries) {
+    if (!summary) continue;
+
+    lines.push(
+      `      <section class="summary-section" id="summary-${escapeAttr(summary.moduleId)}">`
+    );
+    lines.push(`        <h2>${summary.section} ${summary.sectionTitle}</h2>`);
+
+    for (const para of summary.paragraphs) {
+      lines.push(`        <p id="${escapeAttr(para.id)}">${para.content}</p>`);
+      totalParagraphs++;
+    }
+
+    lines.push('      </section>');
+  }
+
+  lines.push(
+    '    </main>',
+    '  </article>',
+    '  <script type="application/json" id="page-data">',
+    JSON.stringify(
+      {
+        chapter,
+        type: 'summary',
+        sectionCount: summaries.filter(Boolean).length,
+        paragraphCount: totalParagraphs,
+      },
+      null,
+      2
+    ),
+    '  </script>',
+    '</body>',
+    '</html>'
+  );
+
+  return lines.join('\n');
+}
+
+// =====================================================================
 // MAIN
 // =====================================================================
 
@@ -676,7 +776,7 @@ Usage: node tools/cnxml-extract-chapter-resources.js --book <book> --chapter <nu
 Options:
   --book <name>      Book slug (e.g., efnafraedi)
   --chapter <num>    Chapter number
-  --resource <type>  Resource type: glossary, equations, exercises, answers, all (default: all)
+  --resource <type>  Resource type: summary, glossary, equations, exercises, answers, all (default: all)
   --track <name>     Publication track: mt-preview, faithful (default: mt-preview)
   --format <fmt>     Output format: html, json (default: html)
   --verbose          Show detailed progress
@@ -684,6 +784,7 @@ Options:
 
 Examples:
   node tools/cnxml-extract-chapter-resources.js --book efnafraedi --chapter 5
+  node tools/cnxml-extract-chapter-resources.js --book efnafraedi --chapter 5 --resource summary
   node tools/cnxml-extract-chapter-resources.js --book efnafraedi --chapter 5 --resource glossary
 `);
 }
@@ -733,15 +834,30 @@ async function main() {
   }
 
   // Collect data from all modules
+  const allSummaries = [];
   const allGlossary = [];
   const allEquations = [];
   const allExercises = [];
 
-  // Extract glossary from translated files
-  if (resource === 'all' || resource === 'glossary') {
-    for (const file of translatedFiles) {
-      const moduleId = path.basename(file, '.cnxml');
-      const content = fs.readFileSync(file, 'utf8');
+  // Extract summary and glossary from translated files
+  for (const file of translatedFiles) {
+    const moduleId = path.basename(file, '.cnxml');
+    const moduleInfo = getModuleInfo(book, chapter, moduleId);
+    const content = fs.readFileSync(file, 'utf8');
+
+    if (resource === 'all' || resource === 'summary') {
+      const summary = extractSummary(content, moduleId, moduleInfo);
+      if (summary) {
+        allSummaries.push(summary);
+        if (verbose) {
+          console.log(
+            `  ${moduleId}: ${summary.paragraphs.length} summary paragraphs (translated)`
+          );
+        }
+      }
+    }
+
+    if (resource === 'all' || resource === 'glossary') {
       const glossary = extractGlossary(content, moduleId);
       allGlossary.push(...glossary);
       if (verbose) console.log(`  ${moduleId}: ${glossary.length} glossary terms (translated)`);
@@ -769,6 +885,16 @@ async function main() {
 
   // Generate output files
   if (format === 'html') {
+    if (resource === 'all' || resource === 'summary') {
+      const html = buildSummaryHtml(allSummaries, chapter, book);
+      const outPath = path.join(outputDir, `${chapter}-summary.html`);
+      fs.writeFileSync(outPath, html);
+      const paragraphCount = allSummaries.reduce((sum, s) => sum + (s?.paragraphs?.length || 0), 0);
+      console.log(
+        `Summary: ${allSummaries.filter(Boolean).length} sections, ${paragraphCount} paragraphs → ${outPath}`
+      );
+    }
+
     if (resource === 'all' || resource === 'glossary') {
       const html = buildGlossaryHtml(allGlossary, chapter, book);
       const outPath = path.join(outputDir, `${chapter}-key-terms.html`);
@@ -808,6 +934,7 @@ async function main() {
     const data = {
       chapter,
       book,
+      summaries: allSummaries,
       glossary: allGlossary,
       equations: allEquations,
       exercises: allExercises,
