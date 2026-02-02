@@ -87,11 +87,21 @@
 <note id="fs-idm9227984"><title>Answer:</title>
 <para id="fs-idm94618544">1.34 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10 <sup>3</sup> kJ, or 1.34 kJ; assume no heat is absorbed by the calorimeter, no heat is exchanged between the calorimeter and its surroundings, and that the specific heat and density of the solution are the same as those for water</para></note>
 </example>
+<note id="fs-idm9530672" class="chemistry everyday-life">
+<title>Thermochemistry of Hand Warmers</title>
+<para id="fs-idm19355440">When working or playing outdoors on a cold day, you might use a hand warmer to warm your hands (). A common reusable hand warmer contains a supersaturated solution of NaC<sub>2</sub>H<sub>3</sub>O<sub>2</sub> (sodium acetate) and a metal disc. Bending the disk creates nucleation sites around which the metastable NaC<sub>2</sub>H<sub>3</sub>O<sub>2</sub> quickly crystallizes (a later chapter on solutions will investigate saturation and supersaturation in more detail).</para>
+<para id="fs-idm213136">The process <m:math><m:mrow><m:msub><m:mrow><m:mtext>NaC</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NaC</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> is exothermic, and the heat produced by this process is absorbed by your hands, thereby warming them (at least for a while). If the hand warmer is reheated, the NaC<sub>2</sub>H<sub>3</sub>O<sub>2</sub> redissolves and can be reused.</para>
+<!-- figure handled separately -->
+<para id="fs-idm15246800">Another common hand warmer produces heat when it is ripped open, exposing iron and water in the hand warmer to oxygen in the air. One simplified version of this exothermic reaction is <m:math><m:mrow><m:mn>2</m:mn><m:mtext>Fe</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.1em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Salt in the hand warmer catalyzes the reaction, so it produces heat more rapidly; cellulose, vermiculite, and activated carbon help distribute the heat evenly. Other types of hand warmers use lighter fluid (a platinum catalyst helps lighter fluid oxidize exothermically), charcoal (charcoal oxidizes in a special case), or electrical units that produce heat by passing an electrical current from a battery through resistive wires.</para>
+</note>
 <figure id="CNX_Chem_05_02_HandWarmer">
 <media id="fs-idm20337008" alt="A series of three photos is shown. There are two right-facing arrows connecting one photo to the next. The first photo shows a chemical hand warmer. It is a bag that contains a clear, colorless liquid. There is a white disk located to the right inside the bag. The second photo shows the same thing, except the white disc has become a white, cloudy substance. The third photo shows the entire bag filled with this white substance.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_05_02_HandWarmer.jpg"/></media>
 <caption>Chemical hand warmers produce heat that warms your hand on a cold day. In this one, you can see the metal disc that initiates the exothermic precipitation reaction. (credit: modification of work by Science Buddies TV/YouTube)</caption>
 </figure>
+<note id="fs-idm79691632" class="chemistry link-to-learning">
+<para id="fs-idm81095744">This <link url="http://openstax.org/l/16Handwarmer">link</link> shows the precipitation reaction that occurs when the disk in a chemical hand warmer is flexed.</para>
+</note>
 <example id="fs-idp325184">
 <para id="fs-idm52519632"><title>Heat Flow in an Instant Ice Pack</title>When solid ammonium nitrate dissolves in water, the solution becomes cold. This is the basis for an “instant ice pack” (). When 3.21 g of solid NH<sub>4</sub>NO<sub>3</sub> dissolves in 50.0 g of water at 24.9 °C in a calorimeter, the temperature decreases to 20.3 °C.</para>
 <para id="fs-idp41329920">Calculate the value of <emphasis effect="italics">q</emphasis> for this reaction and explain the meaning of its arithmetic sign. State any assumptions that you made.</para>
@@ -119,6 +129,10 @@
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_05_02_BombCalor.jpg"/></media>
 <caption>(a) A bomb calorimeter is used to measure heat produced by reactions involving gaseous reactants or products, such as combustion. (b) The reactants are contained in the gas-tight “bomb,” which is submerged in water and surrounded by insulating materials. (credit a: modification of work by “Harbor1”/Wikimedia commons)</caption>
 </figure>
+<note id="fs-idm2366288" class="chemistry link-to-learning">
+<para id="fs-idp41066256">Click on this <link url="http://openstax.org/l/16BombCal">link</link> to view how a bomb calorimeter is prepared for action.</para>
+<para id="fs-idm11069408">This <link url="http://openstax.org/l/16Calorcalcs">site</link> shows calorimetric calculations using sample data.</para>
+</note>
 <example id="fs-idm49773520">
 <para id="fs-idp23917952"><title>Bomb Calorimetry</title>When 3.12 g of glucose, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, is burned in a bomb calorimeter, the temperature of the calorimeter increases from 23.8 °C to 35.6 °C. The calorimeter contains 775 g of water, and the bomb itself has a heat capacity of 893 J/°C. How much heat was produced by the combustion of the glucose sample?</para>
 <para id="fs-idm103829360">The combustion produces heat that is primarily absorbed by the water and the bomb. (The amounts of heat absorbed by the reaction products and the unreacted excess oxygen are relatively small and dealing with them is beyond the scope of this text. We will neglect them in our calculations.)</para>

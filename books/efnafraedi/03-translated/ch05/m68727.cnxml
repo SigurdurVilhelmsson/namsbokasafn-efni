@@ -175,6 +175,13 @@
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_05_03_GasBurning.jpg"/></media>
 <caption>The combustion of gasoline is very exothermic. (credit: modification of work by “AlexEagle”/Flickr)</caption>
 </figure>
+<note id="fs-idp90130208" class="chemistry everyday-life">
+<title>Emerging Algae-Based Energy Technologies (Biofuels)</title>
+<para id="fs-idp90130976">As reserves of fossil fuels diminish and become more costly to extract, the search is ongoing for replacement fuel sources for the future. Among the most promising biofuels are those derived from algae (). The species of algae used are nontoxic, biodegradable, and among the world’s fastest growing organisms. About 50% of algal weight is oil, which can be readily converted into fuel such as biodiesel. Algae can yield 26,000 gallons of <term>biofuel</term> per hectare—much more energy per acre than other crops. Some strains of algae can flourish in brackish water that is not usable for growing other crops. Algae can produce biodiesel, biogasoline, ethanol, butanol, methane, and even jet fuel.</para>
+<!-- figure handled separately -->
+<para id="fs-idp157750544">According to the US Department of Energy, only 39,000 square kilometers (about 0.4% of the land mass of the US or less than <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>7</m:mn></m:mfrac></m:mrow></m:math> of the area used to grow corn) can produce enough algal fuel to replace all the petroleum-based fuel used in the US. The cost of algal fuels is becoming more competitive—for instance, the US Air Force is producing jet fuel from algae at a total cost of under $5 per gallon.<footnote>For more on algal fuel, see http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.</footnote> The process used to produce algal fuel is as follows: grow the algae (which use sunlight as their energy source and CO<sub>2</sub> as a raw material); harvest the algae; extract the fuel compounds (or precursor compounds); process as necessary (e.g., perform a transesterification reaction to make biodiesel); purify; and distribute ().</para>
+<!-- figure handled separately -->
+</note>
 <figure id="CNX_Chem_05_03_AlgalFuel1" class="scaled-down">
 <media id="fs-idp157749040" alt="Three pictures are shown and labeled a, b, and c. Picture a shows a microscopic view of algal organisms. They are brown, multipart strands and net-like structures on a background of light violet. Picture b shows five large tubs full of a brown liquid containing these algal organisms. Picture c depicts a cylinder full of green liquid in the foreground and a poster in the background that has the title “From Field to Fleet.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_05_03_AlgalFuel1.jpg"/></media>
@@ -185,6 +192,9 @@
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_05_03_AlgalFuel2.jpg"/></media>
 <caption>Algae convert sunlight and carbon dioxide into oil that is harvested, extracted, purified, and transformed into a variety of renewable fuels.</caption>
 </figure>
+<note id="fs-idp93919792" class="chemistry link-to-learning">
+<para id="fs-idp93921200">Click <link url="http://openstax.org/l/16biofuel">here</link> to learn more about the process of creating algae biofuel.</para>
+</note>
 </section>
 <section id="fs-idp93922352">
 <title>Standard Enthalpy of Formation</title>
