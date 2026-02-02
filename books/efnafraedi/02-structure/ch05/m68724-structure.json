@@ -21,6 +21,7 @@
     {
       "type": "section",
       "id": "fs-idp13589600",
+      "class": null,
       "title": {
         "segmentId": "m68724:title:fs-idp13589600-title",
         "text": "Energy"
@@ -69,6 +70,7 @@
     {
       "type": "section",
       "id": "fs-idm67028192",
+      "class": null,
       "title": {
         "segmentId": "m68724:title:fs-idm67028192-title",
         "text": "Thermal Energy, Temperature, and Heat"
@@ -992,6 +994,7 @@
     {
       "type": "section",
       "id": "fs-idm333536464",
+      "class": "summary",
       "title": {
         "segmentId": "m68724:title:fs-idm333536464-title",
         "text": "Key Concepts and Summary"
@@ -1017,6 +1020,7 @@
     {
       "type": "section",
       "id": "fs-idm20711744",
+      "class": "key-equations",
       "title": {
         "segmentId": "m68724:title:fs-idm20711744-title",
         "text": "Key Equations"
@@ -1043,6 +1047,7 @@
     {
       "type": "section",
       "id": "fs-idm41088208",
+      "class": "exercises",
       "title": {
         "segmentId": "m68724:title:fs-idm41088208-title",
         "text": "Chemistry End of Chapter Exercises"

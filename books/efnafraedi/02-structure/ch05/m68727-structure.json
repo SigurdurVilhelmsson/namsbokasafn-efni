@@ -22,6 +22,7 @@
     {
       "type": "section",
       "id": "fs-idp4580336",
+      "class": null,
       "title": {
         "segmentId": "m68727:title:fs-idp4580336-title",
         "text": "Standard Enthalpy of Combustion"
@@ -494,6 +495,7 @@
     {
       "type": "section",
       "id": "fs-idp93922352",
+      "class": null,
       "title": {
         "segmentId": "m68727:title:fs-idp93922352-title",
         "text": "Standard Enthalpy of Formation"
@@ -756,6 +758,7 @@
     {
       "type": "section",
       "id": "fs-idp218911984",
+      "class": null,
       "title": {
         "segmentId": "m68727:title:fs-idp218911984-title",
         "text": "Hess’s Law"
@@ -1497,6 +1500,7 @@
     {
       "type": "section",
       "id": "fs-idp165565104",
+      "class": "summary",
       "title": {
         "segmentId": "m68727:title:fs-idp165565104-title",
         "text": "Key Concepts and Summary"
@@ -1512,6 +1516,7 @@
     {
       "type": "section",
       "id": "fs-idp165577648",
+      "class": "key-equations",
       "title": {
         "segmentId": "m68727:title:fs-idp165577648-title",
         "text": "Key Equations"
@@ -1546,6 +1551,7 @@
     {
       "type": "section",
       "id": "fs-idp167491136",
+      "class": "exercises",
       "title": {
         "segmentId": "m68727:title:fs-idp167491136-title",
         "text": "Chemistry End of Chapter Exercises"

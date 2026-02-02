@@ -19,6 +19,7 @@
     {
       "type": "section",
       "id": "fs-idm31992064",
+      "class": "summary",
       "title": {
         "segmentId": "m68726:title:fs-idm31992064-title",
         "text": "Key Concepts and Summary"
@@ -39,6 +40,7 @@
     {
       "type": "section",
       "id": "fs-idm18398304",
+      "class": "exercises",
       "title": {
         "segmentId": "m68726:title:fs-idm18398304-title",
         "text": "Chemistry End of Chapter Exercises"
