@@ -518,9 +518,21 @@ exothermic process
 chemical reaction or physical change that releases heat
 
 <!-- SEG:m68724:glossary-term:fs-idp25504496-term -->
-joule (J)
+heat (q)
 
 <!-- SEG:m68724:glossary-def:fs-idp25504496-def -->
+transfer of thermal energy between two bodies
+
+<!-- SEG:m68724:glossary-term:fs-idp25506160-term -->
+heat capacity (C)
+
+<!-- SEG:m68724:glossary-def:fs-idp25506160-def -->
+extensive property of a body of matter that represents the quantity of heat required to increase its temperature by 1 degree Celsius (or 1 kelvin)
+
+<!-- SEG:m68724:glossary-term:fs-idp25507984-term -->
+joule (J)
+
+<!-- SEG:m68724:glossary-def:fs-idp25507984-def -->
 SI unit of energy; amount of energy used when a force of 1 newton moves an object 1 meter, 1 J = 1 kg m2/s2 and 4.184 J = 1 cal
 
 <!-- SEG:m68724:glossary-term:fs-idp25509680-term -->
@@ -536,9 +548,15 @@ potential energy
 energy of a particle or system of particles derived from relative position, composition, or condition
 
 <!-- SEG:m68724:glossary-term:fs-idp31727024-term -->
-temperature
+specific heat capacity (c)
 
 <!-- SEG:m68724:glossary-def:fs-idp31727024-def -->
+intensive property of a substance that represents the quantity of heat required to raise the temperature of 1 gram of the substance by 1 degree Celsius (or 1 kelvin)
+
+<!-- SEG:m68724:glossary-term:fs-idp31728864-term -->
+temperature
+
+<!-- SEG:m68724:glossary-def:fs-idp31728864-def -->
 intensive property of matter that is a quantitative measure of “hotness” and “coldness”
 
 <!-- SEG:m68724:glossary-term:fs-idp31730416-term -->
@@ -552,3 +570,9 @@ thermochemistry
 
 <!-- SEG:m68724:glossary-def:fs-idp31731568-def -->
 study of measuring the amount of heat absorbed or released during a chemical reaction or a physical change
+
+<!-- SEG:m68724:glossary-term:fs-idp31732848-term -->
+work (w)
+
+<!-- SEG:m68724:glossary-def:fs-idp31732848-def -->
+energy transfer due to changes in external, macroscopic variables such as pressure and volume; or causing matter to move against an opposing force

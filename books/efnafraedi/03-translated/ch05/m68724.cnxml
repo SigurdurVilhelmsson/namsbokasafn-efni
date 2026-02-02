@@ -332,8 +332,16 @@
 <meaning id="fs-idp25503344-meaning">chemical reaction or physical change that releases heat</meaning>
 </definition>
 <definition id="fs-idp25504496">
+<term>heat (q)</term>
+<meaning id="fs-idp25504496-meaning">transfer of thermal energy between two bodies</meaning>
+</definition>
+<definition id="fs-idp25506160">
+<term>heat capacity (C)</term>
+<meaning id="fs-idp25506160-meaning">extensive property of a body of matter that represents the quantity of heat required to increase its temperature by 1 degree Celsius (or 1 kelvin)</meaning>
+</definition>
+<definition id="fs-idp25507984">
 <term>joule (J)</term>
-<meaning id="fs-idp25504496-meaning">SI unit of energy; amount of energy used when a force of 1 newton moves an object 1 meter, 1 J = 1 kg m2/s2 and 4.184 J = 1 cal</meaning>
+<meaning id="fs-idp25507984-meaning">SI unit of energy; amount of energy used when a force of 1 newton moves an object 1 meter, 1 J = 1 kg m2/s2 and 4.184 J = 1 cal</meaning>
 </definition>
 <definition id="fs-idp25509680">
 <term>kinetic energy</term>
@@ -344,8 +352,12 @@
 <meaning id="fs-idp25515184-meaning">energy of a particle or system of particles derived from relative position, composition, or condition</meaning>
 </definition>
 <definition id="fs-idp31727024">
+<term>specific heat capacity (c)</term>
+<meaning id="fs-idp31727024-meaning">intensive property of a substance that represents the quantity of heat required to raise the temperature of 1 gram of the substance by 1 degree Celsius (or 1 kelvin)</meaning>
+</definition>
+<definition id="fs-idp31728864">
 <term>temperature</term>
-<meaning id="fs-idp31727024-meaning">intensive property of matter that is a quantitative measure of “hotness” and “coldness”</meaning>
+<meaning id="fs-idp31728864-meaning">intensive property of matter that is a quantitative measure of “hotness” and “coldness”</meaning>
 </definition>
 <definition id="fs-idp31730416">
 <term>thermal energy</term>
@@ -354,6 +366,10 @@
 <definition id="fs-idp31731568">
 <term>thermochemistry</term>
 <meaning id="fs-idp31731568-meaning">study of measuring the amount of heat absorbed or released during a chemical reaction or a physical change</meaning>
+</definition>
+<definition id="fs-idp31732848">
+<term>work (w)</term>
+<meaning id="fs-idp31732848-meaning">energy transfer due to changes in external, macroscopic variables such as pressure and volume; or causing matter to move against an opposing force</meaning>
 </definition>
 </glossary>
 </document>

@@ -1028,9 +1028,21 @@ chemical thermodynamics
 area of science that deals with the relationships between heat, work, and all forms of energy associated with chemical and physical processes
 
 <!-- SEG:m68727:glossary-term:fs-idp102380512-term -->
-expansion work (pressure-volume work)
+enthalpy (H)
 
 <!-- SEG:m68727:glossary-def:fs-idp102380512-def -->
+sum of a system’s internal energy and the mathematical product of its pressure and volume
+
+<!-- SEG:m68727:glossary-term:fs-idp102382096-term -->
+enthalpy change (ΔH)
+
+<!-- SEG:m68727:glossary-def:fs-idp102382096-def -->
+heat released or absorbed by a system under constant pressure during a chemical or physical process
+
+<!-- SEG:m68727:glossary-term:fs-idp102383600-term -->
+expansion work (pressure-volume work)
+
+<!-- SEG:m68727:glossary-def:fs-idp102383600-def -->
 work done as a system expands or contracts against external pressure
 
 <!-- SEG:m68727:glossary-term:fs-idp102384368-term -->
@@ -1052,9 +1064,27 @@ hydrocarbon
 compound composed only of hydrogen and carbon; the major component of fossil fuels
 
 <!-- SEG:m68727:glossary-term:fs-idp102386960-term -->
-standard state
+internal energy (U)
 
 <!-- SEG:m68727:glossary-def:fs-idp102386960-def -->
+total of all possible kinds of energy present in a substance or substances
+
+<!-- SEG:m68727:glossary-term:fs-idp102388352-term -->
+standard enthalpy of combustion (ΔHc°)
+
+<!-- SEG:m68727:glossary-def:fs-idp102388352-def -->
+heat released when one mole of a compound undergoes complete combustion under standard conditions
+
+<!-- SEG:m68727:glossary-term:fs-idp102391904-term -->
+standard enthalpy of formation (ΔHf°)
+
+<!-- SEG:m68727:glossary-def:fs-idp102391904-def -->
+enthalpy change of a chemical reaction in which 1 mole of a pure substance is formed from its elements in their most stable states under standard state conditions
+
+<!-- SEG:m68727:glossary-term:fs-idp102395520-term -->
+standard state
+
+<!-- SEG:m68727:glossary-def:fs-idp102395520-def -->
 set of physical conditions as accepted as common reference conditions for reporting thermodynamic properties; 1 bar of pressure, and solutions at 1 molar concentrations, usually at a temperature of 298.15 K
 
 <!-- SEG:m68727:glossary-term:fs-idp102396512-term -->

@@ -698,8 +698,16 @@
 <meaning id="fs-idp102379584-meaning">area of science that deals with the relationships between heat, work, and all forms of energy associated with chemical and physical processes</meaning>
 </definition>
 <definition id="fs-idp102380512">
+<term>enthalpy (H)</term>
+<meaning id="fs-idp102380512-meaning">sum of a system’s internal energy and the mathematical product of its pressure and volume</meaning>
+</definition>
+<definition id="fs-idp102382096">
+<term>enthalpy change (ΔH)</term>
+<meaning id="fs-idp102382096-meaning">heat released or absorbed by a system under constant pressure during a chemical or physical process</meaning>
+</definition>
+<definition id="fs-idp102383600">
 <term>expansion work (pressure-volume work)</term>
-<meaning id="fs-idp102380512-meaning">work done as a system expands or contracts against external pressure</meaning>
+<meaning id="fs-idp102383600-meaning">work done as a system expands or contracts against external pressure</meaning>
 </definition>
 <definition id="fs-idp102384368">
 <term>first law of thermodynamics</term>
@@ -714,8 +722,20 @@
 <meaning id="fs-idp102386192-meaning">compound composed only of hydrogen and carbon; the major component of fossil fuels</meaning>
 </definition>
 <definition id="fs-idp102386960">
+<term>internal energy (U)</term>
+<meaning id="fs-idp102386960-meaning">total of all possible kinds of energy present in a substance or substances</meaning>
+</definition>
+<definition id="fs-idp102388352">
+<term>standard enthalpy of combustion (ΔHc°)</term>
+<meaning id="fs-idp102388352-meaning">heat released when one mole of a compound undergoes complete combustion under standard conditions</meaning>
+</definition>
+<definition id="fs-idp102391904">
+<term>standard enthalpy of formation (ΔHf°)</term>
+<meaning id="fs-idp102391904-meaning">enthalpy change of a chemical reaction in which 1 mole of a pure substance is formed from its elements in their most stable states under standard state conditions</meaning>
+</definition>
+<definition id="fs-idp102395520">
 <term>standard state</term>
-<meaning id="fs-idp102386960-meaning">set of physical conditions as accepted as common reference conditions for reporting thermodynamic properties; 1 bar of pressure, and solutions at 1 molar concentrations, usually at a temperature of 298.15 K</meaning>
+<meaning id="fs-idp102395520-meaning">set of physical conditions as accepted as common reference conditions for reporting thermodynamic properties; 1 bar of pressure, and solutions at 1 molar concentrations, usually at a temperature of 298.15 K</meaning>
 </definition>
 <definition id="fs-idp102396512">
 <term>state function</term>
