@@ -320,12 +320,33 @@ function renderContent(content, context, _verbose) {
     const pos = fig.fullMatch ? content.indexOf(fig.fullMatch) : content.indexOf(`id="${fig.id}"`);
     itemsWithPositions.push({ type: 'figure', item: fig, position: pos !== -1 ? pos : 0 });
   }
+
+  // Only add notes that are NOT inside examples or exercises
+  // (notes inside examples/exercises will be rendered by renderExample/renderExercise)
   for (const note of notes) {
-    const pos = note.fullMatch
+    const notePos = note.fullMatch
       ? content.indexOf(note.fullMatch)
       : content.indexOf(`id="${note.id}"`);
-    itemsWithPositions.push({ type: 'note', item: note, position: pos !== -1 ? pos : 0 });
+
+    // Check if this note is inside any example
+    const isInsideExample = examples.some((ex) => {
+      if (!ex.fullMatch || !note.fullMatch) return false;
+      const exPos = content.indexOf(ex.fullMatch);
+      return notePos >= exPos && notePos < exPos + ex.fullMatch.length;
+    });
+
+    // Check if this note is inside any exercise
+    const isInsideExercise = exercises.some((ex) => {
+      if (!ex.fullMatch || !note.fullMatch) return false;
+      const exPos = content.indexOf(ex.fullMatch);
+      return notePos >= exPos && notePos < exPos + ex.fullMatch.length;
+    });
+
+    if (!isInsideExample && !isInsideExercise) {
+      itemsWithPositions.push({ type: 'note', item: note, position: notePos !== -1 ? notePos : 0 });
+    }
   }
+
   for (const ex of examples) {
     const pos = ex.fullMatch ? content.indexOf(ex.fullMatch) : content.indexOf(`id="${ex.id}"`);
     itemsWithPositions.push({ type: 'example', item: ex, position: pos !== -1 ? pos : 0 });
