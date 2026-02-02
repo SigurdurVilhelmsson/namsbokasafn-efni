@@ -323,75 +323,142 @@ function renderSection(section, context, level) {
 }
 
 /**
- * Render top-level content elements.
+ * Render top-level content elements in document order.
  */
 function renderTopLevelContent(content, context) {
-  const lines = [];
+  // Collect all elements with their positions
+  const elementsWithPositions = [];
 
-  // Process in document order by finding elements
-  // This is simplified - a full implementation would parse and maintain order
-
-  // Figures
+  // Extract all element types
   const figures = extractNestedElements(content, 'figure');
-  for (const figure of figures) {
-    const figureHtml = renderFigure(figure, context);
-    lines.push(figureHtml);
-    content = content.replace(figure.fullMatch, `<!-- rendered:figure:${figure.id} -->`);
-  }
-
-  // Notes
   const notes = extractNestedElements(content, 'note');
-  for (const note of notes) {
-    const noteHtml = renderNote(note, context);
-    lines.push(noteHtml);
-    content = content.replace(note.fullMatch, `<!-- rendered:note:${note.id} -->`);
-  }
-
-  // Examples
   const examples = extractNestedElements(content, 'example');
-  for (const example of examples) {
-    const exampleHtml = renderExample(example, context);
-    lines.push(exampleHtml);
-    content = content.replace(example.fullMatch, `<!-- rendered:example:${example.id} -->`);
-  }
-
-  // Exercises
   const exercises = extractNestedElements(content, 'exercise');
-  for (const exercise of exercises) {
-    const exerciseHtml = renderExercise(exercise, context);
-    lines.push(exerciseHtml);
-    content = content.replace(exercise.fullMatch, `<!-- rendered:exercise:${exercise.id} -->`);
-  }
-
-  // Tables
   const tables = extractNestedElements(content, 'table');
-  for (const table of tables) {
-    const tableHtml = renderTable(table, context);
-    lines.push(tableHtml);
-    content = content.replace(table.fullMatch, `<!-- rendered:table:${table.id} -->`);
-  }
-
-  // Lists
   const lists = extractNestedElements(content, 'list');
-  for (const list of lists) {
-    const listHtml = renderList(list, context);
-    lines.push(listHtml);
-    content = content.replace(list.fullMatch, `<!-- rendered:list:${list.id} -->`);
-  }
-
-  // Equations
   const equations = extractElements(content, 'equation');
-  for (const eq of equations) {
-    const eqHtml = renderEquation(eq, context);
-    lines.push(eqHtml);
-    content = content.replace(eq.fullMatch, `<!-- rendered:equation:${eq.id} -->`);
+  const paras = extractElements(content, 'para');
+
+  // Add all elements with their positions in the content string
+  for (const figure of figures) {
+    const position = figure.fullMatch
+      ? content.indexOf(figure.fullMatch)
+      : content.indexOf(`id="${figure.id}"`);
+    elementsWithPositions.push({
+      item: figure,
+      type: 'figure',
+      position: position !== -1 ? position : 0,
+    });
   }
 
-  // Paragraphs
-  const paras = extractElements(content, 'para');
+  for (const note of notes) {
+    const position = note.fullMatch
+      ? content.indexOf(note.fullMatch)
+      : content.indexOf(`id="${note.id}"`);
+    elementsWithPositions.push({
+      item: note,
+      type: 'note',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
+  for (const example of examples) {
+    const position = example.fullMatch
+      ? content.indexOf(example.fullMatch)
+      : content.indexOf(`id="${example.id}"`);
+    elementsWithPositions.push({
+      item: example,
+      type: 'example',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
+  for (const exercise of exercises) {
+    const position = exercise.fullMatch
+      ? content.indexOf(exercise.fullMatch)
+      : content.indexOf(`id="${exercise.id}"`);
+    elementsWithPositions.push({
+      item: exercise,
+      type: 'exercise',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
+  for (const table of tables) {
+    const position = table.fullMatch
+      ? content.indexOf(table.fullMatch)
+      : content.indexOf(`id="${table.id}"`);
+    elementsWithPositions.push({
+      item: table,
+      type: 'table',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
+  for (const list of lists) {
+    const position = list.fullMatch
+      ? content.indexOf(list.fullMatch)
+      : content.indexOf(`id="${list.id}"`);
+    elementsWithPositions.push({
+      item: list,
+      type: 'list',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
+  for (const eq of equations) {
+    const position = eq.fullMatch
+      ? content.indexOf(eq.fullMatch)
+      : content.indexOf(`id="${eq.id}"`);
+    elementsWithPositions.push({
+      item: eq,
+      type: 'equation',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
   for (const para of paras) {
-    const paraHtml = renderPara(para, context);
-    lines.push(paraHtml);
+    const idPattern = para.id ? `id="${para.id}"` : null;
+    const position = idPattern ? content.indexOf(idPattern) : content.indexOf('<para');
+    elementsWithPositions.push({
+      item: para,
+      type: 'para',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
+  // Sort by position to preserve document order
+  elementsWithPositions.sort((a, b) => a.position - b.position);
+
+  // Render elements in document order
+  const lines = [];
+  for (const { item, type } of elementsWithPositions) {
+    switch (type) {
+      case 'figure':
+        lines.push(renderFigure(item, context));
+        break;
+      case 'note':
+        lines.push(renderNote(item, context));
+        break;
+      case 'example':
+        lines.push(renderExample(item, context));
+        break;
+      case 'exercise':
+        lines.push(renderExercise(item, context));
+        break;
+      case 'table':
+        lines.push(renderTable(item, context));
+        break;
+      case 'list':
+        lines.push(renderList(item, context));
+        break;
+      case 'equation':
+        lines.push(renderEquation(item, context));
+        break;
+      case 'para':
+        lines.push(renderPara(item, context));
+        break;
+    }
   }
 
   return lines.join('\n');
