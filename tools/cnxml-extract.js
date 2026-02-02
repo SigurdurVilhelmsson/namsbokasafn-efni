@@ -347,6 +347,7 @@ function processSection(section, moduleId, addSegment, mathMap, counters, verbos
   const sectionStructure = {
     type: 'section',
     id: section.id,
+    class: section.attributes.class || null,
     title: null,
     content: [],
   };

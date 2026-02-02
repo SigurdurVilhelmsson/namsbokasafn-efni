@@ -345,8 +345,9 @@ function buildPara(element, getSeg) {
 function buildSection(element, getSeg, equations, originalCnxml) {
   const lines = [];
   const idAttr = element.id ? ` id="${element.id}"` : '';
+  const classAttr = element.class ? ` class="${element.class}"` : '';
 
-  lines.push(`<section${idAttr}>`);
+  lines.push(`<section${idAttr}${classAttr}>`);
 
   // Add title
   if (element.title) {
