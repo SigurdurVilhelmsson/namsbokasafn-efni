@@ -306,14 +306,20 @@ export function extractGlossary(cnxml) {
   if (!glossaryMatch) return [];
 
   const glossary = [];
+  // Use [\s\S]*? instead of [^<]* to allow nested elements like <emphasis> inside <term>
   const definitionPattern =
-    /<definition\s+id="([^"]*)"[^>]*>[\s\S]*?<term>([^<]*)<\/term>[\s\S]*?<meaning[^>]*>([\s\S]*?)<\/meaning>[\s\S]*?<\/definition>/g;
+    /<definition\s+id="([^"]*)"[^>]*>[\s\S]*?<term>([\s\S]*?)<\/term>[\s\S]*?<meaning[^>]*>([\s\S]*?)<\/meaning>[\s\S]*?<\/definition>/g;
 
   let match;
   while ((match = definitionPattern.exec(glossaryMatch[1])) !== null) {
+    // Strip tags from term but preserve for display (e.g., "heat (q)" not "heat ()")
+    // Convert emphasis to plain text representation
+    const rawTerm = match[2].trim();
+    const term = stripTags(rawTerm).trim();
     glossary.push({
       id: match[1],
-      term: match[2].trim(),
+      term: term,
+      rawTerm: rawTerm, // Preserve original with markup for rendering
       meaning: stripTags(match[3]).trim(),
     });
   }
