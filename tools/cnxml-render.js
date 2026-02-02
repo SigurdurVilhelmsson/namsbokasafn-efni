@@ -299,11 +299,15 @@ function renderContent(content, context, _verbose) {
   const tables = extractNestedElements(contentWithoutSections, 'table');
 
   // For simple elements, strip containers first
+  // IMPORTANT: Strip examples and exercises BEFORE notes, because examples/exercises
+  // can contain nested notes. If we strip notes first, the example.fullMatch won't
+  // match anymore (the note inside it was already removed from simpleContent).
   let simpleContent = contentWithoutSections;
-  for (const n of notes) if (n.fullMatch) simpleContent = simpleContent.replace(n.fullMatch, '');
   for (const e of examples) if (e.fullMatch) simpleContent = simpleContent.replace(e.fullMatch, '');
-  for (const e of exercises)
+  for (const e of exercises) {
     if (e.fullMatch) simpleContent = simpleContent.replace(e.fullMatch, '');
+  }
+  for (const n of notes) if (n.fullMatch) simpleContent = simpleContent.replace(n.fullMatch, '');
   for (const f of figures) if (f.fullMatch) simpleContent = simpleContent.replace(f.fullMatch, '');
   for (const t of tables) if (t.fullMatch) simpleContent = simpleContent.replace(t.fullMatch, '');
 
@@ -448,12 +452,10 @@ function renderTopLevelContent(content, context) {
 
   // For paragraphs, lists, equations - only extract those NOT inside container elements
   // Remove container element content before extracting to avoid duplicates
+  // IMPORTANT: Strip examples and exercises BEFORE notes, because examples/exercises
+  // can contain nested notes. If we strip notes first, the example.fullMatch won't
+  // match anymore (the note inside it was already removed from contentForSimpleElements).
   let contentForSimpleElements = content;
-  for (const note of notes) {
-    if (note.fullMatch) {
-      contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
-    }
-  }
   for (const example of examples) {
     if (example.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(example.fullMatch, '');
@@ -462,6 +464,11 @@ function renderTopLevelContent(content, context) {
   for (const exercise of exercises) {
     if (exercise.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(exercise.fullMatch, '');
+    }
+  }
+  for (const note of notes) {
+    if (note.fullMatch) {
+      contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
     }
   }
   for (const figure of figures) {
@@ -491,15 +498,34 @@ function renderTopLevelContent(content, context) {
     });
   }
 
+  // Only add notes that are NOT inside examples or exercises
+  // (notes inside examples/exercises will be rendered by renderExample/renderExercise)
   for (const note of notes) {
-    const position = note.fullMatch
+    const notePosition = note.fullMatch
       ? content.indexOf(note.fullMatch)
       : content.indexOf(`id="${note.id}"`);
-    elementsWithPositions.push({
-      item: note,
-      type: 'note',
-      position: position !== -1 ? position : 0,
+
+    // Check if this note is inside any example
+    const isInsideExample = examples.some((ex) => {
+      if (!ex.fullMatch || !note.fullMatch) return false;
+      const exPosition = content.indexOf(ex.fullMatch);
+      return notePosition >= exPosition && notePosition < exPosition + ex.fullMatch.length;
     });
+
+    // Check if this note is inside any exercise
+    const isInsideExercise = exercises.some((ex) => {
+      if (!ex.fullMatch || !note.fullMatch) return false;
+      const exPosition = content.indexOf(ex.fullMatch);
+      return notePosition >= exPosition && notePosition < exPosition + ex.fullMatch.length;
+    });
+
+    if (!isInsideExample && !isInsideExercise) {
+      elementsWithPositions.push({
+        item: note,
+        type: 'note',
+        position: notePosition !== -1 ? notePosition : 0,
+      });
+    }
   }
 
   for (const example of examples) {
@@ -691,6 +717,11 @@ function renderNote(note, context) {
 
 /**
  * Render an example.
+ *
+ * OpenStax CNXML examples have a specific structure where:
+ * - The example title is in the FIRST paragraph's <title> child
+ * - Subsequent paragraphs may have section titles (Solution, Check Your Learning)
+ * - All content should be rendered in document order
  */
 function renderExample(example, context) {
   const lines = [];
@@ -698,40 +729,119 @@ function renderExample(example, context) {
 
   lines.push(`<aside${id ? ` id="${escapeAttr(id)}"` : ''} class="example">`);
 
-  // Title (often in first para or standalone)
-  const titleMatch = example.content.match(/<para[^>]*><title>([^<]*)<\/title>/);
-  if (titleMatch) {
-    lines.push(`  <h4>${processInlineContent(titleMatch[1], context)}</h4>`);
-  } else {
-    const altTitleMatch = example.content.match(/<title>([^<]+)<\/title>/);
-    if (altTitleMatch) {
-      lines.push(`  <h4>${processInlineContent(altTitleMatch[1], context)}</h4>`);
+  // Extract all paragraphs to find the example title from the FIRST one with a title
+  const allParas = extractElements(example.content, 'para');
+  let exampleTitle = null;
+
+  for (const para of allParas) {
+    // Check if this paragraph starts with a <title> element (allowing whitespace)
+    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
+    if (titleMatch && !exampleTitle) {
+      exampleTitle = titleMatch[1];
+      break;
     }
   }
 
-  // Process content
-  const contentWithoutTitle = example.content
-    .replace(/<para[^>]*><title>[^<]*<\/title>[\s\S]*?<\/para>/, '')
-    .replace(/<title>[^<]*<\/title>/, '');
-
-  // Equations
-  const equations = extractElements(contentWithoutTitle, 'equation');
-  for (const eq of equations) {
-    lines.push(`  ${renderEquation(eq, context)}`);
-  }
-
-  // Paragraphs
-  const paras = extractElements(contentWithoutTitle, 'para');
-  for (const para of paras) {
-    if (!para.content.includes('<title>')) {
-      lines.push(`  ${renderPara(para, context)}`);
+  // Fallback: look for standalone title
+  if (!exampleTitle) {
+    const standaloneTitle = example.content.match(/<title>([^<]+)<\/title>/);
+    if (standaloneTitle) {
+      exampleTitle = standaloneTitle[1];
     }
   }
 
-  // Notes within example
-  const notes = extractNestedElements(contentWithoutTitle, 'note');
+  if (exampleTitle) {
+    lines.push(`  <h4>${processInlineContent(exampleTitle, context)}</h4>`);
+  }
+
+  // Collect all elements with their positions for document order rendering
+  const elementsWithPositions = [];
+
+  // Extract notes first (they contain other elements)
+  const notes = extractNestedElements(example.content, 'note');
   for (const note of notes) {
-    lines.push(`  ${renderNote(note, context)}`);
+    const pos = note.fullMatch
+      ? example.content.indexOf(note.fullMatch)
+      : example.content.indexOf(`id="${note.id}"`);
+    elementsWithPositions.push({
+      type: 'note',
+      item: note,
+      position: pos !== -1 ? pos : 0,
+    });
+  }
+
+  // Strip notes from content before extracting simple elements to avoid duplicates
+  let contentForSimpleElements = example.content;
+  for (const note of notes) {
+    if (note.fullMatch) {
+      contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
+    }
+  }
+
+  // Extract paragraphs from content WITHOUT notes (we'll strip titles from content when rendering)
+  const parasOutsideNotes = extractElements(contentForSimpleElements, 'para');
+  for (const para of parasOutsideNotes) {
+    const pos = para.id
+      ? example.content.indexOf(`id="${para.id}"`)
+      : example.content.indexOf('<para');
+    elementsWithPositions.push({
+      type: 'para',
+      item: para,
+      position: pos !== -1 ? pos : 0,
+    });
+  }
+
+  // Extract lists from content WITHOUT notes
+  const lists = extractNestedElements(contentForSimpleElements, 'list');
+  for (const list of lists) {
+    const pos = list.fullMatch
+      ? example.content.indexOf(list.fullMatch)
+      : example.content.indexOf(`id="${list.id}"`);
+    elementsWithPositions.push({
+      type: 'list',
+      item: list,
+      position: pos !== -1 ? pos : 0,
+    });
+  }
+
+  // Extract equations from content WITHOUT notes
+  const equations = extractElements(contentForSimpleElements, 'equation');
+  for (const eq of equations) {
+    const pos = eq.fullMatch
+      ? example.content.indexOf(eq.fullMatch)
+      : example.content.indexOf(`id="${eq.id}"`);
+    elementsWithPositions.push({
+      type: 'equation',
+      item: eq,
+      position: pos !== -1 ? pos : 0,
+    });
+  }
+
+  // Sort by position
+  elementsWithPositions.sort((a, b) => a.position - b.position);
+
+  // Render in document order
+  for (const { type, item } of elementsWithPositions) {
+    switch (type) {
+      case 'para': {
+        // Strip <title> from paragraph content before rendering
+        const contentWithoutTitle = item.content.replace(/<title>[^<]*<\/title>\s*/g, '');
+        if (contentWithoutTitle.trim()) {
+          const paraWithCleanContent = { ...item, content: contentWithoutTitle };
+          lines.push(`  ${renderPara(paraWithCleanContent, context)}`);
+        }
+        break;
+      }
+      case 'list':
+        lines.push(`  ${renderList(item, context)}`);
+        break;
+      case 'equation':
+        lines.push(`  ${renderEquation(item, context)}`);
+        break;
+      case 'note':
+        lines.push(`  ${renderNote(item, context)}`);
+        break;
+    }
   }
 
   lines.push('</aside>');

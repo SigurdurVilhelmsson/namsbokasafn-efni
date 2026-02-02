@@ -502,6 +502,9 @@ function buildExample(element, getSeg, equations, originalCnxml) {
       }
 
       // Replace paragraph content
+      // Note: The example title is often inside the FIRST paragraph's <title> child element.
+      // When we replace paragraph content, we need to preserve this title.
+      let isFirstPara = true;
       for (const child of element.content || []) {
         if (child.type === 'para' && child.id && child.segmentId) {
           const paraText = getSeg(child.segmentId);
@@ -510,11 +513,21 @@ function buildExample(element, getSeg, equations, originalCnxml) {
               `<para\\s+id="${child.id}"[^>]*>[\\s\\S]*?<\\/para>`,
               'g'
             );
-            exampleCnxml = exampleCnxml.replace(
-              paraPattern,
-              `<para id="${child.id}">${paraText}</para>`
-            );
+            // If this is the first para and we have an example title, include the title
+            let replacementText;
+            if (isFirstPara && element.title && element.title.segmentId) {
+              const titleText = getSeg(element.title.segmentId);
+              if (titleText) {
+                replacementText = `<para id="${child.id}"><title>${titleText}</title>${paraText}</para>`;
+              } else {
+                replacementText = `<para id="${child.id}">${paraText}</para>`;
+              }
+            } else {
+              replacementText = `<para id="${child.id}">${paraText}</para>`;
+            }
+            exampleCnxml = exampleCnxml.replace(paraPattern, replacementText);
           }
+          isFirstPara = false;
         }
       }
 

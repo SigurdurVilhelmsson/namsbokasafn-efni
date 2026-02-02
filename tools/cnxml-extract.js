@@ -427,12 +427,10 @@ function processTopLevelContent(content, moduleId, addSegment, mathMap, counters
 
   // For simple elements (paras, lists, equations) - only extract those NOT inside containers
   // Remove container content to avoid extracting nested elements as top-level
+  // IMPORTANT: Strip examples and exercises BEFORE notes, because examples/exercises
+  // can contain nested notes. If we strip notes first, the example.fullMatch won't
+  // match anymore (the note inside it was already removed from contentForSimpleElements).
   let contentForSimpleElements = content;
-  for (const note of notes) {
-    if (note.fullMatch) {
-      contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
-    }
-  }
   for (const example of examples) {
     if (example.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(example.fullMatch, '');
@@ -441,6 +439,11 @@ function processTopLevelContent(content, moduleId, addSegment, mathMap, counters
   for (const exercise of exercises) {
     if (exercise.fullMatch) {
       contentForSimpleElements = contentForSimpleElements.replace(exercise.fullMatch, '');
+    }
+  }
+  for (const note of notes) {
+    if (note.fullMatch) {
+      contentForSimpleElements = contentForSimpleElements.replace(note.fullMatch, '');
     }
   }
   for (const figure of figures) {
@@ -510,11 +513,34 @@ function processTopLevelContent(content, moduleId, addSegment, mathMap, counters
     });
   }
 
+  // Only add notes that are NOT inside examples or exercises
+  // (notes inside examples/exercises will be processed by processExample/processExercise)
   for (const note of notes) {
-    const position = note.fullMatch
+    const notePosition = note.fullMatch
       ? content.indexOf(note.fullMatch)
       : content.indexOf(`id="${note.id}"`);
-    elementsWithPositions.push({ ...note, type: 'note', position: position !== -1 ? position : 0 });
+
+    // Check if this note is inside any example
+    const isInsideExample = examples.some((ex) => {
+      if (!ex.fullMatch || !note.fullMatch) return false;
+      const exPosition = content.indexOf(ex.fullMatch);
+      return notePosition >= exPosition && notePosition < exPosition + ex.fullMatch.length;
+    });
+
+    // Check if this note is inside any exercise
+    const isInsideExercise = exercises.some((ex) => {
+      if (!ex.fullMatch || !note.fullMatch) return false;
+      const exPosition = content.indexOf(ex.fullMatch);
+      return notePosition >= exPosition && notePosition < exPosition + ex.fullMatch.length;
+    });
+
+    if (!isInsideExample && !isInsideExercise) {
+      elementsWithPositions.push({
+        ...note,
+        type: 'note',
+        position: notePosition !== -1 ? notePosition : 0,
+      });
+    }
   }
 
   for (const eq of equations) {
@@ -673,6 +699,11 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
 
 /**
  * Process an example element.
+ *
+ * OpenStax CNXML examples have a specific structure where:
+ * - The example title is in the FIRST paragraph's <title> child
+ * - Subsequent paragraphs may have section titles (Solution, Check Your Learning)
+ * - All paragraphs should be included, with titles stripped from content
  */
 function processExample(example, moduleId, addSegment, mathMap, counters) {
   const exampleStructure = {
@@ -682,34 +713,45 @@ function processExample(example, moduleId, addSegment, mathMap, counters) {
     content: [],
   };
 
-  // Extract title (can be in para with title attribute or separate title element)
-  const titleMatch = example.content.match(/<para[^>]*><title>([^<]*)<\/title>/);
-  if (titleMatch) {
-    const titleId = addSegment(
-      'example-title',
-      titleMatch[1],
-      example.id ? `${example.id}-title` : null
-    );
-    exampleStructure.title = { segmentId: titleId, text: titleMatch[1] };
-  } else {
-    const altTitleMatch = example.content.match(/<title>([^<]+)<\/title>/);
-    if (altTitleMatch) {
+  // Extract all paragraphs first to find the example title
+  const paras = extractElements(example.content, 'para');
+
+  // The example title comes from the FIRST paragraph that has a <title> child
+  // Use regex that allows whitespace between para tag and title
+  let exampleTitleFound = false;
+  for (const para of paras) {
+    const titleMatch = para.content.match(/^\s*<title>([^<]+)<\/title>/);
+    if (titleMatch && !exampleTitleFound) {
+      // This is the example's main title (e.g., "Measuring Heat")
       const titleId = addSegment(
         'example-title',
-        altTitleMatch[1],
+        titleMatch[1],
         example.id ? `${example.id}-title` : null
       );
-      exampleStructure.title = { segmentId: titleId, text: altTitleMatch[1] };
+      exampleStructure.title = { segmentId: titleId, text: titleMatch[1] };
+      exampleTitleFound = true;
     }
   }
 
-  // Process paragraphs in example
-  const paras = extractElements(example.content, 'para');
+  // Fallback: look for standalone title element
+  if (!exampleTitleFound) {
+    const standaloneTitle = example.content.match(/<title>([^<]+)<\/title>/);
+    if (standaloneTitle) {
+      const titleId = addSegment(
+        'example-title',
+        standaloneTitle[1],
+        example.id ? `${example.id}-title` : null
+      );
+      exampleStructure.title = { segmentId: titleId, text: standaloneTitle[1] };
+    }
+  }
+
+  // Process all paragraphs, stripping <title> from content
   for (const para of paras) {
-    // Skip title paras
-    if (para.content.includes('<title>')) continue;
-    const text = extractInlineText(para.content, mathMap, counters);
-    if (text) {
+    // Strip title element from paragraph content before extracting text
+    const contentWithoutTitle = para.content.replace(/<title>[^<]*<\/title>\s*/g, '');
+    const text = extractInlineText(contentWithoutTitle, mathMap, counters);
+    if (text && text.trim()) {
       const segId = addSegment('para', text, para.id);
       exampleStructure.content.push({
         type: 'para',
@@ -719,6 +761,13 @@ function processExample(example, moduleId, addSegment, mathMap, counters) {
     }
   }
 
+  // Process lists in example
+  const lists = extractNestedElements(example.content, 'list');
+  for (const list of lists) {
+    const listStructure = processList(list, moduleId, addSegment, mathMap, counters);
+    exampleStructure.content.push(listStructure);
+  }
+
   // Process equations in example
   const equations = extractElements(example.content, 'equation');
   for (const eq of equations) {
@@ -726,6 +775,13 @@ function processExample(example, moduleId, addSegment, mathMap, counters) {
       type: 'equation',
       id: eq.id,
     });
+  }
+
+  // Process notes within example (like Answer notes)
+  const notes = extractNestedElements(example.content, 'note');
+  for (const note of notes) {
+    const noteStructure = processNote(note, moduleId, addSegment, mathMap, counters);
+    exampleStructure.content.push(noteStructure);
   }
 
   return exampleStructure;
