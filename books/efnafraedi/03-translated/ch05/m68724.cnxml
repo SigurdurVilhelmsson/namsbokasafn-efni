@@ -372,9 +372,12 @@ hefur neikvætt gildi og gildi <emphasis effect="italics">q</emphasis> er neikv�
 21 °C í 85 °C. Hversu mikinn varma tók vatnið til sín?</para>
 <para id="fs-idp12392592"><title>Lausn</title>Til að svara þessari spurningu skaltu
 íhuga eftirfarandi þætti:</para>
-<list id="fs-idm19140208" list-type="bulleted" bullet-style="bullet"><item>eðlisvarma efnisins sem er hitað (í þessu tilfelli, vatn)</item>
-<item>magn efnisins sem er hitað (í þessu tilfelli, 8,0 × 10<sup>2</sup> g)</item>
-<item>stærð hitastigsbreytingarinnar (í þessu tilfelli, úr 21 °C í 85 °C).</item>
+<list id="fs-idm19140208" list-type="bulleted" bullet-style="bullet"><item>eðlisvarmi efnisins sem er
+hitað (í þessu tilviki vatn)</item>
+<item>magn efnisins sem er hitað (í
+þessu tilviki, 8.0 × 10<sup>2</sup> g)</item>
+<item>stærð hitastigsbreytingarinnar
+(í þessu tilviki, úr 21 °C í 85 °C).</item>
 </list><para id="fs-idm6508272">Eðlisvarmi vatns er 4,184 J/g °C,
 þannig að til að hita 1 g af vatni um 1 °C þarf 4,184 J. Við tökum eftir
 því að þar sem 4,184 J þarf til að hita 1 g af vatni um 1 °C, þurfum við
@@ -442,7 +445,9 @@ hagstæða eiginleika, þar á meðal mikla varmarýmd og varmaleiðni.</para>
 <figure id="CNX_Chem_05_01_SolTherm1">
 <media id="fs-idm14724048" alt="This figure has two parts labeled a and b. Part a shows rows and rows of trough mirrors. Part b shows how a solar thermal plant works. Heat transfer fluid enters a tank via pipes. The tank contains water which is heated. As the heat is exchanged from the pipes to the water, the water becomes steam. The steam travels to a steam turbine. The steam turbine begins to turn which powers a generator. Exhaust steam exits the steam turbine and enters a cooling tower.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_05_01_SolTherm1.jpg"/></media>
-<caption>Þetta sólarvarmaver notar fleygbogaspegla til að safna saman sólarljósi. (heimild a: breyting á verki eftir Bureau of Land Management)</caption>
+<caption>Þetta
+sólarvarmaver notar fleygbogaspegla til að safna saman sólarljósi.
+(heimild a: breyting á verki eftir Bureau of Land Management)</caption>
 </figure>
 <para id="fs-idp4162272">377 megavatta Ivanpah-sólarorkuverið,
 sem er staðsett í Mojave-eyðimörkinni í Kaliforníu, er stærsta
@@ -454,7 +459,12 @@ notað sem vinnsluvökvi vegna mikillar varmarýmdar og gufunarvarma.</para>
 <figure id="CNX_Chem_05_01_SolTherm2">
 <media id="fs-idp14304832" alt="Two pictures are shown and labeled a and b. Picture a shows a thermal plant with three tall metal towers. Picture b is an arial picture of the mirrors used at the plant. They are arranged in rows.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_05_01_SolTherm2.jpg"/></media>
-<caption>(a) Ivanpah-sólarvarmaverið notar 170.000 spegla til að beina sólarljósi á vatnsfyllta turna. (b) Það þekur 4000 ekrur af almenningslandi nálægt Mojave-eyðimörkinni og landamærum Kaliforníu og Nevada. (heimild a: breyting á verki eftir Craig Dietrich; heimild b: breyting á verki eftir „USFWS Pacific Southwest Region"/Flickr)</caption>
+<caption>(a)
+Ivanpah-sólarvarmaverið notar 170.000 spegla til að beina sólarljósi á
+vatnsfyllta turna. (b) Það þekur 4000 ekrur af almenningslandi nálægt
+Mojave-eyðimörkinni og landamærum Kaliforníu og Nevada. (heimild a:
+breyting á verki eftir Craig Dietrich; heimild b: breyting á verki eftir
+„USFWS Pacific Southwest Region“/Flickr)</caption>
 </figure>
 </note>
 </section>

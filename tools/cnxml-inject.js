@@ -193,6 +193,22 @@ function reverseInlineMarkup(text, equations) {
  * @param {Object} options - Build options
  * @returns {string} Complete CNXML document
  */
+
+/**
+ * Recursively collect figure IDs and their caption segment IDs from the structure.
+ * Used to translate figure captions inside notes.
+ */
+function collectFigureCaptions(elements, map) {
+  for (const el of elements) {
+    if (el.type === 'figure' && el.id && el.caption && el.caption.segmentId) {
+      map[el.id] = el.caption.segmentId;
+    }
+    if (el.content) {
+      collectFigureCaptions(el.content, map);
+    }
+  }
+}
+
 function buildCnxml(structure, segments, equations, originalCnxml, options = {}) {
   const verbose = options.verbose || false;
 
@@ -268,8 +284,14 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
   lines.push('');
   lines.push('<content>');
 
+  // Build context for tracking figures handled inside notes (to avoid duplicates)
+  const figureCaptions = {};
+  collectFigureCaptions(structure.content, figureCaptions);
+  const figuresHandledInNotes = new Set();
+  const ctx = { figureCaptions, figuresHandledInNotes };
+
   for (const element of structure.content) {
-    const elementCnxml = buildElement(element, getSeg, equations, originalCnxml);
+    const elementCnxml = buildElement(element, getSeg, equations, originalCnxml, ctx);
     if (elementCnxml) {
       lines.push(elementCnxml);
     }
@@ -304,16 +326,17 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
  * @param {Function} getSeg - Function to get segment text
  * @param {Object} equations - Equations map
  * @param {string} originalCnxml - Original CNXML for extracting complex elements
+ * @param {Object} ctx - Context for tracking figures in notes
  * @returns {string} CNXML string for this element
  */
-function buildElement(element, getSeg, equations, originalCnxml) {
+function buildElement(element, getSeg, equations, originalCnxml, ctx) {
   switch (element.type) {
     case 'para':
       return buildPara(element, getSeg);
     case 'section':
-      return buildSection(element, getSeg, equations, originalCnxml);
+      return buildSection(element, getSeg, equations, originalCnxml, ctx);
     case 'figure':
-      return buildFigure(element, getSeg, originalCnxml);
+      return buildFigure(element, getSeg, originalCnxml, ctx);
     case 'table':
       return buildTable(element, getSeg, originalCnxml);
     case 'example':
@@ -321,7 +344,7 @@ function buildElement(element, getSeg, equations, originalCnxml) {
     case 'exercise':
       return buildExercise(element, getSeg, equations, originalCnxml);
     case 'note':
-      return buildNote(element, getSeg, equations, originalCnxml);
+      return buildNote(element, getSeg, equations, originalCnxml, ctx);
     case 'equation':
       return buildEquation(element, equations, originalCnxml);
     case 'list':
@@ -358,7 +381,7 @@ function buildPara(element, getSeg) {
 /**
  * Build a section element.
  */
-function buildSection(element, getSeg, equations, originalCnxml) {
+function buildSection(element, getSeg, equations, originalCnxml, ctx) {
   const lines = [];
   const idAttr = element.id ? ` id="${element.id}"` : '';
   const classAttr = element.class ? ` class="${element.class}"` : '';
@@ -375,7 +398,7 @@ function buildSection(element, getSeg, equations, originalCnxml) {
 
   // Add content
   for (const child of element.content || []) {
-    const childCnxml = buildElement(child, getSeg, equations, originalCnxml);
+    const childCnxml = buildElement(child, getSeg, equations, originalCnxml, ctx);
     if (childCnxml) {
       lines.push(childCnxml);
     }
@@ -388,7 +411,12 @@ function buildSection(element, getSeg, equations, originalCnxml) {
 /**
  * Build a figure element.
  */
-function buildFigure(element, getSeg, originalCnxml) {
+function buildFigure(element, getSeg, originalCnxml, ctx) {
+  // Skip figures that were already translated in-place inside a note
+  if (ctx && ctx.figuresHandledInNotes && ctx.figuresHandledInNotes.has(element.id)) {
+    return null;
+  }
+
   // Try to extract original figure from CNXML and just replace caption
   if (element.id) {
     const figurePattern = new RegExp(
@@ -493,6 +521,39 @@ function buildTable(element, getSeg, originalCnxml) {
 }
 
 /**
+ * Replace list items within CNXML extracted from an example, exercise, or note.
+ * Items are matched by position within the list element.
+ */
+function replaceListItems(cnxml, listElement, getSeg) {
+  if (!listElement || !listElement.id || !listElement.items) return cnxml;
+
+  const listPattern = new RegExp(`(<list\\s+id="${listElement.id}"[^>]*>)([\\s\\S]*?)(</list>)`);
+  const listMatch = listPattern.exec(cnxml);
+  if (!listMatch) return cnxml;
+
+  let listContent = listMatch[2];
+  let itemIndex = 0;
+
+  // Replace each <item> in order with translated text
+  listContent = listContent.replace(/<item[^>]*>[\s\S]*?<\/item>/g, (originalItem) => {
+    if (itemIndex < listElement.items.length) {
+      const item = listElement.items[itemIndex];
+      itemIndex++;
+      if (item.segmentId) {
+        const translatedText = getSeg(item.segmentId);
+        if (translatedText) {
+          const itemIdAttr = item.id ? ` id="${item.id}"` : '';
+          return `<item${itemIdAttr}>${translatedText}</item>`;
+        }
+      }
+    }
+    return originalItem;
+  });
+
+  return cnxml.replace(listPattern, `${listMatch[1]}${listContent}${listMatch[3]}`);
+}
+
+/**
  * Build an example element.
  */
 function buildExample(element, getSeg, equations, originalCnxml) {
@@ -543,6 +604,10 @@ function buildExample(element, getSeg, equations, originalCnxml) {
 
           isFirstPara = false;
         }
+        // Replace list items
+        if (child.type === 'list') {
+          exampleCnxml = replaceListItems(exampleCnxml, child, getSeg);
+        }
       }
 
       // Note: We do NOT strip equations - they should pass through unchanged
@@ -570,7 +635,7 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
     if (match) {
       let exerciseCnxml = match[0];
 
-      // Replace problem paragraphs
+      // Replace problem paragraphs and lists
       if (element.problem) {
         for (const child of element.problem.content || []) {
           if (child.type === 'para' && child.id && child.segmentId) {
@@ -586,10 +651,13 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
               );
             }
           }
+          if (child.type === 'list') {
+            exerciseCnxml = replaceListItems(exerciseCnxml, child, getSeg);
+          }
         }
       }
 
-      // Replace solution paragraphs
+      // Replace solution paragraphs and lists
       if (element.solution) {
         for (const child of element.solution.content || []) {
           if (child.type === 'para' && child.id && child.segmentId) {
@@ -604,6 +672,9 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
                 `<para id="${child.id}">${paraText}</para>`
               );
             }
+          }
+          if (child.type === 'list') {
+            exerciseCnxml = replaceListItems(exerciseCnxml, child, getSeg);
           }
         }
       }
@@ -621,7 +692,7 @@ function buildExercise(element, getSeg, equations, originalCnxml) {
 /**
  * Build a note element.
  */
-function buildNote(element, getSeg, equations, originalCnxml) {
+function buildNote(element, getSeg, equations, originalCnxml, ctx) {
   // Extract from original and replace content
   if (element.id) {
     // Check if this note is nested inside an example or exercise in the original
@@ -676,7 +747,7 @@ function buildNote(element, getSeg, equations, originalCnxml) {
         }
       }
 
-      // Replace paragraphs
+      // Replace paragraphs and lists
       for (const child of element.content || []) {
         if (child.type === 'para' && child.id && child.segmentId) {
           const paraText = getSeg(child.segmentId);
@@ -688,10 +759,40 @@ function buildNote(element, getSeg, equations, originalCnxml) {
             noteCnxml = noteCnxml.replace(paraPattern, `<para id="${child.id}">${paraText}</para>`);
           }
         }
+        if (child.type === 'list') {
+          noteCnxml = replaceListItems(noteCnxml, child, getSeg);
+        }
       }
 
-      // Note: We do NOT strip equations or figures - they should pass through unchanged
-      // to preserve document order. Only strip elements that would cause nesting issues.
+      // Replace figure captions inside the note with translated versions.
+      // Figures nested inside notes are kept in-place to preserve layout,
+      // and the standalone figure build is skipped via ctx.figuresHandledInNotes.
+      if (ctx && ctx.figureCaptions) {
+        const figIdPattern = /<figure\s+id="([^"]+)"/g;
+        let figMatch;
+        while ((figMatch = figIdPattern.exec(noteCnxml)) !== null) {
+          const figId = figMatch[1];
+          const captionSegId = ctx.figureCaptions[figId];
+          if (captionSegId) {
+            const captionText = getSeg(captionSegId);
+            if (captionText) {
+              // Replace the caption for this specific figure within the note
+              const figureBlockPattern = new RegExp(
+                `(<figure\\s+id="${figId}"[^>]*>[\\s\\S]*?)<caption>[\\s\\S]*?</caption>([\\s\\S]*?</figure>)`
+              );
+              noteCnxml = noteCnxml.replace(
+                figureBlockPattern,
+                `$1<caption>${captionText}</caption>$2`
+              );
+            }
+            // Mark this figure as handled so standalone buildFigure skips it
+            ctx.figuresHandledInNotes.add(figId);
+          }
+        }
+      }
+
+      // Note: We do NOT strip equations or figures - they pass through with translated
+      // captions to preserve document order. Only strip elements that cause nesting issues.
       noteCnxml = stripNestedElements(noteCnxml, ['table', 'example', 'exercise']);
 
       return noteCnxml;
