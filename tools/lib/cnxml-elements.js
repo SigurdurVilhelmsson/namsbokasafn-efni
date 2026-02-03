@@ -8,6 +8,60 @@
 import katex from 'katex';
 import { convertMathMLToLatex } from './mathml-to-latex.js';
 
+// =====================================================================
+// LATEX TEXT TRANSLATIONS
+// =====================================================================
+
+/**
+ * Map of English phrases found inside \text{} in equations to Icelandic.
+ * Sorted longest-first to avoid partial matches.
+ */
+const LATEX_TEXT_TRANSLATIONS = [
+  // Multi-word phrases (must come before single words)
+  ['two-fold decrease in amounts', 'tvöföld minnkun á magni'],
+  ['two-fold increase in amounts', 'tvöföld aukning á magni'],
+  ['mass of substance', 'massi efnis'],
+  ['temperature change', 'hitastigsbreyting'],
+  ['specific heat', 'eðlisvarmi'],
+  ['substance M', 'efni M'],
+  ['substance W', 'efni W'],
+  ['large pan', 'stór panna'],
+  ['small pan', 'lítil panna'],
+  ['mole of', 'mól af'],
+  // Single words
+  ['products', 'myndefni'],
+  ['reactants', 'hvarfefni'],
+  ['reaction', 'hvarf'],
+  ['solution', 'lausn'],
+  ['initial', 'upphafs'],
+  ['graphite', 'grafít'],
+  ['diamond', 'demantur'],
+  ['final', 'loka'],
+  ['water', 'vatn'],
+  ['metal', 'málmur'],
+  ['rebar', 'stál'],
+  ['iron', 'járn'],
+  ['bomb', 'sprengju'],
+];
+
+/**
+ * Translate English descriptive text inside \text{} commands in LaTeX.
+ * Preserves units, chemical formulas, and single-letter variables.
+ * @param {string} latex - LaTeX string
+ * @returns {string} LaTeX with translated \text{} content
+ */
+export function translateLatexText(latex) {
+  return latex.replace(/\\text\{([^}]+)\}/g, (match, content) => {
+    let translated = content;
+    for (const [en, is] of LATEX_TEXT_TRANSLATIONS) {
+      // Case-insensitive word-boundary match
+      const pattern = new RegExp(`\\b${en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+      translated = translated.replace(pattern, is);
+    }
+    return `\\text{${translated}}`;
+  });
+}
+
 /**
  * Render LaTeX to KaTeX HTML (inline mode).
  * @param {string} latex - LaTeX string
@@ -392,7 +446,7 @@ export function processInlineContent(content, context) {
   // Note: KaTeX renderToString already wraps in <span class="katex">, so we use
   // a different wrapper class to avoid nested .katex elements and font-size issues
   result = result.replace(/<m:math[^>]*>[\s\S]*?<\/m:math>/g, (mathml) => {
-    const latex = convertMathMLToLatex(mathml);
+    const latex = translateLatexText(convertMathMLToLatex(mathml));
     const katexHtml = renderInlineLatex(latex);
     return `<span class="math-inline" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
   });

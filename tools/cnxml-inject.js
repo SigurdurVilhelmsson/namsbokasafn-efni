@@ -109,7 +109,7 @@ Examples:
  */
 function parseSegments(content) {
   const segments = new Map();
-  const pattern = /<!-- SEG:([^\s]+) -->\n([\s\S]*?)(?=<!-- SEG:|$)/g;
+  const pattern = /<!-- SEG:([^\s]+) -->[ \t]*\n?([\s\S]*?)(?=<!-- SEG:|$)/g;
 
   let match;
   while ((match = pattern.exec(content)) !== null) {
@@ -346,8 +346,8 @@ function buildPara(element, getSeg) {
     }
   }
 
-  // Get para content
-  const text = element.segmentId ? getSeg(element.segmentId) : '';
+  // Get para content (coerce null to empty string to avoid "null" in output)
+  const text = element.segmentId ? getSeg(element.segmentId) || '' : '';
 
   // Return null only if neither title nor content
   if (!titleElement && !text) return null;

@@ -38,6 +38,7 @@ import {
   escapeHtml,
   processInlineContent,
   renderFootnotesSection,
+  translateLatexText,
 } from './lib/cnxml-elements.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 
@@ -1230,7 +1231,7 @@ function renderEquation(eq, context) {
   }
 
   const mathml = mathMatch[0];
-  const latex = convertMathMLToLatex(mathml);
+  const latex = translateLatexText(convertMathMLToLatex(mathml));
 
   // Track equation
   context.equations.push({ id, latex });
