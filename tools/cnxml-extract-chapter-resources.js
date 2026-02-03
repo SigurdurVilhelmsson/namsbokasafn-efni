@@ -49,10 +49,10 @@ const CONFIG = {
 const MODULE_SECTIONS = {
   efnafraedi: {
     5: {
-      m68723: { section: '5.0', title: 'Introduction' },
-      m68724: { section: '5.1', title: 'Energy Basics' },
-      m68726: { section: '5.2', title: 'Calorimetry' },
-      m68727: { section: '5.3', title: 'Enthalpy' },
+      m68723: { section: '5.0', title: 'Inngangur' },
+      m68724: { section: '5.1', title: 'Grunnatriði orku' },
+      m68726: { section: '5.2', title: 'Varmamælingar' },
+      m68727: { section: '5.3', title: 'Vermi' },
     },
   },
 };
@@ -963,8 +963,8 @@ async function main() {
 
   if (verbose) {
     console.log(`Processing ${translatedFiles.length} modules for chapter ${chapter}`);
-    console.log(`  Using translated CNXML for glossary`);
-    console.log(`  Using source CNXML for equations/exercises (structure preserved)`);
+    console.log(`  Using translated CNXML for glossary, summary, exercises`);
+    console.log(`  Using source CNXML for equations (MathML structure preserved)`);
   }
 
   // Build reference map for cross-references (tables, figures, examples)
@@ -1004,7 +1004,7 @@ async function main() {
     }
   }
 
-  // Extract equations and exercises from source files (structure is preserved there)
+  // Extract equations from source files (MathML structure must be preserved from original)
   for (const file of sourceFiles) {
     const moduleId = path.basename(file, '.cnxml');
     const moduleInfo = getModuleInfo(book, chapter, moduleId);
@@ -1015,11 +1015,18 @@ async function main() {
       allEquations.push(...equations);
       if (verbose) console.log(`  ${moduleId}: ${equations.length} key equations (source)`);
     }
+  }
+
+  // Extract exercises from translated files (exercises are translated in 03-translated/)
+  for (const file of translatedFiles) {
+    const moduleId = path.basename(file, '.cnxml');
+    const moduleInfo = getModuleInfo(book, chapter, moduleId);
+    const content = fs.readFileSync(file, 'utf8');
 
     if (resource === 'all' || resource === 'exercises' || resource === 'answers') {
       const exercises = extractExercises(content, moduleId, moduleInfo, refMap);
       allExercises.push(...exercises);
-      if (verbose) console.log(`  ${moduleId}: ${exercises.length} exercises (source)`);
+      if (verbose) console.log(`  ${moduleId}: ${exercises.length} exercises (translated)`);
     }
   }
 
