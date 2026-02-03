@@ -429,17 +429,25 @@ export function processInlineContent(content, context) {
   // Self-closing link with target-id (e.g., <link target-id="CNX_Chem_05_02_Fig"/>)
   // This is common for figure references
   result = result.replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, targetId) => {
-    // Check if this is a figure reference
+    // Check if this is a figure reference (module-local first, then chapter-wide)
     if (context.figureNumbers && context.figureNumbers.has(targetId)) {
       const figNum = context.figureNumbers.get(targetId);
       return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
     }
-    // Check if this is a table reference
+    if (context.chapterFigureNumbers && context.chapterFigureNumbers.has(targetId)) {
+      const figNum = context.chapterFigureNumbers.get(targetId);
+      return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
+    }
+    // Check if this is a table reference (module-local first, then chapter-wide)
     if (context.tableNumbers && context.tableNumbers.has(targetId)) {
       const tableNum = context.tableNumbers.get(targetId);
       return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
     }
-    // Fallback for non-figure references (tables, examples, etc.)
+    if (context.chapterTableNumbers && context.chapterTableNumbers.has(targetId)) {
+      const tableNum = context.chapterTableNumbers.get(targetId);
+      return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
+    }
+    // Fallback for non-figure references (examples, etc.)
     return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;
   });
   // Link with target-id and content
@@ -455,13 +463,21 @@ export function processInlineContent(content, context) {
         }
         return `<a href="#${escapeAttr(targetId)}">${processInlineContent(text, context)}</a>`;
       }
-      // Empty content - try to resolve reference
+      // Empty content - try to resolve reference (module-local first, then chapter-wide)
       if (context.figureNumbers && context.figureNumbers.has(targetId)) {
         const figNum = context.figureNumbers.get(targetId);
         return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
       }
+      if (context.chapterFigureNumbers && context.chapterFigureNumbers.has(targetId)) {
+        const figNum = context.chapterFigureNumbers.get(targetId);
+        return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
+      }
       if (context.tableNumbers && context.tableNumbers.has(targetId)) {
         const tableNum = context.tableNumbers.get(targetId);
+        return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
+      }
+      if (context.chapterTableNumbers && context.chapterTableNumbers.has(targetId)) {
+        const tableNum = context.chapterTableNumbers.get(targetId);
         return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
       }
       return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;

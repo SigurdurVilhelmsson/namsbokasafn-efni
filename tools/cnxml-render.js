@@ -244,8 +244,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     equations: [],
     terms: {},
     figures: [],
-    figureNumbers, // Map of figure ID -> "Chapter.Number"
-    tableNumbers, // Map of table ID -> "Chapter.Number"
+    figureNumbers, // Map of figure ID -> "Chapter.Number" (this module only)
+    tableNumbers, // Map of table ID -> "Chapter.Number" (this module only)
+    chapterFigureNumbers: options.chapterFigureNumbers || figureNumbers, // chapter-wide
+    chapterTableNumbers: options.chapterTableNumbers || tableNumbers, // chapter-wide
     figureCounter: 0,
     footnoteCounter: 0,
     exampleCounter: 0,
@@ -1409,6 +1411,39 @@ async function main() {
     const modules = findChapterModules(args.chapter, args.module);
     const chapterStr = String(args.chapter).padStart(2, '0');
 
+    // Build chapter-wide figure/table number maps across ALL modules
+    // This enables cross-module references (e.g., 5-2 referencing a table in 5-1)
+    const chapterFigureNumbers = new Map();
+    const chapterTableNumbers = new Map();
+    const allModules = findChapterModules(args.chapter); // all modules, even if rendering one
+    let chapterFigCounter = 0;
+    let chapterTableCounter = 0;
+
+    for (const modId of allModules) {
+      const modPath = path.join(BOOKS_DIR, '03-translated', `ch${chapterStr}`, `${modId}.cnxml`);
+      const modCnxml = fs.readFileSync(modPath, 'utf-8');
+
+      const figPattern = /<figure\s+id="([^"]+)"/g;
+      let fm;
+      while ((fm = figPattern.exec(modCnxml)) !== null) {
+        chapterFigCounter++;
+        chapterFigureNumbers.set(fm[1], `${args.chapter}.${chapterFigCounter}`);
+      }
+
+      const tblPattern = /<table\s+[^>]*id="([^"]+)"/g;
+      let tm;
+      while ((tm = tblPattern.exec(modCnxml)) !== null) {
+        chapterTableCounter++;
+        chapterTableNumbers.set(tm[1], `${args.chapter}.${chapterTableCounter}`);
+      }
+    }
+
+    if (args.verbose) {
+      console.error(
+        `Chapter-wide maps: ${chapterFigureNumbers.size} figures, ${chapterTableNumbers.size} tables`
+      );
+    }
+
     for (const moduleId of modules) {
       if (args.verbose) {
         console.error(`Rendering: ${moduleId}`);
@@ -1427,6 +1462,8 @@ async function main() {
         lang: args.lang,
         chapter: args.chapter,
         moduleId,
+        chapterFigureNumbers,
+        chapterTableNumbers,
       });
 
       const outputPath = writeOutput(args.chapter, moduleId, args.track, html);
