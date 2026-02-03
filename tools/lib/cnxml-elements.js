@@ -397,6 +397,14 @@ export function processInlineContent(content, context) {
     return `<span class="math-inline" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
   });
 
+  // Clean up stray markdown asterisks from MT (e.g., *<emphasis>text</emphasis>*)
+  // These are artifacts of <term> elements being lost during translation
+  result = result.replace(/\*(<emphasis[^>]*>)/g, '$1');
+  result = result.replace(/(<\/emphasis>)\*/g, '$1');
+  // Also handle cases where closing * is separated from </emphasis> by short text
+  // e.g., </emphasis>T*) → </emphasis>T)
+  result = result.replace(/(<\/emphasis>[^*<]{0,10})\*(\))/g, '$1$2');
+
   // Convert emphasis
   result = result.replace(
     /<emphasis\s+effect="([^"]*)"[^>]*>([\s\S]*?)<\/emphasis>/g,
@@ -424,7 +432,12 @@ export function processInlineContent(content, context) {
     // Check if this is a figure reference
     if (context.figureNumbers && context.figureNumbers.has(targetId)) {
       const figNum = context.figureNumbers.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">Figure ${figNum}</a>`;
+      return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
+    }
+    // Check if this is a table reference
+    if (context.tableNumbers && context.tableNumbers.has(targetId)) {
+      const tableNum = context.tableNumbers.get(targetId);
+      return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
     }
     // Fallback for non-figure references (tables, examples, etc.)
     return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;
@@ -435,12 +448,21 @@ export function processInlineContent(content, context) {
     (match, targetId, inner) => {
       const text = inner.trim();
       if (text) {
+        // If the link text is "Figure X.Y" (untranslated by MT), replace with "Mynd X.Y"
+        const figTextMatch = text.match(/^Figure\s+(\d+\.\d+)$/);
+        if (figTextMatch) {
+          return `<a href="#${escapeAttr(targetId)}">Mynd ${figTextMatch[1]}</a>`;
+        }
         return `<a href="#${escapeAttr(targetId)}">${processInlineContent(text, context)}</a>`;
       }
       // Empty content - try to resolve reference
       if (context.figureNumbers && context.figureNumbers.has(targetId)) {
         const figNum = context.figureNumbers.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">Figure ${figNum}</a>`;
+        return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
+      }
+      if (context.tableNumbers && context.tableNumbers.has(targetId)) {
+        const tableNum = context.tableNumbers.get(targetId);
+        return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
       }
       return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;
     }

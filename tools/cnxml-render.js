@@ -84,6 +84,26 @@ function getNoteTypeLabel(noteClass) {
 }
 
 /**
+ * Translate note/paragraph titles that remain in English after MT.
+ * Maps known English titles to Icelandic equivalents.
+ */
+const TITLE_TRANSLATIONS = {
+  'Answer:': 'Svar:',
+  Answer: 'Svar',
+  Solution: 'Lausn',
+  'Check Your Learning': 'Prófaðu þekkingu þína',
+  'CHECK YOUR LEARNING': 'Prófaðu þekkingu þína',
+  'Solution: Using the Equation': 'Lausn: Notkun jöfnunnar',
+  'Solution: Supporting Why the General Equation Is Valid':
+    'Lausn: Rökstuðningur fyrir almennri jöfnu',
+};
+
+function translateTitle(title) {
+  const trimmed = title.trim();
+  return TITLE_TRANSLATIONS[trimmed] || title;
+}
+
+/**
  * Render LaTeX to KaTeX HTML.
  * @param {string} latex - LaTeX string
  * @param {boolean} displayMode - True for block equations, false for inline
@@ -207,6 +227,16 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     figureNumbers.set(figMatch[1], `${chapter}.${figCounter}`);
   }
 
+  // Pre-scan: collect all table IDs and assign numbers
+  const tableNumbers = new Map();
+  const tableIdPattern = /<table\s+[^>]*id="([^"]+)"/g;
+  let tableMatch;
+  let tableCounter = 0;
+  while ((tableMatch = tableIdPattern.exec(cnxml)) !== null) {
+    tableCounter++;
+    tableNumbers.set(tableMatch[1], `${chapter}.${tableCounter}`);
+  }
+
   // Context for rendering
   const context = {
     chapter,
@@ -215,6 +245,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     terms: {},
     figures: [],
     figureNumbers, // Map of figure ID -> "Chapter.Number"
+    tableNumbers, // Map of table ID -> "Chapter.Number"
     figureCounter: 0,
     footnoteCounter: 0,
     exampleCounter: 0,
@@ -817,7 +848,7 @@ function renderNote(note, context) {
   // Title
   const titleMatch = note.content.match(/<title>([^<]+)<\/title>/);
   if (titleMatch) {
-    lines.push(`  <h4>${processInlineContent(titleMatch[1], context)}</h4>`);
+    lines.push(`  <h4>${processInlineContent(translateTitle(titleMatch[1]), context)}</h4>`);
   }
 
   // Extract paragraphs and figures, then render in document order
@@ -998,7 +1029,9 @@ function renderExample(example, context) {
           const paraWithCleanContent = { ...item, content: contentWithoutTitle };
           if (paraTitle) {
             // Render para title as a strong element, then the para content
-            lines.push(`  <p class="para-title"><strong>${escapeHtml(paraTitle)}</strong></p>`);
+            lines.push(
+              `  <p class="para-title"><strong>${escapeHtml(translateTitle(paraTitle))}</strong></p>`
+            );
           }
           if (contentWithoutTitle.trim()) {
             lines.push(`  ${renderPara(paraWithCleanContent, context)}`);

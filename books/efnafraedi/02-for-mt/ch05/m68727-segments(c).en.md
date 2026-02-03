@@ -1,3 +1,198 @@
+{{SEG:m68727:para:fs-idp134606352}}
+To get ClF~3~ as a product, reverse *(iv)*, changing the sign of Δ*H*°:
+
+{{SEG:m68727:para:fs-idp134626368}}
+Now check to make sure that these reactions add up to the reaction we want:
+
+{{SEG:m68727:para:fs-idp154356656}}
+Reactants [[MATH:57]] and [[MATH:58]] cancel out product O~2~; product [[MATH:59]] cancels reactant [[MATH:60]] and reactant [[MATH:61]] is cancelled by products [[MATH:62]] and OF~2~. This leaves only reactants ClF(*g*) and F~2~(*g*) and product ClF~3~(*g*), which are what we want. Since summing these three modified reactions yields the reaction of interest, summing the three modified Δ*H*° values will give the desired Δ*H*°:
+
+{{SEG:m68727:para-title:fs-idp154380128-title}}
+Check Your Learning
+
+{{SEG:m68727:para:fs-idp154380128}}
+Aluminum chloride can be formed from its elements:
+
+{{SEG:m68727:para:fs-idp154380768}}
+*(i)* [[MATH:63]]
+
+{{SEG:m68727:para:fs-idp154392528}}
+Use the reactions here to determine the Δ*H*° for reaction *(i)*:
+
+{{SEG:m68727:para:fs-idp154394160}}
+*(ii)* [[MATH:64]]
+
+{{SEG:m68727:para:fs-idp154404880}}
+*(iii)* [[MATH:65]]
+
+{{SEG:m68727:para:fs-idp174989824}}
+*(iv)* [[MATH:66]]
+
+{{SEG:m68727:para:fs-idp175003104}}
+*(v)* [[MATH:67]]
+
+{{SEG:m68727:para:fs-idp120712864}}
+−1407 kJ
+
+{{SEG:m68727:note-title:fs-idp120712352-title}}
+Answer:
+
+{{SEG:m68727:para:fs-idp120712864}}
+−1407 kJ
+
+{{SEG:m68727:para:fs-idp120713504}}
+We also can use __Hess’s law__ to determine the enthalpy change of any reaction if the corresponding enthalpies of formation of the reactants and products are available. The stepwise reactions we consider are: (i) decompositions of the reactants into their component elements (for which the enthalpy changes are proportional to the negative of the enthalpies of formation of the reactants), followed by (ii) re-combinations of the elements to give the products (with the enthalpy changes proportional to the enthalpies of formation of the products). The standard enthalpy change of the overall reaction is therefore equal to: (ii) the sum of the standard enthalpies of formation of all the products plus (i) the sum of the negatives of the standard enthalpies of formation of the reactants. This is usually rearranged slightly to be written as follows, with ∑ representing “the sum of” and *n* standing for the stoichiometric coefficients:
+
+{{SEG:m68727:para:fs-idp120729664}}
+The following example shows in detail why this equation is valid, and how to use it to calculate the enthalpy change for a reaction of interest.
+
+{{SEG:m68727:example-title:fs-idp120730208-title}}
+Using Hess’s Law
+
+{{SEG:m68727:para:fs-idp134549264}}
+What is the standard enthalpy change for the reaction:
+
+{{SEG:m68727:para-title:fs-idp146127120-title}}
+Solution: Using the Equation
+
+{{SEG:m68727:para:fs-idp146127120}}
+Use the special form of Hess’s law given previously, and values from Appendix G:
+
+{{SEG:m68727:para-title:fs-idp134564208-title}}
+Solution: Supporting Why the General Equation Is Valid
+
+{{SEG:m68727:para:fs-idp134564208}}
+Alternatively, we can write this reaction as the sum of the decompositions of 3NO~2~(*g*) and 1H~2~O(*l*) into their constituent elements, and the formation of 2HNO~3~(*aq*) and 1NO(*g*) from their constituent elements. Writing out these reactions, and noting their relationships to the [[MATH:68]] values for these compounds (from Appendix G ), we have:
+
+{{SEG:m68727:para:fs-idp155650064}}
+Summing these reaction equations gives the reaction we are interested in:
+
+{{SEG:m68727:para:fs-idp155662480}}
+Summing their enthalpy changes gives the value we want to determine:
+
+{{SEG:m68727:para:fs-idp146119648}}
+So the standard enthalpy change for this reaction is Δ*H*° = −138.4 kJ.
+
+{{SEG:m68727:para:fs-idp146120784}}
+Note that this result was obtained by (1) multiplying the [[MATH:69]] of each product by its stoichiometric coefficient and summing those values, (2) multiplying the [[MATH:70]] of each reactant by its stoichiometric coefficient and summing those values, and then (3) subtracting the result found in (2) from the result found in (1). This is also the procedure in using the general equation, as shown.
+
+{{SEG:m68727:para-title:fs-idp165556368-title}}
+Check Your Learning
+
+{{SEG:m68727:para:fs-idp165556368}}
+Calculate the heat of combustion of 1 mole of ethanol, C~2~H~5~OH(*l*), when H~2~O(*l*) and CO~2~(*g*) are formed. Use the following enthalpies of formation: C~2~H~5~OH(*l*), −278 kJ/mol; H~2~O(*l*), −286 kJ/mol; and CO~2~(*g*), −394 kJ/mol.
+
+{{SEG:m68727:para:fs-idp165564336}}
+−1368 kJ/mol
+
+{{SEG:m68727:note-title:fs-idp165563824-title}}
+Answer:
+
+{{SEG:m68727:para:fs-idp165564336}}
+−1368 kJ/mol
+
+{{SEG:m68727:title:fs-idp165565104-title}}
+Key Concepts and Summary
+
+{{SEG:m68727:para:fs-idp165565984}}
+If a chemical change is carried out at constant pressure and the only work done is caused by expansion or contraction, *q* for the change is called the enthalpy change with the symbol Δ*H*, or [[MATH:71]] for reactions occurring under standard state conditions at 298 K. The value of Δ*H* for a reaction in one direction is equal in magnitude, but opposite in sign, to Δ*H* for the reaction in the opposite direction, and Δ*H* is directly proportional to the quantity of reactants and products. The standard enthalpy of formation, [[MATH:72]] is the enthalpy change accompanying the formation of 1 mole of a substance from the elements in their most stable states at 1 bar and 298.15 K. If the enthalpies of formation are available for the reactants and products of a reaction, the enthalpy change can be calculated using Hess’s law: If a process can be written as the sum of several stepwise processes, the enthalpy change of the total process equals the sum of the enthalpy changes of the various steps.
+
+{{SEG:m68727:title:fs-idp165577648-title}}
+Key Equations
+
+{{SEG:m68727:entry:auto-222}}
+[[MATH:73]]
+
+{{SEG:m68727:entry:auto-223}}
+[[MATH:74]]
+
+{{SEG:m68727:title:fs-idp167491136-title}}
+Chemistry End of Chapter Exercises
+
+{{SEG:m68727:problem:fs-idp167492528}}
+Explain how the heat measured in {{XREF:12}} differs from the enthalpy change for the exothermic reaction described by the following equation:[[MATH:75]]
+
+{{SEG:m68727:solution:fs-idp167503872}}
+The enthalpy change of the indicated reaction is for exactly 1 mol HCL and 1 mol NaOH; the heat in the example is produced by 0.0500 mol HCl and 0.0500 mol NaOH.
+
+{{SEG:m68727:problem:fs-idm121017200}}
+Using the data in the check your learning section of {{XREF:13}}, calculate Δ*H* in kJ/mol of AgNO~3~(*aq*) for the reaction: [[MATH:76]]
+
+{{SEG:m68727:problem:fs-idp146868384}}
+Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of NH~4~NO~3~ under the conditions described in {{XREF:14}}.
+
+{{SEG:m68727:solution:fs-idp140720784}}
+25 kJ mol^−1^
+
+{{SEG:m68727:problem:fs-idp140737280}}
+Calculate Δ*H* for the reaction described by the equation. (*Hint*: Use the value for the approximate amount of heat absorbed by the reaction that you calculated in a previous exercise.)[[MATH:77]]
+
+{{SEG:m68727:problem:fs-idp107667792}}
+Calculate the enthalpy of solution (Δ*H* for the dissolution) per mole of CaCl~2~ (refer to {{XREF:15}}).
+
+{{SEG:m68727:solution:fs-idp107669568}}
+81 kJ mol^−1^
+
+{{SEG:m68727:problem:fs-idp103276592}}
+Although the gas used in an oxyacetylene torch ({{XREF:16}}) is essentially pure acetylene, the heat produced by combustion of one mole of acetylene in such a torch is likely not equal to the enthalpy of combustion of acetylene listed in {{XREF:17}}. Considering the conditions for which the tabulated data are reported, suggest an explanation.
+
+{{SEG:m68727:problem:fs-idp103281472}}
+How much heat is produced by burning 4.00 moles of acetylene under standard state conditions?
+
+{{SEG:m68727:solution:fs-idp103282352}}
+5204.4 kJ
+
+{{SEG:m68727:problem:fs-idp103290928}}
+How much heat is produced by combustion of 125 g of methanol under standard state conditions?
+
+{{SEG:m68727:problem:fs-idp169454496}}
+How many moles of isooctane must be burned to produce 100 kJ of heat under standard state conditions?
+
+{{SEG:m68727:solution:fs-idm219837376}}
+1.83 [[MATH:78]] 10^−2^ mol
+
+{{SEG:m68727:problem:fs-idp169467952}}
+What mass of carbon monoxide must be burned to produce 175 kJ of heat under standard state conditions?
+
+{{SEG:m68727:problem:fs-idp155902864}}
+When 2.50 g of methane burns in oxygen, 125 kJ of heat is produced. What is the enthalpy of combustion per mole of methane under these conditions?
+
+{{SEG:m68727:solution:fs-idp155903792}}
+–802 kJ mol^−1^
+
+{{SEG:m68727:problem:fs-idp155925136}}
+How much heat is produced when 100 mL of 0.250 M HCl (density, 1.00 g/mL) and 200 mL of 0.150 M NaOH (density, 1.00 g/mL) are mixed?[[MATH:79]]
+
+{{SEG:m68727:problem:fs-idm11092064}}
+If both solutions are at the same temperature and the specific heat of the products is 4.19 J/g °C, how much will the temperature increase? What assumption did you make in your calculation?
+
+{{SEG:m68727:problem:fs-idp166202064}}
+A sample of 0.562 g of carbon is burned in oxygen in a bomb calorimeter, producing carbon dioxide. Assume both the reactants and products are under standard state conditions, and that the heat released is directly proportional to the enthalpy of combustion of graphite. The temperature of the calorimeter increases from 26.74 °C to 27.93 °C. What is the heat capacity of the calorimeter and its contents?
+
+{{SEG:m68727:solution:fs-idp166203504}}
+15.5 kJ/ºC
+
+{{SEG:m68727:problem:fs-idp25402576}}
+Before the introduction of chlorofluorocarbons, sulfur dioxide (enthalpy of vaporization, 6.00 kcal/mol) was used in household refrigerators. What mass of SO~2~ must be evaporated to remove as much heat as evaporation of 1.00 kg of CCl~2~F~2~ (enthalpy of vaporization is 17.4 kJ/mol)?
+
+{{SEG:m68727:problem:fs-idp25404288}}
+The vaporization reactions for SO~2~ and CCl~2~F~2~ are [[MATH:80]] and [[MATH:81]] respectively.
+
+{{SEG:m68727:problem:fs-idp140767408}}
+Homes may be heated by pumping hot water through radiators. What mass of water will provide the same amount of heat when cooled from 95.0 to 35.0 °C, as the heat provided when 100 g of steam is cooled from 110 °C to 100 °C?
+
+{{SEG:m68727:solution:fs-idp140768496}}
+7.43 g
+
+{{SEG:m68727:problem:fs-idp104125104}}
+Which of the enthalpies of combustion in {{XREF:18}} the table are also standard enthalpies of formation?
+
+{{SEG:m68727:problem:fs-idp165422368}}
+Does the standard enthalpy of formation of H~2~O(*g*) differ from Δ*H*° for the reaction [[MATH:82]]
+
+{{SEG:m68727:solution:fs-idp165434480}}
+Yes.
+
 {{SEG:m68727:problem:fs-idp165438096}}
 Joseph Priestly prepared oxygen in 1774 by heating red mercury(II) oxide with sunlight focused through a lens. How much heat is required to decompose exactly 1 mole of red HgO(*s*) to Hg(*l*) and O~2~(*g*) under standard conditions?
 
@@ -201,138 +396,3 @@ On the assumption that the best rocket fuel is the one that gives off the most h
 
 {{SEG:m68727:problem:fs-idp124892192}}
 How much heat is produced when 1.25 g of chromium metal reacts with oxygen gas under standard conditions?
-
-{{SEG:m68727:problem:fs-idp124902464}}
-Ethylene, C~2~H~4~, a byproduct from the fractional distillation of petroleum, is fourth among the 50 chemical compounds produced commercially in the largest quantities. About 80% of synthetic ethanol is manufactured from ethylene by its reaction with water in the presence of a suitable catalyst. [[MATH:127]]
-
-{{SEG:m68727:problem:fs-idp124915056}}
-Using the data in the table in Appendix G, calculate Δ*H*° for the reaction.
-
-{{SEG:m68727:solution:fs-idm135203232}}
-−88.2 kJ
-
-{{SEG:m68727:problem:fs-idp149398400}}
-The oxidation of the sugar glucose, C~6~H~12~O~6~, is described by the following equation:[[MATH:128]]
-
-{{SEG:m68727:problem:fs-idp149417584}}
-The metabolism of glucose gives the same products, although the glucose reacts with oxygen in a series of steps in the body.
-
-{{SEG:m68727:problem:fs-idp149418112}}
-(a) How much heat in kilojoules can be produced by the metabolism of 1.0 g of glucose?
-
-{{SEG:m68727:problem:fs-idp149418496}}
-(b) How many Calories can be produced by the metabolism of 1.0 g of glucose?
-
-{{SEG:m68727:problem:fs-idp211818080}}
-Propane, C~3~H~8~, is a hydrocarbon that is commonly used as a fuel.
-
-{{SEG:m68727:problem:fs-idp211819232}}
-(a) Write a balanced equation for the complete combustion of propane gas.
-
-{{SEG:m68727:problem:fs-idp211819616}}
-(b) Calculate the volume of air at 25 °C and 1.00 atmosphere that is needed to completely combust 25.0 grams of propane. Assume that air is 21.0 percent O~2~ by volume. (Hint: We will see how to do this calculation in a later chapter on gases—for now use the information that 1.00 L of air at 25 °C and 1.00 atm contains 0.275 g of O~2~.)
-
-{{SEG:m68727:problem:fs-idp211821472}}
-(c) The heat of combustion of propane is −2,219.2 kJ/mol. Calculate the heat of formation, [[MATH:129]] of propane given that [[MATH:130]] of H~2~O(*l*) = −285.8 kJ/mol and [[MATH:131]] of CO~2~(*g*) = −393.5 kJ/mol.
-
-{{SEG:m68727:problem:fs-idp211832480}}
-(d) Assuming that all of the heat released in burning 25.0 grams of propane is transferred to 4.00 kilograms of water, calculate the increase in temperature of the water.
-
-{{SEG:m68727:solution:fs-idp211833440}}
-(a) [[MATH:132]] (b) 330 L air; (c) −104.5 kJ mol^−1^; (d) 75.4 °C
-
-{{SEG:m68727:problem:fs-idp165246960}}
-During a recent winter month in Sheboygan, Wisconsin, it was necessary to obtain 3500 kWh of heat provided by a natural gas furnace with 89% efficiency to keep a small house warm (the efficiency of a gas furnace is the percent of the heat produced by combustion that is transferred into the house).
-
-{{SEG:m68727:problem:fs-idp165247664}}
-(a) Assume that natural gas is pure methane and determine the volume of natural gas in cubic feet that was required to heat the house. The average temperature of the natural gas was 56 °F; at this temperature and a pressure of 1 atm, natural gas has a density of 0.681 g/L.
-
-{{SEG:m68727:problem:fs-idp165248432}}
-(b) How many gallons of LPG (liquefied petroleum gas) would be required to replace the natural gas used? Assume the LPG is liquid propane [C~3~H~8~: density, 0.5318 g/mL; enthalpy of combustion, 2219 kJ/mol for the formation of CO~2~(*g*) and H~2~O(*l*)] and the furnace used to burn the LPG has the same efficiency as the gas furnace.
-
-{{SEG:m68727:problem:fs-idp165251760}}
-(c) What mass of carbon dioxide is produced by combustion of the methane used to heat the house?
-
-{{SEG:m68727:problem:fs-idp165252256}}
-(d) What mass of water is produced by combustion of the methane used to heat the house?
-
-{{SEG:m68727:problem:fs-idp165252640}}
-(e) What volume of air is required to provide the oxygen for the combustion of the methane used to heat the house? Air contains 23% oxygen by mass. The average density of air during the month was 1.22 g/L.
-
-{{SEG:m68727:problem:fs-idp165253248}}
-(f) How many kilowatt–hours (1 kWh = 3.6 [[MATH:133]] 10^6^ J) of electricity would be required to provide the heat necessary to heat the house? Note electricity is 100% efficient in producing heat inside a house.
-
-{{SEG:m68727:problem:fs-idp165259776}}
-(g) Although electricity is 100% efficient in producing heat inside a house, production and distribution of electricity is not 100% efficient. The efficiency of production and distribution of electricity produced in a coal-fired power plant is about 40%. A certain type of coal provides 2.26 kWh per pound upon combustion. What mass of this coal in kilograms will be required to produce the electrical energy necessary to heat the house if the efficiency of generation and distribution is 40%?
-
-{{SEG:m68727:glossary-term:fs-idp102379584-term}}
-chemical thermodynamics
-
-{{SEG:m68727:glossary-def:fs-idp102379584-def}}
-area of science that deals with the relationships between heat, work, and all forms of energy associated with chemical and physical processes
-
-{{SEG:m68727:glossary-term:fs-idp102380512-term}}
-enthalpy (H)
-
-{{SEG:m68727:glossary-def:fs-idp102380512-def}}
-sum of a system’s internal energy and the mathematical product of its pressure and volume
-
-{{SEG:m68727:glossary-term:fs-idp102382096-term}}
-enthalpy change (ΔH)
-
-{{SEG:m68727:glossary-def:fs-idp102382096-def}}
-heat released or absorbed by a system under constant pressure during a chemical or physical process
-
-{{SEG:m68727:glossary-term:fs-idp102383600-term}}
-expansion work (pressure-volume work)
-
-{{SEG:m68727:glossary-def:fs-idp102383600-def}}
-work done as a system expands or contracts against external pressure
-
-{{SEG:m68727:glossary-term:fs-idp102384368-term}}
-first law of thermodynamics
-
-{{SEG:m68727:glossary-def:fs-idp102384368-def}}
-internal energy of a system changes due to heat flow in or out of the system or work done on or by the system
-
-{{SEG:m68727:glossary-term:fs-idp102385264-term}}
-Hess’s law
-
-{{SEG:m68727:glossary-def:fs-idp102385264-def}}
-if a process can be represented as the sum of several steps, the enthalpy change of the process equals the sum of the enthalpy changes of the steps
-
-{{SEG:m68727:glossary-term:fs-idp102386192-term}}
-hydrocarbon
-
-{{SEG:m68727:glossary-def:fs-idp102386192-def}}
-compound composed only of hydrogen and carbon; the major component of fossil fuels
-
-{{SEG:m68727:glossary-term:fs-idp102386960-term}}
-internal energy (U)
-
-{{SEG:m68727:glossary-def:fs-idp102386960-def}}
-total of all possible kinds of energy present in a substance or substances
-
-{{SEG:m68727:glossary-term:fs-idp102388352-term}}
-standard enthalpy of combustion (ΔHc°)
-
-{{SEG:m68727:glossary-def:fs-idp102388352-def}}
-heat released when one mole of a compound undergoes complete combustion under standard conditions
-
-{{SEG:m68727:glossary-term:fs-idp102391904-term}}
-standard enthalpy of formation (ΔHf°)
-
-{{SEG:m68727:glossary-def:fs-idp102391904-def}}
-enthalpy change of a chemical reaction in which 1 mole of a pure substance is formed from its elements in their most stable states under standard state conditions
-
-{{SEG:m68727:glossary-term:fs-idp102395520-term}}
-standard state
-
-{{SEG:m68727:glossary-def:fs-idp102395520-def}}
-set of physical conditions as accepted as common reference conditions for reporting thermodynamic properties; 1 bar of pressure, and solutions at 1 molar concentrations, usually at a temperature of 298.15 K
-
-{{SEG:m68727:glossary-term:fs-idp102396512-term}}
-state function
-
-{{SEG:m68727:glossary-def:fs-idp102396512-def}}
-property depending only on the state of a system, and not the path taken to reach that state

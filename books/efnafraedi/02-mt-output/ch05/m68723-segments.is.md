@@ -6,10 +6,9 @@
 
 <!-- SEG:m68723:abstract-item:abstract-item-3 --> Vermi
 
-<!-- SEG:m68723:caption:CNX_Chem_05_00_Match-caption --> Þegar eldspýtuhaus
-er strokið eftir hrjúfu yfirborði hefst bruni sem framleiðir orku í
-formi varma og ljóss. (heimild: breytt útgáfa af verki eftir Laszlo
-Ilyes)
+<!-- SEG:m68723:caption:CNX_Chem_05_00_Match-caption --> Þegar eldspýtnaenda
+er strokið eftir hrjúfu yfirborði hefst brunahvarf sem framleiðir orku í
+formi varma og ljóss. (heimild: breyting á verki eftir Laszlo Ilyes)
 
 <!-- SEG:m68723:para:fs-idm19082352 --> Efnahvörf, eins og þau sem eiga sér
 stað þegar þú kveikir á eldspýtu, fela í sér breytingar á orku jafnt sem
@@ -24,11 +23,11 @@ Sector, 2012*,
 http://www.eia.gov/totalenergy/data/monthly/pdf/flow/css_2012_energy.pdf.
 Gögn fengin frá US Energy Information Administration, *Monthly Energy
 Review* (janúar 2014).] Þótt þessi brunahvörf hjálpi okkur að mæta
-nauðsynlegum orkuþörfum okkar, eru þau einnig viðurkennd af meirihluta
+nauðsynlegri orkuþörf okkar, eru þau einnig viðurkennd af meirihluta
 vísindasamfélagsins sem stór þáttur í hnattrænum loftslagsbreytingum.
 
 <!-- SEG:m68723:para:fs-idm15108400 --> Nýtanleg orka er einnig fáanleg úr
 ýmsum öðrum efnahvörfum en bruna. Til dæmis er orkan sem rafhlöður í
-farsíma, bíl eða vasaljósi framleiða afleiðing efnahvarfa. Í þessum
-kafla eru kynnt mörg af þeim grundvallarhugtökum sem nauðsynleg eru til
-að kanna tengslin milli efnabreytinga og orku, með áherslu á varmaorku.
+farsíma, bíl eða vasaljósi framleiða afleiðing efnahvarfa. Þessi kafli
+kynnir mörg af þeim grundvallarhugtökum sem eru nauðsynleg til að kanna
+sambandið milli efnabreytinga og orku, með áherslu á varmaorku.

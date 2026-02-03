@@ -1,3 +1,54 @@
+{{SEG:m68726:caption:CNX_Chem_05_02_HandWarmer-caption}}
+Chemical hand warmers produce heat that warms your hand on a cold day. In this one, you can see the metal disc that initiates the exothermic precipitation reaction. (credit: modification of work by Science Buddies TV/YouTube)
+
+{{SEG:m68726:para:fs-idm81095744}}
+This {{LINK:1}}link{{/LINK}} shows the precipitation reaction that occurs when the disk in a chemical hand warmer is flexed.
+
+{{SEG:m68726:example-title:fs-idp325184-title}}
+Heat Flow in an Instant Ice Pack
+
+{{SEG:m68726:para:fs-idm52519632}}
+When solid ammonium nitrate dissolves in water, the solution becomes cold. This is the basis for an “instant ice pack” ({{XREF:12}}). When 3.21 g of solid NH~4~NO~3~ dissolves in 50.0 g of water at 24.9 °C in a calorimeter, the temperature decreases to 20.3 °C.
+
+{{SEG:m68726:para:fs-idp41329920}}
+Calculate the value of *q* for this reaction and explain the meaning of its arithmetic sign. State any assumptions that you made.
+
+{{SEG:m68726:para-title:fs-idp364256-title}}
+Solution
+
+{{SEG:m68726:para:fs-idp364256}}
+We assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself), in which case:
+
+{{SEG:m68726:para:fs-idm76420496}}
+with “rxn” and “soln” used as shorthand for “reaction” and “solution,” respectively.
+
+{{SEG:m68726:para:fs-idm52847712}}
+Assuming also that the specific heat of the solution is the same as that for water, we have:
+
+{{SEG:m68726:para:fs-idp8566608}}
+The positive sign for *q* indicates that the dissolution is an endothermic process.
+
+{{SEG:m68726:para-title:fs-idm6778640-title}}
+Check Your Learning
+
+{{SEG:m68726:para:fs-idm6778640}}
+When a 3.00-g sample of KCl was added to 3.00 [[MATH:6]] 10^2^ g of water in a coffee cup calorimeter, the temperature decreased by 1.05 °C. How much heat is involved in the dissolution of the KCl? What assumptions did you make?
+
+{{SEG:m68726:para:fs-idm5945296}}
+1.33 kJ; assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself) and that the specific heat of the solution is the same as that for water
+
+{{SEG:m68726:note-title:fs-idm9544544-title}}
+Answer:
+
+{{SEG:m68726:para:fs-idm5945296}}
+1.33 kJ; assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself) and that the specific heat of the solution is the same as that for water
+
+{{SEG:m68726:caption:CNX_Chem_05_02_IcePack-caption}}
+An instant cold pack consists of a bag containing solid ammonium nitrate and a second bag of water. When the bag of water is broken, the pack becomes cold because the dissolution of ammonium nitrate is an endothermic process that removes thermal energy from the water. The cold pack then removes thermal energy from your body.
+
+{{SEG:m68726:para:fs-idm33984192}}
+If the amount of heat absorbed by a calorimeter is too large to neglect or if we require more accurate results, then we must take into account the heat absorbed both by the solution and by the calorimeter.
+
 {{SEG:m68726:para:fs-idm75111136}}
 The calorimeters described are designed to operate at constant (atmospheric) pressure and are convenient to measure heat flow accompanying processes that occur in solution. A different type of calorimeter that operates at constant volume, colloquially known as a __bomb calorimeter__, is used to measure the energy produced by reactions that yield large amounts of heat and gaseous products, such as combustion reactions. (The term “bomb” comes from the observation that these reactions can be vigorous enough to resemble explosions that would damage other calorimeters.) This type of calorimeter consists of a robust steel container (the “bomb”) that contains the reactants and is itself submerged in water ({{XREF:13}}). The sample is placed in the bomb, which is then filled with oxygen at high pressure. A small electrical spark is used to ignite the sample. The energy produced by the reaction is absorbed by the steel bomb and the surrounding water. The temperature increase is measured and, along with the known heat capacity of the calorimeter, is used to calculate the energy produced by the reaction. Bomb calorimeters require calibration to determine the heat capacity of the calorimeter and ensure accurate results. The calibration is accomplished using a reaction with a known *q*, such as a measured quantity of benzoic acid ignited by a spark from a nickel fuse wire that is weighed before and after the reaction. The temperature change produced by the known reaction is used to determine the heat capacity of the calorimeter. The calibration is generally performed each time before the calorimeter is used to gather research data.
 
@@ -120,123 +171,3 @@ A 45-g aluminum spoon (specific heat 0.88 J/g °C) at 24 °C is placed in 180 mL
 
 {{SEG:m68726:problem:fs-idp6315152}}
 (b) The first time a student solved this problem she got an answer of 88 °C. Explain why this is clearly an incorrect answer.
-
-{{SEG:m68726:problem:fs-idm50578016}}
-The temperature of the cooling water as it leaves the hot engine of an automobile is 240 °F. After it passes through the radiator it has a temperature of 175 °F. Calculate the amount of heat transferred from the engine to the surroundings by one gallon of water with a specific heat of 4.184 J/g °C.
-
-{{SEG:m68726:solution:fs-idp5232528}}
-5.7 [[MATH:7]] 10^2^ kJ
-
-{{SEG:m68726:problem:fs-idm72237968}}
-A 70.0-g piece of metal at 80.0 °C is placed in 100 g of water at 22.0 °C contained in a calorimeter like that shown in {{XREF:18}}. The metal and water come to the same temperature at 24.6 °C. How much heat did the metal give up to the water? What is the specific heat of the metal?
-
-{{SEG:m68726:problem:fs-idm9201888}}
-If a reaction produces 1.506 kJ of heat, which is trapped in 30.0 g of water initially at 26.5 °C in a calorimeter like that in {{XREF:19}}, what is the resulting temperature of the water?
-
-{{SEG:m68726:solution:fs-idm161971328}}
-38.5 °C
-
-{{SEG:m68726:problem:fs-idm9945568}}
-A 0.500-g sample of KCl is added to 50.0 g of water in a calorimeter ({{XREF:20}}). If the temperature decreases by 1.05 °C, what is the approximate amount of heat involved in the dissolution of the KCl, assuming the specific heat of the resulting solution is 4.18 J/g °C? Is the reaction exothermic or endothermic?
-
-{{SEG:m68726:problem:fs-idm66505184}}
-Dissolving 3.0 g of CaCl~2~(*s*) in 150.0 g of water in a calorimeter ({{XREF:21}}) at 22.4 °C causes the temperature to rise to 25.8 °C. What is the approximate amount of heat involved in the dissolution, assuming the specific heat of the resulting solution is 4.18 J/g °C? Is the reaction exothermic or endothermic?
-
-{{SEG:m68726:solution:fs-idm53591344}}
-−2.2 kJ; The heat produced shows that the reaction is exothermic.
-
-{{SEG:m68726:problem:fs-idm54144688}}
-When 50.0 g of 0.200 M NaCl(*aq*) at 24.1 °C is added to 100.0 g of 0.100 M AgNO~3~(*aq*) at 24.1 °C in a calorimeter, the temperature increases to 25.2 °C as AgCl(*s*) forms. Assuming the specific heat of the solution and products is 4.20 J/g °C, calculate the approximate amount of heat in joules produced.
-
-{{SEG:m68726:problem:fs-idm11353520}}
-The addition of 3.15 g of Ba(OH)~2~·8H~2~O to a solution of 1.52 g of NH~4~SCN in 100 g of water in a calorimeter caused the temperature to fall by 3.1 °C. Assuming the specific heat of the solution and products is 4.20 J/g °C, calculate the approximate amount of heat absorbed by the reaction, which can be represented by the following equation:
-
-{{SEG:m68726:problem:fs-idm106018032}}
-Ba(OH)~2~·8H~2~O(*s*) + 2NH~4~SCN(*aq*) ⟶ Ba(SCN)~2~(*aq*) + 2NH~3~(*aq*) + 10H~2~O(*l*)
-
-{{SEG:m68726:solution:fs-idm110865664}}
-1.4 kJ
-
-{{SEG:m68726:problem:fs-idp3697136}}
-The reaction of 50 mL of acid and 50 mL of base described in {{XREF:22}} increased the temperature of the solution by 6.9 ºC. How much would the temperature have increased if 100 mL of acid and 100 mL of base had been used in the same calorimeter starting at the same temperature of 22.0 ºC? Explain your answer.
-
-{{SEG:m68726:problem:fs-idp22525440}}
-If the 3.21 g of NH~4~NO~3~ in {{XREF:23}} were dissolved in 100.0 g of water under the same conditions, how much would the temperature change? Explain your answer.
-
-{{SEG:m68726:solution:fs-idm50695136}}
-22.6. Since the mass and the heat capacity of the solution is approximately equal to that of the water, the two-fold increase in the amount of water leads to a two-fold decrease of the temperature change.
-
-{{SEG:m68726:problem:fs-idp17900160}}
-When 1.0 g of fructose, C~6~H~12~O~6~(*s*), a sugar commonly found in fruits, is burned in oxygen in a bomb calorimeter, the temperature of the calorimeter increases by 1.58 °C. If the heat capacity of the calorimeter and its contents is 9.90 kJ/°C, what is *q* for this combustion?
-
-{{SEG:m68726:problem:fs-idp40934912}}
-When a 0.740-g sample of trinitrotoluene (TNT), C~7~H~5~N~2~O~6~, is burned in a bomb calorimeter, the temperature increases from 23.4 °C to 26.9 °C. The heat capacity of the calorimeter is 534 J/°C, and it contains 675 mL of water. How much heat was produced by the combustion of the TNT sample?
-
-{{SEG:m68726:solution:fs-idm70100832}}
-11.7 kJ
-
-{{SEG:m68726:problem:fs-idp26469920}}
-One method of generating electricity is by burning coal to heat water, which produces steam that drives an electric generator. To determine the rate at which coal is to be fed into the burner in this type of plant, the heat of combustion per ton of coal must be determined using a bomb calorimeter. When 1.00 g of coal is burned in a bomb calorimeter ({{XREF:24}}), the temperature increases by 1.48 °C. If the heat capacity of the calorimeter is 21.6 kJ/°C, determine the heat produced by combustion of a ton of coal (2.000 [[MATH:8]] 10^3^ pounds).
-
-{{SEG:m68726:problem:fs-idp11693072}}
-The amount of fat recommended for someone with a daily diet of 2000 Calories is 65 g. What percent of the calories in this diet would be supplied by this amount of fat if the average number of Calories for fat is9.1 Calories/g?
-
-{{SEG:m68726:solution:fs-idm30338240}}
-30%
-
-{{SEG:m68726:problem:fs-idp47281472}}
-A teaspoon of the carbohydrate sucrose (common sugar) contains 16 Calories (16 kcal). What is the mass of one teaspoon of sucrose if the average number of Calories for carbohydrates is 4.1 Calories/g?
-
-{{SEG:m68726:problem:fs-idp47068352}}
-What is the maximum mass of carbohydrate in a 6-oz serving of diet soda that contains less than 1 Calorie per can if the average number of Calories for carbohydrates is 4.1 Calories/g?
-
-{{SEG:m68726:solution:fs-idm51374576}}
-0.24 g
-
-{{SEG:m68726:problem:fs-idm30519232}}
-A pint of premium ice cream can contain 1100 Calories. What mass of fat, in grams and pounds, must be produced in the body to store an extra 1.1 [[MATH:9]] 10^3^ Calories if the average number of Calories for fat is9.1 Calories/g?
-
-{{SEG:m68726:problem:fs-idm50956864}}
-A serving of a breakfast cereal contains 3 g of protein, 18 g of carbohydrates, and 6 g of fat. What is the Calorie content of a serving of this cereal if the average number of Calories for fat is 9.1 Calories/g, for carbohydrates is 4.1 Calories/g, and for protein is 4.1 Calories/g?
-
-{{SEG:m68726:solution:fs-idm184550912}}
-1.4 [[MATH:10]] 10^2^ Calories
-
-{{SEG:m68726:problem:fs-idp47244976}}
-Which is the least expensive source of energy in kilojoules per dollar: a box of breakfast cereal that weighs 32 ounces and costs $4.23, or a liter of isooctane (density, 0.6919 g/mL) that costs $0.45? Compare the nutritional value of the cereal with the heat produced by combustion of the isooctane under standard conditions. A 1.0-ounce serving of the cereal provides 130 Calories.
-
-{{SEG:m68726:glossary-term:fs-idm56360448-term}}
-bomb calorimeter
-
-{{SEG:m68726:glossary-def:fs-idm56360448-def}}
-device designed to measure the energy change for processes occurring under conditions of constant volume; commonly used for reactions involving solid and gaseous reactants or products
-
-{{SEG:m68726:glossary-term:fs-idm56359488-term}}
-calorimeter
-
-{{SEG:m68726:glossary-def:fs-idm56359488-def}}
-device used to measure the amount of heat absorbed or released in a chemical or physical process
-
-{{SEG:m68726:glossary-term:fs-idm56358720-term}}
-calorimetry
-
-{{SEG:m68726:glossary-def:fs-idm56358720-def}}
-process of measuring the amount of heat involved in a chemical or physical process
-
-{{SEG:m68726:glossary-term:fs-idm56357952-term}}
-nutritional calorie (Calorie)
-
-{{SEG:m68726:glossary-def:fs-idm56357952-def}}
-unit used for quantifying energy provided by digestion of foods, defined as 1000 cal or 1 kcal
-
-{{SEG:m68726:glossary-term:fs-idp41853040-term}}
-surroundings
-
-{{SEG:m68726:glossary-def:fs-idp41853040-def}}
-all matter other than the system being studied
-
-{{SEG:m68726:glossary-term:fs-idp41853808-term}}
-system
-
-{{SEG:m68726:glossary-def:fs-idp41853808-def}}
-portion of matter undergoing a chemical or physical change being studied
