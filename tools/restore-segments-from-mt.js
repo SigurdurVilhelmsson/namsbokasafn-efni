@@ -123,6 +123,69 @@ function restoreSegmentTags(content) {
 }
 
 /**
+ * Restore protected links using the links JSON file.
+ * {{LINK:N}}text{{/LINK}} → [text](url)
+ * {{XREF:N}} → [#ref-id]
+ *
+ * @param {string} content - Content with link placeholders
+ * @param {Object} links - Map of link ID to URL
+ * @returns {string} Content with restored markdown links
+ */
+function restoreLinks(content, links) {
+  if (!links || Object.keys(links).length === 0) {
+    return content;
+  }
+
+  let result = content;
+
+  // Restore full links: {{LINK:N}}text{{/LINK}} → [text](url)
+  result = result.replace(/\{\{LINK:(\d+)\}\}([^{]*)\{\{\/LINK\}\}/g, (match, id, text) => {
+    const url = links[id];
+    if (url) {
+      return `[${text}](${url})`;
+    }
+    // Fallback: return just the text if URL not found
+    return text;
+  });
+
+  // Restore cross-references: {{XREF:N}} → [#ref-id]
+  result = result.replace(/\{\{XREF:(\d+)\}\}/g, (match, id) => {
+    const ref = links[id];
+    if (ref) {
+      // ref is already in format "#ref-id"
+      return `[${ref}]`;
+    }
+    return match; // Keep placeholder if not found
+  });
+
+  return result;
+}
+
+/**
+ * Find and load the links JSON file for a segment file.
+ * @param {string} segmentFilePath - Path to segment file
+ * @returns {Object|null} Links map or null if not found
+ */
+function loadLinksFile(segmentFilePath) {
+  const dir = path.dirname(segmentFilePath);
+  const filename = path.basename(segmentFilePath);
+
+  // Convert m68724-segments.is.md or m68724-segments.en.md to m68724-segments-links.json
+  const linksFilename = filename.replace(/\.[a-z]{2}\.md$/, '-links.json');
+  const linksPath = path.join(dir, linksFilename);
+
+  if (fs.existsSync(linksPath)) {
+    try {
+      return JSON.parse(fs.readFileSync(linksPath, 'utf8'));
+    } catch (e) {
+      console.error(`Warning: Could not parse ${linksFilename}: ${e.message}`);
+    }
+  }
+
+  return null;
+}
+
+/**
  * Get the language extension (e.g., '.is.md' or '.en.md')
  */
 function getLangExtension(filename) {
@@ -237,15 +300,30 @@ function processFile(inputPath, outputDir, options) {
   // Step 2: Restore segment tags to HTML comments
   content = restoreSegmentTags(content);
 
+  // Step 3: Restore protected links
+  // Try to find links JSON file (based on EN filename pattern)
+  const links = loadLinksFile(inputPath);
+  let linksRestored = 0;
+  if (links) {
+    content = restoreLinks(content, links);
+    // Count how many links were restored
+    linksRestored = Object.keys(links).length;
+    if (verbose && linksRestored > 0) {
+      console.log(`  Links restored: ${linksRestored}`);
+    }
+  }
+
   // Count changes
   const segmentTagsRestored = (content.match(/<!-- SEG:/g) || []).length;
   const mathTagsFound = (content.match(/\[\[MATH:\d+\]\]/g) || []).length;
   const crossRefsFound = (content.match(/\[#[^\]]+\]/g) || []).length;
+  const markdownLinksFound = (content.match(/\[[^\]]+\]\([^)]+\)/g) || []).length;
 
   if (verbose) {
     console.log(`  Segment tags restored: ${segmentTagsRestored}`);
     console.log(`  Math placeholders found: ${mathTagsFound}`);
     console.log(`  Cross-references found: ${crossRefsFound}`);
+    console.log(`  Markdown links found: ${markdownLinksFound}`);
   }
 
   // Determine output path
@@ -280,6 +358,8 @@ function processFile(inputPath, outputDir, options) {
     segmentTagsRestored,
     mathTagsFound,
     crossRefsFound,
+    linksRestored,
+    markdownLinksFound,
     originalLength,
     finalLength: content.length,
   };
@@ -386,6 +466,12 @@ async function main() {
 
   const totalCrossRefs = results.reduce((sum, r) => sum + r.crossRefsFound, 0);
   console.log(`  Cross-references found: ${totalCrossRefs}`);
+
+  const totalLinksRestored = results.reduce((sum, r) => sum + r.linksRestored, 0);
+  console.log(`  Links restored: ${totalLinksRestored}`);
+
+  const totalMarkdownLinks = results.reduce((sum, r) => sum + r.markdownLinksFound, 0);
+  console.log(`  Markdown links found: ${totalMarkdownLinks}`);
 
   if (args.dryRun) {
     console.log('\n  [dry-run] No files were written');

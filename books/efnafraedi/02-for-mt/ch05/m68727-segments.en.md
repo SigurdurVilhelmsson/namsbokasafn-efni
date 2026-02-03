@@ -32,7 +32,7 @@ As a system undergoes a change, its internal energy can change, and energy can b
 The relationship between internal energy, heat, and work can be represented by the equation:
 
 {{SEG:m68727:para:fs-idp146392048}}
-as shown in [#CNX_Chem_05_03_Systemqw]. This is one version of the __first law of thermodynamics__, and it shows that the internal energy of a system changes through heat flow into or out of the system (positive *q* is heat flow in; negative *q* is heat flow out) or work done on or by the system. The work, *w*, is positive if it is done on the system and negative if it is done by the system.
+as shown in {{XREF:3}}. This is one version of the __first law of thermodynamics__, and it shows that the internal energy of a system changes through heat flow into or out of the system (positive *q* is heat flow in; negative *q* is heat flow out) or work done on or by the system. The work, *w*, is positive if it is done on the system and negative if it is done by the system.
 
 {{SEG:m68727:caption:CNX_Chem_05_03_Systemqw-caption}}
 The internal energy, *U*, of a system can be changed by heat flow and work. If heat flows into the system, *q*~in~, or work is done on the system, *w*~on~, its internal energy increases, Δ*U* > 0. If heat flows out of the system, *q*~out~, or work is done by the system, *w*~by~, its internal energy decreases, Δ*U* &lt; 0.
@@ -41,10 +41,10 @@ The internal energy, *U*, of a system can be changed by heat flow and work. If h
 A type of work called __expansion work__ (or pressure-volume work) occurs when a system pushes back the surroundings against a restraining pressure, or when the surroundings compress the system. An example of this occurs during the operation of an internal combustion engine. The reaction of gasoline and oxygen is exothermic. Some of this energy is given off as heat, and some does work pushing the piston in the cylinder. The substances involved in the reaction are the system, and the engine and the rest of the universe are the surroundings. The system loses energy by both heating and doing work on the surroundings, and its internal energy decreases. (The engine is able to keep the car moving because this process is repeated many times per second while the engine is running.) We will consider how to determine the amount of work involved in a chemical or physical change in the chapter on thermodynamics.
 
 {{SEG:m68727:para:fs-idp13166816}}
-This view of [an internal combustion engine](http://openstax.org/l/16combustion) illustrates the conversion of energy produced by the exothermic combustion reaction of a fuel such as gasoline into energy of motion.
+This view of {{LINK:1}}an internal combustion engine{{/LINK}} illustrates the conversion of energy produced by the exothermic combustion reaction of a fuel such as gasoline into energy of motion.
 
 {{SEG:m68727:para:fs-idp120420048}}
-As discussed, the relationship between internal energy, heat, and work can be represented as Δ*U* = *q* + *w*. Internal energy is an example of a __state function__ (or state variable), whereas heat and work are not state functions. The value of a state function depends only on the state that a system is in, and not on how that state is reached. If a quantity is not a state function, then its value *does* depend on how the state is reached. An example of a state function is altitude or elevation. If you stand on the summit of Mt. Kilimanjaro, you are at an altitude of 5895 m, and it does not matter whether you hiked there or parachuted there. The distance you traveled to the top of Kilimanjaro, however, is not a state function. You could climb to the summit by a direct route or by a more roundabout, circuitous path ([#CNX_Chem_05_03_Summit]). The distances traveled would differ (distance is not a state function) but the elevation reached would be the same (altitude is a state function).
+As discussed, the relationship between internal energy, heat, and work can be represented as Δ*U* = *q* + *w*. Internal energy is an example of a __state function__ (or state variable), whereas heat and work are not state functions. The value of a state function depends only on the state that a system is in, and not on how that state is reached. If a quantity is not a state function, then its value *does* depend on how the state is reached. An example of a state function is altitude or elevation. If you stand on the summit of Mt. Kilimanjaro, you are at an altitude of 5895 m, and it does not matter whether you hiked there or parachuted there. The distance you traveled to the top of Kilimanjaro, however, is not a state function. You could climb to the summit by a direct route or by a more roundabout, circuitous path ({{XREF:4}}). The distances traveled would differ (distance is not a state function) but the elevation reached would be the same (altitude is a state function).
 
 {{SEG:m68727:caption:CNX_Chem_05_03_Summit-caption}}
 Paths X and Y represent two different routes to the summit of Mt. Kilimanjaro. Both have the same change in elevation (altitude or elevation on a mountain is a state function; it does not depend on path), but they have very different distances traveled (distance walked is not a state function; it depends on the path). (credit: modification of work by Paul Shaffner)
@@ -68,7 +68,7 @@ where *qp* is the heat of reaction under conditions of constant pressure.
 And so, if a chemical or physical process is carried out at constant pressure with the only work done caused by expansion or contraction, then the heat flow (*qp*) and enthalpy change (Δ*H*) for the process are equal.
 
 {{SEG:m68727:para:fs-idm22504976}}
-The heat given off when you operate a Bunsen burner is equal to the enthalpy change of the methane combustion reaction that takes place, since it occurs at the essentially constant pressure of the atmosphere. On the other hand, the heat produced by a reaction measured in a bomb calorimeter ([#CNX_Chem_05_02_BombCalor]) is not equal to Δ*H* because the closed, constant-volume metal container prevents the pressure from remaining constant (it may increase or decrease if the reaction yields increased or decreased amounts of gaseous species). Chemists usually perform experiments under normal atmospheric conditions, at constant external pressure with *q* = Δ*H*, which makes enthalpy the most convenient choice for determining heat changes for chemical reactions.
+The heat given off when you operate a Bunsen burner is equal to the enthalpy change of the methane combustion reaction that takes place, since it occurs at the essentially constant pressure of the atmosphere. On the other hand, the heat produced by a reaction measured in a bomb calorimeter ({{XREF:5}}) is not equal to Δ*H* because the closed, constant-volume metal container prevents the pressure from remaining constant (it may increase or decrease if the reaction yields increased or decreased amounts of gaseous species). Chemists usually perform experiments under normal atmospheric conditions, at constant external pressure with *q* = Δ*H*, which makes enthalpy the most convenient choice for determining heat changes for chemical reactions.
 
 {{SEG:m68727:para:fs-idp25166224}}
 The following conventions apply when using Δ*H*:
@@ -182,7 +182,7 @@ Standard Enthalpy of Combustion
 __Standard enthalpy of combustion__ [[MATH:9]] is the enthalpy change when 1 mole of a substance burns (combines vigorously with oxygen) under standard state conditions; it is sometimes called “heat of combustion.” For example, the enthalpy of combustion of ethanol, −1366.8 kJ/mol, is the amount of heat produced when one mole of ethanol undergoes complete combustion at 25 °C and 1 atmosphere pressure, yielding products also at 25 °C and 1 atm.
 
 {{SEG:m68727:para:fs-idm75327968}}
-Enthalpies of combustion for many substances have been measured; a few of these are listed in [#fs-idp98710048]. Many readily available substances with large enthalpies of combustion are used as fuels, including hydrogen, carbon (as coal or charcoal), and __hydrocarbons__ (compounds containing only hydrogen and carbon), such as methane, propane, and the major components of gasoline.
+Enthalpies of combustion for many substances have been measured; a few of these are listed in {{XREF:6}}. Many readily available substances with large enthalpies of combustion are used as fuels, including hydrogen, carbon (as coal or charcoal), and __hydrocarbons__ (compounds containing only hydrogen and carbon), such as methane, propane, and the major components of gasoline.
 
 {{SEG:m68727:entry:auto-63}}
 Standard Molar Enthalpies of Combustion
@@ -279,3 +279,54 @@ methanol
 
 {{SEG:m68727:entry:auto-94}}
 isooctane
+
+{{SEG:m68727:entry:auto-95}}
+[[MATH:21]]
+
+{{SEG:m68727:entry:auto-96}}
+–5465.5
+
+{{SEG:m68727:example-title:fs-idp90124816-title}}
+Using Enthalpy of Combustion
+
+{{SEG:m68727:para:fs-idp186633648}}
+As {{XREF:7}} suggests, the combustion of gasoline is a highly exothermic process. Let us determine the approximate amount of heat produced by burning 1.00 L of gasoline, assuming the enthalpy of combustion of gasoline is the same as that of isooctane, a common component of gasoline. The density of isooctane is 0.692 g/mL.
+
+{{SEG:m68727:para-title:fs-idp177773984-title}}
+Solution
+
+{{SEG:m68727:para:fs-idp177773984}}
+Starting with a known amount (1.00 L of isooctane), we can perform conversions between units until we arrive at the desired amount of heat or energy. The enthalpy of combustion of isooctane provides one of the necessary conversions. {{XREF:8}} gives this value as −5460 kJ per 1 mole of isooctane (C~8~H~18~).
+
+{{SEG:m68727:para:fs-idp6149360}}
+Using these data,
+
+{{SEG:m68727:para:fs-idp145151008}}
+The combustion of 1.00 L of isooctane produces 33,100 kJ of heat. (This amount of energy is enough to melt 99.2 kg, or about 218 lbs, of ice.)
+
+{{SEG:m68727:para:fs-idp94999600}}
+Note: If you do this calculation one step at a time, you would find:
+
+{{SEG:m68727:para-title:fs-idp49733232-title}}
+Check Your Learning
+
+{{SEG:m68727:para:fs-idp49733232}}
+How much heat is produced by the combustion of 125 g of acetylene?
+
+{{SEG:m68727:para:fs-idp49734384}}
+6.25 [[MATH:22]] 10^3^ kJ
+
+{{SEG:m68727:note-title:fs-idp49733872-title}}
+Answer:
+
+{{SEG:m68727:para:fs-idp49734384}}
+6.25 [[MATH:23]] 10^3^ kJ
+
+{{SEG:m68727:caption:CNX_Chem_05_03_GasBurning-caption}}
+The combustion of gasoline is very exothermic. (credit: modification of work by “AlexEagle”/Flickr)
+
+{{SEG:m68727:note-title:fs-idp90130208-title}}
+Emerging Algae-Based Energy Technologies (Biofuels)
+
+{{SEG:m68727:para:fs-idp90130976}}
+As reserves of fossil fuels diminish and become more costly to extract, the search is ongoing for replacement fuel sources for the future. Among the most promising biofuels are those derived from algae ({{XREF:9}}). The species of algae used are nontoxic, biodegradable, and among the world’s fastest growing organisms. About 50% of algal weight is oil, which can be readily converted into fuel such as biodiesel. Algae can yield 26,000 gallons of __biofuel__ per hectare—much more energy per acre than other crops. Some strains of algae can flourish in brackish water that is not usable for growing other crops. Algae can produce biodiesel, biogasoline, ethanol, butanol, methane, and even jet fuel.

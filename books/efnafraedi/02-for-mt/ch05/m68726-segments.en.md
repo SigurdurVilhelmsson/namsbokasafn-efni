@@ -14,7 +14,7 @@ Calculate and interpret heat and related properties using typical calorimetry da
 One technique we can use to measure the amount of heat involved in a chemical or physical process is known as __calorimetry__. Calorimetry is used to measure amounts of heat transferred to or from a substance. To do so, the heat is exchanged with a calibrated object (calorimeter). The temperature change measured by the calorimeter is used to derive the amount of heat transferred by the process under study. The measurement of heat transfer using this approach requires the definition of a __system__ (the substance or substances undergoing the chemical or physical change) and its __surroundings__ (all other matter, including components of the measurement apparatus, that serve to either provide heat to the system or absorb heat from the system).
 
 {{SEG:m68726:para:fs-idm64462704}}
-A __calorimeter__ is a device used to measure the amount of heat involved in a chemical or physical process. For example, when an exothermic reaction occurs in solution in a calorimeter, the heat produced by the reaction is absorbed by the solution, which increases its temperature. When an endothermic reaction occurs, the heat required is absorbed from the thermal energy of the solution, which decreases its temperature ([#CNX_Chem_05_02_HeatMeas]). The temperature change, along with the specific heat and mass of the solution, can then be used to calculate the amount of heat involved in either case.
+A __calorimeter__ is a device used to measure the amount of heat involved in a chemical or physical process. For example, when an exothermic reaction occurs in solution in a calorimeter, the heat produced by the reaction is absorbed by the solution, which increases its temperature. When an endothermic reaction occurs, the heat required is absorbed from the thermal energy of the solution, which decreases its temperature ({{XREF:5}}). The temperature change, along with the specific heat and mass of the solution, can then be used to calculate the amount of heat involved in either case.
 
 {{SEG:m68726:caption:CNX_Chem_05_02_HeatMeas-caption}}
 In a calorimetric determination, either (a) an exothermic process occurs and heat, *q*, is negative, indicating that thermal energy is transferred from the system to its surroundings, or (b) an endothermic process occurs and heat, *q*, is positive, indicating that thermal energy is transferred from the surroundings to the system.
@@ -23,19 +23,19 @@ In a calorimetric determination, either (a) an exothermic process occurs and hea
 Calorimetry measurements are important in understanding the heat transferred in reactions involving everything from microscopic proteins to massive machines. During her time at the National Bureau of Standards, research chemist Reatha Clark King performed calorimetric experiments to understand the precise heats of various fluorine compounds. Her work was important to NASA in their quest for better rocket fuels.
 
 {{SEG:m68726:para:fs-idm75322144}}
-Scientists use well-insulated calorimeters that all but prevent the transfer of heat between the calorimeter and its environment, which effectively limits the “surroundings” to the nonsystem components within the calorimeter (and the calorimeter itself). This enables the accurate determination of the heat involved in chemical processes, the energy content of foods, and so on. General chemistry students often use simple calorimeters constructed from polystyrene cups ([#CNX_Chem_05_02_Calorim]). These easy-to-use “coffee cup” calorimeters allow more heat exchange with the outside environment, and therefore produce less accurate energy values.
+Scientists use well-insulated calorimeters that all but prevent the transfer of heat between the calorimeter and its environment, which effectively limits the “surroundings” to the nonsystem components within the calorimeter (and the calorimeter itself). This enables the accurate determination of the heat involved in chemical processes, the energy content of foods, and so on. General chemistry students often use simple calorimeters constructed from polystyrene cups ({{XREF:6}}). These easy-to-use “coffee cup” calorimeters allow more heat exchange with the outside environment, and therefore produce less accurate energy values.
 
 {{SEG:m68726:caption:CNX_Chem_05_02_Calorim-caption}}
 A simple calorimeter can be constructed from two polystyrene cups. A thermometer and stirrer extend through the cover into the reaction mixture.
 
 {{SEG:m68726:para:fs-idm10930512}}
-Commercial solution calorimeters are also available. Relatively inexpensive calorimeters often consist of two thin-walled cups that are nested in a way that minimizes thermal contact during use, along with an insulated cover, handheld stirrer, and simple thermometer. More expensive calorimeters used for industry and research typically have a well-insulated, fully enclosed reaction vessel, motorized stirring mechanism, and a more accurate temperature sensor ([#CNX_Chem_05_02_Calorim2]).
+Commercial solution calorimeters are also available. Relatively inexpensive calorimeters often consist of two thin-walled cups that are nested in a way that minimizes thermal contact during use, along with an insulated cover, handheld stirrer, and simple thermometer. More expensive calorimeters used for industry and research typically have a well-insulated, fully enclosed reaction vessel, motorized stirring mechanism, and a more accurate temperature sensor ({{XREF:7}}).
 
 {{SEG:m68726:caption:CNX_Chem_05_02_Calorim2-caption}}
 Commercial solution calorimeters range from (a) simple, inexpensive models for student use to (b) expensive, more accurate models for industry and research.
 
 {{SEG:m68726:para:fs-idm10925216}}
-Before discussing the calorimetry of chemical reactions, consider a simpler example that illustrates the core idea behind calorimetry. Suppose we initially have a high-temperature substance, such as a hot piece of metal (M), and a low-temperature substance, such as cool water (W). If we place the metal in the water, heat will flow from M to W. The temperature of M will decrease, and the temperature of W will increase, until the two substances have the same temperature—that is, when they reach thermal equilibrium ([#CNX_Chem_05_02_HeatTrans2]). If this occurs in a calorimeter, ideally all of this heat transfer occurs between the two substances, with no heat gained or lost by either its external environment. Under these ideal circumstances, the net heat change is zero:
+Before discussing the calorimetry of chemical reactions, consider a simpler example that illustrates the core idea behind calorimetry. Suppose we initially have a high-temperature substance, such as a hot piece of metal (M), and a low-temperature substance, such as cool water (W). If we place the metal in the water, heat will flow from M to W. The temperature of M will decrease, and the temperature of W will increase, until the two substances have the same temperature—that is, when they reach thermal equilibrium ({{XREF:8}}). If this occurs in a calorimeter, ideally all of this heat transfer occurs between the two substances, with no heat gained or lost by either its external environment. Under these ideal circumstances, the net heat change is zero:
 
 {{SEG:m68726:para:fs-idp41620800}}
 This relationship can be rearranged to show that the heat gained by substance M is equal to the heat lost by substance W:
@@ -50,7 +50,7 @@ In a simple calorimetry process, (a) heat, *q*, is transferred from the hot meta
 Heat Transfer between Substances at Different Temperatures
 
 {{SEG:m68726:para:fs-idm94530896}}
-A 360.0-g piece of rebar (a steel rod used for reinforcing concrete) is dropped into 425 mL of water at 24.0 °C. The final temperature of the water was measured as 42.7 °C. Calculate the initial temperature of the piece of rebar. Assume the specific heat of steel is approximately the same as that for iron ([#fs-idm68801008]), and that all heat transfer occurs between the rebar and the water (there is no heat exchange with the surroundings).
+A 360.0-g piece of rebar (a steel rod used for reinforcing concrete) is dropped into 425 mL of water at 24.0 °C. The final temperature of the water was measured as 42.7 °C. Calculate the initial temperature of the piece of rebar. Assume the specific heat of steel is approximately the same as that for iron ({{XREF:9}}), and that all heat transfer occurs between the rebar and the water (there is no heat exchange with the surroundings).
 
 {{SEG:m68726:para-title:fs-idp13157184-title}}
 Solution
@@ -125,7 +125,7 @@ Noting that since the metal was submerged in boiling water, its initial temperat
 Solving this:
 
 {{SEG:m68726:para:fs-idm61018208}}
-Comparing this with values in [#fs-idm68801008], our experimental specific heat is closest to the value for copper (0.39 J/g °C), so we identify the metal as copper.
+Comparing this with values in {{XREF:10}}, our experimental specific heat is closest to the value for copper (0.39 J/g °C), so we identify the metal as copper.
 
 {{SEG:m68726:para-title:fs-idm42342688-title}}
 Check Your Learning
@@ -206,7 +206,7 @@ Answer:
 Thermochemistry of Hand Warmers
 
 {{SEG:m68726:para:fs-idm19355440}}
-When working or playing outdoors on a cold day, you might use a hand warmer to warm your hands ([#CNX_Chem_05_02_HandWarmer]). A common reusable hand warmer contains a supersaturated solution of NaC~2~H~3~O~2~ (sodium acetate) and a metal disc. Bending the disk creates nucleation sites around which the metastable NaC~2~H~3~O~2~ quickly crystallizes (a later chapter on solutions will investigate saturation and supersaturation in more detail).
+When working or playing outdoors on a cold day, you might use a hand warmer to warm your hands ({{XREF:11}}). A common reusable hand warmer contains a supersaturated solution of NaC~2~H~3~O~2~ (sodium acetate) and a metal disc. Bending the disk creates nucleation sites around which the metastable NaC~2~H~3~O~2~ quickly crystallizes (a later chapter on solutions will investigate saturation and supersaturation in more detail).
 
 {{SEG:m68726:para:fs-idm213136}}
 The process [[MATH:4]] is exothermic, and the heat produced by this process is absorbed by your hands, thereby warming them (at least for a while). If the hand warmer is reheated, the NaC~2~H~3~O~2~ redissolves and can be reused.
@@ -218,13 +218,13 @@ Another common hand warmer produces heat when it is ripped open, exposing iron a
 Chemical hand warmers produce heat that warms your hand on a cold day. In this one, you can see the metal disc that initiates the exothermic precipitation reaction. (credit: modification of work by Science Buddies TV/YouTube)
 
 {{SEG:m68726:para:fs-idm81095744}}
-This [link](http://openstax.org/l/16Handwarmer) shows the precipitation reaction that occurs when the disk in a chemical hand warmer is flexed.
+This {{LINK:1}}link{{/LINK}} shows the precipitation reaction that occurs when the disk in a chemical hand warmer is flexed.
 
 {{SEG:m68726:example-title:fs-idp325184-title}}
 Heat Flow in an Instant Ice Pack
 
 {{SEG:m68726:para:fs-idm52519632}}
-When solid ammonium nitrate dissolves in water, the solution becomes cold. This is the basis for an “instant ice pack” ([#CNX_Chem_05_02_IcePack]). When 3.21 g of solid NH~4~NO~3~ dissolves in 50.0 g of water at 24.9 °C in a calorimeter, the temperature decreases to 20.3 °C.
+When solid ammonium nitrate dissolves in water, the solution becomes cold. This is the basis for an “instant ice pack” ({{XREF:12}}). When 3.21 g of solid NH~4~NO~3~ dissolves in 50.0 g of water at 24.9 °C in a calorimeter, the temperature decreases to 20.3 °C.
 
 {{SEG:m68726:para:fs-idp41329920}}
 Calculate the value of *q* for this reaction and explain the meaning of its arithmetic sign. State any assumptions that you made.
@@ -255,3 +255,12 @@ When a 3.00-g sample of KCl was added to 3.00 [[MATH:6]] 10^2^ g of water in a c
 
 {{SEG:m68726:note-title:fs-idm9544544-title}}
 Answer:
+
+{{SEG:m68726:para:fs-idm5945296}}
+1.33 kJ; assume that the calorimeter prevents heat transfer between the solution and its external environment (including the calorimeter itself) and that the specific heat of the solution is the same as that for water
+
+{{SEG:m68726:caption:CNX_Chem_05_02_IcePack-caption}}
+An instant cold pack consists of a bag containing solid ammonium nitrate and a second bag of water. When the bag of water is broken, the pack becomes cold because the dissolution of ammonium nitrate is an endothermic process that removes thermal energy from the water. The cold pack then removes thermal energy from your body.
+
+{{SEG:m68726:para:fs-idm33984192}}
+If the amount of heat absorbed by a calorimeter is too large to neglect or if we require more accurate results, then we must take into account the heat absorbed both by the solution and by the calorimeter.

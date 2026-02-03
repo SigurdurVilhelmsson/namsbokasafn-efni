@@ -8,11 +8,14 @@
  * Erlendur MT behavior:
  * - HTML comments (<!-- ... -->) are stripped completely
  * - Brackets in [#ref] and [[MATH:N]] are escaped with backslashes
+ * - Markdown links [text](url) get their URLs stripped
  *
  * This script:
- * 1. Converts <!-- SEG:xxx --> to [[SEG:xxx]] (survives MT as \[\[SEG:xxx\]\])
- * 2. Splits files by VISIBLE character count (excluding [[SEG:...]] and [[MATH:...]] tags)
- * 3. Outputs files ready for Erlendur with (a), (b), (c) suffixes if split
+ * 1. Converts <!-- SEG:xxx --> to {{SEG:xxx}} (survives MT with escaping)
+ * 2. Protects markdown links [text](url) → {{LINK:N}}text{{/LINK}} + stores URLs
+ * 3. Splits files by VISIBLE character count (excluding tags)
+ * 4. Outputs files ready for Erlendur with (a), (b), (c) suffixes if split
+ * 5. Writes a -links.json file with protected link URLs
  *
  * Usage:
  *   node tools/protect-segments-for-mt.js <segments-file.en.md> [options]
@@ -40,6 +43,8 @@ const INVISIBLE_PATTERNS = [
   /\{\{SEG:[^}]+\}\}/g, // Segment tags after conversion (curly brackets)
   /\[\[MATH:\d+\]\]/g, // Math placeholders
   /<!--\s*SEG:[^>]+-->/g, // Original segment tags (before conversion)
+  /\{\{LINK:\d+\}\}/g, // Link placeholders (opening)
+  /\{\{\/LINK\}\}/g, // Link placeholders (closing)
 ];
 
 function parseArgs(args) {
@@ -111,6 +116,41 @@ Examples:
  */
 function convertSegmentTags(content) {
   return content.replace(/<!--\s*SEG:([^>]+?)\s*-->/g, '{{SEG:$1}}');
+}
+
+/**
+ * Protect markdown links from being stripped by Erlendur MT.
+ * [link text](http://example.com) → {{LINK:N}}link text{{/LINK}}
+ *
+ * Returns { content, links } where links is a map of link ID to URL.
+ *
+ * Also handles:
+ * - Cross-references: [#ref-id] → {{XREF:N}}
+ * - Document links: [text](#anchor) → {{LINK:N}}text{{/LINK}}
+ */
+function protectLinks(content) {
+  const links = {};
+  let counter = 0;
+  let result = content;
+
+  // Protect full markdown links: [text](url)
+  // Match [text](url) where text can contain anything except ]
+  // and url is a full URL or relative path
+  result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+    counter++;
+    links[counter] = url;
+    return `{{LINK:${counter}}}${text}{{/LINK}}`;
+  });
+
+  // Protect self-closing cross-references: [#ref-id]
+  // These are internal references without link text
+  result = result.replace(/\[#([^\]]+)\]/g, (match, refId) => {
+    counter++;
+    links[counter] = `#${refId}`;
+    return `{{XREF:${counter}}}`;
+  });
+
+  return { content: result, links };
 }
 
 /**
@@ -215,14 +255,24 @@ function processFile(inputPath, outputDir, options) {
   }
 
   // Step 1: Convert segment tags
-  const protectedContent = convertSegmentTags(content);
+  let protectedContent = convertSegmentTags(content);
+
+  // Step 2: Protect markdown links
+  const { content: linkProtectedContent, links } = protectLinks(protectedContent);
+  protectedContent = linkProtectedContent;
+  const linkCount = Object.keys(links).length;
+
+  if (verbose && linkCount > 0) {
+    console.log(`  Links protected: ${linkCount}`);
+  }
+
   const visibleCount = getVisibleCharCount(protectedContent);
 
   if (verbose) {
     console.log(`  Visible characters: ${visibleCount}`);
   }
 
-  // Step 2: Split if needed
+  // Step 3: Split if needed
   const parts = splitByVisibleChars(protectedContent, charLimit, verbose);
 
   if (verbose) {
@@ -235,7 +285,7 @@ function processFile(inputPath, outputDir, options) {
     }
   }
 
-  // Step 3: Determine output paths
+  // Step 4: Determine output paths
   const effectiveOutputDir = outputDir || path.dirname(inputPath);
   const baseOutputPath = path.join(effectiveOutputDir, basename);
 
@@ -251,7 +301,7 @@ function processFile(inputPath, outputDir, options) {
     });
   }
 
-  // Step 4: Write files (unless dry run)
+  // Step 5: Write files (unless dry run)
   if (!dryRun) {
     if (!fs.existsSync(effectiveOutputDir)) {
       fs.mkdirSync(effectiveOutputDir, { recursive: true });
@@ -261,6 +311,16 @@ function processFile(inputPath, outputDir, options) {
       fs.writeFileSync(file.path, file.content, 'utf8');
       if (verbose) {
         console.log(`  Wrote: ${path.basename(file.path)}`);
+      }
+    }
+
+    // Write links JSON if any links were protected
+    if (linkCount > 0) {
+      const linksBasename = basename.replace(/\.en\.md$/, '-links.json');
+      const linksPath = path.join(effectiveOutputDir, linksBasename);
+      fs.writeFileSync(linksPath, JSON.stringify(links, null, 2), 'utf8');
+      if (verbose) {
+        console.log(`  Wrote: ${linksBasename}`);
       }
     }
   } else {
@@ -274,6 +334,7 @@ function processFile(inputPath, outputDir, options) {
     input: inputPath,
     outputs: outputFiles,
     segmentTagsConverted: (content.match(/<!--\s*SEG:/g) || []).length,
+    linksProtected: linkCount,
   };
 }
 
@@ -342,6 +403,9 @@ async function main() {
 
   const totalSegmentTags = results.reduce((sum, r) => sum + r.segmentTagsConverted, 0);
   console.log(`  Segment tags converted: ${totalSegmentTags}`);
+
+  const totalLinksProtected = results.reduce((sum, r) => sum + r.linksProtected, 0);
+  console.log(`  Links protected: ${totalLinksProtected}`);
 
   if (args.dryRun) {
     console.log('\n  [dry-run] No files were written');

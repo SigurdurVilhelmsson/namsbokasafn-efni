@@ -48,17 +48,18 @@ import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 /**
  * Map note class names to display labels.
  * These appear as headers above the note content.
+ * Icelandic translations for use in translated content.
  */
 const NOTE_TYPE_LABELS = {
-  'chemistry everyday-life': 'Chemistry in Everyday Life',
-  'everyday-life': 'Chemistry in Everyday Life',
-  'link-to-learning': 'Link to Learning',
-  'sciences-interconnect': 'How Sciences Interconnect',
-  'chemist-portrait': 'Portrait of a Chemist',
-  'chem-connections': 'Chemistry Connections',
-  'green-chemistry': 'Green Chemistry',
-  'safety-hazard': 'Safety Hazard',
-  'lab-equipment': 'Laboratory Equipment',
+  'chemistry everyday-life': 'Efnafræði í daglegu lífi',
+  'everyday-life': 'Efnafræði í daglegu lífi',
+  'link-to-learning': 'Tengill til náms',
+  'sciences-interconnect': 'Hvernig vísindagreinar tengjast',
+  'chemist-portrait': 'Efnafræðingur í brennidepli',
+  'chem-connections': 'Tengsl við efnafræði',
+  'green-chemistry': 'Græn efnafræði',
+  'safety-hazard': 'Öryggisviðvörun',
+  'lab-equipment': 'Tilraunabúnaður',
   default: null, // No type label for default notes
 };
 
@@ -783,7 +784,7 @@ function renderFigure(figure, context) {
     const figNum = id && context.figureNumbers ? context.figureNumbers.get(id) : null;
     if (figNum) {
       lines.push(
-        `  <figcaption><span class="figure-label">Figure ${figNum}</span> ${captionContent}</figcaption>`
+        `  <figcaption><span class="figure-label">Mynd ${figNum}</span> ${captionContent}</figcaption>`
       );
     } else {
       lines.push(`  <figcaption>${captionContent}</figcaption>`);
@@ -897,7 +898,7 @@ function renderExample(example, context) {
   }
 
   // Example header with number and title
-  lines.push(`  <p class="example-label">Example ${exampleNumber}</p>`);
+  lines.push(`  <p class="example-label">Dæmi ${exampleNumber}</p>`);
   if (exampleTitle) {
     lines.push(`  <h4>${processInlineContent(exampleTitle, context)}</h4>`);
   }
