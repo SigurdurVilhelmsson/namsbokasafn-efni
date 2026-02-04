@@ -29,7 +29,9 @@
     {
       "type": "list",
       "id": "fs-idp28280144",
-      "listType": "bulleted",
+      "listType": "enumerated",
+      "numberStyle": "arabic",
+      "bulletStyle": null,
       "items": [
         {
           "id": null,
@@ -63,7 +65,8 @@
       "media": {
         "id": "fs-idm67856816",
         "alt": "The left image shows a photograph of a stack of pennies. The right image calls out an area of one of the pennies, which is made up of many sphere-shaped copper atoms. The atoms are densely organized.",
-        "src": "../../media/CNX_Chem_02_01_Dalton1.jpg"
+        "src": "../../media/CNX_Chem_02_01_Dalton1.jpg",
+        "mimeType": "image/jpeg"
       }
     },
     {
@@ -76,7 +79,8 @@
       "media": {
         "id": "fs-idp25149184",
         "alt": "The left image shows a container with a black, powdery compound. The right image calls out the molecular structure of the powder which contains copper atoms that are clustered together with an equal number of oxygen atoms.",
-        "src": "../../media/CNX_Chem_02_01_Dalton2.jpg"
+        "src": "../../media/CNX_Chem_02_01_Dalton2.jpg",
+        "mimeType": "image/jpeg"
       }
     },
     {
@@ -89,7 +93,8 @@
       "media": {
         "id": "fs-idm75378992",
         "alt": "The left stoppered bottle contains copper and oxygen. There is a callout which shows that copper is made up of many sphere-shaped atoms. The atoms are densely organized. The open space of the bottle contains oxygen gas, which is made up of bonded pairs of oxygen atoms that are evenly spaced. The right stoppered bottle shows the compound copper two oxide, which is a black, powdery substance. A callout from the powder shows a molecule of copper two oxide, which contains copper atoms that are clustered together with an equal number of oxygen atoms.",
-        "src": "../../media/CNX_Chem_02_01_Dalton3.jpg"
+        "src": "../../media/CNX_Chem_02_01_Dalton3.jpg",
+        "mimeType": "image/jpeg"
       }
     },
     {
@@ -322,7 +327,8 @@
       "media": {
         "id": "fs-idp111881472",
         "alt": "Figure A shows a pile of green powder. A callout shows that the green powder is made up of a lattice of copper atoms interspersed with chlorine atoms. The atoms are color coded brown for copper and green for chlorine. The number of copper atoms is equal to the number of chlorine atoms in the molecule. Figure B shows a pile of brown powder. A callout shows that the brown powder is also made up of copper and chlorine atoms similar to the molecule shown in figure A. However there appears to be two chlorine atoms for every copper atom in this molecule. The copper atoms in figure B bond with both the chlorine atoms and the other copper atoms. The copper atoms in figure A only bond with the chlorine atoms.",
-        "src": "../../media/CNX_Chem_02_01_MultProp.jpg"
+        "src": "../../media/CNX_Chem_02_01_MultProp.jpg",
+        "mimeType": "image/jpeg"
       }
     },
     {

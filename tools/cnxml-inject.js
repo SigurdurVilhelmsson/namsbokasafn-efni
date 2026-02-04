@@ -847,8 +847,10 @@ function buildList(element, getSeg) {
   const lines = [];
   const idAttr = element.id ? ` id="${element.id}"` : '';
   const listType = element.listType || 'bulleted';
+  const numberStyleAttr = element.numberStyle ? ` number-style="${element.numberStyle}"` : '';
+  const bulletStyleAttr = element.bulletStyle ? ` bullet-style="${element.bulletStyle}"` : '';
 
-  lines.push(`<list${idAttr} list-type="${listType}">`);
+  lines.push(`<list${idAttr} list-type="${listType}"${numberStyleAttr}${bulletStyleAttr}>`);
 
   for (const item of element.items || []) {
     const itemText = getSeg(item.segmentId);

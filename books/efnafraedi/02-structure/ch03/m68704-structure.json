@@ -60,7 +60,8 @@
           "media": {
             "id": "fs-idm21370256",
             "alt": "The sides of two cylindrical containers are shown. Each container’s label is partially visible. The left container’s label reads “Bleach.” The right label contains more information about the product including the phrase, “Contains: Sodium hypochlorite 7.4 %.”",
-            "src": "../../media/CNX_Chem_03_05_bleach.jpg"
+            "src": "../../media/CNX_Chem_03_05_bleach.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -300,7 +301,8 @@
           "media": {
             "id": "fs-idp12420736",
             "alt": "Two pictures are shown labeled a and b. Picture a depicts a clear, colorless solution in a plastic bag being held in a person’s hand. Picture b shows a person’s hand holding a detection meter with a digital readout screen while another hand holds someone’s finger up to the end of the meter. The meter is pressed to the drop of blood that is at the end of the person’s finger.",
-            "src": "../../media/CNX_Chem_03_05_saline.jpg"
+            "src": "../../media/CNX_Chem_03_05_saline.jpg",
+            "mimeType": "image/jpeg"
           }
         }
       ]
@@ -343,7 +345,8 @@
           "media": {
             "id": "fs-idm10006048",
             "alt": "Two pictures are shown labeled a and b. Picture a is a close-up shot of water coming out of a faucet. Picture b shows a machine with the words, “Filtered Water Dispenser.” This machine appears to be inside a refrigerator.",
-            "src": "../../media/CNX_Chem_03_05_faucet.jpg"
+            "src": "../../media/CNX_Chem_03_05_faucet.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {

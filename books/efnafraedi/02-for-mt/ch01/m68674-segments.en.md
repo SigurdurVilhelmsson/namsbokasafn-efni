@@ -299,13 +299,13 @@ Derived SI Units
 Volume
 
 <!-- SEG:m68674:para:fs-idm77137776 -->
-__Volume__ is the measure of the amount of space occupied by an object. The standard SI unit of volume is defined by the base unit of length ([#CNX_Chem_01_04_Volume]). The standard volume is a __cubic meter (m3)__, a cube with an edge length of exactly one meter. To dispense a cubic meter of water, we could build a cubic box with edge lengths of exactly one meter. This box would hold a cubic meter of water or any other substance.
+__Volume__ is the measure of the amount of space occupied by an object. The standard SI unit of volume is defined by the base unit of length ([#CNX_Chem_01_04_Volume]). The standard volume is a __cubic meter (m^3^)__, a cube with an edge length of exactly one meter. To dispense a cubic meter of water, we could build a cubic box with edge lengths of exactly one meter. This box would hold a cubic meter of water or any other substance.
 
 <!-- SEG:m68674:para:fs-idm81813264 -->
-A more commonly used unit of volume is derived from the decimeter (0.1 m, or 10 cm). A cube with edge lengths of exactly one decimeter contains a volume of one cubic decimeter (dm^3^). A __liter (L) __ is the more common name for the cubic decimeter. One liter is about 1.06 quarts.
+A more commonly used unit of volume is derived from the decimeter (0.1 m, or 10 cm). A cube with edge lengths of exactly one decimeter contains a volume of one cubic decimeter (dm^3^). A __liter (L)__ is the more common name for the cubic decimeter. One liter is about 1.06 quarts.
 
 <!-- SEG:m68674:para:fs-idm163691744 -->
-A __cubic centimeter (cm3)__ is the volume of a cube with an edge length of exactly one centimeter. The abbreviation **cc** (for **c**ubic **c**entimeter) is often used by health professionals. A cubic centimeter is equivalent to a __milliliter (mL)__ and is 1/1000 of a liter.
+A __cubic centimeter (cm^3^)__ is the volume of a cube with an edge length of exactly one centimeter. The abbreviation **cc** (for **c**ubic **c**entimeter) is often used by health professionals. A cubic centimeter is equivalent to a __milliliter (mL)__ and is 1/1000 of a liter.
 
 <!-- SEG:m68674:caption:CNX_Chem_01_04_Volume-caption -->
 (a) The relative volumes are shown for cubes of 1 m^3^, 1 dm^3^ (1 L), and 1 cm^3^ (1 mL) (not to scale). (b) The diameter of a dime is compared relative to the edge length of a 1-cm^3^ (1-mL) cube.

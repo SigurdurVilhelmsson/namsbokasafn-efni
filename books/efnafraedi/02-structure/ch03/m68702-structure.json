@@ -334,7 +334,8 @@
               "media": {
                 "id": "fs-idm183208576",
                 "alt": "A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.",
-                "src": "../../media/CNX_Chem_03_03_BrewTank.jpg"
+                "src": "../../media/CNX_Chem_03_03_BrewTank.jpg",
+                "mimeType": "image/jpeg"
               }
             }
           ]
@@ -392,7 +393,9 @@
         {
           "type": "list",
           "id": "fs-idm105983184",
-          "listType": "bulleted",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
           "items": [
             {
               "id": null,
@@ -422,7 +425,8 @@
           "media": {
             "id": "fs-idm114759824",
             "alt": "A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, “Mass of A atoms” and “Moles of A atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass,” written below it. The second two bottom boxes have the phrases, “Mass of X atoms” and “Moles of X atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass” written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase “Divide by lowest number of moles” written below it. The last two boxes have the phrases, “A to X mole ratio” and “Empirical formula” respectively, while the arrow that connects them has the phrase, “Convert ratio to lowest whole numbers” written below it.",
-            "src": "../../media/CNX_Chem_03_03_empform.jpg"
+            "src": "../../media/CNX_Chem_03_03_empform.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -515,7 +519,8 @@
           "media": {
             "id": "fs-idm156718064",
             "alt": "Two rounded, smooth black stones are shown.",
-            "src": "../../media/CNX_Chem_03_03_hematite.jpg"
+            "src": "../../media/CNX_Chem_03_03_hematite.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {

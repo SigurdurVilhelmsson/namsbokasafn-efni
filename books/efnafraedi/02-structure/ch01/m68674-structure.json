@@ -641,7 +641,8 @@
               "media": {
                 "id": "fs-idm2958720",
                 "alt": "One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.",
-                "src": "../../media/CNX_Chem_01_04_MYdCmIn.jpg"
+                "src": "../../media/CNX_Chem_01_04_MYdCmIn.jpg",
+                "mimeType": "image/jpeg"
               }
             }
           ]
@@ -670,7 +671,8 @@
               "media": {
                 "id": "fs-idm80189648",
                 "alt": "The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.",
-                "src": "../../media/CNX_Chem_01_04_Kilogram.jpg"
+                "src": "../../media/CNX_Chem_01_04_Kilogram.jpg",
+                "mimeType": "image/jpeg"
               }
             }
           ]
@@ -757,7 +759,8 @@
               "media": {
                 "id": "fs-idm75233216",
                 "alt": "Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.",
-                "src": "../../media/CNX_Chem_01_04_Volume.jpg"
+                "src": "../../media/CNX_Chem_01_04_Volume.jpg",
+                "mimeType": "image/jpeg"
               }
             }
           ]

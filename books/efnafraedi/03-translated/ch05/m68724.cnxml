@@ -68,7 +68,7 @@ vinna að hvers kyns vísindum.</para>
 <section id="fs-idp13589600">
 <title>Orka</title>
 <para id="fs-idp38067952"><emphasis effect="bold">Orku</emphasis> má skilgreina sem getuna til
-að veita varma eða vinna vinnu. Ein tegund <term>vinnu (<emphasis effect="italics">w</emphasis>)</term> er ferlið við
+að veita varma eða vinna vinnu. Ein tegund *<emphasis effect="italics">vinnu (</emphasis>w<emphasis effect="italics">)</emphasis>* er ferlið við
 að láta efni hreyfast gegn andstæðum krafti. Til dæmis vinnum við vinnu
 þegar við pumpum í reiðhjóladekk – við hreyfum efni (loftið í pumpunni)
 gegn andstæðum krafti loftsins sem þegar er í dekkinu.</para>
@@ -163,7 +163,7 @@ sér. Báðar gerðir hitamæla hafa kvarðaðan skala sem sýnir hitastigið.
 <link url="http://openstax.org/l/16Bimetallic">sýnikennsla</link> gerir manni kleift að sjá áhrif þess að
 hita og kæla uppvafða tvímálmsræmu.</para>
 </note>
-<para id="fs-idp26888640"><term>Varmi (<emphasis effect="italics">q</emphasis>)</term> er flutningur
+<para id="fs-idp26888640">*<emphasis effect="italics">Varmi (</emphasis>q<emphasis effect="italics">)</emphasis>* er flutningur
 varmaorku milli tveggja hluta með mismunandi hitastig. Varmaflæði
 (óþarft orðalag, en algengt) eykur varmaorku eins hlutar og minnkar
 varmaorku hins. Gerum ráð fyrir að við höfum í upphafi efni (H) með hátt
@@ -227,8 +227,9 @@ heiðurs enska eðlisfræðingnum James Prescott Joule. Eitt júl jafngildir
 1000 júl. Til að staðla skilgreininguna hefur 1 kaloría verið ákveðin
 sem 4,184 júl.</para>
 <para id="fs-idp36291104">Nú kynnum við tvö hugtök sem eru
-gagnleg til að lýsa varmaflæði og hitastigsbreytingum. <term>Varmarýmd (<emphasis effect="italics">C</emphasis>)</term> efnis er það magn varma (<emphasis effect="italics">q</emphasis>) sem það gleypir eða losar þegar
-það verður fyrir hitastigsbreytingu (Δ<emphasis effect="italics">T</emphasis>) um 1 gráðu á Celsíus (eða
+gagnleg til að lýsa varmaflæði og hitastigsbreytingum. *<emphasis effect="italics">Varmarýmd
+(</emphasis>C<emphasis effect="italics">)</emphasis><emphasis effect="italics"> efnis er það magn varma (</emphasis>q<emphasis effect="italics">) sem það gleypir eða losar þegar
+það verður fyrir hitastigsbreytingu (Δ</emphasis>T*) um 1 gráðu á Celsíus (eða
 samsvarandi, 1 kelvin):</para>
 <equation id="fs-idp12406672" class="unnumbered"><m:math><m:mrow><m:mi>C</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>q</m:mi><m:mrow><m:mtext>Δ</m:mtext><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idp13796736">Varmarýmd ræðst bæði af gerð og magni
@@ -249,7 +250,7 @@ pönnunnar um 50,0 °C:</para>
 stærra magn efnis krefst (hlutfallslega) meiri orku til að ná sömu
 hitastigsbreytingu:</para>
 <equation id="fs-idp13532880" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>C</m:mi><m:mrow><m:mtext>large pan</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>90,700 J</m:mtext></m:mrow><m:mrow><m:mn>50.0</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1814</m:mn><m:mspace width="0.2em"/><m:mtext>J/°C</m:mtext></m:mrow></m:math></equation>
-<para id="fs-idp11756944"><term>Eðlisvarmi (<emphasis effect="italics">c</emphasis>)</term> efnis er það
+<para id="fs-idp11756944">*<emphasis effect="italics">Eðlisvarmi (</emphasis>c<emphasis effect="italics">)</emphasis>* efnis er það
 magn varma sem þarf til að hækka hitastig 1 gramms af efni um 1 gráðu á
 Celsíus (eða 1 kelvin):</para>
 <equation id="fs-idm28369232" class="unnumbered"><m:math><m:mrow><m:mi>c</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>q</m:mi><m:mrow><m:mstyle mathvariant="italic"><m:mtext>m</m:mtext></m:mstyle><m:mtext>Δ</m:mtext><m:mstyle mathvariant="italic"><m:mtext>T</m:mtext></m:mstyle></m:mrow></m:mfrac></m:mrow></m:math></equation>

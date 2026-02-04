@@ -17,11 +17,11 @@
   },
   "math-5": {
     "mathml": "<m:math><m:mrow><m:mtext>4.00</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 L</m:mtext></m:mrow><m:mrow><m:mtext>1.0567</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>3.78 L</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{4.00}\\, \\cancel{{\\text{qt}}}\\, \\times \\, \\frac{{\\text{1 L}}}{{\\text{1.0567}\\, \\cancel{{\\text{qt}}}}}\\, =\\text{3.78 L}}"
+    "latex": "{\\text{4.00}\\, \\sout{{\\text{qt}}}\\, \\times \\, \\frac{{\\text{1 L}}}{{\\text{1.0567}\\, \\sout{{\\text{qt}}}}}\\, =\\text{3.78 L}}"
   },
   "math-6": {
     "mathml": "<m:math><m:mrow><m:mtext>3.78</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1000 mL</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>3.78</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mL</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{3.78}\\, \\cancel{\\text{L}}\\, \\times \\, \\frac{{\\text{1000 mL}}}{{1\\, \\cancel{\\text{L}}}}\\, =3.78\\, \\times \\, {{10}}^{3}\\, \\text{mL}}"
+    "latex": "{\\text{3.78}\\, \\sout{\\text{L}}\\, \\times \\, \\frac{{\\text{1000 mL}}}{{1\\, \\sout{\\text{L}}}}\\, =3.78\\, \\times \\, {{10}}^{3}\\, \\text{mL}}"
   },
   "math-7": {
     "mathml": "<m:math><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mfrac><m:mtext>K</m:mtext><m:mrow><m:mtext>°C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
@@ -194,7 +194,7 @@
   },
   "fs-idm153590912": {
     "mathml": "<m:math><m:mrow><m:mn>34</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>in.</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>2.54 cm</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>in.</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>86 cm</m:mtext></m:mrow></m:math>",
-    "latex": "{34\\, \\cancel{{\\text{in.}}}\\, \\times \\, \\frac{{\\text{2.54 cm}}}{{1\\, \\cancel{{\\text{in.}}}}}\\, =\\text{86 cm}}",
+    "latex": "{34\\, \\sout{{\\text{in.}}}\\, \\times \\, \\frac{{\\text{2.54 cm}}}{{1\\, \\sout{{\\text{in.}}}}}\\, =\\text{86 cm}}",
     "isBlock": true
   },
   "fs-idm138056288": {
@@ -209,22 +209,22 @@
   },
   "fs-idm222314304": {
     "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"left\"><m:mrow><m:mi>x</m:mi><m:mspace width=\"0.2em\"/><m:mtext>oz</m:mtext></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mn>125</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>g</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 oz</m:mtext></m:mrow><m:mrow><m:mtext>28.349</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>g</m:mtext></m:menclose></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"left\"/><m:mtd columnalign=\"left\"><m:mrow><m:mo>=</m:mo></m:mrow></m:mtd><m:mtd columnalign=\"left\"><m:mo>(</m:mo><m:mfrac><m:mrow><m:mn>125</m:mn></m:mrow><m:mrow><m:mtext>28.349</m:mtext></m:mrow></m:mfrac><m:mo>)</m:mo><m:mspace width=\"0.2em\"/><m:mtext>oz</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"left\"/><m:mtd columnalign=\"left\"><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mtext>4.41 oz (three significant figures)</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} {x\\, \\text{oz}} & = & 125\\, \\cancel{\\text{g}}\\, \\times \\, \\frac{{\\text{1 oz}}}{{\\text{28.349}\\, \\cancel{\\text{g}}}} \\\\ {=} & (\\frac{{125}}{{\\text{28.349}}})\\, \\text{oz} \\\\ = & \\text{4.41 oz (three significant figures)} \\end{aligned}",
+    "latex": "\\begin{aligned} {x\\, \\text{oz}} & = & 125\\, \\sout{\\text{g}}\\, \\times \\, \\frac{{\\text{1 oz}}}{{\\text{28.349}\\, \\sout{\\text{g}}}} \\\\ {=} & (\\frac{{125}}{{\\text{28.349}}})\\, \\text{oz} \\\\ = & \\text{4.41 oz (three significant figures)} \\end{aligned}",
     "isBlock": true
   },
   "fs-idm336821696": {
     "mathml": "<m:math><m:mrow><m:mtext>9.26</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>lb</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>453.59 g</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>lb</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>4.20</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:math>",
-    "latex": "{\\text{9.26}\\, \\cancel{{\\text{lb}}}\\, \\times \\, \\frac{{\\text{453.59 g}}}{{1\\, \\cancel{{\\text{lb}}}}}\\, =4.20\\, \\times \\, {{10}}^{3}}\\, \\text{g}",
+    "latex": "{\\text{9.26}\\, \\sout{{\\text{lb}}}\\, \\times \\, \\frac{{\\text{453.59 g}}}{{1\\, \\sout{{\\text{lb}}}}}\\, =4.20\\, \\times \\, {{10}}^{3}}\\, \\text{g}",
     "isBlock": true
   },
   "fs-idm279137456": {
     "mathml": "<m:math><m:mrow><m:mtext>4.00</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 L</m:mtext></m:mrow><m:mrow><m:mtext>1.0567</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>3.78 L</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{4.00}\\, \\cancel{{\\text{qt}}}\\, \\times \\, \\frac{{\\text{1 L}}}{{\\text{1.0567}\\, \\cancel{{\\text{qt}}}}}\\, =\\text{3.78 L}}",
+    "latex": "{\\text{4.00}\\, \\sout{{\\text{qt}}}\\, \\times \\, \\frac{{\\text{1 L}}}{{\\text{1.0567}\\, \\sout{{\\text{qt}}}}}\\, =\\text{3.78 L}}",
     "isBlock": true
   },
   "fs-idm289883088": {
     "mathml": "<m:math><m:mrow><m:mtext>3.78</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1000 mL</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>3.78</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>mL</m:mtext></m:mrow></m:math>",
-    "latex": "{\\text{3.78}\\, \\cancel{\\text{L}}\\, \\times \\, \\frac{{\\text{1000 mL}}}{{1\\, \\cancel{\\text{L}}}}\\, =3.78\\, \\times \\, {{10}}^{3}\\, \\text{mL}}",
+    "latex": "{\\text{3.78}\\, \\sout{\\text{L}}\\, \\times \\, \\frac{{\\text{1000 mL}}}{{1\\, \\sout{\\text{L}}}}\\, =3.78\\, \\times \\, {{10}}^{3}\\, \\text{mL}}",
     "isBlock": true
   },
   "fs-idm144640128": {
@@ -234,17 +234,17 @@
   },
   "fs-idm9873904": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>9.26</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>lb</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mtext>4.00</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>453.59 g</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>lb</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1.0567</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose></m:mrow><m:mrow><m:mtext>1000 mL</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>1.11 g/mL</m:mtext></m:mrow></m:math>",
-    "latex": "{\\frac{{\\text{9.26}\\, \\cancel{{\\text{lb}}}}}{{\\text{4.00}\\, \\cancel{{\\text{qt}}}}}\\, \\times \\, \\frac{{\\text{453.59 g}}}{{1\\, \\cancel{{\\text{lb}}}}}\\, \\times \\, \\frac{{\\text{1.0567}\\, \\cancel{{\\text{qt}}}}}{{1\\, \\cancel{\\text{L}}}}\\, \\times \\, \\frac{{1\\, \\cancel{\\text{L}}}}{{\\text{1000 mL}}}\\, =\\text{1.11 g/mL}}",
+    "latex": "{\\frac{{\\text{9.26}\\, \\sout{{\\text{lb}}}}}{{\\text{4.00}\\, \\sout{{\\text{qt}}}}}\\, \\times \\, \\frac{{\\text{453.59 g}}}{{1\\, \\sout{{\\text{lb}}}}}\\, \\times \\, \\frac{{\\text{1.0567}\\, \\sout{{\\text{qt}}}}}{{1\\, \\sout{\\text{L}}}}\\, \\times \\, \\frac{{1\\, \\sout{\\text{L}}}}{{\\text{1000 mL}}}\\, =\\text{1.11 g/mL}}",
     "isBlock": true
   },
   "fs-idm60362224": {
     "mathml": "<m:math><m:mrow><m:mn>1250</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>km</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>0.62137 mi</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>km</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>777 mi</m:mtext></m:mrow></m:math>",
-    "latex": "{1250\\, \\cancel{\\text{km}}\\, \\times \\, \\frac{{\\text{0.62137 mi}}}{{1\\, \\cancel{\\text{km}}}}\\, =\\text{777 mi}}",
+    "latex": "{1250\\, \\sout{\\text{km}}\\, \\times \\, \\frac{{\\text{0.62137 mi}}}{{1\\, \\sout{\\text{km}}}}\\, =\\text{777 mi}}",
     "isBlock": true
   },
   "fs-idm214696672": {
     "mathml": "<m:math><m:mrow><m:mn>213</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1.0567</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 gal</m:mtext></m:mrow><m:mrow><m:mn>4</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>56.3 gal</m:mtext></m:mrow></m:math>",
-    "latex": "{213\\, \\cancel{\\text{L}}\\, \\times \\, \\frac{{\\text{1.0567}\\, \\cancel{{\\text{qt}}}}}{{1\\, \\cancel{\\text{L}}}}\\, \\times \\, \\frac{{\\text{1 gal}}}{{4\\, \\cancel{{\\text{qt}}}}}\\, =\\text{56.3 gal}}",
+    "latex": "{213\\, \\sout{\\text{L}}\\, \\times \\, \\frac{{\\text{1.0567}\\, \\sout{{\\text{qt}}}}}{{1\\, \\sout{\\text{L}}}}\\, \\times \\, \\frac{{\\text{1 gal}}}{{4\\, \\sout{{\\text{qt}}}}}\\, =\\text{56.3 gal}}",
     "isBlock": true
   },
   "fs-idm114266320": {
@@ -254,12 +254,12 @@
   },
   "fs-idm171836160": {
     "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mn>1250</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>km</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>213</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>0.62137 mi</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>km</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>L</m:mtext></m:menclose></m:mrow><m:mrow><m:mtext>1.0567</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>4</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>qt</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mtext>1 gal</m:mtext></m:mrow></m:mfrac><m:mo>=</m:mo><m:mtext>13.8 mpg</m:mtext></m:mrow></m:math>",
-    "latex": "{\\frac{{1250\\, \\cancel{{\\text{km}}}}}{{213\\, \\cancel{\\text{L}}}}\\, \\times \\, \\frac{{\\text{0.62137 mi}}}{{1\\, \\cancel{{\\text{km}}}}}\\, \\times \\, \\frac{{1\\, \\cancel{\\text{L}}}}{{\\text{1.0567}\\, \\cancel{{\\text{qt}}}}}\\, \\times \\, \\frac{{4\\, \\cancel{{\\text{qt}}}}}{{\\text{1 gal}}}=\\text{13.8 mpg}}",
+    "latex": "{\\frac{{1250\\, \\sout{{\\text{km}}}}}{{213\\, \\sout{\\text{L}}}}\\, \\times \\, \\frac{{\\text{0.62137 mi}}}{{1\\, \\sout{{\\text{km}}}}}\\, \\times \\, \\frac{{1\\, \\sout{\\text{L}}}}{{\\text{1.0567}\\, \\sout{{\\text{qt}}}}}\\, \\times \\, \\frac{{4\\, \\sout{{\\text{qt}}}}}{{\\text{1 gal}}}=\\text{13.8 mpg}}",
     "isBlock": true
   },
   "fs-idm328491840": {
     "mathml": "<m:math><m:mrow><m:mn>56.3</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>gal</m:mtext></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>$3.80</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>gal</m:mtext></m:menclose></m:mrow></m:mfrac><m:mo>=</m:mo><m:mtext>$214</m:mtext></m:mrow></m:math>",
-    "latex": "{56.3\\, \\cancel{\\text{gal}}\\, \\times \\, \\frac{{\\text{$3.80}}}{{1\\, \\cancel{\\text{gal}}}}=\\text{$214}}",
+    "latex": "{56.3\\, \\sout{\\text{gal}}\\, \\times \\, \\frac{{\\text{$3.80}}}{{1\\, \\sout{\\text{gal}}}}=\\text{$214}}",
     "isBlock": true
   },
   "fs-idm6121760": {

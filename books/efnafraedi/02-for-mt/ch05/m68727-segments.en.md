@@ -62,10 +62,10 @@ The mathematical product *P*Δ*V* represents work (*w*), namely, expansion or pr
 Substituting this equation and the definition of internal energy into the enthalpy-change equation yields:
 
 <!-- SEG:m68727:para:fs-idp58958304 -->
-where *qp* is the heat of reaction under conditions of constant pressure.
+where *q~p~* is the heat of reaction under conditions of constant pressure.
 
 <!-- SEG:m68727:para:fs-idm50104768 -->
-And so, if a chemical or physical process is carried out at constant pressure with the only work done caused by expansion or contraction, then the heat flow (*qp*) and enthalpy change (Δ*H*) for the process are equal.
+And so, if a chemical or physical process is carried out at constant pressure with the only work done caused by expansion or contraction, then the heat flow (*q~p~*) and enthalpy change (Δ*H*) for the process are equal.
 
 <!-- SEG:m68727:para:fs-idm22504976 -->
 The heat given off when you operate a Bunsen burner is equal to the enthalpy change of the methane combustion reaction that takes place, since it occurs at the essentially constant pressure of the atmosphere. On the other hand, the heat produced by a reaction measured in a bomb calorimeter ([#CNX_Chem_05_02_BombCalor]) is not equal to Δ*H* because the closed, constant-volume metal container prevents the pressure from remaining constant (it may increase or decrease if the reaction yields increased or decreased amounts of gaseous species). Chemists usually perform experiments under normal atmospheric conditions, at constant external pressure with *q* = Δ*H*, which makes enthalpy the most convenient choice for determining heat changes for chemical reactions.

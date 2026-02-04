@@ -1045,7 +1045,8 @@
           "media": {
             "id": "fs-idp282351072",
             "alt": "Figure A shows a photo of Erin Brockovich. Figure B shows a 3-D ball-and-stick model of chromate. Chromate has a chromium atom at its center that forms bonds with four oxygen atoms each. Two of the oxygen atoms form single bonds with the chromium atom while the other two form double bonds each. The structure of dichromate consists of two chromate ions that are bonded and share one of their oxygen atoms to which each chromate atom has a single bond.",
-            "src": "../../media/CNX_Chem_02_07_ErinBrocko.jpg"
+            "src": "../../media/CNX_Chem_02_07_ErinBrocko.jpg",
+            "mimeType": "image/jpeg"
           }
         }
       ]
@@ -1423,7 +1424,9 @@
         {
           "type": "list",
           "id": "fs-idp282239904",
-          "listType": "bulleted",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
           "items": [
             {
               "id": null,
@@ -1579,7 +1582,9 @@
         {
           "type": "list",
           "id": "fs-idp279164064",
-          "listType": "bulleted",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
           "items": [
             {
               "id": null,

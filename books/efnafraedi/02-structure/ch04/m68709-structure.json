@@ -30,7 +30,8 @@
       "media": {
         "id": "fs-idp26251152",
         "alt": "This figure shows a balanced chemical equation followed below by a representation of the equation using space-filling models. The equation reads C H subscript 4 plus 2 O subscript 2 arrow C O subscript 2 plus 2 H subscript 2 O. Under the C H subscript 4, the molecule is shown with a central black sphere, representing a C atom, to which 4 smaller white spheres, representing H atoms, are distributed evenly around. All four H atoms are bonded to the central black C atom. This is followed by a plus sign. Under the 2 O subscript 2, two molecules are shown. The molecules are each composed of two red spheres bonded together. The red spheres represent O atoms. To the right of an arrow and under the C O subscript 2, appears a single molecule with a black central sphere with two red spheres bonded to the left and right. Following a plus sign and under the 2 H subscript 2 O, are two molecules, each with a central red sphere and two smaller white spheres attached to the lower right and lower left sides of the central red sphere. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms.",
-        "src": "../../media/CNX_Chem_04_01_rxn2.jpg"
+        "src": "../../media/CNX_Chem_04_01_rxn2.jpg",
+        "mimeType": "image/jpeg"
       }
     },
     {
@@ -41,7 +42,9 @@
     {
       "type": "list",
       "id": "fs-idm9329568",
-      "listType": "bulleted",
+      "listType": "enumerated",
+      "numberStyle": "arabic",
+      "bulletStyle": null,
       "items": [
         {
           "id": null,
@@ -75,13 +78,16 @@
       "media": {
         "id": "fs-idp178489152",
         "alt": "This image has a left side, labeled, “Mixture before reaction” separated by a vertical dashed line from right side labeled, “Mixture after reaction.” On the left side of the figure, two types of molecules are illustrated with space-filling models. Six of the molecules have only two red spheres bonded together. Three of the molecules have four small white spheres evenly distributed about and bonded to a central, larger black sphere. On the right side of the dashed vertical line, two types of molecules which are different from those on the left side are shown. Six of the molecules have a central red sphere to which smaller white spheres are bonded. The white spheres are not opposite each other on the red atoms, giving the molecule a bent shape or appearance. The second molecule type has a central black sphere to which two red spheres are attached on opposite sides, resulting in a linear shape or appearance. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms. On each side of the dashed line, twelve red, three black, and twelve white spheres are present.",
-        "src": "../../media/CNX_Chem_04_01_rxn3.jpg"
+        "src": "../../media/CNX_Chem_04_01_rxn3.jpg",
+        "mimeType": "image/jpeg"
       }
     },
     {
       "type": "list",
       "id": "fs-idp42981680",
       "listType": "bulleted",
+      "numberStyle": null,
+      "bulletStyle": "bullet",
       "items": [
         {
           "id": null,

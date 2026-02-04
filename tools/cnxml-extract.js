@@ -967,6 +967,8 @@ function processList(list, moduleId, addSegment, mathMap, counters) {
     type: 'list',
     id: list.id,
     listType: list.attributes['list-type'] || 'bulleted',
+    numberStyle: list.attributes['number-style'] || null,
+    bulletStyle: list.attributes['bullet-style'] || null,
     items: [],
   };
 

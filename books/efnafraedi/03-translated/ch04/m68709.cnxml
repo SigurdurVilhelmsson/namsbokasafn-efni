@@ -31,7 +31,7 @@ og súrefnis sem myndar koldíoxíð og vatn (sýnt neðst) má tákna með
 efnajöfnu með formúlum (efst).</caption></figure>
 <para id="fs-idp80311968">Þetta dæmi sýnir grundvallarþætti
 hvers kyns efnajöfnu:</para>
-<list id="fs-idm9329568" list-type="bulleted">
+<list id="fs-idm9329568" list-type="enumerated" number-style="arabic">
 <item>Efnin sem gangast undir hvarf
 kallast <emphasis effect="bold">hvarfefni</emphasis> og formúlur þeirra eru settar vinstra megin við
 jöfnuna.</item>
@@ -63,7 +63,7 @@ og því má lesa þessa jöfnu réttilega á marga vegu, þar á meðal:</para>
 fjölda sameinda sem koma við sögu eru hlutföllin milli fjölda sameinda
 hverrar eindar sem hvarfast (hvarfefnin) og sameinda hverrar eindar sem
 myndast (myndefnin) þau sömu og eru gefin með efnahvarfsjöfnunni.</caption></figure>
-<list id="fs-idp42981680" list-type="bulleted">
+<list id="fs-idp42981680" list-type="bulleted" bullet-style="bullet">
 <item><emphasis effect="italics">Ein</emphasis> metansameind og <emphasis effect="italics">tvær</emphasis>
 súrefnissameindir hvarfast og mynda <emphasis effect="italics">eina</emphasis> koldíoxíðsameind og <emphasis effect="italics">tvær</emphasis>
 vatnssameindir.</item>

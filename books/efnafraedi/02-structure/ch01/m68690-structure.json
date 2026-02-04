@@ -46,7 +46,8 @@
           "media": {
             "id": "fs-idm262770592",
             "alt": "This diagram shows a 25 milliliter graduated cylinder filled with about 20.8 milliliters of fluid. The diagram zooms in on the meniscus, which is the curved surface of the water that is visible when the graduated cylinder is viewed from the side. You make the reading at the lowest point of the curve of the meniscus.",
-            "src": "../../media/CNX_Chem_01_05_Measure.jpg"
+            "src": "../../media/CNX_Chem_01_05_Measure.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -136,7 +137,9 @@
         {
           "type": "list",
           "id": "fs-idm65809616",
-          "listType": "bulleted",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
           "items": [
             {
               "id": null,
@@ -161,6 +164,8 @@
           "type": "list",
           "id": "fs-idm192081680",
           "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
           "items": [
             {
               "id": null,
@@ -644,7 +649,8 @@
           "media": {
             "id": "fs-idp4898080",
             "alt": "Figures A through C each show targets with holes where the arrows hit. The archer in figure A was both accurate and precise as all 3 arrows are clustered in the center of the target. In figure B, the archer is precise but not accurate, as all 3 arrows are clustered together but to the upper right of the center of the target. In Figure C, the archer is neither accurate nor precise as the 3 holes are not close together and are located both to the upper right and right of the target.",
-            "src": "../../media/CNX_Chem_01_05_Archery.jpg"
+            "src": "../../media/CNX_Chem_01_05_Archery.jpg",
+            "mimeType": "image/jpg"
           }
         },
         {

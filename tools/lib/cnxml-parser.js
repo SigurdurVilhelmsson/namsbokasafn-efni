@@ -201,7 +201,7 @@ export function extractElements(content, tagName) {
  */
 export function parseAttributes(attrString) {
   const attrs = {};
-  const pattern = /(\w+(?::\w+)?)="([^"]*)"/g;
+  const pattern = /([\w-]+(?::[\w-]+)?)="([^"]*)"/g;
   let match;
   while ((match = pattern.exec(attrString)) !== null) {
     attrs[match[1]] = match[2];

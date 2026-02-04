@@ -32,7 +32,8 @@
       "media": {
         "id": "fs-idm63360640",
         "alt": "A picture is shown of sugar being poured from a spoon into a cup.",
-        "src": "../../media/CNX_Chem_03_03_espresso.jpg"
+        "src": "../../media/CNX_Chem_03_03_espresso.jpg",
+        "mimeType": "image/jpeg"
       }
     },
     {
@@ -254,7 +255,8 @@
           "media": {
             "id": "fs-idm69003664",
             "alt": "A label on a container is shown. The label has a picture of a salad with the words “Distilled White Vinegar,” and, “Reduced with water to 5% acidity,” written above it.",
-            "src": "../../media/CNX_Chem_03_04_vinegar.jpg"
+            "src": "../../media/CNX_Chem_03_04_vinegar.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -438,7 +440,8 @@
           "media": {
             "id": "fs-idp133169776",
             "alt": "This figure shows two graduated cylinders side-by-side. The first has about half as much blue liquid as the second. The blue liquid is darker in the first cylinder than in the second.",
-            "src": "../../media/CNX_Chem_03_04_dilution.jpg"
+            "src": "../../media/CNX_Chem_03_04_dilution.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {

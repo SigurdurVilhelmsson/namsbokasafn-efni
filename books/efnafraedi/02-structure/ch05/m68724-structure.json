@@ -32,7 +32,8 @@
       "media": {
         "id": "fs-idp12477984",
         "alt": "Three pictures are shown and labeled a, b, and c. Picture a is a cheeseburger. Picture b depicts a highway that is full of traffic. Picture c is a view into an industrial metal furnace. The view into the furnace shows a hot fire burning inside.",
-        "src": "../../media/CNX_Chem_05_01_Thermochem.jpg"
+        "src": "../../media/CNX_Chem_05_01_Thermochem.jpg",
+        "mimeType": "image/jpeg"
       }
     },
     {
@@ -74,7 +75,8 @@
           "media": {
             "id": "fs-idp14208336",
             "alt": "Two pictures are shown and labeled a and b. Picture a shows a large waterfall with water falling from a high elevation at the top of the falls to a lower elevation. The second picture is a view looking down into the Hoover Dam. Water is shown behind the high wall of the dam on one side and at the base of the dam on the other.",
-            "src": "../../media/CNX_Chem_05_01_Waterfall.jpg"
+            "src": "../../media/CNX_Chem_05_01_Waterfall.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -118,7 +120,8 @@
           "media": {
             "id": "fs-idm1349856",
             "alt": "Two molecular drawings are shown and labeled a and b. Drawing a is a box containing fourteen red spheres that are surrounded by lines indicating that the particles are moving rapidly. This drawing has a label that reads “Hot liquid.” Drawing b depicts another box of equal size that also contains fourteen spheres, but these are blue. They are all surrounded by smaller lines that depict some particle motion, but not as much as in drawing a. This drawing has a label that reads “Cold liquid.”",
-            "src": "../../media/CNX_Chem_05_01_HotCold.jpg"
+            "src": "../../media/CNX_Chem_05_01_HotCold.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -148,7 +151,8 @@
           "media": {
             "id": "fs-idp22234128",
             "alt": "A picture labeled a is shown as well as a pair of drawings labeled b. Picture a shows the lower portion of an alcohol thermometer. The thermometer has a printed scale to the left of the tube in the center that reads from negative forty degrees at the bottom to forty degrees at the top. It also has a scale printed to the right of the tube that reads from negative thirty degrees at the bottom to thirty five degrees at the top. On both scales, the volume of the alcohol in the tube reads between nine and ten degrees. The two images labeled b both depict a metal strip coiled into a spiral and composed of brass and steel. The left coil, which is loosely coiled, is labeled along its upper edge with the 30 degrees C and 10 degrees C. The end of the coil is near the 30 degrees C label. The right hand coil is much more tightly wound and the end is near the 10 degree C label.",
-            "src": "../../media/CNX_Chem_05_01_Thermom.jpg"
+            "src": "../../media/CNX_Chem_05_01_Thermom.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -178,7 +182,8 @@
           "media": {
             "id": "fs-idm7390640",
             "alt": "Three drawings are shown and labeled a, b, and c, respectively. The first drawing labeled a depicts two boxes, with a space in between and the pair is captioned “Different temperatures.” The left hand box is labeled H and holds fourteen well-spaced red spheres with lines drawn around them to indicate rapid motion. The right hand box is labeled L and depicts fourteen blue spheres that are closer together than the red spheres and have smaller lines around them showing less particle motion. The second drawing labeled b depicts two boxes that are touching one another. The left box is labeled H and contains fourteen maroon spheres that are spaced evenly apart. There are tiny lines around each sphere depicting particle movement. The right box is labeled L and holds fourteen purple spheres that are slightly closer together than the maroon spheres. There are also tiny lines around each sphere depicting particle movement. A black arrow points from the left box to the right box and the pair of diagrams is captioned “Contact.” The third drawing labeled c, is labeled “Thermal equilibrium.” There are two boxes shown in contact with one another. Both boxes contain fourteen purple spheres with small lines around them depicting moderate movement. The left box is labeled H and the right box is labeled L.",
-            "src": "../../media/CNX_Chem_05_01_HeatTrans1.jpg"
+            "src": "../../media/CNX_Chem_05_01_HeatTrans1.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -208,7 +213,8 @@
           "media": {
             "id": "fs-idp21196832",
             "alt": "Two pictures are shown and labeled a and b. Picture a shows a metal railroad tie being cut with the flame of an acetylene torch. Picture b shows a chemical cold pack containing ammonium nitrate.",
-            "src": "../../media/CNX_Chem_05_01_OxyacTorch.jpg"
+            "src": "../../media/CNX_Chem_05_01_OxyacTorch.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -296,7 +302,8 @@
           "media": {
             "id": "fs-idm67222368",
             "alt": "The picture shows two black metal frying pans sitting on a flat surface. The left pan is about half the size of the right pan.",
-            "src": "../../media/CNX_Chem_05_01_HeatCapacity.jpg"
+            "src": "../../media/CNX_Chem_05_01_HeatCapacity.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -762,6 +769,8 @@
               "type": "list",
               "id": "fs-idm19140208",
               "listType": "bulleted",
+              "numberStyle": null,
+              "bulletStyle": "bullet",
               "items": [
                 {
                   "id": null,
@@ -922,7 +931,8 @@
           "media": {
             "id": "fs-idm14724048",
             "alt": "This figure has two parts labeled a and b. Part a shows rows and rows of trough mirrors. Part b shows how a solar thermal plant works. Heat transfer fluid enters a tank via pipes. The tank contains water which is heated. As the heat is exchanged from the pipes to the water, the water becomes steam. The steam travels to a steam turbine. The steam turbine begins to turn which powers a generator. Exhaust steam exits the steam turbine and enters a cooling tower.",
-            "src": "../../media/CNX_Chem_05_01_SolTherm1.jpg"
+            "src": "../../media/CNX_Chem_05_01_SolTherm1.jpg",
+            "mimeType": "image/jpeg"
           }
         },
         {
@@ -934,7 +944,8 @@
           "media": {
             "id": "fs-idp14304832",
             "alt": "Two pictures are shown and labeled a and b. Picture a shows a thermal plant with three tall metal towers. Picture b is an arial picture of the mirrors used at the plant. They are arranged in rows.",
-            "src": "../../media/CNX_Chem_05_01_SolTherm2.jpg"
+            "src": "../../media/CNX_Chem_05_01_SolTherm2.jpg",
+            "mimeType": "image/jpeg"
           }
         }
       ]

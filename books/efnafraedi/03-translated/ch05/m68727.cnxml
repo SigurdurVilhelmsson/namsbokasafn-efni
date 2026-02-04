@@ -25,7 +25,7 @@ hreyfiorka getur verið í formi aukinnar færslu (ferðalags eða hreyfingar
 í beinni línu), titrings eða snúnings atómanna eða sameindanna. Þegar
 varmaorka tapast minnkar styrkur þessara hreyfinga og hreyfiorkan
 minnkar. Heildarsumma allra mögulegra tegunda orku sem er til staðar í
-efni er kölluð <term>innri orka (<emphasis effect="italics">U</emphasis>)</term>, stundum táknuð með <emphasis effect="italics">E</emphasis>.</para>
+efni er kölluð *<emphasis effect="italics">innri orka (</emphasis>U<emphasis effect="italics">)</emphasis><emphasis effect="italics">, stundum táknuð með </emphasis>E*.</para>
 <para id="fs-idm1690784">Þegar kerfi gengur í gegnum breytingu
 getur innri orka þess breyst og orka getur flust frá kerfinu yfir í
 umhverfið eða frá umhverfinu yfir í kerfið. Orka flyst inn í kerfi þegar
@@ -97,16 +97,17 @@ vegalengd er ekki ástandsfall; hún er háð leiðinni). (heimild: breyting
 á verki eftir Paul Shaffner)</caption>
 </figure>
 <para id="fs-idp107461968">Efnafræðingar nota venjulega
-eiginleika sem kallast <term>vermi (<emphasis effect="italics">H</emphasis>)</term> til að lýsa varmafræði efna- og
+eiginleika sem kallast *<emphasis effect="italics">vermi (</emphasis>H<emphasis effect="italics">)</emphasis><emphasis effect="italics"> til að lýsa varmafræði efna- og
 eðlisfræðilegra ferla. Vermi er skilgreint sem summa innri orku kerfis
-(<emphasis effect="italics">U</emphasis>) og stærðfræðilegs margfeldis þrýstings þess (<emphasis effect="italics">P</emphasis>) og rúmmáls
-(<emphasis effect="italics">V</emphasis>):</para>
+(</emphasis>U<emphasis effect="italics">) og stærðfræðilegs margfeldis þrýstings þess (</emphasis>P<emphasis effect="italics">) og rúmmáls
+(</emphasis>V*):</para>
 <equation id="fs-idm231773856" class="unnumbered"><m:math><m:mi>H</m:mi><m:mo>=</m:mo><m:mi>U</m:mi><m:mo>+</m:mo><m:mi>P</m:mi><m:mi>V</m:mi></m:math></equation>
 <para id="fs-idm20812336">Vermi er einnig ástandsfall. Ekki er
 hægt að mæla vermigildi fyrir tiltekin efni beint; aðeins er hægt að
 ákvarða <emphasis effect="italics">vermibreytingar</emphasis> fyrir efna- eða eðlisfræðileg ferli. Fyrir
 ferli sem eiga sér stað við stöðugan þrýsting (algengt skilyrði fyrir
-margar efna- og eðlisfræðilegar breytingar) er <term>vermibreytingin (Δ<emphasis effect="italics">H</emphasis>)</term>:</para>
+margar efna- og eðlisfræðilegar breytingar) er *<emphasis effect="italics">vermibreytingin
+(Δ</emphasis>H<emphasis effect="italics">)</emphasis>*:</para>
 <equation id="fs-idm182172016" class="unnumbered"><m:math><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:mi>U</m:mi><m:mo>+</m:mo><m:mi>P</m:mi><m:mtext>Δ</m:mtext><m:mi>V</m:mi></m:math></equation>
 <para id="fs-idm15694224">Stærðfræðilega margfeldið <emphasis effect="italics">P</emphasis>Δ<emphasis effect="italics">V</emphasis>
 táknar vinnu (<emphasis effect="italics">w</emphasis>), þ.e. þenslu- eða þrýstings-rúmmálsvinnu eins og fram
@@ -135,7 +136,7 @@ gerir vermi að hentugasta valkostinum til að ákvarða varmabreytingar
 fyrir efnahvörf.</para>
 <para id="fs-idp25166224">Eftirfarandi venjur gilda þegar Δ<emphasis effect="italics">H</emphasis>
 er notað:</para>
-<list id="fs-idm49861360" list-type="bulleted">
+<list id="fs-idm49861360" list-type="bulleted" bullet-style="bullet">
 <item>Neikvætt gildi
 vermibreytingar, Δ<emphasis effect="italics">H</emphasis> \&lt; 0, gefur til kynna útvermið hvarf; jákvætt
 gildi, Δ<emphasis effect="italics">H</emphasis> \> 0, gefur til kynna innvermið hvarf. Ef stefnu efnajöfnu
@@ -511,7 +512,7 @@ að rækta maís) framleitt nægilegt þörungaeldsneyti til að koma í stað
 alls jarðolíu-eldsneytis sem notað er í Bandaríkjunum. Kostnaður við
 þörungaeldsneyti er að verða samkeppnishæfari – til dæmis er bandaríski
 flugherinn að framleiða þotueldsneyti úr þörungum á heildarkostnaði
-undir 5 dollurum á gallon.<footnote id="fs-idp167162288">Fyrir frekari upplýsingar
+undir 5 dollurum á gallon.<footnote>Fyrir frekari upplýsingar
 um þörungaeldsneyti, sjá
 http://www.theguardian.com/environment/2010/feb/13/algae-solve-pentagon-fuel-problem.</footnote>
 Ferlið sem notað er til að framleiða þörungaeldsneyti er sem hér segir:
@@ -662,7 +663,7 @@ en hvarfefnin.</caption>
 </figure>
 <para id="fs-idp167197264">Áður en við æfum okkur frekar í
 notkun lögmáls Hess skulum við rifja upp tvo mikilvæga eiginleika Δ<emphasis effect="italics">H</emphasis>.</para>
-<list id="fs-idp167198464" list-type="bulleted">
+<list id="fs-idp167198464" list-type="enumerated" number-style="arabic">
 <item>Δ<emphasis effect="italics">H</emphasis> er í beinu hlutfalli við
 magn hvarfefna eða myndefna. Til dæmis er vermibreytingin fyrir hvarfið
 sem myndar 1 mól af NO<sub>2</sub>(<emphasis effect="italics">g</emphasis>) +33,2 kJ: <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="3em"/><m:mtext>Δ</m:mtext><m:mstyle mathvariant="italic"><m:mtext>H</m:mtext></m:mstyle><m:mo>=</m:mo><m:mtext>+33.2 kJ</m:mtext></m:mrow></m:math> Þegar 2 mól af

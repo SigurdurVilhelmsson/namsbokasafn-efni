@@ -133,7 +133,7 @@ til að forðast að gefa ranga mynd af óvissu í reiknuðum niðurstöðum. Ei
 leið til þess er að gefa upp niðurstöðu útreiknings með réttum fjölda
 markverðra stafa, sem er ákvarðaður af eftirfarandi þremur reglum um
 <emphasis effect="bold">námundun</emphasis> talna:</para>
-<list id="fs-idm65809616" list-type="bulleted">
+<list id="fs-idm65809616" list-type="enumerated" number-style="arabic">
 <item>Þegar tölur eru lagðar saman
 eða dregnar frá, námundið niðurstöðuna að sama fjölda aukastafa og talan
 með fæsta aukastafi (ónákvæmasta gildið hvað varðar samlagningu og
@@ -159,7 +159,7 @@ sem haldið er.)</item>
 <para id="fs-idm107335696">Eftirfarandi dæmi sýna hvernig þessi
 regla er notuð við að námunda nokkrar mismunandi tölur að þremur
 markverðum stöfum:</para>
-<list id="fs-idm192081680" list-type="bulleted">
+<list id="fs-idm192081680" list-type="bulleted" bullet-style="bullet">
 <item>0,028675 er námundað „upp“ í
 0,0287 (tölustafurinn sem er felldur brott, 7, er stærri en 5)</item>
 <item>18,3384 er námundað „niður“ í

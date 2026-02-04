@@ -31,7 +31,8 @@
       "media": {
         "id": "fs-idm52126432",
         "alt": "A photo collage shows a cup of black coffee, a hand covered in foamy soap, a remote control, and a gasoline pump nozzle inserted into a vehicle’s gas tank.",
-        "src": "../../media/CNX_Chem_01_00_DailyChem.jpg"
+        "src": "../../media/CNX_Chem_01_00_DailyChem.jpg",
+        "mimeType": "image/jpeg"
       }
     },
     {
