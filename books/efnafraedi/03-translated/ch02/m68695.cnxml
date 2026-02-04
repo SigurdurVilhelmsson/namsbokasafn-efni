@@ -1,0 +1,450 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Lotukerfið</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68695</md:content-id>
+  <md:title>The Periodic Table</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Skilgreint lotulögmálið og
+útskýrt skipulag frumefna í lotukerfinu</item><item>Spáð fyrir um almenna
+eiginleika frumefna út frá staðsetningu þeirra í lotukerfinu</item><item>Greint málma, málmleysingja
+og hálfmálma eftir eiginleikum þeirra og/eða staðsetningu í lotukerfinu</item></list></md:abstract>
+  <md:uuid>601be624-33cb-45bb-beb8-d069264fae07</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm392133488">Þegar efnafræðingar unnu að því að
+hreinsa málmgrýti og uppgötvuðu fleiri frumefni áttuðu þeir sig á því að
+hægt væri að flokka ýmis frumefni saman eftir svipaðri efnafræðilegri
+hegðun. Einn slíkur flokkur inniheldur litíum (Li), natríum (Na) og
+kalíum (K): Öll þessi frumefni eru glansandi, leiða vel varma og rafmagn
+og hafa svipaða efnaeiginleika. Annar flokkur inniheldur kalsíum (Ca),
+strontíum (Sr) og baríum (Ba), sem eru einnig glansandi, góðir leiðarar
+varma og rafmagns og eiga sameiginlega efnaeiginleika. Hins vegar eru
+sértækir eiginleikar þessara tveggja flokka verulega frábrugðnir hvor
+öðrum. Til dæmis: Li, Na og K eru mun hvarfgjarnari en Ca, Sr og Ba; Li,
+Na og K mynda efnasambönd með súrefni í hlutfallinu tvö atóm þeirra á
+móti einu súrefnisatómi, en Ca, Sr og Ba mynda efnasambönd með einu
+atómi þeirra á móti einu súrefnisatómi. Flúor (F), klór (Cl), bróm (Br)
+og joð (I) sýna einnig svipaða eiginleika sín á milli, en þessir
+eiginleikar eru gjörólíkir eiginleikum allra ofangreindra frumefna.</para>
+<para id="fs-idm421502880">Dimitri <emphasis effect="bold">Mendeleev</emphasis> í Rússlandi
+(1869) og Lothar <emphasis effect="bold">Meyer</emphasis> í Þýskalandi (1870) gerðu sér óháð hvor öðrum
+grein fyrir því að það væri lotubundið samband milli eiginleika þeirra
+frumefna sem þekkt voru á þeim tíma. Báðir gáfu út töflur þar sem
+frumefnunum var raðað eftir vaxandi atómmassa. En Mendeleev gekk einu
+skrefi lengra en Meyer: Hann notaði töfluna sína til að spá fyrir um
+tilvist frumefna sem hefðu svipaða eiginleika og ál og kísill, en voru
+enn óþekkt. Uppgötvanir gallíums (1875) og germaníums (1886) veittu
+mikinn stuðning við vinnu Mendeleevs. Þrátt fyrir að Mendeleev og Meyer
+hafi lengi deilt um hvor þeirra ætti heiðurinn, er framlag Mendeleevs
+til þróunar lotukerfisins nú almennt viðurkennt ({{XREF:3}}).</para>
+<figure id="CNX_Chem_02_05_Mendeleev">
+<media id="fs-idm340660384" alt="Figure A shows a photograph of Dimitri Mendeleev. Figure B shows the first periodic table developed by Mendeleev, which had eight groups and twelve periods. In the first group (—, R superscript plus sign 0) is the following information: H = 1, L i = 7, N a = 23, K = 39, (C u = 63), R b = 85, (A g = 108), C a = 183, (—),—, (A u = 199) —. Note that each of these entries corresponds to one of the twelve periods respectively. The second group (—, R 0) contains the following information: (not entry for period 1) B o = 9, 4, M g = 24, C a = 40, Z n = 65, S r = 87, C d = 112, B a = 187, —, —, H g = 200, —. Note the ach of these entries corresponds to one of the twelve periods respectively. Group three (—, R superscript one 0 superscript nine) contains the information: (no entry for period 1), B = 11, A l = 27, 8. — = 44, — = 68, ? Y t = 88, I n = 113, ? D I = 138, —, ? E r = 178, T l = 204, —. Note that each of these entries corresponds to one of the twelve periods respectively. Group four (RH superscript four, R0 superscript eight) contains the following information: (no entry for period 1), C = 12, B i = 28, T i = 48, — = 72, Z r = 90, S n = 118, ? C o = 140, ? L a = 180, P b = 207, T h = 231. Note that each of these entries corresponds to one of the twelve periods respectively. Group five (R H superscript two, R superscript two 0 superscript five) contains the following information: (no entry for period 1), N = 14, P = 31, V = 51, A s = 75, N b = 94, S b = 122, —, —, T a = 182, B l = 208, —. Note that each of these entries corresponds to one of the twelve periods respectively. Group six (R H superscript two, R 0 superscript three) contains the following information: (no entry for period 1), O = 16, S = 32, C r = 52, S o = 78, M o = 96, T o = 125, —, —, W = 184, —, U = 240. Note that each of these entries corresponds to one of the twelve periods respectively. Group seven (R H , R superscript plus sing, 0 superscript 7) contains the following information: (no entry for period 1), F = 19, C l = 35, 5, M n = 55, B r = 80, — = 100, J = 127, —, —, —, —, —. Note that each of these entries corresponds to one of the twelve periods respectively. Group 8 (—, R 0 superscript four) contains the following information: (no entry for periods 1, 2, 3), in period 4: F o = 56, C o = 59, N i = 59, C u = 63, no entry for period five, in period 6: R u = 104, R h = 104, P d = 106, A g = 108, no entries for periods 7, 8 , or 9, in period 10: O s = 195, I r = 197, P t = 198, A u = 199, no entries for periods 11 or 12.">
+<image mime-type="image/jpg" src="../../media/CNX_Chem_02_05_Mendeleev.jpg"/>
+</media>
+<caption>(a) Dimitri
+Mendeleev er almennt talinn eiga heiðurinn af því að hafa búið til (b)
+fyrsta lotukerfi frumefnanna. (mynd a: breyting á verki eftir Serge
+Lachinov; mynd b: breyting á verki eftir „Den fjättrade ankan“/Wikimedia
+Commons)</caption>
+</figure>
+<para id="fs-idm330060208">Á tuttugustu öldinni varð ljóst að
+lotubundna sambandið snerist um sætistölur frekar en atómmassa.
+Nútímaleg framsetning þessa sambands, <emphasis effect="bold">lotulögmálið</emphasis>, er sem hér
+segir: <emphasis effect="italics">eiginleikar frumefnanna eru lotubundin föll af sætistölum
+þeirra</emphasis>. Nútímalegt <emphasis effect="bold">lotukerfi</emphasis> raðar frumefnunum í vaxandi röð eftir
+sætistölum þeirra og flokkar atóm með svipaða eiginleika í sama lóðrétta
+dálk ({{XREF:4}}). Hver reitur táknar frumefni og inniheldur sætistölu
+þess, tákn, meðalatómmassa og (stundum) nafn. Frumefnunum er raðað í sjö
+láréttar raðir, sem kallast <emphasis effect="bold">lotur</emphasis> eða <emphasis effect="bold">raðir</emphasis>, og 18 lóðrétta
+dálka, sem kallast <emphasis effect="bold">hópar</emphasis>. Hópar eru merktir efst í hverjum dálki. Í
+Bandaríkjunum voru merkingarnar jafnan tölustafir með hástöfum. Hins
+vegar mælir IUPAC með því að nota tölurnar 1 til 18 og þær merkingar eru
+algengari. Til að taflan passi á eina síðu eru hlutar tveggja raða, alls
+14 dálkar, venjulega skrifaðir fyrir neðan meginhluta töflunnar.</para>
+<figure id="CNX_Chem_02_05_PerTable1">
+<media id="fs-idm413728400" alt="The Periodic Table of Elements is shown. The 18 columns are labeled “Group” and the 7 rows are labeled “Period.” Below the table to the right is a box labeled “Color Code” with different colors for metals, metalloids, and nonmetals, as well as solids, liquids, and gases. To the left of this box is an enlarged picture of the upper-left most box on the table. The number 1 is in its upper-left hand corner and is labeled “Atomic number.” The letter “H” is in the middle in red indicating that it is a gas. It is labeled “Symbol.” Below that is the number 1.008 which is labeled “Atomic Mass.” Below that is the word hydrogen which is labeled “name.” The color of the box indicates that it is a nonmetal. Each element will be described in this order: atomic number; name; symbol; whether it is a metal, metalloid, or nonmetal; whether it is a solid, liquid, or gas; and atomic mass. Beginning at the top left of the table, or period 1, group 1, is a box containing “1; hydrogen; H; nonmetal; gas; and 1.008.” There is only one other element box in period 1, group 18, which contains “2; helium; H e; nonmetal; gas; and 4.003.” Period 2, group 1 contains “3; lithium; L i; metal; solid; and 6.94” Group 2 contains “4; beryllium; B e; metal; solid; and 9.012.” Groups 3 through 12 are skipped and group 13 contains “5; boron; B; metalloid; solid; 10.81.” Group 14 contains “6; carbon; C; nonmetal; solid; and 12.01.” Group 15 contains “7; nitrogen; N; nonmetal; gas; and 14.01.” Group 16 contains “8; oxygen; O; nonmetal; gas; and 16.00.” Group 17 contains “9; fluorine; F; nonmetal; gas; and 19.00.” Group 18 contains “10; neon; N e; nonmetal; gas; and 20.18.” Period 3, group 1 contains “11; sodium; N a; metal; solid; and 22.99.” Group 2 contains “12; magnesium; M g; metal; solid; and 24.31.” Groups 3 through 12 are skipped again in period 3 and group 13 contains “13; aluminum; A l; metal; solid; and 26.98.” Group 14 contains “14; silicon; S i; metalloid; solid; and 28.09.” Group 15 contains “15; phosphorous; P; nonmetal; solid; and 30.97.” Group 16 contains “16; sulfur; S; nonmetal; solid; and 32.06.” Group 17 contains “17; chlorine; C l; nonmetal; gas; and 35.45.” Group 18 contains “18; argon; A r; nonmetal; gas; and 39.95.” Period 4, group 1 contains “19; potassium; K; metal; solid; and 39.10.” Group 2 contains “20; calcium; C a; metal; solid; and 40.08.” Group 3 contains “21; scandium; S c; metal; solid; and 44.96.” Group 4 contains “22; titanium; T i; metal; solid; and 47.87.” Group 5 contains “23; vanadium; V; metal; solid; and 50.94.” Group 6 contains “24; chromium; C r; metal; solid; and 52.00.” Group 7 contains “25; manganese; M n; metal; solid; and 54.94.” Group 8 contains “26; iron; F e; metal; solid; and 55.85.” Group 9 contains “27; cobalt; C o; metal; solid; and 58.93.” Group 10 contains “28; nickel; N i; metal; solid; and 58.69.” Group 11 contains “29; copper; C u; metal; solid; and 63.55.” Group 12 contains “30; zinc; Z n; metal; solid; and 65.38.” Group 13 contains “31; gallium; G a; metal; solid; and 69.72.” Group 14 contains “32; germanium; G e; metalloid; solid; and 72.63.” Group 15 contains “33; arsenic; A s; metalloid; solid; and 74.92.” Group 16 contains “34; selenium; S e; nonmetal; solid; and 78.97.” Group 17 contains “35; bromine; B r; nonmetal; liquid; and 79.90.” Group 18 contains “36; krypton; K r; nonmetal; gas; and 83.80.” Period 5, group 1 contains “37; rubidium; R b; metal; solid; and 85.47.” Group 2 contains “38; strontium; S r; metal; solid; and 87.62.” Group 3 contains “39; yttrium; Y; metal; solid; and 88.91.” Group 4 contains “40; zirconium; Z r; metal; solid; and 91.22.” Group 5 contains “41; niobium; N b; metal; solid; and 92.91.” Group 6 contains “42; molybdenum; M o; metal; solid; and 95.95.” Group 7 contains “43; technetium; T c; metal; solid; and 97.” Group 8 contains “44; ruthenium; R u; metal; solid; and 101.1.” Group 9 contains “45; rhodium; R h; metal; solid; and 102.9.” Group 10 contains “46; palladium; P d; metal; solid; and 106.4.” Group 11 contains “47; silver; A g; metal; solid; and 107.9.” Group 12 contains “48; cadmium; C d; metal; solid; and 112.4.” Group 13 contains “49; indium; I n; metal; solid; and 114.8.” Group 14 contains “50; tin; S n; metal; solid; and 118.7.” Group 15 contains “51; antimony; S b; metalloid; solid; and 121.8.” Group 16 contains “52; tellurium; T e; metalloid; solid; and 127.6.” Group 17 contains “53; iodine; I; nonmetal; solid; and 126.9.” Group 18 contains “54; xenon; X e; nonmetal; gas; and 131.3.” Period 6, group 1 contains “55; cesium; C s; metal; solid; and 132.9.” Group 2 contains “56; barium; B a; metal; solid; and 137.3.” Group 3 breaks the pattern. The box has a large arrow pointing to a row of elements below the table with atomic numbers ranging from 57-71. In sequential order by atomic number, the first box in this row contains “57; lanthanum; L a; metal; solid; and 138.9.” To its right, the next is “58; cerium; C e; metal; solid; and 140.1.” Next is “59; praseodymium; P r; metal; solid; and 140.9.” Next is “60; neodymium; N d; metal; solid; and 144.2.” Next is “61; promethium; P m; metal; solid; and 145.” Next is “62; samarium; S m; metal; solid; and 150.4.” Next is “63; europium; E u; metal; solid; and 152.0.” Next is “64; gadolinium; G d; metal; solid; and 157.3.” Next is “65; terbium; T b; metal; solid; and 158.9.” Next is “66; dysprosium; D y; metal; solid; and 162.5.” Next is “67; holmium; H o; metal; solid; and 164.9.” Next is “68; erbium; E r; metal; solid; and 167.3.” Next is “69; thulium; T m; metal; solid; and 168.9.” Next is “70; ytterbium; Y b; metal; solid; and 173.1.” The last in this special row is “71; lutetium; L u; metal; solid; and 175.0.” Continuing in period 6, group 4 contains “72; hafnium; H f; metal; solid; and 178.5.” Group 5 contains “73; tantalum; T a; metal; solid; and 180.9.” Group 6 contains “74; tungsten; W; metal; solid; and 183.8.” Group 7 contains “75; rhenium; R e; metal; solid; and 186.2.” Group 8 contains “76; osmium; O s; metal; solid; and 190.2.” Group 9 contains “77; iridium; I r; metal; solid; and 192.2.” Group 10 contains “78; platinum; P t; metal; solid; and 195.1.” Group 11 contains “79; gold; A u; metal; solid; and 197.0.” Group 12 contains “80; mercury; H g; metal; liquid; and 200.6.” Group 13 contains “81; thallium; T l; metal; solid; and 204.4.” Group 14 contains “82; lead; P b; metal; solid; and 207.2.” Group 15 contains “83; bismuth; B i; metal; solid; and 209.0.” Group 16 contains “84; polonium; P o; metal; solid; and 209.” Group 17 contains “85; astatine; A t; metalloid; solid; and 210.” Group 18 contains “86; radon; R n; nonmetal; gas; and 222.” Period 7, group 1 contains “87; francium; F r; metal; solid; and 223.” Group 2 contains “88; radium; R a; metal; solid; and 226.” Group 3 breaks the pattern much like what occurs in period 6. A large arrow points from the box in period 7, group 3 to a special row containing the elements with atomic numbers ranging from 89-103, just below the row which contains atomic numbers 57-71. In sequential order by atomic number, the first box in this row contains “89; actinium; A c; metal; solid; and 227.” To its right, the next is “90; thorium; T h; metal; solid; and 232.0.” Next is “91; protactinium; P a; metal; solid; and 231.0.” Next is “92; uranium; U; metal; solid; and 238.0.” Next is “93; neptunium; N p; metal; solid; and N p.” Next is “94; plutonium; P u; metal; solid; and 244.” Next is “95; americium; A m; metal; solid; and 243.” Next is “96; curium; C m; metal; solid; and 247.” Next is “97; berkelium; B k; metal; solid; and 247.” Next is “98; californium; C f; metal; solid; and 251.” Next is “99; einsteinium; E s; metal; solid; and 252.” Next is “100; fermium; F m; metal; solid; and 257.” Next is “101; mendelevium; M d; metal; solid; and 258.” Next is “102; nobelium; N o; metal; solid; and 259.” The last in this special row is “103; lawrencium; L r; metal; solid; and 262.” Continuing in period 7, group 4 contains “104; rutherfordium; R f; metal; solid; and 267.” Group 5 contains “105; dubnium; D b; metal; solid; and 270.” Group 6 contains “106; seaborgium; S g; metal; solid; and 271.” Group 7 contains “107; bohrium; B h; metal; solid; and 270.” Group 8 contains “108; hassium; H s; metal; solid; and 277.” Group 9 contains “109; meitnerium; M t; not indicated; solid; and 276.” Group 10 contains “110; darmstadtium; D s; not indicated; solid; and 281.” Group 11 contains “111; roentgenium; R g; not indicated; solid; and 282.” Group 12 contains “112; copernicium; C n; metal; liquid; and 285.” Group 13 contains “113; ununtrium; U u t; not indicated; solid; and 285.” Group 14 contains “114; flerovium; F l; not indicated; solid; and 289.” Group 15 contains “115; ununpentium; U u p; not indicated; solid; and 288.” Group 16 contains “116; livermorium; L v; not indicated; solid; and 293.” Group 17 contains “117; ununseptium; U u s; not indicated; solid; and 294.” Group 18 contains “118; ununoctium; U u o; not indicated; solid; and 294.”">
+<image mime-type="image/jpg" src="../../media/CNX_Chem_02_05_PerTable1.jpg"/>
+</media>
+<caption>Frumefnum í
+lotukerfinu er raðað eftir eiginleikum þeirra.</caption>
+</figure>
+<para id="eip-630">Jafnvel eftir að lotubundið eðli frumefna og
+taflan sjálf voru almennt viðurkennd, voru enn eyður. Mendeleev hafði
+spáð fyrir um, og aðrir, þar á meðal Henry Moseley, höfðu síðar
+staðfest, að það ættu að vera frumefni fyrir neðan mangan í hópi 7.
+Þýsku efnafræðingarnir Ida Tacke og Walter Noddack lögðu af stað til að
+finna frumefnin, en það var leit sem vísindamenn um allan heim stunduðu.
+Aðferð þeirra var einstök að því leyti að þau skoðuðu ekki aðeins
+eiginleika mangans, heldur einnig frumefnin sem lágu lárétt við hliðina
+á frumefnunum 43 og 75 sem vantaði í töfluna. Þannig gátu þau, með því
+að rannsaka málmgrýti sem innihélt steinefni af rúþeníum (Ru), volfram
+(W), osmíum (Os) og svo framvegis, greint náttúruleg frumefni sem
+hjálpuðu til við að fullkomna töfluna. Reníum, ein af uppgötvunum
+þeirra, var eitt af síðustu náttúrulegu frumefnunum sem uppgötvaðist og
+er síðasta stöðuga frumefnið sem uppgötvaðist. (Fransíum, síðasta
+náttúrulega frumefnið sem uppgötvaðist, var greint af Marguerite Perey
+árið 1939.)</para>
+<para id="fs-idm293266416">Mörg frumefni eru verulega ólík í
+efnafræðilegum og eðlisfræðilegum eiginleikum sínum, en sum frumefni eru
+svipuð í hegðun sinni. Til dæmis eru mörg frumefni glansandi, mótanleg
+(hægt að afmynda án þess að brotna) og teygjanleg (hægt að draga í víra)
+og leiða vel varma og rafmagn. Önnur frumefni eru ekki glansandi,
+mótanleg eða teygjanleg og eru lélegir leiðarar varma og rafmagns. Við
+getum flokkað frumefnin í stóra flokka með sameiginlega eiginleika:
+<emphasis effect="bold">málma</emphasis> (frumefni sem eru glansandi, mótanleg, góðir leiðarar varma og
+rafmagns — skyggðir gulir); <emphasis effect="bold">málmleysingja</emphasis> (frumefni sem virðast
+dauf, lélegir leiðarar varma og rafmagns — skyggðir grænir); og
+<emphasis effect="bold">hálfmálma</emphasis> (frumefni sem leiða varma og rafmagn í meðallagi vel og
+hafa suma eiginleika málma og suma eiginleika málmleysingja — skyggðir
+fjólubláir).</para>
+<para id="fs-idm177301632">Einnig er hægt að flokka frumefnin í
+<emphasis effect="bold">aðalflokka frumefna</emphasis> (eða <emphasis effect="bold">fulltrúafrumefni</emphasis>) í dálkum 1, 2 og
+13–18; <emphasis effect="bold">hliðarmálma</emphasis> í dálkum 3–12<footnote>Samkvæmt
+skilgreiningu IUPAC eru frumefni í hópi 12 ekki hliðarmálmar, þótt oft
+sé vísað til þeirra sem slíkra. Nánari upplýsingar um frumefni þessa
+hóps er að finna í kafla um hliðarmálma og hnitsetningarefnafræði.</footnote>; og
+<emphasis effect="bold">innri hliðarmálma</emphasis> í tveimur röðum neðst í töflunni (frumefnin í efri
+röðinni eru kölluð <emphasis effect="bold">lanþaníðar</emphasis> og frumefnin í neðri röðinni eru
+<emphasis effect="bold">aktiníðar</emphasis>; {{XREF:5}}). Frumefnin má flokka enn frekar eftir
+sértækari eiginleikum, svo sem samsetningu efnasambandanna sem þau
+mynda. Til dæmis mynda frumefnin í hópi 1 (fyrsti dálkurinn) efnasambönd
+sem samanstanda af einu atómi frumefnisins og einu atómi vetnis. Þessi
+frumefni (nema vetni) eru þekkt sem <emphasis effect="bold">alkalímálmar</emphasis> og hafa öll svipaða
+efnaeiginleika. Frumefnin í hópi 2 (annar dálkurinn) mynda efnasambönd
+sem samanstanda af einu atómi frumefnisins og tveimur atómum vetnis: Þau
+eru kölluð <emphasis effect="bold">jarðalkalímálmar</emphasis> og hafa svipaða eiginleika innan þess
+hóps. Aðrir hópar með sérstök nöfn eru <emphasis effect="bold">pnictogen</emphasis> (hópur 15),
+<emphasis effect="bold">chalcogen</emphasis> (hópur 16), <emphasis effect="bold">halógenar</emphasis> (hópur 17) og <emphasis effect="bold">eðalgös</emphasis> (hópur
+18, einnig þekkt sem <emphasis effect="bold">óvirk gös</emphasis>). Einnig er hægt að vísa til hópanna
+með fyrsta frumefni hópsins: Til dæmis er hægt að kalla chalcogen-efnin
+súrefnishópinn eða súrefnisfjölskylduna. Vetni er einstakt frumefni sem
+ekki er málmur og hefur eiginleika sem líkjast bæði frumefnum í hópi 1
+og hópi 17. Af þeirri ástæðu getur vetni verið sýnt efst í báðum hópum
+eða eitt og sér.</para>
+<figure id="CNX_Chem_02_05_PerTable2">
+<media id="fs-idm201007936" alt="This diagram combines the groups and periods of the periodic table based on their similar properties. Group 1 contains the alkali metals, group 2 contains the earth alkaline metals, group 15 contains the pnictogens, group 16 contains the chalcogens, group 17 contains the halogens and group 18 contains the noble gases. The main group elements consist of groups 1, 2, and 12 through 18. Therefore, most of the transition metals, which are contained in groups 3 through 11, are not main group elements. The lanthanides and actinides are called out at the bottom of the periodic table.">
+<image mime-type="image/jpg" src="../../media/CNX_Chem_02_05_PerTable2.jpg"/>
+</media>
+<caption>Lotukerfið
+skipuleggur frumefni með svipaða eiginleika í hópa.</caption>
+</figure>
+<note id="fs-idm250704192" class="chemistry link-to-learning">
+<para id="fs-idm327299296">Smelltu á þennan
+{{LINK:1}}hlekk{{/LINK}} til að sjá gagnvirkt lotukerfi sem þú getur
+notað til að kanna eiginleika frumefnanna (inniheldur hlaðvörp og
+myndbönd af hverju frumefni). Þú gætir líka viljað prófa þennan
+{{LINK:2}}hlekk{{/LINK}} sem sýnir myndir af öllum frumefnunum.</para></note>
+<example id="fs-idm382810864">
+<para id="fs-idm357224608"><title>Heiti á hópum
+frumefna</title>Atóm hvers af eftirfarandi frumefnum
+eru nauðsynleg fyrir líf. Gefðu upp heiti hópsins fyrir eftirfarandi
+frumefni:</para>
+<para id="fs-idm416145024">(a) klór</para>
+<para id="fs-idm337533376">(b) kalsíum</para>
+<para id="fs-idm396080944">(c) natríum</para>
+<para id="fs-idm179930112">(d) brennisteinn</para>
+<para id="fs-idm223271632"><title>Lausn</title>Fjölskylduheitin eru sem hér segir:</para>
+<para id="fs-idm211031632">(a) halógen</para>
+<para id="fs-idm325640528">(b) jarðalkalímálmur</para>
+<para id="fs-idm214472656">(c) alkalímálmur</para>
+<para id="fs-idm368975248">(d) chalcogen</para>
+<para id="fs-idm258458256"><title>Spurningar til íhugunar</title>Gefðu upp heiti hópsins fyrir hvert
+af eftirfarandi frumefnum:</para>
+<para id="fs-idm324565472">(a) krypton</para>
+<para id="fs-idm246401536">(b) selen</para>
+<para id="fs-idm421488352">(c) baríum</para>
+<para id="fs-idm147211136">(d) litíum</para>
+<note id="fs-idm416378416">
+<title>Answer:</title>
+<para id="fs-idm332587744">(a) eðalgas; (b) chalcogen; (c)
+jarðalkalímálmur; (d) alkalímálmur</para>
+</note>
+</example>
+<para id="eip-288">Eins og þú munt læra í frekara námi í
+efnafræði hegða frumefni í hópum sér oft á nokkuð svipaðan hátt. Þetta
+er að hluta til vegna fjölda rafeinda á ysta hvolfi þeirra og svipaðrar
+tilhneigingar til að bindast. Þessir sameiginlegu eiginleikar geta haft
+víðtækar afleiðingar í náttúrunni, vísindum og læknisfræði. Til dæmis,
+þegar Gertrude Elion og George Hitchens rannsökuðu leiðir til að trufla
+fjölgun frumna og veira til að berjast gegn sjúkdómum, nýttu þau sér
+líkindin milli brennisteins og súrefnis (bæði í hópi 16) og getu þeirra
+til að bindast á svipaðan hátt. Elion einbeitti sér að púrín-efnum, sem
+eru lykilþættir DNA og innihalda súrefni. Hún komst að því að með því að
+setja inn brennisteinsbundin efnasambönd (kölluð púrín-hliðstæður) sem
+líkja eftir byggingu púrína myndu sameindir innan DNA tengjast
+hliðstæðunum frekar en „venjulegu“ DNA-púríni. Með því að breyta
+venjulegum DNA-tengjum og byggingu tókst Elion að trufla frumuskiptingu.
+Í grunninn virkaði aðferðin vegna líkindanna milli brennisteins og
+súrefnis. Uppgötvun hennar leiddi beint til mikilvægra meðferða við
+hvítblæði. Á heildina litið leiddi vinna Elion með George Hitchens ekki
+aðeins til fleiri meðferða heldur breytti hún einnig allri aðferðafræði
+lyfjaþróunar. Með því að nota ákveðin frumefni og efnasambönd til að
+miða á ákveðna þætti æxlisfrumna, veira og baktería lögðu þau grunninn
+að mörgum af algengustu og mikilvægustu lyfjum nútímans sem eru notuð
+til að hjálpa milljónum manna á hverju ári. Þau hlutu Nóbelsverðlaunin
+árið 1988.</para>
+<para id="fs-idm382436640">Við athugun á lotukerfinu gætir þú
+hafa tekið eftir einhverju varðandi atómmassa sumra frumefnanna.
+Atómmassi frumefnis 43 (teknetín), frumefnis 61 (prómetín) og flestra
+frumefna með sætistölu 84 (pólon) og hærri er gefinn upp í hornklofum.
+Þetta er gert fyrir frumefni sem samanstanda eingöngu af óstöðugum,
+geislavirkum samsætum (þú munt læra meira um geislavirkni í kaflanum um
+kjarnaefnafræði). Ekki er hægt að ákvarða meðalatómmassa fyrir þessi
+frumefni vegna þess að hlutfallslegt magn geislasamsæta þeirra getur
+verið mjög breytilegt, allt eftir uppruna, eða þær finnast jafnvel ekki
+í náttúrunni. Talan í hornklofunum er atómmassatala (nálgun á atómmassa)
+stöðugustu samsætu þess frumefnis.</para>
+<section id="fs-idm7568752" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm431899680">Uppgötvunin á reglulegri endurkomu
+svipaðra eiginleika meðal frumefnanna leiddi til mótunar lotukerfisins,
+þar sem frumefnunum er raðað eftir hækkandi sætistölu í raðir sem
+kallast lotur og dálka sem kallast hópar. Frumefni í sama hópi
+lotukerfisins hafa svipaða efnaeiginleika. Frumefni má flokka sem málma,
+hálfmálma og málmleysingja, eða sem aðalflokka frumefni, hliðarmálma og
+innri hliðarmálma. Hópar eru númeraðir 1–18 frá vinstri til hægri.
+Frumefnin í hópi 1 eru þekkt sem alkalímálmar; þau í hópi 2 eru
+jarðalkalímálmar; þau í 15 eru pniktógen; þau í 16 eru kalkógen; þau í
+17 eru halógenar; og þau í 18 eru eðalgös.</para>
+</section>
+<section id="fs-idm260226672" class="exercises">
+<title>Efnafræði – verkefni í lok
+kafla</title>
+<exercise id="fs-idm319896576">
+<problem id="fs-idm396566560">
+<para id="fs-idm358722608">Notaðu lotukerfið til að flokka
+hvert eftirfarandi frumefna sem málm eða málmleysingja og flokkaðu þau
+síðan frekar sem aðalflokkafrumefni, hliðarmálm eða innri hliðarmálm:</para>
+<para id="fs-idm497533216">(a) úran</para>
+<para id="fs-idm32679920">(b) bróm</para>
+<para id="fs-idm189284896">(c) strontíum</para>
+<para id="fs-idm169225920">(d) neon</para>
+<para id="fs-idm249659984">(e) gull</para>
+<para id="fs-idm212673504">(f) ameríkíum</para>
+<para id="fs-idm338787632">(g) ródíum</para>
+<para id="fs-idm395979120">(h) brennisteinn</para>
+<para id="fs-idm330830800">(i) kolefni</para>
+<para id="fs-idm213012928">(j) kalíum</para>
+</problem>
+<solution id="fs-idm27894496"><para id="fs-idm258438304">(a) málmur, innri hliðarmálmur;
+(b) málmleysingi, aðalflokkafrumefni; (c) málmur, aðalflokkafrumefni;
+(d) málmleysingi, aðalflokkafrumefni; (e) málmur, hliðarmálmur; (f)
+málmur, innri hliðarmálmur; (g) málmur, hliðarmálmur; (h) málmleysingi,
+aðalflokkafrumefni; (i) málmleysingi, aðalflokkafrumefni; (j) málmur,
+aðalflokkafrumefni</para>
+</solution>
+</exercise>
+<exercise id="fs-idm430913456">
+<problem id="fs-idm258414032">
+<para id="fs-idm139919296">Notaðu lotukerfið til að flokka
+hvert eftirfarandi frumefna sem málm eða málmleysingja og flokkaðu þau
+síðan frekar sem aðalflokkafrumefni, hliðarmálm eða innri hliðarmálm:</para>
+<para id="fs-idm212911568">(a) kóbalt</para>
+<para id="fs-idm426996144">(b) evrópíum</para>
+<para id="fs-idm42780160">(c) joð</para>
+<para id="fs-idm381113264">(d) indíum</para>
+<para id="fs-idm447823856">(e) litíum</para>
+<para id="fs-idm227549872">(f) súrefni</para>
+<para id="fs-idm301270752">(g) kadmíum</para><para id="fs-idm258625344">(h) terbíum</para><para id="fs-idm415918848">(i) reníum</para></problem>
+</exercise>
+<exercise id="fs-idm419056816">
+<problem id="fs-idm252042368">
+<para id="fs-idm44761472">Notaðu lotukerfið til að finna
+léttasta frumefnið í hverjum eftirfarandi flokka:</para>
+<para id="fs-idm138269664">(a) eðalgös</para>
+<para id="fs-idm316570176">(b) jarðalkalímálmar</para>
+<para id="fs-idm167150000">(c) alkalímálmar</para>
+<para id="fs-idm342309392">(d) kalkógen</para>
+</problem>
+<solution id="fs-idm155533040">
+<para id="fs-idm236718176">(a) He; (b) Be; (c) Li; (d) O</para>
+</solution>
+</exercise>
+<exercise id="fs-idm315946160">
+<problem id="fs-idm145408176">
+<para id="fs-idm440433264">Notaðu lotukerfið til að finna
+þyngsta frumefnið í hverjum eftirfarandi flokka:</para>
+<para id="fs-idm396223200">(a) alkalímálmar</para>
+<para id="fs-idm279376720">(b) kalkógen</para>
+<para id="fs-idm379211312">(c) eðalgös</para>
+<para id="fs-idm361329392">(d) jarðalkalímálmar</para>
+</problem>
+</exercise>
+<exercise id="fs-idm415648752">
+<problem id="fs-idm219470368">
+<para id="fs-idm300526784">Notaðu lotukerfið til að gefa upp
+heiti og tákn fyrir hvert eftirfarandi frumefna:</para>
+<para id="fs-idm376420112">(a) eðalgasið í sömu lotu og
+germaníum</para>
+<para id="fs-idm416960944">(b) jarðalkalímálmurinn í sömu
+lotu og selen</para>
+<para id="fs-idm203188176">(c) halógeninn í sömu lotu og
+litíum</para>
+<para id="fs-idm181902288">(d) kalkógenið í sömu lotu og
+kadmíum</para>
+</problem>
+<solution id="fs-idm223446896">
+<para id="fs-idm330207888">(a) krypton, Kr; (b) kalsíum,
+Ca; (c) flúor, F; (d) tellúr, Te</para>
+</solution>
+</exercise>
+<exercise id="fs-idm281322784">
+<problem id="fs-idm420053952">
+<para id="fs-idm301757904">Notaðu lotukerfið til að gefa upp
+nafn og tákn fyrir hvert eftirfarandi frumefna:</para>
+<para id="fs-idm314254512">(a) halógeninn í sömu lotu og
+alkalímálmurinn með 11 róteindir</para>
+<para id="fs-idm420764736">(b) jarðalkalímálmurinn í sömu
+lotu og hlutlausa eðalgasið með 18 rafeindir</para>
+<para id="fs-idm197043344">(c) eðalgasið í sömu röð og
+samsæta með 30 nifteindir og 25 róteindir</para>
+<para id="fs-idm380409632">(d) eðalgasið í sömu lotu og gull</para>
+</problem>
+</exercise>
+<exercise id="fs-idm430165648">
+<problem id="fs-idm344749616">
+<para id="fs-idm527795280">Skrifaðu tákn fyrir hverja
+eftirfarandi hlutlausu samsætu. Látið sætistölu og massatölu fylgja með
+fyrir hverja.</para>
+<para id="fs-idm301531664">(a) alkalímálmurinn með 11
+róteindir og massatöluna 23</para>
+<para id="fs-idm366583472">(b) eðalgasfrumefnið með 75
+nifteindir í kjarna sínum og 54 rafeindir í hlutlausu atóminu</para><para id="fs-idm419552112">(c) samsætan með 33 róteindir og
+40 nifteindir í kjarna sínum</para>
+<para id="fs-idm42760208">(d) jarðalkalímálmurinn með 88
+rafeindir og 138 nifteindir</para>
+</problem>
+
+<solution id="fs-idm199490416">
+<para id="fs-idm344694848">(a) <m:math><m:msubsup><m:mrow/><m:mn>11</m:mn><m:mn>23</m:mn></m:msubsup><m:mtext>Na</m:mtext></m:math>; (b)
+<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>54</m:mn></m:mrow><m:mn>129</m:mn></m:msubsup><m:mtext>Xe</m:mtext></m:math>; (c) <m:math><m:msubsup><m:mrow/><m:mn>33</m:mn><m:mn>73</m:mn></m:msubsup><m:mtext>As</m:mtext></m:math>; (d) <m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>88</m:mn></m:mrow><m:mn>226</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math></para>
+</solution>
+
+
+</exercise>
+<exercise id="fs-idm251902464">
+<problem id="fs-idm350455760">
+<para id="fs-idm412465136">Skrifið tákn fyrir hverja af
+eftirfarandi hlutlausu samsætum. Látið sætistölu og massatölu fylgja með
+fyrir hverja.</para>
+<para id="fs-idm177686064">(a) kalkógenið með massatöluna
+125</para>
+<para id="fs-idm196586080">(b) halógenið þar sem langlífasta
+samsætan er geislavirk</para>
+<para id="fs-idm396189968">(c) eðalgasið, notað í lýsingu,
+með 10 rafeindir og 10 nifteindir</para>
+<para id="fs-idm242350400">(d) léttasti alkalímálmurinn með
+þrjár nifteindir</para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm201164080">
+<term>aktiníð</term>
+<meaning id="fs-idm201164080-meaning">innri hliðarmálmur í
+neðri af tveimur neðstu röðum lotukerfisins</meaning>
+</definition>
+<definition id="fs-idm207304016">
+<term>alkalímálmur</term>
+<meaning id="fs-idm207304016-meaning">frumefni í hópi 1</meaning>
+</definition>
+<definition id="fs-idm187131904">
+<term>jarðalkalímálmur</term>
+<meaning id="fs-idm187131904-meaning">frumefni í hópi 2</meaning>
+</definition>
+<definition id="fs-idm30748464">
+<term>kalkógen</term>
+<meaning id="fs-idm30748464-meaning">frumefni í hópi 16</meaning>
+</definition>
+<definition id="fs-idm20590592">
+<term>hópur</term>
+<meaning id="fs-idm20590592-meaning">lóðréttur dálkur í
+lotukerfinu</meaning>
+</definition>
+<definition id="fs-idm222932416">
+<term>halógen</term>
+<meaning id="fs-idm222932416-meaning">frumefni í hópi 17</meaning>
+</definition>
+<definition id="fs-idm237806112">
+<term>hýdrat</term>
+<meaning id="fs-idm237806112-meaning">efnasamband sem
+inniheldur eina eða fleiri vatnssameindir bundnar innan kristalla sinna</meaning>
+</definition>
+<definition id="fs-idm318657088">
+<term>hlutlaust gas</term>
+<meaning id="fs-idm318657088-meaning">(einnig eðalgas)
+frumefni í hópi 18</meaning>
+</definition>
+<definition id="fs-idm376829360">
+<term>innri hliðarmálmur</term>
+<meaning id="fs-idm376829360-meaning">(einnig lanþaníð eða
+aktiníð) frumefni í tveimur neðstu röðunum; ef í fyrstu röðinni, einnig
+kallað lanþaníð, eða ef í annarri röðinni, einnig kallað aktiníð</meaning>
+</definition>
+<definition id="fs-idm380448704">
+<term>lanþaníð</term>
+<meaning id="fs-idm380448704-meaning">innri hliðarmálmur í
+efri af tveimur neðstu röðum lotukerfisins</meaning>
+</definition>
+<definition id="fs-idm316504400">
+<term>aðalflokka frumefni</term>
+<meaning id="fs-idm316504400-meaning">(einnig, dæmigert
+frumefni) frumefni í hópum 1, 2 og 13–18</meaning>
+</definition>
+<definition id="fs-idm336887376">
+<term>málmur</term>
+<meaning id="fs-idm336887376-meaning">frumefni sem er
+glansandi, mótanlegt, góður leiðari varma og rafmagns</meaning>
+</definition>
+<definition id="fs-idm212688864">
+<term>hálfmálmur</term>
+<meaning id="fs-idm212688864-meaning">frumefni sem leiðir
+varma og rafmagn í meðallagi vel og býr yfir sumum eiginleikum málma og
+sumum eiginleikum málmleysingja</meaning>
+</definition>
+<definition id="fs-idm212442080">
+<term>eðalgas</term>
+<meaning id="fs-idm212442080-meaning">(einnig, hlutlaust gas)
+frumefni í hópi 18</meaning>
+</definition>
+<definition id="fs-idm236984448">
+<term>málmleysingi</term>
+<meaning id="fs-idm236984448-meaning">frumefni sem virðist
+daufleitt, lélegur leiðari varma og rafmagns</meaning>
+</definition>
+<definition id="fs-idm418320336">
+<term>lota</term>
+<meaning id="fs-idm418320336-meaning">(einnig, röð) lárétt röð
+í lotukerfinu</meaning>
+</definition>
+<definition id="fs-idm64490640">
+<term>lotulögmálið</term>
+<meaning id="fs-idm64490640-meaning">eiginleikar frumefnanna
+eru lotubundin virkni sætistalna þeirra.</meaning>
+</definition>
+<definition id="fs-idm227073184">
+<term>lotukerfið</term>
+<meaning id="fs-idm227073184-meaning">tafla yfir frumefnin sem
+setur frumefni með svipaða efnaeiginleika saman</meaning>
+</definition>
+<definition id="fs-idm434186032">
+<term>pniktógen</term>
+<meaning id="fs-idm434186032-meaning">frumefni í hóp 15</meaning>
+</definition>
+<definition id="fs-idm334010160">
+<term>aðalflokkafrumefni</term>
+<meaning id="fs-idm334010160-meaning">frumefni í dálkum 1, 2
+og 12–18</meaning>
+</definition>
+<definition id="fs-idm430389008">
+<term>lota</term>
+<meaning id="fs-idm430389008-meaning">lárétt röð í lotukerfinu</meaning>
+</definition>
+<definition id="fs-idm231758480">
+<term>hliðarmálmur</term>
+<meaning id="fs-idm231758480-meaning">frumefni í hópum 3–12
+(nánar tiltekið, 3–11; sjá kafla um hliðarmálma og samhæfingarefnafræði)</meaning>
+</definition>
+</glossary>
+</document>

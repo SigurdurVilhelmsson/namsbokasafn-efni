@@ -1,0 +1,910 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Formúlumassi og mólhugtakið</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68700</md:content-id>
+  <md:title>Formula Mass and the Mole Concept</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla
+geturðu:</para><list id="list-00001"><item>Reiknað út formúlumassa
+fyrir samgild og jónísk efnasambönd</item><item>Skilgreint magnseininguna
+mól og skylda stærð, tölu Avogadros</item><item>Útskýrt sambandið milli
+massa, móla og fjölda atóma eða sameinda og framkvæmt útreikninga til að
+leiða þessar stærðir hverja af annarri</item></list></md:abstract>
+  <md:uuid>daaceb82-341e-496e-a8b9-acd8fa32d9f7</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm28512">Margir halda því fram að nútímaefnafræði
+hafi hafist þegar vísindamenn fóru að kanna magnbundna þætti
+efnafræðinnar jafnt sem þá þáttbundnu. Til dæmis var atómkenning Daltons
+tilraun til að útskýra niðurstöður mælinga sem gerðu honum kleift að
+reikna út hlutfallslegan massa frumefna sem sameinuðust í ýmsum
+efnasamböndum. Með því að skilja sambandið milli massa atóma og
+efnaformúla efnasambanda getum við lýst samsetningu efna á magnbundinn
+hátt.</para>
+<section id="fs-idm30815968">
+<title>Formúlumassi</title>
+<section id="fs-idp16940464">
+<title>Formúlumassi fyrir samgild
+efni</title>
+<para id="fs-idp128238864">Fyrir samgild efni táknar formúlan
+fjölda og gerðir atóma sem mynda eina sameind efnisins; því má réttilega
+vísa til formúlumassans sem sameindamassa. Lítum á klóróform (CHCl<sub>3</sub>),
+samgilt efnasamband sem eitt sinn var notað sem svæfingarlyf við
+skurðaðgerðir og er nú aðallega notað við framleiðslu á
+tetraflúoretýleni, byggingarblokkinni fyrir „viðloðunarfríu“ fjölliðuna
+Teflon. Sameindaformúla klóróforms gefur til kynna að ein sameind
+innihaldi eitt kolefnisatóm, eitt vetnisatóm og þrjú klóratóm.
+Meðalsameindamassi klóróformsameindar er því jafn summu meðalatómmassa
+þessara atóma. {{XREF:2}} sýnir útreikningana sem notaðir eru til að
+leiða út sameindamassa klóróforms, sem er 119,37 amu.</para>
+<figure id="CNX_Chem_03_01_chloroform"><media id="fs-idp71460256" alt="A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “C l” and a blank, merged cell that runs the width of the first five columns. The second column contains the numbers “1,” “1,” and “3” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “12.01,” “1.008,” “106.35,” and “119.37.” There is a thick black line below the number 106.35. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Three green spheres are attached to a slightly smaller black sphere, which is also attached to a smaller white sphere. The green spheres lie beneath and to the sides of the black sphere while the white sphere is located straight up from the black sphere.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_chloroform.jpg"/>
+</media>
+<caption>Meðalmassi
+klóróformsameindar, CHCl<sub>3</sub>, er 119,37 amu, sem er summa meðalatómmassa
+hvers atóms sem hún er gerð úr. Líkanið sýnir sameindabyggingu
+klóróforms.</caption></figure>
+<para id="fs-idp139124096">Á sama hátt er sameindamassi
+aspirínsameindar, C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>, summa atómmassa níu kolefnisatóma, átta
+vetnisatóma og fjögurra súrefnisatóma, sem nemur 180,15 amu
+({{XREF:3}}).</para>
+<figure id="CNX_Chem_03_01_aspirin"><media id="fs-idp41603456" alt="A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “9,” “8,” and “4” as well as the merged, cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “16.00” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values: “108.09,” “8.064,” “64.00,” and “180.15.” There is a thick black line below the number 64.00. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Six black spheres are located in a six-sided ring and connected by alternating double and single black bonds. Attached to each of the four black spheres is one smaller white sphere. Attached to the farthest right black sphere is a red sphere, connected to two more black spheres, all in a row. Attached to the last black sphere of that row are two more white spheres. Attached to the first black sphere of that row is another red sphere. A black sphere, attached to two red spheres and a white sphere is attached to the black sphere on the top right of the six-sided ring.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_aspirin.jpg"/>
+</media>
+<caption>Meðalmassi
+aspirínsameindar er 180,15 amu. Líkanið sýnir sameindabyggingu aspiríns,
+C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>.</caption></figure>
+<example id="fs-idp17719968"><para id="fs-idp1127280"><title>Útreikningur á
+sameindamassa fyrir samgilt efnasamband</title>Íbúprófen, C<sub>13</sub>H<sub>18</sub>O<sub>2</sub>, er samgilt
+efnasamband og virka efnið í nokkrum vinsælum lausasölulyfjum, svo sem
+Advil og Motrin. Hver er sameindamassi (amu) þessa efnasambands?</para>
+<para id="fs-idm3892496"><title>Lausn</title>Sameindir þessa efnasambands eru
+samsettar úr 13 kolefnisatómum, 18 vetnisatómum og 2 súrefnisatómum.
+Samkvæmt aðferðinni sem lýst er hér að ofan er meðalsameindamassi þessa
+efnasambands því:</para>
+<media id="fs-idm9191936" alt="A table is shown that is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “13,” “8,” and “2” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “16.00” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “156.13,” “18.114,” “32.00,” and “206.27.” There is a thick black line below the number 32.00. The merged cell under the first five columns reads “Molecular mass.” To the right is a ball-and-stick model of the structure. At the center, it shows six black spheres arranged in a six-sided ring with alternating double bonds. The two black spheres at the top and bottom of the six-sided ring are each bonded to one, smaller, white sphere. The black sphere on the left side of the six-sided ring is connect to another black sphere. This sphere is connected to two smaller, white spheres and another black sphere. This black sphere is connected to one, smaller white sphere, and two other black spheres. Each of these last two black spheres is connected to two smaller, white spheres. The black sphere on the right side of the six-sided ring is connected to another black sphere. This black sphere is connected to one smaller, white sphere and two other black spheres. The black sphere that is connected to it and is situated to the top right is connected to two smaller, white spheres. The black sphere connected towards the bottom right is connected to two red spheres. It forms a double bond with one of these red spheres and the other red sphere is connected to a smaller, white sphere.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_ibuprofenmass_img.jpg"/>
+</media>
+<para id="fs-idm58442752"><title>Spurning til íhugunar</title>Asetamínófen, C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub>, er
+samgilt efnasamband og virka efnið í nokkrum vinsælum
+lausasöluverkjalyfjum, svo sem Tylenol. Hver er sameindamassi (amu)
+þessa efnasambands?</para>
+<note id="fs-idp13703888"><title>Answer:</title>
+<para id="fs-idm8152064">151,16 amu</para></note>
+</example>
+</section>
+<section id="fs-idm60917056">
+<title>Formúlumassi fyrir jónaefni</title>
+<para id="fs-idp13429376">Jónaefni eru samsett úr stökum
+katjónum og anjónum sem sameinast í hlutföllum til að mynda rafhlutlaust
+efni í heild. Formúlumassi fyrir jónaefni er reiknaður á sama hátt og
+formúlumassi fyrir samgild efnasambönd: með því að leggja saman
+meðalatómmassa allra atóma í efnaformúlu efnasambandsins. Hafðu þó í
+huga að formúla fyrir jónaefni táknar ekki samsetningu stakrar
+sameindar, svo það er ekki rétt að vísa til hans sem „sameindamassa“.</para>
+<para id="fs-idm4173824">Sem dæmi má nefna natríumklóríð, NaCl,
+efnafræðilega heitið á venjulegu matarsalti. Natríumklóríð er jónaefni
+sem samanstendur af natríumkatjónum, Na<sup>+</sup>, og klóríðanjónum, Cl<sup>−</sup>,
+sameinuðum í hlutfallinu 1:1. Formúlumassi þessa efnasambands er
+reiknaður sem 58,44 amu (sjá {{XREF:4}}).</para>
+<figure id="CNX_Chem_03_01_saltMass"><media id="fs-idm4901808" alt="A table and diagram are shown. The table is made up of six columns and four rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space and “Subtotal (a m u).” The first column contains the symbols “N a”, “C l,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “1” and “1” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “22.99” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “22.99,” “35.45,” and “58.44.” There is a thick black line below the number “35.45.” The merged cell under the first five columns reads “Formula mass.” To the left of the table is a diagram of a chemical structure. The diagram shows green and purple spheres placed in an alternating pattern, making up the corners of eight stacked cubes to form one larger cube. The green spheres are slightly smaller than the purple spheres.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_saltMass.jpg"/>
+</media>
+<caption>Matarsalt, NaCl,
+inniheldur fylki af natríum- og klóríðjónum sem eru saman í hlutfallinu
+1:1. Formúlumassi þess er 58,44 amu.</caption></figure>
+<para id="fs-idm31455504">Athugið að meðalmassi hlutlausra
+natríum- og klóratóma var notaður í þessum útreikningi, frekar en massi
+natríumkatjóna og klóranjóna. Þessi aðferð er fullkomlega ásættanleg
+þegar formúlumassi jónaefnis er reiknaður. Jafnvel þótt natríumkatjón
+hafi örlítið minni massa en natríumatóm (þar sem það vantar rafeind), þá
+vegur sú staðreynd að klóranjón er örlítið massameiri en klóratóm (vegna
+auka rafeindarinnar) upp á móti þessum mun. Þar að auki er massi
+rafeindar hverfandi lítill miðað við massa dæmigerðs atóms. Jafnvel
+þegar massi stakrar jónar er reiknaður má yfirleitt hunsa rafeindirnar
+sem vantar eða eru umfram, þar sem framlag þeirra til heildarmassans er
+hverfandi og endurspeglast aðeins í ómarktækum aukastöfum sem tapast
+þegar reiknaður massi er rétt námundaður. Fáu undantekningarnar frá
+þessari viðmiðunarreglu eru mjög léttar jónir sem eru fengnar úr
+frumefnum með nákvæmlega þekktan atómmassa.</para>
+<example id="fs-idm73270640"><para id="fs-idm19285728"><title>Útreikningur á
+formúlumassa jónaefnis</title>Álsúlfat, Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>, er
+jónaefni sem er notað við pappírsframleiðslu og í ýmsum
+vatnshreinsunarferlum. Hver er formúlumassi (amu) þessa efnasambands?</para>
+<para id="fs-idm31510704"><title>Lausn</title>Efnaformúla þessa efnasambands gefur
+til kynna að það innihaldi Al<sup>3+</sup> og SO<sub>4</sub><sup>2−</sup> jónir saman í hlutfallinu
+2:3. Til að reikna út formúlumassa er gagnlegt að endurskrifa formúluna
+á einfaldara formi, Al<sub>2</sub>S<sub>3</sub>O<sub>12</sub>. Samkvæmt aðferðinni sem lýst er hér
+að ofan er formúlumassi þessa efnasambands reiknaður sem hér segir:</para>
+<media id="fs-idm34238496" alt="A table is shown that is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “A l,” “S,” “O,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “2,” “3,” and “12” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “26.98,” “32.06,” and “16.00” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “53.96,” “96.18,” “192.00,” and “342.14.” There is a thick black line under the number 192.00. The merged cell under the first five columns reads “Formula mass.” To the right of this table is a ball-and-stick structure. It shows yellow and grey sphere connected to red spheres in a complex pattern. The yellow and grey spheres are similar in size, but the red spheres appear to be smaller by comparison.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_alsulfatemass_img.jpg"/>
+</media>
+<para id="fs-idp70748048"><title>Spurt og svarað</title>Kalsíumfosfat, Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>, er
+jónaefni og algengt kekkjavarnarefni sem bætt er í matvæli. Hver er
+formúlumassi (amu) kalsíumfosfats?</para>
+<note id="fs-idm5833232"><title>Answer:</title>
+<para id="fs-idm33165520">310,18 amu</para></note>
+</example>
+</section>
+<para id="fs-idp76705136">Í fyrri kafla þessa texta var lýst
+þróun atómmassaeiningarinnar, hugtakinu um meðalatómmassa og notkun
+efnaformúla til að tákna frumefnasamsetningu efna. Hægt er að útvíkka
+þessar hugmyndir til að reikna út <emphasis effect="bold">formúlumassa</emphasis> efnis með því að
+leggja saman meðalatómmassa allra atóma sem táknuð eru í efnaformúlu
+efnisins.</para>
+</section>
+<section id="fs-idp3385536">
+<title>Mól</title>
+<para id="fs-idm38739232">Auðkenni efnis er ekki aðeins
+skilgreint af tegundum atóma eða jóna sem það inniheldur, heldur einnig
+af magni hverrar tegundar atóms eða jónar. Til dæmis eru vatn, H<sub>2</sub>O, og
+vetnisperoxíð, H<sub>2</sub>O<sub>2</sub>, lík að því leyti að sameindir þeirra eru
+samsettar úr vetnis- og súrefnisatómum. Hins vegar, vegna þess að
+vetnisperoxíðsameind inniheldur tvö súrefnisatóm, öfugt við
+vatnssameindina sem hefur aðeins eitt, sýna efnin tvö mjög ólíka
+eiginleika. Í dag gera háþróuð tæki kleift að mæla beint þessa
+skilgreinandi smásæju eiginleika; hins vegar voru sömu eiginleikar
+upphaflega fengnir úr mælingum á stórsæjum eiginleikum (massa og rúmmáli
+efna í lausu) með tiltölulega einföldum verkfærum (vogum og
+mæliglerjum). Þessi tilraunaaðferð krafðist þess að ný eining fyrir
+efnismagn yrði tekin upp, <emphasis effect="italics">mól</emphasis>, sem er enn ómissandi í nútíma
+efnafræði.</para>
+<para id="fs-idp4269776"><emphasis effect="italics">Mól</emphasis> er magneining svipuð kunnuglegum
+einingum eins og par, tylft, gros o.s.frv. Hún gefur tiltekna mælingu á
+<emphasis effect="italics">fjölda</emphasis> atóma eða sameinda í efnsýni. Ein latnesk merking orðsins
+„mole“ er „mikill massi“ eða „magn“, sem er í samræmi við notkun þess
+sem heiti á þessari einingu. Mól veitir tengingu milli auðmælds stórsæs
+eiginleika, heildarmassa, og afar mikilvægs grundvallareiginleika,
+fjölda atóma, sameinda og svo framvegis. <emphasis effect="bold">Mól</emphasis> af efni er það magn sem
+inniheldur 6,02214076 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> stakar einingar (atóm eða
+sameindir). Þessi stóra tala er grundvallarfasti þekktur sem *<emphasis effect="italics">tala
+Avogadros (</emphasis>N<sub>A</sub><emphasis effect="italics">)</emphasis>* eða Avogadros-fasti til heiðurs ítalska
+vísindamanninum Amedeo Avogadro. Þessi fasti er réttilega gefinn upp með
+skýrri einingu „á mól“, en þægilega námunduð útgáfa er 6,022
+<m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup>/mól.</para>
+<para id="fs-idm42768912">Í samræmi við skilgreiningu sína sem
+magneining inniheldur 1 mól af hvaða frumefni sem er sama fjölda atóma
+og 1 mól af hvaða öðru frumefni sem er. Massi 1 móls af mismunandi
+frumefnum er hins vegar mismunandi, þar sem massi einstakra atóma er
+verulega ólíkur. <emphasis effect="bold">Mólmassi</emphasis> frumefnis (eða efnasambands) er massi í
+grömmum af 1 móli af því efni, eiginleiki sem er gefinn upp í einingum
+grömm á mól (g/mól) (sjá {{XREF:5}}).</para>
+<figure id="CNX_Chem_03_02_moles" class="scaled-down">
+<media id="fs-idm272620112" alt="This figure contains eight different substances displayed on white circles. The amount of each substance is visibly different.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_moles-6296.jpg"/>
+</media>
+<caption>Hvert sýni
+inniheldur 6
+
+.022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> atóm — 1,00 mól af atómum. Frá vinstri til
+hægri (efri röð): 65,4 g sink, 12,0 g kolefni, 24,3 g magnesíum og 63,5
+g kopar. Frá vinstri til hægri (neðri röð): 32,1 g brennisteinn, 28,1 g
+kísill, 207 g blý og 118,7 g tin. (Heimild: breyting á verki eftir Mark
+Ott)</caption>
+</figure>
+<para id="fs-idm26436032">Mólmassi hvers efnis er tölulega
+jafngildur atóm- eða formúlumassa þess í amu. Samkvæmt skilgreiningu amu
+vegur eitt <sup>12</sup>C atóm 12 amu (atómmassi þess er 12 amu). Eitt mól af
+<sup>12</sup>C vegur 12 g (mólmassi þess er 12 g/mól). Þetta samband gildir fyrir
+öll frumefni, þar sem atómmassar þeirra eru mældir miðað við
+amu-viðmiðunarefnið, <sup>12</sup>C. Með því að útvíkka þessa meginreglu er
+mólmassi efnasambands í grömmum sömuleiðis tölulega jafngildur
+formúlumassa þess í amu ({{XREF:6}}).</para>
+<figure id="CNX_Chem_03_02_compound" class="scaled-down"><media id="fs-idm24308080" alt="This photo shows two vials filled with a colorless liquid. It also shows two bowls: one filled with an off-white powder and one filled with a bright red powder.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_compound.jpg"/>
+</media>
+
+<caption>Hvert sýni
+inniheldur 6,02 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> sameindir eða formúlueiningar —
+1,00 mól af efnasambandinu eða frumefninu. Réttsælis frá efra vinstra
+horni: 130,2 g af C<sub>8</sub>H<sub>17</sub>OH (1-oktanól, formúlumassi 130,2 amu), 454,4
+g af HgI<sub>2</sub> (kvikasilfurs(II)joðíð, formúlumassi 454,4 amu), 32,0 g af
+CH<sub>3</sub>OH (metanól, formúlumassi 32,0 amu) og 256,5 g af S<sub>8</sub>
+(brennisteinn, formúlumassi 256,5 amu). (Heimild: Sahar Atwa)</caption></figure>
+<table id="fs-idp17650992" class="unnumbered" summary="A table is shown that is made up of four columns and six rows. The header row reads: “Element,” “Average Atomic Mass (a m u),” “Molar Mass (g / m o l),” and “Atoms / Mole.” The first column contains the symbols “C,” “H,” “O,” “N a,” and “C l.” The second column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “35.45.” The third column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “33.45.” The final column contains the value “6.022 times 10 superscript 23” in each cell."><label/>
+<tgroup cols="4"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row valign="top">
+<entry align="center">Frumefni</entry>
+<entry align="center">Meðalatómmassi (amu)</entry>
+<entry align="center">Mólmassi (g/mól)</entry>
+<entry align="center">Atóm/mól</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="center">C</entry>
+<entry align="center">12,01</entry>
+<entry align="center">12,01</entry>
+<entry align="center">6,022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup></entry>
+</row>
+<row valign="top">
+<entry align="center">H</entry>
+<entry align="center">1,008</entry>
+<entry align="center">1,008</entry>
+<entry align="center">6,022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup></entry>
+</row>
+<row valign="top">
+<entry align="center">O</entry>
+<entry align="center">16,00</entry>
+<entry align="center">16,00</entry>
+<entry align="center">6,022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup></entry></row>
+<row valign="top">
+<entry align="center">Na</entry>
+<entry align="center">22,99</entry>
+<entry align="center">22,99</entry>
+<entry align="center">6,022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup></entry></row>
+<row valign="top">
+<entry align="center">Cl</entry>
+<entry align="center">35,45</entry>
+<entry align="center">35,45</entry>
+<entry align="center">6,022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup></entry></row>
+</tbody>
+
+
+</tgroup>
+</table>
+<para id="fs-idp18068224">Þótt atómmassi og mólmassi séu
+tölulega jafngildir, hafðu í huga að þeir eru mjög ólíkir hvað varðar
+stærðargráðu, eins og sést á miklum mun á stærð viðkomandi eininga (amu
+á móti g). Til að skilja hversu gríðarlega stórt mólið er, íhugaðu
+lítinn vatnsdropa sem vegur um 0,03 g (sjá {{XREF:7}}). Þótt þetta sé
+aðeins örlítið brot af 1 móli af vatni (~18 g), inniheldur það fleiri
+vatnssameindir en hægt er að ímynda sér. Ef sameindunum væri dreift
+jafnt á um sjö milljarða manna á jörðinni, myndi hver einstaklingur fá
+meira en 100 milljarða sameinda.</para>
+<figure id="CNX_Chem_03_02_water" class="scaled-down">
+<media id="fs-idm47391008" alt="A close-up photo of a water droplet on a leaf is shown. The water droplet is not perfectly spherical.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_water.jpg"/>
+</media>
+<caption>Fjöldi sameinda í
+einum vatnsdropa er um 100 milljörðum sinnum meiri en fjöldi fólks á
+jörðinni. (Heimild: „tanakawho“/Wikimedia commons)</caption>
+</figure>
+<note id="fs-idm10521392" class="chemistry link-to-learning">
+<para id="fs-idp18455776">Mólið er notað í efnafræði til að
+tákna 6,022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> af einhverju, en það getur verið
+erfitt að gera sér í hugarlund svo stóra tölu. Horfðu á þetta
+{{LINK:1}}myndband{{/LINK}} og svaraðu síðan „Hugsaðu“-spurningunum sem
+fylgja. Kynntu þér mólið nánar með því að skoða upplýsingarnar undir
+„Ítarlegra efni“.”</para>
+</note>
+<para id="fs-idm4828384">Hægt er að nota sambandið milli
+formúlumassa, móls og tölu Avogadros til að reikna út ýmis magn sem lýsa
+samsetningu efna og efnasambanda, eins og sýnt er í næstu dæmum.</para>
+<example id="fs-idp76540048">
+<para id="fs-idp15725488"><title>Útreikningur á mólum
+út frá grömmum fyrir frumefni</title>Samkvæmt næringarleiðbeiningum frá
+landbúnaðarráðuneyti Bandaríkjanna er áætluð meðalþörf fyrir kalíum í
+fæðu 4,7 g. Hver er áætluð meðalþörf fyrir kalíum í mólum?</para>
+<para id="fs-idm16014480"><title>Lausn</title>Massi K er gefinn og spurt er um
+samsvarandi magn af K í mólum. Samkvæmt lotukerfinu er atómmassi K 39,10
+amu og því er mólmassi þess 39,10 g/mól. Gefinn massi K (4,7 g) er
+aðeins meira en einn tíundi af mólmassanum (39,10 g), þannig að
+sanngjarnt „gróft“ mat á fjölda móla væri aðeins meira en 0,1 mól.</para>
+<para id="fs-idm1867456">Hægt er að reikna mólmagn efnis með
+því að deila massa þess (g) með mólmassa þess (g/mól):</para>
+<media id="fs-idm11797312" class="scaled-down" alt="A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Mass of K atoms ( g )” while the one on the right contains the phrase, “Moles of K atoms ( mol ).” There is a phrase under the arrow that says, “Divide by molar mass (g / mol).”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_potassium_img-f1d1.jpg"/>
+</media>
+<para id="fs-idp14697696">Þáttamerkingaraðferðin styður þessa
+stærðfræðilegu nálgun þar sem einingin „g“ styttist út og svarið hefur
+eininguna „mól“:</para>
+<equation id="fs-idp8892544" class="unnumbered"><m:math><m:mrow><m:mn>4.7</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol K</m:mtext></m:mrow><m:mrow><m:mn>39.10</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g K</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.12</m:mn><m:mspace width="0.2em"/><m:mtext>mol K</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm29254000">Útreiknað magn (0,12 mól K) er í
+samræmi við grófa matið okkar, þar sem það er aðeins meira en 0,1 mól.</para>
+<para id="fs-idm33771376"><title>Prófaðu þig áfram</title>Beryllíum er léttur málmur sem
+notaður er til að búa til gagnsæja röntgengeislaglugga fyrir
+læknisfræðileg myndgreiningartæki. Hversu mörg mól af Be eru í þunnri
+filmu sem vegur 3,24 g?</para>
+<note id="fs-idp73845104"><title>Answer:</title>
+<para id="fs-idm9505408">0,360 mól</para></note>
+</example>
+<example id="fs-idp15853040">
+<para id="fs-idp15452464"><title>Útreikningur á grömmum
+út frá mólum fyrir frumefni</title>Einn lítri af lofti inniheldur 9,2
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> mól af argoni. Hver er massi Ar í einum lítra af
+lofti?</para>
+<para id="fs-idm19496816"><title>Lausn</title>Mólmagn Ar er gefið og það á að nota
+til að finna samsvarandi massa í grömmum. Þar sem magn Ar er minna en 1
+mól verður massinn minni en massi 1 móls af Ar, sem er um það bil 40 g.
+Mólmagnið sem um ræðir er um það bil einn þúsundasti (<sub>10<sup>−3</sup>) af móli
+og því ætti samsvarandi massi að vera um það bil einn þúsundasti af
+mólmassanum (</sub>0,04 g):</para>
+<media id="fs-idp10919328" class="scaled-down" alt="A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Moles of A r atoms ( mol )” while the one on the right contains the phrase, “Mass of A r atoms ( g ).” There is a phrase under the arrow that says “Multiply by molar mass ( g / mol ).”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_argon_img-9025.jpg"/>
+</media>
+<para id="fs-idm1982944">Í þessu tilviki segir rökfræðin (og
+þáttamerkingaraðferðin styður) að margfalda gefið magn (mól) með
+mólmassanum (g/mól):</para>
+<equation id="fs-idp10617648" class="unnumbered"><m:math><m:mrow><m:mn>9.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:mtext>Ar</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>39.95</m:mn><m:mspace width="0.2em"/><m:mtext>g Ar</m:mtext></m:mrow><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mspace width="0.2em"/><m:mtext>Ar</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.037</m:mn><m:mspace width="0.2em"/><m:mtext>g Ar</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm31048000">Niðurstaðan er í samræmi við
+væntingar okkar, um 0,04 g Ar.</para>
+<para id="fs-idm25528064"><title>Prófaðu þig áfram</title>Hver er massi 2,561 móls af gulli?</para>
+<note id="fs-idm64655584"><title>Answer:</title>
+<para id="fs-idp11414864">504,5 g</para></note>
+</example>
+<example id="fs-idm8741648">
+<para id="fs-idm24646960"><title>Útreikningur á fjölda
+atóma út frá massa fyrir frumefni</title>Kopar er almennt notaður til að búa
+til rafmagnsvír ({{XREF:8}}). Hversu mörg koparatóm eru í 5,00 g af
+koparvír?</para>
+<!-- figure handled separately -->
+<para id="fs-idm40043360"><title>Lausn</title>Fjölda Cu-atóma í vírnum má
+auðveldlega reikna út frá massa hans með tveggja þrepa útreikningi:
+fyrst er mólmagn Cu reiknað og síðan er tala Avogadros (<emphasis effect="italics">N<sub>A</sub></emphasis>) notuð
+til að breyta þessu mólmagni í fjölda Cu-atóma:</para>
+<media id="fs-idm28023104" alt="A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, “Mass of C u atoms ( g ),” the middle box reads, “Moles of C u atoms ( mol ),” while the one on the right contains the phrase, “Number of C u atoms.” There is a phrase under the left arrow that says “Divide by molar mass (g / mol),” and under the right arrow it states, “Multiply by Avogadro’s number ( mol superscript negative one ).”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_copperMoles_img-a962.jpg"/>
+</media>
+<para id="fs-idp18362672">Miðað við að gefinn sýnismassi (5.00
+g) er aðeins minna en einn tíundi af massa 1 móls af Cu (<sub>64 g), þannig
+að raunhæft mat á fjölda atóma í sýninu væri í kringum einn tíundi af
+<emphasis effect="italics">N</sub>A~</emphasis>, eða um það bil 10<sup>22</sup> Cu-atóm. Tveggja þrepa útreikningurinn
+gefur:</para>
+<equation id="fs-idp20004432" class="unnumbered"><m:math><m:mrow><m:mn>5.00</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>Cu</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mspace width="0.2em"/><m:mtext>Cu</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>63.55</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g Cu</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>6.022</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>Cu atoms</m:mtext></m:mrow><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol Cu</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>4.74</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>22</m:mn></m:mrow></m:msup><m:mtext>Cu atoms</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp27818080">Þáttamerkingaraðferðin gefur æskilega
+styttingu eininga og útreiknuð niðurstaða er í stærðargráðunni 10<sup>22</sup>
+eins og við var að búast.</para>
+<para id="fs-idp18156240"><title>Prófaðu þekkingu þína</title>Gullgrafari sem vaskar gull í á
+safnar 15,00 g af hreinu gulli. Hversu mörg Au-atóm eru í þessu magni af
+gulli?</para>
+<note id="fs-idm4952320"><title>Answer:</title>
+<para id="fs-idm3056704">4,586 <m:math><m:mo>×</m:mo></m:math> 10<sup>22</sup> Au-atóm</para></note>
+</example>
+<figure id="CNX_Chem_03_02_copper" class="scaled-down">
+<media id="fs-idm20298688" alt="A close-up photo of a spool of copper wire is shown.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_copper.jpg"/>
+</media>
+<caption>Koparvír er
+samsettur úr mörgum, mörgum atómum af Cu. (Mynd: Emilian Robert Vicol)</caption>
+</figure>
+<example id="fs-idm1714048">
+<para id="fs-idp75300336"><title>Útleiðsla móla úr
+grömmum fyrir efnasamband</title>Líkaminn okkar myndar prótein úr
+amínósýrum. Ein þessara amínósýra er glýsín, sem hefur sameindaformúluna
+C<sub>2</sub>H<sub>5</sub>O<sub>2</sub>N. Hversu mörg mól af glýsínsameindum eru í 28,35 g af
+glýsíni?</para>
+<para id="fs-idp1446192"><title>Lausn</title>Leiðið út fjölda móla efnasambands út
+frá massa þess með sömu aðferð og notuð var fyrir frumefni í {{XREF:9}}:</para>
+<media id="fs-idm4806704" alt="A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Mass of C subscript 2 H subscript 5 O subscript 2 N ( g )” while the box on the right contains the phrase, “Moles of C subscript 2 H subscript 5 O subscript 2 N ( mol ).” There is a phrase under the arrow that says “Divide by molar mass (g / mol).”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_glycine_img-7c96.jpg"/>
+</media>
+<para id="fs-idm36743808">Mólmassi glýsíns er nauðsynlegur
+fyrir þennan útreikning og hann er reiknaður á sama hátt og
+sameindamassi þess. Eitt mól af glýsíni, C<sub>2</sub>H<sub>5</sub>O<sub>2</sub>N, inniheldur 2 mól
+af kolefni, 5 mól af vetni, 2 mól af súrefni og 1 mól af köfnunarefni:</para>
+<media id="fs-idm4204416" alt="A table is shown that is made up of six columns and six rows. The header row reads: “Element,” “Quantity (mol element / mol compound,” a blank space, “Molar mass (g / mol element),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” “N,” and a merged cell. The merged cell runs the width of the first five columns. The second column contains the numbers “2,” “5,” “2,” and “1” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” “16.00,” and “14.007” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “24.02,” “5.040,” “32.00,” “14.007,” and “75.07.” There is a thick black line under the number 14.007. The merged cell under the first five columns reads “Molar mass (g / mol compound). There is a ball-and-stick drawing to the right of this table. It shows a black sphere that forms a double bond with a slightly smaller red sphere, a single bond with another red sphere, and a single bond with another black sphere. The red sphere that forms a single bond with the black sphere also forms a single bond with a smaller, white sphere. The second black sphere forms a single bond with a smaller, white sphere and a smaller blue sphere. The blue sphere forms a single bond with two smaller, white spheres each.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_glycinemass_img.jpg"/>
+</media>
+<para id="fs-idm24120480">Uppgefinn massi glýsíns (<sub>28 g) er
+aðeins meira en þriðjungur mólmassans (</sub>75 g/mól), þannig að búast má
+við að útreiknuð niðurstaða sé aðeins meiri en þriðjungur úr móli (~0,33
+mól). Með því að deila massa efnasambandsins með mólmassa þess fæst:</para>
+<equation id="fs-idp15857520" class="unnumbered"><m:math><m:mrow><m:mn>28.35</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mtext>glycine</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol glycine</m:mtext></m:mrow><m:mrow><m:mn>75.07</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g glycine</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.378</m:mn><m:mspace width="0.2em"/><m:mtext>mol glycine</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp10905424">Þessi niðurstaða er í samræmi við
+grófa matið.</para>
+<para id="fs-idm30097376"><title>Prófaðu þekkingu þína</title>Hversu mörg mól af súkrósa,
+C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, eru í 25 g sýni af súkrósa?</para>
+<note id="fs-idm27877216"><title>Answer:</title>
+<para id="fs-idm70604176">0,073 mól</para></note>
+</example>
+<example id="fs-idp10913296">
+<para id="fs-idm15991984"><title>Útleiðsla gramma úr
+mólum fyrir efnasamband</title>C-vítamín er samgilt efnasamband með
+sameindaformúluna C<sub>6</sub>H<sub>8</sub>O<sub>6</sub>. Ráðlagður dagskammtur af C-vítamíni
+fyrir börn á aldrinum 4–8 ára er 1,42 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> mól. Hver
+er massi þessa skammts í grömmum?</para>
+<para id="fs-idm22795264"><title>Lausn</title>Eins og með frumefni er hægt að leiða
+massa efnasambands út frá mólmagni þess eins og sýnt er:</para>
+<media id="fs-idm20822880" class="scaled-down" alt="A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Moles of vitamin C ( mol )” while the one the right contains the phrase, “Mass of vitamin C ( g )”. There is a phrase under the arrow that says “Multiply by molar mass (g / mol).”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_vitC_img-e537.jpg"/>
+</media>
+<para id="fs-idp17223008">Mólmassi þessa efnasambands er
+reiknaður 176,124 g/mól. Uppgefinn fjöldi móla er mjög lítið brot úr
+móli (<sub>10<sup>−4</sup> eða einn tíuþúsundasti); því má búast við að samsvarandi
+massi sé um einn tíuþúsundasti af mólmassanum (</sub>0,02 g). Útreikningurinn
+gefur:</para>
+<equation id="fs-idm25244336" class="unnumbered"><m:math><m:mrow><m:mn>1.42</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mspace width="0.2em"/><m:mtext>vitamin C</m:mtext></m:menclose><m:mrow><m:mspace width="0.2em"/><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>176.124</m:mn><m:mspace width="0.2em"/><m:mtext>g vitamin C</m:mtext></m:mrow><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mspace width="0.2em"/><m:mtext>vitamin C</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.0250</m:mn><m:mspace width="0.2em"/><m:mtext>g vitamin C</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp907024">Þetta er í samræmi við vænta
+niðurstöðu.</para>
+<para id="fs-idm28230576"><title>Prófaðu þekkingu þína</title>Hver er massi 0,443 móla af
+hýdrasíni, N<sub>2</sub>H<sub>4</sub>?</para>
+<note id="fs-idp75070976"><title>Answer:</title>
+<para id="fs-idm15513488">14,2 g</para></note>
+</example>
+<example id="fs-idp13749376">
+<para id="fs-idm5631088"><title>Að leiða út fjölda
+atóma og sameinda út frá massa efnasambands</title>Pakki af gervisætuefni inniheldur 40,0
+mg af sakkaríni (C<sub>7</sub>H<sub>5</sub>NO<sub>3</sub>S), sem hefur byggingarformúluna:</para>
+<media id="fs-idp74120656" class="scaled-down" alt="A diagram of a molecule is shown that is made up of two ring structures attached together. The left ring is hexagonal in shape with C atoms at each point of the ring and alternating single and double bonds. A double bond occurs between the C atom at the top vertex of the hexagon and the C atom down and to the left of it. The C atoms on the left, top, and bottom of the structure form a single bond to an H atom each. The two right C atoms make up one side of a pentagon and the other points of the pentagon are made up of a C atom, an N atom, and an S atom if read clockwise. The C atom forms a double bond with an O atom. The N atom forms a single bond with an H atom. The S atom forms two double bonds to two O atoms.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_saccharin_img.jpg"/>
+</media>
+<para id="fs-idp33552">Að gefnu að sakkarín hefur mólmassa upp
+á 183,18 g/mól, hversu margar sakkarínsameindir eru í 40,0 mg (0,0400 g)
+sýni af sakkaríni? Hversu mörg kolefnisatóm eru í sama sýni?</para>
+<para id="fs-idm20251168"><title>Lausn</title>Fjöldi sameinda í tilteknum massa
+efnasambands er reiknaður út með því að finna fyrst fjölda móla, eins og
+sýnt er í {{XREF:10}}, og margfalda síðan með tölu Avogadros:</para>
+<media id="fs-idm1701808" alt="A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, “Mass of C subscript seven H subscript five N O subscript three S ( g ),” the middle box reads, “Moles of C subscript seven H subscript five N O subscript three S ( mol ),” while the one on the right contains the phrase, “Number of C subscript seven H subscript five N O subscript three S molecules.” There is a phrase under the left arrow that says, “Divide by molar mass (g / mol),” and under the right arrow it states, “Multiply by Avogadro’s number ( mol superscript negative one).”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_sacch_img-3278.jpg"/>
+</media>
+<para id="fs-idp195552">Með því að nota uppgefinn massa og
+mólmassa fyrir sakkarín fæst:</para>
+<equation id="fs-idp15266832" class="unnumbered"><m:math>
+  <m:mtable columnalign="left">
+    <m:mtr><m:mtd><m:mn>0.0400</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>7</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:mtext>S</m:mtext></m:menclose>
+    <m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>7</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>S</m:mtext></m:menclose>
+  </m:mrow><m:mrow><m:mn>183.18</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>7</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>S</m:mtext></m:menclose>
+</m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>6.022</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>7</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>S</m:mtext>
+<m:mspace width="0.2em"/><m:mtext>molecules</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>7</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>S</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr>
+    <m:mtr><m:mtd><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>1.31</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>20</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>7</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:mtext>S</m:mtext><m:mspace width="0.2em"/><m:mtext>molecules</m:mtext>
+  </m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp11370272">Formúla efnasambandsins sýnir að hver
+sameind inniheldur sjö kolefnisatóm og því er fjöldi C-atóma í sýninu:</para>
+<equation id="fs-idp3901232" class="unnumbered"><m:math><m:mrow><m:mn>1.31</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>20</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>7</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>S molecules</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>7</m:mn><m:mspace width="0.2em"/><m:mtext>C atoms</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>7</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>S molecule</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>9.17</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>20</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>C atoms</m:mtext></m:mrow></m:math></equation><para id="fs-idp13712512"><title>Prófaðu þig áfram</title>Hversu margar C<sub>4</sub>H<sub>10</sub> sameindir eru
+í 9,213 g af þessu efnasambandi? Hversu mörg vetnisatóm?</para>
+<note id="fs-idp51031648"><title>Answer:</title>
+<para id="fs-idp14642528">9,545 <m:math><m:mo>×</m:mo></m:math> 10<sup>22</sup>
+sameindir C<sub>4</sub> H<sub>10</sub>; 9,545 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> atóm H</para>
+</note>
+</example>
+<note id="fs-idp25788096" class="chemistry sciences-interconnect">
+<title>Að telja
+taugaboðefnissameindir í heilanum</title>
+<para id="fs-idm4217280">Heilinn er stjórnstöð
+miðtaugakerfisins ({{XREF:11}}). Hann sendir og tekur á móti boðum til
+og frá vöðvum og öðrum innri líffærum til að fylgjast með og stjórna
+starfsemi þeirra; hann vinnur úr áreiti sem skynfæri nema til að stýra
+víxlverkun við umheiminn; og hann hýsir flókin lífeðlisfræðileg ferli
+sem gefa af sér vitsmuni okkar og tilfinningar. Hin víðfeðma fræðigrein
+taugavísinda spannar alla þætti byggingar og starfsemi
+miðtaugakerfisins, þar á meðal rannsóknir á líffærafræði og
+lífeðlisfræði heilans. Miklar framfarir hafa orðið í heilarannsóknum á
+síðustu áratugum og BRAIN-verkefnið, alríkisverkefni sem tilkynnt var um
+árið 2013, miðar að því að hraða og nýta þessar framfarir með samstilltu
+átaki ýmissa iðnaðar-, fræðasamfélags- og ríkisstofnana (nánari
+upplýsingar á www.whitehouse.gov/share/brain-initiative).</para>
+<figure id="CNX_Chem_03_01_brain" class="scaled-down"><media id="fs-idp71769904" alt="Two pictures are shown. The left picture shows the human brain. The right picture is a microscopic image that depicts two large irregularly shaped masses in a field of threadlike material interspersed with smaller, relatively round masses. The two larger masses are labeled with arrows and the phrase “Neuron cells.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_brain-ec0b.jpg"/>
+</media>
+<caption>(a) Dæmigerður
+mannsheili vegur um 1,5 kg og hefur um 1,1 L rúmmál. (b) Upplýsingar
+berast í heilavef og um allt miðtaugakerfið með sérhæfðum frumum sem
+kallast taugafrumur (smásjármynd sýnir frumur við 1600× stækkun).</caption></figure><para id="fs-idm14541088">Sérhæfðar frumur sem kallast
+taugafrumur senda upplýsingar milli mismunandi hluta miðtaugakerfisins
+með raf- og efnaboðum. Efnaboð eiga sér stað á mótum mismunandi
+taugafrumna þegar ein fruman losar sameindir (kallaðar taugaboðefni) sem
+dreifast yfir lítið bil milli frumnanna (kallað taugamót) og bindast
+yfirborði hinnar frumunnar. Þessar taugaboðefnissameindir eru geymdar í
+litlum innanfrumubyggingum sem kallast seytibólur og renna saman við
+frumuhimnuna og rofna síðan til að losa innihald sitt þegar taugafruman
+er örvuð á viðeigandi hátt. Þetta ferli er kallað útfrumun (sjá
+{{XREF:12}}). Eitt taugaboðefni sem hefur verið rannsakað mjög mikið er
+dópamín, C<sub>8</sub>H<sub>11</sub>NO<sub>2</sub>. Dópamín tekur þátt í ýmsum taugafræðilegum
+ferlum sem hafa áhrif á fjölbreytta mannlega hegðun. Truflanir í
+dópamínkerfum heilans liggja að baki alvarlegum taugasjúkdómum eins og
+Parkinsonsveiki og geðklofa.</para>
+<figure id="CNX_Chem_03_01_exocytosis">
+<media id="fs-idp18792480" alt="Two diagrams are shown. In the upper left corner of the left diagram, an oval with a darkened center that has five short, branching appendages and one long tail-like appendage is shown and connected by an arrow to another image. This image depicts a close-up view of the oval section and its interaction with the tail-like portion of a similar structure. The close up view is composed of a narrow tube labeled “neuron” leading down to a bulbous base that holds thirteen circles filled with small dots. These circles are labeled “vesicles.” The base of the bulbous structure is next to a curved object labeled “neuron” and very small dots are emerging from the bulb’s base and flowing toward the curved structure. The gap in between the two structures is labeled “synapse,” and the small dots are labeled “neurotransmitters.” The diagram on the right depicts a molecule composed of six black spheres connected by alternating double and single bonds in a hexagonal ring with other spheres attached to it. Three of the black spheres are connected to one smaller, white sphere each. Two of the black balls are connected to a smaller red sphere each. Each red sphere is connected to a smaller, white sphere. One black sphere is connected to another black sphere. It is connected to two smaller, white spheres and another black sphere. This second black sphere is connected to two smaller white spheres, and a slightly smaller blue sphere. The blue sphere is connected to two smaller, white spheres.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_exocytosis-88f6.jpg"/>
+</media>
+<caption>(a) Efnaboð
+berast frá taugafrumum til annarra frumna með losun taugaboðefnasameinda
+í litlu bilin (taugamótin) milli frumnanna. (b) Dópamín, C<sub>8</sub>H<sub>11</sub>NO<sub>2</sub>,
+er taugaboðefni sem tekur þátt í ýmsum taugafræðilegum ferlum.</caption>
+</figure>
+<para id="fs-idp15499232">Einn mikilvægur þáttur í flóknum
+ferlum sem tengjast dópamínboðum er fjöldi taugaboðefnissameinda sem
+losna við útfrumun. Þar sem þessi fjöldi er lykilþáttur í að ákvarða
+taugafræðilega svörun (og síðari mannlega hugsun og athafnir) er
+mikilvægt að vita hvernig þessi fjöldi breytist við ákveðna stýrða
+örvun, svo sem lyfjagjöf. Einnig er mikilvægt að skilja þann hvarfgang
+sem ber ábyrgð á breytingum á fjölda losaðra taugaboðefnissameinda – til
+dæmis einhver truflun í útfrumun, breyting á fjölda seytibóla í
+taugafrumunni eða breyting á fjölda taugaboðefnissameinda í hverri
+seytibólu.</para>
+<para id="fs-idm2962416">Verulegar framfarir hafa nýlega orðið
+í beinni mælingu á fjölda dópamínsameinda sem geymdar eru í einstökum
+seytibólum og því magni sem raunverulega losnar þegar seytibólan fer í
+gegnum útfrumun. Með því að nota smækkaða nema sem geta valið og greint
+dópamínsameindir í mjög litlu magni hafa vísindamenn komist að því að
+seytibólur ákveðinnar tegundar taugafrumna í heila músa innihalda að
+meðaltali 30.000 dópamínsameindir á hverja seytibólu (um <m:math><m:mrow><m:mn>5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−20</m:mn></m:mrow></m:msup></m:mrow></m:math>
+mól eða 50 zmol). Greining á þessum taugafrumum úr músum sem fengu ýmsar
+lyfjameðferðir sýnir marktækar breytingar á meðalfjölda dópamínsameinda
+í einstökum seytibólum, sem eykst eða minnkar allt að þrefalt, allt
+eftir því hvaða lyf er notað. Þessar rannsóknir benda einnig til þess að
+ekki allt dópamínið í tiltekinni seytibólu losni við útfrumun, sem
+bendir til þess að mögulegt sé að stjórna þeim hluta sem losnar með
+lyfjameðferðum.<footnote>Omiatek, Donna M., Amanda J. Bressler,
+Ann-Sofie Cans, Anne M. Andrews, Michael L. Heien, and Andrew G. Ewing.
+“The Real Catecholamine Content of Secretory Vesicles in the CNS
+Revealed by Electrochemical Cytometry.” <emphasis effect="italics">Scientific Report</emphasis> 3 (2013):
+1447, accessed January 14, 2015, doi:10.1038/srep01447.</footnote></para>
+</note>
+</section>
+<section id="fs-idp1413072" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp1202080">Formúlumassi efnis er summa
+meðalatómmassa hvers atóms sem táknað er í efnaformúlunni og er gefinn
+upp í atómmassaeiningum. Formúlumassi samgilds efnasambands er einnig
+kallaður sameindamassi. Mól er hentug magnseining til að tákna mjög
+stóran fjölda atóma eða sameinda. Mælingar í tilraunum hafa ákvarðað að
+fjöldi eininga í 1 móli af efni sé 6,022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup>, stærð
+sem kallast tala Avogadros. Massi í grömmum af 1 móli af efni er
+mólmassi þess. Vegna notkunar á sama viðmiðunarefni við skilgreiningu á
+atómmassaeiningunni og mólinu eru formúlumassi (amu) og mólmassi (g/mól)
+hvers efnis tölulega jafngildir (til dæmis vegur ein H<sub>2</sub>O sameind um
+það bil 18 amu og 1 mól af H<sub>2</sub>O sameindum vegur um það bil 18 g).</para>
+</section>
+<section id="fs-idp13430448" class="exercises">
+<title>Efnafræði – verkefni í lok
+kafla</title>
+<exercise id="fs-idp14760336">
+<problem id="fs-idm9492960">
+<para id="fs-idp66967088">Hver er heildarmassi (amu)
+kolefnis í hverri af eftirfarandi sameindum?</para>
+<para id="fs-idp15394896">(a) CH<sub>4</sub></para>
+<para id="fs-idp74952320">(b) CHCl<sub>3</sub></para>
+<para id="fs-idp16776928">(c) C<sub>12</sub>H<sub>10</sub>O<sub>6</sub></para>
+<para id="fs-idm16945392">(d) CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></para>
+</problem>
+<solution id="fs-idp50221568"><para id="fs-idp50221696">(a) 12,01 amu; (b) 12,01 amu; (c)
+144,12 amu; (d) 60,05 amu</para></solution>
+</exercise>
+<exercise id="fs-idp23290000">
+<problem id="fs-idm3204960">
+<para id="fs-idp12657920">Hver er heildarmassi vetnis í
+hverri sameindanna?</para>
+<para id="fs-idp14913040">(a) CH<sub>4</sub></para>
+<para id="fs-idp13933872">(b) CHCl<sub>3</sub></para>
+<para id="fs-idp18791104">(c) C<sub>12</sub>H<sub>10</sub>O<sub>6</sub></para>
+<para id="fs-idm2014656">(d) CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>3</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp14091664">
+<problem id="fs-idp13719856">
+<para id="fs-idm4748784">Reiknaðu sameinda- eða formúlumassa
+hvers eftirfarandi:</para>
+<para id="fs-idp75123488">(a) P<sub>4</sub></para>
+<para id="fs-idp11323648">(b) H<sub>2</sub>O</para>
+<para id="fs-idp17374816">(c) Ca(NO<sub>3</sub>)<sub>2</sub></para>
+<para id="fs-idm4666224">(d) CH<sub>3</sub>CO<sub>2</sub>H (ediksýra)</para>
+<para id="fs-idp17618896">(e) C<sub>12</sub>H<sub>22</sub>O<sub>11</sub> (súkrósi,
+reyrsykur)</para></problem>
+<solution id="fs-idp74756080">
+<para id="fs-idm15352224">(a) 123,896 amu; (b) 18,015 amu;
+(c) 164,086 amu; (d) 60,052 amu; (e) 342.297 amu</para>
+</solution>
+</exercise>
+<exercise id="fs-idp1038448">
+<problem id="fs-idp18734768"><para id="fs-idp14186992">Ákvarðið sameindamassa
+eftirfarandi efnasambanda:</para>
+<para id="fs-idm10660032">(a)</para><para id="fs-idp16510560">(b)</para><para id="fs-idp76406016">(c)</para><para id="fs-idp9023344">(d)</para></problem>
+</exercise>
+<exercise id="fs-idp20009152">
+<problem id="fs-idp51844864"><para id="fs-idp52450416">Ákvarðið sameindamassa
+eftirfarandi efnasambanda:</para>
+<para id="fs-idp12831088">(a)</para><para id="fs-idp76139456">(b)</para><para id="fs-idp55882592">(c)</para><para id="fs-idp17404336">(d)</para></problem>
+<solution id="fs-idp49927232">
+<para id="fs-idp18584256">(a) 56,107 amu; (b) 54,091 amu;
+(c) 199,9976 amu; (d) 97,9950 amu</para></solution>
+</exercise>
+<exercise id="fs-idp50213376">
+<problem id="fs-idp50213632"><para id="fs-idp50213760">Hvaða sameind hefur
+sameindamassann 28,05 amu?</para>
+<para id="fs-idp50214144">(a)</para><para id="fs-idp66877424">(b)</para><para id="fs-idp49595584">(c)</para></problem>
+</exercise>
+<exercise id="fs-idp17737968">
+<problem id="fs-idp17738224"><para id="fs-idp17738352">Skrifið setningu sem lýsir því
+hvernig ákvarða má fjölda móla af efnasambandi í þekktum massa
+efnasambandsins með því að nota sameindaformúlu þess.</para></problem>
+<solution id="fs-idp55880640">
+<para id="fs-idp55880896">Notið sameindaformúluna til að
+finna mólmassann; til að fá fjölda móla skal deila massa efnasambandsins
+með mólmassa efnasambandsins gefnum upp í grömmum.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp25588816">
+<problem id="fs-idp25589072"><para id="fs-idp25589200">Berið saman 1 mól af H<sub>2</sub>, 1 mól
+af O<sub>2</sub> og 1 mól af F<sub>2</sub>.</para>
+<para id="fs-idm34170816">(a) Hvað hefur flestar sameindir?
+Útskýrið hvers vegna.</para>
+<para id="fs-idm147492048">(b) Hvað hefur mestan massa?
+Útskýrið hvers vegna.</para></problem>
+</exercise>
+<exercise id="fs-idp50267072">
+<problem id="fs-idp50267328"><para id="fs-idp75868160">Hvað inniheldur mestan massa af
+súrefni: 0,75 mól af etanóli (C<sub>2</sub>H<sub>5</sub>OH), 0,60 mól af maurasýru
+(HCO<sub>2</sub>H) eða 1,0 mól af vatni (H<sub>2</sub>O)? Útskýrið hvers vegna.</para></problem>
+<solution id="fs-idp73465488">
+<para id="fs-idp73465744">Maurasýra. Formúla hennar hefur
+tvöfalt fleiri súrefnisatóm en hin tvö efnasamböndin (eitt hvort). Þess
+vegna jafngilda 0,60 mól af maurasýru 1,20 mólum af efnasambandi sem
+inniheldur eitt súrefnisatóm.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp69842848">
+<problem id="fs-idp69843104"><para id="fs-idp69843232">Hvað inniheldur flest mól af
+súrefnisatómum: 1 mól af etanóli (C<sub>2</sub>H<sub>5</sub>OH), 1 mól af maurasýru
+(HCO<sub>2</sub>H) eða 1 mól af vatni (H<sub>2</sub>O)? Útskýrið hvers vegna.</para></problem>
+</exercise>
+<exercise id="fs-idp23072">
+<problem id="fs-idp23328"><para id="fs-idp23456">Hvernig eru sameindamassi og mólmassi
+efnasambands svipaðir og hvernig eru þeir ólíkir?</para></problem>
+<solution id="fs-idp2592"><para id="fs-idp2720">Massarnir tveir hafa sama tölugildi
+en einingarnar eru ólíkar: Sameindamassinn er massi 1 sameindar á meðan
+mólmassinn er massi 6,022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> sameinda.</para></solution>
+</exercise>
+<exercise id="fs-idp52331008">
+<problem id="fs-idp52331264">
+<para id="fs-idp52331520">Reiknið mólmassa hvers
+eftirfarandi efnasambands:</para>
+<para id="fs-idp52331904">(a) vetnisflúoríð, HF</para>
+<para id="fs-idp52332288">(b) ammoníak, NH<sub>3</sub></para>
+<para id="fs-idp70670144">(c) saltpéturssýra, HNO<sub>3</sub></para>
+<para id="fs-idp70670784">(d) silfursúlfat, Ag<sub>2</sub>SO<sub>4</sub></para>
+<para id="fs-idp76943728">(e) bórsýra, B(OH)<sub>3</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp51968592">
+<problem id="fs-idp51968848">
+<para id="fs-idp51969104">Reiknið mólmassa hvers
+eftirfarandi:</para>
+<para id="fs-idp50614928">(a) S<sub>8</sub></para>
+<para id="fs-idp50615568">(b) C<sub>5</sub>H<sub>12</sub></para>
+<para id="fs-idp50616592">(c) Sc<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></para>
+<para id="fs-idp52011344">(d) CH<sub>3</sub>COCH<sub>3</sub> (asetón)</para>
+<para id="fs-idp50200608">(e) C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> (glúkósi)</para>
+</problem>
+<solution id="fs-idp27797232">
+<para id="fs-idp27797488">(a) 256,48 g/mól; (b) 72,150 g
+mól<sup>−1</sup>; (c) 378,103 g mól<sup>−1</sup>; (d) 58,080 g mól<sup>−1</sup>; (e) 180,158 g
+mól<sup>−1</sup></para>
+</solution>
+</exercise>
+<exercise id="fs-idp56579584">
+<problem id="fs-idp56579840">
+<para id="fs-idp56580096">Reiknið reynsluformúlu- eða
+sameindaformúlumassa og mólmassa hvers eftirfarandi steinefnis:</para>
+<para id="fs-idp56580480">(a) kalksteinn, CaCO<sub>3</sub></para>
+<para id="fs-idp51267344">(b) steinsalt, NaCl</para>
+<para id="fs-idp51267728">(c) berýl, Be<sub>3</sub>Al<sub>2</sub>Si<sub>6</sub>O<sub>18</sub></para>
+<para id="fs-idp51269520">(d) malakít, Cu<sub>2</sub>(OH)<sub>2</sub>CO<sub>3</sub></para>
+<para id="fs-idp51505312">(e) túrkís,
+CuAl<sub>6</sub>(PO<sub>4</sub>)<sub>4</sub>(OH)<sub>8</sub>(H<sub>2</sub>O)<sub>4</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp56656128">
+<problem id="fs-idp56656384">
+<para id="fs-idp56656640">Reiknið mólmassa hvers
+eftirfarandi:</para>
+<para id="fs-idp56657024">(a) svæfingarlyfið halótan,
+C<sub>2</sub>HBrClF<sub>3</sub></para>
+<para id="fs-idp56658048">(b) illgresiseyðirinn parakvat,
+C<sub>12</sub>H<sub>14</sub>N<sub>2</sub>Cl<sub>2</sub></para>
+<para id="fs-idp56659840">(c) koffín, C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub></para>
+<para id="fs-idp56661680">(d) þvagefni, CO(NH<sub>2</sub>)<sub>2</sub></para>
+<para id="fs-idp56662704">(e) dæmigerð sápa,
+C<sub>17</sub>H<sub>35</sub>CO<sub>2</sub>Na</para>
+</problem>
+<solution id="fs-idp56664368">
+<para id="fs-idp56664624">(a) 197,382 g mól<sup>−1</sup>; (b)
+257,163 g mól<sup>−1</sup>; (c) 194,193 g mól<sup>−1</sup>; (d) 60,056 g mól<sup>−1</sup>; (e)
+306,464 g mól<sup>−1</sup></para></solution>
+</exercise>
+<exercise id="fs-idp51940080">
+<problem id="fs-idp51940336">
+<para id="fs-idp51940592">Ákvarðið fjölda móla af
+efnasambandi og fjölda móla af hverri atómtegund í hverju eftirfarandi:</para>
+<para id="fs-idp51941104">(a) 25,0 g af própýleni, C<sub>3</sub>H<sub>6</sub></para>
+<para id="fs-idp42713120">(b) 3,06 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> g
+af amínósýrunni glýsíni, C<sub>2</sub>H<sub>5</sub>NO<sub>2</sub></para>
+<para id="fs-idp42717200">(c) 25 lb af illgresiseyðrinum
+Treflan, C<sub>13</sub>H<sub>16</sub>N<sub>2</sub>O<sub>4</sub>F (1 lb = 454 g)</para>
+<para id="fs-idp42719120">(d) 0.125 kg af skordýraeitrinu
+Parísargrænu, Cu<sub>4</sub>(AsO<sub>3</sub>)<sub>2</sub>(CH<sub>3</sub>CO<sub>2</sub>)<sub>2</sub></para>
+<para id="fs-idp42721680">(e) 325 mg af aspiríni,
+C<sub>6</sub>H<sub>4</sub>(CO<sub>2</sub>H)(CO<sub>2</sub>CH<sub>3</sub>)</para>
+</problem>
+</exercise>
+<exercise id="fs-idp56804240">
+<problem id="fs-idp56804496">
+<para id="fs-idp56804752">Ákvarðaðu massa hvers
+eftirfarandi:</para>
+<para id="fs-idp56805136">(a) 0,0146 mól KOH</para>
+<para id="fs-idp56805520">(b) 10,2 mól etan, C<sub>2</sub>H<sub>6</sub></para>
+<para id="fs-idp56806544">(c) 1,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> mól
+Na<sub>2</sub> SO<sub>4</sub></para>
+<para id="fs-idp56811376">(d) 6,854 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup>
+mól glúkósi, C<sub>6</sub> H<sub>12</sub> O<sub>6</sub></para>
+<para id="fs-idp56817216">(e) 2,86 mól Co(NH<sub>3</sub>)<sub>6</sub>Cl<sub>3</sub></para>
+</problem>
+<solution id="fs-idp56818752">
+<para id="fs-idp56819008">(a) 0,819 g; (b) 307 g; (c) 0,23
+g; (d) 1,235 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> g (1235 kg); (e) 765 g</para></solution>
+</exercise>
+<exercise id="fs-idp51218400">
+<problem id="fs-idp51218656">
+<para id="fs-idp51218912">Ákvarðaðu fjölda móla af
+efnasambandinu og ákvarðaðu fjölda móla af hverri tegund atóms í hverju
+eftirfarandi:</para>
+<para id="fs-idp51219440">(a) 2,12 g af kalíumbrómíði, KBr</para>
+<para id="fs-idp51219824">(b) 0,1488 g af fosfórsýru,
+H<sub>3</sub>PO<sub>4</sub></para>
+<para id="fs-idp51220848">(c) 23 kg af kalsíumkarbónati,
+CaCO<sub>3</sub></para>
+<para id="fs-idp51221488">(d) 78,452 g af álsúlfati,
+Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></para>
+<para id="fs-idp51222896">(e) 0,1250 mg af koffíni,
+C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp50969136">
+<problem id="fs-idp50969392">
+<para id="fs-idp50969648">Ákvarðaðu massa hvers
+eftirfarandi:</para>
+<para id="fs-idp50970032">(a) 2,345 mól LiCl</para>
+<para id="fs-idp50970416">(b) 0,0872 mól asetýlen, C<sub>2</sub>H<sub>2</sub></para>
+<para id="fs-idp50971440">(c) 3,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> mól
+Na<sub>2</sub>CO<sub>3</sub></para>
+<para id="fs-idp51036384">(d) 1,23 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> mól
+frúktósi, C<sub>6</sub>H<sub>12</sub>O<sub>6</sub></para>
+<para id="fs-idp51041968">(e) 0,5758 mól FeSO<sub>4</sub>(H<sub>2</sub>O)<sub>7</sub></para>
+</problem>
+<solution id="fs-idp51043504">
+<para id="fs-idp51043760">(a) 99,41 g; (b) 2,27 g; (c) 3,5
+g; (d) 222 kg; (e) 160,1 g</para></solution>
+</exercise>
+<exercise id="fs-idp41399808">
+<problem id="fs-idp41400064">
+<para id="fs-idp41400320">Áætluð lágmarks dagleg þörf fyrir
+amínósýruna leusín, C<sub>6</sub>H<sub>13</sub>NO<sub>2</sub>, er 1,1 g. Hver er þessi þörf í
+mólum?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp41416224">
+<problem id="fs-idp41416480">
+<para id="fs-idp41416736">Ákvarðaðu massa hvers eftirfarandi
+í grömmum:</para>
+<para id="fs-idp41417120">(a) 0,600 mól af súrefnisatómum</para>
+<para id="fs-idp41417504">(b) 0,600 mól af
+súrefnissameindum, O<sub>2</sub></para>
+<para id="fs-idp41418144">(c) 0,600 mól af ósonsameindum,
+O<sub>3</sub></para>
+</problem>
+<solution id="fs-idp41418912">
+<para id="fs-idp41419168">(a) 9,60 g; (b) 19,2 g; (c) 28,8
+g</para>
+</solution>
+</exercise>
+<exercise id="fs-idp42845584">
+<problem id="fs-idp42845840">
+<para id="fs-idp42846096">55 kg kona hefur 7,5
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> mól af blóðrauða (mólmassi = 64.456 g/mól) í
+blóði sínu. Hversu margar blóðrauðasameindir eru þetta? Hversu mikið er
+þetta magn í grömmum?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp42864672">
+<problem id="fs-idp42864928">
+<para id="fs-idp42865184">Ákvarðaðu fjölda atóma og massa
+sirkons, kísils og súrefnis sem finnast í 0,3384 mólum af sirkoni,
+ZrSiO<sub>4</sub>, sem er hálfeðalsteinn.</para>
+</problem>
+<solution id="fs-idp42866208">
+<para id="fs-idp42866464">sirkon: 2,038 <m:math><m:mo>×</m:mo></m:math>
+10<sup>23</sup> atóm; 30,87 g; kísill: 2,038 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> atóm; 9,504
+g; súrefni: 8,151 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> atóm; 21,66 g</para>
+</solution>
+</exercise>
+<exercise id="fs-idp40477040">
+<problem id="fs-idp40477296">
+<para id="fs-idp40477552">Finndu út hvað af eftirfarandi
+inniheldur mesta massa vetnis: 1 mól af CH<sub>4</sub>, 0,6 mól af C<sub>6</sub>H<sub>6</sub> eða
+0,4 mól af C<sub>3</sub>H<sub>8</sub>.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp40492096">
+<problem id="fs-idp40492352">
+<para id="fs-idp40492608">Finndu út hvað af eftirfarandi
+inniheldur mesta massa áls: 122 g af AlPO<sub>4</sub>, 266 g af Al<sub>2</sub>Cl<sub>6</sub> eða
+225 g af Al<sub>2</sub>S<sub>3</sub>.</para></problem>
+<solution id="fs-idp40495040">
+<para id="fs-idp40495296">AlPO<sub>4</sub>: 1,000 mól, eða 26,98 g
+Al; Al<sub>2</sub>Cl<sub>6</sub>: 1,994 mól, eða 53,74 g Al; Al<sub>2</sub>S<sub>3</sub>: 3,00 mól, eða
+80,94 g Al; Al<sub>2</sub>S<sub>3</sub> sýnið inniheldur því mesta massa af Al.</para></solution>
+</exercise>
+<exercise id="fs-idp48697456">
+<problem id="fs-idp48697712">
+<para id="fs-idp48697968">Demantur er eitt form af
+frumefninu kolefni. Trúlofunarhringur inniheldur demant sem vegur 1,25
+karöt (1 karat = 200 mg). Hversu mörg atóm eru í demantinum?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp41325184">
+<problem id="fs-idp41325440">
+<para id="fs-idp41325696">Cullinan-demanturinn var stærsti
+náttúrulegi demantur sem fundist hefur (25. janúar 1905). Hann vó 3104
+karöt (1 karat = 200 mg). Hversu mörg kolefnisatóm voru í steininum?</para>
+</problem>
+<solution id="fs-idp41326400">
+<para id="fs-idp41326656">3,113 <m:math><m:mo>×</m:mo></m:math> 10<sup>25</sup> C
+atóm</para></solution>
+</exercise>
+<exercise id="fs-idp41347136">
+<problem id="fs-idp41347392">
+<para id="fs-idp41347648">Einn 55 gramma skammtur af
+tilteknu morgunkorni gefur 270 mg af natríum, 11% af ráðlögðum
+dagskammti. Hversu mörg mól og atóm af natríum eru í ráðlögðum
+dagskammti?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp71747216">
+<problem id="fs-idp71747472">
+<para id="fs-idp71747728">Ákveðið hnetumorgunkorn inniheldur
+11,0 grömm af sykri (súkrósa, C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>) í hverjum 60,0 gramma
+skammti. Hversu marga skammta af þessu morgunkorni þarf að borða til að
+neyta 0,0278 móla af sykri?</para>
+</problem>
+<solution id="fs-idp71749520">
+<para id="fs-idp71749776">0,865 skammtar, eða um það bil 1
+skammtur.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp40440256">
+<problem id="fs-idp40440512">
+<para id="fs-idp40440768">Túpa af tannkremi inniheldur 0,76
+g af natríummónóflúorfosfati (Na<sub>2</sub>PO<sub>3</sub>F) í 100 ml.</para>
+<para id="fs-idm180787456">(a) Hver var massi flúoratómanna
+í mg?</para>
+<para id="fs-idm180787072">(b) Hversu mörg flúoratóm voru
+til staðar?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp40890272">
+<problem id="fs-idp40890528">
+<para id="fs-idp40890784">Hvað af eftirfarandi táknar fæstar
+sameindir?</para>
+<para id="fs-idp40891168">(a) 20,0 g af H<sub>2</sub>O (18,02 g/mól)</para>
+<para id="fs-idp40891936">(b) 77,0 g af CH<sub>4</sub> (16,06 g/mól)</para>
+<para id="fs-idp40892704">(c) 68,0 g af C<sub>3</sub>H<sub>6</sub> (42,08
+g/mól)</para><para id="fs-idp40893472">(d) 100,0 g af N<sub>2</sub>O (44,02 g/mól)</para>
+<para id="fs-idp40894240">(e) 84,0 g af HF (20,01 g/mól)</para>
+</problem>
+<solution id="fs-idp40894752">
+<para id="fs-idp40895008">20,0 g af H<sub>2</sub>O táknar fæstar
+sameindir þar sem það hefur fæst mól.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp40901280">
+<term>Tala Avogadros (NA)</term>
+<meaning id="fs-idp40901280-meaning">tilraunakennt ákvarðað
+gildi fjölda einda sem mynda 1 mól af efni, jafnt og 6,022 × 1023 mól−1</meaning>
+</definition>
+<definition id="fs-idp40905984">
+<term>formúlumassi</term>
+<meaning id="fs-idp40905984-meaning">summa meðalmassa allra
+atóma sem koma fram í efnaformúlu; fyrir samgild efnasambönd er þetta
+einnig sameindamassinn</meaning>
+</definition>
+<definition id="fs-idp40907280">
+<term>mólmassi</term>
+<meaning id="fs-idp40907280-meaning">massi í grömmum af 1 móli
+af efni</meaning>
+</definition>
+<definition id="fs-idp40908432">
+<term>mól</term>
+<meaning id="fs-idp40908432-meaning">efnismagn sem inniheldur
+sama fjölda atóma, sameinda, jóna eða annarra eininga og fjöldi atóma í
+nákvæmlega 12 grömmum af 12C</meaning>
+</definition>
+</glossary>
+</document>

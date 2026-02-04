@@ -1,0 +1,673 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Jóna- og sameindaefnasambönd</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68696</md:content-id>
+  <md:title>Ionic and Molecular Compounds</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla
+getur þú:</para><list id="list-00001"><item>Skilgreint jóna- og
+sameindaefnasambönd (samgild)</item><item>Spáð fyrir um gerð
+efnasambands sem myndast úr frumefnum út frá staðsetningu þeirra í
+lotukerfinu</item><item>Ákvarðað formúlur fyrir
+einföld jónaefnasambönd</item></list></md:abstract>
+  <md:uuid>f1c0d0db-2d56-4a2f-b6cb-2bf649278669</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp207102304">Í venjulegum efnahvörfum helst
+kjarni hvers atóms (og þar með auðkenni frumefnisins) óbreyttur. Hins
+vegar er hægt að bæta rafeindum við atóm með flutningi frá öðrum atómum,
+missa þær með flutningi til annarra atóma eða deila þeim með öðrum
+atómum. Flutningur og deiling rafeinda milli atóma stjórnar efnafræði
+frumefnanna. Við myndun sumra efnasambanda fá atóm rafeindir eða missa
+þær og mynda rafhlöðnar agnir sem kallast jónir ({{XREF:2}}).</para>
+<figure id="CNX_Chem_02_06_NaCation"><media id="fs-idp93507216" alt="Figure A shows a sodium atom, N a, which has a nucleus containing 11 protons and 12 neutrons. The atom’s surrounding electron cloud contains 11 electrons. Figure B shows a sodium ion, N a superscript plus sign. Its nucleus contains 11 protons and 12 neutrons. The ion’s electron cloud contains 10 electrons and is smaller than that of the sodium atom in figure A.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_06_NaCation.jpg"/>
+</media>
+<caption>(a) Natríumatóm
+(Na) hefur jafnmargar róteindir og rafeindir (11) og er óhlaðið. (b)
+Natríumkatjón (Na<sup>+</sup>) hefur misst rafeind, þannig að hún hefur eina
+róteind (11) umfram rafeindir (10), sem gefur henni jákvæða
+heildarhleðslu, táknaða með plúsmerki í hávísi.</caption></figure>
+<para id="fs-idp286908208">Þú getur notað lotukerfið til að spá
+fyrir um hvort atóm muni mynda anjón eða katjón og oft er hægt að spá
+fyrir um hleðslu jónarinnar sem myndast. Atóm margra málma í aðalhópum
+missa nægilega margar rafeindir til að hafa sama fjölda rafeinda og atóm
+næstu eðalgastegundar á undan. Til að útskýra þetta, þá missir atóm
+alkalímálms (hópur 1) eina rafeind og myndar katjón með 1+ hleðslu;
+jarðalkalímálmur (hópur 2) missir tvær rafeindir og myndar katjón með 2+
+hleðslu og svo framvegis. Til dæmis missir hlutlaust kalsíumatóm, með 20
+róteindir og 20 rafeindir, auðveldlega tvær rafeindir. Þetta leiðir til
+katjónar með 20 róteindir, 18 rafeindir og 2+ hleðslu. Hún hefur sama
+fjölda rafeinda og atóm næstu eðalgastegundar á undan, argons, og er
+táknuð með Ca<sup>2+</sup>. Heiti málmjónar er það sama og heiti málmatómsins sem
+hún myndast úr, þannig að Ca<sup>2+</sup> er kölluð kalsíumjón.</para>
+<para id="fs-idp20416832">Þegar atóm málmleysingja mynda jónir
+fá þau yfirleitt nægilega margar rafeindir til að hafa sama fjölda
+rafeinda og atóm næstu eðalgastegundar í lotukerfinu. Atóm í hópi 17 fá
+eina rafeind og mynda anjónir með 1− hleðslu; atóm í hópi 16 fá tvær
+rafeindir og mynda jónir með 2− hleðslu og svo framvegis. Til dæmis
+getur hlutlaust brómatóm, með 35 róteindir og 35 rafeindir, fengið eina
+rafeind til að hafa 36 rafeindir. Þetta leiðir til anjónar með 35
+róteindir, 36 rafeindir og 1− hleðslu. Hún hefur sama fjölda rafeinda og
+atóm næstu eðalgastegundar, kryptons, og er táknuð með Br<sup>−</sup>. (Umræða um
+kenninguna sem styður þá staðreynd að fjöldi rafeinda eðalgastegunda sé
+eftirsóknarverður, sem endurspeglast í þessum forspárreglum um
+jónamyndun, er að finna í síðari kafla þessa texta.)</para>
+<para id="fs-idp244942144">Taktu eftir notagildi lotukerfisins
+við að spá fyrir um líklega jónamyndun og hleðslu ({{XREF:3}}). Þegar
+farið er frá vinstri til hægri í lotukerfinu hafa frumefni í aðalhópum
+tilhneigingu til að mynda katjónir með hleðslu sem er jöfn númeri
+hópsins. Það er að segja, frumefni í hópi 1 mynda 1+ jónir; frumefni í
+hópi 2 mynda 2+ jónir og svo framvegis. Þegar farið er frá hægri til
+vinstri í lotukerfinu mynda frumefni oft anjónir með neikvæðri hleðslu
+sem er jöfn fjölda hópa sem færðir eru til vinstri frá eðalgösunum. Til
+dæmis mynda frumefni í hópi 17 (einn hópur til vinstri við eðalgösin) 1−
+jónir; frumefni í hópi 16 (tveir hópar til vinstri) mynda 2− jónir og
+svo framvegis. Þessa þróun má nota sem leiðbeiningu í mörgum tilfellum,
+en forspárgildi hennar minnkar þegar farið er nær miðju lotukerfisins.
+Reyndar sýna hliðarmálmar og sumir aðrir málmar oft breytilegar hleðslur
+sem ekki er hægt að spá fyrir um út frá staðsetningu þeirra í töflunni.
+Til dæmis getur kopar myndað jónir með 1+ eða 2+ hleðslu og járn getur
+myndað jónir með 2+ eða 3+ hleðslu.</para>
+<figure id="CNX_Chem_02_06_IonCharges">
+<media id="fs-idp341206448" alt="Group one of the periodic table contains L i superscript plus sign in period 2, N a superscript plus sign in period 3, K superscript plus sign in period 4, R b superscript plus sign in period 5, C s superscript plus sign in period 6, and F r superscript plus sign in period 7. Group two contains B e superscript 2 plus sign in period 2, M g superscript 2 plus sign in period 3, C a superscript 2 plus sign in period 4, S r superscript 2 plus sign in period 5, B a superscript 2 plus sign in period 6, and R a superscript 2 plus sign in period 7. Group six contains C r superscript 3 plus sign and C r superscript 6 plus sign in period 4. Group seven contains M n superscript 2 plus sign in period 4. Group eight contains F e superscript 2 plus sign and F e superscript 3 plus sign in period 4. Group nine contains C o superscript 2 plus sign in period 4. Group ten contains N i superscript 2 plus sign in period 4, and P t superscript 2 plus sign in period 6. Group 11 contains C U superscript plus sign and C U superscript 2 plus sign in period 4, A g superscript plus sign in period 5, and A u superscript plus sign and A u superscript 3 plus sign in period 6. Group 12 contains Z n superscript 2 plus sign in period 4, C d superscript 2 plus sign in period 5, and H g subscript 2 superscript 2 plus sign and H g superscript 2 plus sign in period 6. Group 13 contains A l superscript 3 plus sign in period 3. Group 14 contains C superscript 4 negative sign in period 2. Group 15 contains N superscript 3 negative sign in period 2, P superscript 3 negative sign in period 3, and A s superscript 3 negative sign in period 4. Group 16 contains O superscript 2 negative sign in period 2, S superscript 2 negative sign in period 3, S e superscript 2 negative sign in period 4 and T e superscript 2 negative sign in period 5. Group 17 contains F superscript negative sign in period 2, C l superscript negative sign in period 3, B r superscript negative sign in period 4, I superscript negative sign in period 5, and A t superscript negative sign in period 6. Group 18 contains H e in period 1, N e in period 2, A r in period 3, K r in period 4, X e in period 5 and R n in period 6.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_06_IonCharges.jpg"/>
+</media>
+<caption>Sum frumefni
+sýna reglulegt mynstur jónahleðslu þegar þau mynda jónir.</caption>
+</figure>
+<example id="fs-idm11079584">
+<para id="fs-idp203962032"><title>Samsetning jóna</title>Jón sem finnst í sumum efnasamböndum
+sem notuð eru í svitalyktareyði inniheldur 13 róteindir og 10 rafeindir.
+Hvert er tákn hennar?</para>
+<para id="fs-idp232924112"><title>Lausn</title>Þar sem fjöldi róteinda helst
+óbreyttur þegar atóm myndar jón, verður sætistala frumefnisins að vera
+13. Með því að vita þetta getum við notað lotukerfið til að bera kennsl
+á frumefnið sem Al (ál). Al-atómið hefur misst þrjár rafeindir og hefur
+því þremur fleiri jákvæðum hleðslum (13) en það hefur rafeindir (10).
+Þetta er álkatjónin, Al<sup>3+</sup>.</para>
+<para id="fs-idp120794800"><title>Spurningar úr kaflanum</title>Gefðu upp tákn og heiti fyrir jónina
+með 34 róteindir og 36 rafeindir.</para>
+<note id="fs-idp105511808"><title>Answer:</title>
+<para id="fs-idp2161376">Se<sup>2−</sup>, seleníðjón</para></note>
+</example>
+<example id="fs-idp51588352">
+<para id="fs-idp141681312"><title>Myndun jóna</title>Magnesíum og nitur hvarfast og mynda
+jónaefni. Spáðu fyrir um hvort efnið myndar anjón og hvort myndar katjón
+og hver hleðsla hverrar jónar er. Skrifaðu tákn fyrir hverja jón og
+nefndu þær.</para>
+<para id="fs-idp196671632"><title>Lausn</title>Staða magnesíums í lotukerfinu
+(hópur 2) segir okkur að það er málmur. Málmar mynda jákvæðar jónir
+(katjónir). Magnesíumatóm verður að missa tvær rafeindir til að hafa
+sama fjölda rafeinda og atóm næstu eðalgastegundar á undan, neons.
+Þannig mun magnesíumatóm mynda katjón með tveimur færri rafeindum en
+róteindum og hleðsluna 2+. Tákn jónarinnar er Mg<sup>2+</sup> og hún er kölluð
+magnesíumjón.</para>
+<para id="fs-idp64788416">Staða niturs í lotukerfinu (hópur 15)
+sýnir að það er málmleysingi. Málmleysingjar mynda neikvæðar jónir
+(anjónir). Nituratóm verður að fá þrjár rafeindir til að hafa sama
+fjölda rafeinda og atóm næstu eðalgastegundar á eftir, neons. Þannig mun
+nituratóm mynda anjón með þremur fleiri rafeindum en róteindum og
+hleðsluna 3−. Tákn jónarinnar er N<sup>3−</sup> og hún er kölluð nítríðjón.</para>
+<para id="fs-idp96722272"><title>Kannaðu þekkingu þína</title>Ál og kolefni hvarfast og mynda
+jónaefni. Spáðu fyrir um hvort efnið myndar anjón og hvort myndar katjón
+og hver hleðsla hverrar jónar er. Skrifaðu tákn fyrir hverja jón og
+nefndu þær.</para>
+<note id="fs-idp16846528">
+<title>Answer:</title>
+<para id="fs-idp194881696">Al mun mynda katjón með hleðsluna
+3+: Al<sup>3+</sup>, áljón. Kolefni mun mynda anjón með hleðsluna 4−: C<sup>4−</sup>,
+karbíðjón.</para>
+</note>
+</example>
+<para id="fs-idp9416320">Jónirnar sem við höfum rætt hingað til
+eru kallaðar <emphasis effect="bold">einfumeindajónir</emphasis>, það er að segja, þær eru jónir sem
+myndast úr aðeins einu atómi. Við finnum líka margar <emphasis effect="bold">fjölfrumeinda
+jónir</emphasis>. Þessar jónir, sem virka sem aðskildar einingar, eru rafmagnaðar
+sameindir (hópur tengdra atóma með heildarhleðslu). Sumar af mikilvægari
+fjölfrumeinda jónunum eru taldar upp í {{XREF:4}}. <emphasis effect="bold">Oxýanjónir</emphasis> eru
+fjölfrumeinda jónir sem innihalda eitt eða fleiri súrefnisatóm. Á þessum
+tímapunkti í efnafræðinámi þínu ættir þú að leggja á minnið nöfn,
+formúlur og hleðslur algengustu fjölfrumeinda jónanna. Þar sem þú munt
+nota þær ítrekað muntu fljótlega kannast við þær.</para>
+<table id="fs-idp278664880" class="top-titled" summary="This table has three columns labeled “charge,” “name,” and “formula.” Ammonium has a charge of positive 1 and the formula N H subscript 4 superscript plus sign. Acetate has a charge of negative 1 and the formula C subscript 2 H subscript 3 O subscript 2 superscript negative sign. Cyanide has a charge of negative 1, and the formula C N superscript negative sign. Hydroxide has a charge of negative 1 and the formula O H superscript negative sign. Nitrate has a charge of negative 1 and the formula N O subscript 3 superscript negative sign. Nitrite has a charge of negative 1 and the formula N O subscript 2 superscript negative sign. Perchlorate has a charge of negative 1 and the formula C l O subscript 4 superscript negative sign. Chlorate has a charge of negative 1 and the formula C l O subscript 3 superscript negative sign. Chlorite has a charge of negative 1 and the formula C l O subscript 2 superscript negative sign. Hypochlorite has a charge of negative 1 and the formula C l O superscript negative sign. Permanganate has a charge of negative 1 and the formula M n O subscript 4 superscript negative sign. Hydrogen carbonate, or bicarbonate has a charge of negative 1 and the formula H C O subscript 3 superscript negative sign. Carbonate has a charge of negative 2 and the formula C O subscript 3 superscript 2 negative sign. Peroxide has a charge of negative 2 and the formula O subscript 2 superscript 2 negative sign. Hydrogen sulfate, or bisulfate, has a charge of negative 1 and the formula H S O subscript 4 superscript negative sign. Sulfate has a charge of negative 2 and the formula S O subscript 4 superscript 2 negative sign. Sulfite has a charge of negative 2 and the formula S O subscript 3 superscript 2 negative sign. Dihydrogen phosphate has a charge of negative 1 and the formula H subscript 2 P O subscript 4 superscript negative sign. Hydrogen phosphate has a charge of negative 2 and the formula H P O subscript 4 superscript 2 negative sign. Phosphate has a charge of negative 3 and the formula P O subscript 4 superscript 3 negative sign."><tgroup cols="3"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c4" align="center">Algengar fjölatóma jónir</entry>
+</row>
+
+<row>
+<entry align="left">Heiti</entry>
+<entry align="left">Formúla</entry>
+<entry align="left">Tengd sýra</entry>
+<entry align="left">Formúla</entry>
+</row>
+</thead>
+<tbody>
+
+<row>
+<entry align="left">Ammóníum</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+
+<row>
+<entry align="left">Hýdróníum</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>H</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mo>+</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+
+
+<row>
+<entry align="left">Peroxíð</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>2-</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+
+<row>
+<entry align="left">Hýdroxíð</entry>
+<entry align="left"><m:math><m:mrow><m:msup><m:mtext>OH</m:mtext><m:mo>-</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+
+<row>
+<entry align="left">Asetat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mtext>CH</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>COO</m:mtext><m:mn>-</m:mn></m:msup></m:mrow></m:math></entry>
+<entry align="left">Ediksýra</entry>
+<entry align="left">CH<sub>3</sub>COOH</entry>
+</row>
+
+<row>
+<entry align="left">Sýaníð</entry>
+<entry align="left">CN<sup>−</sup></entry>
+<entry align="left">Vetnissýaníð</entry>
+<entry align="left">HCN</entry>
+</row>
+
+<row>
+<entry align="left">Asíð</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>-</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">Vetnisasíð</entry>
+<entry align="left">HN<sub>3</sub></entry>
+</row>
+
+<row>
+<entry align="left">Karbónat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mtext>CO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>2-</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">Kolsýra</entry>
+<entry align="left">H<sub>2</sub>CO<sub>3</sub></entry>
+</row>
+
+<row>
+<entry align="left">Bíkarbónat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mtext>HCO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>-</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+
+<row>
+<entry align="left">Nítrat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">Saltpéturssýra</entry>
+<entry align="left">HNO<sub>3</sub></entry>
+</row>
+
+<row>
+<entry align="left">Nítrít</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">Saltpéturssýrlingur</entry>
+<entry align="left">HNO<sub>2</sub></entry>
+</row>
+
+<row>
+<entry align="left">Súlfat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>2−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">Brennisteinssýra</entry>
+<entry align="left">H<sub>2</sub>SO<sub>4</sub></entry></row>
+
+<row>
+<entry align="left">Vetnissúlfat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+
+<row>
+<entry align="left">Súlfít</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>2−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">Brennisteinssýrlingur</entry>
+<entry align="left">H<sub>2</sub>SO<sub>3</sub></entry>
+</row>
+
+<row>
+<entry align="left">Vetnissúlfít</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+
+<row>
+<entry align="left">Fosfat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3−</m:mn></m:mrow></m:msup></m:mrow></m:math></entry>
+<entry align="left">Fosfórsýra</entry>
+<entry align="left">H<sub>3</sub>PO<sub>4</sub></entry>
+</row>
+
+<row>
+<entry align="left">vetnisfosfat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>HPO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math></entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+
+<row>
+<entry align="left">tvívetnisfosfat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left"/>
+<entry align="left"/>
+</row>
+
+<row>
+<entry align="left">perklórat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">perklórsýra</entry>
+<entry align="left">HClO<sub>4</sub></entry>
+</row>
+
+<row>
+<entry align="left">klórat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">klórsýra</entry>
+<entry align="left">HClO<sub>3</sub></entry>
+</row>
+
+<row>
+<entry align="left">klórít</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">klórkennd sýra</entry>
+<entry align="left">HClO<sub>2</sub></entry>
+</row>
+
+<row>
+<entry align="left">hýpóklórít</entry>
+<entry align="left">ClO<sup>−</sup></entry>
+<entry align="left">hýpóklórkennd sýra</entry>
+<entry align="left">HClO</entry>
+</row>
+
+<row>
+<entry align="left">krómat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CrO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>2−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">krómsýra</entry>
+<entry align="left">H<sub>2</sub>CrO<sub>4</sub></entry>
+</row>
+
+<row>
+<entry align="left">tvíkrómat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mo>2−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">tvíkrómsýra</entry>
+<entry align="left">H<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub></entry>
+</row>
+
+<row>
+<entry align="left">permanganat</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mtext>MnO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math></entry>
+<entry align="left">permangansýra</entry>
+<entry align="left">HMnO<sub>4</sub></entry>
+</row>
+</tbody>
+
+
+</tgroup></table>
+<para id="fs-idp210658336">Athugið að það er kerfi til að nefna
+sumar fjölfrumeinda jónir; <emphasis effect="italics">-at</emphasis> og <emphasis effect="italics">-ít</emphasis> eru viðskeyti sem tákna
+fjölfrumeinda jónir sem innihalda fleiri eða færri súrefnisatóm. <emphasis effect="italics">Per-</emphasis>
+(stytting á „hyper“) og <emphasis effect="italics">hypo-</emphasis> (sem þýðir „undir“) eru forskeyti sem
+þýða fleiri súrefnisatóm en <emphasis effect="italics">-at</emphasis> og færri súrefnisatóm en <emphasis effect="italics">-ít</emphasis>. Til
+dæmis er perklórat <m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup><m:mtext>,</m:mtext></m:mrow></m:math> klórat er <m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup><m:mtext>,</m:mtext></m:mrow></m:math> klórít er
+<m:math><m:mrow><m:msub><m:mrow><m:mtext>ClO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math> og hýpóklórít er ClO<sup>−</sup>. Því miður er fjöldi
+súrefnisatóma sem samsvarar tiltekinni viðskeyti eða forskeyti ekki
+stöðugur; til dæmis er nítrat <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math> á meðan súlfat er
+<m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Þetta verður tekið fyrir nánar í næsta kafla um
+nafnakerfi.</para>
+<para id="fs-idm10305952">Eðli aðdráttarkraftanna sem halda
+atómum eða jónum saman innan efnasambands er grundvöllurinn að flokkun
+efnatengja. Þegar rafeindir flytjast og jónir myndast verða
+<emphasis effect="bold">jónatengi</emphasis> til. Jónatengi eru rafstöðukraftar aðdráttar, það er að
+segja aðdráttarkraftar sem verka á milli hluta með gagnstæða rafhleðslu
+(í þessu tilfelli katjóna og anjóna). Þegar rafeindum er „deilt“ og
+sameindir myndast verða <emphasis effect="bold">samgild tengi</emphasis> til. Samgild tengi eru
+aðdráttarkraftar milli jákvætt hlaðinna kjarna tengdu atómanna og eins
+eða fleiri rafeindapara sem eru staðsett á milli atómanna. Efnasambönd
+eru flokkuð sem jónísk eða sameinda (samgild) á grundvelli tengjanna sem
+eru í þeim.</para>
+<section id="fs-idp133128304">
+<title>Jónaefni</title>
+<para id="fs-idp15116752">Þegar frumefni sem samanstendur af
+atómum sem missa auðveldlega rafeindir (málmur) hvarfast við frumefni
+sem samanstendur af atómum sem taka auðveldlega við rafeindum
+(málmleysingi) verður yfirleitt flutningur á rafeindum sem myndar jónir.
+Efnasambandið sem myndast við þennan flutning stöðgast vegna
+rafstöðuaðdráttarkrafta (jónatengja) milli jóna með gagnstæða hleðslu í
+efnasambandinu. Til dæmis, þegar hvert natríumatóm í natríummálmi
+(hópur 1) gefur frá sér eina rafeind til að mynda natríumkatjón, Na<sup>+</sup>,
+og hvert klóratóm í klórgasi (hópur 17) tekur við einni rafeind til að
+mynda klóríðanjón, Cl<sup>−</sup>, er efnasambandið sem myndast, NaCl, samsett úr
+natríumjónum og klóríðjónum í hlutfallinu ein Na<sup>+</sup> jón fyrir hverja
+Cl<sup>−</sup> jón. Á sama hátt getur hvert kalsíumatóm (hópur 2) gefið frá sér
+tvær rafeindir og flutt eina til hvors tveggja klóratóma til að mynda
+CaCl<sub>2</sub>, sem er samsett úr Ca<sup>2+</sup> og Cl<sup>−</sup> jónum í hlutfallinu ein
+Ca<sup>2+</sup> jón á móti tveimur Cl<sup>−</sup> jónum.</para>
+<para id="fs-idp21794832">Efnasamband sem inniheldur jónir og
+er haldið saman af jónatengjum er kallað <emphasis effect="bold">jónaefni</emphasis>. Lotukerfið getur
+hjálpað okkur að þekkja mörg efnasambönd sem eru jónaefni: Þegar málmur
+er sameinaður einum eða fleiri málmleysingjum er efnasambandið yfirleitt
+jónaefni. Þessi viðmiðunarregla virkar vel til að spá fyrir um myndun
+jónaefna fyrir flest þau efnasambönd sem venjulega koma fyrir á
+byrjunarnámskeiði í efnafræði. Hún er þó ekki alltaf sönn (til dæmis er
+álklóríð, AlCl<sub>3</sub>, ekki jónaefni).</para>
+<para id="fs-idp56020048">Oft er hægt að þekkja jónaefni af
+eðliseiginleikum þeirra. Jónaefni eru föst efni sem bráðna yfirleitt við
+hátt hitastig og sjóða við enn hærra hitastig. Til dæmis bráðnar
+natríumklóríð við 801 °C og sýður við 1413 °C. (Til samanburðar bráðnar
+sameindaefnið vatn við 0 °C og sýður við 100 °C.) Á föstu formi er
+jónaefni ekki rafleiðandi vegna þess að jónir þess geta ekki flætt
+(„rafmagn“ er flæði hlaðinna agna). Þegar það er bráðið getur það hins
+vegar leitt rafmagn vegna þess að jónir þess geta hreyfst frjálslega um
+vökvann ({{XREF:7}}).</para>
+<figure id="CNX_Chem_02_06_NaClMolten" class="scaled-down">
+<media id="fs-idp140154533591136" alt="This figure shows three photos connected by right-facing arrows. The first shows a light bulb as part of a complex lab equipment setup. The light bulb is not lit. The second photo shows a substances being heated or set on fire. The third shows the light bulb again which is lit.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_06_NaClMolten.jpg"/>
+</media>
+<caption>Natríumklóríð
+bráðnar við 801 °C og leiðir rafmagn þegar það er bráðið. (Heimild:
+breytt útgáfa af vinnu Mark Blaser og Matt Evans)</caption>
+</figure>
+</section>
+<note id="fs-idp13886976" class="chemistry link-to-learning">
+<para id="fs-idp196719024">Horfðu á þetta
+{{LINK:1}}myndband{{/LINK}} til að sjá efnablöndu af söltum bráðna og
+leiða rafmagn.</para>
+</note>
+<para id="fs-idp91827520">Í hverju jónaefni er heildarfjöldi
+jákvæðra hleðslna katjónanna jafn heildarfjölda neikvæðra hleðslna
+anjónanna. Þannig eru jónaefni í heild sinni rafhlutlaus, jafnvel þótt
+þau innihaldi jákvæðar og neikvæðar jónir. Við getum notað þessa athugun
+til að hjálpa okkur að skrifa formúlu jónaefnis. Formúla jónaefnis
+verður að hafa hlutfall jóna þannig að fjöldi jákvæðra og neikvæðra
+hleðslna sé jafn.</para>
+<example id="fs-idp75448432">
+<para id="fs-idp187459888"><title>Að spá fyrir um
+formúlu jónaefnis</title>Gimsteinninn safír ({{XREF:5}}) er
+að mestu leyti efnasamband áls og súrefnis sem inniheldur álkatjónir,
+Al<sup>3+</sup>, og súrefnisanjónir, O<sup>2−</sup>. Hver er formúla þessa efnasambands?</para>
+<!-- figure handled separately -->
+<para id="fs-idp467312"><title>Lausn</title>Vegna þess að jónaefnið verður að vera
+rafhlutlaust verður það að hafa sama fjölda jákvæðra og neikvæðra
+hleðslna. Tvær áljónir, hvor með hleðsluna 3+, myndu gefa okkur sex
+jákvæðar hleðslur og þrjár oxíðjónir, hvor með hleðsluna 2−, myndu gefa
+okkur sex neikvæðar hleðslur. Formúlan yrði Al<sub>2</sub>O<sub>3</sub>.</para>
+<para id="fs-idp219965392"><title>Prófaðu þekkingu þína</title>Spáðu fyrir um formúlu jónaefnisins
+sem myndast milli natríumkatjónarinnar, Na<sup>+</sup>, og súlfíðanjónarinnar,
+S<sup>2−</sup>.</para>
+<note id="fs-idp58394736"><title>Answer:</title>
+<para id="fs-idp104312384">Na<sub>2</sub>S</para>
+</note>
+</example>
+<figure id="CNX_Chem_02_06_Sapphire" class="scaled-down"><media id="fs-idp108680656" alt="This is a photograph of a ring with a sapphire set in it.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_06_Sapphire.jpg"/>
+</media>
+<caption>Þrátt fyrir að
+hreint áloxíð sé litlaust gefa snefilmagni af járni og títani bláum
+safír einkennandi lit sinn. (Heimild: breyting á vinnu eftir Stanislav
+Doronenko)</caption>
+</figure>
+<para id="fs-idp270413408">Mörg jónaefni innihalda
+fjölfrumeinda jónir ({{XREF:6}}) sem katjón, anjón eða hvort tveggja.
+Eins og með einföld jónaefni verða þessi efnasambönd einnig að vera
+rafhlutlaus, svo hægt er að spá fyrir um formúlur þeirra með því að
+meðhöndla fjölfrumeinda jónirnar sem aðskildar einingar. Við notum sviga
+í formúlu til að gefa til kynna hóp atóma sem hegða sér sem eining. Til
+dæmis er formúlan fyrir kalsíumfosfat, eitt af steinefnunum í beinum
+okkar, Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>. Þessi formúla gefur til kynna að það séu þrjár
+kalsíumjónir (Ca<sup>2+</sup>) fyrir hverja tvo fosfat <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3−</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math> hópa.
+<m:math><m:mrow><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3−</m:mn></m:mrow></m:msup></m:mrow></m:math> hóparnir eru aðskildar einingar, hver samanstendur af
+einu fosfóratómi og fjórum súrefnisatómum og hafa heildarhleðslu upp á
+3−. Efnasambandið er rafhlutlaust og formúla þess sýnir heildarfjölda
+þriggja Ca, tveggja P og átta O atóma.</para>
+<example id="fs-idp2219712">
+<para id="fs-idp179991104"><title>Að spá fyrir um formúlu
+efnasambands með fjölfrumeinda anjón</title>Lyftiduft inniheldur
+kalsíumtvívetnisfosfat, jónaefni sem samanstendur af jónunum Ca<sup>2+</sup> og
+<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup><m:mo>.</m:mo></m:mrow></m:math> Hver er formúla þessa efnasambands?</para><para id="fs-idm24805888"><title>Lausn</title>Jákvæðu og neikvæðu hleðslurnar verða
+að jafnast út og þetta jónaefni verður að vera rafhlutlaust. Þannig
+verðum við að hafa tvær neikvæðar hleðslur til að jafna út 2+ hleðslu
+kalsíumjónarinnar. Þetta krefst hlutfallsins ein Ca<sup>2+</sup> jón á móti
+tveimur <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup></m:mrow></m:math> jónum. Við táknum þetta með því að setja
+formúluna fyrir tvívetnisfosfatjónina innan sviga og bæta við
+neðanskriftinni 2. Formúlan er Ca(H<sub>2</sub>PO<sub>4</sub>)<sub>2</sub>.</para>
+<para id="fs-idp187565648"><title>Prófaðu þekkingu þína</title>Spáðu fyrir um formúlu jónaefnisins
+sem myndast milli litíumjónarinnar og peroxíðjónarinnar, <m:math><m:mrow><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mo>2−</m:mo></m:msup></m:mrow></m:math>
+(Vísbending: Notaðu lotukerfið til að spá fyrir um formerki og hleðslu
+litíumjónarinnar.)</para>
+<note id="fs-idp186698128"><title>Answer:</title>
+<para id="fs-idp19956160">Li<sub>2</sub>O<sub>2</sub></para>
+</note>
+</example>
+<para id="fs-idp288769312">Þar sem jónaefni er ekki samsett úr
+stökum, aðskildum sameindum er ekki rétt að tákna það með
+<emphasis effect="italics">sameindaformúlu</emphasis>. Þess í stað verður að tákna jónaefni með formúlu sem
+sýnir <emphasis effect="italics">hlutfallslegan fjölda</emphasis> jónanna sem það er myndað úr. Fyrir
+efnasambönd sem innihalda aðeins einfrumeinda jónir (eins og NaCl) og
+fyrir mörg efnasambönd sem innihalda fjölfrumeinda jónir (eins og
+CaSO<sub>4</sub>) eru þessar formúlur einfaldlega reynsluformúlurnar sem kynntar
+voru fyrr í þessum kafla. Hins vegar eru formúlur sumra jónaefna sem
+innihalda fjölfrumeinda jónir ekki reynsluformúlur. Til dæmis er
+jónaefnið natríumoxalat samsett úr Na<sup>+</sup> og <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math> jónum í
+hlutfallinu 2:1 og formúla þess er skrifuð sem Na<sub>2</sub>C<sub>2</sub>O<sub>4</sub>.
+Neðanskriftirnar í þessari formúlu eru ekki lægstu mögulegu
+heiltölurnar, þar sem hægt er að deila í þær báðar með 2 til að fá
+reynsluformúluna NaCO<sub>2</sub>. Þetta er þó ekki viðurkennda formúlan fyrir
+natríumoxalat, þar sem hún táknar ekki nákvæmlega fjölfrumeinda anjón
+efnasambandsins, <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math></para>
+<section id="fs-idp9143792">
+<title>Sameindaefni</title>
+<para id="fs-idp264000688">Mörg efnasambönd innihalda ekki
+jónir heldur samanstanda eingöngu af stökum, hlutlausum sameindum. Þessi
+<emphasis effect="bold">sameindaefni</emphasis> (samgild efnasambönd) verða til þegar frumeindir deila
+rafeindum með sér, frekar en að flytja þær (taka við eða gefa frá sér).
+Samgild tengi eru mikilvægt og umfangsmikið hugtak í efnafræði og verður
+fjallað ítarlega um það í síðari kafla þessa texta. Við getum oft greint
+sameindaefni á grundvelli eðliseiginleika þeirra. Við venjulegar
+aðstæður eru sameindaefni oft til sem lofttegundir, lágsjóðandi vökvar
+og lágbræðandi föst efni, þótt margar mikilvægar undantekningar séu til.</para>
+<para id="fs-idp207026896">Á meðan jónaefni myndast yfirleitt
+þegar málmur og málmleysingi sameinast, myndast samgild efnasambönd
+yfirleitt við samsetningu málmleysingja. Þannig getur lotukerfið hjálpað
+okkur að þekkja mörg efnasambönd sem eru samgild. Þótt við getum notað
+staðsetningu frumefna efnasambands í lotukerfinu til að spá fyrir um
+hvort það sé jónaefni eða samgilt á þessum tímapunkti í efnafræðinámi
+okkar, ættir þú að vera meðvitaður um að þetta er mjög einfölduð nálgun
+sem tekur ekki tillit til fjölda áhugaverðra undantekninga. Grá svæði
+eru til á milli jónaefna og sameindaefna og þú munt læra meira um þau
+síðar.</para>
+<example id="fs-idp411086368">
+<para id="fs-idm2822016"><title>Að spá fyrir um gerð
+tengja í efnasamböndum</title>Spáðu fyrir um hvort eftirfarandi
+efnasambönd séu jónaefni eða sameindaefni:</para>
+<para id="fs-idp130747360">(a) KI, efnasambandið sem er notað
+sem joðgjafi í matarsalti</para>
+<para id="fs-idp286925488">(b) H<sub>2</sub>O<sub>2</sub>, bleikiefnið og
+sótthreinsiefnið vetnisperoxíð</para>
+<para id="fs-idp77042592">(c) CHCl<sub>3</sub>, svæfingarlyfið klóróform</para>
+<para id="fs-idp214730704">(d) Li<sub>2</sub>CO<sub>3</sub>, litíumgjafi í
+þunglyndislyfjum</para>
+<para id="fs-idp173975248"><title>Lausn</title>(a) Kalíum (hópur 1) er málmur og
+joð (hópur 17) er málmleysingi; spáð er að KI sé jónaefni.</para>
+<para id="fs-idp13443888">(b) Vetni (hópur 1) er málmleysingi
+og súrefni (hópur 16) er málmleysingi; spáð er að H<sub>2</sub>O<sub>2</sub> sé
+sameindaefni.</para>
+<para id="fs-idp135354672">(c) Kolefni (hópur 14) er
+málmleysingi, vetni (hópur 1) er málmleysingi og klór (hópur 17) er
+málmleysingi; spáð er að CHCl<sub>3</sub> sé sameindaefni.</para>
+<para id="fs-idp187587072">(d) Litíum (hópur 1) er málmur og
+karbónat er fjölfrumeinda jón; spáð er að Li<sub>2</sub>CO<sub>3</sub> sé jónaefni.</para><para id="fs-idp4808832"><title>Prófaðu þig</title>Notaðu lotukerfið til að spá fyrir um
+hvort eftirfarandi efnasambönd séu jóna- eða samgild:</para>
+<para id="fs-idp288779408">(a) SO<sub>2</sub></para>
+<para id="fs-idp132796640">(b) CaF<sub>2</sub></para>
+<para id="fs-idp202359456">(c) N<sub>2</sub>H<sub>4</sub></para>
+<para id="fs-idp65172768">(d) Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></para>
+<note id="fs-idp102788640"><title>Answer:</title>
+<para id="fs-idm16446416">(a) sameinda-; (b) jóna-; (c)
+sameinda-; (d) jóna-</para>
+</note>
+</example>
+</section>
+<section id="fs-idp184156752" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp122679888">Málmar (sérstaklega þeir í hópum 1
+og 2) hafa tilhneigingu til að missa þann fjölda rafeinda sem myndi
+skilja þá eftir með sama fjölda rafeinda og í næsta eðalgasi á undan í
+lotukerfinu. Þannig myndast jákvætt hlaðin jón. Á sama hátt geta
+málmleysingjar (sérstaklega þeir í hópum 16 og 17, og í minna mæli þeir
+í hópi 15) tekið upp þann fjölda rafeinda sem þarf til að atómin fái
+sama fjölda rafeinda og í næsta eðalgasi á eftir í lotukerfinu. Þannig
+hafa málmleysingjar tilhneigingu til að mynda neikvæðar jónir. Jákvætt
+hlaðnar jónir eru kallaðar katjónir og neikvætt hlaðnar jónir eru
+kallaðar anjónir. Jónir geta verið annaðhvort einatóma (innihalda aðeins
+eitt atóm) eða fjölatóma (innihalda fleiri en eitt atóm).</para>
+<para id="fs-idp57422256">Efnasambönd sem innihalda jónir eru
+kölluð jónaefni. Jónaefni myndast yfirleitt úr málmum og málmleysingjum.
+Efnasambönd sem innihalda ekki jónir, heldur samanstanda af atómum sem
+eru þétt tengd saman í sameindum (óhlaðnir hópar atóma sem hegða sér sem
+ein heild), eru kölluð samgild efnasambönd. Samgild efnasambönd myndast
+yfirleitt úr tveimur málmleysingjum.</para>
+</section>
+<section id="fs-idp22868752" class="exercises">
+<title>Efnafræði – verkefni í lok
+kafla</title>
+<exercise id="fs-idp298677568">
+<problem id="fs-idp16592128">
+<para id="fs-idm58721440">Notaðu lotukerfið til að spá fyrir
+um hvort eftirfarandi klóríð séu jóna- eða samgild: KCl, NCl<sub>3</sub>, ICl,
+MgCl<sub>2</sub>, PCl<sub>5</sub> og CCl<sub>4</sub>.</para>
+</problem>
+<solution id="fs-idp129483232"><para id="fs-idm4134080">Jónaefni: KCl, MgCl<sub>2</sub>; Samgild:
+NCl<sub>3</sub>, ICl, PCl<sub>5</sub>, CCl<sub>4</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idp44267360">
+<problem id="fs-idp65122256">
+<para id="fs-idp119855136">Notaðu lotukerfið til að spá
+fyrir um hvort eftirfarandi klóríð séu jóna- eða samgild: SiCl<sub>4</sub>,
+PCl<sub>3</sub>, CaCl<sub>2</sub>, CsCl, CuCl<sub>2</sub> og CrCl<sub>3</sub>.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp221295264">
+<problem id="fs-idp278674944">
+<para id="fs-idp95603488">Fyrir hvert eftirfarandi
+efnasambanda, tilgreindu hvort það sé jóna- eða samgilt. Ef það er
+jónaefni, skrifaðu táknin fyrir jónirnar sem um ræðir:</para>
+<para id="fs-idp63096544">(a) NF<sub>3</sub></para>
+<para id="fs-idp175705168">(b) BaO</para><para id="fs-idp210482672">(c) (NH<sub>4</sub>)<sub>2</sub>CO<sub>3</sub></para>
+<para id="fs-idm16898128">(d) Sr(H<sub>2</sub>PO<sub>4</sub>)<sub>2</sub></para>
+<para id="fs-idp523680">(e) IBr</para>
+<para id="fs-idp18583904">(f) Na<sub>2</sub>O</para>
+</problem>
+<solution id="fs-idm3993968"><para id="fs-idp108175056">(a) samgilt; (b) jónaefni,
+Ba<sup>2+</sup>, O<sup>2−</sup>; (c) jónaefni, <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup><m:mtext>,</m:mtext></m:mrow></m:math> <m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo>;</m:mo></m:mrow></m:math> (d)
+jónaefni, Sr<sup>2+</sup>, <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>−</m:mo></m:msup><m:mo>;</m:mo></m:mrow></m:math> (e) samgilt; (f) jónaefni, Na<sup>+</sup>,
+O<sup>2−</sup></para>
+</solution>
+</exercise>
+<exercise id="fs-idp4856416">
+<problem id="fs-idp164870384">
+<para id="fs-idp133547504">Fyrir hvert eftirfarandi
+efnasambanda, tilgreindu hvort það sé jónaefni eða samgilt, og ef það er
+jónaefni, skrifaðu táknin fyrir jónirnar sem um ræðir:</para>
+<para id="fs-idm6279264">(a) KClO<sub>4</sub></para>
+<para id="fs-idp14607760">(b) Mg(C<sub>2</sub>H<sub>3</sub>O<sub>2</sub>)<sub>2</sub></para><para id="fs-idp273174928">(c) H<sub>2</sub>S</para>
+<para id="fs-idp187691872">(d) Ag<sub>2</sub>S</para>
+<para id="fs-idp267108208">(e) N<sub>2</sub>Cl<sub>4</sub></para>
+<para id="fs-idp232955488">(f) Co(NO<sub>3</sub>)<sub>2</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp178456496">
+<problem id="fs-idp286835936">
+<para id="fs-idp114930880">Fyrir hvert eftirfarandi
+jónapara, skrifaðu formúlu efnasambandsins sem þau mynda:</para><para id="fs-idp93671712">(a) Ca<sup>2+</sup>, S<sup>2−</sup></para>
+<para id="fs-idp65603120">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup><m:mtext>,</m:mtext></m:mrow></m:math>
+<m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idp433808032">(c) Al<sup>3+</sup>, Br<sup>−</sup></para>
+<para id="fs-idp95434032">(d) Na<sup>+</sup>, <m:math><m:mrow><m:msub><m:mrow><m:mtext>HPO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idp106885728">(e) Mg<sup>2+</sup>, <m:math><m:mrow><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+<solution id="fs-idp3249008"><para id="fs-idp411135344">(a) CaS; (b) (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>;
+(c) AlBr<sub>3</sub>; (d) Na<sub>2</sub>HPO<sub>4</sub>; (e) Mg<sub>3</sub> (PO<sub>4</sub>)<sub>2</sub></para></solution>
+</exercise>
+<exercise id="fs-idp286976176">
+<problem id="fs-idp65459664">
+<para id="fs-idp56590528">Fyrir hvert eftirfarandi jónapara,
+skrifaðu formúlu efnasambandsins sem þau mynda:</para><para id="fs-idp101562960">(a) K<sup>+</sup>, O<sup>2−</sup></para>
+<para id="fs-idp236810896">(b) <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mo>+</m:mo></m:msup><m:mtext>,</m:mtext></m:mrow></m:math>
+<m:math><m:mrow><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idp62582192">(c) Al<sup>3+</sup>, O<sup>2−</sup></para>
+<para id="fs-idp19798176">(d) Na<sup>+</sup>, <m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+<para id="fs-idp143769280">(e) Ba<sup>2+</sup>, <m:math><m:mrow><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3−</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp97231552">
+<term>samgilt tengi</term>
+<meaning id="fs-idp97231552-meaning">aðdráttarkraftur milli
+kjarna atóma sameindar og rafeindapara milli atómanna</meaning>
+</definition>
+<definition id="fs-idp184530720">
+<term>samgilt efnasamband</term>
+<meaning id="fs-idp184530720-meaning">(einnig
+sameindaefnasamband) samsett úr sameindum sem myndaðar eru af atómum
+tveggja eða fleiri mismunandi frumefna</meaning>
+</definition>
+<definition id="fs-idp160949776">
+<term>jónatengi</term>
+<meaning id="fs-idp160949776-meaning">rafstöðukraftar
+aðdráttar milli gagnstætt hlaðinna jóna jónaefnis</meaning>
+</definition>
+<definition id="fs-idp182712496">
+<term>jónaefni</term>
+<meaning id="fs-idp182712496-meaning">efnasamband sem
+samanstendur af katjónum og anjónum í ákveðnum hlutföllum sem gefa
+rafhlutlaust efni</meaning>
+</definition>
+<definition id="fs-idp93864192">
+<term>sameindaefnasamband</term>
+<meaning id="fs-idp93864192-meaning">(einnig, samgilt
+efnasamband) samsett úr sameindum sem myndast af atómum tveggja eða
+fleiri mismunandi frumefna</meaning>
+</definition>
+<definition id="fs-idp136404896">
+<term>einatóma jón</term>
+<meaning id="fs-idp136404896-meaning">jón sem samanstendur af
+einu atómi</meaning>
+</definition>
+<definition id="fs-idp484916992">
+<term>oxóanjón</term>
+<meaning id="fs-idp484916992-meaning">fjölatóma anjón sem
+samanstendur af miðatómi sem er tengt súrefnisatómum</meaning>
+</definition>
+<definition id="fs-idp93746160">
+<term>fjölatóma jón</term>
+<meaning id="fs-idp93746160-meaning">jón sem samanstendur af
+fleiri en einu atómi</meaning>
+</definition>
+</glossary>
+</document>

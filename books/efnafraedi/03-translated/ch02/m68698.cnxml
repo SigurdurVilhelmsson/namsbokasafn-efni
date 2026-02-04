@@ -1,0 +1,892 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Nafnakerfi efna</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68698</md:content-id>
+  <md:title>Chemical Nomenclature</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Gefið algengum tegundum
+ólífrænna efnasambanda nafn með kerfisbundnum hætti</item></list></md:abstract>
+  <md:uuid>dc382342-b6fe-42b8-9f76-4acc4d8246ce</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp268117168"><emphasis effect="bold">Nafnakerfi</emphasis>, safn reglna um
+nafngiftir, er mikilvægt í vísindum og í mörgum öðrum aðstæðum. Í þessum
+hluta er lýst aðferð sem er notuð til að nefna einföld jóna- og
+sameindaefnasambönd, eins og NaCl, CaCO<sub>3</sub> og N<sub>2</sub>O<sub>4</sub>. Einföldust
+þeirra eru <emphasis effect="bold">tvíundarsambönd</emphasis>, þau sem innihalda aðeins tvö frumefni,
+en við munum einnig skoða hvernig á að nefna jónaefni sem innihalda
+fjölfrumeinda jónir og einn sérstakan, mjög mikilvægan flokk
+efnasambanda sem kallast <emphasis effect="bold">sýrur</emphasis> (í síðari köflum þessarar bókar
+verður fjallað ítarlega um þessi efnasambönd). Við munum takmarka
+athygli okkar hér við ólífræn efnasambönd, efnasambönd sem eru aðallega
+samsett úr öðrum frumefnum en kolefni, og munum fylgja nafnakerfisreglum
+sem IUPAC leggur til. Reglurnar fyrir lífræn efnasambönd, þar sem
+kolefni er aðalfrumefnið, verða teknar fyrir í síðari kafla um lífræna
+efnafræði.</para>
+<section id="fs-idp268266480">
+<title>Jónaefni</title>
+<para id="fs-idp268131792">Til að nefna ólífrænt efnasamband
+þurfum við að íhuga svör við nokkrum spurningum. Í fyrsta lagi, er
+efnasambandið jónaefni eða sameindaefni? Ef efnasambandið er jónaefni,
+myndar málmurinn jónir af aðeins einni gerð (föst hleðsla) eða fleiri en
+einni gerð (breytileg hleðsla)? Eru jónirnar einfrumeinda eða
+fjölfrumeinda? Ef efnasambandið er sameindaefni, inniheldur það vetni?
+Ef svo er, inniheldur það einnig súrefni? Út frá svörunum sem við fáum,
+setjum við efnasambandið í viðeigandi flokk og nefnum það síðan í
+samræmi við það.</para>
+</section>
+<section id="fs-idm335792">
+<title>Efnasambönd sem innihalda aðeins
+einfrumeinda jónir</title>
+<para id="fs-idp279143120">Nafn tvíundarsambands sem inniheldur
+einfrumeinda jónir samanstendur af nafni katjónarinnar (nafn málmsins) á
+eftir nafni anjónarinnar (nafn málmleysingjans þar sem endingunni er
+skipt út fyrir viðskeytið –<emphasis effect="italics">íð</emphasis>). Nokkur dæmi eru gefin í {{XREF:2}}.</para>
+<table id="fs-idp282234816" class="top-titled" summary="The examples of ionic compounds shown in this table are N a C l sodium chloride, K B r potassium bromide, C a I subscript 2 calcium iodide, C s F cesium fluoride, L i C l lithium chloride, N a subscript 2 O sodium oxide, C d S cadmium sulfide, M g subscript 3 N subscript 2 magnesium nitride, C a subscript 3 P subscript 2 calcium phosphide, and A l subscript 4 C subscript 3 aluminum carbide.">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c2" align="center">Nöfn nokkurra jónaefna</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left">NaCl, natríumklóríð</entry>
+<entry align="left">Na<sub>2</sub>O, natríumoxíð</entry>
+</row>
+<row>
+<entry align="left">KBr, kalíumbrómíð</entry>
+<entry align="left">CdS, kadmíumsúlfíð</entry>
+</row>
+<row>
+<entry align="left">CaI<sub>2</sub>, kalsíumjoðíð</entry>
+<entry align="left">Mg<sub>3</sub>N<sub>2</sub>, magnesíumnítríð</entry>
+</row>
+<row>
+<entry align="left">CsF, sesíumflúoríð</entry>
+<entry align="left">Ca<sub>3</sub>P<sub>2</sub>, kalsíumfosfíð</entry>
+</row>
+<row>
+<entry align="left">LiCl, litíumklóríð</entry>
+<entry align="left">Al<sub>4</sub>C<sub>3</sub>, álkarbíð</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="fs-idp279293712">
+<title>Efnasambönd sem innihalda
+fjölfrumeinda jónir</title>
+<para id="fs-idp282236928">Efnasambönd sem innihalda
+fjölfrumeinda jónir eru nefnd á svipaðan hátt og þau sem innihalda
+aðeins einfrumeinda jónir, þ.e. með því að nefna fyrst katjónina og
+síðan anjónina. Dæmi eru sýnd í {{XREF:3}}.</para>
+<table id="fs-idp279316112" class="top-titled" summary="The examples of polyatomic ionic compounds shown in this table are K C subscript 2 H subscript 3 O subscript 2 potassium acetate, N a H C O subscript 3 sodium bicarbonate, A l subscript 2 ( C O subscript 3 ) subscript 3 aluminum carbonate, (N H subscript 4) CL, ammonium chloride, C a S O subscript 4 calcium sulfate, and M g subscript 3 ( P O subscript 4 ) subscript 2 magnesium phosphate."><tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c3" align="center">Nöfn nokkurra fjölfrumeinda jónaefna</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left">KC<sub>2</sub>H<sub>3</sub>O<sub>2</sub>, kalíumasetat</entry>
+<entry align="left">NH<sub>4</sub>Cl, ammóníumklóríð</entry>
+</row>
+<row>
+<entry align="left">NaHCO<sub>3</sub>, natríumbíkarbónat</entry>
+<entry align="left">CaSO<sub>4</sub>, kalsíumsúlfat</entry>
+</row>
+<row>
+<entry align="left">Al<sub>2</sub>(CO<sub>3</sub>)<sub>3</sub>, álkarbónat</entry>
+<entry align="left">Mg<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>, magnesíumfosfat</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<note id="fs-idm337456" class="chemistry everyday-life">
+<title>Jónaefni í skápunum þínum</title>
+<para id="fs-idm70496">Á hverjum degi rekst þú á og notar
+fjölda jónaefna. Sum þessara efnasambanda, hvar þau finnast og til hvers
+þau eru notuð, eru talin upp í {{XREF:4}}. Skoðaðu merkimiðann eða
+innihaldslistann á hinum ýmsu vörum sem þú notar næstu daga og athugaðu
+hvort þú rekst á einhver þeirra í þessari töflu, eða finnur önnur
+jónaefni sem þú gætir nú nefnt eða skrifað sem formúlu.</para>
+<!-- table handled separately -->
+</note>
+<table id="fs-idp268265360" class="top-titled" summary="The everyday ionic compound examples included in this table are: N a C L sodium chloride, or ordinary table salt, K I potassium iodide which is added to iodized salt, N a F, sodium fluoride which is an ingredient in toothpaste, N a H C O subscript 3 sodium bicarbonate which is baking soda, used in cooking and as an antacid, N a subscript 2 C O subscript 3 sodium carbonate which is washing soda and is used in cleaning agents, N a O C l sodium hypochlorite which is the active ingredient in household bleach, C a C O subscript 3 calcium carbonate which is an ingredient of antacids, M g ( O H ) subscript 2, magnesium hydroxide which is also an ingredient of antacids, A l ( O H ) subscript 3 aluminum hydroxide which is also an ingredient in antacids, N a O H sodium hydroxide which is lye and is used as a drain cleaner, K subscript 3 P O subscript 4 potassium phosphate which is a food additive, M g S O subscript 4 magneisum sulfate which is added to purified water, N a subscript 2 H P O subscript 4 sodium hydrogen phosphate which is an anti-caking agent and is used in powdered products, and N a subscript 2 S O subscript 3 sodium sulfite which is a preservative.">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c2" align="center">Algeng jónaefni</entry>
+</row>
+<row>
+<entry align="left">Jónaefni</entry>
+<entry align="left">Notkun</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left">NaCl, natríumklóríð</entry>
+<entry align="left">venjulegt matarsalt</entry>
+</row>
+<row>
+<entry align="left">KI, kalíumjoðíð</entry>
+<entry align="left">bætt í „joðbætt“ salt fyrir heilbrigði
+skjaldkirtils</entry>
+</row>
+<row>
+<entry align="left">NaF, natríumflúoríð</entry>
+<entry align="left">innihaldsefni í tannkremi</entry>
+</row>
+<row>
+<entry align="left">NaHCO<sub>3</sub>, natríumbíkarbónat</entry>
+<entry align="left">matarsódi; notað við matargerð (og sem
+sýrubindandi lyf)</entry>
+</row>
+<row>
+<entry align="left">Na<sub>2</sub>CO<sub>3</sub>, natríumkarbónat</entry>
+<entry align="left">þvottasódi; notað í hreinsiefni</entry>
+</row>
+<row>
+<entry align="left">NaOCl, natríumhýpóklórít</entry>
+<entry align="left">virka efnið í heimilsklór</entry>
+</row>
+<row>
+<entry align="left">CaCO<sub>3</sub> kalsíumkarbónat</entry>
+<entry align="left">innihaldsefni í sýrubindandi lyfjum</entry>
+</row>
+<row>
+<entry align="left">Mg(OH)<sub>2</sub>, magnesíumhýdroxíð</entry>
+<entry align="left">innihaldsefni í sýrubindandi lyfjum</entry>
+</row>
+<row>
+<entry align="left">Al(OH)<sub>3</sub>, álhýdroxíð</entry>
+<entry align="left">innihaldsefni í sýrubindandi lyfjum</entry>
+</row>
+<row>
+<entry align="left">NaOH, natríumhýdroxíð</entry>
+<entry align="left">lútur; notað sem vaskahreinsir</entry>
+</row>
+<row>
+<entry align="left">K<sub>3</sub>PO<sub>4</sub>, kalíumfosfat</entry>
+<entry align="left">aukaefni í matvælum (ýmsir tilgangir)</entry>
+</row>
+<row>
+<entry align="left">MgSO<sub>4</sub>, magnesíumsúlfat</entry>
+<entry align="left">bætt í hreinsað vatn</entry>
+</row>
+<row>
+<entry align="left">Na<sub>2</sub>HPO<sub>4</sub>, natríumvetnisfosfat</entry>
+<entry align="left">kekkjavarnarefni; notað í duftvörur</entry>
+</row>
+<row>
+<entry align="left">Na<sub>2</sub>SO<sub>3</sub>, natríumsúlfít</entry>
+<entry align="left">rotvarnarefni</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="fs-idp282353488">
+<title>Efnasambönd sem innihalda
+málmjón með breytilega hleðslu</title>
+<para id="fs-idp282354128">Flestir hliðarmálmar og sumir
+aðalflokkamálmar geta myndað tvær eða fleiri katjónir með mismunandi
+hleðslur. Efnasambönd þessara málma við málmleysingja eru nefnd með sömu
+aðferð og efnasambönd í fyrsta flokknum, nema hvað hleðsla
+málmjónarinnar er tilgreind með rómverskri tölu í sviga á eftir nafni
+málmsins. Hleðsla málmjónarinnar er ákvörðuð út frá formúlu
+efnasambandsins og hleðslu anjónarinnar. Skoðum til dæmis tvíundar
+jónaefni járns og klórs. Járn hefur yfirleitt hleðsluna 2+ eða 3+ (sjá
+{{XREF:5}}) og formúlur samsvarandi efnasambanda eru FeCl<sub>2</sub> og FeCl<sub>3</sub>.
+Einfaldasta nafnið, „járnklóríð“, væri í þessu tilfelli tvírætt þar sem
+það gerir ekki greinarmun á þessum tveimur efnasamböndum. Í slíkum
+tilfellum er hleðsla málmjónarinnar sett inn sem rómversk tölu í sviga
+strax á eftir nafni málmsins. Þessi tvö efnasambönd eru þá ótvírætt
+nefnd járn(II)klóríð og járn(III)klóríð. Önnur dæmi má finna í
+{{XREF:6}}.</para>
+<table id="fs-idp282283328" class="top-titled" summary="The transition metal ionic compound examples included in this table are F e C L subscript 3 or iron three chloride, H g subscript 2 O or mercury one oxide, H g O or mercury two oxide, and C u subscript 3 ( P O subscript 4 ) subscript 2 or copper two phosphate.">
+<tgroup cols="2"><colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c2" align="center">Nokkur jónaefni með málmjónum með
+breytilega hleðslu</entry>
+</row>
+<row>
+<entry align="left">Efnasamband</entry>
+<entry align="left">Nafn</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left">FeCl<sub>2</sub></entry>
+<entry align="left">járn(II)klóríð</entry>
+</row>
+<row>
+<entry align="left">FeCl<sub>3</sub></entry>
+<entry align="left">járn(III)klóríð</entry>
+</row>
+<row>
+<entry align="left">Hg<sub>2</sub>O</entry>
+<entry align="left">kvikasilfur(I)oxíð</entry>
+</row>
+<row>
+<entry align="left">HgO</entry>
+<entry align="left">kvikasilfur(II)oxíð</entry>
+</row>
+
+<row>
+<entry align="left">SnF<sub>2</sub></entry>
+<entry align="left">tin(II)flúoríð</entry>
+</row>
+
+<row>
+<entry align="left">SnF<sub>4</sub></entry>
+<entry align="left">tin(IV)flúoríð</entry>
+</row>
+
+</tbody>
+
+</tgroup>
+</table>
+<para id="fs-idp268391888">Í eldri nafnakerfum voru viðskeytin
+–<emphasis effect="italics">ic</emphasis> og –<emphasis effect="italics">ous</emphasis> notuð til að tákna málma með hærri og lægri hleðslur, í
+sömu röð: Járn(III)klóríð, FeCl<sub>3</sub>, var áður kallað „ferric chloride“ og
+járn(II)klóríð, FeCl<sub>2</sub>, var þekkt sem „ferrous chloride“. Þótt
+vísindasamfélagið hafi að mestu hætt að nota þessa nafnahefð er hún enn
+notuð í sumum greinum iðnaðarins. Þú gætir til dæmis séð orðin <emphasis effect="italics">stannous
+fluoride</emphasis> á tannkremstúpu. Það táknar formúluna SnF<sub>2</sub>, sem er réttara
+að nefna tin(II)flúoríð. Hitt flúoríð tins er SnF<sub>4</sub>, sem áður var
+kallað „stannic fluoride“ en heitir nú tin(IV)flúoríð.</para>
+</section>
+<section id="fs-idm237433856">
+<title>Jónahýdröt</title>
+<para id="fs-idm244049904">Jónaefni sem innihalda
+vatnssameindir sem óaðskiljanlegan hluta af kristöllum sínum eru kölluð
+<emphasis effect="bold">hýdröt</emphasis>. Nafn jónahýdrats er myndað með því að bæta viðskeyti við
+nafn vatnsfría (sem þýðir „ekki vökvað“) efnasambandsins sem gefur til
+kynna fjölda vatnssameinda sem tengjast hverri formúlueiningu
+efnasambandsins. Viðbætta orðið byrjar á grískri forskeyti sem táknar
+fjölda vatnssameinda (sjá {{XREF:7}}) og endar á „hýdrat“. Til dæmis er
+vatnsfría efnasambandið kopar(II)súlfat einnig til sem hýdrat sem
+inniheldur fimm vatnssameindir og nefnist kopar(II)súlfat pentahýdrat.
+Kristalsódi er almennt heiti á hýdrati natríumkarbónats sem inniheldur
+10 vatnssameindir; kerfisbundið nafn þess er natríumkarbónat dekahýdrat.</para>
+<para id="fs-idm217856880">Formúlur fyrir jónahýdröt eru
+skrifaðar með því að bæta við lóðrétt miðjusettum punkti, stuðli sem
+táknar fjölda vatnssameinda og formúlu vatns. Dæmin tvö sem nefnd voru í
+fyrri málsgrein eru táknuð með formúlunum</para>
+<equation id="fs-idm229832608" class="unnumbered"><m:math><m:mrow><m:mtext>copper(II) sulfate pentahydrate</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>CuSO</m:mtext><m:mn>4</m:mn></m:msub><m:mn>∙5</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
+<equation id="fs-idm220871888" class="unnumbered"><m:math><m:mrow><m:mtext>sodium carbonate decahydrate</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>CO</m:mtext><m:mn>3</m:mn></m:msub><m:mn>∙10</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
+<table id="fs-idp268400368" class="top-titled" summary="This table has two columns labeled “prefix” and “number”. Mono is associated with one although this prefix is sometimes omitted. Di is associated with two. Tri is associated with three. Tetra is associated with four. Penta is associated with five. Hexa is associated with six. Hepta is associated with seven. Octa is associated with eight. Nona is associated with nine. Deca is associated with ten."><tgroup cols="5">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c4" align="center">Forskeyti í nafnakerfi</entry>
+</row>
+<row>
+<entry align="left">Fjöldi</entry>
+<entry align="left">Forskeyti</entry>
+<entry align="left">Fjöldi</entry>
+<entry align="left">Forskeyti</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left">1 (stundum sleppt)</entry>
+<entry align="left">mónó-</entry>
+<entry align="left">6</entry>
+<entry align="left">hexa-</entry>
+</row>
+<row>
+<entry align="left">2</entry>
+<entry align="left">dí-</entry>
+<entry align="left">7</entry>
+<entry align="left">hepta-</entry>
+</row>
+<row>
+<entry align="left">3</entry>
+<entry align="left">trí-</entry>
+<entry align="left">8</entry>
+<entry align="left">okta-</entry>
+</row>
+<row>
+<entry align="left">4</entry>
+<entry align="left">tetra-</entry>
+<entry align="left">9</entry>
+<entry align="left">nona-</entry>
+</row>
+<row>
+<entry align="left">5</entry>
+<entry align="left">penta-</entry>
+<entry align="left">10</entry>
+<entry align="left">deka-</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<example id="fs-idm194224">
+<para id="fs-idm193552"><title>Nafngiftir
+jónaefnasambanda</title>Nefndu eftirfarandi jónaefnasambönd</para>
+<para id="fs-idm193056">(a) Fe<sub>2</sub>S<sub>3</sub></para>
+<para id="fs-idm341872">(b) CuSe</para>
+<para id="fs-idm341488">(c) GaN</para>
+<para id="fs-idm341104">(d) MgSO<sub>4</sub>·7H<sub>2</sub>O</para>
+<para id="fs-idp156278112">(e) Ti<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub></para>
+<para id="fs-idp282326320"><title>Lausn</title>Anjónirnar í þessum efnasamböndum
+hafa fasta neikvæða hleðslu (S<sup>2−</sup>, Se<sup>2− </sup>, N<sup>3−</sup> og <m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo>),</m:mo></m:mrow></m:math>) og
+efnasamböndin verða að vera hlutlaus. Þar sem heildarfjöldi jákvæðra
+hleðsla í hverju efnasambandi verður að vera jafn heildarfjölda
+neikvæðra hleðsla verða jákvæðu jónirnar að vera Fe<sup>3+</sup>, Cu<sup>2+</sup>, Ga<sup>3+</sup>,
+Mg<sup>2+</sup> og Ti<sup>3+</sup>. Þessar hleðslur eru notaðar í nöfnum málmjónanna:</para><para id="fs-idm104688">(a) járn(III)súlfíð</para>
+<para id="fs-idm104272">(b) kopar(II)seleníð</para>
+<para id="fs-idp283457040">(c) gallín(III)nítríð</para>
+<para id="fs-idp283457424">(d) magnesíumsúlfat heptahýdrat</para>
+<para id="fs-idp283457808">(e) títan(III)súlfat</para>
+<para id="fs-idp283458192"><title>Prófaðu þig</title>Skrifaðu efnaformúlur eftirfarandi
+jónaefna:</para>
+<para id="fs-idp283458864">(a) króm(III)fosfíð</para>
+<para id="fs-idp283459248">(b) kvikasilfur(II)súlfíð</para>
+<para id="fs-idp268146864">(c) mangan(II)fosfat</para>
+<para id="fs-idp268147248">(d) kopar(I)oxíð</para>
+<para id="fs-idp268147664">(e) járn(III)klóríð díhýdrat</para>
+<note id="fs-idp268148048"><title>Answer:</title>
+<para id="fs-idp268148560">(a) CrP; (b) HgS; (c)
+Mn<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>; (d) Cu<sub>2</sub>O; (e) FeCl<sub>3</sub>·2H<sub>2</sub>O</para>
+</note>
+</example>
+<note id="fs-idm8768" class="chemistry everyday-life">
+<title>Erin Brockovich og krómmengun</title>
+<para id="fs-idm7968">Í upphafi tíunda áratugarins uppgötvaði
+lögfræðiritarinn Erin Brockovich ({{XREF:8}}) óvenju háa tíðni
+alvarlegra veikinda í smábænum Hinckley í Kaliforníu. Rannsókn hennar
+leiddi að lokum í ljós að veikindin tengdust grunnvatni sem var mengað
+af Cr(VI) sem Pacific Gas &amp; Electric (PG&amp;E) notaði til að berjast gegn
+tæringu í nálægri jarðgasleiðslu. Eins og sýnt var á dramatískan hátt í
+kvikmyndinni <emphasis effect="italics">Erin Brockovich</emphasis> (sem Julia Roberts vann Óskarsverðlaun
+fyrir), þá stefndu Erin og lögmaðurinn Edward Masry PG&amp;E fyrir að menga
+vatnið nálægt Hinckley árið 1993. Sáttin sem þau náðu árið 1996 – 333
+milljónir dala – var hæsta upphæð sem nokkru sinni hafði verið dæmd í
+hópmálsókn í Bandaríkjunum á þeim tíma.</para>
+<figure id="CNX_Chem_02_07_ErinBrocko"><media id="fs-idp282351072" alt="Figure A shows a photo of Erin Brockovich. Figure B shows a 3-D ball-and-stick model of chromate. Chromate has a chromium atom at its center that forms bonds with four oxygen atoms each. Two of the oxygen atoms form single bonds with the chromium atom while the other two form double bonds each. The structure of dichromate consists of two chromate ions that are bonded and share one of their oxygen atoms to which each chromate atom has a single bond.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_02_07_ErinBrocko.jpg"/>
+</media>
+
+<caption>(a) Erin
+Brockovich komst að því að Cr(VI), sem PG&amp;E notaði, hafði mengað
+vatnsból Hinckley í Kaliforníu. (b) Cr(VI) jónin er oft til staðar í
+vatni sem fjölfrumeinda jónirnar krómat, <m:math><m:mrow><m:msub><m:mrow><m:mtext>CrO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math> (til vinstri),
+og díkrómat, <m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math> (til hægri).</caption></figure><para id="fs-idp279149248">Krómefnasambönd eru víða notuð í
+iðnaði, svo sem við krómhúðun, í litagerð, sem rotvarnarefni og til að
+koma í veg fyrir tæringu í kæliturnsvatni, eins og gerðist nálægt
+Hinckley. Í umhverfinu er króm aðallega til staðar á forminu Cr(III) eða
+Cr(VI). Cr(III), sem er innihaldsefni í mörgum vítamínum og
+fæðubótarefnum, myndar efnasambönd sem eru ekki mjög auðleyst í vatni og
+hefur litla eiturvirkni. En Cr(VI) er mun eitraðra og myndar efnasambönd
+sem eru nokkuð auðleyst í vatni. Snerting við lítið magn af Cr(VI) getur
+leitt til skemmda á öndunarfærum, meltingarvegi og ónæmiskerfi, auk
+nýrna, lifrar, blóðs og húðar.</para>
+<para id="fs-idp279150320">Þrátt fyrir hreinsunaraðgerðir er
+Cr(VI) mengun í grunnvatni enn vandamál í Hinckley og víðar um heiminn.
+Rannsókn frá 2010 sem Environmental Working Group gerði leiddi í ljós að
+af 35 bandarískum borgum sem prófaðar voru, höfðu 31 hærra magn af
+Cr(VI) í kranavatni sínu en lýðheilsumarkmiðið 0,02 hlutar á milljarð
+sem Umhverfisverndarstofnun Kaliforníu setti.</para>
+</note>
+</section>
+<section id="fs-idp279151472">
+<title>Sameindaefnasambönd (samgild
+efnasambönd)</title>
+<para id="fs-idp268164784">Tengieiginleikar ólífrænna
+sameindaefnasambanda eru frábrugðnir jónaefnum og þau eru einnig nefnd
+með öðru kerfi. Hleðslur katjóna og anjóna ráða hlutföllum þeirra í
+jónaefnum, þannig að það að tilgreina nöfn jónanna veitir nægar
+upplýsingar til að ákvarða efnaformúlur. Hins vegar, þar sem samgild
+tengi leyfa verulegan breytileika í samsetningarhlutföllum atóma í
+sameind, verða nöfn sameindaefnasambanda að tilgreina þessi hlutföll
+sérstaklega.</para>
+</section>
+<section id="fs-idp268165696">
+<title>Efnasambönd úr tveimur
+frumefnum</title>
+<para id="fs-idp268166336">Þegar tveir málmleysingjar mynda
+sameindaefnasamband eru oft nokkur samsetningarhlutföll möguleg. Til
+dæmis geta kolefni og súrefni myndað efnasamböndin CO og CO<sub>2</sub>. Þar sem
+þetta eru mismunandi efni með mismunandi eiginleika geta þau ekki bæði
+haft sama nafn (þau geta ekki bæði verið kölluð kolefnisoxíð). Til að
+bregðast við þessu notum við nafnakerfi sem er nokkuð svipað því sem
+notað er fyrir jónaefni, en með viðbættum forskeytum til að tilgreina
+fjölda atóma hvers frumefnis. Nafn málmkenndara frumefnisins (þess sem
+er lengra til vinstri og/eða neðar í lotukerfinu) kemur fyrst, á eftir
+kemur nafn málmkenndara frumefnisins (þess sem er lengra til hægri
+og/eða ofar) með endingunni breytt í viðskeytið –<emphasis effect="italics">íð</emphasis>. Fjöldi atóma
+hvers frumefnis er táknaður með grísku forskeytunum sem sýnd eru í
+{{XREF:9}}.</para>
+<para id="fs-idm325632">Þegar aðeins eitt atóm af fyrra
+frumefninu er til staðar er forskeytið <emphasis effect="italics">mónó</emphasis>- yfirleitt fellt brott úr
+þeim hluta. Þannig er CO nefnt kolmónoxíð og CO<sub>2</sub> er kallað koldíoxíð.
+Þegar tveir sérhljóðar eru samliggjandi er endasérhljóðinn í gríska
+forskeytinu stundum sleppt í almennri notkun, þótt leiðbeiningar IUPAC
+leyfi þetta aðeins fyrir tvöfalda stafinn o í <emphasis effect="italics">mónóoxíð</emphasis>, sem er rétt
+skrifað sem <emphasis effect="italics">mónoxíð</emphasis>. Í nafngiftaæfingum í þessum texta geta nemendur
+valið að fylgja hvorri aðferðinni sem er. Nokkur dæmi sem sýna þetta
+Nokkur önnur dæmi eru sýnd í {{XREF:10}}.</para>
+<table id="fs-idp269568176" class="top-titled" summary="A two column table is shown. The left column is titled “Compound” and the right column is titled “Name.” From left to right, the first row reads “S O subscript 2” and “sulfur dioxide.” The second row reads “S O subscript 3” and “sulfur trioxide.” The third row reads “N O subscript 2” and “nitrogen dioxide.” The fourth row reads “N subscript 2 O subscript 4” and “dinitrogen tetroxide.” The fifth row reads “N subscript 2 O subscript 5” and “dinitrogen pentoxide.” The sixth row reads “B C l subscript 3” and “boron trichloride.” The seventh row reads “S F subscript 6” and “sulfur hexafluoride.” The eighth row reads “P F subscript 5” and “phosphorus pentafluoride.” The ninth row reads “P subscript 4 O subscript 10” and “tetraphosphorus decaoxide.” The tenth row reads “I F subscript 7” and “iodine heptafluoride.”"><tgroup cols="5">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<colspec colnum="4" colname="c4"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c4" align="center">Nöfn nokkurra sameindaefnasambanda sem
+samanstanda af tveimur frumefnum</entry>
+</row>
+<row>
+<entry align="left">Efnasamband</entry>
+<entry align="left">Nafn</entry>
+<entry align="left">Efnasamband</entry>
+<entry align="left">Nafn</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left">SO<sub>2</sub></entry>
+<entry align="left">brennisteinsdíoxíð</entry>
+<entry align="left">BCl<sub>3</sub></entry>
+<entry align="left">bórtríklóríð</entry>
+</row>
+<row>
+<entry align="left">SO<sub>3</sub></entry>
+<entry align="left">brennisteinstríoxíð</entry>
+<entry align="left">SF<sub>6</sub></entry>
+<entry align="left">brennisteinshexaflúoríð</entry>
+</row>
+<row>
+<entry align="left">NO<sub>2</sub></entry>
+<entry align="left">niturdíoxíð</entry>
+<entry align="left">PF<sub>5</sub></entry>
+<entry align="left">fosfórpentaflúoríð</entry>
+</row>
+<row>
+<entry align="left">N<sub>2</sub>O<sub>4</sub></entry>
+<entry align="left">díniturtetroxíð</entry>
+<entry align="left">P<sub>4</sub>O<sub>10</sub></entry>
+<entry align="left">tetrafosfórdekaoxíð</entry>
+</row>
+<row>
+<entry align="left">N<sub>2</sub>O<sub>5</sub></entry>
+<entry align="left">díniturpentoxíð</entry>
+<entry align="left">IF<sub>7</sub></entry>
+<entry align="left">joðheptaflúoríð</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idm207744">Það eru nokkur almenn nöfn sem þú munt
+rekast á þegar þú heldur áfram í efnafræðináminu. Til dæmis, þótt NO sé
+oft kallað nituroxíð, er rétt nafn þess niturmónoxíð. Á sama hátt er
+N<sub>2</sub>O þekkt sem glaðloft þótt reglur okkar myndu kveða á um nafnið
+díniturmónoxíð. (Og H<sub>2</sub>O er venjulega kallað vatn, ekki
+dívetnismónoxíð.) Þú ættir að leggja almenn nöfn efnasambanda á minnið
+þegar þú rekst á þau.</para>
+<example id="fs-idm206240">
+<para id="fs-idm205600"><title>Nafngiftir samgildra
+efnasambanda</title>Nefndu eftirfarandi samgildu
+efnasambönd:</para>
+<para id="fs-idm205216">(a) SF<sub>6</sub></para>
+<para id="fs-idp268178064">(b) N<sub>2</sub>O<sub>3</sub></para>
+<para id="fs-idp268179088">(c) Cl<sub>2</sub>O<sub>7</sub></para>
+<para id="fs-idp268180112">(d) P<sub>4</sub>O<sub>6</sub></para>
+<para id="fs-idp268181136"><title>Lausn</title>Þar sem þessi efnasambönd
+samanstanda eingöngu af málmleysingjum notum við forskeyti til að
+tilgreina fjölda atóma hvers frumefnis:</para>
+<para id="fs-idm335200">(a) brennisteinshexaflúoríð</para>
+<para id="fs-idm334784">(b) tvíniturtríoxíð</para>
+<para id="fs-idm334368">(c) tvíklórheptoxíð</para>
+<para id="fs-idm333984">(d) tetrafosfórhexoxíð</para>
+<para id="fs-idm333600"><title>Prófaðu þekkingu þína</title>Skrifaðu efnaformúlur fyrir
+eftirfarandi efnasambönd:</para>
+<para id="fs-idm332928">(a) fosfórpentaklórið</para>
+<para id="fs-idm332544">(b) tvíniturmónoxíð</para>
+<para id="fs-idp283400752">(c) joðheptaflúoríð</para>
+<para id="fs-idp283401136">(d) kolefnistetraklóríð</para>
+<note id="fs-idp283401520"><title>Answer:</title>
+<para id="fs-idp283402032">(a) PCl<sub>5</sub>; (b) N<sub>2</sub>O; (c) IF<sub>7</sub>;
+(d) CCl<sub>4</sub></para>
+</note>
+</example>
+<note id="fs-idp283404080" class="chemistry link-to-learning">
+<para id="fs-idp268192304">Eftirfarandi
+{{LINK:1}}vefsíða{{/LINK}} býður upp á æfingar í nafngiftum efnasambanda
+og ritun efnaformúla. Þú getur valið tvíundar-, fjölfrumeinda- og
+jónaefni með breytilega hleðslu, auk sameindaefnasambanda.</para></note>
+</section>
+<section id="fs-idp268193776">
+<title>Tvíundarsýrur</title>
+<para id="fs-idp282238096">Sum efnasambönd sem innihalda vetni
+tilheyra mikilvægum flokki efna sem kallast sýrur. Efnafræði þessara
+efnasambanda er könnuð nánar í síðari köflum þessa texta, en í bili
+nægir að nefna að margar sýrur losa vetnisjónir, H<sup>+</sup>, þegar þær eru
+leystar upp í vatni. Til að tákna þennan sérstaka efnaeiginleika fær
+efnablanda af vatni og sýru nafn sem er dregið af nafni efnasambandsins.
+Ef efnasambandið er <emphasis effect="bold">tvíliða sýra</emphasis> (samanstendur af vetni og einum
+öðrum málmleysingja):</para>
+<list id="fs-idp282239904" list-type="bulleted">
+<item>Orðinu „vetni“ er breytt í
+forskeytið <emphasis effect="italics">vetnis-</emphasis></item>
+<item>Nafni hins málmleysingjans er
+breytt með því að bæta við endingunni <emphasis effect="italics">-sýra</emphasis></item>
+<item>Orðið „sýra“ er bætt við sem
+annað orð</item>
+</list>
+<para id="fs-idm109568">Til dæmis, þegar gasið HCl
+(vetnisklóríð) er leyst upp í vatni, er lausnin kölluð
+<emphasis effect="italics">vetnisklóríðsýra</emphasis> (einnig saltsýra). Nokkur önnur dæmi um þessa
+nafngift eru sýnd í {{XREF:11}}.</para>
+<table id="fs-idp272649888" class="top-titled" summary="The names of simple acids included in this table are: H F gas, which is hydrogen fluoride, H C l gas which is hydrogen chloride, H B r gas which is hydrogen bromide, H I gas which is hydrogen iodide, H subscript 2 S gas which is hydrogen sulfide, H F aqueous which is hydrofluoric acid, H C l aqueous which is hydrochloric acid, H B r aqueous which is hydrobromic acid, H I aqueous which is hydroiodic acid, and H subscript 2 S aqueous which is hydrosulfuric acid.">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c2" align="center">Nöfn nokkurra einfaldra sýra</entry>
+</row>
+<row>
+<entry align="left">Nafn gass</entry>
+<entry align="left">Nafn sýru</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left">HF(<emphasis effect="italics">g</emphasis>), vetnisflúoríð</entry>
+<entry align="left">HF(<emphasis effect="italics">aq</emphasis>), flúorsýra</entry>
+</row>
+<row>
+<entry align="left">HCl(<emphasis effect="italics">g</emphasis>), vetnisklóríð</entry>
+<entry align="left">HCl(<emphasis effect="italics">aq</emphasis>), saltsýra</entry>
+</row>
+<row>
+<entry align="left">HBr(<emphasis effect="italics">g</emphasis>), vetnisbrómíð</entry>
+<entry align="left">HBr(<emphasis effect="italics">aq</emphasis>), vetnisbrómíðsýra</entry>
+</row>
+<row>
+<entry align="left">HI(<emphasis effect="italics">g</emphasis>), vetnisjoðíð</entry>
+<entry align="left">HI(<emphasis effect="italics">aq</emphasis>), vetnisjoðíðsýra</entry>
+</row>
+<row>
+<entry align="left">H<sub>2</sub>S(<emphasis effect="italics">g</emphasis>), brennisteinsvetni</entry>
+<entry align="left">H<sub>2</sub>S(<emphasis effect="italics">aq</emphasis>), brennisteinsvetnissýra</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="fs-idp268349296">
+<title>Oxósýrur</title>
+<para id="fs-idp279162704">Mörg efnasambönd sem innihalda þrjú
+eða fleiri frumefni (svo sem lífræn efnasambönd eða girðisambönd) lúta
+sérhæfðum nafngiftarreglum sem þú munt læra síðar. Hins vegar munum við
+í stuttu máli ræða mikilvæg efnasambönd sem kallast <emphasis effect="bold">oxósýrur</emphasis>,
+efnasambönd sem innihalda vetni, súrefni og að minnsta kosti eitt annað
+frumefni, og eru bundin á þann hátt að þau gefa efnasambandinu súra
+eiginleika (þú munt læra nánar um þetta í síðari kafla). Dæmigerðar
+oxósýrur samanstanda af vetni ásamt fjölatóma, súrefnisinnihaldandi jón.
+Til að nafngreina oxósýrur:</para>
+<list id="fs-idp279164064" list-type="bulleted">
+<item>Sleppið „vetni“</item>
+<item>Byrjið á stofni nafns
+anjónarinnar</item>
+<item>Skiptið <emphasis effect="italics">-at</emphasis> út fyrir
+<emphasis effect="italics">-sýra</emphasis>, eða <emphasis effect="italics">-ít</emphasis> út fyrir <emphasis effect="italics">-ýra</emphasis></item>
+<item>Bætið við „sýra“</item>
+</list>
+<para id="fs-idp282461232">Tökum sem dæmi H<sub>2</sub>CO<sub>3</sub> (sem þú
+gætir freistast til að kalla „vetniskarbónat“). Til að nafngreina þetta
+rétt er „vetni“ sleppt; <emphasis effect="italics">-at</emphasis> í karbónat er skipt út fyrir <emphasis effect="italics">-sýra</emphasis>; og
+sýru er bætt við — þannig að nafn þess er kolsýra. Önnur dæmi eru gefin
+í {{XREF:12}}. Það eru nokkrar undantekningar frá almennu
+nafngiftaraðferðinni (t.d. er H<sub>2</sub>SO<sub>4</sub> kallað brennisteinssýra, ekki
+brennissýra, og H<sub>2</sub>SO<sub>3</sub> er brennisteinssýrlingur, ekki
+brennissýrlingur).</para>
+<table id="fs-idp268340336" class="top-titled" summary="This table has three columns labeled “formula”, “anion name”, and “acid name”. H C subscript 2 H subscript 3 O subscript 2 is named acetate or acetic acid. H N O subscript 3 is named nitrate or nitric acid. H N O subscript 2 is named nitrite or nitrous acid, H C l O subscript 4 is named perchlorate or perchloric acid. H subscript 2 C O subscript 3 is named carbonate or carbonic acid. H subscript 2 S O subscript 4 is named sulfate or sulfuric acid. H subscript 2 S O subscript 3 is named sulfite or sulfurous acid. H subscript 3 P O subscript 4 is named phosphate or phosphoric acid.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c3" align="center">Heiti algengra oxósýra</entry>
+</row>
+<row>
+<entry align="left">Formúla</entry>
+<entry align="left">Heiti anjónar</entry>
+<entry align="left">Heiti sýru</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left">HC<sub>2</sub>H<sub>3</sub>O<sub>2</sub></entry>
+<entry align="left">asetat</entry>
+<entry align="left">ediksýra</entry>
+</row>
+<row>
+<entry align="left">HNO<sub>3</sub></entry>
+<entry align="left">nítrat</entry>
+<entry align="left">saltpéturssýra</entry>
+</row>
+<row>
+<entry align="left">HNO<sub>2</sub></entry>
+<entry align="left">nítrít</entry>
+<entry align="left">saltpéturssýrlingur</entry>
+</row>
+<row>
+<entry align="left">HClO<sub>4</sub></entry>
+<entry align="left">perklórat</entry>
+<entry align="left">perklórsýra</entry>
+</row>
+<row>
+<entry align="left">H<sub>2</sub>CO<sub>3</sub></entry>
+<entry align="left">karbónat</entry>
+<entry align="left">kolsýra</entry>
+</row>
+<row>
+<entry align="left">H<sub>2</sub>SO<sub>4</sub></entry>
+<entry align="left">súlfat</entry>
+<entry align="left">brennisteinssýra</entry>
+</row>
+<row>
+<entry align="left">H<sub>2</sub>SO<sub>3</sub></entry>
+<entry align="left">súlfít</entry>
+<entry align="left">brennisteinssýrlingur</entry>
+</row>
+<row>
+<entry align="left">H<sub>3</sub>PO<sub>4</sub></entry>
+<entry align="left">fosfat</entry>
+<entry align="left">fosfórsýra</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+<section id="fs-idp282340144" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp282340912">Efnafræðingar nota nafnakerfisreglur
+til að gefa efnasamböndum skýr heiti. Jónaefni og sameindaefnasambönd
+eru nefnd með nokkuð ólíkum aðferðum. Tvíundajónaefni samanstanda
+yfirleitt af málmi og málmleysingja. Heiti málmsins er skrifað fyrst og
+síðan heiti málmleysingjans með endingunni –<emphasis effect="italics">íð</emphasis>. Til dæmis er K<sub>2</sub>O
+kallað kalíumoxíð. Ef málmurinn getur myndað jónir með mismunandi
+hleðslur er rómversk tala í sviga sett á eftir heiti málmsins til að
+tilgreina hleðslu hans. Þannig er FeCl<sub>2</sub> járn(II)klóríð og FeCl<sub>3</sub> er
+járn(III)klóríð. Sum efnasambönd innihalda fjölfrumeinda jónir; leggja
+ætti heiti algengra fjölfrumeinda jóna á minnið. Sameindaefnasambönd
+geta myndað efnasambönd með mismunandi hlutföllum frumefna sinna, þannig
+að forskeyti eru notuð til að tilgreina fjölda atóma hvers frumefnis í
+sameind efnasambandsins. Dæmi eru SF<sub>6</sub>, brennisteinshexaflúoríð, og
+N<sub>2</sub>O<sub>4</sub>, tvínitur-tetroxíð. Sýrur eru mikilvægur flokkur efnasambanda
+sem innihalda vetni og hafa sérstakar nafnakerfisreglur. Tvíundasýrur
+eru nefndar með forskeytinu <emphasis effect="italics">hýdró-</emphasis>, endingunni –<emphasis effect="italics">íð</emphasis> er breytt í
+–<emphasis effect="italics">sýra</emphasis> og orðinu „sýra“ er bætt við; HCl er hýdróklórsýra (eða
+saltsýra). Oxósýrur eru nefndar með því að breyta endingu anjónarinnar
+(–<emphasis effect="italics">at</emphasis> í –<emphasis effect="italics">sýra</emphasis> og –<emphasis effect="italics">ít</emphasis> í –<emphasis effect="italics">sýrlingur</emphasis>) og bæta við „sýra“; H<sub>2</sub>CO<sub>3</sub>
+er kolsýra.</para>
+</section>
+<section id="fs-idm121332480" class="exercises">
+<title>Efnafræði – Lokaæfingar kafla</title>
+<exercise id="fs-idp282297472">
+<problem id="fs-idp282297728">
+<para id="fs-idp282297984">Nefndu eftirfarandi efnasambönd:</para>
+<para id="fs-idp282298368">(a) CsCl</para>
+<para id="fs-idp282298752">(b) BaO</para>
+<para id="fs-idp283372304">(c) K<sub>2</sub>S</para>
+<para id="fs-idp283373072">(d) BeCl<sub>2</sub></para>
+<para id="fs-idp283373712">(e) HBr</para>
+<para id="fs-idp283374096">(f) AlF<sub>3</sub></para>
+</problem>
+<solution id="fs-idp283374864"><para id="fs-idp283374992">(a) sesínklóríð; (b) barínoxíð;
+(c) kalínsúlfíð; (d) beryllínklóríð; (e) vetnisbrómíð; (f) álflúoríð</para>
+</solution>
+</exercise>
+<exercise id="fs-idp283375776">
+<problem id="fs-idp283376032">
+<para id="fs-idp283376288">Nefndu eftirfarandi efnasambönd:</para>
+<para id="fs-idp283376672">(a) NaF</para>
+<para id="fs-idp283377056">(b) Rb<sub>2</sub>O</para>
+<para id="fs-idm254736">(c) BCl<sub>3</sub></para>
+<para id="fs-idm254096">(d) H<sub>2</sub>Se</para>
+<para id="fs-idm253328">(e) P<sub>4</sub>O<sub>6</sub></para>
+<para id="fs-idm252048">(f) ICl<sub>3</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idm250352">
+<problem id="fs-idm250096">
+<para id="fs-idm249840">Skrifaðu formúlur eftirfarandi
+efnasambanda:</para>
+<para id="fs-idm306848">(a) rúbidínbrómíð</para>
+<para id="fs-idm306432">(b) magnesínseleníð</para>
+<para id="fs-idm306016">(c) natrínoxíð</para>
+<para id="fs-idm305600">(d) kalsínklóríð</para>
+<para id="fs-idm305184">(e) vetnisflúoríð</para>
+<para id="fs-idm304768">(f) gallínfosfíð</para>
+<para id="fs-idm304352">(g) álbrómíð</para>
+<para id="fs-idm303936">(h) ammóníumsúlfat</para>
+</problem>
+<solution id="fs-idm303392"><para id="fs-idm303264">(a) RbBr; (b) MgSe; (c) Na<sub>2</sub>O; (d)
+CaCl<sub>2</sub>; (e) HF; (f) GaP; (g) AlBr<sub>3</sub>; (h) (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idp279465312">
+<problem id="fs-idp279465568">
+<para id="fs-idp279465824">Skrifaðu formúlur eftirfarandi
+efnasambanda:</para>
+<para id="fs-idp279466208">(a) litínkarbónat</para>
+<para id="fs-idp279466624">(b) natrínperklórat</para>
+<para id="fs-idp279467040">(c) barínhýdroxíð</para>
+<para id="fs-idp279467456">(d) ammóníumkarbónat</para>
+<para id="fs-idp279467872">(e) brennisteinssýra</para>
+<para id="fs-idp279468288">(f) kalsínasetat</para>
+<para id="fs-idp279468704">(g) magnesínfosfat</para>
+<para id="fs-idp279469120">(h) natrínsúlfít</para>
+</problem>
+</exercise>
+<exercise id="fs-idp268321696">
+<problem id="fs-idp268321952">
+<para id="fs-idp268322208">Skrifaðu formúlur eftirfarandi
+efnasambanda:</para>
+<para id="fs-idp268322592">(a) klórdíoxíð</para>
+<para id="fs-idp268323008">(b) tvínitur-tetraoxíð</para>
+<para id="fs-idp268323392">(c) kalínfosfíð</para>
+<para id="fs-idp268323808">(d) silfursúlfíð</para>
+<para id="fs-idp268324224">(e) álflúoríð þríhýdrat</para>
+<para id="fs-idp268324640">(f) kísildíoxíð</para>
+</problem>
+<solution id="fs-idp268325184"><para id="fs-idp268325312">(a) ClO<sub>2</sub>; (b) N<sub>2</sub>O<sub>4</sub>; (c)
+K<sub>3</sub>P; (d) Ag<sub>2</sub>S; (e) AIF<sub>3</sub>·3H<sub>2</sub>O; (f) SiO<sub>2</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idp279319168">
+<problem id="fs-idp279319424">
+<para id="fs-idp279319680">Skrifið formúlur eftirfarandi
+efnasambanda:</para>
+<para id="fs-idp279320064">(a) barínklóríð</para>
+<para id="fs-idp279320480">(b) magnesínnítríð</para>
+<para id="fs-idp279320896">(c) brennisteinsdíoxíð</para>
+<para id="fs-idp279321312">(d) niturtriklóríð</para>
+<para id="fs-idp279321696">(e) diniturtríoxíð</para>
+<para id="fs-idp279322112">(f) tin(IV)klóríð</para>
+</problem>
+</exercise>
+<exercise id="fs-idp279515392">
+<problem id="fs-idp279515648">
+<para id="fs-idp279515904">Hvert eftirfarandi efnasambanda
+inniheldur málm sem getur haft fleiri en eina jónahleðslu. Nefndu þessi
+efnasambönd:</para>
+<para id="fs-idp279516416">(a) Cr<sub>2</sub>O<sub>3</sub></para>
+<para id="fs-idp279517440">(b) FeCl<sub>2</sub></para>
+<para id="fs-idp279518080">(c) CrO<sub>3</sub></para>
+<para id="fs-idp268272192">(d) TiCl<sub>4</sub></para>
+<para id="fs-idp268272832">(e) CoCl<sub>2</sub>·6H<sub>2</sub>O</para>
+<para id="fs-idp268273216">(f) MoS<sub>2</sub></para>
+</problem>
+<solution id="fs-idp268273984"><para id="fs-idp268274112">(a) króm(III)oxíð; (b)
+járn(II)klóríð; (c) króm(VI)oxíð; (d) títan(IV)klóríð; (e)
+kóbalt(II)klóríð hexahýdrat; (f) mólýbden(IV)súlfíð</para>
+</solution>
+</exercise>
+<exercise id="fs-idp268274912">
+<problem id="fs-idp268275168">
+<para id="fs-idp268275424">Hvert eftirfarandi efnasambanda
+inniheldur málm sem getur haft fleiri en eina jónahleðslu. Nefndu þessi
+efnasambönd:</para>
+<para id="fs-idp268275936">(a) NiCO<sub>3</sub></para>
+<para id="fs-idp268276576">(b) MoO<sub>3</sub></para>
+<para id="fs-idp268277216">(c) Co(NO<sub>3</sub>)<sub>2</sub></para>
+<para id="fs-idp268361424">(d) V<sub>2</sub>O<sub>5</sub></para>
+<para id="fs-idp268362448">(e) MnO<sub>2</sub></para>
+<para id="fs-idp268363088">(f) Fe<sub>2</sub>O<sub>3</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp268365168">
+<problem id="fs-idp268365424">
+<para id="fs-idp268365680">Eftirfarandi jónaefni er að finna
+í algengum heimilisvörum. Skrifaðu formúlur fyrir hvert efnasamband:</para>
+<para id="fs-idp268366192">(a) kalíumfosfat</para>
+<para id="fs-idp268366608">(b) kopar(II)súlfat</para>
+<para id="fs-idp268367024">(c) kalsíumklóríð</para>
+<para id="fs-idp282328976">(d) títan(IV)oxíð</para><para id="fs-idp282329392">(e) ammóníumnítrat</para>
+<para id="fs-idp282329808">(f) natríumbísúlfat (almennt
+heiti yfir natríumvetnissúlfat)</para>
+</problem>
+<solution id="fs-idp282330320"><para id="fs-idp282330448">(a) K<sub>3</sub>PO<sub>4</sub>; (b) CuSO<sub>4</sub>; (c)
+CaCl<sub>2</sub>; (d) TiO<sub>2</sub>; (e) NH<sub>4</sub>NO<sub>3</sub>; (f) NaHSO<sub>4</sub></para>
+</solution>
+</exercise>
+<exercise id="fs-idp282334032">
+<problem id="fs-idp282334288">
+<para id="fs-idp282334544">Eftirfarandi jónaefni er að finna
+í algengum heimilisvörum. Nefndu hvert efnasamband:</para>
+<para id="fs-idp282334928">(a) Ca(H<sub>2</sub>PO<sub>4</sub>)<sub>2</sub></para>
+<para id="fs-idp268307168">(b) FeSO<sub>4</sub></para>
+<para id="fs-idp268307808">(c) CaCO<sub>3</sub></para>
+<para id="fs-idp268308448">(d) MgO</para>
+<para id="fs-idp268308832">(e) NaNO<sub>2</sub></para>
+<para id="fs-idp268309472">(f) KI</para>
+</problem>
+</exercise>
+<exercise id="fs-idp268310912">
+<problem id="fs-idp268311168">
+<para id="fs-idp268311424">Hver eru IUPAC-heiti eftirfarandi
+efnasambanda?</para>
+<para id="fs-idp268311808">(a) mangandíoxíð</para>
+<para id="fs-idp268312224">(b) kvikasilfurs(I)klóríð
+(Hg<sub>2</sub>Cl<sub>2</sub>)</para>
+<para id="fs-idp282285904">(c) járn(III)nítrat
+[Fe(NO<sub>3</sub>)<sub>3</sub>]</para>
+<para id="fs-idp282287056">(d) títantetraklóríð</para>
+<para id="fs-idp282287440">(e) kopar(II)brómíð (CuBr<sub>2</sub>)</para>
+</problem>
+<solution id="fs-idp282288336"><para id="fs-idp282288464">(a) mangan(IV)oxíð; (b)
+kvikasilfur(I)klóríð; (c) járn(III)nítrat; (d) títan(IV)klóríð; (e)
+kopar(II)brómíð</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp282291040">
+<term>tvíliða sýra</term>
+<meaning id="fs-idp282291040-meaning">efnasamband sem
+inniheldur vetni og eitt annað frumefni, tengt á þann hátt að það gefur
+efnasambandinu súra eiginleika (getu til að losa H+ jónir þegar það er
+leyst upp í vatni)</meaning>
+</definition>
+<definition id="fs-idp282226176">
+<term>tvíliða efnasamband</term>
+<meaning id="fs-idp282226176-meaning">efnasamband sem
+inniheldur tvö mismunandi frumefni.</meaning>
+</definition>
+<definition id="fs-idp282227200">
+<term>nafnakerfi</term>
+<meaning id="fs-idp282227200-meaning">reglukerfi til að nefna
+fyrirbæri</meaning>
+</definition>
+<definition id="fs-idp282228224">
+<term>oxósýra</term>
+<meaning id="fs-idp282228224-meaning">efnasamband sem
+inniheldur vetni, súrefni og eitt annað frumefni, tengt á þann hátt að
+það gefur efnasambandinu súra eiginleika (getu til að losa H+ jónir
+þegar það er leyst upp í vatni)</meaning>
+</definition>
+</glossary>
+</document>
