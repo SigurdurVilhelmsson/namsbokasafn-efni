@@ -29,6 +29,7 @@ import katex from 'katex';
 import { fileURLToPath } from 'url';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { escapeAttr } from './lib/cnxml-elements.js';
+import { buildModuleSections } from './lib/module-sections.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,17 +46,8 @@ const CONFIG = {
     path.join(REPO_ROOT, 'books', book, '05-publication', track, 'chapters'),
 };
 
-// Module to section mapping for chapter 5 (will need to be generalized)
-const MODULE_SECTIONS = {
-  efnafraedi: {
-    5: {
-      m68723: { section: '5.0', title: 'Inngangur' },
-      m68724: { section: '5.1', title: 'Grunnatriði orku' },
-      m68726: { section: '5.2', title: 'Varmamælingar' },
-      m68727: { section: '5.3', title: 'Vermi' },
-    },
-  },
-};
+// Module sections are built dynamically from structure + segment files
+// via buildModuleSections() — see tools/lib/module-sections.js
 
 // =====================================================================
 // REFERENCE MAP BUILDER
@@ -277,10 +269,15 @@ function getModuleFiles(book, chapter, source = 'translated') {
 /**
  * Get module info (section number, title) for a module.
  */
+const _moduleSectionsCache = {};
 function getModuleInfo(book, chapter, moduleId) {
-  const chapterModules = MODULE_SECTIONS[book]?.[chapter];
-  if (chapterModules && chapterModules[moduleId]) {
-    return chapterModules[moduleId];
+  const key = `${book}:${chapter}`;
+  if (!_moduleSectionsCache[key]) {
+    _moduleSectionsCache[key] = buildModuleSections(book, chapter);
+  }
+  const info = _moduleSectionsCache[key][moduleId];
+  if (info) {
+    return { section: `${chapter}.${info.section}`, title: info.titleIs };
   }
   // Fallback: use module ID
   return { section: moduleId, title: moduleId };

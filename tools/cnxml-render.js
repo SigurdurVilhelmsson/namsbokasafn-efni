@@ -41,6 +41,7 @@ import {
   translateLatexText,
 } from './lib/cnxml-elements.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
+import { buildModuleSections } from './lib/module-sections.js';
 
 // =====================================================================
 // NOTE TYPE LABELS
@@ -131,14 +132,8 @@ function renderLatex(latex, displayMode = true) {
 
 const BOOKS_DIR = 'books/efnafraedi';
 
-// Module to section mapping for chapter 5
-// slug should match existing MD file names for consistency
-const MODULE_SECTIONS = {
-  m68723: { section: '0', title: 'Introduction', slug: 'introduction' },
-  m68724: { section: '1', title: 'Energy Basics', slug: 'grunnatridi-orku' },
-  m68726: { section: '2', title: 'Calorimetry', slug: 'varmamaelingar' },
-  m68727: { section: '3', title: 'Enthalpy', slug: 'vermi' },
-};
+// Module sections are built dynamically from structure + segment files
+// via buildModuleSections() — see tools/lib/module-sections.js
 
 // =====================================================================
 // ARGUMENT PARSING
@@ -258,8 +253,9 @@ function renderCnxmlToHtml(cnxml, options = {}) {
   // Render content
   const contentHtml = renderContent(doc.rawContent, context, verbose);
 
-  // Get section info
-  const sectionInfo = MODULE_SECTIONS[moduleId] || { section: '0', title };
+  // Get section info from dynamically built module sections
+  const moduleSections = options.moduleSections || {};
+  const sectionInfo = moduleSections[moduleId] || { section: '0', titleEn: title };
   const sectionNumber = `${chapter}.${sectionInfo.section}`;
 
   // Build page data
@@ -1363,18 +1359,10 @@ function ensureOutputDir(chapter, track) {
 /**
  * Generate output filename.
  */
-function getOutputFilename(moduleId, chapter) {
-  const sectionInfo = MODULE_SECTIONS[moduleId];
+function getOutputFilename(moduleId, chapter, moduleSections) {
+  const sectionInfo = moduleSections?.[moduleId];
   if (sectionInfo) {
-    // Use explicit slug if provided, otherwise derive from title
-    const slug =
-      sectionInfo.slug ||
-      sectionInfo.title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/gi, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-|-$/g, '');
-    return `${chapter}-${sectionInfo.section}-${slug}.html`;
+    return `${chapter}-${sectionInfo.section}-${sectionInfo.slug}.html`;
   }
   return `${moduleId}.html`;
 }
@@ -1382,9 +1370,9 @@ function getOutputFilename(moduleId, chapter) {
 /**
  * Write output HTML.
  */
-function writeOutput(chapter, moduleId, track, html) {
+function writeOutput(chapter, moduleId, track, html, moduleSections) {
   const outputDir = ensureOutputDir(chapter, track);
-  const filename = getOutputFilename(moduleId, chapter);
+  const filename = getOutputFilename(moduleId, chapter, moduleSections);
   const outputPath = path.join(outputDir, filename);
   fs.writeFileSync(outputPath, html, 'utf-8');
   return outputPath;
@@ -1411,6 +1399,9 @@ async function main() {
   try {
     const modules = findChapterModules(args.chapter, args.module);
     const chapterStr = String(args.chapter).padStart(2, '0');
+
+    // Build module sections map from structure + segment files
+    const moduleSections = buildModuleSections('efnafraedi', args.chapter);
 
     // Build chapter-wide figure/table number maps across ALL modules
     // This enables cross-module references (e.g., 5-2 referencing a table in 5-1)
@@ -1463,11 +1454,12 @@ async function main() {
         lang: args.lang,
         chapter: args.chapter,
         moduleId,
+        moduleSections,
         chapterFigureNumbers,
         chapterTableNumbers,
       });
 
-      const outputPath = writeOutput(args.chapter, moduleId, args.track, html);
+      const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
 
       console.log(`${moduleId}: Rendered to HTML`);
       console.log(`  → ${outputPath}`);
