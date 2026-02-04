@@ -1,0 +1,1683 @@
+{
+  "moduleId": "m68709",
+  "title": {
+    "segmentId": "m68709:title:auto-1",
+    "text": "Writing and Balancing Chemical Equations"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "824e8777-c9bf-46b1-b232-d0bc764f4729",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Derive chemical equations from narrative descriptions of chemical reactions.",
+        "Write and balance chemical equations in molecular, total ionic, and net ionic formats."
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp47467664",
+      "segmentId": "m68709:para:fs-idp47467664"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_04_01_rxn2",
+      "caption": {
+        "segmentId": "m68709:caption:CNX_Chem_04_01_rxn2-caption"
+      },
+      "media": {
+        "id": "fs-idp26251152",
+        "alt": "This figure shows a balanced chemical equation followed below by a representation of the equation using space-filling models. The equation reads C H subscript 4 plus 2 O subscript 2 arrow C O subscript 2 plus 2 H subscript 2 O. Under the C H subscript 4, the molecule is shown with a central black sphere, representing a C atom, to which 4 smaller white spheres, representing H atoms, are distributed evenly around. All four H atoms are bonded to the central black C atom. This is followed by a plus sign. Under the 2 O subscript 2, two molecules are shown. The molecules are each composed of two red spheres bonded together. The red spheres represent O atoms. To the right of an arrow and under the C O subscript 2, appears a single molecule with a black central sphere with two red spheres bonded to the left and right. Following a plus sign and under the 2 H subscript 2 O, are two molecules, each with a central red sphere and two smaller white spheres attached to the lower right and lower left sides of the central red sphere. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms.",
+        "src": "../../media/CNX_Chem_04_01_rxn2.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp80311968",
+      "segmentId": "m68709:para:fs-idp80311968"
+    },
+    {
+      "type": "list",
+      "id": "fs-idm9329568",
+      "listType": "bulleted",
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68709:item:fs-idm9329568-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68709:item:fs-idm9329568-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68709:item:fs-idm9329568-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m68709:item:fs-idm9329568-item-4"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm33251968",
+      "segmentId": "m68709:para:fs-idm33251968"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_04_01_rxn3",
+      "caption": {
+        "segmentId": "m68709:caption:CNX_Chem_04_01_rxn3-caption"
+      },
+      "media": {
+        "id": "fs-idp178489152",
+        "alt": "This image has a left side, labeled, “Mixture before reaction” separated by a vertical dashed line from right side labeled, “Mixture after reaction.” On the left side of the figure, two types of molecules are illustrated with space-filling models. Six of the molecules have only two red spheres bonded together. Three of the molecules have four small white spheres evenly distributed about and bonded to a central, larger black sphere. On the right side of the dashed vertical line, two types of molecules which are different from those on the left side are shown. Six of the molecules have a central red sphere to which smaller white spheres are bonded. The white spheres are not opposite each other on the red atoms, giving the molecule a bent shape or appearance. The second molecule type has a central black sphere to which two red spheres are attached on opposite sides, resulting in a linear shape or appearance. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms. On each side of the dashed line, twelve red, three black, and twelve white spheres are present.",
+        "src": "../../media/CNX_Chem_04_01_rxn3.jpg"
+      }
+    },
+    {
+      "type": "list",
+      "id": "fs-idp42981680",
+      "listType": "bulleted",
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68709:item:fs-idp42981680-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68709:item:fs-idp42981680-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68709:item:fs-idp42981680-item-3"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp23923488",
+      "class": null,
+      "title": {
+        "segmentId": "m68709:title:fs-idp23923488-title",
+        "text": "Balancing Equations"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp13839872",
+          "segmentId": "m68709:para:fs-idp13839872"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp219991408",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp52518864",
+          "segmentId": "m68709:para:fs-idp52518864"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp38334880",
+          "class": "unnumbered"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp140513680",
+          "class": "unnumbered",
+          "summary": "This is a table with four columns and four rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters C, H, and O. Under the “Reactants” column are the equations “1 times 1 equals 1,” “4 times 1 equals 4,” and “2 times 2 equals 4.” Under the “Products” column are the equations, “1 times 1 equals 1,” “2 times 2 equals 4,” and “( 1 times 2 ) plus ( 2 times 1 ) equals 4.” Under the “Balanced?” column are, “1 equals 1, yes,” “4 equals 4, yes,” “4 equals 4, yes.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-20",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-21",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-22",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-23",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-24",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-25",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-26",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-27",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-28",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-29",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-30",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-31",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-32",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-33",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-34",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-35",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8426240",
+          "segmentId": "m68709:para:fs-idp8426240"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm60111376",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp20832160",
+          "segmentId": "m68709:para:fs-idp20832160"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp104786160",
+          "class": "unnumbered",
+          "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “1 times 1 equals 1.” Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Balanced?” column are, “2 equals 2, yes,” and “1 does not equal 2, no.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-38",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-39",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-40",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-41",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-42",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-43",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-44",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-45",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-46",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-47",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-48",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-49",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp116453584",
+          "segmentId": "m68709:para:fs-idp116453584"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm1006576",
+          "class": "unnumbered"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm15543696",
+          "class": "unnumbered",
+          "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “2 times 1 equals 2.” The first 2 in the “2 times 2 equals 4” equation is bold. Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Balanced?” column are, “4 does not equal 2, no,” and “2 equals 2, yes.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-51",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-52",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-53",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp53902400",
+          "segmentId": "m68709:para:fs-idp53902400"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm94539648",
+          "class": "unnumbered"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp151419504",
+          "class": "unnumbered",
+          "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters H and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “2 times 1 equals 2.” Under the “Products” column are the equations, “2 times 2 equals 2,” and “1 times 2 equals 2.” The first 2 in the “2 times 2 equals 2” equation is bold. Under the “Balanced?” column are, “4 equals 4, yes,” and “2 equals 2, yes.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp147875376",
+          "segmentId": "m68709:para:fs-idp147875376"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp105215584",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp1783792",
+          "title": {
+            "segmentId": "m68709:example-title:fs-idp1783792-title",
+            "text": "Balancing Chemical Equations"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp22283888",
+              "segmentId": "m68709:para:fs-idp22283888"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp154895936",
+              "segmentId": "m68709:para:fs-idp154895936",
+              "title": {
+                "segmentId": "m68709:para-title:fs-idp154895936-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp239172416",
+              "segmentId": "m68709:para:fs-idp239172416"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp266947552",
+              "segmentId": "m68709:para:fs-idp266947552"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp27772864",
+              "segmentId": "m68709:para:fs-idp27772864"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp17727056",
+              "segmentId": "m68709:para:fs-idp17727056"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp79125936",
+              "segmentId": "m68709:para:fs-idp79125936",
+              "title": {
+                "segmentId": "m68709:para-title:fs-idp79125936-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp147872544"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp80836160"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp107722208"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp114338576",
+              "title": {
+                "segmentId": "m68709:note-title:fs-idp114338576-title",
+                "text": "Answer:"
+              },
+              "content": []
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idp107503280",
+          "class": "unnumbered",
+          "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “1 times 2 equals 2.” Under the “Products” column are the equations, “1 times 2 equals 2,” and “1 times 5 equals 5.” Under the “Balanced?” column are, “2 equals 2, yes,” and “2 does not equal 5, no.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-89",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-91",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-94",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-96",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idp7305424",
+          "class": "unnumbered",
+          "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “1 times 2 equals 2,” and “5 times 2 equals 10.” The 5 in the second equation is bold. Under the “Products” column are the equations, “2 times 2 equals 4,” and “2 times 5 equals 10.” The initial 2 in each equation is bold. Under the “Balanced?” column are, “2 does not equal 4, no,” and “10 equals 10, yes.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-105",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-107",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm9607408",
+          "class": "unnumbered",
+          "summary": "This is a table with four columns and three rows. The columns are labeled, “Element,” “Reactants,” “Products,” and “Balanced?”. Under the “Element” column are the letters N and O. Under the “Reactants” column are the equations “2 times 2 equals 4,” and “5 times 2 equals 10.” The initial 2 in the first equation is bold. Under the “Products” column are the equations, “2 times 2 equals 4,” and “2 times 5 equals 10.” Under the “Balanced?” column are, “4 equals 4, yes,” and “10 equals 10, yes.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68709:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-121",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68709:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp261408544",
+          "segmentId": "m68709:para:fs-idp261408544"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp25579440",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp115010864",
+          "segmentId": "m68709:para:fs-idp115010864"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp71981056",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp16121888",
+          "segmentId": "m68709:para:fs-idp16121888"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp37794464",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp54942992",
+          "segmentId": "m68709:para:fs-idp54942992"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm26016768",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp57635360",
+          "segmentId": "m68709:para:fs-idp57635360"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp93360688",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp117890176",
+          "segmentId": "m68709:para:fs-idp117890176"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm15551488",
+          "class": "unnumbered"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp54281248",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp94095504",
+              "segmentId": "m68709:para:fs-idp94095504"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp50900304",
+      "class": null,
+      "title": {
+        "segmentId": "m68709:title:fs-idp50900304-title",
+        "text": "Additional Information in Chemical Equations"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp46664848",
+          "segmentId": "m68709:para:fs-idp46664848"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp55940384",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp38373104",
+          "segmentId": "m68709:para:fs-idp38373104"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp53095760",
+          "segmentId": "m68709:para:fs-idp53095760"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp144225920",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp104838720",
+          "segmentId": "m68709:para:fs-idp104838720"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp44459328",
+      "class": null,
+      "title": {
+        "segmentId": "m68709:title:fs-idp44459328-title",
+        "text": "Equations for Ionic Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm1065424",
+          "segmentId": "m68709:para:fs-idm1065424"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp15979216",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp204481712",
+          "segmentId": "m68709:para:fs-idp204481712"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm1980352",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp24388656",
+          "segmentId": "m68709:para:fs-idp24388656"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp6577008",
+          "segmentId": "m68709:para:fs-idp6577008"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp116409536",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp146097648",
+          "segmentId": "m68709:para:fs-idp146097648"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp235470368",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8534256",
+          "segmentId": "m68709:para:fs-idp8534256"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp266868512",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp42466432",
+          "segmentId": "m68709:para:fs-idp42466432"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp44418832",
+          "title": {
+            "segmentId": "m68709:example-title:fs-idp44418832-title",
+            "text": "Ionic and Molecular Equations"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm27450736",
+              "segmentId": "m68709:para:fs-idm27450736"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp41941568",
+              "segmentId": "m68709:para:fs-idp41941568",
+              "title": {
+                "segmentId": "m68709:para-title:fs-idp41941568-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp277452576",
+              "segmentId": "m68709:para:fs-idp277452576"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp71749568",
+              "segmentId": "m68709:para:fs-idp71749568"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp111986480",
+              "segmentId": "m68709:para:fs-idp111986480"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp71485312",
+              "segmentId": "m68709:para:fs-idp71485312",
+              "title": {
+                "segmentId": "m68709:para-title:fs-idp71485312-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp124894848",
+              "segmentId": "m68709:para:fs-idp124894848"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp114521376"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp54247424"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp41721264"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp56132768"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp47302160"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp79691824",
+              "title": {
+                "segmentId": "m68709:note-title:fs-idp79691824-title",
+                "text": "Answer:"
+              },
+              "content": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp114420064",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68709:title:fs-idp114420064-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp43480096",
+          "segmentId": "m68709:para:fs-idp43480096"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm23851744",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68709:title:fs-idm23851744-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp56139840",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp53525312",
+                "segmentId": "m68709:problem:fs-idp53525312"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm10510096",
+                "segmentId": "m68709:solution:fs-idm10510096"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp138111360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm11951008",
+                "segmentId": "m68709:problem:fs-idm11951008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp53468064",
+                "segmentId": "m68709:problem:fs-idp53468064"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp63946720",
+                "segmentId": "m68709:problem:fs-idp63946720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp267125008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp7901376",
+                "segmentId": "m68709:problem:fs-idp7901376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp156664864",
+                "segmentId": "m68709:problem:fs-idp156664864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm5703840",
+                "segmentId": "m68709:problem:fs-idm5703840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp26705376",
+                "segmentId": "m68709:problem:fs-idp26705376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2545856",
+                "segmentId": "m68709:problem:fs-idm2545856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp38879216",
+                "segmentId": "m68709:problem:fs-idp38879216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp261699472",
+                "segmentId": "m68709:problem:fs-idp261699472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp78017472",
+                "segmentId": "m68709:problem:fs-idp78017472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp44039696",
+                "segmentId": "m68709:problem:fs-idp44039696"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm90785536",
+                "segmentId": "m68709:solution:fs-idm90785536"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp14690896",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp14691408",
+                "segmentId": "m68709:problem:fs-idp14691408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp14691792",
+                "segmentId": "m68709:problem:fs-idp14691792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp41951632",
+                "segmentId": "m68709:problem:fs-idp41951632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp215876720",
+                "segmentId": "m68709:problem:fs-idp215876720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp7611408",
+                "segmentId": "m68709:problem:fs-idp7611408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51158528",
+                "segmentId": "m68709:problem:fs-idp51158528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp77422352",
+                "segmentId": "m68709:problem:fs-idp77422352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp48923840",
+                "segmentId": "m68709:problem:fs-idp48923840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp73552",
+                "segmentId": "m68709:problem:fs-idp73552"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp122928448",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp122928960",
+                "segmentId": "m68709:problem:fs-idp122928960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp105395536",
+                "segmentId": "m68709:problem:fs-idp105395536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp105396032",
+                "segmentId": "m68709:problem:fs-idp105396032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp45919792",
+                "segmentId": "m68709:problem:fs-idp45919792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp45920336",
+                "segmentId": "m68709:problem:fs-idp45920336"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp45921216",
+                "segmentId": "m68709:solution:fs-idp45921216"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp106387184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp106387696",
+                "segmentId": "m68709:problem:fs-idp106387696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp106388080",
+                "segmentId": "m68709:problem:fs-idp106388080"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp216390688",
+                "segmentId": "m68709:problem:fs-idp216390688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp216391840",
+                "segmentId": "m68709:problem:fs-idp216391840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp55297936",
+                "segmentId": "m68709:problem:fs-idp55297936"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp208990784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm22160384",
+                "segmentId": "m68709:problem:fs-idm22160384"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm22159824",
+                "segmentId": "m68709:problem:fs-idm22159824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm22159440",
+                "segmentId": "m68709:problem:fs-idm22159440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm22158880",
+                "segmentId": "m68709:problem:fs-idm22158880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp208977456",
+                "segmentId": "m68709:problem:fs-idp208977456"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp208978816",
+                "segmentId": "m68709:solution:fs-idp208978816"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp109313632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp109314144",
+                "segmentId": "m68709:problem:fs-idp109314144"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp220078048",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp126128016",
+                "segmentId": "m68709:problem:fs-idp126128016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm98641232",
+                "segmentId": "m68709:problem:fs-idm98641232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp126128736",
+                "segmentId": "m68709:problem:fs-idp126128736"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp126129824",
+                "segmentId": "m68709:solution:fs-idp126129824"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp61581984",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp61582496",
+                "segmentId": "m68709:problem:fs-idp61582496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp61583040",
+                "segmentId": "m68709:problem:fs-idp61583040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp61583584",
+                "segmentId": "m68709:problem:fs-idp61583584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm721584",
+                "segmentId": "m68709:problem:fs-idm721584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm721024",
+                "segmentId": "m68709:problem:fs-idm721024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm720496",
+                "segmentId": "m68709:problem:fs-idm720496"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp41635696",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41636208",
+                "segmentId": "m68709:problem:fs-idp41636208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp41636720",
+                "segmentId": "m68709:problem:fs-idp41636720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp46970864",
+                "segmentId": "m68709:problem:fs-idp46970864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2481664",
+                "segmentId": "m68709:problem:fs-idm2481664"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp198600416",
+                "segmentId": "m68709:solution:fs-idp198600416"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68709:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68709:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68709:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp25650896",
+        "termSegmentId": "m68709:glossary-term:fs-idp25650896-term",
+        "definitionSegmentId": "m68709:glossary-def:fs-idp25650896-def"
+      },
+      {
+        "id": "fs-idp46927152",
+        "termSegmentId": "m68709:glossary-term:fs-idp46927152-term",
+        "definitionSegmentId": "m68709:glossary-def:fs-idp46927152-def"
+      },
+      {
+        "id": "fs-idp46928304",
+        "termSegmentId": "m68709:glossary-term:fs-idp46928304-term",
+        "definitionSegmentId": "m68709:glossary-def:fs-idp46928304-def"
+      },
+      {
+        "id": "fs-idp261286592",
+        "termSegmentId": "m68709:glossary-term:fs-idp261286592-term",
+        "definitionSegmentId": "m68709:glossary-def:fs-idp261286592-def"
+      },
+      {
+        "id": "fs-idp94343888",
+        "termSegmentId": "m68709:glossary-term:fs-idp94343888-term",
+        "definitionSegmentId": "m68709:glossary-def:fs-idp94343888-def"
+      },
+      {
+        "id": "fs-idp94345152",
+        "termSegmentId": "m68709:glossary-term:fs-idp94345152-term",
+        "definitionSegmentId": "m68709:glossary-def:fs-idp94345152-def"
+      },
+      {
+        "id": "fs-idp145224064",
+        "termSegmentId": "m68709:glossary-term:fs-idp145224064-term",
+        "definitionSegmentId": "m68709:glossary-def:fs-idp145224064-def"
+      },
+      {
+        "id": "fs-idp145225344",
+        "termSegmentId": "m68709:glossary-term:fs-idp145225344-term",
+        "definitionSegmentId": "m68709:glossary-def:fs-idp145225344-def"
+      },
+      {
+        "id": "fs-idp271280640",
+        "termSegmentId": "m68709:glossary-term:fs-idp271280640-term",
+        "definitionSegmentId": "m68709:glossary-def:fs-idp271280640-def"
+      }
+    ]
+  },
+  "sectionOrder": 1
+}

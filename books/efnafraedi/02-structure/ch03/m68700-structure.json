@@ -1,0 +1,2001 @@
+{
+  "moduleId": "m68700",
+  "title": {
+    "segmentId": "m68700:title:auto-1",
+    "text": "Formula Mass and the Mole Concept"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "daaceb82-341e-496e-a8b9-acd8fa32d9f7",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Calculate formula masses for covalent and ionic compounds",
+        "Define the amount unit mole and the related quantity Avogadro’s number",
+        "Explain the relation between mass, moles, and numbers of atoms or molecules, and perform calculations deriving these quantities from one another"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm28512",
+      "segmentId": "m68700:para:fs-idm28512"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm30815968",
+      "class": null,
+      "title": {
+        "segmentId": "m68700:title:fs-idm30815968-title",
+        "text": "Formula Mass"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp16940464",
+          "class": null,
+          "title": {
+            "segmentId": "m68700:title:fs-idp16940464-title",
+            "text": "Formula Mass for Covalent Substances"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp128238864",
+              "segmentId": "m68700:para:fs-idp128238864"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_03_01_chloroform",
+              "caption": {
+                "segmentId": "m68700:caption:CNX_Chem_03_01_chloroform-caption"
+              },
+              "media": {
+                "id": "fs-idp71460256",
+                "alt": "A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “C l” and a blank, merged cell that runs the width of the first five columns. The second column contains the numbers “1,” “1,” and “3” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “12.01,” “1.008,” “106.35,” and “119.37.” There is a thick black line below the number 106.35. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Three green spheres are attached to a slightly smaller black sphere, which is also attached to a smaller white sphere. The green spheres lie beneath and to the sides of the black sphere while the white sphere is located straight up from the black sphere.",
+                "src": "../../media/CNX_Chem_03_01_chloroform.jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp139124096",
+              "segmentId": "m68700:para:fs-idp139124096"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_03_01_aspirin",
+              "caption": {
+                "segmentId": "m68700:caption:CNX_Chem_03_01_aspirin-caption"
+              },
+              "media": {
+                "id": "fs-idp41603456",
+                "alt": "A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “9,” “8,” and “4” as well as the merged, cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “16.00” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values: “108.09,” “8.064,” “64.00,” and “180.15.” There is a thick black line below the number 64.00. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Six black spheres are located in a six-sided ring and connected by alternating double and single black bonds. Attached to each of the four black spheres is one smaller white sphere. Attached to the farthest right black sphere is a red sphere, connected to two more black spheres, all in a row. Attached to the last black sphere of that row are two more white spheres. Attached to the first black sphere of that row is another red sphere. A black sphere, attached to two red spheres and a white sphere is attached to the black sphere on the top right of the six-sided ring.",
+                "src": "../../media/CNX_Chem_03_01_aspirin.jpg"
+              }
+            },
+            {
+              "type": "example",
+              "id": "fs-idp17719968",
+              "title": {
+                "segmentId": "m68700:example-title:fs-idp17719968-title",
+                "text": "Computing Molecular Mass for a Covalent Compound"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp1127280",
+                  "segmentId": "m68700:para:fs-idp1127280"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm3892496",
+                  "segmentId": "m68700:para:fs-idm3892496",
+                  "title": {
+                    "segmentId": "m68700:para-title:fs-idm3892496-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm58442752",
+                  "segmentId": "m68700:para:fs-idm58442752",
+                  "title": {
+                    "segmentId": "m68700:para-title:fs-idm58442752-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm8152064",
+                  "segmentId": "m68700:para:fs-idm8152064"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp13703888",
+                  "title": {
+                    "segmentId": "m68700:note-title:fs-idp13703888-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm8152064",
+                      "segmentId": "m68700:para:fs-idm8152064"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm60917056",
+          "class": null,
+          "title": {
+            "segmentId": "m68700:title:fs-idm60917056-title",
+            "text": "Formula Mass for Ionic Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp13429376",
+              "segmentId": "m68700:para:fs-idp13429376"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm4173824",
+              "segmentId": "m68700:para:fs-idm4173824"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_03_01_saltMass",
+              "caption": {
+                "segmentId": "m68700:caption:CNX_Chem_03_01_saltMass-caption"
+              },
+              "media": {
+                "id": "fs-idm4901808",
+                "alt": "A table and diagram are shown. The table is made up of six columns and four rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space and “Subtotal (a m u).” The first column contains the symbols “N a”, “C l,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “1” and “1” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “22.99” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “22.99,” “35.45,” and “58.44.” There is a thick black line below the number “35.45.” The merged cell under the first five columns reads “Formula mass.” To the left of the table is a diagram of a chemical structure. The diagram shows green and purple spheres placed in an alternating pattern, making up the corners of eight stacked cubes to form one larger cube. The green spheres are slightly smaller than the purple spheres.",
+                "src": "../../media/CNX_Chem_03_01_saltMass.jpg"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm31455504",
+              "segmentId": "m68700:para:fs-idm31455504"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm73270640",
+              "title": {
+                "segmentId": "m68700:example-title:fs-idm73270640-title",
+                "text": "Computing Formula Mass for an Ionic Compound"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm19285728",
+                  "segmentId": "m68700:para:fs-idm19285728"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm31510704",
+                  "segmentId": "m68700:para:fs-idm31510704",
+                  "title": {
+                    "segmentId": "m68700:para-title:fs-idm31510704-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp70748048",
+                  "segmentId": "m68700:para:fs-idp70748048",
+                  "title": {
+                    "segmentId": "m68700:para-title:fs-idp70748048-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm33165520",
+                  "segmentId": "m68700:para:fs-idm33165520"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm5833232",
+                  "title": {
+                    "segmentId": "m68700:note-title:fs-idm5833232-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm33165520",
+                      "segmentId": "m68700:para:fs-idm33165520"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp76705136",
+          "segmentId": "m68700:para:fs-idp76705136"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp3385536",
+      "class": null,
+      "title": {
+        "segmentId": "m68700:title:fs-idp3385536-title",
+        "text": "The Mole"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm38739232",
+          "segmentId": "m68700:para:fs-idm38739232"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp4269776",
+          "segmentId": "m68700:para:fs-idp4269776"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm42768912",
+          "segmentId": "m68700:para:fs-idm42768912"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_02_moles",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68700:caption:CNX_Chem_03_02_moles-caption"
+          },
+          "media": {
+            "id": "fs-idm272620112",
+            "alt": "This figure contains eight different substances displayed on white circles. The amount of each substance is visibly different.",
+            "src": "../../media/CNX_Chem_03_02_moles-6296.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm26436032",
+          "segmentId": "m68700:para:fs-idm26436032"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_02_compound",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68700:caption:CNX_Chem_03_02_compound-caption"
+          },
+          "media": {
+            "id": "fs-idm24308080",
+            "alt": "This photo shows two vials filled with a colorless liquid. It also shows two bowls: one filled with an off-white powder and one filled with a bright red powder.",
+            "src": "../../media/CNX_Chem_03_02_compound.jpg"
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp17650992",
+          "class": "unnumbered",
+          "summary": "A table is shown that is made up of four columns and six rows. The header row reads: “Element,” “Average Atomic Mass (a m u),” “Molar Mass (g / m o l),” and “Atoms / Mole.” The first column contains the symbols “C,” “H,” “O,” “N a,” and “C l.” The second column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “35.45.” The third column contains the values “12.01,” “1.008,” “16.00,” “22.99,” and “33.45.” The final column contains the value “6.022 times 10 superscript 23” in each cell.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68700:entry:auto-44",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-45",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-46",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-47",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68700:entry:auto-48",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-49",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-50",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-51",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68700:entry:auto-52",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-53",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-54",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-55",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68700:entry:auto-56",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-57",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-58",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-59",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68700:entry:auto-60",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-61",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-62",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-63",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68700:entry:auto-64",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-65",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-66",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68700:entry:auto-67",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp18068224",
+          "segmentId": "m68700:para:fs-idp18068224"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_02_water",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68700:caption:CNX_Chem_03_02_water-caption"
+          },
+          "media": {
+            "id": "fs-idm47391008",
+            "alt": "A close-up photo of a water droplet on a leaf is shown. The water droplet is not perfectly spherical.",
+            "src": "../../media/CNX_Chem_03_02_water.jpg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm10521392",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp18455776",
+              "segmentId": "m68700:para:fs-idp18455776"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm4828384",
+          "segmentId": "m68700:para:fs-idm4828384"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp76540048",
+          "title": {
+            "segmentId": "m68700:example-title:fs-idp76540048-title",
+            "text": "Deriving Moles from Grams for an Element"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp15725488",
+              "segmentId": "m68700:para:fs-idp15725488"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm16014480",
+              "segmentId": "m68700:para:fs-idm16014480",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idm16014480-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm1867456",
+              "segmentId": "m68700:para:fs-idm1867456"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp14697696",
+              "segmentId": "m68700:para:fs-idp14697696"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm29254000",
+              "segmentId": "m68700:para:fs-idm29254000"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm33771376",
+              "segmentId": "m68700:para:fs-idm33771376",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idm33771376-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm9505408",
+              "segmentId": "m68700:para:fs-idm9505408"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp8892544"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp73845104",
+              "title": {
+                "segmentId": "m68700:note-title:fs-idp73845104-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm9505408",
+                  "segmentId": "m68700:para:fs-idm9505408"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp15853040",
+          "title": {
+            "segmentId": "m68700:example-title:fs-idp15853040-title",
+            "text": "Deriving Grams from Moles for an Element"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp15452464",
+              "segmentId": "m68700:para:fs-idp15452464"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm19496816",
+              "segmentId": "m68700:para:fs-idm19496816",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idm19496816-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm1982944",
+              "segmentId": "m68700:para:fs-idm1982944"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm31048000",
+              "segmentId": "m68700:para:fs-idm31048000"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm25528064",
+              "segmentId": "m68700:para:fs-idm25528064",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idm25528064-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp11414864",
+              "segmentId": "m68700:para:fs-idp11414864"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp10617648"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm64655584",
+              "title": {
+                "segmentId": "m68700:note-title:fs-idm64655584-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp11414864",
+                  "segmentId": "m68700:para:fs-idp11414864"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm8741648",
+          "title": {
+            "segmentId": "m68700:example-title:fs-idm8741648-title",
+            "text": "Deriving Number of Atoms from Mass for an Element"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm24646960",
+              "segmentId": "m68700:para:fs-idm24646960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm40043360",
+              "segmentId": "m68700:para:fs-idm40043360",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idm40043360-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp18362672",
+              "segmentId": "m68700:para:fs-idp18362672"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp27818080",
+              "segmentId": "m68700:para:fs-idp27818080"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp18156240",
+              "segmentId": "m68700:para:fs-idp18156240",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idp18156240-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm3056704",
+              "segmentId": "m68700:para:fs-idm3056704"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp20004432"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm4952320",
+              "title": {
+                "segmentId": "m68700:note-title:fs-idm4952320-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm3056704",
+                  "segmentId": "m68700:para:fs-idm3056704"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_02_copper",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68700:caption:CNX_Chem_03_02_copper-caption"
+          },
+          "media": {
+            "id": "fs-idm20298688",
+            "alt": "A close-up photo of a spool of copper wire is shown.",
+            "src": "../../media/CNX_Chem_03_02_copper.jpg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idm1714048",
+          "title": {
+            "segmentId": "m68700:example-title:fs-idm1714048-title",
+            "text": "Deriving Moles from Grams for a Compound"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp75300336",
+              "segmentId": "m68700:para:fs-idp75300336"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp1446192",
+              "segmentId": "m68700:para:fs-idp1446192",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idp1446192-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm36743808",
+              "segmentId": "m68700:para:fs-idm36743808"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm24120480",
+              "segmentId": "m68700:para:fs-idm24120480"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp10905424",
+              "segmentId": "m68700:para:fs-idp10905424"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm30097376",
+              "segmentId": "m68700:para:fs-idm30097376",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idm30097376-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm70604176",
+              "segmentId": "m68700:para:fs-idm70604176"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp15857520"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm27877216",
+              "title": {
+                "segmentId": "m68700:note-title:fs-idm27877216-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm70604176",
+                  "segmentId": "m68700:para:fs-idm70604176"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp10913296",
+          "title": {
+            "segmentId": "m68700:example-title:fs-idp10913296-title",
+            "text": "Deriving Grams from Moles for a Compound"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm15991984",
+              "segmentId": "m68700:para:fs-idm15991984"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm22795264",
+              "segmentId": "m68700:para:fs-idm22795264",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idm22795264-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp17223008",
+              "segmentId": "m68700:para:fs-idp17223008"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp907024",
+              "segmentId": "m68700:para:fs-idp907024"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm28230576",
+              "segmentId": "m68700:para:fs-idm28230576",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idm28230576-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm15513488",
+              "segmentId": "m68700:para:fs-idm15513488"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm25244336"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp75070976",
+              "title": {
+                "segmentId": "m68700:note-title:fs-idp75070976-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm15513488",
+                  "segmentId": "m68700:para:fs-idm15513488"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp13749376",
+          "title": {
+            "segmentId": "m68700:example-title:fs-idp13749376-title",
+            "text": "Deriving the Number of Atoms and Molecules from the Mass of a Compound"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm5631088",
+              "segmentId": "m68700:para:fs-idm5631088"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp33552",
+              "segmentId": "m68700:para:fs-idp33552"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm20251168",
+              "segmentId": "m68700:para:fs-idm20251168",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idm20251168-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp195552",
+              "segmentId": "m68700:para:fs-idp195552"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp11370272",
+              "segmentId": "m68700:para:fs-idp11370272"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp13712512",
+              "segmentId": "m68700:para:fs-idp13712512",
+              "title": {
+                "segmentId": "m68700:para-title:fs-idp13712512-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp14642528",
+              "segmentId": "m68700:para:fs-idp14642528"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp15266832"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp3901232"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp51031648",
+              "title": {
+                "segmentId": "m68700:note-title:fs-idp51031648-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp14642528",
+                  "segmentId": "m68700:para:fs-idp14642528"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idp25788096",
+          "class": "chemistry sciences-interconnect",
+          "title": {
+            "segmentId": "m68700:note-title:fs-idp25788096-title",
+            "text": "Counting Neurotransmitter Molecules in the Brain"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm4217280",
+              "segmentId": "m68700:para:fs-idm4217280"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm14541088",
+              "segmentId": "m68700:para:fs-idm14541088"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp15499232",
+              "segmentId": "m68700:para:fs-idp15499232"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm2962416",
+              "segmentId": "m68700:para:fs-idm2962416"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_01_brain",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68700:caption:CNX_Chem_03_01_brain-caption"
+          },
+          "media": {
+            "id": "fs-idp71769904",
+            "alt": "Two pictures are shown. The left picture shows the human brain. The right picture is a microscopic image that depicts two large irregularly shaped masses in a field of threadlike material interspersed with smaller, relatively round masses. The two larger masses are labeled with arrows and the phrase “Neuron cells.”",
+            "src": "../../media/CNX_Chem_03_01_brain-ec0b.jpg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_01_exocytosis",
+          "caption": {
+            "segmentId": "m68700:caption:CNX_Chem_03_01_exocytosis-caption"
+          },
+          "media": {
+            "id": "fs-idp18792480",
+            "alt": "Two diagrams are shown. In the upper left corner of the left diagram, an oval with a darkened center that has five short, branching appendages and one long tail-like appendage is shown and connected by an arrow to another image. This image depicts a close-up view of the oval section and its interaction with the tail-like portion of a similar structure. The close up view is composed of a narrow tube labeled “neuron” leading down to a bulbous base that holds thirteen circles filled with small dots. These circles are labeled “vesicles.” The base of the bulbous structure is next to a curved object labeled “neuron” and very small dots are emerging from the bulb’s base and flowing toward the curved structure. The gap in between the two structures is labeled “synapse,” and the small dots are labeled “neurotransmitters.” The diagram on the right depicts a molecule composed of six black spheres connected by alternating double and single bonds in a hexagonal ring with other spheres attached to it. Three of the black spheres are connected to one smaller, white sphere each. Two of the black balls are connected to a smaller red sphere each. Each red sphere is connected to a smaller, white sphere. One black sphere is connected to another black sphere. It is connected to two smaller, white spheres and another black sphere. This second black sphere is connected to two smaller white spheres, and a slightly smaller blue sphere. The blue sphere is connected to two smaller, white spheres.",
+            "src": "../../media/CNX_Chem_03_01_exocytosis-88f6.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp1413072",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68700:title:fs-idp1413072-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp1202080",
+          "segmentId": "m68700:para:fs-idp1202080"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp13430448",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68700:title:fs-idp13430448-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp14760336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp66967088",
+                "segmentId": "m68700:problem:fs-idp66967088"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp15394896",
+                "segmentId": "m68700:problem:fs-idp15394896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp74952320",
+                "segmentId": "m68700:problem:fs-idp74952320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp16776928",
+                "segmentId": "m68700:problem:fs-idp16776928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm16945392",
+                "segmentId": "m68700:problem:fs-idm16945392"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp50221696",
+                "segmentId": "m68700:solution:fs-idp50221696"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp23290000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp12657920",
+                "segmentId": "m68700:problem:fs-idp12657920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp14913040",
+                "segmentId": "m68700:problem:fs-idp14913040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp13933872",
+                "segmentId": "m68700:problem:fs-idp13933872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp18791104",
+                "segmentId": "m68700:problem:fs-idp18791104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm2014656",
+                "segmentId": "m68700:problem:fs-idm2014656"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp14091664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm4748784",
+                "segmentId": "m68700:problem:fs-idm4748784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp75123488",
+                "segmentId": "m68700:problem:fs-idp75123488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp11323648",
+                "segmentId": "m68700:problem:fs-idp11323648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp17374816",
+                "segmentId": "m68700:problem:fs-idp17374816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm4666224",
+                "segmentId": "m68700:problem:fs-idm4666224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp17618896",
+                "segmentId": "m68700:problem:fs-idp17618896"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm15352224",
+                "segmentId": "m68700:solution:fs-idm15352224"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp1038448",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp14186992",
+                "segmentId": "m68700:problem:fs-idp14186992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm10660032",
+                "segmentId": "m68700:problem:fs-idm10660032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp16510560",
+                "segmentId": "m68700:problem:fs-idp16510560"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp76406016",
+                "segmentId": "m68700:problem:fs-idp76406016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp9023344",
+                "segmentId": "m68700:problem:fs-idp9023344"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp20009152",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp52450416",
+                "segmentId": "m68700:problem:fs-idp52450416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp12831088",
+                "segmentId": "m68700:problem:fs-idp12831088"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp76139456",
+                "segmentId": "m68700:problem:fs-idp76139456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp55882592",
+                "segmentId": "m68700:problem:fs-idp55882592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp17404336",
+                "segmentId": "m68700:problem:fs-idp17404336"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp18584256",
+                "segmentId": "m68700:solution:fs-idp18584256"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50213376",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp50213760",
+                "segmentId": "m68700:problem:fs-idp50213760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50214144",
+                "segmentId": "m68700:problem:fs-idp50214144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp66877424",
+                "segmentId": "m68700:problem:fs-idp66877424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp49595584",
+                "segmentId": "m68700:problem:fs-idp49595584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp17737968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp17738352",
+                "segmentId": "m68700:problem:fs-idp17738352"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp55880896",
+                "segmentId": "m68700:solution:fs-idp55880896"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp25588816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp25589200",
+                "segmentId": "m68700:problem:fs-idp25589200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm34170816",
+                "segmentId": "m68700:problem:fs-idm34170816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm147492048",
+                "segmentId": "m68700:problem:fs-idm147492048"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50267072",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp75868160",
+                "segmentId": "m68700:problem:fs-idp75868160"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp73465744",
+                "segmentId": "m68700:solution:fs-idp73465744"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp69842848",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69843232",
+                "segmentId": "m68700:problem:fs-idp69843232"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp23072",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp23456",
+                "segmentId": "m68700:problem:fs-idp23456"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp2720",
+                "segmentId": "m68700:solution:fs-idp2720"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp52331008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp52331520",
+                "segmentId": "m68700:problem:fs-idp52331520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp52331904",
+                "segmentId": "m68700:problem:fs-idp52331904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp52332288",
+                "segmentId": "m68700:problem:fs-idp52332288"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp70670144",
+                "segmentId": "m68700:problem:fs-idp70670144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp70670784",
+                "segmentId": "m68700:problem:fs-idp70670784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp76943728",
+                "segmentId": "m68700:problem:fs-idp76943728"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp51968592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51969104",
+                "segmentId": "m68700:problem:fs-idp51969104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50614928",
+                "segmentId": "m68700:problem:fs-idp50614928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50615568",
+                "segmentId": "m68700:problem:fs-idp50615568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50616592",
+                "segmentId": "m68700:problem:fs-idp50616592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp52011344",
+                "segmentId": "m68700:problem:fs-idp52011344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50200608",
+                "segmentId": "m68700:problem:fs-idp50200608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp27797488",
+                "segmentId": "m68700:solution:fs-idp27797488"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp56579584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56580096",
+                "segmentId": "m68700:problem:fs-idp56580096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56580480",
+                "segmentId": "m68700:problem:fs-idp56580480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51267344",
+                "segmentId": "m68700:problem:fs-idp51267344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51267728",
+                "segmentId": "m68700:problem:fs-idp51267728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51269520",
+                "segmentId": "m68700:problem:fs-idp51269520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51505312",
+                "segmentId": "m68700:problem:fs-idp51505312"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp56656128",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56656640",
+                "segmentId": "m68700:problem:fs-idp56656640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56657024",
+                "segmentId": "m68700:problem:fs-idp56657024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56658048",
+                "segmentId": "m68700:problem:fs-idp56658048"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56659840",
+                "segmentId": "m68700:problem:fs-idp56659840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56661680",
+                "segmentId": "m68700:problem:fs-idp56661680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56662704",
+                "segmentId": "m68700:problem:fs-idp56662704"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56664624",
+                "segmentId": "m68700:solution:fs-idp56664624"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp51940080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51940592",
+                "segmentId": "m68700:problem:fs-idp51940592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51941104",
+                "segmentId": "m68700:problem:fs-idp51941104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp42713120",
+                "segmentId": "m68700:problem:fs-idp42713120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp42717200",
+                "segmentId": "m68700:problem:fs-idp42717200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp42719120",
+                "segmentId": "m68700:problem:fs-idp42719120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp42721680",
+                "segmentId": "m68700:problem:fs-idp42721680"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp56804240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56804752",
+                "segmentId": "m68700:problem:fs-idp56804752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56805136",
+                "segmentId": "m68700:problem:fs-idp56805136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56805520",
+                "segmentId": "m68700:problem:fs-idp56805520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56806544",
+                "segmentId": "m68700:problem:fs-idp56806544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56811376",
+                "segmentId": "m68700:problem:fs-idp56811376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56817216",
+                "segmentId": "m68700:problem:fs-idp56817216"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56819008",
+                "segmentId": "m68700:solution:fs-idp56819008"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp51218400",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51218912",
+                "segmentId": "m68700:problem:fs-idp51218912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51219440",
+                "segmentId": "m68700:problem:fs-idp51219440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51219824",
+                "segmentId": "m68700:problem:fs-idp51219824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51220848",
+                "segmentId": "m68700:problem:fs-idp51220848"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51221488",
+                "segmentId": "m68700:problem:fs-idp51221488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51222896",
+                "segmentId": "m68700:problem:fs-idp51222896"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50969136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp50969648",
+                "segmentId": "m68700:problem:fs-idp50969648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50970032",
+                "segmentId": "m68700:problem:fs-idp50970032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50970416",
+                "segmentId": "m68700:problem:fs-idp50970416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50971440",
+                "segmentId": "m68700:problem:fs-idp50971440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51036384",
+                "segmentId": "m68700:problem:fs-idp51036384"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51041968",
+                "segmentId": "m68700:problem:fs-idp51041968"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51043760",
+                "segmentId": "m68700:solution:fs-idp51043760"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp41399808",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41400320",
+                "segmentId": "m68700:problem:fs-idp41400320"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp41416224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41416736",
+                "segmentId": "m68700:problem:fs-idp41416736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp41417120",
+                "segmentId": "m68700:problem:fs-idp41417120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp41417504",
+                "segmentId": "m68700:problem:fs-idp41417504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp41418144",
+                "segmentId": "m68700:problem:fs-idp41418144"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41419168",
+                "segmentId": "m68700:solution:fs-idp41419168"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp42845584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp42846096",
+                "segmentId": "m68700:problem:fs-idp42846096"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp42864672",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp42865184",
+                "segmentId": "m68700:problem:fs-idp42865184"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp42866464",
+                "segmentId": "m68700:solution:fs-idp42866464"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp40477040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40477552",
+                "segmentId": "m68700:problem:fs-idp40477552"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp40492096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40492608",
+                "segmentId": "m68700:problem:fs-idp40492608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40495296",
+                "segmentId": "m68700:solution:fs-idp40495296"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp48697456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp48697968",
+                "segmentId": "m68700:problem:fs-idp48697968"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp41325184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41325696",
+                "segmentId": "m68700:problem:fs-idp41325696"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41326656",
+                "segmentId": "m68700:solution:fs-idp41326656"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp41347136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41347648",
+                "segmentId": "m68700:problem:fs-idp41347648"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp71747216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp71747728",
+                "segmentId": "m68700:problem:fs-idp71747728"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp71749776",
+                "segmentId": "m68700:solution:fs-idp71749776"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp40440256",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40440768",
+                "segmentId": "m68700:problem:fs-idp40440768"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm180787456",
+                "segmentId": "m68700:problem:fs-idm180787456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm180787072",
+                "segmentId": "m68700:problem:fs-idm180787072"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp40890272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40890784",
+                "segmentId": "m68700:problem:fs-idp40890784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40891168",
+                "segmentId": "m68700:problem:fs-idp40891168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40891936",
+                "segmentId": "m68700:problem:fs-idp40891936"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40892704",
+                "segmentId": "m68700:problem:fs-idp40892704"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40893472",
+                "segmentId": "m68700:problem:fs-idp40893472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40894240",
+                "segmentId": "m68700:problem:fs-idp40894240"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40895008",
+                "segmentId": "m68700:solution:fs-idp40895008"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68700:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68700:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68700:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68700:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp40901280",
+        "termSegmentId": "m68700:glossary-term:fs-idp40901280-term",
+        "definitionSegmentId": "m68700:glossary-def:fs-idp40901280-def"
+      },
+      {
+        "id": "fs-idp40905984",
+        "termSegmentId": "m68700:glossary-term:fs-idp40905984-term",
+        "definitionSegmentId": "m68700:glossary-def:fs-idp40905984-def"
+      },
+      {
+        "id": "fs-idp40907280",
+        "termSegmentId": "m68700:glossary-term:fs-idp40907280-term",
+        "definitionSegmentId": "m68700:glossary-def:fs-idp40907280-def"
+      },
+      {
+        "id": "fs-idp40908432",
+        "termSegmentId": "m68700:glossary-term:fs-idp40908432-term",
+        "definitionSegmentId": "m68700:glossary-def:fs-idp40908432-def"
+      }
+    ]
+  },
+  "sectionOrder": 1
+}

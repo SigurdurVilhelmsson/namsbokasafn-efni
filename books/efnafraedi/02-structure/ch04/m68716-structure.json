@@ -1,0 +1,836 @@
+{
+  "moduleId": "m68716",
+  "title": {
+    "segmentId": "m68716:title:auto-1",
+    "text": "Quantitative Chemical Analysis"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "2a580143-0495-4282-a0fd-8ee1eef2a57f",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the fundamental aspects of titrations and gravimetric analysis.",
+        "Perform stoichiometric calculations using typical titration and gravimetric data."
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp138930544",
+      "segmentId": "m68716:para:fs-idp138930544"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm17525264",
+      "segmentId": "m68716:para:fs-idm17525264"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm1518128",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp89786672",
+      "segmentId": "m68716:para:fs-idp89786672"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp55621088",
+      "segmentId": "m68716:para:fs-idp55621088"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp85215712",
+      "class": null,
+      "title": {
+        "segmentId": "m68716:title:fs-idp85215712-title",
+        "text": "Titration"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp43277952",
+          "segmentId": "m68716:para:fs-idp43277952"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_04_05_titration",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68716:caption:CNX_Chem_04_05_titration-caption"
+          },
+          "media": {
+            "id": "fs-idp38472096",
+            "alt": "Two pictures are shown. In a, a person is shown pouring a liquid from a small beaker into a buret. The person is wearing goggles and gloves as she transfers the solution into the buret. In b, a close up view of the markings on the side of the buret is shown. The markings for 10, 15, and 20 are clearly shown with horizontal rings printed on the buret. Between each of these whole number markings, half markings are also clearly shown with horizontal line segment markings.",
+            "src": "../../media/CNX_Chem_04_05_titration.jpg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idp80717680",
+          "title": {
+            "segmentId": "m68716:example-title:fs-idp80717680-title",
+            "text": "Titration Analysis"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp32280496",
+              "segmentId": "m68716:para:fs-idp32280496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp86323376",
+              "segmentId": "m68716:para:fs-idp86323376"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm12137328",
+              "segmentId": "m68716:para:fs-idm12137328",
+              "title": {
+                "segmentId": "m68716:para-title:fs-idm12137328-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp64054640",
+              "segmentId": "m68716:para:fs-idp64054640"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp137498176",
+              "segmentId": "m68716:para:fs-idp137498176"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp18819536",
+              "segmentId": "m68716:para:fs-idp18819536"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp24080800",
+              "segmentId": "m68716:para:fs-idp24080800"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm35999792",
+              "segmentId": "m68716:para:fs-idm35999792"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm12966032",
+              "segmentId": "m68716:para:fs-idm12966032",
+              "title": {
+                "segmentId": "m68716:para-title:fs-idm12966032-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm46826912",
+              "segmentId": "m68716:para:fs-idm46826912"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm9637984",
+              "segmentId": "m68716:para:fs-idm9637984"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp79702544"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp60191360"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp180416144"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm39309120"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm27436528"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm30080224"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp52546208",
+              "title": {
+                "segmentId": "m68716:note-title:fs-idp52546208-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm9637984",
+                  "segmentId": "m68716:para:fs-idm9637984"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp68434144",
+      "class": null,
+      "title": {
+        "segmentId": "m68716:title:fs-idp68434144-title",
+        "text": "Gravimetric Analysis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp27521328",
+          "segmentId": "m68716:para:fs-idp27521328"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp272684448",
+          "segmentId": "m68716:para:fs-idp272684448"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_04_05_Filter",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68716:caption:CNX_Chem_04_05_Filter-caption"
+          },
+          "media": {
+            "id": "fs-idp79829856",
+            "alt": "A photo is shown of a flask and funnel used for filtration. The flask contains a slightly opaque liquid filtrate with a slight yellow tint. A funnel, which contains a bright yellow and orange material, sits atop the flask. The flask is held in place by a clamp and is connected to a vacuum line. The connection between the funnel and flask is sealed with a rubber bung or gasket.",
+            "src": "../../media/CNX_Chem_04_05_filter.jpg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idp69077568",
+          "title": {
+            "segmentId": "m68716:example-title:fs-idp69077568-title",
+            "text": "Gravimetric Analysis"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp195155648",
+              "segmentId": "m68716:para:fs-idp195155648"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp114808768",
+              "segmentId": "m68716:para:fs-idp114808768"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp87548576",
+              "segmentId": "m68716:para:fs-idp87548576",
+              "title": {
+                "segmentId": "m68716:para-title:fs-idp87548576-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp195163008",
+              "segmentId": "m68716:para:fs-idp195163008"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm75196944",
+              "segmentId": "m68716:para:fs-idm75196944"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp29238016",
+              "segmentId": "m68716:para:fs-idp29238016",
+              "title": {
+                "segmentId": "m68716:para-title:fs-idp29238016-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm20241408",
+              "segmentId": "m68716:para:fs-idm20241408"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm25559056"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp54876688"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp13640592"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm30894128"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp183806096",
+              "title": {
+                "segmentId": "m68716:note-title:fs-idp183806096-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm20241408",
+                  "segmentId": "m68716:para:fs-idm20241408"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp91356704",
+          "segmentId": "m68716:para:fs-idp91356704"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_04_05_combustion",
+          "caption": {
+            "segmentId": "m68716:caption:CNX_Chem_04_05_combustion-caption"
+          },
+          "media": {
+            "id": "fs-idp46838688",
+            "alt": "This diagram shows an arrow pointing from O subscript 2 into a tube that leads into a vessel containing a red material, labeled “Sample.” This vessel is inside a blue container with a red inner lining which is labeled “Furnace.” An arrow points from the tube to the right into the vessel above the red sample material. An arrow leads out of this vessel through a tube into a second vessel outside the furnace. An line points from this tube to a label above the diagram that reads “C O subscript 2, H subscript 2 O, O subscript 2, and other gases.” Many small green spheres are visible in the second vessel which is labeled below, “H subscript 2 O absorber such as M g ( C l O subscript 4 ) subscript 2.” An arrow points to the right through the vessel, and another arrow points right heading out of the vessel through a tube into a third vessel. The third vessel contains many small blue spheres. It is labeled “C O subscript 2 absorber such as N a O H.” An arrow points right through this vessel, and a final arrow points out of a tube at the right end of the vessel. Outside the end of this tube at the end of the arrow is the label, “O subscript 2 and other gases.”",
+            "src": "../../media/CNX_Chem_04_05_combustion.jpg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idp72915680",
+          "title": {
+            "segmentId": "m68716:example-title:fs-idp72915680-title",
+            "text": "Combustion Analysis"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp125853872",
+              "segmentId": "m68716:para:fs-idp125853872"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp59256480",
+              "segmentId": "m68716:para:fs-idp59256480",
+              "title": {
+                "segmentId": "m68716:para-title:fs-idp59256480-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp83118528",
+              "segmentId": "m68716:para:fs-idp83118528"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm26289056",
+              "segmentId": "m68716:para:fs-idm26289056"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp27785296",
+              "segmentId": "m68716:para:fs-idp27785296"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp87456800",
+              "segmentId": "m68716:para:fs-idp87456800"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp3642976",
+              "segmentId": "m68716:para:fs-idp3642976",
+              "title": {
+                "segmentId": "m68716:para-title:fs-idp3642976-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp1032432",
+              "segmentId": "m68716:para:fs-idp1032432"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp26802128"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp216199216"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm23849536"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm15574688",
+              "title": {
+                "segmentId": "m68716:note-title:fs-idm15574688-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp1032432",
+                  "segmentId": "m68716:para:fs-idp1032432"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp138667680",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68716:title:fs-idp138667680-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp61279744",
+          "segmentId": "m68716:para:fs-idp61279744"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp47287072",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68716:title:fs-idp47287072-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm9962448",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm47784592",
+                "segmentId": "m68716:problem:fs-idm47784592"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm186096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp15073216",
+                "segmentId": "m68716:problem:fs-idp15073216"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp29571152",
+                "segmentId": "m68716:solution:fs-idp29571152"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm31045184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp22780032",
+                "segmentId": "m68716:problem:fs-idp22780032"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp52490448",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm49690448",
+                "segmentId": "m68716:problem:fs-idm49690448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm1068656",
+                "segmentId": "m68716:problem:fs-idm1068656"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm88200368",
+                "segmentId": "m68716:solution:fs-idm88200368"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp68782720",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp14481088",
+                "segmentId": "m68716:problem:fs-idp14481088"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm17012464",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp91725088",
+                "segmentId": "m68716:problem:fs-idp91725088"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp61124608",
+                "segmentId": "m68716:solution:fs-idp61124608"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp205066064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm49279712",
+                "segmentId": "m68716:problem:fs-idm49279712"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp87527952",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp85051184",
+                "segmentId": "m68716:problem:fs-idp85051184"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp18571504",
+                "segmentId": "m68716:solution:fs-idp18571504"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm26094912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm24655504",
+                "segmentId": "m68716:problem:fs-idm24655504"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp969280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp39627680",
+                "segmentId": "m68716:problem:fs-idp39627680"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51612096",
+                "segmentId": "m68716:solution:fs-idp51612096"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp204713328",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm43072400",
+                "segmentId": "m68716:problem:fs-idm43072400"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp26486752",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm37154064",
+                "segmentId": "m68716:problem:fs-idm37154064"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27864640",
+                "segmentId": "m68716:solution:fs-idm27864640"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp69216752",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp126851936",
+                "segmentId": "m68716:problem:fs-idp126851936"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp97761872",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm49266896",
+                "segmentId": "m68716:problem:fs-idm49266896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm404608",
+                "segmentId": "m68716:problem:fs-idm404608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm9471168",
+                "segmentId": "m68716:solution:fs-idm9471168"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp126088400",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp123399264",
+                "segmentId": "m68716:problem:fs-idp123399264"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp204697696",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp126876816",
+                "segmentId": "m68716:problem:fs-idp126876816"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp46830048",
+                "segmentId": "m68716:solution:fs-idp46830048"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm1209456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm30525392",
+                "segmentId": "m68716:problem:fs-idm30525392"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp13191008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp92291424",
+                "segmentId": "m68716:problem:fs-idp92291424"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp66345312",
+                "segmentId": "m68716:solution:fs-idp66345312"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68716:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68716:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68716:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp17888704",
+        "termSegmentId": "m68716:glossary-term:fs-idp17888704-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp17888704-def"
+      },
+      {
+        "id": "fs-idp237960512",
+        "termSegmentId": "m68716:glossary-term:fs-idp237960512-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp237960512-def"
+      },
+      {
+        "id": "fs-idp72814256",
+        "termSegmentId": "m68716:glossary-term:fs-idp72814256-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp72814256-def"
+      },
+      {
+        "id": "fs-idp276080304",
+        "termSegmentId": "m68716:glossary-term:fs-idp276080304-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp276080304-def"
+      },
+      {
+        "id": "fs-idp90910688",
+        "termSegmentId": "m68716:glossary-term:fs-idp90910688-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp90910688-def"
+      },
+      {
+        "id": "fs-idp83288512",
+        "termSegmentId": "m68716:glossary-term:fs-idp83288512-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp83288512-def"
+      },
+      {
+        "id": "fs-idp83289888",
+        "termSegmentId": "m68716:glossary-term:fs-idp83289888-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp83289888-def"
+      },
+      {
+        "id": "fs-idp188325600",
+        "termSegmentId": "m68716:glossary-term:fs-idp188325600-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp188325600-def"
+      },
+      {
+        "id": "fs-idp122976560",
+        "termSegmentId": "m68716:glossary-term:fs-idp122976560-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp122976560-def"
+      },
+      {
+        "id": "fs-idp122977840",
+        "termSegmentId": "m68716:glossary-term:fs-idp122977840-term",
+        "definitionSegmentId": "m68716:glossary-def:fs-idp122977840-def"
+      }
+    ]
+  },
+  "sectionOrder": 5
+}

@@ -1,0 +1,75 @@
+{
+  "moduleId": "m68684",
+  "title": {
+    "segmentId": "m68684:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "b49c3d38-7dfb-4979-ba45-12fdd44f2cc8",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Early Ideas in Atomic Theory",
+        "Evolution of Atomic Theory",
+        "Atomic Structure and Symbolism",
+        "Chemical Formulas",
+        "The Periodic Table",
+        "Ionic and Molecular Compounds",
+        "Chemical Nomenclature"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_00_Biomarkers",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68684:caption:CNX_Chem_02_00_Biomarkers-caption"
+      },
+      "media": {
+        "id": "fs-idm221482352",
+        "alt": "A person is shown blowing into a tube connected to a plastic bag. There is a computer screen displaying data that reads “Mass Spectral Breath Analysis.” An arrow from the plastic bag points to an illustration of different molecular compounds contained in the person’s exhalation",
+        "src": "../../media/CNX_Chem_02_00_Biomarkers.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm172551024",
+      "segmentId": "m68684:para:fs-idm172551024"
+    },
+    {
+      "type": "para",
+      "id": "eip-557",
+      "segmentId": "m68684:para:eip-557"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68684:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68684:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68684:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68684:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68684:abstract-item:abstract-item-5"
+      },
+      {
+        "segmentId": "m68684:abstract-item:abstract-item-6"
+      },
+      {
+        "segmentId": "m68684:abstract-item:abstract-item-7"
+      }
+    ]
+  },
+  "sectionOrder": 0
+}

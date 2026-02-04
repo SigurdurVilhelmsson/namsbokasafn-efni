@@ -1,0 +1,893 @@
+{
+  "moduleId": "m68714",
+  "title": {
+    "segmentId": "m68714:title:auto-1",
+    "text": "Reaction Yields"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3da1a637-2826-47bf-8b06-e32ffbdfd60a",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the concepts of theoretical yield and limiting reactants/reagents.",
+        "Derive the theoretical yield for a reaction under specified conditions.",
+        "Calculate the percent yield for a reaction."
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp24998416",
+      "segmentId": "m68714:para:fs-idp24998416"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp5731792",
+      "class": null,
+      "title": {
+        "segmentId": "m68714:title:fs-idp5731792-title",
+        "text": "Limiting Reactant"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp103911360",
+          "segmentId": "m68714:para:fs-idp103911360"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp59817360",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp39531056",
+          "segmentId": "m68714:para:fs-idp39531056"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_04_04_sandwich",
+          "caption": {
+            "segmentId": "m68714:caption:CNX_Chem_04_04_sandwich-caption"
+          },
+          "media": {
+            "id": "fs-idm59912944",
+            "alt": "This figure has three rows showing the ingredients needed to make a sandwich. The first row reads, “1 sandwich = 2 slices of bread + 1 slice of cheese.” Two slices of bread and one slice of cheese are shown. The second row reads, “Provided with: 28 slices of bread + 11 slices of cheese.” There are 28 slices of bread and 11 slices of cheese shown. The third row reads, “We can make: 11 sandwiches + 6 slices of bread left over.” 11 sandwiches are shown with six extra slices of bread.",
+            "src": "../../media/CNX_Chem_04_04_sandwich.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm48112848",
+          "segmentId": "m68714:para:fs-idm48112848"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp62209424",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp157494624",
+          "segmentId": "m68714:para:fs-idp157494624"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp22005824",
+          "segmentId": "m68714:para:fs-idp22005824"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp67209632",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm20022400",
+          "segmentId": "m68714:para:fs-idm20022400"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp10471024",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm39942944",
+          "segmentId": "m68714:para:fs-idm39942944"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_04_04_limiting",
+          "caption": {
+            "segmentId": "m68714:caption:CNX_Chem_04_04_limiting-caption"
+          },
+          "media": {
+            "id": "fs-idp182564432",
+            "alt": "The figure shows a space-filling molecular models reacting. There is a reaction arrow pointing to the right in the middle. To the left of the reaction arrow there are three molecules each consisting of two green spheres bonded together. There are also five molecules each consisting of two smaller, white spheres bonded together. Above these molecules is the label, “Before reaction,” and below these molecules is the label, “6 H subscript 2 and 4 C l subscript 2.” To the right of the reaction arrow, there are eight molecules each consisting of one green sphere bonded to a smaller white sphere. There are also two molecules each consisting of two white spheres bonded together. Above these molecules is the label, “After reaction,” and below these molecules is the label, “8 H C l and 2 H subscript 2.”",
+            "src": "../../media/CNX_Chem_04_04_limiting.jpg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idp162031984",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm52028528",
+              "segmentId": "m68714:para:fs-idm52028528"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp70587344",
+          "title": {
+            "segmentId": "m68714:example-title:fs-idp70587344-title",
+            "text": "Identifying the Limiting Reactant"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm3583984",
+              "segmentId": "m68714:para:fs-idm3583984"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp52711328",
+              "segmentId": "m68714:para:fs-idp52711328"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm18749312",
+              "segmentId": "m68714:para:fs-idm18749312",
+              "title": {
+                "segmentId": "m68714:para-title:fs-idm18749312-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp47057824",
+              "segmentId": "m68714:para:fs-idp47057824"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm100978944",
+              "segmentId": "m68714:para:fs-idm100978944"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm1915936",
+              "segmentId": "m68714:para:fs-idm1915936"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm9495168",
+              "segmentId": "m68714:para:fs-idm9495168"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm3691696",
+              "segmentId": "m68714:para:fs-idm3691696"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm55343248",
+              "segmentId": "m68714:para:fs-idm55343248"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp70544208",
+              "segmentId": "m68714:para:fs-idp70544208",
+              "title": {
+                "segmentId": "m68714:para-title:fs-idp70544208-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp69025056",
+              "segmentId": "m68714:para:fs-idp69025056"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm22587536"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp16604400"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp42210944"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp107313360"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm60202256"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp161973712"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm62043536"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm19095728",
+              "title": {
+                "segmentId": "m68714:note-title:fs-idm19095728-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp69025056",
+                  "segmentId": "m68714:para:fs-idp69025056"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm20935792",
+      "class": null,
+      "title": {
+        "segmentId": "m68714:title:fs-idm20935792-title",
+        "text": "Percent Yield"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm22072192",
+          "segmentId": "m68714:para:fs-idm22072192"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp47653952",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm52282816",
+          "segmentId": "m68714:para:fs-idm52282816"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm49018784",
+          "title": {
+            "segmentId": "m68714:example-title:fs-idm49018784-title",
+            "text": "Calculation of Percent Yield"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm68646768",
+              "segmentId": "m68714:para:fs-idm68646768"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp104261712",
+              "segmentId": "m68714:para:fs-idp104261712"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp98890704",
+              "segmentId": "m68714:para:fs-idp98890704",
+              "title": {
+                "segmentId": "m68714:para-title:fs-idp98890704-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp47540336",
+              "segmentId": "m68714:para:fs-idp47540336"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp38988928",
+              "segmentId": "m68714:para:fs-idp38988928",
+              "title": {
+                "segmentId": "m68714:para-title:fs-idp38988928-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp47655136",
+              "segmentId": "m68714:para:fs-idp47655136"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp101757552"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp104521856"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp217309712"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp182503696"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp61435552"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp47749920",
+              "title": {
+                "segmentId": "m68714:note-title:fs-idp47749920-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp47655136",
+                  "segmentId": "m68714:para:fs-idp47655136"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idm21958480",
+          "class": "chemistry sciences-interconnect",
+          "title": {
+            "segmentId": "m68714:note-title:fs-idm21958480-title",
+            "text": "Green Chemistry and Atom Economy"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm49080288",
+              "segmentId": "m68714:para:fs-idm49080288"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp59920960",
+              "segmentId": "m68714:para:fs-idp59920960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp167996000",
+              "segmentId": "m68714:para:fs-idp167996000"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_04_04_GreenChem",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68714:caption:CNX_Chem_04_04_GreenChem-caption"
+          },
+          "media": {
+            "id": "fs-idp994368",
+            "alt": "This figure is labeled, “a,” and, “b.” Part a shows an open bottle of ibuprofen and a small pile of ibuprofen tablets beside it. Part b shows a reaction along with line structures. The first line structure looks like a diagonal line pointing down and to the right, then up and to the right and then down and to the right. At this point it connects to a hexagon with alternating double bonds. At the first trough there is a line that points straight down. From this structure, there is an arrow pointing downward. The arrow is labeled, “H F,” on the left and “( C H subscript 3 C O ) subscript 2 O,” on the right. The next line structure looks exactly like the first line structure, but it has a line angled down and to the right from the lower right point of the hexagon. This line is connected to another line which points straight down. Where these two lines meet, there is a double bond to an O atom. There is another arrow pointing downward, and it is labeled, “H subscript 2, Raney N i.” The next structure looks very similar to the second, previous structure, except in place of the double bonded O, there is a singly bonded O H group. There is a final reaction arrow pointing downward, and it is labeled, “C O, [ P d ].” The final structure is similar to the third, previous structure except in place of the O H group, there is another line that points down and to the right to an O H group. At these two lines, there is a double bonded O.",
+            "src": "../../media/CNX_Chem_04_04_GreenChem.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm64875168",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68714:title:fs-idm64875168-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm5314032",
+          "segmentId": "m68714:para:fs-idm5314032"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp36036608",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68714:title:fs-idp36036608-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68714:entry:auto-56",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm49138160",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68714:title:fs-idm49138160-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm72007808",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp158025632",
+                "segmentId": "m68714:problem:fs-idp158025632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp10708080",
+                "segmentId": "m68714:problem:fs-idp10708080"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm64569408",
+                "segmentId": "m68714:problem:fs-idm64569408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp46468992",
+                "segmentId": "m68714:problem:fs-idp46468992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm56547920",
+                "segmentId": "m68714:problem:fs-idm56547920"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm48529264",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp101303920",
+                "segmentId": "m68714:problem:fs-idp101303920"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp22297728",
+                "segmentId": "m68714:solution:fs-idp22297728"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm47361200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp62729328",
+                "segmentId": "m68714:problem:fs-idp62729328"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm38653920",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp10358416",
+                "segmentId": "m68714:problem:fs-idp10358416"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp46323152",
+                "segmentId": "m68714:solution:fs-idp46323152"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp61299760",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp6755168",
+                "segmentId": "m68714:problem:fs-idp6755168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp4609920",
+                "segmentId": "m68714:problem:fs-idp4609920"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm57693344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp5068384",
+                "segmentId": "m68714:problem:fs-idp5068384"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp59773152",
+                "segmentId": "m68714:solution:fs-idp59773152"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp99327968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp27686272",
+                "segmentId": "m68714:problem:fs-idp27686272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm8793984",
+                "segmentId": "m68714:problem:fs-idm8793984"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp34342864",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm48555120",
+                "segmentId": "m68714:problem:fs-idm48555120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp58383920",
+                "segmentId": "m68714:problem:fs-idp58383920"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm18984464",
+                "segmentId": "m68714:solution:fs-idm18984464"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm7557120",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp94004800",
+                "segmentId": "m68714:problem:fs-idp94004800"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm46525040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm3264240",
+                "segmentId": "m68714:problem:fs-idm3264240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm120301824",
+                "segmentId": "m68714:problem:fs-idm120301824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp39307056",
+                "segmentId": "m68714:problem:fs-idp39307056"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm48114608",
+                "segmentId": "m68714:solution:fs-idm48114608"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm43326768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp68715040",
+                "segmentId": "m68714:problem:fs-idp68715040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp201350320",
+                "segmentId": "m68714:problem:fs-idp201350320"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm49726752",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp101414208",
+                "segmentId": "m68714:problem:fs-idp101414208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm522144",
+                "segmentId": "m68714:problem:fs-idm522144"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm38791728",
+                "segmentId": "m68714:solution:fs-idm38791728"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm21873728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp47839312",
+                "segmentId": "m68714:problem:fs-idp47839312"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp70668864",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp62392768",
+                "segmentId": "m68714:problem:fs-idp62392768"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm72766640",
+                "segmentId": "m68714:problem:fs-idm72766640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp232896464",
+                "segmentId": "m68714:problem:fs-idp232896464"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp74993536",
+                "segmentId": "m68714:solution:fs-idp74993536"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm574992",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm51429104",
+                "segmentId": "m68714:problem:fs-idm51429104"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71853216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16595856",
+                "segmentId": "m68714:problem:fs-idp16595856"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp81228400",
+                "segmentId": "m68714:solution:fs-idp81228400"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp41861648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1521280",
+                "segmentId": "m68714:problem:fs-idm1521280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm55530368",
+                "segmentId": "m68714:problem:fs-idm55530368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp39236672",
+                "segmentId": "m68714:problem:fs-idp39236672"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm19471568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp8946384",
+                "segmentId": "m68714:problem:fs-idp8946384"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp8960064",
+                "segmentId": "m68714:solution:fs-idp8960064"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68714:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68714:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68714:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68714:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm47393392",
+        "termSegmentId": "m68714:glossary-term:fs-idm47393392-term",
+        "definitionSegmentId": "m68714:glossary-def:fs-idm47393392-def"
+      },
+      {
+        "id": "fs-idm46343008",
+        "termSegmentId": "m68714:glossary-term:fs-idm46343008-term",
+        "definitionSegmentId": "m68714:glossary-def:fs-idm46343008-def"
+      },
+      {
+        "id": "fs-idp182610272",
+        "termSegmentId": "m68714:glossary-term:fs-idp182610272-term",
+        "definitionSegmentId": "m68714:glossary-def:fs-idp182610272-def"
+      },
+      {
+        "id": "fs-idp51447712",
+        "termSegmentId": "m68714:glossary-term:fs-idp51447712-term",
+        "definitionSegmentId": "m68714:glossary-def:fs-idp51447712-def"
+      },
+      {
+        "id": "fs-idp30967968",
+        "termSegmentId": "m68714:glossary-term:fs-idp30967968-term",
+        "definitionSegmentId": "m68714:glossary-def:fs-idp30967968-def"
+      }
+    ]
+  },
+  "sectionOrder": 4
+}

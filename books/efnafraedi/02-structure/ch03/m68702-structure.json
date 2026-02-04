@@ -1,0 +1,1098 @@
+{
+  "moduleId": "m68702",
+  "title": {
+    "segmentId": "m68702:title:auto-1",
+    "text": "Determining Empirical and Molecular Formulas"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "a4d0d6e1-b161-4cfd-ab54-23632839d0df",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Compute the percent composition of a compound",
+        "Determine the empirical formula of a compound",
+        "Determine the molecular formula of a compound"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp63066960",
+      "segmentId": "m68702:para:fs-idp63066960"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm175230352",
+      "class": null,
+      "title": {
+        "segmentId": "m68702:title:fs-idm175230352-title",
+        "text": "Percent Composition"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm114973648",
+          "class": null,
+          "title": {
+            "segmentId": "m68702:title:fs-idm114973648-title",
+            "text": "Determining Percent Composition from Molecular or Empirical Formulas"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm153839088",
+              "segmentId": "m68702:para:fs-idm153839088"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm150406144",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm159904272",
+              "segmentId": "m68702:para:fs-idm159904272"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm162294688",
+              "title": {
+                "segmentId": "m68702:example-title:fs-idm162294688-title",
+                "text": "Determining Percent Composition from a Molecular Formula"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm28923440",
+                  "segmentId": "m68702:para:fs-idm28923440"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm77779888",
+                  "segmentId": "m68702:para:fs-idm77779888",
+                  "title": {
+                    "segmentId": "m68702:para-title:fs-idm77779888-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp47168",
+                  "segmentId": "m68702:para:fs-idp47168"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm29762576",
+                  "segmentId": "m68702:para:fs-idm29762576",
+                  "title": {
+                    "segmentId": "m68702:para-title:fs-idm29762576-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm72116192",
+                  "segmentId": "m68702:para:fs-idm72116192"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm106112"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm172254128"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp8443552"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm63137328",
+                  "title": {
+                    "segmentId": "m68702:note-title:fs-idm63137328-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm72116192",
+                      "segmentId": "m68702:para:fs-idm72116192"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm144417840",
+          "segmentId": "m68702:para:fs-idm144417840"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp62101552",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp85788016",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm144352192",
+          "segmentId": "m68702:para:fs-idm144352192"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm95716912",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp9583632",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm150394080",
+          "title": {
+            "segmentId": "m68702:example-title:fs-idm150394080-title",
+            "text": "Calculation of Percent Composition"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm20386912",
+              "segmentId": "m68702:para:fs-idm20386912"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm111369568",
+              "segmentId": "m68702:para:fs-idm111369568",
+              "title": {
+                "segmentId": "m68702:para-title:fs-idm111369568-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm125592496",
+              "segmentId": "m68702:para:fs-idm125592496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp63575312",
+              "segmentId": "m68702:para:fs-idp63575312",
+              "title": {
+                "segmentId": "m68702:para-title:fs-idp63575312-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm146819008",
+              "segmentId": "m68702:para:fs-idm146819008"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm181555088"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp63474576",
+              "title": {
+                "segmentId": "m68702:note-title:fs-idp63474576-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm146819008",
+                  "segmentId": "m68702:para:fs-idm146819008"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm186235344",
+      "class": null,
+      "title": {
+        "segmentId": "m68702:title:fs-idm186235344-title",
+        "text": "Determination of Empirical Formulas"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp48607392",
+          "class": null,
+          "title": {
+            "segmentId": "m68702:title:fs-idp48607392-title",
+            "text": "Deriving Empirical Formulas from Percent Composition"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm130157248",
+              "segmentId": "m68702:para:fs-idm130157248"
+            },
+            {
+              "type": "example",
+              "id": "fs-idp11336208",
+              "title": {
+                "segmentId": "m68702:example-title:fs-idp11336208-title",
+                "text": "Determining an Empirical Formula from Percent Composition"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm16856224",
+                  "segmentId": "m68702:para:fs-idm16856224"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp8854528",
+                  "segmentId": "m68702:para:fs-idp8854528",
+                  "title": {
+                    "segmentId": "m68702:para-title:fs-idp8854528-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp6456464",
+                  "segmentId": "m68702:para:fs-idp6456464"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm174491744",
+                  "segmentId": "m68702:para:fs-idm174491744"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm106276304",
+                  "segmentId": "m68702:para:fs-idm106276304"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm153398992",
+                  "segmentId": "m68702:para:fs-idm153398992",
+                  "title": {
+                    "segmentId": "m68702:para-title:fs-idm153398992-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm49848016",
+                  "segmentId": "m68702:para:fs-idm49848016"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm50369216"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm107059040"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm112786736"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm61160608",
+                  "title": {
+                    "segmentId": "m68702:note-title:fs-idm61160608-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm49848016",
+                      "segmentId": "m68702:para:fs-idm49848016"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_03_03_BrewTank",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68702:caption:CNX_Chem_03_03_BrewTank-caption"
+              },
+              "media": {
+                "id": "fs-idm183208576",
+                "alt": "A picture is shown of four copper-colored industrial containers with a large pipe connecting to the top of each one.",
+                "src": "../../media/CNX_Chem_03_03_BrewTank.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm181573632",
+          "segmentId": "m68702:para:fs-idm181573632"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm182904000",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm89096592",
+          "segmentId": "m68702:para:fs-idm89096592"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm173344864",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm154418400",
+          "segmentId": "m68702:para:fs-idm154418400"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm83793840",
+          "segmentId": "m68702:para:fs-idm83793840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm172411952",
+          "segmentId": "m68702:para:fs-idm172411952"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm153644640",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm146854160",
+          "segmentId": "m68702:para:fs-idm146854160"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm99418064",
+          "segmentId": "m68702:para:fs-idm99418064"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm105983184",
+          "listType": "bulleted",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68702:item:fs-idm105983184-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68702:item:fs-idm105983184-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68702:item:fs-idm105983184-item-3"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm116173824",
+          "segmentId": "m68702:para:fs-idm116173824"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_03_empform",
+          "caption": {
+            "segmentId": "m68702:caption:CNX_Chem_03_03_empform-caption"
+          },
+          "media": {
+            "id": "fs-idm114759824",
+            "alt": "A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, “Mass of A atoms” and “Moles of A atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass,” written below it. The second two bottom boxes have the phrases, “Mass of X atoms” and “Moles of X atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass” written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase “Divide by lowest number of moles” written below it. The last two boxes have the phrases, “A to X mole ratio” and “Empirical formula” respectively, while the arrow that connects them has the phrase, “Convert ratio to lowest whole numbers” written below it.",
+            "src": "../../media/CNX_Chem_03_03_empform.jpg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idp70151968",
+          "title": {
+            "segmentId": "m68702:example-title:fs-idp70151968-title",
+            "text": "Determining a Compound’s Empirical Formula from the Masses of Its Elements"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm148697040",
+              "segmentId": "m68702:para:fs-idm148697040"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp9584080",
+              "segmentId": "m68702:para:fs-idp9584080",
+              "title": {
+                "segmentId": "m68702:para-title:fs-idp9584080-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp19490304",
+              "segmentId": "m68702:para:fs-idp19490304"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm169565728",
+              "segmentId": "m68702:para:fs-idm169565728"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm196066368",
+              "segmentId": "m68702:para:fs-idm196066368"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm180356384",
+              "segmentId": "m68702:para:fs-idm180356384",
+              "title": {
+                "segmentId": "m68702:para-title:fs-idm180356384-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm112291760",
+              "segmentId": "m68702:para:fs-idm112291760"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp81202080"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm186572544"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm9646560"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp52798448",
+              "title": {
+                "segmentId": "m68702:note-title:fs-idp52798448-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm112291760",
+                  "segmentId": "m68702:para:fs-idm112291760"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_03_hematite",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68702:caption:CNX_Chem_03_03_hematite-caption"
+          },
+          "media": {
+            "id": "fs-idm156718064",
+            "alt": "Two rounded, smooth black stones are shown.",
+            "src": "../../media/CNX_Chem_03_03_hematite.jpg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm160004320",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp89502368",
+              "segmentId": "m68702:para:fs-idp89502368"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp23895104",
+      "class": null,
+      "title": {
+        "segmentId": "m68702:title:fs-idp23895104-title",
+        "text": "Derivation of Molecular Formulas"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp60635424",
+          "segmentId": "m68702:para:fs-idp60635424"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm152826480",
+          "segmentId": "m68702:para:fs-idm152826480"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm157027008",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp7653408",
+          "segmentId": "m68702:para:fs-idp7653408"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp3369296",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm149844688",
+          "segmentId": "m68702:para:fs-idm149844688"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm11480608",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm156812016",
+          "segmentId": "m68702:para:fs-idm156812016"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp29668368",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm146366240",
+          "segmentId": "m68702:para:fs-idm146366240"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm153155296",
+          "title": {
+            "segmentId": "m68702:example-title:fs-idm153155296-title",
+            "text": "Determination of the Molecular Formula for Nicotine"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm56345360",
+              "segmentId": "m68702:para:fs-idm56345360"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm146789392",
+              "segmentId": "m68702:para:fs-idm146789392",
+              "title": {
+                "segmentId": "m68702:para-title:fs-idm146789392-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm3598576",
+              "segmentId": "m68702:para:fs-idm3598576"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm152642880",
+              "segmentId": "m68702:para:fs-idm152642880"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm172291248",
+              "segmentId": "m68702:para:fs-idm172291248"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm113144656",
+              "segmentId": "m68702:para:fs-idm113144656"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm217123120",
+              "segmentId": "m68702:para:fs-idm217123120"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp8627344",
+              "segmentId": "m68702:para:fs-idp8627344",
+              "title": {
+                "segmentId": "m68702:para-title:fs-idp8627344-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm152847216",
+              "segmentId": "m68702:para:fs-idm152847216"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm165807504"
+            },
+            {
+              "type": "equation",
+              "id": "eip-876"
+            },
+            {
+              "type": "equation",
+              "id": "eip-272"
+            },
+            {
+              "type": "equation",
+              "id": "eip-610"
+            },
+            {
+              "type": "equation",
+              "id": "eip-909"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp7634272"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp64453248"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp60197184"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm149132352",
+              "title": {
+                "segmentId": "m68702:note-title:fs-idm149132352-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm152847216",
+                  "segmentId": "m68702:para:fs-idm152847216"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm130412048",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68702:title:fs-idm130412048-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm171937152",
+          "segmentId": "m68702:para:fs-idm171937152"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm151713456",
+      "class": "exercises",
+      "title": null,
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm115920688",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm219427632",
+                "segmentId": "m68702:problem:fs-idm219427632"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm130496608",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm160000",
+                "segmentId": "m68702:problem:fs-idm160000"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm177315056",
+                "segmentId": "m68702:problem:fs-idm177315056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm105706256",
+                "segmentId": "m68702:problem:fs-idm105706256"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm105710800",
+                "segmentId": "m68702:problem:fs-idm105710800"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm8723440",
+                "segmentId": "m68702:solution:fs-idm8723440"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm99186192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp268768",
+                "segmentId": "m68702:problem:fs-idp268768"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm149211856",
+                "segmentId": "m68702:problem:fs-idm149211856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm162962720",
+                "segmentId": "m68702:problem:fs-idm162962720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm183984960",
+                "segmentId": "m68702:problem:fs-idm183984960"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp103798128",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm151196704",
+                "segmentId": "m68702:problem:fs-idm151196704"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp36459552",
+                "segmentId": "m68702:solution:fs-idp36459552"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm78648848",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm107182224",
+                "segmentId": "m68702:problem:fs-idm107182224"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm2827872",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm157957232",
+                "segmentId": "m68702:problem:fs-idm157957232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm115884896",
+                "segmentId": "m68702:problem:fs-idm115884896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm154543312",
+                "segmentId": "m68702:problem:fs-idm154543312"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm165665376",
+                "segmentId": "m68702:solution:fs-idm165665376"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm106900080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm133574896",
+                "segmentId": "m68702:problem:fs-idm133574896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp103824992",
+                "segmentId": "m68702:problem:fs-idp103824992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm117014832",
+                "segmentId": "m68702:problem:fs-idm117014832"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm108358432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm116098896",
+                "segmentId": "m68702:problem:fs-idm116098896"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp6839584",
+                "segmentId": "m68702:solution:fs-idp6839584"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm234233056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm8281104",
+                "segmentId": "m68702:problem:fs-idm8281104"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm149528800",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp1815712",
+                "segmentId": "m68702:problem:fs-idp1815712"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp63157456",
+                "segmentId": "m68702:solution:fs-idp63157456"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp2230736",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm174073760",
+                "segmentId": "m68702:problem:fs-idm174073760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm12982896",
+                "segmentId": "m68702:problem:fs-idm12982896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm174073504",
+                "segmentId": "m68702:problem:fs-idm174073504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm157598016",
+                "segmentId": "m68702:problem:fs-idm157598016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm157597632",
+                "segmentId": "m68702:problem:fs-idm157597632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp44067504",
+                "segmentId": "m68702:problem:fs-idp44067504"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp63104368",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp14848",
+                "segmentId": "m68702:problem:fs-idp14848"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm160039136",
+                "segmentId": "m68702:solution:fs-idm160039136"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp39993248",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68702:title:fs-idp39993248-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68702:entry:auto-132",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68702:entry:auto-133",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68702:entry:auto-134",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68702:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68702:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68702:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68702:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp78258880",
+        "termSegmentId": "m68702:glossary-term:fs-idp78258880-term",
+        "definitionSegmentId": "m68702:glossary-def:fs-idp78258880-def"
+      },
+      {
+        "id": "fs-idp78260032",
+        "termSegmentId": "m68702:glossary-term:fs-idp78260032-term",
+        "definitionSegmentId": "m68702:glossary-def:fs-idp78260032-def"
+      }
+    ]
+  },
+  "sectionOrder": 2
+}

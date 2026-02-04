@@ -1,0 +1,32 @@
+{
+  "moduleId": "m68699",
+  "title": {
+    "segmentId": "m68699:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "9a3bd412-d571-4c1f-a985-06fbfc32bfbd"
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_03_00_Pool",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68699:caption:CNX_Chem_03_00_Pool-caption"
+      },
+      "media": {
+        "id": "fs-idp99819248",
+        "alt": "This figure shows a swimming pool that is full of water and surrounded by a concrete patio.",
+        "src": "../../media/CNX_Chem_03_00_Pool.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp44036064",
+      "segmentId": "m68699:para:fs-idp44036064"
+    }
+  ],
+  "sectionOrder": 0
+}

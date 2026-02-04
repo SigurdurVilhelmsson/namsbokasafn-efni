@@ -1,0 +1,672 @@
+{
+  "moduleId": "m68685",
+  "title": {
+    "segmentId": "m68685:title:auto-1",
+    "text": "Early Ideas in Atomic Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "3c9c47d2-06f5-42b3-ba17-2248cc3dd7a9",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "State the postulates of Dalton’s atomic theory",
+        "Use postulates of Dalton’s atomic theory to explain the laws of definite and multiple proportions"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp22389648",
+      "segmentId": "m68685:para:fs-idp22389648"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp136823072",
+      "segmentId": "m68685:para:fs-idp136823072"
+    },
+    {
+      "type": "list",
+      "id": "fs-idp28280144",
+      "listType": "bulleted",
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68685:item:fs-idp28280144-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68685:item:fs-idp28280144-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68685:item:fs-idp28280144-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m68685:item:fs-idp28280144-item-4"
+        },
+        {
+          "id": null,
+          "segmentId": "m68685:item:fs-idp28280144-item-5"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_01_Dalton1",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68685:caption:CNX_Chem_02_01_Dalton1-caption"
+      },
+      "media": {
+        "id": "fs-idm67856816",
+        "alt": "The left image shows a photograph of a stack of pennies. The right image calls out an area of one of the pennies, which is made up of many sphere-shaped copper atoms. The atoms are densely organized.",
+        "src": "../../media/CNX_Chem_02_01_Dalton1.jpg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_01_Dalton2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68685:caption:CNX_Chem_02_01_Dalton2-caption"
+      },
+      "media": {
+        "id": "fs-idp25149184",
+        "alt": "The left image shows a container with a black, powdery compound. The right image calls out the molecular structure of the powder which contains copper atoms that are clustered together with an equal number of oxygen atoms.",
+        "src": "../../media/CNX_Chem_02_01_Dalton2.jpg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_01_Dalton3",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68685:caption:CNX_Chem_02_01_Dalton3-caption"
+      },
+      "media": {
+        "id": "fs-idm75378992",
+        "alt": "The left stoppered bottle contains copper and oxygen. There is a callout which shows that copper is made up of many sphere-shaped atoms. The atoms are densely organized. The open space of the bottle contains oxygen gas, which is made up of bonded pairs of oxygen atoms that are evenly spaced. The right stoppered bottle shows the compound copper two oxide, which is a black, powdery substance. A callout from the powder shows a molecule of copper two oxide, which contains copper atoms that are clustered together with an equal number of oxygen atoms.",
+        "src": "../../media/CNX_Chem_02_01_Dalton3.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp64032864",
+      "segmentId": "m68685:para:fs-idp64032864"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp23171216",
+      "title": {
+        "segmentId": "m68685:example-title:fs-idp23171216-title",
+        "text": "Testing Dalton’s Atomic Theory"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm69166560",
+          "segmentId": "m68685:para:fs-idm69166560"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm4192784",
+          "segmentId": "m68685:para:fs-idm4192784",
+          "title": {
+            "segmentId": "m68685:para-title:fs-idm4192784-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp39901584",
+          "segmentId": "m68685:para:fs-idp39901584",
+          "title": {
+            "segmentId": "m68685:para-title:fs-idp39901584-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp136824288",
+          "segmentId": "m68685:para:fs-idp136824288"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm55003792",
+          "title": {
+            "segmentId": "m68685:note-title:fs-idm55003792-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp136824288",
+              "segmentId": "m68685:para:fs-idp136824288"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp28034944",
+      "segmentId": "m68685:para:fs-idp28034944"
+    },
+    {
+      "type": "table",
+      "id": "fs-idp114534448",
+      "class": "top-titled",
+      "summary": "This table displays how much carbon and hydrogen are in samples A, B and C, as well as the mass ratio of each. Sample A contains 14.82 grams of carbon and 2.78 grams of hydrogen. Its mass ratio is, therefore, 14.82 grams of carbon over 2.78 grams of hydrogen. This ratio is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample B contains 22.33 grams of carbon and 4.19 grams of hydrogen. Its mass ratio is 22.3 grams of carbon over 4.19 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample C contains 19.40 grams of carbon and 3.64 grams of hydrogen. Its mass ratio is 19.40 grams of carbon over 3.63 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68685:entry:auto-26",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c4",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68685:entry:auto-27",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-28",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-29",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-30",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68685:entry:auto-31",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-32",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-33",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-34",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68685:entry:auto-35",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-36",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-37",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-38",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68685:entry:auto-39",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-40",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-41",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68685:entry:auto-42",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp149501712",
+      "segmentId": "m68685:para:fs-idp149501712"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp113358288",
+      "segmentId": "m68685:para:fs-idp113358288"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp92779296",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp35032848",
+      "segmentId": "m68685:para:fs-idp35032848"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm113441696",
+      "segmentId": "m68685:para:fs-idm113441696"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_01_MultProp",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68685:caption:CNX_Chem_02_01_MultProp-caption"
+      },
+      "media": {
+        "id": "fs-idp111881472",
+        "alt": "Figure A shows a pile of green powder. A callout shows that the green powder is made up of a lattice of copper atoms interspersed with chlorine atoms. The atoms are color coded brown for copper and green for chlorine. The number of copper atoms is equal to the number of chlorine atoms in the molecule. Figure B shows a pile of brown powder. A callout shows that the brown powder is also made up of copper and chlorine atoms similar to the molecule shown in figure A. However there appears to be two chlorine atoms for every copper atom in this molecule. The copper atoms in figure B bond with both the chlorine atoms and the other copper atoms. The copper atoms in figure A only bond with the chlorine atoms.",
+        "src": "../../media/CNX_Chem_02_01_MultProp.jpg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idp28025040",
+      "title": {
+        "segmentId": "m68685:example-title:fs-idp28025040-title",
+        "text": "Laws of Definite and Multiple Proportions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp31315072",
+          "segmentId": "m68685:para:fs-idp31315072"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm71104640",
+          "segmentId": "m68685:para:fs-idm71104640",
+          "title": {
+            "segmentId": "m68685:para-title:fs-idm71104640-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp26443712",
+          "segmentId": "m68685:para:fs-idp26443712"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp25964592",
+          "segmentId": "m68685:para:fs-idp25964592"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm85625680",
+          "segmentId": "m68685:para:fs-idm85625680"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp13365184",
+          "segmentId": "m68685:para:fs-idp13365184",
+          "title": {
+            "segmentId": "m68685:para-title:fs-idp13365184-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp130268400",
+          "segmentId": "m68685:para:fs-idp130268400"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm27225408"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm193212704"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm53123280"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp90686448",
+          "title": {
+            "segmentId": "m68685:note-title:fs-idp90686448-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp130268400",
+              "segmentId": "m68685:para:fs-idp130268400"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp7570768",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68685:title:fs-idp7570768-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm8092064",
+          "segmentId": "m68685:para:fs-idm8092064"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm51563888",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68685:title:fs-idm51563888-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp69222896",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm80213408",
+                "segmentId": "m68685:problem:fs-idm80213408"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp159650544",
+                "segmentId": "m68685:solution:fs-idp159650544"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp28065472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp88764640",
+                "segmentId": "m68685:problem:fs-idp88764640"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm83132240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm69044608",
+                "segmentId": "m68685:problem:fs-idm69044608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp110196432",
+                "segmentId": "m68685:solution:fs-idp110196432"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp146757152",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp38338048",
+                "segmentId": "m68685:problem:fs-idp38338048"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm32094368",
+                "segmentId": "m68685:problem:fs-idm32094368"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "table",
+          "id": "fs-idp22296752",
+          "class": "unnumbered",
+          "summary": "This table has a “description” column, a “mass of carbon” column, and a “mass of hydrogen” column for compounds X, Y and Z. Compound X is a clear, colorless liquid with a strong odor. Its mass of carbon is 1.776 grams, and its mass of hydrogen is 0.148 grams. Compound Y is also a clear, colorless liquid with a strong odor. Its mass of carbon is 1.974 grams, and its mass of hydrogen is 0.329 grams. Compound Z is also a clear, colorless liquid with a strong odor. Its mass of carbon is 7.812 grams and its mass of hydrogen is 0.651 g.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68685:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-71",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-72",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-73",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68685:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-75",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-76",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-77",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68685:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-79",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-80",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-81",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68685:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-83",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-84",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68685:entry:auto-85",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68685:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68685:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68685:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp110829184",
+        "termSegmentId": "m68685:glossary-term:fs-idp110829184-term",
+        "definitionSegmentId": "m68685:glossary-def:fs-idp110829184-def"
+      },
+      {
+        "id": "fs-idm56716560",
+        "termSegmentId": "m68685:glossary-term:fs-idm56716560-term",
+        "definitionSegmentId": "m68685:glossary-def:fs-idm56716560-def"
+      },
+      {
+        "id": "fs-idp76336256",
+        "termSegmentId": "m68685:glossary-term:fs-idp76336256-term",
+        "definitionSegmentId": "m68685:glossary-def:fs-idp76336256-def"
+      },
+      {
+        "id": "fs-idp47442976",
+        "termSegmentId": "m68685:glossary-term:fs-idp47442976-term",
+        "definitionSegmentId": "m68685:glossary-def:fs-idp47442976-def"
+      }
+    ]
+  },
+  "sectionOrder": 1
+}

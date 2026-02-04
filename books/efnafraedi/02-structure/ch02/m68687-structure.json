@@ -1,0 +1,407 @@
+{
+  "moduleId": "m68687",
+  "title": {
+    "segmentId": "m68687:title:auto-1",
+    "text": "Evolution of Atomic Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "bd29edc8-a139-456b-bc95-cee49b2fa5b1",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Outline milestones in the development of modern atomic theory",
+        "Summarize and interpret the results of the experiments of Thomson, Millikan, and Rutherford",
+        "Describe the three subatomic particles that compose atoms",
+        "Define isotopes and give examples for several elements"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm48255440",
+      "segmentId": "m68687:para:fs-idm48255440"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_02_CathodeRay",
+      "caption": {
+        "segmentId": "m68687:caption:CNX_Chem_02_02_CathodeRay-caption"
+      },
+      "media": {
+        "id": "fs-idp56809232",
+        "alt": "Figure A shows a photo of J. J. Thomson working at a desk. Figure B shows a photograph of a cathode ray tube. It is a long, glass tube that is narrow at the left end but expands into a large bulb on the right end. The entire cathode tube is sitting on a wooden stand. Figure C shows the parts of the cathode ray tube. The cathode ray tube consists of a cathode and an anode. The cathode, which has a negative charge, is located in a small bulb of glass on the left side of the cathode ray tube. To the left of the cathode it says “High voltage” and indicates a positive and negative charge. The anode, which has a positive charge, is located to the right of the cathode. Two charged plates are located to the right of the anode, and are connected to a battery and two magnets. The magnets are labeled “S” and “N.” A cathode ray is generated from the cathode, travels through the anode and into a wider part of the cathode ray tube, where it travels between a positively charged electrode plate and a negatively charged electrode plate. The ray bends upward and continues to travel until it hits the wide part of the tube on the right. The rightmost end of the tube contains a printed scale that allows one to measure how much the ray was deflected.",
+        "src": "../../media/CNX_Chem_02_02_CathodeRay.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm63743520",
+      "segmentId": "m68687:para:fs-idm63743520"
+    },
+    {
+      "type": "note",
+      "id": "fs-idp169880320",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm90581616",
+          "segmentId": "m68687:para:fs-idm90581616"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp197761152",
+      "segmentId": "m68687:para:fs-idp197761152"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_02_Millikan",
+      "caption": {
+        "segmentId": "m68687:caption:CNX_Chem_02_02_Millikan-caption"
+      },
+      "media": {
+        "id": "fs-idp154705664",
+        "alt": "The experimental apparatus consists of an oil atomizer which sprays fine oil droplets into a large, sealed container. The sprayed oil lands on a positively charged brass plate with a pinhole at the center. As the drops fall through the pinhole, they travel through X-rays that are emitted within the container. This gives the oil droplets an electrical charge. The oil droplets land on a brass plate that is negatively charged. A telescopic eyepiece penetrates the inside of the container so that the user can observe how the charged oil droplets respond to the negatively charged brass plate. The table that accompanies this figure gives the charge, in coulombs or C, for 5 oil drops. Oil drop A has a charge of 4.8 times 10 to the negative 19 power. Oil drop B has a charge of 3.2 times 10 to the negative 19 power. Oil drop C has a charge of 6.4 times 10 to the negative 19 power. Oil drop D has a charge of 1.6 times 10 to the negative 19 power. Oil drop E has a charge of 4.8 times 10 to the negative 19 power.",
+        "src": "../../media/CNX_Chem_02_02_Millikan.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp20412272",
+      "segmentId": "m68687:para:fs-idp20412272"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp156758896",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp98998624",
+      "segmentId": "m68687:para:fs-idp98998624"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_02_AtomModels",
+      "caption": {
+        "segmentId": "m68687:caption:CNX_Chem_02_02_AtomModels-caption"
+      },
+      "media": {
+        "id": "fs-idp145032336",
+        "alt": "Figure A shows a photograph of plum pudding, which is a thick, almost spherical cake containing raisins throughout. To the right, an atom model is round and contains negatively charged electrons embedded within a sphere of positively charged matter. Figure B shows a photograph of the planet Saturn, which has rings. To the right, an atom model is a sphere of positively charged matter encircled by a ring of negatively charged electrons.",
+        "src": "../../media/CNX_Chem_02_02_AtomModels.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp53512848",
+      "segmentId": "m68687:para:fs-idp53512848"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp56141328",
+      "segmentId": "m68687:para:fs-idp56141328"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_02_Rutherford",
+      "caption": {
+        "segmentId": "m68687:caption:CNX_Chem_02_02_Rutherford-caption"
+      },
+      "media": {
+        "id": "fs-idp57121104",
+        "alt": "This figure shows a box on the left that contains a radium source of alpha particles which generates a beam of alpha particles. The beam travels through an opening within a ring-shaped luminescent screen which is used to detect scattered alpha particles. A piece of thin gold foil is at the center of the ring formed by the screen. When the beam encounters the gold foil, most of the alpha particles pass straight through it and hit the luminescent screen directly behind the foil. Some of the alpha particles are slightly deflected by the foil and hit the luminescent screen off to the side of the foil. Some alpha particles are significantly deflected and bounce back to hit the front of the screen.",
+        "src": "../../media/CNX_Chem_02_02_Rutherford.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp11423776",
+      "segmentId": "m68687:para:fs-idp11423776"
+    },
+    {
+      "type": "list",
+      "id": "fs-idp55712144",
+      "listType": "bulleted",
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68687:item:fs-idp55712144-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68687:item:fs-idp55712144-item-2"
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idm39191968",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp30357520",
+          "segmentId": "m68687:para:fs-idp30357520"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp142616272",
+      "segmentId": "m68687:para:fs-idp142616272"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_02_GoldFoil3",
+      "caption": {
+        "segmentId": "m68687:caption:CNX_Chem_02_02_GoldFoil3-caption"
+      },
+      "media": {
+        "id": "fs-idp49461728",
+        "alt": "The left diagram shows a green beam of alpha particles hitting a rectangular piece of gold foil. Some of the alpha particles bounce backwards after hitting the foil. However, most of the particles travel through the foil, with some being deflected as they pass through the foil. A callout box shows a magnified cross section of the gold foil. Most of the alpha particles are not deflected, but pass straight through the foil because they travel between the gold atoms. A very small number of alpha particles are significantly deflected when they hit the nucleus of the gold atoms straight on. A few alpha particles are slightly deflected because they glanced off of the nucleus of a gold atom.",
+        "src": "../../media/CNX_Chem_02_02_GoldFoil3.jpg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idm32055696",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp101595952",
+          "segmentId": "m68687:para:fs-idp101595952"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp40043728",
+      "segmentId": "m68687:para:fs-idp40043728"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp153048272",
+      "segmentId": "m68687:para:fs-idp153048272"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp11422832",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68687:title:fs-idp11422832-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp1682080",
+          "segmentId": "m68687:para:fs-idp1682080"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm75605440",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68687:title:fs-idm75605440-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp107697296",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm18580816",
+                "segmentId": "m68687:problem:fs-idm18580816"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm61224992",
+                "segmentId": "m68687:solution:fs-idm61224992"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71935680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp133648688",
+                "segmentId": "m68687:problem:fs-idp133648688"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm21866144",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp326527456",
+                "segmentId": "m68687:problem:fs-idp326527456"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm69721648",
+                "segmentId": "m68687:solution:fs-idm69721648"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp23410688",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm121008656",
+                "segmentId": "m68687:problem:fs-idm121008656"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp24754400",
+                "segmentId": "m68687:problem:fs-idp24754400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp13268384",
+                "segmentId": "m68687:problem:fs-idp13268384"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp130204768",
+                "segmentId": "m68687:problem:fs-idp130204768"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm61727056",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp120600512",
+                "segmentId": "m68687:problem:fs-idp120600512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp581408",
+                "segmentId": "m68687:problem:fs-idp581408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp154181248",
+                "segmentId": "m68687:problem:fs-idp154181248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp23178208",
+                "segmentId": "m68687:problem:fs-idp23178208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp84028672",
+                "segmentId": "m68687:problem:fs-idp84028672"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp27196528",
+                "segmentId": "m68687:solution:fs-idp27196528"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68687:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68687:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68687:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68687:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68687:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm10811088",
+        "termSegmentId": "m68687:glossary-term:fs-idm10811088-term",
+        "definitionSegmentId": "m68687:glossary-def:fs-idm10811088-def"
+      },
+      {
+        "id": "fs-idp27115648",
+        "termSegmentId": "m68687:glossary-term:fs-idp27115648-term",
+        "definitionSegmentId": "m68687:glossary-def:fs-idp27115648-def"
+      },
+      {
+        "id": "fs-idm25241664",
+        "termSegmentId": "m68687:glossary-term:fs-idm25241664-term",
+        "definitionSegmentId": "m68687:glossary-def:fs-idm25241664-def"
+      },
+      {
+        "id": "fs-idp100350096",
+        "termSegmentId": "m68687:glossary-term:fs-idp100350096-term",
+        "definitionSegmentId": "m68687:glossary-def:fs-idp100350096-def"
+      },
+      {
+        "id": "fs-idp130134704",
+        "termSegmentId": "m68687:glossary-term:fs-idp130134704-term",
+        "definitionSegmentId": "m68687:glossary-def:fs-idp130134704-def"
+      },
+      {
+        "id": "fs-idp21637408",
+        "termSegmentId": "m68687:glossary-term:fs-idp21637408-term",
+        "definitionSegmentId": "m68687:glossary-def:fs-idp21637408-def"
+      }
+    ]
+  },
+  "sectionOrder": 2
+}

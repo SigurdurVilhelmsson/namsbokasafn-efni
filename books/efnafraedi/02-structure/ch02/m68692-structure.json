@@ -1,0 +1,2724 @@
+{
+  "moduleId": "m68692",
+  "title": {
+    "segmentId": "m68692:title:auto-1",
+    "text": "Atomic Structure and Symbolism"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e82ac421-e027-4ba2-8c34-2b8bdde7f3dc",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Write and interpret symbols that depict the atomic number, mass number, and charge of an atom or ion",
+        "Define the atomic mass unit and average atomic mass",
+        "Calculate average atomic mass and isotopic abundance"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp188136384",
+      "segmentId": "m68692:para:fs-idp188136384"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_03_AtomSize",
+      "caption": {
+        "segmentId": "m68692:caption:CNX_Chem_02_03_AtomSize-caption"
+      },
+      "media": {
+        "id": "fs-idm200317952",
+        "alt": "The diagram on the left shows a picture of an atom that is 10 to the negative tenth power meters in diameter. The nucleus is labeled at the center of the atom and is 10 to the negative fifteenth power meters. The central figure shows a photograph of an American football stadium. The figure on the right shows a photograph of a person with a handful of blueberries.",
+        "src": "../../media/CNX_Chem_02_03_AtomSize.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm171776576",
+      "segmentId": "m68692:para:fs-idm171776576"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm166273840",
+      "segmentId": "m68692:para:fs-idm166273840"
+    },
+    {
+      "type": "table",
+      "id": "fs-idp90857696",
+      "class": "top-titled",
+      "summary": "This table gives the name, location, charge in C, unit charge, mass in A M U and mass in grams for electrons, protons and neutrons. Electrons are located outside of the nucleus, have a charge of negative 1.602 times 10 to the negative nineteenth power, a unit charge of negative 1, and a mass of 0.00055 A M U or 0.00091 times 10 to the negative twenty-fourth power grams. Protons are located within the nucleus, have a charge of 1.602 times 10 to the negative nineteenth power, have a unit charge of positive 1, and have a mass of 1.0073 A M U or 1.6726 times 10 to the negative twenty-fourth power grams. Neutrons are located within the nucleus, have a charge of 0, have a unit charge of 0, and have a mass of 1.0087 A M U or 1.6749 times 10 to the negative twenty-fourth power grams.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68692:entry:auto-10",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c6",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68692:entry:auto-11",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-12",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-13",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-14",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-15",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-16",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68692:entry:auto-17",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-18",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-19",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-20",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-21",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-22",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68692:entry:auto-23",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-24",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-25",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-26",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-27",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-28",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68692:entry:auto-29",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-30",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-31",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-32",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-33",
+              "attributes": {
+                "align": "center"
+              }
+            },
+            {
+              "segmentId": "m68692:entry:auto-34",
+              "attributes": {
+                "align": "center"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp27048016",
+      "segmentId": "m68692:para:fs-idp27048016"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp109266704",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm159569776",
+      "segmentId": "m68692:para:fs-idm159569776"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp142952368",
+      "segmentId": "m68692:para:fs-idp142952368"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp59351760",
+      "segmentId": "m68692:para:fs-idp59351760"
+    },
+    {
+      "type": "example",
+      "id": "fs-idm5511728",
+      "title": {
+        "segmentId": "m68692:example-title:fs-idm5511728-title",
+        "text": "Composition of an Atom"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm54131248",
+          "segmentId": "m68692:para:fs-idm54131248"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm90509824",
+          "segmentId": "m68692:para:fs-idm90509824"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp104898720",
+          "segmentId": "m68692:para:fs-idp104898720",
+          "title": {
+            "segmentId": "m68692:para-title:fs-idp104898720-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp39901584",
+          "segmentId": "m68692:para:fs-idp39901584",
+          "title": {
+            "segmentId": "m68692:para-title:fs-idp39901584-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp59061008",
+          "segmentId": "m68692:para:fs-idp59061008"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm45247680",
+          "title": {
+            "segmentId": "m68692:note-title:fs-idm45247680-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp59061008",
+              "segmentId": "m68692:para:fs-idp59061008"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_03_Iodine",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68692:caption:CNX_Chem_02_03_Iodine-caption"
+      },
+      "media": {
+        "id": "fs-idp203630528",
+        "alt": "Figure A shows a photo of a person who has a very swollen thyroid in his or her neck. Figure B shows a photo of a canister of iodized salt.",
+        "src": "../../media/CNX_Chem_02_03_Iodine.jpg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm176092496",
+      "class": null,
+      "title": {
+        "segmentId": "m68692:title:fs-idm176092496-title",
+        "text": "Chemical Symbols"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm48306304",
+          "segmentId": "m68692:para:fs-idm48306304"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_02_03_SiSymbol",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68692:caption:CNX_Chem_02_03_SiSymbol-caption"
+          },
+          "media": {
+            "id": "fs-idm53222912",
+            "alt": "A jar labeled “H g” is shown with a small amount of liquid mercury in it.",
+            "src": "../../media/CNX_Chem_02_03_SiSymbol.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm91050016",
+          "segmentId": "m68692:para:fs-idm91050016"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm36686800",
+          "class": "top-titled",
+          "summary": "This table has two columns labeled element and symbol. The first letter of the symbol is always an uppercase letter while the second letter of the symbol is always a lowercase letter. Aluminum has the symbol A L. Bromine has the symbol B R, calcium has the symbol C A, carbon has the symbol C, chlorine has the symbol C L, chromium has the symbol C R, cobalt has the symbol C O, copper has the symbol C U, from cuprum, fluorine has the symbol F, gold has the symbol A U, from aurum, helium has the symbol H E, hydrogen has the symbol H, iodine has the symbol I, iron has the symbol F E, from ferrum, lead has the symbol P B, from plumbum, magnesium has the symbol M G, mercury has the symbol H G from hydrargyrum, nitrogen has the symbol N, oxygen has the symbol O, potassium has the symbol K, from kalium, silicon has the symbol S I, silver has the symbol A G, from argentum, sodium has the symbol N A from natrium, sulfur has the symbol S, tin has the symbol S N from stannum, and zinc has the symbol Z N.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-54",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c4",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-77",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-83",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-84",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-85",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-86",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-87",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-89",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-91",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-94",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-96",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-105",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-107",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm105035264",
+          "segmentId": "m68692:para:fs-idm105035264"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm111013376",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm3892928",
+              "segmentId": "m68692:para:fs-idm3892928"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp42149200",
+      "class": null,
+      "title": {
+        "segmentId": "m68692:title:fs-idp42149200-title",
+        "text": "Isotopes"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm240748912",
+          "segmentId": "m68692:para:fs-idm240748912"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_02_03_AtomSym",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68692:caption:CNX_Chem_02_03_AtomSym-caption"
+          },
+          "media": {
+            "id": "fs-idm140695888",
+            "alt": "This diagram shows the symbol for helium, “H e.” The number to the upper left of the symbol is the mass number, which is 4. The number to the upper right of the symbol is the charge which is positive 2. The number to the lower left of the symbol is the atomic number, which is 2. This number is often omitted. Also shown is “M g” which stands for magnesium It has a mass number of 24, a charge of positive 2, and an atomic number of 12.",
+            "src": "../../media/CNX_Chem_02_03_AtomSym.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm198096624",
+          "segmentId": "m68692:para:fs-idm198096624"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm87646592",
+          "class": "top-titled",
+          "summary": "This table has seven columns labeled element, symbol, atomic number, number of protons, number of neutrons, mass in A M U, and percent natural abundance. The symbols for each element each show the mass number in the upper left and the atomic number in the lower left. Therefore hydrogen left superscript 1, left subscript 1, or protium, has a mass number of 1 and an atomic number of 1. Protium has one proton, 0 neutrons, a mass of 1.0078 and a natural abundance percentage of 99.985. Hydrogen left superscript 2, left subscript 1, or deuterium, has an atomic number of 1, 1 proton, 1 neutron, a mass of 2.0141 and a natural abundance percentage of 0.015. Hydrogen left superscript 3, left subscript 1, or tritium, has an atomic number of 11 protons, 2 neutrons, and a mass of 3.01605. No natural abundance percentage is given. Helium left superscript 3, left subscript 2 has an atomic number of 2, 2 protons, 1 neutron, a mass of 3.01603, and a natural abundance percentage of 0.00013. Helium left superscript 4, left subscript 2 has an atomic number of 2, 2 protons, 2 neutrons, a mass of 4.0026 and a natural abundance percentage of 100. Lithium left superscript 6, left subscript 3 has an atomic number of 3, 3 protons, 3 neutrons, a mass of 6.0151, and a natural abundance percentage of 7.42. Lithium left superscript 7, left subscript 3 has an atomic number of 3, 3 protons, 4 neutrons, a mass of 7.0160, and a natural abundance percentage of 92.8. Beryllium left superscript 9, left subscript 4 has an atomic number of 4, 4 protons, 5 neutrons, a mass of 9.0122, and a natural abundance percentage of 100. Boron left superscript 10, left subscript 5 has an atomic number of 5, 5 protons, 5 neutrons and a natural abundance percentage of 19.9. Boron left superscript 11, left subscript 5 has an atomic number of 5, 5 protons, 6 neutrons, a mass of 11.0093 and a natural abundance of 80.1. Carbon left superscript 12, left subscript 6 has an atomic number of 6, 6 protons, 6 neutrons, a mass of 12, and a natural abundance percentage of 98.89. Carbon left superscript 13, left subscript 6 has an atomic number of 6, 6 protons, 7 neutrons, a mass of 13.0033, and a natural abundance percentage of 1.11. Carbon left superscript 14, left subscript 6 has an atomic number of 6, 6 protons, 8 neutrons, and a mass of 14.0032. Its natural abundance percentage is not reported. Nitrogen left superscript 14, left subscript 7 has an atomic number of 7, 7 protons, 7 neutrons, a mass of 14.0031, and a natural abundance percentage of 99.63. Nitrogen left superscript 15, left subscript 7 has an atomic number of 7, 7 protons, 8 neutrons, a mass of 15.0001, and a natural abundance percentage of 0.37. Oxygen left superscript 16, left subscript 8 has an atomic number of 8, 8 protons, 8 neutrons, a mass of 15.9949, and a natural abundance percentage of 99.759. Oxygen left superscript 17, left subscript 8 has an atomic number of 8, 8 protons, 9 neutrons, a mass of 16.9991, and a natural abundance percentage of 0.037. Oxygen left superscript 18, left subscript 8 has an atomic number of 8, 8 protons, 10 neutrons, a mass of 17.9992, and a natural abundance percentage of 0.204. Fluorine left superscript 19, left subscript 9 has an atomic number of 9, 9 protons, 10 neutrons, a mass of 18.9984, and a natural abundance percentage of 100. Neon left superscript 20, left subscript 10 has an atomic number of 10, 10 protons, 10 neutrons, a mass of 19.9924, and a natural abundance percentage of 90.92. Neon left superscript 21, left subscript 10 has an atomic number of 10, 10 protons, 11 neutrons, a mass of 20.994, and a natural abundance percentage of 0.257. Neon left superscript 22, left subscript 10 has an atomic number of 10, 10 protons, 12 neutrons, a mass of 21.9914, and a natural abundance percentage of 8.82.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-117",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c7",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-121",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-125",
+                  "attributes": {
+                    "align": "left",
+                    "morerows": "2"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-126",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-127",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-128",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-129",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-130",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-131",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-132",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-133",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-134",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-135",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-136",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-137",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-138",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-139",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-140",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-141",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-142",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-143",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-144",
+                  "attributes": {
+                    "align": "center",
+                    "morerows": "1"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-145",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-146",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-147",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-148",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-149",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-150",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-151",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-152",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-153",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-154",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-155",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-156",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-157",
+                  "attributes": {
+                    "align": "center",
+                    "morerows": "1"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-158",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-159",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-160",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-161",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-162",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-163",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-164",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-165",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-166",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-167",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-168",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-169",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-170",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-171",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-172",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-173",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-174",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-175",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-176",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-177",
+                  "attributes": {
+                    "align": "left",
+                    "morerows": "1"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-178",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-179",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-180",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-181",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-182",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-183",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-184",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-185",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-186",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-187",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-188",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-189",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-190",
+                  "attributes": {
+                    "align": "left",
+                    "morerows": "2"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-191",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-192",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-193",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-194",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-195",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-196",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-197",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-198",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-199",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-200",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-201",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-202",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-203",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-204",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-205",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-206",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-207",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-208",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-209",
+                  "attributes": {
+                    "align": "center",
+                    "morerows": "1"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-210",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-211",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-212",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-213",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-214",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-215",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-216",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-217",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-218",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-219",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-220",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-221",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-222",
+                  "attributes": {
+                    "align": "center",
+                    "morerows": "2"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-223",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-224",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-225",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-226",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-227",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-228",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-229",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-230",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-231",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-232",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-233",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-234",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-235",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-236",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-237",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-238",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-239",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-240",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-241",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-242",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-243",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-244",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-245",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-246",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-247",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-248",
+                  "attributes": {
+                    "align": "left",
+                    "morerows": "2"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-249",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-250",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-251",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-252",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-253",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-254",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-255",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-256",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-257",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-258",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-259",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-260",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-261",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-262",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-263",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-264",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-265",
+                  "attributes": {
+                    "align": "center"
+                  }
+                },
+                {
+                  "segmentId": "m68692:entry:auto-266",
+                  "attributes": {
+                    "align": "center"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idm166072560",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm243168608",
+              "segmentId": "m68692:para:fs-idm243168608"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm54315440",
+      "class": null,
+      "title": {
+        "segmentId": "m68692:title:fs-idm54315440-title",
+        "text": "Atomic Mass"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp64485984",
+          "segmentId": "m68692:para:fs-idp64485984"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp249209552",
+          "segmentId": "m68692:para:fs-idp249209552"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm56955264",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp53715664",
+          "segmentId": "m68692:para:fs-idp53715664"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp64426960",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm114336768",
+          "segmentId": "m68692:para:fs-idm114336768"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm139194256",
+          "title": {
+            "segmentId": "m68692:example-title:fs-idm139194256-title",
+            "text": "Calculation of Average Atomic Mass"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm202281808",
+              "segmentId": "m68692:para:fs-idm202281808"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm194071296",
+              "segmentId": "m68692:para:fs-idm194071296",
+              "title": {
+                "segmentId": "m68692:para-title:fs-idm194071296-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm3186256",
+              "segmentId": "m68692:para:fs-idm3186256"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm187119072",
+              "segmentId": "m68692:para:fs-idm187119072",
+              "title": {
+                "segmentId": "m68692:para-title:fs-idm187119072-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm169485088",
+              "segmentId": "m68692:para:fs-idm169485088"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm73306928"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm155890528",
+              "title": {
+                "segmentId": "m68692:note-title:fs-idm155890528-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm169485088",
+                  "segmentId": "m68692:para:fs-idm169485088"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp15941280",
+          "segmentId": "m68692:para:fs-idp15941280"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm233489360",
+          "title": {
+            "segmentId": "m68692:example-title:fs-idm233489360-title",
+            "text": "Calculation of Percent Abundance"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm170542656",
+              "segmentId": "m68692:para:fs-idm170542656"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm111544320",
+              "segmentId": "m68692:para:fs-idm111544320",
+              "title": {
+                "segmentId": "m68692:para-title:fs-idm111544320-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp35897648",
+              "segmentId": "m68692:para:fs-idp35897648"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm78207296",
+              "segmentId": "m68692:para:fs-idm78207296"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm174110736",
+              "segmentId": "m68692:para:fs-idm174110736"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm84424288",
+              "segmentId": "m68692:para:fs-idm84424288"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm140620960",
+              "segmentId": "m68692:para:fs-idm140620960",
+              "title": {
+                "segmentId": "m68692:para-title:fs-idm140620960-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm194575792",
+              "segmentId": "m68692:para:fs-idm194575792"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp1748832"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm50612880"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm192789184",
+              "title": {
+                "segmentId": "m68692:note-title:fs-idm192789184-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm194575792",
+                  "segmentId": "m68692:para:fs-idm194575792"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idm186474352",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp99251296",
+              "segmentId": "m68692:para:fs-idp99251296"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "eip-837",
+          "segmentId": "m68692:para:eip-837"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp64386064",
+          "segmentId": "m68692:para:fs-idp64386064"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_02_03_MassSpec",
+          "caption": {
+            "segmentId": "m68692:caption:CNX_Chem_02_03_MassSpec-caption"
+          },
+          "media": {
+            "id": "fs-idp221044352",
+            "alt": "The left diagram shows how a mass spectrometer works, which is primarily a large tube that bends downward at its midpoint. The sample enters on the left side of the tube. A heater heats the sample, causing it to vaporize. The sample is also hit with a beam of electrons as it is being vaporized. Charged particles from the sample, called ions, are then accelerated and pass between two magnets. The magnetic field deflects the lightest ions most. The deflection of the ions is measured by a detector located on the right side of the tube. The graph to the right of the spectrometer shows a mass spectrum of zirconium. The relative abundance, as a percentage from 0 to 100, is graphed on the y axis, and the mass to charge ratio is graphed on the x axis. The sample contains five different isomers of zirconium. Z R 90, which has a mass to charge ratio of 90, is the most abundant isotope at about 51 percent relative abundance. Z R 91 has a mass to charge ratio of 91 and a relative abundance of about 11 percent. Z R 92 has a mass to charge ratio of 92 and a relative abundance of about 18 percent. Z R 94 has a mass to charge ratio of 94 and a relative abundance of about 18 percent. Z R 96, which has a mass to charge ratio of 96, is the least abundant zirconium isotope with a relative abundance of about 2 percent.",
+            "src": "../../media/CNX_Chem_02_03_MassSpec.jpg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm122264832",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm136290400",
+              "segmentId": "m68692:para:fs-idm136290400"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm131201632",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68692:title:fs-idm131201632-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm148166800",
+          "segmentId": "m68692:para:fs-idm148166800"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp228494288",
+          "segmentId": "m68692:para:fs-idp228494288"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm194069072",
+          "segmentId": "m68692:para:fs-idm194069072"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm7298256",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68692:title:fs-idm7298256-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68692:entry:auto-307",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm53754640",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68692:title:fs-idm53754640-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp67066944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp164438208",
+                "segmentId": "m68692:problem:fs-idp164438208"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm174365776",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm122332368",
+                "segmentId": "m68692:problem:fs-idm122332368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp77154592",
+                "segmentId": "m68692:problem:fs-idp77154592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm125607744",
+                "segmentId": "m68692:problem:fs-idm125607744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm91510448",
+                "segmentId": "m68692:problem:fs-idm91510448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm78032064",
+                "segmentId": "m68692:problem:fs-idm78032064"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm90412768",
+                "segmentId": "m68692:solution:fs-idm90412768"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm2862432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm201509280",
+                "segmentId": "m68692:problem:fs-idm201509280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm110862992",
+                "segmentId": "m68692:problem:fs-idm110862992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm67050480",
+                "segmentId": "m68692:problem:fs-idm67050480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp31625072",
+                "segmentId": "m68692:problem:fs-idp31625072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm166294032",
+                "segmentId": "m68692:problem:fs-idm166294032"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm164758784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp112094752",
+                "segmentId": "m68692:problem:fs-idp112094752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm134679936",
+                "segmentId": "m68692:problem:fs-idm134679936"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm125643536",
+                "segmentId": "m68692:problem:fs-idm125643536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm8547328",
+                "segmentId": "m68692:problem:fs-idm8547328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp210506208",
+                "segmentId": "m68692:problem:fs-idp210506208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp22922768",
+                "segmentId": "m68692:problem:fs-idp22922768"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm124722320",
+                "segmentId": "m68692:solution:fs-idm124722320"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp1819392",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm65098400",
+                "segmentId": "m68692:problem:fs-idm65098400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm148181728",
+                "segmentId": "m68692:problem:fs-idm148181728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm95106464",
+                "segmentId": "m68692:problem:fs-idm95106464"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm103886288",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm7673184",
+                "segmentId": "m68692:problem:fs-idm7673184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm56609680",
+                "segmentId": "m68692:problem:fs-idm56609680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm31990784",
+                "segmentId": "m68692:problem:fs-idm31990784"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm134038192",
+                "segmentId": "m68692:solution:fs-idm134038192"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm75926528",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm56944480",
+                "segmentId": "m68692:problem:fs-idm56944480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp210466544",
+                "segmentId": "m68692:problem:fs-idp210466544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm3911136",
+                "segmentId": "m68692:problem:fs-idm3911136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm70109600",
+                "segmentId": "m68692:problem:fs-idm70109600"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp27137152",
+                "segmentId": "m68692:problem:fs-idp27137152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm32839584",
+                "segmentId": "m68692:problem:fs-idm32839584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm187202528",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm36757440",
+                "segmentId": "m68692:problem:fs-idm36757440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp210102512",
+                "segmentId": "m68692:problem:fs-idp210102512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp23141296",
+                "segmentId": "m68692:problem:fs-idp23141296"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm58517792",
+                "segmentId": "m68692:solution:fs-idm58517792"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp18872976",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm114349376",
+                "segmentId": "m68692:problem:fs-idm114349376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm164756320",
+                "segmentId": "m68692:problem:fs-idm164756320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm91182992",
+                "segmentId": "m68692:problem:fs-idm91182992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm142860272",
+                "segmentId": "m68692:problem:fs-idm142860272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp14140336",
+                "segmentId": "m68692:problem:fs-idp14140336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm107022720",
+                "segmentId": "m68692:problem:fs-idm107022720"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm80933584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm53375216",
+                "segmentId": "m68692:problem:fs-idm53375216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm84436384",
+                "segmentId": "m68692:problem:fs-idm84436384"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm141443632",
+                "segmentId": "m68692:problem:fs-idm141443632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm195681872",
+                "segmentId": "m68692:problem:fs-idm195681872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm82481216",
+                "segmentId": "m68692:problem:fs-idm82481216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm159280288",
+                "segmentId": "m68692:problem:fs-idm159280288"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm60087264",
+                "segmentId": "m68692:solution:fs-idm60087264"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm28786800",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm93231328",
+                "segmentId": "m68692:problem:fs-idm93231328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm84386240",
+                "segmentId": "m68692:problem:fs-idm84386240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm170152672",
+                "segmentId": "m68692:problem:fs-idm170152672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm198099104",
+                "segmentId": "m68692:problem:fs-idm198099104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp8871856",
+                "segmentId": "m68692:problem:fs-idp8871856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm169266752",
+                "segmentId": "m68692:problem:fs-idm169266752"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm112612912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm195304464",
+                "segmentId": "m68692:problem:fs-idm195304464"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp79309808",
+                "segmentId": "m68692:solution:fs-idp79309808"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm201300912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm150169904",
+                "segmentId": "m68692:problem:fs-idm150169904"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp165798448",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm58355904",
+                "segmentId": "m68692:problem:fs-idm58355904"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm9833872",
+                "segmentId": "m68692:solution:fs-idm9833872"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp15704448",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm130368688",
+                "segmentId": "m68692:problem:fs-idm130368688"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm95116240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm197867280",
+                "segmentId": "m68692:problem:fs-idm197867280"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm4806656",
+                "segmentId": "m68692:solution:fs-idm4806656"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm4055376",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm65589760",
+                "segmentId": "m68692:problem:fs-idm65589760"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68692:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68692:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68692:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68692:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm68508272",
+        "termSegmentId": "m68692:glossary-term:fs-idm68508272-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idm68508272-def"
+      },
+      {
+        "id": "fs-idp230158528",
+        "termSegmentId": "m68692:glossary-term:fs-idp230158528-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idp230158528-def"
+      },
+      {
+        "id": "fs-idm20897872",
+        "termSegmentId": "m68692:glossary-term:fs-idm20897872-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idm20897872-def"
+      },
+      {
+        "id": "fs-idp42201168",
+        "termSegmentId": "m68692:glossary-term:fs-idp42201168-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idp42201168-def"
+      },
+      {
+        "id": "fs-idp1800912",
+        "termSegmentId": "m68692:glossary-term:fs-idp1800912-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idp1800912-def"
+      },
+      {
+        "id": "fs-idm109251440",
+        "termSegmentId": "m68692:glossary-term:fs-idm109251440-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idm109251440-def"
+      },
+      {
+        "id": "fs-idm103888640",
+        "termSegmentId": "m68692:glossary-term:fs-idm103888640-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idm103888640-def"
+      },
+      {
+        "id": "fs-idp226765840",
+        "termSegmentId": "m68692:glossary-term:fs-idp226765840-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idp226765840-def"
+      },
+      {
+        "id": "fs-idp277782656",
+        "termSegmentId": "m68692:glossary-term:fs-idp277782656-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idp277782656-def"
+      },
+      {
+        "id": "fs-idp22869776",
+        "termSegmentId": "m68692:glossary-term:fs-idp22869776-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idp22869776-def"
+      },
+      {
+        "id": "fs-idm284976",
+        "termSegmentId": "m68692:glossary-term:fs-idm284976-term",
+        "definitionSegmentId": "m68692:glossary-def:fs-idm284976-def"
+      }
+    ]
+  },
+  "sectionOrder": 3
+}

@@ -1,0 +1,665 @@
+{
+  "moduleId": "m68693",
+  "title": {
+    "segmentId": "m68693:title:auto-1",
+    "text": "Chemical Formulas"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "9d7d0989-f579-4047-9023-8048341af5de",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Symbolize the composition of molecules using molecular formulas and empirical formulas",
+        "Represent the bonding arrangement of atoms within molecules using structural formulas"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm194401296",
+      "segmentId": "m68693:para:fs-idm194401296"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp69721696",
+      "segmentId": "m68693:para:fs-idp69721696"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_04_MethaneRep",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68693:caption:CNX_Chem_02_04_MethaneRep-caption"
+      },
+      "media": {
+        "id": "fs-idp49546352",
+        "alt": "Figure A shows C H subscript 4. Figure B shows a carbon atom that is bonded to four hydrogen atoms at right angles: one above, one to the left, one to the right, and one below. Figure C shows a 3-D, ball-and-stick model of the carbon atom bonded to four hydrogen atoms. Figure D shows a space-filling model of a carbon atom with hydrogen atoms partially embedded into the surface of the carbon atom.",
+        "src": "../../media/CNX_Chem_02_04_MethaneRep.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm155780176",
+      "segmentId": "m68693:para:fs-idm155780176"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_04_Sulfur",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68693:caption:CNX_Chem_02_04_Sulfur-caption"
+      },
+      "media": {
+        "id": "fs-idm70420016",
+        "alt": "Figure A shows eight sulfur atoms, symbolized with the letter S, that are bonded to each other to form an octagon. Figure B shows a 3-D, ball-and-stick model of the arrangement of the sulfur atoms. The shape is clearly not octagonal as it is represented in the structural formula. Figure C is a space-filling model that shows each sulfur atom is partially embedded into the sulfur atom it bonds with.",
+        "src": "../../media/CNX_Chem_02_04_Sulfur.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm43786912",
+      "segmentId": "m68693:para:fs-idm43786912"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_04_Hydrogen",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68693:caption:CNX_Chem_02_04_Hydrogen-caption"
+      },
+      "media": {
+        "id": "fs-idm66435152",
+        "alt": "This figure shows four diagrams. The diagram for H shows a single, white sphere and is labeled one H atom. The diagram for 2 H shows two white spheres that are not bonded together. It is labeled 2 H atoms. The diagram for H subscript 2 shows two white spheres bonded together. It is labeled one H subscript 2 molecule. The diagram for 2 H subscript 2 shows two sets of bonded, white spheres. It is labeled 2 H subscript 2 molecules.",
+        "src": "../../media/CNX_Chem_02_04_Hydrogen.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp204410336",
+      "segmentId": "m68693:para:fs-idp204410336"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_04_TiO2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68693:caption:CNX_Chem_02_04_TiO2-caption"
+      },
+      "media": {
+        "id": "fs-idp59733696",
+        "alt": "Figure A shows a photo of a person applying suntan lotion to his or her lower leg. Figure B shows a 3-D ball-and-stick model of the molecule titanium dioxide, which involves a complicated interlocking of many titanium and oxygen atoms. The titanium atoms in the molecule are shown as silver spheres and the oxygen atoms are shown as red spheres. There are twice as many oxygen atoms as titanium atoms in the molecule.",
+        "src": "../../media/CNX_Chem_02_04_TiO2.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm68758768",
+      "segmentId": "m68693:para:fs-idm68758768"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_04_Benzene",
+      "caption": {
+        "segmentId": "m68693:caption:CNX_Chem_02_04_Benzene-caption"
+      },
+      "media": {
+        "id": "fs-idp26487712",
+        "alt": "Figure A shows that benzene is composed of six carbons shaped like a hexagon. Every other bond between the carbon atoms is a double bond. Each carbon also has a single bonded hydrogen atom. Figure B shows a 3-D, ball-and-stick drawing of benzene. The six carbon atoms are black spheres while the six hydrogen atoms are smaller, white spheres. Figure C is a space-filling model of benzene which shows that most of the interior space is occupied by the carbon atoms. The hydrogen atoms are embedded in the outside surface of the carbon atoms. Figure d shows a small vial filled with benzene which appears to be clear.",
+        "src": "../../media/CNX_Chem_02_04_Benzene.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm49637696",
+      "segmentId": "m68693:para:fs-idm49637696"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_04_AceticAcid",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68693:caption:CNX_Chem_02_04_AceticAcid-caption"
+      },
+      "media": {
+        "id": "fs-idm44626048",
+        "alt": "Figure A shows a jug of distilled, white vinegar. Figure B shows a structural formula for acetic acid which contains two carbon atoms connected by a single bond. The left carbon atom forms single bonds with three hydrogen atoms. The right carbon atom forms a double bond with an oxygen atom. The right carbon atom also forms a single bond with an oxygen atom. This oxygen forms a single bond with a hydrogen atom. Figure C shows a 3-D ball-and-stick model of acetic acid.",
+        "src": "../../media/CNX_Chem_02_04_AceticAcid.jpg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idm100343920",
+      "title": {
+        "segmentId": "m68693:example-title:fs-idm100343920-title",
+        "text": "Empirical and Molecular Formulas"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm102332384",
+          "segmentId": "m68693:para:fs-idm102332384"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm94827440",
+          "segmentId": "m68693:para:fs-idm94827440",
+          "title": {
+            "segmentId": "m68693:para-title:fs-idm94827440-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp51085424",
+          "segmentId": "m68693:para:fs-idp51085424",
+          "title": {
+            "segmentId": "m68693:para-title:fs-idp51085424-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm167471456",
+          "segmentId": "m68693:para:fs-idm167471456"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp84203280",
+          "title": {
+            "segmentId": "m68693:note-title:fs-idp84203280-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm167471456",
+              "segmentId": "m68693:para:fs-idm167471456"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idm22555200",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp109543152",
+          "segmentId": "m68693:para:fs-idp109543152"
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idp33888816",
+      "class": "chemistry chemist-portrait",
+      "title": {
+        "segmentId": "m68693:note-title:fs-idp33888816-title",
+        "text": "Paula Hammond"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp191392048",
+          "segmentId": "m68693:para:fs-idp191392048"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm175319872",
+          "segmentId": "m68693:para:fs-idm175319872"
+        },
+        {
+          "type": "para",
+          "id": "para-00002",
+          "segmentId": "m68693:para:para-00002"
+        },
+        {
+          "type": "para",
+          "id": "para-00003",
+          "segmentId": "m68693:para:para-00003"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_04_PaulaHammond",
+      "caption": {
+        "segmentId": "m68693:caption:CNX_Chem_02_04_PaulaHammond-caption"
+      },
+      "media": {
+        "id": "fs-idm119525728",
+        "alt": "A portrait of Paula Hammond.",
+        "src": "../../media/CNX_Chem_02_04_PaulaHammond.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm101901088",
+      "segmentId": "m68693:para:fs-idm101901088"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp29766960",
+      "segmentId": "m68693:para:fs-idp29766960"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_04_Isomers",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68693:caption:CNX_Chem_02_04_Isomers-caption"
+      },
+      "media": {
+        "id": "fs-idm44447680",
+        "alt": "Figure A shows a structural diagram of acetic acid, C subscript 2 H subscript 4 O subscript 2. Acetic acid contains two carbon atoms connected by a single bond. The left carbon atom forms single bonds with three hydrogen atoms. The carbon on the right forms a double bond with an oxygen atom. The right carbon atom also forms a single bond to an oxygen atom which forms a single bond with a hydrogen atom. Figure B shows a structural diagram of methyl formate, C subscript 2 H subscript 4 O subscript 2. This molecule contains a carbon atom which forms single bonds with three hydrogen atoms, and a single bond with an oxygen atom. The oxygen atom forms a single bond with another carbon atom which forms a double bond with another oxygen atom and a single bond with a hydrogen atom.",
+        "src": "../../media/CNX_Chem_02_04_Isomers.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm177313504",
+      "segmentId": "m68693:para:fs-idm177313504"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_04_Isomers2",
+      "caption": {
+        "segmentId": "m68693:caption:CNX_Chem_02_04_Isomers2-caption"
+      },
+      "media": {
+        "id": "fs-idp204316880",
+        "alt": "The top left portion of this 2 row, 4 column figure shows a structural diagram of positive carvone, C subscript 10 H subscript 14 O. This molecule has a carbon atom which forms a double bond with a C H subscript 2 group and a C H subscript 3 group. The carbon atom also forms a single bond with another carbon atom which is part of a ring. This carbon atom, being part of the ring, forms single bonds with a hydrogen atom, a C H subscript 2 group, and a C H subscript 2 group. The first C H subscript two group forms a single bond with C H which forms a double bond with a carbon atom. This carbon atom forms a single bond with a C H subscript 3 group. The carbon atom forming part of the ring forms a single bond with a carbon atom which forms a double bond with an oxygen atom and a single bond with a C H subscript 2 group to complete the ring. Below the structural diagram of carvone is a photo of caraway seeds. Column 2 contains identical ball and stick representations of the structural diagram in the top left position. The top right portions of these images each contains the letter “S” and there is an arrow pointing downward from the top image to the bottom image. Columns 3 and 4 are representations of negative carvone. The top row in column three depicts a mirrored image of the ball and stick structure to its left, reflected across the y axis. There is a downward pointing arrow to the image below, which is the same structure rotated counter clockwise 180 degrees. Both images in column 3 have an “R” in the top right corner. The image in the first row of column 4 is the same as the lewis structure in the first row of column 1, reflected across the y axis. Below this negative carvone structural diagram is a photo of spearmint leaves.",
+        "src": "../../media/CNX_Chem_02_04_Isomers2.jpg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idp2568704",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm89120384",
+          "segmentId": "m68693:para:fs-idm89120384"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm97603328",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68693:title:fs-idm97603328-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm100378720",
+          "segmentId": "m68693:para:fs-idm100378720"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm78153008",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68693:title:fs-idm78153008-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm188711792",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm228245568",
+                "segmentId": "m68693:problem:fs-idm228245568"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm177981136",
+                "segmentId": "m68693:solution:fs-idm177981136"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm171756048",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp37277504",
+                "segmentId": "m68693:problem:fs-idp37277504"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm157365408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm93406224",
+                "segmentId": "m68693:problem:fs-idm93406224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm177730944",
+                "segmentId": "m68693:problem:fs-idm177730944"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm117784944",
+                "segmentId": "m68693:solution:fs-idm117784944"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp231487264",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp238034960",
+                "segmentId": "m68693:problem:fs-idp238034960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm171785904",
+                "segmentId": "m68693:problem:fs-idm171785904"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm64843712",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp221135936",
+                "segmentId": "m68693:problem:fs-idp221135936"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp205182832",
+                "segmentId": "m68693:problem:fs-idp205182832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm81581680",
+                "segmentId": "m68693:problem:fs-idm81581680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp37339328",
+                "segmentId": "m68693:problem:fs-idp37339328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp60210848",
+                "segmentId": "m68693:problem:fs-idp60210848"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm158214256",
+                "segmentId": "m68693:problem:fs-idm158214256"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm44452624",
+                "segmentId": "m68693:solution:fs-idm44452624"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp33519568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm54648208",
+                "segmentId": "m68693:problem:fs-idm54648208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm144684416",
+                "segmentId": "m68693:problem:fs-idm144684416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm71851632",
+                "segmentId": "m68693:problem:fs-idm71851632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp17672144",
+                "segmentId": "m68693:problem:fs-idp17672144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm87991840",
+                "segmentId": "m68693:problem:fs-idm87991840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm156953056",
+                "segmentId": "m68693:problem:fs-idm156953056"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp2601824",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm43813696",
+                "segmentId": "m68693:problem:fs-idm43813696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm121078656",
+                "segmentId": "m68693:problem:fs-idm121078656"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm28441984",
+                "segmentId": "m68693:solution:fs-idm28441984"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm75792016",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm178201744",
+                "segmentId": "m68693:problem:fs-idm178201744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp84141376",
+                "segmentId": "m68693:problem:fs-idp84141376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm37969008",
+                "segmentId": "m68693:problem:fs-idm37969008"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm57514192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm157941520",
+                "segmentId": "m68693:problem:fs-idm157941520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm180543168",
+                "segmentId": "m68693:problem:fs-idm180543168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp4741936",
+                "segmentId": "m68693:problem:fs-idp4741936"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp79991568",
+                "segmentId": "m68693:problem:fs-idp79991568"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp6356960",
+                "segmentId": "m68693:solution:fs-idp6356960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm109666752",
+                "segmentId": "m68693:solution:fs-idm109666752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm187478032",
+                "segmentId": "m68693:solution:fs-idm187478032"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm80750976",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp45758256",
+                "segmentId": "m68693:problem:fs-idp45758256"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm81559456",
+                "segmentId": "m68693:problem:fs-idm81559456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm192066352",
+                "segmentId": "m68693:problem:fs-idm192066352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm112148224",
+                "segmentId": "m68693:problem:fs-idm112148224"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68693:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68693:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68693:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm164678176",
+        "termSegmentId": "m68693:glossary-term:fs-idm164678176-term",
+        "definitionSegmentId": "m68693:glossary-def:fs-idm164678176-def"
+      },
+      {
+        "id": "fs-idp55104",
+        "termSegmentId": "m68693:glossary-term:fs-idp55104-term",
+        "definitionSegmentId": "m68693:glossary-def:fs-idp55104-def"
+      },
+      {
+        "id": "fs-idm86848640",
+        "termSegmentId": "m68693:glossary-term:fs-idm86848640-term",
+        "definitionSegmentId": "m68693:glossary-def:fs-idm86848640-def"
+      },
+      {
+        "id": "fs-idm54570400",
+        "termSegmentId": "m68693:glossary-term:fs-idm54570400-term",
+        "definitionSegmentId": "m68693:glossary-def:fs-idm54570400-def"
+      },
+      {
+        "id": "fs-idm163422864",
+        "termSegmentId": "m68693:glossary-term:fs-idm163422864-term",
+        "definitionSegmentId": "m68693:glossary-def:fs-idm163422864-def"
+      },
+      {
+        "id": "fs-idp1084128",
+        "termSegmentId": "m68693:glossary-term:fs-idp1084128-term",
+        "definitionSegmentId": "m68693:glossary-def:fs-idp1084128-def"
+      }
+    ]
+  },
+  "sectionOrder": 4
+}

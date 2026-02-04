@@ -1,0 +1,75 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mi>%</m:mi><m:msub><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mn>1</m:mn></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:mi>%</m:mi><m:msub><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{%{{\\text{mass}}}_{1}\\, \\times \\, {{\\text{mass}}}_{1}=%{{\\text{mass}}}_{2}\\, \\times \\, {{\\text{mass}}}_{2}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>Percent by mass</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass of solute</m:mtext></m:mrow><m:mrow><m:mtext>mass of solution</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>100</m:mn></m:mrow></m:math>",
+    "latex": "{\\text{Percent by mass}=\\, \\frac{{\\text{mass of solute}}}{{\\text{mass of solution}}}\\, \\times \\, 100}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mtext>ppm</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass solute</m:mtext></m:mrow><m:mrow><m:mtext>mass solution</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>6</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>ppm</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{ppm}=\\, \\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\, \\times \\, {{10}}^{6}\\, \\text{ppm}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mtext>ppb</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass solute</m:mtext></m:mrow><m:mrow><m:mtext>mass solution</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>9</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>ppb</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{ppb}=\\, \\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\, \\times \\, {{10}}^{9}\\, \\text{ppb}}"
+  },
+  "fs-idm5911152": {
+    "mathml": "<m:math><m:mrow><m:mtext>mass percentage</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass of component</m:mtext></m:mrow><m:mrow><m:mtext>mass of solution</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math>",
+    "latex": "{\\text{mass percentage}=\\, \\frac{{\\text{mass of component}}}{{\\text{mass of solution}}}\\, \\times \\, 100%}",
+    "isBlock": true
+  },
+  "fs-idm17789648": {
+    "mathml": "<m:math><m:mrow><m:mi>%</m:mi><m:mspace width=\"0.2em\"/><m:mtext>glucose</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>3.75</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mg glucose</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mn>1000</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mg</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mrow><m:mn>5.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g spinal fluid</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.075</m:mn><m:mi>%</m:mi></m:mrow></m:math>",
+    "latex": "{%\\, \\text{glucose}=\\, {3.75\\, \\text{mg glucose}\\, \\times \\, {1\\, \\text{g}}{1000\\, \\text{mg}}\\,}{5.0\\, \\text{g spinal fluid}}\\, =0.075%}",
+    "isBlock": true
+  },
+  "fs-idm17430336": {
+    "mathml": "<m:math><m:mrow><m:mtext>500 mL solution</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>1.19</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g solution</m:mtext></m:mrow><m:mrow><m:mtext>mL solution</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>37.2</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g HCl</m:mtext></m:mrow><m:mrow><m:mn>100</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g solution</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width=\"0.2em\"/></m:mrow><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>221</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g HCl</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{500 mL solution}\\, {({\\frac{{1.19\\, \\text{g solution}}}{{\\text{mL solution}}}})}\\, {({\\frac{{37.2\\, \\text{g HCl}}}{{100\\, \\text{g solution}}}})\\,}=\\, 221\\, \\text{g HCl}}",
+    "isBlock": true
+  },
+  "fs-idm2717488": {
+    "mathml": "<m:math><m:mrow><m:mtext>volume percentage</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>volume solute</m:mtext></m:mrow><m:mrow><m:mtext>volume solution</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>100</m:mn><m:mi>%</m:mi></m:mrow></m:math>",
+    "latex": "{\\text{volume percentage}=\\, \\frac{{\\text{volume solute}}}{{\\text{volume solution}}}\\, \\times \\, 100%}",
+    "isBlock": true
+  },
+  "fs-idm3502064": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>355</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mL solution</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>70</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mL isopropyl alcohol</m:mtext></m:mrow><m:mrow><m:mn>100</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mL solution</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>0.785</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g isopropyl alcohol</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mL isopropyl alcohol</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width=\"0.2em\"/></m:mrow><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mn>195</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g isopropyl alchol</m:mtext></m:mrow></m:math>",
+    "latex": "{{({355\\, \\text{mL solution}})}\\, {({\\frac{{70\\, \\text{mL isopropyl alcohol}}}{{100\\, \\text{mL solution}}}})}\\, {({\\frac{{0.785\\, \\text{g isopropyl alcohol}}}{{1\\, \\text{mL isopropyl alcohol}}}})\\,}=\\, 195\\, \\text{g isopropyl alchol}}",
+    "isBlock": true
+  },
+  "fs-idp17696176": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mtext>ppm</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass solute</m:mtext></m:mrow><m:mrow><m:mtext>mass solution</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>6</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>ppm</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>ppb</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass solute</m:mtext></m:mrow><m:mrow><m:mtext>mass solution</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>9</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>ppb</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} \\\\ \\text{ppm}=\\, \\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\, \\times \\, {10}^{6}\\, \\text{ppm} \\\\ \\text{ppb}=\\, \\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\, \\times \\, {10}^{9}\\, \\text{ppb} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idm1779776": {
+    "mathml": "<m:math><m:mrow><m:mn>15</m:mn><m:mspace width=\"0.2em\"/><m:mtext>ppb</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mtext>ppm</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>ppb</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.015</m:mn><m:mspace width=\"0.2em\"/><m:mtext>ppm</m:mtext></m:mrow></m:math>",
+    "latex": "{15\\, \\text{ppb}\\, \\times \\, \\frac{{1\\, \\text{ppm}}}{{{{10}}^{3}\\, \\text{ppb}}}\\, =0.015\\, \\text{ppm}}",
+    "isBlock": true
+  },
+  "fs-idm5250896": {
+    "mathml": "<m:math><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mtext>ppb</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass solute</m:mtext></m:mrow><m:mrow><m:mtext>mass solution</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>9</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>ppb</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mtext>mass solute</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>ppb</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>mass solution</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>9</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>ppb</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mtd></m:mtr><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mtext>mass solute</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>15</m:mn><m:mspace width=\"0.2em\"/><m:mtext>ppb</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>300</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mL</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1.00</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow><m:mrow><m:mtext>mL</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/></m:mrow><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>9</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>ppb</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>4.5</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} \\\\ \\text{ppb}=\\, \\frac{{\\text{mass solute}}}{{\\text{mass solution}}}\\, \\times \\, {10}^{9}\\, \\text{ppb} \\\\ \\\\ \\text{mass solute}=\\, \\frac{{\\text{ppb}\\, \\times \\, \\text{mass solution}}}{{{{10}}^{9}\\, \\text{ppb}}}\\, \\\\ \\\\ \\text{mass solute}=\\, {15\\, \\text{ppb}\\, \\times \\, 300\\, \\text{mL}\\, \\times \\, {1.00\\, \\text{g}}{\\text{mL}}\\,}{{{10}}^{9}\\, \\text{ppb}}\\, =4.5\\, \\times \\, {10}^{{−6}}\\, \\text{g} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idm4570368": {
+    "mathml": "<m:math><m:mrow><m:mn>4.5</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mtext>μg</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>4.5</m:mn><m:mspace width=\"0.2em\"/><m:mtext>μg</m:mtext></m:mrow></m:math>",
+    "latex": "{4.5\\, \\times \\, {{10}}^{{−6}}\\, \\text{g}\\, \\times \\, \\frac{{1\\, \\text{μg}}}{{{{10}}^{{−6}}\\, \\text{g}}}\\, =4.5\\, \\text{μg}}",
+    "isBlock": true
+  }
+}

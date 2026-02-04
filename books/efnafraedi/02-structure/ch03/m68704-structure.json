@@ -1,0 +1,764 @@
+{
+  "moduleId": "m68704",
+  "title": {
+    "segmentId": "m68704:title:auto-1",
+    "text": "Other Units for Solution Concentrations"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "4fee0e14-2169-4e3b-bb15-def8b056b1a0",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Define the concentration units of mass percentage, volume percentage, mass-volume percentage, parts-per-million (ppm), and parts-per-billion (ppb)",
+        "Perform computations relating a solution’s concentration and its components’ volumes and/or masses using these units"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm32304496",
+      "segmentId": "m68704:para:fs-idm32304496"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm8277808",
+      "class": null,
+      "title": {
+        "segmentId": "m68704:title:fs-idm8277808-title",
+        "text": "Mass Percentage"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm26991728",
+          "segmentId": "m68704:para:fs-idm26991728"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm5911152",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm3484528",
+          "segmentId": "m68704:para:fs-idm3484528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm21823696",
+          "segmentId": "m68704:para:fs-idm21823696"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_05_bleach",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68704:caption:CNX_Chem_03_05_bleach-caption"
+          },
+          "media": {
+            "id": "fs-idm21370256",
+            "alt": "The sides of two cylindrical containers are shown. Each container’s label is partially visible. The left container’s label reads “Bleach.” The right label contains more information about the product including the phrase, “Contains: Sodium hypochlorite 7.4 %.”",
+            "src": "../../media/CNX_Chem_03_05_bleach.jpg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idm23566960",
+          "title": {
+            "segmentId": "m68704:example-title:fs-idm23566960-title",
+            "text": "Calculation of Percent by Mass"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm2453280",
+              "segmentId": "m68704:para:fs-idm2453280"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp19396640",
+              "segmentId": "m68704:para:fs-idp19396640",
+              "title": {
+                "segmentId": "m68704:para-title:fs-idp19396640-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm36099936",
+              "segmentId": "m68704:para:fs-idm36099936"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm6973776",
+              "segmentId": "m68704:para:fs-idm6973776"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm64146192",
+              "segmentId": "m68704:para:fs-idm64146192",
+              "title": {
+                "segmentId": "m68704:para-title:fs-idm64146192-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm9307808",
+              "segmentId": "m68704:para:fs-idm9307808"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm17789648"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp47230144",
+              "title": {
+                "segmentId": "m68704:note-title:fs-idp47230144-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm9307808",
+                  "segmentId": "m68704:para:fs-idm9307808"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm27131760",
+          "title": {
+            "segmentId": "m68704:example-title:fs-idm27131760-title",
+            "text": "Calculations using Mass Percentage"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm32647264",
+              "segmentId": "m68704:para:fs-idm32647264"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm37499888",
+              "segmentId": "m68704:para:fs-idm37499888",
+              "title": {
+                "segmentId": "m68704:para-title:fs-idm37499888-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm3493296",
+              "segmentId": "m68704:para:fs-idm3493296"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm2814416",
+              "segmentId": "m68704:para:fs-idm2814416"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp18799968",
+              "segmentId": "m68704:para:fs-idp18799968",
+              "title": {
+                "segmentId": "m68704:para-title:fs-idp18799968-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm33390192",
+              "segmentId": "m68704:para:fs-idm33390192"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm17430336"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm31069568",
+              "title": {
+                "segmentId": "m68704:note-title:fs-idm31069568-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm33390192",
+                  "segmentId": "m68704:para:fs-idm33390192"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm25064544",
+      "class": null,
+      "title": {
+        "segmentId": "m68704:title:fs-idm25064544-title",
+        "text": "Volume Percentage"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp14105408",
+          "segmentId": "m68704:para:fs-idp14105408"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm2717488",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm1441136",
+          "title": {
+            "segmentId": "m68704:example-title:fs-idm1441136-title",
+            "text": "Calculations using Volume Percentage"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm5072752",
+              "segmentId": "m68704:para:fs-idm5072752"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm38697728",
+              "segmentId": "m68704:para:fs-idm38697728",
+              "title": {
+                "segmentId": "m68704:para-title:fs-idm38697728-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp44207936",
+              "segmentId": "m68704:para:fs-idp44207936",
+              "title": {
+                "segmentId": "m68704:para-title:fs-idp44207936-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm15159936",
+              "segmentId": "m68704:para:fs-idm15159936"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm3502064"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp41917088",
+              "title": {
+                "segmentId": "m68704:note-title:fs-idp41917088-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm15159936",
+                  "segmentId": "m68704:para:fs-idm15159936"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm6093792",
+      "class": null,
+      "title": {
+        "segmentId": "m68704:title:fs-idm6093792-title",
+        "text": "Mass-Volume Percentage"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm16796176",
+          "segmentId": "m68704:para:fs-idm16796176"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_05_saline",
+          "caption": {
+            "segmentId": "m68704:caption:CNX_Chem_03_05_saline-caption"
+          },
+          "media": {
+            "id": "fs-idp12420736",
+            "alt": "Two pictures are shown labeled a and b. Picture a depicts a clear, colorless solution in a plastic bag being held in a person’s hand. Picture b shows a person’s hand holding a detection meter with a digital readout screen while another hand holds someone’s finger up to the end of the meter. The meter is pressed to the drop of blood that is at the end of the person’s finger.",
+            "src": "../../media/CNX_Chem_03_05_saline.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm4329744",
+      "class": null,
+      "title": {
+        "segmentId": "m68704:title:fs-idm4329744-title",
+        "text": "Parts per Million and Parts per Billion "
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm39037584",
+          "segmentId": "m68704:para:fs-idm39037584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm18786352",
+          "segmentId": "m68704:para:fs-idm18786352"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp17696176",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm37568416",
+          "segmentId": "m68704:para:fs-idm37568416"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_03_05_faucet",
+          "caption": {
+            "segmentId": "m68704:caption:CNX_Chem_03_05_faucet-caption"
+          },
+          "media": {
+            "id": "fs-idm10006048",
+            "alt": "Two pictures are shown labeled a and b. Picture a is a close-up shot of water coming out of a faucet. Picture b shows a machine with the words, “Filtered Water Dispenser.” This machine appears to be inside a refrigerator.",
+            "src": "../../media/CNX_Chem_03_05_faucet.jpg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idm22950992",
+          "title": {
+            "segmentId": "m68704:example-title:fs-idm22950992-title",
+            "text": "Calculation of Parts per Million and Parts per Billion Concentrations"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm5826976",
+              "segmentId": "m68704:para:fs-idm5826976"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm2696240",
+              "segmentId": "m68704:para:fs-idm2696240",
+              "title": {
+                "segmentId": "m68704:para-title:fs-idm2696240-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm35694560",
+              "segmentId": "m68704:para:fs-idm35694560"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp31649040",
+              "segmentId": "m68704:para:fs-idp31649040"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp21345280",
+              "segmentId": "m68704:para:fs-idp21345280",
+              "title": {
+                "segmentId": "m68704:para-title:fs-idp21345280-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm2529904",
+              "segmentId": "m68704:para:fs-idm2529904"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm1779776"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm5250896"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm4570368"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm45688384",
+              "title": {
+                "segmentId": "m68704:note-title:fs-idm45688384-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm2529904",
+                  "segmentId": "m68704:para:fs-idm2529904"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm6539664",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68704:title:fs-idm6539664-title",
+        "text": "Section Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm5081808",
+          "segmentId": "m68704:para:fs-idm5081808"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm3018432",
+      "class": "exercises",
+      "title": null,
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp14147136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27367376",
+                "segmentId": "m68704:problem:fs-idm27367376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp3249520",
+                "segmentId": "m68704:problem:fs-idp3249520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp248743712",
+                "segmentId": "m68704:problem:fs-idp248743712"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1849696",
+                "segmentId": "m68704:solution:fs-idm1849696"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp18877920",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm9508704",
+                "segmentId": "m68704:problem:fs-idm9508704"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm26523680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm31393312",
+                "segmentId": "m68704:problem:fs-idm31393312"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp64586416",
+                "segmentId": "m68704:solution:fs-idp64586416"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp11082976",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2819984",
+                "segmentId": "m68704:problem:fs-idm2819984"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm5149536",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm23489136",
+                "segmentId": "m68704:problem:fs-idm23489136"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm8356352",
+                "segmentId": "m68704:solution:fs-idm8356352"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm1879104",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16215312",
+                "segmentId": "m68704:problem:fs-idp16215312"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm39094144",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp6805168",
+                "segmentId": "m68704:problem:fs-idp6805168"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp18917136",
+                "segmentId": "m68704:solution:fs-idp18917136"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm26515200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm2541936",
+                "segmentId": "m68704:problem:fs-idm2541936"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm39075008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm32118672",
+                "segmentId": "m68704:problem:fs-idm32118672"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp24969648",
+                "segmentId": "m68704:solution:fs-idp24969648"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp22072496",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm85228448",
+                "segmentId": "m68704:problem:fs-idm85228448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp67228256",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1848576",
+                "segmentId": "m68704:problem:fs-idm1848576"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp13989120",
+                "segmentId": "m68704:solution:fs-idp13989120"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm9484992",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm3980816",
+                "segmentId": "m68704:problem:fs-idm3980816"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm8172720",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68704:title:fs-idm8172720-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68704:entry:auto-86",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68704:entry:auto-87",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68704:entry:auto-88",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68704:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68704:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68704:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp13058656",
+        "termSegmentId": "m68704:glossary-term:fs-idp13058656-term",
+        "definitionSegmentId": "m68704:glossary-def:fs-idp13058656-def"
+      },
+      {
+        "id": "fs-idm12309360",
+        "termSegmentId": "m68704:glossary-term:fs-idm12309360-term",
+        "definitionSegmentId": "m68704:glossary-def:fs-idm12309360-def"
+      },
+      {
+        "id": "fs-idp23298832",
+        "termSegmentId": "m68704:glossary-term:fs-idp23298832-term",
+        "definitionSegmentId": "m68704:glossary-def:fs-idp23298832-def"
+      },
+      {
+        "id": "fs-idm85251264",
+        "termSegmentId": "m68704:glossary-term:fs-idm85251264-term",
+        "definitionSegmentId": "m68704:glossary-def:fs-idm85251264-def"
+      },
+      {
+        "id": "fs-idp17597424",
+        "termSegmentId": "m68704:glossary-term:fs-idp17597424-term",
+        "definitionSegmentId": "m68704:glossary-def:fs-idp17597424-def"
+      }
+    ]
+  },
+  "sectionOrder": 4
+}

@@ -1,0 +1,62 @@
+{
+  "moduleId": "m68730",
+  "title": {
+    "segmentId": "m68730:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "69a85723-e8a2-4655-b514-b05dd8acf81d",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Writing and Balancing Chemical Equations",
+        "Classifying Chemical Reactions",
+        "Reaction Stoichiometry",
+        "Reaction Yields",
+        "Quantitative Chemical Analysis"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_04_00_Rocket",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68730:caption:CNX_Chem_04_00_Rocket-caption"
+      },
+      "media": {
+        "id": "fs-idm139266960",
+        "alt": "An image is shown of a rocket that appears to have just passed through a layer of clouds as it travels skyward. A bright white light is seen in the upper right corner of the image. To the lower left appears the layer of clouds and the bottom of the rocket with fire projecting from the fuel cones at its base.",
+        "src": "../../media/CNX_Chem_04_00_Rocket.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm17418752",
+      "segmentId": "m68730:para:fs-idm17418752"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68730:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68730:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68730:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68730:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68730:abstract-item:abstract-item-5"
+      }
+    ]
+  },
+  "sectionOrder": 0
+}

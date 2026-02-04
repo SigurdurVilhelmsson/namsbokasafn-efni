@@ -14,9 +14,17 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  Step 1: CNXML → EN Markdown                                │
-│  Tool: cnxml-to-md.js, pipeline-runner.js                   │
-│  Output: 5-1.en.md (with equations, structure preserved)    │
+│  Step 1a: CNXML → EN Markdown                               │
+│  Tool: cnxml-extract.js                                     │
+│  Output: m68724-segments.en.md (with [[MATH:N]] placeholders│
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│  Step 1b: Protect & Split for MT                            │
+│  Tool: protect-segments-for-mt.js                           │
+│  Converts <!-- SEG:... --> → {{SEG:...}}, protects links    │
+│  Splits by visible char count (14K) if needed               │
+│  Output: MT-ready .en.md files + -links.json sidecars       │
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
@@ -67,28 +75,50 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 
 ## Step-by-Step Instructions
 
-### Step 1: CNXML → English Markdown
+### Step 1a: CNXML → English Markdown
 
 **Goal:** Extract structured English content from OpenStax CNXML source.
 
 **Process:**
 ```bash
-# Full pipeline (fetches CNXML, converts to markdown with equations)
-node tools/pipeline-runner.js <module-id> --output-dir books/efnafraedi/02-for-mt/ch05
+# Extract all modules in a chapter
+node tools/cnxml-extract.js --chapter 5
 
-# Or just the conversion (if CNXML already fetched)
-node tools/cnxml-to-md.js <cnxml-file> --output 5-1.en.md
+# Or a single module
+node tools/cnxml-extract.js --input books/efnafraedi/01-source/ch05/m68724.cnxml
 ```
 
 **Output:**
-- `02-for-mt/ch05/5-1.en.md` - English markdown with `[[EQ:n]]` equation placeholders
-- `02-for-mt/ch05/5-1-equations.json` - LaTeX equations for restoration
+- `02-for-mt/ch05/m68724-segments.en.md` - English segments with `<!-- SEG:... -->` markers and `[[MATH:N]]` placeholders
+- `02-structure/ch05/m68724-structure.json` - Document structure for reconstruction
+- `02-structure/ch05/m68724-equations.json` - MathML equations keyed by placeholder ID
 
-**For large files (>18K chars):**
+### Step 1b: Protect & Split for Erlendur MT
+
+**Goal:** Make segment files safe for Erlendur MT, which strips HTML comments and markdown link URLs.
+
+**Process:**
 ```bash
-node tools/split-for-erlendur.js 5-1.en.md
-# Creates 5-1(a).en.md, 5-1(b).en.md, etc.
+# Process all segment files in a chapter directory
+node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
+
+# Or a single file
+node tools/protect-segments-for-mt.js books/efnafraedi/02-for-mt/ch05/m68724-segments.en.md
 ```
+
+**What it does:**
+1. Converts `<!-- SEG:... -->` → `{{SEG:...}}` (HTML comments are stripped by Erlendur; curly brackets survive)
+2. Protects links: `[text](url)` → `{{LINK:N}}text{{/LINK}}` (Erlendur strips URLs from markdown links)
+3. Protects cross-refs: `[#ref-id]` → `{{XREF:N}}`
+4. Splits at paragraph boundaries if visible character count exceeds 14K
+5. Writes `-links.json` sidecar with protected URLs
+
+**Output:**
+- `02-for-mt/ch05/m68724-segments.en.md` - Protected first part (or whole file if no split needed)
+- `02-for-mt/ch05/m68724-segments(b).en.md` - Second part (if split)
+- `02-for-mt/ch05/m68724-segments-links.json` - Protected link URLs
+
+**Important:** The visible character limit (14K) counts only translatable text, excluding `{{SEG:...}}`, `[[MATH:N]]`, and `{{LINK:N}}` tags. This is different from raw file size.
 
 ---
 
@@ -311,9 +341,9 @@ books/efnafraedi/
 ### Keep (Essential)
 | Tool | Purpose | Step |
 |------|---------|------|
-| `pipeline-runner.js` | Full CNXML → markdown pipeline | 1 |
-| `cnxml-to-md.js` | CNXML → Markdown with equations | 1 |
-| `split-for-erlendur.js` | Split large files for MT | 1 |
+| `cnxml-extract.js` | CNXML → segmented EN markdown + structure JSON | 1a |
+| `protect-segments-for-mt.js` | Protect tags & links, split for Erlendur MT | 1b |
+| `restore-segments-from-mt.js` | Restore tags & links in MT output | 2→3 |
 | `prepare-for-align.js` | Clean markdown for Matecat Align | 4 |
 | `chapter-assembler.js` | Assemble 7 modules → 12 publication files | 5 |
 | `add-frontmatter.js` | Add metadata for publication | 5 |
@@ -327,6 +357,9 @@ books/efnafraedi/
 ### Deprecated
 | Tool | Why Deprecated |
 |------|----------------|
+| `split-for-erlendur.js` | Replaced by `protect-segments-for-mt.js` (splits + protects) |
+| `pipeline-runner.js` | Replaced by `cnxml-extract.js` for extraction |
+| `cnxml-to-md.js` | Replaced by `cnxml-extract.js` |
 | `create-bilingual-xliff.js` | Matecat Align handles segmentation |
 | `md-to-xliff.js` | No longer generating XLIFF |
 | `xliff-to-md.js` | No longer processing XLIFF |
@@ -380,8 +413,11 @@ This is documented separately in [pass2-localization.md](../editorial/pass2-loca
 ## Quick Reference
 
 ```bash
-# Step 1: Generate EN markdown from CNXML
-node tools/pipeline-runner.js m68724 --output-dir books/efnafraedi/02-for-mt/ch05
+# Step 1a: Extract EN segments from CNXML
+node tools/cnxml-extract.js --chapter 5
+
+# Step 1b: Protect tags and split for Erlendur MT
+node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
 
 # Step 2: Upload to malstadur.is (manual), save to 02-mt-output/
 

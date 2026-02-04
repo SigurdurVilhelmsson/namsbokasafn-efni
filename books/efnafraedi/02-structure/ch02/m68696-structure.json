@@ -1,0 +1,1566 @@
+{
+  "moduleId": "m68696",
+  "title": {
+    "segmentId": "m68696:title:auto-1",
+    "text": "Ionic and Molecular Compounds"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "f1c0d0db-2d56-4a2f-b6cb-2bf649278669",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Define ionic and molecular (covalent) compounds",
+        "Predict the type of compound formed from elements based on their location within the periodic table",
+        "Determine formulas for simple ionic compounds"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp207102304",
+      "segmentId": "m68696:para:fs-idp207102304"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_06_NaCation",
+      "caption": {
+        "segmentId": "m68696:caption:CNX_Chem_02_06_NaCation-caption"
+      },
+      "media": {
+        "id": "fs-idp93507216",
+        "alt": "Figure A shows a sodium atom, N a, which has a nucleus containing 11 protons and 12 neutrons. The atom’s surrounding electron cloud contains 11 electrons. Figure B shows a sodium ion, N a superscript plus sign. Its nucleus contains 11 protons and 12 neutrons. The ion’s electron cloud contains 10 electrons and is smaller than that of the sodium atom in figure A.",
+        "src": "../../media/CNX_Chem_02_06_NaCation.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp286908208",
+      "segmentId": "m68696:para:fs-idp286908208"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp20416832",
+      "segmentId": "m68696:para:fs-idp20416832"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp244942144",
+      "segmentId": "m68696:para:fs-idp244942144"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_06_IonCharges",
+      "caption": {
+        "segmentId": "m68696:caption:CNX_Chem_02_06_IonCharges-caption"
+      },
+      "media": {
+        "id": "fs-idp341206448",
+        "alt": "Group one of the periodic table contains L i superscript plus sign in period 2, N a superscript plus sign in period 3, K superscript plus sign in period 4, R b superscript plus sign in period 5, C s superscript plus sign in period 6, and F r superscript plus sign in period 7. Group two contains B e superscript 2 plus sign in period 2, M g superscript 2 plus sign in period 3, C a superscript 2 plus sign in period 4, S r superscript 2 plus sign in period 5, B a superscript 2 plus sign in period 6, and R a superscript 2 plus sign in period 7. Group six contains C r superscript 3 plus sign and C r superscript 6 plus sign in period 4. Group seven contains M n superscript 2 plus sign in period 4. Group eight contains F e superscript 2 plus sign and F e superscript 3 plus sign in period 4. Group nine contains C o superscript 2 plus sign in period 4. Group ten contains N i superscript 2 plus sign in period 4, and P t superscript 2 plus sign in period 6. Group 11 contains C U superscript plus sign and C U superscript 2 plus sign in period 4, A g superscript plus sign in period 5, and A u superscript plus sign and A u superscript 3 plus sign in period 6. Group 12 contains Z n superscript 2 plus sign in period 4, C d superscript 2 plus sign in period 5, and H g subscript 2 superscript 2 plus sign and H g superscript 2 plus sign in period 6. Group 13 contains A l superscript 3 plus sign in period 3. Group 14 contains C superscript 4 negative sign in period 2. Group 15 contains N superscript 3 negative sign in period 2, P superscript 3 negative sign in period 3, and A s superscript 3 negative sign in period 4. Group 16 contains O superscript 2 negative sign in period 2, S superscript 2 negative sign in period 3, S e superscript 2 negative sign in period 4 and T e superscript 2 negative sign in period 5. Group 17 contains F superscript negative sign in period 2, C l superscript negative sign in period 3, B r superscript negative sign in period 4, I superscript negative sign in period 5, and A t superscript negative sign in period 6. Group 18 contains H e in period 1, N e in period 2, A r in period 3, K r in period 4, X e in period 5 and R n in period 6.",
+        "src": "../../media/CNX_Chem_02_06_IonCharges.jpg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idm11079584",
+      "title": {
+        "segmentId": "m68696:example-title:fs-idm11079584-title",
+        "text": "Composition of Ions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp203962032",
+          "segmentId": "m68696:para:fs-idp203962032"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp232924112",
+          "segmentId": "m68696:para:fs-idp232924112",
+          "title": {
+            "segmentId": "m68696:para-title:fs-idp232924112-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp120794800",
+          "segmentId": "m68696:para:fs-idp120794800",
+          "title": {
+            "segmentId": "m68696:para-title:fs-idp120794800-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp2161376",
+          "segmentId": "m68696:para:fs-idp2161376"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp105511808",
+          "title": {
+            "segmentId": "m68696:note-title:fs-idp105511808-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp2161376",
+              "segmentId": "m68696:para:fs-idp2161376"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "fs-idp51588352",
+      "title": {
+        "segmentId": "m68696:example-title:fs-idp51588352-title",
+        "text": "Formation of Ions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp141681312",
+          "segmentId": "m68696:para:fs-idp141681312"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp196671632",
+          "segmentId": "m68696:para:fs-idp196671632",
+          "title": {
+            "segmentId": "m68696:para-title:fs-idp196671632-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp64788416",
+          "segmentId": "m68696:para:fs-idp64788416"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp96722272",
+          "segmentId": "m68696:para:fs-idp96722272",
+          "title": {
+            "segmentId": "m68696:para-title:fs-idp96722272-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp194881696",
+          "segmentId": "m68696:para:fs-idp194881696"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp16846528",
+          "title": {
+            "segmentId": "m68696:note-title:fs-idp16846528-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp194881696",
+              "segmentId": "m68696:para:fs-idp194881696"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp9416320",
+      "segmentId": "m68696:para:fs-idp9416320"
+    },
+    {
+      "type": "table",
+      "id": "fs-idp278664880",
+      "class": "top-titled",
+      "summary": "This table has three columns labeled “charge,” “name,” and “formula.” Ammonium has a charge of positive 1 and the formula N H subscript 4 superscript plus sign. Acetate has a charge of negative 1 and the formula C subscript 2 H subscript 3 O subscript 2 superscript negative sign. Cyanide has a charge of negative 1, and the formula C N superscript negative sign. Hydroxide has a charge of negative 1 and the formula O H superscript negative sign. Nitrate has a charge of negative 1 and the formula N O subscript 3 superscript negative sign. Nitrite has a charge of negative 1 and the formula N O subscript 2 superscript negative sign. Perchlorate has a charge of negative 1 and the formula C l O subscript 4 superscript negative sign. Chlorate has a charge of negative 1 and the formula C l O subscript 3 superscript negative sign. Chlorite has a charge of negative 1 and the formula C l O subscript 2 superscript negative sign. Hypochlorite has a charge of negative 1 and the formula C l O superscript negative sign. Permanganate has a charge of negative 1 and the formula M n O subscript 4 superscript negative sign. Hydrogen carbonate, or bicarbonate has a charge of negative 1 and the formula H C O subscript 3 superscript negative sign. Carbonate has a charge of negative 2 and the formula C O subscript 3 superscript 2 negative sign. Peroxide has a charge of negative 2 and the formula O subscript 2 superscript 2 negative sign. Hydrogen sulfate, or bisulfate, has a charge of negative 1 and the formula H S O subscript 4 superscript negative sign. Sulfate has a charge of negative 2 and the formula S O subscript 4 superscript 2 negative sign. Sulfite has a charge of negative 2 and the formula S O subscript 3 superscript 2 negative sign. Dihydrogen phosphate has a charge of negative 1 and the formula H subscript 2 P O subscript 4 superscript negative sign. Hydrogen phosphate has a charge of negative 2 and the formula H P O subscript 4 superscript 2 negative sign. Phosphate has a charge of negative 3 and the formula P O subscript 4 superscript 3 negative sign.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-32",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c4",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-33",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-35",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-36",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-37",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-38",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-39",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-40",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-41",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-42",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-43",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-44",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-45",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-46",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-47",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-48",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-49",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-50",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-51",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-52",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-53",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-54",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-55",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-56",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-57",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-58",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-59",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-60",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-61",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-62",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-63",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-64",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-65",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-66",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-67",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-68",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-69",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-70",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-71",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-72",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-73",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-74",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-75",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-76",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-77",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-78",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-79",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-80",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-81",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-82",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-83",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-84",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-85",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-86",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-87",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-88",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-89",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-90",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": null,
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-91",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-92",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-93",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-94",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-95",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-96",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-97",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-98",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-99",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-100",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-101",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-102",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-103",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-104",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-105",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-106",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-107",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-108",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-109",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-110",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-111",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-112",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-113",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-114",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68696:entry:auto-115",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-116",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-117",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68696:entry:auto-118",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp210658336",
+      "segmentId": "m68696:para:fs-idp210658336"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm10305952",
+      "segmentId": "m68696:para:fs-idm10305952"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp133128304",
+      "class": null,
+      "title": {
+        "segmentId": "m68696:title:fs-idp133128304-title",
+        "text": "Ionic Compounds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp15116752",
+          "segmentId": "m68696:para:fs-idp15116752"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp21794832",
+          "segmentId": "m68696:para:fs-idp21794832"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp56020048",
+          "segmentId": "m68696:para:fs-idp56020048"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_02_06_NaClMolten",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68696:caption:CNX_Chem_02_06_NaClMolten-caption"
+          },
+          "media": {
+            "id": "fs-idp140154533591136",
+            "alt": "This figure shows three photos connected by right-facing arrows. The first shows a light bulb as part of a complex lab equipment setup. The light bulb is not lit. The second photo shows a substances being heated or set on fire. The third shows the light bulb again which is lit.",
+            "src": "../../media/CNX_Chem_02_06_NaClMolten.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idp13886976",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp196719024",
+          "segmentId": "m68696:para:fs-idp196719024"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp91827520",
+      "segmentId": "m68696:para:fs-idp91827520"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp75448432",
+      "title": {
+        "segmentId": "m68696:example-title:fs-idp75448432-title",
+        "text": "Predicting the Formula of an Ionic Compound"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp187459888",
+          "segmentId": "m68696:para:fs-idp187459888"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp467312",
+          "segmentId": "m68696:para:fs-idp467312",
+          "title": {
+            "segmentId": "m68696:para-title:fs-idp467312-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp219965392",
+          "segmentId": "m68696:para:fs-idp219965392",
+          "title": {
+            "segmentId": "m68696:para-title:fs-idp219965392-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp104312384",
+          "segmentId": "m68696:para:fs-idp104312384"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp58394736",
+          "title": {
+            "segmentId": "m68696:note-title:fs-idp58394736-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp104312384",
+              "segmentId": "m68696:para:fs-idp104312384"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_02_06_Sapphire",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68696:caption:CNX_Chem_02_06_Sapphire-caption"
+      },
+      "media": {
+        "id": "fs-idp108680656",
+        "alt": "This is a photograph of a ring with a sapphire set in it.",
+        "src": "../../media/CNX_Chem_02_06_Sapphire.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp270413408",
+      "segmentId": "m68696:para:fs-idp270413408"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp2219712",
+      "title": {
+        "segmentId": "m68696:example-title:fs-idp2219712-title",
+        "text": "Predicting the Formula of a Compound with a Polyatomic Anion"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp179991104",
+          "segmentId": "m68696:para:fs-idp179991104"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm24805888",
+          "segmentId": "m68696:para:fs-idm24805888",
+          "title": {
+            "segmentId": "m68696:para-title:fs-idm24805888-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp187565648",
+          "segmentId": "m68696:para:fs-idp187565648",
+          "title": {
+            "segmentId": "m68696:para-title:fs-idp187565648-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp19956160",
+          "segmentId": "m68696:para:fs-idp19956160"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp186698128",
+          "title": {
+            "segmentId": "m68696:note-title:fs-idp186698128-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp19956160",
+              "segmentId": "m68696:para:fs-idp19956160"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp288769312",
+      "segmentId": "m68696:para:fs-idp288769312"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp9143792",
+      "class": null,
+      "title": {
+        "segmentId": "m68696:title:fs-idp9143792-title",
+        "text": "Molecular Compounds"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp264000688",
+          "segmentId": "m68696:para:fs-idp264000688"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp207026896",
+          "segmentId": "m68696:para:fs-idp207026896"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp411086368",
+          "title": {
+            "segmentId": "m68696:example-title:fs-idp411086368-title",
+            "text": "Predicting the Type of Bonding in Compounds"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm2822016",
+              "segmentId": "m68696:para:fs-idm2822016"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp130747360",
+              "segmentId": "m68696:para:fs-idp130747360"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp286925488",
+              "segmentId": "m68696:para:fs-idp286925488"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp77042592",
+              "segmentId": "m68696:para:fs-idp77042592"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp214730704",
+              "segmentId": "m68696:para:fs-idp214730704"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp173975248",
+              "segmentId": "m68696:para:fs-idp173975248",
+              "title": {
+                "segmentId": "m68696:para-title:fs-idp173975248-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp13443888",
+              "segmentId": "m68696:para:fs-idp13443888"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp135354672",
+              "segmentId": "m68696:para:fs-idp135354672"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp187587072",
+              "segmentId": "m68696:para:fs-idp187587072"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp4808832",
+              "segmentId": "m68696:para:fs-idp4808832",
+              "title": {
+                "segmentId": "m68696:para-title:fs-idp4808832-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp288779408",
+              "segmentId": "m68696:para:fs-idp288779408"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp132796640",
+              "segmentId": "m68696:para:fs-idp132796640"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp202359456",
+              "segmentId": "m68696:para:fs-idp202359456"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp65172768",
+              "segmentId": "m68696:para:fs-idp65172768"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm16446416",
+              "segmentId": "m68696:para:fs-idm16446416"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp102788640",
+              "title": {
+                "segmentId": "m68696:note-title:fs-idp102788640-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm16446416",
+                  "segmentId": "m68696:para:fs-idm16446416"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp184156752",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68696:title:fs-idp184156752-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp122679888",
+          "segmentId": "m68696:para:fs-idp122679888"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp57422256",
+          "segmentId": "m68696:para:fs-idp57422256"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp22868752",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68696:title:fs-idp22868752-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp298677568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm58721440",
+                "segmentId": "m68696:problem:fs-idm58721440"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm4134080",
+                "segmentId": "m68696:solution:fs-idm4134080"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp44267360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp119855136",
+                "segmentId": "m68696:problem:fs-idp119855136"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp221295264",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp95603488",
+                "segmentId": "m68696:problem:fs-idp95603488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp63096544",
+                "segmentId": "m68696:problem:fs-idp63096544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp175705168",
+                "segmentId": "m68696:problem:fs-idp175705168"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp210482672",
+                "segmentId": "m68696:problem:fs-idp210482672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm16898128",
+                "segmentId": "m68696:problem:fs-idm16898128"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp523680",
+                "segmentId": "m68696:problem:fs-idp523680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp18583904",
+                "segmentId": "m68696:problem:fs-idp18583904"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp108175056",
+                "segmentId": "m68696:solution:fs-idp108175056"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp4856416",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp133547504",
+                "segmentId": "m68696:problem:fs-idp133547504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm6279264",
+                "segmentId": "m68696:problem:fs-idm6279264"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp14607760",
+                "segmentId": "m68696:problem:fs-idp14607760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp273174928",
+                "segmentId": "m68696:problem:fs-idp273174928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp187691872",
+                "segmentId": "m68696:problem:fs-idp187691872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp267108208",
+                "segmentId": "m68696:problem:fs-idp267108208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp232955488",
+                "segmentId": "m68696:problem:fs-idp232955488"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp178456496",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp114930880",
+                "segmentId": "m68696:problem:fs-idp114930880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp93671712",
+                "segmentId": "m68696:problem:fs-idp93671712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65603120",
+                "segmentId": "m68696:problem:fs-idp65603120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp433808032",
+                "segmentId": "m68696:problem:fs-idp433808032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp95434032",
+                "segmentId": "m68696:problem:fs-idp95434032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp106885728",
+                "segmentId": "m68696:problem:fs-idp106885728"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp411135344",
+                "segmentId": "m68696:solution:fs-idp411135344"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp286976176",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56590528",
+                "segmentId": "m68696:problem:fs-idp56590528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp101562960",
+                "segmentId": "m68696:problem:fs-idp101562960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp236810896",
+                "segmentId": "m68696:problem:fs-idp236810896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp62582192",
+                "segmentId": "m68696:problem:fs-idp62582192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp19798176",
+                "segmentId": "m68696:problem:fs-idp19798176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp143769280",
+                "segmentId": "m68696:problem:fs-idp143769280"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68696:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68696:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68696:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68696:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp97231552",
+        "termSegmentId": "m68696:glossary-term:fs-idp97231552-term",
+        "definitionSegmentId": "m68696:glossary-def:fs-idp97231552-def"
+      },
+      {
+        "id": "fs-idp184530720",
+        "termSegmentId": "m68696:glossary-term:fs-idp184530720-term",
+        "definitionSegmentId": "m68696:glossary-def:fs-idp184530720-def"
+      },
+      {
+        "id": "fs-idp160949776",
+        "termSegmentId": "m68696:glossary-term:fs-idp160949776-term",
+        "definitionSegmentId": "m68696:glossary-def:fs-idp160949776-def"
+      },
+      {
+        "id": "fs-idp182712496",
+        "termSegmentId": "m68696:glossary-term:fs-idp182712496-term",
+        "definitionSegmentId": "m68696:glossary-def:fs-idp182712496-def"
+      },
+      {
+        "id": "fs-idp93864192",
+        "termSegmentId": "m68696:glossary-term:fs-idp93864192-term",
+        "definitionSegmentId": "m68696:glossary-def:fs-idp93864192-def"
+      },
+      {
+        "id": "fs-idp136404896",
+        "termSegmentId": "m68696:glossary-term:fs-idp136404896-term",
+        "definitionSegmentId": "m68696:glossary-def:fs-idp136404896-def"
+      },
+      {
+        "id": "fs-idp484916992",
+        "termSegmentId": "m68696:glossary-term:fs-idp484916992-term",
+        "definitionSegmentId": "m68696:glossary-def:fs-idp484916992-def"
+      },
+      {
+        "id": "fs-idp93746160",
+        "termSegmentId": "m68696:glossary-term:fs-idp93746160-term",
+        "definitionSegmentId": "m68696:glossary-def:fs-idp93746160-def"
+      }
+    ]
+  },
+  "sectionOrder": 6
+}

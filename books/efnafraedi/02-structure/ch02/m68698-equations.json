@@ -1,0 +1,24 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo>),</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{SO}}}_{4}^{{2−}}),}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>CrO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{CrO}}}_{4}^{{2−}}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Cr</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>7</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{Cr}}}_{2}{\\text{O}}_{7}^{{2−}}}"
+  },
+  "fs-idm229832608": {
+    "mathml": "<m:math><m:mrow><m:mtext>copper(II) sulfate pentahydrate</m:mtext><m:mspace width=\"0.2em\"/><m:msub><m:mtext>CuSO</m:mtext><m:mn>4</m:mn></m:msub><m:mn>∙5</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{copper(II) sulfate pentahydrate}\\, {\\text{CuSO}}_{4}∙5{\\text{H}}_{2}\\text{O}}",
+    "isBlock": true
+  },
+  "fs-idm220871888": {
+    "mathml": "<m:math><m:mrow><m:mtext>sodium carbonate decahydrate</m:mtext><m:mspace width=\"0.2em\"/><m:msub><m:mtext>Na</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>CO</m:mtext><m:mn>3</m:mn></m:msub><m:mn>∙10</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{sodium carbonate decahydrate}\\, {\\text{Na}}_{2}{\\text{CO}}_{3}∙10{\\text{H}}_{2}\\text{O}}",
+    "isBlock": true
+  }
+}

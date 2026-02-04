@@ -1,0 +1,18 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>11</m:mn><m:mn>23</m:mn></m:msubsup><m:mtext>Na</m:mtext></m:math>",
+    "latex": "_{11}^{23}\\text{Na}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>54</m:mn></m:mrow><m:mn>129</m:mn></m:msubsup><m:mtext>Xe</m:mtext></m:math>",
+    "latex": "_{{\\, 54}}^{129}\\text{Xe}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>33</m:mn><m:mn>73</m:mn></m:msubsup><m:mtext>As</m:mtext></m:math>",
+    "latex": "_{33}^{73}\\text{As}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>88</m:mn></m:mrow><m:mn>226</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math>",
+    "latex": "_{{\\, 88}}^{226}\\text{Ra}"
+  }
+}

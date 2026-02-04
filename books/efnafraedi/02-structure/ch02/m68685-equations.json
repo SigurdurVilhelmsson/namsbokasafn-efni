@@ -1,0 +1,74 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>14.82 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>2.78 g hydrogen</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>5.33 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>1.00 g hydrogen</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{14.82 g carbon}}}{{\\text{2.78 g hydrogen}}}\\, =\\, \\frac{{\\text{5.33 g carbon}}}{{\\text{1.00 g hydrogen}}}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>22.33 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>4.19 g hydrogen</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>5.33 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>1.00 g hydrogen</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{22.33 g carbon}}}{{\\text{4.19 g hydrogen}}}\\, =\\, \\frac{{\\text{5.33 g carbon}}}{{\\text{1.00 g hydrogen}}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>19.40 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>3.63 g hydrogen</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>5.33 g carbon</m:mtext></m:mrow><m:mrow><m:mtext>1.00 g hydrogen</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{19.40 g carbon}}}{{\\text{3.63 g hydrogen}}}\\, =\\, \\frac{{\\text{5.33 g carbon}}}{{\\text{1.00 g hydrogen}}}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>1.33 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{1.33 g O}}}{{\\text{1 g C}}}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>2.67 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{2.67 g O}}}{{\\text{1 g C}}}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>1.33 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>2.67 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{{{\\text{1.33 g O}}{\\text{1 g C}}}{\\frac{{\\text{2.67 g O}}}{{\\text{1 g C}}}}\\, =\\, \\frac{1}{2}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>14.13 g C</m:mtext></m:mrow><m:mrow><m:mtext>2.96 g H</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{14.13 g C}}}{{\\text{2.96 g H}}}.}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>19.91 g C</m:mtext></m:mrow><m:mrow><m:mtext>3.34 g H</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{19.91 g C}}}{{\\text{3.34 g H}}}.}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>14.13 g C</m:mtext></m:mrow><m:mrow><m:mtext>2.96 g H</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>19.91 g C</m:mtext></m:mrow><m:mrow><m:mtext>3.34 g H</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>4.77 g C/g H</m:mtext></m:mrow><m:mrow><m:mtext>5.96 g C/g H</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.800</m:mn><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>4</m:mn><m:mn>5</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{14.13 g C}}{\\text{2.96 g H}}}{\\frac{{\\text{19.91 g C}}}{{\\text{3.34 g H}}}}\\, =\\, \\frac{{\\text{4.77 g C/g H}}}{{\\text{5.96 g C/g H}}}\\, =0.800=\\, \\frac{4}{5}.}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>14.13 g C</m:mtext></m:mrow><m:mrow><m:mtext>2.96 g H</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{14.13 g C}}}{{\\text{2.96 g H}}}.}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>19.91 g C</m:mtext></m:mrow><m:mrow><m:mtext>3.34 g H</m:mtext></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{19.91 g C}}}{{\\text{3.34 g H}}}.}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>14.13 g C</m:mtext></m:mrow><m:mrow><m:mtext>2.96 g H</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>19.91 g C</m:mtext></m:mrow><m:mrow><m:mtext>3.34 g H</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>4.77 g C/g H</m:mtext></m:mrow><m:mrow><m:mtext>5.96 g C/g H</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.800</m:mn><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>4</m:mn><m:mn>5</m:mn></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{14.13 g C}}{\\text{2.96 g H}}}{\\frac{{\\text{19.91 g C}}}{{\\text{3.34 g H}}}}\\, =\\, \\frac{{\\text{4.77 g C/g H}}}{{\\text{5.96 g C/g H}}}\\, =0.800=\\, \\frac{4}{5}.}"
+  },
+  "fs-idp92779296": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>1.116 g Cl</m:mtext></m:mrow><m:mrow><m:mtext>1 g Cu</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>0.558 g Cl</m:mtext></m:mrow><m:mrow><m:mtext>1 g Cu</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>2</m:mn><m:mn>1</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{{{\\text{1.116 g Cl}}{\\text{1 g Cu}}}{\\frac{{\\text{0.558 g Cl}}}{{\\text{1 g Cu}}}}\\, =\\, \\frac{2}{1}}",
+    "isBlock": true
+  },
+  "fs-idm27225408": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>1.33 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{1.33 g O}}}{{\\text{1 g C}}}}",
+    "isBlock": true
+  },
+  "fs-idm193212704": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>2.67 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{2.67 g O}}}{{\\text{1 g C}}}}",
+    "isBlock": true
+  },
+  "fs-idm53123280": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>1.33 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>2.67 g O</m:mtext></m:mrow><m:mrow><m:mtext>1 g C</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{{{\\text{1.33 g O}}{\\text{1 g C}}}{\\frac{{\\text{2.67 g O}}}{{\\text{1 g C}}}}\\, =\\, \\frac{1}{2}}",
+    "isBlock": true
+  }
+}
