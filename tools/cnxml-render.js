@@ -8,7 +8,7 @@
  *
  * Takes translated CNXML and produces:
  *   - Semantic HTML5 with all IDs preserved
- *   - KaTeX data attributes for client-side equation rendering
+ *   - MathJax SVG for equation rendering
  *   - Embedded page data JSON
  *
  * Usage:
@@ -25,7 +25,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import katex from 'katex';
+import { renderMathML } from './lib/mathjax-render.js';
 import {
   parseCnxmlDocument,
   extractNestedElements,
@@ -105,50 +105,6 @@ function translateTitle(title) {
   return TITLE_TRANSLATIONS[trimmed] || title;
 }
 
-/**
- * Render LaTeX to KaTeX HTML.
- * @param {string} latex - LaTeX string
- * @param {boolean} displayMode - True for block equations, false for inline
- * @returns {string} KaTeX HTML or error fallback
- */
-/**
- * Pre-process LaTeX for KaTeX compatibility.
- */
-function preprocessLatex(latex) {
-  let result = latex;
-  // Escape dollar signs inside \text{} — KaTeX interprets $ as math delimiter
-  result = result.replace(/\\text\{([^}]*)\}/g, (match, content) => {
-    return `\\text{${content.replace(/\$/g, '\\$')}}`;
-  });
-  // Warn about empty aligned/array environments (MT artifact)
-  if (/\\begin\{aligned\}\s*\\end\{aligned\}/.test(result)) {
-    console.error(`Warning: Empty \\begin{aligned}...\\end{aligned} found — likely MT artifact`);
-    // Replace with placeholder so it renders visibly rather than silently
-    result = result.replace(
-      /\{?\\begin\{aligned\}\s*\\end\{aligned\}\}?/g,
-      '\\text{[jafna vantar]}'
-    );
-  }
-  return result;
-}
-
-function renderLatex(latex, displayMode = true) {
-  const processed = preprocessLatex(latex);
-  try {
-    return katex.renderToString(processed, {
-      displayMode,
-      throwOnError: false,
-      strict: false,
-      trust: true,
-      macros: {},
-    });
-  } catch (err) {
-    console.error(`KaTeX error for: ${processed.substring(0, 50)}...`, err.message);
-    // Return a placeholder with the original LaTeX for debugging
-    return `<span class="katex-error" data-latex="${escapeAttr(latex)}">[Math Error]</span>`;
-  }
-}
-
 // =====================================================================
 // CONFIGURATION
 // =====================================================================
@@ -190,7 +146,7 @@ function printHelp() {
 cnxml-render.js - Render CNXML to semantic HTML
 
 Part of the Extract-Translate-Inject pipeline for OpenStax content translation.
-Produces publication-ready HTML with preserved IDs and KaTeX math placeholders.
+Produces publication-ready HTML with preserved IDs and MathJax SVG equations.
 
 Usage:
   node tools/cnxml-render.js --chapter <num> [--module <id>]
@@ -1260,9 +1216,9 @@ function renderEquation(eq, context) {
   // Track equation
   context.equations.push({ id, latex });
 
-  // Pre-render KaTeX HTML (keep data-latex for copy functionality)
-  const katexHtml = renderLatex(latex, true);
-  const eqContent = `<span class="katex-display" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
+  // Render MathML directly via MathJax (lossless — no MathML→LaTeX conversion needed for visual)
+  const mathHtml = renderMathML(mathml, true);
+  const eqContent = `<span class="mathjax-display" data-latex="${escapeAttr(latex)}">${mathHtml}</span>`;
   const numberSpan = isUnnumbered ? '' : '<span class="equation-number"></span>';
 
   return `<div${id ? ` id="${escapeAttr(id)}"` : ''} class="equation${isUnnumbered ? ' unnumbered' : ''}">${eqContent}${numberSpan}</div>`;
