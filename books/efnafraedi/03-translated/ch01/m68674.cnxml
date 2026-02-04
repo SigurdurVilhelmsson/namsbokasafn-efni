@@ -340,49 +340,49 @@ eðlismassa nokkurra algengra efna.</para>
 <colspec colnum="3" colname="c3"/>
 <thead>
 <row>
-<entry namest="c1" nameend="c3" align="center">Densities of Common Substances</entry>
+<entry namest="c1" nameend="c3" align="center">Eðlismassi algengra efna</entry>
 </row>
 <row valign="top">
-<entry align="left">Solids</entry>
-<entry align="left">Liquids</entry>
-<entry align="left">Gases (at 25 °C and 1 atm)</entry>
+<entry align="left">Föst efni</entry>
+<entry align="left">Vökvar</entry>
+<entry align="left">Gös (við 25 °C og 1 atm)</entry>
 </row>
 </thead>
 <tbody>
 <row valign="top">
-<entry align="left">ice (at 0 °C) 0.92 g/cm<sup>3</sup></entry>
-<entry align="left">water 1.0 g/cm<sup>3</sup></entry>
-<entry align="left">dry air 1.20 g/L</entry>
-</row>
-<row valign="top">
-<entry align="left">oak (wood) 0.60–0.90 g/cm<sup>3</sup></entry>
-<entry align="left">ethanol 0.79 g/cm<sup>3</sup></entry>
-<entry align="left">oxygen 1.31 g/L</entry>
-</row>
-<row valign="top">
-<entry align="left">Eðlismassi algengra efna</entry>
-<entry align="left">Föst efni</entry>
-<entry align="left">Vökvar</entry>
-</row>
-<row valign="top">
-<entry align="left">Gös (við 25 °C og 1 atm)</entry>
 <entry align="left">ís (við 0 °C) 0,92 g/cm<sup>3</sup></entry>
 <entry align="left">vatn 1,0 g/cm<sup>3</sup></entry>
+<entry align="left">þurrt loft 1,20 g/L</entry>
 </row>
 <row valign="top">
-<entry align="left">þurrt loft 1,20 g/L</entry>
 <entry align="left">eik (viður) 0,60–0,90 g/cm<sup>3</sup></entry>
 <entry align="left">etanól 0,79 g/cm<sup>3</sup></entry>
+<entry align="left">súrefni 1,31 g/L</entry>
 </row>
 <row valign="top">
-<entry align="left">súrefni 1,31 g/L</entry>
 <entry align="left">járn 7,9 g/cm<sup>3</sup></entry>
 <entry align="left">asetón 0,79 g/cm<sup>3</sup></entry>
+<entry align="left">nitur 1,14 g/L</entry>
 </row>
 <row valign="top">
-<entry align="left">nitur 1,14 g/L</entry>
 <entry align="left">kopar 9,0 g/cm<sup>3</sup></entry>
 <entry align="left">glýserín 1,26 g/cm<sup>3</sup></entry>
+<entry align="left">koltvísýringur 1,80 g/L</entry>
+</row>
+<row valign="top">
+<entry align="left">blý 11,3 g/cm<sup>3</sup></entry>
+<entry align="left">ólífuolía 0,92 g/cm<sup>3</sup></entry>
+<entry align="left">helíum 0,16 g/L</entry>
+</row>
+<row valign="top">
+<entry align="left">silfur 10,5 g/cm<sup>3</sup></entry>
+<entry align="left">bensín 0,70–0,77 g/cm<sup>3</sup></entry>
+<entry align="left">neon 0,83 g/L</entry>
+</row>
+<row valign="top">
+<entry align="left">gull 19,3 g/cm<sup>3</sup></entry>
+<entry align="left">kvikasilfur 13,6 g/cm<sup>3</sup></entry>
+<entry align="left">radon 9,1 g/L</entry>
 </row>
 </tbody>
 </tgroup>
