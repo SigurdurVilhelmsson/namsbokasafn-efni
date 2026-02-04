@@ -391,6 +391,10 @@ function renderContent(content, context, _verbose) {
   for (const f of figures) if (f.fullMatch) simpleContent = simpleContent.replace(f.fullMatch, '');
   for (const t of tables) if (t.fullMatch) simpleContent = simpleContent.replace(t.fullMatch, '');
 
+  // Extract standalone media elements (not inside figures — those are already stripped)
+  const medias = extractNestedElements(simpleContent, 'media');
+  for (const m of medias) if (m.fullMatch) simpleContent = simpleContent.replace(m.fullMatch, '');
+
   const lists = extractNestedElements(simpleContent, 'list');
   const equations = extractElements(simpleContent, 'equation');
   const paras = extractElements(simpleContent, 'para');
@@ -439,6 +443,12 @@ function renderContent(content, context, _verbose) {
     const pos = tbl.fullMatch ? content.indexOf(tbl.fullMatch) : content.indexOf(`id="${tbl.id}"`);
     itemsWithPositions.push({ type: 'table', item: tbl, position: pos !== -1 ? pos : 0 });
   }
+  for (const media of medias) {
+    const pos = media.fullMatch
+      ? content.indexOf(media.fullMatch)
+      : content.indexOf(`id="${media.id}"`);
+    itemsWithPositions.push({ type: 'media', item: media, position: pos !== -1 ? pos : 0 });
+  }
   for (const lst of lists) {
     const pos = lst.fullMatch ? content.indexOf(lst.fullMatch) : content.indexOf(`id="${lst.id}"`);
     itemsWithPositions.push({ type: 'list', item: lst, position: pos !== -1 ? pos : 0 });
@@ -475,6 +485,9 @@ function renderContent(content, context, _verbose) {
         break;
       case 'table':
         lines.push(renderTable(item, context));
+        break;
+      case 'media':
+        lines.push(renderMedia(item, context));
         break;
       case 'list':
         lines.push(renderList(item, context));
@@ -583,6 +596,14 @@ function renderTopLevelContent(content, context) {
     }
   }
 
+  // Extract standalone media elements (not inside figures — those are already stripped)
+  const medias = extractNestedElements(contentForSimpleElements, 'media');
+  for (const media of medias) {
+    if (media.fullMatch) {
+      contentForSimpleElements = contentForSimpleElements.replace(media.fullMatch, '');
+    }
+  }
+
   const lists = extractNestedElements(contentForSimpleElements, 'list');
   const equations = extractElements(contentForSimpleElements, 'equation');
   const paras = extractElements(contentForSimpleElements, 'para');
@@ -662,6 +683,17 @@ function renderTopLevelContent(content, context) {
     });
   }
 
+  for (const media of medias) {
+    const position = media.fullMatch
+      ? content.indexOf(media.fullMatch)
+      : content.indexOf(`id="${media.id}"`);
+    elementsWithPositions.push({
+      item: media,
+      type: 'media',
+      position: position !== -1 ? position : 0,
+    });
+  }
+
   for (const list of lists) {
     const position = list.fullMatch
       ? content.indexOf(list.fullMatch)
@@ -715,6 +747,9 @@ function renderTopLevelContent(content, context) {
         break;
       case 'table':
         lines.push(renderTable(item, context));
+        break;
+      case 'media':
+        lines.push(renderMedia(item, context));
         break;
       case 'list':
         lines.push(renderList(item, context));
@@ -805,6 +840,32 @@ function renderFigure(figure, context) {
 
   lines.push('</figure>');
   return lines.join('\n');
+}
+
+/**
+ * Render a standalone media element (not inside a figure).
+ * Produces a simple img wrapped in a div.
+ */
+function renderMedia(media, context) {
+  const id = media.id || null;
+  const className = media.attributes.class || null;
+  const alt = media.attributes.alt || '';
+
+  // Extract image src from content
+  const imageMatch = media.content.match(/<image([^>]*)\/?>(?:<\/image>)?/);
+  let normalizedSrc = '';
+  if (imageMatch) {
+    const imageAttrs = parseAttributes(imageMatch[1]);
+    const src = imageAttrs.src || '';
+    const chapterStr = String(context.chapter).padStart(2, '0');
+    normalizedSrc = src.replace(
+      /^\.\.\/\.\.\/media\//,
+      `/content/efnafraedi/chapters/${chapterStr}/images/media/`
+    );
+  }
+
+  const classValue = className ? `media-inline ${className}` : 'media-inline';
+  return `<div${id ? ` id="${escapeAttr(id)}"` : ''} class="${escapeAttr(classValue)}">\n  <img src="${escapeAttr(normalizedSrc)}" alt="${escapeAttr(alt)}" loading="lazy">\n</div>`;
 }
 
 /**
@@ -980,6 +1041,19 @@ function renderExample(example, context) {
     });
   }
 
+  // Extract standalone media from content WITHOUT notes
+  const standaloneMedia = extractNestedElements(contentForSimpleElements, 'media');
+  for (const media of standaloneMedia) {
+    const pos = media.fullMatch
+      ? example.content.indexOf(media.fullMatch)
+      : example.content.indexOf(`id="${media.id}"`);
+    elementsWithPositions.push({
+      type: 'media',
+      item: media,
+      position: pos !== -1 ? pos : 0,
+    });
+  }
+
   // Sort by position
   elementsWithPositions.sort((a, b) => a.position - b.position);
 
@@ -1031,6 +1105,9 @@ function renderExample(example, context) {
       case 'note':
         lines.push(`  ${renderNote(item, context)}`);
         break;
+      case 'media':
+        lines.push(`  ${renderMedia(item, context)}`);
+        break;
     }
   }
 
@@ -1047,17 +1124,53 @@ function renderExercise(exercise, context) {
 
   lines.push(`<div${id ? ` id="${escapeAttr(id)}"` : ''} class="exercise">`);
 
+  // Helper: render problem/solution section content with paras, media, and figures in order
+  function renderSectionContent(sectionContent) {
+    const paras = extractElements(sectionContent, 'para');
+    // Strip figures before extracting standalone media
+    const contentWithoutFigures = sectionContent.replace(/<figure[\s\S]*?<\/figure>/g, '');
+    const medias = extractNestedElements(contentWithoutFigures, 'media');
+    const figures = extractNestedElements(sectionContent, 'figure');
+
+    const elementsWithPositions = [];
+    for (const para of paras) {
+      const pos = sectionContent.indexOf(`id="${para.id}"`);
+      elementsWithPositions.push({ type: 'para', item: para, position: pos !== -1 ? pos : 0 });
+    }
+    for (const media of medias) {
+      const pos = media.fullMatch
+        ? sectionContent.indexOf(media.fullMatch)
+        : sectionContent.indexOf(`id="${media.id}"`);
+      elementsWithPositions.push({ type: 'media', item: media, position: pos !== -1 ? pos : 0 });
+    }
+    for (const figure of figures) {
+      const pos = sectionContent.indexOf(`id="${figure.id}"`);
+      elementsWithPositions.push({ type: 'figure', item: figure, position: pos !== -1 ? pos : 0 });
+    }
+
+    elementsWithPositions.sort((a, b) => a.position - b.position);
+
+    for (const { type, item } of elementsWithPositions) {
+      switch (type) {
+        case 'para':
+          lines.push(`    ${renderPara(item, context)}`);
+          break;
+        case 'media':
+          lines.push(`    ${renderMedia(item, context)}`);
+          break;
+        case 'figure':
+          lines.push(`    ${renderFigure(item, context)}`);
+          break;
+      }
+    }
+  }
+
   // Problem
   const problemMatch = exercise.content.match(/<problem([^>]*)>([\s\S]*?)<\/problem>/);
   if (problemMatch) {
     const problemId = parseAttributes(problemMatch[1]).id;
     lines.push(`  <div${problemId ? ` id="${escapeAttr(problemId)}"` : ''} class="problem">`);
-
-    const paras = extractElements(problemMatch[2], 'para');
-    for (const para of paras) {
-      lines.push(`    ${renderPara(para, context)}`);
-    }
-
+    renderSectionContent(problemMatch[2]);
     lines.push('  </div>');
   }
 
@@ -1066,12 +1179,7 @@ function renderExercise(exercise, context) {
   if (solutionMatch) {
     const solutionId = parseAttributes(solutionMatch[1]).id;
     lines.push(`  <div${solutionId ? ` id="${escapeAttr(solutionId)}"` : ''} class="solution">`);
-
-    const paras = extractElements(solutionMatch[2], 'para');
-    for (const para of paras) {
-      lines.push(`    ${renderPara(para, context)}`);
-    }
-
+    renderSectionContent(solutionMatch[2]);
     lines.push('  </div>');
   }
 

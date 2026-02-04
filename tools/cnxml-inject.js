@@ -359,6 +359,8 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
       return buildEquation(element, equations, originalCnxml);
     case 'list':
       return buildList(element, getSeg);
+    case 'media':
+      return buildMedia(element);
     default:
       return null;
   }
@@ -858,6 +860,53 @@ function buildList(element, getSeg) {
 
   lines.push('</list>');
   return lines.join('\n');
+}
+
+/**
+ * Build a standalone media element (not nested inside a figure).
+ * Infers mime-type from the file extension of the src attribute.
+ * @param {Object} element - Media element structure
+ * @returns {string} CNXML string for this media element
+ */
+function buildMedia(element) {
+  const idAttr = element.id ? ` id="${element.id}"` : '';
+  const classAttr = element.class ? ` class="${element.class}"` : '';
+  const alt = element.alt ? ` alt="${escapeXml(element.alt)}"` : '';
+
+  const lines = [];
+  lines.push(`<media${idAttr}${classAttr}${alt}>`);
+
+  if (element.src) {
+    const mimeType = inferMimeType(element.src);
+    lines.push(`<image mime-type="${mimeType}" src="${element.src}"/>`);
+  }
+
+  lines.push('</media>');
+  return lines.join('\n');
+}
+
+/**
+ * Infer image MIME type from a file extension.
+ * @param {string} src - Image source path
+ * @returns {string} MIME type string
+ */
+function inferMimeType(src) {
+  const ext = src.split('.').pop()?.toLowerCase();
+  switch (ext) {
+    case 'jpg':
+    case 'jpeg':
+      return 'image/jpeg';
+    case 'png':
+      return 'image/png';
+    case 'gif':
+      return 'image/gif';
+    case 'svg':
+      return 'image/svg+xml';
+    case 'webp':
+      return 'image/webp';
+    default:
+      return 'image/jpeg';
+  }
 }
 
 /**
