@@ -240,7 +240,8 @@ export function extractNestedElements(content, tagName) {
       } else {
         depth--;
         if (depth === 0) {
-          const fullMatch = content.substring(startIdx, nextClose + closeTag.length);
+          const endIdx = nextClose + closeTag.length;
+          const fullMatch = content.substring(startIdx, endIdx);
           const attributes = parseAttributes(match[1] || '');
           const innerContent = content.substring(startIdx + match[0].length, nextClose);
           elements.push({
@@ -249,6 +250,9 @@ export function extractNestedElements(content, tagName) {
             content: innerContent,
             fullMatch,
           });
+          // Advance regex past this element so nested elements aren't
+          // extracted again as separate top-level results
+          openTag.lastIndex = endIdx;
         }
         idx = nextClose + closeTag.length;
       }

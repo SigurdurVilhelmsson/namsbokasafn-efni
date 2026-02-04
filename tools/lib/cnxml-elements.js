@@ -67,13 +67,27 @@ export function translateLatexText(latex) {
  * @param {string} latex - LaTeX string
  * @returns {string} KaTeX HTML or error fallback
  */
+function preprocessLatex(latex) {
+  let result = latex;
+  // Escape dollar signs inside \text{} — KaTeX interprets $ as math delimiter
+  result = result.replace(/\\text\{([^}]*)\}/g, (match, content) => {
+    return `\\text{${content.replace(/\$/g, '\\$')}}`;
+  });
+  return result;
+}
+
 function renderInlineLatex(latex) {
+  const processed = preprocessLatex(latex);
   try {
-    return katex.renderToString(latex, {
+    return katex.renderToString(processed, {
       displayMode: false,
       throwOnError: false,
       strict: false,
       trust: true,
+      macros: {
+        '\\cancel': '\\enclose{horizontalstrike}{#1}',
+        '\\bcancel': '\\enclose{updiagonalstrike}{#1}',
+      },
     });
   } catch (err) {
     // Return placeholder with original LaTeX for debugging
@@ -501,7 +515,12 @@ export function processInlineContent(content, context) {
       const tableNum = context.chapterTableNumbers.get(targetId);
       return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
     }
-    // Fallback for non-figure references (examples, etc.)
+    // Check if this is a section/example/note reference
+    if (context.chapterSectionTitles && context.chapterSectionTitles.has(targetId)) {
+      const title = context.chapterSectionTitles.get(targetId);
+      return `<a href="#${escapeAttr(targetId)}">${escapeHtml(title)}</a>`;
+    }
+    // Fallback for unresolved references
     return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;
   });
   // Link with target-id and content
@@ -533,6 +552,11 @@ export function processInlineContent(content, context) {
       if (context.chapterTableNumbers && context.chapterTableNumbers.has(targetId)) {
         const tableNum = context.chapterTableNumbers.get(targetId);
         return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
+      }
+      // Check if this is a section/example/note reference
+      if (context.chapterSectionTitles && context.chapterSectionTitles.has(targetId)) {
+        const title = context.chapterSectionTitles.get(targetId);
+        return `<a href="#${escapeAttr(targetId)}">${escapeHtml(title)}</a>`;
       }
       return `<a href="#${escapeAttr(targetId)}">${escapeHtml(targetId)}</a>`;
     }

@@ -111,16 +111,42 @@ function translateTitle(title) {
  * @param {boolean} displayMode - True for block equations, false for inline
  * @returns {string} KaTeX HTML or error fallback
  */
+/**
+ * Pre-process LaTeX for KaTeX compatibility.
+ */
+function preprocessLatex(latex) {
+  let result = latex;
+  // Escape dollar signs inside \text{} — KaTeX interprets $ as math delimiter
+  result = result.replace(/\\text\{([^}]*)\}/g, (match, content) => {
+    return `\\text{${content.replace(/\$/g, '\\$')}}`;
+  });
+  // Warn about empty aligned/array environments (MT artifact)
+  if (/\\begin\{aligned\}\s*\\end\{aligned\}/.test(result)) {
+    console.error(`Warning: Empty \\begin{aligned}...\\end{aligned} found — likely MT artifact`);
+    // Replace with placeholder so it renders visibly rather than silently
+    result = result.replace(
+      /\{?\\begin\{aligned\}\s*\\end\{aligned\}\}?/g,
+      '\\text{[jafna vantar]}'
+    );
+  }
+  return result;
+}
+
 function renderLatex(latex, displayMode = true) {
+  const processed = preprocessLatex(latex);
   try {
-    return katex.renderToString(latex, {
+    return katex.renderToString(processed, {
       displayMode,
       throwOnError: false,
       strict: false,
       trust: true,
+      macros: {
+        '\\cancel': '\\enclose{horizontalstrike}{#1}',
+        '\\bcancel': '\\enclose{updiagonalstrike}{#1}',
+      },
     });
   } catch (err) {
-    console.error(`KaTeX error for: ${latex.substring(0, 50)}...`, err.message);
+    console.error(`KaTeX error for: ${processed.substring(0, 50)}...`, err.message);
     // Return a placeholder with the original LaTeX for debugging
     return `<span class="katex-error" data-latex="${escapeAttr(latex)}">[Math Error]</span>`;
   }
@@ -244,6 +270,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     tableNumbers, // Map of table ID -> "Chapter.Number" (this module only)
     chapterFigureNumbers: options.chapterFigureNumbers || figureNumbers, // chapter-wide
     chapterTableNumbers: options.chapterTableNumbers || tableNumbers, // chapter-wide
+    chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
     figureCounter: 0,
     footnoteCounter: 0,
     exampleCounter: 0,
@@ -811,7 +838,7 @@ function renderFigure(figure, context) {
   if (captionMatch) {
     const captionContent = processInlineContent(captionMatch[1], context);
     // Add figure number if available
-    const figNum = id && context.figureNumbers ? context.figureNumbers.get(id) : null;
+    const figNum = id && context.chapterFigureNumbers ? context.chapterFigureNumbers.get(id) : null;
     if (figNum) {
       lines.push(
         `  <figcaption><span class="figure-label">Mynd ${figNum}</span> ${captionContent}</figcaption>`
@@ -1378,6 +1405,46 @@ function writeOutput(chapter, moduleId, track, html, moduleSections) {
   return outputPath;
 }
 
+/**
+ * Copy referenced images from source media to publication directory.
+ */
+function copyChapterImages(chapter, track, _verbose) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const sourceMediaDir = path.join(BOOKS_DIR, '01-source', 'media');
+  const targetMediaDir = path.join(
+    BOOKS_DIR,
+    '05-publication',
+    track,
+    'chapters',
+    chapterStr,
+    'images',
+    'media'
+  );
+
+  if (!fs.existsSync(sourceMediaDir)) {
+    console.error(`Warning: Source media directory not found: ${sourceMediaDir}`);
+    return;
+  }
+
+  if (!fs.existsSync(targetMediaDir)) {
+    fs.mkdirSync(targetMediaDir, { recursive: true });
+  }
+
+  // Copy all images matching this chapter's pattern (CNX_Chem_NN_*)
+  const chapterPrefix = `CNX_Chem_${chapterStr}_`;
+  const sourceFiles = fs.readdirSync(sourceMediaDir).filter((f) => f.startsWith(chapterPrefix));
+
+  let copied = 0;
+  for (const file of sourceFiles) {
+    const src = path.join(sourceMediaDir, file);
+    const dest = path.join(targetMediaDir, file);
+    fs.copyFileSync(src, dest);
+    copied++;
+  }
+
+  console.log(`Images: Copied ${copied} files to ${targetMediaDir}`);
+}
+
 // =====================================================================
 // MAIN
 // =====================================================================
@@ -1407,6 +1474,7 @@ async function main() {
     // This enables cross-module references (e.g., 5-2 referencing a table in 5-1)
     const chapterFigureNumbers = new Map();
     const chapterTableNumbers = new Map();
+    const chapterSectionTitles = new Map(); // section ID -> title text
     const allModules = findChapterModules(args.chapter); // all modules, even if rendering one
     let chapterFigCounter = 0;
     let chapterTableCounter = 0;
@@ -1427,6 +1495,39 @@ async function main() {
       while ((tm = tblPattern.exec(modCnxml)) !== null) {
         chapterTableCounter++;
         chapterTableNumbers.set(tm[1], `${args.chapter}.${chapterTableCounter}`);
+      }
+
+      // Build section title map for cross-reference resolution
+      const secPattern = /<section\s+id="([^"]+)"[^>]*>\s*<title>([\s\S]*?)<\/title>/g;
+      let sm;
+      while ((sm = secPattern.exec(modCnxml)) !== null) {
+        // Strip any inline markup from the title text
+        const titleText = sm[2].replace(/<[^>]+>/g, '').trim();
+        chapterSectionTitles.set(sm[1], titleText);
+      }
+
+      // Also capture example/note IDs with titles
+      const exPattern = /<example\s+id="([^"]+)"[^>]*>\s*<title>([\s\S]*?)<\/title>/g;
+      let em;
+      while ((em = exPattern.exec(modCnxml)) !== null) {
+        const titleText = em[2].replace(/<[^>]+>/g, '').trim();
+        chapterSectionTitles.set(em[1], titleText);
+      }
+
+      const notePattern = /<note\s+[^>]*id="([^"]+)"[^>]*>\s*<title>([\s\S]*?)<\/title>/g;
+      let nm;
+      while ((nm = notePattern.exec(modCnxml)) !== null) {
+        const titleText = nm[2].replace(/<[^>]+>/g, '').trim();
+        chapterSectionTitles.set(nm[1], titleText);
+      }
+
+      // Capture exercise IDs for cross-reference resolution
+      const exerPattern = /<exercise\s+id="([^"]+)"/g;
+      let exm;
+      while ((exm = exerPattern.exec(modCnxml)) !== null) {
+        if (!chapterSectionTitles.has(exm[1])) {
+          chapterSectionTitles.set(exm[1], 'æfingu');
+        }
       }
     }
 
@@ -1457,6 +1558,7 @@ async function main() {
         moduleSections,
         chapterFigureNumbers,
         chapterTableNumbers,
+        chapterSectionTitles,
       });
 
       const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
@@ -1464,6 +1566,9 @@ async function main() {
       console.log(`${moduleId}: Rendered to HTML`);
       console.log(`  → ${outputPath}`);
     }
+
+    // Copy referenced images from source media to publication directory
+    copyChapterImages(args.chapter, args.track, args.verbose);
   } catch (error) {
     console.error('Error:', error.message);
     if (args.verbose) {
