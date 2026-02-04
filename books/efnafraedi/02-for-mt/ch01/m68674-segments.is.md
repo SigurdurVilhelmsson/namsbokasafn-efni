@@ -297,64 +297,6 @@ voru teknir upp þar árið 1799 og síðar af öðrum löndum. Í þessum kafla
 eru kynntar fjórar af grunneiningum SI-kerfisins sem eru almennt notaðar
 í efnafræði. Aðrar SI-einingar verða kynntar í síðari köflum.
 
-<!-- SEG:m68674:title:fs-idp679312-title --> Lengd
-
-<!-- SEG:m68674:para:fs-idm64613648 --> Staðaleining **lengdar** bæði í
-SI-kerfinu og upprunalega metrakerfinu er **metri (m)**. Metri var
-upphaflega skilgreindur sem 1/10.000.000 af vegalengdinni frá
-norðurpólnum að miðbaug. Hann er nú skilgreindur sem vegalengdin sem
-ljós ferðast í lofttæmi á 1/299.792.458 úr sekúndu. Metri er um 3 tommum
-lengri en stika ([#CNX_Chem_01_04_MYdCmIn]); einn metri er um 39,37 tommur eða 1,094
-stikur. Lengri vegalengdir eru oft gefnar upp í kílómetrum (1 km = 1000
-m = 10^3^ m), en styttri vegalengdir má gefa upp í sentímetrum (1 cm =
-0,01 m = 10^−2^ m) eða millímetrum (1 mm = 0,001 m = 10^−3^ m).
-
-<!-- SEG:m68674:caption:CNX_Chem_01_04_MYdCmIn-caption --> Hlutfallslegar
-lengdir 1 m, 1 stiku, 1 cm og 1 tommu eru sýndar (ekki í raunstærð),
-ásamt samanburði á 2,54 cm og 1 tommu, og 1 m og 1,094 stikum.
-
-<!-- SEG:m68674:title:fs-idm1313360-title --> Massi
-
-<!-- SEG:m68674:para:fs-idp222999216 --> Staðaleining massa í SI-kerfinu er
-**kílógramm (kg)**. Kílógrammið var áður skilgreint af Alþjóðasamtökum
-um hreina og hagnýta efnafræði (**IUPAC**) sem massi ákveðins
-viðmiðunarhlutar. Þessi hlutur var upphaflega einn lítri af hreinu
-vatni, og síðar var það málmsívalningur úr platínu-iridíum melmi með hæð
-og þvermál 39 mm ([#CNX_Chem_01_04_Kilogram]). Í maí 2019 var þessari skilgreiningu
-breytt í skilgreiningu sem byggir þess í stað á nákvæmlega mældum gildum
-nokkurra grundvallareðlisfræðilegra fasta. [footnote: Fyrir frekari
-upplýsingar sjá
-https://www.nist.gov/pml/weights-and-measures/si-units-mass]. Eitt
-kílógramm er um 2,2 pund. Grammið (g) er nákvæmlega jafnt og 1/1000 af
-massa kílógrammsins (10^−3^ kg).
-
-<!-- SEG:m68674:caption:CNX_Chem_01_04_Kilogram-caption --> Þessi eftirmynd
-af frumgerð kílógrammsins eins og það var áður skilgreint er geymd hjá
-National Institute of Standards and Technology (NIST) í Maryland.
-(heimild: National Institutes of Standards and Technology)
-
-<!-- SEG:m68674:title:fs-idm1531808-title --> Hitastig
-
-<!-- SEG:m68674:para:fs-idp3379184 --> Hitastig er eiginleiki óháður stærð.
-SI-eining hitastigs er **kelvin (K)**. Samkvæmt venju IUPAC er orðið
-kelvin skrifað með litlum staf, K (hástafur) notað fyrir einingartáknið
-og hvorki orðið „gráða“ né gráðumerkið (°) notað. **Selsíusgráða (°C)**
-er einnig leyfð í SI-kerfinu, og eru bæði orðið „gráða“ og gráðumerkið
-notuð fyrir selsíusmælingar. Selsíusgráður eru jafn stórar og kelvin, en
-kvarðarnir tveir setja núllpunkt sinn á mismunandi staði. Vatn frýs við
-273,15 K (0 °C) og sýður við 373,15 K (100 °C), og eðlilegur líkamshiti
-manns er um það bil 310 K (37 °C). Umbreytingu milli þessara tveggja
-eininga og Fahrenheit-kvarðans verður fjallað um síðar í þessum kafla.
-
-<!-- SEG:m68674:title:fs-idm101578432-title --> Tími
-
-<!-- SEG:m68674:para:fs-idm101738864 --> Grunneining SI-kerfisins fyrir tíma
-er **sekúnda (s)**. Hægt er að tákna lítil og stór tímabil með
-viðeigandi forskeiti; til dæmis, 3 míkrósekúndur = 0,000003 s = 3
-[[MATH:16]] 10^−6^ og 5 megasekúndur = 5.000.000 s = 5
-[[MATH:17]] 10^6^ s. Einnig er hægt að nota klukkustundir, daga og
-ár.
-
 <!-- SEG:m68674:title:fs-idm23668768-title --> Afleiddar SI-einingar
 
 <!-- SEG:m68674:title:fs-idm16046736-title --> Rúmmál
