@@ -140,23 +140,23 @@ function extractInlineText(content, mathMap, counters) {
     return placeholder;
   });
 
-  // Handle emphasis with effect attribute
+  // Convert leaf-level inline markup to markdown FIRST, before processing
+  // outer tags like <term>, <link>, <footnote>. This prevents stripTags()
+  // from discarding nested inline markup (e.g., <sup> inside <term>).
+  text = text.replace(/<sub>([^<]*)<\/sub>/g, '~$1~');
+  text = text.replace(/<sup>([^<]*)<\/sup>/g, '^$1^');
   text = text.replace(
     /<emphasis\s+effect="([^"]*)"[^>]*>([\s\S]*?)<\/emphasis>/g,
     (match, effect, inner) => {
-      // Keep emphasis markers for translator context
-      if (effect === 'italics') return `*${stripTags(inner)}*`;
-      if (effect === 'bold') return `**${stripTags(inner)}**`;
-      return stripTags(inner);
+      if (effect === 'italics') return `*${inner}*`;
+      if (effect === 'bold') return `**${inner}**`;
+      return inner;
     }
   );
 
-  // Handle terms - convert sup/sub to markdown before stripping remaining tags
+  // Handle terms - inner markup is already markdown at this point
   text = text.replace(/<term[^>]*>([\s\S]*?)<\/term>/g, (match, inner) => {
-    const termText = inner
-      .replace(/<sup>([^<]*)<\/sup>/g, '^$1^')
-      .replace(/<sub>([^<]*)<\/sub>/g, '~$1~');
-    return `__${stripTags(termText).trim()}__`;
+    return `__${stripTags(inner).trim()}__`;
   });
 
   // Handle links - preserve URL context
@@ -186,10 +186,6 @@ function extractInlineText(content, mathMap, counters) {
       return linkText ? `[${linkText}](${doc}#${targetId})` : `[${doc}#${targetId}]`;
     }
   );
-
-  // Handle sub/sup
-  text = text.replace(/<sub>([^<]*)<\/sub>/g, '~$1~');
-  text = text.replace(/<sup>([^<]*)<\/sup>/g, '^$1^');
 
   // Handle footnotes - extract as inline
   text = text.replace(/<footnote[^>]*>([\s\S]*?)<\/footnote>/g, (match, inner) => {
