@@ -1,0 +1,1395 @@
+{
+  "moduleId": "m68667",
+  "title": {
+    "segmentId": "m68667:title:auto-1",
+    "text": "Phases and Classification of Matter"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7d9dde51-8917-4f91-8cbb-24f7712c80dd",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the basic properties of each physical state of matter: solid, liquid, and gas",
+        "Distinguish between mass and weight",
+        "Apply the law of conservation of matter",
+        "Classify matter as an element, compound, homogeneous mixture, or heterogeneous mixture with regard to its physical state and composition",
+        "Define and give examples of atoms and molecules"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm2368272",
+      "segmentId": "m68667:para:fs-idm2368272"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm13881920",
+      "segmentId": "m68667:para:fs-idm13881920"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_01_02_StatesMatt",
+      "caption": {
+        "segmentId": "m68667:caption:CNX_Chem_01_02_StatesMatt-caption"
+      },
+      "media": {
+        "id": "fs-idm894896",
+        "alt": "A beaker labeled solid contains a cube of red matter and says has fixed shape and volume. A beaker labeled liquid contains a brownish-red colored liquid. This beaker says takes shape of container, forms horizontal surfaces, has fixed volume. The beaker labeled gas is filled with a light brown gas. This beaker says expands to fill container.",
+        "src": "../../media/CNX_Chem_01_02_StatesMatt.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm10031184",
+      "segmentId": "m68667:para:fs-idm10031184"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_01_02_Plasma",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68667:caption:CNX_Chem_01_02_Plasma-caption"
+      },
+      "media": {
+        "id": "fs-idm25079184",
+        "alt": "A cutting torch is being used to cut a piece of metal. Bright, white colored plasma can be seen near the tip of the torch, where it is contacting the metal.",
+        "src": "../../media/CNX_Chem_01_02_Plasma.jpg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idp140507125319040",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp140507125044944",
+          "segmentId": "m68667:para:fs-idp140507125044944"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp85792432",
+      "segmentId": "m68667:para:fs-idp85792432"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp46064176",
+      "segmentId": "m68667:para:fs-idp46064176"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp63221808",
+      "segmentId": "m68667:para:fs-idp63221808"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp40529184",
+      "segmentId": "m68667:para:fs-idp40529184"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_01_02_ConsMatter",
+      "caption": {
+        "segmentId": "m68667:caption:CNX_Chem_01_02_ConsMatter-caption"
+      },
+      "media": {
+        "id": "fs-idp18802448",
+        "alt": "Diagram A shows a beer bottle containing pre-beer and sugar. An arrow points from this bottle to a second bottle. This second bottle contains the same volume of liquid, however, the sugar has been converted into ethanol and carbonation as beer was made. Diagram B shows a car battery that contains sheets of P B and P B O subscript 2 along with H subscript 2 S O subscript 4. After the battery is used, it contains an equal mass of P B S O subscript 4 and H subscript 2 O.",
+        "src": "../../media/CNX_Chem_01_02_ConsMatter.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp109544240",
+      "segmentId": "m68667:para:fs-idp109544240"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm129745056",
+      "class": null,
+      "title": {
+        "segmentId": "m68667:title:fs-idm129745056-title",
+        "text": "Classifying Matter"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm27277840",
+          "segmentId": "m68667:para:fs-idm27277840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm96243408",
+          "segmentId": "m68667:para:fs-idm96243408"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm75785376",
+          "segmentId": "m68667:para:fs-idm75785376"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_02_decomp",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68667:caption:CNX_Chem_01_02_decomp-caption"
+          },
+          "media": {
+            "id": "fs-idm1678528",
+            "alt": "This figure shows a series of three photos labeled a, b, and c. Photo a shows the bottom of a test tube that is filled with an orange-red substance. A slight amount of a silver substance is also visible. Photo b shows the substance in the test tube being heated over a flame. Photo c shows a test tube that is not longer being heated. The orange-red substance is almost completely gone, and small, silver droplets of a substance are left.",
+            "src": "../../media/CNX_Chem_01_02_decomp.jpg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm144044816",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm138330144",
+              "segmentId": "m68667:para:fs-idm138330144"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm50488272",
+          "segmentId": "m68667:para:fs-idm50488272"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm77724752",
+          "segmentId": "m68667:para:fs-idm77724752"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm12481392",
+          "segmentId": "m68667:para:fs-idm12481392"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_02_Mixtures",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68667:caption:CNX_Chem_01_02_Mixtures-caption"
+          },
+          "media": {
+            "id": "fs-idm84857312",
+            "alt": "Diagram A shows a glass containing a red liquid with a layer of yellow oil floating on the surface of the red liquid. A zoom in box is magnifying a portion of the red liquid that contains some of the yellow oil. The zoomed in image shows that oil is forming round droplets within the red liquid. Diagram B shows a photo of Gatorade G 2. A zoom in box is magnifying a portion of the Gatorade, which is uniformly red.",
+            "src": "../../media/CNX_Chem_01_02_Mixtures.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm113901040",
+          "segmentId": "m68667:para:fs-idm113901040"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_02_MattType",
+          "caption": {
+            "segmentId": "m68667:caption:CNX_Chem_01_02_MattType-caption"
+          },
+          "media": {
+            "id": "fs-idm6448800",
+            "alt": "This flow chart begins with matter at the top and the question: does the matter have constant properties and composition? If no, then it is a mixture. This leads to the next question: is it uniform throughout? If no, it is heterogeneous. If yes, it is homogenous. If the matter does have constant properties and composition, it is a pure substance. This leads to the next question: can it be simplified chemically? If no, it is an element. If yes, then it is a compound.",
+            "src": "../../media/CNX_Chem_01_02_MattType.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm39281712",
+          "segmentId": "m68667:para:fs-idm39281712"
+        },
+        {
+          "type": "table",
+          "id": "fs-idp31507504",
+          "class": "top-titled",
+          "summary": "Oxygen, symbolized by O, has a percent mass of 49.20. Silicon, symbolized by S I, has a percent mass of 25.67. Aluminum, symbolized by A L, has a percent mass of 7.50. Iron, symbolized by F E, has a percent mass of 4.71. Calcium, symbolized by C A, has a percent mass of 3.39. Sodium, symbolized by N A, has a percent mass of 2.63. Potassium, symbolized by K, has a percent mass of 2.40. Magnesium, symbolized by M G, has a percent mass of 1.93. Hydrogen, symbolized by H, has a percent mass of 0.87. Titanium, symbolized by T I, has a percent mass of 0.58. Chlorine, symbolized by C L, has a percent mass of 0.19. Phosphorus, symbolized by P, has a percent mass of 0.11. Manganese, symbolized by M N, has a percent mass of 0.09. Carbon, symbolized by C, has a percent mass of 0.08. Sulfur, symbolized by S, has a percent mass of 0.06. Barium, symbolized by B A, has a percent mass of 0.04. Nitrogen, symbolized by N, has a percent mass of 0.03. Fluorine, symbolized by F, has a percent mass of 0.03. Strontium, symbolized by S R, has a percent mass of 0.02. All others have a percent mass of 0.47.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-33",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c6",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-34",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-35",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-36",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-37",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-38",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-39",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-40",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-41",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-42",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-43",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-44",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-45",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-46",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-47",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-48",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-49",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-50",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-51",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-52",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-53",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-77",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-83",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-84",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-85",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-86",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-87",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-89",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-91",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68667:entry:auto-94",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-96",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68667:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm9685536",
+      "class": null,
+      "title": {
+        "segmentId": "m68667:title:fs-idm9685536-title",
+        "text": "Atoms and Molecules"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp25156032",
+          "segmentId": "m68667:para:fs-idp25156032"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_02_GoldAtoms",
+          "caption": {
+            "segmentId": "m68667:caption:CNX_Chem_01_02_GoldAtoms-caption"
+          },
+          "media": {
+            "id": "fs-idp99062768",
+            "alt": "Figure A shows a gold nugget as it would appear to the naked eye. The gold nugget is very irregular, with many sharp edges. It appears gold in color. The microscope image of a gold crystal shows many similarly sized gold stripes that are separated by dark areas. Looking closely, one can see that the gold stripes are made of many, tiny, circular atoms.",
+            "src": "../../media/CNX_Chem_01_02_GoldAtoms.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm15008032",
+          "segmentId": "m68667:para:fs-idm15008032"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp64376128",
+          "segmentId": "m68667:para:fs-idp64376128"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_02_Cellulose",
+          "caption": {
+            "segmentId": "m68667:caption:CNX_Chem_01_02_Cellulose-caption"
+          },
+          "media": {
+            "id": "fs-idm10849248",
+            "alt": "Figure A shows a puffy white cotton boll growing on a brown twig. Figure B shows a magnified cotton strand. The strand appears transparent but contains dark areas within its interior. Figure C shows the surface of several crisscrossing and overlapping cotton fibers. Its surface is rough along the edges but smooth near the center of each strand. Figure D shows three strands of molecules connected into three vertical chains. Each strand contains about five molecules. Figure E shows that the cotton molecule contains about a dozen atoms. The black carbon atoms form rings that are connected by red oxygen atoms. Many of the carbon atoms are also bonded to hydrogen atoms, shown as white balls, or other oxygen atoms.",
+            "src": "../../media/CNX_Chem_01_02_Cellulose.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp92844000",
+          "segmentId": "m68667:para:fs-idp92844000"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp23257696",
+          "segmentId": "m68667:para:fs-idp23257696"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_02_Molecules",
+          "caption": {
+            "segmentId": "m68667:caption:CNX_Chem_01_02_Molecules-caption"
+          },
+          "media": {
+            "id": "fs-idp95667712",
+            "alt": "The hydrogen molecule, H subscript 2, is shown as two small, white balls bonded together. The oxygen molecule O subscript 2, is shown as two red balls bonded together. The phosphorous molecule, P subscript 4, is shown as four orange balls bonded tightly together. The sulfur molecule, S subscript 8, is shown as 8 yellow balls linked together. Water molecules, H subscript 2 O, consist of one red oxygen atom bonded to two smaller white hydrogen atoms. The hydrogen atoms are at an angle on the oxygen molecule. Carbon dioxide, C O subscript 2, consists of one carbon atom and two oxygen atoms. One oxygen atom is bonded to the carbon’s right side and the other oxygen is bonded to the carbon’s left side. Glucose, C subscript 6 H subscript 12 O subscript 6, contains a chain of carbon atoms that have attached oxygen or hydrogen atoms.",
+            "src": "../../media/CNX_Chem_01_02_Molecules.jpg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm86364640",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68667:note-title:fs-idm86364640-title",
+            "text": "Decomposition of Water / Production of Hydrogen"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm107801696",
+              "segmentId": "m68667:para:fs-idm107801696"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm89185312",
+              "segmentId": "m68667:para:fs-idm89185312"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm74337664",
+              "segmentId": "m68667:para:fs-idm74337664"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_01_Electrolys",
+          "caption": {
+            "segmentId": "m68667:caption:CNX_Chem_01_01_Electrolys-caption"
+          },
+          "media": {
+            "id": "fs-idm22586448",
+            "alt": "A rectangular battery is immersed in a beaker filled with liquid. Each of the battery terminals are covered by an overturned test tube. The test tubes each contain a bubbling liquid. Zoom in areas indicate that the liquid in the beaker is water, 2 H subscript 2 O liquid. The bubbles in the test tube over the negative terminal are hydrogen gas, 2 H subscript 2 gas. The bubbles in the test tube over the positive terminal are oxygen gas, O subscript 2 gas.",
+            "src": "../../media/CNX_Chem_01_01_Electrolys.jpg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_01_FuelCell",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68667:caption:CNX_Chem_01_01_FuelCell-caption"
+          },
+          "media": {
+            "id": "fs-idp123844096",
+            "alt": "The fuel cell consists of a proton exchange membrane sandwiched between an anode and a cathode. Hydrogen gas enters the battery near the anode. Oxygen gas enters the battery near the cathode. The entering hydrogen gas is broken up into single white spheres that each have a positive charge. These are protons. The protons repel negatively-charged electrons within the anode. These electrons travel through a circuit, providing electricity to anything attached to the battery. The protons continue through the proton exchange membrane and through the cathode to reach the oxygen gas molecules at the opposite end of the battery. There, the oxygen atoms split up into single red spheres. Each oxygen atom takes on two of the incoming protons to form a water molecule.",
+            "src": "../../media/CNX_Chem_01_01_FuelCell.jpg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm6260000",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68667:note-title:fs-idm6260000-title",
+            "text": "Chemistry of Cell Phones"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm49120320",
+              "segmentId": "m68667:para:fs-idm49120320"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_02_CellPhone",
+          "caption": {
+            "segmentId": "m68667:caption:CNX_Chem_01_02_CellPhone-caption"
+          },
+          "media": {
+            "id": "fs-idm54034640",
+            "alt": "A cell phone is labeled to show what its components are made of. The case components are made of polymers such as A B S and or metals such as aluminum, iron, and magnesium. The processor components are made of silicon, common metals such as copper, tin and gold, and uncommon elements such as yttrium and gadolinium. The screen components are made of silicon oxide, also known as glass. The glass is strengthened by the addition of aluminum, sodium, and potassium. The battery components contain lithium combined with other metals such as cobalt, iron, and copper.",
+            "src": "../../media/CNX_Chem_01_02_CellPhone.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp11969024",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68667:title:fs-idp11969024-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp42086864",
+          "segmentId": "m68667:para:fs-idp42086864"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm173241344",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68667:title:fs-idm173241344-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm68837632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm37552560",
+                "segmentId": "m68667:problem:fs-idm37552560"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp51841840",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm41402864",
+                "segmentId": "m68667:problem:fs-idm41402864"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm31794752",
+                "segmentId": "m68667:solution:fs-idm31794752"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm29164608",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm60766480",
+                "segmentId": "m68667:problem:fs-idm60766480"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp135248192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm95732192",
+                "segmentId": "m68667:problem:fs-idm95732192"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm36867712",
+                "segmentId": "m68667:solution:fs-idm36867712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm23683040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm36562352",
+                "segmentId": "m68667:problem:fs-idm36562352"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm34556656",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp38854704",
+                "segmentId": "m68667:problem:fs-idp38854704"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm44214960",
+                "segmentId": "m68667:solution:fs-idm44214960"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm12578096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm50322464",
+                "segmentId": "m68667:problem:fs-idm50322464"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm11351120",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27492032",
+                "segmentId": "m68667:problem:fs-idm27492032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27166864",
+                "segmentId": "m68667:solution:fs-idm27166864"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm27722240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm50197744",
+                "segmentId": "m68667:problem:fs-idm50197744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm36590512",
+                "segmentId": "m68667:problem:fs-idm36590512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp119897840",
+                "segmentId": "m68667:problem:fs-idp119897840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm27475040",
+                "segmentId": "m68667:problem:fs-idm27475040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm57388992",
+                "segmentId": "m68667:problem:fs-idm57388992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp46394096",
+                "segmentId": "m68667:problem:fs-idp46394096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm240528",
+                "segmentId": "m68667:problem:fs-idm240528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm12629264",
+                "segmentId": "m68667:problem:fs-idm12629264"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm44105296",
+                "segmentId": "m68667:problem:fs-idm44105296"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp134896512",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21928736",
+                "segmentId": "m68667:problem:fs-idm21928736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm55285392",
+                "segmentId": "m68667:problem:fs-idm55285392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm24958688",
+                "segmentId": "m68667:problem:fs-idm24958688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm54726592",
+                "segmentId": "m68667:problem:fs-idm54726592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm30020688",
+                "segmentId": "m68667:problem:fs-idm30020688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp45967184",
+                "segmentId": "m68667:problem:fs-idp45967184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm50326880",
+                "segmentId": "m68667:problem:fs-idm50326880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm43008064",
+                "segmentId": "m68667:problem:fs-idm43008064"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp57566720",
+                "segmentId": "m68667:problem:fs-idp57566720"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm36674816",
+                "segmentId": "m68667:solution:fs-idm36674816"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm25131712",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp44836960",
+                "segmentId": "m68667:problem:fs-idp44836960"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm38551280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp13303968",
+                "segmentId": "m68667:problem:fs-idp13303968"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp134899616",
+                "segmentId": "m68667:solution:fs-idp134899616"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm29444768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25237936",
+                "segmentId": "m68667:problem:fs-idm25237936"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm50582272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp101351088",
+                "segmentId": "m68667:problem:fs-idp101351088"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm42737680",
+                "segmentId": "m68667:solution:fs-idm42737680"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm10469360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp15433488",
+                "segmentId": "m68667:problem:fs-idp15433488"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp17429552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp17430064",
+                "segmentId": "m68667:problem:fs-idp17430064"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1547376",
+                "segmentId": "m68667:solution:fs-idm1547376"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm1546416",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1545904",
+                "segmentId": "m68667:problem:fs-idm1545904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm1692336",
+                "segmentId": "m68667:problem:fs-idm1692336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm1691344",
+                "segmentId": "m68667:problem:fs-idm1691344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm1690752",
+                "segmentId": "m68667:problem:fs-idm1690752"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp17769472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp17769984",
+                "segmentId": "m68667:problem:fs-idp17769984"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp49584",
+                "segmentId": "m68667:problem:fs-idp49584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50096",
+                "segmentId": "m68667:problem:fs-idp50096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp50752",
+                "segmentId": "m68667:problem:fs-idp50752"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1607856",
+                "segmentId": "m68667:solution:fs-idm1607856"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68667:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68667:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68667:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68667:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68667:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68667:abstract-item:abstract-item-5"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm8143856",
+        "termSegmentId": "m68667:glossary-term:fs-idm8143856-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm8143856-def"
+      },
+      {
+        "id": "fs-idm115227296",
+        "termSegmentId": "m68667:glossary-term:fs-idm115227296-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm115227296-def"
+      },
+      {
+        "id": "fs-idm6667232",
+        "termSegmentId": "m68667:glossary-term:fs-idm6667232-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm6667232-def"
+      },
+      {
+        "id": "fs-idm37203312",
+        "termSegmentId": "m68667:glossary-term:fs-idm37203312-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm37203312-def"
+      },
+      {
+        "id": "fs-idp85033264",
+        "termSegmentId": "m68667:glossary-term:fs-idp85033264-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idp85033264-def"
+      },
+      {
+        "id": "fs-idm25215648",
+        "termSegmentId": "m68667:glossary-term:fs-idm25215648-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm25215648-def"
+      },
+      {
+        "id": "fs-idp9074576",
+        "termSegmentId": "m68667:glossary-term:fs-idp9074576-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idp9074576-def"
+      },
+      {
+        "id": "fs-idp19511536",
+        "termSegmentId": "m68667:glossary-term:fs-idp19511536-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idp19511536-def"
+      },
+      {
+        "id": "fs-idm23882384",
+        "termSegmentId": "m68667:glossary-term:fs-idm23882384-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm23882384-def"
+      },
+      {
+        "id": "fs-idm23865104",
+        "termSegmentId": "m68667:glossary-term:fs-idm23865104-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm23865104-def"
+      },
+      {
+        "id": "fs-idm5111888",
+        "termSegmentId": "m68667:glossary-term:fs-idm5111888-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm5111888-def"
+      },
+      {
+        "id": "fs-idm6673632",
+        "termSegmentId": "m68667:glossary-term:fs-idm6673632-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm6673632-def"
+      },
+      {
+        "id": "fs-idm37314320",
+        "termSegmentId": "m68667:glossary-term:fs-idm37314320-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm37314320-def"
+      },
+      {
+        "id": "fs-idm37107584",
+        "termSegmentId": "m68667:glossary-term:fs-idm37107584-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm37107584-def"
+      },
+      {
+        "id": "fs-idm10806528",
+        "termSegmentId": "m68667:glossary-term:fs-idm10806528-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm10806528-def"
+      },
+      {
+        "id": "fs-idm6297360",
+        "termSegmentId": "m68667:glossary-term:fs-idm6297360-term",
+        "definitionSegmentId": "m68667:glossary-def:fs-idm6297360-def"
+      }
+    ]
+  },
+  "sectionOrder": 2
+}

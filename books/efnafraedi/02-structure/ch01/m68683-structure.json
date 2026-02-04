@@ -1,0 +1,1920 @@
+{
+  "moduleId": "m68683",
+  "title": {
+    "segmentId": "m68683:title:auto-1",
+    "text": "Mathematical Treatment of Measurement Results"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "9de27337-c22d-40d7-a59e-270d1a6c7b00",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the dimensional analysis (factor label) approach to mathematical calculations involving quantities",
+        "Use dimensional analysis to carry out unit conversions for a given property and computations involving two or more properties"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm319461744",
+      "segmentId": "m68683:para:fs-idm319461744"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm290867056",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm350487392",
+      "segmentId": "m68683:para:fs-idm350487392"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm257675424",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm308822992",
+      "segmentId": "m68683:para:fs-idm308822992"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm219214640",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm24572080",
+      "segmentId": "m68683:para:fs-idm24572080"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp106016944",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm316688784",
+      "segmentId": "m68683:para:fs-idm316688784"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp44099792",
+      "segmentId": "m68683:para:fs-idp44099792"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm285086480",
+      "class": null,
+      "title": {
+        "segmentId": "m68683:title:fs-idm285086480-title",
+        "text": "Conversion Factors and Dimensional Analysis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm273312256",
+          "segmentId": "m68683:para:fs-idm273312256"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm256748160",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm205801120",
+          "segmentId": "m68683:para:fs-idm205801120"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm222237232",
+          "class": "top-titled",
+          "summary": "This table is divided into 3 columns. They are titled length, volume, and mass. The following units are under the length column: 1 meter is equal to 1.0936 yards, 1 inch is equal to 2.54 cm 1 kilometer is equal to 0.62137 miles, 1 mile is equal to 1609.3 meters. The following units are under the volume column: 1 liter is equal to 1.0567 quarts, 1 quart is equal to 0.94635 meters, one cubic foot is equal to 28.317 liters, 1 tablespoon is equal to 14.787 milliliters. The following units are under the mass column: 1 kilogram is equal to 2.2046 pounds, 1 pound is equal to 453.59 grams, 1 avoirdupois ounce is equal to 28.349 grams, 1 troy ounce is equal to 31.103 grams.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-14",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c3",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-15",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-16",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-17",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-18",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-19",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-20",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-21",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-22",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-23",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-24",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-25",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-26",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-27",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-28",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68683:entry:auto-29",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm221472400",
+          "segmentId": "m68683:para:fs-idm221472400"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm153590912",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm291646272",
+          "segmentId": "m68683:para:fs-idm291646272"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm150235328",
+          "title": {
+            "segmentId": "m68683:example-title:fs-idm150235328-title",
+            "text": "Using a Unit Conversion Factor"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp22709840",
+              "segmentId": "m68683:para:fs-idp22709840"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm290807904",
+              "segmentId": "m68683:para:fs-idm290807904",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idm290807904-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm300877280",
+              "segmentId": "m68683:para:fs-idm300877280"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm369973600",
+              "segmentId": "m68683:para:fs-idm369973600"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm224226288",
+              "segmentId": "m68683:para:fs-idm224226288",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idm224226288-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm130267872",
+              "segmentId": "m68683:para:fs-idm130267872"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm138056288"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm233281680"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm222314304"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm209829536",
+              "title": {
+                "segmentId": "m68683:note-title:fs-idm209829536-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm130267872",
+                  "segmentId": "m68683:para:fs-idm130267872"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm262838208",
+          "segmentId": "m68683:para:fs-idm262838208"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm305814320",
+          "title": {
+            "segmentId": "m68683:example-title:fs-idm305814320-title",
+            "text": "Computing Quantities from Measurement Results and Known Mathematical Relations"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm280005808",
+              "segmentId": "m68683:para:fs-idm280005808"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp14199296",
+              "segmentId": "m68683:para:fs-idp14199296",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idp14199296-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm244171104",
+              "segmentId": "m68683:para:fs-idm244171104"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm301215296",
+              "segmentId": "m68683:para:fs-idm301215296"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm292167648",
+              "segmentId": "m68683:para:fs-idm292167648"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm219351440",
+              "segmentId": "m68683:para:fs-idm219351440",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idm219351440-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm292695264",
+              "segmentId": "m68683:para:fs-idm292695264"
+            },
+            {
+              "type": "list",
+              "id": "fs-idm287602768",
+              "listType": "bulleted",
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68683:item:fs-idm287602768-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68683:item:fs-idm287602768-item-2"
+                }
+              ]
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm336821696"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm279137456"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm289883088"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm144640128"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm9873904"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm207792224",
+              "title": {
+                "segmentId": "m68683:note-title:fs-idm207792224-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm292695264",
+                  "segmentId": "m68683:para:fs-idm292695264"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm306560960",
+          "title": {
+            "segmentId": "m68683:example-title:fs-idm306560960-title",
+            "text": "Computing Quantities from Measurement Results and Known Mathematical Relations"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm338996800",
+              "segmentId": "m68683:para:fs-idm338996800"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm127359616",
+              "segmentId": "m68683:para:fs-idm127359616"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm315428528",
+              "segmentId": "m68683:para:fs-idm315428528"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm327742336",
+              "segmentId": "m68683:para:fs-idm327742336",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idm327742336-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm142282576",
+              "segmentId": "m68683:para:fs-idm142282576"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp1583872",
+              "segmentId": "m68683:para:fs-idp1583872"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm311190128",
+              "segmentId": "m68683:para:fs-idm311190128"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm268939440",
+              "segmentId": "m68683:para:fs-idm268939440"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm125734208",
+              "segmentId": "m68683:para:fs-idm125734208",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idm125734208-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm247721312",
+              "segmentId": "m68683:para:fs-idm247721312"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm292238912",
+              "segmentId": "m68683:para:fs-idm292238912"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm210440528",
+              "segmentId": "m68683:para:fs-idm210440528"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm60362224"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm214696672"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm114266320"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm171836160"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm328491840"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp13830304",
+              "title": {
+                "segmentId": "m68683:note-title:fs-idp13830304-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm210440528",
+                  "segmentId": "m68683:para:fs-idm210440528"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm206910464",
+      "class": null,
+      "title": {
+        "segmentId": "m68683:title:fs-idm206910464-title",
+        "text": "Conversion of Temperature Units"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm262720192",
+          "segmentId": "m68683:para:fs-idm262720192"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm308860096",
+          "segmentId": "m68683:para:fs-idm308860096"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm288396336",
+          "segmentId": "m68683:para:fs-idm288396336"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm6121760",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm161552768",
+          "segmentId": "m68683:para:fs-idm161552768"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm292928800",
+          "segmentId": "m68683:para:fs-idm292928800"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm229969840",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm206340880",
+          "segmentId": "m68683:para:fs-idm206340880"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm234430272",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm218561008",
+          "segmentId": "m68683:para:fs-idm218561008"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm305465424",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm208304512",
+          "segmentId": "m68683:para:fs-idm208304512"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm226315088",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm356038704",
+          "segmentId": "m68683:para:fs-idm356038704"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm138168256",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm131802496",
+          "segmentId": "m68683:para:fs-idm131802496"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm309875456",
+          "segmentId": "m68683:para:fs-idm309875456"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp289344",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm303916848",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm288599552",
+          "segmentId": "m68683:para:fs-idm288599552"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_06_TempScales",
+          "caption": {
+            "segmentId": "m68683:caption:CNX_Chem_01_06_TempScales-caption"
+          },
+          "media": {
+            "id": "fs-idm249665120",
+            "alt": "A thermometer is shown for the Fahrenheit, Celsius and Kelvin scales. Under the Fahrenheit scale, the boiling point of water is 212 degrees while the freezing point of water is 32 degrees. Therefore, there are 180 Fahrenheit degrees between the boiling point of water and the freezing point of water. Under the Celsius scale, the boiling point of water is 100 degrees while the freezing point of water is 0 degrees. Therefore, there are 100 Celsius degrees between the boiling point and freezing point of water. Under the kelvin scale, the boiling point of water is 373.15 K, while the freezing point of water is 273.15 K. 233.15 K is equal to negative 40 degrees Celsius, which is also equal to negative 40 degrees Fahrenheit.",
+            "src": "../../media/CNX_Chem_01_06_TempScales.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm296725200",
+          "segmentId": "m68683:para:fs-idm296725200"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm75569040",
+          "title": {
+            "segmentId": "m68683:example-title:fs-idm75569040-title",
+            "text": "Conversion from Celsius"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm290946544",
+              "segmentId": "m68683:para:fs-idm290946544"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm288550064",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idm288550064-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp16310096",
+              "segmentId": "m68683:para:fs-idp16310096",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idp16310096-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm203762304",
+              "segmentId": "m68683:para:fs-idm203762304"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm223031696"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp114907616"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp2744272",
+              "title": {
+                "segmentId": "m68683:note-title:fs-idp2744272-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm203762304",
+                  "segmentId": "m68683:para:fs-idm203762304"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm309453552",
+          "title": {
+            "segmentId": "m68683:example-title:fs-idm309453552-title",
+            "text": "Conversion from Fahrenheit"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm421846336",
+              "segmentId": "m68683:para:fs-idm421846336"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm36231872",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idm36231872-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm296519728",
+              "segmentId": "m68683:para:fs-idm296519728",
+              "title": {
+                "segmentId": "m68683:para-title:fs-idm296519728-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm296391568",
+              "segmentId": "m68683:para:fs-idm296391568"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm32912"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm144212448"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm271612080",
+              "title": {
+                "segmentId": "m68683:note-title:fs-idm271612080-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm296391568",
+                  "segmentId": "m68683:para:fs-idm296391568"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm292051392",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68683:title:fs-idm292051392-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm126307616",
+          "segmentId": "m68683:para:fs-idm126307616"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm299998176",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68683:title:fs-idm299998176-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-109",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-110",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-111",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68683:entry:auto-112",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm321708320",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68683:title:fs-idm321708320-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm287695728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm205828912",
+                "segmentId": "m68683:problem:fs-idm205828912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm279869696",
+                "segmentId": "m68683:problem:fs-idm279869696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm84945616",
+                "segmentId": "m68683:problem:fs-idm84945616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp63976464",
+                "segmentId": "m68683:problem:fs-idp63976464"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp10346048",
+                "segmentId": "m68683:solution:fs-idp10346048"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm321326256",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm311439712",
+                "segmentId": "m68683:problem:fs-idm311439712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm208959712",
+                "segmentId": "m68683:problem:fs-idm208959712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm424194064",
+                "segmentId": "m68683:problem:fs-idm424194064"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm295984656",
+                "segmentId": "m68683:problem:fs-idm295984656"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp43396912",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm310365264",
+                "segmentId": "m68683:problem:fs-idm310365264"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm205490112",
+                "segmentId": "m68683:solution:fs-idm205490112"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm124621456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm29733712",
+                "segmentId": "m68683:problem:fs-idm29733712"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm125803088",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm292728304",
+                "segmentId": "m68683:problem:fs-idm292728304"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm184575152",
+                "segmentId": "m68683:solution:fs-idm184575152"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm128259568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm205705360",
+                "segmentId": "m68683:problem:fs-idm205705360"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm203954352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm210994400",
+                "segmentId": "m68683:problem:fs-idm210994400"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm208576112",
+                "segmentId": "m68683:solution:fs-idm208576112"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm290820272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp25376512",
+                "segmentId": "m68683:problem:fs-idp25376512"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp32978240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm127485184",
+                "segmentId": "m68683:problem:fs-idm127485184"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp32913072",
+                "segmentId": "m68683:solution:fs-idp32913072"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp3893440",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm227698368",
+                "segmentId": "m68683:problem:fs-idm227698368"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm280166528",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm294701072",
+                "segmentId": "m68683:problem:fs-idm294701072"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm196114640",
+                "segmentId": "m68683:solution:fs-idm196114640"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm311405440",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm335136096",
+                "segmentId": "m68683:problem:fs-idm335136096"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm159954784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm289987648",
+                "segmentId": "m68683:problem:fs-idm289987648"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm137236672",
+                "segmentId": "m68683:solution:fs-idm137236672"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm293326720",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm392857904",
+                "segmentId": "m68683:problem:fs-idm392857904"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm101514016",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm103945312",
+                "segmentId": "m68683:problem:fs-idm103945312"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm287857616",
+                "segmentId": "m68683:problem:fs-idm287857616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm210449872",
+                "segmentId": "m68683:problem:fs-idm210449872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm275388528",
+                "segmentId": "m68683:problem:fs-idm275388528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm84936752",
+                "segmentId": "m68683:problem:fs-idm84936752"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm321706016",
+                "segmentId": "m68683:problem:fs-idm321706016"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm223302480",
+                "segmentId": "m68683:problem:fs-idm223302480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm206685248",
+                "segmentId": "m68683:problem:fs-idm206685248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp17980176",
+                "segmentId": "m68683:problem:fs-idp17980176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm293327696",
+                "segmentId": "m68683:problem:fs-idm293327696"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm211581456",
+                "segmentId": "m68683:solution:fs-idm211581456"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm247037968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm308818096",
+                "segmentId": "m68683:problem:fs-idm308818096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm215457056",
+                "segmentId": "m68683:problem:fs-idm215457056"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp22672320",
+                "segmentId": "m68683:problem:fs-idp22672320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp6747456",
+                "segmentId": "m68683:problem:fs-idp6747456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp6307488",
+                "segmentId": "m68683:problem:fs-idp6307488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm290463344",
+                "segmentId": "m68683:problem:fs-idm290463344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm133611712",
+                "segmentId": "m68683:problem:fs-idm133611712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm321147200",
+                "segmentId": "m68683:problem:fs-idm321147200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm215787632",
+                "segmentId": "m68683:problem:fs-idm215787632"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm287495504",
+                "segmentId": "m68683:problem:fs-idm287495504"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp54026624",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm195964464",
+                "segmentId": "m68683:problem:fs-idm195964464"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm268990752",
+                "segmentId": "m68683:solution:fs-idm268990752"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm242942368",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm228166784",
+                "segmentId": "m68683:problem:fs-idm228166784"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm186995360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm247416224",
+                "segmentId": "m68683:problem:fs-idm247416224"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp176467360",
+                "segmentId": "m68683:solution:fs-idp176467360"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm311016240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm142857008",
+                "segmentId": "m68683:problem:fs-idm142857008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm128192960",
+                "segmentId": "m68683:problem:fs-idm128192960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm204780944",
+                "segmentId": "m68683:problem:fs-idm204780944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp1437328",
+                "segmentId": "m68683:problem:fs-idp1437328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm124542480",
+                "segmentId": "m68683:problem:fs-idm124542480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm210560384",
+                "segmentId": "m68683:problem:fs-idm210560384"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm216546816",
+                "segmentId": "m68683:problem:fs-idm216546816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm155997760",
+                "segmentId": "m68683:problem:fs-idm155997760"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm250694352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp10390400",
+                "segmentId": "m68683:problem:fs-idp10390400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm367197520",
+                "segmentId": "m68683:problem:fs-idm367197520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp51878496",
+                "segmentId": "m68683:problem:fs-idp51878496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm307271088",
+                "segmentId": "m68683:problem:fs-idm307271088"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm127105888",
+                "segmentId": "m68683:problem:fs-idm127105888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm218455584",
+                "segmentId": "m68683:problem:fs-idm218455584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm98022832",
+                "segmentId": "m68683:problem:fs-idm98022832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm162390144",
+                "segmentId": "m68683:problem:fs-idm162390144"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm134479920",
+                "segmentId": "m68683:solution:fs-idm134479920"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm219388000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm142862320",
+                "segmentId": "m68683:problem:fs-idm142862320"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm311640624",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm142857600",
+                "segmentId": "m68683:problem:fs-idm142857600"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp194388912",
+                "segmentId": "m68683:solution:fs-idp194388912"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm306975136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp31641040",
+                "segmentId": "m68683:problem:fs-idp31641040"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm244153744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm178696096",
+                "segmentId": "m68683:problem:fs-idm178696096"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm126197920",
+                "segmentId": "m68683:solution:fs-idm126197920"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm110873792",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp43402000",
+                "segmentId": "m68683:problem:fs-idp43402000"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp15401744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm155316144",
+                "segmentId": "m68683:problem:fs-idm155316144"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm321078368",
+                "segmentId": "m68683:solution:fs-idm321078368"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm207241008",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp31182736",
+                "segmentId": "m68683:problem:fs-idp31182736"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm289866560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp33104064",
+                "segmentId": "m68683:problem:fs-idp33104064"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm124373120",
+                "segmentId": "m68683:problem:fs-idm124373120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm97712544",
+                "segmentId": "m68683:problem:fs-idm97712544"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm182624144",
+                "segmentId": "m68683:solution:fs-idm182624144"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm95632784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm262562384",
+                "segmentId": "m68683:problem:fs-idm262562384"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm215857872",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm121592912",
+                "segmentId": "m68683:problem:fs-idm121592912"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm209433984",
+                "segmentId": "m68683:solution:fs-idm209433984"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm215482272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp63994848",
+                "segmentId": "m68683:problem:fs-idp63994848"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm361862336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm62194528",
+                "segmentId": "m68683:problem:fs-idm62194528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp56604960",
+                "segmentId": "m68683:problem:fs-idp56604960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm84745936",
+                "segmentId": "m68683:problem:fs-idm84745936"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp10159024",
+                "segmentId": "m68683:solution:fs-idp10159024"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm305607360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp9154400",
+                "segmentId": "m68683:problem:fs-idp9154400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm277853776",
+                "segmentId": "m68683:problem:fs-idm277853776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm304880",
+                "segmentId": "m68683:problem:fs-idm304880"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm216432832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm84747360",
+                "segmentId": "m68683:problem:fs-idm84747360"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm290040480",
+                "segmentId": "m68683:problem:fs-idm290040480"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm307942992",
+                "segmentId": "m68683:problem:fs-idm307942992"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm203289008",
+                "segmentId": "m68683:solution:fs-idm203289008"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm182387776",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm26116816",
+                "segmentId": "m68683:problem:fs-idm26116816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm26116432",
+                "segmentId": "m68683:problem:fs-idm26116432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm198676560",
+                "segmentId": "m68683:problem:fs-idm198676560"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm208263472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm127944384",
+                "segmentId": "m68683:problem:fs-idm127944384"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm24577456",
+                "segmentId": "m68683:solution:fs-idm24577456"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm291580080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm291579696",
+                "segmentId": "m68683:problem:fs-idm291579696"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm126910176",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm205295648",
+                "segmentId": "m68683:problem:fs-idm205295648"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm143339312",
+                "segmentId": "m68683:solution:fs-idm143339312"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm294247168",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm218028096",
+                "segmentId": "m68683:problem:fs-idm218028096"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm312310640",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm247413504",
+                "segmentId": "m68683:problem:fs-idm247413504"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp51877792",
+                "segmentId": "m68683:solution:fs-idp51877792"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm307064960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm307064576",
+                "segmentId": "m68683:problem:fs-idm307064576"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm161487744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm239024480",
+                "segmentId": "m68683:problem:fs-idm239024480"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm367616944",
+                "segmentId": "m68683:solution:fs-idm367616944"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68683:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68683:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68683:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm216300016",
+        "termSegmentId": "m68683:glossary-term:fs-idm216300016-term",
+        "definitionSegmentId": "m68683:glossary-def:fs-idm216300016-def"
+      },
+      {
+        "id": "fs-idm207141104",
+        "termSegmentId": "m68683:glossary-term:fs-idm207141104-term",
+        "definitionSegmentId": "m68683:glossary-def:fs-idm207141104-def"
+      },
+      {
+        "id": "fs-idm327357936",
+        "termSegmentId": "m68683:glossary-term:fs-idm327357936-term",
+        "definitionSegmentId": "m68683:glossary-def:fs-idm327357936-def"
+      },
+      {
+        "id": "fs-idm307214528",
+        "termSegmentId": "m68683:glossary-term:fs-idm307214528-term",
+        "definitionSegmentId": "m68683:glossary-def:fs-idm307214528-def"
+      }
+    ]
+  },
+  "sectionOrder": 6
+}

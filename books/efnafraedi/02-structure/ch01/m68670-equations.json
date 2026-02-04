@@ -1,0 +1,7 @@
+{
+  "eip-idm75994368": {
+    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mspace width=\"2em\"/><m:mtext>d</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mtext>m</m:mtext><m:mtext>V</m:mtext></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{density}=\\, \\frac{{\\text{mass}}}{{\\text{volume}}}\\, \\text{d}=\\, \\frac{\\text{m}}{\\text{V}}}",
+    "isBlock": true
+  }
+}

@@ -1,0 +1,2039 @@
+{
+  "moduleId": "m68674",
+  "title": {
+    "segmentId": "m68674:title:auto-1",
+    "text": "Measurements"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "8f4e1efc-5485-4cd0-b213-d33c9be94310",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the process of measurement",
+        "Identify the three basic parts of a quantity",
+        "Describe the properties and units of length, mass, volume, density, temperature, and time",
+        "Perform basic unit calculations and conversions in the metric and other unit systems"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm75764096",
+      "segmentId": "m68674:para:fs-idm75764096"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm128012432",
+      "segmentId": "m68674:para:fs-idm128012432"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp178656",
+      "segmentId": "m68674:para:fs-idp178656"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm144392592",
+      "segmentId": "m68674:para:fs-idm144392592"
+    },
+    {
+      "type": "table",
+      "id": "fs-idm81346144",
+      "class": "top-titled",
+      "summary": "Length is measured with the meter, which is symbolized using a lowercase M. Mass is measured with the kilogram which is symbolized with a lowercase K G. Time is measured with the second, which is symbolized with a lowercase S. Temperature is measured with the kelvin which is symbolized with an uppercase K. Electric current is measured with the ampere which is symbolized with an uppercase A. The amount of a substance is measured with the mole, which is symbolized with the lowercase letters, M O L. Luminous intensity is measured with the candela, which is symbolized with the lowercase letters C D.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-11",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c3",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-12",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-13",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-14",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-15",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-16",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-17",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-18",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-26",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-27",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-28",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-29",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-30",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-31",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-32",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-33",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-35",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "eip-134",
+      "segmentId": "m68674:para:eip-134"
+    },
+    {
+      "type": "table",
+      "id": "fs-idm81128320",
+      "class": "top-titled",
+      "summary": "The prefix femto has the symbol lowercase f and a factor of 10 to the negative fifteenth power. Therefore, 1 femtosecond, F S, is equal to 1 times 10 to the negative 15 of a meter, or 0.000000000001 of a meter. The prefix pico has the symbol lowercase P and a factor of 10 to the negative twelfth power. Therefore, 1 picosecond, P S, is equal to 1 times 10 to the negative 12 of a meter, or 0.000000000001 of a meter. The prefix nano has the symbol lowercase N and a factor of 10 to the negative ninth power. Therefore, 4 nanograms, or NG, equals 4 times ten to the negative 9, or 0.000000004 g. The prefix micro has the greek letter mu as its symbol and a factor of 10 to the negative sixth power. Therefore, 1 microliter, or mu L, is equal to one times ten to the negative 6 or 0.000001 L. The prefix milli has a lowercase M as its symbol and a factor of 10 to the negative third power. Therefore, 2 millimoles, or M mol, are equal to two times ten to the negative 3 or 0.002 mol. The prefix centi has a lowercase C as its symbol and a factor of 10 to the negative second power. Therefore, 7 centimeters, or C M, are equal to seven times ten to the negative 2 meters or 0.07 M O L. The prefix deci has a lowercase D as its symbol and a factor of 10 to the negative first power. Therefore, 1 deciliter, or lowercase D uppercase L, are equal to one times ten to the negative 1 meters or 0.1 L. The prefix kilo has a lowercase K as its symbol and a factor of 10 to the third power. Therefore, 1 kilometer, or K M, is equal to one times ten to the third meters or 1000 M. The prefix mega has an uppercase M as its symbol and a factor of 10 to the sixth power. Therefore, 3 megahertz, or M H Z, are equal to three times 10 to the sixth hertz, or 3000000 H Z. The prefix giga has an uppercase G as its symbol and a factor of 10 to the ninth power. Therefore, 8 gigayears, or G Y R, are equal to eight times 10 to the ninth years, or 800000000 G Y R. The prefix tera has an uppercase T as its symbol and a factor of 10 to the twelfth power. Therefore, 5 terawatts, or T W, are equal to five times 10 to the twelfth watts, or 5000000000000 W.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-37",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c4",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-38",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-39",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-40",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-41",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-42",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-43",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-44",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-45",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-46",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-47",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-48",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-49",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-50",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-51",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-52",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-53",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-54",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-55",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-56",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-57",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-58",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-59",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-60",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-61",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-62",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-63",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-64",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-65",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-66",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-67",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-68",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-69",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-70",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-71",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-72",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-73",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-74",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-75",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-76",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-77",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-78",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-79",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-80",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-81",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68674:entry:auto-82",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-83",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-84",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68674:entry:auto-85",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idp86805728",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm169361696",
+          "segmentId": "m68674:para:fs-idm169361696"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp25374912",
+      "class": null,
+      "title": {
+        "segmentId": "m68674:title:fs-idp25374912-title",
+        "text": "SI Base Units"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idp679312",
+          "class": null,
+          "title": {
+            "segmentId": "m68674:title:fs-idp679312-title",
+            "text": "Length"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm64613648",
+              "segmentId": "m68674:para:fs-idm64613648"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_01_04_MYdCmIn",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68674:caption:CNX_Chem_01_04_MYdCmIn-caption"
+              },
+              "media": {
+                "id": "fs-idm2958720",
+                "alt": "One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.",
+                "src": "../../media/CNX_Chem_01_04_MYdCmIn.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm1313360",
+          "class": null,
+          "title": {
+            "segmentId": "m68674:title:fs-idm1313360-title",
+            "text": "Mass"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp222999216",
+              "segmentId": "m68674:para:fs-idp222999216"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_01_04_Kilogram",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68674:caption:CNX_Chem_01_04_Kilogram-caption"
+              },
+              "media": {
+                "id": "fs-idm80189648",
+                "alt": "The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.",
+                "src": "../../media/CNX_Chem_01_04_Kilogram.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm1531808",
+          "class": null,
+          "title": {
+            "segmentId": "m68674:title:fs-idm1531808-title",
+            "text": "Temperature"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp3379184",
+              "segmentId": "m68674:para:fs-idp3379184"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm101578432",
+          "class": null,
+          "title": {
+            "segmentId": "m68674:title:fs-idm101578432-title",
+            "text": "Time"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm101738864",
+              "segmentId": "m68674:para:fs-idm101738864"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp389936",
+          "segmentId": "m68674:para:fs-idp389936"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp679312",
+      "class": null,
+      "title": {
+        "segmentId": "m68674:title:fs-idp679312-title",
+        "text": "Length"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm64613648",
+          "segmentId": "m68674:para:fs-idm64613648"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_04_MYdCmIn",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68674:caption:CNX_Chem_01_04_MYdCmIn-caption"
+          },
+          "media": {
+            "id": "fs-idm2958720",
+            "alt": "One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.",
+            "src": "../../media/CNX_Chem_01_04_MYdCmIn.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm1313360",
+      "class": null,
+      "title": {
+        "segmentId": "m68674:title:fs-idm1313360-title",
+        "text": "Mass"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp222999216",
+          "segmentId": "m68674:para:fs-idp222999216"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_04_Kilogram",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68674:caption:CNX_Chem_01_04_Kilogram-caption"
+          },
+          "media": {
+            "id": "fs-idm80189648",
+            "alt": "The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.",
+            "src": "../../media/CNX_Chem_01_04_Kilogram.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm1531808",
+      "class": null,
+      "title": {
+        "segmentId": "m68674:title:fs-idm1531808-title",
+        "text": "Temperature"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp3379184",
+          "segmentId": "m68674:para:fs-idp3379184"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm101578432",
+      "class": null,
+      "title": {
+        "segmentId": "m68674:title:fs-idm101578432-title",
+        "text": "Time"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm101738864",
+          "segmentId": "m68674:para:fs-idm101738864"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm23668768",
+      "class": null,
+      "title": {
+        "segmentId": "m68674:title:fs-idm23668768-title",
+        "text": "Derived SI Units"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm16046736",
+          "class": null,
+          "title": {
+            "segmentId": "m68674:title:fs-idm16046736-title",
+            "text": "Volume"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm77137776",
+              "segmentId": "m68674:para:fs-idm77137776"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm81813264",
+              "segmentId": "m68674:para:fs-idm81813264"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm163691744",
+              "segmentId": "m68674:para:fs-idm163691744"
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_01_04_Volume",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68674:caption:CNX_Chem_01_04_Volume-caption"
+              },
+              "media": {
+                "id": "fs-idm75233216",
+                "alt": "Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.",
+                "src": "../../media/CNX_Chem_01_04_Volume.jpg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm18447104",
+          "class": null,
+          "title": {
+            "segmentId": "m68674:title:fs-idm18447104-title",
+            "text": "Density"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp205372288",
+              "segmentId": "m68674:para:fs-idp205372288"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm74744496",
+              "segmentId": "m68674:para:fs-idm74744496"
+            },
+            {
+              "type": "table",
+              "id": "fs-idm45639696",
+              "class": "top-titled",
+              "summary": "This table reports the density of solids, liquids, and gases in grams per centimeters cubed. The values for solids are ice 0.92, oak wood 0.60 to 0.90, iron 7.9, copper 9.0, lead 11.3, silver 10.5, and gold 19.3. The values for liquids are water 1.0, ethanol 0.79, acetone 0.79, glycerin 1.26, olive oil 0.92, gasoline 0.70 to 0.77, and Mercury 13.6. The values for gases, which were measured when the gas was at 25 degrees Celsius and 1 atmosphere, are dry air 1.20, oxygen 1.31, nitrogen 1.14, carbon dioxide 1.80, helium 0.16, neon 0.83, and radon 9.1.",
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-118",
+                      "attributes": {
+                        "namest": "c1",
+                        "nameend": "c3",
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-119",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-120",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-121",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-122",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-123",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-124",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-125",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-126",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-127",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-128",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-129",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-130",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-131",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-132",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-133",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-134",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-135",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-136",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-137",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-138",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-139",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-140",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-141",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-142",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "para",
+              "id": "fs-idm81523280",
+              "segmentId": "m68674:para:fs-idm81523280"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm166517584",
+              "class": "unnumbered"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm10854912",
+          "segmentId": "m68674:para:fs-idm10854912"
+        },
+        {
+          "type": "example",
+          "id": "Example_01_04_01",
+          "title": {
+            "segmentId": "m68674:example-title:Example_01_04_01-title",
+            "text": "Calculation of Density"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm112138272",
+              "segmentId": "m68674:para:fs-idm112138272"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp40298832",
+              "segmentId": "m68674:para:fs-idp40298832",
+              "title": {
+                "segmentId": "m68674:para-title:fs-idp40298832-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp264752",
+              "segmentId": "m68674:para:fs-idp264752"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp2742064",
+              "segmentId": "m68674:para:fs-idp2742064",
+              "title": {
+                "segmentId": "m68674:para-title:fs-idp2742064-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp116749488",
+              "segmentId": "m68674:para:fs-idp116749488"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp2744784",
+              "segmentId": "m68674:para:fs-idp2744784"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm163080256"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm193550528"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp2744272",
+              "title": {
+                "segmentId": "m68674:note-title:fs-idp2744272-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp2744784",
+                  "segmentId": "m68674:para:fs-idp2744784"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idm83823632",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm108028240",
+              "segmentId": "m68674:para:fs-idm108028240"
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "Example_01_04_02",
+          "title": {
+            "segmentId": "m68674:example-title:Example_01_04_02-title",
+            "text": "Using Displacement of Water to Determine Density"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm108240880",
+              "segmentId": "m68674:para:fs-idm108240880"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp206606992",
+              "segmentId": "m68674:para:fs-idp206606992",
+              "title": {
+                "segmentId": "m68674:para-title:fs-idp206606992-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "newness",
+              "segmentId": "m68674:para:newness"
+            },
+            {
+              "type": "para",
+              "id": "newness2",
+              "segmentId": "m68674:para:newness2"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm92012848",
+              "segmentId": "m68674:para:fs-idm92012848"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp10631184",
+              "segmentId": "m68674:para:fs-idp10631184",
+              "title": {
+                "segmentId": "m68674:para-title:fs-idp10631184-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm118978144",
+              "segmentId": "m68674:para:fs-idm118978144"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm94054304"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm14274016"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm1774016"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp101664288",
+              "title": {
+                "segmentId": "m68674:note-title:fs-idp101664288-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm118978144",
+                  "segmentId": "m68674:para:fs-idm118978144"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm16046736",
+      "class": null,
+      "title": {
+        "segmentId": "m68674:title:fs-idm16046736-title",
+        "text": "Volume"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm77137776",
+          "segmentId": "m68674:para:fs-idm77137776"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm81813264",
+          "segmentId": "m68674:para:fs-idm81813264"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm163691744",
+          "segmentId": "m68674:para:fs-idm163691744"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_04_Volume",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68674:caption:CNX_Chem_01_04_Volume-caption"
+          },
+          "media": {
+            "id": "fs-idm75233216",
+            "alt": "Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.",
+            "src": "../../media/CNX_Chem_01_04_Volume.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm18447104",
+      "class": null,
+      "title": {
+        "segmentId": "m68674:title:fs-idm18447104-title",
+        "text": "Density"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp205372288",
+          "segmentId": "m68674:para:fs-idp205372288"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm74744496",
+          "segmentId": "m68674:para:fs-idm74744496"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm45639696",
+          "class": "top-titled",
+          "summary": "This table reports the density of solids, liquids, and gases in grams per centimeters cubed. The values for solids are ice 0.92, oak wood 0.60 to 0.90, iron 7.9, copper 9.0, lead 11.3, silver 10.5, and gold 19.3. The values for liquids are water 1.0, ethanol 0.79, acetone 0.79, glycerin 1.26, olive oil 0.92, gasoline 0.70 to 0.77, and Mercury 13.6. The values for gases, which were measured when the gas was at 25 degrees Celsius and 1 atmosphere, are dry air 1.20, oxygen 1.31, nitrogen 1.14, carbon dioxide 1.80, helium 0.16, neon 0.83, and radon 9.1.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-177",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c3",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-178",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-179",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-180",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-181",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-182",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-183",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-184",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-185",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-186",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-187",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-188",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-189",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-190",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-191",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-192",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-193",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-194",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-195",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-196",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-197",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-198",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-199",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-200",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68674:entry:auto-201",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm81523280",
+          "segmentId": "m68674:para:fs-idm81523280"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm166517584",
+          "class": "unnumbered"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm333536464",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68674:title:fs-idm333536464-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm330017088",
+          "segmentId": "m68674:para:fs-idm330017088"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm313032912",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68674:title:fs-idm313032912-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68674:entry:auto-206",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm357067232",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68674:title:fs-idm357067232-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm230641408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm263137792",
+                "segmentId": "m68674:problem:fs-idm263137792"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm323373040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm382474864",
+                "segmentId": "m68674:problem:fs-idm382474864"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm339638512",
+                "segmentId": "m68674:solution:fs-idm339638512"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm147829600",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm332221616",
+                "segmentId": "m68674:problem:fs-idm332221616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm344160384",
+                "segmentId": "m68674:problem:fs-idm344160384"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm329494928",
+                "segmentId": "m68674:problem:fs-idm329494928"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm49093392",
+                "segmentId": "m68674:problem:fs-idm49093392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm326110528",
+                "segmentId": "m68674:problem:fs-idm326110528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm150356736",
+                "segmentId": "m68674:problem:fs-idm150356736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm226840320",
+                "segmentId": "m68674:problem:fs-idm226840320"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm16612928",
+                "segmentId": "m68674:problem:fs-idm16612928"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm314038064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm231715616",
+                "segmentId": "m68674:problem:fs-idm231715616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm270779504",
+                "segmentId": "m68674:problem:fs-idm270779504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm7152592",
+                "segmentId": "m68674:problem:fs-idm7152592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm241075344",
+                "segmentId": "m68674:problem:fs-idm241075344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm11255792",
+                "segmentId": "m68674:problem:fs-idm11255792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm386910128",
+                "segmentId": "m68674:problem:fs-idm386910128"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm312450912",
+                "segmentId": "m68674:problem:fs-idm312450912"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm332809616",
+                "segmentId": "m68674:problem:fs-idm332809616"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm123011200",
+                "segmentId": "m68674:solution:fs-idm123011200"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm323234992",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm309359760",
+                "segmentId": "m68674:problem:fs-idm309359760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm326870592",
+                "segmentId": "m68674:problem:fs-idm326870592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm317616224",
+                "segmentId": "m68674:problem:fs-idm317616224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm317895296",
+                "segmentId": "m68674:problem:fs-idm317895296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm315649600",
+                "segmentId": "m68674:problem:fs-idm315649600"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm325331296",
+                "segmentId": "m68674:problem:fs-idm325331296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm231824208",
+                "segmentId": "m68674:problem:fs-idm231824208"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm344858160",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm267043248",
+                "segmentId": "m68674:problem:fs-idm267043248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm184430352",
+                "segmentId": "m68674:problem:fs-idm184430352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm330040176",
+                "segmentId": "m68674:problem:fs-idm330040176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm327113744",
+                "segmentId": "m68674:problem:fs-idm327113744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm12728864",
+                "segmentId": "m68674:problem:fs-idm12728864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm272595216",
+                "segmentId": "m68674:problem:fs-idm272595216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm338385360",
+                "segmentId": "m68674:problem:fs-idm338385360"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm294656720",
+                "segmentId": "m68674:problem:fs-idm294656720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm55226416",
+                "segmentId": "m68674:problem:fs-idm55226416"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm341565728",
+                "segmentId": "m68674:solution:fs-idm341565728"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm239239696",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm250646432",
+                "segmentId": "m68674:problem:fs-idm250646432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp11615024",
+                "segmentId": "m68674:problem:fs-idp11615024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm305498784",
+                "segmentId": "m68674:problem:fs-idm305498784"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm165750544",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm250881440",
+                "segmentId": "m68674:problem:fs-idm250881440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm148389344",
+                "segmentId": "m68674:problem:fs-idm148389344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm329801072",
+                "segmentId": "m68674:problem:fs-idm329801072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm338418880",
+                "segmentId": "m68674:problem:fs-idm338418880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm310048112",
+                "segmentId": "m68674:problem:fs-idm310048112"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp31066016",
+                "segmentId": "m68674:solution:fs-idp31066016"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm307823136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm366109136",
+                "segmentId": "m68674:problem:fs-idm366109136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm59188672",
+                "segmentId": "m68674:problem:fs-idm59188672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm317502864",
+                "segmentId": "m68674:problem:fs-idm317502864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm307356048",
+                "segmentId": "m68674:problem:fs-idm307356048"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm160286704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp8023104",
+                "segmentId": "m68674:problem:fs-idp8023104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm153136896",
+                "segmentId": "m68674:problem:fs-idm153136896"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm315474368",
+                "segmentId": "m68674:solution:fs-idm315474368"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68674:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68674:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68674:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68674:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68674:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm285658848",
+        "termSegmentId": "m68674:glossary-term:fs-idm285658848-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm285658848-def"
+      },
+      {
+        "id": "fs-idm227540096",
+        "termSegmentId": "m68674:glossary-term:fs-idm227540096-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm227540096-def"
+      },
+      {
+        "id": "fs-idm244788352",
+        "termSegmentId": "m68674:glossary-term:fs-idm244788352-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm244788352-def"
+      },
+      {
+        "id": "fs-idm147403536",
+        "termSegmentId": "m68674:glossary-term:fs-idm147403536-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm147403536-def"
+      },
+      {
+        "id": "fs-idm160547456",
+        "termSegmentId": "m68674:glossary-term:fs-idm160547456-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm160547456-def"
+      },
+      {
+        "id": "fs-idm228140240",
+        "termSegmentId": "m68674:glossary-term:fs-idm228140240-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm228140240-def"
+      },
+      {
+        "id": "fs-idp28932848",
+        "termSegmentId": "m68674:glossary-term:fs-idp28932848-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idp28932848-def"
+      },
+      {
+        "id": "fs-idm238691152",
+        "termSegmentId": "m68674:glossary-term:fs-idm238691152-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm238691152-def"
+      },
+      {
+        "id": "fs-idm22681216",
+        "termSegmentId": "m68674:glossary-term:fs-idm22681216-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm22681216-def"
+      },
+      {
+        "id": "fs-idp19165184",
+        "termSegmentId": "m68674:glossary-term:fs-idp19165184-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idp19165184-def"
+      },
+      {
+        "id": "fs-idm310839680",
+        "termSegmentId": "m68674:glossary-term:fs-idm310839680-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm310839680-def"
+      },
+      {
+        "id": "fs-idm23328032",
+        "termSegmentId": "m68674:glossary-term:fs-idm23328032-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm23328032-def"
+      },
+      {
+        "id": "fs-idm331555696",
+        "termSegmentId": "m68674:glossary-term:fs-idm331555696-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm331555696-def"
+      },
+      {
+        "id": "fs-idm207134160",
+        "termSegmentId": "m68674:glossary-term:fs-idm207134160-term",
+        "definitionSegmentId": "m68674:glossary-def:fs-idm207134160-def"
+      }
+    ]
+  },
+  "sectionOrder": 4
+}

@@ -1,0 +1,470 @@
+{
+  "moduleId": "m68664",
+  "title": {
+    "segmentId": "m68664:title:auto-1",
+    "text": "Chemistry in Context"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "e4d0a888-2602-4b89-ae08-c1abd498a239",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Outline the historical development of chemistry",
+        "Provide examples of the importance of chemistry in everyday life",
+        "Describe the scientific method",
+        "Differentiate among hypotheses, theories, and laws",
+        "Provide examples illustrating macroscopic, microscopic, and symbolic domains"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp77567568",
+      "segmentId": "m68664:para:fs-idp77567568"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp55245024",
+      "segmentId": "m68664:para:fs-idp55245024"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp128238864",
+      "segmentId": "m68664:para:fs-idp128238864"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_01_01_Alchemist",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68664:caption:CNX_Chem_01_01_Alchemist-caption"
+      },
+      "media": {
+        "id": "fs-idp165285520",
+        "alt": "A sketch depicts 4 people stirring and handling chemicals. The chemicals are held in a variety of barrels and large cylinders. Several of the containers are being heated over burning embers. A large stove in the laboratory is filled with burning embers. There is also a large chest in the corner that is producing steam.",
+        "src": "../../media/CNX_Chem_01_01_Alchemist.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp139124096",
+      "segmentId": "m68664:para:fs-idp139124096"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp71946416",
+      "class": null,
+      "title": {
+        "segmentId": "m68664:title:fs-idp71946416-title",
+        "text": "Chemistry: The Central Science"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm166568720",
+          "segmentId": "m68664:para:fs-idm166568720"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_01_ChemWeb",
+          "caption": {
+            "segmentId": "m68664:caption:CNX_Chem_01_01_ChemWeb-caption"
+          },
+          "media": {
+            "id": "fs-idm72326528",
+            "alt": "A flowchart shows a box containing chemistry at its center. Chemistry is connected to geochemistry, nuclear chemistry, chemical physics, nanoscience and nanotechnology, materials science, chemical engineering, biochemistry and molecular biology, environmental science, agriculture, and mathematics. Each of these disciplines is further connected to other related fields including medicine, biology, food science, geology earth sciences, toxicology, physics, and computer science.",
+            "src": "../../media/CNX_Chem_01_01_ChemWeb.jpg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm183676832",
+          "segmentId": "m68664:para:fs-idm183676832"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp132288224",
+      "class": null,
+      "title": {
+        "segmentId": "m68664:title:fs-idp132288224-title",
+        "text": "The Scientific Method"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm19494768",
+          "segmentId": "m68664:para:fs-idm19494768"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp4269776",
+          "segmentId": "m68664:para:fs-idp4269776"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_01_SciMethod",
+          "caption": {
+            "segmentId": "m68664:caption:CNX_Chem_01_01_SciMethod-caption"
+          },
+          "media": {
+            "id": "fs-idp22634576",
+            "alt": "In this flowchart, the observation and curiosity box has an arrow pointing to a box labeled form hypothesis; make prediction. A curved arrow labeled next connects this box to a box labeled perform experiment; make more observations. Another arrow points back to the box that says form hypothesis; make prediction. This arrow is labeled results not consistent with prediction. Another arrow, labeled results are consistent with prediction points from the perform experiment box to a box labeled contributes to body of knowledge. However, an arrow also points from contributes to body of knowledge back to the form hypothesis; make prediction box. This arrow is labeled further testing does not support hypothesis. There are also two other arrows leading out from contributes to body of knowledge. One arrow is labeled much additional testing yields constant observations. This leads to the observation becomes law box. The other arrow is labeled much additional testing supports hypothesis. This arrow leads to the hypothesis becomes theory box.",
+            "src": "../../media/CNX_Chem_01_01_SciMethod.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm130146160",
+      "class": null,
+      "title": {
+        "segmentId": "m68664:title:fs-idm130146160-title",
+        "text": "The Domains of Chemistry"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm148555376",
+          "segmentId": "m68664:para:fs-idm148555376"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm148595088",
+          "segmentId": "m68664:para:fs-idm148595088"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp130311264",
+          "segmentId": "m68664:para:fs-idp130311264"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp28442320",
+          "segmentId": "m68664:para:fs-idp28442320"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm166065136",
+          "segmentId": "m68664:para:fs-idm166065136"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm64529776",
+          "segmentId": "m68664:para:fs-idm64529776"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_01_01_WaterDom",
+          "caption": {
+            "segmentId": "m68664:caption:CNX_Chem_01_01_WaterDom-caption"
+          },
+          "media": {
+            "id": "fs-idp68828304",
+            "alt": "Figure A shows a photo of an iceberg floating in a sea has three arrows. Each arrow points to figure B, which contains three diagrams showing how the water molecules are organized in the air, ice, and sea. In the air, which contains the gaseous form of water, H subscript 2 O gas, the water molecules are disconnected and widely spaced. In the ice, which is the solid form of water, H subscript 2 O solid, the water molecules are bonded together into rings, with each ring containing six water molecules. Three of these rings are connected to each other. In the sea, which is the liquid form of water, H subscript 2 O liquid, the water molecules are very densely packed. The molecules are not bonded together.",
+            "src": "../../media/CNX_Chem_01_01_WaterDom.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm40478192",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68664:title:fs-idm40478192-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm14698032",
+          "segmentId": "m68664:para:fs-idm14698032"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp75215696",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68664:title:fs-idp75215696-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm34987968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm59206592",
+                "segmentId": "m68664:problem:fs-idm59206592"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm40521792",
+                "segmentId": "m68664:solution:fs-idm40521792"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp45595424",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp42446672",
+                "segmentId": "m68664:problem:fs-idp42446672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp109329824",
+                "segmentId": "m68664:problem:fs-idp109329824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp71047280",
+                "segmentId": "m68664:problem:fs-idp71047280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp109280880",
+                "segmentId": "m68664:problem:fs-idp109280880"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp38309200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp4603232",
+                "segmentId": "m68664:problem:fs-idp4603232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp30515744",
+                "segmentId": "m68664:problem:fs-idp30515744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp71063392",
+                "segmentId": "m68664:problem:fs-idp71063392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp23193248",
+                "segmentId": "m68664:problem:fs-idp23193248"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm53320912",
+                "segmentId": "m68664:solution:fs-idm53320912"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm58468592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm59152592",
+                "segmentId": "m68664:problem:fs-idm59152592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp94102864",
+                "segmentId": "m68664:problem:fs-idp94102864"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp77253536",
+                "segmentId": "m68664:problem:fs-idp77253536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp71129152",
+                "segmentId": "m68664:problem:fs-idp71129152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp71050048",
+                "segmentId": "m68664:problem:fs-idp71050048"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm67489232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp54908512",
+                "segmentId": "m68664:problem:fs-idp54908512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp19466944",
+                "segmentId": "m68664:problem:fs-idp19466944"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp55370768",
+                "segmentId": "m68664:problem:fs-idp55370768"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp68623088",
+                "segmentId": "m68664:problem:fs-idp68623088"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp23452688",
+                "segmentId": "m68664:problem:fs-idp23452688"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm56463840",
+                "segmentId": "m68664:solution:fs-idm56463840"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp6505632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp112708912",
+                "segmentId": "m68664:problem:fs-idp112708912"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp40361152",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp72952208",
+                "segmentId": "m68664:problem:fs-idp72952208"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm78140032",
+                "segmentId": "m68664:solution:fs-idm78140032"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68664:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68664:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68664:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68664:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68664:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68664:abstract-item:abstract-item-5"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm42704816",
+        "termSegmentId": "m68664:glossary-term:fs-idm42704816-term",
+        "definitionSegmentId": "m68664:glossary-def:fs-idm42704816-def"
+      },
+      {
+        "id": "fs-idm100774384",
+        "termSegmentId": "m68664:glossary-term:fs-idm100774384-term",
+        "definitionSegmentId": "m68664:glossary-def:fs-idm100774384-def"
+      },
+      {
+        "id": "fs-idp16592704",
+        "termSegmentId": "m68664:glossary-term:fs-idp16592704-term",
+        "definitionSegmentId": "m68664:glossary-def:fs-idp16592704-def"
+      },
+      {
+        "id": "fs-idm41373200",
+        "termSegmentId": "m68664:glossary-term:fs-idm41373200-term",
+        "definitionSegmentId": "m68664:glossary-def:fs-idm41373200-def"
+      },
+      {
+        "id": "fs-idm121167952",
+        "termSegmentId": "m68664:glossary-term:fs-idm121167952-term",
+        "definitionSegmentId": "m68664:glossary-def:fs-idm121167952-def"
+      },
+      {
+        "id": "fs-idp132867984",
+        "termSegmentId": "m68664:glossary-term:fs-idp132867984-term",
+        "definitionSegmentId": "m68664:glossary-def:fs-idp132867984-def"
+      },
+      {
+        "id": "fs-idm105060976",
+        "termSegmentId": "m68664:glossary-term:fs-idm105060976-term",
+        "definitionSegmentId": "m68664:glossary-def:fs-idm105060976-def"
+      },
+      {
+        "id": "fs-idm134113488",
+        "termSegmentId": "m68664:glossary-term:fs-idm134113488-term",
+        "definitionSegmentId": "m68664:glossary-def:fs-idm134113488-def"
+      }
+    ]
+  },
+  "sectionOrder": 1
+}

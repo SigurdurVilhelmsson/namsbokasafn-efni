@@ -1,0 +1,23 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mtext>,</m:mtext></m:mrow></m:math>",
+    "latex": "{2{\\text{H}}_{2}\\text{O}(l)\\, \\longrightarrow \\, 2{\\text{H}}_{2}(g)+{\\text{O}}_{2}(g)\\text{,}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mtext>glucose</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>ethanol</m:mtext><m:mo>+</m:mo><m:mtext>carbon dioxide</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{glucose}\\, \\longrightarrow \\, \\text{ethanol}+\\text{carbon dioxide}}"
+  },
+  "fs-idp17770496": {
+    "mathml": "<m:math><m:mrow><m:mtext>glucose</m:mtext><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:mtext>ethanol</m:mtext><m:mo>+</m:mo><m:mtext>carbon dioxide</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{glucose}\\, \\longrightarrow \\, \\text{ethanol}+\\text{carbon dioxide}}",
+    "isBlock": true
+  }
+}

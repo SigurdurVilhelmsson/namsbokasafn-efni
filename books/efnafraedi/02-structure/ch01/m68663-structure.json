@@ -1,0 +1,75 @@
+{
+  "moduleId": "m68663",
+  "title": {
+    "segmentId": "m68663:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "0d8fa7a1-89a1-46a8-b340-aa25a6093908",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Chemistry in Context",
+        "Phases and Classification of Matter",
+        "Physical and Chemical Properties",
+        "Measurements",
+        "Measurement Uncertainty, Accuracy, and Precision",
+        "Mathematical Treatment of Measurement Results",
+        "Module for Testing Functions of Various Items to See How They Generate in the PDF"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_01_00_DailyChem",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68663:caption:CNX_Chem_01_00_DailyChem-caption"
+      },
+      "media": {
+        "id": "fs-idm52126432",
+        "alt": "A photo collage shows a cup of black coffee, a hand covered in foamy soap, a remote control, and a gasoline pump nozzle inserted into a vehicle’s gas tank.",
+        "src": "../../media/CNX_Chem_01_00_DailyChem.jpg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp32962032",
+      "segmentId": "m68663:para:fs-idp32962032"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp22452080",
+      "segmentId": "m68663:para:fs-idp22452080"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68663:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68663:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68663:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68663:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68663:abstract-item:abstract-item-5"
+      },
+      {
+        "segmentId": "m68663:abstract-item:abstract-item-6"
+      },
+      {
+        "segmentId": "m68663:abstract-item:abstract-item-7"
+      }
+    ]
+  },
+  "sectionOrder": 0
+}

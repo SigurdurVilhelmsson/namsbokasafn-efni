@@ -1,0 +1,136 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{density}=\\, \\frac{{\\text{mass}}}{{\\text{volume}}}}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-26": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idm166517584": {
+    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{density}=\\, \\frac{{\\text{mass}}}{{\\text{volume}}}}",
+    "isBlock": true
+  },
+  "fs-idm163080256": {
+    "mathml": "<m:math><m:mrow><m:mtext>volume of lead cube</m:mtext><m:mo>=</m:mo><m:mn>2.00 cm</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>2.00 cm</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>2.00 cm</m:mn><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>8.00 cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{volume of lead cube}=2.00 cm\\, \\times \\, 2.00 cm\\, \\times \\, 2.00 cm={{\\text{8.00 cm}}}^{3}}",
+    "isBlock": true
+  },
+  "fs-idm193550528": {
+    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>90.7 g</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mtext>8.00 cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>11.3 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{density}=\\, \\frac{{\\text{mass}}}{{\\text{volume}}}\\, =\\, \\frac{{\\text{90.7 g}}}{{{{\\text{8.00 cm}}}^{3}}}\\, =\\, {{\\text{11.3 g/cm}}}^{3}}",
+    "isBlock": true
+  },
+  "fs-idm94054304": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>v</m:mi><m:mtext>iron</m:mtext></m:msub><m:mo>=</m:mo><m:mn>29.5 mL</m:mn><m:mo>–</m:mo><m:mn>25.5 mL</m:mn><m:mo>=</m:mo><m:mn>4.0 mL</m:mn>\n</m:mrow></m:math>",
+    "latex": "{{v}_{\\text{iron}}=29.5 mL–25.5 mL=4.0 mL}",
+    "isBlock": true
+  },
+  "fs-idm14274016": {
+    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac>\n<m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/>\n<m:mfrac><m:mrow><m:mtext>31.48 g</m:mtext></m:mrow><m:mrow><m:mn>4.0 mL</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>7.9 g/mL</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{density}=\\, \\frac{{\\text{mass}}}{{\\text{volume}}} \\, =\\, \\frac{{\\text{31.48 g}}}{{4.0 mL}}\\, =\\text{7.9 g/mL}}",
+    "isBlock": true
+  },
+  "fs-idm1774016": {
+    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac>\n<m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/>\n<m:mfrac><m:mrow><m:mtext>1.95 g</m:mtext></m:mrow><m:mrow><m:mn>3.0 mL</m:mn></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>0.65 g/mL</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{density}=\\, \\frac{{\\text{mass}}}{{\\text{volume}}} \\, =\\, \\frac{{\\text{1.95 g}}}{{3.0 mL}}\\, =\\text{0.65 g/mL}}",
+    "isBlock": true
+  }
+}
