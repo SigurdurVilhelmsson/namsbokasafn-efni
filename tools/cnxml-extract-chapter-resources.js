@@ -25,8 +25,8 @@
 
 import fs from 'fs';
 import path from 'path';
-import katex from 'katex';
 import { fileURLToPath } from 'url';
+import { renderMathML } from './lib/mathjax-render.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
 import { escapeAttr } from './lib/cnxml-elements.js';
 import { buildModuleSections } from './lib/module-sections.js';
@@ -123,36 +123,18 @@ function buildReferenceMap(book, chapter) {
 // =====================================================================
 
 /**
- * Render LaTeX to KaTeX HTML.
- */
-function renderLatex(latex, displayMode = true) {
-  try {
-    return katex.renderToString(latex, {
-      displayMode,
-      throwOnError: false,
-      strict: false,
-      trust: true,
-    });
-  } catch (err) {
-    return `<span class="katex-error" data-latex="${escapeAttr(latex)}">[Math]</span>`;
-  }
-}
-
-/**
- * Process content with MathML, converting to KaTeX.
+ * Process content with MathML, converting to MathJax SVG.
  */
 function processContent(content, context = {}) {
   if (!content) return '';
 
   let result = content;
 
-  // Convert MathML to KaTeX
-  // Note: KaTeX renderToString already wraps in <span class="katex">, so we use
-  // a different wrapper class to avoid nested .katex elements and font-size issues
+  // Convert MathML to MathJax SVG
   result = result.replace(/<m:math[^>]*>[\s\S]*?<\/m:math>/g, (mathml) => {
     const latex = convertMathMLToLatex(mathml);
-    const katexHtml = renderLatex(latex, false);
-    return `<span class="math-inline" data-latex="${escapeAttr(latex)}">${katexHtml}</span>`;
+    const mathHtml = renderMathML(mathml, false);
+    return `<span class="math-inline" data-latex="${escapeAttr(latex)}">${mathHtml}</span>`;
   });
 
   // Convert emphasis
@@ -409,7 +391,7 @@ function extractKeyEquations(cnxmlContent, moduleId, moduleInfo) {
     const mathMatch = entryContent.match(/<m:math[^>]*>[\s\S]*?<\/m:math>/);
     if (mathMatch) {
       latex = convertMathMLToLatex(mathMatch[0]);
-      html = renderLatex(latex, true);
+      html = renderMathML(mathMatch[0], true);
     } else {
       // Plain text equation
       html = processContent(entryContent);
@@ -467,7 +449,7 @@ function buildEquationsHtml(equations, chapter, _book) {
       lines.push('          <div class="equation-entry">');
       if (eq.latex) {
         lines.push(
-          `            <div class="katex-display" data-latex="${escapeAttr(eq.latex)}">${eq.html}</div>`
+          `            <div class="mathjax-display" data-latex="${escapeAttr(eq.latex)}">${eq.html}</div>`
         );
       } else {
         lines.push(`            <div class="equation-text">${eq.html}</div>`);
