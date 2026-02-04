@@ -25,7 +25,7 @@ hreyfiorka getur verið í formi aukinnar færslu (ferðalags eða hreyfingar
 í beinni línu), titrings eða snúnings atómanna eða sameindanna. Þegar
 varmaorka tapast minnkar styrkur þessara hreyfinga og hreyfiorkan
 minnkar. Heildarsumma allra mögulegra tegunda orku sem er til staðar í
-efni er kölluð *<emphasis effect="italics">innri orka (</emphasis>U<emphasis effect="italics">)</emphasis><emphasis effect="italics">, stundum táknuð með </emphasis>E*.</para>
+efni er kölluð <term>innri orka (<emphasis effect="italics">U</emphasis>)</term>, stundum táknuð með <emphasis effect="italics">E</emphasis>.</para>
 <para id="fs-idm1690784">Þegar kerfi gengur í gegnum breytingu
 getur innri orka þess breyst og orka getur flust frá kerfinu yfir í
 umhverfið eða frá umhverfinu yfir í kerfið. Orka flyst inn í kerfi þegar
@@ -97,17 +97,16 @@ vegalengd er ekki ástandsfall; hún er háð leiðinni). (heimild: breyting
 á verki eftir Paul Shaffner)</caption>
 </figure>
 <para id="fs-idp107461968">Efnafræðingar nota venjulega
-eiginleika sem kallast *<emphasis effect="italics">vermi (</emphasis>H<emphasis effect="italics">)</emphasis><emphasis effect="italics"> til að lýsa varmafræði efna- og
+eiginleika sem kallast <term>vermi (<emphasis effect="italics">H</emphasis>)</term> til að lýsa varmafræði efna- og
 eðlisfræðilegra ferla. Vermi er skilgreint sem summa innri orku kerfis
-(</emphasis>U<emphasis effect="italics">) og stærðfræðilegs margfeldis þrýstings þess (</emphasis>P<emphasis effect="italics">) og rúmmáls
-(</emphasis>V*):</para>
+(<emphasis effect="italics">U</emphasis>) og stærðfræðilegs margfeldis þrýstings þess (<emphasis effect="italics">P</emphasis>) og rúmmáls
+(<emphasis effect="italics">V</emphasis>):</para>
 <equation id="fs-idm231773856" class="unnumbered"><m:math><m:mi>H</m:mi><m:mo>=</m:mo><m:mi>U</m:mi><m:mo>+</m:mo><m:mi>P</m:mi><m:mi>V</m:mi></m:math></equation>
 <para id="fs-idm20812336">Vermi er einnig ástandsfall. Ekki er
 hægt að mæla vermigildi fyrir tiltekin efni beint; aðeins er hægt að
 ákvarða <emphasis effect="italics">vermibreytingar</emphasis> fyrir efna- eða eðlisfræðileg ferli. Fyrir
 ferli sem eiga sér stað við stöðugan þrýsting (algengt skilyrði fyrir
-margar efna- og eðlisfræðilegar breytingar) er *<emphasis effect="italics">vermibreytingin
-(Δ</emphasis>H<emphasis effect="italics">)</emphasis>*:</para>
+margar efna- og eðlisfræðilegar breytingar) er <term>vermibreytingin (Δ<emphasis effect="italics">H</emphasis>)</term>:</para>
 <equation id="fs-idm182172016" class="unnumbered"><m:math><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mtext>Δ</m:mtext><m:mi>U</m:mi><m:mo>+</m:mo><m:mi>P</m:mi><m:mtext>Δ</m:mtext><m:mi>V</m:mi></m:math></equation>
 <para id="fs-idm15694224">Stærðfræðilega margfeldið <emphasis effect="italics">P</emphasis>Δ<emphasis effect="italics">V</emphasis>
 táknar vinnu (<emphasis effect="italics">w</emphasis>), þ.e. þenslu- eða þrýstings-rúmmálsvinnu eins og fram
