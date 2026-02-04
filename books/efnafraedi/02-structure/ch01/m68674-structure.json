@@ -716,96 +716,6 @@
     },
     {
       "type": "section",
-      "id": "fs-idp679312",
-      "class": null,
-      "title": {
-        "segmentId": "m68674:title:fs-idp679312-title",
-        "text": "Length"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idm64613648",
-          "segmentId": "m68674:para:fs-idm64613648"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_01_04_MYdCmIn",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68674:caption:CNX_Chem_01_04_MYdCmIn-caption"
-          },
-          "media": {
-            "id": "fs-idm2958720",
-            "alt": "One meter is slightly larger than a yard and one centimeter is less than half the size of one inch. 1 inch is equal to 2.54 cm. 1 m is equal to 1.094 yards which is equal to 39.36 inches.",
-            "src": "../../media/CNX_Chem_01_04_MYdCmIn.jpg"
-          }
-        }
-      ]
-    },
-    {
-      "type": "section",
-      "id": "fs-idm1313360",
-      "class": null,
-      "title": {
-        "segmentId": "m68674:title:fs-idm1313360-title",
-        "text": "Mass"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idp222999216",
-          "segmentId": "m68674:para:fs-idp222999216"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_01_04_Kilogram",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68674:caption:CNX_Chem_01_04_Kilogram-caption"
-          },
-          "media": {
-            "id": "fs-idm80189648",
-            "alt": "The photo shows a small metal cylinder on a stand. The cylinder is covered with 2 glass lids, with the smaller glass lid encased within the larger glass lid.",
-            "src": "../../media/CNX_Chem_01_04_Kilogram.jpg"
-          }
-        }
-      ]
-    },
-    {
-      "type": "section",
-      "id": "fs-idm1531808",
-      "class": null,
-      "title": {
-        "segmentId": "m68674:title:fs-idm1531808-title",
-        "text": "Temperature"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idp3379184",
-          "segmentId": "m68674:para:fs-idp3379184"
-        }
-      ]
-    },
-    {
-      "type": "section",
-      "id": "fs-idm101578432",
-      "class": null,
-      "title": {
-        "segmentId": "m68674:title:fs-idm101578432-title",
-        "text": "Time"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idm101738864",
-          "segmentId": "m68674:para:fs-idm101738864"
-        }
-      ]
-    },
-    {
-      "type": "section",
       "id": "fs-idm23668768",
       "class": null,
       "title": {
@@ -880,7 +790,7 @@
                 {
                   "cells": [
                     {
-                      "segmentId": "m68674:entry:auto-118",
+                      "segmentId": "m68674:entry:auto-108",
                       "attributes": {
                         "namest": "c1",
                         "nameend": "c3",
@@ -892,6 +802,78 @@
                 {
                   "cells": [
                     {
+                      "segmentId": "m68674:entry:auto-109",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-110",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-111",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-112",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-113",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-114",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-115",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-116",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68674:entry:auto-117",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-118",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
                       "segmentId": "m68674:entry:auto-119",
                       "attributes": {
                         "align": "left"
@@ -902,17 +884,17 @@
                       "attributes": {
                         "align": "left"
                       }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-121",
-                      "attributes": {
-                        "align": "left"
-                      }
                     }
                   ]
                 },
                 {
                   "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-121",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
                     {
                       "segmentId": "m68674:entry:auto-122",
                       "attributes": {
@@ -924,17 +906,17 @@
                       "attributes": {
                         "align": "left"
                       }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-124",
-                      "attributes": {
-                        "align": "left"
-                      }
                     }
                   ]
                 },
                 {
                   "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-124",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
                     {
                       "segmentId": "m68674:entry:auto-125",
                       "attributes": {
@@ -946,17 +928,17 @@
                       "attributes": {
                         "align": "left"
                       }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-127",
-                      "attributes": {
-                        "align": "left"
-                      }
                     }
                   ]
                 },
                 {
                   "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-127",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
                     {
                       "segmentId": "m68674:entry:auto-128",
                       "attributes": {
@@ -968,17 +950,17 @@
                       "attributes": {
                         "align": "left"
                       }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-130",
-                      "attributes": {
-                        "align": "left"
-                      }
                     }
                   ]
                 },
                 {
                   "cells": [
+                    {
+                      "segmentId": "m68674:entry:auto-130",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
                     {
                       "segmentId": "m68674:entry:auto-131",
                       "attributes": {
@@ -987,78 +969,6 @@
                     },
                     {
                       "segmentId": "m68674:entry:auto-132",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-133",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68674:entry:auto-134",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-135",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-136",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68674:entry:auto-137",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-138",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-139",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "cells": [
-                    {
-                      "segmentId": "m68674:entry:auto-140",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-141",
-                      "attributes": {
-                        "align": "left"
-                      }
-                    },
-                    {
-                      "segmentId": "m68674:entry:auto-142",
                       "attributes": {
                         "align": "left"
                       }
@@ -1252,272 +1162,6 @@
     },
     {
       "type": "section",
-      "id": "fs-idm16046736",
-      "class": null,
-      "title": {
-        "segmentId": "m68674:title:fs-idm16046736-title",
-        "text": "Volume"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idm77137776",
-          "segmentId": "m68674:para:fs-idm77137776"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm81813264",
-          "segmentId": "m68674:para:fs-idm81813264"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm163691744",
-          "segmentId": "m68674:para:fs-idm163691744"
-        },
-        {
-          "type": "figure",
-          "id": "CNX_Chem_01_04_Volume",
-          "class": "scaled-down",
-          "caption": {
-            "segmentId": "m68674:caption:CNX_Chem_01_04_Volume-caption"
-          },
-          "media": {
-            "id": "fs-idm75233216",
-            "alt": "Figure A shows a large cube, which has a volume of 1 meter cubed. This larger cube is made up of many smaller cubes in a 10 by 10 pattern. Each of these smaller cubes has a volume of 1 decimeter cubed, or one liter. Each of these smaller cubes is, in turn, made up of many tiny cubes. Each of these tiny cubes has a volume of 1 centimeter cubed, or one milliliter. A one cubic centimeter cube is about the same width as a dime, which has a width of 1.8 centimeter.",
-            "src": "../../media/CNX_Chem_01_04_Volume.jpg"
-          }
-        }
-      ]
-    },
-    {
-      "type": "section",
-      "id": "fs-idm18447104",
-      "class": null,
-      "title": {
-        "segmentId": "m68674:title:fs-idm18447104-title",
-        "text": "Density"
-      },
-      "content": [
-        {
-          "type": "para",
-          "id": "fs-idp205372288",
-          "segmentId": "m68674:para:fs-idp205372288"
-        },
-        {
-          "type": "para",
-          "id": "fs-idm74744496",
-          "segmentId": "m68674:para:fs-idm74744496"
-        },
-        {
-          "type": "table",
-          "id": "fs-idm45639696",
-          "class": "top-titled",
-          "summary": "This table reports the density of solids, liquids, and gases in grams per centimeters cubed. The values for solids are ice 0.92, oak wood 0.60 to 0.90, iron 7.9, copper 9.0, lead 11.3, silver 10.5, and gold 19.3. The values for liquids are water 1.0, ethanol 0.79, acetone 0.79, glycerin 1.26, olive oil 0.92, gasoline 0.70 to 0.77, and Mercury 13.6. The values for gases, which were measured when the gas was at 25 degrees Celsius and 1 atmosphere, are dry air 1.20, oxygen 1.31, nitrogen 1.14, carbon dioxide 1.80, helium 0.16, neon 0.83, and radon 9.1.",
-          "rows": [
-            {
-              "cells": [
-                {
-                  "segmentId": "m68674:entry:auto-177",
-                  "attributes": {
-                    "namest": "c1",
-                    "nameend": "c3",
-                    "align": "center"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68674:entry:auto-178",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-179",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-180",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68674:entry:auto-181",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-182",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-183",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68674:entry:auto-184",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-185",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-186",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68674:entry:auto-187",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-188",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-189",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68674:entry:auto-190",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-191",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-192",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68674:entry:auto-193",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-194",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-195",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68674:entry:auto-196",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-197",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-198",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            },
-            {
-              "cells": [
-                {
-                  "segmentId": "m68674:entry:auto-199",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-200",
-                  "attributes": {
-                    "align": "left"
-                  }
-                },
-                {
-                  "segmentId": "m68674:entry:auto-201",
-                  "attributes": {
-                    "align": "left"
-                  }
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "para",
-          "id": "fs-idm81523280",
-          "segmentId": "m68674:para:fs-idm81523280"
-        },
-        {
-          "type": "equation",
-          "id": "fs-idm166517584",
-          "class": "unnumbered"
-        }
-      ]
-    },
-    {
-      "type": "section",
       "id": "fs-idm333536464",
       "class": "summary",
       "title": {
@@ -1550,7 +1194,7 @@
             {
               "cells": [
                 {
-                  "segmentId": "m68674:entry:auto-206",
+                  "segmentId": "m68674:entry:auto-162",
                   "attributes": {}
                 }
               ]

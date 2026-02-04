@@ -60,16 +60,16 @@
     "latex": "\\times"
   },
   "math-16": {
-    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
-    "latex": "\\times"
+    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{density}=\\, \\frac{{\\text{mass}}}{{\\text{volume}}}}"
   },
   "math-17": {
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",
     "latex": "\\times"
   },
   "math-18": {
-    "mathml": "<m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
-    "latex": "{\\text{density}=\\, \\frac{{\\text{mass}}}{{\\text{volume}}}}"
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
   },
   "math-19": {
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",
@@ -92,14 +92,6 @@
     "latex": "\\times"
   },
   "math-24": {
-    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
-    "latex": "\\times"
-  },
-  "math-25": {
-    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
-    "latex": "\\times"
-  },
-  "math-26": {
     "mathml": "<m:math><m:mo>×</m:mo></m:math>",
     "latex": "\\times"
   },
