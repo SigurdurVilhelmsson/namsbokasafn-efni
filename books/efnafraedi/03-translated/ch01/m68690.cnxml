@@ -1,0 +1,640 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Óvissa í mælingum, hittni og nákvæmni</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68690</md:content-id>
+  <md:title>Measurement Uncertainty, Accuracy, and Precision</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla
+getur þú:</para><list id="list-00001"><item>Skilgreint hittni og
+nákvæmni</item><item>Greint á milli nákvæmra og
+óvissra talna</item><item>Sýnt óvissu í stærðum rétt
+með markverðum stöfum</item><item>Beitt réttum
+námundunarreglum á útreiknaðar stærðir</item></list></md:abstract>
+  <md:uuid>daeefb73-f141-4612-ae40-d4915efc253d</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm288863760">Talning er eina tegund mælinga sem
+er laus við óvissu, að því gefnu að fjöldi hluta sem verið er að telja
+breytist ekki á meðan talningin fer fram. Niðurstaða slíkrar
+talningarmælingar er dæmi um <emphasis effect="bold">nákvæma tölu</emphasis>. Með því að telja eggin í
+öskju er hægt að ákvarða <emphasis effect="italics">nákvæmlega</emphasis> hversu mörg egg askjan inniheldur.
+Tölur skilgreindra stærða eru einnig nákvæmar. Samkvæmt skilgreiningu er
+1 fet nákvæmlega 12 tommur, 1 tomma er nákvæmlega 2,54 sentimetrar og 1
+gramm er nákvæmlega 0,001 kílógramm. Stærðir sem fengnar eru úr öðrum
+mælingum en talningu eru hins vegar óvissar að mismiklu leyti vegna
+hagnýtra takmarkana mælingarferlisins sem notað er.</para>
+<section id="fs-idm217277536">
+<title>Markverðir stafir í mælingum</title>
+<para id="fs-idp11446448">Tölur mældra stærða, ólíkt
+skilgreindum eða beintöldum stærðum, eru ekki nákvæmar. Til að mæla
+rúmmál vökva í mæliglasi ættir þú að lesa af neðst á bjúgfletinum,
+lægsta punkti á sveigðu yfirborði vökvans.</para>
+<figure id="fs-idm337865984">
+<media id="fs-idm262770592" alt="This diagram shows a 25 milliliter graduated cylinder filled with about 20.8 milliliters of fluid. The diagram zooms in on the meniscus, which is the curved surface of the water that is visible when the graduated cylinder is viewed from the side. You make the reading at the lowest point of the curve of the meniscus.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_05_Measure.jpg"/>
+</media>
+<caption>Til að mæla rúmmál vökva
+í þessu mæliglasi verður þú að skipta fjarlægðinni milli 21 og 22 ml
+merkja í huganum í tíundu hluta úr millilítra og lesa síðan af (áætla)
+neðst á bjúgfletinum.</caption>
+</figure>
+<para id="fs-idm176542448">Vísað er til myndarinnar í
+<link target-id="fs-idm337865984"/>. Neðsti hluti bjúgflatarins í þessu tilviki liggur greinilega
+á milli 21 og 22 merkinganna, sem þýðir að rúmmál vökvans er <emphasis effect="italics">vissulega</emphasis>
+meira en 21 ml en minna en 22 ml. Bjúgflöturinn virðist vera aðeins nær
+22 ml merkinu en 21 ml merkinu og því væri sanngjarnt mat á rúmmáli
+vökvans 21,6 ml. Í tölunni 21,6 eru tölustafirnir 2 og 1 því vissir, en
+6 er áætlun. Sumir gætu metið stöðu bjúgflatarins jafn langt frá hvorri
+merkingu og áætlað tíunda sætið sem 5, á meðan aðrir gætu haldið að hann
+væri enn nær 22 ml merkinu og áætlað þennan tölustaf sem 7. Athugaðu að
+það væri tilgangslaust að reyna að áætla tölustaf fyrir
+hundraðshlutasætið, í ljósi þess að tölustafurinn í tíundahlutasætinu er
+óviss. Almennt séð munu talnakvarðar eins og sá á þessu mæliglasi leyfa
+mælingar með nákvæmni upp á einn tíunda úr minnstu kvarðadeild. Kvarðinn
+í þessu tilfelli hefur 1 ml deildir og því má mæla rúmmál með nákvæmni
+upp á 0,1 ml.</para>
+<para id="fs-idm254904560">Þetta hugtak gildir fyrir allar
+mælingar, jafnvel þótt þú gerir ekki virkt mat. Ef þú setur krónupening
+á venjulega rafræna vog gætirðu fengið aflestur upp á 6,72 g.
+Tölustafirnir 6 og 7 eru vissir og 2 gefur til kynna að massi
+krónupeningsins sé líklega á milli 6,71 og 6,73 grömm. Krónupeningurinn
+vegur <emphasis effect="italics">um það bil</emphasis> 6,72 grömm, með nafnóvissu í mælingunni upp á ± 0,01
+gramm. Ef peningurinn er vigtaður á næmari vog gæti massinn verið 6,723
+g. Þetta þýðir að massi hans liggur á milli 6,722 og 6,724 grömm, sem er
+óvissa upp á 0,001 gramm. Sérhver mæling hefur einhverja <emphasis effect="bold">óvissu</emphasis>, sem
+fer eftir tækinu sem notað er (og hæfni notandans). Allir tölustafir í
+mælingu, þar með talinn óvissi síðasti tölustafurinn, eru kallaðir
+<emphasis effect="bold">markverðir stafir</emphasis> eða <emphasis effect="bold">marktækir tölustafir</emphasis>. Athugaðu að núll
+getur verið mælt gildi; til dæmis, ef þú stendur á vog sem sýnir þyngd
+með nákvæmni upp á næsta pund og hún sýnir „120“, þá eru 1 (hundruð), 2
+(tugir) og 0 (einingar) öll marktæk (mæld) gildi.</para>
+<para id="fs-idm264880544">Niðurstaða mælingar er rétt skráð
+þegar markverðir stafir hennar endurspegla nákvæmlega vissu
+mælingarferlisins. En hvað ef þú værir að greina uppgefið gildi og reyna
+að ákvarða hvað er marktækt og hvað ekki? Til að byrja með eru allir
+tölustafir sem ekki eru núll marktækir og það eru aðeins núll sem
+krefjast umhugsunar. Við munum nota hugtökin „leiðandi“, „eftirfarandi“
+og „innilokuð“ fyrir núllin og íhuga hvernig eigi að meðhöndla þau.</para>
+<para id="fs-idp31100592">Byrjaðu á fyrsta tölustafnum sem ekki
+er núll vinstra megin, teldu þennan tölustaf og alla tölustafi sem eftir
+eru til hægri. Þetta er fjöldi markverðra stafa í mælingunni nema
+síðasti tölustafurinn sé eftirfarandi núll sem liggur vinstra megin við
+kommu.</para>
+<para id="fs-idm177076640">Innilokuð núll eru afleiðing mælinga
+og eru því alltaf marktæk. Leiðandi núll eru hins vegar aldrei marktæk —
+þau segja okkur aðeins hvar komman er staðsett.</para>
+<para id="fs-idm262013360">Leiðandi núllin í þessu dæmi eru
+ekki marktæk. Við gætum notað veldisvísanotkun (eins og lýst er í
+viðauka B) og tjáð töluna sem 8,32407 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup>; þá
+inniheldur talan 8,32407 alla markverðu stafina og 10<sup>−3</sup> staðsetur
+kommuna.</para>
+<para id="fs-idm210460000">Fjöldi markverðra stafa er óviss í
+tölu sem endar á núlli vinstra megin við kommu. Núllin í mælingunni
+1.300 grömm gætu verið markverð eða þau gætu einfaldlega gefið til kynna
+hvar komman er staðsett. Hægt er að leysa úr þessari tvíræðni með því að
+nota veldisvísanotkun: 1,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> (tveir markverðir
+stafir), 1,30 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> (þrír markverðir stafir, ef tugirnir
+voru mældir) eða 1,300 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> (fjórir markverðir stafir,
+ef einingarnar voru einnig mældar). Í tilvikum þar sem aðeins talan á
+kommuformi er tiltæk er skynsamlegt að gera ráð fyrir að öll núll aftast
+séu ekki markverð.</para>
+<para id="fs-idm173917264">Þegar markverðir stafir eru
+ákvarðaðir er mikilvægt að gefa gaum að uppgefnum gildum og hugsa um
+mælinguna og markverða stafi með tilliti til þess hvað er sanngjarnt eða
+líklegt þegar metið er hvort gildið sé rökrétt. Til dæmis, í opinberu
+manntali í janúar 2014 var íbúafjöldi Bandaríkjanna sagður vera
+317.297.725. Telur þú að íbúafjöldi Bandaríkjanna hafi verið réttilega
+ákvarðaður með níu markverðum stöfum, það er að segja, nákvæmlega upp á
+hvern einstakling? Fólk fæðist, deyr eða flytur til eða frá landinu
+stöðugt og gert er ráð fyrir fjölda fólks sem er í raun ekki talið.
+Vegna þessarar óvissu gæti verið sanngjarnara að búast við því að við
+þekkjum íbúafjöldann með um það bil milljón manna skekkjumörkum, en þá
+ætti að gefa íbúafjöldann upp sem 3,17 <m:math><m:mo>×</m:mo></m:math> 10<sup>8</sup> manns.</para>
+</section>
+<section id="fs-idm191691888">
+<title>Markverðir stafir í
+útreikningum</title>
+<para id="fs-idm277117616">Önnur mikilvæg meginregla um óvissu
+er sú að niðurstöður sem reiknaðar eru út frá mælingu eru að minnsta
+kosti jafn óvissar og mælingin sjálf. Takið tillit til óvissu í mælingum
+til að forðast að gefa ranga mynd af óvissu í reiknuðum niðurstöðum. Ein
+leið til þess er að gefa upp niðurstöðu útreiknings með réttum fjölda
+markverðra stafa, sem er ákvarðaður af eftirfarandi þremur reglum um
+<emphasis effect="bold">námundun</emphasis> talna:</para>
+<list id="fs-idm65809616" list-type="bulleted">
+<item>Þegar tölur eru lagðar saman
+eða dregnar frá, námundið niðurstöðuna að sama fjölda aukastafa og talan
+með fæsta aukastafi (ónákvæmasta gildið hvað varðar samlagningu og
+frádrátt).</item>
+<item>Þegar tölur eru margfaldaðar
+eða þeim deilt, námundið niðurstöðuna að sama fjölda tölustafa og talan
+með fæsta markverða stafi (ónákvæmasta gildið hvað varðar margföldun og
+deilingu).</item>
+<item>Ef tölustafurinn sem á að
+fella brott (sá sem er strax hægra megin við tölustafinn sem á að halda)
+er minni en 5, „námundið niður“ og látið tölustafinn sem haldið er vera
+óbreyttan; ef hann er meiri en 5, „námundið upp“ og hækkið tölustafinn
+sem haldið er um 1. Ef tölustafurinn sem er felldur brott er 5 og hann
+er annaðhvort síðasti tölustafurinn í tölunni eða á eftir honum koma
+aðeins núll, námundið upp eða niður, hvort sem gefur slétta tölu fyrir
+tölustafinn sem haldið er. Ef einhverjir tölustafir aðrir en núll fylgja
+á eftir 5 sem er felldur brott, námundið upp. (Síðasti hluti þessarar
+reglu kann að virðast svolítið undarlegur, en hann byggir á áreiðanlegri
+tölfræði og miðar að því að forðast hlutdrægni þegar tölustafnum „5“ er
+sleppt, þar sem hann er jafn nálægt báðum mögulegum gildum tölustafsins
+sem haldið er.)</item>
+</list>
+<para id="fs-idm107335696">Eftirfarandi dæmi sýna hvernig þessi
+regla er notuð við að námunda nokkrar mismunandi tölur að þremur
+markverðum stöfum:</para>
+<list id="fs-idm192081680" list-type="bulleted">
+<item>0,028675 er námundað „upp“ í
+0,0287 (tölustafurinn sem er felldur brott, 7, er stærri en 5)</item>
+<item>18,3384 er námundað „niður“ í
+18,3 (tölustafurinn sem er felldur brott, 3, er minni en 5)</item>
+<item>6,8752 er námundað „upp“ í
+6,88 (tölustafurinn sem er felldur brott er 5 og á eftir honum kemur
+tölustafur sem er ekki núll)</item>
+<item>92,85 er námundað „niður“ í
+92,8 (tölustafurinn sem er felldur brott er 5 og tölustafurinn sem
+haldið er er slétt tala)</item>
+</list>
+<para id="fs-idm178562592">Við skulum fara í gegnum þessar
+reglur með nokkrum dæmum.</para>
+<example id="fs-idp40552528">
+<para id="fs-idm303504976"><title>Námundun talna</title>Námundið eftirfarandi að tilgreindum
+fjölda markverðra stafa:</para>
+<para id="fs-idm277227680">(a) 31,57 (að tveimur markverðum
+stöfum)</para>
+<para id="fs-idm113120528">(b) 8,1649 (að þremur markverðum
+stöfum)</para>
+<para id="fs-idp33608880">(c) 0,051065 (að fjórum markverðum
+stöfum)</para>
+<para id="fs-idm208861552">(d) 0,90275 (að fjórum markverðum
+stöfum)</para>
+<para id="fs-idm125552432"><title>Lausn</title>(a) 31,57 er námundað „upp“ í 32
+(tölustafurinn sem er felldur brott er 5 og tölustafurinn sem haldið er
+er slétt tala)</para>
+<para id="fs-idm180680048">(b) 8.1649 er námunduð „niður“ í
+8,16 (talan sem er felld brott, 4, er minni en 5)</para><para id="fs-idm167789680">(c) 0,051065 er námunduð „niður“ í
+0,05106 (talan sem er felld brott er 5 og talan sem er haldið er slétt
+tala)</para>
+<para id="fs-idm174540832">(d) 0,90275 er námunduð „upp“ í
+0,9028 (talan sem er felld brott er 5 og talan sem er haldið er slétt
+tala)</para>
+<para id="fs-idm185983232"><title>Spurningar úr efninu</title>Námundaðu eftirfarandi að
+tilgreindum fjölda markverðra stafa:</para>
+<para id="fs-idm69923072">(a) 0,424 (að tveimur markverðum
+stöfum)</para>
+<para id="fs-idm65589936">(b) 0,0038661 (að þremur markverðum
+stöfum)</para>
+<para id="fs-idm107300848">(c) 421,25 (að fjórum markverðum
+stöfum)</para>
+<para id="fs-idm258155488">(d) 28.683,5 (að fimm markverðum
+stöfum)</para>
+<note id="fs-idm155369456">
+<title>Answer:</title>
+<para id="fs-idm260724048">(a) 0,42; (b) 0,00387; (c) 421,2;
+(d) 28.684</para>
+</note>
+</example>
+<example id="fs-idp61408240">
+<para id="fs-idm327587104"><title>Samlagning og
+frádráttur með markverðum stöfum</title>Regla: Þegar tölur eru lagðar saman
+eða dregnar frá skal námunda niðurstöðuna að sama fjölda aukastafa og
+talan með fæsta aukastafi (þ.e.a.s. ónákvæmasta gildið hvað varðar
+samlagningu og frádrátt).</para>
+<para id="fs-idm318611824">(a) Leggðu saman 1,0023 g og 4,383
+g.</para>
+<para id="fs-idm288438480">(b) Dragðu 421,23 g frá 486 g.</para>
+<para id="fs-idm277651872"><title>Lausn</title></para>
+<para id="fs-idm21393952">(a) <m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:mrow/></m:mtd></m:mtr><m:mtr><m:mtd><m:mtable columnalign="left"><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow/></m:mtd></m:mtr><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow><m:mfrac><m:mrow><m:mtable><m:mtr><m:mtd><m:mrow><m:mspace width="1.4em"/><m:mn>1.0023 g</m:mn></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mrow><m:mtext>+ 4.383 g</m:mtext></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow><m:mrow><m:mspace width="1.5em"/><m:mn>5.3853 g</m:mn></m:mrow></m:mfrac></m:mrow></m:mtd></m:mtr></m:mtable></m:mtd></m:mtr></m:mtable></m:math></para>
+<para id="fs-idm107330240">Svarið er 5,385 g (námundað að
+þúsundasta sæti; þrír aukastafir)</para>
+<para id="fs-idm257863024">(b) <m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:mtable columnalign="left"><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow/></m:mtd></m:mtr><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow/></m:mtd></m:mtr></m:mtable></m:mtd></m:mtr><m:mtr><m:mtd><m:mfrac><m:mrow><m:mtable columnalign="left"><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow><m:mtext>   </m:mtext><m:mspace width="0.8em"/><m:mn>486 g</m:mn></m:mrow></m:mtd></m:mtr><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow><m:mo>−</m:mo><m:mn>421.23 g</m:mn></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow><m:mrow><m:mspace width="1.3em"/><m:mn>64.77 g</m:mn></m:mrow></m:mfrac></m:mtd></m:mtr></m:mtable></m:math></para>
+<para id="fs-idp47889280">Svarið er 65 g (námundað að
+einingarsæti; engir aukastafir)</para>
+<media id="fs-idm330284704" class="scaled-down" alt="Figure A shows 1.0023 being added to 4.383 to yield the answer 5.385. 1.0023 goes to the ten thousandths place, but 4.383 goes to the thousandths place, making it the less precise of the two numbers. Therefore the answer, 5.3853, should be rounded to the thousandths, to yield 5.385. Figure B shows 486 grams minus 421.23 grams, which yields the answer 64.77 grams. This answer should be round to the ones place, making the answer 65 grams.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_05_SigDigits4_img.jpg"/>
+</media>
+<para id="fs-idm97432976"><title>Spurningar úr efninu</title>(a) Leggðu saman 2,334 ml og 0,31 ml.</para>
+<para id="fs-idm113279504">(b) Dragðu 55,8752 m frá 56,533 m.</para>
+<note id="fs-idp26956096">
+<title>Answer:</title>
+<para id="fs-idp40053216">(a) 2,64 ml; (b) 0,658 m</para>
+</note>
+</example>
+<example id="fs-idp34148976">
+<para id="fs-idm194335568"><title>Margföldun og deiling
+með markverðum stöfum</title>Regla: Þegar tölur eru margfaldaðar
+eða þeim deilt skal námunda niðurstöðuna að sama fjölda tölustafa og
+talan með fæsta markverða stafi (ónákvæmasta gildið hvað varðar
+margföldun og deilingu).</para>
+<para id="fs-idm176907440">(a) Margfaldaðu 0,6238 cm með 6,6
+cm.</para>
+<para id="fs-idp40092848">(b) Deildu 421,23 g með 486 ml.</para>
+<para id="fs-idm318303792"><title>Lausn</title></para>
+<para id="fs-idp11052048">(a) <m:math><m:mrow><m:mtable columnalign="left"><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow><m:mtable columnalign="left"><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow><m:mtext>0.6238 cm</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>6.6</m:mn><m:mspace width="0.2em"/><m:mtext>cm</m:mtext><m:mo>=</m:mo><m:mn>4.11708</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>result is</m:mtext><m:mspace width="0.2em"/><m:mn>4.1</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>round to two significant figures</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr columnalign="left"><m:mtd columnalign="left"><m:mrow><m:mtext>four significant figures</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>two significant figures</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>two significant figures answer</m:mtext></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math></para>
+<para id="fs-idm194468576">(b) <m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:mfrac><m:mrow><m:mtext>421.23 g</m:mtext></m:mrow><m:mrow><m:mtext>486 mL</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.866728... g/mL</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>result is 0.867 g/mL</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>round to three significant figures</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mfrac><m:mrow><m:mtext>five significant figures</m:mtext></m:mrow><m:mrow><m:mtext>three significant figures</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>three significant figures answer</m:mtext></m:mtd></m:mtr></m:mtable></m:math></para>
+<para id="fs-idp45405152"><title>Spurningar úr efninu</title>(a) Margfaldaðu 2,334 cm og 0,320 cm.</para>
+<para id="fs-idm155228848">(b) Deilið 55,8752 m með 56,53 s.</para>
+<note id="fs-idm282773952">
+<title>Answer:</title>
+<para id="fs-idm154957312">(a) 0,747 cm<sup>2</sup> (b) 0,9884 m/s</para>
+</note>
+</example>
+<para id="fs-idp31178224">Innan um allar þessar tæknilegu
+útfærslur er mikilvægt að hafa í huga ástæðuna fyrir þessum reglum um
+markverða stafi og námundun – að tákna á réttan hátt óvissu gildanna sem
+gefin eru upp og tryggja að reiknuð niðurstaða sé ekki sett fram sem
+öruggari en það gildi sem notað var í útreikningnum og hafði minnsta
+öryggið.</para>
+<example id="fs-idp40680240">
+<para id="fs-idm180409728"><title>Útreikningur með
+markverðum stöfum</title>Eitt algengt baðkar er 13,44 dm á
+lengd, 5,920 dm á breidd og 2,54 dm á dýpt. Gerum ráð fyrir að baðkarið
+sé rétthyrnt og reiknum út nálgun á rúmmáli þess í lítrum.</para>
+<para id="fs-idm209075984"><title>Lausn</title></para>
+<equation id="fs-idm15365184" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd columnalign="left"><m:mi>V</m:mi></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>l</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>w</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>d</m:mi></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mtext>13.44 dm</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>5.920 dm</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>2.54 dm</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mtext>202.09459</m:mtext><m:mn>...</m:mn><m:mspace width="0.2em"/><m:msup><m:mtext>dm</m:mtext><m:mn>3</m:mn></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>value from calculator</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:msup><m:mtext>202 dm</m:mtext><m:mn>3</m:mn></m:msup><m:mtext>, or 202 L</m:mtext><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>answer rounded to three significant figures</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation><para id="fs-idm219800928"><title>Prófaðu þekkingu þína</title>Hver er eðlismassi vökva með massa
+31,1415 g og rúmmál 30,13 cm<sup>3</sup>?</para>
+<note id="fs-idm178680064">
+<title>Answer:</title>
+<para id="fs-idm178106592">1,034 g/mL</para>
+</note>
+</example>
+<example id="fs-idm148976192">
+<para id="fs-idp29940656"><title>Tilraun til að
+ákvarða eðlismassa með vatnsyfirfærslu</title>Bútur af steypustyrktarjárni er
+vigtaður og síðan sökkt í mæliglas sem er að hluta til fyllt með vatni,
+með þeim niðurstöðum sem sýndar eru.</para>
+<media id="fs-idm332426528" class="scaled-down" alt="This diagram shows the initial volume of water in a graduated cylinder as 13.5 milliliters. A 69.658 gram piece of metal rebar is added to the graduated cylinder, causing the water to reach a final volume of 22.4 milliliters">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_04_CylRebar.jpg"/>
+</media>
+<para id="fs-idm245394240">(a) Notið þessi gildi til að ákvarða
+eðlismassa þessa steypustyrktarjárnsbúts.</para>
+<para id="fs-idm209220496">(b) Steypustyrktarjárn er að mestu
+leyti járn. Styður niðurstaða þín í (a) þessa staðhæfingu? Hvernig?</para>
+<para id="fs-idm325787440"><title>Lausn</title>Rúmmál steypustyrktarjárnsbútsins er
+jafnt rúmmáli vatnsins sem hann ryður frá sér:</para>
+<equation id="fs-idm180698816" class="unnumbered"><m:math><m:mrow><m:mtext>volume</m:mtext><m:mo>=</m:mo><m:mtext>22.4 mL</m:mtext><m:mo>−</m:mo><m:mtext>13.5 mL</m:mtext><m:mo>=</m:mo><m:mtext>8.9 mL</m:mtext><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>8.9 cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation><para id="fs-idm181276752">(námundað að næsta 0,1 ml, samkvæmt
+reglunni um samlagningu og frádrátt)</para>
+<para id="fs-idp36085040">Eðlismassinn er hlutfallið milli
+massa og rúmmáls:</para>
+<equation id="fs-idp135143440" class="unnumbered"><m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>69.658 g</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mtext>8.9 cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>7.8 g/cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm277303296">(námundað að tveimur markverðum
+stöfum, samkvæmt reglunni um margföldun og deilingu)</para>
+<para id="fs-idm243666944">Samkvæmt <link target-id="fs-idm45639696"/> er eðlismassi
+járns 7,9 g/cm<sup>3</sup>, mjög nálægt eðlismassa steypustyrktarjárns, sem
+styður þá staðreynd að steypustyrktarjárn er að mestu leyti járn.</para>
+<para id="fs-idm259990592"><title>Prófaðu þekkingu þína</title>Óreglulega lagaður bútur af
+gljáandi, gulleitu efni er vigtaður og síðan sökkt í mæliglas, með þeim
+niðurstöðum sem sýndar eru.</para>
+<media id="fs-idm283007920" class="scaled-down" alt="This diagram shows the initial volume of water in a graduated cylinder as 17.1 milliliters. A 51.842 gram gold colored rock is added to the graduated cylinder, causing the water to reach a final volume of 19.8 milliliters">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_04_CylGold.jpg"/>
+</media>
+<para id="fs-idm272657872">(a) Notið þessi gildi til að ákvarða
+eðlismassa þessa efnis.</para>
+<para id="fs-idm166920160">(b) Hefur þú einhverjar raunhæfar
+ágiskanir um hvaða efni þetta er? Útskýrðu rökstuðning þinn.</para>
+<note id="fs-idm113054800">
+<title>Answer:</title>
+<para id="fs-idm287839728">(a) 19 g/cm<sup>3</sup>; (b) Það er líklega
+gull; útlitið passar við gull og eðlismassinn er mjög nálægt þeim
+eðlismassa sem gefinn er fyrir gull í <link target-id="fs-idm45639696"/>.</para>
+</note>
+</example>
+</section>
+<section id="fs-idp33954960">
+<title>Hittni og nákvæmni</title>
+<para id="fs-idp4474304">Vísindamenn gera yfirleitt endurteknar
+mælingar á stærð til að tryggja gæði niðurstaðna sinna og til að meta
+bæði <emphasis effect="bold">nákvæmni</emphasis> og <emphasis effect="bold">hittni</emphasis> niðurstaðna sinna. Mælingar eru sagðar
+nákvæmar ef þær gefa mjög svipaðar niðurstöður þegar þær eru endurteknar
+á sama hátt. Mæling er talin hafa mikla hittni ef hún gefur niðurstöðu
+sem er mjög nálægt sönnu eða viðteknu gildi. Nákvæm gildi eru í samræmi
+hvert við annað; gildi með mikla hittni eru í samræmi við sanngildi.
+Þessar lýsingar má yfirfæra á annað samhengi, eins og úrslit í
+bogfimisamkeppni (<link target-id="fs-idm1827280"/>).</para>
+<figure id="fs-idm1827280">
+<media id="fs-idp4898080" alt="Figures A through C each show targets with holes where the arrows hit. The archer in figure A was both accurate and precise as all 3 arrows are clustered in the center of the target. In figure B, the archer is precise but not accurate, as all 3 arrows are clustered together but to the upper right of the center of the target. In Figure C, the archer is neither accurate nor precise as the 3 holes are not close together and are located both to the upper right and right of the target.">
+<image mime-type="image/jpg" src="../../media/CNX_Chem_01_05_Archery.jpg"/>
+</media>
+<caption>(a) Þessar örvar eru bæði
+nálægt miðjunni og hver annarri, þannig að þær eru bæði með mikla hittni
+og nákvæmni. (b) Þessar örvar eru nálægt hver annarri en ekki á
+skotmarkinu, þannig að þær eru með mikla nákvæmni en ekki hittni. (c)
+Þessar örvar eru hvorki á skotmarkinu né nálægt hver annarri, þannig að
+þær eru hvorki með hittni né nákvæmni.</caption>
+</figure>
+<para id="fs-idp174984224">Gerum ráð fyrir að efnafræðingur í
+gæðaeftirliti hjá lyfjafyrirtæki fái það verkefni að kanna hittni og
+nákvæmni þriggja mismunandi véla sem eiga að skammta 10 únsur (296 ml)
+af hóstasaft í geymsluflöskur. Hún notar hverja vél til að fylla fimm
+flöskur og ákvarðar síðan vandlega raunverulegt rúmmál sem skammtað var
+og fær niðurstöðurnar sem sýndar eru í töflu í <link target-id="fs-idp31780400"/>.</para>
+<table id="fs-idp31780400" class="top-titled" summary="The volume, in milliliters, of cough medicine delivered by dispensers 1, 2 and 3 are shown in a table. The values for dispenser 1 are 283.3, 284.1, 283.9, 284.0, and 284.1. The values for dispenser 2 are 298.3, 294.2, 296.0, 297.8, and 293.9. The values for dispenser 3 are 296.1, 295.9, 296.1, 296.0, and 296.1.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="top">
+<entry namest="c1" nameend="c3" align="center">Rúmmál (ml) hóstasaftar sem skammtað var
+með 10 únsu (296 ml) skömmturum</entry>
+</row>
+<row valign="top">
+<entry align="left">Skammtari nr. 1</entry>
+<entry align="left">Skammtari nr. 2</entry>
+<entry align="left">Skammtari nr. 3</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">283,3</entry>
+<entry align="left">298,3</entry>
+<entry align="left">296,1</entry>
+</row>
+<row valign="top">
+<entry align="left">284,1</entry>
+<entry align="left">294,2</entry>
+<entry align="left">295,9</entry>
+</row>
+<row valign="top">
+<entry align="left">283,9</entry>
+<entry align="left">296,0</entry>
+<entry align="left">296,1</entry>
+</row>
+<row valign="top">
+<entry align="left">284,0</entry>
+<entry align="left">297,8</entry>
+<entry align="left">296,0</entry>
+</row>
+<row valign="top">
+<entry align="left">284,1</entry>
+<entry align="left">293,9</entry>
+<entry align="left">296,1</entry>
+</row>
+</tbody>
+
+</tgroup>
+</table>
+<para id="fs-idp4939264">Miðað við þessar niðurstöður mun hún
+tilkynna að skammtari nr. 1 sé nákvæmur (gildin eru öll nálægt hvert
+öðru, innan nokkurra tíundu úr millilítra) en ekki með góða hittni
+(ekkert gildi er nálægt markgildinu 296 ml, hvert þeirra er meira en 10
+ml of lágt). Niðurstöður fyrir skammtara nr. 2 sýna betri hittni (hvert
+rúmmál er innan við 3 ml frá 296 ml) en verri nákvæmni (rúmmál eru
+breytileg um meira en 4 ml). Að lokum getur hún tilkynnt að skammtari
+nr. 3 virki vel og skammti hóstasaft bæði með góðri hittni (öll rúmmál
+innan 0,1 ml frá markgildinu) og nákvæmni (rúmmál eru ekki frábrugðin
+hvert öðru um meira en 0,2 ml).</para>
+</section>
+<section id="fs-idp223627024" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp108718096">Stærðir geta verið skilgreindar eða
+mældar. Mældar stærðir hafa tilheyrandi óvissu sem er táknuð með fjölda
+markverðra stafa í tölu stærðarinnar. Óvissa útreiknaðrar stærðar fer
+eftir óvissu í þeim stærðum sem notaðar eru í útreikningnum og
+endurspeglast í því hvernig gildið er námundað. Stærðir eru einkenndar
+með tilliti til hittni (hversu nálægt sönnu eða viðurkenndu gildi) og
+nákvæmni (breytileiki milli endurtekinna mælinga).</para>
+</section>
+<section id="fs-idp243777760" class="exercises">
+<title>Efnafræði – æfingar í lok
+kafla</title>
+<exercise id="fs-idm29064528">
+<problem id="fs-idm48613136">
+<para id="fs-idp4785280">Gefðu upp hverja eftirfarandi talna
+á staðalformi með réttum fjölda markverðra stafa:</para>
+<para id="fs-idp96669248">(a) 711,0</para>
+<para id="fs-idp27687952">(b) 0,239</para>
+<para id="fs-idp31496192">(c) 90743</para>
+<para id="fs-idm49076928">(d) 134,2</para>
+<para id="fs-idp94731152">(e) 0,05499</para>
+<para id="fs-idp109822816">(f) 10000,0</para>
+<para id="fs-idp90485424">(g) 0,000000738592</para>
+</problem>
+</exercise>
+<exercise id="fs-idp24074624">
+<problem id="fs-idp90864864">
+<para id="fs-idp90495520">Gefðu upp hverja eftirfarandi
+talna á veldisvísisformi með réttum fjölda markverðra stafa:</para>
+<para id="fs-idp158645376">(a) 704</para>
+<para id="fs-idp31070976">(b) 0,03344</para>
+<para id="fs-idp133945968">(c) 547,9</para>
+<para id="fs-idp16168048">(d) 22086</para>
+<para id="fs-idp3115552">(e) 1000,00</para>
+<para id="fs-idp55691168">(f) 0,0000000651</para>
+<para id="fs-idp19768032">(g) 0,007157</para>
+</problem>
+<solution id="fs-idp74376528">
+<para id="fs-idp28073776">(a) 7,04 <m:math><m:mo>×</m:mo></m:math> 10<sup>2</sup>;
+(b) 3,344 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup>; (c) 5,479 <m:math><m:mo>×</m:mo></m:math> 10<sup>2</sup>; (d)
+2,2086 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup>; (e) 1,00000 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup>; (f)
+6,51 <m:math><m:mo>×</m:mo></m:math> 10<sup>−8</sup>; (g) 7,157 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></para>
+</solution>
+</exercise>
+<exercise id="fs-idp26053648">
+<problem id="fs-idm33429632">
+<para id="fs-idp336803088">Tilgreindu hvort hægt sé að
+ákvarða eftirfarandi nákvæmlega eða hvort það verði að mæla það með
+einhverri óvissu:</para>
+<para id="fs-idp14630320">(a) fjöldi eggja í körfu</para>
+<para id="fs-idp28370912">(b) massi tylftar eggja</para>
+<para id="fs-idp223534496">(c) fjöldi gallona af bensíni sem
+þarf til að fylla á bensíntank bifreiðar</para>
+<para id="fs-idp288981408">(d) fjöldi cm í 2 m</para>
+<para id="fs-idp223527280">(e) massi kennslubókar</para>
+<para id="fs-idp115215296">(f) tíminn sem það tekur að aka
+frá San Francisco til Kansas City á 53 mílna meðalhraða á klukkustund</para>
+</problem>
+</exercise>
+<exercise id="fs-idp30473840">
+<problem id="fs-idp255833248">
+<para id="fs-idp13543392">Tilgreindu hvort hægt sé að
+ákvarða eftirfarandi nákvæmlega eða hvort það verði að mæla það með
+einhverri óvissu:</para>
+<para id="fs-idp192668592">(a) fjöldi sekúndna í klukkustund</para>
+<para id="fs-idp131489888">(b) blaðsíðufjöldi í þessari bók</para>
+<para id="fs-idp29050000">(c) fjöldi gramma í þyngd þinni</para>
+<para id="fs-idp40603568">(d) fjöldi gramma í 3 kílógrömmum</para>
+<para id="fs-idp42867296">(e) rúmmál vatns sem þú drekkur á
+einum degi</para>
+<para id="fs-idp5273504">(f) vegalengdin frá San Francisco
+til Kansas City</para>
+</problem>
+<solution id="fs-idp32015744">
+<para id="fs-idp120430064">(a) nákvæmt; (b) nákvæmt; (c)
+óvíst; (d) nákvæmt; (e) óvíst; (f) óvíst</para>
+</solution>
+</exercise>
+<exercise id="fs-idp191983136">
+<problem id="fs-idp8201520">
+<para id="fs-idp44784160">Hversu marga markverða stafi
+inniheldur hver eftirfarandi mælinga?</para>
+<para id="fs-idp11261600">(a) 38,7 g</para>
+<para id="fs-idp108771792">(b) 2 <m:math><m:mo>×</m:mo></m:math> 10<sup>18</sup> m</para>
+<para id="fs-idp1326800">(c) 3.486.002 kg</para>
+<para id="fs-idp45208768">(d) 9,74150 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup>
+J</para>
+<para id="fs-idp70796512">(e) 0,0613 cm<sup>3</sup></para>
+<para id="fs-idp11528432">(f) 17,0 kg</para>
+<para id="fs-idp18835104">(g) 0,01400 g/mL</para>
+</problem>
+</exercise>
+<exercise id="fs-idp16088144">
+<problem id="fs-idp36001056">
+<para id="fs-idp288732592">Hversu marga markverða stafi
+inniheldur hver eftirfarandi mælinga?</para>
+<para id="fs-idp191599120">(a) 53 cm</para>
+<para id="fs-idp349577664">(b) 2,05 <m:math><m:mo>×</m:mo></m:math> 10<sup>8</sup> m</para>
+<para id="fs-idp122538384">(c) 86.002 J</para>
+<para id="fs-idm7027952">(d) 9,740 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> m/s</para>
+<para id="fs-idp135014480">(e) 10,0613 m<sup>3</sup></para>
+<para id="fs-idp115902336">(f) 0,17 g/mL</para>
+<para id="fs-idp89571696">(g) 0.88400 s</para>
+</problem>
+<solution id="fs-idp16481200">
+<para id="fs-idm1331360">(a) tveir; (b) þrír; (c) fimm; (d)
+fjórir; (e) sex; (f) tveir; (g) fimm</para>
+</solution>
+</exercise>
+<exercise id="fs-idp334498416">
+<problem id="fs-idp18234160">
+<para id="fs-idp10861136">Eftirfarandi magn var gefið upp á
+umbúðum söluvara. Ákvarðaðu fjölda markverðra stafa í hverju tilfelli.</para>
+<para id="fs-idp18329968">(a) 0,0055 g af virkum efnum</para>
+<para id="fs-idp42748272">(b) 12 töflur</para>
+<para id="fs-idp220641424">(c) 3% vetnunarperoxíð</para>
+<para id="fs-idm9127744">(d) 5,5 únsur</para>
+<para id="fs-idp30889968">(e) 473 ml</para>
+<para id="fs-idm29427408">(f) 1,75% bismút</para>
+<para id="fs-idp10568624">(g) 0,001% fosfórsýra</para>
+<para id="fs-idp26918208">(h) 99,80% óvirk efni</para>
+</problem>
+</exercise>
+<exercise id="fs-idp15391168">
+<problem id="fs-idp28803232">
+<para id="fs-idp71208752">Rúnaðu eftirfarandi tölur að
+tveimur markverðum stöfum:</para>
+<para id="fs-idp367138576">(a) 0,436</para>
+<para id="fs-idp42876384">(b) 9,000</para>
+<para id="fs-idp319885952">(c) 27,2</para>
+<para id="fs-idp3364208">(d) 135</para>
+<para id="fs-idp180954912">(e) 1,497 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></para>
+<para id="fs-idm38730144">(f) 0,445</para>
+</problem>
+<solution id="fs-idp334708000">
+<para id="fs-idp133316128">(a) 0,44; (b) 9,0; (c) 27; (d)
+140; (e) 1,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup>; (f) 0,44</para></solution>
+</exercise>
+<exercise id="fs-idp108082000">
+<problem id="fs-idp131536960">
+<para id="fs-idp133328560">Rúnaðu eftirfarandi tölur að
+tveimur markverðum stöfum:</para>
+<para id="fs-idp119500528">(a) 517</para>
+<para id="fs-idp329265168">(b) 86,3</para>
+<para id="fs-idp79802960">(c) 6,382 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup></para>
+<para id="fs-idp79596720">(d) 5,0008</para>
+<para id="fs-idp10810592">(e) 22,497</para>
+<para id="fs-idp329422320">(f) 0,885</para>
+</problem>
+</exercise>
+<exercise id="fs-idp358584288">
+<problem id="fs-idp95370032">
+<para id="fs-idp192379952">Framkvæmdu eftirfarandi
+útreikninga og gefðu upp hvert svar með réttum fjölda markverðra stafa.</para>
+<para id="fs-idp101772784">(a) 628 <m:math><m:mo>×</m:mo></m:math> 342</para>
+<para id="fs-idp64911376">(b) (5,63 <m:math><m:mo>×</m:mo></m:math> 10<sup>2</sup>)
+<m:math><m:mo>×</m:mo></m:math> (7,4 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup>)</para>
+<para id="fs-idp43333760">(c) <m:math><m:mrow><m:mfrac><m:mrow><m:mn>28.0</m:mn></m:mrow><m:mrow><m:mn>13.483</m:mn></m:mrow></m:mfrac></m:mrow></m:math></para>
+<para id="fs-idp33766256">(d) 8119 <m:math><m:mo>×</m:mo></m:math> 0,000023</para>
+<para id="fs-idp2544704">(e) 14,98 + 27.340 + 84,7593</para>
+<para id="fs-idp114767776">(f) 42,7 + 0,259</para>
+</problem>
+<solution id="fs-idp10779280">
+<para id="fs-idp42820064">(a) 2,15 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup>;
+(b) 4,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup>; (c) 2,08; (d) 0,19; (e) 27.440; (f) 43,0</para>
+</solution>
+</exercise>
+<exercise id="fs-idp356573616">
+<problem id="fs-idp10636032">
+<para id="fs-idp7188816">Framkvæmdu eftirfarandi útreikninga
+og gefðu upp hvert svar með réttum fjölda markverðra stafa.</para>
+<para id="fs-idm37142896">(a) 62,8 <m:math><m:mo>×</m:mo></m:math> 34</para>
+<para id="fs-idp61690240">(b) 0,147 + 0,0066 + 0,012</para>
+<para id="fs-idp24061616">(c) 38 <m:math><m:mo>×</m:mo></m:math> 95
+<m:math><m:mo>×</m:mo></m:math> 1,792</para>
+<para id="fs-idp27126640">(d) 15 – 0,15 – 0,6155</para>
+<para id="fs-idp288811424">(e) <m:math><m:mrow><m:mn>8.78</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>0.0500</m:mn></m:mrow><m:mrow><m:mn>0.478</m:mn></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para>
+<para id="fs-idp67824512">(f) 140 + 7,68 + 0,014</para>
+<para id="fs-idp133759616">(g) 28,7 – 0,0483</para>
+<para id="fs-idp14335968">(h) <m:math><m:mrow><m:mfrac><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>88.5</m:mn><m:mo>−</m:mo><m:mn>87.57</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>45.13</m:mn></m:mrow></m:mfrac></m:mrow></m:math></para>
+</problem>
+</exercise>
+<exercise id="fs-idp30946992">
+<problem id="fs-idp4924640">
+<para id="fs-idp14168896">Skoðaðu niðurstöðurnar úr
+bogfimikeppninni sem sýndar eru á þessari mynd.</para>
+<para id="fs-idp29005776">(a) Hvaða bogmaður er nákvæmastur?</para>
+<para id="fs-idp32003568">(b) Hvaða bogmaður er réttastur?</para>
+<para id="fs-idp110085200">(c) Hver er bæði ónákvæmastur og
+óréttastur?</para>
+<media id="fs-idp94481888" class="scaled-down" alt="4 targets are shown each with 4 holes indicating where the arrows hit the targets. Archer W put all 4 arrows closely around the center of the target. Archer X put all 4 arrows in a tight cluster but far to the lower right of the target. Archer Y put all 4 arrows at different corners of the target. All 4 arrows are very far from the center of the target. Archer Z put 2 arrows close to the target and 2 other arrows far outside of the target.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_01_05_Archer2_img.jpg"/>
+</media>
+</problem>
+<solution id="fs-idp175189888">
+<para id="fs-idp27840096">(a) Bogmaður X; (b) Bogmaður W;
+(c) Bogmaður Y</para>
+</solution>
+</exercise>
+<exercise id="fs-idp33718320">
+<problem id="fs-idp29543472">
+<para id="fs-idp221159488">Flokkaðu eftirfarandi mælingasett
+sem rétt, nákvæmt, hvort tveggja eða hvorugt.</para>
+<para id="fs-idp3093664">(a) Athugun á samræmi í þyngd
+súkkulaðibitakaka: 17,27 g, 13,05 g, 19,46 g, 16,92 g</para>
+<para id="fs-idp29102224">(b) Prófun á rúmmáli lotu af 25 ml
+pípettum: 27,02 ml, 26,99 ml, 26,97 ml, 27,01 ml</para>
+<para id="fs-idp223487632">(c) Ákvörðun á hreinleika gulls:
+99,9999%, 99,9998%, 99,9998%, 99,9999%</para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp330245120">
+<term>nákvæmni</term>
+<meaning id="fs-idp330245120-meaning">hversu nálægt mæling er
+réttu gildi</meaning>
+</definition>
+<definition id="fs-idp17670352">
+<term>nákvæm tala</term>
+<meaning id="fs-idp17670352-meaning">tala fengin með talningu
+eða samkvæmt skilgreiningu</meaning>
+</definition>
+<definition id="fs-idp28800512">
+<term>prentnákvæmni</term>
+<meaning id="fs-idp28800512-meaning">hversu nálægt mæling er
+sömu mælingu þegar hún er endurtekin</meaning>
+</definition>
+<definition id="fs-idp68905696">
+<term>námundun</term>
+<meaning id="fs-idp68905696-meaning">aðferð sem notuð er til
+að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna
+í þeim mælingum sem notaðar eru í útreikningnum</meaning>
+</definition>
+<definition id="fs-idp3346000">
+<term>markverðir stafir</term>
+<meaning id="fs-idp3346000-meaning">(einnig, marktækir
+tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi
+síðasti tölustafurinn</meaning>
+</definition>
+<definition id="fs-idp96606928">
+<term>óvissa</term>
+<meaning id="fs-idp96606928-meaning">mat á því hversu mikið
+mæling víkur frá sönnu gildi</meaning>
+</definition>
+</glossary>
+</document>
