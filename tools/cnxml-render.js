@@ -270,6 +270,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     tableNumbers, // Map of table ID -> "Chapter.Number" (this module only)
     chapterFigureNumbers: options.chapterFigureNumbers || figureNumbers, // chapter-wide
     chapterTableNumbers: options.chapterTableNumbers || tableNumbers, // chapter-wide
+    chapterExampleNumbers: options.chapterExampleNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
     figureCounter: 0,
     footnoteCounter: 0,
@@ -927,9 +928,11 @@ function renderExample(example, context) {
   const lines = [];
   const id = example.id || null;
 
-  // Increment example counter and generate example number
+  // Use chapter-wide example number if available, otherwise fall back to per-module counter
+  const chapterExNum =
+    id && context.chapterExampleNumbers ? context.chapterExampleNumbers.get(id) : null;
   context.exampleCounter = (context.exampleCounter || 0) + 1;
-  const exampleNumber = `${context.chapter}.${context.exampleCounter}`;
+  const exampleNumber = chapterExNum || `${context.chapter}.${context.exampleCounter}`;
 
   lines.push(`<aside${id ? ` id="${escapeAttr(id)}"` : ''} class="example">`);
 
@@ -1470,14 +1473,21 @@ async function main() {
     // Build module sections map from structure + segment files
     const moduleSections = buildModuleSections('efnafraedi', args.chapter);
 
-    // Build chapter-wide figure/table number maps across ALL modules
+    // Build chapter-wide figure/table/example number maps across ALL modules
     // This enables cross-module references (e.g., 5-2 referencing a table in 5-1)
     const chapterFigureNumbers = new Map();
     const chapterTableNumbers = new Map();
+    const chapterExampleNumbers = new Map();
     const chapterSectionTitles = new Map(); // section ID -> title text
-    const allModules = findChapterModules(args.chapter); // all modules, even if rendering one
+    // Sort modules by section number so numbering follows chapter order, not filename order
+    const allModules = findChapterModules(args.chapter).sort((a, b) => {
+      const secA = moduleSections[a] ? moduleSections[a].section : 999;
+      const secB = moduleSections[b] ? moduleSections[b].section : 999;
+      return secA - secB;
+    });
     let chapterFigCounter = 0;
     let chapterTableCounter = 0;
+    let chapterExampleCounter = 0;
 
     for (const modId of allModules) {
       const modPath = path.join(BOOKS_DIR, '03-translated', `ch${chapterStr}`, `${modId}.cnxml`);
@@ -1495,6 +1505,13 @@ async function main() {
       while ((tm = tblPattern.exec(modCnxml)) !== null) {
         chapterTableCounter++;
         chapterTableNumbers.set(tm[1], `${args.chapter}.${chapterTableCounter}`);
+      }
+
+      const examplePattern = /<example\s+id="([^"]+)"/g;
+      let exm2;
+      while ((exm2 = examplePattern.exec(modCnxml)) !== null) {
+        chapterExampleCounter++;
+        chapterExampleNumbers.set(exm2[1], `${args.chapter}.${chapterExampleCounter}`);
       }
 
       // Build section title map for cross-reference resolution
@@ -1533,7 +1550,7 @@ async function main() {
 
     if (args.verbose) {
       console.error(
-        `Chapter-wide maps: ${chapterFigureNumbers.size} figures, ${chapterTableNumbers.size} tables`
+        `Chapter-wide maps: ${chapterFigureNumbers.size} figures, ${chapterTableNumbers.size} tables, ${chapterExampleNumbers.size} examples`
       );
     }
 
@@ -1558,6 +1575,7 @@ async function main() {
         moduleSections,
         chapterFigureNumbers,
         chapterTableNumbers,
+        chapterExampleNumbers,
         chapterSectionTitles,
       });
 

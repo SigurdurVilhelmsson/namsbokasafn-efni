@@ -497,22 +497,22 @@ export function processInlineContent(content, context) {
   // Self-closing link with target-id (e.g., <link target-id="CNX_Chem_05_02_Fig"/>)
   // This is common for figure references
   result = result.replace(/<link\s+target-id="([^"]*)"[^>]*\/>/g, (match, targetId) => {
-    // Check if this is a figure reference (module-local first, then chapter-wide)
-    if (context.figureNumbers && context.figureNumbers.has(targetId)) {
-      const figNum = context.figureNumbers.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
-    }
+    // Check if this is a figure reference (chapter-wide first, then module-local fallback)
     if (context.chapterFigureNumbers && context.chapterFigureNumbers.has(targetId)) {
       const figNum = context.chapterFigureNumbers.get(targetId);
       return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
     }
-    // Check if this is a table reference (module-local first, then chapter-wide)
-    if (context.tableNumbers && context.tableNumbers.has(targetId)) {
-      const tableNum = context.tableNumbers.get(targetId);
-      return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
+    if (context.figureNumbers && context.figureNumbers.has(targetId)) {
+      const figNum = context.figureNumbers.get(targetId);
+      return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
     }
+    // Check if this is a table reference (chapter-wide first, then module-local fallback)
     if (context.chapterTableNumbers && context.chapterTableNumbers.has(targetId)) {
       const tableNum = context.chapterTableNumbers.get(targetId);
+      return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
+    }
+    if (context.tableNumbers && context.tableNumbers.has(targetId)) {
+      const tableNum = context.tableNumbers.get(targetId);
       return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
     }
     // Check if this is a section/example/note reference
@@ -536,21 +536,21 @@ export function processInlineContent(content, context) {
         }
         return `<a href="#${escapeAttr(targetId)}">${processInlineContent(text, context)}</a>`;
       }
-      // Empty content - try to resolve reference (module-local first, then chapter-wide)
-      if (context.figureNumbers && context.figureNumbers.has(targetId)) {
-        const figNum = context.figureNumbers.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
-      }
+      // Empty content - try to resolve reference (chapter-wide first, then module-local fallback)
       if (context.chapterFigureNumbers && context.chapterFigureNumbers.has(targetId)) {
         const figNum = context.chapterFigureNumbers.get(targetId);
         return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
       }
-      if (context.tableNumbers && context.tableNumbers.has(targetId)) {
-        const tableNum = context.tableNumbers.get(targetId);
-        return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
+      if (context.figureNumbers && context.figureNumbers.has(targetId)) {
+        const figNum = context.figureNumbers.get(targetId);
+        return `<a href="#${escapeAttr(targetId)}">Mynd ${figNum}</a>`;
       }
       if (context.chapterTableNumbers && context.chapterTableNumbers.has(targetId)) {
         const tableNum = context.chapterTableNumbers.get(targetId);
+        return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
+      }
+      if (context.tableNumbers && context.tableNumbers.has(targetId)) {
+        const tableNum = context.tableNumbers.get(targetId);
         return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
       }
       // Check if this is a section/example/note reference

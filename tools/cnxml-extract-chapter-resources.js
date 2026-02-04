@@ -361,6 +361,7 @@ function buildGlossaryHtml(definitions, chapter, _book) {
       {
         chapter,
         type: 'glossary',
+        title: 'Lykilhugtök',
         termCount: definitions.length,
       },
       null,
@@ -486,6 +487,7 @@ function buildEquationsHtml(equations, chapter, _book) {
       {
         chapter,
         type: 'key-equations',
+        title: 'Lykiljöfnur',
         equationCount: equations.length,
       },
       null,
@@ -652,7 +654,7 @@ function buildExercisesHtml(exercises, chapter, _book) {
     for (const ex of data.exercises) {
       globalNumber++;
       lines.push(
-        `          <li class="exercise" id="${escapeAttr(ex.id)}" value="${globalNumber}">`
+        `          <li class="exercise eoc-exercise" id="${escapeAttr(ex.id)}" data-exercise-number="${globalNumber}" value="${globalNumber}">`
       );
 
       if (ex.problem && ex.problem.content) {
@@ -689,6 +691,7 @@ function buildExercisesHtml(exercises, chapter, _book) {
       {
         chapter,
         type: 'exercises',
+        title: 'Æfingar',
         exerciseCount: exercises.length,
       },
       null,
@@ -757,22 +760,21 @@ function buildAnswerKeyHtml(exercises, chapter, _book) {
   for (const [section, data] of bySection) {
     lines.push(`      <section class="answers-section">`);
     lines.push(`        <h2>${section} ${data.title}</h2>`);
-    lines.push('        <dl class="answers-list">');
+    lines.push('        <div class="answers-list">');
 
     for (const ans of data.answers) {
-      lines.push(`          <div class="answer-entry" id="answer-${escapeAttr(ans.id)}">`);
-      lines.push(`            <dt>${ans.globalNumber}.</dt>`);
-      lines.push('            <dd>');
+      lines.push(
+        `          <div class="answer-entry" id="${escapeAttr(ans.id)}" data-exercise-id="${escapeAttr(ans.id)}" data-exercise-number="${ans.globalNumber}">`
+      );
       if (ans.solution && ans.solution.content && ans.solution.content.paras) {
         for (const para of ans.solution.content.paras) {
-          lines.push(`              <p>${para}</p>`);
+          lines.push(`            <p>${para}</p>`);
         }
       }
-      lines.push('            </dd>');
       lines.push('          </div>');
     }
 
-    lines.push('        </dl>');
+    lines.push('        </div>');
     lines.push('      </section>');
   }
 
@@ -784,6 +786,7 @@ function buildAnswerKeyHtml(exercises, chapter, _book) {
       {
         chapter,
         type: 'answer-key',
+        title: 'Svör við æfingum',
         answerCount: withSolutions.length,
       },
       null,
@@ -882,6 +885,7 @@ function buildSummaryHtml(summaries, chapter, _book) {
       {
         chapter,
         type: 'summary',
+        title: 'Samantekt',
         sectionCount: summaries.filter(Boolean).length,
         paragraphCount: totalParagraphs,
       },
