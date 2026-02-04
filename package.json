@@ -38,6 +38,7 @@
     "js-yaml": "^4.1.0",
     "katex": "^0.16.28",
     "mammoth": "^1.11.0",
+    "mathjax-full": "^3.2.1",
     "turndown": "^7.2.2"
   },
   "devDependencies": {
