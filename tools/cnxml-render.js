@@ -140,10 +140,7 @@ function renderLatex(latex, displayMode = true) {
       throwOnError: false,
       strict: false,
       trust: true,
-      macros: {
-        '\\cancel': '\\enclose{horizontalstrike}{#1}',
-        '\\bcancel': '\\enclose{updiagonalstrike}{#1}',
-      },
+      macros: {},
     });
   } catch (err) {
     console.error(`KaTeX error for: ${processed.substring(0, 50)}...`, err.message);

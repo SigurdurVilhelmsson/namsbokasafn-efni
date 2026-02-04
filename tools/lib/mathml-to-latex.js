@@ -140,7 +140,7 @@ export function convertMathMLToLatex(mathml) {
     (match, notation, content) => {
       const inner = convertMathMLToLatex('<math>' + content + '</math>');
       if (notation === 'horizontalstrike') {
-        return '\\cancel{' + inner + '}';
+        return '\\sout{' + inner + '}';
       }
       return inner;
     }
