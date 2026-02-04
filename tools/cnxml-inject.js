@@ -179,8 +179,8 @@ function reverseInlineMarkup(text, equations) {
   result = result.replace(/~([^~]+)~/g, '<sub>$1</sub>');
   result = result.replace(/\^([^^]+)\^/g, '<sup>$1</sup>');
 
-  // Convert footnotes back (simplified)
-  result = result.replace(/ \[footnote: ([^\]]+)\]/g, '<footnote>$1</footnote>');
+  // Convert footnotes back — handle both English marker and MT-translated Icelandic
+  result = result.replace(/ \[(?:footnote|neðanmálsgrein): ([^\]]+)\]/g, '<footnote>$1</footnote>');
 
   // Escape XML entities that might have been introduced
   // (but be careful not to double-escape)
