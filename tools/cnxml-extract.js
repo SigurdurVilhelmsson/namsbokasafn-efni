@@ -35,6 +35,7 @@ import {
   extractGlossary,
 } from './lib/cnxml-parser.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
+import { getChapterModules } from './pipeline-runner.js';
 
 // =====================================================================
 // CONFIGURATION
@@ -1128,6 +1129,17 @@ async function main() {
 
     ensureOutputDirs(chapter);
 
+    // Build canonical module ordering map for sectionOrder
+    // When processing a chapter, getChapterModules gives the correct order
+    let moduleOrderMap = null;
+    if (args.chapter) {
+      const orderedModules = getChapterModules(args.chapter);
+      moduleOrderMap = new Map();
+      orderedModules.forEach((mod, index) => {
+        moduleOrderMap.set(mod.moduleId, index);
+      });
+    }
+
     for (const file of files) {
       if (args.verbose) {
         console.error(`Processing: ${file}`);
@@ -1137,6 +1149,14 @@ async function main() {
       const result = extractSegments(cnxml, { verbose: args.verbose });
 
       const moduleId = result.structure.moduleId;
+
+      // Add sectionOrder from canonical module ordering
+      if (moduleOrderMap && moduleOrderMap.has(moduleId)) {
+        result.structure.sectionOrder = moduleOrderMap.get(moduleId);
+      } else {
+        result.structure.sectionOrder = null;
+      }
+
       const output = writeOutput(result, chapter, moduleId);
 
       console.log(`${moduleId}: ${result.segments.length} segments extracted`);

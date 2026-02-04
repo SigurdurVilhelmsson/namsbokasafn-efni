@@ -89,11 +89,26 @@ export function buildModuleSections(book, chapter) {
   const structDir = path.join(REPO_ROOT, 'books', book, '02-structure', `ch${chapterStr}`);
   const segDir = path.join(REPO_ROOT, 'books', book, '02-for-mt', `ch${chapterStr}`);
 
-  // 1. Read all structure files, sorted alphabetically by filename (= moduleId order)
-  const structFiles = fs
-    .readdirSync(structDir)
-    .filter((f) => f.endsWith('-structure.json'))
-    .sort();
+  // 1. Read all structure files, sorted by sectionOrder when present, falling back to alphabetical
+  const structFileNames = fs.readdirSync(structDir).filter((f) => f.endsWith('-structure.json'));
+
+  // Parse all structure files so we can sort by sectionOrder
+  const structEntries = structFileNames.map((f) => ({
+    filename: f,
+    data: JSON.parse(fs.readFileSync(path.join(structDir, f), 'utf-8')),
+  }));
+
+  structEntries.sort((a, b) => {
+    const aOrder = a.data.sectionOrder;
+    const bOrder = b.data.sectionOrder;
+    // If both have sectionOrder, sort numerically
+    if (aOrder != null && bOrder != null) return aOrder - bOrder;
+    // If only one has it, prefer the one with sectionOrder first
+    if (aOrder != null) return -1;
+    if (bOrder != null) return 1;
+    // Fallback: alphabetical by filename
+    return a.filename.localeCompare(b.filename);
+  });
 
   // 2. Read all segment files for Icelandic titles
   const segments = new Map();
@@ -110,8 +125,8 @@ export function buildModuleSections(book, chapter) {
   const result = {};
   let sectionCounter = 1;
 
-  for (const file of structFiles) {
-    const structure = JSON.parse(fs.readFileSync(path.join(structDir, file), 'utf-8'));
+  for (const entry of structEntries) {
+    const structure = entry.data;
     const moduleId = structure.moduleId;
     const isIntro = structure.documentClass === 'introduction';
     const titleEn = structure.title.text;
