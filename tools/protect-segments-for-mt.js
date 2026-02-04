@@ -24,7 +24,7 @@
  * Options:
  *   --output-dir, -o <dir>  Output directory (default: same as input)
  *   --batch <dir>           Process all *-segments.en.md files in directory
- *   --char-limit <n>        Visible character limit (default: 18000)
+ *   --char-limit <n>        Visible character limit (default: 14000)
  *   --dry-run, -n           Show what would be done without writing files
  *   --verbose, -v           Show detailed progress
  *   -h, --help              Show this help message
@@ -34,7 +34,7 @@ import fs from 'fs';
 import path from 'path';
 
 // Character limits
-const DEFAULT_CHAR_LIMIT = 18000;
+const DEFAULT_CHAR_LIMIT = 14000;
 // eslint-disable-next-line no-unused-vars
 const HARD_LIMIT = 20000; // Reserved for validation
 
@@ -80,7 +80,7 @@ Converts segment tags to MT-safe format and splits by visible character count.
 What it does:
   1. Converts <!-- SEG:xxx --> to [[SEG:xxx]] (survives MT with escaping)
   2. Counts only VISIBLE characters (excludes [[SEG:...]], [[MATH:...]])
-  3. Splits at paragraph boundaries if >18K visible characters
+  3. Splits at paragraph boundaries if >14K visible characters
   4. Outputs files with (a), (b), (c) suffixes when split
 
 Usage:
@@ -90,7 +90,7 @@ Usage:
 Options:
   --output-dir, -o <dir>  Output directory (default: same as input)
   --batch <dir>           Process all *-segments.en.md files in directory
-  --char-limit <n>        Visible character limit (default: 18000)
+  --char-limit <n>        Visible character limit (default: 14000)
   --dry-run, -n           Show what would be done without writing files
   --verbose, -v           Show detailed progress
   -h, --help              Show this help message
