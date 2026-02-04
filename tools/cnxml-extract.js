@@ -151,9 +151,12 @@ function extractInlineText(content, mathMap, counters) {
     }
   );
 
-  // Handle terms - extract just the term text
+  // Handle terms - convert sup/sub to markdown before stripping remaining tags
   text = text.replace(/<term[^>]*>([\s\S]*?)<\/term>/g, (match, inner) => {
-    return `__${stripTags(inner)}__`;
+    const termText = inner
+      .replace(/<sup>([^<]*)<\/sup>/g, '^$1^')
+      .replace(/<sub>([^<]*)<\/sub>/g, '~$1~');
+    return `__${stripTags(termText).trim()}__`;
   });
 
   // Handle links - preserve URL context

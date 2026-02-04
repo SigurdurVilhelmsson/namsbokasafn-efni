@@ -295,7 +295,7 @@ eru kynntar fjórar af grunneiningum SI-kerfisins sem eru almennt notaðar
 <title>Rúmmál</title>
 <para id="fs-idm77137776"><emphasis effect="bold">Rúmmál</emphasis> er mælikvarði á það rými
 sem hlutur tekur. Stöðluð SI-eining rúmmáls er skilgreind með
-grunneiningu lengdar (<link target-id="CNX_Chem_01_04_Volume"/>). Staðalrúmmálið er <emphasis effect="bold">rúmmetri (m3)</emphasis>,
+grunneiningu lengdar (<link target-id="CNX_Chem_01_04_Volume"/>). Staðalrúmmálið er <term>rúmmetri (m<sup>3</sup>)</term>,
 teningur með brúnarlengd nákvæmlega einn metra. Til að skammta einn
 rúmmetra af vatni gætum við smíðað teningslaga kassa með brúnarlengd
 nákvæmlega einn metra. Þessi kassi myndi rúma einn rúmmetra af vatni eða
@@ -303,9 +303,9 @@ einhverju öðru efni.</para>
 <para id="fs-idm81813264">Algengari rúmmálseining er dregin af
 desimetranum (0,1 m, eða 10 cm). Teningur með brúnarlengd nákvæmlega
 einn desimetra inniheldur rúmmál upp á einn rúmdesimetra (dm<sup>3</sup>).
-\_\_Lítri (L) \_\_ er algengara heiti yfir rúmdesimetra. Einn lítri er
+<term>Lítri (L)</term> er algengara heiti yfir rúmdesimetra. Einn lítri er
 um 1,06 kvart.</para>
-<para id="fs-idm163691744"><emphasis effect="bold">Rúmsentimetri (cm3)</emphasis> er rúmmál
+<para id="fs-idm163691744"><term>Rúmsentimetri (cm<sup>3</sup>)</term> er rúmmál
 tenings með brúnarlengd nákvæmlega einn sentimetra. Skammstöfunin <emphasis effect="bold">cc</emphasis>
 (fyrir <emphasis effect="bold">c</emphasis>ubic <emphasis effect="bold">c</emphasis>entimeter) er oft notuð af heilbrigðisstarfsfólki.
 Rúmsentimetri jafngildir <emphasis effect="bold">millilítra (ml)</emphasis> og er 1/1000 úr lítra.</para>

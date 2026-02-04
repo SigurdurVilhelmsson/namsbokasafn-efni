@@ -145,7 +145,17 @@ function reverseInlineMarkup(text, equations) {
   result = result.replace(/\*([^*]+)\*/g, '<emphasis effect="italics">$1</emphasis>');
 
   // Convert term markers back to CNXML (simplified - without IDs)
+  // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers
+  result = result.replace(/\\_\\_([^_]+)\\_\\_/g, '<term>$1</term>');
   result = result.replace(/__([^_]+)__/g, '<term>$1</term>');
+
+  // Restore sup/sub inside terms (from ^..^ and ~..~ markdown)
+  result = result.replace(/<term>([\s\S]*?)<\/term>/g, (match, inner) => {
+    const restored = inner
+      .replace(/\^([^^]+)\^/g, '<sup>$1</sup>')
+      .replace(/~([^~]+)~/g, '<sub>$1</sub>');
+    return `<term>${restored}</term>`;
+  });
 
   // Convert self-closing cross-references (e.g., [#CNX_Chem_05_02_Fig])
   result = result.replace(/\[#([^\]]+)\]/g, '<link target-id="$1"/>');
