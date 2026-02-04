@@ -271,6 +271,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterFigureNumbers: options.chapterFigureNumbers || figureNumbers, // chapter-wide
     chapterTableNumbers: options.chapterTableNumbers || tableNumbers, // chapter-wide
     chapterExampleNumbers: options.chapterExampleNumbers || new Map(), // chapter-wide
+    chapterExerciseNumbers: options.chapterExerciseNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
     figureCounter: 0,
     footnoteCounter: 0,
@@ -1478,6 +1479,7 @@ async function main() {
     const chapterFigureNumbers = new Map();
     const chapterTableNumbers = new Map();
     const chapterExampleNumbers = new Map();
+    const chapterExerciseNumbers = new Map();
     const chapterSectionTitles = new Map(); // section ID -> title text
     // Sort modules by section number so numbering follows chapter order, not filename order
     const allModules = findChapterModules(args.chapter).sort((a, b) => {
@@ -1488,6 +1490,7 @@ async function main() {
     let chapterFigCounter = 0;
     let chapterTableCounter = 0;
     let chapterExampleCounter = 0;
+    let chapterExerciseCounter = 0;
 
     for (const modId of allModules) {
       const modPath = path.join(BOOKS_DIR, '03-translated', `ch${chapterStr}`, `${modId}.cnxml`);
@@ -1538,19 +1541,18 @@ async function main() {
         chapterSectionTitles.set(nm[1], titleText);
       }
 
-      // Capture exercise IDs for cross-reference resolution
+      // Build chapter-wide exercise number map
       const exerPattern = /<exercise\s+id="([^"]+)"/g;
       let exm;
       while ((exm = exerPattern.exec(modCnxml)) !== null) {
-        if (!chapterSectionTitles.has(exm[1])) {
-          chapterSectionTitles.set(exm[1], 'æfingu');
-        }
+        chapterExerciseCounter++;
+        chapterExerciseNumbers.set(exm[1], `${args.chapter}.${chapterExerciseCounter}`);
       }
     }
 
     if (args.verbose) {
       console.error(
-        `Chapter-wide maps: ${chapterFigureNumbers.size} figures, ${chapterTableNumbers.size} tables, ${chapterExampleNumbers.size} examples`
+        `Chapter-wide maps: ${chapterFigureNumbers.size} figures, ${chapterTableNumbers.size} tables, ${chapterExampleNumbers.size} examples, ${chapterExerciseNumbers.size} exercises`
       );
     }
 
@@ -1576,6 +1578,7 @@ async function main() {
         chapterFigureNumbers,
         chapterTableNumbers,
         chapterExampleNumbers,
+        chapterExerciseNumbers,
         chapterSectionTitles,
       });
 
