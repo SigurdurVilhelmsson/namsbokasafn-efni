@@ -35,7 +35,7 @@ uppleysta efnið sem var til staðar í þekktu rúmmáli lausnarinnar. Í
 <!-- SEG:m68716:para:fs-idp43277952 --> Aðferðin sem lýst er til að mæla
 styrk ediks var snemmbúin útgáfa af greiningartækninni sem kallast
 **títrunargreining**. Dæmigerð títrunargreining felur í sér notkun á
-**búrettu** ({{XREF:1}}) til að bæta í skömmtum lausn sem inniheldur
+**búrettu** ([#CNX_Chem_04_05_titration]) til að bæta í skömmtum lausn sem inniheldur
 þekktan styrk af einhverju efni (**títrantinum**) við sýnislausn sem
 inniheldur efnið sem á að mæla styrk þess (**greiningarefnið**).
 Títranturinn og greiningarefnið gangast undir efnahvarf með þekktri
@@ -133,7 +133,7 @@ stýrðan hátt sem gufar upp vatnið. Einnig eru algengar
 þyngdarmælingaaðferðir þar sem greiniefnið er látið gangast undir
 útfellingarhvarf af því tagi sem lýst var fyrr í þessum kafla.
 Botnfallið er yfirleitt einangrað úr hvarfblöndunni með síun, þurrkað
-vandlega og síðan vegið ({{XREF:2}}). Massi botnfallsins er síðan hægt
+vandlega og síðan vegið ([#CNX_Chem_04_05_Filter]). Massi botnfallsins er síðan hægt
 að nota, ásamt viðeigandi hlutfallaefnafræðilegum samböndum, til að
 reikna út styrk greiniefnisins.
 
@@ -185,7 +185,7 @@ hitastig undir straumi af súrefnisgasi, sem leiðir til fullkomins bruna
 bruni kolvetna mun til dæmis aðeins gefa af sér koldíoxíð og vatn sem
 myndefni. Loftkenndu brunamyndefnin eru leidd í gegnum aðskilin,
 fyrirfram vegin söfnunartæki sem innihalda efnasambönd sem gleypa
-sértækt hvert myndefni ({{XREF:3}}). Massaukning hvers tækis samsvarar
+sértækt hvert myndefni ([#CNX_Chem_04_05_combustion]). Massaukning hvers tækis samsvarar
 massa myndefnisins sem gleypt er og má nota í viðeigandi
 hlutfallaefnafræðilegum útreikningi til að leiða út massa viðkomandi
 frumefnis.

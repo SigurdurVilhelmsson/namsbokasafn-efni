@@ -21,7 +21,7 @@ rafeindir, en rafeindir taka nánast allt rúmmál atómsins. Þvermál atóms
 er í stærðargráðunni 10^−10^ m, en þvermál kjarnans er um það bil
 10^−15^ m — um 100.000 sinnum minna. Til að fá hugmynd um hlutfallslegar
 stærðir þeirra má íhuga þetta: Ef kjarninn væri á stærð við bláber, væri
-atómið á stærð við fótboltaleikvang ({{XREF:11}}).
+atómið á stærð við fótboltaleikvang ([#CNX_Chem_02_03_AtomSize]).
 
 <!-- SEG:m68692:caption:CNX_Chem_02_03_AtomSize-caption --> Ef atóm væri
 stækkað upp í stærð fótboltaleikvangs væri kjarninn á stærð við eitt
@@ -48,7 +48,7 @@ og hleðsluna 1+. Nifteind er örlítið þyngri eind með massann 1,0087 amu
 og enga hleðslu; eins og nafnið gefur til kynna er hún hlutlaus.
 Rafeindin hefur hleðsluna 1− og er mun léttari eind með massa um 0,00055
 amu (það þyrfti um 1800 rafeindir til að jafna massa einnar róteindar).
-Eiginleikar þessara grundvallareinda eru teknir saman í {{XREF:12}}.
+Eiginleikar þessara grundvallareinda eru teknir saman í [#fs-idp90857696].
 (Glöggur nemandi gæti tekið eftir því að summa öreinda atóms jafngildir
 ekki raunverulegum massa atómsins: Heildarmassi sex róteinda, sex
 nifteinda og sex rafeinda er 12,0993 amu, sem er örlítið meira en 12,00
@@ -140,7 +140,7 @@ rafeindir verður það anjón með 2− hleðslu (8 − 10 = 2−).
 <!-- SEG:m68692:para:fs-idm54131248 --> Joð er nauðsynlegt snefilefni í
 fæðunni; það er nauðsynlegt til að framleiða skjaldkirtilshormón.
 Ófullnægjandi joð í fæðunni getur leitt til þróunar á
-skjaldkirtilsstækkun ({{XREF:13}}).
+skjaldkirtilsstækkun ([#CNX_Chem_02_03_Iodine]).
 
 <!-- SEG:m68692:para:fs-idm90509824 --> Álagning lítils magns af joði í
 matarsalt (joðsalt) hefur í raun útrýmt þessu heilsufarsvandamáli í
@@ -184,7 +184,7 @@ b: breyting á verki eftir Mike Mozart)
 
 <!-- SEG:m68692:para:fs-idm48306304 --> **Frumeindatákn** er skammstöfun sem
 við notum til að tákna frumefni eða atóm frumefnis. Til dæmis er táknið
-fyrir kvikasilfur Hg ({{XREF:14}}). Við notum sama tákn til að tákna
+fyrir kvikasilfur Hg ([#CNX_Chem_02_03_SiSymbol]). Við notum sama tákn til að tákna
 eitt atóm kvikasilfurs (smásætt svið) eða til að merkja ílát með mörgum
 atómum frumefnisins kvikasilfurs (stórsætt svið).
 
@@ -193,7 +193,7 @@ frumefnið kvikasilfur óháð magni; það getur táknað eitt atóm
 kvikasilfurs eða mikið magn af kvikasilfri.
 
 <!-- SEG:m68692:para:fs-idm91050016 --> Tákn fyrir nokkur algeng frumefni og
-atóm þeirra eru talin upp í {{XREF:15}}. Sum tákn eru dregin af almennu
+atóm þeirra eru talin upp í [#fs-idm36686800]. Sum tákn eru dregin af almennu
 heiti frumefnisins; önnur eru skammstafanir á heitinu á öðru tungumáli.
 Flest tákn hafa einn eða tvo stafi, en þriggja stafa tákn hafa verið
 notuð til að lýsa sumum frumefnum sem hafa sætistölu hærri en 112. Til
@@ -201,7 +201,7 @@ að forðast rugling við aðrar rithætti er aðeins fyrsti stafur táknsins
 hástafur. Til dæmis er Co táknið fyrir frumefnið kóbalt, en CO er táknið
 fyrir efnasambandið kolmónoxíð, sem inniheldur atóm frumefnanna kolefnis
 (C) og súrefnis (O). Öll þekkt frumefni og tákn þeirra eru í lotukerfinu
-í {{XREF:16}} (einnig að finna í {{LINK:1}}viðauka A{{/LINK}}).
+í [#CNX_Chem_02_05_PerTable1] (einnig að finna í [viðauka A](#fs-idm379479808)).
 
 <!-- SEG:m68692:entry:auto-54 --> Nokkur algeng frumefni og tákn þeirra
 
@@ -333,14 +333,14 @@ uppgötvaði kjarnaklofnun, fyrirbæri sem myndi hafa heimsumbreytandi
 mikilvægra samsæta, sem fjallað er um hér á eftir.
 
 <!-- SEG:m68692:para:fs-idm3892928 --> Farðu inn á þessa
-{{LINK:2}}síðu{{/LINK}} til að fræðast meira um IUPAC, Alþjóðasamtök um
+[síðu](http://openstax.org/l/16IUPAC) til að fræðast meira um IUPAC, Alþjóðasamtök um
 hreina og hagnýta efnafræði, og skoða lotukerfið þeirra.
 
 <!-- SEG:m68692:title:fs-idp42149200-title --> Samsætur
 
 <!-- SEG:m68692:para:fs-idm240748912 --> Táknið fyrir tiltekna samsætu hvers
 frumefnis er skrifað með því að setja massatöluna sem háskrift vinstra
-megin við tákn frumefnisins ({{XREF:17}}). Sætistalan er stundum skrifuð
+megin við tákn frumefnisins ([#CNX_Chem_02_03_AtomSym]). Sætistalan er stundum skrifuð
 sem lágskrift á undan tákninu, en þar sem þessi tala skilgreinir
 auðkenni frumefnisins, eins og tákn þess gerir, er henni oft sleppt. Til
 dæmis er magnesíum til sem efnablanda þriggja samsæta, hver með
@@ -360,7 +360,7 @@ massatöluna sem háskrift vinstra megin, sætistöluna sem lágskrift
 vinstra megin (stundum sleppt) og hleðsluna sem háskrift hægra megin.
 
 <!-- SEG:m68692:para:fs-idm198096624 --> Upplýsingar um náttúrulegar samsætur
-frumefna með sætistölur 1 til 10 eru gefnar í {{XREF:18}}. Athugið að
+frumefna með sætistölur 1 til 10 eru gefnar í [#fs-idm87646592]. Athugið að
 auk staðlaðra nafna og tákna er oft vísað til samsæta vetnis með
 algengum nöfnum og meðfylgjandi táknum. Vetni-2, táknað ^2^H, er einnig
 kallað tvívetni og stundum táknað D. Vetni-3, táknað ^3^H, er einnig
@@ -667,8 +667,8 @@ frumefna
 
 <!-- SEG:m68692:entry:auto-266 --> 9,25
 
-<!-- SEG:m68692:para:fs-idm243168608 --> Notaðu þennan {{LINK:3}}hermi til að
-byggja atóm{{/LINK}} til að byggja atóm fyrstu 10 frumefnanna, sjá hvaða
+<!-- SEG:m68692:para:fs-idm243168608 --> Notaðu þennan [hermi til að
+byggja atóm](http://openstax.org/l/16PhetAtomBld) til að byggja atóm fyrstu 10 frumefnanna, sjá hvaða
 samsætur eru til, kanna stöðugleika kjarna og öðlast reynslu af
 samsætutáknum.
 
@@ -775,7 +775,7 @@ tveggja samsæta?
 <!-- SEG:m68692:para:fs-idm194575792 --> 69,15% Cu-63 og 30,85% Cu-65
 
 <!-- SEG:m68692:para:fs-idp99251296 --> Farðu inn á þessa
-{{LINK:4}}síðu{{/LINK}} til að búa til efnablöndur úr helstu samsætum
+[síðu](http://openstax.org/l/16PhetAtomMass) til að búa til efnablöndur úr helstu samsætum
 fyrstu 18 frumefnanna, öðlast reynslu af meðalatómmassa og kanna
 náttúruleg samsætuhlutföll með hermilíkaninu Samsætur og atómmassi.
 
@@ -801,7 +801,7 @@ náttúrulega gnægð samsæta með tilraunum með því að nota tæki sem kall
 massagreinir. Massagreining (MS) er mikið notuð í efnafræði,
 réttarvísindum, læknisfræði, umhverfisvísindum og mörgum öðrum sviðum
 til að greina og hjálpa til við að bera kennsl á efnin í sýni. Í
-dæmigerðum massagreinir ({{XREF:19}}) er sýnið látið gufa upp og útsett
+dæmigerðum massagreinir ([#CNX_Chem_02_03_MassSpec]) er sýnið látið gufa upp og útsett
 fyrir orkuríkum rafeindageisla sem veldur því að atóm (eða sameindir)
 sýnisins verða rafhleðslubundin, yfirleitt með því að missa eina eða
 fleiri rafeindir. Þessar katjónir fara síðan í gegnum (breytilegt) raf-
@@ -819,8 +819,8 @@ massagreining var fyrst notuð við þróun nútíma atómkenningar hefur hún
 sirkoni í massagreinir skilar massarófi með toppum sem sýna mismunandi
 samsætur Zr.
 
-<!-- SEG:m68692:para:fs-idm136290400 --> Sjáðu {{LINK:5}}hreyfimynd{{/LINK}}
-sem útskýrir massagreiningu. Horfðu á þetta {{LINK:6}}myndband{{/LINK}}
+<!-- SEG:m68692:para:fs-idm136290400 --> Sjáðu [hreyfimynd](http://openstax.org/l/16MassSpec)
+sem útskýrir massagreiningu. Horfðu á þetta [myndband](http://openstax.org/l/16RSChemistry)
 frá Royal Society for Chemistry til að fá stutta lýsingu á
 grundvallaratriðum massagreiningar.
 
@@ -895,8 +895,8 @@ nifteindir og 4+ hleðslu
 <!-- SEG:m68692:problem:fs-idm166294032 --> (d) jónin með 2+ hleðslu,
 sætistölu 38 og massatölu 87
 
-<!-- SEG:m68692:problem:fs-idp112094752 --> Opnaðu {{LINK:7}}herminn Byggðu
-atóm{{/LINK}} og smelltu á táknið Atóm.
+<!-- SEG:m68692:problem:fs-idp112094752 --> Opnaðu [herminn Byggðu
+atóm](http://openstax.org/l/16PhetAtomBld) og smelltu á táknið Atóm.
 
 <!-- SEG:m68692:problem:fs-idm134679936 --> (a) Veldu eitt af fyrstu 10
 frumefnunum sem þú vilt byggja og tilgreindu tákn þess.
@@ -925,8 +925,8 @@ massatalan er 12. (c) Fyrri svör eru rétt. (d) Atómið verður stöðugt þar
 sem C-12 er stöðug samsæta kolefnis. (e) Fyrra svar er rétt. Önnur svör
 við þessari æfingu eru möguleg ef annað frumefni eða samsæta er valið.
 
-<!-- SEG:m68692:problem:fs-idm65098400 --> Opnaðu {{LINK:8}}herminn Byggðu
-atóm{{/LINK}}.
+<!-- SEG:m68692:problem:fs-idm65098400 --> Opnaðu [herminn Byggðu
+atóm](http://openstax.org/l/16PhetAtomBld).
 
 <!-- SEG:m68692:problem:fs-idm148181728 --> (a) Dragðu róteindir, nifteindir
 og rafeindir yfir á atómsniðmátið til að búa til hlutlaust atóm af
@@ -936,8 +936,8 @@ súrefni-16 og gefðu upp tákn samsætunnar fyrir þetta atóm.
 í viðbót til að búa til jón og gefðu upp tákn jónarinnar sem þú hefur
 búið til.
 
-<!-- SEG:m68692:problem:fs-idm7673184 --> Opnaðu {{LINK:9}}herminn Byggðu
-atóm{{/LINK}}.
+<!-- SEG:m68692:problem:fs-idm7673184 --> Opnaðu [herminn Byggðu
+atóm](http://openstax.org/l/16PhetAtomBld).
 
 <!-- SEG:m68692:problem:fs-idm56609680 --> (a) Dragðu róteindir, nifteindir
 og rafeindir yfir á atómsniðmátið til að búa til hlutlaust atóm af
@@ -1015,7 +1015,7 @@ róteindir, 47 rafeindir, 62 nifteindir; (d) 7 róteindir, 7 rafeindir, 8
 nifteindir; (e) 15 róteindir, 15 rafeindir, 16 nifteindir
 
 <!-- SEG:m68692:problem:fs-idm93231328 --> Smelltu á
-{{LINK:10}}síðuna{{/LINK}} og veldu flipann „Blanda samsætum“ („Mix
+[síðuna](http://openstax.org/l/16PhetAtomMass) og veldu flipann „Blanda samsætum“ („Mix
 Isotopes“), feldu reitina „Hlutfallsleg samsetning“ („Percent
 Composition“) og „Meðalatómmassi“ („Average Atomic Mass“) og veldu síðan
 frumefnið bór.
@@ -1043,7 +1043,7 @@ spána þína. Hversu vel stenst spá þín samanburð við náttúrulega
 efnablöndu? Útskýrðu. Ef nauðsyn krefur, aðlagaðu magnið þitt til að það
 passi eins vel og mögulegt er við „náttúrulega“ magnið.
 
-<!-- SEG:m68692:problem:fs-idm195304464 --> Endurtaktu {{XREF:20}} með
+<!-- SEG:m68692:problem:fs-idm195304464 --> Endurtaktu [#fs-idm28786800] með
 frumefni sem hefur þrjár náttúrulegar samsætur.
 
 <!-- SEG:m68692:solution:fs-idp79309808 --> Notum neon sem dæmi. Þar sem það

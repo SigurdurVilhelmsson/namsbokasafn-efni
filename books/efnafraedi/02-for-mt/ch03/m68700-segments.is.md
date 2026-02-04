@@ -36,7 +36,7 @@ tetraflúoretýleni, byggingarblokkinni fyrir „viðloðunarfríu“ fjölliðu
 Teflon. Sameindaformúla klóróforms gefur til kynna að ein sameind
 innihaldi eitt kolefnisatóm, eitt vetnisatóm og þrjú klóratóm.
 Meðalsameindamassi klóróformsameindar er því jafn summu meðalatómmassa
-þessara atóma. {{XREF:2}} sýnir útreikningana sem notaðir eru til að
+þessara atóma. [#CNX_Chem_03_01_chloroform] sýnir útreikningana sem notaðir eru til að
 leiða út sameindamassa klóróforms, sem er 119,37 amu.
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_chloroform-caption --> Meðalmassi
@@ -47,7 +47,7 @@ klóróforms.
 <!-- SEG:m68700:para:fs-idp139124096 --> Á sama hátt er sameindamassi
 aspirínsameindar, C~9~H~8~O~4~, summa atómmassa níu kolefnisatóma, átta
 vetnisatóma og fjögurra súrefnisatóma, sem nemur 180,15 amu
-({{XREF:3}}).
+([#CNX_Chem_03_01_aspirin]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_aspirin-caption --> Meðalmassi
 aspirínsameindar er 180,15 amu. Líkanið sýnir sameindabyggingu aspiríns,
@@ -94,7 +94,7 @@ sameindar, svo það er ekki rétt að vísa til hans sem „sameindamassa“.
 efnafræðilega heitið á venjulegu matarsalti. Natríumklóríð er jónaefni
 sem samanstendur af natríumkatjónum, Na^+^, og klóríðanjónum, Cl^−^,
 sameinuðum í hlutfallinu 1:1. Formúlumassi þessa efnasambands er
-reiknaður sem 58,44 amu (sjá {{XREF:4}}).
+reiknaður sem 58,44 amu (sjá [#CNX_Chem_03_01_saltMass]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_01_saltMass-caption --> Matarsalt, NaCl,
 inniheldur fylki af natríum- og klóríðjónum sem eru saman í hlutfallinu
@@ -186,7 +186,7 @@ og 1 mól af hvaða öðru frumefni sem er. Massi 1 móls af mismunandi
 frumefnum er hins vegar mismunandi, þar sem massi einstakra atóma er
 verulega ólíkur. **Mólmassi** frumefnis (eða efnasambands) er massi í
 grömmum af 1 móli af því efni, eiginleiki sem er gefinn upp í einingum
-grömm á mól (g/mól) (sjá {{XREF:5}}).
+grömm á mól (g/mól) (sjá [#CNX_Chem_03_02_moles]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_moles-caption --> Hvert sýni
 inniheldur 6
@@ -204,7 +204,7 @@ vegur eitt ^12^C atóm 12 amu (atómmassi þess er 12 amu). Eitt mól af
 öll frumefni, þar sem atómmassar þeirra eru mældir miðað við
 amu-viðmiðunarefnið, ^12^C. Með því að útvíkka þessa meginreglu er
 mólmassi efnasambands í grömmum sömuleiðis tölulega jafngildur
-formúlumassa þess í amu ({{XREF:6}}).
+formúlumassa þess í amu ([#CNX_Chem_03_02_compound]).
 
 <!-- SEG:m68700:caption:CNX_Chem_03_02_compound-caption --> Hvert sýni
 inniheldur 6,02 [[MATH:4]] 10^23^ sameindir eða formúlueiningar —
@@ -266,7 +266,7 @@ CH~3~OH (metanól, formúlumassi 32,0 amu) og 256,5 g af S~8~
 tölulega jafngildir, hafðu í huga að þeir eru mjög ólíkir hvað varðar
 stærðargráðu, eins og sést á miklum mun á stærð viðkomandi eininga (amu
 á móti g). Til að skilja hversu gríðarlega stórt mólið er, íhugaðu
-lítinn vatnsdropa sem vegur um 0,03 g (sjá {{XREF:7}}). Þótt þetta sé
+lítinn vatnsdropa sem vegur um 0,03 g (sjá [#CNX_Chem_03_02_water]). Þótt þetta sé
 aðeins örlítið brot af 1 móli af vatni (~18 g), inniheldur það fleiri
 vatnssameindir en hægt er að ímynda sér. Ef sameindunum væri dreift
 jafnt á um sjö milljarða manna á jörðinni, myndi hver einstaklingur fá
@@ -279,7 +279,7 @@ jörðinni. (Heimild: „tanakawho“/Wikimedia commons)
 <!-- SEG:m68700:para:fs-idp18455776 --> Mólið er notað í efnafræði til að
 tákna 6,022 [[MATH:10]] 10^23^ af einhverju, en það getur verið
 erfitt að gera sér í hugarlund svo stóra tölu. Horfðu á þetta
-{{LINK:1}}myndband{{/LINK}} og svaraðu síðan „Hugsaðu“-spurningunum sem
+[myndband](http://openstax.org/l/16molevideo) og svaraðu síðan „Hugsaðu“-spurningunum sem
 fylgja. Kynntu þér mólið nánar með því að skoða upplýsingarnar undir
 „Ítarlegra efni“.”
 
@@ -362,7 +362,7 @@ væntingar okkar, um 0,04 g Ar.
 atóma út frá massa fyrir frumefni
 
 <!-- SEG:m68700:para:fs-idm24646960 --> Kopar er almennt notaður til að búa
-til rafmagnsvír ({{XREF:8}}). Hversu mörg koparatóm eru í 5,00 g af
+til rafmagnsvír ([#CNX_Chem_03_02_copper]). Hversu mörg koparatóm eru í 5,00 g af
 koparvír?
 
 <!-- SEG:m68700:para-title:fs-idm40043360-title --> Lausn
@@ -409,7 +409,7 @@ glýsíni?
 <!-- SEG:m68700:para-title:fs-idp1446192-title --> Lausn
 
 <!-- SEG:m68700:para:fs-idp1446192 --> Leiðið út fjölda móla efnasambands út
-frá massa þess með sömu aðferð og notuð var fyrir frumefni í {{XREF:9}}:
+frá massa þess með sömu aðferð og notuð var fyrir frumefni í [#fs-idp76540048]:
 
 <!-- SEG:m68700:para:fs-idm36743808 --> Mólmassi glýsíns er nauðsynlegur
 fyrir þennan útreikning og hann er reiknaður á sama hátt og
@@ -482,7 +482,7 @@ sýni af sakkaríni? Hversu mörg kolefnisatóm eru í sama sýni?
 
 <!-- SEG:m68700:para:fs-idm20251168 --> Fjöldi sameinda í tilteknum massa
 efnasambands er reiknaður út með því að finna fyrst fjölda móla, eins og
-sýnt er í {{XREF:10}}, og margfalda síðan með tölu Avogadros:
+sýnt er í [#fs-idm1714048], og margfalda síðan með tölu Avogadros:
 
 <!-- SEG:m68700:para:fs-idp195552 --> Með því að nota uppgefinn massa og
 mólmassa fyrir sakkarín fæst:
@@ -507,7 +507,7 @@ sameindir C~4~ H~10~; 9,545 [[MATH:18]] 10^23^ atóm H
 taugaboðefnissameindir í heilanum
 
 <!-- SEG:m68700:para:fs-idm4217280 --> Heilinn er stjórnstöð
-miðtaugakerfisins ({{XREF:11}}). Hann sendir og tekur á móti boðum til
+miðtaugakerfisins ([#CNX_Chem_03_01_brain]). Hann sendir og tekur á móti boðum til
 og frá vöðvum og öðrum innri líffærum til að fylgjast með og stjórna
 starfsemi þeirra; hann vinnur úr áreiti sem skynfæri nema til að stýra
 víxlverkun við umheiminn; og hann hýsir flókin lífeðlisfræðileg ferli
@@ -529,7 +529,7 @@ yfirborði hinnar frumunnar. Þessar taugaboðefnissameindir eru geymdar í
 litlum innanfrumubyggingum sem kallast seytibólur og renna saman við
 frumuhimnuna og rofna síðan til að losa innihald sitt þegar taugafruman
 er örvuð á viðeigandi hátt. Þetta ferli er kallað útfrumun (sjá
-{{XREF:12}}). Eitt taugaboðefni sem hefur verið rannsakað mjög mikið er
+[#CNX_Chem_03_01_exocytosis]). Eitt taugaboðefni sem hefur verið rannsakað mjög mikið er
 dópamín, C~8~H~11~NO~2~. Dópamín tekur þátt í ýmsum taugafræðilegum
 ferlum sem hafa áhrif á fjölbreytta mannlega hegðun. Truflanir í
 dópamínkerfum heilans liggja að baki alvarlegum taugasjúkdómum eins og

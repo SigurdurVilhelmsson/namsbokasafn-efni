@@ -57,7 +57,7 @@ svipaða stuðla fyrir hvaða efnapar sem er í hvaða efnajöfnu sem er.</para>
 <para id="fs-idp77269456"><title>Mól hvarfefnis sem
 þarf í efnahvarfi</title>Hversu mörg mól af I<sub>2</sub> þarf til að
 hvarfast við 0,429 mól af Al samkvæmt eftirfarandi jöfnu (sjá
-{{XREF:1}})?</para>
+<link target-id="CNX_Chem_04_03_iodine"/>)?</para>
 <equation class="unnumbered" id="fs-idp147980704"><m:math><m:mrow><m:mn>2</m:mn><m:mtext>Al</m:mtext><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>AlI</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math></equation>
 <!-- figure handled separately -->
 <para id="fs-idm34598272"><title>Lausn</title>Ef vísað er í stilltu efnajöfnuna er
@@ -90,7 +90,7 @@ myndefnissameinda sem myndast við efnahvarf</title>Hversu margar koldíoxíðsa
 myndast þegar 0,75 mól af própani er brennt samkvæmt þessari jöfnu?</para>
 <equation class="unnumbered" id="fs-idp116053696"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp121952928"><title>Lausn</title>Aðferðin hér er sú sama og fyrir
-{{XREF:2}}, þó að beðið sé um hreinan fjölda sameinda, ekki fjölda móla
+<link target-id="fs-idp48900096"/>, þó að beðið sé um hreinan fjölda sameinda, ekki fjölda móla
 af sameindum. Þetta krefst einfaldlega notkunar á umreikningsstuðlinum
 frá mólum yfir í fjölda, tölu Avogadros.</para>
 <para id="fs-idp229756528">Stöðluð jafna sýnir að koldíoxíð
@@ -123,7 +123,7 @@ NaOH, þyrfti til að framleiða 16 g af sýrubindandi lyfinu magnesíummjólk
 [magnesíumhýdroxíð, Mg(OH)<sub>2</sub>] með eftirfarandi hvarfi?</para>
 <equation class="unnumbered" id="fs-idp158099664"><m:math><m:mrow><m:msub><m:mrow><m:mtext>MgCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>NaOH</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Mg</m:mtext><m:msub><m:mtext>(OH)</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>NaCl</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>a</m:mi><m:mi>q</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math></equation>
 <para id="fs-idm3520480"><title>Lausn</title>Aðferðin sem notuð var áður í
-{{XREF:3}} og {{XREF:4}} er einnig notuð hér; það er að segja, við
+<link target-id="fs-idp48900096"/> og <link target-id="fs-idp9124448"/> er einnig notuð hér; það er að segja, við
 verðum að leiða út viðeigandi hlutfallaefnafræðilegan þátt úr stöðluðu
 efnajöfnunni og nota hann til að tengja saman magn efnanna tveggja sem
 um ræðir. Í þessu tilviki eru hins vegar massar (ekki mólmagn) gefnir
@@ -149,7 +149,7 @@ loftinu eyðist við bruna á 702 g af oktani, C<sub>8</sub>H<sub>18</sub>, einu
 aðalþáttum bensíns?</para>
 <equation class="unnumbered" id="fs-idp87206624"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>8</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>18</m:mn></m:mrow></m:msub><m:mo>+</m:mo><m:mn>25</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>16</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>18</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp35508016"><title>Lausn</title>Aðferðin sem krafist er hér er sú
-sama og fyrir {{XREF:5}}, en munurinn er aðeins sá að uppgefnir og
+sama og fyrir <link target-id="fs-idp113495744"/>, en munurinn er aðeins sá að uppgefnir og
 umbeðnir massar eru báðir fyrir hvarfefni.</para>
 <media id="fs-idp56087040" alt="This figure shows four rectangles. The first is shaded yellow and is labeled, “Mass of C subscript 8 H subscript 18.” This rectangle is followed by an arrow pointing right to a second rectangle which is shaded pink and is labeled, “Moles of C subscript 8 H subscript 18.” This rectangle is followed by an arrow pointing right to a third rectangle which is shaded pink and is labeled, “Moles of O subscript 2.” This rectangle is followed by an arrow pointing right to a fourth rectangle which is shaded yellow and is labeled, “Mass of O subscript 2.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_04_03_map3_img.jpg"/>
@@ -168,7 +168,7 @@ og lokaútreikningaskrefum eru möguleg eftir því hvaða tilteknu stærðir
 eru gefnar og hverra er leitað (rúmmál, styrkur lausna og svo
 framvegis). Burtséð frá smáatriðum eiga allir þessir útreikningar
 sameiginlegan grundvallarþátt: notkun hlutfallaefnafræðilegra þátta sem
-eru leiddir út frá stöðluðum efnajöfnum. {{XREF:6}} gefur almennt
+eru leiddir út frá stöðluðum efnajöfnum. <link target-id="CNX_Chem_04_03_flowchart"/> gefur almennt
 yfirlit yfir hin ýmsu útreikningaskref sem tengjast mörgum útreikningum
 í hlutfallaefnafræði hvarfa.</para>
 <figure id="CNX_Chem_04_03_flowchart">
@@ -181,7 +181,7 @@ hlutfallaefnafræði hvarfa.</caption>
 </figure>
 <note id="fs-idp84121360" class="chemistry everyday-life">
 <title>Loftpúðar</title>
-<para id="fs-idp124943600">Loftpúðar ({{XREF:7}}) eru
+<para id="fs-idp124943600">Loftpúðar (<link target-id="CNX_Chem_04_03_airbag"/>) eru
 öryggisbúnaður sem hefur verið í flestum bifreiðum frá tíunda áratug
 síðustu aldar. Til að loftpúði virki á skilvirkan hátt þarf hann að
 blásast hratt upp með viðeigandi magni (rúmmáli) af gasi þegar ökutæki
@@ -241,7 +241,7 @@ kopar(II)karbónats sem þarf til að mynda 1,500 kg af kopar(II)oxíði.
 <exercise id="fs-idp147780304">
 <problem id="fs-idp16567136">
 <para id="fs-idp53786208">Ákvarðaðu fjölda móla og massa sem
-beðið er um fyrir hvert efnahvarf í {{XREF:8}}.</para></problem>
+beðið er um fyrir hvert efnahvarf í <link target-id="fs-idp166618800"/>.</para></problem>
 <solution id="fs-idp9596224">
 <para id="fs-idp75003744">(a) 0,435 mól Na, 0,217 mól
 Cl<sub>2</sub>, 15,4 g Cl<sub>2</sub>; (b) 0,005780 mól HgO, 2,890 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup>
@@ -274,7 +274,7 @@ BaO (O<sub>2</sub> er hitt myndefnið.)</para>
 <exercise id="fs-idp61309952">
 <problem id="fs-idp89348144">
 <para id="fs-idm1240512">Ákvarðaðu fjölda móla og massa sem
-beðið er um fyrir hvert hvarf í {{XREF:9}}.</para></problem>
+beðið er um fyrir hvert hvarf í <link target-id="fs-idp16477696"/>.</para></problem>
 <solution id="fs-idp74968768">
 <para id="fs-idp103920384">(a) 0,0686 mól Mg, 1,67 g Mg;
 (b) 2,701 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> mól O<sub>2</sub>, 0,08644 g O<sub>2</sub>; (c) 6,43 mól

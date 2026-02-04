@@ -24,7 +24,7 @@ hlutfallaefnafræðilegu magni.
 <!-- SEG:m68714:title:fs-idp5731792-title --> Takmarkandi hvarfefni
 
 <!-- SEG:m68714:para:fs-idp103911360 --> Íhugum aðra samlíkingu úr eldhúsinu,
-gerð grillaðra ostasamloka ({{XREF:3}}):
+gerð grillaðra ostasamloka ([#CNX_Chem_04_04_sandwich]):
 
 <!-- SEG:m68714:para:fs-idp39531056 --> Hlutfallaefnafræðilegt magn hráefna í
 þessari uppskrift er brauðsneiðar og ostsneiðar í hlutfallinu 2:1. Ef
@@ -71,7 +71,7 @@ staðar myndi framleiða
 af HCl hafa verið framleidd. Þar sem nægilegt vetni var til staðar til
 að gefa 6 mól af HCl, verður óhvarfað vetni eftir þegar þessu hvarfi er
 lokið. Klór er því takmarkandi hvarfefni og vetni er umframhvarfefni
-({{XREF:4}}).
+([#CNX_Chem_04_04_limiting]).
 
 <!-- SEG:m68714:caption:CNX_Chem_04_04_limiting-caption --> Þegar H~2~ og
 Cl~2~ er blandað saman í óhlutfallslegu magni mun annað þessara
@@ -80,7 +80,7 @@ hvarf þar sem vetni er til staðar í umframmagni og klór er takmarkandi
 hvarfefni.
 
 <!-- SEG:m68714:para:fs-idm52028528 --> Skoðaðu þessa gagnvirku
-{{LINK:1}}hermun{{/LINK}} sem sýnir hugtökin takmarkandi og
+[hermun](http://openstax.org/l/16reactantprod) sem sýnir hugtökin takmarkandi og
 umframhvarfefni.
 
 <!-- SEG:m68714:example-title:fs-idp70587344-title --> Að bera kennsl á
@@ -189,7 +189,7 @@ lágmarkar notkun umhverfishættulegra efna og myndun úrgangs er þekkt sem
 *græn efnafræði*. Græn efnafræði er heimspekileg nálgun sem er beitt á
 mörgum sviðum vísinda og tækni og iðkun hennar er tekin saman í
 leiðbeiningum sem kallast „Tólf meginreglur grænnar efnafræði“ (sjá
-nánar á þessari {{LINK:2}}vefsíðu{{/LINK}}). Ein af 12 meginreglunum
+nánar á þessari [vefsíðu](http://openstax.org/l/16greenchem)). Ein af 12 meginreglunum
 miðar sérstaklega að því að hámarka skilvirkni ferla við framleiðslu
 efnavara. *Atómhagkvæmni* ferlis er mælikvarði á þessa skilvirkni,
 skilgreind sem massaprósenta lokaafurðar framleiðsluferlis miðað við
@@ -205,7 +205,7 @@ hlutfallaefnafræði.
 
 <!-- SEG:m68714:para:fs-idp167996000 --> Framleiðsla á hinu algenga
 lausasölulyfi íbúprófeni sýnir vel árangur grænnar efnafræði
-({{XREF:5}}). Íbúprófen kom fyrst á markað snemma á sjöunda áratugnum og
+([#CNX_Chem_04_04_GreenChem]). Íbúprófen kom fyrst á markað snemma á sjöunda áratugnum og
 var framleitt með sex þrepa nýmyndun sem krafðist 514 g af hvarfefnum
 til að búa til hvert mól (206 g) af íbúprófeni, sem er atómhagkvæmni upp
 á 40%. Á tíunda áratugnum þróaði BHC Company (nú BASF Corporation) annað

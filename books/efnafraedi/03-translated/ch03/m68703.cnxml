@@ -23,7 +23,7 @@ járns, kolefnis, nikkels og annarra frumefna í stáli (efnablanda sem
 kallast „málmblanda“) ákvarðar eðlisfræðilegan styrk þess og viðnám gegn
 tæringu. Hlutfallslegt magn virka efnisins í lyfi ákvarðar virkni þess
 við að ná fram tilætluðum lyfjafræðilegum áhrifum. Hlutfallslegt magn
-sykurs í drykk ákvarðar sætleika hans (sjá {{XREF:2}}). Í þessum kafla
+sykurs í drykk ákvarðar sætleika hans (sjá <link target-id="CNX_Chem_03_03_espresso"/>). Í þessum kafla
 verður lýst einni af algengustu aðferðunum til að magngreina
 hlutfallslega samsetningu efnablandna.</para>
 <figure id="CNX_Chem_03_03_espresso" class="scaled-down"><media id="fs-idm63360640" alt="A picture is shown of sugar being poured from a spoon into a cup.">
@@ -78,19 +78,19 @@ verið leyst upp í tebolla með rúmmáli 200 ml?</para>
 <example id="fs-idm64107376">
 <para id="fs-idm58170960"><title>Útleiðsla á mólum og
 rúmmáli úr mólstyrk</title>Hversu mikið af sykri (mól) er í
-litlum sopa (~10 ml) af gosdrykknum úr {{XREF:3}}?</para>
+litlum sopa (~10 ml) af gosdrykknum úr <link target-id="fs-idm98982768"/>?</para>
 <para id="fs-idm768"><title>Lausn</title>Endurraðaðu skilgreiningunni á mólstyrk
 til að einangra stærðina sem leitað er að, mól af sykri, og settu síðan
-inn gildið fyrir mólstyrk sem leitt var út í {{XREF:4}}, 0.375 <emphasis effect="italics">M</emphasis>:</para>
+inn gildið fyrir mólstyrk sem leitt var út í <link target-id="fs-idm98982768"/>, 0.375 <emphasis effect="italics">M</emphasis>:</para>
 <equation id="fs-idm72962928" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mi>M</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mtext>L solution</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>mol solute</m:mtext><m:mo>=</m:mo><m:mi>M</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>L solution</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mtext>mol solute</m:mtext><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.375</m:mn><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>mol sugar</m:mtext></m:mrow><m:mtext>L</m:mtext></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>10</m:mn><m:mspace width="0.2em"/><m:mtext>mL</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow><m:mrow><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:mtext>mL</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.004</m:mn><m:mspace width="0.2em"/><m:mtext>mol sugar</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idm97768960"><title>Kannaðu þekkingu þína</title>Hvaða rúmmál (mL) af sæta teinu sem
-lýst er í {{XREF:5}} inniheldur sama magn af sykri (mól) og 10 ml af
+lýst er í <link target-id="fs-idm98982768"/> inniheldur sama magn af sykri (mól) og 10 ml af
 gosdrykknum í þessu dæmi?</para>
 <note id="fs-idm58199648"><title>Answer:</title><para id="fs-idm89023504">80 ml</para></note>
 </example>
 <example id="fs-idm81897840">
 <para id="fs-idm98918048"><title>Útreikningur á
-mólstyrk út frá massa uppleysts efnis</title>Eimað borðedik ({{XREF:6}}) er lausn
+mólstyrk út frá massa uppleysts efnis</title>Eimað borðedik (<link target-id="CNX_Chem_03_04_vinegar"/>) er lausn
 af ediksýru, CH<sub>3</sub>CO<sub>2</sub>H, í vatni. 0,500 L ediklausn inniheldur 25,2 g
 af ediksýru. Hver er styrkur ediksýrulausnarinnar í einingum mólstyrks?</para>
 <!-- figure handled separately --><para id="fs-idm82387696"><title>Lausn</title>Eins og í fyrri dæmum er
@@ -113,7 +113,7 @@ uppleysts efnis í tilteknu rúmmáli lausnar</title>Hversu mörg grömm af NaCl
 L af 5,30-<emphasis effect="italics">M</emphasis> lausn?</para>
 <para id="fs-idm122143856"><title>Lausn</title>Rúmmál og mólstyrkur lausnarinnar
 eru tilgreind, þannig að auðvelt er að reikna út magn (mól) uppleysta
-efnisins eins og sýnt er í {{XREF:7}}:</para>
+efnisins eins og sýnt er í <link target-id="fs-idm64107376"/>:</para>
 <equation id="fs-idm85599968" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mi>M</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol solute</m:mtext></m:mrow><m:mrow><m:mtext>L solution</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>mol solute</m:mtext><m:mo>=</m:mo><m:mi>M</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>L solution</m:mtext></m:mtd></m:mtr><m:mtr/><m:mtr><m:mtd><m:mtext>mol solute</m:mtext><m:mo>=</m:mo><m:mn>5.30</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mol NaCl</m:mtext></m:mrow><m:mtext>L</m:mtext></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.250</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mo>=</m:mo><m:mn>1.325</m:mn><m:mspace width="0.2em"/><m:mtext>mol NaCl</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idm108465360">Að lokum er þetta mólmagn notað til
 að leiða út massa NaCl:</para>
@@ -122,9 +122,9 @@ að leiða út massa NaCl:</para>
 g/mól) eru í 250,0 ml af 0,200-<emphasis effect="italics">M</emphasis> lausn af kalsíumklóríði?</para>
 <note id="fs-idm80099776"><title>Answer:</title><para id="fs-idm73628272">5,55 g CaCl<sub>2</sub></para></note></example>
 <para id="fs-idm75726960">Þegar útreikningar eru framkvæmdir í
-skrefum, eins og í {{XREF:8}}, er mikilvægt að forðast að námunda
+skrefum, eins og í <link target-id="fs-idm104693104"/>, er mikilvægt að forðast að námunda
 niðurstöður millireikninga, þar sem það getur leitt til námundunarvillna
-í lokaniðurstöðunni. Í {{XREF:9}} væri mólmagn NaCl sem reiknað var út í
+í lokaniðurstöðunni. Í <link target-id="fs-idm104693104"/> væri mólmagn NaCl sem reiknað var út í
 fyrsta skrefi, 1,325 mól, réttilega námundað í 1,32 mól ef það ætti að
 vera gefið upp; þó verður að halda síðasta tölustafnum (5) sem varðtölu
 í millireikningnum, þótt hann sé ekki marktækur. Ef varðtölunni hefði
@@ -132,11 +132,11 @@ ekki verið haldið hefði lokareikningur fyrir massa NaCl verið 77,1 g,
 sem er 0,3 g munur.</para>
 <para id="fs-idm105202592">Auk þess að halda varðtölu fyrir
 millireikninga er einnig hægt að forðast námundunarvillur með því að
-framkvæma útreikninga í einu skrefi (sjá {{XREF:10}}). Þetta útilokar
+framkvæma útreikninga í einu skrefi (sjá <link target-id="fs-idm88061984"/>). Þetta útilokar
 milliskref þannig að aðeins lokaniðurstaðan er námunduð.</para>
 <example id="fs-idm88061984">
 <para id="fs-idm111967328"><title>Ákvörðun á rúmmáli
-lausnar sem inniheldur tiltekinn massa uppleysts efnis</title>Í {{XREF:11}} var styrkur ediksýru í
+lausnar sem inniheldur tiltekinn massa uppleysts efnis</title>Í <link target-id="fs-idm81897840"/> var styrkur ediksýru í
 borðediki ákvarðaður sem 0,839 <emphasis effect="italics">M</emphasis>. Hvaða rúmmál af ediki inniheldur
 75.6 g af ediksýru?</para>
 <para id="fs-idm108289568"><title>Lausn</title>Fyrst skaltu nota mólmassann til að
@@ -161,7 +161,7 @@ lausnar er minnkaður með því að bæta við leysi. Til dæmis þynnist íste
 smám saman þegar ísinn bráðnar. Vatnið úr bráðnandi ísnum eykur rúmmál
 leysisins (vatnsins) og heildarrúmmál lausnarinnar (ísteiðsins) og
 minnkar þar með hlutfallslegan styrk uppleystu efnanna sem gefa drykknum
-bragð sitt ({{XREF:12}}).</para>
+bragð sitt (<link target-id="CNX_Chem_03_04_dilution"/>).</para>
 <figure id="CNX_Chem_03_04_dilution" class="scaled-down"><media id="fs-idp133169776" alt="This figure shows two graduated cylinders side-by-side. The first has about half as much blue liquid as the second. The blue liquid is darker in the first cylinder than in the second.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_04_dilution.jpg"/>
 </media>
@@ -202,7 +202,7 @@ rúmmál svo lengi sem einingarnar styttast út rétt samkvæmt
 <para id="fs-idm81143040">þar sem <emphasis effect="italics">C</emphasis> og <emphasis effect="italics">V</emphasis> eru styrkur og
 rúmmál.</para>
 <note id="fs-idm98324208" class="chemistry link-to-learning">
-<para id="fs-idm105278864">Notaðu {{LINK:1}}herminn{{/LINK}}
+<para id="fs-idm105278864">Notaðu <link url="http://openstax.org/l/16Phetsolvents">herminn</link>
 til að kanna sambandið milli magns uppleysts efnis, rúmmáls lausnar og
 styrks og til að staðfesta þynningarjöfnuna.</para>
 </note>

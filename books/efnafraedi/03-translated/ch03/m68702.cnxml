@@ -39,7 +39,7 @@ amu og massaprósenta þess er:</para>
 <para id="fs-idm159904272">Hægt er að beita sömu aðferð fyrir
 par af sameindum, tylft sameinda eða mól af sameindum o.s.frv.
 Síðastnefnda magnið er hentugast og myndi einfaldlega fela í sér notkun
-mólmassa í stað atóm- og formúlumassa, eins og sýnt er í {{XREF:2}}. Svo
+mólmassa í stað atóm- og formúlumassa, eins og sýnt er í <link target-id="fs-idm162294688"/>. Svo
 lengi sem sameinda- eða reynsluformúla viðkomandi efnasambands er þekkt
 er hægt að leiða massaprósentuna út frá atóm- eða mólmössum frumefna
 efnasambandsins.</para>
@@ -115,7 +115,7 @@ venjulegan hátt.</para>
 <example id="fs-idp11336208"><para id="fs-idm16856224"><title>Ákvörðun
 reynsluformúlu út frá prósentusamsetningu</title>Við gerjun á korni með bakteríum til
 að framleiða etanól myndast gas með prósentusamsetningunni 27,29% C og
-72,71% O ({{XREF:3}}). Hver er reynsluformúla þessa gass?</para>
+72,71% O (<link target-id="CNX_Chem_03_03_BrewTank"/>). Hver er reynsluformúla þessa gass?</para>
 <!-- figure handled separately -->
 <para id="fs-idp8854528"><title>Lausn</title>Þar sem prósentustiginn er 100 er
 hentugast að reikna út massa frumefna í 100 g sýni. Útreikningurinn er
@@ -196,7 +196,7 @@ bráðabirgðareynsluformúlu</item>
 heiltölu, ef nauðsyn krefur, til að tryggja að minnsta heiltöluhlutfall
 stuðla fáist</item>
 </list>
-<para id="fs-idm116173824">{{XREF:4}} sýnir þessa aðferð á
+<para id="fs-idm116173824"><link target-id="CNX_Chem_03_03_empform"/> sýnir þessa aðferð á
 flæðiriti fyrir efni sem inniheldur frumefnin A og X.</para>
 <figure id="CNX_Chem_03_03_empform">
 <media id="fs-idm114759824" alt="A flow chart is shown that is composed of six boxes, two of which are connected together by a right facing arrow and located above two more that are also connected by a right-facing arrow. These two rows of boxes are connected vertically by a line that leads to a right-facing arrow and the last two boxes, connected by a final right facing arrow. The first two upper boxes have the phrases, “Mass of A atoms” and “Moles of A atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass,” written below it. The second two bottom boxes have the phrases, “Mass of X atoms” and “Moles of X atoms” respectively, while the arrow that connects them has the phrase, “Divide by molar mass” written below it. The arrow that connects the upper and lower boxes to the last two boxes has the phrase “Divide by lowest number of moles” written below it. The last two boxes have the phrases, “A to X mole ratio” and “Empirical formula” respectively, while the arrow that connects them has the phrase, “Convert ratio to lowest whole numbers” written below it.">
@@ -208,7 +208,7 @@ efnasambands má finna út frá massa allra frumefna í sýninu.</caption>
 <example id="fs-idp70151968">
 <para id="fs-idm148697040"><title>Ákvörðun
 reynsluformúlu efnasambands út frá massa frumefna þess</title>Sýni af svarta steinefninu hematíti
-({{XREF:5}}), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97
+(<link target-id="CNX_Chem_03_03_hematite"/>), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97
 g af járni og 15,03 g af súrefni. Hver er reynsluformúla hematíts?</para>
 <!-- figure handled separately -->
 <para id="fs-idp9584080"><title>Lausn</title>Í þessu dæmi er massi hvers frumefnis
@@ -237,7 +237,7 @@ járnoxíð sem er notað í skartgripi. (heimild: Mauro Cateb)</caption>
 </figure>
 <note id="fs-idm160004320" class="chemistry link-to-learning">
 <para id="fs-idp89502368">Til að sjá fleiri dæmi um útreikninga
-á reynsluformúlum má horfa á stutta {{LINK:1}}myndbandið{{/LINK}}.</para></note>
+á reynsluformúlum má horfa á stutta <link url="http://openstax.org/l/16empforms">myndbandið</link>.</para></note>
 </section>
 <section id="fs-idp23895104">
 <title>Ákvörðun sameindaformúla</title>

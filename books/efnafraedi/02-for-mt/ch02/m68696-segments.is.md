@@ -19,7 +19,7 @@ vegar er hægt að bæta rafeindum við atóm með flutningi frá öðrum atómu
 missa þær með flutningi til annarra atóma eða deila þeim með öðrum
 atómum. Flutningur og deiling rafeinda milli atóma stjórnar efnafræði
 frumefnanna. Við myndun sumra efnasambanda fá atóm rafeindir eða missa
-þær og mynda rafhlöðnar agnir sem kallast jónir ({{XREF:2}}).
+þær og mynda rafhlöðnar agnir sem kallast jónir ([#CNX_Chem_02_06_NaCation]).
 
 <!-- SEG:m68696:caption:CNX_Chem_02_06_NaCation-caption --> (a) Natríumatóm
 (Na) hefur jafnmargar róteindir og rafeindir (11) og er óhlaðið. (b)
@@ -55,7 +55,7 @@ eftirsóknarverður, sem endurspeglast í þessum forspárreglum um
 jónamyndun, er að finna í síðari kafla þessa texta.)
 
 <!-- SEG:m68696:para:fs-idp244942144 --> Taktu eftir notagildi lotukerfisins
-við að spá fyrir um líklega jónamyndun og hleðslu ({{XREF:3}}). Þegar
+við að spá fyrir um líklega jónamyndun og hleðslu ([#CNX_Chem_02_06_IonCharges]). Þegar
 farið er frá vinstri til hægri í lotukerfinu hafa frumefni í aðalhópum
 tilhneigingu til að mynda katjónir með hleðslu sem er jöfn númeri
 hópsins. Það er að segja, frumefni í hópi 1 mynda 1+ jónir; frumefni í
@@ -146,7 +146,7 @@ eru kallaðar **einfumeindajónir**, það er að segja, þær eru jónir sem
 myndast úr aðeins einu atómi. Við finnum líka margar **fjölfrumeinda
 jónir**. Þessar jónir, sem virka sem aðskildar einingar, eru rafmagnaðar
 sameindir (hópur tengdra atóma með heildarhleðslu). Sumar af mikilvægari
-fjölfrumeinda jónunum eru taldar upp í {{XREF:4}}. **Oxýanjónir** eru
+fjölfrumeinda jónunum eru taldar upp í [#fs-idp278664880]. **Oxýanjónir** eru
 fjölfrumeinda jónir sem innihalda eitt eða fleiri súrefnisatóm. Á þessum
 tímapunkti í efnafræðinámi þínu ættir þú að leggja á minnið nöfn,
 formúlur og hleðslur algengustu fjölfrumeinda jónanna. Þar sem þú munt
@@ -351,7 +351,7 @@ eru flokkuð sem jónísk eða sameinda (samgild) á grundvelli tengjanna sem
 eru í þeim.
 
 <!-- SEG:m68696:para:fs-idp196719024 --> Horfðu á þetta
-{{LINK:1}}myndband{{/LINK}} til að sjá efnablöndu af söltum bráðna og
+[myndband](http://openstax.org/l/16moltensalt) til að sjá efnablöndu af söltum bráðna og
 leiða rafmagn.
 
 <!-- SEG:m68696:para:fs-idp91827520 --> Í hverju jónaefni er heildarfjöldi
@@ -365,7 +365,7 @@ hleðslna sé jafn.
 <!-- SEG:m68696:example-title:fs-idp75448432-title --> Að spá fyrir um
 formúlu jónaefnis
 
-<!-- SEG:m68696:para:fs-idp187459888 --> Gimsteinninn safír ({{XREF:5}}) er
+<!-- SEG:m68696:para:fs-idp187459888 --> Gimsteinninn safír ([#CNX_Chem_02_06_Sapphire]) er
 að mestu leyti efnasamband áls og súrefnis sem inniheldur álkatjónir,
 Al^3+^, og súrefnisanjónir, O^2−^. Hver er formúla þessa efnasambands?
 
@@ -395,7 +395,7 @@ safír einkennandi lit sinn. (Heimild: breyting á vinnu eftir Stanislav
 Doronenko)
 
 <!-- SEG:m68696:para:fs-idp270413408 --> Mörg jónaefni innihalda
-fjölfrumeinda jónir ({{XREF:6}}) sem katjón, anjón eða hvort tveggja.
+fjölfrumeinda jónir ([#fs-idp278664880]) sem katjón, anjón eða hvort tveggja.
 Eins og með einföld jónaefni verða þessi efnasambönd einnig að vera
 rafhlutlaus, svo hægt er að spá fyrir um formúlur þeirra með því að
 meðhöndla fjölfrumeinda jónirnar sem aðskildar einingar. Við notum sviga
@@ -491,7 +491,7 @@ sameindaefnið vatn við 0 °C og sýður við 100 °C.) Á föstu formi er
 jónaefni ekki rafleiðandi vegna þess að jónir þess geta ekki flætt
 („rafmagn“ er flæði hlaðinna agna). Þegar það er bráðið getur það hins
 vegar leitt rafmagn vegna þess að jónir þess geta hreyfst frjálslega um
-vökvann ({{XREF:7}}).
+vökvann ([#CNX_Chem_02_06_NaClMolten]).
 
 <!-- SEG:m68696:caption:CNX_Chem_02_06_NaClMolten-caption --> Natríumklóríð
 bráðnar við 801 °C og leiðir rafmagn þegar það er bráðið. (Heimild:

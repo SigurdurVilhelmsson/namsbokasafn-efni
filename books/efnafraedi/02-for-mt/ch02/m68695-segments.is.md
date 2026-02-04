@@ -37,7 +37,7 @@ tilvist frumefna sem hefðu svipaða eiginleika og ál og kísill, en voru
 enn óþekkt. Uppgötvanir gallíums (1875) og germaníums (1886) veittu
 mikinn stuðning við vinnu Mendeleevs. Þrátt fyrir að Mendeleev og Meyer
 hafi lengi deilt um hvor þeirra ætti heiðurinn, er framlag Mendeleevs
-til þróunar lotukerfisins nú almennt viðurkennt ({{XREF:3}}).
+til þróunar lotukerfisins nú almennt viðurkennt ([#CNX_Chem_02_05_Mendeleev]).
 
 <!-- SEG:m68695:caption:CNX_Chem_02_05_Mendeleev-caption --> (a) Dimitri
 Mendeleev er almennt talinn eiga heiðurinn af því að hafa búið til (b)
@@ -51,7 +51,7 @@ Nútímaleg framsetning þessa sambands, **lotulögmálið**, er sem hér
 segir: *eiginleikar frumefnanna eru lotubundin föll af sætistölum
 þeirra*. Nútímalegt **lotukerfi** raðar frumefnunum í vaxandi röð eftir
 sætistölum þeirra og flokkar atóm með svipaða eiginleika í sama lóðrétta
-dálk ({{XREF:4}}). Hver reitur táknar frumefni og inniheldur sætistölu
+dálk ([#CNX_Chem_02_05_PerTable1]). Hver reitur táknar frumefni og inniheldur sætistölu
 þess, tákn, meðalatómmassa og (stundum) nafn. Frumefnunum er raðað í sjö
 láréttar raðir, sem kallast **lotur** eða **raðir**, og 18 lóðrétta
 dálka, sem kallast **hópar**. Hópar eru merktir efst í hverjum dálki. Í
@@ -102,7 +102,7 @@ sé vísað til þeirra sem slíkra. Nánari upplýsingar um frumefni þessa
 hóps er að finna í kafla um hliðarmálma og hnitsetningarefnafræði.]; og
 **innri hliðarmálma** í tveimur röðum neðst í töflunni (frumefnin í efri
 röðinni eru kölluð **lanþaníðar** og frumefnin í neðri röðinni eru
-**aktiníðar**; {{XREF:5}}). Frumefnin má flokka enn frekar eftir
+**aktiníðar**; [#CNX_Chem_02_05_PerTable2]). Frumefnin má flokka enn frekar eftir
 sértækari eiginleikum, svo sem samsetningu efnasambandanna sem þau
 mynda. Til dæmis mynda frumefnin í hópi 1 (fyrsti dálkurinn) efnasambönd
 sem samanstanda af einu atómi frumefnisins og einu atómi vetnis. Þessi
@@ -123,10 +123,10 @@ eða eitt og sér.
 skipuleggur frumefni með svipaða eiginleika í hópa.
 
 <!-- SEG:m68695:para:fs-idm327299296 --> Smelltu á þennan
-{{LINK:1}}hlekk{{/LINK}} til að sjá gagnvirkt lotukerfi sem þú getur
+[hlekk](https://openstax.org/l/16Periodic) til að sjá gagnvirkt lotukerfi sem þú getur
 notað til að kanna eiginleika frumefnanna (inniheldur hlaðvörp og
 myndbönd af hverju frumefni). Þú gætir líka viljað prófa þennan
-{{LINK:2}}hlekk{{/LINK}} sem sýnir myndir af öllum frumefnunum.
+[hlekk](https://openstax.org/l/16Periodic2) sem sýnir myndir af öllum frumefnunum.
 
 <!-- SEG:m68695:example-title:fs-idm382810864-title --> Heiti á hópum
 frumefna

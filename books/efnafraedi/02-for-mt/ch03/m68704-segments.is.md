@@ -36,7 +36,7 @@ um síðar í þessum kafla).
 
 <!-- SEG:m68704:para:fs-idm21823696 --> Massaprósentur eru vinsælar
 styrkeiningar fyrir neysluvörur. Á merkimiða dæmigerðrar klórflösku
-({{XREF:1}}) er styrkur virka efnisins, natríumhýpóklóríts (NaOCl),
+([#CNX_Chem_03_05_bleach]) er styrkur virka efnisins, natríumhýpóklóríts (NaOCl),
 sagður vera 7,4%. 100,0 g sýni af klór myndi því innihalda 7,4 g af
 NaOCl.
 
@@ -176,7 +176,7 @@ sé 0,9 g af uppleystu efni á 100 ml af lausn. Styrkur glúkósa í blóði
 (almennt nefndur „blóðsykur“) er einnig venjulega gefinn upp sem
 massa-rúmmálshlutfall. Þótt styrkurinn sé ekki beinlínis gefinn upp sem
 prósenta er hann venjulega gefinn upp í milligrömmum af glúkósa á
-desilítra (100 ml) af blóði ({{XREF:2}}).
+desilítra (100 ml) af blóði ([#CNX_Chem_03_05_saline]).
 
 <!-- SEG:m68704:caption:CNX_Chem_03_05_saline-caption --> „Blandaðar“
 massa-rúmmálseiningar eru algengar í læknisfræðilegu samhengi. (a)
@@ -208,7 +208,7 @@ styrkleikamörk án þess að valda skaðlegum áhrifum á heilsu og dýralíf.
 Til dæmis hefur Umhverfisstofnun Bandaríkjanna (EPA) skilgreint
 hámarksöryggisstig flúoríðjóna í kranavatni sem 4 ppm. Vatnssíur fyrir
 krana eru hannaðar til að draga úr styrk flúoríðs og nokkurra annarra
-snefilmengunarefna í kranavatni ({{XREF:3}}).
+snefilmengunarefna í kranavatni ([#CNX_Chem_03_05_faucet]).
 
 <!-- SEG:m68704:caption:CNX_Chem_03_05_faucet-caption --> (a) Á sumum svæðum
 getur snefilmagn mengunarefna gert ósíað kranavatn óöruggt til drykkjar

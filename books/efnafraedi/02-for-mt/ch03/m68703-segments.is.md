@@ -23,7 +23,7 @@ járns, kolefnis, nikkels og annarra frumefna í stáli (efnablanda sem
 kallast „málmblanda“) ákvarðar eðlisfræðilegan styrk þess og viðnám gegn
 tæringu. Hlutfallslegt magn virka efnisins í lyfi ákvarðar virkni þess
 við að ná fram tilætluðum lyfjafræðilegum áhrifum. Hlutfallslegt magn
-sykurs í drykk ákvarðar sætleika hans (sjá {{XREF:2}}). Í þessum kafla
+sykurs í drykk ákvarðar sætleika hans (sjá [#CNX_Chem_03_03_espresso]). Í þessum kafla
 verður lýst einni af algengustu aðferðunum til að magngreina
 hlutfallslega samsetningu efnablandna.
 
@@ -92,18 +92,18 @@ verið leyst upp í tebolla með rúmmáli 200 ml?
 rúmmáli úr mólstyrk
 
 <!-- SEG:m68703:para:fs-idm58170960 --> Hversu mikið af sykri (mól) er í
-litlum sopa (~10 ml) af gosdrykknum úr {{XREF:3}}?
+litlum sopa (~10 ml) af gosdrykknum úr [#fs-idm98982768]?
 
 <!-- SEG:m68703:para-title:fs-idm768-title --> Lausn
 
 <!-- SEG:m68703:para:fs-idm768 --> Endurraðaðu skilgreiningunni á mólstyrk
 til að einangra stærðina sem leitað er að, mól af sykri, og settu síðan
-inn gildið fyrir mólstyrk sem leitt var út í {{XREF:4}}, 0.375 *M*:
+inn gildið fyrir mólstyrk sem leitt var út í [#fs-idm98982768], 0.375 *M*:
 
 <!-- SEG:m68703:para-title:fs-idm97768960-title --> Kannaðu þekkingu þína
 
 <!-- SEG:m68703:para:fs-idm97768960 --> Hvaða rúmmál (mL) af sæta teinu sem
-lýst er í {{XREF:5}} inniheldur sama magn af sykri (mól) og 10 ml af
+lýst er í [#fs-idm98982768] inniheldur sama magn af sykri (mól) og 10 ml af
 gosdrykknum í þessu dæmi?
 
 <!-- SEG:m68703:para:fs-idm89023504 --> 80 ml
@@ -115,7 +115,7 @@ gosdrykknum í þessu dæmi?
 <!-- SEG:m68703:example-title:fs-idm81897840-title --> Útreikningur á
 mólstyrk út frá massa uppleysts efnis
 
-<!-- SEG:m68703:para:fs-idm98918048 --> Eimað borðedik ({{XREF:6}}) er lausn
+<!-- SEG:m68703:para:fs-idm98918048 --> Eimað borðedik ([#CNX_Chem_03_04_vinegar]) er lausn
 af ediksýru, CH~3~CO~2~H, í vatni. 0,500 L ediklausn inniheldur 25,2 g
 af ediksýru. Hver er styrkur ediksýrulausnarinnar í einingum mólstyrks?
 
@@ -151,7 +151,7 @@ L af 5,30-*M* lausn?
 
 <!-- SEG:m68703:para:fs-idm122143856 --> Rúmmál og mólstyrkur lausnarinnar
 eru tilgreind, þannig að auðvelt er að reikna út magn (mól) uppleysta
-efnisins eins og sýnt er í {{XREF:7}}:
+efnisins eins og sýnt er í [#fs-idm64107376]:
 
 <!-- SEG:m68703:para:fs-idm108465360 --> Að lokum er þetta mólmagn notað til
 að leiða út massa NaCl:
@@ -168,9 +168,9 @@ g/mól) eru í 250,0 ml af 0,200-*M* lausn af kalsíumklóríði?
 <!-- SEG:m68703:para:fs-idm73628272 --> 5,55 g CaCl~2~
 
 <!-- SEG:m68703:para:fs-idm75726960 --> Þegar útreikningar eru framkvæmdir í
-skrefum, eins og í {{XREF:8}}, er mikilvægt að forðast að námunda
+skrefum, eins og í [#fs-idm104693104], er mikilvægt að forðast að námunda
 niðurstöður millireikninga, þar sem það getur leitt til námundunarvillna
-í lokaniðurstöðunni. Í {{XREF:9}} væri mólmagn NaCl sem reiknað var út í
+í lokaniðurstöðunni. Í [#fs-idm104693104] væri mólmagn NaCl sem reiknað var út í
 fyrsta skrefi, 1,325 mól, réttilega námundað í 1,32 mól ef það ætti að
 vera gefið upp; þó verður að halda síðasta tölustafnum (5) sem varðtölu
 í millireikningnum, þótt hann sé ekki marktækur. Ef varðtölunni hefði
@@ -179,13 +179,13 @@ sem er 0,3 g munur.
 
 <!-- SEG:m68703:para:fs-idm105202592 --> Auk þess að halda varðtölu fyrir
 millireikninga er einnig hægt að forðast námundunarvillur með því að
-framkvæma útreikninga í einu skrefi (sjá {{XREF:10}}). Þetta útilokar
+framkvæma útreikninga í einu skrefi (sjá [#fs-idm88061984]). Þetta útilokar
 milliskref þannig að aðeins lokaniðurstaðan er námunduð.
 
 <!-- SEG:m68703:example-title:fs-idm88061984-title --> Ákvörðun á rúmmáli
 lausnar sem inniheldur tiltekinn massa uppleysts efnis
 
-<!-- SEG:m68703:para:fs-idm111967328 --> Í {{XREF:11}} var styrkur ediksýru í
+<!-- SEG:m68703:para:fs-idm111967328 --> Í [#fs-idm81897840] var styrkur ediksýru í
 borðediki ákvarðaður sem 0,839 *M*. Hvaða rúmmál af ediki inniheldur
 75.6 g af ediksýru?
 
@@ -219,7 +219,7 @@ lausnar er minnkaður með því að bæta við leysi. Til dæmis þynnist íste
 smám saman þegar ísinn bráðnar. Vatnið úr bráðnandi ísnum eykur rúmmál
 leysisins (vatnsins) og heildarrúmmál lausnarinnar (ísteiðsins) og
 minnkar þar með hlutfallslegan styrk uppleystu efnanna sem gefa drykknum
-bragð sitt ({{XREF:12}}).
+bragð sitt ([#CNX_Chem_03_04_dilution]).
 
 <!-- SEG:m68703:caption:CNX_Chem_03_04_dilution-caption --> Báðar lausnirnar
 innihalda sama massa af koparnítrati. Lausnin til hægri er þynntari
@@ -259,7 +259,7 @@ rúmmál svo lengi sem einingarnar styttast út rétt samkvæmt
 <!-- SEG:m68703:para:fs-idm81143040 --> þar sem *C* og *V* eru styrkur og
 rúmmál.
 
-<!-- SEG:m68703:para:fs-idm105278864 --> Notaðu {{LINK:1}}herminn{{/LINK}}
+<!-- SEG:m68703:para:fs-idm105278864 --> Notaðu [herminn](http://openstax.org/l/16Phetsolvents)
 til að kanna sambandið milli magns uppleysts efnis, rúmmáls lausnar og
 styrks og til að staðfesta þynningarjöfnuna.
 

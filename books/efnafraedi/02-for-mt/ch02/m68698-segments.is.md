@@ -38,7 +38,7 @@ einfrumeinda jónir
 <!-- SEG:m68698:para:fs-idp279143120 --> Nafn tvíundarsambands sem inniheldur
 einfrumeinda jónir samanstendur af nafni katjónarinnar (nafn málmsins) á
 eftir nafni anjónarinnar (nafn málmleysingjans þar sem endingunni er
-skipt út fyrir viðskeytið –*íð*). Nokkur dæmi eru gefin í {{XREF:2}}.
+skipt út fyrir viðskeytið –*íð*). Nokkur dæmi eru gefin í [#fs-idp282234816].
 
 <!-- SEG:m68698:entry:auto-9 --> Nöfn nokkurra jónaefna
 
@@ -68,7 +68,7 @@ fjölfrumeinda jónir
 <!-- SEG:m68698:para:fs-idp282236928 --> Efnasambönd sem innihalda
 fjölfrumeinda jónir eru nefnd á svipaðan hátt og þau sem innihalda
 aðeins einfrumeinda jónir, þ.e. með því að nefna fyrst katjónina og
-síðan anjónina. Dæmi eru sýnd í {{XREF:3}}.
+síðan anjónina. Dæmi eru sýnd í [#fs-idp279316112].
 
 <!-- SEG:m68698:entry:auto-22 --> Nöfn nokkurra fjölfrumeinda jónaefna
 
@@ -88,7 +88,7 @@ síðan anjónina. Dæmi eru sýnd í {{XREF:3}}.
 
 <!-- SEG:m68698:para:fs-idm70496 --> Á hverjum degi rekst þú á og notar
 fjölda jónaefna. Sum þessara efnasambanda, hvar þau finnast og til hvers
-þau eru notuð, eru talin upp í {{XREF:4}}. Skoðaðu merkimiðann eða
+þau eru notuð, eru talin upp í [#fs-idp268265360]. Skoðaðu merkimiðann eða
 innihaldslistann á hinum ýmsu vörum sem þú notar næstu daga og athugaðu
 hvort þú rekst á einhver þeirra í þessari töflu, eða finnur önnur
 jónaefni sem þú gætir nú nefnt eða skrifað sem formúlu.
@@ -168,13 +168,13 @@ málmjónarinnar er tilgreind með rómverskri tölu í sviga á eftir nafni
 málmsins. Hleðsla málmjónarinnar er ákvörðuð út frá formúlu
 efnasambandsins og hleðslu anjónarinnar. Skoðum til dæmis tvíundar
 jónaefni járns og klórs. Járn hefur yfirleitt hleðsluna 2+ eða 3+ (sjá
-{{XREF:5}}) og formúlur samsvarandi efnasambanda eru FeCl~2~ og FeCl~3~.
+[#CNX_Chem_02_06_IonCharges]) og formúlur samsvarandi efnasambanda eru FeCl~2~ og FeCl~3~.
 Einfaldasta nafnið, „járnklóríð“, væri í þessu tilfelli tvírætt þar sem
 það gerir ekki greinarmun á þessum tveimur efnasamböndum. Í slíkum
 tilfellum er hleðsla málmjónarinnar sett inn sem rómversk tölu í sviga
 strax á eftir nafni málmsins. Þessi tvö efnasambönd eru þá ótvírætt
 nefnd járn(II)klóríð og járn(III)klóríð. Önnur dæmi má finna í
-{{XREF:6}}.
+[#fs-idp282283328].
 
 <!-- SEG:m68698:entry:auto-64 --> Nokkur jónaefni með málmjónum með
 breytilega hleðslu
@@ -225,7 +225,7 @@ vatnssameindir sem óaðskiljanlegan hluta af kristöllum sínum eru kölluð
 nafn vatnsfría (sem þýðir „ekki vökvað“) efnasambandsins sem gefur til
 kynna fjölda vatnssameinda sem tengjast hverri formúlueiningu
 efnasambandsins. Viðbætta orðið byrjar á grískri forskeyti sem táknar
-fjölda vatnssameinda (sjá {{XREF:7}}) og endar á „hýdrat“. Til dæmis er
+fjölda vatnssameinda (sjá [#fs-idp268400368]) og endar á „hýdrat“. Til dæmis er
 vatnsfría efnasambandið kopar(II)súlfat einnig til sem hýdrat sem
 inniheldur fimm vatnssameindir og nefnist kopar(II)súlfat pentahýdrat.
 Kristalsódi er almennt heiti á hýdrati natríumkarbónats sem inniheldur
@@ -346,7 +346,7 @@ Mn~3~(PO~4~)~2~; (d) Cu~2~O; (e) FeCl~3~·2H~2~O
 <!-- SEG:m68698:note-title:fs-idm8768-title --> Erin Brockovich og krómmengun
 
 <!-- SEG:m68698:para:fs-idm7968 --> Í upphafi tíunda áratugarins uppgötvaði
-lögfræðiritarinn Erin Brockovich ({{XREF:8}}) óvenju háa tíðni
+lögfræðiritarinn Erin Brockovich ([#CNX_Chem_02_07_ErinBrocko]) óvenju háa tíðni
 alvarlegra veikinda í smábænum Hinckley í Kaliforníu. Rannsókn hennar
 leiddi að lokum í ljós að veikindin tengdust grunnvatni sem var mengað
 af Cr(VI) sem Pacific Gas & Electric (PG&E) notaði til að berjast gegn
@@ -408,7 +408,7 @@ er lengra til vinstri og/eða neðar í lotukerfinu) kemur fyrst, á eftir
 kemur nafn málmkenndara frumefnisins (þess sem er lengra til hægri
 og/eða ofar) með endingunni breytt í viðskeytið –*íð*. Fjöldi atóma
 hvers frumefnis er táknaður með grísku forskeytunum sem sýnd eru í
-{{XREF:9}}.
+[#fs-idp268400368].
 
 <!-- SEG:m68698:para:fs-idm325632 --> Þegar aðeins eitt atóm af fyrra
 frumefninu er til staðar er forskeytið *mónó*- yfirleitt fellt brott úr
@@ -418,7 +418,7 @@ forskeytinu stundum sleppt í almennri notkun, þótt leiðbeiningar IUPAC
 leyfi þetta aðeins fyrir tvöfalda stafinn o í *mónóoxíð*, sem er rétt
 skrifað sem *mónoxíð*. Í nafngiftaæfingum í þessum texta geta nemendur
 valið að fylgja hvorri aðferðinni sem er. Nokkur dæmi sem sýna þetta
-Nokkur önnur dæmi eru sýnd í {{XREF:10}}.
+Nokkur önnur dæmi eru sýnd í [#fs-idp269568176].
 
 <!-- SEG:m68698:entry:auto-142 --> Nöfn nokkurra sameindaefnasambanda sem
 samanstanda af tveimur frumefnum
@@ -529,7 +529,7 @@ eftirfarandi efnasambönd:
 (d) CCl~4~
 
 <!-- SEG:m68698:para:fs-idp268192304 --> Eftirfarandi
-{{LINK:1}}vefsíða{{/LINK}} býður upp á æfingar í nafngiftum efnasambanda
+[vefsíða](http://openstax.org/l/16chemcompname) býður upp á æfingar í nafngiftum efnasambanda
 og ritun efnaformúla. Þú getur valið tvíundar-, fjölfrumeinda- og
 jónaefni með breytilega hleðslu, auk sameindaefnasambanda.
 
@@ -557,7 +557,7 @@ annað orð
 <!-- SEG:m68698:para:fs-idm109568 --> Til dæmis, þegar gasið HCl
 (vetnisklóríð) er leyst upp í vatni, er lausnin kölluð
 *vetnisklóríðsýra* (einnig saltsýra). Nokkur önnur dæmi um þessa
-nafngift eru sýnd í {{XREF:11}}.
+nafngift eru sýnd í [#fs-idp272649888].
 
 <!-- SEG:m68698:entry:auto-196 --> Nöfn nokkurra einfaldra sýra
 
@@ -611,7 +611,7 @@ anjónarinnar
 gætir freistast til að kalla „vetniskarbónat“). Til að nafngreina þetta
 rétt er „vetni“ sleppt; *-at* í karbónat er skipt út fyrir *-sýra*; og
 sýru er bætt við — þannig að nafn þess er kolsýra. Önnur dæmi eru gefin
-í {{XREF:12}}. Það eru nokkrar undantekningar frá almennu
+í [#fs-idp268340336]. Það eru nokkrar undantekningar frá almennu
 nafngiftaraðferðinni (t.d. er H~2~SO~4~ kallað brennisteinssýra, ekki
 brennissýra, og H~2~SO~3~ er brennisteinssýrlingur, ekki
 brennissýrlingur).

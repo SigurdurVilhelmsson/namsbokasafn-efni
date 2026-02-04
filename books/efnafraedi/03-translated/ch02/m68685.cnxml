@@ -36,7 +36,7 @@ eindum sem kallast atóm. <emphasis effect="bold">Atóm</emphasis> er minnsta ei
 tekið þátt í efnabreytingu.</item>
 <item><emphasis effect="bold">Frumefni</emphasis> samanstendur af
 aðeins einni tegund atóma, sem hefur massa sem er einkennandi fyrir
-frumefnið og er sá sami fyrir öll atóm þess frumefnis ({{XREF:1}}). Sýni
+frumefnið og er sá sami fyrir öll atóm þess frumefnis (<link target-id="CNX_Chem_02_01_Dalton1"/>). Sýni
 af frumefni sem sést með berum augum inniheldur ótrúlega mikinn fjölda
 atóma, sem öll hafa sömu efnaeiginleika.</item>
 <item>Atóm eins frumefnis eru ólík í
@@ -44,10 +44,10 @@ eiginleikum atómum allra annarra frumefna.</item>
 <item>Efnasamband samanstendur af
 atómum tveggja eða fleiri frumefna sem sameinast í litlu
 heiltöluhlutfalli. Í tilteknu efnasambandi er fjöldi atóma hvers
-frumefnis alltaf í sama hlutfalli ({{XREF:2}}).</item>
+frumefnis alltaf í sama hlutfalli (<link target-id="CNX_Chem_02_01_Dalton2"/>).</item>
 <item>Atóm verða hvorki til né
 eyðast við efnabreytingu, heldur endurraðast þau til að mynda efni sem
-eru frábrugðin þeim sem voru til staðar fyrir breytinguna ({{XREF:3}}).</item>
+eru frábrugðin þeim sem voru til staðar fyrir breytinguna (<link target-id="CNX_Chem_02_01_Dalton3"/>).</item>
 </list>
 <figure id="CNX_Chem_02_01_Dalton1" class="scaled-down">
 <media id="fs-idm67856816" alt="The left image shows a photograph of a stack of pennies. The right image calls out an area of one of the pennies, which is made up of many sphere-shaped copper atoms. The atoms are densely organized.">
@@ -132,7 +132,7 @@ efnasambandi sé alltaf í sama hlutfalli er í samræmi við þessar
 athuganir. Til dæmis, þegar mismunandi sýni af ísóoktani (hluti af
 bensíni og einn af stöðlunum sem notaðir eru í oktanmatakerfinu) eru
 greind, kemur í ljós að þau hafa massahlutfall kolefnis á móti vetni sem
-er 5,33:1, eins og sýnt er í {{XREF:4}}.</para>
+er 5,33:1, eins og sýnt er í <link target-id="fs-idp114534448"/>.</para>
 <table id="fs-idp114534448" class="top-titled" summary="This table displays how much carbon and hydrogen are in samples A, B and C, as well as the mass ratio of each. Sample A contains 14.82 grams of carbon and 2.78 grams of hydrogen. Its mass ratio is, therefore, 14.82 grams of carbon over 2.78 grams of hydrogen. This ratio is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample B contains 22.33 grams of carbon and 4.19 grams of hydrogen. Its mass ratio is 22.3 grams of carbon over 4.19 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen. Sample C contains 19.40 grams of carbon and 3.64 grams of hydrogen. Its mass ratio is 19.40 grams of carbon over 3.63 grams of hydrogen which is equal to 5.33 grams of carbon over 1.00 gram of hydrogen.">
 <tgroup cols="4">
 <colspec colnum="1" colname="c1"/>
@@ -183,7 +183,7 @@ miðað við græna efnasambandið.</para>
 ef hlutfall kopars og klórs í brúna efnasambandinu er 1 koparatóm á móti
 2 klóratómum og hlutfallið í græna efnasambandinu er 1 koparatóm á móti
 1 klóratómi. Hlutfall klóratóma (og þar með hlutfall massa þeirra) er
-því 2 á móti 1 ({{XREF:5}}).</para>
+því 2 á móti 1 (<link target-id="CNX_Chem_02_01_MultProp"/>).</para>
 <figure id="CNX_Chem_02_01_MultProp" class="scaled-down">
 <media id="fs-idp111881472" alt="Figure A shows a pile of green powder. A callout shows that the green powder is made up of a lattice of copper atoms interspersed with chlorine atoms. The atoms are color coded brown for copper and green for chlorine. The number of copper atoms is equal to the number of chlorine atoms in the molecule. Figure B shows a pile of brown powder. A callout shows that the brown powder is also made up of copper and chlorine atoms similar to the molecule shown in figure A. However there appears to be two chlorine atoms for every copper atom in this molecule. The copper atoms in figure B bond with both the chlorine atoms and the other copper atoms. The copper atoms in figure A only bond with the chlorine atoms.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_02_01_MultProp.jpg"/>

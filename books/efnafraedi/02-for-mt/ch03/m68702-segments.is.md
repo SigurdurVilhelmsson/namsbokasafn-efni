@@ -40,7 +40,7 @@ amu og massaprósenta þess er:
 <!-- SEG:m68702:para:fs-idm159904272 --> Hægt er að beita sömu aðferð fyrir
 par af sameindum, tylft sameinda eða mól af sameindum o.s.frv.
 Síðastnefnda magnið er hentugast og myndi einfaldlega fela í sér notkun
-mólmassa í stað atóm- og formúlumassa, eins og sýnt er í {{XREF:2}}. Svo
+mólmassa í stað atóm- og formúlumassa, eins og sýnt er í [#fs-idm162294688]. Svo
 lengi sem sameinda- eða reynsluformúla viðkomandi efnasambands er þekkt
 er hægt að leiða massaprósentuna út frá atóm- eða mólmössum frumefna
 efnasambandsins.
@@ -137,7 +137,7 @@ reynsluformúlu út frá prósentusamsetningu
 
 <!-- SEG:m68702:para:fs-idm16856224 --> Við gerjun á korni með bakteríum til
 að framleiða etanól myndast gas með prósentusamsetningunni 27,29% C og
-72,71% O ({{XREF:3}}). Hver er reynsluformúla þessa gass?
+72,71% O ([#CNX_Chem_03_03_BrewTank]). Hver er reynsluformúla þessa gass?
 
 <!-- SEG:m68702:para-title:fs-idp8854528-title --> Lausn
 
@@ -227,7 +227,7 @@ bráðabirgðareynsluformúlu
 heiltölu, ef nauðsyn krefur, til að tryggja að minnsta heiltöluhlutfall
 stuðla fáist
 
-<!-- SEG:m68702:para:fs-idm116173824 --> {{XREF:4}} sýnir þessa aðferð á
+<!-- SEG:m68702:para:fs-idm116173824 --> [#CNX_Chem_03_03_empform] sýnir þessa aðferð á
 flæðiriti fyrir efni sem inniheldur frumefnin A og X.
 
 <!-- SEG:m68702:caption:CNX_Chem_03_03_empform-caption --> Reynsluformúlu
@@ -237,7 +237,7 @@ efnasambands má finna út frá massa allra frumefna í sýninu.
 reynsluformúlu efnasambands út frá massa frumefna þess
 
 <!-- SEG:m68702:para:fs-idm148697040 --> Sýni af svarta steinefninu hematíti
-({{XREF:5}}), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97
+([#CNX_Chem_03_03_hematite]), járnoxíði sem finnst í mörgum járngrýtum, inniheldur 34,97
 g af járni og 15,03 g af súrefni. Hver er reynsluformúla hematíts?
 
 <!-- SEG:m68702:para-title:fs-idp9584080-title --> Lausn
@@ -270,7 +270,7 @@ ef sýni inniheldur 0,130 g af nitri og 0,370 g af súrefni?
 járnoxíð sem er notað í skartgripi. (heimild: Mauro Cateb)
 
 <!-- SEG:m68702:para:fs-idp89502368 --> Til að sjá fleiri dæmi um útreikninga
-á reynsluformúlum má horfa á stutta {{LINK:1}}myndbandið{{/LINK}}.
+á reynsluformúlum má horfa á stutta [myndbandið](http://openstax.org/l/16empforms).
 
 <!-- SEG:m68702:title:fs-idp23895104-title --> Ákvörðun sameindaformúla
 

@@ -31,7 +31,7 @@ var geislinn samtímis sveigður með segulsviði og mælingar á umfangi
 sveigjunnar og styrk segulsviðsins gerðu Thomson kleift að reikna út
 hlutfall hleðslu og massa eindanna í katóðugeislanum. Niðurstöður
 þessara mælinga bentu til þess að þessar eindir væru mun léttari en atóm
-({{XREF:6}}).
+([#CNX_Chem_02_02_CathodeRay]).
 
 <!-- SEG:m68687:caption:CNX_Chem_02_02_CathodeRay-caption --> (a) J. J.
 Thomson myndaði sýnilegan geisla í katóðugeislalampa. (b) Þetta er
@@ -57,7 +57,7 @@ hlaðin undirfrumeind með massa sem er meira en þúsund sinnum minni en
 massi atóms. Hugtakið „rafeind“ var búið til árið 1891 af írska
 eðlisfræðingnum George Stoney, úr „*raf*magnse*ind*“.
 
-<!-- SEG:m68687:para:fs-idm90581616 --> Smelltu {{LINK:1}}hér{{/LINK}} til að
+<!-- SEG:m68687:para:fs-idm90581616 --> Smelltu [hér](http://openstax.org/l/16JJThomson) til að
 heyra Thomson lýsa uppgötvun sinni með eigin röddu.
 
 <!-- SEG:m68687:para:fs-idp197761152 --> Árið 1909 komu frekari upplýsingar
@@ -68,7 +68,7 @@ með notkun röntgengeisla. Þessir dropar féllu upphaflega vegna
 þyngdaraflsins en hægt var að hægja á falli þeirra eða jafnvel snúa því
 við með rafsviði neðar í tækinu. Með því að stilla styrk rafsviðsins og
 gera nákvæmar mælingar og viðeigandi útreikninga gat Millikan ákvarðað
-hleðslu einstakra dropa ({{XREF:7}}).
+hleðslu einstakra dropa ([#CNX_Chem_02_02_Millikan]).
 
 <!-- SEG:m68687:caption:CNX_Chem_02_02_Millikan-caption --> Tilraun Millikans
 mældi hleðslu einstakra olíudropa. Gögnin í töflunni eru dæmi um nokkur
@@ -98,7 +98,7 @@ hann, þar sem öll atóm eru rafhlutlaus.
 
 . Árið 1903 hafði Hantaro **Nagaoka** sett fram samkeppnislíkan þar sem
 hann gerði ráð fyrir atómi líkt og Satúrnusi, sem samanstóð af jákvætt
-hlaðinni kúlu umkringdri geislabaug rafeinda ({{XREF:8}}).
+hlaðinni kúlu umkringdri geislabaug rafeinda ([#CNX_Chem_02_02_AtomModels]).
 
 <!-- SEG:m68687:caption:CNX_Chem_02_02_AtomModels-caption --> (a) Thomson
 lagði til að atóm líktust rúsínubúðingi, enskum eftirrétti sem
@@ -125,7 +125,7 @@ ljómaði stuttlega þar sem α-eind lenti á honum.
 <!-- SEG:m68687:para:fs-idp56141328 --> Hvað uppgötvuðu þeir? Flestar
 eindirnar fóru beint í gegnum þynnuna án þess að breyta um stefnu. Hins
 vegar sveigðu sumar örlítið frá og mjög lítill fjöldi kastaðist næstum
-beint aftur í átt að uppsprettunni ({{XREF:9}}). Rutherford lýsti því að
+beint aftur í átt að uppsprettunni ([#CNX_Chem_02_02_Rutherford]). Rutherford lýsti því að
 finna þessar niðurstöður: „Þetta var alveg ótrúlegasti atburður sem
 hefur komið fyrir mig á ævinni. Það var næstum jafn ótrúlegt og ef þú
 skýtur 15 tommu fallbyssukúlu á vefjapappír og hún kemur til baka og
@@ -163,7 +163,7 @@ jákvætt hlaðinn líkami, **kjarninn**, hlýtur að vera í miðju hvers
 atóms.
 
 <!-- SEG:m68687:para:fs-idp30357520 --> Skoðaðu þessa
-{{LINK:2}}hermun{{/LINK}} af gullþynnutilraun Rutherfords. Stilltu
+[hermun](http://openstax.org/l/16Rutherford) af gullþynnutilraun Rutherfords. Stilltu
 breidd raufarinnar til að búa til mjórri eða breiðari geisla af α-eindum
 til að sjá hvernig það hefur áhrif á dreifingarmynstrið.
 
@@ -171,7 +171,7 @@ til að sjá hvernig það hefur áhrif á dreifingarmynstrið.
 Rutherford lagði til líkan þar sem atóm samanstendur af mjög litlum,
 jákvætt hlöðnum kjarna, þar sem mestur massi atómsins er samþjappaður,
 umkringdur neikvætt hlöðnum rafeindum, þannig að atómið er rafhlutlaust
-({{XREF:10}}). Eftir margar fleiri tilraunir uppgötvaði Rutherford
+([#CNX_Chem_02_02_GoldFoil3]). Eftir margar fleiri tilraunir uppgötvaði Rutherford
 einnig að kjarnar annarra frumefna innihalda vetniskjarnann sem
 „byggingareiningu“ og hann nefndi þessa grundvallareind **róteindina**,
 jákvætt hlöðnu öreindina sem finnst í kjarnanum. Með einni viðbót, sem
@@ -186,7 +186,7 @@ tiltölulega stórt svæði sem rafeindir taka, en þær eru of léttar til að
 sveigja frá hratt á ferð eindunum.
 
 <!-- SEG:m68687:para:fs-idp101595952 -->
-{{LINK:3}}Rutherford-dreifingarhermunin{{/LINK}} gerir þér kleift að
+[Rutherford-dreifingarhermunin](http://openstax.org/l/16PhetScatter) gerir þér kleift að
 rannsaka muninn á „rúsínubúðings“-atómi og Rutherford-atómi með því að
 skjóta α-eindum á hvora tegund atóms.
 
@@ -268,7 +268,7 @@ mun vera frábrugðinn ferli α-einda með minni orku. Útskýrðu rökstuðning
 
 
 <!-- SEG:m68687:problem:fs-idp130204768 --> (c) Prófaðu nú spár þínar úr (a)
-og (b). Opnaðu {{LINK:4}}Rutherford-dreifingarherminn{{/LINK}} og veldu
+og (b). Opnaðu [Rutherford-dreifingarherminn](http://openstax.org/l/16PhetScatter) og veldu
 flipann „Plómubúðingsatóm“. Stilltu „Orka alfaeinda“ á „min“ og veldu
 „sýna slóðir“. Smelltu á byssuna til að byrja að skjóta α-eindum.
 Samsvarar þetta spá þinni úr (a)? Ef ekki, útskýrðu hvers vegna
@@ -295,7 +295,7 @@ Rutherford-atóm annarra frumefna en gulls. Hvaða þáttur telur þú að muni
 valda þessum mun á slóðum og hvers vegna?
 
 <!-- SEG:m68687:problem:fs-idp84028672 --> (d) Prófaðu nú spár þínar úr (a),
-(b) og (c). Opnaðu {{LINK:5}}Rutherford-dreifingarherminn{{/LINK}} og
+(b) og (c). Opnaðu [Rutherford-dreifingarherminn](http://openstax.org/l/16PhetScatter) og
 veldu flipann „Rutherford-atóm“. Vegna stærðarhlutfalla hermisins er
 best að byrja með lítinn kjarna, svo veldu „20“ fyrir bæði róteindir og
 nifteindir, „min“ fyrir orku, sýndu slóðir og byrjaðu svo að skjóta

@@ -20,7 +20,7 @@ gangast undir efna- (eða eðlis-) breytingu felur í sér að skrifa og
 stilla <emphasis effect="bold">efnajöfnu</emphasis>. Tökum sem dæmi hvarfið milli einnar metansameindar
 (CH<sub>4</sub>) og tveggja tvíatóma súrefnissameinda (O<sub>2</sub>) til að mynda eina
 koldíoxíðsameind (CO<sub>2</sub>) og tvær vatnssameindir (H<sub>2</sub>O). Efnajafnan sem
-táknar þetta ferli er sýnd í efri helmingi {{XREF:2}}, með
+táknar þetta ferli er sýnd í efri helmingi <link target-id="CNX_Chem_04_01_rxn2"/>, með
 rúmfyllingarlíkönum af sameindum sýndum í neðri helmingi myndarinnar.</para>
 <figure id="CNX_Chem_04_01_rxn2"><media id="fs-idp26251152" alt="This figure shows a balanced chemical equation followed below by a representation of the equation using space-filling models. The equation reads C H subscript 4 plus 2 O subscript 2 arrow C O subscript 2 plus 2 H subscript 2 O. Under the C H subscript 4, the molecule is shown with a central black sphere, representing a C atom, to which 4 smaller white spheres, representing H atoms, are distributed evenly around. All four H atoms are bonded to the central black C atom. This is followed by a plus sign. Under the 2 O subscript 2, two molecules are shown. The molecules are each composed of two red spheres bonded together. The red spheres represent O atoms. To the right of an arrow and under the C O subscript 2, appears a single molecule with a black central sphere with two red spheres bonded to the left and right. Following a plus sign and under the 2 H subscript 2 O, are two molecules, each with a central red sphere and two smaller white spheres attached to the lower right and lower left sides of the central red sphere. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_04_01_rxn2.jpg"/>
@@ -52,7 +52,7 @@ huga að þessir stuðlar tákna <emphasis effect="italics">hlutfallslegan</emph
 myndefna og því má túlka þá réttilega sem hlutföll. Metan og súrefni
 hvarfast og mynda koldíoxíð og vatn í hlutfallinu 1:2:1:2. Þetta
 hlutfall er uppfyllt ef fjöldi þessara sameinda er, í sömu röð, 1-2-1-2,
-eða 2-4-2-4, eða 3-6-3-6, og svo framvegis ({{XREF:3}}). Sömuleiðis má
+eða 2-4-2-4, eða 3-6-3-6, og svo framvegis (<link target-id="CNX_Chem_04_01_rxn3"/>). Sömuleiðis má
 túlka þessa stuðla með tilliti til hvaða magnseiningar (fjölda) sem er,
 og því má lesa þessa jöfnu réttilega á marga vegu, þar á meðal:</para>
 <figure id="CNX_Chem_04_01_rxn3"><media id="fs-idp178489152" alt="This image has a left side, labeled, “Mixture before reaction” separated by a vertical dashed line from right side labeled, “Mixture after reaction.” On the left side of the figure, two types of molecules are illustrated with space-filling models. Six of the molecules have only two red spheres bonded together. Three of the molecules have four small white spheres evenly distributed about and bonded to a central, larger black sphere. On the right side of the dashed vertical line, two types of molecules which are different from those on the left side are shown. Six of the molecules have a central red sphere to which smaller white spheres are bonded. The white spheres are not opposite each other on the red atoms, giving the molecule a bent shape or appearance. The second molecule type has a central black sphere to which two red spheres are attached on opposite sides, resulting in a linear shape or appearance. Note that in space filling models of molecules, spheres appear slightly compressed in regions where there is a bond between two atoms. On each side of the dashed line, twelve red, three black, and twelve white spheres are present.">
@@ -406,7 +406,7 @@ myndefnasameinda. Með því að deila hverjum stuðli með stærsta samdeili,
 <equation id="fs-idm15551488" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:math></equation>
 <note id="fs-idp54281248" class="chemistry link-to-learning">
 <para id="fs-idp94095504">Notaðu þetta gagnvirka
-{{LINK:1}}kennsluefni{{/LINK}} til að æfa þig meira í að stilla jöfnur.</para>
+<link url="http://openstax.org/l/16BalanceEq">kennsluefni</link> til að æfa þig meira í að stilla jöfnur.</para>
 </note>
 </section>
 <section id="fs-idp50900304">

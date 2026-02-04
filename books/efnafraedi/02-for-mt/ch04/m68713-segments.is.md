@@ -60,7 +60,7 @@ svipaða stuðla fyrir hvaða efnapar sem er í hvaða efnajöfnu sem er.
 
 <!-- SEG:m68713:para:fs-idp77269456 --> Hversu mörg mól af I~2~ þarf til að
 hvarfast við 0,429 mól af Al samkvæmt eftirfarandi jöfnu (sjá
-{{XREF:1}})?
+[#CNX_Chem_04_03_iodine])?
 
 <!-- SEG:m68713:para-title:fs-idm34598272-title --> Lausn
 
@@ -94,7 +94,7 @@ myndast þegar 0,75 mól af própani er brennt samkvæmt þessari jöfnu?
 <!-- SEG:m68713:para-title:fs-idp121952928-title --> Lausn
 
 <!-- SEG:m68713:para:fs-idp121952928 --> Aðferðin hér er sú sama og fyrir
-{{XREF:2}}, þó að beðið sé um hreinan fjölda sameinda, ekki fjölda móla
+[#fs-idp48900096], þó að beðið sé um hreinan fjölda sameinda, ekki fjölda móla
 af sameindum. Þetta krefst einfaldlega notkunar á umreikningsstuðlinum
 frá mólum yfir í fjölda, tölu Avogadros.
 
@@ -133,7 +133,7 @@ NaOH, þyrfti til að framleiða 16 g af sýrubindandi lyfinu magnesíummjólk
 <!-- SEG:m68713:para-title:fs-idm3520480-title --> Lausn
 
 <!-- SEG:m68713:para:fs-idm3520480 --> Aðferðin sem notuð var áður í
-{{XREF:3}} og {{XREF:4}} er einnig notuð hér; það er að segja, við
+[#fs-idp48900096] og [#fs-idp9124448] er einnig notuð hér; það er að segja, við
 verðum að leiða út viðeigandi hlutfallaefnafræðilegan þátt úr stöðluðu
 efnajöfnunni og nota hann til að tengja saman magn efnanna tveggja sem
 um ræðir. Í þessu tilviki eru hins vegar massar (ekki mólmagn) gefnir
@@ -163,7 +163,7 @@ aðalþáttum bensíns?
 <!-- SEG:m68713:para-title:fs-idp35508016-title --> Lausn
 
 <!-- SEG:m68713:para:fs-idp35508016 --> Aðferðin sem krafist er hér er sú
-sama og fyrir {{XREF:5}}, en munurinn er aðeins sá að uppgefnir og
+sama og fyrir [#fs-idp113495744], en munurinn er aðeins sá að uppgefnir og
 umbeðnir massar eru báðir fyrir hvarfefni.
 
 <!-- SEG:m68713:para-title:fs-idp24638432-title --> Kannaðu þekkingu þína
@@ -183,7 +183,7 @@ og lokaútreikningaskrefum eru möguleg eftir því hvaða tilteknu stærðir
 eru gefnar og hverra er leitað (rúmmál, styrkur lausna og svo
 framvegis). Burtséð frá smáatriðum eiga allir þessir útreikningar
 sameiginlegan grundvallarþátt: notkun hlutfallaefnafræðilegra þátta sem
-eru leiddir út frá stöðluðum efnajöfnum. {{XREF:6}} gefur almennt
+eru leiddir út frá stöðluðum efnajöfnum. [#CNX_Chem_04_03_flowchart] gefur almennt
 yfirlit yfir hin ýmsu útreikningaskref sem tengjast mörgum útreikningum
 í hlutfallaefnafræði hvarfa.
 
@@ -193,7 +193,7 @@ hlutfallaefnafræði hvarfa.
 
 <!-- SEG:m68713:note-title:fs-idp84121360-title --> Loftpúðar
 
-<!-- SEG:m68713:para:fs-idp124943600 --> Loftpúðar ({{XREF:7}}) eru
+<!-- SEG:m68713:para:fs-idp124943600 --> Loftpúðar ([#CNX_Chem_04_03_airbag]) eru
 öryggisbúnaður sem hefur verið í flestum bifreiðum frá tíunda áratug
 síðustu aldar. Til að loftpúði virki á skilvirkan hátt þarf hann að
 blásast hratt upp með viðeigandi magni (rúmmáli) af gasi þegar ökutæki
@@ -250,7 +250,7 @@ kopar(II)karbónats sem þarf til að mynda 1,500 kg af kopar(II)oxíði.
 <!-- SEG:m68713:problem:fs-idp241908400 --> (f)
 
 <!-- SEG:m68713:problem:fs-idp53786208 --> Ákvarðaðu fjölda móla og massa sem
-beðið er um fyrir hvert efnahvarf í {{XREF:8}}.
+beðið er um fyrir hvert efnahvarf í [#fs-idp166618800].
 
 <!-- SEG:m68713:solution:fs-idp75003744 --> (a) 0,435 mól Na, 0,217 mól
 Cl~2~, 15,4 g Cl~2~; (b) 0,005780 mól HgO, 2,890 [[MATH:8]] 10^−3^
@@ -284,7 +284,7 @@ BaO (O~2~ er hitt myndefnið.)
 <!-- SEG:m68713:problem:fs-idp83999440 --> (f)
 
 <!-- SEG:m68713:problem:fs-idm1240512 --> Ákvarðaðu fjölda móla og massa sem
-beðið er um fyrir hvert hvarf í {{XREF:9}}.
+beðið er um fyrir hvert hvarf í [#fs-idp16477696].
 
 <!-- SEG:m68713:solution:fs-idp103920384 --> (a) 0,0686 mól Mg, 1,67 g Mg;
 (b) 2,701 [[MATH:11]] 10^−3^ mól O~2~, 0,08644 g O~2~; (c) 6,43 mól

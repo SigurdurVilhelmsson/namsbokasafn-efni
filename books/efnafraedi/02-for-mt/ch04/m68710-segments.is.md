@@ -53,7 +53,7 @@ litla leysni eru sögð vera **torleyst** og þetta eru efnin sem falla
 auðveldlega út úr lausn. Nánari upplýsingar um þessi mikilvægu hugtök er
 að finna í síðari kafla um lausnir. Til að spá fyrir um hvaða föstu efni
 myndast við útfellingarhvörf má einfaldlega vísa til leysnimynstra sem
-hafa sést fyrir mörg jónaefni ({{XREF:3}}).
+hafa sést fyrir mörg jónaefni ([#fs-idp140132617697568]).
 
 <!-- SEG:m68710:entry:auto-12 --> **Auðleyst jónaefni**
 
@@ -113,7 +113,7 @@ leysni joðíðsalta.
 efnahvarf er:
 
 <!-- SEG:m68710:para:fs-idm52098368 --> Blýjoðíð er skærgult fast efni sem
-áður var notað sem litarefni listamanna þekkt sem joðgult ({{XREF:4}}).
+áður var notað sem litarefni listamanna þekkt sem joðgult ([#CNX_Chem_04_02_LeadIodide]).
 Eiginleikar hreinna PbI~2~ kristalla gera þá gagnlega til framleiðslu á
 skynjurum fyrir röntgengeisla og gammageisla.
 
@@ -122,7 +122,7 @@ PbI~2~ myndast þegar lausnum sem innihalda Pb^2+^ og I^−^ er blandað
 saman. (heimild: Der Kreole/Wikimedia Commons)
 
 <!-- SEG:m68710:para:fs-idp157312304 --> Hægt er að nota leiðbeiningarnar um
-leysni í {{XREF:5}} til að spá fyrir um hvort útfellingarhvarf muni eiga
+leysni í [#fs-idp140132617697568] til að spá fyrir um hvort útfellingarhvarf muni eiga
 sér stað þegar lausnum af auðleystum jónaefnum er blandað saman. Það
 eina sem þarf að gera er að bera kennsl á allar jónir sem eru til staðar
 í lausninni og íhuga síðan hvort möguleg pörun katjóna/anjóna gæti leitt
@@ -201,7 +201,7 @@ er hér:
 <!-- SEG:m68710:para:fs-idm10390992 --> Ferlið sem þessi jafna táknar
 staðfestir að vetnisklóríð er sýra. Þegar það er leyst upp í vatni
 myndast H~3~O^+^ jónir í efnahvarfi þar sem H^+^ jónir flytjast frá HCl
-sameindum yfir á H~2~O sameindir ({{XREF:6}}).
+sameindum yfir á H~2~O sameindir ([#CNX_Chem_04_02_HClsoln]).
 
 <!-- SEG:m68710:caption:CNX_Chem_04_02_HClsoln-caption --> Þegar
 vetnisklóríðgas leysist upp í vatni, (a) hvarfast það sem sýra og flytur
@@ -213,7 +213,7 @@ við vatn, eins og lýst er hér að ofan, er í raun 100% skilvirkt: Nánast
 hver einasta HCl sameind sem leysist upp í vatni mun gangast undir þetta
 efnahvarf. Sýrur sem hvarfast að fullu á þennan hátt eru kallaðar
 **sterkar sýrur** og HCl er eitt af fáum algengum sýruefnasamböndum sem
-flokkast sem sterk ({{XREF:7}}). Mun fleiri efnasambönd hegða sér sem
+flokkast sem sterk ([#fs-idp55395904]). Mun fleiri efnasambönd hegða sér sem
 **veikar sýrur** og hvarfast aðeins að hluta til við vatn, þannig að
 mikill meirihluti uppleystra sameinda helst í upprunalegri mynd og
 tiltölulega lítið magn hýdróníumjóna myndast. Veikar sýrur eru algengar
@@ -224,7 +224,7 @@ aðalefnið í matarediki:
 
 <!-- SEG:m68710:para:fs-idm23363712 --> Þegar ediksýra er leyst upp í vatni
 við dæmigerðar aðstæður eru aðeins um 1% ediksýrusameinda á jónuðu
-formi, [[MATH:2]] ({{XREF:8}}). (Notkun tvöfaldrar örvar í jöfnunni
+formi, [[MATH:2]] ([#CNX_Chem_04_02_Citrus]). (Notkun tvöfaldrar örvar í jöfnunni
 hér að ofan táknar að efnahvarfið er aðeins að hluta til, hugtak sem
 fjallað er um ítarlega í köflunum um efnajafnvægi.)
 
@@ -294,7 +294,7 @@ mikilvægar vörur í ýmiss konar tækni. Til dæmis er heimsframleiðsla á
 veika basanum ammoníaki yfirleitt vel yfir 100 milljónir tonna á ári og
 er hann mikið notaður sem landbúnaðaráburður, hráefni fyrir
 efnafræðilega myndun annarra efnasambanda og virkt efni í
-heimilishreinsiefnum ({{XREF:9}}). Þegar ammoníak er leyst upp í vatni
+heimilishreinsiefnum ([#CNX_Chem_04_02_ammonia]). Þegar ammoníak er leyst upp í vatni
 hvarfast það að hluta til og myndar hýdroxíðjónir, eins og sýnt er hér:
 
 <!-- SEG:m68710:para:fs-idm73811808 --> Þetta er, samkvæmt skilgreiningu,
@@ -402,7 +402,7 @@ við vatn í deiginu.
 
 <!-- SEG:m68710:para:fs-idp3959248 --> Mörgum finnst gott að setja
 sítrónusafa eða edik, sem hvort tveggja eru sýrur, á soðinn fisk
-({{XREF:10}}). Svo vill til að fiskar hafa rokgjörn amín (basa) í kerfum
+([#CNX_Chem_14_03_FishLemon]). Svo vill til að fiskar hafa rokgjörn amín (basa) í kerfum
 sínum sem eru hlutleyst af sýrunum og mynda órokgjörn ammóníumsölt.
 Þetta dregur úr lyktinni af fiskinum og bætir einnig við „súru“ bragði
 sem okkur virðist líka vel.
@@ -424,7 +424,7 @@ Hlutleysingarhvarf á sér stað milli sítrónusýru í sítrónum eða ediksý
 í ediki og basanna í holdi fisksins.
 
 <!-- SEG:m68710:para:fs-idm40317104 --> Kannaðu smásæja
-{{LINK:1}}sýn{{/LINK}} á sterkar og veikar sýrur og basa.
+[sýn](http://openstax.org/l/16AcidsBases) á sterkar og veikar sýrur og basa.
 
 <!-- SEG:m68710:title:fs-idm48520656-title --> Oxunar-afoxunarhvörf
 
@@ -779,7 +779,7 @@ hefur verið sett fram altæk skilgreining á oxunar-afoxunarhvarfi.
 taka þátt í hvarfinu breyta um oxunartölu. (Þótt langflest
 oxunar-afoxunarhvörf feli í sér breytingar á oxunartölu fyrir tvö eða
 fleiri frumefni, þá eru til nokkrar áhugaverðar undantekningar frá
-þessari reglu {{XREF:11}}.) Skilgreiningar á viðbótarferlum þessa
+þessari reglu [#fs-idp180799104].) Skilgreiningar á viðbótarferlum þessa
 hvarfaflokks eru endurskoðaðar á sama hátt og sýnt er hér:
 
 <!-- SEG:m68710:para:fs-idm1410784 --> Ef við snúum aftur að efnahvörfunum
@@ -796,12 +796,12 @@ oxunar-afoxunarhvarfa eru þekktir, þar á meðal **brunahvörf** þar sem
 afoxarinn (einnig kallaður *eldsneyti*) og oxarinn (oft, en ekki
 endilega, sameindasúrefni) hvarfast kröftuglega og framleiða umtalsvert
 magn af hita, og oft ljós, í formi loga. Eldflaugaeldsneytishvörf með
-föstu efni, eins og það sem sýnt er í {{XREF:12}}, eru brunaferli.
+föstu efni, eins og það sem sýnt er í [#CNX_Chem_04_00_Rocket], eru brunaferli.
 Dæmigert drifefnishvarf þar sem fast ál er oxað af ammóníumperklórati er
 táknað með þessari jöfnu:
 
 <!-- SEG:m68710:para:fs-idm5712736 --> Horfðu á stutt
-{{LINK:2}}myndband{{/LINK}} sem sýnir prufukeyrslu á lítilli frumgerð af
+[myndband](http://openstax.org/l/16hybridrocket) sem sýnir prufukeyrslu á lítilli frumgerð af
 tvinneldflaugavél sem áætlað er að nota í nýja Space Launch System sem
 NASA er að þróa. Fyrstu vélarnar sem gangsettar eru við 3 s (grænn logi)
 nota blöndu af fljótandi eldsneyti/oxara og seinni, öflugri vélarnar sem
@@ -819,7 +819,7 @@ lausnum annarra málmsalta; til dæmis:
 koparvír í lausn sem inniheldur uppleyst silfursalt. Silfurjónir í
 lausninni afoxast í frumefnið silfur á yfirborði koparvírsins og Cu^2+^
 jónirnar sem myndast leysast upp í lausninni og gefa henni einkennandi
-bláan lit ({{XREF:13}}).
+bláan lit ([#CNX_Chem_04_02_CuAgNO3]).
 
 <!-- SEG:m68710:caption:CNX_Chem_04_02_CuAgNO3-caption --> (a) Koparvír er
 sýndur við hliðina á lausn sem inniheldur silfur(I)jónir. (b) Útskipting

@@ -20,7 +20,7 @@ efnahvarfi sem myndar knýtikraft. (heimild: breytt útgáfa af verki NASA)
 miðlægur þáttur í geimkönnunaráætlunum heimsins, þar á meðal nýja
 geimskotkerfinu sem Geimferðastofnun Bandaríkjanna (NASA) er að þróa til
 að koma í stað geimskutlanna sem teknar hafa verið úr notkun
-({{XREF:1}}). Hreyflar þessara eldflauga reiða sig á vandlega undirbúnar
+([#CNX_Chem_04_00_Rocket]). Hreyflar þessara eldflauga reiða sig á vandlega undirbúnar
 efnablöndur í föstu formi sem eru samsettar úr efnum í nákvæmlega
 afmældu magni. Þegar kveikt er í efnablöndunni hefst kröftugt efnahvarf
 sem myndar hratt mikið magn af myndefnum á gasformi. Þessum gösum er

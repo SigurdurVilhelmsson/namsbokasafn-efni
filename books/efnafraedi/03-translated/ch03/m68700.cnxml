@@ -35,7 +35,7 @@ tetraflúoretýleni, byggingarblokkinni fyrir „viðloðunarfríu“ fjölliðu
 Teflon. Sameindaformúla klóróforms gefur til kynna að ein sameind
 innihaldi eitt kolefnisatóm, eitt vetnisatóm og þrjú klóratóm.
 Meðalsameindamassi klóróformsameindar er því jafn summu meðalatómmassa
-þessara atóma. {{XREF:2}} sýnir útreikningana sem notaðir eru til að
+þessara atóma. <link target-id="CNX_Chem_03_01_chloroform"/> sýnir útreikningana sem notaðir eru til að
 leiða út sameindamassa klóróforms, sem er 119,37 amu.</para>
 <figure id="CNX_Chem_03_01_chloroform"><media id="fs-idp71460256" alt="A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “C l” and a blank, merged cell that runs the width of the first five columns. The second column contains the numbers “1,” “1,” and “3” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “12.01,” “1.008,” “106.35,” and “119.37.” There is a thick black line below the number 106.35. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Three green spheres are attached to a slightly smaller black sphere, which is also attached to a smaller white sphere. The green spheres lie beneath and to the sides of the black sphere while the white sphere is located straight up from the black sphere.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_chloroform.jpg"/>
@@ -47,7 +47,7 @@ klóróforms.</caption></figure>
 <para id="fs-idp139124096">Á sama hátt er sameindamassi
 aspirínsameindar, C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>, summa atómmassa níu kolefnisatóma, átta
 vetnisatóma og fjögurra súrefnisatóma, sem nemur 180,15 amu
-({{XREF:3}}).</para>
+(<link target-id="CNX_Chem_03_01_aspirin"/>).</para>
 <figure id="CNX_Chem_03_01_aspirin"><media id="fs-idp41603456" alt="A table and diagram are shown. The table is made up of six columns and five rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “9,” “8,” and “4” as well as the merged, cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” and “16.00” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values: “108.09,” “8.064,” “64.00,” and “180.15.” There is a thick black line below the number 64.00. The merged cell under the first five columns reads “Molecular mass.” To the left of the table is a diagram of a molecule. Six black spheres are located in a six-sided ring and connected by alternating double and single black bonds. Attached to each of the four black spheres is one smaller white sphere. Attached to the farthest right black sphere is a red sphere, connected to two more black spheres, all in a row. Attached to the last black sphere of that row are two more white spheres. Attached to the first black sphere of that row is another red sphere. A black sphere, attached to two red spheres and a white sphere is attached to the black sphere on the top right of the six-sided ring.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_aspirin.jpg"/>
 </media>
@@ -86,7 +86,7 @@ sameindar, svo það er ekki rétt að vísa til hans sem „sameindamassa“.</
 efnafræðilega heitið á venjulegu matarsalti. Natríumklóríð er jónaefni
 sem samanstendur af natríumkatjónum, Na<sup>+</sup>, og klóríðanjónum, Cl<sup>−</sup>,
 sameinuðum í hlutfallinu 1:1. Formúlumassi þessa efnasambands er
-reiknaður sem 58,44 amu (sjá {{XREF:4}}).</para>
+reiknaður sem 58,44 amu (sjá <link target-id="CNX_Chem_03_01_saltMass"/>).</para>
 <figure id="CNX_Chem_03_01_saltMass"><media id="fs-idm4901808" alt="A table and diagram are shown. The table is made up of six columns and four rows. The header row reads: “Element,” “Quantity,” a blank space, “Average atomic mass (a m u),” a blank space and “Subtotal (a m u).” The first column contains the symbols “N a”, “C l,” and a merged cell. The merged cell runs the length of the first five columns. The second column contains the numbers “1” and “1” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “22.99” and “35.45” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “22.99,” “35.45,” and “58.44.” There is a thick black line below the number “35.45.” The merged cell under the first five columns reads “Formula mass.” To the left of the table is a diagram of a chemical structure. The diagram shows green and purple spheres placed in an alternating pattern, making up the corners of eight stacked cubes to form one larger cube. The green spheres are slightly smaller than the purple spheres.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_saltMass.jpg"/>
 </media>
@@ -168,7 +168,7 @@ og 1 mól af hvaða öðru frumefni sem er. Massi 1 móls af mismunandi
 frumefnum er hins vegar mismunandi, þar sem massi einstakra atóma er
 verulega ólíkur. <emphasis effect="bold">Mólmassi</emphasis> frumefnis (eða efnasambands) er massi í
 grömmum af 1 móli af því efni, eiginleiki sem er gefinn upp í einingum
-grömm á mól (g/mól) (sjá {{XREF:5}}).</para>
+grömm á mól (g/mól) (sjá <link target-id="CNX_Chem_03_02_moles"/>).</para>
 <figure id="CNX_Chem_03_02_moles" class="scaled-down">
 <media id="fs-idm272620112" alt="This figure contains eight different substances displayed on white circles. The amount of each substance is visibly different.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_moles-6296.jpg"/>
@@ -189,7 +189,7 @@ vegur eitt <sup>12</sup>C atóm 12 amu (atómmassi þess er 12 amu). Eitt mól a
 öll frumefni, þar sem atómmassar þeirra eru mældir miðað við
 amu-viðmiðunarefnið, <sup>12</sup>C. Með því að útvíkka þessa meginreglu er
 mólmassi efnasambands í grömmum sömuleiðis tölulega jafngildur
-formúlumassa þess í amu ({{XREF:6}}).</para>
+formúlumassa þess í amu (<link target-id="CNX_Chem_03_02_compound"/>).</para>
 <figure id="CNX_Chem_03_02_compound" class="scaled-down"><media id="fs-idm24308080" alt="This photo shows two vials filled with a colorless liquid. It also shows two bowls: one filled with an off-white powder and one filled with a bright red powder.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_compound.jpg"/>
 </media>
@@ -251,7 +251,7 @@ CH<sub>3</sub>OH (metanól, formúlumassi 32,0 amu) og 256,5 g af S<sub>8</sub>
 tölulega jafngildir, hafðu í huga að þeir eru mjög ólíkir hvað varðar
 stærðargráðu, eins og sést á miklum mun á stærð viðkomandi eininga (amu
 á móti g). Til að skilja hversu gríðarlega stórt mólið er, íhugaðu
-lítinn vatnsdropa sem vegur um 0,03 g (sjá {{XREF:7}}). Þótt þetta sé
+lítinn vatnsdropa sem vegur um 0,03 g (sjá <link target-id="CNX_Chem_03_02_water"/>). Þótt þetta sé
 aðeins örlítið brot af 1 móli af vatni (~18 g), inniheldur það fleiri
 vatnssameindir en hægt er að ímynda sér. Ef sameindunum væri dreift
 jafnt á um sjö milljarða manna á jörðinni, myndi hver einstaklingur fá
@@ -268,7 +268,7 @@ jörðinni. (Heimild: „tanakawho“/Wikimedia commons)</caption>
 <para id="fs-idp18455776">Mólið er notað í efnafræði til að
 tákna 6,022 <m:math><m:mo>×</m:mo></m:math> 10<sup>23</sup> af einhverju, en það getur verið
 erfitt að gera sér í hugarlund svo stóra tölu. Horfðu á þetta
-{{LINK:1}}myndband{{/LINK}} og svaraðu síðan „Hugsaðu“-spurningunum sem
+<link url="http://openstax.org/l/16molevideo">myndband</link> og svaraðu síðan „Hugsaðu“-spurningunum sem
 fylgja. Kynntu þér mólið nánar með því að skoða upplýsingarnar undir
 „Ítarlegra efni“.”</para>
 </note>
@@ -330,7 +330,7 @@ væntingar okkar, um 0,04 g Ar.</para>
 <example id="fs-idm8741648">
 <para id="fs-idm24646960"><title>Útreikningur á fjölda
 atóma út frá massa fyrir frumefni</title>Kopar er almennt notaður til að búa
-til rafmagnsvír ({{XREF:8}}). Hversu mörg koparatóm eru í 5,00 g af
+til rafmagnsvír (<link target-id="CNX_Chem_03_02_copper"/>). Hversu mörg koparatóm eru í 5,00 g af
 koparvír?</para>
 <!-- figure handled separately -->
 <para id="fs-idm40043360"><title>Lausn</title>Fjölda Cu-atóma í vírnum má
@@ -369,7 +369,7 @@ amínósýrum. Ein þessara amínósýra er glýsín, sem hefur sameindaformúlu
 C<sub>2</sub>H<sub>5</sub>O<sub>2</sub>N. Hversu mörg mól af glýsínsameindum eru í 28,35 g af
 glýsíni?</para>
 <para id="fs-idp1446192"><title>Lausn</title>Leiðið út fjölda móla efnasambands út
-frá massa þess með sömu aðferð og notuð var fyrir frumefni í {{XREF:9}}:</para>
+frá massa þess með sömu aðferð og notuð var fyrir frumefni í <link target-id="fs-idp76540048"/>:</para>
 <media id="fs-idm4806704" alt="A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Mass of C subscript 2 H subscript 5 O subscript 2 N ( g )” while the box on the right contains the phrase, “Moles of C subscript 2 H subscript 5 O subscript 2 N ( mol ).” There is a phrase under the arrow that says “Divide by molar mass (g / mol).”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_glycine_img-7c96.jpg"/>
 </media>
@@ -428,7 +428,7 @@ mg af sakkaríni (C<sub>7</sub>H<sub>5</sub>NO<sub>3</sub>S), sem hefur bygginga
 sýni af sakkaríni? Hversu mörg kolefnisatóm eru í sama sýni?</para>
 <para id="fs-idm20251168"><title>Lausn</title>Fjöldi sameinda í tilteknum massa
 efnasambands er reiknaður út með því að finna fyrst fjölda móla, eins og
-sýnt er í {{XREF:10}}, og margfalda síðan með tölu Avogadros:</para>
+sýnt er í <link target-id="fs-idm1714048"/>, og margfalda síðan með tölu Avogadros:</para>
 <media id="fs-idm1701808" alt="A diagram of three boxes connected by a right-facing arrow in between each is shown. The box on the left contains the phrase, “Mass of C subscript seven H subscript five N O subscript three S ( g ),” the middle box reads, “Moles of C subscript seven H subscript five N O subscript three S ( mol ),” while the one on the right contains the phrase, “Number of C subscript seven H subscript five N O subscript three S molecules.” There is a phrase under the left arrow that says, “Divide by molar mass (g / mol),” and under the right arrow it states, “Multiply by Avogadro’s number ( mol superscript negative one).”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_sacch_img-3278.jpg"/>
 </media>
@@ -456,7 +456,7 @@ sameindir C<sub>4</sub> H<sub>10</sub>; 9,545 <m:math><m:mo>×</m:mo></m:math> 1
 <title>Að telja
 taugaboðefnissameindir í heilanum</title>
 <para id="fs-idm4217280">Heilinn er stjórnstöð
-miðtaugakerfisins ({{XREF:11}}). Hann sendir og tekur á móti boðum til
+miðtaugakerfisins (<link target-id="CNX_Chem_03_01_brain"/>). Hann sendir og tekur á móti boðum til
 og frá vöðvum og öðrum innri líffærum til að fylgjast með og stjórna
 starfsemi þeirra; hann vinnur úr áreiti sem skynfæri nema til að stýra
 víxlverkun við umheiminn; og hann hýsir flókin lífeðlisfræðileg ferli
@@ -483,7 +483,7 @@ yfirborði hinnar frumunnar. Þessar taugaboðefnissameindir eru geymdar í
 litlum innanfrumubyggingum sem kallast seytibólur og renna saman við
 frumuhimnuna og rofna síðan til að losa innihald sitt þegar taugafruman
 er örvuð á viðeigandi hátt. Þetta ferli er kallað útfrumun (sjá
-{{XREF:12}}). Eitt taugaboðefni sem hefur verið rannsakað mjög mikið er
+<link target-id="CNX_Chem_03_01_exocytosis"/>). Eitt taugaboðefni sem hefur verið rannsakað mjög mikið er
 dópamín, C<sub>8</sub>H<sub>11</sub>NO<sub>2</sub>. Dópamín tekur þátt í ýmsum taugafræðilegum
 ferlum sem hafa áhrif á fjölbreytta mannlega hegðun. Truflanir í
 dópamínkerfum heilans liggja að baki alvarlegum taugasjúkdómum eins og

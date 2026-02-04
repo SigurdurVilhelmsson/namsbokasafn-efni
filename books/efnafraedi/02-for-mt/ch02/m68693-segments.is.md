@@ -20,7 +20,7 @@ skammstafanir fyrir nöfn efnasambanda.
 gefur sömu upplýsingar og sameindaformúla þess (gerðir og fjölda atóma í
 sameindinni) en sýnir einnig hvernig atómin eru tengd í sameindinni.
 Byggingarformúla metans inniheldur tákn fyrir eitt C-atóm og fjögur
-H-atóm, sem gefur til kynna fjölda atóma í sameindinni ({{XREF:6}}).
+H-atóm, sem gefur til kynna fjölda atóma í sameindinni ([#CNX_Chem_02_04_MethaneRep]).
 Línurnar tákna tengi sem halda atómunum saman. (Efnatengi er
 aðdráttarkraftur milli atóma eða jóna sem heldur þeim saman í sameind
 eða kristal.) Við munum ræða efnatengi og sjá hvernig hægt er að spá
@@ -43,7 +43,7 @@ hafa því sameindaformúlurnar H~2~, O~2~ og N~2~. Önnur frumefni sem
 algengt er að finna sem tvíatóma sameindir eru flúor (F~2~), klór
 (Cl~2~), bróm (Br~2~) og joð (I~2~). Algengasta form frumefnisins
 brennisteins er samsett úr sameindum sem samanstanda af átta
-brennisteinsatómum; sameindaformúla þess er S~8~ ({{XREF:7}}).
+brennisteinsatómum; sameindaformúla þess er S~8~ ([#CNX_Chem_02_04_Sulfur]).
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_Sulfur-caption --> Sameind
 brennisteins er samsett úr átta brennisteinsatómum og er því skrifuð sem
@@ -58,7 +58,7 @@ sameindaformúla; hún táknar tvíatóma sameind vetnis sem samanstendur af
 tveimur atómum frumefnisins sem eru efnatengd saman. Rithátturinn 2H
 gefur aftur á móti til kynna tvö aðskilin vetnisatóm sem eru ekki
 sameinuð sem eining. Rithátturinn 2H~2~ táknar tvær sameindir af
-tvíatóma vetni ({{XREF:8}}).
+tvíatóma vetni ([#CNX_Chem_02_04_Hydrogen]).
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_Hydrogen-caption --> Táknin H, 2H,
 H~2~ og 2H~2~ tákna mjög ólíkar eindir.
@@ -74,7 +74,7 @@ litarefni í hvíta málningu og í þykka, hvíta, þekjandi sólarvörn)
 reynsluformúluna TiO~2~. Þetta auðkennir frumefnin títan (Ti) og súrefni
 (O) sem innihaldsefni títantvíoxíðs og gefur til kynna að það séu
 tvöfalt fleiri atóm af frumefninu súrefni en atóm af frumefninu títan
-({{XREF:9}}).
+([#CNX_Chem_02_04_TiO2]).
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_TiO2-caption --> (a) Hvíta
 efnasambandið títantvíoxíð veitir skilvirka vörn gegn sólinni. (b)
@@ -93,7 +93,7 @@ hægt að ákvarða með tilraunum að bensen inniheldur tvö frumefni, kolefni
 vetnisatóm. Þannig er reynsluformúlan CH. Tilraunaákvörðun á
 sameindamassanum leiðir í ljós að sameind bensens inniheldur sex
 kolefnisatóm og sex vetnisatóm, þannig að sameindaformúla bensens er
-C~6~H~6~ ({{XREF:10}}).
+C~6~H~6~ ([#CNX_Chem_02_04_Benzene]).
 
 <!-- SEG:m68693:caption:CNX_Chem_02_04_Benzene-caption --> Bensen, C~6~H~6~,
 myndast við olíuhreinsun og hefur margvísleg iðnaðarnot. Hægt er að
@@ -106,7 +106,7 @@ getum við auðveldlega ákvarðað reynsluformúluna. (Þetta er nokkuð
 fræðileg æfing; í raunveruleikanum er yfirleitt farið í öfugri tímaröð.)
 Til dæmis er sameindaformúla ediksýru, efnisins sem gefur ediki sitt
 beitta bragð, C~2~H~4~O~2~. Þessi formúla gefur til kynna að sameind
-ediksýru ({{XREF:11}}) innihaldi tvö kolefnisatóm, fjögur vetnisatóm og
+ediksýru ([#CNX_Chem_02_04_AceticAcid]) innihaldi tvö kolefnisatóm, fjögur vetnisatóm og
 tvö súrefnisatóm. Hlutfall atómanna er 2:4:2. Með því að deila með
 lægsta samnefnaranum (2) fæst einfaldasta heiltöluhlutfall atóma, 1:2:1,
 þannig að reynsluformúlan er CH~2~O. Athugið að sameindaformúla er
@@ -147,7 +147,7 @@ reynsluformúla, C~2~H~4~O
 reynsluformúla, C~2~H~4~O
 
 <!-- SEG:m68693:para:fs-idp109543152 --> Þú getur kannað
-{{LINK:1}}sameindabyggingu{{/LINK}} með því að nota hermun á netinu.
+[sameindabyggingu](http://openstax.org/l/16molbuilding) með því að nota hermun á netinu.
 
 <!-- SEG:m68693:note-title:fs-idp33888816-title --> Paula Hammond
 
@@ -217,7 +217,7 @@ hraðþornandi áferðarefni. Sameindir metýlformats hafa eitt
 súrefnisatómann á milli kolefnisatómanna tveggja, sem er frábrugðið
 fyrirkomulaginu í sameindum ediksýru. Ediksýra og metýlformat eru dæmi
 um **hverfur** – efnasambönd með sömu efnaformúlu en mismunandi
-sameindabyggingu ({{XREF:12}}). Athugaðu að þessi litli munur á röðun
+sameindabyggingu ([#CNX_Chem_02_04_Isomers]). Athugaðu að þessi litli munur á röðun
 atómanna hefur mikil áhrif á efnaeiginleika þeirra. Þú myndir örugglega
 ekki vilja nota lausn af metýlformati í staðinn fyrir lausn af ediksýru
 (edik) þegar þú býrð til salatsósu.
@@ -228,7 +228,7 @@ ediksýru og (b) metýlformats eru byggingarhverfur; þær hafa sömu formúlu
 efnaeiginleika).
 
 <!-- SEG:m68693:para:fs-idm177313504 --> Til eru margar gerðir af hverfum
-({{XREF:13}}). Ediksýra og metýlformat eru **byggingarhverfur**,
+([#CNX_Chem_02_04_Isomers2]). Ediksýra og metýlformat eru **byggingarhverfur**,
 efnasambönd þar sem sameindirnar eru ólíkar að því leyti hvernig atómin
 eru tengd saman. Einnig eru til ýmsar gerðir af **rúmhverfum**, þar sem
 hlutfallsleg afstaða atómanna í rúmi getur verið mismunandi. Til dæmis
@@ -244,7 +244,7 @@ breyting á verki eftir „Miansari66“/Wikimedia Commons; heimild neðst til
 hægri: breyting á verki eftir Forest & Kim Starr)
 
 <!-- SEG:m68693:para:fs-idm89120384 --> Smelltu á þennan
-{{LINK:2}}hlekk{{/LINK}} til að sjá útskýringu á hverfum, rúmhverfum og
+[hlekk](http://openstax.org/l/16isomers) til að sjá útskýringu á hverfum, rúmhverfum og
 hvers vegna þær hafa mismunandi lykt (veldu myndbandið sem heitir
 „Mirror Molecule: Carvone“).
 
@@ -325,8 +325,8 @@ eftirfarandi efnasambönd:
 
 <!-- SEG:m68693:solution:fs-idm28441984 --> (a) CH~2~O; (b) C~2~H~4~O
 
-<!-- SEG:m68693:problem:fs-idm178201744 --> Opnið {{LINK:3}}herminn Byggjum
-sameind{{/LINK}} og veljið flipann „Stærri sameindir“. Veljið viðeigandi
+<!-- SEG:m68693:problem:fs-idm178201744 --> Opnið [herminn Byggjum
+sameind](http://openstax.org/l/16molbuilding) og veljið flipann „Stærri sameindir“. Veljið viðeigandi
 „sett“ af atómum til að byggja sameind með tveimur kolefnisatómum og sex
 vetnisatómum. Dragið atóm inn á svæðið fyrir ofan „settið“ til að búa
 til sameind. Nafn birtist þegar þið hafið búið til raunverulega sameind
@@ -341,8 +341,8 @@ kúlu-og-prikamöguleikana.
 <!-- SEG:m68693:problem:fs-idm37969008 --> (b) Getið þið raðað þessum atómum
 á einhvern annan hátt til að búa til annað efnasamband?
 
-<!-- SEG:m68693:problem:fs-idm157941520 --> Notið {{LINK:4}}herminn Byggjum
-sameind{{/LINK}} til að endurtaka {{XREF:14}}, en byggið sameind með
+<!-- SEG:m68693:problem:fs-idm157941520 --> Notið [herminn Byggjum
+sameind](http://openstax.org/l/16molbuilding) til að endurtaka [#fs-idm75792016], en byggið sameind með
 tveimur kolefnisatómum, sex vetnisatómum og einu súrefnisatómi.
 
 <!-- SEG:m68693:problem:fs-idm180543168 --> (a) Teiknið byggingarformúlu
@@ -365,8 +365,8 @@ dímetýleter
 efnasamsetningu (tegundir og fjölda atóma) en ólíka efnafræðilega
 byggingu. Þær eru byggingarfjölliður.
 
-<!-- SEG:m68693:problem:fs-idp45758256 --> Notið {{LINK:5}}herminn Byggjum
-sameind{{/LINK}} til að endurtaka {{XREF:15}}, en byggið sameind með
+<!-- SEG:m68693:problem:fs-idp45758256 --> Notið [herminn Byggjum
+sameind](http://openstax.org/l/16molbuilding) til að endurtaka [#fs-idm75792016], en byggið sameind með
 þremur kolefnisatómum, sjö vetnisatómum og einu klóratómi.
 
 <!-- SEG:m68693:problem:fs-idm81559456 --> (a) Teiknið byggingarformúlu

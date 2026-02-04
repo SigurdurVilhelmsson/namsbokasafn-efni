@@ -21,7 +21,7 @@ skammstafanir fyrir nöfn efnasambanda.</para>
 gefur sömu upplýsingar og sameindaformúla þess (gerðir og fjölda atóma í
 sameindinni) en sýnir einnig hvernig atómin eru tengd í sameindinni.
 Byggingarformúla metans inniheldur tákn fyrir eitt C-atóm og fjögur
-H-atóm, sem gefur til kynna fjölda atóma í sameindinni ({{XREF:6}}).
+H-atóm, sem gefur til kynna fjölda atóma í sameindinni (<link target-id="CNX_Chem_02_04_MethaneRep"/>).
 Línurnar tákna tengi sem halda atómunum saman. (Efnatengi er
 aðdráttarkraftur milli atóma eða jóna sem heldur þeim saman í sameind
 eða kristal.) Við munum ræða efnatengi og sjá hvernig hægt er að spá
@@ -47,7 +47,7 @@ hafa því sameindaformúlurnar H<sub>2</sub>, O<sub>2</sub> og N<sub>2</sub>. �
 algengt er að finna sem tvíatóma sameindir eru flúor (F<sub>2</sub>), klór
 (Cl<sub>2</sub>), bróm (Br<sub>2</sub>) og joð (I<sub>2</sub>). Algengasta form frumefnisins
 brennisteins er samsett úr sameindum sem samanstanda af átta
-brennisteinsatómum; sameindaformúla þess er S<sub>8</sub> ({{XREF:7}}).</para>
+brennisteinsatómum; sameindaformúla þess er S<sub>8</sub> (<link target-id="CNX_Chem_02_04_Sulfur"/>).</para>
 <figure id="CNX_Chem_02_04_Sulfur" class="scaled-down"><media id="fs-idm70420016" alt="Figure A shows eight sulfur atoms, symbolized with the letter S, that are bonded to each other to form an octagon. Figure B shows a 3-D, ball-and-stick model of the arrangement of the sulfur atoms. The shape is clearly not octagonal as it is represented in the structural formula. Figure C is a space-filling model that shows each sulfur atom is partially embedded into the sulfur atom it bonds with.">
 <image mime-type="image/jpg" src="../../media/CNX_Chem_02_04_Sulfur.jpg"/>
 </media>
@@ -64,7 +64,7 @@ sameindaformúla; hún táknar tvíatóma sameind vetnis sem samanstendur af
 tveimur atómum frumefnisins sem eru efnatengd saman. Rithátturinn 2H
 gefur aftur á móti til kynna tvö aðskilin vetnisatóm sem eru ekki
 sameinuð sem eining. Rithátturinn 2H<sub>2</sub> táknar tvær sameindir af
-tvíatóma vetni ({{XREF:8}}).</para>
+tvíatóma vetni (<link target-id="CNX_Chem_02_04_Hydrogen"/>).</para>
 <figure id="CNX_Chem_02_04_Hydrogen" class="scaled-down"><media id="fs-idm66435152" alt="This figure shows four diagrams. The diagram for H shows a single, white sphere and is labeled one H atom. The diagram for 2 H shows two white spheres that are not bonded together. It is labeled 2 H atoms. The diagram for H subscript 2 shows two white spheres bonded together. It is labeled one H subscript 2 molecule. The diagram for 2 H subscript 2 shows two sets of bonded, white spheres. It is labeled 2 H subscript 2 molecules.">
 <image mime-type="image/jpg" src="../../media/CNX_Chem_02_04_Hydrogen.jpg"/>
 </media>
@@ -82,7 +82,7 @@ litarefni í hvíta málningu og í þykka, hvíta, þekjandi sólarvörn)
 reynsluformúluna TiO<sub>2</sub>. Þetta auðkennir frumefnin títan (Ti) og súrefni
 (O) sem innihaldsefni títantvíoxíðs og gefur til kynna að það séu
 tvöfalt fleiri atóm af frumefninu súrefni en atóm af frumefninu títan
-({{XREF:9}}).</para>
+(<link target-id="CNX_Chem_02_04_TiO2"/>).</para>
 <figure id="CNX_Chem_02_04_TiO2" class="scaled-down"><media id="fs-idp59733696" alt="Figure A shows a photo of a person applying suntan lotion to his or her lower leg. Figure B shows a 3-D ball-and-stick model of the molecule titanium dioxide, which involves a complicated interlocking of many titanium and oxygen atoms. The titanium atoms in the molecule are shown as silver spheres and the oxygen atoms are shown as red spheres. There are twice as many oxygen atoms as titanium atoms in the molecule.">
 <image mime-type="image/jpg" src="../../media/CNX_Chem_02_04_TiO2.jpg"/>
 </media>
@@ -103,7 +103,7 @@ hægt að ákvarða með tilraunum að bensen inniheldur tvö frumefni, kolefni
 vetnisatóm. Þannig er reynsluformúlan CH. Tilraunaákvörðun á
 sameindamassanum leiðir í ljós að sameind bensens inniheldur sex
 kolefnisatóm og sex vetnisatóm, þannig að sameindaformúla bensens er
-C<sub>6</sub>H<sub>6</sub> ({{XREF:10}}).</para>
+C<sub>6</sub>H<sub>6</sub> (<link target-id="CNX_Chem_02_04_Benzene"/>).</para>
 <figure id="CNX_Chem_02_04_Benzene"><media id="fs-idp26487712" alt="Figure A shows that benzene is composed of six carbons shaped like a hexagon. Every other bond between the carbon atoms is a double bond. Each carbon also has a single bonded hydrogen atom. Figure B shows a 3-D, ball-and-stick drawing of benzene. The six carbon atoms are black spheres while the six hydrogen atoms are smaller, white spheres. Figure C is a space-filling model of benzene which shows that most of the interior space is occupied by the carbon atoms. The hydrogen atoms are embedded in the outside surface of the carbon atoms. Figure d shows a small vial filled with benzene which appears to be clear.">
 <image mime-type="image/jpg" src="../../media/CNX_Chem_02_04_Benzene.jpg"/>
 </media>
@@ -118,7 +118,7 @@ getum við auðveldlega ákvarðað reynsluformúluna. (Þetta er nokkuð
 fræðileg æfing; í raunveruleikanum er yfirleitt farið í öfugri tímaröð.)
 Til dæmis er sameindaformúla ediksýru, efnisins sem gefur ediki sitt
 beitta bragð, C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>. Þessi formúla gefur til kynna að sameind
-ediksýru ({{XREF:11}}) innihaldi tvö kolefnisatóm, fjögur vetnisatóm og
+ediksýru (<link target-id="CNX_Chem_02_04_AceticAcid"/>) innihaldi tvö kolefnisatóm, fjögur vetnisatóm og
 tvö súrefnisatóm. Hlutfall atómanna er 2:4:2. Með því að deila með
 lægsta samnefnaranum (2) fæst einfaldasta heiltöluhlutfall atóma, 1:2:1,
 þannig að reynsluformúlan er CH<sub>2</sub>O. Athugið að sameindaformúla er
@@ -151,7 +151,7 @@ reynsluformúla, C<sub>2</sub>H<sub>4</sub>O</para>
 </example>
 <note id="fs-idm22555200" class="chemistry link-to-learning">
 <para id="fs-idp109543152">Þú getur kannað
-{{LINK:1}}sameindabyggingu{{/LINK}} með því að nota hermun á netinu.</para>
+<link url="http://openstax.org/l/16molbuilding">sameindabyggingu</link> með því að nota hermun á netinu.</para>
 </note>
 <note id="fs-idp33888816" class="chemistry chemist-portrait">
 <title>Paula Hammond</title>
@@ -220,7 +220,7 @@ hraðþornandi áferðarefni. Sameindir metýlformats hafa eitt
 súrefnisatómann á milli kolefnisatómanna tveggja, sem er frábrugðið
 fyrirkomulaginu í sameindum ediksýru. Ediksýra og metýlformat eru dæmi
 um <emphasis effect="bold">hverfur</emphasis> – efnasambönd með sömu efnaformúlu en mismunandi
-sameindabyggingu ({{XREF:12}}). Athugaðu að þessi litli munur á röðun
+sameindabyggingu (<link target-id="CNX_Chem_02_04_Isomers"/>). Athugaðu að þessi litli munur á röðun
 atómanna hefur mikil áhrif á efnaeiginleika þeirra. Þú myndir örugglega
 ekki vilja nota lausn af metýlformati í staðinn fyrir lausn af ediksýru
 (edik) þegar þú býrð til salatsósu.</para>
@@ -233,7 +233,7 @@ ediksýru og (b) metýlformats eru byggingarhverfur; þær hafa sömu formúlu
 efnaeiginleika).</caption>
 </figure>
 <para id="fs-idm177313504">Til eru margar gerðir af hverfum
-({{XREF:13}}). Ediksýra og metýlformat eru <emphasis effect="bold">byggingarhverfur</emphasis>,
+(<link target-id="CNX_Chem_02_04_Isomers2"/>). Ediksýra og metýlformat eru <emphasis effect="bold">byggingarhverfur</emphasis>,
 efnasambönd þar sem sameindirnar eru ólíkar að því leyti hvernig atómin
 eru tengd saman. Einnig eru til ýmsar gerðir af <emphasis effect="bold">rúmhverfum</emphasis>, þar sem
 hlutfallsleg afstaða atómanna í rúmi getur verið mismunandi. Til dæmis
@@ -252,7 +252,7 @@ hægri: breyting á verki eftir Forest &amp; Kim Starr)</caption>
 </figure>
 <note id="fs-idp2568704" class="chemistry link-to-learning">
 <para id="fs-idm89120384">Smelltu á þennan
-{{LINK:2}}hlekk{{/LINK}} til að sjá útskýringu á hverfum, rúmhverfum og
+<link url="http://openstax.org/l/16isomers">hlekk</link> til að sjá útskýringu á hverfum, rúmhverfum og
 hvers vegna þær hafa mismunandi lykt (veldu myndbandið sem heitir
 „Mirror Molecule: Carvone“).</para>
 </note>
@@ -341,8 +341,8 @@ eftirfarandi efnasambönd:</para>
 </exercise>
 <exercise id="fs-idm75792016">
 <problem id="fs-idp44379152">
-<para id="fs-idm178201744">Opnið {{LINK:3}}herminn Byggjum
-sameind{{/LINK}} og veljið flipann „Stærri sameindir“. Veljið viðeigandi
+<para id="fs-idm178201744">Opnið <link url="http://openstax.org/l/16molbuilding">herminn Byggjum
+sameind</link> og veljið flipann „Stærri sameindir“. Veljið viðeigandi
 „sett“ af atómum til að byggja sameind með tveimur kolefnisatómum og sex
 vetnisatómum. Dragið atóm inn á svæðið fyrir ofan „settið“ til að búa
 til sameind. Nafn birtist þegar þið hafið búið til raunverulega sameind
@@ -357,8 +357,8 @@ kúlu-og-prikamöguleikana.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm57514192"><problem id="fs-idm59169856">
-<para id="fs-idm157941520">Notið {{LINK:4}}herminn Byggjum
-sameind{{/LINK}} til að endurtaka {{XREF:14}}, en byggið sameind með
+<para id="fs-idm157941520">Notið <link url="http://openstax.org/l/16molbuilding">herminn Byggjum
+sameind</link> til að endurtaka <link target-id="fs-idm75792016"/>, en byggið sameind með
 tveimur kolefnisatómum, sex vetnisatómum og einu súrefnisatómi.</para>
 <para id="fs-idm180543168">(a) Teiknið byggingarformúlu
 þessarar sameindar og gefið upp nafn hennar.</para>
@@ -382,8 +382,8 @@ byggingu. Þær eru byggingarfjölliður.</para>
 </exercise>
 <exercise id="fs-idm80750976">
 <problem id="fs-idp109292528">
-<para id="fs-idp45758256">Notið {{LINK:5}}herminn Byggjum
-sameind{{/LINK}} til að endurtaka {{XREF:15}}, en byggið sameind með
+<para id="fs-idp45758256">Notið <link url="http://openstax.org/l/16molbuilding">herminn Byggjum
+sameind</link> til að endurtaka <link target-id="fs-idm75792016"/>, en byggið sameind með
 þremur kolefnisatómum, sjö vetnisatómum og einu klóratómi.</para>
 <para id="fs-idm81559456">(a) Teiknið byggingarformúlu
 þessarar sameindar og gefið upp nafn hennar.</para>

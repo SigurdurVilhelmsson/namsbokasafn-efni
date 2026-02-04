@@ -15,7 +15,7 @@ tekið þátt í efnabreytingu.
 
 <!-- SEG:m68685:item:fs-idp28280144-item-2 --> **Frumefni** samanstendur af
 aðeins einni tegund atóma, sem hefur massa sem er einkennandi fyrir
-frumefnið og er sá sami fyrir öll atóm þess frumefnis ({{XREF:1}}). Sýni
+frumefnið og er sá sami fyrir öll atóm þess frumefnis ([#CNX_Chem_02_01_Dalton1]). Sýni
 af frumefni sem sést með berum augum inniheldur ótrúlega mikinn fjölda
 atóma, sem öll hafa sömu efnaeiginleika.
 
@@ -25,11 +25,11 @@ eiginleikum atómum allra annarra frumefna.
 <!-- SEG:m68685:item:fs-idp28280144-item-4 --> Efnasamband samanstendur af
 atómum tveggja eða fleiri frumefna sem sameinast í litlu
 heiltöluhlutfalli. Í tilteknu efnasambandi er fjöldi atóma hvers
-frumefnis alltaf í sama hlutfalli ({{XREF:2}}).
+frumefnis alltaf í sama hlutfalli ([#CNX_Chem_02_01_Dalton2]).
 
 <!-- SEG:m68685:item:fs-idp28280144-item-5 --> Atóm verða hvorki til né
 eyðast við efnabreytingu, heldur endurraðast þau til að mynda efni sem
-eru frábrugðin þeim sem voru til staðar fyrir breytinguna ({{XREF:3}}).
+eru frábrugðin þeim sem voru til staðar fyrir breytinguna ([#CNX_Chem_02_01_Dalton3]).
 
 <!-- SEG:m68685:para:fs-idp22389648 --> Elstu skráðu umræðurnar um
 grunnbyggingu efnis koma frá forngrískum heimspekingum, vísindamönnum
@@ -131,7 +131,7 @@ efnasambandi sé alltaf í sama hlutfalli er í samræmi við þessar
 athuganir. Til dæmis, þegar mismunandi sýni af ísóoktani (hluti af
 bensíni og einn af stöðlunum sem notaðir eru í oktanmatakerfinu) eru
 greind, kemur í ljós að þau hafa massahlutfall kolefnis á móti vetni sem
-er 5,33:1, eins og sýnt er í {{XREF:4}}.
+er 5,33:1, eins og sýnt er í [#fs-idp114534448].
 
 <!-- SEG:m68685:entry:auto-26 --> Föst samsetning ísóoktans
 
@@ -195,7 +195,7 @@ miðað við græna efnasambandið.
 ef hlutfall kopars og klórs í brúna efnasambandinu er 1 koparatóm á móti
 2 klóratómum og hlutfallið í græna efnasambandinu er 1 koparatóm á móti
 1 klóratómi. Hlutfall klóratóma (og þar með hlutfall massa þeirra) er
-því 2 á móti 1 ({{XREF:5}}).
+því 2 á móti 1 ([#CNX_Chem_02_01_MultProp]).
 
 <!-- SEG:m68685:caption:CNX_Chem_02_01_MultProp-caption --> Í samanburði við
 koparklórsambandið í (a), þar sem kopar er táknaður með brúnum kúlum og

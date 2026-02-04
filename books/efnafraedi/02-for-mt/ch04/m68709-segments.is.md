@@ -18,7 +18,7 @@ gangast undir efna- (eða eðlis-) breytingu felur í sér að skrifa og
 stilla **efnajöfnu**. Tökum sem dæmi hvarfið milli einnar metansameindar
 (CH~4~) og tveggja tvíatóma súrefnissameinda (O~2~) til að mynda eina
 koldíoxíðsameind (CO~2~) og tvær vatnssameindir (H~2~O). Efnajafnan sem
-táknar þetta ferli er sýnd í efri helmingi {{XREF:2}}, með
+táknar þetta ferli er sýnd í efri helmingi [#CNX_Chem_04_01_rxn2], með
 rúmfyllingarlíkönum af sameindum sýndum í neðri helmingi myndarinnar.
 
 <!-- SEG:m68709:caption:CNX_Chem_04_01_rxn2-caption --> Hvarfið milli metans
@@ -51,7 +51,7 @@ huga að þessir stuðlar tákna *hlutfallslegan* fjölda hvarfefna og
 myndefna og því má túlka þá réttilega sem hlutföll. Metan og súrefni
 hvarfast og mynda koldíoxíð og vatn í hlutfallinu 1:2:1:2. Þetta
 hlutfall er uppfyllt ef fjöldi þessara sameinda er, í sömu röð, 1-2-1-2,
-eða 2-4-2-4, eða 3-6-3-6, og svo framvegis ({{XREF:3}}). Sömuleiðis má
+eða 2-4-2-4, eða 3-6-3-6, og svo framvegis ([#CNX_Chem_04_01_rxn3]). Sömuleiðis má
 túlka þessa stuðla með tilliti til hvaða magnseiningar (fjölda) sem er,
 og því má lesa þessa jöfnu réttilega á marga vegu, þar á meðal:
 
@@ -362,7 +362,7 @@ myndefnasameinda. Með því að deila hverjum stuðli með stærsta samdeili,
 3, fæst æskileg jafna:
 
 <!-- SEG:m68709:para:fs-idp94095504 --> Notaðu þetta gagnvirka
-{{LINK:1}}kennsluefni{{/LINK}} til að æfa þig meira í að stilla jöfnur.
+[kennsluefni](http://openstax.org/l/16BalanceEq) til að æfa þig meira í að stilla jöfnur.
 
 <!-- SEG:m68709:title:fs-idp50900304-title --> Viðbótarupplýsingar í
 efnajöfnum

@@ -23,7 +23,7 @@ hlutfallaefnafræðilegu magni.</para>
 <section id="fs-idp5731792">
 <title>Takmarkandi hvarfefni</title>
 <para id="fs-idp103911360">Íhugum aðra samlíkingu úr eldhúsinu,
-gerð grillaðra ostasamloka ({{XREF:3}}):</para>
+gerð grillaðra ostasamloka (<link target-id="CNX_Chem_04_04_sandwich"/>):</para>
 <equation id="fs-idp59817360" class="unnumbered"><m:math><m:mrow><m:mtext>1 slice of cheese</m:mtext><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mtext>2 slices of bread</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>1 sandwich</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp39531056">Hlutfallaefnafræðilegt magn hráefna í
 þessari uppskrift er brauðsneiðar og ostsneiðar í hlutfallinu 2:1. Ef
@@ -72,7 +72,7 @@ staðar myndi framleiða</para>
 af HCl hafa verið framleidd. Þar sem nægilegt vetni var til staðar til
 að gefa 6 mól af HCl, verður óhvarfað vetni eftir þegar þessu hvarfi er
 lokið. Klór er því takmarkandi hvarfefni og vetni er umframhvarfefni
-({{XREF:4}}).</para>
+(<link target-id="CNX_Chem_04_04_limiting"/>).</para>
 <figure id="CNX_Chem_04_04_limiting">
 <media id="fs-idp182564432" alt="The figure shows a space-filling molecular models reacting. There is a reaction arrow pointing to the right in the middle. To the left of the reaction arrow there are three molecules each consisting of two green spheres bonded together. There are also five molecules each consisting of two smaller, white spheres bonded together. Above these molecules is the label, “Before reaction,” and below these molecules is the label, “6 H subscript 2 and 4 C l subscript 2.” To the right of the reaction arrow, there are eight molecules each consisting of one green sphere bonded to a smaller white sphere. There are also two molecules each consisting of two white spheres bonded together. Above these molecules is the label, “After reaction,” and below these molecules is the label, “8 H C l and 2 H subscript 2.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_04_04_limiting.jpg"/>
@@ -85,7 +85,7 @@ hvarfefni.</caption>
 </figure>
 <note id="fs-idp162031984" class="chemistry link-to-learning">
 <para id="fs-idm52028528">Skoðaðu þessa gagnvirku
-{{LINK:1}}hermun{{/LINK}} sem sýnir hugtökin takmarkandi og
+<link url="http://openstax.org/l/16reactantprod">hermun</link> sem sýnir hugtökin takmarkandi og
 umframhvarfefni.</para>
 </note>
 <example id="fs-idp70587344">
@@ -177,7 +177,7 @@ lágmarkar notkun umhverfishættulegra efna og myndun úrgangs er þekkt sem
 <emphasis effect="italics">græn efnafræði</emphasis>. Græn efnafræði er heimspekileg nálgun sem er beitt á
 mörgum sviðum vísinda og tækni og iðkun hennar er tekin saman í
 leiðbeiningum sem kallast „Tólf meginreglur grænnar efnafræði“ (sjá
-nánar á þessari {{LINK:2}}vefsíðu{{/LINK}}). Ein af 12 meginreglunum
+nánar á þessari <link url="http://openstax.org/l/16greenchem">vefsíðu</link>). Ein af 12 meginreglunum
 miðar sérstaklega að því að hámarka skilvirkni ferla við framleiðslu
 efnavara. <emphasis effect="italics">Atómhagkvæmni</emphasis> ferlis er mælikvarði á þessa skilvirkni,
 skilgreind sem massaprósenta lokaafurðar framleiðsluferlis miðað við
@@ -192,7 +192,7 @@ sem raunverulega fæst við hámarksheimtur sem spáð er fyrir um með
 hlutfallaefnafræði.</para>
 <para id="fs-idp167996000">Framleiðsla á hinu algenga
 lausasölulyfi íbúprófeni sýnir vel árangur grænnar efnafræði
-({{XREF:5}}). Íbúprófen kom fyrst á markað snemma á sjöunda áratugnum og
+(<link target-id="CNX_Chem_04_04_GreenChem"/>). Íbúprófen kom fyrst á markað snemma á sjöunda áratugnum og
 var framleitt með sex þrepa nýmyndun sem krafðist 514 g af hvarfefnum
 til að búa til hvert mól (206 g) af íbúprófeni, sem er atómhagkvæmni upp
 á 40%. Á tíunda áratugnum þróaði BHC Company (nú BASF Corporation) annað
