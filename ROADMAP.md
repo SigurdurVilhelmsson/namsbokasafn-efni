@@ -153,25 +153,78 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 
 ---
 
+## Completed: Phase 8 — Editor Rebuild for CNXML→HTML Pipeline ✅
+
+**Status:** COMPLETE (2026-02-05)
+
+Rebuilt the editor layer to work with the CNXML→HTML pipeline. Replaced the old markdown editor model with segment-level editing.
+
+See [docs/workflow/editor-improvements-jan2026.md](docs/workflow/editor-improvements-jan2026.md) for the original plan.
+
+| Sub-phase | Commit | What |
+|-----------|--------|------|
+| 8.1 Segment Editor | `1021662` | DB-backed segment edits, module reviews, discussions, category tagging |
+| 8.2 Terminology | `444cb33` | Inline term highlighting, consistency checking, lookup in editor |
+| 8.3 Pipeline API | `ec38ab0` | Inject/render from web UI, job tracking with polling |
+| 8.4 Localization Editor | `98aea7b` | 3-column Pass 2 editor (EN \| faithful IS \| localized IS) |
+
+**What was delivered:**
+- Segment-level linguistic editor at `/segment-editor` with API at `/api/segment-editor`
+- Terminology integration with word-boundary matching, issue detection (missing/inconsistent terms)
+- Pipeline API at `/api/pipeline` — inject, render, or full pipeline via child process spawning
+- Localization editor at `/localization-editor` with API at `/api/localization-editor`
+- Database migration 008 for `segment_edits`, `module_reviews`, `segment_discussions` tables
+
+**What was deferred to later phases:**
+- Apply approved edits to `03-faithful/` files (→ Phase 9)
+- Publication migration from markdown to HTML (→ Phase 10)
+- Status schema expansion (→ Phase 11)
+- Old editor retirement (→ Phase 13)
+
+---
+
 ## Active Development
 
-### Phase 8: Editor Rebuild for CNXML→HTML Pipeline
+### Phase 9: Close the Write Gap
 
 **Status:** NOT STARTED
 
-The CNXML→HTML pipeline (with markdown as an intermediary for MT) is the way forward. The old markdown-assembly publication path will be retired. This requires rebuilding the editor's integration with the pipeline.
+**Problem:** Approved edits only update a `status` column in SQLite. Nothing writes the approved content to `03-faithful/` segment files. Without those files, `cnxml-inject` has no input for the faithful track and the entire downstream pipeline is blocked.
 
-See [docs/workflow/editor-improvements-jan2026.md](docs/workflow/editor-improvements-jan2026.md) for the full plan.
+**Work:**
+- [ ] 9.1 — `applyApprovedEdits()`: overlay approved DB edits onto MT output, write to `03-faithful/`
+- [ ] 9.2 — "Apply & Render" flow: apply → inject → render → preview in one click
+- [ ] 9.3 — Bulk chapter apply: process all approved modules in a chapter at once
 
-**Summary of work:**
-- Add API endpoints for `cnxml-inject` and `cnxml-render`
-- Update publication routes to produce HTML instead of assembled markdown
-- Update editor to work with segment files (preserve markers and placeholders)
-- Add HTML preview panel to editor
-- Update database schema for new file types (structure, translated CNXML, rendered HTML)
-- Update status schema with inject/render stages
-- Retire `chapter-assembler.js`, `add-frontmatter.js`, `compile-chapter.js`
-- Update vefur to serve pre-rendered HTML instead of rendering markdown
+### Phase 10: Publication Migration
+
+**Status:** NOT STARTED
+
+Replace `publicationService.js` markdown assembly with HTML pipeline output. The three tracks (mt-preview, faithful, localized) use inject→render instead of chapter-assembler.
+
+- [ ] 10.1 — Rewrite publication service core to use inject→render
+- [ ] 10.2 — Update publication routes (keep API shape, change internals)
+- [ ] 10.3 — Re-render existing content through new pipeline
+
+### Phase 11: Status & Schema Modernization
+
+**Status:** NOT STARTED
+
+Expand from 5-stage to 8-stage pipeline tracking. Add file type tracking for structure JSON, translated CNXML, and rendered HTML. Auto-advance status on pipeline completion.
+
+### Phase 12: Pipeline Verification
+
+**Status:** NOT STARTED
+
+Verify and fix remaining cnxml-render issues (#5 examples, #6 exercises, #7 cross-references). Run end-to-end test: edit → apply → inject → render → publish → verify in vefur.
+
+### Phase 13: Cleanup & Consolidation
+
+**Status:** NOT STARTED
+
+Retire old markdown editor (`editor.html`, `editor.js`). Audit 32 routes and 34 services for dead code. Add tests for cnxml-inject and cnxml-render.
+
+See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
 
 ### Phase 3: Enhanced Dashboard (If Needed)
 
@@ -179,11 +232,6 @@ See [docs/workflow/editor-improvements-jan2026.md](docs/workflow/editor-improvem
 - Team grows beyond 3-4 active editors
 - Managing 5+ concurrent books
 - Current HTML interface becomes limiting
-
-### Possible Features
-- Multi-book status overview
-- Role-based access (if team grows)
-- Batch operations
 
 ### Explicitly NOT Needed
 - Real-time WebSocket updates (polling is fine)
@@ -335,28 +383,29 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 
 ## Next Steps
 
-### Current Priority: Editor Rebuild (Phase 8)
+### Current Priority: Close the Write Gap (Phase 9)
 
-See [docs/workflow/editor-improvements-jan2026.md](docs/workflow/editor-improvements-jan2026.md) for the full plan.
+See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
 
-1. [ ] Add `/api/process/inject` and `/api/process/render` endpoints
-2. [ ] Update publication routes to use inject+render → HTML
-3. [ ] Update editor content loading for segment files
-4. [ ] Add HTML preview panel to editor
-5. [ ] Update database schema and status stages
-6. [ ] Retire old markdown publication tools
-7. [ ] Update vefur to serve pre-rendered HTML
+1. [ ] Apply approved edits to `03-faithful/` segment files
+2. [ ] "Apply & Render" one-click flow for head editors
+3. [ ] Bulk chapter apply for operational efficiency
 
-### Pipeline Stabilization
-1. [ ] Fix open cnxml-render issues (examples, exercises, cross-refs) — see [html-pipeline-issues.md](docs/pipeline/html-pipeline-issues.md)
-2. [ ] End-to-end test: extract → MT → review → inject → render → publish for one chapter
-3. [ ] Re-render chapters 1-4 through new pipeline
+### Then: Publication Migration (Phase 10)
+1. [ ] Rewrite publication service to use inject→render → HTML
+2. [ ] Update publication routes (keep API, change internals)
+3. [ ] Re-render existing content through HTML pipeline
+
+### Pipeline Verification (Phase 12)
+1. [ ] Investigate open cnxml-render issues (#5 examples, #6 exercises — may be vefur CSS)
+2. [ ] Fix cross-reference resolution (#7 — `<link target-id="..."/>` → numbered labels)
+3. [ ] End-to-end test: edit → apply → inject → render → publish → verify in vefur
 
 ### Ongoing
-1. [ ] Complete Pass 1 reviews for chapters 2-4
-2. [ ] Publish Ch 1 as `faithful` (reviewed, HTML version)
-3. [ ] Session cleanup job for stale workflows
-4. [ ] End-to-end workflow tests
+1. [ ] Complete Pass 1 reviews for chapters 1-4 (using segment editor)
+2. [ ] Publish Ch 1 as `faithful` (blocked on Phase 9)
+3. [ ] End-to-end workflow tests
+4. [ ] Session cleanup job for stale workflows
 
 ### Post-Stabilization: OpenStax Integration Evaluation
 

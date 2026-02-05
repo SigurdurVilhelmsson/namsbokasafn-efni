@@ -6,7 +6,7 @@ This document replaces the previous Phase 2 editor improvements plan. That plan 
 
 **Decision:** The CNXML→HTML pipeline (with markdown as an intermediary for machine translation) is the way forward. The old markdown-assembly publication path (`chapter-assembler.js` + `add-frontmatter.js` → `05-publication/*.md`) will be retired before final deployment.
 
-**Status:** NOT STARTED
+**Status:** COMPLETE (2026-02-05) — Implemented as Phase 8.1-8.4. See [development-plan-phases-9-13.md](development-plan-phases-9-13.md) for deferred items (publication migration, status schema, old editor retirement).
 
 ---
 

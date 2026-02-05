@@ -20,7 +20,8 @@ This directory contains all documentation for the Námsbókasafn translation pro
 | [Architecture](technical/architecture.md) | System architecture overview |
 | [Schema Reference](technical/schemas.md) | JSON schema documentation |
 | [Publication Format](technical/publication-format.md) | 3-track HTML publication structure |
-| [Editor Rebuild Plan](workflow/editor-improvements-jan2026.md) | CNXML→HTML pipeline integration |
+| [Development Plan: Phases 9-13](workflow/development-plan-phases-9-13.md) | Write gap, publication migration, cleanup |
+| [Editor Rebuild Plan](workflow/editor-improvements-jan2026.md) | CNXML→HTML pipeline integration (Phase 8, complete) |
 | [HTML Pipeline Issues](pipeline/html-pipeline-issues.md) | Known cnxml-render issues |
 | [OpenStax Tools Analysis](technical/openstax-tools-analysis.md) | Evaluation of OpenStax repositories |
 
