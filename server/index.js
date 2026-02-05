@@ -76,9 +76,10 @@ const publicationRoutes = require('./routes/publication');
 const feedbackRoutes = require('./routes/feedback');
 const analyticsRoutes = require('./routes/analytics');
 
-// Import Phase 8 routes (Segment Editor, Pipeline)
+// Import Phase 8 routes (Segment Editor, Pipeline, Localization Editor)
 const segmentEditorRoutes = require('./routes/segment-editor');
 const pipelineRoutes = require('./routes/pipeline');
+const localizationEditorRoutes = require('./routes/localization-editor');
 
 // Import Meeting routes
 const meetingsRoutes = require('./routes/meetings');
@@ -235,9 +236,10 @@ app.use('/api/assignments', assignmentsRoutes);
 // Reports API Routes
 app.use('/api/reports', reportsRoutes);
 
-// Phase 8 API Routes (Segment Editor, Pipeline)
+// Phase 8 API Routes (Segment Editor, Pipeline, Localization Editor)
 app.use('/api/segment-editor', segmentEditorRoutes);
 app.use('/api/pipeline', pipelineRoutes);
+app.use('/api/localization-editor', localizationEditorRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -343,6 +345,14 @@ app.get('/api', (req, res) => {
       'POST /api/pipeline/run': 'Run inject + render (HEAD_EDITOR)',
       'GET /api/pipeline/jobs': 'List pipeline jobs',
       'GET /api/pipeline/jobs/:jobId': 'Get job status/output',
+      // Localization Editor
+      'GET /api/localization-editor/:book/:chapter': 'List modules with localization status',
+      'GET /api/localization-editor/:book/:chapter/:moduleId':
+        'Load module for localization (3-way)',
+      'POST /api/localization-editor/:book/:chapter/:moduleId/save':
+        'Save single localized segment',
+      'POST /api/localization-editor/:book/:chapter/:moduleId/save-all':
+        'Bulk save localized segments',
       // Assignments Management
       'GET /api/assignments': 'List all assignments (EDITOR)',
       'GET /api/assignments/overview': 'Team workload overview (HEAD_EDITOR)',
@@ -427,6 +437,7 @@ app.listen(PORT, HOST, () => {
   console.log('  /workflow         Multi-step workflow wizard');
   console.log('  /editor           Markdown editor');
   console.log('  /segment-editor   Segment-level linguistic editor');
+  console.log('  /localization-editor  Segment-level localization (Pass 2)');
   console.log('  /reviews          Review dashboard');
   console.log('  /issues           Issue review dashboard');
   console.log('  /images           Image translation tracker');

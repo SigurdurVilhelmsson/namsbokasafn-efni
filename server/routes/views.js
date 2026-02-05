@@ -180,6 +180,14 @@ router.get('/analytics', (req, res) => {
 });
 
 /**
+ * GET /localization-editor
+ * Segment-level localization editor (Pass 2)
+ */
+router.get('/localization-editor', (req, res) => {
+  sendView(res, 'localization-editor.html');
+});
+
+/**
  * GET /localization-review
  * Split-panel localization review page
  */

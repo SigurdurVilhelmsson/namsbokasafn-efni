@@ -214,18 +214,139 @@ function saveModuleSegments(book, chapter, moduleId, segments) {
 }
 
 /**
+ * Load a module for localization editing (Pass 2).
+ * Returns EN (reference), faithful IS (source), and localized IS (editable).
+ *
+ * @param {string} book - Book slug
+ * @param {number} chapter - Chapter number
+ * @param {string} moduleId - Module ID
+ * @returns {object} Three-way paired segments and metadata
+ */
+function loadModuleForLocalization(book, chapter, moduleId) {
+  const paths = getModulePaths(book, chapter, moduleId);
+
+  // Load EN source (reference)
+  if (!fs.existsSync(paths.enSource)) {
+    throw new Error(`EN source not found: ${paths.enSource}`);
+  }
+  const enSegments = parseSegments(fs.readFileSync(paths.enSource, 'utf-8'));
+
+  // Load faithful IS (required — this is the source for localization)
+  if (!fs.existsSync(paths.faithful)) {
+    throw new Error(
+      `Faithful translation not found for ${moduleId}. Complete Pass 1 before localizing.`
+    );
+  }
+  const faithfulSegments = parseSegments(fs.readFileSync(paths.faithful, 'utf-8'));
+
+  // Load localized IS (optional — may not exist yet)
+  let localizedSegments = [];
+  let hasLocalized = false;
+  if (fs.existsSync(paths.localized)) {
+    localizedSegments = parseSegments(fs.readFileSync(paths.localized, 'utf-8'));
+    hasLocalized = true;
+  }
+
+  // Build lookups
+  const faithfulLookup = {};
+  for (const seg of faithfulSegments) {
+    faithfulLookup[seg.segmentId] = seg;
+  }
+  const localizedLookup = {};
+  for (const seg of localizedSegments) {
+    localizedLookup[seg.segmentId] = seg;
+  }
+
+  // Load equations if available
+  let equations = {};
+  if (fs.existsSync(paths.equations)) {
+    equations = JSON.parse(fs.readFileSync(paths.equations, 'utf-8'));
+  }
+
+  // Load structure for title metadata
+  let structure = null;
+  if (fs.existsSync(paths.structure)) {
+    structure = JSON.parse(fs.readFileSync(paths.structure, 'utf-8'));
+  }
+
+  // Three-way pair: EN (reference) | faithful IS (source) | localized IS (editable)
+  const paired = enSegments.map((en) => {
+    const faithful = faithfulLookup[en.segmentId];
+    const localized = localizedLookup[en.segmentId];
+    return {
+      segmentId: en.segmentId,
+      moduleId: en.moduleId,
+      segmentType: en.segmentType,
+      elementId: en.elementId,
+      en: en.content,
+      faithful: faithful ? faithful.content : '',
+      localized: localized ? localized.content : '',
+      hasFaithful: !!faithful,
+      hasLocalized: !!localized,
+    };
+  });
+
+  return {
+    book,
+    chapter,
+    moduleId,
+    hasLocalized,
+    title: structure ? structure.title?.text : moduleId,
+    segments: paired,
+    equations,
+    segmentCount: paired.length,
+    faithfulCount: paired.filter((s) => s.hasFaithful).length,
+    localizedCount: paired.filter((s) => s.hasLocalized).length,
+  };
+}
+
+/**
+ * Save localized IS segments to the 04-localized directory.
+ *
+ * @param {string} book - Book slug
+ * @param {number} chapter - Chapter number
+ * @param {string} moduleId - Module ID
+ * @param {Array<{segmentId: string, content: string}>} segments - Localized IS segments
+ * @returns {string} Path to saved file
+ */
+function saveLocalizedSegments(book, chapter, moduleId, segments) {
+  const paths = getModulePaths(book, chapter, moduleId);
+  const localizedDir = path.dirname(paths.localized);
+
+  // Ensure directory exists
+  if (!fs.existsSync(localizedDir)) {
+    fs.mkdirSync(localizedDir, { recursive: true });
+  }
+
+  // Create backup if file exists
+  if (fs.existsSync(paths.localized)) {
+    const now = new Date();
+    const timestamp = now.toISOString().replace(/[T:]/g, '-').substring(0, 16);
+    const bakPath = paths.localized.replace('.is.md', `.${timestamp}.bak`);
+    fs.copyFileSync(paths.localized, bakPath);
+  }
+
+  // Assemble and write
+  const content = assembleSegments(segments);
+  fs.writeFileSync(paths.localized, content, 'utf-8');
+
+  return paths.localized;
+}
+
+/**
  * List all modules available for a chapter.
  * Looks in 02-for-mt/ for EN source files.
  *
  * @param {string} book - Book slug
  * @param {number} chapter - Chapter number
- * @returns {Array<{moduleId: string, hasEnSource: boolean, hasMtOutput: boolean, hasFaithful: boolean}>}
+ * @returns {Array<{moduleId: string, hasEnSource: boolean, hasMtOutput: boolean, hasFaithful: boolean, hasLocalized: boolean}>}
  */
 function listChapterModules(book, chapter) {
   const chapterStr = String(chapter).padStart(2, '0');
   const enDir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${chapterStr}`);
   const mtDir = path.join(BOOKS_DIR, book, '02-mt-output', `ch${chapterStr}`);
   const faithfulDir = path.join(BOOKS_DIR, book, '03-faithful', `ch${chapterStr}`);
+  const localizedDir = path.join(BOOKS_DIR, book, '04-localized', `ch${chapterStr}`);
 
   if (!fs.existsSync(enDir)) {
     return [];
@@ -240,6 +361,7 @@ function listChapterModules(book, chapter) {
       hasEnSource: true,
       hasMtOutput: fs.existsSync(path.join(mtDir, `${moduleId}-segments.is.md`)),
       hasFaithful: fs.existsSync(path.join(faithfulDir, `${moduleId}-segments.is.md`)),
+      hasLocalized: fs.existsSync(path.join(localizedDir, `${moduleId}-segments.is.md`)),
     };
   });
 }
@@ -250,6 +372,8 @@ module.exports = {
   getModulePaths,
   loadModuleForEditing,
   saveModuleSegments,
+  loadModuleForLocalization,
+  saveLocalizedSegments,
   listChapterModules,
   SEG_MARKER_REGEX,
   PROJECT_ROOT,
