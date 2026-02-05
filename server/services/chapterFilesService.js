@@ -21,11 +21,16 @@ const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
  * File types that can be generated
  */
 const FILE_TYPES = {
-  EN_MD: 'en-md',              // English markdown
-  EQUATIONS: 'equations',       // Equations JSON
-  FIGURES: 'figures',           // Figures JSON
-  PROTECTED: 'protected',       // Protected strings JSON
-  STRINGS: 'strings'            // Extracted strings TXT
+  // Extraction outputs (02-for-mt, 02-structure)
+  EN_MD: 'en-md', // English markdown segments
+  EQUATIONS: 'equations', // Equations JSON
+  FIGURES: 'figures', // Figures JSON
+  PROTECTED: 'protected', // Protected strings JSON
+  STRINGS: 'strings', // Extracted strings TXT
+  STRUCTURE: 'structure', // Module structure JSON (02-structure)
+  // Pipeline outputs
+  TRANSLATED_CNXML: 'translated-cnxml', // Injected CNXML (03-translated)
+  RENDERED_HTML: 'rendered-html', // Rendered HTML (05-publication)
 };
 
 /**
@@ -45,7 +50,11 @@ function getDb() {
 function isTableReady() {
   const db = getDb();
   try {
-    const result = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='chapter_generated_files'").get();
+    const result = db
+      .prepare(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='chapter_generated_files'"
+      )
+      .get();
     return !!result;
   } finally {
     db.close();
@@ -77,17 +86,21 @@ function getChapterFiles(bookSlug, chapterNum) {
 
   const db = getDb();
   try {
-    const files = db.prepare(`
+    const files = db
+      .prepare(
+        `
       SELECT * FROM chapter_generated_files
       WHERE book_slug = ? AND chapter_num = ? AND superseded_at IS NULL
       ORDER BY file_type
-    `).all(bookSlug, chapterNum);
+    `
+      )
+      .all(bookSlug, chapterNum);
 
     // Check if files actually exist on disk
-    return files.map(f => ({
+    return files.map((f) => ({
       ...f,
       exists: fs.existsSync(path.join(BOOKS_DIR, f.file_path)),
-      metadata: JSON.parse(f.metadata || '{}')
+      metadata: JSON.parse(f.metadata || '{}'),
     }));
   } finally {
     db.close();
@@ -99,7 +112,7 @@ function getChapterFiles(bookSlug, chapterNum) {
  */
 function hasRequiredFiles(bookSlug, chapterNum) {
   const files = getChapterFiles(bookSlug, chapterNum);
-  const existingTypes = new Set(files.filter(f => f.exists).map(f => f.file_type));
+  const existingTypes = new Set(files.filter((f) => f.exists).map((f) => f.file_type));
 
   // Required: at least one EN markdown file
   return existingTypes.has(FILE_TYPES.EN_MD);
@@ -126,7 +139,7 @@ function getChapterSectionFiles(bookSlug, chapterNum) {
       sections.get(section).files.push({
         name: file,
         path: path.join(chapterDir, file),
-        type: getFileType(file)
+        type: getFileType(file),
       });
     }
   }
@@ -147,6 +160,9 @@ function getFileType(filename) {
   if (filename.includes('-figures.json')) return FILE_TYPES.FIGURES;
   if (filename.includes('-protected.json')) return FILE_TYPES.PROTECTED;
   if (filename.includes('-strings.en.txt')) return FILE_TYPES.STRINGS;
+  if (filename.includes('-structure.json')) return FILE_TYPES.STRUCTURE;
+  if (filename.endsWith('.cnxml')) return FILE_TYPES.TRANSLATED_CNXML;
+  if (filename.endsWith('.html')) return FILE_TYPES.RENDERED_HTML;
   return 'other';
 }
 
@@ -160,42 +176,46 @@ function registerFile(bookSlug, chapterNum, fileType, filePath, generatedBy, met
 
   const db = getDb();
   try {
-    const absolutePath = path.isAbsolute(filePath)
-      ? filePath
-      : path.join(BOOKS_DIR, filePath);
+    const absolutePath = path.isAbsolute(filePath) ? filePath : path.join(BOOKS_DIR, filePath);
 
     const relativePath = path.relative(BOOKS_DIR, absolutePath);
     const fileSize = fs.existsSync(absolutePath) ? fs.statSync(absolutePath).size : 0;
     const fileHash = calculateFileHash(absolutePath);
 
     // Supersede any existing file of this type
-    db.prepare(`
+    db.prepare(
+      `
       UPDATE chapter_generated_files
       SET superseded_at = CURRENT_TIMESTAMP
       WHERE book_slug = ? AND chapter_num = ? AND file_type = ? AND superseded_at IS NULL
-    `).run(bookSlug, chapterNum, fileType);
+    `
+    ).run(bookSlug, chapterNum, fileType);
 
     // Insert new record
-    const result = db.prepare(`
+    const result = db
+      .prepare(
+        `
       INSERT INTO chapter_generated_files
         (book_slug, chapter_num, file_type, file_path, file_size, file_hash, generated_by, metadata)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    `).run(
-      bookSlug,
-      chapterNum,
-      fileType,
-      relativePath,
-      fileSize,
-      fileHash,
-      generatedBy,
-      JSON.stringify(metadata)
-    );
+    `
+      )
+      .run(
+        bookSlug,
+        chapterNum,
+        fileType,
+        relativePath,
+        fileSize,
+        fileHash,
+        generatedBy,
+        JSON.stringify(metadata)
+      );
 
     // Log the generation
     logGeneration(db, bookSlug, chapterNum, 'file_generated', generatedBy, {
       fileType,
       filePath: relativePath,
-      fileSize
+      fileSize,
     });
 
     return result.lastInsertRowid;
@@ -256,7 +276,7 @@ function registerFiles(bookSlug, chapterNum, files, generatedBy) {
         registered.push({
           id: result.lastInsertRowid,
           type: file.type,
-          path: relativePath
+          path: relativePath,
         });
       }
     });
@@ -266,7 +286,7 @@ function registerFiles(bookSlug, chapterNum, files, generatedBy) {
     // Log the batch generation
     logGeneration(db, bookSlug, chapterNum, 'files_generated', generatedBy, {
       fileCount: files.length,
-      files: registered.map(r => r.type)
+      files: registered.map((r) => r.type),
     });
 
     return registered;
@@ -284,15 +304,19 @@ function clearChapterFiles(bookSlug, chapterNum, clearedBy) {
   const db = getDb();
   try {
     // Mark all current files as superseded
-    const result = db.prepare(`
+    const result = db
+      .prepare(
+        `
       UPDATE chapter_generated_files
       SET superseded_at = CURRENT_TIMESTAMP
       WHERE book_slug = ? AND chapter_num = ? AND superseded_at IS NULL
-    `).run(bookSlug, chapterNum);
+    `
+      )
+      .run(bookSlug, chapterNum);
 
     // Log the clear
     logGeneration(db, bookSlug, chapterNum, 'files_cleared', clearedBy, {
-      filesCleared: result.changes
+      filesCleared: result.changes,
     });
 
     return result.changes;
@@ -335,15 +359,20 @@ function getGenerationHistory(bookSlug, chapterNum, limit = 20) {
 
   const db = getDb();
   try {
-    return db.prepare(`
+    return db
+      .prepare(
+        `
       SELECT * FROM chapter_generation_log
       WHERE book_slug = ? AND chapter_num = ?
       ORDER BY created_at DESC
       LIMIT ?
-    `).all(bookSlug, chapterNum, limit).map(r => ({
-      ...r,
-      details: JSON.parse(r.details || '{}')
-    }));
+    `
+      )
+      .all(bookSlug, chapterNum, limit)
+      .map((r) => ({
+        ...r,
+        details: JSON.parse(r.details || '{}'),
+      }));
   } finally {
     db.close();
   }
@@ -353,10 +382,12 @@ function getGenerationHistory(bookSlug, chapterNum, limit = 20) {
  * Log a generation action
  */
 function logGeneration(db, bookSlug, chapterNum, action, userId, details = {}) {
-  db.prepare(`
+  db.prepare(
+    `
     INSERT INTO chapter_generation_log (book_slug, chapter_num, action, user_id, username, details)
     VALUES (?, ?, ?, ?, ?, ?)
-  `).run(bookSlug, chapterNum, action, userId, userId, JSON.stringify(details));
+  `
+  ).run(bookSlug, chapterNum, action, userId, userId, JSON.stringify(details));
 }
 
 /**
@@ -367,7 +398,9 @@ function getBookFilesSummary(bookSlug) {
 
   const db = getDb();
   try {
-    const summary = db.prepare(`
+    const summary = db
+      .prepare(
+        `
       SELECT
         chapter_num,
         COUNT(*) as file_count,
@@ -376,7 +409,9 @@ function getBookFilesSummary(bookSlug) {
       WHERE book_slug = ? AND superseded_at IS NULL
       GROUP BY chapter_num
       ORDER BY chapter_num
-    `).all(bookSlug);
+    `
+      )
+      .all(bookSlug);
 
     return summary;
   } finally {
@@ -406,7 +441,7 @@ function scanAndRegisterExistingFiles(bookSlug, chapterNum, registeredBy) {
       toRegister.push({
         type: fileType,
         path: filePath,
-        metadata: { scannedFrom: 'disk', originalName: file }
+        metadata: { scannedFrom: 'disk', originalName: file },
       });
     }
   }
@@ -419,7 +454,7 @@ function scanAndRegisterExistingFiles(bookSlug, chapterNum, registeredBy) {
 
   return {
     found: toRegister.length,
-    registered: registered.length
+    registered: registered.length,
   };
 }
 
@@ -444,5 +479,5 @@ module.exports = {
   // Utilities
   getChapterDir,
   calculateFileHash,
-  FILE_TYPES
+  FILE_TYPES,
 };

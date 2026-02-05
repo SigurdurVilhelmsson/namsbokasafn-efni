@@ -15,10 +15,12 @@
 
 const { spawn } = require('child_process');
 const path = require('path');
+const fs = require('fs');
 const crypto = require('crypto');
 
 const PROJECT_ROOT = path.join(__dirname, '..', '..');
 const TOOLS_DIR = path.join(PROJECT_ROOT, 'tools');
+const BOOKS_DIR = path.join(PROJECT_ROOT, 'books');
 
 // Track running and completed jobs
 const jobs = new Map();
@@ -132,6 +134,9 @@ function runPipeline({ chapter, moduleId, track = 'faithful', userId }) {
 
   jobs.set(jobId, job);
 
+  // Default book for status updates (single-book project for now)
+  const book = 'efnafraedi';
+
   const promise = (async () => {
     try {
       // Phase 1: Inject
@@ -145,6 +150,9 @@ function runPipeline({ chapter, moduleId, track = 'faithful', userId }) {
       }
       job.output.push(...injectJob.output);
 
+      // Auto-advance: injection complete
+      advanceChapterStatus(book, chapter, 'injection', { track });
+
       // Phase 2: Render
       job.phase = 'render';
       job.output.push('', '=== Phase 2: Render ===');
@@ -156,6 +164,9 @@ function runPipeline({ chapter, moduleId, track = 'faithful', userId }) {
         throw new Error(`Render failed: ${renderJob.error}`);
       }
       job.output.push(...renderJob.output);
+
+      // Auto-advance: rendering complete
+      advanceChapterStatus(book, chapter, 'rendering', { track });
 
       // Done
       job.status = 'completed';
@@ -287,6 +298,50 @@ function generateJobId() {
   return crypto.randomBytes(8).toString('hex');
 }
 
+// =====================================================================
+// AUTO-ADVANCE STATUS
+// =====================================================================
+
+/**
+ * Advance chapter status.json when pipeline stages complete.
+ * Best-effort — errors are logged but don't fail the pipeline.
+ *
+ * @param {string} book - Book slug (default: 'efnafraedi')
+ * @param {number} chapter - Chapter number
+ * @param {string} stage - Stage name ('injection', 'rendering')
+ * @param {object} [extra] - Additional data to merge into the stage entry
+ */
+function advanceChapterStatus(book, chapter, stage, extra = {}) {
+  try {
+    const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
+    const statusPath = path.join(BOOKS_DIR, book, 'chapters', chapterDir, 'status.json');
+
+    let status = {};
+    if (fs.existsSync(statusPath)) {
+      status = JSON.parse(fs.readFileSync(statusPath, 'utf8'));
+    }
+
+    if (!status.status) {
+      status.status = {};
+    }
+
+    status.status[stage] = {
+      complete: true,
+      date: new Date().toISOString().split('T')[0],
+      ...extra,
+    };
+
+    const statusDir = path.dirname(statusPath);
+    if (!fs.existsSync(statusDir)) {
+      fs.mkdirSync(statusDir, { recursive: true });
+    }
+
+    fs.writeFileSync(statusPath, JSON.stringify(status, null, 2), 'utf8');
+  } catch (err) {
+    console.error(`Auto-advance status failed for ch${chapter} ${stage}:`, err.message);
+  }
+}
+
 // Periodically clean up old jobs (every 30 minutes)
 setInterval(() => cleanupJobs(), 1800000);
 
@@ -298,5 +353,6 @@ module.exports = {
   listJobs,
   hasRunningJob,
   cleanupJobs,
+  advanceChapterStatus,
   TRACK_SOURCE_DIR,
 };
