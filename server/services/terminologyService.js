@@ -45,7 +45,7 @@ const TERM_CATEGORIES = [
   'concepts',
   'constants',
   'units',
-  'other'
+  'other',
 ];
 
 // Valid term sources
@@ -55,7 +55,7 @@ const TERM_SOURCES = [
   'chapter-glossary',
   'manual',
   'imported-csv',
-  'imported-excel'
+  'imported-excel',
 ];
 
 /**
@@ -144,8 +144,8 @@ function searchTerms(query = '', options = {}) {
         total,
         limit,
         offset,
-        hasMore: offset + terms.length < total
-      }
+        hasMore: offset + terms.length < total,
+      },
     };
   } catch (err) {
     db.close();
@@ -193,14 +193,9 @@ function lookupTerm(query, bookId = null) {
     const searchStart = `${query}%`;
     const searchContains = `%${query}%`;
 
-    const terms = db.prepare(sql).all(
-      searchExact,
-      searchStart,
-      searchContains,
-      searchContains,
-      searchContains,
-      bookId
-    );
+    const terms = db
+      .prepare(sql)
+      .all(searchExact, searchStart, searchContains, searchContains, searchContains, bookId);
 
     db.close();
     return terms.map(formatTerm);
@@ -220,7 +215,9 @@ function getTerm(id) {
   const db = getDb();
 
   try {
-    const term = db.prepare(`
+    const term = db
+      .prepare(
+        `
       SELECT
         t.*,
         rb.slug as book_slug,
@@ -228,14 +225,20 @@ function getTerm(id) {
       FROM terminology_terms t
       LEFT JOIN registered_books rb ON t.book_id = rb.id
       WHERE t.id = ?
-    `).get(id);
+    `
+      )
+      .get(id);
 
     // Get discussions
-    const discussions = db.prepare(`
+    const discussions = db
+      .prepare(
+        `
       SELECT * FROM terminology_discussions
       WHERE term_id = ?
       ORDER BY created_at DESC
-    `).all(id);
+    `
+      )
+      .all(id);
 
     db.close();
 
@@ -243,7 +246,7 @@ function getTerm(id) {
 
     return {
       ...formatTerm(term),
-      discussions
+      discussions,
     };
   } catch (err) {
     db.close();
@@ -278,32 +281,40 @@ function createTerm(data, userId, username) {
 
   try {
     // Check for existing term
-    const existing = db.prepare(`
+    const existing = db
+      .prepare(
+        `
       SELECT id FROM terminology_terms
       WHERE english = ? AND (book_id = ? OR (book_id IS NULL AND ? IS NULL))
-    `).get(english, bookId, bookId);
+    `
+      )
+      .get(english, bookId, bookId);
 
     if (existing) {
       db.close();
       throw new Error(`Term "${english}" already exists`);
     }
 
-    const result = db.prepare(`
+    const result = db
+      .prepare(
+        `
       INSERT INTO terminology_terms
         (english, icelandic, alternatives, category, notes, source, source_chapter, book_id, status, proposed_by, proposed_by_name)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'proposed', ?, ?)
-    `).run(
-      english,
-      icelandic,
-      alternatives ? JSON.stringify(alternatives) : null,
-      category || 'other',
-      notes,
-      source || 'manual',
-      sourceChapter,
-      bookId,
-      userId,
-      username
-    );
+    `
+      )
+      .run(
+        english,
+        icelandic,
+        alternatives ? JSON.stringify(alternatives) : null,
+        category || 'other',
+        notes,
+        source || 'manual',
+        sourceChapter,
+        bookId,
+        userId,
+        username
+      );
 
     const term = getTerm(result.lastInsertRowid);
     db.close();
@@ -330,7 +341,14 @@ function updateTerm(id, updates) {
       throw new Error('Term not found');
     }
 
-    const allowedFields = ['icelandic', 'alternatives', 'category', 'notes', 'source', 'source_chapter'];
+    const allowedFields = [
+      'icelandic',
+      'alternatives',
+      'category',
+      'notes',
+      'source',
+      'source_chapter',
+    ];
     const setClauses = [];
     const params = [];
 
@@ -384,11 +402,13 @@ function approveTerm(id, userId, username) {
       return getTerm(id);
     }
 
-    db.prepare(`
+    db.prepare(
+      `
       UPDATE terminology_terms
       SET status = 'approved', approved_by = ?, approved_by_name = ?, approved_at = CURRENT_TIMESTAMP
       WHERE id = ?
-    `).run(userId, username, id);
+    `
+    ).run(userId, username, id);
 
     db.close();
     return getTerm(id);
@@ -421,10 +441,12 @@ function disputeTerm(id, comment, userId, username, proposedTranslation = null) 
     db.prepare(`UPDATE terminology_terms SET status = 'disputed' WHERE id = ?`).run(id);
 
     // Add discussion entry
-    db.prepare(`
+    db.prepare(
+      `
       INSERT INTO terminology_discussions (term_id, user_id, username, comment, proposed_translation)
       VALUES (?, ?, ?, ?, ?)
-    `).run(id, userId, username, comment, proposedTranslation);
+    `
+    ).run(id, userId, username, comment, proposedTranslation);
 
     db.close();
     return getTerm(id);
@@ -453,12 +475,18 @@ function addDiscussion(termId, comment, userId, username, proposedTranslation = 
       throw new Error('Term not found');
     }
 
-    const result = db.prepare(`
+    const result = db
+      .prepare(
+        `
       INSERT INTO terminology_discussions (term_id, user_id, username, comment, proposed_translation)
       VALUES (?, ?, ?, ?, ?)
-    `).run(termId, userId, username, comment, proposedTranslation);
+    `
+      )
+      .run(termId, userId, username, comment, proposedTranslation);
 
-    const discussion = db.prepare('SELECT * FROM terminology_discussions WHERE id = ?').get(result.lastInsertRowid);
+    const discussion = db
+      .prepare('SELECT * FROM terminology_discussions WHERE id = ?')
+      .get(result.lastInsertRowid);
     db.close();
     return discussion;
   } catch (err) {
@@ -532,7 +560,7 @@ function importFromCSV(filePath, userId, username, options = {}) {
   const records = csvParse(content, {
     columns: true,
     skip_empty_lines: true,
-    trim: true
+    trim: true,
   });
 
   const db = getDb();
@@ -586,10 +614,12 @@ function importFromCSV(filePath, userId, username, options = {}) {
     }
 
     // Log import
-    db.prepare(`
+    db.prepare(
+      `
       INSERT INTO terminology_imports (source_name, file_name, imported_by, imported_by_name, terms_added, terms_updated, terms_skipped)
       VALUES ('csv', ?, ?, ?, ?, ?, ?)
-    `).run(path.basename(filePath), userId, username, added, updated, skipped);
+    `
+    ).run(path.basename(filePath), userId, username, added, updated, skipped);
 
     db.close();
 
@@ -598,7 +628,7 @@ function importFromCSV(filePath, userId, username, options = {}) {
       added,
       updated,
       skipped,
-      total: records.length
+      total: records.length,
     };
   } catch (err) {
     db.close();
@@ -626,13 +656,12 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
 
   const { bookId = null, sheetName = null } = options;
 
-  const workbook = typeof fileContent === 'string'
-    ? XLSX.readFile(fileContent)
-    : XLSX.read(fileContent, { type: 'buffer' });
+  const workbook =
+    typeof fileContent === 'string'
+      ? XLSX.readFile(fileContent)
+      : XLSX.read(fileContent, { type: 'buffer' });
 
-  const sheet = sheetName
-    ? workbook.Sheets[sheetName]
-    : workbook.Sheets[workbook.SheetNames[0]];
+  const sheet = sheetName ? workbook.Sheets[sheetName] : workbook.Sheets[workbook.SheetNames[0]];
 
   if (!sheet) {
     throw new Error('No sheet found in Excel file');
@@ -641,7 +670,7 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
   const data = XLSX.utils.sheet_to_json(sheet);
   const db = getDb();
   let added = 0;
-  let updated = 0;
+  const updated = 0;
   let skipped = 0;
 
   try {
@@ -658,10 +687,22 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
 
     for (const row of data) {
       // Try common column names for English/Icelandic
-      const english = row.English || row.english || row.EN || row.en ||
-                     row['English term'] || row['Enska'] || Object.values(row)[0];
-      const icelandic = row.Icelandic || row.icelandic || row.IS || row.is ||
-                       row['Icelandic term'] || row['Íslenska'] || Object.values(row)[1];
+      const english =
+        row.English ||
+        row.english ||
+        row.EN ||
+        row.en ||
+        row['English term'] ||
+        row['Enska'] ||
+        Object.values(row)[0];
+      const icelandic =
+        row.Icelandic ||
+        row.icelandic ||
+        row.IS ||
+        row.is ||
+        row['Icelandic term'] ||
+        row['Íslenska'] ||
+        Object.values(row)[1];
 
       if (!english || !icelandic) {
         skipped++;
@@ -681,10 +722,12 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
     }
 
     // Log import
-    db.prepare(`
+    db.prepare(
+      `
       INSERT INTO terminology_imports (source_name, file_name, imported_by, imported_by_name, terms_added, terms_updated, terms_skipped)
       VALUES ('excel', 'chemistry-association.xlsx', ?, ?, ?, ?, ?)
-    `).run(userId, username, added, updated, skipped);
+    `
+    ).run(userId, username, added, updated, skipped);
 
     db.close();
 
@@ -693,7 +736,7 @@ async function importFromExcel(fileContent, userId, username, options = {}) {
       added,
       updated,
       skipped,
-      total: data.length
+      total: data.length,
     };
   } catch (err) {
     db.close();
@@ -787,17 +830,27 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
           continue;
         }
 
-        insertStmt.run(term, icelandic, definition.substring(0, 500), chapter, book.id, userId, username);
+        insertStmt.run(
+          term,
+          icelandic,
+          definition.substring(0, 500),
+          chapter,
+          book.id,
+          userId,
+          username
+        );
         added++;
       }
     }
 
     // Log import
     if (added > 0) {
-      db.prepare(`
+      db.prepare(
+        `
         INSERT INTO terminology_imports (source_name, file_name, imported_by, imported_by_name, terms_added, terms_skipped)
         VALUES ('key-terms', ?, ?, ?, ?, ?)
-      `).run(`${bookSlug}/ch${chapterNum || 'all'}`, userId, username, added, skipped);
+      `
+      ).run(`${bookSlug}/ch${chapterNum || 'all'}`, userId, username, added, skipped);
     }
 
     db.close();
@@ -807,7 +860,7 @@ function importFromKeyTerms(bookSlug, chapterNum, userId, username) {
       added,
       skipped,
       total,
-      filesProcessed: keyTermsFiles.length
+      filesProcessed: keyTermsFiles.length,
     };
   } catch (err) {
     db.close();
@@ -825,10 +878,12 @@ function getStats(bookId = null) {
   const db = getDb();
 
   try {
-    let whereClause = bookId ? 'WHERE book_id = ? OR book_id IS NULL' : '';
+    const whereClause = bookId ? 'WHERE book_id = ? OR book_id IS NULL' : '';
     const params = bookId ? [bookId] : [];
 
-    const stats = db.prepare(`
+    const stats = db
+      .prepare(
+        `
       SELECT
         COUNT(*) as total,
         SUM(CASE WHEN status = 'approved' THEN 1 ELSE 0 END) as approved,
@@ -837,32 +892,46 @@ function getStats(bookId = null) {
         SUM(CASE WHEN status = 'needs_review' THEN 1 ELSE 0 END) as needs_review
       FROM terminology_terms
       ${whereClause}
-    `).get(...params);
+    `
+      )
+      .get(...params);
 
     // Get by category
-    const byCategory = db.prepare(`
+    const byCategory = db
+      .prepare(
+        `
       SELECT category, COUNT(*) as count
       FROM terminology_terms
       ${whereClause}
       GROUP BY category
       ORDER BY count DESC
-    `).all(...params);
+    `
+      )
+      .all(...params);
 
     // Get by source
-    const bySource = db.prepare(`
+    const bySource = db
+      .prepare(
+        `
       SELECT source, COUNT(*) as count
       FROM terminology_terms
       ${whereClause}
       GROUP BY source
       ORDER BY count DESC
-    `).all(...params);
+    `
+      )
+      .all(...params);
 
     // Recent imports
-    const recentImports = db.prepare(`
+    const recentImports = db
+      .prepare(
+        `
       SELECT * FROM terminology_imports
       ORDER BY imported_at DESC
       LIMIT 5
-    `).all();
+    `
+      )
+      .all();
 
     db.close();
 
@@ -872,7 +941,7 @@ function getStats(bookId = null) {
         approved: stats?.approved || 0,
         proposed: stats?.proposed || 0,
         disputed: stats?.disputed || 0,
-        needsReview: stats?.needs_review || 0
+        needsReview: stats?.needs_review || 0,
       },
       byCategory: byCategory.reduce((acc, row) => {
         acc[row.category] = row.count;
@@ -882,7 +951,7 @@ function getStats(bookId = null) {
         acc[row.source] = row.count;
         return acc;
       }, {}),
-      recentImports
+      recentImports,
     };
   } catch (err) {
     db.close();
@@ -931,7 +1000,7 @@ function formatTerm(term) {
     approvedAt: term.approved_at,
     createdAt: term.created_at,
     updatedAt: term.updated_at,
-    discussionCount: term.discussion_count
+    discussionCount: term.discussion_count,
   };
 }
 
@@ -960,6 +1029,133 @@ function findFilesRecursive(dir, suffix) {
   return results;
 }
 
+/**
+ * Find terminology matches in a set of segments.
+ *
+ * Scans EN source text for known terms (approved/proposed) and checks
+ * whether the approved IS translation appears in the IS text.
+ *
+ * @param {Array<{segmentId: string, enContent: string, isContent: string}>} segments
+ * @param {number|null} bookId - Book ID for book-specific terms
+ * @returns {object} Map of segmentId → { matches: [...], issues: [...] }
+ */
+function findTermsInSegments(segments, bookId = null) {
+  const db = getDb();
+
+  try {
+    // Load all approved/proposed terms for this book (and global terms)
+    let sql = `
+      SELECT id, english, icelandic, alternatives, category, status
+      FROM terminology_terms
+      WHERE status IN ('approved', 'proposed')
+    `;
+    const params = [];
+
+    if (bookId) {
+      sql += ` AND (book_id = ? OR book_id IS NULL)`;
+      params.push(bookId);
+    }
+
+    sql += ` ORDER BY LENGTH(english) DESC`; // Longest first for greedy matching
+
+    const terms = db.prepare(sql).all(...params);
+    db.close();
+
+    // Build regex patterns for each term (word-boundary match)
+    const termPatterns = terms.map((t) => ({
+      id: t.id,
+      english: t.english,
+      icelandic: t.icelandic,
+      alternatives: t.alternatives ? JSON.parse(t.alternatives) : [],
+      category: t.category,
+      status: t.status,
+      regex: new RegExp(`\\b${escapeRegex(t.english)}\\b`, 'gi'),
+    }));
+
+    const result = {};
+
+    for (const seg of segments) {
+      const matches = [];
+      const issues = [];
+
+      if (!seg.enContent) {
+        result[seg.segmentId] = { matches, issues };
+        continue;
+      }
+
+      for (const term of termPatterns) {
+        // Reset regex lastIndex
+        term.regex.lastIndex = 0;
+        const enMatch = term.regex.exec(seg.enContent);
+
+        if (enMatch) {
+          const matchInfo = {
+            termId: term.id,
+            english: term.english,
+            icelandic: term.icelandic,
+            category: term.category,
+            status: term.status,
+            position: enMatch.index,
+          };
+          matches.push(matchInfo);
+
+          // Check if approved IS term appears in the IS text
+          if (seg.isContent && term.status === 'approved') {
+            const isRegex = new RegExp(`\\b${escapeRegex(term.icelandic)}\\b`, 'gi');
+            const isFound = isRegex.test(seg.isContent);
+
+            if (!isFound) {
+              // Check if any alternative is used instead
+              let alternativeUsed = null;
+              for (const alt of term.alternatives) {
+                const altRegex = new RegExp(`\\b${escapeRegex(alt)}\\b`, 'gi');
+                if (altRegex.test(seg.isContent)) {
+                  alternativeUsed = alt;
+                  break;
+                }
+              }
+
+              if (alternativeUsed) {
+                issues.push({
+                  type: 'inconsistent',
+                  termId: term.id,
+                  english: term.english,
+                  expected: term.icelandic,
+                  found: alternativeUsed,
+                  message: `„${term.english}" → „${term.icelandic}" (ekki „${alternativeUsed}")`,
+                });
+              } else {
+                issues.push({
+                  type: 'missing',
+                  termId: term.id,
+                  english: term.english,
+                  expected: term.icelandic,
+                  message: `„${term.english}" → „${term.icelandic}" fannst ekki`,
+                });
+              }
+            }
+          }
+        }
+      }
+
+      result[seg.segmentId] = { matches, issues };
+    }
+
+    return result;
+  } catch (err) {
+    try {
+      db.close();
+    } catch (_e) {
+      /* ignore */
+    }
+    throw err;
+  }
+}
+
+function escapeRegex(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function extractChapterNum(filePath) {
   const match = filePath.match(/ch(\d+)/i);
   return match ? parseInt(match[1], 10) : null;
@@ -980,7 +1176,8 @@ module.exports = {
   importFromKeyTerms,
   getStats,
   deleteTerm,
+  findTermsInSegments,
   TERM_STATUSES,
   TERM_CATEGORIES,
-  TERM_SOURCES
+  TERM_SOURCES,
 };

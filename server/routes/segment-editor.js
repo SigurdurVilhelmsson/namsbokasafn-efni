@@ -20,6 +20,8 @@
  *   POST /api/segment-editor/reviews/:reviewId/complete  Complete module review
  *   POST /api/segment-editor/edit/:editId/comment     Add discussion comment
  *   GET  /api/segment-editor/edit/:editId/comments    Get discussion thread
+ *   GET  /api/segment-editor/:book/:chapter/:moduleId/terms  Term matches per segment
+ *   GET  /api/segment-editor/terminology/lookup              Quick term lookup
  *   GET  /api/segment-editor/:book/:chapter/:moduleId/stats  Get module stats
  */
 
@@ -383,6 +385,72 @@ router.get('/edit/:editId/comments', requireAuth, (req, res) => {
   try {
     const comments = segmentEditor.getDiscussion(parseInt(req.params.editId, 10));
     res.json({ comments });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// =====================================================================
+// TERMINOLOGY INTEGRATION
+// =====================================================================
+
+const terminology = require('../services/terminologyService');
+
+/**
+ * GET /:book/:chapter/:moduleId/terms
+ * Find terminology matches in a module's segments.
+ * Returns per-segment term matches and consistency issues.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/terms',
+  requireAuth,
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const data = segmentParser.loadModuleForEditing(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+
+      // Build segment list for term matching
+      const segments = data.segments.map((seg) => ({
+        segmentId: seg.segmentId,
+        enContent: seg.enContent || '',
+        isContent: seg.isContent || '',
+      }));
+
+      // Get book ID from registered_books (if available)
+      const bookId = req.query.bookId ? parseInt(req.query.bookId, 10) : null;
+
+      const termMatches = terminology.findTermsInSegments(segments, bookId);
+
+      res.json({
+        moduleId: req.params.moduleId,
+        termMatches,
+      });
+    } catch (err) {
+      console.error('Error finding terms:', err.message);
+      res.status(err.message.includes('not found') ? 404 : 500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * GET /terminology/lookup
+ * Quick term lookup for editor popups (delegates to terminology service).
+ */
+router.get('/terminology/lookup', requireAuth, (req, res) => {
+  const { q, bookId } = req.query;
+
+  if (!q || q.length < 2) {
+    return res.json({ terms: [] });
+  }
+
+  try {
+    const terms = terminology.lookupTerm(q, bookId ? parseInt(bookId, 10) : null);
+    res.json({ terms });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

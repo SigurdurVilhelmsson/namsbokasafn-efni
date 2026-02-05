@@ -207,6 +207,137 @@
       color: #7c3aed;
     }
 
+    /* Term highlighting */
+    .term-highlight {
+      background: rgba(16, 185, 129, 0.15);
+      border-bottom: 2px solid #10b981;
+      cursor: pointer;
+      padding: 0 1px;
+      border-radius: 2px;
+      transition: background 0.15s;
+    }
+    .term-highlight:hover {
+      background: rgba(16, 185, 129, 0.3);
+    }
+    .term-highlight.proposed {
+      border-bottom-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.1);
+    }
+    .term-highlight.proposed:hover {
+      background: rgba(245, 158, 11, 0.2);
+    }
+
+    .term-issue {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      padding: 0.3rem 0.5rem;
+      margin-top: 0.35rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      line-height: 1.3;
+    }
+    .term-issue.inconsistent {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid #f59e0b;
+      color: #92400e;
+    }
+    .term-issue.missing {
+      background: rgba(107, 114, 128, 0.08);
+      border-left: 3px solid #9ca3af;
+      color: var(--text-muted);
+    }
+    .term-issue-icon { flex-shrink: 0; }
+
+    /* Term popup */
+    .term-popup {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      min-width: 280px;
+      max-width: 360px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 0.75rem;
+      font-size: 0.8rem;
+    }
+    .term-popup.active { display: block; }
+    .term-popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .term-popup-header strong { font-size: 0.9rem; }
+    .term-popup-close {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0;
+      line-height: 1;
+    }
+    .term-popup-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.2rem 0;
+    }
+    .term-popup-label {
+      color: var(--text-muted);
+      min-width: 70px;
+      flex-shrink: 0;
+    }
+    .term-popup-value { font-weight: 500; }
+
+    /* Term stats in stats bar */
+    .stat-item.terms { background: rgba(16, 185, 129, 0.1); }
+    .stat-item.term-issues { background: rgba(245, 158, 11, 0.1); }
+
+    /* Term lookup input */
+    .term-lookup-container {
+      position: relative;
+      display: inline-block;
+    }
+    .term-lookup-input {
+      width: 200px;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+    .term-lookup-results {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 50;
+    }
+    .term-lookup-results.active { display: block; }
+    .term-lookup-item {
+      padding: 0.4rem 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .term-lookup-item:hover { background: var(--bg-subtle); }
+    .term-lookup-item:last-child { border-bottom: none; }
+    .term-lookup-en { font-weight: 600; }
+    .term-lookup-is { color: var(--text-muted); }
+
     /* Toolbar */
     .toolbar {
       display: flex;
@@ -309,6 +440,7 @@
             <option value="all">Allar bútur</option>
             <option value="edited">Með breytingum</option>
             <option value="pending">Bíður yfirlestrar</option>
+            <option value="term-issues">Hugtakavandamál</option>
             <option value="title">Titlar</option>
             <option value="para">Málsgreinar</option>
           </select>
@@ -321,6 +453,10 @@
             <option value="style">Stíll</option>
             <option value="omission">Úrfelling</option>
           </select>
+          <div style="margin-left: auto;" class="term-lookup-container">
+            <input type="text" class="term-lookup-input" id="term-lookup" placeholder="Fletta upp hugtaki..." autocomplete="off">
+            <div class="term-lookup-results" id="term-lookup-results"></div>
+          </div>
         </div>
 
         <div style="overflow-x: auto;">
@@ -338,6 +474,14 @@
         </div>
       </div>
     </div>
+    <!-- Term Popup (positioned absolutely) -->
+    <div class="term-popup" id="term-popup">
+      <div class="term-popup-header">
+        <strong id="term-popup-en"></strong>
+        <button class="term-popup-close" onclick="closeTermPopup()">&times;</button>
+      </div>
+      <div id="term-popup-body"></div>
+    </div>
   </main>
 
   <script src="/js/theme.js"></script>
@@ -349,7 +493,9 @@
     let currentChapter = 0;
     let currentModuleId = '';
     let moduleData = null;
+    let termData = null; // Per-segment term matches and issues
     let userRole = 'viewer';
+    let termLookupTimer = null;
 
     const API_BASE = '/api/segment-editor';
 
@@ -456,8 +602,30 @@
         document.getElementById('editor-container').style.display = 'block';
 
         renderModule();
+
+        // Load term data in background (non-blocking)
+        loadTermData(moduleId);
       } catch (err) {
         alert('Villa við að hlaða einingu: ' + err.message);
+      }
+    }
+
+    async function loadTermData(moduleId) {
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${moduleId}/terms`,
+          { credentials: 'include' }
+        );
+        if (!res.ok) return;
+        const data = await res.json();
+        termData = data.termMatches || {};
+
+        // Re-render to show term highlights and issues
+        renderSegments();
+        renderStats();
+      } catch {
+        // Term loading is non-critical, fail silently
+        termData = null;
       }
     }
 
@@ -478,12 +646,27 @@
     function renderStats() {
       const s = moduleData.stats || {};
       const bar = document.getElementById('stats-bar');
+
+      // Count term matches and issues
+      let termMatchCount = 0;
+      let termIssueCount = 0;
+      if (termData) {
+        for (const segId of Object.keys(termData)) {
+          termMatchCount += (termData[segId].matches || []).length;
+          termIssueCount += (termData[segId].issues || []).length;
+        }
+      }
+
       bar.innerHTML = `
         <div class="stat-item"><strong>${s.total_edits || 0}</strong> breytingar</div>
         <div class="stat-item"><strong>${s.pending || 0}</strong> bíða</div>
         <div class="stat-item"><strong>${s.approved || 0}</strong> samþykkt</div>
         <div class="stat-item"><strong>${s.rejected || 0}</strong> hafnað</div>
         <div class="stat-item"><strong>${s.discuss || 0}</strong> umræða</div>
+        ${termData ? `
+          <div class="stat-item terms"><strong>${termMatchCount}</strong> hugtök</div>
+          ${termIssueCount > 0 ? `<div class="stat-item term-issues"><strong>${termIssueCount}</strong> hugtakavandamál</div>` : ''}
+        ` : ''}
       `;
     }
 
@@ -501,6 +684,11 @@
         segments = segments.filter((s) => {
           const edits = moduleData.edits[s.segmentId] || [];
           return edits.some((e) => e.status === 'pending');
+        });
+      } else if (filterType === 'term-issues') {
+        segments = segments.filter((s) => {
+          const td = termData?.[s.segmentId];
+          return td && td.issues && td.issues.length > 0;
         });
       } else if (filterType !== 'all') {
         segments = segments.filter((s) => s.segmentType === filterType);
@@ -524,8 +712,25 @@
         rowClass += ` has-edit ${latestEdit.status}`;
       }
 
-      const enHtml = highlightMath(escapeHtml(seg.en));
+      let enHtml = highlightMath(escapeHtml(seg.en));
       const isHtml = highlightMath(escapeHtml(seg.is));
+
+      // Apply term highlights to EN text
+      const segTerms = termData?.[seg.segmentId];
+      if (segTerms?.matches?.length > 0) {
+        enHtml = highlightTermsInHtml(enHtml, segTerms.matches);
+      }
+
+      // Build term issue indicators for IS column
+      let termIssuesHtml = '';
+      if (segTerms?.issues?.length > 0) {
+        termIssuesHtml = segTerms.issues.map(issue => `
+          <div class="term-issue ${issue.type}">
+            <span class="term-issue-icon">${issue.type === 'inconsistent' ? '⚠' : 'ℹ'}</span>
+            <span>${escapeHtml(issue.message)}</span>
+          </div>
+        `).join('');
+      }
 
       const isHeadEditor = userRole === 'head_editor' || userRole === 'admin';
 
@@ -562,6 +767,7 @@
           </td>
           <td class="col-is">
             <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
+            ${termIssuesHtml}
             <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
               <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(seg.is)}</textarea>
               <div class="edit-controls">
@@ -706,6 +912,7 @@
       document.getElementById('editor-container').style.display = 'none';
       document.getElementById('module-selector').style.display = 'block';
       moduleData = null;
+      termData = null;
     });
 
     // ================================================================
@@ -752,6 +959,179 @@
         omission: 'Úrfelling',
       };
       return labels[cat] || cat;
+    }
+
+    // ================================================================
+    // TERM HIGHLIGHTING
+    // ================================================================
+
+    /**
+     * Highlight matched terms in already-escaped HTML.
+     * Works on the escaped text, matching term.english case-insensitively.
+     */
+    function highlightTermsInHtml(html, matches) {
+      // Sort by position descending so replacements don't shift indices
+      // But since html is escaped, we match by term text instead
+      // Sort longest first so "molar mass" matches before "mass"
+      const sorted = [...matches].sort((a, b) => b.english.length - a.english.length);
+      const used = new Set();
+
+      for (const m of sorted) {
+        const escaped = escapeHtml(m.english);
+        const pattern = new RegExp(
+          `\\b(${escapeRegexStr(escaped)})\\b`, 'gi'
+        );
+        // Only highlight first occurrence to keep it clean
+        let replaced = false;
+        html = html.replace(pattern, (match) => {
+          if (replaced || used.has(m.english.toLowerCase())) return match;
+          replaced = true;
+          used.add(m.english.toLowerCase());
+          const cls = m.status === 'approved' ? 'term-highlight' : 'term-highlight proposed';
+          return `<span class="${cls}" data-term-id="${m.termId}" onclick="showTermPopup(${m.termId}, this)">${match}</span>`;
+        });
+      }
+      return html;
+    }
+
+    function escapeRegexStr(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // ================================================================
+    // TERM POPUP
+    // ================================================================
+
+    function showTermPopup(termId, element) {
+      const popup = document.getElementById('term-popup');
+
+      // Find term info from termData
+      let termInfo = null;
+      if (termData) {
+        for (const segId of Object.keys(termData)) {
+          const match = termData[segId].matches?.find(m => m.termId === termId);
+          if (match) {
+            termInfo = match;
+            break;
+          }
+        }
+      }
+
+      if (!termInfo) {
+        closeTermPopup();
+        return;
+      }
+
+      document.getElementById('term-popup-en').textContent = termInfo.english;
+
+      const statusBadge = termInfo.status === 'approved'
+        ? '<span class="edit-status approved">Samþykkt</span>'
+        : '<span class="edit-status pending">Tillaga</span>';
+
+      document.getElementById('term-popup-body').innerHTML = `
+        <div class="term-popup-row">
+          <span class="term-popup-label">Íslenska:</span>
+          <span class="term-popup-value">${escapeHtml(termInfo.icelandic)}</span>
+        </div>
+        <div class="term-popup-row">
+          <span class="term-popup-label">Flokkur:</span>
+          <span>${termInfo.category || '—'}</span>
+        </div>
+        <div class="term-popup-row">
+          <span class="term-popup-label">Staða:</span>
+          ${statusBadge}
+        </div>
+        <div style="margin-top: 0.5rem; padding-top: 0.4rem; border-top: 1px solid var(--border-color);">
+          <a href="/terminology" target="_blank" style="font-size: 0.75rem; color: var(--accent);">
+            Opna í orðasafni →
+          </a>
+        </div>
+      `;
+
+      // Position near the clicked element
+      const rect = element.getBoundingClientRect();
+      popup.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+      popup.style.left = Math.min(rect.left + window.scrollX, window.innerWidth - 380) + 'px';
+      popup.classList.add('active');
+
+      // Close on outside click
+      setTimeout(() => {
+        document.addEventListener('click', closeTermPopupOnOutside);
+      }, 0);
+    }
+
+    function closeTermPopup() {
+      document.getElementById('term-popup').classList.remove('active');
+      document.removeEventListener('click', closeTermPopupOnOutside);
+    }
+
+    function closeTermPopupOnOutside(e) {
+      const popup = document.getElementById('term-popup');
+      if (!popup.contains(e.target) && !e.target.classList.contains('term-highlight')) {
+        closeTermPopup();
+      }
+    }
+
+    // ================================================================
+    // TERM LOOKUP
+    // ================================================================
+    const termLookupInput = document.getElementById('term-lookup');
+    const termLookupResults = document.getElementById('term-lookup-results');
+
+    termLookupInput.addEventListener('input', () => {
+      clearTimeout(termLookupTimer);
+      const q = termLookupInput.value.trim();
+
+      if (q.length < 2) {
+        termLookupResults.classList.remove('active');
+        return;
+      }
+
+      termLookupTimer = setTimeout(async () => {
+        try {
+          const res = await fetch(
+            `${API_BASE}/terminology/lookup?q=${encodeURIComponent(q)}`,
+            { credentials: 'include' }
+          );
+          if (!res.ok) return;
+          const data = await res.json();
+
+          if (!data.terms || data.terms.length === 0) {
+            termLookupResults.innerHTML = '<div class="term-lookup-item" style="color: var(--text-muted);">Ekkert fannst</div>';
+          } else {
+            termLookupResults.innerHTML = data.terms.map(t => `
+              <div class="term-lookup-item" onclick="insertTermFromLookup('${escapeHtml(t.icelandic)}')">
+                <span class="term-lookup-en">${escapeHtml(t.english)}</span>
+                → <span class="term-lookup-is">${escapeHtml(t.icelandic)}</span>
+                ${t.status === 'approved' ? ' ✓' : ''}
+              </div>
+            `).join('');
+          }
+          termLookupResults.classList.add('active');
+        } catch {
+          termLookupResults.classList.remove('active');
+        }
+      }, 300);
+    });
+
+    termLookupInput.addEventListener('blur', () => {
+      // Delay to allow click on results
+      setTimeout(() => termLookupResults.classList.remove('active'), 200);
+    });
+
+    function insertTermFromLookup(icelandicTerm) {
+      // Copy to clipboard for easy pasting
+      navigator.clipboard.writeText(icelandicTerm).then(() => {
+        termLookupInput.value = '';
+        termLookupResults.classList.remove('active');
+        // Brief visual feedback
+        termLookupInput.placeholder = 'Afritað!';
+        setTimeout(() => {
+          termLookupInput.placeholder = 'Fletta upp hugtaki...';
+        }, 1500);
+      }).catch(() => {
+        termLookupResults.classList.remove('active');
+      });
     }
 
     // ================================================================

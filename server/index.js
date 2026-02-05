@@ -333,6 +333,8 @@ app.get('/api', (req, res) => {
       'POST /api/segment-editor/edit/:editId/approve': 'Approve segment edit',
       'POST /api/segment-editor/edit/:editId/reject': 'Reject segment edit',
       'POST /api/segment-editor/reviews/:reviewId/complete': 'Complete module review',
+      'GET /api/segment-editor/:book/:chapter/:moduleId/terms': 'Term matches per segment',
+      'GET /api/segment-editor/terminology/lookup': 'Quick term lookup',
       // Assignments Management
       'GET /api/assignments': 'List all assignments (EDITOR)',
       'GET /api/assignments/overview': 'Team workload overview (HEAD_EDITOR)',
