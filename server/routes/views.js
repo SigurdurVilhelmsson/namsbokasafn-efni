@@ -60,6 +60,14 @@ router.get('/editor', (req, res) => {
 });
 
 /**
+ * GET /segment-editor
+ * Segment-level linguistic editor
+ */
+router.get('/segment-editor', (req, res) => {
+  sendView(res, 'segment-editor.html');
+});
+
+/**
  * GET /reviews
  * Review dashboard page
  */
@@ -169,6 +177,14 @@ router.get('/reports', (req, res) => {
  */
 router.get('/analytics', (req, res) => {
   sendView(res, 'analytics.html');
+});
+
+/**
+ * GET /localization-editor
+ * Segment-level localization editor (Pass 2)
+ */
+router.get('/localization-editor', (req, res) => {
+  sendView(res, 'localization-editor.html');
 });
 
 /**

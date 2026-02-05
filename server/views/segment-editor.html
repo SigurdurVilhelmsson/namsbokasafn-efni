@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bútaless ritstjóri - Námsbókasafn</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Segment editor specific styles */
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .module-header h2 { margin: 0; font-size: 1.25rem; }
+    .module-meta { color: var(--text-muted); font-size: 0.875rem; }
+
+    .stats-bar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      padding: 0.5rem 1rem;
+      background: var(--bg-subtle);
+      border-radius: 6px;
+      font-size: 0.875rem;
+    }
+    .stat-item strong { font-weight: 600; }
+
+    /* Segment table */
+    .segments-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .segments-table th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background: var(--bg-subtle);
+      border-bottom: 2px solid var(--border-color);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+    .segments-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    .segment-row { transition: background 0.15s; }
+    .segment-row:hover { background: var(--bg-subtle); }
+    .segment-row.has-edit { background: rgba(59, 130, 246, 0.05); }
+    .segment-row.approved { background: rgba(34, 197, 94, 0.05); }
+    .segment-row.rejected { background: rgba(239, 68, 68, 0.05); }
+    .segment-row.discuss { background: rgba(234, 179, 8, 0.05); }
+
+    .segment-type-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+    }
+    .segment-type-badge.title { background: #dbeafe; color: #1e40af; }
+    .segment-type-badge.para { background: #f3f4f6; color: #374151; }
+    .segment-type-badge.caption { background: #fef3c7; color: #92400e; }
+
+    .segment-content {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .col-en, .col-is { width: 38%; }
+    .col-type { width: 6%; }
+    .col-actions { width: 18%; text-align: center; }
+
+    /* Edit panel (inline) */
+    .edit-panel {
+      display: none;
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+    }
+    .edit-panel.active { display: block; }
+    .edit-panel textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      resize: vertical;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+    .edit-controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .edit-controls select {
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+    .edit-controls input[type="text"] {
+      flex: 1;
+      min-width: 150px;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+
+    /* Action buttons */
+    .btn-edit { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+    .btn-sm { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
+    .btn-approve { background: #22c55e; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .btn-reject { background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .btn-discuss { background: #eab308; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .btn-approve:hover { background: #16a34a; }
+    .btn-reject:hover { background: #dc2626; }
+    .btn-discuss:hover { background: #ca8a04; }
+
+    .edit-status {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .edit-status.pending { background: #dbeafe; color: #1e40af; }
+    .edit-status.approved { background: #dcfce7; color: #166534; }
+    .edit-status.rejected { background: #fee2e2; color: #991b1b; }
+    .edit-status.discuss { background: #fef9c3; color: #854d0e; }
+
+    .category-badge {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+    }
+
+    /* Review mode */
+    .review-actions {
+      display: flex;
+      gap: 0.25rem;
+      justify-content: center;
+    }
+
+    /* Discussion thread */
+    .discussion-thread {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      background: var(--bg-subtle);
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    .discussion-comment {
+      padding: 0.25rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .discussion-comment:last-child { border-bottom: none; }
+    .discussion-author { font-weight: 600; }
+    .discussion-time { color: var(--text-muted); font-size: 0.7rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .segments-table { display: block; overflow-x: auto; }
+      .col-en, .col-is { min-width: 250px; }
+    }
+
+    /* Math placeholder styling */
+    .math-placeholder {
+      display: inline;
+      padding: 0.1rem 0.3rem;
+      background: #f3e8ff;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #7c3aed;
+    }
+
+    /* Term highlighting */
+    .term-highlight {
+      background: rgba(16, 185, 129, 0.15);
+      border-bottom: 2px solid #10b981;
+      cursor: pointer;
+      padding: 0 1px;
+      border-radius: 2px;
+      transition: background 0.15s;
+    }
+    .term-highlight:hover {
+      background: rgba(16, 185, 129, 0.3);
+    }
+    .term-highlight.proposed {
+      border-bottom-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.1);
+    }
+    .term-highlight.proposed:hover {
+      background: rgba(245, 158, 11, 0.2);
+    }
+
+    .term-issue {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      padding: 0.3rem 0.5rem;
+      margin-top: 0.35rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      line-height: 1.3;
+    }
+    .term-issue.inconsistent {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid #f59e0b;
+      color: #92400e;
+    }
+    .term-issue.missing {
+      background: rgba(107, 114, 128, 0.08);
+      border-left: 3px solid #9ca3af;
+      color: var(--text-muted);
+    }
+    .term-issue-icon { flex-shrink: 0; }
+
+    /* Term popup */
+    .term-popup {
+      display: none;
+      position: absolute;
+      z-index: 100;
+      min-width: 280px;
+      max-width: 360px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 0.75rem;
+      font-size: 0.8rem;
+    }
+    .term-popup.active { display: block; }
+    .term-popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .term-popup-header strong { font-size: 0.9rem; }
+    .term-popup-close {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0;
+      line-height: 1;
+    }
+    .term-popup-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.2rem 0;
+    }
+    .term-popup-label {
+      color: var(--text-muted);
+      min-width: 70px;
+      flex-shrink: 0;
+    }
+    .term-popup-value { font-weight: 500; }
+
+    /* Term stats in stats bar */
+    .stat-item.terms { background: rgba(16, 185, 129, 0.1); }
+    .stat-item.term-issues { background: rgba(245, 158, 11, 0.1); }
+
+    /* Term lookup input */
+    .term-lookup-container {
+      position: relative;
+      display: inline-block;
+    }
+    .term-lookup-input {
+      width: 200px;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+    .term-lookup-results {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 50;
+    }
+    .term-lookup-results.active { display: block; }
+    .term-lookup-item {
+      padding: 0.4rem 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .term-lookup-item:hover { background: var(--bg-subtle); }
+    .term-lookup-item:last-child { border-bottom: none; }
+    .term-lookup-en { font-weight: 600; }
+    .term-lookup-is { color: var(--text-muted); }
+
+    /* Pipeline panel */
+    .pipeline-panel {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: var(--bg-subtle, #f9fafb);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+    }
+    .pipeline-panel h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.85rem;
+    }
+    .pipeline-controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .pipeline-controls select {
+      padding: 0.3rem 0.4rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+    .pipeline-controls .btn {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem;
+    }
+    .pipeline-output {
+      display: none;
+      margin-top: 0.5rem;
+      max-height: 200px;
+      overflow-y: auto;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      font-family: monospace;
+      font-size: 0.75rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .pipeline-output.active { display: block; }
+    .pipeline-status-badge {
+      display: inline-block;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .pipeline-status-badge.running {
+      background: rgba(59, 130, 246, 0.15);
+      color: #3b82f6;
+    }
+    .pipeline-status-badge.completed {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+    .pipeline-status-badge.failed {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .toolbar .btn { white-space: nowrap; }
+
+    /* Filter */
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-bar label { font-size: 0.8rem; color: var(--text-muted); }
+    .filter-bar select {
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/my-work">Mín verkefni</a>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/status">Stjórnborð</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/segment-editor" class="active">Bútaless ritstjóri</a>
+      <a href="/terminology">Orðasafn</a>
+      <span class="nav-separator admin-only"></span>
+      <a href="/dashboard" class="admin-only">Stjórnborð</a>
+      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" title="Skipta um þema">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <div class="user-info" id="user-info"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Module Selector -->
+    <div class="card" id="module-selector">
+      <h2 class="card-title">Velja einingu til að ritstýra</h2>
+      <div class="grid grid-2">
+        <div class="form-group">
+          <label class="form-label">Bók</label>
+          <select class="form-select" id="book-select">
+            <option value="">Veldu bók...</option>
+            <option value="efnafraedi">Efnafræði</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kafli</label>
+          <select class="form-select" id="chapter-select" disabled>
+            <option value="">Veldu kafla...</option>
+          </select>
+        </div>
+      </div>
+      <div id="modules-list" style="display: none;">
+        <h3>Einingar í kafla:</h3>
+        <div id="modules-container"></div>
+      </div>
+    </div>
+
+    <!-- Segment Editor -->
+    <div id="editor-container" style="display: none;">
+      <div class="card">
+        <div class="module-header">
+          <div>
+            <h2 id="module-title"></h2>
+            <div class="module-meta" id="module-meta"></div>
+          </div>
+          <div class="toolbar">
+            <button class="btn btn-secondary" id="btn-back" title="Til baka">
+              <i class="fas fa-arrow-left"></i> Til baka
+            </button>
+            <button class="btn btn-primary" id="btn-submit" title="Senda til yfirlestrar">
+              <i class="fas fa-paper-plane"></i> Senda til yfirlestrar
+            </button>
+          </div>
+        </div>
+
+        <!-- Pipeline Panel (HEAD_EDITOR only) -->
+        <div class="pipeline-panel" id="pipeline-panel" style="display: none;">
+          <h4>Leiðsluvinnsla (inject → render)</h4>
+          <div class="pipeline-controls">
+            <label style="font-size: 0.8rem;">Rás:</label>
+            <select id="pipeline-track">
+              <option value="faithful">Trú þýðing (faithful)</option>
+              <option value="mt-preview">MT forskoðun</option>
+              <option value="localized">Staðfærð (localized)</option>
+            </select>
+            <button class="btn btn-secondary" id="btn-inject" title="Keyra inject">
+              Inject
+            </button>
+            <button class="btn btn-secondary" id="btn-render" title="Keyra render">
+              Render
+            </button>
+            <button class="btn btn-primary" id="btn-pipeline" title="Keyra inject + render">
+              Inject + Render
+            </button>
+            <span class="pipeline-status-badge" id="pipeline-badge" style="display: none;"></span>
+          </div>
+          <div class="pipeline-output" id="pipeline-output"></div>
+        </div>
+
+        <div class="stats-bar" id="stats-bar"></div>
+
+        <div class="filter-bar">
+          <label>Sýna:</label>
+          <select id="filter-type">
+            <option value="all">Allar bútur</option>
+            <option value="edited">Með breytingum</option>
+            <option value="pending">Bíður yfirlestrar</option>
+            <option value="term-issues">Hugtakavandamál</option>
+            <option value="title">Titlar</option>
+            <option value="para">Málsgreinar</option>
+          </select>
+          <label>Flokkur:</label>
+          <select id="filter-category">
+            <option value="all">Allir flokkar</option>
+            <option value="terminology">Hugtök</option>
+            <option value="accuracy">Nákvæmni</option>
+            <option value="readability">Læsileiki</option>
+            <option value="style">Stíll</option>
+            <option value="omission">Úrfelling</option>
+          </select>
+          <div style="margin-left: auto;" class="term-lookup-container">
+            <input type="text" class="term-lookup-input" id="term-lookup" placeholder="Fletta upp hugtaki..." autocomplete="off">
+            <div class="term-lookup-results" id="term-lookup-results"></div>
+          </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="segments-table">
+            <thead>
+              <tr>
+                <th class="col-type">Tegund</th>
+                <th class="col-en">Enska (frumtexti)</th>
+                <th class="col-is">Íslenska (þýðing)</th>
+                <th class="col-actions">Aðgerðir</th>
+              </tr>
+            </thead>
+            <tbody id="segments-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Term Popup (positioned absolutely) -->
+    <div class="term-popup" id="term-popup">
+      <div class="term-popup-header">
+        <strong id="term-popup-en"></strong>
+        <button class="term-popup-close" onclick="closeTermPopup()">&times;</button>
+      </div>
+      <div id="term-popup-body"></div>
+    </div>
+  </main>
+
+  <script src="/js/theme.js"></script>
+  <script>
+    // ================================================================
+    // STATE
+    // ================================================================
+    let currentBook = '';
+    let currentChapter = 0;
+    let currentModuleId = '';
+    let moduleData = null;
+    let termData = null; // Per-segment term matches and issues
+    let userRole = 'viewer';
+    let termLookupTimer = null;
+
+    const API_BASE = '/api/segment-editor';
+
+    // ================================================================
+    // AUTH
+    // ================================================================
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/auth/me', { credentials: 'include' });
+        if (!res.ok) {
+          window.location.href = '/login';
+          return;
+        }
+        const data = await res.json();
+        userRole = data.user?.role || 'viewer';
+        const userInfo = document.getElementById('user-info');
+        if (data.user) {
+          userInfo.textContent = data.user.name || data.user.username;
+        }
+      } catch {
+        // Auth check failed silently - user may still be able to view
+      }
+    }
+
+    // ================================================================
+    // MODULE SELECTOR
+    // ================================================================
+    const bookSelect = document.getElementById('book-select');
+    const chapterSelect = document.getElementById('chapter-select');
+
+    bookSelect.addEventListener('change', () => {
+      currentBook = bookSelect.value;
+      chapterSelect.disabled = !currentBook;
+      chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+      document.getElementById('modules-list').style.display = 'none';
+
+      if (currentBook) {
+        // Chemistry has chapters 1-21 + appendices
+        for (let i = 1; i <= 21; i++) {
+          const opt = document.createElement('option');
+          opt.value = i;
+          opt.textContent = `Kafli ${i}`;
+          chapterSelect.appendChild(opt);
+        }
+      }
+    });
+
+    chapterSelect.addEventListener('change', async () => {
+      currentChapter = parseInt(chapterSelect.value, 10);
+      if (!currentChapter) return;
+
+      const container = document.getElementById('modules-container');
+      container.innerHTML = '<p class="text-muted">Hleður...</p>';
+      document.getElementById('modules-list').style.display = 'block';
+
+      try {
+        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}`, {
+          credentials: 'include',
+        });
+        const data = await res.json();
+
+        if (!data.modules || data.modules.length === 0) {
+          container.innerHTML = '<p class="text-muted">Engar einingar fundust.</p>';
+          return;
+        }
+
+        container.innerHTML = data.modules
+          .map(
+            (m) => `
+            <div class="card" style="padding: 0.75rem; margin-bottom: 0.5rem; cursor: pointer;"
+                 onclick="loadModule('${m.moduleId}')"
+                 title="Smelltu til að opna">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>${m.moduleId}</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  ${m.hasEnSource ? '<span class="edit-status approved">EN</span>' : ''}
+                  ${m.hasMtOutput ? '<span class="edit-status pending">MT</span>' : ''}
+                  ${m.hasFaithful ? '<span class="edit-status approved">Ritstýrt</span>' : ''}
+                </div>
+              </div>
+            </div>
+          `
+          )
+          .join('');
+      } catch (err) {
+        container.innerHTML = `<p class="text-muted" style="color: var(--error);">Villa: ${err.message}</p>`;
+      }
+    });
+
+    // ================================================================
+    // LOAD MODULE
+    // ================================================================
+    async function loadModule(moduleId) {
+      currentModuleId = moduleId;
+
+      try {
+        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}`, {
+          credentials: 'include',
+        });
+        if (!res.ok) throw new Error((await res.json()).error || 'Failed to load');
+        moduleData = await res.json();
+
+        document.getElementById('module-selector').style.display = 'none';
+        document.getElementById('editor-container').style.display = 'block';
+
+        renderModule();
+        showPipelinePanel();
+
+        // Load term data in background (non-blocking)
+        loadTermData(moduleId);
+      } catch (err) {
+        alert('Villa við að hlaða einingu: ' + err.message);
+      }
+    }
+
+    async function loadTermData(moduleId) {
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${moduleId}/terms`,
+          { credentials: 'include' }
+        );
+        if (!res.ok) return;
+        const data = await res.json();
+        termData = data.termMatches || {};
+
+        // Re-render to show term highlights and issues
+        renderSegments();
+        renderStats();
+      } catch {
+        // Term loading is non-critical, fail silently
+        termData = null;
+      }
+    }
+
+    // ================================================================
+    // RENDER MODULE
+    // ================================================================
+    function renderModule() {
+      document.getElementById('module-title').textContent =
+        `${moduleData.moduleId} — ${moduleData.title}`;
+      document.getElementById('module-meta').textContent =
+        `Kafli ${moduleData.chapter} · ${moduleData.segmentCount} bútar · ` +
+        `${moduleData.translatedCount} þýddar · Heimild: ${moduleData.isSource || 'engin'}`;
+
+      renderStats();
+      renderSegments();
+    }
+
+    function renderStats() {
+      const s = moduleData.stats || {};
+      const bar = document.getElementById('stats-bar');
+
+      // Count term matches and issues
+      let termMatchCount = 0;
+      let termIssueCount = 0;
+      if (termData) {
+        for (const segId of Object.keys(termData)) {
+          termMatchCount += (termData[segId].matches || []).length;
+          termIssueCount += (termData[segId].issues || []).length;
+        }
+      }
+
+      bar.innerHTML = `
+        <div class="stat-item"><strong>${s.total_edits || 0}</strong> breytingar</div>
+        <div class="stat-item"><strong>${s.pending || 0}</strong> bíða</div>
+        <div class="stat-item"><strong>${s.approved || 0}</strong> samþykkt</div>
+        <div class="stat-item"><strong>${s.rejected || 0}</strong> hafnað</div>
+        <div class="stat-item"><strong>${s.discuss || 0}</strong> umræða</div>
+        ${termData ? `
+          <div class="stat-item terms"><strong>${termMatchCount}</strong> hugtök</div>
+          ${termIssueCount > 0 ? `<div class="stat-item term-issues"><strong>${termIssueCount}</strong> hugtakavandamál</div>` : ''}
+        ` : ''}
+      `;
+    }
+
+    function renderSegments() {
+      const tbody = document.getElementById('segments-body');
+      const filterType = document.getElementById('filter-type').value;
+      const filterCat = document.getElementById('filter-category').value;
+
+      let segments = moduleData.segments;
+
+      // Apply filters
+      if (filterType === 'edited') {
+        segments = segments.filter((s) => moduleData.edits[s.segmentId]?.length > 0);
+      } else if (filterType === 'pending') {
+        segments = segments.filter((s) => {
+          const edits = moduleData.edits[s.segmentId] || [];
+          return edits.some((e) => e.status === 'pending');
+        });
+      } else if (filterType === 'term-issues') {
+        segments = segments.filter((s) => {
+          const td = termData?.[s.segmentId];
+          return td && td.issues && td.issues.length > 0;
+        });
+      } else if (filterType !== 'all') {
+        segments = segments.filter((s) => s.segmentType === filterType);
+      }
+
+      if (filterCat !== 'all') {
+        segments = segments.filter((s) => {
+          const edits = moduleData.edits[s.segmentId] || [];
+          return edits.some((e) => e.category === filterCat);
+        });
+      }
+
+      tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
+    }
+
+    function renderSegmentRow(seg) {
+      const edits = moduleData.edits[seg.segmentId] || [];
+      const latestEdit = edits[0]; // Most recent
+      let rowClass = 'segment-row';
+      if (latestEdit) {
+        rowClass += ` has-edit ${latestEdit.status}`;
+      }
+
+      let enHtml = highlightMath(escapeHtml(seg.en));
+      const isHtml = highlightMath(escapeHtml(seg.is));
+
+      // Apply term highlights to EN text
+      const segTerms = termData?.[seg.segmentId];
+      if (segTerms?.matches?.length > 0) {
+        enHtml = highlightTermsInHtml(enHtml, segTerms.matches);
+      }
+
+      // Build term issue indicators for IS column
+      let termIssuesHtml = '';
+      if (segTerms?.issues?.length > 0) {
+        termIssuesHtml = segTerms.issues.map(issue => `
+          <div class="term-issue ${issue.type}">
+            <span class="term-issue-icon">${issue.type === 'inconsistent' ? '⚠' : 'ℹ'}</span>
+            <span>${escapeHtml(issue.message)}</span>
+          </div>
+        `).join('');
+      }
+
+      const isHeadEditor = userRole === 'head_editor' || userRole === 'admin';
+
+      let actionsHtml = '';
+      if (latestEdit) {
+        actionsHtml = `
+          <div>
+            <span class="edit-status ${latestEdit.status}">${statusLabel(latestEdit.status)}</span>
+            ${latestEdit.category ? `<span class="category-badge">${categoryLabel(latestEdit.category)}</span>` : ''}
+          </div>
+          ${isHeadEditor && latestEdit.status === 'pending' ? `
+            <div class="review-actions" style="margin-top: 0.25rem;">
+              <button class="btn-sm btn-approve" onclick="reviewEdit(${latestEdit.id}, 'approve')" title="Samþykkja">✓</button>
+              <button class="btn-sm btn-reject" onclick="reviewEdit(${latestEdit.id}, 'reject')" title="Hafna">✗</button>
+              <button class="btn-sm btn-discuss" onclick="reviewEdit(${latestEdit.id}, 'discuss')" title="Ræða">💬</button>
+            </div>
+          ` : ''}
+        `;
+      } else {
+        actionsHtml = `
+          <button class="btn btn-edit btn-secondary" onclick="openEditPanel('${seg.segmentId}')">
+            <i class="fas fa-pen"></i> Breyta
+          </button>
+        `;
+      }
+
+      return `
+        <tr class="${rowClass}" id="row-${cssId(seg.segmentId)}">
+          <td class="col-type">
+            <span class="segment-type-badge ${seg.segmentType}">${seg.segmentType}</span>
+          </td>
+          <td class="col-en">
+            <div class="segment-content">${enHtml || '<em class="text-muted">Engin enska</em>'}</div>
+          </td>
+          <td class="col-is">
+            <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
+            ${termIssuesHtml}
+            <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
+              <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(seg.is)}</textarea>
+              <div class="edit-controls">
+                <select id="cat-${cssId(seg.segmentId)}">
+                  <option value="">Flokkur...</option>
+                  <option value="terminology">Hugtök</option>
+                  <option value="accuracy">Nákvæmni</option>
+                  <option value="readability">Læsileiki</option>
+                  <option value="style">Stíll</option>
+                  <option value="omission">Úrfelling</option>
+                </select>
+                <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)">
+                <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
+                <button class="btn btn-sm btn-secondary" onclick="closeEditPanel('${seg.segmentId}')">Hætta við</button>
+              </div>
+            </div>
+          </td>
+          <td class="col-actions">${actionsHtml}</td>
+        </tr>
+      `;
+    }
+
+    // ================================================================
+    // EDIT ACTIONS
+    // ================================================================
+    function openEditPanel(segmentId) {
+      const panel = document.getElementById('edit-' + cssId(segmentId));
+      if (panel) panel.classList.add('active');
+    }
+
+    function closeEditPanel(segmentId) {
+      const panel = document.getElementById('edit-' + cssId(segmentId));
+      if (panel) panel.classList.remove('active');
+    }
+
+    async function saveEdit(segmentId) {
+      const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+      if (!seg) return;
+
+      const editedContent = document.getElementById('textarea-' + cssId(segmentId)).value;
+      const category = document.getElementById('cat-' + cssId(segmentId)).value;
+      const editorNote = document.getElementById('note-' + cssId(segmentId)).value;
+
+      if (editedContent === seg.is && !category) {
+        closeEditPanel(segmentId);
+        return; // No change
+      }
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/edit`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({
+              segmentId,
+              originalContent: seg.is,
+              editedContent,
+              category: category || undefined,
+              editorNote: editorNote || undefined,
+            }),
+          }
+        );
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Failed to save');
+        }
+
+        // Reload module to refresh edits
+        await loadModule(currentModuleId);
+      } catch (err) {
+        alert('Villa við að vista: ' + err.message);
+      }
+    }
+
+    async function reviewEdit(editId, action) {
+      const note = action === 'reject' || action === 'discuss'
+        ? prompt(action === 'reject' ? 'Ástæða höfnunar:' : 'Umræðuefni:')
+        : null;
+
+      if ((action === 'reject' || action === 'discuss') && note === null) return; // Cancelled
+
+      try {
+        const res = await fetch(`${API_BASE}/edit/${editId}/${action}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ note }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Failed');
+        }
+
+        await loadModule(currentModuleId);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // ================================================================
+    // SUBMIT FOR REVIEW
+    // ================================================================
+    document.getElementById('btn-submit').addEventListener('click', async () => {
+      const stats = moduleData.stats || {};
+      if (!stats.total_edits || stats.total_edits === 0) {
+        alert('Engar breytingar til að senda.');
+        return;
+      }
+
+      if (!confirm(`Senda ${stats.total_edits} breytingar til yfirlestrar?`)) return;
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/submit`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+          }
+        );
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Failed to submit');
+        }
+
+        alert('Sent til yfirlestrar!');
+        await loadModule(currentModuleId);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    });
+
+    // ================================================================
+    // BACK BUTTON
+    // ================================================================
+    document.getElementById('btn-back').addEventListener('click', () => {
+      document.getElementById('editor-container').style.display = 'none';
+      document.getElementById('module-selector').style.display = 'block';
+      moduleData = null;
+      termData = null;
+      clearInterval(pipelinePollingTimer);
+    });
+
+    // ================================================================
+    // FILTERS
+    // ================================================================
+    document.getElementById('filter-type').addEventListener('change', renderSegments);
+    document.getElementById('filter-category').addEventListener('change', renderSegments);
+
+    // ================================================================
+    // HELPERS
+    // ================================================================
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function highlightMath(html) {
+      return html.replace(
+        /\[\[MATH:(\d+)\]\]/g,
+        '<span class="math-placeholder">[[MATH:$1]]</span>'
+      );
+    }
+
+    function cssId(segmentId) {
+      return segmentId.replace(/[^a-zA-Z0-9-]/g, '_');
+    }
+
+    function statusLabel(status) {
+      const labels = {
+        pending: 'Bíður',
+        approved: 'Samþykkt',
+        rejected: 'Hafnað',
+        discuss: 'Umræða',
+      };
+      return labels[status] || status;
+    }
+
+    function categoryLabel(cat) {
+      const labels = {
+        terminology: 'Hugtök',
+        accuracy: 'Nákvæmni',
+        readability: 'Læsileiki',
+        style: 'Stíll',
+        omission: 'Úrfelling',
+      };
+      return labels[cat] || cat;
+    }
+
+    // ================================================================
+    // PIPELINE CONTROLS
+    // ================================================================
+
+    let pipelinePollingTimer = null;
+
+    function showPipelinePanel() {
+      const isHeadEditor = userRole === 'head_editor' || userRole === 'admin';
+      const panel = document.getElementById('pipeline-panel');
+      panel.style.display = isHeadEditor ? 'block' : 'none';
+    }
+
+    document.getElementById('btn-inject').addEventListener('click', () => {
+      runPipelineAction('inject');
+    });
+
+    document.getElementById('btn-render').addEventListener('click', () => {
+      runPipelineAction('render');
+    });
+
+    document.getElementById('btn-pipeline').addEventListener('click', () => {
+      runPipelineAction('run');
+    });
+
+    async function runPipelineAction(action) {
+      const track = document.getElementById('pipeline-track').value;
+      const badge = document.getElementById('pipeline-badge');
+      const output = document.getElementById('pipeline-output');
+
+      // Disable buttons while running
+      setPipelineButtonsDisabled(true);
+      badge.textContent = 'Í gangi...';
+      badge.className = 'pipeline-status-badge running';
+      badge.style.display = 'inline-block';
+      output.textContent = `Starting ${action}...\n`;
+      output.classList.add('active');
+
+      try {
+        const res = await fetch(`/api/pipeline/${action}`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            book: currentBook,
+            chapter: currentChapter,
+            moduleId: currentModuleId !== 'all' ? currentModuleId : undefined,
+            track,
+          }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          badge.textContent = 'Villa';
+          badge.className = 'pipeline-status-badge failed';
+          output.textContent += `Error: ${data.error}\n`;
+          setPipelineButtonsDisabled(false);
+          return;
+        }
+
+        // Start polling for job status
+        pollJobStatus(data.jobId);
+      } catch (err) {
+        badge.textContent = 'Villa';
+        badge.className = 'pipeline-status-badge failed';
+        output.textContent += `Error: ${err.message}\n`;
+        setPipelineButtonsDisabled(false);
+      }
+    }
+
+    function pollJobStatus(jobId) {
+      clearInterval(pipelinePollingTimer);
+
+      pipelinePollingTimer = setInterval(async () => {
+        try {
+          const res = await fetch(`/api/pipeline/jobs/${jobId}`, {
+            credentials: 'include',
+          });
+          if (!res.ok) return;
+
+          const { job } = await res.json();
+          const badge = document.getElementById('pipeline-badge');
+          const output = document.getElementById('pipeline-output');
+
+          // Update output
+          output.textContent = job.output.join('\n');
+          output.scrollTop = output.scrollHeight;
+
+          if (job.status === 'completed') {
+            clearInterval(pipelinePollingTimer);
+            badge.textContent = 'Lokið';
+            badge.className = 'pipeline-status-badge completed';
+            setPipelineButtonsDisabled(false);
+          } else if (job.status === 'failed') {
+            clearInterval(pipelinePollingTimer);
+            badge.textContent = 'Mistókst';
+            badge.className = 'pipeline-status-badge failed';
+            output.textContent += `\nError: ${job.error || 'Unknown error'}`;
+            setPipelineButtonsDisabled(false);
+          } else {
+            badge.textContent = job.phase ? `Í gangi (${job.phase})...` : 'Í gangi...';
+          }
+        } catch {
+          // Polling error — ignore, will retry
+        }
+      }, 1500);
+    }
+
+    function setPipelineButtonsDisabled(disabled) {
+      document.getElementById('btn-inject').disabled = disabled;
+      document.getElementById('btn-render').disabled = disabled;
+      document.getElementById('btn-pipeline').disabled = disabled;
+    }
+
+    // ================================================================
+    // TERM HIGHLIGHTING
+    // ================================================================
+
+    /**
+     * Highlight matched terms in already-escaped HTML.
+     * Works on the escaped text, matching term.english case-insensitively.
+     */
+    function highlightTermsInHtml(html, matches) {
+      // Sort by position descending so replacements don't shift indices
+      // But since html is escaped, we match by term text instead
+      // Sort longest first so "molar mass" matches before "mass"
+      const sorted = [...matches].sort((a, b) => b.english.length - a.english.length);
+      const used = new Set();
+
+      for (const m of sorted) {
+        const escaped = escapeHtml(m.english);
+        const pattern = new RegExp(
+          `\\b(${escapeRegexStr(escaped)})\\b`, 'gi'
+        );
+        // Only highlight first occurrence to keep it clean
+        let replaced = false;
+        html = html.replace(pattern, (match) => {
+          if (replaced || used.has(m.english.toLowerCase())) return match;
+          replaced = true;
+          used.add(m.english.toLowerCase());
+          const cls = m.status === 'approved' ? 'term-highlight' : 'term-highlight proposed';
+          return `<span class="${cls}" data-term-id="${m.termId}" onclick="showTermPopup(${m.termId}, this)">${match}</span>`;
+        });
+      }
+      return html;
+    }
+
+    function escapeRegexStr(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // ================================================================
+    // TERM POPUP
+    // ================================================================
+
+    function showTermPopup(termId, element) {
+      const popup = document.getElementById('term-popup');
+
+      // Find term info from termData
+      let termInfo = null;
+      if (termData) {
+        for (const segId of Object.keys(termData)) {
+          const match = termData[segId].matches?.find(m => m.termId === termId);
+          if (match) {
+            termInfo = match;
+            break;
+          }
+        }
+      }
+
+      if (!termInfo) {
+        closeTermPopup();
+        return;
+      }
+
+      document.getElementById('term-popup-en').textContent = termInfo.english;
+
+      const statusBadge = termInfo.status === 'approved'
+        ? '<span class="edit-status approved">Samþykkt</span>'
+        : '<span class="edit-status pending">Tillaga</span>';
+
+      document.getElementById('term-popup-body').innerHTML = `
+        <div class="term-popup-row">
+          <span class="term-popup-label">Íslenska:</span>
+          <span class="term-popup-value">${escapeHtml(termInfo.icelandic)}</span>
+        </div>
+        <div class="term-popup-row">
+          <span class="term-popup-label">Flokkur:</span>
+          <span>${termInfo.category || '—'}</span>
+        </div>
+        <div class="term-popup-row">
+          <span class="term-popup-label">Staða:</span>
+          ${statusBadge}
+        </div>
+        <div style="margin-top: 0.5rem; padding-top: 0.4rem; border-top: 1px solid var(--border-color);">
+          <a href="/terminology" target="_blank" style="font-size: 0.75rem; color: var(--accent);">
+            Opna í orðasafni →
+          </a>
+        </div>
+      `;
+
+      // Position near the clicked element
+      const rect = element.getBoundingClientRect();
+      popup.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+      popup.style.left = Math.min(rect.left + window.scrollX, window.innerWidth - 380) + 'px';
+      popup.classList.add('active');
+
+      // Close on outside click
+      setTimeout(() => {
+        document.addEventListener('click', closeTermPopupOnOutside);
+      }, 0);
+    }
+
+    function closeTermPopup() {
+      document.getElementById('term-popup').classList.remove('active');
+      document.removeEventListener('click', closeTermPopupOnOutside);
+    }
+
+    function closeTermPopupOnOutside(e) {
+      const popup = document.getElementById('term-popup');
+      if (!popup.contains(e.target) && !e.target.classList.contains('term-highlight')) {
+        closeTermPopup();
+      }
+    }
+
+    // ================================================================
+    // TERM LOOKUP
+    // ================================================================
+    const termLookupInput = document.getElementById('term-lookup');
+    const termLookupResults = document.getElementById('term-lookup-results');
+
+    termLookupInput.addEventListener('input', () => {
+      clearTimeout(termLookupTimer);
+      const q = termLookupInput.value.trim();
+
+      if (q.length < 2) {
+        termLookupResults.classList.remove('active');
+        return;
+      }
+
+      termLookupTimer = setTimeout(async () => {
+        try {
+          const res = await fetch(
+            `${API_BASE}/terminology/lookup?q=${encodeURIComponent(q)}`,
+            { credentials: 'include' }
+          );
+          if (!res.ok) return;
+          const data = await res.json();
+
+          if (!data.terms || data.terms.length === 0) {
+            termLookupResults.innerHTML = '<div class="term-lookup-item" style="color: var(--text-muted);">Ekkert fannst</div>';
+          } else {
+            termLookupResults.innerHTML = data.terms.map(t => `
+              <div class="term-lookup-item" onclick="insertTermFromLookup('${escapeHtml(t.icelandic)}')">
+                <span class="term-lookup-en">${escapeHtml(t.english)}</span>
+                → <span class="term-lookup-is">${escapeHtml(t.icelandic)}</span>
+                ${t.status === 'approved' ? ' ✓' : ''}
+              </div>
+            `).join('');
+          }
+          termLookupResults.classList.add('active');
+        } catch {
+          termLookupResults.classList.remove('active');
+        }
+      }, 300);
+    });
+
+    termLookupInput.addEventListener('blur', () => {
+      // Delay to allow click on results
+      setTimeout(() => termLookupResults.classList.remove('active'), 200);
+    });
+
+    function insertTermFromLookup(icelandicTerm) {
+      // Copy to clipboard for easy pasting
+      navigator.clipboard.writeText(icelandicTerm).then(() => {
+        termLookupInput.value = '';
+        termLookupResults.classList.remove('active');
+        // Brief visual feedback
+        termLookupInput.placeholder = 'Afritað!';
+        setTimeout(() => {
+          termLookupInput.placeholder = 'Fletta upp hugtaki...';
+        }, 1500);
+      }).catch(() => {
+        termLookupResults.classList.remove('active');
+      });
+    }
+
+    // ================================================================
+    // INIT
+    // ================================================================
+    checkAuth();
+  </script>
+</body>
+</html>

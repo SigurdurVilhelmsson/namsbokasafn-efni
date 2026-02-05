@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staðfærsluritstjóri - Námsbókasafn</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Localization editor specific styles */
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .module-header h2 { margin: 0; font-size: 1.25rem; }
+    .module-meta { color: var(--text-muted); font-size: 0.875rem; }
+
+    .stats-bar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      padding: 0.5rem 1rem;
+      background: var(--bg-subtle);
+      border-radius: 6px;
+      font-size: 0.875rem;
+    }
+    .stat-item strong { font-weight: 600; }
+    .stat-item.localized { background: rgba(59, 130, 246, 0.1); }
+    .stat-item.remaining { background: rgba(245, 158, 11, 0.1); }
+    .stat-item.saved { background: rgba(16, 185, 129, 0.1); }
+
+    /* Three-column segment table */
+    .segments-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .segments-table th {
+      text-align: left;
+      padding: 0.75rem 0.75rem;
+      background: var(--bg-subtle);
+      border-bottom: 2px solid var(--border-color);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+    .segments-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    .segment-row { transition: background 0.15s; }
+    .segment-row:hover { background: var(--bg-subtle); }
+    .segment-row.modified { background: rgba(59, 130, 246, 0.05); }
+    .segment-row.saved { background: rgba(16, 185, 129, 0.04); }
+
+    .segment-type-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+    }
+    .segment-type-badge.title { background: #dbeafe; color: #1e40af; }
+    .segment-type-badge.para { background: #f3f4f6; color: #374151; }
+    .segment-type-badge.caption { background: #fef3c7; color: #92400e; }
+
+    .segment-content {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .col-type { width: 5%; }
+    .col-en { width: 27%; }
+    .col-faithful { width: 27%; }
+    .col-localized { width: 34%; }
+    .col-actions { width: 7%; text-align: center; }
+
+    /* EN column is reference — slightly muted */
+    .col-en .segment-content { color: var(--text-muted); font-size: 0.8rem; }
+
+    /* Editable localized textarea */
+    .localized-textarea {
+      width: 100%;
+      min-height: 60px;
+      padding: 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      resize: vertical;
+      background: var(--bg-input);
+      color: var(--text-color);
+      transition: border-color 0.15s;
+    }
+    .localized-textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+    }
+    .localized-textarea.modified {
+      border-color: #f59e0b;
+    }
+
+    /* Category selector for segment */
+    .category-select {
+      width: 100%;
+      margin-top: 0.35rem;
+      padding: 0.25rem 0.4rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+
+    .category-badge {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+    }
+    .category-badge.unit-conversion { background: #dbeafe; color: #1e40af; }
+    .category-badge.cultural-adaptation { background: #fef3c7; color: #92400e; }
+    .category-badge.example-replacement { background: #f3e8ff; color: #7c3aed; }
+    .category-badge.formatting { background: #f0fdf4; color: #166534; }
+    .category-badge.unchanged { background: var(--bg-subtle); color: var(--text-muted); }
+
+    /* Action buttons */
+    .btn-save-seg {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-save-seg:hover { opacity: 0.9; }
+    .btn-save-seg:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-copy-faithful {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.4rem;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-copy-faithful:hover { background: var(--bg-card); }
+
+    /* Save status indicator */
+    .save-indicator {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .save-indicator.saving { color: var(--accent); }
+    .save-indicator.saved { color: #10b981; }
+    .save-indicator.error { color: #ef4444; }
+
+    /* Math placeholder styling */
+    .math-placeholder {
+      display: inline;
+      padding: 0.1rem 0.3rem;
+      background: #f3e8ff;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #7c3aed;
+    }
+
+    /* Filter */
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-bar label { font-size: 0.8rem; color: var(--text-muted); }
+    .filter-bar select {
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .toolbar .btn { white-space: nowrap; }
+
+    /* Diff view */
+    .diff-indicator {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 0.25rem;
+    }
+    .diff-indicator.same { background: var(--text-muted); opacity: 0.3; }
+    .diff-indicator.different { background: #f59e0b; }
+
+    /* Progress bar */
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-subtle);
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .segments-table { display: block; overflow-x: auto; }
+      .col-en, .col-faithful, .col-localized { min-width: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/my-work">Mín verkefni</a>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/segment-editor">Bútaless ritstjóri</a>
+      <a href="/localization-editor" class="active">Staðfærsla</a>
+      <a href="/terminology">Orðasafn</a>
+      <span class="nav-separator admin-only"></span>
+      <a href="/dashboard" class="admin-only">Stjórnborð</a>
+      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" title="Skipta um þema">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <div class="user-info" id="user-info"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Module Selector -->
+    <div class="card" id="module-selector">
+      <h2 class="card-title">Velja einingu til staðfærslu (Pass 2)</h2>
+      <p class="text-muted" style="margin-bottom: 1rem; font-size: 0.85rem;">
+        Staðfærsla aðlagar trúa þýðingu (Pass 1) fyrir íslenskan lesanda: einingabreytingar, menningarleg aðlögun og dæmi.
+      </p>
+      <div class="grid grid-2">
+        <div class="form-group">
+          <label class="form-label">Bók</label>
+          <select class="form-select" id="book-select">
+            <option value="">Veldu bók...</option>
+            <option value="efnafraedi">Efnafræði</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kafli</label>
+          <select class="form-select" id="chapter-select" disabled>
+            <option value="">Veldu kafla...</option>
+          </select>
+        </div>
+      </div>
+      <div id="modules-list" style="display: none;">
+        <h3>Einingar í kafla:</h3>
+        <div id="modules-container"></div>
+      </div>
+    </div>
+
+    <!-- Localization Editor -->
+    <div id="editor-container" style="display: none;">
+      <div class="card">
+        <div class="module-header">
+          <div>
+            <h2 id="module-title"></h2>
+            <div class="module-meta" id="module-meta"></div>
+          </div>
+          <div class="toolbar">
+            <button class="btn btn-secondary" id="btn-back" title="Til baka">
+              <i class="fas fa-arrow-left"></i> Til baka
+            </button>
+            <button class="btn btn-primary" id="btn-save-all" title="Vista allar breytingar">
+              <i class="fas fa-save"></i> Vista allt
+            </button>
+            <span class="save-indicator" id="global-save-indicator"></span>
+          </div>
+        </div>
+
+        <div class="progress-bar" id="progress-bar">
+          <div class="progress-bar-fill" id="progress-fill" style="width: 0%;"></div>
+        </div>
+
+        <div class="stats-bar" id="stats-bar"></div>
+
+        <div class="filter-bar">
+          <label>Sýna:</label>
+          <select id="filter-type">
+            <option value="all">Allar bútur</option>
+            <option value="modified">Breyttar (óvistaðar)</option>
+            <option value="localized">Staðfærðar</option>
+            <option value="remaining">Eftir að staðfæra</option>
+            <option value="title">Titlar</option>
+            <option value="para">Málsgreinar</option>
+          </select>
+          <label>Flokkur:</label>
+          <select id="filter-category">
+            <option value="all">Allir flokkar</option>
+            <option value="unit-conversion">Einingabreytingar</option>
+            <option value="cultural-adaptation">Menningarleg aðlögun</option>
+            <option value="example-replacement">Dæmaskipti</option>
+            <option value="formatting">Snið</option>
+          </select>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="segments-table">
+            <thead>
+              <tr>
+                <th class="col-type">Tegund</th>
+                <th class="col-en">Enska (viðmið)</th>
+                <th class="col-faithful">Trú þýðing (Pass 1)</th>
+                <th class="col-localized">Staðfært (Pass 2)</th>
+                <th class="col-actions"></th>
+              </tr>
+            </thead>
+            <tbody id="segments-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/theme.js"></script>
+  <script>
+    // ================================================================
+    // STATE
+    // ================================================================
+    let currentBook = '';
+    let currentChapter = 0;
+    let currentModuleId = '';
+    let moduleData = null;
+    let userRole = 'viewer';
+
+    // Track unsaved changes: { segmentId: { content, category } }
+    let pendingChanges = {};
+
+    const API_BASE = '/api/localization-editor';
+
+    // ================================================================
+    // AUTH
+    // ================================================================
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/auth/me', { credentials: 'include' });
+        if (!res.ok) {
+          window.location.href = '/login';
+          return;
+        }
+        const data = await res.json();
+        userRole = data.user?.role || 'viewer';
+        const userInfo = document.getElementById('user-info');
+        if (data.user) {
+          userInfo.textContent = data.user.name || data.user.username;
+        }
+      } catch {
+        // Auth check failed silently
+      }
+    }
+
+    // ================================================================
+    // MODULE SELECTOR
+    // ================================================================
+    const bookSelect = document.getElementById('book-select');
+    const chapterSelect = document.getElementById('chapter-select');
+
+    bookSelect.addEventListener('change', () => {
+      currentBook = bookSelect.value;
+      chapterSelect.disabled = !currentBook;
+      chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+      document.getElementById('modules-list').style.display = 'none';
+
+      if (currentBook) {
+        for (let i = 1; i <= 21; i++) {
+          const opt = document.createElement('option');
+          opt.value = i;
+          opt.textContent = `Kafli ${i}`;
+          chapterSelect.appendChild(opt);
+        }
+      }
+    });
+
+    chapterSelect.addEventListener('change', async () => {
+      currentChapter = parseInt(chapterSelect.value, 10);
+      if (!currentChapter) return;
+
+      const container = document.getElementById('modules-container');
+      container.innerHTML = '<p class="text-muted">Hleður...</p>';
+      document.getElementById('modules-list').style.display = 'block';
+
+      try {
+        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}`, {
+          credentials: 'include',
+        });
+        const data = await res.json();
+
+        if (!data.modules || data.modules.length === 0) {
+          container.innerHTML = '<p class="text-muted">Engar einingar fundust.</p>';
+          return;
+        }
+
+        container.innerHTML = data.modules
+          .map(
+            (m) => `
+            <div class="card" style="padding: 0.75rem; margin-bottom: 0.5rem; cursor: ${m.hasFaithful ? 'pointer' : 'not-allowed'}; opacity: ${m.hasFaithful ? '1' : '0.6'};"
+                 ${m.hasFaithful ? `onclick="loadModule('${m.moduleId}')" title="Smelltu til að staðfæra"` : 'title="Þarf Pass 1 fyrst"'}>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>${m.moduleId}</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  ${m.hasFaithful ? '<span class="edit-status approved">Pass 1</span>' : '<span class="edit-status pending">Vantar Pass 1</span>'}
+                  ${m.hasLocalized ? '<span class="edit-status approved">Staðfært</span>' : ''}
+                </div>
+              </div>
+            </div>
+          `
+          )
+          .join('');
+      } catch (err) {
+        container.innerHTML = `<p class="text-muted" style="color: var(--error);">Villa: ${err.message}</p>`;
+      }
+    });
+
+    // ================================================================
+    // LOAD MODULE
+    // ================================================================
+    async function loadModule(moduleId) {
+      currentModuleId = moduleId;
+      pendingChanges = {};
+
+      try {
+        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}`, {
+          credentials: 'include',
+        });
+        if (!res.ok) throw new Error((await res.json()).error || 'Failed to load');
+        moduleData = await res.json();
+
+        document.getElementById('module-selector').style.display = 'none';
+        document.getElementById('editor-container').style.display = 'block';
+
+        renderModule();
+      } catch (err) {
+        alert('Villa við að hlaða einingu: ' + err.message);
+      }
+    }
+
+    // ================================================================
+    // RENDER MODULE
+    // ================================================================
+    function renderModule() {
+      document.getElementById('module-title').textContent =
+        `${moduleData.moduleId} — ${moduleData.title}`;
+      document.getElementById('module-meta').textContent =
+        `Kafli ${moduleData.chapter} · ${moduleData.segmentCount} bútar · ` +
+        `${moduleData.faithfulCount} þýddar (Pass 1) · ` +
+        `${moduleData.localizedCount} staðfærðar`;
+
+      renderStats();
+      renderSegments();
+      updateProgress();
+    }
+
+    function renderStats() {
+      const bar = document.getElementById('stats-bar');
+      const total = moduleData.segmentCount;
+      const localized = moduleData.localizedCount;
+      const remaining = total - localized;
+      const modified = Object.keys(pendingChanges).length;
+
+      bar.innerHTML = `
+        <div class="stat-item"><strong>${total}</strong> bútar</div>
+        <div class="stat-item localized"><strong>${localized}</strong> staðfærðar</div>
+        <div class="stat-item remaining"><strong>${remaining}</strong> eftir</div>
+        ${modified > 0 ? `<div class="stat-item saved"><strong>${modified}</strong> óvistaðar breytingar</div>` : ''}
+      `;
+    }
+
+    function updateProgress() {
+      const total = moduleData.segmentCount || 1;
+      const localized = moduleData.localizedCount + Object.keys(pendingChanges).length;
+      const pct = Math.min(100, Math.round((localized / total) * 100));
+      document.getElementById('progress-fill').style.width = pct + '%';
+    }
+
+    function renderSegments() {
+      const tbody = document.getElementById('segments-body');
+      const filterType = document.getElementById('filter-type').value;
+      const filterCat = document.getElementById('filter-category').value;
+
+      let segments = moduleData.segments;
+
+      // Apply filters
+      if (filterType === 'modified') {
+        segments = segments.filter((s) => pendingChanges[s.segmentId]);
+      } else if (filterType === 'localized') {
+        segments = segments.filter((s) => s.hasLocalized || pendingChanges[s.segmentId]);
+      } else if (filterType === 'remaining') {
+        segments = segments.filter((s) => !s.hasLocalized && !pendingChanges[s.segmentId]);
+      } else if (filterType !== 'all') {
+        segments = segments.filter((s) => s.segmentType === filterType);
+      }
+
+      // Category filter would require stored categories — skip for now unless we track in pendingChanges
+      if (filterCat !== 'all') {
+        segments = segments.filter((s) => {
+          const change = pendingChanges[s.segmentId];
+          return change && change.category === filterCat;
+        });
+      }
+
+      tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
+
+      // Attach event listeners for textareas
+      segments.forEach((seg) => {
+        const ta = document.getElementById('ta-' + cssId(seg.segmentId));
+        if (ta) {
+          ta.addEventListener('input', () => onSegmentEdit(seg.segmentId));
+          ta.addEventListener('blur', () => onSegmentBlur(seg.segmentId));
+        }
+      });
+    }
+
+    function renderSegmentRow(seg) {
+      const pending = pendingChanges[seg.segmentId];
+      const isDifferent = seg.hasLocalized && seg.localized !== seg.faithful;
+      let rowClass = 'segment-row';
+      if (pending) rowClass += ' modified';
+      else if (seg.hasLocalized) rowClass += ' saved';
+
+      const enHtml = highlightMath(escapeHtml(seg.en));
+      const faithfulHtml = highlightMath(escapeHtml(seg.faithful));
+
+      // Current localized content: pending changes > existing localized > faithful (as starting point)
+      const currentContent = pending
+        ? pending.content
+        : (seg.hasLocalized ? seg.localized : seg.faithful);
+
+      return `
+        <tr class="${rowClass}" id="row-${cssId(seg.segmentId)}">
+          <td class="col-type">
+            <span class="segment-type-badge ${seg.segmentType}">${seg.segmentType}</span>
+            ${isDifferent ? '<span class="diff-indicator different" title="Breytt frá trúri þýðingu"></span>' : ''}
+          </td>
+          <td class="col-en">
+            <div class="segment-content">${enHtml || '<em class="text-muted">—</em>'}</div>
+          </td>
+          <td class="col-faithful">
+            <div class="segment-content">${faithfulHtml || '<em class="text-muted">—</em>'}</div>
+            <button class="btn-copy-faithful" onclick="copyFaithful('${seg.segmentId}')" title="Afrita trúa þýðingu">
+              <i class="fas fa-copy"></i> Afrita
+            </button>
+          </td>
+          <td class="col-localized">
+            <textarea class="localized-textarea ${pending ? 'modified' : ''}"
+                      id="ta-${cssId(seg.segmentId)}">${escapeHtml(currentContent)}</textarea>
+            <span class="save-indicator" id="ind-${cssId(seg.segmentId)}">
+              ${seg.hasLocalized && !pending ? 'Vistað' : ''}
+            </span>
+          </td>
+          <td class="col-actions">
+            <button class="btn-save-seg" onclick="saveSingleSegment('${seg.segmentId}')" title="Vista bút">
+              <i class="fas fa-check"></i>
+            </button>
+          </td>
+        </tr>
+      `;
+    }
+
+    // ================================================================
+    // EDIT TRACKING
+    // ================================================================
+    function onSegmentEdit(segmentId) {
+      const ta = document.getElementById('ta-' + cssId(segmentId));
+      if (!ta) return;
+
+      const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+      if (!seg) return;
+
+      const currentSaved = seg.hasLocalized ? seg.localized : seg.faithful;
+      const newContent = ta.value;
+
+      if (newContent !== currentSaved) {
+        pendingChanges[segmentId] = {
+          content: newContent,
+          category: pendingChanges[segmentId]?.category || '',
+        };
+        ta.classList.add('modified');
+        const row = document.getElementById('row-' + cssId(segmentId));
+        if (row) row.className = 'segment-row modified';
+      } else {
+        delete pendingChanges[segmentId];
+        ta.classList.remove('modified');
+        const row = document.getElementById('row-' + cssId(segmentId));
+        if (row) row.className = seg.hasLocalized ? 'segment-row saved' : 'segment-row';
+      }
+
+      const ind = document.getElementById('ind-' + cssId(segmentId));
+      if (ind) ind.textContent = pendingChanges[segmentId] ? 'Breytt' : (seg.hasLocalized ? 'Vistað' : '');
+
+      renderStats();
+      updateProgress();
+    }
+
+    function onSegmentBlur(segmentId) {
+      // Auto-save on blur could be added here if desired
+    }
+
+    // ================================================================
+    // SAVE ACTIONS
+    // ================================================================
+    async function saveSingleSegment(segmentId) {
+      const ta = document.getElementById('ta-' + cssId(segmentId));
+      const ind = document.getElementById('ind-' + cssId(segmentId));
+      if (!ta) return;
+
+      const content = ta.value;
+      ind.textContent = 'Vistar...';
+      ind.className = 'save-indicator saving';
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/save`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ segmentId, content }),
+          }
+        );
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Failed to save');
+        }
+
+        // Update local state
+        const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+        if (seg) {
+          seg.localized = content;
+          seg.hasLocalized = true;
+          if (!moduleData.segments.some(s => s.segmentId === segmentId && !s.hasLocalized)) {
+            moduleData.localizedCount = moduleData.segments.filter(s => s.hasLocalized).length;
+          }
+        }
+
+        delete pendingChanges[segmentId];
+        ta.classList.remove('modified');
+
+        const row = document.getElementById('row-' + cssId(segmentId));
+        if (row) row.className = 'segment-row saved';
+
+        ind.textContent = 'Vistað';
+        ind.className = 'save-indicator saved';
+
+        // Recount
+        moduleData.localizedCount = moduleData.segments.filter(s => s.hasLocalized).length;
+        renderStats();
+        updateProgress();
+      } catch (err) {
+        ind.textContent = 'Villa!';
+        ind.className = 'save-indicator error';
+        alert('Villa við að vista: ' + err.message);
+      }
+    }
+
+    async function saveAllSegments() {
+      const keys = Object.keys(pendingChanges);
+      if (keys.length === 0) {
+        alert('Engar óvistaðar breytingar.');
+        return;
+      }
+
+      const globalInd = document.getElementById('global-save-indicator');
+      globalInd.textContent = `Vistar ${keys.length} búta...`;
+      globalInd.className = 'save-indicator saving';
+
+      const segments = keys.map((segmentId) => ({
+        segmentId,
+        content: pendingChanges[segmentId].content,
+      }));
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/save-all`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ segments }),
+          }
+        );
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Failed to save');
+        }
+
+        const result = await res.json();
+
+        // Update local state for all saved segments
+        for (const segmentId of keys) {
+          const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+          if (seg) {
+            seg.localized = pendingChanges[segmentId].content;
+            seg.hasLocalized = true;
+          }
+        }
+        pendingChanges = {};
+
+        moduleData.localizedCount = moduleData.segments.filter(s => s.hasLocalized).length;
+
+        globalInd.textContent = `${result.savedSegments} bútar vistaðar`;
+        globalInd.className = 'save-indicator saved';
+        setTimeout(() => { globalInd.textContent = ''; }, 3000);
+
+        renderSegments();
+        renderStats();
+        updateProgress();
+      } catch (err) {
+        globalInd.textContent = 'Villa!';
+        globalInd.className = 'save-indicator error';
+        alert('Villa við að vista: ' + err.message);
+      }
+    }
+
+    function copyFaithful(segmentId) {
+      const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+      if (!seg) return;
+
+      const ta = document.getElementById('ta-' + cssId(segmentId));
+      if (ta) {
+        ta.value = seg.faithful;
+        onSegmentEdit(segmentId);
+      }
+    }
+
+    // ================================================================
+    // BACK BUTTON
+    // ================================================================
+    document.getElementById('btn-back').addEventListener('click', () => {
+      if (Object.keys(pendingChanges).length > 0) {
+        if (!confirm('Þú átt óvistaðar breytingar. Viltu yfirgefa?')) return;
+      }
+      document.getElementById('editor-container').style.display = 'none';
+      document.getElementById('module-selector').style.display = 'block';
+      moduleData = null;
+      pendingChanges = {};
+    });
+
+    // ================================================================
+    // SAVE ALL BUTTON
+    // ================================================================
+    document.getElementById('btn-save-all').addEventListener('click', saveAllSegments);
+
+    // ================================================================
+    // FILTERS
+    // ================================================================
+    document.getElementById('filter-type').addEventListener('change', renderSegments);
+    document.getElementById('filter-category').addEventListener('change', renderSegments);
+
+    // ================================================================
+    // WARN BEFORE LEAVING WITH UNSAVED CHANGES
+    // ================================================================
+    window.addEventListener('beforeunload', (e) => {
+      if (Object.keys(pendingChanges).length > 0) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+
+    // ================================================================
+    // HELPERS
+    // ================================================================
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function highlightMath(html) {
+      return html.replace(
+        /\[\[MATH:(\d+)\]\]/g,
+        '<span class="math-placeholder">[[MATH:$1]]</span>'
+      );
+    }
+
+    function cssId(segmentId) {
+      return segmentId.replace(/[^a-zA-Z0-9-]/g, '_');
+    }
+
+    // ================================================================
+    // INIT
+    // ================================================================
+    checkAuth();
+  </script>
+</body>
+</html>

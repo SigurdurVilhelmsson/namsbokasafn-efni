@@ -76,6 +76,11 @@ const publicationRoutes = require('./routes/publication');
 const feedbackRoutes = require('./routes/feedback');
 const analyticsRoutes = require('./routes/analytics');
 
+// Import Phase 8 routes (Segment Editor, Pipeline, Localization Editor)
+const segmentEditorRoutes = require('./routes/segment-editor');
+const pipelineRoutes = require('./routes/pipeline');
+const localizationEditorRoutes = require('./routes/localization-editor');
+
 // Import Meeting routes
 const meetingsRoutes = require('./routes/meetings');
 
@@ -231,6 +236,11 @@ app.use('/api/assignments', assignmentsRoutes);
 // Reports API Routes
 app.use('/api/reports', reportsRoutes);
 
+// Phase 8 API Routes (Segment Editor, Pipeline, Localization Editor)
+app.use('/api/segment-editor', segmentEditorRoutes);
+app.use('/api/pipeline', pipelineRoutes);
+app.use('/api/localization-editor', localizationEditorRoutes);
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({
@@ -317,6 +327,32 @@ app.get('/api', (req, res) => {
       'GET /api/analytics/stats': 'Get analytics statistics',
       'GET /api/analytics/recent': 'Get recent events',
       'POST /api/analytics/event': 'Log client-side event (public)',
+      // Phase 8 - Segment Editor
+      'GET /api/segment-editor/:book/:chapter': 'List modules in chapter',
+      'GET /api/segment-editor/:book/:chapter/:moduleId': 'Load module for editing',
+      'POST /api/segment-editor/:book/:chapter/:moduleId/edit': 'Save segment edit',
+      'DELETE /api/segment-editor/edit/:editId': 'Delete pending edit',
+      'POST /api/segment-editor/:book/:chapter/:moduleId/submit': 'Submit for review',
+      'GET /api/segment-editor/reviews': 'List pending module reviews',
+      'POST /api/segment-editor/edit/:editId/approve': 'Approve segment edit',
+      'POST /api/segment-editor/edit/:editId/reject': 'Reject segment edit',
+      'POST /api/segment-editor/reviews/:reviewId/complete': 'Complete module review',
+      'GET /api/segment-editor/:book/:chapter/:moduleId/terms': 'Term matches per segment',
+      'GET /api/segment-editor/terminology/lookup': 'Quick term lookup',
+      // Pipeline
+      'POST /api/pipeline/inject': 'Run cnxml-inject (HEAD_EDITOR)',
+      'POST /api/pipeline/render': 'Run cnxml-render (HEAD_EDITOR)',
+      'POST /api/pipeline/run': 'Run inject + render (HEAD_EDITOR)',
+      'GET /api/pipeline/jobs': 'List pipeline jobs',
+      'GET /api/pipeline/jobs/:jobId': 'Get job status/output',
+      // Localization Editor
+      'GET /api/localization-editor/:book/:chapter': 'List modules with localization status',
+      'GET /api/localization-editor/:book/:chapter/:moduleId':
+        'Load module for localization (3-way)',
+      'POST /api/localization-editor/:book/:chapter/:moduleId/save':
+        'Save single localized segment',
+      'POST /api/localization-editor/:book/:chapter/:moduleId/save-all':
+        'Bulk save localized segments',
       // Assignments Management
       'GET /api/assignments': 'List all assignments (EDITOR)',
       'GET /api/assignments/overview': 'Team workload overview (HEAD_EDITOR)',
@@ -398,11 +434,13 @@ app.listen(PORT, HOST, () => {
   console.log('  GET  /api/images/:book      Image tracking');
   console.log('');
   console.log('Web Interface:');
-  console.log('  /workflow   Multi-step workflow wizard');
-  console.log('  /editor     Markdown editor');
-  console.log('  /reviews    Review dashboard');
-  console.log('  /issues     Issue review dashboard');
-  console.log('  /images     Image translation tracker');
+  console.log('  /workflow         Multi-step workflow wizard');
+  console.log('  /editor           Markdown editor');
+  console.log('  /segment-editor   Segment-level linguistic editor');
+  console.log('  /localization-editor  Segment-level localization (Pass 2)');
+  console.log('  /reviews          Review dashboard');
+  console.log('  /issues           Issue review dashboard');
+  console.log('  /images           Image translation tracker');
   console.log('');
   console.log('Press Ctrl+C to stop');
   console.log('');

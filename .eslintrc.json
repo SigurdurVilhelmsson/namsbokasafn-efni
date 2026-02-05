@@ -32,12 +32,19 @@
       "env": {
         "jest": true
       }
+    },
+    {
+      "files": ["server/__tests__/**/*.js"],
+      "parserOptions": {
+        "sourceType": "module"
+      }
     }
   ],
   "ignorePatterns": [
     "node_modules/",
     "server/node_modules/",
     "tools/archived/",
+    "**/_archived/",
     "*.bak",
     "*.backup",
     "pipeline-output/",
