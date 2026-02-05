@@ -405,6 +405,116 @@ function getDiscussion(segmentEditId) {
 }
 
 // =====================================================================
+// APPLY APPROVED EDITS TO FILES
+// =====================================================================
+
+const segmentParser = require('./segmentParser');
+
+/**
+ * Apply all approved (and not yet applied) edits for a module to the
+ * 03-faithful/ segment file. Starts from MT output as the base text
+ * and overlays every approved edit.
+ *
+ * @param {string} book - Book slug
+ * @param {number} chapter - Chapter number
+ * @param {string} moduleId - Module ID
+ * @returns {object} { appliedCount, savedPath, segments }
+ */
+function applyApprovedEdits(book, chapter, moduleId) {
+  const conn = getDb();
+
+  // 1. Get all approved edits for this module (not yet applied), latest first per segment
+  const approvedEdits = conn
+    .prepare(
+      `SELECT id, segment_id, edited_content
+       FROM segment_edits
+       WHERE book = ? AND module_id = ? AND status = 'approved' AND applied_at IS NULL
+       ORDER BY reviewed_at DESC`
+    )
+    .all(book, moduleId);
+
+  if (approvedEdits.length === 0) {
+    // Check if there are any approved edits at all (already applied)
+    const anyApproved = conn
+      .prepare(
+        `SELECT COUNT(*) as count FROM segment_edits
+         WHERE book = ? AND module_id = ? AND status = 'approved'`
+      )
+      .get(book, moduleId);
+
+    if (anyApproved.count === 0) {
+      throw new Error('No approved edits to apply for this module');
+    }
+    throw new Error('All approved edits have already been applied');
+  }
+
+  // 2. Load module data — loadModuleForEditing uses faithful if it exists, otherwise mt-output
+  const data = segmentParser.loadModuleForEditing(book, chapter, moduleId);
+
+  // 3. Build approved-content lookup (latest approved edit per segment wins)
+  const approvedLookup = {};
+  for (const edit of approvedEdits) {
+    // First edit per segment_id is the latest (ordered by reviewed_at DESC)
+    if (!approvedLookup[edit.segment_id]) {
+      approvedLookup[edit.segment_id] = edit;
+    }
+  }
+
+  // 4. Build the full segment list: approved content overrides existing IS content
+  const segments = data.segments.map((seg) => {
+    const approved = approvedLookup[seg.segmentId];
+    return {
+      segmentId: seg.segmentId,
+      content: approved ? approved.edited_content : seg.is,
+    };
+  });
+
+  // 5. Write to 03-faithful/
+  const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
+
+  // 6. Mark edits as applied
+  const markApplied = conn.prepare(
+    `UPDATE segment_edits SET applied_at = CURRENT_TIMESTAMP WHERE id = ?`
+  );
+
+  const markAll = conn.transaction((editIds) => {
+    for (const id of editIds) {
+      markApplied.run(id);
+    }
+  });
+
+  markAll(approvedEdits.map((e) => e.id));
+
+  return {
+    appliedCount: Object.keys(approvedLookup).length,
+    totalEditsMarked: approvedEdits.length,
+    savedPath,
+  };
+}
+
+/**
+ * Get apply status for a module: how many approved edits are pending application.
+ *
+ * @param {string} book - Book slug
+ * @param {string} moduleId - Module ID
+ * @returns {object} { unappliedCount, appliedCount, totalApproved }
+ */
+function getApplyStatus(book, moduleId) {
+  const conn = getDb();
+
+  return conn
+    .prepare(
+      `SELECT
+         COUNT(CASE WHEN applied_at IS NULL THEN 1 END) as unapplied_count,
+         COUNT(CASE WHEN applied_at IS NOT NULL THEN 1 END) as applied_count,
+         COUNT(*) as total_approved
+       FROM segment_edits
+       WHERE book = ? AND module_id = ? AND status = 'approved'`
+    )
+    .get(book, moduleId);
+}
+
+// =====================================================================
 // STATISTICS
 // =====================================================================
 
@@ -451,6 +561,9 @@ module.exports = {
   getPendingModuleReviews,
   getModuleReviewWithEdits,
   completeModuleReview,
+  // Apply to files
+  applyApprovedEdits,
+  getApplyStatus,
   // Discussions
   addDiscussionComment,
   getDiscussion,

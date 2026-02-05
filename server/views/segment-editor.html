@@ -403,6 +403,41 @@
       color: #ef4444;
     }
 
+    /* Apply edits panel */
+    .apply-panel {
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 6px;
+    }
+    .apply-panel h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.85rem;
+      color: #10b981;
+    }
+    .apply-controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .apply-controls .btn { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+    .btn-apply {
+      background: #10b981;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-apply:hover { background: #059669; }
+    .btn-apply:disabled { opacity: 0.5; cursor: not-allowed; }
+    .apply-status {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .apply-status strong { color: var(--text-color); }
+
     /* Toolbar */
     .toolbar {
       display: flex;
@@ -519,6 +554,21 @@
             <span class="pipeline-status-badge" id="pipeline-badge" style="display: none;"></span>
           </div>
           <div class="pipeline-output" id="pipeline-output"></div>
+        </div>
+
+        <!-- Apply Panel (HEAD_EDITOR only) -->
+        <div class="apply-panel" id="apply-panel" style="display: none;">
+          <h4><i class="fas fa-file-export"></i> Vista samþykkt í skrár</h4>
+          <div class="apply-controls">
+            <span class="apply-status" id="apply-status">Hleður...</span>
+            <button class="btn btn-apply" id="btn-apply" disabled title="Vista samþykktar breytingar í 03-faithful/ skrár">
+              <i class="fas fa-check-double"></i> Vista í skrár
+            </button>
+            <button class="btn btn-apply" id="btn-apply-render" disabled title="Vista í skrár og keyra inject + render" style="background: #3b82f6;">
+              <i class="fas fa-bolt"></i> Vista + Render
+            </button>
+            <span class="pipeline-status-badge" id="apply-badge" style="display: none;"></span>
+          </div>
         </div>
 
         <div class="stats-bar" id="stats-bar"></div>
@@ -692,6 +742,7 @@
 
         renderModule();
         showPipelinePanel();
+        showApplyPanel();
 
         // Load term data in background (non-blocking)
         loadTermData(moduleId);
@@ -1165,6 +1216,166 @@
       document.getElementById('btn-render').disabled = disabled;
       document.getElementById('btn-pipeline').disabled = disabled;
     }
+
+    // ================================================================
+    // APPLY CONTROLS (Write approved edits to files)
+    // ================================================================
+
+    function showApplyPanel() {
+      const isHeadEditor = userRole === 'head_editor' || userRole === 'admin';
+      const panel = document.getElementById('apply-panel');
+      panel.style.display = isHeadEditor ? 'block' : 'none';
+      if (isHeadEditor) {
+        loadApplyStatus();
+      }
+    }
+
+    async function loadApplyStatus() {
+      const statusEl = document.getElementById('apply-status');
+      const btnApply = document.getElementById('btn-apply');
+      const btnApplyRender = document.getElementById('btn-apply-render');
+      const badge = document.getElementById('apply-badge');
+
+      statusEl.textContent = 'Hleður...';
+      btnApply.disabled = true;
+      btnApplyRender.disabled = true;
+      badge.style.display = 'none';
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/apply-status`,
+          { credentials: 'include' }
+        );
+        if (!res.ok) throw new Error('Failed to load apply status');
+        const data = await res.json();
+
+        const { unapplied_count, applied_count, total_approved } = data;
+
+        if (unapplied_count > 0) {
+          statusEl.textContent = `${unapplied_count} samþykkt breytingar til að vista`;
+          btnApply.disabled = false;
+          btnApplyRender.disabled = false;
+        } else if (total_approved > 0) {
+          statusEl.textContent = `Allar ${total_approved} samþykktar breytingar vistaðar`;
+        } else {
+          statusEl.textContent = 'Engar samþykktar breytingar';
+        }
+      } catch (err) {
+        statusEl.textContent = 'Villa við að sækja stöðu';
+        console.error('Apply status error:', err);
+      }
+    }
+
+    async function applyEdits() {
+      const badge = document.getElementById('apply-badge');
+      const btnApply = document.getElementById('btn-apply');
+      const btnApplyRender = document.getElementById('btn-apply-render');
+
+      btnApply.disabled = true;
+      btnApplyRender.disabled = true;
+      badge.style.display = 'inline-block';
+      badge.textContent = 'Vista...';
+      badge.className = 'pipeline-status-badge running';
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/apply`,
+          { method: 'POST', credentials: 'include' }
+        );
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || 'Apply failed');
+        }
+        const data = await res.json();
+        badge.textContent = `Vistað (${data.appliedCount} breytingar)`;
+        badge.className = 'pipeline-status-badge success';
+        // Refresh status
+        loadApplyStatus();
+      } catch (err) {
+        badge.textContent = 'Mistókst';
+        badge.className = 'pipeline-status-badge failed';
+        alert('Villa við að vista: ' + err.message);
+        btnApply.disabled = false;
+        btnApplyRender.disabled = false;
+      }
+    }
+
+    async function applyAndRender() {
+      const badge = document.getElementById('apply-badge');
+      const btnApply = document.getElementById('btn-apply');
+      const btnApplyRender = document.getElementById('btn-apply-render');
+
+      btnApply.disabled = true;
+      btnApplyRender.disabled = true;
+      badge.style.display = 'inline-block';
+      badge.textContent = 'Vista + Render...';
+      badge.className = 'pipeline-status-badge running';
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/apply-and-render`,
+          { method: 'POST', credentials: 'include' }
+        );
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || 'Apply and render failed');
+        }
+        const data = await res.json();
+
+        badge.textContent = `Vistað (${data.applied.appliedCount}), render í gangi...`;
+
+        // Poll the pipeline job
+        if (data.jobId) {
+          pollApplyRenderJob(data.jobId);
+        } else {
+          badge.textContent = 'Vistað, en render startaði ekki';
+          badge.className = 'pipeline-status-badge success';
+          loadApplyStatus();
+        }
+      } catch (err) {
+        badge.textContent = 'Mistókst';
+        badge.className = 'pipeline-status-badge failed';
+        alert('Villa: ' + err.message);
+        btnApply.disabled = false;
+        btnApplyRender.disabled = false;
+      }
+    }
+
+    function pollApplyRenderJob(jobId) {
+      const badge = document.getElementById('apply-badge');
+
+      const timer = setInterval(async () => {
+        try {
+          const res = await fetch(`/api/pipeline/status/${jobId}`, {
+            credentials: 'include',
+          });
+          if (!res.ok) return;
+          const job = await res.json();
+
+          if (job.status === 'completed') {
+            clearInterval(timer);
+            badge.textContent = 'Vistað + Render lokið!';
+            badge.className = 'pipeline-status-badge success';
+            loadApplyStatus();
+          } else if (job.status === 'failed') {
+            clearInterval(timer);
+            badge.textContent = 'Render mistókst';
+            badge.className = 'pipeline-status-badge failed';
+            document.getElementById('btn-apply').disabled = false;
+            document.getElementById('btn-apply-render').disabled = false;
+          } else {
+            badge.textContent = job.phase
+              ? `Render (${job.phase})...`
+              : 'Render í gangi...';
+          }
+        } catch {
+          // Polling error — ignore, will retry
+        }
+      }, 1500);
+    }
+
+    document.getElementById('btn-apply').addEventListener('click', applyEdits);
+    document.getElementById('btn-apply-render').addEventListener('click', applyAndRender);
 
     // ================================================================
     // TERM HIGHLIGHTING
