@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bútaless ritstjóri - Námsbókasafn</title>
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Segment editor specific styles */
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .module-header h2 { margin: 0; font-size: 1.25rem; }
+    .module-meta { color: var(--text-muted); font-size: 0.875rem; }
+
+    .stats-bar {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      padding: 0.5rem 1rem;
+      background: var(--bg-subtle);
+      border-radius: 6px;
+      font-size: 0.875rem;
+    }
+    .stat-item strong { font-weight: 600; }
+
+    /* Segment table */
+    .segments-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .segments-table th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background: var(--bg-subtle);
+      border-bottom: 2px solid var(--border-color);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+    .segments-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    .segment-row { transition: background 0.15s; }
+    .segment-row:hover { background: var(--bg-subtle); }
+    .segment-row.has-edit { background: rgba(59, 130, 246, 0.05); }
+    .segment-row.approved { background: rgba(34, 197, 94, 0.05); }
+    .segment-row.rejected { background: rgba(239, 68, 68, 0.05); }
+    .segment-row.discuss { background: rgba(234, 179, 8, 0.05); }
+
+    .segment-type-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+    }
+    .segment-type-badge.title { background: #dbeafe; color: #1e40af; }
+    .segment-type-badge.para { background: #f3f4f6; color: #374151; }
+    .segment-type-badge.caption { background: #fef3c7; color: #92400e; }
+
+    .segment-content {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .col-en, .col-is { width: 38%; }
+    .col-type { width: 6%; }
+    .col-actions { width: 18%; text-align: center; }
+
+    /* Edit panel (inline) */
+    .edit-panel {
+      display: none;
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+    }
+    .edit-panel.active { display: block; }
+    .edit-panel textarea {
+      width: 100%;
+      min-height: 80px;
+      padding: 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      resize: vertical;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+    .edit-controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .edit-controls select {
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+    .edit-controls input[type="text"] {
+      flex: 1;
+      min-width: 150px;
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+
+    /* Action buttons */
+    .btn-edit { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+    .btn-sm { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
+    .btn-approve { background: #22c55e; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .btn-reject { background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .btn-discuss { background: #eab308; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    .btn-approve:hover { background: #16a34a; }
+    .btn-reject:hover { background: #dc2626; }
+    .btn-discuss:hover { background: #ca8a04; }
+
+    .edit-status {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .edit-status.pending { background: #dbeafe; color: #1e40af; }
+    .edit-status.approved { background: #dcfce7; color: #166534; }
+    .edit-status.rejected { background: #fee2e2; color: #991b1b; }
+    .edit-status.discuss { background: #fef9c3; color: #854d0e; }
+
+    .category-badge {
+      display: inline-block;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+    }
+
+    /* Review mode */
+    .review-actions {
+      display: flex;
+      gap: 0.25rem;
+      justify-content: center;
+    }
+
+    /* Discussion thread */
+    .discussion-thread {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      background: var(--bg-subtle);
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    .discussion-comment {
+      padding: 0.25rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .discussion-comment:last-child { border-bottom: none; }
+    .discussion-author { font-weight: 600; }
+    .discussion-time { color: var(--text-muted); font-size: 0.7rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .segments-table { display: block; overflow-x: auto; }
+      .col-en, .col-is { min-width: 250px; }
+    }
+
+    /* Math placeholder styling */
+    .math-placeholder {
+      display: inline;
+      padding: 0.1rem 0.3rem;
+      background: #f3e8ff;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #7c3aed;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .toolbar .btn { white-space: nowrap; }
+
+    /* Filter */
+    .filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-bar label { font-size: 0.8rem; color: var(--text-muted); }
+    .filter-bar select {
+      padding: 0.35rem 0.5rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Námsbókasafn</h1>
+    <nav>
+      <a href="/my-work">Mín verkefni</a>
+      <a href="/workflow">Verkflæði</a>
+      <a href="/status">Stjórnborð</a>
+      <a href="/editor">Ritstjóri</a>
+      <a href="/segment-editor" class="active">Bútaless ritstjóri</a>
+      <a href="/terminology">Orðasafn</a>
+      <span class="nav-separator admin-only"></span>
+      <a href="/dashboard" class="admin-only">Stjórnborð</a>
+      <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" title="Skipta um þema">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <div class="user-info" id="user-info"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Module Selector -->
+    <div class="card" id="module-selector">
+      <h2 class="card-title">Velja einingu til að ritstýra</h2>
+      <div class="grid grid-2">
+        <div class="form-group">
+          <label class="form-label">Bók</label>
+          <select class="form-select" id="book-select">
+            <option value="">Veldu bók...</option>
+            <option value="efnafraedi">Efnafræði</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kafli</label>
+          <select class="form-select" id="chapter-select" disabled>
+            <option value="">Veldu kafla...</option>
+          </select>
+        </div>
+      </div>
+      <div id="modules-list" style="display: none;">
+        <h3>Einingar í kafla:</h3>
+        <div id="modules-container"></div>
+      </div>
+    </div>
+
+    <!-- Segment Editor -->
+    <div id="editor-container" style="display: none;">
+      <div class="card">
+        <div class="module-header">
+          <div>
+            <h2 id="module-title"></h2>
+            <div class="module-meta" id="module-meta"></div>
+          </div>
+          <div class="toolbar">
+            <button class="btn btn-secondary" id="btn-back" title="Til baka">
+              <i class="fas fa-arrow-left"></i> Til baka
+            </button>
+            <button class="btn btn-primary" id="btn-submit" title="Senda til yfirlestrar">
+              <i class="fas fa-paper-plane"></i> Senda til yfirlestrar
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-bar" id="stats-bar"></div>
+
+        <div class="filter-bar">
+          <label>Sýna:</label>
+          <select id="filter-type">
+            <option value="all">Allar bútur</option>
+            <option value="edited">Með breytingum</option>
+            <option value="pending">Bíður yfirlestrar</option>
+            <option value="title">Titlar</option>
+            <option value="para">Málsgreinar</option>
+          </select>
+          <label>Flokkur:</label>
+          <select id="filter-category">
+            <option value="all">Allir flokkar</option>
+            <option value="terminology">Hugtök</option>
+            <option value="accuracy">Nákvæmni</option>
+            <option value="readability">Læsileiki</option>
+            <option value="style">Stíll</option>
+            <option value="omission">Úrfelling</option>
+          </select>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="segments-table">
+            <thead>
+              <tr>
+                <th class="col-type">Tegund</th>
+                <th class="col-en">Enska (frumtexti)</th>
+                <th class="col-is">Íslenska (þýðing)</th>
+                <th class="col-actions">Aðgerðir</th>
+              </tr>
+            </thead>
+            <tbody id="segments-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/theme.js"></script>
+  <script>
+    // ================================================================
+    // STATE
+    // ================================================================
+    let currentBook = '';
+    let currentChapter = 0;
+    let currentModuleId = '';
+    let moduleData = null;
+    let userRole = 'viewer';
+
+    const API_BASE = '/api/segment-editor';
+
+    // ================================================================
+    // AUTH
+    // ================================================================
+    async function checkAuth() {
+      try {
+        const res = await fetch('/api/auth/me', { credentials: 'include' });
+        if (!res.ok) {
+          window.location.href = '/login';
+          return;
+        }
+        const data = await res.json();
+        userRole = data.user?.role || 'viewer';
+        const userInfo = document.getElementById('user-info');
+        if (data.user) {
+          userInfo.textContent = data.user.name || data.user.username;
+        }
+      } catch {
+        // Auth check failed silently - user may still be able to view
+      }
+    }
+
+    // ================================================================
+    // MODULE SELECTOR
+    // ================================================================
+    const bookSelect = document.getElementById('book-select');
+    const chapterSelect = document.getElementById('chapter-select');
+
+    bookSelect.addEventListener('change', () => {
+      currentBook = bookSelect.value;
+      chapterSelect.disabled = !currentBook;
+      chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>';
+      document.getElementById('modules-list').style.display = 'none';
+
+      if (currentBook) {
+        // Chemistry has chapters 1-21 + appendices
+        for (let i = 1; i <= 21; i++) {
+          const opt = document.createElement('option');
+          opt.value = i;
+          opt.textContent = `Kafli ${i}`;
+          chapterSelect.appendChild(opt);
+        }
+      }
+    });
+
+    chapterSelect.addEventListener('change', async () => {
+      currentChapter = parseInt(chapterSelect.value, 10);
+      if (!currentChapter) return;
+
+      const container = document.getElementById('modules-container');
+      container.innerHTML = '<p class="text-muted">Hleður...</p>';
+      document.getElementById('modules-list').style.display = 'block';
+
+      try {
+        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}`, {
+          credentials: 'include',
+        });
+        const data = await res.json();
+
+        if (!data.modules || data.modules.length === 0) {
+          container.innerHTML = '<p class="text-muted">Engar einingar fundust.</p>';
+          return;
+        }
+
+        container.innerHTML = data.modules
+          .map(
+            (m) => `
+            <div class="card" style="padding: 0.75rem; margin-bottom: 0.5rem; cursor: pointer;"
+                 onclick="loadModule('${m.moduleId}')"
+                 title="Smelltu til að opna">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>${m.moduleId}</strong>
+                <div style="display: flex; gap: 0.5rem;">
+                  ${m.hasEnSource ? '<span class="edit-status approved">EN</span>' : ''}
+                  ${m.hasMtOutput ? '<span class="edit-status pending">MT</span>' : ''}
+                  ${m.hasFaithful ? '<span class="edit-status approved">Ritstýrt</span>' : ''}
+                </div>
+              </div>
+            </div>
+          `
+          )
+          .join('');
+      } catch (err) {
+        container.innerHTML = `<p class="text-muted" style="color: var(--error);">Villa: ${err.message}</p>`;
+      }
+    });
+
+    // ================================================================
+    // LOAD MODULE
+    // ================================================================
+    async function loadModule(moduleId) {
+      currentModuleId = moduleId;
+
+      try {
+        const res = await fetch(`${API_BASE}/${currentBook}/${currentChapter}/${moduleId}`, {
+          credentials: 'include',
+        });
+        if (!res.ok) throw new Error((await res.json()).error || 'Failed to load');
+        moduleData = await res.json();
+
+        document.getElementById('module-selector').style.display = 'none';
+        document.getElementById('editor-container').style.display = 'block';
+
+        renderModule();
+      } catch (err) {
+        alert('Villa við að hlaða einingu: ' + err.message);
+      }
+    }
+
+    // ================================================================
+    // RENDER MODULE
+    // ================================================================
+    function renderModule() {
+      document.getElementById('module-title').textContent =
+        `${moduleData.moduleId} — ${moduleData.title}`;
+      document.getElementById('module-meta').textContent =
+        `Kafli ${moduleData.chapter} · ${moduleData.segmentCount} bútar · ` +
+        `${moduleData.translatedCount} þýddar · Heimild: ${moduleData.isSource || 'engin'}`;
+
+      renderStats();
+      renderSegments();
+    }
+
+    function renderStats() {
+      const s = moduleData.stats || {};
+      const bar = document.getElementById('stats-bar');
+      bar.innerHTML = `
+        <div class="stat-item"><strong>${s.total_edits || 0}</strong> breytingar</div>
+        <div class="stat-item"><strong>${s.pending || 0}</strong> bíða</div>
+        <div class="stat-item"><strong>${s.approved || 0}</strong> samþykkt</div>
+        <div class="stat-item"><strong>${s.rejected || 0}</strong> hafnað</div>
+        <div class="stat-item"><strong>${s.discuss || 0}</strong> umræða</div>
+      `;
+    }
+
+    function renderSegments() {
+      const tbody = document.getElementById('segments-body');
+      const filterType = document.getElementById('filter-type').value;
+      const filterCat = document.getElementById('filter-category').value;
+
+      let segments = moduleData.segments;
+
+      // Apply filters
+      if (filterType === 'edited') {
+        segments = segments.filter((s) => moduleData.edits[s.segmentId]?.length > 0);
+      } else if (filterType === 'pending') {
+        segments = segments.filter((s) => {
+          const edits = moduleData.edits[s.segmentId] || [];
+          return edits.some((e) => e.status === 'pending');
+        });
+      } else if (filterType !== 'all') {
+        segments = segments.filter((s) => s.segmentType === filterType);
+      }
+
+      if (filterCat !== 'all') {
+        segments = segments.filter((s) => {
+          const edits = moduleData.edits[s.segmentId] || [];
+          return edits.some((e) => e.category === filterCat);
+        });
+      }
+
+      tbody.innerHTML = segments.map((seg) => renderSegmentRow(seg)).join('');
+    }
+
+    function renderSegmentRow(seg) {
+      const edits = moduleData.edits[seg.segmentId] || [];
+      const latestEdit = edits[0]; // Most recent
+      let rowClass = 'segment-row';
+      if (latestEdit) {
+        rowClass += ` has-edit ${latestEdit.status}`;
+      }
+
+      const enHtml = highlightMath(escapeHtml(seg.en));
+      const isHtml = highlightMath(escapeHtml(seg.is));
+
+      const isHeadEditor = userRole === 'head_editor' || userRole === 'admin';
+
+      let actionsHtml = '';
+      if (latestEdit) {
+        actionsHtml = `
+          <div>
+            <span class="edit-status ${latestEdit.status}">${statusLabel(latestEdit.status)}</span>
+            ${latestEdit.category ? `<span class="category-badge">${categoryLabel(latestEdit.category)}</span>` : ''}
+          </div>
+          ${isHeadEditor && latestEdit.status === 'pending' ? `
+            <div class="review-actions" style="margin-top: 0.25rem;">
+              <button class="btn-sm btn-approve" onclick="reviewEdit(${latestEdit.id}, 'approve')" title="Samþykkja">✓</button>
+              <button class="btn-sm btn-reject" onclick="reviewEdit(${latestEdit.id}, 'reject')" title="Hafna">✗</button>
+              <button class="btn-sm btn-discuss" onclick="reviewEdit(${latestEdit.id}, 'discuss')" title="Ræða">💬</button>
+            </div>
+          ` : ''}
+        `;
+      } else {
+        actionsHtml = `
+          <button class="btn btn-edit btn-secondary" onclick="openEditPanel('${seg.segmentId}')">
+            <i class="fas fa-pen"></i> Breyta
+          </button>
+        `;
+      }
+
+      return `
+        <tr class="${rowClass}" id="row-${cssId(seg.segmentId)}">
+          <td class="col-type">
+            <span class="segment-type-badge ${seg.segmentType}">${seg.segmentType}</span>
+          </td>
+          <td class="col-en">
+            <div class="segment-content">${enHtml || '<em class="text-muted">Engin enska</em>'}</div>
+          </td>
+          <td class="col-is">
+            <div class="segment-content" id="is-${cssId(seg.segmentId)}">${isHtml || '<em class="text-muted">Engin þýðing</em>'}</div>
+            <div class="edit-panel" id="edit-${cssId(seg.segmentId)}">
+              <textarea id="textarea-${cssId(seg.segmentId)}">${escapeHtml(seg.is)}</textarea>
+              <div class="edit-controls">
+                <select id="cat-${cssId(seg.segmentId)}">
+                  <option value="">Flokkur...</option>
+                  <option value="terminology">Hugtök</option>
+                  <option value="accuracy">Nákvæmni</option>
+                  <option value="readability">Læsileiki</option>
+                  <option value="style">Stíll</option>
+                  <option value="omission">Úrfelling</option>
+                </select>
+                <input type="text" id="note-${cssId(seg.segmentId)}" placeholder="Athugasemd (valkvætt)">
+                <button class="btn btn-sm btn-primary" onclick="saveEdit('${seg.segmentId}')">Vista</button>
+                <button class="btn btn-sm btn-secondary" onclick="closeEditPanel('${seg.segmentId}')">Hætta við</button>
+              </div>
+            </div>
+          </td>
+          <td class="col-actions">${actionsHtml}</td>
+        </tr>
+      `;
+    }
+
+    // ================================================================
+    // EDIT ACTIONS
+    // ================================================================
+    function openEditPanel(segmentId) {
+      const panel = document.getElementById('edit-' + cssId(segmentId));
+      if (panel) panel.classList.add('active');
+    }
+
+    function closeEditPanel(segmentId) {
+      const panel = document.getElementById('edit-' + cssId(segmentId));
+      if (panel) panel.classList.remove('active');
+    }
+
+    async function saveEdit(segmentId) {
+      const seg = moduleData.segments.find((s) => s.segmentId === segmentId);
+      if (!seg) return;
+
+      const editedContent = document.getElementById('textarea-' + cssId(segmentId)).value;
+      const category = document.getElementById('cat-' + cssId(segmentId)).value;
+      const editorNote = document.getElementById('note-' + cssId(segmentId)).value;
+
+      if (editedContent === seg.is && !category) {
+        closeEditPanel(segmentId);
+        return; // No change
+      }
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/edit`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({
+              segmentId,
+              originalContent: seg.is,
+              editedContent,
+              category: category || undefined,
+              editorNote: editorNote || undefined,
+            }),
+          }
+        );
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Failed to save');
+        }
+
+        // Reload module to refresh edits
+        await loadModule(currentModuleId);
+      } catch (err) {
+        alert('Villa við að vista: ' + err.message);
+      }
+    }
+
+    async function reviewEdit(editId, action) {
+      const note = action === 'reject' || action === 'discuss'
+        ? prompt(action === 'reject' ? 'Ástæða höfnunar:' : 'Umræðuefni:')
+        : null;
+
+      if ((action === 'reject' || action === 'discuss') && note === null) return; // Cancelled
+
+      try {
+        const res = await fetch(`${API_BASE}/edit/${editId}/${action}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ note }),
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Failed');
+        }
+
+        await loadModule(currentModuleId);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    }
+
+    // ================================================================
+    // SUBMIT FOR REVIEW
+    // ================================================================
+    document.getElementById('btn-submit').addEventListener('click', async () => {
+      const stats = moduleData.stats || {};
+      if (!stats.total_edits || stats.total_edits === 0) {
+        alert('Engar breytingar til að senda.');
+        return;
+      }
+
+      if (!confirm(`Senda ${stats.total_edits} breytingar til yfirlestrar?`)) return;
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/${currentBook}/${currentChapter}/${currentModuleId}/submit`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+          }
+        );
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || 'Failed to submit');
+        }
+
+        alert('Sent til yfirlestrar!');
+        await loadModule(currentModuleId);
+      } catch (err) {
+        alert('Villa: ' + err.message);
+      }
+    });
+
+    // ================================================================
+    // BACK BUTTON
+    // ================================================================
+    document.getElementById('btn-back').addEventListener('click', () => {
+      document.getElementById('editor-container').style.display = 'none';
+      document.getElementById('module-selector').style.display = 'block';
+      moduleData = null;
+    });
+
+    // ================================================================
+    // FILTERS
+    // ================================================================
+    document.getElementById('filter-type').addEventListener('change', renderSegments);
+    document.getElementById('filter-category').addEventListener('change', renderSegments);
+
+    // ================================================================
+    // HELPERS
+    // ================================================================
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function highlightMath(html) {
+      return html.replace(
+        /\[\[MATH:(\d+)\]\]/g,
+        '<span class="math-placeholder">[[MATH:$1]]</span>'
+      );
+    }
+
+    function cssId(segmentId) {
+      return segmentId.replace(/[^a-zA-Z0-9-]/g, '_');
+    }
+
+    function statusLabel(status) {
+      const labels = {
+        pending: 'Bíður',
+        approved: 'Samþykkt',
+        rejected: 'Hafnað',
+        discuss: 'Umræða',
+      };
+      return labels[status] || status;
+    }
+
+    function categoryLabel(cat) {
+      const labels = {
+        terminology: 'Hugtök',
+        accuracy: 'Nákvæmni',
+        readability: 'Læsileiki',
+        style: 'Stíll',
+        omission: 'Úrfelling',
+      };
+      return labels[cat] || cat;
+    }
+
+    // ================================================================
+    // INIT
+    // ================================================================
+    checkAuth();
+  </script>
+</body>
+</html>

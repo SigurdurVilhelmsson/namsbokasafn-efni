@@ -60,6 +60,14 @@ router.get('/editor', (req, res) => {
 });
 
 /**
+ * GET /segment-editor
+ * Segment-level linguistic editor
+ */
+router.get('/segment-editor', (req, res) => {
+  sendView(res, 'segment-editor.html');
+});
+
+/**
  * GET /reviews
  * Review dashboard page
  */

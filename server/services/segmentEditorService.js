@@ -1,0 +1,459 @@
+/**
+ * Segment Editor Service
+ *
+ * CRUD operations for segment-level edits and reviews.
+ * Wraps the segment_edits, module_reviews, and segment_discussions tables.
+ */
+
+const Database = require('better-sqlite3');
+const path = require('path');
+const fs = require('fs');
+
+const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+
+let db;
+function getDb() {
+  if (!db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    db = new Database(DB_PATH);
+    db.pragma('journal_mode = WAL');
+  }
+  return db;
+}
+
+// =====================================================================
+// SEGMENT EDITS
+// =====================================================================
+
+/**
+ * Create or update a segment edit.
+ * If the editor already has a pending edit for this segment, update it.
+ */
+function saveSegmentEdit(params) {
+  const {
+    book,
+    chapter,
+    moduleId,
+    segmentId,
+    originalContent,
+    editedContent,
+    category,
+    editorNote,
+    editorId,
+    editorUsername,
+  } = params;
+
+  const conn = getDb();
+
+  // Check for existing pending edit by this editor on this segment
+  const existing = conn
+    .prepare(
+      `SELECT id FROM segment_edits
+     WHERE book = ? AND module_id = ? AND segment_id = ? AND editor_id = ? AND status = 'pending'`
+    )
+    .get(book, moduleId, segmentId, editorId);
+
+  if (existing) {
+    // Update existing edit
+    conn
+      .prepare(
+        `UPDATE segment_edits
+       SET edited_content = ?, category = ?, editor_note = ?, created_at = CURRENT_TIMESTAMP
+       WHERE id = ?`
+      )
+      .run(editedContent, category || null, editorNote || null, existing.id);
+    return { id: existing.id, updated: true };
+  }
+
+  // Create new edit
+  const result = conn
+    .prepare(
+      `INSERT INTO segment_edits
+     (book, chapter, module_id, segment_id, original_content, edited_content,
+      category, editor_note, editor_id, editor_username)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    )
+    .run(
+      book,
+      chapter,
+      moduleId,
+      segmentId,
+      originalContent,
+      editedContent,
+      category || null,
+      editorNote || null,
+      editorId,
+      editorUsername
+    );
+
+  return { id: result.lastInsertRowid, updated: false };
+}
+
+/**
+ * Get all segment edits for a module.
+ */
+function getModuleEdits(book, moduleId, statusFilter) {
+  const conn = getDb();
+
+  let query = `SELECT * FROM segment_edits WHERE book = ? AND module_id = ?`;
+  const params = [book, moduleId];
+
+  if (statusFilter) {
+    query += ` AND status = ?`;
+    params.push(statusFilter);
+  }
+
+  query += ` ORDER BY created_at DESC`;
+
+  return conn.prepare(query).all(...params);
+}
+
+/**
+ * Get edits for a specific segment.
+ */
+function getSegmentEdits(book, moduleId, segmentId) {
+  const conn = getDb();
+  return conn
+    .prepare(
+      `SELECT * FROM segment_edits
+     WHERE book = ? AND module_id = ? AND segment_id = ?
+     ORDER BY created_at DESC`
+    )
+    .all(book, moduleId, segmentId);
+}
+
+/**
+ * Get a single edit by ID.
+ */
+function getEditById(editId) {
+  const conn = getDb();
+  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+}
+
+/**
+ * Delete a pending segment edit (editor can withdraw before review).
+ */
+function deleteSegmentEdit(editId, editorId) {
+  const conn = getDb();
+  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+  if (!edit) throw new Error('Edit not found');
+  if (edit.editor_id !== editorId) throw new Error('Not your edit');
+  if (edit.status !== 'pending') throw new Error('Can only delete pending edits');
+
+  conn.prepare(`DELETE FROM segment_edits WHERE id = ?`).run(editId);
+  return true;
+}
+
+// =====================================================================
+// REVIEW ACTIONS (Head Editor)
+// =====================================================================
+
+/**
+ * Approve a segment edit.
+ */
+function approveEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
+  const conn = getDb();
+  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+  if (!edit) throw new Error('Edit not found');
+  if (edit.status !== 'pending') throw new Error('Edit is not pending');
+
+  conn
+    .prepare(
+      `UPDATE segment_edits
+     SET status = 'approved',
+         reviewer_id = ?,
+         reviewer_username = ?,
+         reviewer_note = ?,
+         reviewed_at = CURRENT_TIMESTAMP
+     WHERE id = ?`
+    )
+    .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+
+  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+}
+
+/**
+ * Reject a segment edit.
+ */
+function rejectEdit(editId, reviewerId, reviewerUsername, reviewerNote) {
+  const conn = getDb();
+  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+  if (!edit) throw new Error('Edit not found');
+  if (edit.status !== 'pending') throw new Error('Edit is not pending');
+
+  conn
+    .prepare(
+      `UPDATE segment_edits
+     SET status = 'rejected',
+         reviewer_id = ?,
+         reviewer_username = ?,
+         reviewer_note = ?,
+         reviewed_at = CURRENT_TIMESTAMP
+     WHERE id = ?`
+    )
+    .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+
+  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+}
+
+/**
+ * Mark a segment edit for discussion.
+ */
+function markForDiscussion(editId, reviewerId, reviewerUsername, reviewerNote) {
+  const conn = getDb();
+  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+  if (!edit) throw new Error('Edit not found');
+  if (edit.status !== 'pending') throw new Error('Edit is not pending');
+
+  conn
+    .prepare(
+      `UPDATE segment_edits
+     SET status = 'discuss',
+         reviewer_id = ?,
+         reviewer_username = ?,
+         reviewer_note = ?,
+         reviewed_at = CURRENT_TIMESTAMP
+     WHERE id = ?`
+    )
+    .run(reviewerId, reviewerUsername, reviewerNote || null, editId);
+
+  return conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(editId);
+}
+
+// =====================================================================
+// MODULE REVIEWS
+// =====================================================================
+
+/**
+ * Submit a module for review (after editor has made segment edits).
+ */
+function submitModuleForReview(params) {
+  const { book, chapter, moduleId, submittedBy, submittedByUsername } = params;
+
+  const conn = getDb();
+
+  // Check for existing pending review
+  const existing = conn
+    .prepare(
+      `SELECT id FROM module_reviews
+     WHERE book = ? AND module_id = ? AND status IN ('pending', 'in_review')`
+    )
+    .get(book, moduleId);
+
+  if (existing) {
+    throw new Error('Module already has a pending review');
+  }
+
+  // Count segments
+  const editCounts = conn
+    .prepare(
+      `SELECT
+       COUNT(*) as total_edits,
+       COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending_edits
+     FROM segment_edits
+     WHERE book = ? AND module_id = ?`
+    )
+    .get(book, moduleId);
+
+  const result = conn
+    .prepare(
+      `INSERT INTO module_reviews
+     (book, chapter, module_id, submitted_by, submitted_by_username,
+      edited_segments)
+     VALUES (?, ?, ?, ?, ?, ?)`
+    )
+    .run(book, chapter, moduleId, submittedBy, submittedByUsername, editCounts.total_edits);
+
+  return {
+    id: result.lastInsertRowid,
+    editedSegments: editCounts.total_edits,
+  };
+}
+
+/**
+ * Get pending module reviews.
+ */
+function getPendingModuleReviews(book) {
+  const conn = getDb();
+
+  let query = `SELECT * FROM module_reviews WHERE status IN ('pending', 'in_review')`;
+  const params = [];
+
+  if (book) {
+    query += ` AND book = ?`;
+    params.push(book);
+  }
+
+  query += ` ORDER BY submitted_at ASC`;
+
+  return conn.prepare(query).all(...params);
+}
+
+/**
+ * Get a module review with its segment edits.
+ */
+function getModuleReviewWithEdits(reviewId) {
+  const conn = getDb();
+
+  const review = conn.prepare(`SELECT * FROM module_reviews WHERE id = ?`).get(reviewId);
+  if (!review) throw new Error('Review not found');
+
+  const edits = conn
+    .prepare(
+      `SELECT * FROM segment_edits
+     WHERE book = ? AND module_id = ?
+     ORDER BY created_at ASC`
+    )
+    .all(review.book, review.module_id);
+
+  return { review, edits };
+}
+
+/**
+ * Complete a module review (after all segment edits have been reviewed).
+ */
+function completeModuleReview(reviewId, reviewerId, reviewerUsername, notes) {
+  const conn = getDb();
+
+  const review = conn.prepare(`SELECT * FROM module_reviews WHERE id = ?`).get(reviewId);
+  if (!review) throw new Error('Review not found');
+
+  // Count segment edit statuses
+  const counts = conn
+    .prepare(
+      `SELECT
+       COUNT(*) as total,
+       COUNT(CASE WHEN status = 'approved' THEN 1 END) as approved,
+       COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
+       COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending,
+       COUNT(CASE WHEN status = 'discuss' THEN 1 END) as discuss
+     FROM segment_edits
+     WHERE book = ? AND module_id = ?`
+    )
+    .get(review.book, review.module_id);
+
+  const allReviewed = counts.pending === 0 && counts.discuss === 0;
+  const newStatus = allReviewed ? 'approved' : 'changes_requested';
+
+  conn
+    .prepare(
+      `UPDATE module_reviews
+     SET status = ?,
+         reviewed_by = ?,
+         reviewed_by_username = ?,
+         reviewed_at = CURRENT_TIMESTAMP,
+         review_notes = ?,
+         approved_segments = ?,
+         rejected_segments = ?
+     WHERE id = ?`
+    )
+    .run(
+      newStatus,
+      reviewerId,
+      reviewerUsername,
+      notes || null,
+      counts.approved,
+      counts.rejected,
+      reviewId
+    );
+
+  return {
+    status: newStatus,
+    counts,
+    allReviewed,
+  };
+}
+
+// =====================================================================
+// DISCUSSIONS
+// =====================================================================
+
+/**
+ * Add a comment to a segment edit discussion.
+ */
+function addDiscussionComment(segmentEditId, userId, username, comment) {
+  const conn = getDb();
+
+  const edit = conn.prepare(`SELECT * FROM segment_edits WHERE id = ?`).get(segmentEditId);
+  if (!edit) throw new Error('Edit not found');
+
+  const result = conn
+    .prepare(
+      `INSERT INTO segment_discussions (segment_edit_id, user_id, username, comment)
+     VALUES (?, ?, ?, ?)`
+    )
+    .run(segmentEditId, userId, username, comment);
+
+  return { id: result.lastInsertRowid };
+}
+
+/**
+ * Get discussion thread for a segment edit.
+ */
+function getDiscussion(segmentEditId) {
+  const conn = getDb();
+  return conn
+    .prepare(
+      `SELECT * FROM segment_discussions
+     WHERE segment_edit_id = ?
+     ORDER BY created_at ASC`
+    )
+    .all(segmentEditId);
+}
+
+// =====================================================================
+// STATISTICS
+// =====================================================================
+
+/**
+ * Get editing statistics for a module.
+ */
+function getModuleStats(book, moduleId) {
+  const conn = getDb();
+
+  return conn
+    .prepare(
+      `SELECT
+       COUNT(*) as total_edits,
+       COUNT(CASE WHEN status = 'pending' THEN 1 END) as pending,
+       COUNT(CASE WHEN status = 'approved' THEN 1 END) as approved,
+       COUNT(CASE WHEN status = 'rejected' THEN 1 END) as rejected,
+       COUNT(CASE WHEN status = 'discuss' THEN 1 END) as discuss,
+       COUNT(DISTINCT segment_id) as segments_edited,
+       COUNT(DISTINCT editor_id) as editors,
+       COUNT(CASE WHEN category = 'terminology' THEN 1 END) as cat_terminology,
+       COUNT(CASE WHEN category = 'accuracy' THEN 1 END) as cat_accuracy,
+       COUNT(CASE WHEN category = 'readability' THEN 1 END) as cat_readability,
+       COUNT(CASE WHEN category = 'style' THEN 1 END) as cat_style,
+       COUNT(CASE WHEN category = 'omission' THEN 1 END) as cat_omission
+     FROM segment_edits
+     WHERE book = ? AND module_id = ?`
+    )
+    .get(book, moduleId);
+}
+
+module.exports = {
+  // Segment edits
+  saveSegmentEdit,
+  getModuleEdits,
+  getSegmentEdits,
+  getEditById,
+  deleteSegmentEdit,
+  // Review actions
+  approveEdit,
+  rejectEdit,
+  markForDiscussion,
+  // Module reviews
+  submitModuleForReview,
+  getPendingModuleReviews,
+  getModuleReviewWithEdits,
+  completeModuleReview,
+  // Discussions
+  addDiscussionComment,
+  getDiscussion,
+  // Statistics
+  getModuleStats,
+};
