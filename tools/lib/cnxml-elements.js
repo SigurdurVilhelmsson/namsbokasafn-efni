@@ -485,6 +485,11 @@ export function processInlineContent(content, context) {
       const tableNum = context.tableNumbers.get(targetId);
       return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
     }
+    // Check if this is an example reference
+    if (context.chapterExampleNumbers && context.chapterExampleNumbers.has(targetId)) {
+      const exNum = context.chapterExampleNumbers.get(targetId);
+      return `<a href="#${escapeAttr(targetId)}">Dæmi ${exNum}</a>`;
+    }
     // Check if this is an exercise reference
     if (context.chapterExerciseNumbers && context.chapterExerciseNumbers.has(targetId)) {
       const exNum = context.chapterExerciseNumbers.get(targetId);
@@ -527,6 +532,11 @@ export function processInlineContent(content, context) {
       if (context.tableNumbers && context.tableNumbers.has(targetId)) {
         const tableNum = context.tableNumbers.get(targetId);
         return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
+      }
+      // Check if this is an example reference
+      if (context.chapterExampleNumbers && context.chapterExampleNumbers.has(targetId)) {
+        const exNum = context.chapterExampleNumbers.get(targetId);
+        return `<a href="#${escapeAttr(targetId)}">Dæmi ${exNum}</a>`;
       }
       // Check if this is an exercise reference
       if (context.chapterExerciseNumbers && context.chapterExerciseNumbers.has(targetId)) {

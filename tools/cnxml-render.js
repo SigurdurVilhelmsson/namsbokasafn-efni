@@ -1588,7 +1588,10 @@ async function main() {
       }
 
       // Also capture example/note IDs with titles
-      const exPattern = /<example\s+id="([^"]+)"[^>]*>\s*<title>([\s\S]*?)<\/title>/g;
+      // OpenStax CNXML has titles either directly under <example> or inside a nested <para>:
+      //   <example id="..."><title>...</title>            (direct)
+      //   <example id="..."><para id="..."><title>...</title>  (nested in para)
+      const exPattern = /<example\s+id="([^"]+)"[^>]*>[\s\S]*?<title>([\s\S]*?)<\/title>/g;
       let em;
       while ((em = exPattern.exec(modCnxml)) !== null) {
         const titleText = em[2].replace(/<[^>]+>/g, '').trim();
