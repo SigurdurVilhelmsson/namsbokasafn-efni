@@ -1,6 +1,8 @@
 # Vefur Renderer Updates Needed
 
-## Summary
+> **SUPERSEDED.** This document described markdown directive name changes for the vefur markdown renderer. With the move to the CNXML→HTML pipeline (see [Editor Rebuild Plan](../workflow/editor-improvements-jan2026.md)), publication output is now semantic HTML from `cnxml-render.js`, not markdown with directives. The vefur renderer will serve pre-rendered HTML instead of processing markdown. The directive name changes described below are no longer relevant.
+
+## Summary (Historical)
 
 The `namsbokasafn-efni` converter has been updated to use original OpenStax class names as directive names. The `namsbokasafn-vefur` renderer must be updated to support these new directive names.
 

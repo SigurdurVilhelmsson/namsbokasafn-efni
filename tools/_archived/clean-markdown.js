@@ -479,15 +479,18 @@ function processFile(filePath, options) {
   if (verbose || dryRun) {
     console.log(`\n${dryRun ? '[DRY RUN] ' : ''}Processing: ${filePath}`);
     if (stats.mspace > 0) console.log(`  - \\mspace commands: ${stats.mspace}`);
-    if (stats.orphanDirectives > 0)
+    if (stats.orphanDirectives > 0) {
       console.log(`  - Orphan ::: markers: ${stats.orphanDirectives}`);
+    }
     if (stats.escapedTildes > 0) console.log(`  - Escaped tildes: ${stats.escapedTildes}`);
     if (stats.tableArtifacts > 0) console.log(`  - Table artifacts: ${stats.tableArtifacts}`);
-    if (stats.orphanedTableSeparators > 0)
+    if (stats.orphanedTableSeparators > 0) {
       console.log(`  - Orphaned table separators: ${stats.orphanedTableSeparators}`);
+    }
     if (stats.pandocAttributes > 0) console.log(`  - Pandoc attributes: ${stats.pandocAttributes}`);
-    if (stats.unbalancedBraces > 0)
+    if (stats.unbalancedBraces > 0) {
       console.log(`  - Simplified equations: ${stats.unbalancedBraces}`);
+    }
   }
 
   if (!dryRun) {

@@ -1,277 +1,296 @@
-# Editor Improvements - January 2026
+# Editor Rebuild Plan: CNXML→HTML Pipeline Integration
 
 ## Overview
 
-This document tracks the second phase of UI/UX improvements focused on the editor experience for translators. These improvements were implemented based on a professional translator review identifying friction points in the day-to-day editing workflow.
+This document replaces the previous Phase 2 editor improvements plan. That plan described 10 UX features built for a markdown-only editor. While many of those features (dark mode, presence, notes, keyboard shortcuts) carry forward, the underlying content model must be rebuilt to support the new Extract-Inject-Render pipeline.
 
-**Status:** ALL 10 ITEMS COMPLETE (as of 2026-01-25)
+**Decision:** The CNXML→HTML pipeline (with markdown as an intermediary for machine translation) is the way forward. The old markdown-assembly publication path (`chapter-assembler.js` + `add-frontmatter.js` → `05-publication/*.md`) will be retired before final deployment.
 
----
-
-## Executive Summary
-
-The first phase of UI improvements (documented in [ui-improvements-plan.md](./ui-improvements-plan.md)) addressed high-level workflow issues: dashboard, assignments, navigation. This second phase focuses on **editor-level usability** for translators who spend most of their time in the `/editor` view.
-
-**Key insight:** Translators want to translate, not navigate software. Every click that isn't editing text is friction.
+**Status:** NOT STARTED
 
 ---
 
-## Implemented Improvements
+## Architecture: Old vs New
 
-### 1. Spell Check Integration - COMPLETE
+### Old Pipeline (Being Retired)
 
-**Problem:** No built-in spell check for Icelandic text.
+```
+CNXML → cnxml-to-md → EN markdown → MT → IS markdown
+                                          ↓
+                                    EasyMDE editor
+                                          ↓
+                                    03-faithful/*.md
+                                          ↓
+                              chapter-assembler + add-frontmatter
+                                          ↓
+                                05-publication/*.md (markdown)
+                                          ↓
+                              vefur renders markdown → HTML
+```
 
-**Solution:** Added browser-native spell check with `lang="is"` attribute.
+### New Pipeline (Target)
 
-**Implementation:**
-- Toggle button in editor header with visual status indicator
-- Uses EasyMDE's `contenteditable` input mode for native spell check
-- Preference persisted in localStorage
-- File: `server/views/editor.html`
+```
+CNXML → cnxml-extract → EN segments + structure.json + equations.json
+                              ↓
+                    protect-segments-for-mt
+                              ↓
+                        malstadur.is (MT)
+                              ↓
+                    restore-segments-from-mt
+                              ↓
+                    Editor (segment review)          ← REBUILD FOCUS
+                              ↓
+                        03-faithful/ (IS segments)
+                              ↓
+                    cnxml-inject → 03-translated/*.cnxml
+                              ↓
+                    cnxml-render → 05-publication/*.html
+                              ↓
+                    vefur serves pre-rendered HTML
+```
 
-**Commit:** `43a4650 feat(editor): add browser-native spell check toggle for Icelandic`
-
----
-
-### 2. Bulk Actions for Admin - COMPLETE
-
-**Problem:** Admin had to assign/approve items one at a time.
-
-**Solution:** Added bulk operations for common admin tasks.
-
-**Implementation:**
-- Bulk approve reviews: `/api/reviews/bulk/approve`
-- Bulk assign chapters: `/api/assignments/bulk/assign`
-- Bulk update assignments: `/api/assignments/bulk/update`
-- Multi-select UI with Ctrl+click in assignment matrix
-- Files: `server/routes/assignments.js`, `server/routes/reviews.js`, `server/views/assignments.html`
-
-**Commit:** `33bcd8b feat(admin): add bulk actions for assignments and reviews`
-
----
-
-### 3. Notification Preferences - COMPLETE
-
-**Problem:** All users received all notifications, causing noise.
-
-**Solution:** Added user-configurable notification preferences.
-
-**Implementation:**
-- Preferences stored per user in SQLite
-- Categories: reviews, assignments, feedback
-- Channels: in-app, email (future)
-- Settings modal accessible from my-work page
-- Files: `server/services/notifications.js`, `server/routes/notifications.js`, `server/views/my-work.html`
-
-**Commit:** `368f37b feat(notifications): add user notification preferences`
+**Key difference:** Publication output is semantic HTML from `cnxml-render.js`, not assembled markdown. The web reader (vefur) serves pre-rendered HTML rather than rendering markdown at request time.
 
 ---
 
-### 4. Export to PDF/Word - COMPLETE
+## What Carries Forward
 
-**Problem:** Editors couldn't easily share or print their work.
+These features from the previous Phase 1 and Phase 2 plans are pipeline-independent and carry forward unchanged:
 
-**Solution:** Added export buttons for PDF and Word formats.
+### Dashboard & Workflow (Phase 1)
+- [x] Unified admin dashboard (`status.html`)
+- [x] Assignment workflow (`assignments.html`, `my-work.html`)
+- [x] Simplified navigation (5-item nav)
+- [x] Issue resolution (`issues.html`)
+- [x] Decision log (`decisions.html`)
+- [x] Progress metrics (analytics in `status.html`)
 
-**Implementation:**
-- PDF: Opens print-friendly view in new window
-- Word: Downloads .doc file with Office-compatible formatting
-- Clean styling optimized for printing
-- Export options in "More" dropdown menu
-- File: `server/views/editor.html`
+### Editor UX (Phase 2)
+- [x] Spell check (browser-native Icelandic)
+- [x] Presence indicators
+- [x] Personal notes per section
+- [x] Keyboard shortcuts
+- [x] Dark mode
+- [x] Bulk actions for admin
+- [x] Notification preferences
+- [x] Consistency checker (terminology)
 
-**Commit:** `621af59 feat(editor): add export to PDF and Word functionality`
-
----
-
-### 5. Usage Analytics Dashboard - COMPLETE
-
-**Problem:** No visibility into how the translation platform was being used.
-
-**Solution:** Created analytics dashboard for admins.
-
-**Implementation:**
-- New `/analytics` page with stats visualization
-- Metrics: page views, sessions, chapters viewed, downloads
-- Popular content table with progress bars
-- Recent activity timeline
-- Period selector (7/30/90 days)
-- Files: `server/views/analytics.html`, `server/routes/views.js`
-
-**Commit:** `02b5ef1 feat(analytics): add usage analytics dashboard`
+### Pilot Support (Phase 7)
+- [x] Feedback system
+- [x] Teacher guide
 
 ---
 
-### 6. Consistency Checker - COMPLETE
+## What Needs Rebuilding
 
-**Problem:** Same English term could be translated differently without warning.
+### 1. Editor Content Model
 
-**Solution:** Added terminology consistency check that compares against approved terms.
+**Current state:** The editor (`server/views/editor.html`) uses EasyMDE to edit full markdown files from `02-mt-output/` and `03-faithful/`. It treats each section (e.g., `5-1.is.md`) as a single markdown document.
 
-**Implementation:**
-- API endpoint: `POST /api/terminology/check-consistency`
-- Checks content against terminology database
-- Shows issues: inconsistent translations, missing terms
-- Click-to-jump functionality to locate issues in editor
-- Results modal with statistics
-- Files: `server/routes/terminology.js`, `server/views/editor.html`
+**Required change:** The editor must work with **segment files** from the extract-inject pipeline. These are markdown files with `<!-- SEG:... -->` markers and `[[MATH:N]]` placeholders. The editor still edits markdown (so EasyMDE can stay), but it must:
 
-**Commit:** `dce8c57 feat(editor): add terminology consistency checker`
+- Load segment files from `02-mt-output/` or `03-faithful/`
+- Preserve `<!-- SEG:... -->` markers (or `{{SEG:...}}` from protected files)
+- Preserve `[[MATH:N]]` placeholders (equations live in separate JSON)
+- Show the corresponding English segment alongside each Icelandic segment
+- Load equation JSON for preview (display rendered math alongside placeholders)
 
----
+**Files to modify:**
+- `server/routes/editor.js` — update content loading to work with segment files
+- `server/services/editorHistory.js` — update file paths and version tracking
+- `server/views/editor.html` — update EasyMDE configuration and preview
 
-### 7. Quick Personal Notes - COMPLETE
+### 2. Pipeline API Endpoints
 
-**Problem:** Editors had no way to save private reminders without creating formal issues.
+**Current state:** `server/routes/process.js` exposes endpoints for `cnxml-extract` (via `pipeline-runner.js`) but not for `cnxml-inject` or `cnxml-render`. There is no way to trigger the inject/render cycle from the web UI.
 
-**Solution:** Added personal notes feature per section.
+**Required:** Add API endpoints for the full pipeline:
 
-**Implementation:**
-- Notes stored per user, per section in JSON file
-- Pin/unpin notes for quick access
-- View all notes across sections
-- Sidebar panel with save/delete actions
-- Keyboard shortcut: `Ctrl+N`
-- Files: `server/services/notesStore.js`, `server/routes/editor.js`, `server/views/editor.html`
+| Endpoint | Method | Tool | Purpose |
+|----------|--------|------|---------|
+| `/api/process/extract/:book/:chapter` | POST | `cnxml-extract.js` | Extract segments from CNXML |
+| `/api/process/protect/:book/:chapter` | POST | `protect-segments-for-mt.js` | Protect segments for MT |
+| `/api/process/restore/:book/:chapter` | POST | `restore-segments-from-mt.js` | Restore segments after MT |
+| `/api/process/inject/:book/:chapter` | POST | `cnxml-inject.js` | Inject translations into CNXML |
+| `/api/process/render/:book/:chapter` | POST | `cnxml-render.js` | Render CNXML to HTML |
 
-**Commit:** `1fbcbee feat(editor): add personal notes feature`
+**Files to modify:**
+- `server/routes/process.js` — add inject and render endpoints
 
----
+### 3. Publication Pipeline
 
-### 8. Real-time Presence Indicators - COMPLETE
+**Current state:** Publication uses `chapter-assembler.js` to assemble 7 module markdown files into 12 publication markdown files, then `add-frontmatter.js` adds YAML metadata. Output is `05-publication/{track}/chapters/{NN}/*.is.md`.
 
-**Problem:** Multiple editors could work on the same section without knowing.
+**Required:** Replace with `cnxml-inject` → `cnxml-render` pipeline:
 
-**Solution:** Added presence tracking to show who else is editing.
+1. After review, run `cnxml-inject` to produce translated CNXML in `03-translated/`
+2. Run `cnxml-render` to produce semantic HTML in `05-publication/{track}/chapters/{NN}/`
+3. Output format: `.html` files with embedded page data JSON, pre-rendered KaTeX, and absolute image paths
 
-**Implementation:**
-- In-memory presence store with 2-minute timeout
-- Presence polling every 30 seconds
-- Visual indicator with avatars in editor header
-- Auto-clear on page unload or visibility change
-- API: `POST/GET/DELETE /api/editor/:book/:chapter/:section/presence`
-- Files: `server/services/presenceStore.js`, `server/routes/editor.js`, `server/views/editor.html`
+**Files to modify:**
+- `server/routes/publication.js` — update publish endpoints to use inject+render
+- `server/services/publicationService.js` — replace markdown assembly with HTML rendering
 
-**Commit:** `ac10f77 feat(editor): add real-time presence indicators`
+**Tools to retire:**
+- `tools/chapter-assembler.js` — replaced by `cnxml-render.js`
+- `tools/add-frontmatter.js` — metadata embedded in HTML by `cnxml-render.js`
+- `tools/compile-chapter.js` — end-of-chapter extraction handled by render
 
----
+### 4. Database Schema Updates
 
-### 9. Keyboard Navigation Improvements - COMPLETE
+**Current state:** `server/services/chapterFilesService.js` tracks file types: `en-md`, `equations`, `figures`, `protected`, `strings`. No tracking for structure JSON, translated CNXML, or rendered HTML.
 
-**Problem:** Power users had limited keyboard shortcuts.
+**Required:** Add tracking for new pipeline outputs:
 
-**Solution:** Added comprehensive keyboard shortcuts for all sidebars.
+| File Type | Directory | Description |
+|-----------|-----------|-------------|
+| `structure` | `02-structure/` | Structure JSON from extract |
+| `equations` | `02-structure/` | Equations JSON from extract |
+| `translated-cnxml` | `03-translated/` | CNXML from inject |
+| `rendered-html` | `05-publication/` | HTML from render |
 
-**Implementation:**
-- `Ctrl+H`: History sidebar
-- `Ctrl+J`: Issues sidebar
-- `Ctrl+K`: Comments sidebar
-- `Ctrl+N`: Notes sidebar
-- `Ctrl+T`: Terminology sidebar
-- `Ctrl+E`: Toggle source panel
-- `F1` or `?`: Keyboard help
-- `Escape`: Close all sidebars and modals
-- Updated keyboard help modal with complete reference
-- File: `server/views/editor.html`
+**Files to modify:**
+- `server/services/chapterFilesService.js` — add new file types
+- `server/migrations/` — add migration for new tracking columns
 
-**Commit:** `76f7bf7 feat(editor): improve keyboard navigation`
+### 5. Status Schema Updates
 
----
+**Current state:** 5 stages: `enMarkdown` → `mtOutput` → `linguisticReview` → `tmCreated` → `publication`.
 
-### 10. Dark Mode - COMPLETE
+**Required:** Expand to include inject and render steps:
 
-**Problem:** No dark theme option for late-night work.
+| Stage | Step | Description |
+|-------|------|-------------|
+| `extraction` | 1 | CNXML → segments + structure (cnxml-extract) |
+| `mtReady` | 1b | Segments protected and split (protect-segments-for-mt) |
+| `mtOutput` | 2 | MT output received |
+| `linguisticReview` | 3 | Faithful translation reviewed |
+| `tmCreated` | 4 | TM created via Matecat Align |
+| `injection` | 5a | Translated CNXML produced (cnxml-inject) |
+| `rendering` | 5b | HTML produced (cnxml-render) |
+| `publication` | 5c | Published to web |
 
-**Solution:** Added full dark mode support with system preference detection.
+**Files to modify:**
+- `schemas/chapter-status.schema.json`
+- `server/routes/status.js` — update `PIPELINE_STAGES`
 
-**Implementation:**
-- CSS custom properties for all theme colors
-- System preference detection (`prefers-color-scheme`)
-- Persistent user preference in localStorage
-- Theme toggle button in header (sun/moon icons)
-- Dark-compatible styles for cards, sidebars, forms
-- File: `server/views/editor.html`
+### 6. Editor HTML Preview
 
-**Commit:** `7f33059 feat(editor): add dark mode support`
+**Current state:** The editor only shows markdown (EasyMDE) and optionally the English source alongside.
 
----
+**Required:** Add a rendered HTML preview panel so editors can see how their translations will look after inject+render:
 
-## Files Modified
+- "Preview" button triggers `cnxml-inject` + `cnxml-render` for the current module
+- Preview panel shows the rendered HTML alongside the segment editor
+- This replaces the current markdown preview (which shows approximate rendering)
 
-| File | Changes |
-|------|---------|
-| `server/views/editor.html` | All UI features: spell check, export, consistency check, notes, presence, keyboard nav, dark mode |
-| `server/routes/editor.js` | Notes API, presence API endpoints |
-| `server/routes/terminology.js` | Consistency check endpoint |
-| `server/routes/assignments.js` | Bulk assign/update endpoints |
-| `server/routes/reviews.js` | Bulk approve endpoint |
-| `server/routes/notifications.js` | Preferences endpoints |
-| `server/routes/views.js` | Analytics page route |
-| `server/services/notesStore.js` | NEW - Personal notes storage |
-| `server/services/presenceStore.js` | NEW - Presence tracking |
-| `server/services/notifications.js` | Preferences system |
-| `server/views/analytics.html` | NEW - Analytics dashboard |
-| `server/views/assignments.html` | Multi-select UI |
-| `server/views/my-work.html` | Settings modal |
+**Files to modify:**
+- `server/views/editor.html` — add preview panel
+- `server/routes/editor.js` — add preview endpoint
 
----
+### 7. Export Updates
 
-## Keyboard Shortcuts Reference
+**Current state:** Export to PDF/Word from markdown via EasyMDE print view.
 
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+S` | Save |
-| `Ctrl+B` | Bold |
-| `Ctrl+I` | Italic |
-| `Ctrl+M` | Add comment |
-| `Ctrl+E` | Toggle EN/IS split view |
-| `Ctrl+T` | Terminology lookup |
-| `Ctrl+H` | History sidebar |
-| `Ctrl+J` | Issues sidebar |
-| `Ctrl+K` | Comments sidebar |
-| `Ctrl+N` | Personal notes |
-| `Alt+←` | Previous section |
-| `Alt+→` | Next section |
-| `Escape` | Close all sidebars/modals |
-| `?` or `F1` | Keyboard help |
-| `F11` | Fullscreen |
+**Required:** Export from rendered HTML:
+- PDF: print the rendered HTML (better fidelity, correct equations)
+- Word: convert rendered HTML to .docx
+
+**Files to modify:**
+- `server/views/editor.html` — update export functions
 
 ---
 
-## Verification Checklist
+## Directory Structure Updates
 
-All items verified:
-- [x] Spell check works for Icelandic text in editor
-- [x] Admin can bulk approve reviews and assign chapters
-- [x] Users can configure notification preferences
-- [x] Export to PDF and Word produces clean output
-- [x] Analytics dashboard shows usage statistics
-- [x] Consistency check flags terminology mismatches
-- [x] Personal notes save and persist across sessions
-- [x] Presence indicator shows other editors on same section
-- [x] All keyboard shortcuts work as documented
-- [x] Dark mode toggles correctly and persists preference
+The content repository needs two new directories tracked in documentation:
+
+```
+books/{book}/
+├── 01-source/              # 🔒 READ ONLY - OpenStax CNXML originals
+├── 02-for-mt/              # EN segments for machine translation
+│   └── ch{NN}/
+│       └── m{NNNNN}-segments.en.md
+├── 02-structure/           # ← NEW: Document structure from extract
+│   └── ch{NN}/
+│       ├── m{NNNNN}-structure.json
+│       └── m{NNNNN}-equations.json
+├── 02-mt-output/           # 🔒 READ ONLY - IS segments from MT
+├── 03-faithful/            # ✏️ Reviewed IS segments
+├── 03-translated/          # ← NEW: Translated CNXML from inject
+│   └── ch{NN}/
+│       └── m{NNNNN}.cnxml
+├── 04-localized/           # ✏️ Pass 2 output
+├── 05-publication/         # ✏️ Web-ready HTML (was markdown)
+│   ├── mt-preview/
+│   ├── faithful/
+│   └── localized/
+├── for-align/              # Staging for Matecat Align
+├── tm/                     # 🔒 READ ONLY - TMX from Matecat Align
+├── glossary/               # Terminology files
+└── chapters/ch{NN}/        # Status tracking
+```
 
 ---
 
-## Next Steps (Future Work)
+## Implementation Order
 
-These items were identified but not implemented in this phase:
+### Phase A: Pipeline API (Foundation)
 
-1. **Chapter Progress Bar** - Visual indicator of section completion within a chapter
-2. **Blocked Issue Alerts** - Prominent warnings when work is blocked
-3. **Decision Enforcement** - Highlight text that contradicts previous terminology decisions
-4. **Review SLA Tracking** - Show review age and auto-escalation
-5. **Capacity Planning** - Warn when assigning beyond team capacity
+1. Add `/api/process/inject` endpoint calling `cnxml-inject.js`
+2. Add `/api/process/render` endpoint calling `cnxml-render.js`
+3. Update `chapterFilesService.js` to track structure, translated CNXML, and rendered HTML
+4. Add database migration for new file types
 
-See the original analysis in the plan file for detailed recommendations on these items.
+### Phase B: Publication Migration
+
+5. Update `publication.js` routes to use inject+render instead of chapter-assembler
+6. Update publication tracks (mt-preview, faithful, localized) to produce HTML
+7. Test end-to-end: review → inject → render → publish for one chapter
+
+### Phase C: Editor Updates
+
+8. Update editor content loading for segment files
+9. Add HTML preview panel (inject+render preview)
+10. Update export to use rendered HTML
+11. Update status schema with new stages
+
+### Phase D: Cleanup
+
+12. Retire `chapter-assembler.js`, `add-frontmatter.js`, `compile-chapter.js`
+13. Remove old markdown publication paths from `publication.js`
+14. Update all documentation (ROADMAP, architecture, CLI reference)
+15. Update vefur sync to handle HTML content instead of markdown
 
 ---
 
-## Related Documentation
+## Decisions
 
-- [UI Improvements Phase 1](./ui-improvements-plan.md) - Dashboard, assignments, navigation
-- [Simplified Workflow](./simplified-workflow.md) - 5-step translation pipeline
-- [Pass 1: Linguistic Review](../editorial/pass1-linguistic.md) - First editorial pass
-- [Pass 2: Localization](../editorial/pass2-localization.md) - Second editorial pass
+| Decision | Rationale |
+|----------|-----------|
+| Keep EasyMDE for segment editing | Markdown segments are still the editing format; only publication output changes |
+| HTML publication output | cnxml-render produces higher-fidelity output than markdown assembly |
+| Pre-render KaTeX server-side | Already implemented in cnxml-render.js; faster page loads |
+| Retire chapter-assembler path | Two publication paths creates maintenance burden and confusion |
+| Keep 3-track publication | mt-preview/faithful/localized tracks still make sense for HTML output |
+
+---
+
+## Risks
+
+| Risk | Mitigation |
+|------|------------|
+| Vefur must be updated to serve HTML instead of rendering markdown | Plan vefur changes in parallel; HTML is simpler to serve |
+| Existing published markdown content becomes orphaned | Re-render all published chapters through new pipeline before retirement |
+| Editor segment markers confuse translators | Add clear UI indication that markers are system-managed |
+| cnxml-render open issues (examples, exercises, cross-refs) | Fix these in cnxml-render.js before editor integration; tracked in html-pipeline-issues.md |
+
+---
+
+## Related Documents
+
+- [UI Improvements Phase 1](./ui-improvements-plan.md) — Dashboard features (carry forward)
+- [Simplified Workflow](./simplified-workflow.md) — Updated 5-step process
+- [HTML Pipeline Issues](../pipeline/html-pipeline-issues.md) — Bugs in cnxml-render
+- [Architecture](../technical/architecture.md) — System architecture

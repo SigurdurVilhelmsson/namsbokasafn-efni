@@ -48,9 +48,15 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
-│  Step 5: Publication                                        │
-│  Tool: Existing publication pipeline                        │
-│  Output: Web-ready markdown in 05-publication/              │
+│  Step 5a: Inject translations into CNXML                    │
+│  Tool: cnxml-inject.js                                      │
+│  Output: Translated CNXML in 03-translated/                 │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│  Step 5b: Render to HTML                                    │
+│  Tool: cnxml-render.js                                      │
+│  Output: Semantic HTML in 05-publication/                   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -195,32 +201,51 @@ node tools/prepare-for-align.js \
 
 ---
 
-### Step 5: Publication
+### Step 5: Publication (Inject + Render)
 
-**Goal:** Prepare web-ready content with appropriate labeling.
+**Goal:** Produce web-ready HTML from reviewed translations.
 
-#### 5a: Chapter Assembly (12-File Structure)
+#### 5a: Inject translations into CNXML
 
-Before publishing, module files are assembled into the website's 12-file structure per chapter:
+After linguistic review, inject the reviewed segments back into the CNXML structure:
 
 ```bash
-# Assemble chapter from faithful translations
-node tools/chapter-assembler.js --chapter 1 --book efnafraedi --track faithful
+# Inject all modules in a chapter
+node tools/cnxml-inject.js --chapter 1
 
-# Or via pipeline-runner with assembly
-node tools/pipeline-runner.js --chapter 1 --book efnafraedi --assemble-only --assemble-track faithful
+# Or a single module
+node tools/cnxml-inject.js --chapter 1 --module m68663
 ```
 
-**Input:** 7 module files from `03-faithful/ch01/`
+**Input:**
+- Reviewed segments from `03-faithful/ch01/` (or `02-mt-output/` for mt-preview)
+- Structure JSON from `02-structure/ch01/`
+- Equations JSON from `02-structure/ch01/`
+- Original CNXML from `01-source/ch01/`
 
-**Output:** 12 publication files in `05-publication/faithful/chapters/01/`:
-- 7 stripped module files (intro, 1.1-1.6) - exercises/summary/glossary removed
-- `1-key-terms.is.md` - aggregated, alphabetized definitions
-- `1-key-equations.is.md` - aggregated equation references
-- `1-summary.is.md` - section-by-section summaries
-- `1-exercises.is.md` - aggregated with running numbers and section headers
+**Output:** Translated CNXML in `03-translated/ch01/m68663.cnxml` (one file per module)
 
-#### 5b: Publication Tracks
+#### 5b: Render CNXML to HTML
+
+Render the translated CNXML to semantic HTML for web publication:
+
+```bash
+# Render all modules in a chapter
+node tools/cnxml-render.js --chapter 1 --track faithful
+
+# Or a single module
+node tools/cnxml-render.js --chapter 1 --module m68663 --track faithful
+```
+
+**Input:** Translated CNXML from `03-translated/ch01/`
+
+**Output:** Semantic HTML files in `05-publication/faithful/chapters/01/`:
+- One HTML file per module with all IDs preserved
+- Pre-rendered KaTeX equations (display and inline)
+- Embedded page data JSON
+- Absolute image paths for web serving
+
+#### 5c: Publication Tracks
 
 The publication system has **three tracks** that replace each other as the translation matures:
 
@@ -258,26 +283,16 @@ curl -X POST http://localhost:3000/api/publication/efnafraedi/5/faithful
 curl -X POST http://localhost:3000/api/publication/efnafraedi/5/localized
 ```
 
-#### Option C: Via CLI Tool
+#### Option C: Via CLI Tools
 
 ```bash
-# Add frontmatter with MT preview label
-node tools/add-frontmatter.js \
-  books/efnafraedi/02-mt-output/ch05/5-1.is.md \
-  --mt-preview \
-  --title "Grundvallaratriði orku"
+# Inject + render for faithful track
+node tools/cnxml-inject.js --chapter 5
+node tools/cnxml-render.js --chapter 5 --track faithful
 
-# Add frontmatter with faithful label
-node tools/add-frontmatter.js \
-  books/efnafraedi/03-faithful/ch05/5-1.is.md \
-  --track faithful \
-  --title "Grundvallaratriði orku"
-
-# Add frontmatter with localized label
-node tools/add-frontmatter.js \
-  books/efnafraedi/04-localized/ch05/5-1.is.md \
-  --track localized \
-  --title "Grundvallaratriði orku"
+# Inject + render for MT preview track (uses MT output segments)
+node tools/cnxml-inject.js --chapter 5 --lang is
+node tools/cnxml-render.js --chapter 5 --track mt-preview
 ```
 
 #### MT Preview Warning Banner
@@ -302,51 +317,56 @@ This banner is removed when faithful translation is published.
 ```
 books/efnafraedi/
 ├── 01-source/              # 🔒 READ ONLY - OpenStax CNXML originals
-├── 02-for-mt/              # EN markdown for MT
 │   └── ch05/
-│       ├── 5-1.en.md           # Step 1 output
-│       ├── 5-1(a).en.md        # Split for Erlendur (if needed)
-│       ├── 5-1(b).en.md
-│       └── 5-1-equations.json
-├── 02-mt-output/           # 🔒 READ ONLY - IS markdown from MT
+│       └── m68724.cnxml
+├── 02-for-mt/              # EN segments for MT (Step 1a output)
 │   └── ch05/
-│       ├── 5-1.is.md           # Step 2 output (or split parts)
-│       └── ...
-├── 03-faithful/            # ✏️ Reviewed IS markdown
+│       └── m68724-segments.en.md    # With <!-- SEG:... --> and [[MATH:N]]
+├── 02-structure/           # Document structure (Step 1a output)
 │   └── ch05/
-│       └── 5-1.is.md           # Step 3 output (faithful translation)
+│       ├── m68724-structure.json    # Document skeleton
+│       └── m68724-equations.json    # MathML equations
+├── 02-mt-output/           # 🔒 READ ONLY - IS segments from MT
+│   └── ch05/
+│       └── m68724-segments.is.md    # Step 2 output
+├── 03-faithful/            # ✏️ Reviewed IS segments
+│   └── ch05/
+│       └── m68724-segments.is.md    # Step 3 output (faithful)
+├── 03-translated/          # Translated CNXML (Step 5a output)
+│   └── ch05/
+│       └── m68724.cnxml             # Reconstructed translated CNXML
 ├── for-align/              # Staging for Matecat Align
 │   └── ch05/
-│       ├── 5-1.en.clean.md     # Cleaned EN for alignment
-│       └── 5-1.is.clean.md     # Cleaned IS for alignment
+│       ├── 5-1.en.clean.md
+│       └── 5-1.is.clean.md
 ├── tm/                     # 🔒 READ ONLY - TMX from Matecat Align
 │   └── ch05/
-│       └── 5-1.tmx             # Step 4 output (human-verified TM)
+│       └── 5-1.tmx                  # Step 4 output (human-verified TM)
 ├── 04-localized/           # ✏️ Pass 2 output
 │   └── ch05/
-│       └── 5-1.is.md           # Localized translation
-└── 05-publication/         # ✏️ Web-ready content
+│       └── m68724-segments.is.md    # Localized translation
+└── 05-publication/         # ✏️ Web-ready HTML (Step 5b output)
     ├── mt-preview/             # Unreviewed MT (with warning banner)
     │   └── chapters/05/
     ├── faithful/               # Human-reviewed translations
     │   └── chapters/05/
     └── localized/              # Culturally adapted content
-        └── chapters/05/        # Step 5 final output
+        └── chapters/05/
 ```
 
 ---
 
 ## Tools Summary
 
-### Keep (Essential)
+### Active
 | Tool | Purpose | Step |
 |------|---------|------|
 | `cnxml-extract.js` | CNXML → segmented EN markdown + structure JSON | 1a |
 | `protect-segments-for-mt.js` | Protect tags & links, split for Erlendur MT | 1b |
 | `restore-segments-from-mt.js` | Restore tags & links in MT output | 2→3 |
 | `prepare-for-align.js` | Clean markdown for Matecat Align | 4 |
-| `chapter-assembler.js` | Assemble 7 modules → 12 publication files | 5 |
-| `add-frontmatter.js` | Add metadata for publication | 5 |
+| `cnxml-inject.js` | Inject translations back into CNXML structure | 5a |
+| `cnxml-render.js` | Render translated CNXML to semantic HTML | 5b |
 
 ### External Services
 | Service | Purpose | Step |
@@ -357,9 +377,12 @@ books/efnafraedi/
 ### Deprecated
 | Tool | Why Deprecated |
 |------|----------------|
-| `split-for-erlendur.js` | Replaced by `protect-segments-for-mt.js` (splits + protects) |
+| `chapter-assembler.js` | Replaced by `cnxml-render.js` for HTML output |
+| `add-frontmatter.js` | Metadata embedded in HTML by `cnxml-render.js` |
+| `compile-chapter.js` | End-of-chapter extraction handled by `cnxml-render.js` |
 | `pipeline-runner.js` | Replaced by `cnxml-extract.js` for extraction |
 | `cnxml-to-md.js` | Replaced by `cnxml-extract.js` |
+| `split-for-erlendur.js` | Replaced by `protect-segments-for-mt.js` (splits + protects) |
 | `create-bilingual-xliff.js` | Matecat Align handles segmentation |
 | `md-to-xliff.js` | No longer generating XLIFF |
 | `xliff-to-md.js` | No longer processing XLIFF |
@@ -421,17 +444,10 @@ node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
 
 # Step 2: Upload to malstadur.is (manual), save to 02-mt-output/
 
-# Step 2b (Optional): Publish MT preview immediately
-node tools/chapter-assembler.js --chapter 5 --book efnafraedi --track mt-preview
-# or via API:
-curl -X POST http://localhost:3000/api/publication/efnafraedi/5/mt-preview
+# Step 2→3: Restore protected segments in MT output
+node tools/restore-segments-from-mt.js --batch books/efnafraedi/02-mt-output/ch05/
 
 # Step 3: Review MT output, save to 03-faithful/ (manual)
-
-# Step 3b: Assemble and publish faithful translation (replaces MT preview)
-node tools/chapter-assembler.js --chapter 5 --book efnafraedi --track faithful
-# or via API:
-curl -X POST http://localhost:3000/api/publication/efnafraedi/5/faithful
 
 # Step 4: Prepare for Matecat Align
 node tools/prepare-for-align.js \
@@ -440,11 +456,19 @@ node tools/prepare-for-align.js \
   --output-dir books/efnafraedi/for-align/ch05
 # Then upload to Matecat Align (manual)
 
-# Step 5 (Optional): Localize and publish (replaces faithful)
-# After Pass 2 review is complete:
-node tools/chapter-assembler.js --chapter 5 --book efnafraedi --track localized
+# Step 5a: Inject translations into CNXML
+node tools/cnxml-inject.js --chapter 5
+
+# Step 5b: Render to HTML and publish
+node tools/cnxml-render.js --chapter 5 --track faithful
 # or via API:
-curl -X POST http://localhost:3000/api/publication/efnafraedi/5/localized
+curl -X POST http://localhost:3000/api/publication/efnafraedi/5/faithful
+
+# MT preview (uses MT output directly, before review):
+node tools/cnxml-inject.js --chapter 5
+node tools/cnxml-render.js --chapter 5 --track mt-preview
+# or via API:
+curl -X POST http://localhost:3000/api/publication/efnafraedi/5/mt-preview
 ```
 
 ## API Endpoints

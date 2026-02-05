@@ -71,17 +71,20 @@ Each section object:
 
 ### Status Object
 
-Contains one entry per workflow stage:
+Contains one entry per workflow stage. The pipeline uses an 8-stage Extract-Inject-Render workflow:
 
 | Stage | Type | Description |
 |-------|------|-------------|
-| `source` | StageStatus | Source material from OpenStax |
-| `mtOutput` | StageStatus | Machine translation output |
-| `matecat` | StageStatusWithProgress | TM alignment in Matecat |
-| `editorialPass1` | EditorialStageStatus | Linguistic review (Pass 1) |
-| `tmUpdated` | StageStatus | Translation memory updated |
-| `editorialPass2` | EditorialStageStatus | Localization review (Pass 2) |
-| `publication` | PublicationStatus | Published to web |
+| `extraction` | StageStatus | Segments + structure extracted from CNXML (Step 1a) |
+| `mtReady` | StageStatus | Segments protected and split for MT (Step 1b) |
+| `mtOutput` | StageStatus | Machine translation output received (Step 2) |
+| `linguisticReview` | EditorialStageStatus | Faithful translation reviewed (Step 3) |
+| `tmCreated` | StageStatus | TM created via Matecat Align (Step 4) |
+| `injection` | StageStatus | Translated CNXML produced (Step 5a) |
+| `rendering` | StageStatus | HTML produced (Step 5b) |
+| `publication` | PublicationStatus | Published to web (Step 5c) |
+
+> **Note:** Legacy status files may still use the old 7-stage schema (`source`, `matecat`, `editorialPass1`, `tmUpdated`, `editorialPass2`). These will be migrated as chapters are re-processed through the CNXML→HTML pipeline.
 
 #### StageStatus (Basic)
 
@@ -269,4 +272,5 @@ The full JSON Schema is at: `schemas/chapter-status.schema.json`
 ## See Also
 
 - [CLI Reference](cli-reference.md) - How to update status via CLI
-- [Workflow Overview](../workflow/overview.md) - Full translation pipeline
+- [Simplified Workflow](../workflow/simplified-workflow.md) - Translation pipeline overview
+- [Master Pipeline](../workflow/master-pipeline.md) - Complete pipeline reference

@@ -18,11 +18,16 @@
  * Usage:
  *   node tools/cnxml-inject.js --chapter <num> --module <id> [--lang is]
  *   node tools/cnxml-inject.js --chapter <num> [--lang is]
+ *   node tools/cnxml-inject.js --chapter <num> --source-dir 03-faithful
  *
  * Options:
  *   --chapter <num>    Chapter number
  *   --module <id>      Specific module ID (default: all in chapter)
  *   --lang <code>      Language code for translated segments (default: is)
+ *   --source-dir <dir> Directory containing translated segments, relative to
+ *                      books/efnafraedi/ (default: 02-for-mt)
+ *                      Use 02-mt-output for MT preview, 03-faithful for
+ *                      reviewed translations, 04-localized for localized
  *   --output-dir <dir> Output directory (default: 03-translated/chNN/)
  *   --verbose          Show detailed progress
  *   -h, --help         Show this help
@@ -46,6 +51,7 @@ function parseArgs(args) {
     chapter: null,
     module: null,
     lang: 'is',
+    sourceDir: null,
     outputDir: null,
     verbose: false,
     help: false,
@@ -58,6 +64,7 @@ function parseArgs(args) {
     else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
     else if (arg === '--module' && args[i + 1]) result.module = args[++i];
     else if (arg === '--lang' && args[i + 1]) result.lang = args[++i];
+    else if (arg === '--source-dir' && args[i + 1]) result.sourceDir = args[++i];
     else if (arg === '--output-dir' && args[i + 1]) result.outputDir = args[++i];
   }
 
@@ -76,25 +83,29 @@ Usage:
   node tools/cnxml-inject.js --chapter <num>
 
 Options:
-  --chapter <num>    Chapter number
-  --module <id>      Specific module ID (default: all in chapter)
-  --lang <code>      Language code (default: is)
-  --output-dir <dir> Output directory (default: 03-translated/chNN/)
-  --verbose          Show detailed progress
-  -h, --help         Show this help
+  --chapter <num>      Chapter number
+  --module <id>        Specific module ID (default: all in chapter)
+  --lang <code>        Language code (default: is)
+  --source-dir <dir>   Segments directory relative to books/efnafraedi/
+                       (default: 02-for-mt)
+  --output-dir <dir>   Output directory (default: 03-translated/chNN/)
+  --verbose            Show detailed progress
+  -h, --help           Show this help
 
 Input Files (read from):
-  02-for-mt/chNN/<module>-segments.<lang>.md    Translated segments
-  02-structure/chNN/<module>-structure.json     Document structure
-  02-structure/chNN/<module>-equations.json     MathML equations
-  01-source/chNN/<module>.cnxml                 Original CNXML (reference)
+  <source-dir>/chNN/<module>-segments.<lang>.md  Translated segments
+  02-structure/chNN/<module>-structure.json       Document structure
+  02-structure/chNN/<module>-equations.json       MathML equations
+  01-source/chNN/<module>.cnxml                   Original CNXML (reference)
 
 Output:
-  03-translated/chNN/<module>.cnxml             Translated CNXML
+  03-translated/chNN/<module>.cnxml               Translated CNXML
 
 Examples:
   node tools/cnxml-inject.js --chapter 5 --module m68724
   node tools/cnxml-inject.js --chapter 5 --lang is --verbose
+  node tools/cnxml-inject.js --chapter 5 --source-dir 03-faithful
+  node tools/cnxml-inject.js --chapter 5 --source-dir 04-localized
 `);
 }
 
@@ -1035,8 +1046,12 @@ function findChapterModules(chapter, moduleId = null) {
 
 /**
  * Load input files for a module.
+ * @param {number} chapter - Chapter number
+ * @param {string} moduleId - Module ID (e.g., m68724)
+ * @param {string} lang - Language code (e.g., 'is')
+ * @param {string} sourceDir - Directory containing segments, relative to BOOKS_DIR (e.g., '02-for-mt', '03-faithful')
  */
-function loadModuleInputs(chapter, moduleId, lang) {
+function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
   const chapterStr = String(chapter).padStart(2, '0');
 
   // Load structure
@@ -1048,16 +1063,16 @@ function loadModuleInputs(chapter, moduleId, lang) {
   );
   const structure = JSON.parse(fs.readFileSync(structPath, 'utf-8'));
 
-  // Load segments
+  // Load segments from specified source directory
   const segmentsPath = path.join(
     BOOKS_DIR,
-    '02-for-mt',
+    sourceDir,
     `ch${chapterStr}`,
     `${moduleId}-segments.${lang}.md`
   );
   let segments;
   if (!fs.existsSync(segmentsPath)) {
-    // Fall back to English if translation not available
+    // Fall back to English segments in 02-for-mt if translation not available
     const enPath = path.join(
       BOOKS_DIR,
       '02-for-mt',
@@ -1067,7 +1082,9 @@ function loadModuleInputs(chapter, moduleId, lang) {
     if (!fs.existsSync(enPath)) {
       throw new Error(`Segments file not found: ${segmentsPath} or ${enPath}`);
     }
-    console.error(`Warning: Using English segments for ${moduleId} (translation not found)`);
+    console.error(
+      `Warning: Using English segments for ${moduleId} (translation not found in ${sourceDir})`
+    );
     const content = fs.readFileSync(enPath, 'utf-8');
     segments = parseSegments(content);
   } else {
@@ -1134,18 +1151,21 @@ async function main() {
     process.exit(1);
   }
 
+  const sourceDir = args.sourceDir || '02-for-mt';
+
   try {
     const modules = findChapterModules(args.chapter, args.module);
 
     for (const moduleId of modules) {
       if (args.verbose) {
-        console.error(`Processing: ${moduleId}`);
+        console.error(`Processing: ${moduleId} (source: ${sourceDir})`);
       }
 
       const { structure, segments, equations, originalCnxml } = loadModuleInputs(
         args.chapter,
         moduleId,
-        args.lang
+        args.lang,
+        sourceDir
       );
 
       const cnxml = buildCnxml(structure, segments, equations, originalCnxml, {

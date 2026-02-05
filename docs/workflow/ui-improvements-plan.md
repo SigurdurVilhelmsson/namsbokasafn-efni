@@ -1,14 +1,14 @@
 # Translator Workflow Review: UI/UX Improvements for Small Teams
 
+> **Historical Document.** This plan describes Phase 1 dashboard and workflow improvements, all of which are implemented and carry forward to the new CNXML→HTML pipeline. For the current editor rebuild plan, see [Editor Rebuild Plan](./editor-improvements-jan2026.md).
+
 ## Executive Summary
 
 Review of the translation management system from a professional translator's perspective, identifying improvements for a 3-5 person team translating OpenStax Chemistry 2e from English to Icelandic.
 
 **Key Finding:** The system is feature-rich but complex. A small team working chapter-by-chapter needs streamlined visibility and simpler workflows over sophisticated automation.
 
-**Status:** PHASE 1 COMPLETE (as of 2026-01-22)
-
-> **Phase 2 (Editor Improvements):** See [editor-improvements-jan2026.md](./editor-improvements-jan2026.md) for 10 additional editor-focused improvements completed 2026-01-25.
+**Status:** PHASE 1 COMPLETE (as of 2026-01-22). All features are pipeline-independent and carry forward.
 
 ---
 

@@ -21,11 +21,10 @@ The repository implements a 5-step translation workflow for producing Icelandic 
                 │                    │                       │
                 ▼                    ▼                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           CLI Tools (Node.js)                                │
+│                   Extract-Inject-Render Pipeline (Node.js)                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  pipeline-runner.js  │  chapter-assembler.js  │  prepare-for-align.js       │
-│  cnxml-to-md.js      │  restore-strings.js    │  add-frontmatter.js         │
-│  protect-for-mt.js   │  split-for-erlendur.js │  validate-chapter.js        │
+│  cnxml-extract.js    │  cnxml-inject.js       │  cnxml-render.js            │
+│  protect-segments.js │  restore-segments.js   │  prepare-for-align.js       │
 └─────────────────────────────────────────────────────────────────────────────┘
                 │                    │                       │
                 ▼                    ▼                       ▼
@@ -34,11 +33,13 @@ The repository implements a 5-step translation workflow for producing Icelandic 
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  books/{book}/                                                               │
 │  ├── 01-source/          (CNXML originals - READ ONLY)                      │
-│  ├── 02-for-mt/          (EN markdown for machine translation)              │
+│  ├── 02-for-mt/          (EN segments for machine translation)              │
+│  ├── 02-structure/       (Document structure + equations JSON)               │
 │  ├── 02-mt-output/       (MT results - READ ONLY)                           │
 │  ├── 03-faithful/        (Human-reviewed translations)                      │
+│  ├── 03-translated/      (Translated CNXML from inject)                     │
 │  ├── 04-localized/       (Culturally adapted content)                       │
-│  ├── 05-publication/     (Web-ready output)                                 │
+│  ├── 05-publication/     (Web-ready HTML output)                            │
 │  ├── for-align/          (Staging for TM creation)                          │
 │  └── tm/                 (Translation memory - READ ONLY)                   │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -56,7 +57,7 @@ The repository implements a 5-step translation workflow for producing Icelandic 
 │                           Web Publication                                    │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  namsbokasafn-vefur (separate repository)                                   │
-│  ├── Astro + MDX site                                                       │
+│  ├── SvelteKit site serving pre-rendered HTML                               │
 │  ├── Content synced from efni repo                                          │
 │  └── Published at efnafraedi.app                                            │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -66,51 +67,49 @@ The repository implements a 5-step translation workflow for producing Icelandic 
 
 ### 1. CLI Pipeline Tools (`tools/`)
 
-The pipeline consists of 40+ Node.js CLI tools organized by function:
+The pipeline uses an Extract-Inject-Render architecture:
 
-#### Content Conversion
+#### Extraction (CNXML → Segments)
 | Tool | Purpose | Input | Output |
 |------|---------|-------|--------|
-| `cnxml-to-md.js` | Convert OpenStax CNXML to Markdown | CNXML | Markdown + equations JSON |
-| `pipeline-runner.js` | Orchestrate full conversion pipeline | Module ID or CNXML | All step outputs |
-| `chapter-assembler.js` | Assemble modules into 12-file structure | Module files | Publication files |
-
-#### MT Preparation
-| Tool | Purpose | Input | Output |
-|------|---------|-------|--------|
-| `protect-for-mt.js` | Protect tables/frontmatter with placeholders | Markdown | Protected markdown + JSON |
-| `split-for-erlendur.js` | Split large files for MT character limits | Markdown | Split file parts |
-| `extract-table-strings.js` | Extract translatable table content | Protected JSON | Strings markdown |
-| `extract-equation-strings.js` | Extract translatable equation text | Equations JSON | Strings markdown |
+| `cnxml-extract.js` | Extract translatable segments from CNXML | CNXML | Segments markdown + structure JSON + equations JSON |
+| `protect-segments-for-mt.js` | Protect markers & links, split for MT | Segment files | MT-ready segments + links JSON |
 
 #### Post-MT Restoration
 | Tool | Purpose | Input | Output |
 |------|---------|-------|--------|
-| `restore-strings.js` | Restore translated strings to content | Translated strings | Updated markdown |
-| `restore-tables.js` | Restore protected tables | Protected JSON + translation | Restored markdown |
-| `merge-split-files.js` | Merge split file parts | Split parts | Single file |
-| `apply-equations.js` | Restore equation placeholders | Equations JSON | Markdown with LaTeX |
+| `restore-segments-from-mt.js` | Restore markers & links in MT output | MT output | Clean segments |
 
 #### TM Creation
 | Tool | Purpose | Input | Output |
 |------|---------|-------|--------|
 | `prepare-for-align.js` | Clean markdown for Matecat Align | EN + IS markdown | Clean file pairs |
 
-#### Publication
+#### Injection & Rendering (Segments → CNXML → HTML)
 | Tool | Purpose | Input | Output |
 |------|---------|-------|--------|
-| `add-frontmatter.js` | Add metadata for publication | Markdown | Markdown with YAML |
+| `cnxml-inject.js` | Inject translations into CNXML structure | Segments + structure JSON + equations JSON | Translated CNXML |
+| `cnxml-render.js` | Render CNXML to semantic HTML | Translated CNXML | HTML with pre-rendered KaTeX |
+
+#### Validation
+| Tool | Purpose | Input | Output |
+|------|---------|-------|--------|
 | `validate-chapter.js` | Validate content before publication | Chapter files | Validation report |
 
-### 2. Shared Libraries (`lib/`)
+### 2. Shared Libraries (`tools/lib/`)
 
 Common utilities extracted from tools to reduce code duplication:
 
 ```
-lib/
-├── utils.js        # CLI argument parsing, file operations, validation
-├── constants.js    # Module mappings, track labels, section titles
-└── __tests__/      # Unit tests for shared code
+tools/lib/
+├── cnxml-parser.js       # CNXML document parsing
+├── cnxml-elements.js     # HTML rendering for CNXML elements
+├── mathml-to-latex.js    # MathML → LaTeX conversion
+├── mathjax-render.js     # MathJax SVG rendering
+├── module-sections.js    # Module section building
+├── utils.js              # CLI argument parsing, file operations
+├── constants.js          # Module mappings, track labels
+└── __tests__/            # Unit tests for shared code
 ```
 
 ### 3. Server (`server/`)
@@ -132,39 +131,39 @@ Key routes:
 
 ```
 books/{book}/
-├── 01-source/              # OpenStax CNXML originals
+├── 01-source/              # OpenStax CNXML originals (READ ONLY)
 │   └── ch{NN}/
 │       └── m{NNNNN}.cnxml  # One file per module
-├── 02-for-mt/              # English markdown prepared for MT
+├── 02-for-mt/              # EN segments for machine translation
 │   └── ch{NN}/
-│       ├── {N}-{N}.en.md           # Section markdown
-│       ├── {N}-{N}-equations.json  # LaTeX equations
-│       └── {N}-{N}-protected.json  # Protected content
-├── 02-mt-output/           # Machine translation output
+│       └── m{NNNNN}-segments.en.md  # With <!-- SEG:... --> and [[MATH:N]]
+├── 02-structure/           # Document structure from extraction
 │   └── ch{NN}/
-│       └── {N}-{N}.is.md           # Icelandic MT output
+│       ├── m{NNNNN}-structure.json  # Document skeleton
+│       └── m{NNNNN}-equations.json  # MathML equations
+├── 02-mt-output/           # Machine translation output (READ ONLY)
+│   └── ch{NN}/
+│       └── m{NNNNN}-segments.is.md  # Icelandic MT segments
 ├── 03-faithful/            # Human-reviewed translations
 │   └── ch{NN}/
-│       └── {N}-{N}.is.md           # Faithful translation
+│       └── m{NNNNN}-segments.is.md  # Faithful translation
+├── 03-translated/          # Translated CNXML from injection
+│   └── ch{NN}/
+│       └── m{NNNNN}.cnxml          # Reconstructed translated CNXML
 ├── 04-localized/           # Culturally adapted content
 │   └── ch{NN}/
-│       └── {N}-{N}.is.md           # Localized translation
-├── 05-publication/         # Web-ready content
-│   ├── mt-preview/                 # Unreviewed MT
-│   ├── faithful/                   # Reviewed translations
-│   └── localized/                  # Adapted content
+│       └── m{NNNNN}-segments.is.md  # Localized translation
+├── 05-publication/         # Web-ready HTML from rendering
+│   ├── mt-preview/                  # Unreviewed MT
+│   ├── faithful/                    # Reviewed translations
+│   └── localized/                   # Adapted content
 │       └── chapters/{NN}/
-│           ├── {ch}-0-introduction.is.md
-│           ├── {ch}-{N}-section-slug.is.md
-│           ├── {ch}-key-terms.is.md
-│           ├── {ch}-key-equations.is.md
-│           ├── {ch}-summary.is.md
-│           └── {ch}-exercises.is.md
+│           └── m{NNNNN}.html        # Semantic HTML per module
 ├── for-align/              # Staging for Matecat Align
 │   └── ch{NN}/
 │       ├── {N}-{N}.en.clean.md
 │       └── {N}-{N}.is.clean.md
-├── tm/                     # Translation memory (TMX)
+├── tm/                     # Translation memory (TMX) (READ ONLY)
 │   └── ch{NN}/
 │       └── {N}-{N}.tmx
 ├── glossary/               # Terminology files
@@ -175,35 +174,34 @@ books/{book}/
 
 ## Data Flow
 
-### Pipeline Flow (Step by Step)
+### Pipeline Flow (Extract-Inject-Render)
 
 ```
 CNXML Source (OpenStax)
         │
-        ▼ cnxml-to-md.js
-EN Markdown + Equations JSON
+        ▼ cnxml-extract.js
+EN Segments + Structure JSON + Equations JSON
         │
-        ├── protect-for-mt.js → Protected content JSON
-        │
-        ├── split-for-erlendur.js → Split parts (if >18k chars)
+        ├── protect-segments-for-mt.js → MT-ready segments + links JSON
         │
         ▼ malstadur.is (external)
-IS Markdown (MT output)
+IS Segments (MT output)
         │
-        ├── merge-split-files.js ← Merge split parts
-        │
-        ├── restore-strings.js ← Translate strings
+        ├── restore-segments-from-mt.js → Clean IS segments
         │
         ▼ Human review
-IS Markdown (faithful)
+IS Segments (faithful)
         │
         ├── prepare-for-align.js → Cleaned file pairs
         │
         ▼ Matecat Align (external)
 TMX (Translation Memory)
         │
-        ▼ chapter-assembler.js
-12 Publication Files
+        ▼ cnxml-inject.js
+Translated CNXML
+        │
+        ▼ cnxml-render.js
+Semantic HTML (pre-rendered KaTeX, absolute image paths)
         │
         ▼ sync to namsbokasafn-vefur
 Web Publication
@@ -214,11 +212,14 @@ Web Publication
 ```
 status.json (per chapter)
         │
-        ├── enMarkdown: complete
-        ├── mtOutput: complete
-        ├── linguisticReview: in-progress
-        ├── tmCreated: not-started
-        └── publication: not-started
+        ├── extraction: complete        (Step 1)
+        ├── mtReady: complete           (Step 1b)
+        ├── mtOutput: complete          (Step 2)
+        ├── linguisticReview: in-progress (Step 3)
+        ├── tmCreated: not-started      (Step 4)
+        ├── injection: not-started      (Step 5a)
+        ├── rendering: not-started      (Step 5b)
+        └── publication: not-started    (Step 5c)
 ```
 
 ## Technology Stack
@@ -228,10 +229,9 @@ status.json (per chapter)
 - **ESM modules** - Modern JavaScript module system
 
 ### CLI Tools
-- **xml2js** - CNXML parsing
-- **js-yaml** - YAML frontmatter handling
-- **cheerio** - HTML/XML manipulation
+- **katex** - Server-side equation rendering
 - **mathml-to-latex** - Equation conversion
+- **js-yaml** - YAML handling
 
 ### Server
 - **Express.js** - Web framework
@@ -271,7 +271,7 @@ status.json (per chapter)
 |-------|-------------|--------|
 | READ ONLY | `01-source/`, `02-mt-output/`, `tm/` | Never modify - external sources |
 | WRITE | `03-faithful/`, `04-localized/`, `05-publication/` | Backup before editing |
-| STAGING | `02-for-mt/`, `for-align/` | Generated by tools |
+| GENERATED | `02-for-mt/`, `02-structure/`, `03-translated/`, `for-align/` | Generated by tools |
 
 ## Authentication & Authorization
 
@@ -307,13 +307,16 @@ NODE_ENV=development
 
 ### Status Stages
 ```javascript
-// Simplified workflow stages
+// Pipeline stages (Extract-Inject-Render workflow)
 const STAGES = [
-  'enMarkdown',       // Step 1: EN markdown generated
+  'extraction',       // Step 1: Segments + structure extracted from CNXML
+  'mtReady',          // Step 1b: Segments protected and split for MT
   'mtOutput',         // Step 2: MT output received
-  'linguisticReview', // Step 3: Faithful translation complete
+  'linguisticReview', // Step 3: Faithful translation reviewed
   'tmCreated',        // Step 4: TM created via Matecat Align
-  'publication',      // Step 5: Published
+  'injection',        // Step 5a: Translated CNXML produced
+  'rendering',        // Step 5b: HTML produced
+  'publication',      // Step 5c: Published to web
 ];
 
 // Status values

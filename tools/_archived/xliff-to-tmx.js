@@ -31,7 +31,7 @@ function parseArgs(args) {
     includeUnchanged: false,
     creationTool: 'xliff-to-tmx.js',
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -117,7 +117,7 @@ function parseXliff(content, verbose) {
       id,
       source: unescapeXml(source),
       target: unescapeXml(target),
-      state
+      state,
     });
   }
 
@@ -127,9 +127,9 @@ function parseXliff(content, verbose) {
     console.error('Target language: ' + targetLang);
     console.error('Total units: ' + units.length);
 
-    const translated = units.filter(u => u.target && u.target !== u.source).length;
-    const empty = units.filter(u => !u.target).length;
-    const unchanged = units.filter(u => u.target && u.target === u.source).length;
+    const translated = units.filter((u) => u.target && u.target !== u.source).length;
+    const empty = units.filter((u) => !u.target).length;
+    const unchanged = units.filter((u) => u.target && u.target === u.source).length;
 
     console.error('Translated: ' + translated);
     console.error('Empty: ' + empty);
@@ -185,10 +185,13 @@ function generateTmx(data, options) {
   const srcLang = options.sourceLang || sourceLang;
   const tgtLang = options.targetLang || targetLang;
 
-  const now = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const now = new Date()
+    .toISOString()
+    .replace(/[-:]/g, '')
+    .replace(/\.\d{3}/, '');
 
   // Filter units based on options
-  const filteredUnits = units.filter(unit => {
+  const filteredUnits = units.filter((unit) => {
     if (!unit.target && !options.includeEmpty) return false;
     if (unit.target === unit.source && !options.includeUnchanged) return false;
     return true;
@@ -268,7 +271,6 @@ async function main() {
     } else {
       console.log(tmx);
     }
-
   } catch (err) {
     console.error('Error: ' + err.message);
     if (args.verbose) console.error(err.stack);

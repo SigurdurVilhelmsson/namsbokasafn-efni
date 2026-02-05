@@ -41,7 +41,7 @@ function parseArgs(args) {
     track: 'mt-preview',
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -95,7 +95,7 @@ function extractAltText(mtDir, verbose) {
     return altTextMap;
   }
 
-  const files = fs.readdirSync(mtDir).filter(f => f.endsWith('.md'));
+  const files = fs.readdirSync(mtDir).filter((f) => f.endsWith('.md'));
 
   for (const file of files) {
     const content = fs.readFileSync(path.join(mtDir, file), 'utf-8');
@@ -111,7 +111,9 @@ function extractAltText(mtDir, verbose) {
       if (altText && !altTextMap.has(figureId)) {
         altTextMap.set(figureId, altText);
         if (verbose) {
-          console.log(`  Found: ${figureId} -> "${altText.substring(0, 50)}${altText.length > 50 ? '...' : ''}"`);
+          console.log(
+            `  Found: ${figureId} -> "${altText.substring(0, 50)}${altText.length > 50 ? '...' : ''}"`
+          );
         }
       }
     }
@@ -176,7 +178,15 @@ async function main() {
 
   const chapterNum = String(args.chapter).padStart(2, '0');
   const mtDir = path.join(PROJECT_ROOT, 'books', args.book, '02-mt-output', `ch${chapterNum}`);
-  const pubDir = path.join(PROJECT_ROOT, 'books', args.book, '05-publication', args.track, 'chapters', chapterNum);
+  const pubDir = path.join(
+    PROJECT_ROOT,
+    'books',
+    args.book,
+    '05-publication',
+    args.track,
+    'chapters',
+    chapterNum
+  );
 
   console.log(`Patching alt text for ${args.book} chapter ${args.chapter}`);
   console.log(`  MT source: ${mtDir}`);
@@ -203,7 +213,7 @@ async function main() {
     process.exit(1);
   }
 
-  const pubFiles = fs.readdirSync(pubDir).filter(f => f.endsWith('.md'));
+  const pubFiles = fs.readdirSync(pubDir).filter((f) => f.endsWith('.md'));
   let totalPatched = 0;
 
   for (const file of pubFiles) {
@@ -221,7 +231,7 @@ async function main() {
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error('Error:', err.message);
   process.exit(1);
 });

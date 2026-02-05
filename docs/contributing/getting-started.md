@@ -24,11 +24,11 @@ Help with tools and automation.
 
 ## Understanding the Workflow
 
-We use a **simplified 5-step workflow** with two editorial passes:
+We use an **Extract-Inject-Render pipeline** with two editorial passes:
 
 ```
-CNXML → EN Markdown → MT → Linguistic Review → Matecat Align → Publication
-         Step 1       Step 2      Step 3           Step 4         Step 5
+CNXML → Extract → EN Segments → MT → Review → Inject → Render → HTML
+         Step 1     Step 1b    Step 2  Step 3   Step 5a  Step 5b
 ```
 
 **Key insight:** Linguistic review happens BEFORE TM creation, so the TM is human-verified from the start.
@@ -99,9 +99,9 @@ Read before starting:
 
 ### For Pass 1 (Linguistic Review)
 
-#### Markdown Workflow (Primary)
+#### Segment Review Workflow
 
-1. **Get MT output** from `02-mt-output/ch##/`
+1. **Get MT output** from `02-mt-output/ch##/` (segment files: `mNNNNN-segments.is.md`)
 2. **Open** in any text editor (VS Code, Typora, or web editor at `/editor`)
 3. **Review systematically:**
    - Grammar and spelling
@@ -114,16 +114,6 @@ Read before starting:
 
 **Remember:** NO localization in Pass 1
 
-#### DOCX Workflow (Legacy)
-
-For chapters started before the markdown workflow:
-
-1. **Get files** from the translator
-2. **Enable Track Changes** in Microsoft Word
-3. **Review** for grammar, terminology, phrasing
-4. **Add comments** for questions
-5. **Save** to `03-faithful/docx/ch##/`
-
 ### For Pass 2 (Localization)
 
 #### Using Auto-Detection (Recommended)
@@ -135,55 +125,29 @@ For chapters started before the markdown workflow:
 5. **Add custom changes** not auto-detected
 6. **Submit** for approval
 
-#### Manual Markdown Workflow
+#### Manual Workflow
 
 1. **Get files** from `03-faithful/ch##/`
-2. **Make localization changes** directly in markdown
+2. **Make localization changes** directly in segment files
 3. **Document** every change in the localization log
 4. **Save** to `04-localized/ch##/`
-
-#### DOCX Workflow (Legacy)
-
-1. **Get files** from `03-faithful/docx/ch##/`
-2. **Create localization log** from template
-3. **Make localization changes**
-4. **Document** every change in the log
-5. **Save** .docx to `04-localized/docx/ch##/`
-6. **Save** log to `04-localized/localization-logs/`
 
 ---
 
 ## File Locations
-
-### Markdown Workflow (Primary)
 
 | Pass | Get files from | Save to |
 |------|----------------|---------|
 | Pass 1 | `02-mt-output/ch##/` | `03-faithful/ch##/` |
 | Pass 2 | `03-faithful/ch##/` | `04-localized/ch##/` |
 
-### DOCX Workflow (Legacy)
-
-| Pass | Get files from | Save to |
-|------|----------------|---------|
-| Pass 1 | Translator | `03-faithful/docx/ch##/` |
-| Pass 2 (docx) | `03-faithful/docx/ch##/` | `04-localized/docx/ch##/` |
-| Pass 2 (log) | Template | `04-localized/localization-logs/` |
-
 ### Naming Convention
 
-**Markdown (Primary):**
+Segment files use module-based naming:
 ```
-MT Output:    5-1.is.md (in 02-mt-output/)
-Pass 1:       5-1.is.md (in 03-faithful/)
-Pass 2:       5-1.is.md (in 04-localized/)
-```
-
-**DOCX (Legacy):**
-```
-Pass 1: chapter-01-section-02-pass1-AB.docx
-Pass 2: chapter-01-section-02-localized.docx
-Log:    ch01-log.md
+MT Output:    m68724-segments.is.md (in 02-mt-output/)
+Pass 1:       m68724-segments.is.md (in 03-faithful/)
+Pass 2:       m68724-segments.is.md (in 04-localized/)
 ```
 
 ---
@@ -228,8 +192,7 @@ For terminology proposals:
 
 ### Before Submitting Pass 1
 
-- [ ] Track Changes enabled throughout
-- [ ] All sections reviewed
+- [ ] All segments reviewed
 - [ ] Terminology consistent with glossary
 - [ ] Comments added for questions
 - [ ] NO localization changes
@@ -252,7 +215,7 @@ For terminology proposals:
 ## Communication
 
 ### Questions During Review
-- Add comments directly in the Word document
+- Add comments using `<!-- QUESTION: ... -->` in segment files
 - Mark urgency: [QUESTION], [URGENT], [DISCUSS]
 
 ### General Questions
@@ -281,11 +244,10 @@ Please communicate if you need more time.
 
 If you'd like to help with the technical side:
 
-### Tools We Need
-- `strip-docx-to-txt.js` - Extract plain text for MT
-- `docx-to-md.js` - Convert Word to Markdown
-- `add-frontmatter.js` - Add YAML frontmatter
-- `export-parallel-corpus.js` - Export TM to parallel text
+### Active Tools
+- `cnxml-extract.js` - Extract segments from CNXML
+- `cnxml-inject.js` - Inject translations into CNXML structure
+- `cnxml-render.js` - Render CNXML to semantic HTML
 - `validate-chapter.js` - Validate chapter structure
 
 ### Technology Stack

@@ -35,7 +35,7 @@ function parseArgs(args) {
     inPlace: false,
     dryRun: false,
     verbose: false,
-    help: false
+    help: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -96,7 +96,8 @@ function autoDetectSidecar(inputPath) {
 
   // Get the base name without language suffix and extension
   const dir = path.dirname(forMtPath);
-  const basename = path.basename(forMtPath)
+  const basename = path
+    .basename(forMtPath)
     .replace(/\.is\.md$/, '')
     .replace(/\.en\.md$/, '')
     .replace(/\.md$/, '');
@@ -141,7 +142,7 @@ function restoreFigures(content, figures, verbose) {
   const stats = {
     crossRefsUpdated: 0,
     captionsUpdated: 0,
-    captionsVerified: 0
+    captionsVerified: 0,
   };
 
   // Build ID to number map
@@ -156,72 +157,60 @@ function restoreFigures(content, figures, verbose) {
 
   // 1. Update cross-references: [↑](#id) → [sjá mynd X.X](#id)
   // Pattern: [↑](#figure-id) or [sjá mynd](#figure-id) without number
-  content = content.replace(
-    /\[↑\]\(#([^)]+)\)/g,
-    (match, id) => {
-      const number = idToNumber[id];
-      if (number) {
-        stats.crossRefsUpdated++;
-        if (verbose) {
-          console.error(`    Cross-ref: [↑](#${id}) → [sjá mynd ${number}](#${id})`);
-        }
-        return `[sjá mynd ${number}](#${id})`;
+  content = content.replace(/\[↑\]\(#([^)]+)\)/g, (match, id) => {
+    const number = idToNumber[id];
+    if (number) {
+      stats.crossRefsUpdated++;
+      if (verbose) {
+        console.error(`    Cross-ref: [↑](#${id}) → [sjá mynd ${number}](#${id})`);
       }
-      // If ID not in sidecar, leave as is but still convert to Icelandic
-      return `[sjá mynd](#${id})`;
+      return `[sjá mynd ${number}](#${id})`;
     }
-  );
+    // If ID not in sidecar, leave as is but still convert to Icelandic
+    return `[sjá mynd](#${id})`;
+  });
 
   // 2. Update unnumbered cross-refs: [sjá mynd](#id) → [sjá mynd X.X](#id)
-  content = content.replace(
-    /\[sjá mynd\]\(#([^)]+)\)/g,
-    (match, id) => {
-      const number = idToNumber[id];
-      if (number) {
-        stats.crossRefsUpdated++;
-        if (verbose) {
-          console.error(`    Cross-ref: [sjá mynd](#${id}) → [sjá mynd ${number}](#${id})`);
-        }
-        return `[sjá mynd ${number}](#${id})`;
+  content = content.replace(/\[sjá mynd\]\(#([^)]+)\)/g, (match, id) => {
+    const number = idToNumber[id];
+    if (number) {
+      stats.crossRefsUpdated++;
+      if (verbose) {
+        console.error(`    Cross-ref: [sjá mynd](#${id}) → [sjá mynd ${number}](#${id})`);
       }
-      return match;
+      return `[sjá mynd ${number}](#${id})`;
     }
-  );
+    return match;
+  });
 
   // 3. Update table cross-refs similarly: [sjá töflu](#id) when we have table support
   // (For now, focus on figures)
 
   // 4. Update captions without numbers: *Mynd: caption*{id="..."} → *Mynd X.X: caption*{id="..."}
-  content = content.replace(
-    /\*Mynd:\s*([^*]+)\*\{id="([^"]+)"\}/g,
-    (match, caption, id) => {
-      const number = idToNumber[id];
-      if (number) {
-        stats.captionsUpdated++;
-        if (verbose) {
-          console.error(`    Caption: *Mynd:* → *Mynd ${number}:* for ${id}`);
-        }
-        return `*Mynd ${number}: ${caption.trim()}*{id="${id}"}`;
+  content = content.replace(/\*Mynd:\s*([^*]+)\*\{id="([^"]+)"\}/g, (match, caption, id) => {
+    const number = idToNumber[id];
+    if (number) {
+      stats.captionsUpdated++;
+      if (verbose) {
+        console.error(`    Caption: *Mynd:* → *Mynd ${number}:* for ${id}`);
       }
-      return match;
+      return `*Mynd ${number}: ${caption.trim()}*{id="${id}"}`;
     }
-  );
+    return match;
+  });
 
   // 5. Also handle English format in case it wasn't translated: *Figure: caption*{id="..."}
-  content = content.replace(
-    /\*Figure:\s*([^*]+)\*\{id="([^"]+)"\}/g,
-    (match, caption, id) => {
-      const number = idToNumber[id];
-      if (number) {
-        stats.captionsUpdated++;
-        if (verbose) {
-          console.error(`    Caption (en): *Figure:* → *Mynd ${number}:* for ${id}`);
-        }
-        return `*Mynd ${number}: ${caption.trim()}*{id="${id}"}`;
+  content = content.replace(/\*Figure:\s*([^*]+)\*\{id="([^"]+)"\}/g, (match, caption, id) => {
+    const number = idToNumber[id];
+    if (number) {
+      stats.captionsUpdated++;
+      if (verbose) {
+        console.error(`    Caption (en): *Figure:* → *Mynd ${number}:* for ${id}`);
       }
-      return match;
+      return `*Mynd ${number}: ${caption.trim()}*{id="${id}"}`;
     }
-  );
+    return match;
+  });
 
   // 6. Fix existing numbered captions that have wrong numbers
   // Pattern: *Mynd X.X: caption*{id="..."} or *Mynd X.X: caption*{#id}
@@ -253,7 +242,9 @@ function restoreFigures(content, figures, verbose) {
       if (expectedNumber) {
         stats.captionsUpdated++;
         if (verbose) {
-          console.error(`    Fixed English caption for ${id}: Figure ${currentNumber} → Mynd ${expectedNumber}`);
+          console.error(
+            `    Fixed English caption for ${id}: Figure ${currentNumber} → Mynd ${expectedNumber}`
+          );
         }
         const attrFormat = match.includes('id="') ? `{id="${id}"}` : `{#${id}}`;
         return `*Mynd ${expectedNumber}: ${caption.trim()}*${attrFormat}`;
@@ -321,7 +312,9 @@ async function main() {
   const { content: restored, stats } = restoreFigures(content, figures, args.verbose);
 
   if (args.verbose || args.dryRun) {
-    console.error(`Figures restored: ${stats.crossRefsUpdated} cross-refs, ${stats.captionsUpdated} captions updated, ${stats.captionsVerified} verified`);
+    console.error(
+      `Figures restored: ${stats.crossRefsUpdated} cross-refs, ${stats.captionsUpdated} captions updated, ${stats.captionsVerified} verified`
+    );
   }
 
   // Output
@@ -350,7 +343,7 @@ async function main() {
   }
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error('Error:', err.message);
   process.exit(1);
 });
