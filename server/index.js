@@ -308,15 +308,17 @@ app.get('/api', (req, res) => {
       'GET /api/admin/books': 'List registered books',
       'GET /api/admin/books/:slug': 'Get book details with chapters',
       'POST /api/admin/migrate': 'Run database migrations',
-      // Phase 6 - Publication
-      'GET /api/publication/:bookSlug/:chapter/status': 'Get publication status',
-      'GET /api/publication/:bookSlug/:chapter/readiness': 'Check readiness for each track',
-      'POST /api/publication/:bookSlug/:chapter/mt-preview': 'Publish MT preview (HEAD_EDITOR)',
+      // Publication (HTML pipeline)
+      'GET /api/publication/:bookSlug/:chapter/status': 'Publication status for all tracks',
+      'GET /api/publication/:bookSlug/:chapter/readiness': 'Readiness check for each track',
+      'GET /api/publication/:bookSlug/:chapter/modules': 'Module-level source availability',
+      'POST /api/publication/:bookSlug/:chapter/mt-preview':
+        'Publish MT preview via pipeline (HEAD_EDITOR, returns jobId)',
       'POST /api/publication/:bookSlug/:chapter/faithful':
-        'Publish faithful translation (HEAD_EDITOR)',
+        'Publish faithful via pipeline (HEAD_EDITOR, returns jobId)',
       'POST /api/publication/:bookSlug/:chapter/localized':
-        'Publish localized content (HEAD_EDITOR)',
-      'GET /api/publication/:bookSlug/overview': 'Get publication overview for book',
+        'Publish localized via pipeline (HEAD_EDITOR, returns jobId)',
+      'GET /api/publication/:bookSlug/overview': 'Publication overview for book',
       // Phase 7 - Feedback & Analytics
       'GET /api/feedback/types': 'Get feedback types (public)',
       'POST /api/feedback': 'Submit feedback (public)',
