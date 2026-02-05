@@ -76,8 +76,9 @@ const publicationRoutes = require('./routes/publication');
 const feedbackRoutes = require('./routes/feedback');
 const analyticsRoutes = require('./routes/analytics');
 
-// Import Phase 8 routes (Segment Editor)
+// Import Phase 8 routes (Segment Editor, Pipeline)
 const segmentEditorRoutes = require('./routes/segment-editor');
+const pipelineRoutes = require('./routes/pipeline');
 
 // Import Meeting routes
 const meetingsRoutes = require('./routes/meetings');
@@ -234,8 +235,9 @@ app.use('/api/assignments', assignmentsRoutes);
 // Reports API Routes
 app.use('/api/reports', reportsRoutes);
 
-// Phase 8 API Routes (Segment Editor)
+// Phase 8 API Routes (Segment Editor, Pipeline)
 app.use('/api/segment-editor', segmentEditorRoutes);
+app.use('/api/pipeline', pipelineRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -335,6 +337,12 @@ app.get('/api', (req, res) => {
       'POST /api/segment-editor/reviews/:reviewId/complete': 'Complete module review',
       'GET /api/segment-editor/:book/:chapter/:moduleId/terms': 'Term matches per segment',
       'GET /api/segment-editor/terminology/lookup': 'Quick term lookup',
+      // Pipeline
+      'POST /api/pipeline/inject': 'Run cnxml-inject (HEAD_EDITOR)',
+      'POST /api/pipeline/render': 'Run cnxml-render (HEAD_EDITOR)',
+      'POST /api/pipeline/run': 'Run inject + render (HEAD_EDITOR)',
+      'GET /api/pipeline/jobs': 'List pipeline jobs',
+      'GET /api/pipeline/jobs/:jobId': 'Get job status/output',
       // Assignments Management
       'GET /api/assignments': 'List all assignments (EDITOR)',
       'GET /api/assignments/overview': 'Team workload overview (HEAD_EDITOR)',

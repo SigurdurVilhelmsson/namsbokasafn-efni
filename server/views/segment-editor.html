@@ -338,6 +338,71 @@
     .term-lookup-en { font-weight: 600; }
     .term-lookup-is { color: var(--text-muted); }
 
+    /* Pipeline panel */
+    .pipeline-panel {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: var(--bg-subtle, #f9fafb);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+    }
+    .pipeline-panel h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 0.85rem;
+    }
+    .pipeline-controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .pipeline-controls select {
+      padding: 0.3rem 0.4rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      background: var(--bg-input);
+      color: var(--text-color);
+    }
+    .pipeline-controls .btn {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem;
+    }
+    .pipeline-output {
+      display: none;
+      margin-top: 0.5rem;
+      max-height: 200px;
+      overflow-y: auto;
+      background: #1a1a2e;
+      color: #e0e0e0;
+      font-family: monospace;
+      font-size: 0.75rem;
+      padding: 0.5rem;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .pipeline-output.active { display: block; }
+    .pipeline-status-badge {
+      display: inline-block;
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .pipeline-status-badge.running {
+      background: rgba(59, 130, 246, 0.15);
+      color: #3b82f6;
+    }
+    .pipeline-status-badge.completed {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+    .pipeline-status-badge.failed {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+    }
+
     /* Toolbar */
     .toolbar {
       display: flex;
@@ -430,6 +495,30 @@
               <i class="fas fa-paper-plane"></i> Senda til yfirlestrar
             </button>
           </div>
+        </div>
+
+        <!-- Pipeline Panel (HEAD_EDITOR only) -->
+        <div class="pipeline-panel" id="pipeline-panel" style="display: none;">
+          <h4>Leiðsluvinnsla (inject → render)</h4>
+          <div class="pipeline-controls">
+            <label style="font-size: 0.8rem;">Rás:</label>
+            <select id="pipeline-track">
+              <option value="faithful">Trú þýðing (faithful)</option>
+              <option value="mt-preview">MT forskoðun</option>
+              <option value="localized">Staðfærð (localized)</option>
+            </select>
+            <button class="btn btn-secondary" id="btn-inject" title="Keyra inject">
+              Inject
+            </button>
+            <button class="btn btn-secondary" id="btn-render" title="Keyra render">
+              Render
+            </button>
+            <button class="btn btn-primary" id="btn-pipeline" title="Keyra inject + render">
+              Inject + Render
+            </button>
+            <span class="pipeline-status-badge" id="pipeline-badge" style="display: none;"></span>
+          </div>
+          <div class="pipeline-output" id="pipeline-output"></div>
         </div>
 
         <div class="stats-bar" id="stats-bar"></div>
@@ -602,6 +691,7 @@
         document.getElementById('editor-container').style.display = 'block';
 
         renderModule();
+        showPipelinePanel();
 
         // Load term data in background (non-blocking)
         loadTermData(moduleId);
@@ -913,6 +1003,7 @@
       document.getElementById('module-selector').style.display = 'block';
       moduleData = null;
       termData = null;
+      clearInterval(pipelinePollingTimer);
     });
 
     // ================================================================
@@ -959,6 +1050,120 @@
         omission: 'Úrfelling',
       };
       return labels[cat] || cat;
+    }
+
+    // ================================================================
+    // PIPELINE CONTROLS
+    // ================================================================
+
+    let pipelinePollingTimer = null;
+
+    function showPipelinePanel() {
+      const isHeadEditor = userRole === 'head_editor' || userRole === 'admin';
+      const panel = document.getElementById('pipeline-panel');
+      panel.style.display = isHeadEditor ? 'block' : 'none';
+    }
+
+    document.getElementById('btn-inject').addEventListener('click', () => {
+      runPipelineAction('inject');
+    });
+
+    document.getElementById('btn-render').addEventListener('click', () => {
+      runPipelineAction('render');
+    });
+
+    document.getElementById('btn-pipeline').addEventListener('click', () => {
+      runPipelineAction('run');
+    });
+
+    async function runPipelineAction(action) {
+      const track = document.getElementById('pipeline-track').value;
+      const badge = document.getElementById('pipeline-badge');
+      const output = document.getElementById('pipeline-output');
+
+      // Disable buttons while running
+      setPipelineButtonsDisabled(true);
+      badge.textContent = 'Í gangi...';
+      badge.className = 'pipeline-status-badge running';
+      badge.style.display = 'inline-block';
+      output.textContent = `Starting ${action}...\n`;
+      output.classList.add('active');
+
+      try {
+        const res = await fetch(`/api/pipeline/${action}`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            book: currentBook,
+            chapter: currentChapter,
+            moduleId: currentModuleId !== 'all' ? currentModuleId : undefined,
+            track,
+          }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          badge.textContent = 'Villa';
+          badge.className = 'pipeline-status-badge failed';
+          output.textContent += `Error: ${data.error}\n`;
+          setPipelineButtonsDisabled(false);
+          return;
+        }
+
+        // Start polling for job status
+        pollJobStatus(data.jobId);
+      } catch (err) {
+        badge.textContent = 'Villa';
+        badge.className = 'pipeline-status-badge failed';
+        output.textContent += `Error: ${err.message}\n`;
+        setPipelineButtonsDisabled(false);
+      }
+    }
+
+    function pollJobStatus(jobId) {
+      clearInterval(pipelinePollingTimer);
+
+      pipelinePollingTimer = setInterval(async () => {
+        try {
+          const res = await fetch(`/api/pipeline/jobs/${jobId}`, {
+            credentials: 'include',
+          });
+          if (!res.ok) return;
+
+          const { job } = await res.json();
+          const badge = document.getElementById('pipeline-badge');
+          const output = document.getElementById('pipeline-output');
+
+          // Update output
+          output.textContent = job.output.join('\n');
+          output.scrollTop = output.scrollHeight;
+
+          if (job.status === 'completed') {
+            clearInterval(pipelinePollingTimer);
+            badge.textContent = 'Lokið';
+            badge.className = 'pipeline-status-badge completed';
+            setPipelineButtonsDisabled(false);
+          } else if (job.status === 'failed') {
+            clearInterval(pipelinePollingTimer);
+            badge.textContent = 'Mistókst';
+            badge.className = 'pipeline-status-badge failed';
+            output.textContent += `\nError: ${job.error || 'Unknown error'}`;
+            setPipelineButtonsDisabled(false);
+          } else {
+            badge.textContent = job.phase ? `Í gangi (${job.phase})...` : 'Í gangi...';
+          }
+        } catch {
+          // Polling error — ignore, will retry
+        }
+      }, 1500);
+    }
+
+    function setPipelineButtonsDisabled(disabled) {
+      document.getElementById('btn-inject').disabled = disabled;
+      document.getElementById('btn-render').disabled = disabled;
+      document.getElementById('btn-pipeline').disabled = disabled;
     }
 
     // ================================================================
