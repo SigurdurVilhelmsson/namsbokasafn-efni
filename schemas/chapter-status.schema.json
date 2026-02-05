@@ -44,11 +44,11 @@
     },
     "status": {
       "type": "object",
-      "description": "5-step simplified workflow stages",
+      "description": "7-step pipeline stages (extract-inject-render workflow)",
       "properties": {
-        "enMarkdown": {
+        "extraction": {
           "$ref": "#/$defs/stageStatus",
-          "description": "Step 1: EN markdown generated from CNXML"
+          "description": "Step 1: CNXML → EN segments + structure extracted"
         },
         "mtOutput": {
           "$ref": "#/$defs/stageStatus",
@@ -62,17 +62,29 @@
           "$ref": "#/$defs/stageStatus",
           "description": "Step 4: TM created via Matecat Align"
         },
+        "injection": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "Step 5a: Translated segments injected into CNXML"
+        },
+        "rendering": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "Step 5b: CNXML rendered to semantic HTML"
+        },
         "publication": {
           "$ref": "#/$defs/publicationStatus",
-          "description": "Step 5: Published to web"
+          "description": "Step 5c: Published to web (synced to vefur)"
+        },
+        "enMarkdown": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "[Legacy] Maps to extraction"
         },
         "source": {
           "$ref": "#/$defs/stageStatus",
-          "description": "[Legacy] Source material from OpenStax"
+          "description": "[Legacy] Maps to extraction"
         },
         "matecat": {
           "$ref": "#/$defs/stageStatusWithProgress",
-          "description": "[Legacy] TM alignment in Matecat"
+          "description": "[Legacy] Maps to tmCreated"
         },
         "editorialPass1": {
           "$ref": "#/$defs/editorialStageStatus",

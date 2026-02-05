@@ -6,7 +6,7 @@
  */
 
 import { renderMathML } from './mathjax-render.js';
-import { convertMathMLToLatex } from './mathml-to-latex.js';
+import { convertMathMLToLatex, localizeNumbersInMathML } from './mathml-to-latex.js';
 
 // =====================================================================
 // LATEX TEXT TRANSLATIONS
@@ -52,12 +52,15 @@ const LATEX_TEXT_TRANSLATIONS = [
  * Translate English descriptive text inside \text{} commands in LaTeX.
  * Preserves units, chemical formulas, and single-letter variables.
  * @param {string} latex - LaTeX string
+ * @param {Array<[string, string]>} [dictionary] - External dictionary entries (sorted longest-first).
+ *   If provided, used instead of built-in LATEX_TEXT_TRANSLATIONS.
  * @returns {string} LaTeX with translated \text{} content
  */
-export function translateLatexText(latex) {
+export function translateLatexText(latex, dictionary) {
+  const entries = dictionary || LATEX_TEXT_TRANSLATIONS;
   return latex.replace(/\\text\{([^}]+)\}/g, (match, content) => {
     let translated = content;
-    for (const [en, is] of LATEX_TEXT_TRANSLATIONS) {
+    for (const [en, is] of entries) {
       // Case-insensitive word-boundary match
       const pattern = new RegExp(`\\b${en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
       translated = translated.replace(pattern, is);
@@ -177,7 +180,7 @@ export function renderCaption(content, attrs, context) {
 /**
  * Render an equation element.
  */
-export function renderEquation(content, attrs, _context) {
+export function renderEquation(content, attrs, context) {
   const id = attrs.id || null;
   const isUnnumbered = attrs.class === 'unnumbered';
 
@@ -187,11 +190,14 @@ export function renderEquation(content, attrs, _context) {
     return createElement('div', { id, class: 'equation' }, content);
   }
 
-  const mathml = mathMatch[0];
-  const latex = convertMathMLToLatex(mathml);
+  const localizedMathml = localizeNumbersInMathML(mathMatch[0]);
+  const latex = translateLatexText(
+    convertMathMLToLatex(localizedMathml),
+    context && context.equationTextDictionary
+  );
 
   // Render MathML directly via MathJax (keep data-latex for copy)
-  const mathHtml = renderMathML(mathml, true);
+  const mathHtml = renderMathML(localizedMathml, true);
   const equationContent = createElement(
     'span',
     {
@@ -430,8 +436,12 @@ export function processInlineContent(content, context) {
 
   // Convert inline MathML to MathJax SVG (keep data-latex for copy)
   result = result.replace(/<m:math[^>]*>[\s\S]*?<\/m:math>/g, (mathml) => {
-    const latex = translateLatexText(convertMathMLToLatex(mathml));
-    const mathHtml = renderMathML(mathml, false);
+    const localizedMathml = localizeNumbersInMathML(mathml);
+    const latex = translateLatexText(
+      convertMathMLToLatex(localizedMathml),
+      context.equationTextDictionary
+    );
+    const mathHtml = renderMathML(localizedMathml, false);
     return `<span class="math-inline" data-latex="${escapeAttr(latex)}">${mathHtml}</span>`;
   });
 
@@ -485,6 +495,11 @@ export function processInlineContent(content, context) {
       const tableNum = context.tableNumbers.get(targetId);
       return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
     }
+    // Check if this is an example reference
+    if (context.chapterExampleNumbers && context.chapterExampleNumbers.has(targetId)) {
+      const exNum = context.chapterExampleNumbers.get(targetId);
+      return `<a href="#${escapeAttr(targetId)}">Dæmi ${exNum}</a>`;
+    }
     // Check if this is an exercise reference
     if (context.chapterExerciseNumbers && context.chapterExerciseNumbers.has(targetId)) {
       const exNum = context.chapterExerciseNumbers.get(targetId);
@@ -527,6 +542,11 @@ export function processInlineContent(content, context) {
       if (context.tableNumbers && context.tableNumbers.has(targetId)) {
         const tableNum = context.tableNumbers.get(targetId);
         return `<a href="#${escapeAttr(targetId)}">Tafla ${tableNum}</a>`;
+      }
+      // Check if this is an example reference
+      if (context.chapterExampleNumbers && context.chapterExampleNumbers.has(targetId)) {
+        const exNum = context.chapterExampleNumbers.get(targetId);
+        return `<a href="#${escapeAttr(targetId)}">Dæmi ${exNum}</a>`;
       }
       // Check if this is an exercise reference
       if (context.chapterExerciseNumbers && context.chapterExerciseNumbers.has(targetId)) {

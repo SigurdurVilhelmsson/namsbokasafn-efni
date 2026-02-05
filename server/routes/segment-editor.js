@@ -23,6 +23,11 @@
  *   GET  /api/segment-editor/:book/:chapter/:moduleId/terms  Term matches per segment
  *   GET  /api/segment-editor/terminology/lookup              Quick term lookup
  *   GET  /api/segment-editor/:book/:chapter/:moduleId/stats  Get module stats
+ *
+ *   POST /api/segment-editor/:book/:chapter/:moduleId/apply  Apply approved edits to files
+ *   POST /api/segment-editor/:book/:chapter/:moduleId/apply-and-render  Apply then inject+render
+ *   POST /api/segment-editor/:book/:chapter/apply-all        Bulk apply all approved modules
+ *   GET  /api/segment-editor/:book/:chapter/:moduleId/apply-status  Check apply status
  */
 
 const express = require('express');
@@ -329,7 +334,8 @@ router.post('/edit/:editId/discuss', requireAuth, requireRole(ROLES.HEAD_EDITOR)
 
 /**
  * POST /reviews/:reviewId/complete
- * Complete a module review.
+ * Complete a module review. If all edits are approved, automatically
+ * applies them to 03-faithful/ segment files.
  */
 router.post(
   '/reviews/:reviewId/complete',
@@ -343,7 +349,25 @@ router.post(
         req.user.username,
         req.body.notes
       );
-      res.json({ success: true, ...result });
+
+      // Auto-apply when review is fully approved
+      let applied = null;
+      if (result.status === 'approved') {
+        try {
+          const review = segmentEditor.getModuleReviewWithEdits(parseInt(req.params.reviewId, 10));
+          applied = segmentEditor.applyApprovedEdits(
+            review.review.book,
+            review.review.chapter,
+            review.review.module_id
+          );
+        } catch (applyErr) {
+          // Auto-apply is best-effort; don't fail the review completion
+          console.error('Auto-apply after review failed:', applyErr.message);
+          applied = { error: applyErr.message };
+        }
+      }
+
+      res.json({ success: true, ...result, applied });
     } catch (err) {
       res.status(400).json({ error: err.message });
     }
@@ -474,6 +498,183 @@ router.get(
       const stats = segmentEditor.getModuleStats(req.params.book, req.params.moduleId);
       res.json(stats);
     } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+// =====================================================================
+// APPLY APPROVED EDITS TO FILES (Phase 9)
+// =====================================================================
+
+const pipelineService = require('../services/pipelineService');
+
+/**
+ * GET /:book/:chapter/:moduleId/apply-status
+ * Check how many approved edits are pending application.
+ */
+router.get(
+  '/:book/:chapter/:moduleId/apply-status',
+  requireAuth,
+  requireRole(ROLES.EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const status = segmentEditor.getApplyStatus(req.params.book, req.params.moduleId);
+      res.json(status);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /:book/:chapter/:moduleId/apply
+ * Apply approved edits to 03-faithful/ segment files.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/apply',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      const result = segmentEditor.applyApprovedEdits(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+
+      res.json({
+        success: true,
+        ...result,
+      });
+    } catch (err) {
+      console.error('Error applying edits:', err.message);
+      const status =
+        err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
+      res.status(status).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /:book/:chapter/:moduleId/apply-and-render
+ * Apply approved edits, then run inject+render for the faithful track.
+ * Returns a pipeline job ID for polling.
+ */
+router.post(
+  '/:book/:chapter/:moduleId/apply-and-render',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  validateBookChapter,
+  validateModule,
+  (req, res) => {
+    try {
+      // Step 1: Apply edits to files
+      const applyResult = segmentEditor.applyApprovedEdits(
+        req.params.book,
+        req.chapterNum,
+        req.params.moduleId
+      );
+
+      // Step 2: Run inject+render pipeline (async — returns job ID for polling)
+      const existing = pipelineService.hasRunningJob(req.chapterNum, 'pipeline');
+      if (existing) {
+        return res.status(409).json({
+          error: 'Pipeline already running for this chapter',
+          jobId: existing.id,
+          applied: applyResult,
+        });
+      }
+
+      const { jobId } = pipelineService.runPipeline({
+        chapter: req.chapterNum,
+        moduleId: req.params.moduleId,
+        track: 'faithful',
+        userId: req.user.id,
+      });
+
+      res.json({
+        success: true,
+        applied: applyResult,
+        jobId,
+        message: 'Edits applied and pipeline started',
+      });
+    } catch (err) {
+      console.error('Error in apply-and-render:', err.message);
+      const status =
+        err.message.includes('No approved') || err.message.includes('already been') ? 400 : 500;
+      res.status(status).json({ error: err.message });
+    }
+  }
+);
+
+/**
+ * POST /:book/:chapter/apply-all
+ * Bulk apply approved edits for all modules in a chapter, then run pipeline.
+ */
+router.post(
+  '/:book/:chapter/apply-all',
+  requireAuth,
+  requireRole(ROLES.HEAD_EDITOR),
+  validateBookChapter,
+  (req, res) => {
+    try {
+      const modules = segmentParser.listChapterModules(req.params.book, req.chapterNum);
+      const results = [];
+
+      for (const mod of modules) {
+        // Check if this module has unapplied approved edits
+        const status = segmentEditor.getApplyStatus(req.params.book, mod.moduleId);
+        if (status.unapplied_count > 0) {
+          try {
+            const result = segmentEditor.applyApprovedEdits(
+              req.params.book,
+              req.chapterNum,
+              mod.moduleId
+            );
+            results.push({ moduleId: mod.moduleId, ...result });
+          } catch (err) {
+            results.push({ moduleId: mod.moduleId, error: err.message });
+          }
+        }
+      }
+
+      if (results.length === 0) {
+        return res.json({
+          success: true,
+          message: 'No unapplied approved edits found in this chapter',
+          results: [],
+        });
+      }
+
+      // Optionally run pipeline for the whole chapter
+      const runPipeline = req.body.runPipeline !== false;
+      let jobId = null;
+
+      if (runPipeline) {
+        const existing = pipelineService.hasRunningJob(req.chapterNum, 'pipeline');
+        if (!existing) {
+          const job = pipelineService.runPipeline({
+            chapter: req.chapterNum,
+            track: 'faithful',
+            userId: req.user.id,
+          });
+          jobId = job.jobId;
+        }
+      }
+
+      res.json({
+        success: true,
+        results,
+        totalApplied: results.filter((r) => !r.error).length,
+        jobId,
+      });
+    } catch (err) {
+      console.error('Error in bulk apply:', err.message);
       res.status(500).json({ error: err.message });
     }
   }

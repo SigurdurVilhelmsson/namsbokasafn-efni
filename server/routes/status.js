@@ -18,8 +18,7 @@ const activityLog = require('../services/activityLog');
 const {
   extractBaseSectionId,
   sectionHasAnyFile,
-  getSectionFiles,
-  getUniqueSections
+  getUniqueSections,
 } = require('../services/splitFileUtils');
 
 // Import assignment store (will create if not exists)
@@ -36,22 +35,25 @@ const PROJECT_ROOT = path.join(__dirname, '..', '..');
 // Valid books
 const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
 
-// Simplified 5-step pipeline stages (aligned with workflow docs)
+// Simplified 7-step pipeline stages (extract-inject-render workflow)
 const PIPELINE_STAGES = [
-  'enMarkdown',
+  'extraction',
   'mtOutput',
   'linguisticReview',
   'tmCreated',
-  'publication'
+  'injection',
+  'rendering',
+  'publication',
 ];
 
-// Map old stage names to new ones (backward compatibility)
+// Map old stage names to current ones (backward compatibility)
 const STAGE_MAPPING = {
-  'source': 'enMarkdown',
-  'matecat': 'tmCreated',
-  'editorialPass1': 'linguisticReview',
-  'tmUpdated': 'tmCreated',
-  'editorialPass2': 'publication'
+  source: 'extraction',
+  enMarkdown: 'extraction',
+  matecat: 'tmCreated',
+  editorialPass1: 'linguisticReview',
+  tmUpdated: 'tmCreated',
+  editorialPass2: 'publication',
 };
 
 // Helper to normalize stage names from old status files
@@ -69,11 +71,11 @@ function normalizeStageStatus(status) {
 
 // Status symbols for display
 const STATUS_SYMBOLS = {
-  'complete': '\u2705',     // ✅
+  complete: '\u2705', // ✅
   'in-progress': '\ud83d\udd04', // 🔄
-  'pending': '\u23f3',      // ⏳
-  'not-started': '\u25cb',  // ○
-  'blocked': '\u274c'       // ❌
+  pending: '\u23f3', // ⏳
+  'not-started': '\u25cb', // ○
+  blocked: '\u274c', // ❌
 };
 
 // ============================================================================
@@ -101,18 +103,18 @@ router.get('/dashboard', async (req, res) => {
         blockedIssues: 0,
         unassignedWork: 0,
         overdueCount: 0,
-        items: []
+        items: [],
       },
       teamActivity: [],
       chapterMatrix: {},
-      workload: [],  // Editor workload summary
-      overdueItems: [],  // Assignments > 3 days old
-      readyForAssignment: [],  // Chapters ready for next stage
+      workload: [], // Editor workload summary
+      overdueItems: [], // Assignments > 3 days old
+      readyForAssignment: [], // Chapters ready for next stage
       metrics: {
         velocity: null,
         projection: null,
-        milestones: []
-      }
+        milestones: [],
+      },
     };
 
     // Calculate overdue assignments (> 3 days old)
@@ -134,7 +136,7 @@ router.get('/dashboard', async (req, res) => {
               username: assignee,
               pending: 0,
               overdue: 0,
-              assignments: []
+              assignments: [],
             };
           }
 
@@ -144,21 +146,21 @@ router.get('/dashboard', async (req, res) => {
             chapter: assignment.chapter,
             stage: assignment.stage,
             assignedAt: assignment.assignedAt,
-            dueDate: assignment.dueDate
+            dueDate: assignment.dueDate,
           });
 
           // Check if overdue
           const assignedDate = new Date(assignment.assignedAt);
           const dueDate = assignment.dueDate ? new Date(assignment.dueDate) : null;
-          const isOverdue = (dueDate && dueDate < new Date()) ||
-                           (!dueDate && assignedDate < overdueThreshold);
+          const isOverdue =
+            (dueDate && dueDate < new Date()) || (!dueDate && assignedDate < overdueThreshold);
 
           if (isOverdue) {
             workloadMap[assignee].overdue++;
             dashboard.overdueItems.push({
               ...assignment,
               daysOld: Math.floor((new Date() - assignedDate) / (1000 * 60 * 60 * 24)),
-              type: 'assignment'
+              type: 'assignment',
             });
             dashboard.needsAttention.items.push({
               type: 'overdue',
@@ -167,20 +169,22 @@ router.get('/dashboard', async (req, res) => {
               stage: assignment.stage,
               assignedTo: assignee,
               daysOld: Math.floor((new Date() - assignedDate) / (1000 * 60 * 60 * 24)),
-              message: `Úthlutun ${OVERDUE_DAYS}+ daga gömul: Kafli ${assignment.chapter} (${assignment.stage})`
+              message: `Úthlutun ${OVERDUE_DAYS}+ daga gömul: Kafli ${assignment.chapter} (${assignment.stage})`,
             });
           }
         }
 
         // Convert workload map to array and add capacity info
-        dashboard.workload = Object.values(workloadMap).map(w => {
-          if (capacityStore) {
-            const capacity = capacityStore.getUserCapacity(w.username);
-            w.maxConcurrent = capacity.maxConcurrent;
-            w.utilizationPercent = Math.round((w.pending / capacity.maxConcurrent) * 100);
-          }
-          return w;
-        }).sort((a, b) => b.pending - a.pending);
+        dashboard.workload = Object.values(workloadMap)
+          .map((w) => {
+            if (capacityStore) {
+              const capacity = capacityStore.getUserCapacity(w.username);
+              w.maxConcurrent = capacity.maxConcurrent;
+              w.utilizationPercent = Math.round((w.pending / capacity.maxConcurrent) * 100);
+            }
+            return w;
+          })
+          .sort((a, b) => b.pending - a.pending);
 
         dashboard.needsAttention.overdueCount = dashboard.overdueItems.length;
       } catch (e) {
@@ -195,8 +199,9 @@ router.get('/dashboard', async (req, res) => {
 
       if (!fs.existsSync(chaptersPath)) continue;
 
-      const chapterDirs = fs.readdirSync(chaptersPath)
-        .filter(d => d.startsWith('ch'))
+      const chapterDirs = fs
+        .readdirSync(chaptersPath)
+        .filter((d) => d.startsWith('ch'))
         .sort((a, b) => {
           const aNum = parseInt(a.replace('ch', ''));
           const bNum = parseInt(b.replace('ch', ''));
@@ -205,18 +210,18 @@ router.get('/dashboard', async (req, res) => {
 
       dashboard.chapterMatrix[book] = {
         totalChapters: chapterDirs.length,
-        chapters: []
+        chapters: [],
       };
 
       for (const chapterDir of chapterDirs) {
         const chapterNum = parseInt(chapterDir.replace('ch', ''));
         const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
 
-        let chapterData = {
+        const chapterData = {
           chapter: chapterNum,
           stages: {},
           progress: 0,
-          assignment: null
+          assignment: null,
         };
 
         if (fs.existsSync(statusPath)) {
@@ -241,7 +246,7 @@ router.get('/dashboard', async (req, res) => {
                 book,
                 chapter: chapterNum,
                 stage: formatted.currentStage,
-                message: `Kafli ${chapterNum} í vinnslu án úthlutunar`
+                message: `Kafli ${chapterNum} í vinnslu án úthlutunar`,
               });
             }
           } catch (err) {
@@ -270,7 +275,7 @@ router.get('/dashboard', async (req, res) => {
             title: chapterData.title,
             nextStage: chapterData.nextStage,
             progress: chapterData.progress,
-            message: `Kafli ${chapterNum} tilbúinn fyrir: ${chapterData.nextStage}`
+            message: `Kafli ${chapterNum} tilbúinn fyrir: ${chapterData.nextStage}`,
           });
         }
 
@@ -282,14 +287,14 @@ router.get('/dashboard', async (req, res) => {
     try {
       const result = activityLog.search({
         limit: 20,
-        offset: 0
+        offset: 0,
       });
 
-      dashboard.teamActivity = result.activities.map(activity => ({
+      dashboard.teamActivity = result.activities.map((activity) => ({
         ...activity,
         timeAgo: formatTimeAgo(activity.createdAt),
         icon: getActivityIcon(activity.type),
-        color: getActivityColor(activity.type)
+        color: getActivityColor(activity.type),
       }));
     } catch (err) {
       console.error('Failed to get team activity:', err);
@@ -303,35 +308,36 @@ router.get('/dashboard', async (req, res) => {
       // Count completed sections in last 7 days
       const recentCompletions = activityLog.search({
         type: 'review_approved',
-        limit: 100
+        limit: 100,
       });
 
-      const completedThisWeek = recentCompletions.activities.filter(a => {
+      const completedThisWeek = recentCompletions.activities.filter((a) => {
         const activityDate = new Date(a.createdAt);
         return activityDate >= weekAgo;
       }).length;
 
       dashboard.metrics.velocity = {
         sectionsPerWeek: completedThisWeek,
-        description: `${completedThisWeek} hlutar kláraðir síðustu 7 daga`
+        description: `${completedThisWeek} hlutar kláraðir síðustu 7 daga`,
       };
 
       // Milestone tracking for pilot (Chapters 1-4)
       let pilotComplete = 0;
-      let pilotTotal = 4;
+      const pilotTotal = 4;
 
       if (dashboard.chapterMatrix.efnafraedi) {
         const pilotChapters = dashboard.chapterMatrix.efnafraedi.chapters.slice(0, 4);
-        pilotComplete = pilotChapters.filter(ch => ch.progress === 100).length;
+        pilotComplete = pilotChapters.filter((ch) => ch.progress === 100).length;
       }
 
-      dashboard.metrics.milestones = [{
-        name: 'Kaflar 1-4 fyrir tilraunakennslu',
-        complete: pilotComplete,
-        total: pilotTotal,
-        percentage: Math.round((pilotComplete / pilotTotal) * 100)
-      }];
-
+      dashboard.metrics.milestones = [
+        {
+          name: 'Kaflar 1-4 fyrir tilraunakennslu',
+          complete: pilotComplete,
+          total: pilotTotal,
+          percentage: Math.round((pilotComplete / pilotTotal) * 100),
+        },
+      ];
     } catch (err) {
       console.error('Failed to calculate metrics:', err);
     }
@@ -341,7 +347,7 @@ router.get('/dashboard', async (req, res) => {
       const reviewsPath = path.join(__dirname, '..', 'data', 'reviews.json');
       if (fs.existsSync(reviewsPath)) {
         const reviews = JSON.parse(fs.readFileSync(reviewsPath, 'utf-8'));
-        const pending = reviews.filter(r => r.status === 'pending');
+        const pending = reviews.filter((r) => r.status === 'pending');
         dashboard.needsAttention.pendingReviews = pending.length;
 
         for (const review of pending.slice(0, 5)) {
@@ -351,7 +357,7 @@ router.get('/dashboard', async (req, res) => {
             chapter: review.chapter,
             section: review.section,
             submittedBy: review.submittedBy,
-            message: `Yfirferð í bið: ${review.section}`
+            message: `Yfirferð í bið: ${review.section}`,
           });
         }
       }
@@ -364,7 +370,7 @@ router.get('/dashboard', async (req, res) => {
       const issuesPath = path.join(__dirname, '..', 'data', 'issues.json');
       if (fs.existsSync(issuesPath)) {
         const issues = JSON.parse(fs.readFileSync(issuesPath, 'utf-8'));
-        const blocked = issues.filter(i => i.category === 'BLOCKED' && i.status === 'pending');
+        const blocked = issues.filter((i) => i.category === 'BLOCKED' && i.status === 'pending');
         dashboard.needsAttention.blockedIssues = blocked.length;
 
         for (const issue of blocked.slice(0, 5)) {
@@ -373,7 +379,7 @@ router.get('/dashboard', async (req, res) => {
             description: issue.description,
             book: issue.book,
             chapter: issue.chapter,
-            message: `Lokað á: ${issue.description}`
+            message: `Lokað á: ${issue.description}`,
           });
         }
       }
@@ -382,12 +388,11 @@ router.get('/dashboard', async (req, res) => {
     }
 
     res.json(dashboard);
-
   } catch (err) {
     console.error('Dashboard error:', err);
     res.status(500).json({
       error: 'Failed to get dashboard',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -409,15 +414,15 @@ router.get('/activity/timeline', (req, res) => {
       type: type || null,
       userId: user || null,
       limit: Math.min(parseInt(limit, 10) || 50, 200),
-      offset: parseInt(offset, 10) || 0
+      offset: parseInt(offset, 10) || 0,
     });
 
     // Format activities for display
-    const formattedActivities = result.activities.map(activity => ({
+    const formattedActivities = result.activities.map((activity) => ({
       ...activity,
       timeAgo: formatTimeAgo(activity.createdAt),
       icon: getActivityIcon(activity.type),
-      color: getActivityColor(activity.type)
+      color: getActivityColor(activity.type),
     }));
 
     res.json({
@@ -425,13 +430,13 @@ router.get('/activity/timeline', (req, res) => {
       total: result.total,
       limit: result.limit,
       offset: result.offset,
-      hasMore: result.offset + result.activities.length < result.total
+      hasMore: result.offset + result.activities.length < result.total,
     });
   } catch (err) {
     console.error('Activity timeline error:', err);
     res.status(500).json({
       error: 'Failed to get activity timeline',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -445,8 +450,8 @@ router.get('/activity/types', (req, res) => {
     types: Object.entries(activityLog.ACTIVITY_TYPES).map(([key, value]) => ({
       key,
       value,
-      label: formatActivityType(value)
-    }))
+      label: formatActivityType(value),
+    })),
   });
 });
 
@@ -464,7 +469,7 @@ router.get('/:book', (req, res) => {
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({
       error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
     });
   }
 
@@ -476,13 +481,14 @@ router.get('/:book', (req, res) => {
       return res.json({
         book,
         chapters: [],
-        message: 'No chapter status data found'
+        message: 'No chapter status data found',
       });
     }
 
     // Read all chapter directories
-    const chapterDirs = fs.readdirSync(chaptersPath)
-      .filter(d => d.startsWith('ch'))
+    const chapterDirs = fs
+      .readdirSync(chaptersPath)
+      .filter((d) => d.startsWith('ch'))
       .sort((a, b) => {
         const aNum = parseInt(a.replace('ch', ''));
         const bNum = parseInt(b.replace('ch', ''));
@@ -500,13 +506,13 @@ router.get('/:book', (req, res) => {
           chapters.push({
             chapter: parseInt(chapterDir.replace('ch', '')),
             chapterDir,
-            ...formatChapterStatus(statusData)
+            ...formatChapterStatus(statusData),
           });
         } catch (err) {
           chapters.push({
             chapter: parseInt(chapterDir.replace('ch', '')),
             chapterDir,
-            error: `Failed to parse status: ${err.message}`
+            error: `Failed to parse status: ${err.message}`,
           });
         }
       }
@@ -519,13 +525,12 @@ router.get('/:book', (req, res) => {
       book,
       totalChapters: chapters.length,
       summary,
-      chapters
+      chapters,
     });
-
   } catch (err) {
     res.status(500).json({
       error: 'Failed to get status',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -540,7 +545,7 @@ router.get('/:book/summary', (req, res) => {
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({
       error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
     });
   }
 
@@ -553,16 +558,15 @@ router.get('/:book/summary', (req, res) => {
         summary: {
           totalChapters: 0,
           stagesComplete: {},
-          overallProgress: 0
-        }
+          overallProgress: 0,
+        },
       });
     }
 
-    const chapterDirs = fs.readdirSync(chaptersPath)
-      .filter(d => d.startsWith('ch'));
+    const chapterDirs = fs.readdirSync(chaptersPath).filter((d) => d.startsWith('ch'));
 
     const stageCounts = {};
-    PIPELINE_STAGES.forEach(stage => {
+    PIPELINE_STAGES.forEach((stage) => {
       stageCounts[stage] = { complete: 0, inProgress: 0, pending: 0, notStarted: 0 };
     });
 
@@ -591,9 +595,8 @@ router.get('/:book/summary', (req, res) => {
     // Calculate overall progress
     const totalChapters = chapterDirs.length;
     const publicationComplete = stageCounts.publication.complete;
-    const overallProgress = totalChapters > 0
-      ? Math.round((publicationComplete / totalChapters) * 100)
-      : 0;
+    const overallProgress =
+      totalChapters > 0 ? Math.round((publicationComplete / totalChapters) * 100) : 0;
 
     res.json({
       book,
@@ -601,14 +604,13 @@ router.get('/:book/summary', (req, res) => {
         totalChapters,
         stages: stageCounts,
         overallProgress,
-        chaptersFullyComplete: publicationComplete
-      }
+        chaptersFullyComplete: publicationComplete,
+      },
     });
-
   } catch (err) {
     res.status(500).json({
       error: 'Failed to get summary',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -624,26 +626,33 @@ router.get('/:book/:chapter', (req, res) => {
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({
       error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
     });
   }
 
   if (isNaN(chapterNum) || chapterNum < 1) {
     return res.status(400).json({
       error: 'Invalid chapter',
-      message: 'Chapter must be a positive number'
+      message: 'Chapter must be a positive number',
     });
   }
 
   try {
     const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
-    const statusPath = path.join(PROJECT_ROOT, 'books', book, 'chapters', chapterDir, 'status.json');
+    const statusPath = path.join(
+      PROJECT_ROOT,
+      'books',
+      book,
+      'chapters',
+      chapterDir,
+      'status.json'
+    );
     const filesPath = path.join(PROJECT_ROOT, 'books', book, 'chapters', chapterDir, 'files.json');
 
     if (!fs.existsSync(statusPath)) {
       return res.status(404).json({
         error: 'Status not found',
-        message: `No status file found for ${book} chapter ${chapterNum}`
+        message: `No status file found for ${book} chapter ${chapterNum}`,
       });
     }
 
@@ -665,13 +674,12 @@ router.get('/:book/:chapter', (req, res) => {
       chapterDir,
       ...formatChapterStatus(statusData),
       files: filesData,
-      actions: suggestNextActions(statusData)
+      actions: suggestNextActions(statusData),
     });
-
   } catch (err) {
     res.status(500).json({
       error: 'Failed to get chapter status',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -688,14 +696,14 @@ router.get('/:book/:chapter/sections', (req, res) => {
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({
       error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
     });
   }
 
   if (isNaN(chapterNum) || chapterNum < 1) {
     return res.status(400).json({
       error: 'Invalid chapter',
-      message: 'Chapter must be a positive number'
+      message: 'Chapter must be a positive number',
     });
   }
 
@@ -703,13 +711,16 @@ router.get('/:book/:chapter/sections', (req, res) => {
     const chapterDir = `ch${String(chapterNum).padStart(2, '0')}`;
     const bookPath = path.join(PROJECT_ROOT, 'books', book);
 
-    // Define directories to check for sections
+    // Define directories to check for sections/modules
+    const chapterStr = String(chapterNum).padStart(2, '0');
     const stagePaths = {
-      enMarkdown: path.join(bookPath, '02-for-mt', chapterDir),
+      extraction: path.join(bookPath, '02-for-mt', chapterDir),
       mtOutput: path.join(bookPath, '02-mt-output', chapterDir),
       linguisticReview: path.join(bookPath, '03-faithful', chapterDir),
       tmCreated: path.join(bookPath, 'tm', chapterDir),
-      publication: path.join(bookPath, '05-publication', 'faithful', chapterDir)
+      injection: path.join(bookPath, '03-translated', chapterDir),
+      rendering: path.join(bookPath, '05-publication', 'mt-preview', 'chapters', chapterStr),
+      publication: path.join(bookPath, '05-publication', 'faithful', 'chapters', chapterStr),
     };
 
     // Collect all unique section IDs from all directories
@@ -718,20 +729,18 @@ router.get('/:book/:chapter/sections', (req, res) => {
     // Check MT output first (primary source of sections)
     // Use extractBaseSectionId to normalize split files (e.g., "1-2(a).is.md" → "1-2")
     if (fs.existsSync(stagePaths.mtOutput)) {
-      const files = fs.readdirSync(stagePaths.mtOutput)
-        .filter(f => f.endsWith('.is.md'));
-      files.forEach(f => {
+      const files = fs.readdirSync(stagePaths.mtOutput).filter((f) => f.endsWith('.is.md'));
+      files.forEach((f) => {
         // Extract base section ID, collapsing splits to their parent
         const sectionId = extractBaseSectionId(f);
         sectionSet.add(sectionId);
       });
     }
 
-    // Also check EN markdown for sections not yet translated
-    if (fs.existsSync(stagePaths.enMarkdown)) {
-      const files = fs.readdirSync(stagePaths.enMarkdown)
-        .filter(f => f.endsWith('.en.md'));
-      files.forEach(f => {
+    // Also check EN source for sections not yet translated
+    if (fs.existsSync(stagePaths.extraction)) {
+      const files = fs.readdirSync(stagePaths.extraction).filter((f) => f.endsWith('.en.md'));
+      files.forEach((f) => {
         // Extract base section ID, collapsing splits to their parent
         const sectionId = extractBaseSectionId(f);
         sectionSet.add(sectionId);
@@ -750,12 +759,12 @@ router.get('/:book/:chapter/sections', (req, res) => {
     });
 
     // Build section status for each section
-    const sectionStatuses = sections.map(sectionId => {
+    const sectionStatuses = sections.map((sectionId) => {
       const stages = {};
 
-      // Check EN markdown (may be split into parts like "1-2(a).en.md")
-      const enFileExists = sectionHasAnyFile(stagePaths.enMarkdown, sectionId, '.en.md');
-      stages.enMarkdown = enFileExists ? 'complete' : 'not-started';
+      // Check extraction (EN source — may be split into parts like "1-2(a).en.md")
+      const enFileExists = sectionHasAnyFile(stagePaths.extraction, sectionId, '.en.md');
+      stages.extraction = enFileExists ? 'complete' : 'not-started';
 
       // Check MT output (may be split into parts like "1-2(a).is.md")
       const mtFileExists = sectionHasAnyFile(stagePaths.mtOutput, sectionId, '.is.md');
@@ -782,15 +791,32 @@ router.get('/:book/:chapter/sections', (req, res) => {
         stages.tmCreated = 'not-started';
       }
 
-      // Check publication
-      const pubFile = path.join(stagePaths.publication, `${sectionId}.md`);
-      const pubFileFaithful = path.join(bookPath, '05-publication', 'faithful', chapterDir, `${sectionId}.md`);
-      const pubFileMt = path.join(bookPath, '05-publication', 'mt-preview', 'chapters', chapterDir, `${sectionId}.md`);
-      if (fs.existsSync(pubFile) || fs.existsSync(pubFileFaithful)) {
-        stages.publication = 'complete';
-      } else if (fs.existsSync(pubFileMt)) {
-        stages.publication = 'in-progress'; // MT preview published but not faithful
-      } else if (stages.linguisticReview === 'complete') {
+      // Check injection (translated CNXML exists)
+      if (fs.existsSync(stagePaths.injection)) {
+        // Look for any CNXML file matching this section's module
+        const injectedFiles = fs
+          .readdirSync(stagePaths.injection)
+          .filter((f) => f.endsWith('.cnxml'));
+        stages.injection = injectedFiles.length > 0 ? 'complete' : 'not-started';
+      } else {
+        stages.injection = stages.linguisticReview === 'complete' ? 'pending' : 'not-started';
+      }
+
+      // Check rendering (HTML exists in publication dir)
+      if (fs.existsSync(stagePaths.rendering)) {
+        const htmlFiles = fs.readdirSync(stagePaths.rendering).filter((f) => f.endsWith('.html'));
+        stages.rendering = htmlFiles.length > 0 ? 'complete' : 'not-started';
+      } else {
+        stages.rendering = stages.injection === 'complete' ? 'pending' : 'not-started';
+      }
+
+      // Check publication (faithful HTML published)
+      if (fs.existsSync(stagePaths.publication)) {
+        const pubHtmlFiles = fs
+          .readdirSync(stagePaths.publication)
+          .filter((f) => f.endsWith('.html'));
+        stages.publication = pubHtmlFiles.length > 0 ? 'complete' : 'not-started';
+      } else if (stages.rendering === 'complete') {
         stages.publication = 'pending';
       } else {
         stages.publication = 'not-started';
@@ -798,22 +824,22 @@ router.get('/:book/:chapter/sections', (req, res) => {
 
       return {
         id: sectionId,
-        stages
+        stages,
       };
     });
 
     // Calculate summary
     const summary = {
       totalSections: sections.length,
-      byStage: {}
+      byStage: {},
     };
 
     for (const stage of PIPELINE_STAGES) {
       summary.byStage[stage] = {
-        complete: sectionStatuses.filter(s => s.stages[stage] === 'complete').length,
-        inProgress: sectionStatuses.filter(s => s.stages[stage] === 'in-progress').length,
-        pending: sectionStatuses.filter(s => s.stages[stage] === 'pending').length,
-        notStarted: sectionStatuses.filter(s => s.stages[stage] === 'not-started').length
+        complete: sectionStatuses.filter((s) => s.stages[stage] === 'complete').length,
+        inProgress: sectionStatuses.filter((s) => s.stages[stage] === 'in-progress').length,
+        pending: sectionStatuses.filter((s) => s.stages[stage] === 'pending').length,
+        notStarted: sectionStatuses.filter((s) => s.stages[stage] === 'not-started').length,
       };
     }
 
@@ -823,23 +849,25 @@ router.get('/:book/:chapter/sections', (req, res) => {
       chapterDir,
       sections: sectionStatuses,
       summary,
-      stages: PIPELINE_STAGES.map(s => ({
+      stages: PIPELINE_STAGES.map((s) => ({
         id: s,
-        shortLabel: {
-          enMarkdown: 'EN',
-          mtOutput: 'MT',
-          linguisticReview: 'Y1',
-          tmCreated: 'TM',
-          publication: 'Pub'
-        }[s] || s
-      }))
+        shortLabel:
+          {
+            extraction: 'Ext',
+            mtOutput: 'MT',
+            linguisticReview: 'Y1',
+            tmCreated: 'TM',
+            injection: 'Inj',
+            rendering: 'Ren',
+            publication: 'Pub',
+          }[s] || s,
+      })),
     });
-
   } catch (err) {
     console.error('Error getting section status:', err);
     res.status(500).json({
       error: 'Failed to get section status',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -852,7 +880,7 @@ function formatChapterStatus(statusData) {
   const rawStatus = statusData.status || {};
   const status = normalizeStageStatus(rawStatus);
 
-  const stages = PIPELINE_STAGES.map(stage => {
+  const stages = PIPELINE_STAGES.map((stage) => {
     const stageData = status[stage] || {};
     return {
       stage,
@@ -861,7 +889,7 @@ function formatChapterStatus(statusData) {
       complete: stageData.status === 'complete',
       date: stageData.date || null,
       editor: stageData.editor || null,
-      notes: stageData.notes || null
+      notes: stageData.notes || null,
     };
   });
 
@@ -881,7 +909,7 @@ function formatChapterStatus(statusData) {
   }
 
   // Calculate progress percentage
-  const completedStages = stages.filter(s => s.complete).length;
+  const completedStages = stages.filter((s) => s.complete).length;
   const progress = Math.round((completedStages / stages.length) * 100);
 
   return {
@@ -889,7 +917,7 @@ function formatChapterStatus(statusData) {
     progress,
     currentStage,
     nextStage,
-    stages
+    stages,
   };
 }
 
@@ -902,7 +930,7 @@ function calculateSummary(chapters) {
     complete: 0,
     inProgress: 0,
     notStarted: 0,
-    avgProgress: 0
+    avgProgress: 0,
   };
 
   let totalProgress = 0;
@@ -921,64 +949,66 @@ function calculateSummary(chapters) {
     }
   }
 
-  summary.avgProgress = chapters.length > 0
-    ? Math.round(totalProgress / chapters.length)
-    : 0;
+  summary.avgProgress = chapters.length > 0 ? Math.round(totalProgress / chapters.length) : 0;
 
   return summary;
 }
 
 /**
- * Suggest next actions based on current status
+ * Suggest next actions based on current status.
+ * Uses normalized stage names from the 7-step pipeline.
  */
 function suggestNextActions(statusData) {
-  const status = statusData.status || {};
+  const rawStatus = statusData.status || {};
+  const status = normalizeStageStatus(rawStatus);
   const actions = [];
 
-  // Check each stage and suggest actions
-  if (!status.source?.status || status.source?.status === 'not-started') {
+  // Helper: is a stage complete?
+  const isComplete = (stage) => status[stage]?.complete === true;
+
+  if (!isComplete('extraction')) {
     actions.push({
-      stage: 'source',
-      action: 'Register source files',
-      command: '/intake-source'
+      stage: 'extraction',
+      action: 'Extract EN segments from CNXML',
+      command: 'node tools/cnxml-extract.js --chapter N',
     });
-  } else if (status.source?.status === 'complete' && (!status.mtOutput?.status || status.mtOutput?.status === 'not-started')) {
+  } else if (!isComplete('mtOutput')) {
     actions.push({
       stage: 'mtOutput',
-      action: 'Run through Erlendur MT',
+      action: 'Run through malstadur.is MT',
       manual: true,
-      instructions: 'Download markdown and upload to malstadur.is'
+      instructions: 'Upload segments to malstadur.is and download IS output',
     });
-  } else if (status.mtOutput?.status === 'complete' && (!status.matecat?.status || status.matecat?.status === 'not-started')) {
+  } else if (!isComplete('linguisticReview')) {
     actions.push({
-      stage: 'matecat',
-      action: 'Upload to Matecat for alignment',
+      stage: 'linguisticReview',
+      action: 'Linguistic review (Pass 1) in segment editor',
+      command: '/review-chapter',
+    });
+  } else if (!isComplete('tmCreated')) {
+    actions.push({
+      stage: 'tmCreated',
+      action: 'Create TM via Matecat Align',
       manual: true,
-      instructions: 'Create Matecat project with XLIFF file'
+      instructions: 'Run prepare-for-align, then upload to Matecat Align',
     });
-  } else if (status.matecat?.status === 'complete' && (!status.editorialPass1?.status || status.editorialPass1?.status !== 'complete')) {
+  } else if (!isComplete('injection')) {
     actions.push({
-      stage: 'editorialPass1',
-      action: 'Run editorial review (Pass 1)',
-      command: '/review-chapter'
+      stage: 'injection',
+      action: 'Inject translations into CNXML',
+      command: 'Pipeline API: POST /api/pipeline/inject',
     });
-  } else if (status.editorialPass1?.status === 'complete' && (!status.tmUpdated?.status || status.tmUpdated?.status === 'not-started')) {
+  } else if (!isComplete('rendering')) {
     actions.push({
-      stage: 'tmUpdated',
-      action: 'Export updated TM',
-      command: 'node tools/xliff-to-tmx.js'
+      stage: 'rendering',
+      action: 'Render CNXML to HTML',
+      command: 'Pipeline API: POST /api/pipeline/render',
     });
-  } else if (status.tmUpdated?.status === 'complete' && (!status.editorialPass2?.status || status.editorialPass2?.status !== 'complete')) {
-    actions.push({
-      stage: 'editorialPass2',
-      action: 'Run localization review (Pass 2)',
-      command: '/localize-chapter'
-    });
-  } else if (status.editorialPass2?.status === 'complete' && (!status.publication?.status || status.publication?.status !== 'complete')) {
+  } else if (!isComplete('publication')) {
     actions.push({
       stage: 'publication',
-      action: 'Prepare for publication',
-      command: '/tag-for-publication'
+      action: 'Publish to web',
+      command: 'Publication API: POST /api/publication/:book/:chapter/:track',
     });
   }
 
@@ -1009,26 +1039,26 @@ function formatTimeAgo(dateString) {
  */
 function getActivityIcon(type) {
   const icons = {
-    'draft_saved': '💾',
-    'review_submitted': '📤',
-    'version_restored': '🔄',
-    'review_approved': '✅',
-    'changes_requested': '📝',
-    'commit_created': '📦',
-    'push_completed': '🚀',
-    'workflow_started': '▶️',
-    'workflow_completed': '🏁',
-    'file_uploaded': '📁',
-    'upload': '📤',
-    'assign_reviewer': '👤',
-    'assign_localizer': '🌍',
-    'status_change': '🔀',
-    'submit_review': '📋',
-    'approve_review': '✅',
-    'request_changes': '✏️',
-    'submit_localization': '🌐',
-    'approve_localization': '✅',
-    'request_localization_changes': '✏️'
+    draft_saved: '💾',
+    review_submitted: '📤',
+    version_restored: '🔄',
+    review_approved: '✅',
+    changes_requested: '📝',
+    commit_created: '📦',
+    push_completed: '🚀',
+    workflow_started: '▶️',
+    workflow_completed: '🏁',
+    file_uploaded: '📁',
+    upload: '📤',
+    assign_reviewer: '👤',
+    assign_localizer: '🌍',
+    status_change: '🔀',
+    submit_review: '📋',
+    approve_review: '✅',
+    request_changes: '✏️',
+    submit_localization: '🌐',
+    approve_localization: '✅',
+    request_localization_changes: '✏️',
   };
   return icons[type] || '📌';
 }
@@ -1048,26 +1078,26 @@ function getActivityColor(type) {
  */
 function formatActivityType(type) {
   const labels = {
-    'draft_saved': 'Drög vistuð',
-    'review_submitted': 'Yfirferð send inn',
-    'version_restored': 'Útgáfa endurheimt',
-    'review_approved': 'Yfirferð samþykkt',
-    'changes_requested': 'Breytingar óskast',
-    'commit_created': 'Commit búin til',
-    'push_completed': 'Push lokið',
-    'workflow_started': 'Verkflæði hafið',
-    'workflow_completed': 'Verkflæði lokið',
-    'file_uploaded': 'Skrá hlaðið upp',
-    'upload': 'Upphleðsla',
-    'assign_reviewer': 'Ritstjóri úthlutaður',
-    'assign_localizer': 'Staðfærandi úthlutaður',
-    'status_change': 'Staða breytt',
-    'submit_review': 'Yfirferð send',
-    'approve_review': 'Yfirferð samþykkt',
-    'request_changes': 'Breytingar óskast',
-    'submit_localization': 'Staðfæring send',
-    'approve_localization': 'Staðfæring samþykkt',
-    'request_localization_changes': 'Breytingar á staðfæringu óskast'
+    draft_saved: 'Drög vistuð',
+    review_submitted: 'Yfirferð send inn',
+    version_restored: 'Útgáfa endurheimt',
+    review_approved: 'Yfirferð samþykkt',
+    changes_requested: 'Breytingar óskast',
+    commit_created: 'Commit búin til',
+    push_completed: 'Push lokið',
+    workflow_started: 'Verkflæði hafið',
+    workflow_completed: 'Verkflæði lokið',
+    file_uploaded: 'Skrá hlaðið upp',
+    upload: 'Upphleðsla',
+    assign_reviewer: 'Ritstjóri úthlutaður',
+    assign_localizer: 'Staðfærandi úthlutaður',
+    status_change: 'Staða breytt',
+    submit_review: 'Yfirferð send',
+    approve_review: 'Yfirferð samþykkt',
+    request_changes: 'Breytingar óskast',
+    submit_localization: 'Staðfæring send',
+    approve_localization: 'Staðfæring samþykkt',
+    request_localization_changes: 'Breytingar á staðfæringu óskast',
   };
   return labels[type] || type;
 }
@@ -1095,14 +1125,14 @@ router.get('/:book/scan', (req, res) => {
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({
       error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
     });
   }
 
   if (!bookRegistration || !bookRegistration.scanStatusDryRun) {
     return res.status(501).json({
       error: 'Not implemented',
-      message: 'Status scanning requires bookRegistration service'
+      message: 'Status scanning requires bookRegistration service',
     });
   }
 
@@ -1114,7 +1144,7 @@ router.get('/:book/scan', (req, res) => {
       totalChapters: result.chapters.length,
       wouldUpdate: 0,
       unchanged: 0,
-      stagesAffected: {}
+      stagesAffected: {},
     };
 
     for (const chapter of result.chapters) {
@@ -1137,12 +1167,12 @@ router.get('/:book/scan', (req, res) => {
       dryRun: true,
       summary,
       chapters: result.chapters,
-      errors: result.errors
+      errors: result.errors,
     });
   } catch (err) {
     res.status(500).json({
       error: 'Scan failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -1157,14 +1187,14 @@ router.post('/:book/sync', (req, res) => {
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({
       error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
     });
   }
 
   if (!bookRegistration || !bookRegistration.scanAndUpdateStatus) {
     return res.status(501).json({
       error: 'Not implemented',
-      message: 'Status sync requires bookRegistration service'
+      message: 'Status sync requires bookRegistration service',
     });
   }
 
@@ -1177,12 +1207,12 @@ router.post('/:book/sync', (req, res) => {
       updated: result.updated,
       unchanged: result.unchanged,
       changes: result.changes || [],
-      errors: result.errors
+      errors: result.errors,
     });
   } catch (err) {
     res.status(500).json({
       error: 'Sync failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -1198,21 +1228,21 @@ router.post('/:book/:chapter/sync', (req, res) => {
   if (!VALID_BOOKS.includes(book)) {
     return res.status(400).json({
       error: 'Invalid book',
-      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`
+      message: `Book must be one of: ${VALID_BOOKS.join(', ')}`,
     });
   }
 
   if (isNaN(chapterNum) || chapterNum < 1) {
     return res.status(400).json({
       error: 'Invalid chapter',
-      message: 'Chapter must be a positive number'
+      message: 'Chapter must be a positive number',
     });
   }
 
   if (!bookRegistration || !bookRegistration.scanAndUpdateStatus) {
     return res.status(501).json({
       error: 'Not implemented',
-      message: 'Status sync requires bookRegistration service'
+      message: 'Status sync requires bookRegistration service',
     });
   }
 
@@ -1227,12 +1257,12 @@ router.post('/:book/:chapter/sync', (req, res) => {
       updated: result.updated,
       unchanged: result.unchanged,
       changes: result.changes || [],
-      errors: result.errors
+      errors: result.errors,
     });
   } catch (err) {
     res.status(500).json({
       error: 'Sync failed',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -1261,14 +1291,14 @@ router.get('/analytics', async (req, res) => {
       projections: {},
       teamMetrics: [],
       stageMetrics: [],
-      weeklyProgress: []
+      weeklyProgress: [],
     };
 
     // Calculate velocity over different periods
     const periods = [
       { name: 'last7days', days: 7, label: 'Síðustu 7 dagar' },
       { name: 'last14days', days: 14, label: 'Síðustu 14 dagar' },
-      { name: 'last30days', days: 30, label: 'Síðustu 30 dagar' }
+      { name: 'last30days', days: 30, label: 'Síðustu 30 dagar' },
     ];
 
     for (const period of periods) {
@@ -1277,10 +1307,10 @@ router.get('/analytics', async (req, res) => {
 
       const result = activityLog.search({
         type: 'review_approved',
-        limit: 500
+        limit: 500,
       });
 
-      const completedInPeriod = result.activities.filter(a => {
+      const completedInPeriod = result.activities.filter((a) => {
         const activityDate = new Date(a.createdAt);
         return activityDate >= startDate;
       }).length;
@@ -1291,7 +1321,7 @@ router.get('/analytics', async (req, res) => {
         label: period.label,
         total: completedInPeriod,
         averagePerDay: parseFloat(avgPerDay),
-        averagePerWeek: parseFloat((avgPerDay * 7).toFixed(2))
+        averagePerWeek: parseFloat((avgPerDay * 7).toFixed(2)),
       };
     }
 
@@ -1306,8 +1336,7 @@ router.get('/analytics', async (req, res) => {
 
       if (!fs.existsSync(chaptersPath)) continue;
 
-      const chapterDirs = fs.readdirSync(chaptersPath)
-        .filter(d => d.startsWith('ch'));
+      const chapterDirs = fs.readdirSync(chaptersPath).filter((d) => d.startsWith('ch'));
 
       for (const chapterDir of chapterDirs) {
         // Count sections in this chapter
@@ -1317,27 +1346,30 @@ router.get('/analytics', async (req, res) => {
         // Estimate sections based on files (normalize split files to base sections)
         if (fs.existsSync(faithfulPath)) {
           try {
-            const faithfulFiles = fs.readdirSync(faithfulPath)
-              .filter(f => f.endsWith('.is.md'));
+            const faithfulFiles = fs.readdirSync(faithfulPath).filter((f) => f.endsWith('.is.md'));
             const uniqueFaithfulSections = getUniqueSections(faithfulFiles);
             completedSections += uniqueFaithfulSections.length;
             totalSections += uniqueFaithfulSections.length;
-          } catch (e) { }
+          } catch {
+            /* ignore */
+          }
         }
 
         if (fs.existsSync(mtOutputPath)) {
           try {
-            const mtFiles = fs.readdirSync(mtOutputPath)
-              .filter(f => f.endsWith('.is.md'));
+            const mtFiles = fs.readdirSync(mtOutputPath).filter((f) => f.endsWith('.is.md'));
             const uniqueMtSections = getUniqueSections(mtFiles);
             // Add sections that are in MT output but not in faithful
             const faithfulCount = fs.existsSync(faithfulPath)
-              ? getUniqueSections(fs.readdirSync(faithfulPath).filter(f => f.endsWith('.is.md'))).length
+              ? getUniqueSections(fs.readdirSync(faithfulPath).filter((f) => f.endsWith('.is.md')))
+                  .length
               : 0;
             const mtOnlyCount = Math.max(0, uniqueMtSections.length - faithfulCount);
             inProgressSections += mtOnlyCount;
             totalSections += mtOnlyCount;
-          } catch (e) { }
+          } catch {
+            /* ignore */
+          }
         }
       }
     }
@@ -1347,7 +1379,8 @@ router.get('/analytics', async (req, res) => {
       completedSections,
       inProgressSections,
       remainingSections: totalSections - completedSections,
-      percentComplete: totalSections > 0 ? Math.round((completedSections / totalSections) * 100) : 0
+      percentComplete:
+        totalSections > 0 ? Math.round((completedSections / totalSections) * 100) : 0,
     };
 
     // Calculate projections based on velocity
@@ -1368,16 +1401,16 @@ router.get('/analytics', async (req, res) => {
         projectedCompletionDateFormatted: projectedDate.toLocaleDateString('is-IS', {
           year: 'numeric',
           month: 'long',
-          day: 'numeric'
+          day: 'numeric',
         }),
-        confidence: daysToComplete <= 30 ? 'high' : daysToComplete <= 90 ? 'medium' : 'low'
+        confidence: daysToComplete <= 30 ? 'high' : daysToComplete <= 90 ? 'medium' : 'low',
       };
     } else {
       analytics.projections = {
         sectionsRemaining: totalSections - completedSections,
         currentVelocity: 0,
         estimatedDaysToComplete: null,
-        message: 'Ófullnægjandi gögn til að spá fyrir um lokadagsetningu'
+        message: 'Ófullnægjandi gögn til að spá fyrir um lokadagsetningu',
       };
     }
 
@@ -1387,7 +1420,7 @@ router.get('/analytics', async (req, res) => {
       last30Days.setDate(last30Days.getDate() - 30);
 
       const result = activityLog.search({
-        limit: 1000
+        limit: 1000,
       });
 
       const userStats = {};
@@ -1405,7 +1438,7 @@ router.get('/analytics', async (req, res) => {
             approvals: 0,
             drafts: 0,
             submissions: 0,
-            lastActive: null
+            lastActive: null,
           };
         }
 
@@ -1419,14 +1452,17 @@ router.get('/analytics', async (req, res) => {
           userStats[user].drafts++;
         }
 
-        if (!userStats[user].lastActive || new Date(activity.createdAt) > new Date(userStats[user].lastActive)) {
+        if (
+          !userStats[user].lastActive ||
+          new Date(activity.createdAt) > new Date(userStats[user].lastActive)
+        ) {
           userStats[user].lastActive = activity.createdAt;
         }
       }
 
-      analytics.teamMetrics = Object.values(userStats)
-        .sort((a, b) => b.totalActions - a.totalActions);
-
+      analytics.teamMetrics = Object.values(userStats).sort(
+        (a, b) => b.totalActions - a.totalActions
+      );
     } catch (e) {
       console.log('Could not calculate team metrics:', e.message);
     }
@@ -1441,8 +1477,7 @@ router.get('/analytics', async (req, res) => {
       const chaptersPath = path.join(PROJECT_ROOT, 'books', book, 'chapters');
       if (!fs.existsSync(chaptersPath)) continue;
 
-      const chapterDirs = fs.readdirSync(chaptersPath)
-        .filter(d => d.startsWith('ch'));
+      const chapterDirs = fs.readdirSync(chaptersPath).filter((d) => d.startsWith('ch'));
 
       for (const chapterDir of chapterDirs) {
         const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
@@ -1459,7 +1494,9 @@ router.get('/analytics', async (req, res) => {
             else if (stageStatus === 'pending') stageStats[stage].pending++;
             else stageStats[stage].notStarted++;
           }
-        } catch (e) { }
+        } catch {
+          /* ignore */
+        }
       }
     }
 
@@ -1467,18 +1504,19 @@ router.get('/analytics', async (req, res) => {
       ? Object.values(stageStats[PIPELINE_STAGES[0]]).reduce((a, b) => a + b, 0)
       : 0;
 
-    analytics.stageMetrics = PIPELINE_STAGES.map(stage => ({
+    analytics.stageMetrics = PIPELINE_STAGES.map((stage) => ({
       stage,
       ...stageStats[stage],
       total: totalChapters,
-      percentComplete: totalChapters > 0 ? Math.round((stageStats[stage].complete / totalChapters) * 100) : 0
+      percentComplete:
+        totalChapters > 0 ? Math.round((stageStats[stage].complete / totalChapters) * 100) : 0,
     }));
 
     // Weekly progress over last 8 weeks
     const weeks = [];
     for (let i = 7; i >= 0; i--) {
       const weekStart = new Date();
-      weekStart.setDate(weekStart.getDate() - (i * 7) - weekStart.getDay());
+      weekStart.setDate(weekStart.getDate() - i * 7 - weekStart.getDay());
       weekStart.setHours(0, 0, 0, 0);
 
       const weekEnd = new Date(weekStart);
@@ -1486,10 +1524,10 @@ router.get('/analytics', async (req, res) => {
 
       const result = activityLog.search({
         type: 'review_approved',
-        limit: 500
+        limit: 500,
       });
 
-      const completedInWeek = result.activities.filter(a => {
+      const completedInWeek = result.activities.filter((a) => {
         const d = new Date(a.createdAt);
         return d >= weekStart && d < weekEnd;
       }).length;
@@ -1497,7 +1535,7 @@ router.get('/analytics', async (req, res) => {
       weeks.push({
         weekStart: weekStart.toISOString(),
         weekLabel: `Vika ${8 - i}`,
-        completedSections: completedInWeek
+        completedSections: completedInWeek,
       });
     }
 
@@ -1515,18 +1553,22 @@ router.get('/analytics', async (req, res) => {
 
       if (fs.existsSync(mtOutputPath)) {
         try {
-          const mtFiles = fs.readdirSync(mtOutputPath).filter(f => f.endsWith('.is.md'));
+          const mtFiles = fs.readdirSync(mtOutputPath).filter((f) => f.endsWith('.is.md'));
           // Count unique base sections (collapse split parts)
           pilotSectionsTotal += getUniqueSections(mtFiles).length;
-        } catch (e) { }
+        } catch {
+          /* ignore */
+        }
       }
 
       if (fs.existsSync(faithfulPath)) {
         try {
-          const faithfulFiles = fs.readdirSync(faithfulPath).filter(f => f.endsWith('.is.md'));
+          const faithfulFiles = fs.readdirSync(faithfulPath).filter((f) => f.endsWith('.is.md'));
           // Count unique base sections (collapse split parts)
           pilotSectionsComplete += getUniqueSections(faithfulFiles).length;
-        } catch (e) { }
+        } catch {
+          /* ignore */
+        }
       }
     }
 
@@ -1535,17 +1577,17 @@ router.get('/analytics', async (req, res) => {
       chapters: pilotChapters,
       totalSections: pilotSectionsTotal,
       completedSections: pilotSectionsComplete,
-      percentComplete: pilotSectionsTotal > 0 ? Math.round((pilotSectionsComplete / pilotSectionsTotal) * 100) : 0,
-      onTrack: pilotSectionsComplete >= pilotSectionsTotal * 0.5 // Simple heuristic
+      percentComplete:
+        pilotSectionsTotal > 0 ? Math.round((pilotSectionsComplete / pilotSectionsTotal) * 100) : 0,
+      onTrack: pilotSectionsComplete >= pilotSectionsTotal * 0.5, // Simple heuristic
     };
 
     res.json(analytics);
-
   } catch (err) {
     console.error('Analytics error:', err);
     res.status(500).json({
       error: 'Failed to generate analytics',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -1584,9 +1626,9 @@ router.get('/meeting-agenda', async (req, res) => {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
-        day: 'numeric'
+        day: 'numeric',
       }),
-      sections: []
+      sections: [],
     };
 
     // 1. Disputed/Needs Review Terminology
@@ -1600,14 +1642,14 @@ router.get('/meeting-agenda', async (req, res) => {
             icon: '📖',
             priority: 'high',
             count: terms.length,
-            items: terms.map(t => ({
+            items: terms.map((t) => ({
               id: t.id,
               english: t.english,
               icelandic: t.icelandic,
               status: t.status,
               proposedBy: t.proposed_by_name,
-              discussionCount: t.discussion_count || 0
-            }))
+              discussionCount: t.discussion_count || 0,
+            })),
           });
         }
       } catch (e) {
@@ -1625,8 +1667,8 @@ router.get('/meeting-agenda', async (req, res) => {
         const sessionData = session.getSession(sess.id);
         if (!sessionData) continue;
 
-        const blocked = sessionData.issues.filter(i =>
-          i.category === 'BLOCKED' && i.status === 'pending'
+        const blocked = sessionData.issues.filter(
+          (i) => i.category === 'BLOCKED' && i.status === 'pending'
         );
 
         for (const issue of blocked) {
@@ -1636,7 +1678,7 @@ router.get('/meeting-agenda', async (req, res) => {
             book: sessionData.book,
             chapter: sessionData.chapter,
             description: issue.description,
-            context: issue.context
+            context: issue.context,
           });
         }
       }
@@ -1648,7 +1690,7 @@ router.get('/meeting-agenda', async (req, res) => {
           icon: '🚫',
           priority: 'high',
           count: blockedIssues.length,
-          items: blockedIssues.slice(0, 10)
+          items: blockedIssues.slice(0, 10),
         });
       }
     } catch (e) {
@@ -1666,15 +1708,17 @@ router.get('/meeting-agenda', async (req, res) => {
             icon: '📝',
             priority: 'medium',
             count: pendingReviews.length,
-            items: pendingReviews.slice(0, 10).map(r => ({
+            items: pendingReviews.slice(0, 10).map((r) => ({
               id: r.id,
               book: r.book,
               chapter: r.chapter,
               section: r.section,
               submittedBy: r.submittedByUsername,
               submittedAt: r.submittedAt,
-              daysPending: Math.floor((Date.now() - new Date(r.submittedAt).getTime()) / (1000 * 60 * 60 * 24))
-            }))
+              daysPending: Math.floor(
+                (Date.now() - new Date(r.submittedAt).getTime()) / (1000 * 60 * 60 * 24)
+              ),
+            })),
           });
         }
       } catch (e) {
@@ -1688,9 +1732,7 @@ router.get('/meeting-agenda', async (req, res) => {
       weekAgo.setDate(weekAgo.getDate() - 7);
 
       const recentActivity = activityLog.getRecent(100);
-      const weekActivity = recentActivity.filter(a =>
-        new Date(a.timestamp) >= weekAgo
-      );
+      const weekActivity = recentActivity.filter((a) => new Date(a.timestamp) >= weekAgo);
 
       // Group by user
       const userActivity = {};
@@ -1700,14 +1742,15 @@ router.get('/meeting-agenda', async (req, res) => {
         }
         userActivity[activity.username].count++;
         const type = activity.action || 'other';
-        userActivity[activity.username].types[type] = (userActivity[activity.username].types[type] || 0) + 1;
+        userActivity[activity.username].types[type] =
+          (userActivity[activity.username].types[type] || 0) + 1;
       }
 
       const activitySummary = Object.entries(userActivity)
         .map(([user, data]) => ({
           username: user,
           totalActions: data.count,
-          breakdown: data.types
+          breakdown: data.types,
         }))
         .sort((a, b) => b.totalActions - a.totalActions);
 
@@ -1718,7 +1761,7 @@ router.get('/meeting-agenda', async (req, res) => {
           icon: '📊',
           priority: 'info',
           count: weekActivity.length,
-          items: activitySummary.slice(0, 5)
+          items: activitySummary.slice(0, 5),
         });
       }
     } catch (e) {
@@ -1736,15 +1779,15 @@ router.get('/meeting-agenda', async (req, res) => {
             icon: '✅',
             priority: 'info',
             count: recentDecisions.length,
-            items: recentDecisions.map(d => ({
+            items: recentDecisions.map((d) => ({
               id: d.id,
               type: d.type,
               english: d.englishTerm,
               icelandic: d.icelandicTerm,
               rationale: d.rationale,
               decidedBy: d.decidedBy,
-              decidedAt: d.decidedAt
-            }))
+              decidedAt: d.decidedAt,
+            })),
           });
         }
       } catch (e) {
@@ -1754,18 +1797,21 @@ router.get('/meeting-agenda', async (req, res) => {
 
     // Generate summary statistics
     agenda.summary = {
-      highPriorityCount: agenda.sections.filter(s => s.priority === 'high').reduce((sum, s) => sum + s.count, 0),
-      mediumPriorityCount: agenda.sections.filter(s => s.priority === 'medium').reduce((sum, s) => sum + s.count, 0),
-      totalSections: agenda.sections.length
+      highPriorityCount: agenda.sections
+        .filter((s) => s.priority === 'high')
+        .reduce((sum, s) => sum + s.count, 0),
+      mediumPriorityCount: agenda.sections
+        .filter((s) => s.priority === 'medium')
+        .reduce((sum, s) => sum + s.count, 0),
+      totalSections: agenda.sections.length,
     };
 
     res.json(agenda);
-
   } catch (err) {
     console.error('Meeting agenda error:', err);
     res.status(500).json({
       error: 'Failed to generate meeting agenda',
-      message: err.message
+      message: err.message,
     });
   }
 });
