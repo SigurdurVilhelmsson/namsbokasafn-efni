@@ -1,0 +1,530 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>6</m:mn></m:mrow><m:mn>14</m:mn></m:msubsup><m:mtext>C</m:mtext></m:math>",
+    "latex": "_{{\\, 6}}^{14}\\text{C}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>83</m:mn></m:mrow><m:mn>210</m:mn></m:msubsup><m:mtext>Bi</m:mtext></m:math>",
+    "latex": "_{{\\, 83}}^{210}\\text{Bi}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>7</m:mn></m:mrow><m:mn>13</m:mn></m:msubsup><m:mtext>N</m:mtext></m:math>",
+    "latex": "_{{\\, 7}}^{13}\\text{N}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>+</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{+}})}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>83</m:mn></m:mrow><m:mn>212</m:mn></m:msubsup><m:mtext>Bi</m:mtext></m:math>",
+    "latex": "_{{\\, 83}}^{212}\\text{Bi}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α\\, \\text{or}\\, {β}^{\\text{−}})}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>9</m:mn></m:mrow><m:mn>15</m:mn></m:msubsup><m:mtext>F</m:mtext></m:math>",
+    "latex": "_{{\\, 9}}^{15}\\text{F}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mi>p</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{(p)}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>210</m:mn></m:msubsup><m:mtext>Po</m:mtext></m:math>",
+    "latex": "_{{\\, 84}}^{210}\\text{Po}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>11</m:mn><m:mn>24</m:mn></m:msubsup><m:mtext>Na</m:mtext></m:math>",
+    "latex": "_{11}^{24}\\text{Na}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>212</m:mn></m:msubsup><m:mtext>Po</m:mtext></m:math>",
+    "latex": "_{{\\, 84}}^{212}\\text{Po}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>15</m:mn><m:mn>32</m:mn></m:msubsup><m:mtext>P</m:mtext></m:math>",
+    "latex": "_{15}^{32}\\text{P}"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>216</m:mn></m:msubsup><m:mtext>Po</m:mtext></m:math>",
+    "latex": "_{{\\, 84}}^{216}\\text{Po}"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>19</m:mn><m:mn>40</m:mn></m:msubsup><m:mtext>K</m:mtext></m:math>",
+    "latex": "_{19}^{40}\\text{K}"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>β</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>E</m:mi><m:mo>.</m:mo><m:mi>C</m:mi><m:mo>.</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{({β\\, \\text{or}\\, E.C.})}}"
+  },
+  "math-26": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>84</m:mn></m:mrow><m:mn>218</m:mn></m:msubsup><m:mtext>Po</m:mtext></m:math>",
+    "latex": "_{{\\, 84}}^{218}\\text{Po}"
+  },
+  "math-27": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-28": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>26</m:mn><m:mn>49</m:mn></m:msubsup><m:mtext>Fe</m:mtext></m:math>",
+    "latex": "_{26}^{49}\\text{Fe}"
+  },
+  "math-29": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>+</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{+}})}"
+  },
+  "math-30": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>85</m:mn></m:mrow><m:mn>215</m:mn></m:msubsup><m:mtext>At</m:mtext></m:math>",
+    "latex": "_{{\\, 85}}^{215}\\text{At}"
+  },
+  "math-31": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-32": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-33": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>26</m:mn><m:mn>60</m:mn></m:msubsup><m:mtext>Fe</m:mtext></m:math>",
+    "latex": "_{26}^{60}\\text{Fe}"
+  },
+  "math-34": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-35": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-36": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>85</m:mn></m:mrow><m:mn>218</m:mn></m:msubsup><m:mtext>At</m:mtext></m:math>",
+    "latex": "_{{\\, 85}}^{218}\\text{At}"
+  },
+  "math-37": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-38": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>27</m:mn><m:mn>60</m:mn></m:msubsup><m:mtext>Co</m:mtext></m:math>",
+    "latex": "_{27}^{60}\\text{Co}"
+  },
+  "math-39": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-40": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>86</m:mn></m:mrow><m:mn>220</m:mn></m:msubsup><m:mtext>Rn</m:mtext></m:math>",
+    "latex": "_{{\\, 86}}^{220}\\text{Rn}"
+  },
+  "math-41": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-42": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>37</m:mn><m:mn>87</m:mn></m:msubsup><m:mtext>Rb</m:mtext></m:math>",
+    "latex": "_{37}^{87}\\text{Rb}"
+  },
+  "math-43": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-44": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-45": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>86</m:mn></m:mrow><m:mn>222</m:mn></m:msubsup><m:mtext>Rn</m:mtext></m:math>",
+    "latex": "_{{\\, 86}}^{222}\\text{Rn}"
+  },
+  "math-46": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-47": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>38</m:mn><m:mn>90</m:mn></m:msubsup><m:mtext>Sr</m:mtext></m:math>",
+    "latex": "_{38}^{90}\\text{Sr}"
+  },
+  "math-48": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-49": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>88</m:mn></m:mrow><m:mn>224</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math>",
+    "latex": "_{{\\, 88}}^{224}\\text{Ra}"
+  },
+  "math-50": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-51": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>49</m:mn></m:mrow><m:mn>115</m:mn></m:msubsup><m:mtext>In</m:mtext></m:math>",
+    "latex": "_{{\\, 49}}^{115}\\text{In}"
+  },
+  "math-52": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-53": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-54": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>88</m:mn></m:mrow><m:mn>226</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math>",
+    "latex": "_{{\\, 88}}^{226}\\text{Ra}"
+  },
+  "math-55": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-56": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>53</m:mn></m:mrow><m:mn>131</m:mn></m:msubsup><m:mtext>I</m:mtext></m:math>",
+    "latex": "_{{\\, 53}}^{131}\\text{I}"
+  },
+  "math-57": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-58": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>88</m:mn></m:mrow><m:mn>228</m:mn></m:msubsup><m:mtext>Ra</m:mtext></m:math>",
+    "latex": "_{{\\, 88}}^{228}\\text{Ra}"
+  },
+  "math-59": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-60": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>58</m:mn></m:mrow><m:mn>142</m:mn></m:msubsup><m:mtext>Ce</m:mtext></m:math>",
+    "latex": "_{{\\, 58}}^{142}\\text{Ce}"
+  },
+  "math-61": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-62": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-63": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>89</m:mn></m:mrow><m:mn>228</m:mn></m:msubsup><m:mtext>Ac</m:mtext></m:math>",
+    "latex": "_{{\\, 89}}^{228}\\text{Ac}"
+  },
+  "math-64": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-65": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>81</m:mn></m:mrow><m:mn>208</m:mn></m:msubsup><m:mtext>Tl</m:mtext></m:math>",
+    "latex": "_{{\\, 81}}^{208}\\text{Tl}"
+  },
+  "math-66": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-67": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>90</m:mn></m:mrow><m:mn>228</m:mn></m:msubsup><m:mtext>Th</m:mtext></m:math>",
+    "latex": "_{{\\, 90}}^{228}\\text{Th}"
+  },
+  "math-68": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-69": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>82</m:mn></m:mrow><m:mn>210</m:mn></m:msubsup><m:mtext>Pb</m:mtext></m:math>",
+    "latex": "_{{\\, 82}}^{210}\\text{Pb}"
+  },
+  "math-70": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-71": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>90</m:mn></m:mrow><m:mn>232</m:mn></m:msubsup><m:mtext>Th</m:mtext></m:math>",
+    "latex": "_{{\\, 90}}^{232}\\text{Th}"
+  },
+  "math-72": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-73": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-74": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>82</m:mn></m:mrow><m:mn>212</m:mn></m:msubsup><m:mtext>Pb</m:mtext></m:math>",
+    "latex": "_{{\\, 82}}^{212}\\text{Pb}"
+  },
+  "math-75": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-76": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>90</m:mn></m:mrow><m:mn>233</m:mn></m:msubsup><m:mtext>Th</m:mtext></m:math>",
+    "latex": "_{{\\, 90}}^{233}\\text{Th}"
+  },
+  "math-77": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-78": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>82</m:mn></m:mrow><m:mn>214</m:mn></m:msubsup><m:mtext>Pb</m:mtext></m:math>",
+    "latex": "_{{\\, 82}}^{214}\\text{Pb}"
+  },
+  "math-79": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-80": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>90</m:mn></m:mrow><m:mn>234</m:mn></m:msubsup><m:mtext>Th</m:mtext></m:math>",
+    "latex": "_{{\\, 90}}^{234}\\text{Th}"
+  },
+  "math-81": {
+    "mathml": "<m:math><m:mrow><m:mtext>24.10 d</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{24.10 d}}"
+  },
+  "math-82": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-83": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>83</m:mn></m:mrow><m:mn>206</m:mn></m:msubsup><m:mtext>Bi</m:mtext></m:math>",
+    "latex": "_{{\\, 83}}^{206}\\text{Bi}"
+  },
+  "math-84": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>E</m:mi><m:mo>.</m:mo><m:mi>C</m:mi><m:mo>.</m:mo></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{({E.C.})}}"
+  },
+  "math-85": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>91</m:mn></m:mrow><m:mn>233</m:mn></m:msubsup><m:mtext>Pa</m:mtext></m:math>",
+    "latex": "_{{\\, 91}}^{233}\\text{Pa}"
+  },
+  "math-86": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-87": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>233</m:mn></m:msubsup><m:mtext>U</m:mtext></m:math>",
+    "latex": "_{{\\, 92}}^{233}\\text{U}"
+  },
+  "math-88": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-89": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-90": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>96</m:mn></m:mrow><m:mn>242</m:mn></m:msubsup><m:mtext>Cm</m:mtext></m:math>",
+    "latex": "_{{\\, 96}}^{242}\\text{Cm}"
+  },
+  "math-91": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-92": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>234</m:mn></m:msubsup><m:mtext>U</m:mtext></m:math>",
+    "latex": "_{{\\, 92}}^{234}\\text{U}"
+  },
+  "math-93": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-94": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-95": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>97</m:mn></m:mrow><m:mn>243</m:mn></m:msubsup><m:mtext>Bk</m:mtext></m:math>",
+    "latex": "_{{\\, 97}}^{243}\\text{Bk}"
+  },
+  "math-96": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>E</m:mi><m:mo>.</m:mo><m:mi>C</m:mi><m:mo>.</m:mo><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α\\, \\text{or}\\, E.C.)}"
+  },
+  "math-97": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>235</m:mn></m:msubsup><m:mtext>U</m:mtext></m:math>",
+    "latex": "_{{\\, 92}}^{235}\\text{U}"
+  },
+  "math-98": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-99": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-100": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>99</m:mn></m:mrow><m:mn>253</m:mn></m:msubsup><m:mtext>Es</m:mtext></m:math>",
+    "latex": "_{{\\, 99}}^{253}\\text{Es}"
+  },
+  "math-101": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-102": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>238</m:mn></m:msubsup><m:mtext>U</m:mtext></m:math>",
+    "latex": "_{{\\, 92}}^{238}\\text{U}"
+  },
+  "math-103": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-104": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-105": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>100</m:mn><m:mn>254</m:mn></m:msubsup><m:mtext>Fm</m:mtext></m:math>",
+    "latex": "_{100}^{254}\\text{Fm}"
+  },
+  "math-106": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>S</m:mi><m:mo>.</m:mo><m:mi>F</m:mi><m:mo>.</m:mo><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α\\, \\text{or}\\, S.F.)}"
+  },
+  "math-107": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>92</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>U</m:mtext></m:math>",
+    "latex": "_{{\\, 92}}^{239}\\text{U}"
+  },
+  "math-108": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-109": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>100</m:mn><m:mn>255</m:mn></m:msubsup><m:mtext>Fm</m:mtext></m:math>",
+    "latex": "_{100}^{255}\\text{Fm}"
+  },
+  "math-110": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-111": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>93</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Np</m:mtext></m:math>",
+    "latex": "_{{\\, 93}}^{239}\\text{Np}"
+  },
+  "math-112": {
+    "mathml": "<m:math><m:mrow><m:mo>(</m:mo><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo>)</m:mo></m:mrow></m:math>",
+    "latex": "{({β}^{\\text{−}})}"
+  },
+  "math-113": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>101</m:mn><m:mn>256</m:mn></m:msubsup><m:mtext>Md</m:mtext></m:math>",
+    "latex": "_{101}^{256}\\text{Md}"
+  },
+  "math-114": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>E</m:mi><m:mo>.</m:mo><m:mi>C</m:mi><m:mo>.</m:mo><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α\\, \\text{or}\\, E.C.)}"
+  },
+  "math-115": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:math>",
+    "latex": "_{{\\, 94}}^{239}\\text{Pu}"
+  },
+  "math-116": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-117": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-118": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>102</m:mn><m:mn>254</m:mn></m:msubsup><m:mtext>No</m:mtext></m:math>",
+    "latex": "_{102}^{254}\\text{No}"
+  },
+  "math-119": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-120": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>94</m:mn></m:mrow><m:mn>239</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:math>",
+    "latex": "_{{\\, 94}}^{239}\\text{Pu}"
+  },
+  "math-121": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-122": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-123": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>103</m:mn><m:mn>257</m:mn></m:msubsup><m:mtext>Lr</m:mtext></m:math>",
+    "latex": "_{103}^{257}\\text{Lr}"
+  },
+  "math-124": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-125": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>94</m:mn></m:mrow><m:mn>241</m:mn></m:msubsup><m:mtext>Pu</m:mtext></m:math>",
+    "latex": "_{{\\, 94}}^{241}\\text{Pu}"
+  },
+  "math-126": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mi>β</m:mi><m:mtext>−</m:mtext></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α\\, \\text{or}\\, {β}^{\\text{−}})}"
+  },
+  "math-127": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>105</m:mn><m:mn>260</m:mn></m:msubsup><m:mtext>Ha</m:mtext></m:math>",
+    "latex": "_{105}^{260}\\text{Ha}"
+  },
+  "math-128": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>S</m:mi><m:mo>.</m:mo><m:mi>F</m:mi><m:mo>.</m:mo><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α\\, \\text{or}\\, S.F.)}"
+  },
+  "math-129": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mrow><m:mspace width=\"0.5em\"/><m:mn>95</m:mn></m:mrow><m:mn>241</m:mn></m:msubsup><m:mtext>Am</m:mtext></m:math>",
+    "latex": "_{{\\, 95}}^{241}\\text{Am}"
+  },
+  "math-130": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α)}"
+  },
+  "math-131": {
+    "mathml": "<m:math><m:msubsup><m:mrow/><m:mn>106</m:mn><m:mn>263</m:mn></m:msubsup><m:mtext>Sg</m:mtext></m:math>",
+    "latex": "_{106}^{263}\\text{Sg}"
+  },
+  "math-132": {
+    "mathml": "<m:math><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>α</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>S</m:mi><m:mo>.</m:mo><m:mi>F</m:mi><m:mo>.</m:mo><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{(α\\, \\text{or}\\, S.F.)}"
+  }
+}

@@ -1,0 +1,418 @@
+{
+  "moduleId": "m68869",
+  "title": {
+    "segmentId": "m68869:title:auto-1",
+    "text": "Formation Constants for Complex Ions"
+  },
+  "documentClass": "appendix",
+  "metadata": {
+    "uuid": "837210f4-02c3-4a18-a1a2-7d3c3477cb5b"
+  },
+  "content": [
+    {
+      "type": "table",
+      "id": "fs-idm42176688",
+      "class": "top-titled",
+      "summary": "2",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-2",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c2",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-3",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-4",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-5",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-6",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-7",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-8",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-9",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-10",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-11",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-12",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-13",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-14",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-15",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-16",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-17",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-18",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-26",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-27",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-28",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-29",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-30",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-31",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-32",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-33",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-35",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-36",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-37",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-38",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-39",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-40",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-41",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-42",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-43",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-44",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-45",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-46",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-47",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-48",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68869:entry:auto-49",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68869:entry:auto-50",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

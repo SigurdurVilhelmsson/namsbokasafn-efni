@@ -1,0 +1,285 @@
+{
+  "moduleId": "m68864",
+  "title": {
+    "segmentId": "m68864:title:auto-1",
+    "text": "Composition of Commercial Acids and Bases"
+  },
+  "documentClass": "appendix",
+  "metadata": {
+    "uuid": "6bf34cfc-a0bd-44e3-b418-27e44b50baf3"
+  },
+  "content": [
+    {
+      "type": "table",
+      "id": "fs-idp8700128",
+      "class": "top-titled",
+      "summary": "A table titled “Composition of Commercial Acids and Bases” has four columns titled “Acid or Base,” “Density (g/mL),” “Percentage by Mass,” and “Molarity.” For acetic acid, glacial, the density is 1.05, the percentage by mass is 99.5, and the molarity is 17.4. For aqueous ammonia, the density is 0.90, the percentage by mass is 28, and the molarity is 14.8. For hydrochloric acid, the density is 1.18, the percentage by mass is 36, and the molarity is 11.6. For nitric acid, the density is 1.42, the percentage by mass is 71, and the molarity is 16.0. For perchloric acid, the density is 1.67, the percentage by mass is 70, and the molarity is 11.65. For phosphoric acid, the density is 1.70, the percentage by mass is 85, and the molarity is 14.7. For sodium hydroxide, the density is 1.53, the percentage by mass is 50, and the molarity is 19.1. For sulfuric acid, the density is 1.84, the percentage by mass is 96, and the molarity is 18.0.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-2",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-3",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-4",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-5",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-6",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-7",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-8",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-9",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-10",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-11",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-12",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-13",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-14",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-15",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-16",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-17",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-18",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-26",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-27",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-28",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-29",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-30",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-31",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-32",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-33",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68864:entry:auto-35",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-36",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-37",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68864:entry:auto-38",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

@@ -1,0 +1,289 @@
+{
+  "moduleId": "m68862",
+  "title": {
+    "segmentId": "m68862:title:auto-1",
+    "text": "Fundamental Physical Constants"
+  },
+  "documentClass": "appendix",
+  "metadata": {
+    "uuid": "89acae8f-68fd-4f9e-88e3-e545c290c96c"
+  },
+  "content": [
+    {
+      "type": "table",
+      "id": "fs-idm136825040",
+      "class": "top-titled",
+      "summary": "A table titled “Fundamental Physical Constants” has a column for “Name and Symbol” and a column for “Value.” For atomic mass unit, the symbol is a m u, and the value is 1.6605402 times 10 to the negative superscript 27 kg. For Avogadro’s number, the value is 6.0221367 times 10 to the superscript 23 mol to the negative superscript 1. For Boltzmann’s constant, the symbols is lowercase italic k, and the value is 1.380658 times 10 superscript negative 23 J K superscript negative 1. For charge-to-mass ratio for electron, the symbol is lowercase italic e/m subscript lowercase italic e, and the value is 1.75881962 times 10 superscript 11 C kg superscript negative one. For electron charge, the symbol is lowercase italic e, and the value is 1.60217733 times 10 superscript negative 19 C. For electron rest mass, the symbol is lowercase italic m subscript lowercase italic e, and the value is 9.1093897 times 10 superscript negative 31kg. For Faraday’s constant, the symbol is uppercase italic F, and the value is 9.6485309 times 10 superscript 4 C mol superscript negative 1. For gas constant, the symbol is uppercase italic R, and the value is 9.6485309 times 10 superscript 4 C mol superscript negative 1, equals 8.314510 J mol superscript negative 1K superscript negative 1. For molar volume of an ideal gas, 1 atm, 0 °C, the value is 22.41409 L mol superscript negative 1. For molar volume of an ideal gas, 1 bar, 0 °C, the value is 22.71108 L mol superscript negative 1. For neutron rest mass, the symbol is lowercase italic m subscript lowercase italic n, and the value is 1.6749274 times 10 superscript negative 27 kg. For Planck’s constant, the symbol is lowercase italic h, and the value is 6.6260755 times 10 superscript negative 34 J s. For proton rest mass, the symbol is lowercase italic m subscript lowercase italic p, and the value is 1.6726231 times 10 superscript negative 27 kg. For Rydberg constant, the symbol is uppercase R, and the value is 1.0973731534 times 10 superscript 7 m superscript negative 1 equals 2.1798736 times 10 superscript negative 18 J. For speed of light in a vacuum, the symbol is lowercase italic c, and the value is 2.99792458 times 10 superscript 8 m s superscript negative 1.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-2",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c2"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-3",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-4",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-5",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-6",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-7",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-8",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-9",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-10",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-11",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-12",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-13",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-14",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-15",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-16",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-17",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-18",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-26",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-27",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-28",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-29",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-30",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-31",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-32",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68862:entry:auto-33",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68862:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

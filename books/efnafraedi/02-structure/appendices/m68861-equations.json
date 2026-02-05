@@ -1,0 +1,14 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>(μL)</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{(μL)}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  }
+}

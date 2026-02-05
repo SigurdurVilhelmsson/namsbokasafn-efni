@@ -1,0 +1,983 @@
+{
+  "moduleId": "m68860",
+  "title": {
+    "segmentId": "m68860:title:auto-1",
+    "text": "Essential Mathematics"
+  },
+  "documentClass": "appendix",
+  "metadata": {
+    "uuid": "75fe9b6d-533d-4833-ba91-a70d2a794b2a"
+  },
+  "content": [
+    {
+      "type": "section",
+      "id": "fs-idm2979872",
+      "class": null,
+      "title": {
+        "segmentId": "m68860:title:fs-idm2979872-title",
+        "text": "Exponential Arithmetic"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "eip-963",
+          "class": null,
+          "title": {
+            "segmentId": "m68860:title:eip-963-title",
+            "text": "Addition of Exponentials"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "eip-970",
+              "segmentId": "m68860:para:eip-970"
+            },
+            {
+              "type": "example",
+              "id": "eip-240",
+              "title": {
+                "segmentId": "m68860:example-title:eip-240-title",
+                "text": "Adding Exponentials"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp139858976",
+                  "segmentId": "m68860:para:fs-idp139858976"
+                },
+                {
+                  "type": "para",
+                  "id": "eip-idm5092144",
+                  "title": {
+                    "segmentId": "m68860:para-title:eip-idm5092144-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp127428848"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp66203584",
+          "class": null,
+          "title": {
+            "segmentId": "m68860:title:fs-idp66203584-title",
+            "text": "Subtraction of Exponentials"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm2169056",
+              "segmentId": "m68860:para:fs-idm2169056"
+            },
+            {
+              "type": "example",
+              "id": "fs-idp161785536",
+              "title": {
+                "segmentId": "m68860:example-title:fs-idp161785536-title",
+                "text": "Subtracting Exponentials"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm86312640",
+                  "segmentId": "m68860:para:fs-idm86312640"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm68345632",
+                  "title": {
+                    "segmentId": "m68860:para-title:fs-idm68345632-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp190877264"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp134165056",
+          "class": null,
+          "title": {
+            "segmentId": "m68860:title:fs-idp134165056-title",
+            "text": "Multiplication of Exponentials"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp21293440",
+              "segmentId": "m68860:para:fs-idp21293440"
+            },
+            {
+              "type": "example",
+              "id": "fs-idp62666784",
+              "title": {
+                "segmentId": "m68860:example-title:fs-idp62666784-title",
+                "text": "Multiplying Exponentials"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp112728352",
+                  "segmentId": "m68860:para:fs-idp112728352"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp65507056",
+                  "title": {
+                    "segmentId": "m68860:para-title:fs-idp65507056-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp43840304"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp147135808",
+          "class": null,
+          "title": {
+            "segmentId": "m68860:title:fs-idp147135808-title",
+            "text": "Division of Exponentials"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm83418688",
+              "segmentId": "m68860:para:fs-idm83418688"
+            },
+            {
+              "type": "example",
+              "id": "fs-idp59973040",
+              "title": {
+                "segmentId": "m68860:example-title:fs-idp59973040-title",
+                "text": "Dividing Exponentials"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm118372272",
+                  "segmentId": "m68860:para:fs-idm118372272"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm40543920",
+                  "title": {
+                    "segmentId": "m68860:para-title:fs-idm40543920-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp306292544"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp62709264",
+          "class": null,
+          "title": {
+            "segmentId": "m68860:title:fs-idp62709264-title",
+            "text": "Squaring of Exponentials"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm35687264",
+              "segmentId": "m68860:para:fs-idm35687264"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm17290528",
+              "title": {
+                "segmentId": "m68860:example-title:fs-idm17290528-title",
+                "text": "Squaring Exponentials"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm49413248",
+                  "segmentId": "m68860:para:fs-idm49413248"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm30315376",
+                  "title": {
+                    "segmentId": "m68860:para-title:fs-idm30315376-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp83762912"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp163318848",
+          "class": null,
+          "title": {
+            "segmentId": "m68860:title:fs-idp163318848-title",
+            "text": "Cubing of Exponentials"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp74415504",
+              "segmentId": "m68860:para:fs-idp74415504"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm23347216",
+              "title": {
+                "segmentId": "m68860:example-title:fs-idm23347216-title",
+                "text": "Cubing Exponentials"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm16246768",
+                  "segmentId": "m68860:para:fs-idm16246768"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm51196352",
+                  "title": {
+                    "segmentId": "m68860:para-title:fs-idm51196352-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp2377280"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idp125742736",
+          "class": null,
+          "title": {
+            "segmentId": "m68860:title:fs-idp125742736-title",
+            "text": "Taking Square Roots of Exponentials"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp117276528",
+              "segmentId": "m68860:para:fs-idp117276528"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm21735232",
+              "title": {
+                "segmentId": "m68860:example-title:fs-idm21735232-title",
+                "text": "Finding the Square Root of Exponentials"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm48165808",
+                  "segmentId": "m68860:para:fs-idm48165808"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp49785840",
+                  "title": {
+                    "segmentId": "m68860:para-title:fs-idp49785840-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idp91899696"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp659968",
+          "segmentId": "m68860:para:fs-idp659968"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp294750912",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "eip-985",
+          "segmentId": "m68860:para:eip-985"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm250853696",
+      "class": null,
+      "title": {
+        "segmentId": "m68860:title:fs-idm250853696-title",
+        "text": "Significant Figures"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm37591248",
+          "segmentId": "m68860:para:fs-idm37591248"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm308663024",
+          "segmentId": "m68860:para:fs-idm308663024"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm264382576",
+          "title": {
+            "segmentId": "m68860:example-title:fs-idm264382576-title",
+            "text": "Addition and Subtraction with Significant Figures"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm64277712",
+              "segmentId": "m68860:para:fs-idm64277712"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm144724576",
+              "title": {
+                "segmentId": "m68860:para-title:fs-idm144724576-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "equation",
+              "id": "eip-474"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm321167920",
+          "segmentId": "m68860:para:fs-idm321167920"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm204546176",
+          "title": {
+            "segmentId": "m68860:example-title:fs-idm204546176-title",
+            "text": "Multiplication and Division with Significant Figures"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp61407456",
+              "segmentId": "m68860:para:fs-idp61407456"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm211756128",
+              "title": {
+                "segmentId": "m68860:para-title:fs-idm211756128-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp292017760"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm316636240",
+          "segmentId": "m68860:para:fs-idm316636240"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm218270160",
+      "class": null,
+      "title": {
+        "segmentId": "m68860:title:fs-idm218270160-title",
+        "text": "The Use of Logarithms and Exponential Numbers"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm310797664",
+          "segmentId": "m68860:para:fs-idm310797664"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm247181504",
+          "class": "top-titled",
+          "summary": "A table titled “Logarithms and Exponential Numbers” has three columns titled “Number,” “Number Expressed Exponentially,” and “Common Logarithm.” The number 1000 is expressed exponentially as 10 superscript 3 and has a common logarithm of 3. The number 10 is expressed exponentially as 10 superscript 1 and has a common logarithm of 1. The number 1 is expressed exponentially as 10 superscript 0 and has a common logarithm of 0. The number 0.1 is expressed exponentially as 10 superscript negative 1 and has a common logarithm of negative 1. The number 0.001 is expressed exponentially as 10 superscript negative 3 and has a common logarithm of negative 3.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-53",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c3",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm289143264",
+          "segmentId": "m68860:para:fs-idm289143264"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp313341712",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm251201152",
+          "segmentId": "m68860:para:fs-idm251201152"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp105907136",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm300540512",
+          "segmentId": "m68860:para:fs-idm300540512"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm355694432",
+          "segmentId": "m68860:para:fs-idm355694432"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm16900160",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm315316192",
+          "segmentId": "m68860:para:fs-idm315316192"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm46275792",
+          "segmentId": "m68860:para:fs-idm46275792"
+        },
+        {
+          "type": "list",
+          "id": "eip-12",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68860:item:eip-12-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68860:item:eip-12-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68860:item:eip-12-item-3"
+            }
+          ]
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp300953968",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm26956384",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp316554112",
+          "class": "unnumbered"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm5387440",
+      "class": null,
+      "title": {
+        "segmentId": "m68860:title:fs-idm5387440-title",
+        "text": "The Solution of Quadratic Equations"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm110300608",
+          "segmentId": "m68860:para:fs-idm110300608"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp3980816",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm112792176",
+          "segmentId": "m68860:para:fs-idm112792176"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm40664896",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm166021264",
+          "title": {
+            "segmentId": "m68860:example-title:fs-idm166021264-title",
+            "text": "Solving Quadratic Equations"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm72976848",
+              "segmentId": "m68860:para:fs-idm72976848"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm175980608",
+              "segmentId": "m68860:para:fs-idm175980608",
+              "title": {
+                "segmentId": "m68860:para-title:fs-idm175980608-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm171950464",
+              "segmentId": "m68860:para:fs-idm171950464"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm77074320"
+            },
+            {
+              "type": "equation",
+              "id": "eip-576"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp244754576"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm147616016",
+          "segmentId": "m68860:para:fs-idm147616016"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm180300896",
+      "class": null,
+      "title": {
+        "segmentId": "m68860:title:fs-idm180300896-title",
+        "text": "Plotting Data Pairs"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm67130880",
+          "segmentId": "m68860:para:fs-idm67130880"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm78087840",
+          "segmentId": "m68860:para:fs-idm78087840"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp9271248",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm111716000",
+              "segmentId": "m68860:para:fs-idm111716000"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm176114816",
+              "segmentId": "m68860:para:fs-idm176114816"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm165592384",
+          "class": "unnumbered",
+          "summary": "A table has two columns labeled x and y. In the first row, the value of x is 1, and the value of y is 5. In the second row, the value of x is 2, and the value of y is 10. In the third row, the value of x is 3, and the value of y is 7. In the fourth row, the value of x is 4, and the value of y is 14.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-96",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm164107136",
+          "segmentId": "m68860:para:fs-idm164107136"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm173153104",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm144872640",
+              "segmentId": "m68860:para:fs-idm144872640"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm70341712",
+          "class": "unnumbered",
+          "summary": "A table has two columns: the first is labeled x, and the second is labeled y equals x superscript 2 plus 2. In the first row, the value of x is 1, and the value of y equals x superscript 2 plus 2 is 3. In the second row, the value of x is 2, and the value of y equals x superscript 2 plus 2 is 6. In the third row, the value of x is 3, and the value of y equals x superscript 2 plus 2 is 11. In the fourth row, the value of x is 4, and the value of y equals x superscript 2 plus 2 is 18.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-107",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68860:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68860:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

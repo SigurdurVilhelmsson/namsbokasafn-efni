@@ -1,0 +1,691 @@
+{
+  "moduleId": "m68861",
+  "title": {
+    "segmentId": "m68861:title:auto-1",
+    "text": "Units and Conversion Factors"
+  },
+  "documentClass": "appendix",
+  "metadata": {
+    "uuid": "eeaf98f0-ce83-4e1c-ae20-dd05515645b4"
+  },
+  "content": [
+    {
+      "type": "table",
+      "id": "fs-idp192584544",
+      "class": "top-titled",
+      "summary": "A table of four columns and four rows is titled “Units of Length.” The two columns on the left have conversions from Metric to the English system. 1 meter (m) is equal to 39.37 inches (I n.) and 1.094 yards (y d). 1 centimeter (c m) is equal to 0.01 meters (exact, definition). 1 millimeter (m m) is equal to 0.001 meters (exact, definition). 1 kilometer (k m) is equal to 1000 meters (exact, definition). The two columns on the right have conversions from English to the Metric system. 1 angstrom (capital A with a degree sign connected to the top) is equal to 10 to the negative eighth power centimeters (exact, definition) or 10 to the negative tenth power meters (exact, definition). 1 yard (y) is equal to 0.9144 meters. 1 inch (I n) is equal to 2.54 centimeters (exact, definition). 1 mile (U S) is equal to 1.60934 kilometers.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-2",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-3",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-4",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-5",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-6",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-7",
+              "attributes": {
+                "align": "left",
+                "valign": "middle"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-8",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-9",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-10",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-11",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-12",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-13",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-14",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-15",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-16",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-17",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-18",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "id": "fs-idp47106160",
+      "class": "top-titled",
+      "summary": "A table of four columns and three rows is titled “Units of Volume.” The two columns on the left have conversions from Metric to the English system. 1 liter (L) is equal to 0.001 meters cubed (exact, definition), 1000 centimeters cubed (exact, definition) and 1.057 (U S) quarts. 1 milliliter (ml) is equal to 0.001 liters (exact, definition) and 1 centimeter cubed (exact, definition). 1 microliter (fancy cursive m capital L) is equal to 10 to the negative sixth power liters (exact, definition) and 10 to the negative third power centimeters cubed (exact, definition). The two columns on the right have conversions from English to the Metric system. 1 liquid quart (U S) is equal to 32 (U S) liquid ounces (exact, definition), 0.25 (U S) gallons (exact, definition), and 0.9463 liters. 1 dry quart is equal to 1.1012 liters. 1 cubic foot (U S) is equal to 28.316 liters.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-19",
+              "attributes": {
+                "valign": "middle",
+                "namest": "c1",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-20",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-21",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-22",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-23",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-24",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-25",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-26",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-27",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-28",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-29",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-30",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-31",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "id": "fs-idp250872512",
+      "class": "top-titled",
+      "summary": "A table of four columns and four rows is titled “Units of Mass.” The conversions for the two columns on the left are as follows: 1 gram (g) is equal to 0.001 kilograms (exact, definition). 1 milligram (m g) is equal to 0.001 grams (exact, definition). 1 kilogram (k g) is equal to 1000 grams (exact, definition) and 2.205 pounds. 1 ton (metric) is equal to 1000 kilograms (exact, definition) and 2204.62 pounds. The conversions for the two columns on the right are as follows: 1 ounce (o z) (avoirdupois) is equal to 28.35 grams. 1 pound (l b) (avoirdupois) is equal to 0.4535924 kilograms. 1 ton (short) is equal to 2000 pounds (exact, definition and 907.185 kilograms. 1 ton (long) is equal to 2240 pounds (exact, definition) and 1.016 metric tons.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-32",
+              "attributes": {
+                "valign": "middle",
+                "namest": "c1",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-33",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-34",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-35",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-36",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-37",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-38",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-39",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-40",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-41",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-42",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-43",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-44",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-45",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-46",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-47",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-48",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "id": "fs-idp384167568",
+      "class": "top-titled",
+      "summary": "A table of two columns and seven rows is titled “Units of Energy.” The conversions are as follows: 4.184 joules (J) are equal to 1 thermochemical calorie (cal). 1 thermochemical calorie (cal) is equal to 4.184 times 10 to the seventh power ergs. 1 erg is equal to 10 to the negative seventh power joules (exact, definition). 1 electron-volt (eV) is equal to 1.60218 times 10 to the negative nineteenth power joules and 23.061 k cal mol to the negative first power. 1 liter atmosphere is equal to 24.217 calories and 101.325 joules (exact, definition). 1 nutritional calorie (Cal, with a capital “C”) is equal to 1000 cal (exact, definition) and 4184 joules. 1 British thermal unit (B T U) is equal to 1054.804 joules. B T U is the amount of energy needed to heat one pound of water by one degree Fahrenheit. Therefore, the exact relationship of B T U to joules and other energy units depends on the temperature at which B T U is measured. 59 degrees Fahrenheit (15 degrees Celsius) is the most widely used reference temperature for B T U definition in the United States. At this temperature, the conversion factor is the one provided in this table.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-49",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-50",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-51",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-52",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-53",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-54",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-55",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-56",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-57",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-58",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-59",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-60",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-61",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-62",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-63",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "id": "fs-idp115347744",
+      "class": "top-titled",
+      "summary": "A table of two columns and four rows is titled “Units of Pressure.” The conversions are as follows: 1 torr is equal to 1 millimeter H g (exact, definition). 1 pascal (P a) is equal to N meters to the negative second power (exact, definition) and 1 kilogram m to the negative first power s to the negative second power (exact, definition). 1 atmosphere (a t m) is equal to 760 m m H g (exact, definition), 760 torr (exact, definition), 101,321 N m to the negative second power (exact, definition), and 101,325 P a (exact, definition). 1 bar is equal to 10 to the fifth power P a (exact, definition), and ten to the fifth power k g m to the negative first power s to the negative second power (exact, definition).",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-64",
+              "attributes": {
+                "valign": "middle",
+                "namest": "c1",
+                "nameend": "c4"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-65",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-66",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-67",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-68",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-69",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-70",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68861:entry:auto-71",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68861:entry:auto-72",
+              "attributes": {
+                "valign": "middle",
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sectionOrder": null
+}

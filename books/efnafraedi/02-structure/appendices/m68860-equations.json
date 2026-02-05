@@ -1,0 +1,171 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mo>+</m:mo><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>y</m:mi><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mtext>and ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mo>+</m:mo><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>y</m:mi></m:mrow></m:math>",
+    "latex": "{\\text{log}\\, xy=\\text{log}\\, x+\\text{log}\\, y,\\, \\text{and ln}\\, xy=\\text{ln}\\, x+\\text{ln}\\, y}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>x</m:mi><m:mi>y</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mo>−</m:mo><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>y</m:mi><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mtext>and ln</m:mtext><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>x</m:mi><m:mi>y</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mo>−</m:mo><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>y</m:mi></m:mrow></m:math>",
+    "latex": "{\\text{log}\\, \\frac{x}{y}\\, =\\text{log}\\, x-\\text{log}\\, y,\\, \\text{and ln}\\, \\frac{x}{y}\\, =\\text{ln}\\, x-\\text{ln}\\, y}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mi>x</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>n</m:mi><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mspace width=\"0.2em\"/><m:mtext>and ln</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mi>x</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>n</m:mi><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi></m:mrow></m:math>",
+    "latex": "{\\text{log}\\, {x}^{n}=n\\text{log}\\, x\\, \\text{and ln}\\, {x}^{n}=n\\text{ln}\\, x}"
+  },
+  "fs-idp294750912": {
+    "mathml": "<m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mn>1000</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mtd></m:mtr>\n<m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mn>100</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mtd></m:mtr>\n<m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mn>10</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>1</m:mn></m:msup></m:mrow></m:mtd></m:mtr>\n<m:mtr><m:mtd columnalign=\"right\"><m:mn>1</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>0</m:mn></m:msup></m:mrow></m:mtd></m:mtr>\n<m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mn>0.1</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr>\n<m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mn>0.001</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr>\n<m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mn>2386</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>2.386</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>1000</m:mn><m:mo>=</m:mo><m:mn>2.386</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mtd></m:mtr>\n<m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mn>0.123</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>1.23</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>0.1</m:mn><m:mo>=</m:mo><m:mn>1.23</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math>",
+    "latex": "{\\begin{aligned} {1000} & = & {1\\, \\times \\, {{10}}^{3}} \\\\ {100} & = & {1\\, \\times \\, {{10}}^{2}} \\\\ {10} & = & {1\\, \\times \\, {{10}}^{1}} \\\\ 1 & = & {1\\, \\times \\, {{10}}^{0}} \\\\ {0.1} & = & {1\\, \\times \\, {{10}}^{{−1}}} \\\\ {0.001} & = & {1\\, \\times \\, {{10}}^{{−3}}} \\\\ {2386} & = & {2.386\\, \\times \\, 1000=2.386\\, \\times \\, {{10}}^{3}} \\\\ {0.123} & = & {1.23\\, \\times \\, 0.1=1.23\\, \\times \\, {{10}}^{{−1}}} \\end{aligned}}",
+    "isBlock": true
+  },
+  "fs-idp127428848": {
+    "mathml": "<m:math><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mn>3.00</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>300</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>5.00</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>300</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>305</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>3.05</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} {3.00\\, \\times \\, {{10}}^{{−3}}} & = & {300\\, \\times \\, {{10}}^{{−5}}} \\\\ {(5.00\\, \\times \\, {{10}}^{{−5}})+(300\\, \\times \\, {{10}}^{{−5}})} & = & {305\\, \\times \\, {{10}}^{{−5}}=3.05\\, \\times \\, {{10}}^{{−3}}} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idp190877264": {
+    "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr/><m:mtr><m:mtd><m:mn>4.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>0.40</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mo stretchy=\"false\">(</m:mo><m:mn>5.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo><m:mo>−</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>0.40</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mn>4.6</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math>",
+    "latex": "\\begin{aligned} 4.0\\, \\times \\, {10}^{{−7}}=0.40\\, \\times \\, {10}^{{−6}} \\\\ (5.0\\, \\times \\, {10}^{{−6}})-(0.40\\, \\times \\, {10}^{{−6}})=4.6\\, \\times \\, {10}^{{−6}} \\end{aligned}",
+    "isBlock": true
+  },
+  "fs-idp43840304": {
+    "mathml": "<m:math><m:mo stretchy=\"false\">(</m:mo><m:mn>4.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>2.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mo stretchy=\"false\">)</m:mo><m:mo>=</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>4.2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>2.0</m:mn><m:mo stretchy=\"false\">)</m:mo><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>−8</m:mn><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>+3</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mn>8.4</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:math>",
+    "latex": "(4.2\\, \\times \\, {10}^{{−8}})\\, \\times \\, (2.0\\, \\times \\, {10}^{3})=(4.2\\, \\times \\, 2.0)\\, \\times \\, {10}^{{(−8)+(+3)}}=8.4\\, \\times \\, {10}^{{−5}}",
+    "isBlock": true
+  },
+  "fs-idp306292544": {
+    "mathml": "<m:math><m:mfrac><m:mrow><m:mn>3.6</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>6.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>3.6</m:mn></m:mrow><m:mrow><m:mn>6.0</m:mn></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>−5</m:mn><m:mo stretchy=\"false\">)</m:mo><m:mo>−</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>−4</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mn>0.60</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>6.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup></m:math>",
+    "latex": "\\frac{{3.6\\, \\times \\, {{10}}^{{−5}}}}{{6.0\\, \\times \\, {{10}}^{{−4}}}}\\, ={({\\frac{{3.6}}{{6.0}}})}\\, \\times \\, {10}^{{(−5)-(−4)}}=0.60\\, \\times \\, {10}^{{−1}}=6.0\\, \\times \\, {10}^{{−2}}",
+    "isBlock": true
+  },
+  "fs-idp83762912": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>4.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>4</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>4</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>−6</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mn>16</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−12</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>1.6</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−11</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{(4.0\\, \\times \\, {10}{−6})}2=4\\, \\times \\, 4\\, \\times \\, {{10}}^{{2\\, \\times \\, (−6)}}=16\\, \\times \\, {{10}}^{{−12}}=1.6\\, \\times \\, {{10}}^{{−11}}}",
+    "isBlock": true
+  },
+  "fs-idp2377280": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>3</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>4</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>8</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>12</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{(2\\, \\times \\, {10}4)}3=2\\, \\times \\, 2\\, \\times \\, 2\\, \\times \\, {{10}}^{{3\\, \\times \\, 4}}=8\\, \\times \\, {{10}}^{{12}}}",
+    "isBlock": true
+  },
+  "fs-idp91899696": {
+    "mathml": "<m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:mn>1.6</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:mn>16</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mrow><m:msqrt><m:mrow><m:mn>16</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mn>16</m:mn></m:mrow></m:msqrt><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msqrt><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup></m:mrow></m:msqrt></m:mrow></m:mtd><m:mtd columnalign=\"left\"><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mrow><m:msqrt><m:mrow><m:mn>16</m:mn></m:mrow></m:msqrt><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>8</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>4.0</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math>",
+    "latex": "{\\begin{aligned} {1.6\\, \\times \\, {{10}}^{{−7}}} & = & {16\\, \\times \\, {{10}}^{{−8}}} \\\\ {\\sqrt{{16\\, \\times \\, {{10}}^{{−8}}}}=\\sqrt{{16}}\\, \\times \\, \\sqrt{{{{10}}^{{−8}}}}} & = & {\\sqrt{{16}}\\, \\times \\, {{10}}^{{-\\, \\frac{8}{2}}}\\, =4.0\\, \\times \\, {{10}}^{{−4}}} \\end{aligned}}",
+    "isBlock": true
+  },
+  "eip-474": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mtable columnalign=\"left\"><m:mtr><m:mtd><m:mrow/></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>4.38</m:mn><m:munder accentunder=\"true\"><m:mn>3</m:mn><m:mo stretchy=\"true\">_</m:mo></m:munder><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>0.002</m:mn><m:munder accentunder=\"true\"><m:mn>3</m:mn><m:mo stretchy=\"true\">_</m:mo></m:munder><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext></m:mtd></m:mtr></m:mtable><m:mrow><m:mn>4.38</m:mn><m:munder accentunder=\"true\"><m:mn>5</m:mn><m:mo stretchy=\"true\">_</m:mo></m:munder><m:mspace width=\"0.2em\"/><m:mtext>g</m:mtext><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{\\begin{aligned} \\\\ 4.383_\\, \\text{g} \\\\ 0.0023_\\, \\text{g} \\end{aligned}}{{4.385_\\, \\text{g}\\, \\, \\,}}}",
+    "isBlock": true
+  },
+  "fs-idp292017760": {
+    "mathml": "<m:math><m:mrow><m:mn>0.623</m:mn><m:munder accentunder=\"true\"><m:mn>8</m:mn><m:mo stretchy=\"true\">_</m:mo></m:munder><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>6.</m:mn><m:munder accentunder=\"true\"><m:mn>6</m:mn><m:mo stretchy=\"true\">_</m:mo></m:munder><m:mo>=</m:mo><m:mn>4.</m:mn><m:munder accentunder=\"true\"><m:mn>1</m:mn><m:mo stretchy=\"true\">_</m:mo></m:munder></m:mrow></m:math>",
+    "latex": "{0.6238_\\, \\times \\, 6.6_=4.1_}",
+    "isBlock": true
+  },
+  "fs-idp313341712": {
+    "mathml": "<m:math><m:mrow><m:mtext>60</m:mtext><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>10</m:mtext></m:mrow><m:mrow><m:mtext>1</m:mtext><m:mtext>.7782</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{60}={{\\text{10}}}^{{\\text{1}\\text{.7782}}}}",
+    "isBlock": true
+  },
+  "fs-idp105907136": {
+    "mathml": "<m:math><m:mrow><m:mn>0.03918</m:mn><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>1.4069</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>1.4069</m:mn></m:mrow></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{0.03918\\, =\\, {{10}}^{{-1.4069}}\\, =\\, \\frac{1}{{{{10}}^{{1.4069}}}}}",
+    "isBlock": true
+  },
+  "fs-idm16900160": {
+    "mathml": "<m:math><m:mrow><m:mtext>10</m:mtext><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mtext>2</m:mtext><m:mtext>.303</m:mtext></m:mrow></m:msup><m:mo>=</m:mo><m:mtext>2</m:mtext><m:msup><m:mrow><m:mtext>.7182818</m:mtext></m:mrow><m:mrow><m:mtext>2</m:mtext><m:mtext>.303</m:mtext></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{10}={e}^{{\\text{2}\\text{.303}}}=\\text{2}{{\\text{.7182818}}}^{{\\text{2}\\text{.303}}}}",
+    "isBlock": true
+  },
+  "fs-idp300953968": {
+    "mathml": "<m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mo>+</m:mo><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>y</m:mi><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mtext>and ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mo>+</m:mo><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>y</m:mi></m:mrow></m:math>",
+    "latex": "{\\text{log}\\, xy=\\text{log}\\, x+\\text{log}\\, y,\\, \\text{and ln}\\, xy=\\text{ln}\\, x+\\text{ln}\\, y}",
+    "isBlock": true
+  },
+  "fs-idm26956384": {
+    "mathml": "<m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>x</m:mi><m:mi>y</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mo>−</m:mo><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>y</m:mi><m:mo>,</m:mo><m:mspace width=\"0.2em\"/><m:mtext>and ln</m:mtext><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>x</m:mi><m:mi>y</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mo>−</m:mo><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>y</m:mi></m:mrow></m:math>",
+    "latex": "{\\text{log}\\, \\frac{x}{y}\\, =\\text{log}\\, x-\\text{log}\\, y,\\, \\text{and ln}\\, \\frac{x}{y}\\, =\\text{ln}\\, x-\\text{ln}\\, y}",
+    "isBlock": true
+  },
+  "fs-idp316554112": {
+    "mathml": "<m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mi>x</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>n</m:mi><m:mtext>log</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi><m:mspace width=\"0.2em\"/><m:mtext>and ln</m:mtext><m:mspace width=\"0.2em\"/><m:msup><m:mi>x</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>n</m:mi><m:mtext>ln</m:mtext><m:mspace width=\"0.2em\"/><m:mi>x</m:mi></m:mrow></m:math>",
+    "latex": "{\\text{log}\\, {x}^{n}=n\\text{log}\\, x\\, \\text{and ln}\\, {x}^{n}=n\\text{ln}\\, x}",
+    "isBlock": true
+  },
+  "fs-idp3980816": {
+    "mathml": "<m:math><m:mrow><m:mi>a</m:mi><m:msup><m:mi>x</m:mi><m:mtext>2</m:mtext></m:msup><m:mo>+</m:mo><m:mi>b</m:mi><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>c</m:mi><m:mo>=</m:mo><m:mtext>0</m:mtext></m:mrow></m:math>",
+    "latex": "{a{x}^{\\text{2}}+bx+c=\\text{0}}",
+    "isBlock": true
+  },
+  "fs-idm40664896": {
+    "mathml": "<m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mi>b</m:mi><m:mo>±</m:mo><m:msqrt><m:mrow><m:msup><m:mi>b</m:mi><m:mtext>2</m:mtext></m:msup><m:mo>−</m:mo><m:mtext>4</m:mtext><m:mi>a</m:mi><m:mi>c</m:mi></m:mrow></m:msqrt></m:mrow><m:mrow><m:mtext>2</m:mtext><m:mi>a</m:mi></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{x=\\, \\frac{{-b\\pm \\sqrt{{{b}^{\\text{2}}-\\text{4}ac}}}}{{\\text{2}a}}}",
+    "isBlock": true
+  },
+  "fs-idm77074320": {
+    "mathml": "<m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:msqrt><m:mrow><m:msup><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>13</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>−</m:mo><m:mn>4</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>3</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">(</m:mo><m:mn>−10</m:mn><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:msqrt></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>3</m:mn></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{x=\\, \\frac{{-13\\pm \\sqrt{{{{(13)}}^{2}-4\\, \\times \\, 3\\, \\times \\, (−10)}}}}{{2\\, \\times \\, 3}}}",
+    "isBlock": true
+  },
+  "eip-576": {
+    "mathml": "<m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:msqrt><m:mrow><m:mn>169</m:mn><m:mo>+</m:mo><m:mn>120</m:mn></m:mrow></m:msqrt></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:msqrt><m:mrow><m:mn>289</m:mn></m:mrow></m:msqrt></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{x=\\, \\frac{{-13\\pm \\sqrt{{169+120}}}}{6}\\, =\\, \\frac{{-13\\pm \\sqrt{{289}}}}{6}\\, =\\, \\frac{{-13\\pm 17}}{6}}",
+    "isBlock": true
+  },
+  "fs-idp244754576": {
+    "mathml": "<m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>+</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>3</m:mn></m:mfrac><m:mspace width=\"0.5em\"/><m:mtext>and</m:mtext><m:mspace width=\"0.5em\"/><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>−</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>−5</m:mn></m:mrow></m:math>",
+    "latex": "{x=\\, \\frac{{-13+17}}{6}=\\frac{{2}}{3}\\, \\text{and}\\, x=\\, \\frac{{-13-17}}{6}\\, =−5}",
+    "isBlock": true
+  }
+}

@@ -156,7 +156,7 @@ function parseAbstract(content) {
  * @returns {string} Content between <content> tags
  */
 export function extractContent(cnxml) {
-  const match = cnxml.match(/<content>([\s\S]*)<\/content>/);
+  const match = cnxml.match(/<content[^>]*>([\s\S]*)<\/content>/);
   return match ? match[1] : '';
 }
 

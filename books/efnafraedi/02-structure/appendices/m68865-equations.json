@@ -1,0 +1,14 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>H</m:mi><m:mn>f</m:mn><m:mo>°</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{H}_{f}^{^{\\circ}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>Δ</m:mtext><m:msubsup><m:mi>G</m:mi><m:mn>f</m:mn><m:mo>°</m:mo></m:msubsup></m:mrow></m:math>",
+    "latex": "{\\text{Δ}{G}_{f}^{^{\\circ}}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mi>S</m:mi><m:mtext>°</m:mtext></m:mrow></m:math>",
+    "latex": "{S\\text{°}}"
+  }
+}
