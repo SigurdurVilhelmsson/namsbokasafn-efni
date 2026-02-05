@@ -1,331 +1,195 @@
 # CLI Reference
 
-This document covers all command-line tools for managing the translation workflow.
+Command-line tools for the Extract-Inject-Render translation pipeline.
 
-> **Note:** This reference has been updated for the simplified 5-step workflow.
-> See [simplified-workflow.md](../workflow/simplified-workflow.md) for the current pipeline.
-
----
-
-## Quick Reference
-
-### Status Updates
-
-```bash
-# Basic syntax
-npm run update-status <book> <chapter> <stage> <status>
-
-# Stages (simplified workflow): enMarkdown, mtOutput, linguisticReview, tmCreated, publication
-# Legacy stages: source, matecat, editorialPass1, tmUpdated, editorialPass2
-# Statuses: complete, in-progress, pending, not-started
-```
-
-### Common Operations
-
-```bash
-# Mark source complete
-npm run update-status efnafraedi 5 source complete
-
-# Start Matecat work
-npm run update-status efnafraedi 5 matecat in-progress
-
-# Complete Matecat
-npm run update-status efnafraedi 5 matecat complete
-
-# Assign to editor
-npm run update-status efnafraedi 5 editorialPass1 in-progress --editor "Name"
-
-# Complete Pass 1
-npm run update-status efnafraedi 5 editorialPass1 complete
-
-# Publish with version
-npm run update-status efnafraedi 5 publication complete --version "v1.0"
-
-# Add notes
-npm run update-status efnafraedi 5 matecat pending --notes "Waiting for source files"
-
-# Preview changes (dry run)
-npm run update-status efnafraedi 5 tmUpdated complete --dry-run
-```
-
-### Validation
-
-```bash
-# Validate all books
-npm run validate
-
-# Validate single book
-npm run validate efnafraedi
-```
-
-### Workflow Cheat Sheet (Simplified 5-Step)
-
-| Step | Stage | Command |
-|------|-------|---------|
-| 1 | EN markdown | `npm run update-status efnafraedi X enMarkdown complete` |
-| 2 | MT done | `npm run update-status efnafraedi X mtOutput complete` |
-| 3 | Linguistic review | `npm run update-status efnafraedi X linguisticReview complete` |
-| 4 | TM created | `npm run update-status efnafraedi X tmCreated complete` |
-| 5 | Publish | `npm run update-status efnafraedi X publication complete --version "v1.0"` |
-
-### Workflow Cheat Sheet (Legacy 8-Step)
-
-| Step | Stage | Command |
-|------|-------|---------|
-| 1 | Source ready | `npm run update-status efnafraedi X source complete` |
-| 2 | MT done | `npm run update-status efnafraedi X mtOutput complete` |
-| 3-4 | Matecat | `npm run update-status efnafraedi X matecat complete` |
-| 5 | Pass 1 | `npm run update-status efnafraedi X editorialPass1 complete` |
-| 6 | TM update | `npm run update-status efnafraedi X tmUpdated complete` |
-| 7 | Pass 2 | `npm run update-status efnafraedi X editorialPass2 complete` |
-| 8 | Publish | `npm run update-status efnafraedi X publication complete --version "v1.0"` |
-
-### Books
-
-| ID | Name |
-|----|------|
-| `efnafraedi` | Efnafræði (Chemistry) |
-| `liffraedi` | Líffræði (Biology) |
-
-### Options
-
-| Option | Usage | Example |
-|--------|-------|---------|
-| `--editor` | Set editor name | `--editor "Jón Jónsson"` |
-| `--version` | Set version | `--version "ai-preview"` |
-| `--notes` | Add notes | `--notes "Waiting for review"` |
-| `--dry-run` | Preview only | `--dry-run` |
-
-### Git Workflow
-
-```bash
-# Update status and commit
-npm run update-status efnafraedi 3 editorialPass1 complete
-npm run validate
-git add books/efnafraedi/chapters/ch03/status.json
-git commit -m "status: Complete ch3 Pass 1"
-git push
-```
+> See [master-pipeline.md](../workflow/master-pipeline.md) for the full workflow context.
+> See [simplified-workflow.md](../workflow/simplified-workflow.md) for the 5-step overview.
 
 ---
 
-## Detailed Command Reference
+## Active Tools
 
-### update-status
-
-Updates the workflow status for a specific chapter.
-
-#### Syntax
-
-```bash
-npm run update-status <book> <chapter> <stage> <status> [options]
-```
-
-#### Arguments
-
-| Argument | Description | Examples |
-|----------|-------------|----------|
-| `book` | Book identifier | `efnafraedi`, `liffraedi` |
-| `chapter` | Chapter number | `1`, `2`, `15` |
-| `stage` | Workflow stage | See [Stages](#stages) below |
-| `status` | New status value | See [Statuses](#statuses) below |
-
-#### Stages (Simplified 5-Step Workflow)
-
-| Stage | Description | Workflow Step |
-|-------|-------------|---------------|
-| `enMarkdown` | EN markdown generated from CNXML | Step 1 |
-| `mtOutput` | Machine translation from malstadur.is | Step 2 |
-| `linguisticReview` | Faithful translation complete | Step 3 |
-| `tmCreated` | TM created via Matecat Align | Step 4 |
-| `publication` | Published to web | Step 5 |
-
-#### Stages (Legacy 8-Step Workflow)
-
-| Stage | Description | Workflow Step |
-|-------|-------------|---------------|
-| `source` | Source material from OpenStax | Step 1 |
-| `mtOutput` | Machine translation from malstadur.is | Step 2 |
-| `matecat` | TM alignment in Matecat | Steps 3-4 |
-| `editorialPass1` | Linguistic review (Pass 1) | Step 5 |
-| `tmUpdated` | Translation memory updated | Step 6 |
-| `editorialPass2` | Localization review (Pass 2) | Step 7 |
-| `publication` | Published to web | Step 8 |
-
-#### Statuses
-
-| Status | Meaning |
-|--------|---------|
-| `complete` | Stage finished (sets date automatically) |
-| `in-progress` | Currently being worked on |
-| `pending` | Waiting to start |
-| `not-started` | Not yet begun |
-
-#### Options
-
-| Option | Description | Applicable Stages |
-|--------|-------------|-------------------|
-| `--editor <name>` | Set editor name | `editorialPass1`, `editorialPass2` |
-| `--version <ver>` | Set version identifier | `publication` |
-| `--notes <text>` | Add notes | All stages |
-| `--dry-run` | Preview changes without saving | All stages |
-
-#### Output
-
-The script shows before/after comparison:
-
-```
-efnafraedi chapter 1 - tmUpdated
-────────────────────────────────────────
-Before: {
-  "complete": false
-}
-After:  {
-  "complete": true,
-  "date": "2025-12-27",
-  "inProgress": false,
-  "pending": false
-}
-
-✓ Updated books/efnafraedi/chapters/ch01/status.json
-```
-
-#### Error Handling
-
-| Error | Cause | Solution |
-|-------|-------|----------|
-| "Missing required arguments" | Not enough arguments | Provide all 4 required arguments |
-| "Invalid stage" | Unrecognized stage name | Use one of the valid stages |
-| "Invalid status" | Unrecognized status | Use: complete, in-progress, pending, not-started |
-| "Status file not found" | Chapter doesn't exist | Check book/chapter spelling |
+| Tool | Purpose | Pipeline Step |
+|------|---------|---------------|
+| `cnxml-extract.js` | Extract segments from CNXML | Step 1a |
+| `protect-segments-for-mt.js` | Protect markers, split for MT | Step 1b |
+| `restore-segments-from-mt.js` | Restore markers in MT output | Post-MT |
+| `cnxml-inject.js` | Inject translations into CNXML | Step 5a |
+| `cnxml-render.js` | Render CNXML to semantic HTML | Step 5b |
+| `prepare-for-align.js` | Prepare files for Matecat Align | Step 4 |
+| `validate-chapter.js` | Validate chapter content | Validation |
 
 ---
 
-### validate
+## cnxml-extract.js
 
-Validates all chapter `status.json` files against the JSON Schema.
-
-#### Syntax
+Extracts translatable segments from CNXML while preserving document structure. Produces three outputs: segments markdown, structure JSON, and equations JSON.
 
 ```bash
-npm run validate [book]
+node tools/cnxml-extract.js --chapter <num> [--module <id>] [options]
+node tools/cnxml-extract.js --input <cnxml-file> [options]
 ```
-
-#### Arguments
-
-| Argument | Description | Required |
-|----------|-------------|----------|
-| `book` | Validate only this book | No (validates all if omitted) |
-
-#### Output
-
-**Success:**
-```
-Validating chapter status files...
-
-  ✓ efnafraedi/ch01/status.json
-  ✓ efnafraedi/ch02/status.json
-  ...
-
-──────────────────────────────────────────────────
-
-Results: 21/21 files valid
-
-All files valid!
-```
-
-**With errors:**
-```
-Validating chapter status files...
-
-  ✗ efnafraedi/ch05/status.json (2 errors)
-
-──────────────────────────────────────────────────
-
-Results: 20/21 files valid
-
-Errors:
-
-  efnafraedi/ch05/status.json:
-    - .titleIs: expected string or null, got undefined
-    - .status.source: missing required property "complete"
-```
-
-#### Exit Codes
-
-| Code | Meaning |
-|------|---------|
-| `0` | All files valid |
-| `1` | Validation errors found |
-
-#### CI/CD Integration
-
-The validation runs automatically via GitHub Actions when status files change. See `.github/workflows/validate.yml`.
-
----
-
-## Pipeline Tools
-
-The `tools/` directory contains scripts for processing content through the publication pipeline.
-
-### Core Tools (Simplified Workflow)
-
-#### pipeline-runner.js
-
-The main pipeline orchestrator for converting CNXML to markdown. This is the primary tool for Step 1.
-
-```bash
-node tools/pipeline-runner.js <module-id> --output-dir <output-directory>
-```
-
-**Options:**
 
 | Option | Description |
 |--------|-------------|
-| `--output-dir <dir>` | Output directory for generated files |
+| `--chapter <num>` | Process all modules in a chapter |
+| `--module <id>` | Specific module ID (e.g., m68724) |
+| `--input <file>` | Input CNXML file path |
+| `--output-dir <dir>` | Output directory (default: auto-determined) |
 | `--verbose` | Show detailed progress |
 
-**Example:**
+**Output:**
+```
+02-for-mt/ch05/m68724-segments.en.md     # EN text segments with <!-- SEG:id --> markers
+02-structure/ch05/m68724-structure.json   # Document skeleton with segment references
+02-structure/ch05/m68724-equations.json   # MathML equations preserved separately
+```
+
+**Examples:**
 ```bash
-node tools/pipeline-runner.js m68724 --output-dir books/efnafraedi/02-for-mt/ch05
+# Extract all modules in chapter 5
+node tools/cnxml-extract.js --chapter 5
+
+# Extract specific module
+node tools/cnxml-extract.js --chapter 5 --module m68724 --verbose
+```
+
+---
+
+## protect-segments-for-mt.js
+
+Protects segment markers and links for safe passage through machine translation. Splits files exceeding 14K visible characters (Erlendur 20KB file limit).
+
+```bash
+node tools/protect-segments-for-mt.js --chapter <num> [options]
+```
+
+| Option | Description |
+|--------|-------------|
+| `--chapter <num>` | Chapter number |
+| `--verbose` | Show detailed progress |
+
+**What it does:**
+- Converts `<!-- SEG:xxx -->` markers to `{{SEG:xxx}}`
+- Protects markdown links from MT corruption
+- Splits large files into parts (a, b, c...) at paragraph boundaries
+- Stores link mapping in sidecar JSON
+
+---
+
+## restore-segments-from-mt.js
+
+Restores protected markers and links in MT output. Joins split files back together.
+
+```bash
+node tools/restore-segments-from-mt.js --chapter <num> [options]
+```
+
+| Option | Description |
+|--------|-------------|
+| `--chapter <num>` | Chapter number |
+| `--verbose` | Show detailed progress |
+
+**What it does:**
+- Restores `{{SEG:xxx}}` back to `<!-- SEG:xxx -->`
+- Restores links from sidecar JSON
+- Joins split files (a, b, c) into single segment file
+- Injects equations and other placeholders
+
+---
+
+## cnxml-inject.js
+
+Injects translated segments back into the CNXML document structure, producing complete translated CNXML files.
+
+```bash
+node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
+```
+
+| Option | Description |
+|--------|-------------|
+| `--chapter <num>` | Chapter number |
+| `--module <id>` | Specific module ID (default: all in chapter) |
+| `--lang <code>` | Language code (default: `is`) |
+| `--source-dir <dir>` | Segments directory relative to `books/efnafraedi/` (default: `02-for-mt`) |
+| `--output-dir <dir>` | Output directory (default: `03-translated/chNN/`) |
+| `--verbose` | Show detailed progress |
+
+**Input Files:**
+```
+<source-dir>/chNN/<module>-segments.<lang>.md   # Translated segments
+02-structure/chNN/<module>-structure.json        # Document structure
+02-structure/chNN/<module>-equations.json         # MathML equations
+01-source/chNN/<module>.cnxml                     # Original CNXML (reference)
 ```
 
 **Output:**
-- `5-1.en.md` - English markdown with equation placeholders
-- `5-1-equations.json` - LaTeX equations for restoration
+```
+03-translated/chNN/<module>.cnxml                 # Translated CNXML
+```
 
----
-
-#### cnxml-to-md.js
-
-Converts individual CNXML files to markdown. Use `pipeline-runner.js` for full pipeline.
-
+**Examples:**
 ```bash
-node tools/cnxml-to-md.js <cnxml-file> --output <output.md>
+# Inject from MT output (default)
+node tools/cnxml-inject.js --chapter 5
+
+# Inject from reviewed faithful translations
+node tools/cnxml-inject.js --chapter 5 --source-dir 03-faithful
+
+# Inject from localized translations
+node tools/cnxml-inject.js --chapter 5 --source-dir 04-localized
+
+# Specific module with verbose output
+node tools/cnxml-inject.js --chapter 5 --module m68724 --verbose
 ```
 
 ---
 
-#### prepare-for-align.js
+## cnxml-render.js
 
-Prepares markdown files for Matecat Align by cleaning and normalizing content. This is the key tool for Step 4.
+Renders translated CNXML to semantic HTML with pre-rendered KaTeX equations and absolute image paths.
 
 ```bash
-# From single file pair
-node tools/prepare-for-align.js \
-  --en <english-file.md> \
-  --is <icelandic-file.md> \
-  --output-dir <output-directory>
-
-# From directories with split parts
-node tools/prepare-for-align.js \
-  --en-dir <english-directory> \
-  --is-dir <icelandic-directory> \
-  --section <section-number> \
-  --output-dir <output-directory>
+node tools/cnxml-render.js --chapter <num> [--module <id>] [options]
 ```
 
-**Options:**
+| Option | Description |
+|--------|-------------|
+| `--chapter <num>` | Chapter number |
+| `--module <id>` | Specific module ID (default: all in chapter) |
+| `--track <track>` | Publication track: `mt-preview`, `faithful` |
+| `--lang <code>` | Language code (default: `is`) |
+| `--verbose` | Show detailed progress |
+
+**Input:**
+```
+03-translated/chNN/<module>.cnxml                 # Translated CNXML
+```
+
+**Output:**
+```
+05-publication/<track>/chapters/NN/<ch>-<sec>-<slug>.html
+```
+
+**Examples:**
+```bash
+# Render chapter 5 as faithful publication
+node tools/cnxml-render.js --chapter 5 --track faithful
+
+# Render MT preview
+node tools/cnxml-render.js --chapter 5 --track mt-preview --verbose
+```
+
+---
+
+## prepare-for-align.js
+
+Prepares markdown files for Matecat Align by cleaning and normalizing content for TM creation.
+
+```bash
+node tools/prepare-for-align.js --en <file> --is <file> --output-dir <dir>
+node tools/prepare-for-align.js --en-dir <dir> --is-dir <dir> --section <num> --output-dir <dir>
+```
 
 | Option | Description |
 |--------|-------------|
@@ -336,297 +200,80 @@ node tools/prepare-for-align.js \
 | `--section <num>` | Section number (e.g., "5-1") |
 | `--output-dir <dir>` | Output directory for cleaned files |
 
-**Example:**
-```bash
-node tools/prepare-for-align.js \
-  --en books/efnafraedi/02-for-mt/ch05/5-1.en.md \
-  --is books/efnafraedi/03-faithful/ch05/5-1.is.md \
-  --output-dir books/efnafraedi/for-align/ch05
-```
-
 **Output:**
-- `5-1.en.clean.md` - Cleaned English for Matecat Align
-- `5-1.is.clean.md` - Cleaned Icelandic for Matecat Align
-
----
-
-### Utility Tools
-
-### clean-markdown.js
-
-Cleans Pandoc artifacts from markdown files to ensure compatibility with the Chemistry Reader webapp.
-
-#### Syntax
-
-```bash
-node tools/clean-markdown.js <file.md>
-node tools/clean-markdown.js --batch <directory>
-node tools/clean-markdown.js --all
 ```
-
-#### Options
-
-| Option | Description |
-|--------|-------------|
-| `--batch <dir>` | Process all .md files in directory recursively |
-| `--all` | Process all files in `books/*/05-publication/mt-preview/` |
-| `--dry-run` | Preview changes without writing files |
-| `--verbose`, `-v` | Show detailed processing information |
-
-#### Fixes Applied
-
-| Issue | Solution |
-|-------|----------|
-| `\mspace{Xmu}` | Replace with KaTeX equivalents (`\,` `\:` `\;` `\quad`) |
-| Orphan `:::` markers | Remove directive markers on their own line |
-| Escaped tildes `\~` | Fix for subscript syntax |
-| Table border artifacts | Remove decorative Pandoc borders |
-
-#### Examples
-
-```bash
-# Preview changes without writing
-node tools/clean-markdown.js --all --dry-run --verbose
-
-# Process all mt-preview files
-node tools/clean-markdown.js --all
-
-# Process a single file
-node tools/clean-markdown.js books/efnafraedi/05-publication/mt-preview/chapters/02/2-3.md
-
-# Process a directory
-node tools/clean-markdown.js --batch books/efnafraedi/05-publication/mt-preview/chapters/03/
-```
-
-See [markdown-fixes.md](markdown-fixes.md) for details on the issues this tool fixes.
-
----
-
-### docx-to-md.js
-
-Converts .docx files to Markdown format for the publication system.
-
-#### Syntax
-
-```bash
-node tools/docx-to-md.js <input.docx> [output.md]
-node tools/docx-to-md.js --batch <directory>
-```
-
-#### Options
-
-| Option | Description |
-|--------|-------------|
-| `--batch <dir>` | Process all .docx files in directory |
-| `--images-dir <dir>` | Directory to extract images to |
-| `--verbose` | Show detailed progress |
-| `--dry-run` | Show what would be done without writing |
-
-#### Features
-
-- Preserves heading hierarchy, bold, italic, lists, tables
-- Extracts images to separate folder with updated paths
-- Marks equations as `[EQUATION]` placeholders for manual tagging
-- Auto-detects output paths based on project structure
-
----
-
-### add-frontmatter.js
-
-Adds YAML frontmatter to markdown files for the Chemistry Reader. This is the key tool for Step 5 (publication).
-
-#### Syntax
-
-```bash
-node tools/add-frontmatter.js <file.md> [options]
-```
-
-#### Options
-
-| Option | Description |
-|--------|-------------|
-| `--track <track>` | Publication track: `mt-preview`, `faithful`, `localized` |
-| `--mt-preview` | Shortcut for `--track mt-preview` |
-| `--title <title>` | Section title in Icelandic |
-| `--chapter <num>` | Chapter number |
-| `--section <num>` | Section number |
-
-#### Publication Tracks
-
-| Track | When to Use | Label |
-|-------|-------------|-------|
-| `mt-preview` | Unreviewed MT output | "Vélþýðing - ekki yfirfarin" |
-| `faithful` | After Pass 1 review | "Ritstýrð þýðing" |
-| `localized` | After Pass 2 localization | "Staðfærð útgáfa" |
-
-#### Examples
-
-```bash
-# Publish MT preview (immediate publication)
-node tools/add-frontmatter.js \
-  books/efnafraedi/02-mt-output/ch05/5-1.is.md \
-  --mt-preview \
-  --title "Grundvallaratriði orku"
-
-# Publish faithful translation
-node tools/add-frontmatter.js \
-  books/efnafraedi/03-faithful/ch05/5-1.is.md \
-  --track faithful \
-  --title "Grundvallaratriði orku"
-
-# Publish localized content
-node tools/add-frontmatter.js \
-  books/efnafraedi/04-localized/ch05/5-1.is.md \
-  --track localized \
-  --title "Grundvallaratriði orku"
+for-align/ch05/5-1.en.clean.md
+for-align/ch05/5-1.is.clean.md
 ```
 
 ---
 
-### process-chapter.js
+## validate-chapter.js
 
-Full chapter processing pipeline combining multiple conversion steps.
+Validates chapter content and structure before publication.
 
 ```bash
-node tools/process-chapter.js <chapter-directory>
+node tools/validate-chapter.js --chapter <num> [options]
 ```
 
 ---
 
-### cnxml-math-extract.js
-
-Extracts MathML equations from OpenStax CNXML source files and converts them to LaTeX. Use this when DOCX files contain equations as images but you need editable math.
-
-#### Background
-
-OpenStax provides textbook content in multiple formats:
-- **DOCX files**: Often contain equations as embedded images (not editable)
-- **CNXML source**: Contains equations in MathML format (editable/convertible)
-
-This tool fetches CNXML from the [openstax/osbooks-chemistry-bundle](https://github.com/openstax/osbooks-chemistry-bundle) repository and extracts the MathML equations, converting them to LaTeX.
-
-#### Syntax
+## Status Updates
 
 ```bash
-npm run extract-math <module-id>              # Fetch from GitHub
-npm run extract-math <path/to/file.cnxml>     # Read local file
-npm run extract-math -- --list-modules        # List known modules
+# Update workflow status
+npm run update-status <book> <chapter> <stage> <status>
+
+# Validate all status files
+npm run validate
 ```
 
-#### Arguments
+### Pipeline Stages
 
-| Argument | Description | Examples |
-|----------|-------------|----------|
-| `module-id` | OpenStax module ID | `m68690` (section 1.5) |
-| `file.cnxml` | Path to local CNXML file | `./m68690.cnxml` |
+| Stage | Description | Step |
+|-------|-------------|------|
+| `extraction` | Segments + structure extracted from CNXML | 1a |
+| `mtReady` | Segments protected and split for MT | 1b |
+| `mtOutput` | MT output received | 2 |
+| `linguisticReview` | Faithful translation reviewed | 3 |
+| `tmCreated` | TM created via Matecat Align | 4 |
+| `injection` | Translated CNXML produced | 5a |
+| `rendering` | HTML produced | 5b |
+| `publication` | Published to web | 5c |
 
-#### Options
+### Statuses
 
-| Option | Description |
-|--------|-------------|
-| `--output <file>` | Write output to file (default: stdout) |
-| `--format <fmt>` | Output format: `markdown`, `json`, `latex` |
-| `--context` | Include surrounding text to help identify equations |
-| `--verbose` | Show detailed progress |
-| `--list-modules` | List known Chemistry 2e module IDs |
-
-#### Module IDs for Chemistry 2e Chapter 1
-
-| Module | Section | Title |
-|--------|---------|-------|
-| m68662 | intro | Introduction |
-| m68663 | 1.1 | Chemistry in Context |
-| m68664 | 1.2 | Phases and Classification of Matter |
-| m68667 | 1.3 | Physical and Chemical Properties |
-| m68674 | 1.4 | Measurements |
-| m68690 | 1.5 | Measurement Uncertainty, Accuracy, and Precision |
-| m68683 | 1.6 | Mathematical Treatment of Measurement Results |
-
-To find other module IDs, browse the [modules directory on GitHub](https://github.com/openstax/osbooks-chemistry-bundle/tree/main/modules) and cross-reference with the [collection file](https://github.com/openstax/osbooks-chemistry-bundle/blob/main/collections/chemistry-2e.collection.xml).
-
-#### Examples
-
-```bash
-# Extract equations from section 1.5 (Measurement Uncertainty)
-npm run extract-math m68690
-
-# Save as JSON for programmatic processing
-npm run extract-math m68690 -- --format json --output math-1.5.json
-
-# Include context to help match equations to images
-npm run extract-math m68690 -- --context
-
-# Get just the LaTeX equations
-npm run extract-math m68690 -- --format latex
-```
+| Status | Meaning |
+|--------|---------|
+| `complete` | Stage finished (sets date automatically) |
+| `in-progress` | Currently being worked on |
+| `pending` | Waiting to start |
+| `not-started` | Not yet begun |
 
 ---
 
-### replace-math-images.js
+## Shared Libraries (`tools/lib/`)
 
-Automates replacing equation images in markdown files with LaTeX. Works together with `cnxml-math-extract.js`.
-
-#### Syntax
-
-```bash
-npm run replace-math -- --scan <file.md>                    # Find equation images
-npm run replace-math -- --generate <file.md> <module-id>    # Generate mapping file
-npm run replace-math -- --apply <file.md> <mapping.json>    # Apply replacements
-```
-
-#### Workflow
-
-**Step 1: Scan** - Identify which images are likely equations:
-
-```bash
-npm run replace-math -- --scan chapters/01/1-5.md
-```
-
-**Step 2: Generate** - Create a mapping template:
-
-```bash
-npm run replace-math -- --generate chapters/01/1-5.md m68690 -o mapping.json
-```
-
-**Step 3: Edit Mapping** - Match images to equations in `mapping.json`
-
-**Step 4: Apply** - Replace images with LaTeX:
-
-```bash
-npm run replace-math -- --apply chapters/01/1-5.md mapping.json
-```
-
-#### Options
-
-| Option | Description |
-|--------|-------------|
-| `--output, -o <file>` | Output file path for generate mode |
-| `--dry-run` | Preview changes without modifying files |
-| `--verbose, -v` | Show detailed progress |
+| Module | Purpose |
+|--------|---------|
+| `cnxml-parser.js` | CNXML document parsing |
+| `cnxml-elements.js` | HTML rendering for CNXML elements |
+| `mathml-to-latex.js` | MathML → LaTeX conversion |
+| `mathjax-render.js` | MathJax SVG rendering |
+| `module-sections.js` | Module section building |
+| `chapter-modules.js` | Chemistry 2e module ID mappings |
 
 ---
 
----
+## Archived Tools
 
-## Deprecated Tools
-
-The following tools are deprecated and should not be used for new work. They are retained for legacy chapters.
-
-| Tool | Status | Replacement |
-|------|--------|-------------|
-| `cnxml-to-xliff.js` | DEPRECATED | Matecat Align |
-| `create-bilingual-xliff.js` | DEPRECATED | Matecat Align |
-| `md-to-xliff.js` | DEPRECATED | Matecat Align |
-| `xliff-to-md.js` | DEPRECATED | Matecat Align |
-| `xliff-to-tmx.js` | DEPRECATED | Matecat Align exports TMX directly |
-
-**Why deprecated?** The simplified 5-step workflow uses Matecat Align for TM creation, which handles segmentation and alignment automatically. XLIFF generation is no longer needed.
+42 deprecated tools from the old markdown pipeline are in `tools/_archived/`. These include the old `pipeline-runner.js`, `cnxml-to-md.js`, `chapter-assembler.js`, XLIFF tools, and DOCX conversion tools.
 
 ---
 
 ## See Also
 
-- [Simplified Workflow](../workflow/simplified-workflow.md) - Current 5-step translation pipeline
-- [Legacy Workflow](../workflow/overview.md) - Original 8-step pipeline (deprecated)
+- [Master Pipeline](../workflow/master-pipeline.md) - Complete workflow reference
+- [Simplified Workflow](../workflow/simplified-workflow.md) - 5-step pipeline overview
 - [Schema Reference](schemas.md) - JSON Schema field definitions
-- [Markdown Fixes](markdown-fixes.md) - Known Pandoc artifacts and fixes
+- [Architecture](architecture.md) - System architecture

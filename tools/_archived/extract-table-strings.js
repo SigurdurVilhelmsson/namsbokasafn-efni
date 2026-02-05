@@ -129,8 +129,9 @@ function isTranslatable(text) {
 
   // Skip cells that are mostly chemical notation
   // Pattern: optional element, subscript notation, optional state
-  if (/^[A-Z][a-z]?(?:~\d+~)?(?:[A-Z][a-z]?(?:~\d+~)?)*(?:\(\*?[a-z]\*?\))?$/.test(trimmed))
+  if (/^[A-Z][a-z]?(?:~\d+~)?(?:[A-Z][a-z]?(?:~\d+~)?)*(?:\(\*?[a-z]\*?\))?$/.test(trimmed)) {
     return false;
+  }
 
   // Keep anything with lowercase letters that aren't part of chemical notation
   // Words like "helium", "water", "ethanol" have multiple lowercase letters

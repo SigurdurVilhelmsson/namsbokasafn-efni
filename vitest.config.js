@@ -7,6 +7,7 @@ export default defineConfig({
     include: ['**/*.test.js', '**/__tests__/**/*.js'],
     exclude: [
       '**/node_modules/**',
+      '**/_archived/**',
       '**/archived/**',
       '**/dist/**',
       '**/books/**',
@@ -16,6 +17,7 @@ export default defineConfig({
       reporter: ['text', 'html', 'lcov'],
       exclude: [
         '**/node_modules/**',
+        '**/_archived/**',
         '**/archived/**',
         '**/books/**',
         '**/*.test.js',

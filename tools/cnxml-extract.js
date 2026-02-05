@@ -35,7 +35,7 @@ import {
   extractGlossary,
 } from './lib/cnxml-parser.js';
 import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
-import { getChapterModules } from './pipeline-runner.js';
+import { getChapterModules } from './lib/chapter-modules.js';
 
 // =====================================================================
 // CONFIGURATION

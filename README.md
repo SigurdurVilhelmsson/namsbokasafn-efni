@@ -20,14 +20,16 @@ Afurðir verkefnisins eru þrenns konar:
 
 ## Verkflæði
 
-Þýðingarferlið felur í sér 5 skref:
+Þýðingarferlið notar Extract-Inject-Render röð:
 
 ```
-1. CNXML → EN Markdown        → Umbreyta frumtexta
-2. Vélþýðing                  → malstadur.is
-3. Málfarsrýni                → Prófarkalesin þýðing (VISTUÐ)
-4. Þýðingaminni               → Matecat Align → TMX (VISTAÐ)
-5. Útgáfa                     → Birta á vef
+1a. CNXML → EN bútar + bygging    → cnxml-extract
+1b. Verndun og skipting fyrir VÞ  → protect-segments-for-mt
+2.  Vélþýðing                     → malstadur.is
+3.  Málfarsrýni                   → Prófarkalesin þýðing (VISTUÐ)
+4.  Þýðingaminni                  → Matecat Align → TMX (VISTAÐ)
+5a. Innsetning í CNXML-byggningu  → cnxml-inject
+5b. Útgáfa í HTML                 → cnxml-render
 ```
 
 Útgáfukerfið styður þrjár brautir: `mt-preview` (vélþýðing), `faithful` (ritstýrð), og `localized` (staðfærð).
@@ -39,11 +41,14 @@ Sjá nánar í [docs/workflow/simplified-workflow.md](docs/workflow/simplified-w
 ```
 books/
 └── efnafraedi/
-    ├── 01-source/           # Frumtexti frá OpenStax
-    ├── 02-mt-output/        # Vélþýðing (til viðmiðunar)
+    ├── 01-source/           # Frumtexti frá OpenStax (CNXML)
+    ├── 02-for-mt/           # EN Markdown-bútar fyrir vélþýðingu
+    ├── 02-structure/        # Skjalabygging (JSON)
+    ├── 02-mt-output/        # Vélþýðing (IS bútar)
     ├── 03-faithful/         # Nákvæm þýðing eftir 1. yfirlestur
+    ├── 03-translated/       # Þýdd CNXML skjöl (frá inject)
     ├── 04-localized/        # Staðfærð útgáfa eftir 2. yfirlestur
-    ├── 05-publication/      # Útgefin .md skjöl
+    ├── 05-publication/      # Útgefin HTML skjöl (frá render)
     ├── tm/                  # Þýðingaminni (.tmx)
     └── glossary/            # Hugtakasafn
 ```
@@ -79,8 +84,8 @@ Sjá [server/README.md](server/README.md) fyrir nánari upplýsingar.
 | [Hugtök](docs/editorial/terminology.md) | Hugtakastaðlar og orðasafn |
 | [CLI tól](docs/technical/cli-reference.md) | Skipanalínutól |
 | [Vefþjónn](server/README.md) | Sjálfvirknivefþjónn |
-| [Viðmótsumbætur](docs/workflow/ui-improvements-plan.md) | Umbætur á vefviðmóti (1. áfangi) |
-| [Ritillsumbætur](docs/workflow/editor-improvements-jan2026.md) | Umbætur á ritli (2. áfangi) |
+| [Ritillsáætlun](docs/workflow/editor-improvements-jan2026.md) | Endurbygging ritils fyrir CNXML→HTML |
+| [Aðalverkferli](docs/workflow/master-pipeline.md) | Nákvæmt verkferli frá CNXML til útgáfu |
 
 ## Að taka þátt
 
@@ -109,7 +114,7 @@ This repository contains the translation workflow and content for Icelandic tran
 1. **Faithful Translation** (`03-faithful/`)
    - Human-verified Icelandic translation faithful to the source
    - Not machine translation output - contains human corrections
-   - Available in .docx and .md formats
+   - Available as markdown segments and rendered HTML
 
 2. **Human-Verified Translation Memory** (`tm/`)
    - Segment-aligned EN↔IS parallel text
@@ -181,7 +186,8 @@ See [server/README.md](server/README.md) for full documentation.
 
 | Document | Description |
 |----------|-------------|
-| [Simplified Workflow](docs/workflow/simplified-workflow.md) | 5-step translation pipeline (current) |
+| [Master Pipeline](docs/workflow/master-pipeline.md) | Complete CNXML→HTML pipeline reference |
+| [Simplified Workflow](docs/workflow/simplified-workflow.md) | 5-step translation pipeline overview |
 | [Pass 1: Linguistic Review](docs/editorial/pass1-linguistic.md) | First editorial pass |
 | [Pass 2: Localization](docs/editorial/pass2-localization.md) | Second editorial pass |
 | [Terminology](docs/editorial/terminology.md) | Terminology standards and glossary |
@@ -190,36 +196,21 @@ See [server/README.md](server/README.md) for full documentation.
 | [Publication Format](docs/technical/publication-format.md) | 3-track publication structure |
 | [Pipeline Server](server/README.md) | Web automation server |
 | [Contributing](docs/contributing/getting-started.md) | How to participate |
-| [UI Improvements Phase 1](docs/workflow/ui-improvements-plan.md) | Dashboard, assignments, navigation |
-| [Editor Improvements Phase 2](docs/workflow/editor-improvements-jan2026.md) | Spell check, dark mode, notes, presence |
+| [Editor Rebuild Plan](docs/workflow/editor-improvements-jan2026.md) | CNXML→HTML pipeline integration |
 
-## CLI Tools
+## CLI Tools (Extract-Inject-Render Pipeline)
 
-| Tool | Description | Status |
-|------|-------------|--------|
-| `pipeline-runner` | Full CNXML → markdown pipeline | Active |
-| `cnxml-to-md` | CNXML → Markdown with equations | Active |
-| `prepare-for-align` | Prepare files for Matecat Align | Active |
-| `add-frontmatter` | Add YAML frontmatter for publication | Active |
-| `split-for-erlendur` | Split files at 18k chars for MT | Active |
-| `apply-equations` | Restore LaTeX equations from JSON | Active |
-| `clean-markdown` | Fix Pandoc artifacts | Active |
-| `docx-to-md` | DOCX → Markdown conversion | Active |
-| `fix-figure-captions` | Fix figure caption formatting | Active |
-| `repair-directives` | Fix directive syntax | Active |
-| `replace-math-images` | Replace equation images with LaTeX | Active |
-| `export-parallel-corpus` | Export TM to parallel text | Active |
-| `validate-chapter` | Validate chapter structure | Active |
-| `process-chapter` | Full chapter processing pipeline | Active |
-| `cnxml-math-extract` | Extract MathML from CNXML | Active |
-| `strip-docx-to-txt` | Extract plain text from DOCX | Active |
-| `cnxml-to-xliff` | CNXML → XLIFF (Matecat Align) | Deprecated |
-| `create-bilingual-xliff` | Create bilingual XLIFF | Deprecated |
-| `md-to-xliff` | Markdown → XLIFF | Deprecated |
-| `xliff-to-md` | XLIFF → Markdown | Deprecated |
-| `xliff-to-tmx` | XLIFF → TMX | Deprecated |
+| Tool | Purpose | Pipeline Step |
+|------|---------|---------------|
+| `cnxml-extract` | Extract translatable segments from CNXML | Step 1a |
+| `protect-segments-for-mt` | Protect markers and split for MT | Step 1b |
+| `restore-segments-from-mt` | Restore markers in MT output | Step 2 (post-MT) |
+| `cnxml-inject` | Inject translations into CNXML structure | Step 5a |
+| `cnxml-render` | Render translated CNXML to semantic HTML | Step 5b |
+| `prepare-for-align` | Clean files for Matecat Align TM creation | Step 4 |
+| `validate-chapter` | Validate chapter content and structure | Validation |
 
-*21 tools total (16 active, 5 deprecated)*
+*7 active tools. 42 deprecated tools archived in `tools/_archived/`.*
 
 See [docs/technical/cli-reference.md](docs/technical/cli-reference.md) for detailed usage.
 

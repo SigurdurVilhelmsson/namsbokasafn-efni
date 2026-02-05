@@ -294,16 +294,18 @@ function processBatch(directory, options) {
 
         if (!options.verbose) {
           const changes = [];
-          if (result.directivesRestored > 0)
+          if (result.directivesRestored > 0) {
             changes.push(`${result.directivesRestored} directives`);
+          }
           if (result.stats?.bracketsUnescaped > 0) {
             changes.push(`${result.stats.bracketsUnescaped} brackets`);
           }
           if (result.stats?.closingDirectivesFixed > 0) {
             changes.push(`${result.stats.closingDirectivesFixed} closings`);
           }
-          if (result.stats?.linksUnescaped > 0)
+          if (result.stats?.linksUnescaped > 0) {
             changes.push(`${result.stats.linksUnescaped} links`);
+          }
           console.log(`  Fixed ${changes.join(', ')}: ${path.relative(directory, file)}`);
         }
       }

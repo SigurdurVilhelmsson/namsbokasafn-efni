@@ -33,8 +33,8 @@ const { spawn } = require('child_process');
 
 const VALID_BOOKS = ['efnafraedi', 'liffraedi'];
 const SOURCE_STAGES = {
-  'faithful': '03-faithful',
-  'localized': '04-localized'
+  faithful: '03-faithful',
+  localized: '04-localized',
 };
 
 // ============================================================================
@@ -50,7 +50,7 @@ function parseArgs(args) {
     verbose: false,
     skipToc: false,
     skipStatus: false,
-    help: false
+    help: false,
   };
 
   const positional = [];
@@ -155,10 +155,24 @@ function getChapterPaths(projectRoot, book, chapter, sourceStage) {
   return {
     sourceDocx: path.join(projectRoot, 'books', book, sourceDir, 'docx', `ch${chapterPadded}`),
     outputChapters: path.join(projectRoot, 'books', book, '05-publication', 'chapters'),
-    outputImages: path.join(projectRoot, 'books', book, '05-publication', 'images', `ch${chapterPadded}`),
+    outputImages: path.join(
+      projectRoot,
+      'books',
+      book,
+      '05-publication',
+      'images',
+      `ch${chapterPadded}`
+    ),
     tocJson: path.join(projectRoot, 'books', book, '05-publication', 'toc.json'),
-    statusJson: path.join(projectRoot, 'books', book, 'chapters', `ch${chapterPadded}`, 'status.json'),
-    chapterPadded
+    statusJson: path.join(
+      projectRoot,
+      'books',
+      book,
+      'chapters',
+      `ch${chapterPadded}`,
+      'status.json'
+    ),
+    chapterPadded,
   };
 }
 
@@ -220,18 +234,22 @@ function runTool(scriptPath, args, options = {}) {
 
     const child = spawn('node', [scriptPath, ...args], {
       stdio: verbose ? 'inherit' : 'pipe',
-      cwd: getProjectRoot()
+      cwd: getProjectRoot(),
     });
 
     let stdout = '';
     let stderr = '';
 
     if (!verbose) {
-      child.stdout?.on('data', data => { stdout += data; });
-      child.stderr?.on('data', data => { stderr += data; });
+      child.stdout?.on('data', (data) => {
+        stdout += data;
+      });
+      child.stderr?.on('data', (data) => {
+        stderr += data;
+      });
     }
 
-    child.on('close', code => {
+    child.on('close', (code) => {
       if (code === 0) {
         resolve({ success: true, stdout, stderr });
       } else {
@@ -239,7 +257,7 @@ function runTool(scriptPath, args, options = {}) {
       }
     });
 
-    child.on('error', err => {
+    child.on('error', (err) => {
       reject(err);
     });
   });
@@ -270,15 +288,15 @@ function updateToc(tocPath, chapter, sections, options) {
   // Build chapter entry
   const chapterEntry = {
     chapter: chapter,
-    sections: sections.map(s => ({
+    sections: sections.map((s) => ({
       id: s.sectionId,
       title: s.title || `Section ${s.sectionId}`,
-      file: s.outputFile
-    }))
+      file: s.outputFile,
+    })),
   };
 
   // Find or add chapter
-  const existingIndex = toc.chapters.findIndex(c => c.chapter === chapter);
+  const existingIndex = toc.chapters.findIndex((c) => c.chapter === chapter);
   if (existingIndex >= 0) {
     toc.chapters[existingIndex] = chapterEntry;
   } else {
@@ -327,7 +345,7 @@ function updateChapterStatus(statusPath, options) {
       complete: true,
       date: today,
       version: status.status.publication?.version || 'v1.0',
-      notes: `Processed via process-chapter.js on ${today}`
+      notes: `Processed via process-chapter.js on ${today}`,
     };
 
     if (verbose) {
@@ -375,7 +393,7 @@ function extractSectionInfo(docxPath, chapter) {
     sectionNum,
     sectionId,
     outputFile,
-    title: null // Will be filled after frontmatter processing
+    title: null, // Will be filled after frontmatter processing
   };
 }
 
@@ -415,17 +433,21 @@ async function processChapter(options) {
 
   if (docxFiles.length === 0) {
     console.error(`\nError: No .docx files found in ${paths.sourceDocx}`);
-    console.error('\nMake sure the chapter has been processed through the earlier workflow stages.');
-    console.error(`Expected location: books/${book}/${SOURCE_STAGES[source]}/docx/ch${paths.chapterPadded}/`);
+    console.error(
+      '\nMake sure the chapter has been processed through the earlier workflow stages.'
+    );
+    console.error(
+      `Expected location: books/${book}/${SOURCE_STAGES[source]}/docx/ch${paths.chapterPadded}/`
+    );
     process.exit(1);
   }
 
   console.log(`  Found ${docxFiles.length} file(s):`);
-  docxFiles.forEach(f => console.log(`    - ${path.basename(f)}`));
+  docxFiles.forEach((f) => console.log(`    - ${path.basename(f)}`));
   console.log('');
 
   // Extract section info
-  const sections = docxFiles.map(f => extractSectionInfo(f, chapter));
+  const sections = docxFiles.map((f) => extractSectionInfo(f, chapter));
 
   // Step 2: Convert DOCX to Markdown
   console.log('Step 2: Converting DOCX to Markdown...');
@@ -434,7 +456,7 @@ async function processChapter(options) {
   const conversionResults = {
     success: 0,
     failed: 0,
-    errors: []
+    errors: [],
   };
 
   for (const section of sections) {
@@ -463,7 +485,7 @@ async function processChapter(options) {
   const frontmatterResults = {
     success: 0,
     failed: 0,
-    errors: []
+    errors: [],
   };
 
   // Ensure output directory exists
@@ -480,7 +502,7 @@ async function processChapter(options) {
         // Try alternative naming patterns
         const altPatterns = [
           `ch${paths.chapterPadded}-${section.filename}.md`,
-          `${section.filename}.md`
+          `${section.filename}.md`,
         ];
 
         let found = false;
@@ -550,8 +572,12 @@ async function processChapter(options) {
   console.log('');
   console.log('Summary:');
   console.log(`  DOCX files found:    ${docxFiles.length}`);
-  console.log(`  Conversions:         ${conversionResults.success} success, ${conversionResults.failed} failed`);
-  console.log(`  Frontmatter:         ${frontmatterResults.success} success, ${frontmatterResults.failed} failed`);
+  console.log(
+    `  Conversions:         ${conversionResults.success} success, ${conversionResults.failed} failed`
+  );
+  console.log(
+    `  Frontmatter:         ${frontmatterResults.success} success, ${frontmatterResults.failed} failed`
+  );
   console.log('');
 
   if (conversionResults.errors.length > 0 || frontmatterResults.errors.length > 0) {
