@@ -279,3 +279,58 @@ export function extractAllMathML(str) {
   }
   return equations;
 }
+
+// =====================================================================
+// NUMBER LOCALIZATION
+// =====================================================================
+
+/**
+ * Localize number formatting in MathML for Icelandic conventions.
+ *
+ * Icelandic uses comma as decimal separator and period for thousands:
+ *   US: 2.54       → IS: 2,54
+ *   US: 10,500     → IS: 10.500
+ *
+ * Applied to <m:mn> and <m:mtext> elements before rendering/conversion
+ * so that both the SVG visual and the data-latex attribute reflect
+ * Icelandic number format.
+ *
+ * @param {string} mathml - MathML string (with m: namespace prefix)
+ * @returns {string} MathML with localized number formatting
+ */
+export function localizeNumbersInMathML(mathml) {
+  // Localize numbers in <m:mn> elements (decimal point + thousands separator)
+  let result = mathml.replace(/<m:mn>([^<]+)<\/m:mn>/g, (_match, content) => {
+    return '<m:mn>' + localizeNumberFull(content) + '</m:mn>';
+  });
+
+  // Localize decimal numbers in <m:mtext> elements
+  // Only convert decimal points — commas in mtext may be textual punctuation
+  result = result.replace(/<m:mtext>([^<]+)<\/m:mtext>/g, (_match, content) => {
+    return '<m:mtext>' + localizeDecimalPoint(content) + '</m:mtext>';
+  });
+
+  return result;
+}
+
+/**
+ * Convert both decimal points and thousands separators.
+ * For use in <mn> elements where commas are always thousands separators.
+ */
+function localizeNumberFull(str) {
+  // Step 1: Protect thousands comma (digit,3digits not followed by digit) with placeholder
+  let result = str.replace(/(\d),(\d{3})(?!\d)/g, '$1\u2800$2');
+  // Step 2: Decimal point → comma
+  result = result.replace(/(\d)\.(\d)/g, '$1,$2');
+  // Step 3: Placeholder → period (Icelandic thousands separator)
+  result = result.replace(/\u2800/g, '.');
+  return result;
+}
+
+/**
+ * Convert only decimal points (digit.digit → digit,digit).
+ * Safe for text content where commas may be textual.
+ */
+function localizeDecimalPoint(str) {
+  return str.replace(/(\d)\.(\d)/g, '$1,$2');
+}

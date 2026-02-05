@@ -40,7 +40,7 @@ import {
   renderFootnotesSection,
   translateLatexText,
 } from './lib/cnxml-elements.js';
-import { convertMathMLToLatex } from './lib/mathml-to-latex.js';
+import { convertMathMLToLatex, localizeNumbersInMathML } from './lib/mathml-to-latex.js';
 import { buildModuleSections } from './lib/module-sections.js';
 
 // =====================================================================
@@ -110,6 +110,25 @@ function translateTitle(title) {
 // =====================================================================
 
 const BOOKS_DIR = 'books/efnafraedi';
+
+/**
+ * Load equation text translation dictionary for a book.
+ * Returns entries sorted longest-first for correct matching priority.
+ * @param {string} book - Book name (e.g., 'efnafraedi')
+ * @returns {Array<[string, string]>|null} Sorted [english, icelandic] pairs, or null
+ */
+function loadEquationTextDictionary(book) {
+  const dictPath = path.join('books', book, 'glossary', 'equation-text.json');
+  try {
+    const data = JSON.parse(fs.readFileSync(dictPath, 'utf-8'));
+    const entries = Object.entries(data.translations);
+    // Sort longest-first to avoid partial matches (e.g., "mass of substance" before "mass")
+    entries.sort((a, b) => b[0].length - a[0].length);
+    return entries;
+  } catch {
+    return null;
+  }
+}
 
 // Module sections are built dynamically from structure + segment files
 // via buildModuleSections() — see tools/lib/module-sections.js
@@ -226,6 +245,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterExampleNumbers: options.chapterExampleNumbers || new Map(), // chapter-wide
     chapterExerciseNumbers: options.chapterExerciseNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
+    equationTextDictionary: options.equationTextDictionary || null, // equation text translations
     figureCounter: 0,
     footnoteCounter: 0,
     exampleCounter: 0,
@@ -1318,14 +1338,17 @@ function renderEquation(eq, context) {
     return `<div${id ? ` id="${escapeAttr(id)}"` : ''} class="equation">${eq.content}</div>`;
   }
 
-  const mathml = mathMatch[0];
-  const latex = translateLatexText(convertMathMLToLatex(mathml));
+  const localizedMathml = localizeNumbersInMathML(mathMatch[0]);
+  const latex = translateLatexText(
+    convertMathMLToLatex(localizedMathml),
+    context.equationTextDictionary
+  );
 
   // Track equation
   context.equations.push({ id, latex });
 
   // Render MathML directly via MathJax (lossless — no MathML→LaTeX conversion needed for visual)
-  const mathHtml = renderMathML(mathml, true);
+  const mathHtml = renderMathML(localizedMathml, true);
   const eqContent = `<span class="mathjax-display" data-latex="${escapeAttr(latex)}">${mathHtml}</span>`;
   const numberSpan = isUnnumbered ? '' : '<span class="equation-number"></span>';
 
@@ -1535,6 +1558,9 @@ async function main() {
     // Build module sections map from structure + segment files
     const moduleSections = buildModuleSections('efnafraedi', args.chapter);
 
+    // Load equation text translation dictionary
+    const equationTextDictionary = loadEquationTextDictionary('efnafraedi');
+
     // Build chapter-wide figure/table/example number maps across ALL modules
     // This enables cross-module references (e.g., 5-2 referencing a table in 5-1)
     const chapterFigureNumbers = new Map();
@@ -1644,6 +1670,7 @@ async function main() {
         chapterExampleNumbers,
         chapterExerciseNumbers,
         chapterSectionTitles,
+        equationTextDictionary,
       });
 
       const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
