@@ -21,6 +21,11 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import {
+  detectMathMLNumberFormat,
+  localizeNumbersInMathML,
+  verifyLocalization,
+} from './lib/mathml-to-latex.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -215,6 +220,63 @@ const VALIDATORS = {
             line: lineNum,
             message: `Orphan equation placeholder: ${match[0]}`,
           });
+        }
+      }
+
+      return issues;
+    },
+  },
+
+  'equation-notation': {
+    severity: SEVERITY.WARNING,
+    description: 'Equation numbers use Icelandic notation after localization',
+    check: async ({ book, chapter: _chapter, _track, chapterDir }) => {
+      const issues = [];
+      const structureDir = path.join(PROJECT_ROOT, 'books', book, '02-structure', chapterDir);
+
+      if (!fs.existsSync(structureDir)) return issues;
+
+      const eqFiles = fs.readdirSync(structureDir).filter((f) => f.endsWith('-equations.json'));
+
+      for (const file of eqFiles) {
+        const filePath = path.join(structureDir, file);
+        const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+
+        for (const [eqId, eq] of Object.entries(data)) {
+          if (!eq.mathml) continue;
+
+          const detection = detectMathMLNumberFormat(eq.mathml);
+
+          // Check for mixed notation in source (indicates corruption)
+          if (detection.format === 'mixed') {
+            issues.push({
+              file,
+              message: `Equation ${eqId}: mixed US/IS notation in source MathML`,
+            });
+            continue;
+          }
+
+          // Only verify US→IS conversion for equations with US numbers
+          if (detection.format !== 'us') continue;
+
+          const localized = localizeNumbersInMathML(eq.mathml);
+          const verificationIssues = verifyLocalization(eq.mathml, localized);
+
+          for (const vi of verificationIssues) {
+            issues.push({
+              file,
+              message: `Equation ${eqId}: ${vi.message}`,
+            });
+          }
+
+          // Idempotency check
+          const twice = localizeNumbersInMathML(localized);
+          if (localized !== twice) {
+            issues.push({
+              file,
+              message: `Equation ${eqId}: localization is not idempotent (double-application changes output)`,
+            });
+          }
         }
       }
 
