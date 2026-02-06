@@ -268,6 +268,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     title,
     equations: context.equations,
     terms: context.terms,
+    _renderStats: context.renderStats || { equations: 0, success: 0, failures: [] },
   };
 
   // Build HTML document
@@ -341,9 +342,12 @@ function buildHtmlDocument(options) {
 
   lines.push('  </article>');
 
-  // Page data script
+  // Page data script (strip internal fields prefixed with _)
+  const publicPageData = Object.fromEntries(
+    Object.entries(pageData).filter(([key]) => !key.startsWith('_'))
+  );
   lines.push(`  <script type="application/json" id="page-data">`);
-  lines.push(JSON.stringify(pageData, null, 2));
+  lines.push(JSON.stringify(publicPageData, null, 2));
   lines.push('  </script>');
 
   lines.push('</body>');
@@ -1335,6 +1339,10 @@ function renderEquation(eq, context) {
   // Extract MathML
   const mathMatch = eq.content.match(/<m:math[^>]*>[\s\S]*?<\/m:math>/);
   if (!mathMatch) {
+    // Track render failure: no MathML found
+    if (!context.renderStats) context.renderStats = { equations: 0, success: 0, failures: [] };
+    context.renderStats.equations++;
+    context.renderStats.failures.push({ id, reason: 'no-mathml' });
     return `<div${id ? ` id="${escapeAttr(id)}"` : ''} class="equation">${eq.content}</div>`;
   }
 
@@ -1349,6 +1357,27 @@ function renderEquation(eq, context) {
 
   // Render MathML directly via MathJax (lossless — no MathML→LaTeX conversion needed for visual)
   const mathHtml = renderMathML(localizedMathml, true);
+
+  // Validate render result
+  if (!context.renderStats) context.renderStats = { equations: 0, success: 0, failures: [] };
+  context.renderStats.equations++;
+
+  const renderFailed =
+    !mathHtml ||
+    mathHtml.trim() === '' ||
+    mathHtml.includes('merror') ||
+    mathHtml.includes('data-mjx-error');
+
+  if (renderFailed) {
+    context.renderStats.failures.push({
+      id,
+      reason: !mathHtml ? 'empty-result' : 'mathjax-error',
+      latex: latex.substring(0, 80),
+    });
+  } else {
+    context.renderStats.success++;
+  }
+
   const eqContent = `<span class="mathjax-display" data-latex="${escapeAttr(latex)}">${mathHtml}</span>`;
   const numberSpan = isUnnumbered ? '' : '<span class="equation-number"></span>';
 
@@ -1659,7 +1688,7 @@ async function main() {
       );
       const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
 
-      const { html } = renderCnxmlToHtml(cnxml, {
+      const { html, pageData } = renderCnxmlToHtml(cnxml, {
         verbose: args.verbose,
         lang: args.lang,
         chapter: args.chapter,
@@ -1673,10 +1702,35 @@ async function main() {
         equationTextDictionary,
       });
 
+      // Validate output is non-empty
+      if (!html || html.trim().length < 100) {
+        console.error(
+          `  ERROR: Rendered HTML for ${moduleId} is empty or too short (${html?.length || 0} chars)`
+        );
+      }
+
       const outputPath = writeOutput(args.chapter, moduleId, args.track, html, moduleSections);
 
       console.log(`${moduleId}: Rendered to HTML`);
       console.log(`  → ${outputPath}`);
+
+      // Report equation render stats from pageData context
+      // Extract render stats from the context that was used
+      const renderStats = pageData._renderStats;
+      if (renderStats && renderStats.equations > 0) {
+        if (renderStats.failures.length > 0) {
+          console.error(
+            `  Equations: ${renderStats.success}/${renderStats.equations} rendered OK, ${renderStats.failures.length} FAILED`
+          );
+          for (const f of renderStats.failures.slice(0, 3)) {
+            console.error(
+              `    - ${f.id || 'unknown'}: ${f.reason}${f.latex ? ` (${f.latex})` : ''}`
+            );
+          }
+        } else if (args.verbose) {
+          console.log(`  Equations: ${renderStats.success}/${renderStats.equations} rendered OK`);
+        }
+      }
     }
 
     // Copy referenced images from source media to publication directory

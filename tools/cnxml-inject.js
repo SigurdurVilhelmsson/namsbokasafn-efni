@@ -233,16 +233,29 @@ function collectFigureCaptions(elements, map) {
 function buildCnxml(structure, segments, equations, originalCnxml, options = {}) {
   const verbose = options.verbose || false;
 
+  // Injection tracking
+  const stats = {
+    segmentsRequested: 0,
+    segmentsFound: 0,
+    segmentsMissing: [],
+    mathPlaceholders: 0,
+    mathResolved: 0,
+    mathUnresolved: [],
+  };
+
   // Helper to get segment text
   const getSeg = (segmentId) => {
     if (!segmentId) return null;
+    stats.segmentsRequested++;
     const text = segments.get(segmentId);
     if (!text) {
+      stats.segmentsMissing.push(segmentId);
       if (verbose) {
         console.error(`Warning: Missing segment ${segmentId}`);
       }
       return null;
     }
+    stats.segmentsFound++;
     return reverseInlineMarkup(text, equations);
   };
 
@@ -338,7 +351,52 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
 
   lines.push('</document>');
 
-  return lines.join('\n');
+  const output = lines.join('\n');
+
+  // Verify: check for unresolved [[MATH:N]] placeholders in output
+  const unresolvedMath = output.match(/\[\[MATH:(\d+)\]\]/g) || [];
+  stats.mathUnresolved = unresolvedMath.map((m) => m.match(/\d+/)[0]);
+  stats.mathPlaceholders = stats.mathUnresolved.length;
+
+  // Build completeness report
+  const report = {
+    segmentsInFile: segments.size,
+    segmentsRequested: stats.segmentsRequested,
+    segmentsFound: stats.segmentsFound,
+    segmentsMissing: stats.segmentsMissing,
+    unresolvedMathPlaceholders: stats.mathUnresolved,
+    complete: stats.segmentsMissing.length === 0 && stats.mathUnresolved.length === 0,
+  };
+
+  // Always report missing segments (not just verbose)
+  if (stats.segmentsMissing.length > 0) {
+    console.error(`  WARNING: ${stats.segmentsMissing.length} missing segment(s):`);
+    for (const id of stats.segmentsMissing.slice(0, 10)) {
+      console.error(`    - ${id}`);
+    }
+    if (stats.segmentsMissing.length > 10) {
+      console.error(`    ... and ${stats.segmentsMissing.length - 10} more`);
+    }
+  }
+
+  if (stats.mathUnresolved.length > 0) {
+    console.error(
+      `  WARNING: ${stats.mathUnresolved.length} unresolved [[MATH:N]] placeholder(s) in output`
+    );
+  }
+
+  if (verbose) {
+    console.error(
+      `  Injection: ${stats.segmentsFound}/${stats.segmentsRequested} segments resolved`
+    );
+    console.error(`  Translation file has ${segments.size} segments total`);
+    const unused = segments.size - stats.segmentsFound;
+    if (unused > 0) {
+      console.error(`  Note: ${unused} segments in translation file not referenced by structure`);
+    }
+  }
+
+  return { cnxml: output, report };
 }
 
 /**
@@ -1168,14 +1226,19 @@ async function main() {
         sourceDir
       );
 
-      const cnxml = buildCnxml(structure, segments, equations, originalCnxml, {
+      const result = buildCnxml(structure, segments, equations, originalCnxml, {
         verbose: args.verbose,
       });
 
-      const outputPath = writeOutput(args.chapter, moduleId, cnxml);
+      const outputPath = writeOutput(args.chapter, moduleId, result.cnxml);
 
-      console.log(`${moduleId}: Translated CNXML written`);
+      const status = result.report.complete ? 'COMPLETE' : 'INCOMPLETE';
+      console.log(`${moduleId}: Translated CNXML written [${status}]`);
       console.log(`  → ${outputPath}`);
+      if (!result.report.complete) {
+        console.log(`  Missing segments: ${result.report.segmentsMissing.length}`);
+        console.log(`  Unresolved math: ${result.report.unresolvedMathPlaceholders.length}`);
+      }
     }
   } catch (error) {
     console.error('Error:', error.message);

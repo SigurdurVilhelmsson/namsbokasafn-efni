@@ -26,6 +26,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import {
   parseCnxmlDocument,
   extractNestedElements,
@@ -1097,12 +1098,86 @@ function ensureOutputDirs(chapter) {
 }
 
 /**
+ * Build an extraction manifest with element counts, segment IDs, and source hash.
+ * This manifest serves as a reference for downstream pipeline stages to verify
+ * completeness and detect source changes.
+ * @param {Object} result - Extraction result { segments, structure, equations }
+ * @param {string} sourceContent - Original CNXML content for hashing
+ * @returns {Object} Manifest object
+ */
+function buildManifest(result, sourceContent) {
+  const { segments, structure, equations } = result;
+
+  // Count element types from structure
+  const elementCounts = {
+    para: 0,
+    section: 0,
+    figure: 0,
+    table: 0,
+    example: 0,
+    exercise: 0,
+    note: 0,
+    equation: 0,
+    list: 0,
+    media: 0,
+    glossary: 0,
+  };
+  const elementIds = {
+    figure: [],
+    table: [],
+    example: [],
+    exercise: [],
+    note: [],
+    equation: [],
+    section: [],
+  };
+
+  function countElements(elements) {
+    for (const el of elements || []) {
+      if (el.type && elementCounts[el.type] !== undefined) {
+        elementCounts[el.type]++;
+      }
+      if (el.id && elementIds[el.type]) {
+        elementIds[el.type].push(el.id);
+      }
+      // Recurse into nested content
+      if (el.content && Array.isArray(el.content)) {
+        countElements(el.content);
+      }
+      // Count problem/solution contents for exercises
+      if (el.problem?.content) countElements(el.problem.content);
+      if (el.solution?.content) countElements(el.solution.content);
+    }
+  }
+
+  countElements(structure.content);
+
+  if (structure.glossary?.items) {
+    elementCounts.glossary = structure.glossary.items.length;
+  }
+
+  return {
+    version: 1,
+    moduleId: structure.moduleId,
+    extractedAt: new Date().toISOString(),
+    sourceHash: crypto.createHash('sha256').update(sourceContent).digest('hex').substring(0, 16),
+    segmentCount: segments.length,
+    segmentIds: segments.map((s) => s.id),
+    equationCount: Object.keys(equations).length,
+    equationIds: Object.keys(equations),
+    elementCounts,
+    elementIds,
+  };
+}
+
+/**
  * Write extraction output files.
  * @param {Object} result - Extraction result { segments, structure, equations }
  * @param {number} chapter - Chapter number
  * @param {string} moduleId - Module ID
+ * @param {string} sourceContent - Original CNXML content for manifest hashing
  */
-function writeOutput(result, chapter, moduleId) {
+function writeOutput(result, chapter, moduleId, sourceContent) {
   const chapterStr = String(chapter).padStart(2, '0');
   const mtDir = path.join(BOOKS_DIR, '02-for-mt', `ch${chapterStr}`);
   const structDir = path.join(BOOKS_DIR, '02-structure', `ch${chapterStr}`);
@@ -1121,7 +1196,12 @@ function writeOutput(result, chapter, moduleId) {
     fs.writeFileSync(equationsPath, JSON.stringify(result.equations, null, 2), 'utf-8');
   }
 
-  return { segmentsPath, structurePath };
+  // Write extraction manifest
+  const manifest = buildManifest(result, sourceContent);
+  const manifestPath = path.join(structDir, `${moduleId}-manifest.json`);
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf-8');
+
+  return { segmentsPath, structurePath, manifestPath };
 }
 
 // =====================================================================
@@ -1186,11 +1266,14 @@ async function main() {
         result.structure.sectionOrder = null;
       }
 
-      const output = writeOutput(result, chapter, moduleId);
+      const output = writeOutput(result, chapter, moduleId, cnxml);
 
-      console.log(`${moduleId}: ${result.segments.length} segments extracted`);
+      console.log(
+        `${moduleId}: ${result.segments.length} segments, ${Object.keys(result.equations).length} equations extracted`
+      );
       console.log(`  → ${output.segmentsPath}`);
       console.log(`  → ${output.structurePath}`);
+      console.log(`  → ${output.manifestPath}`);
     }
   } catch (error) {
     console.error('Error:', error.message);

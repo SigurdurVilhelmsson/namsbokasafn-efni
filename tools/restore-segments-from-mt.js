@@ -129,36 +129,80 @@ function restoreSegmentTags(content) {
  *
  * @param {string} content - Content with link placeholders
  * @param {Object} links - Map of link ID to URL
- * @returns {string} Content with restored markdown links
+ * @returns {{ content: string, linksRestored: number, xrefsRestored: number, linksMissing: number }}
  */
 function restoreLinks(content, links) {
   if (!links || Object.keys(links).length === 0) {
-    return content;
+    return { content, linksRestored: 0, xrefsRestored: 0, linksMissing: 0 };
   }
 
   let result = content;
+  let linksRestored = 0;
+  let linksMissing = 0;
 
   // Restore full links: {{LINK:N}}text{{/LINK}} → [text](url)
   result = result.replace(/\{\{LINK:(\d+)\}\}([^{]*)\{\{\/LINK\}\}/g, (match, id, text) => {
     const url = links[id];
     if (url) {
+      linksRestored++;
       return `[${text}](${url})`;
     }
     // Fallback: return just the text if URL not found
+    linksMissing++;
     return text;
   });
 
   // Restore cross-references: {{XREF:N}} → [#ref-id]
+  let xrefsRestored = 0;
   result = result.replace(/\{\{XREF:(\d+)\}\}/g, (match, id) => {
     const ref = links[id];
     if (ref) {
+      xrefsRestored++;
       // ref is already in format "#ref-id"
       return `[${ref}]`;
     }
+    linksMissing++;
     return match; // Keep placeholder if not found
   });
 
-  return result;
+  return { content: result, linksRestored, xrefsRestored, linksMissing };
+}
+
+/**
+ * Verify no MT protection placeholders survive in the output.
+ * Any surviving placeholders indicate a failed round-trip.
+ * @param {string} content - Processed content
+ * @returns {Array<{ type: string, id: string, position: number }>}
+ */
+function verifySurvivingPlaceholders(content) {
+  const survivors = [];
+
+  // Check for {{LINK:N}} patterns that weren't restored
+  const linkPattern = /\{\{LINK:(\d+)\}\}/g;
+  let match;
+  while ((match = linkPattern.exec(content)) !== null) {
+    survivors.push({ type: 'LINK', id: match[1], position: match.index });
+  }
+
+  // Check for {{XREF:N}} patterns that weren't restored
+  const xrefPattern = /\{\{XREF:(\d+)\}\}/g;
+  while ((match = xrefPattern.exec(content)) !== null) {
+    survivors.push({ type: 'XREF', id: match[1], position: match.index });
+  }
+
+  // Check for {{SEG:...}} patterns that weren't converted to HTML comments
+  const segPattern = /\{\{SEG:([^}]+)\}\}/g;
+  while ((match = segPattern.exec(content)) !== null) {
+    survivors.push({ type: 'SEG', id: match[1], position: match.index });
+  }
+
+  // Check for escaped bracket patterns from MT that weren't unescaped
+  const escapedPattern = /\\\[\\\[|\\\]\\\]|\\\{\\\{|\\\}\\\}/g;
+  while ((match = escapedPattern.exec(content)) !== null) {
+    survivors.push({ type: 'ESCAPED', id: match[0], position: match.index });
+  }
+
+  return survivors;
 }
 
 /**
@@ -304,12 +348,40 @@ function processFile(inputPath, outputDir, options) {
   // Try to find links JSON file (based on EN filename pattern)
   const links = loadLinksFile(inputPath);
   let linksRestored = 0;
+  let xrefsRestored = 0;
+  let linksMissing = 0;
   if (links) {
-    content = restoreLinks(content, links);
-    // Count how many links were restored
-    linksRestored = Object.keys(links).length;
-    if (verbose && linksRestored > 0) {
-      console.log(`  Links restored: ${linksRestored}`);
+    const linkResult = restoreLinks(content, links);
+    content = linkResult.content;
+    linksRestored = linkResult.linksRestored;
+    xrefsRestored = linkResult.xrefsRestored;
+    linksMissing = linkResult.linksMissing;
+    const linksExpected = Object.keys(links).length;
+    const totalRestored = linksRestored + xrefsRestored;
+    if (verbose) {
+      console.log(
+        `  Links expected: ${linksExpected}, restored: ${totalRestored} (${linksRestored} links, ${xrefsRestored} xrefs)`
+      );
+    }
+    if (linksMissing > 0) {
+      console.error(
+        `  WARNING: ${linksMissing} link(s) could not be restored (missing URL in links map)`
+      );
+    }
+    if (totalRestored < linksExpected) {
+      console.error(`  WARNING: Only ${totalRestored} of ${linksExpected} links were restored`);
+    }
+  }
+
+  // Step 4: Verify no placeholders survived
+  const survivors = verifySurvivingPlaceholders(content);
+  if (survivors.length > 0) {
+    console.error(`  WARNING: ${survivors.length} placeholder(s) survived in output:`);
+    for (const s of survivors.slice(0, 5)) {
+      console.error(`    - ${s.type}:${s.id} at position ${s.position}`);
+    }
+    if (survivors.length > 5) {
+      console.error(`    ... and ${survivors.length - 5} more`);
     }
   }
 
@@ -359,7 +431,10 @@ function processFile(inputPath, outputDir, options) {
     mathTagsFound,
     crossRefsFound,
     linksRestored,
+    xrefsRestored,
+    linksMissing,
     markdownLinksFound,
+    survivingPlaceholders: survivors.length,
     originalLength,
     finalLength: content.length,
   };
@@ -468,10 +543,28 @@ async function main() {
   console.log(`  Cross-references found: ${totalCrossRefs}`);
 
   const totalLinksRestored = results.reduce((sum, r) => sum + r.linksRestored, 0);
-  console.log(`  Links restored: ${totalLinksRestored}`);
+  const totalXrefsRestored = results.reduce((sum, r) => sum + r.xrefsRestored, 0);
+  console.log(`  Links restored: ${totalLinksRestored} (+ ${totalXrefsRestored} xrefs)`);
 
   const totalMarkdownLinks = results.reduce((sum, r) => sum + r.markdownLinksFound, 0);
   console.log(`  Markdown links found: ${totalMarkdownLinks}`);
+
+  // Round-trip verification summary
+  const totalLinksMissing = results.reduce((sum, r) => sum + r.linksMissing, 0);
+  const totalSurvivors = results.reduce((sum, r) => sum + r.survivingPlaceholders, 0);
+
+  if (totalLinksMissing > 0 || totalSurvivors > 0) {
+    console.log('');
+    console.log('  ROUND-TRIP VERIFICATION:');
+    if (totalLinksMissing > 0) {
+      console.log(`    Links not restored (missing URL): ${totalLinksMissing}`);
+    }
+    if (totalSurvivors > 0) {
+      console.log(`    Surviving placeholders in output: ${totalSurvivors}`);
+    }
+  } else {
+    console.log(`  Round-trip verification: PASS (no surviving placeholders)`);
+  }
 
   if (args.dryRun) {
     console.log('\n  [dry-run] No files were written');

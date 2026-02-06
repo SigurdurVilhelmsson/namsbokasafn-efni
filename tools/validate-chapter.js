@@ -20,6 +20,7 @@
 
 import fs from 'fs';
 import path from 'path';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import {
   detectMathMLNumberFormat,
@@ -694,6 +695,276 @@ const VALIDATORS = {
       return issues;
     },
   },
+
+  'html-placeholder-leaks': {
+    severity: SEVERITY.ERROR,
+    description: 'No pipeline placeholders leaked into HTML output',
+    check: async ({ book, chapter, track }) => {
+      const issues = [];
+      const chapterStr = String(chapter).padStart(2, '0');
+      const trackConfig = TRACKS[track];
+      const pubDir = path.join(
+        PROJECT_ROOT,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        chapterStr
+      );
+
+      if (!fs.existsSync(pubDir)) return issues;
+
+      const htmlFiles = fs.readdirSync(pubDir).filter((f) => f.endsWith('.html'));
+
+      for (const file of htmlFiles) {
+        const filePath = path.join(pubDir, file);
+        const content = fs.readFileSync(filePath, 'utf-8');
+
+        // Check for [[MATH:N]] placeholders
+        const mathLeaks = content.match(/\[\[MATH:\d+\]\]/g) || [];
+        if (mathLeaks.length > 0) {
+          issues.push({ file, message: `${mathLeaks.length} [[MATH:N]] placeholder(s) in output` });
+        }
+
+        // Check for {{SEG:...}} placeholders
+        const segLeaks = content.match(/\{\{SEG:[^}]+\}\}/g) || [];
+        if (segLeaks.length > 0) {
+          issues.push({ file, message: `${segLeaks.length} {{SEG:...}} placeholder(s) in output` });
+        }
+
+        // Check for {{LINK:N}} or {{XREF:N}} placeholders
+        const linkLeaks = content.match(/\{\{(?:LINK|XREF):\d+\}\}/g) || [];
+        if (linkLeaks.length > 0) {
+          issues.push({
+            file,
+            message: `${linkLeaks.length} {{LINK/XREF}} placeholder(s) in output`,
+          });
+        }
+
+        // Check for unresolved [[EQ:N]] (from old markdown pipeline)
+        const eqLeaks = content.match(/\[\[EQ:\d+\]\]/g) || [];
+        if (eqLeaks.length > 0) {
+          issues.push({ file, message: `${eqLeaks.length} [[EQ:N]] placeholder(s) in output` });
+        }
+      }
+
+      return issues;
+    },
+  },
+
+  'html-images-exist': {
+    severity: SEVERITY.WARNING,
+    description: 'All images referenced in HTML output exist',
+    check: async ({ book, chapter, track }) => {
+      const issues = [];
+      const chapterStr = String(chapter).padStart(2, '0');
+      const trackConfig = TRACKS[track];
+      const pubDir = path.join(
+        PROJECT_ROOT,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        chapterStr
+      );
+
+      if (!fs.existsSync(pubDir)) return issues;
+
+      const htmlFiles = fs.readdirSync(pubDir).filter((f) => f.endsWith('.html'));
+      const checkedImages = new Set();
+
+      for (const file of htmlFiles) {
+        const filePath = path.join(pubDir, file);
+        const content = fs.readFileSync(filePath, 'utf-8');
+
+        // Find all img src attributes
+        const imgPattern = /<img[^>]*src="([^"]+)"/g;
+        let match;
+        while ((match = imgPattern.exec(content)) !== null) {
+          const src = match[1];
+          if (src.startsWith('http://') || src.startsWith('https://')) continue;
+          if (checkedImages.has(src)) continue;
+          checkedImages.add(src);
+
+          // Check in publication directory (for absolute /content/... paths)
+          if (src.startsWith('/content/')) {
+            const relativeSrc = src.replace(/^\/content\/efnafraedi\/chapters\/\d+\//, '');
+            const imgPath = path.join(pubDir, relativeSrc);
+            if (!fs.existsSync(imgPath)) {
+              // Fallback: check source media directory
+              const sourceMediaPath = path.join(
+                PROJECT_ROOT,
+                'books',
+                book,
+                '01-source',
+                'media',
+                path.basename(src)
+              );
+              if (!fs.existsSync(sourceMediaPath)) {
+                issues.push({ file, message: `Image not found: ${src}` });
+              }
+            }
+          }
+        }
+      }
+
+      return issues;
+    },
+  },
+
+  'html-non-empty': {
+    severity: SEVERITY.ERROR,
+    description: 'All rendered HTML files have substantial content',
+    check: async ({ book, chapter, track }) => {
+      const issues = [];
+      const chapterStr = String(chapter).padStart(2, '0');
+      const trackConfig = TRACKS[track];
+      const pubDir = path.join(
+        PROJECT_ROOT,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        chapterStr
+      );
+
+      if (!fs.existsSync(pubDir)) return issues;
+
+      const htmlFiles = fs.readdirSync(pubDir).filter((f) => f.endsWith('.html'));
+
+      for (const file of htmlFiles) {
+        const filePath = path.join(pubDir, file);
+        const content = fs.readFileSync(filePath, 'utf-8');
+
+        // Check file isn't empty
+        if (content.trim().length === 0) {
+          issues.push({ file, message: 'HTML file is empty' });
+          continue;
+        }
+
+        // Check for <main> content
+        const mainMatch = content.match(/<main>([\s\S]*?)<\/main>/);
+        if (!mainMatch || mainMatch[1].trim().length < 50) {
+          issues.push({
+            file,
+            message: `HTML <main> content is too short (${mainMatch ? mainMatch[1].trim().length : 0} chars)`,
+          });
+        }
+      }
+
+      return issues;
+    },
+  },
+
+  'html-equation-render': {
+    severity: SEVERITY.WARNING,
+    description: 'All equations rendered successfully (no MathJax errors)',
+    check: async ({ book, chapter, track }) => {
+      const issues = [];
+      const chapterStr = String(chapter).padStart(2, '0');
+      const trackConfig = TRACKS[track];
+      const pubDir = path.join(
+        PROJECT_ROOT,
+        'books',
+        book,
+        trackConfig.pubDir,
+        'chapters',
+        chapterStr
+      );
+
+      if (!fs.existsSync(pubDir)) return issues;
+
+      const htmlFiles = fs.readdirSync(pubDir).filter((f) => f.endsWith('.html'));
+
+      for (const file of htmlFiles) {
+        const filePath = path.join(pubDir, file);
+        const content = fs.readFileSync(filePath, 'utf-8');
+
+        // Count equations and check for render errors
+        const eqPattern = /<div[^>]*class="equation[^"]*"[^>]*>([\s\S]*?)<\/div>/g;
+        let match;
+        let total = 0;
+        let errors = 0;
+
+        while ((match = eqPattern.exec(content)) !== null) {
+          total++;
+          const eqContent = match[1];
+          if (eqContent.includes('merror') || eqContent.includes('data-mjx-error')) {
+            errors++;
+          }
+        }
+
+        if (errors > 0) {
+          issues.push({
+            file,
+            message: `${errors}/${total} equation(s) have MathJax render errors`,
+          });
+        }
+      }
+
+      return issues;
+    },
+  },
+
+  'manifest-consistency': {
+    severity: SEVERITY.WARNING,
+    description: 'Extraction manifests match current source files',
+    check: async ({ book, chapter }) => {
+      const issues = [];
+      const chapterStr = String(chapter).padStart(2, '0');
+      const structDir = path.join(PROJECT_ROOT, 'books', book, '02-structure', `ch${chapterStr}`);
+      const sourceDir = path.join(PROJECT_ROOT, 'books', book, '01-source', `ch${chapterStr}`);
+
+      if (!fs.existsSync(structDir)) return issues;
+
+      const manifestFiles = fs.readdirSync(structDir).filter((f) => f.endsWith('-manifest.json'));
+
+      for (const file of manifestFiles) {
+        const manifestPath = path.join(structDir, file);
+        const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+        const moduleId = manifest.moduleId;
+
+        // Check source hash
+        const sourcePath = path.join(sourceDir, `${moduleId}.cnxml`);
+        if (fs.existsSync(sourcePath)) {
+          const sourceContent = fs.readFileSync(sourcePath, 'utf-8');
+          const currentHash = crypto
+            .createHash('sha256')
+            .update(sourceContent)
+            .digest('hex')
+            .substring(0, 16);
+          if (manifest.sourceHash !== currentHash) {
+            issues.push({
+              file,
+              message: `Source ${moduleId}.cnxml has changed since extraction (re-run cnxml-extract)`,
+            });
+          }
+        }
+
+        // Check segment count consistency with segment file
+        const segPath = path.join(
+          PROJECT_ROOT,
+          'books',
+          book,
+          '02-for-mt',
+          `ch${chapterStr}`,
+          `${moduleId}-segments.en.md`
+        );
+        if (fs.existsSync(segPath)) {
+          const segContent = fs.readFileSync(segPath, 'utf-8');
+          const segCount = (segContent.match(/<!-- SEG:/g) || []).length;
+          if (segCount !== manifest.segmentCount) {
+            issues.push({
+              file,
+              message: `Segment count mismatch: manifest says ${manifest.segmentCount}, file has ${segCount}`,
+            });
+          }
+        }
+      }
+
+      return issues;
+    },
+  },
 };
 
 // ============================================================================
@@ -755,14 +1026,20 @@ Options:
   -h, --help        Show this help message
 
 Validation Checks:
-  files-exist      Required markdown files are present
-  frontmatter      Valid YAML frontmatter with required fields
-  equations        No orphan [[EQ:n]] placeholders
-  images           All referenced images exist
-  directives       All ::: blocks properly closed
-  links            No broken internal #id links
-  mt-safe-syntax   No remaining [text]{url="..."} syntax
-  status-match     File state matches status.json
+  files-exist             Required markdown files are present
+  frontmatter             Valid YAML frontmatter with required fields
+  equations               No orphan [[EQ:n]] placeholders
+  equation-notation       Equation numbers use Icelandic notation
+  images                  All referenced images exist
+  directives              All ::: blocks properly closed
+  links                   No broken internal #id links
+  mt-safe-syntax          No remaining [text]{url="..."} syntax
+  status-match            File state matches status.json
+  html-placeholder-leaks  No pipeline placeholders in HTML output
+  html-images-exist       All images in HTML output exist on disk
+  html-non-empty          All HTML files have substantial content
+  html-equation-render    No MathJax render errors in equations
+  manifest-consistency    Extraction manifests match current sources
 
 Examples:
   # Validate chapter 1 for faithful track
