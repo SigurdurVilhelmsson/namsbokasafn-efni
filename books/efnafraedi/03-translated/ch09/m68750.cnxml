@@ -17,7 +17,7 @@ eins og öll önnur gös. Þótt við tökum venjulega ekki eftir loftþrýsting
 erum við næm fyrir þrýstingsbreytingum – til dæmis þegar það smellur í
 eyrunum á þér í flugtaki og við lendingu, eða þegar þú kafar
 neðansjávar. Þrýstingur gass stafar af kraftinum sem gassameindir beita
-þegar þær rekast á yfirborð hluta (&lt;!-- XREF:3 -->). Þótt kraftur hvers
+þegar þær rekast á yfirborð hluta (<!-- XREF:3 -->). Þótt kraftur hvers
 áreksturs sé mjög lítill verður hvaða yfirborð sem er af umtalsverðri
 stærð fyrir fjölda árekstra á stuttum tíma, sem getur leitt til mikils
 þrýstings. Reyndar er venjulegur loftþrýstingur nógu sterkur til að
@@ -34,10 +34,10 @@ við þumalfingursnögl manns.</caption>
 </figure>
 <note id="fs-idm5657392" class="chemistry link-to-learning">
 <para id="fs-idp139792368">Áhrifamikil
-&lt;!-- LINK:1 -->sýning&lt;!-- /LINK --> á loftþrýstingi er sýnd í þessu stutta
+<!-- LINK:1 -->sýning<!-- /LINK --> á loftþrýstingi er sýnd í þessu stutta
 myndbandi, þar sem járnbrautartankvagn kremst saman þegar innri
 þrýstingur hans minnkar.</para>
-<para id="fs-idm26057840">&lt;!-- LINK:2 -->Sýnikennsla&lt;!-- /LINK --> á
+<para id="fs-idm26057840"><!-- LINK:2 -->Sýnikennsla<!-- /LINK --> á
 þessu fyrirbæri í smærri skala er útskýrð stuttlega.</para>
 </note>
 <para id="fs-idm5227120">Loftþrýstingur stafar af þyngd súlu
@@ -51,13 +51,13 @@ slíkan loftþrýsting. Ef þú setur keilukúlu á þumalfingursnöglina þína
 tilfinningin er óþægileg.</para>
 <para id="fs-idp26888784">Almennt er <emphasis effect="bold">þrýstingur</emphasis>
 skilgreindur sem krafturinn sem beitt er á tiltekið svæði:
-\[\[MATH:1\]\] Athugaðu að þrýstingur er í beinu hlutfalli við kraft og
+<m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>F</m:mi><m:mi>A</m:mi></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Athugaðu að þrýstingur er í beinu hlutfalli við kraft og
 í öfugu hlutfalli við flatarmál. Þannig má auka þrýsting annaðhvort með
 því að auka kraftinn eða með því að minnka flatarmálið sem honum er
 beitt á; þrýsting má minnka með því að minnka kraftinn eða auka
 flatarmálið.</para>
 <para id="fs-idm32668544">Beitum þessu hugtaki til að ákvarða
-hvor beitir meiri þrýstingi í &lt;!-- XREF:4 --> – fíllinn eða listskautarinn?
+hvor beitir meiri þrýstingi í <!-- XREF:4 --> – fíllinn eða listskautarinn?
 Stór afrískur fíll getur vegið 7 tonn og stendur á fjórum fótum, hver
 með um 1,5 feta þvermál (fótsporsflatarmál 250 in<sup>2</sup>), þannig að
 þrýstingurinn sem hver fótur beitir er um 14 lb/in<sup>2</sup>:</para>
@@ -90,7 +90,7 @@ mældur í pundum af krafti á flatarmál einnar fertommu – <emphasis effect="
 fertommu (psi)</emphasis> – til dæmis í bíldekkjum. Einnig er hægt að mæla
 þrýsting með einingunni <emphasis effect="bold">loftþyngd (atm)</emphasis>, sem upphaflega táknaði
 meðalloftþrýsting við sjávarmál á áætlaðri breiddargráðu Parísar (45°).
-&lt;!-- XREF:5 --> veitir upplýsingar um þessar og nokkrar aðrar algengar
+<!-- XREF:5 --> veitir upplýsingar um þessar og nokkrar aðrar algengar
 einingar fyrir þrýstingsmælingar</para>
 <table id="fs-idp189967312" class="top-titled" summary="This table has two columns and 10 rows. The first row is a header row, and it labels the columns as “Unit Name and Abbreviation” and “Definition or Relation to Other Unit.” The first unit name and abbreviation is pascal, and it is abbreviated as P a. The definition or relation to other unit is 1 P a equals N over m squared and recommended I U P A C unit. The next unit name is kilopascal, and it is abbreviated as k P a. The definition or relation to other unit is 1 k P a equals 1000 P a. The next unit name is pounds per square inch, and it is abbreviated as p s i. The definition or relation to other unit is air pressure at sea level is approximately 14.7 p s i. The next unit name is atmosphere, and is is abbreviated as a t m. The definition or relation to other unit is 1 a t m equals 101,325 P a and air pressure at sea level is approximately one a t m. The next unit name is bar, and it is abbreviated as bar or b. The definition or relation to other unit is 1 bar equals 100,000 P a exactly and commonly used in meteorology. The next unit name is millibar, and it is abbreviated as m b a r or m b. The definition or relation to other unit is 1000 m b a r equals one bar. The next unit name is inches of mercury, and it is abbreviated as i n period, H g. The definition or relation to other unit is one i n period H g equals 3386 P a and is used by the aviation industry and also some weather reports. The next unit is torr. The definition or relation to other unit is 1 torr equals 1 over 760 a t m and named after Evangelista Torricelli, inventor of the barometer. The last unit name is millimeters of mercury, and it is abbreviated as m m H g. The definition or relation to other unit is 1 m m H g is approximately 1 torr.">
 <tgroup cols="2">
@@ -139,7 +139,7 @@ einnig í sumum veðurskeytum</entry>
 </row>
 <row valign="top">
 <entry align="left">torr</entry>
-<entry align="left">\[\[MATH:2\]\]nefnt eftir Evangelista
+<entry align="left"><m:math><m:mrow><m:mtext>1 torr</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mtext>1</m:mtext><m:mrow><m:mtext>760</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math>nefnt eftir Evangelista
 Torricelli, uppfinningamanni loftvogarinnar</entry>
 </row>
 <row valign="top">
@@ -160,10 +160,14 @@ upp á 29,2 in. Hg í:</para>
 <para id="fs-idp62713296">(d) mbar</para>
 <para id="fs-idp32588880"><title>Lausn</title>Þetta er verkefni um umreikning
 eininga. Tengslin milli hinna ýmsu þrýstingseininga eru gefin í
-&lt;!-- XREF:6 -->.</para>
-<para id="fs-idm19510112">(a) \[\[MATH:3\]\]</para><para id="fs-idm103224224">(b) \[\[MATH:4\]\]</para>
-<para id="fs-idp28156048">(c) \[\[MATH:5\]\]</para>
-<para id="fs-idm86928016">(d) \[\[MATH:6\]\]</para>
+<!-- XREF:6 -->.</para>
+<para id="fs-idm19510112">(a) <m:math><m:mrow><m:mn>29.2</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>in Hg</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>25.4</m:mtext><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mm</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>in</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/>
+
+<m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 torr</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/>
+
+<m:mo>=</m:mo><m:mtext>742 torr</m:mtext></m:mrow></m:math></para><para id="fs-idm103224224">(b) <m:math><m:mrow><m:mn>742</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 atm</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.976 atm</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp28156048">(c) <m:math><m:mrow><m:mn>742</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>101.325 kPa</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>98.9 kPa</m:mtext></m:mrow></m:math></para>
+<para id="fs-idm86928016">(d) <m:math><m:mrow><m:mn>98.9</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>kPa</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>Pa</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>kPa</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>bar</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>100,000</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>Pa</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1000 mbar</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>bar</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>989 mbar</m:mtext></m:mrow></m:math></para>
 <para id="fs-idm28185008"><title>Prófaðu þekkingu þína</title>Dæmigerður loftvogarþrýstingur í
 Kansas City er 740 torr. Hver er þessi þrýstingur í loftþyngdum, í
 millimetrum kvikasilfurs, í kílópaskölum og í börum?</para>
@@ -175,7 +179,7 @@ millimetrum kvikasilfurs, í kílópaskölum og í börum?</para>
 </example>
 <para id="fs-idm69336128">Við getum mælt loftþrýsting, kraftinn
 sem lofthjúpurinn beitir á yfirborð jarðar, með <emphasis effect="bold">loftvog</emphasis>
-(&lt;!-- XREF:7 -->). Loftvog er glerpípa sem er lokuð í annan endann, fyllt með
+(<!-- XREF:7 -->). Loftvog er glerpípa sem er lokuð í annan endann, fyllt með
 órokgjörnum vökva eins og kvikasilfri og síðan hvolft og sökkt í ílát
 með þeim vökva. Loftþrýstingurinn þrýstir á vökvann utan rörsins,
 vökvasúlan þrýstir inni í rörinu og þrýstingurinn á yfirborði vökvans er
@@ -195,7 +199,7 @@ loftvog sem væri meira en 30 fet á hæð.</caption>
 loftþrýstingur halda uppi vatnssúlu sem er yfir 10 metra há, sem er
 frekar óþægilegt til að smíða (og lesa af) loftvog. Þar sem kvikasilfur
 (Hg) er um 13,6 sinnum þéttara en vatn þarf kvikasilfursloftvog aðeins
-að vera \[\[MATH:7\]\] jafn há og vatnsloftvog – sem er hentugri stærð.
+að vera <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>13.6</m:mn></m:mrow></m:mfrac></m:mrow></m:math> jafn há og vatnsloftvog – sem er hentugri stærð.
 Staðlaður loftþrýstingur upp á 1 atm við sjávarmál (101.325 Pa)
 samsvarar kvikasilfurssúlu sem er um 760 mm (29,92 tommur) á hæð.
 <emphasis effect="bold">Torr</emphasis> var upphaflega ætlað að vera eining sem jafngildir einum
@@ -235,7 +239,7 @@ lokuðum armi, einum armi sem tengist gasinu sem á að mæla og rokgjörnum
 vökva (venjulega kvikasilfri) á milli. Eins og með loftvog er fjarlægðin
 milli vökvayfirborðs í tveimur örmum rörsins (<emphasis effect="italics">h</emphasis> á skýringarmyndinni) í
 réttu hlutfalli við þrýsting gassins í ílátinu. Þrýstimælir með opnum
-enda (&lt;!-- XREF:8 -->) er eins og þrýstimælir með lokuðum enda, en annar
+enda (<!-- XREF:8 -->) er eins og þrýstimælir með lokuðum enda, en annar
 armur hans er opinn út í andrúmsloftið. Í þessu tilviki samsvarar
 fjarlægðin milli vökvayfirborðs muninum á þrýstingi milli gassins í
 ílátinu og andrúmsloftsins.</para>
@@ -263,12 +267,12 @@ venjulega notað vegna mikils eðlismassa þess.</caption>
 kvikasilfurssúlu sem er 26,4 cm á hæð. (Þrýstingurinn við neðri láréttu
 línuna er jafn báðum megin við rörið. Þrýstingurinn vinstra megin stafar
 af gasinu og þrýstingurinn hægra megin stafar af 26,4 cm Hg, eða
-kvikasilfri.) Við gætum notað jöfnuna <emphasis effect="italics">p</emphasis> = <emphasis effect="italics">hρg</emphasis> eins og í &lt;!-- XREF:9 -->,
+kvikasilfri.) Við gætum notað jöfnuna <emphasis effect="italics">p</emphasis> = <emphasis effect="italics">hρg</emphasis> eins og í <!-- XREF:9 -->,
 en það er einfaldara að breyta bara á milli eininga með því að nota
-&lt;!-- XREF:10 -->.</para>
-<para id="fs-idm79108064">(a) \[\[MATH:8\]\]</para>
-<para id="fs-idp62655904">(b) \[\[MATH:9\]\]</para>
-<para id="fs-idp2045200">(c) \[\[MATH:10\]\]</para>
+<!-- XREF:10 -->.</para>
+<para id="fs-idm79108064">(a) <m:math><m:mrow><m:mn>26.4</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>cm Hg</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>10</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>cm Hg</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 torr</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>264 torr</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp62655904">(b) <m:math><m:mrow><m:mn>264</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>101,325 Pa</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>35,200 Pa</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp2045200">(c) <m:math><m:mrow><m:mn>35</m:mn><m:mtext>,200</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>Pa</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 bar</m:mtext></m:mrow><m:mrow><m:mn>100,000</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>Pa</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>0.352 bar</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp37894320"><title>Prófaðu þekkingu þína</title>Þrýstingur gassýnis er mældur með
 þrýstimæli með lokuðum enda. Vökvinn í þrýstimælinum er kvikasilfur.
 Ákvarðaðu þrýsting gassins í:</para>
@@ -302,8 +306,8 @@ jafn báðum megin í rörinu. Þrýstingurinn vinstra megin stafar af gasinu
 og þrýstingurinn hægra megin stafar af 13,7 cm af Hg auk loftþrýstings.)</para>
 <para id="fs-idp139076928">(a) Í mm Hg er þetta: 137 mm Hg +
 760 mm Hg = 897 mm Hg</para>
-<para id="fs-idm20839232">(b) \[\[MATH:11\]\]</para>
-<para id="fs-idp8049056">(c) \[\[MATH:12\]\]</para>
+<para id="fs-idm20839232">(b) <m:math><m:mrow><m:mn>897</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 atm</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>1.18 atm</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp8049056">(c) <m:math><m:mrow><m:mn>1.18</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>101.325 kPa</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.20</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>kPa</m:mtext></m:mrow></m:math></para>
 <para id="fs-idm24876576"><title>Prófaðu þekkingu þína</title>Þrýstingur gassýnis er mældur við
 sjávarmál með Hg þrýstimæli með opnum enda, eins og sýnt er til hægri.
 Ákvarðaðu þrýsting gassins í:</para>
@@ -325,7 +329,7 @@ sjávarmál með Hg þrýstimæli með opnum enda, eins og sýnt er til hægri.
 kallast blóðþrýstingsmælir (úr grísku <emphasis effect="italics">sphygmos</emphasis> = „púls“). Hann
 samanstendur af uppblásanlegri ermi til að takmarka blóðflæði,
 þrýstimæli til að mæla þrýstinginn og aðferð til að ákvarða hvenær
-blóðflæði hefst og hvenær því er hindrað (&lt;!-- XREF:11 -->). Frá því að hann
+blóðflæði hefst og hvenær því er hindrað (<!-- XREF:11 -->). Frá því að hann
 var fundinn upp árið 1881 hefur hann verið ómissandi lækningatæki. Til
 eru margar gerðir blóðþrýstingsmæla: handvirkir sem krefjast
 hlustunarpípu og eru notaðir af heilbrigðisstarfsfólki;
@@ -369,7 +373,7 @@ lofthjúpinn og loftslag. Þetta eru veðurfræði, loftslagsfræði og
 lofthjúpsvísindi. Veðurfræði er fræðigrein um lofthjúpinn, fyrirbæri í
 lofthjúpnum og áhrif lofthjúpsins á veður á jörðinni. Veðurfræðingar
 leitast við að skilja og spá fyrir um veður til skamms tíma, sem getur
-bjargað mannslífum og gagnast efnahagslífinu. Veðurspár (&lt;!-- XREF:12 -->)
+bjargað mannslífum og gagnast efnahagslífinu. Veðurspár (<!-- XREF:12 -->)
 eru afrakstur þúsunda mælinga á loftþrýstingi, hitastigi og þess háttar,
 sem er safnað saman, sett í líkön og greint í veðurstöðvum um allan
 heim.</para>
@@ -391,7 +395,7 @@ og lofts innan ýmissa veðraskila veldur flestum veðurfyrirbærum.</para>
 <para id="fs-idm49021728">Lofthjúpurinn er gaslagið sem umlykur
 plánetu. Lofthjúpur jarðar, sem er um það bil 100–125 km þykkur,
 samanstendur af u.þ.b. 78,1% nitri og 21,0% súrefni og má skipta frekar
-niður í svæðin sem sýnd eru á &lt;!-- XREF:13 -->: úthvolfið (lengst frá jörðu,
+niður í svæðin sem sýnd eru á <!-- XREF:13 -->: úthvolfið (lengst frá jörðu,
 \> 700 km yfir sjávarmáli), hitahvolfið (80–700 km), miðhvolfið (50–80
 km), heiðhvolfið (næstneðsta lag lofthjúpsins, 12–50 km yfir sjávarmáli)
 og veðrahvolfið (allt að 12 km yfir sjávarmáli, u.þ.b. 80% af massa
@@ -427,7 +431,7 @@ gasa má mæla með einni af nokkrum gerðum þrýstimæla.</para>
 <table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry>\[\[MATH:13\]\]</entry>
+<row><entry><m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>F</m:mi><m:mi>A</m:mi></m:mfrac></m:mrow></m:math></entry>
 </row>
 <row><entry><emphasis effect="italics">p</emphasis> = <emphasis effect="italics">hρg</emphasis></entry>
 </row>
@@ -497,7 +501,7 @@ millimetrum kvikasilfurs og í kílópaskölum?</para>
 eru merktir í kílópaskölum. Hvaða mæling á slíkum mæli samsvarar 32 psi?</para>
 </problem>
 <solution id="fs-idm35019984">
-<para id="fs-idm5145968">2,2 \[\[MATH:14\]\] 10<sup>2</sup> kPa</para>
+<para id="fs-idm5145968">2,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>2</sup> kPa</para>
 </solution>
 </exercise>
 <exercise id="fs-idp128422496">

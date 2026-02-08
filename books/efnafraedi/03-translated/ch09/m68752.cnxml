@@ -23,10 +23,10 @@ lofts, útskýrði öndun með tilliti til efnahvarfa og fleira. Hann var
 fórnarlamb frönsku byltingarinnar og var tekinn af lífi með fallöxi árið
 1794. Um dauða hans sagði stærðfræðingurinn og stjörnufræðingurinn
 Joseph-Louis Lagrange: „Það tók múginn aðeins augnablik að fjarlægja
-höfuð hans; öld mun ekki nægja til að endurskapa það.“ \[Neðanmálsgrein:
+höfuð hans; öld mun ekki nægja til að endurskapa það.“ [Neðanmálsgrein:
 „Tilvitnanir eftir Joseph-Louis Lagrange,“ síðast breytt í febrúar 2006,
 opnað 10. febrúar 2015,
-http://www-history.mcs.st-andrews.ac.uk/Quotations/Lagrange.html\] Mikið
+http://www-history.mcs.st-andrews.ac.uk/Quotations/Lagrange.html] Mikið
 af þeirri þekkingu sem við höfum um framlög Lavoisier er að þakka
 eiginkonu hans, Marie-Anne Paulze Lavoisier, sem vann með honum á
 rannsóknarstofu hans. Hún var menntaður listamaður, altalandi á nokkur
@@ -69,7 +69,7 @@ eðlismassajöfnuna</para>
 <equation id="fs-idm487853552" class="unnumbered"><m:math><m:mrow><m:mi>d</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>ℳ</m:mi><m:mi>P</m:mi></m:mrow><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idm178080080">Þetta samband má nota til að reikna
 út eðlismassa lofttegunda með þekkta samsetningu við tiltekin gildi
-þrýstings og hitastigs eins og sýnt er í &lt;!-- XREF:3 -->.</para>
+þrýstings og hitastigs eins og sýnt er í <!-- XREF:3 -->.</para>
 <example id="fs-idp128586304">
 <para id="fs-idm63453648"><title>Mæling á eðlismassa
 gass</title>Hver er eðlismassi niturgass við
@@ -96,7 +96,7 @@ Með því að sameina jöfnu kjörgass</para>
 <para id="fs-idm482518736">fæst eftirfarandi jafna:</para>
 <equation id="fs-idm441399648" class="unnumbered"><m:math><m:mrow><m:mi>ℳ</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>m</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idm183947392">Sýnt er fram á hvernig mólmassi gass
-er ákvarðaður með þessari aðferð í &lt;!-- XREF:4 -->.</para>
+er ákvarðaður með þessari aðferð í <!-- XREF:4 -->.</para>
 <example id="fs-idp74274064">
 <para id="fs-idm20853312"><title>Ákvörðun
 sameindaformúlu gass út frá mólmassa þess og reynsluformúlu</title>Sýklóprópan, gas sem eitt sinn var
@@ -113,7 +113,7 @@ síðasta skrefinu sérðu að minnsta heiltöluhlutfallið er reynsluformúlan:
 <equation id="fs-idm18588864" class="unnumbered"><m:math><m:mtext>85.7 g C</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol C</m:mtext></m:mrow><m:mrow><m:mtext>12.01 g C</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>7.136 mol C</m:mtext><m:mspace width="2em"/><m:mfrac><m:mrow><m:mn>7.136</m:mn></m:mrow><m:mrow><m:mn>7.136</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>1.00 mol C</m:mtext></m:math></equation>
 <equation id="fs-idm150258896" class="unnumbered"><m:math><m:mtext>14.3 g H</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol H</m:mtext></m:mrow><m:mrow><m:mtext>1.01 g H</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>14.158 mol H</m:mtext><m:mspace width="2em"/><m:mfrac><m:mrow><m:mn>14.158</m:mn></m:mrow><m:mrow><m:mn>7.136</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>1.98 mol H</m:mtext></m:math></equation>
 <para id="fs-idp144237600">Reynsluformúlan er CH<sub>2</sub>
-\[reynslumassi (EM) 14,03 g/reynslueining\].</para>
+[reynslumassi (EM) 14,03 g/reynslueining].</para>
 <para id="fs-idp40237504">Næst skaltu nota uppgefin gildi fyrir
 massa, þrýsting, hitastig og rúmmál til að reikna út mólmassa gassins:</para>
 <equation id="fs-idp110330000" class="unnumbered"><m:math><m:mrow><m:mi>ℳ</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>m</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>1.56</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.0821</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>L·atm·mol</m:mtext></m:mrow><m:mrow><m:mtext>−</m:mtext><m:mn>1</m:mn></m:mrow></m:msup><m:msup><m:mtext>K</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>323</m:mn><m:mspace width="0.2em"/><m:mtext>K</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>0.984</m:mn><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>42.0</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext></m:mrow></m:math></equation>
@@ -147,19 +147,19 @@ um leið og síðasti vökvinn verður að gasi, en þá er flaskan fyllt með
 eingöngu gassýni við umhverfisþrýsting</item>
 <item>Flaskan er innsigluð og
 gassýninu leyft að þéttast í vökva og síðan er flaskan vegin til að
-ákvarða massa sýnisins (sjá &lt;!-- XREF:5 -->)</item>
+ákvarða massa sýnisins (sjá <!-- XREF:5 -->)</item>
 </list>
 <!-- figure handled separately -->
 <para id="fs-idm10831984">Með þessari aðferð er sýni af
 klóróformgasi sem vegur 0,494 g safnað í flösku með rúmmálið 129 cm<sup>3</sup>
 við 99,6 °C þegar loftþrýstingur er 742,1 mm Hg. Hver er áætlaður
 mólmassi klóróforms?</para>
-<para id="fs-idp60723232"><title>Lausn</title>Þar sem \[\[MATH:1\]\] og
-\[\[MATH:2\]\] gefur innsetning og umröðun \[\[MATH:3\]\]</para>
+<para id="fs-idp60723232"><title>Lausn</title>Þar sem <m:math><m:mrow><m:mtext>ℳ</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>m</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:math> og
+<m:math><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi></m:mrow><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> gefur innsetning og umröðun <m:math><m:mrow><m:mtext>ℳ</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>m</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math></para>
 <para id="fs-idp43964944">þá</para>
 <equation id="fs-idm11022240" class="unnumbered"><m:math><m:mrow><m:mtext>ℳ</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>m</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>0.494 g</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>0.08206 L·atm/mol K</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>372.8 K</m:mtext></m:mrow><m:mrow><m:mtext>0.976 atm</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>0.129 L</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>120</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext><m:mo>.</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp146723968"><title>Prófaðu þekkingu þína</title>Sýni af fosfór sem vegur 3,243
-\[\[MATH:4\]\] 10<sup>−2</sup> g veldur þrýstingi upp á 31,89 kPa í 56,0 ml kúlu
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> g veldur þrýstingi upp á 31,89 kPa í 56,0 ml kúlu
 við 550 °C. Hver er mólmassi og sameindaformúla fosfórgufu?</para>
 <note id="fs-idp108389616">
 <title>Answer:</title>
@@ -172,7 +172,7 @@ við 550 °C. Hver er mólmassi og sameindaformúla fosfórgufu?</para>
 </media>
 <caption>Þegar rokgjarni
 vökvinn í flöskunni er hitaður yfir suðumark sitt verður hann að gasi og
-rekur loft út úr flöskunni. Við \[\[MATH:5\]\] er flaskan fyllt með
+rekur loft út úr flöskunni. Við <m:math><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mi>l</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>g</m:mi></m:mrow></m:msub><m:mo>,</m:mo></m:mrow></m:math> er flaskan fyllt með
 rokgjörnu vökvagasi við sama þrýsting og í andrúmsloftinu. Ef flaskan er
 síðan kæld niður í stofuhita þéttist gasið og hægt er að mæla massa
 gassins sem fyllti flöskuna og er nú orðinn að vökva. (heimild: breyting
@@ -185,7 +185,7 @@ Lögmál Daltons</title>
 <para id="fs-idp70155072">Nema þau hvarfist efnafræðilega við
 hvert annað hafa einstök gös í efnablöndu gasa ekki áhrif á þrýsting
 hvers annars. Hvert einstakt gas í efnablöndu beitir sama þrýstingi og
-það myndi beita ef það væri eitt í ílátinu (&lt;!-- XREF:6 -->). Þrýstingurinn
+það myndi beita ef það væri eitt í ílátinu (<!-- XREF:6 -->). Þrýstingurinn
 sem hvert einstakt gas í efnablöndu beitir er kallaður
 <emphasis effect="bold">hlutþrýstingur</emphasis> þess. Þessi athugun er tekin saman í <emphasis effect="bold">lögmáli
 Daltons um hlutþrýsting</emphasis>: <emphasis effect="italics">Heildarþrýstingur efnablöndu kjörgasa er
@@ -214,15 +214,15 @@ fjöldi móla allra efnishluta í efnablöndunni.</para>
 <example id="fs-idp143452448">
 <para id="fs-idp147731856"><title>Þrýstingur efnablöndu
 gasa</title>10,0 L ílát inniheldur 2,50
-\[\[MATH:6\]\] 10<sup>−3</sup> mól af H<sub>2</sub>, 1,00 \[\[MATH:7\]\] 10<sup>−3</sup> mól af He
-og 3,00 \[\[MATH:8\]\] 10<sup>−4</sup> mól af Ne við 35 °C.</para>
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> mól af H<sub>2</sub>, 1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> mól af He
+og 3,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> mól af Ne við 35 °C.</para>
 <para id="fs-idp100506960">(a) Hver er hlutþrýstingur hvers
 gass?</para>
 <para id="fs-idp147676624">(b) Hver er heildarþrýstingurinn í
 andrúmsloftum?</para>
 <para id="fs-idp17315648"><title>Lausn</title>Gösin hegða sér óháð hvert öðru,
 þannig að hægt er að ákvarða hlutþrýsting hvers gass út frá
-kjörgasjöfnunni með því að nota \[\[MATH:9\]\]:</para><equation id="fs-idp201684064" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.50</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−3</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>308</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>10.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>6.32</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−3</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math></equation><equation id="fs-idp100280736" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>He</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−3</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>308</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>10.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2.53</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−3</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math></equation><equation id="fs-idp36264816" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>Ne</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−4</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>308</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>10.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>7.58</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−4</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math></equation><para id="fs-idp49915536">Heildarþrýstingurinn er gefinn með
+kjörgasjöfnunni með því að nota <m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>V</m:mi></m:mfrac></m:mrow></m:math>:</para><equation id="fs-idp201684064" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.50</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−3</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>308</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>10.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>6.32</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−3</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math></equation><equation id="fs-idp100280736" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>He</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−3</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>308</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>10.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2.53</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−3</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math></equation><equation id="fs-idp36264816" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>Ne</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−4</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.08206</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>308</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>10.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>L</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>7.58</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−4</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math></equation><para id="fs-idp49915536">Heildarþrýstingurinn er gefinn með
 summu hlutþrýstinganna:</para>
 <equation id="fs-idp207663808" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>T</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>He</m:mtext></m:mrow></m:msub><m:mo>+</m:mo><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>Ne</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.00632</m:mn><m:mo>+</m:mo><m:mn>0.00253</m:mn><m:mo>+</m:mo><m:mn>0.00076</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>atm</m:mtext><m:mo>=</m:mo><m:mn>9.61</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−3</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>atm</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp1986144"><title>Prófaðu þekkingu þína</title>5,73 L flaska við 25 °C inniheldur
@@ -244,13 +244,13 @@ N<sub>2</sub>O?</para>
 <para id="fs-idp132439904">(b) Hver er hlutþrýstingur O<sub>2</sub> og
 N<sub>2</sub>O?</para>
 <para id="fs-idp86077792"><title>Lausn</title>Mólhlutfallið er gefið með
-\[\[MATH:10\]\] og hlutþrýstingurinn er <emphasis effect="italics">P<sub>A</sub></emphasis> = <emphasis effect="italics">X<sub>A</sub></emphasis> \[\[MATH:11\]\]
+<m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mi>A</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mi>A</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub></m:mrow></m:mfrac></m:mrow></m:math> og hlutþrýstingurinn er <emphasis effect="italics">P<sub>A</sub></emphasis> = <emphasis effect="italics">X<sub>A</sub></emphasis> <m:math><m:mo>×</m:mo></m:math>
 <emphasis effect="italics">P<sub>heildar</sub></emphasis>.</para>
 <para id="fs-idm32258688">Fyrir O<sub>2</sub>,</para>
 <equation id="fs-idm52855552" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mi>O</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:msub><m:mi>O</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>2.83 mol</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.83</m:mn><m:mo>+</m:mo><m:mn>8.41</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.252</m:mn></m:mrow></m:math></equation>
-<para id="fs-idp192169392">og \[\[MATH:12\]\]</para>
-<para id="fs-idp263870464">Fyrir N<sub>2</sub>O, \[\[MATH:13\]\]</para>
-<para id="fs-idp259944368">og</para><para id="fs-idp66867744">\[\[MATH:14\]\]</para><para id="fs-idm31767024"><title>Prófaðu þekkingu þína</title>Hver er þrýstingur efnablöndu af
+<para id="fs-idp192169392">og <m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mi>O</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mi>O</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>P</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.252</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>192 kPa</m:mtext><m:mo>=</m:mo><m:mtext>48.4 kPa</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp263870464">Fyrir N<sub>2</sub>O, <m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>Total</m:mi></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>8.41 mol</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.83</m:mn><m:mo>+</m:mo><m:mn>8.41</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.748</m:mn></m:mrow></m:math></para>
+<para id="fs-idp259944368">og</para><para id="fs-idp66867744"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>P</m:mi><m:mrow><m:mi>Total</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.748</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>192 kPa</m:mtext><m:mo>=</m:mo><m:mtext>144 kPa</m:mtext></m:mrow></m:math></para><para id="fs-idm31767024"><title>Prófaðu þekkingu þína</title>Hver er þrýstingur efnablöndu af
 0,200 g af H<sub>2</sub>, 1,00 g af N<sub>2</sub> og 0,820 g af Ar í íláti með rúmmálið
 2,00 L við 20 °C?</para>
 <note id="fs-idp69846704">
@@ -266,7 +266,7 @@ hvarfast ekki við vatn er að fanga þau í flösku sem hefur verið fyllt
 með vatni og henni snúið á hvolf í skál sem er fyllt með vatni.
 Þrýstinginn á gasinu inni í flöskunni má gera jafnan loftþrýstingnum
 fyrir utan með því að hækka eða lækka flöskuna. Þegar vatnsyfirborðið er
-í sömu hæð bæði innan og utan flöskunnar (&lt;!-- XREF:7 -->) er þrýstingur
+í sömu hæð bæði innan og utan flöskunnar (<!-- XREF:7 -->) er þrýstingur
 gassins jafn loftþrýstingnum, sem hægt er að mæla með loftvog.</para>
 <figure id="CNX_Chem_09_03_WaterVapor" class="scaled-down">
 <media id="fs-idm14272784" alt="This figure shows a diagram of equipment used for collecting a gas over water. To the left is an Erlenmeyer flask. It is approximately two thirds full of a lavender colored liquid. Bubbles are evident in the liquid. The label “Reaction Producing Gas” appears below the flask. A line segment connects this label to the liquid in the flask. The flask has a stopper in it through which a single glass tube extends from the open region above the liquid in the flask up, through the stopper, to the right, then angles down into a pan that is nearly full of light blue water. This tube again extends right once it is well beneath the water’s surface. It then bends up into an inverted flask which is labeled “Collection Flask.” This collection flask is positioned with its mouth beneath the surface of the light blue water and appears approximately half full. Bubbles are evident in the water in the inverted flask. The open space above the water in the inverted flask is labeled “collected gas.”">
@@ -289,8 +289,8 @@ gassins er því jafn heildarþrýstingnum að frádregnum þrýstingi
 vatnsgufunnar – þetta er kallað „þurr“ gasþrýstingur, það er að segja
 þrýstingur gassins eingöngu, án vatnsgufu. <emphasis effect="bold">Gufunarþrýstingur vatns</emphasis>,
 sem er þrýstingurinn sem vatnsgufa í jafnvægi við fljótandi vatn í
-lokuðu íláti beitir, fer eftir hitastiginu (&lt;!-- XREF:8 -->); nánari
-upplýsingar um hitastigsfylgni vatnsgufu má finna í &lt;!-- XREF:9 --> og
+lokuðu íláti beitir, fer eftir hitastiginu (<!-- XREF:8 -->); nánari
+upplýsingar um hitastigsfylgni vatnsgufu má finna í <!-- XREF:9 --> og
 gufunarþrýstingur verður ræddur nánar í næsta kafla um vökva.</para>
 <figure id="CNX_Chem_09_03_WaterVapor2" class="scaled-down">
 <media id="fs-idp38546432" alt="A graph is shown. The horizontal axis is labeled “Temperature ( degrees C )” with markings and labels provided for multiples of 20 beginning at 0 and ending at 100. The vertical axis is labeled “Vapor pressure ( torr )” with marking and labels provided for multiples of 200, beginning at 0 and ending at 800. A smooth solid black curve extends from the origin up and to the right across the graph. The graph shows a positive trend with an increasing rate of change. On the vertical axis is ( 7 60) and an arrow pointing to it. The arrow is labeled, “Vapor pressure at ( 100 degrees C ).”">
@@ -425,7 +425,7 @@ mismunandi hitastig við sjávarmál</entry>
 <para id="fs-idp35760544"><title>Þrýstingur gass sem
 safnað er yfir vatni</title>Ef 0,200 L af argoni er safnað yfir
 vatni við 26 °C hitastig og 750 torr þrýsting í kerfi eins og sýnt er í
-&lt;!-- XREF:10 -->, hver er þá hlutþrýstingur argons?</para>
+<!-- XREF:10 -->, hver er þá hlutþrýstingur argons?</para>
 <para id="fs-idp18515888"><title>Lausn</title>Samkvæmt lögmáli Daltons er
 heildarþrýstingurinn í flöskunni (750 torr) summa hlutþrýstings argons
 og hlutþrýstings vatns á gasformi:</para>
@@ -471,11 +471,11 @@ efnahvörf með gösum: Lofttegundir sameinast, eða hvarfast, í ákveðnum og
 einföldum hlutföllum miðað við rúmmál, að því tilskildu að öll rúmmál
 lofttegunda séu mæld við sama hitastig og þrýsting. Til dæmis, þar sem
 nitur- og vetnisgas hvarfast og mynda ammoníakgas samkvæmt
-\[\[MATH:15\]\], hvarfast tiltekið rúmmál af niturgasi við þrefalt það
+<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.4em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.4em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo></m:mrow></m:math>, hvarfast tiltekið rúmmál af niturgasi við þrefalt það
 rúmmál af vetnisgasi til að framleiða tvöfalt það rúmmál af
 ammoníakgasi, ef þrýstingur og hitastig haldast óbreytt.</para>
 <para id="fs-idp16937680">Skýringin á þessu er sýnd í
-&lt;!-- XREF:11 -->. Samkvæmt lögmáli Avogadros innihalda jöfn rúmmál af N<sub>2</sub>,
+<!-- XREF:11 -->. Samkvæmt lögmáli Avogadros innihalda jöfn rúmmál af N<sub>2</sub>,
 H<sub>2</sub> og NH<sub>3</sub> í gasfasa, við sama hitastig og þrýsting, sama fjölda
 sameinda. Vegna þess að ein sameind af N<sub>2</sub> hvarfast við þrjár sameindir
 af H<sub>2</sub> til að framleiða tvær sameindir af NH<sub>3</sub>, er rúmmál H<sub>2</sub> sem
@@ -505,12 +505,12 @@ að hvarfast við 2,7 L af C<sub>3</sub>H<sub>8</sub>.</para>
 <para id="fs-idp109294464"><title>Prófaðu þekkingu þína</title>Asetýlenkútur fyrir
 súrefnis-asetýlen suðutæki gefur 9340 L af asetýlengasi, C<sub>2</sub>H<sub>2</sub>, við 0
 °C og 1 atm. Hversu marga súrefniskúta, sem hver gefur 7,00
-\[\[MATH:16\]\] 10<sup>3</sup> L af O<sub>2</sub> við 0 °C og 1 atm, þarf til að brenna
+<m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> L af O<sub>2</sub> við 0 °C og 1 atm, þarf til að brenna
 asetýleninu?</para>
 <equation id="fs-idp172649872" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
 <note id="fs-idm19557184">
 <title>Answer:</title>
-<para id="fs-idm79476592">3,34 kútar (2,34 \[\[MATH:18\]\]
+<para id="fs-idm79476592">3,34 kútar (2,34 <m:math><m:mo>×</m:mo></m:math>
 10<sup>4</sup> L)</para>
 </note>
 </example>
@@ -560,7 +560,7 @@ atm sem myndast við bruna á 1,00 kg af brennisteini í umframmagni af
 súrefni?</para>
 <note id="fs-idp30333040">
 <title>Answer:</title>
-<para id="fs-idm23787120">1,30 \[\[MATH:20\]\] 10<sup>3</sup> L</para>
+<para id="fs-idm23787120">1,30 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> L</para>
 </note>
 </example>
 <note id="fs-idm13395728" class="chemistry sciences-interconnect">
@@ -569,7 +569,7 @@ loftslagsbreytingar</title>
 <para id="fs-idp143406944">Þunn himna lofthjúpsins kemur í veg
 fyrir að jörðin sé ísklumpur og gerir hana byggilega. Í raun er þetta
 vegna minna en 0,5% af loftsameindunum. Af þeirri orku frá sólinni sem
-nær til jarðar endurkastast næstum \[\[MATH:21\]\] aftur út í geim en
+nær til jarðar endurkastast næstum <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>3</m:mn></m:mfrac></m:mrow></m:math> aftur út í geim en
 restin frásogast af lofthjúpnum og yfirborði jarðar. Hluti þeirrar orku
 sem jörðin gleypir er endurgeislað sem innrauð geislun (IR), en hluti
 hennar fer aftur út í gegnum lofthjúpinn og út í geim. Megnið af þessari
@@ -581,7 +581,7 @@ lofthjúpsins væri meðalhitastig jarðar meira en 30 °C (næstum 60 °F)
 lægra. Helstu gróðurhúsalofttegundirnar eru vatnsgufa, koldíoxíð, metan
 og óson. Frá iðnbyltingunni hefur mannleg starfsemi aukið styrk
 gróðurhúsalofttegunda, sem hefur breytt orkujafnvægi og er að breyta
-loftslagi jarðar verulega (&lt;!-- XREF:12 -->).</para>
+loftslagi jarðar verulega (<!-- XREF:12 -->).</para>
 <figure id="CNX_Chem_09_03_GlobalWarming" class="scaled-down">
 <media id="fs-idp86921200" alt="This diagram shows half of a two dimensional view of the earth in blue and green at the left of the image. A slight distance outside the hemisphere is a grey arc. A line segment connects the label “Atmosphere” to the region between the hemisphere and the grey arc. In this region, near the surface of the earth the chemical formulas C O subscript 2, C H subscript 3, and N subscript 2 O appear. Five red arrows formed from wavy lines extend from green regions on the earth out into and just beyond the region labeled “Atmosphere.” The label “Infrared radiation” points to one of these red arrows. At a fair distance outside of the grey arc appears a yellow circle with a jagged boundary. This circle is labeled “Sun.” From it extend yellow arrows with wavy lines which extend toward the earth. Three of the arrows extend to the green region on the earth. One of the arrows appears to be reflected off the grey arc, causing its path to turn away from the earth.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_GlobalWarming-b740.jpg"/>
@@ -594,11 +594,11 @@ veðuratburðum.</caption>
 <para id="fs-idm12984240">Sterkar vísbendingar úr mörgum áttum
 benda til þess að hærra magn CO<sub>2</sub> í andrúmsloftinu sé af völdum
 mannlegrar starfsemi, þar sem bruni jarðefnaeldsneytis stendur fyrir um
-\[\[MATH:22\]\] af nýlegri aukningu á CO<sub>2</sub>. Áreiðanleg gögn úr
+<m:math><m:mrow><m:mfrac><m:mn>3</m:mn><m:mn>4</m:mn></m:mfrac></m:mrow></m:math> af nýlegri aukningu á CO<sub>2</sub>. Áreiðanleg gögn úr
 ískjörnum sýna að styrkur CO<sub>2</sub> í andrúmsloftinu er sá hæsti síðastliðin
 800.000 ár; aðrar vísbendingar benda til þess að hann gæti verið sá
 hæsti í 20 milljónir ára. Á undanförnum árum hefur styrkur CO<sub>2</sub> aukist
-úr ~280 ppm fyrir iðnbyltingu í meira en 400 ppm í dag (&lt;!-- XREF:13 -->).</para>
+úr ~280 ppm fyrir iðnbyltingu í meira en 400 ppm í dag (<!-- XREF:13 -->).</para>
 <figure id="CNX_Chem_09_03_GlobalWarming2">
 <media id="fs-idp99125712" alt="This figure has the heading “Carbon Dioxide in the Atmosphere.” The first graph has a horizontal axis label “Year ( B C )” and a vertical axis label “Carbon dioxide concentration ( p p m ).” The horizontal axis labels begin at 700,000 on the left and increases by multiples of 100,000 up to 0 on the right. The vertical axis begins at 0 and increases by multiples of 50 extending up to 400. A jagged, cyclical pattern is shown that begins before 600,000 B C at under 200 p p m. Up to 0 B C values appear to vary cyclically up to a high of about 300 p p m. Extending beyond 0 B C to the right, the carbon dioxide concentration appears to be on a steady increase, having reached nearly 400 p p m in recent years. The second graph is shown to magnify the portion of the graph that is most recent. This graph begins just before the year 1960 and includes markings for multiples of 10 up to the year 2010. The vertical axis begins just below 320 p p m and includes markings for all multiples of 20 up to 400 p p m. A smooth black line is shown extending through a jagged red data pattern. The trend is a steady, nearly linear increase from the lower left to the upper right on the graph.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_GlobalWarming2.jpg"/>
@@ -609,14 +609,14 @@ fordæmalausri aukningu síðustu 50 árin.</caption>
 </figure>
 </note>
 <note id="fs-idm33251312" class="chemistry link-to-learning">
-<para id="fs-idp85689376">Smelltu &lt;!-- LINK:1 -->hér&lt;!-- /LINK --> til að
+<para id="fs-idp85689376">Smelltu <!-- LINK:1 -->hér<!-- /LINK --> til að
 sjá 2 mínútna myndband sem útskýrir gróðurhúsalofttegundir og hlýnun
 jarðar.</para>
 </note>
 <note id="fs-idp18054480" class="chemistry chemist-portrait">
 <title>Susan Solomon</title>
 <para id="fs-idp97050544">Loftslags- og
-andrúmsloftsfræðingurinn Susan <emphasis effect="bold">Solomon</emphasis> (&lt;!-- XREF:14 -->) er höfundur
+andrúmsloftsfræðingurinn Susan <emphasis effect="bold">Solomon</emphasis> (<!-- XREF:14 -->) er höfundur
 einnar af bókum ársins hjá <emphasis effect="italics">The New York Times</emphasis> (<emphasis effect="italics">The Coldest March</emphasis>,
 2001), ein af 100 áhrifamestu einstaklingum heims að mati Time
 tímaritsins (2008) og leiðtogi vinnuhóps Milliríkjanefndar um
@@ -630,7 +630,7 @@ breska vísindafélaginu, Frönsku vísindaakademíunni og Evrópsku
 vísindaakademíunni. Hún var áður prófessor við Háskólann í Colorado, en
 er nú við MIT og heldur áfram að starfa hjá NOAA.</para>
 <para id="fs-idp221818192">Horfðu á þetta
-&lt;!-- LINK:2 -->myndband&lt;!-- /LINK --> um Susan Solomon til að fá frekari
+<!-- LINK:2 -->myndband<!-- /LINK --> um Susan Solomon til að fá frekari
 upplýsingar.</para>
 <figure id="CNX_Chem_09_03_SusanSolom" class="scaled-down">
 <media id="fs-idp104021664" alt="A photograph is shown of Susan Solomon sitting next to a globe.">
@@ -665,7 +665,7 @@ eða afurðir.</para>
 </row>
 <row><entry><emphasis effect="italics">P<sub>A</sub></emphasis> = <emphasis effect="italics">X<sub>A</sub> P<sub>Heildar</sub></emphasis></entry>
 </row>
-<row><entry>\[\[MATH:23\]\]</entry>
+<row><entry><m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mi>A</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mi>A</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub></m:mrow></m:mfrac></m:mrow></m:math></entry>
 </row>
 <row><entry/>
 </row>
@@ -804,7 +804,7 @@ að heildarþrýstingurinn verði 34,5 atm, er efnablandan þá sprengifim?</par
 <problem id="fs-idp48834848">
 <para id="fs-idp48835104">Kvikasilfursgufugreiningartæki í
 atvinnuskyni getur greint styrk kvikasilfursatóma (sem eru eitruð) í
-lofti allt niður í 2 \[\[MATH:24\]\] 10<sup>−6</sup> mg/L af lofti. Hver er
+lofti allt niður í 2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> mg/L af lofti. Hver er
 hlutþrýstingur kvikasilfursgass við þennan styrk ef loftþrýstingurinn er
 733 torr við 26 °C?</para>
 </problem>
@@ -813,7 +813,7 @@ hlutþrýstingur kvikasilfursgass við þennan styrk ef loftþrýstingurinn er
 <problem id="fs-idm12594544">
 <para id="fs-idp69022144">Sýni af kolmónoxíði var safnað
 yfir vatni við heildarþrýsting upp á 756 torr og hitastig 18 °C. Hver er
-þrýstingur kolmónoxíðsins? (Sjá &lt;!-- XREF:15 --> fyrir gufunarþrýsting
+þrýstingur kolmónoxíðsins? (Sjá <!-- XREF:15 --> fyrir gufunarþrýsting
 vatns.)</para>
 </problem>
 <solution id="fs-idp34955840">
@@ -832,7 +832,7 @@ gassins var 0,472 g. Hver var mólmassi gassins?</para>
 <problem id="fs-idp144350864">
 <para id="fs-idp144351120">Joseph Priestley var fyrstur til
 að búa til hreint súrefni með því að hita kvikasilfursoxíð, HgO:
-\[\[MATH:25\]\]</para>
+<m:math><m:mrow><m:mn>2</m:mn><m:mtext>HgO</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>Hg</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>l</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp73629408">(a) Lýstu þeim skrefum sem eru
 nauðsynleg til að svara eftirfarandi spurningu: Hvert er rúmmál O<sub>2</sub> við
 23 °C og 0,975 atm sem myndast við niðurbrot 5,36 g af HgO?</para>
@@ -849,7 +849,7 @@ frá mólfjölda O<sub>2</sub>, hitastigi og þrýstingi. (b) 0,308 L</para>
 <problem id="fs-idp40636416">
 <para id="fs-idp40636672">Cavendish bjó til vetni árið 1766
 með nýstárlegri aðferð þar sem gufu var veitt í gegnum glóandi heitt
-byssuhlaup: \[\[MATH:26\]\]</para>
+byssuhlaup: <m:math><m:mrow><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>3</m:mn><m:mtext>Fe</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp86341120">(a) Lýstu þeim skrefum sem eru
 nauðsynleg til að svara eftirfarandi spurningu: Hvert er rúmmál H<sub>2</sub> við
 þrýsting upp á 745 torr og hitastig 20 °C sem hægt er að búa til úr
@@ -862,17 +862,17 @@ hvarfi 15,0 g af H<sub>2</sub>O?</para>
 <para id="fs-idp98992288">Hægt er að endurvinna
 klórflúorkolefnið CCl<sub>2</sub>F<sub>2</sub> í annað efnasamband með hvarfi við vetni
 til að framleiða CH<sub>2</sub>F<sub>2</sub>(<emphasis effect="italics">g</emphasis>), efnasamband sem er gagnlegt í
-efnaframleiðslu: \[\[MATH:27\]\]</para><para id="fs-idp144355856">(a) Lýstu í grófum dráttum
+efnaframleiðslu: <m:math><m:mrow><m:msub><m:mrow><m:mtext>CCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>HCl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para><para id="fs-idp144355856">(a) Lýstu í grófum dráttum
 skrefunum sem eru nauðsynleg til að svara eftirfarandi spurningu: Hvaða
 rúmmál af vetni við 225 atm og 35,5 °C þyrfti til að hvarfast við 1 tonn
-(1,000 \[\[MATH:28\]\] 10<sup>3</sup> kg) af CCl<sub>2</sub>F<sub>2</sub>?</para>
+(1,000 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> kg) af CCl<sub>2</sub>F<sub>2</sub>?</para>
 <para id="fs-idp69374608">(b) Svaraðu spurningunni.</para>
 </problem>
 <solution id="fs-idp75359296">
 <para id="fs-idp75561072">(a) Ákvarðaðu mólmassa
 CCl<sub>2</sub>F<sub>2</sub>. Út frá stilltri jöfnu, reiknaðu mól H<sub>2</sub> sem þarf fyrir
 fullkomið hvarf. Út frá kjörgaslögmálinu, umbreyttu mólum H<sub>2</sub> í rúmmál.
-(b) 3,72 \[\[MATH:29\]\] 10<sup>3</sup> L</para>
+(b) 3,72 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> L</para>
 </solution>
 </exercise>
 <exercise id="fs-idp152416544">
@@ -891,12 +891,12 @@ myndefnið.</para>
 <para id="fs-idp114235888">(a) Lýstu í grófum dráttum
 skrefunum sem eru nauðsynleg til að svara eftirfarandi spurningu: Hvaða
 rúmmál af koldíoxíði við 875 K og 0,966 atm myndast við niðurbrot á 1
-tonni (1,000 \[\[MATH:30\]\] 10<sup>3</sup> kg) af kalsíumkarbónati?</para><para id="fs-idm7280816">(b) Svaraðu spurningunni.</para>
+tonni (1,000 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> kg) af kalsíumkarbónati?</para><para id="fs-idm7280816">(b) Svaraðu spurningunni.</para>
 </problem>
 <solution id="fs-idp105094464">
 <para id="fs-idp105094720">(a) Stilltu jöfnuna. Ákvarðaðu
 grömm af CO<sub>2</sub> sem myndast og fjölda móla. Út frá kjörgaslögmálinu,
-ákvarðaðu rúmmál gassins. (b) 7,43 \[\[MATH:31\]\] 10<sup>5</sup> L</para>
+ákvarðaðu rúmmál gassins. (b) 7,43 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> L</para>
 </solution>
 </exercise>
 <exercise id="fs-idp228232112">
@@ -948,7 +948,7 @@ CO<sub>2</sub>(<emphasis effect="italics">g</emphasis>) og H<sub>2</sub>O(<empha
 <exercise id="fs-idp68901248">
 <problem id="fs-idp224793920">
 <para id="fs-idp224794176">Metanól, CH<sub>3</sub>OH, er framleitt í
-iðnaði með eftirfarandi hvarfi: \[\[MATH:32\]\]</para>
+iðnaði með eftirfarandi hvarfi: <m:math><m:mrow><m:mtext>CO</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width="2em"/><m:mtext>copper catalyst 300 °C, 300 atm</m:mtext><m:mspace width="2em"/></m:mrow></m:mover><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para>
 <para id="fs-idp107257056">Að því gefnu að gösin hegði sér
 eins og kjörgös, finndu hlutfall heildarrúmmáls hvarfefnanna og
 lokarúmmálsins.</para>
@@ -975,13 +975,13 @@ staðalaðstæður. Hvaða litlausa gas er þetta?</para>
 <problem id="fs-idm29455472">
 <para id="fs-idm29455216">Etanól, C<sub>2</sub>H<sub>5</sub>OH, er framleitt í
 iðnaði úr etýleni, C<sub>2</sub>H<sub>4</sub>, með eftirfarandi röð efnahvarfa:
-\[\[MATH:33\]\] \[\[MATH:34\]\]</para>
+<m:math><m:mrow><m:mn>3</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:math> <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>HSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mtext>OH</m:mtext><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:math></para>
 <para id="fs-idp77265168">Hversu mikið rúmmál af etýleni við
 staðalaðstæður þarf til að framleiða 1,000 tonn (1000 kg) af etanóli ef
 heildarheimtur etanóls eru 90,1%?</para>
 </problem>
 <solution id="fs-idp64802096">
-<para id="fs-idp64802352">5,40 \[\[MATH:35\]\] 10<sup>5</sup> L</para>
+<para id="fs-idp64802352">5,40 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> L</para>
 </solution>
 </exercise>
 <exercise id="fs-idp55931680">
@@ -1015,7 +1015,7 @@ N<sub>2</sub> gas. Út frá rúmmáli gassins er hægt að ákvarða magn amín�
 0,0604 g sýni af lífsýni sem innihélt glýsín, CH<sub>2</sub>(NH<sub>2</sub>)COOH, var
 greint með van Slyke-aðferðinni og gaf 3,70 ml af N<sub>2</sub> sem safnað var
 yfir vatni við þrýsting upp á 735 torr og 29 °C. Hvert var hlutfall
-glýsíns í sýninu? \[\[MATH:36\]\]</para>
+glýsíns í sýninu? <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>HNO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></para>
 </problem>
 </exercise>
 </section>

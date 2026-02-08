@@ -142,6 +142,10 @@ function parseSegments(content) {
 function reverseInlineMarkup(text, equations) {
   let result = text;
 
+  // Remove backslash escapes from MT (e.g., \[\[MATH:1\]\] → [[MATH:1]])
+  result = result.replace(/\\\[/g, '[');
+  result = result.replace(/\\\]/g, ']');
+
   // Restore math placeholders
   result = result.replace(/\[\[MATH:(\d+)\]\]/g, (match, num) => {
     const mathId = `math-${num}`;
@@ -194,9 +198,9 @@ function reverseInlineMarkup(text, equations) {
   result = result.replace(/ \[(?:footnote|neðanmálsgrein): ([^\]]+)\]/g, '<footnote>$1</footnote>');
 
   // Escape XML entities that might have been introduced
-  // (but be careful not to double-escape)
+  // (but be careful not to double-escape, and don't escape HTML comments)
   result = result.replace(/&(?!amp;|lt;|gt;|quot;|apos;)/g, '&amp;');
-  result = result.replace(/<(?!\/?\w)/g, '&lt;');
+  result = result.replace(/<(?!\/?\w|!--)/g, '&lt;'); // Don't escape <!-- comments -->
 
   return result;
 }

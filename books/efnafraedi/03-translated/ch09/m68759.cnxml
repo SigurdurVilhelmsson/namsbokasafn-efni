@@ -30,7 +30,7 @@ nRT</emphasis> er að bera saman raunverulegt rúmmál eins móls af gasi (mólr
 <equation id="fs-idp41001616" class="unnumbered"><m:math><m:mrow><m:mtext>Z</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>molar volume of gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow><m:mrow><m:mtext>molar volume of ideal gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mi>P</m:mi><m:msub><m:mi>V</m:mi><m:mi>m</m:mi></m:msub></m:mrow><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>measured</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm92799184">Hegðun kjörgass er því gefin til
 kynna þegar þetta hlutfall er jafnt og 1 og öll frávik frá 1 eru
-vísbending um hegðun raungass. &lt;!-- XREF:1 --> sýnir línurit af Z yfir stórt
+vísbending um hegðun raungass. <!-- XREF:1 --> sýnir línurit af Z yfir stórt
 þrýstingssvið fyrir nokkur algeng gös.</para>
 <figure id="CNX_Chem_09_06_ZvsPgraph" class="scaled-down">
 <media id="fs-idp194949440" alt="A graph is shown. The horizontal axis is labeled, “P ( a t m ).” Its scale begins at zero with markings provided by multiples of 200 up to 1000. The vertical axis is labeled, “Z le( k P a ).” This scale begins at zero and includes multiples of 0.5 up to 2.0. Six curves are drawn of varying colors. One of these curves is a horizontal, light purple line extending right from 1.0 k P a on the vertical axis, which is labeled “Ideal gas.” The region of the graph beneath this line is shaded tan. The remaining curves also start at the same point on the vertical axis. An orange line extends to the upper right corner of the graph, reaching a value of approximately 1.7 k P a at 1000 a t m. This orange curve is labeled, “H subscript 2.” A blue curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 200 a t m. This curve reaches a value of nearly 2.0 k P a at about 800 a t m. This curve is labeled, “N subscript 2.” A red curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 400 a t m. This curve reaches a value of nearly 1.5 k P a at about 750 a t m. This curve is labeled, “O subscript 2.” A purple curve dips below the horizontal ideal gas line, dipping even lower than the O subscript 2 curve initially, then increases to cross the ideal gas line at about 400 a t m. This curve reaches a value of nearly 2.0 k P a at about 850 a t m. This curve is labeled, “C H subscript 4.” A yellow curve dips below the horizontal ideal gas line, dipping lower than the other curves to a minimum of about 0.4 k P a at about 0.75 a t m, then increases to cross the ideal gas line at about 500 a t m. This curve reaches a value of about 1.6 k P a at about 900 a t m. This curve is labeled, “C O subscript 2.”">
@@ -40,7 +40,7 @@ vísbending um hegðun raungass. &lt;!-- XREF:1 --> sýnir línurit af Z yfir st
 samþrýstanleikastuðlinum (Z) á móti þrýstingi sýnir að gös geta sýnt
 veruleg frávik frá þeirri hegðun sem kjörgaslögmálið spáir fyrir um.</caption>
 </figure>
-<para id="fs-idp70317840">Eins og sést á &lt;!-- XREF:2 --> lýsir
+<para id="fs-idp70317840">Eins og sést á <!-- XREF:2 --> lýsir
 kjörgaslögmálið ekki vel hegðun gass við tiltölulega háan þrýsting. Til
 að ákvarða hvers vegna þetta er skulum við skoða muninn á eiginleikum
 raungass og því sem búist er við af ímynduðu kjörgasi.</para>
@@ -60,7 +60,7 @@ gassameindir nánast engan aðdráttarkraft hver til annarrar vegna þess að
 eindir kjörgass. Við hærri þrýsting er aðdráttarkrafturinn hins vegar
 heldur ekki lengur óverulegur. Þessi kraftur togar sameindirnar aðeins
 nær hvor annarri, sem minnkar örlítið þrýstinginn (ef rúmmálið er fast)
-eða minnkar rúmmálið (við fastan þrýsting) (&lt;!-- XREF:3 -->). Þessi breyting
+eða minnkar rúmmálið (við fastan þrýsting) (<!-- XREF:3 -->). Þessi breyting
 er meira áberandi við lágt hitastig vegna þess að sameindirnar hafa
 lægri hreyfiorku miðað við aðdráttarkraftana og eru því ólíklegri til að
 yfirstíga þessa aðdráttarkrafta eftir árekstur við aðra sameind.</para>
@@ -87,14 +87,14 @@ gassameindanna og öðrum fyrir aðdráttarkrafta þeirra á milli.</para>
 <para id="fs-idm12594352">Fastinn <emphasis effect="italics">a</emphasis> samsvarar styrk
 aðdráttarkraftsins milli sameinda tiltekins gass og fastinn <emphasis effect="italics">b</emphasis>
 samsvarar stærð sameinda tiltekins gass. „Leiðréttingin“ á
-þrýstingsliðnum í kjörgaslögmálinu er \[\[MATH:1\]\] og „leiðréttingin“
+þrýstingsliðnum í kjörgaslögmálinu er <m:math><m:mrow><m:mfrac><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup><m:mi>a</m:mi></m:mrow><m:mrow><m:msup><m:mi>V</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> og „leiðréttingin“
 á rúmmálinu er <emphasis effect="italics">nb</emphasis>. Athugaðu að þegar <emphasis effect="italics">V</emphasis> er tiltölulega stórt og <emphasis effect="italics">n</emphasis>
 er tiltölulega lítið verða báðir þessir leiðréttingarliðir hverfandi og
 van der Waals-jafnan einfaldast yfir í kjörgaslögmálið, <emphasis effect="italics">PV = nRT</emphasis>.
 Slíkt ástand samsvarar gasi þar sem tiltölulega lítill fjöldi sameinda
 tekur tiltölulega stórt rúmmál, þ.e. gas við tiltölulega lágan þrýsting.
 Tilraunagildi fyrir van der Waals-fasta sumra algengra gasa eru gefin í
-&lt;!-- XREF:4 -->.</para>
+<!-- XREF:4 -->.</para>
 <para id="fs-idp95888368">Við lágan þrýsting er leiðréttingin
 fyrir aðdráttarkrafta milli sameinda, <emphasis effect="italics">a</emphasis>, mikilvægari en leiðréttingin
 fyrir rúmmál sameinda, <emphasis effect="italics">b</emphasis>. Við háan þrýsting og lítið rúmmál verður
@@ -103,7 +103,7 @@ sameindirnar sjálfar eru óþjappanlegar og mynda umtalsverðan hluta af
 heildarrúmmálinu. Við einhvern millistigsþrýsting hafa leiðréttingarnar
 tvær andstæð áhrif og gasið virðist fylgja sambandinu sem gefið er með
 <emphasis effect="italics">PV = nRT</emphasis> á litlu þrýstingsbili. Þessi hegðun endurspeglast í „dýfunum“
-á nokkrum samþjöppunarferlanna sem sýndar eru í &lt;!-- XREF:5 -->.
+á nokkrum samþjöppunarferlanna sem sýndar eru í <!-- XREF:5 -->.
 Aðdráttarkrafturinn milli sameinda gerir gasið í upphafi meira
 samþjappanlegt en kjörgas þegar þrýstingur er aukinn (Z minnkar með
 auknum <emphasis effect="italics">P</emphasis>). Við mjög háan þrýsting verður gasið minna samþjappanlegt (Z
@@ -168,9 +168,9 @@ til að gera grein fyrir ókjörhegðun gasa við þessar aðstæður.</para>
 <table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry>\[\[MATH:2\]\]</entry>
+<row><entry><m:math><m:mrow><m:mtext>Z</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>molar</m:mtext><m:mspace width="0.2em"/><m:mtext>volume of gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow><m:mrow><m:mtext>molar volume of ideal gas at same</m:mtext><m:mspace width="0.2em"/><m:mi>T</m:mi><m:mspace width="0.2em"/><m:mtext>and</m:mtext><m:mspace width="0.2em"/><m:mi>P</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mi>P</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>V</m:mi><m:mi>m</m:mi></m:msub></m:mrow><m:mrow><m:mi>R</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>measured</m:mtext></m:mrow></m:msub></m:mrow></m:math></entry>
 </row>
-<row><entry>\[\[MATH:3\]\]</entry>
+<row><entry><m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>P</m:mi><m:mo>+</m:mo><m:mfrac><m:mrow><m:msup><m:mi>n</m:mi><m:mn>2</m:mn></m:msup><m:mi>a</m:mi></m:mrow><m:mrow><m:msup><m:mi>V</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>V</m:mi><m:mo>−</m:mo><m:mi>n</m:mi><m:mi>b</m:mi></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></entry>
 </row>
 </tbody></tgroup></table>
 </section>
@@ -277,11 +277,11 @@ máli skiptir rúmmálið. Við lágan þrýsting er leiðréttingarstuðullinn
 fyrir aðdráttarkrafta milli sameinda marktækari og áhrif rúmmáls
 gassameindanna á Z væru lítil lækkun á samþjappanleika. Við hærri
 þrýsting myndu áhrif rúmmáls gassameindanna sjálfra á Z auka
-samþjappanleikann (sjá &lt;!-- XREF:6 -->). (d) Aftur, við lágan þrýsting, væru
+samþjappanleikann (sjá <!-- XREF:6 -->). (d) Aftur, við lágan þrýsting, væru
 áhrif aðdráttarkrafta milli sameinda á Z mikilvægari en
 leiðréttingarstuðullinn fyrir rúmmál gassameindanna sjálfra, þó kannski
 enn lítil. Við hærri þrýsting og lágt hitastig væru áhrif
-aðdráttarkrafta milli sameinda meiri. Sjá &lt;!-- XREF:7 -->. (e) Lágt hitastig</para></solution>
+aðdráttarkrafta milli sameinda meiri. Sjá <!-- XREF:7 -->. (e) Lágt hitastig</para></solution>
 </exercise>
 </section>
 </content>

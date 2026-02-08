@@ -25,12 +25,12 @@ hundruðum sinnum stærri en þvermál sameindarinnar.</para>
 komið fyrir í einum hluta lokaðs íláts dreifast sameindir þess mjög
 hratt um allt ílátið; þetta ferli þar sem sameindir dreifast í rúmi til
 að bregðast við mismunandi styrk er kallað <emphasis effect="bold">sveim</emphasis> (sýnt í
-&lt;!-- XREF:1 -->). Gasatóm eða -sameindir eru auðvitað ómeðvituð um
+<!-- XREF:1 -->). Gasatóm eða -sameindir eru auðvitað ómeðvituð um
 styrkfallanda, þau hreyfast einfaldlega af handahófi – svæði með hærri
 styrk hafa fleiri eindir en svæði með lægri styrk og því á sér stað
 nettóhreyfing efna frá svæðum með háum styrk yfir á svæði með lágum
 styrk. Í lokuðu umhverfi mun sveim að lokum leiða til jafns styrks gass
-um allt, eins og sýnt er í &lt;!-- XREF:2 -->. Gasatóm og -sameindir halda áfram
+um allt, eins og sýnt er í <!-- XREF:2 -->. Gasatóm og -sameindir halda áfram
 að hreyfast, en þar sem styrkur þeirra er sá sami í báðum kúpum eru
 flutningshraðarnir á milli kúpanna jafnir (enginn <emphasis effect="italics">nettó</emphasis>flutningur
 sameinda á sér stað).</para>
@@ -59,7 +59,7 @@ fyrir sveimhraða.</para>
 <para id="fs-idm29004912">Ferli sem felur í sér hreyfingu
 gastegunda svipað sveimi er <emphasis effect="bold">útstreymi</emphasis>, þ.e. þegar gassameindir
 sleppa út í lofttæmi í gegnum örlítið gat, eins og nálarstungu á blöðru
-(&lt;!-- XREF:3 -->). Þrátt fyrir að bæði sveim- og útstreymishraði fari eftir
+(<!-- XREF:3 -->). Þrátt fyrir að bæði sveim- og útstreymishraði fari eftir
 mólmassa gassins sem um ræðir eru hraðarnir ekki jafnir; hlutföll
 hraðanna eru þó þau sömu.</para>
 <figure id="CNX_Chem_09_04_DiffEff">
@@ -74,7 +74,7 @@ mjög lítil op í efnislegri hindrun er ferlið kallað útstreymi.</caption>
 <para id="fs-idp161500496">Ef efnablöndu af gösum er komið
 fyrir í íláti með gljúpum veggjum streyma gösin út um litlu opin í
 veggjunum. Léttari gösin fara hraðar (á meiri hraða) í gegnum litlu opin
-en þau þyngri (&lt;!-- XREF:4 -->). Árið 1832 rannsakaði Thomas Graham
+en þau þyngri (<!-- XREF:4 -->). Árið 1832 rannsakaði Thomas Graham
 útstreymishraða mismunandi gasa og setti fram <emphasis effect="bold">útstreymislögmál
 Grahams</emphasis>: <emphasis effect="italics">Útstreymishraði gass er í öfugu hlutfalli við kvaðratrótina
 af mólmassa þess</emphasis>:</para>
@@ -112,8 +112,8 @@ hraða mun brennisteinsdíoxíð sveima?</para>
 <example id="fs-idm54710976">
 <para id="fs-idm56870480"><title>Útreikningar á
 sveimtíma</title>Það tekur 243 s fyrir 4,46
-\[\[MATH:1\]\] 10<sup>−5</sup> mól af Xe að sveima í gegnum örlítið gat. Við sömu
-aðstæður, hversu langan tíma mun það taka 4,46 \[\[MATH:2\]\] 10<sup>−5</sup> mól
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> mól af Xe að sveima í gegnum örlítið gat. Við sömu
+aðstæður, hversu langan tíma mun það taka 4,46 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> mól
 af Ne að sveima?</para>
 <para id="fs-idm63835360"><title>Lausn</title>Það er mikilvægt að standast
 freistinguna að nota tímann beint og muna hvernig hraði tengist tíma og
@@ -135,9 +135,9 @@ stærð:</para>
 Þar sem Ne er léttara en Xe verður sveimhraði Ne meiri en Xe, sem þýðir
 að sveimtími Ne verður styttri en fyrir Xe.</para>
 <para id="fs-idp26714784"><title>Prófaðu þekkingu þína</title>Veislublaðra fyllt með helíum tæmist
-niður í \[\[MATH:3\]\] af upprunalegu rúmmáli sínu á 8,0 klukkustundum.
+niður í <m:math><m:mrow><m:mfrac><m:mn>2</m:mn><m:mn>3</m:mn></m:mfrac></m:mrow></m:math> af upprunalegu rúmmáli sínu á 8,0 klukkustundum.
 Hversu langan tíma mun það taka fyrir sams konar blöðru fyllta með sama
-fjölda móla af lofti (ℳ = 28,2 g/mól) að tæmast niður í \[\[MATH:4\]\]
+fjölda móla af lofti (ℳ = 28,2 g/mól) að tæmast niður í <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>
 af upprunalegu rúmmáli sínu?</para>
 <note id="fs-idp35835728"><title>Answer:</title>
 <para id="fs-idp53945792">32 klst.</para>
@@ -181,7 +181,7 @@ hafa hærri meðalhraða og sveima aðeins hraðar í gegnum himnuna en þyngri
 <sup>238</sup>UF<sub>6</sub> sameindirnar. Gasið sem hefur farið í gegnum himnuna er
 örlítið auðgað af <sup>235</sup>UF<sub>6</sub> og afgangsgasið er örlítið rýrt. Litli
 munurinn á mólmassa <sup>235</sup>UF<sub>6</sub> og <sup>238</sup>UF<sub>6</sub> skilar aðeins um 0,4%
-auðgun í einum sveimi (&lt;!-- XREF:5 -->). En með því að tengja marga sveima
+auðgun í einum sveimi (<!-- XREF:5 -->). En með því að tengja marga sveima
 saman í röð af stigum (kallað þrepakerfi) er hægt að ná æskilegri
 auðgun.</para>
 <figure id="CNX_Chem_09_04_GasDiff">
@@ -227,9 +227,9 @@ gastegundir fara úr íláti yfir í lofttæmi í gegnum mjög lítil op.
 <table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry>\[\[MATH:5\]\]</entry>
+<row><entry><m:math><m:mrow><m:mtext>rate of diffusion</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>amount of gas passing through an area</m:mtext></m:mrow><m:mrow><m:mtext>unit of time</m:mtext></m:mrow></m:mfrac></m:mrow></m:math></entry>
 </row>
-<row><entry>\[\[MATH:6\]\]</entry>
+<row><entry><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate of effusion of gas A</m:mtext></m:mrow><m:mrow><m:mtext>rate of effusion of gas B</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mi>m</m:mi><m:mi>B</m:mi></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mi>m</m:mi><m:mi>A</m:mi></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mi>B</m:mi></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mi>A</m:mi></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac></m:mrow></m:math></entry>
 </row>
 </tbody></tgroup></table>
 </section>
@@ -250,7 +250,7 @@ af vetnisgasi (í stað helíums) að minnka rúmmál sitt um 50%?</para></probl
 <problem id="fs-idm34475424">
 <para id="fs-idp113189264">Útskýrðu hvers vegna fjöldi
 sameinda er ekki eins í vinstri og hægri flöskunni sem sýndar eru á
-miðmyndinni í &lt;!-- XREF:6 -->.</para>
+miðmyndinni í <!-- XREF:6 -->.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp44111184">
@@ -265,9 +265,9 @@ hlutfallslegan útstreymishraða tveggja gasa við mólmassa þeirra.</para>
 sem ferlið þar sem gas sleppur í gegnum örlítið gat út í lofttæmi
 
 . Lögmál Grahams segir að fyrir efnablöndu tveggja gasa A og B gildi:
-\[\[MATH:7\]\] Bæði A og B eru í sama íláti við sama hitastig og hafa
-því sömu hreyfiorku: \[\[MATH:8\]\] Þess vegna,
-\[\[MATH:9\]\]\[\[MATH:10\]\]\[\[MATH:11\]\]\[\[MATH:12\]\]</para></solution>
+<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>rate A</m:mtext></m:mrow><m:mrow><m:mtext>rate B</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>molar mass of B</m:mtext></m:mrow><m:mrow><m:mtext>molar mass of A</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Bæði A og B eru í sama íláti við sama hitastig og hafa
+því sömu hreyfiorku: <m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mtext>A</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mtext>B</m:mtext></m:msub><m:mtext> KE</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>m</m:mi><m:msup><m:mi>v</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math> Þess vegna,
+<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mi>m</m:mi><m:mtext>A</m:mtext></m:msub><m:msubsup><m:mi>v</m:mi><m:mtext>A</m:mtext><m:mn>2</m:mn></m:msubsup><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mi>m</m:mi><m:mtext>B</m:mtext></m:msub><m:msubsup><m:mi>v</m:mi><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:math><m:math><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>v</m:mi><m:mtext>A</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow><m:mrow><m:msubsup><m:mi>v</m:mi><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:math><m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>v</m:mi><m:mtext>A</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow><m:mrow><m:msubsup><m:mi>v</m:mi><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:math><m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>v</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:math></para></solution>
 </exercise>
 <exercise id="fs-idm54751408">
 <problem id="fs-idp39143984">
@@ -291,8 +291,8 @@ hægar en súrefni? F<sub>2</sub>, Ne, N<sub>2</sub>O, C<sub>2</sub>H<sub>2</sub
 <para id="fs-idp170749584">Í umræðunni um gassveim til að
 auðga úran var því haldið fram að <sup>235</sup>UF<sub>6</sub> sveimi 0,4% hraðar en
 <sup>238</sup>UF<sub>6</sub>. Sýndu útreikninginn sem styður þetta gildi. Mólmassi
-<sup>235</sup>UF<sub>6</sub> = 235,043930 + 6 \[\[MATH:13\]\] 18,998403 = 349,034348
-g/mól, og mólmassi <sup>238</sup>UF<sub>6</sub> = 238,050788 + 6 \[\[MATH:14\]\] 18,998403
+<sup>235</sup>UF<sub>6</sub> = 235,043930 + 6 <m:math><m:mo>×</m:mo></m:math> 18,998403 = 349,034348
+g/mól, og mólmassi <sup>238</sup>UF<sub>6</sub> = 238,050788 + 6 <m:math><m:mo>×</m:mo></m:math> 18,998403
 = 352,041206 g/mól.</para>
 </problem>
 </exercise>
@@ -319,7 +319,7 @@ ml/s. Reiknaðu sameindamassa óþekkta gassins.</para>
 bleyttur með ammoníaki og hinn með saltsýru, eru settir samtímis í sitt
 hvorn enda glerrörs sem er 87,0 cm langt, myndast hvítur hringur af
 NH<sub>4</sub>Cl þar sem loftkennt NH<sub>3</sub> og loftkennt HCl komast fyrst í
-snertingu. \[\[MATH:15\]\] Í u.þ.b. hvaða fjarlægð frá bómullartappanum
+snertingu. <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>HCl</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mtext>Cl</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math> Í u.þ.b. hvaða fjarlægð frá bómullartappanum
 með ammoníaki gerist þetta? (Vísbending: Reiknaðu sveimhraða bæði fyrir
 NH<sub>3</sub> og HCl og komstu að því hversu miklu hraðar NH<sub>3</sub> sveimar en HCl.)</para></problem>
 <solution id="fs-idp38149616">

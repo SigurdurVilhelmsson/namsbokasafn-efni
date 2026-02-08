@@ -35,21 +35,21 @@ skekkjum í útreikningum sem fela í sér hvarfstuðla.</para>
 <para id="fs-idp68042176"><title>Að skrifa jöfnur
 fyrir hvarfstuðul</title>Skrifaðu jöfnuna fyrir hvarfstuðulinn
 miðað við styrk fyrir hvert eftirfarandi efnahvarfa:</para>
-<para id="fs-idp246365472">(a) \[\[MATH:1\]\]</para>
-<para id="fs-idp142495760">(b) \[\[MATH:2\]\]</para>
-<para id="fs-idp82472256">(c) \[\[MATH:3\]\]</para>
-<para id="fs-idp63878256"><title>Lausn</title>(a) \[\[MATH:4\]\]</para>
-<para id="fs-idp177788304">(b) \[\[MATH:5\]\]</para>
-<para id="fs-idp171443200">(c) \[\[MATH:6\]\]</para>
+<para id="fs-idp246365472">(a) <m:math><m:mrow><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp142495760">(b) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp82472256">(c) <m:math><m:mrow><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp63878256"><title>Lausn</title>(a) <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math></para>
+<para id="fs-idp177788304">(b) <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math></para>
+<para id="fs-idp171443200">(c) <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>4</m:mn></m:msup><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mn>6</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>NH</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>4</m:mn></m:msup><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>7</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math></para>
 <para id="fs-idp17156768"><title>Prófaðu þig áfram</title>Skrifaðu jöfnuna fyrir hvarfstuðulinn
 miðað við styrk fyrir hvert eftirfarandi efnahvarfa:</para>
-<para id="fs-idp35394896">(a) \[\[MATH:7\]\]</para>
-<para id="fs-idp63748560">(b) \[\[MATH:8\]\]</para>
-<para id="fs-idp105907744">(c) \[\[MATH:9\]\]</para>
+<para id="fs-idp35394896">(a) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp63748560">(b) <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp105907744">(c) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>10</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>13</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>8</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>10</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <note id="fs-idp167282768">
 <title>Answer:</title>
-<para id="fs-idp7633728">(a) \[\[MATH:13\]\] (b)
-\[\[MATH:14\]\] (c) \[\[MATH:15\]\]</para>
+<para id="fs-idp7633728">(a) <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (b)
+<m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (c) <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>8</m:mn></m:msup><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mn>10</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>10</m:mn></m:mrow></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>13</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math></para>
 </note>
 </example>
 <figure id="CNX_Chem_13_02_quotient">
@@ -66,7 +66,7 @@ litvísir um stöðu efnahvarfsins. Til að útskýra þetta skulum við skoða
 oxun brennisteinsdíoxíðs:</para>
 <equation id="fs-idm382376384" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>2SO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>2SO</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp138846544">Tvær mismunandi tilraunaaðstæður eru
-sýndar á &lt;!-- XREF:1 -->, önnur þar sem þetta efnahvarf er hafið með
+sýndar á <!-- XREF:1 -->, önnur þar sem þetta efnahvarf er hafið með
 efnablöndu af eingöngu hvarfefnum, SO<sub>2</sub> og O<sub>2</sub>, og hin sem byrjar með
 eingöngu myndefni, SO<sub>3</sub>. Fyrir efnahvarfið sem byrjar með efnablöndu af
 eingöngu hvarfefnum er <emphasis effect="italics">Q</emphasis> í upphafi jafnt og núll:</para>
@@ -89,7 +89,7 @@ jafnvægi.</para>
 jafnvægi er kallað *<emphasis effect="italics">jafnvægisfasti, </emphasis>K***:</para>
 <equation id="fs-idp266400656" class="unnumbered"><m:math><m:mrow><m:mi>K</m:mi><m:mo>≡</m:mo><m:mi>Q</m:mi><m:mspace width="0.2em"/><m:mtext>at equilibrium</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm328721280">Samanburður á gagnapunktum í
-&lt;!-- XREF:2 --> sýnir að báðar tilraunaaðstæður leiddu til sama gildis fyrir
+<!-- XREF:2 --> sýnir að báðar tilraunaaðstæður leiddu til sama gildis fyrir
 jafnvægisfastann. Þetta er almenn athugun fyrir öll jafnvægiskerfi,
 þekkt sem <emphasis effect="bold">massavirknilögmálið</emphasis>: Við tiltekið hitastig er hvarfstuðull
 kerfis við jafnvægi fasti.</para>
@@ -99,7 +99,7 @@ tvíniturtetroxíð samkvæmt þessari jöfnu:</para>
 <equation id="fs-idp64726272" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp17381824">Þegar 0,10 mól af NO<sub>2</sub> er bætt í 1,0
 L flösku við 25 °C breytist styrkurinn þannig að við jafnvægi er
-\[NO<sub>2</sub>\] = 0,016 <emphasis effect="italics">M</emphasis> og \[N<sub>2</sub>O<sub>4</sub>\] = 0,042 <emphasis effect="italics">M</emphasis>.</para>
+[NO<sub>2</sub>] = 0,016 <emphasis effect="italics">M</emphasis> og [N<sub>2</sub>O<sub>4</sub>] = 0,042 <emphasis effect="italics">M</emphasis>.</para>
 <para id="fs-idp89605104">(a) Hvert er gildi hvarfstuðulsins
 áður en nokkurt efnahvarf á sér stað?</para>
 <para id="fs-idp84731776">(b) Hvert er gildi jafnvægisfastans
@@ -109,13 +109,13 @@ jafnvægisútreikninga í þessum texta skal nota einfaldaðar jöfnur fyrir
 <emphasis effect="italics">Q</emphasis> og <emphasis effect="italics">K</emphasis> og hunsa allar styrk- eða þrýstingseiningar, eins og áður
 hefur verið tekið fram í þessum kafla.</para>
 <para id="fs-idm358571008">(a) Áður en nokkurt myndefni hefur
-myndast er \[\[MATH:16\]\] og \[N<sub>2</sub>O<sub>4</sub>\] = 0 <emphasis effect="italics">M</emphasis>. Þannig er</para>
+myndast er <m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.10</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>1.0</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.10</m:mn><m:mspace width="0.2em"/><m:mi>M</m:mi><m:mo>,</m:mo></m:mrow></m:math> og [N<sub>2</sub>O<sub>4</sub>] = 0 <emphasis effect="italics">M</emphasis>. Þannig er</para>
 <equation id="fs-idp173627248" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>0</m:mn><m:mrow><m:msup><m:mrow><m:mn>0.10</m:mn></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math></equation>
-<para id="fs-idp110962640">(b) Við jafnvægi er \[\[MATH:17\]\]
-Jafnvægisfastinn er 1,6 \[\[MATH:18\]\] 10<sup>2</sup>.</para>
-<para id="fs-idp284528080"><title>Spurningar úr kaflanum</title>Fyrir efnahvarfið \[\[MATH:19\]\] er
-styrkurinn við jafnvægi \[SO<sub>2</sub>\] = 0,90 <emphasis effect="italics">M</emphasis>, \[O<sub>2</sub>\] = 0,35 <emphasis effect="italics">M</emphasis> og
-\[SO<sub>3</sub>\] = 1,1 <emphasis effect="italics">M</emphasis>. Hvert er gildi jafnvægisfastans, <emphasis effect="italics">K<sub>c</sub></emphasis>?</para>
+<para id="fs-idp110962640">(b) Við jafnvægi er <m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.042</m:mn></m:mrow><m:mrow><m:msup><m:mrow><m:mn>0.016</m:mn></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mo>.</m:mo></m:mrow></m:math>
+Jafnvægisfastinn er 1,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>2</sup>.</para>
+<para id="fs-idp284528080"><title>Spurningar úr kaflanum</title>Fyrir efnahvarfið <m:math><m:mrow><m:msub><m:mrow><m:mtext>2SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>2SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo></m:mrow></m:math> er
+styrkurinn við jafnvægi [SO<sub>2</sub>] = 0,90 <emphasis effect="italics">M</emphasis>, [O<sub>2</sub>] = 0,35 <emphasis effect="italics">M</emphasis> og
+[SO<sub>3</sub>] = 1,1 <emphasis effect="italics">M</emphasis>. Hvert er gildi jafnvægisfastans, <emphasis effect="italics">K<sub>c</sub></emphasis>?</para>
 <note id="fs-idp10573648">
 <title>Answer:</title>
 <para id="fs-idp130245328"><emphasis effect="italics">K<sub>c</sub> =</emphasis> 4,3</para>
@@ -142,7 +142,7 @@ brennisteinstvíoxíðs sem lýst er hér að ofan mun efnahvarf ganga í hvaða
 atriði nánar skulum við skoða afturkræfa efnahvarfið sem sýnt er hér að
 neðan:</para>
 <equation id="fs-idp63923872" class="unnumbered"><m:math><m:mrow><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.640</m:mn><m:mspace width="5em"/><m:mtext>T</m:mtext><m:mo>=</m:mo><m:mn>800</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></equation>
-<para id="fs-idm373405968">Súluritin í &lt;!-- XREF:3 --> tákna
+<para id="fs-idm373405968">Súluritin í <!-- XREF:3 --> tákna
 breytingar á styrk hvarfefna og myndefna fyrir þrjár mismunandi
 efnablöndur. Hvarfstuðlar fyrir efnablöndur 1 og 3 eru upphaflega lægri
 en jafnvægisfasti efnahvarfsins, þannig að hvor þessara efnablandna mun
@@ -155,7 +155,7 @@ náð.</para>
 </media>
 <caption>Samsetning
 þriggja efnablandna áður en (Q<sub>c</sub> ≠ K<sub>c</sub>) og eftir að (Q<sub>c</sub> = K<sub>c</sub>)
-jafnvægi hefur náðst fyrir efnahvarfið \[\[MATH:20\]\]</caption></figure>
+jafnvægi hefur náðst fyrir efnahvarfið <m:math><m:mrow><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math></caption></figure>
 <example id="fs-idp174376240">
 <para id="fs-idp60883568"><title>Að spá fyrir um
 stefnu efnahvarfs</title>Hér eru gefnir upphafsstyrkir
@@ -191,7 +191,7 @@ g af SO<sub>3</sub>(g):</para>
 <equation id="fs-idp294747856" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.230</m:mn></m:mrow></m:math></equation>
 <note id="fs-idp32992592">
 <title>Answer:</title>
-<para id="fs-idp96400256">(a) <emphasis effect="italics">Q<sub>c</sub></emphasis> = 6,45 \[\[MATH:22\]\]
+<para id="fs-idp96400256">(a) <emphasis effect="italics">Q<sub>c</sub></emphasis> = 6,45 <m:math><m:mo>×</m:mo></m:math>
 10<sup>3</sup>, áfram. (b) <emphasis effect="italics">Q<sub>c</sub></emphasis> = 0,23, aftur á bak. (c) <emphasis effect="italics">Q<sub>c</sub></emphasis> = 0, áfram.</para></note>
 </example>
 <table id="fs-idp70024256" class="unnumbered" summary="This table has four columns and five rows. The first row is a header row, and it labels each column, “Reactants / Products,” “Experiment 1,” “Experiment 2,” and “Experiment 3.” Under the “Reactants / Products” column are: [ C O ] subscript i; [ H subscript 2 O ] subscript i; [ C O subscript 2 ] subscript i; [ H subscript 2 ] subscript i. Under the “Experiment 1” column are the numbers: 0.0203 M; 0.0203 M; 0.0040 M; and 0.0040 M. Under the “Experiment 2” column are the numbers: 0.011 M; 0.0011 M; 0.037 M; and 0.046 M. Under the “Experiment 3” column are the numbers: 0.0094 M; 0.0025 M; 0.0015 M; 0.0076 M.">
@@ -211,25 +211,25 @@ g af SO<sub>3</sub>(g):</para>
 </thead>
 <tbody>
 <row valign="middle">
-<entry align="left">\[CO\]<sub>i</sub></entry>
+<entry align="left">[CO]<sub>i</sub></entry>
 <entry align="left">0,020 <emphasis effect="italics">M</emphasis></entry>
 <entry align="left">0,011 <emphasis effect="italics">M</emphasis></entry>
 <entry align="left">0,0094 <emphasis effect="italics">M</emphasis></entry>
 </row>
 <row valign="middle">
-<entry align="left">\[H<sub>2</sub>O\]<sub>i</sub></entry>
+<entry align="left">[H<sub>2</sub>O]<sub>i</sub></entry>
 <entry align="left">0,020 <emphasis effect="italics">M</emphasis></entry>
 <entry align="left">0,0011 <emphasis effect="italics">M</emphasis></entry>
 <entry align="left">0,0025 <emphasis effect="italics">M</emphasis></entry>
 </row>
 <row valign="middle">
-<entry align="left">\[CO<sub>2</sub>\]<sub>i</sub></entry>
+<entry align="left">[CO<sub>2</sub>]<sub>i</sub></entry>
 <entry align="left">0,0040 <emphasis effect="italics">M</emphasis></entry>
 <entry align="left">0,037 <emphasis effect="italics">M</emphasis></entry>
 <entry align="left">0,0015 <emphasis effect="italics">M</emphasis></entry>
 </row>
 <row valign="middle">
-<entry align="left">\[H<sub>2</sub>\]<sub>i</sub></entry>
+<entry align="left">[H<sub>2</sub>]<sub>i</sub></entry>
 <entry align="left">0,0040 <emphasis effect="italics">M</emphasis></entry>
 <entry align="left">0,046 <emphasis effect="italics">M</emphasis></entry>
 <entry align="left">0,0076 <emphasis effect="italics">M</emphasis></entry>
@@ -274,7 +274,7 @@ jafnvægisfastann upp annaðhvort með mólstyrk (<emphasis effect="italics">K<s
 er rúmmál, <emphasis effect="italics">n</emphasis> er mólmagn, <emphasis effect="italics">R</emphasis> er gasfastinn, <emphasis effect="italics">T</emphasis> er hitastig og <emphasis effect="italics">M</emphasis> er
 mólstyrkur.</para>
 <para id="fs-idp160302688">Fyrir efnahvarf í gasfasa
-\[\[MATH:23\]\]</para>
+<m:math><m:mrow><m:mi>a</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>b</m:mi><m:mtext>B</m:mtext><m:mo stretchy="false">⇌</m:mo><m:mi>c</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>d</m:mi><m:mtext>D:</m:mtext></m:mrow></m:math></para>
 <equation id="fs-idp171727376" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>C</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>c</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>D</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>d</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>A</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>a</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>B</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>b</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <equation id="fs-idp89891888" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>C]</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>c</m:mi></m:msup><m:mo stretchy="false">(</m:mo><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>D]</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>d</m:mi></m:msup></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A]</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>a</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B]</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>b</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <equation id="fs-idp72794512" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>c</m:mi></m:msup><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>D</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>d</m:mi></m:msup></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>a</m:mi></m:msup><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>b</m:mi></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mi>c</m:mi><m:mtext>+</m:mtext><m:mi>d</m:mi></m:mrow></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mi>a</m:mi><m:mtext>+</m:mtext><m:mi>b</m:mi></m:mrow></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -290,9 +290,9 @@ myndefnis og hvarfefnis í gasformi, í þessu tilviki:</para>
 <para id="fs-idp74619872"><title>Lausn</title>Útreikningur á <emphasis effect="italics">K<sub>P</sub></emphasis> Skrifaðu
 jöfnurnar sem tengja <emphasis effect="italics">K<sub>c</sub></emphasis> við <emphasis effect="italics">K<sub>P</sub></emphasis> fyrir hvert eftirfarandi
 efnahvarfa:</para>
-<para id="fs-idp61114160">(a) \[\[MATH:24\]\]</para>
-<para id="fs-idp127890016">(b) \[\[MATH:25\]\]</para>
-<para id="fs-idp98159632">(c) \[\[MATH:26\]\]</para>
+<para id="fs-idp61114160">(a) <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp127890016">(b) <m:math><m:mrow><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp98159632">(c) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp175509632">(d) <emphasis effect="italics">K<sub>c</sub></emphasis> er jafnt og 0.28 fyrir
 eftirfarandi efnahvarf við 900 °C:</para>
 <equation id="fs-idp277886816" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CS</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>S</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
@@ -302,14 +302,14 @@ eftirfarandi efnahvarf við 900 °C:</para>
 <para id="fs-idp15495888">(b) Δ<emphasis effect="italics">n</emphasis> = (2) − (2) = 0 <emphasis effect="italics">K<sub>P</sub></emphasis> =
 <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)Δ<emphasis effect="italics">n</emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)<sup>0</sup> = <emphasis effect="italics">K<sub>c</sub></emphasis></para>
 <para id="fs-idp64674800">(c) Δ<emphasis effect="italics">n</emphasis> = (2) − (1 + 3) = −2 <emphasis effect="italics">K<sub>P</sub></emphasis>
-= <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)Δ<emphasis effect="italics">n</emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)<sup>−2</sup> = \[\[MATH:27\]\]</para>
+= <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)Δ<emphasis effect="italics">n</emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)<sup>−2</sup> = <m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>R</m:mi><m:mi>T</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math></para>
 <para id="fs-idp100458064">(d) <emphasis effect="italics">K<sub>P</sub></emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (RT)Δ<emphasis effect="italics">n</emphasis> =
-(0.28)\[(0.0821)(1173)\]<sup>−2</sup> = 3.0 \[\[MATH:28\]\] 10<sup>−5</sup></para>
+(0.28)[(0.0821)(1173)]<sup>−2</sup> = 3.0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup></para>
 <para id="fs-idp112448864"><title>Prófaðu þig</title>Skrifaðu jöfnurnar sem tengja <emphasis effect="italics">K<sub>c</sub></emphasis>
 við <emphasis effect="italics">K<sub>P</sub></emphasis> fyrir hvert eftirfarandi efnahvarfa:</para>
-<para id="fs-idp181427520">(a) \[\[MATH:29\]\]</para>
-<para id="fs-idp162294032">(b) \[\[MATH:30\]\]</para>
-<para id="fs-idp103215280">(c) \[\[MATH:31\]\]</para>
+<para id="fs-idp181427520">(a) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp162294032">(b) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp103215280">(c) <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>3</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp64364800">(d) Við 227 °C hefur eftirfarandi
 efnahvarf <emphasis effect="italics">K<sub>c</sub></emphasis> = 0,0952:</para>
 <equation id="fs-idp23547856" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
@@ -319,7 +319,7 @@ hitastig?</para>
 <title>Answer:</title>
 <para id="fs-idp251899984">(a) <emphasis effect="italics">K<sub>P</sub></emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>)<sup>−1</sup>; (b)
 <emphasis effect="italics">K<sub>P</sub></emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>); (c) <emphasis effect="italics">K<sub>P</sub></emphasis> = <emphasis effect="italics">K<sub>c</sub></emphasis> (<emphasis effect="italics">RT</emphasis>); (d) 160 eða 1,6
-\[\[MATH:33\]\] 10<sup>2</sup></para></note>
+<m:math><m:mo>×</m:mo></m:math> 10<sup>2</sup></para></note>
 </example>
 </section>
 <section id="fs-idp112997072">
@@ -375,7 +375,7 @@ nettóhvarfsins og jafnvægisföstum tengdu jafnvægishvarfanna tveggja
 sýnir eftirfarandi samband:</para>
 <equation id="fs-idm371974992" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c1</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c2</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:menclose><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">]</m:mo><m:menclose notation="horizontalstrike"><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:menclose></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c'</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
 <equation id="fs-idm353367792" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c'</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c1</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c2</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
-<para id="fs-idm329039744">&lt;!-- XREF:4 --> sýnir notkun þessarar
+<para id="fs-idm329039744"><!-- XREF:4 --> sýnir notkun þessarar
 aðferðar við að lýsa tengdum jafnvægisferlum.</para>
 <example id="fs-idm384162720">
 <para id="fs-idm384162464"><title>Jafnvægisfastar fyrir
@@ -417,9 +417,9 @@ sem efnisþættir eru í tveimur eða fleiri fösum.</para>
 <table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry>\[\[MATH:34\]\]</entry>
+<row><entry><m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>D</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac><m:mspace width="5em"/><m:mtext>for the reaction</m:mtext><m:mspace width="0.2em"/><m:mi>m</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>n</m:mi><m:mtext>B</m:mtext><m:mo stretchy="false">⇌</m:mo><m:mi>x</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>y</m:mi><m:mtext>D</m:mtext></m:mrow></m:math></entry>
 </row>
-<row><entry>\[\[MATH:35\]\]</entry>
+<row><entry><m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>C</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>x</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>D</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>y</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>A</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>m</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>P</m:mi><m:mi>B</m:mi></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac><m:mspace width="5em"/><m:mtext>for the reaction</m:mtext><m:mspace width="0.2em"/><m:mi>m</m:mi><m:mtext>A</m:mtext><m:mo>+</m:mo><m:mi>n</m:mi><m:mtext>B</m:mtext><m:mo stretchy="false">⇌</m:mo><m:mi>x</m:mi><m:mtext>C</m:mtext><m:mo>+</m:mo><m:mi>y</m:mi><m:mtext>D</m:mtext></m:mrow></m:math></entry>
 </row>
 <row><entry><emphasis effect="italics">P</emphasis> = <emphasis effect="italics">MRT</emphasis></entry>
 </row>
@@ -445,7 +445,7 @@ hitastig en aðeins eitt gildi fyrir jafnvægisfastann við það hitastig.</par
 <problem id="fs-idp194492208">
 <para id="fs-idp125938384">Útskýrðu hvers vegna jafnvægi
 milli Br<sub>2</sub>(<emphasis effect="italics">l</emphasis>) og Br<sub>2</sub>(<emphasis effect="italics">g</emphasis>) myndi ekki nást ef ílátið væri ekki lokað
-ílát eins og sýnt er í &lt;!-- XREF:5 -->.</para></problem>
+ílát eins og sýnt er í <!-- XREF:5 -->.</para></problem>
 <solution id="fs-idp271084848">
 <para id="fs-idp742448">Ekki er hægt að koma á jafnvægi
 milli vökva- og gasfasa ef toppurinn er tekinn af flöskunni því kerfið
@@ -458,7 +458,7 @@ vökvi gufa upp en getur þéttst aftur úr gasfasanum yfir í vökvafasann.</pa
 <problem id="fs-idp251449808">
 <para id="fs-idp251450064">Ef þú fylgist með eftirfarandi
 efnahvarfi við jafnvægi, er þá hægt að segja til um hvort efnahvarfið
-hófst með hreinu NO<sub>2</sub> eða með hreinu N<sub>2</sub>O<sub>4</sub>? \[\[MATH:36\]\]</para>
+hófst með hreinu NO<sub>2</sub> eða með hreinu N<sub>2</sub>O<sub>4</sub>? <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 </problem>
 </exercise>
 <exercise id="fs-idp237194960">
@@ -467,16 +467,16 @@ hófst með hreinu NO<sub>2</sub> eða með hreinu N<sub>2</sub>O<sub>4</sub>? \
 ræddar er fullyrðingin: Öll klóríð eru auðleyst nema Hg<sub>2</sub>Cl<sub>2</sub>, AgCl,
 PbCl<sub>2</sub> og CuCl.</para>
 <para id="fs-idp16294496">(a) Skrifaðu jöfnuna fyrir
-jafnvægisfastann fyrir efnahvarfið sem jafnan \[\[MATH:37\]\] lýsir. Er
+jafnvægisfastann fyrir efnahvarfið sem jafnan <m:math><m:mrow><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> lýsir. Er
 <emphasis effect="italics">K<sub>c</sub></emphasis> \> 1, \&lt; 1 eða ≈ 1? Útskýrðu svarið.</para>
 <para id="fs-idp81633648">(b) Skrifaðu jöfnuna fyrir
-jafnvægisfastann fyrir efnahvarfið sem jafnan \[\[MATH:38\]\] lýsir. Er
+jafnvægisfastann fyrir efnahvarfið sem jafnan <m:math><m:mrow><m:msup><m:mrow><m:mtext>Pb</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>PbCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> lýsir. Er
 <emphasis effect="italics">K<sub>c</sub></emphasis> \> 1, \&lt; 1 eða ≈ 1? Útskýrðu svarið.</para>
 </problem>
 <solution id="fs-idp101107168">
-<para id="fs-idp101107424">(a) <emphasis effect="italics">K<sub>c</sub></emphasis> = \[Ag<sup>+</sup>\]\[Cl<sup>−</sup>\]
+<para id="fs-idp101107424">(a) <emphasis effect="italics">K<sub>c</sub></emphasis> = [Ag<sup>+</sup>][Cl<sup>−</sup>]
 \&lt; 1. AgCl er torleyst; þess vegna er styrkur jónanna mun minni en 1
-<emphasis effect="italics">M</emphasis>; (b) \[\[MATH:39\]\] \> 1 vegna þess að PbCl<sub>2</sub> er torleyst og
+<emphasis effect="italics">M</emphasis>; (b) <m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Pb</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math> \> 1 vegna þess að PbCl<sub>2</sub> er torleyst og
 myndun fasta efnisins mun draga úr styrk jónanna niður í lágt gildi (\<1
 <emphasis effect="italics">M</emphasis>).</para>
 </solution>
@@ -488,9 +488,9 @@ ræddar er fullyrðingin: Karbónöt, fosföt, bóröt og arsenöt – að
 undanskildum þeim sem eru af ammóníumjóninni og alkalímálmunum – eru
 torleyst.</para>
 <para id="fs-idp114402368">(a) Skrifaðu jöfnuna fyrir
-jafnvægisfastann fyrir efnahvarfið sem jafnan \[\[MATH:40\]\] lýsir. Er
+jafnvægisfastann fyrir efnahvarfið sem jafnan <m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msup><m:mrow><m:mtext>Ca</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mn>2−</m:mn></m:msup><m:mo stretchy="false">(</m:mo><m:mtext>aq</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> lýsir. Er
 <emphasis effect="italics">K<sub>c</sub></emphasis> \> 1, \&lt; 1 eða ≈ 1? Útskýrðu svarið.</para><para id="fs-idp836800">(b) Skrifaðu jöfnuna fyrir
-jafnvægisfastann fyrir efnahvarfið sem jafnan \[\[MATH:41\]\] lýsir. Er
+jafnvægisfastann fyrir efnahvarfið sem jafnan <m:math><m:mrow><m:mn>3</m:mn><m:msup><m:mrow><m:mtext>Ba</m:mtext></m:mrow><m:mrow><m:mn>2+</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>3−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>Ba</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>PO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> lýsir. Er
 <emphasis effect="italics">K<sub>c</sub></emphasis> \> 1, \&lt; 1 eða ≈ 1? Útskýrðu svarið.</para>
 </problem>
 </exercise>
@@ -498,12 +498,12 @@ jafnvægisfastann fyrir efnahvarfið sem jafnan \[\[MATH:41\]\] lýsir. Er
 <problem id="fs-idp31062368">
 <para id="fs-idp31062624">Bensen er eitt þeirra efnasambanda
 sem notuð eru sem oktanhækkandi efni í blýlausu bensíni. Það er
-framleitt með hvataumbreytingu asetýlens í bensen: \[\[MATH:42\]\] Hvaða
+framleitt með hvataumbreytingu asetýlens í bensen: <m:math><m:mrow><m:mn>3</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Hvaða
 gildi <emphasis effect="italics">K<sub>c</sub></emphasis> myndi gera þetta efnahvarf gagnlegast í viðskiptalegum
 tilgangi? <emphasis effect="italics">K<sub>c</sub></emphasis> ≈ 0,01, <emphasis effect="italics">K<sub>c</sub></emphasis> ≈ 1 eða <emphasis effect="italics">K<sub>c</sub></emphasis> ≈ 10. Útskýrðu svarið.</para>
 </problem>
 <solution id="fs-idp62624672">
-<para id="fs-idp62624928">Þar sem \[\[MATH:43\]\] þýðir
+<para id="fs-idp62624928">Þar sem <m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>6</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> þýðir
 gildið <emphasis effect="italics">K<sub>c</sub></emphasis> ≈ 10 að C<sub>6</sub>H<sub>6</sub> er ríkjandi yfir C<sub>2</sub>H<sub>2</sub>. Í slíku
 tilfelli væri efnahvarfið hagkvæmt í viðskiptalegum tilgangi ef
 hvarfhraðinn að jafnvægi er hentugur.</para>
@@ -513,8 +513,8 @@ hvarfhraðinn að jafnvægi er hentugur.</para>
 <problem id="fs-idp111503760">
 <para id="fs-idp111504016">Sýndu að heildarefnajafnan,
 heildarjónajafnan og nettójónajafnan fyrir efnahvarfið sem jafnan
-\[\[MATH:44\]\] lýsir gefa sömu jöfnu fyrir hvarfstuðulinn. KI<sub>3</sub> er
-samsett úr jónunum K<sup>+</sup> og \[\[MATH:45\]\]</para>
+<m:math><m:mrow><m:mtext>KI</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>KI</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> lýsir gefa sömu jöfnu fyrir hvarfstuðulinn. KI<sub>3</sub> er
+samsett úr jónunum K<sup>+</sup> og <m:math><m:mrow><m:msub><m:mtext>I</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>.</m:mo></m:mrow></m:math></para>
 </problem>
 </exercise>
 <exercise id="fs-idp57598704">
@@ -538,33 +538,33 @@ torleyst. Er <emphasis effect="italics">K<sub>c</sub></emphasis> \> 1, \&lt; 1 e
 <problem id="fs-idp42985200">
 <para id="fs-idp42985456">Skrifaðu stærðfræðilega jöfnu
 fyrir hvarfstuðulinn, <emphasis effect="italics">Q<sub>c</sub></emphasis>, fyrir hvert eftirfarandi hvarfa:</para>
-<para id="fs-idp41901984">(a) \[\[MATH:46\]\]</para>
-<para id="fs-idp226158544">(b) \[\[MATH:47\]\]</para>
-<para id="fs-idp155656640">(c) \[\[MATH:48\]\]</para>
-<para id="fs-idp131741280">(d) \[\[MATH:49\]\]</para>
-<para id="fs-idp86407328">(e) \[\[MATH:50\]\]</para>
-<para id="fs-idp133011296">(f) \[\[MATH:51\]\]</para>
-<para id="fs-idp222525120">(g) \[\[MATH:52\]\]</para>
-<para id="fs-idp14166848">(h) \[\[MATH:53\]\]</para>
+<para id="fs-idp41901984">(a) <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp226158544">(b) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp155656640">(c) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp131741280">(d) <m:math><m:mrow><m:msub><m:mrow><m:mtext>BaSO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>BaO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp86407328">(e) <m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mrow><m:mn>10</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp133011296">(f) <m:math><m:mrow><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>Br</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp222525120">(g) <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp14166848">(h) <m:math><m:mrow><m:msub><m:mrow><m:mtext>CuSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mtext>·</m:mtext><m:mn>5</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CuSO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idp85306784">
-<para id="fs-idp8608672">(a) \[\[MATH:54\]\] (b)
-\[\[MATH:55\]\] (c) \[\[MATH:56\]\] (d) <emphasis effect="italics">Q<sub>c</sub></emphasis> = \[SO<sub>2</sub>\]; (e)
-\[\[MATH:57\]\] (f) \[\[MATH:58\]\] (g) \[\[MATH:59\]\] (h) <emphasis effect="italics">Q<sub>c</sub></emphasis> =
-\[H<sub>2</sub>O\]<sup>5</sup></para></solution>
+<para id="fs-idp8608672">(a) <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>Cl</m:mtext></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:mtext>HCl</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (b)
+<m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (c) <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (d) <emphasis effect="italics">Q<sub>c</sub></emphasis> = [SO<sub>2</sub>]; (e)
+<m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>5</m:mn></m:msup></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (f) <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (g) <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (h) <emphasis effect="italics">Q<sub>c</sub></emphasis> =
+[H<sub>2</sub>O]<sup>5</sup></para></solution>
 </exercise>
 <exercise id="fs-idp52174160">
 <problem id="fs-idp52174416">
 <para id="fs-idp52174672">Skrifaðu stærðfræðilega jöfnu
 fyrir hvarfstuðulinn, <emphasis effect="italics">Q<sub>c</sub></emphasis>, fyrir hvert eftirfarandi hvarfa:</para>
-<para id="fs-idp237349968">(a) \[\[MATH:60\]\]</para>
-<para id="fs-idp231805232">(b) \[\[MATH:61\]\]</para>
-<para id="fs-idp226360240">(c) \[\[MATH:62\]\]</para>
-<para id="fs-idp56497584">(d) \[\[MATH:63\]\]</para>
-<para id="fs-idp252852544">(e) \[\[MATH:64\]\]</para>
-<para id="fs-idp131872704">(f) \[\[MATH:65\]\]</para>
-<para id="fs-idp63030592">(g) \[\[MATH:66\]\]</para>
-<para id="fs-idp7981520">(h) \[\[MATH:67\]\]</para>
+<para id="fs-idp237349968">(a) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp231805232">(b) <m:math><m:mrow><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>4</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp226360240">(c) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp56497584">(d) <m:math><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp252852544">(e) <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>HCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp131872704">(f) <m:math><m:mrow><m:mn>2</m:mn><m:mtext>Pb</m:mtext><m:msub><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>PbO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp63030592">(g) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp7981520">(h) <m:math><m:mrow><m:msub><m:mtext>S</m:mtext><m:mn>8</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>8</m:mn><m:mtext>S</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 </problem>
 </exercise>
 <exercise id="fs-idp110211104">
@@ -573,17 +573,17 @@ fyrir hvarfstuðulinn, <emphasis effect="italics">Q<sub>c</sub></emphasis>, fyri
 hvarfefna og myndefna er gefinn fyrir hvert eftirfarandi kerfa. Reiknaðu
 hvarfstuðulinn og ákvarðaðu í hvaða átt hvert kerfi mun færast til að ná
 jafnvægi.</para>
-<para id="fs-idp64606352">(a) \[\[MATH:68\]\] \[NH<sub>3</sub>\] =
-0,20 <emphasis effect="italics">M</emphasis>, \[N<sub>2</sub>\] = 1,00 <emphasis effect="italics">M</emphasis>, \[H<sub>2</sub>\] = 1,00 <emphasis effect="italics">M</emphasis></para>
-<para id="fs-idp94542848">(b) \[\[MATH:69\]\] NH<sub>3</sub> = 3,0
+<para id="fs-idp64606352">(a) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>17</m:mn><m:mo>;</m:mo></m:mrow></m:math> [NH<sub>3</sub>] =
+0,20 <emphasis effect="italics">M</emphasis>, [N<sub>2</sub>] = 1,00 <emphasis effect="italics">M</emphasis>, [H<sub>2</sub>] = 1,00 <emphasis effect="italics">M</emphasis></para>
+<para id="fs-idp94542848">(b) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>6.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mo>;</m:mo></m:mrow></m:math> NH<sub>3</sub> = 3,0
 atm, N<sub>2</sub> = 2,0 atm, H<sub>2</sub> = 1,0 atm</para>
-<para id="fs-idp63897504">(c) \[\[MATH:70\]\] \[SO<sub>3</sub>\] =
-0,00 <emphasis effect="italics">M</emphasis>, \[SO<sub>2</sub>\] = 1,00 <emphasis effect="italics">M</emphasis>, \[O<sub>2</sub>\] = 1,00 <emphasis effect="italics">M</emphasis></para>
-<para id="fs-idp163617584">(d) \[\[MATH:71\]\] SO<sub>3</sub> = 1,00
+<para id="fs-idp63897504">(c) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.230</m:mn><m:mo>;</m:mo></m:mrow></m:math> [SO<sub>3</sub>] =
+0,00 <emphasis effect="italics">M</emphasis>, [SO<sub>2</sub>] = 1,00 <emphasis effect="italics">M</emphasis>, [O<sub>2</sub>] = 1,00 <emphasis effect="italics">M</emphasis></para>
+<para id="fs-idp163617584">(d) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>16.5</m:mn><m:mo>;</m:mo></m:mrow></m:math> SO<sub>3</sub> = 1,00
 atm, SO<sub>2</sub> = 1,00 atm, O<sub>2</sub> = 1,00 atm</para>
-<para id="fs-idp131680784">(e) \[\[MATH:72\]\] \[NO\] = 1,00
-<emphasis effect="italics">M</emphasis>, \[Cl<sub>2</sub>\] = 1,00 <emphasis effect="italics">M</emphasis>, \[NOCl\] = 0 <emphasis effect="italics">M</emphasis></para>
-<para id="fs-idp181424512">(f) \[\[MATH:73\]\] NO = 10,0
+<para id="fs-idp131680784">(e) <m:math><m:mrow><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NOCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>4.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mo>;</m:mo></m:mrow></m:math> [NO] = 1,00
+<emphasis effect="italics">M</emphasis>, [Cl<sub>2</sub>] = 1,00 <emphasis effect="italics">M</emphasis>, [NOCl] = 0 <emphasis effect="italics">M</emphasis></para>
+<para id="fs-idp181424512">(f) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.050</m:mn><m:mo>;</m:mo></m:mrow></m:math> NO = 10,0
 atm, N<sub>2</sub> = O<sub>2</sub> = 5 atm</para>
 </problem>
 <solution id="fs-idp110844976">
@@ -599,24 +599,24 @@ til vinstri; (d) <emphasis effect="italics">Q<sub>P</sub></emphasis> 1.00 fer ti
 hvarfefna og myndefna er gefinn fyrir hvert eftirfarandi kerfa. Reiknaðu
 hvarfstuðulinn og ákvarðaðu í hvaða átt hvert kerfi mun færast til að ná
 jafnvægi.</para>
-<para id="fs-idp120737296">(a) \[\[MATH:74\]\] \[NH<sub>3</sub>\] =
-0,50 <emphasis effect="italics">M</emphasis>, \[N<sub>2</sub>\] = 0,15 <emphasis effect="italics">M</emphasis>, \[H<sub>2</sub>\] = 0,12 <emphasis effect="italics">M</emphasis></para>
-<para id="fs-idp70859392">(b) \[\[MATH:75\]\] NH<sub>3</sub> = 2,00
+<para id="fs-idp120737296">(a) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>17</m:mn><m:mo>;</m:mo></m:mrow></m:math> [NH<sub>3</sub>] =
+0,50 <emphasis effect="italics">M</emphasis>, [N<sub>2</sub>] = 0,15 <emphasis effect="italics">M</emphasis>, [H<sub>2</sub>] = 0,12 <emphasis effect="italics">M</emphasis></para>
+<para id="fs-idp70859392">(b) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>6.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mo>;</m:mo></m:mrow></m:math> NH<sub>3</sub> = 2,00
 atm, N<sub>2</sub> = 10,00 atm, H<sub>2</sub> = 10,00 atm</para>
-<para id="fs-idp110010256">(c) \[\[MATH:76\]\] \[SO<sub>3</sub>\] =
-2,00 <emphasis effect="italics">M</emphasis>, \[SO<sub>2</sub>\] = 2,00 <emphasis effect="italics">M</emphasis>, \[O<sub>2</sub>\] = 2,00 <emphasis effect="italics">M</emphasis></para>
-<para id="fs-idp63377856">(d) \[\[MATH:77\]\] SO<sub>2</sub> = 1,00
+<para id="fs-idp110010256">(c) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.230</m:mn><m:mo>;</m:mo></m:mrow></m:math> [SO<sub>3</sub>] =
+2,00 <emphasis effect="italics">M</emphasis>, [SO<sub>2</sub>] = 2,00 <emphasis effect="italics">M</emphasis>, [O<sub>2</sub>] = 2,00 <emphasis effect="italics">M</emphasis></para>
+<para id="fs-idp63377856">(d) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>6.5</m:mn><m:mspace width="0.2em"/><m:mtext>atm;</m:mtext></m:mrow></m:math> SO<sub>2</sub> = 1,00
 atm, O<sub>2</sub> = 1,130 atm, SO<sub>3</sub> = 0 atm</para>
-<para id="fs-idp279106656">(e) \[\[MATH:78\]\] NO = 1,00
+<para id="fs-idp279106656">(e) <m:math><m:mrow><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NOCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>2.5</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mo>;</m:mo></m:mrow></m:math> NO = 1,00
 atm, Cl<sub>2</sub> = 1,00 atm, NOCl = 0 atm</para>
-<para id="fs-idp222400768">(f) \[\[MATH:79\]\] \[N<sub>2</sub>\] =
-0,100 <emphasis effect="italics">M</emphasis>, \[O<sub>2</sub>\] = 0,200 <emphasis effect="italics">M</emphasis>, \[NO\] = 1,00 <emphasis effect="italics">M</emphasis></para>
+<para id="fs-idp222400768">(f) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.050</m:mn><m:mo>;</m:mo></m:mrow></m:math> [N<sub>2</sub>] =
+0,100 <emphasis effect="italics">M</emphasis>, [O<sub>2</sub>] = 0,200 <emphasis effect="italics">M</emphasis>, [NO] = 1,00 <emphasis effect="italics">M</emphasis></para>
 </problem>
 </exercise>
 <exercise id="fs-idp86297984">
 <problem id="fs-idp114844864">
 <para id="fs-idp114845120">Eftirfarandi hvarf hefur <emphasis effect="italics">K<sub>P</sub></emphasis> =
-4,50 \[\[MATH:80\]\] 10<sup>−5</sup> við 720 K. \[\[MATH:81\]\]</para>
+4,50 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> við 720 K. <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp126609152">Ef hvarfílát er fyllt með hverju
 gasi að þeim hlutþrýstingi sem tilgreindur er, í hvaða átt mun það
 færast til að ná jafnvægi? <emphasis effect="italics">P</emphasis>(NH<sub>3</sub>) = 93 atm, <emphasis effect="italics">P</emphasis>(N<sub>2</sub>) = 48 atm og
@@ -631,16 +631,16 @@ hvarfefnunum til að ná jafnvægi.</para>
 <problem id="fs-idp163618336">
 <para id="fs-idp163618592">Ákvarðaðu hvort eftirfarandi
 kerfi sé í jafnvægi. Ef ekki, í hvaða átt þarf kerfið að færast til að
-ná jafnvægi? \[\[MATH:82\]\]</para>
-<para id="fs-idp125056768">\[SO<sub>2</sub>Cl<sub>2</sub>\] = 0,12 <emphasis effect="italics">M</emphasis>,
-\[Cl<sub>2</sub>\] = 0,16 <emphasis effect="italics">M</emphasis> og \[SO<sub>2</sub>\] = 0,050 <emphasis effect="italics">M</emphasis>. <emphasis effect="italics">K<sub>c</sub></emphasis> fyrir hvarfið er
+ná jafnvægi? <m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idp125056768">[SO<sub>2</sub>Cl<sub>2</sub>] = 0,12 <emphasis effect="italics">M</emphasis>,
+[Cl<sub>2</sub>] = 0,16 <emphasis effect="italics">M</emphasis> og [SO<sub>2</sub>] = 0,050 <emphasis effect="italics">M</emphasis>. <emphasis effect="italics">K<sub>c</sub></emphasis> fyrir hvarfið er
 0,078.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp57788496">
 <problem id="fs-idp94606208">
 <para id="fs-idp94606464">Hvaða kerfi sem lýst er í
-&lt;!-- XREF:6 --> eru einsleit jafnvægi? Hvaða eru misleit jafnvægi?</para></problem>
+<!-- XREF:6 --> eru einsleit jafnvægi? Hvaða eru misleit jafnvægi?</para></problem>
 <solution id="fs-idp62171200">
 <para id="fs-idp62171456">(a) einsleitt; (b) einsleitt; (c)
 einsleitt; (d) misleitt; (e) misleitt; (f) einsleitt; (g) misleitt; (h)
@@ -650,11 +650,11 @@ misleitt</para>
 <exercise id="fs-idp132912112">
 <problem id="fs-idm3694160">
 <para id="fs-idm3693904">Hvaða kerfi sem lýst er í
-&lt;!-- XREF:7 --> eru einsleit jafnvægi? Hvaða eru misleit jafnvægi?</para></problem>
+<!-- XREF:7 --> eru einsleit jafnvægi? Hvaða eru misleit jafnvægi?</para></problem>
 </exercise>
 <exercise id="fs-idp14899216">
 <problem id="fs-idp14899472">
-<para id="fs-idp16381312">Fyrir hvaða hvarf í &lt;!-- XREF:8 --> er
+<para id="fs-idp16381312">Fyrir hvaða hvarf í <!-- XREF:8 --> er
 <emphasis effect="italics">K<sub>c</sub></emphasis> (reiknað með styrk) jafnt <emphasis effect="italics">K<sub>P</sub></emphasis> (reiknað með þrýstingi)?</para></problem>
 <solution id="fs-idp16548672">
 <para id="fs-idp16548928">Þetta á við í (a) og (b).</para>
@@ -662,39 +662,39 @@ misleitt</para>
 </exercise>
 <exercise id="fs-idp93479024">
 <problem id="fs-idp174008992">
-<para id="fs-idp174009248">Fyrir hvaða hvarf í &lt;!-- XREF:9 --> er
+<para id="fs-idp174009248">Fyrir hvaða hvarf í <!-- XREF:9 --> er
 <emphasis effect="italics">K<sub>c</sub></emphasis> (reiknað með styrk) jafnt <emphasis effect="italics">K<sub>P</sub></emphasis> (reiknað með þrýstingi)?</para></problem>
 </exercise>
 <exercise id="fs-idp102347760">
 <problem id="fs-idm108813344">
 <para id="fs-idm108813088">Umbreyttu gildum <emphasis effect="italics">K<sub>c</sub></emphasis> í gildi
 <emphasis effect="italics">K<sub>P</sub></emphasis> eða gildum <emphasis effect="italics">K<sub>P</sub></emphasis> í gildi <emphasis effect="italics">K<sub>c</sub></emphasis>.</para>
-<para id="fs-idp13487888">(a) \[\[MATH:83\]\]</para>
-<para id="fs-idp222336512">(b) \[\[MATH:84\]\]</para><para id="fs-idp60358144">(c) \[\[MATH:85\]\]</para>
-<para id="fs-idp180904096">(d) \[\[MATH:86\]\]</para>
+<para id="fs-idp13487888">(a) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.50</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>400</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp222336512">(b) <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>HI</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>50.2</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>448</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para><para id="fs-idp60358144">(c) <m:math><m:mrow><m:msub><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mtext>·</m:mtext><m:mn>10</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>10</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>4.08</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−25</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>25</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp180904096">(d) <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.122</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>50</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idp14871216">
-<para id="fs-idp14871472">(a) <emphasis effect="italics">K<sub>P</sub></emphasis> = 1,6 \[\[MATH:87\]\]
-10<sup>−4</sup>; (b) <emphasis effect="italics">K<sub>P</sub></emphasis> = 50,2; (c) <emphasis effect="italics">K<sub>c</sub></emphasis> = 5,31 \[\[MATH:88\]\] 10<sup>−39</sup>;
-(d) <emphasis effect="italics">K<sub>c</sub></emphasis> = 4,60 \[\[MATH:89\]\] 10<sup>−3</sup></para>
+<para id="fs-idp14871472">(a) <emphasis effect="italics">K<sub>P</sub></emphasis> = 1,6 <m:math><m:mo>×</m:mo></m:math>
+10<sup>−4</sup>; (b) <emphasis effect="italics">K<sub>P</sub></emphasis> = 50,2; (c) <emphasis effect="italics">K<sub>c</sub></emphasis> = 5,31 <m:math><m:mo>×</m:mo></m:math> 10<sup>−39</sup>;
+(d) <emphasis effect="italics">K<sub>c</sub></emphasis> = 4,60 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></para>
 </solution>
 </exercise>
 <exercise id="fs-idp94819040">
 <problem id="fs-idp94819296">
 <para id="fs-idp94819552">Umbreyttu gildum <emphasis effect="italics">K<sub>c</sub></emphasis> í gildi
 <emphasis effect="italics">K<sub>P</sub></emphasis> eða gildum <emphasis effect="italics">K<sub>P</sub></emphasis> í gildi <emphasis effect="italics">K<sub>c</sub></emphasis>.</para>
-<para id="fs-idp142118192">(a) \[\[MATH:90\]\]</para>
-<para id="fs-idp99793248">(b) \[\[MATH:91\]\]</para>
-<para id="fs-idp155518864">(c) \[\[MATH:92\]\]</para>
-<para id="fs-idp75006816">(d) \[\[MATH:93\]\]</para>
+<para id="fs-idp142118192">(a) <m:math><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>BrCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>4.7</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>25</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp99793248">(b) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>48.2</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>500</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp155518864">(c) <m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>·</m:mtext><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CaCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>5.09</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−44</m:mn></m:mrow></m:msup><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>25</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp75006816">(d) <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.196</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>60</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
 </problem>
 </exercise>
 <exercise id="fs-idp103369136">
 <problem id="fs-idp103369392">
 <para id="fs-idp103369648">Hvert er gildi jafnvægisfastans
-fyrir breytinguna \[\[MATH:94\]\] við 30 °C? (Sjá viðauka E.)</para></problem>
+fyrir breytinguna <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> við 30 °C? (Sjá viðauka E.)</para></problem>
 <solution id="fs-idp23942656">
-<para id="fs-idp23942912">\[\[MATH:95\]\]</para>
+<para id="fs-idp23942912"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.042</m:mn><m:mo>.</m:mo></m:mrow></m:math></para>
 </solution>
 </exercise>
 <exercise id="fs-idp282222272">
@@ -709,12 +709,12 @@ fyrir jónun HOCN í vatni.</para>
 fyrir jónun NH<sub>3</sub> í vatni.</para>
 </problem>
 <solution id="fs-idp134429680">
-<para id="fs-idp134429936">\[\[MATH:96\]\]</para></solution>
+<para id="fs-idp134429936"><m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">[</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac></m:mrow></m:math></para></solution>
 </exercise>
 <exercise id="fs-idp72435440">
 <problem id="fs-idp164607296">
 <para id="fs-idp164607552">Hvert er nálgunargildi
-jafnvægisfastans <emphasis effect="italics">K<sub>P</sub></emphasis> fyrir breytinguna \[\[MATH:97\]\] við 25 °C.
+jafnvægisfastans <emphasis effect="italics">K<sub>P</sub></emphasis> fyrir breytinguna <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>OC</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:msub><m:mrow><m:mtext>OC</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> við 25 °C.
 (Jafnvægisgufunarþrýstingur fyrir þetta efni er 570 torr við 25 °C.)</para>
 </problem>
 </exercise>

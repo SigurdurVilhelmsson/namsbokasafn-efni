@@ -206,7 +206,7 @@ Aftur á móti myndi aukning á rúmmáli þessa jafnvægiskerfis leiða til
 hliðrunar í átt að myndefnum.</para>
 <note id="fs-idp6099552" class="chemistry link-to-learning">
 <para id="fs-idp75936512">Skoðaðu þennan
-&lt;!-- LINK:1 -->hlekk&lt;!-- /LINK --> til að sjá áhrifamikla sjónræna sýningu á því
+<!-- LINK:1 -->hlekk<!-- /LINK --> til að sjá áhrifamikla sjónræna sýningu á því
 hvernig jafnvægi breytist með þrýstingsbreytingum.</para>
 </note>
 <note id="fs-idp88873584" class="chemistry everyday-life">
@@ -309,7 +309,7 @@ felur í sér virkniástand með lægri orku en hvarfgangur án hvata, sem
 leiðir til lægri virkjunarorku, <emphasis effect="italics">E<sub>a</sub></emphasis>, og samsvarandi hærri hraðafasta.</para>
 <para id="fs-idp24954576">Til að greina áhrif hvötunar á
 jafnvægiskerfi skulum við skoða hvarfritið fyrir einfalt einþrepa
-(elementary) hvarf sem sýnt er á &lt;!-- XREF:2 -->. Lægri orka virkniástandsins
+(elementary) hvarf sem sýnt er á <!-- XREF:2 -->. Lægri orka virkniástandsins
 í hvötuðu hvarfi leiðir til lægri virkjunarorku bæði fyrir framhvarfið
 og bakhvarfið. Þar af leiðandi hraðast bæði framhvarfið og bakhvarfið og
 jafnvægi næst hraðar <emphasis effect="italics">en án breytinga á jafnvægisfastanum</emphasis>.</para>
@@ -353,7 +353,7 @@ upp í ásættanlegan hraða við tiltölulega hóflegt hitastig (400–500 °C)
 </list>
 <para id="fs-idp56665040">Skýringarmynd sem sýnir dæmigerðan
 iðnaðarbúnað til framleiðslu á ammoníaki með Haber-Bosch-ferlinu er sýnd
-í &lt;!-- XREF:3 -->.</para>
+í <!-- XREF:3 -->.</para>
 <figure id="CNX_Chem_13_03_factory">
 <media id="fs-idp114972544" alt="A diagram is shown that is composed of three main sections. The first section shows an intake pipe labeled with blue arrows and the terms, “N subscript 2, H subscript 2, feed gases,” and “Compressor.” This pipe leads to a large chamber with a turbine in the top section and a coil in the bottom section. From top to bottom, the sections of this chamber are labeled, “Heat exchanger,” “Catalyst chamber 400 to 500 degrees C,” “Catalyst,” “Heater,” and “Preheated feed gases.” One pipe leads from the top of this chamber with red arrows and is labeled, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” while another pipe leads to the bottom of the chamber and reads, “Compressor,” and has orange arrows going through it. These two pipes are connected to a square container that is labeled, “Heat exchanger,” and has red arrows going into it from the upper pipe, orange arrows going away from it to the lower pipe and into a third system. The pipes leading into and out of the heat exchanger are labeled, “Recycled N subscript 2, H subscript 2.” The third system shows a container with an interior zig-zag-shaped pipe that sits on a base that contains a curled pipe on a storage tank. From the top of the image to the bottom are the terms, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” “Condenser,” “Cold water in,” “Refrigeration,” “N H subscript 3 ( l ),” and “Storage” Blue arrows lead away from the base of this system and into the second system while other blue arrows lead into the system from the right side of the diagram and back out of the same chamber.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_13_03_factory.jpg"/>
@@ -381,15 +381,15 @@ kafla</title>
 <exercise id="fs-idp6498944">
 <problem id="fs-idp58018304">
 <para id="fs-idp736656">Eftirfarandi jafna táknar afturkræfa
-sundrun: \[\[MATH:1\]\]</para>
+sundrun: <m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>CaO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp25940960">Við hvaða aðstæður mun sundrun í
 lokuðu íláti ganga til fulls þannig að ekkert CaCO<sub>3</sub> verður eftir?</para>
 </problem>
 <solution id="fs-idp109030592">
 <para id="fs-idp51761424">Magn CaCO<sub>3</sub> verður að vera svo
-lítið að \[\[MATH:2\]\] sé minna en <emphasis effect="italics">K<sub>P</sub></emphasis> þegar CaCO<sub>3</sub> hefur sundrast
+lítið að <m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:math> sé minna en <emphasis effect="italics">K<sub>P</sub></emphasis> þegar CaCO<sub>3</sub> hefur sundrast
 að fullu. Með öðrum orðum, upphafsmagn CaCO<sub>3</sub> getur ekki myndað allan
-þann \[\[MATH:3\]\] sem þarf til að ná jafnvægi.</para>
+þann <m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:math> sem þarf til að ná jafnvægi.</para>
 </solution>
 </exercise>
 <exercise id="fs-idp22318672">
@@ -419,7 +419,7 @@ hvarfefnishliðinni.</para>
 <exercise id="fs-idp176997392">
 <problem id="fs-idp201726448">
 <para id="fs-idp88632768">Eftirfarandi hvarf á sér stað
-þegar kveikt er á hellu á gaseldavél: \[\[MATH:4\]\]</para>
+þegar kveikt er á hellu á gaseldavél: <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp113241664">Næst jafnvægi milli CH<sub>4</sub>, O<sub>2</sub>,
 CO<sub>2</sub> og H<sub>2</sub>O við þessar aðstæður? Útskýrðu svarið.</para>
 </problem>
@@ -436,7 +436,7 @@ brennisteinssýru er myndun brennisteinsþríoxíðs, SO<sub>3</sub>, úr
 brennisteinsdíoxíði, SO<sub>2</sub>, og súrefni, O<sub>2</sub>, eins og sýnt er hér. Við
 hátt hitastig er hvarfhraði myndunar SO<sub>3</sub> hærri, en jafnvægismagn
 (styrkur eða hlutþrýstingur) SO<sub>3</sub> er lægra en það væri við lægra
-hitastig. \[\[MATH:5\]\]</para><para id="fs-idp28525136">(a) Hækkar jafnvægisfastinn fyrir
+hitastig. <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para><para id="fs-idp28525136">(a) Hækkar jafnvægisfastinn fyrir
 hvarfið, lækkar hann eða helst hann nokkurn veginn óbreyttur þegar
 hitastigið hækkar?</para>
 <para id="fs-idp26487568">(b) Er hvarfið innvermið eða
@@ -447,7 +447,7 @@ hitastigið hækkar?</para>
 <problem id="fs-idm2511216">
 <para id="fs-idp45632">Stingdu upp á fjórum leiðum til að
 auka styrk hýdrasíns, N<sub>2</sub>H<sub>4</sub>, í jafnvægi sem lýst er með eftirfarandi
-jöfnu: \[\[MATH:6\]\]</para>
+jöfnu: <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>95</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idp52611824">
 <para id="fs-idp27030640">Bæta við N<sub>2</sub>; bæta við H<sub>2</sub>;
@@ -458,7 +458,7 @@ minnka rúmmál ílátsins; hita blönduna.</para>
 <problem id="fs-idp93580528">
 <para id="fs-idp208675872">Stingdu upp á fjórum leiðum til
 að auka styrk PH<sub>3</sub> í jafnvægi sem lýst er með eftirfarandi jöfnu:
-\[\[MATH:7\]\]</para>
+<m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>PH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>110.5</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 </problem>
 </exercise>
 <exercise id="fs-idp53124112">
@@ -466,10 +466,10 @@ að auka styrk PH<sub>3</sub> í jafnvægi sem lýst er með eftirfarandi jöfnu
 <para id="fs-idp54257744">Hvernig mun hækkun á hitastigi
 hafa áhrif á hvert eftirfarandi jafnvægi? Hvernig mun minnkun á rúmmáli
 hvarfílátsins hafa áhrif á hvert þeirra?</para>
-<para id="fs-idm857712">(a) \[\[MATH:8\]\]</para>
-<para id="fs-idp76135856">(b) \[\[MATH:9\]\]</para>
-<para id="fs-idm7155392">(c) \[\[MATH:10\]\]</para>
-<para id="fs-idp153795216">(d) \[\[MATH:11\]\]</para>
+<para id="fs-idm857712">(a) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>92</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp76135856">(b) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>181</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
+<para id="fs-idm7155392">(c) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−285</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp153795216">(d) <m:math><m:mrow><m:mtext>CaO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−176</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idp47561040">
 <para id="fs-idp85418448">(a) <emphasis effect="italics">T</emphasis> hækkun = hliðrun til
@@ -484,10 +484,10 @@ minnkun = hliðrun til hægri.</para>
 <para id="fs-idp79334080">Hvernig mun hækkun á hitastigi
 hafa áhrif á hvert eftirfarandi jafnvægi? Hvernig mun minnkun á rúmmáli
 hvarfílátsins hafa áhrif á hvert þeirra?</para>
-<para id="fs-idm740576">(a) \[\[MATH:12\]\]</para>
-<para id="fs-idp36815136">(b) \[\[MATH:13\]\]</para>
-<para id="fs-idp42775104">(c) \[\[MATH:14\]\]</para>
-<para id="fs-idp41148976">(d) \[\[MATH:15\]\]</para>
+<para id="fs-idm740576">(a) <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>484</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp36815136">(b) <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−92.2</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp42775104">(c) <m:math><m:mrow><m:mn>2</m:mn><m:mtext>Br</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−224</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
+<para id="fs-idp41148976">(d) <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>HI</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>53</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 </problem>
 </exercise>
 <exercise id="fs-idp65024704">
@@ -496,7 +496,7 @@ hvarfílátsins hafa áhrif á hvert þeirra?</para>
 kolmónoxíði og vetni við hátt hitastig og háan þrýsting í návist
 viðeigandi hvata.</para>
 <para id="fs-idp47071392">(a) Skrifaðu stæðuna fyrir
-jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa hvarfið \[\[MATH:16\]\]</para>
+jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa hvarfið <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−90.2</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp114921120">(b) Hvað gerist með styrk H<sub>2</sub>,
 CO og CH<sub>3</sub>OH við jafnvægi ef meira H<sub>2</sub> er bætt við?</para>
 <para id="fs-idp237064112">(c) Hvað gerist með styrk H<sub>2</sub>,
@@ -509,10 +509,10 @@ CO og CH<sub>3</sub>OH við jafnvægi ef hitastig kerfisins er hækkað?</para>
 CO og CH<sub>3</sub>OH við jafnvægi ef meiri hvata er bætt við?</para>
 </problem>
 <solution id="fs-idp262334176">
-<para id="fs-idp82839488">(a) \[\[MATH:17\]\] (b) \[H<sub>2</sub>\]
-hækkar, \[CO\] lækkar, \[CH<sub>3</sub>OH\] hækkar; (c), \[H<sub>2</sub>\] hækkar, \[CO\]
-lækkar, \[CH<sub>3</sub>OH\] lækkar; (d), \[H<sub>2</sub>\] hækkar, \[CO\] hækkar,
-\[CH<sub>3</sub>OH\] hækkar; (e), \[H<sub>2</sub>\] hækkar, \[CO\] hækkar, \[CH<sub>3</sub>OH\]
+<para id="fs-idp82839488">(a) <m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo stretchy="false">[</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (b) [H<sub>2</sub>]
+hækkar, [CO] lækkar, [CH<sub>3</sub>OH] hækkar; (c), [H<sub>2</sub>] hækkar, [CO]
+lækkar, [CH<sub>3</sub>OH] lækkar; (d), [H<sub>2</sub>] hækkar, [CO] hækkar,
+[CH<sub>3</sub>OH] hækkar; (e), [H<sub>2</sub>] hækkar, [CO] hækkar, [CH<sub>3</sub>OH]
 lækkar; (f), engar breytingar.</para>
 </solution>
 </exercise>
@@ -521,7 +521,7 @@ lækkar; (f), engar breytingar.</para>
 <para id="fs-idp155494352">Nitur og súrefni hvarfast við
 hátt hitastig.</para>
 <para id="fs-idp76209904">(a) Skrifaðu jöfnuna fyrir
-jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa hvarfið \[\[MATH:18\]\]</para>
+jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa hvarfið <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>181</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp215116176">(b) Hvað gerist fyrir styrk N<sub>2</sub>,
 O<sub>2</sub> og NO við jafnvægi ef meira O<sub>2</sub> er bætt við?</para>
 <para id="fs-idp166633472">(c) Hvað gerist fyrir styrk N<sub>2</sub>,
@@ -542,7 +542,7 @@ O<sub>2</sub> og NO við jafnvægi ef hvata er bætt við?</para>
 CO, er mikilvægt iðnaðareldsneyti sem er framleitt með hvarfi gufu við
 glóandi koks, sem er nánast hreint kolefni.</para>
 <para id="fs-idp153944320">(a) Skrifaðu jöfnuna fyrir
-jafnvægisfastann fyrir afturkræfa hvarfið \[\[MATH:19\]\]</para>
+jafnvægisfastann fyrir afturkræfa hvarfið <m:math><m:mrow><m:mtext>C</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>131.30</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp139982336">(b) Hvað gerist fyrir styrk hvers
 hvarfefnis og myndefnis við jafnvægi ef meira C er bætt við?</para>
 <para id="fs-idp37591792">(c) Hvað gerist fyrir styrk hvers
@@ -553,11 +553,11 @@ hvarfefnis og myndefnis við jafnvægi ef CO er bætt við?</para>
 hvarfefnis og myndefnis við jafnvægi ef hitastig kerfisins er hækkað?</para>
 </problem>
 <solution id="fs-idp24515792">
-<para id="fs-idm4087504">(a) \[\[MATH:20\]\] (b) \[H<sub>2</sub>O\]
-engin breyting, \[CO\] engin breyting, \[H<sub>2</sub>\] engin breyting; (c)
-\[H<sub>2</sub>O\] minnkar, \[CO\] minnkar, \[H<sub>2</sub>\] minnkar; (d) \[H<sub>2</sub>O\]
-eykst, \[CO\] eykst, \[H<sub>2</sub>\] minnkar; (e) \[H<sub>2</sub>O\] minnkar, \[CO\]
-eykst, \[H<sub>2</sub>\] eykst. Í (b), (c), (d) og (e) mun massi kolefnis
+<para id="fs-idm4087504">(a) <m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>;</m:mo></m:mrow></m:math> (b) [H<sub>2</sub>O]
+engin breyting, [CO] engin breyting, [H<sub>2</sub>] engin breyting; (c)
+[H<sub>2</sub>O] minnkar, [CO] minnkar, [H<sub>2</sub>] minnkar; (d) [H<sub>2</sub>O]
+eykst, [CO] eykst, [H<sub>2</sub>] minnkar; (e) [H<sub>2</sub>O] minnkar, [CO]
+eykst, [H<sub>2</sub>] eykst. Í (b), (c), (d) og (e) mun massi kolefnis
 breytast en styrkur þess (virkni) breytist ekki.</para>
 </solution>
 </exercise>
@@ -566,7 +566,7 @@ breytast en styrkur þess (virkni) breytist ekki.</para>
 <para id="fs-idm14354544">Hreinan járnmálm er hægt að
 framleiða með afoxun járn(III)oxíðs með vetnisgasi.</para>
 <para id="fs-idm5772208">(a) Skrifaðu jöfnuna fyrir
-jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa efnahvarfið \[\[MATH:21\]\]</para>
+jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa efnahvarfið <m:math><m:mrow><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>Fe</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>98.7</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp103391248">(b) Hvað gerist fyrir styrk hvers
 hvarfefnis og myndefnis við jafnvægi ef meira Fe er bætt við?</para>
 <para id="fs-idp67029792">(c) Hvað gerist fyrir styrk hvers
@@ -581,7 +581,7 @@ hvarfefnis og myndefnis við jafnvægi ef hitastig kerfisins er hækkað?</para>
 <exercise id="fs-idp52451264">
 <problem id="fs-idp260986016">
 <para id="fs-idp260986272">Ammoníak er veikur basi sem
-hvarfast við vatn samkvæmt þessari jöfnu: \[\[MATH:22\]\]</para>
+hvarfast við vatn samkvæmt þessari jöfnu: <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp41532304">Mun eitthvað af eftirfarandi auka
 hlutfall ammoníaks sem breytist í ammóníumjón í vatni?</para>
 <para id="fs-idp26686944">(a) Álagning NaOH</para>
@@ -595,9 +595,9 @@ hlutfall ammoníaks sem breytist í ammóníumjón í vatni?</para>
 <exercise id="fs-idp261498704">
 <problem id="fs-idm1536240">
 <para id="fs-idp25609312">Ediksýra er veik sýra sem hvarfast
-við vatn samkvæmt þessari jöfnu: \[\[MATH:23\]\]</para>
+við vatn samkvæmt þessari jöfnu: <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp114009808">Mun eitthvað af eftirfarandi auka
-hlutfall ediksýru sem hvarfast og myndar \[\[MATH:24\]\] jón?</para>
+hlutfall ediksýru sem hvarfast og myndar <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> jón?</para>
 <para id="fs-idm11269984">(a) Álagning HCl</para>
 <para id="fs-idp154007760">(b) Álagning NaOH</para>
 <para id="fs-idp27637856">(c) Álagning NaCH<sub>3</sub>CO<sub>2</sub></para>
@@ -607,8 +607,8 @@ hlutfall ediksýru sem hvarfast og myndar \[\[MATH:24\]\] jón?</para>
 <problem id="fs-idp157397168">
 <para id="fs-idp150087168">Stingdu upp á tveimur leiðum til
 að minnka jafnvægisstyrk Ag<sup>+</sup> í lausn af Na<sup>+</sup>, Cl<sup>−</sup>, Ag<sup>+</sup> og
-\[\[MATH:25\]\] í snertingu við fast efni AgCl. \[\[MATH:26\]\]
-\[\[MATH:27\]\]</para>
+<m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> í snertingu við fast efni AgCl. <m:math><m:mrow><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math>
+<m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−65.9</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idm2616800">
 <para id="fs-idm2616544">Bættu NaCl eða öðru salti sem
@@ -619,13 +619,13 @@ til hægri og meira AgCl(<emphasis effect="italics">s</emphasis>) fellur út.</p
 <exercise id="fs-idm33369776">
 <problem id="fs-idp157407216">
 <para id="fs-idp157407472">Hvernig er hægt að auka þrýsting
-vatnsgufu í eftirfarandi jafnvægi? \[\[MATH:28\]\]</para>
+vatnsgufu í eftirfarandi jafnvægi? <m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>41</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 </problem>
 </exercise>
 <exercise id="fs-idp92538384">
 <problem id="fs-idp92538640">
 <para id="fs-idm15433728">Lausn er mettuð af silfursúlfati
-og inniheldur umfram- fast efni silfursúlfat: \[\[MATH:29\]\]</para>
+og inniheldur umfram- fast efni silfursúlfat: <m:math><m:mrow><m:msub><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mrow><m:mn>2−</m:mn></m:mrow></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idm200271568">Litlu magni af föstu
 silfursúlfati sem inniheldur geislavirka samsætu af silfri er bætt út í
 þessa lausn. Innan nokkurra mínútna er sýni tekið úr lausnarhlutanum og

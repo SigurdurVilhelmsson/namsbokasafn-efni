@@ -60,7 +60,7 @@ eftirfarandi hátt:</para>
 hitastigið er aukið, eykst meðalhraði og hreyfiorka gassameindanna. Ef
 rúmmálinu er haldið föstu, leiðir aukinn hraði gassameindanna til tíðari
 og kröftugri árekstra við veggi ílátsins, sem eykur þar með þrýstinginn
-(&lt;!-- XREF:2 -->).</item>
+(<!-- XREF:2 -->).</item>
 <item><emphasis effect="italics">Lögmál Charles.</emphasis> Ef hitastig
 gass er aukið, er aðeins hægt að viðhalda föstum þrýstingi ef rúmmál
 gassins eykst. Þetta mun leiða til lengri meðalvegalengda sem
@@ -73,13 +73,13 @@ vegna meiri hreyfiorku við hærra hitastig.</item>
 ákveðins magns af gasi við ákveðið hitastig er minnkað (þ.e. ef gasið er
 <emphasis effect="italics">þjappað saman</emphasis>), verða sameindirnar fyrir minna flatarmáli ílátsveggja.
 Árekstrar við veggi ílátsins verða því tíðari og þrýstingurinn sem gasið
-beitir mun aukast (&lt;!-- XREF:3 -->).</item>
+beitir mun aukast (<!-- XREF:3 -->).</item>
 <item><emphasis effect="italics">Lögmál Avogadros.</emphasis> Við
 fastan þrýsting og hitastig eru tíðni og kraftur árekstra sameinda við
 veggi fastir. Við slíkar aðstæður mun aukning á fjölda gassameinda
 krefjast hlutfallslegrar aukningar á rúmmáli ílátsins til að ná fram
 fækkun árekstra á flatareiningu til að vega upp á móti aukinni tíðni
-árekstra (&lt;!-- XREF:4 -->).</item>
+árekstra (<!-- XREF:4 -->).</item>
 <item><emphasis effect="italics">Lögmál Daltons.</emphasis> Vegna
 mikillar fjarlægðar á milli þeirra rekast sameindir eins gass í
 efnablöndu á veggi ílátsins með sömu tíðni hvort sem önnur gös eru til
@@ -110,7 +110,7 @@ mjög mismunandi hraða; en vegna <emphasis effect="italics">gríðarlegs</empha
 er hraðadreifing sameindanna og meðalhraði þeirra stöðugur. Þessi
 hraðadreifing sameinda er þekkt sem Maxwell-Boltzmann-dreifing og hún
 sýnir hlutfallslegan fjölda sameinda í gassýni sem hafa ákveðinn hraða
-(&lt;!-- XREF:5 -->).</para>
+(<!-- XREF:5 -->).</para>
 <figure id="CNX_Chem_09_05_MolSpeed1" class="scaled-down">
 <media id="fs-idm97447152" alt="A graph is shown. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 20 beginning at 0 and extending up to 120. The vertical axis is labeled, “Fraction of molecules.” A positively or right-skewed curve is shown in red which begins at the origin and approaches the horizontal axis around 120 m per s. At the peak of the curve, a point is indicated with a black dot and is labeled, “v subscript p.” A vertical dashed line extends from this point to the horizontal axis at which point the intersection is labeled, “v subscript p.” Slightly to the right of the peak a second black dot is placed on the curve. This point is labeled, “v subscript r m s.” A vertical dashed line extends from this point to the horizontal axis at which point the intersection is labeled, “v subscript r m s.” The label, “O subscript 2 at T equals 300 K” appears in the open space to the right of the curve.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_05_MolSpeed1.jpg"/>
@@ -167,7 +167,7 @@ minni hraða og dreifingin hliðrast í átt að meiri hraða í heildina, þ.e.
 til hægri. Ef hitastig lækkar, minnkar KE<sub>avg</sub>, fleiri sameindir hafa
 minni hraða og færri sameindir hafa meiri hraða og dreifingin hliðrast í
 átt að minni hraða í heildina, þ.e. til vinstri. Þessi hegðun er sýnd
-fyrir niturgas í &lt;!-- XREF:6 -->.</para>
+fyrir niturgas í <!-- XREF:6 -->.</para>
 <figure id="CNX_Chem_09_05_MolSpeed2" class="scaled-down">
 <media id="fs-idm138828064" alt="A graph with four positively or right-skewed curves of varying heights is shown. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 500 beginning at 0 and extending up to 1500. The vertical axis is labeled, “Fraction of molecules.” The label, “N subscript 2,” appears in the open space in the upper right area of the graph. The tallest and narrowest of these curves is labeled, “100 K.” Its right end appears to touch the horizontal axis around 700 m per s. It is followed by a slightly wider curve which is labeled, “200 K,” that is about three quarters of the height of the initial curve. Its right end appears to touch the horizontal axis around 850 m per s. The third curve is significantly wider and only about half the height of the initial curve. It is labeled, “500 K.” Its right end appears to touch the horizontal axis around 1450 m per s. The final curve is only about one third the height of the initial curve. It is much wider than the others, so much so that its right end has not yet reached the horizontal axis. This curve is labeled, “1000 K.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_05_MolSpeed2.jpg"/>
@@ -183,7 +183,7 @@ hafa fleiri háhraða eindir og hærri <emphasis effect="italics">u<sub>rms</sub
 hámarki við tiltölulega hærri hraða. Gös sem samanstanda af þyngri
 sameindum hafa fleiri lághraða eindir, lægri <emphasis effect="italics">u<sub>rms</sub></emphasis> og hraðadreifingu
 sem nær hámarki við tiltölulega lægri hraða. Þessi þróun sést á gögnum
-fyrir röð eðalgasa sem sýnd eru í &lt;!-- XREF:7 -->.</para>
+fyrir röð eðalgasa sem sýnd eru í <!-- XREF:7 -->.</para>
 <figure id="CNX_Chem_09_05_MolSpeed3" class="scaled-down">
 <media id="fs-idm50029872" alt="A graph is shown with four positively or right-skewed curves of varying heights. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 500 beginning at 0 and extending up to 3000. The vertical axis is labeled, “Fraction of molecules.” The tallest and narrowest of these curves is labeled, “X e.” Its right end appears to touch the horizontal axis around 600 m per s. It is followed by a slightly wider curve which is labeled, “A r,” that is about half the height of the initial curve. Its right end appears to touch the horizontal axis around 900 m per s. The third curve is significantly wider and just over a third of the height of the initial curve. It is labeled, “N e.” Its right end appears to touch the horizontal axis around 1200 m per s. The final curve is only about one fourth the height of the initial curve. It is much wider than the others, so much so that its right reaches the horizontal axis around 2500 m per s. This curve is labeled, “H e.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_05_MolSpeed3.jpg"/>
@@ -194,7 +194,7 @@ léttari sameindir að meðaltali hraðar en þyngri sameindir.</caption>
 </figure>
 <note id="fs-idm177038688" class="chemistry link-to-learning">
 <para id="fs-idm110634256">Nota má
-&lt;!-- LINK:1 -->gasherminn&lt;!-- /LINK --> til að skoða áhrif hitastigs á
+<!-- LINK:1 -->gasherminn<!-- /LINK --> til að skoða áhrif hitastigs á
 sameindahraða. Skoðaðu „orkusúlurit“ hermisins (hraðadreifingar
 sameinda) og „upplýsingar um efni“ (sem gefur upp meðalhraða) fyrir
 sameindir með mismunandi massa við ýmis hitastig.</para>
@@ -237,11 +237,11 @@ dreifing þessa hraða er háð hitastigi gassins og massa sameinda þess.</para
 <table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
-<row><entry>\[\[MATH:1\]\]</entry>
+<row><entry><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mover accent="true"><m:mrow><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mo stretchy="true">¯</m:mo></m:mover></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>u</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>3</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>4</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>…</m:mo></m:mrow><m:mi>n</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></entry>
 </row>
-<row><entry>\[\[MATH:2\]\]</entry>
+<row><entry><m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></entry>
 </row>
-<row><entry>\[\[MATH:3\]\]</entry>
+<row><entry><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></entry>
 </row>
 </tbody></tgroup></table>
 </section>
@@ -282,7 +282,7 @@ aukinn um stuðulinn 2.</para>
 <exercise id="fs-idp16129152">
 <problem id="fs-idm136526752">
 <para id="fs-idm89452736">Hraðadreifing sameinda í
-helíumsýni er sýnd í &lt;!-- XREF:8 -->. Ef sýnið er kælt, mun hraðadreifingin
+helíumsýni er sýnd í <!-- XREF:8 -->. Ef sýnið er kælt, mun hraðadreifingin
 líkjast meira dreifingu H<sub>2</sub> eða H<sub>2</sub>O? Útskýrðu svarið.</para>
 </problem>
 <solution id="fs-idm136225376">
@@ -310,8 +310,8 @@ meðalferningsrótarhraða sameindanna?</para>
 <solution id="fs-idm175816864">
 <para id="fs-idm47263904">(a) Þrýstingur gassins helst
 óbreyttur. (b) Meðalhreyfiorkan tvöfaldast. (c)
-Meðalferningsrótarhraðinn eykst í \[\[MATH:4\]\] sinnum upphafsgildi
-sitt; <emphasis effect="italics">u</emphasis><sub>rms</sub> er í réttu hlutfalli við \[\[MATH:5\]\]</para>
+Meðalferningsrótarhraðinn eykst í <m:math><m:mrow><m:msqrt><m:mn>2</m:mn></m:msqrt></m:mrow></m:math> sinnum upphafsgildi
+sitt; <emphasis effect="italics">u</emphasis><sub>rms</sub> er í réttu hlutfalli við <m:math><m:mrow><m:msqrt><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt><m:mo>.</m:mo></m:mrow></m:math></para>
 </solution>
 </exercise>
 <exercise id="fs-idm98413904">
@@ -332,12 +332,12 @@ jafn eðlismassa andrúmsloftsins fyrir utan belginn?</para><para id="fs-idm1840
 hitastig hefur þurrt loft eðlismassann 1,2256 g/L. Hver er
 (meðal)mólmassi þurrs lofts?</para>
 <para id="fs-idm205391088">(d) Meðalhitastig gassins í
-loftbelg er 1,30 \[\[MATH:6\]\] 10<sup>2</sup> °F. Reiknaðu eðlismassa þess, að
+loftbelg er 1,30 <m:math><m:mo>×</m:mo></m:math> 10<sup>2</sup> °F. Reiknaðu eðlismassa þess, að
 því gefnu að mólmassinn sé jafn mólmassa þurrs lofts.</para><para id="fs-idm182287728">(e) Lyftigeta loftbelgs er jöfn
 mismuninum á massa kalda loftsins sem belgurinn ryður frá sér og massa
 gassins í belgnum. Hver er munurinn á massa 1,00 L af kalda loftinu í
 hluta (c) og heita loftinu í hluta (d)?</para><para id="fs-idm79081968">(f) Meðalbelgur hefur 60 feta
-þvermál og 1,1 \[\[MATH:7\]\] 10<sup>5</sup> ft<sup>3</sup> rúmmál. Hver er lyftikraftur
+þvermál og 1,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> ft<sup>3</sup> rúmmál. Hver er lyftikraftur
 slíks belgs? Ef þyngd belgsins og búnaðar hans er 500 pund, hver er þá
 burðargeta hans fyrir farþega og farm?</para>
 <para id="fs-idm148488336">(g) Belgur ber 40,0 lítra af
@@ -351,14 +351,14 @@ fluginu stendur?</para>
 <solution id="fs-idm111172832">
 <para id="fs-idm120199952">(a) jafn; (b) minni en; (c)
 29,48 g mól<sup>−1</sup>; (d) 1,0966 g L<sup>−1</sup>; (e) 0,129 g/L; (f) 4,01
-\[\[MATH:8\]\] 10<sup>5</sup> g; hrein lyftigeta = 384 lb; (g) 270 L; (h) 39,1 kJ
+<m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> g; hrein lyftigeta = 384 lb; (g) 270 L; (h) 39,1 kJ
 mín<sup>−1</sup></para>
 </solution>
 </exercise>
 <exercise id="fs-idm194405232">
 <problem id="fs-idp25041248">
 <para id="fs-idm156558944">Sýndu að hlutfall sveimhraða gass
-1 á móti sveimhraða gass 2, \[\[MATH:9\]\] er það sama við 0 °C og 100
+1 á móti sveimhraða gass 2, <m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math> er það sama við 0 °C og 100
 °C.</para>
 </problem>
 </exercise>

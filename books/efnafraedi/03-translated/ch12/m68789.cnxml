@@ -21,7 +21,7 @@ efnajöfnunni</para>
 <para id="fs-idm656673904">þar sem <emphasis effect="italics">a</emphasis> og <emphasis effect="italics">b</emphasis> eru stuðlar í
 hlutfallaefnafræði. Hraðajafnan fyrir þetta efnahvarf er skrifuð sem:</para>
 <equation id="fs-idm276589968" class="unnumbered"><m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>[</m:mo><m:mi>A</m:mi><m:msup><m:mrow><m:mo>]</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo>[</m:mo><m:mi>B</m:mi><m:msup><m:mrow><m:mo>]</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:math></equation>
-<para id="fs-idp18257184">þar sem \[<emphasis effect="italics">A</emphasis>\] og \[<emphasis effect="italics">B</emphasis>\] tákna
+<para id="fs-idp18257184">þar sem [<emphasis effect="italics">A</emphasis>] og [<emphasis effect="italics">B</emphasis>] tákna
 mólstyrk hvarfefna og <emphasis effect="italics">k</emphasis> er <emphasis effect="bold">hraðafastinn</emphasis>, sem er sértækur fyrir
 tiltekið efnahvarf við tiltekið hitastig. Veldin <emphasis effect="italics">m</emphasis> og <emphasis effect="italics">n</emphasis> eru
 <emphasis effect="bold">hvarfstigin</emphasis> og eru yfirleitt jákvæðar heiltölur, þó þau geti verið
@@ -60,14 +60,14 @@ stigi í CO við 100 °C. Hver er hraðajafna efnahvarfsins?</para>
 NO<sub>2</sub>; því er <emphasis effect="italics">m</emphasis> = 2. Efnahvarfið er af núllta stigi í CO; því er <emphasis effect="italics">n</emphasis> =
 0. Hraðajafnan er:</para>
 <equation id="fs-idm49710800" class="unnumbered"><m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mo stretchy="false">]</m:mo><m:mn>2</m:mn></m:msup><m:mo stretchy="false">[</m:mo><m:mtext>CO</m:mtext><m:msup><m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>0</m:mn></m:msup><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation><para id="fs-idm250199824">Mundu að tala í núllta veldi er jöfn
-1, þannig að \[CO\]<sup>0</sup> = 1, og þess vegna má sleppa styrkliðnum fyrir CO
+1, þannig að [CO]<sup>0</sup> = 1, og þess vegna má sleppa styrkliðnum fyrir CO
 úr hraðajöfnunni: hvarfhraðinn er eingöngu háður styrk NO<sub>2</sub>. Í síðari
 kafla um hvarfganga verður útskýrt hvernig styrkur hvarfefnis getur haft
 engin áhrif á hvarfhraða þrátt fyrir að taka þátt í efnahvarfinu.</para>
 <para id="fs-idm273206544"><title>Prófaðu þig áfram</title>Hraðajafnan fyrir efnahvarfið:</para>
 <equation id="fs-idm122197664" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idm122425904">hefur verið ákvörðuð sem hraði =
-<emphasis effect="italics">k</emphasis>\[NO\]<sup>2</sup>\[H<sub>2</sub>\]. Hvert er stig efnahvarfsins með tilliti til hvers
+<emphasis effect="italics">k</emphasis>[NO]<sup>2</sup>[H<sub>2</sub>]. Hvert er stig efnahvarfsins með tilliti til hvers
 hvarfefnis og hvert er heildarstig efnahvarfsins?</para>
 <note id="fs-idm168583904"><title>Answer:</title>
 <para id="fs-idm141295376">stig með tilliti til NO = 2; stig
@@ -102,7 +102,7 @@ sem saman eru notaðir til að setja fram hraðajöfnu. Þessi aðferð er sýnd
 út frá upphafshraða</title>Óson í efri lofthjúpnum eyðist þegar
 það hvarfast við nituroxíð. Hraði efnahvarfa nituroxíða við óson eru
 mikilvægir þættir þegar metið er hversu mikilvæg þessi efnahvörf eru við
-myndun ósonholsins yfir Suðurskautslandinu (&lt;!-- XREF:1 -->). Eitt slíkt
+myndun ósonholsins yfir Suðurskautslandinu (<!-- XREF:1 -->). Eitt slíkt
 efnahvarf er samruni niturmónoxíðs, NO, við óson, O<sub>3</sub>:</para>
 <!-- figure handled separately -->
 <equation id="fs-idm215850976" class="unnumbered"><m:math><m:mrow><m:mtext>NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
@@ -118,23 +118,23 @@ fyrir efnahvarfið við 25 °C.</para>
 frá tilraunagögnum með því að nota eftirfarandi þriggja þrepa ferli:</para>
 <list id="fs-idp46707232" list-type="enumerated" number-style="arabic" class="stepwise">
 <item><emphasis effect="italics">Ákvarðaðu gildi</emphasis> m <emphasis effect="italics">út frá
-gögnum þar sem \[NO\] breytist og \[O<sub>3</sub>\] er fasti.</emphasis> Í síðustu þremur
-tilraununum breytist \[NO\] á meðan \[O<sub>3</sub>\] er fasti. Þegar \[NO\]
-tvöfaldast frá tilraun 3 til 4 tvöfaldast hvarfhraðinn og þegar \[NO\]
+gögnum þar sem [NO] breytist og [O<sub>3</sub>] er fasti.</emphasis> Í síðustu þremur
+tilraununum breytist [NO] á meðan [O<sub>3</sub>] er fasti. Þegar [NO]
+tvöfaldast frá tilraun 3 til 4 tvöfaldast hvarfhraðinn og þegar [NO]
 þrefaldast frá tilraun 3 til 5 þrefaldast hvarfhraðinn einnig. Þannig er
-hvarfhraðinn einnig í beinu hlutfalli við \[NO\] og <emphasis effect="italics">m</emphasis> í hraðajöfnunni
+hvarfhraðinn einnig í beinu hlutfalli við [NO] og <emphasis effect="italics">m</emphasis> í hraðajöfnunni
 er jafnt og 1.</item>
 <item><emphasis effect="italics">Ákvarðaðu gildi</emphasis> n <emphasis effect="italics">út frá
-gögnum þar sem \[O<sub>3</sub>\] breytist og \[NO\] er fasti.</emphasis> Í fyrstu þremur
-tilraununum er \[NO\] fasti og \[O<sub>3</sub>\] breytist. Hvarfhraðinn breytist
-í beinu hlutfalli við breytinguna á \[O<sub>3</sub>\]. Þegar \[O<sub>3</sub>\] tvöfaldast
-frá tilraun 1 til 2 tvöfaldast hvarfhraðinn; þegar \[O<sub>3</sub>\] þrefaldast
+gögnum þar sem [O<sub>3</sub>] breytist og [NO] er fasti.</emphasis> Í fyrstu þremur
+tilraununum er [NO] fasti og [O<sub>3</sub>] breytist. Hvarfhraðinn breytist
+í beinu hlutfalli við breytinguna á [O<sub>3</sub>]. Þegar [O<sub>3</sub>] tvöfaldast
+frá tilraun 1 til 2 tvöfaldast hvarfhraðinn; þegar [O<sub>3</sub>] þrefaldast
 frá tilraun 1 til 3 þrefaldast hvarfhraðinn einnig. Þannig er
-hvarfhraðinn í beinu hlutfalli við \[O<sub>3</sub>\] og <emphasis effect="italics">n</emphasis> er jafnt og 1.
-Hraðajafnan er því: \[\[MATH:5\]\]</item>
+hvarfhraðinn í beinu hlutfalli við [O<sub>3</sub>] og <emphasis effect="italics">n</emphasis> er jafnt og 1.
+Hraðajafnan er því: <m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>1</m:mn></m:msup><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>1</m:mn></m:msup><m:mo>=</m:mo><m:mi>k</m:mi><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math></item>
 <item><emphasis effect="italics">Ákvarðaðu gildi</emphasis> k <emphasis effect="italics">út frá
 einu setti af styrkjum og samsvarandi hvarfhraða</emphasis>. Gögnin úr tilraun 1
-eru notuð hér að neðan: \[\[MATH:6\]\]</item>
+eru notuð hér að neðan: <m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mi>k</m:mi></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mtext>rate</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mn>6.60</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>mol L</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:menclose><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:msup><m:mrow><m:mtext>mol L</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>3.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo><m:mtext>2</m:mtext><m:mo>.</m:mo><m:mtext>2</m:mtext><m:mn>0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>7</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></item>
 </list>
 <para id="fs-idm352713280"><title>Prófaðu þekkingu þína</title>Asetaldehýð brotnar niður við hitun
 og myndar metan og kolmónoxíð samkvæmt jöfnunni:</para>
@@ -143,8 +143,8 @@ og myndar metan og kolmónoxíð samkvæmt jöfnunni:</para>
 fyrir hvarfið út frá eftirfarandi tilraunagögnum:</para>
 <!-- table handled separately -->
 <note id="fs-idm217041008"><title>Answer:</title>
-<para id="fs-idm234756944">\[\[MATH:7\]\] með <emphasis effect="italics">k</emphasis> = 6,73
-\[\[MATH:8\]\] 10<sup>−6</sup> L/mól/s</para>
+<para id="fs-idm234756944"><m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CHO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math> með <emphasis effect="italics">k</emphasis> = 6,73
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup> L/mól/s</para>
 </note>
 </example>
 <figure id="CNX_Chem_12_03_OzoneHole" class="scaled-down">
@@ -165,41 +165,41 @@ Suðurskautslandinu á vormánuðum þar. (heimild: breyting á verki NASA)</cap
 <thead>
 <row valign="middle">
 <entry align="left">Tilraun</entry>
-<entry align="left">\[NO\] (mól/L)</entry>
-<entry align="left">\[O<sub>3</sub>\] (mól/L)</entry>
-<entry align="left">\[\[MATH:9\]\]</entry>
+<entry align="left">[NO] (mól/L)</entry>
+<entry align="left">[O<sub>3</sub>] (mól/L)</entry>
+<entry align="left"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mo>[</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>]</m:mo></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo stretchy="false">(</m:mo><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
 <entry align="left">1</entry>
-<entry align="left">1,00 \[\[MATH:10\]\] 10<sup>−6</sup></entry>
-<entry align="left">3,00 \[\[MATH:11\]\] 10<sup>−6</sup></entry>
-<entry align="left">6,60 \[\[MATH:12\]\] 10<sup>−5</sup></entry>
+<entry align="left">1,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">3,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">6,60 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−5</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">2</entry>
-<entry align="left">1,00 \[\[MATH:13\]\] 10<sup>−6</sup></entry>
-<entry align="left">6,00 \[\[MATH:14\]\] 10<sup>−6</sup></entry>
-<entry align="left">1,32 \[\[MATH:15\]\] 10<sup>−4</sup></entry>
+<entry align="left">1,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">6,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">1,32 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−4</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">3</entry>
-<entry align="left">1,00 \[\[MATH:16\]\] 10<sup>−6</sup></entry>
-<entry align="left">9,00 \[\[MATH:17\]\] 10<sup>−6</sup></entry>
-<entry align="left">1,98 \[\[MATH:18\]\] 10<sup>−4</sup></entry>
+<entry align="left">1,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">9,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">1,98 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−4</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">4</entry>
-<entry align="left">2,00 \[\[MATH:19\]\] 10<sup>−6</sup></entry>
-<entry align="left">9,00 \[\[MATH:20\]\] 10<sup>−6</sup></entry>
-<entry align="left">3,96 \[\[MATH:21\]\] 10<sup>−4</sup></entry>
+<entry align="left">2,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">9,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">3,96 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−4</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">5</entry>
-<entry align="left">3,00 \[\[MATH:22\]\] 10<sup>−6</sup></entry>
-<entry align="left">9,00 \[\[MATH:23\]\] 10<sup>−6</sup></entry>
-<entry align="left">5,94 \[\[MATH:24\]\] 10<sup>−4</sup></entry>
+<entry align="left">3,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">9,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup></entry>
+<entry align="left">5,94 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−4</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -213,25 +213,25 @@ Suðurskautslandinu á vormánuðum þar. (heimild: breyting á verki NASA)</cap
 <thead>
 <row valign="middle">
 <entry align="left">Tilraun</entry>
-<entry align="left">\[CH<sub>3</sub>CHO\] (mól/L)</entry>
-<entry align="left">\[\[MATH:25\]\]</entry>
+<entry align="left">[CH<sub>3</sub>CHO] (mól/L)</entry>
+<entry align="left"><m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mrow><m:mtext>Δ[CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>CHO]</m:mtext></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
 <entry align="left">1</entry>
-<entry align="left">1,75 \[\[MATH:26\]\] 10<sup>−3</sup></entry>
-<entry align="left">2,06 \[\[MATH:27\]\] 10<sup>−11</sup></entry>
+<entry align="left">1,75 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup></entry>
+<entry align="left">2,06 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−11</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">2</entry>
-<entry align="left">3,50 \[\[MATH:28\]\] 10<sup>−3</sup></entry>
-<entry align="left">8,24 \[\[MATH:29\]\] 10<sup>−11</sup></entry>
+<entry align="left">3,50 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup></entry>
+<entry align="left">8,24 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−11</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">3</entry>
-<entry align="left">7,00 \[\[MATH:30\]\] 10<sup>−3</sup></entry>
-<entry align="left">3,30 \[\[MATH:31\]\] 10<sup>−10</sup></entry>
+<entry align="left">7,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup></entry>
+<entry align="left">3,30 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−10</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -246,25 +246,25 @@ tilraunagögnin til að ákvarða hraðajöfnuna og gildi hraðafastans fyrir
 <para id="fs-idm237007488"><title>Lausn</title>Hraðajafnan fyrir þetta hvarf mun
 hafa formið:</para>
 <equation id="fs-idm220277104" class="unnumbered"><m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:msup><m:mrow><m:mo>]</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:math></equation>
-<para id="fs-idm256345824">Eins og í &lt;!-- XREF:2 -->, nálgastu þetta
+<para id="fs-idm256345824">Eins og í <!-- XREF:2 -->, nálgastu þetta
 verkefni skref fyrir skref, ákvarðaðu gildi <emphasis effect="italics">m</emphasis> og <emphasis effect="italics">n</emphasis> út frá
 tilraunagögnunum og notaðu síðan þessi gildi til að ákvarða gildi <emphasis effect="italics">k</emphasis>. Í
 þessu dæmi verður þó notuð bein algebruleg nálgun (öfugt við óbeinu
 nálgunina í fyrra dæmi) til að ákvarða gildi <emphasis effect="italics">m</emphasis> og <emphasis effect="italics">n</emphasis>:</para>
 <list id="fs-idm47375696" list-type="enumerated" number-style="arabic" class="stepwise">
 <item><emphasis effect="italics">Ákvarðaðu gildi</emphasis> m <emphasis effect="italics">út frá
-gögnum þar sem \[NO\] breytist og \[Cl<sub>2</sub>\] er fasti</emphasis>. Skrifaðu
+gögnum þar sem [NO] breytist og [Cl<sub>2</sub>] er fasti</emphasis>. Skrifaðu
 hlutföllin með áskriftunum <emphasis effect="italics">x</emphasis> og <emphasis effect="italics">y</emphasis> til að tákna gögn úr tveimur
-mismunandi tilraunum: \[\[MATH:46\]\] Með því að nota þriðju tilraunina
-og fyrstu tilraunina, þar sem \[Cl<sub>2</sub>\] breytist ekki, fæst:
-\[\[MATH:47\]\] Með því að stytta út jafngilda liði í teljara og nefnara
-stendur eftir: \[\[MATH:48\]\] sem einfaldast í: \[\[MATH:49\]\] Notaðu
-logra til að ákvarða gildi veldisvísisins <emphasis effect="italics">m</emphasis>: \[\[MATH:50\]\] Staðfestu
-niðurstöðuna \[\[MATH:51\]\]</item>
+mismunandi tilraunum: <m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mrow><m:mtext>rate</m:mtext></m:mrow><m:mi>x</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>rate</m:mtext></m:mrow><m:mi>y</m:mi></m:msub></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:mtext>NO</m:mtext><m:mtext>]</m:mtext></m:mrow><m:mi>x</m:mi><m:mi>m</m:mi></m:msubsup><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>]</m:mtext></m:mrow><m:mi>x</m:mi><m:mi>n</m:mi></m:msubsup></m:mrow><m:mrow><m:mi>k</m:mi><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:mtext>NO</m:mtext><m:mtext>]</m:mtext></m:mrow><m:mi>y</m:mi><m:mi>m</m:mi></m:msubsup><m:msubsup><m:mrow><m:mtext>[</m:mtext><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>]</m:mtext></m:mrow><m:mi>y</m:mi><m:mi>n</m:mi></m:msubsup></m:mrow></m:mfrac></m:mrow></m:math> Með því að nota þriðju tilraunina
+og fyrstu tilraunina, þar sem [Cl<sub>2</sub>] breytist ekki, fæst:
+<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 3</m:mtext></m:mrow><m:mrow><m:mtext>rate 1</m:mtext></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mn>0.00675</m:mn></m:mrow><m:mrow><m:mn>0.00300</m:mn></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mn>0.15</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy="false">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:msup><m:mrow><m:mtext>(0.10)</m:mtext></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy="false">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math> Með því að stytta út jafngilda liði í teljara og nefnara
+stendur eftir: <m:math><m:mrow><m:mfrac><m:mrow><m:mn>0.00675</m:mn></m:mrow><m:mrow><m:mn>0.00300</m:mn></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>0.15</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>0.10</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math> sem einfaldast í: <m:math><m:mrow><m:mn>2.25</m:mn><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>m</m:mi></m:msup></m:mrow></m:math> Notaðu
+logra til að ákvarða gildi veldisvísisins <emphasis effect="italics">m</emphasis>: <m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.25</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>m</m:mi><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mfrac><m:mrow><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.25</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>m</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mn>2</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>m</m:mi></m:mtd></m:mtr></m:mtable></m:math> Staðfestu
+niðurstöðuna <m:math><m:mrow><m:msup><m:mrow><m:mn>1.5</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>2.25</m:mn></m:mrow></m:math></item>
 <item><emphasis effect="italics">Ákvarðaðu gildi</emphasis> n <emphasis effect="italics">út frá
-gögnum þar sem \[Cl<sub>2</sub>\] breytist og \[NO\] er fasti.</emphasis> \[\[MATH:52\]\]
-Stytting gefur: \[\[MATH:53\]\] sem einfaldast í: \[\[MATH:54\]\] Því
-hlýtur <emphasis effect="italics">n</emphasis> að vera 1 og form hraðajöfnunnar er: \[\[MATH:55\]\]</item>
+gögnum þar sem [Cl<sub>2</sub>] breytist og [NO] er fasti.</emphasis> <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 2</m:mtext></m:mrow><m:mrow><m:mtext>rate 1</m:mtext></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mn>0.00450</m:mn></m:mrow><m:mrow><m:mn>0.00300</m:mn></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy="false">(</m:mo><m:mn>0.15</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:mo stretchy="false">(</m:mo><m:mn>0.10</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math>
+Stytting gefur: <m:math><m:mrow><m:mfrac><m:mrow><m:mn>0.0045</m:mn></m:mrow><m:mrow><m:mn>0.0030</m:mn></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.15</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.10</m:mn></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math> sem einfaldast í: <m:math><m:mrow><m:mn>1.5</m:mn><m:mo>=</m:mo><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>1.5</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:math> Því
+hlýtur <emphasis effect="italics">n</emphasis> að vera 1 og form hraðajöfnunnar er: <m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mi>m</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math></item>
 <item><emphasis effect="italics">Ákvarðaðu tölugildi
 hraðafastans</emphasis> k <emphasis effect="italics">með viðeigandi einingum.</emphasis> Einingar fyrir hvarfhraða eru
 mól/L/s. Einingar fyrir <emphasis effect="italics">k</emphasis> eru þær sem þarf til að innsetning í
@@ -272,7 +272,7 @@ hraðajöfnuna gefi viðeigandi einingar fyrir hraðann. Í þessu dæmi eru
 einingar styrks mól<sup>3</sup>/L<sup>3</sup>. Einingar fyrir <emphasis effect="italics">k</emphasis> ættu að vera mól<sup>−2</sup>
 L<sup>2</sup>/s þannig að hraðinn sé gefinn í mól/L/s. Til að ákvarða gildi <emphasis effect="italics">k</emphasis>
 þegar búið er að leysa hraðajöfnuna er einfaldlega stungið inn gildum úr
-fyrstu tilrauninni og leyst fyrir <emphasis effect="italics">k</emphasis>: \[\[MATH:56\]\]</item>
+fyrstu tilrauninni og leyst fyrir <emphasis effect="italics">k</emphasis>: <m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mn>0.00300</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>k</m:mi><m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.10</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>0.10</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mn>1</m:mn></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>3.0</m:mn><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></item>
 </list>
 <para id="fs-idm209905104"><title>Prófaðu þekkingu þína</title>Notaðu upphafshraðagögnin sem gefin
 eru til að leiða út hraðajöfnu fyrir hvarfið sem hefur jöfnuna:</para>
@@ -281,9 +281,9 @@ eru til að leiða út hraðajöfnu fyrir hvarfið sem hefur jöfnuna:</para>
 <para id="fs-idm296296016">Ákvarðaðu hraðajöfnuna og gildi
 hraðafastans <emphasis effect="italics">k</emphasis> með viðeigandi einingum fyrir þetta hvarf.</para>
 <note id="fs-idm214856768"><title>Answer:</title>
-<para id="fs-idm19062704">\[\[MATH:57\]\] 2,00 = 2,00<emphasis effect="italics">y</emphasis> <emphasis effect="italics">y</emphasis> =
-1 \[\[MATH:58\]\] \[\[MATH:59\]\] Með því að setja inn styrksgögn úr
-tilraun 1 og leysa fyrir <emphasis effect="italics">k</emphasis> fæst: \[\[MATH:60\]\]</para>
+<para id="fs-idm19062704"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 2</m:mtext></m:mrow><m:mrow><m:mtext>rate 3</m:mtext></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mn>0.00092</m:mn></m:mrow><m:mrow><m:mn>0.00046</m:mn></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:mo stretchy="false">(</m:mo><m:mn>0.0040</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:mo stretchy="false">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math> 2,00 = 2,00<emphasis effect="italics">y</emphasis> <emphasis effect="italics">y</emphasis> =
+1 <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate 1</m:mtext></m:mrow><m:mrow><m:mtext>rate 2</m:mtext></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mn>0.00184</m:mn></m:mrow><m:mrow><m:mn>0.00092</m:mn></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mn>0.0040</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:mo stretchy="false">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow><m:mrow><m:mi>k</m:mi><m:mo stretchy="false">(</m:mo><m:mn>0.0020</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>x</m:mi></m:msup><m:mo stretchy="false">(</m:mo><m:mn>0.0040</m:mn><m:msup><m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mi>y</m:mi></m:msup></m:mrow></m:mfrac></m:mrow></m:math> <m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mn>2.00</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:msup><m:mn>2</m:mn><m:mi>x</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mn>2</m:mn><m:mi>y</m:mi></m:msup></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mn>2.00</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:msup><m:mn>2</m:mn><m:mi>x</m:mi></m:msup></m:mrow><m:mrow><m:msup><m:mn>2</m:mn><m:mn>1</m:mn></m:msup></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mn>4.00</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:msup><m:mn>2</m:mn><m:mi>x</m:mi></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>x</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>2</m:mn></m:mtd></m:mtr></m:mtable></m:math> Með því að setja inn styrksgögn úr
+tilraun 1 og leysa fyrir <emphasis effect="italics">k</emphasis> fæst: <m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mtext>rate</m:mtext></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>k</m:mi><m:msup><m:mrow><m:mo>[</m:mo><m:msup><m:mrow><m:mtext>OCl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo>]</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:msup><m:mrow><m:mo>[</m:mo><m:msup><m:mtext>I</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo>]</m:mo></m:mrow><m:mn>1</m:mn></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mn>0.00184</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>k</m:mi><m:msup><m:mrow><m:mtext>(0.0040)</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msup><m:msup><m:mrow><m:mtext>(0.0020)</m:mtext></m:mrow><m:mn>1</m:mn></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>5.75</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>2</m:mn></m:msup><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></para>
 </note>
 </example>
 <table id="fs-idm285249664" class="unnumbered" summary="This table has four columns and four rows. The first row is a header row, and it labels the columns, “Trial,” “[ N O ] ( mol / L),” “[ C l subscript 2 ] ( mol / L ),” and “negative capital delta [ N O] divided by capital delta t ( mol L superscript negative 1 s superscript negative 1 ).” Under the column “Trial” are the numbers: 1, 2, and 3. Under the column “[ N O ] ( mol / L)” are the numbers: 0.10, 0.10, and 0.15. Under the column “[ C l subscript 2 ] ( mol / L )” are the numbers: 0.10, 0.15, and 0.10. Under the column “negative delta [ N O] divided by delta t ( mol L superscript negative 1 s superscript negative 1” are the numbers: 0.00300, 0.00450, 0.00675.">
@@ -296,9 +296,9 @@ tilraun 1 og leysa fyrir <emphasis effect="italics">k</emphasis> fæst: \[\[MATH
 <thead>
 <row valign="middle">
 <entry align="left">Tilraun</entry>
-<entry align="left">\[NO\] (mól/L)</entry>
-<entry align="left">\[Cl<sub>2</sub>\] (mól/L)</entry>
-<entry align="left">\[\[MATH:61\]\]</entry>
+<entry align="left">[NO] (mól/L)</entry>
+<entry align="left">[Cl<sub>2</sub>] (mól/L)</entry>
+<entry align="left"><m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo stretchy="false">(</m:mo><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:math></entry>
 </row>
 </thead>
 <tbody>
@@ -333,8 +333,8 @@ tilraun 1 og leysa fyrir <emphasis effect="italics">k</emphasis> fæst: \[\[MATH
 <thead>
 <row valign="middle">
 <entry align="left">Tilraun</entry>
-<entry align="left">\[OCl<sup>−</sup>\] (mól/L)</entry>
-<entry align="left">\[I<sup>−</sup>\] (mól/L)</entry>
+<entry align="left">[OCl<sup>−</sup>] (mól/L)</entry>
+<entry align="left">[I<sup>−</sup>] (mól/L)</entry>
 <entry align="left">Upphafshraði (mól/L/s)</entry>
 </row>
 </thead>
@@ -378,10 +378,10 @@ spá fyrir um þær á áreiðanlegan hátt með hlutfallaefnafræði.</emphasis
 <para id="fs-idm218845648">Einingar fyrir hraðafasta eru
 breytilegar eftir því sem við á til að rúma heildarstig efnahvarfsins.
 Eining hraðafastans fyrir annars stigs efnahvarfið sem lýst er í
-&lt;!-- XREF:3 --> var ákvörðuð sem \[\[MATH:62\]\] Fyrir þriðja stigs
-efnahvarfið sem lýst er í &lt;!-- XREF:4 --> var einingin fyrir <emphasis effect="italics">k</emphasis> leidd út sem
-\[\[MATH:63\]\] Einingagreining krefst þess að eining hraðafastans fyrir
-efnahvarf með heildarstig <emphasis effect="italics">x</emphasis> sé \[\[MATH:64\]\] &lt;!-- XREF:5 --> tekur saman
+<!-- XREF:3 --> var ákvörðuð sem <m:math><m:mrow><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Fyrir þriðja stigs
+efnahvarfið sem lýst er í <!-- XREF:4 --> var einingin fyrir <emphasis effect="italics">k</emphasis> leidd út sem
+<m:math><m:mrow><m:msup><m:mtext>L</m:mtext><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Einingagreining krefst þess að eining hraðafastans fyrir
+efnahvarf með heildarstig <emphasis effect="italics">x</emphasis> sé <m:math><m:mrow><m:msup><m:mtext>L</m:mtext><m:mrow><m:mi>x</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> <!-- XREF:5 --> tekur saman
 einingar hraðafasta fyrir algeng stig efnahvarfa.</para>
 <table id="fs-idm233742304" class="top-titled" summary="This table has two columns and four rows. The first row is a header row and it labels each column, “Reaction order,” and “Units of k.” Under the “Reaction Order” column are: “( m + n ),” “zero,” “first,” “second,” and, “third.” Under the “Units of k” column are: “mol superscript 1 minus ( m + n) L superscript ( m + n) minus 1 s superscript negative one,” “mol / L / s,” “s superscript negative 1,” “L / mol / s,” and “mol superscript negative 2 L superscript 2 s superscript negative 1.”">
 <tgroup cols="2">
@@ -473,8 +473,8 @@ tilliti til þess hvarfefnis?</para>
 <exercise id="fs-idm291799584">
 <problem id="fs-idm224202064">
 <para id="fs-idm222859792">Hvernig mun hvarfhraði breytast
-fyrir ferlið: \[\[MATH:65\]\] ef hraðajafnan fyrir efnahvarfið er
-\[\[MATH:66\]\]</para>
+fyrir ferlið: <m:math><m:mrow><m:mtext>CO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> ef hraðajafnan fyrir efnahvarfið er
+<m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mo>?</m:mo></m:math></para>
 <para id="fs-idm178016176">(a) Lækkun á þrýstingi NO<sub>2</sub> úr
 0,50 atm í 0,250 atm.</para>
 <para id="fs-idp38847392">(b) Aukning á styrk CO úr 0,01 <emphasis effect="italics">M</emphasis>
@@ -489,8 +489,8 @@ fjórfalt. (b) Þar sem CO kemur ekki fyrir í hraðajöfnunni hefur það ekki
 <exercise id="fs-idm207653024">
 <problem id="fs-idm32510432">
 <para id="fs-idm176826112">Hvernig mun eftirfarandi hafa
-áhrif á hvarfhraða efnahvarfsins: \[\[MATH:67\]\] ef hraðajafna
-efnahvarfsins er \[\[MATH:68\]\]?</para>
+áhrif á hvarfhraða efnahvarfsins: <m:math><m:mrow><m:mtext>CO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> ef hraðajafna
+efnahvarfsins er <m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math>?</para>
 <para id="fs-idm170891328">(a) Þrýstingur NO<sub>2</sub> er aukinn úr
 0,1 atm í 0,3 atm</para>
 <para id="fs-idm178794544">(b) Styrkur CO er aukinn úr 0,02
@@ -503,13 +503,13 @@ efnahvarfsins er \[\[MATH:68\]\]?</para>
 í heiðhvolfinu er áhyggjuefni þar sem slíkar flugvélar framleiða
 nituroxíð, NO, sem aukaafurð í útblæstri hreyfla sinna. Nituroxíð
 hvarfast við óson og talið er að það geti stuðlað að eyðingu
-ósonlagsins. Efnahvarfið \[\[MATH:69\]\] er af fyrsta stigi með tilliti
-til bæði NO og O<sub>3</sub> með hraðafasta 2,20 \[\[MATH:70\]\] 10<sup>7</sup> L/mól/s.
-Hver er augnablikshraði hvarfs NO þegar \[NO\] = 3,3 \[\[MATH:71\]\]
-10<sup>−6</sup> <emphasis effect="italics">M</emphasis> og \[O<sub>3</sub>\] = 5,9 \[\[MATH:72\]\] 10<sup>−7</sup> <emphasis effect="italics">M</emphasis>?</para>
+ósonlagsins. Efnahvarfið <m:math><m:mrow><m:mtext>NO</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math> er af fyrsta stigi með tilliti
+til bæði NO og O<sub>3</sub> með hraðafasta 2,20 <m:math><m:mo>×</m:mo></m:math> 10<sup>7</sup> L/mól/s.
+Hver er augnablikshraði hvarfs NO þegar [NO] = 3,3 <m:math><m:mo>×</m:mo></m:math>
+10<sup>−6</sup> <emphasis effect="italics">M</emphasis> og [O<sub>3</sub>] = 5,9 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis>?</para>
 </problem>
 <solution id="fs-idm147647504">
-<para id="fs-idm220241088">4,3 \[\[MATH:73\]\] 10<sup>−5</sup>
+<para id="fs-idm220241088">4,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup>
 mól/L/s</para>
 </solution>
 </exercise>
@@ -520,7 +520,8 @@ við rannsóknir á hvarfgöngum lífefnafræðilegra efnahvarfa þar sem
 fosfóratóm eru hluti af mörgum lífefnafræðilegum sameindum. Staðsetningu
 fosfórsins (og staðsetningu sameindarinnar sem hann er bundinn í) má
 greina út frá rafeindunum (betu-eindum) sem hann framleiðir:
-\[\[MATH:74\]\] hraði = 4,85 \[\[MATH:75\]\] 10<sup>−2</sup> \[\[MATH:76\]\]</para>
+<m:math><m:mrow><m:msubsup><m:mrow/><m:mtext>15</m:mtext><m:mtext>32</m:mtext></m:msubsup><m:mtext>P</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/>
+<m:msubsup><m:mrow/><m:mn>16</m:mn><m:mn>32</m:mn></m:msubsup><m:mtext>S</m:mtext><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:mrow></m:math> hraði = 4,85 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> <m:math><m:msup><m:mtext>day</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>[</m:mo><m:msup><m:mrow/><m:mn>32</m:mn></m:msup><m:mtext>P</m:mtext><m:mo>]</m:mo></m:math></para>
 <para id="fs-idm122111920">Hver er augnablikshraði
 framleiðslu rafeinda í sýni með fosfórstyrk 0,0033 <emphasis effect="italics">M</emphasis>?</para>
 </problem>
@@ -528,23 +529,23 @@ framleiðslu rafeinda í sýni með fosfórstyrk 0,0033 <emphasis effect="italic
 <exercise id="fs-idm140350624">
 <problem id="fs-idm84975536">
 <para id="fs-idm234311904">Hraðafastinn fyrir geislavirka
-rotnun <sup>14</sup>C er 1,21 \[\[MATH:77\]\] 10<sup>−4</sup> ár<sup>−1</sup>. Myndefni
-rotnunarinnar eru nituratóm og rafeindir (betu-eindir): \[\[MATH:78\]\]
-\[\[MATH:79\]\]</para><para id="fs-idm233654624">Hver er augnablikshraði
-framleiðslu N-atóma í sýni með kolefni-14 innihaldi 6,5 \[\[MATH:80\]\]
+rotnun <sup>14</sup>C er 1,21 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> ár<sup>−1</sup>. Myndefni
+rotnunarinnar eru nituratóm og rafeindir (betu-eindir): <m:math><m:msubsup><m:mrow/><m:mn>6</m:mn><m:mrow><m:mn>14</m:mn></m:mrow></m:msubsup><m:mtext>C</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msubsup><m:mrow/><m:mn>7</m:mn><m:mrow><m:mn>14</m:mn></m:mrow></m:msubsup><m:mtext>N</m:mtext><m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup></m:math>
+<m:math><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>[</m:mo><m:msubsup><m:mrow/><m:mn>6</m:mn><m:mrow><m:mn>14</m:mn></m:mrow></m:msubsup><m:mtext>C</m:mtext><m:mo>]</m:mo></m:math></para><para id="fs-idm233654624">Hver er augnablikshraði
+framleiðslu N-atóma í sýni með kolefni-14 innihaldi 6,5 <m:math><m:mo>×</m:mo></m:math>
 10<sup>−9</sup> <emphasis effect="italics">M</emphasis>?</para>
 </problem>
 <solution id="fs-idm259321632">
-<para id="fs-idm333817728">7,9 \[\[MATH:81\]\] 10<sup>−13</sup>
+<para id="fs-idm333817728">7,9 <m:math><m:mo>×</m:mo></m:math> 10<sup>−13</sup>
 mól/L/ár</para>
 </solution>
 </exercise>
 <exercise id="fs-idm147604432">
 <problem id="fs-idm197731520">
 <para id="fs-idm278447280">Niðurbrot asetaldehýðs er annars
-stigs efnahvarf með hraðafasta 4,71 \[\[MATH:82\]\] 10<sup>−8</sup> L mól<sup>−1</sup>
+stigs efnahvarf með hraðafasta 4,71 <m:math><m:mo>×</m:mo></m:math> 10<sup>−8</sup> L mól<sup>−1</sup>
 s<sup>−1</sup>. Hver er augnablikshraði niðurbrots asetaldehýðs í lausn með
-styrkinn 5,55 \[\[MATH:83\]\] 10<sup>−4</sup> <emphasis effect="italics">M</emphasis>?</para>
+styrkinn 5,55 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> <emphasis effect="italics">M</emphasis>?</para>
 </problem>
 </exercise>
 <exercise id="fs-idm32841312">
@@ -554,16 +555,16 @@ með röð efnaskiptahvarfa. Fyrsta efnahvarfið framleiðir asetaldehýð;
 síðan myndast önnur myndefni. Eftirfarandi gögn hafa verið ákvörðuð
 fyrir hraðann sem áfengi er fjarlægt úr blóði meðalkarlmanns, þó að
 einstaklingsbundinn hraði geti verið breytilegur um 25–30%. Konur
-umbrjóta áfengi aðeins hægar en karlar: \[C<sub>2</sub>H<sub>5</sub>OH\] (<emphasis effect="italics">M</emphasis>) 4,4
-\[\[MATH:84\]\] 10<sup>−2</sup> 3,3 \[\[MATH:85\]\] 10<sup>−2</sup> 2,2 \[\[MATH:86\]\]
-10<sup>−2</sup> Hraði (mól L<sup>−1</sup> klst.<sup>−1</sup>) 2,0 \[\[MATH:87\]\] 10<sup>−2</sup> 2,0
-\[\[MATH:88\]\] 10<sup>−2</sup> 2,0 \[\[MATH:89\]\] 10<sup>−2</sup></para>
+umbrjóta áfengi aðeins hægar en karlar: [C<sub>2</sub>H<sub>5</sub>OH] (<emphasis effect="italics">M</emphasis>) 4,4
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> 3,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> 2,2 <m:math><m:mo>×</m:mo></m:math>
+10<sup>−2</sup> Hraði (mól L<sup>−1</sup> klst.<sup>−1</sup>) 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> 2,0
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></para>
 <para id="fs-idm233198896">Ákvarðaðu hraðajöfnuna,
 hraðafastann og heildarstig þessa efnahvarfs.</para>
 </problem>
 <solution id="fs-idm182997088">
 <para id="fs-idm204335424">hraði = <emphasis effect="italics">k</emphasis>; <emphasis effect="italics">k</emphasis> = 2,0
-\[\[MATH:90\]\] 10<sup>−2</sup> mól L<sup>−1</sup> klst.<sup>−1</sup> (um 0,9 g L<sup>−1</sup> klst.<sup>−1</sup>
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> mól L<sup>−1</sup> klst.<sup>−1</sup> (um 0,9 g L<sup>−1</sup> klst.<sup>−1</sup>
 fyrir meðalkarlmann); Efnahvarfið er af núllta stigi.</para>
 </solution>
 </exercise>
@@ -576,16 +577,16 @@ fyrir meðalkarlmann); Efnahvarfið er af núllta stigi.</para>
 <colspec colnum="4" colname="c4"/>
 <tbody>
 <row valign="middle">
-<entry align="left">\[C<sub>2</sub>H<sub>5</sub>OH\] (<emphasis effect="italics">M</emphasis>)</entry>
-<entry align="left">4,4 \[\[MATH:91\]\] 10<sup>−2</sup></entry>
-<entry align="left">3,3 \[\[MATH:92\]\] 10<sup>−2</sup></entry>
-<entry align="left">2,2 \[\[MATH:93\]\] 10<sup>−2</sup></entry>
+<entry align="left">[C<sub>2</sub>H<sub>5</sub>OH] (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left">4,4 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
+<entry align="left">3,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
+<entry align="left">2,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">Hraði (mól L<sup>−1</sup> klst.<sup>−1</sup>)</entry>
-<entry align="left">2,0 \[\[MATH:94\]\] 10<sup>−2</sup></entry>
-<entry align="left">2,0 \[\[MATH:95\]\] 10<sup>−2</sup></entry>
-<entry align="left">2,0 \[\[MATH:96\]\] 10<sup>−2</sup></entry>
+<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
+<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
+<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -608,16 +609,16 @@ og heildarstig þessa efnahvarfs.</para>
 <colspec colnum="4" colname="c4"/>
 <tbody>
 <row valign="middle">
-<entry align="left">\[NH<sub>3</sub>\] (<emphasis effect="italics">M</emphasis>)</entry>
-<entry align="left">1,0 \[\[MATH:97\]\] 10<sup>−3</sup></entry>
-<entry align="left">2,0 \[\[MATH:98\]\] 10<sup>−3</sup></entry>
-<entry align="left">3,0 \[\[MATH:99\]\] 10<sup>−3</sup></entry>
+<entry align="left">[NH<sub>3</sub>] (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left">1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">3,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">Hraði (mól L<sup>−1</sup> klst.<sup>−1</sup>)</entry>
-<entry align="left">1,5 \[\[MATH:100\]\] 10<sup>−6</sup></entry>
-<entry align="left">1,5 \[\[MATH:101\]\] 10<sup>−6</sup></entry>
-<entry align="left">1,5 \[\[MATH:102\]\] 10<sup>−6</sup></entry>
+<entry align="left">1,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
+<entry align="left">1,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
+<entry align="left">1,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -625,14 +626,14 @@ og heildarstig þessa efnahvarfs.</para>
 <exercise id="fs-idm263803776">
 <problem id="fs-idm219334592">
 <para id="fs-idm217433968">Nítrósýlklóríð, NOCl, brotnar
-niður í NO og Cl<sub>2</sub>. \[\[MATH:103\]\]</para>
+niður í NO og Cl<sub>2</sub>. <m:math><m:mrow><m:mtext>2NOCl(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>2NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idm105942144">Ákvarðið hraðajöfnu, hraðafasta
 og heildarstig þessa efnahvarfs út frá eftirfarandi gögnum:</para>
 <!-- table handled separately -->
 </problem>
 <solution id="fs-idm147669584">
-<para id="fs-idp5189312">hraði = <emphasis effect="italics">k</emphasis>\[NOCl\]<sup>2</sup>; <emphasis effect="italics">k</emphasis> = 8,0
-\[\[MATH:104\]\] 10<sup>−8</sup> L/mól/klst.; annað stig</para></solution>
+<para id="fs-idp5189312">hraði = <emphasis effect="italics">k</emphasis>[NOCl]<sup>2</sup>; <emphasis effect="italics">k</emphasis> = 8,0
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−8</sup> L/mól/klst.; annað stig</para></solution>
 </exercise>
 <table id="fs-idm176170864" class="column-header unnumbered" summary="This table has four columns and two rows. The first column labels each row, “[ N O C l ] ( M ),” and, “Rate ( mol / L / h ).” To the right of the header, “[ N O C l ] ( M )” are the numbers: 0.10, 0.20, and 0.30. To the right of the header, “Rate ( mol / L / h )” are the numbers: 8.0 times ten to the negative ten; 3.2 times ten to the negative 9; and 7.2 times ten to the negative 9.">
 <label/>
@@ -643,16 +644,16 @@ og heildarstig þessa efnahvarfs út frá eftirfarandi gögnum:</para>
 <colspec colnum="4" colname="c4"/>
 <tbody>
 <row valign="middle">
-<entry align="left">\[NOCl\] (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left">[NOCl] (<emphasis effect="italics">M</emphasis>)</entry>
 <entry align="left">0,10</entry>
 <entry align="left">0,20</entry>
 <entry align="left">0,30</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hraði (mól L<sup>−1</sup> klst.<sup>−1</sup>)</entry>
-<entry align="left">8,0 \[\[MATH:105\]\] 10<sup>−10</sup></entry>
-<entry align="left">3,2 \[\[MATH:106\]\] 10<sup>−9</sup></entry>
-<entry align="left">7,2 \[\[MATH:107\]\] 10<sup>−9</sup></entry>
+<entry align="left">8,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup></entry>
+<entry align="left">3,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−9</sup></entry>
+<entry align="left">7,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−9</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -660,7 +661,7 @@ og heildarstig þessa efnahvarfs út frá eftirfarandi gögnum:</para>
 <exercise id="fs-idm146074112">
 <problem id="fs-idm176758704">
 <para id="fs-idm254308880">Ákvarðið hraðajöfnu, hraðafasta
-og stig með tilliti til <emphasis effect="italics">A</emphasis> fyrir efnahvarfið \[\[MATH:108\]\] út frá
+og stig með tilliti til <emphasis effect="italics">A</emphasis> fyrir efnahvarfið <m:math><m:mrow><m:mi>A</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mi>C</m:mi><m:mo>.</m:mo></m:mrow></m:math> út frá
 eftirfarandi gögnum.</para>
 <!-- table handled separately -->
 </problem>
@@ -674,16 +675,16 @@ eftirfarandi gögnum.</para>
 <colspec colnum="4" colname="c4"/>
 <tbody>
 <row valign="middle">
-<entry align="left">\[<emphasis effect="italics">A</emphasis>\] (<emphasis effect="italics">M</emphasis>)</entry>
-<entry align="left">1,33 \[\[MATH:109\]\] 10<sup>−2</sup></entry>
-<entry align="left">2,66 \[\[MATH:110\]\] 10<sup>−2</sup></entry>
-<entry align="left">3,99 \[\[MATH:111\]\] 10<sup>−2</sup></entry>
+<entry align="left">[<emphasis effect="italics">A</emphasis>] (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left">1,33 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
+<entry align="left">2,66 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
+<entry align="left">3,99 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
 </row>
 <row valign="middle">
 <entry align="left">Hraði (mól L<sup>−1</sup> klst.<sup>−1</sup>)</entry>
-<entry align="left">3,80 \[\[MATH:112\]\] 10<sup>−7</sup></entry>
-<entry align="left">1,52 \[\[MATH:113\]\] 10<sup>−6</sup></entry>
-<entry align="left">3,42 \[\[MATH:114\]\] 10<sup>−6</sup></entry>
+<entry align="left">3,80 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup></entry>
+<entry align="left">1,52 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
+<entry align="left">3,42 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -691,14 +692,14 @@ eftirfarandi gögnum.</para>
 <exercise id="fs-idm238094880">
 <problem id="fs-idm219633024">
 <para id="fs-idm262783024">Niturmónoxíð hvarfast við klór
-samkvæmt jöfnunni: \[\[MATH:115\]\]</para><para id="fs-idm268051184">Eftirfarandi upphafshraðar
+samkvæmt jöfnunni: <m:math><m:mrow><m:mtext>2NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>2NOCl(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para><para id="fs-idm268051184">Eftirfarandi upphafshraðar
 efnahvarfsins hafa mælst við ákveðinn styrk hvarfefna:</para>
 <!-- table handled separately --><para id="fs-idm185311088">Hver er hraðajafnan sem lýsir því
 hvernig hraðinn er háður styrk NO og Cl<sub>2</sub>? Hver er hraðafastinn? Hvert
 er stig efnahvarfsins með tilliti til hvors hvarfefnis?</para>
 </problem>
 <solution id="fs-idm268986480">
-<para id="fs-idm174039344">hraði = <emphasis effect="italics">k</emphasis>\[NO\]<sup>2</sup>\[Cl<sub>2</sub>\];
+<para id="fs-idm174039344">hraði = <emphasis effect="italics">k</emphasis>[NO]<sup>2</sup>[Cl<sub>2</sub>];
 <emphasis effect="italics">k</emphasis> = 9,1 L<sup>2</sup> mól<sup>−2</sup> klst.<sup>−1</sup>; annars stigs með tilliti til NO;
 fyrsta stigs með tilliti til Cl<sub>2</sub></para></solution>
 </exercise>
@@ -708,8 +709,8 @@ fyrsta stigs með tilliti til Cl<sub>2</sub></para></solution>
 <colspec colnum="3" colname="c3"/>
 <thead>
 <row valign="middle">
-<entry align="left">\[NO\] (mól/L)</entry>
-<entry align="left">\[Cl<sub>2</sub>\] (mól/L)</entry>
+<entry align="left">[NO] (mól/L)</entry>
+<entry align="left">[Cl<sub>2</sub>] (mól/L)</entry>
 <entry align="left">Hraði (mól L<sup>−1</sup> klst.<sup>−1</sup>)</entry>
 </row>
 </thead>
@@ -737,7 +738,7 @@ fyrsta stigs með tilliti til Cl<sub>2</sub></para></solution>
 <problem id="fs-idm114198000">
 <para id="fs-idm219404160">Vetni hvarfast við niturmónoxíð
 og myndar tvíniturmónoxíð (hláturgas) samkvæmt jöfnunni:
-\[\[MATH:116\]\]</para>
+<m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>2NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idm148410512">Ákvarðaðu hraðajöfnuna,
 hraðafastann og stig efnahvarfsins með tilliti til hvors hvarfefnis út
 frá eftirfarandi gögnum:</para>
@@ -753,22 +754,22 @@ frá eftirfarandi gögnum:</para>
 <colspec colnum="4" colname="c4"/>
 <tbody>
 <row valign="middle">
-<entry align="left">\[NO\] (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left">[NO] (<emphasis effect="italics">M</emphasis>)</entry>
 <entry align="left">0,30</entry>
 <entry align="left">0,60</entry>
 <entry align="left">0,60</entry>
 </row>
 <row valign="middle">
-<entry align="left">\[H<sub>2</sub>\] (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left">[H<sub>2</sub>] (<emphasis effect="italics">M</emphasis>)</entry>
 <entry align="left">0,35</entry>
 <entry align="left">0,35</entry>
 <entry align="left">0,70</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hraði (mól L<sup>−1</sup> s<sup>−1</sup>)</entry>
-<entry align="left">2,835 \[\[MATH:117\]\] 10<sup>−3</sup></entry>
-<entry align="left">1,134 \[\[MATH:118\]\] 10<sup>−2</sup></entry>
-<entry align="left">2,268 \[\[MATH:119\]\] 10<sup>−2</sup></entry>
+<entry align="left">2,835 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">1,134 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
+<entry align="left">2,268 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -776,16 +777,16 @@ frá eftirfarandi gögnum:</para>
 <exercise id="fs-idm49483024">
 <problem id="fs-idm215926240">
 <para id="fs-idm253875200">Fyrir efnahvarfið
-\[\[MATH:120\]\] fengust eftirfarandi gögn við 30 °C:</para>
+<m:math><m:mrow><m:mi>A</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>B</m:mi><m:mo>+</m:mo><m:mi>C</m:mi><m:mo>,</m:mo></m:mrow></m:math> fengust eftirfarandi gögn við 30 °C:</para>
 <!-- table handled separately -->
 <para id="fs-idm356651248">(a) Hvert er stig efnahvarfsins
-með tilliti til \[<emphasis effect="italics">A</emphasis>\] og hver er hraðajafnan?</para>
+með tilliti til [<emphasis effect="italics">A</emphasis>] og hver er hraðajafnan?</para>
 <para id="fs-idm110876512">(b) Hver er hraðafastinn?</para>
 </problem>
 <solution id="fs-idm168970400">
 <para id="fs-idm168970144">(a) Hraðajafnan er annars stigs
-með tilliti til A og er skrifuð sem hraði = <emphasis effect="italics">k</emphasis>\[<emphasis effect="italics">A</emphasis>\]<sup>2</sup>. (b) <emphasis effect="italics">k</emphasis> =
-7,88 \[\[MATH:121\]\] 10<sup>−3</sup> L mól<sup>−1</sup> s<sup>−1</sup></para></solution>
+með tilliti til A og er skrifuð sem hraði = <emphasis effect="italics">k</emphasis>[<emphasis effect="italics">A</emphasis>]<sup>2</sup>. (b) <emphasis effect="italics">k</emphasis> =
+7,88 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> L mól<sup>−1</sup> s<sup>−1</sup></para></solution>
 </exercise>
 <table id="fs-idm262119440" class="column-header unnumbered" summary="This table has four columns and two rows. The first column labels each row, “[ A ] ( M ),” and “Rate ( mol / L / s ).” To the right of the header, “[ A ] ( M ),” are the numbers: 0.230, 0.356, and 0.557. To the right of the header, “Rate ( mol / L / s ),” are the numbers: 4.7 times ten to the negative 4; 9.99 times ten to the negative 4; and 2.44 times ten to the negative 3.">
 <label/>
@@ -796,16 +797,16 @@ með tilliti til A og er skrifuð sem hraði = <emphasis effect="italics">k</emp
 <colspec colnum="4" colname="c4"/>
 <tbody>
 <row valign="middle">
-<entry align="left">\[<emphasis effect="italics">A</emphasis>\] (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left">[<emphasis effect="italics">A</emphasis>] (<emphasis effect="italics">M</emphasis>)</entry>
 <entry align="left">0,230</entry>
 <entry align="left">0,356</entry>
 <entry align="left">0,557</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hraði (mól L<sup>−1</sup> s<sup>−1</sup>)</entry>
-<entry align="left">4,17 \[\[MATH:122\]\] 10<sup>−4</sup></entry>
-<entry align="left">9,99 \[\[MATH:123\]\] 10<sup>−4</sup></entry>
-<entry align="left">2,44 \[\[MATH:124\]\] 10<sup>−3</sup></entry>
+<entry align="left">4,17 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
+<entry align="left">9,99 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
+<entry align="left">2,44 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -813,10 +814,10 @@ með tilliti til A og er skrifuð sem hraði = <emphasis effect="italics">k</emp
 <exercise id="fs-idm140371280">
 <problem id="fs-idm189702064">
 <para id="fs-idm189701808">Eftirfarandi gögn fengust við 30
-°C fyrir efnahvarfið \[\[MATH:125\]\]:</para>
+°C fyrir efnahvarfið <m:math><m:mrow><m:mi>Q</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>W</m:mi><m:mo>+</m:mo><m:mi>X</m:mi><m:mo>,</m:mo></m:mrow></m:math>:</para>
 <!-- table handled separately -->
 <para id="fs-idm157857072">(a) Hvert er stig efnahvarfsins
-með tilliti til \[<emphasis effect="italics">Q</emphasis>\] og hver er hraðajafnan?</para>
+með tilliti til [<emphasis effect="italics">Q</emphasis>] og hver er hraðajafnan?</para>
 <para id="fs-idm187916448">(b) Hver er hraðafastinn?</para>
 </problem>
 </exercise>
@@ -829,16 +830,16 @@ með tilliti til \[<emphasis effect="italics">Q</emphasis>\] og hver er hraðaja
 <colspec colnum="4" colname="c4"/>
 <tbody>
 <row valign="middle">
-<entry align="left">\[<emphasis effect="italics">Q</emphasis>\]<sub>upphafs</sub> (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left">[<emphasis effect="italics">Q</emphasis>]<sub>upphafs</sub> (<emphasis effect="italics">M</emphasis>)</entry>
 <entry align="left">0,170</entry>
 <entry align="left">0,212</entry>
 <entry align="left">0,357</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hraði (mól L<sup>−1</sup> s<sup>−1</sup>)</entry>
-<entry align="left">6,68 \[\[MATH:126\]\] 10<sup>−3</sup></entry>
-<entry align="left">1,04 \[\[MATH:127\]\] 10<sup>−2</sup></entry>
-<entry align="left">2,94 \[\[MATH:128\]\] 10<sup>−2</sup></entry>
+<entry align="left">6,68 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">1,04 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
+<entry align="left">2,94 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
 </row>
 </tbody>
 </tgroup>
@@ -847,13 +848,13 @@ með tilliti til \[<emphasis effect="italics">Q</emphasis>\] og hver er hraðaja
 <problem id="fs-idm245906208">
 <para id="fs-idm245905952">Hraðafastinn fyrir fyrsta stigs
 niðurbrot tvíniturs pentoxíðs, N<sub>2</sub>O<sub>5</sub>, uppleysts í klóróformi,
-CHCl<sub>3</sub>, við 45 °C er 6,2 \[\[MATH:129\]\] 10<sup>−4</sup> mín<sup>−1</sup>.
-\[\[MATH:130\]\]</para>
+CHCl<sub>3</sub>, við 45 °C er 6,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> mín<sup>−1</sup>.
+<m:math><m:mrow><m:msub><m:mrow><m:mtext>2N</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>5</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>4NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></para>
 <para id="fs-idm287521616">Hver er hraði efnahvarfsins þegar
-\[N<sub>2</sub>O<sub>5</sub>\] = 0,40 <emphasis effect="italics">M</emphasis>?</para>
+[N<sub>2</sub>O<sub>5</sub>] = 0,40 <emphasis effect="italics">M</emphasis>?</para>
 </problem>
 <solution id="fs-idm182857840">
-<para id="fs-idm180347168">(a) 2,5 \[\[MATH:131\]\] 10<sup>−4</sup>
+<para id="fs-idm180347168">(a) 2,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup>
 mól/L/mín</para>
 </solution>
 </exercise>
@@ -862,9 +863,9 @@ mól/L/mín</para>
 <para id="fs-idm122065680">Ársframleiðsla á HNO<sub>3</sub> árið 2013
 var 60 milljónir tonna. Meginþorri þess var framleiddur með eftirfarandi
 röð efnahvarfa, þar sem hvert þeirra fór fram í aðskildu hvarfíláti.</para>
-<para id="fs-idm119022896">(a) \[\[MATH:132\]\]</para>
-<para id="fs-idm193369040">(b) \[\[MATH:133\]\]</para>
-<para id="fs-idm207045120">(c) \[\[MATH:134\]\]</para>
+<para id="fs-idm119022896">(a) <m:math><m:mrow><m:msub><m:mrow><m:mtext>4NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>5O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>4NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>6H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idm193369040">(b) <m:math><m:mrow><m:mtext>2NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>2NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
+<para id="fs-idm207045120">(c) <m:math><m:mrow><m:msub><m:mrow><m:mtext>3NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>2HNO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idm179213568">Fyrsta efnahvarfið er framkvæmt
 með því að brenna ammoníaki í lofti yfir platínuhvata. Þetta efnahvarf
 er hratt. Efnahvarfið í jöfnu (c) er einnig hratt. Annað efnahvarfið
@@ -872,21 +873,21 @@ takmarkar hraðann sem hægt er að framleiða saltpéturssýru úr ammoníaki
 með. Ef jafna (b) er annars stigs efnahvarf með tilliti til NO og fyrsta
 stigs efnahvarf með tilliti til O<sub>2</sub>, hver er myndunarhraði NO<sub>2</sub> þegar
 styrkur súrefnis er 0,50 <emphasis effect="italics">M</emphasis> og styrkur nituroxíðs er 0,75 <emphasis effect="italics">M</emphasis>?
-Hraðafastinn fyrir efnahvarfið er 5,8 \[\[MATH:135\]\] 10<sup>−6</sup> L<sup>2</sup>
+Hraðafastinn fyrir efnahvarfið er 5,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> L<sup>2</sup>
 mól<sup>−2</sup> s<sup>−1</sup>.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm237267424">
 <problem id="fs-idm237267168">
 <para id="fs-idm136971952">Eftirfarandi gögn hafa verið
-ákvörðuð fyrir efnahvarfið: \[\[MATH:136\]\]</para>
+ákvörðuð fyrir efnahvarfið: <m:math><m:mrow><m:msup><m:mtext>I</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OCl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>IO</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup></m:mrow></m:math></para>
 <!-- table handled separately -->
 <para id="fs-idm152575552">Ákvarðið hraðajöfnuna og
 hraðafastann fyrir þetta efnahvarf.</para>
 </problem>
 <solution id="fs-idm220253760">
-<para id="fs-idm220253504">hraði = <emphasis effect="italics">k</emphasis>\[I<sup>−</sup>\]\[OCl<sup>−</sup>\];
-<emphasis effect="italics">k</emphasis> = 6,1 \[\[MATH:137\]\] 10<sup>−2</sup> L mól <sup>−1</sup> s<sup>−1</sup></para></solution>
+<para id="fs-idm220253504">hraði = <emphasis effect="italics">k</emphasis>[I<sup>−</sup>][OCl<sup>−</sup>];
+<emphasis effect="italics">k</emphasis> = 6,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> L mól <sup>−1</sup> s<sup>−1</sup></para></solution>
 </exercise>
 <table id="fs-idm189410736" class="unnumbered" summary="This table has four columns and four rows. The first column labels each row. The first cell in the first column is blank, and then each row is labeled, “[ I superscript negative sign ] subscript initial ( M ),” “[ O C l superscript negative sign ] subscript initial ( M ),” and, “Rate ( mol / L / s ).” To the right of the blank cell are the numbers: 1, 2, and 3. To the right of the header, “[ I superscript negative sign ] subscript initial ( M ),” are the numbers: 0.10, 0.20, and 0.30. To the right of the header, “[ O C l superscript negative sign ] subscript initial ( M ),” are the numbers: 0.050, 0.050, and 0.010. To the right of the header, “Rate ( mol / L / s ),” are the numbers: 3.05 times ten to the negative 4; 6.20 times ten to the negative 4; and 1.83 times ten to the negative 4.">
 <label/>
@@ -904,22 +905,22 @@ hraðafastann fyrir þetta efnahvarf.</para>
 </thead>
 <tbody>
 <row valign="middle">
-<entry align="left">\[\[MATH:138\]\] (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">[</m:mo><m:msup><m:mtext>I</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mtext>initial</m:mtext></m:mrow></m:msub></m:mrow></m:math> (<emphasis effect="italics">M</emphasis>)</entry>
 <entry align="left">0,10</entry>
 <entry align="left">0,20</entry>
 <entry align="left">0,30</entry>
 </row>
 <row valign="middle">
-<entry align="left">\[\[MATH:139\]\] (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left"><m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">[</m:mo><m:msup><m:mrow><m:mtext>OCl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mtext>initial</m:mtext></m:mrow></m:msub></m:mrow></m:math> (<emphasis effect="italics">M</emphasis>)</entry>
 <entry align="left">0,050</entry>
 <entry align="left">0,050</entry>
 <entry align="left">0,010</entry>
 </row>
 <row valign="middle">
 <entry align="left">Hraði (mól L<sup>−1</sup> s<sup>−1</sup>)</entry>
-<entry align="left">3,05 \[\[MATH:140\]\] 10<sup>−4</sup></entry>
-<entry align="left">6,20 \[\[MATH:141\]\] 10<sup>−4</sup></entry>
-<entry align="left">1,83 \[\[MATH:142\]\] 10<sup>−4</sup></entry>
+<entry align="left">3,05 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
+<entry align="left">6,20 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
+<entry align="left">1,83 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
 </row>
 </tbody>
 </tgroup>
