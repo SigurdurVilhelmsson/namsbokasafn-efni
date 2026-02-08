@@ -188,8 +188,28 @@ node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
 
 **Goal:** Human editor produces faithful translation.
 
+**Step 3a: Initialize 03-faithful with complete MT output**
+
+**Critical:** Before starting review, ensure `03-faithful` has complete segment files. This prevents English fallback during injection.
+
+```bash
+# Initialize chapter for review (copies complete MT output to 03-faithful)
+node tools/init-faithful-review.js --chapter 5 --verbose
+
+# Force overwrite if needed
+node tools/init-faithful-review.js --chapter 5 --force
+```
+
+**What this does:**
+- Copies all `*-segments.is.md` files from `02-mt-output/ch05/` to `03-faithful/ch05/`
+- Ensures reviewers start with complete content (no missing segments)
+- Prevents English fallback when injecting from `03-faithful`
+- Skips files that already exist (use `--force` to overwrite)
+
+**Step 3b: Review and edit markdown**
+
 **Process:**
-1. Open the MT output in any text editor (VS Code, Typora, etc.)
+1. Open the segment files in any text editor (VS Code, Typora, etc.)
 2. Review and edit for:
    - Grammar and spelling
    - Natural Icelandic phrasing
@@ -202,7 +222,7 @@ node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
 - NO adding content
 - Focus only on making the translation faithful and well-written
 
-**Save to:** `03-faithful/ch05/5-1.is.md`
+**Location:** `03-faithful/ch05/m68724-segments.is.md`
 
 **Deliverable:** Human-verified faithful translation that accurately represents the source in natural Icelandic.
 

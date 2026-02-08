@@ -102,15 +102,17 @@ docs/                   # Documentation (see below)
 ## Extract-Inject-Render Pipeline
 
 ```
-CNXML → Extract → EN Segments → MT → Review → Inject → Render → HTML
+CNXML → Extract → EN Segments → MT → Initialize → Review → Inject → Render → HTML
 ```
 
 | Step | What | Tool/Service | Output |
 |------|------|--------------|--------|
 | 1a | CNXML → EN segments | `cnxml-extract.js` | `02-for-mt/`, `02-structure/` |
 | 1b | Protect for MT | `protect-segments-for-mt.js` | MT-ready segments |
-| 2 | Machine translation | malstadur.is | `02-mt-output/` |
-| 3 | Linguistic review | Manual editing | `03-faithful/` ★ |
+| 2a | Machine translation | malstadur.is | `02-mt-output/` |
+| 2b | Unprotect MT output | `unprotect-segments.js` | Ready for review/injection |
+| 3a | Initialize for review | `init-faithful-review.js` | `03-faithful/` (complete) |
+| 3b | Linguistic review | Manual editing | `03-faithful/` ★ |
 | 4 | TM creation | `prepare-for-align.js` + Matecat Align | `tm/` ★ |
 | 5a | Inject translations | `cnxml-inject.js` | `03-translated/` |
 | 5b | Render to HTML | `cnxml-render.js` | `05-publication/` |
