@@ -42,7 +42,7 @@ Hornklofarnir tákna mólstyrk og táknið delta (Δ) táknar „breytingu á“
 Þannig táknar <m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:math> mólstyrk vetnisperoxíðs á einhverjum tíma
 <emphasis effect="italics">t</emphasis><sub>1</sub>; sömuleiðis táknar <m:math><m:mrow><m:msub><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:math> mólstyrk vetnisperoxíðs á
 seinni tíma <emphasis effect="italics">t</emphasis><sub>2</sub>; og Δ[H<sub>2</sub>O<sub>2</sub>] táknar breytingu á mólstyrk
-vetnisperoxíðs á tímabilinu Δ<emphasis effect="italics">t</emphasis> (þ.e. <emphasis effect="italics">t</emphasis>2\<emphasis effect="italics"> − t\</emphasis><sub>1</sub>). Þar sem styrkur
+vetnisperoxíðs á tímabilinu Δ<emphasis effect="italics">t</emphasis> (þ.e. <emphasis effect="italics">t</emphasis>2<emphasis effect="italics"> − t</emphasis><sub>1</sub>). Þar sem styrkur
 hvarfefnis minnkar eftir því sem efnahvarfið líður er Δ[H<sub>2</sub>O<sub>2</sub>]
 neikvæð stærð. Hvarfhraði er samkvæmt venju jákvæð stærð og því er þessi
 neikvæða breyting á styrk margfölduð með −1. <link target-id="CNX_Chem_12_01_KDataH2O2"/> sýnir dæmi um
@@ -52,7 +52,7 @@ gögn sem safnað var við niðurbrot H<sub>2</sub>O<sub>2</sub>.</para>
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_12_01_KDataH2O2.jpg"/>
 </media>
 <caption>Hraði niðurbrots
-H<sub>2</sub>O<sub>2</sub> í vatnslausn minnkar eftir því sem styrkur H<sub>2</sub>O<sub>2</sub> minnkar.</caption>
+H<sub>2</sub>O~2~ í vatnslausn minnkar eftir því sem styrkur H<sub>2</sub>O~2~ minnkar.</caption>
 </figure>
 <para id="fs-idm29280704">Til að fá niðurstöðurnar í töflunni
 fyrir þetta niðurbrot var styrkur vetnisperoxíðs mældur á 6 klukkustunda
@@ -76,7 +76,7 @@ við bíl sem hægir á sér þegar hann nálgast stöðvunarskilti. Upphafshra�
 ökutækisins – hliðstætt við upphaf efnahvarfs – væri aflestur
 hraðamælisins á því augnabliki sem ökumaðurinn byrjar að stíga á
 bremsuna (<emphasis effect="italics">t</emphasis><sub>0</sub>). Nokkrum augnablikum síðar væri augnablikshraðinn á
-tilteknu augnabliki – köllum það <emphasis effect="italics">t</emphasis><sub>1</sub> – nokkuð hægari, eins og sést á
+tilteknu augnabliki – köllum það <emphasis effect="italics">t</emphasis>~1~ – nokkuð hægari, eins og sést á
 hraðamælinum á þeim tímapunkti. Eftir því sem tíminn líður mun
 augnablikshraðinn halda áfram að minnka þar til hann nær núlli, þegar
 bíllinn (eða efnahvarfið) stöðvast. Ólíkt augnablikshraða er meðalhraði
@@ -90,7 +90,7 @@ mjög stutt tímabil, þá gefa meðalhraðar sem reiknaðir eru eins og lýst
 er hér að ofan nokkuð góða nálgun á augnablikshraða. Að öðrum kosti má
 nota grafíska aðferð sem í raun gefur þær niðurstöður sem fengjust ef
 mælingar á stuttum tímabilum væru mögulegar. Á línuriti sem sýnir styrk
-vetnisperoxíðs á móti tíma er augnablikshraði niðurbrots H<sub>2</sub>O<sub>2</sub> á
+vetnisperoxíðs á móti tíma er augnablikshraði niðurbrots H<sub>2</sub>O~2~ á
 hverjum tíma <emphasis effect="italics">t</emphasis> gefinn með halla beinnar línu sem er snertill við
 ferilinn á þeim tíma (<link target-id="CNX_Chem_12_01_RRateIll"/>). Halla þessara snertla má meta með
 örsmæðareikningi, en sú aðferð er utan gildissviðs þessa kafla.</para>
@@ -175,9 +175,9 @@ eykst). Fyrir einsleit efnahvörf eru bæði hvarfefni og myndefni til
 staðar í sömu lausn og taka því sama rúmmál, þannig að í stað mólmagns
 má nota mólstyrk:</para>
 <equation id="fs-idm13902288" class="unnumbered"><m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>N</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
-<para id="fs-idm70320608">Á sama hátt er myndunarhraði H<sub>2</sub>
-þrisvar sinnum meiri en myndunarhraði N<sub>2</sub> vegna þess að þrjú mól af
-H<sub>2</sub> myndast fyrir hvert mól af N<sub>2</sub> sem myndast.</para>
+<para id="fs-idm70320608">Á sama hátt er myndunarhraði H~2~
+þrisvar sinnum meiri en myndunarhraði N~2~ vegna þess að þrjú mól af
+H~2~ myndast fyrir hvert mól af N~2~ sem myndast.</para>
 <equation id="fs-idm22894544" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>3</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>N</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idp24387584"><link target-id="CNX_Chem_12_01_NH3Decomp"/> sýnir breytingu á styrk
 yfir tíma fyrir niðurbrot ammoníaks í nitur og vetni við 1100 °C. Halli
@@ -204,8 +204,8 @@ eyðsluhraða hvarfefnanna og myndunarhraða myndefnanna.</para>
 <para id="fs-idm42014656"><title>Lausn</title>Miðað við hlutfallaefnafræði þessa
 einsleita hvarfs er hraði eyðslu hvarfefna og myndunar myndefna:</para>
 <equation id="fs-idp78515888" class="unnumbered"><m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>4</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>5</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mn>1</m:mn><m:mn>4</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mn>1</m:mn><m:mn>6</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
-<para id="fs-idp160458048"><title>Prófaðu þekkingu þína</title>Myndunarhraði Br<sub>2</sub> er 6,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> mól/L/s í efnahvarfi sem lýst er með eftirfarandi
+<para id="fs-idp160458048"><title>Prófaðu þekkingu þína</title>Myndunarhraði Br~2~ er 6,0
+<m:math><m:mo>×</m:mo></m:math> 10^−6^ mól/L/s í efnahvarfi sem lýst er með eftirfarandi
 nettójónajöfnu:</para>
 <equation id="fs-idp202434352" class="unnumbered"><m:math><m:mrow><m:msup><m:mrow><m:mtext>5Br</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>BrO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>6H</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>3Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm61531952">Skrifið jöfnurnar sem tengja saman
@@ -216,11 +216,11 @@ eyðsluhraða hvarfefnanna og myndunarhraða myndefnanna.</para>
 </example>
 <example id="fs-idm24260800">
 <para id="fs-idm62578304"><title>Lausn</title>Jöfnur fyrir hvarfhraða sundrunar
-H<sub>2</sub>O<sub>2</sub> Grafið í <link target-id="CNX_Chem_12_01_RRateIll"/> sýnir hraða sundrunar H<sub>2</sub>O<sub>2</sub> yfir tíma:</para>
+H<sub>2</sub>O~2~ Grafið í <link target-id="CNX_Chem_12_01_RRateIll"/> sýnir hraða sundrunar H<sub>2</sub>O~2~ yfir tíma:</para>
 <equation id="fs-idm25186720" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>2H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>2H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm78350032">Byggt á þessum gögnum er
-augnablikshraði sundrunar H<sub>2</sub>O<sub>2</sub> á tímanum <emphasis effect="italics">t</emphasis> = 11,1 klst. ákvarðaður
-sem 3,20 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> mól/L/klst., það er:</para>
+augnablikshraði sundrunar H<sub>2</sub>O~2~ á tímanum <emphasis effect="italics">t</emphasis> = 11,1 klst. ákvarðaður
+sem 3,20 <m:math><m:mo>×</m:mo></m:math> 10^−2^ mól/L/klst., það er:</para>
 <equation id="fs-idm63360896" class="unnumbered"><m:math><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mn>3.20</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:msup><m:mrow><m:mtext>mol L</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:msup><m:mrow><m:mtext>h</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
 <para id="fs-idp76303472">Hver er augnablikshraði myndunar
 H<sub>2</sub>O og O<sub>2</sub>?</para>
@@ -237,12 +237,12 @@ eins og sýnt er hér að ofan er hraði vatnsmyndefnisins því</para>
 <m:mo>(</m:mo><m:mn>2</m:mn><m:mo>)</m:mo><m:mo>(</m:mo><m:mn>1.60</m:mn><m:mo>&#xD7;</m:mo><m:msup><m:mn>10</m:mn><m:mrow><m:mo>&#x2013;</m:mo><m:mn>2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mo>&#x2013;</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>h</m:mtext><m:mrow><m:mo>&#x2013;</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mo>)</m:mo><m:mo>=</m:mo><m:mn>3.20</m:mn><m:mo>&#xD7;</m:mo><m:msup><m:mn>10</m:mn><m:mrow><m:mo>&#x2013;</m:mo><m:mn>2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mrow><m:mo>&#x2013;</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>h</m:mtext><m:mrow><m:mo>&#x2013;</m:mo><m:mn>1</m:mn></m:mrow></m:msup></m:math></equation>
 
 <para id="fs-idp25364864"><title>Prófaðu þekkingu þína</title>Ef hraði sundrunar ammóníaks, NH<sub>3</sub>,
-við 1150 K er 2,10 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup> mól/L/s, hver er þá
+við 1150 K er 2,10 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−6^ mól/L/s, hver er þá
 myndunarhraði niturs og vetnis?</para>
 <note id="fs-idp8646208">
 <title>Answer:</title>
-<para id="fs-idm12525296">1,05 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup> mól/L/s,
-N<sub>2</sub> og 3,15 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup> mól/L/s, H<sub>2</sub>.</para>
+<para id="fs-idm12525296">1,05 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−6^ mól/L/s,
+N~2~ og 3,15 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−6^ mól/L/s, H<sub>2</sub>.</para>
 </note>
 </example>
 </section>
@@ -282,7 +282,7 @@ augnablikshraða yfir ákveðið tímabil.</para>
 <problem id="fs-idp193118640">
 <para id="fs-idp34774480">Óson brotnar niður í súrefni
 samkvæmt jöfnunni <m:math><m:mrow><m:msub><m:mrow><m:mtext>2O</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>3O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Skrifaðu jöfnuna sem tengir
-hraðatjáningarnar fyrir þetta hvarf með tilliti til minnkunar á O<sub>3</sub> og
+hraðatjáningarnar fyrir þetta hvarf með tilliti til minnkunar á O~3~ og
 myndunar súrefnis.</para>
 </problem>
 </exercise>
@@ -292,8 +292,8 @@ myndunar súrefnis.</para>
 klórþríflúoríð notað til að búa til úranhexaflúoríð, rokgjarnt
 efnasamband úrans sem er notað við aðskilnað úransamsæta. Klórþríflúoríð
 er búið til með hvarfinu <m:math><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3F</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>2ClF</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Skrifaðu jöfnuna sem tengir
-hraðatjáningarnar fyrir þetta hvarf með tilliti til minnkunar á Cl<sub>2</sub> og
-F<sub>2</sub> og myndunar ClF<sub>3</sub>.</para>
+hraðatjáningarnar fyrir þetta hvarf með tilliti til minnkunar á Cl~2<sub> og
+F</sub>2~ og myndunar ClF<sub>3</sub>.</para>
 </problem>
 <solution id="fs-idp202330960">
 <para id="fs-idp8330592"><m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mo>+</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>CIF</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>3</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>Δ</m:mtext><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow><m:mrow><m:mtext>Δ</m:mtext><m:mi>t</m:mi></m:mrow></m:mfrac></m:mrow></m:math></para>
@@ -302,7 +302,7 @@ F<sub>2</sub> og myndunar ClF<sub>3</sub>.</para>
 <exercise id="fs-idp24119136">
 <problem id="fs-idm61565696">
 <para id="fs-idm5164144">Rannsókn á hraða tvíliðunar
-C<sub>4</sub>H<sub>6</sub> gaf gögnin sem sýnd eru í töflunni:<m:math><m:mrow><m:msub><m:mrow><m:mtext>2C</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>C</m:mtext></m:mrow><m:mn>8</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub></m:mrow></m:math></para>
+C<sub>4</sub>H~6~ gaf gögnin sem sýnd eru í töflunni:<m:math><m:mrow><m:msub><m:mrow><m:mtext>2C</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>C</m:mtext></m:mrow><m:mn>8</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>12</m:mn></m:mrow></m:msub></m:mrow></m:math></para>
 <!-- table handled separately -->
 <para id="fs-idp8530000">(a) Ákvarðaðu meðalhraða tvíliðunar
 á milli 0 s og 1600 s, og á milli 1600 s og 3200 s.</para>
@@ -310,7 +310,7 @@ C<sub>4</sub>H<sub>6</sub> gaf gögnin sem sýnd eru í töflunni:<m:math><m:mro
 tvíliðunar við 3200 s út frá grafi sem sýnir tíma á móti [C<sub>4</sub>H<sub>6</sub>].
 Hverjar eru einingar þessa hraða?</para>
 <para id="fs-idp17436544">(c) Ákvarðaðu meðalhraða myndunar
-C<sub>8</sub>H<sub>12</sub> við 1600 s og augnablikshraða myndunar við 3200 s út frá
+C<sub>8</sub>H~12~ við 1600 s og augnablikshraða myndunar við 3200 s út frá
 hraðanum sem fannst í liðum (a) og (b).</para>
 </problem>
 </exercise>
@@ -330,11 +330,11 @@ hraðanum sem fannst í liðum (a) og (b).</para>
 </row>
 <row valign="middle">
 <entry align="left">[C<sub>4</sub>H<sub>6</sub>] (<emphasis effect="italics">M</emphasis>)</entry>
-<entry align="left">1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
-<entry align="left">5,04 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
-<entry align="left">3,37 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
-<entry align="left">2,53 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
-<entry align="left">2,08 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">1,00 <m:math><m:mo>×</m:mo></m:math> 10^−2^</entry>
+<entry align="left">5,04 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
+<entry align="left">3,37 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
+<entry align="left">2,53 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
+<entry align="left">2,08 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
 </row>
 </tbody>
 </tgroup>
@@ -354,10 +354,10 @@ og 10,0 s, og augnablikshraða myndunar <emphasis effect="italics">B</emphasis> 
 </problem>
 <solution id="fs-idp206271280">
 <para id="fs-idm15349328">(a) meðalhraði, 0 − 10 s = 0,0375
-mól L<sup>−1</sup> s<sup>−1</sup>; meðalhraði, 10 − 20 s = 0,0265 mól L<sup>−1</sup> s<sup>−1</sup>; (b)
-augnablikshraði, 15 s = 0,023 mól L<sup>−1</sup> s<sup>−1</sup>; (c) meðalhraði fyrir
-myndun B = 0,0188 mól L<sup>−1</sup> s<sup>−1</sup>; augnablikshraði fyrir myndun B =
-0,012 mól L<sup>−1</sup> s<sup>−1</sup></para></solution>
+mól L^−1<sup> s</sup>−1^; meðalhraði, 10 − 20 s = 0,0265 mól L^−1<sup> s</sup>−1^; (b)
+augnablikshraði, 15 s = 0,023 mól L^−1<sup> s</sup>−1^; (c) meðalhraði fyrir
+myndun B = 0,0188 mól L^−1<sup> s</sup>−1^; augnablikshraði fyrir myndun B =
+0,012 mól L^−1<sup> s</sup>−1^</para></solution>
 </exercise>
 <table id="fs-idp108292976" summary="This table has two columns and eight rows. The first row is a header row and it labels each column, “Time ( s ),” and, “[ A ] ( M ).” Under the “Time ( s )” column are the numbers: 0.0, 5.0, 10.0, 15.0, 20.0, 25.0, and 35.0. Under the “[ A ] ( M )” column are the numbers: 1.00, 0.952, 0.625, 0.465, 0.370, 0.308, and 0.230." class="column-header unnumbered"><label/>
 <tgroup cols="2">
@@ -392,8 +392,8 @@ myndun B = 0,0188 mól L<sup>−1</sup> s<sup>−1</sup>; augnablikshraði fyrir
 <para id="fs-idm31731440">Lítum á eftirfarandi efnahvarf í
 vatnslausn:<m:math><m:mrow><m:msup><m:mrow><m:mtext>5Br</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mtext mathvariant="italic">aq</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>BrO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mtext mathvariant="italic">aq</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>6H</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mtext mathvariant="italic">aq</m:mtext><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>3Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mtext mathvariant="italic">aq</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>O(</m:mtext><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp2868784">Ef hvarfhraði Br<sup>–</sup>(<emphasis effect="italics">aq</emphasis>) á
-tilteknu augnabliki í efnahvarfinu er 3,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> mól
-L<sup>−1</sup> <emphasis effect="italics">s</emphasis><sup>−1</sup>, hver er myndunarhraði Br<sub>2</sub>(<emphasis effect="italics">aq</emphasis>) á því augnabliki?</para>
+tilteknu augnabliki í efnahvarfinu er 3,5 <m:math><m:mo>×</m:mo></m:math> 10^−4<sup> mól
+L</sup>−1^ <emphasis effect="italics">s</emphasis><sup>−1</sup>, hver er myndunarhraði Br<sub>2</sub>(<emphasis effect="italics">aq</emphasis>) á því augnabliki?</para>
 </problem>
 </exercise>
 </section>

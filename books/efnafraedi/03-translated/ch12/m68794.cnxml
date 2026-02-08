@@ -33,9 +33,9 @@ og eru notuð í síðara þrepi eru kölluð <emphasis effect="bold">milliefni<
 <para id="fs-idp6340064">Þó að heildarjöfnan fyrir niðurbrot
 ósons gefi til kynna að tvær ósonsameindir hvarfist og myndi þrjár
 súrefnissameindir, þá felur hvarfgangurinn <emphasis effect="italics">ekki í sér beinan árekstur
-og hvarf tveggja ósonsameinda</emphasis>. Þess í stað brotnar ein O<sub>3</sub> sameind
-niður og myndar O<sub>2</sub> og súrefnisatóm, og önnur O<sub>3</sub> sameind hvarfast
-síðan við súrefnisatómið og myndar tvær O<sub>2</sub> sameindir til viðbótar.</para>
+og hvarf tveggja ósonsameinda</emphasis>. Þess í stað brotnar ein O~3~ sameind
+niður og myndar O~2~ og súrefnisatóm, og önnur O~3~ sameind hvarfast
+síðan við súrefnisatómið og myndar tvær O~2~ sameindir til viðbótar.</para>
 <para id="fs-idm500275472">Ólíkt stilltum jöfnum sem tákna
 heildarhvarf, eru jöfnur fyrir frumhvörf nákvæm lýsing á þeirri
 efnabreytingu sem á sér stað. Hvarfefnið (eða hvarfefnin) í jöfnu
@@ -101,7 +101,7 @@ er efnahvarf niturdíoxíðs við kolsýring:</para>
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_12_06_BimoElRe.jpg"/>
 </media>
 <caption>Líklegur
-hvarfgangur fyrir efnahvarfið milli NO<sub>2</sub> og CO sem gefur NO og CO<sub>2</sub>.</caption></figure>
+hvarfgangur fyrir efnahvarfið milli NO~2~ og CO sem gefur NO og CO<sub>2</sub>.</caption></figure>
 <para id="fs-idp38432416">Tveggja sameinda grunnskref geta
 einnig verið skref í fjölþrepa hvarfgangi. Efnahvarf súrefnisatóms við
 óson er annað skrefið í tveggja skrefa niðurbrotshvarfgangi ósons sem
@@ -145,16 +145,16 @@ um tákna heildarbreytinguna fyrir tiltekið efnafræðilegt kerfi og mjög
 oft er þetta afleiðing einhvers fjölþrepa hvarfgangs. Í öllum tilvikum
 verður að ákvarða hraðajöfnuna út frá tilraunagögnum og síðan leiða
 hvarfganginn út frá hraðajöfnunni (og stundum út frá öðrum gögnum).
-Efnahvarf NO<sub>2</sub> og CO er gott dæmi:</para>
+Efnahvarf NO~2~ og CO er gott dæmi:</para>
 <equation id="fs-idp193034480" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp18907792">Við hitastig yfir 225 °C hefur
 hraðajafnan reynst vera:</para>
 <equation id="fs-idp70556928" class="unnumbered"><m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:math></equation>
 <para id="fs-idp43466688">Efnahvarfið er af fyrsta stigi með
-tilliti til NO<sub>2</sub> og af fyrsta stigi með tilliti til CO. Þetta er í
+tilliti til NO~2~ og af fyrsta stigi með tilliti til CO. Þetta er í
 samræmi við eins skrefs tveggja sameinda hvarfgang og það er <emphasis effect="italics">mögulegt</emphasis>
 að þetta sé hvarfgangurinn fyrir þetta efnahvarf við hátt hitastig.</para>
-<para id="fs-idp232335904">Við hitastig undir 225 °C\<emphasis effect="italics">,\</emphasis> er
+<para id="fs-idp232335904">Við hitastig undir 225 °C<emphasis effect="italics">,</emphasis> er
 efnahvarfinu lýst með hraðajöfnu sem er af öðru stigi með tilliti til
 NO<sub>2</sub>:</para>
 <equation id="fs-idm80864896" class="unnumbered"><m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
@@ -163,7 +163,7 @@ við eins skrefs hvarfganginn, en er í samræmi við eftirfarandi tveggja
 skrefa hvarfgang:</para>
 <equation id="fs-idp34145072" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>slow</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mtext>NO</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>fast</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idp107509104">Hraðatakmarkandi (hægara) skrefið
-gefur hraðajöfnu sem sýnir annars stigs háðni af styrk NO<sub>2</sub> og summa
+gefur hraðajöfnu sem sýnir annars stigs háðni af styrk NO~2~ og summa
 jafnanna tveggja gefur heildarefnahvarfið.</para>
 <para id="fs-idp37457664">Almennt, þegar hraðatakmarkandi
 (hægara) skrefið er fyrsta skrefið í hvarfgangi, er hraðajafnan fyrir
@@ -272,7 +272,7 @@ frumhvarfið, þrísameindaefnahvarfið <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m
 </problem>
 <solution id="fs-idp15537216">
 <para id="fs-idp74514816">Hraði = <emphasis effect="italics">k</emphasis>[<emphasis effect="italics">A</emphasis>][<emphasis effect="italics">B</emphasis>]<sup>2</sup>;
-Hraði = <emphasis effect="italics">k</emphasis>[<emphasis effect="italics">A</emphasis>]<sup>3</sup></para>
+Hraði = <emphasis effect="italics">k</emphasis>[<emphasis effect="italics">A</emphasis>]^3^</para>
 </solution>
 </exercise>
 <exercise id="fs-idp38703248">
@@ -297,9 +297,9 @@ eftirfarandi frumhvarfa:</para>
 <para id="fs-idp252526240">(e) <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>NO</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idp139186432">
-<para id="fs-idm1295248">(a) Hraði<sub>1</sub> = <emphasis effect="italics">k</emphasis>[O<sub>3</sub>]; (b)
-Hraði<sub>2</sub> = <emphasis effect="italics">k</emphasis>[O<sub>3</sub>][Cl]; (c) Hraði<sub>3</sub> = <emphasis effect="italics">k</emphasis>[ClO][O]; (d)
-Hraði<sub>2</sub> = <emphasis effect="italics">k</emphasis>[O<sub>3</sub>][NO]; (e) Hraði<sub>3</sub> = <emphasis effect="italics">k</emphasis>[NO<sub>2</sub>][O]</para>
+<para id="fs-idm1295248">(a) Hraði~1~ = <emphasis effect="italics">k</emphasis>[O<sub>3</sub>]; (b)
+Hraði~2~ = <emphasis effect="italics">k</emphasis>[O<sub>3</sub>][Cl]; (c) Hraði~3~ = <emphasis effect="italics">k</emphasis>[ClO][O]; (d)
+Hraði~2~ = <emphasis effect="italics">k</emphasis>[O<sub>3</sub>][NO]; (e) Hraði~3~ = <emphasis effect="italics">k</emphasis>[NO<sub>2</sub>][O]</para>
 </solution>
 </exercise>
 <exercise id="fs-idp63617152">
@@ -327,7 +327,7 @@ fyrir efnahvarfið.</para>
 <emphasis effect="italics">k</emphasis>, fyrir efnahvarfið. Taktu einingar með.</para>
 <para id="fs-idp37050608">(d) Fyrir tilraun 2, reiknaðu
 styrk NO sem eftir er þegar nákvæmlega helmingur af upphaflegu magni
-H<sub>2</sub> hefur verið notaður.</para>
+H~2~ hefur verið notaður.</para>
 <para id="fs-idp79345216">(e) Eftirfarandi röð grunnskrefa
 er tillaga að hvarfgangi fyrir efnahvarfið.</para>
 <para id="fs-idp196835696">Skref 1: <m:math><m:mrow><m:mtext>NO</m:mtext><m:mo>+</m:mo><m:mtext>NO</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></para>
@@ -343,9 +343,9 @@ heildarhlutfallaefnafræði efnahvarfsins.</para>
 tvöfaldar hraðann. [H<sub>2</sub>] verður að koma fram í hraðajöfnunni í fyrsta
 veldi. Tvöföldun á [NO] eykur hraðann um stuðulinn 4. [NO] verður að
 koma fram í hraðajöfnunni í öðru veldi. (b) Hraði = <emphasis effect="italics">k</emphasis>
-[NO]<sup>2</sup>[H<sub>2</sub>]; (c) <emphasis effect="italics">k</emphasis> = 5,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> mól<sup>2</sup> L<sup>−2</sup>
-mín<sup>−1</sup>; (d) 0,0050 mól/L; (e) Skref II er hraðatakmarkandi skref. Ef
-skref I gefur N<sub>2</sub>O<sub>2</sub> í nægilegu magni, sameinast skref 1 og 2 og gefa
+[NO]<sup>2</sup>[H<sub>2</sub>]; (c) <emphasis effect="italics">k</emphasis> = 5,0 <m:math><m:mo>×</m:mo></m:math> 10^3<sup> mól</sup>2<sup> L</sup>−2<sup>
+mín</sup>−1^; (d) 0,0050 mól/L; (e) Skref II er hraðatakmarkandi skref. Ef
+skref I gefur N<sub>2</sub>O~2~ í nægilegu magni, sameinast skref 1 og 2 og gefa
 <m:math><m:mrow><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>.</m:mo></m:mrow></m:math> Þetta efnahvarf samsvarar hraðajöfnunni sem sést.
 Sameinaðu skref 1 og 2 með skrefi 3, sem gerist að gefnu tilefni hratt,
 til að fá rétta hlutfallaefnafræði.</para>
@@ -363,8 +363,8 @@ til að fá rétta hlutfallaefnafræði.</para>
 <entry align="left">Tilraun</entry>
 <entry align="left">Upphafsstyrkur [NO] (mól L<sup>−1</sup>)</entry>
 <entry align="left">Upphafsstyrkur, [H<sub>2</sub>] (mól L<sup>−1</sup>)</entry>
-<entry align="left">Upphafshraði myndunar N<sub>2</sub> (mól L<sup>−1</sup>
-mín<sup>−1</sup>)</entry>
+<entry align="left">Upphafshraði myndunar N~2~ (mól L^−1<sup>
+mín</sup>−1^)</entry>
 </row>
 </thead>
 <tbody>
@@ -372,37 +372,37 @@ mín<sup>−1</sup>)</entry>
 <entry align="left">1</entry>
 <entry align="left">0,0060</entry>
 <entry align="left">0,0010</entry>
-<entry align="left">1,8 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
+<entry align="left">1,8 <m:math><m:mo>×</m:mo></m:math> 10^−4^</entry>
 </row>
 <row valign="middle">
 <entry align="left">2</entry>
 <entry align="left">0,0060</entry>
 <entry align="left">0,0020</entry>
-<entry align="left">3,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
+<entry align="left">3,6 <m:math><m:mo>×</m:mo></m:math> 10^−4^</entry>
 </row>
 <row valign="middle">
 <entry align="left">3</entry>
 <entry align="left">0,0010</entry>
 <entry align="left">0,0060</entry>
-<entry align="left">0,30 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
+<entry align="left">0,30 <m:math><m:mo>×</m:mo></m:math> 10^−4^</entry>
 </row>
 <row valign="middle">
 <entry align="left">4</entry>
 <entry align="left">0,0020</entry>
 <entry align="left">0,0060</entry>
-<entry align="left">1,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
+<entry align="left">1,2 <m:math><m:mo>×</m:mo></m:math> 10^−4^</entry>
 </row>
 </tbody>
 </tgroup>
 </table>
 <exercise id="fs-idp225129424">
 <problem id="fs-idp107377632">
-<para id="fs-idp244877904">Efnahvarf CO við Cl<sub>2</sub> gefur
+<para id="fs-idp244877904">Efnahvarf CO við Cl~2~ gefur
 fosgen (COCl<sub>2</sub>), eitrað gas sem var notað sem efnavopn í fyrri
 heimsstyrjöldinni. Notaðu hvarfganginn sem sýndur er hér til að ljúka
-við eftirfarandi æfingar: <m:math><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> (hratt, k<sub>1</sub> táknar hraðafasta
-fyrir framhvarf, <emphasis effect="italics">k</emphasis><sub>−1</sub> hraðafasta fyrir bakhvarf) <m:math><m:mrow><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>COCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math>
-(hægt, <emphasis effect="italics">k</emphasis><sub>2</sub> hraðafastinn) <m:math><m:mrow><m:mtext>COCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>COCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> (hratt, <emphasis effect="italics">k</emphasis><sub>3</sub> hraðafastinn)</para>
+við eftirfarandi æfingar: <m:math><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> (hratt, k~1~ táknar hraðafasta
+fyrir framhvarf, <emphasis effect="italics">k</emphasis>~−1~ hraðafasta fyrir bakhvarf) <m:math><m:mrow><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>COCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math>
+(hægt, <emphasis effect="italics">k</emphasis>~2~ hraðafastinn) <m:math><m:mrow><m:mtext>COCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>Cl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>COCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> (hratt, <emphasis effect="italics">k</emphasis>~3~ hraðafastinn)</para>
 <para id="fs-idp38932624">(a) Skrifaðu heildarefnahvarfið.</para>
 <para id="fs-idp180368">(b) Tilgreindu öll milliefni.</para>
 <para id="fs-idp106886192">(c) Skrifaðu hraðajöfnuna fyrir

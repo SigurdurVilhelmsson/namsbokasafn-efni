@@ -28,7 +28,7 @@ hlutfallaefnafræði hvarfsins, eins og sýnt er með sundrun ammoníaks:</para>
 <equation id="fs-idp2372544" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mover><m:mo stretchy="false">⇌</m:mo><m:mrow/></m:mover><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp42253680">Eins og sýnt var fyrr í þessum kafla
 getur þetta jafnvægi komist á í lokuðu íláti sem inniheldur í upphafi
-annaðhvort aðeins NH<sub>3</sub> eða efnablöndu af einhverjum tveimur af þeim
+annaðhvort aðeins NH~3~ eða efnablöndu af einhverjum tveimur af þeim
 þremur efnum sem taka þátt í jafnvæginu. Óháð upphaflegri samsetningu
 mun hvarfblanda sýna sömu tengsl milli breytinga á styrk efnanna þriggja
 sem taka þátt, eins og hlutfallaefnafræði hvarfsins segir til um (sjá
@@ -81,9 +81,9 @@ ICE-tafla.</para>
 jafnvægisfasta</title>Joðsameindir hvarfast afturkræft við
 joðíðjónir og mynda þríjoðíðjónir.</para>
 <equation id="fs-idp73967168" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>I</m:mtext><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
-<para id="fs-idp148807520">Ef lausn með styrk I<sub>2</sub> og I<sup>−</sup> sem
-er jafn 1,000 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> <emphasis effect="italics">M</emphasis> fyrir efnahvarf gefur
-jafnvægisstyrk I<sub>2</sub> upp á 6,61 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> <emphasis effect="italics">M</emphasis>, hver er þá
+<para id="fs-idp148807520">Ef lausn með styrk I~2~ og I^−^ sem
+er jafn 1,000 <m:math><m:mo>×</m:mo></m:math> 10^−3^ <emphasis effect="italics">M</emphasis> fyrir efnahvarf gefur
+jafnvægisstyrk I~2~ upp á 6,61 <m:math><m:mo>×</m:mo></m:math> 10^−4^ <emphasis effect="italics">M</emphasis>, hver er þá
 jafnvægisfasti efnahvarfsins?</para>
 <para id="fs-idp127545184"><title>Lausn</title>Til að reikna út jafnvægisfastana
 þarf jafnvægisstyrk fyrir öll hvarfefni og myndefni:</para>
@@ -99,8 +99,8 @@ upplýsingarnar fram í ICE-töflu.</para>
 <media id="fs-idp68301536" class="scaled-down" alt="This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header, “I subscript 2 plus sign I superscript negative sign equilibrium arrow I subscript 3 superscript negative sign.” Under the second column is a subgroup of three rows and three columns. The first column has the following: 1.000 times 10 to the negative third power, negative x, [ I subscript 2 ] subscript i minus x. The second column has the following: 1.000 times 10 to the negative third power, negative x, [ I superscript negative sign ] subscript i minus x. The third column has the following: 0, positive x, [ I superscript negative sign ] subscript i plus x.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_13_04_ICETable1_img.jpg"/>
 </media>
-<para id="fs-idp97043040">Við jafnvægi er styrkur I<sub>2</sub> 6,61
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> <emphasis effect="italics">M</emphasis> þannig að</para>
+<para id="fs-idp97043040">Við jafnvægi er styrkur I~2~ 6,61
+<m:math><m:mo>×</m:mo></m:math> 10^−4^ <emphasis effect="italics">M</emphasis> þannig að</para>
 <equation id="fs-idp119575776" class="unnumbered"><m:math><m:mrow><m:mn>1.000</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mo>−</m:mo><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>6.61</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
 <equation id="fs-idp120750608" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>1.000</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mo>−</m:mo><m:mn>6.61</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
 <equation id="fs-idp8604640" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mn>3.39</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mi>M</m:mi></m:mrow></m:math></equation>
@@ -139,7 +139,7 @@ jafnvægisstyrkinn. Útreikningur af þessu tagi er sýndur í næsta dæmi.</pa
 myndast við hvarf niturs og súrefnis við hátt hitastig. Við 2000 °C er
 gildi <emphasis effect="italics">K<sub>c</sub></emphasis> fyrir efnahvarfið, <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>,</m:mo></m:mrow></m:math>, 4,1 <m:math><m:mo>×</m:mo></m:math>
 10<sup>−4</sup>. Reiknaðu jafnvægisstyrk NO(<emphasis effect="italics">g</emphasis>) í lofti við 1 atm þrýsting og
-2000 °C. Jafnvægisstyrkur N<sub>2</sub> og O<sub>2</sub> við þennan þrýsting og þetta
+2000 °C. Jafnvægisstyrkur N~2<sub> og O</sub>2~ við þennan þrýsting og þetta
 hitastig er 0,036 M og 0,0089 M, í sömu röð.</para><para id="fs-idp115961824"><title>Lausn</title>Settu gefnar stærðir inn í
 jafnvægisfastasegðina og leystu fyrir [NO]:</para>
 <equation id="fs-idp57551600" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -149,7 +149,7 @@ jafnvægisfastasegðina og leystu fyrir [NO]:</para>
 <equation id="fs-idp334861312" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:mn>1.31</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow></m:msqrt></m:mrow></m:math></equation>
 <equation id="fs-idp166439104" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mn>3.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm3522096">Þannig er [NO] 3,6 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−4</sup> mól/L við jafnvægi við þessar aðstæður.</para>
+10^−4^ mól/L við jafnvægi við þessar aðstæður.</para>
 <para id="fs-idp72250176">Til að staðfesta þessa niðurstöðu má
 nota hana ásamt gefnum jafnvægisstyrk til að reikna út gildi fyrir <emphasis effect="italics">K</emphasis>:</para>
 <equation id="fs-idp71208832" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow><m:mspace width="0.2em"/><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -189,13 +189,13 @@ sýna notkun þessarar aðferðar.</para>
 <para id="fs-idp86926592"><title>Útreikningur á
 jafnvægisstyrk</title>Við ákveðnar aðstæður er
 jafnvægisfastinn <emphasis effect="italics">K<sub>c</sub></emphasis> fyrir sundrun PCl<sub>5</sub>(<emphasis effect="italics">g</emphasis>) í PCl<sub>3</sub>(<emphasis effect="italics">g</emphasis>) og
-Cl<sub>2</sub>(<emphasis effect="italics">g</emphasis>) 0,0211. Hver er jafnvægisstyrkur PCl<sub>5</sub>, PCl<sub>3</sub> og Cl<sub>2</sub> í
-efnablöndu sem innihélt upphaflega aðeins PCl<sub>5</sub> með styrkinn 1,00 <emphasis effect="italics">M</emphasis>?</para>
+Cl<sub>2</sub>(<emphasis effect="italics">g</emphasis>) 0,0211. Hver er jafnvægisstyrkur PCl<sub>5</sub>, PCl~3<sub> og Cl</sub>2~ í
+efnablöndu sem innihélt upphaflega aðeins PCl~5~ með styrkinn 1,00 <emphasis effect="italics">M</emphasis>?</para>
 <para id="fs-idp189382624"><title>Lausn</title>Notaðu skref-fyrir-skref aðferðina
 sem lýst var áður.</para>
 <list id="fs-idp88175472" list-type="enumerated" number-style="arabic" class="stepwise">
 <item><emphasis effect="italics">Ákvarðaðu í hvaða átt hvarfið
-gengur.</emphasis> Jafnað efnahvarf fyrir niðurbrot PCl<sub>5</sub> er <m:math><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> Þar
+gengur.</emphasis> Jafnað efnahvarf fyrir niðurbrot PCl~5~ er <m:math><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math> Þar
 sem aðeins hvarfefnið er til staðar í upphafi er <emphasis effect="italics">Q<sub>c</sub></emphasis> = 0 og hvarfið
 mun ganga til hægri.</item>
 <item><emphasis effect="italics">Búðu til ICE-töflu.</emphasis></item>
@@ -203,7 +203,7 @@ mun ganga til hægri.</item>
 jafnvægisstyrkinn.</emphasis> Með því að setja jafnvægisstyrkinn inn í jöfnu
 jafnvægisfastans fæst <m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo stretchy="false">]</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.0211</m:mn></m:mrow></m:math> <m:math><m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math> <m:math><m:mrow><m:mn>0.0211</m:mn><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math>
 <m:math><m:mrow><m:mn>0.0211</m:mn><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>1.00</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mi>x</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math> <m:math><m:mrow><m:msup><m:mi>x</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>0.0211</m:mn><m:mi>x</m:mi><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math> Viðauki B sýnir að jöfnu á forminu
-<emphasis effect="italics">ax</emphasis><sup>2</sup> + <emphasis effect="italics">bx</emphasis> + <emphasis effect="italics">c</emphasis> = 0 er hægt að endurraða til að leysa fyrir <emphasis effect="italics">x</emphasis>:
+<emphasis effect="italics">ax</emphasis>^2^ + <emphasis effect="italics">bx</emphasis> + <emphasis effect="italics">c</emphasis> = 0 er hægt að endurraða til að leysa fyrir <emphasis effect="italics">x</emphasis>:
 <m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mi>b</m:mi><m:mspace width="0.2em"/><m:mo>±</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:msup><m:mi>b</m:mi><m:mn>2</m:mn></m:msup><m:mo>−</m:mo><m:mn>4</m:mn><m:mi>a</m:mi><m:mi>c</m:mi></m:mrow></m:msqrt></m:mrow><m:mrow><m:mn>2</m:mn><m:mi>a</m:mi></m:mrow></m:mfrac></m:mrow></m:math> Í þessu tilfelli er <emphasis effect="italics">a</emphasis> = 1, <emphasis effect="italics">b</emphasis> = 0,0211 og <emphasis effect="italics">c</emphasis> =
 −0,0211. Með því að setja inn viðeigandi gildi fyrir <emphasis effect="italics">a</emphasis>, <emphasis effect="italics">b</emphasis> og <emphasis effect="italics">c</emphasis>
 fæst: <m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mspace width="0.2em"/><m:mo>±</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>0.0211</m:mn></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup><m:mo>−</m:mo><m:mn>4</m:mn><m:mo stretchy="false">(</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>−0.0211</m:mn><m:mo stretchy="false">)</m:mo></m:mrow></m:msqrt></m:mrow><m:mrow><m:mn>2</m:mn><m:mo stretchy="false">(</m:mo><m:mn>1</m:mn><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac></m:mrow></m:math> <m:math><m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mspace width="0.2em"/><m:mo>±</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>4.45</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow><m:mo>+</m:mo><m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:mn>8.44</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup></m:mrow><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:msqrt></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> <m:math><m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>0.0211</m:mn><m:mspace width="0.2em"/><m:mo>±</m:mo><m:mspace width="0.2em"/><m:mn>0.291</m:mn></m:mrow><m:mn>2</m:mn></m:mfrac></m:mrow></m:math> Rætur annars stigs
@@ -223,15 +223,15 @@ etanól, C<sub>2</sub>H<sub>5</sub>OH, og myndar vatn og etýlasetat, CH<sub>3</
 <para id="fs-idp207855376">Jafnvægisfastinn fyrir þetta hvarf
 með díoxan sem leysi er 4,0. Hver er jafnvægisstyrkur efnablöndu sem er
 upphaflega 0,15 <emphasis effect="italics">M</emphasis> í CH<sub>3</sub>CO<sub>2</sub>H, 0,15 <emphasis effect="italics">M</emphasis> í C<sub>2</sub>H<sub>5</sub>OH, 0,40 <emphasis effect="italics">M</emphasis> í
-CH<sub>3</sub>CO<sub>2</sub>C<sub>2</sub>H<sub>5</sub> og 0,40 <emphasis effect="italics">M</emphasis> í H<sub>2</sub>O?</para>
+CH<sub>3</sub>CO<sub>2</sub>C<sub>2</sub>H~5~ og 0,40 <emphasis effect="italics">M</emphasis> í H<sub>2</sub>O?</para>
 <note id="fs-idp128998512"><title>Answer:</title>
 <para id="fs-idp349622384">[CH<sub>3</sub>CO<sub>2</sub>H] = 0,18 <emphasis effect="italics">M</emphasis>,
 [C<sub>2</sub>H<sub>5</sub>OH] = 0,18 <emphasis effect="italics">M</emphasis>, [CH<sub>3</sub>CO<sub>2</sub>C<sub>2</sub>H<sub>5</sub>] = 0,37 <emphasis effect="italics">M</emphasis>, [H<sub>2</sub>O]
 = 0,37 <emphasis effect="italics">M</emphasis></para></note>
 <para id="fs-idp347329920"><title>Kannaðu þekkingu þína</title>1,00 lítra flaska er fyllt með 1,00
-móli af H<sub>2</sub> og 2,00 mólum af I<sub>2</sub>. Gildi jafnvægisfastans fyrir hvarf
+móli af H~2~ og 2,00 mólum af I<sub>2</sub>. Gildi jafnvægisfastans fyrir hvarf
 vetnis og joðs sem mynda vetnisjoðíð er 50,5 við gefnar aðstæður. Hver
-er jafnvægisstyrkur H<sub>2</sub>, I<sub>2</sub> og HI í mólum/L?</para>
+er jafnvægisstyrkur H<sub>2</sub>, I~2~ og HI í mólum/L?</para>
 <equation id="fs-idp140225920" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>HI</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <note id="fs-idp148875216"><title>Answer:</title>
 <para id="fs-idp222432912">[H<sub>2</sub>] = 0,06 <emphasis effect="italics">M</emphasis>, [I<sub>2</sub>] = 1,06
@@ -256,7 +256,7 @@ leysið fyrir <emphasis effect="italics">x</emphasis></para>
 <equation id="fs-idm107468128" class="unnumbered"><m:math><m:mrow><m:msup><m:mi>x</m:mi><m:mn>2</m:mn></m:msup><m:mo>+</m:mo><m:mn>4.9</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−10</m:mtext></m:mrow></m:msup><m:mi>x</m:mi><m:mo>−</m:mo><m:mn>7.35</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−11</m:mtext></m:mrow></m:msup><m:mo>=</m:mo><m:mn>0</m:mn></m:mrow></m:math></equation>
 <equation id="fs-idp64062640" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mn>8.56</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−6</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mi>M</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>3 sig. figs.</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>8.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−6</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:mi>M</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mtext>2 sig. figs.</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idm36129424">Þannig er [H<sup>+</sup>] = [CN<sup>–</sup>] = <emphasis effect="italics">x</emphasis>
-= 8,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>–6</sup> <emphasis effect="italics">M</emphasis> og [HCN] = 0,15 – <emphasis effect="italics">x</emphasis> = 0,15 <emphasis effect="italics">M</emphasis>.</para>
+= 8,6 <m:math><m:mo>×</m:mo></m:math> 10^–6^ <emphasis effect="italics">M</emphasis> og [HCN] = 0,15 – <emphasis effect="italics">x</emphasis> = 0,15 <emphasis effect="italics">M</emphasis>.</para>
 <para id="fs-idm8990656">Takið eftir að í þessu tilfelli er
 breytingin á styrknum verulega minni en upphafsstyrkurinn (sem er
 afleiðing af litlu <emphasis effect="italics">K</emphasis>) og því verður óveruleg breyting á
@@ -277,7 +277,7 @@ vissulega mun minna en upphafsstyrkurinn</para>
 nálgunina, hefði þurft að endurtaka útreikninginn án þess að nota
 nálgunina.</para>
 <para id="fs-idm21377744"><title>Prófaðu þekkingu þína</title>Hver er jafnvægisstyrkurinn í 0,25
-<emphasis effect="italics">M</emphasis> NH<sub>3</sub> lausn?</para>
+<emphasis effect="italics">M</emphasis> NH~3~ lausn?</para>
 <equation id="fs-idm103584160" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msup><m:mrow/><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mtext>c</m:mtext></m:msub><m:mo>=</m:mo><m:mn>1.8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mtext>−5</m:mtext></m:mrow></m:msup></m:mrow></m:math></equation>
 <note id="fs-idm106766656">
 <title>Answer:</title>
@@ -324,15 +324,15 @@ tvö sett af styrkjum sem lýsa efnablöndu af W, X og Y í jafnvægi.</para>
 <exercise id="fs-idp288474752">
 <problem id="fs-idp123699904">
 <para id="fs-idp156675248">Hvert er gildi jafnvægisfastans
-við 500 °C fyrir myndun NH<sub>3</sub> samkvæmt eftirfarandi jöfnu?</para>
+við 500 °C fyrir myndun NH~3~ samkvæmt eftirfarandi jöfnu?</para>
 <para id="fs-idp339264432"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp292210576">Jafnvægisblanda af NH<sub>3</sub>(<emphasis effect="italics">g</emphasis>),
 H<sub>2</sub>(<emphasis effect="italics">g</emphasis>) og N<sub>2</sub>(<emphasis effect="italics">g</emphasis>) við 500 °C reyndist innihalda 1,35 <emphasis effect="italics">M</emphasis> H<sub>2</sub>, 1,15
-<emphasis effect="italics">M</emphasis> N<sub>2</sub> og 4,12 <m:math><m:mo>×</m:mo></m:math> 10<sup>−1</sup> <emphasis effect="italics">M</emphasis> NH<sub>3</sub>.</para>
+<emphasis effect="italics">M</emphasis> N~2~ og 4,12 <m:math><m:mo>×</m:mo></m:math> 10^−1^ <emphasis effect="italics">M</emphasis> NH<sub>3</sub>.</para>
 </problem>
 <solution id="fs-idp349698320">
 <para id="fs-idp349698576"><emphasis effect="italics">K<sub>c</sub></emphasis> = 6,00 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−2</sup></para>
+10^−2^</para>
 </solution>
 </exercise>
 <exercise id="fs-idp220009680">
@@ -343,15 +343,15 @@ hvarfi metans og vatnsgufu við hátt hitastig.</para>
 <para id="fs-idp126314528">Hver er jafnvægisfastinn fyrir
 hvarfið ef efnablanda í jafnvægi inniheldur lofttegundir með
 eftirfarandi styrk: CH<sub>4</sub>, 0,126 <emphasis effect="italics">M</emphasis>; H<sub>2</sub>O, 0,242 <emphasis effect="italics">M</emphasis>; CO, 0,126 <emphasis effect="italics">M</emphasis>;
-H<sub>2</sub> 1,15 <emphasis effect="italics">M</emphasis>, við hitastigið 760 °C?</para>
+H~2~ 1,15 <emphasis effect="italics">M</emphasis>, við hitastigið 760 °C?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp343440336">
 <problem id="fs-idp343440592">
-<para id="fs-idp343440848">0,72 mól sýni af PCl<sub>5</sub> er sett í
+<para id="fs-idp343440848">0,72 mól sýni af PCl~5~ er sett í
 1,00 L ílát og hitað. Við jafnvægi inniheldur ílátið 0,40 mól af
 PCl<sub>3</sub>(<emphasis effect="italics">g</emphasis>) og 0,40 mól af Cl<sub>2</sub>(<emphasis effect="italics">g</emphasis>). Reiknaðu gildi jafnvægisfastans
-fyrir niðurbrot PCl<sub>5</sub> í PCl<sub>3</sub> og Cl<sub>2</sub> við þetta hitastig.</para>
+fyrir niðurbrot PCl~5<sub> í PCl</sub>3<sub> og Cl</sub>2~ við þetta hitastig.</para>
 </problem>
 <solution id="fs-idp112198544">
 <para id="fs-idp100948784"><emphasis effect="italics">K<sub>c</sub></emphasis> = 0,50</para>
@@ -359,7 +359,7 @@ fyrir niðurbrot PCl<sub>5</sub> í PCl<sub>3</sub> og Cl<sub>2</sub> við þett
 </exercise>
 <exercise id="fs-idp99340080">
 <problem id="fs-idp99340336">
-<para id="fs-idp72815968">Við 1 atm og 25 °C brotnar NO<sub>2</sub>
+<para id="fs-idp72815968">Við 1 atm og 25 °C brotnar NO~2~
 með upphafsstyrk 1,00 <emphasis effect="italics">M</emphasis> niður um 0,0033% í NO og O<sub>2</sub>. Reiknaðu gildi
 jafnvægisfastans fyrir hvarfið.</para>
 <para id="fs-idp226439472"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
@@ -373,7 +373,7 @@ jafnvægishlutþrýstingum: NO, 0,050 atm; Cl<sub>2</sub>, 0,30 atm; NOCl, 1,2 a
 </problem>
 <solution id="fs-idp160967408">
 <para id="fs-idp160967664"><emphasis effect="italics">K<sub>P</sub></emphasis> = 1,9 <m:math><m:mo>×</m:mo></m:math>
-10<sup>3</sup></para></solution>
+10^3^</para></solution>
 </exercise>
 <exercise id="fs-idp95397216">
 <problem id="fs-idp59973040">
@@ -381,7 +381,7 @@ jafnvægishlutþrýstingum: NO, 0,050 atm; Cl<sub>2</sub>, 0,30 atm; NOCl, 1,2 a
 samkvæmt þessari jöfnu:</para>
 <para id="fs-idp211752192"><m:math><m:mrow><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>I</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp71998288">Við 1274 K sýnir sýni hlutþrýsting
-I<sub>2</sub> upp á 0,1122 atm og hlutþrýsting vegna I-atóma upp á 0,1378 atm.
+I~2~ upp á 0,1122 atm og hlutþrýsting vegna I-atóma upp á 0,1378 atm.
 Ákvarðaðu gildi jafnvægisfastans, <emphasis effect="italics">K<sub>P</sub></emphasis>, fyrir klofnunina við 1274 K.</para>
 </problem>
 </exercise>
@@ -484,20 +484,20 @@ NH<sub>4</sub>HS breytist?</para></problem>
 <exercise id="fs-idp99980832">
 <problem id="fs-idp99981088">
 <para id="fs-idp99981344">Greining á lofttegundum í lokuðu
-hvarfíláti sem innihélt NH<sub>3</sub>, N<sub>2</sub> og H<sub>2</sub> við jafnvægi við 400 °C
-leiddi í ljós að styrkur N<sub>2</sub> var 1,2 <emphasis effect="italics">M</emphasis> og styrkur H<sub>2</sub> var 0,24 <emphasis effect="italics">M</emphasis>.</para>
+hvarfíláti sem innihélt NH<sub>3</sub>, N~2<sub> og H</sub>2~ við jafnvægi við 400 °C
+leiddi í ljós að styrkur N~2~ var 1,2 <emphasis effect="italics">M</emphasis> og styrkur H~2~ var 0,24 <emphasis effect="italics">M</emphasis>.</para>
 <para id="fs-idp119925376"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.50</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>400</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp157764272">Reiknaðu jafnvægismólstyrk NH<sub>3</sub>.</para>
 </problem>
 <solution id="fs-idp274160144">
 <para id="fs-idp274160400">[NH<sub>3</sub>] = 9,1 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−2</sup> <emphasis effect="italics">M</emphasis></para>
+10^−2^ <emphasis effect="italics">M</emphasis></para>
 </solution>
 </exercise>
 <exercise id="fs-idp120770528">
 <problem id="fs-idp120770784">
 <para id="fs-idp312744496">Reiknaðu fjölda móla af HI sem
-eru í jafnvægi við 1,25 mól af H<sub>2</sub> og 1,25 mól af I<sub>2</sub> í 5,00 L flösku
+eru í jafnvægi við 1,25 mól af H~2~ og 1,25 mól af I~2~ í 5,00 L flösku
 við 448 °C.</para>
 <para id="fs-idp336494608"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>HI</m:mtext><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>50.2</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>448</m:mn><m:mspace width="0.2em"/><m:mtext>°</m:mtext><m:mtext>C</m:mtext></m:mrow></m:math></para>
 </problem>
@@ -505,19 +505,19 @@ við 448 °C.</para>
 <exercise id="fs-idp316125088">
 <problem id="fs-idp316125344">
 <para id="fs-idp316125600">Hver er þrýstingur BrCl í
-jafnvægisefnablöndu af Cl<sub>2</sub>, Br<sub>2</sub> og BrCl ef þrýstingur Cl<sub>2</sub> í
-efnablöndunni er 0,115 atm og þrýstingur Br<sub>2</sub> í efnablöndunni er 0,450
+jafnvægisefnablöndu af Cl<sub>2</sub>, Br~2~ og BrCl ef þrýstingur Cl~2~ í
+efnablöndunni er 0,115 atm og þrýstingur Br~2~ í efnablöndunni er 0,450
 atm?</para>
 <para id="fs-idp156191680"><m:math><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>BrCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>4.7</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idp171028720">
-<para id="fs-idp171028976"><emphasis effect="italics">P</emphasis><sub>BrCl</sub> = 4,9 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−2</sup> atm</para>
+<para id="fs-idp171028976"><emphasis effect="italics">P</emphasis>~BrCl~ = 4,9 <m:math><m:mo>×</m:mo></m:math>
+10^−2^ atm</para>
 </solution>
 </exercise>
 <exercise id="fs-idp193760224">
 <problem id="fs-idp178545248">
-<para id="fs-idp178545504">Hver er þrýstingur CO<sub>2</sub> í
+<para id="fs-idp178545504">Hver er þrýstingur CO~2~ í
 efnablöndu við jafnvægi sem inniheldur 0,50 atm H<sub>2</sub>, 2,0 atm af H<sub>2</sub>O
 og 1,0 atm af CO við 990 °C?</para>
 <para id="fs-idp185636944"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>1.6</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>990</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
@@ -533,7 +533,7 @@ jafnvægisefnablöndu með [CO<sub>2</sub>] = 0,100 <emphasis effect="italics">M
 </problem>
 <solution id="fs-idp194615520">
 <para id="fs-idp194615776">[CO] = 2,04 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−4</sup> <emphasis effect="italics">M</emphasis></para></solution>
+10^−4^ <emphasis effect="italics">M</emphasis></para></solution>
 </exercise>
 <exercise id="fs-idp277387888">
 <problem id="fs-idp231857712">
@@ -563,7 +563,7 @@ jafnvægi með efnablöndu af Na<sub>2</sub>SO<sub>4</sub>·10H<sub>2</sub>O og 
 CaCl<sub>2</sub>·6H<sub>2</sub>O, þornar samkvæmt jöfnunni</para>
 <para id="fs-idp126479120"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCl</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mtext>·</m:mtext><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CaCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo><m:mn>5.09</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−44</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>25</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp187352784">Hver er þrýstingur vatnsgufu við
-jafnvægi með efnablöndu af CaCl<sub>2</sub>·6H<sub>2</sub>O og CaCl<sub>2</sub> við 25 °C?</para>
+jafnvægi með efnablöndu af CaCl<sub>2</sub>·6H<sub>2</sub>O og CaCl~2~ við 25 °C?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp210607184">
@@ -586,17 +586,17 @@ styrk og athugaðu hvort það sé jafnt og <emphasis effect="italics">K<sub>c</
 <para id="fs-idp359131968">Nemandi leysti eftirfarandi dæmi
 og fann að [N<sub>2</sub>O<sub>4</sub>] = 0,16 <emphasis effect="italics">M</emphasis> við jafnvægi. Hvernig gæti þessi
 nemandi áttað sig á því að svarið væri rangt án þess að endurreikna
-dæmið? Dæmið var: Hver er jafnvægisstyrkur N<sub>2</sub>O<sub>4</sub> í efnablöndu sem
-mynduð er úr sýni af NO<sub>2</sub> með styrkinn 0,10 <emphasis effect="italics">M</emphasis>?</para>
+dæmið? Dæmið var: Hver er jafnvægisstyrkur N<sub>2</sub>O~4~ í efnablöndu sem
+mynduð er úr sýni af NO~2~ með styrkinn 0,10 <emphasis effect="italics">M</emphasis>?</para>
 <para id="fs-idp99332816"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>160</m:mn></m:mrow></m:math></para>
 </problem>
 </exercise>
 <exercise id="fs-idp91440288">
 <problem id="fs-idp91440544">
 <para id="fs-idm27392">Gerðu ráð fyrir að breytingin á styrk
-N<sub>2</sub>O<sub>4</sub> sé nógu lítil til að hægt sé að hunsa hana í eftirfarandi dæmi.</para>
+N<sub>2</sub>O~4~ sé nógu lítil til að hægt sé að hunsa hana í eftirfarandi dæmi.</para>
 <para id="fs-idm26240">(a) Reiknaðu jafnvægisstyrk beggja
-efna í 1,00 L af lausn sem útbúin er úr 0,129 mól af N<sub>2</sub>O<sub>4</sub> með
+efna í 1,00 L af lausn sem útbúin er úr 0,129 mól af N<sub>2</sub>O~4~ með
 klóróformi sem leysi.</para>
 <para id="fs-idp140636048"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>1.07</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:math> í klóróformi</para>
 <para id="fs-idp97706016">(b) Staðfestu að breytingin sé
@@ -604,18 +604,18 @@ nógu lítil til að hægt sé að hunsa hana.</para>
 </problem>
 <solution id="fs-idp123016656">
 <para id="fs-idp123016912">(a) [NO<sub>2</sub>] = 1,17
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> <emphasis effect="italics">M</emphasis>; [N<sub>2</sub>O<sub>4</sub>] = 0,128 <emphasis effect="italics">M</emphasis>; (b) Forsendan um
+<m:math><m:mo>×</m:mo></m:math> 10^−3^ <emphasis effect="italics">M</emphasis>; [N<sub>2</sub>O<sub>4</sub>] = 0,128 <emphasis effect="italics">M</emphasis>; (b) Forsendan um
 að <emphasis effect="italics">x</emphasis> sé hverfandi lítið miðað við 0,129 er staðfest með því að bera
-saman upphafsstyrk N<sub>2</sub>O<sub>4</sub> við styrk þess við jafnvægi (munurinn er
+saman upphafsstyrk N<sub>2</sub>O~4~ við styrk þess við jafnvægi (munurinn er
 aðeins 1 í minnst marktæka tölustafnum).</para></solution>
 </exercise>
 <exercise id="fs-idp145400352">
 <problem id="fs-idp110623216">
 <para id="fs-idp110623472">Gerðu ráð fyrir að breytingin á
-styrk COCl<sub>2</sub> sé nógu lítil til að hægt sé að hunsa hana í eftirfarandi
+styrk COCl~2~ sé nógu lítil til að hægt sé að hunsa hana í eftirfarandi
 dæmi.</para>
 <para id="fs-idp110624240">(a) Reiknaðu jafnvægisstyrk allra
-efna í jafnvægisblöndu sem myndast við niðurbrot COCl<sub>2</sub> með
+efna í jafnvægisblöndu sem myndast við niðurbrot COCl~2~ með
 upphafsstyrkinn 0,3166 <emphasis effect="italics">M</emphasis>.</para>
 <para id="fs-idp111327968"><m:math><m:mrow><m:msub><m:mrow><m:mtext>COCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>2.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−10</m:mn></m:mrow></m:msup></m:mrow></m:math></para>
 <para id="fs-idp175639264">(b) Staðfestu að breytingin sé
@@ -651,9 +651,9 @@ að efnablanda sem inniheldur [H<sub>2</sub>O] = 1,00 <emphasis effect="italics"
 </exercise>
 <exercise id="fs-idp55521216">
 <problem id="fs-idp55521472">
-<para id="fs-idp55521728">Hver er styrkur PCl<sub>5</sub>, PCl<sub>3</sub> og
-Cl<sub>2</sub> í jafnvægisblöndu sem myndast við niðurbrot á hreinu sýni af
-PCl<sub>5</sub> með [PCl<sub>5</sub>] = 2,00 <emphasis effect="italics">M</emphasis>?</para>
+<para id="fs-idp55521728">Hver er styrkur PCl<sub>5</sub>, PCl~3<sub> og
+Cl</sub>2~ í jafnvægisblöndu sem myndast við niðurbrot á hreinu sýni af
+PCl~5<sub> með [PCl</sub>5~] = 2,00 <emphasis effect="italics">M</emphasis>?</para>
 <para id="fs-idp323811520"><m:math><m:mrow><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>PCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.0211</m:mn></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idp112178016">
@@ -663,7 +663,7 @@ PCl<sub>5</sub> með [PCl<sub>5</sub>] = 2,00 <emphasis effect="italics">M</emph
 <exercise id="fs-idp116933168">
 <problem id="fs-idp116933424">
 <para id="fs-idp116933680">Reiknaðu fjölda gramma af HI sem
-er í jafnvægi við 1,25 mól af H<sub>2</sub> og 63,5 g af joði við 448 °C.</para>
+er í jafnvægi við 1,25 mól af H~2~ og 63,5 g af joði við 448 °C.</para>
 <para id="fs-idp152513728"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>HI</m:mtext><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>50.2</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>448</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idp227729664">
@@ -685,9 +685,9 @@ atm?</para>
 </exercise>
 <exercise id="fs-idp99670512">
 <problem id="fs-idp99670768">
-<para id="fs-idp99671024">Hver er lágmarksmassi CaCO<sub>3</sub> sem
+<para id="fs-idp99671024">Hver er lágmarksmassi CaCO~3~ sem
 þarf til að koma á jafnvægi við ákveðið hitastig í 6,50 L íláti ef
-jafnvægisfastinn (<emphasis effect="italics">K<sub>c</sub></emphasis>) er 0,50 fyrir niðurbrotsefnahvarf CaCO<sub>3</sub> við
+jafnvægisfastinn (<emphasis effect="italics">K<sub>c</sub></emphasis>) er 0,50 fyrir niðurbrotsefnahvarf CaCO~3~ við
 það hitastig?</para>
 <para id="fs-idp242568240"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>CaO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 </problem>
@@ -709,10 +709,10 @@ CO í 5,00 L ílát við 990 °C.</para>
 <problem id="fs-idp301926320">
 <para id="fs-idp301926576">Í 3,0 L íláti eru eftirfarandi
 jafnvægishlutþrýstingar mældir: N<sub>2</sub>, 190 torr; H<sub>2</sub>, 317 torr; NH<sub>3</sub>,
-1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> torr.</para>
+1,00 <m:math><m:mo>×</m:mo></m:math> 10^3^ torr.</para>
 <para id="fs-idp127362464"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp184589744">(a) Hvernig mun hlutþrýstingur
-H<sub>2</sub>, N<sub>2</sub> og NH<sub>3</sub> breytast ef H<sub>2</sub> er fjarlægt úr kerfinu? Mun hann
+H<sub>2</sub>, N~2<sub> og NH</sub>3<sub> breytast ef H</sub>2~ er fjarlægt úr kerfinu? Mun hann
 aukast, minnka eða haldast óbreyttur?</para>
 <para id="fs-idp115933984">(b) Vetni er fjarlægt úr ílátinu
 þar til hlutþrýstingur niturs, við jafnvægi, er 250 torr. Reiknaðu
@@ -726,12 +726,12 @@ hlutþrýsting hinna efnanna við nýju aðstæðurnar.</para>
 <para id="fs-idp291801776"><m:math><m:mrow><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp122954576">(a) Við greiningu kom í ljós að
 jafnvægisblanda efnanna sem voru til staðar við gefið hitastig innihélt
-0,20 mól af CO, 0,30 mól af vatnsgufu og 0,90 mól af H<sub>2</sub> í einum lítra.
-Hversu mörg mól af CO<sub>2</sub> voru í jafnvægisblöndunni?</para>
+0,20 mól af CO, 0,30 mól af vatnsgufu og 0,90 mól af H~2~ í einum lítra.
+Hversu mörg mól af CO~2~ voru í jafnvægisblöndunni?</para>
 <para id="fs-idp228950272">(b) Við sama hitastig var meira
-H<sub>2</sub> bætt við kerfið og nokkur vatnsgufa var fjarlægð með þurrkun. Ný
+H~2~ bætt við kerfið og nokkur vatnsgufa var fjarlægð með þurrkun. Ný
 jafnvægisblanda myndaðist þar með sem innihélt 0,40 mól af CO, 0,30 mól
-af vatnsgufu og 1,2 mól af H<sub>2</sub> í einum lítra. Hversu mörg mól af CO<sub>2</sub>
+af vatnsgufu og 1,2 mól af H~2~ í einum lítra. Hversu mörg mól af CO~2~
 voru í nýju jafnvægisblöndunni? Berðu þetta saman við magnið í hluta (a)
 og ræddu hvort seinna gildið sé sanngjarnt. Útskýrðu hvernig það er
 mögulegt að styrkur vatnsgufu sé sá sami í báðum jafnvægislausnunum
@@ -740,8 +740,8 @@ jafnvægið var komið á.</para>
 </problem>
 <solution id="fs-idp150248624">
 <para id="fs-idp150248880">(a) 0,33 mól. (b) [CO<sub>2</sub>] =
-0,50 <emphasis effect="italics">M</emphasis>. Viðbætt H<sub>2</sub> myndar vatn vegna hliðrunar til vinstri eftir að
-H<sub>2</sub> er bætt við.</para></solution>
+0,50 <emphasis effect="italics">M</emphasis>. Viðbætt H~2~ myndar vatn vegna hliðrunar til vinstri eftir að
+H~2~ er bætt við.</para></solution>
 </exercise>
 <exercise id="fs-idp157265136">
 <problem id="fs-idp157265392">
@@ -749,7 +749,7 @@ H<sub>2</sub> er bætt við.</para></solution>
 samkvæmt þessari jöfnu:</para>
 <para id="fs-idp157266032"><m:math><m:mrow><m:msub><m:mrow><m:mtext>SbCl</m:mtext></m:mrow><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>SbCl</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp182516576">Jafnvægisblanda í 5,00 L flösku
-við 448 °C inniheldur 3,85 g af SbCl<sub>5</sub>, 9,14 g af SbCl<sub>3</sub> og 2,84 g af
+við 448 °C inniheldur 3,85 g af SbCl<sub>5</sub>, 9,14 g af SbCl~3~ og 2,84 g af
 Cl<sub>2</sub>. Hversu mörg grömm af hverju efni verða til staðar ef efnablandan
 er færð yfir í 2,00 L flösku við sama hitastig?</para>
 </problem>
@@ -760,15 +760,15 @@ er færð yfir í 2,00 L flösku við sama hitastig?</para>
 <para id="fs-idp121256096"><m:math><m:mrow><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>7</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp129853008">(a) Hver er stæðan fyrir
 jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) hvarfsins?</para>
-<para id="fs-idp175439040">(b) Hvernig verður styrkur NH<sub>3</sub>
+<para id="fs-idp175439040">(b) Hvernig verður styrkur NH~3~
 að breytast til að ná jafnvægi ef hvarfstuðullinn er minni en
 jafnvægisfastinn?</para>
 <para id="fs-idp175439920">(c) Ef hvarfið væri við jafnvægi,
 hvernig myndi aukning á rúmmáli hvarfílátsins hafa áhrif á þrýsting
 NO<sub>2</sub>?</para>
 <para id="fs-idp175440864">(d) Ef breytingin á þrýstingi
-NO<sub>2</sub> er 28 torr þegar efnablanda fjögurra gasa nær jafnvægi, hversu
-mikið mun þrýstingur O<sub>2</sub> breytast?</para>
+NO~2~ er 28 torr þegar efnablanda fjögurra gasa nær jafnvægi, hversu
+mikið mun þrýstingur O~2~ breytast?</para>
 </problem>
 <solution id="fs-idp115889520">
 <para id="fs-idp115889776">(a) <m:math><m:mrow><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>7</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>4</m:mn></m:msup><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>6</m:mn></m:msup></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> (b)
@@ -781,23 +781,23 @@ NO<sub>2</sub>). (d) <m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mt
 <problem id="fs-idp222776016">
 <para id="fs-idp222776272">Binding súrefnis við blóðrauða
 (Hb), sem myndar oxýblóðrauða (HbO<sub>2</sub>), er að hluta til stjórnað af
-styrk H<sub>3</sub>O<sup>+</sup> og uppleysts CO<sub>2</sub> í blóðinu. Þótt jafnvægið sé flókið má
+styrk H<sub>3</sub>O^+^ og uppleysts CO~2~ í blóðinu. Þótt jafnvægið sé flókið má
 draga það saman á þennan hátt:</para>
 <para id="fs-idp186813728"><m:math><m:mrow><m:msub><m:mrow><m:mtext>HbO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mtext>O</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>−</m:mtext><m:mtext>Hb</m:mtext><m:mtext>−</m:mtext><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp120047888">(a) Skrifaðu jafnvægisfastann
 fyrir þetta efnahvarf.</para>
 <para id="fs-idp120048272">(b) Útskýrðu hvers vegna
-framleiðsla mjólkursýru og CO<sub>2</sub> í vöðva við áreynslu örvar losun O<sub>2</sub>
+framleiðsla mjólkursýru og CO~2~ í vöðva við áreynslu örvar losun O~2~
 úr oxýhemóglóbíni í blóðinu sem fer í gegnum vöðvann.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp149802032">
 <problem id="fs-idp149802288">
-<para id="fs-idp149802544">N<sub>2</sub>O<sub>3</sub> í vökvaformi er
+<para id="fs-idp149802544">N<sub>2</sub>O~3~ í vökvaformi er
 dökkblátt við lágt hitastig, en liturinn dofnar og verður grænleitur við
 hærra hitastig þegar efnasambandið brotnar niður í NO og NO<sub>2</sub>. Við 25
 °C hefur gildið <emphasis effect="italics">K<sub>P</sub></emphasis> = 1,91 verið staðfest fyrir þessa niðurbrot. Ef
-0,236 mól af N<sub>2</sub>O<sub>3</sub> eru sett í 1,52 L ílát við 25 °C, reiknaðu þá
+0,236 mól af N<sub>2</sub>O~3~ eru sett í 1,52 L ílát við 25 °C, reiknaðu þá
 hlutþrýsting N<sub>2</sub>O<sub>3</sub>(<emphasis effect="italics">g</emphasis>), NO<sub>2</sub>(<emphasis effect="italics">g</emphasis>) og NO(<emphasis effect="italics">g</emphasis>) við jafnvægi.</para>
 </problem>
 <solution id="fs-idp61057200">

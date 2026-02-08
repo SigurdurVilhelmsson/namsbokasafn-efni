@@ -35,7 +35,7 @@ fyrsta stigs efnahvarf (hvarfhraði = <emphasis effect="italics">k</emphasis>[<e
 því hvernig styrkur hvarfefnis breytist með tíma:</para>
 <equation id="fs-idm380890320" class="unnumbered"><m:math><m:mrow><m:mo stretchy="false">[</m:mo><m:mi>A</m:mi><m:msub><m:mo stretchy="false">]</m:mo><m:mi>t</m:mi></m:msub><m:mo>=</m:mo><m:mo stretchy="false">[</m:mo><m:mi>A</m:mi><m:msub><m:mo stretchy="false">]</m:mo><m:mn>0</m:mn></m:msub><m:mspace width="0.2em"/><m:msup><m:mi>e</m:mi><m:mrow><m:mtext>−</m:mtext><m:mi>k</m:mi><m:mi>t</m:mi></m:mrow></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm63176528">þar sem [<emphasis effect="italics">A</emphasis>]<emphasis effect="italics">t</emphasis> er styrkur <emphasis effect="italics">A</emphasis> á
-tímanum <emphasis effect="italics">t</emphasis>, [<emphasis effect="italics">A</emphasis>]<sub>0</sub> er upphafsstyrkur <emphasis effect="italics">A</emphasis> og <emphasis effect="italics">k</emphasis> er hraðafasti fyrir
+tímanum <emphasis effect="italics">t</emphasis>, [<emphasis effect="italics">A</emphasis>]~0~ er upphafsstyrkur <emphasis effect="italics">A</emphasis> og <emphasis effect="italics">k</emphasis> er hraðafasti fyrir
 fyrsta stigs efnahvarf.</para>
 <para id="fs-idm512172928">Til þæginda í stærðfræði er hægt að
 endurraða þessari jöfnu á önnur form, þar á meðal beint og óbeint
@@ -46,11 +46,11 @@ styrks og tíma:</para>
 <equation id="fs-idm358923408" class="unnumbered"><m:math><m:mrow><m:mtext>ln</m:mtext><m:mo stretchy="false">[</m:mo><m:mi>A</m:mi><m:msub><m:mo stretchy="false">]</m:mo><m:mi>t</m:mi></m:msub><m:mo>=</m:mo><m:mtext>ln</m:mtext><m:mo stretchy="false">[</m:mo><m:mi>A</m:mi><m:msub><m:mo stretchy="false">]</m:mo><m:mn>0</m:mn></m:msub><m:mspace width="0.2em"/><m:mtext>−</m:mtext><m:mi>k</m:mi><m:mi>t</m:mi></m:mrow></m:math></equation>
 <example id="fs-idm148528000"><para id="fs-idm87528896"><title>Heildað hraðalögmál
 fyrir fyrsta stigs efnahvarf</title>Hraðafastinn fyrir fyrsta stigs
-niðurbrot sýklóbútans, C<sub>4</sub>H<sub>8</sub> við 500 °C er 9,2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup>
-s<sup>−1</sup>:</para>
+niðurbrot sýklóbútans, C<sub>4</sub>H~8~ við 500 °C er 9,2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−3<sup>
+s</sup>−1^:</para>
 <equation id="fs-idp60442464" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>2C</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm139703904">Hversu langan tíma tekur það fyrir
-80,0% af sýni af C<sub>4</sub>H<sub>8</sub> að brotna niður?</para>
+80,0% af sýni af C<sub>4</sub>H~8~ að brotna niður?</para>
 <para id="fs-idm133511056"><title>Lausn</title>Þar sem hlutfallsleg breyting á
 styrk hvarfefnis er gefin er þægilegt form fyrir heildað hraðalögmál:</para>
 <equation id="fs-idp11818384" class="unnumbered"><m:math><m:mrow><m:mtext>ln</m:mtext><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msub><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>0</m:mn></m:msub></m:mrow><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mi>k</m:mi><m:mi>t</m:mi></m:mrow></m:math></equation>
@@ -87,7 +87,7 @@ með tilliti til <emphasis effect="italics">A</emphasis>.</para>
 stigi efnahvarfs og hraðafasta</title>Sýndu að gögnin í <link target-id="CNX_Chem_12_01_KDataH2O2"/> geti
 verið táknuð með fyrsta stigs hraðajöfnu með því að teikna graf af
 ln[H<sub>2</sub>O<sub>2</sub>] á móti tíma. Ákvarðaðu hraðafastann fyrir niðurbrot
-H<sub>2</sub>O<sub>2</sub> út frá þessum gögnum.</para>
+H<sub>2</sub>O~2~ út frá þessum gögnum.</para>
 <para id="fs-idm136711920"><title>Lausn</title>Gögnin úr <link target-id="CNX_Chem_12_01_KDataH2O2"/> eru sett fram í
 töflu hér að neðan og graf af ln[H<sub>2</sub>O<sub>2</sub>] er sýnt í <link target-id="CNX_Chem_12_04_FrstOKin"/>.</para>
 <!-- table handled separately -->
@@ -224,17 +224,17 @@ venjulegu merkingu eins og skilgreint var áður.</para>
 <example id="fs-idm85213520">
 <para id="fs-idp6881136"><title>Heildað hraðalögmál
 fyrir annars stigs efnahvarf</title>Hvarfi bútadíengass (C<sub>4</sub>H<sub>6</sub>) til að
-mynda C<sub>8</sub>H<sub>12</sub> gas er lýst með jöfnunni:</para>
+mynda C<sub>8</sub>H~12~ gas er lýst með jöfnunni:</para>
 <equation id="fs-idm46947984" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>2C</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mtext>6</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>C</m:mtext></m:mrow><m:mn>8</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mtext>12</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp68803280">Þetta „tvíliðunarhvarf“ er annars
-stigs með hraðafasta sem er jafn 5,76 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−2</sup> L mól<sup>−1</sup>
-mín<sup>−1</sup> við ákveðnar aðstæður. Ef upphafsstyrkur bútadíens er 0,200 <emphasis effect="italics">M</emphasis>,
+stigs með hraðafasta sem er jafn 5,76 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−2<sup> L mól</sup>−1<sup>
+mín</sup>−1^ við ákveðnar aðstæður. Ef upphafsstyrkur bútadíens er 0,200 <emphasis effect="italics">M</emphasis>,
 hver er þá styrkurinn eftir 10,0 mín?</para>
 <para id="fs-idm47025104"><title>Lausn</title>Fyrir annars stigs efnahvarf er
 heildað hraðalögmál skrifað</para>
 <equation id="fs-idm191622048" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mi>k</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idm25993952">Við þekkjum þrjár breytur í þessari
-jöfnu: [<emphasis effect="italics">A</emphasis>]<sub>0</sub> = 0,200 mól/L, <emphasis effect="italics">k</emphasis> = 5,76 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−2</sup>
+jöfnu: [<emphasis effect="italics">A</emphasis>]~0~ = 0,200 mól/L, <emphasis effect="italics">k</emphasis> = 5,76 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−2^
 L/mól/mín og <emphasis effect="italics">t</emphasis> = 10,0 mín. Þess vegna getum við leyst fyrir [<emphasis effect="italics">A</emphasis>],
 fjórðu breytuna:</para>
 <equation id="fs-idp58774528" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>5.76</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>L mol</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mi>min</m:mi></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>10</m:mn><m:mspace width="0.2em"/><m:mtext>min</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>0.200</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>5.76</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>L mol</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>5.00</m:mn><m:mspace width="0.2em"/><m:msup><m:mtext>L mol</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>5.58</m:mn><m:mspace width="0.2em"/><m:msup><m:mtext>L mol</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>1.79</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>mol L</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation>
@@ -261,9 +261,9 @@ efnahvarf og lýst er í <link target-id="fs-idm85213520"/>. Undirbúðu og ber�
 viðeigandi gagnagröf til að bera kennsl á hvort efnahvarfið sé
 annaðhvort fyrsta eða annars stigs. Eftir að hafa borið kennsl á stig
 efnahvarfsins skaltu áætla gildi fyrir hraðafastann.</para><para id="fs-idp4978176"><title>Lausn</title>Tími (s) [C<sub>4</sub>H<sub>6</sub>] (<emphasis effect="italics">M</emphasis>) 0 1,00
-<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−2</sup> 1600 5,04 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> 3200 3,37
-<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> 4800 2,53 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup> 6200 2,08
-<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup></para>
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−2^ 1600 5,04 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−3^ 3200 3,37
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−3^ 4800 2,53 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−3^ 6200 2,08
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−3^</para>
 <para id="fs-idm190212352">Til að greina á milli fyrsta stigs
 efnahvarfs og annars stigs efnahvarfs skaltu undirbúa graf af
 ln[C<sub>4</sub>H<sub>6</sub>]<emphasis effect="italics">t</emphasis> á móti <emphasis effect="italics">t</emphasis> og bera það saman við graf af
@@ -307,23 +307,23 @@ hraðalögmál annars stigs?</para>
 <tbody>
 <row valign="middle">
 <entry align="left">0</entry>
-<entry align="left">1,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−2</sup></entry>
+<entry align="left">1,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−2^</entry>
 </row>
 <row valign="middle">
 <entry align="left">1600</entry>
-<entry align="left">5,04 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup></entry>
+<entry align="left">5,04 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−3^</entry>
 </row>
 <row valign="middle">
 <entry align="left">3200</entry>
-<entry align="left">3,37 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup></entry>
+<entry align="left">3,37 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−3^</entry>
 </row>
 <row valign="middle">
 <entry align="left">4800</entry>
-<entry align="left">2,53 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup></entry>
+<entry align="left">2,53 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−3^</entry>
 </row>
 <row valign="middle">
 <entry align="left">6200</entry>
-<entry align="left">2,08 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup></entry>
+<entry align="left">2,08 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^−3^</entry>
 </row>
 </tbody>
 </tgroup>
@@ -457,7 +457,7 @@ hallatala línulega línuritsins (fyrir niðurbrot á W) áætluð út frá
 grafinu. Með því að nota styrk ammoníaks við <emphasis effect="italics">t</emphasis> = 0 og <emphasis effect="italics">t</emphasis> = 1000 s:</para>
 <equation id="fs-idm375658448" class="unnumbered"><m:math><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mtext>−slope</m:mtext><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>0.0015</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>−1</m:mn></m:msup><m:mo>−</m:mo><m:mn>0.0028</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>−1</m:mn></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:mtext>s</m:mtext><m:mo>−</m:mo><m:mn>0</m:mn><m:mspace width="0.2em"/><m:mtext>s</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>1.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>−6</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>−1</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mn>−1</m:mn></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm376604432"><title>Spurningar til íhugunar</title>Núllta stigs línuritið í <link target-id="CNX_Chem_12_04_AmDecomK"/>
-sýnir upphafsstyrk ammoníaks 0,0028 mól L<sup>−1</sup> sem minnkar línulega með
+sýnir upphafsstyrk ammoníaks 0,0028 mól L^−1^ sem minnkar línulega með
 tíma í 1000 s. Að því gefnu að engin breyting verði á þessari núllta
 stigs hegðun, á hvaða tíma (mín) mun styrkurinn ná 0.0001 mól L<sup>−1</sup>?</para>
 <note id="fs-idm379795136">
@@ -469,7 +469,7 @@ stigs hegðun, á hvaða tíma (mín) mun styrkurinn ná 0.0001 mól L<sup>−1<
 <media id="fs-idp157593168" alt="A graph is shown with the label, “Time ( s ),” on the x-axis and, “[ N H subscript 3 ] M,” on the y-axis. The x-axis shows a single value of 1000 marked near the right end of the axis. The vertical axis shows markings at 1.0 times 10 superscript negative 3, 2.0 times 10 superscript negative 3, and 3.0 times 10 superscript negative 3. A decreasing linear trend line is drawn through six points at the approximate coordinates: (0, 2.8 times 10 superscript negative 3), (200, 2.6 times 10 superscript negative 3), (400, 2.3 times 10 superscript negative 3), (600, 2.0 times 10 superscript negative 3), (800, 1.8 times 10 superscript negative 3), and (1000, 1.6 times 10 superscript negative 3). This line is labeled “Decomposition on W.” A decreasing slightly concave up curve is similarly drawn through eight points at the approximate coordinates: (0, 2.8 times 10 superscript negative 3), (100, 2.5 times 10 superscript negative 3), (200, 2.1 times 10 superscript negative 3), (300, 1.9 times 10 superscript negative 3), (400, 1.6 times 10 superscript negative 3), (500, 1.4 times 10 superscript negative 3), and (750, 1.1 times 10 superscript negative 3), ending at about (1000, 0.7 times 10 superscript negative 3). This curve is labeled “Decomposition on S i O subscript 2.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_AmDecomK.jpg"/>
 </media>
-<caption>Niðurbrot NH<sub>3</sub> á
+<caption>Niðurbrot NH~3~ á
 wolfram (W) yfirborði er núllta stigs efnahvarf, en á kvars (SiO<sub>2</sub>)
 yfirborði er efnahvarfið fyrsta stigs.</caption>
 </figure>
@@ -502,8 +502,8 @@ stigs niðurbrot vetnisperoxíðs í vatni við 40 °C með því að nota gögn
 sem gefin eru í <link target-id="CNX_Chem_12_04_HPerDcmp"/>.</para>
 <!-- figure handled separately -->
 <para id="fs-idp122074992"><title>Lausn</title>Skoðun á gögnum um styrk/tíma í
-<link target-id="CNX_Chem_12_04_HPerDcmp"/> sýnir að helmingunartími fyrir niðurbrot H<sub>2</sub>O<sub>2</sub> er 2,16
-<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>4</sup> s:</para>
+<link target-id="CNX_Chem_12_04_HPerDcmp"/> sýnir að helmingunartími fyrir niðurbrot H<sub>2</sub>O~2~ er 2,16
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10^4^ s:</para>
 <equation id="fs-idm2063184" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mi>k</m:mi></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:mn>2.16</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>s</m:mtext></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mn>3.21</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idp33836864"><title>Prófaðu þekkingu þína</title>Geislavirka niðurbrotið á joði-131 er
 fyrsta stigs efnahvarf og hefur hraðafasta upp á 0,138 d<sup>−1</sup>. Hver er
@@ -518,8 +518,8 @@ helmingunartími þessa niðurbrots?</para>
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_12_04_HPerDcmp.jpg"/>
 </media>
 <caption>Niðurbrot
-H<sub>2</sub>O<sub>2</sub> <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>2H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>2H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow></m:math> við 40 °C er sýnt á myndinni. Litastyrkurinn
-táknar styrk H<sub>2</sub>O<sub>2</sub> á tilgreindum tímum; H<sub>2</sub>O<sub>2</sub> er í raun litlaust.</caption>
+H<sub>2</sub>O~2~ <m:math><m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mrow><m:mtext>2H</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>2H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">)</m:mo></m:mrow></m:math> við 40 °C er sýnt á myndinni. Litastyrkurinn
+táknar styrk H<sub>2</sub>O~2~ á tilgreindum tímum; H<sub>2</sub>O~2~ er í raun litlaust.</caption>
 </figure>
 </section>
 <section id="fs-idm87302368">
@@ -531,10 +531,10 @@ upphafsstyrk út frá heildaða hraðalögmáli þess:</para>
 <equation id="fs-idm51410640" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mi>k</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idp69132640">eða</para>
 <equation id="fs-idp65846848" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:mo>]</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msub><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>0</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mi>k</m:mi><m:mi>t</m:mi></m:mrow></m:math></equation>
-<para id="fs-idp8098000">Takmarkaðu <emphasis effect="italics">t</emphasis> við <emphasis effect="italics">t</emphasis><sub>1/2</sub></para>
+<para id="fs-idp8098000">Takmarkaðu <emphasis effect="italics">t</emphasis> við <emphasis effect="italics">t</emphasis>~1/2~</para>
 <equation id="fs-idm22521392" class="unnumbered"><m:math><m:mrow><m:mi>t</m:mi><m:mo>=</m:mo><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm25226832">skilgreindu [<emphasis effect="italics">A</emphasis>]<emphasis effect="italics">t</emphasis> sem helminginn
-af [<emphasis effect="italics">A</emphasis>]<sub>0</sub></para>
+af [<emphasis effect="italics">A</emphasis>]~0~</para>
 <equation id="fs-idp30638736" class="unnumbered"><m:math><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mrow><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:mo>]</m:mo></m:mrow></m:mrow><m:mn>0</m:mn></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm148624880">og settu síðan inn í heildaða
 hraðalögmálið og einfaldaðu:</para>
@@ -585,13 +585,13 @@ fyrsta og annars stigs efnahvörf</entry>
 <entry align="left">hraðajafna</entry>
 <entry align="left">hraði = <emphasis effect="italics">k</emphasis></entry>
 <entry align="left">hraði = <emphasis effect="italics">k</emphasis>[<emphasis effect="italics">A</emphasis>]</entry>
-<entry align="left">hraði = <emphasis effect="italics">k</emphasis>[<emphasis effect="italics">A</emphasis>]<sup>2</sup></entry>
+<entry align="left">hraði = <emphasis effect="italics">k</emphasis>[<emphasis effect="italics">A</emphasis>]^2^</entry>
 </row>
 <row valign="middle">
 <entry align="left">einingar hraðafasta</entry>
-<entry align="left"><emphasis effect="italics">M</emphasis> s<sup>−1</sup></entry>
-<entry align="left">s<sup>−1</sup></entry>
-<entry align="left"><emphasis effect="italics">M</emphasis><sup>−1</sup> s<sup>−1</sup></entry>
+<entry align="left"><emphasis effect="italics">M</emphasis> s^−1^</entry>
+<entry align="left">s^−1^</entry>
+<entry align="left"><emphasis effect="italics">M</emphasis>^−1<sup> s</sup>−1^</entry>
 </row>
 <row valign="middle">
 <entry align="left">heildunarhraðajafna</entry>
@@ -627,8 +627,8 @@ og hraðafasta</entry>
 núllta og annars stigs efnahvörf</title>Hver er helmingunartími
 tvíliðunarhvarfs bútadíens sem lýst er í <link target-id="fs-idm85213520"/>?</para>
 <para id="fs-idm376934816"><title>Lausn</title>Hvarfið sem um ræðir er annars
-stigs, er hafið með 0,200 mól L<sup>−1</sup> lausn af hvarfefni og hefur
-hraðafastann 0,0576 L mól<sup>−1</sup> mín<sup>−1</sup>. Með því að setja þessar stærðir
+stigs, er hafið með 0,200 mól L^−1^ lausn af hvarfefni og hefur
+hraðafastann 0,0576 L mól^−1<sup> mín</sup>−1^. Með því að setja þessar stærðir
 inn í jöfnuna fyrir helmingunartíma annars stigs hvarfs fæst:</para>
 <equation id="fs-idm493908080" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mn>1</m:mn><m:mrow><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.0576</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mn>−1</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>min</m:mtext><m:mn>−1</m:mn></m:msup><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.200</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>−1</m:mn></m:msup><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>86.8</m:mn><m:mspace width="0.2em"/><m:mtext>min</m:mtext></m:mtd></m:mtr>
 </m:mtable></m:math></equation>
@@ -646,10 +646,10 @@ að eyðast. Í hverjum helmingunartíma sem á eftir kemur eyðist helmingur
 af þeim styrk hvarfefnisins sem eftir er. Ef við notum sundrun
 vetnisperoxíðs (<link target-id="CNX_Chem_12_01_KDataH2O2"/>) sem dæmi, sjáum við að á fyrsta
 helmingunartímanum (frá 0,00 klukkustundum til 6,00 klukkustunda)
-minnkar styrkur H<sub>2</sub>O<sub>2</sub> úr 1,000 </emphasis>M<emphasis effect="italics"> í 0,500 </emphasis>M<emphasis effect="italics">. Á öðrum
+minnkar styrkur H<sub>2</sub>O~2~ úr 1,000 </emphasis>M<emphasis effect="italics"> í 0,500 </emphasis>M<emphasis effect="italics">. Á öðrum
 helmingunartímanum (frá 6,00 klukkustundum til 12,00 klukkustunda)
 minnkar hann úr 0,500 </emphasis>M<emphasis effect="italics"> í 0,250 </emphasis>M<emphasis effect="italics">; á þriðja helmingunartímanum
-minnkar hann úr 0,250 </emphasis>M<emphasis effect="italics"> í 0,125 </emphasis>M*. Styrkur H<sub>2</sub>O<sub>2</sub> minnkar um
+minnkar hann úr 0,250 </emphasis>M<emphasis effect="italics"> í 0,125 </emphasis>M*. Styrkur H<sub>2</sub>O~2~ minnkar um
 helming á hverju 6,00 klukkustunda tímabili. Niðurbrot vetnisperoxíðs er
 fyrsta stigs efnahvarf og eins og sýna má fram á er helmingunartími
 fyrsta stigs efnahvarfs óháður styrk hvarfefnisins. Hins vegar er
@@ -714,7 +714,7 @@ hætti: <m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m
 <solution id="fs-idp120836816">
 <para id="fs-idp6601344">Með því að teikna graf af
 ln[SO<sub>2</sub>Cl<sub>2</sub>] á móti <emphasis effect="italics">t</emphasis> sést línuleg þróun; þess vegna vitum við að
-þetta er fyrsta stigs efnahvarf: <emphasis effect="italics">k</emphasis> = 2,20 <m:math><m:mo>×</m:mo></m:math> 10<sup>–5</sup> s<sup>−1</sup></para></solution>
+þetta er fyrsta stigs efnahvarf: <emphasis effect="italics">k</emphasis> = 2,20 <m:math><m:mo>×</m:mo></m:math> 10^–5<sup> s</sup>−1^</para></solution>
 </exercise>
 <table id="fs-idp120830736" summary="This table contains two columns and eight rows. The first column is labeled, “Time ( s ),” and the second column is labeled, “[ S O subscript 2 C l subscript 2 ] ( M ).” Under the “Time ( s )” column are the numbers: 0; 5.00 times ten to the third power; 1.00 times ten to the fourth power; 1.50 times ten to the fourth power; 2.50 times ten to the fourth power; 3.00 times ten to the fourth power; and 4.00 times ten to the fourth power. Under the “[ S O subscript 2 C l subscript 2 ] ( M )” column are the numbers: 0.100, 0.0896, 0.0802, 0.0719, 0.0577, 0.0517, and 0.0415." class="column-header unnumbered">
 <label/>
@@ -725,9 +725,9 @@ ln[SO<sub>2</sub>Cl<sub>2</sub>] á móti <emphasis effect="italics">t</emphasis
 <row valign="middle">
 <entry align="left">Tími (s)</entry>
 <entry align="left">0</entry>
-<entry align="left">5,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup></entry>
-<entry align="left">1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup></entry>
-<entry align="left">1,50 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup></entry>
+<entry align="left">5,00 <m:math><m:mo>×</m:mo></m:math> 10^3^</entry>
+<entry align="left">1,00 <m:math><m:mo>×</m:mo></m:math> 10^4^</entry>
+<entry align="left">1,50 <m:math><m:mo>×</m:mo></m:math> 10^4^</entry>
 </row>
 <row valign="middle">
 <entry align="left">[SO<sub>2</sub>Cl<sub>2</sub>] (<emphasis effect="italics">M</emphasis>)</entry>
@@ -738,9 +738,9 @@ ln[SO<sub>2</sub>Cl<sub>2</sub>] á móti <emphasis effect="italics">t</emphasis
 </row>
 <row valign="middle">
 <entry align="left">Tími (s)</entry>
-<entry align="left">2,50 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup></entry>
-<entry align="left">3,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup></entry>
-<entry align="left">4,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup></entry>
+<entry align="left">2,50 <m:math><m:mo>×</m:mo></m:math> 10^4^</entry>
+<entry align="left">3,00 <m:math><m:mo>×</m:mo></m:math> 10^4^</entry>
+<entry align="left">4,00 <m:math><m:mo>×</m:mo></m:math> 10^4^</entry>
 <entry morerows="1"/>
 </row>
 <row valign="middle">
@@ -757,16 +757,16 @@ ln[SO<sub>2</sub>Cl<sub>2</sub>] á móti <emphasis effect="italics">t</emphasis
 <para id="fs-idp79344992">Hreint óson brotnar hægt niður í
 súrefni, <m:math><m:mrow><m:msub><m:mrow><m:mtext>2O</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>3O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>.</m:mo></m:mrow></m:math> Notaðu gögnin sem gefin eru í grafískri aðferð
 og ákvarðaðu stig og hraðafasta efnahvarfsins. Tími (klst.) 0 2,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> 7,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> 1,00 <m:math><m:mo>×</m:mo></m:math>
-10<sup>4</sup> [O<sub>3</sub>] (<emphasis effect="italics">M</emphasis>) 1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> 4,98 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−6</sup> 2,07 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,66 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> Tími
-(klst.) 1,23 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> 1,43 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> 1,70
-<m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> [O<sub>3</sub>] (<emphasis effect="italics">M</emphasis>) 1,39 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,22
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,05 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></para>
+<m:math><m:mo>×</m:mo></m:math> 10^3^ 7,6 <m:math><m:mo>×</m:mo></m:math> 10^3^ 1,00 <m:math><m:mo>×</m:mo></m:math>
+10^4^ [O<sub>3</sub>] (<emphasis effect="italics">M</emphasis>) 1,00 <m:math><m:mo>×</m:mo></m:math> 10^−5^ 4,98 <m:math><m:mo>×</m:mo></m:math>
+10^−6^ 2,07 <m:math><m:mo>×</m:mo></m:math> 10^−6^ 1,66 <m:math><m:mo>×</m:mo></m:math> 10^−6^ Tími
+(klst.) 1,23 <m:math><m:mo>×</m:mo></m:math> 10^4^ 1,43 <m:math><m:mo>×</m:mo></m:math> 10^4^ 1,70
+<m:math><m:mo>×</m:mo></m:math> 10^4^ [O<sub>3</sub>] (<emphasis effect="italics">M</emphasis>) 1,39 <m:math><m:mo>×</m:mo></m:math> 10^−6^ 1,22
+<m:math><m:mo>×</m:mo></m:math> 10^−6^ 1,05 <m:math><m:mo>×</m:mo></m:math> 10^−6^</para>
 </problem>
 <solution id="fs-idp122732256">
 <para id="fs-idm228482928">Grafið er nokkuð línulegt,
-þannig að hvarfið er annars stigs. <emphasis effect="italics">k</emphasis> = 50,1 L mól<sup>−1</sup> klst.<sup>−1</sup></para></solution>
+þannig að hvarfið er annars stigs. <emphasis effect="italics">k</emphasis> = 50,1 L mól^−1<sup> klst.</sup>−1^</para></solution>
 </exercise>
 <table id="fs-idp72766816" summary="This table has two columns and eight rows. The first row is a header row, and it labels each column, “Time ( h ),” and, “[ O subscript 3 ] ( M ).” Under the “Time ( h )” column are the numbers: 0; 2.0 times ten to the third power; 7.6 times ten to the third power; 1.00 times ten to the fourth power; 1.23 times ten to the fourth power; 1.43 times ten to the fourth power; 1.70 times ten to the fourth power. Under the “[ O subscript 3 ] ( M )” column are the numbers: 1.00 times ten to the negative 5; 4.98 times ten to the negative 6; 2.07 times ten to the negative 6; 1.66 times ten to the negative 6; 1.39 times ten to the negative 6; 1.22 times ten to the negative 6; and 1.05 times ten to the negative 6." class="column-header unnumbered"><label/>
 <tgroup cols="2">
@@ -776,29 +776,29 @@ og ákvarðaðu stig og hraðafasta efnahvarfsins. Tími (klst.) 0 2,0
 <row valign="middle">
 <entry align="left">Tími (klst.)</entry>
 <entry align="left">0</entry>
-<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup></entry>
-<entry align="left">7,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup></entry>
-<entry align="left">1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup></entry>
+<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10^3^</entry>
+<entry align="left">7,6 <m:math><m:mo>×</m:mo></m:math> 10^3^</entry>
+<entry align="left">1,00 <m:math><m:mo>×</m:mo></m:math> 10^4^</entry>
 </row>
 <row valign="middle">
 <entry align="left">[O<sub>3</sub>] (<emphasis effect="italics">M</emphasis>)</entry>
-<entry align="left">1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup></entry>
-<entry align="left">4,98 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
-<entry align="left">2,07 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
-<entry align="left">1,66 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
+<entry align="left">1,00 <m:math><m:mo>×</m:mo></m:math> 10^−5^</entry>
+<entry align="left">4,98 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
+<entry align="left">2,07 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
+<entry align="left">1,66 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
 </row>
 <row valign="middle">
 <entry align="left">Tími (klst.)</entry>
-<entry align="left">1,23 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup></entry>
-<entry align="left">1,43 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup></entry>
-<entry align="left">1,70 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup></entry>
+<entry align="left">1,23 <m:math><m:mo>×</m:mo></m:math> 10^4^</entry>
+<entry align="left">1,43 <m:math><m:mo>×</m:mo></m:math> 10^4^</entry>
+<entry align="left">1,70 <m:math><m:mo>×</m:mo></m:math> 10^4^</entry>
 <entry morerows="1"/>
 </row>
 <row valign="middle">
 <entry align="left">[O<sub>3</sub>] (<emphasis effect="italics">M</emphasis>)</entry>
-<entry align="left">1,39 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
-<entry align="left">1,22 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
-<entry align="left">1,05 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
+<entry align="left">1,39 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
+<entry align="left">1,22 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
+<entry align="left">1,05 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
 </row>
 </tbody>
 </tgroup>
@@ -856,7 +856,7 @@ fyrsta stigs rotnun fosfórs-32? <m:math>
 <m:msubsup><m:mrow/><m:mn>16</m:mn><m:mn>32</m:mn></m:msubsup><m:mtext>S</m:mtext>
 
 <m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mo>)</m:mo></m:math> Hraðafasti rotnunarinnar
-er 4,85 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> dagur<sup>−1</sup>.</para>
+er 4,85 <m:math><m:mo>×</m:mo></m:math> 10^−2<sup> dagur</sup>−1^.</para>
 </problem>
 <solution id="fs-idp5265392">
 <para id="fs-idm96856080">14,3 d</para>
@@ -882,31 +882,31 @@ fyrsta stigs rotnun kolefnis-14? <m:math><m:mo>(</m:mo>
 
 
 <m:mo>+</m:mo><m:msup><m:mtext>e</m:mtext><m:mo>−</m:mo></m:msup><m:mo>)</m:mo></m:math> Hraðafasti
-rotnunarinnar er 1,21 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> ár<sup>−1</sup>.</para></problem>
+rotnunarinnar er 1,21 <m:math><m:mo>×</m:mo></m:math> 10^−4<sup> ár</sup>−1^.</para></problem>
 </exercise>
 <exercise id="fs-idm86787888">
 <problem id="fs-idp120043024">
 <para id="fs-idp120043280">Hver er helmingunartími fyrir
 niðurbrot NOCl þegar styrkur NOCl er 0,15 <emphasis effect="italics">M</emphasis>? Hraðafasti fyrir þetta
-annars stigs efnahvarf er 8,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−8</sup> L mól<sup>−1</sup> s<sup>−1</sup>.</para>
+annars stigs efnahvarf er 8,0 <m:math><m:mo>×</m:mo></m:math> 10^−8<sup> L mól</sup>−1<sup> s</sup>−1^.</para>
 </problem>
 <solution id="fs-idm23381616">
-<para id="fs-idm23381360">8,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>7</sup> s</para>
+<para id="fs-idm23381360">8,3 <m:math><m:mo>×</m:mo></m:math> 10^7^ s</para>
 </solution>
 </exercise>
 <exercise id="fs-idm71090800">
 <problem id="fs-idm71090544">
 <para id="fs-idm71090288">Hver er helmingunartími fyrir
-niðurbrot O<sub>3</sub> þegar styrkur O<sub>3</sub> er 2,35 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> <emphasis effect="italics">M</emphasis>?
-Hraðafasti fyrir þetta annars stigs efnahvarf er 50,4 L mól<sup>−1</sup>
-klst.<sup>−1</sup>.</para>
+niðurbrot O~3~ þegar styrkur O~3~ er 2,35 <m:math><m:mo>×</m:mo></m:math> 10^−6^ <emphasis effect="italics">M</emphasis>?
+Hraðafasti fyrir þetta annars stigs efnahvarf er 50,4 L mól^−1<sup>
+klst.</sup>−1^.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm110943344">
 <problem id="fs-idm110943088">
 <para id="fs-idm110942832">Efnahvarf efnasambands <emphasis effect="italics">A</emphasis> sem
 gefur efnasamböndin <emphasis effect="italics">C</emphasis> og <emphasis effect="italics">D</emphasis> reyndist vera annars stigs með tilliti
-til <emphasis effect="italics">A</emphasis>. Hraðafasti efnahvarfsins var ákvarðaður 2,42 L mól<sup>−1</sup> s<sup>−1</sup>.
+til <emphasis effect="italics">A</emphasis>. Hraðafasti efnahvarfsins var ákvarðaður 2,42 L mól^−1<sup> s</sup>−1^.
 Ef upphafsstyrkur er 0,500 mól/L, hvert er þá gildi t<sub>1/2</sub>?</para>
 </problem>
 <solution id="fs-idm46875696">
@@ -926,21 +926,21 @@ með tilliti til <emphasis effect="italics">A</emphasis> eða (b) annars stigs m
 <problem id="fs-idp55838832">
 <para id="fs-idp55839088">Sumar bakteríur eru ónæmar fyrir
 sýklalyfinu penisillíni vegna þess að þær framleiða penisillínasa, ensím
-með sameindamassa 3 <m:math><m:mo>×</m:mo></m:math> 10<sup>4</sup> g/mól sem breytir penisillíni
+með sameindamassa 3 <m:math><m:mo>×</m:mo></m:math> 10^4^ g/mól sem breytir penisillíni
 í óvirkar sameindir. Þrátt fyrir að hraðafræði ensímhvataðra efnahvarfa
 geti verið flókin, er hægt að lýsa þessu efnahvarfi við lágan styrk með
 hraðajöfnu sem er fyrsta stigs með tilliti til hvatans (penisillínasa)
 og sem felur einnig í sér styrk penisillíns. Ákvarðaðu út frá
 eftirfarandi gögnum: 1,0 L af lausn sem inniheldur 0,15 µg (0,15
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> g) af penisillínasa, stig efnahvarfsins með
+<m:math><m:mo>×</m:mo></m:math> 10^−6^ g) af penisillínasa, stig efnahvarfsins með
 tilliti til penisillíns og gildi hraðafastans. [Penisillín] (<emphasis effect="italics">M</emphasis>)
-Hraði (mól L<sup>−1</sup> mín.<sup>−1</sup>) 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup> 3,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,5 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−10</sup> 4,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup></para>
+Hraði (mól L^−1<sup> mín.</sup>−1^) 2,0 <m:math><m:mo>×</m:mo></m:math> 10^−6^ 1,0
+<m:math><m:mo>×</m:mo></m:math> 10^−10^ 3,0 <m:math><m:mo>×</m:mo></m:math> 10^−6^ 1,5 <m:math><m:mo>×</m:mo></m:math>
+10^−10^ 4,0 <m:math><m:mo>×</m:mo></m:math> 10^−6^ 2,0 <m:math><m:mo>×</m:mo></m:math> 10^−10^</para>
 </problem>
 <solution id="fs-idp69326464">
 <para id="fs-idp69326720">Efnahvarfið er fyrsta stigs. <emphasis effect="italics">k</emphasis>
-= 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>7</sup> L mól<sup>−1</sup> mín.<sup>−1</sup></para></solution>
+= 1,0 <m:math><m:mo>×</m:mo></m:math> 10^7<sup> L mól</sup>−1<sup> mín.</sup>−1^</para></solution>
 </exercise>
 <table id="fs-idp79245440" summary="This table contains two columns and four rows. The first row is a header row, and it labels each column, “[ Penicillin ] ( M ),” and, “Rate ( mol / L / min ).” Under the “[ Penicillin ] ( M )” column are the numbers: 2.0 times ten to the negative six; 3.0 times ten to the negative six; and 4.0 times ten to the negative 6. Under the “Rate ( mol / L / min )” column are the numbers: 1.0 times ten to the negative ten; 1.5 times ten to the negative 10; and 2.0 times ten to the negative 10." class="unnumbered">
 <label/>
@@ -950,21 +950,21 @@ Hraði (mól L<sup>−1</sup> mín.<sup>−1</sup>) 2,0 <m:math><m:mo>×</m:mo><
 <thead>
 <row valign="middle">
 <entry align="left">[Penisillín] (<emphasis effect="italics">M</emphasis>)</entry>
-<entry align="left">Hraði (mól L<sup>−1</sup> mín.<sup>−1</sup>)</entry>
+<entry align="left">Hraði (mól L^−1<sup> mín.</sup>−1^)</entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
-<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
-<entry align="left">1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup></entry>
+<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
+<entry align="left">1,0 <m:math><m:mo>×</m:mo></m:math> 10^−10^</entry>
 </row>
 <row valign="middle">
-<entry align="left">3,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
-<entry align="left">1,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup></entry>
+<entry align="left">3,0 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
+<entry align="left">1,5 <m:math><m:mo>×</m:mo></m:math> 10^−10^</entry>
 </row>
 <row valign="middle">
-<entry align="left">4,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
-<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup></entry>
+<entry align="left">4,0 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
+<entry align="left">2,0 <m:math><m:mo>×</m:mo></m:math> 10^−10^</entry>
 </row>
 </tbody>
 </tgroup>
@@ -986,11 +986,11 @@ pólýprópýlen, sem er notað í teppi sem þola bæði inni- og útiveru.
 Sýklóprópan er notað sem svæfingarlyf:</para>
 <para id="fs-idm21762608">Þegar hringprópan er hitað í 499
 °C gengst það undir umröðun (ísómerast) og myndar própen með hraðafasta
-upp á 5,95 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> s<sup>−1</sup>. Hver er helmingunartími þessa
+upp á 5,95 <m:math><m:mo>×</m:mo></m:math> 10^−4<sup> s</sup>−1^. Hver er helmingunartími þessa
 hvarfs? Hve stór hluti sýklóprópans er eftir eftir 0,75 klst. við 499
 °C?</para></problem>
 <solution id="fs-idp5272960">
-<para id="fs-idp5273216">1,16 × 10<sup>3</sup> s; 20% eftir</para></solution>
+<para id="fs-idp5273216">1,16 × 10^3^ s; 20% eftir</para></solution>
 </exercise>
 <exercise id="fs-idm45932336">
 <problem id="fs-idm45932080">
@@ -1001,7 +1001,7 @@ jafnan er <m:math>
 <m:mspace width="0.5em"/><m:msubsup><m:mrow/><m:mn>9</m:mn><m:mrow><m:mn>18</m:mn></m:mrow></m:msubsup><m:mtext>F</m:mtext>
 <m:mo stretchy="false">⟶</m:mo>
 <m:msubsup><m:mrow/><m:mrow><m:mspace width="0.5em"/><m:mn>8</m:mn></m:mrow><m:mn>18</m:mn></m:msubsup><m:mtext>O</m:mtext>
-<m:mo>+</m:mo><m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width="0.5em"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext><m:mo stretchy="false">)</m:mo></m:math> Læknar nota <sup>18</sup>F til að rannsaka heilann með
+<m:mo>+</m:mo><m:msubsup><m:mrow/><m:mn>+1</m:mn><m:mrow><m:mspace width="0.5em"/><m:mn>0</m:mn></m:mrow></m:msubsup><m:mtext>e</m:mtext><m:mo stretchy="false">)</m:mo></m:math> Læknar nota ^18^F til að rannsaka heilann með
 því að sprauta ákveðnu magni af flúorsettu glúkósa í blóð sjúklings.
 Glúkósinn safnast fyrir á þeim svæðum þar sem heilinn er virkur og
 þarfnast næringar.</para><para id="fs-idm57070352">(a) Hver er hraðafasti fyrir
@@ -1010,7 +1010,7 @@ niðurbrot flúors-18?</para>
 inniheldur geislavirkt flúor-18 er sprautað í blóðið, hve mörg prósent
 af geislavirkni verða eftir eftir 5,59 klst.?</para>
 <para id="fs-idm57069424">(c) Hve langan tíma tekur það
-fyrir 99,99% af <sup>18</sup>F að rotna?</para>
+fyrir 99,99% af ^18^F að rotna?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp89138768">
@@ -1045,8 +1045,8 @@ eftirfarandi gögnum: Upphafsstyrkur [C<sub>3</sub>H<sub>5</sub>N<sub>3</sub>O<s
 niðurbrotið 52,0 52,9 53,2 53,9 34,6 35,9 36,0 35,4</para>
 </problem>
 <solution id="fs-idm136873392">
-<para id="fs-idm215408672">[A]<sub>0</sub> (M) k <m:math><m:mo>×</m:mo></m:math>
-10<sup>3</sup> (s<sup>−1</sup>) 4,88 2,45 3,52 2,51 2,29 2,53 1,81 2,58 5,33 2,36 4,05
+<para id="fs-idm215408672">[A]~0~ (M) k <m:math><m:mo>×</m:mo></m:math>
+10^3<sup> (s</sup>−1^) 4,88 2,45 3,52 2,51 2,29 2,53 1,81 2,58 5,33 2,36 4,05
 2,47 2,95 2,48 1,72 2,43</para>
 </solution>
 </exercise>
@@ -1098,8 +1098,8 @@ niðurbrotið 52,0 52,9 53,2 53,9 34,6 35,9 36,0 35,4</para>
 <colspec colnum="2" colname="c2"/>
 <thead>
 <row valign="middle">
-<entry align="left">[<emphasis effect="italics">A</emphasis>]<sub>0</sub> (<emphasis effect="italics">M</emphasis>)</entry>
-<entry align="left"><emphasis effect="italics">k</emphasis> <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> (s<sup>−1</sup>)</entry>
+<entry align="left">[<emphasis effect="italics">A</emphasis>]~0~ (<emphasis effect="italics">M</emphasis>)</entry>
+<entry align="left"><emphasis effect="italics">k</emphasis> <m:math><m:mo>×</m:mo></m:math> 10^3<sup> (s</sup>−1^)</entry>
 </row>
 </thead>
 <tbody>
@@ -1147,7 +1147,7 @@ mikilvægustu iðnaðarefnin. Það er aðallega notað til framleiðslu á
 gervigúmmíi. Hverfa þess er einnig til sem hringbúten:</para>
 <para id="fs-idp18442736">Samsætuhvörfun sýklóbútens í
 bútadíen er fyrsta stigs og hraðafastinn hefur verið mældur 2,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> s<sup>−1</sup> við 150 °C í 0,53 L flösku. Ákvarðaðu
+<m:math><m:mo>×</m:mo></m:math> 10^−4<sup> s</sup>−1^ við 150 °C í 0,53 L flösku. Ákvarðaðu
 hlutþrýsting sýklóbútens og styrk þess eftir 30,0 mínútur ef
 samsætuhvörfun er framkvæmd við 150 °C með upphafsþrýsting upp á 55
 torr.</para>

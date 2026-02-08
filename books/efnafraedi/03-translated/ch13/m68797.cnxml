@@ -29,7 +29,7 @@ lýst er með jöfnunni:</para>
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_13_01_equilibrium.jpg"/>
 </media>
 <caption>(a) Lokað glas
-sem inniheldur litlaust N<sub>2</sub>O<sub>4</sub> dökknar þegar það brotnar niður og
+sem inniheldur litlaust N<sub>2</sub>O~4~ dökknar þegar það brotnar niður og
 myndar brúnt NO<sub>2</sub>. (b) Breytingar á styrk með tímanum þegar
 niðurbrotsefnahvarfið nær jafnvægi. (c) Við jafnvægi er hvarfhraði fram-
 og afturhvarfa jafn.</caption>
@@ -42,10 +42,10 @@ hraðalögmál fyrir fram- og afturhvarf beint út frá efnajöfnunni:</para>
 <equation id="fs-idm499686688" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>f</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow></m:math></equation>
 <equation id="fs-idm345509376" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>r</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mo stretchy="false">]</m:mo><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm379766304">Þegar efnahvarfið hefst (<emphasis effect="italics">t</emphasis> = 0) er
-styrkur hvarfefnisins N<sub>2</sub>O<sub>4</sub> endanlegur og styrkur myndefnisins NO<sub>2</sub>
+styrkur hvarfefnisins N<sub>2</sub>O~4~ endanlegur og styrkur myndefnisins NO~2~
 er núll, þannig að framhvarfið gengur á endanlegum hraða á meðan
 hvarfhraði afturhvarfsins er núll. Eftir því sem tíminn líður eyðist
-N<sub>2</sub>O<sub>4</sub> og styrkur þess minnkar, á meðan NO<sub>2</sub> myndast og styrkur þess
+N<sub>2</sub>O~4~ og styrkur þess minnkar, á meðan NO~2~ myndast og styrkur þess
 eykst (<link target-id="CNX_Chem_13_01_equilibrium"/><emphasis effect="bold">b</emphasis>). Minnkaður styrkur hvarfefnisins hægir á
 hvarfhraða framhvarfsins og aukinn styrkur myndefnisins eykur hvarfhraða
 afturhvarfsins (<link target-id="CNX_Chem_13_01_equilibrium"/><emphasis effect="bold">c</emphasis>). Þetta ferli heldur áfram þar til

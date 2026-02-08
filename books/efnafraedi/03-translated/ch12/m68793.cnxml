@@ -128,7 +128,7 @@ virkjunarorkuna og hraðafastann, <emphasis effect="italics">k</emphasis>, fyrir
 <equation id="fs-idm62676240" class="unnumbered"><m:math><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mi>A</m:mi><m:msup><m:mi>e</m:mi><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub><m:mtext>/</m:mtext><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:msup></m:mrow></m:math></equation>
 <para id="fs-idp69522176">Í þessari jöfnu er <emphasis effect="italics">R</emphasis>
 kjörgasfastinn, sem hefur gildið 8,314 J/mól/K, T er hitastig á
-Kelvin-kvarða, <emphasis effect="italics">E</emphasis><sub>a</sub> er virkjunarorkan í júlum á mól, <emphasis effect="italics">e</emphasis> er fastinn
+Kelvin-kvarða, <emphasis effect="italics">E</emphasis>~a~ er virkjunarorkan í júlum á mól, <emphasis effect="italics">e</emphasis> er fastinn
 2,7183 og <emphasis effect="italics">A</emphasis> er fasti sem kallast <emphasis effect="bold">tíðniþáttur</emphasis>, sem tengist tíðni
 árekstra og stefnumörkun hvarfefnasameindanna.</para>
 <para id="fs-idm378964576">Ályktanir árekstrakenningarinnar
@@ -160,7 +160,7 @@ sameinda sem sýnir fjölda sameinda með orku sem er hærri en (a) tvær
 mismunandi virkjunarorkur við tiltekið hitastig og (b) tiltekin
 virkjunarorka við tvö mismunandi hitastig.</caption>
 </figure>
-<para id="fs-idm217118448">Þægileg aðferð til að ákvarða <emphasis effect="italics">E</emphasis><sub>a</sub>
+<para id="fs-idm217118448">Þægileg aðferð til að ákvarða <emphasis effect="italics">E</emphasis>~a~
 fyrir hvarf felur í sér mælingu á <emphasis effect="italics">k</emphasis> við tvö eða fleiri mismunandi
 hitastig og notkun á annarri útgáfu af Arrheniusar-jöfnunni sem tekur á
 sig form línulegrar jöfnu</para>
@@ -169,7 +169,7 @@ sig form línulegrar jöfnu</para>
 <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> er línulegt með halla sem er jafn <m:math><m:mrow><m:mfrac><m:mrow><m:mtext>−</m:mtext><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub></m:mrow><m:mi>R</m:mi></m:mfrac></m:mrow></m:math> og
 <emphasis effect="italics">y</emphasis>-skurðpunkt sem er jafn ln <emphasis effect="italics">A</emphasis>.</para>
 <example id="fs-idm160727824">
-<para id="fs-idp108035392"><title>Lausn</title>Ákvörðun á <emphasis effect="italics">E</emphasis><sub>a</sub> Breyting
+<para id="fs-idp108035392"><title>Lausn</title>Ákvörðun á <emphasis effect="italics">E</emphasis>~a~ Breyting
 hraðafastans með hitastigi fyrir niðurbrot HI(<emphasis effect="italics">g</emphasis>) í H<sub>2</sub>(<emphasis effect="italics">g</emphasis>) og
 I<sub>2</sub>(<emphasis effect="italics">g</emphasis>) er gefin hér. Hver er virkjunarorka hvarfsins?</para>
 <equation class="unnumbered" id="fs-idm205868496"><m:math><m:mrow><m:mtext>2HI(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
@@ -200,22 +200,22 @@ að einangra virkjunarorku fæst:</para>
 sem er inn í þessa jöfnu – til dæmis fyrstu og síðustu færslurnar úr
 ofangreindri gagnatöflu:</para>
 <equation class="unnumbered" id="fs-idm152804224"><m:math><m:mrow><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>−8.314</m:mn><m:mspace width="0.2em"/><m:mtext>J</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>−3.231</m:mn><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mn>−14.860</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mn>1.28</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mn>1.80</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
-<para id="fs-idm101188896">og niðurstaðan er <emphasis effect="italics">E</emphasis><sub>a</sub> = 1,8
-<m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> J mól<sup>−1</sup> eða 180 kJ mól<sup>−1</sup></para>
+<para id="fs-idm101188896">og niðurstaðan er <emphasis effect="italics">E</emphasis>~a~ = 1,8
+<m:math><m:mo>×</m:mo></m:math> 10^5<sup> J mól</sup>−1<sup> eða 180 kJ mól</sup>−1^</para>
 <para id="fs-idm65968064">Þessi nálgun gefur sömu niðurstöðu og
 nákvæmari grafíska nálgunin sem notuð var hér að ofan, eins og við var
 að búast. Í reynd gefur grafíska nálgunin yfirleitt áreiðanlegri
 niðurstöður þegar unnið er með raunveruleg tilraunagögn.</para>
 <para id="fs-idm90823520"><title>Spurningar úr kaflanum</title>Hraðafasti fyrir niðurbrotshraða
-N<sub>2</sub>O<sub>5</sub> í NO og O<sub>2</sub> í gasfasa er 1,66 L/mól/s við 650 K og 7,39
+N<sub>2</sub>O~5<sub> í NO og O</sub>2~ í gasfasa er 1,66 L/mól/s við 650 K og 7,39
 L/mól/s við 700 K:</para>
 <equation class="unnumbered" id="fs-idm184015216"><m:math><m:mrow><m:msub><m:mrow><m:mtext>2N</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>5</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>4</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>3O</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idm93319152">Að því gefnu að hraðafræði þessa
 hvarfs sé í samræmi við Arrheniusarjöfnuna, reiknaðu virkjunarorku fyrir
 þetta niðurbrot.</para>
 <note id="fs-idp70913968"><title>Answer:</title>
-<para id="fs-idm147992368">1,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> J mól<sup>−1</sup>
-eða 110 kJ mól<sup>−1</sup></para>
+<para id="fs-idm147992368">1,1 <m:math><m:mo>×</m:mo></m:math> 10^5<sup> J mól</sup>−1<sup>
+eða 110 kJ mól</sup>−1^</para>
 </note>
 </example>
 <table id="fs-idm125968016" summary="This table has two columns and six rows. The first column is labeled, “T ( K ),” and the second is labeled, “k ( L / mol / s ).” Under the first column are the numbers: 555, 575, 645, 700, and 781. Under the second column are the numbers: 3.52 times ten to the negative 7; 1.22 times ten to the negative 6; 8.59 times ten to the negative 5; 1.16 times ten to the negative 3; and 3.95 times ten to the negative 2." class="unnumbered">
@@ -232,23 +232,23 @@ eða 110 kJ mól<sup>−1</sup></para>
 <tbody>
 <row valign="middle">
 <entry align="left">555</entry>
-<entry align="left">3,52 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup></entry>
+<entry align="left">3,52 <m:math><m:mo>×</m:mo></m:math> 10^−7^</entry>
 </row>
 <row valign="middle">
 <entry align="left">575</entry>
-<entry align="left">1,22 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
+<entry align="left">1,22 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
 </row>
 <row valign="middle">
 <entry align="left">645</entry>
-<entry align="left">8,59 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup></entry>
+<entry align="left">8,59 <m:math><m:mo>×</m:mo></m:math> 10^−5^</entry>
 </row>
 <row valign="middle">
 <entry align="left">700</entry>
-<entry align="left">1,16 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">1,16 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
 </row>
 <row valign="middle">
 <entry align="left">781</entry>
-<entry align="left">3,95 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></entry>
+<entry align="left">3,95 <m:math><m:mo>×</m:mo></m:math> 10^−2^</entry>
 </row>
 </tbody>
 </tgroup>
@@ -266,23 +266,23 @@ eða 110 kJ mól<sup>−1</sup></para>
 </thead>
 <tbody>
 <row valign="middle">
-<entry align="left">1,80 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">1,80 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
 <entry align="left">−14,860</entry>
 </row>
 <row valign="middle">
-<entry align="left">1,74 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">1,74 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
 <entry align="left">−13,617</entry>
 </row>
 <row valign="middle">
-<entry align="left">1,55 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">1,55 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
 <entry align="left">−9,362</entry>
 </row>
 <row valign="middle">
-<entry align="left">1,43 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">1,43 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
 <entry align="left">−6,759</entry>
 </row>
 <row valign="middle">
-<entry align="left">1,28 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">1,28 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
 <entry align="left">−3,231</entry>
 </row>
 </tbody>
@@ -395,7 +395,7 @@ sinnum hraðar</para>
 <exercise id="fs-idm67340288">
 <problem id="fs-idm132914128">
 <para id="fs-idm128098912">Í tilraun brotnaði 90% af sýni af
-NaClO<sub>3</sub> niður á 48 mínútum. Hversu langan tíma hefði þetta niðurbrot
+NaClO~3~ niður á 48 mínútum. Hversu langan tíma hefði þetta niðurbrot
 tekið ef sýnið hefði verið hitað upp í 20 °C hærra hitastig?
 (Vísbending: Gerðu ráð fyrir að hraðinn tvöfaldist fyrir hverjar 10 °C
 sem hitastigið hækkar.)</para></problem>
@@ -403,8 +403,8 @@ sem hitastigið hækkar.)</para></problem>
 <exercise id="fs-idm128511072">
 <problem id="fs-idm146373568">
 <para id="fs-idm217872032">Hraðafastinn við 325 °C fyrir
-niðurbrotsefnahvarfið <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mn>2</m:mn><m:mtext>C</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:math> er 6,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−8</sup>
-s<sup>−1</sup> og virkjunarorkan er 261 kJ á mól af C<sub>4</sub>H<sub>8</sub>. Ákvarðaðu
+niðurbrotsefnahvarfið <m:math><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mn>2</m:mn><m:mtext>C</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>4</m:mn></m:msub></m:mrow></m:math> er 6,1 <m:math><m:mo>×</m:mo></m:math> 10^−8<sup>
+s</sup>−1^ og virkjunarorkan er 261 kJ á mól af C<sub>4</sub>H<sub>8</sub>. Ákvarðaðu
 tíðnistuðul efnahvarfsins.</para>
 </problem>
 <solution id="fs-idm207232976">
@@ -415,8 +415,8 @@ tíðnistuðul efnahvarfsins.</para>
 <problem id="fs-idm151360688">
 <para id="fs-idm149341008">Hraðafastinn fyrir niðurbrot
 asetaldehýðs, CH<sub>3</sub>CHO, í metan, CH<sub>4</sub>, og kolmónoxíð, CO, í gasfasa er
-1,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> L mól<sup>−1</sup> s<sup>−1</sup> við 703 K og 4,95 L mól<sup>−1</sup>
-s<sup>−1</sup> við 865 K. Ákvarðaðu virkjunarorkuna fyrir þetta niðurbrot.</para>
+1,1 <m:math><m:mo>×</m:mo></m:math> 10^−2<sup> L mól</sup>−1<sup> s</sup>−1^ við 703 K og 4,95 L mól^−1<sup>
+s</sup>−1^ við 865 K. Ákvarðaðu virkjunarorkuna fyrir þetta niðurbrot.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm131383728">
@@ -453,9 +453,9 @@ sekúndu</para>
 <para id="fs-idm93524688">Vetnisjoðíð, HI, brotnar niður í
 gasfasa og myndar vetni, H<sub>2</sub>, og joð, I<sub>2</sub>. Gildi hraðafastans, <emphasis effect="italics">k</emphasis>,
 fyrir efnahvarfið var mælt við nokkur mismunandi hitastig og gögnin eru
-sýnd hér: Hitastig (K) <emphasis effect="italics">k</emphasis> (L mól<sup>−1</sup> s<sup>−1</sup>) 555 6,23 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−7</sup> 575 2,42 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 645 1,44 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup>
-700 2,01 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></para>
+sýnd hér: Hitastig (K) <emphasis effect="italics">k</emphasis> (L mól^−1<sup> s</sup>−1^) 555 6,23 <m:math><m:mo>×</m:mo></m:math>
+10^−7^ 575 2,42 <m:math><m:mo>×</m:mo></m:math> 10^−6^ 645 1,44 <m:math><m:mo>×</m:mo></m:math> 10^−4^
+700 2,01 <m:math><m:mo>×</m:mo></m:math> 10^−3^</para>
 <para id="fs-idm134024464">Hvert er gildi virkjunarorkunnar
 (í kJ/mól) fyrir þetta hvarf?</para>
 </problem>
@@ -471,25 +471,25 @@ sýnd hér: Hitastig (K) <emphasis effect="italics">k</emphasis> (L mól<sup>−
 <thead>
 <row valign="middle">
 <entry align="left">Hitastig (K)</entry>
-<entry align="left"><emphasis effect="italics">k</emphasis> (L mól<sup>−1</sup> s<sup>−1</sup>)</entry>
+<entry align="left"><emphasis effect="italics">k</emphasis> (L mól^−1<sup> s</sup>−1^)</entry>
 </row>
 </thead>
 <tbody>
 <row valign="middle">
 <entry align="left">555</entry>
-<entry align="left">6,23 <m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup></entry>
+<entry align="left">6,23 <m:math><m:mo>×</m:mo></m:math> 10^−7^</entry>
 </row>
 <row valign="middle">
 <entry align="left">575</entry>
-<entry align="left">2,42 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup></entry>
+<entry align="left">2,42 <m:math><m:mo>×</m:mo></m:math> 10^−6^</entry>
 </row>
 <row valign="middle">
 <entry align="left">645</entry>
-<entry align="left">1,44 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup></entry>
+<entry align="left">1,44 <m:math><m:mo>×</m:mo></m:math> 10^−4^</entry>
 </row>
 <row valign="middle">
 <entry align="left">700</entry>
-<entry align="left">2,01 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup></entry>
+<entry align="left">2,01 <m:math><m:mo>×</m:mo></m:math> 10^−3^</entry>
 </row>
 </tbody>
 </tgroup>
@@ -535,22 +535,22 @@ fyrir hvarf súkrósa: hraði = <emphasis effect="italics">k</emphasis>[C<sub>12
 glúkósi og frúktósi, hafa sömu sameindaformúlu en eru ólík að því leyti
 hvernig atómunum er raðað í sameindunum.)</para>
 <para id="fs-idm1605904">(a) Í hlutlausri lausn er <emphasis effect="italics">k</emphasis> = 2,1
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−11</sup> s<sup>−1</sup> við 27 °C og 8,5 <m:math><m:mo>×</m:mo></m:math> 10<sup>−11</sup>
-s<sup>−1</sup> við 37 °C. Ákvarðaðu virkjunarorkuna, tíðniþáttinn og hraðafastann
+<m:math><m:mo>×</m:mo></m:math> 10^−11<sup> s</sup>−1^ við 27 °C og 8,5 <m:math><m:mo>×</m:mo></m:math> 10^−11<sup>
+s</sup>−1^ við 37 °C. Ákvarðaðu virkjunarorkuna, tíðniþáttinn og hraðafastann
 fyrir þessa jöfnu við 47 °C (að því gefnu að hraðafræðin sé í samræmi
 við Arrhenius-jöfnuna við þetta hitastig).</para>
 <para id="fs-idm94994288">(b) Þegar lausn af súkrósa með
 upphafsstyrk 0,150 <emphasis effect="italics">M</emphasis> nær jafnvægi er styrkur súkrósa 1,65
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−7</sup> <emphasis effect="italics">M</emphasis>. Hversu langan tíma tekur það lausnina að ná
+<m:math><m:mo>×</m:mo></m:math> 10^−7^ <emphasis effect="italics">M</emphasis>. Hversu langan tíma tekur það lausnina að ná
 jafnvægi við 27 °C án hvata? Vegna þess hve styrkur súkrósa við jafnvægi
 er lágur skal gera ráð fyrir að hvarfið sé óafturkræft.</para>
 <para id="fs-idm124435200">(c) Hvers vegna einfaldar það
 útreikninginn í lið (b) að gera ráð fyrir að hvarfið sé óafturkræft?</para>
 </problem>
 <solution id="fs-idm112508016">
-<para id="fs-idm112507760"><emphasis effect="italics">E</emphasis><sub>a</sub> = 108 kJ; <emphasis effect="italics">A</emphasis> = 2,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>8</sup> s<sup>−1</sup>; <emphasis effect="italics">k</emphasis> = 3,2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup> s<sup>−1</sup>;
-(b) 1,81 <m:math><m:mo>×</m:mo></m:math> 10<sup>8</sup> klst. eða 7,6 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup>
+<para id="fs-idm112507760"><emphasis effect="italics">E</emphasis>~a~ = 108 kJ; <emphasis effect="italics">A</emphasis> = 2,0
+<m:math><m:mo>×</m:mo></m:math> 10^8<sup> s</sup>−1^; <emphasis effect="italics">k</emphasis> = 3,2 <m:math><m:mo>×</m:mo></m:math> 10^−10<sup> s</sup>−1^;
+(b) 1,81 <m:math><m:mo>×</m:mo></m:math> 10^8^ klst. eða 7,6 <m:math><m:mo>×</m:mo></m:math> 10^6^
 dagar; (c) Að gera ráð fyrir að hvarfið sé óafturkræft einfaldar
 útreikninginn vegna þess að við þurfum ekki að taka tillit til
 hvarfefnis sem hefur breyst í myndefni og snýr aftur í upprunalegt

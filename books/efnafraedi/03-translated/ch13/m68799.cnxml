@@ -39,7 +39,7 @@ bakhvarfið eru</para>
 hvarfhraðar framhvarfs og bakhvarfs jafnir.</para>
 <equation id="fs-idm172629696" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm213521392">Ef kerfinu er raskað með því að bæta
-við hvarfefni, annaðhvort H<sub>2</sub> eða I<sub>2</sub>, veldur aukningin á styrk því að
+við hvarfefni, annaðhvort H~2<sub> eða I</sub>2~, veldur aukningin á styrk því að
 hraði framhvarfsins eykst og verður meiri en hraði bakhvarfsins:</para>
 <equation id="fs-idm191416320" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>></m:mo><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm482494176">Kerfið mun gangast undir tímabundið
@@ -62,11 +62,11 @@ hvarfstuðlum. Þegar kerfið er í jafnvægi,</para>
 nefnara hvarfstuðulsins) eða myndefni er fjarlægt (sem minnkar
 teljarann), þá er <emphasis effect="italics">Q<sub>c</sub></emphasis> \&lt; <emphasis effect="italics">K<sub>c</sub></emphasis> og jafnvægið hliðrast til hægri.
 Athugið að þrjár mismunandi leiðir til að valda þessari röskun leiða til
-þriggja mismunandi breytinga á samsetningu jafnvægisblöndunnar. Ef H<sub>2</sub>
-er bætt við mun hliðrunin til hægri eyða I<sub>2</sub> og mynda HI þegar jafnvægi
-er endurheimt, sem gefur efnablöndu með meiri styrk H<sub>2</sub> og HI og minni
-styrk I<sub>2</sub> en áður. Ef I<sub>2</sub> er bætt við mun nýja jafnvægisblandan hafa
-meiri styrk I<sub>2</sub> og HI og minni styrk H<sub>2</sub>. Að lokum, ef HI er fjarlægt,
+þriggja mismunandi breytinga á samsetningu jafnvægisblöndunnar. Ef H~2~
+er bætt við mun hliðrunin til hægri eyða I~2~ og mynda HI þegar jafnvægi
+er endurheimt, sem gefur efnablöndu með meiri styrk H~2~ og HI og minni
+styrk I~2<sub> en áður. Ef I</sub>2~ er bætt við mun nýja jafnvægisblandan hafa
+meiri styrk I~2~ og HI og minni styrk H<sub>2</sub>. Að lokum, ef HI er fjarlægt,
 verður styrkur allra þriggja efnanna lægri þegar jafnvægi er endurheimt.
 Þrátt fyrir þennan mun á samsetningu <emphasis effect="italics">verður gildi jafnvægisfastans það
 sama eftir röskunina og það var áður</emphasis> (samkvæmt lögmálinu um
@@ -236,9 +236,9 @@ endurheimt með hliðrun til vinstri. Þar sem rúmmál drykksins er
 umtalsvert meira en rúmmál loftrýmisins tapast aðeins tiltölulega lítið
 magn af uppleystu koldíoxíði í loftrýmið.</para>
 <para id="fs-idm206784496">Þegar ílát með kolsýrðum drykk er
-opnað heyrist hvissandi hljóð þegar þrýstingsfast CO<sub>2</sub> sleppur úr
+opnað heyrist hvissandi hljóð þegar þrýstingsfast CO~2~ sleppur úr
 loftrýminu. Þetta veldur því að upplausnarjafnvægið hliðrast til
-vinstri, sem leiðir til lækkunar á styrk uppleysts CO<sub>2</sub> og síðari
+vinstri, sem leiðir til lækkunar á styrk uppleysts CO~2~ og síðari
 hliðrunar vatnsrofs- og jónunarjafnvægis til vinstri. Sem betur fer
 fyrir neytandann endurheimtist upplausnarjafnvægið yfirleitt hægt og því
 er hægt að njóta drykksins á meðan styrkur uppleysts koldíoxíðs er ennþá
@@ -250,8 +250,8 @@ kallað er „daufur“.</para>
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_13_01_SuperSat.jpg"/>
 </media>
 <caption>Þegar gosflaska
-er opnuð lækkar CO<sub>2</sub> þrýstingurinn fyrir ofan drykkinn, sem hliðrar
-upplausnarjafnvæginu og losar uppleyst CO<sub>2</sub> úr drykknum. (heimild:
+er opnuð lækkar CO~2~ þrýstingurinn fyrir ofan drykkinn, sem hliðrar
+upplausnarjafnvæginu og losar uppleyst CO~2~ úr drykknum. (heimild:
 breyting á verki eftir „D Coetzee“/Flickr)</caption>
 </figure>
 </note>
@@ -334,7 +334,7 @@ jafnvægishvarfi:</para>
 <equation id="fs-idm143149600" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−92.2</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp44583392">Eiginleikar þessa hvarfs gera það að
 verkum að erfitt er að nýta það í skilvirku iðnaðarferli.
-Jafnvægisfastinn er tiltölulega lágur (<emphasis effect="italics">K<sub>p</sub></emphasis> af stærðargráðunni 10<sup>−5</sup>
+Jafnvægisfastinn er tiltölulega lágur (<emphasis effect="italics">K<sub>p</sub></emphasis> af stærðargráðunni 10^−5^
 við 25 °C), sem þýðir að mjög lítið ammoníak er til staðar í
 jafnvægisblöndu. Einnig er hvarfhraði þessa hvarfs tiltölulega hægur við
 lágt hitastig. Til að auka heimtur ammoníaks er iðnaðarferlið hannað til
@@ -383,12 +383,12 @@ kafla</title>
 <para id="fs-idp736656">Eftirfarandi jafna táknar afturkræfa
 sundrun: <m:math><m:mrow><m:msub><m:mrow><m:mtext>CaCO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>CaO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp25940960">Við hvaða aðstæður mun sundrun í
-lokuðu íláti ganga til fulls þannig að ekkert CaCO<sub>3</sub> verður eftir?</para>
+lokuðu íláti ganga til fulls þannig að ekkert CaCO~3~ verður eftir?</para>
 </problem>
 <solution id="fs-idp109030592">
-<para id="fs-idp51761424">Magn CaCO<sub>3</sub> verður að vera svo
-lítið að <m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:math> sé minna en <emphasis effect="italics">K<sub>P</sub></emphasis> þegar CaCO<sub>3</sub> hefur sundrast
-að fullu. Með öðrum orðum, upphafsmagn CaCO<sub>3</sub> getur ekki myndað allan
+<para id="fs-idp51761424">Magn CaCO~3~ verður að vera svo
+lítið að <m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:math> sé minna en <emphasis effect="italics">K<sub>P</sub></emphasis> þegar CaCO~3~ hefur sundrast
+að fullu. Með öðrum orðum, upphafsmagn CaCO~3~ getur ekki myndað allan
 þann <m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:math> sem þarf til að ná jafnvægi.</para>
 </solution>
 </exercise>
@@ -421,7 +421,7 @@ hvarfefnishliðinni.</para>
 <para id="fs-idp88632768">Eftirfarandi hvarf á sér stað
 þegar kveikt er á hellu á gaseldavél: <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp113241664">Næst jafnvægi milli CH<sub>4</sub>, O<sub>2</sub>,
-CO<sub>2</sub> og H<sub>2</sub>O við þessar aðstæður? Útskýrðu svarið.</para>
+CO~2<sub> og H</sub>2~O við þessar aðstæður? Útskýrðu svarið.</para>
 </problem>
 <solution id="fs-idp82751184">
 <para id="fs-idp107413808">Nei, það er ekki í jafnvægi. Þar
@@ -434,8 +434,8 @@ hvarfefnum er einnig stöðugt bætt við frá hellunni og umhverfinu.</para>
 <para id="fs-idp138000784">Nauðsynlegt skref í framleiðslu á
 brennisteinssýru er myndun brennisteinsþríoxíðs, SO<sub>3</sub>, úr
 brennisteinsdíoxíði, SO<sub>2</sub>, og súrefni, O<sub>2</sub>, eins og sýnt er hér. Við
-hátt hitastig er hvarfhraði myndunar SO<sub>3</sub> hærri, en jafnvægismagn
-(styrkur eða hlutþrýstingur) SO<sub>3</sub> er lægra en það væri við lægra
+hátt hitastig er hvarfhraði myndunar SO~3~ hærri, en jafnvægismagn
+(styrkur eða hlutþrýstingur) SO~3~ er lægra en það væri við lægra
 hitastig. <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para><para id="fs-idp28525136">(a) Hækkar jafnvægisfastinn fyrir
 hvarfið, lækkar hann eða helst hann nokkurn veginn óbreyttur þegar
 hitastigið hækkar?</para>
@@ -457,7 +457,7 @@ minnka rúmmál ílátsins; hita blönduna.</para>
 <exercise id="fs-idp20860880">
 <problem id="fs-idp93580528">
 <para id="fs-idp208675872">Stingdu upp á fjórum leiðum til
-að auka styrk PH<sub>3</sub> í jafnvægi sem lýst er með eftirfarandi jöfnu:
+að auka styrk PH~3~ í jafnvægi sem lýst er með eftirfarandi jöfnu:
 <m:math><m:mrow><m:msub><m:mtext>P</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>6</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>PH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>110.5</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 </problem>
 </exercise>
@@ -498,7 +498,7 @@ viðeigandi hvata.</para>
 <para id="fs-idp47071392">(a) Skrifaðu stæðuna fyrir
 jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa hvarfið <m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>OH</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−90.2</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp114921120">(b) Hvað gerist með styrk H<sub>2</sub>,
-CO og CH<sub>3</sub>OH við jafnvægi ef meira H<sub>2</sub> er bætt við?</para>
+CO og CH<sub>3</sub>OH við jafnvægi ef meira H~2~ er bætt við?</para>
 <para id="fs-idp237064112">(c) Hvað gerist með styrk H<sub>2</sub>,
 CO og CH<sub>3</sub>OH við jafnvægi ef CO er fjarlægt?</para>
 <para id="fs-idp163575072">(d) Hvað gerist með styrk H<sub>2</sub>,
@@ -523,22 +523,22 @@ hátt hitastig.</para>
 <para id="fs-idp76209904">(a) Skrifaðu jöfnuna fyrir
 jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa hvarfið <m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>181</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp215116176">(b) Hvað gerist fyrir styrk N<sub>2</sub>,
-O<sub>2</sub> og NO við jafnvægi ef meira O<sub>2</sub> er bætt við?</para>
+O~2~ og NO við jafnvægi ef meira O~2~ er bætt við?</para>
 <para id="fs-idp166633472">(c) Hvað gerist fyrir styrk N<sub>2</sub>,
-O<sub>2</sub> og NO við jafnvægi ef N<sub>2</sub> er fjarlægt?</para>
+O~2~ og NO við jafnvægi ef N~2~ er fjarlægt?</para>
 <para id="fs-idm6587360">(d) Hvað gerist fyrir styrk N<sub>2</sub>,
-O<sub>2</sub> og NO við jafnvægi ef NO er bætt við?</para>
+O~2~ og NO við jafnvægi ef NO er bætt við?</para>
 <para id="fs-idp125011728">(e) Hvað gerist fyrir styrk N<sub>2</sub>,
-O<sub>2</sub> og NO við jafnvægi ef rúmmál hvarfílátsins er minnkað?</para>
+O~2~ og NO við jafnvægi ef rúmmál hvarfílátsins er minnkað?</para>
 <para id="fs-idp33093872">(f) Hvað gerist fyrir styrk N<sub>2</sub>,
-O<sub>2</sub> og NO við jafnvægi ef hitastig kerfisins er hækkað?</para>
+O~2~ og NO við jafnvægi ef hitastig kerfisins er hækkað?</para>
 <para id="fs-idm12428240">(g) Hvað gerist fyrir styrk N<sub>2</sub>,
-O<sub>2</sub> og NO við jafnvægi ef hvata er bætt við?</para>
+O~2~ og NO við jafnvægi ef hvata er bætt við?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp201703744">
 <problem id="fs-idp27051456">
-<para id="fs-idp27051712">Vatnsgas, efnablanda af H<sub>2</sub> og
+<para id="fs-idp27051712">Vatnsgas, efnablanda af H~2~ og
 CO, er mikilvægt iðnaðareldsneyti sem er framleitt með hvarfi gufu við
 glóandi koks, sem er nánast hreint kolefni.</para>
 <para id="fs-idp153944320">(a) Skrifaðu jöfnuna fyrir
@@ -572,7 +572,7 @@ hvarfefnis og myndefnis við jafnvægi ef meira Fe er bætt við?</para>
 <para id="fs-idp67029792">(c) Hvað gerist fyrir styrk hvers
 hvarfefnis og myndefnis við jafnvægi ef H<sub>2</sub>O er fjarlægt?</para>
 <para id="fs-idp120512464">(d) Hvað gerist fyrir styrk hvers
-hvarfefnis og myndefnis við jafnvægi ef H<sub>2</sub> er bætt við?</para>
+hvarfefnis og myndefnis við jafnvægi ef H~2~ er bætt við?</para>
 <para id="fs-idp79018960">(e) Hvað gerist fyrir styrk hvers
 hvarfefnis og myndefnis við jafnvægi ef rúmmál hvarfílátsins er minnkað?</para><para id="fs-idm111712">(f) Hvað gerist fyrir styrk hvers
 hvarfefnis og myndefnis við jafnvægi ef hitastig kerfisins er hækkað?</para>
@@ -600,19 +600,19 @@ við vatn samkvæmt þessari jöfnu: <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH
 hlutfall ediksýru sem hvarfast og myndar <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup></m:mrow></m:math> jón?</para>
 <para id="fs-idm11269984">(a) Álagning HCl</para>
 <para id="fs-idp154007760">(b) Álagning NaOH</para>
-<para id="fs-idp27637856">(c) Álagning NaCH<sub>3</sub>CO<sub>2</sub></para>
+<para id="fs-idp27637856">(c) Álagning NaCH<sub>3</sub>CO~2~</para>
 </problem>
 </exercise>
 <exercise id="fs-idp157396912">
 <problem id="fs-idp157397168">
 <para id="fs-idp150087168">Stingdu upp á tveimur leiðum til
-að minnka jafnvægisstyrk Ag<sup>+</sup> í lausn af Na<sup>+</sup>, Cl<sup>−</sup>, Ag<sup>+</sup> og
+að minnka jafnvægisstyrk Ag^+<sup> í lausn af Na</sup>+<sup>, Cl</sup>−<sup>, Ag</sup>+^ og
 <m:math><m:mrow><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo>,</m:mo></m:mrow></m:math> í snertingu við fast efni AgCl. <m:math><m:mrow><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Ag</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mtext>AgCl</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mrow><m:mtext>Na</m:mtext></m:mrow><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math>
 <m:math><m:mrow><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−65.9</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></para>
 </problem>
 <solution id="fs-idm2616800">
 <para id="fs-idm2616544">Bættu NaCl eða öðru salti sem
-myndar Cl<sup>−</sup> út í lausnina. Með því að kæla lausnina færist jafnvægið
+myndar Cl^−^ út í lausnina. Með því að kæla lausnina færist jafnvægið
 til hægri og meira AgCl(<emphasis effect="italics">s</emphasis>) fellur út.</para>
 </solution>
 </exercise>
@@ -629,7 +629,7 @@ og inniheldur umfram- fast efni silfursúlfat: <m:math><m:mrow><m:msub><m:mrow><
 <para id="fs-idm200271568">Litlu magni af föstu
 silfursúlfati sem inniheldur geislavirka samsætu af silfri er bætt út í
 þessa lausn. Innan nokkurra mínútna er sýni tekið úr lausnarhlutanum og
-það reynist jákvætt fyrir geislavirkum Ag<sup>+</sup> jónum. Útskýrðu þessa
+það reynist jákvætt fyrir geislavirkum Ag^+^ jónum. Útskýrðu þessa
 athugun.</para>
 </problem>
 <solution id="fs-idp42969632">
@@ -637,7 +637,7 @@ athugun.</para>
 þýðir kvikt eðli leysnijafnvægis að andstæð ferli upplausnar fasts efnis
 og útfellingar halda áfram að eiga sér stað (bara á jöfnum hraða, sem
 þýðir að styrkur uppleystra jóna og magn óuppleysts fasts efnis haldast
-stöðug). Geislavirku Ag<sup>+</sup> jónirnar sem greinast í lausnarhlutanum koma
+stöðug). Geislavirku Ag^+^ jónirnar sem greinast í lausnarhlutanum koma
 frá upplausn fasta efnisins sem bætt var við og tilvist þeirra er vegin
 upp á móti með útfellingu ógeislavirkra Ag<sup>+</sup>.</para></solution>
 </exercise>
@@ -647,9 +647,9 @@ HOCl er leyst upp sérstaklega í jöfnu magni af vatni, frýs lausn HCl við
 lægra hitastig. Hvaða efnasamband hefur stærri jafnvægisfasta fyrir
 sýrujónun?</para>
 <para id="eip-idm965920976">(a) HCl</para>
-<para id="eip-idm841490976">(b) H<sup>+</sup> + Cl<sup>–</sup></para>
+<para id="eip-idm841490976">(b) H^+<sup> + Cl</sup>–^</para>
 <para id="eip-idm861934656">(c) HOCl</para>
-<para id="eip-idm1076346304">(d) H<sup>+</sup> + OCl<sup>–</sup></para>
+<para id="eip-idm1076346304">(d) H^+<sup> + OCl</sup>–^</para>
 </problem>
 </exercise>
 </section>
