@@ -7,17 +7,6 @@
   "scripts": {
     "update-status": "node scripts/update-status.js",
     "validate": "node scripts/validate-status.js",
-    "convert-md": "node tools/docx-to-md.js",
-    "add-frontmatter": "node tools/add-frontmatter.js",
-    "process-chapter": "node tools/process-chapter.js",
-    "extract-math": "node tools/cnxml-math-extract.js",
-    "replace-math": "node tools/replace-math-images.js",
-    "cnxml-to-md": "node tools/cnxml-to-md.js",
-    "md-to-xliff": "node tools/md-to-xliff.js",
-    "xliff-to-tmx": "node tools/xliff-to-tmx.js",
-    "apply-equations": "node tools/apply-equations.js",
-    "pipeline": "node tools/pipeline-runner.js",
-    "post-mt": "node tools/post-mt-pipeline.js",
     "openstax-fetch": "node tools/openstax-fetch.cjs",
     "generate-book-data": "node tools/generate-book-data.cjs",
     "server": "cd server && npm start",
@@ -62,12 +51,6 @@
       "eslint --fix",
       "prettier --write"
     ]
-  },
-  "validate-chapter": "node tools/validate-chapter.js",
-  "_future-scripts": {
-    "_note": "These scripts are planned but not yet implemented. See docs/workflow.md for manual process.",
-    "strip-text": "node tools/strip-docx-to-txt.js",
-    "export-parallel": "node tools/export-parallel-corpus.js"
   },
   "keywords": [
     "translation",
