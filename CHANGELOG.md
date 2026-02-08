@@ -8,6 +8,76 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+## [0.5.0] - 2026-02-05
+
+### Added
+
+#### Phase 8: Editor Rebuild for CNXML→HTML Pipeline ✅ COMPLETE
+
+Complete rebuild of the editor layer to work with CNXML→HTML rendering pipeline. This is the largest architectural change since project inception.
+
+**8.1 Segment Editor** (Commit `1021662`)
+- `/segment-editor` route with segment-level linguistic editing
+- Database tables: `segment_edits`, `module_reviews`, `segment_discussions`
+- Per-module review workflow with category tagging (grammar, terminology, style, etc.)
+- Discussion threads on specific segments
+- "Mark as Reviewed" approval flow for head editors
+- API at `/api/segment-editor` with GET/POST/PUT endpoints
+
+**8.2 Terminology Integration** (Commit `444cb33`)
+- Inline term highlighting in segment editor
+- Word-boundary matching for accurate term detection
+- Consistency checking (missing terms, inconsistent translations)
+- Lookup in editor with term details from terminology database
+- Issue detection for terminology violations
+
+**8.3 Pipeline API** (Commit `ec38ab0`)
+- `/api/pipeline` routes for inject, render, and full pipeline operations
+- Child process spawning with job tracking
+- Polling-based status updates for long-running operations
+- Integration with cnxml-inject.js and cnxml-render.js
+- One-click "inject → render" flow for preview
+
+**8.4 Localization Editor** (Commit `98aea7b`)
+- `/localization-editor` route for Pass 2 editing
+- 3-column layout: EN source | faithful IS | localized IS
+- Side-by-side comparison for localization context
+- API at `/api/localization-editor`
+- Auto-detection of localization opportunities (units, cultural refs)
+
+**Database Migration 008**
+- Added segment editing tables
+- Added review tracking tables
+- Added discussion threading
+
+**Tools Updated**
+- `cnxml-inject.js` — now callable from server API
+- `cnxml-render.js` — now callable from server API
+- `prepare-for-align.js` — updated for segment-based workflow
+
+**Documentation Added**
+- `docs/workflow/editor-improvements-jan2026.md` — Phase 8 implementation plan
+- `docs/workflow/development-plan-phases-9-13.md` — Post-Phase 8 roadmap
+- `docs/pipeline/html-pipeline-issues.md` — Issue tracking for cnxml-render
+
+**Deferred to Future Phases**
+- Apply approved edits to `03-faithful/` files (→ Phase 9)
+- Publication migration from markdown to HTML (→ Phase 10)
+- Status schema expansion to 8-stage pipeline (→ Phase 11)
+- Old markdown editor retirement (→ Phase 13)
+
+### Deprecated
+
+**Tools Retired (Markdown Pipeline)**
+- `chapter-assembler.js` — replaced by cnxml-render HTML output
+- `add-frontmatter.js` — frontmatter not needed in HTML
+- `compile-chapter.js` — end-of-chapter extraction now in cnxml-render
+- `cnxml-to-md.js` — markdown is intermediary format only, not publication format
+
+**Why Deprecated:** Phase 8 changes publication output from assembled markdown to semantic HTML rendered directly from CNXML. The markdown assembly workflow is no longer used.
+
+### Added
+
 #### Translation Pipeline Server - Phase 2.2 (Issue Classification Integration)
 - **Automatic Issue Detection on Upload**
   - Runs `classifyIssues()` on every MT file upload

@@ -28,12 +28,39 @@
 
 ---
 
+## Notes for Code Reviewers
+
+This project was built iteratively with AI assistance. Known areas of concern:
+- Pipeline tools evolved organically — may have inconsistent patterns
+- Error handling may be incomplete in some tools
+- Server authentication needs security review
+- Documentation may be ahead of or behind actual implementation in places
+- No automated test suite yet
+
 ## Purpose
 
 Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 1. **Faithful translations** (03-faithful/) - human-verified, academically citable
 2. **Translation memory** (tm/) - human-verified EN↔IS parallel corpus
 3. **Localized content** (04-localized/, 05-publication/) - adapted for Icelandic students
+
+## Project Context
+
+- **Developer profile:** Chemistry teacher with basic Linux skills, not a professional developer
+- **Development method:** Built primarily with Claude Code assistance
+- **Server:** Linode Ubuntu, Caddy, Node.js
+- **Sister repo:** namsbokasafn-vefur (web publishing service)
+- **Domain:** namsbokasafn.is (migrated from efnafraedi.app)
+- **Authentication:** GitHub OAuth for the workflow server
+- **Scale:** Small educational project — 1-2 developers, ~5 editors
+
+## Tech Stack
+
+- **Runtime:** Node.js
+- **Pipeline tools:** Custom CLI scripts in `tools/`
+- **Server:** Express-based workflow interface in `server/`
+- **Content format:** CNXML → Markdown (intermediate) → HTML
+- **Dependencies:** See package.json
 
 ## Directory Structure
 
@@ -171,4 +198,8 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 ## Current Priority
 
-**Editor rebuild for CNXML→HTML pipeline** — integrate cnxml-inject and cnxml-render into the server, replace markdown publication with HTML output. See [ROADMAP.md](ROADMAP.md) Phase 8.
+**Phase 9: Close the Write Gap** — Apply approved segment edits to `03-faithful/` files so the inject→render pipeline has input. This unblocks the faithful publication track.
+
+See [ROADMAP.md](ROADMAP.md) Phase 9 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
+
+**Phase 8 Status:** COMPLETE (2026-02-05) — Editor rebuild for CNXML→HTML pipeline delivered.

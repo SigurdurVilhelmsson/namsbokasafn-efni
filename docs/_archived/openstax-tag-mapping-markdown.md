@@ -1,10 +1,16 @@
-# OpenStax Tag Mapping Reference
+<!-- ARCHIVED: 2026-02-08 - Legacy markdown pipeline reference. Current pipeline (Phase 8+) uses cnxml-extract.js for segmentation and cnxml-render.js for direct HTML rendering. Tag mapping concepts still apply but implementation differs. Moved from docs/technical/openstax-tag-mapping.md. -->
+
+# OpenStax Tag Mapping Reference (ARCHIVED - Markdown Pipeline)
+
+> **NOTE:** This document describes the old markdown extraction approach (Phase ≤7). The current pipeline (Phase 8+) uses `cnxml-extract.js` for segmentation and `cnxml-render.js` for direct HTML rendering. Tag mapping concepts still apply but implementation details have changed. See `tools/lib/cnxml-elements.js` for current HTML rendering of CNXML elements and [docs/technical/publication-format.md](../technical/publication-format.md) for current HTML output specification.
 
 ## Overview
 
-This document provides a comprehensive mapping of OpenStax CNXML tags to markdown directives used in the namsbokasafn translation pipeline.
+This document provides a comprehensive mapping of OpenStax CNXML tags to markdown directives used in the **legacy** namsbokasafn translation pipeline (pre-Phase 8).
 
 **Key principle:** We use original OpenStax class names as directive names to maintain consistency with source material and avoid confusion.
+
+**Historical context:** The markdown directives described below were used when publication output was assembled markdown. The current pipeline produces semantic HTML directly from CNXML.
 
 ## Structural Elements
 

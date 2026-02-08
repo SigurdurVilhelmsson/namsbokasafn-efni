@@ -1,4 +1,6 @@
-# Vefur Renderer Updates Needed
+<!-- ARCHIVED: 2026-02-08 - Superseded by Phase 8 (CNXML→HTML pipeline). Publication output changed from markdown with directives to semantic HTML from cnxml-render.js. Vefur now serves pre-rendered HTML. Moved from docs/technical/vefur-renderer-updates-needed.md. -->
+
+# Vefur Renderer Updates Needed (ARCHIVED)
 
 > **SUPERSEDED.** This document described markdown directive name changes for the vefur markdown renderer. With the move to the CNXML→HTML pipeline (see [Editor Rebuild Plan](../workflow/editor-improvements-jan2026.md)), publication output is now semantic HTML from `cnxml-render.js`, not markdown with directives. The vefur renderer will serve pre-rendered HTML instead of processing markdown. The directive name changes described below are no longer relevant.
 
