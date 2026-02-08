@@ -16,7 +16,7 @@
     "docs:check": "npm run docs:generate && git diff --exit-code docs/_generated/",
     "lint": "eslint tools/ scripts/ --ext .js",
     "lint:fix": "eslint tools/ scripts/ --ext .js --fix",
-    "format": "prettier --write 'tools/**/*.js' 'scripts/**/*.js' 'lib/**/*.js'",
+    "format": "prettier --write 'tools/**/*.js' 'scripts/**/*.js'",
     "format:check": "prettier --check 'tools/**/*.js' 'scripts/**/*.js'",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -40,10 +40,6 @@
       "prettier --write"
     ],
     "scripts/**/*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "lib/**/*.js": [
       "eslint --fix",
       "prettier --write"
     ],
