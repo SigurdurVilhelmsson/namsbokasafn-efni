@@ -1,29 +1,34 @@
 # Námsbókasafn - Translation Status
 
-> Last updated: 2026-02-01
+> Last updated: 2026-02-08
 
 ## Active Projects
 
-| Book | Status | Pilot Target | Progress |
-|------|--------|--------------|----------|
-| [Efnafræði](books/efnafraedi/STATUS.md) | 🔄 Active | Jan 5, 2026 | Ch 1-4 of 21 |
-| [Líffræði](books/liffraedi/STATUS.md) | ⏳ Planned | TBD | Not started |
+| Book | Status | Current Phase | Progress |
+|------|--------|---------------|----------|
+| [Efnafræði](books/efnafraedi/STATUS.md) | 🔄 Active | Phase 9 (Close the Write Gap) | Ch 1-4 of 21 |
+| [Líffræði](books/liffraedi/STATUS.md) | ⏳ Planned | Not started | - |
 
 ## Current Focus
 
-**Efnafræði Pilot (Jan 2026)**
-- Target: Chapters 1-4 faithful translations
-- School: Fjölbrautaskólinn við Ármúla
-- Setup: Icelandic as supplementary text
+**Phase 9: Close the Write Gap**
+- Apply approved segment edits to `03-faithful/` files
+- Unblock faithful publication track (inject → render → publish)
+- Enable one-click "Apply & Render" workflow
+
+**Recent Milestone:**
+- Phase 8 (CNXML→HTML pipeline) completed 2026-02-05
+- Segment editor, terminology integration, pipeline API all delivered
+- Publication now outputs semantic HTML instead of markdown
 
 ## Recent Updates
 
 | Date | Update |
 |------|--------|
+| 2026-02-08 | Documentation freshness audit post-Phase 8 |
+| 2026-02-05 | Phase 8 complete (editor rebuild for HTML pipeline) |
 | 2026-02-01 | Best practices audit and improvements |
 | 2025-12-26 | Technical debt cleanup |
-| 2024-12-17 | Progress tracking system created |
-| 2024-12-17 | Repository structure created |
 
 ## Quick Links
 

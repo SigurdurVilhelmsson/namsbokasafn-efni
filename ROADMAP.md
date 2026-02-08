@@ -9,6 +9,11 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Scale** | 4-5 books in 2 years, designed for 10+ |
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
+| **Current Phase** | Phase 9: Close the Write Gap |
+| **Latest Milestone** | Phase 8 complete (2026-02-05) |
+
+**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 (current) → 10 → 11 → 12 → 13
+**Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
 
 ---
 

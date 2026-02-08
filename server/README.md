@@ -2,6 +2,8 @@
 
 Web-based automation server for the OpenStax translation pipeline. Provides a guided workflow interface, issue tracking, image management, and GitHub-based content sync.
 
+> **📚 For complete API reference:** See [`docs/_generated/routes.md`](../docs/_generated/routes.md) which documents all 200+ endpoints across 28 route groups. This README provides setup instructions and a high-level feature overview.
+
 ## Quick Start
 
 ```bash

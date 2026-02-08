@@ -12,13 +12,16 @@ description: Ensure correct file naming and locations. Always active when creati
 
 | Folder | Permission | Notes |
 |--------|------------|-------|
-| 01-source/ | READ ONLY | Original OpenStax files |
+| 01-source/ | READ ONLY | Original OpenStax CNXML files |
 | 02-mt-output/ | READ ONLY | MT reference only |
-| 03-faithful/ | READ + WRITE | Create backup before editing |
-| 04-localized/ | READ + WRITE | Create backup before editing |
-| 05-publication/ | READ + WRITE | Create backup before editing |
+| 02-for-mt/ | GENERATED | Created by cnxml-extract |
+| 02-structure/ | GENERATED | Structure/equations JSON |
+| 03-faithful/ | READ + WRITE | Reviewed IS segments |
+| 03-translated/ | GENERATED | Translated CNXML from inject |
+| 04-localized/ | READ + WRITE | Pass 2 localized segments |
+| 05-publication/ | GENERATED | HTML from cnxml-render |
 | tm/ | READ ONLY | Managed by Matecat |
-| glossary/ | READ + WRITE | Create backup before editing |
+| glossary/ | READ + WRITE | Terminology database |
 
 ### Before Modifying Any File
 
@@ -34,25 +37,27 @@ description: Ensure correct file naming and locations. Always active when creati
 - Correct: `ch01`, `ch02`, `ch03`, ... `ch21`
 - Wrong: `ch1`, `chapter-01`, `chapter1`
 
-### Pass 1 Output
-- Format: `{section-id}-pass1-{initials}.docx`
-- Example: `1.2-pass1-SEV.docx`
-- Location: `books/{book}/03-faithful/docx/ch{NN}/`
+### Segment Files (Current Pipeline)
+- **EN segments:** `{moduleId}-segments.en.md`
+- **IS segments (MT):** `{moduleId}-segments.is.md`
+- **IS segments (reviewed):** `{moduleId}-segments.is.md` (in 03-faithful/)
+- **Location:** `books/{book}/02-for-mt/ch{NN}/` or `03-faithful/ch{NN}/`
+- Example: `m68781-segments.en.md`, `m68781-segments.is.md`
 
-### Pass 2 Output
-- Format: `{section-id}-localized.docx`
-- Example: `1.2-localized.docx`
-- Location: `books/{book}/04-localized/docx/ch{NN}/`
+### Structure Files
+- **Structure JSON:** `{moduleId}-structure.json`
+- **Equations JSON:** `{moduleId}-equations.json`
+- **Location:** `books/{book}/02-structure/ch{NN}/`
 
-### Localization Logs
-- Format: `ch{NN}-log.md`
-- Example: `ch03-log.md`
-- Location: `books/{book}/04-localized/localization-logs/`
+### Translated CNXML
+- **Format:** `{moduleId}.cnxml`
+- **Location:** `books/{book}/03-translated/ch{NN}/`
+- Example: `m68781.cnxml`
 
-### Publication Markdown
-- Format: `{section-id}.md`
-- Example: `3.1.md` or `section-3-1.md`
-- Location: `books/{book}/05-publication/chapters/`
+### Rendered HTML
+- **Format:** `{moduleId}.html`
+- **Location:** `books/{book}/05-publication/faithful/ch{NN}/` (or mt-preview/, localized/)
+- Example: `m68781.html`
 
 ### Status Files
 - Always: `status.json` (lowercase)
@@ -63,28 +68,40 @@ description: Ensure correct file naming and locations. Always active when creati
 ```
 books/{book}/
 ├── 01-source/
-│   ├── docx/ch{NN}/      # Original .docx files
-│   ├── txt/               # Stripped plain text
-│   └── images-editable/   # High-res figure PDFs
+│   └── ch{NN}/             # Original CNXML files
+├── 02-for-mt/
+│   └── ch{NN}/             # EN segments for MT
+│       ├── *-segments.en.md
+│       └── *-strings.en.md
+├── 02-structure/
+│   └── ch{NN}/             # Extracted structure
+│       ├── *-structure.json
+│       └── *-equations.json
 ├── 02-mt-output/
-│   └── docx/              # MT output (reference)
+│   └── ch{NN}/             # IS segments from MT
+│       └── *-segments.is.md
 ├── 03-faithful/
-│   ├── docx/ch{NN}/      # Pass 1 output
-│   └── markdown/          # Converted .md
+│   └── ch{NN}/             # Reviewed segments (Pass 1)
+│       └── *-segments.is.md
+├── 03-translated/
+│   └── ch{NN}/             # Translated CNXML
+│       └── *.cnxml
 ├── 04-localized/
-│   ├── docx/ch{NN}/      # Pass 2 output
-│   └── localization-logs/ # Change logs
+│   └── ch{NN}/             # Localized segments (Pass 2)
+│       └── *-segments.is.md
 ├── 05-publication/
-│   └── chapters/          # Final .md files
+│   ├── mt-preview/ch{NN}/  # MT HTML
+│   ├── faithful/ch{NN}/    # Reviewed HTML
+│   └── localized/ch{NN}/   # Localized HTML
+│       └── *.html
 ├── tm/
-│   ├── *.tmx              # Translation memory
-│   └── exports/           # Parallel corpus
+│   ├── *.tmx               # Translation memory
+│   └── exports/            # Parallel corpus
 ├── glossary/
 │   └── terminology-en-is.csv
 └── chapters/
     └── ch{NN}/
-        ├── status.json    # Chapter status
-        └── files.json     # Per-file tracking
+        └── status.json     # Chapter status
 ```
 
 ## Validation Rules
@@ -99,5 +116,22 @@ Before creating any file:
 Common mistakes to prevent:
 - Saving to 03-faithful/ during localization (should be 04-localized/)
 - Creating ch1/ instead of ch01/
-- Putting logs in docx/ folder
-- Saving .md in docx/ folders
+- Editing files in GENERATED directories (02-for-mt/, 03-translated/, 05-publication/)
+- Modifying files in READ ONLY directories (01-source/, 02-mt-output/, tm/)
+
+## Current Pipeline File Flow
+
+```
+01-source/ch{NN}/*.cnxml
+    ↓ (cnxml-extract.js)
+02-for-mt/ch{NN}/*-segments.en.md
+02-structure/ch{NN}/*-structure.json
+    ↓ (manual MT via malstadur.is)
+02-mt-output/ch{NN}/*-segments.is.md
+    ↓ (manual review via /segment-editor)
+03-faithful/ch{NN}/*-segments.is.md
+    ↓ (cnxml-inject.js)
+03-translated/ch{NN}/*.cnxml
+    ↓ (cnxml-render.js)
+05-publication/faithful/ch{NN}/*.html
+```

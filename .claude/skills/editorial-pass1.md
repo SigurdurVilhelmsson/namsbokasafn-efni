@@ -38,10 +38,19 @@ When flagging issues, use these tags:
 - `[DISCUSS]` - Needs team discussion
 - `[TERM]` - Terminology question
 
-## Output Location
+## Current Workflow (Phase 8+)
 
-Pass 1 outputs go to: `books/{book}/03-faithful/docx/ch{NN}/`
-Filename format: `{section-id}-pass1-{initials}.docx`
+Pass 1 review is done via the **segment editor** at `/segment-editor`:
+- Review segment-by-segment with EN source and IS MT side-by-side
+- Edit segments directly in the web interface
+- Mark modules as reviewed when complete
+- Approved edits are stored in database (segment_edits table)
+
+**Output location:** `books/{book}/03-faithful/ch{NN}/`
+**Filename format:** `{moduleId}-segments.is.md`
+**Example:** `m68781-segments.is.md`
+
+**Note:** After segments are approved, they must be applied to the 03-faithful/ files using the "Apply Edits" workflow (Phase 9) before injection/rendering can proceed.
 
 ---
 
