@@ -36,6 +36,7 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 ┌─────────────────────────────────────────────────────────────┐
 │  Step 2b: Unprotect & Merge MT Output                       │
 │  Tool: unprotect-segments.js                                │
+│  Auto-copies -links.json from 02-for-mt/ if needed          │
 │  Merges split files, converts {{SEG:...}} → <!-- SEG:... -->│
 │  Restores links from -links.json                            │
 │  Output: Ready for review or injection                      │
@@ -166,6 +167,7 @@ node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
 ```
 
 **What it does:**
+0. **Auto-copies** `-links.json` files from `02-for-mt/` if missing (when processing `02-mt-output/`)
 1. Detects and merges split files: `(a)`, `(b)`, `(c)` → single file
 2. Converts `{{SEG:...}}` → `<!-- SEG:... -->`
 3. Restores links from `-links.json`: `{{LINK:N}}text{{/LINK}}` → `[text](url)`
@@ -177,6 +179,8 @@ node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
 - Files now ready for injection with `cnxml-inject.js`
 
 **Important:** This step is REQUIRED before injection. The `cnxml-inject.js` tool expects complete files with `<!-- SEG:... -->` tags.
+
+**Note:** The script automatically ensures `-links.json` files are present by copying them from the corresponding `02-for-mt/` directory. This prevents the common error where cross-references and external links fail to render because the links metadata was missing.
 
 ---
 

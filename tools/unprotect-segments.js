@@ -6,10 +6,15 @@
  * Post-processing for MT output - the reverse of protect-segments-for-mt.js
  *
  * This script prepares MT output for injection by:
+ * 0. Auto-copying -links.json files from 02-for-mt/ if processing 02-mt-output/
  * 1. Merging split files (a), (b), (c) back together
  * 2. Converting {{SEG:xxx}} back to <!-- SEG:xxx -->
- * 3. Restoring markdown links from -links.json
+ * 3. Restoring markdown links from -links.json files
  * 4. Validating output is ready for cnxml-inject.js
+ *
+ * Note: When processing 02-mt-output/, the script automatically copies any missing
+ * -links.json files from the corresponding 02-for-mt/ directory. This ensures
+ * cross-references and external links are properly restored.
  *
  * Usage:
  *   node tools/unprotect-segments.js --chapter <num>
@@ -59,9 +64,13 @@ function printHelp() {
 unprotect-segments.js - Prepare MT output for injection
 
 Reverses the protection applied by protect-segments-for-mt.js:
+- Auto-copies -links.json files from 02-for-mt/ (when processing 02-mt-output/)
 - Merges split files (a), (b), (c) back together
 - Converts {{SEG:xxx}} → <!-- SEG:xxx -->
 - Restores markdown links from -links.json files
+
+The script automatically ensures links.json files are present before processing,
+so cross-references and external links are always properly restored.
 
 Usage:
   node tools/unprotect-segments.js --chapter <num>
@@ -77,7 +86,7 @@ Options:
   -h, --help           Show this help message
 
 Examples:
-  # Process chapter 9 from MT output
+  # Process chapter 9 from MT output (auto-copies links.json if needed)
   node tools/unprotect-segments.js --chapter 9 --verbose
 
   # Process specific directory
@@ -206,6 +215,56 @@ function restoreLinks(content, linksPath, verbose) {
 }
 
 /**
+ * Copy links.json files from 02-for-mt to 02-mt-output if needed
+ * This ensures link restoration works even when processing MT output directly
+ */
+function ensureLinksFiles(inputDir, verbose) {
+  // Only copy if we're in a 02-mt-output directory
+  if (!inputDir.includes('02-mt-output')) {
+    return { copied: 0, skipped: 0 };
+  }
+
+  // Determine corresponding 02-for-mt directory
+  const forMtDir = inputDir.replace('02-mt-output', '02-for-mt');
+
+  if (!fs.existsSync(forMtDir)) {
+    if (verbose) {
+      console.log(`\nNote: No corresponding 02-for-mt directory found at ${forMtDir}`);
+    }
+    return { copied: 0, skipped: 0 };
+  }
+
+  // Find all -links.json files in 02-for-mt
+  const linksFiles = fs.readdirSync(forMtDir).filter((f) => f.endsWith('-links.json'));
+
+  if (linksFiles.length === 0) {
+    return { copied: 0, skipped: 0 };
+  }
+
+  let copied = 0;
+  let skipped = 0;
+
+  for (const file of linksFiles) {
+    const sourcePath = path.join(forMtDir, file);
+    const destPath = path.join(inputDir, file);
+
+    if (fs.existsSync(destPath)) {
+      skipped++;
+      continue;
+    }
+
+    fs.copyFileSync(sourcePath, destPath);
+    copied++;
+
+    if (verbose) {
+      console.log(`  Copied: ${file}`);
+    }
+  }
+
+  return { copied, skipped };
+}
+
+/**
  * Process a single base file
  */
 function processFile(basePath, options) {
@@ -297,6 +356,18 @@ async function main() {
     process.exit(1);
   }
 
+  // Ensure links.json files are copied from 02-for-mt if we're processing 02-mt-output
+  if (args.verbose) {
+    console.log('\nChecking for links.json files...');
+  }
+  const linksCopy = ensureLinksFiles(inputDir, args.verbose);
+  if (linksCopy.copied > 0) {
+    console.log(`Copied ${linksCopy.copied} links.json file(s) from 02-for-mt/`);
+  }
+  if (args.verbose && linksCopy.skipped > 0) {
+    console.log(`Skipped ${linksCopy.skipped} links.json file(s) (already present)`);
+  }
+
   // Find all base files
   const baseFiles = findBaseFiles(inputDir);
 
@@ -305,7 +376,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log(`Found ${baseFiles.length} segment file(s) to process`);
+  console.log(`\nFound ${baseFiles.length} segment file(s) to process`);
 
   // Process each file
   const results = [];
