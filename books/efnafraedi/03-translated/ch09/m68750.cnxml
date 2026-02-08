@@ -72,7 +72,7 @@ yfirborðsflatarmáls skautanna. (mynd a: breyting á verki eftir Guido da
 Rozze; mynd b: breyting á verki eftir Ryosuke Yagi)</caption></figure>
 <equation id="fs-idm100445488" class="unnumbered"><m:math><m:mrow><m:mtext>pressure per elephant foot</m:mtext><m:mo>=</m:mo><m:mtext>14,000</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>lb</m:mtext></m:mrow><m:mrow><m:mtext>elephant</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 elephant</m:mtext></m:mrow><m:mrow><m:mtext>4 feet</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 foot</m:mtext></m:mrow><m:mrow><m:mn>250</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>14</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>lb/in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
 <para id="fs-idp79686656">Listskautarinn vegur um 120 pund og
-stendur á tveimur skautablöðum, hvort með um 2 in<sup>2</sup> flatarmál, þannig
+stendur á tveimur skautablöðum, hvort með um 2 in^2^ flatarmál, þannig
 að þrýstingurinn sem hvort blað beitir er um 30 lb/in<sup>2</sup>:</para>
 <equation id="fs-idm181738992" class="unnumbered"><m:math><m:mrow><m:mtext>pressure per skate blade</m:mtext><m:mo>=</m:mo><m:mn>120</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>lb</m:mtext></m:mrow><m:mrow><m:mtext>skater</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 skater</m:mtext></m:mrow><m:mrow><m:mtext>2 blades</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 blade</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>30</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>lb/in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm101012528">Jafnvel þótt fíllinn sé meira en
@@ -217,7 +217,7 @@ fullyrðingu að loftþrýstingur nálægt sjávarmáli samsvari þrýstingnum s
 kvikasilfurssúla sem er um 760 mm á hæð beitir. Eðlismassi kvikasilfurs
 = 13,6 g/cm<sup>3</sup>.</para>
 <para id="fs-idm64631536"><title>Lausn</title>Vökvastöðuþrýstingur er gefinn með
-<emphasis effect="italics">p</emphasis> = <emphasis effect="italics">hρg</emphasis>, þar sem <emphasis effect="italics">h</emphasis> = 760 mm, <emphasis effect="italics">ρ</emphasis> = 13,6 g/cm<sup>3</sup> og <emphasis effect="italics">g</emphasis> = 9,81
+<emphasis effect="italics">p</emphasis> = <emphasis effect="italics">hρg</emphasis>, þar sem <emphasis effect="italics">h</emphasis> = 760 mm, <emphasis effect="italics">ρ</emphasis> = 13,6 g/cm^3^ og <emphasis effect="italics">g</emphasis> = 9,81
 m/s<sup>2</sup>. Með því að setja þessi gildi inn í jöfnuna og framkvæma
 nauðsynlegar einingabreytingar fáum við gildið sem við leitum að.
 (Athugið: Við búumst við að finna þrýsting upp á ~101.325 Pa.)</para><equation id="fs-idm207611040" class="unnumbered"><m:math><m:mrow><m:mn>101,325</m:mn><m:mspace width="0.2em"/><m:mi>N</m:mi><m:msup><m:mrow><m:mtext>/m</m:mtext></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>101,325</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mtext>kg·m/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mtext>m</m:mtext><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>101,325</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>kg</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mtext>m·s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
@@ -284,7 +284,7 @@ en það er einfaldara að breyta bara á milli eininga með því að nota
 </media>
 <note id="fs-idm70430576">
 <title>Answer:</title>
-<para id="fs-idm8669760">(a) <sub>150 torr; (b) </sub>20.000 Pa; (c)
+<para id="fs-idm8669760">(a) ~150 torr; (b) ~20.000 Pa; (c)
 ~0,20 bar</para>
 </note>
 </example>

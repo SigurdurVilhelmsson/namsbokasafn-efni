@@ -193,9 +193,10 @@ function reverseInlineMarkup(text, equations) {
     }
   });
 
-  // Convert sub/sup back (limit to 1-15 chars to avoid matching approximation symbols like (~1700))
-  result = result.replace(/~([^~]{1,15})~/g, '<sub>$1</sub>');
-  result = result.replace(/\^([^^]{1,15})\^/g, '<sup>$1</sup>');
+  // Convert sub/sup back (only match when part of a word, not standalone approximations)
+  // Requires non-whitespace before and after to distinguish H~2~O from ~150 torr
+  result = result.replace(/(?<=[^\s~])~([^~]{1,15})~(?=[^\s~])/g, '<sub>$1</sub>');
+  result = result.replace(/(?<=[^\s^])\^([^^]{1,15})\^(?=[^\s^])/g, '<sup>$1</sup>');
 
   // Convert footnotes back — handle both English marker and MT-translated Icelandic
   result = result.replace(/ \[(?:footnote|neðanmálsgrein): ([^\]]+)\]/g, '<footnote>$1</footnote>');
