@@ -33,14 +33,14 @@ nRT* er að bera saman raunverulegt rúmmál eins móls af gasi (mólrúmmál
 
 <!-- SEG:m68759:para:fs-idm92799184 --> Hegðun kjörgass er því gefin til
 kynna þegar þetta hlutfall er jafnt og 1 og öll frávik frá 1 eru
-vísbending um hegðun raungass. <!-- XREF:1 --> sýnir línurit af Z yfir stórt
+vísbending um hegðun raungass. [#CNX_Chem_09_06_ZvsPgraph] sýnir línurit af Z yfir stórt
 þrýstingssvið fyrir nokkur algeng gös.
 
 <!-- SEG:m68759:caption:CNX_Chem_09_06_ZvsPgraph-caption --> Línurit af
 samþrýstanleikastuðlinum (Z) á móti þrýstingi sýnir að gös geta sýnt
 veruleg frávik frá þeirri hegðun sem kjörgaslögmálið spáir fyrir um.
 
-<!-- SEG:m68759:para:fs-idp70317840 --> Eins og sést á <!-- XREF:2 --> lýsir
+<!-- SEG:m68759:para:fs-idp70317840 --> Eins og sést á [#CNX_Chem_09_06_ZvsPgraph] lýsir
 kjörgaslögmálið ekki vel hegðun gass við tiltölulega háan þrýsting. Til
 að ákvarða hvers vegna þetta er skulum við skoða muninn á eiginleikum
 raungass og því sem búist er við af ímynduðu kjörgasi.
@@ -62,7 +62,7 @@ gassameindir nánast engan aðdráttarkraft hver til annarrar vegna þess að
 eindir kjörgass. Við hærri þrýsting er aðdráttarkrafturinn hins vegar
 heldur ekki lengur óverulegur. Þessi kraftur togar sameindirnar aðeins
 nær hvor annarri, sem minnkar örlítið þrýstinginn (ef rúmmálið er fast)
-eða minnkar rúmmálið (við fastan þrýsting) (<!-- XREF:3 -->). Þessi breyting
+eða minnkar rúmmálið (við fastan þrýsting) ([#CNX_Chem_09_06_RealGas2]). Þessi breyting
 er meira áberandi við lágt hitastig vegna þess að sameindirnar hafa
 lægri hreyfiorku miðað við aðdráttarkraftana og eru því ólíklegri til að
 yfirstíga þessa aðdráttarkrafta eftir árekstur við aðra sameind.
@@ -91,7 +91,7 @@ van der Waals-jafnan einfaldast yfir í kjörgaslögmálið, *PV = nRT*.
 Slíkt ástand samsvarar gasi þar sem tiltölulega lítill fjöldi sameinda
 tekur tiltölulega stórt rúmmál, þ.e. gas við tiltölulega lágan þrýsting.
 Tilraunagildi fyrir van der Waals-fasta sumra algengra gasa eru gefin í
-<!-- XREF:4 -->.
+[#fs-idm15100464].
 
 <!-- SEG:m68759:entry:auto-17 --> Gildi van der Waals-fasta fyrir nokkur
 algeng gös
@@ -146,7 +146,7 @@ sameindirnar sjálfar eru óþjappanlegar og mynda umtalsverðan hluta af
 heildarrúmmálinu. Við einhvern millistigsþrýsting hafa leiðréttingarnar
 tvær andstæð áhrif og gasið virðist fylgja sambandinu sem gefið er með
 *PV = nRT* á litlu þrýstingsbili. Þessi hegðun endurspeglast í „dýfunum“
-á nokkrum samþjöppunarferlanna sem sýndar eru í <!-- XREF:5 -->.
+á nokkrum samþjöppunarferlanna sem sýndar eru í [#CNX_Chem_09_06_ZvsPgraph].
 Aðdráttarkrafturinn milli sameinda gerir gasið í upphafi meira
 samþjappanlegt en kjörgas þegar þrýstingur er aukinn (Z minnkar með
 auknum *P*). Við mjög háan þrýsting verður gasið minna samþjappanlegt (Z
@@ -318,11 +318,32 @@ máli skiptir rúmmálið. Við lágan þrýsting er leiðréttingarstuðullinn
 fyrir aðdráttarkrafta milli sameinda marktækari og áhrif rúmmáls
 gassameindanna á Z væru lítil lækkun á samþjappanleika. Við hærri
 þrýsting myndu áhrif rúmmáls gassameindanna sjálfra á Z auka
-samþjappanleikann (sjá <!-- XREF:6 -->). (d) Aftur, við lágan þrýsting, væru
+samþjappanleikann (sjá [#CNX_Chem_09_06_ZvsPgraph]). (d) Aftur, við lágan þrýsting, væru
 áhrif aðdráttarkrafta milli sameinda á Z mikilvægari en
 leiðréttingarstuðullinn fyrir rúmmál gassameindanna sjálfra, þó kannski
 enn lítil. Við hærri þrýsting og lágt hitastig væru áhrif
-aðdráttarkrafta milli sameinda meiri. Sjá <!-- XREF:7 -->. (e) Lágt hitastig
+aðdráttarkrafta milli sameinda meiri. Sjá [#CNX_Chem_09_06_ZvsPgraph]. (e) Lágt hitastig
 
 <!-- SEG:m68759:glossary-term:fs-idp3716528-term --> samþjappanleikastuðull
 (Z)
+
+<!-- SEG:m68759:glossary-def:fs-idp3716528-def --> hlutfallið milli
+mólrúmmáls gass sem mælt er með tilraun og mólrúmmáls þess eins og það
+er reiknað út frá jöfnu kjörgass
+
+<!-- SEG:m68759:glossary-term:fs-idm15517248-term --> van der Waals-jafnan
+
+<!-- SEG:m68759:glossary-def:fs-idm15517248-def --> breytt útgáfa af jöfnu
+kjörgass sem inniheldur viðbótarliði til að taka tillit til frávika frá
+hegðun kjörgass
+
+
+<!-- SEG:m68759:glossary-def:fs-idp3716528-def --> hlutfallið milli
+mólrúmmáls gass sem mælt er með tilraun og mólrúmmáls þess eins og það
+er reiknað út frá jöfnu kjörgass
+
+<!-- SEG:m68759:glossary-term:fs-idm15517248-term --> van der Waals-jafnan
+
+<!-- SEG:m68759:glossary-def:fs-idm15517248-def --> breytt útgáfa af jöfnu
+kjörgass sem inniheldur viðbótarliði til að taka tillit til frávika frá
+hegðun kjörgass

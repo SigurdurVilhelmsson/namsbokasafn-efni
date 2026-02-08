@@ -39,12 +39,12 @@ sameinda á sér stað).</para>
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_04_Diffusion.jpg"/>
 </media>
 <caption>(a) Tvö gös,
-H<sub>2</sub> og O<sub>2</sub>, eru upphaflega aðskilin. (b) Þegar kraninn er opnaður
+H~2<sub> og O</sub>2~, eru upphaflega aðskilin. (b) Þegar kraninn er opnaður
 blandast þau saman. Léttara gasið, H<sub>2</sub>, fer hraðar í gegnum opið en
-O<sub>2</sub>, þannig að rétt eftir að kraninn er opnaður fara fleiri H<sub>2</sub>
-sameindir yfir á O<sub>2</sub> hliðina en O<sub>2</sub> sameindir fara yfir á H<sub>2</sub>
-hliðina. (c) Eftir stutta stund hafa bæði hægfara O<sub>2</sub> sameindirnar og
-hraðfara H<sub>2</sub> sameindirnar dreift sér jafnt á báðar hliðar ílátsins.</caption>
+O<sub>2</sub>, þannig að rétt eftir að kraninn er opnaður fara fleiri H~2~
+sameindir yfir á O~2<sub> hliðina en O</sub>2~ sameindir fara yfir á H~2~
+hliðina. (c) Eftir stutta stund hafa bæði hægfara O~2~ sameindirnar og
+hraðfara H~2~ sameindirnar dreift sér jafnt á báðar hliðar ílátsins.</caption>
 </figure>
 <para id="fs-idp67962064">Við höfum oft áhuga á <emphasis effect="bold">sveimhraða</emphasis>,
 þ.e. magni gass sem fer í gegnum ákveðið svæði á tímaeiningu:</para>
@@ -112,8 +112,8 @@ hraða mun brennisteinsdíoxíð sveima?</para>
 <example id="fs-idm54710976">
 <para id="fs-idm56870480"><title>Útreikningar á
 sveimtíma</title>Það tekur 243 s fyrir 4,46
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> mól af Xe að sveima í gegnum örlítið gat. Við sömu
-aðstæður, hversu langan tíma mun það taka 4,46 <m:math><m:mo>×</m:mo></m:math> 10<sup>−5</sup> mól
+<m:math><m:mo>×</m:mo></m:math> 10^−5^ mól af Xe að sveima í gegnum örlítið gat. Við sömu
+aðstæður, hversu langan tíma mun það taka 4,46 <m:math><m:mo>×</m:mo></m:math> 10^−5^ mól
 af Ne að sveima?</para>
 <para id="fs-idm63835360"><title>Lausn</title>Það er mikilvægt að standast
 freistinguna að nota tímann beint og muna hvernig hraði tengist tíma og
@@ -168,19 +168,19 @@ gassins..</para>
 nýtingu kjarnorku: Auðgun úrans</title>
 <para id="fs-idp117148640">Gassveim hefur verið notað til að
 framleiða auðgað úran til notkunar í kjarnorkuverum og vopnum.
-Náttúrulegt úran inniheldur aðeins 0,72% af <sup>235</sup>U, þeirri tegund úrans
+Náttúrulegt úran inniheldur aðeins 0,72% af ^235^U, þeirri tegund úrans
 sem er „kleyf“, það er að segja fær um að viðhalda keðjuverkun
-kjarnaklofnunar. Kjarnaofnar þurfa eldsneyti sem er 2–5% <sup>235</sup>U og
+kjarnaklofnunar. Kjarnaofnar þurfa eldsneyti sem er 2–5% ^235^U og
 kjarnorkusprengjur þurfa enn hærri styrk. Ein leið til að auðga úran að
 æskilegu magni er að nýta sér lögmál Grahams. Í gassveimsauðgunarstöð er
 úranhexaflúoríði (UF<sub>6</sub>, eina úransambandið sem er nógu rokgjarnt til að
 virka) dælt hægt í gegnum stór sívöl ílát sem kallast sveimar og
 innihalda gljúpar himnur með smásæjum opum. Ferlið er sveimferli vegna
-þess að hin hlið himnunnar er ekki lofttæmd. <sup>235</sup>UF<sub>6</sub> sameindirnar
+þess að hin hlið himnunnar er ekki lofttæmd. ^235^UF~6~ sameindirnar
 hafa hærri meðalhraða og sveima aðeins hraðar í gegnum himnuna en þyngri
-<sup>238</sup>UF<sub>6</sub> sameindirnar. Gasið sem hefur farið í gegnum himnuna er
-örlítið auðgað af <sup>235</sup>UF<sub>6</sub> og afgangsgasið er örlítið rýrt. Litli
-munurinn á mólmassa <sup>235</sup>UF<sub>6</sub> og <sup>238</sup>UF<sub>6</sub> skilar aðeins um 0,4%
+^238^UF~6~ sameindirnar. Gasið sem hefur farið í gegnum himnuna er
+örlítið auðgað af ^235^UF~6~ og afgangsgasið er örlítið rýrt. Litli
+munurinn á mólmassa ^235<sup>UF~6<sub> og </sup>238^UF</sub>6~ skilar aðeins um 0,4%
 auðgun í einum sveimi (<link target-id="CNX_Chem_09_04_GasDiff"/>). En með því að tengja marga sveima
 saman í röð af stigum (kallað þrepakerfi) er hægt að ná æskilegri
 auðgun.</para>
@@ -188,18 +188,18 @@ auðgun.</para>
 <media id="fs-idp101769760" alt="This figure shows a large cylindrical container oriented horizontally. A narrow tube or pipe which is labeled “porous barrier” runs horizontally through the center of the tube and extends a short distance out from the left and right ends of the cylinder. At the far left, an arrow points right into the tube. This arrow is labele, “Uranium hexafluoride ( U F subscript 6 ).” A line segment connects the label, “High pressure feed tube,” to the tube where it enters the cylinder. In the short region of tube outside the cylinder, 5 small, purple circles and 4 small, green circles are present. Inside the cylinder, an arrow points right through the tube which contains many evenly distributed, purple circles and a handful of green circles which decrease in quantity moving left to right through the cylinder. Curved arrows extend from the inner area of the tube into the outer region of the cylinder. Three of these arrows point into the area above the tube and three point into the area below. Two line segments extend from the label, “Higher speed superscript 235 U F subscript 6 diffuses through barrier faster than superscript 238 U F subscript 6,” to two green circles in the space above the tube. In the short section of tubing just outside the cylinder, 8 small, purple circles are present. An arrow labeled, “Depleted superscript 238 U F subscript 6,” points right extending from the end of this tube. The larger space outside the tube contains approximately 100 evenly distributed small green circles and only 5 purple circles. Eight of the purple circles appear at the left end of the cylinder. A tube exits the lower right end of the cylinder. It has 5 green circles followed by a right pointing arrow and the label, “Enriched superscript 235 U F subscript 6.”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_04_GasDiff.jpg"/>
 </media>
-<caption>Í sveimi er UF<sub>6</sub>
-gasi dælt í gegnum gljúpa himnu, sem aðskilur að hluta <sup>235</sup>UF<sub>6</sub> frá
-<sup>238</sup>UF<sub>6</sub>. UF<sub>6</sub> verður að fara í gegnum margar stórar sveimieiningar
-til að ná nægilegri auðgun á <sup>235</sup>U.</caption>
+<caption>Í sveimi er UF~6~
+gasi dælt í gegnum gljúpa himnu, sem aðskilur að hluta ^235<sup>UF~6<sub> frá
+</sup>238^UF</sub>6<sub>. UF</sub>6~ verður að fara í gegnum margar stórar sveimieiningar
+til að ná nægilegri auðgun á ^235^U.</caption>
 </figure>
-<para id="fs-idm46537712">Stórfelldur aðskilnaður á <sup>235</sup>UF<sub>6</sub>
-gasi frá <sup>238</sup>UF<sub>6</sub> var fyrst framkvæmdur í seinni heimsstyrjöldinni, í
+<para id="fs-idm46537712">Stórfelldur aðskilnaður á ^235<sup>UF~6~
+gasi frá </sup>238^UF~6~ var fyrst framkvæmdur í seinni heimsstyrjöldinni, í
 kjarnorkuverinu í Oak Ridge, Tennessee, sem hluti af
 Manhattan-verkefninu (þróun fyrstu atómsprengjunnar). Þrátt fyrir að
 kenningin sé einföld þurfti að yfirstíga margar ógnvekjandi tæknilegar
 áskoranir til að láta hana virka í reynd. Himnan verður að hafa örsmá,
-einsleit göt (um 10<sup>–6</sup> cm í þvermál) og vera nógu gljúp til að
+einsleit göt (um 10^–6^ cm í þvermál) og vera nógu gljúp til að
 framkalla mikið flæði. Öll efni (himnan, rör, yfirborðshúðun, smurefni
 og þéttingar) þurfa að geta innihaldið, en ekki hvarfast við, hið mjög
 hvarfgjarna og ætandi UF<sub>6</sub>.</para>
@@ -289,19 +289,19 @@ hægar en súrefni? F<sub>2</sub>, Ne, N<sub>2</sub>O, C<sub>2</sub>H<sub>2</sub
 <exercise id="fs-idm82361856">
 <problem id="fs-idm108214960">
 <para id="fs-idp170749584">Í umræðunni um gassveim til að
-auðga úran var því haldið fram að <sup>235</sup>UF<sub>6</sub> sveimi 0,4% hraðar en
-<sup>238</sup>UF<sub>6</sub>. Sýndu útreikninginn sem styður þetta gildi. Mólmassi
-<sup>235</sup>UF<sub>6</sub> = 235,043930 + 6 <m:math><m:mo>×</m:mo></m:math> 18,998403 = 349,034348
-g/mól, og mólmassi <sup>238</sup>UF<sub>6</sub> = 238,050788 + 6 <m:math><m:mo>×</m:mo></m:math> 18,998403
+auðga úran var því haldið fram að ^235^UF~6~ sveimi 0,4% hraðar en
+^238^UF<sub>6</sub>. Sýndu útreikninginn sem styður þetta gildi. Mólmassi
+^235^UF~6~ = 235,043930 + 6 <m:math><m:mo>×</m:mo></m:math> 18,998403 = 349,034348
+g/mól, og mólmassi ^238^UF~6~ = 238,050788 + 6 <m:math><m:mo>×</m:mo></m:math> 18,998403
 = 352,041206 g/mól.</para>
 </problem>
 </exercise>
 <exercise id="fs-idm4750352">
 <problem id="fs-idm14966576">
 <para id="fs-idp235733152">Reiknaðu hlutfallslegan
-sveimhraða <sup>1</sup>H<sub>2</sub> (mólmassi 2,0 g/mól) samanborið við <sup>2</sup>H<sub>2</sub> (mólmassi
-4,0 g/mól) og hlutfallslegan sveimhraða O<sub>2</sub> (mólmassi 32 g/mól)
-samanborið við O<sub>3</sub> (mólmassi 48 g/mól).</para></problem>
+sveimhraða ^1^H~2~ (mólmassi 2,0 g/mól) samanborið við ^2^H~2~ (mólmassi
+4,0 g/mól) og hlutfallslegan sveimhraða O~2~ (mólmassi 32 g/mól)
+samanborið við O~3~ (mólmassi 48 g/mól).</para></problem>
 <solution id="fs-idp122407888">
 <para id="fs-idp39170992">1,4; 1,2</para>
 </solution>
@@ -318,10 +318,10 @@ ml/s. Reiknaðu sameindamassa óþekkta gassins.</para>
 <para id="fs-idm45552304">Þegar tveir bómullartappar, annar
 bleyttur með ammoníaki og hinn með saltsýru, eru settir samtímis í sitt
 hvorn enda glerrörs sem er 87,0 cm langt, myndast hvítur hringur af
-NH<sub>4</sub>Cl þar sem loftkennt NH<sub>3</sub> og loftkennt HCl komast fyrst í
+NH<sub>4</sub>Cl þar sem loftkennt NH~3~ og loftkennt HCl komast fyrst í
 snertingu. <m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>HCl</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mtext>Cl</m:mtext><m:mrow><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:math> Í u.þ.b. hvaða fjarlægð frá bómullartappanum
 með ammoníaki gerist þetta? (Vísbending: Reiknaðu sveimhraða bæði fyrir
-NH<sub>3</sub> og HCl og komstu að því hversu miklu hraðar NH<sub>3</sub> sveimar en HCl.)</para></problem>
+NH~3~ og HCl og komstu að því hversu miklu hraðar NH~3~ sveimar en HCl.)</para></problem>
 <solution id="fs-idp38149616">
 <para id="fs-idp56783984">51,7 cm</para>
 </solution>

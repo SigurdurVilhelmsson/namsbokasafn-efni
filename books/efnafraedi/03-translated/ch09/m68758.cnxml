@@ -126,8 +126,8 @@ en 400 m/s, á meðan meðalkvaðratrótarhraðinn, <emphasis effect="italics">u
 (<emphasis effect="italics">m</emphasis>) og hraða (<emphasis effect="italics">u</emphasis>) er gefin með:</para>
 <equation id="fs-idm43195728" class="unnumbered"><m:math><m:mrow><m:mtext>KE</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>m</m:mi><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
 <para id="fs-idm178023104">Ef massi er gefinn í kílógrömmum og
-hraði í metrum á sekúndu fást orkugildi í einingunni júl (J = kg m<sup>2</sup>
-s<sup>–2</sup>). Til að fást við mikinn fjölda gassameinda notum við meðaltöl
+hraði í metrum á sekúndu fást orkugildi í einingunni júl (J = kg m^2<sup>
+s</sup>–2^). Til að fást við mikinn fjölda gassameinda notum við meðaltöl
 fyrir bæði hraða og hreyfiorku. Í KMT er <emphasis effect="bold">meðalkvaðratrótarhraði</emphasis>
 eindar, **<emphasis effect="italics">u</emphasis><sub>rms</sub>*<emphasis effect="italics">, skilgreindur sem kvaðratrótin af meðaltali
 kvaðrata hraðanna þar sem </emphasis>n* = fjöldi einda:</para>
@@ -136,13 +136,13 @@ kvaðrata hraðanna þar sem </emphasis>n* = fjöldi einda:</para>
 eindum, KE<sub>avg</sub>, er þá jöfn:</para>
 <equation id="fs-idm248247136" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msubsup><m:mrow><m:mi>M</m:mi><m:mi>u</m:mi></m:mrow><m:mrow><m:mtext>rms</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn></m:mrow></m:msubsup></m:mrow></m:math></equation>
 <para id="fs-idm52829008">þar sem <emphasis effect="italics">M</emphasis> er mólmassi gefinn í
-einingunni kg/mól. KE<sub>avg</sub> fyrir eitt mól af gassameindum er einnig í
+einingunni kg/mól. KE~avg~ fyrir eitt mól af gassameindum er einnig í
 beinu hlutfalli við hitastig gassins og má lýsa með jöfnunni:</para>
 <equation id="fs-idm181584464" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></equation>
 <para id="fs-idm166238448">þar sem <emphasis effect="italics">R</emphasis> er gasfastinn og T er
 hitastigið í kelvin. Þegar þessi jafna er notuð er viðeigandi form
 gasfastans 8,314 J/mól⋅K (8,314 kg m<sup>2</sup>s<sup>–2</sup>mól<sup>–1</sup>K<sup>–1</sup>). Hægt er að
-sameina þessar tvær aðskildu jöfnur fyrir KE<sub>avg</sub> og endurraða þeim til
+sameina þessar tvær aðskildu jöfnur fyrir KE~avg~ og endurraða þeim til
 að fá samband milli sameindahraða og hitastigs:</para>
 <equation id="fs-idm155100320" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msubsup><m:mrow><m:mi>M</m:mi><m:mi>u</m:mi></m:mrow><m:mrow><m:mtext>rms</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn></m:mrow></m:msubsup><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></equation>
 <equation id="fs-idp16162192" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></equation>
@@ -162,7 +162,7 @@ eitt mól af súrefnissameindum við –23 °C.</para><note id="fs-idm134812432"
 </note>
 </example>
 <para id="fs-idm298779008">Ef hitastig gass eykst, eykst
-KE<sub>avg</sub> þess, fleiri sameindir hafa meiri hraða og færri sameindir hafa
+KE~avg~ þess, fleiri sameindir hafa meiri hraða og færri sameindir hafa
 minni hraða og dreifingin hliðrast í átt að meiri hraða í heildina, þ.e.
 til hægri. Ef hitastig lækkar, minnkar KE<sub>avg</sub>, fleiri sameindir hafa
 minni hraða og færri sameindir hafa meiri hraða og dreifingin hliðrast í
@@ -178,7 +178,7 @@ hitastig eykst; hún hliðrast til vinstri og hækkar þegar hitastig
 lækkar.</caption>
 </figure>
 <para id="fs-idm131874080">Við gefið hitastig hafa öll gös sömu
-KE<sub>avg</sub> fyrir sameindir sínar. Gös sem samanstanda af léttari sameindum
+KE~avg~ fyrir sameindir sínar. Gös sem samanstanda af léttari sameindum
 hafa fleiri háhraða eindir og hærri <emphasis effect="italics">u<sub>rms</sub></emphasis>, með hraðadreifingu sem nær
 hámarki við tiltölulega hærri hraða. Gös sem samanstanda af þyngri
 sameindum hafa fleiri lághraða eindir, lægri <emphasis effect="italics">u<sub>rms</sub></emphasis> og hraðadreifingu
@@ -283,7 +283,7 @@ aukinn um stuðulinn 2.</para>
 <problem id="fs-idm136526752">
 <para id="fs-idm89452736">Hraðadreifing sameinda í
 helíumsýni er sýnd í <link target-id="CNX_Chem_09_05_MolSpeed3"/>. Ef sýnið er kælt, mun hraðadreifingin
-líkjast meira dreifingu H<sub>2</sub> eða H<sub>2</sub>O? Útskýrðu svarið.</para>
+líkjast meira dreifingu H~2<sub> eða H</sub>2~O? Útskýrðu svarið.</para>
 </problem>
 <solution id="fs-idm136225376">
 <para id="fs-idm161469056">H<sub>2</sub>O. Kæling hægir á hraða
@@ -311,7 +311,7 @@ meðalferningsrótarhraða sameindanna?</para>
 <para id="fs-idm47263904">(a) Þrýstingur gassins helst
 óbreyttur. (b) Meðalhreyfiorkan tvöfaldast. (c)
 Meðalferningsrótarhraðinn eykst í <m:math><m:mrow><m:msqrt><m:mn>2</m:mn></m:msqrt></m:mrow></m:math> sinnum upphafsgildi
-sitt; <emphasis effect="italics">u</emphasis><sub>rms</sub> er í réttu hlutfalli við <m:math><m:mrow><m:msqrt><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt><m:mo>.</m:mo></m:mrow></m:math></para>
+sitt; <emphasis effect="italics">u</emphasis>~rms~ er í réttu hlutfalli við <m:math><m:mrow><m:msqrt><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt><m:mo>.</m:mo></m:mrow></m:math></para>
 </solution>
 </exercise>
 <exercise id="fs-idm98413904">
@@ -332,12 +332,12 @@ jafn eðlismassa andrúmsloftsins fyrir utan belginn?</para><para id="fs-idm1840
 hitastig hefur þurrt loft eðlismassann 1,2256 g/L. Hver er
 (meðal)mólmassi þurrs lofts?</para>
 <para id="fs-idm205391088">(d) Meðalhitastig gassins í
-loftbelg er 1,30 <m:math><m:mo>×</m:mo></m:math> 10<sup>2</sup> °F. Reiknaðu eðlismassa þess, að
+loftbelg er 1,30 <m:math><m:mo>×</m:mo></m:math> 10^2^ °F. Reiknaðu eðlismassa þess, að
 því gefnu að mólmassinn sé jafn mólmassa þurrs lofts.</para><para id="fs-idm182287728">(e) Lyftigeta loftbelgs er jöfn
 mismuninum á massa kalda loftsins sem belgurinn ryður frá sér og massa
 gassins í belgnum. Hver er munurinn á massa 1,00 L af kalda loftinu í
 hluta (c) og heita loftinu í hluta (d)?</para><para id="fs-idm79081968">(f) Meðalbelgur hefur 60 feta
-þvermál og 1,1 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> ft<sup>3</sup> rúmmál. Hver er lyftikraftur
+þvermál og 1,1 <m:math><m:mo>×</m:mo></m:math> 10^5<sup> ft</sup>3^ rúmmál. Hver er lyftikraftur
 slíks belgs? Ef þyngd belgsins og búnaðar hans er 500 pund, hver er þá
 burðargeta hans fyrir farþega og farm?</para>
 <para id="fs-idm148488336">(g) Belgur ber 40,0 lítra af
@@ -351,8 +351,8 @@ fluginu stendur?</para>
 <solution id="fs-idm111172832">
 <para id="fs-idm120199952">(a) jafn; (b) minni en; (c)
 29,48 g mól<sup>−1</sup>; (d) 1,0966 g L<sup>−1</sup>; (e) 0,129 g/L; (f) 4,01
-<m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> g; hrein lyftigeta = 384 lb; (g) 270 L; (h) 39,1 kJ
-mín<sup>−1</sup></para>
+<m:math><m:mo>×</m:mo></m:math> 10^5^ g; hrein lyftigeta = 384 lb; (g) 270 L; (h) 39,1 kJ
+mín^−1^</para>
 </solution>
 </exercise>
 <exercise id="fs-idm194405232">

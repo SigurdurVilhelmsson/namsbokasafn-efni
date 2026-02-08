@@ -62,7 +62,7 @@ eftirfarandi hátt:
 hitastigið er aukið, eykst meðalhraði og hreyfiorka gassameindanna. Ef
 rúmmálinu er haldið föstu, leiðir aukinn hraði gassameindanna til tíðari
 og kröftugri árekstra við veggi ílátsins, sem eykur þar með þrýstinginn
-(<!-- XREF:2 -->).
+([#CNX_Chem_09_04_KMT2]).
 
 <!-- SEG:m68758:item:fs-idm221875200-item-2 --> *Lögmál Charles.* Ef hitastig
 gass er aukið, er aðeins hægt að viðhalda föstum þrýstingi ef rúmmál
@@ -77,14 +77,14 @@ vegna meiri hreyfiorku við hærra hitastig.
 ákveðins magns af gasi við ákveðið hitastig er minnkað (þ.e. ef gasið er
 *þjappað saman*), verða sameindirnar fyrir minna flatarmáli ílátsveggja.
 Árekstrar við veggi ílátsins verða því tíðari og þrýstingurinn sem gasið
-beitir mun aukast (<!-- XREF:3 -->).
+beitir mun aukast ([#CNX_Chem_09_04_KMT2]).
 
 <!-- SEG:m68758:item:fs-idm221875200-item-4 --> *Lögmál Avogadros.* Við
 fastan þrýsting og hitastig eru tíðni og kraftur árekstra sameinda við
 veggi fastir. Við slíkar aðstæður mun aukning á fjölda gassameinda
 krefjast hlutfallslegrar aukningar á rúmmáli ílátsins til að ná fram
 fækkun árekstra á flatareiningu til að vega upp á móti aukinni tíðni
-árekstra (<!-- XREF:4 -->).
+árekstra ([#CNX_Chem_09_04_KMT2]).
 
 <!-- SEG:m68758:item:fs-idm221875200-item-5 --> *Lögmál Daltons.* Vegna
 mikillar fjarlægðar á milli þeirra rekast sameindir eins gass í
@@ -113,7 +113,7 @@ mjög mismunandi hraða; en vegna *gríðarlegs* fjölda sameinda og árekstra
 er hraðadreifing sameindanna og meðalhraði þeirra stöðugur. Þessi
 hraðadreifing sameinda er þekkt sem Maxwell-Boltzmann-dreifing og hún
 sýnir hlutfallslegan fjölda sameinda í gassýni sem hafa ákveðinn hraða
-(<!-- XREF:5 -->).
+([#CNX_Chem_09_05_MolSpeed1]).
 
 <!-- SEG:m68758:caption:CNX_Chem_09_05_MolSpeed1-caption --> Hér er sýnd
 hraðadreifing sameinda fyrir súrefnisgas við 300 K. Mjög fáar sameindir
@@ -176,7 +176,7 @@ minni hraða og dreifingin hliðrast í átt að meiri hraða í heildina, þ.e.
 til hægri. Ef hitastig lækkar, minnkar KE~avg~, fleiri sameindir hafa
 minni hraða og færri sameindir hafa meiri hraða og dreifingin hliðrast í
 átt að minni hraða í heildina, þ.e. til vinstri. Þessi hegðun er sýnd
-fyrir niturgas í <!-- XREF:6 -->.
+fyrir niturgas í [#CNX_Chem_09_05_MolSpeed2].
 
 <!-- SEG:m68758:caption:CNX_Chem_09_05_MolSpeed2-caption --> Hraðadreifing
 sameinda fyrir niturgas (N~2~) hliðrast til hægri og fletst út þegar
@@ -189,14 +189,14 @@ hafa fleiri háhraða eindir og hærri *u~rms~*, með hraðadreifingu sem nær
 hámarki við tiltölulega hærri hraða. Gös sem samanstanda af þyngri
 sameindum hafa fleiri lághraða eindir, lægri *u~rms~* og hraðadreifingu
 sem nær hámarki við tiltölulega lægri hraða. Þessi þróun sést á gögnum
-fyrir röð eðalgasa sem sýnd eru í <!-- XREF:7 -->.
+fyrir röð eðalgasa sem sýnd eru í [#CNX_Chem_09_05_MolSpeed3].
 
 <!-- SEG:m68758:caption:CNX_Chem_09_05_MolSpeed3-caption --> sameindahraði er
 í beinu sambandi við sameindamassa. Við tiltekið hitastig hreyfast
 léttari sameindir að meðaltali hraðar en þyngri sameindir.
 
 <!-- SEG:m68758:para:fs-idm110634256 --> Nota má
-<!-- LINK:1 -->gasherminn<!-- /LINK --> til að skoða áhrif hitastigs á
+[gasherminn](http://openstax.org/l/16MolecVelocity) til að skoða áhrif hitastigs á
 sameindahraða. Skoðaðu „orkusúlurit“ hermisins (hraðadreifingar
 sameinda) og „upplýsingar um efni“ (sem gefur upp meðalhraða) fyrir
 sameindir með mismunandi massa við ýmis hitastig.
@@ -268,8 +268,177 @@ með því að auka hitastigið við stöðugt rúmmál.
 aukinn um stuðulinn 2.
 
 <!-- SEG:m68758:problem:fs-idm89452736 --> Hraðadreifing sameinda í
-helíumsýni er sýnd í <!-- XREF:8 -->. Ef sýnið er kælt, mun hraðadreifingin
+helíumsýni er sýnd í [#CNX_Chem_09_05_MolSpeed3]. Ef sýnið er kælt, mun hraðadreifingin
 líkjast meira dreifingu H~2~ eða H~2~O? Útskýrðu svarið.
 
 <!-- SEG:m68758:solution:fs-idm161469056 --> H~2~O. Kæling hægir á hraða
 He-atómanna, sem veldur því að þau hegða sér eins og þau væru þyngri.
+
+<!-- SEG:m68758:problem:fs-idm214348288 --> Hvert er hlutfall meðalhreyfiorku
+SO~2~-sameindar á móti O~2~-sameind í efnablöndu tveggja gasa? Hvert er
+hlutfall meðalferningsrótarhraða, *u*~rms~, gasanna tveggja?
+
+<!-- SEG:m68758:problem:fs-idm153083536 --> 1 lítra sýni af CO við
+staðalaðstæður er hitað í 546 K og rúmmál þess aukið í 2 lítra.
+
+<!-- SEG:m68758:problem:fs-idm216426960 --> (a) Hvaða áhrif hafa þessar
+breytingar á þrýstinginn sem gasið beitir?
+
+<!-- SEG:m68758:problem:fs-idm124781200 --> (b) Hver eru áhrifin á
+meðalhreyfiorku sameindanna?
+
+<!-- SEG:m68758:problem:fs-idm151776736 --> (c) Hver eru áhrifin á
+meðalferningsrótarhraða sameindanna?
+
+<!-- SEG:m68758:solution:fs-idm47263904 --> (a) Þrýstingur gassins helst
+óbreyttur. (b) Meðalhreyfiorkan tvöfaldast. (c)
+Meðalferningsrótarhraðinn eykst í \[\[MATH:4\]\] sinnum upphafsgildi
+sitt; *u*~rms~ er í réttu hlutfalli við \[\[MATH:5\]\]
+
+<!-- SEG:m68758:problem:fs-idm110524464 --> Meðalferningsrótarhraði
+H~2~-sameinda við 25 °C er um 1,6 km/s. Hver er meðalferningsrótarhraði
+N~2~-sameindar við 25 °C?
+
+<!-- SEG:m68758:problem:fs-idm161408528 --> Svaraðu eftirfarandi spurningum:
+
+<!-- SEG:m68758:problem:fs-idm184026432 --> (a) Er þrýstingur gassins í
+loftbelgnum sem sýndur er í upphafi þessa kafla meiri en, minni en eða
+jafn þrýstingi andrúmsloftsins fyrir utan belginn?
+
+<!-- SEG:m68758:problem:fs-idm277950240 --> (b) Er eðlismassi gassins í
+loftbelgnum sem sýndur er í upphafi þessa kafla meiri en, minni en eða
+jafn eðlismassa andrúmsloftsins fyrir utan belginn?
+
+<!-- SEG:m68758:problem:fs-idm184047024 --> (c) Við 1 atm þrýsting og 20 °C
+hitastig hefur þurrt loft eðlismassann 1,2256 g/L. Hver er
+(meðal)mólmassi þurrs lofts?
+
+<!-- SEG:m68758:problem:fs-idm205391088 --> (d) Meðalhitastig gassins í
+loftbelg er 1,30 \[\[MATH:6\]\] 10^2^ °F. Reiknaðu eðlismassa þess, að
+því gefnu að mólmassinn sé jafn mólmassa þurrs lofts.
+
+<!-- SEG:m68758:problem:fs-idm182287728 --> (e) Lyftigeta loftbelgs er jöfn
+mismuninum á massa kalda loftsins sem belgurinn ryður frá sér og massa
+gassins í belgnum. Hver er munurinn á massa 1,00 L af kalda loftinu í
+hluta (c) og heita loftinu í hluta (d)?
+
+<!-- SEG:m68758:problem:fs-idm79081968 --> (f) Meðalbelgur hefur 60 feta
+þvermál og 1,1 \[\[MATH:7\]\] 10^5^ ft^3^ rúmmál. Hver er lyftikraftur
+slíks belgs? Ef þyngd belgsins og búnaðar hans er 500 pund, hver er þá
+burðargeta hans fyrir farþega og farm?
+
+<!-- SEG:m68758:problem:fs-idm148488336 --> (g) Belgur ber 40,0 lítra af
+fljótandi própani (eðlismassi 0,5005 g/L). Hvaða rúmmál af CO~2~- og
+H~2~O-gasi myndast við bruna þessa própans við staðalaðstæður?
+
+<!-- SEG:m68758:problem:fs-idp4425184 --> (h) Loftbelgsflug getur staðið í um
+90 mínútur. Ef allt eldsneytið er brennt á þessum tíma, hver er þá
+áætlaður hraði varmataps (í kJ/mín) frá heita loftinu í pokanum meðan á
+fluginu stendur?
+
+<!-- SEG:m68758:solution:fs-idm120199952 --> (a) jafn; (b) minni en; (c)
+29,48 g mól^−1^; (d) 1,0966 g L^−1^; (e) 0,129 g/L; (f) 4,01
+\[\[MATH:8\]\] 10^5^ g; hrein lyftigeta = 384 lb; (g) 270 L; (h) 39,1 kJ
+mín^−1^
+
+<!-- SEG:m68758:problem:fs-idm156558944 --> Sýndu að hlutfall sveimhraða gass
+1 á móti sveimhraða gass 2, \[\[MATH:9\]\] er það sama við 0 °C og 100
+°C.
+
+<!-- SEG:m68758:glossary-term:fs-idm198763536-term --> hreyfifræðikenning
+sameinda
+
+<!-- SEG:m68758:glossary-def:fs-idm198763536-def --> kenning sem byggir á
+einföldum meginreglum og forsendum sem útskýra á áhrifaríkan hátt hegðun
+kjörgass
+
+<!-- SEG:m68758:glossary-term:fs-idm271276336-term -->
+meðalferningsrótarhraði (urms)
+
+<!-- SEG:m68758:glossary-def:fs-idm271276336-def --> mælikvarði á meðalhraða
+fyrir hóp einda, reiknaður sem kvaðratrót meðaltals kvaðrats hraðans
+
+
+<!-- SEG:m68758:problem:fs-idm214348288 --> Hvert er hlutfall meðalhreyfiorku
+SO~2~-sameindar á móti O~2~-sameind í efnablöndu tveggja gasa? Hvert er
+hlutfall meðalferningsrótarhraða, *u*~rms~, gasanna tveggja?
+
+<!-- SEG:m68758:problem:fs-idm153083536 --> 1 lítra sýni af CO við
+staðalaðstæður er hitað í 546 K og rúmmál þess aukið í 2 lítra.
+
+<!-- SEG:m68758:problem:fs-idm216426960 --> (a) Hvaða áhrif hafa þessar
+breytingar á þrýstinginn sem gasið beitir?
+
+<!-- SEG:m68758:problem:fs-idm124781200 --> (b) Hver eru áhrifin á
+meðalhreyfiorku sameindanna?
+
+<!-- SEG:m68758:problem:fs-idm151776736 --> (c) Hver eru áhrifin á
+meðalferningsrótarhraða sameindanna?
+
+<!-- SEG:m68758:solution:fs-idm47263904 --> (a) Þrýstingur gassins helst
+óbreyttur. (b) Meðalhreyfiorkan tvöfaldast. (c)
+Meðalferningsrótarhraðinn eykst í \[\[MATH:4\]\] sinnum upphafsgildi
+sitt; *u*~rms~ er í réttu hlutfalli við \[\[MATH:5\]\]
+
+<!-- SEG:m68758:problem:fs-idm110524464 --> Meðalferningsrótarhraði
+H~2~-sameinda við 25 °C er um 1,6 km/s. Hver er meðalferningsrótarhraði
+N~2~-sameindar við 25 °C?
+
+<!-- SEG:m68758:problem:fs-idm161408528 --> Svaraðu eftirfarandi spurningum:
+
+<!-- SEG:m68758:problem:fs-idm184026432 --> (a) Er þrýstingur gassins í
+loftbelgnum sem sýndur er í upphafi þessa kafla meiri en, minni en eða
+jafn þrýstingi andrúmsloftsins fyrir utan belginn?
+
+<!-- SEG:m68758:problem:fs-idm277950240 --> (b) Er eðlismassi gassins í
+loftbelgnum sem sýndur er í upphafi þessa kafla meiri en, minni en eða
+jafn eðlismassa andrúmsloftsins fyrir utan belginn?
+
+<!-- SEG:m68758:problem:fs-idm184047024 --> (c) Við 1 atm þrýsting og 20 °C
+hitastig hefur þurrt loft eðlismassann 1,2256 g/L. Hver er
+(meðal)mólmassi þurrs lofts?
+
+<!-- SEG:m68758:problem:fs-idm205391088 --> (d) Meðalhitastig gassins í
+loftbelg er 1,30 \[\[MATH:6\]\] 10^2^ °F. Reiknaðu eðlismassa þess, að
+því gefnu að mólmassinn sé jafn mólmassa þurrs lofts.
+
+<!-- SEG:m68758:problem:fs-idm182287728 --> (e) Lyftigeta loftbelgs er jöfn
+mismuninum á massa kalda loftsins sem belgurinn ryður frá sér og massa
+gassins í belgnum. Hver er munurinn á massa 1,00 L af kalda loftinu í
+hluta (c) og heita loftinu í hluta (d)?
+
+<!-- SEG:m68758:problem:fs-idm79081968 --> (f) Meðalbelgur hefur 60 feta
+þvermál og 1,1 \[\[MATH:7\]\] 10^5^ ft^3^ rúmmál. Hver er lyftikraftur
+slíks belgs? Ef þyngd belgsins og búnaðar hans er 500 pund, hver er þá
+burðargeta hans fyrir farþega og farm?
+
+<!-- SEG:m68758:problem:fs-idm148488336 --> (g) Belgur ber 40,0 lítra af
+fljótandi própani (eðlismassi 0,5005 g/L). Hvaða rúmmál af CO~2~- og
+H~2~O-gasi myndast við bruna þessa própans við staðalaðstæður?
+
+<!-- SEG:m68758:problem:fs-idp4425184 --> (h) Loftbelgsflug getur staðið í um
+90 mínútur. Ef allt eldsneytið er brennt á þessum tíma, hver er þá
+áætlaður hraði varmataps (í kJ/mín) frá heita loftinu í pokanum meðan á
+fluginu stendur?
+
+<!-- SEG:m68758:solution:fs-idm120199952 --> (a) jafn; (b) minni en; (c)
+29,48 g mól^−1^; (d) 1,0966 g L^−1^; (e) 0,129 g/L; (f) 4,01
+\[\[MATH:8\]\] 10^5^ g; hrein lyftigeta = 384 lb; (g) 270 L; (h) 39,1 kJ
+mín^−1^
+
+<!-- SEG:m68758:problem:fs-idm156558944 --> Sýndu að hlutfall sveimhraða gass
+1 á móti sveimhraða gass 2, \[\[MATH:9\]\] er það sama við 0 °C og 100
+°C.
+
+<!-- SEG:m68758:glossary-term:fs-idm198763536-term --> hreyfifræðikenning
+sameinda
+
+<!-- SEG:m68758:glossary-def:fs-idm198763536-def --> kenning sem byggir á
+einföldum meginreglum og forsendum sem útskýra á áhrifaríkan hátt hegðun
+kjörgass
+
+<!-- SEG:m68758:glossary-term:fs-idm271276336-term -->
+meðalferningsrótarhraði (urms)
+
+<!-- SEG:m68758:glossary-def:fs-idm271276336-def --> mælikvarði á meðalhraða
+fyrir hóp einda, reiknaður sem kvaðratrót meðaltals kvaðrats hraðans

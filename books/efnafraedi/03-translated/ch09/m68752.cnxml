@@ -112,7 +112,7 @@ hlutfallið milli fjölda móla af kolefni og fjölda móla af vetni. Í
 síðasta skrefinu sérðu að minnsta heiltöluhlutfallið er reynsluformúlan:</para>
 <equation id="fs-idm18588864" class="unnumbered"><m:math><m:mtext>85.7 g C</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol C</m:mtext></m:mrow><m:mrow><m:mtext>12.01 g C</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>7.136 mol C</m:mtext><m:mspace width="2em"/><m:mfrac><m:mrow><m:mn>7.136</m:mn></m:mrow><m:mrow><m:mn>7.136</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>1.00 mol C</m:mtext></m:math></equation>
 <equation id="fs-idm150258896" class="unnumbered"><m:math><m:mtext>14.3 g H</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 mol H</m:mtext></m:mrow><m:mrow><m:mtext>1.01 g H</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>14.158 mol H</m:mtext><m:mspace width="2em"/><m:mfrac><m:mrow><m:mn>14.158</m:mn></m:mrow><m:mrow><m:mn>7.136</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>1.98 mol H</m:mtext></m:math></equation>
-<para id="fs-idp144237600">Reynsluformúlan er CH<sub>2</sub>
+<para id="fs-idp144237600">Reynsluformúlan er CH~2~
 [reynslumassi (EM) 14,03 g/reynslueining].</para>
 <para id="fs-idp40237504">Næst skaltu nota uppgefin gildi fyrir
 massa, þrýsting, hitastig og rúmmál til að reikna út mólmassa gassins:</para>
@@ -131,7 +131,7 @@ reynsluformúluna. Ef 1,10 g af asetýleni tekur rúmmálið 1,00 L við 1,15
 atm og 59,5 °C, hver er þá sameindaformúla asetýlens?</para><note id="fs-idp130463408">
 <title>Answer:</title>
 <para id="fs-idm51491440">Reynsluformúla, CH; Sameindaformúla,
-C<sub>2</sub>H<sub>2</sub></para>
+C<sub>2</sub>H~2~</para>
 </note>
 </example>
 <example id="fs-idp207136496">
@@ -151,7 +151,7 @@ gassýninu leyft að þéttast í vökva og síðan er flaskan vegin til að
 </list>
 <!-- figure handled separately -->
 <para id="fs-idm10831984">Með þessari aðferð er sýni af
-klóróformgasi sem vegur 0,494 g safnað í flösku með rúmmálið 129 cm<sup>3</sup>
+klóróformgasi sem vegur 0,494 g safnað í flösku með rúmmálið 129 cm^3^
 við 99,6 °C þegar loftþrýstingur er 742,1 mm Hg. Hver er áætlaður
 mólmassi klóróforms?</para>
 <para id="fs-idp60723232"><title>Lausn</title>Þar sem <m:math><m:mrow><m:mtext>ℳ</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mi>m</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:math> og
@@ -159,11 +159,11 @@ mólmassi klóróforms?</para>
 <para id="fs-idp43964944">þá</para>
 <equation id="fs-idm11022240" class="unnumbered"><m:math><m:mrow><m:mtext>ℳ</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mi>m</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>0.494 g</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>0.08206 L·atm/mol K</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>372.8 K</m:mtext></m:mrow><m:mrow><m:mtext>0.976 atm</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>0.129 L</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>120</m:mn><m:mspace width="0.2em"/><m:mtext>g/mol</m:mtext><m:mo>.</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp146723968"><title>Prófaðu þekkingu þína</title>Sýni af fosfór sem vegur 3,243
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> g veldur þrýstingi upp á 31,89 kPa í 56,0 ml kúlu
+<m:math><m:mo>×</m:mo></m:math> 10^−2^ g veldur þrýstingi upp á 31,89 kPa í 56,0 ml kúlu
 við 550 °C. Hver er mólmassi og sameindaformúla fosfórgufu?</para>
 <note id="fs-idp108389616">
 <title>Answer:</title>
-<para id="fs-idm20201792">124 g/mól P<sub>4</sub></para>
+<para id="fs-idm20201792">124 g/mól P~4~</para>
 </note>
 </example>
 <figure id="CNX_Chem_09_03_liquidgas">
@@ -214,8 +214,8 @@ fjöldi móla allra efnishluta í efnablöndunni.</para>
 <example id="fs-idp143452448">
 <para id="fs-idp147731856"><title>Þrýstingur efnablöndu
 gasa</title>10,0 L ílát inniheldur 2,50
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> mól af H<sub>2</sub>, 1,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>−3</sup> mól af He
-og 3,00 <m:math><m:mo>×</m:mo></m:math> 10<sup>−4</sup> mól af Ne við 35 °C.</para>
+<m:math><m:mo>×</m:mo></m:math> 10^−3^ mól af H<sub>2</sub>, 1,00 <m:math><m:mo>×</m:mo></m:math> 10^−3^ mól af He
+og 3,00 <m:math><m:mo>×</m:mo></m:math> 10^−4^ mól af Ne við 35 °C.</para>
 <para id="fs-idp100506960">(a) Hver er hlutþrýstingur hvers
 gass?</para>
 <para id="fs-idp147676624">(b) Hver er heildarþrýstingurinn í
@@ -239,10 +239,10 @@ en það fjallar um útreikninga á mólhlutfalli.</para>
 <para id="fs-idp279668416"><title>Þrýstingur gasblöndu</title>Gasblanda sem notuð er við svæfingu
 inniheldur 2,83 mól af súrefni, O<sub>2</sub>, og 8,41 mól af glaðgasi, N<sub>2</sub>O.
 Heildarþrýstingur efnablöndunnar er 192 kPa.</para>
-<para id="fs-idp41662496">(a) Hvert er mólhlutfall O<sub>2</sub> og
-N<sub>2</sub>O?</para>
-<para id="fs-idp132439904">(b) Hver er hlutþrýstingur O<sub>2</sub> og
-N<sub>2</sub>O?</para>
+<para id="fs-idp41662496">(a) Hvert er mólhlutfall O~2<sub> og
+N</sub>2~O?</para>
+<para id="fs-idp132439904">(b) Hver er hlutþrýstingur O~2<sub> og
+N</sub>2~O?</para>
 <para id="fs-idp86077792"><title>Lausn</title>Mólhlutfallið er gefið með
 <m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mi>A</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mi>A</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub></m:mrow></m:mfrac></m:mrow></m:math> og hlutþrýstingurinn er <emphasis effect="italics">P<sub>A</sub></emphasis> = <emphasis effect="italics">X<sub>A</sub></emphasis> <m:math><m:mo>×</m:mo></m:math>
 <emphasis effect="italics">P<sub>heildar</sub></emphasis>.</para>
@@ -251,7 +251,7 @@ N<sub>2</sub>O?</para>
 <para id="fs-idp192169392">og <m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mi>O</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mi>O</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>P</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.252</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>192 kPa</m:mtext><m:mo>=</m:mo><m:mtext>48.4 kPa</m:mtext></m:mrow></m:math></para>
 <para id="fs-idp263870464">Fyrir N<sub>2</sub>O, <m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>Total</m:mi></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>8.41 mol</m:mtext></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>2.83</m:mn><m:mo>+</m:mo><m:mn>8.41</m:mn></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mtext>mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.748</m:mn></m:mrow></m:math></para>
 <para id="fs-idp259944368">og</para><para id="fs-idp66867744"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mi>X</m:mi><m:mrow><m:msub><m:mi>N</m:mi><m:mn>2</m:mn></m:msub><m:mi>O</m:mi></m:mrow></m:msub><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>P</m:mi><m:mrow><m:mi>Total</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mn>0.748</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>192 kPa</m:mtext><m:mo>=</m:mo><m:mtext>144 kPa</m:mtext></m:mrow></m:math></para><para id="fs-idm31767024"><title>Prófaðu þekkingu þína</title>Hver er þrýstingur efnablöndu af
-0,200 g af H<sub>2</sub>, 1,00 g af N<sub>2</sub> og 0,820 g af Ar í íláti með rúmmálið
+0,200 g af H<sub>2</sub>, 1,00 g af N~2~ og 0,820 g af Ar í íláti með rúmmálið
 2,00 L við 20 °C?</para>
 <note id="fs-idp69846704">
 <title>Answer:</title>
@@ -476,17 +476,17 @@ rúmmál af vetnisgasi til að framleiða tvöfalt það rúmmál af
 ammoníakgasi, ef þrýstingur og hitastig haldast óbreytt.</para>
 <para id="fs-idp16937680">Skýringin á þessu er sýnd í
 <link target-id="CNX_Chem_09_03_Ammonia"/>. Samkvæmt lögmáli Avogadros innihalda jöfn rúmmál af N<sub>2</sub>,
-H<sub>2</sub> og NH<sub>3</sub> í gasfasa, við sama hitastig og þrýsting, sama fjölda
-sameinda. Vegna þess að ein sameind af N<sub>2</sub> hvarfast við þrjár sameindir
-af H<sub>2</sub> til að framleiða tvær sameindir af NH<sub>3</sub>, er rúmmál H<sub>2</sub> sem
-þarf þrisvar sinnum meira en rúmmál N<sub>2</sub> og rúmmál NH<sub>3</sub> sem framleitt
+H~2<sub> og NH</sub>3~ í gasfasa, við sama hitastig og þrýsting, sama fjölda
+sameinda. Vegna þess að ein sameind af N~2~ hvarfast við þrjár sameindir
+af H~2~ til að framleiða tvær sameindir af NH<sub>3</sub>, er rúmmál H~2~ sem
+þarf þrisvar sinnum meira en rúmmál N~2<sub> og rúmmál NH</sub>3~ sem framleitt
 er er tvisvar sinnum meira en rúmmál N<sub>2</sub>.</para>
 <figure id="CNX_Chem_09_03_Ammonia">
 <media id="fs-idm7395552" alt="This diagram provided models of the chemical reaction written with formulas across the bottom of the figure. The reaction is written; N subscript 2 plus 3H subscript 2 followed by an arrow pointing right to NH subscript 3. Just above the formulas, space-filling models are provided. Above NH subscript 2, two blue spheres are bonded. Above 3H subscript 2, three pairs of two slightly smaller white spheres are bonded. Above NH subscript 3, two molecules are shown composed each of a central blue sphere to which three slightly smaller white spheres are bonded. Across the top of the diagram, the reaction is illustrated with balloons. To the left is a light blue balloon, which is labeled “N subscript 2”. This balloon contains a single space-filling model composed of two bonded blue spheres. This balloon is followed by a plus sign, then three grey balloons which are each labeled “H subscript 2.” Each of these balloons similarly contain a single space-filling model composed of two bonded white spheres. These white spheres are slightly smaller than the blue spheres. An arrow follows that points right to two light-green balloons, which are each labeled “2 NH subscript 3.” Each light-green balloon contains a space-filling model composed of a single central blue sphere to which three slightly smaller white spheres are bonded.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_Ammonia.jpg"/>
 </media>
 <caption>Eitt rúmmál af
-N<sub>2</sub> sameinast þremur rúmmálum af H<sub>2</sub> og myndar tvö rúmmál af NH<sub>3</sub>.</caption>
+N~2~ sameinast þremur rúmmálum af H~2~ og myndar tvö rúmmál af NH<sub>3</sub>.</caption>
 </figure>
 <example id="fs-idp89809920">
 <para id="fs-idp31720640"><title>Hvarf lofttegunda</title>Própan, C<sub>3</sub>H<sub>8</sub>(<emphasis effect="italics">g</emphasis>), er notað í
@@ -494,24 +494,24 @@ gasgrill til að sjá fyrir varma við eldun. Hvaða rúmmál af O<sub>2</sub>(<
 mælt við 25 °C og 760 torr þarf til að hvarfast við 2,7 L af própani
 mælt við sömu aðstæður hitastigs og þrýstings? Gerum ráð fyrir að
 própanið gangist undir fullkominn bruna.</para>
-<para id="fs-idp137922560"><title>Lausn</title>Hlutfall rúmmála C<sub>3</sub>H<sub>8</sub> og O<sub>2</sub>
+<para id="fs-idp137922560"><title>Lausn</title>Hlutfall rúmmála C<sub>3</sub>H~8<sub> og O</sub>2~
 verður jafnt hlutfalli stuðla þeirra í stilltri jöfnu fyrir hvarfið:</para>
 <equation id="fs-idp57291280" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mo stretchy="false">⟶</m:mo><m:mtext> </m:mtext><m:mtext> </m:mtext><m:mn>3</m:mn><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>l</m:mi><m:mo>)</m:mo></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>1 volume</m:mtext><m:mo>+</m:mo><m:mtext>5 volumes</m:mtext><m:mspace width="3.5em"/><m:mtext>3 volumes</m:mtext><m:mo>+</m:mo><m:mtext>4 volumes</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idp90728656">Af jöfnunni sjáum við að eitt rúmmál
-af C<sub>3</sub>H<sub>8</sub> mun hvarfast við fimm rúmmál af O<sub>2</sub>:</para>
+af C<sub>3</sub>H~8~ mun hvarfast við fimm rúmmál af O<sub>2</sub>:</para>
 <equation id="fs-idp8505312" class="unnumbered"><m:math><m:mrow><m:mn>2.7</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>5 L</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>C</m:mtext><m:mn>3</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>8</m:mn></m:msub></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>13.5 L</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
-<para id="fs-idp78474976">Rúmmál upp á 13,5 L af O<sub>2</sub> þarf til
+<para id="fs-idp78474976">Rúmmál upp á 13,5 L af O~2~ þarf til
 að hvarfast við 2,7 L af C<sub>3</sub>H<sub>8</sub>.</para>
 <para id="fs-idp109294464"><title>Prófaðu þekkingu þína</title>Asetýlenkútur fyrir
 súrefnis-asetýlen suðutæki gefur 9340 L af asetýlengasi, C<sub>2</sub>H<sub>2</sub>, við 0
 °C og 1 atm. Hversu marga súrefniskúta, sem hver gefur 7,00
-<m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> L af O<sub>2</sub> við 0 °C og 1 atm, þarf til að brenna
+<m:math><m:mo>×</m:mo></m:math> 10^3^ L af O~2~ við 0 °C og 1 atm, þarf til að brenna
 asetýleninu?</para>
 <equation id="fs-idp172649872" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>5</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>4</m:mn><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext></m:mrow></m:math></equation>
 <note id="fs-idm19557184">
 <title>Answer:</title>
 <para id="fs-idm79476592">3,34 kútar (2,34 <m:math><m:mo>×</m:mo></m:math>
-10<sup>4</sup> L)</para>
+10^4^ L)</para>
 </note>
 </example>
 <example id="fs-idp240638800">
@@ -522,19 +522,19 @@ milljarða rúmfeta af ammoníakgasi, mælt við 25 °C og 1 atm. Hvaða rúmmá
 af H<sub>2</sub>(<emphasis effect="italics">g</emphasis>), mælt við sömu aðstæður, þurfti til að undirbúa þetta magn
 af ammoníaki með hvarfi við N<sub>2</sub>?</para>
 <equation id="fs-idp109603280" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
-<para id="fs-idp212669488"><title>Lausn</title>Vegna þess að jöfn rúmmál af H<sub>2</sub> og
-NH<sub>3</sub> innihalda jafnan fjölda sameinda og hverjar þrjár sameindir af
-H<sub>2</sub> sem hvarfast framleiða tvær sameindir af NH<sub>3</sub>, verður hlutfall
-rúmmála H<sub>2</sub> og NH<sub>3</sub> jafnt og 3:2. Tvö rúmmál af NH<sub>3</sub>, í þessu
+<para id="fs-idp212669488"><title>Lausn</title>Vegna þess að jöfn rúmmál af H~2<sub> og
+NH</sub>3~ innihalda jafnan fjölda sameinda og hverjar þrjár sameindir af
+H~2~ sem hvarfast framleiða tvær sameindir af NH<sub>3</sub>, verður hlutfall
+rúmmála H~2<sub> og NH</sub>3~ jafnt og 3:2. Tvö rúmmál af NH<sub>3</sub>, í þessu
 tilfelli í einingum milljarða ft<sup>3</sup>, verða mynduð úr þremur rúmmálum af
 H<sub>2</sub>:</para>
 <equation id="fs-idp171418912" class="unnumbered"><m:math><m:mrow><m:mn>683</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>billion</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>ft</m:mtext></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>3 billion</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>ft</m:mtext></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>billion</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>ft</m:mtext></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>1.02</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>billion</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>ft</m:mtext></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></equation>
-<para id="fs-idp138098944">Framleiðsla á 683 milljörðum ft<sup>3</sup>
-af NH<sub>3</sub> krafðist 1020 milljarða ft<sup>3</sup> af H<sub>2</sub>. (Við 25 °C og 1 atm er
+<para id="fs-idp138098944">Framleiðsla á 683 milljörðum ft^3^
+af NH~3~ krafðist 1020 milljarða ft^3^ af H<sub>2</sub>. (Við 25 °C og 1 atm er
 þetta rúmmál tenings með brúnlengd um það bil 1,9 mílur.)</para>
 <para id="fs-idp37301360"><title>Kannaðu þekkingu þína</title>Hvert er rúmmál O<sub>2</sub>(<emphasis effect="italics">g</emphasis>) mælt við 25
 °C og 760 torr sem þarf til að hvarfast við 17,0 L af etýleni,
-C<sub>2</sub>H<sub>4</sub>(<emphasis effect="italics">g</emphasis>), mælt við sama hitastig og þrýsting? Myndefnin eru CO<sub>2</sub>
+C<sub>2</sub>H<sub>4</sub>(<emphasis effect="italics">g</emphasis>), mælt við sama hitastig og þrýsting? Myndefnin eru CO~2~
 og vatnsgufa.</para>
 <note id="fs-idp105257584">
 <title>Answer:</title>
@@ -555,12 +555,12 @@ hvarfefnis, Ga, í mól af framleiddu vetni:</para>
 vetnisgassins og kjörgasjöfnuna til að reikna út rúmmál gassins:</para>
 <equation id="fs-idp48121168" class="unnumbered"><m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>P</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>0.191</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>0.08206 L</m:mtext><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>atm</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>300 K</m:mtext></m:mrow><m:mrow><m:mn>0.951</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>4.94 L</m:mtext></m:math></equation>
 <para id="fs-idm17626704"><title>Kannaðu þekkingu þína</title>Brennisteinsdíoxíð er milliefni við
-framleiðslu á brennisteinssýru. Hvert er rúmmál SO<sub>2</sub> við 343 °C og 1,21
+framleiðslu á brennisteinssýru. Hvert er rúmmál SO~2~ við 343 °C og 1,21
 atm sem myndast við bruna á 1,00 kg af brennisteini í umframmagni af
 súrefni?</para>
 <note id="fs-idp30333040">
 <title>Answer:</title>
-<para id="fs-idm23787120">1,30 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> L</para>
+<para id="fs-idm23787120">1,30 <m:math><m:mo>×</m:mo></m:math> 10^3^ L</para>
 </note>
 </example>
 <note id="fs-idm13395728" class="chemistry sciences-interconnect">
@@ -592,18 +592,18 @@ magn gróðurhúsalofttegunda, hitar plánetuna og veldur öfgafyllri
 veðuratburðum.</caption>
 </figure>
 <para id="fs-idm12984240">Sterkar vísbendingar úr mörgum áttum
-benda til þess að hærra magn CO<sub>2</sub> í andrúmsloftinu sé af völdum
+benda til þess að hærra magn CO~2~ í andrúmsloftinu sé af völdum
 mannlegrar starfsemi, þar sem bruni jarðefnaeldsneytis stendur fyrir um
 <m:math><m:mrow><m:mfrac><m:mn>3</m:mn><m:mn>4</m:mn></m:mfrac></m:mrow></m:math> af nýlegri aukningu á CO<sub>2</sub>. Áreiðanleg gögn úr
-ískjörnum sýna að styrkur CO<sub>2</sub> í andrúmsloftinu er sá hæsti síðastliðin
+ískjörnum sýna að styrkur CO~2~ í andrúmsloftinu er sá hæsti síðastliðin
 800.000 ár; aðrar vísbendingar benda til þess að hann gæti verið sá
-hæsti í 20 milljónir ára. Á undanförnum árum hefur styrkur CO<sub>2</sub> aukist
-úr ~280 ppm fyrir iðnbyltingu í meira en 400 ppm í dag (<link target-id="CNX_Chem_09_03_GlobalWarming2"/>).</para>
+hæsti í 20 milljónir ára. Á undanförnum árum hefur styrkur CO~2<sub> aukist
+úr </sub>280 ppm fyrir iðnbyltingu í meira en 400 ppm í dag (<link target-id="CNX_Chem_09_03_GlobalWarming2"/>).</para>
 <figure id="CNX_Chem_09_03_GlobalWarming2">
 <media id="fs-idp99125712" alt="This figure has the heading “Carbon Dioxide in the Atmosphere.” The first graph has a horizontal axis label “Year ( B C )” and a vertical axis label “Carbon dioxide concentration ( p p m ).” The horizontal axis labels begin at 700,000 on the left and increases by multiples of 100,000 up to 0 on the right. The vertical axis begins at 0 and increases by multiples of 50 extending up to 400. A jagged, cyclical pattern is shown that begins before 600,000 B C at under 200 p p m. Up to 0 B C values appear to vary cyclically up to a high of about 300 p p m. Extending beyond 0 B C to the right, the carbon dioxide concentration appears to be on a steady increase, having reached nearly 400 p p m in recent years. The second graph is shown to magnify the portion of the graph that is most recent. This graph begins just before the year 1960 and includes markings for multiples of 10 up to the year 2010. The vertical axis begins just below 320 p p m and includes markings for all multiples of 20 up to 400 p p m. A smooth black line is shown extending through a jagged red data pattern. The trend is a steady, nearly linear increase from the lower left to the upper right on the graph.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_GlobalWarming2.jpg"/>
 </media>
-<caption>Magn CO<sub>2</sub>
+<caption>Magn CO~2~
 síðastliðin 700.000 ár var venjulega á bilinu 200–300 ppm, með brattri,
 fordæmalausri aukningu síðustu 50 árin.</caption>
 </figure>
@@ -661,9 +661,9 @@ eða afurðir.</para>
 <tgroup cols="1"><colspec colnum="1" colname="c1"/>
 <tbody>
 <row><entry><emphasis effect="italics">P<sub>Heildar</sub></emphasis> = <emphasis effect="italics">P<sub>A</sub></emphasis> + <emphasis effect="italics">P<sub>B</sub></emphasis> + <emphasis effect="italics">P<sub>C</sub></emphasis> +
-… = Σ<sub>i</sub><emphasis effect="italics">P</emphasis><sub>i</sub></entry>
+… = Σ<sub>i</sub><emphasis effect="italics">P</emphasis>~i~</entry>
 </row>
-<row><entry><emphasis effect="italics">P<sub>A</sub></emphasis> = <emphasis effect="italics">X<sub>A</sub> P<sub>Heildar</sub></emphasis></entry>
+<row><entry><emphasis effect="italics">P<sub>A</sub></emphasis> = <emphasis effect="italics">X~A<sub> P</sub>Heildar~</emphasis></entry>
 </row>
 <row><entry><m:math><m:mrow><m:msub><m:mi>X</m:mi><m:mi>A</m:mi></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>n</m:mi><m:mi>A</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mrow><m:mi>T</m:mi><m:mi>o</m:mi><m:mi>t</m:mi><m:mi>a</m:mi><m:mi>l</m:mi></m:mrow></m:msub></m:mrow></m:mfrac></m:mrow></m:math></entry>
 </row>
@@ -686,7 +686,7 @@ tvíniturmónoxíðs, N<sub>2</sub>O, við 325 K hitastig og 113,0 kPa þrýstin
 CF<sub>2</sub>Cl<sub>2</sub>, við 30,0 °C og 0,954 atm.</para>
 </problem>
 <solution id="fs-idp667024">
-<para id="fs-idp37436384">4,64 g L<sup>−1</sup></para>
+<para id="fs-idp37436384">4,64 g L^−1^</para>
 </solution>
 </exercise>
 <exercise id="fs-idp50300640">
@@ -718,7 +718,7 @@ af gasinu tekur 0,100 L rúmmál við 26 °C hitastig og 307 torr þrýsting?</p
 af gasinu tekur 125 ml rúmmál við 126 °C hitastig og 777 torr þrýsting?</para>
 </problem>
 <solution id="fs-idp90399712">
-<para id="fs-idm11097808">72,0 g mól<sup>−1</sup></para>
+<para id="fs-idm11097808">72,0 g mól^−1^</para>
 </solution>
 </exercise>
 <exercise id="fs-idp39361600">
@@ -734,7 +734,7 @@ flúoríðs fosfórs er 3,93 g/L við staðalaðstæður. Reiknaðu mólmassa þ
 flúoríðs og ákvarðaðu sameindaformúlu þess.</para>
 </problem>
 <solution id="fs-idp75742256">
-<para id="fs-idp56724176">88,1 g mól<sup>−1</sup>; PF<sub>3</sub></para>
+<para id="fs-idp56724176">88,1 g mól<sup>−1</sup>; PF~3~</para>
 </solution>
 </exercise>
 <exercise id="fs-idm10841488">
@@ -752,7 +752,7 @@ nauðsynleg til að svara spurningunni.</para>
 <problem id="fs-idp13701680">
 <para id="fs-idp96863072">36,0 L gaskútur, sem er notaður
 til að kvarða blóðgasgreiningartæki á rannsóknarstofum, inniheldur 350 g
-af CO<sub>2</sub>, 805 g af O<sub>2</sub> og 4.880 g af N<sub>2</sub>. Hver er þrýstingurinn í
+af CO<sub>2</sub>, 805 g af O~2~ og 4.880 g af N<sub>2</sub>. Hver er þrýstingurinn í
 kútnum í andrúmsloftum við 25 gráður á Celsíus?</para></problem>
 <solution id="fs-idp132323280">
 <para id="fs-idm1704032">141 atm, 107.000 torr, 14.300 kPa</para></solution>
@@ -761,7 +761,7 @@ kútnum í andrúmsloftum við 25 gráður á Celsíus?</para></problem>
 <problem id="fs-idp198510832">
 <para id="fs-idp198511088">Gaskútur með efnablöndu, sem er
 notaður til að kvarða blóðgasgreiningartæki á rannsóknarstofum,
-inniheldur 5,0% CO<sub>2</sub>, 12,0% O<sub>2</sub> og afganginn N<sub>2</sub> við heildarþrýsting
+inniheldur 5,0% CO<sub>2</sub>, 12,0% O~2<sub> og afganginn N</sub>2~ við heildarþrýsting
 upp á 146 atm. Hver er hlutþrýstingur hvers efnisþáttar í þessu gasi?
 (Prósentutölurnar sem gefnar eru upp gefa til kynna þann hluta
 heildarþrýstingsins sem stafar af hverjum efnisþætti.)</para>
@@ -770,8 +770,8 @@ heildarþrýstingsins sem stafar af hverjum efnisþætti.)</para>
 <exercise id="fs-idp207682832">
 <problem id="fs-idp207683088">
 <para id="fs-idp1788992">Gassýni sem einangrað var úr
-óhreinsaðri jarðolíu inniheldur 90,0% CH<sub>4</sub>, 8,9% C<sub>2</sub>H<sub>6</sub> og 1,1%
-C<sub>3</sub>H<sub>8</sub> við heildarþrýsting upp á 307,2 kPa. Hver er hlutþrýstingur
+óhreinsaðri jarðolíu inniheldur 90,0% CH<sub>4</sub>, 8,9% C<sub>2</sub>H~6<sub> og 1,1%
+C</sub>3<sub>H</sub>8~ við heildarþrýsting upp á 307,2 kPa. Hver er hlutþrýstingur
 hvers efnisþáttar í þessu gasi? (Prósentutölurnar sem gefnar eru upp
 gefa til kynna þann hluta heildarþrýstingsins sem stafar af hverjum
 efnisþætti.)</para>
@@ -784,7 +784,7 @@ C<sub>3</sub>H<sub>8</sub>: 3,4 kPa</para>
 <exercise id="fs-idp19919472">
 <problem id="fs-idp108398688">
 <para id="fs-idp108398944">Efnablanda með 0,200 g af H<sub>2</sub>,
-1,00 g af N<sub>2</sub> og 0,820 g af Ar er geymd í lokuðu íláti við
+1,00 g af N~2~ og 0,820 g af Ar er geymd í lokuðu íláti við
 staðalaðstæður (STP). Finndu rúmmál ílátsins, að því gefnu að gösin
 hegði sér eins og kjörgas.</para>
 </problem>
@@ -793,7 +793,7 @@ hegði sér eins og kjörgas.</para>
 <problem id="fs-idp164624896">
 <para id="fs-idp164625152">Flestar efnablöndur vetnisgass og
 súrefnisgass eru sprengifimar. Efnablanda sem inniheldur minna en 3,0%
-O<sub>2</sub> er það þó ekki. Ef nægu O<sub>2</sub> er bætt við vetniskút við 33,2 atm til
+O~2~ er það þó ekki. Ef nægu O~2~ er bætt við vetniskút við 33,2 atm til
 að heildarþrýstingurinn verði 34,5 atm, er efnablandan þá sprengifim?</para>
 </problem>
 <solution id="fs-idp18559504">
@@ -804,7 +804,7 @@ að heildarþrýstingurinn verði 34,5 atm, er efnablandan þá sprengifim?</par
 <problem id="fs-idp48834848">
 <para id="fs-idp48835104">Kvikasilfursgufugreiningartæki í
 atvinnuskyni getur greint styrk kvikasilfursatóma (sem eru eitruð) í
-lofti allt niður í 2 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> mg/L af lofti. Hver er
+lofti allt niður í 2 <m:math><m:mo>×</m:mo></m:math> 10^−6^ mg/L af lofti. Hver er
 hlutþrýstingur kvikasilfursgass við þennan styrk ef loftþrýstingurinn er
 733 torr við 26 °C?</para>
 </problem>
@@ -834,14 +834,14 @@ gassins var 0,472 g. Hver var mólmassi gassins?</para>
 að búa til hreint súrefni með því að hita kvikasilfursoxíð, HgO:
 <m:math><m:mrow><m:mn>2</m:mn><m:mtext>HgO</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>Hg</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>l</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp73629408">(a) Lýstu þeim skrefum sem eru
-nauðsynleg til að svara eftirfarandi spurningu: Hvert er rúmmál O<sub>2</sub> við
+nauðsynleg til að svara eftirfarandi spurningu: Hvert er rúmmál O~2~ við
 23 °C og 0,975 atm sem myndast við niðurbrot 5,36 g af HgO?</para>
 <para id="fs-idm98106000">(b) Svaraðu spurningunni.</para>
 </problem>
 <solution id="fs-idp156140288">
 <para id="fs-idm479696">(a) Ákvarðaðu mólfjölda HgO sem
-brotnar niður; notaðu efnajöfnuna til að ákvarða mólfjölda O<sub>2</sub> sem
-myndast við niðurbrot þessa magns af HgO; og ákvarðaðu rúmmál O<sub>2</sub> út
+brotnar niður; notaðu efnajöfnuna til að ákvarða mólfjölda O~2~ sem
+myndast við niðurbrot þessa magns af HgO; og ákvarðaðu rúmmál O~2~ út
 frá mólfjölda O<sub>2</sub>, hitastigi og þrýstingi. (b) 0,308 L</para>
 </solution>
 </exercise>
@@ -851,7 +851,7 @@ frá mólfjölda O<sub>2</sub>, hitastigi og þrýstingi. (b) 0,308 L</para>
 með nýstárlegri aðferð þar sem gufu var veitt í gegnum glóandi heitt
 byssuhlaup: <m:math><m:mrow><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow><m:mo>+</m:mo><m:mn>3</m:mn><m:mtext>Fe</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>s</m:mi><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>Fe</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>s</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></para>
 <para id="fs-idp86341120">(a) Lýstu þeim skrefum sem eru
-nauðsynleg til að svara eftirfarandi spurningu: Hvert er rúmmál H<sub>2</sub> við
+nauðsynleg til að svara eftirfarandi spurningu: Hvert er rúmmál H~2~ við
 þrýsting upp á 745 torr og hitastig 20 °C sem hægt er að búa til úr
 hvarfi 15,0 g af H<sub>2</sub>O?</para>
 <para id="fs-idp45810384">(b) Svaraðu spurningunni.</para>
@@ -860,19 +860,19 @@ hvarfi 15,0 g af H<sub>2</sub>O?</para>
 <exercise id="fs-idp39473616">
 <problem id="fs-idp98992032">
 <para id="fs-idp98992288">Hægt er að endurvinna
-klórflúorkolefnið CCl<sub>2</sub>F<sub>2</sub> í annað efnasamband með hvarfi við vetni
+klórflúorkolefnið CCl<sub>2</sub>F~2~ í annað efnasamband með hvarfi við vetni
 til að framleiða CH<sub>2</sub>F<sub>2</sub>(<emphasis effect="italics">g</emphasis>), efnasamband sem er gagnlegt í
 efnaframleiðslu: <m:math><m:mrow><m:msub><m:mrow><m:mtext>CCl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>4</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:msub><m:mtext>F</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:mtext>HCl</m:mtext><m:mrow><m:mo>(</m:mo><m:mi>g</m:mi><m:mo>)</m:mo></m:mrow></m:mrow></m:math></para><para id="fs-idp144355856">(a) Lýstu í grófum dráttum
 skrefunum sem eru nauðsynleg til að svara eftirfarandi spurningu: Hvaða
 rúmmál af vetni við 225 atm og 35,5 °C þyrfti til að hvarfast við 1 tonn
-(1,000 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> kg) af CCl<sub>2</sub>F<sub>2</sub>?</para>
+(1,000 <m:math><m:mo>×</m:mo></m:math> 10^3^ kg) af CCl<sub>2</sub>F<sub>2</sub>?</para>
 <para id="fs-idp69374608">(b) Svaraðu spurningunni.</para>
 </problem>
 <solution id="fs-idp75359296">
 <para id="fs-idp75561072">(a) Ákvarðaðu mólmassa
-CCl<sub>2</sub>F<sub>2</sub>. Út frá stilltri jöfnu, reiknaðu mól H<sub>2</sub> sem þarf fyrir
-fullkomið hvarf. Út frá kjörgaslögmálinu, umbreyttu mólum H<sub>2</sub> í rúmmál.
-(b) 3,72 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> L</para>
+CCl<sub>2</sub>F<sub>2</sub>. Út frá stilltri jöfnu, reiknaðu mól H~2~ sem þarf fyrir
+fullkomið hvarf. Út frá kjörgaslögmálinu, umbreyttu mólum H~2~ í rúmmál.
+(b) 3,72 <m:math><m:mo>×</m:mo></m:math> 10^3^ L</para>
 </solution>
 </exercise>
 <exercise id="fs-idp152416544">
@@ -891,12 +891,12 @@ myndefnið.</para>
 <para id="fs-idp114235888">(a) Lýstu í grófum dráttum
 skrefunum sem eru nauðsynleg til að svara eftirfarandi spurningu: Hvaða
 rúmmál af koldíoxíði við 875 K og 0,966 atm myndast við niðurbrot á 1
-tonni (1,000 <m:math><m:mo>×</m:mo></m:math> 10<sup>3</sup> kg) af kalsíumkarbónati?</para><para id="fs-idm7280816">(b) Svaraðu spurningunni.</para>
+tonni (1,000 <m:math><m:mo>×</m:mo></m:math> 10^3^ kg) af kalsíumkarbónati?</para><para id="fs-idm7280816">(b) Svaraðu spurningunni.</para>
 </problem>
 <solution id="fs-idp105094464">
 <para id="fs-idp105094720">(a) Stilltu jöfnuna. Ákvarðaðu
-grömm af CO<sub>2</sub> sem myndast og fjölda móla. Út frá kjörgaslögmálinu,
-ákvarðaðu rúmmál gassins. (b) 7,43 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> L</para>
+grömm af CO~2~ sem myndast og fjölda móla. Út frá kjörgaslögmálinu,
+ákvarðaðu rúmmál gassins. (b) 7,43 <m:math><m:mo>×</m:mo></m:math> 10^5^ L</para>
 </solution>
 </exercise>
 <exercise id="fs-idp228232112">
@@ -909,8 +909,8 @@ sömu lampar notaðir af sumum hellakönnuðum og kalsíumkarbíð er notað til
 að framleiða asetýlen fyrir karbíðbyssur.</para>
 <para id="fs-idp156883024">(a) Lýstu í grófum dráttum
 skrefunum sem eru nauðsynleg til að svara eftirfarandi spurningu: Hvaða
-rúmmál af C<sub>2</sub>H<sub>2</sub> við 1,005 atm og 12,2 °C myndast við hvarf 15,48 g af
-CaC<sub>2</sub> við vatn?</para>
+rúmmál af C<sub>2</sub>H~2~ við 1,005 atm og 12,2 °C myndast við hvarf 15,48 g af
+CaC~2~ við vatn?</para>
 <para id="fs-idm16186128">(b) Svaraðu spurningunni.</para>
 </problem>
 </exercise>
@@ -918,7 +918,7 @@ CaC<sub>2</sub> við vatn?</para>
 <problem id="fs-idp197293904">
 <para id="fs-idp197294160">Reiknaðu rúmmál súrefnis sem þarf
 til að brenna 12,00 L af etangasi, C<sub>2</sub>H<sub>6</sub>, til að framleiða koldíoxíð
-og vatn, ef rúmmál C<sub>2</sub>H<sub>6</sub> og O<sub>2</sub> eru mæld við sömu aðstæður hitastigs
+og vatn, ef rúmmál C<sub>2</sub>H~6<sub> og O</sub>2~ eru mæld við sömu aðstæður hitastigs
 og þrýstings.</para>
 </problem>
 <solution id="fs-idp279660320">
@@ -927,9 +927,9 @@ og þrýstings.</para>
 </exercise>
 <exercise id="fs-idp88428400">
 <problem id="fs-idp88428656">
-<para id="fs-idp85524496">Hvaða rúmmál af O<sub>2</sub> við
+<para id="fs-idp85524496">Hvaða rúmmál af O~2~ við
 staðalaðstæður þarf til að oxa 8,0 L af NO við staðalaðstæður í NO<sub>2</sub>?
-Hvaða rúmmál af NO<sub>2</sub> myndast við staðalaðstæður?</para>
+Hvaða rúmmál af NO~2~ myndast við staðalaðstæður?</para>
 </problem>
 </exercise>
 <exercise id="fs-idp259668928">
@@ -957,17 +957,17 @@ lokarúmmálsins.</para>
 <exercise id="fs-idp41440272">
 <problem id="fs-idp41440528">
 <para id="fs-idp41440784">Hvaða rúmmál af súrefni við 423,0
-K og þrýsting upp á 127,4 kPa myndast við niðurbrot á 129,7 g af BaO<sub>2</sub>
-í BaO og O<sub>2</sub>?</para>
+K og þrýsting upp á 127,4 kPa myndast við niðurbrot á 129,7 g af BaO~2<sub>
+í BaO og O</sub>2~?</para>
 </problem>
 <solution id="fs-idp78204896">
-<para id="fs-idp78205152">10.57 L O<sub>2</sub></para>
+<para id="fs-idp78205152">10.57 L O~2~</para>
 </solution>
 </exercise>
 <exercise id="fs-idp86448160">
 <problem id="fs-idp86448416">
 <para id="fs-idp39928096">2,50 L sýni af litlausu gasi við
-staðalaðstæður brotnaði niður í 2,50 L af N<sub>2</sub> og 1,25 L af O<sub>2</sub> við
+staðalaðstæður brotnaði niður í 2,50 L af N~2<sub> og 1,25 L af O</sub>2~ við
 staðalaðstæður. Hvaða litlausa gas er þetta?</para>
 </problem>
 </exercise>
@@ -981,7 +981,7 @@ staðalaðstæður þarf til að framleiða 1,000 tonn (1000 kg) af etanóli ef
 heildarheimtur etanóls eru 90,1%?</para>
 </problem>
 <solution id="fs-idp64802096">
-<para id="fs-idp64802352">5,40 <m:math><m:mo>×</m:mo></m:math> 10<sup>5</sup> L</para>
+<para id="fs-idp64802352">5,40 <m:math><m:mo>×</m:mo></m:math> 10^5^ L</para>
 </solution>
 </exercise>
 <exercise id="fs-idp55931680">
@@ -1004,16 +1004,16 @@ sýninu? (Athugið: Xenónflúoríð innihalda aðeins eitt xenónatóm á hverj
 sameind.)</para>
 </problem>
 <solution id="fs-idp156247952">
-<para id="fs-idp86394000">XeF<sub>4</sub></para></solution>
+<para id="fs-idp86394000">XeF~4~</para></solution>
 </exercise>
 <exercise id="fs-idp224745536">
 <problem id="fs-idp224745792">
 <para id="fs-idp224746048">Ein aðferð til að greina
 amínósýrur er van Slyke-aðferðin. Einkennandi amínóhópar (−NH<sub>2</sub>) í
 prótínefni fá að hvarfast við saltpéturssýrling, HNO<sub>2</sub>, til að mynda
-N<sub>2</sub> gas. Út frá rúmmáli gassins er hægt að ákvarða magn amínósýru.
+N~2~ gas. Út frá rúmmáli gassins er hægt að ákvarða magn amínósýru.
 0,0604 g sýni af lífsýni sem innihélt glýsín, CH<sub>2</sub>(NH<sub>2</sub>)COOH, var
-greint með van Slyke-aðferðinni og gaf 3,70 ml af N<sub>2</sub> sem safnað var
+greint með van Slyke-aðferðinni og gaf 3,70 ml af N~2~ sem safnað var
 yfir vatni við þrýsting upp á 735 torr og 29 °C. Hvert var hlutfall
 glýsíns í sýninu? <m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo>+</m:mo><m:msub><m:mrow><m:mtext>HNO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>OH</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mtext>H</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:math></para>
 </problem>
