@@ -12,7 +12,7 @@
  * - Table markdown is restored from sidecar JSON
  */
 
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
@@ -33,26 +33,26 @@ function restoreStrings(chapterDir, { dryRun = false, verbose = false } = {}) {
   if (!fs.existsSync(scriptPath)) {
     return {
       success: false,
-      error: `restore-strings.js not found at ${scriptPath}`
+      error: `restore-strings.js not found at ${scriptPath}`,
     };
   }
 
   if (!fs.existsSync(chapterDir)) {
     return {
       success: false,
-      error: `Chapter directory not found: ${chapterDir}`
+      error: `Chapter directory not found: ${chapterDir}`,
     };
   }
 
   try {
-    const args = ['--batch', chapterDir];
+    const args = [scriptPath, '--batch', chapterDir];
     if (dryRun) args.push('--dry-run');
     if (verbose) args.push('--verbose');
 
-    const result = execSync(`node "${scriptPath}" ${args.join(' ')}`, {
+    const result = execFileSync('node', args, {
       encoding: 'utf-8',
       cwd: path.join(__dirname, '..', '..'),
-      stdio: ['pipe', 'pipe', 'pipe']
+      stdio: ['pipe', 'pipe', 'pipe'],
     });
 
     // Parse output to extract statistics
@@ -64,7 +64,7 @@ function restoreStrings(chapterDir, { dryRun = false, verbose = false } = {}) {
       filesUpdated: updatesMatch ? parseInt(updatesMatch[1], 10) : 0,
       totalUpdates: totalMatch ? parseInt(totalMatch[1], 10) : 0,
       output: result,
-      dryRun
+      dryRun,
     };
   } catch (err) {
     // execSync throws on non-zero exit code
@@ -75,7 +75,7 @@ function restoreStrings(chapterDir, { dryRun = false, verbose = false } = {}) {
       success: false,
       error: err.message,
       output,
-      stderr
+      stderr,
     };
   }
 }
@@ -94,26 +94,26 @@ function restoreTables(chapterDir, { dryRun = false, verbose = false } = {}) {
   if (!fs.existsSync(scriptPath)) {
     return {
       success: false,
-      error: `restore-tables.js not found at ${scriptPath}`
+      error: `restore-tables.js not found at ${scriptPath}`,
     };
   }
 
   if (!fs.existsSync(chapterDir)) {
     return {
       success: false,
-      error: `Chapter directory not found: ${chapterDir}`
+      error: `Chapter directory not found: ${chapterDir}`,
     };
   }
 
   try {
-    const args = ['--batch', chapterDir];
+    const args = [scriptPath, '--batch', chapterDir];
     if (dryRun) args.push('--dry-run');
     if (verbose) args.push('--verbose');
 
-    const result = execSync(`node "${scriptPath}" ${args.join(' ')}`, {
+    const result = execFileSync('node', args, {
       encoding: 'utf-8',
       cwd: path.join(__dirname, '..', '..'),
-      stdio: ['pipe', 'pipe', 'pipe']
+      stdio: ['pipe', 'pipe', 'pipe'],
     });
 
     // Parse output to extract statistics
@@ -125,7 +125,7 @@ function restoreTables(chapterDir, { dryRun = false, verbose = false } = {}) {
       filesRestored: restoredMatch ? parseInt(restoredMatch[1], 10) : 0,
       totalTables: tablesMatch ? parseInt(tablesMatch[1], 10) : 0,
       output: result,
-      dryRun
+      dryRun,
     };
   } catch (err) {
     const output = err.stdout ? err.stdout.toString() : '';
@@ -135,7 +135,7 @@ function restoreTables(chapterDir, { dryRun = false, verbose = false } = {}) {
       success: false,
       error: err.message,
       output,
-      stderr
+      stderr,
     };
   }
 }
@@ -162,7 +162,7 @@ function runMtRestoration(bookSlug, chapterNum, { dryRun = false, verbose = fals
       success: false,
       error: `MT output directory not found: ${chapterDir}`,
       stringsResult: null,
-      tablesResult: null
+      tablesResult: null,
     };
   }
 
@@ -182,14 +182,14 @@ function runMtRestoration(bookSlug, chapterNum, { dryRun = false, verbose = fals
     tablesResult,
     summary: {
       stringsUpdated: stringsResult.totalUpdates || 0,
-      tablesRestored: tablesResult.totalTables || 0
+      tablesRestored: tablesResult.totalTables || 0,
     },
-    dryRun
+    dryRun,
   };
 }
 
 module.exports = {
   restoreStrings,
   restoreTables,
-  runMtRestoration
+  runMtRestoration,
 };

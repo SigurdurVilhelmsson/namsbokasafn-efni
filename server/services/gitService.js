@@ -5,7 +5,7 @@
  * Admin-only feature that allows committing generated files to GitHub.
  */
 
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
@@ -17,39 +17,39 @@ const STEP_CONFIG = {
   source: {
     folder: '02-for-mt',
     patterns: ['*.en.md', '*-equations.json', '*-figures.json', '*-strings.en.md'],
-    excludePattern: /\([a-z]\)\./,  // Exclude split files like 1-1(a).en.md
-    label: 'EN Markdown undirbúningur'
+    excludePattern: /\([a-z]\)\./, // Exclude split files like 1-1(a).en.md
+    label: 'EN Markdown undirbúningur',
   },
   'mt-upload': {
     folder: '02-mt-output',
     patterns: ['*.is.md'],
-    excludePattern: /\([a-z]\)\./,  // Exclude split files
-    label: 'Vélþýðing'
+    excludePattern: /\([a-z]\)\./, // Exclude split files
+    label: 'Vélþýðing',
   },
   'faithful-edit': {
     folder: '03-faithful',
     patterns: ['*.is.md'],
     excludePattern: null,
-    label: 'Trú þýðing'
+    label: 'Trú þýðing',
   },
   'tm-creation': {
     folder: 'tm',
     patterns: ['*.tmx'],
     excludePattern: null,
-    label: 'Þýðingaminni'
+    label: 'Þýðingaminni',
   },
   localization: {
     folder: '04-localized',
     patterns: ['*.is.md'],
     excludePattern: null,
-    label: 'Staðfærsla'
+    label: 'Staðfærsla',
   },
   finalize: {
     folder: '05-publication',
     patterns: ['*'],
     excludePattern: null,
-    label: 'Útgáfa'
-  }
+    label: 'Útgáfa',
+  },
 };
 
 // Files and directories that should never be committed
@@ -59,7 +59,7 @@ const NEVER_COMMIT = [
   '*.bak',
   'node_modules',
   'pipeline-output',
-  '.DS_Store'
+  '.DS_Store',
 ];
 
 /**
@@ -102,7 +102,7 @@ function getFilesToCommit(bookSlug, chapter, stepId) {
       files: [],
       excluded: [],
       folder: relativePath,
-      error: 'Directory does not exist'
+      error: 'Directory does not exist',
     };
   }
 
@@ -121,7 +121,7 @@ function getFilesToCommit(bookSlug, chapter, stepId) {
         excluded.push({
           path: relPath,
           filename,
-          reason: 'Split file (excluded)'
+          reason: 'Split file (excluded)',
         });
         continue;
       }
@@ -129,14 +129,16 @@ function getFilesToCommit(bookSlug, chapter, stepId) {
       // Check never-commit patterns
       let shouldExclude = false;
       for (const pattern of NEVER_COMMIT) {
-        if (glob.sync(filePath, { nocase: true, matchBase: true }).length > 0 &&
-            (filename.match(new RegExp(pattern.replace('*', '.*'))) ||
-             filePath.includes(pattern.replace('*', '')))) {
+        if (
+          glob.sync(filePath, { nocase: true, matchBase: true }).length > 0 &&
+          (filename.match(new RegExp(pattern.replace('*', '.*'))) ||
+            filePath.includes(pattern.replace('*', '')))
+        ) {
           shouldExclude = true;
           excluded.push({
             path: relPath,
             filename,
-            reason: 'Security exclusion'
+            reason: 'Security exclusion',
           });
           break;
         }
@@ -148,7 +150,7 @@ function getFilesToCommit(bookSlug, chapter, stepId) {
           path: relPath,
           filename,
           size: stat.size,
-          modified: stat.mtime.toISOString()
+          modified: stat.mtime.toISOString(),
         });
       }
     }
@@ -158,7 +160,7 @@ function getFilesToCommit(bookSlug, chapter, stepId) {
     files,
     excluded,
     folder: relativePath,
-    stepLabel: config.label
+    stepLabel: config.label,
   };
 }
 
@@ -179,23 +181,21 @@ function previewChanges(bookSlug, chapter, stepId) {
       excluded,
       folder,
       stepLabel,
-      message: 'No files found to commit'
+      message: 'No files found to commit',
     };
   }
 
   // Get git status for these specific files
-  const filePaths = files.map(f => f.path);
-
   try {
     // Check git status
-    const statusOutput = execSync('git status --porcelain', {
+    const statusOutput = execFileSync('git', ['status', '--porcelain'], {
       cwd: PROJECT_ROOT,
-      encoding: 'utf-8'
+      encoding: 'utf-8',
     });
 
-    const statusLines = statusOutput.split('\n').filter(l => l.trim());
-    const filesWithStatus = files.map(file => {
-      const statusLine = statusLines.find(l => l.includes(file.path));
+    const statusLines = statusOutput.split('\n').filter((l) => l.trim());
+    const filesWithStatus = files.map((file) => {
+      const statusLine = statusLines.find((l) => l.includes(file.path));
       let status = 'unchanged';
 
       if (statusLine) {
@@ -209,7 +209,7 @@ function previewChanges(bookSlug, chapter, stepId) {
       return { ...file, status };
     });
 
-    const changedFiles = filesWithStatus.filter(f => f.status !== 'unchanged');
+    const changedFiles = filesWithStatus.filter((f) => f.status !== 'unchanged');
 
     return {
       hasChanges: changedFiles.length > 0,
@@ -217,7 +217,7 @@ function previewChanges(bookSlug, chapter, stepId) {
       changedCount: changedFiles.length,
       excluded,
       folder,
-      stepLabel
+      stepLabel,
     };
   } catch (err) {
     return {
@@ -226,7 +226,7 @@ function previewChanges(bookSlug, chapter, stepId) {
       excluded,
       folder,
       stepLabel,
-      error: err.message
+      error: err.message,
     };
   }
 }
@@ -248,25 +248,25 @@ function commitWorkflowFiles({ bookSlug, chapter, stepId, user, message }) {
     return {
       success: false,
       error: 'No changes to commit',
-      filesCommitted: 0
+      filesCommitted: 0,
     };
   }
 
-  const filesToAdd = preview.files
-    .filter(f => f.status !== 'unchanged')
-    .map(f => f.path);
+  const filesToAdd = preview.files.filter((f) => f.status !== 'unchanged').map((f) => f.path);
 
   if (filesToAdd.length === 0) {
     return {
       success: false,
       error: 'No modified files to commit',
-      filesCommitted: 0
+      filesCommitted: 0,
     };
   }
 
   // Build commit message
   const config = STEP_CONFIG[stepId];
-  const commitMessage = message || `feat(${bookSlug}): ${config.label} complete - chapter ${chapter}
+  const commitMessage =
+    message ||
+    `feat(${bookSlug}): ${config.label} complete - chapter ${chapter}
 
 Files: ${filesToAdd.length} file(s)
 Step: ${stepId}
@@ -275,28 +275,28 @@ Completed by: ${user.username}`;
   try {
     // Stage specific files
     for (const file of filesToAdd) {
-      execSync(`git add "${file}"`, {
+      execFileSync('git', ['add', file], {
         cwd: PROJECT_ROOT,
-        encoding: 'utf-8'
+        encoding: 'utf-8',
       });
     }
 
     // Create commit
-    execSync(`git commit -m "${commitMessage.replace(/"/g, '\\"')}"`, {
+    execFileSync('git', ['commit', '-m', commitMessage], {
       cwd: PROJECT_ROOT,
       env: {
         ...process.env,
         GIT_AUTHOR_NAME: user.name || user.username,
         GIT_AUTHOR_EMAIL: `${user.id}@users.noreply.github.com`,
         GIT_COMMITTER_NAME: user.name || user.username,
-        GIT_COMMITTER_EMAIL: `${user.id}@users.noreply.github.com`
-      }
+        GIT_COMMITTER_EMAIL: `${user.id}@users.noreply.github.com`,
+      },
     });
 
     // Get the commit SHA
-    const sha = execSync('git rev-parse HEAD', {
+    const sha = execFileSync('git', ['rev-parse', 'HEAD'], {
       cwd: PROJECT_ROOT,
-      encoding: 'utf-8'
+      encoding: 'utf-8',
     }).trim();
 
     return {
@@ -304,12 +304,12 @@ Completed by: ${user.username}`;
       sha,
       filesCommitted: filesToAdd.length,
       files: filesToAdd,
-      message: commitMessage
+      message: commitMessage,
     };
   } catch (err) {
     // Try to unstage files if commit failed
     try {
-      execSync('git reset HEAD', { cwd: PROJECT_ROOT });
+      execFileSync('git', ['reset', 'HEAD'], { cwd: PROJECT_ROOT });
     } catch (resetErr) {
       // Ignore reset errors
     }
@@ -317,7 +317,7 @@ Completed by: ${user.username}`;
     return {
       success: false,
       error: `Git commit failed: ${err.message}`,
-      filesCommitted: 0
+      filesCommitted: 0,
     };
   }
 }
@@ -328,9 +328,9 @@ Completed by: ${user.username}`;
  */
 function pushChanges() {
   try {
-    execSync('git push origin HEAD', {
+    execFileSync('git', ['push', 'origin', 'HEAD'], {
       cwd: PROJECT_ROOT,
-      encoding: 'utf-8'
+      encoding: 'utf-8',
     });
 
     return { success: true };
@@ -338,7 +338,7 @@ function pushChanges() {
     return {
       success: false,
       error: `Git push failed: ${err.message}`,
-      suggestion: 'You may need to run `git push origin HEAD` manually'
+      suggestion: 'You may need to run `git push origin HEAD` manually',
     };
   }
 }
@@ -362,13 +362,13 @@ function commitAndPush(options) {
       ...commitResult,
       pushed: pushResult.success,
       pushError: pushResult.error,
-      pushSuggestion: pushResult.suggestion
+      pushSuggestion: pushResult.suggestion,
     };
   }
 
   return {
     ...commitResult,
-    pushed: false
+    pushed: false,
   };
 }
 
@@ -391,5 +391,5 @@ module.exports = {
   pushChanges,
   commitAndPush,
   getStepLabels,
-  STEP_CONFIG
+  STEP_CONFIG,
 };

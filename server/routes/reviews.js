@@ -13,7 +13,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const path = require('path');
 
 const editorHistory = require('../services/editorHistory');
@@ -25,10 +25,10 @@ const { requireRole, ROLES } = require('../middleware/requireRole');
 
 // SLA Configuration
 const REVIEW_SLA = {
-  targetDays: 2,          // Target: review within 2 days
-  warningDays: 3,         // Warning at 3 days
-  criticalDays: 5,        // Critical at 5 days
-  maxDays: 7              // Maximum acceptable: 7 days
+  targetDays: 2, // Target: review within 2 days
+  warningDays: 3, // Warning at 3 days
+  criticalDays: 5, // Critical at 5 days
+  maxDays: 7, // Maximum acceptable: 7 days
 };
 
 /**
@@ -97,8 +97,8 @@ function calculateSLAStatus(submittedAt) {
     isCritical: diffDays >= REVIEW_SLA.criticalDays,
     target: {
       days: REVIEW_SLA.targetDays,
-      label: `Markmið: ${REVIEW_SLA.targetDays} dagar`
-    }
+      label: `Markmið: ${REVIEW_SLA.targetDays} dagar`,
+    },
   };
 }
 
@@ -113,27 +113,30 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     let reviews = editorHistory.getPendingReviews(book || null);
 
     // Add escalation and SLA info
-    reviews = reviews.map(review => {
-      const escalation = includeEscalation === 'true'
-        ? calculateEscalationLevel(review.submittedAt, 'reviewPending')
-        : null;
+    reviews = reviews.map((review) => {
+      const escalation =
+        includeEscalation === 'true'
+          ? calculateEscalationLevel(review.submittedAt, 'reviewPending')
+          : null;
       const sla = calculateSLAStatus(review.submittedAt);
 
       return {
         ...review,
-        escalation: escalation ? {
-          level: escalation.level,
-          daysPending: escalation.days,
-          message: escalation.message,
-          shouldEscalate: escalation.shouldEscalate
-        } : null,
-        sla
+        escalation: escalation
+          ? {
+              level: escalation.level,
+              daysPending: escalation.days,
+              message: escalation.message,
+              shouldEscalate: escalation.shouldEscalate,
+            }
+          : null,
+        sla,
       };
     });
 
     // Sort by SLA status (critical first), then by days pending
     reviews.sort((a, b) => {
-      const statusOrder = { 'critical': 0, 'overdue': 1, 'at-risk': 2, 'on-track': 3 };
+      const statusOrder = { critical: 0, overdue: 1, 'at-risk': 2, 'on-track': 3 };
       const statusDiff = statusOrder[a.sla.status] - statusOrder[b.sla.status];
       if (statusDiff !== 0) return statusDiff;
       return b.sla.daysPending - a.sla.daysPending;
@@ -142,36 +145,39 @@ router.get('/', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     // Calculate SLA stats
     const slaStats = {
       total: reviews.length,
-      onTrack: reviews.filter(r => r.sla.status === 'on-track').length,
-      atRisk: reviews.filter(r => r.sla.status === 'at-risk').length,
-      overdue: reviews.filter(r => r.sla.status === 'overdue').length,
-      critical: reviews.filter(r => r.sla.status === 'critical').length,
+      onTrack: reviews.filter((r) => r.sla.status === 'on-track').length,
+      atRisk: reviews.filter((r) => r.sla.status === 'at-risk').length,
+      overdue: reviews.filter((r) => r.sla.status === 'overdue').length,
+      critical: reviews.filter((r) => r.sla.status === 'critical').length,
       oldest: reviews.length > 0 ? reviews[0] : null,
-      avgDaysPending: reviews.length > 0
-        ? Math.round(reviews.reduce((sum, r) => sum + r.sla.daysPending, 0) / reviews.length * 10) / 10
-        : 0,
-      target: REVIEW_SLA
+      avgDaysPending:
+        reviews.length > 0
+          ? Math.round(
+              (reviews.reduce((sum, r) => sum + r.sla.daysPending, 0) / reviews.length) * 10
+            ) / 10
+          : 0,
+      target: REVIEW_SLA,
     };
 
     // Legacy escalation stats for backwards compatibility
     const escalationStats = {
-      critical: reviews.filter(r => r.escalation?.level === 'critical').length,
-      warning: reviews.filter(r => r.escalation?.level === 'warning').length,
-      notice: reviews.filter(r => r.escalation?.level === 'notice').length,
-      oldest: reviews.length > 0 ? reviews[0] : null
+      critical: reviews.filter((r) => r.escalation?.level === 'critical').length,
+      warning: reviews.filter((r) => r.escalation?.level === 'warning').length,
+      notice: reviews.filter((r) => r.escalation?.level === 'notice').length,
+      oldest: reviews.length > 0 ? reviews[0] : null,
     };
 
     res.json({
       count: reviews.length,
       reviews,
       slaStats,
-      escalationStats
+      escalationStats,
     });
   } catch (err) {
     console.error('Error listing reviews:', err);
     res.status(500).json({
       error: 'Failed to list reviews',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -191,7 +197,7 @@ router.get('/count', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => 
     console.error('Error getting review count:', err);
     res.status(500).json({
       error: 'Failed to get review count',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -207,14 +213,14 @@ router.get('/sla', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     const reviews = editorHistory.getPendingReviews(book || null);
 
     // Calculate SLA for each review
-    const reviewsWithSLA = reviews.map(r => ({
+    const reviewsWithSLA = reviews.map((r) => ({
       ...r,
-      sla: calculateSLAStatus(r.submittedAt)
+      sla: calculateSLAStatus(r.submittedAt),
     }));
 
     // Sort by urgency
     reviewsWithSLA.sort((a, b) => {
-      const statusOrder = { 'critical': 0, 'overdue': 1, 'at-risk': 2, 'on-track': 3 };
+      const statusOrder = { critical: 0, overdue: 1, 'at-risk': 2, 'on-track': 3 };
       return statusOrder[a.sla.status] - statusOrder[b.sla.status];
     });
 
@@ -222,19 +228,26 @@ router.get('/sla', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     const stats = {
       total: reviews.length,
       byStatus: {
-        onTrack: reviewsWithSLA.filter(r => r.sla.status === 'on-track').length,
-        atRisk: reviewsWithSLA.filter(r => r.sla.status === 'at-risk').length,
-        overdue: reviewsWithSLA.filter(r => r.sla.status === 'overdue').length,
-        critical: reviewsWithSLA.filter(r => r.sla.status === 'critical').length
+        onTrack: reviewsWithSLA.filter((r) => r.sla.status === 'on-track').length,
+        atRisk: reviewsWithSLA.filter((r) => r.sla.status === 'at-risk').length,
+        overdue: reviewsWithSLA.filter((r) => r.sla.status === 'overdue').length,
+        critical: reviewsWithSLA.filter((r) => r.sla.status === 'critical').length,
       },
-      avgDaysPending: reviews.length > 0
-        ? Math.round(reviewsWithSLA.reduce((sum, r) => sum + r.sla.daysPending, 0) / reviews.length * 10) / 10
-        : 0,
+      avgDaysPending:
+        reviews.length > 0
+          ? Math.round(
+              (reviewsWithSLA.reduce((sum, r) => sum + r.sla.daysPending, 0) / reviews.length) * 10
+            ) / 10
+          : 0,
       oldest: reviewsWithSLA[0] || null,
-      slaPerformance: reviews.length > 0
-        ? Math.round((reviewsWithSLA.filter(r => r.sla.status === 'on-track').length / reviews.length) * 100)
-        : 100,
-      config: REVIEW_SLA
+      slaPerformance:
+        reviews.length > 0
+          ? Math.round(
+              (reviewsWithSLA.filter((r) => r.sla.status === 'on-track').length / reviews.length) *
+                100
+            )
+          : 100,
+      config: REVIEW_SLA,
     };
 
     res.json(stats);
@@ -242,7 +255,7 @@ router.get('/sla', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     console.error('Error getting SLA stats:', err);
     res.status(500).json({
       error: 'Failed to get SLA stats',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -260,7 +273,7 @@ router.get('/:id', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     if (!review) {
       return res.status(404).json({
         error: 'Review not found',
-        message: `No review found with ID ${id}`
+        message: `No review found with ID ${id}`,
       });
     }
 
@@ -281,13 +294,13 @@ router.get('/:id', requireAuth, requireRole(ROLES.HEAD_EDITOR), (req, res) => {
     res.json({
       ...review,
       currentContent,
-      enContent
+      enContent,
     });
   } catch (err) {
     console.error('Error getting review:', err);
     res.status(500).json({
       error: 'Failed to get review',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -306,14 +319,14 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
     if (!review) {
       return res.status(404).json({
         error: 'Review not found',
-        message: `No review found with ID ${id}`
+        message: `No review found with ID ${id}`,
       });
     }
 
     if (review.status !== 'pending') {
       return res.status(400).json({
         error: 'Review not pending',
-        message: 'This review has already been processed'
+        message: 'This review has already been processed',
       });
     }
 
@@ -367,13 +380,13 @@ router.post('/:id/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
       success: true,
       review: result.review,
       committed: !!commitSha,
-      commitSha
+      commitSha,
     });
   } catch (err) {
     console.error('Error approving review:', err);
     res.status(500).json({
       error: 'Failed to approve review',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -392,14 +405,14 @@ router.post('/bulk/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async 
   if (!reviewIds || !Array.isArray(reviewIds) || reviewIds.length === 0) {
     return res.status(400).json({
       error: 'Invalid reviewIds',
-      message: 'reviewIds must be a non-empty array of review IDs'
+      message: 'reviewIds must be a non-empty array of review IDs',
     });
   }
 
   const results = {
     approved: [],
     failed: [],
-    skipped: []
+    skipped: [],
   };
 
   for (const id of reviewIds) {
@@ -441,7 +454,7 @@ router.post('/bulk/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async 
           book: review.book,
           chapter: review.chapter,
           section: review.section,
-          commitSha
+          commitSha,
         });
 
         // Log the activity
@@ -456,10 +469,12 @@ router.post('/bulk/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async 
         );
 
         // Try to notify (don't wait)
-        notifications.notifyReviewApproved(
-          { ...review, reviewedByUsername: req.user.username },
-          { id: review.submittedBy, email: null }
-        ).catch(err => console.error('Notification error:', err));
+        notifications
+          .notifyReviewApproved(
+            { ...review, reviewedByUsername: req.user.username },
+            { id: review.submittedBy, email: null }
+          )
+          .catch((err) => console.error('Notification error:', err));
       } else {
         results.failed.push({ id, error: result.error || 'Unknown error' });
       }
@@ -475,9 +490,9 @@ router.post('/bulk/approve', requireAuth, requireRole(ROLES.HEAD_EDITOR), async 
       total: reviewIds.length,
       approved: results.approved.length,
       failed: results.failed.length,
-      skipped: results.skipped.length
+      skipped: results.skipped.length,
     },
-    results
+    results,
   });
 });
 
@@ -492,7 +507,7 @@ router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
   if (!notes || typeof notes !== 'string') {
     return res.status(400).json({
       error: 'Invalid notes',
-      message: 'Notes are required when requesting changes'
+      message: 'Notes are required when requesting changes',
     });
   }
 
@@ -502,7 +517,7 @@ router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
     if (!review) {
       return res.status(404).json({
         error: 'Review not found',
-        message: `No review found with ID ${id}`
+        message: `No review found with ID ${id}`,
       });
     }
 
@@ -541,13 +556,13 @@ router.post('/:id/changes', requireAuth, requireRole(ROLES.HEAD_EDITOR), async (
 
     res.json({
       success: true,
-      review: result.review
+      review: result.review,
     });
   } catch (err) {
     console.error('Error requesting changes:', err);
     res.status(500).json({
       error: 'Failed to request changes',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -565,7 +580,7 @@ async function commitApprovedReview(review, admin) {
 
   try {
     // Stage the file
-    execSync(`git add "${relativePath}"`, { cwd: projectRoot });
+    execFileSync('git', ['add', relativePath], { cwd: projectRoot });
 
     // Create commit message
     const commitMessage = `feat(translation): ${review.section} reviewed by ${review.submittedByUsername}
@@ -578,26 +593,29 @@ Section: ${review.section}
 Co-Authored-By: ${review.submittedByUsername} <${review.submittedBy}@users.noreply.github.com>`;
 
     // Commit
-    execSync(`git commit -m "${commitMessage.replace(/"/g, '\\"')}"`, {
+    execFileSync('git', ['commit', '-m', commitMessage], {
       cwd: projectRoot,
       env: {
         ...process.env,
         GIT_AUTHOR_NAME: admin.name || admin.username,
         GIT_AUTHOR_EMAIL: `${admin.id}@users.noreply.github.com`,
         GIT_COMMITTER_NAME: admin.name || admin.username,
-        GIT_COMMITTER_EMAIL: `${admin.id}@users.noreply.github.com`
-      }
+        GIT_COMMITTER_EMAIL: `${admin.id}@users.noreply.github.com`,
+      },
     });
 
     // Get the commit SHA
-    const sha = execSync('git rev-parse HEAD', { cwd: projectRoot }).toString().trim();
+    const sha = execFileSync('git', ['rev-parse', 'HEAD'], {
+      cwd: projectRoot,
+      encoding: 'utf-8',
+    }).trim();
 
     // Log the commit creation
     activityLog.logCommitCreated(admin, review.book, review.chapter, review.section, sha);
 
     // Push to origin (optional, may fail if no push access)
     try {
-      execSync('git push origin HEAD', { cwd: projectRoot });
+      execFileSync('git', ['push', 'origin', 'HEAD'], { cwd: projectRoot });
     } catch (pushErr) {
       console.warn('Git push failed (may need manual push):', pushErr.message);
     }
