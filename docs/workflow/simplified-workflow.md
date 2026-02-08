@@ -23,14 +23,22 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 │  Step 1b: Protect & Split for MT                            │
 │  Tool: protect-segments-for-mt.js                           │
 │  Converts <!-- SEG:... --> → {{SEG:...}}, protects links    │
-│  Splits by visible char count (14K) if needed               │
+│  Splits by visible char count (12K) if needed               │
 │  Output: MT-ready .en.md files + -links.json sidecars       │
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
 │  Step 2: Machine Translation                                │
 │  User: Upload to malstadur.is (Erlendur)                    │
-│  Output: 5-1.is.md (MT output)                              │
+│  Output: m68724-segments.is.md (MT output with {{SEG:...}}) │
+└─────────────────────────────────────────────────────────────┘
+                              ↓
+┌─────────────────────────────────────────────────────────────┐
+│  Step 2b: Unprotect & Merge MT Output                       │
+│  Tool: unprotect-segments.js                                │
+│  Merges split files, converts {{SEG:...}} → <!-- SEG:... -->│
+│  Restores links from -links.json                            │
+│  Output: Ready for review or injection                      │
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
@@ -116,15 +124,16 @@ node tools/protect-segments-for-mt.js books/efnafraedi/02-for-mt/ch05/m68724-seg
 1. Converts `<!-- SEG:... -->` → `{{SEG:...}}` (HTML comments are stripped by Erlendur; curly brackets survive)
 2. Protects links: `[text](url)` → `{{LINK:N}}text{{/LINK}}` (Erlendur strips URLs from markdown links)
 3. Protects cross-refs: `[#ref-id]` → `{{XREF:N}}`
-4. Splits at paragraph boundaries if visible character count exceeds 14K
-5. Writes `-links.json` sidecar with protected URLs
+4. Splits at paragraph boundaries if visible character count exceeds 12K
+5. Validates no part exceeds 20K total characters (hard limit)
+6. Writes `-links.json` sidecar with protected URLs
 
 **Output:**
 - `02-for-mt/ch05/m68724-segments.en.md` - Protected first part (or whole file if no split needed)
 - `02-for-mt/ch05/m68724-segments(b).en.md` - Second part (if split)
 - `02-for-mt/ch05/m68724-segments-links.json` - Protected link URLs
 
-**Important:** The visible character limit (14K) counts only translatable text, excluding `{{SEG:...}}`, `[[MATH:N]]`, and `{{LINK:N}}` tags. This is different from raw file size.
+**Important:** The visible character limit (12K) counts only translatable text, excluding `{{SEG:...}}`, `[[MATH:N]]`, and `{{LINK:N}}` tags. The total file size (including tags) must not exceed 20K for MT service compatibility.
 
 ---
 
@@ -134,12 +143,40 @@ node tools/protect-segments-for-mt.js books/efnafraedi/02-for-mt/ch05/m68724-seg
 
 **Process:**
 1. Go to [malstadur.is](https://malstadur.is)
-2. Upload the English markdown file(s)
+2. Upload the English markdown file(s) from `02-for-mt/`
 3. Download the translated Icelandic output
 
-**Save to:** `02-mt-output/ch05/5-1.is.md` (or split parts 5-1(a).is.md, etc.)
+**Save to:** `02-mt-output/ch05/` (using same filenames as input)
 
-**Note:** This is raw MT output - it will be reviewed in the next step.
+**Note:** MT output will have protected tags (`{{SEG:...}}`) and may be split into multiple files. These need to be unprotected before injection.
+
+---
+
+### Step 2b: Unprotect & Merge MT Output
+
+**Goal:** Prepare MT output for injection by reversing the protection applied in Step 1b.
+
+**Process:**
+```bash
+# Process entire chapter
+node tools/unprotect-segments.js --chapter 5 --verbose
+
+# Or process specific directory
+node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
+```
+
+**What it does:**
+1. Detects and merges split files: `(a)`, `(b)`, `(c)` → single file
+2. Converts `{{SEG:...}}` → `<!-- SEG:... -->`
+3. Restores links from `-links.json`: `{{LINK:N}}text{{/LINK}}` → `[text](url)`
+4. Restores cross-refs: `{{XREF:N}}` → `[#ref-id]`
+5. Deletes split files (unless `--keep-splits` specified)
+
+**Output:**
+- Merged, unprotected files in `02-mt-output/` (overwrites in place)
+- Files now ready for injection with `cnxml-inject.js`
+
+**Important:** This step is REQUIRED before injection. The `cnxml-inject.js` tool expects complete files with `<!-- SEG:... -->` tags.
 
 ---
 
