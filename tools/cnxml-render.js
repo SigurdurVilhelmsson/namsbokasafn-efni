@@ -1670,6 +1670,170 @@ function writeEndOfChapterSection(chapter, section, track, html) {
   return outputPath;
 }
 
+// =====================================================================
+// ANSWER KEY EXTRACTION AND RENDERING
+// =====================================================================
+
+/**
+ * Extract all solutions from exercises across all chapter modules.
+ * Returns array of { moduleId, sectionTitle, answers: [{ id, number, content }] }
+ */
+function extractAnswerKey(chapter, modules, moduleSections) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const answersByModule = [];
+  let exerciseNumber = 0;
+
+  for (const moduleId of modules) {
+    const modulePath = path.join(
+      BOOKS_DIR,
+      '03-translated',
+      `ch${chapterStr}`,
+      `${moduleId}.cnxml`
+    );
+
+    if (!fs.existsSync(modulePath)) {
+      continue;
+    }
+
+    const cnxml = fs.readFileSync(modulePath, 'utf-8');
+    const moduleAnswers = [];
+
+    // Extract all exercises with solutions
+    const exercisePattern = /<exercise\s+id="([^"]+)">([\s\S]*?)<\/exercise>/g;
+    let exerciseMatch;
+
+    while ((exerciseMatch = exercisePattern.exec(cnxml)) !== null) {
+      exerciseNumber++;
+      const exerciseId = exerciseMatch[1];
+      const exerciseContent = exerciseMatch[2];
+
+      // Check if this exercise has a solution
+      const solutionMatch = exerciseContent.match(/<solution\s+id="[^"]*">([\s\S]*?)<\/solution>/);
+
+      if (solutionMatch) {
+        const solutionContent = solutionMatch[1];
+
+        moduleAnswers.push({
+          id: exerciseId,
+          number: exerciseNumber,
+          content: solutionContent,
+        });
+      }
+    }
+
+    // Only add module if it has answers
+    if (moduleAnswers.length > 0) {
+      const sectionInfo = moduleSections[moduleId];
+      const sectionTitle = sectionInfo
+        ? `${chapter}.${sectionInfo.section} ${sectionInfo.titleIs}`
+        : `Module ${moduleId}`;
+
+      answersByModule.push({
+        moduleId,
+        sectionTitle,
+        answers: moduleAnswers,
+      });
+    }
+  }
+
+  return answersByModule;
+}
+
+/**
+ * Render answer key HTML.
+ */
+function renderAnswerKey(chapter, answersByModule, context) {
+  const { renderCnxmlToHtml } = context;
+  const chapterStr = String(chapter).padStart(2, '0');
+
+  let html = `<!DOCTYPE html>
+<html lang="is">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kafli ${chapter} - Svör við æfingum</title>
+  <link rel="stylesheet" href="/styles/content.css">
+</head>
+<body>
+  <article class="chapter-resource answer-key">
+    <header>
+      <h1>Svör við æfingum</h1>
+    </header>
+    <main>
+`;
+
+  for (const module of answersByModule) {
+    html += `      <section class="answers-section">
+        <h2>${module.sectionTitle}</h2>
+        <div class="answers-list">
+`;
+
+    for (const answer of module.answers) {
+      // Wrap solution content in minimal CNXML document for rendering
+      const cnxmlDoc = `<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <content>
+    ${answer.content}
+  </content>
+</document>`;
+
+      // Render solution content to HTML
+      const { html: answerHtml } = renderCnxmlToHtml(cnxmlDoc, context.options);
+
+      // Extract just the content (remove wrapper tags)
+      const contentMatch = answerHtml.match(/<main>([\s\S]*?)<\/main>/);
+      const answerContent = contentMatch ? contentMatch[1].trim() : answerHtml;
+
+      html += `          <div class="answer-entry" id="${answer.id}" data-exercise-id="${answer.id}" data-exercise-number="${answer.number}">
+            ${answerContent}
+          </div>
+`;
+    }
+
+    html += `        </div>
+      </section>
+`;
+  }
+
+  html += `    </main>
+  </article>
+  <script type="application/json" id="page-data">
+{
+  "moduleId": "${chapterStr}-answer-key",
+  "chapter": ${chapter},
+  "section": "${chapter}.0",
+  "title": "Svör við æfingum",
+  "equations": [],
+  "terms": {}
+}
+  </script>
+</body>
+</html>
+`;
+
+  return html;
+}
+
+/**
+ * Write answer key HTML to file.
+ */
+function writeAnswerKey(chapter, track, html) {
+  const chapterStr = chapter.toString().padStart(2, '0');
+  const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
+  const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
+
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  const filename = `${chapterStr}-answer-key.html`;
+  const outputPath = path.join(outputDir, filename);
+
+  fs.writeFileSync(outputPath, html, 'utf-8');
+
+  return outputPath;
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
 
@@ -1881,6 +2045,45 @@ async function main() {
         console.log(`${section.titleIs}: Rendered to HTML`);
         console.log(`  → ${outputPath}`);
       }
+    }
+
+    // Extract and render answer key from all modules
+    if (args.verbose) {
+      console.log('\nExtracting answer key...');
+    }
+
+    const answersByModule = extractAnswerKey(args.chapter, allModules, moduleSections);
+
+    if (answersByModule.length > 0) {
+      const totalAnswers = answersByModule.reduce((sum, m) => sum + m.answers.length, 0);
+
+      if (args.verbose) {
+        console.log(`Found ${totalAnswers} answer(s) across ${answersByModule.length} section(s)`);
+      }
+
+      const answerKeyHtml = renderAnswerKey(args.chapter, answersByModule, {
+        renderCnxmlToHtml,
+        options: {
+          verbose: args.verbose,
+          lang: args.lang,
+          chapter: args.chapter,
+          moduleId: `${chapterStr}-answer-key`,
+          moduleSections,
+          chapterFigureNumbers,
+          chapterTableNumbers,
+          chapterExampleNumbers,
+          chapterExerciseNumbers,
+          chapterSectionTitles,
+          equationTextDictionary,
+        },
+      });
+
+      const answerKeyPath = writeAnswerKey(args.chapter, args.track, answerKeyHtml);
+
+      console.log('Svör við æfingum: Rendered to HTML');
+      console.log(`  → ${answerKeyPath}`);
+    } else if (args.verbose) {
+      console.log('No answers found in this chapter');
     }
 
     // Copy referenced images from source media to publication directory
