@@ -146,6 +146,9 @@ function reverseInlineMarkup(text, equations) {
   result = result.replace(/\\\[/g, '[');
   result = result.replace(/\\\]/g, ']');
 
+  // Remove backslash escapes from emphasis markers (e.g., \*text\* → *text*)
+  result = result.replace(/\\\*/g, '*');
+
   // Restore math placeholders
   result = result.replace(/\[\[MATH:(\d+)\]\]/g, (match, num) => {
     const mathId = `math-${num}`;
