@@ -167,8 +167,8 @@ function reverseInlineMarkup(text, equations) {
   // Restore sup/sub inside terms (from ^..^ and ~..~ markdown)
   result = result.replace(/<term>([\s\S]*?)<\/term>/g, (match, inner) => {
     const restored = inner
-      .replace(/\^([^^]+)\^/g, '<sup>$1</sup>')
-      .replace(/~([^~]+)~/g, '<sub>$1</sub>');
+      .replace(/\^([^^]{1,15})\^/g, '<sup>$1</sup>')
+      .replace(/~([^~]{1,15})~/g, '<sub>$1</sub>');
     return `<term>${restored}</term>`;
   });
 
@@ -190,9 +190,9 @@ function reverseInlineMarkup(text, equations) {
     }
   });
 
-  // Convert sub/sup back
-  result = result.replace(/~([^~]+)~/g, '<sub>$1</sub>');
-  result = result.replace(/\^([^^]+)\^/g, '<sup>$1</sup>');
+  // Convert sub/sup back (limit to 1-15 chars to avoid matching approximation symbols like (~1700))
+  result = result.replace(/~([^~]{1,15})~/g, '<sub>$1</sub>');
+  result = result.replace(/\^([^^]{1,15})\^/g, '<sup>$1</sup>');
 
   // Convert footnotes back — handle both English marker and MT-translated Icelandic
   result = result.replace(/ \[(?:footnote|neðanmálsgrein): ([^\]]+)\]/g, '<footnote>$1</footnote>');
