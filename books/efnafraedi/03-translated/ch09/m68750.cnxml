@@ -1,0 +1,670 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Þrýstingur gass</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68750</md:content-id>
+  <md:title>Gas Pressure</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Skilgreint eiginleikann
+þrýsting</item><item>Skilgreint og umbreytt á
+milli eininga fyrir þrýstingsmælingar</item><item>Lýst virkni algengra tækja
+til að mæla þrýsting gass</item><item>Reiknað þrýsting út frá
+gögnum úr þrýstingsmæli</item></list></md:abstract>
+  <md:uuid>b4305959-0bef-4283-8145-f9184c9652d3</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm2965936">Lofthjúpur jarðar beitir þrýstingi,
+eins og öll önnur gös. Þótt við tökum venjulega ekki eftir loftþrýstingi
+erum við næm fyrir þrýstingsbreytingum – til dæmis þegar það smellur í
+eyrunum á þér í flugtaki og við lendingu, eða þegar þú kafar
+neðansjávar. Þrýstingur gass stafar af kraftinum sem gassameindir beita
+þegar þær rekast á yfirborð hluta (&lt;!-- XREF:3 -->). Þótt kraftur hvers
+áreksturs sé mjög lítill verður hvaða yfirborð sem er af umtalsverðri
+stærð fyrir fjölda árekstra á stuttum tíma, sem getur leitt til mikils
+þrýstings. Reyndar er venjulegur loftþrýstingur nógu sterkur til að
+kremja málmílát þegar hann er ekki jafnaður með jöfnum þrýstingi innan
+úr ílátinu.</para>
+<figure id="CNX_Chem_09_01_Pressure1" class="scaled-down">
+<media id="fs-idp16369520" alt="The left side of this figure includes a graphic of the earth with an inverted rectangular prism extending from a point on it. Near the top of the image, the label, “square inch column of air molecules” is connected to the prism with a line segment. This label is also connected with a line segment to a downward pointing arrow at the right side of the figure. Beneath the arrow is a red circle labeled, “atmospheric pressure.” A narrow rectangle with a dashed line border extends from the bottom of the arrow vertically through the circle. Directly beneath this rectangle at the lower edge of the circle is a hand with a thumb appearing to be resting on a tabletop. The thumb is connected with a line segment to the label, “14.7 lbs of pressure on 1 square inch.” The red circle is sitting on top of the thumb.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Pressure1.jpg"/>
+</media>
+<caption>Lofthjúpurinn
+fyrir ofan okkur beitir miklum þrýstingi á hluti á yfirborði jarðar, sem
+jafngildir nokkurn veginn þyngd keilukúlu sem þrýstir á svæði á stærð
+við þumalfingursnögl manns.</caption>
+</figure>
+<note id="fs-idm5657392" class="chemistry link-to-learning">
+<para id="fs-idp139792368">Áhrifamikil
+&lt;!-- LINK:1 -->sýning&lt;!-- /LINK --> á loftþrýstingi er sýnd í þessu stutta
+myndbandi, þar sem járnbrautartankvagn kremst saman þegar innri
+þrýstingur hans minnkar.</para>
+<para id="fs-idm26057840">&lt;!-- LINK:2 -->Sýnikennsla&lt;!-- /LINK --> á
+þessu fyrirbæri í smærri skala er útskýrð stuttlega.</para>
+</note>
+<para id="fs-idm5227120">Loftþrýstingur stafar af þyngd súlu
+loftsameinda í lofthjúpnum fyrir ofan hlut, eins og tankvagninn. Við
+sjávarmál er þessi þrýstingur nokkurn veginn sá sami og fullvaxinn
+afrískur fíll beitir standandi á dyramottu, eða dæmigerð keilukúla sem
+hvílir á þumalfingursnöglinni þinni. Þetta kann að virðast vera
+gríðarlegar stærðir, og það eru þær, en líf á jörðinni hefur þróast við
+slíkan loftþrýsting. Ef þú setur keilukúlu á þumalfingursnöglina þína er
+þrýstingurinn sem þú finnur fyrir \<emphasis effect="italics">tvöfaldur\</emphasis> venjulegur þrýstingur og
+tilfinningin er óþægileg.</para>
+<para id="fs-idp26888784">Almennt er <emphasis effect="bold">þrýstingur</emphasis>
+skilgreindur sem krafturinn sem beitt er á tiltekið svæði:
+\[\[MATH:1\]\] Athugaðu að þrýstingur er í beinu hlutfalli við kraft og
+í öfugu hlutfalli við flatarmál. Þannig má auka þrýsting annaðhvort með
+því að auka kraftinn eða með því að minnka flatarmálið sem honum er
+beitt á; þrýsting má minnka með því að minnka kraftinn eða auka
+flatarmálið.</para>
+<para id="fs-idm32668544">Beitum þessu hugtaki til að ákvarða
+hvor beitir meiri þrýstingi í &lt;!-- XREF:4 --> – fíllinn eða listskautarinn?
+Stór afrískur fíll getur vegið 7 tonn og stendur á fjórum fótum, hver
+með um 1,5 feta þvermál (fótsporsflatarmál 250 in<sup>2</sup>), þannig að
+þrýstingurinn sem hver fótur beitir er um 14 lb/in<sup>2</sup>:</para>
+<figure id="CNX_Chem_09_01_Pressure2" class="scaled-down"><media id="fs-idp170647376" alt="This figure includes two photographs. Figure a is a photo of a large gray elephant on grassy, beige terrain. Figure b is a photo of a figure skater with her right skate on the ice, upper torso lowered, arms extended upward behind her chest, and left leg extended upward behind her.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Pressure2.jpg"/>
+</media>
+
+<caption>Þótt (a) þyngd
+fíls sé mikil og skapi mjög stóran kraft á jörðina, beitir (b)
+listskautarinn mun meiri þrýstingi á ísinn vegna lítils
+yfirborðsflatarmáls skautanna. (mynd a: breyting á verki eftir Guido da
+Rozze; mynd b: breyting á verki eftir Ryosuke Yagi)</caption></figure>
+<equation id="fs-idm100445488" class="unnumbered"><m:math><m:mrow><m:mtext>pressure per elephant foot</m:mtext><m:mo>=</m:mo><m:mtext>14,000</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>lb</m:mtext></m:mrow><m:mrow><m:mtext>elephant</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 elephant</m:mtext></m:mrow><m:mrow><m:mtext>4 feet</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 foot</m:mtext></m:mrow><m:mrow><m:mn>250</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>14</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>lb/in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idp79686656">Listskautarinn vegur um 120 pund og
+stendur á tveimur skautablöðum, hvort með um 2 in<sup>2</sup> flatarmál, þannig
+að þrýstingurinn sem hvort blað beitir er um 30 lb/in<sup>2</sup>:</para>
+<equation id="fs-idm181738992" class="unnumbered"><m:math><m:mrow><m:mtext>pressure per skate blade</m:mtext><m:mo>=</m:mo><m:mn>120</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>lb</m:mtext></m:mrow><m:mrow><m:mtext>skater</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 skater</m:mtext></m:mrow><m:mrow><m:mtext>2 blades</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 blade</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>30</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>lb/in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm101012528">Jafnvel þótt fíllinn sé meira en
+hundrað sinnum þyngri en skautarinn, beitir hann minna en helmingi
+þrýstingsins. Á hinn bóginn, ef skautarinn fer úr skautunum og stendur
+berfættur (eða í venjulegum skóm) á ísnum, minnkar þrýstingurinn sem
+beitt er verulega vegna stærra flatarmáls sem þyngd hans dreifist yfir:</para>
+<equation id="fs-idp9821216" class="unnumbered"><m:math><m:mrow><m:mtext>pressure per human foot</m:mtext><m:mo>=</m:mo><m:mn>120</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>lb</m:mtext></m:mrow><m:mrow><m:mtext>skater</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 skater</m:mtext></m:mrow><m:mrow><m:mtext>2 feet</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 foot</m:mtext></m:mrow><m:mrow><m:mn>30</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>lb/in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm10039728">SI-eining þrýstings er <emphasis effect="bold">paskal
+(Pa)</emphasis>, þar sem 1 Pa = 1 N/m<sup>2</sup>, þar sem N er njúton, krafteining
+skilgreind sem 1 kg m/s<sup>2</sup>. Eitt paskal er lítill þrýstingur; í mörgum
+tilfellum er hentugra að nota einingarnar kílópaskal (1 kPa = 1000 Pa)
+eða <emphasis effect="bold">bar</emphasis> (1 bar = 100.000 Pa). Í Bandaríkjunum er þrýstingur oft
+mældur í pundum af krafti á flatarmál einnar fertommu – <emphasis effect="bold">pund á
+fertommu (psi)</emphasis> – til dæmis í bíldekkjum. Einnig er hægt að mæla
+þrýsting með einingunni <emphasis effect="bold">loftþyngd (atm)</emphasis>, sem upphaflega táknaði
+meðalloftþrýsting við sjávarmál á áætlaðri breiddargráðu Parísar (45°).
+&lt;!-- XREF:5 --> veitir upplýsingar um þessar og nokkrar aðrar algengar
+einingar fyrir þrýstingsmælingar</para>
+<table id="fs-idp189967312" class="top-titled" summary="This table has two columns and 10 rows. The first row is a header row, and it labels the columns as “Unit Name and Abbreviation” and “Definition or Relation to Other Unit.” The first unit name and abbreviation is pascal, and it is abbreviated as P a. The definition or relation to other unit is 1 P a equals N over m squared and recommended I U P A C unit. The next unit name is kilopascal, and it is abbreviated as k P a. The definition or relation to other unit is 1 k P a equals 1000 P a. The next unit name is pounds per square inch, and it is abbreviated as p s i. The definition or relation to other unit is air pressure at sea level is approximately 14.7 p s i. The next unit name is atmosphere, and is is abbreviated as a t m. The definition or relation to other unit is 1 a t m equals 101,325 P a and air pressure at sea level is approximately one a t m. The next unit name is bar, and it is abbreviated as bar or b. The definition or relation to other unit is 1 bar equals 100,000 P a exactly and commonly used in meteorology. The next unit name is millibar, and it is abbreviated as m b a r or m b. The definition or relation to other unit is 1000 m b a r equals one bar. The next unit name is inches of mercury, and it is abbreviated as i n period, H g. The definition or relation to other unit is one i n period H g equals 3386 P a and is used by the aviation industry and also some weather reports. The next unit is torr. The definition or relation to other unit is 1 torr equals 1 over 760 a t m and named after Evangelista Torricelli, inventor of the barometer. The last unit name is millimeters of mercury, and it is abbreviated as m m H g. The definition or relation to other unit is 1 m m H g is approximately 1 torr.">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="top">
+<entry namest="c1" nameend="c2" align="center">Þrýstingseiningar</entry>
+</row>
+<row valign="top">
+<entry align="left">Heiti einingar og skammstöfun</entry>
+<entry align="left">Skilgreining eða tengsl við aðra einingu</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">paskal (Pa)</entry>
+<entry align="left">1 Pa = 1 N/m<sup>2</sup>ráðlögð IUPAC-eining</entry>
+</row>
+<row valign="top">
+<entry align="left">kílópaskal (kPa)</entry>
+<entry align="left">1 kPa = 1000 Pa</entry>
+</row>
+<row valign="top">
+<entry align="left">pund á fertommu (psi)</entry>
+<entry align="left">loftþrýstingur við sjávarmál er ~14,7 psi</entry>
+</row>
+<row valign="top">
+<entry align="left">loftþyngd (atm)</entry>
+<entry align="left">1 atm = 101.325 Pa = 760 torrloftþrýstingur
+við sjávarmál er ~1 atm</entry>
+</row>
+<row valign="top">
+<entry align="left">bar (bar eða b)</entry>
+<entry align="left">1 bar = 100.000 Pa (nákvæmlega)algengt í
+veðurfræði</entry>
+</row>
+<row valign="top">
+<entry align="left">millibar (mbar eða mb)</entry>
+<entry align="left">1000 mbar = 1 bar</entry>
+</row>
+<row valign="top">
+<entry align="left">tommur kvikasilfurs (in. Hg)</entry>
+<entry align="left">1 in. Hg = 3386 Panotað í flugiðnaði,
+einnig í sumum veðurskeytum</entry>
+</row>
+<row valign="top">
+<entry align="left">torr</entry>
+<entry align="left">\[\[MATH:2\]\]nefnt eftir Evangelista
+Torricelli, uppfinningamanni loftvogarinnar</entry>
+</row>
+<row valign="top">
+<entry align="left">millimetrar kvikasilfurs (mm Hg)</entry>
+<entry align="left">1 mm Hg ~1 torr</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<example id="fs-idp156787120">
+<para id="fs-idm55125200"><title>Umreikningur
+þrýstingseininga</title>Bandaríska veðurstofan gefur upp
+þrýsting bæði í tommum kvikasilfurs og millibörum. Reiknaðu um þrýsting
+upp á 29,2 in. Hg í:</para>
+<para id="fs-idp142663424">(a) torr</para>
+<para id="fs-idp6847648">(b) atm</para>
+<para id="fs-idm78213376">(c) kPa</para>
+<para id="fs-idp62713296">(d) mbar</para>
+<para id="fs-idp32588880"><title>Lausn</title>Þetta er verkefni um umreikning
+eininga. Tengslin milli hinna ýmsu þrýstingseininga eru gefin í
+&lt;!-- XREF:6 -->.</para>
+<para id="fs-idm19510112">(a) \[\[MATH:3\]\]</para><para id="fs-idm103224224">(b) \[\[MATH:4\]\]</para>
+<para id="fs-idp28156048">(c) \[\[MATH:5\]\]</para>
+<para id="fs-idm86928016">(d) \[\[MATH:6\]\]</para>
+<para id="fs-idm28185008"><title>Prófaðu þekkingu þína</title>Dæmigerður loftvogarþrýstingur í
+Kansas City er 740 torr. Hver er þessi þrýstingur í loftþyngdum, í
+millimetrum kvikasilfurs, í kílópaskölum og í börum?</para>
+<note id="fs-idm54955856">
+<title>Answer:</title>
+<para id="fs-idp131216672">0,974 atm; 740 mm Hg; 98,7 kPa;
+0,987 bar</para>
+</note>
+</example>
+<para id="fs-idm69336128">Við getum mælt loftþrýsting, kraftinn
+sem lofthjúpurinn beitir á yfirborð jarðar, með <emphasis effect="bold">loftvog</emphasis>
+(&lt;!-- XREF:7 -->). Loftvog er glerpípa sem er lokuð í annan endann, fyllt með
+órokgjörnum vökva eins og kvikasilfri og síðan hvolft og sökkt í ílát
+með þeim vökva. Loftþrýstingurinn þrýstir á vökvann utan rörsins,
+vökvasúlan þrýstir inni í rörinu og þrýstingurinn á yfirborði vökvans er
+sá sami innan og utan rörsins. Hæð vökvans í rörinu er því í réttu
+hlutfalli við þrýstinginn sem loftþrýstingurinn beitir.</para>
+<figure id="CNX_Chem_09_01_Barometer" class="scaled-down">
+<media id="fs-idm35593680" alt="This figure shows two barometers. The barometer to the left contains a shallow reservoir, or open container, of mercury. A narrow tube extends upward from the reservoir above the reservoir. This tube is sealed at the top. To the right, a second similar setup is shown with a reservoir filled with water. Line segments connect the label “vacuum” to the tops of the two narrow tubes. The tube on the left shows the mercury in the reservoir extending in a column upward in the narrow tube. Similarly, the tube on the right shows the water in the reservoir extending upward into the related narrow tube. Double-headed arrows extend from the surface of each liquid in the reservoir to the top of the liquid in each tube. A narrow column or bar extends from the surface of the reservoir to the same height. This bar is labeled “atmospheric pressure.” The level of the water in its tube is significantly higher than the level of mercury in its tube.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Barometer.jpg"/>
+</media>
+<caption>Í loftvog er
+hæð, <emphasis effect="italics">h</emphasis>, vökvasúlunnar notuð sem mæling á loftþrýstingi. Með því að
+nota mjög þéttan kvikasilfursvökva (til vinstri) er hægt að smíða
+loftvogir af hæfilegri stærð, en ef notað væri vatn (til hægri) þyrfti
+loftvog sem væri meira en 30 fet á hæð.</caption>
+</figure>
+<para id="fs-idm79676464">Ef vökvinn er vatn mun venjulegur
+loftþrýstingur halda uppi vatnssúlu sem er yfir 10 metra há, sem er
+frekar óþægilegt til að smíða (og lesa af) loftvog. Þar sem kvikasilfur
+(Hg) er um 13,6 sinnum þéttara en vatn þarf kvikasilfursloftvog aðeins
+að vera \[\[MATH:7\]\] jafn há og vatnsloftvog – sem er hentugri stærð.
+Staðlaður loftþrýstingur upp á 1 atm við sjávarmál (101.325 Pa)
+samsvarar kvikasilfurssúlu sem er um 760 mm (29,92 tommur) á hæð.
+<emphasis effect="bold">Torr</emphasis> var upphaflega ætlað að vera eining sem jafngildir einum
+millimetra af kvikasilfri, en það samsvarar ekki lengur nákvæmlega.
+Þrýstingurinn sem vökvi beitir vegna þyngdarafls er þekktur sem
+<emphasis effect="bold">vökvastöðuþrýstingur</emphasis>, <emphasis effect="italics">p</emphasis>:</para>
+<equation id="fs-idm35258720" class="unnumbered"><m:math><m:mrow><m:mi>p</m:mi><m:mo>=</m:mo><m:mi>h</m:mi><m:mi>ρ</m:mi><m:mi>g</m:mi></m:mrow></m:math></equation>
+<para id="fs-idm61000288">þar sem <emphasis effect="italics">h</emphasis> er hæð vökvans, <emphasis effect="italics">ρ</emphasis>
+(gríski lágstafurinn rhó) er eðlismassi vökvans og <emphasis effect="italics">g</emphasis> er hröðun vegna
+þyngdarafls.</para>
+<example id="fs-idm5509408">
+<para id="fs-idm124424064"><title>Útreikningur á
+loftvogarþrýstingi</title>Sýndu útreikninginn sem styður þá
+fullyrðingu að loftþrýstingur nálægt sjávarmáli samsvari þrýstingnum sem
+kvikasilfurssúla sem er um 760 mm á hæð beitir. Eðlismassi kvikasilfurs
+= 13,6 g/cm<sup>3</sup>.</para>
+<para id="fs-idm64631536"><title>Lausn</title>Vökvastöðuþrýstingur er gefinn með
+<emphasis effect="italics">p</emphasis> = <emphasis effect="italics">hρg</emphasis>, þar sem <emphasis effect="italics">h</emphasis> = 760 mm, <emphasis effect="italics">ρ</emphasis> = 13,6 g/cm<sup>3</sup> og <emphasis effect="italics">g</emphasis> = 9,81
+m/s<sup>2</sup>. Með því að setja þessi gildi inn í jöfnuna og framkvæma
+nauðsynlegar einingabreytingar fáum við gildið sem við leitum að.
+(Athugið: Við búumst við að finna þrýsting upp á ~101.325 Pa.)</para><equation id="fs-idm207611040" class="unnumbered"><m:math><m:mrow><m:mn>101,325</m:mn><m:mspace width="0.2em"/><m:mi>N</m:mi><m:msup><m:mrow><m:mtext>/m</m:mtext></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>101,325</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mtext>kg·m/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mtext>m</m:mtext><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>101,325</m:mn><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>kg</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mtext>m·s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<equation id="fs-idm149736288" class="unnumbered"><m:math><m:mrow><m:mi>p</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>760 mm</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>1 m</m:mtext></m:mrow><m:mrow><m:mtext>1000 mm</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>13.6 g</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 kg</m:mtext></m:mrow><m:mrow><m:mtext>1000 g</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo> <m:mrow> <m:mtext>100 cm</m:mtext></m:mrow> <m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo> <m:mrow> <m:mtext>1 m</m:mtext></m:mrow> <m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>9.81 m</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math></equation>
+<equation id="fs-idm112352528" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>0.760 m</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>13,600</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>kg/m</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>9.81</m:mn><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>m/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1.01</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>5</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>kg/ms</m:mtext></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>1.01</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>5</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mi>N</m:mi><m:mtext>/m</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<equation id="fs-idm93676560" class="unnumbered"><m:math><m:mrow><m:mo>=</m:mo><m:mn>1.01</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>5</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>Pa</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp70400640"><title>Prófaðu þekkingu þína</title>Reiknaðu hæð vatnssúlu við 25 °C sem
+samsvarar venjulegum loftþrýstingi. Eðlismassi vatns við þetta hitastig
+er 1,0 g/cm<sup>3</sup>.</para>
+<note id="fs-idp73341600">
+<title>Answer:</title>
+<para id="fs-idp2146864">10,3 m</para>
+</note>
+</example>
+<para id="fs-idp189718992"><emphasis effect="bold">Þrýstimælir</emphasis> er tæki svipað
+loftvog sem hægt er að nota til að mæla þrýsting á gasi sem er lokað
+inni í íláti. Þrýstimælir með lokuðum enda er U-laga rör með einum
+lokuðum armi, einum armi sem tengist gasinu sem á að mæla og rokgjörnum
+vökva (venjulega kvikasilfri) á milli. Eins og með loftvog er fjarlægðin
+milli vökvayfirborðs í tveimur örmum rörsins (<emphasis effect="italics">h</emphasis> á skýringarmyndinni) í
+réttu hlutfalli við þrýsting gassins í ílátinu. Þrýstimælir með opnum
+enda (&lt;!-- XREF:8 -->) er eins og þrýstimælir með lokuðum enda, en annar
+armur hans er opinn út í andrúmsloftið. Í þessu tilviki samsvarar
+fjarlægðin milli vökvayfirborðs muninum á þrýstingi milli gassins í
+ílátinu og andrúmsloftsins.</para>
+<figure id="CNX_Chem_09_01_Manometer" class="scaled-down">
+<media id="fs-idm5598960" alt="Three diagrams of manometers are shown. Each manometer consists of a spherical pink container filled with gas on the left that is connected to a U-shaped, sealed tube by a valve on its right. The top of the U aligns with the gas-filled sphere and the U, which extends below, contains mercury. The first manometer has a sealed tube. The sealed end to the upper right in the diagram is labeled “closed end” and “vacuum.” The mercury level is higher in the right side of the tube than in the left. The difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign h rho g. The second manometer has an open-ended tube, which is labeled “open end.” At this opening in the upper right of the diagram is the label P subscript atm. The mercury level is higher in the left side of the tube than in the right. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript atm minus sign h rho g. The third manometer has an open-ended tube and is similar to the second manometer except that the mercury level is higher in the right side of the tube than in the left. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript a t m plus h rho g.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Manometer.jpg"/>
+</media>
+<caption>Hægt er að nota
+þrýstimæli til að mæla þrýsting á gasi. (Munurinn á) hæð milli
+vökvayfirborðs (<emphasis effect="italics">h</emphasis>) er mælikvarði á þrýstinginn. Kvikasilfur er
+venjulega notað vegna mikils eðlismassa þess.</caption>
+</figure>
+<example id="fs-idm31201088">
+<para id="fs-idp5332928"><title>Útreikningur á
+þrýstingi með þrýstimæli með lokuðum enda</title>Þrýstingur gassýnis er mældur með
+þrýstimæli með lokuðum enda, eins og sýnt er til hægri. Vökvinn í
+þrýstimælinum er kvikasilfur. Ákvarðaðu þrýsting gassins í:</para>
+<para id="fs-idp161989312">(a) torr</para>
+<para id="fs-idp16104736">(b) Pa</para>
+<para id="fs-idm85992448">(c) bar</para>
+<media id="fs-idp141827632" class="scaled-down" alt="A diagram of a closed-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “closed end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height between the left side and right side is 26.4 c m which is indicated with horizontal line segments and arrows.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Manometer1_img.jpg"/>
+</media>
+<para id="fs-idm79648128"><title>Lausn</title>Þrýstingur gassins er jafn
+kvikasilfurssúlu sem er 26,4 cm á hæð. (Þrýstingurinn við neðri láréttu
+línuna er jafn báðum megin við rörið. Þrýstingurinn vinstra megin stafar
+af gasinu og þrýstingurinn hægra megin stafar af 26,4 cm Hg, eða
+kvikasilfri.) Við gætum notað jöfnuna <emphasis effect="italics">p</emphasis> = <emphasis effect="italics">hρg</emphasis> eins og í &lt;!-- XREF:9 -->,
+en það er einfaldara að breyta bara á milli eininga með því að nota
+&lt;!-- XREF:10 -->.</para>
+<para id="fs-idm79108064">(a) \[\[MATH:8\]\]</para>
+<para id="fs-idp62655904">(b) \[\[MATH:9\]\]</para>
+<para id="fs-idp2045200">(c) \[\[MATH:10\]\]</para>
+<para id="fs-idp37894320"><title>Prófaðu þekkingu þína</title>Þrýstingur gassýnis er mældur með
+þrýstimæli með lokuðum enda. Vökvinn í þrýstimælinum er kvikasilfur.
+Ákvarðaðu þrýsting gassins í:</para>
+<para id="fs-idp38024128">(a) torr</para>
+<para id="fs-idp16117232">(b) Pa</para>
+<para id="fs-idp127919232">(c) bar</para>
+<media id="fs-idp26163024" class="scaled-down" alt="A diagram of a closed-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “closed end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 6.0 i n is indicated with horizontal line segments and arrows.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Manometer2_img.jpg"/>
+</media>
+<note id="fs-idm70430576">
+<title>Answer:</title>
+<para id="fs-idm8669760">(a) <sub>150 torr; (b) </sub>20.000 Pa; (c)
+~0,20 bar</para>
+</note>
+</example>
+<example id="fs-idm76587328">
+<para id="fs-idm12992864"><title>Útreikningur á
+þrýstingi með þrýstimæli með opnum enda</title>Þrýstingur gassýnis er mældur við
+sjávarmál með Hg (kvikasilfurs) þrýstimæli með opnum enda, eins og sýnt
+er til hægri. Ákvarðaðu þrýsting gassins í:</para>
+<para id="fs-idp141807120">(a) mm Hg</para>
+<para id="fs-idm91216192">(b) atm</para>
+<para id="fs-idm29337808">(c) kPa</para>
+<media id="fs-idp16540528" class="scaled-down" alt="A diagram of an opne-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 13.7 c m is indicated with horizontal line segments and arrows.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Manometer3_img.jpg"/>
+</media>
+<para id="fs-idp6251232"><title>Lausn</title>Þrýstingur gassins er jafn
+vökvastöðuþrýstingi vegna kvikasilfurssúlu sem er 13,7 cm á hæð auk
+loftþrýstings við sjávarmál. (Þrýstingurinn við neðri láréttu línuna er
+jafn báðum megin í rörinu. Þrýstingurinn vinstra megin stafar af gasinu
+og þrýstingurinn hægra megin stafar af 13,7 cm af Hg auk loftþrýstings.)</para>
+<para id="fs-idp139076928">(a) Í mm Hg er þetta: 137 mm Hg +
+760 mm Hg = 897 mm Hg</para>
+<para id="fs-idm20839232">(b) \[\[MATH:11\]\]</para>
+<para id="fs-idp8049056">(c) \[\[MATH:12\]\]</para>
+<para id="fs-idm24876576"><title>Prófaðu þekkingu þína</title>Þrýstingur gassýnis er mældur við
+sjávarmál með Hg þrýstimæli með opnum enda, eins og sýnt er til hægri.
+Ákvarðaðu þrýsting gassins í:</para>
+<para id="fs-idp30718048">(a) mm Hg</para>
+<para id="fs-idm5192960">(b) atm</para>
+<para id="fs-idp18503824">(c) kPa</para>
+<media id="fs-idm34584432" class="scaled-down" alt="A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the left side than on the right. The difference in height of 4.63 i n is indicated with horizontal line segments and arrows.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_manometer4_img.jpg"/>
+</media>
+<note id="fs-idp173017200">
+<title>Answer:</title>
+<para id="fs-idp154771664">(a) 642 mm Hg; (b) 0,845 atm; (c)
+85,6 kPa</para>
+</note>
+</example>
+<note id="fs-idp183412160" class="chemistry everyday-life">
+<title>Blóðþrýstingsmæling</title>
+<para id="fs-idm61054480">Blóðþrýstingur er mældur með tæki sem
+kallast blóðþrýstingsmælir (úr grísku <emphasis effect="italics">sphygmos</emphasis> = „púls“). Hann
+samanstendur af uppblásanlegri ermi til að takmarka blóðflæði,
+þrýstimæli til að mæla þrýstinginn og aðferð til að ákvarða hvenær
+blóðflæði hefst og hvenær því er hindrað (&lt;!-- XREF:11 -->). Frá því að hann
+var fundinn upp árið 1881 hefur hann verið ómissandi lækningatæki. Til
+eru margar gerðir blóðþrýstingsmæla: handvirkir sem krefjast
+hlustunarpípu og eru notaðir af heilbrigðisstarfsfólki;
+kvikasilfursmælar, notaðir þegar mestrar hittni er krafist; ónákvæmari
+vélrænir mælar; og stafrænir mælar sem hægt er að nota með lítilli
+þjálfun en hafa takmarkanir. Þegar blóðþrýstingsmælir er notaður er
+ermin sett utan um upphandlegginn og blásin upp þar til blóðflæði er
+alveg stöðvað, síðan er loftinu hleypt hægt út. Þegar hjartað slær
+veldur blóð sem þrýstist í gegnum slagæðarnar þrýstingsaukningu. Þessi
+þrýstingsaukning þar sem blóðflæði hefst er \<emphasis effect="italics">slagbilsþrýstingur\</emphasis> –
+hámarksþrýstingur í hjartahringnum. Þegar þrýstingur ermarinnar
+jafngildir slagbilsþrýstingi slagæðanna flæðir blóð fram hjá erminni og
+myndar heyranleg hljóð sem hægt er að heyra með hlustunarpípu. Í
+kjölfarið minnkar þrýstingurinn þegar sleglar hjartans búa sig undir
+annað slag. Eftir því sem þrýstingur í erminni heldur áfram að minnka
+heyrist að lokum ekkert hljóð; þetta er \<emphasis effect="italics">hlébilsþrýstingur\</emphasis> – lægsti
+þrýstingurinn (hvíldarfasi) í hjartahringnum. Blóðþrýstingseiningar úr
+blóðþrýstingsmæli eru gefnar upp í millimetrum kvikasilfurs (mm Hg).</para>
+<figure id="CNX_Chem_09_01_Spygmo" class="scaled-down">
+<media id="fs-idm50439776" alt="This figure includes two photographs. The first photo shows a young adult male placing a blood pressure cuff on the upper arm of a young adult female. The second image shows a typical sphygmomanometer, which includes a black blood pressure cuff, tubing, pump, and pressure gauge.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Spygmo.jpg"/>
+</media>
+<caption>(a) Sjúkraliði
+undirbýr að mæla blóðþrýsting sjúklings með blóðþrýstingsmæli. (b)
+Dæmigerður blóðþrýstingsmælir notar gúmmíblöðru með loka til að blása
+upp ermina og himnuþrýstimæli til að mæla þrýsting. (Heimild a: breyting
+á verki eftir Master Sgt. Jeffrey Allen)</caption>
+</figure>
+</note>
+<note id="fs-idm96003696" class="chemistry sciences-interconnect">
+<title>Veðurfræði,
+loftslagsfræði og lofthjúpsvísindi</title>
+<para id="fs-idm77491200">Í gegnum aldirnar hefur fólk fylgst
+með skýjum, vindum og úrkomu og reynt að greina mynstur og spá fyrir um
+framtíðina: hvenær sé best að sá og uppskera; hvort það sé óhætt að
+leggja í sjóferð; og margt fleira. Nú stöndum við frammi fyrir flóknum
+áskorunum tengdum veðri og lofthjúpi sem munu hafa mikil áhrif á
+siðmenningu okkar og vistkerfið. Nokkrar mismunandi vísindagreinar nota
+efnafræðilegar meginreglur til að hjálpa okkur að skilja betur veður,
+lofthjúpinn og loftslag. Þetta eru veðurfræði, loftslagsfræði og
+lofthjúpsvísindi. Veðurfræði er fræðigrein um lofthjúpinn, fyrirbæri í
+lofthjúpnum og áhrif lofthjúpsins á veður á jörðinni. Veðurfræðingar
+leitast við að skilja og spá fyrir um veður til skamms tíma, sem getur
+bjargað mannslífum og gagnast efnahagslífinu. Veðurspár (&lt;!-- XREF:12 -->)
+eru afrakstur þúsunda mælinga á loftþrýstingi, hitastigi og þess háttar,
+sem er safnað saman, sett í líkön og greint í veðurstöðvum um allan
+heim.</para>
+<figure id="CNX_Chem_09_01_WeatherMap" class="scaled-down">
+<media id="fs-idm21149856" alt="A weather map of the United States is shown which points out areas of high and low pressure with the letters H in blue and L in red. Curved lines in grey, orange, blue, and red are shown. The orange lines are segmented. The red and blue lines have small red or blue semi-circles and triangles attached along their lengths. In dashed white lines, latitude and longitude are indicated. Underlined three and four digit numbers also appear across the map.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_WeatherMap.jpg"/>
+</media>
+<caption>Veðurfræðingar
+nota veðurkort til að lýsa og spá fyrir um veður. Svæði með háþrýsting
+(H) og lágþrýsting (L) hafa mikil áhrif á veðurskilyrði. Gráu línurnar
+tákna staði með stöðugum þrýstingi sem kallast jafnþrýstilínur.
+(Heimild: breyting á verki eftir National Oceanic and Atmospheric
+Administration)</caption>
+</figure>
+<para id="fs-idm8048304">Hvað veður varðar myndast
+lágþrýstikerfi þegar loftþrýstingur við yfirborð jarðar er lægri en í
+umhverfinu: Rakt loft stígur upp og þéttist og myndar ský. Hreyfing raka
+og lofts innan ýmissa veðraskila veldur flestum veðurfyrirbærum.</para>
+<para id="fs-idm49021728">Lofthjúpurinn er gaslagið sem umlykur
+plánetu. Lofthjúpur jarðar, sem er um það bil 100–125 km þykkur,
+samanstendur af u.þ.b. 78,1% nitri og 21,0% súrefni og má skipta frekar
+niður í svæðin sem sýnd eru á &lt;!-- XREF:13 -->: úthvolfið (lengst frá jörðu,
+\> 700 km yfir sjávarmáli), hitahvolfið (80–700 km), miðhvolfið (50–80
+km), heiðhvolfið (næstneðsta lag lofthjúpsins, 12–50 km yfir sjávarmáli)
+og veðrahvolfið (allt að 12 km yfir sjávarmáli, u.þ.b. 80% af massa
+lofthjúps jarðar og lagið þar sem flest veðurfyrirbæri eiga upptök sín).
+Eftir því sem farið er hærra í veðrahvolfinu minnkar bæði eðlismassi
+lofts og hitastig.</para>
+<figure id="CNX_Chem_09_01_Atmosphere" class="scaled-down">
+<media id="fs-idm76295840" alt="This diagram shows half of a two dimensional view of the earth in blue and green. A narrow white layer, labeled “troposphere 0 dash 12 k m” covers this hemisphere. This layer is also labeled “layer where most weather events originate.” Next, a thicker light blue layer labeled “Stratosphere 12 dash 50 k m” is shown. This is followed by a slightly thinner layer also in light blue labeled “Mesosphere 50 dash 80 k m.” Following this layer is a relatively thick light blue layer labeled “Thermosphere 80 dash 700 k m.” A blue layer appears that covers the rightmost two thirds of the diagram. This region gradually darkens from a lighter blue at the left to a dark blue at the right. This region of the diagram is labeled “exosphere greater than 700 k m.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Atmosphere.jpg"/>
+</media>
+<caption>Lofthjúpur
+jarðar hefur fimm lög: veðrahvolf, heiðhvolf, miðhvolf, hitahvolf og
+úthvolf.</caption>
+</figure>
+<para id="fs-idm30549520">Loftslagsfræði er fræðigrein um
+loftslag, meðalveðurskilyrði yfir löng tímabil, með notkun
+lofthjúpsgagna. Loftslagsfræðingar rannsaka þó mynstur og áhrif sem eiga
+sér stað yfir áratugi, aldir og árþúsundir, frekar en styttri tímaramma
+klukkustunda, daga og vikna eins og veðurfræðingar. Lofthjúpsvísindi er
+enn víðtækara svið sem sameinar veðurfræði, loftslagsfræði og aðrar
+vísindagreinar sem rannsaka lofthjúpinn.</para>
+</note>
+<section id="fs-idm62097440" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm102779232">Gösun beita þrýstingi, sem er
+kraftur á flatareiningu. Þrýstingur gass má gefa upp í SI-einingunni
+pascal eða kílópascal, auk margra annarra eininga, þar á meðal torr,
+loftþyngd og bar. Loftþrýstingur er mældur með loftvog; þrýsting annarra
+gasa má mæla með einni af nokkrum gerðum þrýstimæla.</para>
+</section>
+<section id="fs-idp68662112" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry>\[\[MATH:13\]\]</entry>
+</row>
+<row><entry><emphasis effect="italics">p</emphasis> = <emphasis effect="italics">hρg</emphasis></entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm20163680" class="exercises">
+<title>Efnafræði – verkefni í lok
+kafla</title>
+<exercise id="fs-idm21197344">
+<problem id="fs-idm57060672">
+<para id="fs-idm19553744">Hvers vegna eru beittir hnífar
+skilvirkari en sljóir hnífar? (Vísbending: Hugsaðu um skilgreininguna á
+þrýstingi.)</para></problem>
+<solution id="fs-idp73580448">
+<para id="fs-idm33698016">Eggin á beittum hníf hefur minna
+yfirborðsflatarmál en á sljóum hníf. Þar sem þrýstingur er kraftur á
+flatarmálseiningu, beitir beittur hnífur meiri þrýstingi með sama krafti
+og sker því betur í gegnum efni.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp152253216">
+<problem id="fs-idp37040256">
+<para id="fs-idp62697024">Hvers vegna eru þyngdartakmarkanir
+á sumum litlum brúm sem fara eftir því hversu mörg hjól eða öxla
+ökutækið hefur?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp44372288">
+<problem id="fs-idm79676256">
+<para id="fs-idm50132240">Hvers vegna ættir þú að rúlla eða
+skríða á maganum frekar en að ganga yfir þunnan ís á tjörn?</para>
+</problem>
+<solution id="fs-idm86775888">
+<para id="fs-idp69163280">Með því að liggja dreifist þyngd
+þín yfir stærra yfirborðsflatarmál, sem veldur minni þrýstingi á ísinn
+en ef þú stendur upprétt. Ef þú beitir minni þrýstingi eru minni líkur á
+að þú brjótir þunnan ís.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp74012224">
+<problem id="fs-idm648288">
+<para id="fs-idm137597392">Dæmigerður loftvogarþrýstingur í
+Redding, Kaliforníu, er um 750 mm Hg. Reiknaðu þennan þrýsting í atm og
+kPa.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm32613120">
+<problem id="fs-idm70646416">
+<para id="fs-idp3670784">Dæmigerður loftvogarþrýstingur í
+Denver, Colorado, er 615 mm Hg. Hver er þessi þrýstingur í loftþyngdum
+og kílópaskölum?</para>
+</problem>
+<solution id="fs-idp7821744">
+<para id="fs-idm25200320">0,809 atm; 82,0 kPa</para>
+</solution>
+</exercise>
+<exercise id="fs-idp30544832">
+<problem id="fs-idp184951584">
+<para id="fs-idp135739664">Dæmigerður loftvogarþrýstingur í
+Kansas City er 740 torr. Hver er þessi þrýstingur í loftþyngdum, í
+millimetrum kvikasilfurs og í kílópaskölum?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm87042080">
+<problem id="fs-idm45863536">
+<para id="fs-idp38342496">Kanadískir dekkjaþrýstingsmælar
+eru merktir í kílópaskölum. Hvaða mæling á slíkum mæli samsvarar 32 psi?</para>
+</problem>
+<solution id="fs-idm35019984">
+<para id="fs-idm5145968">2,2 \[\[MATH:14\]\] 10<sup>2</sup> kPa</para>
+</solution>
+</exercise>
+<exercise id="fs-idp128422496">
+<problem id="fs-idp8514416">
+<para id="fs-idm38508352">Við lendingar Viking-geimfaranna á
+Mars var loftþrýstingurinn að meðaltali ákvarðaður um 6,50 millibör (1
+bar = 0,987 atm). Hver er sá þrýstingur í torr og kPa?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm51193840">
+<problem id="fs-idp202273744">
+<para id="fs-idm88643488">Loftþrýstingur á yfirborði
+plánetunnar Venusar er um 88,8 atm. Berðu þann þrýsting í psi saman við
+venjulegan þrýsting á jörðu við sjávarmál í psi.</para>
+</problem>
+<solution id="fs-idm69952832">
+<para id="fs-idp86259712">Jörð: 14,7 lb in<sup>–2</sup>; Venus: 1,30
+× 10<sup>3</sup> lb in<sup>−2</sup></para></solution>
+</exercise>
+<exercise id="fs-idm81032176">
+<problem id="fs-idm50270928">
+<para id="fs-idm38299280">Í vörulista læknisfræðilegrar
+rannsóknarstofu er þrýstingi í gashylki lýst sem 14,82 MPa. Hver er
+þrýstingur þessa gass í loftþyngdum og torr?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm35019472">
+<problem id="fs-idp170653984">
+<para id="fs-idp39879760">Íhugaðu þessa sviðsmynd og svaraðu
+eftirfarandi spurningum: Um miðjan ágúst í norðausturhluta Bandaríkjanna
+birtust eftirfarandi upplýsingar í staðarblaðinu: loftþrýstingur við
+sjávarmál 29,97 in. Hg, 1013,9 mbar.</para><para id="fs-idm50271520">(a) Hver var þrýstingurinn í kPa?</para>
+<para id="fs-idp189723312">(b) Þrýstingur nálægt
+sjávarströndinni í norðausturhluta Bandaríkjanna er venjulega gefinn upp
+nálægt 30,0 in. Hg. Í fellibyl getur þrýstingurinn fallið niður í nálægt
+28,0 in. Hg. Reiknaðu þrýstingsfallið í torr.</para>
+</problem>
+<solution id="fs-idp142090480">
+<para id="fs-idm21108080">(a) 101,5 kPa; (b) 51 torr fall</para>
+</solution>
+</exercise>
+<exercise id="fs-idp32052448">
+<problem id="fs-idm91940192">
+<para id="fs-idp26220160">Hvers vegna er nauðsynlegt að nota
+órokgjarnan vökva í loftvog eða þrýstimæli?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm55768576">
+<problem id="fs-idm62139584">
+<para id="fs-idm29763808">Þrýstingur gassýnis er mældur við
+sjávarmál með lokuðum þrýstimæli. Vökvinn í þrýstimælinum er
+kvikasilfur. Ákvarðaðu þrýsting gassins í:</para>
+<para id="fs-idp89607040">(a) torr</para>
+<para id="fs-idm95742832">(b) Pa</para>
+<para id="fs-idm80328752">(c) bar</para>
+<media id="fs-idm92729728" alt="A diagram of a closed-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “closed end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 26.4 c m is indicated with horizontal line segments and arrows." class="scaled-down">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Manometer5_img.jpg"/>
+</media>
+</problem>
+<solution id="fs-idm48939344">
+<para id="fs-idm83006352">(a) 264 torr; (b) 35.200 Pa; (c)
+0,352 bar</para>
+</solution>
+</exercise>
+<exercise id="fs-idp27847856"><problem id="fs-idp17600752">
+<para id="fs-idp185367488">Þrýstingur gassýnis er mældur með
+opnum þrýstimæli, sem sést að hluta til hægri. Vökvinn í þrýstimælinum
+er kvikasilfur. Miðað við að loftþrýstingur sé 29,92 tommur Hg,
+ákvarðaðu þrýsting gassins í:</para>
+<para id="fs-idm39627648">(a) torr</para>
+<para id="fs-idp27090112">(b) Pa</para>
+<para id="fs-idm69293536">(c) börum</para>
+<media id="fs-idm26453536" alt="A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the left side than on the right. The difference in height of 6.00 i n is indicated with horizontal line segments and arrows." class="scaled-down-30">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Manometer6_img.jpg"/>
+</media>
+</problem>
+</exercise>
+<exercise id="fs-idm77194176"><problem id="fs-idp38649952">
+<para id="fs-idm86041584">Þrýstingur gassýnis er mældur við
+sjávarmál með opnum kvikasilfursþrýstimæli. Miðað við að loftþrýstingur
+sé 760,0 mm Hg, ákvarðaðu þrýsting gassins í:</para>
+<para id="fs-idp164256000">(a) mm Hg</para>
+<para id="fs-idp142813824">(b) atm</para>
+<para id="fs-idp30379328">(c) kPa</para>
+<media id="fs-idm1196240" alt="A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the left side than on the right. The difference in height of 13.7 c m is indicated with horizontal line segments and arrows." class="scaled-down-30">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Manometer7_img.jpg"/>
+</media>
+</problem>
+<solution id="fs-idp37385536">
+<para id="fs-idm33920592">(a) 623 mm Hg; (b) 0,820 atm; (c)
+83,1 kPa</para>
+</solution>
+</exercise>
+<exercise id="fs-idm35876656"><problem id="fs-idp133323424">
+<para id="fs-idp58526352">Þrýstingur gassýnis er mældur við
+sjávarmál með opnum kvikasilfursþrýstimæli. Miðað við að loftþrýstingur
+sé 760 mm Hg, ákvarðaðu þrýsting gassins í:</para>
+<para id="fs-idm77467552">(a) mm Hg</para>
+<para id="fs-idm90142112">(b) atm</para>
+<para id="fs-idp189802448">(c) kPa</para>
+<media id="fs-idm82208512" alt="A diagram of an open-end manometer is shown. To the upper left is a spherical container labeled, “gas.” This container is connected by a valve to a U-shaped tube which is labeled “open end” at the upper right end. The container and a portion of tube that follows are shaded pink. The lower portion of the U-shaped tube is shaded grey with the height of the gray region being greater on the right side than on the left. The difference in height of 26.4 c m is indicated with horizontal line segments and arrows." class="scaled-down-30">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Manometer8_img.jpg"/>
+</media>
+</problem>
+</exercise>
+<exercise id="fs-idm25727664">
+<problem id="fs-idm125997536">
+<para id="fs-idm79130144">Hvaða áhrif hefði notkun á
+rokgjörnum vökva á mælingu á gasi með opnum þrýstimælum samanborið við
+lokaða þrýstimæla?</para>
+</problem>
+<solution id="fs-idp135833360">
+<para id="fs-idm51906080">Með lokuðum þrýstimæli yrði engin
+breyting, þar sem uppgufaði vökvinn myndi valda jöfnum, gagnstæðum
+þrýstingi í báðum örmum þrýstimælisrörsins. Hins vegar, með opnum
+þrýstimæli, fengist hærri þrýstingsmæling á gasinu en búist var við, þar
+sem <emphasis effect="italics">Þ</emphasis><sub>gas</sub> = <emphasis effect="italics">Þ</emphasis><sub>loftþr.</sub> + <emphasis effect="italics">Þ</emphasis><sub>rokgj. vökvi</sub>.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm92046304">
+<term>staðalloftþrýstingur
+(atm)</term>
+<meaning id="fs-idm92046304-meaning">þrýstingseining; 1 atm =
+101.325 Pa</meaning>
+</definition>
+<definition id="fs-idm49164816">
+<term>bar</term>
+<meaning id="fs-idm49164816-meaning">(bar eða b)
+þrýstingseining; 1 bar = 100.000 Pa</meaning>
+</definition>
+<definition id="fs-idp128557152">
+<term>loftvog</term>
+<meaning id="fs-idp128557152-meaning">tæki sem notað er til að
+mæla loftþrýsting</meaning>
+</definition>
+<definition id="fs-idp1898224">
+<term>vökvastöðuþrýstingur</term>
+<meaning id="fs-idp1898224-meaning">þrýstingur sem vökvi
+beitir vegna þyngdarafls</meaning>
+</definition>
+<definition id="fs-idm30126128">
+<term>þrýstimælir</term>
+<meaning id="fs-idm30126128-meaning">tæki sem notað er til að
+mæla þrýsting gass sem er lokað inni í íláti</meaning>
+</definition>
+<definition id="fs-idm69533872">
+<term>paskal (Pa)</term>
+<meaning id="fs-idm69533872-meaning">SI-eining þrýstings; 1 Pa
+= 1 N/m2</meaning>
+</definition>
+<definition id="fs-idm87137504">
+<term>pund á fertommu (psi)</term>
+<meaning id="fs-idm87137504-meaning">þrýstingseining sem er
+algeng í Bandaríkjunum</meaning>
+</definition>
+<definition id="fs-idm61385376">
+<term>þrýstingur</term>
+<meaning id="fs-idm61385376-meaning">kraftur sem beitt er á
+flatareiningu</meaning>
+</definition>
+<definition id="fs-idm23965520">
+<term>torr</term>
+<meaning id="fs-idm23965520-meaning">þrýstingseining; 1
+torr=1760atm</meaning>
+</definition>
+</glossary>
+</document>

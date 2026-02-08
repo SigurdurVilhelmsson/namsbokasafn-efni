@@ -1,0 +1,381 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Hreyfi- og sameindakenningin</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68758</md:content-id>
+  <md:title>The Kinetic-Molecular Theory</md:title>
+  <md:abstract><list id="list-00001"><item>Tilgreindu
+grundvallarsetningar hreyfi- og sameindakenningarinnar</item><item>Notaðu grundvallarsetningar
+þessarar kenningar til að útskýra gaslögmálin</item></list></md:abstract>
+  <md:uuid>4e7fd664-a228-4ce5-ac39-cec1b6b516b3</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm127996416">Gaslögmálin sem við höfum skoðað
+hingað til, ásamt jöfnu kjörgass, eru raunvísindaleg, það er að segja,
+þau hafa verið leidd út frá tilraunum. Stærðfræðileg form þessara
+lögmála lýsa náið hegðun flestra gasa á stórsæjum skala við þrýsting sem
+er lægri en um 1 eða 2 atm. Þótt gaslögmálin lýsi samböndum sem hafa
+verið staðfest með mörgum tilraunum, segja þau okkur ekki hvers vegna
+gös fylgja þessum samböndum.</para>
+<para id="fs-idm165041184"><emphasis effect="bold">Hreyfi- og sameindakenningin</emphasis>
+(KMT) er einfalt smásætt líkan sem útskýrir á áhrifaríkan hátt
+gaslögmálin sem lýst er í fyrri einingum þessa kafla. Þessi kenning
+byggir á eftirfarandi fimm grundvallarsetningum sem lýst er hér.
+(Athugið: Hugtakið „sameind“ verður notað til að vísa til einstakra
+efnafræðilegra eininga sem mynda gasið, þótt sum gös séu samsett úr
+frumeindum, til dæmis eðalgös.)</para>
+<list id="fs-idm178411376" list-type="enumerated" number-style="arabic">
+<item>Gös eru samsett úr sameindum
+sem eru á stöðugri hreyfingu, ferðast í beinum línum og breyta aðeins um
+stefnu þegar þær rekast á aðrar sameindir eða á veggi íláts.</item>
+<item>Sameindirnar sem mynda gasið
+eru hverfandi litlar miðað við fjarlægðina á milli þeirra.</item>
+<item>Þrýstingurinn sem gas í íláti
+beitir stafar af árekstrum milli gassameindanna og veggja ílátsins.</item>
+<item>Gassameindir beita engum
+aðdráttar- eða fráhrindikröftum hver á aðra eða á veggi ílátsins; því
+eru árekstrar þeirra <emphasis effect="italics">fjaðrandi</emphasis> (fela ekki í sér orkutap).</item>
+<item>Meðalhreyfiorka
+gassameindanna er í réttu hlutfalli við kelvinhitastig gassins.</item>
+</list>
+<para id="fs-idm128213904">Prófraunin á KMT og
+grundvallarsetningum hennar er hæfni hennar til að útskýra og lýsa
+hegðun gass. Hin ýmsu gaslögmál má leiða út frá forsendum KMT, sem hefur
+fengið efnafræðinga til að trúa því að forsendur kenningarinnar
+endurspegli nákvæmlega eiginleika gassameinda. Við munum fyrst skoða
+einstök gaslögmál (lögmál Boyles, Charles, Amontons, Avogadros og
+Daltons) á huglægan hátt til að sjá hvernig KMT útskýrir þau. Síðan
+munum við skoða nánar sambandið milli sameindamassa, hraða og hreyfiorku
+við hitastig og útskýra lögmál Grahams.</para>
+<section id="fs-idm94057008">
+<title>Hreyfi- og sameindakenningin
+útskýrir hegðun gasa, I. hluti</title>
+<para id="fs-idm188928480">Með því að rifja upp að
+gasþrýstingur er beittur af gassameindum á hraðri hreyfingu og er í
+beinu hlutfalli við fjölda sameinda sem rekast á flatareiningu veggjar á
+tímaeiningu, sjáum við að KMT útskýrir huglægt hegðun gass á
+eftirfarandi hátt:</para>
+<list id="fs-idm221875200" list-type="bulleted" bullet-style="bullet">
+<item><emphasis effect="italics">Lögmál Amontons.</emphasis> Ef
+hitastigið er aukið, eykst meðalhraði og hreyfiorka gassameindanna. Ef
+rúmmálinu er haldið föstu, leiðir aukinn hraði gassameindanna til tíðari
+og kröftugri árekstra við veggi ílátsins, sem eykur þar með þrýstinginn
+(&lt;!-- XREF:2 -->).</item>
+<item><emphasis effect="italics">Lögmál Charles.</emphasis> Ef hitastig
+gass er aukið, er aðeins hægt að viðhalda föstum þrýstingi ef rúmmál
+gassins eykst. Þetta mun leiða til lengri meðalvegalengda sem
+sameindirnar ferðast til að ná að veggjum ílátsins, auk aukins
+yfirborðsflatarmáls veggjanna. Þessar aðstæður munu draga bæði úr tíðni
+árekstra sameinda við veggi og fjölda árekstra á flatareiningu, en
+samanlögð áhrif þess vega upp á móti áhrifum aukins árekstrarkrafts
+vegna meiri hreyfiorku við hærra hitastig.</item>
+<item><emphasis effect="italics">Lögmál Boyles.</emphasis> Ef rúmmál
+ákveðins magns af gasi við ákveðið hitastig er minnkað (þ.e. ef gasið er
+<emphasis effect="italics">þjappað saman</emphasis>), verða sameindirnar fyrir minna flatarmáli ílátsveggja.
+Árekstrar við veggi ílátsins verða því tíðari og þrýstingurinn sem gasið
+beitir mun aukast (&lt;!-- XREF:3 -->).</item>
+<item><emphasis effect="italics">Lögmál Avogadros.</emphasis> Við
+fastan þrýsting og hitastig eru tíðni og kraftur árekstra sameinda við
+veggi fastir. Við slíkar aðstæður mun aukning á fjölda gassameinda
+krefjast hlutfallslegrar aukningar á rúmmáli ílátsins til að ná fram
+fækkun árekstra á flatareiningu til að vega upp á móti aukinni tíðni
+árekstra (&lt;!-- XREF:4 -->).</item>
+<item><emphasis effect="italics">Lögmál Daltons.</emphasis> Vegna
+mikillar fjarlægðar á milli þeirra rekast sameindir eins gass í
+efnablöndu á veggi ílátsins með sömu tíðni hvort sem önnur gös eru til
+staðar eða ekki, og heildarþrýstingur gasefnablöndu er jafn summu
+(hlut-)þrýstings einstakra gasa.</item>
+</list>
+<figure id="CNX_Chem_09_04_KMT2"><media id="fs-idm82315616" alt="This figure shows 3 pairs of pistons and cylinders. In a, which is labeled, “Charles’s Law,” the piston is positioned for the first cylinder so that just over half of the available volume contains 6 purple spheres with trails behind them. The trails indicate movement. Orange dashes extend from the interior surface of the cylinder where the spheres have collided. This cylinder is labeled, “Baseline.” In the second cylinder, the piston is in the same position, and the label, “Heat” is indicated in red capitalized text. Four red arrows with wavy stems are pointing upward to the base of the cylinder. The six purple spheres have longer trails behind them and the number of orange dashes indicating points of collision with the container walls has increased. A rectangle beneath the diagram states, “Temperature increased, Volume constant equals Increased pressure.” In b, which is labeled, “Boyle’s Law,” the first, baseline cylinder shown is identical to the first cylinder in a. In the second cylinder, the piston has been moved, decreasing the volume available to the 6 purple spheres to half of the initial volume. The orange dashes indicating points of collision with the container walls has increased. This second cylinder is labeled, “Volume decreased.” A rectangle beneath the diagram states, “Volume decreased, Wall area decreased equals Increased pressure.” In c, which is labeled “Avogadro’s Law,” the first, baseline cylinder shown is identical to the first cylinder in a. In the second cylinder, the number of purple spheres has changed from 6 to 12 and volume has doubled. This second cylinder is labeled “Increased gas.” A rectangle beneath the diagram states, “At constant pressure, More gas molecules added equals Increased volume.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_04_KMT2.jpg"/>
+</media>
+
+<caption>(a) Þegar hitastig
+gass eykst, eykst gasþrýstingur vegna aukins krafts og tíðni
+sameindaárekstra. (b) Þegar rúmmál minnkar, eykst gasþrýstingur vegna
+aukinnar tíðni sameindaárekstra. (c) Þegar magn gass eykst við fastan
+þrýsting, eykst rúmmál til að ná fram föstum fjölda árekstra á
+flatareiningu veggjar á tímaeiningu.</caption></figure>
+</section>
+<section id="fs-idm203169728">
+<title>Sameindahraði og hreyfiorka</title>
+<para id="fs-idm178235328">Í fyrri umræðu kom fram að
+hreyfifræðikenning gasa (KMT) útskýrir á eigindlegan hátt þá hegðun sem
+hin ýmsu gaslögmál lýsa. Hægt er að beita kennisetningum þessarar
+kenningar á magnbundnari hátt til að leiða út þessi einstök lögmál. Til
+þess þurfum við fyrst að skoða hraða og hreyfiorku gassameinda og
+hitastig gassýnis.</para>
+<para id="fs-idm49087808">Í gassýni hafa einstakar sameindir
+mjög mismunandi hraða; en vegna <emphasis effect="italics">gríðarlegs</emphasis> fjölda sameinda og árekstra
+er hraðadreifing sameindanna og meðalhraði þeirra stöðugur. Þessi
+hraðadreifing sameinda er þekkt sem Maxwell-Boltzmann-dreifing og hún
+sýnir hlutfallslegan fjölda sameinda í gassýni sem hafa ákveðinn hraða
+(&lt;!-- XREF:5 -->).</para>
+<figure id="CNX_Chem_09_05_MolSpeed1" class="scaled-down">
+<media id="fs-idm97447152" alt="A graph is shown. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 20 beginning at 0 and extending up to 120. The vertical axis is labeled, “Fraction of molecules.” A positively or right-skewed curve is shown in red which begins at the origin and approaches the horizontal axis around 120 m per s. At the peak of the curve, a point is indicated with a black dot and is labeled, “v subscript p.” A vertical dashed line extends from this point to the horizontal axis at which point the intersection is labeled, “v subscript p.” Slightly to the right of the peak a second black dot is placed on the curve. This point is labeled, “v subscript r m s.” A vertical dashed line extends from this point to the horizontal axis at which point the intersection is labeled, “v subscript r m s.” The label, “O subscript 2 at T equals 300 K” appears in the open space to the right of the curve.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_05_MolSpeed1.jpg"/>
+</media>
+<caption>Hér er sýnd
+hraðadreifing sameinda fyrir súrefnisgas við 300 K. Mjög fáar sameindir
+hreyfast annaðhvort á mjög lágum eða mjög háum hraða. Fjöldi sameinda
+með millihraða eykst hratt upp að hámarki, sem er líklegasti hraðinn, og
+fellur síðan hratt. Athugið að líklegasti hraðinn, ν<sub>p</sub>, er aðeins minni
+en 400 m/s, á meðan meðalkvaðratrótarhraðinn, <emphasis effect="italics">u</emphasis><sub>rms</sub>, er nær 500 m/s.</caption>
+</figure>
+<para id="fs-idm188037232">Hreyfiorka (KE) eindar með massa
+(<emphasis effect="italics">m</emphasis>) og hraða (<emphasis effect="italics">u</emphasis>) er gefin með:</para>
+<equation id="fs-idm43195728" class="unnumbered"><m:math><m:mrow><m:mtext>KE</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>m</m:mi><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm178023104">Ef massi er gefinn í kílógrömmum og
+hraði í metrum á sekúndu fást orkugildi í einingunni júl (J = kg m<sup>2</sup>
+s<sup>–2</sup>). Til að fást við mikinn fjölda gassameinda notum við meðaltöl
+fyrir bæði hraða og hreyfiorku. Í KMT er <emphasis effect="bold">meðalkvaðratrótarhraði</emphasis>
+eindar, **<emphasis effect="italics">u</emphasis><sub>rms</sub>*<emphasis effect="italics">, skilgreindur sem kvaðratrótin af meðaltali
+kvaðrata hraðanna þar sem </emphasis>n* = fjöldi einda:</para>
+<equation id="fs-idp57614544" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mover accent="true"><m:mrow><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mo stretchy="true">¯</m:mo></m:mover></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>u</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>3</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>4</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>…</m:mo></m:mrow><m:mi>n</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></equation>
+<para id="fs-idm140862528">Meðalhreyfiorka fyrir eitt mól af
+eindum, KE<sub>avg</sub>, er þá jöfn:</para>
+<equation id="fs-idm248247136" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msubsup><m:mrow><m:mi>M</m:mi><m:mi>u</m:mi></m:mrow><m:mrow><m:mtext>rms</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn></m:mrow></m:msubsup></m:mrow></m:math></equation>
+<para id="fs-idm52829008">þar sem <emphasis effect="italics">M</emphasis> er mólmassi gefinn í
+einingunni kg/mól. KE<sub>avg</sub> fyrir eitt mól af gassameindum er einnig í
+beinu hlutfalli við hitastig gassins og má lýsa með jöfnunni:</para>
+<equation id="fs-idm181584464" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></equation>
+<para id="fs-idm166238448">þar sem <emphasis effect="italics">R</emphasis> er gasfastinn og T er
+hitastigið í kelvin. Þegar þessi jafna er notuð er viðeigandi form
+gasfastans 8,314 J/mól⋅K (8,314 kg m<sup>2</sup>s<sup>–2</sup>mól<sup>–1</sup>K<sup>–1</sup>). Hægt er að
+sameina þessar tvær aðskildu jöfnur fyrir KE<sub>avg</sub> og endurraða þeim til
+að fá samband milli sameindahraða og hitastigs:</para>
+<equation id="fs-idm155100320" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msubsup><m:mrow><m:mi>M</m:mi><m:mi>u</m:mi></m:mrow><m:mrow><m:mtext>rms</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn></m:mrow></m:msubsup><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math></equation>
+<equation id="fs-idp16162192" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></equation>
+<example id="fs-idm203397264">
+<para id="fs-idm217669472"><title>Lausn</title>Útreikningur á <emphasis effect="italics">u</emphasis><sub>rms</sub>Reiknið
+meðalkvaðratrótarhraða fyrir nitursameind við 30 °C.</para><para id="fs-idm124389728">Breytið hitastiginu í kelvin:</para>
+<equation id="fs-idm41104608" class="unnumbered"><m:math><m:mrow><m:mn>30</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo>+</m:mo><m:mn>273</m:mn><m:mo>=</m:mo><m:mtext>303 K</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm144782000">Ákvarðið mólmassa niturs í
+kílógrömmum:</para><equation id="fs-idm215032176" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:mn>28.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose></m:mrow><m:mrow><m:mtext>1 mol</m:mtext></m:mrow></m:mfrac><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.4em"/><m:mfrac><m:mrow><m:mtext>1 kg</m:mtext></m:mrow><m:mrow><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.028</m:mn><m:mspace width="0.2em"/><m:mtext>kg/mol</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm160368176">Setjið breytur og fasta inn í
+jöfnuna fyrir meðalkvaðratrótarhraða og skiptið út júlum fyrir
+samsvarandi einingu kg m<sup>2</sup>s<sup>–2</sup>:</para>
+<equation id="fs-idm151766032" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></equation>
+<equation id="fs-idm230973056" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mo stretchy="false">(</m:mo><m:mn>8.314</m:mn><m:mspace width="0.2em"/><m:mtext>J/mol K</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mtext>303 K</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>0.028</m:mn><m:mspace width="0.2em"/><m:mtext>kg/mol</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac></m:mrow></m:msqrt><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:mn>2.70</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>5</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>m</m:mtext><m:mn>2</m:mn></m:msup><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:msqrt><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>519</m:mn><m:mspace width="0.2em"/><m:mtext>m/s</m:mtext></m:mrow></m:math></equation><para id="fs-idm87955168"><title>Spurningar til íhugunar</title>Reiknið meðalkvaðratrótarhraða fyrir
+eitt mól af súrefnissameindum við –23 °C.</para><note id="fs-idm134812432"><title>Answer:</title>
+<para id="fs-idm126530816">441 m/s</para>
+</note>
+</example>
+<para id="fs-idm298779008">Ef hitastig gass eykst, eykst
+KE<sub>avg</sub> þess, fleiri sameindir hafa meiri hraða og færri sameindir hafa
+minni hraða og dreifingin hliðrast í átt að meiri hraða í heildina, þ.e.
+til hægri. Ef hitastig lækkar, minnkar KE<sub>avg</sub>, fleiri sameindir hafa
+minni hraða og færri sameindir hafa meiri hraða og dreifingin hliðrast í
+átt að minni hraða í heildina, þ.e. til vinstri. Þessi hegðun er sýnd
+fyrir niturgas í &lt;!-- XREF:6 -->.</para>
+<figure id="CNX_Chem_09_05_MolSpeed2" class="scaled-down">
+<media id="fs-idm138828064" alt="A graph with four positively or right-skewed curves of varying heights is shown. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 500 beginning at 0 and extending up to 1500. The vertical axis is labeled, “Fraction of molecules.” The label, “N subscript 2,” appears in the open space in the upper right area of the graph. The tallest and narrowest of these curves is labeled, “100 K.” Its right end appears to touch the horizontal axis around 700 m per s. It is followed by a slightly wider curve which is labeled, “200 K,” that is about three quarters of the height of the initial curve. Its right end appears to touch the horizontal axis around 850 m per s. The third curve is significantly wider and only about half the height of the initial curve. It is labeled, “500 K.” Its right end appears to touch the horizontal axis around 1450 m per s. The final curve is only about one third the height of the initial curve. It is much wider than the others, so much so that its right end has not yet reached the horizontal axis. This curve is labeled, “1000 K.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_05_MolSpeed2.jpg"/>
+</media>
+<caption>Hraðadreifing
+sameinda fyrir niturgas (N<sub>2</sub>) hliðrast til hægri og fletst út þegar
+hitastig eykst; hún hliðrast til vinstri og hækkar þegar hitastig
+lækkar.</caption>
+</figure>
+<para id="fs-idm131874080">Við gefið hitastig hafa öll gös sömu
+KE<sub>avg</sub> fyrir sameindir sínar. Gös sem samanstanda af léttari sameindum
+hafa fleiri háhraða eindir og hærri <emphasis effect="italics">u<sub>rms</sub></emphasis>, með hraðadreifingu sem nær
+hámarki við tiltölulega hærri hraða. Gös sem samanstanda af þyngri
+sameindum hafa fleiri lághraða eindir, lægri <emphasis effect="italics">u<sub>rms</sub></emphasis> og hraðadreifingu
+sem nær hámarki við tiltölulega lægri hraða. Þessi þróun sést á gögnum
+fyrir röð eðalgasa sem sýnd eru í &lt;!-- XREF:7 -->.</para>
+<figure id="CNX_Chem_09_05_MolSpeed3" class="scaled-down">
+<media id="fs-idm50029872" alt="A graph is shown with four positively or right-skewed curves of varying heights. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 500 beginning at 0 and extending up to 3000. The vertical axis is labeled, “Fraction of molecules.” The tallest and narrowest of these curves is labeled, “X e.” Its right end appears to touch the horizontal axis around 600 m per s. It is followed by a slightly wider curve which is labeled, “A r,” that is about half the height of the initial curve. Its right end appears to touch the horizontal axis around 900 m per s. The third curve is significantly wider and just over a third of the height of the initial curve. It is labeled, “N e.” Its right end appears to touch the horizontal axis around 1200 m per s. The final curve is only about one fourth the height of the initial curve. It is much wider than the others, so much so that its right reaches the horizontal axis around 2500 m per s. This curve is labeled, “H e.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_09_05_MolSpeed3.jpg"/>
+</media>
+<caption>sameindahraði er
+í beinu sambandi við sameindamassa. Við tiltekið hitastig hreyfast
+léttari sameindir að meðaltali hraðar en þyngri sameindir.</caption>
+</figure>
+<note id="fs-idm177038688" class="chemistry link-to-learning">
+<para id="fs-idm110634256">Nota má
+&lt;!-- LINK:1 -->gasherminn&lt;!-- /LINK --> til að skoða áhrif hitastigs á
+sameindahraða. Skoðaðu „orkusúlurit“ hermisins (hraðadreifingar
+sameinda) og „upplýsingar um efni“ (sem gefur upp meðalhraða) fyrir
+sameindir með mismunandi massa við ýmis hitastig.</para>
+</note>
+</section>
+<section id="fs-idm220495248">
+<title>Hreyfi-sameindakenningin
+útskýrir hegðun gasa, II. hluti</title>
+<para id="fs-idp30560352">Samkvæmt lögmáli Grahams eru
+sameindir gass á hraðri hreyfingu og sameindirnar sjálfar eru litlar.
+Meðalfjarlægðin milli sameinda gass er mikil í samanburði við stærð
+sameindanna. Afleiðingin er sú að gassameindir geta auðveldlega farið
+fram hjá hver annarri og dreifst tiltölulega hratt.</para>
+<para id="fs-idm65845776">Útstreymishraði gass fer beint eftir
+(meðal)hraða sameinda þess:</para>
+<equation id="fs-idp1163392" class="unnumbered"><m:math><m:mrow><m:mtext>effusion rate</m:mtext><m:mspace width="0.2em"/><m:mo>∝</m:mo><m:mspace width="0.2em"/><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm219209680">Með því að nota þetta samband og
+jöfnuna sem tengir sameindahraða við massa má auðveldlega leiða út
+lögmál Grahams eins og sýnt er hér:</para>
+<equation id="fs-idm166257280" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></equation>
+<equation id="fs-idm197441248" class="unnumbered"><m:math><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:msubsup><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:msup><m:mover accent="true"><m:mi>u</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<equation id="fs-idm136528624" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mrow><m:mtext>effusion rate A</m:mtext></m:mrow><m:mrow><m:mtext>effusion rate B</m:mtext></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext><m:mspace width="0.2em"/><m:mtext>A</m:mtext></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext><m:mspace width="0.2em"/><m:mtext>B</m:mtext></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:msub><m:mi>M</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:msub><m:mi>M</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:msqrt></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>M</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>M</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math></equation>
+<para id="fs-idm131494928">Hlutfall útstreymishraða er því
+leitt út til að vera í öfugu hlutfalli við hlutfall kvaðratróta massa
+þeirra. Þetta er sama samband og sést í tilraunum og er sett fram sem
+lögmál Grahams.</para>
+</section>
+<section id="fs-idp25934352" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp11491120">Hreyfi-sameindakenningin er einfalt
+en mjög áhrifaríkt líkan sem útskýrir hegðun kjörgass á skilvirkan hátt.
+Kenningin gerir ráð fyrir að gös samanstandi af víðtækt aðskildum
+sameindum með hverfandi rúmmál sem eru á stöðugri hreyfingu, rekast
+fjaðrandi á hvor aðra og veggi íláts síns með meðalhraða sem ræðst af
+alkulshitastigi þeirra. Einstakar sameindir gass sýna ýmsan hraða og
+dreifing þessa hraða er háð hitastigi gassins og massa sameinda þess.</para>
+</section>
+<section id="fs-idm188828400" class="key-equations">
+<title>Lykiljöfnur</title>
+<table id="key-equations-table" class="unnumbered unstyled" summary="key equations table"><label/>
+<tgroup cols="1"><colspec colnum="1" colname="c1"/>
+<tbody>
+<row><entry>\[\[MATH:1\]\]</entry>
+</row>
+<row><entry>\[\[MATH:2\]\]</entry>
+</row>
+<row><entry>\[\[MATH:3\]\]</entry>
+</row>
+</tbody></tgroup></table>
+</section>
+<section id="fs-idm162733696" class="exercises">
+<title>Efnafræði – Æfingar í lok
+kafla</title>
+<exercise id="fs-idm159823744">
+<problem id="fs-idm150949648">
+<para id="fs-idm212848544">Notaðu frumsendur
+hreyfi-sameindakenningarinnar til að útskýra hvers vegna gas fyllir ílát
+af hvaða lögun sem er jafnt.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm178556768">
+<problem id="fs-idm146263632">
+<para id="fs-idm196791600">Getur hraði tiltekinnar sameindar
+í gasi tvöfaldast við stöðugt hitastig? Útskýrðu svarið.</para>
+</problem>
+<solution id="fs-idm99833504">
+<para id="fs-idm162271264">Já. Á hverju augnabliki er úrval
+af gildum fyrir sameindahraða í sýni af gasi. Hver einasta sameind getur
+aukið eða hægt á sér þegar hún rekst á aðrar sameindir. Meðalhraði allra
+sameinda er fastur við stöðugt hitastig.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm213877296">
+<problem id="fs-idm204603328">
+<para id="fs-idm59208640">Lýstu því hvað gerist með
+meðalhreyfiorku kjörgassameinda þegar aðstæðum er breytt sem hér segir:</para>
+<para id="fs-idm175667504">(a) Þrýstingur gassins er aukinn
+með því að minnka rúmmálið við stöðugt hitastig.</para>
+<para id="fs-idm148561248">(b) Þrýstingur gassins er aukinn
+með því að auka hitastigið við stöðugt rúmmál.</para>
+<para id="fs-idp12415536">(c) Meðalhraði sameindanna er
+aukinn um stuðulinn 2.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp16129152">
+<problem id="fs-idm136526752">
+<para id="fs-idm89452736">Hraðadreifing sameinda í
+helíumsýni er sýnd í &lt;!-- XREF:8 -->. Ef sýnið er kælt, mun hraðadreifingin
+líkjast meira dreifingu H<sub>2</sub> eða H<sub>2</sub>O? Útskýrðu svarið.</para>
+</problem>
+<solution id="fs-idm136225376">
+<para id="fs-idm161469056">H<sub>2</sub>O. Kæling hægir á hraða
+He-atómanna, sem veldur því að þau hegða sér eins og þau væru þyngri.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp62923856">
+<problem id="fs-idm123179728">
+<para id="fs-idm214348288">Hvert er hlutfall meðalhreyfiorku
+SO<sub>2</sub>-sameindar á móti O<sub>2</sub>-sameind í efnablöndu tveggja gasa? Hvert er
+hlutfall meðalferningsrótarhraða, <emphasis effect="italics">u</emphasis><sub>rms</sub>, gasanna tveggja?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm124543936">
+<problem id="fs-idm49064864">
+<para id="fs-idm153083536">1 lítra sýni af CO við
+staðalaðstæður er hitað í 546 K og rúmmál þess aukið í 2 lítra.</para><para id="fs-idm216426960">(a) Hvaða áhrif hafa þessar
+breytingar á þrýstinginn sem gasið beitir?</para>
+<para id="fs-idm124781200">(b) Hver eru áhrifin á
+meðalhreyfiorku sameindanna?</para>
+<para id="fs-idm151776736">(c) Hver eru áhrifin á
+meðalferningsrótarhraða sameindanna?</para>
+</problem>
+<solution id="fs-idm175816864">
+<para id="fs-idm47263904">(a) Þrýstingur gassins helst
+óbreyttur. (b) Meðalhreyfiorkan tvöfaldast. (c)
+Meðalferningsrótarhraðinn eykst í \[\[MATH:4\]\] sinnum upphafsgildi
+sitt; <emphasis effect="italics">u</emphasis><sub>rms</sub> er í réttu hlutfalli við \[\[MATH:5\]\]</para>
+</solution>
+</exercise>
+<exercise id="fs-idm98413904">
+<problem id="fs-idm163726944">
+<para id="fs-idm110524464">Meðalferningsrótarhraði
+H<sub>2</sub>-sameinda við 25 °C er um 1,6 km/s. Hver er meðalferningsrótarhraði
+N<sub>2</sub>-sameindar við 25 °C?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm150122880">
+<problem id="fs-idm109601088">
+<para id="fs-idm161408528">Svaraðu eftirfarandi spurningum:</para>
+<para id="fs-idm184026432">(a) Er þrýstingur gassins í
+loftbelgnum sem sýndur er í upphafi þessa kafla meiri en, minni en eða
+jafn þrýstingi andrúmsloftsins fyrir utan belginn?</para><para id="fs-idm277950240">(b) Er eðlismassi gassins í
+loftbelgnum sem sýndur er í upphafi þessa kafla meiri en, minni en eða
+jafn eðlismassa andrúmsloftsins fyrir utan belginn?</para><para id="fs-idm184047024">(c) Við 1 atm þrýsting og 20 °C
+hitastig hefur þurrt loft eðlismassann 1,2256 g/L. Hver er
+(meðal)mólmassi þurrs lofts?</para>
+<para id="fs-idm205391088">(d) Meðalhitastig gassins í
+loftbelg er 1,30 \[\[MATH:6\]\] 10<sup>2</sup> °F. Reiknaðu eðlismassa þess, að
+því gefnu að mólmassinn sé jafn mólmassa þurrs lofts.</para><para id="fs-idm182287728">(e) Lyftigeta loftbelgs er jöfn
+mismuninum á massa kalda loftsins sem belgurinn ryður frá sér og massa
+gassins í belgnum. Hver er munurinn á massa 1,00 L af kalda loftinu í
+hluta (c) og heita loftinu í hluta (d)?</para><para id="fs-idm79081968">(f) Meðalbelgur hefur 60 feta
+þvermál og 1,1 \[\[MATH:7\]\] 10<sup>5</sup> ft<sup>3</sup> rúmmál. Hver er lyftikraftur
+slíks belgs? Ef þyngd belgsins og búnaðar hans er 500 pund, hver er þá
+burðargeta hans fyrir farþega og farm?</para>
+<para id="fs-idm148488336">(g) Belgur ber 40,0 lítra af
+fljótandi própani (eðlismassi 0,5005 g/L). Hvaða rúmmál af CO<sub>2</sub>- og
+H<sub>2</sub>O-gasi myndast við bruna þessa própans við staðalaðstæður?</para>
+<para id="fs-idp4425184">(h) Loftbelgsflug getur staðið í um
+90 mínútur. Ef allt eldsneytið er brennt á þessum tíma, hver er þá
+áætlaður hraði varmataps (í kJ/mín) frá heita loftinu í pokanum meðan á
+fluginu stendur?</para>
+</problem>
+<solution id="fs-idm111172832">
+<para id="fs-idm120199952">(a) jafn; (b) minni en; (c)
+29,48 g mól<sup>−1</sup>; (d) 1,0966 g L<sup>−1</sup>; (e) 0,129 g/L; (f) 4,01
+\[\[MATH:8\]\] 10<sup>5</sup> g; hrein lyftigeta = 384 lb; (g) 270 L; (h) 39,1 kJ
+mín<sup>−1</sup></para>
+</solution>
+</exercise>
+<exercise id="fs-idm194405232">
+<problem id="fs-idp25041248">
+<para id="fs-idm156558944">Sýndu að hlutfall sveimhraða gass
+1 á móti sveimhraða gass 2, \[\[MATH:9\]\] er það sama við 0 °C og 100
+°C.</para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm198763536">
+<term>hreyfifræðikenning
+sameinda</term>
+<meaning id="fs-idm198763536-meaning">kenning sem byggir á
+einföldum meginreglum og forsendum sem útskýra á áhrifaríkan hátt hegðun
+kjörgass</meaning>
+</definition>
+<definition id="fs-idm271276336">
+<term>meðalferningsrótarhraði (urms)</term>
+<meaning id="fs-idm271276336-meaning">mælikvarði á meðalhraða
+fyrir hóp einda, reiknaður sem kvaðratrót meðaltals kvaðrats hraðans</meaning>
+</definition>
+</glossary>
+</document>

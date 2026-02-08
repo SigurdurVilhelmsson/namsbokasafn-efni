@@ -1,0 +1,456 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Hvötun</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68795</md:content-id>
+  <md:title>Catalysis</md:title>
+  <md:abstract><para id="para-00001">Þegar þú hefur lokið við þennan kafla
+geturðu:</para><list id="list-00001"><item>Útskýrt hlutverk hvata með
+tilliti til hvarfganga og stöðuorkurita</item><item>Nefnt dæmi um hvötun í
+náttúrulegum ferlum og iðnaðarferlum</item></list></md:abstract>
+  <md:uuid>a6400a57-a040-4768-8222-61705d4fff83</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idm241568976">Meðal þeirra þátta sem hafa áhrif á
+hvarfhraða efnahvarfa og ræddir voru fyrr í þessum kafla var tilvist
+<emphasis effect="italics">hvata</emphasis>, efnis sem getur aukið hvarfhraða án þess að eyðast í hvarfinu.
+Hugtökin sem kynnt voru í fyrri kafla um hvarfganga gefa grunninn að
+skilningi á því hvernig hvatar geta sinnt þessu mjög mikilvæga
+hlutverki.</para>
+<para id="fs-idm627108512">&lt;!-- XREF:3 --> sýnir hvarfrit fyrir
+efnaferli án og með hvata. Athugun á ritunum sýnir nokkur einkenni
+þessara hvarfa. Í samræmi við þá staðreynd að ritin tvö tákna sama
+heildarhvarfið, byrja og enda báðar línur á sömu orku (í þessu tilfelli,
+þar sem myndefnin eru orkuríkari en hvarfefnin, er hvarfið innvermið).
+Hvarfgangarnir eru hins vegar greinilega ólíkir. Hvarfið án hvata fer
+fram með eins þreps hvarfgangi (eitt virkniástand sést), en hvarfið með
+hvata fylgir tveggja þrepa hvarfgangi (tvö virkniástönd sjást) með
+<emphasis effect="italics">verulega lægri virkjunarorku</emphasis>. Þessi munur sýnir hvernig hvati virkar
+til að flýta fyrir hvörfum, þ.e. með því að bjóða upp á annan hvarfgang
+með lægri virkjunarorku. Þó að hvarfgangur með hvata fyrir hvarf þurfi
+ekki endilega að fela í sér annan fjölda þrepa en hvarfgangur án hvata,
+verður hann að bjóða upp á hvarfleið þar sem hraðatakmarkandi þrepið er
+hraðara (lægri <emphasis effect="italics">E</emphasis><sub>a</sub>).</para>
+<figure id="CNX_Chem_12_07_CatReCoDig" class="scaled-down">
+<media id="fs-idm260543264" alt="A graph is shown with the label, “Extent of reaction,” appearing in a right pointing arrow below the x-axis and the label, “Energy,” in an upward pointing arrow just left of the y-axis. Approximately one-fifth of the way up the y-axis, a very short, somewhat flattened portion of both a red and a blue curve are shown. This region is labeled “Reactants.” A red concave down curve extends upward to reach a maximum near the height of the y-axis. From the peak, the curve continues downward to a second horizontally flattened region at a height of about one-third the height of the y-axis. This flattened region is labeled, “Products.” A second curve is drawn in blue with the same flattened regions at the start and end of the curve. The height of this curve is about two-thirds the height of the first curve and just right of its maximum, the curve dips low, then rises back and continues a downward trend at a lower height, but similar to that of the red curve. A horizontal dashed straight line extends from the point where both curves start in the “Reactants” region. A double sided arrow extends from the “Products” region at the end of both curves to this horizontal dashed line. This is labeled “capital delta H.” A double sided arrow extends from the dashed horizontal line to the peak of the red concave down curve. This arrow is labeled “E subscript a.” Another double sided arrow extends from the dashed horizontal line to the peak of the blue curve. This arrow is labeled “E subscript a.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_CatReCoDig.jpg"/>
+</media>
+<caption>Hvarfrit fyrir
+innvermið ferli án (rauð lína) og með (blá lína) hvata. Hvarfleiðin með
+hvata felur í sér tveggja þrepa hvarfgang (athugið tilvist tveggja
+virkniástanda) og milliefni (táknuð með dalnum milli virkniástandanna
+tveggja).</caption>
+</figure>
+<example id="fs-idm226461504">
+<para id="fs-idm51547456"><title>Hvarfrit fyrir hvörf
+með hvata</title>Hvarfritin tvö hér tákna sama
+hvarfið: annað án hvata og hitt með hvata. Metið virkjunarorkuna fyrir
+hvort ferli og ákvarðið hvort þeirra felur í sér hvata.</para>
+<media id="fs-idm142234720" alt="In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction,” and the y-axes are labeled, “Energy ( k J ).” The y-axes are marked off from 0 to 50 in intervals of five. In a, a blue curve is shown. It begins with a horizontal segment at about 6. The curve then rises sharply near the middle to reach a maximum of about 32 and similarly falls to another horizontal segment at about 10. In b, the curve begins and ends similarly, but the maximum reached near the center of the graph is only 20.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Rxndiagramex_img.jpg"/>
+</media>
+<para id="fs-idm154613456"><title>Lausn</title>Virkjunarorka er reiknuð með því að
+draga orku hvarfefnisins frá orku virkniástandsins.</para>
+<equation id="fs-idm239782272" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="left"><m:mtext>diagram (a):</m:mtext><m:mspace width="0.2em"/><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>32</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext><m:mo>−</m:mo><m:mn>6</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext><m:mo>=</m:mo><m:mn>26</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="left"><m:mtext>diagram (b):</m:mtext><m:mspace width="0.2em"/><m:msub><m:mi>E</m:mi><m:mtext>a</m:mtext></m:msub><m:mo>=</m:mo><m:mn>20</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext><m:mo>−</m:mo><m:mn>6</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext><m:mo>=</m:mo><m:mn>14</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm202838144">Hvarfið með hvata er það sem hefur
+lægri virkjunarorku, í þessu tilfelli táknað með riti b.</para>
+<para id="fs-idm163597616"><title>Prófaðu þekkingu þína</title>Hvarfrit fyrir efnaferli með og án
+hvata eru sýnd hér að neðan. Bæði hvörfin fela í sér tveggja þrepa
+hvarfgang með hraðatakmarkandi fyrsta þrepi. Reiknið virkjunarorku fyrir
+fyrsta þrep hvors hvarfgangs og ákvarðið hvor samsvarar hvarfinu með
+hvata. Hvernig ber saman annað þrep þessara tveggja hvarfganga?</para>
+<media id="fs-idm153634048" alt="In this figure, two graphs are shown. The x-axes are labeled, “Extent of reaction,” and the y-axes are labeledc “Energy (k J).” The y-axes are marked off from 0 to 100 at intervals of 10. In a, a blue curve is shown. It begins with a horizontal segment at about 10. The curve then rises sharply near the middle to reach a maximum of about 91, then sharply falls to about 52, again rises sharply to about 73 and falls to another horizontal segment at about 5. In b, the curve begins and ends similarly, but the first peak reaches about 81, drops to about 55, then rises to about 77 before falling to the horizontal region at about 5.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Rxndiagramcyl_img.jpg"/>
+</media>
+<note id="fs-idm215189760"><title>Answer:</title>
+<para id="fs-idm239441760">Fyrir fyrsta þrepið er <emphasis effect="italics">E</emphasis><sub>a</sub> = 80
+kJ fyrir (a) og 70 kJ fyrir (b), þannig að rit (b) sýnir hvarfið með
+hvata. Virkjunarorka fyrir annað þrep beggja hvarfganga er sú sama, 20
+kJ.</para>
+</note>
+</example>
+<section id="fs-idm65053840">
+<title>Einsleitir hvatar</title>
+<para id="fs-idm243256336"><emphasis effect="bold">Einsleitur hvati</emphasis> er í sama fasa
+og hvarfefnin. Hann víxlverkar við hvarfefni og myndar milliefni, sem
+síðan brotnar niður eða hvarfast við annað hvarfefni í einu eða fleiri
+þrepum til að endurmynda upprunalega hvatann og mynda myndefni.</para>
+<para id="fs-idm210214480">Sem mikilvægt dæmi um einsleita
+hvötun má nefna ósonlag jarðar. Óson í efri lofthjúpnum, sem verndar
+jörðina fyrir útfjólublárri geislun, myndast þegar súrefnissameindir
+gleypa útfjólublátt ljós og gangast undir hvarfið:</para>
+<equation id="fs-idm276049600" class="unnumbered"><m:math><m:mrow><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mover><m:mo>→</m:mo><m:mrow><m:mspace width="0.7em"/><m:mi>h</m:mi><m:mi>v</m:mi><m:mspace width="0.7em"/></m:mrow></m:mover><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm291675632">Óson er tiltölulega óstöðug sameind
+sem brotnar niður og gefur tvíatóma súrefni með öfugu hvarfi við þessa
+jöfnu. Þetta niðurbrotsefnahvarf er í samræmi við eftirfarandi tveggja
+þrepa hvarfgang:</para>
+<equation id="fs-idm37859104" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo>+</m:mo><m:mtext>O</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>O</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm103646832">Fjöldi efna getur hvatað niðurbrot
+ósons. Til dæmis er talið að niðurbrot ósonar með nituroxíði sem hvata
+fari fram með eftirfarandi þriggja þrepa hvarfgangi:</para>
+<equation id="fs-idm109392" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:mtext>NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mtext>3</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>NO</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>NO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm193932640">Eins og krafist er, er
+heildarhnignunin sú sama fyrir bæði tveggja þrepa hvarfganginn án hvata
+og þriggja þrepa hvarfganginn með NO sem hvata:</para>
+<equation id="fs-idm46801248" class="unnumbered"><m:math><m:mrow><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idm251830192">Taktu eftir að NO er hvarfefni í
+fyrsta þrepi hvarfgangsins og myndefni í síðasta þrepinu. Þetta er annað
+einkenni hvata: Þótt hann taki þátt í efnahvarfinu, eyðist hann ekki í
+hvarfinu.</para>
+<note id="fs-idm195911072" class="chemistry chemist-portrait">
+<title>Mario J. Molina</title>
+<para id="fs-idm149608448">Nóbelsverðlaununum í efnafræði árið
+1995 var deilt á milli Paul J. Crutzen, Mario J. <emphasis effect="bold">Molina</emphasis> (&lt;!-- XREF:4 -->)
+og F. Sherwood Rowland „fyrir vinnu þeirra í efnafræði andrúmsloftsins,
+sérstaklega varðandi myndun og niðurbrot ósons.“ \[neðanmálsgrein: „The
+Nobel Prize in Chemistry 1995,“ Nobel Prize.org, skoðað 18. febrúar
+2015,
+http://www.nobelprize.org/nobel_prizes/chemistry/laureates/1995/.\]
+Molina, sem var mexíkóskur ríkisborgari, vann meirihluta vinnu sinnar
+við Massachusetts Institute of Technology (MIT).</para>
+<figure id="CNX_Chem_12_07_Molina">
+<media id="fs-idm190322192" alt="A photograph is shown of Mario Molina. To the right of the photo, an image of Earth’s southern hemisphere is shown with a central circular region in purple with a radius of about half that of the entire hemisphere. Just outside this region is a narrow royal blue band, followed by an outer thin turquoise blue band. The majority of the outermost region is green. Two small bands of yellow are present in the lower regions of the image.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Molina.jpg"/>
+</media>
+<caption>(a) Mexíkóski
+efnafræðingurinn Mario Molina (1943–2020) deildi Nóbelsverðlaununum í
+efnafræði árið 1995 fyrir rannsóknir sínar á (b) ósonholunni yfir
+Suðurskautslandinu. (mynd a: með leyfi Mario Molina; mynd b: breyting á
+verki frá NASA)</caption>
+</figure>
+<para id="fs-idm242073328">Árið 1974 birtu Molina og Rowland
+grein í tímaritinu <emphasis effect="italics">Nature</emphasis> þar sem þeir lýstu í smáatriðum ógninni sem
+stafaði af klórflúorkolefnisgösum fyrir stöðugleika ósonlagsins í efri
+lofthjúpi jarðar. Ósonlagið verndar jörðina fyrir geislun sólar með því
+að gleypa útfjólublátt ljós. Þegar efnahvörf eyða magni ósonar í efri
+lofthjúpi myndast mælanlegt „gat“ yfir Suðurskautslandinu og aukið magn
+útfjólublárrar geislunar frá sólinni – sem er sterklega tengt við
+algengi húðkrabbameina – nær yfirborði jarðar. Vinna Molina og Rowland
+var lykilatriði í samþykkt Montreal-bókunarinnar, alþjóðlegs samnings
+sem undirritaður var árið 1987 og hóf með góðum árangri að fasa út
+framleiðslu efna sem tengd eru við eyðingu ósonar.</para>
+<para id="fs-idm4297296">Molina og Rowland sýndu fram á að
+klóratóm úr manngerðum efnum geta hvatað niðurbrot ósonar í ferli sem
+svipar til þess hvernig NO flýtir fyrir eyðingu ósonar. Klóratóm myndast
+þegar klórkolefni eða klórflúorkolefni – sem eitt sinn voru mikið notuð
+sem kælimiðlar og drifefni – brotna niður ljósefnafræðilega vegna
+útfjólublás ljóss eða hvarfast við hýdroxýlstakeindir. Dæmi um hvarfgang
+er sýnt hér með metýlklóríði:</para>
+<equation id="fs-idm241556704" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mtext>Cl</m:mtext><m:mo>+</m:mo><m:mtext>OH</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Cl</m:mtext><m:mo>+</m:mo><m:mtext>other products</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm211108656">Klórstakeindir brjóta niður óson og
+endurmyndast með eftirfarandi hvatandi hringrás:</para>
+<equation id="fs-idm150620768" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:mtext>Cl</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>ClO</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>ClO</m:mtext><m:mo>+</m:mo><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mtext>Cl</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd><m:mtext>overall Reaction:</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo>+</m:mo><m:mtext>O</m:mtext><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm225343040">Eitt eittóma klóratóm getur brotið
+niður þúsundir ósonsameinda. Sem betur fer er meirihluti klórs í
+andrúmsloftinu í óvirkum hvataformum Cl<sub>2</sub> og ClONO<sub>2</sub>.</para>
+<para id="fs-idm215571280">Eftir að hafa tekið við sínum hluta
+Nóbelsverðlaunanna hélt Molina áfram vinnu sinni í efnafræði
+andrúmsloftsins við MIT.</para>
+</note>
+<note id="fs-idm220632992" class="chemistry sciences-interconnect">
+<title>Skortur á
+glúkósa-6-fosfat dehýdrógenasa</title>
+<para id="fs-idm119819152">Ensím í mannslíkamanum virka sem
+hvatar fyrir mikilvæg efnahvörf í efnaskiptum frumna. Þar af leiðandi
+getur skortur á tilteknu ensími leitt til lífshættulegs sjúkdóms. G6PD
+(glúkósa-6-fosfat dehýdrógenasa) skortur, erfðasjúkdómur sem veldur
+skorti á ensíminu glúkósa-6-fosfat dehýdrógenasa, er algengasti
+ensímskortur hjá mönnum. Þetta ensím, sem sýnt er í &lt;!-- XREF:5 -->, er
+hraðatakmarkandi ensím fyrir efnaskiptaferlið sem sér frumum fyrir NADPH
+(&lt;!-- XREF:6 -->).</para>
+<figure id="CNX_Chem_12_07_Gluc6PhoDe" class="scaled-down">
+<media id="fs-idm119181376" alt="A colorful model of the Glucose-6-phosphate dehydrogenase structure is shown. The molecule has two distinct lobes which are filled with spiraled ribbon-like regions of yellow, lavender, blue, silver, green, and pink.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Gluc6PhoDe.jpg"/>
+</media>
+<caption>Glúkósa-6-fosfat dehýdrógenasi er hraðatakmarkandi ensím fyrir
+efnaskiptaferlið sem sér frumum fyrir NADPH.</caption>
+</figure>
+<para id="fs-idm227628064">Truflun á þessu ferli getur leitt
+til minnkaðs glútaþíons í rauðum blóðkornum; þegar allt glútaþíon er
+uppurið eru ensím og önnur prótein eins og blóðrauði viðkvæm fyrir
+skemmdum. Til dæmis getur blóðrauði umbreyst í bilirúbín, sem leiðir til
+gulu, ástands sem getur orðið alvarlegt. Fólk sem þjáist af G6PD skorti
+verður að forðast ákveðnar matvörur og lyf sem innihalda efni sem geta
+kallað fram skemmdir á glútaþíonsnauðum rauðum blóðkornum þeirra.</para>
+<figure id="CNX_Chem_12_07_HMPShuntPa"><media id="fs-idm154188336" alt="A reaction mechanism is diagrammed in this figure. At the left, the name Glucose is followed by a horizontal, right pointing arrow, labeled, “Hexokinase.” Below this arrow and to the left is a yellow star shape labeled, “A T P.” A curved arrow extends from this shape to the right pointing arrow, and down to the right to a small brown oval labeled, “A D P.” To the right of the horizontal arrow is the name Glucose 6 phosphate, which is followed by another horizontal, right pointing arrow which is labeled, “G 6 P D.” A small orange rectangle below and left of this arrow is labeled “N A D P superscript plus.” A curved arrow extends from this shape to the right pointing arrow, and down to the right to a small salmon-colored rectangle labeled “N A P D H.” A curved arrow extends from this shape below and to the left, back to the orange rectangle labeled, “N A D P superscript plus.” Another curved arrow extends from a green oval labeled “G S S G” below the orange rectangle, up to the arrow curving back to the orange rectangle. This last curved arrow continues on to the lower right to a second green oval labeled, “G S H.” The end of this curved arrow is labeled, “Glutathione reductase.” To the right of the rightmost horizontal arrow appears the name 6 phosphogluconate.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_HMPShuntPa.jpg"/>
+</media>
+
+<caption>Í hvarfgangi
+pentósa fosfat ferilsins hvetur G6PD hvarfið sem stjórnar NADPH,
+kóensími sem stjórnar glútaþíoni, andoxunarefni sem verndar rauð
+blóðkorn og aðrar frumur gegn oxunarskemmdum.</caption></figure></note>
+</section>
+<section id="fs-idm254642320">
+<title>Misleitir hvatar</title>
+<para id="fs-idm31937584"><emphasis effect="bold">Misleitur hvati</emphasis> er hvati sem er í
+öðrum fasa (venjulega föstu efni) en hvarfefnin. Slíkir hvatar virka
+yfirleitt með því að útvega virkt yfirborð þar sem hvarf getur átt sér
+stað. Gas- og vökvafasahvörf sem eru hvötuð af misleitum hvötum eiga sér
+stað á yfirborði hvatans frekar en innan gas- eða vökvafasans.</para>
+<para id="fs-idm52671504">Misleit hvötun felur yfirleitt í sér
+eftirfarandi ferla:</para>
+<list id="fs-idm202987392" list-type="enumerated" number-style="arabic">
+<item>Aðsog hvarfefnis/hvarfefna á
+yfirborð hvata</item>
+<item>Virkjun aðsogaðs
+hvarfefnis/hvarfefna</item>
+<item>Efnahvarf aðsogaðs
+hvarfefnis/hvarfefna</item>
+<item>Frásog myndefnis/myndefna af
+yfirborði hvata</item>
+</list>
+<para id="fs-idm173407040">&lt;!-- XREF:7 --> sýnir skrefin í
+hvarfgangi fyrir efnahvarf efnasambanda sem innihalda kolefnis-kolefnis
+tvítengi með vetni á nikkelhvata. Nikkel er hvatinn sem notaður er við
+vetnun fjölómettaðrar fitu og olía (sem innihalda nokkur
+kolefnis-kolefnis tvítengi) til að framleiða mettaða fitu og olíur (sem
+innihalda aðeins kolefnis-kolefnis eintengi).</para>
+<figure id="CNX_Chem_12_07_HetCats" class="scaled-down"><media id="fs-idm183187728" alt="In this figure, four diagrams labeled a through d are shown. In each, a green square surface is shown in perspective to provide a three-dimensional appearance. In a, the label “N i surface” is placed above with a line segment extending to the green square. At the lower left and upper right, pairs of white spheres bonded tougher together appear as well as white spheres on the green surface. Black arrows are drawn from each of the white spheres above the surface to the white sphere on the green surface. In b, the white spheres are still present on the green surface. Near the center of this surface is a molecule with two central black spheres with a double bond indicated by two horizontal black rods between them. Above and below to the left and right, a total of four white spheres are connected to the black spheres with white rods. A line segment extends from this structure to the label, “Ethylene adsorbed on surface breaking pi bonds.” Just above this is a nearly identical structure greyed out with three downward pointing arrows to the black and white structure to indicate downward motion. The label “Ethylene” at the top of the diagram is connected to the greyed out structure with a line segment. In c, the diagram is very similar to b except that the greyed out structure and labels are gone and one of the white spheres near the black and white structure in each pair on the green surface is greyed out. Arrows point from the greyed out white spheres to the double bond between the two black spheres. In d, only a single white sphere remains from each pair in the green surface. A curved arrow points from the middle of the green surface to a model above with two central black spheres with a single black rod indicating a single bond between them. Each of the black rods has three small white spheres bonded as indicated by white rods between the black spheres and the small white spheres. The four bonds around each black sphere are evenly distributed about the black spheres.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_HetCats-230a.jpg"/>
+</media>
+
+<caption>Hvarfgangur fyrir
+Ni-hvatað efnahvarf \[\[MATH:1\]\] (a) Vetni er aðsogað á yfirborðið,
+sem rýfur H–H tengin og myndar Ni–H tengi. (b) Eten er aðsogað á
+yfirborðið, sem rýfur C–C π-tengið og myndar Ni–C tengi. (c) Atóm
+dreifast yfir yfirborðið og mynda ný C–H tengi þegar þau rekast á. (d)
+C<sub>2</sub>H<sub>6</sub> sameindir frásogast af Ni-yfirborðinu.</caption></figure>
+<para id="fs-idm108887776">Margar mikilvægar efnavörur eru
+framleiddar með iðnaðarferlum sem nota misleita hvata, þar á meðal
+ammoníak, saltpéturssýra, brennisteinssýra og metanól. Misleitir hvatar
+eru einnig notaðir í hvarfakútum sem finnast í flestum bensínknúnum
+bifreiðum (&lt;!-- XREF:8 -->).</para>
+<note id="fs-idm214293568" class="chemistry everyday-life">
+<title>Hvarfakútar bifreiða</title>
+<para id="fs-idm151500176">Vísindamenn þróuðu hvarfakúta til að
+draga úr magni eitraðra útblástursefna sem myndast við bruna bensíns í
+brunahreyflum. Með því að nota vandlega valda blöndu af hvatavirkum
+málmum er hægt að ná fram fullkomnum bruna allra kolefnisinnihaldandi
+efnasambanda yfir í koldíoxíð og um leið draga úr losun nituroxíða.
+Þetta er sérstaklega áhrifamikið þegar við hugleiðum að eitt skrefið
+felur í sér að bæta meira súrefni við sameindina og hitt felur í sér að
+fjarlægja súrefnið (&lt;!-- XREF:9 -->).</para>
+<figure id="CNX_Chem_12_07_CatConvert" class="scaled-down">
+<media id="fs-idm189806768" alt="An image is shown of a catalytic converter. At the upper left, a blue arrow pointing into a pipe that enters a larger, widened chamber is labeled, “Dirty emissions.” A small black arrow that points to the lower right is positioned along the upper left side of the widened region. This arrow is labeled, “Additional oxygen from air pump.” The image shows the converter with the upper surface removed, exposing a red-brown interior. The portion of the converter closest to the dirty emissions inlet shows small, round components in an interior layer. This layer is labeled “Three-way reduction catalyst.” The middle region shows closely packed small brown rods that are aligned parallel to the dirty emissions inlet pipe. The final quarter of the interior of the catalytic converter again shows a layer of closely packed small red brown circles. Two large light grey arrows extend from this layer to the open region at the lower right of the image to the label “Clean emissions.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_CatConvert.jpg"/>
+</media>
+<caption>Hvarfakútur
+gerir kleift að brenna öllum kolefnisinnihaldandi efnasamböndum yfir í
+koldíoxíð, en dregur um leið úr losun nituroxíðs og annarra mengunarefna
+í útblæstri frá bensínvélum.</caption>
+</figure>
+<para id="fs-idm247003792">Flestir nútíma þrívegis hvarfakútar
+hafa yfirborð sem er gegndreypt með platínu-ródín hvata, sem hvetur
+umbreytingu nituroxíðs í tvínitur og súrefni auk umbreytingar
+kolmónoxíðs og kolvetna eins og oktans í koldíoxíð og vatnsgufu:</para><equation id="fs-idm216459392" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr><m:mtd><m:mn>2</m:mn><m:msub><m:mtext>NO</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>N</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>2</m:mn><m:msub><m:mtext>O</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>2</m:mn><m:mtext>CO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mtext>CO</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>2</m:mn><m:msub><m:mtext>C</m:mtext><m:mn>8</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mrow><m:mn>18</m:mn></m:mrow></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>25</m:mn><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mn>16</m:mn><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>18</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm228107536">Til að vera eins skilvirkir og
+mögulegt er eru flestir hvarfakútar forhitaðir með rafhitara. Þetta
+tryggir að málmarnir í hvatanum séu fullvirkir jafnvel áður en útblástur
+bifreiðarinnar er nógu heitur til að viðhalda viðeigandi hvarfhitastigi.</para>
+</note>
+<note id="fs-idm194237936" class="chemistry link-to-learning">
+<para id="fs-idm266375520">„ChemWiki“ við Kaliforníuháskóla í
+Davis veitir &lt;!-- LINK:1 -->ítarlega útskýringu&lt;!-- /LINK --> á því hvernig
+hvarfakútar virka.</para>
+</note>
+<note id="fs-idm26203536" class="chemistry sciences-interconnect">
+<title>Bygging og virkni ensíma</title>
+<para id="fs-idm220395040">Rannsóknir á ensímum eru mikilvæg
+tenging milli líffræði og efnafræði. Ensím eru yfirleitt prótein
+(fjölpeptíð) sem hjálpa til við að stjórna hraða efnahvarfa milli
+líffræðilega mikilvægra efnasambanda, sérstaklega þeirra sem taka þátt í
+efnaskiptum frumna. Mismunandi flokkar ensíma gegna ýmsum hlutverkum,
+eins og sýnt er í &lt;!-- XREF:10 -->.</para>
+<!-- table handled separately -->
+<para id="fs-idm189720768">Ensímsameindir hafa virkan setstað,
+hluta sameindarinnar með lögun sem gerir henni kleift að bindast
+tilteknu hvarfefni og mynda ensím-hvarfefnisflóka sem milliefni í
+efnahvarfi. Tvö líkön eru til sem reyna að útskýra hvernig þessi virki
+setstaður virkar. Einfaldasta líkanið er kallað lás-og-lykils tilgátan,
+sem gefur til kynna að sameindalögun virka setstaðarins og hvarfefnisins
+séu samstæð, þannig að þau passi saman eins og lykill í lás. Tilgátan um
+framkallaða aðlögun gefur aftur á móti til kynna að ensímsameindin sé
+sveigjanleg og breyti um lögun til að koma til móts við bindingu við
+hvarfefnið. Þetta þýðir þó ekki að virkur setstaður ensíms sé algjörlega
+mótanlegur. Bæði lás-og-lykils líkanið og líkanið um framkallaða aðlögun
+gera ráð fyrir því að ensím geti aðeins bundist tilteknum hvarfefnum,
+þar sem tiltekið ensím hvetur yfirleitt aðeins tiltekið efnahvarf
+(&lt;!-- XREF:11 -->).</para>
+<figure id="CNX_Chem_12_07_Enzyme" class="scaled-down">
+<media id="fs-idm235790144" alt="A diagram is shown of two possible interactions of an enzyme and a substrate. In a, which is labeled “Lock-and-key,” two diagrams are shown. The first shows a green wedge-like shape with two small depressions in the upper surface of similar size, but the depression on the left has a curved shape, and the depression on the right has a pointed shape. This green shape is labeled “Enzyme.” Just above this shape are two smaller, irregular, lavender shapes each with a projection from its lower surface. The lavender shape on the left has a curved projection which matches the shape of the depression on the left in the green shape below. This projection is shaded orange and has a curved arrow extending from in to the matching depression in the green shape below. Similarly, the lavender shape on the right has a projection with a pointed tip which matches the shape of the depression on the right in the green shape below. This projection is shaded orange and has a curved arrow extending from in to the matching depression in the green shape below. Two line segments extend from the depressions in the green shape to form an inverted V shape above the depressions. Above this and between the lavender shapes is the label, “Active site is proper shape.” The label “Substrates” is at the very top of the diagram with line segments extending to the two lavender shapes. To the right of this diagram is a second diagram showing the lavender shapes positioned next to each other, fit snugly into the depressions in the green shape, which is labeled “Enzyme.” Above this diagram is the label, “Substrate complex formed.” In b, which is labeled “Induced fit,” two diagrams are shown. The first shows a green wedge-like shape with two small depressions in the upper surface of similar size, but irregular shape. This green shape is labeled “Enzyme.” Just above this shape are two smaller irregular lavender shapes each with a projection from its lower surface. The lavender shape on the left has a curved projection. This projection is shaded orange and has a curved arrow extending from it to the irregular depression just below it in the green shape below. Similarly, the lavender shape on the right has a projection with a pointed tip. This projection is shaded orange and has a curved arrow extending from it to the irregular depression just below it in the green shape below. Two line segments extend from the depressions in the green shape to form an inverted V shape above the depressions. Above this and between the lavender shapes is the label, “Active site changes to fit.” The label, “Substrates” is at the very top of the diagram with line segments extending to the two lavender shapes. To the right of this diagram is a second diagram showing the purple shapes positioned next to each other, fit snugly into the depressions in the green shape, which is labeled “Enzyme.” Above this diagram is the label “Substrate complex formed.” The projections from the lavender shapes match the depression shapes in the green shape, resulting in a proper fit.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_12_07_Enzyme.jpg"/>
+</media>
+<caption>(a) Samkvæmt
+lás-og-lykils líkaninu passar lögun virka setstaðar ensíms fullkomlega
+við hvarfefnið. (b) Samkvæmt líkaninu um framkallaða aðlögun er virki
+setstaðurinn nokkuð sveigjanlegur og getur breytt um lögun til að
+bindast hvarfefninu.</caption>
+</figure>
+</note>
+<table id="fs-idm184565904" class="top-titled" summary="This table has two columns and seven rows. The first row is a header row, and it labels each column, “Class,” and, “Function.” Under the “Class” column are the following: “oxidoreductases,” “transferases,” “hydrolases,” “lyases,” “isomerases,” and “ligases.” Under the “Function” column are the following: “redox reactions,” “transfer of functional groups,” “hydrolysis reactions,” “group elimination to form double bonds,” “isomerization,” and “bond formation with ATP hydrolysis.”">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="middle">
+<entry namest="c1" nameend="c2" align="center">Flokkar ensíma og virkni þeirra</entry>
+</row>
+<row valign="middle">
+<entry align="left">Flokkur</entry>
+<entry align="left">Virkni</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="left">Oxunar-afoxunar ensím</entry>
+<entry align="left">Oxunar-afoxunarhvörf</entry>
+</row>
+<row valign="middle">
+<entry align="left">Transferasar</entry>
+<entry align="left">Flutningur virkra hópa</entry>
+</row>
+<row valign="middle">
+<entry align="left">Hýdrólasar</entry>
+<entry align="left">Vatnsrofshvörf</entry>
+</row>
+<row valign="middle">
+<entry align="left">Lýasar</entry>
+<entry align="left">Brottnám hóps til að mynda tvítengi</entry>
+</row>
+<row valign="middle">
+<entry align="left">Ísómerasar</entry>
+<entry align="left">Ísómerun</entry>
+</row>
+<row valign="middle">
+<entry align="left">Lígasar</entry>
+<entry align="left">Myndun tengis með vatnsrofi ATP</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<note id="fs-idm145649744" class="chemistry link-to-learning">
+<para id="fs-idm187403424">&lt;!-- LINK:2 -->Royal Society of
+Chemistry&lt;!-- /LINK --> býður upp á frábæra kynningu á ensímum fyrir nemendur
+og kennara.</para>
+</note>
+</section>
+<section id="fs-idm181838416" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idm186233248">Hvatar hafa áhrif á hvarfhraða
+efnahvarfs með því að breyta hvarfgangi þess til að lækka
+virkjunarorkuna. Hvatar geta verið einsleitir (í sama fasa og
+hvarfefnin) eða misleitir (í öðrum fasa en hvarfefnin).</para>
+</section>
+<section id="fs-idm32536608" class="exercises">
+<title>Efnafræði – Æfingar í lok
+kafla</title>
+<exercise id="fs-idm121944048">
+<problem id="fs-idm262670608">
+<para id="fs-idm127239504">Gerðu grein fyrir aukningu á
+hvarfhraða sem hvati veldur.</para>
+</problem>
+<solution id="fs-idm162244848">
+<para id="fs-idm276597024">Almenn virkni hvata er að bjóða
+upp á hvarfgang þar sem hvarfefnin geta sameinast auðveldar með því að
+fara leið með lægri hvarforku. Hraði bæði framhvarfs og bakhvarfs eykst,
+sem leiðir til þess að jafnvægi næst hraðar.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm119808848">
+<problem id="fs-idm209867568">
+<para id="fs-idm221201728">Berðu saman virkni einsleitra og
+misleitra hvata.</para>
+</problem>
+</exercise>
+<exercise id="fs-idm268031984">
+<problem id="fs-idm121870880">
+<para id="fs-idm224601824">Íhugaðu þessa atburðarás og
+svaraðu eftirfarandi spurningum: Klóratóm sem myndast við niðurbrot
+klórflúormetana, svo sem CCl<sub>2</sub>F<sub>2</sub>, hvetja niðurbrot ósonar í
+andrúmsloftinu. Einn einfaldaður hvarfgangur fyrir niðurbrotið er:
+\[\[MATH:2\]\]</para>
+<para id="fs-idm174347728">(a) Útskýrðu hvers vegna klóratóm
+eru hvatar í umbreytingunni í gasfasa: \[\[MATH:3\]\]</para>
+<para id="fs-idm280039520">(b) Nituroxíð tekur einnig þátt í
+niðurbroti ósonar með hvarfganginum: \[\[MATH:4\]\]</para>
+<para id="fs-idm271887104">Er NO hvati fyrir niðurbrotið?
+Útskýrðu svarið.</para>
+</problem>
+<solution id="fs-idm242301568">
+<para id="fs-idm226654304">(a) Klóratóm eru hvati vegna
+þess að þau hvarfast í öðru skrefi en endurmyndast í þriðja skrefi. Þau
+eyðast því ekki, sem er einkenni hvata. (b) NO er hvati af sömu ástæðu
+og í hluta (a).</para>
+</solution>
+</exercise>
+<exercise id="fs-idm194307024">
+<problem id="fs-idm126642096">
+<para id="fs-idm279414832">Fyrir hvort eftirfarandi para af
+hvarfritum, tilgreindu hvort parið er með hvata:</para>
+<para id="fs-idm3297152">(a)</para>
+<para id="fs-idm188080944">(b)</para>
+</problem>
+</exercise>
+<exercise id="fs-idm219276192">
+<problem id="fs-idm152746480">
+<para id="fs-idm178760704">Fyrir hvort eftirfarandi para af
+hvarfritum, tilgreindu hvort parið er með hvata:</para>
+<para id="fs-idm338845344">(a)</para>
+<para id="fs-idm210073232">(b)</para>
+</problem>
+<solution id="fs-idm29928320">
+<para id="fs-idm222281872">Lækkun á orku virkniástandsins
+sýnir áhrif hvata. (a) B; (b) B</para></solution>
+</exercise>
+<exercise id="fs-idm260004768">
+<problem id="fs-idm224432608">
+<para id="fs-idm245642464">Fyrir hvort eftirfarandi
+hvarfrita, áætlaðu virkjunarorku (<emphasis effect="italics">E</emphasis><sub>a</sub>) hvarfsins:</para>
+<para id="fs-idm211017072">(a)</para>
+<para id="fs-idm220847584">(b)</para>
+</problem>
+</exercise>
+<exercise id="fs-idm218836096">
+<problem id="fs-idm224927248">
+<para id="fs-idm159516400">Fyrir hvort eftirfarandi
+hvarfrita, áætlaðu virkjunarorku (<emphasis effect="italics">E</emphasis><sub>a</sub>) hvarfsins:</para>
+<para id="fs-idm197289104">(a)</para><para id="fs-idm290032736">(b)</para></problem>
+<solution id="fs-idm202007568">
+<para id="fs-idm35117840">Orkan sem þarf til að fara frá
+upphafsástandi yfir í virkniástand er (a) 10 kJ; (b) 10 kJ.</para></solution>
+</exercise>
+<exercise id="fs-idm189363504">
+<problem id="fs-idm152738576">
+<para id="fs-idm252327824">Ef gert er ráð fyrir að ritin í
+&lt;!-- XREF:12 --> tákni mismunandi hvarfganga fyrir sama hvarf, hvort hvarfið
+hefur meiri hraða?</para></problem>
+</exercise>
+<exercise id="fs-idm225889216">
+<problem id="fs-idm209352752">
+<para id="fs-idm286704000">Íhugaðu líkindi og mun á
+hvarfritunum tveimur sem sýnd eru í &lt;!-- XREF:13 -->. Táknar þessi rit tvö
+mismunandi heildarhvörf, eða tákna þau sama heildarhvarfið sem á sér
+stað með tveimur mismunandi hvarfgöngum? Útskýrðu svarið.</para></problem>
+<solution id="fs-idm241364160">
+<para id="fs-idm218832672">Bæði ritin lýsa tveggja þrepa,
+útvermdum hvörfum, en með mismunandi breytingum á vermi, sem bendir til
+þess að ritin sýni tvö mismunandi heildarhvörf.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idm228167568">
+<term>misleitur hvati</term>
+<meaning id="fs-idm228167568-meaning">hvati sem er í öðrum
+fasa en hvarfefnin og myndar yfirborð þar sem hvarf getur átt sér stað</meaning>
+</definition>
+<definition id="fs-idm218392224">
+<term>einsleitur hvati</term>
+<meaning id="fs-idm218392224-meaning">hvati sem er í sama fasa
+og hvarfefnin</meaning>
+</definition>
+</glossary>
+</document>

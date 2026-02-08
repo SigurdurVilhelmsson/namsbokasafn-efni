@@ -1,0 +1,665 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Hliðrun jafnvægis: Lögmál Le Châteliers</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68799</md:content-id>
+  <md:title>Shifting Equilibria: Le Châtelier’s Principle</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst þeim aðferðum sem hægt
+er að nota til að raska jafnvægiskerfi</item><item>Spáð fyrir um viðbrögð
+raskaðs jafnvægis með lögmáli Le Châteliers</item></list></md:abstract>
+  <md:uuid>7bc903b2-d341-4fc3-a205-02850547461e</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp113339808">Kerfi í jafnvægi er í ástandi kviks
+jafnvægis þar sem framhvarf og bakhvarf eiga sér stað á jöfnum hraða. Ef
+jafnvægiskerfi verður fyrir breytingu á aðstæðum sem hefur mismunandi
+áhrif á þessa hvarfhraða (<emphasis effect="italics">röskun</emphasis>), þá eru hraðarnir ekki lengur jafnir
+og kerfið er ekki í jafnvægi. Kerfið mun í kjölfarið gangast undir
+nettóhvarf í átt að meiri hraða (<emphasis effect="italics">hliðrun</emphasis>) sem mun endurheimta
+jafnvægið. Þetta fyrirbæri er tekið saman í <emphasis effect="bold">lögmáli Le Châteliers</emphasis>:
+<emphasis effect="italics">ef jafnvægiskerfi er raskað mun kerfið gangast undir hliðrun til að
+bregðast við röskuninni sem endurheimtir jafnvægi</emphasis>.</para>
+<para id="fs-idp137820032">Hvarfhraðar verða fyrst og fremst
+fyrir áhrifum af styrk, eins og lýst er í hraðalögmáli hvarfsins, og
+hitastigi, eins og lýst er í jöfnu Arrheniusar. Þar af leiðandi eru
+breytingar á styrk og hitastigi þær tvær raskanir sem geta hliðrað
+jafnvægi.</para>
+<section id="fs-idp73987856">
+<title>Áhrif breytinga á styrk</title>
+<para id="fs-idp93896256">Ef jafnvægiskerfi verður fyrir
+breytingu á styrk hvarfefnis eða myndefnis mun hraði annaðhvort
+framhvarfsins eða bakhvarfsins breytast. Sem dæmi má nefna
+jafnvægishvarfið</para>
+<equation id="fs-idp25467280" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:mtext>HI</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>50.0</m:mn><m:mspace width="0.2em"/><m:mtext>at</m:mtext><m:mspace width="0.2em"/><m:mn>400</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm188802784">Hraðalögmálin fyrir framhvarfið og
+bakhvarfið eru</para>
+<equation id="fs-idm216886944" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr/><m:mtr><m:mtd columnalign="left"><m:mi>f</m:mi><m:mi>o</m:mi><m:mi>r</m:mi><m:mi>w</m:mi><m:mi>a</m:mi><m:mi>r</m:mi><m:mi>d</m:mi><m:mspace width="0.5em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">→</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mtext>HI</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd/><m:mtd/><m:mtd columnalign="left"><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>f</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mo stretchy="false">]</m:mo><m:mi>m</m:mi></m:msup><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mo stretchy="false">]</m:mo><m:mi>n</m:mi></m:msup></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="left"><m:mi>r</m:mi><m:mi>e</m:mi><m:mi>v</m:mi><m:mi>e</m:mi><m:mi>r</m:mi><m:mi>s</m:mi><m:mi>e</m:mi><m:mspace width="0.5em"/><m:mn>2</m:mn><m:mtext>HI</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">→</m:mo><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mtd><m:mtd/><m:mtd/><m:mtd columnalign="left"><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub><m:mo stretchy="false">=</m:mo><m:msub><m:mi>k</m:mi><m:mi>r</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mtext>HI</m:mtext><m:msup><m:mo stretchy="false">]</m:mo><m:mi>x</m:mi></m:msup></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<para id="fs-idm219770592">Þegar þetta kerfi er í jafnvægi eru
+hvarfhraðar framhvarfs og bakhvarfs jafnir.</para>
+<equation id="fs-idm172629696" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm213521392">Ef kerfinu er raskað með því að bæta
+við hvarfefni, annaðhvort H<sub>2</sub> eða I<sub>2</sub>, veldur aukningin á styrk því að
+hraði framhvarfsins eykst og verður meiri en hraði bakhvarfsins:</para>
+<equation id="fs-idm191416320" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>></m:mo><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm482494176">Kerfið mun gangast undir tímabundið
+nettóhvarf í framátt til að endurheimta jafnvægi (<emphasis effect="italics">jafnvægið hliðrast
+til hægri</emphasis>). Sama hliðrun verður ef eitthvað af myndefninu HI er
+fjarlægt úr kerfinu, sem dregur úr hraða bakhvarfsins og veldur aftur
+sama ójafnvægi í hraða.</para>
+<para id="fs-idm201479264">Sama rökfræði má nota til að útskýra
+hliðrun til vinstri sem verður við það að annaðhvort fjarlægja hvarfefni
+eða bæta við myndefni í jafnvægiskerfi. Báðar þessar raskanir leiða til
+aukins hraða bakhvarfsins</para>
+<equation id="fs-idm223526832" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>&lt;</m:mo><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm215717808">og tímabundins nettóhvarfs í bakátt
+til að endurheimta jafnvægi.</para>
+<para id="fs-idm222008176">Í stað þessarar hreyfifræðilegu
+túlkunar er hægt að rökstyðja áhrif breytinga á styrk á jafnvægi með
+hvarfstuðlum. Þegar kerfið er í jafnvægi,</para>
+<equation id="fs-idm212413904" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>HI</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm196239168">Ef hvarfefni er bætt við (sem eykur
+nefnara hvarfstuðulsins) eða myndefni er fjarlægt (sem minnkar
+teljarann), þá er <emphasis effect="italics">Q<sub>c</sub></emphasis> \&lt; <emphasis effect="italics">K<sub>c</sub></emphasis> og jafnvægið hliðrast til hægri.
+Athugið að þrjár mismunandi leiðir til að valda þessari röskun leiða til
+þriggja mismunandi breytinga á samsetningu jafnvægisblöndunnar. Ef H<sub>2</sub>
+er bætt við mun hliðrunin til hægri eyða I<sub>2</sub> og mynda HI þegar jafnvægi
+er endurheimt, sem gefur efnablöndu með meiri styrk H<sub>2</sub> og HI og minni
+styrk I<sub>2</sub> en áður. Ef I<sub>2</sub> er bætt við mun nýja jafnvægisblandan hafa
+meiri styrk I<sub>2</sub> og HI og minni styrk H<sub>2</sub>. Að lokum, ef HI er fjarlægt,
+verður styrkur allra þriggja efnanna lægri þegar jafnvægi er endurheimt.
+Þrátt fyrir þennan mun á samsetningu <emphasis effect="italics">verður gildi jafnvægisfastans það
+sama eftir röskunina og það var áður</emphasis> (samkvæmt lögmálinu um
+massaverkun). Sömu rökfræði má beita fyrir raskanir sem fela í sér að
+fjarlægja hvarfefni eða bæta við myndefni, en þá er <emphasis effect="italics">Q<sub>c</sub></emphasis> \> <emphasis effect="italics">K<sub>c</sub></emphasis> og
+jafnvægið hliðrast til vinstri.</para>
+<para id="fs-idm199694064">Fyrir jafnvægi í gasfasa eins og
+þetta er vert að nefna nokkur viðbótarsjónarmið varðandi breytingar á
+styrk hvarfefna og myndefna. Hlutþrýstingur <emphasis effect="italics">P</emphasis> kjörgass er í réttu
+hlutfalli við mólstyrk þess <emphasis effect="italics">M</emphasis>,</para>
+<equation id="fs-idm212442528" class="unnumbered"><m:math><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mfrac><m:mi>n</m:mi><m:mi>V</m:mi></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mi>P</m:mi><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm191541472">og því eru breytingar á
+hlutþrýstingi hvers hvarfefnis eða myndefnis í raun breytingar á styrk
+og hafa því sömu áhrif á jafnvægi. Fyrir utan að bæta við eða fjarlægja
+hvarfefni eða myndefni er einnig hægt að breyta þrýstingi (styrk) efna í
+jafnvægi í gasfasa með því að <emphasis effect="italics">breyta rúmmáli kerfisins</emphasis>. Þar sem öll
+efni í jafnvægi í gasfasa taka sama rúmmál mun tiltekin breyting á
+rúmmáli valda sömu breytingu á styrk bæði hvarfefna og myndefna. Til að
+greina hvaða hliðrun, ef einhver er, þessi tegund af röskun veldur,
+verður að taka tillit til hlutfallaefnafræði hvarfsins.</para>
+<para id="fs-idm188989264">Við jafnvægi er efnahvarfinu
+H<sub>2</sub>(<emphasis effect="italics">g</emphasis>) + I<sub>2</sub>(<emphasis effect="italics">g</emphasis>) ⇌ 2HI(<emphasis effect="italics">g</emphasis>) lýst með hvarfstuðlinum</para>
+<equation id="fs-idm216219232" class="unnumbered">
+  <m:math><m:mrow><m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub>
+  <m:mo>=</m:mo>
+  <m:mfrac>
+    <m:mrow><m:msub><m:mi>P</m:mi><m:mtext>HI</m:mtext></m:msub><m:msup><m:mrow/><m:mn>2</m:mn></m:msup></m:mrow>
+    <m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mi>H</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mspace width="0.2em"/><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mi>I</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:mfrac><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub></m:mrow></m:math></equation>
+<para id="fs-idm224442448">Ef rúmmál efnablöndu þessara efna í
+jafnvægi er minnkað um þriðjung, mun hlutþrýstingur allra þriggja
+efnanna aukast þrefalt:</para>
+<equation id="fs-idm214218336" class="unnumbered"><m:math><m:mtable><m:mtr/><m:mtr/><m:mtr/><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub><m:msup><m:mrow/><m:mo>'</m:mo></m:msup><m:mo>=</m:mo>
+<m:mfrac><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>3</m:mn><m:msub><m:mi>P</m:mi><m:mrow><m:mtext>HI</m:mtext></m:mrow></m:msub><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup></m:mrow>
+<m:mrow><m:mn>3</m:mn><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mspace width="0.2em"/><m:mn>3</m:mn>
+<m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:mfrac><m:mo>=</m:mo>
+<m:mfrac><m:mrow><m:mn>9</m:mn><m:msub><m:mi>P</m:mi><m:mtext>HI</m:mtext></m:msub><m:msup><m:mrow/><m:mn>2</m:mn></m:msup></m:mrow>
+<m:mrow><m:mn>9</m:mn><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mspace width="0.2em"/>
+<m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:mfrac><m:mo>=</m:mo>
+<m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>HI</m:mtext></m:msub><m:msup><m:mrow/><m:mn>2</m:mn></m:msup></m:mrow>
+<m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub><m:mspace width="0.2em"/>
+<m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>I</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:mfrac><m:mo>=</m:mo>
+<m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub>
+<m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub>
+<m:msup><m:mrow/><m:mo>'</m:mo></m:msup><m:mo>=</m:mo><m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo>
+<m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idm219505680">Þannig veldur breyting á rúmmáli
+þessarar gasfasa jafnvægisblöndu engri breytingu á jafnvæginu.</para>
+<para id="fs-idm171975824">Svipuð meðferð á öðru kerfi,
+2NO<sub>2</sub>(<emphasis effect="italics">g</emphasis>) ⇌ 2 NO(<emphasis effect="italics">g</emphasis>) + O<sub>2</sub>(<emphasis effect="italics">g</emphasis>), gefur hins vegar aðra niðurstöðu:</para>
+<equation id="fs-idm215260720" class="unnumbered">
+  <m:math><m:mtable><m:mtr><m:mtd columnalign="left">
+    <m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub><m:mo>=</m:mo>
+    <m:mfrac><m:mrow><m:msup><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>NO</m:mtext></m:msub></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/>
+    <m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow>
+    <m:mrow><m:msup><m:mrow><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow><m:mn>2</m:mn></m:msup></m:mrow>
+  </m:mfrac></m:mtd></m:mtr>
+  <m:mtr><m:mtd columnalign="left">
+    <m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub><m:msup><m:mrow/><m:mo>'</m:mo></m:msup><m:mo>=</m:mo>
+    <m:mfrac><m:mrow>
+      <m:msup>
+        <m:mrow><m:mo stretchy="false">(</m:mo><m:mn>3</m:mn>
+    <m:msub><m:mi>P</m:mi><m:mrow><m:mtext>NO</m:mtext></m:mrow></m:msub><m:mo stretchy="false">)</m:mo></m:mrow>
+    <m:mn>2</m:mn></m:msup>
+    <m:mspace width="0.2em"/><m:mn>3</m:mn><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow>
+    <m:mrow><m:msup>
+      <m:mrow><m:mo stretchy="false">(</m:mo><m:mn>3</m:mn><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub>
+    <m:mo stretchy="false">)</m:mo></m:mrow>
+    <m:mn>2</m:mn></m:msup>
+  </m:mrow>
+  </m:mfrac>
+    <m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>9</m:mn><m:msup><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>NO</m:mtext></m:msub></m:mrow><m:mtext>2</m:mtext></m:msup>
+    <m:mspace width="0.2em"/><m:mn>3</m:mn><m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow>
+    <m:mrow><m:mn>9</m:mn>
+    <m:msup>
+      <m:mrow>
+        <m:msub>
+          <m:mi>P</m:mi>
+            <m:mrow><m:msub>
+              <m:mtext>NO</m:mtext>
+              <m:mn>2</m:mn>
+            </m:msub>
+         </m:mrow></m:msub>
+       </m:mrow>
+      <m:mn>2</m:mn></m:msup></m:mrow></m:mfrac>
+    <m:mo>=</m:mo>
+    <m:mfrac><m:mrow><m:mn>27</m:mn><m:msup><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>NO</m:mtext></m:msub></m:mrow><m:mtext>2</m:mtext></m:msup><m:mspace width="0.2em"/>
+    <m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow>
+    <m:mrow><m:mn>9</m:mn>
+    <m:msup>
+      <m:mrow>
+        <m:msub>
+          <m:mi>P</m:mi>
+            <m:mrow><m:msub>
+              <m:mtext>NO</m:mtext>
+              <m:mn>2</m:mn>
+            </m:msub>
+         </m:mrow></m:msub>
+       </m:mrow>
+      <m:mn>2</m:mn></m:msup></m:mrow>
+    </m:mfrac>
+    <m:mo>=</m:mo>
+    <m:mfrac><m:mrow><m:mn>3</m:mn><m:msup><m:mrow><m:msub><m:mi>P</m:mi><m:mtext>NO</m:mtext></m:msub></m:mrow><m:mtext>2</m:mtext></m:msup><m:mspace width="0.2em"/>
+    <m:msub><m:mi>P</m:mi><m:mrow><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow>
+    <m:mrow>
+    <m:msup>
+      <m:mrow>
+        <m:msub>
+          <m:mi>P</m:mi>
+            <m:mrow><m:msub>
+              <m:mtext>NO</m:mtext>
+              <m:mn>2</m:mn>
+            </m:msub>
+         </m:mrow></m:msub>
+       </m:mrow>
+      <m:mn>2</m:mn></m:msup></m:mrow>
+    </m:mfrac>
+    <m:mo>=</m:mo><m:mn>3</m:mn><m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub>
+    <m:mo>></m:mo>
+    <m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub></m:mtd></m:mtr>
+    <m:mtr><m:mtd columnalign="left"><m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub><m:msup><m:mrow/><m:mo>'</m:mo></m:msup>
+    <m:mo>=</m:mo><m:mn>3</m:mn><m:msub><m:mi>Q</m:mi><m:mi>P</m:mi></m:msub><m:mo>></m:mo><m:msub><m:mi>K</m:mi><m:mi>P</m:mi></m:msub></m:mtd></m:mtr>
+  </m:mtable></m:math></equation>
+<para id="fs-idm216098912">Í þessu tilfelli leiðir
+rúmmálsbreytingin til hvarfstuðuls sem er stærri en jafnvægisfastinn og
+því mun jafnvægið hliðrast til vinstri.</para>
+<para id="fs-idm173238784">Þessar niðurstöður sýna fram á
+sambandið milli hlutfallaefnafræði jafnvægis í gasfasa og áhrifa
+rúmmálsbreytingar á þrýsting (styrk). Ef heildarmagn mólfjölda hvarfefna
+og myndefna er jafnt, eins og í fyrra dæminu, veldur rúmmálsbreyting
+engri hliðrun á jafnvæginu. Ef mólfjöldi hvarfefna og myndefna er
+ólíkur, mun rúmmálsbreyting hliðra jafnvæginu í þá átt sem „rúmar“
+rúmmálsbreytinguna betur. Í seinna dæminu gefa tvö mól af hvarfefni
+(NO<sub>2</sub>) af sér þrjú mól af myndefni (2NO + O<sub>2</sub>), og því veldur minnkun
+á rúmmáli kerfisins því að jafnvægið hliðrast til vinstri þar sem
+andstæða hvarfið framleiðir minna gas (2 mól) en hvarfið áfram (3 mól).
+Aftur á móti myndi aukning á rúmmáli þessa jafnvægiskerfis leiða til
+hliðrunar í átt að myndefnum.</para>
+<note id="fs-idp6099552" class="chemistry link-to-learning">
+<para id="fs-idp75936512">Skoðaðu þennan
+&lt;!-- LINK:1 -->hlekk&lt;!-- /LINK --> til að sjá áhrifamikla sjónræna sýningu á því
+hvernig jafnvægi breytist með þrýstingsbreytingum.</para>
+</note>
+<note id="fs-idp88873584" class="chemistry everyday-life">
+<title>Jafnvægi og gosdrykkir</title>
+<para id="fs-idp391112032">Tengslin milli efnafræði og
+kolsýrðra gosdrykkja má rekja aftur til ársins 1767, þegar Joseph
+Priestley (1733–1804) þróaði aðferð til að blanda vatn með koldíoxíði
+til að búa til kolsýrt vatn. Aðferð Priestleys fól í sér framleiðslu á
+koldíoxíði með því að láta vitríólolíu (brennisteinssýru) hvarfast við
+krít (kalsíumkarbónat).</para><para id="fs-idm204820432">Koldíoxíðið var síðan leyst upp í
+vatni og hvarfaðist til að mynda vetniskarbónat, veika sýru sem síðan
+gekkst undir jónun til að gefa af sér bíkarbónat og vetnisjónir:</para>
+<equation id="fs-idm482350368" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign="left"><m:mtext>dissolution</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="left"><m:mtext>hydrolysis</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>CO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>CO</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="left"><m:mtext>ionization</m:mtext><m:mspace width="0.2em"/><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>CO</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>HCO</m:mtext><m:mn>3</m:mn></m:msub><m:msup><m:mrow/><m:mtext>−</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msup><m:mtext>H</m:mtext><m:mtext>+</m:mtext></m:msup><m:mo stretchy="false">(</m:mo><m:mi>a</m:mi><m:mi>q</m:mi><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<para id="fs-idm188544352">Þessi sömu jafnvægishvörf eru
+grundvöllur kolsýringarferlis gosdrykkja í dag. Drykkir eru settir undir
+háan þrýsting af koldíoxíðgasi meðan á ferlinu stendur til að hliðra
+fyrsta jafnvæginu hér að ofan til hægri, sem leiðir til æskilega hás
+styrks uppleysts koldíoxíðs og, með svipuðum hliðrunum í hinum tveimur
+jafnvægunum, vatnsrofs- og jónunarafurða þess. Flaska eða dós er síðan
+næstum fyllt með kolsýrða drykknum, þannig að tiltölulega lítið rúmmál
+lofts er eftir í ílátinu fyrir ofan yfirborð drykksins (loftrýmið) áður
+en því er lokað. Þrýstingur koldíoxíðs í loftrými ílátsins er mjög lágur
+strax eftir lokun, en hann hækkar þegar upplausnarjafnvægið er
+endurheimt með hliðrun til vinstri. Þar sem rúmmál drykksins er
+umtalsvert meira en rúmmál loftrýmisins tapast aðeins tiltölulega lítið
+magn af uppleystu koldíoxíði í loftrýmið.</para>
+<para id="fs-idm206784496">Þegar ílát með kolsýrðum drykk er
+opnað heyrist hvissandi hljóð þegar þrýstingsfast CO<sub>2</sub> sleppur úr
+loftrýminu. Þetta veldur því að upplausnarjafnvægið hliðrast til
+vinstri, sem leiðir til lækkunar á styrk uppleysts CO<sub>2</sub> og síðari
+hliðrunar vatnsrofs- og jónunarjafnvægis til vinstri. Sem betur fer
+fyrir neytandann endurheimtist upplausnarjafnvægið yfirleitt hægt og því
+er hægt að njóta drykksins á meðan styrkur uppleysts koldíoxíðs er ennþá
+þægilega hár. Þegar jafnvægið hefur verið endurheimt verður styrkur
+CO<sub>2</sub>(<emphasis effect="italics">aq</emphasis>) verulega lægri og drykkurinn fær einkennandi bragð sem
+kallað er „daufur“.</para>
+<figure id="CNX_Chem_13_01_SuperSat">
+<media id="fs-idp24901184" alt="A bottle of soda sitting on the ground is shown with a large amount of fizz-filled liquid spewing out of the top.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_13_01_SuperSat.jpg"/>
+</media>
+<caption>Þegar gosflaska
+er opnuð lækkar CO<sub>2</sub> þrýstingurinn fyrir ofan drykkinn, sem hliðrar
+upplausnarjafnvæginu og losar uppleyst CO<sub>2</sub> úr drykknum. (heimild:
+breyting á verki eftir „D Coetzee“/Flickr)</caption>
+</figure>
+</note>
+</section>
+<section id="fs-idp43174880">
+<title>Áhrif hitabreytinga</title>
+<para id="fs-idm15647776">Í samræmi við lögmálið um massaverkun
+mun jafnvægi sem verður fyrir álagi vegna styrkbreytingar hliðrast til
+að endurheimta jafnvægi án þess að gildi jafnvægisfastans, <emphasis effect="italics">K</emphasis>,
+breytist. Þegar jafnvægi hliðrast vegna hitabreytingar er það hins vegar
+endurheimt með annarri hlutfallslegri samsetningu sem sýnir annað gildi
+fyrir jafnvægisfastann.</para>
+<para id="fs-idp38603440">Til að skilja þetta fyrirbæri skulum
+við skoða einfalt hvarf:</para>
+<equation id="fs-idp83787056" class="unnumbered"><m:math><m:mrow><m:mtext>A</m:mtext><m:mo stretchy="false">⇌</m:mo><m:mtext>B</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp38799824">Þar sem þetta er einfalt hvarf er
+hægt að leiða hraðajöfnur fyrir framhvarfið og bakhvarfið beint út frá
+mælifræði jöfnunnar:</para>
+<equation id="fs-idp95014512" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>f</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>r</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp138121600">Þegar kerfið er í jafnvægi,</para>
+<equation id="fs-idm214342512" class="unnumbered"><m:math><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub></m:math></equation>
+<para id="fs-idm24070512">Með því að setja hraðajöfnurnar inn í
+þessa jöfnu og endurraða fæst:</para>
+<equation id="fs-idm208526832" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="left"><m:msub><m:mi>k</m:mi><m:mi>f</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">]</m:mo><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>r</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mi>B</m:mi><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mi>A</m:mi><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:msub><m:mi>k</m:mi><m:mi>f</m:mi></m:msub></m:mrow><m:mrow><m:msub><m:mi>k</m:mi><m:mi>r</m:mi></m:msub></m:mrow></m:mfrac><m:mo>=</m:mo><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub></m:mtd></m:mtr></m:mtable></m:math></equation>
+<para id="fs-idp56159232">Jafnvægisfastinn er því
+stærðfræðilegt fall af hraðaföstum framhvarfsins og bakhvarfsins. Þar
+sem hraðafastar breytast með hitastigi eins og lýst er í
+Arrhenius-jöfnunni er rökrétt að jafnvægisfastinn breytist einnig með
+hitastigi (að því gefnu að hitastigsbreytingin hafi mismunandi áhrif á
+hraðafastana). Fyrir flóknari efnahvörf sem fela í sér margþrepa
+hvarfganga er til svipað en flóknara stærðfræðilegt samband milli
+jafnvægisfastans og hraðafasta þrepanna í hvarfganginum. Óháð því hversu
+flókið efnahvarfið er, þá er hitastigsháð jafnvægisfastans alltaf til
+staðar.</para>
+<para id="fs-idm213339296">Þægilegasta leiðin til að spá fyrir
+um hvernig jafnvægi breytist við hitastigsbreytingu er að skoða
+vermibreytingu hvarfsins. Til dæmis er sundrun tvinituroxíðs innvermið
+ferli (sem notar varma):</para>
+<equation id="fs-idp8775968" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>+57.20</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp148183408">Til að beita lögmáli Le Chateliers
+má líta á varma (<emphasis effect="italics">q</emphasis>) sem hvarfefni:</para>
+<equation id="fs-idp38589680" class="unnumbered"><m:math><m:mrow><m:mtext>heat</m:mtext><m:mo>+</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp156642144">Að hækka hitastig kerfisins er
+sambærilegt við að auka magn hvarfefnis og því færist jafnvægið til
+hægri. Að lækka hitastig kerfisins veldur því að jafnvægið færist til
+vinstri. Fyrir útvermin ferli er litið á varma sem myndefni hvarfsins og
+því sést öfug hitastigsháð.</para>
+</section>
+<section id="fs-idp274375376">
+<title>Áhrif hvata</title>
+<para id="fs-idp105247296">Í kaflanum um hraðafræði í þessum
+texta er <emphasis effect="italics">hvati</emphasis> skilgreindur sem efni sem gerir efnahvarfi kleift að
+fara fram með öðrum hvarfgangi á meiri hraða. Hvarfgangur með hvata
+felur í sér virkniástand með lægri orku en hvarfgangur án hvata, sem
+leiðir til lægri virkjunarorku, <emphasis effect="italics">E<sub>a</sub></emphasis>, og samsvarandi hærri hraðafasta.</para>
+<para id="fs-idp24954576">Til að greina áhrif hvötunar á
+jafnvægiskerfi skulum við skoða hvarfritið fyrir einfalt einþrepa
+(elementary) hvarf sem sýnt er á &lt;!-- XREF:2 -->. Lægri orka virkniástandsins
+í hvötuðu hvarfi leiðir til lægri virkjunarorku bæði fyrir framhvarfið
+og bakhvarfið. Þar af leiðandi hraðast bæði framhvarfið og bakhvarfið og
+jafnvægi næst hraðar <emphasis effect="italics">en án breytinga á jafnvægisfastanum</emphasis>.</para>
+<figure id="CNX_Chem_13_03_catalyst" class="scaled-down">
+<media id="fs-idp272099696" alt="A graph is shown labeled “Transition state.” The y-axis on the graph is labeled “Energy” and the x-axis is labeled “Extent of Reaction.” Two curves are plotted on the graph. Both start mid-way up the y-axis. The red curve has a steep initial slope as it increases, then reaches its peak where it meets a horizontal dotted line, then has a steep decline before leveling out. From the initial point to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a forward.” From the end point to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a reverse.” The second curve is less steep than the first and does not reach as high of a peak on the y-axis. It meets a separate horizontal dotted line at its peak, then declines at a similar rate to the first curve before leveling out with the first curve. From the initial point where the slope begins to increase to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a forward.” From the end point right as it levels out to the horizontal line, there is a vertical line with arrows on each end labeled “E subscript a reverse.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_13_03_catalyst.jpg"/>
+</media>
+<caption>Hvarfrit fyrir
+einfalt ferli án (rautt) og með (blátt) hvata. Notkun hvata lækkar
+virkjunarorku bæði framhvarfs og bakhvarfs en hefur ekki áhrif á gildi
+jafnvægisfastans.</caption>
+</figure>
+<para id="fs-idp7823504">Áhugavert dæmi sem varpar ljósi á
+þessi jafnvægishugtök er iðnaðarframleiðsla á ammoníaki, NH<sub>3</sub>. Þetta
+efni er meðal 10 mest framleiddu iðnaðarefnanna, en árlega eru framleidd
+um það bil tvö milljarðar punda í Bandaríkjunum. Ammoníak er notað sem
+efnahráefni til að framleiða fjölbreytt úrval af efnasamböndum sem
+nýtast í viðskiptum, þar á meðal áburð, plast, litarefni og sprengiefni.</para>
+<para id="fs-idp140313264">Við iðnaðarframleiðslu á ammoníaki
+er oftast notast við <emphasis effect="italics">Haber-Bosch-ferlið</emphasis> sem byggir á eftirfarandi
+jafnvægishvarfi:</para>
+<equation id="fs-idm143149600" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mn>3</m:mn><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⇌</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:mtext>Δ</m:mtext><m:mi>H</m:mi><m:mo>=</m:mo><m:mn>−92.2</m:mn><m:mspace width="0.2em"/><m:mtext>kJ</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idp44583392">Eiginleikar þessa hvarfs gera það að
+verkum að erfitt er að nýta það í skilvirku iðnaðarferli.
+Jafnvægisfastinn er tiltölulega lágur (<emphasis effect="italics">K<sub>p</sub></emphasis> af stærðargráðunni 10<sup>−5</sup>
+við 25 °C), sem þýðir að mjög lítið ammoníak er til staðar í
+jafnvægisblöndu. Einnig er hvarfhraði þessa hvarfs tiltölulega hægur við
+lágt hitastig. Til að auka heimtur ammoníaks er iðnaðarferlið hannað til
+að starfa við aðstæður sem ýta undir myndun myndefnis:</para>
+<list id="fs-idm177221696" list-type="bulleted" bullet-style="bullet">
+<item>Hár þrýstingur (styrkur)
+hvarfefna er notaður, ~150–250 atm, til að hliðra jafnvæginu til hægri
+og ýta þannig undir myndun myndefnis.</item>
+<item>Ammoníak er stöðugt fjarlægt
+(safnað) úr jafnvægisblöndunni meðan á ferlinu stendur, sem lækkar styrk
+þess og hliðrar jafnvæginu einnig til hægri.</item>
+<item>Þrátt fyrir að lágt hitastig
+ýti undir myndun myndefnis í þessu útverma ferli er hvarfhraðinn við
+lágt hitastig óhagkvæmt hægur. Hvati er notaður til að auka hvarfhraðann
+upp í ásættanlegan hraða við tiltölulega hóflegt hitastig (400–500 °C).</item>
+</list>
+<para id="fs-idp56665040">Skýringarmynd sem sýnir dæmigerðan
+iðnaðarbúnað til framleiðslu á ammoníaki með Haber-Bosch-ferlinu er sýnd
+í &lt;!-- XREF:3 -->.</para>
+<figure id="CNX_Chem_13_03_factory">
+<media id="fs-idp114972544" alt="A diagram is shown that is composed of three main sections. The first section shows an intake pipe labeled with blue arrows and the terms, “N subscript 2, H subscript 2, feed gases,” and “Compressor.” This pipe leads to a large chamber with a turbine in the top section and a coil in the bottom section. From top to bottom, the sections of this chamber are labeled, “Heat exchanger,” “Catalyst chamber 400 to 500 degrees C,” “Catalyst,” “Heater,” and “Preheated feed gases.” One pipe leads from the top of this chamber with red arrows and is labeled, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” while another pipe leads to the bottom of the chamber and reads, “Compressor,” and has orange arrows going through it. These two pipes are connected to a square container that is labeled, “Heat exchanger,” and has red arrows going into it from the upper pipe, orange arrows going away from it to the lower pipe and into a third system. The pipes leading into and out of the heat exchanger are labeled, “Recycled N subscript 2, H subscript 2.” The third system shows a container with an interior zig-zag-shaped pipe that sits on a base that contains a curled pipe on a storage tank. From the top of the image to the bottom are the terms, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” “Condenser,” “Cold water in,” “Refrigeration,” “N H subscript 3 ( l ),” and “Storage” Blue arrows lead away from the base of this system and into the second system while other blue arrows lead into the system from the right side of the diagram and back out of the same chamber.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_13_03_factory.jpg"/>
+</media>
+<caption>Myndin sýnir
+dæmigerðan iðnaðarbúnað fyrir framleiðslu á ammoníaki með
+Haber-Bosch-ferlinu. Ferlið starfar við aðstæður sem þrýsta á
+efnajafnvægið til að ýta undir myndun myndefnis.</caption>
+</figure>
+</section>
+<section id="fs-idm26332112" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp7945600">Hægt er að raska kerfum í jafnvægi með
+breytingum á hitastigi, styrk og í sumum tilfellum rúmmáli og þrýstingi.
+Viðbrögð kerfisins við þessum röskunum eru lýst með lögmáli Le
+Châteliers: Jafnvægiskerfi sem verður fyrir röskun mun hliðrast á þann
+hátt að það vinnur gegn röskuninni og nær aftur jafnvægi. Hvati mun auka
+hvarfhraða bæði framhvarfs og bakhvarfs í afturkræfu ferli, sem eykur
+hraðann sem jafnvægi næst á en breytir ekki samsetningu
+jafnvægisblöndunnar (<emphasis effect="italics">K</emphasis> breytist ekki).</para>
+</section>
+<section id="fs-idm7256160" class="exercises">
+<title>Efnafræði – verkefni í lok
+kafla</title>
+<exercise id="fs-idp6498944">
+<problem id="fs-idp58018304">
+<para id="fs-idp736656">Eftirfarandi jafna táknar afturkræfa
+sundrun: \[\[MATH:1\]\]</para>
+<para id="fs-idp25940960">Við hvaða aðstæður mun sundrun í
+lokuðu íláti ganga til fulls þannig að ekkert CaCO<sub>3</sub> verður eftir?</para>
+</problem>
+<solution id="fs-idp109030592">
+<para id="fs-idp51761424">Magn CaCO<sub>3</sub> verður að vera svo
+lítið að \[\[MATH:2\]\] sé minna en <emphasis effect="italics">K<sub>P</sub></emphasis> þegar CaCO<sub>3</sub> hefur sundrast
+að fullu. Með öðrum orðum, upphafsmagn CaCO<sub>3</sub> getur ekki myndað allan
+þann \[\[MATH:3\]\] sem þarf til að ná jafnvægi.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp22318672">
+<problem id="fs-idp46158992">
+<para id="fs-idp8429440">Útskýrðu hvernig hægt er að þekkja
+aðstæðurnar þar sem breytingar á rúmmáli hafa áhrif á kerfi í gasfasa
+sem eru í jafnvægi.</para>
+</problem>
+</exercise>
+<exercise id="fs-idp50583536">
+<problem id="fs-idp114201312">
+<para id="fs-idm9674096">Hvaða eiginleika hvarfs getum við
+notað til að spá fyrir um áhrif hitastigsbreytingar á gildi
+jafnvægisfasta?</para>
+</problem>
+<solution id="fs-idm78804960">
+<para id="fs-idp145707600">Nota má breytingu á vermi. Ef
+hvarfið er útvermið má líta á varmann sem myndast sem myndefni. Ef
+hvarfið er innvermið má líta á varmann sem er bætt við sem hvarfefni.
+Viðbótarvarmi myndi hliðra útvermu hvarfi aftur í átt að hvarfefnum en
+myndi hliðra innvermu hvarfi í átt að myndefnum. Kæling á útvermu hvarfi
+veldur því að hvarfið hliðrast í átt að myndefnishliðinni; kæling á
+innvermu hvarfi myndi valda því að það hliðraðist í átt að
+hvarfefnishliðinni.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp176997392">
+<problem id="fs-idp201726448">
+<para id="fs-idp88632768">Eftirfarandi hvarf á sér stað
+þegar kveikt er á hellu á gaseldavél: \[\[MATH:4\]\]</para>
+<para id="fs-idp113241664">Næst jafnvægi milli CH<sub>4</sub>, O<sub>2</sub>,
+CO<sub>2</sub> og H<sub>2</sub>O við þessar aðstæður? Útskýrðu svarið.</para>
+</problem>
+<solution id="fs-idp82751184">
+<para id="fs-idp107413808">Nei, það er ekki í jafnvægi. Þar
+sem kerfið er ekki lokað sleppa myndefni stöðugt frá svæði logans;
+hvarfefnum er einnig stöðugt bætt við frá hellunni og umhverfinu.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp55085984">
+<problem id="fs-idp55911200">
+<para id="fs-idp138000784">Nauðsynlegt skref í framleiðslu á
+brennisteinssýru er myndun brennisteinsþríoxíðs, SO<sub>3</sub>, úr
+brennisteinsdíoxíði, SO<sub>2</sub>, og súrefni, O<sub>2</sub>, eins og sýnt er hér. Við
+hátt hitastig er hvarfhraði myndunar SO<sub>3</sub> hærri, en jafnvægismagn
+(styrkur eða hlutþrýstingur) SO<sub>3</sub> er lægra en það væri við lægra
+hitastig. \[\[MATH:5\]\]</para><para id="fs-idp28525136">(a) Hækkar jafnvægisfastinn fyrir
+hvarfið, lækkar hann eða helst hann nokkurn veginn óbreyttur þegar
+hitastigið hækkar?</para>
+<para id="fs-idp26487568">(b) Er hvarfið innvermið eða
+útvermið?</para>
+</problem>
+</exercise>
+<exercise id="fs-idm14144048">
+<problem id="fs-idm2511216">
+<para id="fs-idp45632">Stingdu upp á fjórum leiðum til að
+auka styrk hýdrasíns, N<sub>2</sub>H<sub>4</sub>, í jafnvægi sem lýst er með eftirfarandi
+jöfnu: \[\[MATH:6\]\]</para>
+</problem>
+<solution id="fs-idp52611824">
+<para id="fs-idp27030640">Bæta við N<sub>2</sub>; bæta við H<sub>2</sub>;
+minnka rúmmál ílátsins; hita blönduna.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp20860880">
+<problem id="fs-idp93580528">
+<para id="fs-idp208675872">Stingdu upp á fjórum leiðum til
+að auka styrk PH<sub>3</sub> í jafnvægi sem lýst er með eftirfarandi jöfnu:
+\[\[MATH:7\]\]</para>
+</problem>
+</exercise>
+<exercise id="fs-idp53124112">
+<problem id="fs-idp25636544">
+<para id="fs-idp54257744">Hvernig mun hækkun á hitastigi
+hafa áhrif á hvert eftirfarandi jafnvægi? Hvernig mun minnkun á rúmmáli
+hvarfílátsins hafa áhrif á hvert þeirra?</para>
+<para id="fs-idm857712">(a) \[\[MATH:8\]\]</para>
+<para id="fs-idp76135856">(b) \[\[MATH:9\]\]</para>
+<para id="fs-idm7155392">(c) \[\[MATH:10\]\]</para>
+<para id="fs-idp153795216">(d) \[\[MATH:11\]\]</para>
+</problem>
+<solution id="fs-idp47561040">
+<para id="fs-idp85418448">(a) <emphasis effect="italics">T</emphasis> hækkun = hliðrun til
+hægri, <emphasis effect="italics">V</emphasis> minnkun = hliðrun til vinstri; (b) <emphasis effect="italics">T</emphasis> hækkun = hliðrun til
+hægri, <emphasis effect="italics">V</emphasis> = engin áhrif; (c) <emphasis effect="italics">T</emphasis> hækkun = hliðrun til vinstri, <emphasis effect="italics">V</emphasis>
+minnkun = hliðrun til vinstri; (d) <emphasis effect="italics">T</emphasis> hækkun = hliðrun til vinstri, <emphasis effect="italics">V</emphasis>
+minnkun = hliðrun til hægri.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp212372192">
+<problem id="fs-idp64029968">
+<para id="fs-idp79334080">Hvernig mun hækkun á hitastigi
+hafa áhrif á hvert eftirfarandi jafnvægi? Hvernig mun minnkun á rúmmáli
+hvarfílátsins hafa áhrif á hvert þeirra?</para>
+<para id="fs-idm740576">(a) \[\[MATH:12\]\]</para>
+<para id="fs-idp36815136">(b) \[\[MATH:13\]\]</para>
+<para id="fs-idp42775104">(c) \[\[MATH:14\]\]</para>
+<para id="fs-idp41148976">(d) \[\[MATH:15\]\]</para>
+</problem>
+</exercise>
+<exercise id="fs-idp65024704">
+<problem id="fs-idp247745376">
+<para id="fs-idp84954288">Hægt er að framleiða metanól úr
+kolmónoxíði og vetni við hátt hitastig og háan þrýsting í návist
+viðeigandi hvata.</para>
+<para id="fs-idp47071392">(a) Skrifaðu stæðuna fyrir
+jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa hvarfið \[\[MATH:16\]\]</para>
+<para id="fs-idp114921120">(b) Hvað gerist með styrk H<sub>2</sub>,
+CO og CH<sub>3</sub>OH við jafnvægi ef meira H<sub>2</sub> er bætt við?</para>
+<para id="fs-idp237064112">(c) Hvað gerist með styrk H<sub>2</sub>,
+CO og CH<sub>3</sub>OH við jafnvægi ef CO er fjarlægt?</para>
+<para id="fs-idp163575072">(d) Hvað gerist með styrk H<sub>2</sub>,
+CO og CH<sub>3</sub>OH við jafnvægi ef CH<sub>3</sub>OH er bætt við?</para>
+<para id="fs-idp112764896">(e) Hvað gerist með styrk H<sub>2</sub>,
+CO og CH<sub>3</sub>OH við jafnvægi ef hitastig kerfisins er hækkað?</para>
+<para id="fs-idp117147216">(f) Hvað gerist með styrk H<sub>2</sub>,
+CO og CH<sub>3</sub>OH við jafnvægi ef meiri hvata er bætt við?</para>
+</problem>
+<solution id="fs-idp262334176">
+<para id="fs-idp82839488">(a) \[\[MATH:17\]\] (b) \[H<sub>2</sub>\]
+hækkar, \[CO\] lækkar, \[CH<sub>3</sub>OH\] hækkar; (c), \[H<sub>2</sub>\] hækkar, \[CO\]
+lækkar, \[CH<sub>3</sub>OH\] lækkar; (d), \[H<sub>2</sub>\] hækkar, \[CO\] hækkar,
+\[CH<sub>3</sub>OH\] hækkar; (e), \[H<sub>2</sub>\] hækkar, \[CO\] hækkar, \[CH<sub>3</sub>OH\]
+lækkar; (f), engar breytingar.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp384696688">
+<problem id="fs-idp109307184">
+<para id="fs-idp155494352">Nitur og súrefni hvarfast við
+hátt hitastig.</para>
+<para id="fs-idp76209904">(a) Skrifaðu jöfnuna fyrir
+jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa hvarfið \[\[MATH:18\]\]</para>
+<para id="fs-idp215116176">(b) Hvað gerist fyrir styrk N<sub>2</sub>,
+O<sub>2</sub> og NO við jafnvægi ef meira O<sub>2</sub> er bætt við?</para>
+<para id="fs-idp166633472">(c) Hvað gerist fyrir styrk N<sub>2</sub>,
+O<sub>2</sub> og NO við jafnvægi ef N<sub>2</sub> er fjarlægt?</para>
+<para id="fs-idm6587360">(d) Hvað gerist fyrir styrk N<sub>2</sub>,
+O<sub>2</sub> og NO við jafnvægi ef NO er bætt við?</para>
+<para id="fs-idp125011728">(e) Hvað gerist fyrir styrk N<sub>2</sub>,
+O<sub>2</sub> og NO við jafnvægi ef rúmmál hvarfílátsins er minnkað?</para>
+<para id="fs-idp33093872">(f) Hvað gerist fyrir styrk N<sub>2</sub>,
+O<sub>2</sub> og NO við jafnvægi ef hitastig kerfisins er hækkað?</para>
+<para id="fs-idm12428240">(g) Hvað gerist fyrir styrk N<sub>2</sub>,
+O<sub>2</sub> og NO við jafnvægi ef hvata er bætt við?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp201703744">
+<problem id="fs-idp27051456">
+<para id="fs-idp27051712">Vatnsgas, efnablanda af H<sub>2</sub> og
+CO, er mikilvægt iðnaðareldsneyti sem er framleitt með hvarfi gufu við
+glóandi koks, sem er nánast hreint kolefni.</para>
+<para id="fs-idp153944320">(a) Skrifaðu jöfnuna fyrir
+jafnvægisfastann fyrir afturkræfa hvarfið \[\[MATH:19\]\]</para>
+<para id="fs-idp139982336">(b) Hvað gerist fyrir styrk hvers
+hvarfefnis og myndefnis við jafnvægi ef meira C er bætt við?</para>
+<para id="fs-idp37591792">(c) Hvað gerist fyrir styrk hvers
+hvarfefnis og myndefnis við jafnvægi ef H<sub>2</sub>O er fjarlægt?</para>
+<para id="fs-idp328747376">(d) Hvað gerist fyrir styrk hvers
+hvarfefnis og myndefnis við jafnvægi ef CO er bætt við?</para>
+<para id="fs-idm3353088">(e) Hvað gerist fyrir styrk hvers
+hvarfefnis og myndefnis við jafnvægi ef hitastig kerfisins er hækkað?</para>
+</problem>
+<solution id="fs-idp24515792">
+<para id="fs-idm4087504">(a) \[\[MATH:20\]\] (b) \[H<sub>2</sub>O\]
+engin breyting, \[CO\] engin breyting, \[H<sub>2</sub>\] engin breyting; (c)
+\[H<sub>2</sub>O\] minnkar, \[CO\] minnkar, \[H<sub>2</sub>\] minnkar; (d) \[H<sub>2</sub>O\]
+eykst, \[CO\] eykst, \[H<sub>2</sub>\] minnkar; (e) \[H<sub>2</sub>O\] minnkar, \[CO\]
+eykst, \[H<sub>2</sub>\] eykst. Í (b), (c), (d) og (e) mun massi kolefnis
+breytast en styrkur þess (virkni) breytist ekki.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp31242816">
+<problem id="fs-idp94077728">
+<para id="fs-idm14354544">Hreinan járnmálm er hægt að
+framleiða með afoxun járn(III)oxíðs með vetnisgasi.</para>
+<para id="fs-idm5772208">(a) Skrifaðu jöfnuna fyrir
+jafnvægisfastann (<emphasis effect="italics">K<sub>c</sub></emphasis>) fyrir afturkræfa efnahvarfið \[\[MATH:21\]\]</para>
+<para id="fs-idp103391248">(b) Hvað gerist fyrir styrk hvers
+hvarfefnis og myndefnis við jafnvægi ef meira Fe er bætt við?</para>
+<para id="fs-idp67029792">(c) Hvað gerist fyrir styrk hvers
+hvarfefnis og myndefnis við jafnvægi ef H<sub>2</sub>O er fjarlægt?</para>
+<para id="fs-idp120512464">(d) Hvað gerist fyrir styrk hvers
+hvarfefnis og myndefnis við jafnvægi ef H<sub>2</sub> er bætt við?</para>
+<para id="fs-idp79018960">(e) Hvað gerist fyrir styrk hvers
+hvarfefnis og myndefnis við jafnvægi ef rúmmál hvarfílátsins er minnkað?</para><para id="fs-idm111712">(f) Hvað gerist fyrir styrk hvers
+hvarfefnis og myndefnis við jafnvægi ef hitastig kerfisins er hækkað?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp52451264">
+<problem id="fs-idp260986016">
+<para id="fs-idp260986272">Ammoníak er veikur basi sem
+hvarfast við vatn samkvæmt þessari jöfnu: \[\[MATH:22\]\]</para>
+<para id="fs-idp41532304">Mun eitthvað af eftirfarandi auka
+hlutfall ammoníaks sem breytist í ammóníumjón í vatni?</para>
+<para id="fs-idp26686944">(a) Álagning NaOH</para>
+<para id="fs-idp64220016">(b) Álagning HCl</para>
+<para id="fs-idp167305664">(c) Álagning NH<sub>4</sub>Cl</para>
+</problem>
+<solution id="fs-idp17565952">
+<para id="fs-idp48607168">Aðeins (b)</para>
+</solution>
+</exercise>
+<exercise id="fs-idp261498704">
+<problem id="fs-idm1536240">
+<para id="fs-idp25609312">Ediksýra er veik sýra sem hvarfast
+við vatn samkvæmt þessari jöfnu: \[\[MATH:23\]\]</para>
+<para id="fs-idp114009808">Mun eitthvað af eftirfarandi auka
+hlutfall ediksýru sem hvarfast og myndar \[\[MATH:24\]\] jón?</para>
+<para id="fs-idm11269984">(a) Álagning HCl</para>
+<para id="fs-idp154007760">(b) Álagning NaOH</para>
+<para id="fs-idp27637856">(c) Álagning NaCH<sub>3</sub>CO<sub>2</sub></para>
+</problem>
+</exercise>
+<exercise id="fs-idp157396912">
+<problem id="fs-idp157397168">
+<para id="fs-idp150087168">Stingdu upp á tveimur leiðum til
+að minnka jafnvægisstyrk Ag<sup>+</sup> í lausn af Na<sup>+</sup>, Cl<sup>−</sup>, Ag<sup>+</sup> og
+\[\[MATH:25\]\] í snertingu við fast efni AgCl. \[\[MATH:26\]\]
+\[\[MATH:27\]\]</para>
+</problem>
+<solution id="fs-idm2616800">
+<para id="fs-idm2616544">Bættu NaCl eða öðru salti sem
+myndar Cl<sup>−</sup> út í lausnina. Með því að kæla lausnina færist jafnvægið
+til hægri og meira AgCl(<emphasis effect="italics">s</emphasis>) fellur út.</para>
+</solution>
+</exercise>
+<exercise id="fs-idm33369776">
+<problem id="fs-idp157407216">
+<para id="fs-idp157407472">Hvernig er hægt að auka þrýsting
+vatnsgufu í eftirfarandi jafnvægi? \[\[MATH:28\]\]</para>
+</problem>
+</exercise>
+<exercise id="fs-idp92538384">
+<problem id="fs-idp92538640">
+<para id="fs-idm15433728">Lausn er mettuð af silfursúlfati
+og inniheldur umfram- fast efni silfursúlfat: \[\[MATH:29\]\]</para>
+<para id="fs-idm200271568">Litlu magni af föstu
+silfursúlfati sem inniheldur geislavirka samsætu af silfri er bætt út í
+þessa lausn. Innan nokkurra mínútna er sýni tekið úr lausnarhlutanum og
+það reynist jákvætt fyrir geislavirkum Ag<sup>+</sup> jónum. Útskýrðu þessa
+athugun.</para>
+</problem>
+<solution id="fs-idp42969632">
+<para id="fs-idp261169472">Þrátt fyrir að lausnin sé mettuð
+þýðir kvikt eðli leysnijafnvægis að andstæð ferli upplausnar fasts efnis
+og útfellingar halda áfram að eiga sér stað (bara á jöfnum hraða, sem
+þýðir að styrkur uppleystra jóna og magn óuppleysts fasts efnis haldast
+stöðug). Geislavirku Ag<sup>+</sup> jónirnar sem greinast í lausnarhlutanum koma
+frá upplausn fasta efnisins sem bætt var við og tilvist þeirra er vegin
+upp á móti með útfellingu ógeislavirkra Ag<sup>+</sup>.</para></solution>
+</exercise>
+<exercise id="fs-idp219741088"><problem id="fs-idp48823632">
+<para id="fs-idp48823888">Þegar jöfnum mólmagni af HCl og
+HOCl er leyst upp sérstaklega í jöfnu magni af vatni, frýs lausn HCl við
+lægra hitastig. Hvaða efnasamband hefur stærri jafnvægisfasta fyrir
+sýrujónun?</para>
+<para id="eip-idm965920976">(a) HCl</para>
+<para id="eip-idm841490976">(b) H<sup>+</sup> + Cl<sup>–</sup></para>
+<para id="eip-idm861934656">(c) HOCl</para>
+<para id="eip-idm1076346304">(d) H<sup>+</sup> + OCl<sup>–</sup></para>
+</problem>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp108249008">
+<term>Lögmál Le Châteliers</term>
+<meaning id="fs-idp108249008-meaning">jafnvægi sem verður
+fyrir álagi mun hliðrast á þann hátt að það vinnur gegn álaginu og kemur
+aftur á jafnvægi</meaning>
+</definition>
+</glossary>
+</document>

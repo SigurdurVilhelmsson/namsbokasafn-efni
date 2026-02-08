@@ -1,0 +1,156 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML">
+<title>Efnajafnvægi</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68797</md:content-id>
+  <md:title>Chemical Equilibria</md:title>
+  <md:abstract><para id="para-00001">Í lok þessa kafla muntu geta:</para><list id="list-00001"><item>Lýst eðli jafnvægiskerfa</item><item>Útskýrt kvikt eðli
+efnajafnvægis</item></list></md:abstract>
+  <md:uuid>50ab1072-cc18-4529-96d7-87efc091087f</md:uuid>
+</metadata>
+
+<content>
+<para id="fs-idp222368384">Hefðin við að skrifa efnajöfnur
+felur í sér að setja formúlur hvarfefna vinstra megin við hvarför og
+formúlur myndefna hægra megin. Samkvæmt þessari hefð og skilgreiningum á
+„hvarfefni“ og „myndefni“ táknar efnajafna viðkomandi efnahvarf sem
+gengur frá vinstri til hægri. <emphasis effect="bold">Afturkræf</emphasis> efnahvörf geta þó gengið í
+báðar áttir, bæði fram (frá vinstri til hægri) og aftur (frá hægri til
+vinstri). Þegar hvarfhraði fram- og afturhvarfa er jafn, helst styrkur
+hvarfefna og myndefna stöðugur með tímanum og kerfið er í <emphasis effect="bold">jafnvægi</emphasis>.
+Hlutfallslegur styrkur hvarfefna og myndefna í jafnvægiskerfum er mjög
+breytilegur; sum kerfi innihalda aðallega myndefni í jafnvægi, sum
+innihalda aðallega hvarfefni og sum innihalda umtalsvert magn af báðum.</para>
+<para id="fs-idp3488592">&lt;!-- XREF:1 --> sýnir grundvallarhugtök
+jafnvægis með því að nota afturkræft niðurbrotsefnahvarf litlauss
+tvíniturtetroxíðs til að mynda brúnt niturdíoxíð, sem er frumhvarf sem
+lýst er með jöfnunni:</para>
+<figure id="CNX_Chem_13_01_equilibrium">
+<media id="fs-idp272099696" alt="A three-part diagram is shown and labeled, “a,” “b,” and “c.” In part a, at the top of the diagram, three beakers are shown, and each one contains a sealed tube. The tube in the left beaker is labeled “t equals 0.” It is full of a colorless gas which is connected to a zoom-in view of the particles in the tube by a downward-facing arrow. This particle view shows seven particles, each composed of two connected blue spheres. Each blue sphere is connected to two red spheres. This type of particle is labeled “N subscript 2 O subscript 4.” The tube in the middle beaker is labeled “pre-equilibrium.” It is full of a light brown gas which is connected to a zoom-in view of the particles in the tube by a downward-facing arrow. This particle view shows nine particles, five of which are composed of two connected blue spheres. Each blue sphere is connected to two red spheres. This type of particle is labeled “N subscript 2 O subscript 4.” The remaining four are composed of two red spheres connected to a blue sphere. This type of particle is labeled “N O subscript 2.”  The tube in the right beaker is labeled “at equilibrium.” It is full of a brown gas which is connected to a zoom-in view of the particles in the tube by a downward-facing arrow. This particle view shows eleven particles, three of which are composed of two connected blue spheres. Each blue sphere is connected to two red spheres. The remaining eight are composed of two red spheres connected to a blue sphere. In part b, in the middle of the image, is one graph. This graph has a y-axis labeled, “Concentration,” and an x-axis labeled, “Time.” A red line labeled, “N O subscript 2,” begins in the bottom left corner of the graph at a point labeled, “0,” and rises near the highest point on the y-axis before it levels off and becomes horizontal. A blue line labeled, “N subscript 2 O subscript 4,” begins near the highest point on the y-axis and drops below the midpoint of the y-axis before leveling off. In part c, at the bottom of the image is another graph. This graph has a y-axis labeled, “Rate,” and an x-axis labeled, “Time.” A red line labeled, “k subscript f, [ N subscript 2 O subscript 4 ],” begins in the bottom left corner of the graph at a point labeled, “0,” and rises near the middle of the y-axis before it levels off and becomes horizontal. A blue line labeled, “k subscript f, [ N O subscript 2 ] superscript 2,” begins near the highest point on the y-axis and drops to the same point on the y-axis as the red line before leveling off. The point where both lines become horizontal is labeled, “Equilibrium achieved.”">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_13_01_equilibrium.jpg"/>
+</media>
+<caption>(a) Lokað glas
+sem inniheldur litlaust N<sub>2</sub>O<sub>4</sub> dökknar þegar það brotnar niður og
+myndar brúnt NO<sub>2</sub>. (b) Breytingar á styrk með tímanum þegar
+niðurbrotsefnahvarfið nær jafnvægi. (c) Við jafnvægi er hvarfhraði fram-
+og afturhvarfa jafn.</caption>
+</figure>
+<equation id="fs-idp102698592" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp239057616">Athugið að sérstök tvöföld ör er
+notuð til að leggja áherslu á afturkræft eðli efnahvarfsins.</para>
+<para id="fs-idp53505568">Fyrir þetta frumhvarf má leiða
+hraðalögmál fyrir fram- og afturhvarf beint út frá efnajöfnunni:</para>
+<equation id="fs-idm499686688" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>f</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy="false">]</m:mo></m:mrow></m:math></equation>
+<equation id="fs-idm345509376" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>r</m:mi></m:msub><m:mo stretchy="false">[</m:mo><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mo stretchy="false">]</m:mo><m:mn>2</m:mn></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm379766304">Þegar efnahvarfið hefst (<emphasis effect="italics">t</emphasis> = 0) er
+styrkur hvarfefnisins N<sub>2</sub>O<sub>4</sub> endanlegur og styrkur myndefnisins NO<sub>2</sub>
+er núll, þannig að framhvarfið gengur á endanlegum hraða á meðan
+hvarfhraði afturhvarfsins er núll. Eftir því sem tíminn líður eyðist
+N<sub>2</sub>O<sub>4</sub> og styrkur þess minnkar, á meðan NO<sub>2</sub> myndast og styrkur þess
+eykst (&lt;!-- XREF:2 --><emphasis effect="bold">b</emphasis>). Minnkaður styrkur hvarfefnisins hægir á
+hvarfhraða framhvarfsins og aukinn styrkur myndefnisins eykur hvarfhraða
+afturhvarfsins (&lt;!-- XREF:3 --><emphasis effect="bold">c</emphasis>). Þetta ferli heldur áfram þar til
+<emphasis effect="italics">hvarfhraði fram- og afturhvarfa verður jafn</emphasis>, en þá hefur efnahvarfið
+náð jafnvægi, sem einkennist af stöðugum styrk hvarfefna og myndefna
+(skyggð svæði á &lt;!-- XREF:4 --><emphasis effect="bold">b</emphasis> og &lt;!-- XREF:5 --><emphasis effect="bold">c</emphasis>). Mikilvægt er að
+leggja áherslu á að efnajafnvægi er kvikt; efnahvarf í jafnvægi hefur
+ekki „stöðvast“ heldur gengur það í fram- og afturátt á sama hraða.
+Þetta kvika eðli er nauðsynlegt til að skilja hegðun jafnvægis eins og
+fjallað er um í þessum og síðari köflum textans.</para>
+<figure id="CNX_Chem_13_01_dynamic" class="scaled-down">
+<media id="fs-idp224130880" alt="Two people are shown throwing juggling pins back and forth to one another.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_13_01_dynamic.jpg"/>
+</media>
+<caption>Jöglatriði með
+tveimur einstaklingum sýnir kvika þáttinn í efnajafnvægi. Hver
+einstaklingur kastar og grípur kylfur á sama hraða og hvor um sig heldur
+á (nokkurn veginn) stöðugum fjölda kylfa.</caption>
+</figure>
+<para id="fs-idp238702080">Eðlisfræðilegar breytingar, svo sem
+fasaskipti, eru einnig afturkræfar og geta komið á jafnvægi. Þetta
+hugtak var kynnt í öðrum kafla þessa texta með umfjöllun um
+gufunarþrýsting þétts fasa (vökva eða fasts efnis). Sem dæmi má nefna
+uppgufun bróms:</para>
+<equation id="fs-idp92494336" class="unnumbered"><m:math><m:mrow><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>l</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
+<para id="fs-idp164650592">Þegar fljótandi brómi er bætt í
+annars tómt ílát og ílátið er lokað, hefst framferlið sem sýnt er hér að
+ofan (uppgufun) og heldur áfram á nokkurn veginn stöðugum hraða svo
+lengi sem yfirborðsflatarmál vökvans og hitastig hans haldast stöðug.
+Eftir því sem meira magn af brómi á gasformi myndast, eykst hraði
+afturferlisins (þétting) þar til hann jafnast á við uppgufunarhraðann og
+jafnvægi er komið á. Ljósmynd sem sýnir þetta fasaskiptajafnvægi er á
+&lt;!-- XREF:6 -->.</para>
+<figure id="CNX_Chem_13_01_bromine" class="scaled-down"><media id="fs-idp74803760" alt="A glass container is shown that is filled with an orange-brown gas and a small amount of dark orange liquid.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_13_01_bromine.jpg"/>
+</media>
+<caption>Lokað glas sem
+inniheldur jafnvægisblöndu af fljótandi og loftkenndu brómi. (heimild:
+http://images-of-elements.com/bromine.php)</caption></figure>
+<section id="fs-idp62938640" class="summary">
+<title>Lykilhugtök og samantekt</title>
+<para id="fs-idp125631520">Afturkræft efnahvarf er í jafnvægi
+þegar fram- og afturferli eiga sér stað á jöfnum hraða. Efnajafnvægi eru
+kvik ferli sem einkennast af stöðugu magni hvarfefna og myndefna.</para>
+</section>
+<section id="fs-idp157340304" class="exercises">
+<title>Efnafræði – verkefni í lok
+kafla</title>
+<exercise id="fs-idp156600272">
+<problem id="fs-idp161308576">
+<para id="fs-idp78194656">Hvað þýðir það að lýsa efnahvarfi
+sem „afturkræfu“?</para>
+</problem>
+<solution id="fs-idp117378016">
+<para id="fs-idp270955920">Efnahvarfið getur gengið bæði í
+fram- og afturátt.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp122639232">
+<problem id="fs-idp211200816">
+<para id="fs-idp244879360">Hvernig er afturkræft efnahvarf
+aðgreint frá óafturkræfu efnahvarfi þegar jafna er skrifuð?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp77430432">
+<problem id="fs-idp73301088">
+<para id="fs-idp238496784">Ef efnahvarf er afturkræft,
+hvenær er hægt að segja að það hafi náð jafnvægi?</para>
+</problem>
+<solution id="fs-idp218635792">
+<para id="fs-idp120287136">Þegar kerfi hefur náð jafnvægi
+verða engar frekari breytingar á styrk hvarfefna og myndefna;
+framhvarfið og bakhvarfið halda áfram en með jöfnum hraða.</para>
+</solution>
+</exercise>
+<exercise id="fs-idp13186176">
+<problem id="fs-idm2291424">
+<para id="fs-idp280981664">Er kerfi í jafnvægi ef
+hraðafastar framhvarfsins og bakhvarfsins eru jafnir?</para>
+</problem>
+</exercise>
+<exercise id="fs-idp9783616">
+<problem id="fs-idp38335040">
+<para id="fs-idp73299680">Ef styrkur myndefna og hvarfefna
+er jafn, er kerfið þá í jafnvægi?</para>
+</problem>
+<solution id="fs-idp52478624">
+<para id="fs-idp15954560">Ekki endilega. Kerfi í jafnvægi
+einkennist af <emphasis effect="italics">stöðugum</emphasis> styrk hvarfefna og myndefna, en styrkur
+hvarfefna og myndefna þarf ekki að vera jafn.</para>
+</solution>
+</exercise>
+</section>
+</content>
+<glossary>
+<definition id="fs-idp87452944">
+<term>jafnvægi</term>
+<meaning id="fs-idp87452944-meaning">ástand afturkræfs
+efnahvarfs þar sem framhvarfið og bakhvarfið eiga sér stað með jöfnum
+hraða</meaning>
+</definition>
+<definition id="fs-idp4379168">
+<term>afturkræft efnahvarf</term>
+<meaning id="fs-idp4379168-meaning">efnahvarf sem getur gengið
+bæði í framátt og bakátt við gefnar aðstæður</meaning>
+</definition>
+</glossary>
+</document>
