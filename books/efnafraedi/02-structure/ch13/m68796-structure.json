@@ -1,0 +1,59 @@
+{
+  "moduleId": "m68796",
+  "title": {
+    "segmentId": "m68796:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "907ae180-6648-46e3-9f76-1c2f7919bbe4",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Chemical Equilibria",
+        "Equilibrium Constants",
+        "Shifting Equilibria: Le Châtelier’s Principle",
+        "Equilibrium Calculations"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_13_00_Blood",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68796:caption:CNX_Chem_13_00_Blood-caption"
+      },
+      "media": {
+        "id": "fs-idm45772400",
+        "alt": "An image depicts three tan squares, lying side-by-side along the upper left corner. Two of the same squares also lie side-by-side in the lower right corner. Each square has a black dot in the center. One of the squares is labeled, “C O subscript 2,” and has a double-headed arrow pointing from it to a red tube-like structure that runs between the squares across the image from the upper right to the lower left. This arrow is labeled, “C O subscript 2 dissolved in plasma.” The red tube has two round red shapes in it, and the upper one is labeled, “C O subscript 2 carried in red blood cells.” The gaps between the squares and the red tube are colored light blue. One of the squares along the top of the image is labeled, “C O subscript 2,” and is connected by a double-headed arrow to an equation in the red tube that is labeled, “C O subscript 2, a plus sign, H subscript 2 O, right-facing arrow, H subscript 2 C O subscript 3, right-facing arrow, H C O subscript 3 superscript negative sign, plus sign, H superscript positive sign.” The compound “H C O subscript 3 superscript negative sign” is then connected by a double-headed arrow to the space in the red tube and is labeled, “H C O subscript 3 superscript negative sign dissolved in plasma as carbonic acid.”",
+        "src": "../../media/CNX_Chem_13_00_Blood.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp51855856",
+      "segmentId": "m68796:para:fs-idp51855856"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68796:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68796:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68796:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68796:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "sectionOrder": 0
+}

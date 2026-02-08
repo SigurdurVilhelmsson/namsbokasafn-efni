@@ -1,0 +1,127 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>2</m:mn><m:mn>3</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{2}{3}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{2}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mtext>rate of diffusion</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>amount of gas passing through an area</m:mtext></m:mrow><m:mrow><m:mtext>unit of time</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{rate of diffusion}=\\, \\frac{{\\text{amount of gas passing through an area}}}{{\\text{unit of time}}}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate of effusion of gas A</m:mtext></m:mrow><m:mrow><m:mtext>rate of effusion of gas B</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mi>m</m:mi><m:mi>B</m:mi></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mi>m</m:mi><m:mi>A</m:mi></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mi>B</m:mi></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mi>A</m:mi></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{rate of effusion of gas A}}}{{\\text{rate of effusion of gas B}}}\\, =\\, \\frac{{\\sqrt{{{m}_{B}}}}}{{\\sqrt{{{m}_{A}}}}}\\, =\\, \\frac{{\\sqrt{{{\\text{ℳ}}_{B}}}}}{{\\sqrt{{{\\text{ℳ}}_{A}}}}}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>rate A</m:mtext></m:mrow><m:mrow><m:mtext>rate B</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>molar mass of B</m:mtext></m:mrow><m:mrow><m:mtext>molar mass of A</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{{({\\frac{{\\text{rate A}}}{{\\text{rate B}}}})}={{{({\\frac{{\\text{molar mass of B}}}{{\\text{molar mass of A}}}})}}}^{{1\\text{/}2}}.}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mtext>A</m:mtext></m:msub><m:mo>=</m:mo><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mtext>B</m:mtext></m:msub><m:mtext> KE</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:msup><m:mi>v</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{{\\text{KE}}}_{\\text{A}}={{\\text{KE}}}_{\\text{B}}\\text{KE}=\\, \\frac{1}{2}\\, m{v}^{2}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mi>m</m:mi><m:mtext>A</m:mtext></m:msub><m:msubsup><m:mi>v</m:mi><m:mtext>A</m:mtext><m:mn>2</m:mn></m:msubsup><m:mo>=</m:mo><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msub><m:mi>m</m:mi><m:mtext>B</m:mtext></m:msub><m:msubsup><m:mi>v</m:mi><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:math>",
+    "latex": "{\\frac{1}{2}{m}_{\\text{A}}{v}_{\\text{A}}^{2}=\\frac{1}{2}{m}_{\\text{B}}{v}_{\\text{B}}^{2}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>v</m:mi><m:mtext>A</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow><m:mrow><m:msubsup><m:mi>v</m:mi><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{{v}_{\\text{A}}^{2}}}{{{v}_{\\text{B}}^{2}}}\\, =\\, \\frac{{{m}_{\\text{B}}}}{{{m}_{\\text{A}}}}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>v</m:mi><m:mtext>A</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow><m:mrow><m:msubsup><m:mi>v</m:mi><m:mtext>B</m:mtext><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{{{{({\\frac{{{v}_{\\text{A}}^{2}}}{{{v}_{\\text{B}}^{2}}}})}}}^{{1\\text{/}2}}={{{({\\frac{{{m}_{\\text{B}}}}{{{m}_{\\text{A}}}}})}}}^{{1\\text{/}2}}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>v</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>v</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:msup><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>m</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:math>",
+    "latex": "{\\frac{{{v}_{\\text{A}}}}{{{v}_{\\text{B}}}}\\, ={{{({\\frac{{{m}_{\\text{B}}}}{{{m}_{\\text{A}}}}})}}}^{{1\\text{/}2}}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>3</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo>+</m:mo><m:mtext>HCl</m:mtext><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:mtext>NH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub><m:mtext>Cl</m:mtext><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mi>s</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{{\\text{NH}}}_{3}(g)+\\text{HCl}{(g)}\\, \\longrightarrow \\, {{\\text{NH}}}_{4}\\text{Cl}{(s)}}"
+  },
+  "fs-idm44153792": {
+    "mathml": "<m:math><m:mrow><m:mtext>rate of diffusion</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>amount of gas passing through an area</m:mtext></m:mrow><m:mrow><m:mtext>unit of time</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{rate of diffusion}=\\, \\frac{{\\text{amount of gas passing through an area}}}{{\\text{unit of time}}}}",
+    "isBlock": true
+  },
+  "fs-idp1970368": {
+    "mathml": "<m:math><m:mrow><m:mtext>rate of effusion</m:mtext><m:mo>∝</m:mo><m:mfrac><m:mn>1</m:mn><m:mrow><m:msqrt><m:mtext>ℳ</m:mtext></m:msqrt></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{rate of effusion}∝\\frac{1}{{\\sqrt{\\text{ℳ}}}}}",
+    "isBlock": true
+  },
+  "fs-idp39119056": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate of effusion of A</m:mtext></m:mrow><m:mrow><m:mtext>rate of effusion of B</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mtext>B</m:mtext></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mtext>A</m:mtext></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{rate of effusion of A}}}{{\\text{rate of effusion of B}}}\\, =\\, \\frac{{\\sqrt{{{\\text{ℳ}}_{\\text{B}}}}}}{{\\sqrt{{{\\text{ℳ}}_{\\text{A}}}}}}}",
+    "isBlock": true
+  },
+  "fs-idp216764096": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate of effusion of hydrogen</m:mtext></m:mrow><m:mrow><m:mtext>rate of effusion of oxygen</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:mn>32</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:msup><m:mrow><m:mtext>g mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:msup><m:mrow><m:mtext>g mol</m:mtext></m:mrow><m:mrow><m:mtext>−1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose></m:mrow></m:msqrt></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:mn>16</m:mn></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mn>1</m:mn></m:msqrt></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>4</m:mn><m:mn>1</m:mn></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{rate of effusion of hydrogen}}}{{\\text{rate of effusion of oxygen}}}\\, =\\, \\frac{{\\sqrt{{32\\, \\sout{{{{\\text{g mol}}}^{{\\text{−1}}}}}}}}}{{\\sqrt{{2\\, \\sout{{{{\\text{g mol}}}^{{\\text{−1}}}}}}}}}\\, =\\, \\frac{{\\sqrt{{16}}}}{{\\sqrt{1}}}\\, =\\, \\frac{4}{1}}",
+    "isBlock": true
+  },
+  "fs-idp59574816": {
+    "mathml": "<m:math><m:mrow><m:mtext>rate of effusion</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>amount of gas transferred</m:mtext></m:mrow><m:mrow><m:mtext>time</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\text{rate of effusion}=\\, \\frac{{\\text{amount of gas transferred}}}{{\\text{time}}}}",
+    "isBlock": true
+  },
+  "fs-idp60271072": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate of effusion of gas Xe</m:mtext></m:mrow><m:mrow><m:mtext>rate of effusion of gas Ne</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mtext>Ne</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mtext>Xe</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{rate of effusion of gas Xe}}}{{\\text{rate of effusion of gas Ne}}}\\, =\\, \\frac{{\\sqrt{{{\\text{ℳ}}_{{\\text{Ne}}}}}}}{{\\sqrt{{{\\text{ℳ}}_{{\\text{Xe}}}}}}}}",
+    "isBlock": true
+  },
+  "fs-idm139751792": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:mtext>amount of Xe transferred</m:mtext></m:mrow><m:mrow><m:mtext>time for Xe</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:mtext>amount of Ne transferred</m:mtext></m:mrow><m:mrow><m:mtext>time for Ne</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mtext>Ne</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mtext>Xe</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{{{\\text{amount of Xe transferred}}{\\text{time for Xe}}}{\\frac{{\\text{amount of Ne transferred}}}{{\\text{time for Ne}}}}\\, =\\, \\frac{{\\sqrt{{{\\text{ℳ}}_{{\\text{Ne}}}}}}}{{\\sqrt{{{\\text{ℳ}}_{{\\text{Xe}}}}}}}}",
+    "isBlock": true
+  },
+  "fs-idm29629840": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mfrac><m:mrow><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>amount of Xe</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mtext>time for Xe</m:mtext></m:mrow></m:mfrac></m:mrow><m:mrow><m:mfrac><m:mrow><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>amount of Ne</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mtext>time for Ne</m:mtext></m:mrow></m:mfrac></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>time for Ne</m:mtext></m:mrow><m:mrow><m:mtext>time for Xe</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mtext>Ne</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mtext>Xe</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mtext>Ne</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mtext>Xe</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{{{\\sout{{\\text{amount of Xe}}}}{\\text{time for Xe}}}{\\frac{{\\sout{{\\text{amount of Ne}}}}}{{\\text{time for Ne}}}}\\, =\\, \\frac{{\\text{time for Ne}}}{{\\text{time for Xe}}}\\, =\\, \\frac{{\\sqrt{{{\\text{ℳ}}_{{\\text{Ne}}}}}}}{{\\sqrt{{{\\text{ℳ}}_{{\\text{Xe}}}}}}}\\, =\\, \\frac{{\\sqrt{{{\\text{ℳ}}_{{\\text{Ne}}}}}}}{{\\sqrt{{{\\text{ℳ}}_{{\\text{Xe}}}}}}}}",
+    "isBlock": true
+  },
+  "fs-idm53984768": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>time for Ne</m:mtext></m:mrow><m:mrow><m:mn>243</m:mn><m:mspace width=\"0.2em\"/><m:mtext>s</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>20.2</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>g mol</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>131.3</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>g mol</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac></m:mrow></m:msqrt><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.392</m:mn></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{time for Ne}}}{{243\\, \\text{s}}}\\, =\\sqrt{{\\frac{{20.2\\, \\sout{{\\text{g mol}}}}}{{131.3\\, \\sout{{\\text{g mol}}}}}}}\\, =0.392}",
+    "isBlock": true
+  },
+  "fs-idp2514128": {
+    "mathml": "<m:math><m:mrow><m:mtext>time for Ne</m:mtext><m:mo>=</m:mo><m:mn>0.392</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>243</m:mn><m:mspace width=\"0.2em\"/><m:mtext>s</m:mtext><m:mo>=</m:mo><m:mn>95.3</m:mn><m:mspace width=\"0.2em\"/><m:mtext>s</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{time for Ne}=0.392\\, \\times \\, 243\\, \\text{s}=95.3\\, \\text{s}}",
+    "isBlock": true
+  },
+  "fs-idp19320256": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>rate of effusion of Unknown</m:mtext></m:mrow><m:mrow><m:msub><m:mrow><m:mtext>rate of effusion of CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mi>U</m:mi><m:mi>n</m:mi><m:mi>k</m:mi><m:mi>n</m:mi><m:mi>o</m:mi><m:mi>w</m:mi><m:mi>n</m:mi></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{rate of effusion of Unknown}}}{{{{\\text{rate of effusion of CO}}}_{2}}}\\, =\\, \\frac{{\\sqrt{{{\\text{ℳ}}_{{{\\text{CO}}2}}}}}}{{\\sqrt{{{\\text{ℳ}}_{{Unknown}}}}}}}",
+    "isBlock": true
+  },
+  "fs-idm17423856": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mn>1.66</m:mn></m:mrow><m:mn>1</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:mn>44.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g/mol</m:mtext></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mi>U</m:mi><m:mi>n</m:mi><m:mi>k</m:mi><m:mi>n</m:mi><m:mi>o</m:mi><m:mi>w</m:mi><m:mi>n</m:mi></m:mrow></m:msub></m:mrow></m:msqrt></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{1.66}}{1}\\, =\\, \\frac{{\\sqrt{{44.0\\, \\text{g/mol}}}}}{{\\sqrt{{{\\text{ℳ}}_{{Unknown}}}}}}}",
+    "isBlock": true
+  },
+  "fs-idp174900608": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>ℳ</m:mtext><m:mrow><m:mi>U</m:mi><m:mi>n</m:mi><m:mi>k</m:mi><m:mi>n</m:mi><m:mi>o</m:mi><m:mi>w</m:mi><m:mi>n</m:mi></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>44.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g/mol</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mrow><m:mn>1.66</m:mn></m:mrow><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>16.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>g/mol</m:mtext></m:mrow></m:math>",
+    "latex": "{{\\text{ℳ}}_{{Unknown}}=\\, \\frac{{44.0\\, \\text{g/mol}}}{{{{{({1.66})}}}^{2}}}\\, =16.0\\, \\text{g/mol}}",
+    "isBlock": true
+  }
+}

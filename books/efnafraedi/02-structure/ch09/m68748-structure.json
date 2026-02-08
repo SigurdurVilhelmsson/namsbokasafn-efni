@@ -1,0 +1,77 @@
+{
+  "moduleId": "m68748",
+  "title": {
+    "segmentId": "m68748:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "9a9ae0b1-98f9-4635-a5a6-34c7e3e747c1",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Gas Pressure",
+        "Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law",
+        "Stoichiometry of Gaseous Substances, Mixtures, and Reactions",
+        "Effusion and Diffusion of Gases",
+        "The Kinetic-Molecular Theory",
+        "Non-Ideal Gas Behavior"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_00_HotAirBall",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68748:caption:CNX_Chem_09_00_HotAirBall-caption"
+      },
+      "media": {
+        "id": "fs-idm132595392",
+        "alt": "A photograph shows about twenty colorful hot air balloons at varying stages of inflation. Some are deflated, while others are inflated. Three of the balloons are off the ground and are visible against a bright blue sky.",
+        "src": "../../media/CNX_Chem_09_00_HotAirBall.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm58981280",
+      "segmentId": "m68748:para:fs-idm58981280"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm145175104",
+      "segmentId": "m68748:para:fs-idm145175104"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm154865680",
+      "segmentId": "m68748:para:fs-idm154865680"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68748:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68748:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68748:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68748:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68748:abstract-item:abstract-item-5"
+      },
+      {
+        "segmentId": "m68748:abstract-item:abstract-item-6"
+      }
+    ]
+  },
+  "sectionOrder": 0
+}

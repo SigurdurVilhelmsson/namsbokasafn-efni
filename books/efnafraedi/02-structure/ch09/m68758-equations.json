@@ -1,0 +1,108 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mover accent=\"true\"><m:mrow><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mo stretchy=\"true\">¯</m:mo></m:mover></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>u</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>3</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>4</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>…</m:mo></m:mrow><m:mi>n</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math>",
+    "latex": "{{u}_{{\\text{r}\\text{m}\\text{s}}}=\\sqrt{{{{u}^{2}}¯}}=\\sqrt{{\\frac{{{u}_{1}^{2}+{u}_{2}^{2}+{u}_{3}^{2}+{u}_{4}^{2}+\\ldots}}{n}}}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math>",
+    "latex": "{{{\\text{KE}}}_{{\\text{avg}}}=\\, \\frac{3}{2}RT}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math>",
+    "latex": "{{u}_{{\\text{rms}}}=\\sqrt{{\\frac{{3RT}}{M}}}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:msqrt><m:mn>2</m:mn></m:msqrt></m:mrow></m:math>",
+    "latex": "{\\sqrt{2}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:msqrt><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub></m:mrow></m:msqrt><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\sqrt{{{{\\text{KE}}}_{{\\text{avg}}}}}.}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>R</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>R</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{{R}_{1}}}{{{R}_{2}}},}"
+  },
+  "fs-idm43195728": {
+    "mathml": "<m:math><m:mrow><m:mtext>KE</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mi>m</m:mi><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{KE}=\\, \\frac{1}{2}\\, m{u}^{2}}",
+    "isBlock": true
+  },
+  "fs-idp57614544": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mover accent=\"true\"><m:mrow><m:msup><m:mi>u</m:mi><m:mn>2</m:mn></m:msup></m:mrow><m:mo stretchy=\"true\">¯</m:mo></m:mover></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msubsup><m:mi>u</m:mi><m:mn>1</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>2</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>3</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:msubsup><m:mi>u</m:mi><m:mn>4</m:mn><m:mn>2</m:mn></m:msubsup><m:mo>+</m:mo><m:mo>…</m:mo></m:mrow><m:mi>n</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math>",
+    "latex": "{{u}_{{\\text{r}\\text{m}\\text{s}}}=\\sqrt{{{{u}^{2}}¯}}=\\sqrt{{\\frac{{{u}_{1}^{2}+{u}_{2}^{2}+{u}_{3}^{2}+{u}_{4}^{2}+\\ldots}}{n}}}}",
+    "isBlock": true
+  },
+  "fs-idm248247136": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msubsup><m:mrow><m:mi>M</m:mi><m:mi>u</m:mi></m:mrow><m:mrow><m:mtext>rms</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn></m:mrow></m:msubsup></m:mrow></m:math>",
+    "latex": "{{{\\text{KE}}}_{{\\text{avg}}}=\\, \\frac{1}{2}{{Mu}}_{{\\text{rms}}}^{{2}}}",
+    "isBlock": true
+  },
+  "fs-idm181584464": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>KE</m:mtext></m:mrow><m:mrow><m:mtext>avg</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math>",
+    "latex": "{{{\\text{KE}}}_{{\\text{avg}}}=\\, \\frac{3}{2}\\, RT}",
+    "isBlock": true
+  },
+  "fs-idm155100320": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mn>2</m:mn></m:mfrac><m:msubsup><m:mrow><m:mi>M</m:mi><m:mi>u</m:mi></m:mrow><m:mrow><m:mtext>rms</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn></m:mrow></m:msubsup><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mn>3</m:mn><m:mn>2</m:mn></m:mfrac><m:mspace width=\"0.2em\"/><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math>",
+    "latex": "{\\frac{1}{2}{{Mu}}_{{\\text{rms}}}^{{2}}=\\, \\frac{3}{2}\\, RT}",
+    "isBlock": true
+  },
+  "fs-idp16162192": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math>",
+    "latex": "{{u}_{{\\text{rms}}}=\\sqrt{{\\frac{{3RT}}{M}}}}",
+    "isBlock": true
+  },
+  "fs-idm41104608": {
+    "mathml": "<m:math><m:mrow><m:mn>30</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>+</m:mo><m:mn>273</m:mn><m:mo>=</m:mo><m:mtext>303 K</m:mtext></m:mrow></m:math>",
+    "latex": "{30\\, \\text{°C}+273=\\text{303 K}}",
+    "isBlock": true
+  },
+  "fs-idm215032176": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mn>28.0</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>g</m:mtext></m:menclose></m:mrow><m:mrow><m:mtext>1 mol</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 kg</m:mtext></m:mrow><m:mrow><m:mn>1000</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>g</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.028</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kg/mol</m:mtext></m:mrow></m:math>",
+    "latex": "{\\frac{{28.0\\, \\sout{\\text{g}}}}{{\\text{1 mol}}}\\, \\times \\, \\frac{{\\text{1 kg}}}{{1000\\, \\sout{\\text{g}}}}\\, =0.028\\, \\text{kg/mol}}",
+    "isBlock": true
+  },
+  "fs-idm151766032": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math>",
+    "latex": "{{u}_{{\\text{rms}}}=\\sqrt{{\\frac{{3RT}}{M}}}}",
+    "isBlock": true
+  },
+  "fs-idm230973056": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mo stretchy=\"false\">(</m:mo><m:mn>8.314</m:mn><m:mspace width=\"0.2em\"/><m:mtext>J/mol K</m:mtext><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mtext>303 K</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>0.028</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kg/mol</m:mtext><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:mfrac></m:mrow></m:msqrt><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:msqrt><m:mrow><m:mn>2.70</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>5</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>m</m:mtext><m:mn>2</m:mn></m:msup><m:msup><m:mtext>s</m:mtext><m:mrow><m:mo>−</m:mo><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:msqrt><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>519</m:mn><m:mspace width=\"0.2em\"/><m:mtext>m/s</m:mtext></m:mrow></m:math>",
+    "latex": "{{u}_{{\\text{r}\\text{m}\\text{s}}}=\\, \\sqrt{{\\frac{{3(8.314\\, \\text{J/mol K})(\\text{303 K})}}{{(0.028\\, \\text{kg/mol})}}}}\\, =\\, \\sqrt{{2.70\\, \\times \\, {{10}}^{5}\\, {\\text{m}}^{2}{\\text{s}}^{{-2}}}}\\, =519\\, \\text{m/s}}",
+    "isBlock": true
+  },
+  "fs-idp1163392": {
+    "mathml": "<m:math><m:mrow><m:mtext>effusion rate</m:mtext><m:mspace width=\"0.2em\"/><m:mo>∝</m:mo><m:mspace width=\"0.2em\"/><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub></m:mrow></m:math>",
+    "latex": "{\\text{effusion rate}\\, ∝\\, {u}_{{\\text{rms}}}}",
+    "isBlock": true
+  },
+  "fs-idm166257280": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>rms</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>M</m:mi></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math>",
+    "latex": "{{u}_{{\\text{rms}}}=\\sqrt{{\\frac{{3RT}}{M}}}}",
+    "isBlock": true
+  },
+  "fs-idm197441248": {
+    "mathml": "<m:math><m:mrow><m:mi>M</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:msubsup><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext></m:mrow><m:mn>2</m:mn></m:msubsup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:msup><m:mover accent=\"true\"><m:mi>u</m:mi><m:mo>¯</m:mo></m:mover><m:mrow><m:mn>2</m:mn></m:mrow></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{M=\\, \\frac{{3RT}}{{{u}_{{\\text{r}\\text{m}\\text{s}}}^{2}}}\\, =\\, \\frac{{3RT}}{{{u¯}^{{2}}}}}",
+    "isBlock": true
+  },
+  "fs-idm136528624": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:mtext>effusion rate A</m:mtext></m:mrow><m:mrow><m:mtext>effusion rate B</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mtext>A</m:mtext></m:mrow></m:msub></m:mrow><m:mrow><m:msub><m:mi>u</m:mi><m:mrow><m:mtext>r</m:mtext><m:mtext>m</m:mtext><m:mtext>s</m:mtext><m:mspace width=\"0.2em\"/><m:mtext>B</m:mtext></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:msub><m:mi>M</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:msqrt></m:mrow><m:mrow><m:msqrt><m:mrow><m:mfrac><m:mrow><m:mn>3</m:mn><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:msub><m:mi>M</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:msqrt></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:msqrt><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>M</m:mi><m:mtext>B</m:mtext></m:msub></m:mrow><m:mrow><m:msub><m:mi>M</m:mi><m:mtext>A</m:mtext></m:msub></m:mrow></m:mfrac></m:mrow></m:msqrt></m:mrow></m:math>",
+    "latex": "{\\frac{{\\text{effusion rate A}}}{{\\text{effusion rate B}}}\\, =\\, \\frac{{{u}_{{\\text{r}\\text{m}\\text{s}\\, \\text{A}}}}}{{{u}_{{\\text{r}\\text{m}\\text{s}\\, \\text{B}}}}}\\, =\\, {\\sqrt{{\\frac{{3RT}}{{{M}_{\\text{A}}}}}}}{\\sqrt{{\\frac{{3RT}}{{{M}_{\\text{B}}}}}}}\\, =\\, \\sqrt{{\\frac{{{M}_{\\text{B}}}}{{{M}_{\\text{A}}}}}}}",
+    "isBlock": true
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "moduleId": "m68797",
+  "extractedAt": "2026-02-08T17:36:15.947Z",
+  "sourceHash": "09bc4e492617251e",
+  "segmentCount": 29,
+  "segmentIds": [
+    "m68797:title:auto-1",
+    "m68797:abstract:auto-2",
+    "m68797:abstract-item:abstract-item-1",
+    "m68797:abstract-item:abstract-item-2",
+    "m68797:para:fs-idp222368384",
+    "m68797:para:fs-idp3488592",
+    "m68797:para:fs-idp239057616",
+    "m68797:caption:CNX_Chem_13_01_equilibrium-caption",
+    "m68797:para:fs-idp53505568",
+    "m68797:para:fs-idm379766304",
+    "m68797:caption:CNX_Chem_13_01_dynamic-caption",
+    "m68797:para:fs-idp238702080",
+    "m68797:para:fs-idp164650592",
+    "m68797:caption:CNX_Chem_13_01_bromine-caption",
+    "m68797:title:fs-idp62938640-title",
+    "m68797:para:fs-idp125631520",
+    "m68797:title:fs-idp157340304-title",
+    "m68797:problem:fs-idp78194656",
+    "m68797:solution:fs-idp270955920",
+    "m68797:problem:fs-idp244879360",
+    "m68797:problem:fs-idp238496784",
+    "m68797:solution:fs-idp120287136",
+    "m68797:problem:fs-idp280981664",
+    "m68797:problem:fs-idp73299680",
+    "m68797:solution:fs-idp15954560",
+    "m68797:glossary-term:fs-idp87452944-term",
+    "m68797:glossary-def:fs-idp87452944-def",
+    "m68797:glossary-term:fs-idp4379168-term",
+    "m68797:glossary-def:fs-idp4379168-def"
+  ],
+  "equationCount": 4,
+  "equationIds": [
+    "fs-idp102698592",
+    "fs-idm499686688",
+    "fs-idm345509376",
+    "fs-idp92494336"
+  ],
+  "elementCounts": {
+    "para": 16,
+    "section": 2,
+    "figure": 3,
+    "table": 0,
+    "example": 0,
+    "exercise": 5,
+    "note": 0,
+    "equation": 4,
+    "list": 0,
+    "media": 0,
+    "glossary": 2
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_13_01_equilibrium",
+      "CNX_Chem_13_01_dynamic",
+      "CNX_Chem_13_01_bromine"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [
+      "fs-idp156600272",
+      "fs-idp122639232",
+      "fs-idp77430432",
+      "fs-idp13186176",
+      "fs-idp9783616"
+    ],
+    "note": [],
+    "equation": [
+      "fs-idp102698592",
+      "fs-idm499686688",
+      "fs-idm345509376",
+      "fs-idp92494336"
+    ],
+    "section": [
+      "fs-idp62938640",
+      "fs-idp157340304"
+    ]
+  }
+}

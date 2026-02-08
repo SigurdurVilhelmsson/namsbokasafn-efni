@@ -1,0 +1,2473 @@
+{
+  "moduleId": "m68789",
+  "title": {
+    "segmentId": "m68789:title:auto-1",
+    "text": "Rate Laws"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "eac21754-bb36-49fa-9fa1-6ea0c734ee22",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the form and function of a rate law",
+        "Use rate laws to calculate reaction rates",
+        "Use rate and concentration data to identify reaction orders and derive rate laws"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm238441168",
+      "segmentId": "m68789:para:fs-idm238441168"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm248316432",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm656673904",
+      "segmentId": "m68789:para:fs-idm656673904"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm276589968",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp18257184",
+      "segmentId": "m68789:para:fs-idp18257184"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm115903376",
+      "segmentId": "m68789:para:fs-idm115903376"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm217470464",
+      "segmentId": "m68789:para:fs-idm217470464"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm204886480",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm388320",
+      "segmentId": "m68789:para:fs-idm388320"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm185553664",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm105991808",
+      "segmentId": "m68789:para:fs-idm105991808"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm41933536",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm221631328",
+      "segmentId": "m68789:para:fs-idm221631328"
+    },
+    {
+      "type": "example",
+      "id": "fs-idm235878704",
+      "title": {
+        "segmentId": "m68789:example-title:fs-idm235878704-title",
+        "text": "Writing Rate Laws from Reaction Orders"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm114205984",
+          "segmentId": "m68789:para:fs-idm114205984"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm213018368",
+          "segmentId": "m68789:para:fs-idm213018368"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm222185424",
+          "segmentId": "m68789:para:fs-idm222185424",
+          "title": {
+            "segmentId": "m68789:para-title:fs-idm222185424-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm221521296",
+          "segmentId": "m68789:para:fs-idm221521296"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm250199824",
+          "segmentId": "m68789:para:fs-idm250199824"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm273206544",
+          "segmentId": "m68789:para:fs-idm273206544",
+          "title": {
+            "segmentId": "m68789:para-title:fs-idm273206544-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm122425904",
+          "segmentId": "m68789:para:fs-idm122425904"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm141295376",
+          "segmentId": "m68789:para:fs-idm141295376"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm117052240",
+          "segmentId": "m68789:para:fs-idm117052240",
+          "title": {
+            "segmentId": "m68789:para-title:fs-idm117052240-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm213233440",
+          "segmentId": "m68789:para:fs-idm213233440"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm219218784",
+          "segmentId": "m68789:para:fs-idm219218784"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm215326320",
+          "segmentId": "m68789:para:fs-idm215326320"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm189808080"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm212887136"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm49710800"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm122197664"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm155639824"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm236204576"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm168583904",
+          "title": {
+            "segmentId": "m68789:note-title:fs-idm168583904-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm141295376",
+              "segmentId": "m68789:para:fs-idm141295376"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idm253536096",
+          "title": {
+            "segmentId": "m68789:note-title:fs-idm253536096-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm215326320",
+              "segmentId": "m68789:para:fs-idm215326320"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm147402384",
+      "segmentId": "m68789:para:fs-idm147402384"
+    },
+    {
+      "type": "example",
+      "id": "fs-idm234815200",
+      "title": {
+        "segmentId": "m68789:example-title:fs-idm234815200-title",
+        "text": "Determining a Rate Law from Initial Rates"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm162746544",
+          "segmentId": "m68789:para:fs-idm162746544"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm116899456",
+          "segmentId": "m68789:para:fs-idm116899456"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm234408416",
+          "segmentId": "m68789:para:fs-idm234408416"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm236104112",
+          "segmentId": "m68789:para:fs-idm236104112",
+          "title": {
+            "segmentId": "m68789:para-title:fs-idm236104112-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm187393984",
+          "segmentId": "m68789:para:fs-idm187393984"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp221247360",
+          "segmentId": "m68789:para:fs-idp221247360"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm59663552",
+          "segmentId": "m68789:para:fs-idm59663552"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm10220816",
+          "segmentId": "m68789:para:fs-idm10220816"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm352713280",
+          "segmentId": "m68789:para:fs-idm352713280",
+          "title": {
+            "segmentId": "m68789:para-title:fs-idm352713280-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm167718688",
+          "segmentId": "m68789:para:fs-idm167718688"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm234756944",
+          "segmentId": "m68789:para:fs-idm234756944"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp46707232",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68789:item:fs-idp46707232-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68789:item:fs-idp46707232-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68789:item:fs-idp46707232-item-3"
+            }
+          ]
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm215850976"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm14888352"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm236326672"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm208899344"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm196768496"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm217041008",
+          "title": {
+            "segmentId": "m68789:note-title:fs-idm217041008-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm234756944",
+              "segmentId": "m68789:para:fs-idm234756944"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_12_03_OzoneHole",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68789:caption:CNX_Chem_12_03_OzoneHole-caption"
+      },
+      "media": {
+        "id": "fs-idm204213280",
+        "alt": "A view of Earth’s southern hemisphere is shown. A nearly circular region of approximately half the diameter of the image is shown in shades of purple, with Antarctica appearing in a slightly lighter color than the surrounding ocean areas. Immediately outside this region is a narrow bright blue zone followed by a bright green zone. In the top half of the figure, the purple region extends slightly outward from the circle and the blue zone extends more outward to the right of the center as compared to the lower half of the image. In the upper half of the image, the majority of the space outside the purple region is shaded green, with a few small strips of interspersed blue regions. The lower half however shows the majority of the space outside the central purple zone in yellow, orange, and red. The red zones appear in the lower central and left regions outside the purple zone. To the lower right of this image is a color scale that is labeled “Total Ozone (Dobsone units).” This scale begins at 0 and increases by 100’s up to 700. At the left end of the scale, the value 0 shows a very deep purple color, 100 is indigo, 200 is blue, 300 is green, 400 is a yellow-orange, 500 is red, 600 is pink, and 700 is white.",
+        "src": "../../media/CNX_Chem_12_03_OzoneHole.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "table",
+      "id": "fs-idm205685856",
+      "class": "unnumbered",
+      "summary": "This table has four columns and six rows. The first row is a header row, and it labels each column: “Trial,” “[ N O ] ( mol / L),” “[ O subscript 3 ] ( mol / L ),” and “capital delta [ N O subscript 2 ] divided by capital delta t ( mol L superscript negative 1 s superscript negative 1 ).” Under the “Trial” column are the numbers: 1, 2, 3, 4, and 5. Under the “[ N O ] ( mol / L)” column are the numbers: 1.00 times ten to the negative six power; 1.00 times ten to the negative six power; 1.00 times ten to the negative six power; 2.00 times ten to the negative six power; and 3.00 times ten to the negative six power. Under the “[ O subscript 3 ] ( mol / L )” column are the numbers: 3.00 times ten to the negative six; 6.00 times ten to the negative six; 9.00 times ten to the negative six; 9.00 times ten to the negative six; and 9.00 times ten to the negative six. Under the column “capital delta [ N O subscript 2 ] divided by capital delta t ( mol L superscript negative 1 s superscript negative 1 )” are the numbers: 6.60 times ten to the negative five; 1.32 times ten to the negative four; 1.98 times ten to the negative four; 3.96 times ten to the negative four; and 5.94 times ten to the negative four.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-55",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-56",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-57",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-58",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-59",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-60",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-61",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-62",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-63",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-64",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-65",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-66",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-67",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-68",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-69",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-70",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-71",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-72",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-73",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-74",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-75",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-76",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-77",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-78",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "id": "fs-idm276791216",
+      "class": "unnumbered",
+      "summary": "This table has three columns and four rows. The first row is a header row, and it labels each column, “Trial,” “[ C H subscript 3 C H O ] ( mol / L),” and “negative capital delta [ C H subscript 3 C H O ] divided by capital delta t ( mol L superscript negative 1 s superscript negative 1 ).” Under the “Trial” column are the numbers: 1, 2, and 3. Under the “[ C H subscript 3 C H O ] ( mol / L)” are the numbers: 1.75 times ten to the negative three; 3.50 times ten to the negative three; and 7.00 times ten to the negative three. Under the column “negative capital delta [ C H subscript 3 C H O ] divided by capital delta t ( mol L superscript negative 1 s superscript negative 1 )” are the numbers: 2.06 times ten to the negative 11; 8.24 times ten to the negative 11; and 3.30 times ten to the negative ten.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-79",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-80",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-81",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-82",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-83",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-84",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-85",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-86",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-87",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-88",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-89",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-90",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "fs-idm285627376",
+      "title": {
+        "segmentId": "m68789:example-title:fs-idm285627376-title",
+        "text": "Determining Rate Laws from Initial Rates"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm27901936",
+          "segmentId": "m68789:para:fs-idm27901936"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm237007488",
+          "segmentId": "m68789:para:fs-idm237007488",
+          "title": {
+            "segmentId": "m68789:para-title:fs-idm237007488-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm256345824",
+          "segmentId": "m68789:para:fs-idm256345824"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm45955472",
+          "segmentId": "m68789:para:fs-idm45955472"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm287583408",
+          "segmentId": "m68789:para:fs-idm287583408"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm272297280",
+          "segmentId": "m68789:para:fs-idm272297280"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm187825008",
+          "segmentId": "m68789:para:fs-idm187825008"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm253983824",
+          "segmentId": "m68789:para:fs-idm253983824"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm137061360",
+          "segmentId": "m68789:para:fs-idm137061360"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm355457040",
+          "segmentId": "m68789:para:fs-idm355457040"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm221941584",
+          "segmentId": "m68789:para:fs-idm221941584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm265109792",
+          "segmentId": "m68789:para:fs-idm265109792"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm256497008",
+          "segmentId": "m68789:para:fs-idm256497008"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm110493584",
+          "segmentId": "m68789:para:fs-idm110493584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm53387488",
+          "segmentId": "m68789:para:fs-idm53387488"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm209905104",
+          "segmentId": "m68789:para:fs-idm209905104",
+          "title": {
+            "segmentId": "m68789:para-title:fs-idm209905104-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm296296016",
+          "segmentId": "m68789:para:fs-idm296296016"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm19062704",
+          "segmentId": "m68789:para:fs-idm19062704"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm47375696",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68789:item:fs-idm47375696-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68789:item:fs-idm47375696-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68789:item:fs-idm47375696-item-3"
+            }
+          ]
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm275365520"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm220277104"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm359376496"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp81408128"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm185610624"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm285203088"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm222931920"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm10561024"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp69093344"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp5205776"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm97106784"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm215496784"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm263345248"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm205740176"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm214856768",
+          "title": {
+            "segmentId": "m68789:note-title:fs-idm214856768-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm19062704",
+              "segmentId": "m68789:para:fs-idm19062704"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "id": "fs-idm285249664",
+      "class": "unnumbered",
+      "summary": "This table has four columns and four rows. The first row is a header row, and it labels the columns, “Trial,” “[ N O ] ( mol / L),” “[ C l subscript 2 ] ( mol / L ),” and “negative capital delta [ N O] divided by capital delta t ( mol L superscript negative 1 s superscript negative 1 ).” Under the column “Trial” are the numbers: 1, 2, and 3. Under the column “[ N O ] ( mol / L)” are the numbers: 0.10, 0.10, and 0.15. Under the column “[ C l subscript 2 ] ( mol / L )” are the numbers: 0.10, 0.15, and 0.10. Under the column “negative delta [ N O] divided by delta t ( mol L superscript negative 1 s superscript negative 1” are the numbers: 0.00300, 0.00450, 0.00675.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-117",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-118",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-119",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-120",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-121",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-122",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-123",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-124",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-125",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-126",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-127",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-128",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-129",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-130",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-131",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-132",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "id": "fs-idm275492048",
+      "class": "unnumbered",
+      "summary": "This table has four columns and four rows. The first row is a header row and it labels each column, “Trial,” “[ O C l superscript negative sign ] ( mol / L),” “[ I superscript negative sign ] ( mol / l ),” and “Initial Rate ( mol / L / s).” Under the column “Trial” are the numbers: 1, 2, and 3. Under the column “[ O C l superscript negative sign ] ( mol / L)” are the numbers 0.0040, 0.0020, and 0.0020. Under the column “[ I superscript negative sign ] ( mol / l )” are the numbers: 0.0020, 0.0040, and 0.0020. Under the column “Initial Rate ( mol / L / s)” are the numbers: 0.00184, 0.00092, and 0.00046.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-133",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-134",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-135",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-136",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-137",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-138",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-139",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-140",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-141",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-142",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-143",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-144",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68789:entry:auto-145",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-146",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-147",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68789:entry:auto-148",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm197875360",
+      "class": null,
+      "title": {
+        "segmentId": "m68789:title:fs-idm197875360-title",
+        "text": "Reaction Order and Rate Constant Units"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp9200128",
+          "segmentId": "m68789:para:fs-idp9200128"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm178764304",
+          "segmentId": "m68789:para:fs-idm178764304"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm213140144",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm284144576",
+          "segmentId": "m68789:para:fs-idm284144576"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm218845648",
+          "segmentId": "m68789:para:fs-idm218845648"
+        },
+        {
+          "type": "table",
+          "id": "fs-idm233742304",
+          "class": "top-titled",
+          "summary": "This table has two columns and four rows. The first row is a header row and it labels each column, “Reaction order,” and “Units of k.” Under the “Reaction Order” column are: “( m + n ),” “zero,” “first,” “second,” and, “third.” Under the “Units of k” column are: “mol superscript 1 minus ( m + n) L superscript ( m + n) minus 1 s superscript negative one,” “mol / L / s,” “s superscript negative 1,” “L / mol / s,” and “mol superscript negative 2 L superscript 2 s superscript negative 1.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-154",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c2",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-155",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-156",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-157",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-158",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-159",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-160",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-161",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-162",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-163",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-164",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm235810768",
+          "segmentId": "m68789:para:fs-idm235810768"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm168364064",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68789:title:fs-idm168364064-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm262547408",
+          "segmentId": "m68789:para:fs-idm262547408"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm273385984",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68789:title:fs-idm273385984-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm181252208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm262018416",
+                "segmentId": "m68789:problem:fs-idm262018416"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm256410736",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm271487376",
+                "segmentId": "m68789:problem:fs-idm271487376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm152653536",
+                "segmentId": "m68789:problem:fs-idm152653536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm273518816",
+                "segmentId": "m68789:problem:fs-idm273518816"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm221624896",
+                "segmentId": "m68789:solution:fs-idm221624896"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm211287824",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm241985680",
+                "segmentId": "m68789:problem:fs-idm241985680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm194420784",
+                "segmentId": "m68789:problem:fs-idm194420784"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm207624880",
+                "segmentId": "m68789:problem:fs-idm207624880"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm291799584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm222859792",
+                "segmentId": "m68789:problem:fs-idm222859792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm178016176",
+                "segmentId": "m68789:problem:fs-idm178016176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp38847392",
+                "segmentId": "m68789:problem:fs-idp38847392"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm107041296",
+                "segmentId": "m68789:solution:fs-idm107041296"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm207653024",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm176826112",
+                "segmentId": "m68789:problem:fs-idm176826112"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm170891328",
+                "segmentId": "m68789:problem:fs-idm170891328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm178794544",
+                "segmentId": "m68789:problem:fs-idm178794544"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm222164384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm192992480",
+                "segmentId": "m68789:problem:fs-idm192992480"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm220241088",
+                "segmentId": "m68789:solution:fs-idm220241088"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm53134032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm275577216",
+                "segmentId": "m68789:problem:fs-idm275577216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm122111920",
+                "segmentId": "m68789:problem:fs-idm122111920"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm140350624",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm234311904",
+                "segmentId": "m68789:problem:fs-idm234311904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm233654624",
+                "segmentId": "m68789:problem:fs-idm233654624"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm333817728",
+                "segmentId": "m68789:solution:fs-idm333817728"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm147604432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm278447280",
+                "segmentId": "m68789:problem:fs-idm278447280"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm32841312",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm84914160",
+                "segmentId": "m68789:problem:fs-idm84914160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm233198896",
+                "segmentId": "m68789:problem:fs-idm233198896"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm204335424",
+                "segmentId": "m68789:solution:fs-idm204335424"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm121830912",
+          "class": "column-header unnumbered",
+          "summary": "This table has four columns and two rows. The first column serves as a header and labels each row, “[ C subscript 2 H subscript 5 O H ] ( M ),” and, “Rate ( mol / L / h ).” To the right of the “Initial Rate ( mol / L / s)” header are the numbers: 4.4 times ten to the negative 2; 3.3 times ten to the negative 2; 2.2 times ten to the negative 2. To the right of the “Rate ( mol / L / h )” header are the numbers: 2.0 times ten to the negative 2, 2.0 times ten to the negative 2, and 2.0 times ten to the negative 2.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-195",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-196",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-197",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-198",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-199",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-200",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-201",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-202",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm233306880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm222957616",
+                "segmentId": "m68789:problem:fs-idm222957616"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm279312480",
+                "segmentId": "m68789:problem:fs-idm279312480"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "table",
+          "id": "fs-idm155842464",
+          "class": "column-header unnumbered",
+          "summary": "This table has four columns and two rows. The first column labels each row, “[ N H subscript 3 ] ( M ),” and “Rate ( mol / L / h superscript 1 ).” The numbers to the right of the header, “[ N H subscript 3 ] ( M )” are: 1.0 times ten to the negative three; 2.0 times ten to the negative three; and 3.0 times ten to the negative three. The numbers to the right of the header, “Rate ( mol / L / h superscript 1” are: 1.5 times ten to the negative six; 1.50 times ten to the negative 6; and 1.5 times ten to the negative six.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-205",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-206",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-207",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-208",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-209",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-210",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-211",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-212",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm263803776",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm217433968",
+                "segmentId": "m68789:problem:fs-idm217433968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm105942144",
+                "segmentId": "m68789:problem:fs-idm105942144"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp5189312",
+                "segmentId": "m68789:solution:fs-idp5189312"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm176170864",
+          "class": "column-header unnumbered",
+          "summary": "This table has four columns and two rows. The first column labels each row, “[ N O C l ] ( M ),” and, “Rate ( mol / L / h ).” To the right of the header, “[ N O C l ] ( M )” are the numbers: 0.10, 0.20, and 0.30. To the right of the header, “Rate ( mol / L / h )” are the numbers: 8.0 times ten to the negative ten; 3.2 times ten to the negative 9; and 7.2 times ten to the negative 9.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-216",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-217",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-218",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-219",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-220",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-221",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-222",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-223",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm146074112",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm254308880",
+                "segmentId": "m68789:problem:fs-idm254308880"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "table",
+          "id": "fs-idm146675536",
+          "class": "column-header unnumbered",
+          "summary": "This table has four columns and two rows. The first column labels each row, “[ A ] ( M ),” and “Rate ( mol / L / h).” To the right of the header, “[ A ] ( M ),” are the numbers: 1.33 times ten to the negative 2; 2.66 times ten to the negative 2; and 3.99 times ten to the negative 2.” To the right of the header, “Rate ( mol / L / h),” are the numbers 3.80 times ten to the negative 7; 1.52 times ten to the negative 6; and 3.42 times ten to the negative 6.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-225",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-226",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-227",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-228",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-229",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-230",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-231",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-232",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm238094880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm262783024",
+                "segmentId": "m68789:problem:fs-idm262783024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm268051184",
+                "segmentId": "m68789:problem:fs-idm268051184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm185311088",
+                "segmentId": "m68789:problem:fs-idm185311088"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm174039344",
+                "segmentId": "m68789:solution:fs-idm174039344"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp1859024",
+          "class": "unnumbered",
+          "summary": "This table has three columns and four rows. The first row serves as a header row and labels each column, “[ N O ] ( mol / L superscript 1 ),” “[ C l subscript 2 ] ( mol / L ),” and, “Rate ( mol / L / h ).” Under the column “[ N O ] ( mol / L superscript 1 )” are the numbers: 0.50, 1.00, and 1.00. Under the column “[ C l subscript 2 ] ( mol / L)” are the numbers: 0.50, 0.50, and 1.00. Under the column “Rate ( mol / L / h )” are the numbers: 1.14, 4.56, and 9.12.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-237",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-238",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-239",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-240",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-241",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-242",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-243",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-244",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-245",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-246",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-247",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-248",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm168734944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm219404160",
+                "segmentId": "m68789:problem:fs-idm219404160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm148410512",
+                "segmentId": "m68789:problem:fs-idm148410512"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "table",
+          "id": "fs-idm261821504",
+          "class": "column-header unnumbered",
+          "summary": "This table has four columns and three rows. The first column labels each row, “[ N O ] ( M ),” “[ H subscript 2 ] ( M ),” and “Rate ( mol / L / s ).” To the right of the header “[ N O ] ( M )” are the numbers: 0.30, 0.60, and 0.60. To the right of the header “[ H subscript 2 ] ( M )” are the numbers: 0.35, 0.35, and 0.70. To the right of the header, “Rate ( mol / L / s )” are the numbers 2.835 times ten to the negative 3; 1.134 times 10 to the negative two; and 2.268 times ten to the negative 2.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-251",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-252",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-253",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-254",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-255",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-256",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-257",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-258",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-259",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-260",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-261",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-262",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm49483024",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm253875200",
+                "segmentId": "m68789:problem:fs-idm253875200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm356651248",
+                "segmentId": "m68789:problem:fs-idm356651248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm110876512",
+                "segmentId": "m68789:problem:fs-idm110876512"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm168970144",
+                "segmentId": "m68789:solution:fs-idm168970144"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm262119440",
+          "class": "column-header unnumbered",
+          "summary": "This table has four columns and two rows. The first column labels each row, “[ A ] ( M ),” and “Rate ( mol / L / s ).” To the right of the header, “[ A ] ( M ),” are the numbers: 0.230, 0.356, and 0.557. To the right of the header, “Rate ( mol / L / s ),” are the numbers: 4.7 times ten to the negative 4; 9.99 times ten to the negative 4; and 2.44 times ten to the negative 3.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-267",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-268",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-269",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-270",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-271",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-272",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-273",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-274",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm140371280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm189701808",
+                "segmentId": "m68789:problem:fs-idm189701808"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm157857072",
+                "segmentId": "m68789:problem:fs-idm157857072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm187916448",
+                "segmentId": "m68789:problem:fs-idm187916448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "table",
+          "id": "fs-idm53317088",
+          "class": "column-header unnumbered",
+          "summary": "This table has four columns and two rows. The first column labels each row, “[ Q ] subscript initial ( M ),” and “Rate ( mol / L / s ).” To the right of the header, “[ Q ] subscript initial ( M ),” are the numbers: 0.170, 0.212, and 0.357. To the right of the header, “Rate ( mol / L / s ),” are the numbers: 6.68 times ten to the negative 3; 1.04 times ten to the negative 2; and 2.94 times ten to the negative 2.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-278",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-279",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-280",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-281",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-282",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-283",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-284",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-285",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm57376432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm245905952",
+                "segmentId": "m68789:problem:fs-idm245905952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm287521616",
+                "segmentId": "m68789:problem:fs-idm287521616"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm180347168",
+                "segmentId": "m68789:solution:fs-idm180347168"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm152420960",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm122065680",
+                "segmentId": "m68789:problem:fs-idm122065680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm119022896",
+                "segmentId": "m68789:problem:fs-idm119022896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm193369040",
+                "segmentId": "m68789:problem:fs-idm193369040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm207045120",
+                "segmentId": "m68789:problem:fs-idm207045120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm179213568",
+                "segmentId": "m68789:problem:fs-idm179213568"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm237267424",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm136971952",
+                "segmentId": "m68789:problem:fs-idm136971952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm152575552",
+                "segmentId": "m68789:problem:fs-idm152575552"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm220253504",
+                "segmentId": "m68789:solution:fs-idm220253504"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm189410736",
+          "class": "unnumbered",
+          "summary": "This table has four columns and four rows. The first column labels each row. The first cell in the first column is blank, and then each row is labeled, “[ I superscript negative sign ] subscript initial ( M ),” “[ O C l superscript negative sign ] subscript initial ( M ),” and, “Rate ( mol / L / s ).” To the right of the blank cell are the numbers: 1, 2, and 3. To the right of the header, “[ I superscript negative sign ] subscript initial ( M ),” are the numbers: 0.10, 0.20, and 0.30. To the right of the header, “[ O C l superscript negative sign ] subscript initial ( M ),” are the numbers: 0.050, 0.050, and 0.010. To the right of the header, “Rate ( mol / L / s ),” are the numbers: 3.05 times ten to the negative 4; 6.20 times ten to the negative 4; and 1.83 times ten to the negative 4.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-297",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-298",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-299",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-300",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-301",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-302",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-303",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-304",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-305",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-306",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-307",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68789:entry:auto-308",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-309",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-310",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68789:entry:auto-311",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68789:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68789:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68789:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68789:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm176826832",
+        "termSegmentId": "m68789:glossary-term:fs-idm176826832-term",
+        "definitionSegmentId": "m68789:glossary-def:fs-idm176826832-def"
+      },
+      {
+        "id": "fs-idm276164832",
+        "termSegmentId": "m68789:glossary-term:fs-idm276164832-term",
+        "definitionSegmentId": "m68789:glossary-def:fs-idm276164832-def"
+      },
+      {
+        "id": "fs-idm185628880",
+        "termSegmentId": "m68789:glossary-term:fs-idm185628880-term",
+        "definitionSegmentId": "m68789:glossary-def:fs-idm185628880-def"
+      },
+      {
+        "id": "fs-idm215968704",
+        "termSegmentId": "m68789:glossary-term:fs-idm215968704-term",
+        "definitionSegmentId": "m68789:glossary-def:fs-idm215968704-def"
+      },
+      {
+        "id": "fs-idm333854336",
+        "termSegmentId": "m68789:glossary-term:fs-idm333854336-term",
+        "definitionSegmentId": "m68789:glossary-def:fs-idm333854336-def"
+      }
+    ]
+  },
+  "sectionOrder": 3
+}

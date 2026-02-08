@@ -1,0 +1,1310 @@
+{
+  "moduleId": "m68750",
+  "title": {
+    "segmentId": "m68750:title:auto-1",
+    "text": "Gas Pressure"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "b4305959-0bef-4283-8145-f9184c9652d3",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Define the property of pressure",
+        "Define and convert among the units of pressure measurements",
+        "Describe the operation of common tools for measuring gas pressure",
+        "Calculate pressure from manometer data"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm2965936",
+      "segmentId": "m68750:para:fs-idm2965936"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_01_Pressure1",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68750:caption:CNX_Chem_09_01_Pressure1-caption"
+      },
+      "media": {
+        "id": "fs-idp16369520",
+        "alt": "The left side of this figure includes a graphic of the earth with an inverted rectangular prism extending from a point on it. Near the top of the image, the label, “square inch column of air molecules” is connected to the prism with a line segment. This label is also connected with a line segment to a downward pointing arrow at the right side of the figure. Beneath the arrow is a red circle labeled, “atmospheric pressure.” A narrow rectangle with a dashed line border extends from the bottom of the arrow vertically through the circle. Directly beneath this rectangle at the lower edge of the circle is a hand with a thumb appearing to be resting on a tabletop. The thumb is connected with a line segment to the label, “14.7 lbs of pressure on 1 square inch.” The red circle is sitting on top of the thumb.",
+        "src": "../../media/CNX_Chem_09_01_Pressure1.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idm5657392",
+      "class": "chemistry link-to-learning",
+      "title": null,
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp139792368",
+          "segmentId": "m68750:para:fs-idp139792368"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm26057840",
+          "segmentId": "m68750:para:fs-idm26057840"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm5227120",
+      "segmentId": "m68750:para:fs-idm5227120"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp26888784",
+      "segmentId": "m68750:para:fs-idp26888784"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm32668544",
+      "segmentId": "m68750:para:fs-idm32668544"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_01_Pressure2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68750:caption:CNX_Chem_09_01_Pressure2-caption"
+      },
+      "media": {
+        "id": "fs-idp170647376",
+        "alt": "This figure includes two photographs. Figure a is a photo of a large gray elephant on grassy, beige terrain. Figure b is a photo of a figure skater with her right skate on the ice, upper torso lowered, arms extended upward behind her chest, and left leg extended upward behind her.",
+        "src": "../../media/CNX_Chem_09_01_Pressure2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm100445488",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp79686656",
+      "segmentId": "m68750:para:fs-idp79686656"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm181738992",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm101012528",
+      "segmentId": "m68750:para:fs-idm101012528"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp9821216",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm10039728",
+      "segmentId": "m68750:para:fs-idm10039728"
+    },
+    {
+      "type": "table",
+      "id": "fs-idp189967312",
+      "class": "top-titled",
+      "summary": "This table has two columns and 10 rows. The first row is a header row, and it labels the columns as “Unit Name and Abbreviation” and “Definition or Relation to Other Unit.” The first unit name and abbreviation is pascal, and it is abbreviated as P a. The definition or relation to other unit is 1 P a equals N over m squared and recommended I U P A C unit. The next unit name is kilopascal, and it is abbreviated as k P a. The definition or relation to other unit is 1 k P a equals 1000 P a. The next unit name is pounds per square inch, and it is abbreviated as p s i. The definition or relation to other unit is air pressure at sea level is approximately 14.7 p s i. The next unit name is atmosphere, and is is abbreviated as a t m. The definition or relation to other unit is 1 a t m equals 101,325 P a and air pressure at sea level is approximately one a t m. The next unit name is bar, and it is abbreviated as bar or b. The definition or relation to other unit is 1 bar equals 100,000 P a exactly and commonly used in meteorology. The next unit name is millibar, and it is abbreviated as m b a r or m b. The definition or relation to other unit is 1000 m b a r equals one bar. The next unit name is inches of mercury, and it is abbreviated as i n period, H g. The definition or relation to other unit is one i n period H g equals 3386 P a and is used by the aviation industry and also some weather reports. The next unit is torr. The definition or relation to other unit is 1 torr equals 1 over 760 a t m and named after Evangelista Torricelli, inventor of the barometer. The last unit name is millimeters of mercury, and it is abbreviated as m m H g. The definition or relation to other unit is 1 m m H g is approximately 1 torr.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-18",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c2",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-26",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-27",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-28",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-29",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-30",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-31",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-32",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-33",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-35",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-36",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68750:entry:auto-37",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68750:entry:auto-38",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "fs-idp156787120",
+      "title": {
+        "segmentId": "m68750:example-title:fs-idp156787120-title",
+        "text": "Conversion of Pressure Units"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm55125200",
+          "segmentId": "m68750:para:fs-idm55125200"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp142663424",
+          "segmentId": "m68750:para:fs-idp142663424"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp6847648",
+          "segmentId": "m68750:para:fs-idp6847648"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm78213376",
+          "segmentId": "m68750:para:fs-idm78213376"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp62713296",
+          "segmentId": "m68750:para:fs-idp62713296"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp32588880",
+          "segmentId": "m68750:para:fs-idp32588880",
+          "title": {
+            "segmentId": "m68750:para-title:fs-idp32588880-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm19510112",
+          "segmentId": "m68750:para:fs-idm19510112"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm103224224",
+          "segmentId": "m68750:para:fs-idm103224224"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp28156048",
+          "segmentId": "m68750:para:fs-idp28156048"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm86928016",
+          "segmentId": "m68750:para:fs-idm86928016"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm28185008",
+          "segmentId": "m68750:para:fs-idm28185008",
+          "title": {
+            "segmentId": "m68750:para-title:fs-idm28185008-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp131216672",
+          "segmentId": "m68750:para:fs-idp131216672"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm54955856",
+          "title": {
+            "segmentId": "m68750:note-title:fs-idm54955856-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp131216672",
+              "segmentId": "m68750:para:fs-idp131216672"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm69336128",
+      "segmentId": "m68750:para:fs-idm69336128"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_01_Barometer",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68750:caption:CNX_Chem_09_01_Barometer-caption"
+      },
+      "media": {
+        "id": "fs-idm35593680",
+        "alt": "This figure shows two barometers. The barometer to the left contains a shallow reservoir, or open container, of mercury. A narrow tube extends upward from the reservoir above the reservoir. This tube is sealed at the top. To the right, a second similar setup is shown with a reservoir filled with water. Line segments connect the label “vacuum” to the tops of the two narrow tubes. The tube on the left shows the mercury in the reservoir extending in a column upward in the narrow tube. Similarly, the tube on the right shows the water in the reservoir extending upward into the related narrow tube. Double-headed arrows extend from the surface of each liquid in the reservoir to the top of the liquid in each tube. A narrow column or bar extends from the surface of the reservoir to the same height. This bar is labeled “atmospheric pressure.” The level of the water in its tube is significantly higher than the level of mercury in its tube.",
+        "src": "../../media/CNX_Chem_09_01_Barometer.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm79676464",
+      "segmentId": "m68750:para:fs-idm79676464"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm35258720",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm61000288",
+      "segmentId": "m68750:para:fs-idm61000288"
+    },
+    {
+      "type": "example",
+      "id": "fs-idm5509408",
+      "title": {
+        "segmentId": "m68750:example-title:fs-idm5509408-title",
+        "text": "Calculation of Barometric Pressure"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm124424064",
+          "segmentId": "m68750:para:fs-idm124424064"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm64631536",
+          "segmentId": "m68750:para:fs-idm64631536",
+          "title": {
+            "segmentId": "m68750:para-title:fs-idm64631536-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp70400640",
+          "segmentId": "m68750:para:fs-idp70400640",
+          "title": {
+            "segmentId": "m68750:para-title:fs-idp70400640-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp2146864",
+          "segmentId": "m68750:para:fs-idp2146864"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm207611040"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm149736288"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm112352528"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm93676560"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp73341600",
+          "title": {
+            "segmentId": "m68750:note-title:fs-idp73341600-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp2146864",
+              "segmentId": "m68750:para:fs-idp2146864"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp189718992",
+      "segmentId": "m68750:para:fs-idp189718992"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_01_Manometer",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68750:caption:CNX_Chem_09_01_Manometer-caption"
+      },
+      "media": {
+        "id": "fs-idm5598960",
+        "alt": "Three diagrams of manometers are shown. Each manometer consists of a spherical pink container filled with gas on the left that is connected to a U-shaped, sealed tube by a valve on its right. The top of the U aligns with the gas-filled sphere and the U, which extends below, contains mercury. The first manometer has a sealed tube. The sealed end to the upper right in the diagram is labeled “closed end” and “vacuum.” The mercury level is higher in the right side of the tube than in the left. The difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign h rho g. The second manometer has an open-ended tube, which is labeled “open end.” At this opening in the upper right of the diagram is the label P subscript atm. The mercury level is higher in the left side of the tube than in the right. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript atm minus sign h rho g. The third manometer has an open-ended tube and is similar to the second manometer except that the mercury level is higher in the right side of the tube than in the left. This difference in height is labeled “h.” Beneath this manometer illustration appears the label P subscript gas equal sign P subscript a t m plus h rho g.",
+        "src": "../../media/CNX_Chem_09_01_Manometer.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idm31201088",
+      "title": {
+        "segmentId": "m68750:example-title:fs-idm31201088-title",
+        "text": "Calculation of Pressure Using a Closed-End Manometer"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp5332928",
+          "segmentId": "m68750:para:fs-idp5332928"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp161989312",
+          "segmentId": "m68750:para:fs-idp161989312"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp16104736",
+          "segmentId": "m68750:para:fs-idp16104736"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm85992448",
+          "segmentId": "m68750:para:fs-idm85992448"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm79648128",
+          "segmentId": "m68750:para:fs-idm79648128",
+          "title": {
+            "segmentId": "m68750:para-title:fs-idm79648128-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm79108064",
+          "segmentId": "m68750:para:fs-idm79108064"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp62655904",
+          "segmentId": "m68750:para:fs-idp62655904"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp2045200",
+          "segmentId": "m68750:para:fs-idp2045200"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp37894320",
+          "segmentId": "m68750:para:fs-idp37894320",
+          "title": {
+            "segmentId": "m68750:para-title:fs-idp37894320-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp38024128",
+          "segmentId": "m68750:para:fs-idp38024128"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp16117232",
+          "segmentId": "m68750:para:fs-idp16117232"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp127919232",
+          "segmentId": "m68750:para:fs-idp127919232"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm8669760",
+          "segmentId": "m68750:para:fs-idm8669760"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm70430576",
+          "title": {
+            "segmentId": "m68750:note-title:fs-idm70430576-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm8669760",
+              "segmentId": "m68750:para:fs-idm8669760"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "fs-idm76587328",
+      "title": {
+        "segmentId": "m68750:example-title:fs-idm76587328-title",
+        "text": "Calculation of Pressure Using an Open-End Manometer"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm12992864",
+          "segmentId": "m68750:para:fs-idm12992864"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp141807120",
+          "segmentId": "m68750:para:fs-idp141807120"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm91216192",
+          "segmentId": "m68750:para:fs-idm91216192"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm29337808",
+          "segmentId": "m68750:para:fs-idm29337808"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp6251232",
+          "segmentId": "m68750:para:fs-idp6251232",
+          "title": {
+            "segmentId": "m68750:para-title:fs-idp6251232-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp139076928",
+          "segmentId": "m68750:para:fs-idp139076928"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm20839232",
+          "segmentId": "m68750:para:fs-idm20839232"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8049056",
+          "segmentId": "m68750:para:fs-idp8049056"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm24876576",
+          "segmentId": "m68750:para:fs-idm24876576",
+          "title": {
+            "segmentId": "m68750:para-title:fs-idm24876576-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp30718048",
+          "segmentId": "m68750:para:fs-idp30718048"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm5192960",
+          "segmentId": "m68750:para:fs-idm5192960"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp18503824",
+          "segmentId": "m68750:para:fs-idp18503824"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp154771664",
+          "segmentId": "m68750:para:fs-idp154771664"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp173017200",
+          "title": {
+            "segmentId": "m68750:note-title:fs-idp173017200-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp154771664",
+              "segmentId": "m68750:para:fs-idp154771664"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idp183412160",
+      "class": "chemistry everyday-life",
+      "title": {
+        "segmentId": "m68750:note-title:fs-idp183412160-title",
+        "text": "Measuring Blood Pressure"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm61054480",
+          "segmentId": "m68750:para:fs-idm61054480"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_01_Spygmo",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68750:caption:CNX_Chem_09_01_Spygmo-caption"
+      },
+      "media": {
+        "id": "fs-idm50439776",
+        "alt": "This figure includes two photographs. The first photo shows a young adult male placing a blood pressure cuff on the upper arm of a young adult female. The second image shows a typical sphygmomanometer, which includes a black blood pressure cuff, tubing, pump, and pressure gauge.",
+        "src": "../../media/CNX_Chem_09_01_Spygmo.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idm96003696",
+      "class": "chemistry sciences-interconnect",
+      "title": {
+        "segmentId": "m68750:note-title:fs-idm96003696-title",
+        "text": "Meteorology, Climatology, and Atmospheric Science"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm77491200",
+          "segmentId": "m68750:para:fs-idm77491200"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm8048304",
+          "segmentId": "m68750:para:fs-idm8048304"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm49021728",
+          "segmentId": "m68750:para:fs-idm49021728"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm30549520",
+          "segmentId": "m68750:para:fs-idm30549520"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_01_WeatherMap",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68750:caption:CNX_Chem_09_01_WeatherMap-caption"
+      },
+      "media": {
+        "id": "fs-idm21149856",
+        "alt": "A weather map of the United States is shown which points out areas of high and low pressure with the letters H in blue and L in red. Curved lines in grey, orange, blue, and red are shown. The orange lines are segmented. The red and blue lines have small red or blue semi-circles and triangles attached along their lengths. In dashed white lines, latitude and longitude are indicated. Underlined three and four digit numbers also appear across the map.",
+        "src": "../../media/CNX_Chem_09_01_WeatherMap.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_01_Atmosphere",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68750:caption:CNX_Chem_09_01_Atmosphere-caption"
+      },
+      "media": {
+        "id": "fs-idm76295840",
+        "alt": "This diagram shows half of a two dimensional view of the earth in blue and green. A narrow white layer, labeled “troposphere 0 dash 12 k m” covers this hemisphere. This layer is also labeled “layer where most weather events originate.” Next, a thicker light blue layer labeled “Stratosphere 12 dash 50 k m” is shown. This is followed by a slightly thinner layer also in light blue labeled “Mesosphere 50 dash 80 k m.” Following this layer is a relatively thick light blue layer labeled “Thermosphere 80 dash 700 k m.” A blue layer appears that covers the rightmost two thirds of the diagram. This region gradually darkens from a lighter blue at the left to a dark blue at the right. This region of the diagram is labeled “exosphere greater than 700 k m.”",
+        "src": "../../media/CNX_Chem_09_01_Atmosphere.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm62097440",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68750:title:fs-idm62097440-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm102779232",
+          "segmentId": "m68750:para:fs-idm102779232"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp68662112",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68750:title:fs-idp68662112-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68750:entry:auto-120",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68750:entry:auto-121",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm20163680",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68750:title:fs-idm20163680-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm21197344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm19553744",
+                "segmentId": "m68750:problem:fs-idm19553744"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33698016",
+                "segmentId": "m68750:solution:fs-idm33698016"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp152253216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp62697024",
+                "segmentId": "m68750:problem:fs-idp62697024"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp44372288",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm50132240",
+                "segmentId": "m68750:problem:fs-idm50132240"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69163280",
+                "segmentId": "m68750:solution:fs-idp69163280"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp74012224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm137597392",
+                "segmentId": "m68750:problem:fs-idm137597392"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm32613120",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp3670784",
+                "segmentId": "m68750:problem:fs-idp3670784"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25200320",
+                "segmentId": "m68750:solution:fs-idm25200320"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp30544832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp135739664",
+                "segmentId": "m68750:problem:fs-idp135739664"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm87042080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp38342496",
+                "segmentId": "m68750:problem:fs-idp38342496"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm5145968",
+                "segmentId": "m68750:solution:fs-idm5145968"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp128422496",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm38508352",
+                "segmentId": "m68750:problem:fs-idm38508352"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm51193840",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm88643488",
+                "segmentId": "m68750:problem:fs-idm88643488"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp86259712",
+                "segmentId": "m68750:solution:fs-idp86259712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm81032176",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm38299280",
+                "segmentId": "m68750:problem:fs-idm38299280"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm35019472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp39879760",
+                "segmentId": "m68750:problem:fs-idp39879760"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm50271520",
+                "segmentId": "m68750:problem:fs-idm50271520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp189723312",
+                "segmentId": "m68750:problem:fs-idp189723312"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21108080",
+                "segmentId": "m68750:solution:fs-idm21108080"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp32052448",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26220160",
+                "segmentId": "m68750:problem:fs-idp26220160"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm55768576",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm29763808",
+                "segmentId": "m68750:problem:fs-idm29763808"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp89607040",
+                "segmentId": "m68750:problem:fs-idp89607040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm95742832",
+                "segmentId": "m68750:problem:fs-idm95742832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm80328752",
+                "segmentId": "m68750:problem:fs-idm80328752"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm83006352",
+                "segmentId": "m68750:solution:fs-idm83006352"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp27847856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp185367488",
+                "segmentId": "m68750:problem:fs-idp185367488"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm39627648",
+                "segmentId": "m68750:problem:fs-idm39627648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp27090112",
+                "segmentId": "m68750:problem:fs-idp27090112"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm69293536",
+                "segmentId": "m68750:problem:fs-idm69293536"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm77194176",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm86041584",
+                "segmentId": "m68750:problem:fs-idm86041584"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp164256000",
+                "segmentId": "m68750:problem:fs-idp164256000"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp142813824",
+                "segmentId": "m68750:problem:fs-idp142813824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp30379328",
+                "segmentId": "m68750:problem:fs-idp30379328"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33920592",
+                "segmentId": "m68750:solution:fs-idm33920592"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm35876656",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp58526352",
+                "segmentId": "m68750:problem:fs-idp58526352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm77467552",
+                "segmentId": "m68750:problem:fs-idm77467552"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm90142112",
+                "segmentId": "m68750:problem:fs-idm90142112"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp189802448",
+                "segmentId": "m68750:problem:fs-idp189802448"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm25727664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm79130144",
+                "segmentId": "m68750:problem:fs-idm79130144"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm51906080",
+                "segmentId": "m68750:solution:fs-idm51906080"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68750:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68750:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68750:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68750:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68750:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm92046304",
+        "termSegmentId": "m68750:glossary-term:fs-idm92046304-term",
+        "definitionSegmentId": "m68750:glossary-def:fs-idm92046304-def"
+      },
+      {
+        "id": "fs-idm49164816",
+        "termSegmentId": "m68750:glossary-term:fs-idm49164816-term",
+        "definitionSegmentId": "m68750:glossary-def:fs-idm49164816-def"
+      },
+      {
+        "id": "fs-idp128557152",
+        "termSegmentId": "m68750:glossary-term:fs-idp128557152-term",
+        "definitionSegmentId": "m68750:glossary-def:fs-idp128557152-def"
+      },
+      {
+        "id": "fs-idp1898224",
+        "termSegmentId": "m68750:glossary-term:fs-idp1898224-term",
+        "definitionSegmentId": "m68750:glossary-def:fs-idp1898224-def"
+      },
+      {
+        "id": "fs-idm30126128",
+        "termSegmentId": "m68750:glossary-term:fs-idm30126128-term",
+        "definitionSegmentId": "m68750:glossary-def:fs-idm30126128-def"
+      },
+      {
+        "id": "fs-idm69533872",
+        "termSegmentId": "m68750:glossary-term:fs-idm69533872-term",
+        "definitionSegmentId": "m68750:glossary-def:fs-idm69533872-def"
+      },
+      {
+        "id": "fs-idm87137504",
+        "termSegmentId": "m68750:glossary-term:fs-idm87137504-term",
+        "definitionSegmentId": "m68750:glossary-def:fs-idm87137504-def"
+      },
+      {
+        "id": "fs-idm61385376",
+        "termSegmentId": "m68750:glossary-term:fs-idm61385376-term",
+        "definitionSegmentId": "m68750:glossary-def:fs-idm61385376-def"
+      },
+      {
+        "id": "fs-idm23965520",
+        "termSegmentId": "m68750:glossary-term:fs-idm23965520-term",
+        "definitionSegmentId": "m68750:glossary-def:fs-idm23965520-def"
+      }
+    ]
+  },
+  "sectionOrder": 1
+}

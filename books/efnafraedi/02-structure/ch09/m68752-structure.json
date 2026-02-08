@@ -1,0 +1,2447 @@
+{
+  "moduleId": "m68752",
+  "title": {
+    "segmentId": "m68752:title:auto-1",
+    "text": "Stoichiometry of Gaseous Substances, Mixtures, and Reactions"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "15f67dd0-8548-4ac0-875f-f5cbf789ee94",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Use the ideal gas law to compute gas densities and molar masses",
+        "Perform stoichiometric calculations involving gaseous substances",
+        "State Dalton’s law of partial pressures and use it in calculations involving gaseous mixtures"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp201619456",
+      "segmentId": "m68752:para:fs-idp201619456"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm31863392",
+      "segmentId": "m68752:para:fs-idm31863392"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp78729184",
+      "class": null,
+      "title": {
+        "segmentId": "m68752:title:fs-idp78729184-title",
+        "text": "Gas Density and Molar Mass"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm206784496",
+          "segmentId": "m68752:para:fs-idm206784496"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm185500528",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm169385680",
+          "segmentId": "m68752:para:fs-idm169385680"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm214345680",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm208643456",
+          "segmentId": "m68752:para:fs-idm208643456"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm162939760",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm191484432",
+          "segmentId": "m68752:para:fs-idm191484432"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm465259200",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm475542288",
+          "segmentId": "m68752:para:fs-idm475542288"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm487853552",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm178080080",
+          "segmentId": "m68752:para:fs-idm178080080"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp128586304",
+          "title": {
+            "segmentId": "m68752:example-title:fs-idp128586304-title",
+            "text": "Measuring Gas Density"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm63453648",
+              "segmentId": "m68752:para:fs-idm63453648"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp146685296",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp146685296-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm163799328",
+              "segmentId": "m68752:para:fs-idm163799328"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm8187184",
+              "segmentId": "m68752:para:fs-idm8187184",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idm8187184-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp21300512",
+              "segmentId": "m68752:para:fs-idp21300512"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm200230128"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp1319536",
+              "title": {
+                "segmentId": "m68752:note-title:fs-idp1319536-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp21300512",
+                  "segmentId": "m68752:para:fs-idp21300512"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp140587168",
+          "segmentId": "m68752:para:fs-idp140587168"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm200001904",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm191612128",
+          "segmentId": "m68752:para:fs-idm191612128"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm479492256",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm482518736",
+          "segmentId": "m68752:para:fs-idm482518736"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm441399648",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm183947392",
+          "segmentId": "m68752:para:fs-idm183947392"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp74274064",
+          "title": {
+            "segmentId": "m68752:example-title:fs-idp74274064-title",
+            "text": "Determining the Molecular Formula of a Gas from its Molar Mass and Empirical Formula"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm20853312",
+              "segmentId": "m68752:para:fs-idm20853312"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp234218112",
+              "segmentId": "m68752:para:fs-idp234218112",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp234218112-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp144237600",
+              "segmentId": "m68752:para:fs-idp144237600"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp40237504",
+              "segmentId": "m68752:para:fs-idp40237504"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp221616976",
+              "segmentId": "m68752:para:fs-idp221616976"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm216078960",
+              "segmentId": "m68752:para:fs-idm216078960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp259910672",
+              "segmentId": "m68752:para:fs-idp259910672",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp259910672-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm51491440",
+              "segmentId": "m68752:para:fs-idm51491440"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm18588864"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm150258896"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp110330000"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm220246400"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm171124064"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp130463408",
+              "title": {
+                "segmentId": "m68752:note-title:fs-idp130463408-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm51491440",
+                  "segmentId": "m68752:para:fs-idm51491440"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp207136496",
+          "title": {
+            "segmentId": "m68752:example-title:fs-idp207136496-title",
+            "text": "Determining the Molar Mass of a Volatile Liquid"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp30589168",
+              "segmentId": "m68752:para:fs-idp30589168"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm10831984",
+              "segmentId": "m68752:para:fs-idm10831984"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp60723232",
+              "segmentId": "m68752:para:fs-idp60723232",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp60723232-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp43964944",
+              "segmentId": "m68752:para:fs-idp43964944"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp146723968",
+              "segmentId": "m68752:para:fs-idp146723968",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp146723968-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm20201792",
+              "segmentId": "m68752:para:fs-idm20201792"
+            },
+            {
+              "type": "list",
+              "id": "fs-idp104043696",
+              "listType": "enumerated",
+              "numberStyle": "arabic",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68752:item:fs-idp104043696-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68752:item:fs-idp104043696-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68752:item:fs-idp104043696-item-3"
+                }
+              ]
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm11022240"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp108389616",
+              "title": {
+                "segmentId": "m68752:note-title:fs-idp108389616-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm20201792",
+                  "segmentId": "m68752:para:fs-idm20201792"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_03_liquidgas",
+          "caption": {
+            "segmentId": "m68752:caption:CNX_Chem_09_03_liquidgas-caption"
+          },
+          "media": {
+            "id": "fs-idm73431936",
+            "alt": "This figure shows four photos each connected by a right-facing arrow. The first photo shows a glass flask with aluminum foil covering the top sitting on a scale. The second photo shows a syringe being inserted into the flask through the aluminum foil covering. The third photo shows the glass flask being inserted into a beaker of water. The water appears to be heated at 100. The fourth photo shows the glass flask being weighed again.",
+            "src": "../../media/CNX_Chem_09_03_liquidgas.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp148167024",
+      "class": null,
+      "title": {
+        "segmentId": "m68752:title:fs-idp148167024-title",
+        "text": "The Pressure of a Mixture of Gases: Dalton’s Law"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp70155072",
+          "segmentId": "m68752:para:fs-idp70155072"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp65742144",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp97232880",
+          "segmentId": "m68752:para:fs-idp97232880"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_03_DaltonLaw1",
+          "caption": {
+            "segmentId": "m68752:caption:CNX_Chem_09_03_DaltonLaw1-caption"
+          },
+          "media": {
+            "id": "fs-idp114351776",
+            "alt": "This figure includes images of four gas-filled cylinders or tanks. Each has a valve at the top. The interior of the first cylinder is shaded blue. This region contains 5 small blue circles that are evenly distributed. The label “300 k P a” is on the cylinder. The second cylinder is shaded lavender. This region contains 8 small purple circles that are evenly distributed. The label “450 k P a” is on the cylinder. To the right of these cylinders is a third cylinder. Its interior is shaded pale yellow. This region contains 12 small yellow circles that are evenly distributed. The label “6000 k P a” is on this region of the cylinder. An arrow labeled “Total pressure combined” appears to the right of these three cylinders. This arrow points to a fourth cylinder. The interior of this cylinder is shaded a pale green. It contains evenly distributed small circles in the following quantities and colors; 5 blue, 8 purple, and 12 yellow. This cylinder is labeled “1350 k P a.”",
+            "src": "../../media/CNX_Chem_09_03_DaltonLaw1-f981.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp110759216",
+          "segmentId": "m68752:para:fs-idp110759216"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp18188304",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp75739968",
+          "segmentId": "m68752:para:fs-idp75739968"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp143452448",
+          "title": {
+            "segmentId": "m68752:example-title:fs-idp143452448-title",
+            "text": "The Pressure of a Mixture of Gases"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp147731856",
+              "segmentId": "m68752:para:fs-idp147731856"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp100506960",
+              "segmentId": "m68752:para:fs-idp100506960"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp147676624",
+              "segmentId": "m68752:para:fs-idp147676624"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp17315648",
+              "segmentId": "m68752:para:fs-idp17315648",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp17315648-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp49915536",
+              "segmentId": "m68752:para:fs-idp49915536"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp1986144",
+              "segmentId": "m68752:para:fs-idp1986144",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp1986144-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp101724928",
+              "segmentId": "m68752:para:fs-idp101724928"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp201684064"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp100280736"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp36264816"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp207663808"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm10367824",
+              "title": {
+                "segmentId": "m68752:note-title:fs-idm10367824-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp101724928",
+                  "segmentId": "m68752:para:fs-idp101724928"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp107652512",
+          "segmentId": "m68752:para:fs-idp107652512"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp107854880",
+          "title": {
+            "segmentId": "m68752:example-title:fs-idp107854880-title",
+            "text": "The Pressure of a Mixture of Gases"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp279668416",
+              "segmentId": "m68752:para:fs-idp279668416"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp41662496",
+              "segmentId": "m68752:para:fs-idp41662496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp132439904",
+              "segmentId": "m68752:para:fs-idp132439904"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp86077792",
+              "segmentId": "m68752:para:fs-idp86077792",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp86077792-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm32258688",
+              "segmentId": "m68752:para:fs-idm32258688"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp192169392",
+              "segmentId": "m68752:para:fs-idp192169392"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp263870464",
+              "segmentId": "m68752:para:fs-idp263870464"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp259944368",
+              "segmentId": "m68752:para:fs-idp259944368"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp66867744",
+              "segmentId": "m68752:para:fs-idp66867744"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm31767024",
+              "segmentId": "m68752:para:fs-idm31767024",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idm31767024-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp231949376",
+              "segmentId": "m68752:para:fs-idp231949376"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm52855552"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp202334992"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp69846704",
+              "title": {
+                "segmentId": "m68752:note-title:fs-idp69846704-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp231949376",
+                  "segmentId": "m68752:para:fs-idp231949376"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp221977104",
+      "class": null,
+      "title": {
+        "segmentId": "m68752:title:fs-idp221977104-title",
+        "text": "Collection of Gases over Water"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp264029648",
+          "segmentId": "m68752:para:fs-idp264029648"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_03_WaterVapor",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68752:caption:CNX_Chem_09_03_WaterVapor-caption"
+          },
+          "media": {
+            "id": "fs-idm14272784",
+            "alt": "This figure shows a diagram of equipment used for collecting a gas over water. To the left is an Erlenmeyer flask. It is approximately two thirds full of a lavender colored liquid. Bubbles are evident in the liquid. The label “Reaction Producing Gas” appears below the flask. A line segment connects this label to the liquid in the flask. The flask has a stopper in it through which a single glass tube extends from the open region above the liquid in the flask up, through the stopper, to the right, then angles down into a pan that is nearly full of light blue water. This tube again extends right once it is well beneath the water’s surface. It then bends up into an inverted flask which is labeled “Collection Flask.” This collection flask is positioned with its mouth beneath the surface of the light blue water and appears approximately half full. Bubbles are evident in the water in the inverted flask. The open space above the water in the inverted flask is labeled “collected gas.”",
+            "src": "../../media/CNX_Chem_09_03_WaterVapor.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp221722032",
+          "segmentId": "m68752:para:fs-idp221722032"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_03_WaterVapor2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68752:caption:CNX_Chem_09_03_WaterVapor2-caption"
+          },
+          "media": {
+            "id": "fs-idp38546432",
+            "alt": "A graph is shown. The horizontal axis is labeled “Temperature ( degrees C )” with markings and labels provided for multiples of 20 beginning at 0 and ending at 100. The vertical axis is labeled “Vapor pressure ( torr )” with marking and labels provided for multiples of 200, beginning at 0 and ending at 800. A smooth solid black curve extends from the origin up and to the right across the graph. The graph shows a positive trend with an increasing rate of change. On the vertical axis is ( 7 60) and an arrow pointing to it. The arrow is labeled, “Vapor pressure at ( 100 degrees C ).”",
+            "src": "../../media/CNX_Chem_09_03_WaterVapor2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm68841392",
+          "class": "top-titled",
+          "summary": "This table has six columns and 13 rows. The first row is a header and it labels each column, “Temperature (degree sign C),” “Pressure (torr),” “Temperature (degree sign C),” “Pressure (torr),” “Temperature (degree sign C),” and “Pressure (torr).” Under the first column are the following: negative 10, negative 5, negative 2, 0, 2, 4, 6, 8, 10, 12, 14, and 16. Under the second column are the following: 1.95, 3.0, 3.9, 4.6, 5.3, 6.1, 7.0, 8.0, 9.2, 10.5, 12.0, and 13.6. Under the third column are the following: 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, and 29. Under the fourth column are the following: 15.5, 16.5, 17.5, 18.7, 19.8, 21.1, 22.4, 23.8, 25.2, 26.7, 28.3, and 30.0. Under the fifth column are the following: 30, 35, 40, 50, 60, 70, 80, 90, 95, 99, 100.0, and 101.0. Under the sixth column are the following: 31.8, 42.2, 55.3, 92.5, 149.4, 233.7, 355.1, 525.8, 633.9, 733.2, 760.0, and 787.6.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-96",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c6",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-105",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-107",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-121",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-125",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-126",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-127",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-128",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-129",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-130",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-131",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-132",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-133",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-134",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-135",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-136",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-137",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-138",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-139",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-140",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-141",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-142",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-143",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-144",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-145",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-146",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-147",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-148",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-149",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-150",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-151",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-152",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-153",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-154",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-155",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-156",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-157",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-158",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-159",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-160",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-161",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-162",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-163",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-164",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-165",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-166",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-167",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-168",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-169",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-170",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-171",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-172",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-173",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68752:entry:auto-174",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp46681200",
+          "title": {
+            "segmentId": "m68752:example-title:fs-idp46681200-title",
+            "text": "Pressure of a Gas Collected Over Water"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp35760544",
+              "segmentId": "m68752:para:fs-idp35760544"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp18515888",
+              "segmentId": "m68752:para:fs-idp18515888",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp18515888-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp135677552",
+              "segmentId": "m68752:para:fs-idp135677552"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp144314112",
+              "segmentId": "m68752:para:fs-idp144314112"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp98186880",
+              "segmentId": "m68752:para:fs-idp98186880",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp98186880-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm32818672",
+              "segmentId": "m68752:para:fs-idm32818672"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp297283264"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp33156768"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm40258608"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp98213776",
+              "title": {
+                "segmentId": "m68752:note-title:fs-idp98213776-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm32818672",
+                  "segmentId": "m68752:para:fs-idm32818672"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp132626656",
+      "class": null,
+      "title": {
+        "segmentId": "m68752:title:fs-idp132626656-title",
+        "text": "Chemical Stoichiometry and Gases"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp137887648",
+          "segmentId": "m68752:para:fs-idp137887648"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp221629776",
+          "segmentId": "m68752:para:fs-idp221629776"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp45488016",
+      "class": null,
+      "title": {
+        "segmentId": "m68752:title:fs-idp45488016-title",
+        "text": "Avogadro’s Law Revisited"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm7424624",
+          "segmentId": "m68752:para:fs-idm7424624"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp21344160",
+          "segmentId": "m68752:para:fs-idp21344160"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp16937680",
+          "segmentId": "m68752:para:fs-idp16937680"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_03_Ammonia",
+          "caption": {
+            "segmentId": "m68752:caption:CNX_Chem_09_03_Ammonia-caption"
+          },
+          "media": {
+            "id": "fs-idm7395552",
+            "alt": "This diagram provided models of the chemical reaction written with formulas across the bottom of the figure. The reaction is written; N subscript 2 plus 3H subscript 2 followed by an arrow pointing right to NH subscript 3. Just above the formulas, space-filling models are provided. Above NH subscript 2, two blue spheres are bonded. Above 3H subscript 2, three pairs of two slightly smaller white spheres are bonded. Above NH subscript 3, two molecules are shown composed each of a central blue sphere to which three slightly smaller white spheres are bonded. Across the top of the diagram, the reaction is illustrated with balloons. To the left is a light blue balloon, which is labeled “N subscript 2”. This balloon contains a single space-filling model composed of two bonded blue spheres. This balloon is followed by a plus sign, then three grey balloons which are each labeled “H subscript 2.” Each of these balloons similarly contain a single space-filling model composed of two bonded white spheres. These white spheres are slightly smaller than the blue spheres. An arrow follows that points right to two light-green balloons, which are each labeled “2 NH subscript 3.” Each light-green balloon contains a space-filling model composed of a single central blue sphere to which three slightly smaller white spheres are bonded.",
+            "src": "../../media/CNX_Chem_09_03_Ammonia.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idp89809920",
+          "title": {
+            "segmentId": "m68752:example-title:fs-idp89809920-title",
+            "text": "Reaction of Gases"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp31720640",
+              "segmentId": "m68752:para:fs-idp31720640"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp137922560",
+              "segmentId": "m68752:para:fs-idp137922560",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp137922560-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp90728656",
+              "segmentId": "m68752:para:fs-idp90728656"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp78474976",
+              "segmentId": "m68752:para:fs-idp78474976"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp109294464",
+              "segmentId": "m68752:para:fs-idp109294464",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp109294464-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm79476592",
+              "segmentId": "m68752:para:fs-idm79476592"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp57291280"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp8505312"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp172649872"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm19557184",
+              "title": {
+                "segmentId": "m68752:note-title:fs-idm19557184-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm79476592",
+                  "segmentId": "m68752:para:fs-idm79476592"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp240638800",
+          "title": {
+            "segmentId": "m68752:example-title:fs-idp240638800-title",
+            "text": "Volumes of Reacting Gases"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp19707328",
+              "segmentId": "m68752:para:fs-idp19707328"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp212669488",
+              "segmentId": "m68752:para:fs-idp212669488",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp212669488-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp138098944",
+              "segmentId": "m68752:para:fs-idp138098944"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp37301360",
+              "segmentId": "m68752:para:fs-idp37301360",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp37301360-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm7381904",
+              "segmentId": "m68752:para:fs-idm7381904"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp109603280"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp171418912"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp105257584",
+              "title": {
+                "segmentId": "m68752:note-title:fs-idp105257584-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm7381904",
+                  "segmentId": "m68752:para:fs-idm7381904"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idp13049024",
+          "title": {
+            "segmentId": "m68752:example-title:fs-idp13049024-title",
+            "text": "Volume of Gaseous Product"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm2007840",
+              "segmentId": "m68752:para:fs-idm2007840"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp98177696",
+              "segmentId": "m68752:para:fs-idp98177696",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idp98177696-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp35037744",
+              "segmentId": "m68752:para:fs-idp35037744"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm17626704",
+              "segmentId": "m68752:para:fs-idm17626704",
+              "title": {
+                "segmentId": "m68752:para-title:fs-idm17626704-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm23787120",
+              "segmentId": "m68752:para:fs-idm23787120"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm20890912"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm46693760"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp48121168"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp30333040",
+              "title": {
+                "segmentId": "m68752:note-title:fs-idp30333040-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm23787120",
+                  "segmentId": "m68752:para:fs-idm23787120"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idm13395728",
+          "class": "chemistry sciences-interconnect",
+          "title": {
+            "segmentId": "m68752:note-title:fs-idm13395728-title",
+            "text": "Greenhouse Gases and Climate Change"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp143406944",
+              "segmentId": "m68752:para:fs-idp143406944"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm12984240",
+              "segmentId": "m68752:para:fs-idm12984240"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_03_GlobalWarming",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68752:caption:CNX_Chem_09_03_GlobalWarming-caption"
+          },
+          "media": {
+            "id": "fs-idp86921200",
+            "alt": "This diagram shows half of a two dimensional view of the earth in blue and green at the left of the image. A slight distance outside the hemisphere is a grey arc. A line segment connects the label “Atmosphere” to the region between the hemisphere and the grey arc. In this region, near the surface of the earth the chemical formulas C O subscript 2, C H subscript 3, and N subscript 2 O appear. Five red arrows formed from wavy lines extend from green regions on the earth out into and just beyond the region labeled “Atmosphere.” The label “Infrared radiation” points to one of these red arrows. At a fair distance outside of the grey arc appears a yellow circle with a jagged boundary. This circle is labeled “Sun.” From it extend yellow arrows with wavy lines which extend toward the earth. Three of the arrows extend to the green region on the earth. One of the arrows appears to be reflected off the grey arc, causing its path to turn away from the earth.",
+            "src": "../../media/CNX_Chem_09_03_GlobalWarming-b740.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_03_GlobalWarming2",
+          "caption": {
+            "segmentId": "m68752:caption:CNX_Chem_09_03_GlobalWarming2-caption"
+          },
+          "media": {
+            "id": "fs-idp99125712",
+            "alt": "This figure has the heading “Carbon Dioxide in the Atmosphere.” The first graph has a horizontal axis label “Year ( B C )” and a vertical axis label “Carbon dioxide concentration ( p p m ).” The horizontal axis labels begin at 700,000 on the left and increases by multiples of 100,000 up to 0 on the right. The vertical axis begins at 0 and increases by multiples of 50 extending up to 400. A jagged, cyclical pattern is shown that begins before 600,000 B C at under 200 p p m. Up to 0 B C values appear to vary cyclically up to a high of about 300 p p m. Extending beyond 0 B C to the right, the carbon dioxide concentration appears to be on a steady increase, having reached nearly 400 p p m in recent years. The second graph is shown to magnify the portion of the graph that is most recent. This graph begins just before the year 1960 and includes markings for multiples of 10 up to the year 2010. The vertical axis begins just below 320 p p m and includes markings for all multiples of 20 up to 400 p p m. A smooth black line is shown extending through a jagged red data pattern. The trend is a steady, nearly linear increase from the lower left to the upper right on the graph.",
+            "src": "../../media/CNX_Chem_09_03_GlobalWarming2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm33251312",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp85689376",
+              "segmentId": "m68752:para:fs-idp85689376"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idp18054480",
+          "class": "chemistry chemist-portrait",
+          "title": {
+            "segmentId": "m68752:note-title:fs-idp18054480-title",
+            "text": "Susan Solomon"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp97050544",
+              "segmentId": "m68752:para:fs-idp97050544"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp221818192",
+              "segmentId": "m68752:para:fs-idp221818192"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_03_SusanSolom",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68752:caption:CNX_Chem_09_03_SusanSolom-caption"
+          },
+          "media": {
+            "id": "fs-idp104021664",
+            "alt": "A photograph is shown of Susan Solomon sitting next to a globe.",
+            "src": "../../media/CNX_Chem_09_03_SusanSolom.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp102169424",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68752:title:fs-idp102169424-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp71854032",
+          "segmentId": "m68752:para:fs-idp71854032"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp7509520",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68752:title:fs-idp7509520-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-238",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-239",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68752:entry:auto-240",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": null,
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp118960256",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68752:title:fs-idp118960256-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp231956592",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp5305888",
+                "segmentId": "m68752:problem:fs-idp5305888"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp64305520",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp65538752",
+                "segmentId": "m68752:problem:fs-idp65538752"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp37436384",
+                "segmentId": "m68752:solution:fs-idp37436384"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp50300640",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp101996016",
+                "segmentId": "m68752:problem:fs-idp101996016"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm31331424",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp212774384",
+                "segmentId": "m68752:problem:fs-idp212774384"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp72246304",
+                "segmentId": "m68752:solution:fs-idp72246304"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp20795744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm32935856",
+                "segmentId": "m68752:problem:fs-idm32935856"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp19006560",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp49541504",
+                "segmentId": "m68752:problem:fs-idp49541504"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm11097808",
+                "segmentId": "m68752:solution:fs-idm11097808"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp39361600",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25604064",
+                "segmentId": "m68752:problem:fs-idm25604064"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp37043264",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp36886592",
+                "segmentId": "m68752:problem:fs-idp36886592"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56724176",
+                "segmentId": "m68752:solution:fs-idp56724176"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm10841488",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp118959200",
+                "segmentId": "m68752:problem:fs-idp118959200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp31689456",
+                "segmentId": "m68752:problem:fs-idp31689456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm7368784",
+                "segmentId": "m68752:problem:fs-idm7368784"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp13701424",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp96863072",
+                "segmentId": "m68752:problem:fs-idp96863072"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1704032",
+                "segmentId": "m68752:solution:fs-idm1704032"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp106657088",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp198511088",
+                "segmentId": "m68752:problem:fs-idp198511088"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp207682832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp1788992",
+                "segmentId": "m68752:problem:fs-idp1788992"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm99835712",
+                "segmentId": "m68752:solution:fs-idm99835712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp19919472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp108398944",
+                "segmentId": "m68752:problem:fs-idp108398944"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp86142480",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp164625152",
+                "segmentId": "m68752:problem:fs-idp164625152"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp18559760",
+                "segmentId": "m68752:solution:fs-idp18559760"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp100299232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp48835104",
+                "segmentId": "m68752:problem:fs-idp48835104"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm12594800",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69022144",
+                "segmentId": "m68752:problem:fs-idp69022144"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp34956096",
+                "segmentId": "m68752:solution:fs-idp34956096"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp38931136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp30208",
+                "segmentId": "m68752:problem:fs-idp30208"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp211830176",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp144351120",
+                "segmentId": "m68752:problem:fs-idp144351120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp73629408",
+                "segmentId": "m68752:problem:fs-idp73629408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm98106000",
+                "segmentId": "m68752:problem:fs-idm98106000"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm479696",
+                "segmentId": "m68752:solution:fs-idm479696"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp46179152",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp40636672",
+                "segmentId": "m68752:problem:fs-idp40636672"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp86341120",
+                "segmentId": "m68752:problem:fs-idp86341120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp45810384",
+                "segmentId": "m68752:problem:fs-idp45810384"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp39473616",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp98992288",
+                "segmentId": "m68752:problem:fs-idp98992288"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp144355856",
+                "segmentId": "m68752:problem:fs-idp144355856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp69374608",
+                "segmentId": "m68752:problem:fs-idp69374608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp75561072",
+                "segmentId": "m68752:solution:fs-idp75561072"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp152416544",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp203756096",
+                "segmentId": "m68752:problem:fs-idp203756096"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp169761136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56791712",
+                "segmentId": "m68752:problem:fs-idp56791712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp114235888",
+                "segmentId": "m68752:problem:fs-idp114235888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm7280816",
+                "segmentId": "m68752:problem:fs-idm7280816"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp105094720",
+                "segmentId": "m68752:solution:fs-idp105094720"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp228232112",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp228232624",
+                "segmentId": "m68752:problem:fs-idp228232624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp156883024",
+                "segmentId": "m68752:problem:fs-idp156883024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm16186128",
+                "segmentId": "m68752:problem:fs-idm16186128"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp197293648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp197294160",
+                "segmentId": "m68752:problem:fs-idp197294160"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp279660576",
+                "segmentId": "m68752:solution:fs-idp279660576"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp88428400",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp85524496",
+                "segmentId": "m68752:problem:fs-idp85524496"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp259668928",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp259669440",
+                "segmentId": "m68752:problem:fs-idp259669440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm79444368",
+                "segmentId": "m68752:problem:fs-idm79444368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp143036432",
+                "segmentId": "m68752:problem:fs-idp143036432"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp21110768",
+                "segmentId": "m68752:solution:fs-idp21110768"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp68901248",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp224794176",
+                "segmentId": "m68752:problem:fs-idp224794176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp107257056",
+                "segmentId": "m68752:problem:fs-idp107257056"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp41440272",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp41440784",
+                "segmentId": "m68752:problem:fs-idp41440784"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp78205152",
+                "segmentId": "m68752:solution:fs-idp78205152"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp86448160",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp39928096",
+                "segmentId": "m68752:problem:fs-idp39928096"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm29455728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm29455216",
+                "segmentId": "m68752:problem:fs-idm29455216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp77265168",
+                "segmentId": "m68752:problem:fs-idp77265168"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp64802352",
+                "segmentId": "m68752:solution:fs-idp64802352"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp55931680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp61931760",
+                "segmentId": "m68752:problem:fs-idp61931760"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp69237328",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69237840",
+                "segmentId": "m68752:problem:fs-idp69237840"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp86394000",
+                "segmentId": "m68752:solution:fs-idp86394000"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp224745536",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp224746048",
+                "segmentId": "m68752:problem:fs-idp224746048"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68752:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68752:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68752:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68752:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp142977184",
+        "termSegmentId": "m68752:glossary-term:fs-idp142977184-term",
+        "definitionSegmentId": "m68752:glossary-def:fs-idp142977184-def"
+      },
+      {
+        "id": "fs-idp1132336",
+        "termSegmentId": "m68752:glossary-term:fs-idp1132336-term",
+        "definitionSegmentId": "m68752:glossary-def:fs-idp1132336-def"
+      },
+      {
+        "id": "fs-idp104769888",
+        "termSegmentId": "m68752:glossary-term:fs-idp104769888-term",
+        "definitionSegmentId": "m68752:glossary-def:fs-idp104769888-def"
+      },
+      {
+        "id": "fs-idp57901520",
+        "termSegmentId": "m68752:glossary-term:fs-idp57901520-term",
+        "definitionSegmentId": "m68752:glossary-def:fs-idp57901520-def"
+      }
+    ]
+  },
+  "sectionOrder": 3
+}

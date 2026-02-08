@@ -1,0 +1,202 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mi>P</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{P}{T}}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mi>P</m:mi><m:mi>T</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mi>k</m:mi></m:mrow></m:math>",
+    "latex": "{\\frac{P}{T}\\, =k}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mi>k</m:mi></m:mrow></m:math>",
+    "latex": "{\\frac{{{P}_{1}}}{{{T}_{1}}}\\, =k}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>,</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{{P}_{2}}}{{{T}_{2}}}\\, =k,}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{{P}_{1}}}{{{T}_{1}}}\\, =\\, \\frac{{{P}_{2}}}{{{T}_{2}}}.}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>360</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kPa</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>323</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>297</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>K</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>390</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kPa</m:mtext></m:mrow></m:math>",
+    "latex": "{{P}_{2}=\\, \\frac{{360\\, \\text{kPa}\\, \\times \\, 323\\, \\sout{\\text{K}}}}{{297\\, \\sout{\\text{K}}}}\\, =390\\, \\text{kPa}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mi>V</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{V}{T}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{\\frac{{{V}_{1}}}{{{T}_{1}}}\\, =\\, \\frac{{{V}_{2}}}{{{T}_{2}}}.}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>0.300</m:mn><m:mspace width=\"0.2em\"/><m:mtext>L</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mtext>303</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>283</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>K</m:mtext></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.321</m:mn><m:mspace width=\"0.2em\"/><m:mtext>L</m:mtext></m:mrow></m:math>",
+    "latex": "{{V}_{2}=\\, \\frac{{0.300\\, \\text{L}\\, \\times \\, \\text{303}\\, \\sout{\\text{K}}}}{{283\\, \\sout{\\text{K}}}}\\, =0.321\\, \\text{L}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>131.7</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>cm</m:mtext></m:mrow></m:menclose></m:mrow><m:mn>3</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>273.15</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow><m:mrow><m:mn>150.0</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>cm</m:mtext></m:mrow></m:menclose></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>239.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow></m:math>",
+    "latex": "{{T}_{2}=\\, \\frac{{131.7\\, {{\\sout{{\\text{cm}}}}}^{3}\\, \\times \\, 273.15\\, \\text{K}}}{{150.0\\, {{\\sout{{\\text{cm}}}}}^{3}}}\\, =239.8\\, \\text{K}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{P}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{({\\frac{1}{P}})}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>V</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{({\\frac{1}{V}})}}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{{({\\frac{1}{P}})}}"
+  },
+  "math-15": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{P}}"
+  },
+  "math-16": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{P}}"
+  },
+  "math-17": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{P}}"
+  },
+  "math-18": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mi>P</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{P}{T}}"
+  },
+  "math-19": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mi>V</m:mi><m:mi>T</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{V}{T}}"
+  },
+  "math-20": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mi>V</m:mi><m:mi>n</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{V}{n}}"
+  },
+  "math-21": {
+    "mathml": "<m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>P</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{V=\\, \\frac{{nRT}}{P}}"
+  },
+  "math-22": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{{P}_{1}{V}_{1}}}{{{T}_{1}}}\\, =\\, \\frac{{{P}_{2}{V}_{2}}}{{{T}_{2}}}}"
+  },
+  "math-23": {
+    "mathml": "<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>",
+    "latex": "{\\times}"
+  },
+  "math-24": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-25": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-26": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-27": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-28": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "math-29": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{P}}"
+  },
+  "math-30": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idp58663824": {
+    "mathml": "<m:math><m:mrow><m:mi>P</m:mi><m:mo>∝</m:mo><m:mi>T</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>P</m:mi><m:mo>=</m:mo><m:mtext>constant</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mi>T</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>P</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mi>T</m:mi></m:mrow></m:math>",
+    "latex": "{P∝T\\, \\text{or}\\, P=\\text{constant}\\, \\times \\, T\\, \\text{or}\\, P=k\\, \\times \\, T}",
+    "isBlock": true
+  },
+  "fs-idp253098544": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mtext>which means that</m:mtext><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mn>360</m:mn><m:mspace width=\"0.2em\"/><m:mtext>kPa</m:mtext></m:mrow><m:mrow><m:mn>297</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>323</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{{P}_{1}}}{{{T}_{1}}}\\, =\\, \\frac{{{P}_{2}}}{{{T}_{2}}}\\, \\text{which means that}\\, \\frac{{360\\, \\text{kPa}}}{{297\\, \\text{K}}}\\, =\\, \\frac{{{P}_{2}}}{{323\\, \\text{K}}}}",
+    "isBlock": true
+  },
+  "fs-idm59931152": {
+    "mathml": "<m:math><m:mrow><m:mi>V</m:mi><m:mspace width=\"0.2em\"/><m:mtext>α</m:mtext><m:mspace width=\"0.2em\"/><m:mi>T</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>V</m:mi><m:mo>=</m:mo><m:mtext>constant</m:mtext><m:mtext>·</m:mtext><m:mi>T</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mtext>·</m:mtext><m:mi>T</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub><m:mtext>/</m:mtext><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub><m:mtext>/</m:mtext><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{V\\, \\text{α}\\, T\\, \\text{or}\\, V=\\text{constant}\\text{·}T\\, \\text{or}\\, V=k\\text{·}T\\, \\text{or}\\, {V}_{1}\\text{/}{T}_{1}={V}_{2}\\text{/}{T}_{2}}",
+    "isBlock": true
+  },
+  "fs-idp22541168": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mtext>which means that</m:mtext><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mn>0.300</m:mn><m:mspace width=\"0.2em\"/><m:mtext>L</m:mtext></m:mrow><m:mrow><m:mn>283</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:mn>303</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{{V}_{1}}}{{{T}_{1}}}\\, =\\, \\frac{{{V}_{2}}}{{{T}_{2}}}\\, \\text{which means that}\\, \\frac{{0.300\\, \\text{L}}}{{283\\, \\text{K}}}\\, =\\, \\frac{{{V}_{2}}}{{303\\, \\text{K}}}}",
+    "isBlock": true
+  },
+  "fs-idp40102160": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mtext>which means that</m:mtext><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mn>150.0</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mrow><m:mn>273.15</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>131.7</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{{V}_{1}}}{{{T}_{1}}}\\, =\\, \\frac{{{V}_{2}}}{{{T}_{2}}}\\, \\text{which means that}\\, \\frac{{150.0\\, {{\\text{cm}}}^{3}}}{{273.15\\, \\text{K}}}\\, =\\, \\frac{{131.7\\, {{\\text{cm}}}^{3}}}{{{T}_{2}}}}",
+    "isBlock": true
+  },
+  "fs-idp169510384": {
+    "mathml": "<m:math><m:mrow><m:mi>P</m:mi><m:mspace width=\"0.2em\"/><m:mtext>α</m:mtext><m:mspace width=\"0.2em\"/><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mi>V</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>P</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mtext>·</m:mtext><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mi>V</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mi>P</m:mi><m:mtext>·</m:mtext><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:math>",
+    "latex": "{P\\, \\text{α}\\, 1\\text{/}V\\, \\text{or}\\, P=k\\text{·}1\\text{/}V\\, \\text{or}\\, P\\text{·}V=k\\, \\text{or}\\, {P}_{1}{V}_{1}={P}_{2}{V}_{2}}",
+    "isBlock": true
+  },
+  "fs-idp70444944": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub><m:mo>=</m:mo><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub><m:mspace width=\"0.2em\"/><m:mtext>or</m:mtext><m:mspace width=\"0.2em\"/><m:mn>13.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>psi</m:mtext><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>15.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mL</m:mtext><m:mo>=</m:mo><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>7.5</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mL</m:mtext></m:mrow></m:math>",
+    "latex": "{{P}_{1}{V}_{1}={P}_{2}{V}_{2}\\, \\text{or}\\, 13.0\\, \\text{psi}\\, \\, \\times \\, 15.0\\, \\text{mL}={P}_{2}\\, \\times \\, 7.5\\, \\text{mL}}",
+    "isBlock": true
+  },
+  "fs-idp79285632": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>13.0</m:mn><m:mspace width=\"0.2em\"/><m:mtext>psi</m:mtext><m:mspace width=\"0.2em\"/><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mn>15.0</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mL</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>7.5</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mL</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>26</m:mn><m:mspace width=\"0.2em\"/><m:mtext>psi</m:mtext></m:mrow></m:math>",
+    "latex": "{{P}_{2}=\\, \\frac{{13.0\\, \\text{psi}\\, \\, \\times \\, 15.0\\, \\sout{{\\text{mL}}}}}{{7.5\\, \\sout{{\\text{mL}}}}}\\, =26\\, \\text{psi}}",
+    "isBlock": true
+  },
+  "fs-idm8943936": {
+    "mathml": "<m:math><m:mrow><m:mtable><m:mtr><m:mtd><m:mrow><m:mi>V</m:mi><m:mo>∝</m:mo><m:mi>n</m:mi></m:mrow></m:mtd><m:mtd><m:mrow><m:mtext>or</m:mtext></m:mrow></m:mtd><m:mtd><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>k</m:mi><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mi>n</m:mi></m:mrow></m:mtd><m:mtd><m:mrow><m:mtext>or</m:mtext></m:mrow></m:mtd><m:mtd><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>n</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math>",
+    "latex": "{\\begin{aligned} {V∝n} & {\\text{or}} & {V=k\\, \\times \\, n} & {\\text{or}} & {\\frac{{{V}_{1}}}{{{n}_{1}}}\\, =\\, \\frac{{{V}_{2}}}{{{n}_{2}}}} \\end{aligned}}",
+    "isBlock": true
+  },
+  "fs-idp190457648": {
+    "mathml": "<m:math><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi><m:mo>=</m:mo><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:math>",
+    "latex": "{PV=nRT}",
+    "isBlock": true
+  },
+  "fs-idp39691024": {
+    "mathml": "<m:math><m:mrow><m:mi>n</m:mi><m:mo>=</m:mo><m:mn>6</m:mn><m:mspace width=\"0.2em\"/><m:mn>55</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>g</m:mtext><m:mspace width=\"0.2em\"/><m:mrow><m:msub><m:mrow><m:mtext>CH</m:mtext></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>16.043</m:mn><m:mspace width=\"0.2em\"/><m:msub><m:mrow><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>g CH</m:mtext></m:mrow></m:menclose></m:mrow><m:mn>4</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>40.8</m:mn><m:mspace width=\"0.2em\"/><m:mtext>mol</m:mtext></m:mrow></m:math>",
+    "latex": "{n=6\\, 55\\, \\sout{\\text{g}\\, {{{\\text{CH}}}_{4}}}\\, \\times \\, \\frac{{1\\, \\text{mol}}}{{16.043\\, {{\\sout{{\\text{g CH}}}}}_{4}}}\\, =40.8\\, \\text{mol}}",
+    "isBlock": true
+  },
+  "fs-idp101238448": {
+    "mathml": "<m:math><m:mrow><m:mi>T</m:mi><m:mo>=</m:mo><m:mn>25</m:mn><m:mspace width=\"0.2em\"/><m:mtext>°C</m:mtext><m:mo>+</m:mo><m:mn>273</m:mn><m:mo>=</m:mo><m:mn>298</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow></m:math>",
+    "latex": "{T=25\\, \\text{°C}+273=298\\, \\text{K}}",
+    "isBlock": true
+  },
+  "fs-idp11744096": {
+    "mathml": "<m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mn>745</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:mtext>atm</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>0.980</m:mn><m:mspace width=\"0.2em\"/><m:mtext>atm</m:mtext></m:mrow></m:math>",
+    "latex": "{P=745\\, \\sout{{\\text{torr}}}\\, \\times \\, \\frac{{1\\, \\text{atm}}}{{760\\, \\sout{{\\text{torr}}}}}\\, =0.980\\, \\text{atm}}",
+    "isBlock": true
+  },
+  "fs-idp248570064": {
+    "mathml": "<m:math><m:mrow><m:mi>V</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mi>n</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mi>P</m:mi></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mo stretchy=\"false\">(</m:mo><m:mn>40.8</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mol</m:mtext></m:mrow></m:menclose><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>0.08206</m:mn><m:mspace width=\"0.2em\"/><m:mtext>L</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:msup><m:mtext>atm mol</m:mtext><m:mrow><m:mn>–1</m:mn></m:mrow></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mtext>K</m:mtext><m:mrow><m:mtext>–1</m:mtext></m:mrow></m:msup></m:mrow></m:menclose><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">(</m:mo><m:mn>298</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>K</m:mtext></m:menclose><m:mo stretchy=\"false\">)</m:mo></m:mrow><m:mrow><m:mn>0.980</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>1.02</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup><m:mtext>L</m:mtext></m:mrow></m:math>",
+    "latex": "{V=\\, \\frac{{nRT}}{P}\\, =\\, \\frac{{(40.8\\, \\sout{{\\text{mol}}})(0.08206\\, \\text{L}\\, \\sout{{{\\text{atm mol}}^{{–1}}\\, {\\text{K}}^{{\\text{–1}}}}})(298\\, \\sout{\\text{K}})}}{{0.980\\, \\sout{{\\text{atm}}}}}\\, =1.02\\, \\times \\, {{10}}^{3}\\text{L}}",
+    "isBlock": true
+  },
+  "fs-idp224060000": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>1</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>1</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>1</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mrow><m:msub><m:mi>T</m:mi><m:mn>2</m:mn></m:msub></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo stretchy=\"false\">⟶</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>153</m:mn><m:mspace width=\"0.2em\"/><m:mtext>atm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>13.2</m:mn><m:mspace width=\"0.2em\"/><m:mtext>L</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>300</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.13</m:mn><m:mspace width=\"0.2em\"/><m:mtext>atm</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>310</m:mn><m:mspace width=\"0.2em\"/><m:mtext>K</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{{{P}_{1}{V}_{1}}}{{{T}_{1}}}\\, =\\, \\frac{{{P}_{2}{V}_{2}}}{{{T}_{2}}}\\, \\longrightarrow \\, \\frac{{{({153\\, \\text{atm}})}{({13.2\\, \\text{L}})}}}{{{({300\\, \\text{K}})}}}\\, =\\, \\frac{{{({3.13\\, \\text{atm}})}{({{V}_{2}})}}}{{{({310\\, \\text{K}})}}}}",
+    "isBlock": true
+  },
+  "fs-idp102261440": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mi>V</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>153</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>13.2</m:mn><m:mspace width=\"0.2em\"/><m:mtext>L</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>310</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow><m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>300</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mtext>K</m:mtext></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>3.13</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>667</m:mn><m:mspace width=\"0.2em\"/><m:mtext>L</m:mtext></m:mrow></m:math>",
+    "latex": "{{V}_{2}=\\, \\frac{{{({153\\, \\sout{{\\text{atm}}}})}{({13.2\\, \\text{L}})}{({310\\, \\sout{\\text{K}}})}}}{{{({300\\, \\sout{\\text{K}}})}{({3.13\\, \\sout{{\\text{atm}}}})}}}\\, =667\\, \\text{L}}",
+    "isBlock": true
+  }
+}

@@ -1,0 +1,849 @@
+{
+  "moduleId": "m68795",
+  "title": {
+    "segmentId": "m68795:title:auto-1",
+    "text": "Catalysis"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "a6400a57-a040-4768-8222-61705d4fff83",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the function of a catalyst in terms of reaction mechanisms and potential energy diagrams",
+        "List examples of catalysis in natural and industrial processes"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm241568976",
+      "segmentId": "m68795:para:fs-idm241568976"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm627108512",
+      "segmentId": "m68795:para:fs-idm627108512"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_12_07_CatReCoDig",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68795:caption:CNX_Chem_12_07_CatReCoDig-caption"
+      },
+      "media": {
+        "id": "fs-idm260543264",
+        "alt": "A graph is shown with the label, “Extent of reaction,” appearing in a right pointing arrow below the x-axis and the label, “Energy,” in an upward pointing arrow just left of the y-axis. Approximately one-fifth of the way up the y-axis, a very short, somewhat flattened portion of both a red and a blue curve are shown. This region is labeled “Reactants.” A red concave down curve extends upward to reach a maximum near the height of the y-axis. From the peak, the curve continues downward to a second horizontally flattened region at a height of about one-third the height of the y-axis. This flattened region is labeled, “Products.” A second curve is drawn in blue with the same flattened regions at the start and end of the curve. The height of this curve is about two-thirds the height of the first curve and just right of its maximum, the curve dips low, then rises back and continues a downward trend at a lower height, but similar to that of the red curve. A horizontal dashed straight line extends from the point where both curves start in the “Reactants” region. A double sided arrow extends from the “Products” region at the end of both curves to this horizontal dashed line. This is labeled “capital delta H.” A double sided arrow extends from the dashed horizontal line to the peak of the red concave down curve. This arrow is labeled “E subscript a.” Another double sided arrow extends from the dashed horizontal line to the peak of the blue curve. This arrow is labeled “E subscript a.”",
+        "src": "../../media/CNX_Chem_12_07_CatReCoDig.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "example",
+      "id": "fs-idm226461504",
+      "title": {
+        "segmentId": "m68795:example-title:fs-idm226461504-title",
+        "text": "Reaction Diagrams for Catalyzed Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm51547456",
+          "segmentId": "m68795:para:fs-idm51547456"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm154613456",
+          "segmentId": "m68795:para:fs-idm154613456",
+          "title": {
+            "segmentId": "m68795:para-title:fs-idm154613456-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm202838144",
+          "segmentId": "m68795:para:fs-idm202838144"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm163597616",
+          "segmentId": "m68795:para:fs-idm163597616",
+          "title": {
+            "segmentId": "m68795:para-title:fs-idm163597616-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm239441760",
+          "segmentId": "m68795:para:fs-idm239441760"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm239782272"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm215189760",
+          "title": {
+            "segmentId": "m68795:note-title:fs-idm215189760-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm239441760",
+              "segmentId": "m68795:para:fs-idm239441760"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm65053840",
+      "class": null,
+      "title": {
+        "segmentId": "m68795:title:fs-idm65053840-title",
+        "text": "Homogeneous Catalysts"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm243256336",
+          "segmentId": "m68795:para:fs-idm243256336"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm210214480",
+          "segmentId": "m68795:para:fs-idm210214480"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm276049600",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm291675632",
+          "segmentId": "m68795:para:fs-idm291675632"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm37859104",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm103646832",
+          "segmentId": "m68795:para:fs-idm103646832"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm109392",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm193932640",
+          "segmentId": "m68795:para:fs-idm193932640"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm46801248",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm251830192",
+          "segmentId": "m68795:para:fs-idm251830192"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm195911072",
+          "class": "chemistry chemist-portrait",
+          "title": {
+            "segmentId": "m68795:note-title:fs-idm195911072-title",
+            "text": "Mario J. Molina"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm149608448",
+              "segmentId": "m68795:para:fs-idm149608448"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm242073328",
+              "segmentId": "m68795:para:fs-idm242073328"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm4297296",
+              "segmentId": "m68795:para:fs-idm4297296"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm211108656",
+              "segmentId": "m68795:para:fs-idm211108656"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm225343040",
+              "segmentId": "m68795:para:fs-idm225343040"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm215571280",
+              "segmentId": "m68795:para:fs-idm215571280"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_07_Molina",
+          "caption": {
+            "segmentId": "m68795:caption:CNX_Chem_12_07_Molina-caption"
+          },
+          "media": {
+            "id": "fs-idm190322192",
+            "alt": "A photograph is shown of Mario Molina. To the right of the photo, an image of Earth’s southern hemisphere is shown with a central circular region in purple with a radius of about half that of the entire hemisphere. Just outside this region is a narrow royal blue band, followed by an outer thin turquoise blue band. The majority of the outermost region is green. Two small bands of yellow are present in the lower regions of the image.",
+            "src": "../../media/CNX_Chem_12_07_Molina.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm220632992",
+          "class": "chemistry sciences-interconnect",
+          "title": {
+            "segmentId": "m68795:note-title:fs-idm220632992-title",
+            "text": "Glucose-6-Phosphate Dehydrogenase Deficiency"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm119819152",
+              "segmentId": "m68795:para:fs-idm119819152"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm227628064",
+              "segmentId": "m68795:para:fs-idm227628064"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_07_Gluc6PhoDe",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68795:caption:CNX_Chem_12_07_Gluc6PhoDe-caption"
+          },
+          "media": {
+            "id": "fs-idm119181376",
+            "alt": "A colorful model of the Glucose-6-phosphate dehydrogenase structure is shown. The molecule has two distinct lobes which are filled with spiraled ribbon-like regions of yellow, lavender, blue, silver, green, and pink.",
+            "src": "../../media/CNX_Chem_12_07_Gluc6PhoDe.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_07_HMPShuntPa",
+          "caption": {
+            "segmentId": "m68795:caption:CNX_Chem_12_07_HMPShuntPa-caption"
+          },
+          "media": {
+            "id": "fs-idm154188336",
+            "alt": "A reaction mechanism is diagrammed in this figure. At the left, the name Glucose is followed by a horizontal, right pointing arrow, labeled, “Hexokinase.” Below this arrow and to the left is a yellow star shape labeled, “A T P.” A curved arrow extends from this shape to the right pointing arrow, and down to the right to a small brown oval labeled, “A D P.” To the right of the horizontal arrow is the name Glucose 6 phosphate, which is followed by another horizontal, right pointing arrow which is labeled, “G 6 P D.” A small orange rectangle below and left of this arrow is labeled “N A D P superscript plus.” A curved arrow extends from this shape to the right pointing arrow, and down to the right to a small salmon-colored rectangle labeled “N A P D H.” A curved arrow extends from this shape below and to the left, back to the orange rectangle labeled, “N A D P superscript plus.” Another curved arrow extends from a green oval labeled “G S S G” below the orange rectangle, up to the arrow curving back to the orange rectangle. This last curved arrow continues on to the lower right to a second green oval labeled, “G S H.” The end of this curved arrow is labeled, “Glutathione reductase.” To the right of the rightmost horizontal arrow appears the name 6 phosphogluconate.",
+            "src": "../../media/CNX_Chem_12_07_HMPShuntPa.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm254642320",
+      "class": null,
+      "title": {
+        "segmentId": "m68795:title:fs-idm254642320-title",
+        "text": "Heterogeneous Catalysts"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm31937584",
+          "segmentId": "m68795:para:fs-idm31937584"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm52671504",
+          "segmentId": "m68795:para:fs-idm52671504"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm202987392",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68795:item:fs-idm202987392-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68795:item:fs-idm202987392-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68795:item:fs-idm202987392-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m68795:item:fs-idm202987392-item-4"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm173407040",
+          "segmentId": "m68795:para:fs-idm173407040"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_07_HetCats",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68795:caption:CNX_Chem_12_07_HetCats-caption"
+          },
+          "media": {
+            "id": "fs-idm183187728",
+            "alt": "In this figure, four diagrams labeled a through d are shown. In each, a green square surface is shown in perspective to provide a three-dimensional appearance. In a, the label “N i surface” is placed above with a line segment extending to the green square. At the lower left and upper right, pairs of white spheres bonded tougher together appear as well as white spheres on the green surface. Black arrows are drawn from each of the white spheres above the surface to the white sphere on the green surface. In b, the white spheres are still present on the green surface. Near the center of this surface is a molecule with two central black spheres with a double bond indicated by two horizontal black rods between them. Above and below to the left and right, a total of four white spheres are connected to the black spheres with white rods. A line segment extends from this structure to the label, “Ethylene adsorbed on surface breaking pi bonds.” Just above this is a nearly identical structure greyed out with three downward pointing arrows to the black and white structure to indicate downward motion. The label “Ethylene” at the top of the diagram is connected to the greyed out structure with a line segment. In c, the diagram is very similar to b except that the greyed out structure and labels are gone and one of the white spheres near the black and white structure in each pair on the green surface is greyed out. Arrows point from the greyed out white spheres to the double bond between the two black spheres. In d, only a single white sphere remains from each pair in the green surface. A curved arrow points from the middle of the green surface to a model above with two central black spheres with a single black rod indicating a single bond between them. Each of the black rods has three small white spheres bonded as indicated by white rods between the black spheres and the small white spheres. The four bonds around each black sphere are evenly distributed about the black spheres.",
+            "src": "../../media/CNX_Chem_12_07_HetCats-230a.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm108887776",
+          "segmentId": "m68795:para:fs-idm108887776"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm214293568",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68795:note-title:fs-idm214293568-title",
+            "text": "Automobile Catalytic Converters"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm151500176",
+              "segmentId": "m68795:para:fs-idm151500176"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm247003792",
+              "segmentId": "m68795:para:fs-idm247003792"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm228107536",
+              "segmentId": "m68795:para:fs-idm228107536"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_07_CatConvert",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68795:caption:CNX_Chem_12_07_CatConvert-caption"
+          },
+          "media": {
+            "id": "fs-idm189806768",
+            "alt": "An image is shown of a catalytic converter. At the upper left, a blue arrow pointing into a pipe that enters a larger, widened chamber is labeled, “Dirty emissions.” A small black arrow that points to the lower right is positioned along the upper left side of the widened region. This arrow is labeled, “Additional oxygen from air pump.” The image shows the converter with the upper surface removed, exposing a red-brown interior. The portion of the converter closest to the dirty emissions inlet shows small, round components in an interior layer. This layer is labeled “Three-way reduction catalyst.” The middle region shows closely packed small brown rods that are aligned parallel to the dirty emissions inlet pipe. The final quarter of the interior of the catalytic converter again shows a layer of closely packed small red brown circles. Two large light grey arrows extend from this layer to the open region at the lower right of the image to the label “Clean emissions.”",
+            "src": "../../media/CNX_Chem_12_07_CatConvert.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm194237936",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm266375520",
+              "segmentId": "m68795:para:fs-idm266375520"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idm26203536",
+          "class": "chemistry sciences-interconnect",
+          "title": {
+            "segmentId": "m68795:note-title:fs-idm26203536-title",
+            "text": "Enzyme Structure and Function"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm220395040",
+              "segmentId": "m68795:para:fs-idm220395040"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm189720768",
+              "segmentId": "m68795:para:fs-idm189720768"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm184565904",
+          "class": "top-titled",
+          "summary": "This table has two columns and seven rows. The first row is a header row, and it labels each column, “Class,” and, “Function.” Under the “Class” column are the following: “oxidoreductases,” “transferases,” “hydrolases,” “lyases,” “isomerases,” and “ligases.” Under the “Function” column are the following: “redox reactions,” “transfer of functional groups,” “hydrolysis reactions,” “group elimination to form double bonds,” “isomerization,” and “bond formation with ATP hydrolysis.”",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68795:entry:auto-57",
+                  "attributes": {
+                    "namest": "c1",
+                    "nameend": "c2",
+                    "align": "center"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68795:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68795:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68795:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68795:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68795:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68795:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68795:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68795:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68795:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68795:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68795:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68795:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68795:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68795:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_07_Enzyme",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68795:caption:CNX_Chem_12_07_Enzyme-caption"
+          },
+          "media": {
+            "id": "fs-idm235790144",
+            "alt": "A diagram is shown of two possible interactions of an enzyme and a substrate. In a, which is labeled “Lock-and-key,” two diagrams are shown. The first shows a green wedge-like shape with two small depressions in the upper surface of similar size, but the depression on the left has a curved shape, and the depression on the right has a pointed shape. This green shape is labeled “Enzyme.” Just above this shape are two smaller, irregular, lavender shapes each with a projection from its lower surface. The lavender shape on the left has a curved projection which matches the shape of the depression on the left in the green shape below. This projection is shaded orange and has a curved arrow extending from in to the matching depression in the green shape below. Similarly, the lavender shape on the right has a projection with a pointed tip which matches the shape of the depression on the right in the green shape below. This projection is shaded orange and has a curved arrow extending from in to the matching depression in the green shape below. Two line segments extend from the depressions in the green shape to form an inverted V shape above the depressions. Above this and between the lavender shapes is the label, “Active site is proper shape.” The label “Substrates” is at the very top of the diagram with line segments extending to the two lavender shapes. To the right of this diagram is a second diagram showing the lavender shapes positioned next to each other, fit snugly into the depressions in the green shape, which is labeled “Enzyme.” Above this diagram is the label, “Substrate complex formed.” In b, which is labeled “Induced fit,” two diagrams are shown. The first shows a green wedge-like shape with two small depressions in the upper surface of similar size, but irregular shape. This green shape is labeled “Enzyme.” Just above this shape are two smaller irregular lavender shapes each with a projection from its lower surface. The lavender shape on the left has a curved projection. This projection is shaded orange and has a curved arrow extending from it to the irregular depression just below it in the green shape below. Similarly, the lavender shape on the right has a projection with a pointed tip. This projection is shaded orange and has a curved arrow extending from it to the irregular depression just below it in the green shape below. Two line segments extend from the depressions in the green shape to form an inverted V shape above the depressions. Above this and between the lavender shapes is the label, “Active site changes to fit.” The label, “Substrates” is at the very top of the diagram with line segments extending to the two lavender shapes. To the right of this diagram is a second diagram showing the purple shapes positioned next to each other, fit snugly into the depressions in the green shape, which is labeled “Enzyme.” Above this diagram is the label “Substrate complex formed.” The projections from the lavender shapes match the depression shapes in the green shape, resulting in a proper fit.",
+            "src": "../../media/CNX_Chem_12_07_Enzyme.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm145649744",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm187403424",
+              "segmentId": "m68795:para:fs-idm187403424"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm181838416",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68795:title:fs-idm181838416-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm186233248",
+          "segmentId": "m68795:para:fs-idm186233248"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm32536608",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68795:title:fs-idm32536608-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm121944048",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm127239504",
+                "segmentId": "m68795:problem:fs-idm127239504"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm276597024",
+                "segmentId": "m68795:solution:fs-idm276597024"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm119808848",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm221201728",
+                "segmentId": "m68795:problem:fs-idm221201728"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm268031984",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm224601824",
+                "segmentId": "m68795:problem:fs-idm224601824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm174347728",
+                "segmentId": "m68795:problem:fs-idm174347728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm280039520",
+                "segmentId": "m68795:problem:fs-idm280039520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm271887104",
+                "segmentId": "m68795:problem:fs-idm271887104"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm226654304",
+                "segmentId": "m68795:solution:fs-idm226654304"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm194307024",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm279414832",
+                "segmentId": "m68795:problem:fs-idm279414832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm3297152",
+                "segmentId": "m68795:problem:fs-idm3297152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm188080944",
+                "segmentId": "m68795:problem:fs-idm188080944"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm219276192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm178760704",
+                "segmentId": "m68795:problem:fs-idm178760704"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm338845344",
+                "segmentId": "m68795:problem:fs-idm338845344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm210073232",
+                "segmentId": "m68795:problem:fs-idm210073232"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm222281872",
+                "segmentId": "m68795:solution:fs-idm222281872"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm260004768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm245642464",
+                "segmentId": "m68795:problem:fs-idm245642464"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm211017072",
+                "segmentId": "m68795:problem:fs-idm211017072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm220847584",
+                "segmentId": "m68795:problem:fs-idm220847584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm218836096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm159516400",
+                "segmentId": "m68795:problem:fs-idm159516400"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm197289104",
+                "segmentId": "m68795:problem:fs-idm197289104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm290032736",
+                "segmentId": "m68795:problem:fs-idm290032736"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm35117840",
+                "segmentId": "m68795:solution:fs-idm35117840"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm189363504",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm252327824",
+                "segmentId": "m68795:problem:fs-idm252327824"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm225889216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm286704000",
+                "segmentId": "m68795:problem:fs-idm286704000"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm218832672",
+                "segmentId": "m68795:solution:fs-idm218832672"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68795:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68795:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68795:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm228167568",
+        "termSegmentId": "m68795:glossary-term:fs-idm228167568-term",
+        "definitionSegmentId": "m68795:glossary-def:fs-idm228167568-def"
+      },
+      {
+        "id": "fs-idm218392224",
+        "termSegmentId": "m68795:glossary-term:fs-idm218392224-term",
+        "definitionSegmentId": "m68795:glossary-def:fs-idm218392224-def"
+      }
+    ]
+  },
+  "sectionOrder": 7
+}

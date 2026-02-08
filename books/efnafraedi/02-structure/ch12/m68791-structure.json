@@ -1,0 +1,2995 @@
+{
+  "moduleId": "m68791",
+  "title": {
+    "segmentId": "m68791:title:auto-1",
+    "text": "Integrated Rate Laws"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "75b26e56-10ff-4bef-b887-3caa982b223a",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Explain the form and function of an integrated rate law",
+        "Perform integrated rate law calculations for zero-, first-, and second-order reactions",
+        "Define half-life and carry out related calculations",
+        "Identify the order of a reaction from concentration/time data"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp89497264",
+      "segmentId": "m68791:para:fs-idp89497264"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp93158656",
+      "segmentId": "m68791:para:fs-idp93158656"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm140678368",
+      "class": null,
+      "title": {
+        "segmentId": "m68791:title:fs-idm140678368-title",
+        "text": "First-Order Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm144782000",
+          "segmentId": "m68791:para:fs-idm144782000"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm380890320",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm63176528",
+          "segmentId": "m68791:para:fs-idm63176528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm512172928",
+          "segmentId": "m68791:para:fs-idm512172928"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm500086336",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm352207008",
+          "segmentId": "m68791:para:fs-idm352207008"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm358923408",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm148528000",
+          "title": {
+            "segmentId": "m68791:example-title:fs-idm148528000-title",
+            "text": "The Integrated Rate Law for a First-Order Reaction"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm87528896",
+              "segmentId": "m68791:para:fs-idm87528896"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm139703904",
+              "segmentId": "m68791:para:fs-idm139703904"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm133511056",
+              "segmentId": "m68791:para:fs-idm133511056",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idm133511056-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm149413632",
+              "segmentId": "m68791:para:fs-idm149413632"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp38768624",
+              "segmentId": "m68791:para:fs-idp38768624",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idp38768624-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm29159424",
+              "segmentId": "m68791:para:fs-idm29159424"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm22449888",
+              "segmentId": "m68791:para:fs-idm22449888"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp60442464"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp11818384"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm92065248"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm115576112"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm89005952",
+              "title": {
+                "segmentId": "m68791:note-title:fs-idm89005952-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm22449888",
+                  "segmentId": "m68791:para:fs-idm22449888"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm132947408",
+          "segmentId": "m68791:para:fs-idm132947408"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm88512368",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm134557872",
+          "segmentId": "m68791:para:fs-idm134557872"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp35909968",
+          "title": {
+            "segmentId": "m68791:example-title:fs-idp35909968-title",
+            "text": "Graphical Determination of Reaction Order and Rate Constant"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm76041456",
+              "segmentId": "m68791:para:fs-idm76041456"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm136711920",
+              "segmentId": "m68791:para:fs-idm136711920",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idm136711920-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm88773168",
+              "segmentId": "m68791:para:fs-idm88773168"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm97546480",
+              "segmentId": "m68791:para:fs-idm97546480"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm145444128",
+              "segmentId": "m68791:para:fs-idm145444128"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp92343136",
+              "segmentId": "m68791:para:fs-idp92343136",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idp92343136-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp73329760",
+              "segmentId": "m68791:para:fs-idp73329760"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp49567824"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm14805520"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm206842256",
+              "title": {
+                "segmentId": "m68791:note-title:fs-idm206842256-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp73329760",
+                  "segmentId": "m68791:para:fs-idp73329760"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idp114347648",
+          "class": "unnumbered",
+          "summary": "This table contains four columns and six rows. The first row is a header row, and it labels each column, “Trial,” “Time ( h ),” “[ H subscript 2 O subscript 2 ] ( M ),” and “l n [ H subscript 2 O subscript 2 ].” Under the “Trial” column are the numbers: 1, 2, 3, 4, and 5. Under the column, “Time ( h )” are the numbers 0, 6.00, 12.00, 18.00, and 24.00. Under the column “[ H subscript 2 O subscript 2 ] ( M ),” are the numbers 1.000, 0.500, 0.250, 0.125, and 0.0625. Under the column, “l n [ H subscript 2 O subscript 2 ],” are the numbers: 0.0, negative 0.693, negative 1.386, negative 2.079, and negative 2.772.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-40",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-41",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-42",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-43",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-44",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-45",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-46",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-47",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-48",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-49",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-50",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-51",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-52",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-53",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_04_FrstOKin",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68791:caption:CNX_Chem_12_04_FrstOKin-caption"
+          },
+          "media": {
+            "id": "fs-idm90898176",
+            "alt": "A graph is shown with the label “Time ( h )” on the x-axis and “l n [ H subscript 2 O subscript 2 ]” on the y-axis. The x-axis shows markings at 6, 12, 18, and 24 hours. The vertical axis shows markings at negative 3, negative 2, negative 1, and 0. A decreasing linear trend line is drawn through five points represented at the coordinates (0, 0), (6, negative 0.693), (12, negative 1.386), (18, negative 2.079), and (24, negative 2.772).",
+            "src": "../../media/CNX_Chem_12_04_FrstOKin.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm149704608",
+          "class": "unnumbered",
+          "summary": "This table has three columns and six rows. The first row is a header row, and it labels each column, “Trial,” “Time ( s ),” and, “[ A ].” Under the “Trial” column are the numbers: 1, 2, 3, 4, and 5. Under the “Time ( s )” column are the numbers: 4.0, 8.0, 12.0, 16.0, and 20.0. Under the “ [ A ]” column are the numbers: 0.220, 0.144, 0.110, 0.088, and 0.074.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm162181696",
+      "class": null,
+      "title": {
+        "segmentId": "m68791:title:fs-idm162181696-title",
+        "text": "Second-Order Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm75401888",
+          "segmentId": "m68791:para:fs-idm75401888"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm149309552",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm55886848",
+          "segmentId": "m68791:para:fs-idm55886848"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm72168352",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm19194496",
+          "segmentId": "m68791:para:fs-idm19194496"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm85213520",
+          "title": {
+            "segmentId": "m68791:example-title:fs-idm85213520-title",
+            "text": "The Integrated Rate Law for a Second-Order Reaction"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp6881136",
+              "segmentId": "m68791:para:fs-idp6881136"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp68803280",
+              "segmentId": "m68791:para:fs-idp68803280"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm47025104",
+              "segmentId": "m68791:para:fs-idm47025104",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idm47025104-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm25993952",
+              "segmentId": "m68791:para:fs-idm25993952"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm85057584",
+              "segmentId": "m68791:para:fs-idm85057584"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp90256",
+              "segmentId": "m68791:para:fs-idp90256",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idp90256-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm23200256",
+              "segmentId": "m68791:para:fs-idm23200256"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm46947984"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm191622048"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp58774528"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp27082688",
+              "title": {
+                "segmentId": "m68791:note-title:fs-idp27082688-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm23200256",
+                  "segmentId": "m68791:para:fs-idm23200256"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm88643152",
+          "segmentId": "m68791:para:fs-idm88643152"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm140436832",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm67290896",
+          "segmentId": "m68791:para:fs-idm67290896"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp69093472",
+          "title": {
+            "segmentId": "m68791:example-title:fs-idp69093472-title",
+            "text": "Graphical Determination of Reaction Order and Rate Constant"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm27496000",
+              "segmentId": "m68791:para:fs-idm27496000"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp4978176",
+              "segmentId": "m68791:para:fs-idp4978176",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idp4978176-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm190212352",
+              "segmentId": "m68791:para:fs-idm190212352"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp69115360",
+              "segmentId": "m68791:para:fs-idp69115360"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm339836784",
+              "segmentId": "m68791:para:fs-idm339836784"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm56284464",
+              "segmentId": "m68791:para:fs-idm56284464",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idm56284464-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp122966448",
+              "segmentId": "m68791:para:fs-idp122966448"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm363866800"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm72354384",
+              "title": {
+                "segmentId": "m68791:note-title:fs-idm72354384-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp122966448",
+                  "segmentId": "m68791:para:fs-idp122966448"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm140502592",
+          "class": "unnumbered",
+          "summary": "This table contains two columns and six rows. The first row is a header row and it labels each column, “Time ( s ),” and “[ C subscript 4 H subscript 6 ] ( M ).”  Under the “Time ( s )” column are the numbers: 0, 1600, 3200, 4800, and 6200. Under the column “[ C subscript 4 H subscript 6 ] ( M )” are the numbers: 1.00 times ten to the negative 2; 5.04 times ten to the negative 3; 3.37 times ten to the negative 3; 2.53 times ten to the negative 3; and 2.08 times ten to the negative 3.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-105",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-107",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idp62232800",
+          "class": "unnumbered",
+          "summary": "This table contains three columns and six rows. The first row is a header row and it labels each column, “Time ( s ),” “1 over [ C subscript 4 H subscript 6 ] ( M superscript negative 1 ),” and “l n [ C subscript 4 H subscript 6 ].” Under the column “Time ( s )” are the numbers: 0, 1600, 3200, 4800, and 6200. Under the “1 over [ C subscript 4 H subscript 6 ] ( M superscript negative 1 )” column are the numbers: 100, 198, 296, 395, and 481. Under the “l n [ C subscript 4 H subscript 6 ]” column are the numbers: negative 4.605, negative 5.289, negative 5.692, negative 5.978, and negative 6.175.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-121",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-125",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-126",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-127",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-128",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-129",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-130",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_04_2OrdKin",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68791:caption:CNX_Chem_12_04_2OrdKin-caption"
+          },
+          "media": {
+            "id": "fs-idp16234496",
+            "alt": "Two graphs are shown, each with the label “Time ( s )” on the x-axis. The graph on the left is labeled, “l n [ C subscript 4 H subscript 6 ],” on the y-axis. The graph on the right is labeled “1 divided by [ C subscript 4 H subscript 6 ],” on the y-axis. The x-axes for both graphs show markings at 3000 and 6000. The y-axis for the graph on the left shows markings at negative 6, negative 5, and negative 4. A decreasing slightly concave up curve is drawn through five points at coordinates that are (0, negative 4.605), (1600, negative 5.289), (3200, negative 5.692), (4800, negative 5.978), and (6200, negative 6.175). The y-axis for the graph on the right shows markings at 100, 300, and 500. An approximately linear increasing curve is drawn through five points at coordinates that are (0, 100), (1600, 198), (3200, 296), and (4800, 395), and (6200, 481).",
+            "src": "../../media/CNX_Chem_12_04_2OrdKin.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm88760288",
+          "class": "unnumbered",
+          "summary": "This table contains two columns and seven rows. The first row is a header row, and it labels each column “Time ( s )” and “[ A ] ( M ).” Under the “Time ( s )” column are the numbers: 5, 10, 15, 20, 25, and 35. Under the “[ A ] ( M )” column are the numbers 0.952, 0.625, 0.465, 0.370, 0.308, and 0.230.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-132",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-133",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-134",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-135",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-136",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-137",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-138",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-139",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-140",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-141",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-142",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-143",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-144",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-145",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm152558640",
+      "class": null,
+      "title": {
+        "segmentId": "m68791:title:fs-idm152558640-title",
+        "text": "Zero-Order Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp474768",
+          "segmentId": "m68791:para:fs-idp474768"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp24382368",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm91448320",
+          "segmentId": "m68791:para:fs-idm91448320"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp73236848",
+          "segmentId": "m68791:para:fs-idp73236848"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm130548304",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm99514160",
+          "segmentId": "m68791:para:fs-idm99514160"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm339943456",
+          "title": {
+            "segmentId": "m68791:example-title:fs-idm339943456-title",
+            "text": "Graphical Determination of Zero-Order Rate Constant"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm358086992",
+              "segmentId": "m68791:para:fs-idm358086992"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm382849456",
+              "segmentId": "m68791:para:fs-idm382849456",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idm382849456-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm376604432",
+              "segmentId": "m68791:para:fs-idm376604432",
+              "title": {
+                "segmentId": "m68791:para-title:fs-idm376604432-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm508285088",
+              "segmentId": "m68791:para:fs-idm508285088"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm375658448"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm379795136",
+              "title": {
+                "segmentId": "m68791:note-title:fs-idm379795136-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm508285088",
+                  "segmentId": "m68791:para:fs-idm508285088"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_04_AmDecomK",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68791:caption:CNX_Chem_12_04_AmDecomK-caption"
+          },
+          "media": {
+            "id": "fs-idp157593168",
+            "alt": "A graph is shown with the label, “Time ( s ),” on the x-axis and, “[ N H subscript 3 ] M,” on the y-axis. The x-axis shows a single value of 1000 marked near the right end of the axis. The vertical axis shows markings at 1.0 times 10 superscript negative 3, 2.0 times 10 superscript negative 3, and 3.0 times 10 superscript negative 3. A decreasing linear trend line is drawn through six points at the approximate coordinates: (0, 2.8 times 10 superscript negative 3), (200, 2.6 times 10 superscript negative 3), (400, 2.3 times 10 superscript negative 3), (600, 2.0 times 10 superscript negative 3), (800, 1.8 times 10 superscript negative 3), and (1000, 1.6 times 10 superscript negative 3). This line is labeled “Decomposition on W.” A decreasing slightly concave up curve is similarly drawn through eight points at the approximate coordinates: (0, 2.8 times 10 superscript negative 3), (100, 2.5 times 10 superscript negative 3), (200, 2.1 times 10 superscript negative 3), (300, 1.9 times 10 superscript negative 3), (400, 1.6 times 10 superscript negative 3), (500, 1.4 times 10 superscript negative 3), and (750, 1.1 times 10 superscript negative 3), ending at about (1000, 0.7 times 10 superscript negative 3). This curve is labeled “Decomposition on S i O subscript 2.”",
+            "src": "../../media/CNX_Chem_12_04_AmDecomK.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp6500464",
+      "class": null,
+      "title": {
+        "segmentId": "m68791:title:fs-idp6500464-title",
+        "text": "The Half-Life of a Reaction"
+      },
+      "content": [
+        {
+          "type": "section",
+          "id": "fs-idm97307168",
+          "class": null,
+          "title": {
+            "segmentId": "m68791:title:fs-idm97307168-title",
+            "text": "First-Order Reactions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp162624",
+              "segmentId": "m68791:para:fs-idp162624"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm58156032",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp33747664",
+              "segmentId": "m68791:para:fs-idp33747664"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp123084256",
+              "segmentId": "m68791:para:fs-idp123084256"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp22354416",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm124479504",
+              "segmentId": "m68791:para:fs-idm124479504"
+            },
+            {
+              "type": "example",
+              "id": "fs-idm35443680",
+              "title": {
+                "segmentId": "m68791:example-title:fs-idm35443680-title",
+                "text": "Calculation of a First-order Rate Constant using Half-Life"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm33355984",
+                  "segmentId": "m68791:para:fs-idm33355984"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp122074992",
+                  "segmentId": "m68791:para:fs-idp122074992",
+                  "title": {
+                    "segmentId": "m68791:para-title:fs-idp122074992-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idp33836864",
+                  "segmentId": "m68791:para:fs-idp33836864",
+                  "title": {
+                    "segmentId": "m68791:para-title:fs-idp33836864-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm101854176",
+                  "segmentId": "m68791:para:fs-idm101854176"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm2063184"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idp5361280",
+                  "title": {
+                    "segmentId": "m68791:note-title:fs-idp5361280-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm101854176",
+                      "segmentId": "m68791:para:fs-idm101854176"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "id": "CNX_Chem_12_04_HPerDcmp",
+              "class": "scaled-down",
+              "caption": {
+                "segmentId": "m68791:caption:CNX_Chem_12_04_HPerDcmp-caption"
+              },
+              "media": {
+                "id": "fs-idm83598000",
+                "alt": "A diagram of 5 beakers is shown, each approximately half-filled with colored substances. Beneath each beaker are three rows of text. The first beaker contains a bright green substance and is labeled below as, “1.000 M, 0 s, and ( 0 h ).” The second beaker contains a slightly lighter green substance and is labeled below as, “0.500 M, 2.16 times 10 superscript 4 s, and ( 6 h ).” The third beaker contains an even lighter green substance and is labeled below as, “0.250 M, 4.32 times 10 superscript 4 s, and ( 12 h ).” The fourth beaker contains a green tinted substance and is labeled below as, “0.125 M, 6.48 times 10 superscript 4 s, and ( 18 h ).” The fifth beaker contains a colorless substance and is labeled below as, “0.0625 M, 8.64 times 10 superscript 4 s, and ( 24 h ).”",
+                "src": "../../media/CNX_Chem_12_04_HPerDcmp.jpg",
+                "mimeType": "image/jpeg"
+              }
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm87302368",
+          "class": null,
+          "title": {
+            "segmentId": "m68791:title:fs-idm87302368-title",
+            "text": "Second-Order Reactions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm67735584",
+              "segmentId": "m68791:para:fs-idm67735584"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm51410640",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp69132640",
+              "segmentId": "m68791:para:fs-idp69132640"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp65846848",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp8098000",
+              "segmentId": "m68791:para:fs-idp8098000"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm22521392",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm25226832",
+              "segmentId": "m68791:para:fs-idm25226832"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp30638736",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm148624880",
+              "segmentId": "m68791:para:fs-idm148624880"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm125982128",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm75571200",
+              "segmentId": "m68791:para:fs-idm75571200"
+            }
+          ]
+        },
+        {
+          "type": "section",
+          "id": "fs-idm130842880",
+          "class": null,
+          "title": {
+            "segmentId": "m68791:title:fs-idm130842880-title",
+            "text": "Zero-Order Reactions"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm187241520",
+              "segmentId": "m68791:para:fs-idm187241520"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm118774848",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp132272768",
+              "segmentId": "m68791:para:fs-idp132272768"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp5725728",
+              "class": "unnumbered"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm115295344",
+              "segmentId": "m68791:para:fs-idm115295344"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm22269120",
+              "segmentId": "m68791:para:fs-idm22269120"
+            },
+            {
+              "type": "table",
+              "id": "fs-idm117482272",
+              "class": "top-titled",
+              "summary": "This table contains four columns and seven rows. The first column and the first row both serve as headers. The first cell in the first column is blank and is followed by, “rate law,” “units of rate constant,” “integrated rate law,” “plot needed for linear fit of rate date,” “relationship between slope of linear plot and rate constant,” and “half-life.” The first row labels each column, “Zero-Order,” “First-Order,” and “Second-Order.” Under “Zero-order” are the following: “rate = k,” “M s superscript negative 1,” “[ A ] = negative k t + [ A ] subscript 0,” “[ A ] v s. t,” “k = negative slope,” and “t subscript one half = [ A ] subscript 0 over 2 k.” Under “First-Order” are the following: “rate = k [ A ],” “s superscript negative 1,” “l n [ A ] = negative k t plus l n [ A ] subscript 0,” “l n [ A ] v s. t,” “k = negative slope,” and “t subscript one half = 0.693 over k.” Under “Second-Order” are the following: “rate = k [ A ] superscript 2,” “M superscript negative 1 s superscript negative 1,” “1 over [ A ] = k t + ( 1 over [ A ] subscript 0 ),” “1 over [ A ] v s. t,” “k = positive slope,” and “t subscript one half – 1 over [ A ] subscript 0 k.”",
+              "rows": [
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-189",
+                      "attributes": {
+                        "namest": "c1",
+                        "nameend": "c4",
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-190",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-191",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-192",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-193",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-194",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-195",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-196",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-197",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-198",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-199",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-200",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-201",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-202",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-203",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-204",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-205",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-206",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-207",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-208",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-209",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-210",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-211",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-212",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "cells": [
+                    {
+                      "segmentId": "m68791:entry:auto-213",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-214",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-215",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    },
+                    {
+                      "segmentId": "m68791:entry:auto-216",
+                      "attributes": {
+                        "align": "left"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "id": "fs-idm494886672",
+              "title": {
+                "segmentId": "m68791:example-title:fs-idm494886672-title",
+                "text": "Half-Life for Zero-Order and Second-Order Reactions"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm494886416",
+                  "segmentId": "m68791:para:fs-idm494886416"
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm376934816",
+                  "segmentId": "m68791:para:fs-idm376934816",
+                  "title": {
+                    "segmentId": "m68791:para-title:fs-idm376934816-title",
+                    "text": "Solution"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm327019216",
+                  "segmentId": "m68791:para:fs-idm327019216",
+                  "title": {
+                    "segmentId": "m68791:para-title:fs-idm327019216-title",
+                    "text": "Check Your Learning"
+                  }
+                },
+                {
+                  "type": "para",
+                  "id": "fs-idm339802240",
+                  "segmentId": "m68791:para:fs-idm339802240"
+                },
+                {
+                  "type": "equation",
+                  "id": "fs-idm493908080"
+                },
+                {
+                  "type": "note",
+                  "id": "fs-idm366642224",
+                  "title": {
+                    "segmentId": "m68791:note-title:fs-idm366642224-title",
+                    "text": "Answer:"
+                  },
+                  "content": [
+                    {
+                      "type": "para",
+                      "id": "fs-idm339802240",
+                      "segmentId": "m68791:para:fs-idm339802240"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm99562880",
+          "segmentId": "m68791:para:fs-idm99562880"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm63099680",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68791:title:fs-idm63099680-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm85329552",
+          "segmentId": "m68791:para:fs-idm85329552"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp258559744",
+          "segmentId": "m68791:para:fs-idp258559744"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm150818384",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68791:title:fs-idm150818384-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-231",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-232",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-233",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-234",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-235",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-236",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm92366464",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68791:title:fs-idm92366464-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp11885680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm141317296",
+                "segmentId": "m68791:problem:fs-idm141317296"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp145037952",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm145856736",
+                "segmentId": "m68791:problem:fs-idm145856736"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp6601344",
+                "segmentId": "m68791:solution:fs-idp6601344"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp120830736",
+          "class": "column-header unnumbered",
+          "summary": "This table contains two columns and eight rows. The first column is labeled, “Time ( s ),” and the second column is labeled, “[ S O subscript 2 C l subscript 2 ] ( M ).” Under the “Time ( s )” column are the numbers: 0; 5.00 times ten to the third power; 1.00 times ten to the fourth power; 1.50 times ten to the fourth power; 2.50 times ten to the fourth power; 3.00 times ten to the fourth power; and 4.00 times ten to the fourth power. Under the “[ S O subscript 2 C l subscript 2 ] ( M )” column are the numbers: 0.100, 0.0896, 0.0802, 0.0719, 0.0577, 0.0517, and 0.0415.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-241",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-242",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-243",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-244",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-245",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-246",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-247",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-248",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-249",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-250",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-251",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-252",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-253",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-254",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "morerows": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-255",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-256",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-257",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-258",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp27819360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp79344992",
+                "segmentId": "m68791:problem:fs-idp79344992"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm228482928",
+                "segmentId": "m68791:solution:fs-idm228482928"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp72766816",
+          "class": "column-header unnumbered",
+          "summary": "This table has two columns and eight rows. The first row is a header row, and it labels each column, “Time ( h ),” and, “[ O subscript 3 ] ( M ).” Under the “Time ( h )” column are the numbers: 0; 2.0 times ten to the third power; 7.6 times ten to the third power; 1.00 times ten to the fourth power; 1.23 times ten to the fourth power; 1.43 times ten to the fourth power; 1.70 times ten to the fourth power. Under the “[ O subscript 3 ] ( M )” column are the numbers: 1.00 times ten to the negative 5; 4.98 times ten to the negative 6; 2.07 times ten to the negative 6; 1.66 times ten to the negative 6; 1.39 times ten to the negative 6; 1.22 times ten to the negative 6; and 1.05 times ten to the negative 6.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-261",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-262",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-263",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-264",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-265",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-266",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-267",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-268",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-269",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-270",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-271",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-272",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-273",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-274",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": null,
+                  "attributes": {
+                    "morerows": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-275",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-276",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-277",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-278",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm81797520",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp122307472",
+                "segmentId": "m68791:problem:fs-idp122307472"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "table",
+          "id": "fs-idm133654768",
+          "class": "column-header unnumbered",
+          "summary": "This table contains two columns and nine rows. The first row is a header row, and it labels each column, “Time ( s ),” and “[ X ] ( M ).” Under the “Time ( s )” column are the numbers: 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, and 40.0. Under the “[ X ] ( M )” column are the numbers; 0.0990, 0.497, 0.0332, 0.0249, 0.0200, 0.0166, 0.0143, and 0.0125.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-280",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-281",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-282",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-283",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-284",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-285",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-286",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-287",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-288",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-289",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-290",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-291",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-292",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-293",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-294",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-295",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-296",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-297",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm81821952",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp75257216",
+                "segmentId": "m68791:problem:fs-idp75257216"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm96856080",
+                "segmentId": "m68791:solution:fs-idm96856080"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp123052496",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp123053008",
+                "segmentId": "m68791:problem:fs-idp123053008"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm86787888",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp120043280",
+                "segmentId": "m68791:problem:fs-idp120043280"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm23381360",
+                "segmentId": "m68791:solution:fs-idm23381360"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71090800",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm71090288",
+                "segmentId": "m68791:problem:fs-idm71090288"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm110943344",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm110942832",
+                "segmentId": "m68791:problem:fs-idm110942832"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm46875440",
+                "segmentId": "m68791:solution:fs-idm46875440"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm82644240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm82643728",
+                "segmentId": "m68791:problem:fs-idm82643728"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp55838576",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp55839088",
+                "segmentId": "m68791:problem:fs-idp55839088"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp69326720",
+                "segmentId": "m68791:solution:fs-idp69326720"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp79245440",
+          "class": "unnumbered",
+          "summary": "This table contains two columns and four rows. The first row is a header row, and it labels each column, “[ Penicillin ] ( M ),” and, “Rate ( mol / L / min ).” Under the “[ Penicillin ] ( M )” column are the numbers: 2.0 times ten to the negative six; 3.0 times ten to the negative six; and 4.0 times ten to the negative 6. Under the “Rate ( mol / L / min )” column are the numbers: 1.0 times ten to the negative ten; 1.5 times ten to the negative 10; and 2.0 times ten to the negative 10.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-309",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-310",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-311",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-312",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-313",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-314",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-315",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-316",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm22532944",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm22532432",
+                "segmentId": "m68791:problem:fs-idm22532432"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm84405632",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm84405120",
+                "segmentId": "m68791:problem:fs-idm84405120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm21762608",
+                "segmentId": "m68791:problem:fs-idm21762608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp5273216",
+                "segmentId": "m68791:solution:fs-idp5273216"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm45932336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm45931824",
+                "segmentId": "m68791:problem:fs-idm45931824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm57070352",
+                "segmentId": "m68791:problem:fs-idm57070352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm57069968",
+                "segmentId": "m68791:problem:fs-idm57069968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm57069424",
+                "segmentId": "m68791:problem:fs-idm57069424"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp89138768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp89139280",
+                "segmentId": "m68791:problem:fs-idp89139280"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp89141488",
+                "segmentId": "m68791:solution:fs-idp89141488"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp120051200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp120051712",
+                "segmentId": "m68791:problem:fs-idp120051712"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp157675232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp121893664",
+                "segmentId": "m68791:problem:fs-idp121893664"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm215408672",
+                "segmentId": "m68791:solution:fs-idm215408672"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp121895360",
+          "class": "column-header unnumbered",
+          "summary": "This table contains three columns and nine rows. The first row is a header row, and it labels each column, “Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M ),” “t ( s ),” and “% Decomposed.” Under the “Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M )” column are the numbers: 4.88, 3.52, 2.29, 1.81, 5.33, 4.05, 2.95, and 1.72. Under the “t ( s )” column are the numbers: 300, 300, 300, 300, 180, 180, 180, and 180. Under the “% Decomposed” column are the numbers: 52.0, 52.9, 53.2, 53.9, 34.6, 35.9, 36.0, and 35.4.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-330",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-331",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-332",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-333",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-334",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-335",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-336",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-337",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-338",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-339",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-340",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-341",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-342",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-343",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-344",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-345",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-346",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-347",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-348",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-349",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-350",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-351",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-352",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-353",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-354",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-355",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-356",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm247275488",
+          "class": "unnumbered",
+          "summary": "This table has five columns and nine rows. The first row is a header row, and it labels each column: “[ A ] subscript 0 ( M ),” “[ A ] ( M ),” “l n ( [ A ] subscript 0 over [ A ] ),” “t ( s ),” and “k times 10 to the third power ( s superscript negative 1 ).” Under the “[ A ] subscript 0 ( M )” column are the numbers: 4.88, 3.52, 2.29, 1.81, 5.33, 4.05, 2.95, and 1.72. Under the “[ A ] ( M )” column are the numbers: 2.34, 1.66, 1.07, 0.834, 3.49, 2.61, 1.89, and 1.11. Under the “l n ( [ A ] subscript 0 over [ A ] )” column are the numbers: 0.734, 0.752, 0.761, 0.775, 0.423, 0.439, 0.445, and 0.438. Under the “t ( s )” column are the numbers: 300, 300, 300, 300, 180, 180, 180, and 180. Under the “k times 10 to the third power ( s superscript negative 1 )” columns are the numbers: 2.45, 2.51, 2.54, 2.58, 2.35, 2.44, 2.47, and 2.43.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-357",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-358",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-359",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-360",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-361",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-362",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-363",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-364",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-365",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-366",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-367",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-368",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-369",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-370",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-371",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-372",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68791:entry:auto-373",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68791:entry:auto-374",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm43018880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm43018368",
+                "segmentId": "m68791:problem:fs-idm43018368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp18442736",
+                "segmentId": "m68791:problem:fs-idp18442736"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68791:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68791:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68791:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68791:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68791:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm46849712",
+        "termSegmentId": "m68791:glossary-term:fs-idm46849712-term",
+        "definitionSegmentId": "m68791:glossary-def:fs-idm46849712-def"
+      },
+      {
+        "id": "fs-idm46847680",
+        "termSegmentId": "m68791:glossary-term:fs-idm46847680-term",
+        "definitionSegmentId": "m68791:glossary-def:fs-idm46847680-def"
+      }
+    ]
+  },
+  "sectionOrder": 4
+}

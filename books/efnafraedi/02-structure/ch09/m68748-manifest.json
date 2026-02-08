@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "moduleId": "m68748",
+  "extractedAt": "2026-02-08T17:36:08.051Z",
+  "sourceHash": "947e89a6e41eaa55",
+  "segmentCount": 11,
+  "segmentIds": [
+    "m68748:title:auto-1",
+    "m68748:abstract-item:abstract-item-1",
+    "m68748:abstract-item:abstract-item-2",
+    "m68748:abstract-item:abstract-item-3",
+    "m68748:abstract-item:abstract-item-4",
+    "m68748:abstract-item:abstract-item-5",
+    "m68748:abstract-item:abstract-item-6",
+    "m68748:caption:CNX_Chem_09_00_HotAirBall-caption",
+    "m68748:para:fs-idm58981280",
+    "m68748:para:fs-idm145175104",
+    "m68748:para:fs-idm154865680"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 3,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_09_00_HotAirBall"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

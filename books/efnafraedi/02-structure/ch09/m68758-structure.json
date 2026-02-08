@@ -1,0 +1,714 @@
+{
+  "moduleId": "m68758",
+  "title": {
+    "segmentId": "m68758:title:auto-1",
+    "text": "The Kinetic-Molecular Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "4e7fd664-a228-4ce5-ac39-cec1b6b516b3",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "State the postulates of the kinetic-molecular theory",
+        "Use this theory’s postulates to explain the gas laws"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm127996416",
+      "segmentId": "m68758:para:fs-idm127996416"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm165041184",
+      "segmentId": "m68758:para:fs-idm165041184"
+    },
+    {
+      "type": "list",
+      "id": "fs-idm178411376",
+      "listType": "enumerated",
+      "numberStyle": "arabic",
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68758:item:fs-idm178411376-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68758:item:fs-idm178411376-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68758:item:fs-idm178411376-item-3"
+        },
+        {
+          "id": null,
+          "segmentId": "m68758:item:fs-idm178411376-item-4"
+        },
+        {
+          "id": null,
+          "segmentId": "m68758:item:fs-idm178411376-item-5"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm128213904",
+      "segmentId": "m68758:para:fs-idm128213904"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm94057008",
+      "class": null,
+      "title": {
+        "segmentId": "m68758:title:fs-idm94057008-title",
+        "text": "The Kinetic-Molecular Theory Explains the Behavior of Gases, Part I"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm188928480",
+          "segmentId": "m68758:para:fs-idm188928480"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm221875200",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68758:item:fs-idm221875200-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68758:item:fs-idm221875200-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68758:item:fs-idm221875200-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m68758:item:fs-idm221875200-item-4"
+            },
+            {
+              "id": null,
+              "segmentId": "m68758:item:fs-idm221875200-item-5"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_04_KMT2",
+          "caption": {
+            "segmentId": "m68758:caption:CNX_Chem_09_04_KMT2-caption"
+          },
+          "media": {
+            "id": "fs-idm82315616",
+            "alt": "This figure shows 3 pairs of pistons and cylinders. In a, which is labeled, “Charles’s Law,” the piston is positioned for the first cylinder so that just over half of the available volume contains 6 purple spheres with trails behind them. The trails indicate movement. Orange dashes extend from the interior surface of the cylinder where the spheres have collided. This cylinder is labeled, “Baseline.” In the second cylinder, the piston is in the same position, and the label, “Heat” is indicated in red capitalized text. Four red arrows with wavy stems are pointing upward to the base of the cylinder. The six purple spheres have longer trails behind them and the number of orange dashes indicating points of collision with the container walls has increased. A rectangle beneath the diagram states, “Temperature increased, Volume constant equals Increased pressure.” In b, which is labeled, “Boyle’s Law,” the first, baseline cylinder shown is identical to the first cylinder in a. In the second cylinder, the piston has been moved, decreasing the volume available to the 6 purple spheres to half of the initial volume. The orange dashes indicating points of collision with the container walls has increased. This second cylinder is labeled, “Volume decreased.” A rectangle beneath the diagram states, “Volume decreased, Wall area decreased equals Increased pressure.” In c, which is labeled “Avogadro’s Law,” the first, baseline cylinder shown is identical to the first cylinder in a. In the second cylinder, the number of purple spheres has changed from 6 to 12 and volume has doubled. This second cylinder is labeled “Increased gas.” A rectangle beneath the diagram states, “At constant pressure, More gas molecules added equals Increased volume.”",
+            "src": "../../media/CNX_Chem_09_04_KMT2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm203169728",
+      "class": null,
+      "title": {
+        "segmentId": "m68758:title:fs-idm203169728-title",
+        "text": "Molecular Speeds and Kinetic Energy"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm178235328",
+          "segmentId": "m68758:para:fs-idm178235328"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm49087808",
+          "segmentId": "m68758:para:fs-idm49087808"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_05_MolSpeed1",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68758:caption:CNX_Chem_09_05_MolSpeed1-caption"
+          },
+          "media": {
+            "id": "fs-idm97447152",
+            "alt": "A graph is shown. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 20 beginning at 0 and extending up to 120. The vertical axis is labeled, “Fraction of molecules.” A positively or right-skewed curve is shown in red which begins at the origin and approaches the horizontal axis around 120 m per s. At the peak of the curve, a point is indicated with a black dot and is labeled, “v subscript p.” A vertical dashed line extends from this point to the horizontal axis at which point the intersection is labeled, “v subscript p.” Slightly to the right of the peak a second black dot is placed on the curve. This point is labeled, “v subscript r m s.” A vertical dashed line extends from this point to the horizontal axis at which point the intersection is labeled, “v subscript r m s.” The label, “O subscript 2 at T equals 300 K” appears in the open space to the right of the curve.",
+            "src": "../../media/CNX_Chem_09_05_MolSpeed1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm188037232",
+          "segmentId": "m68758:para:fs-idm188037232"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm43195728",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm178023104",
+          "segmentId": "m68758:para:fs-idm178023104"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp57614544",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm140862528",
+          "segmentId": "m68758:para:fs-idm140862528"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm248247136",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm52829008",
+          "segmentId": "m68758:para:fs-idm52829008"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm181584464",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm166238448",
+          "segmentId": "m68758:para:fs-idm166238448"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm155100320",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp16162192",
+          "class": "unnumbered"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm203397264",
+          "title": {
+            "segmentId": "m68758:example-title:fs-idm203397264-title",
+            "text": "Solution"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm217669472",
+              "segmentId": "m68758:para:fs-idm217669472"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm124389728",
+              "segmentId": "m68758:para:fs-idm124389728"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm144782000",
+              "segmentId": "m68758:para:fs-idm144782000"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm160368176",
+              "segmentId": "m68758:para:fs-idm160368176"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm87955168",
+              "segmentId": "m68758:para:fs-idm87955168",
+              "title": {
+                "segmentId": "m68758:para-title:fs-idm87955168-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm126530816",
+              "segmentId": "m68758:para:fs-idm126530816"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm41104608"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm215032176"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm151766032"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm230973056"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm134812432",
+              "title": {
+                "segmentId": "m68758:note-title:fs-idm134812432-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm126530816",
+                  "segmentId": "m68758:para:fs-idm126530816"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm298779008",
+          "segmentId": "m68758:para:fs-idm298779008"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_05_MolSpeed2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68758:caption:CNX_Chem_09_05_MolSpeed2-caption"
+          },
+          "media": {
+            "id": "fs-idm138828064",
+            "alt": "A graph with four positively or right-skewed curves of varying heights is shown. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 500 beginning at 0 and extending up to 1500. The vertical axis is labeled, “Fraction of molecules.” The label, “N subscript 2,” appears in the open space in the upper right area of the graph. The tallest and narrowest of these curves is labeled, “100 K.” Its right end appears to touch the horizontal axis around 700 m per s. It is followed by a slightly wider curve which is labeled, “200 K,” that is about three quarters of the height of the initial curve. Its right end appears to touch the horizontal axis around 850 m per s. The third curve is significantly wider and only about half the height of the initial curve. It is labeled, “500 K.” Its right end appears to touch the horizontal axis around 1450 m per s. The final curve is only about one third the height of the initial curve. It is much wider than the others, so much so that its right end has not yet reached the horizontal axis. This curve is labeled, “1000 K.”",
+            "src": "../../media/CNX_Chem_09_05_MolSpeed2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm131874080",
+          "segmentId": "m68758:para:fs-idm131874080"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_05_MolSpeed3",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68758:caption:CNX_Chem_09_05_MolSpeed3-caption"
+          },
+          "media": {
+            "id": "fs-idm50029872",
+            "alt": "A graph is shown with four positively or right-skewed curves of varying heights. The horizontal axis is labeled, “Speed u ( m divided by s ).” This axis is marked by increments of 500 beginning at 0 and extending up to 3000. The vertical axis is labeled, “Fraction of molecules.” The tallest and narrowest of these curves is labeled, “X e.” Its right end appears to touch the horizontal axis around 600 m per s. It is followed by a slightly wider curve which is labeled, “A r,” that is about half the height of the initial curve. Its right end appears to touch the horizontal axis around 900 m per s. The third curve is significantly wider and just over a third of the height of the initial curve. It is labeled, “N e.” Its right end appears to touch the horizontal axis around 1200 m per s. The final curve is only about one fourth the height of the initial curve. It is much wider than the others, so much so that its right reaches the horizontal axis around 2500 m per s. This curve is labeled, “H e.”",
+            "src": "../../media/CNX_Chem_09_05_MolSpeed3.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm177038688",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm110634256",
+              "segmentId": "m68758:para:fs-idm110634256"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm220495248",
+      "class": null,
+      "title": {
+        "segmentId": "m68758:title:fs-idm220495248-title",
+        "text": "The Kinetic-Molecular Theory Explains the Behavior of Gases, Part II"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp30560352",
+          "segmentId": "m68758:para:fs-idp30560352"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm65845776",
+          "segmentId": "m68758:para:fs-idm65845776"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp1163392",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm219209680",
+          "segmentId": "m68758:para:fs-idm219209680"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm166257280",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm197441248",
+          "class": "unnumbered"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm136528624",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm131494928",
+          "segmentId": "m68758:para:fs-idm131494928"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp25934352",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68758:title:fs-idp25934352-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp11491120",
+          "segmentId": "m68758:para:fs-idp11491120"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm188828400",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68758:title:fs-idm188828400-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68758:entry:auto-52",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68758:entry:auto-53",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68758:entry:auto-54",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm162733696",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68758:title:fs-idm162733696-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm159823744",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm212848544",
+                "segmentId": "m68758:problem:fs-idm212848544"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm178556768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm196791600",
+                "segmentId": "m68758:problem:fs-idm196791600"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm162271264",
+                "segmentId": "m68758:solution:fs-idm162271264"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm213877296",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm59208640",
+                "segmentId": "m68758:problem:fs-idm59208640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm175667504",
+                "segmentId": "m68758:problem:fs-idm175667504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm148561248",
+                "segmentId": "m68758:problem:fs-idm148561248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp12415536",
+                "segmentId": "m68758:problem:fs-idp12415536"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp16129152",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm89452736",
+                "segmentId": "m68758:problem:fs-idm89452736"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm161469056",
+                "segmentId": "m68758:solution:fs-idm161469056"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp62923856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm214348288",
+                "segmentId": "m68758:problem:fs-idm214348288"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm124543936",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm153083536",
+                "segmentId": "m68758:problem:fs-idm153083536"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm216426960",
+                "segmentId": "m68758:problem:fs-idm216426960"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm124781200",
+                "segmentId": "m68758:problem:fs-idm124781200"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm151776736",
+                "segmentId": "m68758:problem:fs-idm151776736"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm47263904",
+                "segmentId": "m68758:solution:fs-idm47263904"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm98413904",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm110524464",
+                "segmentId": "m68758:problem:fs-idm110524464"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm150122880",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm161408528",
+                "segmentId": "m68758:problem:fs-idm161408528"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm184026432",
+                "segmentId": "m68758:problem:fs-idm184026432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm277950240",
+                "segmentId": "m68758:problem:fs-idm277950240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm184047024",
+                "segmentId": "m68758:problem:fs-idm184047024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm205391088",
+                "segmentId": "m68758:problem:fs-idm205391088"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm182287728",
+                "segmentId": "m68758:problem:fs-idm182287728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm79081968",
+                "segmentId": "m68758:problem:fs-idm79081968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm148488336",
+                "segmentId": "m68758:problem:fs-idm148488336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp4425184",
+                "segmentId": "m68758:problem:fs-idp4425184"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm120199952",
+                "segmentId": "m68758:solution:fs-idm120199952"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm194405232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm156558944",
+                "segmentId": "m68758:problem:fs-idm156558944"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68758:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68758:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm198763536",
+        "termSegmentId": "m68758:glossary-term:fs-idm198763536-term",
+        "definitionSegmentId": "m68758:glossary-def:fs-idm198763536-def"
+      },
+      {
+        "id": "fs-idm271276336",
+        "termSegmentId": "m68758:glossary-term:fs-idm271276336-term",
+        "definitionSegmentId": "m68758:glossary-def:fs-idm271276336-def"
+      }
+    ]
+  },
+  "sectionOrder": 5
+}

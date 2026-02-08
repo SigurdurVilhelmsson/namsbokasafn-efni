@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "moduleId": "m68785",
+  "extractedAt": "2026-02-08T17:36:12.340Z",
+  "sourceHash": "e6f2eee38583e18e",
+  "segmentCount": 12,
+  "segmentIds": [
+    "m68785:title:auto-1",
+    "m68785:abstract-item:abstract-item-1",
+    "m68785:abstract-item:abstract-item-2",
+    "m68785:abstract-item:abstract-item-3",
+    "m68785:abstract-item:abstract-item-4",
+    "m68785:abstract-item:abstract-item-5",
+    "m68785:abstract-item:abstract-item-6",
+    "m68785:abstract-item:abstract-item-7",
+    "m68785:caption:CNX_Chem_12_00_Ectotherm-caption",
+    "m68785:para:fs-idp115543984",
+    "m68785:para:fs-idp54243872",
+    "m68785:para:fs-idp260947472"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 3,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_12_00_Ectotherm"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

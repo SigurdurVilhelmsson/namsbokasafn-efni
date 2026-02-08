@@ -1,0 +1,670 @@
+{
+  "moduleId": "m68754",
+  "title": {
+    "segmentId": "m68754:title:auto-1",
+    "text": "Effusion and Diffusion of Gases"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "43c287f6-81a2-4372-a312-528f3b1f4c2a",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Define and explain effusion and diffusion",
+        "State Graham’s law and use it to compute relevant gas properties"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp171160640",
+      "segmentId": "m68754:para:fs-idp171160640"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp34604992",
+      "segmentId": "m68754:para:fs-idp34604992"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_04_Diffusion",
+      "caption": {
+        "segmentId": "m68754:caption:CNX_Chem_09_04_Diffusion-caption"
+      },
+      "media": {
+        "id": "fs-idp77290704",
+        "alt": "In this figure, three pairs of gas filled spheres or vessels are shown connected with a stopcock between them. In a, the figure is labeled, “Stopcock closed.” Above, the left sphere is labeled, “H subscript 2.” It contains approximately 30 small, white, evenly distributed circles. The sphere to its right is labeled, “O subscript 2.” It contains approximately 30 small red evenly distributed circles. In b, the figure is labeled, “Stopcock open.” The stopcock valve handle is now parallel to the tube connecting the two spheres. On the left, approximately 9 small, white circles and 4 small, red circles are present, with the red spheres appearing slightly closer to the stopcock. On the right side, approximately 25 small, red spheres and 21 small, white spheres are present, with the concentration of white spheres slightly greater near the stopcock. In c, the figure is labeled “Some time after Stopcock open.” In this situation, the red and white spheres appear evenly mixed and uniformly distributed throughout both spheres.",
+        "src": "../../media/CNX_Chem_09_04_Diffusion.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp67962064",
+      "segmentId": "m68754:para:fs-idp67962064"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm44153792",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp14262464",
+      "segmentId": "m68754:para:fs-idp14262464"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm29004912",
+      "segmentId": "m68754:para:fs-idm29004912"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_04_DiffEff",
+      "caption": {
+        "segmentId": "m68754:caption:CNX_Chem_09_04_DiffEff-caption"
+      },
+      "media": {
+        "id": "fs-idp10109888",
+        "alt": "This figure contains two cylindrical containers which are oriented horizontally. The first is labeled “Diffusion.” In this container, approximately 25 purple and 25 green circles are shown, evenly distributed throughout the container. “Trails” behind some of the circles indicate motion. In the second container, which is labeled “Effusion,” a boundary layer is evident across the center of the cylindrical container, dividing the cylinder into two halves. A black arrow is drawn pointing through this boundary from left to right. To the left of the boundary, approximately 16 green circles and 20 purple circles are shown again with motion indicated by “trails” behind some of the circles. To the right of the boundary, only 4 purple and 16 green circles are shown.",
+        "src": "../../media/CNX_Chem_09_04_DiffEff.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp161500496",
+      "segmentId": "m68754:para:fs-idp161500496"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_04_Effusion2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68754:caption:CNX_Chem_09_04_Effusion2-caption"
+      },
+      "media": {
+        "id": "fs-idp1374224",
+        "alt": "This figure shows two photos. The first photo shows an inflated orange balloon and an inflated blue balloon. Both balloons are about the same size. The second photo shows the same two balloons, but the orange one is now smaller than the blue one.",
+        "src": "../../media/CNX_Chem_09_04_Effusion2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp1970368",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp194507952",
+      "segmentId": "m68754:para:fs-idp194507952"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp39119056",
+      "class": "unnumbered"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp118691776",
+      "title": {
+        "segmentId": "m68754:example-title:fs-idp118691776-title",
+        "text": "Applying Graham’s Law to Rates of Effusion"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm44727888",
+          "segmentId": "m68754:para:fs-idm44727888"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp11382912",
+          "segmentId": "m68754:para:fs-idp11382912",
+          "title": {
+            "segmentId": "m68754:para-title:fs-idp11382912-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp43387840",
+          "segmentId": "m68754:para:fs-idp43387840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp77509504",
+          "segmentId": "m68754:para:fs-idp77509504",
+          "title": {
+            "segmentId": "m68754:para-title:fs-idp77509504-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp41048160",
+          "segmentId": "m68754:para:fs-idp41048160"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp216764096"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp100366752",
+          "title": {
+            "segmentId": "m68754:note-title:fs-idp100366752-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp41048160",
+              "segmentId": "m68754:para:fs-idp41048160"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "fs-idm54710976",
+      "title": {
+        "segmentId": "m68754:example-title:fs-idm54710976-title",
+        "text": "Effusion Time Calculations"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm56870480",
+          "segmentId": "m68754:para:fs-idm56870480"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm63835360",
+          "segmentId": "m68754:para:fs-idm63835360",
+          "title": {
+            "segmentId": "m68754:para-title:fs-idm63835360-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm61445488",
+          "segmentId": "m68754:para:fs-idm61445488"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp12731488",
+          "segmentId": "m68754:para:fs-idp12731488"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm19235104",
+          "segmentId": "m68754:para:fs-idm19235104"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp60390528",
+          "segmentId": "m68754:para:fs-idp60390528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm16430224",
+          "segmentId": "m68754:para:fs-idm16430224"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm572880",
+          "segmentId": "m68754:para:fs-idm572880"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp26714784",
+          "segmentId": "m68754:para:fs-idp26714784",
+          "title": {
+            "segmentId": "m68754:para-title:fs-idp26714784-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp53945792",
+          "segmentId": "m68754:para:fs-idp53945792"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp59574816"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp60271072"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm139751792"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm29629840"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm53984768"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp2514128"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp35835728",
+          "title": {
+            "segmentId": "m68754:note-title:fs-idp35835728-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp53945792",
+              "segmentId": "m68754:para:fs-idp53945792"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "fs-idp23019808",
+      "title": {
+        "segmentId": "m68754:example-title:fs-idp23019808-title",
+        "text": "Determining Molar Mass Using Graham’s Law"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm25684496",
+          "segmentId": "m68754:para:fs-idm25684496"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp70256064",
+          "segmentId": "m68754:para:fs-idp70256064",
+          "title": {
+            "segmentId": "m68754:para-title:fs-idp70256064-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm38402512",
+          "segmentId": "m68754:para:fs-idm38402512"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp40653824",
+          "segmentId": "m68754:para:fs-idp40653824"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp49423040",
+          "segmentId": "m68754:para:fs-idp49423040"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp22523824",
+          "segmentId": "m68754:para:fs-idp22523824",
+          "title": {
+            "segmentId": "m68754:para-title:fs-idp22523824-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm51199280",
+          "segmentId": "m68754:para:fs-idm51199280"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp19320256"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm17423856"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp174900608"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp120447376",
+          "title": {
+            "segmentId": "m68754:note-title:fs-idp120447376-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm51199280",
+              "segmentId": "m68754:para:fs-idm51199280"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "note",
+      "id": "fs-idp115856048",
+      "class": "chemistry sciences-interconnect",
+      "title": {
+        "segmentId": "m68754:note-title:fs-idp115856048-title",
+        "text": "Use of Diffusion for Nuclear Energy Applications: Uranium Enrichment"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp117148640",
+          "segmentId": "m68754:para:fs-idp117148640"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm46537712",
+          "segmentId": "m68754:para:fs-idm46537712"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp125892592",
+          "segmentId": "m68754:para:fs-idp125892592"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_04_GasDiff",
+      "caption": {
+        "segmentId": "m68754:caption:CNX_Chem_09_04_GasDiff-caption"
+      },
+      "media": {
+        "id": "fs-idp101769760",
+        "alt": "This figure shows a large cylindrical container oriented horizontally. A narrow tube or pipe which is labeled “porous barrier” runs horizontally through the center of the tube and extends a short distance out from the left and right ends of the cylinder. At the far left, an arrow points right into the tube. This arrow is labele, “Uranium hexafluoride ( U F subscript 6 ).” A line segment connects the label, “High pressure feed tube,” to the tube where it enters the cylinder. In the short region of tube outside the cylinder, 5 small, purple circles and 4 small, green circles are present. Inside the cylinder, an arrow points right through the tube which contains many evenly distributed, purple circles and a handful of green circles which decrease in quantity moving left to right through the cylinder. Curved arrows extend from the inner area of the tube into the outer region of the cylinder. Three of these arrows point into the area above the tube and three point into the area below. Two line segments extend from the label, “Higher speed superscript 235 U F subscript 6 diffuses through barrier faster than superscript 238 U F subscript 6,” to two green circles in the space above the tube. In the short section of tubing just outside the cylinder, 8 small, purple circles are present. An arrow labeled, “Depleted superscript 238 U F subscript 6,” points right extending from the end of this tube. The larger space outside the tube contains approximately 100 evenly distributed small green circles and only 5 purple circles. Eight of the purple circles appear at the left end of the cylinder. A tube exits the lower right end of the cylinder. It has 5 green circles followed by a right pointing arrow and the label, “Enriched superscript 235 U F subscript 6.”",
+        "src": "../../media/CNX_Chem_09_04_GasDiff.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idp58337632",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68754:title:fs-idp58337632-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm7740320",
+          "segmentId": "m68754:para:fs-idm7740320"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp166246928",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68754:title:fs-idp166246928-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68754:entry:auto-60",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68754:entry:auto-61",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm54662752",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68754:title:fs-idm54662752-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp190361360",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm41721952",
+                "segmentId": "m68754:problem:fs-idm41721952"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp34744720",
+                "segmentId": "m68754:solution:fs-idp34744720"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm51619904",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp113189264",
+                "segmentId": "m68754:problem:fs-idp113189264"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp44111184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm56418560",
+                "segmentId": "m68754:problem:fs-idm56418560"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp30823840",
+                "segmentId": "m68754:solution:fs-idp30823840"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm54751408",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm47335648",
+                "segmentId": "m68754:problem:fs-idm47335648"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm14659040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp67237568",
+                "segmentId": "m68754:problem:fs-idp67237568"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp221492704",
+                "segmentId": "m68754:solution:fs-idp221492704"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm82361856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp170749584",
+                "segmentId": "m68754:problem:fs-idp170749584"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm4750352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp235733152",
+                "segmentId": "m68754:problem:fs-idp235733152"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp39170992",
+                "segmentId": "m68754:solution:fs-idp39170992"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm32668896",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp46648992",
+                "segmentId": "m68754:problem:fs-idp46648992"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp1096352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm45552304",
+                "segmentId": "m68754:problem:fs-idm45552304"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp56783984",
+                "segmentId": "m68754:solution:fs-idp56783984"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68754:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68754:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68754:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp133388272",
+        "termSegmentId": "m68754:glossary-term:fs-idp133388272-term",
+        "definitionSegmentId": "m68754:glossary-def:fs-idp133388272-def"
+      },
+      {
+        "id": "fs-idp39360864",
+        "termSegmentId": "m68754:glossary-term:fs-idp39360864-term",
+        "definitionSegmentId": "m68754:glossary-def:fs-idp39360864-def"
+      },
+      {
+        "id": "fs-idp257364480",
+        "termSegmentId": "m68754:glossary-term:fs-idp257364480-term",
+        "definitionSegmentId": "m68754:glossary-def:fs-idp257364480-def"
+      },
+      {
+        "id": "fs-idp132026496",
+        "termSegmentId": "m68754:glossary-term:fs-idp132026496-term",
+        "definitionSegmentId": "m68754:glossary-def:fs-idp132026496-def"
+      },
+      {
+        "id": "fs-idp43914864",
+        "termSegmentId": "m68754:glossary-term:fs-idp43914864-term",
+        "definitionSegmentId": "m68754:glossary-def:fs-idp43914864-def"
+      }
+    ]
+  },
+  "sectionOrder": 4
+}

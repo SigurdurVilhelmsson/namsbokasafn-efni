@@ -1,0 +1,98 @@
+{
+  "math-1": {
+    "mathml": "<m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>F</m:mi><m:mi>A</m:mi></m:mfrac><m:mo>.</m:mo></m:mrow></m:math>",
+    "latex": "{P=\\, \\frac{F}{A}.}"
+  },
+  "math-2": {
+    "mathml": "<m:math><m:mrow><m:mtext>1 torr</m:mtext><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mtext>1</m:mtext><m:mrow><m:mtext>760</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mtext>atm</m:mtext></m:mrow></m:math>",
+    "latex": "{\\text{1 torr}=\\, \\frac{\\text{1}}{{\\text{760}}}\\, \\text{atm}}"
+  },
+  "math-3": {
+    "mathml": "<m:math><m:mrow><m:mn>29.2</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>in Hg</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>25.4</m:mtext><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mm</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>in</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/>\n\n<m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 torr</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/>\n\n<m:mo>=</m:mo><m:mtext>742 torr</m:mtext></m:mrow></m:math>",
+    "latex": "{29.2\\, \\sout{{\\text{in Hg}}}\\, \\times \\, \\frac{{\\text{25.4}\\sout{{\\text{mm}}}}}{{1\\, \\sout{{\\text{in}}}}}\\, \\, \\times \\, \\frac{{\\text{1 torr}}}{{1\\, \\sout{{\\text{mm Hg}}}}}\\, =\\text{742 torr}}"
+  },
+  "math-4": {
+    "mathml": "<m:math><m:mrow><m:mn>742</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 atm</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>0.976 atm</m:mtext></m:mrow></m:math>",
+    "latex": "{742\\, \\sout{{\\text{torr}}}\\, \\times \\, \\frac{{\\text{1 atm}}}{{760\\, \\sout{{\\text{torr}}}}}\\, =\\text{0.976 atm}}"
+  },
+  "math-5": {
+    "mathml": "<m:math><m:mrow><m:mn>742</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>101.325 kPa</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>98.9 kPa</m:mtext></m:mrow></m:math>",
+    "latex": "{742\\, \\sout{{\\text{torr}}}\\, \\times \\, \\frac{{\\text{101.325 kPa}}}{{760\\, \\sout{{\\text{torr}}}}}\\, =\\text{98.9 kPa}}"
+  },
+  "math-6": {
+    "mathml": "<m:math><m:mrow><m:mn>98.9</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>kPa</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1000</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>Pa</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>kPa</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>bar</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>100,000</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>Pa</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1000 mbar</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>bar</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>989 mbar</m:mtext></m:mrow></m:math>",
+    "latex": "{98.9\\, \\sout{{\\text{kPa}}}\\, \\times \\, \\frac{{1000\\, \\sout{{\\text{Pa}}}}}{{1\\, \\sout{{\\text{kPa}}}}}\\, \\times \\, \\frac{{1\\, \\sout{{\\text{bar}}}}}{{100,000\\, \\sout{{\\text{Pa}}}}}\\, \\times \\, \\frac{{\\text{1000 mbar}}}{{1\\, \\sout{{\\text{bar}}}}}\\, =\\text{989 mbar}}"
+  },
+  "math-7": {
+    "mathml": "<m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mn>13.6</m:mn></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{\\frac{1}{{13.6}}}"
+  },
+  "math-8": {
+    "mathml": "<m:math><m:mrow><m:mn>26.4</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>cm Hg</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>10</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>cm Hg</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 torr</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>264 torr</m:mtext></m:mrow></m:math>",
+    "latex": "{26.4\\, \\sout{{\\text{cm Hg}}}\\, \\times \\, \\frac{{10\\, \\sout{{\\text{mm Hg}}}}}{{1\\, \\sout{{\\text{cm Hg}}}}}\\, \\times \\, \\frac{{\\text{1 torr}}}{{1\\, \\sout{{\\text{mm Hg}}}}}\\, =\\text{264 torr}}"
+  },
+  "math-9": {
+    "mathml": "<m:math><m:mrow><m:mn>264</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>torr</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>101,325 Pa</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>35,200 Pa</m:mtext></m:mrow></m:math>",
+    "latex": "{264\\, \\sout{{\\text{torr}}}\\, \\times \\, \\frac{{1\\, \\sout{{\\text{atm}}}}}{{760\\, \\sout{{\\text{torr}}}}}\\, \\times \\, \\frac{{\\text{101,325 Pa}}}{{1\\, \\sout{{\\text{atm}}}}}\\, =\\text{35,200 Pa}}"
+  },
+  "math-10": {
+    "mathml": "<m:math><m:mrow><m:mn>35</m:mn><m:mtext>,200</m:mtext><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>Pa</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 bar</m:mtext></m:mrow><m:mrow><m:mn>100,000</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>Pa</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>0.352 bar</m:mtext></m:mrow></m:math>",
+    "latex": "{35\\text{,200}\\, \\sout{{\\text{Pa}}}\\, \\times \\, \\frac{{\\text{1 bar}}}{{100,000\\, \\sout{{\\text{Pa}}}}}\\, =\\text{0.352 bar}}"
+  },
+  "math-11": {
+    "mathml": "<m:math><m:mrow><m:mn>897</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 atm</m:mtext></m:mrow><m:mrow><m:mn>760</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>mm Hg</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mtext>1.18 atm</m:mtext></m:mrow></m:math>",
+    "latex": "{897\\, \\sout{{\\text{mm Hg}}}\\, \\times \\, \\frac{{\\text{1 atm}}}{{760\\, \\sout{{\\text{mm Hg}}}}}\\, =\\text{1.18 atm}}"
+  },
+  "math-12": {
+    "mathml": "<m:math><m:mrow><m:mn>1.18</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>101.325 kPa</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:menclose notation=\"horizontalstrike\"><m:mrow><m:mtext>atm</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>1.20</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>2</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>kPa</m:mtext></m:mrow></m:math>",
+    "latex": "{1.18\\, \\sout{{\\text{atm}}}\\, \\times \\, \\frac{{\\text{101.325 kPa}}}{{1\\, \\sout{{\\text{atm}}}}}\\, =1.20\\, \\times \\, {{10}}^{2}\\, \\text{kPa}}"
+  },
+  "math-13": {
+    "mathml": "<m:math><m:mrow><m:mi>P</m:mi><m:mo>=</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mi>F</m:mi><m:mi>A</m:mi></m:mfrac></m:mrow></m:math>",
+    "latex": "{P=\\, \\frac{F}{A}}"
+  },
+  "math-14": {
+    "mathml": "<m:math><m:mo>×</m:mo></m:math>",
+    "latex": "\\times"
+  },
+  "fs-idm100445488": {
+    "mathml": "<m:math><m:mrow><m:mtext>pressure per elephant foot</m:mtext><m:mo>=</m:mo><m:mtext>14,000</m:mtext><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>lb</m:mtext></m:mrow><m:mrow><m:mtext>elephant</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 elephant</m:mtext></m:mrow><m:mrow><m:mtext>4 feet</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 foot</m:mtext></m:mrow><m:mrow><m:mn>250</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>14</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>lb/in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{pressure per elephant foot}=\\text{14,000}\\, \\frac{{\\text{lb}}}{{\\text{elephant}}}\\, \\times \\, \\frac{{\\text{1 elephant}}}{{\\text{4 feet}}}\\, \\times \\, \\frac{{\\text{1 foot}}}{{250\\, {{\\text{in}}}^{2}}}\\, =14\\, {{\\text{lb/in}}}^{2}}",
+    "isBlock": true
+  },
+  "fs-idm181738992": {
+    "mathml": "<m:math><m:mrow><m:mtext>pressure per skate blade</m:mtext><m:mo>=</m:mo><m:mn>120</m:mn><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>lb</m:mtext></m:mrow><m:mrow><m:mtext>skater</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 skater</m:mtext></m:mrow><m:mrow><m:mtext>2 blades</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 blade</m:mtext></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>30</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>lb/in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{pressure per skate blade}=120\\, \\frac{{\\text{lb}}}{{\\text{skater}}}\\, \\times \\, \\frac{{\\text{1 skater}}}{{\\text{2 blades}}}\\, \\times \\, \\frac{{\\text{1 blade}}}{{2\\, {{\\text{in}}}^{2}}}\\, =30\\, {{\\text{lb/in}}}^{2}}",
+    "isBlock": true
+  },
+  "fs-idp9821216": {
+    "mathml": "<m:math><m:mrow><m:mtext>pressure per human foot</m:mtext><m:mo>=</m:mo><m:mn>120</m:mn><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>lb</m:mtext></m:mrow><m:mrow><m:mtext>skater</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 skater</m:mtext></m:mrow><m:mrow><m:mtext>2 feet</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 foot</m:mtext></m:mrow><m:mrow><m:mn>30</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>2</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>lb/in</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{\\text{pressure per human foot}=120\\, \\frac{{\\text{lb}}}{{\\text{skater}}}\\, \\times \\, \\frac{{\\text{1 skater}}}{{\\text{2 feet}}}\\, \\times \\, \\frac{{\\text{1 foot}}}{{30\\, {{\\text{in}}}^{2}}}\\, =2\\, {{\\text{lb/in}}}^{2}}",
+    "isBlock": true
+  },
+  "fs-idm35258720": {
+    "mathml": "<m:math><m:mrow><m:mi>p</m:mi><m:mo>=</m:mo><m:mi>h</m:mi><m:mi>ρ</m:mi><m:mi>g</m:mi></m:mrow></m:math>",
+    "latex": "{p=hρg}",
+    "isBlock": true
+  },
+  "fs-idm207611040": {
+    "mathml": "<m:math><m:mrow><m:mn>101,325</m:mn><m:mspace width=\"0.2em\"/><m:mi>N</m:mi><m:msup><m:mrow><m:mtext>/m</m:mtext></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>101,325</m:mn><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mtext>kg·m/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mtext>m</m:mtext><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.2em\"/><m:mo>=</m:mo><m:mn>101,325</m:mn><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>kg</m:mtext></m:mrow><m:mrow><m:msup><m:mrow><m:mtext>m·s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow></m:math>",
+    "latex": "{101,325\\, N{{\\text{/m}}}^{2}=101,325\\, \\frac{{{{\\text{kg·m/s}}}^{2}}}{{{\\text{m}}^{2}}}\\, =101,325\\, \\frac{{\\text{kg}}}{{{{\\text{m·s}}}^{2}}}}",
+    "isBlock": true
+  },
+  "fs-idm149736288": {
+    "mathml": "<m:math><m:mrow><m:mi>p</m:mi><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>760 mm</m:mtext><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mfrac><m:mrow><m:mtext>1 m</m:mtext></m:mrow><m:mrow><m:mtext>1000 mm</m:mtext></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>13.6 g</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>cm</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:mtext>1 kg</m:mtext></m:mrow><m:mrow><m:mtext>1000 g</m:mtext></m:mrow></m:mfrac><m:mspace width=\"0.4em\"/><m:mo>×</m:mo><m:mspace width=\"0.4em\"/><m:mfrac><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo> <m:mrow> <m:mtext>100 cm</m:mtext></m:mrow> <m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mrow><m:msup><m:mrow><m:mrow><m:mo>(</m:mo> <m:mrow> <m:mtext>1 m</m:mtext></m:mrow> <m:mo>)</m:mo></m:mrow></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>9.81 m</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mtext>s</m:mtext><m:mn>2</m:mn></m:msup></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow></m:mrow></m:math>",
+    "latex": "{p={({\\text{760 mm}\\, \\times \\, \\frac{{\\text{1 m}}}{{\\text{1000 mm}}}})}\\, \\times \\, {({\\frac{{\\text{13.6 g}}}{{1\\, {{\\text{cm}}}^{3}}}\\, \\times \\, \\frac{{\\text{1 kg}}}{{\\text{1000 g}}}\\, \\times \\, \\frac{{{{{( {\\text{100 cm}} )}}}^{3}}}{{{{{( {\\text{1 m}} )}}}^{3}}}})}\\, \\times \\, {({\\frac{{\\text{9.81 m}}}{{1\\, {\\text{s}}^{2}}}})}}",
+    "isBlock": true
+  },
+  "fs-idm112352528": {
+    "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mtext>0.760 m</m:mtext></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>13,600</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>kg/m</m:mtext></m:mrow><m:mn>3</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mn>9.81</m:mn><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>m/s</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow><m:mo>)</m:mo></m:mrow><m:mo>=</m:mo><m:mn>1.01</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>5</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mtext>kg/ms</m:mtext></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>1.01</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>5</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mi>N</m:mi><m:mtext>/m</m:mtext></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{={({\\text{0.760 m}})}{({13,600\\, {{\\text{kg/m}}}^{3}})}{({9.81\\, {{\\text{m/s}}}^{2}})}=1.01\\, \\times \\, {{10}}^{5}\\, {{\\text{kg/ms}}}^{2}=1.01\\, \\times \\, {{10}}^{5}\\, {{N\\text{/m}}}^{2}}",
+    "isBlock": true
+  },
+  "fs-idm93676560": {
+    "mathml": "<m:math><m:mrow><m:mo>=</m:mo><m:mn>1.01</m:mn><m:mspace width=\"0.2em\"/><m:mo>×</m:mo><m:mspace width=\"0.2em\"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>5</m:mn></m:msup><m:mspace width=\"0.2em\"/><m:mtext>Pa</m:mtext></m:mrow></m:math>",
+    "latex": "{=1.01\\, \\times \\, {{10}}^{5}\\, \\text{Pa}}",
+    "isBlock": true
+  }
+}

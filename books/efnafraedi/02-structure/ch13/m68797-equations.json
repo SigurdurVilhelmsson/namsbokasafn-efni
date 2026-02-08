@@ -1,0 +1,22 @@
+{
+  "fs-idp102698592": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">⇌</m:mo><m:mn>2</m:mn><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{N}}_{2}{\\text{O}}_{4}(g)⇌2{{\\text{NO}}}_{2}(g)}",
+    "isBlock": true
+  },
+  "fs-idm499686688": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>f</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>f</m:mi></m:msub><m:mo stretchy=\"false\">[</m:mo><m:msub><m:mtext>N</m:mtext><m:mn>2</m:mn></m:msub><m:msub><m:mtext>O</m:mtext><m:mn>4</m:mn></m:msub><m:mo stretchy=\"false\">]</m:mo></m:mrow></m:math>",
+    "latex": "{{\\text{rate}}_{f}={k}_{f}[{\\text{N}}_{2}{\\text{O}}_{4}]}",
+    "isBlock": true
+  },
+  "fs-idm345509376": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mtext>rate</m:mtext><m:mi>r</m:mi></m:msub><m:mo>=</m:mo><m:msub><m:mi>k</m:mi><m:mi>r</m:mi></m:msub><m:mo stretchy=\"false\">[</m:mo><m:msub><m:mtext>NO</m:mtext><m:mn>2</m:mn></m:msub><m:msup><m:mo stretchy=\"false\">]</m:mo><m:mn>2</m:mn></m:msup></m:mrow></m:math>",
+    "latex": "{{\\text{rate}}_{r}={k}_{r}[{\\text{NO}}_{2}{]}^{2}}",
+    "isBlock": true
+  },
+  "fs-idp92494336": {
+    "mathml": "<m:math><m:mrow><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>l</m:mi><m:mo stretchy=\"false\">)</m:mo><m:mo stretchy=\"false\">⇌</m:mo><m:msub><m:mrow><m:mtext>Br</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy=\"false\">(</m:mo><m:mi>g</m:mi><m:mo stretchy=\"false\">)</m:mo></m:mrow></m:math>",
+    "latex": "{{{\\text{Br}}}_{2}(l)⇌{{\\text{Br}}}_{2}(g)}",
+    "isBlock": true
+  }
+}

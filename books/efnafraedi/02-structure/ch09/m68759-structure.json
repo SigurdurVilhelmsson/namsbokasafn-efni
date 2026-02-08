@@ -1,0 +1,692 @@
+{
+  "moduleId": "m68759",
+  "title": {
+    "segmentId": "m68759:title:auto-1",
+    "text": "Non-Ideal Gas Behavior"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "6c7ade02-773b-44d1-945a-61ae6b0cc79b",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the physical factors that lead to deviations from ideal gas behavior",
+        "Explain how these factors are represented in the van der Waals equation",
+        "Define compressibility (Z) and describe how its variation with pressure reflects non-ideal behavior",
+        "Quantify non-ideal behavior by comparing computations of gas properties using the ideal gas law and the van der Waals equation"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm10764416",
+      "segmentId": "m68759:para:fs-idm10764416"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp138594304",
+      "segmentId": "m68759:para:fs-idp138594304"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp41001616",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm92799184",
+      "segmentId": "m68759:para:fs-idm92799184"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_06_ZvsPgraph",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68759:caption:CNX_Chem_09_06_ZvsPgraph-caption"
+      },
+      "media": {
+        "id": "fs-idp194949440",
+        "alt": "A graph is shown. The horizontal axis is labeled, “P ( a t m ).” Its scale begins at zero with markings provided by multiples of 200 up to 1000. The vertical axis is labeled, “Z le( k P a ).” This scale begins at zero and includes multiples of 0.5 up to 2.0. Six curves are drawn of varying colors. One of these curves is a horizontal, light purple line extending right from 1.0 k P a on the vertical axis, which is labeled “Ideal gas.” The region of the graph beneath this line is shaded tan. The remaining curves also start at the same point on the vertical axis. An orange line extends to the upper right corner of the graph, reaching a value of approximately 1.7 k P a at 1000 a t m. This orange curve is labeled, “H subscript 2.” A blue curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 200 a t m. This curve reaches a value of nearly 2.0 k P a at about 800 a t m. This curve is labeled, “N subscript 2.” A red curve dips below the horizontal ideal gas line initially, then increases to cross the line just past 400 a t m. This curve reaches a value of nearly 1.5 k P a at about 750 a t m. This curve is labeled, “O subscript 2.” A purple curve dips below the horizontal ideal gas line, dipping even lower than the O subscript 2 curve initially, then increases to cross the ideal gas line at about 400 a t m. This curve reaches a value of nearly 2.0 k P a at about 850 a t m. This curve is labeled, “C H subscript 4.” A yellow curve dips below the horizontal ideal gas line, dipping lower than the other curves to a minimum of about 0.4 k P a at about 0.75 a t m, then increases to cross the ideal gas line at about 500 a t m. This curve reaches a value of about 1.6 k P a at about 900 a t m. This curve is labeled, “C O subscript 2.”",
+        "src": "../../media/CNX_Chem_09_06_ZvsPgraph.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp70317840",
+      "segmentId": "m68759:para:fs-idp70317840"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp26015584",
+      "segmentId": "m68759:para:fs-idp26015584"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp46559584",
+      "segmentId": "m68759:para:fs-idp46559584"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_06_RealGas2",
+      "caption": {
+        "segmentId": "m68759:caption:CNX_Chem_09_06_RealGas2-caption"
+      },
+      "media": {
+        "id": "fs-idm161409328",
+        "alt": "This figure includes two diagrams. Each involves two lavender shaded boxes that contain 14 relatively evenly distributed, purple spheres. The first box in a on the left is labeled “ideal.” In the second slightly smaller box, on the right, a nearly centrally located purple sphere has 6 double-headed arrows extending outward from it to nearby spheres. This box is labeled “real.” In b, in the first box on the left, a single arrow points to a purple sphere at the right side that appears to be moving and impacting the right side of the box. There are no other spheres positioned near the right edge. This box is labeled “ideal.” The second box, on the right, shows the same image but has 5 double-headed arrows radiating out to the top, bottom, and left to other spheres. This box is labeled “real.”",
+        "src": "../../media/CNX_Chem_09_06_RealGas2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm16170960",
+      "segmentId": "m68759:para:fs-idm16170960"
+    },
+    {
+      "type": "media",
+      "id": "fs-idm139964416",
+      "class": "scaled-down",
+      "alt": "This figure shows the equation P V equals n R T, with the P in blue text and the V in red text. This equation is followed by a right pointing arrow. Following this arrow, to the right in blue text appears the equation ( P minus a n superscript 2 divided by V squared ),” which is followed by the red text ( V minus n b ). This is followed in black text with equals n R T. Beneath the second equation appears the label, “Correction for molecular attraction” which is connected with a line segment to V squared. A second label, “Correction for volume of molecules,” is similarly connected to n b which appears in red.",
+      "src": "../../media/CNX_Chem_09_06_vanderWaals_img.jpg"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm12594352",
+      "segmentId": "m68759:para:fs-idm12594352"
+    },
+    {
+      "type": "table",
+      "id": "fs-idm15100464",
+      "class": "top-titled",
+      "summary": "This table has three columns and seven rows. The first row is a header, and it labels each column, “Gas,” “a ( L to the second power a t m divided by m o l to the second power ),” “b ( L divided by m o l ).” Under “Gas” are the following: N subscript 2, O subscript 2, C O subscript 2, H subscript 2 O, H e, and C C l subscript 4. Under “a ( L to the second power a t m divided by m o l to the second power )” are the following: 1.39, 1.36, 3.59, 5.46, 0.0342, and 20.4. Under “b ( L divided by m o l )” are the following: 0.0391, 0.0318, 0.0427, 0.0305, 0.0237, and 0.1383.",
+      "rows": [
+        {
+          "cells": [
+            {
+              "segmentId": "m68759:entry:auto-17",
+              "attributes": {
+                "namest": "c1",
+                "nameend": "c3",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68759:entry:auto-18",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-19",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-20",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68759:entry:auto-21",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-22",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-23",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68759:entry:auto-24",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-25",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-26",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68759:entry:auto-27",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-28",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-29",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68759:entry:auto-30",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-31",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-32",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68759:entry:auto-33",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-34",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-35",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        },
+        {
+          "cells": [
+            {
+              "segmentId": "m68759:entry:auto-36",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-37",
+              "attributes": {
+                "align": "left"
+              }
+            },
+            {
+              "segmentId": "m68759:entry:auto-38",
+              "attributes": {
+                "align": "left"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idp95888368",
+      "segmentId": "m68759:para:fs-idp95888368"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp87631424",
+      "segmentId": "m68759:para:fs-idp87631424"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp133812128",
+      "title": {
+        "segmentId": "m68759:example-title:fs-idp133812128-title",
+        "text": "Comparison of Ideal Gas Law and van der Waals Equation"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm26240",
+          "segmentId": "m68759:para:fs-idm26240"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm66840432",
+          "segmentId": "m68759:para:fs-idm66840432"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp5462416",
+          "segmentId": "m68759:para:fs-idp5462416"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm139915872",
+          "segmentId": "m68759:para:fs-idm139915872"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp71956336",
+          "segmentId": "m68759:para:fs-idp71956336",
+          "title": {
+            "segmentId": "m68759:para-title:fs-idp71956336-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp14703728",
+          "segmentId": "m68759:para:fs-idp14703728"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp24938016",
+          "segmentId": "m68759:para:fs-idp24938016"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp70504128",
+          "segmentId": "m68759:para:fs-idp70504128"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8228960",
+          "segmentId": "m68759:para:fs-idp8228960",
+          "title": {
+            "segmentId": "m68759:para-title:fs-idp8228960-title",
+            "text": "Check your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm52984064",
+          "segmentId": "m68759:para:fs-idm52984064"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp68055984",
+          "segmentId": "m68759:para:fs-idp68055984"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm24430976",
+          "segmentId": "m68759:para:fs-idm24430976"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp6517264",
+          "segmentId": "m68759:para:fs-idp6517264"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm23230176"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm122220784"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp204240560"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm71592544",
+          "title": {
+            "segmentId": "m68759:note-title:fs-idm71592544-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp6517264",
+              "segmentId": "m68759:para:fs-idp6517264"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp83168080",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68759:title:fs-idp83168080-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm3555504",
+          "segmentId": "m68759:para:fs-idm3555504"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm24142800",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68759:title:fs-idm24142800-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68759:entry:auto-62",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68759:entry:auto-63",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp25013184",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68759:title:fs-idp25013184-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm14870688",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm139673280",
+                "segmentId": "m68759:problem:fs-idm139673280"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25923008",
+                "segmentId": "m68759:solution:fs-idm25923008"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp200327600",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp99769680",
+                "segmentId": "m68759:problem:fs-idp99769680"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm29887312",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm67092976",
+                "segmentId": "m68759:problem:fs-idm67092976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm93192160",
+                "segmentId": "m68759:problem:fs-idm93192160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp46639136",
+                "segmentId": "m68759:problem:fs-idp46639136"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm50151104",
+                "segmentId": "m68759:problem:fs-idm50151104"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm86729712",
+                "segmentId": "m68759:solution:fs-idm86729712"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm58636672",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm25283104",
+                "segmentId": "m68759:problem:fs-idm25283104"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp20157600",
+                "segmentId": "m68759:problem:fs-idp20157600"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp137909616",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp14775088",
+                "segmentId": "m68759:problem:fs-idp14775088"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp183905312",
+                "segmentId": "m68759:problem:fs-idp183905312"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp166227744",
+                "segmentId": "m68759:solution:fs-idp166227744"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm23432208",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm21675952",
+                "segmentId": "m68759:problem:fs-idm21675952"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm25312816",
+                "segmentId": "m68759:problem:fs-idm25312816"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp82472240",
+                "segmentId": "m68759:problem:fs-idp82472240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm50198336",
+                "segmentId": "m68759:problem:fs-idm50198336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm91663776",
+                "segmentId": "m68759:problem:fs-idm91663776"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm89275552",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp35689520",
+                "segmentId": "m68759:problem:fs-idp35689520"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp40148288",
+                "segmentId": "m68759:problem:fs-idp40148288"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm51678160",
+                "segmentId": "m68759:problem:fs-idm51678160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm94302800",
+                "segmentId": "m68759:problem:fs-idm94302800"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp70053648",
+                "segmentId": "m68759:problem:fs-idp70053648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm60019952",
+                "segmentId": "m68759:problem:fs-idm60019952"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp26561024",
+                "segmentId": "m68759:solution:fs-idp26561024"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68759:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68759:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68759:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68759:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68759:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp3716528",
+        "termSegmentId": "m68759:glossary-term:fs-idp3716528-term",
+        "definitionSegmentId": "m68759:glossary-def:fs-idp3716528-def"
+      },
+      {
+        "id": "fs-idm15517248",
+        "termSegmentId": "m68759:glossary-term:fs-idm15517248-term",
+        "definitionSegmentId": "m68759:glossary-def:fs-idm15517248-def"
+      }
+    ]
+  },
+  "sectionOrder": 6
+}

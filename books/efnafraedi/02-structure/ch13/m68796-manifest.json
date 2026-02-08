@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "moduleId": "m68796",
+  "extractedAt": "2026-02-08T17:36:15.936Z",
+  "sourceHash": "1f51bb2985fc6ab1",
+  "segmentCount": 7,
+  "segmentIds": [
+    "m68796:title:auto-1",
+    "m68796:abstract-item:abstract-item-1",
+    "m68796:abstract-item:abstract-item-2",
+    "m68796:abstract-item:abstract-item-3",
+    "m68796:abstract-item:abstract-item-4",
+    "m68796:caption:CNX_Chem_13_00_Blood-caption",
+    "m68796:para:fs-idp51855856"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 1,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_13_00_Blood"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

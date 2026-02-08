@@ -1,0 +1,1678 @@
+{
+  "moduleId": "m68751",
+  "title": {
+    "segmentId": "m68751:title:auto-1",
+    "text": "Relating Pressure, Volume, Amount, and Temperature: The Ideal Gas Law"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "1f39d5df-ef6a-43de-a533-117a5dc92f44",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Identify the mathematical relationships between the various properties of gases",
+        "Use the ideal gas law, and related gas laws, to compute the values of various gas properties under specified conditions"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm111531200",
+      "segmentId": "m68751:para:fs-idm111531200"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_09_02_Ballooning",
+      "caption": {
+        "segmentId": "m68751:caption:CNX_Chem_09_02_Ballooning-caption"
+      },
+      "media": {
+        "id": "fs-idm140387808",
+        "alt": "This figure includes three images. Image a is a black and white image of a hydrogen balloon apparently being deflated by a mob of people. In image b, a blue, gold, and red balloon is being held to the ground with ropes while positioned above a platform from which smoke is rising beneath the balloon. In c, an image is shown in grey on a peach-colored background of an inflated balloon with vertical striping in the air. It appears to have a basket attached to its lower side. A large stately building appears in the background.",
+        "src": "../../media/CNX_Chem_09_02_Ballooning.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm39174352",
+      "class": null,
+      "title": {
+        "segmentId": "m68751:title:fs-idm39174352-title",
+        "text": "Pressure and Temperature: Amontons’s Law"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm131642544",
+          "segmentId": "m68751:para:fs-idm131642544"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_01_Amontons1",
+          "caption": {
+            "segmentId": "m68751:caption:CNX_Chem_09_01_Amontons1-caption"
+          },
+          "media": {
+            "id": "fs-idp8042736",
+            "alt": "This figure includes three similar diagrams. In the first diagram to the left, a rigid spherical container of a gas to which a pressure gauge is attached at the top is placed in a large beaker of water, indicated in light blue, atop a hot plate. The needle on the pressure gauge points to the far left on the gauge. The diagram is labeled “low P” above and “hot plate off” below. The second similar diagram also has the rigid spherical container of gas placed in a large beaker from which light blue wavy line segments extend from the top of the liquid in the beaker. The beaker is situated on top of a slightly reddened circular area. The needle on the pressure gauge points straight up, or to the middle on the gauge. The diagram is labeled “medium P” above and “hot plate on medium” below. The third diagram also has the rigid spherical container of gas placed in a large beaker in which bubbles appear near the liquid surface and several wavy light blue line segments extend from the surface out of the beaker. The beaker is situated on top of a bright red circular area. The needle on the pressure gauge points to the far right on the gauge. The diagram is labeled “high P” above and “hot plate on high” below.",
+            "src": "../../media/CNX_Chem_09_01_Amontons1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm111816736",
+          "segmentId": "m68751:para:fs-idm111816736"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_02_Amontons2",
+          "caption": {
+            "segmentId": "m68751:caption:CNX_Chem_09_02_Amontons2-caption"
+          },
+          "media": {
+            "id": "fs-idm113341280",
+            "alt": "This figure includes a table and a graph. The table has 3 columns and 7 rows. The first row is a header, which labels the columns “Temperature, degrees C,” “Temperature, K,” and “Pressure, kPa.” The first column contains the following values from top to bottom: negative 100, negative 50, 0, 50, 100, and 150. The second column contains the values, from top to bottom, 173, 223, 273, 323, 373, and 423. The third column contains the values 36.0, 46.4, 56.7, 67.1, 77.5, and 88.0. A graph appears to the right of the table. The horizontal axis is labeled “Temperature ( K ).” with markings and labels provided for multiples of 100 beginning at 0 and ending at 500. The vertical axis is labeled “Pressure ( kPa )” with markings and labels provided for multiples of 10, beginning at 0 and ending at 100. Six data points from the table are plotted on the graph with black dots. These dots are connected with a solid black line. A dashed line extends from the data point furthest to the left to the origin. The graph shows a positive linear trend.",
+            "src": "../../media/CNX_Chem_09_02_Amontons2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm33029376",
+          "segmentId": "m68751:para:fs-idm33029376"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp58663824",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp12374848",
+          "segmentId": "m68751:para:fs-idp12374848"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm100617456",
+          "segmentId": "m68751:para:fs-idm100617456"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm66260928",
+          "title": {
+            "segmentId": "m68751:example-title:fs-idm66260928-title",
+            "text": "Predicting Change in Pressure with Temperature"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm61839504",
+              "segmentId": "m68751:para:fs-idm61839504"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp96109888",
+              "segmentId": "m68751:para:fs-idp96109888"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm53382240",
+              "segmentId": "m68751:para:fs-idm53382240"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm152475936",
+              "segmentId": "m68751:para:fs-idm152475936",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idm152475936-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp91458240",
+              "segmentId": "m68751:para:fs-idp91458240"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm99533072",
+              "segmentId": "m68751:para:fs-idm99533072"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm87475200",
+              "segmentId": "m68751:para:fs-idm87475200",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idm87475200-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm117579760",
+              "segmentId": "m68751:para:fs-idm117579760"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp253098544"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp78288768",
+              "title": {
+                "segmentId": "m68751:note-title:fs-idp78288768-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm117579760",
+                  "segmentId": "m68751:para:fs-idm117579760"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp20892224",
+      "class": null,
+      "title": {
+        "segmentId": "m68751:title:fs-idp20892224-title",
+        "text": "Volume and Temperature: Charles’s Law"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm19167872",
+          "segmentId": "m68751:para:fs-idm19167872"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp27422192",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp60978480",
+              "segmentId": "m68751:para:fs-idp60978480"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp49208960",
+          "segmentId": "m68751:para:fs-idp49208960"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_02_Charles2",
+          "caption": {
+            "segmentId": "m68751:caption:CNX_Chem_09_02_Charles2-caption"
+          },
+          "media": {
+            "id": "fs-idm62135472",
+            "alt": "This figure includes a table and a graph. The table has 3 columns and 6 rows. The first row is a header, which labels the columns “Temperature, degrees C,” “Temperature, K,” and “Pressure, k P a.” The first column contains the values from top to bottom negative 100, negative 50, 0, 100, and 200. The second column contains the values from top to bottom 173, 223, 273, 373, and 473. The third column contains the values 14.10, 18.26, 22.40, 30.65, and 38.88. A graph appears to the right of the table. The horizontal axis is labeled “Temperature ( K ).” with markings and labels provided for multiples of 100 beginning at 0 and ending at 300. The vertical axis is labeled “Volume ( L )” with marking and labels provided for multiples of 10, beginning at 0 and ending at 30. Five data points from the table are plotted on the graph with black dots. These dots are connected with a solid black line. The graph shows a positive linear trend.",
+            "src": "../../media/CNX_Chem_09_02_Charles2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp38621856",
+          "segmentId": "m68751:para:fs-idp38621856"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp174747472",
+          "segmentId": "m68751:para:fs-idp174747472"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm59931152",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp134528",
+          "segmentId": "m68751:para:fs-idp134528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp8180592",
+          "segmentId": "m68751:para:fs-idp8180592"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm45782128",
+          "title": {
+            "segmentId": "m68751:example-title:fs-idm45782128-title",
+            "text": "Predicting Change in Volume with Temperature"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp8413888",
+              "segmentId": "m68751:para:fs-idp8413888"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp207430880",
+              "segmentId": "m68751:para:fs-idp207430880",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idp207430880-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp170393776",
+              "segmentId": "m68751:para:fs-idp170393776"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp111256368",
+              "segmentId": "m68751:para:fs-idp111256368"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp28974272",
+              "segmentId": "m68751:para:fs-idp28974272",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idp28974272-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp96328352",
+              "segmentId": "m68751:para:fs-idp96328352"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp22541168"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm7218016",
+              "title": {
+                "segmentId": "m68751:note-title:fs-idm7218016-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp96328352",
+                  "segmentId": "m68751:para:fs-idp96328352"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm51209248",
+          "title": {
+            "segmentId": "m68751:example-title:fs-idm51209248-title",
+            "text": "Measuring Temperature with a Volume Change"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp100881520",
+              "segmentId": "m68751:para:fs-idp100881520"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm38946752",
+              "segmentId": "m68751:para:fs-idm38946752",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idm38946752-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp6920384",
+              "segmentId": "m68751:para:fs-idp6920384"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm36267744",
+              "segmentId": "m68751:para:fs-idm36267744"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm26636752",
+              "segmentId": "m68751:para:fs-idm26636752",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idm26636752-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp170212592",
+              "segmentId": "m68751:para:fs-idp170212592"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp40102160"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm69251328",
+              "title": {
+                "segmentId": "m68751:note-title:fs-idm69251328-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp170212592",
+                  "segmentId": "m68751:para:fs-idp170212592"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm198797136",
+      "class": null,
+      "title": {
+        "segmentId": "m68751:title:fs-idm198797136-title",
+        "text": "Volume and Pressure: Boyle’s Law"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm87156432",
+          "segmentId": "m68751:para:fs-idm87156432"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_03_BoylesLaw1",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68751:caption:CNX_Chem_09_03_BoylesLaw1-caption"
+          },
+          "media": {
+            "id": "fs-idm8799376",
+            "alt": "This figure contains a diagram and two graphs. The diagram shows a syringe labeled with a scale in m l or c c with multiples of 5 labeled beginning at 5 and ending at 30. The markings halfway between these measurements are also provided. Attached at the top of the syringe is a pressure gauge with a scale marked by fives from 40 on the left to 5 on the right. The gauge needle rests between 10 and 15, slightly closer to 15. The syringe plunger position indicates a volume measurement about halfway between 10 and 15 m l or c c. The first graph is labeled “V ( m L )” on the horizontal axis and “P ( p s i )” on the vertical axis. Points are labeled at 5, 10, 15, 20, and 25 m L with corresponding values of 39.0, 19.5, 13.0, 9.8, and 6.5 p s i. The points are connected with a smooth curve that is declining at a decreasing rate of change. The second graph is labeled “V ( m L )” on the horizontal axis and “1 divided by P ( p s i )” on the vertical axis. The horizontal axis is labeled at multiples of 5, beginning at zero and extending up to 35 m L. The vertical axis is labeled by multiples of 0.02, beginning at 0 and extending up to 0.18. Six points indicated by black dots on this graph are connected with a black line segment showing a positive linear trend.",
+            "src": "../../media/CNX_Chem_09_03_BoylesLaw1.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm298625584",
+          "segmentId": "m68751:para:fs-idm298625584"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp169510384",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm132946352",
+          "segmentId": "m68751:para:fs-idm132946352"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_02_Boyleslaw2",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68751:caption:CNX_Chem_09_02_Boyleslaw2-caption"
+          },
+          "media": {
+            "id": "fs-idm137483904",
+            "alt": "This diagram shows two graphs. In a, a graph is shown with volume on the horizontal axis and pressure on the vertical axis. A curved line is shown on the graph showing a decreasing trend with a decreasing rate of change. In b, a graph is shown with volume on the horizontal axis and one divided by pressure on the vertical axis. A line segment, beginning at the origin of the graph, shows a positive, linear trend.",
+            "src": "../../media/CNX_Chem_09_02_Boyleslaw2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm207692112",
+          "segmentId": "m68751:para:fs-idm207692112"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp10418864",
+          "title": {
+            "segmentId": "m68751:example-title:fs-idp10418864-title",
+            "text": "Volume of a Gas Sample"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm205798208",
+              "segmentId": "m68751:para:fs-idm205798208"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm127753872",
+              "segmentId": "m68751:para:fs-idm127753872"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm129344864",
+              "segmentId": "m68751:para:fs-idm129344864"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm92820144",
+              "segmentId": "m68751:para:fs-idm92820144"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm215125536",
+              "segmentId": "m68751:para:fs-idm215125536"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm126059440",
+              "segmentId": "m68751:para:fs-idm126059440",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idm126059440-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm112322224",
+              "segmentId": "m68751:para:fs-idm112322224"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm124214336",
+              "segmentId": "m68751:para:fs-idm124214336"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm207111184",
+              "segmentId": "m68751:para:fs-idm207111184"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm167382656",
+              "segmentId": "m68751:para:fs-idm167382656"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm146893296",
+              "segmentId": "m68751:para:fs-idm146893296"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm111326864",
+              "segmentId": "m68751:para:fs-idm111326864",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idm111326864-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm161358576",
+              "segmentId": "m68751:para:fs-idm161358576"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm130543696",
+              "segmentId": "m68751:para:fs-idm130543696"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm208892896",
+              "segmentId": "m68751:para:fs-idm208892896"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm265464784",
+              "segmentId": "m68751:para:fs-idm265464784"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm53855168",
+              "segmentId": "m68751:para:fs-idm53855168"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp70444944"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp79285632"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp7933296",
+              "title": {
+                "segmentId": "m68751:note-title:fs-idp7933296-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm53855168",
+                  "segmentId": "m68751:para:fs-idm53855168"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "id": "fs-idm202428608",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68751:note-title:fs-idm202428608-title",
+            "text": "Breathing and Boyle’s Law"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm208195776",
+              "segmentId": "m68751:para:fs-idm208195776"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_02_BoylesLaw4",
+          "caption": {
+            "segmentId": "m68751:caption:CNX_Chem_09_02_BoylesLaw4-caption"
+          },
+          "media": {
+            "id": "fs-idm198513808",
+            "alt": "This figure contains two diagrams of a cross section of the human head and torso. The first diagram on the left is labeled “Inspiration.” It shows curved arrows in gray proceeding through the nasal passages and mouth to the lungs. An arrow points downward from the diaphragm, which is relatively flat, just beneath the lungs. This arrow is labeled “Diaphragm contracts.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr lower” is provided. The second, similar diagram, which is labeled “Expiration,” reverses the direction of both arrows. Arrows extend from the lungs out through the nasal passages and mouth. Similarly, an arrow points up to the diaphragm, showing a curved diaphragm and lungs reduced in size from the previous image. This arrow is labeled “Diaphragm relaxes.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr higher” is provided.",
+            "src": "../../media/CNX_Chem_09_02_BoylesLaw4.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp47884080",
+      "class": null,
+      "title": {
+        "segmentId": "m68751:title:fs-idp47884080-title",
+        "text": "Moles of Gas and Volume: Avogadro’s Law"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm52917120",
+          "segmentId": "m68751:para:fs-idm52917120"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp65662512",
+          "segmentId": "m68751:para:fs-idp65662512"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm8943936",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm94717808",
+          "segmentId": "m68751:para:fs-idm94717808"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm50116432",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm91270672",
+              "segmentId": "m68751:para:fs-idm91270672"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm68358176",
+      "class": null,
+      "title": {
+        "segmentId": "m68751:title:fs-idm68358176-title",
+        "text": "The Ideal Gas Law"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp161797856",
+          "segmentId": "m68751:para:fs-idp161797856"
+        },
+        {
+          "type": "list",
+          "id": "fs-idp25403616",
+          "listType": "bulleted",
+          "numberStyle": null,
+          "bulletStyle": "bullet",
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68751:item:fs-idp25403616-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68751:item:fs-idp25403616-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68751:item:fs-idp25403616-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m68751:item:fs-idp25403616-item-4"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp47645536",
+          "segmentId": "m68751:para:fs-idp47645536"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp190457648",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp83793536",
+          "segmentId": "m68751:para:fs-idp83793536"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp100115520",
+          "segmentId": "m68751:para:fs-idp100115520"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp9263600",
+          "segmentId": "m68751:para:fs-idp9263600"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm72969744",
+          "title": {
+            "segmentId": "m68751:example-title:fs-idm72969744-title",
+            "text": "Using the Ideal Gas Law"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm36042832",
+              "segmentId": "m68751:para:fs-idm36042832"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp9667456",
+              "segmentId": "m68751:para:fs-idp9667456",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idp9667456-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp84134864",
+              "segmentId": "m68751:para:fs-idp84134864"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm113078592",
+              "segmentId": "m68751:para:fs-idm113078592"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm139345632",
+              "segmentId": "m68751:para:fs-idm139345632"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp147095712",
+              "segmentId": "m68751:para:fs-idp147095712",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idp147095712-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp4504752",
+              "segmentId": "m68751:para:fs-idp4504752"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp39691024"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp101238448"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp11744096"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp248570064"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp77431312",
+              "title": {
+                "segmentId": "m68751:note-title:fs-idp77431312-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp4504752",
+                  "segmentId": "m68751:para:fs-idp4504752"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idp141407616",
+          "segmentId": "m68751:para:fs-idp141407616"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp23616944",
+          "title": {
+            "segmentId": "m68751:example-title:fs-idp23616944-title",
+            "text": "Using the Combined Gas Law"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm24051840",
+              "segmentId": "m68751:para:fs-idm24051840"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm78575136",
+              "segmentId": "m68751:para:fs-idm78575136",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idm78575136-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp72690672",
+              "segmentId": "m68751:para:fs-idp72690672"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp54320688",
+              "segmentId": "m68751:para:fs-idp54320688"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp128482944",
+              "segmentId": "m68751:para:fs-idp128482944",
+              "title": {
+                "segmentId": "m68751:para-title:fs-idp128482944-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm29667248",
+              "segmentId": "m68751:para:fs-idm29667248"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp224060000"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp102261440"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp104450512",
+              "title": {
+                "segmentId": "m68751:note-title:fs-idp104450512-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm29667248",
+                  "segmentId": "m68751:para:fs-idm29667248"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_02_Scuba",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68751:caption:CNX_Chem_09_02_Scuba-caption"
+          },
+          "media": {
+            "id": "fs-idm23330944",
+            "alt": "This photograph shows a scuba diver underwater with a tank on his or her back and bubbles ascending from the breathing apparatus.",
+            "src": "../../media/CNX_Chem_09_02_Scuba.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idp8804032",
+          "class": "chemistry everyday-life",
+          "title": {
+            "segmentId": "m68751:note-title:fs-idp8804032-title",
+            "text": "The Interdependence between Ocean Depth and Pressure in Scuba Diving"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp78164736",
+              "segmentId": "m68751:para:fs-idp78164736"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp128156112",
+              "segmentId": "m68751:para:fs-idp128156112"
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_02_GreatBarri",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68751:caption:CNX_Chem_09_02_GreatBarri-caption"
+          },
+          "media": {
+            "id": "fs-idm71283872",
+            "alt": "This picture shows colorful underwater corals and anemones in hues of yellow, orange, green, and brown, surrounded by water that appears blue in color.",
+            "src": "../../media/CNX_Chem_09_02_GreatBarri.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp117090992",
+      "class": null,
+      "title": {
+        "segmentId": "m68751:title:fs-idp117090992-title",
+        "text": "Standard Conditions of Temperature and Pressure"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp92943776",
+          "segmentId": "m68751:para:fs-idp92943776"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_09_02_HENH3O2",
+          "caption": {
+            "segmentId": "m68751:caption:CNX_Chem_09_02_HENH3O2-caption"
+          },
+          "media": {
+            "id": "fs-idp59520544",
+            "alt": "This figure shows three balloons each filled with He, NH subscript 2, and O subscript 2, respectively. Beneath the first balloon is the label “4 g of He” Beneath the second balloon is the label, “17 g of NH subscript 2.” Beneath the third balloon is the label “32 g of O subscript 2.” Each balloon contains the same number of molecules of their respective gases.",
+            "src": "../../media/CNX_Chem_09_02_HENH3O2.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp68486960",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68751:title:fs-idp68486960-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp19784464",
+          "segmentId": "m68751:para:fs-idp19784464"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp115685936",
+          "segmentId": "m68751:para:fs-idp115685936"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm157803264",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68751:title:fs-idm157803264-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68751:entry:auto-142",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm132049520",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68751:title:fs-idm132049520-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm6254784",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm226964944",
+                "segmentId": "m68751:problem:fs-idm226964944"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp16137760",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm232268528",
+                "segmentId": "m68751:problem:fs-idm232268528"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm129149552",
+                "segmentId": "m68751:solution:fs-idm129149552"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm228222512",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm240310992",
+                "segmentId": "m68751:problem:fs-idm240310992"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm153017968",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm68690704",
+                "segmentId": "m68751:problem:fs-idm68690704"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm224240624",
+                "segmentId": "m68751:solution:fs-idm224240624"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm119503088",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm26964784",
+                "segmentId": "m68751:problem:fs-idm26964784"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm150329120",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm241276032",
+                "segmentId": "m68751:problem:fs-idm241276032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm183267472",
+                "segmentId": "m68751:solution:fs-idm183267472"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm221266736",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm190325632",
+                "segmentId": "m68751:problem:fs-idm190325632"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm162722032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm223838704",
+                "segmentId": "m68751:problem:fs-idm223838704"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp31441392",
+                "segmentId": "m68751:solution:fs-idp31441392"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm179450656",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm118272896",
+                "segmentId": "m68751:problem:fs-idm118272896"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm163780992",
+                "segmentId": "m68751:problem:fs-idm163780992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm234849104",
+                "segmentId": "m68751:problem:fs-idm234849104"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm211017328",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm138731120",
+                "segmentId": "m68751:problem:fs-idm138731120"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm234500544",
+                "segmentId": "m68751:solution:fs-idm234500544"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm244984432",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm188609648",
+                "segmentId": "m68751:problem:fs-idm188609648"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm221278704",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm207552272",
+                "segmentId": "m68751:problem:fs-idm207552272"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm179451664",
+                "segmentId": "m68751:solution:fs-idm179451664"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm179333888",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm246603456",
+                "segmentId": "m68751:problem:fs-idm246603456"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm24946256",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp28199904",
+                "segmentId": "m68751:problem:fs-idp28199904"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm244311136",
+                "segmentId": "m68751:solution:fs-idm244311136"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm207691136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm288109888",
+                "segmentId": "m68751:problem:fs-idm288109888"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm95690800",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm72005728",
+                "segmentId": "m68751:problem:fs-idm72005728"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm209223808",
+                "segmentId": "m68751:solution:fs-idm209223808"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm171506192",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm130364096",
+                "segmentId": "m68751:problem:fs-idm130364096"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm192798240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm141545152",
+                "segmentId": "m68751:problem:fs-idm141545152"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm78787920",
+                "segmentId": "m68751:problem:fs-idm78787920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm162758736",
+                "segmentId": "m68751:problem:fs-idm162758736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm197462832",
+                "segmentId": "m68751:problem:fs-idm197462832"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp16283888",
+                "segmentId": "m68751:solution:fs-idp16283888"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm87206720",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm151037808",
+                "segmentId": "m68751:problem:fs-idm151037808"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm71892416",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm226416640",
+                "segmentId": "m68751:problem:fs-idm226416640"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm210873680",
+                "segmentId": "m68751:solution:fs-idm210873680"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm131888352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm183236768",
+                "segmentId": "m68751:problem:fs-idm183236768"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm247077296",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm242471664",
+                "segmentId": "m68751:problem:fs-idm242471664"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm250627520",
+                "segmentId": "m68751:solution:fs-idm250627520"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp25823920",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm211956816",
+                "segmentId": "m68751:problem:fs-idm211956816"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm188679440",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33917680",
+                "segmentId": "m68751:problem:fs-idm33917680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm187706512",
+                "segmentId": "m68751:problem:fs-idm187706512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm118579008",
+                "segmentId": "m68751:problem:fs-idm118579008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm247454720",
+                "segmentId": "m68751:problem:fs-idm247454720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm149859408",
+                "segmentId": "m68751:problem:fs-idm149859408"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm121529056",
+                "segmentId": "m68751:solution:fs-idm121529056"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm259995696",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm158397552",
+                "segmentId": "m68751:problem:fs-idm158397552"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp25675936",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm180268096",
+                "segmentId": "m68751:problem:fs-idm180268096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm198422416",
+                "segmentId": "m68751:problem:fs-idm198422416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm139801328",
+                "segmentId": "m68751:problem:fs-idm139801328"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm152319568",
+                "segmentId": "m68751:solution:fs-idm152319568"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm26646416",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm192031120",
+                "segmentId": "m68751:problem:fs-idm192031120"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm23005472",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm19205792",
+                "segmentId": "m68751:problem:fs-idm19205792"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm213823536",
+                "segmentId": "m68751:solution:fs-idm213823536"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm189510384",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm157793824",
+                "segmentId": "m68751:problem:fs-idm157793824"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm136587680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm193016160",
+                "segmentId": "m68751:problem:fs-idm193016160"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm232238224",
+                "segmentId": "m68751:solution:fs-idm232238224"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68751:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68751:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68751:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp80443824",
+        "termSegmentId": "m68751:glossary-term:fs-idp80443824-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idp80443824-def"
+      },
+      {
+        "id": "fs-idp77543648",
+        "termSegmentId": "m68751:glossary-term:fs-idp77543648-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idp77543648-def"
+      },
+      {
+        "id": "fs-idm85214288",
+        "termSegmentId": "m68751:glossary-term:fs-idm85214288-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idm85214288-def"
+      },
+      {
+        "id": "fs-idm51295520",
+        "termSegmentId": "m68751:glossary-term:fs-idm51295520-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idm51295520-def"
+      },
+      {
+        "id": "fs-idm100735488",
+        "termSegmentId": "m68751:glossary-term:fs-idm100735488-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idm100735488-def"
+      },
+      {
+        "id": "fs-idm161542192",
+        "termSegmentId": "m68751:glossary-term:fs-idm161542192-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idm161542192-def"
+      },
+      {
+        "id": "fs-idm78852976",
+        "termSegmentId": "m68751:glossary-term:fs-idm78852976-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idm78852976-def"
+      },
+      {
+        "id": "fs-idm111878496",
+        "termSegmentId": "m68751:glossary-term:fs-idm111878496-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idm111878496-def"
+      },
+      {
+        "id": "fs-idm158190720",
+        "termSegmentId": "m68751:glossary-term:fs-idm158190720-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idm158190720-def"
+      },
+      {
+        "id": "fs-idm62647600",
+        "termSegmentId": "m68751:glossary-term:fs-idm62647600-term",
+        "definitionSegmentId": "m68751:glossary-def:fs-idm62647600-def"
+      }
+    ]
+  },
+  "sectionOrder": 2
+}

@@ -1,0 +1,1006 @@
+{
+  "moduleId": "m68794",
+  "title": {
+    "segmentId": "m68794:title:auto-1",
+    "text": "Reaction Mechanisms"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "5e902df9-c745-4aa6-a971-669706f327a2",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Distinguish net reactions from elementary reactions (steps)",
+        "Identify the molecularity of elementary reactions",
+        "Write a balanced chemical equation for a process given its reaction mechanism",
+        "Derive the rate law consistent with a given reaction mechanism"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp19792192",
+      "segmentId": "m68794:para:fs-idp19792192"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm10360272",
+      "segmentId": "m68794:para:fs-idm10360272"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp10305696",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm40865648",
+      "segmentId": "m68794:para:fs-idm40865648"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp143616928",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp205634512",
+      "segmentId": "m68794:para:fs-idp205634512"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp6340064",
+      "segmentId": "m68794:para:fs-idp6340064"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm500275472",
+      "segmentId": "m68794:para:fs-idm500275472"
+    },
+    {
+      "type": "section",
+      "id": "fs-idp262348128",
+      "class": null,
+      "title": {
+        "segmentId": "m68794:title:fs-idp262348128-title",
+        "text": "Unimolecular Elementary Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp205522704",
+          "segmentId": "m68794:para:fs-idp205522704"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp34074352",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp13674832",
+          "segmentId": "m68794:para:fs-idp13674832"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm26736096",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp203524640",
+          "segmentId": "m68794:para:fs-idp203524640"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp16624720",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp196763520",
+          "segmentId": "m68794:para:fs-idp196763520"
+        },
+        {
+          "type": "media",
+          "id": "fs-idp32755824",
+          "class": "scaled-down",
+          "alt": "In this figure, structural formulas are used to illustrate a chemical reaction. On the left, a structural formula for cyclobutane is shown. This structure is composed of 4 C atoms connected with single bonds in a square shape. Each C atom is bonded to two other C atoms in the structure, leaving two bonds for H atoms pointing outward above, below, left, and right. An arrow points right to two identical ethane molecules with a plus symbol between them. Each of these molecules contains two C atoms connected with a double bond oriented vertically between them. The C atom at the top of these molecules has H atoms bonded above to the right and left. Similarly, the lower C atom has two H atoms bonded below to the right and left.",
+          "src": "../../media/CNX_Chem_12_06_CyclobD_img.jpg"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp100963616",
+          "segmentId": "m68794:para:fs-idp100963616"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp67724640",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp128923296",
+          "segmentId": "m68794:para:fs-idp128923296"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp108234736",
+      "class": null,
+      "title": {
+        "segmentId": "m68794:title:fs-idp108234736-title",
+        "text": "Bimolecular Elementary Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp87793216",
+          "segmentId": "m68794:para:fs-idp87793216"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp211065760",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm80729584",
+          "segmentId": "m68794:para:fs-idm80729584"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm26928768",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp220120832",
+          "segmentId": "m68794:para:fs-idp220120832"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp93993280",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp43609744",
+          "segmentId": "m68794:para:fs-idp43609744"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm24253872",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp38254032",
+          "segmentId": "m68794:para:fs-idp38254032"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_06_BimoElRe",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68794:caption:CNX_Chem_12_06_BimoElRe-caption"
+          },
+          "media": {
+            "id": "fs-idp70495312",
+            "alt": "This figure provides an illustration of a reaction between two H I molecules using space filling models. H atoms are shown as white spheres, and I atoms are shown as purple spheres. On the left, two H I molecules are shownwith a small white sphere bonded to a much larger purple sphere. The label, “Two H I molecules,” appears below. An arrow points right to a similar structure in which the two molecules appear pushed together, so that the purple spheres of the two molecules are touching. Below appears the label, “Transition state.” Following another arrow, two white spheres are shown vertically oriented and bonded together with the label, “H subscript 2” above. The H subscript 2 molecule is followed by a plus sign and two purple spheres bonded together with the label, “I subscript 2” above. Below these structures is the label, “Hydrogen iodide molecules decompose to produce hydrogen H subscript 2 and iodine I subscript 2.”",
+            "src": "../../media/CNX_Chem_12_06_BimoElRe.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp38432416",
+          "segmentId": "m68794:para:fs-idp38432416"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp100763440",
+          "class": "unnumbered"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp38909440",
+      "class": null,
+      "title": {
+        "segmentId": "m68794:title:fs-idp38909440-title",
+        "text": "Termolecular Elementary Reactions"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm9155392",
+          "segmentId": "m68794:para:fs-idm9155392"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp196238032",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp136937056",
+          "segmentId": "m68794:para:fs-idp136937056"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp128771280",
+          "class": "unnumbered"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp270477600",
+      "class": null,
+      "title": {
+        "segmentId": "m68794:title:fs-idp270477600-title",
+        "text": "Relating Reaction Mechanisms to Rate Laws"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp253615520",
+          "segmentId": "m68794:para:fs-idp253615520"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_06_Cattle",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68794:caption:CNX_Chem_12_06_Cattle-caption"
+          },
+          "media": {
+            "id": "fs-idp96445120",
+            "alt": "A photo is shown of cattle passing through a narrow chute into a holding pen. A person directs them through the gate with a long white and red pole.",
+            "src": "../../media/CNX_Chem_12_06_Cattle.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp41680064",
+          "segmentId": "m68794:para:fs-idp41680064"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp193034480",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp18907792",
+          "segmentId": "m68794:para:fs-idp18907792"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp70556928",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp43466688",
+          "segmentId": "m68794:para:fs-idp43466688"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp232335904",
+          "segmentId": "m68794:para:fs-idp232335904"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm80864896",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp70725520",
+          "segmentId": "m68794:para:fs-idp70725520"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp34145072",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp107509104",
+          "segmentId": "m68794:para:fs-idp107509104"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp37457664",
+          "segmentId": "m68794:para:fs-idp37457664"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp17102832",
+          "segmentId": "m68794:para:fs-idp17102832"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp65516752",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm76069968",
+          "segmentId": "m68794:para:fs-idm76069968"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp95214240",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp32322000",
+          "segmentId": "m68794:para:fs-idp32322000"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp252983408",
+          "title": {
+            "segmentId": "m68794:example-title:fs-idp252983408-title",
+            "text": "Deriving a Rate Law from a Reaction Mechanism"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm378927696",
+              "segmentId": "m68794:para:fs-idm378927696"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm352158848",
+              "segmentId": "m68794:para:fs-idm352158848"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm359312208",
+              "segmentId": "m68794:para:fs-idm359312208",
+              "title": {
+                "segmentId": "m68794:para-title:fs-idm359312208-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm345501040",
+              "segmentId": "m68794:para:fs-idm345501040"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm328804768",
+              "segmentId": "m68794:para:fs-idm328804768"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm328530432",
+              "segmentId": "m68794:para:fs-idm328530432"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm385514496",
+              "segmentId": "m68794:para:fs-idm385514496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm328658256",
+              "segmentId": "m68794:para:fs-idm328658256",
+              "title": {
+                "segmentId": "m68794:para-title:fs-idm328658256-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm373041168",
+              "segmentId": "m68794:para:fs-idm373041168"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm361032656",
+              "segmentId": "m68794:para:fs-idm361032656"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm496065264"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm345484992"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm514969616"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm386271152"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm373566368"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm389297024"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm330964176",
+              "title": {
+                "segmentId": "m68794:note-title:fs-idm330964176-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm361032656",
+                  "segmentId": "m68794:para:fs-idm361032656"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp145811120",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68794:title:fs-idp145811120-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp240124176",
+          "segmentId": "m68794:para:fs-idp240124176"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm483184",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68794:title:fs-idm483184-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm14620304",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp78909952",
+                "segmentId": "m68794:problem:fs-idp78909952"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp146992064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp253834368",
+                "segmentId": "m68794:problem:fs-idp253834368"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp153239360",
+                "segmentId": "m68794:solution:fs-idp153239360"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp48807664",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp192842416",
+                "segmentId": "m68794:problem:fs-idp192842416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp147769328",
+                "segmentId": "m68794:problem:fs-idp147769328"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm14282208",
+                "segmentId": "m68794:problem:fs-idm14282208"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm33506976",
+                "segmentId": "m68794:problem:fs-idm33506976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp19671456",
+                "segmentId": "m68794:problem:fs-idp19671456"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm4441216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm33972032",
+                "segmentId": "m68794:problem:fs-idm33972032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp74514816",
+                "segmentId": "m68794:solution:fs-idp74514816"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp38703248",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp46432976",
+                "segmentId": "m68794:problem:fs-idp46432976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp67815216",
+                "segmentId": "m68794:problem:fs-idp67815216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp74086640",
+                "segmentId": "m68794:problem:fs-idp74086640"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp6788416",
+                "segmentId": "m68794:problem:fs-idp6788416"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp196669424",
+                "segmentId": "m68794:problem:fs-idp196669424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp16831200",
+                "segmentId": "m68794:problem:fs-idp16831200"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp199466816",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp232339888",
+                "segmentId": "m68794:problem:fs-idp232339888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp19897360",
+                "segmentId": "m68794:problem:fs-idp19897360"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm10573776",
+                "segmentId": "m68794:problem:fs-idm10573776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp84028352",
+                "segmentId": "m68794:problem:fs-idp84028352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp138181888",
+                "segmentId": "m68794:problem:fs-idp138181888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp252526240",
+                "segmentId": "m68794:problem:fs-idp252526240"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm1295248",
+                "segmentId": "m68794:solution:fs-idm1295248"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp63617152",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm34461424",
+                "segmentId": "m68794:problem:fs-idm34461424"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp105142944",
+                "segmentId": "m68794:problem:fs-idp105142944"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm20987200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp105816432",
+                "segmentId": "m68794:problem:fs-idp105816432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp138927296",
+                "segmentId": "m68794:problem:fs-idp138927296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp12567072",
+                "segmentId": "m68794:problem:fs-idp12567072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65094304",
+                "segmentId": "m68794:problem:fs-idp65094304"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp59515264",
+                "segmentId": "m68794:problem:fs-idp59515264"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp219904240",
+                "segmentId": "m68794:problem:fs-idp219904240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp37050608",
+                "segmentId": "m68794:problem:fs-idp37050608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp79345216",
+                "segmentId": "m68794:problem:fs-idp79345216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp196835696",
+                "segmentId": "m68794:problem:fs-idp196835696"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65580160",
+                "segmentId": "m68794:problem:fs-idp65580160"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp265543072",
+                "segmentId": "m68794:problem:fs-idp265543072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp72418144",
+                "segmentId": "m68794:problem:fs-idp72418144"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp77008528",
+                "segmentId": "m68794:solution:fs-idp77008528"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp16941152",
+          "class": "unnumbered",
+          "summary": "This table has four columns and five rows. The first row is a header row and it labels each column, “Experiment,” “Initial Concentration [ N O ] ( mol / L ),” “Initial Concentration, [ H subscript 2 ] ( mol / L ),” and “Initial Rate of Formation of N subscript 2 ( mol / L min ).” Under the “Experiment” columns are the numbers: 1, 2, 3, and 4. Under the “Initial Concentration [ N O ] ( mol / L )” column are the numbers: 0.0060, 0.0060, 0.0010, and 0.0020. Under the “Initial Concentration, [ H subscript 2 ] ( mol / L )” column are the numbers: 0.0010, 0.0020, 0.0060, 0.0060. Under the “Initial Rate of Formation of N subscript 2 ( mol / L min )” are the numbers: 1.8 times ten to the negative 4; 3.6 times ten to the negative 4; 0.30 times ten to the negative 4; and 1.2 times ten to the negative 4.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68794:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68794:entry:auto-104",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-105",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-106",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-107",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68794:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68794:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68794:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-118",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68794:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp225129424",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp244877904",
+                "segmentId": "m68794:problem:fs-idp244877904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp38932624",
+                "segmentId": "m68794:problem:fs-idp38932624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp180368",
+                "segmentId": "m68794:problem:fs-idp180368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp106886192",
+                "segmentId": "m68794:problem:fs-idp106886192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp107103328",
+                "segmentId": "m68794:problem:fs-idp107103328"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68794:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68794:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68794:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68794:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68794:abstract-item:abstract-item-4"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp131244384",
+        "termSegmentId": "m68794:glossary-term:fs-idp131244384-term",
+        "definitionSegmentId": "m68794:glossary-def:fs-idp131244384-def"
+      },
+      {
+        "id": "fs-idp36862592",
+        "termSegmentId": "m68794:glossary-term:fs-idp36862592-term",
+        "definitionSegmentId": "m68794:glossary-def:fs-idp36862592-def"
+      },
+      {
+        "id": "fs-idp63453216",
+        "termSegmentId": "m68794:glossary-term:fs-idp63453216-term",
+        "definitionSegmentId": "m68794:glossary-def:fs-idp63453216-def"
+      },
+      {
+        "id": "fs-idp7133520",
+        "termSegmentId": "m68794:glossary-term:fs-idp7133520-term",
+        "definitionSegmentId": "m68794:glossary-def:fs-idp7133520-def"
+      },
+      {
+        "id": "fs-idp105000160",
+        "termSegmentId": "m68794:glossary-term:fs-idp105000160-term",
+        "definitionSegmentId": "m68794:glossary-def:fs-idp105000160-def"
+      },
+      {
+        "id": "fs-idp154473568",
+        "termSegmentId": "m68794:glossary-term:fs-idp154473568-term",
+        "definitionSegmentId": "m68794:glossary-def:fs-idp154473568-def"
+      },
+      {
+        "id": "fs-idp251542624",
+        "termSegmentId": "m68794:glossary-term:fs-idp251542624-term",
+        "definitionSegmentId": "m68794:glossary-def:fs-idp251542624-def"
+      },
+      {
+        "id": "fs-idm2926992",
+        "termSegmentId": "m68794:glossary-term:fs-idm2926992-term",
+        "definitionSegmentId": "m68794:glossary-def:fs-idm2926992-def"
+      }
+    ]
+  },
+  "sectionOrder": 6
+}

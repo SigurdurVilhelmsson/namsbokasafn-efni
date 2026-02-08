@@ -1,0 +1,81 @@
+{
+  "moduleId": "m68785",
+  "title": {
+    "segmentId": "m68785:title:auto-1",
+    "text": "Introduction"
+  },
+  "documentClass": "introduction",
+  "metadata": {
+    "uuid": "b451b1e5-82ab-48c4-8275-37628dd79df7",
+    "abstract": {
+      "intro": null,
+      "items": [
+        "Chemical Reaction Rates",
+        "Factors Affecting Reaction Rates",
+        "Rate Laws",
+        "Integrated Rate Laws",
+        "Collision Theory",
+        "Reaction Mechanisms",
+        "Catalysis"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "CNX_Chem_12_00_Ectotherm",
+      "class": "splash",
+      "caption": {
+        "segmentId": "m68785:caption:CNX_Chem_12_00_Ectotherm-caption"
+      },
+      "media": {
+        "id": "fs-idm5395072",
+        "alt": "A photograph shows the head and part of the body of a lizard on a rock in a well-lit area.",
+        "src": "../../media/CNX_Chem_12_00_Ectotherm.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idp115543984",
+      "segmentId": "m68785:para:fs-idp115543984"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp54243872",
+      "segmentId": "m68785:para:fs-idp54243872"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp260947472",
+      "segmentId": "m68785:para:fs-idp260947472"
+    }
+  ],
+  "abstract": {
+    "intro": null,
+    "items": [
+      {
+        "segmentId": "m68785:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68785:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68785:abstract-item:abstract-item-3"
+      },
+      {
+        "segmentId": "m68785:abstract-item:abstract-item-4"
+      },
+      {
+        "segmentId": "m68785:abstract-item:abstract-item-5"
+      },
+      {
+        "segmentId": "m68785:abstract-item:abstract-item-6"
+      },
+      {
+        "segmentId": "m68785:abstract-item:abstract-item-7"
+      }
+    ]
+  },
+  "sectionOrder": 0
+}

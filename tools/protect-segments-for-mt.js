@@ -34,9 +34,8 @@ import fs from 'fs';
 import path from 'path';
 
 // Character limits
-const DEFAULT_CHAR_LIMIT = 14000;
-// eslint-disable-next-line no-unused-vars
-const HARD_LIMIT = 20000; // Reserved for validation
+const DEFAULT_CHAR_LIMIT = 12000; // 8k buffer for tag overhead + safety margin
+const HARD_LIMIT = 20000; // Hard limit for validation
 
 // Patterns for "invisible" content (not counted toward character limit)
 const INVISIBLE_PATTERNS = [
@@ -78,10 +77,11 @@ protect-segments-for-mt.js - Protect segment files for Erlendur MT
 Converts segment tags to MT-safe format and splits by visible character count.
 
 What it does:
-  1. Converts <!-- SEG:xxx --> to [[SEG:xxx]] (survives MT with escaping)
-  2. Counts only VISIBLE characters (excludes [[SEG:...]], [[MATH:...]])
-  3. Splits at paragraph boundaries if >14K visible characters
-  4. Outputs files with (a), (b), (c) suffixes when split
+  1. Converts <!-- SEG:xxx --> to {{SEG:xxx}} (survives MT with escaping)
+  2. Counts only VISIBLE characters (excludes {{SEG:...}}, [[MATH:...]])
+  3. Splits at paragraph boundaries if >12K visible characters (default)
+  4. Validates no part exceeds 20K total characters (hard limit)
+  5. Outputs files with (a), (b), (c) suffixes when split
 
 Usage:
   node tools/protect-segments-for-mt.js <segments-file.en.md> [options]
@@ -90,7 +90,7 @@ Usage:
 Options:
   --output-dir, -o <dir>  Output directory (default: same as input)
   --batch <dir>           Process all *-segments.en.md files in directory
-  --char-limit <n>        Visible character limit (default: 14000)
+  --char-limit <n>        Visible character limit (default: 12000)
   --dry-run, -n           Show what would be done without writing files
   --verbose, -v           Show detailed progress
   -h, --help              Show this help message
@@ -179,6 +179,22 @@ function splitByVisibleChars(content, charLimit, verbose = false) {
     const para = paragraphs[i];
     const paraVisible = getVisibleCharCount(para);
 
+    // Check if single paragraph exceeds limit
+    if (paraVisible > charLimit) {
+      console.warn(
+        `⚠️  WARNING: Paragraph ${i + 1} has ${paraVisible} visible chars (limit: ${charLimit})`
+      );
+      console.warn('   This paragraph will be in its own part and may exceed the hard limit.');
+      // Force it into its own part
+      if (currentPart.length > 0) {
+        parts.push(currentPart.join('\n\n'));
+        currentPart = [];
+        currentVisibleCount = 0;
+      }
+      parts.push(para); // Paragraph becomes its own part
+      continue;
+    }
+
     // If adding this paragraph would exceed limit, start new part
     // But always include at least one paragraph per part
     if (currentPart.length > 0 && currentVisibleCount + paraVisible + 2 > charLimit) {
@@ -198,6 +214,29 @@ function splitByVisibleChars(content, charLimit, verbose = false) {
   // Don't forget the last part
   if (currentPart.length > 0) {
     parts.push(currentPart.join('\n\n'));
+  }
+
+  // Validate parts don't exceed hard limit
+  const oversizedParts = [];
+  parts.forEach((part, idx) => {
+    if (part.length > HARD_LIMIT) {
+      oversizedParts.push({
+        index: idx,
+        size: part.length,
+        visibleSize: getVisibleCharCount(part),
+      });
+    }
+  });
+
+  if (oversizedParts.length > 0) {
+    console.error('\n❌ ERROR: Some parts exceed the 20,000 character hard limit:');
+    oversizedParts.forEach((p) => {
+      console.error(`  Part ${p.index + 1}: ${p.size} total chars (${p.visibleSize} visible)`);
+    });
+    console.error('\nThis file cannot be processed by MT. Consider:');
+    console.error('  1. Lowering --char-limit (currently: ' + charLimit + ')');
+    console.error('  2. Manually splitting large paragraphs at sentence boundaries');
+    throw new Error('File parts exceed hard limit');
   }
 
   return parts;
@@ -279,8 +318,16 @@ function processFile(inputPath, outputDir, options) {
     console.log(`  Parts: ${parts.length}`);
     for (let i = 0; i < parts.length; i++) {
       const partVisible = getVisibleCharCount(parts[i]);
+      const partTotal = parts[i].length;
+      const overhead = partTotal - partVisible;
+      const pctUsed = ((partTotal / HARD_LIMIT) * 100).toFixed(1);
+
+      let status = '✓';
+      if (partTotal > HARD_LIMIT * 0.9) status = '⚠️'; // Within 10% of limit
+      if (partTotal > HARD_LIMIT) status = '❌';
+
       console.log(
-        `    Part ${String.fromCharCode(97 + i)}: ${partVisible} visible chars, ${parts[i].length} total`
+        `    Part ${String.fromCharCode(97 + i)}: ${partVisible} visible, ${partTotal} total (${overhead} overhead, ${pctUsed}% of limit) ${status}`
       );
     }
   }

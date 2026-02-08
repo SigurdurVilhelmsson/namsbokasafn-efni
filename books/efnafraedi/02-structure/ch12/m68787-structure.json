@@ -1,0 +1,363 @@
+{
+  "moduleId": "m68787",
+  "title": {
+    "segmentId": "m68787:title:auto-1",
+    "text": "Factors Affecting Reaction Rates"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "7ce1385c-f564-4c79-be86-20dce552bcb6",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Describe the effects of chemical nature, physical state, temperature, concentration, and catalysis on reaction rates"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm233990000",
+      "segmentId": "m68787:para:fs-idm233990000"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm58413648",
+      "class": null,
+      "title": {
+        "segmentId": "m68787:title:fs-idm58413648-title",
+        "text": "The Chemical Nature of the Reacting Substances"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm103128016",
+          "segmentId": "m68787:para:fs-idm103128016"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm83714000",
+      "class": null,
+      "title": {
+        "segmentId": "m68787:title:fs-idm83714000-title",
+        "text": "The Physical States of the Reactants"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm89852336",
+          "segmentId": "m68787:para:fs-idm89852336"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_02_AcidDissol",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68787:caption:CNX_Chem_12_02_AcidDissol-caption"
+          },
+          "media": {
+            "id": "fs-idm108837008",
+            "alt": "This figure shows two photos labeled (a) and (b). Photo (a) shows the bottom of a test tube. The test tube is filled with a dark gas, and there is a dark substance and bubbles in the bottom. Photo (b) shows a rod and bubbles in a test tube similar to photo (a), but the gas in the test tube is not as dark.",
+            "src": "../../media/CNX_Chem_12_02_AcidDissol.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idm104157008",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm33181984",
+              "segmentId": "m68787:para:fs-idm33181984"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm100022464",
+      "class": null,
+      "title": {
+        "segmentId": "m68787:title:fs-idm100022464-title",
+        "text": "Temperature of the Reactants"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp8529552",
+          "segmentId": "m68787:para:fs-idp8529552"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm145319392",
+      "class": null,
+      "title": {
+        "segmentId": "m68787:title:fs-idm145319392-title",
+        "text": "Concentrations of the Reactants"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm31855392",
+          "segmentId": "m68787:para:fs-idm31855392"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm37870480",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp125234816",
+          "segmentId": "m68787:para:fs-idp125234816"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp86192224",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm233971872",
+          "segmentId": "m68787:para:fs-idm233971872"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_02_NYSStatue",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68787:caption:CNX_Chem_12_02_NYSStatue-caption"
+          },
+          "media": {
+            "id": "fs-idm66889568",
+            "alt": "A photograph is shown of an angel statue. While some details of the statue, including facial features, are present, effects of weathering appear to be diminishing these features.",
+            "src": "../../media/CNX_Chem_12_02_NYSStatue.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "note",
+          "id": "fs-idp91411184",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm30692176",
+              "segmentId": "m68787:para:fs-idm30692176"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm33945488",
+      "class": null,
+      "title": {
+        "segmentId": "m68787:title:fs-idm33945488-title",
+        "text": "The Presence of a Catalyst"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm99481872",
+          "segmentId": "m68787:para:fs-idm99481872"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm641705824",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm237313312",
+          "segmentId": "m68787:para:fs-idm237313312"
+        },
+        {
+          "type": "note",
+          "id": "fs-idm166887552",
+          "class": "chemistry link-to-learning",
+          "title": null,
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm89663808",
+              "segmentId": "m68787:para:fs-idm89663808"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm70094032",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68787:title:fs-idm70094032-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm63455008",
+          "segmentId": "m68787:para:fs-idm63455008"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm87447680",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68787:title:fs-idm87447680-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idm30837936",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm151736608",
+                "segmentId": "m68787:problem:fs-idm151736608"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm120667552",
+                "segmentId": "m68787:solution:fs-idm120667552"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm86018304",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm102912640",
+                "segmentId": "m68787:problem:fs-idm102912640"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm66513728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm176952992",
+                "segmentId": "m68787:problem:fs-idm176952992"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm60742624",
+                "segmentId": "m68787:problem:fs-idm60742624"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm63859552",
+                "segmentId": "m68787:problem:fs-idm63859552"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp85957568",
+                "segmentId": "m68787:solution:fs-idp85957568"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm66455280",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm63416144",
+                "segmentId": "m68787:problem:fs-idm63416144"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm49710224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm26937872",
+                "segmentId": "m68787:problem:fs-idm26937872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm148287808",
+                "segmentId": "m68787:problem:fs-idm148287808"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm144569264",
+                "segmentId": "m68787:problem:fs-idm144569264"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm111616960",
+                "segmentId": "m68787:solution:fs-idm111616960"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68787:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68787:abstract-item:abstract-item-1"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp102379584",
+        "termSegmentId": "m68787:glossary-term:fs-idp102379584-term",
+        "definitionSegmentId": "m68787:glossary-def:fs-idp102379584-def"
+      }
+    ]
+  },
+  "sectionOrder": 2
+}

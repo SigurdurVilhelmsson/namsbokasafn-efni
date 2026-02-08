@@ -1,0 +1,880 @@
+{
+  "moduleId": "m68786",
+  "title": {
+    "segmentId": "m68786:title:auto-1",
+    "text": "Chemical Reaction Rates"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "19ee5333-b3d6-42c0-9ee6-ca6fcf3b1c62",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Define chemical reaction rate",
+        "Derive rate expressions from the balanced equation for a given chemical reaction",
+        "Calculate reaction rates from experimental data"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp37629504",
+      "segmentId": "m68786:para:fs-idp37629504"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp11492384",
+      "segmentId": "m68786:para:fs-idp11492384"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm49411904",
+      "segmentId": "m68786:para:fs-idm49411904"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp26890848",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp202399680",
+      "segmentId": "m68786:para:fs-idp202399680"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm23827472",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp37715584",
+      "segmentId": "m68786:para:fs-idp37715584"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_12_01_KDataH2O2",
+      "caption": {
+        "segmentId": "m68786:caption:CNX_Chem_12_01_KDataH2O2-caption"
+      },
+      "media": {
+        "id": "fs-idp13735104",
+        "alt": "A table with five columns is shown. The first column is labeled, “Time, h.” Beneath it the numbers 0.00, 6.00, 12.00, 18.00, and 24.00 are listed. The second column is labeled, “[ H subscript 2 O subscript 2 ], mol / L.” Below, the numbers 1.000, 0.500, 0.250, 0.125, and 0.0625 are double spaced. To the right, a third column is labeled, “capital delta [ H subscript 2 O subscript 2 ], mol / L.” Below, the numbers negative 0.500, negative 0.250, negative 0.125, and negative 0.062 are listed such that they are double spaced and offset, beginning one line below the first number listed in the column labeled, “[ H subscript 2 O subscript 2 ], mol / L.” The first two numbers in the second column have line segments extending from their right side to the left side of the first number in the third row. The second and third numbers in the second column have line segments extending from their right side to the left side of the second number in the third row. The third and fourth numbers in the second column have line segments extending from their right side to the left side of the third number in the third row. The fourth and fifth numbers in the second column have line segments extending from their right side to the left side of the fourth number in the third row. The fourth column in labeled, “capital delta t, h.” Below the title, the value 6.00 is listed four times, each single-spaced. The fifth and final column is labeled “Rate of Decomposition, mol / L superscript negative 1 / h superscript negative 1.” Below, the following values are listed single-spaced: negative 0.0833, negative 0.0417, negative 0.0208, and negative 0.010.",
+        "src": "../../media/CNX_Chem_12_01_KDataH2O2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm29280704",
+      "segmentId": "m68786:para:fs-idm29280704"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm14828496",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp40709888",
+      "segmentId": "m68786:para:fs-idp40709888"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp151295040",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp101513872",
+      "segmentId": "m68786:para:fs-idp101513872"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm65553280",
+      "segmentId": "m68786:para:fs-idm65553280"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_12_01_RRateIll",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68786:caption:CNX_Chem_12_01_RRateIll-caption"
+      },
+      "media": {
+        "id": "fs-idp329500576",
+        "alt": "A graph is shown with the label, “Time ( h ),” appearing on the x-axis and “[ H subscript 2 O subscript 2 ] ( mol per L)” on the y-axis. The x-axis markings begin at 0.00 and end at 24.00. The markings are labeled at intervals of 6.00. The y-axis begins at 0.000 and includes markings every 0.200, up to 1.000. A decreasing, concave up, non-linear curve is shown, which begins at 1.000 on the y-axis and nearly reaches a value of 0 at the far right of the graph around 24.00 on the x-axis. A red tangent line segment is drawn on the graph at the point where the graph intersects the y-axis at 1.000. The slope is labeled as “slope equals negative capital delta [H subscript 2 O subscript 2 ] over capital delta t subscript 0 equals initial rate”. A vertical dashed line segment extends from the left endpoint of the line segment downward to intersect with a similar horizontal line segment drawn from the right endpoint of the line segment, forming a right triangle beneath the curve. The vertical leg of the triangle is labeled “capital delta [ H subscript 2 O subscript 2 ]” and the horizontal leg is labeled, “capital delta t.” The slope is labeled as “slope equals negative capital delta [H subscript 2 O subscript 2 ] over capital delta t subscript 12 equals instantaneous rate at 12 h.” A second red tangent line segment is drawn near the middle of the curve at 12.00 on the x-axis. A vertical dashed line segment extends from the left endpoint of the line segment downward to intersect with a similar horizontal line segment drawn from the right endpoint of the line segment, forming a right triangle beneath the curve. The vertical leg of the triangle is labeled “capital delta [ H subscript 2 O subscript 2 ]” and the horizontal leg is labeled, “capital delta t.”",
+        "src": "../../media/CNX_Chem_12_01_RRateIll.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "note",
+      "id": "fs-idm69729856",
+      "class": "chemistry everyday-life",
+      "title": {
+        "segmentId": "m68786:note-title:fs-idm69729856-title",
+        "text": "Reaction Rates in Analysis: Test Strips for Urinalysis"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp8375264",
+          "segmentId": "m68786:para:fs-idp8375264"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp37368560",
+          "segmentId": "m68786:para:fs-idp37368560"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp79309424",
+          "segmentId": "m68786:para:fs-idp79309424"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm13608336",
+          "segmentId": "m68786:para:fs-idm13608336"
+        }
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_12_01_Urinestrip",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68786:caption:CNX_Chem_12_01_Urinestrip-caption"
+      },
+      "media": {
+        "id": "fs-idp35718480",
+        "alt": "A photograph shows 8 test strips laid on paper toweling. Each strip contains 11 small sections of various colors, including yellow, tan, black, red, orange, blue, white, and green.",
+        "src": "../../media/CNX_Chem_12_01_Urinestrip.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "section",
+      "id": "fs-idm24537456",
+      "class": null,
+      "title": {
+        "segmentId": "m68786:title:fs-idm24537456-title",
+        "text": "Relative Rates of Reaction"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm26303136",
+          "segmentId": "m68786:para:fs-idm26303136"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm246244416",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm219494144",
+          "segmentId": "m68786:para:fs-idm219494144"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm243742160",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm641684800",
+          "segmentId": "m68786:para:fs-idm641684800"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp46974560",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm52700320",
+          "segmentId": "m68786:para:fs-idm52700320"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm85736576",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp170662352",
+          "segmentId": "m68786:para:fs-idp170662352"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp45966480",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm93957280",
+          "segmentId": "m68786:para:fs-idm93957280"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm13902288",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm70320608",
+          "segmentId": "m68786:para:fs-idm70320608"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm22894544",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp24387584",
+          "segmentId": "m68786:para:fs-idp24387584"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idp160610960",
+          "class": "unnumbered"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_01_NH3Decomp",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68786:caption:CNX_Chem_12_01_NH3Decomp-caption"
+          },
+          "media": {
+            "id": "fs-idm83425632",
+            "alt": "A graph is shown with the label, “Time ( s ),” appearing on the x-axis and, “Concentration ( M ),” on the y-axis. The x-axis markings begin at 0 and end at 2000. The markings are labeled at intervals of 500. The y-axis begins at 0 and includes markings every 1.0 times 10 superscript negative 3, up to 4.0 times 10 superscript negative 3. A decreasing, concave up, non-linear curve is shown, which begins at about 2.8 times 10 superscript negative 3 on the y-axis and nearly reaches a value of 0 at the far right of the graph at the 2000 marking on the x-axis. This curve is labeled, “[ N H subscript 3].” Two additional curves that are increasing and concave down are shown, both beginning at the origin. The lower of these two curves is labeled, “[ N subscript 2 ].” It reaches a value of approximately 1.25 times 10 superscript negative 3 at 2000 seconds. The final curve is labeled, “[ H subscript 2 ].” It reaches a value of about 3.9 times 10 superscript negative 3 at 2000 seconds. A red tangent line segment is drawn to each of the curves on the graph at 500 seconds. At 500 seconds on the x-axis, a vertical dashed line is shown. Next to the [ N H subscript 3] graph appears the equation “negative capital delta [ N H subscript 3 ] over capital delta t = negative slope = 1.94 times 10 superscript negative 6 M / s.” Next to the [ N subscript 2] graph appears the equation “negative capital delta [ N subscript 2 ] over capital delta t = negative slope = 9.70 times 10 superscript negative 7 M / s.” Next to the [ H subscript 2 ] graph appears the equation “negative capital delta [ H subscript 2 ] over capital delta t = negative slope = 2.91 times 10 superscript negative 6 M / s.”",
+            "src": "../../media/CNX_Chem_12_01_NH3Decomp.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "example",
+          "id": "fs-idp40614224",
+          "title": {
+            "segmentId": "m68786:example-title:fs-idp40614224-title",
+            "text": "Expressions for Relative Reaction Rates"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp68873968",
+              "segmentId": "m68786:para:fs-idp68873968"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp12553696",
+              "segmentId": "m68786:para:fs-idp12553696"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm42014656",
+              "segmentId": "m68786:para:fs-idm42014656",
+              "title": {
+                "segmentId": "m68786:para-title:fs-idm42014656-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp160458048",
+              "segmentId": "m68786:para:fs-idp160458048",
+              "title": {
+                "segmentId": "m68786:para-title:fs-idp160458048-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm61531952",
+              "segmentId": "m68786:para:fs-idm61531952"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm25685056",
+              "segmentId": "m68786:para:fs-idm25685056"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm14028784"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp78515888"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp202434352"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp88636608",
+              "title": {
+                "segmentId": "m68786:note-title:fs-idp88636608-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm25685056",
+                  "segmentId": "m68786:para:fs-idm25685056"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm24260800",
+          "title": {
+            "segmentId": "m68786:example-title:fs-idm24260800-title",
+            "text": "Solution"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm62578304",
+              "segmentId": "m68786:para:fs-idm62578304"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm78350032",
+              "segmentId": "m68786:para:fs-idm78350032"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp76303472",
+              "segmentId": "m68786:para:fs-idp76303472"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm41764016",
+              "segmentId": "m68786:para:fs-idm41764016"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm80784128",
+              "segmentId": "m68786:para:fs-idm80784128"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm45164304",
+              "segmentId": "m68786:para:fs-idm45164304"
+            },
+            {
+              "type": "para",
+              "id": "continueon",
+              "segmentId": "m68786:para:continueon"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp25364864",
+              "segmentId": "m68786:para:fs-idp25364864",
+              "title": {
+                "segmentId": "m68786:para-title:fs-idp25364864-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm12525296",
+              "segmentId": "m68786:para:fs-idm12525296"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm25186720"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm63360896"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp3043456"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm48629376"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp160741648"
+            },
+            {
+              "type": "equation",
+              "id": "newqe"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp8646208",
+              "title": {
+                "segmentId": "m68786:note-title:fs-idp8646208-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm12525296",
+                  "segmentId": "m68786:para:fs-idm12525296"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp13680896",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68786:title:fs-idp13680896-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp145842032",
+          "segmentId": "m68786:para:fs-idp145842032"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp13917664",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68786:title:fs-idp13917664-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68786:entry:auto-60",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm87178096",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68786:title:fs-idm87178096-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp53700320",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp78829424",
+                "segmentId": "m68786:problem:fs-idp78829424"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp24328736",
+                "segmentId": "m68786:solution:fs-idp24328736"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp77962352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp34774480",
+                "segmentId": "m68786:problem:fs-idp34774480"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm82430624",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm53585440",
+                "segmentId": "m68786:problem:fs-idm53585440"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp8330592",
+                "segmentId": "m68786:solution:fs-idp8330592"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp24119136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm5164144",
+                "segmentId": "m68786:problem:fs-idm5164144"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp8530000",
+                "segmentId": "m68786:problem:fs-idp8530000"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp4423248",
+                "segmentId": "m68786:problem:fs-idp4423248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp17436544",
+                "segmentId": "m68786:problem:fs-idp17436544"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "table",
+          "id": "fs-idm53738576",
+          "class": "column-header unnumbered",
+          "summary": "This table contains two columns and six rows. The first row is a header row and it labels each column, “Time ( s ),” and, “[C subscript 4 H subscript 6] ( M ).” Under the “Time ( s )” column are the numbers: 0, 1600, 3200, 4800, 6200. Under the “[C subscript 4 H subscript 6] ( M )” column are the numbers: 1.00 times ten to the negative two; 5.04 time ten to the negative three; 3.37 time ten to the negative three; 2.53 time ten to the negative three; and 2.08 times ten to the negative three.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68786:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-73",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-74",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-75",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-76",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68786:entry:auto-77",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-78",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-79",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-80",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-81",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-82",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm57147216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp79128192",
+                "segmentId": "m68786:problem:fs-idp79128192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm73606544",
+                "segmentId": "m68786:problem:fs-idm73606544"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm51132096",
+                "segmentId": "m68786:problem:fs-idm51132096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm80091760",
+                "segmentId": "m68786:problem:fs-idm80091760"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm15349328",
+                "segmentId": "m68786:solution:fs-idm15349328"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idp108292976",
+          "class": "column-header unnumbered",
+          "summary": "This table has two columns and eight rows. The first row is a header row and it labels each column, “Time ( s ),” and, “[ A ] ( M ).” Under the “Time ( s )” column are the numbers: 0.0, 5.0, 10.0, 15.0, 20.0, 25.0, and 35.0. Under the “[ A ] ( M )” column are the numbers: 1.00, 0.952, 0.625, 0.465, 0.370, 0.308, and 0.230.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68786:entry:auto-88",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-89",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-90",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-91",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-92",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-93",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-94",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-95",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68786:entry:auto-96",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-97",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-98",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-99",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-100",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-101",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-102",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68786:entry:auto-103",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm40595504",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm31731440",
+                "segmentId": "m68786:problem:fs-idm31731440"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp2868784",
+                "segmentId": "m68786:problem:fs-idp2868784"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68786:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68786:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68786:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68786:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idp11569888",
+        "termSegmentId": "m68786:glossary-term:fs-idp11569888-term",
+        "definitionSegmentId": "m68786:glossary-def:fs-idp11569888-def"
+      },
+      {
+        "id": "fs-idp24984224",
+        "termSegmentId": "m68786:glossary-term:fs-idp24984224-term",
+        "definitionSegmentId": "m68786:glossary-def:fs-idp24984224-def"
+      },
+      {
+        "id": "fs-idp70925872",
+        "termSegmentId": "m68786:glossary-term:fs-idp70925872-term",
+        "definitionSegmentId": "m68786:glossary-def:fs-idp70925872-def"
+      },
+      {
+        "id": "fs-idp172602144",
+        "termSegmentId": "m68786:glossary-term:fs-idp172602144-term",
+        "definitionSegmentId": "m68786:glossary-def:fs-idp172602144-def"
+      },
+      {
+        "id": "fs-idp193131840",
+        "termSegmentId": "m68786:glossary-term:fs-idp193131840-term",
+        "definitionSegmentId": "m68786:glossary-def:fs-idp193131840-def"
+      }
+    ]
+  },
+  "sectionOrder": 1
+}

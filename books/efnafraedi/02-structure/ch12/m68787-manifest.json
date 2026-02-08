@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "moduleId": "m68787",
+  "extractedAt": "2026-02-08T17:36:12.387Z",
+  "sourceHash": "fb05e9fe7788bf44",
+  "segmentCount": 39,
+  "segmentIds": [
+    "m68787:title:auto-1",
+    "m68787:abstract:auto-2",
+    "m68787:abstract-item:abstract-item-1",
+    "m68787:para:fs-idm233990000",
+    "m68787:title:fs-idm58413648-title",
+    "m68787:para:fs-idm103128016",
+    "m68787:title:fs-idm83714000-title",
+    "m68787:para:fs-idm89852336",
+    "m68787:caption:CNX_Chem_12_02_AcidDissol-caption",
+    "m68787:para:fs-idm33181984",
+    "m68787:title:fs-idm100022464-title",
+    "m68787:para:fs-idp8529552",
+    "m68787:title:fs-idm145319392-title",
+    "m68787:para:fs-idm31855392",
+    "m68787:para:fs-idp125234816",
+    "m68787:para:fs-idm233971872",
+    "m68787:caption:CNX_Chem_12_02_NYSStatue-caption",
+    "m68787:para:fs-idm30692176",
+    "m68787:title:fs-idm33945488-title",
+    "m68787:para:fs-idm99481872",
+    "m68787:para:fs-idm237313312",
+    "m68787:para:fs-idm89663808",
+    "m68787:title:fs-idm70094032-title",
+    "m68787:para:fs-idm63455008",
+    "m68787:title:fs-idm87447680-title",
+    "m68787:problem:fs-idm151736608",
+    "m68787:solution:fs-idm120667552",
+    "m68787:problem:fs-idm102912640",
+    "m68787:problem:fs-idm176952992",
+    "m68787:problem:fs-idm60742624",
+    "m68787:problem:fs-idm63859552",
+    "m68787:solution:fs-idp85957568",
+    "m68787:problem:fs-idm63416144",
+    "m68787:problem:fs-idm26937872",
+    "m68787:problem:fs-idm148287808",
+    "m68787:problem:fs-idm144569264",
+    "m68787:solution:fs-idm111616960",
+    "m68787:glossary-term:fs-idp102379584-term",
+    "m68787:glossary-def:fs-idp102379584-def"
+  ],
+  "equationCount": 4,
+  "equationIds": [
+    "math-1",
+    "fs-idm37870480",
+    "fs-idp86192224",
+    "fs-idm641705824"
+  ],
+  "elementCounts": {
+    "para": 25,
+    "section": 7,
+    "figure": 2,
+    "table": 0,
+    "example": 0,
+    "exercise": 5,
+    "note": 3,
+    "equation": 3,
+    "list": 0,
+    "media": 0,
+    "glossary": 1
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_12_02_AcidDissol",
+      "CNX_Chem_12_02_NYSStatue"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [
+      "fs-idm30837936",
+      "fs-idm86018304",
+      "fs-idm66513728",
+      "fs-idm66455280",
+      "fs-idm49710224"
+    ],
+    "note": [
+      "fs-idm104157008",
+      "fs-idp91411184",
+      "fs-idm166887552"
+    ],
+    "equation": [
+      "fs-idm37870480",
+      "fs-idp86192224",
+      "fs-idm641705824"
+    ],
+    "section": [
+      "fs-idm58413648",
+      "fs-idm83714000",
+      "fs-idm100022464",
+      "fs-idm145319392",
+      "fs-idm33945488",
+      "fs-idm70094032",
+      "fs-idm87447680"
+    ]
+  }
+}

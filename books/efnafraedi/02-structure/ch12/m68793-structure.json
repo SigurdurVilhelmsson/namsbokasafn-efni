@@ -1,0 +1,1191 @@
+{
+  "moduleId": "m68793",
+  "title": {
+    "segmentId": "m68793:title:auto-1",
+    "text": "Collision Theory"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "c63c9485-0971-4fce-a831-9d1b2ace526a",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Use the postulates of collision theory to explain the effects of physical state, temperature, and concentration on reaction rates",
+        "Define the concepts of activation energy and transition state",
+        "Use the Arrhenius equation in calculations relating rate constants to temperature"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idm107951360",
+      "segmentId": "m68793:para:fs-idm107951360"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm148062976",
+      "segmentId": "m68793:para:fs-idm148062976"
+    },
+    {
+      "type": "list",
+      "id": "fs-idm90348816",
+      "listType": "enumerated",
+      "numberStyle": "arabic",
+      "bulletStyle": null,
+      "items": [
+        {
+          "id": null,
+          "segmentId": "m68793:item:fs-idm90348816-item-1"
+        },
+        {
+          "id": null,
+          "segmentId": "m68793:item:fs-idm90348816-item-2"
+        },
+        {
+          "id": null,
+          "segmentId": "m68793:item:fs-idm90348816-item-3"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "id": "fs-idm136564352",
+      "segmentId": "m68793:para:fs-idm136564352"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm98497056",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm124479808",
+      "segmentId": "m68793:para:fs-idm124479808"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm122867808",
+      "segmentId": "m68793:para:fs-idm122867808"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm60879872",
+      "segmentId": "m68793:para:fs-idm60879872"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm160481344",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp29940560",
+      "segmentId": "m68793:para:fs-idp29940560"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm121786272",
+      "segmentId": "m68793:para:fs-idm121786272"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idm53948736",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm34761136",
+      "segmentId": "m68793:para:fs-idm34761136"
+    },
+    {
+      "type": "figure",
+      "id": "CNX_Chem_12_05_COandO2",
+      "class": "scaled-down",
+      "caption": {
+        "segmentId": "m68793:caption:CNX_Chem_12_05_COandO2-caption"
+      },
+      "media": {
+        "id": "fs-idm101946976",
+        "alt": "A diagram is shown that illustrates two possible collisions between C O and O subscript 2. In the diagram, oxygen atoms are represented as red spheres and carbon atoms are represented as black spheres. The diagram is divided into upper and lower halves by a horizontal dashed line. At the top left, a C O molecule is shown striking an O subscript 2 molecule such that the O atom from the C O molecule is at the point of collision. Surrounding this collision are a mix of molecules of C O, and O subscript 2 of varying sizes. At the top middle region of the figure, two separated O atoms are shown as red spheres with the label, “Oxygen to oxygen,” beneath them. To the upper right, “No reaction” is written. Similarly in the lower left of the diagram, a C O molecule is shown striking an O subscript 2 molecule such that the C atom from the C O molecule is at the point of collision. Surrounding this collision are a mix of molecules of C O, and O subscript 2 of varying sizes. At the lower middle region of the figure, a black sphere and a red spheres are shown with the label, “Carbon to oxygen,” beneath them. To the lower right, “More C O subscript 2 formation” is written and three models of C O subscript 2 composed each of a single central black sphere and two red spheres in a linear arrangement are shown.",
+        "src": "../../media/CNX_Chem_12_05_COandO2.jpg",
+        "mimeType": "image/jpeg"
+      }
+    },
+    {
+      "type": "para",
+      "id": "fs-idm58992896",
+      "segmentId": "m68793:para:fs-idm58992896"
+    },
+    {
+      "type": "para",
+      "id": "fs-idm207258608",
+      "segmentId": "m68793:para:fs-idm207258608"
+    },
+    {
+      "type": "section",
+      "id": "fs-idm122484320",
+      "class": null,
+      "title": {
+        "segmentId": "m68793:title:fs-idm122484320-title",
+        "text": "Activation Energy and the Arrhenius Equation"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm102149680",
+          "segmentId": "m68793:para:fs-idm102149680"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm3588352",
+          "segmentId": "m68793:para:fs-idm3588352"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm156839952",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm92123120",
+          "segmentId": "m68793:para:fs-idm92123120"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_05_RCooDgm",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68793:caption:CNX_Chem_12_05_RCooDgm-caption"
+          },
+          "media": {
+            "id": "fs-idp10189104",
+            "alt": "A graph is shown with the label, “Extent of reaction,” bon the x-axis and the label, “Energy,” on the y-axis. Above the x-axis, a portion of a curve is labeled “A plus B.” From the right end of this region, the concave down curve continues upward to reach a maximum near the height of the y-axis. The peak of this curve is labeled, “Transition state.” A double sided arrow extends from a dashed red horizontal line that originates at the y-axis at a common endpoint with the curve to the peak of the curve. This arrow is labeled “E subscript a.” A second horizontal red dashed line segment is drawn from the right end of the black curve left to the vertical axis at a level significantly lower than the initial “A plus B” labeled end of the curve. The end of the curve that is shared with this segment is labeled, “C plus D.” The curve, which was initially dashed, continues as a solid curve from the maximum to its endpoint at the right side of the diagram. A second double sided arrow is shown. This arrow extends between the two dashed horizontal lines and is labeled, “capital delta H.”",
+            "src": "../../media/CNX_Chem_12_05_RCooDgm.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm93458160",
+          "segmentId": "m68793:para:fs-idm93458160"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm62676240",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp69522176",
+          "segmentId": "m68793:para:fs-idp69522176"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm378964576",
+          "segmentId": "m68793:para:fs-idm378964576"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm493145248",
+          "segmentId": "m68793:para:fs-idm493145248"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm494984112",
+          "segmentId": "m68793:para:fs-idm494984112"
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_05_SuccessR",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68793:caption:CNX_Chem_12_05_SuccessR-caption"
+          },
+          "media": {
+            "id": "fs-idm214984320",
+            "alt": "Two graphs are shown each with an x-axis label of “Kinetic energy” and a y-axis label of “Fraction of molecules.” Each contains a positively skewed curve indicated in red that begins at the origin and approaches the x-axis at the right side of the graph. In a, a small area under the far right end of the curve is shaded orange. An arrow points down from above the curve to the left end of this region where the shading begins. This arrow is labeled, “Higher activation energy, E subscript a.” In b, the same red curve appears, and a second curve is drawn in black. It is also positively skewed, but reaches a lower maximum value and takes on a broadened appearance as compared to the curve in red. In this graph, the red curve is labeled, “T subscript 1” and the black curve is labeled, “T subscript 2.” In the open space at the upper right on the graph is the label, “T subscript 1 less than T subscript 2.” As with the first graph, the region under the curves at the far right is shaded orange and a downward arrow labeled “E subscript a” points to the left end of this shaded region.",
+            "src": "../../media/CNX_Chem_12_05_SuccessR.jpg",
+            "mimeType": "image/jpeg"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idm217118448",
+          "segmentId": "m68793:para:fs-idm217118448"
+        },
+        {
+          "type": "equation",
+          "id": "fs-idm197895136",
+          "class": "unnumbered"
+        },
+        {
+          "type": "para",
+          "id": "fs-idm161357136",
+          "segmentId": "m68793:para:fs-idm161357136"
+        },
+        {
+          "type": "example",
+          "id": "fs-idm160727824",
+          "title": {
+            "segmentId": "m68793:example-title:fs-idm160727824-title",
+            "text": "Solution"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp108035392",
+              "segmentId": "m68793:para:fs-idp108035392"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm178775392",
+              "segmentId": "m68793:para:fs-idm178775392"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm197951232",
+              "segmentId": "m68793:para:fs-idm197951232"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm158222928",
+              "segmentId": "m68793:para:fs-idm158222928"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm47402880",
+              "segmentId": "m68793:para:fs-idm47402880"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm208269280",
+              "segmentId": "m68793:para:fs-idm208269280"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm101188896",
+              "segmentId": "m68793:para:fs-idm101188896"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm65968064",
+              "segmentId": "m68793:para:fs-idm65968064"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm90823520",
+              "segmentId": "m68793:para:fs-idm90823520",
+              "title": {
+                "segmentId": "m68793:para-title:fs-idm90823520-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm93319152",
+              "segmentId": "m68793:para:fs-idm93319152"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm147992368",
+              "segmentId": "m68793:para:fs-idm147992368"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm205868496"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm185373632"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm43403824"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm153647280"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm152804224"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm184015216"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp70913968",
+              "title": {
+                "segmentId": "m68793:note-title:fs-idp70913968-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idm147992368",
+                  "segmentId": "m68793:para:fs-idm147992368"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idm125968016",
+          "class": "unnumbered",
+          "summary": "This table has two columns and six rows. The first column is labeled, “T ( K ),” and the second is labeled, “k ( L / mol / s ).” Under the first column are the numbers: 555, 575, 645, 700, and 781. Under the second column are the numbers: 3.52 times ten to the negative 7; 1.22 times ten to the negative 6; 8.59 times ten to the negative 5; 1.16 times ten to the negative 3; and 3.95 times ten to the negative 2.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-49",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-50",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-51",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-52",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-53",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-54",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-55",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-56",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-57",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-58",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-59",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-60",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "id": "fs-idp10812288",
+          "class": "unnumbered",
+          "summary": "This table has two columns and six rows. The first row is labeled, “1 over T ( K superscript negative 1 ),” and, “l n k.” Under the first column are the numbers: 1.80 times ten to the negative 3; 1.74 times ten to the negative 3; 1.55 times ten to the negative 3; 1.43 times ten to the negative 3; and 1.28 times ten to the negative 3. Under the second column are the numbers: negative 14.860, negative 13.617, negative 9.362, negative 6.759, and negative 3.231.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-61",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-62",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-63",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-64",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-65",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-66",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-67",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-68",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-69",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-70",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-71",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-72",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "id": "CNX_Chem_12_05_ArrhPlot",
+          "class": "scaled-down",
+          "caption": {
+            "segmentId": "m68793:caption:CNX_Chem_12_05_ArrhPlot-caption"
+          },
+          "media": {
+            "id": "fs-idp9885216",
+            "alt": "A graph is shown with the label “1 divided by T ( K superscript negative 1 )” on the x-axis and “l n k” on the y-axis. The horizontal axis has markings at 1.4 times 10 superscript negative 3, 1.6 times 10 superscript negative 3, and 1.8 times 10 superscript negative 3. The y-axis shows markings at intervals of 2 from negative 14 through negative 2. A decreasing linear trend line is drawn through five points at the coordinates: (1.28 times 10 superscript negative 3, negative 3.231), (1.43 times 10 superscript negative 3, negative 6.759), (1.55 times 10 superscript negative 3, negative 9.362), (1.74 times 10 superscript negative 3, negative 13.617), and (1.80 times 10 superscript negative 3, negative 14.860). A vertical dashed line is drawn from a point just left of the data point nearest the y-axis. Similarly, a horizontal dashed line is draw from a point just above the data point closest to the x-axis. These dashed lines intersect to form a right triangle with a vertical leg label of “capital delta l n k” and a horizontal leg label of “capital delta 1 divided by T.”",
+            "src": "../../media/CNX_Chem_12_05_ArrhPlot.jpg",
+            "mimeType": "image/jpeg"
+          }
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm92128240",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68793:title:fs-idm92128240-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idm197754848",
+          "segmentId": "m68793:para:fs-idm197754848"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp2946768",
+      "class": "key-equations",
+      "title": {
+        "segmentId": "m68793:title:fs-idp2946768-title",
+        "text": "Key Equations"
+      },
+      "content": [
+        {
+          "type": "table",
+          "id": "key-equations-table",
+          "class": "unnumbered unstyled",
+          "summary": "key equations table",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-77",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-78",
+                  "attributes": {}
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-79",
+                  "attributes": {}
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idm193786736",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68793:title:fs-idm193786736-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp801808",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm138313152",
+                "segmentId": "m68793:problem:fs-idm138313152"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm120309360",
+                "segmentId": "m68793:solution:fs-idm120309360"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm147445136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm80456160",
+                "segmentId": "m68793:problem:fs-idm80456160"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm141471856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm166625232",
+                "segmentId": "m68793:problem:fs-idm166625232"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm218647200",
+                "segmentId": "m68793:solution:fs-idm218647200"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm190953584",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm157823696",
+                "segmentId": "m68793:problem:fs-idm157823696"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm162997840",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm200002080",
+                "segmentId": "m68793:problem:fs-idm200002080"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp8882000",
+                "segmentId": "m68793:solution:fs-idp8882000"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm122581792",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp66405264",
+                "segmentId": "m68793:problem:fs-idp66405264"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm166001648",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm148748368",
+                "segmentId": "m68793:problem:fs-idm148748368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm89923680",
+                "segmentId": "m68793:problem:fs-idm89923680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp8809520",
+                "segmentId": "m68793:problem:fs-idp8809520"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm162680736",
+                "segmentId": "m68793:solution:fs-idm162680736"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm67340288",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm128098912",
+                "segmentId": "m68793:problem:fs-idm128098912"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm128511072",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm217872032",
+                "segmentId": "m68793:problem:fs-idm217872032"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm183272112",
+                "segmentId": "m68793:solution:fs-idm183272112"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm129065792",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm149341008",
+                "segmentId": "m68793:problem:fs-idm149341008"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm131383728",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp9104816",
+                "segmentId": "m68793:problem:fs-idp9104816"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm91585968",
+                "segmentId": "m68793:solution:fs-idm91585968"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm3600240",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm167825856",
+                "segmentId": "m68793:problem:fs-idm167825856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm59720032",
+                "segmentId": "m68793:problem:fs-idm59720032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm54796736",
+                "segmentId": "m68793:problem:fs-idm54796736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm154039232",
+                "segmentId": "m68793:problem:fs-idm154039232"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm154038848",
+                "segmentId": "m68793:problem:fs-idm154038848"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm58458096",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm93524688",
+                "segmentId": "m68793:problem:fs-idm93524688"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm134024464",
+                "segmentId": "m68793:problem:fs-idm134024464"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm124657264",
+                "segmentId": "m68793:solution:fs-idm124657264"
+              }
+            ]
+          }
+        },
+        {
+          "type": "table",
+          "id": "fs-idm124800496",
+          "class": "unnumbered",
+          "summary": "This table has two columns and five rows. The first column is labeled, “Temperature ( K ),” and the second column is labeled, “k ( M superscript negative 1 s superscript negative 1 ).” Under the first column are the numbers: 555, 575, 645, and 700. Under the second column are the numbers: 6.23 times ten to the negative 7; 2.42 times ten to the negative 6; 1.44 times ten to the negative 4; and 2.01 times ten to the negative 3.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-108",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-109",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-110",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-111",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-112",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-113",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-114",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-115",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-116",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-117",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm166518032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm93329056",
+                "segmentId": "m68793:problem:fs-idm93329056"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "table",
+          "id": "fs-idm163198896",
+          "class": "unnumbered",
+          "summary": "This table contains two columns and three rows. The first row is a header row, and it labels each column, “T ( K )” and “k ( s superscript negative 1 ).” Under the first column are the numbers 293 and 298. Under the second column are the numbers 0.054 and 0.100.",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-119",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-120",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-121",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-122",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            },
+            {
+              "cells": [
+                {
+                  "segmentId": "m68793:entry:auto-123",
+                  "attributes": {
+                    "align": "left"
+                  }
+                },
+                {
+                  "segmentId": "m68793:entry:auto-124",
+                  "attributes": {
+                    "align": "left"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm167771040",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm65384176",
+                "segmentId": "m68793:problem:fs-idm65384176"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm106774224",
+                "segmentId": "m68793:problem:fs-idm106774224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm1605904",
+                "segmentId": "m68793:problem:fs-idm1605904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm94994288",
+                "segmentId": "m68793:problem:fs-idm94994288"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm124435200",
+                "segmentId": "m68793:problem:fs-idm124435200"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm112507760",
+                "segmentId": "m68793:solution:fs-idm112507760"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp179196768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm100372496",
+                "segmentId": "m68793:problem:fs-idm100372496"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp11390128",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp46127280",
+                "segmentId": "m68793:problem:fs-idp46127280"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm206557120",
+                "segmentId": "m68793:solution:fs-idm206557120"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68793:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68793:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68793:abstract-item:abstract-item-2"
+      },
+      {
+        "segmentId": "m68793:abstract-item:abstract-item-3"
+      }
+    ]
+  },
+  "glossary": {
+    "type": "glossary",
+    "items": [
+      {
+        "id": "fs-idm89472432",
+        "termSegmentId": "m68793:glossary-term:fs-idm89472432-term",
+        "definitionSegmentId": "m68793:glossary-def:fs-idm89472432-def"
+      },
+      {
+        "id": "fs-idm162201904",
+        "termSegmentId": "m68793:glossary-term:fs-idm162201904-term",
+        "definitionSegmentId": "m68793:glossary-def:fs-idm162201904-def"
+      },
+      {
+        "id": "fs-idm187159584",
+        "termSegmentId": "m68793:glossary-term:fs-idm187159584-term",
+        "definitionSegmentId": "m68793:glossary-def:fs-idm187159584-def"
+      },
+      {
+        "id": "fs-idm101548864",
+        "termSegmentId": "m68793:glossary-term:fs-idm101548864-term",
+        "definitionSegmentId": "m68793:glossary-def:fs-idm101548864-def"
+      },
+      {
+        "id": "fs-idm206488448",
+        "termSegmentId": "m68793:glossary-term:fs-idm206488448-term",
+        "definitionSegmentId": "m68793:glossary-def:fs-idm206488448-def"
+      },
+      {
+        "id": "fs-idm355773584",
+        "termSegmentId": "m68793:glossary-term:fs-idm355773584-term",
+        "definitionSegmentId": "m68793:glossary-def:fs-idm355773584-def"
+      }
+    ]
+  },
+  "sectionOrder": 5
+}

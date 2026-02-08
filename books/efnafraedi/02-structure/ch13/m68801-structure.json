@@ -1,0 +1,2037 @@
+{
+  "moduleId": "m68801",
+  "title": {
+    "segmentId": "m68801:title:auto-1",
+    "text": "Equilibrium Calculations"
+  },
+  "documentClass": null,
+  "metadata": {
+    "uuid": "353391e0-9913-4452-9f83-38f57233275a",
+    "abstract": {
+      "intro": "By the end of this section, you will be able to:",
+      "items": [
+        "Identify the changes in concentration or pressure that occur for chemical species in equilibrium systems",
+        "Calculate equilibrium concentrations or pressures and equilibrium constants, using various algebraic approaches"
+      ]
+    }
+  },
+  "content": [
+    {
+      "type": "para",
+      "id": "fs-idp222894896",
+      "segmentId": "m68801:para:fs-idp222894896"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp292035664",
+      "segmentId": "m68801:para:fs-idp292035664"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp2372544",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp42253680",
+      "segmentId": "m68801:para:fs-idp42253680"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp309373104",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp249176544",
+      "segmentId": "m68801:para:fs-idp249176544"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp117027920",
+      "class": "unnumbered"
+    },
+    {
+      "type": "equation",
+      "id": "fs-idp301878592",
+      "class": "unnumbered"
+    },
+    {
+      "type": "para",
+      "id": "fs-idp146645120",
+      "segmentId": "m68801:para:fs-idp146645120"
+    },
+    {
+      "type": "example",
+      "id": "fs-idp184218304",
+      "title": {
+        "segmentId": "m68801:example-title:fs-idp184218304-title",
+        "text": "Determining Relative Changes in Concentration"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp97567840",
+          "segmentId": "m68801:para:fs-idp97567840"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp220423968",
+          "segmentId": "m68801:para:fs-idp220423968"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp78784032",
+          "segmentId": "m68801:para:fs-idp78784032"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp144934528",
+          "segmentId": "m68801:para:fs-idp144934528"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp282776016",
+          "segmentId": "m68801:para:fs-idp282776016",
+          "title": {
+            "segmentId": "m68801:para-title:fs-idp282776016-title",
+            "text": "Solution"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp116601808",
+          "segmentId": "m68801:para:fs-idp116601808"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp71401312",
+          "segmentId": "m68801:para:fs-idp71401312"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp155241968",
+          "segmentId": "m68801:para:fs-idp155241968",
+          "title": {
+            "segmentId": "m68801:para-title:fs-idp155241968-title",
+            "text": "Check Your Learning"
+          }
+        },
+        {
+          "type": "para",
+          "id": "fs-idp315969760",
+          "segmentId": "m68801:para:fs-idp315969760"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp333685552",
+          "segmentId": "m68801:para:fs-idp333685552"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp100367408",
+          "segmentId": "m68801:para:fs-idp100367408"
+        },
+        {
+          "type": "para",
+          "id": "fs-idp181124784",
+          "segmentId": "m68801:para:fs-idp181124784"
+        },
+        {
+          "type": "note",
+          "id": "fs-idp220089472",
+          "title": {
+            "segmentId": "m68801:note-title:fs-idp220089472-title",
+            "text": "Answer:"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp181124784",
+              "segmentId": "m68801:para:fs-idp181124784"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp197968752",
+      "class": null,
+      "title": {
+        "segmentId": "m68801:title:fs-idp197968752-title",
+        "text": "Calculation of an Equilibrium Constant"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp218682752",
+          "segmentId": "m68801:para:fs-idp218682752"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp157656016",
+          "title": {
+            "segmentId": "m68801:example-title:fs-idp157656016-title",
+            "text": "Calculation of an Equilibrium Constant"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp103540160",
+              "segmentId": "m68801:para:fs-idp103540160"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp148807520",
+              "segmentId": "m68801:para:fs-idp148807520"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp127545184",
+              "segmentId": "m68801:para:fs-idp127545184",
+              "title": {
+                "segmentId": "m68801:para-title:fs-idp127545184-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm167918896",
+              "segmentId": "m68801:para:fs-idm167918896"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp97043040",
+              "segmentId": "m68801:para:fs-idp97043040"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp187828096",
+              "segmentId": "m68801:para:fs-idp187828096"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp119052784",
+              "segmentId": "m68801:para:fs-idp119052784"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp184338272",
+              "segmentId": "m68801:para:fs-idp184338272",
+              "title": {
+                "segmentId": "m68801:para-title:fs-idp184338272-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp379196944",
+              "segmentId": "m68801:para:fs-idp379196944"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp65960208",
+              "segmentId": "m68801:para:fs-idp65960208"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp73967168"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm215755504"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp119575776"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp120750608"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp8604640"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp140787760"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp97785984"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp343410432"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp119469616",
+              "title": {
+                "segmentId": "m68801:note-title:fs-idp119469616-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp65960208",
+                  "segmentId": "m68801:para:fs-idp65960208"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp165591440",
+      "class": null,
+      "title": {
+        "segmentId": "m68801:title:fs-idp165591440-title",
+        "text": "Calculation of a Missing Equilibrium Concentration"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp155146496",
+          "segmentId": "m68801:para:fs-idp155146496"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp69595744",
+          "title": {
+            "segmentId": "m68801:example-title:fs-idp69595744-title",
+            "text": "Calculation of a Missing Equilibrium Concentration"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp157895840",
+              "segmentId": "m68801:para:fs-idp157895840"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp115961824",
+              "segmentId": "m68801:para:fs-idp115961824",
+              "title": {
+                "segmentId": "m68801:para-title:fs-idp115961824-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idm3522096",
+              "segmentId": "m68801:para:fs-idm3522096"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp72250176",
+              "segmentId": "m68801:para:fs-idp72250176"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp114956208",
+              "segmentId": "m68801:para:fs-idp114956208"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp340309456",
+              "segmentId": "m68801:para:fs-idp340309456",
+              "title": {
+                "segmentId": "m68801:para-title:fs-idp340309456-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp301980848",
+              "segmentId": "m68801:para:fs-idp301980848"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp57551600"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp68622944"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp146257328"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp60894832"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp334861312"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp166439104"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp71208832"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp217492240"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp175632608"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp223852992",
+              "title": {
+                "segmentId": "m68801:note-title:fs-idp223852992-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp301980848",
+                  "segmentId": "m68801:para:fs-idp301980848"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp135898480",
+      "class": null,
+      "title": {
+        "segmentId": "m68801:title:fs-idp135898480-title",
+        "text": "Calculation of Equilibrium Concentrations from Initial Concentrations"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp100361248",
+          "segmentId": "m68801:para:fs-idp100361248"
+        },
+        {
+          "type": "list",
+          "id": "fs-idm126911232",
+          "listType": "enumerated",
+          "numberStyle": "arabic",
+          "bulletStyle": null,
+          "items": [
+            {
+              "id": null,
+              "segmentId": "m68801:item:fs-idm126911232-item-1"
+            },
+            {
+              "id": null,
+              "segmentId": "m68801:item:fs-idm126911232-item-2"
+            },
+            {
+              "id": null,
+              "segmentId": "m68801:item:fs-idm126911232-item-3"
+            },
+            {
+              "id": null,
+              "segmentId": "m68801:item:fs-idm126911232-item-4"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "id": "fs-idm215588032",
+          "segmentId": "m68801:para:fs-idm215588032"
+        },
+        {
+          "type": "example",
+          "id": "fs-idp88215808",
+          "title": {
+            "segmentId": "m68801:example-title:fs-idp88215808-title",
+            "text": "Calculation of Equilibrium Concentrations"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idp86926592",
+              "segmentId": "m68801:para:fs-idp86926592"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp189382624",
+              "segmentId": "m68801:para:fs-idp189382624",
+              "title": {
+                "segmentId": "m68801:para-title:fs-idp189382624-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp223439168",
+              "segmentId": "m68801:para:fs-idp223439168"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp116836368",
+              "segmentId": "m68801:para:fs-idp116836368"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp165437392",
+              "segmentId": "m68801:para:fs-idp165437392"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp139975888",
+              "segmentId": "m68801:para:fs-idp139975888"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp178328384",
+              "segmentId": "m68801:para:fs-idp178328384"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp59993168",
+              "segmentId": "m68801:para:fs-idp59993168"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp249227584",
+              "segmentId": "m68801:para:fs-idp249227584"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp129244128",
+              "segmentId": "m68801:para:fs-idp129244128"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp78266176",
+              "segmentId": "m68801:para:fs-idp78266176"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp47135472",
+              "segmentId": "m68801:para:fs-idp47135472"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp226605088",
+              "segmentId": "m68801:para:fs-idp226605088"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp66450592",
+              "segmentId": "m68801:para:fs-idp66450592"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm43994720",
+              "segmentId": "m68801:para:fs-idm43994720"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp274032256",
+              "segmentId": "m68801:para:fs-idp274032256"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp65922496",
+              "segmentId": "m68801:para:fs-idp65922496"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp144188144",
+              "segmentId": "m68801:para:fs-idp144188144",
+              "title": {
+                "segmentId": "m68801:para-title:fs-idp144188144-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp207855376",
+              "segmentId": "m68801:para:fs-idp207855376"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp349622384",
+              "segmentId": "m68801:para:fs-idp349622384"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp347329920",
+              "segmentId": "m68801:para:fs-idp347329920",
+              "title": {
+                "segmentId": "m68801:para-title:fs-idp347329920-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp222432912",
+              "segmentId": "m68801:para:fs-idp222432912"
+            },
+            {
+              "type": "list",
+              "id": "fs-idp88175472",
+              "listType": "enumerated",
+              "numberStyle": "arabic",
+              "bulletStyle": null,
+              "items": [
+                {
+                  "id": null,
+                  "segmentId": "m68801:item:fs-idp88175472-item-1"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68801:item:fs-idp88175472-item-2"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68801:item:fs-idp88175472-item-3"
+                },
+                {
+                  "id": null,
+                  "segmentId": "m68801:item:fs-idp88175472-item-4"
+                }
+              ]
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp154661952"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp164721504"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp53365296"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp149459776"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp140218208"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp163277840"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp334007984"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp226282512"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp87874832"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp272647552"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp157645520"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp43934576"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp178654352"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp220490768"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp86894240"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp129485024"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp176324304"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp140225920"
+            },
+            {
+              "type": "note",
+              "id": "fs-idp128998512",
+              "title": {
+                "segmentId": "m68801:note-title:fs-idp128998512-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp349622384",
+                  "segmentId": "m68801:para:fs-idp349622384"
+                }
+              ]
+            },
+            {
+              "type": "note",
+              "id": "fs-idp148875216",
+              "title": {
+                "segmentId": "m68801:note-title:fs-idp148875216-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp222432912",
+                  "segmentId": "m68801:para:fs-idp222432912"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "example",
+          "id": "fs-idm94442464",
+          "title": {
+            "segmentId": "m68801:example-title:fs-idm94442464-title",
+            "text": "Calculation of Equilibrium Concentrations Using an Algebra-Simplifying Assumption"
+          },
+          "content": [
+            {
+              "type": "para",
+              "id": "fs-idm110827664",
+              "segmentId": "m68801:para:fs-idm110827664"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm100326816",
+              "segmentId": "m68801:para:fs-idm100326816",
+              "title": {
+                "segmentId": "m68801:para-title:fs-idm100326816-title",
+                "text": "Solution"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp22895280",
+              "segmentId": "m68801:para:fs-idp22895280"
+            },
+            {
+              "type": "para",
+              "id": "fs-idp77336512",
+              "segmentId": "m68801:para:fs-idp77336512"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm36129424",
+              "segmentId": "m68801:para:fs-idm36129424"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm8990656",
+              "segmentId": "m68801:para:fs-idm8990656"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm167049456",
+              "segmentId": "m68801:para:fs-idm167049456"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm90994400",
+              "segmentId": "m68801:para:fs-idm90994400"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm107658528",
+              "segmentId": "m68801:para:fs-idm107658528"
+            },
+            {
+              "type": "para",
+              "id": "fs-idm21377744",
+              "segmentId": "m68801:para:fs-idm21377744",
+              "title": {
+                "segmentId": "m68801:para-title:fs-idm21377744-title",
+                "text": "Check Your Learning"
+              }
+            },
+            {
+              "type": "para",
+              "id": "fs-idp139296",
+              "segmentId": "m68801:para:fs-idp139296"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm7657280"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp73418848"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm107468128"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp64062640"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm475573296"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm85563776"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm30961472"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idp78338656"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm27824720"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm477300048"
+            },
+            {
+              "type": "equation",
+              "id": "fs-idm103584160"
+            },
+            {
+              "type": "note",
+              "id": "fs-idm106766656",
+              "title": {
+                "segmentId": "m68801:note-title:fs-idm106766656-title",
+                "text": "Answer:"
+              },
+              "content": [
+                {
+                  "type": "para",
+                  "id": "fs-idp139296",
+                  "segmentId": "m68801:para:fs-idp139296"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp274270144",
+      "class": "summary",
+      "title": {
+        "segmentId": "m68801:title:fs-idp274270144-title",
+        "text": "Key Concepts and Summary"
+      },
+      "content": [
+        {
+          "type": "para",
+          "id": "fs-idp273866592",
+          "segmentId": "m68801:para:fs-idp273866592"
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "id": "fs-idp118001008",
+      "class": "exercises",
+      "title": {
+        "segmentId": "m68801:title:fs-idp118001008-title",
+        "text": "Chemistry End of Chapter Exercises"
+      },
+      "content": [
+        {
+          "type": "exercise",
+          "id": "fs-idp78773232",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp166949280",
+                "segmentId": "m68801:problem:fs-idp166949280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp226577184",
+                "segmentId": "m68801:problem:fs-idp226577184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp70284560",
+                "segmentId": "m68801:problem:fs-idp70284560"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp300912416",
+                "segmentId": "m68801:solution:fs-idp300912416"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp235853120",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp60169872",
+                "segmentId": "m68801:problem:fs-idp60169872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp123146240",
+                "segmentId": "m68801:problem:fs-idp123146240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp315971008",
+                "segmentId": "m68801:problem:fs-idp315971008"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp288474752",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp156675248",
+                "segmentId": "m68801:problem:fs-idp156675248"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp339264432",
+                "segmentId": "m68801:problem:fs-idp339264432"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp292210576",
+                "segmentId": "m68801:problem:fs-idp292210576"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp349698576",
+                "segmentId": "m68801:solution:fs-idp349698576"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp220009680",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp220010192",
+                "segmentId": "m68801:problem:fs-idp220010192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp113970736",
+                "segmentId": "m68801:problem:fs-idp113970736"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp126314528",
+                "segmentId": "m68801:problem:fs-idp126314528"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp343440336",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp343440848",
+                "segmentId": "m68801:problem:fs-idp343440848"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp100948784",
+                "segmentId": "m68801:solution:fs-idp100948784"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp99340080",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp72815968",
+                "segmentId": "m68801:problem:fs-idp72815968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp226439472",
+                "segmentId": "m68801:problem:fs-idp226439472"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp70745776",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp70746288",
+                "segmentId": "m68801:problem:fs-idp70746288"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp160967664",
+                "segmentId": "m68801:solution:fs-idp160967664"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp95397216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp59973296",
+                "segmentId": "m68801:problem:fs-idp59973296"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp211752192",
+                "segmentId": "m68801:problem:fs-idp211752192"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp71998288",
+                "segmentId": "m68801:problem:fs-idp71998288"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp148498768",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp148499280",
+                "segmentId": "m68801:problem:fs-idp148499280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp99409824",
+                "segmentId": "m68801:problem:fs-idp99409824"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp169323488",
+                "segmentId": "m68801:problem:fs-idp169323488"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp148157632",
+                "segmentId": "m68801:solution:fs-idp148157632"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp165909856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp165910368",
+                "segmentId": "m68801:problem:fs-idp165910368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp118964416",
+                "segmentId": "m68801:problem:fs-idp118964416"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp189641568",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp151262880",
+                "segmentId": "m68801:problem:fs-idp151262880"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp349697072",
+                "segmentId": "m68801:problem:fs-idp349697072"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp349697456",
+                "segmentId": "m68801:problem:fs-idp349697456"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp291601872",
+                "segmentId": "m68801:problem:fs-idp291601872"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp291602256",
+                "segmentId": "m68801:problem:fs-idp291602256"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp135336000",
+                "segmentId": "m68801:problem:fs-idp135336000"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp73043792",
+                "segmentId": "m68801:problem:fs-idp73043792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp118671184",
+                "segmentId": "m68801:problem:fs-idp118671184"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp118671568",
+                "segmentId": "m68801:problem:fs-idp118671568"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp301222832",
+                "segmentId": "m68801:problem:fs-idp301222832"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp301223216",
+                "segmentId": "m68801:problem:fs-idp301223216"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp220387840",
+                "segmentId": "m68801:problem:fs-idp220387840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp220388224",
+                "segmentId": "m68801:problem:fs-idp220388224"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp98226336",
+                "segmentId": "m68801:solution:fs-idp98226336"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp155255936",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp155256448",
+                "segmentId": "m68801:problem:fs-idp155256448"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp136347280",
+                "segmentId": "m68801:problem:fs-idp136347280"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp149432080",
+                "segmentId": "m68801:problem:fs-idp149432080"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65156336",
+                "segmentId": "m68801:problem:fs-idp65156336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp65156720",
+                "segmentId": "m68801:problem:fs-idp65156720"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp306691888",
+                "segmentId": "m68801:problem:fs-idp306691888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp306692272",
+                "segmentId": "m68801:problem:fs-idp306692272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp227823392",
+                "segmentId": "m68801:problem:fs-idp227823392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp227823776",
+                "segmentId": "m68801:problem:fs-idp227823776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp144732976",
+                "segmentId": "m68801:problem:fs-idp144732976"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp291225856",
+                "segmentId": "m68801:problem:fs-idp291225856"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp80172592",
+                "segmentId": "m68801:problem:fs-idp80172592"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp80172976",
+                "segmentId": "m68801:problem:fs-idp80172976"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp116788016",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp210079776",
+                "segmentId": "m68801:problem:fs-idp210079776"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp125353792",
+                "segmentId": "m68801:solution:fs-idp125353792"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp76682304",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp76682816",
+                "segmentId": "m68801:problem:fs-idp76682816"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp99980832",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp99981344",
+                "segmentId": "m68801:problem:fs-idp99981344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp119925376",
+                "segmentId": "m68801:problem:fs-idp119925376"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp157764272",
+                "segmentId": "m68801:problem:fs-idp157764272"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp274160400",
+                "segmentId": "m68801:solution:fs-idp274160400"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp120770528",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp312744496",
+                "segmentId": "m68801:problem:fs-idp312744496"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp336494608",
+                "segmentId": "m68801:problem:fs-idp336494608"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp316125088",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp316125600",
+                "segmentId": "m68801:problem:fs-idp316125600"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp156191680",
+                "segmentId": "m68801:problem:fs-idp156191680"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp171028976",
+                "segmentId": "m68801:solution:fs-idp171028976"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp193760224",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp178545504",
+                "segmentId": "m68801:problem:fs-idp178545504"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp185636944",
+                "segmentId": "m68801:problem:fs-idp185636944"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp170146416",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp70429408",
+                "segmentId": "m68801:problem:fs-idp70429408"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp70429792",
+                "segmentId": "m68801:problem:fs-idp70429792"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp313499840",
+                "segmentId": "m68801:problem:fs-idp313499840"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp194615776",
+                "segmentId": "m68801:solution:fs-idp194615776"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp277387888",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp231857968",
+                "segmentId": "m68801:problem:fs-idp231857968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp231858352",
+                "segmentId": "m68801:problem:fs-idp231858352"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp119902960",
+                "segmentId": "m68801:problem:fs-idp119902960"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp151659712",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp151660224",
+                "segmentId": "m68801:problem:fs-idp151660224"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp54670704",
+                "segmentId": "m68801:problem:fs-idp54670704"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp157688816",
+                "segmentId": "m68801:problem:fs-idp157688816"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp146294576",
+                "segmentId": "m68801:solution:fs-idp146294576"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp97213088",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp126477968",
+                "segmentId": "m68801:problem:fs-idp126477968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp126479120",
+                "segmentId": "m68801:problem:fs-idp126479120"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp187352784",
+                "segmentId": "m68801:problem:fs-idp187352784"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp210607184",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp70670336",
+                "segmentId": "m68801:problem:fs-idp70670336"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp144507328",
+                "segmentId": "m68801:problem:fs-idp144507328"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp313517456",
+                "segmentId": "m68801:solution:fs-idp313517456"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp359131456",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp359131968",
+                "segmentId": "m68801:problem:fs-idp359131968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp99332816",
+                "segmentId": "m68801:problem:fs-idp99332816"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp91440288",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idm27392",
+                "segmentId": "m68801:problem:fs-idm27392"
+              },
+              {
+                "type": "para",
+                "id": "fs-idm26240",
+                "segmentId": "m68801:problem:fs-idm26240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp140636048",
+                "segmentId": "m68801:problem:fs-idp140636048"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp97706016",
+                "segmentId": "m68801:problem:fs-idp97706016"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp123016912",
+                "segmentId": "m68801:solution:fs-idp123016912"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp145400352",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp110623472",
+                "segmentId": "m68801:problem:fs-idp110623472"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp110624240",
+                "segmentId": "m68801:problem:fs-idp110624240"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp111327968",
+                "segmentId": "m68801:problem:fs-idp111327968"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp175639264",
+                "segmentId": "m68801:problem:fs-idp175639264"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idm19235840",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp171103840",
+                "segmentId": "m68801:problem:fs-idp171103840"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp171104608",
+                "segmentId": "m68801:problem:fs-idp171104608"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp171613936",
+                "segmentId": "m68801:problem:fs-idp171613936"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp148020368",
+                "segmentId": "m68801:problem:fs-idp148020368"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp211916912",
+                "segmentId": "m68801:solution:fs-idp211916912"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp124881392",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp124881904",
+                "segmentId": "m68801:problem:fs-idp124881904"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp212312544",
+                "segmentId": "m68801:problem:fs-idp212312544"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp55521216",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp55521728",
+                "segmentId": "m68801:problem:fs-idp55521728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp323811520",
+                "segmentId": "m68801:problem:fs-idp323811520"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp112178272",
+                "segmentId": "m68801:solution:fs-idp112178272"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp116933168",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp116933680",
+                "segmentId": "m68801:problem:fs-idp116933680"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp152513728",
+                "segmentId": "m68801:problem:fs-idp152513728"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp187359840",
+                "segmentId": "m68801:solution:fs-idp187359840"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp307489856",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp307490368",
+                "segmentId": "m68801:problem:fs-idp307490368"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp194751264",
+                "segmentId": "m68801:problem:fs-idp194751264"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp194752400",
+                "segmentId": "m68801:problem:fs-idp194752400"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp99670512",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp99671024",
+                "segmentId": "m68801:problem:fs-idp99671024"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp242568240",
+                "segmentId": "m68801:problem:fs-idp242568240"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp73994064",
+                "segmentId": "m68801:solution:fs-idp73994064"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp186517200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp186517712",
+                "segmentId": "m68801:problem:fs-idp186517712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp268193344",
+                "segmentId": "m68801:problem:fs-idp268193344"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp217360496",
+                "segmentId": "m68801:problem:fs-idp217360496"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp301926064",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp301926576",
+                "segmentId": "m68801:problem:fs-idp301926576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp127362464",
+                "segmentId": "m68801:problem:fs-idp127362464"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp184589744",
+                "segmentId": "m68801:problem:fs-idp184589744"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp115933984",
+                "segmentId": "m68801:problem:fs-idp115933984"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp291800000",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp291800512",
+                "segmentId": "m68801:problem:fs-idp291800512"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp291801776",
+                "segmentId": "m68801:problem:fs-idp291801776"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp122954576",
+                "segmentId": "m68801:problem:fs-idp122954576"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp228950272",
+                "segmentId": "m68801:problem:fs-idp228950272"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp150248880",
+                "segmentId": "m68801:solution:fs-idp150248880"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp157265136",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp157265648",
+                "segmentId": "m68801:problem:fs-idp157265648"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp157266032",
+                "segmentId": "m68801:problem:fs-idp157266032"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp182516576",
+                "segmentId": "m68801:problem:fs-idp182516576"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp121255200",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp121255712",
+                "segmentId": "m68801:problem:fs-idp121255712"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp121256096",
+                "segmentId": "m68801:problem:fs-idp121256096"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp129853008",
+                "segmentId": "m68801:problem:fs-idp129853008"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp175439040",
+                "segmentId": "m68801:problem:fs-idp175439040"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp175439920",
+                "segmentId": "m68801:problem:fs-idp175439920"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp175440864",
+                "segmentId": "m68801:problem:fs-idp175440864"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp115889776",
+                "segmentId": "m68801:solution:fs-idp115889776"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp222775760",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp222776272",
+                "segmentId": "m68801:problem:fs-idp222776272"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp186813728",
+                "segmentId": "m68801:problem:fs-idp186813728"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp120047888",
+                "segmentId": "m68801:problem:fs-idp120047888"
+              },
+              {
+                "type": "para",
+                "id": "fs-idp120048272",
+                "segmentId": "m68801:problem:fs-idp120048272"
+              }
+            ]
+          },
+          "solution": null
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp149802032",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp149802544",
+                "segmentId": "m68801:problem:fs-idp149802544"
+              }
+            ]
+          },
+          "solution": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp61057456",
+                "segmentId": "m68801:solution:fs-idp61057456"
+              }
+            ]
+          }
+        },
+        {
+          "type": "exercise",
+          "id": "fs-idp303786512",
+          "problem": {
+            "content": [
+              {
+                "type": "para",
+                "id": "fs-idp97795424",
+                "segmentId": "m68801:problem:fs-idp97795424"
+              }
+            ]
+          },
+          "solution": null
+        }
+      ]
+    }
+  ],
+  "abstract": {
+    "intro": {
+      "segmentId": "m68801:abstract:auto-2"
+    },
+    "items": [
+      {
+        "segmentId": "m68801:abstract-item:abstract-item-1"
+      },
+      {
+        "segmentId": "m68801:abstract-item:abstract-item-2"
+      }
+    ]
+  },
+  "sectionOrder": 4
+}
