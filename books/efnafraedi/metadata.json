@@ -27,8 +27,8 @@
     "catTool": "Matecat"
   },
   "publication": {
-    "url": "https://efnafraedi.app",
-    "futureUrl": "https://namsbokasafn.is/efnafraedi"
+    "url": "https://namsbokasafn.is",
+    "bookUrl": "https://namsbokasafn.is/efnafraedi"
   },
   "statistics": {
     "totalChapters": 21,

@@ -59,7 +59,7 @@ The repository implements a 5-step translation workflow for producing Icelandic 
 │  namsbokasafn-vefur (separate repository)                                   │
 │  ├── SvelteKit site serving pre-rendered HTML                               │
 │  ├── Content synced from efni repo                                          │
-│  └── Published at efnafraedi.app                                            │
+│  └── Published at namsbokasafn.is                                           │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 

@@ -15,7 +15,7 @@ Afurðir verkefnisins eru þrenns konar:
 
 | Bók | Frumrit | Staða | Útgáfa |
 |-----|---------|-------|--------|
-| **Efnafræði** | [Chemistry 2e](https://openstax.org/details/books/chemistry-2e) | Í vinnslu | [efnafraedi.app](https://efnafraedi.app) |
+| **Efnafræði** | [Chemistry 2e](https://openstax.org/details/books/chemistry-2e) | Í vinnslu | [namsbokasafn.is](https://namsbokasafn.is) |
 | **Líffræði** | [Biology 2e](https://openstax.org/details/books/biology-2e) | Væntanlegt | - |
 
 ## Verkflæði

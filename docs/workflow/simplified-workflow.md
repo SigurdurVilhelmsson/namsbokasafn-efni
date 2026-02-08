@@ -308,7 +308,7 @@ Villur kunna að vera til staðar. Ritstýrð útgáfa er í vinnslu.
 
 This banner is removed when faithful translation is published.
 
-**Published at:** [efnafraedi.app](https://efnafraedi.app)
+**Published at:** [namsbokasafn.is](https://namsbokasafn.is)
 
 ---
 
