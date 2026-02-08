@@ -116,6 +116,7 @@
     </div>
   </div>
 
+    <script src="/js/htmlUtils.js"></script>
   <script>
     let booksData = {};
     let selectedChapter = null;
@@ -635,13 +636,6 @@
         submitBtn.textContent = 'Hefja verkflæði';
       }
     });
-
-    function escapeHtml(text) {
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
     // Toggle file checklist expand/collapse
     function toggleChecklist() {
       const checklist = document.getElementById('file-checklist');

@@ -106,6 +106,7 @@
     </div>
   </main>
 
+    <script src="/js/htmlUtils.js"></script>
   <script>
     let currentAgenda = null;
 
@@ -362,14 +363,6 @@
     function printAgenda() {
       window.print();
     }
-
-    function escapeHtml(text) {
-      if (!text) return '';
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
     // Initialize
     init();
   </script>

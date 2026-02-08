@@ -169,6 +169,7 @@
     </div>
   </div>
 
+    <script src="/js/htmlUtils.js"></script>
   <script>
     let currentOffset = 0;
     let hasMore = false;
@@ -465,14 +466,6 @@
     // ============================================================================
     // UTILITIES
     // ============================================================================
-
-    function escapeHtml(text) {
-      if (!text) return '';
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
     // Initialize on page load
     init();
   </script>

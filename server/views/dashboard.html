@@ -507,6 +507,7 @@
 
   <script src="/js/theme.js"></script>
   <script src="/js/nav.js"></script>
+  <script src="/js/htmlUtils.js"></script>
   <script>
     // Stage label translations
     const STAGE_LABELS = {
@@ -669,7 +670,7 @@
       }
 
       tbody.innerHTML = workload.map(user => {
-        const initials = user.username.substring(0, 2).toUpperCase();
+        const initials = escapeHtml(user.username).substring(0, 2).toUpperCase();
         const utilization = user.utilizationPercent || 0;
         const barClass = utilization < 50 ? 'low' : utilization < 80 ? 'medium' : 'high';
 
@@ -678,7 +679,7 @@
             <td>
               <div class="workload-user">
                 <div class="workload-avatar">${initials}</div>
-                <span>${user.username}</span>
+                <span>${escapeHtml(user.username)}</span>
               </div>
             </td>
             <td>${user.pending}</td>

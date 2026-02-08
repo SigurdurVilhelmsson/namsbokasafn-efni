@@ -305,6 +305,7 @@
     </div>
   </div>
 
+    <script src="/js/htmlUtils.js"></script>
   <script>
     let currentUser = null;
     let currentTermId = null;
@@ -919,14 +920,6 @@
         minute: '2-digit'
       });
     }
-
-    function escapeHtml(text) {
-      if (!text) return '';
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
     init();
   </script>
 

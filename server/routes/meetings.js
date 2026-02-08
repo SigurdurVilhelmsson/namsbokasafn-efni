@@ -16,6 +16,7 @@ const assignmentStore = require('../services/assignmentStore');
 const decisionStore = require('../services/decisionStore');
 const terminologyService = require('../services/terminologyService');
 const session = require('../services/session');
+const { escapeHtml } = require('../services/htmlUtils');
 
 /**
  * Collect BOARD_REVIEW issues from all sessions
@@ -36,7 +37,7 @@ function collectBoardReviewIssues(book = null) {
           ...issue,
           sessionId: sess.id,
           book: sessionData.book,
-          chapter: sessionData.chapter
+          chapter: sessionData.chapter,
         });
       }
     }
@@ -73,24 +74,28 @@ router.get('/agenda', requireAuth, async (req, res) => {
     }
 
     // 3. Get overdue assignments
-    let allAssignments = book
+    const allAssignments = book
       ? assignmentStore.getBookAssignments(book)
       : assignmentStore.getAllPendingAssignments();
 
-    const overdueAssignments = allAssignments.filter(a => {
-      if (!a.dueDate) return false;
-      return new Date(a.dueDate) < now;
-    }).sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+    const overdueAssignments = allAssignments
+      .filter((a) => {
+        if (!a.dueDate) return false;
+        return new Date(a.dueDate) < now;
+      })
+      .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
 
     // 4. Get upcoming deadlines (next 7 days)
-    const upcomingDeadlines = allAssignments.filter(a => {
-      if (!a.dueDate) return false;
-      const dueDate = new Date(a.dueDate);
-      return dueDate >= now && dueDate <= oneWeekFromNow;
-    }).sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+    const upcomingDeadlines = allAssignments
+      .filter((a) => {
+        if (!a.dueDate) return false;
+        const dueDate = new Date(a.dueDate);
+        return dueDate >= now && dueDate <= oneWeekFromNow;
+      })
+      .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
 
     // 5. Get recent decisions (last 7 days)
-    const recentDecisions = decisionStore.getRecentDecisions(20).filter(d => {
+    const recentDecisions = decisionStore.getRecentDecisions(20).filter((d) => {
       const decidedAt = new Date(d.decidedAt);
       const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
       return decidedAt >= sevenDaysAgo;
@@ -100,7 +105,7 @@ router.get('/agenda', requireAuth, async (req, res) => {
     let progressSummary = null;
     if (includeProgress === 'true') {
       const totalAssignments = allAssignments.length;
-      const completedToday = 0; // Would need activity log integration
+      // const completedToday = 0; // Would need activity log integration
 
       progressSummary = {
         totalPendingAssignments: totalAssignments,
@@ -108,7 +113,7 @@ router.get('/agenda', requireAuth, async (req, res) => {
         dueThisWeek: upcomingDeadlines.length,
         decisionsThisWeek: recentDecisions.length,
         boardReviewItems: boardReviewIssues.length,
-        disputedTerms: disputedTerms.length
+        disputedTerms: disputedTerms.length,
       };
     }
 
@@ -117,7 +122,7 @@ router.get('/agenda', requireAuth, async (req, res) => {
       generatedAt: now.toISOString(),
       generatedBy: req.user.username,
       book: book || 'all',
-      sections: []
+      sections: [],
     };
 
     // Section 1: Urgent Items (Overdue)
@@ -126,7 +131,7 @@ router.get('/agenda', requireAuth, async (req, res) => {
         title: 'Brýn mál - Tímafresti lokið',
         titleEn: 'Urgent - Overdue Items',
         priority: 1,
-        items: overdueAssignments.map(a => ({
+        items: overdueAssignments.map((a) => ({
           type: 'overdue_assignment',
           book: a.book,
           chapter: a.chapter,
@@ -134,8 +139,8 @@ router.get('/agenda', requireAuth, async (req, res) => {
           stageLabel: getStageLabel(a.stage),
           assignedTo: a.assignedTo,
           dueDate: a.dueDate,
-          daysOverdue: Math.ceil((now - new Date(a.dueDate)) / (1000 * 60 * 60 * 24))
-        }))
+          daysOverdue: Math.ceil((now - new Date(a.dueDate)) / (1000 * 60 * 60 * 24)),
+        })),
       });
     }
 
@@ -145,7 +150,7 @@ router.get('/agenda', requireAuth, async (req, res) => {
         title: 'Til umræðu - Staðfærsla og túlkun',
         titleEn: 'Discussion - Localization Decisions',
         priority: 2,
-        items: boardReviewIssues.map(i => ({
+        items: boardReviewIssues.map((i) => ({
           type: 'board_review',
           id: i.id,
           book: i.book,
@@ -154,8 +159,8 @@ router.get('/agenda', requireAuth, async (req, res) => {
           context: i.context,
           suggestion: i.suggestion,
           sourceFile: i.sourceFile,
-          line: i.line
-        }))
+          line: i.line,
+        })),
       });
     }
 
@@ -165,7 +170,7 @@ router.get('/agenda', requireAuth, async (req, res) => {
         title: 'Hugtök til úrlausnar',
         titleEn: 'Terminology for Resolution',
         priority: 3,
-        items: disputedTerms.map(t => ({
+        items: disputedTerms.map((t) => ({
           type: 'disputed_term',
           id: t.id,
           english: t.english,
@@ -174,8 +179,8 @@ router.get('/agenda', requireAuth, async (req, res) => {
           category: t.category,
           notes: t.notes,
           disputeComment: t.disputeComment,
-          proposedAlternative: t.proposedAlternative
-        }))
+          proposedAlternative: t.proposedAlternative,
+        })),
       });
     }
 
@@ -185,7 +190,7 @@ router.get('/agenda', requireAuth, async (req, res) => {
         title: 'Væntanlegir skiladagar',
         titleEn: 'Upcoming Deadlines',
         priority: 4,
-        items: upcomingDeadlines.map(a => ({
+        items: upcomingDeadlines.map((a) => ({
           type: 'upcoming_deadline',
           book: a.book,
           chapter: a.chapter,
@@ -193,8 +198,8 @@ router.get('/agenda', requireAuth, async (req, res) => {
           stageLabel: getStageLabel(a.stage),
           assignedTo: a.assignedTo,
           dueDate: a.dueDate,
-          daysUntil: Math.ceil((new Date(a.dueDate) - now) / (1000 * 60 * 60 * 24))
-        }))
+          daysUntil: Math.ceil((new Date(a.dueDate) - now) / (1000 * 60 * 60 * 24)),
+        })),
       });
     }
 
@@ -204,7 +209,7 @@ router.get('/agenda', requireAuth, async (req, res) => {
         title: 'Nýlegar ákvarðanir til staðfestingar',
         titleEn: 'Recent Decisions for Confirmation',
         priority: 5,
-        items: recentDecisions.map(d => ({
+        items: recentDecisions.map((d) => ({
           type: 'recent_decision',
           id: d.id,
           decisionType: d.type,
@@ -214,8 +219,8 @@ router.get('/agenda', requireAuth, async (req, res) => {
           decidedBy: d.decidedBy,
           decidedAt: d.decidedAt,
           book: d.book,
-          chapter: d.chapter
-        }))
+          chapter: d.chapter,
+        })),
       });
     }
 
@@ -234,12 +239,11 @@ router.get('/agenda', requireAuth, async (req, res) => {
     } else {
       res.json(agenda);
     }
-
   } catch (err) {
     console.error('Agenda generation error:', err);
     res.status(500).json({
       error: 'Failed to generate agenda',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -265,22 +269,22 @@ router.get('/agenda/preview', requireAuth, (req, res) => {
       console.error('Failed to count disputed terms:', err);
     }
 
-    let allAssignments = book
+    const allAssignments = book
       ? assignmentStore.getBookAssignments(book)
       : assignmentStore.getAllPendingAssignments();
 
-    const overdueCount = allAssignments.filter(a => {
+    const overdueCount = allAssignments.filter((a) => {
       if (!a.dueDate) return false;
       return new Date(a.dueDate) < now;
     }).length;
 
-    const upcomingCount = allAssignments.filter(a => {
+    const upcomingCount = allAssignments.filter((a) => {
       if (!a.dueDate) return false;
       const dueDate = new Date(a.dueDate);
       return dueDate >= now && dueDate <= oneWeekFromNow;
     }).length;
 
-    const recentDecisionsCount = decisionStore.getRecentDecisions(20).filter(d => {
+    const recentDecisionsCount = decisionStore.getRecentDecisions(20).filter((d) => {
       const decidedAt = new Date(d.decidedAt);
       const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
       return decidedAt >= sevenDaysAgo;
@@ -296,19 +300,16 @@ router.get('/agenda/preview', requireAuth, (req, res) => {
         boardReview: boardReviewCount,
         disputedTerms: disputedCount,
         upcomingDeadlines: upcomingCount,
-        recentDecisions: recentDecisionsCount
+        recentDecisions: recentDecisionsCount,
       },
-      recommendation: totalItems > 0
-        ? `${totalItems} atriði til umræðu`
-        : 'Engin atriði í bið',
-      lastUpdated: now.toISOString()
+      recommendation: totalItems > 0 ? `${totalItems} atriði til umræðu` : 'Engin atriði í bið',
+      lastUpdated: now.toISOString(),
     });
-
   } catch (err) {
     console.error('Agenda preview error:', err);
     res.status(500).json({
       error: 'Failed to preview agenda',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -321,7 +322,7 @@ function getStageLabel(stage) {
     mtOutput: 'Vélþýðing',
     linguisticReview: 'Málfarsskoðun',
     tmCreated: 'Þýðingaminni',
-    publication: 'Útgáfa'
+    publication: 'Útgáfa',
   };
   return labels[stage] || stage;
 }
@@ -437,7 +438,8 @@ function generateHtmlAgenda(agenda) {
 
   // Sections
   for (const section of agenda.sections) {
-    const sectionClass = section.priority === 1 ? 'urgent' : section.priority === 2 ? 'discussion' : '';
+    const sectionClass =
+      section.priority === 1 ? 'urgent' : section.priority === 2 ? 'discussion' : '';
     html += `<div class="${sectionClass}"><h2>${escapeHtml(section.title)}</h2>`;
 
     if (section.items.length === 0) {
@@ -490,15 +492,6 @@ function generateHtmlAgenda(agenda) {
 </html>`;
 
   return html;
-}
-
-function escapeHtml(text) {
-  if (!text) return '';
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
 }
 
 module.exports = router;

@@ -13,6 +13,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const { escapeHtml } = require('./htmlUtils');
 
 // Database path
 const DB_PATH = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
@@ -26,7 +27,7 @@ const NOTIFICATION_TYPES = {
   ASSIGNMENT_CREATED: 'assignment_created',
   ASSIGNMENT_HANDOFF: 'assignment_handoff',
   STAGE_COMPLETED: 'stage_completed',
-  CHAPTER_KICKOFF: 'chapter_kickoff'
+  CHAPTER_KICKOFF: 'chapter_kickoff',
 };
 
 // Stage labels in Icelandic
@@ -35,7 +36,7 @@ const STAGE_LABELS = {
   mtOutput: 'Vélþýðing',
   linguisticReview: 'Málfarsskoðun',
   tmCreated: 'Þýðingaminni',
-  publication: 'Útgáfa'
+  publication: 'Útgáfa',
 };
 
 // Notification categories for preferences
@@ -43,25 +44,25 @@ const NOTIFICATION_CATEGORIES = {
   reviews: {
     label: 'Yfirferðir',
     description: 'Tilkynningar um yfirferðir (sendar, samþykktar, breytingar óskast)',
-    types: ['review_submitted', 'review_approved', 'changes_requested']
+    types: ['review_submitted', 'review_approved', 'changes_requested'],
   },
   assignments: {
     label: 'Úthlutanir',
     description: 'Tilkynningar um verkefnaúthlutanir og afhendingar',
-    types: ['assignment_created', 'assignment_handoff', 'stage_completed', 'chapter_kickoff']
+    types: ['assignment_created', 'assignment_handoff', 'stage_completed', 'chapter_kickoff'],
   },
   feedback: {
     label: 'Endurgjöf',
     description: 'Tilkynningar um endurgjöf frá lesendum',
-    types: ['feedback_received']
-  }
+    types: ['feedback_received'],
+  },
 };
 
 // Default preferences (all enabled)
 const DEFAULT_PREFERENCES = {
   reviews: { inApp: true, email: true },
   assignments: { inApp: true, email: true },
-  feedback: { inApp: true, email: true }
+  feedback: { inApp: true, email: true },
 };
 
 // Initialize database tables
@@ -146,7 +147,7 @@ const statements = {
     INSERT INTO notification_preferences (user_id, preferences, updated_at)
     VALUES (?, ?, CURRENT_TIMESTAMP)
     ON CONFLICT(user_id) DO UPDATE SET preferences = excluded.preferences, updated_at = CURRENT_TIMESTAMP
-  `)
+  `),
 };
 
 /**
@@ -223,8 +224,8 @@ async function sendEmail(to, subject, htmlBody, textBody) {
       secure: process.env.SMTP_SECURE === 'true',
       auth: {
         user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-      }
+        pass: process.env.SMTP_PASS,
+      },
     });
 
     await transporter.sendMail({
@@ -232,7 +233,7 @@ async function sendEmail(to, subject, htmlBody, textBody) {
       to,
       subject,
       text: textBody,
-      html: htmlBody
+      html: htmlBody,
     });
 
     console.log('[Notification] Email sent to:', to);
@@ -256,7 +257,7 @@ async function createNotification(options) {
     message,
     link,
     metadata = {},
-    skipPreferenceCheck = false // For system/admin notifications
+    skipPreferenceCheck = false, // For system/admin notifications
   } = options;
 
   // Check if in-app notification is enabled for this user
@@ -296,7 +297,7 @@ async function createNotification(options) {
   return {
     id: notificationId,
     emailSent,
-    skipped: !inAppEnabled && !emailSent
+    skipped: !inAppEnabled && !emailSent,
   };
 }
 
@@ -340,14 +341,6 @@ function generateEmailHtml(title, message, link) {
   `.trim();
 }
 
-function escapeHtml(text) {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
 /**
  * Notify admins when a review is submitted
  */
@@ -367,8 +360,8 @@ async function notifyReviewSubmitted(review, adminUsers) {
         book: review.book,
         chapter: review.chapter,
         section: review.section,
-        submittedBy: review.submittedByUsername
-      }
+        submittedBy: review.submittedByUsername,
+      },
     });
     results.push(result);
   }
@@ -392,8 +385,8 @@ async function notifyReviewApproved(review, editor) {
       book: review.book,
       chapter: review.chapter,
       section: review.section,
-      approvedBy: review.reviewedByUsername
-    }
+      approvedBy: review.reviewedByUsername,
+    },
   });
 }
 
@@ -414,8 +407,8 @@ async function notifyChangesRequested(review, editor, notes) {
       chapter: review.chapter,
       section: review.section,
       reviewedBy: review.reviewedByUsername,
-      notes
-    }
+      notes,
+    },
   });
 }
 
@@ -432,7 +425,9 @@ async function notifyChangesRequested(review, editor, notes) {
  */
 async function notifyAssignmentCreated(assignment, assignee, assignedByUsername) {
   const stageLabel = STAGE_LABELS[assignment.stage] || assignment.stage;
-  const dueDate = assignment.dueDate ? new Date(assignment.dueDate).toLocaleDateString('is-IS') : null;
+  const dueDate = assignment.dueDate
+    ? new Date(assignment.dueDate).toLocaleDateString('is-IS')
+    : null;
 
   return createNotification({
     userId: assignee.id,
@@ -448,8 +443,8 @@ async function notifyAssignmentCreated(assignment, assignee, assignedByUsername)
       stage: assignment.stage,
       stageLabel,
       assignedBy: assignedByUsername,
-      dueDate: assignment.dueDate
-    }
+      dueDate: assignment.dueDate,
+    },
   });
 }
 
@@ -461,10 +456,17 @@ async function notifyAssignmentCreated(assignment, assignee, assignedByUsername)
  * @param {object} nextAssignee - User receiving the hand-off { id, email, username }
  * @param {string} completedByUsername - Who completed the previous stage
  */
-async function notifyHandoff(completedAssignment, nextAssignment, nextAssignee, completedByUsername) {
+async function notifyHandoff(
+  completedAssignment,
+  nextAssignment,
+  nextAssignee,
+  completedByUsername
+) {
   const completedStageLabel = STAGE_LABELS[completedAssignment.stage] || completedAssignment.stage;
   const nextStageLabel = STAGE_LABELS[nextAssignment.stage] || nextAssignment.stage;
-  const dueDate = nextAssignment.dueDate ? new Date(nextAssignment.dueDate).toLocaleDateString('is-IS') : null;
+  const dueDate = nextAssignment.dueDate
+    ? new Date(nextAssignment.dueDate).toLocaleDateString('is-IS')
+    : null;
 
   return createNotification({
     userId: nextAssignee.id,
@@ -481,8 +483,8 @@ async function notifyHandoff(completedAssignment, nextAssignment, nextAssignee, 
       completedStage: completedAssignment.stage,
       nextStage: nextAssignment.stage,
       completedBy: completedByUsername,
-      dueDate: nextAssignment.dueDate
-    }
+      dueDate: nextAssignment.dueDate,
+    },
   });
 }
 
@@ -509,8 +511,8 @@ async function notifyStageCompleted(assignment, admin, completedByUsername) {
       chapter: assignment.chapter,
       stage: assignment.stage,
       stageLabel,
-      completedBy: completedByUsername
-    }
+      completedBy: completedByUsername,
+    },
   });
 }
 
@@ -529,7 +531,9 @@ async function notifyChapterKickoff(book, chapter, assignments, kickedOffByUsern
     if (!assignment.assignee) continue;
 
     const stageLabel = STAGE_LABELS[assignment.stage] || assignment.stage;
-    const dueDate = assignment.dueDate ? new Date(assignment.dueDate).toLocaleDateString('is-IS') : null;
+    const dueDate = assignment.dueDate
+      ? new Date(assignment.dueDate).toLocaleDateString('is-IS')
+      : null;
 
     const result = await createNotification({
       userId: assignment.assignee.id,
@@ -544,8 +548,8 @@ async function notifyChapterKickoff(book, chapter, assignments, kickedOffByUsern
         stage: assignment.stage,
         stageLabel,
         kickedOffBy: kickedOffByUsername,
-        dueDate: assignment.dueDate
-      }
+        dueDate: assignment.dueDate,
+      },
     });
 
     results.push(result);
@@ -567,9 +571,9 @@ async function notifyFeedbackReceived(feedback, typeLabel) {
   }
 
   // Build location string
-  const location = [feedback.book, feedback.chapter, feedback.section]
-    .filter(Boolean)
-    .join(' / ') || 'Ekki tilgreint';
+  const location =
+    [feedback.book, feedback.chapter, feedback.section].filter(Boolean).join(' / ') ||
+    'Ekki tilgreint';
 
   const title = `Ný endurgjöf: ${typeLabel}`;
   const message = `
@@ -600,8 +604,8 @@ ${feedback.message}
       feedbackId: feedback.id,
       type: feedback.type,
       book: feedback.book,
-      chapter: feedback.chapter
-    }
+      chapter: feedback.chapter,
+    },
   });
 
   return { emailSent, notificationId: notificationResult.id };
@@ -618,7 +622,7 @@ function generateFeedbackEmailHtml(feedback, typeLabel, location) {
     technical_issue: '#dc2626', // red
     translation_error: '#f59e0b', // amber
     improvement: '#2563eb', // blue
-    other: '#6b7280' // gray
+    other: '#6b7280', // gray
   };
   const priorityColor = priorityColors[feedback.type] || '#6b7280';
 
@@ -716,7 +720,7 @@ function parseNotificationRow(row) {
     metadata: row.metadata ? JSON.parse(row.metadata) : {},
     read: row.read === 1,
     emailSent: row.email_sent === 1,
-    createdAt: row.created_at
+    createdAt: row.created_at,
   };
 }
 
@@ -734,9 +738,9 @@ async function notifyBookAccessAssigned(userId, bookSlug, role, assignedByUserna
   // Role labels in Icelandic
   const roleLabels = {
     'head-editor': 'aðalritstjóri',
-    'editor': 'ritstjóri',
-    'contributor': 'þýðandi',
-    'viewer': 'lesandi'
+    editor: 'ritstjóri',
+    contributor: 'þýðandi',
+    viewer: 'lesandi',
   };
 
   const roleLabel = roleLabels[role] || role;
@@ -753,8 +757,8 @@ async function notifyBookAccessAssigned(userId, bookSlug, role, assignedByUserna
     metadata: {
       bookSlug,
       role,
-      assignedBy: assignedByUsername
-    }
+      assignedBy: assignedByUsername,
+    },
   });
 
   // Try to send email notification if configured
@@ -838,5 +842,5 @@ module.exports = {
   // Preferences
   getPreferences,
   setPreferences,
-  isNotificationEnabled
+  isNotificationEnabled,
 };

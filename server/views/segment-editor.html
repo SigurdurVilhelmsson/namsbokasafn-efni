@@ -623,6 +623,7 @@
     </div>
   </main>
 
+    <script src="/js/htmlUtils.js"></script>
   <script src="/js/theme.js"></script>
   <script>
     // ================================================================
@@ -1066,11 +1067,6 @@
     // ================================================================
     // HELPERS
     // ================================================================
-    function escapeHtml(str) {
-      if (!str) return '';
-      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }
-
     function highlightMath(html) {
       return html.replace(
         /\[\[MATH:(\d+)\]\]/g,

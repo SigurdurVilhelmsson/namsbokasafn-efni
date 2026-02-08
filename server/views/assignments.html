@@ -460,6 +460,7 @@
     </div>
   </div>
 
+    <script src="/js/htmlUtils.js"></script>
   <script>
     let matrixData = null;
     let selectedCell = null;
@@ -1569,13 +1570,6 @@
     }
 
     // Helper functions
-    function escapeHtml(text) {
-      if (!text) return '';
-      const div = document.createElement('div');
-      div.textContent = text;
-      return div.innerHTML;
-    }
-
     function getInitials(name) {
       if (!name) return '?';
       const parts = name.split(/[\s._-]+/);

@@ -420,6 +420,7 @@
     </div>
   </div>
 
+    <script src="/js/htmlUtils.js"></script>
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   <script src="/js/theme.js"></script>
   <script src="/js/nav.js"></script>
@@ -843,15 +844,6 @@
       const d = new Date(dateStr);
       return d.toLocaleDateString('is-IS');
     }
-
-    function escapeHtml(str) {
-      if (!str) return '';
-      return str.replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;');
-    }
-
     function showToast(message, type = 'info') {
       // Simple toast - could be enhanced
       alert(message);

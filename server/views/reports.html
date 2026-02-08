@@ -429,6 +429,7 @@
     </div>
   </main>
 
+  <script src="/js/htmlUtils.js"></script>
   <script>
     let currentWeeksAgo = 0;
     const book = 'efnafraedi';
@@ -617,7 +618,7 @@
         <ul class="user-list">
           ${users.slice(0, 10).map(user => `
             <li class="user-item">
-              <span class="username">${user.username}</span>
+              <span class="username">${escapeHtml(user.username)}</span>
               <span class="count">${user.count} aðgerðir</span>
             </li>
           `).join('')}
@@ -652,8 +653,8 @@
                   <i class="fas ${config.icon}"></i>
                 </div>
                 <div class="activity-content">
-                  <div class="activity-description">${item.description}</div>
-                  <div class="activity-meta">${item.username} • ${timeStr}</div>
+                  <div class="activity-description">${escapeHtml(item.description)}</div>
+                  <div class="activity-meta">${escapeHtml(item.username)} • ${timeStr}</div>
                 </div>
               </li>
             `;
