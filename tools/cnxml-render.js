@@ -1566,6 +1566,110 @@ function copyChapterImages(chapter, track, _verbose) {
 // MAIN
 // =====================================================================
 
+// =====================================================================
+// END-OF-CHAPTER SECTION RENDERING
+// =====================================================================
+
+/**
+ * Map special section classes to Icelandic titles and URL slugs.
+ */
+const END_OF_CHAPTER_SECTIONS = {
+  summary: {
+    titleIs: 'Samantekt',
+    titleEn: 'Key Concepts and Summary',
+    slug: 'summary',
+  },
+  'key-equations': {
+    titleIs: 'Lykiljöfnur',
+    titleEn: 'Key Equations',
+    slug: 'key-equations',
+  },
+  exercises: {
+    titleIs: 'Æfingar',
+    titleEn: 'Chemistry End of Chapter Exercises',
+    slug: 'exercises',
+  },
+  glossary: {
+    titleIs: 'Lykilhugtök',
+    titleEn: 'Key Terms',
+    slug: 'key-terms',
+  },
+};
+
+/**
+ * Extract end-of-chapter sections from CNXML.
+ * Returns array of { class, content, title } objects.
+ */
+function extractEndOfChapterSections(cnxml) {
+  const sections = [];
+
+  for (const [sectionClass, config] of Object.entries(END_OF_CHAPTER_SECTIONS)) {
+    // Match sections with this class
+    const pattern = new RegExp(
+      `<section\\s+[^>]*class="${sectionClass}"[^>]*>([\\s\\S]*?)<\\/section>`,
+      'g'
+    );
+    let match;
+    while ((match = pattern.exec(cnxml)) !== null) {
+      const sectionContent = match[1];
+
+      // Extract title if present
+      const titleMatch = sectionContent.match(/<title>([^<]+)<\/title>/);
+      const title = titleMatch ? titleMatch[1] : config.titleEn;
+
+      sections.push({
+        class: sectionClass,
+        content: match[0], // Full section XML
+        title,
+        titleIs: config.titleIs,
+        slug: config.slug,
+      });
+    }
+  }
+
+  return sections;
+}
+
+/**
+ * Render an end-of-chapter section as a standalone HTML page.
+ */
+function renderEndOfChapterSection(section, context) {
+  const { renderCnxmlToHtml } = context;
+
+  // Wrap section in minimal CNXML document structure for rendering
+  const cnxmlDoc = `<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml">
+  <content>
+    ${section.content}
+  </content>
+</document>`;
+
+  // Render using existing render function
+  const { html } = renderCnxmlToHtml(cnxmlDoc, context.options);
+
+  return html;
+}
+
+/**
+ * Write end-of-chapter section HTML to file.
+ */
+function writeEndOfChapterSection(chapter, section, track, html) {
+  const chapterStr = chapter.toString().padStart(2, '0');
+  const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
+  const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
+
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  const filename = `${chapterStr}-${section.slug}.html`;
+  const outputPath = path.join(outputDir, filename);
+
+  fs.writeFileSync(outputPath, html, 'utf-8');
+
+  return outputPath;
+}
+
 async function main() {
   const args = parseArgs(process.argv.slice(2));
 
@@ -1730,6 +1834,52 @@ async function main() {
         } else if (args.verbose) {
           console.log(`  Equations: ${renderStats.success}/${renderStats.equations} rendered OK`);
         }
+      }
+    }
+
+    // Extract and render end-of-chapter sections from the last module
+    if (modules.length > 0) {
+      const lastModuleId = modules[modules.length - 1];
+      const lastModulePath = path.join(
+        BOOKS_DIR,
+        '03-translated',
+        `ch${chapterStr}`,
+        `${lastModuleId}.cnxml`
+      );
+      const lastModuleCnxml = fs.readFileSync(lastModulePath, 'utf-8');
+
+      const endOfChapterSections = extractEndOfChapterSections(lastModuleCnxml);
+
+      if (endOfChapterSections.length > 0 && args.verbose) {
+        console.log(`\nFound ${endOfChapterSections.length} end-of-chapter section(s)`);
+      }
+
+      for (const section of endOfChapterSections) {
+        if (args.verbose) {
+          console.log(`Rendering: ${section.titleIs} (${section.slug})`);
+        }
+
+        const html = renderEndOfChapterSection(section, {
+          renderCnxmlToHtml,
+          options: {
+            verbose: args.verbose,
+            lang: args.lang,
+            chapter: args.chapter,
+            moduleId: `${chapterStr}-${section.slug}`,
+            moduleSections,
+            chapterFigureNumbers,
+            chapterTableNumbers,
+            chapterExampleNumbers,
+            chapterExerciseNumbers,
+            chapterSectionTitles,
+            equationTextDictionary,
+          },
+        });
+
+        const outputPath = writeEndOfChapterSection(args.chapter, section, args.track, html);
+
+        console.log(`${section.titleIs}: Rendered to HTML`);
+        console.log(`  → ${outputPath}`);
       }
     }
 

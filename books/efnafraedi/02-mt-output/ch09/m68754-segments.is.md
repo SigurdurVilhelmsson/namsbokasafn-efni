@@ -24,12 +24,12 @@ hundruðum sinnum stærri en þvermál sameindarinnar.
 komið fyrir í einum hluta lokaðs íláts dreifast sameindir þess mjög
 hratt um allt ílátið; þetta ferli þar sem sameindir dreifast í rúmi til
 að bregðast við mismunandi styrk er kallað **sveim** (sýnt í
-<!-- XREF:1 -->). Gasatóm eða -sameindir eru auðvitað ómeðvituð um
+[#CNX_Chem_09_04_Diffusion]). Gasatóm eða -sameindir eru auðvitað ómeðvituð um
 styrkfallanda, þau hreyfast einfaldlega af handahófi – svæði með hærri
 styrk hafa fleiri eindir en svæði með lægri styrk og því á sér stað
 nettóhreyfing efna frá svæðum með háum styrk yfir á svæði með lágum
 styrk. Í lokuðu umhverfi mun sveim að lokum leiða til jafns styrks gass
-um allt, eins og sýnt er í <!-- XREF:2 -->. Gasatóm og -sameindir halda áfram
+um allt, eins og sýnt er í [#CNX_Chem_09_04_Diffusion]. Gasatóm og -sameindir halda áfram
 að hreyfast, en þar sem styrkur þeirra er sá sami í báðum kúpum eru
 flutningshraðarnir á milli kúpanna jafnir (enginn *nettó*flutningur
 sameinda á sér stað).
@@ -56,7 +56,7 @@ fyrir sveimhraða.
 <!-- SEG:m68754:para:fs-idm29004912 --> Ferli sem felur í sér hreyfingu
 gastegunda svipað sveimi er **útstreymi**, þ.e. þegar gassameindir
 sleppa út í lofttæmi í gegnum örlítið gat, eins og nálarstungu á blöðru
-(<!-- XREF:3 -->). Þrátt fyrir að bæði sveim- og útstreymishraði fari eftir
+([#CNX_Chem_09_04_DiffEff]). Þrátt fyrir að bæði sveim- og útstreymishraði fari eftir
 mólmassa gassins sem um ræðir eru hraðarnir ekki jafnir; hlutföll
 hraðanna eru þó þau sömu.
 
@@ -68,7 +68,7 @@ mjög lítil op í efnislegri hindrun er ferlið kallað útstreymi.
 <!-- SEG:m68754:para:fs-idp161500496 --> Ef efnablöndu af gösum er komið
 fyrir í íláti með gljúpum veggjum streyma gösin út um litlu opin í
 veggjunum. Léttari gösin fara hraðar (á meiri hraða) í gegnum litlu opin
-en þau þyngri (<!-- XREF:4 -->). Árið 1832 rannsakaði Thomas Graham
+en þau þyngri ([#CNX_Chem_09_04_Effusion2]). Árið 1832 rannsakaði Thomas Graham
 útstreymishraða mismunandi gasa og setti fram **útstreymislögmál
 Grahams**: *Útstreymishraði gass er í öfugu hlutfalli við kvaðratrótina
 af mólmassa þess*:
@@ -201,7 +201,7 @@ hafa hærri meðalhraða og sveima aðeins hraðar í gegnum himnuna en þyngri
 ^238^UF~6~ sameindirnar. Gasið sem hefur farið í gegnum himnuna er
 örlítið auðgað af ^235^UF~6~ og afgangsgasið er örlítið rýrt. Litli
 munurinn á mólmassa ^235^UF~6~ og ^238^UF~6~ skilar aðeins um 0,4%
-auðgun í einum sveimi (<!-- XREF:5 -->). En með því að tengja marga sveima
+auðgun í einum sveimi ([#CNX_Chem_09_04_GasDiff]). En með því að tengja marga sveima
 saman í röð af stigum (kallað þrepakerfi) er hægt að ná æskilegri
 auðgun.
 
@@ -258,7 +258,7 @@ af vetnisgasi (í stað helíums) að minnka rúmmál sitt um 50%?
 
 <!-- SEG:m68754:problem:fs-idp113189264 --> Útskýrðu hvers vegna fjöldi
 sameinda er ekki eins í vinstri og hægri flöskunni sem sýndar eru á
-miðmyndinni í <!-- XREF:6 -->.
+miðmyndinni í [#CNX_Chem_09_04_Diffusion].
 
 <!-- SEG:m68754:problem:fs-idm56418560 --> Byrjaðu á skilgreiningunni á
 útstreymishraða og niðurstöðu Grahams sem tengir hraða og mólmassa og
@@ -296,6 +296,50 @@ sveimhraða ^1^H~2~ (mólmassi 2,0 g/mól) samanborið við ^2^H~2~ (mólmassi
 samanborið við O~3~ (mólmassi 48 g/mól).
 
 <!-- SEG:m68754:solution:fs-idp39170992 --> 1,4; 1,2
+
+<!-- SEG:m68754:problem:fs-idp46648992 --> Óþekkt gas sveimar með hraðanum
+83,3 ml/s í sveimibúnaði þar sem koldíoxíð sveimar með hraðanum 102
+ml/s. Reiknaðu sameindamassa óþekkta gassins.
+
+<!-- SEG:m68754:problem:fs-idm45552304 --> Þegar tveir bómullartappar, annar
+bleyttur með ammoníaki og hinn með saltsýru, eru settir samtímis í sitt
+hvorn enda glerrörs sem er 87,0 cm langt, myndast hvítur hringur af
+NH~4~Cl þar sem loftkennt NH~3~ og loftkennt HCl komast fyrst í
+snertingu. \[\[MATH:15\]\] Í u.þ.b. hvaða fjarlægð frá bómullartappanum
+með ammoníaki gerist þetta? (Vísbending: Reiknaðu sveimhraða bæði fyrir
+NH~3~ og HCl og komstu að því hversu miklu hraðar NH~3~ sveimar en HCl.)
+
+<!-- SEG:m68754:solution:fs-idp56783984 --> 51,7 cm
+
+<!-- SEG:m68754:glossary-term:fs-idp133388272-term --> sveim
+
+<!-- SEG:m68754:glossary-def:fs-idp133388272-def --> flutningur atóms eða
+sameindar frá svæði með tiltölulega háum styrk yfir á svæði með
+tiltölulega lágum styrk (fjallað um í þessum kafla með tilliti til
+gasefna, en á við um efni í hvaða fasa sem er)
+
+<!-- SEG:m68754:glossary-term:fs-idp39360864-term --> útstreymi
+
+<!-- SEG:m68754:glossary-def:fs-idp39360864-def --> flutningur loftkenndra
+atóma eða sameinda úr íláti yfir í lofttæmi í gegnum mjög lítil op
+
+<!-- SEG:m68754:glossary-term:fs-idp257364480-term --> útstreymislögmál
+Grahams
+
+<!-- SEG:m68754:glossary-def:fs-idp257364480-def --> sveim- og
+útstreymishraði gasa er í öfugu hlutfalli við kvaðratrætur sameindamassa
+þeirra
+
+<!-- SEG:m68754:glossary-term:fs-idp132026496-term --> meðalfrívegalengd
+
+<!-- SEG:m68754:glossary-def:fs-idp132026496-def --> meðalvegalengd sem
+sameind ferðast á milli árekstra
+
+<!-- SEG:m68754:glossary-term:fs-idp43914864-term --> sveimhraði
+
+<!-- SEG:m68754:glossary-def:fs-idp43914864-def --> magn gass sem sveimar í
+gegnum tiltekið svæði á tilteknum tíma
+
 
 <!-- SEG:m68754:problem:fs-idp46648992 --> Óþekkt gas sveimar með hraðanum
 83,3 ml/s í sveimibúnaði þar sem koldíoxíð sveimar með hraðanum 102

@@ -16,7 +16,7 @@ Hugtökin sem kynnt voru í fyrri kafla um hvarfganga gefa grunninn að
 skilningi á því hvernig hvatar geta sinnt þessu mjög mikilvæga
 hlutverki.
 
-<!-- SEG:m68795:para:fs-idm627108512 --> <!-- XREF:3 --> sýnir hvarfrit fyrir
+<!-- SEG:m68795:para:fs-idm627108512 --> [#CNX_Chem_12_07_CatReCoDig] sýnir hvarfrit fyrir
 efnaferli án og með hvata. Athugun á ritunum sýnir nokkur einkenni
 þessara hvarfa. Í samræmi við þá staðreynd að ritin tvö tákna sama
 heildarhvarfið, byrja og enda báðar línur á sömu orku (í þessu tilfelli,
@@ -105,7 +105,7 @@ hvarfinu.
 <!-- SEG:m68795:note-title:fs-idm195911072-title --> Mario J. Molina
 
 <!-- SEG:m68795:para:fs-idm149608448 --> Nóbelsverðlaununum í efnafræði árið
-1995 var deilt á milli Paul J. Crutzen, Mario J. **Molina** (<!-- XREF:4 -->)
+1995 var deilt á milli Paul J. Crutzen, Mario J. **Molina** ([#CNX_Chem_12_07_Molina])
 og F. Sherwood Rowland „fyrir vinnu þeirra í efnafræði andrúmsloftsins,
 sérstaklega varðandi myndun og niðurbrot ósons.“ \[neðanmálsgrein: „The
 Nobel Prize in Chemistry 1995,“ Nobel Prize.org, skoðað 18. febrúar
@@ -159,9 +159,9 @@ hvatar fyrir mikilvæg efnahvörf í efnaskiptum frumna. Þar af leiðandi
 getur skortur á tilteknu ensími leitt til lífshættulegs sjúkdóms. G6PD
 (glúkósa-6-fosfat dehýdrógenasa) skortur, erfðasjúkdómur sem veldur
 skorti á ensíminu glúkósa-6-fosfat dehýdrógenasa, er algengasti
-ensímskortur hjá mönnum. Þetta ensím, sem sýnt er í <!-- XREF:5 -->, er
+ensímskortur hjá mönnum. Þetta ensím, sem sýnt er í [#CNX_Chem_12_07_Gluc6PhoDe], er
 hraðatakmarkandi ensím fyrir efnaskiptaferlið sem sér frumum fyrir NADPH
-(<!-- XREF:6 -->).
+([#CNX_Chem_12_07_HMPShuntPa]).
 
 <!-- SEG:m68795:para:fs-idm227628064 --> Truflun á þessu ferli getur leitt
 til minnkaðs glútaþíons í rauðum blóðkornum; þegar allt glútaþíon er
@@ -203,7 +203,7 @@ hvarfefnis/hvarfefna
 <!-- SEG:m68795:item:fs-idm202987392-item-4 --> Frásog myndefnis/myndefna af
 yfirborði hvata
 
-<!-- SEG:m68795:para:fs-idm173407040 --> <!-- XREF:7 --> sýnir skrefin í
+<!-- SEG:m68795:para:fs-idm173407040 --> [#CNX_Chem_12_07_HetCats] sýnir skrefin í
 hvarfgangi fyrir efnahvarf efnasambanda sem innihalda kolefnis-kolefnis
 tvítengi með vetni á nikkelhvata. Nikkel er hvatinn sem notaður er við
 vetnun fjölómettaðrar fitu og olía (sem innihalda nokkur
@@ -221,7 +221,7 @@ C~2~H~6~ sameindir frásogast af Ni-yfirborðinu.
 framleiddar með iðnaðarferlum sem nota misleita hvata, þar á meðal
 ammoníak, saltpéturssýra, brennisteinssýra og metanól. Misleitir hvatar
 eru einnig notaðir í hvarfakútum sem finnast í flestum bensínknúnum
-bifreiðum (<!-- XREF:8 -->).
+bifreiðum ([#CNX_Chem_12_07_CatConvert]).
 
 <!-- SEG:m68795:note-title:fs-idm214293568-title --> Hvarfakútar bifreiða
 
@@ -232,7 +232,7 @@ málmum er hægt að ná fram fullkomnum bruna allra kolefnisinnihaldandi
 efnasambanda yfir í koldíoxíð og um leið draga úr losun nituroxíða.
 Þetta er sérstaklega áhrifamikið þegar við hugleiðum að eitt skrefið
 felur í sér að bæta meira súrefni við sameindina og hitt felur í sér að
-fjarlægja súrefnið (<!-- XREF:9 -->).
+fjarlægja súrefnið ([#CNX_Chem_12_07_CatConvert]).
 
 <!-- SEG:m68795:para:fs-idm247003792 --> Flestir nútíma þrívegis hvarfakútar
 hafa yfirborð sem er gegndreypt með platínu-ródín hvata, sem hvetur
@@ -250,7 +250,7 @@ koldíoxíð, en dregur um leið úr losun nituroxíðs og annarra mengunarefna
 í útblæstri frá bensínvélum.
 
 <!-- SEG:m68795:para:fs-idm266375520 --> „ChemWiki“ við Kaliforníuháskóla í
-Davis veitir <!-- LINK:1 -->ítarlega útskýringu<!-- /LINK --> á því hvernig
+Davis veitir [ítarlega útskýringu](http://openstax.org/l/16catconvert) á því hvernig
 hvarfakútar virka.
 
 <!-- SEG:m68795:note-title:fs-idm26203536-title --> Bygging og virkni ensíma
@@ -260,7 +260,7 @@ tenging milli líffræði og efnafræði. Ensím eru yfirleitt prótein
 (fjölpeptíð) sem hjálpa til við að stjórna hraða efnahvarfa milli
 líffræðilega mikilvægra efnasambanda, sérstaklega þeirra sem taka þátt í
 efnaskiptum frumna. Mismunandi flokkar ensíma gegna ýmsum hlutverkum,
-eins og sýnt er í <!-- XREF:10 -->.
+eins og sýnt er í [#fs-idm184565904].
 
 <!-- SEG:m68795:para:fs-idm189720768 --> Ensímsameindir hafa virkan setstað,
 hluta sameindarinnar með lögun sem gerir henni kleift að bindast
@@ -275,7 +275,7 @@ hvarfefnið. Þetta þýðir þó ekki að virkur setstaður ensíms sé algjör
 mótanlegur. Bæði lás-og-lykils líkanið og líkanið um framkallaða aðlögun
 gera ráð fyrir því að ensím geti aðeins bundist tilteknum hvarfefnum,
 þar sem tiltekið ensím hvetur yfirleitt aðeins tiltekið efnahvarf
-(<!-- XREF:11 -->).
+([#CNX_Chem_12_07_Enzyme]).
 
 <!-- SEG:m68795:entry:auto-57 --> Flokkar ensíma og virkni þeirra
 
@@ -313,8 +313,8 @@ við hvarfefnið. (b) Samkvæmt líkaninu um framkallaða aðlögun er virki
 setstaðurinn nokkuð sveigjanlegur og getur breytt um lögun til að
 bindast hvarfefninu.
 
-<!-- SEG:m68795:para:fs-idm187403424 --> <!-- LINK:2 -->Royal Society of
-Chemistry<!-- /LINK --> býður upp á frábæra kynningu á ensímum fyrir nemendur
+<!-- SEG:m68795:para:fs-idm187403424 --> [Royal Society of
+Chemistry](http://openstax.org/l/16enzymes) býður upp á frábæra kynningu á ensímum fyrir nemendur
 og kennara.
 
 <!-- SEG:m68795:title:fs-idm181838416-title --> Lykilhugtök og samantekt
@@ -393,11 +393,165 @@ hvarfrita, áætlaðu virkjunarorku (*E*~a~) hvarfsins:
 upphafsástandi yfir í virkniástand er (a) 10 kJ; (b) 10 kJ.
 
 <!-- SEG:m68795:problem:fs-idm252327824 --> Ef gert er ráð fyrir að ritin í
-<!-- XREF:12 --> tákni mismunandi hvarfganga fyrir sama hvarf, hvort hvarfið
+[#fs-idm260004768] tákni mismunandi hvarfganga fyrir sama hvarf, hvort hvarfið
 hefur meiri hraða?
 
 <!-- SEG:m68795:problem:fs-idm286704000 --> Íhugaðu líkindi og mun á
-hvarfritunum tveimur sem sýnd eru í <!-- XREF:13 -->. Táknar þessi rit tvö
+hvarfritunum tveimur sem sýnd eru í [#fs-idm218836096]. Táknar þessi rit tvö
+mismunandi heildarhvörf, eða tákna þau sama heildarhvarfið sem á sér
+stað með tveimur mismunandi hvarfgöngum? Útskýrðu svarið.
+
+<!-- SEG:m68795:solution:fs-idm218832672 --> Bæði ritin lýsa tveggja þrepa,
+útvermdum hvörfum, en með mismunandi breytingum á vermi, sem bendir til
+þess að ritin sýni tvö mismunandi heildarhvörf.
+
+<!-- SEG:m68795:glossary-term:fs-idm228167568-term --> misleitur hvati
+
+<!-- SEG:m68795:glossary-def:fs-idm228167568-def --> hvati sem er í öðrum
+fasa en hvarfefnin og myndar yfirborð þar sem hvarf getur átt sér stað
+
+<!-- SEG:m68795:glossary-term:fs-idm218392224-term --> einsleitur hvati
+
+<!-- SEG:m68795:glossary-def:fs-idm218392224-def --> hvati sem er í sama fasa
+og hvarfefnin
+
+
+<!-- SEG:m68795:para:fs-idm189720768 --> Ensímsameindir hafa virkan setstað,
+hluta sameindarinnar með lögun sem gerir henni kleift að bindast
+tilteknu hvarfefni og mynda ensím-hvarfefnisflóka sem milliefni í
+efnahvarfi. Tvö líkön eru til sem reyna að útskýra hvernig þessi virki
+setstaður virkar. Einfaldasta líkanið er kallað lás-og-lykils tilgátan,
+sem gefur til kynna að sameindalögun virka setstaðarins og hvarfefnisins
+séu samstæð, þannig að þau passi saman eins og lykill í lás. Tilgátan um
+framkallaða aðlögun gefur aftur á móti til kynna að ensímsameindin sé
+sveigjanleg og breyti um lögun til að koma til móts við bindingu við
+hvarfefnið. Þetta þýðir þó ekki að virkur setstaður ensíms sé algjörlega
+mótanlegur. Bæði lás-og-lykils líkanið og líkanið um framkallaða aðlögun
+gera ráð fyrir því að ensím geti aðeins bundist tilteknum hvarfefnum,
+þar sem tiltekið ensím hvetur yfirleitt aðeins tiltekið efnahvarf
+([#CNX_Chem_12_07_Enzyme]).
+
+<!-- SEG:m68795:entry:auto-57 --> Flokkar ensíma og virkni þeirra
+
+<!-- SEG:m68795:entry:auto-58 --> Flokkur
+
+<!-- SEG:m68795:entry:auto-59 --> Virkni
+
+<!-- SEG:m68795:entry:auto-60 --> Oxunar-afoxunar ensím
+
+<!-- SEG:m68795:entry:auto-61 --> Oxunar-afoxunarhvörf
+
+<!-- SEG:m68795:entry:auto-62 --> Transferasar
+
+<!-- SEG:m68795:entry:auto-63 --> Flutningur virkra hópa
+
+<!-- SEG:m68795:entry:auto-64 --> Hýdrólasar
+
+<!-- SEG:m68795:entry:auto-65 --> Vatnsrofshvörf
+
+<!-- SEG:m68795:entry:auto-66 --> Lýasar
+
+<!-- SEG:m68795:entry:auto-67 --> Brottnám hóps til að mynda tvítengi
+
+<!-- SEG:m68795:entry:auto-68 --> Ísómerasar
+
+<!-- SEG:m68795:entry:auto-69 --> Ísómerun
+
+<!-- SEG:m68795:entry:auto-70 --> Lígasar
+
+<!-- SEG:m68795:entry:auto-71 --> Myndun tengis með vatnsrofi ATP
+
+<!-- SEG:m68795:caption:CNX_Chem_12_07_Enzyme-caption --> (a) Samkvæmt
+lás-og-lykils líkaninu passar lögun virka setstaðar ensíms fullkomlega
+við hvarfefnið. (b) Samkvæmt líkaninu um framkallaða aðlögun er virki
+setstaðurinn nokkuð sveigjanlegur og getur breytt um lögun til að
+bindast hvarfefninu.
+
+<!-- SEG:m68795:para:fs-idm187403424 --> [Royal Society of
+Chemistry](http://openstax.org/l/16enzymes) býður upp á frábæra kynningu á ensímum fyrir nemendur
+og kennara.
+
+<!-- SEG:m68795:title:fs-idm181838416-title --> Lykilhugtök og samantekt
+
+<!-- SEG:m68795:para:fs-idm186233248 --> Hvatar hafa áhrif á hvarfhraða
+efnahvarfs með því að breyta hvarfgangi þess til að lækka
+virkjunarorkuna. Hvatar geta verið einsleitir (í sama fasa og
+hvarfefnin) eða misleitir (í öðrum fasa en hvarfefnin).
+
+<!-- SEG:m68795:title:fs-idm32536608-title --> Efnafræði – Æfingar í lok
+kafla
+
+<!-- SEG:m68795:problem:fs-idm127239504 --> Gerðu grein fyrir aukningu á
+hvarfhraða sem hvati veldur.
+
+<!-- SEG:m68795:solution:fs-idm276597024 --> Almenn virkni hvata er að bjóða
+upp á hvarfgang þar sem hvarfefnin geta sameinast auðveldar með því að
+fara leið með lægri hvarforku. Hraði bæði framhvarfs og bakhvarfs eykst,
+sem leiðir til þess að jafnvægi næst hraðar.
+
+<!-- SEG:m68795:problem:fs-idm221201728 --> Berðu saman virkni einsleitra og
+misleitra hvata.
+
+<!-- SEG:m68795:problem:fs-idm224601824 --> Íhugaðu þessa atburðarás og
+svaraðu eftirfarandi spurningum: Klóratóm sem myndast við niðurbrot
+klórflúormetana, svo sem CCl~2~F~2~, hvetja niðurbrot ósonar í
+andrúmsloftinu. Einn einfaldaður hvarfgangur fyrir niðurbrotið er:
+\[\[MATH:2\]\]
+
+<!-- SEG:m68795:problem:fs-idm174347728 --> (a) Útskýrðu hvers vegna klóratóm
+eru hvatar í umbreytingunni í gasfasa: \[\[MATH:3\]\]
+
+<!-- SEG:m68795:problem:fs-idm280039520 --> (b) Nituroxíð tekur einnig þátt í
+niðurbroti ósonar með hvarfganginum: \[\[MATH:4\]\]
+
+<!-- SEG:m68795:problem:fs-idm271887104 --> Er NO hvati fyrir niðurbrotið?
+Útskýrðu svarið.
+
+<!-- SEG:m68795:solution:fs-idm226654304 --> (a) Klóratóm eru hvati vegna
+þess að þau hvarfast í öðru skrefi en endurmyndast í þriðja skrefi. Þau
+eyðast því ekki, sem er einkenni hvata. (b) NO er hvati af sömu ástæðu
+og í hluta (a).
+
+<!-- SEG:m68795:problem:fs-idm279414832 --> Fyrir hvort eftirfarandi para af
+hvarfritum, tilgreindu hvort parið er með hvata:
+
+<!-- SEG:m68795:problem:fs-idm3297152 --> (a)
+
+<!-- SEG:m68795:problem:fs-idm188080944 --> (b)
+
+<!-- SEG:m68795:problem:fs-idm178760704 --> Fyrir hvort eftirfarandi para af
+hvarfritum, tilgreindu hvort parið er með hvata:
+
+<!-- SEG:m68795:problem:fs-idm338845344 --> (a)
+
+<!-- SEG:m68795:problem:fs-idm210073232 --> (b)
+
+<!-- SEG:m68795:solution:fs-idm222281872 --> Lækkun á orku virkniástandsins
+sýnir áhrif hvata. (a) B; (b) B
+
+<!-- SEG:m68795:problem:fs-idm245642464 --> Fyrir hvort eftirfarandi
+hvarfrita, áætlaðu virkjunarorku (*E*~a~) hvarfsins:
+
+<!-- SEG:m68795:problem:fs-idm211017072 --> (a)
+
+<!-- SEG:m68795:problem:fs-idm220847584 --> (b)
+
+<!-- SEG:m68795:problem:fs-idm159516400 --> Fyrir hvort eftirfarandi
+hvarfrita, áætlaðu virkjunarorku (*E*~a~) hvarfsins:
+
+<!-- SEG:m68795:problem:fs-idm197289104 --> (a)
+
+<!-- SEG:m68795:problem:fs-idm290032736 --> (b)
+
+<!-- SEG:m68795:solution:fs-idm35117840 --> Orkan sem þarf til að fara frá
+upphafsástandi yfir í virkniástand er (a) 10 kJ; (b) 10 kJ.
+
+<!-- SEG:m68795:problem:fs-idm252327824 --> Ef gert er ráð fyrir að ritin í
+[#fs-idm260004768] tákni mismunandi hvarfganga fyrir sama hvarf, hvort hvarfið
+hefur meiri hraða?
+
+<!-- SEG:m68795:problem:fs-idm286704000 --> Íhugaðu líkindi og mun á
+hvarfritunum tveimur sem sýnd eru í [#fs-idm218836096]. Táknar þessi rit tvö
 mismunandi heildarhvörf, eða tákna þau sama heildarhvarfið sem á sér
 stað með tveimur mismunandi hvarfgöngum? Útskýrðu svarið.
 

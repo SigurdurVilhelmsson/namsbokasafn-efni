@@ -35,7 +35,7 @@ samanburði við hvarfhraða fyrir stórar eindir af föstu efni verður
 hvarfhraðinn fyrir smærri eindir meiri vegna þess að
 yfirborðsflatarmálið sem er í snertingu við hinn hvarfefnisfasann er
 stærra. Til dæmis hvarfast stórir járnbitar hægar við sýrur en fíndeilt
-járnduft (<!-- XREF:7 -->). Stórir viðarbitar rjúka, smærri bitar brenna
+járnduft ([#CNX_Chem_12_02_AcidDissol]). Stórir viðarbitar rjúka, smærri bitar brenna
 hratt og sag brennur með sprengikrafti.
 
 <!-- SEG:m68787:caption:CNX_Chem_12_02_AcidDissol-caption --> (a) Járnduft
@@ -44,8 +44,8 @@ Fe(*s*) + HCl(*aq*) \[\[MATH:1\]\] 2FeCl~2~(*aq*) + 3H~2~(*g*). (b)
 Járnnagli hvarfast hægar vegna þess að yfirborðsflatarmálið sem snertir
 sýruna er mun minna.
 
-<!-- SEG:m68787:para:fs-idm33181984 --> Horfðu á <!-- LINK:1 -->þetta
-myndband<!-- /LINK --> til að sjá efnahvarf sesíums við vatn í hægri
+<!-- SEG:m68787:para:fs-idm33181984 --> Horfðu á [þetta
+myndband](http://openstax.org/l/16cesium) til að sjá efnahvarf sesíums við vatn í hægri
 hreyfingu og umræðu um hvernig ástand hvarfefna og eindastærð hafa áhrif
 á hvarfhraða.
 
@@ -67,7 +67,7 @@ eftir styrk hvarfefnanna. Hvarfhraði eykst yfirleitt þegar styrkur eins
 eða fleiri hvarfefna eykst. Til dæmis brotnar kalsíumkarbónat (CaCO~3~)
 niður vegna hvarfs þess við mengunarefnið brennisteinsdíoxíð. Hvarfhraði
 þessa efnahvarfs fer eftir magni brennisteinsdíoxíðs í loftinu
-(<!-- XREF:8 -->). Brennisteinsdíoxíð, sem er súrt oxíð, sameinast vatnsgufu
+([#CNX_Chem_12_02_NYSStatue]). Brennisteinsdíoxíð, sem er súrt oxíð, sameinast vatnsgufu
 í loftinu og myndar brennisteinssýrling í eftirfarandi efnahvarfi:
 
 <!-- SEG:m68787:para:fs-idp125234816 --> Kalsíumkarbónat hvarfast við
@@ -87,7 +87,7 @@ stað hraðar. (heimild: James P Fisher III)
 
 <!-- SEG:m68787:para:fs-idm30692176 --> Fosfór brennur hratt í lofti, en hann
 brennur enn hraðar ef styrkur súrefnis er hærri. Horfðu á
-<!-- LINK:2 -->þetta myndband<!-- /LINK --> til að sjá dæmi.
+[þetta myndband](http://openstax.org/l/16phosphor) til að sjá dæmi.
 
 <!-- SEG:m68787:title:fs-idm33945488-title --> Tilvist hvata
 
@@ -108,8 +108,8 @@ nánar um síðar í þessum kafla.
 sameindir rekast hver á aðra og gangast undir efnabreytingu. Áður en
 hvarf er framkvæmt á rannsóknarstofu geta vísindamenn notað
 sameindalíkanhermanir til að spá fyrir um hvernig áður umræddar breytur
-munu hafa áhrif á hvarfhraða. Notaðu <!-- LINK:3 -->gagnvirka PhET-forritið
-um hvörf og hvarfhraða<!-- /LINK --> til að kanna hvernig hitastig, styrkur
+munu hafa áhrif á hvarfhraða. Notaðu [gagnvirka PhET-forritið
+um hvörf og hvarfhraða](http://openstax.org/l/16PHETreaction) til að kanna hvernig hitastig, styrkur
 og eðli hvarfefna hafa áhrif á hvarfhraða.
 
 <!-- SEG:m68787:title:fs-idm70094032-title --> Lykilhugtök og samantekt
@@ -137,8 +137,8 @@ hvarfgjarnari snertiflötur er til staðar.
 hægar í sjóðandi vatni í Denver en í New York-borg. (Vísbending: Íhugaðu
 áhrif hitastigs á hvarfhraða og áhrif þrýstings á suðumark.)
 
-<!-- SEG:m68787:problem:fs-idm176952992 --> Farðu í <!-- LINK:4 -->gagnvirka
-PhET-forritið um hvörf og hvarfhraða<!-- /LINK -->. Notaðu flipann „Einn
+<!-- SEG:m68787:problem:fs-idm176952992 --> Farðu í [gagnvirka
+PhET-forritið um hvörf og hvarfhraða](http://openstax.org/l/16PHETreaction). Notaðu flipann „Einn
 árekstur“ til að sýna hvernig árekstur milli eins atóms súrefnis (O) og
 kolmónoxíðs (CO) leiðir til þess að eitt tengi rofnar og annað myndast.
 Dragðu rauða stimpilinn til baka til að losa atómið og fylgstu með
@@ -157,16 +157,16 @@ sameindina og þegar árekstur á sér stað er ekki víst að hann leiði til
 þess að tengið rofni og hitt myndist. (b) Eindir hvarfefna verða að
 komast í snertingu hver við aðra áður en þær geta hvarfast.
 
-<!-- SEG:m68787:problem:fs-idm63416144 --> Í <!-- LINK:5 -->gagnvirka
-PhET-forritinu um hvörf og hvarfhraða<!-- /LINK --> skaltu nota flipann
+<!-- SEG:m68787:problem:fs-idm63416144 --> Í [gagnvirka
+PhET-forritinu um hvörf og hvarfhraða](http://openstax.org/l/16PHETreaction) skaltu nota flipann
 „Margir árekstrar“ til að fylgjast með því hvernig mörg atóm og
 sameindir víxlverka við mismunandi aðstæður. Veldu sameind til að dæla
 inn í hólfið. Stilltu upphafshitastigið og veldu núverandi magn hvers
 hvarfefnis. Veldu „Sýna tengi“ undir Valkostir. Hvernig hefur styrkur og
 hitastig áhrif á hvarfhraðann?
 
-<!-- SEG:m68787:problem:fs-idm26937872 --> Í <!-- LINK:6 -->gagnvirka
-PhET-forritinu um hvörf og hvarfhraða<!-- /LINK -->, á flipanum Margir
+<!-- SEG:m68787:problem:fs-idm26937872 --> Í [gagnvirka
+PhET-forritinu um hvörf og hvarfhraða](http://openstax.org/l/16PHETreaction), á flipanum Margir
 árekstrar, skaltu setja upp hermun með 15 sameindum af A og 10 sameindum
 af BC. Veldu „Sýna tengi“ undir Valkostir.
 

@@ -24,5 +24,5 @@ fyrirbæri sem kallast *jafnvægi*, þar sem andstæð ferli eiga sér stað á
 jöfnum hraða. Efna- og eðlisfræðileg ferli lúta þessu fyrirbæri; þessi
 ferli eru í jafnvægi þegar hvarfhraði fram og aftur er jafn.
 Jafnvægiskerfi eru alls staðar í náttúrunni; hin ýmsu efnahvörf sem fela
-í sér koldíoxíð uppleyst í blóði eru dæmi (sjá <!-- XREF:1 -->). Þessi kafli
+í sér koldíoxíð uppleyst í blóði eru dæmi (sjá [#CNX_Chem_13_00_Blood]). Þessi kafli
 veitir ítarlegan inngang að grundvallarþáttum efnajafnvægis.

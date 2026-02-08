@@ -19,7 +19,7 @@ Hlutfallslegur styrkur hvarfefna og myndefna í jafnvægiskerfum er mjög
 breytilegur; sum kerfi innihalda aðallega myndefni í jafnvægi, sum
 innihalda aðallega hvarfefni og sum innihalda umtalsvert magn af báðum.
 
-<!-- SEG:m68797:para:fs-idp3488592 --> <!-- XREF:1 --> sýnir grundvallarhugtök
+<!-- SEG:m68797:para:fs-idp3488592 --> [#CNX_Chem_13_01_equilibrium] sýnir grundvallarhugtök
 jafnvægis með því að nota afturkræft niðurbrotsefnahvarf litlauss
 tvíniturtetroxíðs til að mynda brúnt niturdíoxíð, sem er frumhvarf sem
 lýst er með jöfnunni:
@@ -41,12 +41,12 @@ styrkur hvarfefnisins N~2~O~4~ endanlegur og styrkur myndefnisins NO~2~
 er núll, þannig að framhvarfið gengur á endanlegum hraða á meðan
 hvarfhraði afturhvarfsins er núll. Eftir því sem tíminn líður eyðist
 N~2~O~4~ og styrkur þess minnkar, á meðan NO~2~ myndast og styrkur þess
-eykst (<!-- XREF:2 -->**b**). Minnkaður styrkur hvarfefnisins hægir á
+eykst ([#CNX_Chem_13_01_equilibrium]**b**). Minnkaður styrkur hvarfefnisins hægir á
 hvarfhraða framhvarfsins og aukinn styrkur myndefnisins eykur hvarfhraða
-afturhvarfsins (<!-- XREF:3 -->**c**). Þetta ferli heldur áfram þar til
+afturhvarfsins ([#CNX_Chem_13_01_equilibrium]**c**). Þetta ferli heldur áfram þar til
 *hvarfhraði fram- og afturhvarfa verður jafn*, en þá hefur efnahvarfið
 náð jafnvægi, sem einkennist af stöðugum styrk hvarfefna og myndefna
-(skyggð svæði á <!-- XREF:4 -->**b** og <!-- XREF:5 -->**c**). Mikilvægt er að
+(skyggð svæði á [#CNX_Chem_13_01_equilibrium]**b** og [#CNX_Chem_13_01_equilibrium]**c**). Mikilvægt er að
 leggja áherslu á að efnajafnvægi er kvikt; efnahvarf í jafnvægi hefur
 ekki „stöðvast“ heldur gengur það í fram- og afturátt á sama hraða.
 Þetta kvika eðli er nauðsynlegt til að skilja hegðun jafnvægis eins og
@@ -70,7 +70,7 @@ lengi sem yfirborðsflatarmál vökvans og hitastig hans haldast stöðug.
 Eftir því sem meira magn af brómi á gasformi myndast, eykst hraði
 afturferlisins (þétting) þar til hann jafnast á við uppgufunarhraðann og
 jafnvægi er komið á. Ljósmynd sem sýnir þetta fasaskiptajafnvægi er á
-<!-- XREF:6 -->.
+[#CNX_Chem_13_01_bromine].
 
 <!-- SEG:m68797:caption:CNX_Chem_13_01_bromine-caption --> Lokað glas sem
 inniheldur jafnvægisblöndu af fljótandi og loftkenndu brómi. (heimild:

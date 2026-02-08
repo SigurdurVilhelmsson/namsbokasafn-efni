@@ -47,7 +47,7 @@ seinni tíma *t*~2~; og Δ\[H~2~O~2~\] táknar breytingu á mólstyrk
 vetnisperoxíðs á tímabilinu Δ*t* (þ.e. *t*2\* − t\*~1~). Þar sem styrkur
 hvarfefnis minnkar eftir því sem efnahvarfið líður er Δ\[H~2~O~2~\]
 neikvæð stærð. Hvarfhraði er samkvæmt venju jákvæð stærð og því er þessi
-neikvæða breyting á styrk margfölduð með −1. <!-- XREF:1 --> sýnir dæmi um
+neikvæða breyting á styrk margfölduð með −1. [#CNX_Chem_12_01_KDataH2O2] sýnir dæmi um
 gögn sem safnað var við niðurbrot H~2~O~2~.
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_KDataH2O2-caption --> Hraði niðurbrots
@@ -92,7 +92,7 @@ nota grafíska aðferð sem í raun gefur þær niðurstöður sem fengjust ef
 mælingar á stuttum tímabilum væru mögulegar. Á línuriti sem sýnir styrk
 vetnisperoxíðs á móti tíma er augnablikshraði niðurbrots H~2~O~2~ á
 hverjum tíma *t* gefinn með halla beinnar línu sem er snertill við
-ferilinn á þeim tíma (<!-- XREF:2 -->). Halla þessara snertla má meta með
+ferilinn á þeim tíma ([#CNX_Chem_12_01_RRateIll]). Halla þessara snertla má meta með
 örsmæðareikningi, en sú aðferð er utan gildissviðs þessa kafla.
 
 <!-- SEG:m68786:caption:CNX_Chem_12_01_RRateIll-caption --> Þetta línurit
@@ -105,7 +105,7 @@ klst. („augnablikshraði“ eftir 12 klst.).
 Prófstrimlar fyrir þvaggreiningu
 
 <!-- SEG:m68786:para:fs-idp8375264 --> Læknar nota oft einnota prófstrimla
-til að mæla magn ýmissa efna í þvagi sjúklings (<!-- XREF:3 -->). Þessir
+til að mæla magn ýmissa efna í þvagi sjúklings ([#CNX_Chem_12_01_Urinestrip]). Þessir
 prófstrimlar innihalda ýmis efnahvörf, sem eru felld inn í litla púða á
 ýmsum stöðum á strimlinum, sem breyta um lit þegar þeir verða fyrir
 nægilegum styrk tiltekinna efna. Í notkunarleiðbeiningum fyrir
@@ -173,7 +173,7 @@ má nota mólstyrk:
 þrisvar sinnum meiri en myndunarhraði N~2~ vegna þess að þrjú mól af
 H~2~ myndast fyrir hvert mól af N~2~ sem myndast.
 
-<!-- SEG:m68786:para:fs-idp24387584 --> <!-- XREF:4 --> sýnir breytingu á styrk
+<!-- SEG:m68786:para:fs-idp24387584 --> [#CNX_Chem_12_01_NH3Decomp] sýnir breytingu á styrk
 yfir tíma fyrir niðurbrot ammoníaks í nitur og vetni við 1100 °C. Halli
 snertla við *t* = 500 s sýnir að augnablikshraðinn, sem fenginn er úr
 öllum þremur efnum sem taka þátt í efnahvarfinu, er tengdur
@@ -218,7 +218,7 @@ eyðsluhraða hvarfefnanna og myndunarhraða myndefnanna.
 <!-- SEG:m68786:example-title:fs-idm24260800-title --> Lausn
 
 <!-- SEG:m68786:para:fs-idm62578304 --> Jöfnur fyrir hvarfhraða sundrunar
-H~2~O~2~ Grafið í <!-- XREF:5 --> sýnir hraða sundrunar H~2~O~2~ yfir tíma:
+H~2~O~2~ Grafið í [#CNX_Chem_12_01_RRateIll] sýnir hraða sundrunar H~2~O~2~ yfir tíma:
 
 <!-- SEG:m68786:para:fs-idm78350032 --> Byggt á þessum gögnum er
 augnablikshraði sundrunar H~2~O~2~ á tímanum *t* = 11,1 klst. ákvarðaður
@@ -266,6 +266,152 @@ kafla
 
 <!-- SEG:m68786:problem:fs-idp78829424 --> Hver er munurinn á meðalhraða,
 upphafshraða og augnablikshraða?
+
+<!-- SEG:m68786:solution:fs-idp24328736 --> Augnablikshraði er hvarfhraði á
+tilteknum tímapunkti, svo stuttum tíma að styrkur hvarfefna og myndefna
+breytist óverulega. Upphafshraði er augnablikshraði hvarfsins þegar það
+hefst (þegar myndefni byrjar að myndast). Meðalhraði er meðaltal
+augnablikshraða yfir ákveðið tímabil.
+
+<!-- SEG:m68786:problem:fs-idp34774480 --> Óson brotnar niður í súrefni
+samkvæmt jöfnunni \[\[MATH:14\]\] Skrifaðu jöfnuna sem tengir
+hraðatjáningarnar fyrir þetta hvarf með tilliti til minnkunar á O~3~ og
+myndunar súrefnis.
+
+<!-- SEG:m68786:problem:fs-idm53585440 --> Í kjarnorkuiðnaði er
+klórþríflúoríð notað til að búa til úranhexaflúoríð, rokgjarnt
+efnasamband úrans sem er notað við aðskilnað úransamsæta. Klórþríflúoríð
+er búið til með hvarfinu \[\[MATH:15\]\] Skrifaðu jöfnuna sem tengir
+hraðatjáningarnar fyrir þetta hvarf með tilliti til minnkunar á Cl~2~ og
+F~2~ og myndunar ClF~3~.
+
+<!-- SEG:m68786:solution:fs-idp8330592 --> \[\[MATH:16\]\]
+
+<!-- SEG:m68786:problem:fs-idm5164144 --> Rannsókn á hraða tvíliðunar
+C~4~H~6~ gaf gögnin sem sýnd eru í töflunni:\[\[MATH:17\]\]
+
+<!-- SEG:m68786:problem:fs-idp8530000 --> (a) Ákvarðaðu meðalhraða tvíliðunar
+á milli 0 s og 1600 s, og á milli 1600 s og 3200 s.
+
+<!-- SEG:m68786:problem:fs-idp4423248 --> (b) Metið augnablikshraða
+tvíliðunar við 3200 s út frá grafi sem sýnir tíma á móti \[C~4~H~6~\].
+Hverjar eru einingar þessa hraða?
+
+<!-- SEG:m68786:problem:fs-idp17436544 --> (c) Ákvarðaðu meðalhraða myndunar
+C~8~H~12~ við 1600 s og augnablikshraða myndunar við 3200 s út frá
+hraðanum sem fannst í liðum (a) og (b).
+
+<!-- SEG:m68786:entry:auto-71 --> Tími (s)
+
+<!-- SEG:m68786:entry:auto-72 --> 0
+
+<!-- SEG:m68786:entry:auto-73 --> 1600
+
+<!-- SEG:m68786:entry:auto-74 --> 3200
+
+<!-- SEG:m68786:entry:auto-75 --> 4800
+
+<!-- SEG:m68786:entry:auto-76 --> 6200
+
+<!-- SEG:m68786:entry:auto-77 --> \[C~4~H~6~\] (*M*)
+
+<!-- SEG:m68786:entry:auto-78 --> 1,00 \[\[MATH:18\]\] 10^−2^
+
+<!-- SEG:m68786:entry:auto-79 --> 5,04 \[\[MATH:19\]\] 10^−3^
+
+<!-- SEG:m68786:entry:auto-80 --> 3,37 \[\[MATH:20\]\] 10^−3^
+
+<!-- SEG:m68786:entry:auto-81 --> 2,53 \[\[MATH:21\]\] 10^−3^
+
+<!-- SEG:m68786:entry:auto-82 --> 2,08 \[\[MATH:22\]\] 10^−3^
+
+<!-- SEG:m68786:problem:fs-idp79128192 --> Rannsókn á hraða hvarfsins sem
+táknað er með \[\[MATH:23\]\] gaf eftirfarandi gögn:
+
+<!-- SEG:m68786:problem:fs-idm73606544 --> (a) Ákvarðaðu meðalhraða minnkunar
+á *A* á milli 0,0 s og 10,0 s, og á milli 10,0 s og 20,0 s.
+
+<!-- SEG:m68786:problem:fs-idm51132096 --> (b) Metið augnablikshraða
+minnkunar á *A* við 15,0 s út frá grafi sem sýnir tíma á móti \[*A*\].
+Hverjar eru einingar þessa hraða?
+
+<!-- SEG:m68786:problem:fs-idm80091760 --> (c) Notið hraðana sem fundust í
+liðum (a) og (b) til að ákvarða meðalhraða myndunar *B* á milli 0,00 s
+og 10,0 s, og augnablikshraða myndunar *B* við 15,0 s.
+
+<!-- SEG:m68786:solution:fs-idm15349328 --> (a) meðalhraði, 0 − 10 s = 0,0375
+mól L^−1^ s^−1^; meðalhraði, 10 − 20 s = 0,0265 mól L^−1^ s^−1^; (b)
+augnablikshraði, 15 s = 0,023 mól L^−1^ s^−1^; (c) meðalhraði fyrir
+myndun B = 0,0188 mól L^−1^ s^−1^; augnablikshraði fyrir myndun B =
+0,012 mól L^−1^ s^−1^
+
+<!-- SEG:m68786:entry:auto-88 --> Tími (s)
+
+<!-- SEG:m68786:entry:auto-89 --> 0,0
+
+<!-- SEG:m68786:entry:auto-90 --> 5,0
+
+<!-- SEG:m68786:entry:auto-91 --> 10,0
+
+<!-- SEG:m68786:entry:auto-92 --> 15,0
+
+<!-- SEG:m68786:entry:auto-93 --> 20,0
+
+<!-- SEG:m68786:entry:auto-94 --> 25,0
+
+<!-- SEG:m68786:entry:auto-95 --> 35,0
+
+<!-- SEG:m68786:entry:auto-96 --> \[*A*\] (*M*)
+
+<!-- SEG:m68786:entry:auto-97 --> 1,00
+
+<!-- SEG:m68786:entry:auto-98 --> 0,775
+
+<!-- SEG:m68786:entry:auto-99 --> 0,625
+
+<!-- SEG:m68786:entry:auto-100 --> 0,465
+
+<!-- SEG:m68786:entry:auto-101 --> 0,360
+
+<!-- SEG:m68786:entry:auto-102 --> 0,285
+
+<!-- SEG:m68786:entry:auto-103 --> 0,230
+
+<!-- SEG:m68786:problem:fs-idm31731440 --> Lítum á eftirfarandi efnahvarf í
+vatnslausn:\[\[MATH:24\]\]
+
+<!-- SEG:m68786:problem:fs-idp2868784 --> Ef hvarfhraði Br^–^(*aq*) á
+tilteknu augnabliki í efnahvarfinu er 3,5 \[\[MATH:25\]\] 10^−4^ mól
+L^−1^ *s*^−1^, hver er myndunarhraði Br~2~(*aq*) á því augnabliki?
+
+<!-- SEG:m68786:glossary-term:fs-idp11569888-term --> meðalhraði
+
+<!-- SEG:m68786:glossary-def:fs-idp11569888-def --> hvarfhraði efnahvarfs
+reiknaður sem hlutfall mældrar breytingar á magni eða styrk efnis og
+tímabilsins sem breytingin á sér stað yfir
+
+<!-- SEG:m68786:glossary-term:fs-idp24984224-term --> upphafshraði
+
+<!-- SEG:m68786:glossary-def:fs-idp24984224-def --> augnablikshraði
+efnahvarfs við t = 0 s (strax eftir að efnahvarfið hefst)
+
+<!-- SEG:m68786:glossary-term:fs-idp70925872-term --> augnablikshraði
+
+<!-- SEG:m68786:glossary-def:fs-idp70925872-def --> hvarfhraði efnahvarfs á
+hverjum tíma, ákvarðaður af halla snertils við línurit yfir styrk sem
+fall af tíma
+
+<!-- SEG:m68786:glossary-term:fs-idp172602144-term --> hvarfhraði
+
+<!-- SEG:m68786:glossary-def:fs-idp172602144-def --> mælikvarði á hraða
+efnahvarfs
+
+<!-- SEG:m68786:glossary-term:fs-idp193131840-term --> hraðajafna
+
+<!-- SEG:m68786:glossary-def:fs-idp193131840-def --> stærðfræðileg
+framsetning sem skilgreinir hvarfhraða sem breytingu á magni, styrk eða
+þrýstingi hvarfefnis eða myndefnis á tímaeiningu
+
 
 <!-- SEG:m68786:solution:fs-idp24328736 --> Augnablikshraði er hvarfhraði á
 tilteknum tímapunkti, svo stuttum tíma að styrkur hvarfefna og myndefna

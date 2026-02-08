@@ -23,7 +23,7 @@ eftir Anthony Quintano)
 <!-- SEG:m68748:para:fs-idm58981280 --> Við erum umkringd hafsjó af gasi –
 andrúmsloftinu – og margir eiginleikar gasa eru okkur kunnuglegir úr
 daglegu lífi. Upphituð gös þenjast út, sem getur fengið loftbelg til að
-rísa (<!-- XREF:1 -->) eða valdið því að það springur á hjólbarða sem skilinn
+rísa ([#CNX_Chem_09_00_HotAirBall]) eða valdið því að það springur á hjólbarða sem skilinn
 er eftir í sólinni á heitum degi.
 
 <!-- SEG:m68748:para:fs-idm145175104 --> Gös hafa gegnt mikilvægu hlutverki í
