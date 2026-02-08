@@ -25,12 +25,12 @@ hundruðum sinnum stærri en þvermál sameindarinnar.</para>
 komið fyrir í einum hluta lokaðs íláts dreifast sameindir þess mjög
 hratt um allt ílátið; þetta ferli þar sem sameindir dreifast í rúmi til
 að bregðast við mismunandi styrk er kallað <emphasis effect="bold">sveim</emphasis> (sýnt í
-<!-- XREF:1 -->). Gasatóm eða -sameindir eru auðvitað ómeðvituð um
+<link target-id="CNX_Chem_09_04_Diffusion"/>). Gasatóm eða -sameindir eru auðvitað ómeðvituð um
 styrkfallanda, þau hreyfast einfaldlega af handahófi – svæði með hærri
 styrk hafa fleiri eindir en svæði með lægri styrk og því á sér stað
 nettóhreyfing efna frá svæðum með háum styrk yfir á svæði með lágum
 styrk. Í lokuðu umhverfi mun sveim að lokum leiða til jafns styrks gass
-um allt, eins og sýnt er í <!-- XREF:2 -->. Gasatóm og -sameindir halda áfram
+um allt, eins og sýnt er í <link target-id="CNX_Chem_09_04_Diffusion"/>. Gasatóm og -sameindir halda áfram
 að hreyfast, en þar sem styrkur þeirra er sá sami í báðum kúpum eru
 flutningshraðarnir á milli kúpanna jafnir (enginn <emphasis effect="italics">nettó</emphasis>flutningur
 sameinda á sér stað).</para>
@@ -59,7 +59,7 @@ fyrir sveimhraða.</para>
 <para id="fs-idm29004912">Ferli sem felur í sér hreyfingu
 gastegunda svipað sveimi er <emphasis effect="bold">útstreymi</emphasis>, þ.e. þegar gassameindir
 sleppa út í lofttæmi í gegnum örlítið gat, eins og nálarstungu á blöðru
-(<!-- XREF:3 -->). Þrátt fyrir að bæði sveim- og útstreymishraði fari eftir
+(<link target-id="CNX_Chem_09_04_DiffEff"/>). Þrátt fyrir að bæði sveim- og útstreymishraði fari eftir
 mólmassa gassins sem um ræðir eru hraðarnir ekki jafnir; hlutföll
 hraðanna eru þó þau sömu.</para>
 <figure id="CNX_Chem_09_04_DiffEff">
@@ -74,7 +74,7 @@ mjög lítil op í efnislegri hindrun er ferlið kallað útstreymi.</caption>
 <para id="fs-idp161500496">Ef efnablöndu af gösum er komið
 fyrir í íláti með gljúpum veggjum streyma gösin út um litlu opin í
 veggjunum. Léttari gösin fara hraðar (á meiri hraða) í gegnum litlu opin
-en þau þyngri (<!-- XREF:4 -->). Árið 1832 rannsakaði Thomas Graham
+en þau þyngri (<link target-id="CNX_Chem_09_04_Effusion2"/>). Árið 1832 rannsakaði Thomas Graham
 útstreymishraða mismunandi gasa og setti fram <emphasis effect="bold">útstreymislögmál
 Grahams</emphasis>: <emphasis effect="italics">Útstreymishraði gass er í öfugu hlutfalli við kvaðratrótina
 af mólmassa þess</emphasis>:</para>
@@ -181,7 +181,7 @@ hafa hærri meðalhraða og sveima aðeins hraðar í gegnum himnuna en þyngri
 <sup>238</sup>UF<sub>6</sub> sameindirnar. Gasið sem hefur farið í gegnum himnuna er
 örlítið auðgað af <sup>235</sup>UF<sub>6</sub> og afgangsgasið er örlítið rýrt. Litli
 munurinn á mólmassa <sup>235</sup>UF<sub>6</sub> og <sup>238</sup>UF<sub>6</sub> skilar aðeins um 0,4%
-auðgun í einum sveimi (<!-- XREF:5 -->). En með því að tengja marga sveima
+auðgun í einum sveimi (<link target-id="CNX_Chem_09_04_GasDiff"/>). En með því að tengja marga sveima
 saman í röð af stigum (kallað þrepakerfi) er hægt að ná æskilegri
 auðgun.</para>
 <figure id="CNX_Chem_09_04_GasDiff">
@@ -250,7 +250,7 @@ af vetnisgasi (í stað helíums) að minnka rúmmál sitt um 50%?</para></probl
 <problem id="fs-idm34475424">
 <para id="fs-idp113189264">Útskýrðu hvers vegna fjöldi
 sameinda er ekki eins í vinstri og hægri flöskunni sem sýndar eru á
-miðmyndinni í <!-- XREF:6 -->.</para>
+miðmyndinni í <link target-id="CNX_Chem_09_04_Diffusion"/>.</para>
 </problem>
 </exercise>
 <exercise id="fs-idp44111184">

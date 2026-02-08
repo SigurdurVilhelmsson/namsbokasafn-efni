@@ -58,7 +58,7 @@ milli kolmónoxíðs og súrefnis er árekstur milli sameindanna tveggja:</para>
 <equation id="fs-idm53948736" class="unnumbered"><m:math><m:mrow><m:mtext>CO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mtext>O(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idm34761136">Þó að það séu margar mismunandi
 mögulegar stefnur sem sameindirnar tvær geta haft miðað við hvor aðra,
-skulum við skoða þær tvær sem sýndar eru í <!-- XREF:5 -->. Í fyrra tilvikinu
+skulum við skoða þær tvær sem sýndar eru í <link target-id="CNX_Chem_12_05_COandO2"/>. Í fyrra tilvikinu
 rekst súrefnishlið kolmónoxíðsameindarinnar á súrefnissameindina. Í
 seinna tilvikinu rekst kolefnishlið kolmónoxíðsameindarinnar á
 súrefnissameindina. Seinna tilvikið er augljóslega líklegra til að leiða
@@ -102,7 +102,7 @@ hraðvirkar sameindir munu hafa næga orku til að hvarfast. Ef
 virkjunarorkan er mun minni en meðalhreyfiorka sameindanna mun stór
 hluti sameinda vera nægilega orkumikill og efnahvarfið mun ganga hratt
 fyrir sig.</para>
-<para id="fs-idm3588352"><!-- XREF:6 --> sýnir hvernig orka
+<para id="fs-idm3588352"><link target-id="CNX_Chem_12_05_RCooDgm"/> sýnir hvernig orka
 efnafræðilegs kerfis breytist þegar það gengst undir efnahvarf sem
 breytir hvarfefnum í myndefni samkvæmt jöfnunni</para>
 <equation id="fs-idm156839952" class="unnumbered"><m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>C</m:mi><m:mo>+</m:mo><m:mi>D</m:mi></m:mrow></m:math></equation>
@@ -141,7 +141,7 @@ leiða til hærri gilda fyrir <emphasis effect="italics">A</emphasis> og meiri h
 sameinda (sjá kafla um gös) er hitastig efnis mælikvarði á
 meðalhreyfiorku atóma þess eða sameinda. Dreifingu orku meðal sameinda
 sem mynda efni við tiltekið hitastig er lýst með línuritinu sem sýnt er
-í <!-- LINK:1 -->#CNX_Chem_12_05_SuccessR<!-- /LINK -->. Tvö skyggð svæði undir
+í <link target-id="CNX_Chem_12_05_SuccessR"/>(a). Tvö skyggð svæði undir
 ferlinum tákna fjölda sameinda sem búa yfir nægilegri orku (<emphasis effect="italics">RT</emphasis>) til að
 yfirstíga virkjunarþröskuldana (<emphasis effect="italics">E<sub>a</sub></emphasis>). Lægri virkjunarorka leiðir til
 stærra hlutfalls nægilega orkumikilla sameinda og hraðara hvarfs.</para>
@@ -149,7 +149,7 @@ stærra hlutfalls nægilega orkumikilla sameinda og hraðara hvarfs.</para>
 hitastigs á hvarfhraða. Hærra hitastig táknar samsvarandi stærra
 hlutfall sameinda sem búa yfir nægilegri orku (<emphasis effect="italics">RT</emphasis>) til að yfirstíga
 virkjunarþröskuldinn (<emphasis effect="italics">E<sub>a</sub></emphasis>), eins og sýnt er í
-<!-- LINK:2 -->#CNX_Chem_12_05_SuccessR<!-- /LINK -->. Þetta gefur hærra gildi
+<link target-id="CNX_Chem_12_05_SuccessR"/>(b). Þetta gefur hærra gildi
 fyrir hraðafastann og samsvarandi meiri hvarfhraða.</para>
 <figure id="CNX_Chem_12_05_SuccessR" class="scaled-down">
 <media id="fs-idm214984320" alt="Two graphs are shown each with an x-axis label of “Kinetic energy” and a y-axis label of “Fraction of molecules.” Each contains a positively skewed curve indicated in red that begins at the origin and approaches the x-axis at the right side of the graph. In a, a small area under the far right end of the curve is shaded orange. An arrow points down from above the curve to the left end of this region where the shading begins. This arrow is labeled, “Higher activation energy, E subscript a.” In b, the same red curve appears, and a second curve is drawn in black. It is also positively skewed, but reaches a lower maximum value and takes on a broadened appearance as compared to the curve in red. In this graph, the red curve is labeled, “T subscript 1” and the black curve is labeled, “T subscript 2.” In the open space at the upper right on the graph is the label, “T subscript 1 less than T subscript 2.” As with the first graph, the region under the curves at the far right is shaded orange and a downward arrow labeled “E subscript a” points to the left end of this shaded region.">
@@ -177,7 +177,7 @@ I<sub>2</sub>(<emphasis effect="italics">g</emphasis>) er gefin hér. Hver er vi
 <para id="fs-idm178775392">Notaðu uppgefin gögn til að leiða út
 gildi fyrir <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac></m:mrow></m:math> og ln <emphasis effect="italics">k</emphasis>:</para>
 <!-- table handled separately -->
-<para id="fs-idm197951232"><!-- XREF:7 --> er línurit af ln <emphasis effect="italics">k</emphasis> á
+<para id="fs-idm197951232"><link target-id="CNX_Chem_12_05_ArrhPlot"/> er línurit af ln <emphasis effect="italics">k</emphasis> á
 móti <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>T</m:mi></m:mfrac><m:mo>.</m:mo></m:mrow></m:math> Í reynd væri jafna línunnar (halli og
 <emphasis effect="italics">y</emphasis>-skurðpunktur) sem passar best við þessa punkta á línuritinu leidd út
 með tölfræðilegu ferli sem kallast aðhvarfsgreining. Þetta er gagnlegt
@@ -558,8 +558,8 @@ hvarfefnis sem hefur breyst í myndefni og snýr aftur í upprunalegt
 </exercise>
 <exercise id="fs-idp179196768">
 <problem id="fs-idm100372752">
-<para id="fs-idm100372496">Notaðu <!-- LINK:3 -->PhET Reactions &amp;
-Rates gagnvirku hermunina<!-- /LINK --> til að herma eftir kerfi. Í flipanum
+<para id="fs-idm100372496">Notaðu <link url="http://openstax.org/l/16PHETreaction">PhET Reactions &amp;
+Rates gagnvirku hermunina</link> til að herma eftir kerfi. Í flipanum
 „Single collision“ í hermunarforritinu skaltu virkja „Energy view“ með
 því að smella á „+“ táknið. Veldu fyrsta <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mi>C</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>+</m:mo><m:mi>C</m:mi></m:mrow></m:math> hvarfið (A er
 gult, B er fjólublátt og C er dökkblátt). Notaðu sjálfgefna valkostinn
@@ -571,8 +571,8 @@ fyrir ofan virkniástandið? Hvers vegna?</para>
 </exercise>
 <exercise id="fs-idp11390128">
 <problem id="fs-idp11390384">
-<para id="fs-idp46127280">Notaðu <!-- LINK:4 -->gagnvirku
-hermunina Hvörf og hraði frá PhET<!-- /LINK --> til að herma eftir kerfi. Í
+<para id="fs-idp46127280">Notaðu <link url="http://openstax.org/l/16PHETreaction">gagnvirku
+hermunina Hvörf og hraði frá PhET</link> til að herma eftir kerfi. Í
 flipanum „Single collision“ í hermunarforritinu skaltu virkja „Energy
 view“ með því að smella á „+“ táknið. Veldu fyrsta <m:math><m:mrow><m:mi>A</m:mi><m:mo>+</m:mo><m:mi>B</m:mi><m:mi>C</m:mi><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:mi>A</m:mi><m:mi>B</m:mi><m:mo>+</m:mo><m:mi>C</m:mi></m:mrow></m:math>
 hvarfið (A er gult, B er fjólublátt og C er dökkblátt). Notaðu

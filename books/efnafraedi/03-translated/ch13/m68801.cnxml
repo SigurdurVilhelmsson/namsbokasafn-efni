@@ -66,7 +66,7 @@ hvert eftirfarandi efnahvarfa:</para>
 reiknaður út frá jafnvægisstyrk (eða jafnvægisþrýstingi) hvarfefna og
 myndefna þess. Ef þessi styrkur er þekktur felst útreikningurinn
 einfaldlega í því að setja hann inn í K-segðina, eins og sýnt var í
-<!-- XREF:1 -->. Næst er tekið aðeins flóknara dæmi þar sem
+<link target-id="fs-idp54423808"/>. Næst er tekið aðeins flóknara dæmi þar sem
 hlutfallaefnafræði hvarfsins er notuð til að finna jafnvægisstyrk út frá
 uppgefnum upplýsingum. Grunnaðferðin við þennan útreikning er gagnleg
 fyrir margar tegundir jafnvægisútreikninga og byggir á notkun hugtaka
@@ -468,7 +468,7 @@ gufunarþrýstingur vatns 0,196 atm. Hvert er gildi jafnvægisfastans
 <exercise id="fs-idp116788016">
 <problem id="fs-idp116788272">
 <para id="fs-idp210079776">Hvers vegna eru engar breytingar
-tilgreindar fyrir Ni í <!-- XREF:2 -->, hluta (f)? Hvaða eiginleiki Ni
+tilgreindar fyrir Ni í <link target-id="fs-idp189641568"/>, hluta (f)? Hvaða eiginleiki Ni
 breytist?</para></problem>
 <solution id="fs-idp210080400">
 <para id="fs-idp125353792">Virkni hreinna kristalkenndra
@@ -478,7 +478,7 @@ fastefna er jöfn 1 og er stöðug; massi Ni breytist hins vegar.</para>
 <exercise id="fs-idp76682304">
 <problem id="fs-idp76682560">
 <para id="fs-idp76682816">Hvers vegna eru engar breytingar
-tilgreindar fyrir NH<sub>4</sub>HS í <!-- XREF:3 -->, hluta (e)? Hvaða eiginleiki
+tilgreindar fyrir NH<sub>4</sub>HS í <link target-id="fs-idp155255936"/>, hluta (e)? Hvaða eiginleiki
 NH<sub>4</sub>HS breytist?</para></problem>
 </exercise>
 <exercise id="fs-idp99980832">

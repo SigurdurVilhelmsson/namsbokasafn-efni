@@ -84,12 +84,12 @@ skurðpunkt við <emphasis effect="italics">y</emphasis>-ás í ln[<emphasis eff
 með tilliti til <emphasis effect="italics">A</emphasis>.</para>
 <example id="fs-idp35909968">
 <para id="fs-idm76041456"><title>Grafísk ákvörðun á
-stigi efnahvarfs og hraðafasta</title>Sýndu að gögnin í <!-- XREF:1 --> geti
+stigi efnahvarfs og hraðafasta</title>Sýndu að gögnin í <link target-id="CNX_Chem_12_01_KDataH2O2"/> geti
 verið táknuð með fyrsta stigs hraðajöfnu með því að teikna graf af
 ln[H<sub>2</sub>O<sub>2</sub>] á móti tíma. Ákvarðaðu hraðafastann fyrir niðurbrot
 H<sub>2</sub>O<sub>2</sub> út frá þessum gögnum.</para>
-<para id="fs-idm136711920"><title>Lausn</title>Gögnin úr <!-- XREF:2 --> eru sett fram í
-töflu hér að neðan og graf af ln[H<sub>2</sub>O<sub>2</sub>] er sýnt í <!-- XREF:3 -->.</para>
+<para id="fs-idm136711920"><title>Lausn</title>Gögnin úr <link target-id="CNX_Chem_12_01_KDataH2O2"/> eru sett fram í
+töflu hér að neðan og graf af ln[H<sub>2</sub>O<sub>2</sub>] er sýnt í <link target-id="CNX_Chem_12_04_FrstOKin"/>.</para>
 <!-- table handled separately -->
 <!-- figure handled separately -->
 <para id="fs-idm88773168">Grafið af ln[H<sub>2</sub>O<sub>2</sub>] á móti tíma
@@ -257,7 +257,7 @@ efnahvarfið ekki annars stigs.</para>
 <example id="fs-idp69093472">
 <para id="fs-idm27496000"><title>Grafísk ákvörðun á
 stigi efnahvarfs og hraðafasta</title>Gögnin hér að neðan eru fyrir sama
-efnahvarf og lýst er í <!-- XREF:4 -->. Undirbúðu og berðu saman tvö
+efnahvarf og lýst er í <link target-id="fs-idm85213520"/>. Undirbúðu og berðu saman tvö
 viðeigandi gagnagröf til að bera kennsl á hvort efnahvarfið sé
 annaðhvort fyrsta eða annars stigs. Eftir að hafa borið kennsl á stig
 efnahvarfsins skaltu áætla gildi fyrir hraðafastann.</para><para id="fs-idp4978176"><title>Lausn</title>Tími (s) [C<sub>4</sub>H<sub>6</sub>] (<emphasis effect="italics">M</emphasis>) 0 1,00
@@ -270,7 +270,7 @@ ln[C<sub>4</sub>H<sub>6</sub>]<emphasis effect="italics">t</emphasis> á móti <
 <m:math><m:mrow><m:mfrac><m:mtext>1</m:mtext><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub></m:mrow><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">t</emphasis>. Gildin sem þarf fyrir þessi gröf fylgja hér
 á eftir.</para>
 <!-- table handled separately -->
-<para id="fs-idp69115360">Gröfin eru sýnd í <!-- XREF:5 -->, sem
+<para id="fs-idp69115360">Gröfin eru sýnd í <link target-id="CNX_Chem_12_04_2OrdKin"/>, sem
 sýnir greinilega að grafið af ln[C<sub>4</sub>H<sub>6</sub>]<emphasis effect="italics">t</emphasis> á móti <emphasis effect="italics">t</emphasis> er ekki
 línulegt, þess vegna er efnahvarfið ekki fyrsta stigs. Grafið af
 <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mtext>C</m:mtext><m:mn>4</m:mn></m:msub><m:msub><m:mtext>H</m:mtext><m:mn>6</m:mn></m:msub></m:mrow><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mrow></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">t</emphasis> er línulegt, sem gefur til kynna að
@@ -438,7 +438,7 @@ stigs efnahvarf er línuleg jafna:</para>
 <equation id="fs-idm130548304" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:msub><m:mo>]</m:mo><m:mi>t</m:mi></m:msub></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mtext>−</m:mtext><m:mi>k</m:mi><m:mi>t</m:mi><m:mo>+</m:mo><m:msub><m:mrow><m:mo>[</m:mo><m:mi>A</m:mi><m:mo>]</m:mo></m:mrow><m:mn>0</m:mn></m:msub></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>y</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mi>m</m:mi><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>b</m:mi></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idm99514160">Línurit af [<emphasis effect="italics">A</emphasis>] á móti <emphasis effect="italics">t</emphasis> fyrir
 núllta stigs efnahvarf er bein lína með hallatöluna <emphasis effect="italics">−k</emphasis> og
-<emphasis effect="italics">y</emphasis>-skurðpunktinn [<emphasis effect="italics">A</emphasis>]<sub>0</sub>. <!-- XREF:6 --> sýnir línurit af [NH<sub>3</sub>] á
+<emphasis effect="italics">y</emphasis>-skurðpunktinn [<emphasis effect="italics">A</emphasis>]<sub>0</sub>. <link target-id="CNX_Chem_12_04_AmDecomK"/> sýnir línurit af [NH<sub>3</sub>] á
 móti <emphasis effect="italics">t</emphasis> fyrir hitaniðurbrot ammoníaks á yfirborði tveggja mismunandi
 upphitaðra fastra efna. Niðurbrotsefnahvarfið sýnir fyrsta stigs hegðun
 á kvarsyfirborði (SiO<sub>2</sub>), eins og sést á línuritinu þar sem styrkur
@@ -446,7 +446,7 @@ minnkar veldisvaxandi með tíma. Á wolframyfirborði er línuritið hins
 vegar línulegt, sem gefur til kynna núllta stigs hraðafræði.</para>
 <example id="fs-idm339943456">
 <para id="fs-idm358086992"><title>Grafísk ákvörðun á
-núllta stigs hraðafasta</title>Notaðu línuritið í <!-- XREF:7 --> til að
+núllta stigs hraðafasta</title>Notaðu línuritið í <link target-id="CNX_Chem_12_04_AmDecomK"/> til að
 áætla með grafískum hætti núllta stigs hraðafasta fyrir niðurbrot
 ammoníaks á wolframyfirborði.</para>
 <para id="fs-idm382849456"><title>Lausn</title>Heildað hraðalögmál fyrir núllta
@@ -456,7 +456,7 @@ hraðafasta, −<emphasis effect="italics">k</emphasis>. Með sömu stærðfræ�
 hallatala línulega línuritsins (fyrir niðurbrot á W) áætluð út frá
 grafinu. Með því að nota styrk ammoníaks við <emphasis effect="italics">t</emphasis> = 0 og <emphasis effect="italics">t</emphasis> = 1000 s:</para>
 <equation id="fs-idm375658448" class="unnumbered"><m:math><m:mrow><m:mi>k</m:mi><m:mo>=</m:mo><m:mtext>−slope</m:mtext><m:mo>=</m:mo><m:mo>−</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>0.0015</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>−1</m:mn></m:msup><m:mo>−</m:mo><m:mn>0.0028</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>−1</m:mn></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>1000</m:mn><m:mspace width="0.2em"/><m:mtext>s</m:mtext><m:mo>−</m:mo><m:mn>0</m:mn><m:mspace width="0.2em"/><m:mtext>s</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>1.3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>−6</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>−1</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mn>−1</m:mn></m:msup></m:mrow></m:math></equation>
-<para id="fs-idm376604432"><title>Spurningar til íhugunar</title>Núllta stigs línuritið í <!-- XREF:8 -->
+<para id="fs-idm376604432"><title>Spurningar til íhugunar</title>Núllta stigs línuritið í <link target-id="CNX_Chem_12_04_AmDecomK"/>
 sýnir upphafsstyrk ammoníaks 0,0028 mól L<sup>−1</sup> sem minnkar línulega með
 tíma í 1000 s. Að því gefnu að engin breyting verði á þessari núllta
 stigs hegðun, á hvaða tíma (mín) mun styrkurinn ná 0.0001 mól L<sup>−1</sup>?</para>
@@ -499,10 +499,10 @@ helmingunartíma.</para>
 <para id="fs-idm33355984"><title>Útreikningur á
 hraðafasta fyrsta stigs efnahvarfs með helmingunartíma</title>Reiknaðu hraðafastann fyrir fyrsta
 stigs niðurbrot vetnisperoxíðs í vatni við 40 °C með því að nota gögnin
-sem gefin eru í <!-- XREF:9 -->.</para>
+sem gefin eru í <link target-id="CNX_Chem_12_04_HPerDcmp"/>.</para>
 <!-- figure handled separately -->
 <para id="fs-idp122074992"><title>Lausn</title>Skoðun á gögnum um styrk/tíma í
-<!-- XREF:10 --> sýnir að helmingunartími fyrir niðurbrot H<sub>2</sub>O<sub>2</sub> er 2,16
+<link target-id="CNX_Chem_12_04_HPerDcmp"/> sýnir að helmingunartími fyrir niðurbrot H<sub>2</sub>O<sub>2</sub> er 2,16
 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>4</sup> s:</para>
 <equation id="fs-idm2063184" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mi>k</m:mi></m:mfrac></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>k</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mspace width="0.1em"/><m:mfrac><m:mrow><m:mn>0.693</m:mn></m:mrow><m:mrow><m:mn>2.16</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mspace width="0.2em"/><m:mtext>s</m:mtext></m:mrow></m:mfrac><m:mspace width="0.1em"/><m:mo>=</m:mo><m:mn>3.21</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation>
 <para id="fs-idp33836864"><title>Prófaðu þekkingu þína</title>Geislavirka niðurbrotið á joði-131 er
@@ -563,7 +563,7 @@ helmingunartími núllta stigs efnahvarfs í öfugu hlutfalli við hraðafasta
 sem upphafsstyrkurinn eykst.</para>
 <para id="fs-idm22269120">Jöfnur fyrir bæði deildað og heildað
 hraðalögmál og samsvarandi helmingunartímar fyrir núllta, fyrsta og
-annars stigs efnahvörf eru teknar saman í <!-- XREF:11 -->..</para>
+annars stigs efnahvörf eru teknar saman í <link target-id="fs-idm117482272"/>..</para>
 <table id="fs-idm117482272" class="top-titled" summary="This table contains four columns and seven rows. The first column and the first row both serve as headers. The first cell in the first column is blank and is followed by, “rate law,” “units of rate constant,” “integrated rate law,” “plot needed for linear fit of rate date,” “relationship between slope of linear plot and rate constant,” and “half-life.” The first row labels each column, “Zero-Order,” “First-Order,” and “Second-Order.” Under “Zero-order” are the following: “rate = k,” “M s superscript negative 1,” “[ A ] = negative k t + [ A ] subscript 0,” “[ A ] v s. t,” “k = negative slope,” and “t subscript one half = [ A ] subscript 0 over 2 k.” Under “First-Order” are the following: “rate = k [ A ],” “s superscript negative 1,” “l n [ A ] = negative k t plus l n [ A ] subscript 0,” “l n [ A ] v s. t,” “k = negative slope,” and “t subscript one half = 0.693 over k.” Under “Second-Order” are the following: “rate = k [ A ] superscript 2,” “M superscript negative 1 s superscript negative 1,” “1 over [ A ] = k t + ( 1 over [ A ] subscript 0 ),” “1 over [ A ] v s. t,” “k = positive slope,” and “t subscript one half – 1 over [ A ] subscript 0 k.”">
 <tgroup cols="4"><colspec colnum="1" colname="c1"/>
 <colspec colnum="2" colname="c2"/>
@@ -625,7 +625,7 @@ og hraðafasta</entry>
 <example id="fs-idm494886672">
 <para id="fs-idm494886416"><title>Helmingunartími fyrir
 núllta og annars stigs efnahvörf</title>Hver er helmingunartími
-tvíliðunarhvarfs bútadíens sem lýst er í <!-- XREF:12 -->?</para>
+tvíliðunarhvarfs bútadíens sem lýst er í <link target-id="fs-idm85213520"/>?</para>
 <para id="fs-idm376934816"><title>Lausn</title>Hvarfið sem um ræðir er annars
 stigs, er hafið með 0,200 mól L<sup>−1</sup> lausn af hvarfefni og hefur
 hraðafastann 0,0576 L mól<sup>−1</sup> mín<sup>−1</sup>. Með því að setja þessar stærðir
@@ -633,7 +633,7 @@ inn í jöfnuna fyrir helmingunartíma annars stigs hvarfs fæst:</para>
 <equation id="fs-idm493908080" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:msub><m:mi>t</m:mi><m:mrow><m:mn>1</m:mn><m:mtext>/</m:mtext><m:mn>2</m:mn></m:mrow></m:msub></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mn>1</m:mn><m:mrow><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.0576</m:mn><m:mspace width="0.2em"/><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>mol</m:mtext><m:mn>−1</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>min</m:mtext><m:mn>−1</m:mn></m:msup><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.200</m:mn><m:mspace width="0.2em"/><m:mtext>mol</m:mtext><m:mspace width="0.2em"/><m:msup><m:mtext>L</m:mtext><m:mn>−1</m:mn></m:msup><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mn>86.8</m:mn><m:mspace width="0.2em"/><m:mtext>min</m:mtext></m:mtd></m:mtr>
 </m:mtable></m:math></equation>
 <para id="fs-idm327019216"><title>Spurning til íhugunar</title>Hver er helmingunartími (mín) fyrir
-varmasundrun ammoníaks á volframi (sjá <!-- XREF:13 -->)?</para>
+varmasundrun ammoníaks á volframi (sjá <link target-id="fs-idm339943456"/>)?</para>
 <note id="fs-idm366642224">
 <title>Answer:</title>
 <para id="fs-idm339802240">18 mín</para>
@@ -644,7 +644,7 @@ varmasundrun ammoníaks á volframi (sjá <!-- XREF:13 -->)?</para>
 (</emphasis>t<emphasis effect="italics"><sub>1/2</sub>)</emphasis><emphasis effect="italics"> er sá tími sem það tekur helming af gefnu magni hvarfefnis
 að eyðast. Í hverjum helmingunartíma sem á eftir kemur eyðist helmingur
 af þeim styrk hvarfefnisins sem eftir er. Ef við notum sundrun
-vetnisperoxíðs (<!-- XREF:14 -->) sem dæmi, sjáum við að á fyrsta
+vetnisperoxíðs (<link target-id="CNX_Chem_12_01_KDataH2O2"/>) sem dæmi, sjáum við að á fyrsta
 helmingunartímanum (frá 0,00 klukkustundum til 6,00 klukkustunda)
 minnkar styrkur H<sub>2</sub>O<sub>2</sub> úr 1,000 </emphasis>M<emphasis effect="italics"> í 0,500 </emphasis>M<emphasis effect="italics">. Á öðrum
 helmingunartímanum (frá 6,00 klukkustundum til 12,00 klukkustunda)

@@ -206,7 +206,7 @@ Aftur á móti myndi aukning á rúmmáli þessa jafnvægiskerfis leiða til
 hliðrunar í átt að myndefnum.</para>
 <note id="fs-idp6099552" class="chemistry link-to-learning">
 <para id="fs-idp75936512">Skoðaðu þennan
-<!-- LINK:1 -->hlekk<!-- /LINK --> til að sjá áhrifamikla sjónræna sýningu á því
+<link url="http://openstax.org/l/16equichange">hlekk</link> til að sjá áhrifamikla sjónræna sýningu á því
 hvernig jafnvægi breytist með þrýstingsbreytingum.</para>
 </note>
 <note id="fs-idp88873584" class="chemistry everyday-life">
@@ -309,7 +309,7 @@ felur í sér virkniástand með lægri orku en hvarfgangur án hvata, sem
 leiðir til lægri virkjunarorku, <emphasis effect="italics">E<sub>a</sub></emphasis>, og samsvarandi hærri hraðafasta.</para>
 <para id="fs-idp24954576">Til að greina áhrif hvötunar á
 jafnvægiskerfi skulum við skoða hvarfritið fyrir einfalt einþrepa
-(elementary) hvarf sem sýnt er á <!-- XREF:2 -->. Lægri orka virkniástandsins
+(elementary) hvarf sem sýnt er á <link target-id="CNX_Chem_13_03_catalyst"/>. Lægri orka virkniástandsins
 í hvötuðu hvarfi leiðir til lægri virkjunarorku bæði fyrir framhvarfið
 og bakhvarfið. Þar af leiðandi hraðast bæði framhvarfið og bakhvarfið og
 jafnvægi næst hraðar <emphasis effect="italics">en án breytinga á jafnvægisfastanum</emphasis>.</para>
@@ -353,7 +353,7 @@ upp í ásættanlegan hraða við tiltölulega hóflegt hitastig (400–500 °C)
 </list>
 <para id="fs-idp56665040">Skýringarmynd sem sýnir dæmigerðan
 iðnaðarbúnað til framleiðslu á ammoníaki með Haber-Bosch-ferlinu er sýnd
-í <!-- XREF:3 -->.</para>
+í <link target-id="CNX_Chem_13_03_factory"/>.</para>
 <figure id="CNX_Chem_13_03_factory">
 <media id="fs-idp114972544" alt="A diagram is shown that is composed of three main sections. The first section shows an intake pipe labeled with blue arrows and the terms, “N subscript 2, H subscript 2, feed gases,” and “Compressor.” This pipe leads to a large chamber with a turbine in the top section and a coil in the bottom section. From top to bottom, the sections of this chamber are labeled, “Heat exchanger,” “Catalyst chamber 400 to 500 degrees C,” “Catalyst,” “Heater,” and “Preheated feed gases.” One pipe leads from the top of this chamber with red arrows and is labeled, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” while another pipe leads to the bottom of the chamber and reads, “Compressor,” and has orange arrows going through it. These two pipes are connected to a square container that is labeled, “Heat exchanger,” and has red arrows going into it from the upper pipe, orange arrows going away from it to the lower pipe and into a third system. The pipes leading into and out of the heat exchanger are labeled, “Recycled N subscript 2, H subscript 2.” The third system shows a container with an interior zig-zag-shaped pipe that sits on a base that contains a curled pipe on a storage tank. From the top of the image to the bottom are the terms, “N H subscript 3 and unreacted N subscript 2, H subscript 2,” “Condenser,” “Cold water in,” “Refrigeration,” “N H subscript 3 ( l ),” and “Storage” Blue arrows lead away from the base of this system and into the second system while other blue arrows lead into the system from the right side of the diagram and back out of the same chamber.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_13_03_factory.jpg"/>

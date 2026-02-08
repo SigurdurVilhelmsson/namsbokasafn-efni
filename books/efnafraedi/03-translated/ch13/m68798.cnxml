@@ -66,7 +66,7 @@ litvísir um stöðu efnahvarfsins. Til að útskýra þetta skulum við skoða
 oxun brennisteinsdíoxíðs:</para>
 <equation id="fs-idm382376384" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>2SO</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mtext>2SO</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
 <para id="fs-idp138846544">Tvær mismunandi tilraunaaðstæður eru
-sýndar á <!-- XREF:1 -->, önnur þar sem þetta efnahvarf er hafið með
+sýndar á <link target-id="CNX_Chem_13_02_quotient"/>, önnur þar sem þetta efnahvarf er hafið með
 efnablöndu af eingöngu hvarfefnum, SO<sub>2</sub> og O<sub>2</sub>, og hin sem byrjar með
 eingöngu myndefni, SO<sub>3</sub>. Fyrir efnahvarfið sem byrjar með efnablöndu af
 eingöngu hvarfefnum er <emphasis effect="italics">Q</emphasis> í upphafi jafnt og núll:</para>
@@ -89,7 +89,7 @@ jafnvægi.</para>
 jafnvægi er kallað *<emphasis effect="italics">jafnvægisfasti, </emphasis>K***:</para>
 <equation id="fs-idp266400656" class="unnumbered"><m:math><m:mrow><m:mi>K</m:mi><m:mo>≡</m:mo><m:mi>Q</m:mi><m:mspace width="0.2em"/><m:mtext>at equilibrium</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idm328721280">Samanburður á gagnapunktum í
-<!-- XREF:2 --> sýnir að báðar tilraunaaðstæður leiddu til sama gildis fyrir
+<link target-id="CNX_Chem_13_02_quotient"/> sýnir að báðar tilraunaaðstæður leiddu til sama gildis fyrir
 jafnvægisfastann. Þetta er almenn athugun fyrir öll jafnvægiskerfi,
 þekkt sem <emphasis effect="bold">massavirknilögmálið</emphasis>: Við tiltekið hitastig er hvarfstuðull
 kerfis við jafnvægi fasti.</para>
@@ -142,7 +142,7 @@ brennisteinstvíoxíðs sem lýst er hér að ofan mun efnahvarf ganga í hvaða
 atriði nánar skulum við skoða afturkræfa efnahvarfið sem sýnt er hér að
 neðan:</para>
 <equation id="fs-idp63923872" class="unnumbered"><m:math><m:mrow><m:mtext>CO</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mtext>O</m:mtext><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">⇌</m:mo><m:msub><m:mrow><m:mtext>CO</m:mtext></m:mrow><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>H</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="5em"/><m:msub><m:mi>K</m:mi><m:mi>c</m:mi></m:msub><m:mo>=</m:mo><m:mn>0.640</m:mn><m:mspace width="5em"/><m:mtext>T</m:mtext><m:mo>=</m:mo><m:mn>800</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></equation>
-<para id="fs-idm373405968">Súluritin í <!-- XREF:3 --> tákna
+<para id="fs-idm373405968">Súluritin í <link target-id="CNX_Chem_13_02_mixtures"/> tákna
 breytingar á styrk hvarfefna og myndefna fyrir þrjár mismunandi
 efnablöndur. Hvarfstuðlar fyrir efnablöndur 1 og 3 eru upphaflega lægri
 en jafnvægisfasti efnahvarfsins, þannig að hvor þessara efnablandna mun
@@ -375,7 +375,7 @@ nettóhvarfsins og jafnvægisföstum tengdu jafnvægishvarfanna tveggja
 sýnir eftirfarandi samband:</para>
 <equation id="fs-idm371974992" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c1</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c2</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:menclose><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">]</m:mo><m:menclose notation="horizontalstrike"><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>B</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:menclose></m:mrow></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>C</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow><m:mrow><m:mo stretchy="false">[</m:mo><m:mtext>A</m:mtext><m:mo stretchy="false">]</m:mo></m:mrow></m:mfrac><m:mo>=</m:mo><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c'</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
 <equation id="fs-idm353367792" class="unnumbered"><m:math><m:mrow><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c'</m:mtext></m:mrow></m:msub><m:mo>=</m:mo><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c1</m:mtext></m:mrow></m:msub><m:mspace width="0.2em"/><m:msub><m:mtext>K</m:mtext><m:mrow><m:mtext>c2</m:mtext></m:mrow></m:msub></m:mrow></m:math></equation>
-<para id="fs-idm329039744"><!-- XREF:4 --> sýnir notkun þessarar
+<para id="fs-idm329039744"><link target-id="fs-idm384162720"/> sýnir notkun þessarar
 aðferðar við að lýsa tengdum jafnvægisferlum.</para>
 <example id="fs-idm384162720">
 <para id="fs-idm384162464"><title>Jafnvægisfastar fyrir
@@ -445,7 +445,7 @@ hitastig en aðeins eitt gildi fyrir jafnvægisfastann við það hitastig.</par
 <problem id="fs-idp194492208">
 <para id="fs-idp125938384">Útskýrðu hvers vegna jafnvægi
 milli Br<sub>2</sub>(<emphasis effect="italics">l</emphasis>) og Br<sub>2</sub>(<emphasis effect="italics">g</emphasis>) myndi ekki nást ef ílátið væri ekki lokað
-ílát eins og sýnt er í <!-- XREF:5 -->.</para></problem>
+ílát eins og sýnt er í <link target-id="CNX_Chem_13_01_bromine"/>.</para></problem>
 <solution id="fs-idp271084848">
 <para id="fs-idp742448">Ekki er hægt að koma á jafnvægi
 milli vökva- og gasfasa ef toppurinn er tekinn af flöskunni því kerfið
@@ -640,7 +640,7 @@ ná jafnvægi? <m:math><m:mrow><m:msub><m:mrow><m:mtext>SO</m:mtext></m:mrow><m:
 <exercise id="fs-idp57788496">
 <problem id="fs-idp94606208">
 <para id="fs-idp94606464">Hvaða kerfi sem lýst er í
-<!-- XREF:6 --> eru einsleit jafnvægi? Hvaða eru misleit jafnvægi?</para></problem>
+<link target-id="fs-idp281095456"/> eru einsleit jafnvægi? Hvaða eru misleit jafnvægi?</para></problem>
 <solution id="fs-idp62171200">
 <para id="fs-idp62171456">(a) einsleitt; (b) einsleitt; (c)
 einsleitt; (d) misleitt; (e) misleitt; (f) einsleitt; (g) misleitt; (h)
@@ -650,11 +650,11 @@ misleitt</para>
 <exercise id="fs-idp132912112">
 <problem id="fs-idm3694160">
 <para id="fs-idm3693904">Hvaða kerfi sem lýst er í
-<!-- XREF:7 --> eru einsleit jafnvægi? Hvaða eru misleit jafnvægi?</para></problem>
+<link target-id="fs-idp52174160"/> eru einsleit jafnvægi? Hvaða eru misleit jafnvægi?</para></problem>
 </exercise>
 <exercise id="fs-idp14899216">
 <problem id="fs-idp14899472">
-<para id="fs-idp16381312">Fyrir hvaða hvarf í <!-- XREF:8 --> er
+<para id="fs-idp16381312">Fyrir hvaða hvarf í <link target-id="fs-idp281095456"/> er
 <emphasis effect="italics">K<sub>c</sub></emphasis> (reiknað með styrk) jafnt <emphasis effect="italics">K<sub>P</sub></emphasis> (reiknað með þrýstingi)?</para></problem>
 <solution id="fs-idp16548672">
 <para id="fs-idp16548928">Þetta á við í (a) og (b).</para>
@@ -662,7 +662,7 @@ misleitt</para>
 </exercise>
 <exercise id="fs-idp93479024">
 <problem id="fs-idp174008992">
-<para id="fs-idp174009248">Fyrir hvaða hvarf í <!-- XREF:9 --> er
+<para id="fs-idp174009248">Fyrir hvaða hvarf í <link target-id="fs-idp52174160"/> er
 <emphasis effect="italics">K<sub>c</sub></emphasis> (reiknað með styrk) jafnt <emphasis effect="italics">K<sub>P</sub></emphasis> (reiknað með þrýstingi)?</para></problem>
 </exercise>
 <exercise id="fs-idp102347760">

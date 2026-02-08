@@ -14,7 +14,7 @@ tilgreindar aðstæður</item></list></md:abstract>
 <content>
 <para id="fs-idm111531200">Á sautjándu og sérstaklega átjándu
 öld, knúin áfram bæði af löngun til að skilja náttúruna og leit að því
-að búa til loftbelgi sem hægt væri að fljúga í (<!-- XREF:3 -->), komu
+að búa til loftbelgi sem hægt væri að fljúga í (<link target-id="CNX_Chem_09_02_Ballooning"/>), komu
 nokkrir vísindamenn á fót tengslum milli stórsærra eðliseiginleika
 lofttegunda, þ.e. þrýstings, rúmmáls, hitastigs og magns gass. Þrátt
 fyrir að mælingar þeirra væru ekki nákvæmar miðað við nútíma staðla,
@@ -45,7 +45,7 @@ er tengt við þrýstimæli með gasi og loka síðan ílátinu þannig að ekke
 gas sleppi út. Ef ílátið er kælt verður gasið inni í því einnig kaldara
 og sést að þrýstingur þess minnkar. Þar sem ílátið er stíft og vel lokað
 haldast bæði rúmmál og mólfjöldi gassins stöðug. Ef við hitum kúluna
-verður gasið inni í henni heitara (<!-- XREF:4 -->) og þrýstingurinn eykst.</para>
+verður gasið inni í henni heitara (<link target-id="CNX_Chem_09_01_Amontons1"/>) og þrýstingurinn eykst.</para>
 <figure id="CNX_Chem_09_01_Amontons1"><media id="fs-idp8042736" alt="This figure includes three similar diagrams. In the first diagram to the left, a rigid spherical container of a gas to which a pressure gauge is attached at the top is placed in a large beaker of water, indicated in light blue, atop a hot plate. The needle on the pressure gauge points to the far left on the gauge. The diagram is labeled “low P” above and “hot plate off” below. The second similar diagram also has the rigid spherical container of gas placed in a large beaker from which light blue wavy line segments extend from the top of the liquid in the beaker. The beaker is situated on top of a slightly reddened circular area. The needle on the pressure gauge points straight up, or to the middle on the gauge. The diagram is labeled “medium P” above and “hot plate on medium” below. The third diagram also has the rigid spherical container of gas placed in a large beaker in which bubbles appear near the liquid surface and several wavy light blue line segments extend from the surface out of the beaker. The beaker is situated on top of a bright red circular area. The needle on the pressure gauge points to the far right on the gauge. The diagram is labeled “high P” above and “hot plate on high” below.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_01_Amontons1.jpg"/>
 </media>
@@ -56,7 +56,7 @@ kúlunni tiltölulega lágur. Þegar gasið er hitað eykst þrýstingur gassins
 <para id="fs-idm111816736">Þessi tengsl milli hitastigs og
 þrýstings sjást fyrir hvaða sýni af gasi sem er lokað í stöðugu rúmmáli.
 Dæmi um tilraunagögn um þrýsting og hitastig er sýnt fyrir loftsýni við
-þessar aðstæður í <!-- XREF:5 -->. Við komumst að því að hitastig og
+þessar aðstæður í <link target-id="CNX_Chem_09_02_Amontons2"/>. Við komumst að því að hitastig og
 þrýstingur eru línulega tengd, og ef hitastigið er á kelvinkvarða, þá
 eru <emphasis effect="italics">P</emphasis> og <emphasis effect="italics">T</emphasis> í beinu hlutfalli (aftur, þegar <emphasis effect="italics">rúmmál og mólfjöldi gass
 eru haldnir stöðugir</emphasis>); ef hitastigið á kelvinkvarða eykst um ákveðinn
@@ -139,7 +139,7 @@ og blaðran skreppur saman (þótt bæði magn gassins og þrýstingur þess
 haldist óbreytt). Ef við gerum blöðruna mjög kalda mun hún skreppa mikið
 saman og hún þenst út aftur þegar hún hitnar.</para>
 <note id="fs-idp27422192" class="chemistry link-to-learning">
-<para id="fs-idp60978480">Þetta <!-- LINK:1 -->myndband<!-- /LINK -->
+<para id="fs-idp60978480">Þetta <link url="http://openstax.org/l/16CharlesLaw">myndband</link>
 sýnir hvernig kæling og hitun á gasi veldur því að rúmmál þess minnkar
 eða eykst.</para>
 </note>
@@ -147,7 +147,7 @@ eða eykst.</para>
 rúmmál tiltekins magns af afmörkuðu gasi við fastan þrýsting eiga
 almennt við: Rúmmálið eykst þegar hitastigið eykst og minnkar þegar
 hitastigið minnkar. Gögn um rúmmál og hitastig fyrir 1 móls sýni af
-metangasi við 1 atm eru skráð og sýnd á línuriti í <!-- XREF:6 -->.</para>
+metangasi við 1 atm eru skráð og sýnd á línuriti í <link target-id="CNX_Chem_09_02_Charles2"/>.</para>
 <figure id="CNX_Chem_09_02_Charles2">
 <media id="fs-idm62135472" alt="This figure includes a table and a graph. The table has 3 columns and 6 rows. The first row is a header, which labels the columns “Temperature, degrees C,” “Temperature, K,” and “Pressure, k P a.” The first column contains the values from top to bottom negative 100, negative 50, 0, 100, and 200. The second column contains the values from top to bottom 173, 223, 273, 373, and 473. The third column contains the values 14.10, 18.26, 22.40, 30.65, and 38.88. A graph appears to the right of the table. The horizontal axis is labeled “Temperature ( K ).” with markings and labels provided for multiples of 100 beginning at 0 and ending at 300. The vertical axis is labeled “Volume ( L )” with marking and labels provided for multiples of 10, beginning at 0 and ending at 30. Five data points from the table are plotted on the graph with black dots. These dots are connected with a solid black line. The graph shows a positive linear trend.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_Charles2.jpg"/>
@@ -238,7 +238,7 @@ minnka rúmmál afmarkaðs gass eykst þrýstingur þess og með því að auka
 rúmmál þess minnkar þrýstingur þess. Reyndar, ef rúmmálið eykst um
 ákveðinn þátt, minnkar þrýstingurinn um sama þátt og öfugt. Rúmmáls- og
 þrýstingsgögn fyrir loftsýni við stofuhita eru sýnd á línuriti í
-<!-- XREF:7 -->.</para>
+<link target-id="CNX_Chem_09_03_BoylesLaw1"/>.</para>
 <figure id="CNX_Chem_09_03_BoylesLaw1" class="scaled-down">
 <media id="fs-idm8799376" alt="This figure contains a diagram and two graphs. The diagram shows a syringe labeled with a scale in m l or c c with multiples of 5 labeled beginning at 5 and ending at 30. The markings halfway between these measurements are also provided. Attached at the top of the syringe is a pressure gauge with a scale marked by fives from 40 on the left to 5 on the right. The gauge needle rests between 10 and 15, slightly closer to 15. The syringe plunger position indicates a volume measurement about halfway between 10 and 15 m l or c c. The first graph is labeled “V ( m L )” on the horizontal axis and “P ( p s i )” on the vertical axis. Points are labeled at 5, 10, 15, 20, and 25 m L with corresponding values of 39.0, 19.5, 13.0, 9.8, and 6.5 p s i. The points are connected with a smooth curve that is declining at a decreasing rate of change. The second graph is labeled “V ( m L )” on the horizontal axis and “1 divided by P ( p s i )” on the vertical axis. The horizontal axis is labeled at multiples of 5, beginning at zero and extending up to 35 m L. The vertical axis is labeled by multiples of 0.02, beginning at 0 and extending up to 0.18. Six points indicated by black dots on this graph are connected with a black line segment showing a positive linear trend.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_BoylesLaw1.jpg"/>
@@ -262,7 +262,7 @@ að lesa nákvæmlega af línuritum með sveigðum línum við lág eða há gil
 breytanna og erfiðara er að nota þau til að aðlaga fræðilegar jöfnur og
 færibreytur að tilraunagögnum. Af þeim sökum reyna vísindamenn oft að
 finna leið til að gera gögnin sín „línuleg“. Ef við teiknum <emphasis effect="italics">P</emphasis> á móti
-<emphasis effect="italics">V</emphasis> fáum við breiðboga (sjá <!-- XREF:8 -->).</para>
+<emphasis effect="italics">V</emphasis> fáum við breiðboga (sjá <link target-id="CNX_Chem_09_02_Boyleslaw2"/>).</para>
 <figure id="CNX_Chem_09_02_Boyleslaw2" class="scaled-down"><media id="fs-idm137483904" alt="This diagram shows two graphs. In a, a graph is shown with volume on the horizontal axis and pressure on the vertical axis. A curved line is shown on the graph showing a decreasing trend with a decreasing rate of change. In b, a graph is shown with volume on the horizontal axis and one divided by pressure on the vertical axis. A line segment, beginning at the origin of the graph, shows a positive, linear trend.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_Boyleslaw2.jpg"/>
 </media>
@@ -278,12 +278,12 @@ tekið saman í fullyrðingunni sem nú er þekkt sem <emphasis effect="bold">l�
 <emphasis effect="italics">Rúmmál ákveðins magns af gasi sem haldið er við fast hitastig er í
 öfugu hlutfalli við þrýstinginn sem það er mælt við.</emphasis></para>
 <example id="fs-idp10418864">
-<para id="fs-idm205798208"><title>Rúmmál gassýnis</title>Gassýnið í <!-- XREF:9 --> hefur rúmmálið
+<para id="fs-idm205798208"><title>Rúmmál gassýnis</title>Gassýnið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/> hefur rúmmálið
 15,0 ml við þrýstinginn 13,0 psi. Ákvarðaðu þrýsting gassins við
 rúmmálið 7,5 ml með því að nota:</para>
-<para id="fs-idm127753872">(a) <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis> línuritið í <!-- XREF:10 --></para>
+<para id="fs-idm127753872">(a) <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis> línuritið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/></para>
 <para id="fs-idm129344864">(b) <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">V</emphasis>
-línuritið í <!-- XREF:11 --></para>
+línuritið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/></para>
 <para id="fs-idm92820144">(c) jöfnu lögmáls Boyles</para>
 <para id="fs-idm215125536">Gerðu athugasemd við líklega hittni
 hverrar aðferðar.</para>
@@ -303,11 +303,11 @@ rúmmálið er óþekkt og <emphasis effect="italics">V</emphasis><sub>2</sub> s
 <equation id="fs-idp79285632" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>P</m:mi><m:mn>2</m:mn></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mn>13.0</m:mn><m:mspace width="0.2em"/><m:mtext>psi</m:mtext><m:mspace width="0.2em"/><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>15.0</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mL</m:mtext></m:mrow></m:menclose></m:mrow><m:mrow><m:mn>7.5</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mL</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>26</m:mn><m:mspace width="0.2em"/><m:mtext>psi</m:mtext></m:mrow></m:math></equation><para id="fs-idm146893296">Það var erfiðara að meta vel út frá
 <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis> línuritinu, þannig að (a) er líklega ónákvæmara en (b) eða (c).
 Útreikningurinn verður jafn nákvæmur og jafnan og mælingarnar leyfa.</para>
-<para id="fs-idm111326864"><title>Prófaðu þekkingu þína</title>Gassýnið í <!-- XREF:12 --> hefur
+<para id="fs-idm111326864"><title>Prófaðu þekkingu þína</title>Gassýnið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/> hefur
 rúmmálið 30,0 ml við þrýstinginn 6,5 psi. Ákvarðaðu rúmmál gassins við
-þrýstinginn 11,0 psi með því að nota:</para><para id="fs-idm161358576">(a) <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis> línuritið í <!-- XREF:13 --></para>
+þrýstinginn 11,0 psi með því að nota:</para><para id="fs-idm161358576">(a) <emphasis effect="italics">P</emphasis>-<emphasis effect="italics">V</emphasis> línuritið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/></para>
 <para id="fs-idm130543696">(b) <m:math><m:mrow><m:mfrac><m:mn>1</m:mn><m:mi>P</m:mi></m:mfrac></m:mrow></m:math> á móti <emphasis effect="italics">V</emphasis>
-línuritið í <!-- XREF:14 --></para>
+línuritið í <link target-id="CNX_Chem_09_03_BoylesLaw1"/></para>
 <para id="fs-idm208892896">(c) jöfnu lögmáls Boyles</para>
 <para id="fs-idm265464784">Gerðu athugasemd við líklega hittni
 hverrar aðferðar.</para>
@@ -337,7 +337,7 @@ og rúmmál lungnanna minnkar, sem veldur því að þrýstingurinn eykst
 (aftur lögmál Boyles), og loft streymir út úr lungunum (frá háum
 þrýstingi yfir í lágan þrýsting). Þú andar svo inn og út aftur og aftur
 og endurtekur þessa hringrás lögmáls Boyles það sem eftir er ævinnar
-(<!-- XREF:15 -->).</para>
+(<link target-id="CNX_Chem_09_02_BoylesLaw4"/>).</para>
 <figure id="CNX_Chem_09_02_BoylesLaw4">
 <media id="fs-idm198513808" alt="This figure contains two diagrams of a cross section of the human head and torso. The first diagram on the left is labeled “Inspiration.” It shows curved arrows in gray proceeding through the nasal passages and mouth to the lungs. An arrow points downward from the diaphragm, which is relatively flat, just beneath the lungs. This arrow is labeled “Diaphragm contracts.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr lower” is provided. The second, similar diagram, which is labeled “Expiration,” reverses the direction of both arrows. Arrows extend from the lungs out through the nasal passages and mouth. Similarly, an arrow points up to the diaphragm, showing a curved diaphragm and lungs reduced in size from the previous image. This arrow is labeled “Diaphragm relaxes.” At the entrance to the mouth and nasal passages, a label of P subscript lungs equals 1 dash 3 torr higher” is provided.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_BoylesLaw4.jpg"/>
@@ -366,8 +366,8 @@ föst</emphasis>.</para>
 stærðfræðileg sambönd fyrir hin breytupörin, svo sem <emphasis effect="italics">P</emphasis> á móti <emphasis effect="italics">n</emphasis> og
 <emphasis effect="italics">n</emphasis> á móti <emphasis effect="italics">T</emphasis>.</para>
 <note id="fs-idm50116432" class="chemistry link-to-learning">
-<para id="fs-idm91270672">Farðu í þessa <!-- LINK:2 -->gagnvirku
-PhET-hermun<!-- /LINK --> til að rannsaka samböndin milli þrýstings, rúmmáls,
+<para id="fs-idm91270672">Farðu í þessa <link url="http://openstax.org/l/16IdealGasLaw">gagnvirku
+PhET-hermun</link> til að rannsaka samböndin milli þrýstings, rúmmáls,
 hitastigs og magns gass. Notaðu hermunina til að skoða áhrif þess að
 breyta einni stærð á aðra á meðan hinum stærðunum er haldið föstum (eins
 og lýst er í fyrri köflum um hin ýmsu gaslögmál).</para>
@@ -450,7 +450,7 @@ sem <emphasis effect="italics">n</emphasis> = fjöldi móla gassins og <emphasis
 <para id="fs-idm24051840"><title>Notkun sameinaða
 gaslögmálsins</title>Þegar dæmigerður köfunarkútur með
 13,2 L rúmmáli er fylltur með lofti er þrýstingurinn 153 atm
-(<!-- XREF:16 -->). Ef hitastig vatnsins er 27 °C, hversu marga lítra af
+(<link target-id="CNX_Chem_09_02_Scuba"/>). Ef hitastig vatnsins er 27 °C, hversu marga lítra af
 lofti mun slíkur kútur veita lungum kafara á um það bil 70 feta dýpi í
 sjónum þar sem þrýstingurinn er 3,13 atm?</para>
 <!-- figure handled separately -->
@@ -483,7 +483,7 @@ Goodchild)</caption>
 <title>Tengslin milli sjávardýpis
 og þrýstings við köfun</title>
 <para id="fs-idp78164736">Hvort sem kafað er við Kóralrifið
-mikla í Ástralíu (sýnt í <!-- XREF:17 -->) eða í Karíbahafinu verða kafarar
+mikla í Ástralíu (sýnt í <link target-id="CNX_Chem_09_02_GreatBarri"/>) eða í Karíbahafinu verða kafarar
 að skilja hvernig þrýstingur hefur áhrif á ýmis atriði sem tengjast
 þægindum þeirra og öryggi.</para>
 <figure id="CNX_Chem_09_02_GreatBarri" class="scaled-down">
@@ -540,7 +540,7 @@ eiginleika lofttegunda: 273,15 K og 1 atm (101,325 kPa).
 atm í 1 bar (100 kPa) árið 1982, en fyrri skilgreiningin er enn í notkun
 í mörgum heimildum og verður notuð í þessum texta.] Við staðalaðstæður
 hefur eitt mól af kjörgasi rúmmál sem er um 22,4 L – þetta er kallað
-<emphasis effect="bold">staðalmólrúmmál</emphasis> (<!-- XREF:18 -->).</para>
+<emphasis effect="bold">staðalmólrúmmál</emphasis> (<link target-id="CNX_Chem_09_02_HENH3O2"/>).</para>
 <figure id="CNX_Chem_09_02_HENH3O2"><media id="fs-idp59520544" alt="This figure shows three balloons each filled with He, NH subscript 2, and O subscript 2, respectively. Beneath the first balloon is the label “4 g of He” Beneath the second balloon is the label, “17 g of NH subscript 2.” Beneath the third balloon is the label “32 g of O subscript 2.” Each balloon contains the same number of molecules of their respective gases.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_02_HENH3O2.jpg"/>
 </media>
@@ -586,7 +586,7 @@ kafla</title>
 <exercise id="fs-idp16137760">
 <problem id="fs-idm190058640">
 <para id="fs-idm232268528">Útskýrðu hvernig rúmmál
-loftbólanna sem kafari andar frá sér (<!-- XREF:19 -->) breytist þegar þær
+loftbólanna sem kafari andar frá sér (<link target-id="CNX_Chem_09_02_Scuba"/>) breytist þegar þær
 stíga upp á yfirborðið, að því gefnu að þær haldist heilar.</para>
 </problem>
 <solution id="fs-idm158859536">
@@ -618,14 +618,14 @@ eftir því sem rúmmálið eykst. (b) hitastig, þrýstingur</para>
 <exercise id="fs-idm119503088">
 <problem id="fs-idm122972656">
 <para id="fs-idm26964784">Hvernig myndi línuritið í
-<!-- XREF:20 --> breytast ef fjöldi móla af gasi í sýninu sem notað var til
+<link target-id="CNX_Chem_09_02_Charles2"/> breytast ef fjöldi móla af gasi í sýninu sem notað var til
 að ákvarða ferilinn væri tvöfaldaður?</para>
 </problem>
 </exercise>
 <exercise id="fs-idm150329120">
 <problem id="fs-idm188427552">
 <para id="fs-idm241276032">Hvernig myndi línuritið í
-<!-- XREF:21 --> breytast ef fjöldi móla af gasi í sýninu sem notað var til
+<link target-id="CNX_Chem_09_03_BoylesLaw1"/> breytast ef fjöldi móla af gasi í sýninu sem notað var til
 að ákvarða ferilinn væri tvöfaldaður?</para>
 </problem>
 <solution id="fs-idm181098208">
@@ -636,14 +636,14 @@ og ofar, en með sama grunnform.</para>
 <exercise id="fs-idm221266736">
 <problem id="fs-idm227817104">
 <para id="fs-idm190325632">Til viðbótar við gögnin sem finna
-má í <!-- XREF:22 -->, hvaða aðrar upplýsingar þurfum við til að finna massa
+má í <link target-id="CNX_Chem_09_03_BoylesLaw1"/>, hvaða aðrar upplýsingar þurfum við til að finna massa
 loftsýnisins sem notað var til að ákvarða línuritið?</para>
 </problem>
 </exercise>
 <exercise id="fs-idm162722032">
 <problem id="fs-idm129289120">
 <para id="fs-idm223838704">Ákvarðaðu rúmmál 1 móls af CH<sub>4</sub>
-gasi við 150 K og 1 atm með því að nota <!-- XREF:23 -->.</para>
+gasi við 150 K og 1 atm með því að nota <link target-id="CNX_Chem_09_02_Charles2"/>.</para>
 </problem>
 <solution id="fs-idm207209024">
 <para id="fs-idp31441392">Um 12,5 L</para></solution>
@@ -651,7 +651,7 @@ gasi við 150 K og 1 atm með því að nota <!-- XREF:23 -->.</para>
 <exercise id="fs-idm179450656">
 <problem id="fs-idm235612144">
 <para id="fs-idm118272896">Ákvarðaðu þrýsting gassins í
-sprautunni sem sýnd er í <!-- XREF:24 --> þegar rúmmál hennar er 12,5 ml, með
+sprautunni sem sýnd er í <link target-id="CNX_Chem_09_03_BoylesLaw1"/> þegar rúmmál hennar er 12,5 ml, með
 því að nota:</para>
 <para id="fs-idm163780992">(a) viðeigandi línurit</para>
 <para id="fs-idm234849104">(b) lögmál Boyles</para>
@@ -768,7 +768,7 @@ líkamsaðstæður, þ.e. 1 atm og 37 °C?</para>
 </exercise>
 <exercise id="fs-idm131888352">
 <problem id="fs-idm207038512">
-<para id="fs-idm183236768">Stór köfunarkútur (<!-- XREF:25 -->)
+<para id="fs-idm183236768">Stór köfunarkútur (<link target-id="CNX_Chem_09_02_Scuba"/>)
 með 18 L rúmmáli er metinn fyrir 220 bara þrýsting. Kúturinn er fylltur
 við 20 °C og inniheldur nóg loft til að veita kafara 1860 L af lofti við
 2,37 atm þrýsting (45 feta dýpi). Var kúturinn fylltur að hámarki við 20

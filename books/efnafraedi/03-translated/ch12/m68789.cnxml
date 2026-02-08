@@ -102,7 +102,7 @@ sem saman eru notaðir til að setja fram hraðajöfnu. Þessi aðferð er sýnd
 út frá upphafshraða</title>Óson í efri lofthjúpnum eyðist þegar
 það hvarfast við nituroxíð. Hraði efnahvarfa nituroxíða við óson eru
 mikilvægir þættir þegar metið er hversu mikilvæg þessi efnahvörf eru við
-myndun ósonholsins yfir Suðurskautslandinu (<!-- XREF:1 -->). Eitt slíkt
+myndun ósonholsins yfir Suðurskautslandinu (<link target-id="CNX_Chem_12_03_OzoneHole"/>). Eitt slíkt
 efnahvarf er samruni niturmónoxíðs, NO, við óson, O<sub>3</sub>:</para>
 <!-- figure handled separately -->
 <equation id="fs-idm215850976" class="unnumbered"><m:math><m:mrow><m:mtext>NO(</m:mtext><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>3</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">⟶</m:mo><m:mspace width="0.2em"/><m:msub><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:mtext>2</m:mtext></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:msub><m:mtext>O</m:mtext><m:mn>2</m:mn></m:msub><m:mo stretchy="false">(</m:mo><m:mi>g</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation>
@@ -246,7 +246,7 @@ tilraunagögnin til að ákvarða hraðajöfnuna og gildi hraðafastans fyrir
 <para id="fs-idm237007488"><title>Lausn</title>Hraðajafnan fyrir þetta hvarf mun
 hafa formið:</para>
 <equation id="fs-idm220277104" class="unnumbered"><m:math><m:mrow><m:mtext>rate</m:mtext><m:mo>=</m:mo><m:mi>k</m:mi><m:mo>[</m:mo><m:mrow><m:mtext>NO</m:mtext></m:mrow><m:msup><m:mrow><m:mo>]</m:mo></m:mrow><m:mi>m</m:mi></m:msup><m:msup><m:mrow><m:mrow><m:mo>[</m:mo><m:mrow><m:msub><m:mrow><m:mtext>Cl</m:mtext></m:mrow><m:mn>2</m:mn></m:msub></m:mrow><m:mo>]</m:mo></m:mrow></m:mrow><m:mi>n</m:mi></m:msup></m:mrow></m:math></equation>
-<para id="fs-idm256345824">Eins og í <!-- XREF:2 -->, nálgastu þetta
+<para id="fs-idm256345824">Eins og í <link target-id="fs-idm234815200"/>, nálgastu þetta
 verkefni skref fyrir skref, ákvarðaðu gildi <emphasis effect="italics">m</emphasis> og <emphasis effect="italics">n</emphasis> út frá
 tilraunagögnunum og notaðu síðan þessi gildi til að ákvarða gildi <emphasis effect="italics">k</emphasis>. Í
 þessu dæmi verður þó notuð bein algebruleg nálgun (öfugt við óbeinu
@@ -378,10 +378,10 @@ spá fyrir um þær á áreiðanlegan hátt með hlutfallaefnafræði.</emphasis
 <para id="fs-idm218845648">Einingar fyrir hraðafasta eru
 breytilegar eftir því sem við á til að rúma heildarstig efnahvarfsins.
 Eining hraðafastans fyrir annars stigs efnahvarfið sem lýst er í
-<!-- XREF:3 --> var ákvörðuð sem <m:math><m:mrow><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Fyrir þriðja stigs
-efnahvarfið sem lýst er í <!-- XREF:4 --> var einingin fyrir <emphasis effect="italics">k</emphasis> leidd út sem
+<link target-id="fs-idm234815200"/> var ákvörðuð sem <m:math><m:mrow><m:mtext>L</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Fyrir þriðja stigs
+efnahvarfið sem lýst er í <link target-id="fs-idm285627376"/> var einingin fyrir <emphasis effect="italics">k</emphasis> leidd út sem
 <m:math><m:mrow><m:msup><m:mtext>L</m:mtext><m:mn>2</m:mn></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> Einingagreining krefst þess að eining hraðafastans fyrir
-efnahvarf með heildarstig <emphasis effect="italics">x</emphasis> sé <m:math><m:mrow><m:msup><m:mtext>L</m:mtext><m:mrow><m:mi>x</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> <!-- XREF:5 --> tekur saman
+efnahvarf með heildarstig <emphasis effect="italics">x</emphasis> sé <m:math><m:mrow><m:msup><m:mtext>L</m:mtext><m:mrow><m:mi>x</m:mi><m:mo>−</m:mo><m:mn>1</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mrow><m:mn>1</m:mn><m:mo>−</m:mo><m:mi>x</m:mi></m:mrow></m:msup><m:mspace width="0.2em"/><m:msup><m:mtext>s</m:mtext><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>.</m:mo></m:mrow></m:math> <link target-id="fs-idm233742304"/> tekur saman
 einingar hraðafasta fyrir algeng stig efnahvarfa.</para>
 <table id="fs-idm233742304" class="top-titled" summary="This table has two columns and four rows. The first row is a header row and it labels each column, “Reaction order,” and “Units of k.” Under the “Reaction Order” column are: “( m + n ),” “zero,” “first,” “second,” and, “third.” Under the “Units of k” column are: “mol superscript 1 minus ( m + n) L superscript ( m + n) minus 1 s superscript negative one,” “mol / L / s,” “s superscript negative 1,” “L / mol / s,” and “mol superscript negative 2 L superscript 2 s superscript negative 1.”">
 <tgroup cols="2">

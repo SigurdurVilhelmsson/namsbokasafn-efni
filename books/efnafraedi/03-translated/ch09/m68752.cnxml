@@ -69,7 +69,7 @@ eðlismassajöfnuna</para>
 <equation id="fs-idm487853552" class="unnumbered"><m:math><m:mrow><m:mi>d</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>ℳ</m:mi><m:mi>P</m:mi></m:mrow><m:mrow><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idm178080080">Þetta samband má nota til að reikna
 út eðlismassa lofttegunda með þekkta samsetningu við tiltekin gildi
-þrýstings og hitastigs eins og sýnt er í <!-- XREF:3 -->.</para>
+þrýstings og hitastigs eins og sýnt er í <link target-id="fs-idp128586304"/>.</para>
 <example id="fs-idp128586304">
 <para id="fs-idm63453648"><title>Mæling á eðlismassa
 gass</title>Hver er eðlismassi niturgass við
@@ -96,7 +96,7 @@ Með því að sameina jöfnu kjörgass</para>
 <para id="fs-idm482518736">fæst eftirfarandi jafna:</para>
 <equation id="fs-idm441399648" class="unnumbered"><m:math><m:mrow><m:mi>ℳ</m:mi><m:mo>=</m:mo><m:mfrac><m:mrow><m:mi>m</m:mi><m:mi>R</m:mi><m:mi>T</m:mi></m:mrow><m:mrow><m:mi>P</m:mi><m:mi>V</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
 <para id="fs-idm183947392">Sýnt er fram á hvernig mólmassi gass
-er ákvarðaður með þessari aðferð í <!-- XREF:4 -->.</para>
+er ákvarðaður með þessari aðferð í <link target-id="fs-idp74274064"/>.</para>
 <example id="fs-idp74274064">
 <para id="fs-idm20853312"><title>Ákvörðun
 sameindaformúlu gass út frá mólmassa þess og reynsluformúlu</title>Sýklóprópan, gas sem eitt sinn var
@@ -147,7 +147,7 @@ um leið og síðasti vökvinn verður að gasi, en þá er flaskan fyllt með
 eingöngu gassýni við umhverfisþrýsting</item>
 <item>Flaskan er innsigluð og
 gassýninu leyft að þéttast í vökva og síðan er flaskan vegin til að
-ákvarða massa sýnisins (sjá <!-- XREF:5 -->)</item>
+ákvarða massa sýnisins (sjá <link target-id="CNX_Chem_09_03_liquidgas"/>)</item>
 </list>
 <!-- figure handled separately -->
 <para id="fs-idm10831984">Með þessari aðferð er sýni af
@@ -185,7 +185,7 @@ Lögmál Daltons</title>
 <para id="fs-idp70155072">Nema þau hvarfist efnafræðilega við
 hvert annað hafa einstök gös í efnablöndu gasa ekki áhrif á þrýsting
 hvers annars. Hvert einstakt gas í efnablöndu beitir sama þrýstingi og
-það myndi beita ef það væri eitt í ílátinu (<!-- XREF:6 -->). Þrýstingurinn
+það myndi beita ef það væri eitt í ílátinu (<link target-id="CNX_Chem_09_03_DaltonLaw1"/>). Þrýstingurinn
 sem hvert einstakt gas í efnablöndu beitir er kallaður
 <emphasis effect="bold">hlutþrýstingur</emphasis> þess. Þessi athugun er tekin saman í <emphasis effect="bold">lögmáli
 Daltons um hlutþrýsting</emphasis>: <emphasis effect="italics">Heildarþrýstingur efnablöndu kjörgasa er
@@ -266,7 +266,7 @@ hvarfast ekki við vatn er að fanga þau í flösku sem hefur verið fyllt
 með vatni og henni snúið á hvolf í skál sem er fyllt með vatni.
 Þrýstinginn á gasinu inni í flöskunni má gera jafnan loftþrýstingnum
 fyrir utan með því að hækka eða lækka flöskuna. Þegar vatnsyfirborðið er
-í sömu hæð bæði innan og utan flöskunnar (<!-- XREF:7 -->) er þrýstingur
+í sömu hæð bæði innan og utan flöskunnar (<link target-id="CNX_Chem_09_03_WaterVapor"/>) er þrýstingur
 gassins jafn loftþrýstingnum, sem hægt er að mæla með loftvog.</para>
 <figure id="CNX_Chem_09_03_WaterVapor" class="scaled-down">
 <media id="fs-idm14272784" alt="This figure shows a diagram of equipment used for collecting a gas over water. To the left is an Erlenmeyer flask. It is approximately two thirds full of a lavender colored liquid. Bubbles are evident in the liquid. The label “Reaction Producing Gas” appears below the flask. A line segment connects this label to the liquid in the flask. The flask has a stopper in it through which a single glass tube extends from the open region above the liquid in the flask up, through the stopper, to the right, then angles down into a pan that is nearly full of light blue water. This tube again extends right once it is well beneath the water’s surface. It then bends up into an inverted flask which is labeled “Collection Flask.” This collection flask is positioned with its mouth beneath the surface of the light blue water and appears approximately half full. Bubbles are evident in the water in the inverted flask. The open space above the water in the inverted flask is labeled “collected gas.”">
@@ -289,8 +289,8 @@ gassins er því jafn heildarþrýstingnum að frádregnum þrýstingi
 vatnsgufunnar – þetta er kallað „þurr“ gasþrýstingur, það er að segja
 þrýstingur gassins eingöngu, án vatnsgufu. <emphasis effect="bold">Gufunarþrýstingur vatns</emphasis>,
 sem er þrýstingurinn sem vatnsgufa í jafnvægi við fljótandi vatn í
-lokuðu íláti beitir, fer eftir hitastiginu (<!-- XREF:8 -->); nánari
-upplýsingar um hitastigsfylgni vatnsgufu má finna í <!-- XREF:9 --> og
+lokuðu íláti beitir, fer eftir hitastiginu (<link target-id="CNX_Chem_09_03_WaterVapor2"/>); nánari
+upplýsingar um hitastigsfylgni vatnsgufu má finna í <link target-id="fs-idm68841392"/> og
 gufunarþrýstingur verður ræddur nánar í næsta kafla um vökva.</para>
 <figure id="CNX_Chem_09_03_WaterVapor2" class="scaled-down">
 <media id="fs-idp38546432" alt="A graph is shown. The horizontal axis is labeled “Temperature ( degrees C )” with markings and labels provided for multiples of 20 beginning at 0 and ending at 100. The vertical axis is labeled “Vapor pressure ( torr )” with marking and labels provided for multiples of 200, beginning at 0 and ending at 800. A smooth solid black curve extends from the origin up and to the right across the graph. The graph shows a positive trend with an increasing rate of change. On the vertical axis is ( 7 60) and an arrow pointing to it. The arrow is labeled, “Vapor pressure at ( 100 degrees C ).”">
@@ -425,7 +425,7 @@ mismunandi hitastig við sjávarmál</entry>
 <para id="fs-idp35760544"><title>Þrýstingur gass sem
 safnað er yfir vatni</title>Ef 0,200 L af argoni er safnað yfir
 vatni við 26 °C hitastig og 750 torr þrýsting í kerfi eins og sýnt er í
-<!-- XREF:10 -->, hver er þá hlutþrýstingur argons?</para>
+<link target-id="CNX_Chem_09_03_WaterVapor"/>, hver er þá hlutþrýstingur argons?</para>
 <para id="fs-idp18515888"><title>Lausn</title>Samkvæmt lögmáli Daltons er
 heildarþrýstingurinn í flöskunni (750 torr) summa hlutþrýstings argons
 og hlutþrýstings vatns á gasformi:</para>
@@ -475,7 +475,7 @@ nitur- og vetnisgas hvarfast og mynda ammoníakgas samkvæmt
 rúmmál af vetnisgasi til að framleiða tvöfalt það rúmmál af
 ammoníakgasi, ef þrýstingur og hitastig haldast óbreytt.</para>
 <para id="fs-idp16937680">Skýringin á þessu er sýnd í
-<!-- XREF:11 -->. Samkvæmt lögmáli Avogadros innihalda jöfn rúmmál af N<sub>2</sub>,
+<link target-id="CNX_Chem_09_03_Ammonia"/>. Samkvæmt lögmáli Avogadros innihalda jöfn rúmmál af N<sub>2</sub>,
 H<sub>2</sub> og NH<sub>3</sub> í gasfasa, við sama hitastig og þrýsting, sama fjölda
 sameinda. Vegna þess að ein sameind af N<sub>2</sub> hvarfast við þrjár sameindir
 af H<sub>2</sub> til að framleiða tvær sameindir af NH<sub>3</sub>, er rúmmál H<sub>2</sub> sem
@@ -581,7 +581,7 @@ lofthjúpsins væri meðalhitastig jarðar meira en 30 °C (næstum 60 °F)
 lægra. Helstu gróðurhúsalofttegundirnar eru vatnsgufa, koldíoxíð, metan
 og óson. Frá iðnbyltingunni hefur mannleg starfsemi aukið styrk
 gróðurhúsalofttegunda, sem hefur breytt orkujafnvægi og er að breyta
-loftslagi jarðar verulega (<!-- XREF:12 -->).</para>
+loftslagi jarðar verulega (<link target-id="CNX_Chem_09_03_GlobalWarming"/>).</para>
 <figure id="CNX_Chem_09_03_GlobalWarming" class="scaled-down">
 <media id="fs-idp86921200" alt="This diagram shows half of a two dimensional view of the earth in blue and green at the left of the image. A slight distance outside the hemisphere is a grey arc. A line segment connects the label “Atmosphere” to the region between the hemisphere and the grey arc. In this region, near the surface of the earth the chemical formulas C O subscript 2, C H subscript 3, and N subscript 2 O appear. Five red arrows formed from wavy lines extend from green regions on the earth out into and just beyond the region labeled “Atmosphere.” The label “Infrared radiation” points to one of these red arrows. At a fair distance outside of the grey arc appears a yellow circle with a jagged boundary. This circle is labeled “Sun.” From it extend yellow arrows with wavy lines which extend toward the earth. Three of the arrows extend to the green region on the earth. One of the arrows appears to be reflected off the grey arc, causing its path to turn away from the earth.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_GlobalWarming-b740.jpg"/>
@@ -598,7 +598,7 @@ mannlegrar starfsemi, þar sem bruni jarðefnaeldsneytis stendur fyrir um
 ískjörnum sýna að styrkur CO<sub>2</sub> í andrúmsloftinu er sá hæsti síðastliðin
 800.000 ár; aðrar vísbendingar benda til þess að hann gæti verið sá
 hæsti í 20 milljónir ára. Á undanförnum árum hefur styrkur CO<sub>2</sub> aukist
-úr ~280 ppm fyrir iðnbyltingu í meira en 400 ppm í dag (<!-- XREF:13 -->).</para>
+úr ~280 ppm fyrir iðnbyltingu í meira en 400 ppm í dag (<link target-id="CNX_Chem_09_03_GlobalWarming2"/>).</para>
 <figure id="CNX_Chem_09_03_GlobalWarming2">
 <media id="fs-idp99125712" alt="This figure has the heading “Carbon Dioxide in the Atmosphere.” The first graph has a horizontal axis label “Year ( B C )” and a vertical axis label “Carbon dioxide concentration ( p p m ).” The horizontal axis labels begin at 700,000 on the left and increases by multiples of 100,000 up to 0 on the right. The vertical axis begins at 0 and increases by multiples of 50 extending up to 400. A jagged, cyclical pattern is shown that begins before 600,000 B C at under 200 p p m. Up to 0 B C values appear to vary cyclically up to a high of about 300 p p m. Extending beyond 0 B C to the right, the carbon dioxide concentration appears to be on a steady increase, having reached nearly 400 p p m in recent years. The second graph is shown to magnify the portion of the graph that is most recent. This graph begins just before the year 1960 and includes markings for multiples of 10 up to the year 2010. The vertical axis begins just below 320 p p m and includes markings for all multiples of 20 up to 400 p p m. A smooth black line is shown extending through a jagged red data pattern. The trend is a steady, nearly linear increase from the lower left to the upper right on the graph.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_03_GlobalWarming2.jpg"/>
@@ -609,14 +609,14 @@ fordæmalausri aukningu síðustu 50 árin.</caption>
 </figure>
 </note>
 <note id="fs-idm33251312" class="chemistry link-to-learning">
-<para id="fs-idp85689376">Smelltu <!-- LINK:1 -->hér<!-- /LINK --> til að
+<para id="fs-idp85689376">Smelltu <link url="http://openstax.org/l/16GlobalWarming">hér</link> til að
 sjá 2 mínútna myndband sem útskýrir gróðurhúsalofttegundir og hlýnun
 jarðar.</para>
 </note>
 <note id="fs-idp18054480" class="chemistry chemist-portrait">
 <title>Susan Solomon</title>
 <para id="fs-idp97050544">Loftslags- og
-andrúmsloftsfræðingurinn Susan <emphasis effect="bold">Solomon</emphasis> (<!-- XREF:14 -->) er höfundur
+andrúmsloftsfræðingurinn Susan <emphasis effect="bold">Solomon</emphasis> (<link target-id="CNX_Chem_09_03_SusanSolom"/>) er höfundur
 einnar af bókum ársins hjá <emphasis effect="italics">The New York Times</emphasis> (<emphasis effect="italics">The Coldest March</emphasis>,
 2001), ein af 100 áhrifamestu einstaklingum heims að mati Time
 tímaritsins (2008) og leiðtogi vinnuhóps Milliríkjanefndar um
@@ -630,7 +630,7 @@ breska vísindafélaginu, Frönsku vísindaakademíunni og Evrópsku
 vísindaakademíunni. Hún var áður prófessor við Háskólann í Colorado, en
 er nú við MIT og heldur áfram að starfa hjá NOAA.</para>
 <para id="fs-idp221818192">Horfðu á þetta
-<!-- LINK:2 -->myndband<!-- /LINK --> um Susan Solomon til að fá frekari
+<link url="http://openstax.org/l/16SusanSolomon">myndband</link> um Susan Solomon til að fá frekari
 upplýsingar.</para>
 <figure id="CNX_Chem_09_03_SusanSolom" class="scaled-down">
 <media id="fs-idp104021664" alt="A photograph is shown of Susan Solomon sitting next to a globe.">
@@ -813,7 +813,7 @@ hlutþrýstingur kvikasilfursgass við þennan styrk ef loftþrýstingurinn er
 <problem id="fs-idm12594544">
 <para id="fs-idp69022144">Sýni af kolmónoxíði var safnað
 yfir vatni við heildarþrýsting upp á 756 torr og hitastig 18 °C. Hver er
-þrýstingur kolmónoxíðsins? (Sjá <!-- XREF:15 --> fyrir gufunarþrýsting
+þrýstingur kolmónoxíðsins? (Sjá <link target-id="fs-idm68841392"/> fyrir gufunarþrýsting
 vatns.)</para>
 </problem>
 <solution id="fs-idp34955840">
