@@ -246,6 +246,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterExerciseNumbers: options.chapterExerciseNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
     equationTextDictionary: options.equationTextDictionary || null, // equation text translations
+    excludeSections: options.excludeSections !== false, // Allow disabling section exclusion
     figureCounter: 0,
     footnoteCounter: 0,
     exampleCounter: 0,
@@ -382,7 +383,10 @@ function renderContent(content, context, _verbose) {
   // Add sections with their positions
   for (const section of sections) {
     const sectionClass = section.attributes.class || '';
-    const shouldExclude = EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
+    // Only exclude sections if excludeSections flag is true (default)
+    // When rendering standalone sections, excludeSections will be false
+    const shouldExclude =
+      context.excludeSections && EXCLUDED_SECTION_CLASSES.some((cls) => sectionClass.includes(cls));
     if (shouldExclude) {
       continue;
     }
@@ -1645,7 +1649,11 @@ function renderEndOfChapterSection(section, context) {
 </document>`;
 
   // Render using existing render function
-  const { html } = renderCnxmlToHtml(cnxmlDoc, context.options);
+  // Set excludeSections: false to prevent the section from being skipped
+  const { html } = renderCnxmlToHtml(cnxmlDoc, {
+    ...context.options,
+    excludeSections: false,
+  });
 
   return html;
 }
