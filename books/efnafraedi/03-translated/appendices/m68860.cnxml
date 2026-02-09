@@ -1,0 +1,360 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" class="appendix">
+<title>Nauðsynleg stærðfræði</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68860</md:content-id>
+  <md:title>Essential Mathematics</md:title>
+  <md:abstract/>
+  <md:uuid>75fe9b6d-533d-4833-ba91-a70d2a794b2a</md:uuid>
+</metadata>
+
+<content>
+<section id="fs-idm2979872">
+<title>Reikningur með veldisvísum</title>
+<section id="eip-963">
+<title>Samlagning veldisvísistalna</title>
+<para id="eip-970">Umbreyttu öllum tölum í sama veldi af 10,
+leggðu saman tölustafaliði talnanna og, ef við á, umbreyttu
+tölustafaliðnum aftur í tölu á milli 1 og 10 með því að breyta
+veldisvísisliðnum.</para>
+<example id="eip-240">
+<para id="fs-idp139858976"><title>Samlagning veldisvísistalna</title>Leggðu saman 5,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>
+10<sup>−5</sup> og 3,00 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−3</sup>.</para>
+<para id="eip-idm5092144"><title>Lausn</title></para>
+<equation id="fs-idp127428848" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mrow><m:mn>3.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>300</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>5.00</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mo stretchy="false">(</m:mo><m:mn>300</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>305</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>3.05</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:math></equation></example>
+</section>
+<section id="fs-idp66203584">
+<title>Frádráttur veldisvísistalna</title>
+<para id="fs-idm2169056">Umbreyttu öllum tölum í sama veldi af
+10, taktu mismun tölustafaliðanna og, ef við á, umbreyttu
+tölustafaliðnum aftur í tölu á milli 1 og 10 með því að breyta
+veldisvísisliðnum.</para>
+<example id="fs-idp161785536">
+<para id="fs-idm86312640"><title>Frádráttur
+veldisvísistalna</title>Dragðu 4,0 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−7</sup> frá
+5,0 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−6</sup>.</para>
+<para id="fs-idm68345632"><title>Lausn</title></para>
+<equation id="fs-idp190877264" class="unnumbered"><m:math><m:mtable columnalign="left"><m:mtr/><m:mtr><m:mtd><m:mn>4.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>0.40</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup></m:mtd></m:mtr><m:mtr><m:mtd><m:mo stretchy="false">(</m:mo><m:mn>5.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.40</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mn>4.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup></m:mtd></m:mtr></m:mtable></m:math></equation></example>
+</section>
+<section id="fs-idp134165056">
+<title>Margföldun veldisvísistalna</title>
+<para id="fs-idp21293440">Margfaldaðu tölustafaliðina á
+venjulegan hátt og leggðu saman veldisvísana í veldisvísisliðunum.</para>
+<example id="fs-idp62666784">
+<para id="fs-idp112728352"><title>Margföldun
+veldisvísistalna</title>Margfaldaðu 4,2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>
+10<sup>−8</sup> með 2,0 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>3</sup>.</para>
+<para id="fs-idp65507056"><title>Lausn</title></para>
+<equation id="fs-idp43840304" class="unnumbered"><m:math><m:mo stretchy="false">(</m:mo><m:mn>4.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>2.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mn>3</m:mn></m:msup><m:mo stretchy="false">)</m:mo><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mn>4.2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>2.0</m:mn><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>−8</m:mn><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mo stretchy="false">(</m:mo><m:mn>+3</m:mn><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mn>8.4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:math></equation></example>
+</section>
+<section id="fs-idp147135808">
+<title>Deiling veldisvísistalna</title>
+<para id="fs-idm83418688">Deildu tölustafalið teljarans með
+tölustafalið nefnarans og dragðu veldisvísana í veldisvísisliðunum frá
+hvor öðrum.</para>
+<example id="fs-idp59973040">
+<para id="fs-idm118372272"><title>Deiling
+veldisvísistalna</title>Deildu 3,6 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>–5</sup> með
+6,0 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−4</sup>.</para>
+<para id="fs-idm40543920"><title>Lausn</title></para>
+<equation id="fs-idp306292544" class="unnumbered"><m:math><m:mfrac><m:mrow><m:mn>3.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−5</m:mn></m:mrow></m:msup></m:mrow><m:mrow><m:mn>6.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>3.6</m:mn></m:mrow><m:mrow><m:mn>6.0</m:mn></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mspace width="0.4em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>−5</m:mn><m:mo stretchy="false">)</m:mo><m:mo>−</m:mo><m:mo stretchy="false">(</m:mo><m:mn>−4</m:mn><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mn>0.60</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>6.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mn>10</m:mn><m:mrow><m:mn>−2</m:mn></m:mrow></m:msup></m:math></equation></example>
+</section>
+<section id="fs-idp62709264">
+<title>Veldisvísistölur í öðru veldi</title>
+<para id="fs-idm35687264">Hafðu tölustafaliðinn í öðru veldi á
+venjulegan hátt og margfaldaðu veldisvísi veldisvísisliðarins með 2.</para>
+<example id="fs-idm17290528">
+<para id="fs-idm49413248"><title>Veldisvísistölur í
+öðru veldi</title>Hafðu töluna 4,0 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math>
+10<sup>−6</sup> í öðru veldi.</para>
+<para id="fs-idm30315376"><title>Lausn</title></para>
+<equation id="fs-idp83762912" class="unnumbered"><m:math><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>4.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−6</m:mn></m:mrow></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>=</m:mo><m:mn>4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>−6</m:mn><m:mo stretchy="false">)</m:mo></m:mrow></m:msup><m:mo>=</m:mo><m:mn>16</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−12</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>1.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−11</m:mn></m:mrow></m:msup></m:mrow></m:math></equation></example>
+</section>
+<section id="fs-idp163318848">
+<title>Veldisvísistölur í þriðja
+veldi</title>
+<para id="fs-idp74415504">Hafðu tölustafaliðinn í þriðja veldi
+á venjulegan hátt og margfaldaðu veldisvísi veldisvísisliðarins með 3.</para>
+<example id="fs-idm23347216">
+<para id="fs-idm16246768"><title>Veldisvísistölur í
+þriðja veldi</title>Hafðu töluna 2 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>4</sup>
+í þriðja veldi.</para>
+<para id="fs-idm51196352"><title>Lausn</title></para>
+<equation id="fs-idp2377280" class="unnumbered"><m:math><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>4</m:mn></m:msup><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>3</m:mn></m:msup><m:mo>=</m:mo><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>4</m:mn></m:mrow></m:msup><m:mo>=</m:mo><m:mn>8</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>12</m:mn></m:mrow></m:msup></m:mrow></m:math></equation></example>
+</section>
+<section id="fs-idp125742736">
+<title>Kvaðratrót af
+veldisvísistölum</title>
+<para id="fs-idp117276528">Ef nauðsyn krefur, lækkaðu eða
+hækkaðu veldisvísisliðinn þannig að veldi af 10 sé deilanlegt með 2.
+Dragðu kvaðratrót af tölustafaliðnum og deildu veldisvísisliðnum með 2.</para>
+<example id="fs-idm21735232">
+<para id="fs-idm48165808"><title>Finna kvaðratrót af
+veldisvísistölum</title>Finndu kvaðratrótina af 1,6
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−7</sup>.</para>
+<para id="fs-idp49785840"><title>Lausn</title></para>
+<equation id="fs-idp91899696" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign="right"><m:mrow><m:mn>1.6</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−7</m:mn></m:mrow></m:msup></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>16</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mrow><m:msqrt><m:mrow><m:mn>16</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup></m:mrow></m:msqrt><m:mo>=</m:mo><m:msqrt><m:mrow><m:mn>16</m:mn></m:mrow></m:msqrt><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msqrt><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−8</m:mn></m:mrow></m:msup></m:mrow></m:msqrt></m:mrow></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:msqrt><m:mrow><m:mn>16</m:mn></m:mrow></m:msqrt><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>8</m:mn><m:mn>2</m:mn></m:mfrac></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>4.0</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation></example>
+</section>
+<para id="fs-idp659968">Staðalform er notað til að tákna mjög
+stórar og mjög litlar tölur sem margfeldi tveggja talna. Fyrri talan í
+margfeldinu, <emphasis effect="italics">forliðurinn</emphasis>, er yfirleitt tala sem er ekki minni en 1 og
+ekki jöfn eða stærri en 10. Seinni talan í margfeldinu,
+<emphasis effect="italics">veldisvísirinn</emphasis>, er skrifuð sem 10 með veldisvísi. Nokkur dæmi um
+staðalform eru:</para>
+<equation id="fs-idp294750912" class="unnumbered"><m:math><m:mrow><m:mtable><m:mtr><m:mtd columnalign="right"><m:mrow><m:mn>1000</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="right"><m:mrow><m:mn>100</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>2</m:mn></m:msup></m:mrow></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="right"><m:mrow><m:mn>10</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>1</m:mn></m:msup></m:mrow></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="right"><m:mn>1</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>0</m:mn></m:msup></m:mrow></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="right"><m:mrow><m:mn>0.1</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="right"><m:mrow><m:mn>0.001</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>1</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−3</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="right"><m:mrow><m:mn>2386</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>2.386</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>1000</m:mn><m:mo>=</m:mo><m:mn>2.386</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mn>3</m:mn></m:msup></m:mrow></m:mtd></m:mtr>
+<m:mtr><m:mtd columnalign="right"><m:mrow><m:mn>0.123</m:mn></m:mrow></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mrow><m:mn>1.23</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>0.1</m:mn><m:mo>=</m:mo><m:mn>1.23</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−1</m:mn></m:mrow></m:msup></m:mrow></m:mtd></m:mtr></m:mtable></m:mrow></m:math></equation>
+<para id="eip-985">Veldið (veldisvísirinn) af 10 er jafnt og
+fjöldi sæta sem komman er færð um til að gefa töluna. Staðalformið er
+sérstaklega gagnlegt ritform fyrir mjög stórar og mjög litlar tölur. Til
+dæmis, 1.230.000.000 = 1,23 <m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>9</sup> og 0,00000000036 = 3,6
+<m:math><m:mrow><m:mo>×</m:mo></m:mrow></m:math> 10<sup>−10</sup>.</para>
+</section>
+<section id="fs-idm250853696">
+<title>Markverðir stafir</title>
+<para id="fs-idm37591248">Býflugnabóndi segir að hann eigi
+525.341 býflugur. Síðustu þrír tölustafirnir eru augljóslega ónákvæmir,
+því á meðan bóndinn var að telja býflugurnar drápust sumar þeirra og
+aðrar klöktust út; þetta gerir það nokkuð erfitt að ákvarða nákvæman
+fjölda býflugna. Það hefði verið skynsamlegra ef býflugnabóndinn hefði
+gefið upp töluna 525.000. Með öðrum orðum, síðustu þrír tölustafirnir
+eru ekki markverðir, nema til að ákvarða staðsetningu kommuna. Nákvæm
+gildi þeirra hafa enga gagnlega merkingu í þessum aðstæðum. Þegar magn
+er gefið upp skal aðeins nota jafn marga markverða stafi og hittni
+mælingarinnar leyfir.</para>
+<para id="fs-idm308663024">Mikilvægi markverðra stafa liggur í
+notkun þeirra við grunnútreikninga. Við samlagningu og frádrátt ætti
+summan eða mismunurinn að innihalda jafn marga tölustafi hægra megin við
+kommuna og talan með fæsta aukastafi sem notuð er í útreikningnum (gefið
+til kynna með undirstrikun í eftirfarandi dæmi).</para>
+<example id="fs-idm264382576">
+<para id="fs-idm64277712"><title>Samlagning og
+frádráttur með markverðum stöfum</title>Leggðu saman 4,383 g og 0,0023 g.</para>
+<para id="fs-idm144724576"><title>Lausn</title></para>
+<equation id="eip-474" class="unnumbered"><m:math><m:mrow><m:mfrac><m:mtable columnalign="left"><m:mtr><m:mtd><m:mrow/></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>4.38</m:mn><m:munder accentunder="true"><m:mn>3</m:mn><m:mo stretchy="true">_</m:mo></m:munder><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd><m:mn>0.002</m:mn><m:munder accentunder="true"><m:mn>3</m:mn><m:mo stretchy="true">_</m:mo></m:munder><m:mspace width="0.2em"/><m:mtext>g</m:mtext></m:mtd></m:mtr></m:mtable><m:mrow><m:mn>4.38</m:mn><m:munder accentunder="true"><m:mn>5</m:mn><m:mo stretchy="true">_</m:mo></m:munder><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mspace width="0.2em"/><m:mspace width="0.2em"/></m:mrow></m:mfrac></m:mrow></m:math></equation></example>
+<para id="fs-idm321167920">Við margföldun og deilingu ætti
+myndefnið eða kvótinn ekki að innihalda fleiri tölustafi en sá þáttur
+sem inniheldur fæsta markverða stafi.</para>
+<example id="fs-idm204546176">
+<para id="fs-idp61407456"><title>Margföldun og deiling
+með markverðum stöfum</title>Margfaldaðu 0,6238 með 6,6.</para>
+<para id="fs-idm211756128"><title>Lausn</title></para>
+<equation id="fs-idp292017760" class="unnumbered"><m:math><m:mrow><m:mn>0.623</m:mn><m:munder accentunder="true"><m:mn>8</m:mn><m:mo stretchy="true">_</m:mo></m:munder><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>6.</m:mn><m:munder accentunder="true"><m:mn>6</m:mn><m:mo stretchy="true">_</m:mo></m:munder><m:mo>=</m:mo><m:mn>4.</m:mn><m:munder accentunder="true"><m:mn>1</m:mn><m:mo stretchy="true">_</m:mo></m:munder></m:mrow></m:math></equation></example>
+<para id="fs-idm316636240">Þegar tölur eru námundaðar skal
+hækka tölustafinn sem haldið er í um 1 ef á eftir honum kemur tala sem
+er stærri en 5 („námunda upp“). Ekki breyta tölustafnum sem haldið er í
+ef tölustafirnir á eftir eru minni en 5 („námunda niður“). Ef á eftir
+tölustafnum sem haldið er í kemur 5, skal námunda upp ef tölustafurinn
+er oddatala, eða námunda niður ef hann er slétt tala (eftir námundun
+verður tölustafurinn sem haldið er í því alltaf slétt tala).</para>
+</section>
+<section id="fs-idm218270160">
+<title>Notkun logra og
+veldisvísistalna</title>
+<para id="fs-idm310797664">Almenni logrinn af tölu (log) er
+veldið sem þarf að hefja 10 í til að fá þá tölu. Til dæmis er almenni
+logrinn af 100 jafnt og 2, því það þarf að hefja 10 í annað veldi til að
+fá 100. Fleiri dæmi fylgja hér á eftir.</para>
+<table id="fs-idm247181504" class="top-titled" summary="A table titled “Logarithms and Exponential Numbers” has three columns titled “Number,” “Number Expressed Exponentially,” and “Common Logarithm.” The number 1000 is expressed exponentially as 10 superscript 3 and has a common logarithm of 3. The number 10 is expressed exponentially as 10 superscript 1 and has a common logarithm of 1. The number 1 is expressed exponentially as 10 superscript 0 and has a common logarithm of 0. The number 0.1 is expressed exponentially as 10 superscript negative 1 and has a common logarithm of negative 1. The number 0.001 is expressed exponentially as 10 superscript negative 3 and has a common logarithm of negative 3.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row>
+<entry namest="c1" nameend="c3" align="center">Lograr og veldisvísistölur</entry>
+</row>
+<row valign="top">
+<entry align="left">Tala</entry>
+<entry align="left">Tala táknuð með veldisvísi</entry>
+<entry align="left">Almennur logri</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">1000</entry>
+<entry align="left">10<sup>3</sup></entry>
+<entry align="left">3</entry>
+</row>
+<row valign="top">
+<entry align="left">10</entry>
+<entry align="left">10<sup>1</sup></entry>
+<entry align="left">1</entry>
+</row>
+<row valign="top">
+<entry align="left">1</entry>
+<entry align="left">10<sup>0</sup></entry>
+<entry align="left">0</entry>
+</row>
+<row valign="top">
+<entry align="left">0,1</entry>
+<entry align="left">10<sup>−1</sup></entry>
+<entry align="left">−1</entry>
+</row>
+<row valign="top">
+<entry align="left">0.001</entry>
+<entry align="left">10<sup>−3</sup></entry>
+<entry align="left">−3</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idm289143264">Hver er tugalogrinn af 60? Þar sem
+60 er á milli 10 og 100, sem hafa lograna 1 og 2, er logrinn af 60 jafn
+1,7782; það er,</para>
+<equation id="fs-idp313341712" class="unnumbered"><m:math><m:mrow><m:mtext>60</m:mtext><m:mo>=</m:mo><m:msup><m:mrow><m:mtext>10</m:mtext></m:mrow><m:mrow><m:mtext>1</m:mtext><m:mtext>.7782</m:mtext></m:mrow></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm251201152">Tugalogri tölu sem er minni en 1
+hefur neikvætt gildi. Logrinn af 0,03918 er −1,4069, eða</para>
+<equation id="fs-idp105907136" class="unnumbered"><m:math><m:mrow><m:mn>0.03918</m:mn><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mo>−</m:mo><m:mn>1.4069</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mn>1</m:mn><m:mrow><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>1.4069</m:mn></m:mrow></m:msup></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<para id="fs-idm300540512">Til að finna tugalogra tölu skal
+nota <emphasis effect="italics">log</emphasis>-hnappinn á vasareikninum. Til að reikna tölu út frá logranum
+skal taka andhverfan logrann af logranum eða reikna 10<emphasis effect="italics">x</emphasis> (þar sem <emphasis effect="italics">x</emphasis>
+er logri tölunnar).</para>
+<para id="fs-idm355694432">Náttúrulegi logrinn af tölu (ln) er
+veldið sem <emphasis effect="italics">e</emphasis> þarf að hefja í til að jafngilda tölunni; <emphasis effect="italics">e</emphasis> er fastinn
+2,7182818. Til dæmis er náttúrulegi logrinn af 10 jafn 2,303; það er,</para>
+<equation id="fs-idm16900160" class="unnumbered"><m:math><m:mrow><m:mtext>10</m:mtext><m:mo>=</m:mo><m:msup><m:mi>e</m:mi><m:mrow><m:mtext>2</m:mtext><m:mtext>.303</m:mtext></m:mrow></m:msup><m:mo>=</m:mo><m:mtext>2</m:mtext><m:msup><m:mrow><m:mtext>.7182818</m:mtext></m:mrow><m:mrow><m:mtext>2</m:mtext><m:mtext>.303</m:mtext></m:mrow></m:msup></m:mrow></m:math></equation>
+<para id="fs-idm315316192">Til að finna náttúrulega logra tölu
+skal nota <emphasis effect="italics">ln</emphasis>-hnappinn á vasareikninum. Til að reikna tölu út frá
+náttúrulega logranum skal slá inn náttúrulega logrann og taka andhverfan
+ln af náttúrulega logranum eða reikna <emphasis effect="italics">e<sup>x</sup></emphasis> (þar sem <emphasis effect="italics">x</emphasis> er náttúrulegi
+logri tölunnar).</para>
+<para id="fs-idm46275792">Lograr eru veldisvísar; því gilda
+sömu reglur um aðgerðir með logra og aðgerðir með veldisvísa.</para>
+<list id="eip-12" list-type="enumerated" number-style="arabic">
+<item>Logri margfeldis tveggja talna er
+summa logra talnanna tveggja. <m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mo>+</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>y</m:mi><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mtext>and ln</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mo>+</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>y</m:mi></m:mrow></m:math></item>
+<item>Logri tölunnar sem fæst við deilingu
+tveggja talna er mismunur logra talnanna tveggja. <m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mi>x</m:mi><m:mi>y</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mo>−</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>y</m:mi><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mtext>and ln</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mi>x</m:mi><m:mi>y</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mo>−</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>y</m:mi></m:mrow></m:math></item>
+<item>Logri tölu sem er hafin í veldi er
+margfeldi veldisvísisins og logra tölunnar. <m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:msup><m:mi>x</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>n</m:mi><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mspace width="0.2em"/><m:mtext>and ln</m:mtext><m:mspace width="0.2em"/><m:msup><m:mi>x</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>n</m:mi><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi></m:mrow></m:math></item>
+</list>
+<equation id="fs-idp300953968" class="unnumbered"><m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mo>+</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>y</m:mi><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mtext>and ln</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mi>y</m:mi><m:mo>=</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mo>+</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>y</m:mi></m:mrow></m:math></equation>
+<equation id="fs-idm26956384" class="unnumbered"><m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mi>x</m:mi><m:mi>y</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mo>−</m:mo><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>y</m:mi><m:mo>,</m:mo><m:mspace width="0.2em"/><m:mtext>and ln</m:mtext><m:mspace width="0.2em"/><m:mfrac><m:mi>x</m:mi><m:mi>y</m:mi></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mo>−</m:mo><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>y</m:mi></m:mrow></m:math></equation>
+<equation id="fs-idp316554112" class="unnumbered"><m:math><m:mrow><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:msup><m:mi>x</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>n</m:mi><m:mtext>log</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi><m:mspace width="0.2em"/><m:mtext>and ln</m:mtext><m:mspace width="0.2em"/><m:msup><m:mi>x</m:mi><m:mi>n</m:mi></m:msup><m:mo>=</m:mo><m:mi>n</m:mi><m:mtext>ln</m:mtext><m:mspace width="0.2em"/><m:mi>x</m:mi></m:mrow></m:math></equation>
+</section>
+<section id="fs-idm5387440">
+<title>Lausn annars stigs jafna</title>
+<para id="fs-idm110300608">Stærðfræðiföll af þessu tagi eru
+þekkt sem annars stigs margliður eða, oftar, annars stigs föll.</para>
+<equation id="fs-idp3980816" class="unnumbered"><m:math><m:mrow><m:mi>a</m:mi><m:msup><m:mi>x</m:mi><m:mtext>2</m:mtext></m:msup><m:mo>+</m:mo><m:mi>b</m:mi><m:mi>x</m:mi><m:mo>+</m:mo><m:mi>c</m:mi><m:mo>=</m:mo><m:mtext>0</m:mtext></m:mrow></m:math></equation>
+<para id="fs-idm112792176">Lausnina eða ræturnar fyrir hvaða
+annars stigs jöfnu sem er má reikna með eftirfarandi formúlu:</para>
+<equation id="fs-idm40664896" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mi>b</m:mi><m:mo>±</m:mo><m:msqrt><m:mrow><m:msup><m:mi>b</m:mi><m:mtext>2</m:mtext></m:msup><m:mo>−</m:mo><m:mtext>4</m:mtext><m:mi>a</m:mi><m:mi>c</m:mi></m:mrow></m:msqrt></m:mrow><m:mrow><m:mtext>2</m:mtext><m:mi>a</m:mi></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<example id="fs-idm166021264">
+<para id="fs-idm72976848"><title>Lausn annars stigs
+jafna</title>Leysið annars stigs jöfnuna 3<emphasis effect="italics">x</emphasis><sup>2</sup> +
+13<emphasis effect="italics">x</emphasis> − 10 = 0.</para>
+<para id="fs-idm175980608"><title>Lausn</title>Með því að setja gildin <emphasis effect="italics">a</emphasis> = 3, <emphasis effect="italics">b</emphasis>
+= 13, <emphasis effect="italics">c</emphasis> = −10 inn í formúluna fáum við</para>
+<equation id="fs-idm77074320" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:msqrt><m:mrow><m:msup><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>13</m:mn><m:mo stretchy="false">)</m:mo></m:mrow><m:mn>2</m:mn></m:msup><m:mo>−</m:mo><m:mn>4</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mo stretchy="false">(</m:mo><m:mn>−10</m:mn><m:mo stretchy="false">)</m:mo></m:mrow></m:msqrt></m:mrow><m:mrow><m:mn>2</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mn>3</m:mn></m:mrow></m:mfrac></m:mrow></m:math></equation>
+<equation id="eip-576" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:msqrt><m:mrow><m:mn>169</m:mn><m:mo>+</m:mo><m:mn>120</m:mn></m:mrow></m:msqrt></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:msqrt><m:mrow><m:mn>289</m:mn></m:mrow></m:msqrt></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>±</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac></m:mrow></m:math></equation><para id="fs-idm171950464">Ræturnar tvær eru því</para>
+<equation id="fs-idp244754576" class="unnumbered"><m:math><m:mrow><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>+</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac><m:mo>=</m:mo><m:mfrac><m:mrow><m:mn>2</m:mn></m:mrow><m:mn>3</m:mn></m:mfrac><m:mspace width="0.5em"/><m:mtext>and</m:mtext><m:mspace width="0.5em"/><m:mi>x</m:mi><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo>−</m:mo><m:mn>13</m:mn><m:mo>−</m:mo><m:mn>17</m:mn></m:mrow><m:mn>6</m:mn></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>−5</m:mn></m:mrow></m:math></equation></example>
+<para id="fs-idm147616016">Annars stigs jöfnur sem byggja á
+raunverulegum gögnum hafa alltaf raunverulegar rætur og af þessum
+raunverulegu rótum hafa oft aðeins þær sem hafa jákvæð gildi einhverja
+þýðingu.</para>
+</section>
+<section id="fs-idm180300896">
+<title>Að teikna gagnapör</title>
+<para id="fs-idm67130880">Sambandið milli tveggja eiginleika
+kerfis má setja fram myndrænt með tvívíðu gagnaplotti. Slíkt graf hefur
+tvo ása: láréttan ás sem samsvarar óháðu breytunni, eða breytunni sem er
+stjórnað (<emphasis effect="italics">x</emphasis>), og lóðréttan ás sem samsvarar háðu breytunni, eða
+breytunni sem er skoðuð eða mæld (<emphasis effect="italics">y</emphasis>).</para>
+<para id="fs-idm78087840">Þegar gildi <emphasis effect="italics">y</emphasis> breytist sem fall af
+<emphasis effect="italics">x</emphasis> (það er, mismunandi gildi <emphasis effect="italics">x</emphasis> samsvara mismunandi gildum <emphasis effect="italics">y</emphasis>), er
+hægt að teikna eða skissa graf yfir þessa breytingu. Grafið má búa til
+með því að nota ákveðin gildi fyrir (<emphasis effect="italics">x</emphasis>,<emphasis effect="italics">y</emphasis>) gagnapör.</para>
+<example id="fs-idp9271248">
+<para id="fs-idm111716000">Að teikna graf yfir háðni <emphasis effect="italics">y</emphasis> af <emphasis effect="italics">x</emphasis></para>
+<!-- table handled separately -->
+<para id="fs-idm176114816">Þessi tafla inniheldur eftirfarandi
+punkta: (1,5), (2,10), (3,7) og (4,14). Hægt er að teikna hvern þessara
+punkta á graf og tengja þá saman til að búa til myndræna framsetningu á
+háðni <emphasis effect="italics">y</emphasis> af <emphasis effect="italics">x</emphasis>..</para>
+<media id="fs-idm174022560" class="scaled-down" alt="A graph is titled “Dependency of Y on X.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 16. Four points are plotted as a line graph; the points are 1 and 5, 2 and 10, 3 and 7, and 4 and 14.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_00_BB_Dependence_img.jpg"/>
+</media>
+</example>
+<table id="fs-idm165592384" class="unnumbered" summary="A table has two columns labeled x and y. In the first row, the value of x is 1, and the value of y is 5. In the second row, the value of x is 2, and the value of y is 10. In the third row, the value of x is 3, and the value of y is 7. In the fourth row, the value of x is 4, and the value of y is 14.">
+<label/>
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="top">
+<entry align="left"><emphasis effect="italics">x</emphasis></entry>
+<entry align="left"><emphasis effect="italics">y</emphasis></entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">1</entry>
+<entry align="left">5</entry>
+</row>
+<row valign="top">
+<entry align="left">2</entry>
+<entry align="left">10</entry>
+</row>
+<row valign="top">
+<entry align="left">3</entry>
+<entry align="left">7</entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">14</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<para id="fs-idm164107136">Ef fallið sem lýsir tengslum <emphasis effect="italics">y</emphasis> og
+<emphasis effect="italics">x</emphasis> er þekkt er hægt að nota það til að reikna út gagnapörin x,y sem
+síðan er hægt að teikna upp.</para>
+<example id="fs-idm173153104">
+<para id="fs-idm144872640">Ef við vitum að <emphasis effect="italics">y</emphasis> = <emphasis effect="italics">x</emphasis><sup>2</sup> + 2
+getum við búið til töflu með nokkrum (<emphasis effect="italics">x</emphasis>,<emphasis effect="italics">y</emphasis>) gildum og síðan teiknað
+línuna út frá gögnunum sem sýnd eru hér.</para>
+<!-- table handled separately -->
+<media id="fs-idp112843584" class="scaled-down" alt="A graph is titled “Y equals x superscript 2 plus 2.” The x-axis ranges from 0 to 4.5. The y-axis ranges from 0 to 20. Four points are plotted as a line graph; the points are 1 and 3, 2 and 6, 3 and 11, and 4 and 18.">
+<image mime-type="image/jpeg" src="../../media/CNX_Chem_00_BB_Function_img.jpg"/>
+</media>
+</example>
+<table id="fs-idm70341712" class="unnumbered" summary="A table has two columns: the first is labeled x, and the second is labeled y equals x superscript 2 plus 2. In the first row, the value of x is 1, and the value of y equals x superscript 2 plus 2 is 3. In the second row, the value of x is 2, and the value of y equals x superscript 2 plus 2 is 6. In the third row, the value of x is 3, and the value of y equals x superscript 2 plus 2 is 11. In the fourth row, the value of x is 4, and the value of y equals x superscript 2 plus 2 is 18.">
+<label/>
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="top">
+<entry align="left"><emphasis effect="italics">x</emphasis></entry>
+<entry align="left"><emphasis effect="italics">y</emphasis> = <emphasis effect="italics">x</emphasis><sup>2</sup> + 2</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">1</entry>
+<entry align="left">3</entry>
+</row>
+<row valign="top">
+<entry align="left">2</entry>
+<entry align="left">6</entry>
+</row>
+<row valign="top">
+<entry align="left">3</entry>
+<entry align="left">11</entry>
+</row>
+<row valign="top">
+<entry align="left">4</entry>
+<entry align="left">18</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+</section>
+</content>
+</document>
