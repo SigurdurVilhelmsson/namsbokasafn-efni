@@ -1708,8 +1708,9 @@ function writeEndOfChapterSection(chapter, section, track, html) {
 // =====================================================================
 
 /**
- * Extract all numbered equations from all modules in a chapter.
- * Returns array of { equationId, mathml, moduleId }
+ * Extract key equations from explicit <section class="key-equations"> sections
+ * across all modules in a chapter.
+ * Returns array of { mathml, moduleId, sectionId }
  */
 function extractKeyEquations(chapter, modules) {
   const chapterStr = String(chapter).padStart(2, '0');
@@ -1729,23 +1730,31 @@ function extractKeyEquations(chapter, modules) {
 
     const cnxml = fs.readFileSync(modulePath, 'utf-8');
 
-    // Extract all equation elements with IDs
-    // Pattern matches: <equation id="..." [other attributes]>content</equation>
-    const equationPattern = /<equation\s+[^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/equation>/g;
-    let equationMatch;
+    // Find all <section class="key-equations"> sections
+    const sectionPattern = /<section\s+[^>]*class="key-equations"[^>]*>([\s\S]*?)<\/section>/g;
+    let sectionMatch;
 
-    while ((equationMatch = equationPattern.exec(cnxml)) !== null) {
-      const equationId = equationMatch[1];
-      const equationContent = equationMatch[2];
+    while ((sectionMatch = sectionPattern.exec(cnxml)) !== null) {
+      const sectionContent = sectionMatch[1];
+      const sectionId = sectionMatch[0].match(/id="([^"]+)"/)?.[1] || '';
 
-      // Extract MathML from the equation
-      const mathmlMatch = equationContent.match(/<m:math[\s\S]*?<\/m:math>/);
-      if (mathmlMatch) {
-        equations.push({
-          equationId,
-          mathml: mathmlMatch[0],
-          moduleId,
-        });
+      // Extract content from table rows in this section
+      // Pattern: <row><entry>CONTENT</entry></row>
+      // Content can be MathML or inline HTML (emphasis, sub, sup tags)
+      const rowPattern = /<row>\s*<entry>([\s\S]*?)<\/entry>\s*<\/row>/g;
+      let rowMatch;
+
+      while ((rowMatch = rowPattern.exec(sectionContent)) !== null) {
+        const entryContent = rowMatch[1].trim();
+
+        // Only add non-empty entries
+        if (entryContent) {
+          equations.push({
+            mathml: entryContent, // Keep the name 'mathml' for consistency, but it may contain HTML
+            moduleId,
+            sectionId,
+          });
+        }
       }
     }
   }
@@ -1765,12 +1774,12 @@ function renderKeyEquations(chapter, equations) {
   if (equations.length === 0) {
     lines.push('  <p>Engar lykiljöfnur í þessum kafla.</p>');
   } else {
-    lines.push('  <table class="key-equations-table unnumbered">');
+    lines.push('  <table class="key-equations-table unnumbered unstyled">');
     lines.push('    <tbody>');
 
     for (const eq of equations) {
-      // Render the MathML using our rendering context
-      const renderedMath = eq.mathml; // MathML passes through as-is
+      // MathML passes through as-is (will be rendered by MathJax)
+      const renderedMath = eq.mathml;
       lines.push('      <tr>');
       lines.push(`        <td>${renderedMath}</td>`);
       lines.push('      </tr>');
