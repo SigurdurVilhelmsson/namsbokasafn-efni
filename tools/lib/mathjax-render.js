@@ -17,14 +17,38 @@ const adaptor = liteAdaptor();
 RegisterHTMLHandler(adaptor);
 
 const mathmlInput = new MathML();
-const svgOutput = new SVG({ fontCache: 'local' });
+const svgOutput = new SVG({
+  fontCache: 'local',
+  internalSpeechTitles: false,
+  scale: 1,
+  minScale: 0.5,
+  mtextInheritFont: false,
+  merrorInheritFont: false,
+  mathmlSpacing: false,
+  skipAttributes: {},
+  exFactor: 0.5,
+  displayAlign: 'center',
+  displayIndent: '0',
+});
 const mathmlDoc = mathjax.document('', {
   InputJax: mathmlInput,
   OutputJax: svgOutput,
 });
 
 const texInput = new TeX({ packages: AllPackages });
-const svgOutputTex = new SVG({ fontCache: 'local' });
+const svgOutputTex = new SVG({
+  fontCache: 'local',
+  internalSpeechTitles: false,
+  scale: 1,
+  minScale: 0.5,
+  mtextInheritFont: false,
+  merrorInheritFont: false,
+  mathmlSpacing: false,
+  skipAttributes: {},
+  exFactor: 0.5,
+  displayAlign: 'center',
+  displayIndent: '0',
+});
 const texDoc = mathjax.document('', {
   InputJax: texInput,
   OutputJax: svgOutputTex,
@@ -41,7 +65,15 @@ export function renderMathML(mml, displayMode = true) {
   const cleanMml = mml.replace(/<(\/?)m:/g, '<$1');
 
   const node = mathmlDoc.convert(cleanMml, { display: displayMode });
-  return adaptor.outerHTML(node);
+  let svg = adaptor.outerHTML(node);
+
+  // Add crisp rendering attributes to prevent antialiasing
+  svg = svg.replace(
+    /<svg/,
+    '<svg shape-rendering="geometricPrecision" text-rendering="geometricPrecision"'
+  );
+
+  return svg;
 }
 
 /**
@@ -54,5 +86,13 @@ export function renderMathML(mml, displayMode = true) {
  */
 export function renderLatex(latex, displayMode = true) {
   const node = texDoc.convert(latex, { display: displayMode });
-  return adaptor.outerHTML(node);
+  let svg = adaptor.outerHTML(node);
+
+  // Add crisp rendering attributes to prevent antialiasing
+  svg = svg.replace(
+    /<svg/,
+    '<svg shape-rendering="geometricPrecision" text-rendering="geometricPrecision"'
+  );
+
+  return svg;
 }
