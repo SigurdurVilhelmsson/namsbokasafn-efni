@@ -111,13 +111,26 @@ export function buildModuleSections(book, chapter) {
   });
 
   // 2. Read all segment files for Icelandic titles
+  // Try both 02-for-mt (old chapters) and 03-faithful (new chapters)
   const segments = new Map();
-  const segFiles = fs.readdirSync(segDir).filter((f) => f.endsWith('-segments.is.md'));
-  for (const sf of segFiles) {
-    const content = fs.readFileSync(path.join(segDir, sf), 'utf-8');
-    const parsed = parseSegments(content);
-    for (const [k, v] of parsed) {
-      segments.set(k, v);
+  const segDirs = [
+    segDir, // 02-for-mt (chapters 1-5)
+    path.join(REPO_ROOT, 'books', book, '03-faithful', `ch${chapterStr}`), // new chapters 9, 12, 13
+  ];
+
+  for (const dir of segDirs) {
+    if (!fs.existsSync(dir)) continue;
+
+    const segFiles = fs.readdirSync(dir).filter((f) => f.endsWith('-segments.is.md'));
+    for (const sf of segFiles) {
+      const content = fs.readFileSync(path.join(dir, sf), 'utf-8');
+      const parsed = parseSegments(content);
+      for (const [k, v] of parsed) {
+        // Only set if not already found (02-for-mt takes precedence)
+        if (!segments.has(k)) {
+          segments.set(k, v);
+        }
+      }
     }
   }
 
