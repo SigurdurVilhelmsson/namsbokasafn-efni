@@ -208,7 +208,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
 
   // Parse CNXML
   const doc = parseCnxmlDocument(cnxml);
-  const title = doc.title;
+  const title = options.titleOverride || doc.title;
 
   // Pre-scan: collect all figure IDs and assign numbers
   // This enables forward references like "(Figure 5.3)" before the figure appears
@@ -1589,7 +1589,7 @@ const END_OF_CHAPTER_SECTIONS = {
     slug: 'key-equations',
   },
   exercises: {
-    titleIs: 'Æfingar',
+    titleIs: 'Dæmi í lok kafla',
     titleEn: 'Chemistry End of Chapter Exercises',
     slug: 'exercises',
   },
@@ -1672,9 +1672,11 @@ function renderEndOfChapterSection(section, context) {
 
   // Render using existing render function
   // Set excludeSections: false to prevent the section from being skipped
+  // Override title with configured Icelandic title
   const { html } = renderCnxmlToHtml(cnxmlDoc, {
     ...context.options,
     excludeSections: false,
+    titleOverride: section.titleIs,
   });
 
   return html;
