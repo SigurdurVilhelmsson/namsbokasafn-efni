@@ -1,11 +1,9 @@
 <document xmlns="http://cnx.rice.edu/cnxml" class="introduction">
-<title>Inngangur</title>
+<title>Introduction</title>
 <metadata xmlns:md="http://cnx.rice.edu/mdml">
   <md:content-id>m68748</md:content-id>
   <md:title>Introduction</md:title>
-  <md:abstract><list id="list-00001"><item>Þrýstingur gass</item><item>Tengsl þrýstings, rúmmáls,
-magns og hitastigs: Kjörgaslögmálið</item><item>Hlutfallaefnafræði gasefna,
-efnablandna og efnahvarfa</item><item>Útstreymi og sveim gasa</item><item>Hreyfi-sameindakenningin</item><item>Hegðun raungass</item></list></md:abstract>
+  <md:abstract><list id="list-00001"></list></md:abstract>
   <md:uuid>9a9ae0b1-98f9-4635-a5a6-34c7e3e747c1</md:uuid>
 </metadata>
 
@@ -14,25 +12,7 @@ efnablandna og efnahvarfa</item><item>Útstreymi og sveim gasa</item><item>Hreyf
 <media id="fs-idm132595392" alt="A photograph shows about twenty colorful hot air balloons at varying stages of inflation. Some are deflated, while others are inflated. Three of the balloons are off the ground and are visible against a bright blue sky.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_09_00_HotAirBall.jpg"/>
 </media>
-<caption>Heita loftið
-inni í þessum loftbelgjum er með minni eðlismassa en kaldara loftið í
-kring. Þetta myndar uppdrifskraft sem veldur því að loftbelgirnir rísa
-þegar festingar þeirra eru losaðar. (heimild: breytt útgáfa af verki
-eftir Anthony Quintano)</caption>
+<caption>The hot air inside these balloons is less dense than the surrounding cool air. This results in a buoyant force that causes the balloons to rise when their guy lines are untied. (credit: modification of work by Anthony Quintano)</caption>
 </figure>
-<para id="fs-idm58981280">Við erum umkringd hafsjó af gasi –
-andrúmsloftinu – og margir eiginleikar gasa eru okkur kunnuglegir úr
-daglegu lífi. Upphituð gös þenjast út, sem getur fengið loftbelg til að
-rísa (<link target-id="CNX_Chem_09_00_HotAirBall"/>) eða valdið því að það springur á hjólbarða sem skilinn
-er eftir í sólinni á heitum degi.</para>
-<para id="fs-idm145175104">Gös hafa gegnt mikilvægu hlutverki í
-þróun efnafræðinnar. Á sautjándu og átjándu öld rannsökuðu margir
-vísindamenn hegðun gasa og lögðu grunninn að fyrstu stærðfræðilegu
-lýsingunum á hegðun efnis.</para>
-<para id="fs-idm154865680">Í þessum kafla munum við skoða
-tengslin milli hitastigs, þrýstings, magns og rúmmáls gass. Við munum
-kanna einfalt fræðilegt líkan og nota það til að greina hegðun gasa í
-tilraunum. Niðurstöður þessara greininga munu sýna okkur takmarkanir
-kenningarinnar og hvernig megi bæta hana.</para>
 </content>
 </document>
