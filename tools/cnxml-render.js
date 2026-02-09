@@ -1704,6 +1704,108 @@ function writeEndOfChapterSection(chapter, section, track, html) {
 }
 
 // =====================================================================
+// KEY EQUATIONS COMPILATION
+// =====================================================================
+
+/**
+ * Extract all numbered equations from all modules in a chapter.
+ * Returns array of { equationId, mathml, moduleId }
+ */
+function extractKeyEquations(chapter, modules) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const equations = [];
+
+  for (const moduleId of modules) {
+    const modulePath = path.join(
+      BOOKS_DIR,
+      '03-translated',
+      `ch${chapterStr}`,
+      `${moduleId}.cnxml`
+    );
+
+    if (!fs.existsSync(modulePath)) {
+      continue;
+    }
+
+    const cnxml = fs.readFileSync(modulePath, 'utf-8');
+
+    // Extract all equation elements with IDs
+    // Pattern matches: <equation id="..." [other attributes]>content</equation>
+    const equationPattern = /<equation\s+[^>]*id="([^"]+)"[^>]*>([\s\S]*?)<\/equation>/g;
+    let equationMatch;
+
+    while ((equationMatch = equationPattern.exec(cnxml)) !== null) {
+      const equationId = equationMatch[1];
+      const equationContent = equationMatch[2];
+
+      // Extract MathML from the equation
+      const mathmlMatch = equationContent.match(/<m:math[\s\S]*?<\/m:math>/);
+      if (mathmlMatch) {
+        equations.push({
+          equationId,
+          mathml: mathmlMatch[0],
+          moduleId,
+        });
+      }
+    }
+  }
+
+  return equations;
+}
+
+/**
+ * Render key equations as HTML table.
+ */
+function renderKeyEquations(chapter, equations) {
+  const lines = [];
+
+  lines.push('<section class="key-equations">');
+  lines.push('  <h2>Lykiljöfnur</h2>');
+
+  if (equations.length === 0) {
+    lines.push('  <p>Engar lykiljöfnur í þessum kafla.</p>');
+  } else {
+    lines.push('  <table class="key-equations-table unnumbered">');
+    lines.push('    <tbody>');
+
+    for (const eq of equations) {
+      // Render the MathML using our rendering context
+      const renderedMath = eq.mathml; // MathML passes through as-is
+      lines.push('      <tr>');
+      lines.push(`        <td>${renderedMath}</td>`);
+      lines.push('      </tr>');
+    }
+
+    lines.push('    </tbody>');
+    lines.push('  </table>');
+  }
+
+  lines.push('</section>');
+
+  return lines.join('\n');
+}
+
+/**
+ * Write key equations HTML to file.
+ */
+function writeKeyEquations(chapter, track, html) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
+  const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
+
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  const filename = `${chapter}-key-equations.html`;
+  const outputPath = path.join(outputDir, filename);
+
+  fs.writeFileSync(outputPath, html, 'utf-8');
+
+  return outputPath;
+}
+
+// =====================================================================
 // SECTION SUMMARY COMPILATION
 // =====================================================================
 
@@ -2298,6 +2400,47 @@ async function main() {
       console.log(`  → ${answerKeyPath}`);
     } else if (args.verbose) {
       console.log('No answers found in this chapter');
+    }
+
+    // Extract and render key equations from all modules (dynamic generation)
+    if (args.verbose) {
+      console.log('\nExtracting key equations...');
+    }
+
+    const keyEquations = extractKeyEquations(args.chapter, allModules);
+
+    if (keyEquations.length > 0) {
+      if (args.verbose) {
+        console.log(
+          `Found ${keyEquations.length} equation(s) across ${allModules.length} module(s)`
+        );
+      }
+
+      const keyEquationsHtml = renderKeyEquations(args.chapter, keyEquations);
+
+      // Wrap in full HTML document
+      const fullHtml = buildHtmlDocument({
+        title: 'Lykiljöfnur',
+        lang: args.lang,
+        content: keyEquationsHtml,
+        pageData: {
+          moduleId: `${chapterStr}-key-equations`,
+          chapter: args.chapter,
+          section: `${args.chapter}.0`,
+          title: 'Lykiljöfnur',
+          equations: [],
+          terms: {},
+        },
+        sectionNumber: `${args.chapter}.0`,
+        isIntro: true,
+      });
+
+      const keyEquationsPath = writeKeyEquations(args.chapter, args.track, fullHtml);
+
+      console.log('Lykiljöfnur: Rendered key equations to HTML');
+      console.log(`  → ${keyEquationsPath}`);
+    } else if (args.verbose) {
+      console.log('No numbered equations found in this chapter');
     }
 
     // Copy referenced images from source media to publication directory
