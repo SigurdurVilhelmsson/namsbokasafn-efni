@@ -1608,6 +1608,28 @@ function extractEndOfChapterSections(cnxml) {
   const sections = [];
 
   for (const [sectionClass, config] of Object.entries(END_OF_CHAPTER_SECTIONS)) {
+    // Special handling for glossary - look for <glossary> element instead of <section class="glossary">
+    if (sectionClass === 'glossary') {
+      const glossaryPattern = /<glossary>([\s\S]*?)<\/glossary>/g;
+      let glossaryMatch;
+      while ((glossaryMatch = glossaryPattern.exec(cnxml)) !== null) {
+        // Wrap glossary in a section element with title for consistent rendering
+        const wrappedContent = `<section class="glossary">
+  <title>${config.titleIs}</title>
+  ${glossaryMatch[0]}
+</section>`;
+
+        sections.push({
+          class: sectionClass,
+          content: wrappedContent,
+          title: config.titleEn,
+          titleIs: config.titleIs,
+          slug: config.slug,
+        });
+      }
+      continue;
+    }
+
     // Match sections with this class
     const pattern = new RegExp(
       `<section\\s+[^>]*class="${sectionClass}"[^>]*>([\\s\\S]*?)<\\/section>`,
@@ -1670,7 +1692,149 @@ function writeEndOfChapterSection(chapter, section, track, html) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const filename = `${chapterStr}-${section.slug}.html`;
+  // Use single-digit naming for consistency with ch1-5
+  const filename = `${chapter}-${section.slug}.html`;
+  const outputPath = path.join(outputDir, filename);
+
+  fs.writeFileSync(outputPath, html, 'utf-8');
+
+  return outputPath;
+}
+
+// =====================================================================
+// SECTION SUMMARY COMPILATION
+// =====================================================================
+
+/**
+ * Extract section summaries from all modules in a chapter.
+ * Returns array of { moduleId, sectionNumber, sectionTitle, summaryContent }
+ */
+function extractSectionSummaries(chapter, modules, moduleSections) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const summariesByModule = [];
+
+  for (const moduleId of modules) {
+    const modulePath = path.join(
+      BOOKS_DIR,
+      '03-translated',
+      `ch${chapterStr}`,
+      `${moduleId}.cnxml`
+    );
+
+    if (!fs.existsSync(modulePath)) {
+      continue;
+    }
+
+    const cnxml = fs.readFileSync(modulePath, 'utf-8');
+
+    // Extract summary section (avoid end-of-chapter summary by looking for non-EOC summaries)
+    // Section summaries are within the main content, not at the end as separate sections
+    const summaryPattern = /<section\s+[^>]*class="summary"[^>]*>([\s\S]*?)<\/section>/g;
+    let summaryMatch;
+    let foundSummary = false;
+
+    while ((summaryMatch = summaryPattern.exec(cnxml)) !== null) {
+      const summaryContent = summaryMatch[0]; // Full section tag
+
+      // Skip if this looks like an end-of-chapter summary (usually the last module)
+      // Section summaries have specific IDs and are in the middle of modules
+      // We can distinguish by checking if there are other sections after this one
+      const remainingContent = cnxml.substring(summaryMatch.index + summaryMatch[0].length);
+      const hasMoreSections = /<section/.test(remainingContent);
+
+      // Only include if this is likely a section summary (not EOC summary)
+      // Section summaries typically come before other sections like key-equations, exercises
+      if (hasMoreSections || !foundSummary) {
+        const sectionInfo = moduleSections[moduleId];
+        if (sectionInfo) {
+          summariesByModule.push({
+            moduleId,
+            sectionNumber: `${chapter}.${sectionInfo.section}`,
+            sectionTitle: sectionInfo.titleIs || sectionInfo.titleEn || '',
+            summaryContent,
+          });
+          foundSummary = true;
+          break; // Only take the first summary from each module
+        }
+      }
+    }
+  }
+
+  return summariesByModule;
+}
+
+/**
+ * Render compiled summary HTML (matching chapters 1-5 format).
+ * Takes summaries from all sections and compiles them into one page.
+ */
+function renderCompiledSummary(chapter, summariesByModule, context) {
+  const lines = [];
+
+  lines.push('<!DOCTYPE html>');
+  lines.push('<html lang="is">');
+  lines.push('<head>');
+  lines.push('  <meta charset="UTF-8">');
+  lines.push('  <meta name="viewport" content="width=device-width, initial-scale=1.0">');
+  lines.push(`  <title>Kafli ${chapter} - Samantekt</title>`);
+  lines.push('  <link rel="stylesheet" href="/styles/content.css">');
+  lines.push('</head>');
+  lines.push('<body>');
+  lines.push('  <article class="chapter-resource summary">');
+  lines.push('    <header>');
+  lines.push('      <h1>Samantekt</h1>');
+  lines.push('    </header>');
+  lines.push('    <main>');
+
+  for (const summary of summariesByModule) {
+    // Render the summary section content
+    const { html } = context.renderCnxmlToHtml(
+      `<?xml version="1.0"?><document xmlns="http://cnx.rice.edu/cnxml"><content>${summary.summaryContent}</content></document>`,
+      { ...context.options, excludeSections: false }
+    );
+
+    // Extract just the section content (remove wrapper HTML)
+    const sectionMatch = html.match(/<section[\s\S]*?<\/section>/);
+    if (sectionMatch) {
+      let sectionHtml = sectionMatch[0];
+
+      // Replace the section class and add module ID
+      sectionHtml = sectionHtml.replace(
+        /<section([^>]*)class="summary"([^>]*)>/,
+        `<section class="summary-section" id="summary-${summary.moduleId}">`
+      );
+
+      // Replace the h2 title with section number + title
+      sectionHtml = sectionHtml.replace(
+        /<h2[^>]*>.*?<\/h2>/,
+        `<h2>${summary.sectionNumber} ${summary.sectionTitle}</h2>`
+      );
+
+      lines.push('      ' + sectionHtml);
+    }
+  }
+
+  lines.push('    </main>');
+  lines.push('  </article>');
+  lines.push('</body>');
+  lines.push('</html>');
+
+  return lines.join('\n');
+}
+
+/**
+ * Write compiled summary HTML to file.
+ */
+function writeCompiledSummary(chapter, track, html) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
+  const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
+
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  // Use single-digit naming for consistency with ch1-5
+  const filename = `${chapter}-summary.html`;
   const outputPath = path.join(outputDir, filename);
 
   fs.writeFileSync(outputPath, html, 'utf-8');
@@ -1834,7 +1998,8 @@ function writeAnswerKey(chapter, track, html) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const filename = `${chapterStr}-answer-key.html`;
+  // Use single-digit naming for consistency with ch1-5
+  const filename = `${chapter}-answer-key.html`;
   const outputPath = path.join(outputDir, filename);
 
   fs.writeFileSync(outputPath, html, 'utf-8');
@@ -2053,6 +2218,45 @@ async function main() {
         console.log(`${section.titleIs}: Rendered to HTML`);
         console.log(`  → ${outputPath}`);
       }
+    }
+
+    // Extract and render compiled summary (matching chapters 1-5 format)
+    if (args.verbose) {
+      console.log('\nExtracting section summaries...');
+    }
+
+    const summariesByModule = extractSectionSummaries(args.chapter, allModules, moduleSections);
+
+    if (summariesByModule.length > 0) {
+      const totalSummaries = summariesByModule.length;
+
+      if (args.verbose) {
+        console.log(`Found ${totalSummaries} section summary/summaries`);
+      }
+
+      const compiledSummaryHtml = renderCompiledSummary(args.chapter, summariesByModule, {
+        renderCnxmlToHtml,
+        options: {
+          verbose: args.verbose,
+          lang: args.lang,
+          chapter: args.chapter,
+          moduleId: `${chapterStr}-summary`,
+          moduleSections,
+          chapterFigureNumbers,
+          chapterTableNumbers,
+          chapterExampleNumbers,
+          chapterExerciseNumbers,
+          chapterSectionTitles,
+          equationTextDictionary,
+        },
+      });
+
+      const summaryPath = writeCompiledSummary(args.chapter, args.track, compiledSummaryHtml);
+
+      console.log('Samantekt: Rendered compiled summary to HTML');
+      console.log(`  → ${summaryPath}`);
+    } else if (args.verbose) {
+      console.log('No section summaries found in this chapter');
     }
 
     // Extract and render answer key from all modules
