@@ -1767,6 +1767,7 @@ function extractKeyEquations(chapter, modules) {
  */
 function renderKeyEquations(chapter, equations) {
   const lines = [];
+  const context = { chapter, figures: {}, tables: {}, examples: {}, terms: {}, footnotes: [] };
 
   lines.push('<section class="key-equations">');
   lines.push('  <h2>Lykiljöfnur</h2>');
@@ -1778,8 +1779,18 @@ function renderKeyEquations(chapter, equations) {
     lines.push('    <tbody>');
 
     for (const eq of equations) {
-      // MathML passes through as-is (will be rendered by MathJax)
-      const renderedMath = eq.mathml;
+      let renderedMath;
+
+      // Check if this is MathML (starts with <m:math>) or inline HTML/CNXML
+      if (eq.mathml.trim().startsWith('<m:math')) {
+        // Process MathML: localize numbers and render to SVG
+        const localizedMathml = localizeNumbersInMathML(eq.mathml);
+        renderedMath = renderMathML(localizedMathml, true);
+      } else {
+        // Process inline CNXML content (e.g., <emphasis>, <sub>, <sup>)
+        renderedMath = processInlineContent(eq.mathml, context);
+      }
+
       lines.push('      <tr>');
       lines.push(`        <td>${renderedMath}</td>`);
       lines.push('      </tr>');
