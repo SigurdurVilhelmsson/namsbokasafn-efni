@@ -158,6 +158,14 @@ function reverseInlineMarkup(text, equations) {
     return match;
   });
 
+  // IMPORTANT: Extract MathML blocks before applying term wrapping to prevent
+  // term markers from being applied inside MathML (which causes malformed XML)
+  const mathBlocks = [];
+  result = result.replace(/<m:math>[\s\S]*?<\/m:math>/g, (match) => {
+    mathBlocks.push(match);
+    return `{{MATHBLOCK:${mathBlocks.length - 1}}}`;
+  });
+
   // Convert emphasis markers back to CNXML
   result = result.replace(/\*\*([^*]+)\*\*/g, '<emphasis effect="bold">$1</emphasis>');
   result = result.replace(/\*([^*]+)\*/g, '<emphasis effect="italics">$1</emphasis>');
@@ -166,6 +174,11 @@ function reverseInlineMarkup(text, equations) {
   // Handle both normal (__term__) and MT-escaped (\_\_term\_\_) markers
   result = result.replace(/\\_\\_([^_]+)\\_\\_/g, '<term>$1</term>');
   result = result.replace(/__([^_]+)__/g, '<term>$1</term>');
+
+  // Restore MathML blocks after term wrapping
+  result = result.replace(/\{\{MATHBLOCK:(\d+)\}\}/g, (match, index) => {
+    return mathBlocks[parseInt(index)];
+  });
 
   // Restore sup/sub inside terms (from ^..^ and ~..~ markdown)
   result = result.replace(/<term>([\s\S]*?)<\/term>/g, (match, inner) => {
