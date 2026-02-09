@@ -107,10 +107,14 @@ cd namsbokasafn-efni/server
 
 # Install dependencies
 npm install
+
+# Run initial database migrations
+node migrations/run-migrations.js
 ```
 
 - [ ] Repo cloned
 - [ ] Dependencies installed
+- [ ] Database migrations run
 
 ---
 
@@ -241,11 +245,26 @@ git pull origin main
 cd server
 npm install  # if dependencies changed
 
+# Run database migrations (if any)
+node migrations/run-migrations.js
+
 # Restart service (as root)
 sudo systemctl restart ritstjorn
+
+# Verify service started successfully
+sudo systemctl status ritstjorn
+sudo journalctl -u ritstjorn -n 50
 ```
 
+**Migration Notes:**
+- Check `server/migrations/` directory for new migration files
+- Migrations are numbered sequentially (001, 002, etc.)
+- Each migration should have `migrate()` or `up()` function
+- Run migrations BEFORE restarting the service
+- Check logs for migration errors before proceeding
+
 - [ ] Update process documented/tested
+- [ ] Migration process documented
 
 ---
 
