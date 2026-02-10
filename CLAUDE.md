@@ -48,7 +48,7 @@ Translation workflow for Icelandic OpenStax textbooks. Produces three assets:
 
 - **Developer profile:** Chemistry teacher with basic Linux skills, not a professional developer
 - **Development method:** Built primarily with Claude Code assistance
-- **Server:** Linode Ubuntu, Caddy, Node.js
+- **Server:** Linode Ubuntu, nginx, Node.js
 - **Sister repo:** namsbokasafn-vefur (web publishing service)
 - **Domain:** namsbokasafn.is (migrated from efnafraedi.app)
 - **Authentication:** GitHub OAuth for the workflow server
