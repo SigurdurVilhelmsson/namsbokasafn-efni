@@ -267,6 +267,7 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
     equationTextDictionary: options.equationTextDictionary || null, // equation text translations
     excludeSections: options.excludeSections !== false, // Allow disabling section exclusion
+    includeSolutions: options.includeSolutions || false, // Only show solutions on answer key pages
     figureCounter: 0,
     footnoteCounter: 0,
     exampleCounter: 0,
@@ -1200,11 +1201,17 @@ function renderExercise(exercise, context) {
   }
 
   // Build attributes for eoc-exercise (end-of-chapter exercise)
+  // Extract just the exercise number (without chapter prefix) for display
+  // e.g., "2.1" -> "1", or if no dot, use as-is
+  const displayNumber = exerciseNumber.toString().includes('.')
+    ? exerciseNumber.toString().split('.')[1]
+    : exerciseNumber.toString();
+
   const attrs = [];
   if (id) attrs.push(`id="${escapeAttr(id)}"`);
   attrs.push('class="eoc-exercise"');
   attrs.push(`data-exercise-id="${escapeAttr(id || '')}"`);
-  attrs.push(`data-exercise-number="${exerciseNumber}"`);
+  attrs.push(`data-exercise-number="${displayNumber}"`);
 
   lines.push(`<div ${attrs.join(' ')}>`);
 
@@ -1258,9 +1265,9 @@ function renderExercise(exercise, context) {
     lines.push('  </div>');
   }
 
-  // Solution
+  // Solution (only render if context.includeSolutions is true, e.g., for answer key pages)
   const solutionMatch = exercise.content.match(/<solution([^>]*)>([\s\S]*?)<\/solution>/);
-  if (solutionMatch) {
+  if (solutionMatch && context.includeSolutions) {
     const solutionId = parseAttributes(solutionMatch[1]).id;
     lines.push(`  <div${solutionId ? ` id="${escapeAttr(solutionId)}"` : ''} class="solution">`);
     renderSectionContent(solutionMatch[2]);
@@ -2124,6 +2131,7 @@ function renderCompiledExercises(chapter, exercisesByModule, chapterExerciseNumb
         moduleId: exercises.moduleId,
         chapterExerciseNumbers,
         excludeSections: false, // Don't exclude exercises section when rendering standalone
+        includeSolutions: false, // Don't render solutions on exercises page (only on answer key)
         ...context,
       }
     );
