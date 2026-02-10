@@ -2514,7 +2514,7 @@ async function main() {
       const cnxmlPath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
       const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
 
-      const { html, pageData } = renderCnxmlToHtml(cnxml, {
+      const renderResult = renderCnxmlToHtml(cnxml, {
         verbose: args.verbose,
         lang: args.lang,
         chapter: args.chapter,
@@ -2528,6 +2528,31 @@ async function main() {
         chapterSectionTitles,
         equationTextDictionary,
       });
+      let html = renderResult.html;
+      const pageData = renderResult.pageData;
+
+      // Special handling for Periodic Table appendix (m68859)
+      // Replace static image with link to interactive periodic table
+      if (moduleId === 'm68859') {
+        const mainContentMatch = html.match(/(<main>)([\s\S]*?)(<\/main>)/);
+        if (mainContentMatch) {
+          const newMainContent = `<main>
+<div style="text-align: center; padding: 2rem;">
+  <h2>Gagnavirkt lotukerfi frumefna</h2>
+  <p style="font-size: 1.1rem; margin: 1.5rem 0;">
+    Skoðaðu gagnavirkt lotukerfi okkar þar sem þú getur séð nákvæmar upplýsingar um öll frumefni.
+  </p>
+  <a href="/efnafraedi/lotukerfi" class="periodic-table-link" style="display: inline-block; padding: 1rem 2rem; background-color: #0066cc; color: white; text-decoration: none; border-radius: 4px; font-size: 1.1rem; margin-top: 1rem;">
+    Opna gagnavirka lotukerfið
+  </a>
+  <p style="margin-top: 2rem; color: #666;">
+    <em>Einnig er hægt að nálgast lotukerfið beint á: <a href="/efnafraedi/lotukerfi">/efnafraedi/lotukerfi</a></em>
+  </p>
+</div>
+</main>`;
+          html = html.replace(/(<main>)[\s\S]*?(<\/main>)/, newMainContent);
+        }
+      }
 
       // Validate output is non-empty
       if (!html || html.trim().length < 100) {
