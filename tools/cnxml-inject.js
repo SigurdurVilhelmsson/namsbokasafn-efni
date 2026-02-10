@@ -149,18 +149,30 @@ Examples:
 
 /**
  * Parse segments from markdown file.
+ * Uses first-match-wins: if a segment ID appears multiple times (e.g., from
+ * overlapping MT file splits), the first occurrence is kept because it has
+ * the correct MATH placeholder numbering from the original extraction.
  * @param {string} content - Segments markdown content
  * @returns {Map<string, string>} Map of segment ID to text
  */
 function parseSegments(content) {
   const segments = new Map();
   const pattern = /<!-- SEG:([^\s]+) -->[ \t]*\n?([\s\S]*?)(?=<!-- SEG:|$)/g;
+  let duplicateCount = 0;
 
   let match;
   while ((match = pattern.exec(content)) !== null) {
     const id = match[1];
     const text = match[2].trim();
-    segments.set(id, text);
+    if (segments.has(id)) {
+      duplicateCount++;
+    } else {
+      segments.set(id, text);
+    }
+  }
+
+  if (duplicateCount > 0) {
+    console.error(`  Note: ${duplicateCount} duplicate segment(s) skipped (first-match-wins)`);
   }
 
   return segments;
