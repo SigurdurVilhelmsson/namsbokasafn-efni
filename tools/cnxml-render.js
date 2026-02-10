@@ -2037,6 +2037,155 @@ function writeCompiledSummary(chapter, track, html) {
 }
 
 // =====================================================================
+// SECTION EXERCISES EXTRACTION AND RENDERING
+// =====================================================================
+
+/**
+ * Extract exercise sections from all modules in a chapter.
+ * Returns array of { moduleId, sectionNumber, sectionTitle, exercisesContent }
+ */
+function extractSectionExercises(chapter, modules, moduleSections) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const exercisesByModule = [];
+
+  for (const moduleId of modules) {
+    const modulePath = path.join(
+      BOOKS_DIR,
+      '03-translated',
+      `ch${chapterStr}`,
+      `${moduleId}.cnxml`
+    );
+
+    if (!fs.existsSync(modulePath)) {
+      continue;
+    }
+
+    const cnxml = fs.readFileSync(modulePath, 'utf-8');
+
+    // Extract exercises section
+    const exercisesPattern = /<section\s+[^>]*class="exercises"[^>]*>([\s\S]*?)<\/section>/g;
+    let exercisesMatch;
+
+    while ((exercisesMatch = exercisesPattern.exec(cnxml)) !== null) {
+      const exercisesContent = exercisesMatch[0]; // Full section tag
+
+      // Only include if this module has section info (not intro modules)
+      const sectionInfo = moduleSections[moduleId];
+      if (sectionInfo && sectionInfo.section !== '0') {
+        exercisesByModule.push({
+          moduleId,
+          sectionNumber: `${chapter}.${sectionInfo.section}`,
+          sectionTitle: sectionInfo.titleIs || sectionInfo.titleEn || '',
+          exercisesContent,
+        });
+        break; // Only take the first exercises section from each module
+      }
+    }
+  }
+
+  return exercisesByModule;
+}
+
+/**
+ * Render compiled exercises HTML (matching chapters 1-5 format).
+ * Takes exercises from all sections and compiles them into one page.
+ */
+function renderCompiledExercises(chapter, exercisesByModule, chapterExerciseNumbers, context) {
+  const lines = [];
+
+  lines.push('<!DOCTYPE html>');
+  lines.push('<html lang="is">');
+  lines.push('<head>');
+  lines.push('  <meta charset="UTF-8">');
+  lines.push('  <meta name="viewport" content="width=device-width, initial-scale=1.0">');
+  lines.push(`  <title>Kafli ${chapter} - Æfingar í lok kafla</title>`);
+  lines.push('  <link rel="stylesheet" href="/styles/content.css">');
+  lines.push('</head>');
+  lines.push('<body>');
+  lines.push('  <article class="chapter-resource exercises">');
+  lines.push('    <header>');
+  lines.push('      <h1>Æfingar í lok kafla</h1>');
+  lines.push('    </header>');
+  lines.push('    <main>');
+
+  for (const exercises of exercisesByModule) {
+    // Render the exercises section content
+    const { html } = renderCnxmlToHtml(
+      `<?xml version="1.0"?><document xmlns="http://cnx.rice.edu/cnxml"><content>${exercises.exercisesContent}</content></document>`,
+      {
+        verbose: false,
+        lang: 'is',
+        chapter,
+        moduleId: exercises.moduleId,
+        chapterExerciseNumbers,
+        excludeSections: false, // Don't exclude exercises section when rendering standalone
+        ...context,
+      }
+    );
+
+    // Extract just the section content (remove wrapper HTML)
+    const sectionMatch = html.match(/<section[\s\S]*?<\/section>/);
+    if (sectionMatch) {
+      let sectionHtml = sectionMatch[0];
+
+      // Remove the original section title (we'll add our own with section number)
+      sectionHtml = sectionHtml.replace(/<h2[^>]*>[\s\S]*?<\/h2>/, '');
+
+      // Replace the section class and add module info
+      sectionHtml = sectionHtml.replace(
+        /<section([^>]*)class="exercises"([^>]*)>/,
+        `<section class="exercises-section" id="exercises-${exercises.moduleId}" data-section="${exercises.sectionNumber}">`
+      );
+
+      // Add section title as h2 (after opening section tag)
+      const titleHtml = `      <h2>${exercises.sectionNumber} ${exercises.sectionTitle}</h2>\n`;
+      sectionHtml = sectionHtml.replace(/<section([^>]*)>/, `$&\n${titleHtml}`);
+
+      lines.push(sectionHtml);
+    }
+  }
+
+  lines.push('    </main>');
+  lines.push('  </article>');
+  lines.push('');
+  lines.push(`  <script type="application/json" id="page-data">`);
+  lines.push(`{
+  "moduleId": "${chapter}-exercises",
+  "chapter": ${chapter},
+  "section": "${chapter}.0",
+  "title": "Æfingar í lok kafla",
+  "equations": [],
+  "terms": {}
+}
+  </script>`);
+  lines.push('</body>');
+  lines.push('</html>');
+
+  return lines.join('\n');
+}
+
+/**
+ * Write compiled exercises HTML to file.
+ */
+function writeCompiledExercises(chapter, track, html) {
+  const chapterStr = chapter.toString().padStart(2, '0');
+  const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
+  const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
+
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  // Use single-digit naming for consistency with ch1-5
+  const filename = `${chapter}-exercises.html`;
+  const outputPath = path.join(outputDir, filename);
+
+  fs.writeFileSync(outputPath, html, 'utf-8');
+
+  return outputPath;
+}
+
+// =====================================================================
 // ANSWER KEY EXTRACTION AND RENDERING
 // =====================================================================
 
@@ -2508,6 +2657,50 @@ async function main() {
       console.log(`  → ${answerKeyPath}`);
     } else if (args.verbose) {
       console.log('No answers found in this chapter');
+    }
+
+    // Extract and render compiled exercises from all modules
+    if (args.verbose) {
+      console.log('\nExtracting section exercises...');
+    }
+
+    const exercisesByModule = extractSectionExercises(args.chapter, allModules, moduleSections);
+
+    if (exercisesByModule.length > 0) {
+      if (args.verbose) {
+        console.log(`Found ${exercisesByModule.length} section(s) with exercises`);
+      }
+
+      const compiledExercisesHtml = renderCompiledExercises(
+        args.chapter,
+        exercisesByModule,
+        chapterExerciseNumbers,
+        {
+          verbose: args.verbose,
+          lang: args.lang,
+          chapter: args.chapter,
+          moduleId: `${chapterStr}-exercises`,
+          moduleSections,
+          chapterFigureNumbers,
+          chapterTableNumbers,
+          chapterEquationNumbers,
+          chapterExampleNumbers,
+          chapterExerciseNumbers,
+          chapterSectionTitles,
+          equationTextDictionary,
+        }
+      );
+
+      const compiledExercisesPath = writeCompiledExercises(
+        args.chapter,
+        args.track,
+        compiledExercisesHtml
+      );
+
+      console.log('Æfingar í lok kafla: Rendered compiled exercises to HTML');
+      console.log(`  → ${compiledExercisesPath}`);
+    } else if (args.verbose) {
+      console.log('No section exercises found in this chapter');
     }
 
     // Extract and render key equations from all modules (dynamic generation)
