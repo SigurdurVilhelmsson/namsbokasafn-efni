@@ -95,6 +95,56 @@ Slíkt ástand samsvarar gasi þar sem tiltölulega lítill fjöldi sameinda
 tekur tiltölulega stórt rúmmál, þ.e. gas við tiltölulega lágan þrýsting.
 Tilraunagildi fyrir van der Waals-fasta sumra algengra gasa eru gefin í
 <link target-id="fs-idm15100464"/>.</para>
+<table class="top-titled" id="fs-idm15100464" summary="This table has three columns and seven rows. The first row is a header, and it labels each column, “Gas,” “a ( L to the second power a t m divided by m o l to the second power ),” “b ( L divided by m o l ).” Under “Gas” are the following: N subscript 2, O subscript 2, C O subscript 2, H subscript 2 O, H e, and C C l subscript 4. Under “a ( L to the second power a t m divided by m o l to the second power )” are the following: 1.39, 1.36, 3.59, 5.46, 0.0342, and 20.4. Under “b ( L divided by m o l )” are the following: 0.0391, 0.0318, 0.0427, 0.0305, 0.0237, and 0.1383.">
+<tgroup cols="3">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<colspec colnum="3" colname="c3"/>
+<thead>
+<row valign="top">
+<entry namest="c1" nameend="c3" align="center">Gildi van der Waals-fasta fyrir nokkur
+algeng gös</entry>
+</row>
+<row valign="top">
+<entry align="left">Gas</entry>
+<entry align="left"><emphasis effect="italics">a</emphasis> (L<sup>2</sup> atm/mól<sup>2</sup>)</entry>
+<entry align="left"><emphasis effect="italics">b</emphasis> (L/mól)</entry>
+</row>
+</thead>
+<tbody>
+<row valign="top">
+<entry align="left">N<sub>2</sub></entry>
+<entry align="left">1,39</entry>
+<entry align="left">0,0391</entry>
+</row>
+<row valign="top">
+<entry align="left">O<sub>2</sub></entry>
+<entry align="left">1,36</entry>
+<entry align="left">0,0318</entry>
+</row>
+<row valign="top">
+<entry align="left">CO<sub>2</sub></entry>
+<entry align="left">3,59</entry>
+<entry align="left">0,0427</entry>
+</row>
+<row valign="top">
+<entry align="left">H<sub>2</sub>O</entry>
+<entry align="left">5,46</entry>
+<entry align="left">0,0305</entry>
+</row>
+<row valign="top">
+<entry align="left">He</entry>
+<entry align="left">0,0342</entry>
+<entry align="left">0,0237</entry>
+</row>
+<row valign="top">
+<entry align="left">CCl<sub>4</sub></entry>
+<entry align="left">20,4</entry>
+<entry align="left">0,1383</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
 <para id="fs-idp95888368">Við lágan þrýsting er leiðréttingin
 fyrir aðdráttarkrafta milli sameinda, <emphasis effect="italics">a</emphasis>, mikilvægari en leiðréttingin
 fyrir rúmmál sameinda, <emphasis effect="italics">b</emphasis>. Við háan þrýsting og lítið rúmmál verður

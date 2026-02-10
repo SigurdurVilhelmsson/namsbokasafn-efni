@@ -1,0 +1,222 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" class="appendix">
+<title>Einingar og umreikningsstuðlar</title>
+<metadata xmlns:md="http://cnx.rice.edu/mdml">
+  <md:content-id>m68861</md:content-id>
+  <md:title>Units and Conversion Factors</md:title>
+  <md:abstract/>
+  <md:uuid>eeaf98f0-ce83-4e1c-ae20-dd05515645b4</md:uuid>
+</metadata>
+
+<content>
+<table class="top-titled" id="fs-idp192584544" summary="A table of four columns and four rows is titled “Units of Length.” The two columns on the left have conversions from Metric to the English system. 1 meter (m) is equal to 39.37 inches (I n.) and 1.094 yards (y d). 1 centimeter (c m) is equal to 0.01 meters (exact, definition). 1 millimeter (m m) is equal to 0.001 meters (exact, definition). 1 kilometer (k m) is equal to 1000 meters (exact, definition). The two columns on the right have conversions from English to the Metric system. 1 angstrom (capital A with a degree sign connected to the top) is equal to 10 to the negative eighth power centimeters (exact, definition) or 10 to the negative tenth power meters (exact, definition). 1 yard (y) is equal to 0.9144 meters. 1 inch (I n) is equal to 2.54 centimeters (exact, definition). 1 mile (U S) is equal to 1.60934 kilometers.">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="middle">
+<entry namest="c1" nameend="c4">Lengdareiningar</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry valign="middle" align="left">metri (m)</entry><entry align="left">= 39,37 tommur (in.)= 1,094 stikur (yd)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">sentimetri (cm)</entry><entry valign="middle" align="left">= 0,01 m (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry align="left" valign="middle">millimetri (mm)</entry><entry valign="middle" align="left">= 0,001 m (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">kílómetri (km)</entry><entry valign="middle" align="left">= 1000 m (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">angström (Å)</entry><entry valign="middle" align="left">= 10<sup>–8</sup> cm (nákvæmlega, skilgreining)=
+10<sup>–10</sup> m (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">stika (yd)</entry><entry valign="middle" align="left">= 0,9144 m</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">tomma (in.)</entry><entry valign="middle" align="left">= 2,54 cm (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">míla (bandarísk)</entry><entry valign="middle" align="left">= 1,60934 km</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<table class="top-titled" id="fs-idp47106160" summary="A table of four columns and three rows is titled “Units of Volume.” The two columns on the left have conversions from Metric to the English system. 1 liter (L) is equal to 0.001 meters cubed (exact, definition), 1000 centimeters cubed (exact, definition) and 1.057 (U S) quarts. 1 milliliter (ml) is equal to 0.001 liters (exact, definition) and 1 centimeter cubed (exact, definition). 1 microliter (fancy cursive m capital L) is equal to 10 to the negative sixth power liters (exact, definition) and 10 to the negative third power centimeters cubed (exact, definition). The two columns on the right have conversions from English to the Metric system. 1 liquid quart (U S) is equal to 32 (U S) liquid ounces (exact, definition), 0.25 (U S) gallons (exact, definition), and 0.9463 liters. 1 dry quart is equal to 1.1012 liters. 1 cubic foot (U S) is equal to 28.316 liters.">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="middle">
+<entry valign="middle" namest="c1" nameend="c4">Rúmmálseiningar</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry valign="middle" align="left">lítri (L)</entry><entry valign="middle" align="left">= 0,001 m<sup>3</sup> (nákvæmlega, skilgreining)=
+1000 cm<sup>3</sup> (nákvæmlega, skilgreining)= 1,057 (bandarísk) kvart</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">millilítri (mL)</entry><entry valign="middle" align="left">= 0,001 L (nákvæmlega, skilgreining)= 1
+cm<sup>3</sup> (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">míkrólítri (µL)</entry><entry valign="middle" align="left">= 10<sup>–6</sup> L (nákvæmlega, skilgreining)=
+10<sup>–3</sup> cm<sup>3</sup> (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">vökvakvart (bandarískt)</entry><entry valign="middle" align="left">= 32 (bandarískar) vökvaúnsur (nákvæmlega,
+skilgreining)= 0,25 (bandarískt) gallon (nákvæmlega, skilgreining)=
+0,9463 L</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">þurrefnakvart</entry><entry valign="middle" align="left">= 1,1012 L</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">rúmfet (bandarískt)</entry><entry valign="middle" align="left">= 28,316 L</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<table class="top-titled" id="fs-idp250872512" summary="A table of four columns and four rows is titled “Units of Mass.” The conversions for the two columns on the left are as follows: 1 gram (g) is equal to 0.001 kilograms (exact, definition). 1 milligram (m g) is equal to 0.001 grams (exact, definition). 1 kilogram (k g) is equal to 1000 grams (exact, definition) and 2.205 pounds. 1 ton (metric) is equal to 1000 kilograms (exact, definition) and 2204.62 pounds. The conversions for the two columns on the right are as follows: 1 ounce (o z) (avoirdupois) is equal to 28.35 grams. 1 pound (l b) (avoirdupois) is equal to 0.4535924 kilograms. 1 ton (short) is equal to 2000 pounds (exact, definition and 907.185 kilograms. 1 ton (long) is equal to 2240 pounds (exact, definition) and 1.016 metric tons.">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="middle">
+<entry valign="middle" namest="c1" nameend="c4">Massaeiningar</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry valign="middle" align="left">gramm (g)</entry>
+<entry valign="middle" align="left">= 0,001 kg (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">milligramm (mg)</entry>
+<entry valign="middle" align="left">= 0,001 g (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">kílógramm (kg)</entry>
+<entry valign="middle" align="left">= 1000 g (nákvæmlega, skilgreining)= 2,205
+lb<footnote>Strangt til tekið eru únsa og pund þyngdareiningar, <emphasis effect="italics">W</emphasis>
+(kraftur sem jafngildir margfeldi massa og þyngdarhröðunar, <emphasis effect="italics">W</emphasis> = <emphasis effect="italics">mg</emphasis>).
+Umreikningssamböndin í þessari töflu eru almennt notuð til að jafna
+massa og þyngd miðað við nafnvirði fyrir <emphasis effect="italics">g</emphasis> á yfirborði jarðar.</footnote></entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">tonn (metrakerfi)</entry>
+<entry valign="middle" align="left">=1000 kg (nákvæmlega, skilgreining)=
+2204,62 lb</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">únsa (oz)</entry>
+<entry valign="middle" align="left">= 28,35 g</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">pund (lb)</entry>
+<entry valign="middle" align="left">= 0.4535924 kg</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">tonn (stutt)</entry>
+<entry valign="middle" align="left">= 2000 lb (nákvæmlega, skilgreining) =
+907,185 kg</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">tonn (langt)</entry>
+<entry valign="middle" align="left">= 2240 lb (nákvæmlega, skilgreining) =
+1,016 tonn</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<table class="top-titled" id="fs-idp384167568" summary="A table of two columns and seven rows is titled “Units of Energy.” The conversions are as follows: 4.184 joules (J) are equal to 1 thermochemical calorie (cal). 1 thermochemical calorie (cal) is equal to 4.184 times 10 to the seventh power ergs. 1 erg is equal to 10 to the negative seventh power joules (exact, definition). 1 electron-volt (eV) is equal to 1.60218 times 10 to the negative nineteenth power joules and 23.061 k cal mol to the negative first power. 1 liter atmosphere is equal to 24.217 calories and 101.325 joules (exact, definition). 1 nutritional calorie (Cal, with a capital “C”) is equal to 1000 cal (exact, definition) and 4184 joules. 1 British thermal unit (B T U) is equal to 1054.804 joules. B T U is the amount of energy needed to heat one pound of water by one degree Fahrenheit. Therefore, the exact relationship of B T U to joules and other energy units depends on the temperature at which B T U is measured. 59 degrees Fahrenheit (15 degrees Celsius) is the most widely used reference temperature for B T U definition in the United States. At this temperature, the conversion factor is the one provided in this table.">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="middle">
+<entry namest="c1" nameend="c4">Orkumælieiningar</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry align="left">4,184 júl (J)</entry>
+<entry align="left">= 1 varmakemísk kaloría (cal)</entry>
+</row>
+<row valign="middle">
+<entry align="left">1 varmakemísk kaloría (cal)</entry>
+<entry align="left">= 4,184 <m:math><m:mo>×</m:mo></m:math> 10^7 ^ erg</entry>
+</row>
+<row valign="middle">
+<entry align="left">erg</entry>
+<entry align="left">= 10<sup>–7</sup> J (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry align="left">rafeindavolt (eV)</entry>
+<entry align="left">= 1,60218 <m:math><m:mo>×</m:mo></m:math> 10<sup>−19</sup> J = 23,061
+kcal mól<sup>−1</sup></entry>
+</row>
+<row valign="middle">
+<entry align="left">líter∙loftþrýstingur</entry>
+<entry align="left">= 24,217 cal = 101,325 J (nákvæmlega,
+skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry align="left">næringarkaloría (Cal)</entry>
+<entry align="left">= 1000 cal (nákvæmlega, skilgreining) =
+4184 J</entry>
+</row>
+<row valign="middle">
+<entry align="left">bresk varmaeining (BTU)</entry>
+<entry align="left">= 1054,804 J<footnote>BTU er orkumagnið
+sem þarf til að hita eitt pund af vatni um eina Fahrenheit-gráðu. Þess
+vegna fer nákvæmt samband BTU við júl og aðrar orkueiningar eftir
+hitastiginu sem BTU er mælt við. 59 °F (15 °C) er algengasta
+viðmiðunarhitastigið fyrir skilgreiningu á BTU í Bandaríkjunum. Við
+þetta hitastig er umreikningsstuðullinn sá sem gefinn er í þessari
+töflu.</footnote></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<table class="top-titled" id="fs-idp115347744" summary="A table of two columns and four rows is titled “Units of Pressure.” The conversions are as follows: 1 torr is equal to 1 millimeter H g (exact, definition). 1 pascal (P a) is equal to N meters to the negative second power (exact, definition) and 1 kilogram m to the negative first power s to the negative second power (exact, definition). 1 atmosphere (a t m) is equal to 760 m m H g (exact, definition), 760 torr (exact, definition), 101,321 N m to the negative second power (exact, definition), and 101,325 P a (exact, definition). 1 bar is equal to 10 to the fifth power P a (exact, definition), and ten to the fifth power k g m to the negative first power s to the negative second power (exact, definition).">
+<tgroup cols="2">
+<colspec colnum="1" colname="c1"/>
+<colspec colnum="2" colname="c2"/>
+<thead>
+<row valign="middle">
+<entry valign="middle" namest="c1" nameend="c4">Þrýstingsmælieiningar</entry>
+</row>
+</thead>
+<tbody>
+<row valign="middle">
+<entry valign="middle" align="left">torr</entry>
+<entry valign="middle" align="left">= 1 mm Hg (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">paskal (Pa)</entry>
+<entry valign="middle" align="left">= N m<sup>–2</sup> (nákvæmlega, skilgreining) = kg
+m<sup>–1</sup> s<sup>–2</sup> (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">loftþrýstingur (atm)</entry>
+<entry valign="middle" align="left">= 760 mm Hg (nákvæmlega, skilgreining) =
+760 torr (nákvæmlega, skilgreining) = 101.325 N m<sup>–2</sup> (nákvæmlega,
+skilgreining) = 101.325 Pa (nákvæmlega, skilgreining)</entry>
+</row>
+<row valign="middle">
+<entry valign="middle" align="left">bar</entry>
+<entry valign="middle" align="left">= 10<sup>5</sup> Pa (nákvæmlega, skilgreining) =
+10<sup>5</sup> kg m<sup>–1</sup> s<sup>–2</sup> (nákvæmlega, skilgreining)</entry>
+</row>
+</tbody>
+
+</tgroup>
+</table>
+</content>
+</document>

@@ -1,0 +1,345 @@
+{
+  "entries": [
+    {
+      "term": "ástandsháð stærð",
+      "definition": "eiginleiki sem fer aðeins eftir ástandi kerfis en ekki leiðinni sem farin var til að ná því ástandi",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102396512"
+        }
+      ]
+    },
+    {
+      "term": "efnavarmafræði",
+      "definition": "vísindasvið sem fjallar um tengslin milli varma, vinnu og allra orkuforma sem tengjast efna- og eðlisfræðilegum ferlum",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102379584"
+        }
+      ]
+    },
+    {
+      "term": "einsleitur hvati",
+      "definition": "hvati sem er í sama fasa og hvarfefnin",
+      "chapters": [
+        {
+          "chapter": 12,
+          "moduleId": "m68795",
+          "termId": "fs-idm218392224"
+        }
+      ]
+    },
+    {
+      "term": "fyrsta lögmál\nvarmafræðinnar",
+      "definition": "innri orka kerfis breytist vegna varmaflæðis inn í eða út úr kerfinu eða vinnu sem er unnin á kerfinu eða af því",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102384368"
+        }
+      ]
+    },
+    {
+      "term": "innri orka (U)",
+      "definition": "heildarsumma allra mögulegra tegunda orku sem er til staðar í efni eða efnum",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102386960"
+        }
+      ]
+    },
+    {
+      "term": "kolvetni",
+      "definition": "efnasamband sem samanstendur eingöngu af vetni og kolefni; aðalefnið í jarðefnaeldsneyti",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102386192"
+        }
+      ]
+    },
+    {
+      "term": "lögmál Hess",
+      "definition": "ef hægt er að tákna ferli sem summu nokkurra skrefa er vermibreyting ferlisins jöfn summu vermibreytinga skrefanna",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102385264"
+        }
+      ]
+    },
+    {
+      "term": "markverðir stafir",
+      "definition": "(einnig, marktækir tölustafir) allir mældir tölustafir í ákvörðun, þar með talinn óvissi síðasti tölustafurinn",
+      "chapters": [
+        {
+          "chapter": 1,
+          "moduleId": "m68690",
+          "termId": "fs-idp3346000"
+        }
+      ]
+    },
+    {
+      "term": "massa-rúmmálsprósenta",
+      "definition": "hlutfall massa uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
+      "chapters": [
+        {
+          "chapter": 3,
+          "moduleId": "m68704",
+          "termId": "fs-idm12309360"
+        }
+      ]
+    },
+    {
+      "term": "massaprósenta",
+      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar, gefið upp sem prósenta",
+      "chapters": [
+        {
+          "chapter": 3,
+          "moduleId": "m68704",
+          "termId": "fs-idp13058656"
+        }
+      ]
+    },
+    {
+      "term": "milljarðshlutar (ppb)",
+      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 109",
+      "chapters": [
+        {
+          "chapter": 3,
+          "moduleId": "m68704",
+          "termId": "fs-idp23298832"
+        }
+      ]
+    },
+    {
+      "term": "milljónustu hlutar\n(ppm)",
+      "definition": "hlutfall massa uppleysts efnis á móti massa lausnar margfaldað með 106",
+      "chapters": [
+        {
+          "chapter": 3,
+          "moduleId": "m68704",
+          "termId": "fs-idm85251264"
+        }
+      ]
+    },
+    {
+      "term": "misleitur hvati",
+      "definition": "hvati sem er í öðrum fasa en hvarfefnin og myndar yfirborð þar sem hvarf getur átt sér stað",
+      "chapters": [
+        {
+          "chapter": 12,
+          "moduleId": "m68795",
+          "termId": "fs-idm228167568"
+        }
+      ]
+    },
+    {
+      "term": "nafnakerfi",
+      "definition": "reglukerfi til að nefna fyrirbæri",
+      "chapters": [
+        {
+          "chapter": 2,
+          "moduleId": "m68698",
+          "termId": "fs-idp282227200"
+        }
+      ]
+    },
+    {
+      "term": "nákvæm tala",
+      "definition": "tala fengin með talningu eða samkvæmt skilgreiningu",
+      "chapters": [
+        {
+          "chapter": 1,
+          "moduleId": "m68690",
+          "termId": "fs-idp17670352"
+        }
+      ]
+    },
+    {
+      "term": "nákvæmni",
+      "definition": "hversu nálægt mæling er réttu gildi",
+      "chapters": [
+        {
+          "chapter": 1,
+          "moduleId": "m68690",
+          "termId": "fs-idp330245120"
+        }
+      ]
+    },
+    {
+      "term": "námundun",
+      "definition": "aðferð sem notuð er til að tryggja að útreiknaðar niðurstöður endurspegli á réttan hátt óvissuna í þeim mælingum sem notaðar eru í útreikningnum",
+      "chapters": [
+        {
+          "chapter": 1,
+          "moduleId": "m68690",
+          "termId": "fs-idp68905696"
+        }
+      ]
+    },
+    {
+      "term": "oxósýra",
+      "definition": "efnasamband sem inniheldur vetni, súrefni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H+ jónir þegar það er leyst upp í vatni)",
+      "chapters": [
+        {
+          "chapter": 2,
+          "moduleId": "m68698",
+          "termId": "fs-idp282228224"
+        }
+      ]
+    },
+    {
+      "term": "óvissa",
+      "definition": "mat á því hversu mikið mæling víkur frá sönnu gildi",
+      "chapters": [
+        {
+          "chapter": 1,
+          "moduleId": "m68690",
+          "termId": "fs-idp96606928"
+        }
+      ]
+    },
+    {
+      "term": "prentnákvæmni",
+      "definition": "hversu nálægt mæling er sömu mælingu þegar hún er endurtekin",
+      "chapters": [
+        {
+          "chapter": 1,
+          "moduleId": "m68690",
+          "termId": "fs-idp28800512"
+        }
+      ]
+    },
+    {
+      "term": "rúmmálsprósenta",
+      "definition": "hlutfall rúmmáls uppleysts efnis á móti rúmmáli lausnar, gefið upp sem prósenta",
+      "chapters": [
+        {
+          "chapter": 3,
+          "moduleId": "m68704",
+          "termId": "fs-idp17597424"
+        }
+      ]
+    },
+    {
+      "term": "samþjappanleikastuðull\n(Z)",
+      "definition": "hlutfallið milli mólrúmmáls gass sem mælt er með tilraun og mólrúmmáls þess eins og það er reiknað út frá jöfnu kjörgass",
+      "chapters": [
+        {
+          "chapter": 9,
+          "moduleId": "m68759",
+          "termId": "fs-idp3716528"
+        }
+      ]
+    },
+    {
+      "term": "staðalástand",
+      "definition": "safn eðlisfræðilegra skilyrða sem eru viðurkennd sem algeng viðmiðunarskilyrði til að skrá varmafræðilega eiginleika; 1 bar þrýstingur og lausnir með 1 mólstyrk, venjulega við 298,15 K hitastig",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102395520"
+        }
+      ]
+    },
+    {
+      "term": "staðalbrunavermi\n(ΔHc°)",
+      "definition": "varmi sem losnar þegar eitt mól af efnasambandi gengst undir fullkominn bruna við staðalaðstæður",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102388352"
+        }
+      ]
+    },
+    {
+      "term": "staðalmyndunarvermi\n(ΔHf°)",
+      "definition": "vermibreyting efnahvarfs þar sem 1 mól af hreinu efni myndast úr frumefnum sínum í sínum stöðugasta efnisham við staðalaðstæður",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102391904"
+        }
+      ]
+    },
+    {
+      "term": "tvíliða efnasamband",
+      "definition": "efnasamband sem inniheldur tvö mismunandi frumefni.",
+      "chapters": [
+        {
+          "chapter": 2,
+          "moduleId": "m68698",
+          "termId": "fs-idp282226176"
+        }
+      ]
+    },
+    {
+      "term": "tvíliða sýra",
+      "definition": "efnasamband sem inniheldur vetni og eitt annað frumefni, tengt á þann hátt að það gefur efnasambandinu súra eiginleika (getu til að losa H+ jónir þegar það er leyst upp í vatni)",
+      "chapters": [
+        {
+          "chapter": 2,
+          "moduleId": "m68698",
+          "termId": "fs-idp282291040"
+        }
+      ]
+    },
+    {
+      "term": "van der Waals-jafnan",
+      "definition": "breytt útgáfa af jöfnu kjörgass sem inniheldur viðbótarliði til að taka tillit til frávika frá hegðun kjörgass",
+      "chapters": [
+        {
+          "chapter": 9,
+          "moduleId": "m68759",
+          "termId": "fs-idm15517248"
+        }
+      ]
+    },
+    {
+      "term": "vermi (H)",
+      "definition": "summa innri orku kerfis og stærðfræðilegs margfeldis þrýstings þess og rúmmáls",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102380512"
+        }
+      ]
+    },
+    {
+      "term": "vermibreyting (ΔH)",
+      "definition": "varmi sem losnar eða er tekinn upp af kerfi við stöðugan þrýsting í efna- eða eðlisfræðilegu ferli",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102382096"
+        }
+      ]
+    },
+    {
+      "term": "þensluvinna\n(þrýstings-rúmmálsvinna)",
+      "definition": "vinna sem er unnin þegar kerfi þenst út eða dregst saman gegn ytri þrýstingi",
+      "chapters": [
+        {
+          "chapter": 5,
+          "moduleId": "m68727",
+          "termId": "fs-idp102383600"
+        }
+      ]
+    }
+  ]
+}

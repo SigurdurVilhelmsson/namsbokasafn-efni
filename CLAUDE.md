@@ -74,7 +74,7 @@ books/{book}/
 ├── 02-mt-output/       # 🔒 READ ONLY - IS segments from MT
 ├── 03-faithful/        # ✏️ Reviewed IS segments (faithful translation)
 ├── 03-translated/      # Translated CNXML from injection
-│   └── ch{NN}/         #   m{NNNNN}.cnxml
+│   └── {track}/ch{NN}/ #   m{NNNNN}.cnxml (track = mt-preview, faithful, localized)
 ├── 04-localized/       # ✏️ Pass 2 output (localized version)
 ├── 05-publication/     # ✏️ Web-ready HTML
 │   ├── mt-preview/     #    MT versions for immediate use

@@ -140,6 +140,17 @@ function formatChapterOutput(chapter) {
 }
 
 /**
+ * Build path to a translated CNXML file.
+ * @param {string} track - Publication track (mt-preview, faithful, localized)
+ * @param {string} chapterDir - Formatted chapter directory (e.g., "ch01", "appendices")
+ * @param {string} moduleId - Module ID (e.g., "m68724")
+ * @returns {string} Path to translated CNXML file
+ */
+function translatedCnxmlPath(track, chapterDir, moduleId) {
+  return path.join(BOOKS_DIR, '03-translated', track, chapterDir, `${moduleId}.cnxml`);
+}
+
+/**
  * Load equation text translation dictionary for a book.
  * Returns entries sorted longest-first for correct matching priority.
  * @param {string} book - Book name (e.g., 'efnafraedi')
@@ -211,7 +222,7 @@ Options:
   -h, --help         Show this help
 
 Input:
-  03-translated/chNN/<module>.cnxml    Translated CNXML
+  03-translated/<track>/chNN/<module>.cnxml    Translated CNXML
 
 Output:
   05-publication/<track>/chapters/NN/<section>.html    Publication HTML
@@ -1586,9 +1597,9 @@ function removeNestedElements(content, tagName) {
 /**
  * Find modules to process.
  */
-function findChapterModules(chapter, moduleId = null) {
+function findChapterModules(chapter, track, moduleId = null) {
   const chapterDir = formatChapterDir(chapter);
-  const translatedDir = path.join(BOOKS_DIR, '03-translated', chapterDir);
+  const translatedDir = path.join(BOOKS_DIR, '03-translated', track, chapterDir);
 
   if (!fs.existsSync(translatedDir)) {
     throw new Error(`Translated directory not found: ${translatedDir}`);
@@ -1833,12 +1844,12 @@ function writeEndOfChapterSection(chapter, section, track, html) {
  * across all modules in a chapter.
  * Returns array of { mathml, moduleId, sectionId }
  */
-function extractKeyEquations(chapter, modules) {
+function extractKeyEquations(chapter, modules, track) {
   const chapterDir = formatChapterDir(chapter);
   const equations = [];
 
   for (const moduleId of modules) {
-    const modulePath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
+    const modulePath = translatedCnxmlPath(track, chapterDir, moduleId);
 
     if (!fs.existsSync(modulePath)) {
       continue;
@@ -1949,12 +1960,12 @@ function writeKeyEquations(chapter, track, html) {
  * Extract section summaries from all modules in a chapter.
  * Returns array of { moduleId, sectionNumber, sectionTitle, summaryContent }
  */
-function extractSectionSummaries(chapter, modules, moduleSections) {
+function extractSectionSummaries(chapter, modules, moduleSections, track) {
   const chapterDir = formatChapterDir(chapter);
   const summariesByModule = [];
 
   for (const moduleId of modules) {
-    const modulePath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
+    const modulePath = translatedCnxmlPath(track, chapterDir, moduleId);
 
     if (!fs.existsSync(modulePath)) {
       continue;
@@ -2085,12 +2096,12 @@ function writeCompiledSummary(chapter, track, html) {
  * Extract exercise sections from all modules in a chapter.
  * Returns array of { moduleId, sectionNumber, sectionTitle, exercisesContent }
  */
-function extractSectionExercises(chapter, modules, moduleSections) {
+function extractSectionExercises(chapter, modules, moduleSections, track) {
   const chapterDir = formatChapterDir(chapter);
   const exercisesByModule = [];
 
   for (const moduleId of modules) {
-    const modulePath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
+    const modulePath = translatedCnxmlPath(track, chapterDir, moduleId);
 
     if (!fs.existsSync(modulePath)) {
       continue;
@@ -2230,13 +2241,13 @@ function writeCompiledExercises(chapter, track, html) {
  * Extract all solutions from exercises across all chapter modules.
  * Returns array of { moduleId, sectionTitle, answers: [{ id, number, content }] }
  */
-function extractAnswerKey(chapter, modules, moduleSections) {
+function extractAnswerKey(chapter, modules, moduleSections, track) {
   const chapterDir = formatChapterDir(chapter);
   const answersByModule = [];
   let exerciseNumber = 0;
 
   for (const moduleId of modules) {
-    const modulePath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
+    const modulePath = translatedCnxmlPath(track, chapterDir, moduleId);
 
     if (!fs.existsSync(modulePath)) {
       continue;
@@ -2397,7 +2408,7 @@ async function main() {
   }
 
   try {
-    const modules = findChapterModules(args.chapter, args.module);
+    const modules = findChapterModules(args.chapter, args.track, args.module);
     const chapterDir = formatChapterDir(args.chapter);
     const chapterStr = formatChapterOutput(args.chapter);
 
@@ -2416,7 +2427,7 @@ async function main() {
     const chapterExerciseNumbers = new Map();
     const chapterSectionTitles = new Map(); // section ID -> title text
     // Sort modules by section number so numbering follows chapter order, not filename order
-    const allModules = findChapterModules(args.chapter).sort((a, b) => {
+    const allModules = findChapterModules(args.chapter, args.track).sort((a, b) => {
       const secA = moduleSections[a] ? moduleSections[a].section : 999;
       const secB = moduleSections[b] ? moduleSections[b].section : 999;
       return secA - secB;
@@ -2428,7 +2439,7 @@ async function main() {
     let chapterExerciseCounter = 0;
 
     for (const modId of allModules) {
-      const modPath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${modId}.cnxml`);
+      const modPath = translatedCnxmlPath(args.track, chapterDir, modId);
       const modCnxml = fs.readFileSync(modPath, 'utf-8');
 
       const figPattern = /<figure\s+id="([^"]+)"/g;
@@ -2514,7 +2525,7 @@ async function main() {
         console.error(`Rendering: ${moduleId}`);
       }
 
-      const cnxmlPath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
+      const cnxmlPath = translatedCnxmlPath(args.track, chapterDir, moduleId);
       const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
 
       const renderResult = renderCnxmlToHtml(cnxml, {
@@ -2591,12 +2602,7 @@ async function main() {
     // Extract and render end-of-chapter sections from the last module
     if (modules.length > 0) {
       const lastModuleId = modules[modules.length - 1];
-      const lastModulePath = path.join(
-        BOOKS_DIR,
-        '03-translated',
-        chapterDir,
-        `${lastModuleId}.cnxml`
-      );
+      const lastModulePath = translatedCnxmlPath(args.track, chapterDir, lastModuleId);
       const lastModuleCnxml = fs.readFileSync(lastModulePath, 'utf-8');
 
       const endOfChapterSections = extractEndOfChapterSections(lastModuleCnxml);
@@ -2639,7 +2645,12 @@ async function main() {
       console.log('\nExtracting section summaries...');
     }
 
-    const summariesByModule = extractSectionSummaries(args.chapter, allModules, moduleSections);
+    const summariesByModule = extractSectionSummaries(
+      args.chapter,
+      allModules,
+      moduleSections,
+      args.track
+    );
 
     if (summariesByModule.length > 0) {
       const totalSummaries = summariesByModule.length;
@@ -2678,7 +2689,7 @@ async function main() {
       console.log('\nExtracting answer key...');
     }
 
-    const answersByModule = extractAnswerKey(args.chapter, allModules, moduleSections);
+    const answersByModule = extractAnswerKey(args.chapter, allModules, moduleSections, args.track);
 
     if (answersByModule.length > 0) {
       const totalAnswers = answersByModule.reduce((sum, m) => sum + m.answers.length, 0);
@@ -2717,7 +2728,12 @@ async function main() {
       console.log('\nExtracting section exercises...');
     }
 
-    const exercisesByModule = extractSectionExercises(args.chapter, allModules, moduleSections);
+    const exercisesByModule = extractSectionExercises(
+      args.chapter,
+      allModules,
+      moduleSections,
+      args.track
+    );
 
     if (exercisesByModule.length > 0) {
       if (args.verbose) {
@@ -2761,7 +2777,7 @@ async function main() {
       console.log('\nExtracting key equations...');
     }
 
-    const keyEquations = extractKeyEquations(args.chapter, allModules);
+    const keyEquations = extractKeyEquations(args.chapter, allModules, args.track);
 
     if (keyEquations.length > 0) {
       if (args.verbose) {

@@ -40,7 +40,7 @@ books/efnafraedi/
 │   └── chNN/               #   Moved from 03-editing when complete
 │
 ├── 03-translated/          # GENERATED - Injected CNXML (intermediate)
-│   └── chNN/               #   m{id}.cnxml
+│   └── <track>/chNN/       #   m{id}.cnxml (track = mt-preview, faithful, localized)
 │
 ├── 04-localization/        # ✏️ WORKING - Localization in progress
 │   └── chNN/               #   Copied from 03-faithful-translation

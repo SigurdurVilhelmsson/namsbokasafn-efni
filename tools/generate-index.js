@@ -110,8 +110,8 @@ Examples:
 /**
  * Find all modules for specified chapters
  */
-function findChapterModules(book, chapters) {
-  const translatedDir = path.join(BOOKS_DIR, book, '03-translated');
+function findChapterModules(book, chapters, track) {
+  const translatedDir = path.join(BOOKS_DIR, book, '03-translated', track);
 
   if (!fs.existsSync(translatedDir)) {
     throw new Error(`Translated directory not found: ${translatedDir}`);
@@ -220,7 +220,7 @@ function extractGlossaryFromCnxml(cnxmlPath, verbose) {
  * Build index from all glossary terms
  */
 function generateIndex(options) {
-  const { book, chapters, verbose } = options;
+  const { book, chapters, track, verbose } = options;
 
   console.log('');
   console.log('═'.repeat(60));
@@ -236,7 +236,7 @@ function generateIndex(options) {
   }
 
   // Find all modules
-  const modulesByChapter = findChapterModules(book, chapters);
+  const modulesByChapter = findChapterModules(book, chapters, track);
 
   if (verbose) {
     console.log('Found chapters:');
@@ -259,6 +259,7 @@ function generateIndex(options) {
       BOOKS_DIR,
       book,
       '03-translated',
+      track,
       `ch${chapterStr}`,
       `${lastModule}.cnxml`
     );

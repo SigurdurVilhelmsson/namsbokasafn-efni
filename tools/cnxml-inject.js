@@ -18,17 +18,19 @@
  * Usage:
  *   node tools/cnxml-inject.js --chapter <num> --module <id> [--lang is]
  *   node tools/cnxml-inject.js --chapter <num> [--lang is]
- *   node tools/cnxml-inject.js --chapter <num> --source-dir 03-faithful
+ *   node tools/cnxml-inject.js --chapter <num> --source-dir 03-faithful-translation
  *
  * Options:
  *   --chapter <num>    Chapter number
  *   --module <id>      Specific module ID (default: all in chapter)
  *   --lang <code>      Language code for translated segments (default: is)
  *   --source-dir <dir> Directory containing translated segments, relative to
- *                      books/efnafraedi/ (default: 02-for-mt)
- *                      Use 02-mt-output for MT preview, 03-faithful for
- *                      reviewed translations, 04-localized for localized
- *   --output-dir <dir> Output directory (default: 03-translated/chNN/)
+ *                      books/efnafraedi/ (default: 02-machine-translated)
+ *                      Use 02-machine-translated for MT preview,
+ *                      03-faithful-translation for reviewed translations,
+ *                      04-localized-content for localized
+ *   --track <name>     Publication track: mt-preview, faithful, localized
+ *                      (auto-detected from --source-dir if not specified)
  *   --verbose          Show detailed progress
  *   -h, --help         Show this help
  */
@@ -62,13 +64,24 @@ function formatChapter(chapter) {
 // ARGUMENT PARSING
 // =====================================================================
 
+/**
+ * Derive publication track from source directory.
+ * @param {string} sourceDir - Source directory name
+ * @returns {string} Track name: mt-preview, faithful, or localized
+ */
+function trackFromSourceDir(sourceDir) {
+  if (sourceDir.includes('faithful')) return 'faithful';
+  if (sourceDir.includes('localized')) return 'localized';
+  return 'mt-preview';
+}
+
 function parseArgs(args) {
   const result = {
     chapter: null,
     module: null,
     lang: 'is',
     sourceDir: null,
-    outputDir: null,
+    track: null,
     verbose: false,
     help: false,
   };
@@ -84,7 +97,7 @@ function parseArgs(args) {
     } else if (arg === '--module' && args[i + 1]) result.module = args[++i];
     else if (arg === '--lang' && args[i + 1]) result.lang = args[++i];
     else if (arg === '--source-dir' && args[i + 1]) result.sourceDir = args[++i];
-    else if (arg === '--output-dir' && args[i + 1]) result.outputDir = args[++i];
+    else if (arg === '--track' && args[i + 1]) result.track = args[++i];
   }
 
   return result;
@@ -107,8 +120,9 @@ Options:
   --module <id>        Specific module ID (default: all in chapter)
   --lang <code>        Language code (default: is)
   --source-dir <dir>   Segments directory relative to books/efnafraedi/
-                       (default: 02-for-mt)
-  --output-dir <dir>   Output directory (default: 03-translated/chNN/)
+                       (default: 02-machine-translated)
+  --track <name>       Publication track: mt-preview, faithful, localized
+                       (auto-detected from --source-dir if not specified)
   --verbose            Show detailed progress
   -h, --help           Show this help
 
@@ -119,13 +133,13 @@ Input Files (read from):
   01-source/chNN/<module>.cnxml                   Original CNXML (reference)
 
 Output:
-  03-translated/chNN/<module>.cnxml               Translated CNXML
+  03-translated/<track>/chNN/<module>.cnxml       Translated CNXML
 
 Examples:
   node tools/cnxml-inject.js --chapter 5 --module m68724
   node tools/cnxml-inject.js --chapter 5 --lang is --verbose
-  node tools/cnxml-inject.js --chapter 5 --source-dir 03-faithful
-  node tools/cnxml-inject.js --chapter 5 --source-dir 04-localized
+  node tools/cnxml-inject.js --chapter 5 --source-dir 03-faithful-translation
+  node tools/cnxml-inject.js --chapter 5 --source-dir 04-localized-content
 `);
 }
 
@@ -1263,9 +1277,9 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
 /**
  * Ensure output directory exists.
  */
-function ensureOutputDir(chapter) {
+function ensureOutputDir(chapter, track) {
   const chapterDir = formatChapter(chapter);
-  const outputDir = path.join(BOOKS_DIR, '03-translated', chapterDir);
+  const outputDir = path.join(BOOKS_DIR, '03-translated', track, chapterDir);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
@@ -1275,8 +1289,8 @@ function ensureOutputDir(chapter) {
 /**
  * Write output CNXML.
  */
-function writeOutput(chapter, moduleId, cnxml) {
-  const outputDir = ensureOutputDir(chapter);
+function writeOutput(chapter, moduleId, cnxml, track) {
+  const outputDir = ensureOutputDir(chapter, track);
   const outputPath = path.join(outputDir, `${moduleId}.cnxml`);
   fs.writeFileSync(outputPath, cnxml, 'utf-8');
   return outputPath;
@@ -1300,14 +1314,15 @@ async function main() {
     process.exit(1);
   }
 
-  const sourceDir = args.sourceDir || '02-for-mt';
+  const sourceDir = args.sourceDir || '02-machine-translated';
+  const track = args.track || trackFromSourceDir(sourceDir);
 
   try {
     const modules = findChapterModules(args.chapter, args.module);
 
     for (const moduleId of modules) {
       if (args.verbose) {
-        console.error(`Processing: ${moduleId} (source: ${sourceDir})`);
+        console.error(`Processing: ${moduleId} (source: ${sourceDir}, track: ${track})`);
       }
 
       const { structure, segments, equations, originalCnxml } = loadModuleInputs(
@@ -1321,7 +1336,7 @@ async function main() {
         verbose: args.verbose,
       });
 
-      const outputPath = writeOutput(args.chapter, moduleId, result.cnxml);
+      const outputPath = writeOutput(args.chapter, moduleId, result.cnxml, track);
 
       const status = result.report.complete ? 'COMPLETE' : 'INCOMPLETE';
       console.log(`${moduleId}: Translated CNXML written [${status}]`);
