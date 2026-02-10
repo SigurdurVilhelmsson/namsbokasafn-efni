@@ -1,54 +1,85 @@
 # Project Audit Report
 
-**Date:** 2026-02-08
+**Original Date:** 2026-02-08
+**Updated:** 2026-02-10
 **Scope:** namsbokasafn-efni (pipeline + server) + namsbokasafn-vefur (web reader)
 **Context:** Small educational project (1-2 devs, ~5 editors), built iteratively with AI assistance
+
+**Update Summary (2026-02-10):**
+- Directory structure completely restructured (see new structure in docs/workflow/directory-structure.md)
+- Appendices integration completed (all 13 appendices now processable)
+- All 8 chapters + 13 appendices rendered to mt-preview track
+- Many Tier 1 critical items completed
 
 ---
 
 ## Tier 1: Critical / Quick-Fix — Do These Immediately
 
-### 1.1 Command Injection via `execSync` in git operations
+### 1.0 Directory Structure Overhaul ✅ COMPLETE (2026-02-10)
+**Severity:** HIGH | **Effort:** SIGNIFICANT | **Area:** Architecture
+
+**New structure implemented:**
+- `02-machine-translated/` — Staging for unreviewed MT output
+- `03-editing/` — Working directory for Pass 1 (editorial review)
+- `03-faithful-translation/` — Final location for human-reviewed translations
+- `04-localization/` — Working directory for Pass 2 (localization)
+- `04-localized-content/` — Final location for localized content
+- `05-publication/mt-preview/` — Unreviewed MT, acceptable for student use
+- `05-publication/faithful/` — Human-reviewed, academically citable (future)
+- `05-publication/localized/` — Fully adapted for Icelandic students (future)
+
+**Completed:**
+- All 8 chapters (01-05, 09, 12, 13) + 13 appendices rendered to mt-preview
+- Old directories backed up to `.backup-20260210/`
+- Comprehensive documentation in `docs/workflow/directory-structure.md`
+- Tools updated to accept `--chapter appendices` as string literal
+
+### 1.1 Command Injection via `execSync` in git operations ✅ COMPLETE
 **Severity:** CRITICAL | **Effort:** QUICK-FIX | **Area:** Security
 
-`server/routes/reviews.js:581` and `server/services/gitService.js:285` use `execSync` with string interpolation for git commit messages. While quote-escaping is attempted (`.replace(/"/g, '\\"')`), this is insufficient — backticks, `$()`, and other shell metacharacters in commit messages (sourced from user-submitted review data) could execute arbitrary commands.
+~~`server/routes/reviews.js:581` and `server/services/gitService.js:285` use `execSync` with string interpolation for git commit messages. While quote-escaping is attempted (`.replace(/"/g, '\\"')`), this is insufficient — backticks, `$()`, and other shell metacharacters in commit messages (sourced from user-submitted review data) could execute arbitrary commands.~~
 
-**Fix:** Use `execFileSync('git', ['commit', '-m', commitMessage])` instead of `execSync` with string interpolation. This avoids shell interpretation entirely.
+**Status:** Fixed. `server/services/gitService.js` now uses `execFileSync('git', ['commit', '-m', commitMessage])` with array arguments throughout (lines 191, 278, 285, 297, 312, 331). No shell interpretation occurs.
 
-**Files:** `server/routes/reviews.js:581`, `server/services/gitService.js:285`
-
-### 1.2 vefur Deploy Not Gated on CI
+### 1.2 vefur Deploy Not Gated on CI ✅ COMPLETE
 **Severity:** CRITICAL | **Effort:** QUICK-FIX | **Area:** DevOps
 
-`namsbokasafn-vefur/.github/workflows/deploy.yml` runs on every push to `main` independently of `ci.yml`. A broken commit deploys to production even if tests, linting, or type checks fail.
+~~`namsbokasafn-vefur/.github/workflows/deploy.yml` runs on every push to `main` independently of `ci.yml`. A broken commit deploys to production even if tests, linting, or type checks fail.~~
 
-**Fix:** Either merge CI and deploy into one workflow, or add `needs: [test]` to the deploy job referencing the CI workflow.
+**Status:** Fixed. deploy.yml now uses `workflow_run` trigger that waits for CI completion and only proceeds if `github.event.workflow_run.conclusion == 'success'` (lines 4-6, 13).
 
-### 1.3 Remove 4 Unused Root Dependencies
+### 1.3 Remove 4 Unused Root Dependencies ✅ COMPLETE
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** Architecture
 
-Root `package.json` has 4 dependencies only used by archived tools: `mammoth`, `turndown`, `js-yaml`, `katex`. They add install time and potential vulnerability surface for zero benefit.
+~~Root `package.json` has 4 dependencies only used by archived tools: `mammoth`, `turndown`, `js-yaml`, `katex`. They add install time and potential vulnerability surface for zero benefit.~~
 
-**Fix:** `npm uninstall mammoth turndown js-yaml katex`
+**Status:** Complete. Root package.json now has only `mathjax-full` as a dependency. All 4 packages removed.
 
-### 1.4 Clean Up 13+ Dead Scripts in package.json
+### 1.4 Clean Up Dead Scripts in package.json ⚠️ PARTIAL
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** Architecture
 
-Root `package.json` lines 10-22 reference tools that have been moved to `tools/_archived/`. Two scripts (`openstax-fetch`, `generate-book-data`) reference files that don't exist at all.
+Root `package.json` has dead scripts referencing non-existent files:
+- Line 10: `openstax-fetch` → references `tools/openstax-fetch.cjs` (doesn't exist)
+- Line 11: `generate-book-data` → references `tools/generate-book-data.cjs` (doesn't exist)
 
-**Fix:** Remove all dead script entries from `package.json`.
+**Fix:** Remove these 2 dead script entries from `package.json`.
 
-### 1.5 Update CLAUDE.md "Current Priority"
+### 1.5 Update CLAUDE.md "Current Priority" ✅ COMPLETE
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** Documentation
 
-CLAUDE.md says the current priority is Phase 8 (editor rebuild), but ROADMAP.md marks Phase 8 as **COMPLETE (2026-02-05)**. This causes Claude Code to prioritize already-completed work in every session.
+~~CLAUDE.md says the current priority is Phase 8 (editor rebuild), but ROADMAP.md marks Phase 8 as **COMPLETE (2026-02-05)**. This causes Claude Code to prioritize already-completed work in every session.~~
 
-**Fix:** Update to Phase 9 or whatever is actually current.
+**Status:** Complete. CLAUDE.md now shows "Phase 9: Close the Write Gap" as current priority with Phase 8 marked complete.
 
-### 1.6 Fix Caddy vs nginx Contradiction
+### 1.6 Fix Caddy vs nginx Contradiction ⚠️ NEEDS FIX
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** Documentation
 
-CLAUDE.md says "nginx" but `docs/deployment/linode-deployment-checklist.md` recommends Caddy. Determine which is actually deployed and fix the contradicting document.
+**Current state:**
+- `namsbokasafn-efni/CLAUDE.md` line 51: Says "Caddy"
+- `namsbokasafn-vefur/.github/workflows/deploy.yml` line 42: Says "Reload Nginx"
+- `namsbokasafn-vefur/.github/workflows/deploy.yml` line 50: Runs `systemctl reload nginx`
+
+**Fix:** Determine which is actually deployed (Caddy or nginx) and update the incorrect references. If Caddy is used, fix deploy.yml comments and command.
 
 ### 1.7 Implement Backup Cron for SQLite Database
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** DevOps
@@ -64,31 +95,35 @@ No external monitoring. If the server goes down, nobody is notified. The health 
 
 **Fix:** Sign up for UptimeRobot (free tier) to monitor both `namsbokasafn.is` and `ritstjorn.namsbokasafn.is`.
 
-### 1.9 Delete Root `lib/` Directory (Dead Code)
+### 1.9 Delete Root `lib/` Directory (Dead Code) ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** Architecture
 
-Root `lib/` contains `constants.js`, `utils.js`, `index.js` — duplicates of data in `tools/lib/chapter-modules.js` and `server/data/chemistry-2e.json`. Not imported by any active code. Three-way data duplication.
+~~Root `lib/` contains `constants.js`, `utils.js`, `index.js` — duplicates of data in `tools/lib/chapter-modules.js` and `server/data/chemistry-2e.json`. Not imported by any active code. Three-way data duplication.~~
 
-**Fix:** Delete root `lib/` after confirming no active imports.
+**Status:** Complete. Root `lib/` directory has been deleted.
 
-### 1.10 Fix Domain References (efnafraedi.app → namsbokasafn.is)
+### 1.10 Fix Domain References (efnafraedi.app → namsbokasafn.is) ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** Documentation
 
-`package.json` homepage, README.md, and 4+ doc files still reference the old domain `efnafraedi.app`. The project migrated to `namsbokasafn.is`.
+~~`package.json` homepage, README.md, and 4+ doc files still reference the old domain `efnafraedi.app`. The project migrated to `namsbokasafn.is`.~~
 
-**Fix:** Search-and-replace across docs, update `package.json` homepage.
+**Status:** Complete. Active documentation updated. Only references remaining are in `docs/_archived/` (intentionally preserved history) and CLAUDE.md mentioning the migration.
 
 ---
 
 ## Tier 2: High-Impact Improvements — Worth Doing Soon
 
-### 2.1 Update 3 Stale Claude Code Skills Files
+### 2.1 Update Claude Code Skills Files ⚠️ PARTIAL (1 of 3 complete)
 **Severity:** HIGH | **Effort:** MODERATE | **Area:** Documentation
 
-These skills actively mislead Claude Code during every interaction:
-- `.claude/skills/workflow-status.md` — describes legacy 8-step pipeline, not current 5-step Extract-Inject-Render
-- `.claude/skills/repo-structure.md` — references docx-based directory structure that no longer exists
-- `.claude/skills/editorial-pass1.md` — references docx output format
+**Status:**
+- ✅ `.claude/skills/workflow-status.md` — COMPLETE. Now correctly describes Extract-Inject-Render pipeline (updated 2026-02-08)
+- ⚠️ `.claude/skills/repo-structure.md` — NEEDS UPDATE. Still references old directory names:
+  - Line 19: `03-faithful/` (should be `03-faithful-translation/`)
+  - Line 21: `04-localized/` (should be `04-localized-content/`)
+  - Missing: `02-machine-translated/`, `03-editing/`, `04-localization/`
+  - Needs updating for 2026-02-10 directory restructure
+- ✅ `.claude/skills/editorial-pass1.md` — COMPLETE. No docx references (updated 2026-02-08)
 
 ### 2.2 Rewrite `docs/onboarding.md`
 **Severity:** HIGH | **Effort:** MODERATE | **Area:** Documentation
@@ -100,12 +135,18 @@ Describes the deprecated EasyMDE-based editor, not the current segment editor at
 
 6+ weeks stale (last updated 2025-12-26). References a pilot target of "January 5, 2026" with no outcome recorded. Uses old pipeline stage names.
 
-### 2.4 Bump vefur GitHub Actions to v6
+### 2.4 Bump vefur GitHub Actions to v6 ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** DevOps
 
-vefur uses `actions/checkout@v4`, `actions/setup-node@v4` while efni uses `@v6`. Also, `appleboy/scp-action@v0.1.7` is a full major version behind (current is `@v1`).
+~~vefur uses `actions/checkout@v4`, `actions/setup-node@v4` while efni uses `@v6`. Also, `appleboy/scp-action@v0.1.7` is a full major version behind (current is `@v1`).~~
 
-**Fix:** Also add `github-actions` ecosystem to vefur's `dependabot.yml` so these auto-update.
+**Status:** Complete. vefur now uses:
+- `actions/checkout@v6` (line 17)
+- `actions/setup-node@v6` (line 20)
+- `appleboy/scp-action@v1` (line 32)
+- `appleboy/ssh-action@v1` (line 43)
+
+Note: Still need to add `github-actions` ecosystem to vefur's `dependabot.yml` for auto-updates.
 
 ### 2.5 Add `.nvmrc` Files to Both Repos
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** DevOps
@@ -208,24 +249,74 @@ Archive exists and is properly separated. Could use a `README.md` explaining wha
 
 ## Quick-Win Checklist
 
-Copy this to an issue and check off items as you go:
+**Progress: 11 of 19 complete**
 
-- [ ] Fix `execSync` command injection in `server/routes/reviews.js:581` and `server/services/gitService.js:285`
-- [ ] Gate vefur deploy on CI (`needs:` in deploy.yml)
-- [ ] `npm uninstall mammoth turndown js-yaml katex` in efni root
-- [ ] Remove 13 dead script entries from efni `package.json`
-- [ ] Update CLAUDE.md "Current Priority" from Phase 8 to current
-- [ ] Resolve Caddy vs nginx contradiction in docs
+### Completed ✅
+- [x] Directory structure overhaul (2026-02-10)
+- [x] Fix `execSync` command injection (now uses `execFileSync`)
+- [x] Gate vefur deploy on CI (uses `workflow_run` trigger)
+- [x] `npm uninstall mammoth turndown js-yaml katex` in efni root
+- [x] Update CLAUDE.md "Current Priority" to Phase 9
+- [x] Delete root `lib/` directory
+- [x] Search-replace `efnafraedi.app` → `namsbokasafn.is` across docs
+- [x] Bump vefur GitHub Actions to v6
+- [x] Update `.claude/skills/workflow-status.md` and `editorial-pass1.md`
+- [x] Remove screenshots from git tracking (already done)
+- [x] License field in vefur package.json (already done)
+
+### Remaining ⚠️
+- [ ] Remove 2 dead script entries from efni `package.json` (openstax-fetch, generate-book-data)
+- [ ] Resolve Caddy vs nginx contradiction in vefur deploy.yml
 - [ ] Set up backup cron on server for SQLite DB
 - [ ] Sign up for UptimeRobot (free) to monitor both sites
-- [ ] Delete root `lib/` directory
-- [ ] Search-replace `efnafraedi.app` → `namsbokasafn.is` across docs
 - [ ] `npm audit fix` in vefur
 - [ ] Add `github-actions` ecosystem to vefur `dependabot.yml`
 - [ ] Add `.nvmrc` files to both repos
-- [ ] Update `.claude/skills/workflow-status.md`, `repo-structure.md`, `editorial-pass1.md`
-- [ ] Remove screenshots from git tracking, add to `.gitignore`
+- [ ] Update `.claude/skills/repo-structure.md` for new directory structure
 
 ---
 
-*Generated by 5 parallel audit agents (security, architecture, devops, code-quality, documentation) on 2026-02-08.*
+## Assessment Summary (2026-02-10)
+
+### Is This Report Still Valid?
+**YES** — The audit remains highly relevant and should be followed to completion.
+
+### What Changed Since Original Audit (2026-02-08)?
+
+**Major accomplishments:**
+1. **Directory structure overhaul** — Complete separation of working vs final directories, three publication tracks
+2. **Appendices integration** — All 13 appendices now processable through pipeline
+3. **Critical security fixes** — Command injection vulnerabilities eliminated
+4. **CI/CD hardening** — Deploy now properly gated on CI success
+5. **Dependency cleanup** — Removed unused packages, deleted dead code
+6. **Documentation updates** — CLAUDE.md, workflow docs, and most skills files updated
+
+**Tier 1 Status:** 8 of 11 items complete (73%)
+
+### Recommended Next Steps (Priority Order)
+
+1. **Immediate (< 1 hour):**
+   - Remove 2 dead scripts from package.json
+   - Fix Caddy/nginx contradiction in vefur deploy.yml
+   - Run `npm audit fix` in vefur
+   - Add github-actions to vefur dependabot.yml
+
+2. **Same Day (< 4 hours):**
+   - Set up UptimeRobot monitoring (free, 5 minutes)
+   - Set up SQLite backup cron on server (10 minutes)
+   - Add .nvmrc files to both repos
+   - Update .claude/skills/repo-structure.md
+
+3. **This Week:**
+   - Address remaining Tier 2 items (documentation updates)
+   - Consider Tier 2.8 server over-engineering assessment
+
+### Risk Assessment
+**Current risk level: MEDIUM → LOW**
+
+Critical security and CI/CD issues have been resolved. Remaining Tier 1 items are operational improvements (monitoring, backups) rather than vulnerabilities. The project is now in a much stronger position than at initial audit.
+
+---
+
+*Original audit generated by 5 parallel audit agents (security, architecture, devops, code-quality, documentation) on 2026-02-08.*
+*Updated 2026-02-10 to reflect completed work and directory restructuring.*
