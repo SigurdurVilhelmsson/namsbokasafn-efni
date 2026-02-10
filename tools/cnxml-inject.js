@@ -207,6 +207,10 @@ function reverseInlineMarkup(text, equations) {
   });
 
   // Convert sub/sup back (only match when part of a word, not standalone approximations)
+  // First handle isotope notations specifically: space + ^number^ + letter (e.g., " ^14^C")
+  result = result.replace(/\s\^([0-9]+)\^([A-Z][a-z]?)/g, ' <sup>$1</sup>$2');
+
+  // Then handle general sub/sup that are part of words
   // Requires non-whitespace before tilde/caret and no whitespace in capture to avoid greedy matching
   result = result.replace(/(?<=[^\s~])~([^\s~]{1,15})~/g, '<sub>$1</sub>');
   result = result.replace(/(?<=[^\s^])\^([^\s^]{1,15})\^/g, '<sup>$1</sup>');
