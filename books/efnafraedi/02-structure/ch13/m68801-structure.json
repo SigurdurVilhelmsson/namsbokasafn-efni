@@ -2033,5 +2033,15 @@
       }
     ]
   },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp123608720",
+      "class": "scaled-down",
+      "alt": "This table has two main columns and four rows. The first row for the first column does not have a heading and then has the following in the first column: Initial concentration ( M ), Change ( M ), Equilibrium concentration ( M ). The second column has the header, “P C l subscript 5 equilibrium arrow P C l subscript 3 plus C l subscript 2.” Under the second column is a subgroup of three rows and three columns. The first column has the following: 1.00, negative x, 1.00 minus x. The second column has the following: 0, positive x, x. The third column has the following: 0, positive x, x.",
+      "src": "../../media/CNX_Chem_13_04_ICETable3_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
   "sectionOrder": 4
 }

@@ -124,12 +124,22 @@ function generateSegmentId(moduleId, type, elementId, counter) {
 /**
  * Extract inline text from element content, handling nested elements.
  * Replaces MathML with [[MATH:n]] placeholders.
+ * Replaces inline media with [[MEDIA:n]] placeholders.
+ * Replaces embedded tables with [[TABLE:id]] placeholders.
  * @param {string} content - Element content
  * @param {Map} mathMap - Map to store extracted math
- * @param {Object} counters - Counter object with 'math' property
+ * @param {Object} counters - Counter object with 'math', 'media' properties
+ * @param {Map|null} inlineMediaMap - Optional map to store inline media metadata
+ * @param {Map|null} inlineTablesMap - Optional map to store embedded table structures
  * @returns {string} Plain text with math placeholders
  */
-function extractInlineText(content, mathMap, counters) {
+function extractInlineText(
+  content,
+  mathMap,
+  counters,
+  inlineMediaMap = null,
+  inlineTablesMap = null
+) {
   let text = content;
 
   // Replace MathML with placeholders
@@ -140,6 +150,42 @@ function extractInlineText(content, mathMap, counters) {
     mathMap.set(placeholder, match);
     return placeholder;
   });
+
+  // Handle inline media elements (images within paragraphs)
+  if (inlineMediaMap) {
+    const mediaPattern = /<media([^>]*)>([\s\S]*?)<\/media>/g;
+    text = text.replace(mediaPattern, (match, attrs, mediaContent) => {
+      counters.media = (counters.media || 0) + 1;
+      const placeholder = `[[MEDIA:${counters.media}]]`;
+
+      // Extract media attributes
+      const parsedAttrs = parseAttributes(attrs);
+      const imageMatch = mediaContent.match(/<image([^>]*)>/);
+      const imageAttrs = imageMatch ? parseAttributes(imageMatch[1]) : {};
+
+      inlineMediaMap.set(placeholder, {
+        id: parsedAttrs.id || null,
+        class: parsedAttrs.class || null,
+        alt: parsedAttrs.alt || imageAttrs.alt || '',
+        src: imageAttrs.src || '',
+        mimeType: imageAttrs['mime-type'] || null,
+      });
+
+      return placeholder;
+    });
+  }
+
+  // Handle embedded table elements (tables within paragraphs)
+  // Note: Full table processing happens later; this just creates placeholders
+  if (inlineTablesMap) {
+    const tablePattern = /<table\s+id="([^"]+)"[^>]*>([\s\S]*?)<\/table>/g;
+    text = text.replace(tablePattern, (match, tableId) => {
+      const placeholder = `[[TABLE:${tableId}]]`;
+      // Store the full table match for later processing
+      inlineTablesMap.set(tableId, { fullMatch: match, processed: false });
+      return placeholder;
+    });
+  }
 
   // Convert leaf-level inline markup to markdown FIRST, before processing
   // outer tags like <term>, <link>, <footnote>. This prevents stripTags()
@@ -223,8 +269,10 @@ function extractSegments(cnxml, options = {}) {
   };
   const equations = {};
 
-  const counters = { segment: 0, math: 0, equation: 0 };
+  const counters = { segment: 0, math: 0, equation: 0, media: 0 };
   const mathMap = new Map();
+  const inlineMediaMap = new Map();
+  const inlineTablesMap = new Map();
 
   // Helper to add a segment
   function addSegment(type, text, elementId = null, extra = {}) {
@@ -277,7 +325,9 @@ function extractSegments(cnxml, options = {}) {
     addSegment,
     mathMap,
     counters,
-    verbose
+    verbose,
+    inlineMediaMap,
+    inlineTablesMap
   );
 
   // Collect all items with positions for document order
@@ -291,7 +341,9 @@ function extractSegments(cnxml, options = {}) {
       addSegment,
       mathMap,
       counters,
-      verbose
+      verbose,
+      inlineMediaMap,
+      inlineTablesMap
     );
     const position = section.fullMatch ? content.indexOf(section.fullMatch) : 0;
     itemsWithPositions.push({ item: sectionStructure, position });
@@ -356,9 +408,53 @@ function extractSegments(cnxml, options = {}) {
     }
   }
 
+  // Process embedded tables that were marked during extraction
+  // These need full table processing to extract their structure
+  for (const [tableId, tableData] of inlineTablesMap) {
+    if (!tableData.processed) {
+      // Parse the table element to extract its structure
+      const tableAttrsMatch = tableData.fullMatch.match(/<table([^>]*)>/);
+      const tableAttrs = tableAttrsMatch ? parseAttributes(tableAttrsMatch[1]) : {};
+
+      const tableElement = {
+        id: tableId,
+        content: tableData.fullMatch,
+        attributes: tableAttrs,
+        fullMatch: tableData.fullMatch,
+      };
+
+      // Process the table using the existing processTable function
+      const tableStructure = processTable(tableElement, moduleId, addSegment, mathMap, counters);
+
+      // Store the processed structure
+      inlineTablesMap.set(tableId, {
+        structure: tableStructure,
+        processed: true,
+      });
+    }
+  }
+
+  // Add inline media and tables to structure
+  if (inlineMediaMap.size > 0) {
+    structure.inlineMedia = Array.from(inlineMediaMap.entries()).map(([placeholder, data]) => ({
+      placeholder,
+      ...data,
+    }));
+  }
+
+  if (inlineTablesMap.size > 0) {
+    structure.inlineTables = Array.from(inlineTablesMap.entries())
+      .filter(([_, data]) => data.processed)
+      .map(([tableId, data]) => ({
+        tableId,
+        structure: data.structure,
+      }));
+  }
+
   if (verbose) {
     console.error(
-      `Extracted ${segments.length} segments, ${Object.keys(equations).length} equations`
+      `Extracted ${segments.length} segments, ${Object.keys(equations).length} equations, ` +
+        `${inlineMediaMap.size} inline media, ${inlineTablesMap.size} embedded tables`
     );
   }
 
@@ -368,7 +464,16 @@ function extractSegments(cnxml, options = {}) {
 /**
  * Process a section element and extract its content.
  */
-function processSection(section, moduleId, addSegment, mathMap, counters, verbose) {
+function processSection(
+  section,
+  moduleId,
+  addSegment,
+  mathMap,
+  counters,
+  verbose,
+  inlineMediaMap = null,
+  inlineTablesMap = null
+) {
   const sectionStructure = {
     type: 'section',
     id: section.id,
@@ -396,7 +501,9 @@ function processSection(section, moduleId, addSegment, mathMap, counters, verbos
       addSegment,
       mathMap,
       counters,
-      verbose
+      verbose,
+      inlineMediaMap,
+      inlineTablesMap
     );
     sectionStructure.content.push(nestedStructure);
   }
@@ -409,7 +516,9 @@ function processSection(section, moduleId, addSegment, mathMap, counters, verbos
     addSegment,
     mathMap,
     counters,
-    verbose
+    verbose,
+    inlineMediaMap,
+    inlineTablesMap
   );
   sectionStructure.content.push(...elements);
 
@@ -420,7 +529,16 @@ function processSection(section, moduleId, addSegment, mathMap, counters, verbos
  * Process top-level content elements (paragraphs, figures, examples, etc.)
  * IMPORTANT: Preserves document order by finding all elements with their positions first.
  */
-function processTopLevelContent(content, moduleId, addSegment, mathMap, counters, _verbose) {
+function processTopLevelContent(
+  content,
+  moduleId,
+  addSegment,
+  mathMap,
+  counters,
+  _verbose,
+  inlineMediaMap = null,
+  inlineTablesMap = null
+) {
   // Collect all elements with their positions in the content string
   const elementsWithPositions = [];
 
@@ -605,7 +723,13 @@ function processTopLevelContent(content, moduleId, addSegment, mathMap, counters
           contentWithoutTitle = item.content.replace(/^\s*<title>[^<]+<\/title>\s*/, '');
         }
 
-        const text = extractInlineText(contentWithoutTitle, mathMap, counters);
+        const text = extractInlineText(
+          contentWithoutTitle,
+          mathMap,
+          counters,
+          inlineMediaMap,
+          inlineTablesMap
+        );
         if (text || paraTitle) {
           const paraElement = {
             type: 'para',
@@ -632,17 +756,41 @@ function processTopLevelContent(content, moduleId, addSegment, mathMap, counters
         break;
       }
       case 'example': {
-        const exampleStructure = processExample(item, moduleId, addSegment, mathMap, counters);
+        const exampleStructure = processExample(
+          item,
+          moduleId,
+          addSegment,
+          mathMap,
+          counters,
+          inlineMediaMap,
+          inlineTablesMap
+        );
         elements.push(exampleStructure);
         break;
       }
       case 'exercise': {
-        const exerciseStructure = processExercise(item, moduleId, addSegment, mathMap, counters);
+        const exerciseStructure = processExercise(
+          item,
+          moduleId,
+          addSegment,
+          mathMap,
+          counters,
+          inlineMediaMap,
+          inlineTablesMap
+        );
         elements.push(exerciseStructure);
         break;
       }
       case 'note': {
-        const noteStructure = processNote(item, moduleId, addSegment, mathMap, counters);
+        const noteStructure = processNote(
+          item,
+          moduleId,
+          addSegment,
+          mathMap,
+          counters,
+          inlineMediaMap,
+          inlineTablesMap
+        );
         elements.push(noteStructure);
         break;
       }
@@ -655,7 +803,15 @@ function processTopLevelContent(content, moduleId, addSegment, mathMap, counters
         break;
       }
       case 'list': {
-        const listStructure = processList(item, moduleId, addSegment, mathMap, counters);
+        const listStructure = processList(
+          item,
+          moduleId,
+          addSegment,
+          mathMap,
+          counters,
+          inlineMediaMap,
+          inlineTablesMap
+        );
         elements.push(listStructure);
         break;
       }
@@ -762,7 +918,15 @@ function processTable(table, moduleId, addSegment, mathMap, counters) {
  * - Subsequent paragraphs may have section titles (Solution, Check Your Learning)
  * - All paragraphs should be included, with titles stripped from content
  */
-function processExample(example, moduleId, addSegment, mathMap, counters) {
+function processExample(
+  example,
+  moduleId,
+  addSegment,
+  mathMap,
+  counters,
+  inlineMediaMap = null,
+  inlineTablesMap = null
+) {
   const exampleStructure = {
     type: 'example',
     id: example.id,
@@ -827,7 +991,13 @@ function processExample(example, moduleId, addSegment, mathMap, counters) {
       }
     }
 
-    const text = extractInlineText(contentWithoutTitle, mathMap, counters);
+    const text = extractInlineText(
+      contentWithoutTitle,
+      mathMap,
+      counters,
+      inlineMediaMap,
+      inlineTablesMap
+    );
     if (text && text.trim()) {
       const paraElement = {
         type: 'para',
@@ -851,7 +1021,15 @@ function processExample(example, moduleId, addSegment, mathMap, counters) {
   // Process lists in example
   const lists = extractNestedElements(example.content, 'list');
   for (const list of lists) {
-    const listStructure = processList(list, moduleId, addSegment, mathMap, counters);
+    const listStructure = processList(
+      list,
+      moduleId,
+      addSegment,
+      mathMap,
+      counters,
+      inlineMediaMap,
+      inlineTablesMap
+    );
     exampleStructure.content.push(listStructure);
   }
 
@@ -877,7 +1055,15 @@ function processExample(example, moduleId, addSegment, mathMap, counters) {
 /**
  * Process an exercise element.
  */
-function processExercise(exercise, moduleId, addSegment, mathMap, counters) {
+function processExercise(
+  exercise,
+  moduleId,
+  addSegment,
+  mathMap,
+  counters,
+  inlineMediaMap = null,
+  inlineTablesMap = null
+) {
   const exerciseStructure = {
     type: 'exercise',
     id: exercise.id,
@@ -891,7 +1077,13 @@ function processExercise(exercise, moduleId, addSegment, mathMap, counters) {
     const problemParas = extractElements(problemMatch[1], 'para');
     exerciseStructure.problem = { content: [] };
     for (const para of problemParas) {
-      const text = extractInlineText(para.content, mathMap, counters);
+      const text = extractInlineText(
+        para.content,
+        mathMap,
+        counters,
+        inlineMediaMap,
+        inlineTablesMap
+      );
       if (text) {
         const segId = addSegment('problem', text, para.id);
         exerciseStructure.problem.content.push({
@@ -909,7 +1101,13 @@ function processExercise(exercise, moduleId, addSegment, mathMap, counters) {
     const solutionParas = extractElements(solutionMatch[1], 'para');
     exerciseStructure.solution = { content: [] };
     for (const para of solutionParas) {
-      const text = extractInlineText(para.content, mathMap, counters);
+      const text = extractInlineText(
+        para.content,
+        mathMap,
+        counters,
+        inlineMediaMap,
+        inlineTablesMap
+      );
       if (text) {
         const segId = addSegment('solution', text, para.id);
         exerciseStructure.solution.content.push({
@@ -927,7 +1125,15 @@ function processExercise(exercise, moduleId, addSegment, mathMap, counters) {
 /**
  * Process a note element.
  */
-function processNote(note, moduleId, addSegment, mathMap, counters) {
+function processNote(
+  note,
+  moduleId,
+  addSegment,
+  mathMap,
+  counters,
+  inlineMediaMap = null,
+  inlineTablesMap = null
+) {
   const noteStructure = {
     type: 'note',
     id: note.id,
@@ -946,7 +1152,13 @@ function processNote(note, moduleId, addSegment, mathMap, counters) {
   // Process paragraphs in note
   const paras = extractElements(note.content, 'para');
   for (const para of paras) {
-    const text = extractInlineText(para.content, mathMap, counters);
+    const text = extractInlineText(
+      para.content,
+      mathMap,
+      counters,
+      inlineMediaMap,
+      inlineTablesMap
+    );
     if (text) {
       const segId = addSegment('para', text, para.id);
       noteStructure.content.push({
@@ -963,7 +1175,15 @@ function processNote(note, moduleId, addSegment, mathMap, counters) {
 /**
  * Process a list element.
  */
-function processList(list, moduleId, addSegment, mathMap, counters) {
+function processList(
+  list,
+  moduleId,
+  addSegment,
+  mathMap,
+  counters,
+  inlineMediaMap = null,
+  inlineTablesMap = null
+) {
   const listStructure = {
     type: 'list',
     id: list.id,
@@ -976,7 +1196,13 @@ function processList(list, moduleId, addSegment, mathMap, counters) {
   const items = extractElements(list.content, 'item');
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
-    const text = extractInlineText(item.content, mathMap, counters);
+    const text = extractInlineText(
+      item.content,
+      mathMap,
+      counters,
+      inlineMediaMap,
+      inlineTablesMap
+    );
     if (text) {
       const itemId = addSegment('item', text, item.id || `${list.id}-item-${i + 1}`);
       listStructure.items.push({

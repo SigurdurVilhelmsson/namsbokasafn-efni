@@ -133,13 +133,62 @@ function parseSegments(content) {
 }
 
 /**
+ * Infer MIME type from file extension.
+ * @param {string} src - Image source filename
+ * @returns {string} MIME type
+ */
+function inferMimeType(src) {
+  const ext = src.split('.').pop().toLowerCase();
+  const mimeTypes = {
+    jpg: 'image/jpeg',
+    jpeg: 'image/jpeg',
+    png: 'image/png',
+    gif: 'image/gif',
+    svg: 'image/svg+xml',
+    webp: 'image/webp',
+  };
+  return mimeTypes[ext] || 'image/jpeg';
+}
+
+/**
+ * Escape XML special characters.
+ * @param {string} text - Text to escape
+ * @returns {string} Escaped text
+ */
+function escapeXml(text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+/**
+ * Build a media element from metadata.
+ * @param {Object} media - Media metadata
+ * @returns {string} CNXML media element
+ */
+function buildMediaElement(media) {
+  const idAttr = media.id ? ` id="${media.id}"` : '';
+  const classAttr = media.class ? ` class="${media.class}"` : '';
+  const altAttr = media.alt ? ` alt="${escapeXml(media.alt)}"` : '';
+
+  const mimeType = media.mimeType || inferMimeType(media.src);
+
+  return `<media${idAttr}${classAttr}${altAttr}><image mime-type="${mimeType}" src="${media.src}"/></media>`;
+}
+
+/**
  * Reverse inline markup back to CNXML.
  * Converts markdown-style markup back to CNXML inline elements.
  * @param {string} text - Text with inline markup
  * @param {Object} equations - Equations map
+ * @param {Array} inlineMedia - Inline media metadata
+ * @param {Array} inlineTables - Inline table structures
  * @returns {string} CNXML-compatible text
  */
-function reverseInlineMarkup(text, equations) {
+function reverseInlineMarkup(text, equations, inlineMedia = [], inlineTables = []) {
   let result = text;
 
   // Remove backslash escapes from MT (e.g., \[\[MATH:1\]\] → [[MATH:1]])
@@ -156,6 +205,28 @@ function reverseInlineMarkup(text, equations) {
       return equations[mathId].mathml;
     }
     return match;
+  });
+
+  // Restore inline media placeholders
+  result = result.replace(/\[\[MEDIA:(\d+)\]\]/g, (match, num) => {
+    const placeholder = `[[MEDIA:${num}]]`;
+    const media = inlineMedia.find((m) => m.placeholder === placeholder);
+    if (media) {
+      return buildMediaElement(media);
+    }
+    return match; // Keep placeholder if not found
+  });
+
+  // Restore embedded table placeholders
+  // Note: buildTable function is defined later in the file
+  result = result.replace(/\[\[TABLE:([^\]]+)\]\]/g, (match, tableId) => {
+    const tableData = inlineTables.find((t) => t.tableId === tableId);
+    if (tableData && tableData.structure) {
+      // We'll build the table inline - this is handled after we have access to getSeg
+      // For now, keep the placeholder and handle it in buildPara
+      return match;
+    }
+    return match; // Keep placeholder if not found
   });
 
   // IMPORTANT: Extract MathML blocks before applying term wrapping to prevent
@@ -281,7 +352,12 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
       return null;
     }
     stats.segmentsFound++;
-    return reverseInlineMarkup(text, equations);
+    return reverseInlineMarkup(
+      text,
+      equations,
+      structure.inlineMedia || [],
+      structure.inlineTables || []
+    );
   };
 
   // Extract metadata section from original
@@ -347,7 +423,12 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
   const figureCaptions = {};
   collectFigureCaptions(structure.content, figureCaptions);
   const figuresHandledInNotes = new Set();
-  const ctx = { figureCaptions, figuresHandledInNotes };
+  const ctx = {
+    figureCaptions,
+    figuresHandledInNotes,
+    inlineMedia: structure.inlineMedia || [],
+    inlineTables: structure.inlineTables || [],
+  };
 
   for (const element of structure.content) {
     const elementCnxml = buildElement(element, getSeg, equations, originalCnxml, ctx);
@@ -436,7 +517,7 @@ function buildCnxml(structure, segments, equations, originalCnxml, options = {})
 function buildElement(element, getSeg, equations, originalCnxml, ctx) {
   switch (element.type) {
     case 'para':
-      return buildPara(element, getSeg);
+      return buildPara(element, getSeg, equations, originalCnxml, ctx);
     case 'section':
       return buildSection(element, getSeg, equations, originalCnxml, ctx);
     case 'figure':
@@ -463,7 +544,7 @@ function buildElement(element, getSeg, equations, originalCnxml, ctx) {
 /**
  * Build a paragraph element.
  */
-function buildPara(element, getSeg) {
+function buildPara(element, getSeg, equations, originalCnxml, ctx) {
   const idAttr = element.id ? ` id="${element.id}"` : '';
 
   // Handle para title if present (e.g., "Check Your Learning", "Solution")
@@ -476,7 +557,19 @@ function buildPara(element, getSeg) {
   }
 
   // Get para content (coerce null to empty string to avoid "null" in output)
-  const text = element.segmentId ? getSeg(element.segmentId) || '' : '';
+  let text = element.segmentId ? getSeg(element.segmentId) || '' : '';
+
+  // Restore embedded table placeholders if present
+  // This needs to happen after getSeg because the placeholder is in the translated segment
+  if (text && ctx && ctx.inlineTables) {
+    text = text.replace(/\[\[TABLE:([^\]]+)\]\]/g, (match, tableId) => {
+      const tableData = ctx.inlineTables.find((t) => t.tableId === tableId);
+      if (tableData && tableData.structure) {
+        return buildTable(tableData.structure, getSeg, originalCnxml);
+      }
+      return match; // Keep placeholder if not found
+    });
+  }
 
   // Return null only if neither title nor content
   if (!titleElement && !text) return null;
@@ -982,30 +1075,6 @@ function buildMedia(element) {
 }
 
 /**
- * Infer image MIME type from a file extension.
- * @param {string} src - Image source path
- * @returns {string} MIME type string
- */
-function inferMimeType(src) {
-  const ext = src.split('.').pop()?.toLowerCase();
-  switch (ext) {
-    case 'jpg':
-    case 'jpeg':
-      return 'image/jpeg';
-    case 'png':
-      return 'image/png';
-    case 'gif':
-      return 'image/gif';
-    case 'svg':
-      return 'image/svg+xml';
-    case 'webp':
-      return 'image/webp';
-    default:
-      return 'image/jpeg';
-  }
-}
-
-/**
  * Build a generic element with title and content.
  */
 function buildGenericElement(tagName, element, getSeg, equations, originalCnxml) {
@@ -1033,18 +1102,6 @@ function buildGenericElement(tagName, element, getSeg, equations, originalCnxml)
 
   lines.push(`</${tagName}>`);
   return lines.join('\n');
-}
-
-/**
- * Escape XML special characters.
- */
-function escapeXml(str) {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
 }
 
 /**
