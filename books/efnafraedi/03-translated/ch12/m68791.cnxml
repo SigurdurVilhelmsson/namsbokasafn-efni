@@ -926,16 +926,8 @@ hraðajöfnu sem er fyrsta stigs með tilliti til hvatans (penisillínasa)
 og sem felur einnig í sér styrk penisillíns. Ákvarðaðu út frá
 eftirfarandi gögnum: 1,0 L af lausn sem inniheldur 0,15 µg (0,15
 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> g) af penisillínasa, stig efnahvarfsins með
-tilliti til penisillíns og gildi hraðafastans. [Penisillín] (<emphasis effect="italics">M</emphasis>)
-Hraði (mól L<sup>−1</sup> mín.<sup>−1</sup>) 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup> 3,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 1,5 <m:math><m:mo>×</m:mo></m:math>
-10<sup>−10</sup> 4,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−10</sup></para>
-</problem>
-<solution id="fs-idp69326464">
-<para id="fs-idp69326720">Efnahvarfið er fyrsta stigs. <emphasis effect="italics">k</emphasis>
-= 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>7</sup> L mól<sup>−1</sup> mín.<sup>−1</sup></para></solution>
-</exercise>
-<table id="fs-idp79245440" summary="This table contains two columns and four rows. The first row is a header row, and it labels each column, “[ Penicillin ] ( M ),” and, “Rate ( mol / L / min ).” Under the “[ Penicillin ] ( M )” column are the numbers: 2.0 times ten to the negative six; 3.0 times ten to the negative six; and 4.0 times ten to the negative 6. Under the “Rate ( mol / L / min )” column are the numbers: 1.0 times ten to the negative ten; 1.5 times ten to the negative 10; and 2.0 times ten to the negative 10." class="unnumbered">
+tilliti til penisillíns og gildi hraðafastans:<newline/>
+<table id="fs-idp79245440" summary="This table contains two columns and four rows. The first row is a header row, and it labels each column, "[ Penicillin ] ( M )," and, "Rate ( mol / L / min )." Under the "[ Penicillin ] ( M )" column are the numbers: 2.0 times ten to the negative six; 3.0 times ten to the negative six; and 4.0 times ten to the negative 6. Under the "Rate ( mol / L / min )" column are the numbers: 1.0 times ten to the negative ten; 1.5 times ten to the negative 10; and 2.0 times ten to the negative 10." class="unnumbered">
 <label/>
 <tgroup cols="2">
 <colspec colnum="1" colname="c1"/>
@@ -961,7 +953,12 @@ Hraði (mól L<sup>−1</sup> mín.<sup>−1</sup>) 2,0 <m:math><m:mo>×</m:mo><
 </row>
 </tbody>
 </tgroup>
-</table>
+</table></para>
+</problem>
+<solution id="fs-idp69326464">
+<para id="fs-idp69326720">Efnahvarfið er fyrsta stigs. <emphasis effect="italics">k</emphasis>
+= 1,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>7</sup> L mól<sup>−1</sup> mín.<sup>−1</sup></para></solution>
+</exercise>
 <exercise id="fs-idm22532944">
 <problem id="fs-idm22532688">
 <para id="fs-idm22532432">Bæði teknetíum-99 og þallíum-201
@@ -1033,17 +1030,8 @@ hvaða ár dó Ríkharður III. konungur? Helmingunartími kolefnis-14 er 5730
 sprengiefni. Í röð vandlega stýrðra tilrauna voru sýni af sprengiefninu
 hituð í 160 °C og niðurbrot þeirra, sem fylgdi fyrsta stigs hvarfhraða,
 rannsakað. Ákvarðið meðalhraðafasta fyrir hverja tilraun með
-eftirfarandi gögnum: Upphafsstyrkur [C<sub>3</sub>H<sub>5</sub>N<sub>3</sub>O<sub>9</sub>] (M) 4,88 3,52
-2,29 1,81 5,33 4,05 2,95 1,72 t (s) 300 300 300 300 180 180 180 180 %
-niðurbrotið 52,0 52,9 53,2 53,9 34,6 35,9 36,0 35,4</para>
-</problem>
-<solution id="fs-idm136873392">
-<para id="fs-idm215408672">[A]<sub>0</sub> (M) k <m:math><m:mo>×</m:mo></m:math>
-10<sup>3</sup> (s<sup>−1</sup>) 4,88 2,45 3,52 2,51 2,29 2,53 1,81 2,58 5,33 2,36 4,05
-2,47 2,95 2,48 1,72 2,43</para>
-</solution>
-</exercise>
-<table id="fs-idp121895360" summary="This table contains three columns and nine rows. The first row is a header row, and it labels each column, “Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M ),” “t ( s ),” and “% Decomposed.” Under the “Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M )” column are the numbers: 4.88, 3.52, 2.29, 1.81, 5.33, 4.05, 2.95, and 1.72. Under the “t ( s )” column are the numbers: 300, 300, 300, 300, 180, 180, 180, and 180. Under the “% Decomposed” column are the numbers: 52.0, 52.9, 53.2, 53.9, 34.6, 35.9, 36.0, and 35.4." class="column-header unnumbered">
+eftirfarandi gögnum:<newline/>
+<table id="fs-idp121895360" summary="This table contains three columns and nine rows. The first row is a header row, and it labels each column, "Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M )," "t ( s )," and "% Decomposed." Under the "Initial [ C subscript 3 H subscript 5 N subscript 3 O subscript 9 ] ( M )" column are the numbers: 4.88, 3.52, 2.29, 1.81, 5.33, 4.05, 2.95, and 1.72. Under the "t ( s )" column are the numbers: 300, 300, 300, 300, 180, 180, 180, and 180. Under the "% Decomposed" column are the numbers: 52.0, 52.9, 53.2, 53.9, 34.6, 35.9, 36.0, and 35.4." class="column-header unnumbered">
 <label/>
 <tgroup cols="3">
 <colspec colnum="1" colname="c1"/>
@@ -1085,7 +1073,14 @@ niðurbrotið 52,0 52,9 53,2 53,9 34,6 35,9 36,0 35,4</para>
 </row>
 </tbody>
 </tgroup>
-</table>
+</table></para>
+</problem>
+<solution id="fs-idm136873392">
+<para id="fs-idm215408672">[A]<sub>0</sub> (M) k <m:math><m:mo>×</m:mo></m:math>
+10<sup>3</sup> (s<sup>−1</sup>) 4,88 2,45 3,52 2,51 2,29 2,53 1,81 2,58 5,33 2,36 4,05
+2,47 2,95 2,48 1,72 2,43</para>
+</solution>
+</exercise>
 <table id="fs-idm247275488" summary="This table has five columns and nine rows. The first row is a header row, and it labels each column: “[ A ] subscript 0 ( M ),” “[ A ] ( M ),” “l n ( [ A ] subscript 0 over [ A ] ),” “t ( s ),” and “k times 10 to the third power ( s superscript negative 1 ).” Under the “[ A ] subscript 0 ( M )” column are the numbers: 4.88, 3.52, 2.29, 1.81, 5.33, 4.05, 2.95, and 1.72. Under the “[ A ] ( M )” column are the numbers: 2.34, 1.66, 1.07, 0.834, 3.49, 2.61, 1.89, and 1.11. Under the “l n ( [ A ] subscript 0 over [ A ] )” column are the numbers: 0.734, 0.752, 0.761, 0.775, 0.423, 0.439, 0.445, and 0.438. Under the “t ( s )” column are the numbers: 300, 300, 300, 300, 180, 180, 180, and 180. Under the “k times 10 to the third power ( s superscript negative 1 )” columns are the numbers: 2.45, 2.51, 2.54, 2.58, 2.35, 2.44, 2.47, and 2.43." class="unnumbered"><label/>
 <tgroup cols="2"><colspec colnum="1" colname="c1"/>
 <colspec colnum="2" colname="c2"/>
