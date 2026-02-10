@@ -55,14 +55,14 @@
 
 **Status:** Complete. Root package.json now has only `mathjax-full` as a dependency. All 4 packages removed.
 
-### 1.4 Clean Up Dead Scripts in package.json ⚠️ PARTIAL
+### 1.4 Clean Up Dead Scripts in package.json ✅ COMPLETE
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** Architecture
 
-Root `package.json` has dead scripts referencing non-existent files:
+~~Root `package.json` has dead scripts referencing non-existent files:
 - Line 10: `openstax-fetch` → references `tools/openstax-fetch.cjs` (doesn't exist)
-- Line 11: `generate-book-data` → references `tools/generate-book-data.cjs` (doesn't exist)
+- Line 11: `generate-book-data` → references `tools/generate-book-data.cjs` (doesn't exist)~~
 
-**Fix:** Remove these 2 dead script entries from `package.json`.
+**Status:** Complete. Both dead scripts removed from package.json (commit 9b31be7, 2026-02-10).
 
 ### 1.5 Update CLAUDE.md "Current Priority" ✅ COMPLETE
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** Documentation
@@ -71,29 +71,31 @@ Root `package.json` has dead scripts referencing non-existent files:
 
 **Status:** Complete. CLAUDE.md now shows "Phase 9: Close the Write Gap" as current priority with Phase 8 marked complete.
 
-### 1.6 Fix Caddy vs nginx Contradiction ⚠️ NEEDS FIX
+### 1.6 Fix Caddy vs nginx Contradiction ⚠️ IN PROGRESS
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** Documentation
 
 **Current state:**
-- `namsbokasafn-efni/CLAUDE.md` line 51: Says "Caddy"
-- `namsbokasafn-vefur/.github/workflows/deploy.yml` line 42: Says "Reload Nginx"
-- `namsbokasafn-vefur/.github/workflows/deploy.yml` line 50: Runs `systemctl reload nginx`
+- `namsbokasafn-efni/CLAUDE.md` line 51: Says "Caddy" ❌ INCORRECT
+- `namsbokasafn-vefur/.github/workflows/deploy.yml` line 42: Says "Reload Nginx" ✅ CORRECT
+- `namsbokasafn-vefur/.github/workflows/deploy.yml` line 50: Runs `systemctl reload nginx` ✅ CORRECT
 
-**Fix:** Determine which is actually deployed (Caddy or nginx) and update the incorrect references. If Caddy is used, fix deploy.yml comments and command.
+**Confirmed:** nginx is used (user confirmed 2026-02-10).
 
-### 1.7 Implement Backup Cron for SQLite Database
+**Fix needed:** Update CLAUDE.md line 51 from "Caddy" to "nginx".
+
+### 1.7 Implement Backup Cron for SQLite Database ✅ COMPLETE
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** DevOps
 
-The SQLite database (`pipeline-output/sessions.db`) stores all workflow sessions, reviews, terminology, feedback, and assignments. It is the single point of failure with no backup. The deployment checklist documents a cron example but it's not implemented.
+~~The SQLite database (`pipeline-output/sessions.db`) stores all workflow sessions, reviews, terminology, feedback, and assignments. It is the single point of failure with no backup. The deployment checklist documents a cron example but it's not implemented.~~
 
-**Fix:** Add the documented cron job on the server: `0 2 * * * tar -czf ~/backups/pipeline-output-$(date +%Y%m%d).tar.gz ~/namsbokasafn-efni/pipeline-output/`
+**Status:** Complete. Backup cron job configured on production server (confirmed 2026-02-10).
 
-### 1.8 Set Up Free Uptime Monitoring
+### 1.8 Set Up Free Uptime Monitoring ✅ COMPLETE
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** DevOps
 
-No external monitoring. If the server goes down, nobody is notified. The health endpoint at `/api/health` doesn't even check database connectivity.
+~~No external monitoring. If the server goes down, nobody is notified. The health endpoint at `/api/health` doesn't even check database connectivity.~~
 
-**Fix:** Sign up for UptimeRobot (free tier) to monitor both `namsbokasafn.is` and `ritstjorn.namsbokasafn.is`.
+**Status:** Complete. UptimeRobot configured for both namsbokasafn.is and ritstjorn.namsbokasafn.is (confirmed 2026-02-10).
 
 ### 1.9 Delete Root `lib/` Directory (Dead Code) ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** Architecture
@@ -249,30 +251,30 @@ Archive exists and is properly separated. Could use a `README.md` explaining wha
 
 ## Quick-Win Checklist
 
-**Progress: 11 of 19 complete**
+**Progress: 18 of 19 complete (95%)**
 
 ### Completed ✅
 - [x] Directory structure overhaul (2026-02-10)
 - [x] Fix `execSync` command injection (now uses `execFileSync`)
 - [x] Gate vefur deploy on CI (uses `workflow_run` trigger)
 - [x] `npm uninstall mammoth turndown js-yaml katex` in efni root
+- [x] Remove 2 dead script entries from efni `package.json` (2026-02-10)
 - [x] Update CLAUDE.md "Current Priority" to Phase 9
 - [x] Delete root `lib/` directory
 - [x] Search-replace `efnafraedi.app` → `namsbokasafn.is` across docs
+- [x] Set up backup cron on server for SQLite DB (confirmed)
+- [x] Sign up for UptimeRobot to monitor both sites (confirmed)
+- [x] `npm audit fix` in vefur (0 vulnerabilities)
 - [x] Bump vefur GitHub Actions to v6
+- [x] Add `github-actions` ecosystem to vefur `dependabot.yml` (already done)
+- [x] Add `.nvmrc` files to both repos (already done)
 - [x] Update `.claude/skills/workflow-status.md` and `editorial-pass1.md`
+- [x] Update `.claude/skills/repo-structure.md` for new directory structure (2026-02-10)
 - [x] Remove screenshots from git tracking (already done)
 - [x] License field in vefur package.json (already done)
 
 ### Remaining ⚠️
-- [ ] Remove 2 dead script entries from efni `package.json` (openstax-fetch, generate-book-data)
-- [ ] Resolve Caddy vs nginx contradiction in vefur deploy.yml
-- [ ] Set up backup cron on server for SQLite DB
-- [ ] Sign up for UptimeRobot (free) to monitor both sites
-- [ ] `npm audit fix` in vefur
-- [ ] Add `github-actions` ecosystem to vefur `dependabot.yml`
-- [ ] Add `.nvmrc` files to both repos
-- [ ] Update `.claude/skills/repo-structure.md` for new directory structure
+- [ ] Fix CLAUDE.md to say "nginx" instead of "Caddy" (1 line change)
 
 ---
 
@@ -291,30 +293,28 @@ Archive exists and is properly separated. Could use a `README.md` explaining wha
 5. **Dependency cleanup** — Removed unused packages, deleted dead code
 6. **Documentation updates** — CLAUDE.md, workflow docs, and most skills files updated
 
-**Tier 1 Status:** 8 of 11 items complete (73%)
+**Tier 1 Status:** 10 of 11 items complete (91%)
+**Tier 2 Status:** 4 of 4 items complete (100%)
+**Overall:** 18 of 19 items complete (95%)
 
-### Recommended Next Steps (Priority Order)
+### Remaining Work
 
-1. **Immediate (< 1 hour):**
-   - Remove 2 dead scripts from package.json
-   - Fix Caddy/nginx contradiction in vefur deploy.yml
-   - Run `npm audit fix` in vefur
-   - Add github-actions to vefur dependabot.yml
+**Critical (1 item, 2 minutes):**
+- Fix CLAUDE.md line 51: Change "Caddy" to "nginx"
 
-2. **Same Day (< 4 hours):**
-   - Set up UptimeRobot monitoring (free, 5 minutes)
-   - Set up SQLite backup cron on server (10 minutes)
-   - Add .nvmrc files to both repos
-   - Update .claude/skills/repo-structure.md
-
-3. **This Week:**
-   - Address remaining Tier 2 items (documentation updates)
-   - Consider Tier 2.8 server over-engineering assessment
+**Optional (Future Consideration):**
+- Tier 2.8: Server over-engineering assessment
+  - Consider consolidating services when ready
+  - Not urgent - server works well at current scale
 
 ### Risk Assessment
-**Current risk level: MEDIUM → LOW**
+**Current risk level: LOW** ✅
 
-Critical security and CI/CD issues have been resolved. Remaining Tier 1 items are operational improvements (monitoring, backups) rather than vulnerabilities. The project is now in a much stronger position than at initial audit.
+- ✅ All critical security issues resolved
+- ✅ All CI/CD hardening complete
+- ✅ Monitoring and backups operational
+- ✅ Documentation updated and accurate
+- ⚠️ One minor documentation inconsistency remains (Caddy/nginx)
 
 ---
 
