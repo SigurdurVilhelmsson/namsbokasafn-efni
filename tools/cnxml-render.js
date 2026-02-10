@@ -1377,6 +1377,10 @@ function renderTableCells(rowContent, context, isHeader) {
       const colspan = calculateColspan(attrs.namest, attrs.nameend);
       if (colspan > 1) attrStr += ` colspan="${colspan}"`;
     }
+    if (attrs.morerows) {
+      const rowspan = parseInt(attrs.morerows, 10) + 1; // morerows="5" means 6 total rows
+      attrStr += ` rowspan="${rowspan}"`;
+    }
     if (attrs.align) {
       attrStr += ` style="text-align: ${escapeAttr(attrs.align)}"`;
     }
