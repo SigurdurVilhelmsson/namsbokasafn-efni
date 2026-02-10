@@ -698,7 +698,11 @@ function buildFigure(element, getSeg, originalCnxml, ctx) {
 function buildTable(element, getSeg, originalCnxml) {
   // For tables, extract from original and replace cell content
   if (element.id) {
-    const tablePattern = new RegExp(`<table\\s+id="${element.id}"[^>]*>[\\s\\S]*?<\\/table>`, 'g');
+    // Match table by ID - id attribute can appear anywhere in the opening tag
+    const tablePattern = new RegExp(
+      `<table[^>]*\\sid="${element.id}"[^>]*>[\\s\\S]*?<\\/table>`,
+      'g'
+    );
     const match = tablePattern.exec(originalCnxml);
     if (match) {
       let tableCnxml = match[0];
