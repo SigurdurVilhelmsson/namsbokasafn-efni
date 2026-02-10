@@ -400,55 +400,55 @@ fyrir eðlismassa fastra efna og vökva, og grömm á lítra (g/L) fyrir gös.
 (eðlismassi gulls). Eðlismassi lofts er um 1,2 g/L. [#fs-idm45639696] sýnir
 eðlismassa nokkurra algengra efna.
 
-<!-- SEG:m68674:entry:auto-118 --> Eðlismassi algengra efna
+<!-- SEG:m68674:entry:auto-108 --> Eðlismassi algengra efna
 
-<!-- SEG:m68674:entry:auto-119 --> Föst efni
+<!-- SEG:m68674:entry:auto-109 --> Föst efni
 
-<!-- SEG:m68674:entry:auto-120 --> Vökvar
+<!-- SEG:m68674:entry:auto-110 --> Vökvar
 
-<!-- SEG:m68674:entry:auto-121 --> Gös (við 25 °C og 1 atm)
+<!-- SEG:m68674:entry:auto-111 --> Gös (við 25 °C og 1 atm)
 
-<!-- SEG:m68674:entry:auto-122 --> ís (við 0 °C) 0,92 g/cm^3^
+<!-- SEG:m68674:entry:auto-112 --> ís (við 0 °C) 0,92 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-123 --> vatn 1,0 g/cm^3^
+<!-- SEG:m68674:entry:auto-113 --> vatn 1,0 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-124 --> þurrt loft 1,20 g/L
+<!-- SEG:m68674:entry:auto-114 --> þurrt loft 1,20 g/L
 
-<!-- SEG:m68674:entry:auto-125 --> eik (viður) 0,60–0,90 g/cm^3^
+<!-- SEG:m68674:entry:auto-115 --> eik (viður) 0,60–0,90 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-126 --> etanól 0,79 g/cm^3^
+<!-- SEG:m68674:entry:auto-116 --> etanól 0,79 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-127 --> súrefni 1,31 g/L
+<!-- SEG:m68674:entry:auto-117 --> súrefni 1,31 g/L
 
-<!-- SEG:m68674:entry:auto-128 --> járn 7,9 g/cm^3^
+<!-- SEG:m68674:entry:auto-118 --> járn 7,9 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-129 --> asetón 0,79 g/cm^3^
+<!-- SEG:m68674:entry:auto-119 --> asetón 0,79 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-130 --> nitur 1,14 g/L
+<!-- SEG:m68674:entry:auto-120 --> nitur 1,14 g/L
 
-<!-- SEG:m68674:entry:auto-131 --> kopar 9,0 g/cm^3^
+<!-- SEG:m68674:entry:auto-121 --> kopar 9,0 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-132 --> glýserín 1,26 g/cm^3^
+<!-- SEG:m68674:entry:auto-122 --> glýserín 1,26 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-133 --> koldíoxíð 1,80 g/L
+<!-- SEG:m68674:entry:auto-123 --> koldíoxíð 1,80 g/L
 
-<!-- SEG:m68674:entry:auto-134 --> blý 11,3 g/cm^3^
+<!-- SEG:m68674:entry:auto-124 --> blý 11,3 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-135 --> ólífuolía 0,92 g/cm^3^
+<!-- SEG:m68674:entry:auto-125 --> ólífuolía 0,92 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-136 --> helíum 0,16 g/L
+<!-- SEG:m68674:entry:auto-126 --> helíum 0,16 g/L
 
-<!-- SEG:m68674:entry:auto-137 --> silfur 10,5 g/cm^3^
+<!-- SEG:m68674:entry:auto-127 --> silfur 10,5 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-138 --> bensín 0,70–0,77 g/cm^3^
+<!-- SEG:m68674:entry:auto-128 --> bensín 0,70–0,77 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-139 --> neon 0,83 g/L
+<!-- SEG:m68674:entry:auto-129 --> neon 0,83 g/L
 
-<!-- SEG:m68674:entry:auto-140 --> gull 19,3 g/cm^3^
+<!-- SEG:m68674:entry:auto-130 --> gull 19,3 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-141 --> kvikasilfur 13,6 g/cm^3^
+<!-- SEG:m68674:entry:auto-131 --> kvikasilfur 13,6 g/cm^3^
 
-<!-- SEG:m68674:entry:auto-142 --> radon 9,1 g/L
+<!-- SEG:m68674:entry:auto-132 --> radon 9,1 g/L
 
 <!-- SEG:m68674:para:fs-idm81523280 --> Þótt til séu margar leiðir til að
 ákvarða eðlismassa hlutar er einfaldasta aðferðin líklega sú að finna
