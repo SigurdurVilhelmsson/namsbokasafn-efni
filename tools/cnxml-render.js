@@ -1328,6 +1328,9 @@ function renderTable(table, context) {
   if (tableNum) attrs.push(`data-table-number="${tableNum}"`);
 
   lines.push(`<table ${attrs.join(' ')}>`);
+  if (tableNum) {
+    lines.push(`  <caption><span class="table-label">Tafla ${tableNum}</span></caption>`);
+  }
 
   // Process tgroup
   const tgroupMatch = table.content.match(/<tgroup[^>]*>([\s\S]*?)<\/tgroup>/);
