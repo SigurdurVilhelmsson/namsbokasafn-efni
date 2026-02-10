@@ -7,8 +7,6 @@
   "scripts": {
     "update-status": "node scripts/update-status.js",
     "validate": "node scripts/validate-status.js",
-    "openstax-fetch": "node tools/openstax-fetch.cjs",
-    "generate-book-data": "node tools/generate-book-data.cjs",
     "server": "cd server && npm start",
     "server:dev": "cd server && npm run dev",
     "server:install": "cd server && npm install",
