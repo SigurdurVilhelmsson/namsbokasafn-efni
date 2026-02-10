@@ -231,6 +231,24 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     tableNumbers.set(tableMatch[1], `${chapter}.${tableCounter}`);
   }
 
+  // Pre-scan: collect all numbered equation IDs and assign numbers
+  // Skip equations with class="unnumbered"
+  const equationNumbers = new Map();
+  const equationPattern = /<equation\s+([^>]*?)>/g;
+  let eqMatch;
+  let eqCounter = 0;
+  while ((eqMatch = equationPattern.exec(cnxml)) !== null) {
+    const attrs = eqMatch[1];
+    // Skip if unnumbered
+    if (attrs.includes('class="unnumbered"')) continue;
+    // Extract id
+    const idMatch = attrs.match(/id="([^"]+)"/);
+    if (idMatch) {
+      eqCounter++;
+      equationNumbers.set(idMatch[1], `${chapter}.${eqCounter}`);
+    }
+  }
+
   // Context for rendering
   const context = {
     chapter,
@@ -240,8 +258,10 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     figures: [],
     figureNumbers, // Map of figure ID -> "Chapter.Number" (this module only)
     tableNumbers, // Map of table ID -> "Chapter.Number" (this module only)
+    equationNumbers, // Map of equation ID -> "Chapter.Number" (this module only)
     chapterFigureNumbers: options.chapterFigureNumbers || figureNumbers, // chapter-wide
     chapterTableNumbers: options.chapterTableNumbers || tableNumbers, // chapter-wide
+    chapterEquationNumbers: options.chapterEquationNumbers || equationNumbers, // chapter-wide
     chapterExampleNumbers: options.chapterExampleNumbers || new Map(), // chapter-wide
     chapterExerciseNumbers: options.chapterExerciseNumbers || new Map(), // chapter-wide
     chapterSectionTitles: options.chapterSectionTitles || new Map(), // section ID -> title
@@ -250,6 +270,8 @@ function renderCnxmlToHtml(cnxml, options = {}) {
     figureCounter: 0,
     footnoteCounter: 0,
     exampleCounter: 0,
+    equationCounter: 0,
+    exerciseCounter: 0, // Add exercise counter
     renderedFigureIds: new Set(), // Track rendered figures to prevent duplicates
   };
 
@@ -823,9 +845,16 @@ function renderFigure(figure, context) {
   const lines = [];
   const className = figure.attributes.class || null;
 
-  lines.push(
-    `<figure${id ? ` id="${escapeAttr(id)}"` : ''}${className ? ` class="${escapeAttr(className)}"` : ''}>`
-  );
+  // Get figure number from chapter-wide map for data attribute
+  const figNum = id && context.chapterFigureNumbers ? context.chapterFigureNumbers.get(id) : null;
+
+  // Build attributes array (like exercise pattern)
+  const attrs = [];
+  if (id) attrs.push(`id="${escapeAttr(id)}"`);
+  if (className) attrs.push(`class="${escapeAttr(className)}"`);
+  if (figNum) attrs.push(`data-figure-number="${figNum}"`);
+
+  lines.push(`<figure ${attrs.join(' ')}>`);
 
   // Extract media/image
   const mediaMatch = figure.content.match(/<media([^>]*)>([\s\S]*?)<\/media>/);
@@ -977,7 +1006,13 @@ function renderExample(example, context) {
   context.exampleCounter = (context.exampleCounter || 0) + 1;
   const exampleNumber = chapterExNum || `${context.chapter}.${context.exampleCounter}`;
 
-  lines.push(`<aside${id ? ` id="${escapeAttr(id)}"` : ''} class="example">`);
+  // Build attributes array (like exercise pattern)
+  const attrs = [];
+  if (id) attrs.push(`id="${escapeAttr(id)}"`);
+  attrs.push('class="example"');
+  if (exampleNumber) attrs.push(`data-example-number="${exampleNumber}"`);
+
+  lines.push(`<aside ${attrs.join(' ')}>`);
 
   // Extract all paragraphs to find the example title from the FIRST one with a title
   const allParas = extractElements(example.content, 'para');
@@ -1150,7 +1185,23 @@ function renderExercise(exercise, context) {
   const lines = [];
   const id = exercise.id || null;
 
-  lines.push(`<div${id ? ` id="${escapeAttr(id)}"` : ''} class="exercise">`);
+  // Increment exercise counter and assign number
+  context.exerciseCounter++;
+  const exerciseNumber = context.exerciseCounter;
+
+  // Store in chapter-wide map for cross-referencing
+  if (id) {
+    context.chapterExerciseNumbers.set(id, exerciseNumber);
+  }
+
+  // Build attributes for eoc-exercise (end-of-chapter exercise)
+  const attrs = [];
+  if (id) attrs.push(`id="${escapeAttr(id)}"`);
+  attrs.push('class="eoc-exercise"');
+  attrs.push(`data-exercise-id="${escapeAttr(id || '')}"`);
+  attrs.push(`data-exercise-number="${exerciseNumber}"`);
+
+  lines.push(`<div ${attrs.join(' ')}>`);
 
   // Helper: render problem/solution section content with paras, media, and figures in order
   function renderSectionContent(sectionContent) {
@@ -1223,9 +1274,16 @@ function renderTable(table, context) {
   const id = table.id || null;
   const className = table.attributes.class || null;
 
-  lines.push(
-    `<table${id ? ` id="${escapeAttr(id)}"` : ''}${className ? ` class="${escapeAttr(className)}"` : ''}>`
-  );
+  // Get table number from chapter-wide map for data attribute
+  const tableNum = id && context.chapterTableNumbers ? context.chapterTableNumbers.get(id) : null;
+
+  // Build attributes array (like exercise pattern)
+  const attrs = [];
+  if (id) attrs.push(`id="${escapeAttr(id)}"`);
+  if (className) attrs.push(`class="${escapeAttr(className)}"`);
+  if (tableNum) attrs.push(`data-table-number="${tableNum}"`);
+
+  lines.push(`<table ${attrs.join(' ')}>`);
 
   // Process tgroup
   const tgroupMatch = table.content.match(/<tgroup[^>]*>([\s\S]*?)<\/tgroup>/);
@@ -1385,7 +1443,19 @@ function renderEquation(eq, context) {
   const eqContent = `<span class="mathjax-display" data-latex="${escapeAttr(latex)}">${mathHtml}</span>`;
   const numberSpan = isUnnumbered ? '' : '<span class="equation-number"></span>';
 
-  return `<div${id ? ` id="${escapeAttr(id)}"` : ''} class="equation${isUnnumbered ? ' unnumbered' : ''}">${eqContent}${numberSpan}</div>`;
+  // Get equation number from chapter-wide map for numbered equations only
+  const eqNum =
+    !isUnnumbered && id && context.chapterEquationNumbers
+      ? context.chapterEquationNumbers.get(id)
+      : null;
+
+  // Build attributes array
+  const attrs = [];
+  if (id) attrs.push(`id="${escapeAttr(id)}"`);
+  attrs.push(`class="equation${isUnnumbered ? ' unnumbered' : ''}"`);
+  if (eqNum) attrs.push(`data-equation-number="${eqNum}"`);
+
+  return `<div ${attrs.join(' ')}>${eqContent}${numberSpan}</div>`;
 }
 
 /**
@@ -2155,10 +2225,11 @@ async function main() {
     // Load equation text translation dictionary
     const equationTextDictionary = loadEquationTextDictionary('efnafraedi');
 
-    // Build chapter-wide figure/table/example number maps across ALL modules
+    // Build chapter-wide figure/table/example/equation number maps across ALL modules
     // This enables cross-module references (e.g., 5-2 referencing a table in 5-1)
     const chapterFigureNumbers = new Map();
     const chapterTableNumbers = new Map();
+    const chapterEquationNumbers = new Map();
     const chapterExampleNumbers = new Map();
     const chapterExerciseNumbers = new Map();
     const chapterSectionTitles = new Map(); // section ID -> title text
@@ -2170,6 +2241,7 @@ async function main() {
     });
     let chapterFigCounter = 0;
     let chapterTableCounter = 0;
+    let chapterEquationCounter = 0;
     let chapterExampleCounter = 0;
     let chapterExerciseCounter = 0;
 
@@ -2196,6 +2268,21 @@ async function main() {
       while ((exm2 = examplePattern.exec(modCnxml)) !== null) {
         chapterExampleCounter++;
         chapterExampleNumbers.set(exm2[1], `${args.chapter}.${chapterExampleCounter}`);
+      }
+
+      // Build numbered equation map (skip unnumbered)
+      const eqPattern = /<equation\s+([^>]*?)>/g;
+      let eqm;
+      while ((eqm = eqPattern.exec(modCnxml)) !== null) {
+        const attrs = eqm[1];
+        // Skip if unnumbered
+        if (attrs.includes('class="unnumbered"')) continue;
+        // Extract id
+        const idMatch = attrs.match(/id="([^"]+)"/);
+        if (idMatch) {
+          chapterEquationCounter++;
+          chapterEquationNumbers.set(idMatch[1], `${args.chapter}.${chapterEquationCounter}`);
+        }
       }
 
       // Build section title map for cross-reference resolution
@@ -2236,7 +2323,7 @@ async function main() {
 
     if (args.verbose) {
       console.error(
-        `Chapter-wide maps: ${chapterFigureNumbers.size} figures, ${chapterTableNumbers.size} tables, ${chapterExampleNumbers.size} examples, ${chapterExerciseNumbers.size} exercises`
+        `Chapter-wide maps: ${chapterFigureNumbers.size} figures, ${chapterTableNumbers.size} tables, ${chapterEquationNumbers.size} equations, ${chapterExampleNumbers.size} examples, ${chapterExerciseNumbers.size} exercises`
       );
     }
 
@@ -2261,6 +2348,7 @@ async function main() {
         moduleSections,
         chapterFigureNumbers,
         chapterTableNumbers,
+        chapterEquationNumbers,
         chapterExampleNumbers,
         chapterExerciseNumbers,
         chapterSectionTitles,
