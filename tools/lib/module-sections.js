@@ -11,6 +11,18 @@ import path from 'path';
 
 const REPO_ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', '..');
 
+/**
+ * Format chapter for use in directory paths.
+ * @param {number|string} chapter - Chapter number or "appendices"
+ * @returns {string} Formatted chapter string (e.g., "ch01", "appendices")
+ */
+function formatChapterDir(chapter) {
+  if (chapter === 'appendices') {
+    return 'appendices';
+  }
+  return `ch${String(chapter).padStart(2, '0')}`;
+}
+
 const ICELANDIC_MAP = {
   ð: 'd',
   Ð: 'D',
@@ -85,9 +97,9 @@ function parseSegments(content) {
  * @returns {Object} moduleId → { section, titleEn, titleIs, slug }
  */
 export function buildModuleSections(book, chapter) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const structDir = path.join(REPO_ROOT, 'books', book, '02-structure', `ch${chapterStr}`);
-  const segDir = path.join(REPO_ROOT, 'books', book, '02-for-mt', `ch${chapterStr}`);
+  const chapterDir = formatChapterDir(chapter);
+  const structDir = path.join(REPO_ROOT, 'books', book, '02-structure', chapterDir);
+  const segDir = path.join(REPO_ROOT, 'books', book, '02-for-mt', chapterDir);
 
   // 1. Read all structure files, sorted by sectionOrder when present, falling back to alphabetical
   const structFileNames = fs.readdirSync(structDir).filter((f) => f.endsWith('-structure.json'));
@@ -115,7 +127,7 @@ export function buildModuleSections(book, chapter) {
   const segments = new Map();
   const segDirs = [
     segDir, // 02-for-mt (chapters 1-5)
-    path.join(REPO_ROOT, 'books', book, '03-faithful', `ch${chapterStr}`), // new chapters 9, 12, 13
+    path.join(REPO_ROOT, 'books', book, '03-faithful', chapterDir), // new chapters 9, 12, 13
   ];
 
   for (const dir of segDirs) {

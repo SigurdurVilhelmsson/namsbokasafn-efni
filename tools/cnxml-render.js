@@ -111,6 +111,34 @@ function translateTitle(title) {
 
 const BOOKS_DIR = 'books/efnafraedi';
 
+// =====================================================================
+// HELPER FUNCTIONS
+// =====================================================================
+
+/**
+ * Format chapter for use in directory paths.
+ * @param {number|string} chapter - Chapter number or "appendices"
+ * @returns {string} Formatted chapter string (e.g., "ch01", "appendices")
+ */
+function formatChapterDir(chapter) {
+  if (chapter === 'appendices') {
+    return 'appendices';
+  }
+  return `ch${String(chapter).padStart(2, '0')}`;
+}
+
+/**
+ * Format chapter for use in output paths (without "ch" prefix).
+ * @param {number|string} chapter - Chapter number or "appendices"
+ * @returns {string} Formatted chapter string (e.g., "01", "appendices")
+ */
+function formatChapterOutput(chapter) {
+  if (chapter === 'appendices') {
+    return 'appendices';
+  }
+  return String(chapter).padStart(2, '0');
+}
+
 /**
  * Load equation text translation dictionary for a book.
  * Returns entries sorted longest-first for correct matching priority.
@@ -151,8 +179,11 @@ function parseArgs(args) {
     const arg = args[i];
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose') result.verbose = true;
-    else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
-    else if (arg === '--module' && args[i + 1]) result.module = args[++i];
+    else if (arg === '--chapter' && args[i + 1]) {
+      const chapterArg = args[++i];
+      // Accept either numeric chapter or "appendices"
+      result.chapter = chapterArg === 'appendices' ? 'appendices' : parseInt(chapterArg, 10);
+    } else if (arg === '--module' && args[i + 1]) result.module = args[++i];
     else if (arg === '--track' && args[i + 1]) result.track = args[++i];
     else if (arg === '--lang' && args[i + 1]) result.lang = args[++i];
   }
@@ -169,9 +200,10 @@ Produces publication-ready HTML with preserved IDs and MathJax SVG equations.
 
 Usage:
   node tools/cnxml-render.js --chapter <num> [--module <id>]
+  node tools/cnxml-render.js --chapter appendices
 
 Options:
-  --chapter <num>    Chapter number
+  --chapter <num|appendices>  Chapter number or "appendices"
   --module <id>      Specific module ID (default: all in chapter)
   --track <name>     Publication track: mt-preview, faithful (default: mt-preview)
   --lang <code>      Output language code (default: is)
@@ -868,7 +900,7 @@ function renderFigure(figure, context) {
       const imageAttrs = parseAttributes(imageMatch[1]);
       const src = imageAttrs.src || '';
       // Use absolute path for vefur content serving
-      const chapterStr = String(context.chapter).padStart(2, '0');
+      const chapterStr = formatChapterOutput(context.chapter);
       const normalizedSrc = src.replace(
         /^\.\.\/\.\.\/media\//,
         `/content/efnafraedi/chapters/${chapterStr}/images/media/`
@@ -915,7 +947,7 @@ function renderMedia(media, context) {
   if (imageMatch) {
     const imageAttrs = parseAttributes(imageMatch[1]);
     const src = imageAttrs.src || '';
-    const chapterStr = String(context.chapter).padStart(2, '0');
+    const chapterStr = formatChapterOutput(context.chapter);
     normalizedSrc = src.replace(
       /^\.\.\/\.\.\/media\//,
       `/content/efnafraedi/chapters/${chapterStr}/images/media/`
@@ -1548,8 +1580,8 @@ function removeNestedElements(content, tagName) {
  * Find modules to process.
  */
 function findChapterModules(chapter, moduleId = null) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const translatedDir = path.join(BOOKS_DIR, '03-translated', `ch${chapterStr}`);
+  const chapterDir = formatChapterDir(chapter);
+  const translatedDir = path.join(BOOKS_DIR, '03-translated', chapterDir);
 
   if (!fs.existsSync(translatedDir)) {
     throw new Error(`Translated directory not found: ${translatedDir}`);
@@ -1571,7 +1603,7 @@ function findChapterModules(chapter, moduleId = null) {
  * Ensure output directory exists.
  */
 function ensureOutputDir(chapter, track) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterStr = formatChapterOutput(chapter);
   const outputDir = path.join(BOOKS_DIR, '05-publication', track, 'chapters', chapterStr);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
@@ -1612,7 +1644,7 @@ function writeOutput(chapter, moduleId, track, html, moduleSections) {
  * Copy referenced images from source media to publication directory.
  */
 function copyChapterImages(chapter, track, _verbose) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterStr = formatChapterOutput(chapter);
   const sourceMediaDir = path.join(BOOKS_DIR, '01-source', 'media');
   const targetMediaDir = path.join(
     BOOKS_DIR,
@@ -1768,7 +1800,7 @@ function renderEndOfChapterSection(section, context) {
  * Write end-of-chapter section HTML to file.
  */
 function writeEndOfChapterSection(chapter, section, track, html) {
-  const chapterStr = chapter.toString().padStart(2, '0');
+  const chapterStr = formatChapterOutput(chapter);
   const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
   const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
 
@@ -1795,16 +1827,11 @@ function writeEndOfChapterSection(chapter, section, track, html) {
  * Returns array of { mathml, moduleId, sectionId }
  */
 function extractKeyEquations(chapter, modules) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterDir = formatChapterDir(chapter);
   const equations = [];
 
   for (const moduleId of modules) {
-    const modulePath = path.join(
-      BOOKS_DIR,
-      '03-translated',
-      `ch${chapterStr}`,
-      `${moduleId}.cnxml`
-    );
+    const modulePath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
 
     if (!fs.existsSync(modulePath)) {
       continue;
@@ -1891,7 +1918,7 @@ function renderKeyEquations(chapter, equations) {
  * Write key equations HTML to file.
  */
 function writeKeyEquations(chapter, track, html) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterStr = formatChapterOutput(chapter);
   const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
   const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
 
@@ -1916,16 +1943,11 @@ function writeKeyEquations(chapter, track, html) {
  * Returns array of { moduleId, sectionNumber, sectionTitle, summaryContent }
  */
 function extractSectionSummaries(chapter, modules, moduleSections) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterDir = formatChapterDir(chapter);
   const summariesByModule = [];
 
   for (const moduleId of modules) {
-    const modulePath = path.join(
-      BOOKS_DIR,
-      '03-translated',
-      `ch${chapterStr}`,
-      `${moduleId}.cnxml`
-    );
+    const modulePath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
 
     if (!fs.existsSync(modulePath)) {
       continue;
@@ -2031,7 +2053,7 @@ function renderCompiledSummary(chapter, summariesByModule, context) {
  * Write compiled summary HTML to file.
  */
 function writeCompiledSummary(chapter, track, html) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterStr = formatChapterOutput(chapter);
   const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
   const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
 
@@ -2057,16 +2079,11 @@ function writeCompiledSummary(chapter, track, html) {
  * Returns array of { moduleId, sectionNumber, sectionTitle, exercisesContent }
  */
 function extractSectionExercises(chapter, modules, moduleSections) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterDir = formatChapterDir(chapter);
   const exercisesByModule = [];
 
   for (const moduleId of modules) {
-    const modulePath = path.join(
-      BOOKS_DIR,
-      '03-translated',
-      `ch${chapterStr}`,
-      `${moduleId}.cnxml`
-    );
+    const modulePath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
 
     if (!fs.existsSync(modulePath)) {
       continue;
@@ -2181,7 +2198,7 @@ function renderCompiledExercises(chapter, exercisesByModule, chapterExerciseNumb
  * Write compiled exercises HTML to file.
  */
 function writeCompiledExercises(chapter, track, html) {
-  const chapterStr = chapter.toString().padStart(2, '0');
+  const chapterStr = formatChapterOutput(chapter);
   const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
   const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
 
@@ -2207,17 +2224,12 @@ function writeCompiledExercises(chapter, track, html) {
  * Returns array of { moduleId, sectionTitle, answers: [{ id, number, content }] }
  */
 function extractAnswerKey(chapter, modules, moduleSections) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterDir = formatChapterDir(chapter);
   const answersByModule = [];
   let exerciseNumber = 0;
 
   for (const moduleId of modules) {
-    const modulePath = path.join(
-      BOOKS_DIR,
-      '03-translated',
-      `ch${chapterStr}`,
-      `${moduleId}.cnxml`
-    );
+    const modulePath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
 
     if (!fs.existsSync(modulePath)) {
       continue;
@@ -2272,7 +2284,7 @@ function extractAnswerKey(chapter, modules, moduleSections) {
  */
 function renderAnswerKey(chapter, answersByModule, context) {
   const { renderCnxmlToHtml } = context;
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterStr = formatChapterOutput(chapter);
 
   let html = `<!DOCTYPE html>
 <html lang="is">
@@ -2346,7 +2358,7 @@ function renderAnswerKey(chapter, answersByModule, context) {
  * Write answer key HTML to file.
  */
 function writeAnswerKey(chapter, track, html) {
-  const chapterStr = chapter.toString().padStart(2, '0');
+  const chapterStr = formatChapterOutput(chapter);
   const trackDir = track === 'faithful' ? 'faithful' : 'mt-preview';
   const outputDir = path.join(BOOKS_DIR, '05-publication', trackDir, 'chapters', chapterStr);
 
@@ -2379,7 +2391,8 @@ async function main() {
 
   try {
     const modules = findChapterModules(args.chapter, args.module);
-    const chapterStr = String(args.chapter).padStart(2, '0');
+    const chapterDir = formatChapterDir(args.chapter);
+    const chapterStr = formatChapterOutput(args.chapter);
 
     // Build module sections map from structure + segment files
     const moduleSections = buildModuleSections('efnafraedi', args.chapter);
@@ -2408,7 +2421,7 @@ async function main() {
     let chapterExerciseCounter = 0;
 
     for (const modId of allModules) {
-      const modPath = path.join(BOOKS_DIR, '03-translated', `ch${chapterStr}`, `${modId}.cnxml`);
+      const modPath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${modId}.cnxml`);
       const modCnxml = fs.readFileSync(modPath, 'utf-8');
 
       const figPattern = /<figure\s+id="([^"]+)"/g;
@@ -2494,12 +2507,7 @@ async function main() {
         console.error(`Rendering: ${moduleId}`);
       }
 
-      const cnxmlPath = path.join(
-        BOOKS_DIR,
-        '03-translated',
-        `ch${chapterStr}`,
-        `${moduleId}.cnxml`
-      );
+      const cnxmlPath = path.join(BOOKS_DIR, '03-translated', chapterDir, `${moduleId}.cnxml`);
       const cnxml = fs.readFileSync(cnxmlPath, 'utf-8');
 
       const { html, pageData } = renderCnxmlToHtml(cnxml, {
@@ -2554,7 +2562,7 @@ async function main() {
       const lastModulePath = path.join(
         BOOKS_DIR,
         '03-translated',
-        `ch${chapterStr}`,
+        chapterDir,
         `${lastModuleId}.cnxml`
       );
       const lastModuleCnxml = fs.readFileSync(lastModulePath, 'utf-8');

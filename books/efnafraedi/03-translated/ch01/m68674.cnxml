@@ -219,11 +219,11 @@ grunnatriði staðalforms.</para>
 <title>Grunneiningar SI-kerfisins</title>
 <section id="fs-idp679312">
 <title>Lengd</title>
-<para id="fs-idm64613648">Staðaleining <emphasis effect="bold">lengdar</emphasis> í bæði
+<para id="fs-idm64613648">Staðaleining <emphasis effect="bold">lengdar</emphasis> bæði í
 SI-kerfinu og upprunalega metrakerfinu er <emphasis effect="bold">metri (m)</emphasis>. Metri var
 upphaflega skilgreindur sem 1/10.000.000 af vegalengdinni frá
 norðurpólnum að miðbaug. Hann er nú skilgreindur sem vegalengdin sem
-ljós fer í lofttæmi á 1/299.792.458 úr sekúndu. Metri er um 3 tommum
+ljós ferðast í lofttæmi á 1/299.792.458 úr sekúndu. Metri er um 3 tommum
 lengri en stika (<link target-id="CNX_Chem_01_04_MYdCmIn"/>); einn metri er um 39,37 tommur eða 1,094
 stikur. Lengri vegalengdir eru oft gefnar upp í kílómetrum (1 km = 1000
 m = 10<sup>3</sup> m), en styttri vegalengdir má gefa upp í sentímetrum (1 cm =
@@ -240,14 +240,14 @@ lengdir 1 m, 1 stiku, 1 cm og 1 tommu eru sýndar (ekki í raunstærð),
 <section id="fs-idm1313360">
 <title>Massi</title>
 <para id="fs-idp222999216">Staðaleining massa í SI-kerfinu er
-<emphasis effect="bold">kílógramm (kg)</emphasis>. Kílógrammið var áður skilgreint af Alþjóðasamtökunum
-um hreina og hagnýta efnafræði (<emphasis effect="bold">IUPAC</emphasis>) sem massi tiltekins
+<emphasis effect="bold">kílógramm (kg)</emphasis>. Kílógrammið var áður skilgreint af Alþjóðasamtökum
+um hreina og hagnýta efnafræði (<emphasis effect="bold">IUPAC</emphasis>) sem massi ákveðins
 viðmiðunarhlutar. Þessi hlutur var upphaflega einn lítri af hreinu
-vatni, en síðar var það málmhólkur úr platínu-iridíum-melmi með hæð og
-þvermál 39 mm (<link target-id="CNX_Chem_01_04_Kilogram"/>). Í maí 2019 var þessari skilgreiningu breytt
-í skilgreiningu sem byggir þess í stað á nákvæmlega mældum gildum
-nokkurra grundvallareðlisfræðilegra fasta.<footnote>Nánari
-upplýsingar má finna á
+vatni, og síðar var það málmsívalningur úr platínu-iridíum melmi með hæð
+og þvermál 39 mm (<link target-id="CNX_Chem_01_04_Kilogram"/>). Í maí 2019 var þessari skilgreiningu
+breytt í skilgreiningu sem byggir þess í stað á nákvæmlega mældum gildum
+nokkurra grundvallareðlisfræðilegra fasta.<footnote>Fyrir frekari
+upplýsingar sjá
 https://www.nist.gov/pml/weights-and-measures/si-units-mass</footnote>. Eitt
 kílógramm er um 2,2 pund. Grammið (g) er nákvæmlega jafnt og 1/1000 af
 massa kílógrammsins (10<sup>−3</sup> kg).</para>
@@ -262,24 +262,23 @@ National Institute of Standards and Technology (NIST) í Maryland.
 </section>
 <section id="fs-idm1531808">
 <title>Hitastig</title>
-<para id="fs-idp3379184">Hitastig er ástandseiginleiki.
-SI-eining hitastigs er <emphasis effect="bold">kelvin (K)</emphasis>. Samkvæmt venju IUPAC er notað
-kelvin (með litlum staf) fyrir orðið, K (hástafur) fyrir tákn
-einingarinnar, og hvorki orðið „gráða“ né gráðumerkið (°).
-<emphasis effect="bold">Selsíusgráða (°C)</emphasis> er einnig leyfð í SI-kerfinu, þar sem bæði orðið
-„gráða“ og gráðumerkið eru notuð fyrir selsíusmælingar. Selsíusgráður
-eru jafnstórar kelvingráðum, en kvarðarnir tveir setja núllpunkt sinn á
-mismunandi staði. Vatn frýs við 273,15 K (0 °C) og sýður við 373,15 K
-(100 °C), og eðlilegur líkamshiti manns er um það bil 310 K (37 °C).
-Fjallað verður um umbreytingu milli þessara tveggja eininga og
-Fahrenheit-kvarðans síðar í þessum kafla.</para>
+<para id="fs-idp3379184">Hitastig er eiginleiki óháður stærð.
+SI-eining hitastigs er <emphasis effect="bold">kelvin (K)</emphasis>. Samkvæmt venju IUPAC er orðið
+kelvin skrifað með litlum staf, K (hástafur) notað fyrir einingartáknið
+og hvorki orðið „gráða“ né gráðumerkið (°) notað. <emphasis effect="bold">Selsíusgráða (°C)</emphasis>
+er einnig leyfð í SI-kerfinu, og eru bæði orðið „gráða“ og gráðumerkið
+notuð fyrir selsíusmælingar. Selsíusgráður eru jafn stórar og kelvin, en
+kvarðarnir tveir setja núllpunkt sinn á mismunandi staði. Vatn frýs við
+273,15 K (0 °C) og sýður við 373,15 K (100 °C), og eðlilegur líkamshiti
+manns er um það bil 310 K (37 °C). Umbreytingu milli þessara tveggja
+eininga og Fahrenheit-kvarðans verður fjallað um síðar í þessum kafla.</para>
 </section>
 <section id="fs-idm101578432">
 <title>Tími</title>
 <para id="fs-idm101738864">Grunneining SI-kerfisins fyrir tíma
 er <emphasis effect="bold">sekúnda (s)</emphasis>. Hægt er að tákna lítil og stór tímabil með
 viðeigandi forskeiti; til dæmis, 3 míkrósekúndur = 0,000003 s = 3
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−6</sup> og 5 megasekúndur = 5.000.000 s = 5
+<m:math><m:mrow><m:mtext>density</m:mtext><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mtext>mass</m:mtext></m:mrow><m:mrow><m:mtext>volume</m:mtext></m:mrow></m:mfrac></m:mrow></m:math> 10<sup>−6</sup> og 5 megasekúndur = 5.000.000 s = 5
 <m:math><m:mo>×</m:mo></m:math> 10<sup>6</sup> s. Einnig er hægt að nota klukkustundir, daga og
 ár.</para>
 </section>
@@ -341,49 +340,49 @@ eðlismassa nokkurra algengra efna.</para>
 <colspec colnum="3" colname="c3"/>
 <thead>
 <row>
-<entry namest="c1" nameend="c3" align="center">Eðlismassi algengra efna</entry>
+<entry namest="c1" nameend="c3" align="center">Densities of Common Substances</entry>
 </row>
 <row valign="top">
-<entry align="left">Föst efni</entry>
-<entry align="left">Vökvar</entry>
-<entry align="left">Gö (við 25 °C og 1 atm)</entry>
+<entry align="left">Solids</entry>
+<entry align="left">Liquids</entry>
+<entry align="left">Gases (at 25 °C and 1 atm)</entry>
 </row>
 </thead>
 <tbody>
 <row valign="top">
+<entry align="left">ice (at 0 °C) 0.92 g/cm<sup>3</sup></entry>
+<entry align="left">water 1.0 g/cm<sup>3</sup></entry>
+<entry align="left">dry air 1.20 g/L</entry>
+</row>
+<row valign="top">
+<entry align="left">oak (wood) 0.60–0.90 g/cm<sup>3</sup></entry>
+<entry align="left">ethanol 0.79 g/cm<sup>3</sup></entry>
+<entry align="left">oxygen 1.31 g/L</entry>
+</row>
+<row valign="top">
+<entry align="left">Eðlismassi algengra efna</entry>
+<entry align="left">Föst efni</entry>
+<entry align="left">Vökvar</entry>
+</row>
+<row valign="top">
+<entry align="left">Gös (við 25 °C og 1 atm)</entry>
 <entry align="left">ís (við 0 °C) 0,92 g/cm<sup>3</sup></entry>
 <entry align="left">vatn 1,0 g/cm<sup>3</sup></entry>
-<entry align="left">þurrt loft 1,20 g/L</entry>
 </row>
 <row valign="top">
+<entry align="left">þurrt loft 1,20 g/L</entry>
 <entry align="left">eik (viður) 0,60–0,90 g/cm<sup>3</sup></entry>
 <entry align="left">etanól 0,79 g/cm<sup>3</sup></entry>
-<entry align="left">súrefni 1,31 g/L</entry>
 </row>
 <row valign="top">
+<entry align="left">súrefni 1,31 g/L</entry>
 <entry align="left">járn 7,9 g/cm<sup>3</sup></entry>
 <entry align="left">asetón 0,79 g/cm<sup>3</sup></entry>
-<entry align="left">nitur 1,14 g/L</entry>
 </row>
 <row valign="top">
+<entry align="left">nitur 1,14 g/L</entry>
 <entry align="left">kopar 9,0 g/cm<sup>3</sup></entry>
 <entry align="left">glýserín 1,26 g/cm<sup>3</sup></entry>
-<entry align="left">koldíoxíð 1,80 g/L</entry>
-</row>
-<row valign="top">
-<entry align="left">blý 11,3 g/cm<sup>3</sup></entry>
-<entry align="left">ólífuolía 0,92 g/cm<sup>3</sup></entry>
-<entry align="left">helíum 0,16 g/L</entry>
-</row>
-<row valign="top">
-<entry align="left">silfur 10,5 g/cm<sup>3</sup></entry>
-<entry align="left">bensín 0,70–0,77 g/cm<sup>3</sup></entry>
-<entry align="left">neon 0,83 g/L</entry>
-</row>
-<row valign="top">
-<entry align="left">gull 19,3 g/cm<sup>3</sup></entry>
-<entry align="left">kvikasilfur 13,6 g/cm<sup>3</sup></entry>
-<entry align="left">radon 9,1 g/L</entry>
 </row>
 </tbody>
 </tgroup>

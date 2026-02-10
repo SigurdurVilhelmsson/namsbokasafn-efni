@@ -555,8 +555,20 @@ með röð efnaskiptahvarfa. Fyrsta efnahvarfið framleiðir asetaldehýð;
 síðan myndast önnur myndefni. Eftirfarandi gögn hafa verið ákvörðuð
 fyrir hraðann sem áfengi er fjarlægt úr blóði meðalkarlmanns, þó að
 einstaklingsbundinn hraði geti verið breytilegur um 25–30%. Konur
-umbrjóta áfengi aðeins hægar en karlar:<newline/>
-<table id="fs-idm121830912" class="column-header unnumbered" summary="This table has four columns and two rows. The first column serves as a header and labels each row, "[ C subscript 2 H subscript 5 O H ] ( M )," and, "Rate ( mol / L / h )." To the right of the "Initial Rate ( mol / L / s)" header are the numbers: 4.4 times ten to the negative 2; 3.3 times ten to the negative 2; 2.2 times ten to the negative 2. To the right of the "Rate ( mol / L / h )" header are the numbers: 2.0 times ten to the negative 2, 2.0 times ten to the negative 2, and 2.0 times ten to the negative 2.">
+umbrjóta áfengi aðeins hægar en karlar: [C<sub>2</sub>H<sub>5</sub>OH] (<emphasis effect="italics">M</emphasis>) 4,4
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> 3,3 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> 2,2 <m:math><m:mo>×</m:mo></m:math>
+10<sup>−2</sup> Hraði (mól L<sup>−1</sup> klst.<sup>−1</sup>) 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> 2,0
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> 2,0 <m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup></para>
+<para id="fs-idm233198896">Ákvarðaðu hraðajöfnuna,
+hraðafastann og heildarstig þessa efnahvarfs.</para>
+</problem>
+<solution id="fs-idm182997088">
+<para id="fs-idm204335424">hraði = <emphasis effect="italics">k</emphasis>; <emphasis effect="italics">k</emphasis> = 2,0
+<m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> mól L<sup>−1</sup> klst.<sup>−1</sup> (um 0,9 g L<sup>−1</sup> klst.<sup>−1</sup>
+fyrir meðalkarlmann); Efnahvarfið er af núllta stigi.</para>
+</solution>
+</exercise>
+<table id="fs-idm121830912" class="column-header unnumbered" summary="This table has four columns and two rows. The first column serves as a header and labels each row, “[ C subscript 2 H subscript 5 O H ] ( M ),” and, “Rate ( mol / L / h ).” To the right of the “Initial Rate ( mol / L / s)” header are the numbers: 4.4 times ten to the negative 2; 3.3 times ten to the negative 2; 2.2 times ten to the negative 2. To the right of the “Rate ( mol / L / h )” header are the numbers: 2.0 times ten to the negative 2, 2.0 times ten to the negative 2, and 2.0 times ten to the negative 2.">
 <label/>
 <tgroup cols="4">
 <colspec colnum="1" colname="c1"/>
@@ -578,16 +590,7 @@ umbrjóta áfengi aðeins hægar en karlar:<newline/>
 </row>
 </tbody>
 </tgroup>
-</table></para>
-<para id="fs-idm233198896">Ákvarðaðu hraðajöfnuna,
-hraðafastann og heildarstig þessa efnahvarfs.</para>
-</problem>
-<solution id="fs-idm182997088">
-<para id="fs-idm204335424">hraði = <emphasis effect="italics">k</emphasis>; <emphasis effect="italics">k</emphasis> = 2,0
-<m:math><m:mo>×</m:mo></m:math> 10<sup>−2</sup> mól L<sup>−1</sup> klst.<sup>−1</sup> (um 0,9 g L<sup>−1</sup> klst.<sup>−1</sup>
-fyrir meðalkarlmann); Efnahvarfið er af núllta stigi.</para>
-</solution>
-</exercise>
+</table>
 <exercise id="fs-idm233306880">
 <problem id="fs-idm254597216">
 <para id="fs-idm222957616">Við niðurbrot ammoníaks á

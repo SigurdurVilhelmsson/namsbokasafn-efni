@@ -101,12 +101,12 @@ hitastigi.</caption>
 til að sýna að varminn sem efni M fær er jafn varmanum sem efni W tapar:</para>
 <equation id="fs-idm280055136" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>q</m:mi><m:mtext>substance M</m:mtext></m:msub><m:mo>=</m:mo><m:mtext>−</m:mtext><m:msub><m:mi>q</m:mi><m:mtext>substance W</m:mtext></m:msub></m:mrow></m:math></equation>
 <para id="fs-idm129199216">Stærð varma (breytingar) er því sú
-sama fyrir bæði efnin og neikvæða formerkið sýnir aðeins að <emphasis effect="italics">q</emphasis><sub>efni M</sub>
-og <emphasis effect="italics">q</emphasis><sub>efni W</sub> hafa gagnstæða stefnu varmaflæðis (öflun eða tap) en
+sama fyrir bæði efnin og neikvæða formerkið sýnir aðeins að <emphasis effect="italics">q</emphasis>~efni M~
+og <emphasis effect="italics">q</emphasis>~efni W~ hafa gagnstæða stefnu varmaflæðis (öflun eða tap) en
 gefur ekki til kynna formerki hvors <emphasis effect="italics">q</emphasis>-gildis (það ræðst af því hvort
 viðkomandi efni fær eða tapar varma, samkvæmt skilgreiningu). Í þeim
-sérstöku aðstæðum sem lýst er, er <emphasis effect="italics">q</emphasis><sub>efni M</sub> neikvætt gildi og <emphasis effect="italics">q</emphasis><sub>efni
-W</sub> er jákvætt, þar sem varmi flyst frá M til W.</para>
+sérstöku aðstæðum sem lýst er, er <emphasis effect="italics">q</emphasis>~efni M~ neikvætt gildi og <emphasis effect="italics">q</emphasis>~efni
+W~ er jákvætt, þar sem varmi flyst frá M til W.</para>
 <example id="fs-idp13199280">
 <para id="fs-idm94530896"><title>Varmaflutningur milli
 efna með mismunandi hitastig</title>360,0 g stykki af steypustyrktarjárni
@@ -133,7 +133,7 @@ að 425 ml af vatni = 425 g. Athugaðu að lokahitastig bæði
 steypustyrktarjárnsins og vatnsins er 42,7 °C. Ef þekktum gildum er
 stungið inn fæst:</para>
 <equation id="fs-idm160292560" class="unnumbered"><m:math><m:mrow><m:mo>(</m:mo><m:mn>0.449</m:mn><m:mspace width="0.2em"/><m:mtext>J/g °C</m:mtext><m:mo>)</m:mo><m:mo>(</m:mo><m:mn>360.0</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mo>)</m:mo><m:mo>(</m:mo><m:mn>42.7</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:msub><m:mi>T</m:mi><m:mtext>i,rebar</m:mtext></m:msub><m:mo>)</m:mo><m:mo>=</m:mo><m:mo>−</m:mo><m:mo>(</m:mo><m:mn>4.184</m:mn><m:mspace width="0.2em"/><m:mtext>J/g °C</m:mtext><m:mo>)</m:mo><m:mo>(</m:mo><m:mn>425</m:mn><m:mtext>g</m:mtext><m:mo>)</m:mo><m:mo>(</m:mo><m:mn>42.7</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>24.0</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo>)</m:mo></m:mrow></m:math></equation><equation id="fs-idp7310352" class="unnumbered"><m:math><m:mrow><m:msub><m:mi>T</m:mi><m:mrow><m:mstyle mathvariant="italic"><m:mtext>i,rebar</m:mtext></m:mstyle></m:mrow></m:msub><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mfrac><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>4.184</m:mn><m:mspace width="0.2em"/><m:mtext>J/g °C</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>425</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>42.7</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo>−</m:mo><m:mn>24.0</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow><m:mrow><m:mo stretchy="false">(</m:mo><m:mn>0.449</m:mn><m:mspace width="0.2em"/><m:mtext>J/g °C</m:mtext><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">(</m:mo><m:mn>360.0</m:mn><m:mspace width="0.2em"/><m:mtext>g</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>+</m:mo><m:mn>42.7</m:mn><m:mspace width="0.2em"/><m:mtext>°C</m:mtext></m:mrow></m:math></equation><para id="fs-idm56113136">Lausnin á þessu gefur
-<emphasis effect="italics">T</emphasis><sub>u,steypustyrktarjárn</sub>= 248 °C, þannig að upphafshitastig
+<emphasis effect="italics">T</emphasis>~u,steypustyrktarjárn~= 248 °C, þannig að upphafshitastig
 steypustyrktarjárnsins var 248 °C.</para>
 <para id="fs-idm82711952"><title>Prófaðu þekkingu þína</title>248 g koparstykki er sleppt í 390 ml
 af vatni með hitastigið 22,6 °C. Lokahitastig vatnsins mældist 39,9 °C.
@@ -535,8 +535,8 @@ væri tillit til varmarýmdar hitaeiningamælisins? Útskýrðu svarið.</para>
 varmarýmdar hitaeiningamælisins mun bæta fyrir varmaorkuna sem flyst til
 lausnarinnar frá hitaeiningamælinum; þessi nálgun felur í sér
 hitaeiningamælinn sjálfan, ásamt lausninni, sem „umhverfi“: <emphasis effect="italics">q</emphasis><sub>hvarf</sub> =
-−(<emphasis effect="italics">q</emphasis><sub>lausn</sub> + <emphasis effect="italics">q</emphasis><sub>hitaeiningamælir</sub>); þar sem bæði <emphasis effect="italics">q</emphasis><sub>lausn</sub> og
-<emphasis effect="italics">q</emphasis><sub>hitaeiningamælir</sub> eru neikvæð, mun það að taka síðarnefnda liðinn
+−(<emphasis effect="italics">q</emphasis><sub>lausn</sub> + <emphasis effect="italics">q</emphasis>~hitaeiningamælir~); þar sem bæði <emphasis effect="italics">q</emphasis><sub>lausn</sub> og
+<emphasis effect="italics">q</emphasis>~hitaeiningamælir~ eru neikvæð, mun það að taka síðarnefnda liðinn
 með (<emphasis effect="italics">q</emphasis><sub>hvarf</sub>) gefa hærra gildi fyrir upplausnarvarmann</para>
 </solution>
 </exercise>

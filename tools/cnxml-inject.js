@@ -43,6 +43,22 @@ import path from 'path';
 const BOOKS_DIR = 'books/efnafraedi';
 
 // =====================================================================
+// HELPER FUNCTIONS
+// =====================================================================
+
+/**
+ * Format chapter for use in directory paths.
+ * @param {number|string} chapter - Chapter number or "appendices"
+ * @returns {string} Formatted chapter string (e.g., "ch01", "appendices")
+ */
+function formatChapter(chapter) {
+  if (chapter === 'appendices') {
+    return 'appendices';
+  }
+  return `ch${String(chapter).padStart(2, '0')}`;
+}
+
+// =====================================================================
 // ARGUMENT PARSING
 // =====================================================================
 
@@ -61,8 +77,11 @@ function parseArgs(args) {
     const arg = args[i];
     if (arg === '-h' || arg === '--help') result.help = true;
     else if (arg === '--verbose') result.verbose = true;
-    else if (arg === '--chapter' && args[i + 1]) result.chapter = parseInt(args[++i], 10);
-    else if (arg === '--module' && args[i + 1]) result.module = args[++i];
+    else if (arg === '--chapter' && args[i + 1]) {
+      const chapterArg = args[++i];
+      // Accept either numeric chapter or "appendices"
+      result.chapter = chapterArg === 'appendices' ? 'appendices' : parseInt(chapterArg, 10);
+    } else if (arg === '--module' && args[i + 1]) result.module = args[++i];
     else if (arg === '--lang' && args[i + 1]) result.lang = args[++i];
     else if (arg === '--source-dir' && args[i + 1]) result.sourceDir = args[++i];
     else if (arg === '--output-dir' && args[i + 1]) result.outputDir = args[++i];
@@ -81,9 +100,10 @@ Reconstructs complete CNXML from translated segments and preserved structure.
 Usage:
   node tools/cnxml-inject.js --chapter <num> --module <id>
   node tools/cnxml-inject.js --chapter <num>
+  node tools/cnxml-inject.js --chapter appendices
 
 Options:
-  --chapter <num>      Chapter number
+  --chapter <num|appendices>  Chapter number or "appendices"
   --module <id>        Specific module ID (default: all in chapter)
   --lang <code>        Language code (default: is)
   --source-dir <dir>   Segments directory relative to books/efnafraedi/
@@ -1165,8 +1185,8 @@ function stripNestedElements(cnxml, tagNames) {
  * Find modules to process for a chapter.
  */
 function findChapterModules(chapter, moduleId = null) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const structDir = path.join(BOOKS_DIR, '02-structure', `ch${chapterStr}`);
+  const chapterDir = formatChapter(chapter);
+  const structDir = path.join(BOOKS_DIR, '02-structure', chapterDir);
 
   if (!fs.existsSync(structDir)) {
     throw new Error(`Structure directory not found: ${structDir}`);
@@ -1192,33 +1212,23 @@ function findChapterModules(chapter, moduleId = null) {
  * @param {string} sourceDir - Directory containing segments, relative to BOOKS_DIR (e.g., '02-for-mt', '03-faithful')
  */
 function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
-  const chapterStr = String(chapter).padStart(2, '0');
+  const chapterDir = formatChapter(chapter);
 
   // Load structure
-  const structPath = path.join(
-    BOOKS_DIR,
-    '02-structure',
-    `ch${chapterStr}`,
-    `${moduleId}-structure.json`
-  );
+  const structPath = path.join(BOOKS_DIR, '02-structure', chapterDir, `${moduleId}-structure.json`);
   const structure = JSON.parse(fs.readFileSync(structPath, 'utf-8'));
 
   // Load segments from specified source directory
   const segmentsPath = path.join(
     BOOKS_DIR,
     sourceDir,
-    `ch${chapterStr}`,
+    chapterDir,
     `${moduleId}-segments.${lang}.md`
   );
   let segments;
   if (!fs.existsSync(segmentsPath)) {
     // Fall back to English segments in 02-for-mt if translation not available
-    const enPath = path.join(
-      BOOKS_DIR,
-      '02-for-mt',
-      `ch${chapterStr}`,
-      `${moduleId}-segments.en.md`
-    );
+    const enPath = path.join(BOOKS_DIR, '02-for-mt', chapterDir, `${moduleId}-segments.en.md`);
     if (!fs.existsSync(enPath)) {
       throw new Error(`Segments file not found: ${segmentsPath} or ${enPath}`);
     }
@@ -1233,16 +1243,11 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
   }
 
   // Load equations
-  const eqPath = path.join(
-    BOOKS_DIR,
-    '02-structure',
-    `ch${chapterStr}`,
-    `${moduleId}-equations.json`
-  );
+  const eqPath = path.join(BOOKS_DIR, '02-structure', chapterDir, `${moduleId}-equations.json`);
   const equations = fs.existsSync(eqPath) ? JSON.parse(fs.readFileSync(eqPath, 'utf-8')) : {};
 
   // Load original CNXML
-  const originalPath = path.join(BOOKS_DIR, '01-source', `ch${chapterStr}`, `${moduleId}.cnxml`);
+  const originalPath = path.join(BOOKS_DIR, '01-source', chapterDir, `${moduleId}.cnxml`);
   if (!fs.existsSync(originalPath)) {
     throw new Error(`Original CNXML not found: ${originalPath}`);
   }
@@ -1255,8 +1260,8 @@ function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
  * Ensure output directory exists.
  */
 function ensureOutputDir(chapter) {
-  const chapterStr = String(chapter).padStart(2, '0');
-  const outputDir = path.join(BOOKS_DIR, '03-translated', `ch${chapterStr}`);
+  const chapterDir = formatChapter(chapter);
+  const outputDir = path.join(BOOKS_DIR, '03-translated', chapterDir);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
