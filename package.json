@@ -24,7 +24,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "mathjax-full": "^3.2.1"
+    "mathjax-full": "^3.2.2"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
