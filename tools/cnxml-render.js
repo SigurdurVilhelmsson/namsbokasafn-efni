@@ -40,7 +40,11 @@ import {
   renderFootnotesSection,
   translateLatexText,
 } from './lib/cnxml-elements.js';
-import { convertMathMLToLatex, localizeNumbersInMathML } from './lib/mathml-to-latex.js';
+import {
+  convertMathMLToLatex,
+  localizeNumbersInMathML,
+  localizeMathMLText,
+} from './lib/mathml-to-latex.js';
 import { buildModuleSections } from './lib/module-sections.js';
 
 // =====================================================================
@@ -1470,7 +1474,8 @@ function renderEquation(eq, context) {
     return `<div${id ? ` id="${escapeAttr(id)}"` : ''} class="equation">${eq.content}</div>`;
   }
 
-  const localizedMathml = localizeNumbersInMathML(mathMatch[0]);
+  let localizedMathml = localizeNumbersInMathML(mathMatch[0]);
+  localizedMathml = localizeMathMLText(localizedMathml, context.equationTextDictionary);
   const latex = translateLatexText(
     convertMathMLToLatex(localizedMathml),
     context.equationTextDictionary
@@ -1892,9 +1897,17 @@ function extractKeyEquations(chapter, modules, track) {
 /**
  * Render key equations as HTML table.
  */
-function renderKeyEquations(chapter, equations) {
+function renderKeyEquations(chapter, equations, equationTextDictionary) {
   const lines = [];
-  const context = { chapter, figures: {}, tables: {}, examples: {}, terms: {}, footnotes: [] };
+  const context = {
+    chapter,
+    figures: {},
+    tables: {},
+    examples: {},
+    terms: {},
+    footnotes: [],
+    equationTextDictionary,
+  };
 
   lines.push('<section class="key-equations">');
   lines.push('  <h2>Lykiljöfnur</h2>');
@@ -1910,8 +1923,9 @@ function renderKeyEquations(chapter, equations) {
 
       // Check if this is MathML (starts with <m:math>) or inline HTML/CNXML
       if (eq.mathml.trim().startsWith('<m:math')) {
-        // Process MathML: localize numbers and render to SVG
-        const localizedMathml = localizeNumbersInMathML(eq.mathml);
+        // Process MathML: localize numbers and text, then render to SVG
+        let localizedMathml = localizeNumbersInMathML(eq.mathml);
+        localizedMathml = localizeMathMLText(localizedMathml, equationTextDictionary);
         renderedMath = renderMathML(localizedMathml, true);
       } else {
         // Process inline CNXML content (e.g., <emphasis>, <sub>, <sup>)
@@ -2786,7 +2800,11 @@ async function main() {
         );
       }
 
-      const keyEquationsHtml = renderKeyEquations(args.chapter, keyEquations);
+      const keyEquationsHtml = renderKeyEquations(
+        args.chapter,
+        keyEquations,
+        equationTextDictionary
+      );
 
       // Wrap in full HTML document
       const fullHtml = buildHtmlDocument({

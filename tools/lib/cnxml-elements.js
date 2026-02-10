@@ -6,7 +6,11 @@
  */
 
 import { renderMathML } from './mathjax-render.js';
-import { convertMathMLToLatex, localizeNumbersInMathML } from './mathml-to-latex.js';
+import {
+  convertMathMLToLatex,
+  localizeNumbersInMathML,
+  localizeMathMLText,
+} from './mathml-to-latex.js';
 
 // =====================================================================
 // LATEX TEXT TRANSLATIONS
@@ -190,7 +194,8 @@ export function renderEquation(content, attrs, context) {
     return createElement('div', { id, class: 'equation' }, content);
   }
 
-  const localizedMathml = localizeNumbersInMathML(mathMatch[0]);
+  let localizedMathml = localizeNumbersInMathML(mathMatch[0]);
+  localizedMathml = localizeMathMLText(localizedMathml, context && context.equationTextDictionary);
   const latex = translateLatexText(
     convertMathMLToLatex(localizedMathml),
     context && context.equationTextDictionary
@@ -436,7 +441,8 @@ export function processInlineContent(content, context) {
 
   // Convert inline MathML to MathJax SVG (keep data-latex for copy)
   result = result.replace(/<m:math[^>]*>[\s\S]*?<\/m:math>/g, (mathml) => {
-    const localizedMathml = localizeNumbersInMathML(mathml);
+    let localizedMathml = localizeNumbersInMathML(mathml);
+    localizedMathml = localizeMathMLText(localizedMathml, context.equationTextDictionary);
     const latex = translateLatexText(
       convertMathMLToLatex(localizedMathml),
       context.equationTextDictionary

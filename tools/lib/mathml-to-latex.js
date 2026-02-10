@@ -281,6 +281,34 @@ export function extractAllMathML(str) {
 }
 
 // =====================================================================
+// TEXT LOCALIZATION
+// =====================================================================
+
+/**
+ * Translate English text inside <m:mtext> elements in MathML.
+ * Companion to localizeNumbersInMathML() — handles text while that handles numbers.
+ * Uses the same longest-first, case-insensitive, word-boundary matching as translateLatexText().
+ * @param {string} mathml - MathML string (with m: namespace prefix)
+ * @param {Array<[string, string]>|null} dictionary - Sorted [english, icelandic] pairs from equation-text.json
+ * @returns {string} MathML with translated <m:mtext> content
+ */
+export function localizeMathMLText(mathml, dictionary) {
+  if (!dictionary || dictionary.length === 0) return mathml;
+
+  return mathml.replace(/<m:mtext([^>]*)>([^<]+)<\/m:mtext>/g, (match, attrs, content) => {
+    let translated = content;
+    for (const [en, is] of dictionary) {
+      const pattern = new RegExp(`\\b${en.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'gi');
+      translated = translated.replace(pattern, is);
+    }
+    if (translated !== content) {
+      return `<m:mtext${attrs}>${translated}</m:mtext>`;
+    }
+    return match;
+  });
+}
+
+// =====================================================================
 // NUMBER LOCALIZATION
 // =====================================================================
 
@@ -330,8 +358,8 @@ export function detectNumberFormat(str) {
   if (hasPeriod && hasComma) {
     // US: comma-thousands + period-decimal  (e.g., "1,234.56")
     // IS: period-thousands + comma-decimal  (e.g., "1.234,56")
-    const usPattern = /\d,\d{3}[^,]*\.\d/;  // comma-group then decimal point
-    const isPattern = /\d\.\d{3}[^.]*,\d/;  // period-group then decimal comma
+    const usPattern = /\d,\d{3}[^,]*\.\d/; // comma-group then decimal point
+    const isPattern = /\d\.\d{3}[^.]*,\d/; // period-group then decimal comma
     if (usPattern.test(s)) return 'us';
     if (isPattern.test(s)) return 'is';
     // Fallback: treat as US
