@@ -670,5 +670,87 @@
       }
     ]
   },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idm94851696",
+      "class": "scaled-down-30",
+      "alt": "Figure A shows a carbon atom that forms two, separate double bonds with two oxygen atoms.",
+      "src": "../../media/CNX_Chem_02_04_Question3a_img.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idm161278736",
+      "class": "scaled-down-30",
+      "alt": "Figure B shows a hydrogen atom which forms a single bond with a carbon atom. The carbon atom forms a triple bond with another carbon atom. The second carbon atom forms a single bond with a hydrogen atom.",
+      "src": "../../media/CNX_Chem_02_04_Question3b_img.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:3]]",
+      "id": "fs-idm189214544",
+      "class": "scaled-down-30",
+      "alt": "Figure C shows a carbon atom forming a double bond with another carbon atom. Each carbon atom forms a single bond with two hydrogen atoms.",
+      "src": "../../media/CNX_Chem_02_04_Question3c_img.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:4]]",
+      "id": "fs-idm166740960",
+      "class": "scaled-down-30",
+      "alt": "Figure D shows a sulfur atom forming single bonds with four oxygen atoms. Two of the oxygen atoms form a single bond with a hydrogen atom.",
+      "src": "../../media/CNX_Chem_02_04_Question3d_img.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:5]]",
+      "id": "fs-idm173064208",
+      "class": "scaled-down-30",
+      "alt": "Figure A shows a structural diagram of four carbon atoms bonded together into a chain. The two carbon atoms on the left form a double bond with each other. All of the remaining carbon atoms form single bonds with each other. The leftmost carbon also forms single bonds with two hydrogen. The second carbon in the chain forms a single bond with a hydrogen atom. The third carbon in the chain forms a single bond with two hydrogen atoms each. The rightmost carbon forms a single bond with three hydrogen atoms each.",
+      "src": "../../media/CNX_Chem_02_04_Question4a_img.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:6]]",
+      "id": "fs-idm89506816",
+      "class": "scaled-down-30",
+      "alt": "Figure B shows a structural diagram of a molecule that has a chain of four carbon atoms. The leftmost carbon atom forms a single bond with three hydrogen atoms each and single bond with the second carbon atom. The second carbon atom forms a triple bond with the third carbon atom. The third carbon atom forms a single bond to the fourth carbon atom. The fourth carbon atom forms a single bond to three hydrogen atoms each.",
+      "src": "../../media/CNX_Chem_02_04_Question4b_img.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:7]]",
+      "id": "fs-idp205190960",
+      "class": "scaled-down-30",
+      "alt": "Figure C shows a structural diagram of two silicon atoms are bonded together with a single bond. Each of the silicon atoms form single bonds to two chlorine atoms each and one hydrogen atom.",
+      "src": "../../media/CNX_Chem_02_04_Question4c_img.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:8]]",
+      "id": "fs-idm1803056",
+      "class": "scaled-down-30",
+      "alt": "Figure D shows a structural diagram of a phosphorus atom that forms a single bond to four oxygen atoms each. Three of the oxygen atoms each have a single bond to a hydrogen atom.",
+      "src": "../../media/CNX_Chem_02_04_Question4d_img.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:9]]",
+      "id": "fs-idm84746320",
+      "class": "scaled-down-30",
+      "alt": "Figure A shows a structural diagram of two carbon atoms that form a single bond with each other. The left carbon atom forms single bonds with hydrogen atoms each. The right carbon forms a double bond to an oxygen atom. The right carbon also forms a single bonded to another oxygen atom. This oxygen atom also forms a single bond to a hydrogen atom.",
+      "src": "../../media/CNX_Chem_02_04_Question7a_img.jpg",
+      "mimeType": "image/jpg"
+    },
+    {
+      "placeholder": "[[MEDIA:10]]",
+      "id": "fs-idm179141440",
+      "class": "scaled-down",
+      "alt": "Figure B shows a structural diagram containing a leftmost carbon that forms single bonds to three hydrogen atoms each. This leftmost carbon also forms a single bond to a second carbon atom. The second carbon atom forms a double bond with an oxygen atom. The second carbon also forms a single bond to a second oxygen atom. This oxygen atom forms a single bond to a third carbon atom. This third carbon atom forms single bonds with two hydrogen atoms each as well as a single bond with another carbon atom. The rightmost carbon atom forms a single bond with three hydrogen atoms each.",
+      "src": "../../media/CNX_Chem_02_04_Question7b_img.jpg",
+      "mimeType": "image/jpg"
+    }
+  ],
   "sectionOrder": 4
 }

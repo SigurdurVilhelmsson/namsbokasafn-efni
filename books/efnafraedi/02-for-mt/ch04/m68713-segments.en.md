@@ -197,7 +197,7 @@ Write the balanced equation, then outline the steps necessary to determine the i
 (e) The number of moles and the mass of copper(II) carbonate needed to produce 1.500 kg of copper(II) oxide. (CO~2~ is the other product.)
 
 <!-- SEG:m68713:problem:fs-idp241908400 -->
-(f)
+(f) [[MEDIA:1]]
 
 <!-- SEG:m68713:problem:fs-idp53786208 -->
 Determine the number of moles and the mass requested for each reaction in [#fs-idp166618800].
@@ -224,7 +224,7 @@ Write the balanced equation, then outline the steps necessary to determine the i
 (e) The number of moles and the mass of barium peroxide, BaO~2~, needed to produce 2.500 kg of barium oxide, BaO (O~2~ is the other product.)
 
 <!-- SEG:m68713:problem:fs-idp83999440 -->
-(f)
+(f) [[MEDIA:2]]
 
 <!-- SEG:m68713:problem:fs-idm1240512 -->
 Determine the number of moles and the mass requested for each reaction in [#fs-idp16477696].

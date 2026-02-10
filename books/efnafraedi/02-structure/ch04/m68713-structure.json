@@ -889,5 +889,23 @@
       }
     ]
   },
+  "inlineMedia": [
+    {
+      "placeholder": "[[MEDIA:1]]",
+      "id": "fs-idp8901744",
+      "class": null,
+      "alt": "This figure includes two structural formulas. It reads, “The number of moles and the mass of,” which is followed by a structure with two C atoms bonded with a single horizontal at the center. Both C atoms have H atoms bonded above and below. The C atom to the left has a B r atom bonded to its left. The C atom to the right has a B r atom bonded to its right. Following this structure, the figure reads, “formed by the reaction of 12.85 g of,” which is followed by a structure with two C atoms connected with a horizontal double bond. The C atom to the left has H atoms bonded above and to the left and below and to the left. The C atom to the right has H atoms bonded above and to the right and below and to the right. The figure ends with, “with an excess of B r subscript 2.”",
+      "src": "../../media/CNX_Chem_04_03_etheneBr_img.jpg",
+      "mimeType": "image/jpeg"
+    },
+    {
+      "placeholder": "[[MEDIA:2]]",
+      "id": "fs-idp272578432",
+      "class": null,
+      "alt": "This figure includes two structural formulas. It reads, “The number of moles and the mass of,” which is followed by a structure with two C atoms connected with a horizontal double bond at the center. The C atom to the left has H atoms bonded above and to the left and below and to the left. The C atom to the right has H atoms bonded above and to the right and below and to the right. Following this structure, the figure reads, “required to react with H subscript 2 O to produce 9.55 g of,” which is followed by a structure with two C atoms connected with a horizontal single bond. The C atom to the left has H atoms bonded above, to the left, and below. The C atom to the right has H atoms bonded above and below. To the right, an O atom forms a single bond with the C atom. A single H atom is bonded to the right side of the O atom.",
+      "src": "../../media/CNX_Chem_04_03_ethene_img.jpg",
+      "mimeType": "image/jpeg"
+    }
+  ],
   "sectionOrder": 3
 }

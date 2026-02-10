@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "moduleId": "m68730",
+  "extractedAt": "2026-02-10T19:11:35.235Z",
+  "sourceHash": "3f378ee180a7d8fd",
+  "segmentCount": 8,
+  "segmentIds": [
+    "m68730:title:auto-1",
+    "m68730:abstract-item:abstract-item-1",
+    "m68730:abstract-item:abstract-item-2",
+    "m68730:abstract-item:abstract-item-3",
+    "m68730:abstract-item:abstract-item-4",
+    "m68730:abstract-item:abstract-item-5",
+    "m68730:caption:CNX_Chem_04_00_Rocket-caption",
+    "m68730:para:fs-idm17418752"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 1,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_04_00_Rocket"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

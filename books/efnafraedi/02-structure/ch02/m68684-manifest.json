@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "moduleId": "m68684",
+  "extractedAt": "2026-02-10T19:11:34.751Z",
+  "sourceHash": "48e22a5a2498e850",
+  "segmentCount": 11,
+  "segmentIds": [
+    "m68684:title:auto-1",
+    "m68684:abstract-item:abstract-item-1",
+    "m68684:abstract-item:abstract-item-2",
+    "m68684:abstract-item:abstract-item-3",
+    "m68684:abstract-item:abstract-item-4",
+    "m68684:abstract-item:abstract-item-5",
+    "m68684:abstract-item:abstract-item-6",
+    "m68684:abstract-item:abstract-item-7",
+    "m68684:caption:CNX_Chem_02_00_Biomarkers-caption",
+    "m68684:para:fs-idm172551024",
+    "m68684:para:eip-557"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 2,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_02_00_Biomarkers"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

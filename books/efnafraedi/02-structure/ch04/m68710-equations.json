@@ -738,7 +738,7 @@
   },
   "fs-idp231200304": {
     "mathml": "<m:math><m:mtable columnalign=\"left\"><m:mtr><m:mtd columnalign=\"right\"><m:mtext mathvariant=\"bold\">oxidation</m:mtext></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mtext>increase in oxidation number</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd columnalign=\"right\"><m:mtext mathvariant=\"bold\">reduction</m:mtext></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign=\"left\"><m:mtext>decrease in oxidation number</m:mtext></m:mtd></m:mtr></m:mtable></m:math>",
-    "latex": "\\begin{aligned} oxidation & = & \\text{increase in oxidation number} \\\\ reduction & = & \\text{decrease in oxidation number} \\end{aligned}",
+    "latex": "\\begin{aligned} \\text{oxidation} & = & \\text{increase in oxidation number} \\\\ \\text{reduction} & = & \\text{decrease in oxidation number} \\end{aligned}",
     "isBlock": true
   },
   "fs-idp91244624": {

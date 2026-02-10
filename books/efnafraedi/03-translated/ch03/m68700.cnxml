@@ -184,8 +184,7 @@ Ott)</caption>
 </figure>
 <para id="fs-idm26436032">Mólmassi hvers efnis er tölulega
 jafngildur atóm- eða formúlumassa þess í amu. Samkvæmt skilgreiningu amu
-vegur eitt <sup>12</sup>C atóm 12 amu (atómmassi þess er 12 amu). Eitt mól af
-<sup>12</sup>C vegur 12 g (mólmassi þess er 12 g/mól). Þetta samband gildir fyrir
+vegur eitt <sup>12</sup>C atóm 12 amu (atómmassi þess er 12 amu). Eitt mól af <sup>12</sup>C vegur 12 g (mólmassi þess er 12 g/mól). Þetta samband gildir fyrir
 öll frumefni, þar sem atómmassar þeirra eru mældir miðað við
 amu-viðmiðunarefnið, <sup>12</sup>C. Með því að útvíkka þessa meginreglu er
 mólmassi efnasambands í grömmum sömuleiðis tölulega jafngildur
@@ -311,9 +310,9 @@ lofti?</para>
 <para id="fs-idm19496816"><title>Lausn</title>Mólmagn Ar er gefið og það á að nota
 til að finna samsvarandi massa í grömmum. Þar sem magn Ar er minna en 1
 mól verður massinn minni en massi 1 móls af Ar, sem er um það bil 40 g.
-Mólmagnið sem um ræðir er um það bil einn þúsundasti (<sub>10<sup>−3</sup>) af móli
+Mólmagnið sem um ræðir er um það bil einn þúsundasti (~10<sup>−3</sup>) af móli
 og því ætti samsvarandi massi að vera um það bil einn þúsundasti af
-mólmassanum (</sub>0,04 g):</para>
+mólmassanum (~0,04 g):</para>
 <media id="fs-idp10919328" class="scaled-down" alt="A diagram of two boxes connected by a right-facing arrow is shown. The box on the left contains the phrase, “Moles of A r atoms ( mol )” while the one on the right contains the phrase, “Mass of A r atoms ( g ).” There is a phrase under the arrow that says “Multiply by molar mass ( g / mol ).”">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_argon_img-9025.jpg"/>
 </media>
@@ -341,9 +340,9 @@ til að breyta þessu mólmagni í fjölda Cu-atóma:</para>
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_02_copperMoles_img-a962.jpg"/>
 </media>
 <para id="fs-idp18362672">Miðað við að gefinn sýnismassi (5.00
-g) er aðeins minna en einn tíundi af massa 1 móls af Cu (<sub>64 g), þannig
+g) er aðeins minna en einn tíundi af massa 1 móls af Cu (~64 g), þannig
 að raunhæft mat á fjölda atóma í sýninu væri í kringum einn tíundi af
-<emphasis effect="italics">N</sub>A~</emphasis>, eða um það bil 10<sup>22</sup> Cu-atóm. Tveggja þrepa útreikningurinn
+<emphasis effect="italics">N<sub>A</sub></emphasis>, eða um það bil 10<sup>22</sup> Cu-atóm. Tveggja þrepa útreikningurinn
 gefur:</para>
 <equation id="fs-idp20004432" class="unnumbered"><m:math><m:mrow><m:mn>5.00</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext></m:menclose><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>Cu</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mspace width="0.2em"/><m:mtext>Cu</m:mtext></m:menclose></m:mrow><m:mrow><m:mn>63.55</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g Cu</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo></m:mrow><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>6.022</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>23</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:mtext>Cu atoms</m:mtext></m:mrow><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol Cu</m:mtext></m:mrow></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>4.74</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>22</m:mn></m:mrow></m:msup><m:mtext>Cu atoms</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp27818080">Þáttamerkingaraðferðin gefur æskilega
@@ -380,8 +379,8 @@ af kolefni, 5 mól af vetni, 2 mól af súrefni og 1 mól af köfnunarefni:</par
 <media id="fs-idm4204416" alt="A table is shown that is made up of six columns and six rows. The header row reads: “Element,” “Quantity (mol element / mol compound,” a blank space, “Molar mass (g / mol element),” a blank space, and “Subtotal (a m u).” The first column contains the symbols “C,” “H,” “O,” “N,” and a merged cell. The merged cell runs the width of the first five columns. The second column contains the numbers “2,” “5,” “2,” and “1” as well as the merged cell. The third column contains the multiplication symbol in each cell except for the last, merged cell. The fourth column contains the numbers “12.01,” “1.008,” “16.00,” and “14.007” as well as the merged cell. The fifth column contains the symbol “=” in each cell except for the last, merged cell. The sixth column contains the values “24.02,” “5.040,” “32.00,” “14.007,” and “75.07.” There is a thick black line under the number 14.007. The merged cell under the first five columns reads “Molar mass (g / mol compound). There is a ball-and-stick drawing to the right of this table. It shows a black sphere that forms a double bond with a slightly smaller red sphere, a single bond with another red sphere, and a single bond with another black sphere. The red sphere that forms a single bond with the black sphere also forms a single bond with a smaller, white sphere. The second black sphere forms a single bond with a smaller, white sphere and a smaller blue sphere. The blue sphere forms a single bond with two smaller, white spheres each.">
 <image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_glycinemass_img.jpg"/>
 </media>
-<para id="fs-idm24120480">Uppgefinn massi glýsíns (<sub>28 g) er
-aðeins meira en þriðjungur mólmassans (</sub>75 g/mól), þannig að búast má
+<para id="fs-idm24120480">Uppgefinn massi glýsíns (~28 g) er
+aðeins meira en þriðjungur mólmassans (~75 g/mól), þannig að búast má
 við að útreiknuð niðurstaða sé aðeins meiri en þriðjungur úr móli (~0,33
 mól). Með því að deila massa efnasambandsins með mólmassa þess fæst:</para>
 <equation id="fs-idp15857520" class="unnumbered"><m:math><m:mrow><m:mn>28.35</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g</m:mtext><m:mspace width="0.2em"/><m:mtext>glycine</m:mtext></m:menclose><m:mspace width="0.2em"/><m:mrow><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mtext>mol glycine</m:mtext></m:mrow><m:mrow><m:mn>75.07</m:mn><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mtext>g glycine</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.378</m:mn><m:mspace width="0.2em"/><m:mtext>mol glycine</m:mtext></m:mrow></m:math></equation>
@@ -405,8 +404,8 @@ massa efnasambands út frá mólmagni þess eins og sýnt er:</para>
 </media>
 <para id="fs-idp17223008">Mólmassi þessa efnasambands er
 reiknaður 176,124 g/mól. Uppgefinn fjöldi móla er mjög lítið brot úr
-móli (<sub>10<sup>−4</sup> eða einn tíuþúsundasti); því má búast við að samsvarandi
-massi sé um einn tíuþúsundasti af mólmassanum (</sub>0,02 g). Útreikningurinn
+móli (~10<sup>−4</sup> eða einn tíuþúsundasti); því má búast við að samsvarandi
+massi sé um einn tíuþúsundasti af mólmassanum (~0,02 g). Útreikningurinn
 gefur:</para>
 <equation id="fs-idm25244336" class="unnumbered"><m:math><m:mrow><m:mn>1.42</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:msup><m:mrow><m:mn>10</m:mn></m:mrow><m:mrow><m:mn>−4</m:mn></m:mrow></m:msup><m:mspace width="0.2em"/><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mspace width="0.2em"/><m:mtext>vitamin C</m:mtext></m:menclose><m:mrow><m:mspace width="0.2em"/><m:mo>(</m:mo><m:mrow><m:mfrac><m:mrow><m:mn>176.124</m:mn><m:mspace width="0.2em"/><m:mtext>g vitamin C</m:mtext></m:mrow><m:mrow><m:menclose notation="horizontalstrike"><m:mrow><m:mtext>mol</m:mtext></m:mrow><m:mspace width="0.2em"/><m:mtext>vitamin C</m:mtext></m:menclose></m:mrow></m:mfrac></m:mrow><m:mo>)</m:mo><m:mspace width="0.2em"/></m:mrow><m:mo>=</m:mo><m:mspace width="0.2em"/><m:mn>0.0250</m:mn><m:mspace width="0.2em"/><m:mtext>g vitamin C</m:mtext></m:mrow></m:math></equation>
 <para id="fs-idp907024">Þetta er í samræmi við vænta
@@ -584,12 +583,12 @@ reyrsykur)</para></problem>
 <exercise id="fs-idp1038448">
 <problem id="fs-idp18734768"><para id="fs-idp14186992">Ákvarðið sameindamassa
 eftirfarandi efnasambanda:</para>
-<para id="fs-idm10660032">(a)</para><para id="fs-idp16510560">(b)</para><para id="fs-idp76406016">(c)</para><para id="fs-idp9023344">(d)</para></problem>
+<para id="fs-idm10660032">(a) <media id="fs-idm8076928" class="scaled-down-30" alt="A structure is shown. A C atom is bonded to two C l atoms and forms a double bond with one O atom."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_05a_img.jpg"/></media></para><para id="fs-idp16510560">(b) <media id="fs-idp149776" class="scaled-down-30" alt="A structure is shown. Two C atoms form a triple bond with each other. Each C atom also forms a single bond with on H atom."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_05b_img.jpg"/></media></para><para id="fs-idp76406016">(c) <media id="fs-idm29301504" class="scaled-down-30" alt="A structure is shown. Two C atoms form double bonds with each other. Each C atom also forms a single bond with an H atom and a B r atom."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_05c_img.jpg"/></media></para><para id="fs-idp9023344">(d) <media id="fs-idm31327616" class="scaled-down-30" alt="A structure is shown. An S atom forms double bonds with two O atoms. The S atom also forms a single bond with an O atom which forms a single bond with an H atom. The S atom also forms a single bond with another O atom which forms a single bond with another H atom."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_05d_img.jpg"/></media></para></problem>
 </exercise>
 <exercise id="fs-idp20009152">
 <problem id="fs-idp51844864"><para id="fs-idp52450416">Ákvarðið sameindamassa
 eftirfarandi efnasambanda:</para>
-<para id="fs-idp12831088">(a)</para><para id="fs-idp76139456">(b)</para><para id="fs-idp55882592">(c)</para><para id="fs-idp17404336">(d)</para></problem>
+<para id="fs-idp12831088">(a) <media id="fs-idp13412608" class="scaled-down-30" alt="A structure is shown. Two C atoms form double bonds with each other. The C atom on the left forms a single bond with two H atoms each. The C atom on the right forms a single bond with an H atom and with a C H subscript 2 C H subscript 3 group."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_06a_img.jpg"/></media></para><para id="fs-idp76139456">(b) <media id="fs-idp47952992" class="scaled-down-30" alt="A structure is shown. There is a C atom which forms single bonds with three H atoms each. This C atom is bonded to another C atom. This second C atom forms a triple bond with another C atom which forms a single bond with a fourth C atom. The fourth C atom forms single bonds with three H atoms each."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_06b_img.jpg"/></media></para><para id="fs-idp55882592">(c) <media id="fs-idp49963664" class="scaled-down-30" alt="A structure is shown. An S i atom forms a single bond with a C l atom, a single bond with a C l atom, a single bond with an H atom, and a single bond with another S i atom. The second S i atom froms a single bond with a C l atom, a single bond with a C l atom, and a single bond with an H atom."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_06c_img.jpg"/></media></para><para id="fs-idp17404336">(d) <media id="fs-idp56968256" class="scaled-down-30" alt="A structure is shown. A P atom forms a double bond with an O atom. It also forms a single bond with an O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom. It also forms a single bond with another O atom which forms a single bond with an H atom."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_06d_img.jpg"/></media></para></problem>
 <solution id="fs-idp49927232">
 <para id="fs-idp18584256">(a) 56,107 amu; (b) 54,091 amu;
 (c) 199,9976 amu; (d) 97,9950 amu</para></solution>
@@ -597,7 +596,7 @@ eftirfarandi efnasambanda:</para>
 <exercise id="fs-idp50213376">
 <problem id="fs-idp50213632"><para id="fs-idp50213760">Hvaða sameind hefur
 sameindamassann 28,05 amu?</para>
-<para id="fs-idp50214144">(a)</para><para id="fs-idp66877424">(b)</para><para id="fs-idp49595584">(c)</para></problem>
+<para id="fs-idp50214144">(a) <media id="fs-idp52022448" class="scaled-down-30" alt="A structure is shown. A C atom forms a triple bond with another C atom. Each C atom also forms a single bond with an H atom."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_07a_img.jpg"/></media></para><para id="fs-idp66877424">(b) <media id="fs-idp66877936" class="scaled-down-30" alt="A structure is shown. Two C atoms form a double bond with each other. Each C atom also forms a single bond with two H atoms."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_07b_img.jpg"/></media></para><para id="fs-idp49595584">(c) <media id="fs-idp49596096" class="scaled-down-30" alt="A structure is shown. A C atom forms a single bond with three H atoms each and with another C atom. The second C atom also forms a single bond with three H atoms each."><image mime-type="image/jpeg" src="../../media/CNX_Chem_03_01_Ex01_07c_img.jpg"/></media></para></problem>
 </exercise>
 <exercise id="fs-idp17737968">
 <problem id="fs-idp17738224"><para id="fs-idp17738352">Skrifið setningu sem lýsir því

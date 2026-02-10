@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "moduleId": "m68699",
+  "extractedAt": "2026-02-10T19:11:34.918Z",
+  "sourceHash": "7be84bc79f21ea85",
+  "segmentCount": 3,
+  "segmentIds": [
+    "m68699:title:auto-1",
+    "m68699:caption:CNX_Chem_03_00_Pool-caption",
+    "m68699:para:fs-idp44036064"
+  ],
+  "equationCount": 0,
+  "equationIds": [],
+  "elementCounts": {
+    "para": 1,
+    "section": 0,
+    "figure": 1,
+    "table": 0,
+    "example": 0,
+    "exercise": 0,
+    "note": 0,
+    "equation": 0,
+    "list": 0,
+    "media": 0,
+    "glossary": 0
+  },
+  "elementIds": {
+    "figure": [
+      "CNX_Chem_03_00_Pool"
+    ],
+    "table": [],
+    "example": [],
+    "exercise": [],
+    "note": [],
+    "equation": [],
+    "section": []
+  }
+}

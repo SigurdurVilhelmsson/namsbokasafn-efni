@@ -509,31 +509,31 @@ Calculate the molecular or formula mass of each of the following:
 Determine the molecular mass of the following compounds:
 
 <!-- SEG:m68700:problem:fs-idm10660032 -->
-(a)
+(a) [[MEDIA:1]]
 
 <!-- SEG:m68700:problem:fs-idp16510560 -->
-(b)
+(b) [[MEDIA:2]]
 
 <!-- SEG:m68700:problem:fs-idp76406016 -->
-(c)
+(c) [[MEDIA:3]]
 
 <!-- SEG:m68700:problem:fs-idp9023344 -->
-(d)
+(d) [[MEDIA:4]]
 
 <!-- SEG:m68700:problem:fs-idp52450416 -->
 Determine the molecular mass of the following compounds:
 
 <!-- SEG:m68700:problem:fs-idp12831088 -->
-(a)
+(a) [[MEDIA:5]]
 
 <!-- SEG:m68700:problem:fs-idp76139456 -->
-(b)
+(b) [[MEDIA:6]]
 
 <!-- SEG:m68700:problem:fs-idp55882592 -->
-(c)
+(c) [[MEDIA:7]]
 
 <!-- SEG:m68700:problem:fs-idp17404336 -->
-(d)
+(d) [[MEDIA:8]]
 
 <!-- SEG:m68700:solution:fs-idp18584256 -->
 (a) 56.107 amu; (b) 54.091 amu; (c) 199.9976 amu; (d) 97.9950 amu
@@ -542,13 +542,13 @@ Determine the molecular mass of the following compounds:
 Which molecule has a molecular mass of 28.05 amu?
 
 <!-- SEG:m68700:problem:fs-idp50214144 -->
-(a)
+(a) [[MEDIA:9]]
 
 <!-- SEG:m68700:problem:fs-idp66877424 -->
-(b)
+(b) [[MEDIA:10]]
 
 <!-- SEG:m68700:problem:fs-idp49595584 -->
-(c)
+(c) [[MEDIA:11]]
 
 <!-- SEG:m68700:problem:fs-idp17738352 -->
 Write a sentence that describes how to determine the number of moles of a compound in a known mass of the compound using its molecular formula.

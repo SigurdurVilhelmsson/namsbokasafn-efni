@@ -229,7 +229,7 @@ fyrir efnasambandið kolmónoxíð, sem inniheldur atóm frumefnanna kolefnis
 <entry align="left">kopar</entry><entry align="left">Cu (úr <emphasis effect="italics">cuprum</emphasis>)</entry><entry align="left">kísill</entry><entry align="left">Si</entry>
 </row>
 <row valign="top">
-<entry align="left">flúor</entry><entry align="left">F</entry><entry align="left">silfur</entry><entry align="left">Ag (úr\<emphasis effect="italics"> argentum\</emphasis>)</entry>
+<entry align="left">flúor</entry><entry align="left">F</entry><entry align="left">silfur</entry><entry align="left">Ag (úr<emphasis effect="italics"> argentum</emphasis>)</entry>
 </row>
 <row valign="top">
 <entry align="left">gull</entry><entry align="left">Au (úr <emphasis effect="italics">aurum</emphasis>)</entry><entry align="left">natríum</entry><entry align="left">Na (úr <emphasis effect="italics">natrium</emphasis>)</entry>
@@ -547,8 +547,7 @@ ame.</para>
 meðalatómmassa</title>Loftsteinn sem fannst í miðri
 Indiana-fylki inniheldur leifar af eðalgasinu neon sem hann tók upp úr
 sólvindinum á ferð sinni í gegnum sólkerfið. Greining á sýni af gasinu
-sýndi að það samanstóð af 91,84% <sup>20</sup>Ne (massi 19,9924 amu), 0,47%
-<sup>21</sup>Ne (massi 20,9940 amu) og 7,69% <sup>22</sup>Ne (massi 21,9914 amu). Hver er
+sýndi að það samanstóð af 91,84% <sup>20</sup>Ne (massi 19,9924 amu), 0,47% <sup>21</sup>Ne (massi 20,9940 amu) og 7,69% <sup>22</sup>Ne (massi 21,9914 amu). Hver er
 meðalmassi neons í sólvindinum?</para>
 <para id="fs-idm194071296"><title>Lausn</title><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mtext>average mass</m:mtext></m:mtd><m:mtd columnalign="left"><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.9184</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>19.9924 amu</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.0047</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>20.9940 amu</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mo stretchy="false">(</m:mo><m:mn>0.0769</m:mn><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>21.9914 amu</m:mtext><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mn>18.36</m:mn><m:mo>+</m:mo><m:mn>0.099</m:mn><m:mo>+</m:mo><m:mn>1.69</m:mn><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mtext>amu</m:mtext></m:mtd></m:mtr><m:mtr><m:mtd/><m:mtd columnalign="left"><m:mo>=</m:mo><m:mtext>20.15 amu</m:mtext></m:mtd></m:mtr></m:mtable></m:math></para>
 <para id="fs-idm3186256">Meðalmassi neonatóms í sólvindinum er
@@ -568,27 +567,22 @@ meðalmassa Mg atóms.</para>
 þessari tegund útreikninga, eins og sýnt er í næsta dæmi.</para>
 <example id="fs-idm233489360">
 <para id="fs-idm170542656"><title>Útreikningur á
-hlutfallslegri gnægð</title>Náttúrulegt klór samanstendur af
-<sup>35</sup>Cl (massi 34,96885 amu) og <sup>37</sup>Cl (massi 36,96590 amu), með
+hlutfallslegri gnægð</title>Náttúrulegt klór samanstendur af <sup>35</sup>Cl (massi 34,96885 amu) og <sup>37</sup>Cl (massi 36,96590 amu), með
 meðalmassa 35,453 amu. Hver er prósentusamsetning Cl með tilliti til
 þessara tveggja samsæta?</para>
 <para id="fs-idm111544320"><title>Lausn</title>Meðalmassi klórs er hlutfallið sem
-er <sup>35</sup>Cl sinnum massi <sup>35</sup>Cl plús hlutfallið sem er <sup>37</sup>Cl sinnum massi
-<sup>37</sup>Cl.</para>
+er <sup>35</sup>Cl sinnum massi <sup>35</sup>Cl plús hlutfallið sem er <sup>37</sup>Cl sinnum massi <sup>37</sup>Cl.</para>
 <equation id="fs-idp1748832" class="unnumbered"><m:math><m:mrow><m:mtext>average mass</m:mtext><m:mo>=</m:mo><m:mo stretchy="false">(</m:mo><m:mtext>fraction of</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow/><m:mrow><m:mn>35</m:mn></m:mrow></m:msup><m:mtext>Cl</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>mass of</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow/><m:mrow><m:mn>35</m:mn></m:mrow></m:msup><m:mtext>Cl</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mo stretchy="false">(</m:mo><m:mtext>fraction of</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow/><m:mrow><m:mn>37</m:mn></m:mrow></m:msup><m:mtext>Cl</m:mtext><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>mass of</m:mtext><m:mspace width="0.2em"/><m:msup><m:mrow/><m:mrow><m:mn>37</m:mn></m:mrow></m:msup><m:mtext>Cl</m:mtext><m:mo stretchy="false">)</m:mo></m:mrow></m:math></equation><para id="fs-idp35897648">Ef við látum <emphasis effect="italics">x</emphasis> tákna hlutfallið sem
 er <sup>35</sup>Cl, þá er hlutfallið sem er <sup>37</sup>Cl táknað með 1,00 − <emphasis effect="italics">x</emphasis>.</para>
 <para id="fs-idm78207296">(Hlutfallið sem er <sup>35</sup>Cl +
-hlutfallið sem er <sup>37</sup>Cl verður að vera samtals 1, þannig að hlutfall
-<sup>37</sup>Cl verður að vera jafnt og 1,00 − hlutfall <sup>35</sup>Cl.)</para>
+hlutfallið sem er <sup>37</sup>Cl verður að vera samtals 1, þannig að hlutfall <sup>37</sup>Cl verður að vera jafnt og 1,00 − hlutfall <sup>35</sup>Cl.)</para>
 <para id="fs-idm174110736">Með því að setja þetta inn í jöfnuna
 fyrir meðalmassa fáum við:</para>
 <equation id="fs-idm50612880" class="unnumbered"><m:math><m:mtable><m:mtr><m:mtd columnalign="right"><m:mtext>35.453 amu</m:mtext></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mo stretchy="false">(</m:mo><m:mi>x</m:mi><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>34.96885 amu</m:mtext><m:mo stretchy="false">)</m:mo><m:mo>+</m:mo><m:mo stretchy="false">[</m:mo><m:mo stretchy="false">(</m:mo><m:mn>1.00</m:mn><m:mo>−</m:mo><m:mi>x</m:mi><m:mo stretchy="false">)</m:mo><m:mspace width="0.2em"/><m:mo>×</m:mo><m:mspace width="0.2em"/><m:mtext>36.96590 amu</m:mtext><m:mo stretchy="false">]</m:mo></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mn>35.453</m:mn></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>34.96885</m:mn><m:mi>x</m:mi><m:mo>+</m:mo><m:mn>36.96590</m:mn><m:mo>−</m:mo><m:mn>36.96590</m:mn><m:mi>x</m:mi></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mn>1.99705</m:mn><m:mi>x</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mn>1.513</m:mn></m:mtd></m:mtr><m:mtr><m:mtd columnalign="right"><m:mi>x</m:mi></m:mtd><m:mtd><m:mo>=</m:mo></m:mtd><m:mtd columnalign="left"><m:mfrac><m:mrow><m:mn>1.513</m:mn></m:mrow><m:mrow><m:mn>1.99705</m:mn></m:mrow></m:mfrac><m:mspace width="0.2em"/><m:mo>=</m:mo><m:mn>0.7576</m:mn></m:mtd></m:mtr></m:mtable></m:math>
 </equation>
 <para id="fs-idm84424288">Lausnin gefur: <emphasis effect="italics">x</emphasis> = 0,7576, sem
-þýðir að 1,00 − 0,7576 = 0,2424. Þess vegna samanstendur klór af 75,76%
-<sup>35</sup>Cl og 24,24% <sup>37</sup>Cl.</para>
-<para id="fs-idm140620960"><title>Prófaðu þekkingu þína</title>Náttúrulegur kopar samanstendur af
-<sup>63</sup>Cu (massi 62,9296 amu) og <sup>65</sup>Cu (massi 64,9278 amu), með meðalmassa
+þýðir að 1,00 − 0,7576 = 0,2424. Þess vegna samanstendur klór af 75,76% <sup>35</sup>Cl og 24,24% <sup>37</sup>Cl.</para>
+<para id="fs-idm140620960"><title>Prófaðu þekkingu þína</title>Náttúrulegur kopar samanstendur af <sup>63</sup>Cu (massi 62,9296 amu) og <sup>65</sup>Cu (massi 64,9278 amu), með meðalmassa
 63,546 amu. Hver er prósentusamsetning Cu með tilliti til þessara
 tveggja samsæta?</para>
 <note id="fs-idm192789184">
