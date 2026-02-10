@@ -16,9 +16,12 @@ description: Ensure correct file naming and locations. Always active when creati
 | 02-mt-output/ | READ ONLY | MT reference only |
 | 02-for-mt/ | GENERATED | Created by cnxml-extract |
 | 02-structure/ | GENERATED | Structure/equations JSON |
-| 03-faithful/ | READ + WRITE | Reviewed IS segments |
+| 02-machine-translated/ | STAGING | Merged MT output, unreviewed |
+| 03-editing/ | READ + WRITE | Working directory for Pass 1 |
+| 03-faithful-translation/ | FINAL | Completed Pass 1, human-reviewed |
 | 03-translated/ | GENERATED | Translated CNXML from inject |
-| 04-localized/ | READ + WRITE | Pass 2 localized segments |
+| 04-localization/ | READ + WRITE | Working directory for Pass 2 |
+| 04-localized-content/ | FINAL | Completed Pass 2, adapted content |
 | 05-publication/ | GENERATED | HTML from cnxml-render |
 | tm/ | READ ONLY | Managed by Matecat |
 | glossary/ | READ + WRITE | Terminology database |
@@ -40,8 +43,14 @@ description: Ensure correct file naming and locations. Always active when creati
 ### Segment Files (Current Pipeline)
 - **EN segments:** `{moduleId}-segments.en.md`
 - **IS segments (MT):** `{moduleId}-segments.is.md`
-- **IS segments (reviewed):** `{moduleId}-segments.is.md` (in 03-faithful/)
-- **Location:** `books/{book}/02-for-mt/ch{NN}/` or `03-faithful/ch{NN}/`
+- **IS segments (reviewed):** `{moduleId}-segments.is.md`
+- **Locations:**
+  - EN: `books/{book}/02-for-mt/ch{NN}/`
+  - MT (staging): `books/{book}/02-machine-translated/ch{NN}/`
+  - Pass 1 (working): `books/{book}/03-editing/ch{NN}/`
+  - Pass 1 (final): `books/{book}/03-faithful-translation/ch{NN}/`
+  - Pass 2 (working): `books/{book}/04-localization/ch{NN}/`
+  - Pass 2 (final): `books/{book}/04-localized-content/ch{NN}/`
 - Example: `m68781-segments.en.md`, `m68781-segments.is.md`
 
 ### Structure Files
@@ -68,40 +77,52 @@ description: Ensure correct file naming and locations. Always active when creati
 ```
 books/{book}/
 ├── 01-source/
-│   └── ch{NN}/             # Original CNXML files
+│   └── ch{NN}/                    # Original CNXML files
 ├── 02-for-mt/
-│   └── ch{NN}/             # EN segments for MT
+│   └── ch{NN}/                    # EN segments for MT
 │       ├── *-segments.en.md
 │       └── *-strings.en.md
 ├── 02-structure/
-│   └── ch{NN}/             # Extracted structure
+│   └── ch{NN}/                    # Extracted structure
 │       ├── *-structure.json
 │       └── *-equations.json
 ├── 02-mt-output/
-│   └── ch{NN}/             # IS segments from MT
+│   └── ch{NN}/                    # IS segments from MT (raw)
 │       └── *-segments.is.md
-├── 03-faithful/
-│   └── ch{NN}/             # Reviewed segments (Pass 1)
+├── 02-machine-translated/
+│   └── ch{NN}/                    # Merged MT output (staging)
+│       └── *-segments.is.md
+├── 03-editing/
+│   └── ch{NN}/                    # Pass 1 working directory
+│       └── *-segments.is.md
+├── 03-faithful-translation/
+│   └── ch{NN}/                    # Pass 1 final (human-reviewed)
 │       └── *-segments.is.md
 ├── 03-translated/
-│   └── ch{NN}/             # Translated CNXML
+│   └── ch{NN}/                    # Translated CNXML
 │       └── *.cnxml
-├── 04-localized/
-│   └── ch{NN}/             # Localized segments (Pass 2)
+├── 04-localization/
+│   └── ch{NN}/                    # Pass 2 working directory
+│       └── *-segments.is.md
+├── 04-localized-content/
+│   └── ch{NN}/                    # Pass 2 final (adapted)
 │       └── *-segments.is.md
 ├── 05-publication/
-│   ├── mt-preview/ch{NN}/  # MT HTML
-│   ├── faithful/ch{NN}/    # Reviewed HTML
-│   └── localized/ch{NN}/   # Localized HTML
-│       └── *.html
+│   ├── mt-preview/
+│   │   └── chapters/ch{NN}/       # Unreviewed MT HTML
+│   ├── faithful/
+│   │   └── chapters/ch{NN}/       # Human-reviewed HTML
+│   └── localized/
+│       └── chapters/ch{NN}/       # Fully adapted HTML
+│           └── *.html
 ├── tm/
-│   ├── *.tmx               # Translation memory
-│   └── exports/            # Parallel corpus
+│   ├── *.tmx                      # Translation memory
+│   └── exports/                   # Parallel corpus
 ├── glossary/
 │   └── terminology-en-is.csv
 └── chapters/
     └── ch{NN}/
-        └── status.json     # Chapter status
+        └── status.json            # Chapter status
 ```
 
 ## Validation Rules
@@ -114,10 +135,13 @@ Before creating any file:
 5. Not overwriting without backup
 
 Common mistakes to prevent:
-- Saving to 03-faithful/ during localization (should be 04-localized/)
-- Creating ch1/ instead of ch01/
+- Saving to 03-faithful-translation/ during localization (should be 04-localization/)
+- Saving to working directories (03-editing/, 04-localization/) when work is final
+- Saving to final directories (03-faithful-translation/, 04-localized-content/) when work is in progress
+- Creating ch1/ instead of ch01/ or appendices/
 - Editing files in GENERATED directories (02-for-mt/, 03-translated/, 05-publication/)
 - Modifying files in READ ONLY directories (01-source/, 02-mt-output/, tm/)
+- Editing STAGING directories (02-machine-translated/) - should move to working directories first
 
 ## Current Pipeline File Flow
 
@@ -128,10 +152,23 @@ Common mistakes to prevent:
 02-structure/ch{NN}/*-structure.json
     ↓ (manual MT via malstadur.is)
 02-mt-output/ch{NN}/*-segments.is.md
+    ↓ (unprotect-segments.js, manual merge)
+02-machine-translated/ch{NN}/*-segments.is.md  ← MT Preview track source
+    ↓ (copy to working directory)
+03-editing/ch{NN}/*-segments.is.md
     ↓ (manual review via /segment-editor)
-03-faithful/ch{NN}/*-segments.is.md
-    ↓ (cnxml-inject.js)
+03-faithful-translation/ch{NN}/*-segments.is.md  ← Faithful track source
+    ↓ (copy to working directory)
+04-localization/ch{NN}/*-segments.is.md
+    ↓ (manual localization via /segment-editor)
+04-localized-content/ch{NN}/*-segments.is.md  ← Localized track source
+    ↓ (cnxml-inject.js --source-dir <track>)
 03-translated/ch{NN}/*.cnxml
-    ↓ (cnxml-render.js)
-05-publication/faithful/ch{NN}/*.html
+    ↓ (cnxml-render.js --track <track>)
+05-publication/<track>/chapters/ch{NN}/*.html
 ```
+
+**Three Publication Tracks:**
+1. **mt-preview** - From 02-machine-translated/ (unreviewed MT, student-ready)
+2. **faithful** - From 03-faithful-translation/ (human-reviewed, academically citable)
+3. **localized** - From 04-localized-content/ (fully adapted for Icelandic students)
