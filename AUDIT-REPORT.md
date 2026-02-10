@@ -71,17 +71,12 @@
 
 **Status:** Complete. CLAUDE.md now shows "Phase 9: Close the Write Gap" as current priority with Phase 8 marked complete.
 
-### 1.6 Fix Caddy vs nginx Contradiction ⚠️ IN PROGRESS
+### 1.6 Fix Caddy vs nginx Contradiction ✅ COMPLETE
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** Documentation
 
-**Current state:**
-- `namsbokasafn-efni/CLAUDE.md` line 51: Says "Caddy" ❌ INCORRECT
-- `namsbokasafn-vefur/.github/workflows/deploy.yml` line 42: Says "Reload Nginx" ✅ CORRECT
-- `namsbokasafn-vefur/.github/workflows/deploy.yml` line 50: Runs `systemctl reload nginx` ✅ CORRECT
+~~`namsbokasafn-efni/CLAUDE.md` line 51 said "Caddy" but the project actually uses nginx (confirmed by deploy.yml and user).~~
 
-**Confirmed:** nginx is used (user confirmed 2026-02-10).
-
-**Fix needed:** Update CLAUDE.md line 51 from "Caddy" to "nginx".
+**Status:** Complete. CLAUDE.md updated to say "nginx" (commit cd5fa8d, 2026-02-10).
 
 ### 1.7 Implement Backup Cron for SQLite Database ✅ COMPLETE
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** DevOps
@@ -293,14 +288,13 @@ Archive exists and is properly separated. Could use a `README.md` explaining wha
 5. **Dependency cleanup** — Removed unused packages, deleted dead code
 6. **Documentation updates** — CLAUDE.md, workflow docs, and most skills files updated
 
-**Tier 1 Status:** 10 of 11 items complete (91%)
-**Tier 2 Status:** 4 of 4 items complete (100%)
-**Overall:** 18 of 19 items complete (95%)
+**Tier 1 Status:** 11 of 11 items complete (100%) ✅
+**Tier 2 Status:** 4 of 4 items complete (100%) ✅
+**Overall:** 19 of 19 items complete (100%) ✅
 
 ### Remaining Work
 
-**Critical (1 item, 2 minutes):**
-- Fix CLAUDE.md line 51: Change "Caddy" to "nginx"
+**All critical and high-priority items complete!** ✅
 
 **Optional (Future Consideration):**
 - Tier 2.8: Server over-engineering assessment
