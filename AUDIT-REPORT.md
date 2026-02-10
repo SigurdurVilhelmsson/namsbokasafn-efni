@@ -223,8 +223,10 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 
 **Status:** Fixed 2026-02-09. Added `"license": "MIT"` to package.json (commit 8e5cbd0).
 
-### 3.11 `docs/_archived/` Cleanup
-Archive exists and is properly separated. Could use a `README.md` explaining what's there and why. `tools.md` in the archive is the old auto-generated tool inventory — the new one should be regenerated to `docs/_generated/`.
+### 3.11 `docs/_archived/` Cleanup ✅ COMPLETE
+~~Archive exists and is properly separated. Could use a `README.md` explaining what's there and why. `tools.md` in the archive is the old auto-generated tool inventory — the new one should be regenerated to `docs/_generated/`.~~
+
+**Status:** Complete. `docs/_archived/README.md` now documents all 8 archived files with context for why each was archived. Added action item noting tool inventory regeneration (commit 13a9a63, 2026-02-10).
 
 ---
 
@@ -290,7 +292,8 @@ Archive exists and is properly separated. Could use a `README.md` explaining wha
 
 **Tier 1 Status:** 11 of 11 items complete (100%) ✅
 **Tier 2 Status:** 4 of 4 items complete (100%) ✅
-**Overall:** 19 of 19 items complete (100%) ✅
+**Tier 3 Status:** 4 of 11 items complete (36%)
+**Overall (Tier 1+2):** 19 of 19 items complete (100%) ✅
 
 ### Remaining Work
 
