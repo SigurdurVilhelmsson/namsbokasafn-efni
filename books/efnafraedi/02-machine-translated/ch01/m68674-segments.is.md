@@ -658,7 +658,7 @@ sekúndur) og megahertz (10^6^ hertz).
 
 <!-- SEG:m68674:title:fs-idm313032912-title --> Lykiljöfnur
 
-<!-- SEG:m68674:entry:auto-206 --> \[\[MATH:18\]\]
+<!-- SEG:m68674:entry:auto-162 --> \[\[MATH:16\]\]
 
 <!-- SEG:m68674:title:fs-idm357067232-title --> Efnafræði – Æfingar í lok
 kafla
