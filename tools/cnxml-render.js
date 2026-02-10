@@ -1185,13 +1185,18 @@ function renderExercise(exercise, context) {
   const lines = [];
   const id = exercise.id || null;
 
-  // Increment exercise counter and assign number
-  context.exerciseCounter++;
-  const exerciseNumber = context.exerciseCounter;
-
-  // Store in chapter-wide map for cross-referencing
-  if (id) {
-    context.chapterExerciseNumbers.set(id, exerciseNumber);
+  // Use pre-assigned number from chapter-wide map if available (like figures/tables)
+  // This ensures sequential numbering across compiled exercises sections
+  let exerciseNumber;
+  if (id && context.chapterExerciseNumbers && context.chapterExerciseNumbers.has(id)) {
+    exerciseNumber = context.chapterExerciseNumbers.get(id);
+  } else {
+    // Fallback: increment counter for exercises without pre-assigned numbers
+    context.exerciseCounter++;
+    exerciseNumber = context.exerciseCounter;
+    if (id && context.chapterExerciseNumbers) {
+      context.chapterExerciseNumbers.set(id, exerciseNumber);
+    }
   }
 
   // Build attributes for eoc-exercise (end-of-chapter exercise)
