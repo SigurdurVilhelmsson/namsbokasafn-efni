@@ -206,8 +206,19 @@ Last versioned release is `[0.4.0] - 2025-12-27`. No entries for Phase 8 (the bi
 
 **Status:** Already complete. CHANGELOG.md has `[0.5.0] - 2026-02-05` with comprehensive Phase 8 documentation.
 
-### 3.6 Unified/Remark Stack in vefur Will Become Dead Weight
-10 unified/remark/rehype packages are used by a single file (`src/lib/utils/markdown.ts`). The CNXML-to-HTML migration (Phase 8) will make these unnecessary. Plan removal alongside pipeline completion.
+### 3.6 Unified/Remark Stack in vefur Will Become Dead Weight ⏸️ BLOCKED
+~~10 unified/remark/rehype packages are used by a single file (`src/lib/utils/markdown.ts`). The CNXML-to-HTML migration (Phase 8) will make these unnecessary. Plan removal alongside pipeline completion.~~
+
+**Status:** Blocked. Chemistry completed Phase 8 (uses HTML), but biology (`liffraedi`) still has 1 chapter (35-taugakerfid) with 6 markdown files actively served via `MarkdownRenderer.svelte`. Cannot remove unified/remark stack until biology migrates to CNXML→HTML pipeline.
+
+**Packages affected:** `unified`, `remark-parse`, `remark-gfm`, `remark-math`, `remark-directive`, `remark-rehype`, `rehype-slug`, `rehype-mathjax`, `rehype-stringify`, `unist-util-visit` (118 transitive dependencies total).
+
+**Removal plan:**
+1. Migrate biology to CNXML→HTML (same Phase 8 process as chemistry)
+2. Remove `src/lib/utils/markdown.ts` and `markdown.test.ts`
+3. Simplify `MarkdownRenderer.svelte` to HTML-only
+4. Remove 10 packages from `package.json`
+5. Run `npm install` (will remove ~118 packages total)
 
 ### 3.7 No Automated efni Server Deployment
 Deployment is manual SSH + `git pull` + `npm install` + `systemctl restart`. Acceptable for a small project but error-prone.
