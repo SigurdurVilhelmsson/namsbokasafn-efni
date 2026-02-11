@@ -11,7 +11,7 @@ Review chapter $ARGUMENTS for Pass 1 linguistic quality.
 
 1. Parse the argument (e.g., "efnafraedi 3" or "3" defaults to efnafraedi)
 2. Format chapter as ch{NN}: chapter 3 -> ch03
-3. Verify files exist in `books/{book}/03-faithful/docx/ch{NN}/` or `02-mt-output/`
+3. Verify files exist in `books/{book}/03-faithful-translation/docx/ch{NN}/` or `02-mt-output/`
 4. If no files found, inform user and stop
 
 ## Process

@@ -96,12 +96,12 @@ The system can automatically detect localization opportunities:
 
 ### Manual Process
 
-1. **Start from** the faithful translation (`03-faithful/ch##/`)
+1. **Start from** the faithful translation (`03-faithful-translation/ch##/`)
 2. **Open** in any markdown editor (VS Code, Typora, etc.)
 3. **Review** for localization opportunities
 4. **Create** a localization log entry for each change
 5. **Verify** scientific accuracy after changes
-6. **Save** to `04-localized/ch##/`
+6. **Save** to `04-localized-content/ch##/`
 
 ---
 
@@ -109,7 +109,7 @@ The system can automatically detect localization opportunities:
 
 For chapters started before the markdown workflow:
 
-1. **Start from** the faithful translation (from `03-faithful/docx/ch##/`)
+1. **Start from** the faithful translation (from `03-faithful-translation/docx/ch##/`)
 2. **Create** a localization log from the template
 3. **Review systematically:**
    - Identify localization opportunities
@@ -124,17 +124,17 @@ For chapters started before the markdown workflow:
 
 ### Markdown Workflow (Primary)
 - Localized `.is.md` file
-  - Save to: `04-localized/ch##/`
+  - Save to: `04-localized-content/ch##/`
   - Naming: Same as input file (e.g., `5-1.is.md`)
 - Localization log (auto-generated when using web UI)
   - Stored in database, accessible via `/localization` API
 
 ### DOCX Workflow (Legacy)
 - Localized .docx file
-  - Save to: `04-localized/docx/ch##/`
+  - Save to: `04-localized-content/docx/ch##/`
   - Naming: `[section]-localized.docx`
 - Completed localization log
-  - Save to: `04-localized/localization-logs/`
+  - Save to: `04-localized-content/localization-logs/`
   - Naming: `ch##-log.md`
 
 ---
@@ -154,7 +154,7 @@ For chapters started before the markdown workflow:
 
 Before submitting your review:
 
-- [ ] Started from faithful translation (03-faithful/)
+- [ ] Started from faithful translation (03-faithful-translation/)
 - [ ] All localization opportunities addressed
 - [ ] Units converted correctly
 - [ ] Cultural adaptations appropriate
@@ -179,13 +179,13 @@ Before submitting your review:
 
 ### Manual Markdown Process
 ```
-□ Start from 03-faithful/ch##/
+□ Start from 03-faithful-translation/ch##/
 □ Convert units (imperial → SI)
 □ Adapt cultural references
 □ Add Icelandic context where valuable
 □ Document ALL changes in log
 □ Verify scientific accuracy
-□ Save to 04-localized/ch##/
+□ Save to 04-localized-content/ch##/
 ```
 
 ### DOCX Workflow (Legacy)
@@ -197,8 +197,8 @@ Before submitting your review:
 □ Add Icelandic context where valuable
 □ Document ALL changes
 □ Verify scientific accuracy
-□ Save .docx to 04-localized/docx/ch##/
-□ Save log to 04-localized/localization-logs/
+□ Save .docx to 04-localized-content/docx/ch##/
+□ Save log to 04-localized-content/localization-logs/
 ```
 
 ---

@@ -36,7 +36,7 @@ This folder contains web-ready markdown content in two parallel tracks:
 
 ### faithful (Yfirfarin þýðing)
 
-**Source:** `03-faithful/` (after Pass 1 editorial review)
+**Source:** `03-faithful-translation/` (after Pass 1 editorial review)
 
 **Quality level:** Human-reviewed faithful translation
 
@@ -45,7 +45,7 @@ This folder contains web-ready markdown content in two parallel tracks:
 **Status tracking:** `publication.faithful` in chapter status.json
 
 **Workflow:**
-1. Convert reviewed content from `03-faithful/` to markdown
+1. Convert reviewed content from `03-faithful-translation/` to markdown
 2. Add frontmatter with `version: faithful`
 3. Place in `faithful/chapters/ch##/`
 4. Update `faithful/toc.json`

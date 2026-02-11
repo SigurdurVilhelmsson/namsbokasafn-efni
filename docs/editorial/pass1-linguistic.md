@@ -54,7 +54,7 @@ This is the primary workflow for the simplified 5-step pipeline.
    - Make direct edits to the markdown
    - Use HTML comments `<!-- QUESTION: ... -->` for questions
 5. **Check terminology** against the glossary and `/terminology` page
-6. **Save** to `03-faithful/ch##/` with the same filename
+6. **Save** to `03-faithful-translation/ch##/` with the same filename
 
 ### Web Editor Option
 
@@ -109,12 +109,12 @@ When you encounter a term that seems wrong or unclear:
 
 ### Markdown Workflow (Primary)
 - Reviewed `.is.md` file
-- Save to: `03-faithful/ch##/`
+- Save to: `03-faithful-translation/ch##/`
 - Naming: Same as input file (e.g., `5-1.is.md`)
 
 ### DOCX Workflow (Legacy)
 - Reviewed .docx file with Track Changes
-- Save to: `03-faithful/docx/ch##/`
+- Save to: `03-faithful-translation/docx/ch##/`
 - Naming: `[section]-pass1-[your initials].docx`
 
 ---
@@ -153,7 +153,7 @@ Before submitting your review:
 □ Check terminology (glossary + /terminology)
 □ Use HTML comments for questions
 □ NO localization
-□ Save to 03-faithful/ch##/
+□ Save to 03-faithful-translation/ch##/
 ```
 
 ### DOCX (Legacy)
@@ -163,7 +163,7 @@ Before submitting your review:
 □ Check terminology (glossary)
 □ Add comments for questions
 □ NO localization
-□ Save to 03-faithful/docx/ch##/
+□ Save to 03-faithful-translation/docx/ch##/
 ```
 
 ---

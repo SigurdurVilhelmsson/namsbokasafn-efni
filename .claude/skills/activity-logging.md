@@ -81,8 +81,8 @@ Append this format for each session:
 **Operator:** Claude Code
 
 **Files processed:**
-- `books/efnafraedi/03-faithful/docx/ch03/3.1-pass1-SEV.docx`: Reviewed for linguistic quality
-- `books/efnafraedi/03-faithful/docx/ch03/3.2-pass1-SEV.docx`: Reviewed for linguistic quality
+- `books/efnafraedi/03-faithful-translation/docx/ch03/3.1-pass1-SEV.docx`: Reviewed for linguistic quality
+- `books/efnafraedi/03-faithful-translation/docx/ch03/3.2-pass1-SEV.docx`: Reviewed for linguistic quality
 
 **Backups created:**
 - None (read-only review)

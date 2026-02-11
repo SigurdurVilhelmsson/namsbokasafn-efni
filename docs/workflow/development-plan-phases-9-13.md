@@ -14,11 +14,11 @@
 | 8.1 | `1021662` | Segment-level linguistic editor (DB-backed edits, module reviews, discussions) |
 | 8.2 | `444cb33` | Terminology integration (inline term highlighting, consistency checking, lookup) |
 | 8.3 | `ec38ab0` | Pipeline API (inject/render triggered from web UI, job tracking) |
-| 8.4 | `98aea7b` | Localization editor (3-column Pass 2 editor, saves to `04-localized/`) |
+| 8.4 | `98aea7b` | Localization editor (3-column Pass 2 editor, saves to `04-localized-content/`) |
 
 ### The Write Gap (Primary Blocker)
 
-The segment editor records edits in SQLite (`segment_edits` table) and the head editor can approve/reject them. But approved edits only update a `status` column in the database. **Nothing writes approved content to `03-faithful/` segment files.** Without those files:
+The segment editor records edits in SQLite (`segment_edits` table) and the head editor can approve/reject them. But approved edits only update a `status` column in the database. **Nothing writes approved content to `03-faithful-translation/` segment files.** Without those files:
 
 - `cnxml-inject` has no source for the faithful track
 - `cnxml-render` produces no faithful HTML
@@ -34,9 +34,9 @@ This is the single highest-priority item.
 | `01-source/` | — | CNXML originals (fetched on demand) |
 | `02-for-mt/` | ch01-ch05 | EN segments extracted |
 | `02-mt-output/` | ch01-ch05 | IS segments from MT (59 files) |
-| `03-faithful/` | **empty** | No Pass 1 files written yet |
+| `03-faithful-translation/` | **empty** | No Pass 1 files written yet |
 | `03-translated/` | ch01-ch05 | Translated CNXML from injection |
-| `04-localized/` | **empty** | Pass 2 not started |
+| `04-localized-content/` | **empty** | Pass 2 not started |
 | `05-publication/mt-preview/` | ch01 | HTML rendered |
 | `05-publication/faithful/` | **empty** | Blocked on write gap |
 
@@ -56,7 +56,7 @@ Issues 5 and 6 need investigation to determine whether the fix belongs in cnxml-
 
 ## Phase 9: Close the Write Gap
 
-**Goal:** Approved edits flow to `03-faithful/` files, unblocking the downstream pipeline.
+**Goal:** Approved edits flow to `03-faithful-translation/` files, unblocking the downstream pipeline.
 
 ### 9.1 — Apply Approved Edits to Files
 
@@ -65,7 +65,7 @@ Add `applyApprovedEdits(book, chapter, moduleId)` to `segmentEditorService.js`:
 1. Load current IS segments from `02-mt-output/` as the base text
 2. Query all approved edits for this module from the database
 3. Overlay approved content onto each segment (latest approved edit wins)
-4. Write to `03-faithful/chNN/mNNNNN-segments.is.md` via `segmentParser.saveModuleSegments()`
+4. Write to `03-faithful-translation/chNN/mNNNNN-segments.is.md` via `segmentParser.saveModuleSegments()`
 5. Record which edits were applied (new `applied_at` column) to prevent double-application
 
 **Trigger points:**
@@ -83,8 +83,8 @@ Add `applyApprovedEdits(book, chapter, moduleId)` to `segmentEditorService.js`:
 
 After applying edits, chain into the pipeline API:
 
-1. Apply approved edits to `03-faithful/`
-2. Run `cnxml-inject` (source: `03-faithful`) → `03-translated/`
+1. Apply approved edits to `03-faithful-translation/`
+2. Run `cnxml-inject` (source: `03-faithful-translation`) → `03-translated/`
 3. Run `cnxml-render` (track: faithful) → `05-publication/faithful/`
 4. Show rendered HTML in a preview panel
 
@@ -120,8 +120,8 @@ The current `publicationService.js` (1,104 lines) assembles markdown using `chap
 | Track | Source | Pipeline |
 |-------|--------|----------|
 | mt-preview | `02-mt-output/` | inject → render → `05-publication/mt-preview/` |
-| faithful | `03-faithful/` | inject → render → `05-publication/faithful/` |
-| localized | `04-localized/` | inject → render → `05-publication/localized/` |
+| faithful | `03-faithful-translation/` | inject → render → `05-publication/faithful/` |
+| localized | `04-localized-content/` | inject → render → `05-publication/localized/` |
 
 Existing features that carry forward unchanged:
 - Readiness checks (validation before publish)
@@ -269,7 +269,7 @@ Block publication if checks fail. Low effort, high value.
 
 ### B. TM Preparation Automation
 
-After `03-faithful/` files are written, auto-run `prepare-for-align.js` to stage files for Matecat Align. Reduces the TM creation step from a manual multi-step process to a single click.
+After `03-faithful-translation/` files are written, auto-run `prepare-for-align.js` to stage files for Matecat Align. Reduces the TM creation step from a manual multi-step process to a single click.
 
 ### C. Segment-Level Progress Metrics
 

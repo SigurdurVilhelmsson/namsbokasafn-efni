@@ -9,7 +9,7 @@ Apply pedagogical tags to $ARGUMENTS.
 
 ## Pre-flight Checks
 
-1. Verify input file is in `04-localized/` or `05-publication/`
+1. Verify input file is in `04-localized-content/` or `05-publication/`
 2. If file is in earlier stage, warn: "Content should be localized before tagging"
 3. Confirm output location: `books/{book}/05-publication/chapters/`
 

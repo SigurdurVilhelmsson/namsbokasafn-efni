@@ -45,13 +45,13 @@ This is the authoritative reference for the namsbokasafn translation pipeline. A
  │  Editor suggests changes, tagged by category:                    │
  │    terminology · accuracy · readability · style · omission       │
  │  Head editor: approve / reject / discuss per segment             │
- │  Output: 03-faithful/ (linguistically edited IS segments)        │
+ │  Output: 03-faithful-translation/ (linguistically edited IS segments)        │
  └───────────────────────────────────────────────────────────────────┘
       │
       ├──────────────────────────────────────────────────────┐
       ▼                                                      │
  ┌─ FAITHFUL PUBLICATION ──────────────────┐                 │
- │  cnxml-inject  (source: 03-faithful/)   │                 │
+ │  cnxml-inject  (source: 03-faithful-translation/)   │                 │
  │  cnxml-render  (track: faithful)        │                 │
  │  → 05-publication/faithful/             │                 │
  │  → sync to vefur (replaces mt-preview)  │                 │
@@ -71,12 +71,12 @@ This is the authoritative reference for the namsbokasafn translation pipeline. A
  │    Imperial → SI units, US → Icelandic examples,                 │
  │    cultural references, geographic examples                      │
  │  Human editor reviews, edits, accepts or rejects                 │
- │  Output: 04-localized/ (localized IS segments)                   │
+ │  Output: 04-localized-content/ (localized IS segments)                   │
  └───────────────────────────────────────────────────────────────────┘
       │
       ▼
  ┌─ LOCALIZED PUBLICATION ─────────────────┐
- │  cnxml-inject  (source: 04-localized/)  │
+ │  cnxml-inject  (source: 04-localized-content/)  │
  │  cnxml-render  (track: localized)       │
  │  → 05-publication/localized/            │
  │  → sync to vefur (replaces faithful)    │
@@ -236,7 +236,7 @@ node tools/cnxml-render.js --chapter 5 --track mt-preview
    - **omission** — MT dropped content
 4. Editor submits reviewed segments for head-editor approval
 5. Head editor reviews changes per segment: **approve**, **reject**, or **discuss**
-6. Approved segments are written to `03-faithful/ch05/m68724-segments.is.md`
+6. Approved segments are written to `03-faithful-translation/ch05/m68724-segments.is.md`
 
 **What editors must NOT change:**
 - `<!-- SEG:... -->` markers (system-managed)
@@ -261,7 +261,7 @@ node tools/cnxml-inject.js --chapter 5 --source-dir 03-faithful
 node tools/cnxml-render.js --chapter 5 --track faithful
 ```
 
-Same inject-render process as mt-preview, but reads from `03-faithful/` and writes to `05-publication/faithful/`.
+Same inject-render process as mt-preview, but reads from `03-faithful-translation/` and writes to `05-publication/faithful/`.
 
 **Sync:** Copy to vefur. Faithful replaces mt-preview on the website.
 
@@ -274,7 +274,7 @@ Same inject-render process as mt-preview, but reads from `03-faithful/` and writ
 ```bash
 node tools/prepare-for-align.js \
   --en books/efnafraedi/02-for-mt/ch05/m68724-segments.en.md \
-  --is books/efnafraedi/03-faithful/ch05/m68724-segments.is.md \
+  --is books/efnafraedi/03-faithful-translation/ch05/m68724-segments.is.md \
   --output-dir books/efnafraedi/for-align/ch05
 ```
 
@@ -302,7 +302,7 @@ node tools/prepare-for-align.js \
    - **Institutional references:** US institutions → Icelandic equivalents where appropriate
 2. Human editor reviews each suggestion: accept, edit, or reject
 3. Head editor approves finalized localized segments
-4. Output written to `04-localized/ch05/m68724-segments.is.md`
+4. Output written to `04-localized-content/ch05/m68724-segments.is.md`
 
 ### Stage 10: Localized Publication
 
@@ -313,7 +313,7 @@ node tools/cnxml-inject.js --chapter 5 --source-dir 04-localized
 node tools/cnxml-render.js --chapter 5 --track localized
 ```
 
-Same inject-render process. Reads from `04-localized/`, writes to `05-publication/localized/`.
+Same inject-render process. Reads from `04-localized-content/`, writes to `05-publication/localized/`.
 
 **Sync:** Copy to vefur. Localized replaces faithful on the website.
 
@@ -342,7 +342,7 @@ books/efnafraedi/
 │   └── ch{NN}/
 │       └── m{NNNNN}-segments.is.md        # Restored MT segments
 │
-├── 03-faithful/             # ✏️ EDITORIAL — Linguistically reviewed IS segments
+├── 03-faithful-translation/             # ✏️ EDITORIAL — Linguistically reviewed IS segments
 │   └── ch{NN}/
 │       └── m{NNNNN}-segments.is.md        # Pass 1 output
 │
@@ -350,7 +350,7 @@ books/efnafraedi/
 │   └── ch{NN}/
 │       └── m{NNNNN}.cnxml                 # Used by cnxml-render
 │
-├── 04-localized/            # ✏️ EDITORIAL — Localized IS segments
+├── 04-localized-content/            # ✏️ EDITORIAL — Localized IS segments
 │   └── ch{NN}/
 │       └── m{NNNNN}-segments.is.md        # Pass 2 output
 │
@@ -420,7 +420,7 @@ books/efnafraedi/
 
 | Tool | Change | Why |
 |------|--------|-----|
-| `cnxml-inject.js` | Add `--source-dir` flag | Currently hardcodes `02-for-mt/`; needs to read from `02-mt-output/`, `03-faithful/`, or `04-localized/` depending on track |
+| `cnxml-inject.js` | Add `--source-dir` flag | Currently hardcodes `02-for-mt/`; needs to read from `02-mt-output/`, `03-faithful-translation/`, or `04-localized-content/` depending on track |
 | `cnxml-extract.js` | Extract `getChapterModules` to `tools/lib/` | Currently imports from deprecated `pipeline-runner.js` |
 
 ---
@@ -495,7 +495,7 @@ Each `<!-- SEG:id -->` block in a module's segment file is a reviewable unit. Th
 
 | Action | Effect |
 |--------|--------|
-| **approve** | Suggestion accepted; segment updated in 03-faithful/ |
+| **approve** | Suggestion accepted; segment updated in 03-faithful-translation/ |
 | **reject** | Suggestion discarded; MT version kept (or previous approved version) |
 | **discuss** | Opens discussion thread; segment stays pending until resolved |
 

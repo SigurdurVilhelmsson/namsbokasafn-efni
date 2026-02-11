@@ -47,8 +47,8 @@
   "directories": {
     "source": "01-source/",
     "mtOutput": "02-mt-output/",
-    "faithful": "03-faithful/",
-    "localized": "04-localized/",
+    "faithful": "03-faithful-translation/",
+    "localized": "04-localized-content/",
     "publication": "05-publication/",
     "tm": "tm/",
     "glossary": "glossary/"

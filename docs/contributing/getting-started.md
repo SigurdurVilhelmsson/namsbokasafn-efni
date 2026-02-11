@@ -37,9 +37,9 @@ CNXML → Extract → EN Segments → MT → Review → Inject → Render → HT
 
 | Asset | Step | Location |
 |-------|------|----------|
-| Faithful Translation ★ | Step 3 | `03-faithful/` |
+| Faithful Translation ★ | Step 3 | `03-faithful-translation/` |
 | Human-Verified TM ★ | Step 4 | `tm/` |
-| Localized Version ★ | Pass 2 | `04-localized/` |
+| Localized Version ★ | Pass 2 | `04-localized-content/` |
 
 ★ = Preserved asset
 
@@ -109,7 +109,7 @@ Read before starting:
    - Natural phrasing
    - Technical accuracy
 4. **Add comments** using `<!-- QUESTION: ... -->` for questions
-5. **Save** to `03-faithful/ch##/`
+5. **Save** to `03-faithful-translation/ch##/`
 6. **Notify** translator that review is complete
 
 **Remember:** NO localization in Pass 1
@@ -127,10 +127,10 @@ Read before starting:
 
 #### Manual Workflow
 
-1. **Get files** from `03-faithful/ch##/`
+1. **Get files** from `03-faithful-translation/ch##/`
 2. **Make localization changes** directly in segment files
 3. **Document** every change in the localization log
-4. **Save** to `04-localized/ch##/`
+4. **Save** to `04-localized-content/ch##/`
 
 ---
 
@@ -138,16 +138,16 @@ Read before starting:
 
 | Pass | Get files from | Save to |
 |------|----------------|---------|
-| Pass 1 | `02-mt-output/ch##/` | `03-faithful/ch##/` |
-| Pass 2 | `03-faithful/ch##/` | `04-localized/ch##/` |
+| Pass 1 | `02-mt-output/ch##/` | `03-faithful-translation/ch##/` |
+| Pass 2 | `03-faithful-translation/ch##/` | `04-localized-content/ch##/` |
 
 ### Naming Convention
 
 Segment files use module-based naming:
 ```
 MT Output:    m68724-segments.is.md (in 02-mt-output/)
-Pass 1:       m68724-segments.is.md (in 03-faithful/)
-Pass 2:       m68724-segments.is.md (in 04-localized/)
+Pass 1:       m68724-segments.is.md (in 03-faithful-translation/)
+Pass 2:       m68724-segments.is.md (in 04-localized-content/)
 ```
 
 ---

@@ -83,12 +83,12 @@ These files exceed GitHub's 100MB limit and are stored locally only:
 
 ## Still Needed
 
-### Faithful Translations (03-faithful)
+### Faithful Translations (03-faithful-translation)
 
 Chapter 1 Pass 1 review is complete but output not yet uploaded:
 
 ```
-03-faithful/docx/
+03-faithful-translation/docx/
 └── ch01/    # MISSING - upload Pass 1 reviewed translation
 ```
 

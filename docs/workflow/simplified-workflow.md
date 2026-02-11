@@ -46,7 +46,7 @@ The previous workflow had 12+ steps with multiple format conversions (DOCX → p
 │  Step 3: Linguistic Review                                  │
 │  User: Edit IS markdown in any editor (VS Code, etc.)       │
 │  Input: MT output, possibly with simplified formatting      │
-│  Output: 5-1.is.md in 03-faithful/ (faithful translation)   │
+│  Output: 5-1.is.md in 03-faithful-translation/ (faithful translation)   │
 └─────────────────────────────────────────────────────────────┘
                               ↓
 ┌─────────────────────────────────────────────────────────────┐
@@ -188,12 +188,12 @@ node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
 
 **Goal:** Human editor produces faithful translation.
 
-**Step 3a: Initialize 03-faithful with complete MT output**
+**Step 3a: Initialize 03-faithful-translation with complete MT output**
 
-**Critical:** Before starting review, ensure `03-faithful` has complete segment files. This prevents English fallback during injection.
+**Critical:** Before starting review, ensure `03-faithful-translation` has complete segment files. This prevents English fallback during injection.
 
 ```bash
-# Initialize chapter for review (copies complete MT output to 03-faithful)
+# Initialize chapter for review (copies complete MT output to 03-faithful-translation)
 node tools/init-faithful-review.js --chapter 5 --verbose
 
 # Force overwrite if needed
@@ -201,9 +201,9 @@ node tools/init-faithful-review.js --chapter 5 --force
 ```
 
 **What this does:**
-- Copies all `*-segments.is.md` files from `02-mt-output/ch05/` to `03-faithful/ch05/`
+- Copies all `*-segments.is.md` files from `02-mt-output/ch05/` to `03-faithful-translation/ch05/`
 - Ensures reviewers start with complete content (no missing segments)
-- Prevents English fallback when injecting from `03-faithful`
+- Prevents English fallback when injecting from `03-faithful-translation`
 - Skips files that already exist (use `--force` to overwrite)
 
 **Step 3b: Review and edit markdown**
@@ -222,7 +222,7 @@ node tools/init-faithful-review.js --chapter 5 --force
 - NO adding content
 - Focus only on making the translation faithful and well-written
 
-**Location:** `03-faithful/ch05/m68724-segments.is.md`
+**Location:** `03-faithful-translation/ch05/m68724-segments.is.md`
 
 **Deliverable:** Human-verified faithful translation that accurately represents the source in natural Icelandic.
 
@@ -237,13 +237,13 @@ node tools/init-faithful-review.js --chapter 5 --force
 # From single file pair
 node tools/prepare-for-align.js \
   --en books/efnafraedi/02-for-mt/ch05/5-1.en.md \
-  --is books/efnafraedi/03-faithful/ch05/5-1.is.md \
+  --is books/efnafraedi/03-faithful-translation/ch05/5-1.is.md \
   --output-dir books/efnafraedi/for-align/ch05
 
 # From directories with split parts
 node tools/prepare-for-align.js \
   --en-dir books/efnafraedi/02-for-mt/ch05/ \
-  --is-dir books/efnafraedi/03-faithful/ch05/ \
+  --is-dir books/efnafraedi/03-faithful-translation/ch05/ \
   --section 5-1 \
   --output-dir books/efnafraedi/for-align/ch05
 ```
@@ -279,7 +279,7 @@ node tools/cnxml-inject.js --chapter 1 --module m68663
 ```
 
 **Input:**
-- Reviewed segments from `03-faithful/ch01/` (or `02-mt-output/` for mt-preview)
+- Reviewed segments from `03-faithful-translation/ch01/` (or `02-mt-output/` for mt-preview)
 - Structure JSON from `02-structure/ch01/`
 - Equations JSON from `02-structure/ch01/`
 - Original CNXML from `01-source/ch01/`
@@ -390,7 +390,7 @@ books/efnafraedi/
 ├── 02-mt-output/           # 🔒 READ ONLY - IS segments from MT
 │   └── ch05/
 │       └── m68724-segments.is.md    # Step 2 output
-├── 03-faithful/            # ✏️ Reviewed IS segments
+├── 03-faithful-translation/            # ✏️ Reviewed IS segments
 │   └── ch05/
 │       └── m68724-segments.is.md    # Step 3 output (faithful)
 ├── 03-translated/          # Translated CNXML (Step 5a output)
@@ -403,7 +403,7 @@ books/efnafraedi/
 ├── tm/                     # 🔒 READ ONLY - TMX from Matecat Align
 │   └── ch05/
 │       └── 5-1.tmx                  # Step 4 output (human-verified TM)
-├── 04-localized/           # ✏️ Pass 2 output
+├── 04-localized-content/           # ✏️ Pass 2 output
 │   └── ch05/
 │       └── m68724-segments.is.md    # Localized translation
 └── 05-publication/         # ✏️ Web-ready HTML (Step 5b output)
@@ -481,11 +481,11 @@ books/efnafraedi/
 After Step 3 (faithful translation complete):
 
 ```
-03-faithful/ch05/5-1.is.md
+03-faithful-translation/ch05/5-1.is.md
         ↓
     Localization edits (SI units, Icelandic examples)
         ↓
-04-localized/ch05/5-1.is.md
+04-localized-content/ch05/5-1.is.md
         ↓
 05-publication/localized/chapters/05/
 ```
@@ -508,12 +508,12 @@ node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
 # Step 2→3: Restore protected segments in MT output
 node tools/restore-segments-from-mt.js --batch books/efnafraedi/02-mt-output/ch05/
 
-# Step 3: Review MT output, save to 03-faithful/ (manual)
+# Step 3: Review MT output, save to 03-faithful-translation/ (manual)
 
 # Step 4: Prepare for Matecat Align
 node tools/prepare-for-align.js \
   --en books/efnafraedi/02-for-mt/ch05/5-1.en.md \
-  --is books/efnafraedi/03-faithful/ch05/5-1.is.md \
+  --is books/efnafraedi/03-faithful-translation/ch05/5-1.is.md \
   --output-dir books/efnafraedi/for-align/ch05
 # Then upload to Matecat Align (manual)
 

@@ -12,7 +12,7 @@ description: Understand and manage translation workflow status. Triggers when di
 | 1a | Extraction | cnxml-extract.js | 02-for-mt/ | EN segments (.md) |
 | 1b | MT Prep | protect-segments-for-mt.js | 02-for-mt/ | Protected segments |
 | 2 | MT | malstadur.is (manual) | 02-mt-output/ | IS segments (.md) |
-| 3 | Review | /segment-editor | 03-faithful/ | Reviewed segments |
+| 3 | Review | /segment-editor | 03-faithful-translation/ | Reviewed segments |
 | 4 | TM | prepare-for-align.js + Matecat Align | tm/ | Human-verified TM |
 | 5a | Injection | cnxml-inject.js | 03-translated/ | Translated CNXML |
 | 5b | Rendering | cnxml-render.js | 05-publication/ | Semantic HTML |
