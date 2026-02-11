@@ -1,6 +1,6 @@
 ---
 name: localization
-description: Guide Pass 2 localization of faithful translations. Triggers when working on files in 04-localized/, discussing unit conversions, cultural adaptations, or Icelandic context additions.
+description: Guide Pass 2 localization of faithful translations. Triggers when working on files in 04-localized-content/, discussing unit conversions, cultural adaptations, or Icelandic context additions.
 ---
 
 # Localization - Pass 2 Editorial
@@ -35,8 +35,8 @@ Create localized versions that:
 
 ## Output Locations
 
-- Localized .docx: `books/{book}/04-localized/docx/ch{NN}/`
-- Localization log: `books/{book}/04-localized/localization-logs/ch{NN}-log.md`
+- Localized .docx: `books/{book}/04-localized-content/docx/ch{NN}/`
+- Localization log: `books/{book}/04-localized-content/localization-logs/ch{NN}-log.md`
 
 ---
 
@@ -168,4 +168,4 @@ Types: Æfingadæmi, Dæmi, Samhengi, Athugasemd
 
 ### Log Location
 
-Save to: `books/{book}/04-localized/localization-logs/ch{NN}-log.md`
+Save to: `books/{book}/04-localized-content/localization-logs/ch{NN}-log.md`

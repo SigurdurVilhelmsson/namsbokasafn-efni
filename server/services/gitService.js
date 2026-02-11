@@ -27,7 +27,7 @@ const STEP_CONFIG = {
     label: 'Vélþýðing',
   },
   'faithful-edit': {
-    folder: '03-faithful',
+    folder: '03-faithful-translation',
     patterns: ['*.is.md'],
     excludePattern: null,
     label: 'Trú þýðing',
@@ -39,7 +39,7 @@ const STEP_CONFIG = {
     label: 'Þýðingaminni',
   },
   localization: {
-    folder: '04-localized',
+    folder: '04-localized-content',
     patterns: ['*.is.md'],
     excludePattern: null,
     label: 'Staðfærsla',

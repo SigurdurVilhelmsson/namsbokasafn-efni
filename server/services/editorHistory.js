@@ -119,9 +119,9 @@ function hashContent(content) {
  * Get the file path for a section's markdown file
  */
 function getFilePath(book, chapter, section) {
-  // Format: books/{book}/03-faithful/{chapter}/{section}.is.md
+  // Format: books/{book}/03-faithful-translation/{chapter}/{section}.is.md
   const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
-  return path.join(PROJECT_ROOT, 'books', book, '03-faithful', chapterDir, `${section}.is.md`);
+  return path.join(PROJECT_ROOT, 'books', book, '03-faithful-translation', chapterDir, `${section}.is.md`);
 }
 
 /**
@@ -473,12 +473,12 @@ function parseSplitInfo(section) {
  */
 function listSections(book, chapter) {
   const chapterDir = `ch${String(chapter).padStart(2, '0')}`;
-  const faithfulDir = path.join(PROJECT_ROOT, 'books', book, '03-faithful', chapterDir);
+  const faithfulDir = path.join(PROJECT_ROOT, 'books', book, '03-faithful-translation', chapterDir);
   const mtOutputDir = path.join(PROJECT_ROOT, 'books', book, '02-mt-output', chapterDir);
 
   const sections = [];
 
-  // Check 03-faithful first (edited versions)
+  // Check 03-faithful-translation first (edited versions)
   if (fs.existsSync(faithfulDir)) {
     const files = fs.readdirSync(faithfulDir).filter(f => f.endsWith('.is.md'));
     for (const file of files) {

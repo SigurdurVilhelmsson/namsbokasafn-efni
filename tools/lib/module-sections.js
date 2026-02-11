@@ -123,11 +123,11 @@ export function buildModuleSections(book, chapter) {
   });
 
   // 2. Read all segment files for Icelandic titles
-  // Try both 02-for-mt (old chapters) and 03-faithful (new chapters)
+  // Try both 02-for-mt (old chapters) and 03-faithful-translation (new chapters)
   const segments = new Map();
   const segDirs = [
     segDir, // 02-for-mt (chapters 1-5)
-    path.join(REPO_ROOT, 'books', book, '03-faithful', chapterDir), // new chapters 9, 12, 13
+    path.join(REPO_ROOT, 'books', book, '03-faithful-translation', chapterDir), // new chapters 9, 12, 13
   ];
 
   for (const dir of segDirs) {

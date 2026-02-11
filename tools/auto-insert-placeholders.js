@@ -138,10 +138,10 @@ function processChapter(chapter, dryRun) {
 
   // Find all modules in the chapter
   const enDir = path.join(BOOKS_DIR, '02-for-mt', `ch${chapterStr}`);
-  const faithfulDir = path.join(BOOKS_DIR, '03-faithful', `ch${chapterStr}`);
+  const faithfulDir = path.join(BOOKS_DIR, '03-faithful-translation', `ch${chapterStr}`);
 
   // Determine which directory structure is used
-  // New chapters (9+): EN in 02-for-mt/, IS in 03-faithful/
+  // New chapters (9+): EN in 02-for-mt/, IS in 03-faithful-translation/
   // Old chapters (1-5): both EN and IS in 02-for-mt/
   const isDir = fs.existsSync(faithfulDir) ? faithfulDir : enDir;
 

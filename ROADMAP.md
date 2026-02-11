@@ -181,7 +181,7 @@ See [docs/workflow/editor-improvements-jan2026.md](docs/workflow/editor-improvem
 - Database migration 008 for `segment_edits`, `module_reviews`, `segment_discussions` tables
 
 **What was deferred to later phases:**
-- Apply approved edits to `03-faithful/` files (→ Phase 9)
+- Apply approved edits to `03-faithful-translation/` files (→ Phase 9)
 - Publication migration from markdown to HTML (→ Phase 10)
 - Status schema expansion (→ Phase 11)
 - Old editor retirement (→ Phase 13)
@@ -194,10 +194,10 @@ See [docs/workflow/editor-improvements-jan2026.md](docs/workflow/editor-improvem
 
 **Status:** NOT STARTED
 
-**Problem:** Approved edits only update a `status` column in SQLite. Nothing writes the approved content to `03-faithful/` segment files. Without those files, `cnxml-inject` has no input for the faithful track and the entire downstream pipeline is blocked.
+**Problem:** Approved edits only update a `status` column in SQLite. Nothing writes the approved content to `03-faithful-translation/` segment files. Without those files, `cnxml-inject` has no input for the faithful track and the entire downstream pipeline is blocked.
 
 **Work:**
-- [ ] 9.1 — `applyApprovedEdits()`: overlay approved DB edits onto MT output, write to `03-faithful/`
+- [ ] 9.1 — `applyApprovedEdits()`: overlay approved DB edits onto MT output, write to `03-faithful-translation/`
 - [ ] 9.2 — "Apply & Render" flow: apply → inject → render → preview in one click
 - [ ] 9.3 — Bulk chapter apply: process all approved modules in a chapter at once
 
@@ -392,7 +392,7 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 
 See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
 
-1. [ ] Apply approved edits to `03-faithful/` segment files
+1. [ ] Apply approved edits to `03-faithful-translation/` segment files
 2. [ ] "Apply & Render" one-click flow for head editors
 3. [ ] Bulk chapter apply for operational efficiency
 

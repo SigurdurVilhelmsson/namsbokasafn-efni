@@ -233,8 +233,8 @@ function createBookDirectories(slug) {
     '01-source',
     '02-for-mt',
     '02-mt-output',
-    '03-faithful',
-    '04-localized',
+    '03-faithful-translation',
+    '04-localized-content',
     '05-publication/mt-preview',
     '05-publication/faithful',
     '05-publication/localized',
@@ -682,11 +682,11 @@ function scanAndUpdateStatus(bookSlug, chapterNum = null) {
     },
     faithful: (book, ch, section) => {
       const filename = section === 'intro' ? 'intro.is.md' : `${section}.is.md`;
-      return fs.existsSync(path.join(BOOKS_DIR, book, '03-faithful', `ch${ch}`, filename));
+      return fs.existsSync(path.join(BOOKS_DIR, book, '03-faithful-translation', `ch${ch}`, filename));
     },
     localized: (book, ch, section) => {
       const filename = section === 'intro' ? 'intro.is.md' : `${section}.is.md`;
-      return fs.existsSync(path.join(BOOKS_DIR, book, '04-localized', `ch${ch}`, filename));
+      return fs.existsSync(path.join(BOOKS_DIR, book, '04-localized-content', `ch${ch}`, filename));
     },
     tmCreated: (book, ch, section) => {
       const filename = section === 'intro' ? 'intro.tmx' : `${section}.tmx`;
@@ -919,8 +919,8 @@ function scanStatusDryRun(bookSlug, chapterNum = null) {
     const stageChecks = [
       { stage: 'enMarkdown', dir: '02-for-mt', pattern: '.en.md' },
       { stage: 'mtOutput', dir: '02-mt-output', pattern: '.is.md' },
-      { stage: 'faithful', dir: '03-faithful', pattern: '.is.md' },
-      { stage: 'localized', dir: '04-localized', pattern: '.is.md' },
+      { stage: 'faithful', dir: '03-faithful-translation', pattern: '.is.md' },
+      { stage: 'localized', dir: '04-localized-content', pattern: '.is.md' },
       { stage: 'tmCreated', dir: 'tm', pattern: '.tmx' }
     ];
 

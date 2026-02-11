@@ -3,7 +3,7 @@
  *
  * Segment-level localization editor (Pass 2).
  * Three-column view: EN (reference) | Faithful IS (source) | Localized IS (editable).
- * Saves localized segments to 04-localized/.
+ * Saves localized segments to 04-localized-content/.
  *
  * Endpoints:
  *   GET  /api/localization-editor/:book/:chapter          List modules with localization status

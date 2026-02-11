@@ -1239,7 +1239,7 @@ function findChapterModules(chapter, moduleId = null) {
  * @param {number} chapter - Chapter number
  * @param {string} moduleId - Module ID (e.g., m68724)
  * @param {string} lang - Language code (e.g., 'is')
- * @param {string} sourceDir - Directory containing segments, relative to BOOKS_DIR (e.g., '02-for-mt', '03-faithful')
+ * @param {string} sourceDir - Directory containing segments, relative to BOOKS_DIR (e.g., '02-for-mt', '03-faithful-translation')
  */
 function loadModuleInputs(chapter, moduleId, lang, sourceDir) {
   const chapterDir = formatChapter(chapter);

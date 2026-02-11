@@ -12,7 +12,7 @@
 ## Current Focus
 
 **Phase 9: Close the Write Gap**
-- Apply approved segment edits to `03-faithful/` files
+- Apply approved segment edits to `03-faithful-translation/` files
 - Unblock faithful publication track (inject → render → publish)
 - Enable one-click "Apply & Render" workflow
 

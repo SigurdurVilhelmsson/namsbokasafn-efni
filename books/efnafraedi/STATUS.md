@@ -17,7 +17,7 @@
 
 ## Current Phase: Phase 9
 
-**Phase 9: Close the Write Gap** — Applying approved segment edits from database to `03-faithful/` files to unblock the inject→render pipeline for faithful publications.
+**Phase 9: Close the Write Gap** — Applying approved segment edits from database to `03-faithful-translation/` files to unblock the inject→render pipeline for faithful publications.
 
 See [ROADMAP.md](../../ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](../../docs/workflow/development-plan-phases-9-13.md) for details.
 

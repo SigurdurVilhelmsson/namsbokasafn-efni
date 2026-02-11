@@ -5,8 +5,8 @@
     "allow_read": ["**/*"],
     "allow_write": [
       ".claude/**",
-      "books/**/03-faithful/**",
-      "books/**/04-localized/**",
+      "books/**/03-faithful-translation/**",
+      "books/**/04-localized-content/**",
       "books/**/05-publication/**",
       "books/**/chapters/**/files.json",
       "logs/**",

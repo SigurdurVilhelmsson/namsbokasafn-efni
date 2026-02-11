@@ -61,7 +61,7 @@ Complete rebuild of the editor layer to work with CNXML→HTML rendering pipelin
 - `docs/pipeline/html-pipeline-issues.md` — Issue tracking for cnxml-render
 
 **Deferred to Future Phases**
-- Apply approved edits to `03-faithful/` files (→ Phase 9)
+- Apply approved edits to `03-faithful-translation/` files (→ Phase 9)
 - Publication migration from markdown to HTML (→ Phase 10)
 - Status schema expansion to 8-stage pipeline (→ Phase 11)
 - Old markdown editor retirement (→ Phase 13)
@@ -229,8 +229,8 @@ Complete rebuild of the editor layer to work with CNXML→HTML rendering pipelin
 ### Added
 - Two-pass editorial workflow producing multiple valuable assets
 - New directory structure:
-  - `03-faithful/` - Human-verified faithful translation
-  - `04-localized/` - Localized version with SI units and Icelandic context
+  - `03-faithful-translation/` - Human-verified faithful translation
+  - `04-localized-content/` - Localized version with SI units and Icelandic context
   - `glossary/` - Terminology files (CSV format)
   - `tm/exports/` - Translation memory exports
 - Chapter subdirectories (ch01, ch02) in source/faithful/localized folders
@@ -258,7 +258,7 @@ Complete rebuild of the editor layer to work with CNXML→HTML rendering pipelin
 ### Removed
 - `03-tm-translated/` (merged into new workflow)
 - `04-editor-review/` (replaced by two-pass system)
-- `05-final-docx/` (replaced by 03-faithful/)
+- `05-final-docx/` (replaced by 03-faithful-translation/)
 
 ## [0.2.0] - 2025-12-16
 

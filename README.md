@@ -45,9 +45,9 @@ books/
     ├── 02-for-mt/           # EN Markdown-bútar fyrir vélþýðingu
     ├── 02-structure/        # Skjalabygging (JSON)
     ├── 02-mt-output/        # Vélþýðing (IS bútar)
-    ├── 03-faithful/         # Nákvæm þýðing eftir 1. yfirlestur
+    ├── 03-faithful-translation/         # Nákvæm þýðing eftir 1. yfirlestur
     ├── 03-translated/       # Þýdd CNXML skjöl (frá inject)
-    ├── 04-localized/        # Staðfærð útgáfa eftir 2. yfirlestur
+    ├── 04-localized-content/        # Staðfærð útgáfa eftir 2. yfirlestur
     ├── 05-publication/      # Útgefin HTML skjöl (frá render)
     ├── tm/                  # Þýðingaminni (.tmx)
     └── glossary/            # Hugtakasafn
@@ -111,7 +111,7 @@ This repository contains the translation workflow and content for Icelandic tran
 
 ### Assets Produced
 
-1. **Faithful Translation** (`03-faithful/`)
+1. **Faithful Translation** (`03-faithful-translation/`)
    - Human-verified Icelandic translation faithful to the source
    - Not machine translation output - contains human corrections
    - Available as markdown segments and rendered HTML
@@ -121,7 +121,7 @@ This repository contains the translation workflow and content for Icelandic tran
    - TMX format plus parallel .txt exports
    - Valuable for training MT systems and Icelandic LLMs
 
-3. **Localized Version** (`04-localized/`, `05-publication/`)
+3. **Localized Version** (`04-localized-content/`, `05-publication/`)
    - Adapted for Icelandic secondary school students
    - SI units, Icelandic context and examples
    - Extended exercises where beneficial

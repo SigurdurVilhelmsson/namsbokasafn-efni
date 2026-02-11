@@ -171,7 +171,7 @@ router.post(
  * Publish faithful translation for a chapter.
  *
  * Requires: HEAD_EDITOR role
- * Requires: 03-faithful/ has segment files (from Phase 9 apply)
+ * Requires: 03-faithful-translation/ has segment files (from Phase 9 apply)
  * Returns: { jobId, track, chapter, moduleCount, modules }
  */
 router.post(
@@ -224,7 +224,7 @@ router.post(
  * Publish localized content for a chapter.
  *
  * Requires: HEAD_EDITOR role
- * Requires: 04-localized/ has segment files
+ * Requires: 04-localized-content/ has segment files
  * Returns: { jobId, track, chapter, moduleCount, modules }
  */
 router.post(

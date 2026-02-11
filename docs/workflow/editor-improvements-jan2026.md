@@ -19,7 +19,7 @@ CNXML → cnxml-to-md → EN markdown → MT → IS markdown
                                           ↓
                                     EasyMDE editor
                                           ↓
-                                    03-faithful/*.md
+                                    03-faithful-translation/*.md
                                           ↓
                               chapter-assembler + add-frontmatter
                                           ↓
@@ -41,7 +41,7 @@ CNXML → cnxml-extract → EN segments + structure.json + equations.json
                               ↓
                     Editor (segment review)          ← REBUILD FOCUS
                               ↓
-                        03-faithful/ (IS segments)
+                        03-faithful-translation/ (IS segments)
                               ↓
                     cnxml-inject → 03-translated/*.cnxml
                               ↓
@@ -86,11 +86,11 @@ These features from the previous Phase 1 and Phase 2 plans are pipeline-independ
 
 ### 1. Editor Content Model
 
-**Current state:** The editor (`server/views/editor.html`) uses EasyMDE to edit full markdown files from `02-mt-output/` and `03-faithful/`. It treats each section (e.g., `5-1.is.md`) as a single markdown document.
+**Current state:** The editor (`server/views/editor.html`) uses EasyMDE to edit full markdown files from `02-mt-output/` and `03-faithful-translation/`. It treats each section (e.g., `5-1.is.md`) as a single markdown document.
 
 **Required change:** The editor must work with **segment files** from the extract-inject pipeline. These are markdown files with `<!-- SEG:... -->` markers and `[[MATH:N]]` placeholders. The editor still edits markdown (so EasyMDE can stay), but it must:
 
-- Load segment files from `02-mt-output/` or `03-faithful/`
+- Load segment files from `02-mt-output/` or `03-faithful-translation/`
 - Preserve `<!-- SEG:... -->` markers (or `{{SEG:...}}` from protected files)
 - Preserve `[[MATH:N]]` placeholders (equations live in separate JSON)
 - Show the corresponding English segment alongside each Icelandic segment
@@ -217,11 +217,11 @@ books/{book}/
 │       ├── m{NNNNN}-structure.json
 │       └── m{NNNNN}-equations.json
 ├── 02-mt-output/           # 🔒 READ ONLY - IS segments from MT
-├── 03-faithful/            # ✏️ Reviewed IS segments
+├── 03-faithful-translation/            # ✏️ Reviewed IS segments
 ├── 03-translated/          # ← NEW: Translated CNXML from inject
 │   └── ch{NN}/
 │       └── m{NNNNN}.cnxml
-├── 04-localized/           # ✏️ Pass 2 output
+├── 04-localized-content/           # ✏️ Pass 2 output
 ├── 05-publication/         # ✏️ Web-ready HTML (was markdown)
 │   ├── mt-preview/
 │   ├── faithful/

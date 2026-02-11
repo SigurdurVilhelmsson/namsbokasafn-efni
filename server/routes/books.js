@@ -465,7 +465,7 @@ router.get('/:slug/download', requireAuth, async (req, res) => {
   const typeDirs = {
     'en-md': '02-for-mt',
     'is-md': '02-mt-output',
-    'faithful': '03-faithful'
+    'faithful': '03-faithful-translation'
   };
 
   const sourceType = typeDirs[type];

@@ -95,7 +95,7 @@ Mark urgency with tags:
 - [ ] Terminology questions documented
 - [ ] No localization changes made
 - [ ] File saved as: `[section]-pass1-[initials].docx`
-- [ ] File location: `03-faithful/docx/ch##/`
+- [ ] File location: `03-faithful-translation/docx/ch##/`
 - [ ] Translator notified that Pass 1 is complete
 
 ### Notes from Pass 1
@@ -116,7 +116,7 @@ Mark urgency with tags:
 
 ### Setup
 
-- [ ] Start from faithful translation in `03-faithful/docx/ch##/`
+- [ ] Start from faithful translation in `03-faithful-translation/docx/ch##/`
 - [ ] Create localization log from template (`templates/localization-log.md`)
 - [ ] Open unit conversion reference
 
@@ -177,9 +177,9 @@ For EVERY change:
 - [ ] Calculations verified
 - [ ] Scientific accuracy confirmed
 - [ ] File saved as: `[section]-localized.docx`
-- [ ] File location: `04-localized/docx/ch##/`
+- [ ] File location: `04-localized-content/docx/ch##/`
 - [ ] Localization log complete
-- [ ] Log location: `04-localized/localization-logs/ch##-log.md`
+- [ ] Log location: `04-localized-content/localization-logs/ch##-log.md`
 - [ ] Translator notified that Pass 2 is complete
 
 ### Notes from Pass 2

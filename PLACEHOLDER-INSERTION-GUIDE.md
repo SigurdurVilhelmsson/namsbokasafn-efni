@@ -3,11 +3,11 @@
 This document shows where to insert `[[MEDIA:n]]` and `[[TABLE:id]]` placeholders into existing translated segments.
 
 **Instructions:**
-1. Open the Icelandic segment file in `03-faithful/`
+1. Open the Icelandic segment file in `03-faithful-translation/`
 2. Find the segment by its ID
 3. Insert the placeholder in the correct position (matching the English text)
 4. Save the file
-5. After all insertions, run: `node tools/cnxml-inject.js --chapter XX --source-dir 03-faithful`
+5. After all insertions, run: `node tools/cnxml-inject.js --chapter XX --source-dir 03-faithful-translation`
 
 ---
 
@@ -349,25 +349,25 @@ By chapter:
 - **Chapter 13, Module m68801**: 1 media placeholder
 
 **Files to edit:**
-- `books/efnafraedi/03-faithful/ch02/m68693-segments.is.md`
-- `books/efnafraedi/03-faithful/ch03/m68700-segments.is.md`
-- `books/efnafraedi/03-faithful/ch04/m68713-segments.is.md`
-- `books/efnafraedi/03-faithful/ch12/m68791-segments.is.md`
-- `books/efnafraedi/03-faithful/ch13/m68801-segments.is.md`
+- `books/efnafraedi/03-faithful-translation/ch02/m68693-segments.is.md`
+- `books/efnafraedi/03-faithful-translation/ch03/m68700-segments.is.md`
+- `books/efnafraedi/03-faithful-translation/ch04/m68713-segments.is.md`
+- `books/efnafraedi/03-faithful-translation/ch12/m68791-segments.is.md`
+- `books/efnafraedi/03-faithful-translation/ch13/m68801-segments.is.md`
 
 **After insertion, re-inject and render:**
 ```bash
 # Chapters 2-4 (already published, only if you want to fix them)
-node tools/cnxml-inject.js --chapter 2 --source-dir 03-faithful --verbose
-node tools/cnxml-inject.js --chapter 3 --source-dir 03-faithful --verbose
-node tools/cnxml-inject.js --chapter 4 --source-dir 03-faithful --verbose
+node tools/cnxml-inject.js --chapter 2 --source-dir 03-faithful-translation --verbose
+node tools/cnxml-inject.js --chapter 3 --source-dir 03-faithful-translation --verbose
+node tools/cnxml-inject.js --chapter 4 --source-dir 03-faithful-translation --verbose
 node tools/cnxml-render.js --chapter 2 --track faithful
 node tools/cnxml-render.js --chapter 3 --track faithful
 node tools/cnxml-render.js --chapter 4 --track faithful
 
 # Chapters 12-13 (new, need fixing before first publication)
-node tools/cnxml-inject.js --chapter 12 --source-dir 03-faithful --verbose
-node tools/cnxml-inject.js --chapter 13 --source-dir 03-faithful --verbose
+node tools/cnxml-inject.js --chapter 12 --source-dir 03-faithful-translation --verbose
+node tools/cnxml-inject.js --chapter 13 --source-dir 03-faithful-translation --verbose
 node tools/cnxml-render.js --chapter 12 --track faithful
 node tools/cnxml-render.js --chapter 13 --track faithful
 ```

@@ -101,8 +101,8 @@ function getModulePaths(book, chapter, moduleId) {
   return {
     enSource: path.join(bookDir, '02-for-mt', chapterDir, `${moduleId}-segments.en.md`),
     mtOutput: path.join(bookDir, '02-mt-output', chapterDir, `${moduleId}-segments.is.md`),
-    faithful: path.join(bookDir, '03-faithful', chapterDir, `${moduleId}-segments.is.md`),
-    localized: path.join(bookDir, '04-localized', chapterDir, `${moduleId}-segments.is.md`),
+    faithful: path.join(bookDir, '03-faithful-translation', chapterDir, `${moduleId}-segments.is.md`),
+    localized: path.join(bookDir, '04-localized-content', chapterDir, `${moduleId}-segments.is.md`),
     structure: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-structure.json`),
     equations: path.join(bookDir, '02-structure', chapterDir, `${moduleId}-equations.json`),
   };
@@ -301,7 +301,7 @@ function loadModuleForLocalization(book, chapter, moduleId) {
 }
 
 /**
- * Save localized IS segments to the 04-localized directory.
+ * Save localized IS segments to the 04-localized-content directory.
  *
  * @param {string} book - Book slug
  * @param {number} chapter - Chapter number
@@ -345,8 +345,8 @@ function listChapterModules(book, chapter) {
   const chapterStr = String(chapter).padStart(2, '0');
   const enDir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${chapterStr}`);
   const mtDir = path.join(BOOKS_DIR, book, '02-mt-output', `ch${chapterStr}`);
-  const faithfulDir = path.join(BOOKS_DIR, book, '03-faithful', `ch${chapterStr}`);
-  const localizedDir = path.join(BOOKS_DIR, book, '04-localized', `ch${chapterStr}`);
+  const faithfulDir = path.join(BOOKS_DIR, book, '03-faithful-translation', `ch${chapterStr}`);
+  const localizedDir = path.join(BOOKS_DIR, book, '04-localized-content', `ch${chapterStr}`);
 
   if (!fs.existsSync(enDir)) {
     return [];

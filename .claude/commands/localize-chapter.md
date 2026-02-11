@@ -11,7 +11,7 @@ Identify localization opportunities in chapter $ARGUMENTS.
 
 1. Parse argument (e.g., "efnafraedi 3")
 2. Format as ch{NN}
-3. Verify faithful translation exists: `books/{book}/03-faithful/docx/ch{NN}/`
+3. Verify faithful translation exists: `books/{book}/03-faithful-translation/docx/ch{NN}/`
 4. If not found, STOP: "Pass 1 must be completed first"
 
 ## Process
@@ -24,7 +24,7 @@ Identify localization opportunities in chapter $ARGUMENTS.
 ## Output Locations
 
 - Report: Display to user
-- Draft log: `books/{book}/04-localized/localization-logs/ch{NN}-log.md`
+- Draft log: `books/{book}/04-localized-content/localization-logs/ch{NN}-log.md`
   - Only create draft if user confirms
   - Mark as DRAFT - requires human completion
 

@@ -193,8 +193,8 @@ CNXML Source → fetch → prebake → bake → postbake → [pdf/web/epub]
 
 **Scenario 1: Enki for PDF Only (Low effort)**
 ```
-Our workflow:  CNXML → MD → MT → IS MD → 03-faithful/
-Enki:          03-faithful/ → convert to CNXML → PDF
+Our workflow:  CNXML → MD → MT → IS MD → 03-faithful-translation/
+Enki:          03-faithful-translation/ → convert to CNXML → PDF
 ```
 
 **Scenario 2: Enki for All Outputs (Medium effort)**

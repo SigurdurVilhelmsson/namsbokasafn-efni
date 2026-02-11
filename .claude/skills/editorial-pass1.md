@@ -1,6 +1,6 @@
 ---
 name: editorial-pass1
-description: Guide Pass 1 linguistic review of translations. Triggers when working on files in 03-faithful/, discussing grammar review, terminology checking, or linguistic quality. Does NOT handle localization.
+description: Guide Pass 1 linguistic review of translations. Triggers when working on files in 03-faithful-translation/, discussing grammar review, terminology checking, or linguistic quality. Does NOT handle localization.
 ---
 
 # Editorial Pass 1 - Linguistic Review
@@ -46,11 +46,11 @@ Pass 1 review is done via the **segment editor** at `/segment-editor`:
 - Mark modules as reviewed when complete
 - Approved edits are stored in database (segment_edits table)
 
-**Output location:** `books/{book}/03-faithful/ch{NN}/`
+**Output location:** `books/{book}/03-faithful-translation/ch{NN}/`
 **Filename format:** `{moduleId}-segments.is.md`
 **Example:** `m68781-segments.is.md`
 
-**Note:** After segments are approved, they must be applied to the 03-faithful/ files using the "Apply Edits" workflow (Phase 9) before injection/rendering can proceed.
+**Note:** After segments are approved, they must be applied to the 03-faithful-translation/ files using the "Apply Edits" workflow (Phase 9) before injection/rendering can proceed.
 
 ---
 

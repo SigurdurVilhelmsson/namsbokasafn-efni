@@ -134,10 +134,10 @@ node tools/cnxml-inject.js --chapter <num> [--module <id>] [options]
 node tools/cnxml-inject.js --chapter 5
 
 # Inject from reviewed faithful translations
-node tools/cnxml-inject.js --chapter 5 --source-dir 03-faithful
+node tools/cnxml-inject.js --chapter 5 --source-dir 03-faithful-translation
 
 # Inject from localized translations
-node tools/cnxml-inject.js --chapter 5 --source-dir 04-localized
+node tools/cnxml-inject.js --chapter 5 --source-dir 04-localized-content
 
 # Specific module with verbose output
 node tools/cnxml-inject.js --chapter 5 --module m68724 --verbose

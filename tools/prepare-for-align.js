@@ -56,7 +56,7 @@ Usage:
   # Process single file pair
   node tools/prepare-for-align.js \\
     --en books/efnafraedi/02-for-mt/ch05/5-1.en.md \\
-    --is books/efnafraedi/03-faithful/ch05/5-1.is.md \\
+    --is books/efnafraedi/03-faithful-translation/ch05/5-1.is.md \\
     --output-dir ./for-align/
 
   # Process from directories (combines split parts)

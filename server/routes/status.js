@@ -716,7 +716,7 @@ router.get('/:book/:chapter/sections', (req, res) => {
     const stagePaths = {
       extraction: path.join(bookPath, '02-for-mt', chapterDir),
       mtOutput: path.join(bookPath, '02-mt-output', chapterDir),
-      linguisticReview: path.join(bookPath, '03-faithful', chapterDir),
+      linguisticReview: path.join(bookPath, '03-faithful-translation', chapterDir),
       tmCreated: path.join(bookPath, 'tm', chapterDir),
       injection: path.join(bookPath, '03-translated', chapterDir),
       rendering: path.join(bookPath, '05-publication', 'mt-preview', 'chapters', chapterStr),
@@ -1340,7 +1340,7 @@ router.get('/analytics', async (req, res) => {
 
       for (const chapterDir of chapterDirs) {
         // Count sections in this chapter
-        const faithfulPath = path.join(bookPath, '03-faithful', chapterDir.replace('ch', 'ch'));
+        const faithfulPath = path.join(bookPath, '03-faithful-translation', chapterDir.replace('ch', 'ch'));
         const mtOutputPath = path.join(bookPath, '02-mt-output', chapterDir.replace('ch', 'ch'));
 
         // Estimate sections based on files (normalize split files to base sections)
@@ -1548,7 +1548,7 @@ router.get('/analytics', async (req, res) => {
 
     for (const chNum of pilotChapters) {
       const chDir = `ch${String(chNum).padStart(2, '0')}`;
-      const faithfulPath = path.join(PROJECT_ROOT, 'books', 'efnafraedi', '03-faithful', chDir);
+      const faithfulPath = path.join(PROJECT_ROOT, 'books', 'efnafraedi', '03-faithful-translation', chDir);
       const mtOutputPath = path.join(PROJECT_ROOT, 'books', 'efnafraedi', '02-mt-output', chDir);
 
       if (fs.existsSync(mtOutputPath)) {

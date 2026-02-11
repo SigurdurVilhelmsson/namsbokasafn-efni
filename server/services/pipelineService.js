@@ -8,9 +8,9 @@
  *   inject (segments → translated CNXML) → render (CNXML → HTML)
  *
  * Source directory mapping:
- *   mt-preview track  → source-dir: 02-mt-output
- *   faithful track    → source-dir: 03-faithful
- *   localized track   → source-dir: 04-localized
+ *   mt-preview track  → source-dir: 02-machine-translated
+ *   faithful track    → source-dir: 03-faithful-translation
+ *   localized track   → source-dir: 04-localized-content
  */
 
 const { spawn } = require('child_process');
@@ -27,9 +27,9 @@ const jobs = new Map();
 
 // Source directory for each publication track
 const TRACK_SOURCE_DIR = {
-  'mt-preview': '02-mt-output',
-  faithful: '03-faithful',
-  localized: '04-localized',
+  'mt-preview': '02-machine-translated',
+  faithful: '03-faithful-translation',
+  localized: '04-localized-content',
 };
 
 /**
@@ -43,7 +43,7 @@ const TRACK_SOURCE_DIR = {
  * @returns {Object} { jobId, promise }
  */
 function runInject({ chapter, moduleId, track = 'faithful', userId }) {
-  const sourceDir = TRACK_SOURCE_DIR[track] || '03-faithful';
+  const sourceDir = TRACK_SOURCE_DIR[track] || '03-faithful-translation';
 
   const args = [
     path.join(TOOLS_DIR, 'cnxml-inject.js'),

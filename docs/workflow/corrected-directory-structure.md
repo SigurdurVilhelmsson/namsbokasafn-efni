@@ -6,8 +6,8 @@ This document describes the corrected directory structure and workflow after fix
 
 **Previous (incorrect) structure:**
 - Files were split between `05-publication/for-mt/` and `05-publication/mt-preview/`
-- `03-machine-translation/` directory was missing
-- We were treating `03-faithful/` as if it contained raw MT output
+- `02-machine-translated/` directory was missing
+- We were treating `03-faithful-translation/` as if it contained raw MT output
 
 **Root cause:**
 - Skipped the intermediate `03-machine-translation` step
@@ -34,15 +34,15 @@ books/efnafraedi/
 │       ├── {moduleId}-structure.json
 │       └── {moduleId}-equations.json
 │
-├── 03-machine-translation/ # NEW! - Joined MT markdown (unreviewed)
+├── 02-machine-translated/ # NEW! - Joined MT markdown (unreviewed)
 │   └── ch{NN}/
 │       └── {moduleId}.md   # Complete markdown modules
 │
-├── 03-faithful/            # ✏️ EDITABLE - Human-reviewed translations
+├── 03-faithful-translation/            # ✏️ EDITABLE - Human-reviewed translations
 │   └── ch{NN}/
 │       └── {moduleId}.md   # Reviewed markdown modules
 │
-├── 04-localized/           # ✏️ EDITABLE - Localized for Iceland
+├── 04-localized-content/           # ✏️ EDITABLE - Localized for Iceland
 │   └── ch{NN}/
 │       └── {moduleId}.md   # Localized markdown modules
 │
@@ -96,14 +96,14 @@ node tools/markdown-to-html.js --chapter 12 --track mt-preview
 
 ### Phase 3: Editorial Review
 ```bash
-# 7. Review content in 03-machine-translation/
+# 7. Review content in 02-machine-translated/
 #    - Fix translation errors
 #    - Check terminology consistency
 #    - Improve grammar and style
 
-# 8. When chapter review is complete, copy to 03-faithful/
-cp -r books/efnafraedi/03-machine-translation/ch12/ \
-      books/efnafraedi/03-faithful/ch12/
+# 8. When chapter review is complete, copy to 03-faithful-translation/
+cp -r books/efnafraedi/02-machine-translated/ch12/ \
+      books/efnafraedi/03-faithful-translation/ch12/
 ```
 
 ### Phase 4: Publish Faithful Version
@@ -117,7 +117,7 @@ node tools/markdown-to-html.js --chapter 12 --track faithful
 ### Phase 5: Localization (Future)
 ```bash
 # 10. Localize content (units, examples, cultural references)
-#     This happens in 03-faithful/ → 04-localized/
+#     This happens in 03-faithful-translation/ → 04-localized-content/
 
 # 11. Render localized content to HTML
 node tools/markdown-to-html.js --chapter 12 --track localized
@@ -129,9 +129,9 @@ node tools/markdown-to-html.js --chapter 12 --track localized
 
 | Track | Source | Quality | Use Case |
 |-------|--------|---------|----------|
-| **mt-preview** | `03-machine-translation/` | Unreviewed MT | Early access while review in progress |
-| **faithful** | `03-faithful/` | Human-reviewed | Production content after linguistic review |
-| **localized** | `04-localized/` | Reviewed + localized | Full adaptation for Icelandic students |
+| **mt-preview** | `02-machine-translated/` | Unreviewed MT | Early access while review in progress |
+| **faithful** | `03-faithful-translation/` | Human-reviewed | Production content after linguistic review |
+| **localized** | `04-localized-content/` | Reviewed + localized | Full adaptation for Icelandic students |
 
 ## Web Application Behavior
 
@@ -146,9 +146,9 @@ The `namsbokasafn-vefur` application should:
 ## Migration Tasks
 
 ### Completed ✅
-1. Created `03-machine-translation/` directory structure
+1. Created `02-machine-translated/` directory structure
 2. Created `join-mt-output.js` tool to join segments
-3. Processed all chapters (1-5, 9, 12-13) into `03-machine-translation/`
+3. Processed all chapters (1-5, 9, 12-13) into `02-machine-translated/`
 
 ### Next Steps 🔲
 1. **Create `markdown-to-html.js` tool** to render markdown → HTML
@@ -157,8 +157,8 @@ The `namsbokasafn-vefur` application should:
    - Output to correct publication track
 
 2. **Migrate existing content:**
-   - Content in `03-faithful/` should move to `03-machine-translation/` (it's unreviewed MT)
-   - After migration, `03-faithful/` should be empty until editorial review is complete
+   - Content in `03-faithful-translation/` should move to `02-machine-translated/` (it's unreviewed MT)
+   - After migration, `03-faithful-translation/` should be empty until editorial review is complete
 
 3. **Delete `05-publication/for-mt/`:**
    - This directory shouldn't exist
@@ -179,8 +179,8 @@ The `namsbokasafn-vefur` application should:
 | `cnxml-extract.js` | Extract CNXML to segments | `01-source/` | `02-for-mt/`, `02-structure/` |
 | `protect-segments-for-mt.js` | Protect tags for MT | `02-for-mt/` | Modified segments |
 | `unprotect-segments.js` | Unprotect MT output | `02-mt-output/` | Clean segments |
-| `join-mt-output.js` | Join segments to modules | `02-mt-output/` + `02-structure/` | `03-machine-translation/` |
-| `markdown-to-html.js` | Render markdown to HTML | `03-machine-translation/` or `03-faithful/` or `04-localized/` | `05-publication/{track}/` |
+| `join-mt-output.js` | Join segments to modules | `02-mt-output/` + `02-structure/` | `02-machine-translated/` |
+| `markdown-to-html.js` | Render markdown to HTML | `02-machine-translated/` or `03-faithful-translation/` or `04-localized-content/` | `05-publication/{track}/` |
 
 ## Format Decision
 

@@ -145,7 +145,7 @@ Before submitting:
 - [ ] Terminology consistent with glossary
 - [ ] All changes documented in this log
 - [ ] .docx file saved to correct location
-- [ ] This log saved to `04-localized/localization-logs/`
+- [ ] This log saved to `04-localized-content/localization-logs/`
 
 ---
 
