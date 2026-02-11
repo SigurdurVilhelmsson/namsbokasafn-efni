@@ -47,7 +47,7 @@ const SEVERITY = {
 // Publication tracks and their source directories
 const TRACKS = {
   'mt-preview': {
-    sourceDir: '02-mt-output',
+    sourceDir: '02-machine-translated',
     pubDir: '05-publication/mt-preview',
   },
   faithful: {
