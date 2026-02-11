@@ -9,9 +9,9 @@
  * |------------------|-----------------------|-------------------------|--------------------|
  * | source           | 02-for-mt/ch{NN}/     | {section}.en.md, .json  | mt_pending         |
  * | mt-upload        | 02-mt-output/ch{NN}/  | {section}.is.md         | mt_uploaded        |
- * | faithful-edit    | 03-faithful/ch{NN}/   | {section}.is.md         | review_approved    |
+ * | faithful-edit    | 03-faithful-translation/ch{NN}/ | {section}.is.md  | review_approved    |
  * | tm-creation      | tm/ch{NN}/            | {section}.tmx           | tm_created         |
- * | localization     | 04-localized/ch{NN}/  | {section}.is.md         | localization_approved |
+ * | localization     | 04-localized-content/ch{NN}/ | {section}.is.md    | localization_approved |
  */
 
 const fs = require('fs');
@@ -37,7 +37,7 @@ const STEP_CONFIG = {
     dbField: 'mt_output_path'
   },
   'faithful-edit': {
-    folder: '03-faithful',
+    folder: '03-faithful-translation',
     status: 'review_approved',
     filePattern: (section) => `${section.replace('.', '-')}.is.md`,
     dbField: 'faithful_path'
@@ -49,7 +49,7 @@ const STEP_CONFIG = {
     dbField: null // TMX doesn't have a dedicated column
   },
   'localization': {
-    folder: '04-localized',
+    folder: '04-localized-content',
     status: 'localization_approved',
     filePattern: (section) => `${section.replace('.', '-')}.is.md`,
     dbField: 'localized_path'

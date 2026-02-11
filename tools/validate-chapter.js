@@ -51,11 +51,11 @@ const TRACKS = {
     pubDir: '05-publication/mt-preview',
   },
   faithful: {
-    sourceDir: '03-faithful',
+    sourceDir: '03-faithful-translation',
     pubDir: '05-publication/faithful',
   },
   localized: {
-    sourceDir: '04-localized',
+    sourceDir: '04-localized-content',
     pubDir: '05-publication/localized',
   },
 };

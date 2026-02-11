@@ -338,7 +338,7 @@ function getTargetPath(book, chapter, fileType, fileInfo) {
   switch (fileType) {
     case 'markdown':
     case 'faithful-md':
-      return `books/${book}/03-faithful/chapters/${chapterStr}/${path.basename(fileInfo.originalName || fileInfo.path)}`;
+      return `books/${book}/03-faithful-translation/chapters/${chapterStr}/${path.basename(fileInfo.originalName || fileInfo.path)}`;
     case 'translated-markdown':
       return `books/${book}/02-mt-output/chapters/${chapterStr}/${path.basename(fileInfo.originalName || fileInfo.path)}`;
     case 'tmx':

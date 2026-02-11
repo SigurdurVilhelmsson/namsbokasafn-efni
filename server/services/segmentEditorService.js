@@ -412,7 +412,7 @@ const segmentParser = require('./segmentParser');
 
 /**
  * Apply all approved (and not yet applied) edits for a module to the
- * 03-faithful/ segment file. Starts from MT output as the base text
+ * 03-faithful-translation/ segment file. Starts from MT output as the base text
  * and overlays every approved edit.
  *
  * @param {string} book - Book slug
@@ -469,7 +469,7 @@ function applyApprovedEdits(book, chapter, moduleId) {
     };
   });
 
-  // 5. Write to 03-faithful/
+  // 5. Write to 03-faithful-translation/
   const savedPath = segmentParser.saveModuleSegments(book, chapter, moduleId, segments);
 
   // 6. Mark edits as applied

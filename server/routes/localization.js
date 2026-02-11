@@ -344,7 +344,7 @@ router.post('/:sectionId/submit', requireAuth, requireRole(ROLES.CONTRIBUTOR), a
     const localizedDir = path.join(
       BOOKS_DIR,
       section.bookSlug,
-      '04-localized',
+      '04-localized-content',
       `ch${String(section.chapterNum).padStart(2, '0')}`
     );
 

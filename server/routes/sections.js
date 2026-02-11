@@ -41,10 +41,10 @@ const storage = multer.diskStorage({
         uploadDir = path.join(bookDir, '02-mt-output', `ch${String(section.chapterNum).padStart(2, '0')}`);
         break;
       case 'faithful':
-        uploadDir = path.join(bookDir, '03-faithful', `ch${String(section.chapterNum).padStart(2, '0')}`);
+        uploadDir = path.join(bookDir, '03-faithful-translation', `ch${String(section.chapterNum).padStart(2, '0')}`);
         break;
       case 'localized':
-        uploadDir = path.join(bookDir, '04-localized', `ch${String(section.chapterNum).padStart(2, '0')}`);
+        uploadDir = path.join(bookDir, '04-localized-content', `ch${String(section.chapterNum).padStart(2, '0')}`);
         break;
       default:
         return cb(new Error('Invalid upload type'));

@@ -335,7 +335,7 @@ router.post('/edit/:editId/discuss', requireAuth, requireRole(ROLES.HEAD_EDITOR)
 /**
  * POST /reviews/:reviewId/complete
  * Complete a module review. If all edits are approved, automatically
- * applies them to 03-faithful/ segment files.
+ * applies them to 03-faithful-translation/ segment files.
  */
 router.post(
   '/reviews/:reviewId/complete',
@@ -531,7 +531,7 @@ router.get(
 
 /**
  * POST /:book/:chapter/:moduleId/apply
- * Apply approved edits to 03-faithful/ segment files.
+ * Apply approved edits to 03-faithful-translation/ segment files.
  */
 router.post(
   '/:book/:chapter/:moduleId/apply',

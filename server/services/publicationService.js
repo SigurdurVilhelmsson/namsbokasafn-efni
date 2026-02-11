@@ -29,9 +29,9 @@ const PUBLICATION_TRACKS = {
 
 // Source directory for each track (maps to pipelineService.TRACK_SOURCE_DIR)
 const TRACK_SOURCE_DIRS = {
-  'mt-preview': '02-mt-output',
-  faithful: '03-faithful',
-  localized: '04-localized',
+  'mt-preview': '02-machine-translated',
+  faithful: '03-faithful-translation',
+  localized: '04-localized-content',
 };
 
 // =====================================================================
@@ -90,21 +90,21 @@ function checkTrackReadiness(bookSlug, chapterNum, track) {
 }
 
 /**
- * Check MT preview readiness (02-mt-output has IS segment files).
+ * Check MT preview readiness (02-machine-translated has IS segment files).
  */
 function checkMtPreviewReadiness(bookSlug, chapterNum) {
   return checkTrackReadiness(bookSlug, chapterNum, 'mt-preview');
 }
 
 /**
- * Check faithful readiness (03-faithful has IS segment files).
+ * Check faithful readiness (03-faithful-translation has IS segment files).
  */
 function checkFaithfulReadiness(bookSlug, chapterNum) {
   return checkTrackReadiness(bookSlug, chapterNum, 'faithful');
 }
 
 /**
- * Check localized readiness (04-localized has IS segment files).
+ * Check localized readiness (04-localized-content has IS segment files).
  */
 function checkLocalizedReadiness(bookSlug, chapterNum) {
   return checkTrackReadiness(bookSlug, chapterNum, 'localized');

@@ -1,7 +1,7 @@
 /**
  * Migration 009: Add applied_at tracking for segment edits
  *
- * When approved segment edits are applied (written to 03-faithful/ files),
+ * When approved segment edits are applied (written to 03-faithful-translation/ files),
  * the applied_at timestamp is set to prevent double-application.
  */
 

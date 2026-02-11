@@ -3,7 +3,7 @@
 /**
  * init-faithful-review.js
  *
- * Initialize 03-faithful/ with complete MT output from 02-mt-output/
+ * Initialize 03-faithful-translation/ with complete MT output from 02-mt-output/
  * This ensures reviewers start with complete content and injection has no English fallback.
  *
  * Usage:
@@ -13,7 +13,7 @@
  * Options:
  *   --chapter <num>      Initialize chapter from 02-mt-output/chNN/
  *   --batch <dir>        Initialize from specific directory
- *   --force              Overwrite existing files in 03-faithful
+ *   --force              Overwrite existing files in 03-faithful-translation
  *   --verbose, -v        Show detailed progress
  *   -h, --help           Show this help message
  */
@@ -45,14 +45,14 @@ function parseArgs(args) {
 
 function printHelp() {
   console.log(`
-init-faithful-review.js - Initialize 03-faithful with complete MT output
+init-faithful-review.js - Initialize 03-faithful-translation with complete MT output
 
 After MT translation is complete (02-mt-output/), this script prepares the
-faithful review directory (03-faithful/) by copying complete segment files.
+faithful review directory (03-faithful-translation/) by copying complete segment files.
 
 This ensures:
 - Reviewers start with complete content (no missing segments)
-- Injection from 03-faithful has no English fallback
+- Injection from 03-faithful-translation has no English fallback
 - All subsequent processing works with complete translations
 
 Usage:
@@ -62,7 +62,7 @@ Usage:
 Options:
   --chapter <num>      Initialize chapter from 02-mt-output/chNN/
   --batch <dir>        Initialize from specific directory
-  --force              Overwrite existing files in 03-faithful
+  --force              Overwrite existing files in 03-faithful-translation
   --verbose, -v        Show detailed progress
   -h, --help           Show this help message
 
@@ -150,12 +150,12 @@ async function main() {
   if (args.chapter) {
     const chNum = args.chapter.toString().padStart(2, '0');
     sourceDir = path.join(BOOK_DIR, '02-mt-output', `ch${chNum}`);
-    targetDir = path.join(BOOK_DIR, '03-faithful', `ch${chNum}`);
+    targetDir = path.join(BOOK_DIR, '03-faithful-translation', `ch${chNum}`);
   } else if (args.batch) {
     sourceDir = args.batch;
-    // Determine target by replacing 02-mt-output with 03-faithful
+    // Determine target by replacing 02-mt-output with 03-faithful-translation
     if (sourceDir.includes('02-mt-output')) {
-      targetDir = sourceDir.replace('02-mt-output', '03-faithful');
+      targetDir = sourceDir.replace('02-mt-output', '03-faithful-translation');
     } else {
       console.error('Error: --batch directory must be in 02-mt-output/');
       process.exit(1);
@@ -172,7 +172,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('\nInitializing 03-faithful with MT output');
+  console.log('\nInitializing 03-faithful-translation with MT output');
   console.log('========================================\n');
   console.log(`Source: ${sourceDir}`);
   console.log(`Target: ${targetDir}\n`);
@@ -212,7 +212,7 @@ async function main() {
     console.log(`  Total segments: ${totalSegments}`);
   }
 
-  console.log(`\n03-faithful is now ready for review and injection`);
+  console.log(`\n03-faithful-translation is now ready for review and injection`);
 
   // Validation check
   console.log('\n' + '='.repeat(60));
