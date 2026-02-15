@@ -12,206 +12,180 @@ You'll need a GitHub account to log in to the translation system.
 3. Wait for confirmation that your account has been added to the team
 
 ### Step 2: First Login
-1. Go to the translation portal: `https://yourserver.namsbokasafn.is`
+1. Go to the editorial portal: `https://ritstjorn.namsbokasafn.is`
 2. Click **"Innskráning"** (Login)
-3. You'll be redirected to GitHub - authorize the application
+3. You'll be redirected to GitHub — authorize the application
 4. After successful login, you'll see the main dashboard
 
 ### Step 3: Verify Your Profile
 1. Your name and avatar should appear in the top-right corner
 2. If anything looks wrong, contact the admin
 
-## Your First Assignment
+## Understanding the Workflow
 
-### Finding Your Work
-1. Go to **"Mín verkefni"** (My Work) at `/my-work`
-2. You'll see:
-   - **Current Task**: Your most urgent assignment
-   - **Up Next**: Other pending work
-   - **Quick Stats**: Your progress this week
+The translation pipeline has two review passes:
 
-### Understanding Assignments
-When you receive an assignment, you'll see:
-- **Book**: Which book (e.g., Efnafræði = Chemistry)
-- **Chapter**: Chapter number
-- **Stage**: What type of work (see below)
-- **Due Date**: When it should be completed
+| Pass | Name | Purpose | Editor URL |
+|------|------|---------|------------|
+| Pass 1 | Linguistic Review | Fix grammar, accuracy, terminology | `/segment-editor` |
+| Pass 2 | Localization | Adapt for Icelandic context (units, examples) | `/localization-editor` |
 
-### Assignment Stages
+Content flows through this pipeline:
+```
+Machine Translation → Pass 1 Review → Faithful Translation → Pass 2 → Localized Content
+```
 
-| Stage | Icelandic | What to Do |
-|-------|-----------|------------|
-| Linguistic Review | Yfirferð 1 | Fix grammar, check terminology |
-| Localization | Yfirferð 2 | Adapt content for Icelandic context |
-| Publication | Útgáfa | Final review before publishing |
+## Pass 1: Segment Editor
 
-## Editor Walkthrough
+The segment editor is where you'll spend most of your time. It shows individual text segments (paragraphs, headings, list items) side by side: English source on the left, Icelandic translation on the right.
 
-### Opening the Editor
-1. Click **"Byrja að vinna"** on your current task
-2. Or navigate to `/editor` and select book/chapter/section
+### Opening the Segment Editor
+1. Navigate to `/segment-editor`
+2. Select a **book** (e.g., Efnafræði = Chemistry)
+3. Select a **chapter**
+4. You'll see a list of modules — click one to start editing
 
-### Editor Layout
-- **Left panel**: Source text (English) - toggle with Ctrl+E
-- **Right panel**: Your translation (Icelandic)
-- **Top bar**: Save, Submit, and More menu
+### Editing Segments
 
-### Basic Workflow
-1. Read the English source text
-2. Review the Icelandic translation
-3. Make corrections as needed
-4. Save frequently (Ctrl+S or click Save)
-5. Submit when done (click "Senda")
+Each module shows segments in a two-column layout:
+- **Left**: English source text (read-only)
+- **Right**: Icelandic translation (editable)
 
-### Using the More Menu
-Click **"Meira"** (More) for additional tools:
-- **EN/IS tvískipting**: Toggle source view
-- **Athugasemdir**: View/add comments
-- **Útgáfusaga**: See version history
-- **Orðasafn**: Terminology lookup
-- **Flýtilyklar**: Keyboard shortcuts help
+For each segment you want to change:
+1. Click on the segment to edit it
+2. Make your correction in the Icelandic text
+3. Select a **category** for your edit:
+   - `terminology` — Term replacement or standardization
+   - `accuracy` — Factual correction
+   - `readability` — Grammar or clarity improvement
+   - `style` — Tone or style adjustment
+   - `omission` — Missing content added
+4. Optionally add an **editor note** explaining your change
+5. Save the edit
 
-### Important Keyboard Shortcuts
+### Submitting for Review
 
-| Shortcut | Action |
-|----------|--------|
-| Ctrl+S | Save |
-| Ctrl+E | Toggle EN/IS split view |
-| Ctrl+T | Open terminology search |
-| Ctrl+Z | Undo |
-| Alt+← | Previous section (or split part) |
-| Alt+→ | Next section (or split part) |
-| Esc | Close any open panel |
-| ? | Show all shortcuts |
+When you've reviewed all segments in a module:
+1. Click **"Submit for Review"**
+2. Your edits go to the Head Editor for approval
+3. You can track your submissions in the reviews list
 
-## Working with Split Files
+### After Submission
 
-Some long sections are split into multiple parts for machine translation. You'll recognize these by the "Part X of Y" badge in the editor header.
+The Head Editor will review your edits and either:
+- **Approve** — Your edit is accepted
+- **Reject** — With feedback explaining why
+- **Mark for discussion** — Opens a discussion thread
 
-### How Split Files Work
-- Long sections (>18,000 characters) are split automatically
-- Parts are named like `5-1(a)`, `5-1(b)`, etc.
-- You must review **each part separately**
+You can participate in discussions by adding comments on individual edits.
 
-### Navigating Between Parts
-- Use the **←** and **→** arrows next to the part badge
-- Or use **Alt+←** and **Alt+→** keyboard shortcuts
-- Click the **ℹ** icon to see all parts and their status
+## Pass 2: Localization Editor
 
-### Completing Split Sections
-1. Review and submit Part 1 (a)
-2. Navigate to Part 2 (b) and review
-3. Continue until all parts are complete
-4. The section is ready when all parts are submitted
+After Pass 1 produces a faithful translation, Pass 2 adapts it for Icelandic students.
 
-## Terminology Guidelines
+### Opening the Localization Editor
+1. Navigate to `/localization-editor`
+2. Select book and chapter
+3. Click a module to start
 
-### Checking Terms
-There are two ways to look up terms:
+### Three-Column Layout
 
-**Method 1: Double-click lookup**
-1. Double-click any word in the editor
-2. A terminology panel appears near your cursor
-3. Click "Insert" to use the approved term
-4. Click "Copy" to copy to clipboard
+The localization editor shows three columns:
+- **Left**: English source (reference)
+- **Middle**: Faithful Icelandic translation (Pass 1 output, read-only)
+- **Right**: Localized version (editable)
 
-**Method 2: Manual search**
-1. Press Ctrl+T to open terminology panel
-2. Type the term you want to look up
-3. Browse results and select
+### Types of Localization
 
-Use approved Icelandic terms from the glossary
+| Category | Example |
+|----------|---------|
+| Unit conversion | Fahrenheit → Celsius, miles → km |
+| Cultural adaptation | American references → Icelandic equivalents |
+| Example replacement | US-specific examples → local examples |
+| Formatting | Style adjustments for Icelandic conventions |
+| Unchanged | Segment needs no localization |
+
+### Saving Work
+- Save individual segments as you go
+- Use **"Save All"** to save all changes at once
+
+## Terminology
+
+### Checking Terms in the Segment Editor
+The segment editor highlights terminology matches inline. When working on a module:
+- Terms from the approved glossary are highlighted
+- Click a highlighted term to see the approved translation
+- Use the terminology lookup panel for manual searches
+
+### Terminology Database
+Visit `/terminology` to:
+- Browse the full terminology database
+- Search for specific terms
+- Propose new terms for review
 
 ### Proposing New Terms
 If you encounter a term not in the glossary:
-1. Click **"Bæta við orði"** in terminology panel
-2. Enter the English term
-3. Propose an Icelandic translation
+1. Go to `/terminology`
+2. Click **"Bæta við orði"** (Add term)
+3. Enter the English term and your proposed Icelandic translation
 4. Add notes explaining your choice
-5. Submit for review
+5. Submit for approval by the Head Editor
 
-### Following Existing Decisions
-1. Check the Decisions page (`/decisions`) for past choices
-2. Look for decisions about the chapter you're working on
-3. Follow established patterns for consistency
+## Useful Pages
+
+| Page | URL | Purpose |
+|------|-----|---------|
+| Segment Editor | `/segment-editor` | Pass 1 linguistic review |
+| Localization Editor | `/localization-editor` | Pass 2 cultural adaptation |
+| Terminology | `/terminology` | Term database and lookup |
+| Pipeline Status | `/status` | Overall translation progress |
+| Reviews | `/reviews` | Pending review queue (Head Editor) |
+| Dashboard | `/dashboard` | Head Editor overview |
+| Feedback | `/feedback` | Reader feedback form (public) |
 
 ## When You're Stuck
 
-### Common Issues and Solutions
-
 **"I don't know how to translate this term"**
-1. Check terminology database (`/terminology`)
-2. Check decision log (`/decisions`)
-3. If still unsure, add a comment: `<!-- SPURNING: How should "X" be translated? -->`
+1. Check the terminology database at `/terminology`
+2. If not found, propose a new term
+3. Add an editor note on the segment explaining your uncertainty
 
 **"The machine translation is very wrong"**
 - That's expected! Your job is to fix it
-- Make necessary corrections
-- Don't hesitate to rewrite entire sentences if needed
+- Make necessary corrections — don't hesitate to rewrite entire sentences
+- Categorize the edit as `accuracy` or `readability`
 
-**"I found a formatting error"**
-- Fix obvious formatting issues
-- For structural problems, report at `/issues`
+**"I found a structural or formatting error"**
+- If it's in the translation text, fix it and categorize as `readability`
+- If it's a rendering problem (broken layout, missing images), report to the admin
 
-**"I disagree with a previous decision"**
-- Continue following the decision for now
-- Raise at next team meeting for discussion
+**"I disagree with a previous terminology decision"**
+- Follow the existing decision for consistency
+- Raise the issue with the Head Editor for discussion
 - Don't change established terminology without approval
 
 ### Getting Help
-1. **Quick questions**: Add comment in editor
-2. **Terminology questions**: Propose term or check `/decisions`
-3. **Technical problems**: Contact admin
-4. **General questions**: Ask at weekly team meeting
-
-## Review Process
-
-### After You Submit
-1. Your work goes to a reviewer (usually Head Editor)
-2. They may:
-   - **Approve**: Your work is accepted
-   - **Request changes**: You'll see feedback and need to revise
-
-### If Changes Are Requested
-1. You'll see a banner on your work: "Breytingar óskast"
-2. Read the reviewer's notes
-3. Make the requested changes
-4. Resubmit
-
-### Review Timeline
-- Aim to address requested changes within 2 days
-- If you can't, communicate with the reviewer
+1. **Translation questions**: Add an editor note on the segment
+2. **Terminology questions**: Propose a term at `/terminology`
+3. **Technical problems**: Contact the admin
+4. **General questions**: Ask at the team meeting
 
 ## Tips for Success
 
-1. **Save often** - Auto-save exists, but manual saves are safer
-2. **Check terminology first** - Consistency is important
-3. **Use comments** - When unsure, document your questions
-4. **Communicate** - Ask if something is unclear
-5. **Be consistent** - Follow established patterns
-
-## Quick Reference
-
-| Need | Where to Go / What to Do |
-|------|--------------------------|
-| My assignments | `/my-work` |
-| Edit content | `/editor` |
-| Check terms | Double-click word or Ctrl+T |
-| See decisions | `/decisions` |
-| Report issues | `/issues` |
-| Navigate split parts | Alt+← and Alt+→ |
-| Toggle source view | Ctrl+E |
-| Show all shortcuts | Press ? |
-| Get help | Ask admin or team meeting |
+1. **Work segment by segment** — Review each segment carefully against the English source
+2. **Categorize edits** — This helps the Head Editor review faster
+3. **Add notes** — Explain non-obvious changes
+4. **Check terminology first** — Consistency across chapters is important
+5. **Submit modules when complete** — Don't let work sit unsubmitted
 
 ## Contact
 
-- **Admin/Head Editor**: [Contact through team channel]
-- **Technical Support**: File issue on GitHub
-- **Weekly Team Meeting**: [Day and time]
+- **Admin/Head Editor**: Contact through the team channel
+- **Technical Support**: File an issue on GitHub
+- **Published translations**: [namsbokasafn.is](https://namsbokasafn.is)
 
 ---
 
-**Welcome to the team!** Don't hesitate to ask questions - we're all learning together.
+**Welcome to the team!** Don't hesitate to ask questions — we're all learning together.
 
-*Last updated: January 2026*
+*Last updated: February 2026*

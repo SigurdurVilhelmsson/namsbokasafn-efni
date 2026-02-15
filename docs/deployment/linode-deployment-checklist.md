@@ -48,33 +48,44 @@ useradd -m -s /bin/bash namsbokasafn
 
 ---
 
-## 3. SSL with Caddy (Recommended)
+## 3. SSL with nginx + Certbot
 
-Caddy auto-provisions Let's Encrypt certificates.
+nginx as reverse proxy with Let's Encrypt certificates via Certbot.
 
 ```bash
-# Install Caddy
-apt install -y debian-keyring debian-archive-keyring apt-transport-https
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
-apt update
-apt install caddy
+# Install nginx and certbot
+apt install -y nginx certbot python3-certbot-nginx
 ```
 
-Create `/etc/caddy/Caddyfile`:
-```
-ritstjorn.namsbokasafn.is {
-    reverse_proxy localhost:3000
+Create `/etc/nginx/sites-available/ritstjorn`:
+```nginx
+server {
+    server_name ritstjorn.namsbokasafn.is;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
 }
 ```
 
 ```bash
-# Reload Caddy
-systemctl reload caddy
+# Enable site and get certificate
+ln -s /etc/nginx/sites-available/ritstjorn /etc/nginx/sites-enabled/
+nginx -t && systemctl reload nginx
+certbot --nginx -d ritstjorn.namsbokasafn.is
 ```
 
-- [ ] Caddy installed
-- [ ] Caddyfile configured
+- [ ] nginx installed
+- [ ] Site configuration created and enabled
+- [ ] SSL certificate provisioned
 - [ ] HTTPS working (after app is running)
 
 ---
@@ -107,14 +118,20 @@ cd namsbokasafn-efni/server
 
 # Install dependencies
 npm install
+```
 
-# Run initial database migrations
-node migrations/run-migrations.js
+Database migrations run automatically on first request to `POST /api/admin/migrate`
+(requires admin login). Alternatively, start the server and call the endpoint:
+
+```bash
+# Start server, then from another terminal:
+curl -X POST https://ritstjorn.namsbokasafn.is/api/admin/migrate \
+  -H "Cookie: auth_token=<your-jwt>"
 ```
 
 - [ ] Repo cloned
 - [ ] Dependencies installed
-- [ ] Database migrations run
+- [ ] Database migrations run (via admin endpoint after first login)
 
 ---
 
@@ -245,23 +262,26 @@ git pull origin main
 cd server
 npm install  # if dependencies changed
 
-# Run database migrations (if any)
-node migrations/run-migrations.js
-
 # Restart service (as root)
 sudo systemctl restart ritstjorn
 
-# Verify service started successfully
+# Run database migrations (if new ones were added)
+# Log in as admin and trigger via the web UI or API:
+curl -X POST https://ritstjorn.namsbokasafn.is/api/admin/migrate \
+  -H "Cookie: auth_token=<your-jwt>"
+
+# Verify service is healthy
 sudo systemctl status ritstjorn
 sudo journalctl -u ritstjorn -n 50
 ```
 
 **Migration Notes:**
-- Check `server/migrations/` directory for new migration files
-- Migrations are numbered sequentially (001, 002, etc.)
-- Each migration should have `migrate()` or `up()` function
-- Run migrations BEFORE restarting the service
-- Check logs for migration errors before proceeding
+- Migrations live in `server/migrations/` numbered sequentially (001, 002, ...)
+- Migrations 001-007 use `migrate()/rollback()` pattern (internal DB connection)
+- Migrations 008+ use `up(db)/down(db)` pattern (DB instance passed in)
+- The `POST /api/admin/migrate` endpoint handles both formats
+- Migrations use `CREATE TABLE IF NOT EXISTS` / `ALTER TABLE` — safe to re-run
+- Always check logs after running migrations: `journalctl -u ritstjorn -n 50`
 
 - [ ] Update process documented/tested
 - [ ] Migration process documented
