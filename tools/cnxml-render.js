@@ -1689,7 +1689,8 @@ function copyChapterImages(chapter, track, _verbose) {
   }
 
   // Copy all images matching this chapter's pattern (CNX_Chem_NN_*)
-  const chapterPrefix = `CNX_Chem_${chapterStr}_`;
+  // Appendix images use CNX_Chem_00_ prefix in OpenStax naming convention
+  const chapterPrefix = chapter === 'appendices' ? 'CNX_Chem_00_' : `CNX_Chem_${chapterStr}_`;
   const sourceFiles = fs.readdirSync(sourceMediaDir).filter((f) => f.startsWith(chapterPrefix));
 
   let copied = 0;
