@@ -805,17 +805,48 @@ router.post('/migrate', requireAuth, requireAdmin(), async (req, res) => {
       require('../migrations/004-terminology'),
       require('../migrations/005-feedback'),
       require('../migrations/006-user-management'),
-      require('../migrations/007-chapter-files')
+      require('../migrations/007-chapter-files'),
+      require('../migrations/008-segment-editing'),
+      require('../migrations/009-segment-edit-apply')
     ];
 
     const results = [];
 
+    // Migrations 001-007 use migrate() with internal DB connection.
+    // Migrations 008+ use up(db) and expect a DB instance.
+    const Database = require('better-sqlite3');
+    const migrationDbPath = require('path').join(__dirname, '..', '..', 'pipeline-output', 'sessions.db');
+    let migrationDb;
+
     for (const migration of migrations) {
-      const result = migration.migrate();
+      let result;
+      if (typeof migration.migrate === 'function') {
+        result = migration.migrate();
+      } else if (typeof migration.up === 'function') {
+        try {
+          if (!migrationDb) {
+            migrationDb = new Database(migrationDbPath);
+          }
+          migration.up(migrationDb);
+          result = { success: true, name: migration.name };
+        } catch (err) {
+          if (err.message && err.message.includes('duplicate column')) {
+            result = { success: true, alreadyApplied: true, name: migration.name };
+          } else {
+            result = { success: false, error: err.message, name: migration.name };
+          }
+        }
+      } else {
+        result = { success: false, error: 'No migrate() or up() function', name: migration.name || 'unknown' };
+      }
       results.push({
         name: migration.name || 'unknown',
         ...result
       });
+    }
+
+    if (migrationDb) {
+      migrationDb.close();
     }
 
     const applied = results.filter(r => r.success && !r.alreadyApplied).length;

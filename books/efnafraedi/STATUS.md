@@ -1,74 +1,98 @@
 # Efnafræði - Translation Status
 
-> Last updated: 2026-02-09
+> Last updated: 2026-02-15
 
 ## Overview
 
 | Metric | Count |
 |--------|-------|
-| Total chapters | 21 |
-| Extraction complete | 13 (ch 1-5, 7, 9-13, appendices) |
-| MT output received | 13 |
+| Total chapters | 21 + 13 appendices |
+| Extraction complete | 8 chapters (01-05, 09, 12, 13) + 13 appendices |
+| MT output received | 8 chapters + 13 appendices |
+| MT preview rendered | 8 chapters + 13 appendices |
 | Pass 1 complete | 1 (ch 1) |
 | Pass 1 in progress | 0 |
-| TM created | 4 (ch 1-4) |
-| Published (MT preview) | 3 (ch 1-3) |
-| Published (faithful) | 0 |
+| Published (MT preview) | 8 chapters + appendices (all rendered content) |
+| Published (faithful) | 0 (blocked on Phase 9) |
 
-## Current Phase: Phase 9
+## Current Phase: Phase 9 — Close the Write Gap
 
-**Phase 9: Close the Write Gap** — Applying approved segment edits from database to `03-faithful-translation/` files to unblock the inject→render pipeline for faithful publications.
+**Problem:** Approved segment edits in the database are not yet written to `03-faithful-translation/` files. Without those files, `cnxml-inject` has no input for the faithful publication track.
+
+**Status:** NOT STARTED
 
 See [ROADMAP.md](../../ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](../../docs/workflow/development-plan-phases-9-13.md) for details.
 
 ## Pipeline Status by Chapter
 
-Current pipeline: Extract → MT → Review → Inject → Render
+Pipeline: Extract → MT → Review → Inject → Render → Publish
 
-| Ch | Title | Extract | MT | Review | Inject | Render | Notes |
-|----|-------|---------|----|----|--------|--------|-------|
-| 1 | Grunnhugmyndir | ✅ | ✅ | ✅ | ⏳ | ⏳ | Pass 1 complete, awaiting segment sync |
-| 2 | Atóm, sameindir og jónir | ✅ | ✅ | 🔄 | ⏳ | ⏳ | In segment editor |
-| 3 | Samsetning efna | ✅ | ✅ | ⏳ | ⏳ | ⏳ | MT preview published |
-| 4 | Magn- og efnareikningar | ✅ | ✅ | ⏳ | ⏳ | ⏳ | TM created |
-| 5 | Thermochemistry | ✅ | ✅ | ⏳ | ⏳ | ⏳ | Source ready |
-| 6 | Electronic Structure | - | - | - | - | - | Not started |
-| 7 | Periodic Properties | ✅ | ✅ | ⏳ | ⏳ | ⏳ | Partial extraction |
-| 8 | Chemical Bonding | - | - | - | - | - | Not started |
-| 9 | Molecular Geometry | ✅ | ✅ | ⏳ | ⏳ | ⏳ | Extracted 2026-02-08 |
-| 10 | Liquids and Solids | ✅ | ✅ | ⏳ | ⏳ | ⏳ | Partial extraction |
-| 11 | Solutions | ✅ | ✅ | ⏳ | ⏳ | ⏳ | Extracted 2026-02-08 |
-| 12 | Kinetics | ✅ | ✅ | ⏳ | ⏳ | ⏳ | Extracted 2026-02-08 |
-| 13 | Equilibria | ✅ | ✅ | ⏳ | ⏳ | ⏳ | Extracted 2026-02-08 |
-| 14-21 | (remaining) | - | - | - | - | - | Not started |
-| App | Appendices A-M | ✅ | ✅ | ⏳ | ⏳ | ⏳ | 13 appendices extracted |
+| Ch | Title | Extract | MT | Review | MT Preview | Faithful | Notes |
+|----|-------|---------|----|----|------------|----------|-------|
+| 1 | Grunnhugmyndir | ✅ | ✅ | ✅ | ✅ | ⏳ | Pass 1 complete, awaiting Phase 9 |
+| 2 | Atóm, sameindir og jónir | ✅ | ✅ | 🔄 | ✅ | ⏳ | In segment editor |
+| 3 | Samsetning efna | ✅ | ✅ | ⏳ | ✅ | ⏳ | |
+| 4 | Magn- og efnareikningar | ✅ | ✅ | ⏳ | ✅ | ⏳ | |
+| 5 | Thermochemistry | ✅ | ✅ | ⏳ | ✅ | ⏳ | |
+| 6 | Electronic Structure | - | - | - | - | - | Source available, not extracted |
+| 7 | Periodic Properties | - | - | - | - | - | Source available, not extracted |
+| 8 | Chemical Bonding | - | - | - | - | - | Source available, not extracted |
+| 9 | Molecular Geometry | ✅ | ✅ | ⏳ | ✅ | ⏳ | |
+| 10 | Liquids and Solids | - | - | - | - | - | Source available, not extracted |
+| 11 | Solutions | - | - | - | - | - | Source available, not extracted |
+| 12 | Kinetics | ✅ | ✅ | ⏳ | ✅ | ⏳ | |
+| 13 | Equilibria | ✅ | ✅ | ⏳ | ✅ | ⏳ | |
+| 14-21 | (remaining) | - | - | - | - | - | Source available, not extracted |
+| App | Appendices A-M | ✅ | ✅ | ⏳ | ✅ | ⏳ | 13 appendices |
 
 ## Publication Status
 
-### MT Preview (AI-Assisted)
+### MT Preview (Machine-Translated)
 Published at [namsbokasafn.is](https://namsbokasafn.is):
-- ✅ Chapter 1: Essential Ideas / Grunnhugmyndir
-- ✅ Chapter 2: Atoms, Molecules, and Ions
-- ✅ Chapter 3: Composition of Substances
+- ✅ Chapter 1: Grunnhugmyndir (Essential Ideas)
+- ✅ Chapter 2: Atóm, sameindir og jónir (Atoms, Molecules, and Ions)
+- ✅ Chapter 3: Samsetning efna (Composition of Substances)
+- ✅ Chapter 4: Magn- og efnareikningar (Stoichiometry)
+- ✅ Chapter 5: Thermochemistry
+- ✅ Chapter 9: Molecular Geometry
+- ✅ Chapter 12: Kinetics
+- ✅ Chapter 13: Equilibria
+- ✅ Appendices A-M
 
 ### Faithful Translation (Human-Verified)
 - ⏳ Chapter 1: Segment edits approved, awaiting file sync (Phase 9)
-- Future chapters will follow after Phase 9 tooling is complete
+- Future chapters follow after Phase 9 tooling is complete
+
+## Directory State
+
+| Directory | Contents |
+|-----------|----------|
+| `02-for-mt/` | 8 chapters + appendices (EN segments) |
+| `02-mt-output/` | 8 chapters + appendices (IS segments from MT) |
+| `02-machine-translated/` | 8 chapters + appendices (merged MT output) |
+| `03-editing/` | Empty (no active Pass 1 editing sessions) |
+| `03-faithful-translation/` | Empty (blocked on Phase 9) |
+| `04-localization/` | Empty (Pass 2 not started) |
+| `04-localized-content/` | Empty (Pass 2 not started) |
+| `05-publication/mt-preview/` | 8 chapters + appendices (HTML rendered) |
+| `05-publication/faithful/` | Empty (blocked on Phase 9) |
+| `tm/` | Empty (TM creation blocked on faithful translations) |
 
 ## Recent Milestones
 
-- **2026-02-08**: Chapters 9, 11, 12, 13 extracted and processed through MT
-- **2026-02-08**: All appendices (A-M) extracted
+- **2026-02-10**: Directory structure overhaul completed
+- **2026-02-10**: All 13 appendices extracted, processed, and rendered
+- **2026-02-08**: Chapters 9, 12, 13 extracted and processed through MT
 - **2026-02-05**: Phase 8 complete (segment editor rebuild)
 - **2026-01-13**: First 3 chapters published as MT preview
 - **2024-12-10**: Chapter 1 Pass 1 review complete
 
 ## Next Steps
 
-1. **Immediate**: Complete Phase 9 segment sync tooling
-2. **Short-term**: Apply approved edits to ch 1, inject & render faithful version
-3. **Medium-term**: Review chapters 2-4 in segment editor
-4. **Long-term**: Extract and process remaining chapters (14-21)
+1. **Immediate**: Complete Phase 9 — write approved edits to `03-faithful-translation/` files
+2. **Short-term**: Inject & render faithful version of Chapter 1
+3. **Medium-term**: Continue Pass 1 reviews for chapters 2-5 in segment editor
+4. **Long-term**: Extract and process remaining chapters (6-8, 10-11, 14-21)
 
 ## Image Translation
 

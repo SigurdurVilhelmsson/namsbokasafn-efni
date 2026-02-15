@@ -1,9 +1,14 @@
 # Project Audit Report
 
 **Original Date:** 2026-02-08
-**Updated:** 2026-02-10
+**Updated:** 2026-02-15
 **Scope:** namsbokasafn-efni (pipeline + server) + namsbokasafn-vefur (web reader)
 **Context:** Small educational project (1-2 devs, ~5 editors), built iteratively with AI assistance
+
+**Update Summary (2026-02-15):**
+- Fixed internal inconsistencies in audit report (items 1.6, 2.1 status mismatches)
+- Quick-Win Checklist now 19/19 complete (100%)
+- Completed Tier 2 documentation items: onboarding rewrite (2.2), STATUS.md update (2.3), deploy checklist (2.6)
 
 **Update Summary (2026-02-10):**
 - Directory structure completely restructured (see new structure in docs/workflow/directory-structure.md)
@@ -110,27 +115,27 @@
 
 ## Tier 2: High-Impact Improvements — Worth Doing Soon
 
-### 2.1 Update Claude Code Skills Files ⚠️ PARTIAL (1 of 3 complete)
+### 2.1 Update Claude Code Skills Files ✅ COMPLETE (3 of 3)
 **Severity:** HIGH | **Effort:** MODERATE | **Area:** Documentation
 
 **Status:**
 - ✅ `.claude/skills/workflow-status.md` — COMPLETE. Now correctly describes Extract-Inject-Render pipeline (updated 2026-02-08)
-- ⚠️ `.claude/skills/repo-structure.md` — NEEDS UPDATE. Still references old directory names:
-  - Line 19: `03-faithful/` (should be `03-faithful-translation/`)
-  - Line 21: `04-localized/` (should be `04-localized-content/`)
-  - Missing: `02-machine-translated/`, `03-editing/`, `04-localization/`
-  - Needs updating for 2026-02-10 directory restructure
+- ✅ `.claude/skills/repo-structure.md` — COMPLETE. Updated with correct directory names including `02-machine-translated/`, `03-editing/`, `03-faithful-translation/`, `04-localization/`, `04-localized-content/` (updated 2026-02-10)
 - ✅ `.claude/skills/editorial-pass1.md` — COMPLETE. No docx references (updated 2026-02-08)
 
-### 2.2 Rewrite `docs/onboarding.md`
+### 2.2 Rewrite `docs/onboarding.md` ✅ COMPLETE
 **Severity:** HIGH | **Effort:** MODERATE | **Area:** Documentation
 
-Describes the deprecated EasyMDE-based editor, not the current segment editor at `/segment-editor`. The Phase 8 editor rebuild (completed 2026-02-05) made this doc completely wrong.
+~~Describes the deprecated EasyMDE-based editor, not the current segment editor at `/segment-editor`. The Phase 8 editor rebuild (completed 2026-02-05) made this doc completely wrong.~~
 
-### 2.3 Update `books/efnafraedi/STATUS.md`
+**Status:** Complete (2026-02-15). Rewritten for current segment editor workflow: describes Pass 1 (`/segment-editor`) and Pass 2 (`/localization-editor`), edit categories, review flow, terminology integration, and correct URLs.
+
+### 2.3 Update `books/efnafraedi/STATUS.md` ✅ COMPLETE
 **Severity:** HIGH | **Effort:** MODERATE | **Area:** Documentation
 
-6+ weeks stale (last updated 2025-12-26). References a pilot target of "January 5, 2026" with no outcome recorded. Uses old pipeline stage names.
+~~6+ weeks stale (last updated 2025-12-26). References a pilot target of "January 5, 2026" with no outcome recorded. Uses old pipeline stage names.~~
+
+**Status:** Complete (2026-02-15). Updated with accurate pipeline status for all 8 extracted chapters + 13 appendices, correct directory state, MT preview publication status, and Phase 9 context.
 
 ### 2.4 Bump vefur GitHub Actions to v6 ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** DevOps
@@ -150,10 +155,12 @@ Note: Still need to add `github-actions` ecosystem to vefur's `dependabot.yml` f
 
 efni CI uses Node 20, vefur uses Node 22, local machine runs Node 24. No `.nvmrc` or `.node-version` to pin versions.
 
-### 2.6 Add Database Migration Step to Deployment Checklist
+### 2.6 Add Database Migration Step to Deployment Checklist ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** DevOps
 
-The deployment checklist has no step for running `server/migrations/` after deployment. Migrations also have inconsistent formats (001-007 use `migrate()/rollback()`, 008-009 use `up()/down()`) and no tracking table.
+~~The deployment checklist has no step for running `server/migrations/` after deployment. Migrations also have inconsistent formats (001-007 use `migrate()/rollback()`, 008-009 use `up()/down()`) and no tracking table.~~
+
+**Status:** Complete (2026-02-15). Deployment checklist updated with correct migration instructions. Fixed admin migrate endpoint (`server/routes/admin.js`) to include migrations 008-009 and handle both `migrate()` and `up(db)` formats. Also fixed Caddy→nginx in the deployment checklist. Removed reference to non-existent `run-migrations.js` script.
 
 ### 2.7 Fix vefur npm Audit Vulnerability
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** Security
@@ -259,7 +266,7 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 
 ## Quick-Win Checklist
 
-**Progress: 18 of 19 complete (95%)**
+**Progress: 19 of 19 complete (100%) ✅**
 
 ### Completed ✅
 - [x] Directory structure overhaul (2026-02-10)
@@ -281,15 +288,14 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 - [x] Remove screenshots from git tracking (already done)
 - [x] License field in vefur package.json (already done)
 
-### Remaining ⚠️
-- [ ] Fix CLAUDE.md to say "nginx" instead of "Caddy" (1 line change)
+- [x] Fix CLAUDE.md to say "nginx" instead of "Caddy" (already fixed, confirmed 2026-02-15)
 
 ---
 
-## Assessment Summary (2026-02-10)
+## Assessment Summary (2026-02-15)
 
 ### Is This Report Still Valid?
-**YES** — The audit remains highly relevant and should be followed to completion.
+**YES** — The audit remains relevant. All critical and high-priority items are complete. Remaining work is Tier 3 (nice-to-haves) and product development (Phases 9-13).
 
 ### What Changed Since Original Audit (2026-02-08)?
 
@@ -302,18 +308,18 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 6. **Documentation updates** — CLAUDE.md, workflow docs, and most skills files updated
 
 **Tier 1 Status:** 11 of 11 items complete (100%) ✅
-**Tier 2 Status:** 4 of 4 items complete (100%) ✅
+**Tier 2 Status:** 7 of 10 items complete (70%) ✅ (all HIGH severity complete)
 **Tier 3 Status:** 4 of 11 items complete (36%)
-**Overall (Tier 1+2):** 19 of 19 items complete (100%) ✅
+**Overall Quick-Win Checklist:** 19 of 19 items complete (100%) ✅
 
 ### Remaining Work
 
 **All critical and high-priority items complete!** ✅
 
-**Optional (Future Consideration):**
-- Tier 2.8: Server over-engineering assessment
-  - Consider consolidating services when ready
-  - Not urgent - server works well at current scale
+**Tier 2 remaining (medium severity, non-urgent):**
+- 2.8: Server over-engineering assessment — consider consolidating when ready
+- 2.9: session.js 1745 lines — split when modifying
+- 2.10: Duplicated `escapeHtml()` — extract to shared utility when touching those files
 
 ### Risk Assessment
 **Current risk level: LOW** ✅
@@ -322,9 +328,10 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 - ✅ All CI/CD hardening complete
 - ✅ Monitoring and backups operational
 - ✅ Documentation updated and accurate
-- ⚠️ One minor documentation inconsistency remains (Caddy/nginx)
+- ✅ All documentation inconsistencies resolved
 
 ---
 
 *Original audit generated by 5 parallel audit agents (security, architecture, devops, code-quality, documentation) on 2026-02-08.*
 *Updated 2026-02-10 to reflect completed work and directory restructuring.*
+*Updated 2026-02-15 to fix internal inconsistencies (items 1.6, 2.1) and complete Tier 2 documentation items (2.2, 2.3, 2.6).*
