@@ -345,10 +345,152 @@ function advanceChapterStatus(book, chapter, stage, extra = {}) {
 // Periodically clean up old jobs (every 30 minutes)
 setInterval(() => cleanupJobs(), 1800000);
 
+/**
+ * Run prepare-for-align.js for all sections in a chapter.
+ * Requires linguisticReview to be complete (all modules have faithful files).
+ *
+ * @param {Object} params
+ * @param {string} params.book - Book slug
+ * @param {number} params.chapter - Chapter number
+ * @param {string} [params.userId] - User who triggered the run
+ * @returns {Object} { jobId, promise }
+ */
+function runPrepareTm({ book, chapter, userId }) {
+  const chapterStr = String(chapter).padStart(2, '0');
+  const enDir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${chapterStr}`);
+  const isDir = path.join(BOOKS_DIR, book, '03-faithful-translation', `ch${chapterStr}`);
+  const outputDir = path.join(BOOKS_DIR, book, 'for-align', `ch${chapterStr}`);
+
+  // Prerequisite: check faithful files exist
+  if (!fs.existsSync(isDir)) {
+    throw new Error(
+      `Faithful translation directory not found: 03-faithful-translation/ch${chapterStr}`
+    );
+  }
+
+  // Find all EN section files
+  if (!fs.existsSync(enDir)) {
+    throw new Error(`EN segments directory not found: 02-for-mt/ch${chapterStr}`);
+  }
+
+  const enFiles = fs.readdirSync(enDir).filter((f) => f.match(/^\d+-\d+.*\.en\.md$/));
+  if (enFiles.length === 0) {
+    throw new Error(`No EN segment files found in 02-for-mt/ch${chapterStr}`);
+  }
+
+  // Extract unique section IDs (e.g., "5-1" from "5-1.en.md" or "5-1(a).en.md")
+  const sections = [
+    ...new Set(
+      enFiles
+        .map((f) => {
+          const match = f.match(/^(\d+-\d+)/);
+          return match ? match[1] : null;
+        })
+        .filter(Boolean)
+    ),
+  ].sort();
+
+  // Check which sections have IS files
+  const isFiles = fs.readdirSync(isDir).filter((f) => f.endsWith('.is.md'));
+  const isSections = new Set(
+    isFiles
+      .map((f) => {
+        const match = f.match(/^(\d+-\d+)/);
+        return match ? match[1] : null;
+      })
+      .filter(Boolean)
+  );
+
+  const readySections = sections.filter((s) => isSections.has(s));
+  if (readySections.length === 0) {
+    throw new Error(`No sections have both EN and IS files for chapter ${chapter}`);
+  }
+
+  const jobId = generateJobId();
+  const job = {
+    id: jobId,
+    type: 'prepare-tm',
+    chapter,
+    moduleId: 'all',
+    track: 'faithful',
+    userId,
+    status: 'running',
+    startedAt: new Date().toISOString(),
+    completedAt: null,
+    output: [`Preparing ${readySections.length} sections for Matecat Align...`],
+    error: null,
+  };
+  jobs.set(jobId, job);
+
+  const promise = (async () => {
+    try {
+      // Ensure output directory exists
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+      }
+
+      for (const section of readySections) {
+        job.output.push(`Processing section ${section}...`);
+
+        await new Promise((resolve, reject) => {
+          const child = spawn(
+            'node',
+            [
+              path.join(TOOLS_DIR, 'prepare-for-align.js'),
+              '--en-dir',
+              enDir,
+              '--is-dir',
+              isDir,
+              '--section',
+              section,
+              '--output-dir',
+              outputDir,
+              '--verbose',
+            ],
+            {
+              cwd: PROJECT_ROOT,
+              env: { ...process.env, NODE_NO_WARNINGS: '1' },
+            }
+          );
+
+          child.stdout.on('data', (data) => {
+            job.output.push(...data.toString().trim().split('\n'));
+          });
+          child.stderr.on('data', (data) => {
+            job.output.push(...data.toString().trim().split('\n'));
+          });
+
+          child.on('error', (err) => reject(err));
+          child.on('close', (code) => {
+            if (code === 0) resolve();
+            else
+              reject(
+                new Error(`prepare-for-align failed for section ${section} (exit code ${code})`)
+              );
+          });
+        });
+      }
+
+      job.status = 'completed';
+      job.completedAt = new Date().toISOString();
+      job.output.push(
+        `Done. ${readySections.length} section pairs ready in for-align/ch${chapterStr}/`
+      );
+    } catch (err) {
+      job.status = 'failed';
+      job.error = err.message;
+      job.completedAt = new Date().toISOString();
+    }
+  })();
+
+  return { jobId, promise };
+}
+
 module.exports = {
   runInject,
   runRender,
   runPipeline,
+  runPrepareTm,
   getJob,
   listJobs,
   hasRunningJob,
