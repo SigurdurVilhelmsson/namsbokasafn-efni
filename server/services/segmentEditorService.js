@@ -575,6 +575,46 @@ function getModuleStats(book, moduleId) {
     .get(book, moduleId);
 }
 
+/**
+ * Get cross-chapter review queue with edit counts per module.
+ *
+ * @param {string} [book] - Optional book filter
+ * @returns {Array} Array of review items with edit counts
+ */
+function getReviewQueue(book) {
+  const conn = getDb();
+
+  let query = `
+    SELECT
+      mr.id,
+      mr.book,
+      mr.chapter,
+      mr.module_id,
+      mr.submitted_by_username,
+      mr.submitted_at,
+      mr.status,
+      mr.edited_segments,
+      COUNT(CASE WHEN se.status = 'pending' THEN 1 END) as pending_edits,
+      COUNT(CASE WHEN se.status = 'approved' THEN 1 END) as approved_edits,
+      COUNT(CASE WHEN se.status = 'rejected' THEN 1 END) as rejected_edits,
+      COUNT(CASE WHEN se.status = 'discuss' THEN 1 END) as discuss_edits
+    FROM module_reviews mr
+    LEFT JOIN segment_edits se ON mr.book = se.book AND mr.module_id = se.module_id
+    WHERE mr.status IN ('pending', 'in_review')`;
+
+  const params = [];
+  if (book) {
+    query += ` AND mr.book = ?`;
+    params.push(book);
+  }
+
+  query += `
+    GROUP BY mr.id
+    ORDER BY mr.submitted_at ASC`;
+
+  return conn.prepare(query).all(...params);
+}
+
 module.exports = {
   // Segment edits
   saveSegmentEdit,
@@ -599,4 +639,6 @@ module.exports = {
   getDiscussion,
   // Statistics
   getModuleStats,
+  // Review queue
+  getReviewQueue,
 };
