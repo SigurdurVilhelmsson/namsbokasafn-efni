@@ -15,6 +15,7 @@
 
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
+const path = require('path');
 
 // Import core functionality
 const {
@@ -154,39 +155,109 @@ function cancelSession(sessionId, reason) {
 // CLEANUP AND MAINTENANCE
 // ============================================================================
 
-/**
- * Clean up expired sessions
- */
-function cleanupExpiredSessions() {
-  const now = new Date().toISOString();
-  let cleaned = 0;
+// Retention period for finished sessions (7 days)
+const FINISHED_RETENTION_MS = 7 * 24 * 60 * 60 * 1000;
 
-  // Get expired sessions to clean up their files
+/**
+ * Remove a session's output directory if it exists
+ */
+function removeSessionDir(outputDir) {
+  if (outputDir && fs.existsSync(outputDir)) {
+    try {
+      fs.rmSync(outputDir, { recursive: true, force: true });
+      return true;
+    } catch (err) {
+      console.error(`Failed to clean up session directory ${outputDir}:`, err);
+      return false;
+    }
+  }
+  return false;
+}
+
+/**
+ * Clean up stale sessions:
+ * 1. Mark zombie active sessions as expired
+ * 2. Delete expired sessions (DB + files)
+ * 3. Delete old finished sessions (completed/cancelled/failed older than 7 days)
+ * 4. Remove orphaned session directories with no matching DB record
+ */
+function cleanupStaleSessions() {
+  const now = new Date().toISOString();
+  const cutoff = new Date(Date.now() - FINISHED_RETENTION_MS).toISOString();
+  let zombies = 0;
+  let expired = 0;
+  let oldFinished = 0;
+  let orphans = 0;
+
+  // 1. Mark zombie active sessions as expired
+  const zombieRows = statements.getZombieActive.all(now);
+  if (zombieRows.length > 0) {
+    statements.markZombieExpired.run(now, now);
+    zombies = zombieRows.length;
+  }
+
+  // 2. Delete expired sessions (existing behavior)
   const expiredRows = statements.getExpired.all(now);
   for (const row of expiredRows) {
     const session = rowToSession(row);
-    // Clean up files
-    if (session.outputDir && fs.existsSync(session.outputDir)) {
-      try {
-        fs.rmSync(session.outputDir, { recursive: true, force: true });
-      } catch (err) {
-        console.error(`Failed to clean up session directory ${session.outputDir}:`, err);
-      }
-    }
-    cleaned++;
+    removeSessionDir(session.outputDir);
+    expired++;
+  }
+  if (expiredRows.length > 0) {
+    statements.deleteExpired.run(now);
   }
 
-  // Delete expired sessions from database
-  statements.deleteExpired.run(now);
+  // 3. Delete old finished sessions (completed/cancelled/failed > 7 days)
+  const finishedRows = statements.getOldFinished.all(cutoff);
+  for (const row of finishedRows) {
+    const session = rowToSession(row);
+    removeSessionDir(session.outputDir);
+    oldFinished++;
+  }
+  if (finishedRows.length > 0) {
+    statements.deleteOldFinished.run(cutoff);
+  }
 
-  return cleaned;
+  // 4. Clean orphaned session directories
+  const sessionsDir = path.join(__dirname, '..', '..', 'pipeline-output', 'sessions');
+  if (fs.existsSync(sessionsDir)) {
+    const allSessionIds = new Set(
+      db
+        .prepare('SELECT id FROM sessions')
+        .all()
+        .map((r) => r.id)
+    );
+    try {
+      const dirs = fs.readdirSync(sessionsDir, { withFileTypes: true });
+      for (const entry of dirs) {
+        if (entry.isDirectory() && !allSessionIds.has(entry.name)) {
+          removeSessionDir(path.join(sessionsDir, entry.name));
+          orphans++;
+        }
+      }
+    } catch (err) {
+      console.error('Failed to scan session directories for orphans:', err);
+    }
+  }
+
+  const total = zombies + expired + oldFinished + orphans;
+  if (total > 0) {
+    const parts = [];
+    if (zombies) parts.push(`${zombies} zombie→expired`);
+    if (expired) parts.push(`${expired} expired deleted`);
+    if (oldFinished) parts.push(`${oldFinished} old finished deleted`);
+    if (orphans) parts.push(`${orphans} orphaned dirs removed`);
+    console.log(`[session-cleanup] ${parts.join(', ')}`);
+  }
+
+  return { zombies, expired, oldFinished, orphans };
 }
 
 // Run cleanup every hour
-setInterval(cleanupExpiredSessions, 60 * 60 * 1000);
+setInterval(cleanupStaleSessions, 60 * 60 * 1000);
 
 // Clean up on startup
-cleanupExpiredSessions();
+cleanupStaleSessions();
 
 /**
  * Get database stats (for debugging/monitoring)
@@ -269,7 +340,7 @@ module.exports = {
 
   // Lifecycle
   cancelSession,
-  cleanupExpiredSessions,
+  cleanupStaleSessions,
   getDbStats,
 
   // Error recovery

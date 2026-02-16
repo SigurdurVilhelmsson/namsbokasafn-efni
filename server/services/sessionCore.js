@@ -159,6 +159,16 @@ const statements = {
   deleteExpired: db.prepare('DELETE FROM sessions WHERE expires_at < ?'),
   getExpired: db.prepare('SELECT * FROM sessions WHERE expires_at < ?'),
   deleteById: db.prepare('DELETE FROM sessions WHERE id = ?'),
+  getOldFinished: db.prepare(
+    `SELECT * FROM sessions WHERE status IN ('completed', 'cancelled', 'failed') AND updated_at < ?`
+  ),
+  deleteOldFinished: db.prepare(
+    `DELETE FROM sessions WHERE status IN ('completed', 'cancelled', 'failed') AND updated_at < ?`
+  ),
+  getZombieActive: db.prepare(`SELECT * FROM sessions WHERE status = 'active' AND expires_at < ?`),
+  markZombieExpired: db.prepare(
+    `UPDATE sessions SET status = 'expired', updated_at = ? WHERE status = 'active' AND expires_at < ?`
+  ),
 };
 
 /**
