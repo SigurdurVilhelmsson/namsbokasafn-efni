@@ -13,6 +13,7 @@
  *   POST /api/segment-editor/:book/:chapter/:moduleId/submit Submit for review
  *
  *   GET  /api/segment-editor/reviews                  List pending module reviews
+ *   GET  /api/segment-editor/review-queue             Cross-chapter review queue with SLA
  *   GET  /api/segment-editor/reviews/:reviewId        Get review with edits
  *   POST /api/segment-editor/edit/:editId/approve     Approve segment edit
  *   POST /api/segment-editor/edit/:editId/reject      Reject segment edit
@@ -244,6 +245,38 @@ router.get('/reviews', requireAuth, requireRole(ROLES.EDITOR), (req, res) => {
     const reviews = segmentEditor.getPendingModuleReviews(req.query.book);
     res.json({ reviews });
   } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * GET /review-queue
+ * Cross-chapter review queue with edit counts and SLA indicators.
+ */
+router.get('/review-queue', requireAuth, (req, res) => {
+  try {
+    const { book } = req.query;
+    const reviews = segmentEditor.getReviewQueue(book || undefined);
+
+    // Add SLA indicators
+    const now = Date.now();
+    const SLA_TARGET_MS = 2 * 24 * 60 * 60 * 1000; // 2 days
+    const SLA_WARNING_MS = 3 * 24 * 60 * 60 * 1000; // 3 days
+    const SLA_CRITICAL_MS = 5 * 24 * 60 * 60 * 1000; // 5 days
+
+    const items = reviews.map((r) => {
+      const ageMs = now - new Date(r.submitted_at).getTime();
+      let sla = 'on-track';
+      if (ageMs > SLA_CRITICAL_MS) sla = 'critical';
+      else if (ageMs > SLA_WARNING_MS) sla = 'overdue';
+      else if (ageMs > SLA_TARGET_MS) sla = 'at-risk';
+
+      return { ...r, sla, age_days: Math.floor(ageMs / (24 * 60 * 60 * 1000)) };
+    });
+
+    res.json({ reviews: items });
+  } catch (err) {
+    console.error('Error getting review queue:', err);
     res.status(500).json({ error: err.message });
   }
 });
