@@ -5,6 +5,14 @@
 **Scope:** namsbokasafn-efni (pipeline + server) + namsbokasafn-vefur (web reader)
 **Context:** Small educational project (1-2 devs, ~5 editors), built iteratively with AI assistance
 
+**Update Summary (2026-02-16):**
+- Phase 13.1 complete: Retired old markdown pipeline (~37,800 lines removed)
+- Deleted `tools/_archived/` (43 files), old editor/process/localization routes + views
+- Cleaned dead code in `workflow.js` (~575 lines), `books.js` (~210 lines)
+- Updated nav links in 23 view files (`/editor` → `/segment-editor`)
+- Confirmed 4 orphaned services: `presenceStore.js`, `notesStore.js`, `editorHistory.js`, `mtRestoration.js`
+- Updated ROADMAP.md, architecture.md, simplified-workflow.md, development-plan-phases-9-13.md
+
 **Update Summary (2026-02-15):**
 - Fixed internal inconsistencies in audit report (items 1.6, 2.1 status mismatches)
 - Quick-Win Checklist now 19/19 complete (100%)
@@ -58,7 +66,7 @@
 
 ~~Root `package.json` has 4 dependencies only used by archived tools: `mammoth`, `turndown`, `js-yaml`, `katex`. They add install time and potential vulnerability surface for zero benefit.~~
 
-**Status:** Complete. Root package.json now has only `mathjax-full` as a dependency. All 4 packages removed.
+**Status:** Complete. Root package.json now has only MathJax as a dependency (`@mathjax/src` 4.1.0 + `@mathjax/mathjax-newcm-font`, upgraded from `mathjax-full` 3.2.1 on 2026-02-11). All 4 unused packages removed.
 
 ### 1.4 Clean Up Dead Scripts in package.json ✅ COMPLETE
 **Severity:** HIGH | **Effort:** QUICK-FIX | **Area:** Architecture
@@ -167,7 +175,7 @@ efni CI uses Node 20, vefur uses Node 22, local machine runs Node 24. No `.nvmrc
 
 1 high-severity vulnerability: `@isaacs/brace-expansion` 5.0.0 (Uncontrolled Resource Consumption). Fix available via `npm audit fix`. Both efni repos have 0 vulnerabilities.
 
-### 2.8 Server Over-Engineering Assessment
+### 2.8 Server Over-Engineering Assessment ⏳ PARTIAL (2026-02-16)
 **Severity:** MEDIUM | **Effort:** SIGNIFICANT | **Area:** Architecture
 
 32 route files and 34 service files for ~5 editors is far beyond what the team can maintain. Growth was feature-by-feature via AI assistance without consolidation. Multiple services could be merged:
@@ -175,6 +183,8 @@ efni CI uses Node 20, vefur uses Node 22, local machine runs Node 24. No `.nvmrc
 - `openstaxCatalogue` + `openstaxFetcher` + `bookRegistration` + `bookDataGenerator` → one `bookService`
 - `editorHistory` + `segmentEditorService` → combined editor service
 - `meetings.js` + `deadlines.js` + `assignments.js` + `reports.js` — project management features a 5-editor team could handle with GitHub Issues
+
+**Phase 13.1 progress (2026-02-16):** Deleted 3 old routes (`editor.js`, `process.js`, `localization.js`) and their views (`editor.html`). Cleaned ~785 lines of dead code from `workflow.js` and `books.js`. Confirmed 4 orphaned services after route deletion: `presenceStore.js`, `notesStore.js`, `editorHistory.js`, `mtRestoration.js` — safe to delete in future cleanup. Server now has ~20 route files.
 
 **Note:** This is not urgent. The server works. But each new feature adds maintenance burden. Consider freezing new features and consolidating before adding more.
 
@@ -256,7 +266,7 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 - **CORS configured** — Origin whitelist with subdomain matching for `*.namsbokasafn.is`.
 - **Pre-commit hooks** — Both repos have Husky + lint-staged properly configured.
 - **JWT validation in production** — `server/config.js` validates JWT_SECRET strength, rejects default values, and requires all secrets in production.
-- **Pipeline tools well-organized** — 12 active tools in `tools/`, 30+ deprecated tools properly archived in `tools/_archived/`.
+- **Pipeline tools well-organized** — 12 active tools in `tools/`, old archived tools deleted (Phase 13.1, 2026-02-16).
 - **README bilingual** — Icelandic + English, comprehensive, well-structured.
 - **Workflow documentation current** — `docs/workflow/simplified-workflow.md` is the best-maintained doc.
 - **Dependabot configured** — Both repos have automated dependency updates (efni also covers github-actions).
@@ -306,6 +316,8 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 4. **CI/CD hardening** — Deploy now properly gated on CI success
 5. **Dependency cleanup** — Removed unused packages, deleted dead code
 6. **Documentation updates** — CLAUDE.md, workflow docs, and most skills files updated
+7. **Old pipeline retirement (2026-02-16)** — ~37,800 lines of dead code removed: `tools/_archived/` (43 files), old editor/process/localization routes + views, dead code in workflow.js and books.js. Nav links updated across 23 views.
+8. **MathJax 4 upgrade (2026-02-11)** — Native Icelandic character support in equations, removed all workarounds
 
 **Tier 1 Status:** 11 of 11 items complete (100%) ✅
 **Tier 2 Status:** 7 of 10 items complete (70%) ✅ (all HIGH severity complete)
@@ -335,3 +347,4 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 *Original audit generated by 5 parallel audit agents (security, architecture, devops, code-quality, documentation) on 2026-02-08.*
 *Updated 2026-02-10 to reflect completed work and directory restructuring.*
 *Updated 2026-02-15 to fix internal inconsistencies (items 1.6, 2.1) and complete Tier 2 documentation items (2.2, 2.3, 2.6).*
+*Updated 2026-02-16 for Phase 13.1 pipeline retirement (~37,800 lines removed, 4 orphaned services identified).*

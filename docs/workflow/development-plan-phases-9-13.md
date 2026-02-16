@@ -115,7 +115,7 @@ This matches the practical workflow: review modules individually, then publish t
 
 ### 10.1 — Rewrite Publication Service
 
-The current `publicationService.js` (1,104 lines) assembles markdown using `chapter-assembler.js` and `add-frontmatter.js`. Replace the core publication logic:
+The current `publicationService.js` (1,104 lines) still has markdown assembly code, but the tools it depended on (`chapter-assembler.js`, `add-frontmatter.js`) were deleted in the Phase 13.1 cleanup. Replace the core publication logic:
 
 | Track | Source | Pipeline |
 |-------|--------|----------|
@@ -228,21 +228,30 @@ Process one chapter completely through the web UI:
 
 **Goal:** Remove dead weight, reduce maintenance surface.
 
-### 13.1 — Retire Old Editor
+### 13.1 — Retire Old Pipeline ✅ (2026-02-16)
 
-`server/views/editor.html` (266KB) and `server/routes/editor.js` (1,008 lines) serve the old markdown pipeline. Once the segment editor and localization editor handle all workflows:
-- Archive `editor.html` and `editor.js`
-- Remove the `/editor` view route
-- Port any useful features (presence indicators, personal notes) to the segment editor if needed
+**Completed.** Commit `89b86d2`. ~37,800 lines removed:
 
-### 13.2 — Audit Routes & Services
+| Deleted | Lines | Replacement |
+|---------|-------|-------------|
+| `tools/_archived/` (43 files) | ~27,000 | Extract-Inject-Render CLI tools |
+| `tools/__tests__/_archived/` (4 files) | ~1,500 | — |
+| `server/routes/editor.js` | 1,008 | `segment-editor.js` |
+| `server/views/editor.html` | 7,909 | `segment-editor.html` |
+| `server/routes/process.js` | 455 | `pipeline.js` |
+| `server/routes/localization.js` | 577 | `localization-editor.js` |
+| Dead code in `workflow.js` | ~575 | Cleaned in place |
+| Dead code in `books.js` | ~210 | Cleaned in place |
 
-The server has 32 route files and 34 service files. Several reference the old pipeline:
-- `editorHistory.js` — tracks old editor versions
-- `mtRestoration.js` — markdown-specific restoration
-- Parts of `publicationService.js` — markdown assembly (replaced in Phase 10)
+Also updated: `sync.js`, `sessionCore.js`, `index.js`, `views.js`, `workflow.html`, `chapter.html`, nav links in 23 view files (`/editor` → `/segment-editor`).
 
-Audit each, archive what's dead, document what remains.
+### 13.2 — Audit Remaining Services
+
+The server now has ~20 route files and ~30 service files. Remaining candidates for cleanup:
+- `editorHistory.js` — tracked old editor versions, likely dead
+- `mtRestoration.js` — markdown-specific restoration, not imported anywhere
+- `presenceStore.js`, `notesStore.js` — only used by deleted `editor.js`, now orphaned
+- Parts of `publicationService.js` — markdown assembly (to be replaced in Phase 10)
 
 ### 13.3 — Core Pipeline Tests
 

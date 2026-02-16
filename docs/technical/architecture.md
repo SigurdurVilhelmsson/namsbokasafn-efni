@@ -24,7 +24,7 @@ The repository implements a 5-step translation workflow for producing Icelandic 
 │                   Extract-Inject-Render Pipeline (Node.js)                   │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  cnxml-extract.js    │  cnxml-inject.js       │  cnxml-render.js            │
-│  protect-segments.js │  restore-segments.js   │  prepare-for-align.js       │
+│  protect-segments.js │  unprotect-segments.js   │  prepare-for-align.js       │
 └─────────────────────────────────────────────────────────────────────────────┘
                 │                    │                       │
                 ▼                    ▼                       ▼
@@ -78,7 +78,7 @@ The pipeline uses an Extract-Inject-Render architecture:
 #### Post-MT Restoration
 | Tool | Purpose | Input | Output |
 |------|---------|-------|--------|
-| `restore-segments-from-mt.js` | Restore markers & links in MT output | MT output | Clean segments |
+| `unprotect-segments.js` | Restore markers & links in MT output | MT output | Clean segments |
 
 #### TM Creation
 | Tool | Purpose | Input | Output |
@@ -187,7 +187,7 @@ EN Segments + Structure JSON + Equations JSON
         ▼ malstadur.is (external)
 IS Segments (MT output)
         │
-        ├── restore-segments-from-mt.js → Clean IS segments
+        ├── unprotect-segments.js → Clean IS segments
         │
         ▼ Human review
 IS Segments (faithful)

@@ -10,7 +10,7 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
 | **Current Phase** | Phase 9: Close the Write Gap |
-| **Latest Milestone** | Phase 8 complete (2026-02-05) |
+| **Latest Milestone** | Old pipeline retired (2026-02-16), Phase 8 complete (2026-02-05) |
 
 **Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 (current) → 10 → 11 → 12 → 13
 **Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
@@ -29,11 +29,11 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 │  - Issue dashboard with auto-fix + classification               │
 │  - Image tracking with OneDrive integration                     │
 │  - GitHub OAuth authentication                                  │
-│  ⚠ Editor needs rebuild for new pipeline (see Phase 8)          │
+│  - Segment editor + localization editor (Phase 8, complete)      │
 ├─────────────────────────────────────────────────────────────────┤
 │  CLI Tools (tools/)                                             │
 │  - Extract-Inject-Render pipeline (cnxml-extract/inject/render) │
-│  - Segment protection for MT (protect/restore-segments)         │
+│  - Segment protection for MT (protect/unprotect-segments)       │
 │  - TM creation (prepare-for-align.js)                           │
 ├─────────────────────────────────────────────────────────────────┤
 │  Data Layer                                                     │
@@ -49,7 +49,7 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 
 | Constraint | Implication |
 |------------|-------------|
-| Erlendur MT is manual | Files split at 18k chars, download/upload cycle |
+| Erlendur MT is manual | Files split at 12k visible chars, download/upload cycle |
 | Matecat has free API | Can automate XLIFF operations |
 | Content repo is read-only | All writes via GitHub PRs |
 | Small team | Simple over complex |
@@ -63,18 +63,18 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Component | File | Status |
 |-----------|------|--------|
 | Extract-Inject-Render pipeline | `tools/cnxml-extract.js`, `cnxml-inject.js`, `cnxml-render.js` | ✅ |
-| Segment protection for MT | `tools/protect-segments-for-mt.js`, `restore-segments-from-mt.js` | ✅ |
+| Segment protection for MT | `tools/protect-segments-for-mt.js`, `unprotect-segments.js` | ✅ |
 | OpenStax fetcher | `tools/openstax-fetch.js` | ✅ |
 | TM preparation | `tools/prepare-for-align.js` | ✅ |
 | Express server | `server/index.js` | ✅ |
-| Processing API | `server/routes/process.js` | ✅ |
+| Pipeline API | `server/routes/pipeline.js` | ✅ |
 | Matecat integration | `server/services/matecat.js` | ✅ |
 
 **Active CLI Tools:**
-`cnxml-extract`, `cnxml-inject`, `cnxml-render`, `protect-segments-for-mt`, `restore-segments-from-mt`, `openstax-fetch`, `prepare-for-align`, `validate-chapter`
+`cnxml-extract`, `cnxml-inject`, `cnxml-render`, `protect-segments-for-mt`, `unprotect-segments`, `openstax-fetch`, `prepare-for-align`, `validate-chapter`
 
-**Deprecated (old markdown pipeline):**
-`pipeline-runner`, `cnxml-to-md`, `chapter-assembler`, `add-frontmatter`, `compile-chapter`, `split-for-erlendur`, `apply-equations`, `clean-markdown`, `docx-to-md`, `cnxml-to-xliff`, `create-bilingual-xliff`, `md-to-xliff`, `xliff-to-md`, `xliff-to-tmx`
+**Old markdown pipeline (deleted 2026-02-16):**
+43 tools in `tools/_archived/` removed. All code preserved in git history. Key deleted tools: `pipeline-runner`, `cnxml-to-md`, `chapter-assembler`, `add-frontmatter`, `compile-chapter`, `split-for-erlendur`, `apply-equations`, `clean-markdown`, `docx-to-md`, `cnxml-to-xliff`, `create-bilingual-xliff`, `md-to-xliff`, `xliff-to-md`, `xliff-to-tmx`.
 
 ### Phase 2: Guided Workflow ✅
 
@@ -87,8 +87,10 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Image tracking | ✅ | `server/services/imageTracker.js` | 319 |
 | HTML wizard UI | ✅ | `server/views/workflow.html` | ✅ |
 
-**Server Routes (21 total):**
-`activity`, `admin`, `auth`, `books`, `editor`, `images`, `issues`, `localization`, `matecat`, `modules`, `notifications`, `process`, `publication`, `reviews`, `sections`, `status`, `suggestions`, `sync`, `terminology`, `views`, `workflow`
+**Server Routes (20 total):**
+`activity`, `admin`, `auth`, `books`, `images`, `issues`, `localization-editor`, `matecat`, `modules`, `notifications`, `pipeline`, `publication`, `reviews`, `sections`, `segment-editor`, `status`, `suggestions`, `sync`, `terminology`, `views`, `workflow`
+
+> **Note:** `editor`, `process`, and `localization` routes were removed in the 2026-02-16 pipeline retirement. Replaced by `segment-editor`, `pipeline`, and `localization-editor`.
 
 **Phase 2.1 Features:**
 - Erlendur MT file splitting (>18k chars at paragraph boundaries)
@@ -140,11 +142,11 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 - Split-panel review interface for Pass 2
 - Bulk suggestion accept/reject
 
-### Phase 6: Publication Workflow ✅ (Markdown — Being Retired)
+### Phase 6: Publication Workflow ✅ (API Layer — Internals Being Migrated)
 
 | Component | Status | File | Note |
 |-----------|--------|------|------|
-| Publication API | ✅ | `server/routes/publication.js` | Needs rebuild for HTML output |
+| Publication API | ✅ | `server/routes/publication.js` | API shape stable; internals to be migrated in Phase 10 |
 | 3-track system | ✅ | mt-preview, faithful, localized | Tracks carry forward |
 | Readiness checks | ✅ | Validates prerequisites per track | Needs updated stage checks |
 | HEAD_EDITOR approval | ✅ | Required for all publications | Carries forward |
@@ -154,7 +156,7 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 - `faithful`: Publish after Pass 1 review complete
 - `localized`: Publish after Pass 2 localization complete
 
-> **Note:** The markdown publication path (`chapter-assembler.js` + `add-frontmatter.js`) will be replaced by `cnxml-inject` → `cnxml-render` → HTML output. See Phase 8.
+> **Note:** The old markdown assembly tools (`chapter-assembler.js`, `add-frontmatter.js`) were deleted in the 2026-02-16 pipeline retirement. The publication service internals will be migrated to use `cnxml-inject` → `cnxml-render` → HTML output in Phase 10.
 
 ---
 
@@ -225,9 +227,12 @@ Verify and fix remaining cnxml-render issues (#5 examples, #6 exercises, #7 cros
 
 ### Phase 13: Cleanup & Consolidation
 
-**Status:** NOT STARTED
+**Status:** PARTIALLY COMPLETE
 
-Retire old markdown editor (`editor.html`, `editor.js`). Audit 32 routes and 34 services for dead code. Add tests for cnxml-inject and cnxml-render.
+**13.1 — Retire Old Pipeline (COMPLETE 2026-02-16):**
+Deleted `tools/_archived/` (43 files), `server/routes/editor.js`, `server/views/editor.html`, `server/routes/process.js`, `server/routes/localization.js`. Cleaned up `workflow.js`, `books.js`, `sync.js`, `sessionCore.js`. Updated nav links across 23 views. ~37,800 lines removed. Commit `89b86d2`.
+
+**13.2 — Remaining:** Audit remaining routes and services for dead code. Add tests for cnxml-inject and cnxml-render.
 
 See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
 
@@ -307,7 +312,7 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 | 2025-10 | SQLite over Postgres | Single-server sufficient |
 | 2026-01 | HTML wizard over React SPA | Simpler, sufficient for team size |
 | 2026-01 | PR-based writes | Audit trail, review gates |
-| 2026-01 | File splitting at 14k visible chars | Erlendur character limit; protect-segments-for-mt handles splitting |
+| 2026-01 | File splitting at 12k visible chars | Erlendur character limit; protect-segments-for-mt handles splitting |
 | 2026-01 | 5-step workflow | Simplified from 8-step, Matecat Align handles segmentation |
 | 2026-01 | SQLite terminology DB | Consistent with session storage, simple approval workflow |
 | 2026-01 | 3-track publication | MT-preview enables early access while reviews continue |
@@ -316,6 +321,8 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 | 2026-02 | CNXML→HTML pipeline replaces markdown assembly | Higher structure fidelity, preserved IDs, pre-rendered KaTeX, single source of truth |
 | 2026-02 | Keep EasyMDE for segment editing | Markdown segments are still the editing format; only publication output changes to HTML |
 | 2026-02 | Retire chapter-assembler + add-frontmatter | Two publication paths (markdown + HTML) creates maintenance burden |
+| 2026-02 | Delete old pipeline code entirely | 43 archived tools + 4 server routes already broken (lazy imports to moved files). ~37,800 lines removed. Git history preserves everything. |
+| 2026-02 | MathJax 3→4 upgrade | MathJax 3 TeX fonts had only 1/20 Icelandic characters; v4 New Computer Modern has full native support |
 
 ---
 
@@ -382,7 +389,7 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 - Single source of truth (CNXML) through the entire pipeline
 - Vefur serves pre-rendered HTML instead of processing markdown
 
-**Tools retired:** `chapter-assembler.js`, `add-frontmatter.js`, `compile-chapter.js`, `pipeline-runner.js`, `cnxml-to-md.js`
+**Tools retired:** `chapter-assembler.js`, `add-frontmatter.js`, `compile-chapter.js`, `pipeline-runner.js`, `cnxml-to-md.js` (plus 38 others — all deleted from `tools/_archived/` on 2026-02-16)
 
 ---
 

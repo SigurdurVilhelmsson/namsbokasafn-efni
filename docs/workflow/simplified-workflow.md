@@ -424,7 +424,7 @@ books/efnafraedi/
 |------|---------|------|
 | `cnxml-extract.js` | CNXML → segmented EN markdown + structure JSON | 1a |
 | `protect-segments-for-mt.js` | Protect tags & links, split for Erlendur MT | 1b |
-| `restore-segments-from-mt.js` | Restore tags & links in MT output | 2→3 |
+| `unprotect-segments.js` | Restore tags & links in MT output | 2→3 |
 | `prepare-for-align.js` | Clean markdown for Matecat Align | 4 |
 | `cnxml-inject.js` | Inject translations back into CNXML structure | 5a |
 | `cnxml-render.js` | Render translated CNXML to semantic HTML | 5b |
@@ -506,7 +506,7 @@ node tools/protect-segments-for-mt.js --batch books/efnafraedi/02-for-mt/ch05/
 # Step 2: Upload to malstadur.is (manual), save to 02-mt-output/
 
 # Step 2→3: Restore protected segments in MT output
-node tools/restore-segments-from-mt.js --batch books/efnafraedi/02-mt-output/ch05/
+node tools/unprotect-segments.js --batch books/efnafraedi/02-mt-output/ch05/
 
 # Step 3: Review MT output, save to 03-faithful-translation/ (manual)
 
