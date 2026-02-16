@@ -24,37 +24,13 @@ const { requireAuth } = require('../middleware/requireAuth');
 const { requireContributor, requireAdmin } = require('../middleware/requireRole');
 const session = require('../services/session');
 const gitService = require('../services/gitService');
-// pipelineRunner is an ES module - use dynamic import
-let pipelineRunner = null;
-const getPipelineRunner = async () => {
-  if (!pipelineRunner) {
-    pipelineRunner = await import('../../tools/pipeline-runner.js');
-  }
-  return pipelineRunner;
-};
-
-// protect-for-mt is an ES module - use dynamic import
-let protectForMt = null;
-const getProtectForMt = async () => {
-  if (!protectForMt) {
-    protectForMt = await import('../../tools/protect-for-mt.js');
-  }
-  return protectForMt;
-};
 const { classifyIssues, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
 const assignmentStore = require('../services/assignmentStore');
 const activityLog = require('../services/activityLog');
 const notifications = require('../services/notifications');
 const workflowPersistence = require('../services/workflowPersistence');
 
-// Re-export splitting functions for use in this module
-const {
-  checkFileSplitNeeded,
-  splitFileForErlendur,
-  recombineSplitFiles,
-  ERLENDUR_SOFT_LIMIT,
-  MAX_RETRY_ATTEMPTS
-} = session;
+const { MAX_RETRY_ATTEMPTS } = session;
 
 /**
  * Get book slug from book ID
@@ -74,136 +50,6 @@ function getBookSlug(bookId) {
     console.warn('Could not load book data for slug:', err.message);
   }
   return bookId;
-}
-
-/**
- * Get supplementary files for a chapter
- * These are JSON and TXT files containing translatable content that's
- * separate from the main markdown files (figures, equations, strings).
- * @param {string} bookId - Book ID
- * @param {number|string} chapter - Chapter number or 'appendix-X'
- * @returns {Array} List of supplementary files with their translatable content counts
- */
-function getSupplementaryFiles(bookId, chapter) {
-  const bookSlug = getBookSlug(bookId);
-  const booksDir = path.join(__dirname, '..', '..', 'books');
-
-  // Determine chapter directory
-  let chapterDir;
-  if (String(chapter).startsWith('appendix-')) {
-    chapterDir = path.join(booksDir, bookSlug, '02-for-mt', 'appendix');
-  } else {
-    const chapterNum = parseInt(chapter, 10);
-    chapterDir = path.join(booksDir, bookSlug, '02-for-mt', `ch${String(chapterNum).padStart(2, '0')}`);
-  }
-
-  const supplementaryFiles = [];
-
-  if (!fs.existsSync(chapterDir)) {
-    return supplementaryFiles;
-  }
-
-  try {
-    const files = fs.readdirSync(chapterDir);
-
-    for (const file of files) {
-      const filePath = path.join(chapterDir, file);
-
-      // Figures JSON - contains captions and alt text
-      if (file.endsWith('-figures.json') || file.endsWith('.en-figures.json')) {
-        try {
-          const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-          const figureCount = data.figures ? Object.keys(data.figures).length : 0;
-          let translatableStrings = 0;
-          if (data.figures) {
-            for (const fig of Object.values(data.figures)) {
-              if (fig.captionEn) translatableStrings++;
-              if (fig.altText) translatableStrings++;
-            }
-          }
-          supplementaryFiles.push({
-            filename: file,
-            type: 'figures',
-            typeLabel: 'Myndir',
-            path: filePath,
-            section: file.match(/^(\d+-\d+|\d+\.\d+|intro)/)?.[1] || file,
-            figureCount,
-            translatableStrings,
-            description: `${figureCount} myndir, ${translatableStrings} strengir til þýðingar`
-          });
-        } catch (e) {
-          console.warn('Failed to parse figures file:', file, e.message);
-        }
-      }
-
-      // Equations JSON - contains LaTeX (usually not translated, but shown for reference)
-      if (file.endsWith('-equations.json') || file.endsWith('.en-equations.json')) {
-        try {
-          const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-          const equationCount = data.equations ? Object.keys(data.equations).length : 0;
-          supplementaryFiles.push({
-            filename: file,
-            type: 'equations',
-            typeLabel: 'Jöfnur',
-            path: filePath,
-            section: file.match(/^(\d+-\d+|\d+\.\d+|intro)/)?.[1] || file,
-            equationCount,
-            translatableStrings: 0, // Equations are typically not translated
-            description: `${equationCount} jöfnur (LaTeX)`
-          });
-        } catch (e) {
-          console.warn('Failed to parse equations file:', file, e.message);
-        }
-      }
-
-      // Strings MD - contains frontmatter, tables, and figures (two formats supported)
-      if (file.endsWith('-strings.en.md')) {
-        try {
-          const content = fs.readFileSync(filePath, 'utf8');
-          // Count translatable items - support both formats:
-          // Format 1: [[LABEL:...]] value (e.g., [[TABLE:1:title]] Elemental Composition)
-          // Format 2: **Label:** value (e.g., **Caption:** This portrayal shows...)
-          const bracketCount = (content.match(/\[\[[A-Z_]+:[^\]]+\]\]/g) || []).length;
-          const boldCount = (content.match(/\*\*[^*]+:\*\*/g) || []).length;
-          const labelCount = bracketCount + boldCount;
-          supplementaryFiles.push({
-            filename: file,
-            type: 'strings',
-            typeLabel: 'Strengir (MD)',
-            path: filePath,
-            section: file.match(/^(\d+-\d+|\d+\.\d+|intro)/)?.[1] || file,
-            translatableStrings: labelCount,
-            description: `${labelCount} strengir til þýðingar (markdown)`
-          });
-        } catch (e) {
-          console.warn('Failed to read strings file:', file, e.message);
-        }
-      }
-
-      // Strings TXT - legacy format (for backwards compatibility)
-      if (file.endsWith('-strings.en.txt')) {
-        try {
-          const content = fs.readFileSync(filePath, 'utf8');
-          const lines = content.split('\n').filter(l => l.trim());
-          supplementaryFiles.push({
-            filename: file,
-            type: 'strings-legacy',
-            typeLabel: 'Strengir (TXT)',
-            path: filePath,
-            section: file.match(/^(\d+-\d+|\d+\.\d+|intro)/)?.[1] || file,
-            translatableStrings: lines.length,
-            description: `${lines.length} strengir til þýðingar (legacy)`
-          });
-        } catch (e) {
-          console.warn('Failed to read strings file:', file, e.message);
-        }
-      }
-    }
-  } catch (err) {
-    console.warn('Failed to read chapter directory:', chapterDir, err.message);
-  }
-
-  return supplementaryFiles;
 }
 
 // Configure multer for workflow file uploads
@@ -226,7 +72,7 @@ const storage = multer.diskStorage({
     const step = req.params.step;
     const ext = path.extname(file.originalname);
     cb(null, `${step}-upload-${Date.now()}${ext}`);
-  }
+  },
 });
 
 const upload = multer({
@@ -240,12 +86,16 @@ const upload = multer({
     } else {
       cb(new Error(`File type ${ext} not allowed`));
     }
-  }
+  },
 });
 
 /**
  * POST /api/workflow/start
  * Create a new workflow session
+ *
+ * Extraction is now done via CLI tools (cnxml-extract.js).
+ * This endpoint creates a session starting at the MT upload step.
+ * Use /api/workflow/resume for chapters that already have extracted files.
  *
  * Body:
  *   - book: Book identifier (e.g., 'chemistry-2e')
@@ -258,14 +108,14 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
   if (!book || !chapter) {
     return res.status(400).json({
       error: 'Missing parameters',
-      message: 'book and chapter are required'
+      message: 'book and chapter are required',
     });
   }
 
   if (!modules || !Array.isArray(modules) || modules.length === 0) {
     return res.status(400).json({
       error: 'Missing modules',
-      message: 'At least one module is required'
+      message: 'At least one module is required',
     });
   }
 
@@ -281,235 +131,68 @@ router.post('/start', requireAuth, requireContributor(), async (req, res) => {
         startedBy: existing.username,
         startedAt: existing.createdAt,
         currentStep: existing.steps[existing.currentStep]?.name,
-        progress: progress
+        progress: progress,
       },
       action: 'join',
-      joinUrl: `/workflow?session=${existing.id}`
+      joinUrl: `/workflow?session=${existing.id}`,
     });
   }
 
   try {
-    // Resolve book slug for filesystem operations
-    const bookSlug = getBookSlug(book);
-
-    // Create session
+    // Create session starting at MT upload step (step 1)
+    // Extraction (step 0) is done via CLI: node tools/cnxml-extract.js
     const newSession = session.createSession({
       book,
-      bookSlug,  // Store slug for persistence operations
       chapter,
       modules,
       sourceType: 'modules',
       userId: req.user.id,
-      username: req.user.username
+      username: req.user.username,
+      startStep: 1,
+      completedSteps: ['source'],
     });
 
     const sessionData = session.getSession(newSession.sessionId);
 
-    // Update step status
-    session.updateStepStatus(newSession.sessionId, 'source', 'in-progress');
+    // Build expected files for MT upload step
+    const expected = modules.map((m) => ({
+      moduleId: typeof m === 'object' ? m.id : m,
+      section: typeof m === 'object' ? m.section : null,
+      title: typeof m === 'object' ? m.title : null,
+      displayName:
+        typeof m === 'object' && m.section
+          ? `${m.section}: ${m.title || m.id}`
+          : typeof m === 'object'
+            ? m.id
+            : m,
+      expectedUpload:
+        typeof m === 'object' && m.section ? `${m.section.replace('.', '-')}.is.md` : null,
+    }));
+    session.updateExpectedFiles(newSession.sessionId, 'mt-upload', expected);
 
-    // Process all modules
-    const allOutputs = [];
-    const errors = [];
-    const splitInfo = []; // Track which files need splitting
-
-    for (const mod of modules) {
-      // Handle both { id, section, title } objects and plain strings
-      const moduleId = typeof mod === 'object' ? mod.id : mod;
-      const moduleSection = typeof mod === 'object' ? mod.section : null;
-      const moduleTitle = typeof mod === 'object' ? mod.title : null;
-
-      try {
-        console.log(`Processing module ${moduleId}...`);
-        const runner = await getPipelineRunner();
-        const results = await runner.run({
-          input: moduleId,
-          section: moduleSection,  // Pass section from JSON data (e.g., "1.5" or "intro")
-          title: moduleTitle,      // Pass title for metadata
-          outputDir: sessionData.outputDir,
-          book,
-          verbose: false
-        });
-
-        if (results.success) {
-          for (const output of results.outputs) {
-            // Check if markdown file needs splitting for Erlendur
-            let needsSplit = false;
-            let splitParts = [];
-
-            if (output.type === 'markdown' && output.path) {
-              const splitCheck = checkFileSplitNeeded(output.path);
-              needsSplit = splitCheck.needsSplit;
-
-              if (needsSplit && moduleSection) {
-                console.log(`File ${output.path} exceeds ${ERLENDUR_SOFT_LIMIT} chars (${splitCheck.charCount}), splitting...`);
-                splitParts = splitFileForErlendur(output.path, sessionData.outputDir, moduleSection);
-                splitInfo.push({
-                  moduleId,
-                  section: moduleSection,
-                  parts: splitParts.length,
-                  charCount: splitCheck.charCount
-                });
-              }
-            }
-
-            allOutputs.push({
-              moduleId,
-              section: moduleSection,
-              title: moduleTitle,
-              needsSplit,
-              splitParts: splitParts.length > 0 ? splitParts : undefined,
-              ...output
-            });
-
-            // Store file reference with section-based name if available
-            const fileKey = moduleSection
-              ? `${moduleSection.replace('.', '-')}-${output.type}`
-              : `${moduleId}-${output.type}`;
-
-            session.storeFile(newSession.sessionId, fileKey, output.path, {
-              originalName: path.basename(output.path),
-              size: fs.statSync(output.path).size,
-              moduleId,
-              section: moduleSection,
-              title: moduleTitle
-            });
-
-            // Also store split parts if created
-            if (splitParts.length > 0) {
-              for (const part of splitParts) {
-                const partKey = `${moduleSection.replace('.', '-')}(${part.part})-${output.type}`;
-                session.storeFile(newSession.sessionId, partKey, part.path, {
-                  originalName: part.filename,
-                  size: fs.statSync(part.path).size,
-                  moduleId,
-                  section: moduleSection,
-                  part: part.part
-                });
-              }
-            }
-
-            // === PERSISTENCE: Save to permanent folder ===
-            if (moduleSection && output.path) {
-              const fileType = output.type === 'markdown' ? undefined : output.type;
-              const saveResult = workflowPersistence.saveWorkflowFile(
-                bookSlug, chapter, moduleSection, 'source', output.path,
-                { fileType: fileType === 'equations' ? 'equations' : undefined }
-              );
-              if (saveResult.success) {
-                console.log(`  Saved to permanent: ${saveResult.destPath}`);
-
-                // === AUTO-GENERATE STRING FILES ===
-                // Generate sidecar and strings files for markdown files
-                if (output.type === 'markdown') {
-                  try {
-                    const protector = await getProtectForMt();
-                    const protectResult = protector.processFile(saveResult.destPath, {
-                      inPlace: false,  // Don't modify the original file
-                      dryRun: false,
-                      verbose: false
-                    });
-                    if (protectResult.success) {
-                      const generated = [];
-                      if (protectResult.sidecarPath) generated.push('sidecar');
-                      if (protectResult.stringsPath) generated.push('strings');
-                      if (generated.length > 0) {
-                        console.log(`  Generated sidecars: ${generated.join(', ')}`);
-                      }
-                    }
-                  } catch (protectErr) {
-                    console.warn(`  Failed to generate sidecars: ${protectErr.message}`);
-                    // Don't fail the workflow - string files are supplementary
-                  }
-                }
-              } else {
-                console.warn(`  Failed to save permanently: ${saveResult.error}`);
-              }
-            }
-          }
-        } else {
-          errors.push({ moduleId, error: results.error });
-        }
-      } catch (moduleErr) {
-        errors.push({ moduleId, error: moduleErr.message });
-      }
-    }
-
-    // Update session status based on results
-    if (allOutputs.length > 0) {
-      session.updateStepStatus(newSession.sessionId, 'source', 'completed', {
-        outputs: allOutputs.map(o => `${o.section || o.moduleId}: ${o.type}`),
-        modulesProcessed: modules.length - errors.length,
-        splitFiles: splitInfo.length > 0 ? splitInfo : undefined,
-        errors: errors.length > 0 ? errors : undefined
-      });
-
-      // Update expected files with split info (section-based naming)
-      // Include strings files in expected uploads
-      const supplementaryFiles = getSupplementaryFiles(book, chapter);
-      const updatedExpected = buildExpectedFiles(allOutputs, splitInfo, supplementaryFiles);
-      session.updateExpectedFiles(newSession.sessionId, 'mt-upload', updatedExpected);
-
-      // Save checkpoint after successful source step
-      session.saveCheckpoint(newSession.sessionId);
-
-      // === PERSISTENCE: Update book_sections status to mt_pending ===
-      const sectionFiles = allOutputs
-        .filter(o => o.section && o.type === 'markdown')
-        .map(o => ({
-          section: o.section,
-          filePath: workflowPersistence.checkFileExists(bookSlug, chapter, o.section, 'source').path
-        }));
-
-      if (sectionFiles.length > 0) {
-        const batchResult = workflowPersistence.batchUpdateSections(bookSlug, chapter, 'source', sectionFiles);
-        console.log(`Updated ${batchResult.updated} sections to mt_pending status`);
-        if (batchResult.errors.length > 0) {
-          console.warn('Section update errors:', batchResult.errors);
-        }
-      }
-
-      // Don't auto-advance - let the UI control progression via download button
-    } else {
-      session.updateStepStatus(newSession.sessionId, 'source', 'failed', {
-        error: 'No modules processed successfully',
-        errors
-      });
-
-      // Log the error
-      session.logError(newSession.sessionId, 'source', 'No modules processed successfully', {
-        errors,
-        modulesAttempted: modules.length
-      });
-    }
-
-    // Get updated session
-    const updatedSession = session.getSession(newSession.sessionId);
+    // Save checkpoint
+    session.saveCheckpoint(newSession.sessionId);
 
     res.json({
       success: true,
       sessionId: newSession.sessionId,
       book,
       chapter,
-      modulesProcessed: modules.length - errors.length,
       modulesTotal: modules.length,
-      splitFiles: splitInfo.length > 0 ? splitInfo : undefined,
-      errors: errors.length > 0 ? errors : undefined,
-      steps: updatedSession.steps.map(s => ({
+      steps: sessionData.steps.map((s) => ({
         id: s.id,
         name: s.name,
         status: s.status,
-        manual: s.manual
+        manual: s.manual,
       })),
-      currentStep: updatedSession.steps[updatedSession.currentStep],
-      downloads: getDownloadLinks(newSession.sessionId, updatedSession)
+      currentStep: sessionData.steps[sessionData.currentStep],
+      downloads: getDownloadLinks(newSession.sessionId, sessionData),
     });
-
   } catch (err) {
     console.error('Workflow start error:', err);
     res.status(500).json({
       error: 'Failed to start workflow',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -524,7 +207,7 @@ router.get('/sessions', requireAuth, (req, res) => {
 
   res.json({
     sessions,
-    total: sessions.length
+    total: sessions.length,
   });
 });
 
@@ -535,7 +218,7 @@ router.get('/sessions', requireAuth, (req, res) => {
 router.get('/sessions/all', requireAuth, (req, res) => {
   if (req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Admin access required'
+      error: 'Admin access required',
     });
   }
 
@@ -543,7 +226,7 @@ router.get('/sessions/all', requireAuth, (req, res) => {
 
   res.json({
     sessions,
-    total: sessions.length
+    total: sessions.length,
   });
 });
 
@@ -561,7 +244,7 @@ router.get('/check/:book/:chapter', requireAuth, (req, res) => {
   if (!book || isNaN(chapterNum)) {
     return res.status(400).json({
       error: 'Invalid parameters',
-      message: 'book and chapter are required'
+      message: 'book and chapter are required',
     });
   }
 
@@ -575,30 +258,32 @@ router.get('/check/:book/:chapter', requireAuth, (req, res) => {
       book,
       chapter: chapterNum,
       hasProgress: progress.canResume,
-      activeSession: activeSession ? {
-        id: activeSession.id,
-        startedBy: activeSession.username,
-        currentStep: activeSession.steps[activeSession.currentStep]?.name,
-        createdAt: activeSession.createdAt
-      } : null,
+      activeSession: activeSession
+        ? {
+            id: activeSession.id,
+            startedBy: activeSession.username,
+            currentStep: activeSession.steps[activeSession.currentStep]?.name,
+            createdAt: activeSession.createdAt,
+          }
+        : null,
       progress: {
         canResume: progress.canResume,
         resumeStep: progress.resumeStep,
         resumeStepIndex: progress.resumeStepIndex,
         completedSteps: progress.completedSteps,
-        stepProgress: progress.stepProgress
+        stepProgress: progress.stepProgress,
       },
       sections: progress.sections,
-      downloads: progress.completedSteps.length > 0
-        ? workflowPersistence.getCompletedStepDownloads(book, chapterNum, progress.completedSteps)
-        : {}
+      downloads:
+        progress.completedSteps.length > 0
+          ? workflowPersistence.getCompletedStepDownloads(book, chapterNum, progress.completedSteps)
+          : {},
     });
-
   } catch (err) {
     console.error('Check progress error:', err);
     res.status(500).json({
       error: 'Failed to check progress',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -619,14 +304,14 @@ router.post('/resume', requireAuth, requireContributor(), async (req, res) => {
   if (!book || !chapter) {
     return res.status(400).json({
       error: 'Missing parameters',
-      message: 'book and chapter are required'
+      message: 'book and chapter are required',
     });
   }
 
   if (!modules || !Array.isArray(modules) || modules.length === 0) {
     return res.status(400).json({
       error: 'Missing modules',
-      message: 'At least one module is required'
+      message: 'At least one module is required',
     });
   }
 
@@ -638,14 +323,12 @@ router.post('/resume', requireAuth, requireContributor(), async (req, res) => {
       return res.status(400).json({
         error: 'No progress to resume',
         message: 'No existing files found for this chapter. Use /start instead.',
-        suggestion: 'POST /api/workflow/start'
+        suggestion: 'POST /api/workflow/start',
       });
     }
 
     // Determine start step
-    const startStep = resumeFromStep !== undefined
-      ? resumeFromStep
-      : progress.resumeStepIndex;
+    const startStep = resumeFromStep !== undefined ? resumeFromStep : progress.resumeStepIndex;
 
     // Create session starting from the resume point
     const newSession = session.createSession({
@@ -656,7 +339,7 @@ router.post('/resume', requireAuth, requireContributor(), async (req, res) => {
       userId: req.user.id,
       username: req.user.username,
       startStep,
-      completedSteps: progress.completedSteps
+      completedSteps: progress.completedSteps,
     });
 
     const sessionData = session.getSession(newSession.sessionId);
@@ -664,16 +347,18 @@ router.post('/resume', requireAuth, requireContributor(), async (req, res) => {
     // Build expected files for current step
     if (startStep === 1) {
       // Resuming at MT upload - build expected files from sections
-      const expected = modules.map(m => ({
+      const expected = modules.map((m) => ({
         moduleId: typeof m === 'object' ? m.id : m,
         section: typeof m === 'object' ? m.section : null,
         title: typeof m === 'object' ? m.title : null,
-        displayName: typeof m === 'object' && m.section
-          ? `${m.section}: ${m.title || m.id}`
-          : (typeof m === 'object' ? m.id : m),
-        expectedUpload: typeof m === 'object' && m.section
-          ? `${m.section.replace('.', '-')}.is.md`
-          : null
+        displayName:
+          typeof m === 'object' && m.section
+            ? `${m.section}: ${m.title || m.id}`
+            : typeof m === 'object'
+              ? m.id
+              : m,
+        expectedUpload:
+          typeof m === 'object' && m.section ? `${m.section.replace('.', '-')}.is.md` : null,
       }));
       session.updateExpectedFiles(newSession.sessionId, 'mt-upload', expected);
     }
@@ -696,22 +381,25 @@ router.post('/resume', requireAuth, requireContributor(), async (req, res) => {
       resumed: true,
       resumedFromStep: startStep,
       completedSteps: progress.completedSteps,
-      steps: sessionData.steps.map(s => ({
+      steps: sessionData.steps.map((s) => ({
         id: s.id,
         name: s.name,
         status: s.status,
-        manual: s.manual
+        manual: s.manual,
       })),
       currentStep: sessionData.steps[startStep],
-      downloads: workflowPersistence.getCompletedStepDownloads(book, chapter, progress.completedSteps),
-      uploadProgress
+      downloads: workflowPersistence.getCompletedStepDownloads(
+        book,
+        chapter,
+        progress.completedSteps
+      ),
+      uploadProgress,
     });
-
   } catch (err) {
     console.error('Workflow resume error:', err);
     res.status(500).json({
       error: 'Failed to resume workflow',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -727,7 +415,7 @@ router.get('/:sessionId', requireAuth, (req, res) => {
   if (!sessionData) {
     return res.status(404).json({
       error: 'Session not found',
-      message: `No session with ID ${sessionId}`
+      message: `No session with ID ${sessionId}`,
     });
   }
 
@@ -735,7 +423,7 @@ router.get('/:sessionId', requireAuth, (req, res) => {
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
       error: 'Access denied',
-      message: 'You do not have access to this session'
+      message: 'You do not have access to this session',
     });
   }
 
@@ -746,9 +434,6 @@ router.get('/:sessionId', requireAuth, (req, res) => {
     uploadProgress = session.getUploadProgress(sessionId, 'mt-upload');
   }
 
-  // Get supplementary files (figures, equations, strings)
-  const supplementaryFiles = getSupplementaryFiles(sessionData.book, sessionData.chapter);
-
   res.json({
     session: {
       id: sessionData.id,
@@ -758,7 +443,7 @@ router.get('/:sessionId', requireAuth, (req, res) => {
       modules: sessionData.modules,
       status: sessionData.status,
       currentStep: sessionData.currentStep,
-      steps: sessionData.steps.map(s => ({
+      steps: sessionData.steps.map((s) => ({
         id: s.id,
         name: s.name,
         description: s.description,
@@ -767,7 +452,7 @@ router.get('/:sessionId', requireAuth, (req, res) => {
         instructions: s.instructions,
         startedAt: s.startedAt,
         completedAt: s.completedAt,
-        issues: s.issues.length
+        issues: s.issues.length,
       })),
       issues: sessionData.issues,
       files: Object.keys(sessionData.files),
@@ -775,12 +460,11 @@ router.get('/:sessionId', requireAuth, (req, res) => {
       uploadedFiles: sessionData.uploadedFiles,
       createdAt: sessionData.createdAt,
       updatedAt: sessionData.updatedAt,
-      expiresAt: sessionData.expiresAt
+      expiresAt: sessionData.expiresAt,
     },
     uploadProgress,
-    supplementaryFiles,
     downloads: getDownloadLinks(sessionId, sessionData),
-    actions: getAvailableActions(sessionData)
+    actions: getAvailableActions(sessionData),
   });
 });
 
@@ -794,19 +478,19 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
   if (!req.file) {
     return res.status(400).json({
-      error: 'No file uploaded'
+      error: 'No file uploaded',
     });
   }
 
@@ -821,7 +505,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
     const fileKey = `${step}-${Date.now()}`;
     session.storeFile(sessionId, fileKey, req.file.path, {
       originalName: req.file.originalname,
-      size: req.file.size
+      size: req.file.size,
     });
 
     // Process based on step
@@ -835,7 +519,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         filesExpected: progress.expected,
         complete: progress.complete,
         missing: progress.missing,
-        message: `${progress.uploaded}/${progress.expected} þýdd(ar) skrá(r) mótteknar`
+        message: `${progress.uploaded}/${progress.expected} þýdd(ar) skrá(r) mótteknar`,
       };
 
       // Run issue detection on the uploaded file
@@ -846,7 +530,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
           type: 'mt-output',
           book: sessionData.book,
           chapter: sessionData.chapter,
-          skipLocalization: true  // BOARD_REVIEW issues are for Pass 2 (Localization), not Faithful
+          skipLocalization: true, // BOARD_REVIEW issues are for Pass 2 (Localization), not Faithful
         });
 
         // Apply auto-fixes and store fixed content
@@ -856,12 +540,12 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         }
 
         // Store non-auto-fixed issues in session
-        const remainingIssues = issues.filter(i => i.category !== 'AUTO_FIX');
+        const remainingIssues = issues.filter((i) => i.category !== 'AUTO_FIX');
         for (const issue of remainingIssues) {
           session.addIssue(sessionId, {
             ...issue,
             sourceFile: req.file.originalname,
-            step
+            step,
           });
         }
 
@@ -872,9 +556,8 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
           autoFixed: autoFixResult.fixesApplied,
           requiresReview: stats.requiresReview,
           blocked: stats.blocked,
-          byCategory: stats.byCategory
+          byCategory: stats.byCategory,
         };
-
       } catch (issueErr) {
         console.error('Issue detection error:', issueErr);
         // Don't fail the upload if issue detection fails
@@ -897,48 +580,27 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       if (section) {
         const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
         const saveResult = workflowPersistence.saveWorkflowFile(
-          bookSlug, sessionData.chapter, section,
-          'mt-upload', req.file.path
+          bookSlug,
+          sessionData.chapter,
+          section,
+          'mt-upload',
+          req.file.path
         );
         if (saveResult.success) {
           console.log(`  Saved MT output to permanent: ${saveResult.destPath}`);
           // Update database status
           workflowPersistence.updateSectionFromWorkflow(
-            bookSlug, sessionData.chapter, section,
-            'mt-upload', { filePath: saveResult.destPath }
+            bookSlug,
+            sessionData.chapter,
+            section,
+            'mt-upload',
+            { filePath: saveResult.destPath }
           );
         } else {
           console.warn(`  Failed to save MT output: ${saveResult.error}`);
         }
       } else {
         console.warn(`  Could not determine section for file: ${req.file.originalname}`);
-      }
-
-      // === Handle strings.is.md uploads (translated strings file) ===
-      if (req.file.originalname.endsWith('-strings.is.md')) {
-        try {
-          // Parse the section from filename (e.g., "1-1-strings.is.md" -> "1.1")
-          const sectionMatch = req.file.originalname.match(/^(\d+-\d+|\d+\.\d+|intro)-strings\.is\.md$/);
-          if (sectionMatch) {
-            const section = sectionMatch[1].replace('-', '.');
-            const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
-            const chapterNum = parseInt(sessionData.chapter, 10);
-            const chapterDir = path.join(__dirname, '..', '..', 'books', bookSlug, '02-for-mt',
-              `ch${String(chapterNum).padStart(2, '0')}`);
-
-            // Save the strings file to the chapter directory
-            const stringsDestPath = path.join(chapterDir, req.file.originalname);
-            fs.copyFileSync(req.file.path, stringsDestPath);
-            console.log(`  Saved translated strings to: ${stringsDestPath}`);
-
-            // Note: The restore-strings.js script should be run manually or during faithful-edit step
-            // to update the sidecar JSON files with translated values:
-            //   node tools/restore-strings.js --batch books/{book}/02-for-mt/ch{NN}/
-          }
-        } catch (stringsErr) {
-          console.error('Error processing strings file:', stringsErr);
-          // Don't fail the upload - strings processing is optional
-        }
       }
     }
 
@@ -948,7 +610,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         filesUploaded: progress.uploaded,
         filesExpected: progress.expected,
         complete: progress.complete,
-        message: `${progress.uploaded}/${progress.expected} skrá(r) yfirfarnar`
+        message: `${progress.uploaded}/${progress.expected} skrá(r) yfirfarnar`,
       };
 
       // === PERSISTENCE: Save faithful edit to permanent folder ===
@@ -956,14 +618,20 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       if (lastUploaded?.section) {
         const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
         const saveResult = workflowPersistence.saveWorkflowFile(
-          bookSlug, sessionData.chapter, lastUploaded.section,
-          'faithful-edit', req.file.path
+          bookSlug,
+          sessionData.chapter,
+          lastUploaded.section,
+          'faithful-edit',
+          req.file.path
         );
         if (saveResult.success) {
           console.log(`  Saved faithful edit to permanent: ${saveResult.destPath}`);
           workflowPersistence.updateSectionFromWorkflow(
-            bookSlug, sessionData.chapter, lastUploaded.section,
-            'faithful-edit', { filePath: saveResult.destPath }
+            bookSlug,
+            sessionData.chapter,
+            lastUploaded.section,
+            'faithful-edit',
+            { filePath: saveResult.destPath }
           );
         }
       }
@@ -973,7 +641,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       // TMX uploaded from Matecat Align
       processingResult = {
         filesUploaded: 1,
-        message: 'TMX skrá móttekin frá Matecat Align'
+        message: 'TMX skrá móttekin frá Matecat Align',
       };
 
       // === PERSISTENCE: Save TMX to permanent folder ===
@@ -981,14 +649,20 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       if (lastUploaded?.section) {
         const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
         const saveResult = workflowPersistence.saveWorkflowFile(
-          bookSlug, sessionData.chapter, lastUploaded.section,
-          'tm-creation', req.file.path
+          bookSlug,
+          sessionData.chapter,
+          lastUploaded.section,
+          'tm-creation',
+          req.file.path
         );
         if (saveResult.success) {
           console.log(`  Saved TMX to permanent: ${saveResult.destPath}`);
           workflowPersistence.updateSectionFromWorkflow(
-            bookSlug, sessionData.chapter, lastUploaded.section,
-            'tm-creation', { filePath: saveResult.destPath }
+            bookSlug,
+            sessionData.chapter,
+            lastUploaded.section,
+            'tm-creation',
+            { filePath: saveResult.destPath }
           );
         }
       }
@@ -1003,7 +677,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
           type: 'localization',
           book: sessionData.book,
           chapter: sessionData.chapter,
-          skipLocalization: false  // Include BOARD_REVIEW issues for localization
+          skipLocalization: false, // Include BOARD_REVIEW issues for localization
         });
 
         // Apply auto-fixes
@@ -1013,12 +687,12 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         }
 
         // Store remaining issues
-        const remainingIssues = issues.filter(i => i.category !== 'AUTO_FIX');
+        const remainingIssues = issues.filter((i) => i.category !== 'AUTO_FIX');
         for (const issue of remainingIssues) {
           session.addIssue(sessionId, {
             ...issue,
             sourceFile: req.file.originalname,
-            step
+            step,
           });
         }
 
@@ -1028,9 +702,8 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
           autoFixed: autoFixResult.fixesApplied,
           requiresReview: stats.requiresReview,
           blocked: stats.blocked,
-          byCategory: stats.byCategory
+          byCategory: stats.byCategory,
         };
-
       } catch (issueErr) {
         console.error('Issue detection error:', issueErr);
         issuesSummary = { error: issueErr.message };
@@ -1040,7 +713,7 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         filesUploaded: progress.uploaded,
         filesExpected: progress.expected,
         complete: progress.complete,
-        message: `${progress.uploaded}/${progress.expected} staðfærð(ar) skrá(r) mótteknar`
+        message: `${progress.uploaded}/${progress.expected} staðfærð(ar) skrá(r) mótteknar`,
       };
 
       // === PERSISTENCE: Save localized file to permanent folder ===
@@ -1048,14 +721,20 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
       if (lastUploadedLoc?.section) {
         const bookSlug = sessionData.bookSlug || getBookSlug(sessionData.book);
         const saveResult = workflowPersistence.saveWorkflowFile(
-          bookSlug, sessionData.chapter, lastUploadedLoc.section,
-          'localization', req.file.path
+          bookSlug,
+          sessionData.chapter,
+          lastUploadedLoc.section,
+          'localization',
+          req.file.path
         );
         if (saveResult.success) {
           console.log(`  Saved localized file to permanent: ${saveResult.destPath}`);
           workflowPersistence.updateSectionFromWorkflow(
-            bookSlug, sessionData.chapter, lastUploadedLoc.section,
-            'localization', { filePath: saveResult.destPath }
+            bookSlug,
+            sessionData.chapter,
+            lastUploadedLoc.section,
+            'localization',
+            { filePath: saveResult.destPath }
           );
         }
       }
@@ -1074,33 +753,32 @@ router.post('/:sessionId/upload/:step', requireAuth, upload.single('file'), asyn
         size: req.file.size,
         identifiedAs: lastUploaded?.section
           ? `${lastUploaded.section}: ${lastUploaded.title || 'Unknown'}`
-          : lastUploaded?.moduleId || 'Unknown'
+          : lastUploaded?.moduleId || 'Unknown',
       },
       progress: {
         uploaded: progress.uploaded,
         expected: progress.expected,
         complete: progress.complete,
-        remaining: progress.missing
+        remaining: progress.missing,
       },
       processing: processingResult,
       issues: issuesSummary,
       session: {
         currentStep: updatedSession.currentStep,
-        steps: updatedSession.steps.map(s => ({
+        steps: updatedSession.steps.map((s) => ({
           id: s.id,
-          status: s.status
+          status: s.status,
         })),
         totalIssues: updatedSession.issues.length,
-        pendingIssues: updatedSession.issues.filter(i => i.status === 'pending').length
+        pendingIssues: updatedSession.issues.filter((i) => i.status === 'pending').length,
       },
-      nextAction: getNextAction(updatedSession)
+      nextAction: getNextAction(updatedSession),
     });
-
   } catch (err) {
     console.error('Upload processing error:', err);
     res.status(500).json({
       error: 'Failed to process upload',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -1115,13 +793,13 @@ router.get('/:sessionId/download/:artifact', requireAuth, (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -1130,7 +808,7 @@ router.get('/:sessionId/download/:artifact', requireAuth, (req, res) => {
   if (!file || !fs.existsSync(file.path)) {
     return res.status(404).json({
       error: 'Artifact not found',
-      message: `No artifact '${artifact}' in this session`
+      message: `No artifact '${artifact}' in this session`,
     });
   }
 
@@ -1153,13 +831,13 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -1175,13 +853,13 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
 
     // Identify sections that have split files
     const sectionsWithSplits = new Set();
-    for (const [type, file] of Object.entries(sessionData.files)) {
+    for (const [, file] of Object.entries(sessionData.files)) {
       if (file.part && file.section) {
         sectionsWithSplits.add(file.section);
       }
     }
 
-    for (const [type, file] of Object.entries(sessionData.files)) {
+    for (const [, file] of Object.entries(sessionData.files)) {
       if (!fs.existsSync(file.path)) continue;
 
       // Apply filter if specified
@@ -1202,113 +880,14 @@ router.get('/:sessionId/download-all', requireAuth, async (req, res) => {
       archive.file(file.path, { name: file.originalName || path.basename(file.path) });
     }
 
-    // Include strings.md files when downloading md files (needed for Erlendur MT)
-    if (!filter || filter === 'md') {
-      const supplementaryFiles = getSupplementaryFiles(sessionData.book, sessionData.chapter);
-      for (const sf of supplementaryFiles) {
-        // Include strings.en.md files (type === 'strings')
-        if (sf.type === 'strings' && sf.path && fs.existsSync(sf.path)) {
-          archive.file(sf.path, { name: sf.filename });
-        }
-      }
-    }
-
     await archive.finalize();
-
   } catch (err) {
     console.error('Download all error:', err);
     res.status(500).json({
       error: 'Failed to create archive',
-      message: err.message
+      message: err.message,
     });
   }
-});
-
-/**
- * GET /api/workflow/:sessionId/supplementary-files
- * Download supplementary files (figures, equations, strings) as ZIP
- */
-router.get('/:sessionId/supplementary-files', requireAuth, async (req, res) => {
-  const { sessionId } = req.params;
-  const sessionData = session.getSession(sessionId);
-
-  if (!sessionData) {
-    return res.status(404).json({ error: 'Session not found' });
-  }
-
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({ error: 'Access denied' });
-  }
-
-  const supplementaryFiles = getSupplementaryFiles(sessionData.book, sessionData.chapter);
-
-  if (supplementaryFiles.length === 0) {
-    return res.status(404).json({
-      error: 'No supplementary files found',
-      message: 'Engar viðbótarskrár fundust fyrir þennan kafla'
-    });
-  }
-
-  try {
-    const slug = sessionData.bookSlug || getBookSlug(sessionData.book);
-    const zipFilename = `${slug}-K${sessionData.chapter}-supplementary.zip`;
-
-    res.setHeader('Content-Type', 'application/zip');
-    res.setHeader('Content-Disposition', `attachment; filename="${zipFilename}"`);
-
-    const archive = archiver('zip', { zlib: { level: 9 } });
-    archive.pipe(res);
-
-    for (const file of supplementaryFiles) {
-      if (fs.existsSync(file.path)) {
-        archive.file(file.path, { name: file.filename });
-      }
-    }
-
-    await archive.finalize();
-
-  } catch (err) {
-    console.error('Supplementary files download error:', err);
-    res.status(500).json({
-      error: 'Failed to create archive',
-      message: err.message
-    });
-  }
-});
-
-/**
- * GET /api/workflow/:sessionId/supplementary-file/:filename
- * Download a single supplementary file
- */
-router.get('/:sessionId/supplementary-file/:filename', requireAuth, (req, res) => {
-  const { sessionId, filename } = req.params;
-  const sessionData = session.getSession(sessionId);
-
-  if (!sessionData) {
-    return res.status(404).json({ error: 'Session not found' });
-  }
-
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
-    return res.status(403).json({ error: 'Access denied' });
-  }
-
-  const supplementaryFiles = getSupplementaryFiles(sessionData.book, sessionData.chapter);
-  const file = supplementaryFiles.find(f => f.filename === filename);
-
-  if (!file || !fs.existsSync(file.path)) {
-    return res.status(404).json({ error: 'File not found' });
-  }
-
-  // Set appropriate content type
-  const ext = path.extname(filename).toLowerCase();
-  const contentTypes = {
-    '.json': 'application/json',
-    '.txt': 'text/plain; charset=utf-8'
-  };
-
-  res.setHeader('Content-Type', contentTypes[ext] || 'application/octet-stream');
-  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
-  res.sendFile(file.path);
 });
 
 /**
@@ -1364,13 +943,13 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -1389,15 +968,15 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
           progress: {
             uploaded: progress.uploaded,
             expected: progress.expected,
-            complete: progress.complete
-          }
+            complete: progress.complete,
+          },
         });
       }
     }
 
     // Check for BLOCKED issues that prevent advancement
     const blockedIssues = sessionData.issues.filter(
-      i => i.category === 'BLOCKED' && i.status === 'pending'
+      (i) => i.category === 'BLOCKED' && i.status === 'pending'
     );
     if (blockedIssues.length > 0) {
       return res.status(400).json({
@@ -1405,12 +984,12 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
         message: `Ekki hægt að halda áfram: ${blockedIssues.length} vandamál krefjast úrlausnar`,
         messageEn: `Cannot advance: ${blockedIssues.length} blocked issue(s) require resolution`,
         blockedCount: blockedIssues.length,
-        issues: blockedIssues.map(i => ({
+        issues: blockedIssues.map((i) => ({
           id: i.id,
           description: i.description,
           sourceFile: i.sourceFile,
-          line: i.line
-        }))
+          line: i.line,
+        })),
       });
     }
 
@@ -1419,7 +998,7 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
       if (currentStep && currentStep.status !== 'completed') {
         session.updateStepStatus(sessionId, currentStep.id, 'completed', {
           completedBy: req.user.username,
-          completedAt: new Date().toISOString()
+          completedAt: new Date().toISOString(),
         });
       }
     }
@@ -1430,7 +1009,7 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
       return res.status(400).json({
         error: 'Cannot advance',
         message: result.error,
-        currentStep: result.currentStep
+        currentStep: result.currentStep,
       });
     }
 
@@ -1444,8 +1023,8 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
         message: 'Workflow completed successfully',
         session: {
           id: result.session.id,
-          status: result.session.status
-        }
+          status: result.session.status,
+        },
       });
     }
 
@@ -1467,14 +1046,13 @@ router.post('/:sessionId/advance', requireAuth, async (req, res) => {
       currentStep: finalSession.steps[finalSession.currentStep],
       stepsRemaining: result.stepsRemaining,
       downloads: getDownloadLinks(sessionId, finalSession),
-      nextAction: getNextAction(finalSession)
+      nextAction: getNextAction(finalSession),
     });
-
   } catch (err) {
     console.error('Advance error:', err);
     res.status(500).json({
       error: 'Failed to advance workflow',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -1490,13 +1068,13 @@ router.post('/:sessionId/cancel', requireAuth, (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -1508,8 +1086,8 @@ router.post('/:sessionId/cancel', requireAuth, (req, res) => {
     session: {
       id: cancelled.id,
       status: cancelled.status,
-      cancelReason: cancelled.cancelReason
-    }
+      cancelReason: cancelled.cancelReason,
+    },
   });
 });
 
@@ -1524,7 +1102,7 @@ router.delete('/:sessionId', requireAuth, (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
@@ -1532,7 +1110,7 @@ router.delete('/:sessionId', requireAuth, (req, res) => {
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
       error: 'Access denied',
-      message: 'Only the session owner or an admin can delete this session'
+      message: 'Only the session owner or an admin can delete this session',
     });
   }
 
@@ -1541,7 +1119,7 @@ router.delete('/:sessionId', requireAuth, (req, res) => {
   if (!result.success) {
     return res.status(500).json({
       error: 'Failed to delete session',
-      message: result.error
+      message: result.error,
     });
   }
 
@@ -1549,7 +1127,7 @@ router.delete('/:sessionId', requireAuth, (req, res) => {
     success: true,
     message: 'Verkflæði eytt',
     messageEn: 'Session deleted',
-    sessionId
+    sessionId,
   });
 });
 
@@ -1567,13 +1145,13 @@ router.get('/:sessionId/errors', requireAuth, (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -1589,7 +1167,7 @@ router.get('/:sessionId/errors', requireAuth, (req, res) => {
     errors: errorLog,
     retryCount: sessionData.retryCount,
     maxRetries: MAX_RETRY_ATTEMPTS,
-    recoveryActions
+    recoveryActions,
   });
 });
 
@@ -1603,13 +1181,13 @@ router.post('/:sessionId/retry', requireAuth, (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -1619,7 +1197,7 @@ router.post('/:sessionId/retry', requireAuth, (req, res) => {
     return res.status(400).json({
       error: result.error,
       retryCount: result.retryCount,
-      suggestion: result.suggestion
+      suggestion: result.suggestion,
     });
   }
 
@@ -1634,12 +1212,12 @@ router.post('/:sessionId/retry', requireAuth, (req, res) => {
       id: updatedSession.id,
       status: updatedSession.status,
       currentStep: updatedSession.currentStep,
-      steps: updatedSession.steps.map(s => ({
+      steps: updatedSession.steps.map((s) => ({
         id: s.id,
-        status: s.status
-      }))
+        status: s.status,
+      })),
     },
-    nextAction: getNextAction(updatedSession)
+    nextAction: getNextAction(updatedSession),
   });
 });
 
@@ -1653,13 +1231,13 @@ router.post('/:sessionId/rollback', requireAuth, (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -1668,7 +1246,7 @@ router.post('/:sessionId/rollback', requireAuth, (req, res) => {
   if (!result.success) {
     return res.status(400).json({
       error: result.error,
-      suggestion: sessionData.currentStep === 0 ? 'Use /reset instead' : 'No checkpoint available'
+      suggestion: sessionData.currentStep === 0 ? 'Use /reset instead' : 'No checkpoint available',
     });
   }
 
@@ -1683,13 +1261,13 @@ router.post('/:sessionId/rollback', requireAuth, (req, res) => {
       id: updatedSession.id,
       status: updatedSession.status,
       currentStep: updatedSession.currentStep,
-      steps: updatedSession.steps.map(s => ({
+      steps: updatedSession.steps.map((s) => ({
         id: s.id,
-        status: s.status
-      }))
+        status: s.status,
+      })),
     },
     downloads: getDownloadLinks(sessionId, updatedSession),
-    nextAction: getNextAction(updatedSession)
+    nextAction: getNextAction(updatedSession),
   });
 });
 
@@ -1704,13 +1282,13 @@ router.post('/:sessionId/reset', requireAuth, (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -1718,7 +1296,7 @@ router.post('/:sessionId/reset', requireAuth, (req, res) => {
     return res.status(400).json({
       error: 'Confirmation required',
       message: 'Reset will clear all progress. Send {confirm: true} to proceed.',
-      warning: 'This action cannot be undone'
+      warning: 'This action cannot be undone',
     });
   }
 
@@ -1726,7 +1304,7 @@ router.post('/:sessionId/reset', requireAuth, (req, res) => {
 
   if (!result.success) {
     return res.status(400).json({
-      error: result.error
+      error: result.error,
     });
   }
 
@@ -1740,12 +1318,12 @@ router.post('/:sessionId/reset', requireAuth, (req, res) => {
       id: updatedSession.id,
       status: updatedSession.status,
       currentStep: updatedSession.currentStep,
-      steps: updatedSession.steps.map(s => ({
+      steps: updatedSession.steps.map((s) => ({
         id: s.id,
-        status: s.status
-      }))
+        status: s.status,
+      })),
     },
-    nextAction: getNextAction(updatedSession)
+    nextAction: getNextAction(updatedSession),
   });
 });
 
@@ -1759,13 +1337,13 @@ router.get('/:sessionId/recovery', requireAuth, (req, res) => {
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   if (sessionData.userId !== req.user.id && req.user.role !== 'admin') {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -1778,8 +1356,8 @@ router.get('/:sessionId/recovery', requireAuth, (req, res) => {
       retry: `/api/workflow/${sessionId}/retry`,
       rollback: `/api/workflow/${sessionId}/rollback`,
       reset: `/api/workflow/${sessionId}/reset`,
-      errors: `/api/workflow/${sessionId}/errors`
-    }
+      errors: `/api/workflow/${sessionId}/errors`,
+    },
   });
 });
 
@@ -1788,8 +1366,8 @@ router.get('/:sessionId/recovery', requireAuth, (req, res) => {
 function getDownloadLinks(sessionId, sessionData) {
   const downloads = {};
 
-  for (const [type, file] of Object.entries(sessionData.files)) {
-    downloads[type] = `/api/workflow/${sessionId}/download/${type}`;
+  for (const [fileType] of Object.entries(sessionData.files)) {
+    downloads[fileType] = `/api/workflow/${sessionId}/download/${fileType}`;
   }
 
   if (Object.keys(downloads).length > 0) {
@@ -1807,15 +1385,18 @@ function getAvailableActions(sessionData) {
     actions.push({
       action: 'upload',
       url: `/api/workflow/${sessionData.id}/upload/${currentStep.id}`,
-      description: currentStep.instructions
+      description: currentStep.instructions,
     });
   }
 
-  if (currentStep.status === 'completed' && sessionData.currentStep < sessionData.steps.length - 1) {
+  if (
+    currentStep.status === 'completed' &&
+    sessionData.currentStep < sessionData.steps.length - 1
+  ) {
     actions.push({
       action: 'advance',
       url: `/api/workflow/${sessionData.id}/advance`,
-      description: 'Proceed to next step'
+      description: 'Proceed to next step',
     });
   }
 
@@ -1826,7 +1407,7 @@ function getAvailableActions(sessionData) {
       actions.push({
         action: 'retry',
         url: `/api/workflow/${sessionData.id}/retry`,
-        description: `Retry current step (${MAX_RETRY_ATTEMPTS - (sessionData.retryCount || 0)} attempts remaining)`
+        description: `Retry current step (${MAX_RETRY_ATTEMPTS - (sessionData.retryCount || 0)} attempts remaining)`,
       });
     }
 
@@ -1835,7 +1416,7 @@ function getAvailableActions(sessionData) {
       actions.push({
         action: 'rollback',
         url: `/api/workflow/${sessionData.id}/rollback`,
-        description: 'Rollback to previous checkpoint'
+        description: 'Rollback to previous checkpoint',
       });
     }
 
@@ -1843,7 +1424,7 @@ function getAvailableActions(sessionData) {
     actions.push({
       action: 'reset',
       url: `/api/workflow/${sessionData.id}/reset`,
-      description: 'Reset session to beginning (requires confirmation)'
+      description: 'Reset session to beginning (requires confirmation)',
     });
   }
 
@@ -1852,14 +1433,14 @@ function getAvailableActions(sessionData) {
     actions.push({
       action: 'errors',
       url: `/api/workflow/${sessionData.id}/errors`,
-      description: `View error history (${sessionData.errorLog.length} errors)`
+      description: `View error history (${sessionData.errorLog.length} errors)`,
     });
   }
 
   actions.push({
     action: 'cancel',
     url: `/api/workflow/${sessionData.id}/cancel`,
-    description: 'Cancel this workflow'
+    description: 'Cancel this workflow',
   });
 
   return actions;
@@ -1878,16 +1459,20 @@ function getNextAction(sessionData) {
       type: 'recovery',
       message: `Step failed: ${currentStep.data?.error || 'Unknown error'}`,
       options: {
-        retry: canRetry ? {
-          available: true,
-          retriesRemaining: MAX_RETRY_ATTEMPTS - retryCount
-        } : { available: false, reason: 'Maximum retries reached' },
-        rollback: canRollback ? {
-          available: true,
-          checkpointStep: sessionData.lastGoodState.currentStep
-        } : { available: false, reason: 'No checkpoint or at first step' },
-        reset: { available: true, requiresConfirmation: true }
-      }
+        retry: canRetry
+          ? {
+              available: true,
+              retriesRemaining: MAX_RETRY_ATTEMPTS - retryCount,
+            }
+          : { available: false, reason: 'Maximum retries reached' },
+        rollback: canRollback
+          ? {
+              available: true,
+              checkpointStep: sessionData.lastGoodState.currentStep,
+            }
+          : { available: false, reason: 'No checkpoint or at first step' },
+        reset: { available: true, requiresConfirmation: true },
+      },
     };
   }
 
@@ -1895,20 +1480,20 @@ function getNextAction(sessionData) {
     return {
       type: 'upload',
       step: currentStep.id,
-      instructions: currentStep.instructions
+      instructions: currentStep.instructions,
     };
   }
 
   if (currentStep.status === 'completed') {
     return {
       type: 'advance',
-      message: 'Ready to proceed to next step'
+      message: 'Ready to proceed to next step',
     };
   }
 
   return {
     type: 'wait',
-    message: 'Processing in progress'
+    message: 'Processing in progress',
   };
 }
 
@@ -1920,98 +1505,24 @@ async function runAutomaticStep(sessionId, stepId, sessionData) {
       // Generate final outputs
       // Copy faithful/localized files to publication folder
       session.updateStepStatus(sessionId, stepId, 'completed', {
-        message: 'Final outputs generated'
+        message: 'Final outputs generated',
       });
       // Save checkpoint after automatic step completion
       session.saveCheckpoint(sessionId);
     }
-
   } catch (err) {
     session.updateStepStatus(sessionId, stepId, 'failed', {
-      error: err.message
+      error: err.message,
     });
 
     // Log the error
     session.logError(sessionId, stepId, err.message, {
       stack: err.stack,
-      retryCount: sessionData.retryCount || 0
+      retryCount: sessionData.retryCount || 0,
     });
 
     throw err;
   }
-}
-
-/**
- * Build expected files list from processed outputs
- * Handles split files by creating separate entries for each part
- */
-function buildExpectedFiles(outputs, splitInfo, supplementaryFiles = []) {
-  const expected = [];
-  const splitSections = new Map(splitInfo.map(s => [s.section, s.parts]));
-
-  for (const output of outputs) {
-    if (output.type !== 'markdown') continue;
-
-    const section = output.section;
-    const moduleId = output.moduleId;
-    const title = output.title;
-
-    // Check if this section has split files
-    const splitParts = splitSections.get(section);
-
-    if (splitParts && splitParts > 1) {
-      // Add an entry for each split part
-      for (let i = 0; i < splitParts; i++) {
-        const partLetter = String.fromCharCode(97 + i); // a, b, c...
-        expected.push({
-          moduleId,
-          section,
-          part: partLetter,
-          title: title ? `${title} (hluti ${partLetter})` : `Kafli ${section} (hluti ${partLetter})`,
-          displayName: section
-            ? `${section}(${partLetter}): ${title || moduleId}`
-            : `${moduleId}(${partLetter})`,
-          downloadName: `${section.replace('.', '-')}(${partLetter}).en.md`,
-          expectedUpload: `${section.replace('.', '-')}(${partLetter}).is.md`
-        });
-      }
-    } else {
-      // Single file, no splitting
-      expected.push({
-        moduleId,
-        section,
-        title,
-        displayName: section
-          ? `${section}: ${title || moduleId}`
-          : moduleId,
-        downloadName: section ? `${section.replace('.', '-')}.en.md` : `${moduleId}.en.md`,
-        expectedUpload: section ? `${section.replace('.', '-')}.is.md` : `${moduleId}.is.md`
-      });
-    }
-  }
-
-  // Add strings files to expected uploads (they contain translatable content)
-  for (const sf of supplementaryFiles) {
-    if (sf.type === 'strings') {
-      // Use a special marker to distinguish strings files from content files
-      // Section format: "1.1-strings" to differentiate from "1.1" content files
-      const rawSection = sf.section || sf.filename.replace('-strings.en.md', '');
-      const baseSection = rawSection.replace('-', '.');
-      const section = `${baseSection}-strings`;
-      expected.push({
-        moduleId: null,
-        section,
-        title: `Strengir (${baseSection})`,
-        displayName: `${baseSection.replace('.', '-')}-strings: ${sf.translatableStrings || 0} strengir`,
-        downloadName: sf.filename,
-        expectedUpload: sf.filename.replace('.en.md', '.is.md'),
-        isSupplementary: true,
-        isStringsFile: true
-      });
-    }
-  }
-
-  return expected;
 }
 
 // ============================================================================
@@ -2028,7 +1539,7 @@ router.post('/assignments', requireAuth, async (req, res) => {
   if (!book || !chapter || !stage || !assignedTo) {
     return res.status(400).json({
       error: 'Missing required fields',
-      message: 'book, chapter, stage, and assignedTo are required'
+      message: 'book, chapter, stage, and assignedTo are required',
     });
   }
 
@@ -2040,7 +1551,7 @@ router.post('/assignments', requireAuth, async (req, res) => {
       assignedTo,
       assignedBy: req.user.username,
       dueDate,
-      notes
+      notes,
     });
 
     // Log the assignment activity
@@ -2054,8 +1565,8 @@ router.post('/assignments', requireAuth, async (req, res) => {
       metadata: {
         stage,
         assignedTo,
-        dueDate
-      }
+        dueDate,
+      },
     });
 
     // Send notification to the assignee
@@ -2072,14 +1583,13 @@ router.post('/assignments', requireAuth, async (req, res) => {
 
     res.json({
       success: true,
-      assignment
+      assignment,
     });
-
   } catch (err) {
     console.error('Assignment creation error:', err);
     res.status(500).json({
       error: 'Failed to create assignment',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -2099,14 +1609,14 @@ router.post('/assignments/kickoff', requireAuth, async (req, res) => {
   if (!book || !chapter) {
     return res.status(400).json({
       error: 'Missing required fields',
-      message: 'book and chapter are required'
+      message: 'book and chapter are required',
     });
   }
 
   if (!assignments || !Array.isArray(assignments) || assignments.length === 0) {
     return res.status(400).json({
       error: 'No assignments provided',
-      message: 'At least one stage assignment is required'
+      message: 'At least one stage assignment is required',
     });
   }
 
@@ -2115,7 +1625,7 @@ router.post('/assignments/kickoff', requireAuth, async (req, res) => {
     if (!a.stage || !a.assignedTo) {
       return res.status(400).json({
         error: 'Invalid assignment',
-        message: 'Each assignment must have stage and assignedTo'
+        message: 'Each assignment must have stage and assignedTo',
       });
     }
   }
@@ -2132,7 +1642,7 @@ router.post('/assignments/kickoff', requireAuth, async (req, res) => {
         assignedTo: a.assignedTo,
         assignedBy: req.user.username,
         dueDate: a.dueDate || null,
-        notes: a.notes || null
+        notes: a.notes || null,
       });
       createdAssignments.push(assignment);
 
@@ -2148,8 +1658,8 @@ router.post('/assignments/kickoff', requireAuth, async (req, res) => {
           stage: a.stage,
           assignedTo: a.assignedTo,
           dueDate: a.dueDate,
-          kickoff: true
-        }
+          kickoff: true,
+        },
       });
     }
 
@@ -2163,15 +1673,15 @@ router.post('/assignments/kickoff', requireAuth, async (req, res) => {
       description: `Hóf kafla ${chapterNum} með ${createdAssignments.length} úthlutanir`,
       metadata: {
         assignmentsCount: createdAssignments.length,
-        stages: assignments.map(a => a.stage)
-      }
+        stages: assignments.map((a) => a.stage),
+      },
     });
 
     // Send notifications to all assignees
     try {
       const assignmentsWithAssignees = createdAssignments.map((a, i) => ({
         ...a,
-        assignee: { id: assignments[i].assignedTo, username: assignments[i].assignedTo }
+        assignee: { id: assignments[i].assignedTo, username: assignments[i].assignedTo },
       }));
 
       await notifications.notifyChapterKickoff(
@@ -2188,14 +1698,13 @@ router.post('/assignments/kickoff', requireAuth, async (req, res) => {
     res.json({
       success: true,
       message: `Kafli ${chapterNum} hafinn með ${createdAssignments.length} úthlutanir`,
-      assignments: createdAssignments
+      assignments: createdAssignments,
     });
-
   } catch (err) {
     console.error('Chapter kickoff error:', err);
     res.status(500).json({
       error: 'Failed to kickoff chapter',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -2230,10 +1739,10 @@ router.get('/assignments/workload', requireAuth, (req, res) => {
           username: a.assignedTo,
           total: 0,
           overdue: 0,
-          dueSoon: 0,  // Due within 3 days
+          dueSoon: 0, // Due within 3 days
           byStage: {},
           byBook: {},
-          assignments: []
+          assignments: [],
         };
       }
 
@@ -2271,7 +1780,7 @@ router.get('/assignments/workload', requireAuth, (req, res) => {
         chapter: a.chapter,
         stage: a.stage,
         dueDate: a.dueDate,
-        isOverdue: a.dueDate && new Date(a.dueDate) < now
+        isOverdue: a.dueDate && new Date(a.dueDate) < now,
       });
     }
 
@@ -2285,8 +1794,9 @@ router.get('/assignments/workload', requireAuth, (req, res) => {
     // Calculate team stats
     const totalAssignments = assignments.length;
     const totalOverdue = workload.reduce((sum, u) => sum + u.overdue, 0);
-    const avgPerPerson = workload.length > 0 ? Math.round(totalAssignments / workload.length * 10) / 10 : 0;
-    const maxAssignments = workload.length > 0 ? Math.max(...workload.map(u => u.total)) : 0;
+    const avgPerPerson =
+      workload.length > 0 ? Math.round((totalAssignments / workload.length) * 10) / 10 : 0;
+    const maxAssignments = workload.length > 0 ? Math.max(...workload.map((u) => u.total)) : 0;
 
     res.json({
       workload,
@@ -2295,22 +1805,21 @@ router.get('/assignments/workload', requireAuth, (req, res) => {
         totalAssignments,
         totalOverdue,
         avgPerPerson,
-        maxAssignments
+        maxAssignments,
       },
       stageLabels: {
         enMarkdown: 'EN Markdown',
         mtOutput: 'Vélþýðing',
         linguisticReview: 'Yfirferð 1',
         tmCreated: 'Þýðingaminni',
-        publication: 'Útgáfa'
-      }
+        publication: 'Útgáfa',
+      },
     });
-
   } catch (err) {
     console.error('Get workload error:', err);
     res.status(500).json({
       error: 'Failed to get workload',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -2335,14 +1844,13 @@ router.get('/assignments', requireAuth, (req, res) => {
 
     res.json({
       assignments,
-      total: assignments.length
+      total: assignments.length,
     });
-
   } catch (err) {
     console.error('Get assignments error:', err);
     res.status(500).json({
       error: 'Failed to get assignments',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -2357,14 +1865,13 @@ router.get('/assignments/mine', requireAuth, (req, res) => {
 
     res.json({
       assignments,
-      total: assignments.length
+      total: assignments.length,
     });
-
   } catch (err) {
     console.error('Get my assignments error:', err);
     res.status(500).json({
       error: 'Failed to get assignments',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -2378,13 +1885,11 @@ router.post('/assignments/:id/complete', requireAuth, async (req, res) => {
 
   try {
     // Get the assignment before completing it (to know the stage order)
-    const beforeAssignment = assignmentStore.getAssignment(id);
-
     const assignment = assignmentStore.completeAssignment(id, req.user.username);
 
     if (!assignment) {
       return res.status(404).json({
-        error: 'Assignment not found'
+        error: 'Assignment not found',
       });
     }
 
@@ -2401,16 +1906,14 @@ router.post('/assignments/:id/complete', requireAuth, async (req, res) => {
 
       // Look for an assignment for the next stage
       const bookAssignments = assignmentStore.getBookAssignments(assignment.book);
-      nextAssignment = bookAssignments.find(a =>
-        a.chapter === assignment.chapter &&
-        a.stage === nextStage &&
-        a.status === 'pending'
+      nextAssignment = bookAssignments.find(
+        (a) => a.chapter === assignment.chapter && a.stage === nextStage && a.status === 'pending'
       );
 
       if (nextAssignment && nextAssignment.assignedTo) {
         nextAssignee = {
           id: nextAssignment.assignedTo,
-          username: nextAssignment.assignedTo
+          username: nextAssignment.assignedTo,
         };
       }
     }
@@ -2454,25 +1957,26 @@ router.post('/assignments/:id/complete', requireAuth, async (req, res) => {
       metadata: {
         assignmentId: id,
         stage: assignment.stage,
-        handoffTo: nextAssignee ? nextAssignee.username : null
-      }
+        handoffTo: nextAssignee ? nextAssignee.username : null,
+      },
     });
 
     res.json({
       success: true,
       assignment,
-      handoff: nextAssignment ? {
-        nextStage: nextAssignment.stage,
-        assignee: nextAssignee?.username,
-        notified: !!nextAssignee
-      } : null
+      handoff: nextAssignment
+        ? {
+            nextStage: nextAssignment.stage,
+            assignee: nextAssignee?.username,
+            notified: !!nextAssignee,
+          }
+        : null,
     });
-
   } catch (err) {
     console.error('Complete assignment error:', err);
     res.status(500).json({
       error: 'Failed to complete assignment',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -2504,8 +2008,9 @@ router.get('/assignments/matrix', requireAuth, (req, res) => {
     const chapters = [];
 
     if (fs.existsSync(chaptersPath)) {
-      const chapterDirs = fs.readdirSync(chaptersPath)
-        .filter(d => d.startsWith('ch'))
+      const chapterDirs = fs
+        .readdirSync(chaptersPath)
+        .filter((d) => d.startsWith('ch'))
         .sort((a, b) => {
           const aNum = parseInt(a.replace('ch', ''));
           const bNum = parseInt(b.replace('ch', ''));
@@ -2518,10 +2023,10 @@ router.get('/assignments/matrix', requireAuth, (req, res) => {
         const chapterNum = parseInt(chapterDir.replace('ch', ''));
         const statusPath = path.join(chaptersPath, chapterDir, 'status.json');
 
-        let chapterData = {
+        const chapterData = {
           chapter: chapterNum,
           title: null,
-          stages: {}
+          stages: {},
         };
 
         // Load status data
@@ -2538,7 +2043,7 @@ router.get('/assignments/matrix', requireAuth, (req, res) => {
 
               chapterData.stages[stage] = {
                 status: stageData.status || 'not-started',
-                assignment: assignmentMap[key] || null
+                assignment: assignmentMap[key] || null,
               };
             }
           } catch (err) {
@@ -2546,7 +2051,7 @@ router.get('/assignments/matrix', requireAuth, (req, res) => {
             for (const stage of stages) {
               chapterData.stages[stage] = {
                 status: 'not-started',
-                assignment: null
+                assignment: null,
               };
             }
           }
@@ -2554,7 +2059,7 @@ router.get('/assignments/matrix', requireAuth, (req, res) => {
           for (const stage of stages) {
             chapterData.stages[stage] = {
               status: 'not-started',
-              assignment: null
+              assignment: null,
             };
           }
         }
@@ -2576,7 +2081,7 @@ router.get('/assignments/matrix', requireAuth, (req, res) => {
       totalChapters: chapters.length,
       assignedCells: Object.keys(assignmentMap).length,
       unassignedInProgress: 0,
-      overdueAssignments: 0
+      overdueAssignments: 0,
     };
 
     const now = new Date();
@@ -2587,7 +2092,7 @@ router.get('/assignments/matrix', requireAuth, (req, res) => {
     }
 
     for (const ch of chapters) {
-      for (const [stage, data] of Object.entries(ch.stages)) {
+      for (const [, data] of Object.entries(ch.stages)) {
         if (data.status === 'in-progress' && !data.assignment) {
           summary.unassignedInProgress++;
         }
@@ -2602,17 +2107,16 @@ router.get('/assignments/matrix', requireAuth, (req, res) => {
         { id: 'mtOutput', label: 'Vélþýðing', shortLabel: 'VÞ' },
         { id: 'linguisticReview', label: 'Yfirferð 1', shortLabel: 'Y1' },
         { id: 'tmCreated', label: 'Þýðingaminni', shortLabel: 'TM' },
-        { id: 'publication', label: 'Útgáfa', shortLabel: 'Útg' }
+        { id: 'publication', label: 'Útgáfa', shortLabel: 'Útg' },
       ],
       team: Array.from(teamSet).sort(),
-      summary
+      summary,
     });
-
   } catch (err) {
     console.error('Assignment matrix error:', err);
     res.status(500).json({
       error: 'Failed to get assignment matrix',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -2630,20 +2134,19 @@ router.post('/assignments/:id/cancel', requireAuth, (req, res) => {
 
     if (!assignment) {
       return res.status(404).json({
-        error: 'Assignment not found'
+        error: 'Assignment not found',
       });
     }
 
     res.json({
       success: true,
-      assignment
+      assignment,
     });
-
   } catch (err) {
     console.error('Cancel assignment error:', err);
     res.status(500).json({
       error: 'Failed to cancel assignment',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -2663,7 +2166,7 @@ router.get('/:sessionId/git-preview', requireAuth, requireAdmin(), (req, res) =>
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
@@ -2674,7 +2177,7 @@ router.get('/:sessionId/git-preview', requireAuth, requireAdmin(), (req, res) =>
 
     if (!stepId) {
       return res.status(400).json({
-        error: 'No current step'
+        error: 'No current step',
       });
     }
 
@@ -2687,13 +2190,13 @@ router.get('/:sessionId/git-preview', requireAuth, requireAdmin(), (req, res) =>
       chapter: sessionData.chapter,
       stepId,
       stepLabel: preview.stepLabel,
-      ...preview
+      ...preview,
     });
   } catch (err) {
     console.error('Git preview error:', err);
     res.status(500).json({
       error: 'Failed to preview changes',
-      message: err.message
+      message: err.message,
     });
   }
 });
@@ -2714,7 +2217,7 @@ router.post('/:sessionId/git-commit', requireAuth, requireAdmin(), (req, res) =>
 
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
@@ -2725,7 +2228,7 @@ router.post('/:sessionId/git-commit', requireAuth, requireAdmin(), (req, res) =>
 
     if (!stepId) {
       return res.status(400).json({
-        error: 'No current step'
+        error: 'No current step',
       });
     }
 
@@ -2736,13 +2239,13 @@ router.post('/:sessionId/git-commit', requireAuth, requireAdmin(), (req, res) =>
       stepId,
       user: req.user,
       message,
-      push
+      push,
     });
 
     if (!result.success) {
       return res.status(400).json({
         error: result.error,
-        suggestion: result.pushSuggestion
+        suggestion: result.pushSuggestion,
       });
     }
 
@@ -2759,8 +2262,8 @@ router.post('/:sessionId/git-commit', requireAuth, requireAdmin(), (req, res) =>
         stepId,
         filesCommitted: result.filesCommitted,
         pushed: result.pushed,
-        files: result.files
-      }
+        files: result.files,
+      },
     });
 
     res.json({
@@ -2770,13 +2273,13 @@ router.post('/:sessionId/git-commit', requireAuth, requireAdmin(), (req, res) =>
       pushed: result.pushed,
       pushError: result.pushError,
       pushSuggestion: result.pushSuggestion,
-      message: result.message
+      message: result.message,
     });
   } catch (err) {
     console.error('Git commit error:', err);
     res.status(500).json({
       error: 'Failed to commit changes',
-      message: err.message
+      message: err.message,
     });
   }
 });

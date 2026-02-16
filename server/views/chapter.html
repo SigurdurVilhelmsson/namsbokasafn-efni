@@ -14,7 +14,7 @@
       <a href="/my-work">Mín verkefni</a>
       <a href="/workflow">Verkflæði</a>
       <a href="/status">Stjórnborð</a>
-      <a href="/editor">Ritstjóri</a>
+      <a href="/segment-editor">Ritstjóri</a>
       <a href="/terminology">Orðasafn</a>
       <a href="/decisions">Ákvarðanir</a>
       <span class="nav-separator admin-only"></span>
@@ -291,12 +291,13 @@
       chapterSelect.innerHTML = '<option value="">Hleður...</option>';
 
       try {
-        const res = await fetch(`/api/editor/${book}`);
+        const res = await fetch(`/api/books/${book}`);
         const data = await res.json();
 
+        const chapters = data.chapters || [];
         chapterSelect.innerHTML = '<option value="">Veldu kafla...</option>' +
-          data.chapters.map(ch =>
-            `<option value="${ch.number}">Kafli ${ch.number}</option>`
+          chapters.map(ch =>
+            `<option value="${ch.chapter}">Kafli ${ch.chapter}</option>`
           ).join('');
 
         chapterSelect.disabled = false;
@@ -314,7 +315,7 @@
       document.getElementById('chapter-title').textContent = `Kafli ${chapter}`;
 
       // Update links
-      document.getElementById('editor-link').href = `/editor?book=${book}&chapter=${chapter}`;
+      document.getElementById('editor-link').href = `/segment-editor?book=${book}&chapter=${chapter}`;
       document.getElementById('issues-link').href = `/issues?book=${book}&chapter=${chapter}`;
 
       // Load all data in parallel
@@ -330,12 +331,12 @@
       const panel = document.getElementById('sections-panel');
 
       try {
-        const res = await fetch(`/api/editor/${book}/${chapter}`);
+        const res = await fetch(`/api/segment-editor/${book}/${chapter}`);
         const data = await res.json();
 
-        const sections = data.sections || [];
-        const faithful = sections.filter(s => s.source === 'faithful').length;
-        const total = sections.length;
+        const modules = data.modules || [];
+        const faithful = modules.filter(m => m.hasFaithful).length;
+        const total = modules.length;
 
         // Update stats
         document.getElementById('stat-sections').textContent = total;
@@ -354,19 +355,19 @@
           statusBadge.className = 'chapter-badge pending';
         }
 
-        // Render sections list
-        if (sections.length === 0) {
+        // Render modules list
+        if (modules.length === 0) {
           panel.innerHTML = '<p class="text-muted">Engir hlutar fundust</p>';
           return;
         }
 
-        panel.innerHTML = sections.map(s => `
-          <div class="section-item ${s.source === 'faithful' ? 'complete' : ''}">
+        panel.innerHTML = modules.map(m => `
+          <div class="section-item ${m.hasFaithful ? 'complete' : ''}">
             <div class="section-info">
-              <span class="section-name">${escapeHtml(s.section)}</span>
-              <span class="section-source ${s.source}">${s.source === 'faithful' ? 'Yfirfarið' : 'Vélþýðing'}</span>
+              <span class="section-name">${escapeHtml(m.moduleId)}</span>
+              <span class="section-source ${m.hasFaithful ? 'faithful' : 'mt'}">${m.hasFaithful ? 'Yfirfarið' : m.hasMtOutput ? 'Vélþýðing' : 'Ekki þýtt'}</span>
             </div>
-            <a href="/editor?book=${book}&chapter=${chapter}&section=${s.section}" class="btn btn-small btn-secondary">
+            <a href="/segment-editor?book=${book}&chapter=${chapter}" class="btn btn-small btn-secondary">
               Opna
             </a>
           </div>

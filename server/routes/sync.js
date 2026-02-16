@@ -336,16 +336,12 @@ function getTargetPath(book, chapter, fileType, fileInfo) {
   const chapterStr = String(chapter).padStart(2, '0');
 
   switch (fileType) {
-    case 'markdown':
     case 'faithful-md':
-      return `books/${book}/03-faithful-translation/chapters/${chapterStr}/${path.basename(fileInfo.originalName || fileInfo.path)}`;
-    case 'translated-markdown':
-      return `books/${book}/02-mt-output/chapters/${chapterStr}/${path.basename(fileInfo.originalName || fileInfo.path)}`;
+      return `books/${book}/03-faithful-translation/ch${chapterStr}/${path.basename(fileInfo.originalName || fileInfo.path)}`;
+    case 'translated-segments':
+      return `books/${book}/02-mt-output/ch${chapterStr}/${path.basename(fileInfo.originalName || fileInfo.path)}`;
     case 'tmx':
       return `books/${book}/tm/${path.basename(fileInfo.originalName || fileInfo.path)}`;
-    case 'xliff':
-    case 'reviewed-xliff':
-      return `books/${book}/pipeline-temp/xliff/${chapterStr}/${path.basename(fileInfo.originalName || fileInfo.path)}`;
     default:
       return `books/${book}/pipeline-temp/${fileType}/${path.basename(fileInfo.originalName || fileInfo.path)}`;
   }

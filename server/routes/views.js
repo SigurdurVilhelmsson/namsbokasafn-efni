@@ -52,14 +52,6 @@ router.get('/images', (req, res) => {
 });
 
 /**
- * GET /editor
- * Markdown editor page
- */
-router.get('/editor', (req, res) => {
-  sendView(res, 'editor.html');
-});
-
-/**
  * GET /segment-editor
  * Segment-level linguistic editor
  */

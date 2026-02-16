@@ -70,15 +70,15 @@ migrate();
 const SESSION_EXPIRY = 4 * 60 * 60 * 1000;
 
 // Workflow steps in order
-// New workflow: MT → 1st Edit → Matecat TM → Localization → Finalize
+// Pipeline: Extract (CLI) → MT → 1st Edit → Matecat TM → Localization → Finalize
 const WORKFLOW_STEPS = [
   {
     id: 'source',
     name: 'Undirbúningur',
-    description: 'Sækja CNXML og búa til Markdown',
+    description: 'Draga út hluta úr CNXML (CLI: cnxml-extract.js)',
     manual: false,
-    outputs: ['markdown', 'equations'],
-    instructionsIs: 'Kerfið sækir efni frá OpenStax og býr til .md skrár.',
+    outputs: ['segments', 'structure'],
+    instructionsIs: 'Keyra cnxml-extract.js til að búa til .en.md hlutaskrár og JSON uppbyggingu.',
   },
   {
     id: 'mt-upload',
@@ -88,7 +88,7 @@ const WORKFLOW_STEPS = [
     instructions:
       '1. Farðu á malstadur.is\n2. Hladdu upp .md skránum (ein í einu)\n3. Veldu enska→íslenska\n4. Sæktu þýddu skrárnar\n5. Hladdu þeim upp hér',
     inputs: ['mt-output'],
-    outputs: ['translated-markdown'],
+    outputs: ['translated-segments'],
   },
   {
     id: 'faithful-edit',
@@ -100,7 +100,7 @@ const WORKFLOW_STEPS = [
     instructionsIs:
       'Málfarsyfirferð á vélþýðingu til að búa til trúa þýðingu (faithful translation).',
     inputs: ['mt-output'],
-    outputs: ['faithful-markdown'],
+    outputs: ['faithful-segments'],
   },
   {
     id: 'tm-creation',
@@ -110,7 +110,7 @@ const WORKFLOW_STEPS = [
     instructions:
       '1. Útbúðu skrár fyrir Matecat Align\n2. Hladdu upp EN og IS skrám\n3. Samræmdu þýðingar\n4. Fluttu út TMX',
     instructionsIs: 'Nota Matecat Align til að búa til þýðingaminni (TMX) úr trúrri þýðingu.',
-    inputs: ['faithful-markdown', 'source-markdown'],
+    inputs: ['faithful-segments', 'source-segments'],
     outputs: ['tmx'],
   },
   {
@@ -122,16 +122,16 @@ const WORKFLOW_STEPS = [
       '1. Farðu yfir staðfærsluatriði\n2. Umbreyttu einingum (mílu→km, Fahrenheit→Celsius)\n3. Settu inn íslensk dæmi þar sem við á\n4. Vistaðu breytingar',
     instructionsIs:
       'Aðlaga efni fyrir íslenska nemendur: umbreyta einingum, bæta við íslenskum dæmum.',
-    inputs: ['faithful-markdown'],
-    outputs: ['localized-markdown'],
+    inputs: ['faithful-segments'],
+    outputs: ['localized-segments'],
   },
   {
     id: 'finalize',
     name: 'Frágangur',
-    description: 'Búa til lokaútgáfu og uppfæra stöðu',
+    description: 'Sprautu þýðingum inn í CNXML og birttu sem HTML',
     manual: false,
-    outputs: ['publication-md', 'status-updated'],
-    instructionsIs: 'Kerfið býr til lokaútgáfu og uppfærir stöðu.',
+    outputs: ['publication-html', 'status-updated'],
+    instructionsIs: 'Keyra cnxml-inject + cnxml-render til að búa til HTML útgáfu.',
   },
 ];
 

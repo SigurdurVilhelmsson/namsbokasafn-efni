@@ -34,7 +34,6 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
 // Import Phase 1 routes
-const processRoutes = require('./routes/process');
 const modulesRoutes = require('./routes/modules');
 const statusRoutes = require('./routes/status');
 const matecatRoutes = require('./routes/matecat');
@@ -48,8 +47,7 @@ const imagesRoutes = require('./routes/images');
 const viewRoutes = require('./routes/views');
 const booksRoutes = require('./routes/books');
 
-// Import Phase 3 routes (Editor)
-const editorRoutes = require('./routes/editor');
+// Import Phase 3 routes
 const reviewsRoutes = require('./routes/reviews');
 const notificationsRoutes = require('./routes/notifications');
 const activityRoutes = require('./routes/activity');
@@ -57,7 +55,6 @@ const activityRoutes = require('./routes/activity');
 // Import Phase 4 routes (Translation Management)
 const adminRoutes = require('./routes/admin');
 const sectionsRoutes = require('./routes/sections');
-const localizationRoutes = require('./routes/localization');
 
 // Import Phase 5 routes (Terminology & Suggestions)
 const terminologyRoutes = require('./routes/terminology');
@@ -182,7 +179,6 @@ app.use((req, res, next) => {
 });
 
 // Phase 1 API Routes
-app.use('/api/process', processRoutes);
 app.use('/api/modules', modulesRoutes);
 app.use('/api/status', statusRoutes);
 app.use('/api/matecat', matecatRoutes);
@@ -196,8 +192,7 @@ app.use('/api/issues', issuesRoutes);
 app.use('/api/sync', syncRoutes);
 app.use('/api/images', imagesRoutes);
 
-// Phase 3 API Routes (Editor)
-app.use('/api/editor', editorRoutes);
+// Phase 3 API Routes
 app.use('/api/reviews', reviewsRoutes);
 app.use('/api/notifications', notificationsRoutes);
 app.use('/api/activity', activityRoutes);
@@ -205,7 +200,6 @@ app.use('/api/activity', activityRoutes);
 // Phase 4 API Routes (Translation Management)
 app.use('/api/admin', adminRoutes);
 app.use('/api/sections', sectionsRoutes);
-app.use('/api/localization', localizationRoutes);
 
 // Phase 5 API Routes (Terminology & Suggestions)
 app.use('/api/terminology', terminologyRoutes);
@@ -262,8 +256,6 @@ app.get('/api', (req, res) => {
       'GET /api/health': 'Health check',
       'GET /api/modules': 'List available OpenStax modules',
       'GET /api/modules/:moduleId': 'Get module details',
-      'POST /api/process/cnxml': 'Process CNXML through pipeline',
-      'POST /api/process/module/:moduleId': 'Process module by ID',
       'GET /api/status/:book': 'Get pipeline status for book',
       'GET /api/status/:book/:chapter': 'Get status for specific chapter',
       'GET /api/matecat': 'Matecat integration documentation',
@@ -290,12 +282,6 @@ app.get('/api', (req, res) => {
       'GET /api/images/:book': 'Book image overview',
       'GET /api/images/:book/:chapter': 'Chapter image details',
       'POST /api/images/:book/:chapter/:id/upload': 'Upload translated image',
-      // Phase 3 - Editor
-      'GET /api/editor/:book/:chapter': 'List sections in chapter',
-      'GET /api/editor/:book/:chapter/:section': 'Load section content',
-      'POST /api/editor/:book/:chapter/:section/save': 'Save draft',
-      'POST /api/editor/:book/:chapter/:section/submit': 'Submit for review',
-      'GET /api/editor/:book/:chapter/:section/history': 'Get version history',
       // Phase 3 - Reviews
       'GET /api/reviews': 'List pending reviews',
       'GET /api/reviews/:id': 'Get review details',
@@ -423,26 +409,18 @@ app.listen(PORT, HOST, () => {
   console.log(`  API:    http://${HOST}:${PORT}/api`);
   console.log(`  Web UI: http://${HOST}:${PORT}/workflow`);
   console.log('');
-  console.log('Phase 1 Endpoints (Processing):');
-  console.log('  POST /api/process/cnxml     Process CNXML file');
-  console.log('  POST /api/process/module/:id Process by module ID');
+  console.log('Key Endpoints:');
   console.log('  GET  /api/status/:book      Get pipeline status');
-  console.log('');
-  console.log('Phase 2 Endpoints (Workflow):');
   console.log('  GET  /api/auth/login        GitHub OAuth login');
-  console.log('  POST /api/workflow/start    Start workflow session');
-  console.log('  GET  /api/issues            List pending issues');
-  console.log('  POST /api/sync/create-pr    Create sync PR');
-  console.log('  GET  /api/images/:book      Image tracking');
+  console.log('  POST /api/workflow/resume   Resume workflow session');
+  console.log('  POST /api/pipeline/run      Inject + render (HEAD_EDITOR)');
   console.log('');
   console.log('Web Interface:');
   console.log('  /workflow         Multi-step workflow wizard');
-  console.log('  /editor           Markdown editor');
   console.log('  /segment-editor   Segment-level linguistic editor');
   console.log('  /localization-editor  Segment-level localization (Pass 2)');
+  console.log('  /pipeline         Pipeline flow dashboard');
   console.log('  /reviews          Review dashboard');
-  console.log('  /issues           Issue review dashboard');
-  console.log('  /images           Image translation tracker');
   console.log('');
   console.log('Press Ctrl+C to stop');
   console.log('');
