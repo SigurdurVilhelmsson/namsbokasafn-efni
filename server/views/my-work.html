@@ -16,7 +16,6 @@
       <a href="/status">Stjórnborð</a>
       <a href="/segment-editor">Ritstjóri</a>
       <a href="/terminology">Orðasafn</a>
-      <a href="/decisions">Ákvarðanir</a>
       <span class="nav-separator admin-only"></span>
       <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
@@ -113,11 +112,6 @@
 
       <!-- Summary Cards -->
       <div class="summary-grid" id="summary-grid">
-        <div class="summary-card" id="card-assignments">
-          <div class="summary-icon">📋</div>
-          <div class="summary-value" id="summary-assignments">-</div>
-          <div class="summary-label">Úthlutanir</div>
-        </div>
         <div class="summary-card" id="card-pending">
           <div class="summary-icon">⏳</div>
           <div class="summary-value" id="summary-pending">-</div>
@@ -137,17 +131,6 @@
 
       <!-- Main Content Grid -->
       <div class="content-grid">
-        <!-- Assignments Section -->
-        <div class="card assignments-card">
-          <div class="card-header">
-            <h2 class="card-title">Úthlutanir</h2>
-            <span class="badge" id="assignments-badge">0</span>
-          </div>
-          <div class="card-body" id="assignments-list">
-            <p class="text-muted">Hleður...</p>
-          </div>
-        </div>
-
         <!-- Pending Submissions Section -->
         <div class="card submissions-card">
           <div class="card-header">
@@ -468,13 +451,11 @@
 
     function renderDetailedView() {
       // Update summary cards
-      document.getElementById('summary-assignments').textContent = detailedData.summary.assignmentsCount;
       document.getElementById('summary-pending').textContent = detailedData.summary.pendingSubmissionsCount;
       document.getElementById('summary-changes').textContent = detailedData.summary.changesRequestedCount;
       document.getElementById('summary-terms').textContent = detailedData.summary.proposedTermsCount;
 
       // Update badges
-      document.getElementById('assignments-badge').textContent = detailedData.summary.assignmentsCount;
       document.getElementById('submissions-badge').textContent = detailedData.summary.pendingSubmissionsCount;
       document.getElementById('changes-badge').textContent = detailedData.summary.changesRequestedCount;
       document.getElementById('terms-badge').textContent = detailedData.summary.proposedTermsCount;
@@ -483,49 +464,11 @@
       if (detailedData.summary.changesRequestedCount > 0) {
         document.getElementById('card-changes').classList.add('highlight');
       }
-      if (detailedData.summary.overdueCount > 0) {
-        document.getElementById('card-assignments').classList.add('highlight-error');
-      }
-
       // Render lists
-      renderAssignments(detailedData.assignments);
       renderSubmissions(detailedData.pendingSubmissions);
       renderChangesRequested(detailedData.recentReviews.filter(r => r.status === 'changes_requested'));
       renderTerms(detailedData.proposedTerms);
       renderActivity(detailedData.recentActivity);
-    }
-
-    function renderAssignments(assignments) {
-      const container = document.getElementById('assignments-list');
-
-      if (assignments.length === 0) {
-        container.innerHTML = `
-          <div class="empty-state">
-            <p class="text-success">Engar úthlutanir í augnablikinu</p>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = assignments.map(a => `
-        <div class="work-item ${a.dueDate?.status === 'overdue' ? 'item-overdue' : a.dueDate?.status === 'today' ? 'item-today' : ''}">
-          <div class="work-item-main">
-            <div class="work-item-title">
-              <span class="book-label">${escapeHtml(a.bookLabel)}</span>
-              <span class="chapter-label">Kafli ${a.chapter}</span>
-              <span class="stage-badge">${escapeHtml(a.stageLabel)}</span>
-            </div>
-            ${a.notes ? `<div class="work-item-notes">${escapeHtml(a.notes)}</div>` : ''}
-            <div class="work-item-meta">
-              <span class="assigned-by">Úthlutað af ${escapeHtml(a.assignedBy)}</span>
-              ${a.dueDate ? `<span class="due-date due-${a.dueDate.status}">${getDueDateText(a.dueDate)}</span>` : ''}
-            </div>
-          </div>
-          <div class="work-item-action">
-            <a href="${a.editorUrl}" class="btn btn-primary btn-sm">Opna</a>
-          </div>
-        </div>
-      `).join('');
     }
 
     function renderSubmissions(submissions) {
@@ -1187,7 +1130,7 @@
     /* Summary Grid */
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
       margin-bottom: 1.5rem;
     }

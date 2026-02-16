@@ -180,13 +180,10 @@ Note: Still need to add `github-actions` ecosystem to vefur's `dependabot.yml` f
 
 **Status:** Complete. `npm audit fix` applied, 0 vulnerabilities across all repos.
 
-### 2.8 Server Over-Engineering Assessment ⏳ PARTIAL (2026-02-16)
+### 2.8 Server Over-Engineering Assessment ✅ COMPLETE (2026-02-16)
 **Severity:** MEDIUM | **Effort:** SIGNIFICANT | **Area:** Architecture
 
-~20 route files and ~30 service files for ~5 editors is more than the team can maintain long-term. Growth was feature-by-feature via AI assistance without consolidation. Potential merges:
-- `openstaxCatalogue` + `openstaxFetcher` + `bookRegistration` + `bookDataGenerator` → one `bookService`
-- `editorHistory` + `segmentEditorService` → combined editor service
-- `meetings.js` + `deadlines.js` + `assignments.js` + `reports.js` — project management features a 5-editor team could handle with GitHub Issues
+~20 route files and ~30 service files for ~5 editors is more than the team can maintain long-term. Growth was feature-by-feature via AI assistance without consolidation.
 
 **Phase 13 progress (2026-02-16):**
 - Deleted 3 old routes (`editor.js`, `process.js`, `localization.js`) and their views
@@ -194,7 +191,19 @@ Note: Still need to add `github-actions` ecosystem to vefur's `dependabot.yml` f
 - Deleted 3 orphaned services (682 lines): `presenceStore.js`, `notesStore.js`, `mtRestoration.js`
 - Confirmed `editorHistory.js` is **NOT dead** — actively used by `reviews.js` and `status.js`
 
-**Note:** Not urgent. The server works. Consider consolidating when next modifying these areas.
+**Unused project management removal (2026-02-16):**
+- Deleted 5 routes: `meetings.js`, `deadlines.js`, `assignments.js`, `reports.js`, `decisions.js`
+- Deleted 4 services: `capacityStore.js`, `assignmentStore.js`, `decisionStore.js`, `reportService.js`
+- Deleted 5 views: `meetings.html`, `deadlines.html`, `assignments.html`, `reports.html`, `decisions.html`
+- Cleaned assignment/decision references from `workflow.js`, `status.js`, `my-work.js`, `issues.js`, `index.js`, `views.js`
+- Removed "Ákvarðanir" nav link from all 18 surviving view files
+- Removed assignment panels/modals from `chapter.html`, `my-work.html`, `pipeline-dashboard.html`, `dashboard.html`
+- Removed admin cards for reports/assignments from `admin.html`
+- Total: ~4,700 lines removed (14 files deleted + surgical edits in ~25 surviving files)
+
+**Remaining (fix-when-touching, non-urgent):**
+- `openstaxCatalogue` + `openstaxFetcher` + `bookRegistration` + `bookDataGenerator` → one `bookService`
+- `editorHistory` + `segmentEditorService` → combined editor service
 
 ### 2.9 session.js Size ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** MODERATE | **Area:** Code Quality
@@ -338,7 +347,7 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 10. **Pipeline integration tests (2026-02-16)** — 22 tests covering inject, render, 8 regression issues, round-trip. 49 total tests across 4 files.
 
 **Tier 1 Status:** 11 of 11 items complete (100%) ✅
-**Tier 2 Status:** 10 of 10 items complete (100%) ✅ (2.8 partial — consolidation ongoing)
+**Tier 2 Status:** 10 of 10 items complete (100%) ✅
 **Tier 3 Status:** 4 of 11 items complete (36%)
 **Overall Quick-Win Checklist:** 19 of 19 items complete (100%) ✅
 
@@ -347,7 +356,7 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 **All critical and high-priority items complete!** ✅
 
 **Tier 2 remaining (fix-when-touching, non-urgent):**
-- 2.8: Server over-engineering — consolidate services when next modifying them (3 orphans already deleted)
+- 2.8: Service consolidation — consider merging openstax/book services and editor services when next modifying them
 
 ### Risk Assessment
 **Current risk level: LOW** ✅

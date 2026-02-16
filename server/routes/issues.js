@@ -15,10 +15,9 @@ const express = require('express');
 const router = express.Router();
 
 const { requireAuth } = require('../middleware/requireAuth');
-const { requireEditor, requireHeadEditor } = require('../middleware/requireRole');
+const { requireEditor } = require('../middleware/requireRole');
 const session = require('../services/session');
-const { ISSUE_CATEGORIES, applyAutoFixes, getIssueStats } = require('../services/issueClassifier');
-const decisionStore = require('../services/decisionStore');
+const { ISSUE_CATEGORIES } = require('../services/issueClassifier');
 
 // Legacy in-memory issue store (for manually reported issues)
 const issueStore = new Map();
@@ -48,7 +47,7 @@ function collectSessionIssues(filters = {}) {
         ...issue,
         sessionId: sess.id,
         book: sessionData.book,
-        chapter: sessionData.chapter
+        chapter: sessionData.chapter,
       });
     }
   }
@@ -76,26 +75,25 @@ router.get('/', requireAuth, (req, res) => {
   // Also include manually reported issues from issueStore
   const manualIssues = Array.from(issueStore.values());
   if (book) {
-    issues = issues.concat(manualIssues.filter(i => i.book === book));
+    issues = issues.concat(manualIssues.filter((i) => i.book === book));
   } else {
     issues = issues.concat(manualIssues);
   }
 
   // Apply category filter
   if (category) {
-    issues = issues.filter(i => i.category === category);
+    issues = issues.filter((i) => i.category === category);
   }
   // Apply status filter
   if (status) {
-    issues = issues.filter(i => i.status === status);
+    issues = issues.filter((i) => i.status === status);
   }
 
   // Check permissions - editors can see all, contributors only see their own sessions
   if (req.user.role === 'contributor') {
-    const userSessions = session.listUserSessions(req.user.id).map(s => s.id);
-    issues = issues.filter(i =>
-      i.reportedBy === req.user.id ||
-      (i.sessionId && userSessions.includes(i.sessionId))
+    const userSessions = session.listUserSessions(req.user.id).map((s) => s.id);
+    issues = issues.filter(
+      (i) => i.reportedBy === req.user.id || (i.sessionId && userSessions.includes(i.sessionId))
     );
   }
 
@@ -104,7 +102,7 @@ router.get('/', requireAuth, (req, res) => {
     AUTO_FIX: [],
     EDITOR_CONFIRM: [],
     BOARD_REVIEW: [],
-    BLOCKED: []
+    BLOCKED: [],
   };
 
   for (const issue of issues) {
@@ -117,7 +115,7 @@ router.get('/', requireAuth, (req, res) => {
     total: issues.length,
     byCategory: grouped,
     filters: { book, chapter, sessionId, category, status },
-    categoryInfo: ISSUE_CATEGORIES
+    categoryInfo: ISSUE_CATEGORIES,
   });
 });
 
@@ -134,33 +132,36 @@ router.get('/stats', requireAuth, (req, res) => {
   // Also include manually reported issues
   const manualIssues = Array.from(issueStore.values());
   if (book) {
-    issues = issues.concat(manualIssues.filter(i => i.book === book));
+    issues = issues.concat(manualIssues.filter((i) => i.book === book));
   } else {
     issues = issues.concat(manualIssues);
   }
 
   const stats = {
     total: issues.length,
-    pending: issues.filter(i => i.status === 'pending').length,
-    resolved: issues.filter(i => i.status === 'resolved').length,
-    escalated: issues.filter(i => i.status === 'escalated').length,
+    pending: issues.filter((i) => i.status === 'pending').length,
+    resolved: issues.filter((i) => i.status === 'resolved').length,
+    escalated: issues.filter((i) => i.status === 'escalated').length,
     byCategory: {
-      AUTO_FIX: issues.filter(i => i.category === 'AUTO_FIX').length,
-      EDITOR_CONFIRM: issues.filter(i => i.category === 'EDITOR_CONFIRM').length,
-      BOARD_REVIEW: issues.filter(i => i.category === 'BOARD_REVIEW').length,
-      BLOCKED: issues.filter(i => i.category === 'BLOCKED').length
+      AUTO_FIX: issues.filter((i) => i.category === 'AUTO_FIX').length,
+      EDITOR_CONFIRM: issues.filter((i) => i.category === 'EDITOR_CONFIRM').length,
+      BOARD_REVIEW: issues.filter((i) => i.category === 'BOARD_REVIEW').length,
+      BLOCKED: issues.filter((i) => i.category === 'BLOCKED').length,
     },
     pendingByCategory: {
-      AUTO_FIX: issues.filter(i => i.category === 'AUTO_FIX' && i.status === 'pending').length,
-      EDITOR_CONFIRM: issues.filter(i => i.category === 'EDITOR_CONFIRM' && i.status === 'pending').length,
-      BOARD_REVIEW: issues.filter(i => i.category === 'BOARD_REVIEW' && i.status === 'pending').length,
-      BLOCKED: issues.filter(i => i.category === 'BLOCKED' && i.status === 'pending').length
+      AUTO_FIX: issues.filter((i) => i.category === 'AUTO_FIX' && i.status === 'pending').length,
+      EDITOR_CONFIRM: issues.filter(
+        (i) => i.category === 'EDITOR_CONFIRM' && i.status === 'pending'
+      ).length,
+      BOARD_REVIEW: issues.filter((i) => i.category === 'BOARD_REVIEW' && i.status === 'pending')
+        .length,
+      BLOCKED: issues.filter((i) => i.category === 'BLOCKED' && i.status === 'pending').length,
     },
     recentlyResolved: issues
-      .filter(i => i.status === 'resolved' && i.resolvedAt)
+      .filter((i) => i.status === 'resolved' && i.resolvedAt)
       .sort((a, b) => new Date(b.resolvedAt) - new Date(a.resolvedAt))
       .slice(0, 10)
-      .map(i => ({
+      .map((i) => ({
         id: i.id,
         description: i.description,
         category: i.category,
@@ -168,8 +169,8 @@ router.get('/stats', requireAuth, (req, res) => {
         resolvedBy: i.resolvedBy,
         sessionId: i.sessionId,
         book: i.book,
-        chapter: i.chapter
-      }))
+        chapter: i.chapter,
+      })),
   };
 
   res.json(stats);
@@ -186,14 +187,18 @@ router.get('/session/:sessionId', requireAuth, (req, res) => {
   const sessionData = session.getSession(sessionId);
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   // Check access
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin' && req.user.role !== 'editor') {
+  if (
+    sessionData.userId !== req.user.id &&
+    req.user.role !== 'admin' &&
+    req.user.role !== 'editor'
+  ) {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
@@ -201,18 +206,18 @@ router.get('/session/:sessionId', requireAuth, (req, res) => {
 
   // Apply filters
   if (category) {
-    issues = issues.filter(i => i.category === category);
+    issues = issues.filter((i) => i.category === category);
   }
   if (status) {
-    issues = issues.filter(i => i.status === status);
+    issues = issues.filter((i) => i.status === status);
   }
 
   // Group by category
   const grouped = {
-    AUTO_FIX: issues.filter(i => i.category === 'AUTO_FIX'),
-    EDITOR_CONFIRM: issues.filter(i => i.category === 'EDITOR_CONFIRM'),
-    BOARD_REVIEW: issues.filter(i => i.category === 'BOARD_REVIEW'),
-    BLOCKED: issues.filter(i => i.category === 'BLOCKED')
+    AUTO_FIX: issues.filter((i) => i.category === 'AUTO_FIX'),
+    EDITOR_CONFIRM: issues.filter((i) => i.category === 'EDITOR_CONFIRM'),
+    BOARD_REVIEW: issues.filter((i) => i.category === 'BOARD_REVIEW'),
+    BLOCKED: issues.filter((i) => i.category === 'BLOCKED'),
   };
 
   res.json({
@@ -221,9 +226,9 @@ router.get('/session/:sessionId', requireAuth, (req, res) => {
     chapter: sessionData.chapter,
     issues,
     total: issues.length,
-    pending: issues.filter(i => i.status === 'pending').length,
+    pending: issues.filter((i) => i.status === 'pending').length,
     byCategory: grouped,
-    categoryInfo: ISSUE_CATEGORIES
+    categoryInfo: ISSUE_CATEGORIES,
   });
 });
 
@@ -240,47 +245,56 @@ router.get('/session/:sessionId', requireAuth, (req, res) => {
  */
 router.post('/session/:sessionId/:issueId/resolve', requireAuth, (req, res) => {
   const { sessionId, issueId } = req.params;
-  const { action, resolution, modifiedValue, createDecision, decisionRationale } = req.body;
+  const { action, resolution, modifiedValue } = req.body;
 
   const sessionData = session.getSession(sessionId);
   if (!sessionData) {
     return res.status(404).json({
-      error: 'Session not found'
+      error: 'Session not found',
     });
   }
 
   // Check access
-  if (sessionData.userId !== req.user.id && req.user.role !== 'admin' && req.user.role !== 'editor') {
+  if (
+    sessionData.userId !== req.user.id &&
+    req.user.role !== 'admin' &&
+    req.user.role !== 'editor'
+  ) {
     return res.status(403).json({
-      error: 'Access denied'
+      error: 'Access denied',
     });
   }
 
-  const issue = sessionData.issues.find(i => i.id === issueId);
+  const issue = sessionData.issues.find((i) => i.id === issueId);
   if (!issue) {
     return res.status(404).json({
-      error: 'Issue not found'
+      error: 'Issue not found',
     });
   }
 
   if (issue.status !== 'pending') {
     return res.status(400).json({
       error: 'Issue already resolved',
-      status: issue.status
+      status: issue.status,
     });
   }
 
   // Check permissions for BOARD_REVIEW
-  if (issue.category === 'BOARD_REVIEW' && req.user.role !== 'admin' && req.user.role !== 'head-editor' && req.user.role !== 'editor') {
+  if (
+    issue.category === 'BOARD_REVIEW' &&
+    req.user.role !== 'admin' &&
+    req.user.role !== 'head-editor' &&
+    req.user.role !== 'editor'
+  ) {
     return res.status(403).json({
-      error: 'Editor access required for board review issues'
+      error: 'Editor access required for board review issues',
     });
   }
 
   if (!['accept', 'reject', 'modify', 'escalate', 'ignore'].includes(action)) {
     return res.status(400).json({
       error: 'Invalid action',
-      validActions: ['accept', 'reject', 'modify', 'escalate', 'ignore']
+      validActions: ['accept', 'reject', 'modify', 'escalate', 'ignore'],
     });
   }
 
@@ -289,49 +303,29 @@ router.post('/session/:sessionId/:issueId/resolve', requireAuth, (req, res) => {
     resolution: action === 'escalate' ? 'escalated' : action,
     comment: resolution,
     modifiedValue,
-    resolvedBy: req.user.username
+    resolvedBy: req.user.username,
   };
 
   const resolved = session.resolveIssue(sessionId, issueId, resolutionData);
 
   if (!resolved) {
     return res.status(500).json({
-      error: 'Failed to resolve issue'
+      error: 'Failed to resolve issue',
     });
   }
 
   // Get updated stats
   const updatedSession = session.getSession(sessionId);
-  const pendingCount = updatedSession.issues.filter(i => i.status === 'pending').length;
-  const blockedCount = updatedSession.issues.filter(i => i.category === 'BLOCKED' && i.status === 'pending').length;
-
-  // Create linked decision if requested
-  let linkedDecision = null;
-  if (createDecision && resolved) {
-    linkedDecision = decisionStore.logDecision({
-      type: 'issue',
-      englishTerm: resolved.context || resolved.description,
-      icelandicTerm: modifiedValue || resolved.suggestion,
-      rationale: decisionRationale || resolution || `Vandamál leyst: ${action}`,
-      decidedBy: req.user.username,
-      book: sessionData.book,
-      chapter: sessionData.chapter,
-      linkedIssueId: issueId,
-      metadata: {
-        source: 'issue_resolution',
-        sessionId,
-        issueCategory: resolved.category,
-        action
-      }
-    });
-  }
+  const pendingCount = updatedSession.issues.filter((i) => i.status === 'pending').length;
+  const blockedCount = updatedSession.issues.filter(
+    (i) => i.category === 'BLOCKED' && i.status === 'pending'
+  ).length;
 
   res.json({
     success: true,
     issue: resolved,
     remainingPending: pendingCount,
     blockedCount,
-    decision: linkedDecision
   });
 });
 
@@ -352,13 +346,13 @@ router.get('/:id', requireAuth, (req, res) => {
       const sessionData = session.getSession(sess.id);
       if (!sessionData) continue;
 
-      const found = sessionData.issues.find(i => i.id === id);
+      const found = sessionData.issues.find((i) => i.id === id);
       if (found) {
         issue = {
           ...found,
           sessionId: sess.id,
           book: sessionData.book,
-          chapter: sessionData.chapter
+          chapter: sessionData.chapter,
         };
         break;
       }
@@ -367,14 +361,14 @@ router.get('/:id', requireAuth, (req, res) => {
 
   if (!issue) {
     return res.status(404).json({
-      error: 'Issue not found'
+      error: 'Issue not found',
     });
   }
 
   res.json({
     issue,
     categoryInfo: ISSUE_CATEGORIES[issue.category],
-    actions: getAvailableActions(issue, req.user)
+    actions: getAvailableActions(issue, req.user),
   });
 });
 
@@ -386,39 +380,41 @@ router.get('/:id', requireAuth, (req, res) => {
  *   - action: 'accept' | 'reject' | 'modify'
  *   - resolution: Description of resolution
  *   - modifiedValue: (optional) Modified value if action is 'modify'
- *   - createDecision: (optional) Whether to create a linked decision
- *   - decisionRationale: (optional) Additional rationale for decision
  */
 router.post('/:id/resolve', requireAuth, requireEditor(), (req, res) => {
   const { id } = req.params;
-  const { action, resolution, modifiedValue, createDecision, decisionRationale } = req.body;
+  const { action, resolution, modifiedValue } = req.body;
 
   const issue = issueStore.get(id);
 
   if (!issue) {
     return res.status(404).json({
-      error: 'Issue not found'
+      error: 'Issue not found',
     });
   }
 
   if (issue.status !== 'pending') {
     return res.status(400).json({
       error: 'Issue already resolved',
-      status: issue.status
+      status: issue.status,
     });
   }
 
   // Check permissions for category
-  if (issue.category === 'BOARD_REVIEW' && req.user.role !== 'admin' && req.user.role !== 'head-editor') {
+  if (
+    issue.category === 'BOARD_REVIEW' &&
+    req.user.role !== 'admin' &&
+    req.user.role !== 'head-editor'
+  ) {
     return res.status(403).json({
-      error: 'Board review issues require head editor or admin'
+      error: 'Board review issues require head editor or admin',
     });
   }
 
   if (!['accept', 'reject', 'modify', 'escalate'].includes(action)) {
     return res.status(400).json({
       error: 'Invalid action',
-      validActions: ['accept', 'reject', 'modify', 'escalate']
+      validActions: ['accept', 'reject', 'modify', 'escalate'],
     });
   }
 
@@ -433,27 +429,6 @@ router.post('/:id/resolve', requireAuth, requireEditor(), (req, res) => {
     issue.modifiedValue = modifiedValue;
   }
 
-  // Create linked decision if requested
-  let linkedDecision = null;
-  if (createDecision) {
-    linkedDecision = decisionStore.logDecision({
-      type: 'issue',
-      englishTerm: issue.context || issue.description,
-      icelandicTerm: modifiedValue || issue.suggestion,
-      rationale: decisionRationale || resolution || `Vandamál leyst: ${action}`,
-      decidedBy: req.user.username,
-      book: issue.book,
-      chapter: issue.chapter,
-      linkedIssueId: issue.id,
-      metadata: {
-        source: 'issue_resolution',
-        issueCategory: issue.category,
-        action
-      }
-    });
-    issue.linkedDecisionId = linkedDecision.id;
-  }
-
   res.json({
     success: true,
     issue: {
@@ -463,9 +438,7 @@ router.post('/:id/resolve', requireAuth, requireEditor(), (req, res) => {
       resolution: issue.resolution,
       resolvedBy: issue.resolvedBy,
       resolvedAt: issue.resolvedAt,
-      linkedDecisionId: issue.linkedDecisionId
     },
-    decision: linkedDecision
   });
 });
 
@@ -483,20 +456,20 @@ router.post('/batch-resolve', requireAuth, requireEditor(), (req, res) => {
 
   if (!Array.isArray(issueIds) || issueIds.length === 0) {
     return res.status(400).json({
-      error: 'issueIds must be a non-empty array'
+      error: 'issueIds must be a non-empty array',
     });
   }
 
   if (!['accept', 'reject'].includes(action)) {
     return res.status(400).json({
       error: 'Invalid action for batch resolve',
-      validActions: ['accept', 'reject']
+      validActions: ['accept', 'reject'],
     });
   }
 
   const results = {
     resolved: [],
-    failed: []
+    failed: [],
   };
 
   for (const id of issueIds) {
@@ -532,7 +505,7 @@ router.post('/batch-resolve', requireAuth, requireEditor(), (req, res) => {
     success: true,
     resolved: results.resolved.length,
     failed: results.failed.length,
-    details: results
+    details: results,
   });
 });
 
@@ -555,17 +528,18 @@ router.post('/auto-fix', requireAuth, requireEditor(), async (req, res) => {
     if (!sessionData) {
       return res.status(404).json({ error: 'Session not found' });
     }
-    issues = sessionData.issues.filter(i => i.category === 'AUTO_FIX' && i.status === 'pending');
+    issues = sessionData.issues.filter((i) => i.category === 'AUTO_FIX' && i.status === 'pending');
   } else if (book && chapter) {
-    issues = Array.from(issueStore.values()).filter(i =>
-      i.book === book &&
-      i.chapter === parseInt(chapter) &&
-      i.category === 'AUTO_FIX' &&
-      i.status === 'pending'
+    issues = Array.from(issueStore.values()).filter(
+      (i) =>
+        i.book === book &&
+        i.chapter === parseInt(chapter) &&
+        i.category === 'AUTO_FIX' &&
+        i.status === 'pending'
     );
   } else {
     return res.status(400).json({
-      error: 'Provide either sessionId or book+chapter'
+      error: 'Provide either sessionId or book+chapter',
     });
   }
 
@@ -582,7 +556,7 @@ router.post('/auto-fix', requireAuth, requireEditor(), async (req, res) => {
   res.json({
     success: true,
     autoFixed: resolved.length,
-    issueIds: resolved
+    issueIds: resolved,
   });
 });
 
@@ -603,7 +577,7 @@ router.post('/report', requireAuth, (req, res) => {
   if (!book || !chapter || !description) {
     return res.status(400).json({
       error: 'Missing required fields',
-      required: ['book', 'chapter', 'description']
+      required: ['book', 'chapter', 'description'],
     });
   }
 
@@ -620,7 +594,7 @@ router.post('/report', requireAuth, (req, res) => {
     status: 'pending',
     reportedBy: req.user.id,
     reportedByUsername: req.user.username,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 
   issueStore.set(issueId, issue);
@@ -630,9 +604,9 @@ router.post('/report', requireAuth, (req, res) => {
     issue: {
       id: issue.id,
       category: issue.category,
-      status: issue.status
+      status: issue.status,
     },
-    message: 'Issue reported and queued for review'
+    message: 'Issue reported and queued for review',
   });
 });
 
@@ -649,11 +623,11 @@ function getAvailableActions(issue, user) {
   if (issue.category === 'AUTO_FIX') {
     actions.push({
       action: 'accept',
-      description: 'Apply auto-fix'
+      description: 'Apply auto-fix',
     });
     actions.push({
       action: 'reject',
-      description: 'Skip this fix'
+      description: 'Skip this fix',
     });
   }
 
@@ -661,15 +635,15 @@ function getAvailableActions(issue, user) {
   if (issue.category === 'EDITOR_CONFIRM') {
     actions.push({
       action: 'accept',
-      description: 'Accept suggestion'
+      description: 'Accept suggestion',
     });
     actions.push({
       action: 'modify',
-      description: 'Accept with modification'
+      description: 'Accept with modification',
     });
     actions.push({
       action: 'reject',
-      description: 'Reject suggestion'
+      description: 'Reject suggestion',
     });
   }
 
@@ -677,15 +651,15 @@ function getAvailableActions(issue, user) {
   if (issue.category === 'BOARD_REVIEW' && (user.role === 'head-editor' || user.role === 'admin')) {
     actions.push({
       action: 'accept',
-      description: 'Approve for localization'
+      description: 'Approve for localization',
     });
     actions.push({
       action: 'reject',
-      description: 'Keep original'
+      description: 'Keep original',
     });
     actions.push({
       action: 'escalate',
-      description: 'Escalate to editorial board'
+      description: 'Escalate to editorial board',
     });
   }
 
@@ -693,11 +667,11 @@ function getAvailableActions(issue, user) {
   if (issue.category === 'BLOCKED') {
     actions.push({
       action: 'resolve',
-      description: 'Mark as resolved with explanation'
+      description: 'Mark as resolved with explanation',
     });
     actions.push({
       action: 'escalate',
-      description: 'Escalate for manual handling'
+      description: 'Escalate for manual handling',
     });
   }
 

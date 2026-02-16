@@ -108,14 +108,6 @@ router.get('/terminology', (req, res) => {
 });
 
 /**
- * GET /decisions
- * Consolidated decision log page
- */
-router.get('/decisions', (req, res) => {
-  sendView(res, 'decisions.html');
-});
-
-/**
  * GET /my-work
  * Translator's personal work dashboard
  */
@@ -124,43 +116,11 @@ router.get('/my-work', (req, res) => {
 });
 
 /**
- * GET /assignments
- * Chapter assignment board for admin/head editor
- */
-router.get('/assignments', (req, res) => {
-  sendView(res, 'assignments.html');
-});
-
-/**
  * GET /chapter
  * Chapter control panel for admin/head editor
  */
 router.get('/chapter', (req, res) => {
   sendView(res, 'chapter.html');
-});
-
-/**
- * GET /meetings
- * Meeting agenda generator
- */
-router.get('/meetings', (req, res) => {
-  sendView(res, 'meetings.html');
-});
-
-/**
- * GET /deadlines
- * Deadline tracking dashboard
- */
-router.get('/deadlines', (req, res) => {
-  sendView(res, 'deadlines.html');
-});
-
-/**
- * GET /reports
- * Weekly progress reports for stakeholders
- */
-router.get('/reports', (req, res) => {
-  sendView(res, 'reports.html');
 });
 
 /**

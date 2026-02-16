@@ -16,7 +16,6 @@
       <a href="/status">Stjórnborð</a>
       <a href="/segment-editor">Ritstjóri</a>
       <a href="/terminology">Orðasafn</a>
-      <a href="/decisions">Ákvarðanir</a>
       <span class="nav-separator admin-only"></span>
       <a href="/dashboard" class="admin-only">Stjórnborð</a>
       <a href="/admin" class="admin-only admin-link">Stjórnandi</a>
@@ -89,13 +88,6 @@
             <div class="stat-label">Framvinda</div>
           </div>
         </div>
-        <div class="stat-card" id="stat-card-assignments">
-          <div class="stat-icon"><i class="fas fa-user-check"></i></div>
-          <div class="stat-content">
-            <div class="stat-value" id="stat-assignments">-</div>
-            <div class="stat-label">Úthlutanir</div>
-          </div>
-        </div>
         <div class="stat-card warning" id="stat-card-issues">
           <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
           <div class="stat-content">
@@ -118,19 +110,6 @@
 
       <!-- Main Content Grid -->
       <div class="panel-grid">
-        <!-- Assignments Panel -->
-        <div class="panel">
-          <div class="panel-header">
-            <h2><i class="fas fa-user-check"></i> Úthlutanir</h2>
-            <button class="btn btn-small btn-primary" onclick="showAssignModal()">
-              <i class="fas fa-plus"></i> Úthluta
-            </button>
-          </div>
-          <div class="panel-body" id="assignments-panel">
-            <p class="text-muted">Hleður...</p>
-          </div>
-        </div>
-
         <!-- Sections Progress Panel -->
         <div class="panel">
           <div class="panel-header">
@@ -166,47 +145,6 @@
       </div>
     </div>
   </main>
-
-  <!-- Assign Modal -->
-  <div class="modal" id="assign-modal" style="display: none;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3><i class="fas fa-user-plus"></i> Úthluta verkefni</h3>
-        <button class="btn-close" onclick="closeAssignModal()">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label class="form-label">Stig verkflæðis</label>
-          <select class="form-select" id="assign-stage">
-            <option value="linguisticReview">Yfirferð 1 (Faithful)</option>
-            <option value="editorialPass2">Yfirferð 2 (Localization)</option>
-            <option value="publication">Útgáfa</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Úthluta á</label>
-          <select class="form-select" id="assign-user">
-            <option value="">Veldu notanda...</option>
-            <!-- Populated dynamically -->
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Skiladagur (valfrjálst)</label>
-          <input type="date" class="form-input" id="assign-due">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Athugasemdir (valfrjálst)</label>
-          <textarea class="form-textarea" id="assign-notes" rows="2" placeholder="Leiðbeiningar..."></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="closeAssignModal()">Hætta við</button>
-        <button class="btn btn-primary" onclick="createAssignment()">
-          <i class="fas fa-check"></i> Úthluta
-        </button>
-      </div>
-    </div>
-  </div>
 
     <script src="/js/htmlUtils.js"></script>
   <script>
@@ -254,9 +192,6 @@
         document.getElementById('load-btn').disabled = false;
         await loadChapter(book, chapter);
       }
-
-      // Load available users for assignment
-      loadAvailableUsers();
     }
 
     function setupEventListeners() {
@@ -321,7 +256,6 @@
       // Load all data in parallel
       await Promise.all([
         loadChapterSections(book, chapter),
-        loadChapterAssignments(book, chapter),
         loadChapterIssues(book, chapter),
         loadChapterActivity(book, chapter)
       ]);
@@ -376,55 +310,6 @@
       } catch (err) {
         console.error('Error loading sections:', err);
         panel.innerHTML = '<p class="text-error">Villa við að hlaða hlutum</p>';
-      }
-    }
-
-    async function loadChapterAssignments(book, chapter) {
-      const panel = document.getElementById('assignments-panel');
-
-      try {
-        const res = await fetch(`/api/assignments?book=${book}&chapter=${chapter}`);
-        const data = await res.json();
-
-        const assignments = data.assignments || [];
-
-        // Update stats
-        document.getElementById('stat-assignments').textContent = assignments.length;
-
-        if (assignments.length === 0) {
-          panel.innerHTML = `
-            <div class="empty-state">
-              <p>Engir hafa verið úthlutað</p>
-              <button class="btn btn-primary btn-small" onclick="showAssignModal()">
-                <i class="fas fa-plus"></i> Úthluta
-              </button>
-            </div>
-          `;
-          return;
-        }
-
-        panel.innerHTML = assignments.map(a => `
-          <div class="assignment-item ${a.dueInfo?.status === 'overdue' ? 'overdue' : ''}">
-            <div class="assignment-info">
-              <span class="assignment-user">${escapeHtml(a.assignedTo)}</span>
-              <span class="assignment-stage">${escapeHtml(a.stageLabel)}</span>
-              ${a.dueInfo ? `
-                <span class="assignment-due ${a.dueInfo.status}">
-                  ${a.dueInfo.status === 'overdue' ? 'Yfir tíma!' : a.dueInfo.formatted}
-                </span>
-              ` : ''}
-            </div>
-            <div class="assignment-actions">
-              <button class="btn btn-small btn-secondary" onclick="cancelAssignment('${a.id}')" title="Afturkalla">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-        `).join('');
-
-      } catch (err) {
-        console.error('Error loading assignments:', err);
-        panel.innerHTML = '<p class="text-error">Villa við að hlaða úthlutanir</p>';
       }
     }
 
@@ -509,86 +394,6 @@
       } catch (err) {
         console.error('Error loading activity:', err);
         panel.innerHTML = '<p class="text-muted">Engin virkni</p>';
-      }
-    }
-
-    async function loadAvailableUsers() {
-      try {
-        // For now, use a simple list. In production, fetch from API
-        const users = ['siggi', 'anna', 'jon', 'gudrun'];
-        const select = document.getElementById('assign-user');
-        select.innerHTML = '<option value="">Veldu notanda...</option>' +
-          users.map(u => `<option value="${u}">${u}</option>`).join('');
-      } catch (err) {
-        console.error('Error loading users:', err);
-      }
-    }
-
-    function showAssignModal() {
-      document.getElementById('assign-modal').style.display = 'flex';
-    }
-
-    function closeAssignModal() {
-      document.getElementById('assign-modal').style.display = 'none';
-    }
-
-    async function createAssignment() {
-      const stage = document.getElementById('assign-stage').value;
-      const assignedTo = document.getElementById('assign-user').value;
-      const dueDate = document.getElementById('assign-due').value;
-      const notes = document.getElementById('assign-notes').value;
-
-      if (!assignedTo) {
-        alert('Vinsamlegast veldu notanda');
-        return;
-      }
-
-      try {
-        const res = await fetch('/api/assignments', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            book: currentBook,
-            chapter: parseInt(currentChapter),
-            stage,
-            assignedTo,
-            dueDate: dueDate || null,
-            notes: notes || null
-          })
-        });
-
-        const data = await res.json();
-
-        if (data.success) {
-          closeAssignModal();
-          loadChapterAssignments(currentBook, currentChapter);
-        } else {
-          alert('Villa: ' + (data.error || 'Óþekkt villa'));
-        }
-      } catch (err) {
-        console.error('Error creating assignment:', err);
-        alert('Villa við að búa til úthlutun');
-      }
-    }
-
-    async function cancelAssignment(id) {
-      if (!confirm('Ertu viss um að afturkalla þessa úthlutun?')) return;
-
-      try {
-        const res = await fetch(`/api/assignments/${id}`, {
-          method: 'DELETE'
-        });
-
-        const data = await res.json();
-
-        if (data.success) {
-          loadChapterAssignments(currentBook, currentChapter);
-        } else {
-          alert('Villa: ' + (data.error || 'Óþekkt villa'));
-        }
-      } catch (err) {
-        console.error('Error cancelling assignment:', err);
-        alert('Villa við að afturkalla úthlutun');
       }
     }
 
@@ -704,7 +509,7 @@
     /* Stats Grid */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
@@ -813,25 +618,6 @@
     .section-source.faithful { background: var(--success-light); color: #166534; }
     .section-source.mt-output { background: var(--warning-light); color: #92400e; }
 
-    /* Assignment Items */
-    .assignment-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem;
-      background: var(--gray-50);
-      border-radius: 0.375rem;
-      margin-bottom: 0.5rem;
-    }
-    .assignment-item.overdue { background: var(--error-light); }
-    .assignment-item:last-child { margin-bottom: 0; }
-    .assignment-info { display: flex; flex-direction: column; gap: 0.25rem; }
-    .assignment-user { font-weight: 600; }
-    .assignment-stage { font-size: 0.75rem; color: var(--gray-500); }
-    .assignment-due { font-size: 0.75rem; }
-    .assignment-due.overdue { color: var(--error); font-weight: 600; }
-    .assignment-due.soon { color: var(--warning); }
-
     /* Issue Items */
     .issue-item {
       display: flex;
@@ -898,57 +684,6 @@
     .btn-secondary { background: var(--gray-200); color: var(--gray-700); }
     .btn-secondary:hover { background: var(--gray-300); }
     .btn-small { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
-    .btn-close {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--gray-500);
-      cursor: pointer;
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      background: white;
-      border-radius: 0.5rem;
-      width: 100%;
-      max-width: 480px;
-      max-height: 90vh;
-      overflow: auto;
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .modal-header h3 {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.125rem;
-    }
-    .modal-body { padding: 1.5rem; }
-    .modal-footer {
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.75rem;
-      padding: 1rem 1.5rem;
-      border-top: 1px solid var(--gray-200);
-      background: var(--gray-50);
-    }
 
     /* Text utilities */
     .text-muted { color: var(--gray-500); }

@@ -87,10 +87,10 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | Image tracking | ✅ | `server/services/imageTracker.js` | 319 |
 | HTML wizard UI | ✅ | `server/views/workflow.html` | ✅ |
 
-**Server Routes (20 total):**
-`activity`, `admin`, `auth`, `books`, `images`, `issues`, `localization-editor`, `matecat`, `modules`, `notifications`, `pipeline`, `publication`, `reviews`, `sections`, `segment-editor`, `status`, `suggestions`, `sync`, `terminology`, `views`, `workflow`
+**Server Routes (24 total):**
+`activity`, `admin`, `analytics`, `auth`, `books`, `feedback`, `images`, `issues`, `localization-editor`, `matecat`, `modules`, `my-work`, `notifications`, `pipeline`, `publication`, `reviews`, `sections`, `segment-editor`, `status`, `suggestions`, `sync`, `terminology`, `views`, `workflow`
 
-> **Note:** `editor`, `process`, and `localization` routes were removed in the 2026-02-16 pipeline retirement. Replaced by `segment-editor`, `pipeline`, and `localization-editor`.
+> **Note:** `editor`, `process`, and `localization` routes were removed in the 2026-02-16 pipeline retirement. `meetings`, `deadlines`, `assignments`, `reports`, and `decisions` were removed as unused project management features (handled by Google Docs/GitHub Issues).
 
 **Phase 2.1 Features:**
 - Erlendur MT file splitting (>18k chars at paragraph boundaries)
@@ -331,6 +331,7 @@ POST /api/images/:book/:chapter/init         Initialize from CNXML
 | 2026-02 | MathJax 3→4 upgrade | MathJax 3 TeX fonts had only 1/20 Icelandic characters; v4 New Computer Modern has full native support |
 | 2026-02 | Module-level faithful publication | Faithful HTML grows per-module as reviews complete; no bulk initialization needed; reader falls back to mt-preview |
 | 2026-02 | 8-stage pipeline model | extraction → mtReady → mtOutput → linguisticReview → tmCreated → injection → rendering → publication; binary complete/not-started; auto-advance on pipeline actions |
+| 2026-02 | Remove unused PM features | meetings, deadlines, assignments, reports, decisions — 14 files (~4,700 lines) deleted; team uses Google Docs/GitHub Issues instead |
 
 ---
 

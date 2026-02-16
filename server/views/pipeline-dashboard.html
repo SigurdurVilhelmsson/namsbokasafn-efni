@@ -1097,16 +1097,10 @@
       const items = [];
 
       if (dashboard.needsAttention) {
-        const { overdueCount, blockedIssues, unassignedWork, pendingReviews } = dashboard.needsAttention;
+        const { blockedIssues, pendingReviews } = dashboard.needsAttention;
 
-        if (overdueCount > 0) {
-          items.push({ count: overdueCount, text: 'Tímasett verkefni', urgent: true, link: '/deadlines' });
-        }
         if (blockedIssues > 0) {
           items.push({ count: blockedIssues, text: 'Útitölur', urgent: true, link: '/issues' });
-        }
-        if (unassignedWork > 0) {
-          items.push({ count: unassignedWork, text: 'Óúthlutað', urgent: false, link: '/assignments' });
         }
         if (pendingReviews > 0) {
           items.push({ count: pendingReviews, text: 'Bíða samþykkis', urgent: false, link: '/reviews' });
@@ -1149,7 +1143,7 @@
         const username = w.username || 'unknown';
 
         return `
-          <div class="workload-item" data-clickable data-user="${username}">
+          <div class="workload-item">
             <div class="workload-avatar">${getInitials(w.username)}</div>
             <div class="workload-info">
               <div class="workload-name">${w.username || 'Óþekktur'}</div>
@@ -1162,13 +1156,7 @@
         `;
       }).join('');
 
-      // Add click handlers
-      container.querySelectorAll('.workload-item[data-clickable]').forEach(el => {
-        el.addEventListener('click', () => {
-          const user = el.dataset.user;
-          window.location.href = `/assignments?assignee=${encodeURIComponent(user)}`;
-        });
-      });
+      // Workload items are display-only (no click navigation)
     }
 
     // Render activity feed

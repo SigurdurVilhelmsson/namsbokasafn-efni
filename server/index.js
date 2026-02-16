@@ -60,9 +60,6 @@ const sectionsRoutes = require('./routes/sections');
 const terminologyRoutes = require('./routes/terminology');
 const suggestionsRoutes = require('./routes/suggestions');
 
-// Import Decision Log routes
-const decisionsRoutes = require('./routes/decisions');
-
 // Import My Work routes (translator dashboard)
 const myWorkRoutes = require('./routes/my-work');
 
@@ -77,18 +74,6 @@ const analyticsRoutes = require('./routes/analytics');
 const segmentEditorRoutes = require('./routes/segment-editor');
 const pipelineRoutes = require('./routes/pipeline');
 const localizationEditorRoutes = require('./routes/localization-editor');
-
-// Import Meeting routes
-const meetingsRoutes = require('./routes/meetings');
-
-// Import Deadline routes
-const deadlinesRoutes = require('./routes/deadlines');
-
-// Import Assignment routes (team management)
-const assignmentsRoutes = require('./routes/assignments');
-
-// Import Reports routes (progress tracking)
-const reportsRoutes = require('./routes/reports');
 
 // Configuration (use validated config)
 const PORT = config.port;
@@ -205,9 +190,6 @@ app.use('/api/sections', sectionsRoutes);
 app.use('/api/terminology', terminologyRoutes);
 app.use('/api/suggestions', suggestionsRoutes);
 
-// Decision Log API Routes
-app.use('/api/decisions', decisionsRoutes);
-
 // My Work API Routes (translator dashboard)
 app.use('/api/my-work', myWorkRoutes);
 
@@ -217,18 +199,6 @@ app.use('/api/publication', publicationRoutes);
 // Phase 7 API Routes (Pilot Support)
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/analytics', analyticsRoutes);
-
-// Meeting Agenda API Routes
-app.use('/api/meetings', meetingsRoutes);
-
-// Deadline Dashboard API Routes
-app.use('/api/deadlines', deadlinesRoutes);
-
-// Assignment Management API Routes
-app.use('/api/assignments', assignmentsRoutes);
-
-// Reports API Routes
-app.use('/api/reports', reportsRoutes);
 
 // Phase 8 API Routes (Segment Editor, Pipeline, Localization Editor)
 app.use('/api/segment-editor', segmentEditorRoutes);
@@ -341,13 +311,6 @@ app.get('/api', (req, res) => {
         'Save single localized segment',
       'POST /api/localization-editor/:book/:chapter/:moduleId/save-all':
         'Bulk save localized segments',
-      // Assignments Management
-      'GET /api/assignments': 'List all assignments (EDITOR)',
-      'GET /api/assignments/overview': 'Team workload overview (HEAD_EDITOR)',
-      'GET /api/assignments/:id': 'Get assignment details',
-      'POST /api/assignments': 'Create assignment (HEAD_EDITOR)',
-      'PUT /api/assignments/:id': 'Update assignment',
-      'DELETE /api/assignments/:id': 'Cancel assignment (HEAD_EDITOR)',
     },
     documentation: 'https://github.com/SigurdurVilhelmsson/namsbokasafn-efni',
   });
