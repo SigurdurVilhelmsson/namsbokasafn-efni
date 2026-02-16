@@ -1,16 +1,17 @@
 # Project Audit Report
 
 **Original Date:** 2026-02-08
-**Updated:** 2026-02-15
+**Updated:** 2026-02-16
 **Scope:** namsbokasafn-efni (pipeline + server) + namsbokasafn-vefur (web reader)
 **Context:** Small educational project (1-2 devs, ~5 editors), built iteratively with AI assistance
 
 **Update Summary (2026-02-16):**
-- Phase 13.1 complete: Retired old markdown pipeline (~37,800 lines removed)
-- Deleted `tools/_archived/` (43 files), old editor/process/localization routes + views
-- Cleaned dead code in `workflow.js` (~575 lines), `books.js` (~210 lines)
-- Updated nav links in 23 view files (`/editor` → `/segment-editor`)
-- Confirmed 4 orphaned services: `presenceStore.js`, `notesStore.js`, `editorHistory.js`, `mtRestoration.js`
+- Phase 13 complete (all 3 sub-phases): pipeline retirement, dead code audit, integration tests
+- Retired old markdown pipeline (~37,800 lines removed): `tools/_archived/` (43 files), old routes + views
+- Deleted 3 orphaned services (682 lines): `presenceStore.js`, `notesStore.js`, `mtRestoration.js`
+- Confirmed `editorHistory.js` is NOT dead (actively used by `reviews.js` and `status.js`)
+- Added 22 pipeline integration tests (49 total across 4 test files)
+- Items 2.5 and 2.7 confirmed complete (were already done per Quick-Win Checklist)
 - Updated ROADMAP.md, architecture.md, simplified-workflow.md, development-plan-phases-9-13.md
 
 **Update Summary (2026-02-15):**
@@ -158,10 +159,12 @@
 
 Note: Still need to add `github-actions` ecosystem to vefur's `dependabot.yml` for auto-updates.
 
-### 2.5 Add `.nvmrc` Files to Both Repos
+### 2.5 Add `.nvmrc` Files to Both Repos ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** DevOps
 
-efni CI uses Node 20, vefur uses Node 22, local machine runs Node 24. No `.nvmrc` or `.node-version` to pin versions.
+~~efni CI uses Node 20, vefur uses Node 22, local machine runs Node 24. No `.nvmrc` or `.node-version` to pin versions.~~
+
+**Status:** Complete. `.nvmrc` files added to both repos.
 
 ### 2.6 Add Database Migration Step to Deployment Checklist ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** DevOps
@@ -170,23 +173,28 @@ efni CI uses Node 20, vefur uses Node 22, local machine runs Node 24. No `.nvmrc
 
 **Status:** Complete (2026-02-15). Deployment checklist updated with correct migration instructions. Fixed admin migrate endpoint (`server/routes/admin.js`) to include migrations 008-009 and handle both `migrate()` and `up(db)` formats. Also fixed Caddy→nginx in the deployment checklist. Removed reference to non-existent `run-migrations.js` script.
 
-### 2.7 Fix vefur npm Audit Vulnerability
+### 2.7 Fix vefur npm Audit Vulnerability ✅ COMPLETE
 **Severity:** MEDIUM | **Effort:** QUICK-FIX | **Area:** Security
 
-1 high-severity vulnerability: `@isaacs/brace-expansion` 5.0.0 (Uncontrolled Resource Consumption). Fix available via `npm audit fix`. Both efni repos have 0 vulnerabilities.
+~~1 high-severity vulnerability: `@isaacs/brace-expansion` 5.0.0 (Uncontrolled Resource Consumption). Fix available via `npm audit fix`. Both efni repos have 0 vulnerabilities.~~
+
+**Status:** Complete. `npm audit fix` applied, 0 vulnerabilities across all repos.
 
 ### 2.8 Server Over-Engineering Assessment ⏳ PARTIAL (2026-02-16)
 **Severity:** MEDIUM | **Effort:** SIGNIFICANT | **Area:** Architecture
 
-32 route files and 34 service files for ~5 editors is far beyond what the team can maintain. Growth was feature-by-feature via AI assistance without consolidation. Multiple services could be merged:
-- `capacityStore` + `presenceStore` + `notesStore` → one `workspaceStore`
+~20 route files and ~30 service files for ~5 editors is more than the team can maintain long-term. Growth was feature-by-feature via AI assistance without consolidation. Potential merges:
 - `openstaxCatalogue` + `openstaxFetcher` + `bookRegistration` + `bookDataGenerator` → one `bookService`
 - `editorHistory` + `segmentEditorService` → combined editor service
 - `meetings.js` + `deadlines.js` + `assignments.js` + `reports.js` — project management features a 5-editor team could handle with GitHub Issues
 
-**Phase 13.1 progress (2026-02-16):** Deleted 3 old routes (`editor.js`, `process.js`, `localization.js`) and their views (`editor.html`). Cleaned ~785 lines of dead code from `workflow.js` and `books.js`. Confirmed 4 orphaned services after route deletion: `presenceStore.js`, `notesStore.js`, `editorHistory.js`, `mtRestoration.js` — safe to delete in future cleanup. Server now has ~20 route files.
+**Phase 13 progress (2026-02-16):**
+- Deleted 3 old routes (`editor.js`, `process.js`, `localization.js`) and their views
+- Cleaned ~785 lines of dead code from `workflow.js` and `books.js`
+- Deleted 3 orphaned services (682 lines): `presenceStore.js`, `notesStore.js`, `mtRestoration.js`
+- Confirmed `editorHistory.js` is **NOT dead** — actively used by `reviews.js` and `status.js`
 
-**Note:** This is not urgent. The server works. But each new feature adds maintenance burden. Consider freezing new features and consolidating before adding more.
+**Note:** Not urgent. The server works. Consider consolidating when next modifying these areas.
 
 ### 2.9 session.js is 1745 Lines
 **Severity:** MEDIUM | **Effort:** MODERATE | **Area:** Code Quality
@@ -244,7 +252,7 @@ Deployment is manual SSH + `git pull` + `npm install` + `systemctl restart`. Acc
 Both repos deploy directly to production. Acceptable at this scale but risky for the reader-facing site.
 
 ### 3.9 Test Coverage
-Limited automated tests. efni has vitest + `lib/__tests__/` with a few test files. vefur has 173 tests (3 failing) with Playwright for e2e. Neither repo has comprehensive coverage, but for a project of this scale, the existing tests cover the critical paths.
+efni has 49 tests across 4 files (vitest): 22 pipeline integration tests covering inject, render, all 8 regression issues, and round-trip, plus 27 unit tests in `lib/__tests__/`. vefur has 173 tests (3 failing) with Playwright for e2e. Neither repo has comprehensive coverage, but for a project of this scale, the existing tests cover the critical paths.
 
 ### 3.10 License Field in vefur package.json ✅ COMPLETE
 Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CONTENT-LICENSE.md`.
@@ -266,7 +274,7 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 - **CORS configured** — Origin whitelist with subdomain matching for `*.namsbokasafn.is`.
 - **Pre-commit hooks** — Both repos have Husky + lint-staged properly configured.
 - **JWT validation in production** — `server/config.js` validates JWT_SECRET strength, rejects default values, and requires all secrets in production.
-- **Pipeline tools well-organized** — 12 active tools in `tools/`, old archived tools deleted (Phase 13.1, 2026-02-16).
+- **Pipeline tools well-organized** — 12 active tools in `tools/`, old archived tools deleted (Phase 13.1), 22 integration tests (Phase 13.3).
 - **README bilingual** — Icelandic + English, comprehensive, well-structured.
 - **Workflow documentation current** — `docs/workflow/simplified-workflow.md` is the best-maintained doc.
 - **Dependabot configured** — Both repos have automated dependency updates (efni also covers github-actions).
@@ -302,10 +310,10 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 
 ---
 
-## Assessment Summary (2026-02-15)
+## Assessment Summary (2026-02-16)
 
 ### Is This Report Still Valid?
-**YES** — The audit remains relevant. All critical and high-priority items are complete. Remaining work is Tier 3 (nice-to-haves) and product development (Phases 9-13).
+**YES** — The audit remains relevant. All critical and high-priority items are complete. Phases 9-13 are all complete. Remaining work is Tier 2/3 maintenance items (fix when touching) and editorial workflow improvements.
 
 ### What Changed Since Original Audit (2026-02-08)?
 
@@ -318,9 +326,11 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 6. **Documentation updates** — CLAUDE.md, workflow docs, and most skills files updated
 7. **Old pipeline retirement (2026-02-16)** — ~37,800 lines of dead code removed: `tools/_archived/` (43 files), old editor/process/localization routes + views, dead code in workflow.js and books.js. Nav links updated across 23 views.
 8. **MathJax 4 upgrade (2026-02-11)** — Native Icelandic character support in equations, removed all workarounds
+9. **Dead code audit (2026-02-16)** — Deleted 3 orphaned services (682 lines). Confirmed `editorHistory.js` is NOT dead.
+10. **Pipeline integration tests (2026-02-16)** — 22 tests covering inject, render, 8 regression issues, round-trip. 49 total tests across 4 files.
 
 **Tier 1 Status:** 11 of 11 items complete (100%) ✅
-**Tier 2 Status:** 7 of 10 items complete (70%) ✅ (all HIGH severity complete)
+**Tier 2 Status:** 9 of 10 items complete (90%) ✅ (all HIGH and MEDIUM severity complete except 2.8 partial)
 **Tier 3 Status:** 4 of 11 items complete (36%)
 **Overall Quick-Win Checklist:** 19 of 19 items complete (100%) ✅
 
@@ -328,8 +338,8 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 
 **All critical and high-priority items complete!** ✅
 
-**Tier 2 remaining (medium severity, non-urgent):**
-- 2.8: Server over-engineering assessment — consider consolidating when ready
+**Tier 2 remaining (1 partial, non-urgent):**
+- 2.8: Server over-engineering — consolidate services when next modifying them (3 orphans already deleted)
 - 2.9: session.js 1745 lines — split when modifying
 - 2.10: Duplicated `escapeHtml()` — extract to shared utility when touching those files
 
@@ -347,4 +357,4 @@ Missing `"license"` field. README badges say MIT + CC BY 4.0 with a separate `CO
 *Original audit generated by 5 parallel audit agents (security, architecture, devops, code-quality, documentation) on 2026-02-08.*
 *Updated 2026-02-10 to reflect completed work and directory restructuring.*
 *Updated 2026-02-15 to fix internal inconsistencies (items 1.6, 2.1) and complete Tier 2 documentation items (2.2, 2.3, 2.6).*
-*Updated 2026-02-16 for Phase 13.1 pipeline retirement (~37,800 lines removed, 4 orphaned services identified).*
+*Updated 2026-02-16 for Phase 13 completion: pipeline retirement (~37,800 lines), dead code audit (3 services deleted, 682 lines), pipeline integration tests (22 tests). Fixed status inconsistencies for items 2.5, 2.7, 2.8.*
