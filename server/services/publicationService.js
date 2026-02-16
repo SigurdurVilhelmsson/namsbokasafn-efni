@@ -15,10 +15,12 @@
 
 const path = require('path');
 const fs = require('fs');
+const { spawn } = require('child_process');
 const pipelineService = require('./pipelineService');
 const segmentParser = require('./segmentParser');
 
 const BOOKS_DIR = path.join(__dirname, '..', '..', 'books');
+const TOOLS_DIR = path.join(__dirname, '..', '..', 'tools');
 
 // Publication tracks
 const PUBLICATION_TRACKS = {
@@ -108,6 +110,78 @@ function checkFaithfulReadiness(bookSlug, chapterNum) {
  */
 function checkLocalizedReadiness(bookSlug, chapterNum) {
   return checkTrackReadiness(bookSlug, chapterNum, 'localized');
+}
+
+/**
+ * Run validate-chapter.js and return parsed results.
+ * Spawns the CLI tool as a child process (ES module).
+ *
+ * @param {string} bookSlug - Book slug
+ * @param {number} chapterNum - Chapter number
+ * @param {string} track - Publication track
+ * @returns {Promise<object>} { valid, errors: [...], warnings: [...], summary }
+ */
+function validateBeforePublish(bookSlug, chapterNum, track) {
+  return new Promise((resolve, reject) => {
+    const args = [
+      path.join(TOOLS_DIR, 'validate-chapter.js'),
+      bookSlug,
+      String(chapterNum),
+      '--track',
+      track,
+      '--json',
+    ];
+
+    let stdout = '';
+    let stderr = '';
+
+    const child = spawn('node', args, {
+      cwd: path.join(__dirname, '..', '..'),
+      env: { ...process.env, NODE_NO_WARNINGS: '1' },
+    });
+
+    child.stdout.on('data', (data) => {
+      stdout += data.toString();
+    });
+    child.stderr.on('data', (data) => {
+      stderr += data.toString();
+    });
+
+    child.on('error', (err) => {
+      reject(new Error(`Validation tool failed to start: ${err.message}`));
+    });
+
+    child.on('close', () => {
+      try {
+        const results = JSON.parse(stdout);
+        const errors = [];
+        const warnings = [];
+
+        for (const [name, check] of Object.entries(results.checks)) {
+          if (!check.passed && check.issues) {
+            for (const issue of check.issues) {
+              if (check.severity === 'error') {
+                errors.push({ validator: name, ...issue });
+              } else if (check.severity === 'warning') {
+                warnings.push({ validator: name, ...issue });
+              }
+            }
+          }
+        }
+
+        resolve({
+          valid: results.valid,
+          errors,
+          warnings,
+          summary: results.summary,
+        });
+      } catch (parseErr) {
+        reject(
+          new Error(`Failed to parse validation output: ${parseErr.message}. stderr: ${stderr}`)
+        );
+      }
+    });
+  });
 }
 
 // =====================================================================
@@ -337,6 +411,7 @@ module.exports = {
   checkFaithfulReadiness,
   checkLocalizedReadiness,
   checkTrackReadiness,
+  validateBeforePublish,
   publishMtPreview,
   publishFaithful,
   publishLocalized,
