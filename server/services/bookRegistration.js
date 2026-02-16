@@ -44,7 +44,14 @@ function getDb() {
  * @returns {Promise<object>} Registration result
  */
 async function registerBook(options) {
-  const { catalogueSlug, slug, titleIs, registeredBy, fetchFromOpenstax = false, forceReregister = false } = options;
+  const {
+    catalogueSlug,
+    slug,
+    titleIs,
+    registeredBy,
+    fetchFromOpenstax = false,
+    forceReregister = false,
+  } = options;
 
   if (!catalogueSlug || !slug || !titleIs || !registeredBy) {
     throw new Error('catalogueSlug, slug, titleIs, and registeredBy are required');
@@ -64,7 +71,9 @@ async function registerBook(options) {
   if (fetchFromOpenstax || !localFileExists) {
     // Fetch from OpenStax GitHub
     if (!openstaxFetcher.isBookAvailable(catalogueSlug)) {
-      throw new Error(`Book '${catalogueSlug}' is not available for fetching from OpenStax. Available: ${openstaxFetcher.getAvailableBooks().join(', ')}`);
+      throw new Error(
+        `Book '${catalogueSlug}' is not available for fetching from OpenStax. Available: ${openstaxFetcher.getAvailableBooks().join(', ')}`
+      );
     }
 
     console.log(`Fetching book structure from OpenStax GitHub...`);
@@ -80,7 +89,7 @@ async function registerBook(options) {
         repo: bookData.repo,
         preface: bookData.preface,
         chapters: bookData.chapters,
-        fetchedAt: bookData.fetchedAt
+        fetchedAt: bookData.fetchedAt,
       };
       fs.writeFileSync(dataFilePath, JSON.stringify(saveData, null, 2));
       console.log(`Saved book data to ${dataFilePath}`);
@@ -91,7 +100,9 @@ async function registerBook(options) {
 
     // Check if local file is incomplete compared to catalogue
     if (bookData.chapters && bookData.chapters.length < catalogueEntry.chapter_count) {
-      console.warn(`Warning: Local data file has ${bookData.chapters.length} chapters but catalogue shows ${catalogueEntry.chapter_count}`);
+      console.warn(
+        `Warning: Local data file has ${bookData.chapters.length} chapters but catalogue shows ${catalogueEntry.chapter_count}`
+      );
       if (fetchFromOpenstax !== false) {
         console.log('Use fetchFromOpenstax: true to fetch complete data from OpenStax');
       }
@@ -106,7 +117,9 @@ async function registerBook(options) {
       const existing = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(slug);
       if (existing) {
         console.log(`Deleting existing registration for '${slug}'...`);
-        db.prepare('DELETE FROM localization_logs WHERE section_id IN (SELECT id FROM book_sections WHERE book_id = ?)').run(existing.id);
+        db.prepare(
+          'DELETE FROM localization_logs WHERE section_id IN (SELECT id FROM book_sections WHERE book_id = ?)'
+        ).run(existing.id);
         db.prepare('DELETE FROM book_sections WHERE book_id = ?').run(existing.id);
         db.prepare('DELETE FROM book_chapters WHERE book_id = ?').run(existing.id);
         db.prepare('DELETE FROM registered_books WHERE id = ?').run(existing.id);
@@ -114,22 +127,30 @@ async function registerBook(options) {
     } else {
       // Check if already registered
       if (catalogueEntry.registered) {
-        throw new Error(`Book '${catalogueSlug}' is already registered as '${catalogueEntry.registeredSlug}'`);
+        throw new Error(
+          `Book '${catalogueSlug}' is already registered as '${catalogueEntry.registeredSlug}'`
+        );
       }
 
       const existing = db.prepare('SELECT id FROM registered_books WHERE slug = ?').get(slug);
       if (existing) {
-        throw new Error(`Slug '${slug}' is already in use by another book. Use forceReregister: true to replace.`);
+        throw new Error(
+          `Slug '${slug}' is already in use by another book. Use forceReregister: true to replace.`
+        );
       }
     }
 
     // Start transaction
     const result = db.transaction(() => {
       // 1. Create registered_books entry
-      const bookResult = db.prepare(`
+      const bookResult = db
+        .prepare(
+          `
         INSERT INTO registered_books (catalogue_id, slug, title_is, registered_by, status)
         VALUES (?, ?, ?, ?, 'active')
-      `).run(catalogueEntry.id, slug, titleIs, registeredBy);
+      `
+        )
+        .run(catalogueEntry.id, slug, titleIs, registeredBy);
 
       const bookId = bookResult.lastInsertRowid;
 
@@ -188,14 +209,14 @@ async function registerBook(options) {
           chapterNum,
           title: chapter.title,
           titleIs: chapter.titleIs,
-          sectionCount: modules.length
+          sectionCount: modules.length,
         });
       }
 
       return {
         bookId,
         chapters: chapters.length,
-        sections: totalSections
+        sections: totalSections,
       };
     })();
 
@@ -213,7 +234,7 @@ async function registerBook(options) {
       chapters: result.chapters,
       sections: result.sections,
       fetchedFromOpenstax: fetchFromOpenstax || !localFileExists,
-      message: `Registered ${titleIs} with ${result.chapters} chapters and ${result.sections} sections`
+      message: `Registered ${titleIs} with ${result.chapters} chapters and ${result.sections} sections`,
     };
   } catch (err) {
     db.close();
@@ -241,7 +262,7 @@ function createBookDirectories(slug) {
     'for-align',
     'tm',
     'glossary',
-    'chapters'
+    'chapters',
   ];
 
   for (const dir of directories) {
@@ -262,7 +283,9 @@ function getRegisteredBook(slug) {
   const db = getDb();
 
   try {
-    const book = db.prepare(`
+    const book = db
+      .prepare(
+        `
       SELECT
         rb.*,
         oc.slug as catalogue_slug,
@@ -272,7 +295,9 @@ function getRegisteredBook(slug) {
       FROM registered_books rb
       JOIN openstax_catalogue oc ON oc.id = rb.catalogue_id
       WHERE rb.slug = ?
-    `).get(slug);
+    `
+      )
+      .get(slug);
 
     if (!book) {
       db.close();
@@ -280,7 +305,9 @@ function getRegisteredBook(slug) {
     }
 
     // Get chapters with section counts by status
-    const chapters = db.prepare(`
+    const chapters = db
+      .prepare(
+        `
       SELECT
         bc.*,
         COUNT(bs.id) as total_sections,
@@ -295,7 +322,9 @@ function getRegisteredBook(slug) {
       WHERE bc.book_id = ?
       GROUP BY bc.id
       ORDER BY bc.chapter_num
-    `).all(book.id);
+    `
+      )
+      .all(book.id);
 
     db.close();
 
@@ -310,7 +339,7 @@ function getRegisteredBook(slug) {
       registeredBy: book.registered_by,
       registeredAt: book.registered_at,
       status: book.status,
-      chapters: chapters.map(c => ({
+      chapters: chapters.map((c) => ({
         id: c.id,
         chapterNum: c.chapter_num,
         titleEn: c.title_en,
@@ -324,9 +353,9 @@ function getRegisteredBook(slug) {
           inReview: c.in_review,
           reviewApproved: c.review_approved,
           inLocalization: c.in_localization,
-          published: c.published
-        }
-      }))
+          published: c.published,
+        },
+      })),
     };
   } catch (err) {
     db.close();
@@ -343,7 +372,9 @@ function listRegisteredBooks() {
   const db = getDb();
 
   try {
-    const books = db.prepare(`
+    const books = db
+      .prepare(
+        `
       SELECT
         rb.*,
         oc.slug as catalogue_slug,
@@ -356,11 +387,13 @@ function listRegisteredBooks() {
       JOIN openstax_catalogue oc ON oc.id = rb.catalogue_id
       WHERE rb.status = 'active'
       ORDER BY rb.registered_at DESC
-    `).all();
+    `
+      )
+      .all();
 
     db.close();
 
-    return books.map(b => ({
+    return books.map((b) => ({
       id: b.id,
       slug: b.slug,
       catalogueSlug: b.catalogue_slug,
@@ -371,7 +404,8 @@ function listRegisteredBooks() {
       chapters: b.chapters,
       totalSections: b.total_sections,
       publishedSections: b.published_sections,
-      progress: b.total_sections > 0 ? Math.round((b.published_sections / b.total_sections) * 100) : 0
+      progress:
+        b.total_sections > 0 ? Math.round((b.published_sections / b.total_sections) * 100) : 0,
     }));
   } catch (err) {
     db.close();
@@ -389,17 +423,21 @@ function getChapterSections(chapterId) {
   const db = getDb();
 
   try {
-    const sections = db.prepare(`
+    const sections = db
+      .prepare(
+        `
       SELECT * FROM book_sections
       WHERE chapter_id = ?
       ORDER BY
         CASE WHEN section_num = 'intro' THEN 0 ELSE 1 END,
         CAST(REPLACE(section_num, '.', '') AS INTEGER)
-    `).all(chapterId);
+    `
+      )
+      .all(chapterId);
 
     db.close();
 
-    return sections.map(s => ({
+    return sections.map((s) => ({
       id: s.id,
       bookId: s.book_id,
       chapterId: s.chapter_id,
@@ -428,7 +466,7 @@ function getChapterSections(chapterId) {
       localizedPublishedAt: s.localized_published_at,
       tmCreatedAt: s.tm_created_at,
       createdAt: s.created_at,
-      updatedAt: s.updated_at
+      updatedAt: s.updated_at,
     }));
   } catch (err) {
     db.close();
@@ -446,7 +484,9 @@ function getSection(sectionId) {
   const db = getDb();
 
   try {
-    const section = db.prepare(`
+    const section = db
+      .prepare(
+        `
       SELECT
         bs.*,
         rb.slug as book_slug,
@@ -457,7 +497,9 @@ function getSection(sectionId) {
       JOIN registered_books rb ON rb.id = bs.book_id
       JOIN book_chapters bc ON bc.id = bs.chapter_id
       WHERE bs.id = ?
-    `).get(sectionId);
+    `
+      )
+      .get(sectionId);
 
     db.close();
 
@@ -498,7 +540,7 @@ function getSection(sectionId) {
       localizedPublishedAt: section.localized_published_at,
       tmCreatedAt: section.tm_created_at,
       createdAt: section.created_at,
-      updatedAt: section.updated_at
+      updatedAt: section.updated_at,
     };
   } catch (err) {
     db.close();
@@ -532,7 +574,7 @@ function updateSectionStatus(sectionId, status, updates = {}) {
       'localization_in_progress',
       'localization_submitted',
       'localization_approved',
-      'localized_published'
+      'localized_published',
     ];
 
     if (!validStatuses.includes(status)) {
@@ -545,15 +587,15 @@ function updateSectionStatus(sectionId, status, updates = {}) {
 
     // Add optional timestamp updates based on status
     const statusTimestamps = {
-      'review_assigned': ['linguistic_assigned_at', 'CURRENT_TIMESTAMP'],
-      'review_submitted': ['linguistic_submitted_at', 'CURRENT_TIMESTAMP'],
-      'review_approved': ['linguistic_approved_at', 'CURRENT_TIMESTAMP'],
-      'faithful_published': ['faithful_published_at', 'CURRENT_TIMESTAMP'],
-      'tm_created': ['tm_created_at', 'CURRENT_TIMESTAMP'],
-      'localization_assigned': ['localization_assigned_at', 'CURRENT_TIMESTAMP'],
-      'localization_submitted': ['localization_submitted_at', 'CURRENT_TIMESTAMP'],
-      'localization_approved': ['localization_approved_at', 'CURRENT_TIMESTAMP'],
-      'localized_published': ['localized_published_at', 'CURRENT_TIMESTAMP']
+      review_assigned: ['linguistic_assigned_at', 'CURRENT_TIMESTAMP'],
+      review_submitted: ['linguistic_submitted_at', 'CURRENT_TIMESTAMP'],
+      review_approved: ['linguistic_approved_at', 'CURRENT_TIMESTAMP'],
+      faithful_published: ['faithful_published_at', 'CURRENT_TIMESTAMP'],
+      tm_created: ['tm_created_at', 'CURRENT_TIMESTAMP'],
+      localization_assigned: ['localization_assigned_at', 'CURRENT_TIMESTAMP'],
+      localization_submitted: ['localization_submitted_at', 'CURRENT_TIMESTAMP'],
+      localization_approved: ['localization_approved_at', 'CURRENT_TIMESTAMP'],
+      localized_published: ['localized_published_at', 'CURRENT_TIMESTAMP'],
     };
 
     if (statusTimestamps[status]) {
@@ -594,7 +636,9 @@ function updateChapterStatus(db, sectionId) {
   if (!section) return;
 
   // Get status counts for this chapter
-  const stats = db.prepare(`
+  const stats = db
+    .prepare(
+      `
     SELECT
       COUNT(*) as total,
       SUM(CASE WHEN status = 'not_started' THEN 1 ELSE 0 END) as not_started,
@@ -602,7 +646,9 @@ function updateChapterStatus(db, sectionId) {
       SUM(CASE WHEN status IN ('faithful_published', 'localized_published') THEN 1 ELSE 0 END) as published
     FROM book_sections
     WHERE chapter_id = ?
-  `).get(section.chapter_id);
+  `
+    )
+    .get(section.chapter_id);
 
   let chapterStatus = 'in_progress';
 
@@ -614,7 +660,10 @@ function updateChapterStatus(db, sectionId) {
     chapterStatus = 'partially_published';
   }
 
-  db.prepare('UPDATE book_chapters SET status = ? WHERE id = ?').run(chapterStatus, section.chapter_id);
+  db.prepare('UPDATE book_chapters SET status = ? WHERE id = ?').run(
+    chapterStatus,
+    section.chapter_id
+  );
 }
 
 /**
@@ -628,7 +677,7 @@ function updateChapterStatus(db, sectionId) {
 function assignLinguisticReviewer(sectionId, reviewerId, reviewerName) {
   return updateSectionStatus(sectionId, 'review_assigned', {
     linguisticReviewer: reviewerId,
-    linguisticReviewerName: reviewerName
+    linguisticReviewerName: reviewerName,
   });
 }
 
@@ -643,7 +692,7 @@ function assignLinguisticReviewer(sectionId, reviewerId, reviewerName) {
 function assignLocalizer(sectionId, localizerId, localizerName) {
   return updateSectionStatus(sectionId, 'localization_assigned', {
     localizer: localizerId,
-    localizerName: localizerName
+    localizerName: localizerName,
   });
 }
 
@@ -670,40 +719,43 @@ function scanAndUpdateStatus(bookSlug, chapterNum = null) {
     return { updated: 0, unchanged: 0, errors: [`Chapters directory not found for: ${bookSlug}`] };
   }
 
-  // Status detection rules based on file presence
+  // Status detection rules based on file presence (canonical 8-stage names)
   const STATUS_RULES = {
-    enMarkdown: (book, ch, section) => {
-      const filename = section === 'intro' ? 'intro.en.md' : `${section}.en.md`;
-      return fs.existsSync(path.join(BOOKS_DIR, book, '02-for-mt', `ch${ch}`, filename));
+    extraction: (book, ch) => {
+      const dir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${ch}`);
+      return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('-segments.en.md'));
     },
-    mtOutput: (book, ch, section) => {
-      const filename = section === 'intro' ? 'intro.is.md' : `${section}.is.md`;
-      return fs.existsSync(path.join(BOOKS_DIR, book, '02-mt-output', `ch${ch}`, filename));
+    mtReady: (book, ch) => {
+      const dir = path.join(BOOKS_DIR, book, '02-for-mt', `ch${ch}`);
+      return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('-links.json'));
     },
-    faithful: (book, ch, section) => {
-      const filename = section === 'intro' ? 'intro.is.md' : `${section}.is.md`;
-      return fs.existsSync(path.join(BOOKS_DIR, book, '03-faithful-translation', `ch${ch}`, filename));
+    mtOutput: (book, ch) => {
+      const dir = path.join(BOOKS_DIR, book, '02-mt-output', `ch${ch}`);
+      return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('-segments.is.md'));
     },
-    localized: (book, ch, section) => {
-      const filename = section === 'intro' ? 'intro.is.md' : `${section}.is.md`;
-      return fs.existsSync(path.join(BOOKS_DIR, book, '04-localized-content', `ch${ch}`, filename));
+    linguisticReview: (book, ch) => {
+      const dir = path.join(BOOKS_DIR, book, '03-faithful-translation', `ch${ch}`);
+      return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('-segments.is.md'));
     },
     tmCreated: (book, ch, section) => {
       const filename = section === 'intro' ? 'intro.tmx' : `${section}.tmx`;
       return fs.existsSync(path.join(BOOKS_DIR, book, 'tm', `ch${ch}`, filename));
     },
-    published: (book, ch, section) => {
-      // Check for faithful publication
-      const filename = section === 'intro' ? 'intro.md' : `${section}.md`;
-      return fs.existsSync(path.join(BOOKS_DIR, book, '05-publication', 'faithful', 'chapters', ch, filename));
-    }
+    injection: (book, ch) => {
+      const dir = path.join(BOOKS_DIR, book, '03-translated', 'mt-preview', `ch${ch}`);
+      return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('.cnxml'));
+    },
+    rendering: (book, ch) => {
+      const dir = path.join(BOOKS_DIR, book, '05-publication', 'mt-preview', 'chapters', ch);
+      return fs.existsSync(dir) && fs.readdirSync(dir).some((f) => f.endsWith('.html'));
+    },
   };
 
   const results = {
     updated: 0,
     unchanged: 0,
     errors: [],
-    changes: []
+    changes: [],
   };
 
   // Get list of chapter directories to scan
@@ -717,8 +769,9 @@ function scanAndUpdateStatus(bookSlug, chapterNum = null) {
       return results;
     }
   } else {
-    chapterDirs = fs.readdirSync(chaptersPath)
-      .filter(d => d.startsWith('ch') && fs.statSync(path.join(chaptersPath, d)).isDirectory())
+    chapterDirs = fs
+      .readdirSync(chaptersPath)
+      .filter((d) => d.startsWith('ch') && fs.statSync(path.join(chaptersPath, d)).isDirectory())
       .sort();
   }
 
@@ -741,77 +794,61 @@ function scanAndUpdateStatus(bookSlug, chapterNum = null) {
     const ch = chDir.replace('ch', '');
     const sections = statusData.sections || [];
     let chapterChanged = false;
-    const originalStatus = JSON.stringify(statusData.status);
 
     // Initialize status object if missing
     if (!statusData.status) {
       statusData.status = {};
     }
 
-    // Scan for EN markdown (source stage)
-    let enMarkdownComplete = true;
-    for (const section of sections) {
-      const sectionId = section.id.replace('.', '-');
-      if (!STATUS_RULES.enMarkdown(bookSlug, ch, sectionId)) {
-        enMarkdownComplete = false;
-        break;
-      }
-    }
-    if (enMarkdownComplete && sections.length > 0) {
-      if (!statusData.status.source?.complete) {
-        statusData.status.source = {
+    // Scan for extraction (EN segments in 02-for-mt)
+    if (STATUS_RULES.extraction(bookSlug, ch)) {
+      if (!statusData.status.extraction?.complete) {
+        statusData.status.extraction = {
           complete: true,
-          status: 'complete',
-          date: new Date().toISOString().split('T')[0]
+          date: new Date().toISOString().split('T')[0],
         };
         chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'source', action: 'set complete' });
+        results.changes.push({ chapter: ch, stage: 'extraction', action: 'set complete' });
       }
     }
 
-    // Scan for MT output
-    let mtOutputComplete = true;
-    for (const section of sections) {
-      const sectionId = section.id.replace('.', '-');
-      if (!STATUS_RULES.mtOutput(bookSlug, ch, sectionId)) {
-        mtOutputComplete = false;
-        break;
+    // Scan for MT-ready (links.json files in 02-for-mt)
+    if (STATUS_RULES.mtReady(bookSlug, ch)) {
+      if (!statusData.status.mtReady?.complete) {
+        statusData.status.mtReady = {
+          complete: true,
+          date: new Date().toISOString().split('T')[0],
+        };
+        chapterChanged = true;
+        results.changes.push({ chapter: ch, stage: 'mtReady', action: 'set complete' });
       }
     }
-    if (mtOutputComplete && sections.length > 0) {
+
+    // Scan for MT output (IS segments in 02-mt-output)
+    if (STATUS_RULES.mtOutput(bookSlug, ch)) {
       if (!statusData.status.mtOutput?.complete) {
         statusData.status.mtOutput = {
           complete: true,
-          status: 'complete',
-          date: new Date().toISOString().split('T')[0]
+          date: new Date().toISOString().split('T')[0],
         };
         chapterChanged = true;
         results.changes.push({ chapter: ch, stage: 'mtOutput', action: 'set complete' });
       }
     }
 
-    // Scan for faithful translation
-    let faithfulComplete = true;
-    for (const section of sections) {
-      const sectionId = section.id.replace('.', '-');
-      if (!STATUS_RULES.faithful(bookSlug, ch, sectionId)) {
-        faithfulComplete = false;
-        break;
-      }
-    }
-    if (faithfulComplete && sections.length > 0) {
-      if (!statusData.status.editorialPass1?.complete) {
-        statusData.status.editorialPass1 = {
+    // Scan for linguistic review (IS segments in 03-faithful-translation)
+    if (STATUS_RULES.linguisticReview(bookSlug, ch)) {
+      if (!statusData.status.linguisticReview?.complete) {
+        statusData.status.linguisticReview = {
           complete: true,
-          status: 'complete',
-          date: new Date().toISOString().split('T')[0]
+          date: new Date().toISOString().split('T')[0],
         };
         chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'editorialPass1', action: 'set complete' });
+        results.changes.push({ chapter: ch, stage: 'linguisticReview', action: 'set complete' });
       }
     }
 
-    // Scan for TM files
+    // Scan for TM files (per-section check)
     let tmComplete = true;
     for (const section of sections) {
       const sectionId = section.id.replace('.', '-');
@@ -821,35 +858,37 @@ function scanAndUpdateStatus(bookSlug, chapterNum = null) {
       }
     }
     if (tmComplete && sections.length > 0) {
-      if (!statusData.status.tmUpdated?.complete) {
-        statusData.status.tmUpdated = {
+      if (!statusData.status.tmCreated?.complete) {
+        statusData.status.tmCreated = {
           complete: true,
-          status: 'complete',
-          date: new Date().toISOString().split('T')[0]
+          date: new Date().toISOString().split('T')[0],
         };
         chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'tmUpdated', action: 'set complete' });
+        results.changes.push({ chapter: ch, stage: 'tmCreated', action: 'set complete' });
       }
     }
 
-    // Scan for localized content
-    let localizedComplete = true;
-    for (const section of sections) {
-      const sectionId = section.id.replace('.', '-');
-      if (!STATUS_RULES.localized(bookSlug, ch, sectionId)) {
-        localizedComplete = false;
-        break;
-      }
-    }
-    if (localizedComplete && sections.length > 0) {
-      if (!statusData.status.editorialPass2?.complete) {
-        statusData.status.editorialPass2 = {
+    // Scan for injection (CNXML files in 03-translated/mt-preview)
+    if (STATUS_RULES.injection(bookSlug, ch)) {
+      if (!statusData.status.injection?.complete) {
+        statusData.status.injection = {
           complete: true,
-          status: 'complete',
-          date: new Date().toISOString().split('T')[0]
+          date: new Date().toISOString().split('T')[0],
         };
         chapterChanged = true;
-        results.changes.push({ chapter: ch, stage: 'editorialPass2', action: 'set complete' });
+        results.changes.push({ chapter: ch, stage: 'injection', action: 'set complete' });
+      }
+    }
+
+    // Scan for rendering (HTML files in 05-publication/mt-preview)
+    if (STATUS_RULES.rendering(bookSlug, ch)) {
+      if (!statusData.status.rendering?.complete) {
+        statusData.status.rendering = {
+          complete: true,
+          date: new Date().toISOString().split('T')[0],
+        };
+        chapterChanged = true;
+        results.changes.push({ chapter: ch, stage: 'rendering', action: 'set complete' });
       }
     }
 
@@ -898,8 +937,9 @@ function scanStatusDryRun(bookSlug, chapterNum = null) {
       return { chapters: [], errors: [`Chapter directory not found: ${chDir}`] };
     }
   } else {
-    chapterDirs = fs.readdirSync(chaptersPath)
-      .filter(d => d.startsWith('ch') && fs.statSync(path.join(chaptersPath, d)).isDirectory())
+    chapterDirs = fs
+      .readdirSync(chaptersPath)
+      .filter((d) => d.startsWith('ch') && fs.statSync(path.join(chaptersPath, d)).isDirectory())
       .sort();
   }
 
@@ -912,36 +952,40 @@ function scanStatusDryRun(bookSlug, chapterNum = null) {
     const chapterInfo = {
       chapter: parseInt(ch, 10),
       chapterDir: chDir,
-      stages: {}
+      stages: {},
     };
 
-    // Check each stage directory
+    // Check each stage directory (canonical 8-stage names)
     const stageChecks = [
-      { stage: 'enMarkdown', dir: '02-for-mt', pattern: '.en.md' },
-      { stage: 'mtOutput', dir: '02-mt-output', pattern: '.is.md' },
-      { stage: 'faithful', dir: '03-faithful-translation', pattern: '.is.md' },
-      { stage: 'localized', dir: '04-localized-content', pattern: '.is.md' },
-      { stage: 'tmCreated', dir: 'tm', pattern: '.tmx' }
+      { stage: 'extraction', dir: '02-for-mt', pattern: '-segments.en.md' },
+      { stage: 'mtReady', dir: '02-for-mt', pattern: '-links.json' },
+      { stage: 'mtOutput', dir: '02-mt-output', pattern: '-segments.is.md' },
+      { stage: 'linguisticReview', dir: '03-faithful-translation', pattern: '-segments.is.md' },
+      { stage: 'tmCreated', dir: 'tm', pattern: '.tmx' },
+      { stage: 'injection', dir: path.join('03-translated', 'mt-preview'), pattern: '.cnxml' },
+      {
+        stage: 'rendering',
+        dir: path.join('05-publication', 'mt-preview', 'chapters'),
+        pattern: '.html',
+        useChNum: true,
+      },
     ];
 
     for (const check of stageChecks) {
-      const stageDir = path.join(BOOKS_DIR, bookSlug, check.dir, chDir);
-      const filesExist = fs.existsSync(stageDir) &&
-        fs.readdirSync(stageDir).filter(f => f.endsWith(check.pattern)).length > 0;
+      // rendering stage uses zero-padded ch number as directory name (not chDir)
+      const stageDir = check.useChNum
+        ? path.join(BOOKS_DIR, bookSlug, check.dir, ch)
+        : path.join(BOOKS_DIR, bookSlug, check.dir, chDir);
+      const filesExist =
+        fs.existsSync(stageDir) &&
+        fs.readdirSync(stageDir).filter((f) => f.endsWith(check.pattern)).length > 0;
 
       // Load current status
       let currentStatus = 'not-started';
       if (fs.existsSync(statusPath)) {
         try {
           const statusData = JSON.parse(fs.readFileSync(statusPath, 'utf-8'));
-          const statusMapping = {
-            'enMarkdown': statusData.status?.source?.complete,
-            'mtOutput': statusData.status?.mtOutput?.complete,
-            'faithful': statusData.status?.editorialPass1?.complete,
-            'localized': statusData.status?.editorialPass2?.complete,
-            'tmCreated': statusData.status?.tmUpdated?.complete
-          };
-          currentStatus = statusMapping[check.stage] ? 'complete' : 'not-started';
+          currentStatus = statusData.status?.[check.stage]?.complete ? 'complete' : 'not-started';
         } catch (e) {
           // Ignore parse errors
         }
@@ -950,7 +994,7 @@ function scanStatusDryRun(bookSlug, chapterNum = null) {
       chapterInfo.stages[check.stage] = {
         filesExist,
         currentStatus,
-        wouldUpdate: filesExist && currentStatus !== 'complete'
+        wouldUpdate: filesExist && currentStatus !== 'complete',
       };
     }
 
@@ -971,5 +1015,5 @@ module.exports = {
   assignLocalizer,
   createBookDirectories,
   scanAndUpdateStatus,
-  scanStatusDryRun
+  scanStatusDryRun,
 };
