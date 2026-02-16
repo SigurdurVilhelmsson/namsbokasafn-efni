@@ -2,14 +2,18 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://namsbokasafn.is/schemas/chapter-status.json",
   "title": "Chapter Status",
-  "description": "Tracks translation workflow progress for a single chapter",
+  "description": "Tracks translation workflow progress for a single chapter through the 8-step extract-inject-render pipeline",
   "type": "object",
-  "required": ["chapter", "titleEn", "titleIs", "sections", "status"],
+  "required": ["titleEn", "status"],
   "properties": {
     "chapter": {
       "type": "integer",
       "minimum": 1,
       "description": "Chapter number"
+    },
+    "id": {
+      "type": "string",
+      "description": "Identifier for non-numeric chapters (e.g., 'appendices')"
     },
     "titleEn": {
       "type": "string",
@@ -44,18 +48,22 @@
     },
     "status": {
       "type": "object",
-      "description": "7-step pipeline stages (extract-inject-render workflow)",
+      "description": "8-step pipeline stages (extract-inject-render workflow)",
       "properties": {
         "extraction": {
           "$ref": "#/$defs/stageStatus",
-          "description": "Step 1: CNXML → EN segments + structure extracted"
+          "description": "Step 1: CNXML -> EN segments + structure extracted"
+        },
+        "mtReady": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "Step 1b: Segments protected and ready for machine translation"
         },
         "mtOutput": {
           "$ref": "#/$defs/stageStatus",
           "description": "Step 2: Machine translation output from malstadur.is"
         },
         "linguisticReview": {
-          "$ref": "#/$defs/editorialStageStatus",
+          "$ref": "#/$defs/stageStatus",
           "description": "Step 3: Linguistic review (Pass 1) - faithful translation complete"
         },
         "tmCreated": {
@@ -73,32 +81,9 @@
         "publication": {
           "$ref": "#/$defs/publicationStatus",
           "description": "Step 5c: Published to web (synced to vefur)"
-        },
-        "enMarkdown": {
-          "$ref": "#/$defs/stageStatus",
-          "description": "[Legacy] Maps to extraction"
-        },
-        "source": {
-          "$ref": "#/$defs/stageStatus",
-          "description": "[Legacy] Maps to extraction"
-        },
-        "matecat": {
-          "$ref": "#/$defs/stageStatusWithProgress",
-          "description": "[Legacy] Maps to tmCreated"
-        },
-        "editorialPass1": {
-          "$ref": "#/$defs/editorialStageStatus",
-          "description": "[Legacy] Maps to linguisticReview"
-        },
-        "tmUpdated": {
-          "$ref": "#/$defs/stageStatus",
-          "description": "[Legacy] Maps to tmCreated"
-        },
-        "editorialPass2": {
-          "$ref": "#/$defs/editorialStageStatus",
-          "description": "[Legacy] Localization review (Pass 2)"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "images": {
       "type": "object",
@@ -129,81 +114,41 @@
     "stageStatus": {
       "type": "object",
       "required": ["complete"],
+      "additionalProperties": true,
       "properties": {
         "complete": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether this stage is complete"
         },
         "date": {
           "type": ["string", "null"],
           "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
           "description": "Completion date (YYYY-MM-DD)"
-        }
-      }
-    },
-    "stageStatusWithProgress": {
-      "type": "object",
-      "required": ["complete"],
-      "properties": {
-        "complete": {
-          "type": "boolean"
-        },
-        "date": {
-          "type": ["string", "null"],
-          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-        },
-        "inProgress": {
-          "type": "boolean"
         },
         "notes": {
-          "type": "string"
-        }
-      }
-    },
-    "editorialStageStatus": {
-      "type": "object",
-      "required": ["complete"],
-      "properties": {
-        "complete": {
-          "type": "boolean"
-        },
-        "date": {
-          "type": ["string", "null"],
-          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-        },
-        "editor": {
-          "type": ["string", "null"],
-          "description": "Name of the editor"
-        },
-        "inProgress": {
-          "type": "boolean"
-        },
-        "pending": {
-          "type": "boolean"
-        },
-        "notes": {
-          "type": "string"
+          "type": "string",
+          "description": "Notes about this stage"
         }
       }
     },
     "publicationStatus": {
       "type": "object",
-      "required": ["complete"],
+      "description": "Publication status with separate tracks for MT preview, faithful, and localized versions",
       "properties": {
-        "complete": {
-          "type": "boolean"
+        "mtPreview": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "MT preview track - machine-translated versions for immediate use"
         },
-        "date": {
-          "type": ["string", "null"],
-          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        "faithful": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "Faithful track - human-reviewed faithful translations"
         },
-        "version": {
-          "type": ["string", "null"],
-          "description": "Version identifier (e.g., 'ai-preview', 'v1.0')"
-        },
-        "notes": {
-          "type": "string"
+        "localized": {
+          "$ref": "#/$defs/stageStatus",
+          "description": "Localized track - adapted for Icelandic students"
         }
-      }
+      },
+      "additionalProperties": false
     }
   }
 }
