@@ -6,7 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Removed
+
+#### Phase 13: Cleanup & Consolidation (2026-02-16)
+
+- Retired old markdown pipeline (~37,800 lines): 43 archived tools, old editor/process/localization routes + views
+- Deleted 3 orphaned services (682 lines): `presenceStore.js`, `notesStore.js`, `mtRestoration.js`
+- Removed unused project management features (~4,700 lines): meetings, deadlines, assignments, reports, decisions — 5 routes, 4 services, 5 views deleted; references cleaned from ~25 surviving files
+- Cleaned 5 pre-existing unused variable lint errors exposed by the removal
+
 ### Added
+
+- 22 pipeline integration tests covering inject, render, all 8 regression issues, and round-trip (49 total tests)
+
+### Changed
+
+- Server route count reduced from 29 to 24
+- AUDIT-REPORT.md item 2.8 marked complete
+- ROADMAP.md updated with accurate route inventory
 
 ## [0.5.0] - 2026-02-05
 
