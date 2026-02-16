@@ -9,10 +9,10 @@ Automated web interface for OpenStax translation pipeline (English → Icelandic
 | **Scale** | 4-5 books in 2 years, designed for 10+ |
 | **Team** | Small editorial team + occasional contributors |
 | **Deployment** | Local-first, server for shared access |
-| **Current Phase** | Phase 13: Cleanup & Consolidation |
-| **Latest Milestone** | Phase 12 complete (2026-02-16), Phase 11 complete (2026-02-16), old pipeline retired (2026-02-16) |
+| **Current Phase** | Phases 9-13 complete; operational use |
+| **Latest Milestone** | Phase 13 complete (2026-02-16), all pipeline issues resolved, 49 tests passing |
 
-**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 ✅ → 12 ✅ → 13 (current)
+**Phase progression:** 1 → 2 → 2.5 → 5 → 6 → 7 → 8 ✅ → 9 ✅ → 10 ✅ → 11 ✅ → 12 ✅ → 13 ✅
 **Note:** Phase 3 (Enhanced Dashboard) and Phase 4 (not defined) are deferred. Built features as needed, not by strict sequence.
 
 ---
@@ -232,14 +232,13 @@ Migrated chapter status tracking from mixed-name 7-stage model to canonical 8-st
 
 All pipeline issues verified as resolved on the live site. Cross-references working (0 empty refs across tested chapters). Examples and exercises properly styled (vefur CSS already targets the HTML classes). Issues #5, #6, #7 closed in html-pipeline-issues.md. End-to-end test deferred to first real editorial review cycle.
 
-### Phase 13: Cleanup & Consolidation
+### Phase 13: Cleanup & Consolidation ✅ (2026-02-16)
 
-**Status:** IN PROGRESS
+**Status:** COMPLETE
 
-**13.1 — Retire Old Pipeline (COMPLETE 2026-02-16):**
-Deleted `tools/_archived/` (43 files), `server/routes/editor.js`, `server/views/editor.html`, `server/routes/process.js`, `server/routes/localization.js`. Cleaned up `workflow.js`, `books.js`, `sync.js`, `sessionCore.js`. Updated nav links across 23 views. ~37,800 lines removed. Commit `89b86d2`.
-
-**13.2 — Remaining:** Audit remaining routes and services for dead code. Add tests for cnxml-inject and cnxml-render.
+- [x] 13.1 — Retire old pipeline (~37,800 lines removed, commit `89b86d2`)
+- [x] 13.2 — Audit services: deleted 3 orphaned files (682 lines: mtRestoration, presenceStore, notesStore)
+- [x] 13.3 — Pipeline integration tests: 22 tests covering inject, render, all 8 regression issues, round-trip
 
 See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
 
@@ -404,14 +403,9 @@ CNXML → cnxml-extract → EN segments (markdown) → MT → IS segments → re
 
 ## Next Steps
 
-### Current Priority: Cleanup & Consolidation (Phase 13)
+### Current Priority: Operational Use
 
-See [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for the full plan.
-
-### Cleanup & Consolidation (Phase 13)
-1. [x] 13.1 — Retire old pipeline (~37,800 lines removed)
-2. [ ] 13.2 — Audit remaining services for dead code
-3. [ ] 13.3 — Core pipeline tests (cnxml-inject, cnxml-render)
+Phases 9-13 are complete. The pipeline is fully verified with 49 automated tests. Next priorities are editorial workflow items from the "Ideas Beyond the Roadmap" section in [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md).
 
 ### Ongoing
 1. [ ] Complete Pass 1 reviews for chapters 1-4 (using segment editor)

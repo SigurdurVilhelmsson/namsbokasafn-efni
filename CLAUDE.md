@@ -202,12 +202,13 @@ node scripts/sync-content.js --source ../namsbokasafn-efni
 
 ## Current Priority
 
-**Phase 13: Cleanup & Consolidation** — Audit remaining services for dead code, add core pipeline tests.
+**Operational use** — Phases 8-13 complete. Pipeline verified with 49 automated tests.
 
-See [ROADMAP.md](ROADMAP.md) Phase 13 and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for details.
+See [ROADMAP.md](ROADMAP.md) and [docs/workflow/development-plan-phases-9-13.md](docs/workflow/development-plan-phases-9-13.md) for completed work and future ideas.
 
-**Phase 12 Status:** COMPLETE (2026-02-16) — All pipeline issues verified as resolved on live site.
-**Phase 11 Status:** COMPLETE (2026-02-16) — 8-stage schema migration, canonical stage names, auto-advance hooks, filesystem sync updated.
+**Phase 13 Status:** COMPLETE (2026-02-16) — Dead code removed, 22 pipeline integration tests added.
+**Phase 12 Status:** COMPLETE (2026-02-16) — All 8 pipeline issues verified as resolved on live site.
+**Phase 11 Status:** COMPLETE (2026-02-16) — 8-stage schema migration, canonical stage names, auto-advance hooks.
 **Phase 10 Status:** COMPLETE (2026-02-16) — Publication service migrated; faithful track grows per-module.
 **Phase 9 Status:** COMPLETE (2026-02-16) — `applyApprovedEdits()` writes reviewed segments per-module.
 **Phase 8 Status:** COMPLETE (2026-02-05) — Editor rebuild for CNXML→HTML pipeline delivered.

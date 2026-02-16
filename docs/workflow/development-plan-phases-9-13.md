@@ -178,7 +178,7 @@ Deferred to operational use. The pipeline has been verified through the renderin
 
 ---
 
-## Phase 13: Cleanup & Consolidation
+## Phase 13: Cleanup & Consolidation ✅ (2026-02-16)
 
 **Goal:** Remove dead weight, reduce maintenance surface.
 
@@ -199,20 +199,33 @@ Deferred to operational use. The pipeline has been verified through the renderin
 
 Also updated: `sync.js`, `sessionCore.js`, `index.js`, `views.js`, `workflow.html`, `chapter.html`, nav links in 23 view files (`/editor` → `/segment-editor`).
 
-### 13.2 — Audit Remaining Services
+### 13.2 — Audit Remaining Services ✅ (2026-02-16)
 
-The server now has ~20 route files and ~30 service files. Remaining candidates for cleanup:
-- `editorHistory.js` — tracked old editor versions, likely dead
-- `mtRestoration.js` — markdown-specific restoration, not imported anywhere
-- `presenceStore.js`, `notesStore.js` — only used by deleted `editor.js`, now orphaned
-- Parts of `publicationService.js` — markdown assembly (to be replaced in Phase 10)
+Audited all ~30 service files. Found and deleted 3 orphaned services (682 lines):
 
-### 13.3 — Core Pipeline Tests
+| File | Lines | Why Dead |
+|------|-------|----------|
+| `mtRestoration.js` | 196 | Markdown-specific MT restoration, zero imports |
+| `presenceStore.js` | 244 | Editor presence tracking, only used by deleted `editor.js` |
+| `notesStore.js` | 245 | Editor notes store, only used by deleted `editor.js` |
 
-Add tests for `cnxml-inject.js` and `cnxml-render.js`:
-- Round-trip tests: inject known segments, verify output CNXML contains them
-- Render tests: render known CNXML, verify HTML structure
-- Regression tests for the 5 fixed pipeline issues
+Other candidates investigated:
+- `editorHistory.js` — **NOT dead**, actively used by `reviews.js` and `status.js`
+- `publicationService.js` — **Clean**, markdown assembly already removed in Phase 13.1
+
+### 13.3 — Core Pipeline Tests ✅ (2026-02-16)
+
+Added 22 integration tests in `tools/__tests__/pipeline-integration.test.js`:
+
+| Category | Tests | What |
+|----------|-------|------|
+| cnxml-inject | 4 | Single module, full chapter, translated content, preserved IDs |
+| cnxml-render | 5 | Chapter HTML, valid documents, translated content, IDs, end-of-chapter pages |
+| Regression #1-#8 | 10 | Image paths, no duplication, equations, examples CSS, exercises structure, cross-refs, inline artifacts |
+| Round-trip | 1 | inject → render → verify Icelandic text + IDs |
+| General quality | 2 | Data attributes, answer key structure |
+
+Total test suite: 49 tests across 4 files, all passing.
 
 ---
 
